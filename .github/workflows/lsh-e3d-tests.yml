@@ -1,4 +1,4 @@
-name: LSH E3D static regression (no deployment)
+name: LSH E3D full regression (no deployment)
 on:
   push:
     branches:
@@ -11,7 +11,7 @@ permissions:
   contents: read
 jobs:
   node-regression:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -19,3 +19,32 @@ jobs:
           node-version: '22'
       - name: E3A E3B E3C E3D regression
         run: node --test zkusebni/tests/e3a.test.cjs zkusebni/tests/e3b.static.test.cjs zkusebni/tests/e3c.test.cjs zkusebni/tests/e3d.test.cjs
+  browser-regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser test engines (CI only)
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Run Chromium and WebKit against isolated local staging
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-e3d-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:8765/zkusebni/ >/dev/null; then break; fi
+            sleep 1
+          done
+          node --test zkusebni/tests/e3d.browser.test.cjs
+      - name: Preserve browser screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-e3d-browser-qa
+          path: qa/e3d-*.png
+          if-no-files-found: warn
