@@ -1,0 +1,12 @@
+/* Unified Reading Lab paragraph numbers and return navigation, v2.2 */
+#readingBody > p[data-num] {position:relative;padding-inline-start:2.15rem;}
+#readingBody > p[data-num]::before {content:attr(data-num);position:absolute;inset-inline-start:.3rem;top:0;min-width:1.2rem;text-align:end;font-size:.8em;font-variant-numeric:tabular-nums;font-weight:700;color:var(--muted);opacity:.85;}
+.rl-return-question {position:fixed;right:clamp(12px,3vw,34px);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:85;max-width:min(90vw,335px);padding:12px 17px;min-height:46px;border-radius:14px;border:2px solid var(--accent);background:var(--panel);color:var(--text);box-shadow:0 12px 36px rgba(0,0,0,.42);font:800 .94rem/1.35 system-ui,sans-serif;cursor:pointer;}
+.rl-return-question:hover{background:var(--field)}
+.rl-return-question[hidden]{display:none!important}
+.rl-return-question:focus-visible,.rl-click-return:focus-visible{outline:3px solid var(--accent2);outline-offset:3px}
+.rl-click-return{cursor:pointer;}
+.rl-question-return-highlight{outline:3px solid var(--accent2);outline-offset:2px;border-radius:9px;background:rgba(157,147,255,.13);}
+@media (max-width:570px){#readingBody > p[data-num]{padding-inline-start:1.9rem}.rl-return-question{left:12px;right:12px;max-width:none}}
+@media (prefers-reduced-motion:reduce){.rl-question-return-highlight{transition:none!important}}
+@media print{.rl-return-question{display:none!important}#readingBody > p[data-num]::before{color:#222;opacity:1}}
