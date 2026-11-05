@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="cs" data-theme="dark">
 <head>
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="icon" sizes="192x192" href="../icons/icon-192.png">
+  <link rel="apple-touch-icon" href="../icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="LSH TEST">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
@@ -14,6 +19,7 @@
   <script defer src="../assets/lsh/v3/model.js"></script>
   <script defer src="../assets/lsh/v3/store.js"></script>
   <script defer src="../assets/lsh/v3/vocab.js"></script>
+  <script defer src="../assets/lsh/v3/pwa.js"></script>
 </head>
 <body data-page="slovnicek" data-path="slovnicek/index.html">
   <a class="skip-link" href="#main">P&#345;esko&#269;it na obsah</a>
@@ -132,4 +138,5 @@
   <footer class="site-footer"><div class="footer-inner"><span>Language Skills Hub <b>E3C / prototyp</b></span><span>Bez p&#345;ihl&#225;&#353;en&#237;, analytiky a extern&#237;ch slu&#382;eb. Data slovn&#237;&#269;ku se ukl&#225;daj&#237; pouze lok&#225;ln&#283;; nesynchronizuj&#237; se.</span></div></footer>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <noscript><p class="no-script">Pro zobrazen&#237; katalogu a sd&#237;len&#237; zapn&#283;te JavaScript.</p></noscript>
+<div class="container"><p id="pwaStatus" role="status" aria-live="polite"></p><button type="button" id="pwaInstallBtn" class="button outline" hidden>Nainstalovat testovací aplikaci</button></div>
 </body></html>

@@ -1,0 +1,26 @@
+{
+  "id": "/zkusebni/",
+  "name": "Language Skills Hub – zkušební verze",
+  "short_name": "LSH TEST",
+  "description": "Zkušební rozcestník jazykových dovedností. Nejde o ostré vydání.",
+  "start_url": "/zkusebni/",
+  "scope": "/zkusebni/",
+  "display": "standalone",
+  "background_color": "#0b1221",
+  "theme_color": "#0b1221",
+  "lang": "cs",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

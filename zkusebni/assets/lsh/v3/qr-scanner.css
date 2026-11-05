@@ -1,0 +1,5 @@
+/* QR scanner only; no external resources. */
+.scan-video{display:block;width:100%;max-width:560px;max-height:60vh;margin:0 auto;border-radius:12px;background:#0b1221;object-fit:contain}
+.scan-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.scan-hint{margin-top:12px}
+.scan-shell{max-width:640px}

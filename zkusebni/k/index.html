@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="cs" data-theme="dark">
 <head>
+  <link rel="stylesheet" href="../assets/lsh/v3/qr-scanner.css">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="icon" sizes="192x192" href="../icons/icon-192.png">
+  <link rel="apple-touch-icon" href="../icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="LSH TEST">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
@@ -13,6 +19,8 @@
   <script defer src="../assets/lsh/v2/core.js"></script>
   <script defer src="../assets/lsh/v2/qr.js"></script>
   <script defer src="../assets/lsh/v2/app.js"></script>
+  <script defer src="../assets/lsh/v3/pwa.js"></script>
+  <script defer src="../assets/lsh/v3/qr-scanner.js"></script>
 </head>
 <body data-page="code" data-path="k/index.html">
   <a class="skip-link" href="#main">P&#345;esko&#269;it na obsah</a>
@@ -24,7 +32,15 @@
   <div class="demo-banner" role="status"><span class="demo-dot"></span><strong>ZKUŠEBNÍ VERZE E2</strong> <span>Zku&#353;ebn&#237; nasazen&#237;. Obsah zat&#237;m nen&#237; schv&#225;len pro ostr&#253; provoz.</span></div>
   <main id="main"><section class="container single-page"><a class="crumb" href="../">&#8592; Zp&#283;t na rozcestn&#237;k</a><span class="eyebrow">RYCHL&#221; P&#344;&#205;STUP</span><h1>Otev&#345;&#237;t kartu pomoc&#237; k&#243;du</h1><p class="page-lead">Zadejte &#269;ty&#345;znakov&#253; k&#243;d od u&#269;itele. M&#367;&#382;e obsahovat tak&#233; jazyk, &#250;rove&#328; a ozna&#269;en&#237; z&#225;mku.</p>
  <form id="codeForm" class="code-form"><label for="codeInput">Kr&#225;tk&#253; k&#243;d</label><div class="code-input-row"><input type="text" id="codeInput" autocomplete="off" autocapitalize="characters" maxlength="12" spellcheck="false" placeholder="7KQ2-ENB1Z" aria-describedby="codeHelp codeError"><button type="submit" class="button primary">Otev&#345;&#237;t kartu &#8594;</button></div><small id="codeHelp">Uk&#225;zka: 7KQ2 nebo 7KQ2-ENB1Z. V E2 zku&#353;ebn&#237; k&#243;dy, nesd&#237;lejte mimo ov&#283;&#345;ov&#225;n&#237;.</small><p id="codeError" class="form-status" role="alert" aria-live="polite"></p></form>
- <div class="info-panel"><h2>Co k&#243;d znamen&#225;?</h2><p>Prvn&#237; &#269;ty&#345;i znaky ur&#269;uj&#237; t&#233;ma; za poml&#269;kou je jazyk (EN / ES / DE / FR), &#250;rove&#328; (A1&#8211;C2) a p&#345;&#237;padn&#283; Z jako uzam&#269;en&#237; ovl&#225;dac&#237;ch prvk&#367;. Z&#225;mek nen&#237; bezpe&#269;nostn&#237; ochrana.</p></div></section></main>
+ <div class="scan-actions"><button type="button" id="openScanner" class="button outline">Načíst QR kamerou</button></div>
+<p class="scan-hint" id="scannerHelp">Pokud QR kamerou není podporováno, použijte fotoaparát telefonu nebo zadejte kód ručně.</p>
+<dialog id="scanDialog" class="share-dialog scan-shell" aria-label="Načíst QR kód kamerou">
+  <div class="dialog-inner"><h2>Načíst QR kamerou</h2><p>Obraz zůstává pouze ve vašem zařízení. Otevřeme jen platné karty tohoto testovacího rozcestníku.</p>
+  <video id="scanVideo" class="scan-video" playsinline muted aria-label="Živý obraz kamery"></video>
+  <p id="scanStatus" role="status" aria-live="polite"></p>
+  <button type="button" id="closeScanner" class="button outline">Zavřít kameru</button></div>
+</dialog>
+<div class="info-panel"><h2>Co k&#243;d znamen&#225;?</h2><p>Prvn&#237; &#269;ty&#345;i znaky ur&#269;uj&#237; t&#233;ma; za poml&#269;kou je jazyk (EN / ES / DE / FR), &#250;rove&#328; (A1&#8211;C2) a p&#345;&#237;padn&#283; Z jako uzam&#269;en&#237; ovl&#225;dac&#237;ch prvk&#367;. Z&#225;mek nen&#237; bezpe&#269;nostn&#237; ochrana.</p></div></section></main>
   <footer class="site-footer"><div class="footer-inner"><span>Language Skills Hub <b>E2 / 0.2.1</b></span><span>Bez p&#345;ihl&#225;&#353;en&#237;, analytiky a extern&#237;ch slu&#382;eb. Prototyp neukl&#225;d&#225; odpov&#283;di &#382;&#225;k&#367;.</span></div></footer>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <noscript><p class="no-script">Pro zobrazen&#237; katalogu a sd&#237;len&#237; zapn&#283;te JavaScript.</p></noscript>

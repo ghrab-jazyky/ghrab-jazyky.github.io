@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="cs" data-theme="dark">
 <head>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="LSH TEST">
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
@@ -13,6 +19,7 @@
   <script defer src="assets/lsh/v2/core.js"></script>
   <script defer src="assets/lsh/v2/qr.js"></script>
   <script defer src="assets/lsh/v2/app.js"></script>
+  <script defer src="assets/lsh/v3/pwa.js"></script>
 </head>
 <body data-page="home" data-path="index.html">
   <a class="skip-link" href="#main">P&#345;esko&#269;it na obsah</a>
@@ -39,5 +46,6 @@
 <section class="container utility-row" aria-labelledby="nextTitle"><div><span class="eyebrow">DAL&#352;&#205; N&#193;STROJE</span><h2 id="nextTitle">Odkaz i k&#243;d na jednom m&#237;st&#283;</h2><p>Vlo&#382;te kr&#225;tk&#253; k&#243;d nebo si prohl&#233;dn&#283;te budouc&#237; prostor pro spole&#269;n&#253; slovn&#237;&#269;ek.</p></div><div class="utility-links"><a class="button outline" href="k/">Zadat k&#243;d &#8594;</a><a class="button outline" href="slovnicek/">M&#367;j slovn&#237;&#269;ek &#8594;</a></div></section></main>
   <footer class="site-footer"><div class="footer-inner"><span>Language Skills Hub <b>E2 / 0.2.1</b></span><span>Bez p&#345;ihl&#225;&#353;en&#237;, analytiky a extern&#237;ch slu&#382;eb. Prototyp neukl&#225;d&#225; odpov&#283;di &#382;&#225;k&#367;.</span></div></footer>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="container"><p id="pwaStatus" role="status" aria-live="polite"></p><button id="pwaInstallBtn" class="button outline" type="button" hidden>Nainstalovat testovací aplikaci</button></div>
   <noscript><p class="no-script">Pro zobrazen&#237; katalogu a sd&#237;len&#237; zapn&#283;te JavaScript.</p></noscript>
 </body></html>
