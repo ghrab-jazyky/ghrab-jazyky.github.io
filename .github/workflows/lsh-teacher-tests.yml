@@ -30,3 +30,17 @@ jobs:
         run: |
           ! grep -E '^AUTHORIZED_TEACHERS[[:space:]]*=' teacher-gateway/wrangler.toml
           ! grep -E '^id = "[a-fA-F0-9]{32}"' teacher-gateway/wrangler.toml
+  browser-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install local Chromium and WebKit test engines (CI only)
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Test actual teacher UI against local mocked Access
+        run: node --test teacher-gateway/tests/ui.browser.test.mjs
