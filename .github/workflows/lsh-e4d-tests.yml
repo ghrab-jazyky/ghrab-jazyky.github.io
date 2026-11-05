@@ -7,6 +7,8 @@ on:
     paths:
       - 'zkusebni/tools/reading-nav-v2_2.*'
       - 'zkusebni/tools/patch_nav.py'
+      - 'zkusebni/tools/reading-nav-integrity.cjs'
+      - 'zkusebni/tests/e4d-nav-integrity.test.cjs'
       - 'zkusebni/tests/e4d-nav.browser.test.cjs'
       - 'zkusebni/tests/fixtures/e4d-nav-synthetic.html'
       - '.github/workflows/lsh-e4d-tests.yml'
@@ -26,7 +28,11 @@ jobs:
           python3 -m py_compile zkusebni/tools/patch_nav.py
           node --check zkusebni/tools/reading-nav-v2_2.js
           node --check zkusebni/tests/e4d-nav.browser.test.cjs
+          node --check zkusebni/tools/reading-nav-integrity.cjs
+          node --check zkusebni/tests/e4d-nav-integrity.test.cjs
           ! find zkusebni/cteni -type f \( -iname '*teacher*key*' -o -iname '*ucitel*key*' -o -iname '*plastic*ocean*' -o -iname '*can*mistakes*' \) | grep -q .
+      - name: Source-to-patch data preservation tests
+        run: node --test zkusebni/tests/e4d-nav-integrity.test.cjs
       - name: Install test browsers (CI only)
         run: |
           npm install --no-save --ignore-scripts playwright@1.56.1
