@@ -129,6 +129,30 @@ test('E3D Chromium: denied camera permission is visible, dialog can close', {tim
     assert.equal(await page.locator('#codeInput').isEnabled(),true);
   }finally{await context.close();await browser.close();}
 });
+test('E3D Chromium: simulated working camera decodes QR and opens only the local card', {timeout:90000},async()=>{
+  const browser=await chromium.launch({headless:true,args:[
+    '--use-fake-ui-for-media-stream','--use-fake-device-for-media-stream']});
+  const context=await browser.newContext({permissions:['camera']});
+  try{
+    await context.addInitScript(()=>{
+      class Detector{
+        static async getSupportedFormats(){return ['qr_code'];}
+        async detect(){return [{rawValue:'ZA7C-ENB2'}];}
+      }
+      Object.defineProperty(window,'BarcodeDetector',{configurable:true,value:Detector});
+    });
+    const page=await context.newPage();
+    const errors=[];
+    page.on('pageerror',e=>errors.push(e.message));
+    await page.goto(STAGE+'k/',{waitUntil:'domcontentloaded'});
+    await page.waitForFunction(()=>document.getElementById('openScanner')?.disabled===false,null,{timeout:15000});
+    await page.locator('#openScanner').click();
+    await page.waitForURL(u=>u.pathname==='/zkusebni/konverzace/socialni-media/'&&
+      u.searchParams.get('lang')==='en'&&u.searchParams.get('level')==='B2',{timeout:45000});
+    assert.deepEqual(errors,[],'QR decode page errors: '+errors.join('; '));
+  }finally{await context.close();await browser.close();}
+});
+
 test('E3D WebKit: staged vocabulary add, persistent reload and QR fallback', {timeout:120000},async()=>{
   const browser=await webkit.launch({headless:true});
   const context=await browser.newContext({viewport:{width:390,height:844}});
