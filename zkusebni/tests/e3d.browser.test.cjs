@@ -79,6 +79,14 @@ test('E3D Chromium: scoped PWA registration, offline shell, visited/unvisited ca
     assert.ok(response&&response.ok(),'offline fallback must return readable page');
     assert.equal(response.fromServiceWorker(),true,'offline fallback must come from service worker');
     assert.match(await page.locator('h1').textContent(),/zatím není dostupná offline/);
+    assert.equal(await page.locator('a.crumb').getAttribute('href'),'/zkusebni/');
+    assert.equal(await page.locator('a.button.outline').getAttribute('href'),'/zkusebni/slovnicek/');
+    const styleURL=await page.locator('link[rel="stylesheet"]').getAttribute('href');
+    assert.equal(styleURL,'/zkusebni/assets/lsh/v2/styles.css');
+    await page.waitForFunction(()=>{
+      const link=document.querySelector('link[rel="stylesheet"]');
+      return !!(link&&link.sheet&&link.sheet.cssRules.length>0);
+    },null,{timeout:12000});
     await page.screenshot({path:screenshot('e3d-chromium-offline-fallback.png'),fullPage:true});
     assert.deepEqual(errors,[],'Unexpected browser JS errors: '+errors.join('; '));
   }finally{
