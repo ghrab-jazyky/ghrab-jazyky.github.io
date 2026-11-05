@@ -44,3 +44,16 @@ jobs:
           npx playwright install --with-deps chromium webkit
       - name: Test actual teacher UI against local mocked Access
         run: node --test teacher-gateway/tests/ui.browser.test.mjs
+  bundle-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Cloudflare Wrangler dry-run bundle WITHOUT credentials or deployment
+        run: |
+          npx --yes wrangler@4 deploy --dry-run --config teacher-gateway/wrangler.toml --outdir /tmp/lsh-teacher-gateway
+      - name: Check generated Worker bundle exists
+        run: test -n "$(find /tmp/lsh-teacher-gateway -name '*.js' -type f -print -quit)"
