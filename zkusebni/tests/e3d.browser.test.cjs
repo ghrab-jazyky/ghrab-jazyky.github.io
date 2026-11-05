@@ -1,12 +1,32 @@
 /* E3D: real browser engine smoke tests against local /zkusebni/ HTTP staging.
    Not a substitute for real iPhone/iPad/Android device UAT. */
 'use strict';
-const test=require('node:test');
+const {test,before,after}=require('node:test');
+const http=require('node:http');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
 const {chromium,webkit}=require('playwright');
-const ORIGIN=process.env.LSH_TEST_ORIGIN||'http://127.0.0.1:8765';
+const ORIGIN='http://127.0.0.1:8766';
+const ROOT=path.resolve(__dirname,'../..');
+let networkBlocked=false;
+const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json','.webmanifest':'application/manifest+json','.png':'image/png','.svg':'image/svg+xml'};
+const server=http.createServer((req,res)=>{
+  if(networkBlocked){req.socket.destroy();return;}
+  let pathname;
+  try{pathname=decodeURIComponent(new URL(req.url,ORIGIN).pathname);}catch(_){res.writeHead(400);res.end();return;}
+  if(!pathname.endsWith('/')&&!path.extname(pathname))pathname+='/';
+  if(pathname.endsWith('/'))pathname+='index.html';
+  const file=path.resolve(ROOT,'.'+pathname);
+  if(!file.startsWith(ROOT+path.sep)){res.writeHead(403);res.end();return;}
+  fs.readFile(file,(error,body)=>{
+    if(error){res.writeHead(404);res.end('Not found');return;}
+    res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});
+    res.end(body);
+  });
+});
+before(()=>new Promise((resolve,reject)=>server.once('error',reject).listen(8766,'127.0.0.1',resolve)));
+after(()=>new Promise(resolve=>server.close(resolve)));
 const STAGE=ORIGIN+'/zkusebni/';
 const VISITED=STAGE+'konverzace/ceny-nemovitosti/';
 const NOT_VISITED=STAGE+'konverzace/rodina/';
@@ -45,9 +65,11 @@ test('E3D Chromium: scoped PWA registration, offline shell, visited/unvisited ca
       return !!(await caches.match(location.pathname,{ignoreSearch:true}));
     },null,{timeout:20000});
     await page.screenshot({path:screenshot('e3d-chromium-online-390.png'),fullPage:true});
+    networkBlocked=true;
     await context.setOffline(true);
     response=await page.reload({waitUntil:'domcontentloaded',timeout:30000});
     assert.ok(response&&response.ok(),'cached Conversation card must load offline');
+    assert.equal(response.fromServiceWorker(),true,'offline card must be served by the scoped service worker');
     await page.locator('#lshBridgeVocabularyLink').waitFor({state:'visible'});
     assert.ok((await page.locator('#heroTitle').textContent()).length>5);
     response=await page.goto(STAGE+'slovnicek/',{waitUntil:'domcontentloaded',timeout:30000});
@@ -55,10 +77,12 @@ test('E3D Chromium: scoped PWA registration, offline shell, visited/unvisited ca
     await page.locator('#addWordForm').waitFor({state:'visible'});
     response=await page.goto(NOT_VISITED,{waitUntil:'domcontentloaded',timeout:30000});
     assert.ok(response&&response.ok(),'offline fallback must return readable page');
+    assert.equal(response.fromServiceWorker(),true,'offline fallback must come from service worker');
     assert.match(await page.locator('h1').textContent(),/zatím není dostupná offline/);
     await page.screenshot({path:screenshot('e3d-chromium-offline-fallback.png'),fullPage:true});
     assert.deepEqual(errors,[],'Unexpected browser JS errors: '+errors.join('; '));
   }finally{
+    networkBlocked=false;
     await context.setOffline(false);
     await context.close();
     await browser.close();
