@@ -124,6 +124,17 @@ test('Assessor may receive at most one blind tab per CEFR level',()=>{
  assert.ok(r.issues.some(x=>x.code==='MULTIPLE_TABS_SAME_ASSESSOR_LEVEL'));
  assert.equal(r.status,'INVALID_INPUT');
 });
+test('Assessor who read the article in a with-text case cannot be a blind assessor',()=>{
+ const f=fixture(),lines=f.assignments.trim().split('\n');
+ const blind=lines.findIndex(x=>x.startsWith('blind-en-C1-gist,'));
+ const article=lines.findIndex(x=>x.startsWith('ft-fr-A1,'));
+ assert.ok(blind>0&&article>0);
+ const a=lines[blind].split(','),b=lines[article].split(',');
+ a[1]=b[1].toUpperCase();lines[blind]=a.join(',');
+ const r=assess({...makeArgs(f),assignmentsCSV:lines.join('\n')+'\n'});
+ assert.equal(r.status,'INVALID_INPUT');
+ assert.ok(r.issues.some(x=>x.code==='BLIND_ASSESSOR_SAW_ARTICLE'));
+});
 test('An assessor who saw the article or answer key cannot pass blind policy',()=>{
  const f=fixture(),s=f.assignments.replace(/(blind-en-C1-gist,[^,]+,YES,)NO,NO,NO/,'$1YES,NO,NO');
  assert.notEqual(s,f.assignments);
