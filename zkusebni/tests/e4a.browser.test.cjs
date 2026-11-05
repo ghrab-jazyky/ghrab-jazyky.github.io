@@ -38,10 +38,16 @@ async function exerciseBrowser(engine,name){
   await page.locator('#fixtureSaveAnswer').click();
   await page.waitForFunction(()=>document.querySelector('#fixtureStatus')?.textContent?.includes('Zapsáno do IndexedDB'));
   await page.locator('#fixtureAnswer').fill('second-attempt');
+  await page.locator('#fixtureCheckAnswer').click();
+  await page.waitForFunction(async()=>{
+    const r=await window.E4A_FIXTURE.restoreAnswers({language:'en',level:'B2'});
+    return r.snapshot?.answers?.q1?.firstAttempt==='second-attempt';
+  });
+  await page.locator('#fixtureAnswer').fill('third-attempt');
   await page.locator('#fixtureSaveAnswer').click();
   await page.waitForFunction(async()=>{
     const r=await window.E4A_FIXTURE.restoreAnswers({language:'en',level:'B2'});
-    return r.snapshot?.answers?.q1?.value==='second-attempt';
+    return r.snapshot?.answers?.q1?.value==='third-attempt';
   });
   await page.locator('#fixtureSaveWord').click();
   await page.waitForFunction(async()=>{
@@ -51,7 +57,7 @@ async function exerciseBrowser(engine,name){
   });
   await page.reload({waitUntil:'domcontentloaded'});
   await page.locator('#fixtureRestoreAnswer').click();
-  await page.waitForFunction(()=>document.querySelector('#fixtureAnswer')?.value==='second-attempt');
+  await page.waitForFunction(()=>document.querySelector('#fixtureAnswer')?.value==='third-attempt');
   const result=await page.evaluate(async()=>{
    const a=await window.E4A_FIXTURE.restoreAnswers({language:'en',level:'B2'});
    const other=await window.E4A_FIXTURE.restoreAnswers({language:'es',level:'B2'});
@@ -59,7 +65,7 @@ async function exerciseBrowser(engine,name){
    const words=await store.listWords();store.close();
    return{first:a.snapshot.answers.q1.firstAttempt,other:other.snapshot,words};
   });
-  assert.equal(result.first,'first-attempt');
+  assert.equal(result.first,'second-attempt');
   assert.equal(result.other,null);
   assert.ok(result.words.some(x=>x.term==='horizon'&&x.sources.some(s=>s.skill==='cteni')));
   await page.goto(ORIGIN+'/zkusebni/slovnicek/',{waitUntil:'domcontentloaded'});
