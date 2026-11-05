@@ -1,0 +1,2635 @@
+{
+  "schemaVersion": 1,
+  "manifestVersion": "0.2.1-e2-review-candidate",
+  "environment": "staging",
+  "demoOnly": false,
+  "generatedAt": "2026-11-05T09:10:00Z",
+  "topics": [
+    {
+      "id": "cl-socialni-media",
+      "legacyId": "socialni_media",
+      "skill": "konverzace",
+      "slug": "socialni-media",
+      "shortCode": "ZA7C",
+      "title": "Sociální média",
+      "summary": "Sociální sítě, jejich funkce a dopad na každodenní život.",
+      "category": "digital",
+      "tags": [
+        "digital",
+        "konverzace",
+        "CEFR",
+        "Sociální média"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/socialni-media/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-hrani-her",
+      "legacyId": "hrani_her",
+      "skill": "konverzace",
+      "slug": "hrani-her",
+      "shortCode": "WBF3",
+      "title": "Hraní počítačových her",
+      "summary": "Hry, jejich přínosy i rizika pro tělo a psychiku.",
+      "category": "digital",
+      "tags": [
+        "digital",
+        "konverzace",
+        "CEFR",
+        "Hraní počítačových her"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/hrani-her/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-umela-inteligence",
+      "legacyId": "umela_inteligence",
+      "skill": "konverzace",
+      "slug": "umela-inteligence",
+      "shortCode": "RR44",
+      "title": "Umělá inteligence",
+      "summary": "Možnosti, rizika a etické otázky umělé inteligence.",
+      "category": "digital",
+      "tags": [
+        "digital",
+        "konverzace",
+        "CEFR",
+        "Umělá inteligence"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/umela-inteligence/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-zivot-bez-ai",
+      "legacyId": "zivot_bez_ai",
+      "skill": "konverzace",
+      "slug": "zivot-bez-ai",
+      "shortCode": "33A3",
+      "title": "Život bez AI",
+      "summary": "Život bez umělé inteligence a naše závislost na technologiích.",
+      "category": "digital",
+      "tags": [
+        "digital",
+        "konverzace",
+        "CEFR",
+        "Život bez AI"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/zivot-bez-ai/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-socialni-site-a-dusevni-zdravi",
+      "legacyId": "socialni_site_a_dusevni_zdravi",
+      "skill": "konverzace",
+      "slug": "socialni-site-a-dusevni-zdravi",
+      "shortCode": "KXBZ",
+      "title": "Sociální sítě a duševní zdraví",
+      "summary": "Digitální návyky, pohoda a psychické zdraví mladých.",
+      "category": "digital",
+      "tags": [
+        "digital",
+        "konverzace",
+        "CEFR",
+        "Sociální sítě a duševní zdraví"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/socialni-site-a-dusevni-zdravi/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-skola",
+      "legacyId": "skola",
+      "skill": "konverzace",
+      "slug": "skola",
+      "shortCode": "ZRGC",
+      "title": "Škola",
+      "summary": "Školní život, učení a možnosti vzdělávání.",
+      "category": "learning",
+      "tags": [
+        "learning",
+        "konverzace",
+        "CEFR",
+        "Škola"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/skola/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-jak-se-ucit-na-testy",
+      "legacyId": "jak_se_ucit_na_testy",
+      "skill": "konverzace",
+      "slug": "jak-se-ucit-na-testy",
+      "shortCode": "VJAE",
+      "title": "Jak se učit na testy",
+      "summary": "Učení, efektivní příprava a zvládání zkoušek.",
+      "category": "learning",
+      "tags": [
+        "learning",
+        "konverzace",
+        "CEFR",
+        "Jak se učit na testy"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/jak-se-ucit-na-testy/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-tlak-na-vykon",
+      "legacyId": "tlak_na_vykon",
+      "skill": "konverzace",
+      "slug": "tlak-na-vykon",
+      "shortCode": "FQMB",
+      "title": "Tlak na výkon",
+      "summary": "Ambice, stres a úspěch ve škole i životě.",
+      "category": "learning",
+      "tags": [
+        "learning",
+        "konverzace",
+        "CEFR",
+        "Tlak na výkon"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/tlak-na-vykon/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-pratele",
+      "legacyId": "pratele",
+      "skill": "konverzace",
+      "slug": "pratele",
+      "shortCode": "5WWK",
+      "title": "Přátelé a přátelství",
+      "summary": "Důvěra, blízkost, konflikty a mezilidské vztahy.",
+      "category": "life",
+      "tags": [
+        "life",
+        "konverzace",
+        "CEFR",
+        "Přátelé a přátelství"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/pratele/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-rodina",
+      "legacyId": "rodina",
+      "skill": "konverzace",
+      "slug": "rodina",
+      "shortCode": "D9FE",
+      "title": "Rodina",
+      "summary": "Rodinné vztahy, tradice a společné soužití.",
+      "category": "life",
+      "tags": [
+        "life",
+        "konverzace",
+        "CEFR",
+        "Rodina"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/rodina/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-problemy-teenageru",
+      "legacyId": "problemy_teenageru",
+      "skill": "konverzace",
+      "slug": "problemy-teenageru",
+      "shortCode": "XUN9",
+      "title": "Problémy teenagerů",
+      "summary": "Dospívání, rozhodování a tlak okolí.",
+      "category": "society",
+      "tags": [
+        "society",
+        "konverzace",
+        "CEFR",
+        "Problémy teenagerů"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/problemy-teenageru/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-muzi-a-zeny",
+      "legacyId": "muzi_a_zeny",
+      "skill": "konverzace",
+      "slug": "muzi-a-zeny",
+      "shortCode": "FMQJ",
+      "title": "Muži a ženy",
+      "summary": "Stereotypy, rovnost a očekávání společnosti.",
+      "category": "society",
+      "tags": [
+        "society",
+        "konverzace",
+        "CEFR",
+        "Muži a ženy"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/muzi-a-zeny/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-spolecenske-problemy",
+      "legacyId": "spolecenske_problemy",
+      "skill": "konverzace",
+      "slug": "spolecenske-problemy",
+      "shortCode": "PTVG",
+      "title": "Společenské problémy",
+      "summary": "Aktuální problémy společnosti a hledání řešení.",
+      "category": "society",
+      "tags": [
+        "society",
+        "konverzace",
+        "CEFR",
+        "Společenské problémy"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/spolecenske-problemy/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-majetkove-nerovnosti",
+      "legacyId": "majetkove_nerovnosti",
+      "skill": "konverzace",
+      "slug": "majetkove-nerovnosti",
+      "shortCode": "8XDK",
+      "title": "Majetkové nerovnosti",
+      "summary": "Bohatství, chudoba a spravedlivé příležitosti.",
+      "category": "society",
+      "tags": [
+        "society",
+        "konverzace",
+        "CEFR",
+        "Majetkové nerovnosti"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/majetkove-nerovnosti/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-volny-cas-a-konicky",
+      "legacyId": "volny_cas_a_konicky",
+      "skill": "konverzace",
+      "slug": "volny-cas-a-konicky",
+      "shortCode": "DFA2",
+      "title": "Volný čas a koníčky",
+      "summary": "Zájmy, odpočinek a rovnováha každodenního života.",
+      "category": "life",
+      "tags": [
+        "life",
+        "konverzace",
+        "CEFR",
+        "Volný čas a koníčky"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/volny-cas-a-konicky/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-prazdniny",
+      "legacyId": "prazdniny",
+      "skill": "konverzace",
+      "slug": "prazdniny",
+      "shortCode": "HM5B",
+      "title": "Prázdniny a cestování",
+      "summary": "Odpočinek, cestování a zážitky mimo školu.",
+      "category": "life",
+      "tags": [
+        "life",
+        "konverzace",
+        "CEFR",
+        "Prázdniny a cestování"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/prazdniny/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-jidlo-piti-restaurace",
+      "legacyId": "jidlo_piti_restaurace",
+      "skill": "konverzace",
+      "slug": "jidlo-piti-restaurace",
+      "shortCode": "VDGP",
+      "title": "Jídlo, pití a restaurace",
+      "summary": "Stravování, stolování a každodenní volby.",
+      "category": "life",
+      "tags": [
+        "life",
+        "konverzace",
+        "CEFR",
+        "Jídlo, pití a restaurace"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/jidlo-piti-restaurace/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-nemoci-u-lekare",
+      "legacyId": "nemoci_u_lekare",
+      "skill": "konverzace",
+      "slug": "nemoci-u-lekare",
+      "shortCode": "VZ6H",
+      "title": "Nemoci a návštěva lékaře",
+      "summary": "Zdraví, komunikace s lékařem a pomoc druhým.",
+      "category": "life",
+      "tags": [
+        "life",
+        "konverzace",
+        "CEFR",
+        "Nemoci a návštěva lékaře"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/nemoci-u-lekare/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-vanoce",
+      "legacyId": "vanoce",
+      "skill": "konverzace",
+      "slug": "vanoce",
+      "shortCode": "5RBK",
+      "title": "Vánoce",
+      "summary": "Vánoční tradice, hodnoty a oslavy v různých kulturách.",
+      "category": "life",
+      "tags": [
+        "life",
+        "konverzace",
+        "CEFR",
+        "Vánoce"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-03-clb-pilot",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/vanoce/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-svetova-politika",
+      "legacyId": "svetova_politika",
+      "skill": "konverzace",
+      "slug": "svetova-politika",
+      "shortCode": "8MHH",
+      "title": "Světová politika",
+      "summary": "Politika, mír, společenská odpovědnost a hlas mladých lidí.",
+      "category": "society",
+      "tags": [
+        "society",
+        "konverzace",
+        "CEFR",
+        "Světová politika"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-05-user-html",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/svetova-politika/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "cl-ceny-nemovitosti",
+      "legacyId": "ceny_nemovitosti",
+      "skill": "konverzace",
+      "slug": "ceny-nemovitosti",
+      "shortCode": "F68Q",
+      "title": "Ceny nemovitostí u nás a v zahraničí",
+      "summary": "Bydlení, nájmy, ceny a dostupnost domova v Česku a zahraničí. Ukázkové ceny jsou fiktivní.",
+      "category": "society",
+      "tags": [
+        "society",
+        "konverzace",
+        "CEFR",
+        "Ceny nemovitostí u nás a v zahraničí"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        },
+        {
+          "lang": "en",
+          "level": "C1"
+        },
+        {
+          "lang": "en",
+          "level": "C2"
+        },
+        {
+          "lang": "es",
+          "level": "A1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "es",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "B2"
+        },
+        {
+          "lang": "es",
+          "level": "C1"
+        },
+        {
+          "lang": "es",
+          "level": "C2"
+        },
+        {
+          "lang": "de",
+          "level": "A1"
+        },
+        {
+          "lang": "de",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "de",
+          "level": "B2"
+        },
+        {
+          "lang": "de",
+          "level": "C1"
+        },
+        {
+          "lang": "de",
+          "level": "C2"
+        },
+        {
+          "lang": "fr",
+          "level": "A1"
+        },
+        {
+          "lang": "fr",
+          "level": "A2"
+        },
+        {
+          "lang": "fr",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        },
+        {
+          "lang": "fr",
+          "level": "C1"
+        },
+        {
+          "lang": "fr",
+          "level": "C2"
+        }
+      ],
+      "defaultLevel": "B1",
+      "durationMinutes": 45,
+      "version": "2026-11-05-user-html",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
+      "demo": false,
+      "cardPath": "konverzace/ceny-nemovitosti/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null
+    },
+    {
+      "id": "demo-muzeum-niva",
+      "skill": "cteni",
+      "slug": "muzeum-niva",
+      "shortCode": "P8R4",
+      "title": "Zpráva z fiktivního muzea Niva",
+      "summary": "Ukázka rozhraní čtení; text není schválenou čtecí kartou.",
+      "tags": [
+        "demo",
+        "fiktivní",
+        "zpráva"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        }
+      ],
+      "defaultLevel": "A2",
+      "durationMinutes": 3,
+      "version": "0.1.0-demo",
+      "publishedAt": "2026-11-04T18:00:00Z",
+      "status": "PUBLIKOVANO",
+      "demo": true,
+      "cardPath": "cteni/muzeum-niva/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null,
+      "demoContent": {
+        "en:A2": {
+          "heading": "A message from Niva",
+          "text": "This is a sample message about a museum that does not exist. There are no test questions in E1."
+        },
+        "en:B2": {
+          "heading": "The Niva museum project",
+          "text": "Imagine a fictional town preparing an exhibition. This placeholder checks language and level routing only."
+        }
+      }
+    }
+  ],
+  "releaseStatus": "E2_CANDIDATE_NOT_APPROVED_FOR_PUBLICATION"
+}
