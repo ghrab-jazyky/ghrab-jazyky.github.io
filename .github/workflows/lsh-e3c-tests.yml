@@ -1,0 +1,25 @@
+name: LSH E3C regression (no deployment)
+on:
+  push:
+    branches:
+      - feat/lsh-e3c-conversation-bridge-2026-11-05
+  pull_request:
+    paths:
+      - 'zkusebni/**'
+      - '.github/workflows/lsh-e3c-tests.yml'
+permissions:
+  contents: read
+jobs:
+  source-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate E3A model and storage
+        run: node --test zkusebni/tests/e3a.test.cjs
+      - name: Validate E3B vocabulary interface
+        run: node --test zkusebni/tests/e3b.static.test.cjs
+      - name: Audit E3C 21 cards, 504 variants, 6048 vocabulary entries and CSP
+        run: node --test zkusebni/tests/e3c.test.cjs

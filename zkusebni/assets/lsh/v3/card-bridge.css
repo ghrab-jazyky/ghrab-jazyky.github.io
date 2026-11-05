@@ -1,0 +1,17 @@
+/* Conversation Lab E3C bridge; local stylesheet permitted by card CSP. */
+.lsh-bridge-link{white-space:nowrap;display:inline-flex;align-items:center;min-height:44px}
+.lsh-bridge-save{display:inline-flex;align-items:center;justify-content:center;gap:5px;
+ min-height:44px;min-width:44px;max-width:100%;padding:9px 12px;margin-top:10px;
+ border:1px solid var(--accent);border-radius:10px;background:var(--panel2);
+ color:var(--text);font:700 .82rem/1.3 system-ui,sans-serif;
+ text-align:center;cursor:pointer;touch-action:manipulation}
+.lsh-bridge-save:hover{background:var(--panel);border-color:var(--good)}
+.lsh-bridge-save:disabled{opacity:.5;cursor:wait}
+.lsh-bridge-save:focus-visible,.lsh-bridge-link:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.lsh-bridge-status{padding:11px 13px;margin-bottom:12px;border:1px solid var(--good);
+ border-radius:12px;background:var(--panel);font-size:.85rem;font-weight:730;color:var(--text)}
+.lsh-bridge-status.lsh-bridge-error{border-color:var(--warn)}
+.lsh-bridge-itemstatus{display:block;margin-top:6px;font-size:.75rem;line-height:1.35;color:var(--muted)}
+.lsh-bridge-popstatus{margin:6px 0 0;font-size:.77rem;line-height:1.4;color:var(--muted)}
+.lookup-popover .lsh-bridge-save{width:100%;margin:12px 0 0}
+@media print{.lsh-bridge-save,.lsh-bridge-link,.lsh-bridge-status,.lsh-bridge-itemstatus,.lsh-bridge-popstatus{display:none!important}}

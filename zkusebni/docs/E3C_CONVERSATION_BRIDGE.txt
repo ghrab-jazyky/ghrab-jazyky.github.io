@@ -1,0 +1,73 @@
+LANGUAGE SKILLS HUB — ETAPA E3C: NAPOJENI CONVERSATION LAB NA MUJ SLOVNICEK
+Datum: 2026-11-05 | Verze: E3C-kandidat | Stav: DRAFT / NEPUBLIKOVAT
+
+VYCHODISKO
+Vetev E3C vychazi z E3B commitu 633393f. Predchozi PR zustavaji draft.
+Vsechny zdrojove karty pro zkušebni E2: 21 temat / 504 variant /
+6048 doporucenych slovnich polozek. Struktura kazde varianty overena
+z originalniho JSON bloku CONTENT, 0 polozek mimo ocekavany datovy model.
+
+CO JE IMPLEMENTOVANO V /zkusebni/
+1. assets/lsh/v3/card-bridge.js — sdileny E3C modul pro konverzacni karty:
+   - ulozeni z doporuceneho seznamu #vocabGrid;
+   - ulozeni z offline prekladoveho okna #lookupPopover, vcetne vety;
+   - zdroj konverzace + kanonicke ID tematu, aktualni jazyk a uroven;
+   - automaticke pridani tlacitek po prepnuti urovne/jazyka;
+   - odkaz na Muj slovnicek s poctem slov aktualizovanym z IndexedDB;
+   - upozorneni pri nedostupnem ulozisti: NIKDY nehlasi trvale ulozeni;
+   - bez pripojeni, analytiky, AI API a serveroveho odesilani dat.
+2. assets/lsh/v3/card-bridge.css — lokalni CSS pro integrovana tlacitka.
+3. 21 x zkusebni/konverzace/{slug}/index.html — vzdy pouze:
+   - data-lsh-topic-id v <html>;
+   - rozsireni style-src o 'self' pro CSS;
+   - link na lokalni card-bridge.css;
+   - tri defer skripty model.js, store.js, card-bridge.js.
+   Interni skript, obsah, 24 variant a jeho CSP sha256 zůstavaji beze zmeny.
+4. slovnicek/index.html a assets/lsh/v3/vocab.js:
+   - whitelistovany navrat ze slovnicku na puvodni kartu pres ?zpet=...
+   - jine domény a neplatne cesty nelze pouzit jako presmerovani.
+5. tests/e3c.patch.cjs — deterministicka patchovaci funkce pro audit.
+6. tests/e3c.test.cjs — Node testy vsech 21 HTML, CSP a vsech
+   6048 doporucenych hesel, senseId i slouceni.
+7. .github/workflows/lsh-e3c-tests.yml — CI pro vykonani testu bez deploye.
+
+SENSE ID — DULEZITE OMEZENI
+Kanonicke ID se tvoří deterministicky ze (jazyk, normalizovany vyraz,
+jednoznacny cesky preklad) nebo (jazyk, vyraz, vyklad cilovym jazykem).
+Dva odlisne vyznamy stejneho slova tak mohou mit odlisne identifikatory.
+Je-li cesky glosar mnohoznačný (strednik, lomitko, oddelovaci carka),
+doporucene slovicko NEPREBIRA automaticky vsechny preklady.
+Pri shodnem a jednoznacnem vyznamu se preklad a vyklad slouci.
+Toto je BEZPECNA PROVIZORNI IDENTIFIKACE, nikoli autorsky schvaleny
+nemenny lexikograficky registr. Zmena prekladu/vykladu muze zmenit
+senseId. Pred ostrym E3 vydanim je nutny redakcni audit a pripadna
+migrace starych ID; do te doby testovaci DB lsh-test.
+
+VERIFIKACE A UAT
+- Potvrzena struktura 21/21, 504 variant, 6048 slov: staticky PASS.
+- 21 HTML patchu vytvoreno ze SHA-originalu, interní skripty zachovany.
+- Node testy vlozeny; vysledek CI vyhodnotit az z provereneho behu.
+- Reálné klikani, mobilni interakce, IndexedDB a kopie dat po restartu:
+  zatim NOT_TESTED. Prvni manualni UAT:
+  (1) otevrit kartu v EN/B2 -> doporucene slovo -> Ulozit;
+  (2) otevrit popup offline slovniku -> Ulozit;
+  (3) zmenit jazyk na ES a uroven A2 -> oba typy tlacitek;
+  (4) otevrit Muj slovnicek a zpet -> spravna karta;
+  (5) vypnout site po nacteni -> data zustavaji v local IDB;
+  (6) otevrit druhou zalozku -> pocet slov aktualizovan;
+  (7) odmitnuti IndexedDB v soukromem rezimu -> vyslovna varovani;
+  (8) export do JSON -> kontrola zachovani po zavreni a novem otevreni;
+  (9) otestovat iOS Safari a Android, klavesnici, s iPadOS QR;
+ (10) zadny poskozeny vyklad ani potvrzeni 'ulozeno' pri selhani.
+
+CO NENI HOTOVO
+- PWA, iPhone instalace/prenos, kamera a skenovani QR (E3D).
+- Kompletní pedagogicky/lexikograficky audit senseId.
+- Reading/Listening odpovedi a slovnicek v kartach (E4/E5).
+- Zadne nasazeni do main ani live Cloudflare; main root obsahuje
+  drive nahrane rozpracovane E2 karty a ma spatnou testovaci basePath;
+  tato stage to neupravuje bez GO publikace.
+
+GO/NO-GO: implementacni kandidát E3C = READY FOR REVIEW,
+         produkce = NO-GO (browser UAT a senseId redakcni schvaleni chybi).
+Navrat: neprovadet merge; lze smazat pracovni vetev / zavrit PR.

@@ -320,9 +320,26 @@
       $('practiceRating').hidden=false;
     }
   }
+  function setupReturnLink() {
+    const params=new URLSearchParams(location.search);
+    if(params.getAll('zpet').length!==1)return;
+    const raw=params.get('zpet');
+    try {
+      const target=new URL(raw,location.origin);
+      const prefix=config.basePath+'konverzace/';
+      const suffix=target.pathname.startsWith(prefix)?target.pathname.slice(prefix.length):'';
+      if(target.origin!==location.origin||target.username||target.password||
+         !/^[a-z0-9]+(?:-[a-z0-9]+)*\/$/.test(suffix)||
+         target.search||target.hash)return;
+      const back=$('backToCard');
+      back.href=target.href;
+      back.hidden=false;
+    } catch (_) { /* Untrusted or invalid return URLs are ignored. */ }
+  }
   async function init() {
     if(!M||!S||!config||!['staging','production'].includes(config.mode))
       throw new Error('Chybějící datový modul nebo režim');
+    setupReturnLink();
     theme();
     store=S.createStore({mode:config.mode});
     await store.open();
