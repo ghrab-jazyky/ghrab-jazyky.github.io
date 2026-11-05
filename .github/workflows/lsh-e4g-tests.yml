@@ -1,0 +1,29 @@
+name: LSH E4G secure private QA collection gate (synthetic)
+on:
+  push:
+    branches:
+      - feat/lsh-e4g-qa-collection-hardening-2026-11-05
+  pull_request:
+    paths:
+      - 'zkusebni/tools/e4g-collection-gate.cjs'
+      - 'zkusebni/tests/e4g-collection-gate.test.cjs'
+      - '.github/workflows/lsh-e4g-tests.yml'
+permissions:
+  contents: read
+jobs:
+  fail-closed-gate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Node syntax
+        run: |
+          node --check zkusebni/tools/e4g-collection-gate.cjs
+          node --check zkusebni/tests/e4g-collection-gate.test.cjs
+      - name: Synthetic 80-case integrity negative regression
+        run: node --test zkusebni/tests/e4g-collection-gate.test.cjs
+      - name: Ensure no actual Reading cards or teacher keys in public branch
+        run: |
+          ! find zkusebni/cteni -type f \( -iname '*teacher*key*' -o -iname '*ucitel*key*' -o -iname '*plastic*ocean*' -o -iname '*can*mistakes*' \) | grep -q .
