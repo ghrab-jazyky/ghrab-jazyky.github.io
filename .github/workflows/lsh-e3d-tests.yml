@@ -31,16 +31,8 @@ jobs:
         run: |
           npm install --no-save --ignore-scripts playwright@1.56.1
           npx playwright install --with-deps chromium webkit
-      - name: Run Chromium and WebKit against isolated local staging
-        run: |
-          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-e3d-http.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill $SERVER_PID' EXIT
-          for i in $(seq 1 30); do
-            if curl --silent --fail http://127.0.0.1:8765/zkusebni/ >/dev/null; then break; fi
-            sleep 1
-          done
-          node --test zkusebni/tests/e3d.browser.test.cjs
+      - name: Run Chromium and WebKit against an isolated self-hosted HTTP fixture
+        run: node --test zkusebni/tests/e3d.browser.test.cjs
       - name: Preserve browser screenshots
         if: always()
         uses: actions/upload-artifact@v4
