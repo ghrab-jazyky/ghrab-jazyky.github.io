@@ -61,7 +61,7 @@ function safeTopics(){
     t&&SKILLS.has(t.skill)&&ID_RE.test(t.id)&&ID_RE.test(t.slug)&&
     PATH_RE.test(t.cardPath)&&t.cardPath===t.skill+'/'+t.slug+'/'&&
     Array.isArray(t.variants)&&t.variants.length>0&&t.variants.length<=24&&
-    typeof t.shortCode==='string'&&/^[A-Z2-9]{4}$/.test(t.shortCode)
+    typeof t.shortCode==='string'&&/^[A-HJ-NP-Z2-9]{4}$/.test(t.shortCode)
   ).map(t=>({
     id:t.id,skill:t.skill,slug:t.slug,cardPath:t.cardPath,
     title:t.title,summary:t.summary,status:t.status,version:t.version,
@@ -95,7 +95,8 @@ async function handle(request,env,ctx){
       topics:safeTopics()
     }),200,'application/json; charset=utf-8');
   }else if(path.startsWith('/teacher/api/key/')){
-    const id=decodeURIComponent(path.slice('/teacher/api/key/'.length));
+    let id;
+    try{id=decodeURIComponent(path.slice('/teacher/api/key/'.length));}catch{return error(404);}
     if(!ID_RE.test(id))return error(404);
     const topic=safeTopics().find(t=>t.id===id&&t.teacherKeyAvailable);
     if(!topic||typeof env?.TEACHER_KEYS?.get!=='function')return error(404);
