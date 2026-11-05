@@ -102,12 +102,15 @@ function audit(html,source='input.html'){
     }
    }
   }
+  const tabPatterns=new Map();
   for(const [tab,qs] of Object.entries(byTab)){
    if(qs.length!==3)mark('critical','tasks-per-tab',variant,tab+' has '+qs.length+' tasks instead of 3');
    if(qs.length===3){
     const seq=qs.map(q=>q.answer).join(',');
     if(seq==='0,1,2'||seq==='1,2,3')mark('high','predictable-answer-order',variant,tab);
     if(qs.every(q=>q.answer===qs[0].answer))mark('high','all-same-position',variant,tab);
+    if(tabPatterns.has(seq))mark('high','duplicate-answer-pattern',variant,tab+' repeats '+tabPatterns.get(seq));
+    else tabPatterns.set(seq,tab);
    }
   }
   const positionSuccess=questions.reduce((s,q)=>s+(q.answer===byTab[q.tab]?.indexOf(q)),0)/Math.max(questions.length,1);
