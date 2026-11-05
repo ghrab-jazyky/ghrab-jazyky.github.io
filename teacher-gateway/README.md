@@ -34,7 +34,9 @@ učitelskou autentizací.
    bude bezpečně vracet **403** i po nasazení.
 3. Nastavit Worker secret `AUTHORIZED_TEACHERS` jako seznam
    emailů po školení oddělených čárkou. **NIKDY** nezapisovat
-   seznam do verzovaného `wrangler.toml`. Do budoucna nahradit
+   seznam do verzovaného `wrangler.toml`. Z rootu repozitáře jej lze zadat příkazem
+   `npx wrangler secret put AUTHORIZED_TEACHERS --config teacher-gateway/wrangler.toml`.
+   Do budoucna nahradit
    allowlist správou skupin s jasnou revokací přístupu.
 4. `STUDENT_BASE_URL` před ostrým spuštěním přepnout ze
    zkušební GitHub Pages cesty na schválenou veřejnou Cloudflare
