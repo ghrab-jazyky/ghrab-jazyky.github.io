@@ -17,7 +17,7 @@ function fixture(){
    const questions=[];let i=0;
    for(const tab of tabs)for(let n=0;n<3;n++){
     const count=['A1','A2','B1'].includes(level)?3:4;
-    questions.push({id:lang+'-'+level.toLowerCase()+'-'+String(++i).padStart(2,'0'),tab:tab.id,
+    questions.push({id:lang+'-'+level.toLowerCase()+'-'+tab.id+'-'+String(n+1),tab:tab.id,
       choices:Array.from({length:count},(_,j)=>'fictional option '+j),answer:i%count,q:'Synthetic question'});
    }
    data[lang][level]={title:'Completely fictional card',paragraphs:[
