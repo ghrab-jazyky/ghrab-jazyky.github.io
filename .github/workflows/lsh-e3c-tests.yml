@@ -23,3 +23,24 @@ jobs:
         run: node --test zkusebni/tests/e3b.static.test.cjs
       - name: Audit E3C 21 cards, 504 variants, 6048 vocabulary entries and CSP
         run: node --test zkusebni/tests/e3c.test.cjs
+      - name: Install Chromium smoke-test tooling (CI only)
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Run real headless Chromium smoke tests against local staging files
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-e3c-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:8765/zkusebni/ >/dev/null; then break; fi
+            sleep 1
+          done
+          node --test zkusebni/tests/e3c.browser.test.cjs
+      - name: Preserve QA screenshots (no deployment)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-e3c-chromium-qa
+          path: qa/*.png
+          if-no-files-found: warn
