@@ -155,8 +155,11 @@ function assess({studentHTML,manifest,blindCSV,withTextCSV,assignmentsCSV=null,p
       const present=c.items.every(key=>src.includes(spec.rows.get(key).questionId+' | '));
       if(!present){problem('PACKET_QUESTION_MISSING',id);continue;}
       if(c.mode==='blind'){
-        const actualIds=[...src.matchAll(/\b(?:en|es|de|fr)-(?:c1|c2)-\d\d\s*\|/gi)].length;
-        if(actualIds!==3){problem('PACKET_SCOPE',id);continue;}
+        const actualIds=[...src.matchAll(/^\s*((?:en|es|de|fr)-(?:c1|c2)-[a-z0-9-]+)\s*\|/gim)].map(m=>m[1]);
+        const wanted=c.items.map(key=>spec.rows.get(key).questionId);
+        if(actualIds.length!==wanted.length||actualIds.slice().sort().join('|')!==wanted.slice().sort().join('|')){
+          problem('PACKET_SCOPE',id);continue;
+        }
         const variant=data[c.lang][c.level];
         if(variant.paragraphs.some(text=>text.length>90&&src.includes(text))){
           problem('BLIND_ARTICLE_LEAK',id);continue;
