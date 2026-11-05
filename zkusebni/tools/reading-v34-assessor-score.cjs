@@ -120,7 +120,7 @@ function assess({studentHTML,manifest,blindCSV,withTextCSV,assignmentsCSV=null,p
   // Assignment attestations are self-reported and NEVER certify true independence.
   let assignmentStatus='NOT_PROVIDED',assignmentCoverage=0;
   if(assignmentsCSV!==null){
-    const arows=csvRows(assignmentsCSV,ASSIGN_HEADER,'assignments'),aliases=new Map(),found=new Set();
+    const arows=csvRows(assignmentsCSV,ASSIGN_HEADER,'assignments'),aliases=new Map(),found=new Set(),blindAliases=new Set(),fullTextAliases=new Set();
     for(const row of arows){
       const [id,alias,isolated,sawArticle,sawKey,otherTabs,cefrDone,notesDone]=row;
       if(!spec.cases.has(id)){problem('UNKNOWN_ASSIGNEE_CASE',id);continue;}
@@ -134,13 +134,17 @@ function assess({studentHTML,manifest,blindCSV,withTextCSV,assignmentsCSV=null,p
         (c.mode==='blind'?sawArticle==='NO'&&otherTabs==='NO':
           sawArticle==='YES'&&cefrDone==='YES'));
       if(!policy){problem('ASSIGNMENT_POLICY',id);continue;}
+      const normalizedAlias=alias.toLowerCase();
       if(c.mode==='blind'){
-        const k=alias+'|'+c.level;
+        blindAliases.add(normalizedAlias);
+        const k=normalizedAlias+'|'+c.level;
         if(aliases.has(k))problem('MULTIPLE_TABS_SAME_ASSESSOR_LEVEL',id+' conflicts '+aliases.get(k));
         else aliases.set(k,id);
-      }
+      }else fullTextAliases.add(normalizedAlias);
       assignmentCoverage++;
     }
+    for(const alias of blindAliases)if(fullTextAliases.has(alias))
+      problem('BLIND_ASSESSOR_SAW_ARTICLE','Assessor alias '+alias+' is assigned to both BLIND and WITH-TEXT cases; all that assessor\'s blind results are invalid');
     for(const id of spec.cases.keys())if(!found.has(id))problem('MISSING_ASSIGNMENT_ROW',id);
     assignmentStatus=assignmentCoverage===80?'SELF_DECLARED_ALL_CASES':'NOT_YET_DECLARED';
   }
