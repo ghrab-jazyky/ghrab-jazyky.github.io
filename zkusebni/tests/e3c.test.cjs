@@ -95,9 +95,9 @@ test('semantic identity never merges distinct homonyms when glossary is ambiguou
 });
 test('dictionary and recommended glossary words with one unambiguous translation merge safely',()=>{
   const g={words:{en:{affordable:'cenově dostupný'}}},topicId='cl-ceny-nemovitosti';
-  const a=BRIDGE.makeEntry({language:'en',level:'B2',topicId:g.topicId,
+  const a=BRIDGE.makeEntry({language:'en',level:'B2',topicId,
     term:'affordable',explanation:'not too expensive'},g,'recommended');
-  const b=BRIDGE.makeEntry({language:'en',level:'B2',topicId:g.topicId,
+  const b=BRIDGE.makeEntry({language:'en',level:'B2',topicId,
     term:'affordable',translationCs:'cenově dostupný'},g,'dictionary');
   assert.equal(a.senseId,b.senseId);
   const combined=MODEL.mergeWords(MODEL.normalizeWord(a,NOW),MODEL.normalizeWord(b,NOW),NOW);
