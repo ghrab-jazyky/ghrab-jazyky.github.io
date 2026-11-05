@@ -1,0 +1,30 @@
+name: LSH E4E independent Reading QA intake (synthetic only)
+on:
+  push:
+    branches:
+      - feat/lsh-e4e-independent-qa-validation-2026-11-05
+  pull_request:
+    paths:
+      - 'zkusebni/tools/reading-v34-assessor-score.cjs'
+      - 'zkusebni/tests/e4e-assessor-score.test.cjs'
+      - '.github/workflows/lsh-e4e-tests.yml'
+permissions:
+  contents: read
+jobs:
+  qa-intake:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify source/checker syntax
+        run: |
+          node --check zkusebni/tools/reading-v34-assessor-score.cjs
+          node --check zkusebni/tests/e4e-assessor-score.test.cjs
+      - name: Test adversarial incomplete assessor cases (synthetic only)
+        run: node --test zkusebni/tests/e4e-assessor-score.test.cjs
+      - name: Verify no private Reading content entered public tree
+        run: |
+          ! find zkusebni/cteni -type f \( -iname '*teacher*key*' -o -iname '*ucitel*key*' -o -iname '*plastic*ocean*' -o -iname '*can*mistakes*' \) | grep -q .
