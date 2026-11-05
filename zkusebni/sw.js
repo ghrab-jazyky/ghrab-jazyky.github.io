@@ -1,7 +1,7 @@
 /* LSH E3D: restricted /zkusebni/ shell cache. No user data or remote URLs. */
 'use strict';
 const CACHE_PREFIX='lsh-e3d-shell-';
-const CACHE_NAME=CACHE_PREFIX+'2026-11-05-v1';
+const CACHE_NAME=CACHE_PREFIX+'2026-11-05-v2';
 const BASE=new URL(self.registration.scope);
 const SHELL=[
   '', 'index.html', 'offline.html', 'manifest.webmanifest',
