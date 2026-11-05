@@ -1,0 +1,27 @@
+name: LSH E4B Reading v3.4 source preflight (no deployment)
+on:
+  push:
+    branches:
+      - feat/lsh-e4b-reading-v34-preflight-2026-11-05
+  pull_request:
+    paths:
+      - 'zkusebni/tools/reading-v34-preflight.cjs'
+      - 'zkusebni/tests/e4b.test.cjs'
+      - '.github/workflows/lsh-e4b-tests.yml'
+permissions:
+  contents: read
+jobs:
+  preflight-regression:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Read-only preflight unit and CLI tests (synthetic fixtures only)
+        run: |
+          node --check zkusebni/tools/reading-v34-preflight.cjs
+          node --test zkusebni/tests/e4b.test.cjs
+      - name: Verify no Reading teacher keys were added to the public tree
+        run: |
+          ! find zkusebni/cteni -type f \( -iname '*teacher*key*' -o -iname '*ucitel*key*' -o -iname '*klic*' \) | grep -q .
