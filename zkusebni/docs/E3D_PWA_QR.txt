@@ -1,0 +1,52 @@
+LANGUAGE SKILLS HUB – E3D PWA / QR CANDIDATE
+Date: 2026-11-05
+Status: DRAFT, NO-MERGE, NOT DEPLOYED
+
+Parent: E3C b475dd84 (Draft PR #4).
+Work branch: feat/lsh-e3d-pwa-qr-2026-11-05.
+Source cards 21/21 are NOT edited. No main/Cloudflare deployment.
+
+Implemented:
+- /zkusebni/manifest.webmanifest, two locally stored PNG icons,
+  standalone display and /zkusebni/ start_url/scope.
+- /zkusebni/sw.js: pre-cache small site shell and manifest;
+  opportunistic cache of visited pages/cards, offline fallback.
+  Only same-origin GET in /zkusebni/ is intercepted.
+  Download of all 21 large cards is deliberately NOT attempted.
+- Optional native QR scanner on /zkusebni/k/: only valid
+  catalog short codes or exact same-origin /zkusebni/
+  Conversation/Reading/Listening card URLs are opened.
+  Camera feed is local. Stop tracks when dialog/page closes.
+  BarcodeDetector API absence -> visible explanation, manual code stays usable.
+- Explicit installation banner appears only on supported
+  beforeinstallprompt browsers. iOS users can use Safari Share > Add to Home Screen.
+- Existing JSON export/import in E3B remains the ONLY supported manual data
+  transfer path. Different app/browser storage containers may be isolated.
+
+Known limitations / NO-GO:
+- No iPhone/iPad/physical Android device UAT; Safari PWA install/persistence
+  and QR native scanner support are NOT confirmed.
+- Safari/Chromium standalone app may have a distinct storage origin/container:
+  no promise of seamless Safari to home-screen vocabulary migration.
+  Export JSON from one context, import JSON in the other, verify word count
+  BEFORE deleting original data. Transfer must be user initiated.
+- Offline cards work only when visited online and successfully cached;
+  storage quotas and eviction can remove cached files or IndexedDB.
+- Native BarcodeDetector can be absent on iOS: stock camera/manual code fallback.
+- Camera access requires HTTPS or secure localhost and user permission.
+- Service worker cannot intercept Cloudflare and is not deployed there.
+- No auto sync; no server, tracking, AI API, or account.
+
+Review checklist:
+1) Run node --test zkusebni/tests/e3d.test.cjs and prior E3A-C tests.
+2) Real browser test Chromium: manifest, installation, offline shell,
+   previously visited card offline and unvisited-card fallback.
+3) Test native QR camera on supported Android/Chromium; deny permission
+   and confirm manual code path, never external redirects.
+4) On real iPhone/iPad Safari: add to home screen, export/import
+   through Files, reload/restart, save/read after 7 days if feasible.
+5) Test airplane mode and network resume with opened card; test cache eviction.
+6) Independently review PWA icons, accessibility, CSP and QR focus flow.
+
+ROLLBACK:
+Close draft PR, delete E3D branch. E3C head b475dd84 unchanged.
