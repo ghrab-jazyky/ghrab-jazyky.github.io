@@ -1,9 +1,9 @@
-/* Staging under the existing ghrab-jazyky.github.io repo. Keep the /zkusebni/ prefix. */
+/* E2 candidate, for /zkusebni/ only; not approved for production. */
 'use strict';
 window.LSH_CONFIG = Object.freeze({
   mode: 'staging',
-  stage: 'E1',
+  stage: 'E2',
   basePath: '/zkusebni/',
-  release: '0.1.0-e1',
+  release: '0.2.1-e2-candidate',
   manifestPath: 'data/manifest.json'
 });
