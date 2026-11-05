@@ -20,9 +20,13 @@ test('all UI references have unique DOM IDs',()=>{
 });
 test('scripts load in dependency order',()=>{
   const urls=[...html.matchAll(/<script\b[^>]*src="([^"]+)"[^>]*><\/script>/g)].map(m=>m[1]);
-  assert.deepEqual(urls,[
+  const required=[
     '../assets/lsh/v2/config.js','../assets/lsh/v3/model.js',
-    '../assets/lsh/v3/store.js','../assets/lsh/v3/vocab.js']);
+    '../assets/lsh/v3/store.js','../assets/lsh/v3/vocab.js'];
+  assert.deepEqual(urls.slice(0,required.length),required);
+  // E3D may append PWA initialization after the vocabulary's required dependencies.
+  assert.ok(urls.slice(required.length).every(url=>url==='../assets/lsh/v3/pwa.js'),
+    'Unexpected extra scripts: '+urls.slice(required.length).join(', '));
 });
 test('no inline event handlers or untrusted DOM HTML',()=>{
   assert.match(html,/Content-Security-Policy/);
