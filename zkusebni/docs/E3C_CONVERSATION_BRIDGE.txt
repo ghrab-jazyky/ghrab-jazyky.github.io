@@ -1,0 +1,92 @@
+LANGUAGE SKILLS HUB — ETAPA E3C: NAPOJENI CONVERSATION LAB NA MUJ SLOVNICEK
+Datum: 2026-11-05 | Verze: E3C-kandidat | Stav: DRAFT / NEPUBLIKOVAT
+
+VYCHODISKO
+Vetev E3C vychazi z E3B commitu 633393f. Predchozi PR zustavaji draft.
+Vsechny zdrojove karty pro zkušebni E2: 21 temat / 504 variant /
+6048 doporucenych slovnich polozek. Struktura kazde varianty overena
+z originalniho JSON bloku CONTENT, 0 polozek mimo ocekavany datovy model.
+
+CO JE IMPLEMENTOVANO V /zkusebni/
+1. assets/lsh/v3/card-bridge.js — sdileny E3C modul pro konverzacni karty:
+   - ulozeni z doporuceneho seznamu #vocabGrid;
+   - ulozeni z offline prekladoveho okna #lookupPopover, vcetne vety;
+   - zdroj konverzace + kanonicke ID tematu, aktualni jazyk a uroven;
+   - automaticke pridani tlacitek po prepnuti urovne/jazyka;
+   - odkaz na Muj slovnicek s poctem slov aktualizovanym z IndexedDB;
+   - upozorneni pri nedostupnem ulozisti: NIKDY nehlasi trvale ulozeni;
+   - bez pripojeni, analytiky, AI API a serveroveho odesilani dat.
+2. assets/lsh/v3/card-bridge.css — lokalni CSS pro integrovana tlacitka.
+3. 21 x zkusebni/konverzace/{slug}/index.html — vzdy pouze:
+   - data-lsh-topic-id v <html>;
+   - rozsireni style-src o 'self' pro CSS;
+   - link na lokalni card-bridge.css;
+   - tri defer skripty model.js, store.js, card-bridge.js.
+   Interni skript, obsah, 24 variant a jeho CSP sha256 zůstavaji beze zmeny.
+4. slovnicek/index.html a assets/lsh/v3/vocab.js:
+   - whitelistovany navrat ze slovnicku na puvodni kartu pres ?zpet=...
+   - jine domény a neplatne cesty nelze pouzit jako presmerovani.
+5. tests/e3c.patch.cjs — deterministicka patchovaci funkce pro audit.
+6. tests/e3c.test.cjs — Node testy vsech 21 HTML, CSP a vsech
+   6048 doporucenych hesel, senseId i slouceni.
+7. .github/workflows/lsh-e3c-tests.yml — CI pro vykonani testu bez deploye.
+
+SENSE ID — DULEZITE OMEZENI
+Kanonicke ID se tvoří deterministicky ze (jazyk, normalizovany vyraz,
+jednoznacny cesky preklad) nebo (jazyk, vyraz, vyklad cilovym jazykem).
+Dva odlisne vyznamy stejneho slova tak mohou mit odlisne identifikatory.
+Je-li cesky glosar mnohoznačný (strednik, lomitko, oddelovaci carka),
+doporucene slovicko NEPREBIRA automaticky vsechny preklady.
+Pri shodnem a jednoznacnem vyznamu se preklad a vyklad slouci.
+Toto je BEZPECNA PROVIZORNI IDENTIFIKACE, nikoli autorsky schvaleny
+nemenny lexikograficky registr. Zmena prekladu/vykladu muze zmenit
+senseId. Pred ostrym E3 vydanim je nutny redakcni audit a pripadna
+migrace starych ID; do te doby testovaci DB lsh-test.
+
+VERIFIKACE A UAT — SKUTECNE PROVEDENE TESTY
+- Github Actions: 2026-11-05, commit 8cc6323 a navazujici kosmeticka
+  revize. Testovaci sady:
+  E3A model/store 16/16 PASS, E3B static 7/7 PASS,
+  E3C staticka regrese 8/8 PASS. Celkem 31/31 PASS.
+- Deteministicky diff: 21/21 puvodnich karet, pouze bridge/meta/CSS,
+  inline skripty i CSP SHA256 beze zmen; 504 variant a 6048 slov PASS.
+- SKUTECNY prohlizec Chromium, Playwright v CI (run 42029080801)
+  PASS. Lokalni HTTP staging: katalog -> sdileni -> QR SVG,
+  ulozeni doporuceneho slova do IndexedDB, ulozeni bez site,
+  slovnicek / zpet ke karte, persistenci po reloadu, prepnuti ES/A2,
+  ulozeni pres offline prekladove okno, responsivitu pri 320 px,
+  varovani a pravdive dočasné ulozeni pri nedostupnem IndexedDB.
+- Screenshot artefakt: lsh-e3c-chromium-qa, GitHub Actions,
+  3 snimky (390 px konverzace, 320 px konverzace, 390 px slovnicek).
+  Vizualni kontrola snimku: mobilni rozlozeni je pouzitelne;
+  mobilni horizontalni pretékani automaticky nezjisteno.
+- ZADNY test na fyzickem iPhonu / iPadu / Androidu neprobedl.
+  ZADNY test Safari, instalovane PWA, prenosu Safari -> app,
+  vypadku elektriny ani obnovy po 7 dnech nebyl proveden.
+- Headless Chromium je realny browser, ale neni nahradou
+  za skutecna Apple zarizeni ani nejvyssi uroven a11y auditu.
+
+RUCNI UAT — maximalne 10 minut po schvalenem TESTOVACIM NASAZENI
+(1) iPhone Safari: karta EN/B2, doporucene slovo -> Ulozit.
+(2) Offline slovnik: klepnout na slovo -> Ulozit.
+(3) iPad: prepnout ES/A2, zopakovat oba mechanismy.
+(4) Android Chrome: otevrit slovnicek a zpet, bez chyby.
+(5) Po obnove karty je slovo stale ulozeno.
+(6) Dve soucasne zalozky: zmena poctu slov.
+(7) Bez pristupu k IndexedDB: zretelne varovani.
+(8) Export JSON -> import do testovaciho prohlizece.
+(9) Zamcene volby z ucitelskeho QR nezmeni prednastaveny jazyk/uroven.
+(10) Zadne potichu ztracene odpovedi/hesla, hlasit chyby.
+
+
+CO NENI HOTOVO
+- PWA, iPhone instalace/prenos, kamera a skenovani QR (E3D).
+- Kompletní pedagogicky/lexikograficky audit senseId.
+- Reading/Listening odpovedi a slovnicek v kartach (E4/E5).
+- Zadne nasazeni do main ani live Cloudflare; main root obsahuje
+  drive nahrane rozpracovane E2 karty a ma spatnou testovaci basePath;
+  tato stage to neupravuje bez GO publikace.
+
+GO/NO-GO: implementacni kandidát E3C = READY FOR REVIEW,
+         produkce = NO-GO (fyzicka Apple/Android UAT, PWA a lexikograficka revize chybi).
+Navrat: neprovadet merge; lze smazat pracovni vetev / zavrit PR.

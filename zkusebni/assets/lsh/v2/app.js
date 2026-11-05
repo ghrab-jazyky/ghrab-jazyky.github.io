@@ -1,4 +1,4 @@
-/* Language Skills Hub E1: build-free static UI with two synthetic sample topics. */
+/* Language Skills Hub E2 pilot: 21 Conversation topics and one synthetic Reading fixture. */
 (function () {
   'use strict';
   const CONFIG = window.LSH_CONFIG;
@@ -39,12 +39,12 @@
   }
   function initTheme() {
     let theme;
-    try { theme = localStorage.getItem('lsh-e1-theme'); } catch (_) { theme = null; }
+    try { theme = localStorage.getItem('lsh-test-theme-v1'); } catch (_) { theme = null; }
     applyTheme(theme);
     $('themeToggle').addEventListener('click', () => {
       const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
       applyTheme(next);
-      try { localStorage.setItem('lsh-e1-theme', next); } catch (_) { /* theme still changes */ }
+      try { localStorage.setItem('lsh-test-theme-v1', next); } catch (_) { /* theme still changes */ }
     });
   }
   async function loadManifest() {
@@ -114,7 +114,7 @@
         shortOutput.textContent = '\u2014';
         qrSlot.replaceChildren();
         setStatus(status, 'Sd\u00edlen\u00ed se nepoda\u0159ilo sestavit.', true);
-        console.error('E1 share:', error);
+        console.error('E2 share:', error);
       }
     }
     $('shareClose').addEventListener('click', () => dialog.close());
@@ -143,7 +143,7 @@
       const blobURL = URL.createObjectURL(blob);
       const anchor = element('a');
       anchor.href = blobURL;
-      anchor.download = 'LSH_E1_' + CORE.formatShortCode(topic, lang.value, level.value, lock.checked) + '.svg';
+      anchor.download = 'LSH_E2_' + CORE.formatShortCode(topic, lang.value, level.value, lock.checked) + '.svg';
       document.body.appendChild(anchor);
       anchor.click();
       anchor.remove();
@@ -164,24 +164,59 @@
       lang.focus();
     };
   }
-  function renderTopic(topic, openShare) {
+  const CATEGORY_NAMES = Object.freeze({
+    digital: 'Digitální svět', learning: 'Škola a učení',
+    life: 'Každodenní život', society: 'Společnost'
+  });
+  const FAVORITES_KEY = 'lsh-test-e2-conversation-favorites-v1';
+  function readFavorites() {
+    try {
+      const data = JSON.parse(localStorage.getItem(FAVORITES_KEY) || '[]');
+      return new Set(Array.isArray(data) ? data.filter(x => typeof x === 'string' && x.length < 80).slice(0,80) : []);
+    } catch (_) { return new Set(); }
+  }
+  function saveFavorites(favorites) {
+    try { localStorage.setItem(FAVORITES_KEY, JSON.stringify([...favorites])); }
+    catch (_) { announce('Oblíbené nebylo možné uložit v tomto prohlížeči.'); }
+  }
+  function renderTopic(topic, openShare, favorites, toggleFavorite) {
     const article = element('article','topic-card');
     const main = element('div','topic-main');
     const badges = element('div','topic-badges');
-    append(badges, element('span','demo-chip','DEMO'), element('span','skill-tag',topic.skill.toUpperCase()));
+    append(badges,
+      element('span',topic.demo ? 'demo-chip' : 'pending-tag',topic.demo ? 'DEMO' : 'PILOT E2'),
+      element('span','skill-tag',topic.skill.toUpperCase())
+    );
+    if (topic.category && CATEGORY_NAMES[topic.category])
+      append(badges,element('span','skill-tag',CATEGORY_NAMES[topic.category]));
     const title = element('h3',null,topic.title);
     const summary = element('p',null,topic.summary);
     const chips = element('div','variant-chips');
-    for (const v of topic.variants) append(chips, element('span','variant-chip',v.lang.toUpperCase()+' \u00b7 '+v.level));
+    if (!topic.demo && topic.skill === 'konverzace') {
+      append(chips,
+        element('span','variant-chip','EN · ES · DE · FR'),
+        element('span','variant-chip','A1–C2'),
+        element('span','variant-chip','8 stanovišť'));
+    } else {
+      for (const v of topic.variants)
+        append(chips,element('span','variant-chip',v.lang.toUpperCase()+' · '+v.level));
+    }
     append(main,badges,title,summary,chips);
     const actions = element('div','topic-actions');
     const def = CORE.defaultVariant(topic);
-    const preview = element('a','button outline','N\u00e1hled karty');
+    const preview = element('a','button outline','Náhled karty');
     preview.href = studentURL(topic,def.lang,def.level,false);
     preview.target='_blank'; preview.rel='noopener';
-    const share = button('Sd\u00edlet student\u016fm', 'button primary', () => openShare(topic));
-    share.setAttribute('aria-label', 'Sd\u00edlet: ' + topic.title);
+    const share = button('Sdílet studentům', 'button primary', () => openShare(topic));
+    share.setAttribute('aria-label','Sdílet: '+topic.title);
     append(actions,preview,share);
+    if (topic.skill === 'konverzace' && !topic.demo) {
+      const fav = favorites.has(topic.id);
+      const favorite = button(fav ? '★ V oblíbených' : '☆ Přidat mezi oblíbené','button outline fav-button',() => toggleFavorite(topic.id));
+      favorite.setAttribute('aria-pressed',String(fav));
+      favorite.setAttribute('aria-label',(fav ? 'Odebrat z oblíbených: ' : 'Přidat mezi oblíbené: ')+topic.title);
+      append(actions,favorite);
+    }
     append(article,main,actions);
     return article;
   }
@@ -192,41 +227,101 @@
     const kind = page;
     try {
       const m = await loadManifest();
+      checkForTeacherUpdate(m);
       const topics = m.topics.filter(t => t.skill === kind);
       const availableLangs = CORE.LANGS.filter(l => topics.some(t => t.variants.some(v => v.lang === l)));
       const availableLevels = CORE.LEVELS.filter(l => topics.some(t => t.variants.some(v => v.level === l)));
       for (const l of availableLangs) option(langFilter,l,LANG_NAMES[l]);
       for (const l of availableLevels) option(levelFilter,l,l);
       const share = initShare();
+      const favorites = readFavorites();
+      let category = '';
+      let favoritesOnly = false;
+      const extra = $('catalogExtraFilters');
+      if (kind === 'konverzace' && extra) {
+        const fieldset = element('fieldset','category-fieldset');
+        const legend = element('legend',null,'Kategorie');
+        const choices = element('div','category-choices');
+        append(fieldset,legend,choices);
+        for (const [value,label] of [['','Všechny'],...Object.entries(CATEGORY_NAMES)]) {
+          const btn = button(label,'category-button'+(!value?' active':''),() => {
+            category = value;
+            choices.querySelectorAll('button').forEach(b=>{
+              const active = b.dataset.category === value;
+              b.classList.toggle('active',active);
+              b.setAttribute('aria-pressed',String(active));
+            });
+            render();
+          });
+          btn.dataset.category = value;
+          btn.setAttribute('aria-pressed',String(!value));
+          choices.appendChild(btn);
+        }
+        const favoriteToggle = button('☆ Jen oblíbené','button outline favorites-filter',() => {
+          favoritesOnly = !favoritesOnly;
+          favoriteToggle.setAttribute('aria-pressed',String(favoritesOnly));
+          favoriteToggle.textContent = favoritesOnly ? '★ Jen oblíbené' : '☆ Jen oblíbené';
+          render();
+        });
+        favoriteToggle.setAttribute('aria-pressed','false');
+        append(extra,fieldset,favoriteToggle);
+      }
+      function toggleFavorite(id) {
+        if (favorites.has(id)) favorites.delete(id); else favorites.add(id);
+        saveFavorites(favorites); render();
+      }
       function render() {
         const q = search.value.trim().toLocaleLowerCase('cs');
         const language = langFilter.value, level = levelFilter.value;
         const filtered = topics.filter(t => {
-          const matchesText = !q || (t.title+' '+t.summary+' '+t.tags.join(' ')).toLocaleLowerCase('cs').includes(q);
+          const haystack = (t.title+' '+t.summary+' '+t.tags.join(' ')).toLocaleLowerCase('cs');
+          const matchesText = !q || haystack.includes(q);
           const matchesVariant = t.variants.some(v => (!language || v.lang === language) && (!level || v.level === level));
-          return matchesText && matchesVariant;
+          const matchesCategory = !category || t.category === category;
+          const matchesFavorites = !favoritesOnly || favorites.has(t.id);
+          return matchesText && matchesVariant && matchesCategory && matchesFavorites;
         });
-        list.replaceChildren(...filtered.map(t => renderTopic(t,share)));
-        count.textContent = 'Zobrazeno '+filtered.length+' z '+topics.length+' t\u00e9mat.';
+        list.replaceChildren(...filtered.map(t => renderTopic(t,share,favorites,toggleFavorite)));
+        count.textContent = 'Zobrazeno '+filtered.length+' z '+topics.length+' témat.';
         empty.hidden = filtered.length > 0;
-        if (filtered.length === 0) {
+        if (!filtered.length) {
           const noTopics = topics.length === 0;
-          $('emptyTitle').textContent = noTopics ? 'Katalog teprve p\u0159ipravujeme' : '\u017d\u00e1dn\u00e9 t\u00e9ma neodpov\u00edd\u00e1 filtr\u016fm';
-          $('emptyDescription').textContent = noTopics ? 'V E1 zat\u00edm nejsou k dispozici testovac\u00ed poslechov\u00e9 karty.' : 'Zm\u011b\u0148te jazyk, \u00farove\u0148 nebo hledan\u00fd v\u00fdraz.';
+          $('emptyTitle').textContent = noTopics ? 'Katalog teprve připravujeme' : 'Žádné téma neodpovídá výběru';
+          $('emptyDescription').textContent = noTopics ?
+            'Poslechové karty se připravují v etapě E5.' : 'Změňte jazyk, úroveň, kategorii nebo hledaný výraz.';
           clear.hidden = noTopics;
         }
       }
-      $('filterForm').addEventListener('submit',e=>e.preventDefault());
-      $('filterForm').addEventListener('reset',()=>setTimeout(render,0));
-      clear.addEventListener('click',()=>{$('filterForm').reset();render();});
+      function resetExtraFilters() {
+        category = '';
+        favoritesOnly = false;
+        if (extra) {
+          extra.querySelectorAll('.category-button').forEach(b => {
+            const active = b.dataset.category === '';
+            b.classList.toggle('active', active);
+            b.setAttribute('aria-pressed', String(active));
+          });
+          const fav = extra.querySelector('.favorites-filter');
+          if (fav) {
+            fav.setAttribute('aria-pressed', 'false');
+            fav.textContent = '☆ Jen oblíbené';
+          }
+        }
+      }
+      $('filterForm').addEventListener('submit', e => e.preventDefault());
+      $('filterForm').addEventListener('reset', () => {
+        resetExtraFilters();
+        setTimeout(render, 0);
+      });
+      clear.addEventListener('click', () => $('filterForm').reset());
       search.addEventListener('input',render);
       langFilter.addEventListener('change',render);
       levelFilter.addEventListener('change',render);
       render();
     } catch (error) {
-      console.error('E1 catalog:',error);
-      count.textContent = 'Katalog se nepoda\u0159ilo na\u010d\u00edst.';
-      list.replaceChildren(element('p','form-status error','Otev\u0159ete str\u00e1nku znovu nebo zkontrolujte datov\u00fd manifest.'));
+      console.error('E2 catalog:',error);
+      count.textContent = 'Katalog se nepodařilo načíst.';
+      list.replaceChildren(element('p','form-status error','Otevřete stránku znovu nebo zkontrolujte datový manifest.'));
     }
   }
   async function initStudent() {
@@ -278,7 +373,7 @@
       // A tampered query never enters DOM, and invalid parameters are ignored.
       // Explicit valid links are left unchanged to preserve already shared URLs.
     } catch (error) {
-      console.error('E1 fixture:',error);
+      console.error('E2 fixture:',error);
       article.hidden = true;
       errorPanel.hidden = false;
       $('studentErrorText').textContent = 'Testovac\u00ed karta nebyla nalezena nebo je po\u0161kozen manifest.';
@@ -303,18 +398,43 @@
         openCode(value);
       }
     } catch (error) {
-      console.error('E1 code:',error);
+      console.error('E2 code:',error);
       setStatus(status, 'K\u00f3dy nyn\u00ed nelze ov\u011b\u0159it. Zkuste to znovu p\u0159i p\u0159ipojen\u00ed.',true);
     }
   }
+  const VERSION_KEY = 'lsh-test-teacher-manifest-version-v1';
+  function checkForTeacherUpdate(m) {
+    if (!['home','konverzace','cteni','poslech'].includes(page)) return;
+    const version = m && typeof m.manifestVersion === 'string' ? m.manifestVersion : null;
+    if (!version) return;
+    let previous = null;
+    try { previous = localStorage.getItem(VERSION_KEY); } catch (_) { return; }
+    if (!previous) {
+      try { localStorage.setItem(VERSION_KEY,version); } catch (_) {}
+      return;
+    }
+    if (previous === version || document.getElementById('lshUpdateNotice')) return;
+    const panel = element('aside','lsh-update-notice');
+    panel.id='lshUpdateNotice';
+    panel.setAttribute('role','status');
+    panel.setAttribute('aria-label','Dostupná aktualizace');
+    const msg = element('span',null,'Je dostupná nová verze Language Skills Hubu.');
+    const refresh = button('Načíst novou verzi','button primary',()=>{
+      try { localStorage.setItem(VERSION_KEY,version); } catch (_) {}
+      location.reload();
+    });
+    append(panel,msg,refresh);
+    document.body.appendChild(panel);
+  }
   function run() {
-    if (!CONFIG || !CORE || !QR) { console.error('E1: required local modules missing');return; }
+    if (!CONFIG || !CORE || !QR) { console.error('E2: required local modules missing');return; }
     try { CORE.siteRoot(location.origin,CONFIG.basePath); }
-    catch (error) { console.error('E1 invalid configuration',error);return; }
+    catch (error) { console.error('E2 invalid configuration',error);return; }
     initTheme();
     if (CORE.validBasePath(CONFIG.basePath) && !location.pathname.startsWith(CONFIG.basePath)) {
-      console.warn('E1 is not being served under the configured basePath; sharing links use the configured path.');
+      console.warn('E2 is not being served under the configured basePath; sharing links use the configured path.');
     }
+    if (page==='home') loadManifest().then(checkForTeacherUpdate).catch(()=>{});
     if (CORE.SKILLS.includes(page)) initCatalog();
     else if (page==='student') initStudent();
     else if (page==='code') initCode();

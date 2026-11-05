@@ -132,3 +132,20 @@ input[readonly]{cursor:text}
   .primary-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;overflow:visible}
   .primary-nav a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:6px 4px;text-align:center;white-space:normal;line-height:1.2;font-size:.72rem}
 }
+
+/* E2: compact conversation catalog and saved preferences (only local to this staging browser). */
+.catalog-extra-filters{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin:14px 0 20px}
+.category-fieldset{border:0;margin:0;padding:0;flex:1 1 440px;min-width:0}
+.category-fieldset legend{font-size:.78rem;font-weight:800;color:var(--muted-strong);margin-bottom:8px}
+.category-choices{display:flex;flex-wrap:wrap;gap:7px}
+.category-button{min-height:44px;border-radius:12px;padding:8px 12px;background:var(--surface);border:1px solid var(--line);color:var(--ink);font-size:.79rem;font-weight:700;cursor:pointer}
+.category-button.active{background:var(--sky);color:#0b1221;border-color:transparent}
+.favorites-filter{min-height:44px}
+.favorites-filter[aria-pressed=true]{outline:2px solid var(--sky)}
+.topic-card .fav-button{font-size:.8rem}
+@media(max-width:630px){.catalog-extra-filters{flex-direction:column;align-items:stretch}.category-fieldset{flex-basis:auto;width:100%}.category-button{flex:1 1 auto}.favorites-filter{width:100%}}
+
+/* E2 update prompt only on teacher-facing pages; never interrupts students. */
+.lsh-update-notice{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:180;max-width:min(640px,calc(100vw - 24px));width:max-content;min-width:min(450px,calc(100vw - 24px));border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:16px;padding:12px 16px;box-shadow:0 15px 50px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.lsh-update-notice .button{white-space:nowrap}
+@media(max-width:500px){.lsh-update-notice{display:block}.lsh-update-notice .button{margin-top:10px;width:100%}}

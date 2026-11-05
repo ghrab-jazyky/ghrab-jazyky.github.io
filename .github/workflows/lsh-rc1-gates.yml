@@ -1,0 +1,59 @@
+name: LSH RC1 staging accuracy and privacy gate (NO deployment)
+on:
+  push:
+    branches:
+      - release/lsh-rc1-staging-safe-2026-11-05
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'zkusebni/**'
+      - '.github/workflows/lsh-rc1-gates.yml'
+permissions:
+  contents: read
+jobs:
+  static-regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Stage E3A–E3D and RC1 static QA
+        run: |
+          node --test zkusebni/tests/e3a.test.cjs zkusebni/tests/e3b.static.test.cjs zkusebni/tests/e3c.test.cjs zkusebni/tests/e3d.test.cjs zkusebni/tests/rc1-gates.test.cjs
+      - name: Staging does not include any confidential teacher-key files
+        run: |
+          ! find zkusebni/cteni zkusebni/poslech -type f \( -iname '*teacher*key*' -o -iname '*ucitel*key*' -o -iname '*answer*key*' \) | grep -q .
+  browser-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium and WebKit for RC1 smoke tests
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Test Conversation catalog and vocabulary in Chromium
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-rc1-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:8765/zkusebni/ >/dev/null; then break; fi
+            sleep 1
+          done
+          node --test zkusebni/tests/e3c.browser.test.cjs
+      - name: Test PWA offline, QR fallback/camera and WebKit local vocabulary
+        run: node --test zkusebni/tests/e3d.browser.test.cjs
+      - name: Save screenshots for manual RC1 QA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-rc1-browser-qa
+          path: qa/*.png
+          if-no-files-found: warn

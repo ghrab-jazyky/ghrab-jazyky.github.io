@@ -1,0 +1,62 @@
+LANGUAGE SKILLS HUB — E3A: DATOVY ZAKLAD SLOVNICKU A ODPOVEDI
+Datum: 2026-11-05 | stav: ROZPRACOVANO / NEPUBLIKOVAT
+
+ZALOHA: backup/lsh-before-e2-fix-2026-11-05
+E2 KANDIDAT: fix/lsh-e2-review-2026-11-05
+Tato vetev vychazi z E2 commitu 7865bdd.
+
+1. CO JE NOVÉ
+- assets/lsh/v3/model.js: kanonicky datovy model slov a odpovedi, validace,
+  slouceni podle (jazyk, senseId), obvykle i rucni oddelene zaznamy,
+  5 prihradek s intervaly 1,3,7,14,30 dnu, export/import JSON,
+  verzovane snapshoty odpovedi pro Reading a Listening.
+- assets/lsh/v3/store.js: IndexedDB verze 1 a objektove uloziste
+  words, answers, meta. Staging DB se jmenuje "lsh-test", produkce "lsh".
+  Oba nazvy jsou odlisne na stejnem originu.
+- tests/e3a.test.cjs: samostatny automaticky testovaci soubor.
+
+2. GARANCE
+- Bez prenosu dat na server, bez CDN, bez externich API a bez ucetnich identit.
+- Bez ukladani odpovedi z Conversation Lab. Odpovedi pouze pro cteni/poslech.
+- Pri nedostupnem IndexedDB se vraci rezim "temporary" a priznaka
+  storedInIndexedDB=false; klient MUSI zobrazit varovani, ze data
+  nepreziji uzavreni stranky. Nemusi byt mozna ani obnova zaloh.
+- Pri uspechu IndexedDB znamena storedInIndexedDB=true pouze uspesne
+  zapisani do prohlizece, nikoli zaruku, ze je prohlizec nikdy nesmaze.
+- Vsechny zapisy a importy jsou navrzeny jako transakce IndexedDB;
+  pri chybnem importu nema dojit k vymazani stavajicich dat.
+- Pro rodne karty: nemenny senseId v ramci jazyka. Dve ruzne
+  synonymni nebo homonymni polozky se bez shodneho senseId neslouci.
+- Import pouze kind="lsh-slovnicek", schemaVersion=1,
+  maximalne 3 MB a 5000 slov vcetne slouceni.
+- Pro nahradit vse musi UI vyzadat potvrzeni uzivatele.
+- UI pri vypnutem offline slovniku musi zachovat translationHidden=true
+  a nekonstruovat vymysleny preklad.
+
+3. TESTOVANI
+2026-11-05: 16/16 jednotkovych kontrol PASS v izolovanem JS
+harnessu s volanim stejnych testovacich funkci.
+Pokryti: schema, izolace DB nazvu, senseId, slucovani, hodnoceni,
+review ladder, 20 poslednich hodnoceni, export/import, limit velkosti,
+odmitnuti chybne zalohy, zachovani dat po chybnem importu,
+rekonciliace odpovedi, reset jedne varianty a pametovy fallback.
+Doplneny Node test soubor umozni opakovani:
+  node --test zkusebni/tests/e3a.test.cjs
+NENI DOSUD PROVEDEN: realny browser + IndexedDB transakce,
+soubeh zalozek, recovery po restartu, mobilni Safari, consent persist(),
+JSON import v prohlizeci, Service Worker, iOS install + transfer.
+
+4. CO JE ZATIM NAVRH, NE FUNKCNI HOTOVA E3
+- slovnicek/index.html je stale informacni E2 placeholder;
+  kod E3A zatim neni nacten do zive stranky.
+- NEJSOU integrovany slovnikove polozky do 21 konverzacnich karet;
+  senseId nemaji zkontrolovana vsechna hesla.
+- NEJSOU propojeny odpovedi Reading/Listening karet.
+- NEEXISTUJE instalovatelna PWA ani iOS transfer.
+
+5. GO/NO-GO
+E3A model/dataschema: READY FOR REVIEW (16 syntetickych unit testu PASS).
+E3 provoz/produkce: NO-GO.
+E2 publikace: NO-GO, realne browser/mobile testy NOT_TESTED.
+Dalsi prace jen v pracovnich vetvich; bez explicitniho 'publikuj'
+neslucovat do main a nemenit Cloudflare.

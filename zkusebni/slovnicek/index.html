@@ -1,29 +1,143 @@
 <!doctype html>
 <html lang="cs" data-theme="dark">
 <head>
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="icon" sizes="192x192" href="../icons/icon-192.png">
+  <link rel="apple-touch-icon" href="../icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="LSH TEST">
   <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0b1221">
-  <meta name="description" content="Language Skills Hub: pouze zkušební demo prostředí E1.">
+  <meta name="description" content="Language Skills Hub: zkušební prostředí E3C; slovníček propojený s konverzací.">
   <meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; object-src &#x27;none&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27;; img-src &#x27;self&#x27; blob: data:; font-src &#x27;self&#x27;; connect-src &#x27;self&#x27;; frame-src &#x27;none&#x27;; form-action &#x27;self&#x27;">
   <title>M&#367;j slovn&#237;&#269;ek | Language Skills Hub</title>
-  <link rel="stylesheet" href="../assets/lsh/v1/styles.css">
-  <script defer src="../assets/lsh/v1/config.js"></script>
-  <script defer src="../assets/lsh/v1/core.js"></script>
-  <script defer src="../assets/lsh/v1/qr.js"></script>
-  <script defer src="../assets/lsh/v1/app.js"></script>
+  <link rel="stylesheet" href="../assets/lsh/v2/styles.css">
+  <link rel="stylesheet" href="../assets/lsh/v3/vocab.css">
+  <script defer src="../assets/lsh/v2/config.js"></script>
+  <script defer src="../assets/lsh/v3/model.js"></script>
+  <script defer src="../assets/lsh/v3/store.js"></script>
+  <script defer src="../assets/lsh/v3/vocab.js"></script>
+  <script defer src="../assets/lsh/v3/pwa.js"></script>
 </head>
 <body data-page="slovnicek" data-path="slovnicek/index.html">
   <a class="skip-link" href="#main">P&#345;esko&#269;it na obsah</a>
   <header class="site-header"><div class="header-inner">
-    <a class="brand" href="../" aria-label="Language Skills Hub: rozcestník"><span class="brand-glyph" aria-hidden="true">L<span>S</span>H</span><span class="brand-text"><strong>Language Skills Hub</strong><small>Gymnázium &middot; demo E1</small></span></a>
+    <a class="brand" href="../" aria-label="Language Skills Hub: rozcestník"><span class="brand-glyph" aria-hidden="true">L<span>S</span>H</span><span class="brand-text"><strong>Language Skills Hub</strong><small>Gymnázium &middot; zkušební E3C</small></span></a>
     <nav class="primary-nav" aria-label="Hlavní navigace"><a href="../">Rozcestn&#237;k</a><a href="../konverzace/">Mluven&#237;</a><a href="../cteni/">&#268;ten&#237;</a><a href="../poslech/">Poslech</a><a href="../slovnicek/" aria-current="page">M&#367;j slovn&#237;&#269;ek</a><a href="../k/">Otev&#345;&#237;t k&#243;d</a></nav>
     <button type="button" id="themeToggle" class="theme-button" aria-label="P&#345;epnout sv&#283;tl&#253; nebo tmav&#253; re&#382;im" title="P&#345;epnout motiv">&#9788;</button>
   </div></header>
-  <div class="demo-banner" role="status"><span class="demo-dot"></span><strong>ZKUŠEBNÍ VERZE E1</strong> <span>Pouze technick&#225; uk&#225;zka. Nepou&#382;&#237;vat p&#345;i v&#253;uce.</span></div>
-  <main id="main"><section class="container single-page"><a class="crumb" href="../">&#8592; Zp&#283;t na rozcestn&#237;k</a><span class="eyebrow">P&#344;IPRAVUJEME &#183; ETAPA E3</span><h1>M&#367;j slovn&#237;&#269;ek</h1><p class="page-lead">Jeden osobn&#237; slovn&#237;&#269;ek pro v&#353;echny t&#345;i laborato&#345;e. Ukl&#225;d&#225;n&#237; slov, offline re&#382;im a procvi&#269;ov&#225;n&#237; budou p&#345;id&#225;ny a testov&#225;ny pozd&#283;ji.</p><div class="info-panel"><span class="pending-tag">E1</span><h2>Datov&#233; &#250;lo&#382;i&#353;t&#283; nyn&#237; nen&#237; aktivn&#237;</h2><p>Tato str&#225;nka nic neukl&#225;d&#225; a ne&#269;te &#382;&#225;dn&#225; studentsk&#225; data. Nenasadili jsme IndexedDB ani p&#345;enosy mezi aplikacemi.</p></div></section></main>
-  <footer class="site-footer"><div class="footer-inner"><span>Language Skills Hub <b>E1 / 0.1.0</b></span><span>Bez p&#345;ihl&#225;&#353;en&#237;, analytiky a extern&#237;ch slu&#382;eb. Prototyp neukl&#225;d&#225; odpov&#283;di &#382;&#225;k&#367;.</span></div></footer>
+  <div class="demo-banner" role="status"><span class="demo-dot"></span><strong>TECHNICKÝ PILOT RC1</strong> <span>Konverza&#269;n&#237; karty jsou ve zku&#353;ebn&#237;m propojen&#237;; &#269;ten&#237; a poslech se p&#345;ipravuj&#237;.</span></div>
+  <main id="main" class="container vocab-shell">
+  <section class="vocab-intro">
+    <a class="crumb vocab-breadcrumb" href="../">← Zpět na rozcestník</a>
+    <a class="crumb vocab-breadcrumb" id="backToCard" href="../" hidden>← Zpět ke konverzační kartě</a>
+    <span class="eyebrow">MŮJ SLOVNÍČEK · ZKUŠEBNÍ ETAPA E3C</span>
+    <h1>Můj slovníček</h1>
+    <p class="page-lead">Vaše slova ze všech tří laboratoří na jednom místě. V této etapě zkoušíme ruční přidávání, procvičování a zálohování. Propojení konverzačních karet je ve zkušební fázi; čtení, poslech a instalace na iPhone budou dokončeny později.</p>
+    <p class="vocab-important">Data zůstávají pouze v tomto zařízení a prohlížeči, nejsou automaticky synchronizována. Na sdíleném školním počítači je může vidět každý, kdo používá stejný profil prohlížeče. Po smazání dat webu mohou zmizet.</p>
+    <p id="storageAlert" class="storage-alert" role="alert" hidden></p>
+    <p id="vocabStatus" class="vocab-status" role="status" aria-live="polite"></p>
+    <div class="vocab-stat-grid" aria-label="Přehled slovíček">
+      <div class="vocab-stat"><strong id="wordCount">0</strong><span>slov celkem</span></div>
+      <div class="vocab-stat"><strong id="dueCount">0</strong><span>k opakování</span></div>
+      <div class="vocab-stat"><strong id="learnedCount">0</strong><span>naučených</span></div>
+    </div>
+  </section>
+  <section class="vocab-panel" aria-labelledby="addHeading">
+    <h2 id="addHeading">Přidat vlastní slovo</h2>
+    <form id="addWordForm" class="vocab-grid">
+      <label>Jazyk
+        <select id="addLanguage" required>
+          <option value="en">Angličtina</option><option value="es">Španělština</option>
+          <option value="de">Němčina</option><option value="fr">Francouzština</option>
+        </select>
+      </label>
+      <label>Úroveň (nepovinná)
+        <select id="addLevel"><option value="">Bez úrovně</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select>
+      </label>
+      <label class="wide">Výraz v cílovém jazyce <input id="addTerm" type="text" maxlength="160" required autocomplete="off" placeholder="např. curiosity"></label>
+      <label>Český překlad (nepovinný) <input id="addTranslation" type="text" maxlength="700" autocomplete="off"></label>
+      <label>Výklad v cílovém jazyce (nepovinný) <input id="addExplanation" type="text" maxlength="700" autocomplete="off"></label>
+      <label class="wide">Vlastní poznámka (nepovinná) <textarea id="addNote" maxlength="1200" rows="2"></textarea></label>
+      <div class="vocab-actions wide"><button class="button primary" id="addSubmit" type="submit">Přidat do slovníčku</button></div>
+    </form>
+  </section>
+  <section class="vocab-panel" aria-labelledby="filterHeading">
+    <h2 id="filterHeading">Vyhledávání a filtry</h2>
+    <div class="vocab-filter-grid">
+      <label>Hledat <input type="search" id="wordSearch" placeholder="Slovo, překlad, výklad, poznámka" autocomplete="off"></label>
+      <label>Jazyk <select id="languageFilter"><option value="">Všechny jazyky</option><option value="en">Angličtina</option><option value="es">Španělština</option><option value="de">Němčina</option><option value="fr">Francouzština</option></select></label>
+      <label>Laboratoř <select id="skillFilter"><option value="">Všechny</option><option value="manual">Ručně přidaná</option><option value="konverzace">Mluvení</option><option value="cteni">Čtení</option><option value="poslech">Poslech</option></select></label>
+      <label>Úroveň <select id="levelFilter"><option value="">Všechny</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></label>
+      <label>Karta <select id="topicFilter"><option value="">Všechny karty</option></select></label>
+      <label>Stav <select id="stateFilter"><option value="">Všechna slova</option><option value="favorites">Oblíbená</option><option value="due">K opakování</option><option value="learned">Naučená</option></select></label>
+    </div>
+    <div class="vocab-actions"><button type="button" class="button outline" id="resetVocabFilters">Zrušit filtry</button></div>
+    <p class="vocab-filter-count">Zobrazeno: <strong id="filteredCount">0</strong> slov.</p>
+  </section>
+  <section class="vocab-panel" aria-labelledby="backupHeading">
+    <h2 id="backupHeading">Záloha a přenos souborem</h2>
+    <p class="vocab-hint">Exportujte svůj slovníček do souboru JSON. Později jej můžete importovat do stejného či jiného prohlížeče. Soubor nahrávejte pouze ze svého důvěryhodného zařízení. Maximální velikost 3 MB a 5 000 slov.</p>
+    <div class="vocab-backup">
+      <button type="button" class="button primary" id="exportBtn">Export JSON</button>
+      <button type="button" class="button outline" id="importBtn">Import JSON</button>
+      <input type="file" id="importFile" accept=".json,application/json" hidden>
+      <label><input type="checkbox" id="importReplace"> Nahradit vše (vyžaduje potvrzení)</label>
+    </div>
+  </section>
+  <section class="vocab-panel" aria-labelledby="practiceHeading">
+    <h2 id="practiceHeading">Procvičování</h2>
+    <p class="vocab-hint">Nejdříve se nabízejí slova k opakování. Naučené znamená přihrádku 5. Výsledky: Umím → o přihrádku výš, S obtížemi → zůstávám, Neumím → přihrádka 1.</p>
+    <div class="vocab-grid">
+      <label>Režim <select id="practiceMode"><option value="flash">Kartičky – výraz → význam</option><option value="reverse">Obráceně – napište výraz</option></select></label>
+    </div>
+    <div class="vocab-actions"><button class="button primary" id="practiceStart" type="button">Začít procvičovat vyfiltrovaná slova</button></div>
+    <section id="practicePanel" aria-label="Procvičovací kartička" hidden>
+      <p id="practiceProgress" class="vocab-meta"></p>
+      <div class="vocab-practice-front" id="practicePrompt"></div>
+      <button type="button" class="button outline" id="revealPractice">Odkrýt význam</button>
+      <div class="vocab-reverse" id="reverseWrap" hidden>
+        <label for="reverseInput">Napište výraz v cílovém jazyce</label>
+        <input id="reverseInput" type="text" autocomplete="off" maxlength="160">
+        <button type="button" class="button outline" id="reverseCheck">Zkontrolovat</button>
+        <p id="reverseResult" role="status" aria-live="polite"></p>
+      </div>
+      <div class="vocab-practice-answer" id="practiceAnswer" hidden></div>
+      <div class="vocab-practice-rating" id="practiceRating" hidden>
+        <button type="button" class="button primary" data-rating="umim">Umím</button>
+        <button type="button" class="button outline" data-rating="s-obtizemi">S obtížemi</button>
+        <button type="button" class="button outline" data-rating="neumim">Neumím</button>
+      </div>
+      <div class="vocab-actions"><button type="button" class="button outline" id="practiceStop">Ukončit procvičování</button></div>
+    </section>
+  </section>
+  <section aria-labelledby="listHeading">
+    <h2 id="listHeading">Uložená slova</h2>
+    <p id="wordEmpty" class="vocab-empty">Zatím tu nejsou žádná slova odpovídající zvoleným filtrům.</p>
+    <div id="wordList" class="vocab-list"></div>
+  </section>
+  <dialog id="editDialog" class="vocab-dialog" aria-labelledby="editHeading">
+    <h2 id="editHeading">Upravit slovo</h2>
+    <form id="editForm" class="vocab-edit-grid">
+      <label class="wide">Výraz <input type="text" id="editTerm" maxlength="160" required></label>
+      <label>Český překlad <input type="text" id="editTranslation" maxlength="700"></label>
+      <label>Výklad <input type="text" id="editExplanation" maxlength="700"></label>
+      <label class="wide">Věta z karty / příklad <textarea id="editContext" maxlength="1000" rows="2"></textarea></label>
+      <label>Úroveň <select id="editLevel"><option value="">Bez úrovně</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></label>
+      <label class="vocab-checkbox"><input type="checkbox" id="editHidden"> Skrýt český překlad do odkrytí</label>
+      <label class="wide">Poznámka <textarea id="editNote" maxlength="1200" rows="3"></textarea></label>
+      <div class="vocab-actions wide">
+        <button type="submit" class="button primary" id="editSubmit">Uložit úpravu</button>
+        <button type="button" class="button outline" id="editCancel">Zrušit</button>
+      </div>
+    </form>
+  </dialog>
+</main>
+  <footer class="site-footer"><div class="footer-inner"><span>Language Skills Hub <b>E3C / prototyp</b></span><span>Bez p&#345;ihl&#225;&#353;en&#237;, analytiky a extern&#237;ch slu&#382;eb. Data slovn&#237;&#269;ku se ukl&#225;daj&#237; pouze lok&#225;ln&#283;; nesynchronizuj&#237; se.</span></div></footer>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <noscript><p class="no-script">Pro zobrazen&#237; katalogu a sd&#237;len&#237; zapn&#283;te JavaScript.</p></noscript>
+<div class="container"><p id="pwaStatus" role="status" aria-live="polite"></p><button type="button" id="pwaInstallBtn" class="button outline" hidden>Nainstalovat testovací aplikaci</button></div>
 </body></html>
