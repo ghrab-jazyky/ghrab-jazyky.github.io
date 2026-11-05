@@ -1,0 +1,41 @@
+LANGUAGE SKILLS HUB — E3B: SLOVNICEK UI (STAGING ONLY)
+Datum: 2026-11-05 | Rezim: draft / nepublikovat
+
+Rozsah:
+1) /zkusebni/slovnicek/index.html — novy pracovni formular:
+   rucni pridani slov (en,es,de,fr), vysvetleni, preklad, poznamka;
+   prehled, kombinovane filtry podle jazyka, urovne, laboratore,
+   konkretni karty, stavu, oblibenych a fulltextu;
+   uprava, smazani s potvrzenim, oblibene a skryty preklad;
+   karticky a opacny rezim, hodnoceni Umim / S obtizemi / Neumim;
+   JSON zalohy a import s potvrzenim uplneho nahrazeni.
+2) /zkusebni/assets/lsh/v3/vocab.js — vykonna logika UI, pouze lokalni.
+3) /zkusebni/assets/lsh/v3/vocab.css — responzivni vzhled 320–1440 px.
+4) /zkusebni/tests/e3b.static.test.cjs — staticke testy HTML/JS/CSS.
+
+Bezpecnost a ochrana soukromi:
+- zadna telemetrie, ucet, CDN, vzdaleny request se studentskymi daty;
+- vsechny texty vkladany pres textContent, bez innerHTML z importu;
+- CSP script-src self, bez inline handleru;
+- rezim lsh-test oddelen od lsh na stejnem originu;
+- pri vypadku IndexedDB se zobrazi vyrazne varovani;
+- kopie existujici E2 nastaveni a zdrojovych karet zustaly beze zmen.
+
+Dolozene testy:
+- 10/10 kontrol staticke struktury HTML/JS/CSS PASS v JS harnessu.
+- E3A: 16/16 model/store memory fallback unit PASS.
+- Neprobedly realne Playwright/browser/IndexedDB/UI klikaci testy:
+  oznaceni NOT_TESTED. Ani nejde o hotove schvalene PWA.
+
+Otevrene podetapy:
+E3C: napojeni vsech 21 konverzacnich karet na ulozeni slov,
+     stabilni senseId/zdroje, kontrola CSP, all variant UAT.
+E3D: PWA manifest, ikony, service worker, ovladani na iOS,
+     kratky kod a vlastni QR kamera v PWA, prenos Safari → aplikace.
+E4: pripojeni Reading Lab + zpetne obnovy odpovedi a testy.
+E5: pripojeni Listening Lab a offline slovniku.
+
+Neopraveno ve verejne main:
+root E2 ma spatnou adresarovou konfiguraci, neschvalene karty
+zustavaji v public/main. Neschvaleno ke zverejneni.
+GO/NO-GO: E3B pouze pripravena k revizi kodu, PROD NO-GO.
