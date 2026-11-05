@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "manifestVersion": "0.1.0-e1",
+  "environment": "staging",
+  "demoOnly": true,
+  "generatedAt": "2026-11-04T18:00:00Z",
+  "topics": [
+    {
+      "id": "demo-ostrov-luma",
+      "skill": "konverzace",
+      "slug": "ostrov-luma",
+      "shortCode": "7KQ2",
+      "title": "Fiktivn\u00ed ostrov Luma",
+      "summary": "Testovac\u00ed rozhovor o smy\u0161len\u00e9m ostrov\u011b. Bez skute\u010dn\u00e9 v\u00fdukov\u00e9 n\u00e1pln\u011b.",
+      "tags": [
+        "demo",
+        "fiktivn\u00ed",
+        "rozhovor"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A1"
+        },
+        {
+          "lang": "en",
+          "level": "B1"
+        },
+        {
+          "lang": "es",
+          "level": "A2"
+        },
+        {
+          "lang": "de",
+          "level": "B1"
+        },
+        {
+          "lang": "fr",
+          "level": "B2"
+        }
+      ],
+      "defaultLevel": "A1",
+      "durationMinutes": 5,
+      "version": "0.1.0-demo",
+      "publishedAt": "2026-11-04T18:00:00Z",
+      "status": "PUBLIKOVANO",
+      "demo": true,
+      "cardPath": "konverzace/ostrov-luma/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null,
+      "demoContent": {
+        "en:A1": {
+          "heading": "The island of Luma",
+          "text": "Imagine an island. What colour is the sea? Name two things you can see."
+        },
+        "en:B1": {
+          "heading": "A school on Luma",
+          "text": "Imagine a new school on Luma. Which three rules would make it a friendly place?"
+        },
+        "es:A2": {
+          "heading": "Una isla imaginaria",
+          "text": "Imagina la isla de Luma. \u00bfQu\u00e9 pueden hacer all\u00ed los estudiantes?"
+        },
+        "de:B1": {
+          "heading": "Eine Insel erfinden",
+          "text": "Stell dir Luma vor. Welche Regeln w\u00e4ren f\u00fcr die Insel wichtig?"
+        },
+        "fr:B2": {
+          "heading": "Une \u00eele imaginaire",
+          "text": "Imagine une \u00eele fictive. Comment organiser une \u00e9cole ouverte \u00e0 tous ?"
+        }
+      }
+    },
+    {
+      "id": "demo-muzeum-niva",
+      "skill": "cteni",
+      "slug": "muzeum-niva",
+      "shortCode": "P8R4",
+      "title": "Zpr\u00e1va z fiktivn\u00edho muzea Niva",
+      "summary": "Uk\u00e1zka rozhran\u00ed \u010dten\u00ed; text nen\u00ed schv\u00e1lenou \u010dtec\u00ed kartou.",
+      "tags": [
+        "demo",
+        "fiktivn\u00ed",
+        "zpr\u00e1va"
+      ],
+      "variants": [
+        {
+          "lang": "en",
+          "level": "A2"
+        },
+        {
+          "lang": "en",
+          "level": "B2"
+        }
+      ],
+      "defaultLevel": "A2",
+      "durationMinutes": 3,
+      "version": "0.1.0-demo",
+      "publishedAt": "2026-11-04T18:00:00Z",
+      "status": "PUBLIKOVANO",
+      "demo": true,
+      "cardPath": "cteni/muzeum-niva/",
+      "hasTeacherKey": false,
+      "teacherKeyUrl": null,
+      "demoContent": {
+        "en:A2": {
+          "heading": "A message from Niva",
+          "text": "This is a sample message about a museum that does not exist. There are no test questions in E1."
+        },
+        "en:B2": {
+          "heading": "The Niva museum project",
+          "text": "Imagine a fictional town preparing an exhibition. This placeholder checks language and level routing only."
+        }
+      }
+    }
+  ]
+}

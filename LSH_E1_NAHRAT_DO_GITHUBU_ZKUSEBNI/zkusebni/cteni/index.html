@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="cs" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0b1221">
+  <meta name="description" content="Language Skills Hub: pouze zkušební demo prostředí E1.">
+  <meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; object-src &#x27;none&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27;; img-src &#x27;self&#x27; blob: data:; font-src &#x27;self&#x27;; connect-src &#x27;self&#x27;; frame-src &#x27;none&#x27;; form-action &#x27;self&#x27;">
+  <title>Reading Lab | Language Skills Hub</title>
+  <link rel="stylesheet" href="../assets/lsh/v1/styles.css">
+  <script defer src="../assets/lsh/v1/config.js"></script>
+  <script defer src="../assets/lsh/v1/core.js"></script>
+  <script defer src="../assets/lsh/v1/qr.js"></script>
+  <script defer src="../assets/lsh/v1/app.js"></script>
+</head>
+<body data-page="cteni" data-path="cteni/index.html">
+  <a class="skip-link" href="#main">P&#345;esko&#269;it na obsah</a>
+  <header class="site-header"><div class="header-inner">
+    <a class="brand" href="../" aria-label="Language Skills Hub: rozcestník"><span class="brand-glyph" aria-hidden="true">L<span>S</span>H</span><span class="brand-text"><strong>Language Skills Hub</strong><small>Gymnázium &middot; demo E1</small></span></a>
+    <nav class="primary-nav" aria-label="Hlavní navigace"><a href="../">Rozcestn&#237;k</a><a href="../konverzace/">Mluven&#237;</a><a href="../cteni/" aria-current="page">&#268;ten&#237;</a><a href="../poslech/">Poslech</a><a href="../slovnicek/">M&#367;j slovn&#237;&#269;ek</a><a href="../k/">Otev&#345;&#237;t k&#243;d</a></nav>
+    <button type="button" id="themeToggle" class="theme-button" aria-label="P&#345;epnout sv&#283;tl&#253; nebo tmav&#253; re&#382;im" title="P&#345;epnout motiv">&#9788;</button>
+  </div></header>
+  <div class="demo-banner" role="status"><span class="demo-dot"></span><strong>ZKUŠEBNÍ VERZE E1</strong> <span>Pouze technick&#225; uk&#225;zka. Nepou&#382;&#237;vat p&#345;i v&#253;uce.</span></div>
+  <main id="main"><section class="container page-hero"><a class="crumb" href="../">&#8592; Zp&#283;t na rozcestn&#237;k</a><span class="eyebrow">KATALOG AKTIVIT &#183; E1</span><h1>Reading Lab</h1><p class="page-lead">Texty a &#250;lohy budou p&#345;id&#225;ny v pozd&#283;j&#353;&#237; etap&#283;. Nyn&#237; ov&#283;&#345;ujeme jen navigaci a sd&#237;len&#237;.</p><p class="note-demo">Zobrazuj&#237; se jen fiktivn&#237; uk&#225;zky ur&#269;en&#233; k ov&#283;&#345;en&#237; techniky.</p></section>
+ <section class="container catalog-layout" aria-labelledby="catalogTitle"><div class="catalog-top"><div><h2 id="catalogTitle">T&#233;mata v katalogu</h2><p id="catalogCount" role="status" aria-live="polite">Na&#269;&#237;t&#225;m p&#345;ehled...</p></div></div>
+ <form class="filters" id="filterForm" role="search"><label class="filter-search">Hledat t&#233;ma<input type="search" id="topicSearch" placeholder="N&#225;zev nebo kl&#237;&#269;ov&#233; slovo" autocomplete="off"></label><label>Jazyk<select id="langFilter"><option value="">V&#353;echny jazyky</option></select></label><label>&#218;rove&#328;<select id="levelFilter"><option value="">V&#353;echny &#250;rovn&#283;</option></select></label><button type="reset" class="button outline" id="resetFilters">Zru&#353;it filtry</button></form>
+ <div class="topic-list" id="topicList" aria-live="off"></div>
+ <div class="empty-state" id="catalogEmpty" hidden><span aria-hidden="true" class="empty-icon">&#9671;</span><h3 id="emptyTitle">&#381;&#225;dn&#233; t&#233;ma</h3><p id="emptyDescription"></p><button type="button" id="clearFilters" class="button outline">Zobrazit v&#353;e</button></div>
+ <p class="catalog-note">Katalog slou&#382;&#237; u&#269;iteli ke sd&#237;len&#237;. Nejde o uzam&#269;enou sekci: odkaz m&#367;&#382;e otev&#345;&#237;t kdokoli.</p>
+ </section><dialog id="shareDialog" class="share-dialog" aria-labelledby="shareTitle"><div class="dialog-inner">
+ <div class="dialog-head"><div><span class="eyebrow">SD&#205;LEN&#205; PRO V&#221;UKU &#183; DEMO</span><h2 id="shareTitle">Sd&#237;let aktivitu</h2><p id="shareTopicName" class="dialog-subtitle"></p></div><button type="button" class="close-button" id="shareClose" aria-label="Zav&#345;&#237;t dialog">&#10005;</button></div>
+ <div class="dialog-form"><label>Jazyk<select id="shareLang"></select></label><label>&#218;rove&#328;<select id="shareLevel"></select></label></div>
+ <label class="toggle-row"><input type="checkbox" id="shareLock"><span><strong>Zamknout volbu na kart&#283;</strong><small>Pouze z&#225;mek v rozhran&#237;, nikoli zabezpe&#269;en&#237;.</small></span></label>
+ <label class="link-label" for="shareUrl">P&#345;esn&#253; odkaz pro studenty</label><input id="shareUrl" class="share-url" readonly aria-readonly="true" type="text">
+ <div class="share-buttons"><button id="copyLinkBtn" class="button primary" type="button">Kop&#237;rovat odkaz</button><a id="previewBtn" class="button subtle" href="#" target="_blank" rel="noopener">N&#225;hled karty</a></div>
+ <div class="share-bottom"><div class="qr-shell"><div id="qrSlot" class="qr-slot" role="img" aria-label="QR kód odkazu"></div><button id="downloadQRBtn" class="text-button" type="button">Ulo&#382;it QR (SVG)</button></div><div class="short-shell"><span class="eyebrow">KR&#193;TK&#221; K&#211;D</span><output id="shareShortCode">----</output><button id="copyCodeBtn" class="button outline" type="button">Kop&#237;rovat k&#243;d</button><p>Student zad&#225; k&#243;d na str&#225;nce Otev&#345;&#237;t k&#243;d. Odkaz je sou&#269;&#225;st&#237; testovac&#237;ho prost&#345;ed&#237;.</p></div></div>
+ <p id="shareStatus" class="form-status" role="status" aria-live="polite"></p>
+ </div></dialog></main>
+  <footer class="site-footer"><div class="footer-inner"><span>Language Skills Hub <b>E1 / 0.1.0</b></span><span>Bez p&#345;ihl&#225;&#353;en&#237;, analytiky a extern&#237;ch slu&#382;eb. Prototyp neukl&#225;d&#225; odpov&#283;di &#382;&#225;k&#367;.</span></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <noscript><p class="no-script">Pro zobrazen&#237; katalogu a sd&#237;len&#237; zapn&#283;te JavaScript.</p></noscript>
+</body></html>
