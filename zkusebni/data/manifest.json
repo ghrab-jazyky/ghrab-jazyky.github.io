@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "manifestVersion": "0.2.1-e2-review-candidate",
+  "manifestVersion": "0.4.0-rc1-staging",
   "environment": "staging",
   "demoOnly": false,
   "generatedAt": "2026-11-05T09:10:00Z",
@@ -2613,8 +2613,8 @@
       "defaultLevel": "A2",
       "durationMinutes": 3,
       "version": "0.1.0-demo",
-      "publishedAt": "2026-11-04T18:00:00Z",
-      "status": "PUBLIKOVANO",
+      "publishedAt": null,
+      "status": "ROZPRACOVANO",
       "demo": true,
       "cardPath": "cteni/muzeum-niva/",
       "hasTeacherKey": false,
@@ -2631,5 +2631,5 @@
       }
     }
   ],
-  "releaseStatus": "E2_CANDIDATE_NOT_APPROVED_FOR_PUBLICATION"
+  "releaseStatus": "RC1_TECHNICAL_PREVIEW_NOT_PEDAGOGICALLY_APPROVED"
 }
