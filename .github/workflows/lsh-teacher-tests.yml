@@ -1,0 +1,32 @@
+name: LSH teacher gateway security unit tests (NO DEPLOYMENT)
+on:
+  push:
+    branches:
+      - feat/lsh-teacher-cloudflare-access-2026-11-05
+  pull_request:
+    paths:
+      - 'teacher-gateway/**'
+      - 'zkusebni/data/manifest.json'
+      - '.github/workflows/lsh-teacher-tests.yml'
+permissions:
+  contents: read
+jobs:
+  deny-by-default:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax check
+        run: |
+          node --check teacher-gateway/src/worker.mjs
+          node --check teacher-gateway/src/ui.mjs
+          node --check teacher-gateway/src/qr-asset.mjs
+          node --check teacher-gateway/tests/worker.test.mjs
+      - name: Unit and denial tests (no real Cloudflare authentication)
+        run: node --test teacher-gateway/tests/worker.test.mjs
+      - name: Verify no production teacher secrets in config
+        run: |
+          ! grep -E '^AUTHORIZED_TEACHERS[[:space:]]*=' teacher-gateway/wrangler.toml
+          ! grep -E '^id = "[a-fA-F0-9]{32}"' teacher-gateway/wrangler.toml
