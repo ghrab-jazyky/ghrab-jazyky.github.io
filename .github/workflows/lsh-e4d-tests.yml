@@ -1,0 +1,35 @@
+name: LSH E4D universal Reading navigation (synthetic only, no deployment)
+on:
+  push:
+    branches:
+      - feat/lsh-e4d-reading-navigation-standard-2026-11-05
+  pull_request:
+    paths:
+      - 'zkusebni/tools/reading-nav-v2_2.*'
+      - 'zkusebni/tools/patch_nav.py'
+      - 'zkusebni/tests/e4d-nav.browser.test.cjs'
+      - 'zkusebni/tests/fixtures/e4d-nav-synthetic.html'
+      - '.github/workflows/lsh-e4d-tests.yml'
+permissions:
+  contents: read
+jobs:
+  synthetic-nav-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax and no external card content
+        run: |
+          python3 -m py_compile zkusebni/tools/patch_nav.py
+          node --check zkusebni/tools/reading-nav-v2_2.js
+          node --check zkusebni/tests/e4d-nav.browser.test.cjs
+          ! find zkusebni/cteni -type f \( -iname '*teacher*key*' -o -iname '*ucitel*key*' -o -iname '*plastic*ocean*' -o -iname '*can*mistakes*' \) | grep -q .
+      - name: Install test browsers (CI only)
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Universal module synthetic browser regression
+        run: node --test zkusebni/tests/e4d-nav.browser.test.cjs
