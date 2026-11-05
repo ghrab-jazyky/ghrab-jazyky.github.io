@@ -1,27 +1,31 @@
 LANGUAGE SKILLS HUB — ETAPA E4A: READING LAB DATA BRIDGE (2026-11-05)
-Status: DRAFT / REVIEW CANDIDATE / NO-MERGE / NO-DEPLOY
+Status: DRAFT / EXPERIMENTAL LEGACY ONLY / INCOMPATIBLE WITH READING LAB v3.4 / NO-MERGE / NO-DEPLOY
 
 Parent branch: feat/lsh-e3d-pwa-qr-2026-11-05
 Work branch: feat/lsh-e4a-reading-bridge-2026-11-05
-Source of truth: Reading Lab master prompt — latest full version NOT ATTACHED
-to this conversation when E4A started. Previous discussion points to v3.3,
-but its precise text was NOT independently inspected. DO NOT CLAIM
-FULL CONFORMANCE until that file and the final approved reference HTML/ZIP
-have been read, compared and audited. No real Reading Lab cards migrated.
+Source of truth: Reading_Lab_MASTER_PROMPT_v3_4.txt was supplied and read
+in full on 2026-11-05. Detailed independent conformance audit:
+zkusebni/docs/E4A_READING_LAB_V34_AUDIT.md.
+NO real Reading Lab reference HTML v4.3+ is currently available for code QA.
+No real Reading Lab cards migrated.
 
 Implemented technical foundation:
-1. /zkusebni/assets/lsh/v4/reading-bridge.js is an opt-in local-only
-   adapter for already approved Reading Lab cards (nothing auto-wired).
+1. /zkusebni/assets/lsh/v4/reading-bridge.js is NOT a Reading Lab v3.4
+   compatible adapter. It is synthetic staging legacy code ONLY; every
+   instantiation requires experimentalLegacyAdapter:true.
+   Never include it as a dependency in a real Reading Lab student HTML.
 2. Requires the exact matrix of EN/ES/DE/FR x A1-C2 (24 variants)
    and stable per-variant task identifiers, topic ID and data version.
-3. Snapshot storage via E3A IndexedDB: 'cteni:topic:lang:level' identity.
-   Preserves original firstAttempt when students subsequently edit answers.
-4. Version changes: read-only preview returns missing task IDs and
-   requires explicit acknowledgeVersionChange before any further
-   write. Snapshot can be copied/exported before migration by future UI.
-5. Shared vocabulary stores editorially fixed senseId, actual
-   Czech translation/target-language explanation and the reading topic
-   as its source. Neither translation nor AI is used to invent senseId.
+3. Synthetic snapshots remain in E3A IndexedDB 'lsh-test' for the fixture;
+   Reading Lab v3.4 uses per-card sessionStorage with a topicId+version key.
+   Do NOT conflate the two. First attempt is now captured only on CHECK,
+   never on ordinary answer typing or save.
+4. Fixture-only version changes offer explicit acknowledgment. This is
+   NOT a tested migration route for live Reading Lab stored answers.
+5. Synthetic vocabulary stores explicit senseId in 'lsh-test'. Actual
+   Reading Lab canonical DB is 'reading-lab-vocabulary' (v1), with
+   a different ID, record shape and JSON backup kind. No implicit
+   merging, migration, conversion or aliasing is permitted.
 6. If IndexedDB is unavailable, API returns storedInIndexedDB=false
    and a truthful temporary-storage warning.
 7. Teacher answers and keys are excluded from the student adapter
@@ -46,8 +50,9 @@ Automated tests:
   runs E3A-E4A static tests and Chromium/WebKit smoke test; no deploy.
 
 Mandatory next steps:
-A. Obtain actual latest Reading Lab master prompt, approved reference
-   Reading Lab HTML and teacher-key policy. Run precise conformance audit.
+A. The authoritative v3.4 prompt is reviewed. Obtain the actual
+   approved reference Reading Lab HTML v4.3+ and card teacher-key policy,
+   then audit its *real* implementation. See E4A_READING_LAB_V34_AUDIT.md.
 B. Compare existing card's dictionary, evidence highlighting and task UI
    with hub's adapter; do NOT replace/duplicate internal card engine.
 C. Implement user-visible save/restore UX in real cards with explicit
