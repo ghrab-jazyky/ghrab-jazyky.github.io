@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>E4D synthetic testing only</title>
+<style>
+:root{--accent:#36a3cc;--accent2:#9090e5;--panel:#fff;--text:#151515;--muted:#565656;--field:#eee}
+body{font-family:system-ui;margin:0;padding:16px}.columns{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+#readingBody{height:420px;overflow-y:auto;border:1px solid #888;padding:12px}
+#tasks{height:420px;overflow-y:auto;border:1px solid #888;padding:12px}
+.qcard{padding:18px;margin:10px;border:1px solid #999}
+.reading-target{background:#b9c5e7}.evidence-hit{background:#ffe188}
+@media(max-width:850px){.columns{display:block}#readingBody,#tasks{height:auto;overflow:visible}}
+</style></head><body>
+<header><select id="language" aria-label="Language"><option value="en">English</option><option value="es">Español</option><option value="de">Deutsch</option><option value="fr">Français</option></select>
+<div id="levels"><button data-level="A1" aria-pressed="false">A1</button><button data-level="B2" aria-pressed="true">B2</button></div>
+<button id="dictionaryToggle" aria-pressed="false">Dictionary OFF</button>
+<button id="clear">Clear</button><button id="reset">Reset</button></header>
+<main class="columns">
+ <article><div id="readingBody"></div></article>
+ <section id="tasks"><nav id="skillTabs"><button data-skill="gist" aria-selected="true">Gist</button><button data-skill="detail" aria-selected="false">Detail</button></nav>
+ <div id="questions"></div></section>
+</main>
+<script>
+const DATA={"test":"synthetic only"};
+const host=document.getElementById('questions'),reading=document.getElementById('readingBody'),tabs=document.getElementById('skillTabs');
+let activeTab='gist';
+function renderQuestion(){
+ host.innerHTML='';
+ const ids=activeTab==='gist'?['q1','q2','q3']:['q4','q5','q6'];
+ for(const id of ids){
+  const row=document.createElement('section');row.className='qcard';row.dataset.question=id;
+  const title=document.createElement('h3');title.textContent='Synthetic question '+id;row.append(title);
+  const target=document.createElement('button');target.dataset.locate=id;target.textContent='Show in text';row.append(target);
+  const evidence=document.createElement('button');evidence.dataset.evidence=id;evidence.textContent='Show evidence';row.append(evidence);
+  host.append(row);
+ }
+}
+function renderReading(withEvidence=false){
+ reading.innerHTML='';
+ for(let i=0;i<3;i++){
+  const p=document.createElement('p');p.id='paragraph-'+i;
+  if(i===0){p.append('Opening paragraph, with a ');const x=document.createElement('span');x.className='reading-target';x.dataset.targetFor=activeTab==='gist'?'q1':'q4';x.textContent='target';p.append(x);
+   if(withEvidence){const e=document.createElement('span');e.className='evidence-hit';e.textContent=' supporting evidence';p.append(e);}
+  }else p.append('More synthetic information paragraph '+i);
+  reading.append(p);
+ }
+}
+renderQuestion();renderReading();
+host.addEventListener('click',event=>{
+ if(event.target.closest('button[data-evidence]'))renderReading(true);
+ else if(event.target.closest('button[data-locate]'))renderReading(false);
+});
+tabs.addEventListener('click',event=>{
+ const btn=event.target.closest('button[data-skill]');
+ if(!btn)return;
+ activeTab=btn.dataset.skill;
+ for(const b of tabs.querySelectorAll('button'))b.setAttribute('aria-selected',String(b===btn));
+ renderQuestion();renderReading();
+});
+document.getElementById('language').addEventListener('change',event=>{document.documentElement.lang=event.target.value;renderQuestion();renderReading();});
+document.getElementById('levels').addEventListener('click',event=>{
+ const btn=event.target.closest('button[data-level]');if(!btn)return;
+ for(const b of document.querySelectorAll('#levels button'))b.setAttribute('aria-pressed',String(b===btn));
+ renderQuestion();renderReading();
+});
+document.getElementById('dictionaryToggle').addEventListener('click',event=>{
+ const on=event.target.getAttribute('aria-pressed')==='true';
+ event.target.setAttribute('aria-pressed',String(!on));
+});
+</script></body></html>
