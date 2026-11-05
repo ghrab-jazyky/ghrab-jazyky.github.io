@@ -1,0 +1,61 @@
+LANGUAGE SKILLS HUB — ETAPA E4A: READING LAB DATA BRIDGE (2026-11-05)
+Status: DRAFT / REVIEW CANDIDATE / NO-MERGE / NO-DEPLOY
+
+Parent branch: feat/lsh-e3d-pwa-qr-2026-11-05
+Work branch: feat/lsh-e4a-reading-bridge-2026-11-05
+Source of truth: Reading Lab master prompt — latest full version NOT ATTACHED
+to this conversation when E4A started. Previous discussion points to v3.3,
+but its precise text was NOT independently inspected. DO NOT CLAIM
+FULL CONFORMANCE until that file and the final approved reference HTML/ZIP
+have been read, compared and audited. No real Reading Lab cards migrated.
+
+Implemented technical foundation:
+1. /zkusebni/assets/lsh/v4/reading-bridge.js is an opt-in local-only
+   adapter for already approved Reading Lab cards (nothing auto-wired).
+2. Requires the exact matrix of EN/ES/DE/FR x A1-C2 (24 variants)
+   and stable per-variant task identifiers, topic ID and data version.
+3. Snapshot storage via E3A IndexedDB: 'cteni:topic:lang:level' identity.
+   Preserves original firstAttempt when students subsequently edit answers.
+4. Version changes: read-only preview returns missing task IDs and
+   requires explicit acknowledgeVersionChange before any further
+   write. Snapshot can be copied/exported before migration by future UI.
+5. Shared vocabulary stores editorially fixed senseId, actual
+   Czech translation/target-language explanation and the reading topic
+   as its source. Neither translation nor AI is used to invent senseId.
+6. If IndexedDB is unavailable, API returns storedInIndexedDB=false
+   and a truthful temporary-storage warning.
+7. Teacher answers and keys are excluded from the student adapter
+   and not added to manifest/public folder.
+8. No account, Cloudflare deploy, analytics, external requests,
+   copyrighted source article, or student personal data.
+
+Synthetic non-catalogued QA fixture:
+- /zkusebni/tests/fixtures/reading-e4a.html
+- /zkusebni/tests/fixtures/reading-e4a-fixture.js
+This is strictly non-pedagogical demonstration content, NOT a real
+Reading Lab card and NOT a replacement for it.
+
+Automated tests:
+- zkusebni/tests/e4a.test.cjs validates 24-variant schema, strict
+  exclusion of keys/solutions, first attempts, version reconciliation,
+  source-identity merging, invalid input rejection and no catalog leak.
+- zkusebni/tests/e4a.browser.test.cjs: actual Chromium and WebKit
+  local HTTP test, writes/restores IndexedDB after reload and verifies
+  Reading word appears inside the existing shared vocabulary page.
+- .github/workflows/lsh-e4a-tests.yml: Ubuntu 24.04 / Node 22,
+  runs E3A-E4A static tests and Chromium/WebKit smoke test; no deploy.
+
+Mandatory next steps:
+A. Obtain actual latest Reading Lab master prompt, approved reference
+   Reading Lab HTML and teacher-key policy. Run precise conformance audit.
+B. Compare existing card's dictionary, evidence highlighting and task UI
+   with hub's adapter; do NOT replace/duplicate internal card engine.
+C. Implement user-visible save/restore UX in real cards with explicit
+   notice about temporary data; test all 24 variants across real content.
+D. Decide secure teacher-only key storage outside public web.
+E. Test mobile Safari/iPhone/iPad/Android and long-term local storage.
+F. Only then consider Reading Lab catalog entries and student sharing QR.
+G. No merge to main and no Cloudflare publication before explicit GO.
+
+Rollback: close E4A draft PR / remove its work branch.
+Previous E3D E3C E3B E3A E2 remain untouched.
