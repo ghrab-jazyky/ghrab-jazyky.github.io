@@ -8,11 +8,13 @@ const NOW_LANGS=['en','es','de','fr'],LEVELS=['A1','A2','B1','B2','C1','C2'];
 const variants=(tasks=['q1','q2'])=>Object.fromEntries(NOW_LANGS.flatMap(l=>LEVELS.map(v=>[l+':'+v,tasks.slice()])));
 const makeStore=()=>STORE.createStore({mode:'staging',indexedDB:null,BroadcastChannel:null,storage:null});
 const opts=(store=makeStore(),patch={})=>({
-  mode:'staging',topicId:'rl-e4a-synthetic',dataVersion:'qa-v1',variants:variants(),store,...patch
+  mode:'staging',experimentalLegacyAdapter:true,topicId:'rl-e4a-synthetic',dataVersion:'qa-v1',variants:variants(),store,...patch
 });
 const maker=(store=makeStore(),patch={})=>BRIDGE.createBridge(opts(store,patch));
 const identity={language:'en',level:'B2'};
 test('Contract strictly requires 24 CEFR/language variants',()=>{
+ assert.equal(BRIDGE.readingLabV34Compatible,false);
+ assert.throws(()=>BRIDGE.createBridge({...opts(),experimentalLegacyAdapter:false}),/INCOMPATIBLE/);
  const c=BRIDGE.validateContract(opts());
  assert.equal(Object.keys(c.variants).length,24);
  assert.deepEqual(c.variants['es:C1'],['q1','q2']);
@@ -57,6 +59,31 @@ test('Wrong task, unsupported language, or malformed answer fails without erasin
  const restored=await b.restoreAnswers(identity);
  assert.equal(restored.snapshot.answers.q1.value,'B');
 });
+test('v3.4: first attempt is fixed at first CHECK, not while typing or saving',async()=>{
+ const b=maker();
+ await b.saveAnswers({...identity,answers:{q1:{value:'draft'}}});
+ let a=await b.restoreAnswers(identity);
+ assert.equal(a.snapshot.answers.q1.firstAttempt,null);
+ await b.saveAnswers({...identity,answers:{q1:{value:'final-before-check'}}});
+ a=await b.restoreAnswers(identity);
+ assert.equal(a.snapshot.answers.q1.firstAttempt,null);
+ await b.saveAnswers({...identity,answers:{q1:{value:'first-checked',checked:true}}});
+ a=await b.restoreAnswers(identity);
+ assert.equal(a.snapshot.answers.q1.firstAttempt,'first-checked');
+ await b.saveAnswers({...identity,answers:{q1:{value:'changed',checked:true,firstAttempt:'forged'}}});
+ a=await b.restoreAnswers(identity);
+ assert.equal(a.snapshot.answers.q1.firstAttempt,'first-checked');
+ await b.saveAnswers({...identity,answers:{q1:{value:null,checked:false}}});
+ a=await b.restoreAnswers(identity);
+ assert.equal(a.snapshot.answers.q1.firstAttempt,'first-checked');
+});
+test('v3.4: no firstAttempt injection on un-checked student input',async()=>{
+ const b=maker();
+ await b.saveAnswers({...identity,answers:{q1:{value:'draft',firstAttempt:'forged',checked:false}}});
+ const a=await b.restoreAnswers(identity);
+ assert.equal(a.snapshot.answers.q1.firstAttempt,null);
+});
+
 test('Variant and topic separation: saved answers never leak across variants',async()=>{
  const store=makeStore(),b=maker(store);
  await b.saveAnswers({...identity,answers:{q1:{value:'yes'}}});
@@ -67,7 +94,7 @@ test('Variant and topic separation: saved answers never leak across variants',as
 test('Data version drift requires explicit migration and removes obsolete IDs',async()=>{
  const store=makeStore();
  const v1=maker(store);
- await v1.saveAnswers({...identity,answers:{q1:{value:'B'},q2:{value:'legacy'}}});
+ await v1.saveAnswers({...identity,answers:{q1:{value:'B',checked:true},q2:{value:'legacy'}}});
  const v2=maker(store,{dataVersion:'qa-v2',variants:variants(['q1','q3'])});
  const peek=await v2.restoreAnswers(identity);
  assert.equal(peek.requiresReview,true);
