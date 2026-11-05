@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="cs" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:">
+<title>E4A – umělá integrační zkouška Reading Lab</title>
+<link rel="stylesheet" href="../../assets/lsh/v2/styles.css">
+<script defer src="../../assets/lsh/v3/model.js"></script>
+<script defer src="../../assets/lsh/v3/store.js"></script>
+<script defer src="../../assets/lsh/v4/reading-bridge.js"></script>
+<script defer src="reading-e4a-fixture.js"></script>
+</head>
+<body>
+<main class="container single-page">
+<h1>E4A – syntetický integrační test</h1>
+<p><strong>POUZE TECHNICKÁ ZKOUŠKA.</strong> Nejde o výukový text a stránka není zařazena do katalogu.</p>
+<p id="fixtureMode" role="status"></p>
+<label>Odpověď na testovací otázku <input id="fixtureAnswer" type="text" value="initial"></label>
+<p><button type="button" id="fixtureSaveAnswer" class="button primary">Uložit odpověď</button>
+<button type="button" id="fixtureRestoreAnswer" class="button outline">Obnovit odpověď</button></p>
+<p><button type="button" id="fixtureSaveWord" class="button primary">Uložit slovo do Mého slovníčku</button></p>
+<p id="fixtureStatus" role="status" aria-live="polite"></p>
+</main>
+</body></html>
