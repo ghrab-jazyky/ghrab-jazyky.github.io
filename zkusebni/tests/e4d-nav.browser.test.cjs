@@ -40,8 +40,8 @@ async function exercise(engine,name,viewport){
   await page.setContent(p.text,{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>document.documentElement.dataset.rlNavigation==='2.2');
   assert.deepEqual(await page.locator('#readingBody > p[data-num]').evaluateAll(els=>els.map(el=>el.dataset.num)),['1','2','3']);
-  assert.equal(await page.locator('#readingBody p').first.evaluate(el=>el.textContent.includes('Opening paragraph')),true);
-  assert.match(await page.locator('#readingBody p').first.evaluate(el=>getComputedStyle(el,'::before').content),/1/);
+  assert.equal(await page.locator('#readingBody p').first().evaluate(el=>el.textContent.includes('Opening paragraph')),true);
+  assert.match(await page.locator('#readingBody p').first().evaluate(el=>getComputedStyle(el,'::before').content),/1/);
   assert.equal(await page.locator('#rlReturnToQuestion').isHidden(),true);
 
   // Show target first, then switch tabs, return to exact question and restore focus.
