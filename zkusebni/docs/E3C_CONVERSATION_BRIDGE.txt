@@ -43,22 +43,41 @@ nemenny lexikograficky registr. Zmena prekladu/vykladu muze zmenit
 senseId. Pred ostrym E3 vydanim je nutny redakcni audit a pripadna
 migrace starych ID; do te doby testovaci DB lsh-test.
 
-VERIFIKACE A UAT
-- Potvrzena struktura 21/21, 504 variant, 6048 slov: staticky PASS.
-- 21 HTML patchu vytvoreno ze SHA-originalu, interní skripty zachovany.
-- Node testy vlozeny; vysledek CI vyhodnotit az z provereneho behu.
-- Reálné klikani, mobilni interakce, IndexedDB a kopie dat po restartu:
-  zatim NOT_TESTED. Prvni manualni UAT:
-  (1) otevrit kartu v EN/B2 -> doporucene slovo -> Ulozit;
-  (2) otevrit popup offline slovniku -> Ulozit;
-  (3) zmenit jazyk na ES a uroven A2 -> oba typy tlacitek;
-  (4) otevrit Muj slovnicek a zpet -> spravna karta;
-  (5) vypnout site po nacteni -> data zustavaji v local IDB;
-  (6) otevrit druhou zalozku -> pocet slov aktualizovan;
-  (7) odmitnuti IndexedDB v soukromem rezimu -> vyslovna varovani;
-  (8) export do JSON -> kontrola zachovani po zavreni a novem otevreni;
-  (9) otestovat iOS Safari a Android, klavesnici, s iPadOS QR;
- (10) zadny poskozeny vyklad ani potvrzeni 'ulozeno' pri selhani.
+VERIFIKACE A UAT — SKUTECNE PROVEDENE TESTY
+- Github Actions: 2026-11-05, commit 8cc6323 a navazujici kosmeticka
+  revize. Testovaci sady:
+  E3A model/store 16/16 PASS, E3B static 7/7 PASS,
+  E3C staticka regrese 8/8 PASS. Celkem 31/31 PASS.
+- Deteministicky diff: 21/21 puvodnich karet, pouze bridge/meta/CSS,
+  inline skripty i CSP SHA256 beze zmen; 504 variant a 6048 slov PASS.
+- SKUTECNY prohlizec Chromium, Playwright v CI (run 42029080801)
+  PASS. Lokalni HTTP staging: katalog -> sdileni -> QR SVG,
+  ulozeni doporuceneho slova do IndexedDB, ulozeni bez site,
+  slovnicek / zpet ke karte, persistenci po reloadu, prepnuti ES/A2,
+  ulozeni pres offline prekladove okno, responsivitu pri 320 px,
+  varovani a pravdive dočasné ulozeni pri nedostupnem IndexedDB.
+- Screenshot artefakt: lsh-e3c-chromium-qa, GitHub Actions,
+  3 snimky (390 px konverzace, 320 px konverzace, 390 px slovnicek).
+  Vizualni kontrola snimku: mobilni rozlozeni je pouzitelne;
+  mobilni horizontalni pretékani automaticky nezjisteno.
+- ZADNY test na fyzickem iPhonu / iPadu / Androidu neprobedl.
+  ZADNY test Safari, instalovane PWA, prenosu Safari -> app,
+  vypadku elektriny ani obnovy po 7 dnech nebyl proveden.
+- Headless Chromium je realny browser, ale neni nahradou
+  za skutecna Apple zarizeni ani nejvyssi uroven a11y auditu.
+
+RUCNI UAT — maximalne 10 minut po schvalenem TESTOVACIM NASAZENI
+(1) iPhone Safari: karta EN/B2, doporucene slovo -> Ulozit.
+(2) Offline slovnik: klepnout na slovo -> Ulozit.
+(3) iPad: prepnout ES/A2, zopakovat oba mechanismy.
+(4) Android Chrome: otevrit slovnicek a zpet, bez chyby.
+(5) Po obnove karty je slovo stale ulozeno.
+(6) Dve soucasne zalozky: zmena poctu slov.
+(7) Bez pristupu k IndexedDB: zretelne varovani.
+(8) Export JSON -> import do testovaciho prohlizece.
+(9) Zamcene volby z ucitelskeho QR nezmeni prednastaveny jazyk/uroven.
+(10) Zadne potichu ztracene odpovedi/hesla, hlasit chyby.
+
 
 CO NENI HOTOVO
 - PWA, iPhone instalace/prenos, kamera a skenovani QR (E3D).
@@ -69,5 +88,5 @@ CO NENI HOTOVO
   tato stage to neupravuje bez GO publikace.
 
 GO/NO-GO: implementacni kandidát E3C = READY FOR REVIEW,
-         produkce = NO-GO (browser UAT a senseId redakcni schvaleni chybi).
+         produkce = NO-GO (fyzicka Apple/Android UAT, PWA a lexikograficka revize chybi).
 Navrat: neprovadet merge; lze smazat pracovni vetev / zavrit PR.
