@@ -3,7 +3,7 @@
  'use strict';
  const langs=['en','es','de','fr'],levels=['A1','A2','B1','B2','C1','C2'];
  const variants=Object.fromEntries(langs.flatMap(l=>levels.map(v=>[l+':'+v,['q1','q2']])));
- const api=window.LSH_READING_BRIDGE.createBridge({mode:'staging',
+ const api=window.LSH_READING_BRIDGE.createBridge({mode:'staging',experimentalLegacyAdapter:true,
    topicId:'rl-e4a-synthetic',dataVersion:'fixture-e4a-1',variants});
  const $=id=>document.getElementById(id);
  const status=$('fixtureStatus');
@@ -17,6 +17,8 @@
  }
  $('fixtureSaveAnswer').addEventListener('click',()=>run(()=>
   api.saveAnswers({language:'en',level:'B2',answers:{q1:{value:$('fixtureAnswer').value}}})));
+ $('fixtureCheckAnswer').addEventListener('click',()=>run(()=>
+  api.saveAnswers({language:'en',level:'B2',answers:{q1:{value:$('fixtureAnswer').value,checked:true}}})));
  $('fixtureRestoreAnswer').addEventListener('click',()=>run(async()=>{
   const r=await api.restoreAnswers({language:'en',level:'B2'});
   $('fixtureAnswer').value=r.snapshot?.answers?.q1?.value||'';
