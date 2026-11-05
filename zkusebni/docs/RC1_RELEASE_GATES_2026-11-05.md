@@ -1,6 +1,11 @@
 # Language Skills Hub — RC1 technický pilot a vydávací brány
-Datum: 2026-11-05. Rozhodnutí vlastníka: schváleny všechny technické části,
+Datum: 2026-11-05. Aktualizace architektury: GitHub-only. Rozhodnutí vlastníka: schváleny všechny technické části,
 které mají doložené regresní testy a neohrožují obsah, data ani soukromí.
+
+## Závazná architektura
+**GitHub-only.** Po výslovném potvrzení vlastníka ze dne 5. 11. 2026:
+žádný Cloudflare Worker, Access, KV ani další externí hosting. PR #15
+zamítnut a uzavřen bez sloučení; žádné nasazení této odbočky.
 
 ## Rozsah RC1
 Základ: E3D `e39173a4`, obsahuje E2+E3A+B+C+D. Nová větev
@@ -10,7 +15,7 @@ se nedotýká. Neobsahuje zablokovaný experimentální E4A adapter ani
 soukromé Reading HTML/učitelské klíče z QA.
 
 Pouze technický preview: `/zkusebni/` (veřejná cesta na GitHub Pages
-**AŽ PO případném sloučení do main**).
+**RC1 byl sloučen do main (PR #13), GitHub Pages nasazení PASS**).
 - Conversation Lab: 21 karet včetně 24 CEFR × jazykových variant,
   lokální slovníček, QR/kódy, oblíbené a filtry, stále ROZPRACOVANO.
 - Reading Lab: 1 výslovně fiktivní demo, NENÍ výuková karta.
@@ -24,10 +29,13 @@ Pouze technický preview: `/zkusebni/` (veřejná cesta na GitHub Pages
   žádné ze 80 testovacích zadání; správná čísla nelze domýšlet).
 - Native QR scanner na iOS/Safari; při absenci BarcodeDetector se
   používá běžný fotoaparát nebo krátký kód.
-- Učitelský přístup není autentizovaný. **GitHub Pages je veřejný.**
-  Bez externího Cloudflare Access/školního OAuth není možné mít
-  uzavřený učitelský katalog ani klíče. Do veřejného Pages žádné
-  učitelské klíče nepatří.
+- Učitelský přístup není autentizovaný. **GitHub Pages je veřejný
+  statický web.** Celý Language Skills Hub poběží podle rozhodnutí
+  vlastníka výhradně na GitHubu (GitHub Pages + GitHub repozitáře).
+  Veřejný katalog nesmí obsahovat klíče ani soukromá učitelská data.
+  Učitelské klíče lze oddělit do soukromého GitHub repozitáře s
+  individuálním přístupem; GitHub Pages přitom nesmí předstírat
+  bezpečné přihlášení pouhým heslem v prohlížeči.
 - Listening Lab neobsahuje skutečné schválené poslechové karty.
 - Fyzická UAT Android/iPhone/iPad, offline/cache eviction,
   zprovoznění offline JSON na iOS, dlouhodobá IndexedDB persistence.
@@ -46,10 +54,13 @@ Pouze technický preview: `/zkusebni/` (veřejná cesta na GitHub Pages
   karet, ochrana učitelských klíčů, přímé odkazy a QR studentům.
 - **Ostrý Listening Lab**: skutečné karty, řádné zdrojové licence,
   testy dostupnosti audio/video a mobilní QA.
-- **Jednotný chráněný AI Studio rozcestník**: učitelské přihlášení/
-  Cloudflare Access; studentské karty přes vlastní veřejné URL,
-  bez přihlášení. **Nikdy** nevydávat veřejnou GH Pages katalogovou
-  stránku za učitelsky zabezpečenou.
+- **Jednotný Language Skills Hub – výhradně GitHub**: veřejný
+  přehled a studentské karty na GitHub Pages, přímé URL/QR bez
+  přihlášení. Učitelské klíče a neveřejné materiály jen v soukromém
+  GitHub repozitáři, kam mají přístup výslovně oprávnění učitelé.
+  **Veřejný katalog na Pages není autentizovaný**, dokud není
+  prokazatelně dostupné skutečné omezení přístupu v rámci GitHubu.
+  GitHub-only řešení nesmí vyžadovat žádné Cloudflare služby.
 
 ## Regrese RC1
 `node --test zkusebni/tests/e3a.test.cjs zkusebni/tests/e3b.static.test.cjs
