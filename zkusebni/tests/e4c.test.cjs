@@ -62,6 +62,11 @@ test('Reject a strict A-B-C pattern',()=>{
  const a=makeData();for(let i=0;i<3;i++)a.de.C2.questions[i].answer=i;
  assert.ok(tool.audit(html(a)).findings.some(f=>f.type==='predictable-answer-order'));
 });
+test('Catch repeated answer-position patterns across two tabs',()=>{
+ const a=makeData();
+ for(let i=0;i<3;i++)a.en.C2.questions[3+i].answer=a.en.C2.questions[i].answer;
+ assert.ok(tool.audit(html(a)).findings.some(f=>f.type==='duplicate-answer-pattern'&&f.variant==='en:C2'));
+});
 test('Detect leaking missing sentence outside its gapped task',()=>{
  const a=makeData();a.en.B1.gap={p:0,sentence:'The secret sentence is hidden.'};
  a.en.B1.questions[0].choices[2]='The secret sentence is hidden.';
