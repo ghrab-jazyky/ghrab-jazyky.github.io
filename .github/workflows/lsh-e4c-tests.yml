@@ -1,0 +1,28 @@
+name: LSH E4C Reading source data audit (no publication)
+on:
+  push:
+    branches:
+      - feat/lsh-e4c-reading-data-audit-2026-11-05
+  pull_request:
+    paths:
+      - 'zkusebni/tools/reading-v34-data-audit.cjs'
+      - 'zkusebni/tests/e4c.test.cjs'
+      - '.github/workflows/lsh-e4c-tests.yml'
+permissions:
+  contents: read
+jobs:
+  data-preflight:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: E4B/E4C synthetic static checks only
+        run: |
+          node --check zkusebni/tools/reading-v34-preflight.cjs
+          node --check zkusebni/tools/reading-v34-data-audit.cjs
+          node --test zkusebni/tests/e4b.test.cjs zkusebni/tests/e4c.test.cjs
+      - name: Ensure no student Reading HTML or teacher keys were published by E4C
+        run: |
+          ! find zkusebni/cteni -type f \( -iname '*teacher*key*' -o -iname '*ucitel*key*' -o -iname '*klic*' -o -iname '*plastic*ocean*' \) | grep -q .
