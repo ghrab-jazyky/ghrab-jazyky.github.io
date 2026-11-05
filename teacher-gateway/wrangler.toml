@@ -1,0 +1,20 @@
+# Run from the repository root:
+# npx wrangler deploy --config teacher-gateway/wrangler.toml
+#
+# FAIL-CLOSED until Cloudflare Access protects the Worker and
+# AUTHORIZED_TEACHERS is configured as a Worker secret.
+name = "lsh-teacher-gateway"
+main = "src/worker.mjs"
+compatibility_date = "2026-11-05"
+workers_dev = true
+
+[vars]
+STUDENT_BASE_URL = "https://ghrab-jazyky.github.io/zkusebni/"
+
+# DO NOT put teacher email addresses, OAuth secrets, or teacher keys here.
+# Configure an allowlist with: npx wrangler secret put AUTHORIZED_TEACHERS
+#
+# Optional private KV binding: create namespace and fill in ID outside this repo:
+# [[kv_namespaces]]
+# binding = "TEACHER_KEYS"
+# id = "YOUR_PRIVATE_NAMESPACE_ID"
