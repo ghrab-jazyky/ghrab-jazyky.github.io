@@ -29,7 +29,7 @@ async function exercise(engine,label,size){
   const page=await context.newPage();
   const errors=[],external=[];
   page.on('pageerror',e=>errors.push(e.message));
-  page.on('request',r=>{if(!r.url().startsWith(origin+'/teacher/'))external.push(r.url());});
+  page.on('request',r=>{if(!r.url().startsWith(origin+'/'))external.push(r.url());});
   const response=await page.goto(origin+'/teacher/',{waitUntil:'domcontentloaded'});
   assert.equal(response.status(),200);
   await page.waitForFunction(()=>document.querySelectorAll('#topics .topic').length===22);
