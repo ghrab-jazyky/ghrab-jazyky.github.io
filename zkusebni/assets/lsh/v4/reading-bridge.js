@@ -1,4 +1,4 @@
-/* LSH E4A Reading Lab bridge — draft/staging only.
+/* LSH E4A legacy synthetic bridge — experimental staging only, NOT Reading Lab v3.4 compatible.
    Original reading-card engines must opt in explicitly; no automatic interception,
    no remote requests, keys, analytics or unapproved content migration. */
 (function(root,factory){
@@ -22,6 +22,8 @@
   function validateContract(input){
     assert(object(input),'Reading contract must be an object');
     assert(input.mode==='staging','E4A can only run in staging');
+    assert(input.experimentalLegacyAdapter===true,
+      'INCOMPATIBLE with Reading Lab v3.4. Explicit synthetic staging opt-in required.');
     assert(typeof input.topicId==='string'&&ID.test(input.topicId),'Invalid Reading topic ID');
     assert(typeof input.dataVersion==='string'&&/^[a-zA-Z0-9][a-zA-Z0-9._-]{0,119}$/.test(input.dataVersion),'Invalid dataVersion');
     assert(!['teacherKey','teacherKeyUrl','correctAnswers','answerKey','solutionKey','teacherAnswers']
@@ -86,10 +88,12 @@
       for(const [key,patch] of patches){
         const old=merged[key]||null;
         const next={...(old||{}),...patch};
+        // v3.4: first attempt is captured only on the FIRST CHECK, never on input/save.
         if(old&&old.firstAttempt!==null&&old.firstAttempt!==undefined)
           next.firstAttempt=old.firstAttempt;
-        else if(patch.firstAttempt===undefined&&patch.value!==undefined&&patch.value!==null)
+        else if(patch.checked===true&&patch.value!==undefined&&patch.value!==null)
           next.firstAttempt=patch.value;
+        else next.firstAttempt=null;
         merged[key]=next;
       }
       const nextPart=activePart===undefined?(previous?previous.activePart:null):activePart;
@@ -124,5 +128,6 @@
     return Object.freeze({contract,status,restoreAnswers,acknowledgeVersionChange,
       saveAnswers,clearAnswers,saveWord,close});
   }
-  return Object.freeze({validateContract,createBridge,LANGS,LEVELS});
+  return Object.freeze({validateContract,createBridge,LANGS,LEVELS,
+    experimentalLegacyAdapterOnly:true,readingLabV34Compatible:false});
 });
