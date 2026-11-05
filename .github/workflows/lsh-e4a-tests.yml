@@ -1,0 +1,35 @@
+name: LSH E4A Reading bridge regression (no deployment)
+on:
+  push:
+    branches:
+      - feat/lsh-e4a-reading-bridge-2026-11-05
+  pull_request:
+    paths:
+      - 'zkusebni/**'
+      - '.github/workflows/lsh-e4a-tests.yml'
+permissions:
+  contents: read
+jobs:
+  reading-node:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: E3A through E4A data and regression checks
+        run: node --test zkusebni/tests/e3a.test.cjs zkusebni/tests/e3b.static.test.cjs zkusebni/tests/e3c.test.cjs zkusebni/tests/e3d.test.cjs zkusebni/tests/e4a.test.cjs
+  reading-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium and WebKit for QA only
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Browser Reading fixture (not educational content)
+        run: node --test zkusebni/tests/e4a.browser.test.cjs
