@@ -58,19 +58,19 @@ async function exercise(engine,name,viewport){
   // Evidence click, keyboard target and dictionary precedence.
   await page.locator('button[data-evidence="q2"]').click();
   assert.equal(await page.locator('#rlReturnToQuestion').isVisible(),true);
-  await page.locator('.evidence-hit').first.click();
+  await page.locator('.evidence-hit').first().click();
   assert.equal(await page.locator('#rlReturnToQuestion').isHidden(),true);
   await page.locator('button[data-locate="q1"]').click();
-  await page.locator('.reading-target').first.focus();
+  await page.locator('.reading-target').first().focus();
   await page.keyboard.press('Enter');
   assert.equal(await page.locator('#rlReturnToQuestion').isHidden(),true);
   await page.locator('button[data-evidence="q1"]').click();
   await page.locator('#dictionaryToggle').click();
   assert.equal(await page.locator('#dictionaryToggle').getAttribute('aria-pressed'),'true');
-  await page.locator('.evidence-hit').first.click();
+  await page.locator('.evidence-hit').first().click();
   assert.equal(await page.locator('#rlReturnToQuestion').isVisible(),true,'Dictionary ON must prevent return via passage');
   await page.locator('#dictionaryToggle').click();
-  await page.locator('.evidence-hit').first.click();
+  await page.locator('.evidence-hit').first().click();
   assert.equal(await page.locator('#rlReturnToQuestion').isHidden(),true);
   await page.locator('button[data-evidence="q1"]').click();
   await page.keyboard.press('Escape');
