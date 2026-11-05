@@ -23,8 +23,8 @@ def patch(text: str) -> str:
             raise ValueError(f"expected exactly one {check}, found {text.count(check)}")
     if text.count("</style>") != 1 or "</body>" not in text:
         raise ValueError("unexpected HTML style/body structure")
-    css = (HERE / "rl-nav-v2_2.css").read_text(encoding="utf-8")
-    js = (HERE / "rl-nav-v2_2.js").read_text(encoding="utf-8")
+    css = (HERE / "reading-nav-v2_2.css").read_text(encoding="utf-8")
+    js = (HERE / "reading-nav-v2_2.js").read_text(encoding="utf-8")
     if "</script" in js.lower() or "</style" in css.lower():
         raise ValueError("embedded asset contains closing HTML delimiter")
     text = text.replace("</style>", "\n" + css + "\n</style>", 1)
