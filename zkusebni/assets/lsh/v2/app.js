@@ -224,6 +224,28 @@
     append(article,main,actions);
     return article;
   }
+  // Recompute public readiness from the validated public manifest, never from stale
+  // labels in the HTML shell. This is a display status, not an approval mechanism.
+  function updateContentStatus(m) {
+    const count = skill => m.topics.filter(t=>t.skill===skill && CORE.isUnifiedSelectable(t)).length;
+    const speaking=count('konverzace'),reading=count('cteni'),listening=count('poslech');
+    const cards=n=>n===1?'1 schválená karta':(n>=2&&n<=4?n+' schválené karty':n+' schválených karet');
+    const set=(id,value)=>{const target=$(id);if(target)target.textContent=value;};
+    set('homeContentStatus',speaking+' konverzačních témat v technickém pilotu. Reading Lab: '+
+      cards(reading)+'; Listening Lab: '+cards(listening)+'. Každá aktivita má vlastní vydávací a pedagogickou kontrolu.');
+    set('unifiedContentStatus',speaking+' konverzačních témat k ověření; Reading Lab: '+
+      cards(reading)+'; Listening Lab: '+cards(listening)+'. Fiktivní demo není v tomto výběru nabízeno.');
+    set('readingLabStatus',reading?'Reading Lab: '+cards(reading):'Technické demo, schválené karty zatím nejsou');
+    set('listeningLabStatus',listening?'Listening Lab: '+cards(listening):'Katalog zatím bez karet');
+    if(reading){
+      set('readingStatus','Reading Lab: '+cards(reading)+'. Aktivitu můžete otevřít nebo sdílet pomocí QR kódu.');
+      set('readingNote','Fiktivní demonstrace Niva se při dostupnosti schválených karet v katalogu nezobrazuje.');
+    }
+    if(listening){
+      set('listeningStatus','Listening Lab: '+cards(listening)+'. Aktivitu můžete otevřít nebo sdílet pomocí QR kódu.');
+      set('listeningNote','Vybírejte z pedagogicky schválených poslechových aktivit.');
+    }
+  }
   async function initCatalog() {
     const list = $('topicList'), count = $('catalogCount');
     const empty = $('catalogEmpty'), clear = $('clearFilters'), search = $('topicSearch');
@@ -233,8 +255,9 @@
     try {
       const m = await loadManifest();
       checkForTeacherUpdate(m);
+      updateContentStatus(m);
       // The cross-skill selector must never advertise fake Reading demos or withdrawn cards.
-      const topics = m.topics.filter(t => kind ? t.skill===kind : CORE.isUnifiedSelectable(t));
+      const topics = CORE.selectCatalogTopics(m,kind);
       const availableLangs = CORE.LANGS.filter(l => topics.some(t => t.variants.some(v => v.lang === l)));
       const availableLevels = CORE.LEVELS.filter(l => topics.some(t => t.variants.some(v => v.level === l)));
       for (const l of availableLangs) option(langFilter,l,LANG_NAMES[l]);
@@ -454,7 +477,7 @@
     if (CORE.validBasePath(CONFIG.basePath) && !location.pathname.startsWith(CONFIG.basePath)) {
       console.warn('E2 is not being served under the configured basePath; sharing links use the configured path.');
     }
-    if (page==='home') loadManifest().then(checkForTeacherUpdate).catch(()=>{});
+    if (page==='home') loadManifest().then(m=>{checkForTeacherUpdate(m);updateContentStatus(m);}).catch(()=>{});
     if (page==='vyber' || CORE.SKILLS.includes(page)) initCatalog();
     else if (page==='student') initStudent();
     else if (page==='code') initCode();

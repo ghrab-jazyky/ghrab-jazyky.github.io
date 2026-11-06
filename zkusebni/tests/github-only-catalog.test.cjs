@@ -37,10 +37,10 @@ test('Catalog remains a truthful pilot with demo hidden in unified selector',()=
  assert.equal(manifest.environment,'staging');
  assert.equal(manifest.topics.filter(t=>t.skill==='konverzace').length,21);
  assert.equal(manifest.topics.filter(t=>t.skill==='cteni'&&t.demo).length,1);
- assert.equal(manifest.topics.filter(t=>t.skill==='poslech').length,0);
+ assert.ok(manifest.topics.filter(t=>t.skill==='poslech').every(t=>t.status==='PUBLIKOVANO'));
  const js=read('assets/lsh/v2/app.js');
  assert.match(js,/page==='vyber'/);
- assert.match(js,/CORE\.isUnifiedSelectable\(t\)/);
+ assert.match(js,/CORE\.selectCatalogTopics\(m,kind\)/);
  assert.match(js,/const matchesSkill = !selectedSkill/);
  assert.match(js,/normalizeSearch/);
  assert.match(js,/PILOT RC1/);

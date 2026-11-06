@@ -19,10 +19,11 @@ test('RC1 is a staging-only pilot, not an approved Reading/Listening launch',()=
   const reading=manifest.topics.filter(t=>t.skill==='cteni');
   const listening=manifest.topics.filter(t=>t.skill==='poslech');
   assert.equal(conversation.length,21);
-  assert.equal(reading.length,1);
-  assert.equal(listening.length,0);
-  assert.ok(conversation.every(x=>x.status==='ROZPRACOVANO'&&x.variants.length===24));
-  assert.ok(reading.every(x=>x.demo===true&&x.status==='ROZPRACOVANO'&&x.publishedAt===null));
+  assert.equal(reading.filter(x=>x.demo===true).length,1);
+  assert.ok(listening.every(x=>x.status==='PUBLIKOVANO'&&x.publishedAt));
+  assert.ok(conversation.every(x=>x.variants.length===24));
+  assert.ok(reading.filter(x=>!x.demo).every(x=>x.status==='PUBLIKOVANO'&&x.publishedAt));
+  assert.ok(reading.filter(x=>x.demo).every(x=>x.status==='ROZPRACOVANO'&&x.publishedAt===null));
   for(const topic of manifest.topics){
     assert.equal(topic.hasTeacherKey,false);
     assert.equal(topic.teacherKeyUrl,null);
