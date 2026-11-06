@@ -313,3 +313,39 @@ test('R4B Asteroids v2.3 original TEST preview supports direct FR C1, dictionary
   }finally{await browser.close();}
  }
 });
+
+
+test('R4C original Conversation AI reference: public TEST source runs in Chromium and WebKit with correct level, language and mobile layout', {timeout:160000},async()=>{
+ for(const [engine,label,viewport] of [
+  [chromium,'Chromium desktop',{width:1440,height:900}],
+  [webkit,'WebKit mobile-sized',{width:390,height:844}]
+ ]){
+  const browser=await engine.launch({headless:true});
+  try{
+   const context=await browser.newContext({viewport,serviceWorkers:'block'});
+   const page=await context.newPage();page.setDefaultTimeout(30000);
+   const errors=[];
+   page.on('pageerror',e=>errors.push(e.message));
+   const res=await page.goto(STAGE+'reference/konverzace/umela-inteligence/',{waitUntil:'domcontentloaded'});
+   assert.equal(res.status(),200,label+' original HTML must load');
+   await page.waitForFunction(()=>document.querySelectorAll('#sectionNav button').length===8);
+   assert.equal(await page.locator('#languageSelect').inputValue(),'en',label+' fresh default EN');
+   assert.equal(await page.locator('#levelSwitch button.active').getAttribute('data-level'),'B2',label+' fresh default B2');
+   assert.equal(await page.locator('html').getAttribute('lang'),'en');
+   await page.locator('#languageSelect').selectOption('fr');
+   await page.locator('#levelSwitch button[data-level="C2"]').click();
+   assert.equal(await page.locator('html').getAttribute('lang'),'fr',label+' changed html lang');
+   assert.equal(await page.locator('#levelSwitch button.active').getAttribute('data-level'),'C2');
+   assert.equal(await page.locator('#sectionNav button').count(),8);
+   await page.locator('#sectionNav button').last().click();
+   assert.equal(await page.locator('#stationNum').textContent(),'8');
+   assert.equal(await page.locator('#questions .question-text').count(),3);
+   assert.equal(await page.locator('#questions .question-action').count(),3);
+   await page.locator('#questions .question-action').first().click();
+   assert.equal(await page.locator('#questions .question-detail').first().isVisible(),true);
+   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,label+' no horizontal overflow');
+   assert.deepEqual(errors,[],label+' JS runtime exceptions');
+   await context.close();
+  }finally{await browser.close();}
+ }
+});
