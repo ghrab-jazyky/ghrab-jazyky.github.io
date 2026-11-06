@@ -194,3 +194,32 @@ test('R3B: editorial Reading inventory remains readable offline after PWA shell 
   await context.close();
  }finally{await browser.close();}
 });
+
+
+test('ONLINE TEST: eight real student HTML previews and mobile navigation are reachable under ghrab-jazyky', {timeout:140000},async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});
+  const page=await context.newPage();page.setDefaultTimeout(20000);
+  const hub=await page.goto(STAGE+'nahledy/',{waitUntil:'domcontentloaded'});
+  assert.equal(hub.status(),200);
+  assert.match(await page.title(),/Language Skills Hub.*TEST/);
+  assert.equal(await page.locator('.preview-card a[href^="./"]').count(),8);
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,'preview hub mobile overflow');
+  const entries=JSON.parse(fs.readFileSync(path.join(ROOT,'zkusebni/data/preview-provenance.json'),'utf8')).entries;
+  for(const entry of entries){
+   const route=STAGE+entry.file.replace(/index\\.html$/,'');
+   const response=await page.request.get(route,{timeout:20000});
+   assert.equal(response.status(),200,entry.id+' must open at school Pages-equivalent URL');
+   assert.match(response.headers()['content-type']||'',/text\\/html/,entry.id+' must be HTML');
+  }
+  // Real source smoke is intentionally shallow: detailed activity-level QA comes next.
+  for(const entry of [entries[0],entries[5]]){
+   const url=STAGE+entry.file.replace(/index\\.html$/,'');
+   const response=await page.goto(url,{waitUntil:'domcontentloaded',timeout:35000});
+   assert.equal(response.status(),200,entry.id+' must render in browser');
+   assert.ok((await page.title()).trim().length>8,entry.id+' title should be visible');
+  }
+  await context.close();
+ }finally{await browser.close();}
+});
