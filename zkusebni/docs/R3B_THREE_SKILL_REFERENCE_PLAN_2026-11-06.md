@@ -58,7 +58,7 @@ Ověřit zejména dostupnost **toho samého** videa, střih a časové body, aby
 
 1. Dokončené zelené CI (Node + Chromium/WebKit) pro R3B v samostatné větvi, bez regresí.
 2. Referenční kandidáti a katalogové názvy zkontrolovány vlastníkem projektu.
-3. Návrh PR R3B je **závislý** na R3A a nesmí být sloučen do `main` před úspěšnou R3A.
+3. Závislost na R3A je splněna: PR #18 byl po všech 7 zelených testech sloučen do `main` (merge commit `414275e`). R3B je samostatný PR #19 do `main` a má vlastní nezávislou CI bránu.
 4. Žádné soukromé HTML, učitelský klíč, výsledky hodnotitelů ani nezveřejněné osobní údaje na veřejný GitHub.
 5. Samostatná integrační etapa pro každou referenční kartu včetně skutečného pedagogického schválení a zařízení.
 
