@@ -157,8 +157,11 @@
       lang.replaceChildren();
       for (const l of getLangs(topic)) option(lang, l, LANG_NAMES[l]);
       const defaults = CORE.defaultVariant(topic);
-      lang.value = defaults.lang;
-      fillLevels(defaults.level);
+      // Keep the teacher's chosen language/CEFR filter when opening the share dialog.
+      const preferredLang = $('langFilter')?.value;
+      const preferredLevel = $('levelFilter')?.value;
+      lang.value = getLangs(topic).includes(preferredLang) ? preferredLang : defaults.lang;
+      fillLevels(preferredLevel || defaults.level);
       lock.checked = false;
       refresh();
       dialog.showModal();
