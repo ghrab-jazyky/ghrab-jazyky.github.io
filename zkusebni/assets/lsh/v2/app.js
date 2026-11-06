@@ -272,6 +272,17 @@
         favoriteToggle.setAttribute('aria-pressed','false');
         append(extra,fieldset,favoriteToggle);
       }
+      if (kind===null && extra) {
+        // Saved Conversation favorites also work in the unified teacher activity selector.
+        const favoriteToggle=button('☆ Jen oblíbené','button outline favorites-filter',()=>{
+          favoritesOnly=!favoritesOnly;
+          favoriteToggle.setAttribute('aria-pressed',String(favoritesOnly));
+          favoriteToggle.textContent=favoritesOnly?'★ Jen oblíbené':'☆ Jen oblíbené';
+          render();
+        });
+        favoriteToggle.setAttribute('aria-pressed','false');
+        extra.appendChild(favoriteToggle);
+      }
       function toggleFavorite(id) {
         if (favorites.has(id)) favorites.delete(id); else favorites.add(id);
         saveFavorites(favorites); render();
