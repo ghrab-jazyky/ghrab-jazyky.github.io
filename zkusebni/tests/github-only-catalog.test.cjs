@@ -40,7 +40,7 @@ test('Catalog remains a truthful pilot with demo hidden in unified selector',()=
  assert.equal(manifest.topics.filter(t=>t.skill==='poslech').length,0);
  const js=read('assets/lsh/v2/app.js');
  assert.match(js,/page==='vyber'/);
- assert.match(js,/t\.demo!==true/);
+ assert.match(js,/CORE\.isUnifiedSelectable\(t\)/);
  assert.match(js,/const matchesSkill = !selectedSkill/);
  assert.match(js,/normalizeSearch/);
  assert.match(js,/PILOT RC1/);
