@@ -1,6 +1,6 @@
 # Language Skills Hub — ZÁVAZNÝ DOPLNĚK MASTER PROMPTU
 ## Prémiový učitelský katalog, procvičovací režim, testovací režim a bezpečné sdílení
-**Verze zadání:** 1.2 — návrh k implementaci · 6. 11. 2026  
+**Verze zadání:** 1.2.1 — pedagogické rozlišení dvou režimů · 6. 11. 2026  
 **Rozsah:** Conversation Lab, Reading Lab, Listening Lab  
 **Repozitář a hosting:** VÝHRADNĚ `ghrab-jazyky/ghrab-jazyky.github.io`, GitHub Pages pod `/zkusebni/` (nikoli `Daniel22-dev` ani Cloudflare).
 
@@ -11,7 +11,7 @@
 Language Skills Hub je jednotné, profesionální učitelské prostředí, které zprostředkuje tři oddělené výukové dovednosti: **mluvení, čtení a poslech**. Učitel má rychle vyhledat pedagogicky schválenou kartu, připravit ji do hodiny či do testu, získat přesně nastavený studentský odkaz a QR kód nebo stáhnout samostatnou procvičovací verzi.
 
 - **Prémiový design bez složitosti:** prostorová a typografická hierarchie, jednotná designová soustava, konzistentní karty, přehledné popisky, kontrast, důraz na přístupnost a responzivní rozvržení, rychlé ovládání na PC/tabletu/telefonu. Nepoužívat dekorace na úkor čitelnosti.
-- **Jedna karta — dva jasné režimy:** *Procvičování* a *Testování*. Režim je součástí stejné kanonické karty a definovaného integračního kontraktu; nevytvářet nesouvisející kopie obsahů.
+- **Jedno téma — dva samostatně navržené režimy:** *Procvičování* a *Testování*. Jde o jednu položku katalogu a jeden kanonický identifikátor tématu, ale dvě odlišné studentské realizace s případně odlišnou sadou úloh, ovládáním, pravidly a výsledkem. Nejde o pouhé přepnutí viditelnosti slovníku ani automatickou kopii celé procvičovací karty. Společné podklady (text/audio/video) lze sdílet; učitelské schválení procvičovací a testové sady probíhá zvlášť.
 - **Schvalovací brána:** běžný katalog smí nabízet pouze konkrétně schválené, otestované a sjednocené karty. Stávající veřejné TEST náhledy zůstávají oddělené od ostrého výběru.
 - **Nenarušovat odlišnou pedagogiku:** Conversation/Reading/Listening mohou mít jiné úlohy, ale musí podporovat stejný režimový kontrakt a povinné sdílecí možnosti.
 - **Oddělení rolí:** rozhraní katalogu je pro učitele; studenti otevírají přímé karty přes odkaz/QR a nepotřebují účet. To neznamená, že veřejný GitHub Pages poskytuje učitelskou autentizaci.
@@ -50,6 +50,19 @@ Učitel zvolí **Procvičování** a jednu z možností:
 - Listening: video/stream z externí služby není samo o sobě offline součástí staženého HTML. Offline zvuk/video nelze garantovat bez legálně dostupného média a jeho zvláštního přibalení. Offline balíček musí toto omezení transparentně sdělit.
 
 ## 4. Testování (TEST — dohledový režim)
+
+### 4.0 Pedagogicky odlišná dvojice režimů — povinný standard
+
+- **Jeden katalogový záznam, dvě studentům určené podoby:** Procvičování a Testování. Nevytvářet druhé duplicitní téma v katalogu.
+- **Procvičování** může být komplexní, delší, s rozmanitými úlohami, slovníčkem, nápovědou, opakováním a okamžitou zpětnou vazbou.
+- **Testování** může mít **menší, pečlivě vybraný počet hodnotitelných úloh**, případně jiné typy úloh a jiné pořadí. Musí být předem stanovena pravidla hodnocení. **Test není pouze procvičovací karta s vypnutým slovníkem!**
+- V každé z trojice referenčních karet odděleně navrhnout a verzovat *sadu pro procvičování* a *sadu pro testování* (např. `practiceTasks` / `testTasks`, případně kompatibilní ekvivalent). Společné autentické texty či audio/video se mohou bezpečně sdílet. Každá sada však má vlastní obsahovou kontrolu a schválení.
+- **Listening Lab:** současné procvičovací poslechové karty obsahují více cvičení, než má mít budoucí test. Přesný výběr typů a počtu testových úloh, bodování a pravidla přehrávání zvuku/videa stanovíme **až při práci na referenční poslechové kartě**. Předem neurčovat počty.
+- **Reading Lab:** test může mít kratší sadu otázek než procvičování, bez offline slovníku a odhalování důkazových pasáží či výsledků během běhu. Odpovědi a hodnocení musí být nezávisle ověřeny.
+- **Conversation Lab:** testovací podoba může obsahovat kratší strukturované ústní zadání a hodnocení učitelem podle schválené rubriky. Nesmí se tiše předpokládat automatické známkování mluvení.
+- U každého testu určeného k hodnocení určit pro konkrétní referenci rozsah, dostupné varianty, kritéria, počet bodů, případně váhy úloh, maximální skóre a čas. **Nevymýšlet nové rubriky nebo převody na známku bez zadání vyučujícího.**
+- Pravidla a funkce obou režimů se ověřují samostatnými regresními testy, aby změna v procvičování nerozbila test, ani naopak.
+- Přesné pedagogické rozdíly mezi režimy se stanoví až s originálním referenčním HTML pro příslušnou dovednost; žádné předčasné hromadné přepisování ostatních karet.
 
 ### Vstup učitele
 
@@ -118,6 +131,7 @@ Zavést společnou konfigurační vrstvu, nikoli třikrát různě zakódovanou 
 | PR-01 | Practice/free link a QR otevře všechny existující dostupné jazykové/CEFR varianty a slovník, pokud je v kartě podporován. |
 | PR-02 | Practice/fixed link a QR zobrazí požadovanou variantu bez běžné možnosti přepnutí. |
 | PR-03 | Stáhnuté procvičovací HTML/ZIP se spustí bez neexistujících lokálních závislostí; media offline omezení je pravdivě označené. |
+| TE-00 | Jedna katalogová karta nabízí dva obsahově odlišné režimy. Testová verze může mít menší/odlišnou sadu úloh, vlastní ověřené hodnocení a nesmí být pouhým klonem procvičovací podoby s vypnutými funkcemi. |
 | TE-01 | Test dialog nabízí jen podporované jazyky/CEFR a povinný validovaný časový limit. |
 | TE-02 | Test QR otevře správný obsah, startovací obrazovku a viditelné odpočítávání; slovník, nápovědy a přepínače jsou mimo dosah běžného UI. |
 | TE-03 | Test nepovolí zobrazení správných odpovědí před odevzdáním přes běžné ovládací prvky. |
@@ -134,9 +148,11 @@ Zavést společnou konfigurační vrstvu, nikoli třikrát různě zakódovanou 
 
 **B. Společné jádro testového režimu:** časomíra, stav pokusu, vypnutí nápověd a slovníků, obnova po přerušení, lokální incidenty, jednoduché gesto učitele. Výslovná kompatibilita a omezení na telefonech/tabletech.
 
-**C. Tři reference:** samostatný pedagogický, bezpečnostní, UX a technický audit Reading/Conversation/Listening; schválení vlastníkem; teprve pak přenos společných funkcí a designu na zbytek kategorií.
+**C. Dvě obsahové verze pro každou referenci:** předem vybrat a ověřit, které úlohy jsou v Procvičování a které v Testu; stanovit jejich rozsah, kontrolu a hodnocení. Specifika testu Listening Lab určit až při úpravě referenční poslechové karty.
 
-**D. Závěrečná přejímka:** všechny skutečné uživatelské cesty, správnost QR/odkazů, offline data, testy zařízení, učitelské klíče oddělené, shoda PDF/HTML dokumentace a přehledné instrukce.
+**D. Tři reference:** samostatný pedagogický, bezpečnostní, UX a technický audit Reading/Conversation/Listening; schválení vlastníkem; teprve pak přenos společných funkcí a designu na zbytek kategorií.
+
+**E. Závěrečná přejímka:** všechny skutečné uživatelské cesty, správnost QR/odkazů, offline data, testy zařízení, učitelské klíče oddělené, shoda PDF/HTML dokumentace a přehledné instrukce.
 
 ### Ověřené současné implementační rozdíly
 
