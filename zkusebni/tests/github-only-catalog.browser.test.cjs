@@ -223,3 +223,58 @@ test('ONLINE TEST: eight real student HTML previews and mobile navigation are re
   await context.close();
  }finally{await browser.close();}
 });
+
+
+test('R4A teacher QA journal: Chromium and WebKit save notes locally, export, and delete', {timeout:170000},async()=>{
+ for(const [engine,label,viewport] of [
+  [chromium,'Chromium desktop',{width:1280,height:800}],
+  [webkit,'WebKit phone',{width:390,height:844}]
+ ]){
+  const browser=await engine.launch({headless:true});
+  try{
+   const context=await browser.newContext({viewport,acceptDownloads:true,serviceWorkers:'block'});
+   const page=await context.newPage();page.setDefaultTimeout(20000);
+   const errors=[],external=[];
+   page.on('pageerror',e=>errors.push(String(e)));
+   page.on('request',r=>{if(!r.url().startsWith(ORIGIN))external.push(r.url());});
+   const res=await page.goto(STAGE+'revize/',{waitUntil:'domcontentloaded'});
+   assert.equal(res.status(),200,label);
+   assert.equal(await page.locator('select#level option').count(),6,label+' must offer exactly A1-C2');
+   await page.locator('#card').selectOption('cteni');
+   assert.match(await page.locator('#cardLink').getAttribute('href'),/nahledy\/cteni\/can-mistakes\/$/);
+   await page.locator('#device').selectOption('iPad');
+   await page.locator('#browser').selectOption('Safari');
+   await page.locator('#language').selectOption('fr');
+   await page.locator('#level').selectOption('C1');
+   await page.locator('#result').selectOption('CHYBA');
+   await page.locator('#notes').fill('Syntetická regresní poznámka bez osobních údajů');
+   await page.locator('.qa-check input[value="nacteni"]').check();
+   await page.locator('#qaForm button[type="submit"]').click();
+   assert.match(await page.locator('#recordCount').textContent(),/^1 uložených záznamů$/);
+   assert.match(await page.locator('#savedEntries').textContent(),/Syntetická regresní poznámka/);
+   const raw=await page.evaluate(()=>localStorage.getItem('lsh-r4a-local-testing-v1'));
+   const saved=JSON.parse(raw);
+   assert.equal(saved.length,1);
+   assert.equal(saved[0].language,'fr');
+   assert.equal(saved[0].level,'C1');
+   await page.reload({waitUntil:'domcontentloaded'});
+   assert.match(await page.locator('#recordCount').textContent(),/^1 uložených záznamů$/);
+   const [download]=await Promise.all([
+    page.waitForEvent('download'),
+    page.locator('#export').click()
+   ]);
+   assert.equal(download.suggestedFilename(),'LSH-referencni-testy.json');
+   page.on('dialog',dialog=>dialog.accept());
+   await page.locator('#removeAll').click();
+   assert.match(await page.locator('#recordCount').textContent(),/^0 uložených záznamů$/);
+   await page.locator('#card').selectOption('poslech');
+   assert.equal(await page.locator('#language').isDisabled(),true,'Listening is English-only');
+   assert.equal(await page.locator('#language').inputValue(),'en');
+   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,
+    label+' must not have horizontal overflow');
+   assert.deepEqual(errors,[],label+' page errors');
+   assert.deepEqual(external,[],label+' must not send QA records to external hosts');
+   await context.close();
+  }finally{await browser.close();}
+ }
+});

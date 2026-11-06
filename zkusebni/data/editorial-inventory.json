@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "inventoryVersion": "r3b-2026-11-06",
-  "purpose": "Editorial inventory only. Not a student-facing release manifest.",
-  "releasePolicy": "No planned or unapproved content may be served as a student card or have a shareable QR or short code.",
+  "inventoryVersion": "r4a-2026-11-06",
+  "purpose": "Editorial inventory of online TEST student previews (Reading/Listening) and existing Conversation pilots; reference candidates are not pedagogically approved.",
+  "releasePolicy": "An online TEST preview is not a pedagogically approved lesson. Only entries independently approved may enter the shareable student manifest.",
   "referenceCandidates": {
     "konverzace": {
       "id": "cl-rodina",
@@ -36,80 +36,80 @@
       "skill": "cteni",
       "title": "Can Mistakes Help Us Learn?",
       "version": "v4.3",
-      "sourceState": "previously-audited-needs-restoration",
+      "sourceState": "public-test-preview",
       "state": "CEKA_NA_NEZAVISLOU_REVIZI",
       "scope": "Původně 4 jazyky · A1–C2 · 24 variant",
-      "note": "Referenční kandidát. Původní soubor nyní nedostupný; dokončit skutečnou pedagogickou QA v3.4 a navigaci otázka ↔ text."
+      "note": "Studentské HTML je online jako veřejný TEST a původní ZIP je dohledán. 24 variant / 360 otázek prošlo strukturální kontrolou; nezávislé pedagogické hodnocení ani fyzické UAT nejsou dokončené."
     },
     {
       "id": "rl-plastic-ocean",
       "skill": "cteni",
       "title": "Plastic Ocean — Film Review",
       "version": "v2",
-      "sourceState": "previously-audited-needs-restoration",
+      "sourceState": "public-test-preview",
       "state": "CEKA_NA_REFERENCI",
       "scope": "Původně 4 jazyky · A1–C2",
-      "note": "Návazná karta pro sjednocení až po referenci Can Mistakes; původní soubor nyní není v pracovním archivu."
+      "note": "Studentské HTML v2 je online jako TEST. Další standardizace až po schválení referenční Reading karty; učitelský klíč zůstává soukromý."
     },
     {
       "id": "rl-asteroids",
       "skill": "cteni",
       "title": "Asteroids",
-      "version": "historická v2.2 (nutno ověřit)",
-      "sourceState": "planned-only",
-      "state": "CEKA_NA_PODKLADY",
+      "version": "v2.2",
+      "sourceState": "public-test-preview",
+      "state": "CEKA_NA_REFERENCI",
       "scope": "Cíl: EN/ES/DE/FR · A1–C2",
-      "note": "Dohledat originální HTML a patch_nav.py, neoznačovat za hotovou kartu."
+      "note": "Původní studentské HTML v2.2 se podařilo obnovit a zpřístupnit jako TEST. Před vydáním prověřit pedagogiku a jednotnou navigaci."
     },
     {
       "id": "rl-email-friend",
       "skill": "cteni",
       "title": "Email to a Friend",
-      "version": null,
-      "sourceState": "planned-only",
-      "state": "PLANOVANO",
+      "version": "v2",
+      "sourceState": "public-test-preview",
+      "state": "CEKA_NA_REFERENCI",
       "scope": "Cíl: EN/ES/DE/FR · A1–C2",
-      "note": "Dříve zadané téma inspirované British Council; vytvoření v jednotném standardu až po referenci."
+      "note": "Původní studentské HTML v2 je online jako TEST. Navázat po schválení společného standardu Reading Lab."
     },
     {
       "id": "rl-instant-messages",
       "skill": "cteni",
       "title": "Instant Messages",
-      "version": null,
-      "sourceState": "planned-only",
-      "state": "PLANOVANO",
+      "version": "v2.1",
+      "sourceState": "public-test-preview",
+      "state": "CEKA_NA_REFERENCI",
       "scope": "Cíl: EN/ES/DE/FR · A1–C2",
-      "note": "Dřívější návrh tématu v roadmapě; hotový studentský soubor nebyl ověřen."
+      "note": "Původní studentské HTML v2.1 je online jako TEST. Navázat po schválení společného standardu Reading Lab."
     },
     {
       "id": "ll-matthew-oscars",
       "skill": "poslech",
       "title": "Matthew McConaughey — Oscars 2014",
       "version": "v1",
-      "sourceState": "private-source-verified",
+      "sourceState": "public-test-preview",
       "state": "CEKA_NA_INTEGRACNI_AUDIT",
       "scope": "Doložené studentské HTML · EN · A1–C2",
-      "note": "Referenční kandidát. Oficiální YouTube zdroj, ale současnou dostupnost přehrávání a fyzická zařízení nutno znovu ověřit."
+      "note": "Studentské HTML je online jako TEST. Referenční kandidát; ověřit všech šest úrovní, skutečné přehrávání oficiálního videa a mobilní zařízení."
     },
     {
       "id": "ll-peaky-no-fighting",
       "skill": "poslech",
       "title": "Peaky Blinders — No Fighting",
       "version": "v2",
-      "sourceState": "private-source-verified",
+      "sourceState": "public-test-preview",
       "state": "CEKA_NA_INTEGRACNI_AUDIT",
       "scope": "Doložené studentské HTML · EN · A1–C2 · cca 16–19 let",
-      "note": "Silné vulgarismy, drogové a sexuální narážky. Ověřit věkovou vhodnost, verzi scény a video před nasazením."
+      "note": "Studentské HTML v2 je online jako TEST. Před školním použitím ověřit konkrétní video, vulgarismy, drogové narážky a věkovou vhodnost."
     },
     {
       "id": "ll-harrison-ford",
       "skill": "poslech",
       "title": "Harrison Ford — Life Achievement Speech",
       "version": "v6",
-      "sourceState": "private-source-verified",
+      "sourceState": "public-test-preview",
       "state": "CEKA_NA_INTEGRACNI_AUDIT",
       "scope": "Doložené studentské HTML · EN · A1–C2",
-      "note": "Ověřit dostupnost a shodu skutečného projevu na Facebook/X se zadáním; externí videa mohou vyžadovat přihlášení."
+      "note": "Studentské HTML v6 je online jako TEST. Externí video na sociálních sítích může být omezené; ověřit skutečný projev a mobilní přehrávání."
     }
   ]
 }

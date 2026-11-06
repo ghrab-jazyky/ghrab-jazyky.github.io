@@ -4,6 +4,7 @@
   const allowedSkills = new Set(['konverzace','cteni','poslech']);
   const sourceLabels = Object.freeze({
     'private-source-verified': 'Původní soubor dohledán · soukromě',
+    'public-test-preview': 'Studentské HTML online · TEST · pedagogicky neschváleno',
     'previously-audited-needs-restoration': 'Starší audit doložen · zdroj obnovit',
     'planned-only': 'Téma zaevidováno · podklady chybí'
   });

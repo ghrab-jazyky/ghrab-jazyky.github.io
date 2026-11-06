@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Kontrolní list referenčních karet | Language Skills Hub</title>
+<link rel="stylesheet" href="../assets/lsh/v2/styles.css">
+<style>
+.qa-wrap{padding:26px 0 65px;max-width:1110px}
+.qa-wrap h1{font-size:clamp(1.7rem,4vw,2.8rem);margin:0 0 10px}
+.qa-intro{max-width:80ch;color:var(--muted-strong)}
+.qa-warning{padding:15px 18px;margin:18px 0 25px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--muted-strong)}
+.qa-warning strong{color:var(--coral)}
+.qa-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.88fr);gap:18px;align-items:start}
+.qa-panel{padding:20px;min-width:0;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+.qa-panel h2{margin:0 0 15px;font-size:1.18rem}
+.qa-field{display:grid;gap:5px;margin-bottom:15px}
+.qa-field label,.qa-checks legend{font-size:.89rem;font-weight:750;color:var(--muted-strong)}
+.qa-field select,.qa-field textarea{font:inherit;width:100%;min-width:0;min-height:43px;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:9px}
+.qa-field textarea{min-height:120px;resize:vertical}
+.qa-field select:disabled{opacity:.65}
+.qa-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.qa-checks{border:0;padding:0;margin:8px 0 18px}
+.qa-check{display:flex;gap:9px;align-items:flex-start;margin:8px 0;font-size:.9rem;color:var(--muted-strong)}
+.qa-check input{margin-top:5px;flex-shrink:0;accent-color:var(--mint)}
+.qa-actions{display:flex;flex-wrap:wrap;gap:9px}
+.qa-wrap button,.qa-open{font:inherit;cursor:pointer;font-weight:750;padding:9px 13px;min-height:42px;border:1px solid var(--line);border-radius:10px;background:var(--surface-raised);color:var(--ink)}
+.qa-open{display:inline-flex;margin:0 0 18px;max-width:100%;overflow-wrap:anywhere}
+.qa-wrap button.qa-primary{background:var(--sky);border-color:var(--sky);color:var(--bg)}
+.qa-wrap button:disabled{cursor:not-allowed;opacity:.55}
+.qa-status{min-height:24px;color:var(--mint);font-size:.9rem}
+.qa-item{border-top:1px solid var(--line);padding:12px 0;overflow-wrap:anywhere}
+.qa-item strong{display:block}.qa-item small{display:block;color:var(--muted);margin:4px 0}
+.qa-item p{white-space:pre-wrap;color:var(--muted-strong);font-size:.9rem}
+.qa-fine{color:var(--muted);font-size:.86rem}
+@media(max-width:760px){.qa-grid{grid-template-columns:minmax(0,1fr)}.qa-panel{padding:15px}.qa-pair{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Přejít na obsah</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../"><span class="brand-glyph">LSH</span><span class="brand-text"><strong>Language Skills Hub</strong><small>Kontrola karet · ghrab-jazyky</small></span></a><nav class="primary-nav"><a href="../">Rozcestník</a><a href="../nahledy/">Testovací karty</a></nav></div></header>
+<main id="main" class="container qa-wrap">
+<p class="eyebrow">R4A · PŘEDBĚŽNÉ TESTOVÁNÍ</p>
+<h1>Kontrolní list referenčních karet</h1>
+<p class="qa-intro">Vyzkoušej kandidáty referenčních karet přímo v prohlížeči. Zapiš zařízení, variantu a chybu. Uložený záznam není pedagogické schválení karty.</p>
+<div class="qa-warning" role="note"><strong>Ochrana soukromí:</strong> údaje jsou uloženy jen v tomto prohlížeči, nikam se automaticky neposílají. Exportuj JSON pro další společnou revizi. Nezapisuj jména žáků ani jiné osobní údaje.</div>
+<div class="qa-grid">
+<section class="qa-panel" aria-labelledby="newRecord">
+<h2 id="newRecord">Nový záznam</h2>
+<form id="qaForm">
+<div class="qa-field"><label for="card">Karta</label><select id="card" required>
+<option value="konverzace">Conversation Lab · Rodina</option>
+<option value="cteni">Reading Lab · Can Mistakes Help Us Learn?</option>
+<option value="poslech">Listening Lab · Matthew McConaughey</option>
+</select></div>
+<a class="qa-open" id="cardLink" href="../konverzace/rodina/" target="_blank" rel="noopener noreferrer">Otevřít kartu ↗</a>
+<div class="qa-pair">
+<div class="qa-field"><label for="device">Zařízení</label><select id="device"><option value="PC">Počítač</option><option value="Android">Android</option><option value="iPhone">iPhone</option><option value="iPad">iPad</option><option value="tablet">Jiný tablet</option></select></div>
+<div class="qa-field"><label for="browser">Prohlížeč</label><select id="browser"><option>Chrome</option><option>Safari</option><option>Firefox</option><option>Edge</option><option>Jiný</option></select></div>
+</div>
+<div class="qa-pair">
+<div class="qa-field"><label for="language">Jazyk</label><select id="language"><option value="en">EN</option><option value="es">ES</option><option value="de">DE</option><option value="fr">FR</option></select></div>
+<div class="qa-field"><label for="level">Úroveň CEFR</label><select id="level"><option>A1</option><option>A2</option><option>B1</option><option selected>B2</option><option>C1</option><option>C2</option></select></div>
+</div>
+<fieldset class="qa-checks"><legend>Vyzkoušené oblasti</legend>
+<label class="qa-check"><input type="checkbox" value="nacteni">Načtení karty a čitelnost</label>
+<label class="qa-check"><input type="checkbox" value="varianty">Výběr jazyka a úrovně</label>
+<label class="qa-check"><input type="checkbox" value="tlacitka">Tlačítka a navigace</label>
+<label class="qa-check"><input type="checkbox" value="odpovedi">Zadávání a vyhodnocení odpovědí</label>
+<label class="qa-check"><input type="checkbox" value="slovnik">Slovník nebo slovní zásoba</label>
+<label class="qa-check"><input type="checkbox" value="video">Video/zvuk (pokud karta obsahuje)</label>
+<label class="qa-check"><input type="checkbox" value="mobil">Rozložení na zvoleném zařízení</label>
+<label class="qa-check"><input type="checkbox" value="didaktika">Srozumitelnost a přiměřenost úrovni</label>
+</fieldset>
+<div class="qa-field"><label for="result">Výsledek tohoto testu</label><select id="result"><option value="NEOVERENO">Nedokončeno</option><option value="OK">Bez zjištěného problému</option><option value="CHYBA">Nalezena chyba</option></select></div>
+<div class="qa-field"><label for="notes">Připomínky, postup k reprodukci chyby</label><textarea id="notes" maxlength="4000" placeholder="Např. FR · C1: po kliknutí na ... se ..."></textarea></div>
+<div class="qa-actions"><button type="submit" class="qa-primary">Uložit záznam</button><button type="reset">Vyčistit formulář</button></div>
+<p id="formStatus" class="qa-status" role="status" aria-live="polite"></p>
+</form>
+</section>
+<section class="qa-panel" aria-labelledby="historyTitle">
+<h2 id="historyTitle">Testovací historie</h2>
+<p class="qa-fine">Poznámky zůstávají na tomto zařízení. Exportovaný soubor JSON můžeš přiložit v další zprávě, až budeme konkrétní kartu upravovat.</p>
+<p id="recordCount" class="qa-fine">Načítání…</p>
+<div class="qa-actions"><button id="export" type="button">Exportovat JSON</button><button id="removeAll" type="button">Smazat všechny záznamy</button></div>
+<p id="storageStatus" class="qa-status" role="status"></p>
+<div id="savedEntries" aria-live="polite"></div>
+</section>
+</div>
+</main>
+<script>
+(function(){
+'use strict';
+var KEY='lsh-r4a-local-testing-v1';
+var TARGETS={
+ konverzace:{title:'Rodina',url:'../konverzace/rodina/'},
+ cteni:{title:'Can Mistakes Help Us Learn?',url:'../nahledy/cteni/can-mistakes/'},
+ poslech:{title:'Matthew McConaughey',url:'../nahledy/poslech/matthew-mcconaughey/'}
+};
+var $=function(id){return document.getElementById(id)};
+var data=[];
+function textEl(tag,value){var e=document.createElement(tag);e.textContent=String(value);return e;}
+function load(){try{var v=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(v)?v.slice(-200):[];}catch(e){$('storageStatus').textContent='Lokální úložiště nelze načíst.';return [];}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(data));return true;}catch(e){$('storageStatus').textContent='Uložení do prohlížeče selhalo. Záznamy nyní zůstávají jen v otevřené stránce.';return false;}}
+function updateTarget(){
+ var t=TARGETS[$('card').value]||TARGETS.konverzace;
+ $('cardLink').textContent='Otevřít: '+t.title+' ↗';$('cardLink').href=t.url;
+ $('language').disabled=$('card').value==='poslech';
+ if($('language').disabled)$('language').value='en';
+}
+function render(){
+ var wrap=$('savedEntries');wrap.replaceChildren();
+ $('recordCount').textContent=data.length+' uložených záznamů';
+ $('export').disabled=!data.length;$('removeAll').disabled=!data.length;
+ if(!data.length){wrap.append(textEl('p','Žádný záznam.'));return;}
+ data.slice().reverse().forEach(function(r){
+  var item=textEl('article','');item.className='qa-item';
+  item.append(textEl('strong',(TARGETS[r.card]?.title||r.card)+' · '+r.result));
+  item.append(textEl('small',r.when+' · '+r.device+' / '+r.browser+' · '+r.language.toUpperCase()+' '+r.level));
+  item.append(textEl('small','Ověřeno: '+r.checks.length+' oblastí'));
+  if(r.notes)item.append(textEl('p',r.notes));
+  wrap.append(item);
+ });
+}
+$('card').addEventListener('change',updateTarget);
+$('qaForm').addEventListener('submit',function(e){
+ e.preventDefault();
+ var result=$('result').value,notes=$('notes').value.trim();
+ if(result==='CHYBA'&&!notes){$('formStatus').textContent='Popiš prosím konkrétní nalezený problém.';return;}
+ data.push({schemaVersion:1,when:new Date().toISOString(),card:$('card').value,
+ device:$('device').value,browser:$('browser').value,
+ language:$('card').value==='poslech'?'en':$('language').value,level:$('level').value,
+ result:result,checks:Array.from(document.querySelectorAll('.qa-checks input:checked')).map(function(x){return x.value;}),
+ notes:notes.slice(0,4000)});
+ if(data.length>200)data.shift();
+ var saved=save();render();
+ $('formStatus').textContent=saved?'Záznam byl uložen do tohoto prohlížeče.':'Záznam se nepodařilo trvale uložit.';
+});
+$('qaForm').addEventListener('reset',function(){setTimeout(function(){updateTarget();$('formStatus').textContent='';},0)});
+$('export').addEventListener('click',function(){
+ if(!data.length)return;
+ var json=JSON.stringify({type:'lsh-qa',schemaVersion:1,exportedAt:new Date().toISOString(),records:data},null,2);
+ var u=URL.createObjectURL(new Blob([json],{type:'application/json'}));
+ var link=document.createElement('a');link.href=u;link.download='LSH-referencni-testy.json';link.click();
+ setTimeout(function(){URL.revokeObjectURL(u);},1000);
+});
+$('removeAll').addEventListener('click',function(){
+ if(!data.length||!confirm('Opravdu smazat všechny lokální testovací záznamy?'))return;
+ data=[];if(save())$('storageStatus').textContent='Lokální záznamy smazány.';render();
+});
+data=load();updateTarget();render();
+})();
+</script>
+</body>
+</html>
