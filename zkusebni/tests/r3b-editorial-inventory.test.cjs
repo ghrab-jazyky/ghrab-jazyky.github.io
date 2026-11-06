@@ -10,12 +10,12 @@ const core=require('../assets/lsh/v2/core.js');
 
 test('R3B: three categories have explicit pending reference candidates without fake approval',()=>{
  assert.equal(inventory.schemaVersion,1);
- assert.match(inventory.inventoryVersion,/^r(?:3b|4a|4b)-/);
+ assert.match(inventory.inventoryVersion,/^r(?:3b|4a|4b|4c)-/);
  assert.equal(inventory.referenceCandidates.konverzace.approved,false);
  assert.equal(inventory.referenceCandidates.cteni.approved,false);
  assert.equal(inventory.referenceCandidates.poslech.approved,false);
- assert.equal(inventory.referenceCandidates.konverzace.id,'cl-rodina');
- assert.ok(manifest.topics.some(t=>t.id==='cl-rodina'&&t.skill==='konverzace'));
+ assert.equal(inventory.referenceCandidates.konverzace.id,'cl-umela-inteligence');
+ assert.ok(manifest.topics.some(t=>t.id==='cl-umela-inteligence'&&t.skill==='konverzace'));
  for(const skill of ['cteni','poslech']) {
   const id=inventory.referenceCandidates[skill].id;
   assert.ok(inventory.topics.some(t=>t.id===id&&t.skill===skill));

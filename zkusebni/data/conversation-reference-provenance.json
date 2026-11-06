@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "skill": "konverzace",
+  "topicId": "cl-umela-inteligence",
+  "title": "Umělá inteligence / Artificial Intelligence",
+  "originalFilename": "Umela-inteligence.html",
+  "originalSha256": "0598c67e27a126385875155310a042104c2f1fafa59cbec0884d4deef58a7813",
+  "originalGitBlobSha": "8c220aa960a1cbc2d7733518570fbe68deb970b8",
+  "originalBytes": 1088624,
+  "auditPromptFilename": "Convo lab - univerzální prompt na karty.txt",
+  "auditPromptSha256": "647691791aa7d68a5b343fdd2e923e2b5b6afc2094aeb47cef070f85f24e3eaf",
+  "previewPath": "reference/konverzace/umela-inteligence/index.html",
+  "visibility": "PUBLIC_TEST_ONLY",
+  "selectedAsReference": true,
+  "pedagogicallyApproved": false,
+  "practiceModeReadyForCatalog": false,
+  "supervisedTestModeImplemented": false,
+  "statusNote": "Teacher-selected source for technical and pedagogical review, not published as approved lesson. Existing public Conversation catalog AI card remains untouched."
+}
