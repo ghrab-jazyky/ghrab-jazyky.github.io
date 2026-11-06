@@ -2,7 +2,11 @@ name: LSH GitHub-only unified activity catalog (no Cloudflare)
 on:
   push:
     branches:
-      - feat/lsh-github-only-unified-catalog-2026-11-06
+      - main
+      - fix/lsh-r2-publication-gate-main-ci-2026-11-06
+    paths:
+      - 'zkusebni/**'
+      - '.github/workflows/lsh-github-only-catalog.yml'
   pull_request:
     branches:
       - main
@@ -26,9 +30,10 @@ jobs:
           node --check zkusebni/assets/lsh/v2/core.js
           node --check zkusebni/sw.js
           node --check zkusebni/tests/github-only-catalog.browser.test.cjs
+          node --check zkusebni/tests/r2-publication-gate.test.cjs
       - name: Existing RC1 and new public-only security regression
         run: |
-          node --test zkusebni/tests/e3a.test.cjs zkusebni/tests/e3b.static.test.cjs zkusebni/tests/e3c.test.cjs zkusebni/tests/e3d.test.cjs zkusebni/tests/rc1-gates.test.cjs zkusebni/tests/github-only-catalog.test.cjs
+          node --test zkusebni/tests/e3a.test.cjs zkusebni/tests/e3b.static.test.cjs zkusebni/tests/e3c.test.cjs zkusebni/tests/e3d.test.cjs zkusebni/tests/rc1-gates.test.cjs zkusebni/tests/github-only-catalog.test.cjs zkusebni/tests/r2-publication-gate.test.cjs
   browser-qa:
     runs-on: ubuntu-24.04
     timeout-minutes: 18
