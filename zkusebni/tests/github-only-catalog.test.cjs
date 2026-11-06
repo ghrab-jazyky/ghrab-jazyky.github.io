@@ -62,7 +62,7 @@ test('Public GitHub manifest categorically rejects teacher-key data or URLs',()=
 test('New selector supports offline PWA install without leaving original scope',()=>{
  const sw=read('sw.js');
  assert.match(sw,/'vyber\/'/);
- assert.match(sw,/CACHE_PREFIX\+'2026-11-06-v1'/);
+ assert.match(sw,/CACHE_PREFIX\+'2026-11-06-v2'/);
  assert.match(sw,/url\.origin!==BASE\.origin/);
  assert.match(sw,/request\.method!=='GET'/);
  assert.match(read('vyber/index.html'),/assets\/lsh\/v3\/pwa\.js/);
