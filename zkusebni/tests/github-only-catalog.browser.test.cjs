@@ -53,6 +53,10 @@ async function exercise(engine,label,viewport){
   assert.equal(await page.locator('#topicList .topic-card').count(),1,
     'Accent-neutral search must find Czech topic without diacritics');
   assert.match(await page.locator('#topicList .topic-card h3').textContent(),/nemovitost/i);
+  await page.locator('#topicList .fav-button').click();
+  await page.locator('#catalogExtraFilters .favorites-filter').click();
+  assert.equal(await page.locator('#topicList .topic-card').count(),1,'Unified favorites should reuse saved Conversation favorites');
+  await page.locator('#catalogExtraFilters .favorites-filter').click();
   await page.locator('#topicList .topic-card button').filter({hasText:'Sdílet studentům'}).click();
   await page.locator('#shareDialog[open]').waitFor({state:'visible'});
   assert.equal(await page.locator('#shareLang').inputValue(),'es','Sharing must inherit the teacher language filter');
