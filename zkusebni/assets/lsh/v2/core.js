@@ -77,7 +77,7 @@
   // the unified teacher selector lists Reading/Listening only after explicit publication.
   // The legacy Conversation set remains visible as a clearly labelled technical pilot.
   function isUnifiedSelectable(t) {
-    if (!t || !SKILLS.includes(t.skill) || t.demo === true || t.status === 'STAZENO') return false;
+    if (!t || !SKILLS.includes(t.skill) || t.demo !== false || t.status === 'STAZENO') return false;
     if (t.skill === 'konverzace') return true;
     return t.status === 'PUBLIKOVANO' && typeof t.publishedAt === 'string' &&
       t.publishedAt.length >= 10 && !Number.isNaN(Date.parse(t.publishedAt));
@@ -86,7 +86,9 @@
   // navigation and sharing; never put unapproved source cards or keys in this repo.
   function isEntryShareable(t, manifest) {
     return isUnifiedSelectable(t) || !!(manifest && manifest.environment === 'staging' &&
-      t && t.skill === 'cteni' && t.demo === true && t.status === 'ROZPRACOVANO');
+      t && t.skill === 'cteni' && t.demo === true && t.status === 'ROZPRACOVANO' &&
+      Array.isArray(manifest.topics) &&
+      !manifest.topics.some(other => other.skill === 'cteni' && isUnifiedSelectable(other)));
   }
   function selectCatalogTopics(manifest, skill) {
     const listed = manifest.topics.filter(isUnifiedSelectable);
