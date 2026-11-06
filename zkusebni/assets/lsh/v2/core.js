@@ -82,6 +82,21 @@
     return t.status === 'PUBLIKOVANO' && typeof t.publishedAt === 'string' &&
       t.publishedAt.length >= 10 && !Number.isNaN(Date.parse(t.publishedAt));
   }
+  // Public Pages cannot protect an uploaded draft. These predicates only control
+  // navigation and sharing; never put unapproved source cards or keys in this repo.
+  function isEntryShareable(t, manifest) {
+    return isUnifiedSelectable(t) || !!(manifest && manifest.environment === 'staging' &&
+      t && t.skill === 'cteni' && t.demo === true && t.status === 'ROZPRACOVANO');
+  }
+  function selectCatalogTopics(manifest, skill) {
+    const listed = manifest.topics.filter(isUnifiedSelectable);
+    if (!skill) return listed;
+    const selected = listed.filter(t => t.skill === skill);
+    // The old fictional demo is shown only in the isolated Reading technical catalog
+    // while no approved real Reading lesson exists.
+    return skill === 'cteni' && selected.length === 0 ?
+      manifest.topics.filter(t => t.skill === skill && isEntryShareable(t, manifest)) : selected;
+  }
   function validateManifest(m) {
     assert(m && typeof m === 'object' && !Array.isArray(m), 'Manifest must be an object');
     assert(m.schemaVersion === 1, 'Unsupported schema version');
