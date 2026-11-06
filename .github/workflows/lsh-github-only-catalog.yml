@@ -6,12 +6,18 @@ on:
       - fix/lsh-r2-publication-gate-main-ci-2026-11-06
     paths:
       - 'zkusebni/**'
+      - 'cteni/**'
+      - 'poslech/**'
+      - 'data/manifest.json'
       - '.github/workflows/lsh-github-only-catalog.yml'
   pull_request:
     branches:
       - main
     paths:
       - 'zkusebni/**'
+      - 'cteni/**'
+      - 'poslech/**'
+      - 'data/manifest.json'
       - '.github/workflows/lsh-github-only-catalog.yml'
 permissions:
   contents: read
