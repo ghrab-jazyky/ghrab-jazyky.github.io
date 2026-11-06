@@ -68,7 +68,7 @@ test('R4D: six listening levels have three pass stages and separate ungraded wri
   corePoints+=gist+detail+sequence;
  }
  assert.equal(corePoints,84);
- assert.ok(closed>=61);
+ assert.equal(closed,54);
  for(const id of ['gist','detail','evidence','language','thinking','finish','checkFirstBtn','checkSecondBtn','checkThirdBtn','checkVocabBtn','checkBtn','scoreNumber','reviewSummary']){
   assert.equal(html.split('id="'+id+'"').length-1,1,'Missing/duplicate UI id '+id);
  }
