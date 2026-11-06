@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "manifestVersion": "0.4.0-rc1-staging",
+  "manifestVersion": "0.4.1-rc1-github-only",
   "environment": "staging",
   "demoOnly": false,
   "generatedAt": "2026-11-05T09:10:00Z",
