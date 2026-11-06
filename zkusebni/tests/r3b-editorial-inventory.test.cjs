@@ -10,7 +10,7 @@ const core=require('../assets/lsh/v2/core.js');
 
 test('R3B: three categories have explicit pending reference candidates without fake approval',()=>{
  assert.equal(inventory.schemaVersion,1);
- assert.match(inventory.inventoryVersion,/^r(?:3b|4a|4b|4c)-/);
+ assert.match(inventory.inventoryVersion,/^r(?:3b|4a|4b|4c|4d)-/);
  assert.equal(inventory.referenceCandidates.konverzace.approved,false);
  assert.equal(inventory.referenceCandidates.cteni.approved,false);
  assert.equal(inventory.referenceCandidates.poslech.approved,false);
@@ -25,6 +25,7 @@ test('R3B: three categories have explicit pending reference candidates without f
  assert.ok(inventory.topics.some(t=>t.id==='cl-human-rights'));
  assert.equal(inventory.referenceCandidates.cteni.id,'rl-asteroids');
  assert.equal(inventory.referenceCandidates.cteni.referenceVersion,'v2.3');
+ assert.equal(inventory.referenceCandidates.poslech.referenceVersion,'v3');
 });
 
 test('R3B: read-only inventory carries no source, keys, student URLs or release credentials',()=>{
