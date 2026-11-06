@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "inventoryVersion": "r4a-2026-11-06",
+  "inventoryVersion": "r4b-2026-11-06",
   "purpose": "Editorial inventory of online TEST student previews (Reading/Listening) and existing Conversation pilots; reference candidates are not pedagogically approved.",
   "releasePolicy": "An online TEST preview is not a pedagogically approved lesson. Only entries independently approved may enter the shareable student manifest.",
   "referenceCandidates": {
@@ -10,8 +10,9 @@
       "approved": false
     },
     "cteni": {
-      "id": "rl-can-mistakes",
-      "source": "prior-private-audit",
+      "id": "rl-asteroids",
+      "source": "teacher-uploaded-Asteroids-v2.3-and-master-v3.5",
+      "referenceVersion": "v2.3",
       "approved": false
     },
     "poslech": {
@@ -55,11 +56,11 @@
       "id": "rl-asteroids",
       "skill": "cteni",
       "title": "Asteroids",
-      "version": "v2.2",
+      "version": "v2.3",
       "sourceState": "public-test-preview",
-      "state": "CEKA_NA_REFERENCI",
+      "state": "CEKA_NA_INTEGRACNI_AUDIT",
       "scope": "Cíl: EN/ES/DE/FR · A1–C2",
-      "note": "Původní studentské HTML v2.2 se podařilo obnovit a zpřístupnit jako TEST. Před vydáním prověřit pedagogiku a jednotnou navigaci."
+      "note": "Učitelem určený referenční kandidát Asteroids v2.3 podle Reading Lab master promptu v3.5. Původní studentské HTML je veřejně dostupné jen jako TEST. Technická kontrola 24 variant/360 úloh a shoda klíče 360/360; samostatný režim Test ještě neexistuje a slepé hodnocení několika typů nesplnilo požadovanou mez. Učitelský klíč mimo veřejný GitHub."
     },
     {
       "id": "rl-email-friend",
