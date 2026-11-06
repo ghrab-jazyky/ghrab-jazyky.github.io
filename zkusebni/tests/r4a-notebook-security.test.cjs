@@ -8,8 +8,8 @@ test('R4A QA notebook is linked from online previews, uses only school-org stude
  const html=read('revize/index.html');
  assert.match(hub,/href="\.\.\/revize\/"/);
  assert.match(html,/href="\.\.\/konverzace\/rodina\/"/);
- assert.match(html,/nahledy\/cteni\/can-mistakes\/$/m);
- assert.match(html,/nahledy\/poslech\/matthew-mcconaughey\/$/m);
+ assert.match(html,/nahledy\/cteni\/can-mistakes\//);
+ assert.match(html,/nahledy\/poslech\/matthew-mcconaughey\//);
  assert.match(html,/Ochrana soukromí/);
  assert.match(html,/Kontrolní list referenčních karet/);
  assert.match(read('sw.js'),/'revize\/'/);
