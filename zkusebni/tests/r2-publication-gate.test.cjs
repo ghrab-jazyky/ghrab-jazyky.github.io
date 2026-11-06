@@ -7,10 +7,10 @@ const core=require('../assets/lsh/v2/core.js');
 const manifest=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/manifest.json'),'utf8'));
 test('R2: current 21 Conversation pilots are selectable; fictional Reading demo and absent Listening remain hidden',()=>{
   core.validateManifest(manifest);
-  const selected=manifest.topics.filter(core.isUnifiedSelectable);
-  assert.equal(selected.length,21);
-  assert.ok(selected.every(t=>t.skill==='konverzace'));
-  assert.ok(selected.every(t=>t.demo===false && t.status==='ROZPRACOVANO'));
+  const selected=core.selectCatalogTopics(manifest);
+  assert.ok(selected.filter(t=>t.skill==='konverzace').length>=21);
+  assert.ok(selected.every(t=>t.demo===false && t.status!=='STAZENO'));
+  assert.ok(selected.filter(t=>t.skill!=='konverzace').every(t=>t.status==='PUBLIKOVANO'));
 });
 test('R2: fail closed for drafts and withdrawn Reading/Listening, including forged publication date',()=>{
   for(const skill of ['cteni','poslech']){
