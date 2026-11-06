@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "inventoryVersion": "r3b-2026-11-06",
+  "purpose": "Editorial inventory only. Not a student-facing release manifest.",
+  "releasePolicy": "No planned or unapproved content may be served as a student card or have a shareable QR or short code.",
+  "referenceCandidates": {
+    "konverzace": {
+      "id": "cl-rodina",
+      "source": "published-technical-pilot",
+      "approved": false
+    },
+    "cteni": {
+      "id": "rl-can-mistakes",
+      "source": "prior-private-audit",
+      "approved": false
+    },
+    "poslech": {
+      "id": "ll-matthew-oscars",
+      "source": "private-source-archive",
+      "approved": false
+    }
+  },
+  "topics": [
+    {
+      "id": "cl-human-rights",
+      "skill": "konverzace",
+      "title": "Human Rights",
+      "version": null,
+      "sourceState": "planned-only",
+      "state": "PLANOVANO",
+      "scope": "Cíl: EN/ES/DE/FR · A1–C2",
+      "note": "Nové téma požadované v předchozím vláknu; v aktuálním manifestu 21 konverzačních karet zatím není."
+    },
+    {
+      "id": "rl-can-mistakes",
+      "skill": "cteni",
+      "title": "Can Mistakes Help Us Learn?",
+      "version": "v4.3",
+      "sourceState": "previously-audited-needs-restoration",
+      "state": "CEKA_NA_NEZAVISLOU_REVIZI",
+      "scope": "Původně 4 jazyky · A1–C2 · 24 variant",
+      "note": "Referenční kandidát. Původní soubor nyní nedostupný; dokončit skutečnou pedagogickou QA v3.4 a navigaci otázka ↔ text."
+    },
+    {
+      "id": "rl-plastic-ocean",
+      "skill": "cteni",
+      "title": "Plastic Ocean — Film Review",
+      "version": "v2",
+      "sourceState": "previously-audited-needs-restoration",
+      "state": "CEKA_NA_REFERENCI",
+      "scope": "Původně 4 jazyky · A1–C2",
+      "note": "Návazná karta pro sjednocení až po referenci Can Mistakes; původní soubor nyní není v pracovním archivu."
+    },
+    {
+      "id": "rl-asteroids",
+      "skill": "cteni",
+      "title": "Asteroids",
+      "version": "historická v2.2 (nutno ověřit)",
+      "sourceState": "planned-only",
+      "state": "CEKA_NA_PODKLADY",
+      "scope": "Cíl: EN/ES/DE/FR · A1–C2",
+      "note": "Dohledat originální HTML a patch_nav.py, neoznačovat za hotovou kartu."
+    },
+    {
+      "id": "rl-email-friend",
+      "skill": "cteni",
+      "title": "Email to a Friend",
+      "version": null,
+      "sourceState": "planned-only",
+      "state": "PLANOVANO",
+      "scope": "Cíl: EN/ES/DE/FR · A1–C2",
+      "note": "Dříve zadané téma inspirované British Council; vytvoření v jednotném standardu až po referenci."
+    },
+    {
+      "id": "rl-instant-messages",
+      "skill": "cteni",
+      "title": "Instant Messages",
+      "version": null,
+      "sourceState": "planned-only",
+      "state": "PLANOVANO",
+      "scope": "Cíl: EN/ES/DE/FR · A1–C2",
+      "note": "Dřívější návrh tématu v roadmapě; hotový studentský soubor nebyl ověřen."
+    },
+    {
+      "id": "ll-matthew-oscars",
+      "skill": "poslech",
+      "title": "Matthew McConaughey — Oscars 2014",
+      "version": "v1",
+      "sourceState": "private-source-verified",
+      "state": "CEKA_NA_INTEGRACNI_AUDIT",
+      "scope": "Doložené studentské HTML · EN · A1–C2",
+      "note": "Referenční kandidát. Oficiální YouTube zdroj, ale současnou dostupnost přehrávání a fyzická zařízení nutno znovu ověřit."
+    },
+    {
+      "id": "ll-peaky-no-fighting",
+      "skill": "poslech",
+      "title": "Peaky Blinders — No Fighting",
+      "version": "v2",
+      "sourceState": "private-source-verified",
+      "state": "CEKA_NA_INTEGRACNI_AUDIT",
+      "scope": "Doložené studentské HTML · EN · A1–C2 · cca 16–19 let",
+      "note": "Silné vulgarismy, drogové a sexuální narážky. Ověřit věkovou vhodnost, verzi scény a video před nasazením."
+    },
+    {
+      "id": "ll-harrison-ford",
+      "skill": "poslech",
+      "title": "Harrison Ford — Life Achievement Speech",
+      "version": "v6",
+      "sourceState": "private-source-verified",
+      "state": "CEKA_NA_INTEGRACNI_AUDIT",
+      "scope": "Doložené studentské HTML · EN · A1–C2",
+      "note": "Ověřit dostupnost a shodu skutečného projevu na Facebook/X se zadáním; externí videa mohou vyžadovat přihlášení."
+    }
+  ]
+}

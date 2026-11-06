@@ -15,10 +15,12 @@
   <meta http-equiv="Content-Security-Policy" content="default-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; object-src &#x27;none&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27;; img-src &#x27;self&#x27; blob: data:; font-src &#x27;self&#x27;; connect-src &#x27;self&#x27;; frame-src &#x27;none&#x27;; form-action &#x27;self&#x27;">
   <title>Conversation Lab | Language Skills Hub</title>
   <link rel="stylesheet" href="../assets/lsh/v2/styles.css">
+  <link rel="stylesheet" href="../assets/lsh/v3/inventory.css">
   <script defer src="../assets/lsh/v2/config.js"></script>
   <script defer src="../assets/lsh/v2/core.js"></script>
   <script defer src="../assets/lsh/v2/qr.js"></script>
   <script defer src="../assets/lsh/v2/app.js"></script>
+  <script defer src="../assets/lsh/v3/inventory.js"></script>
   <script defer src="../assets/lsh/v3/pwa.js"></script>
 </head>
 <body data-page="konverzace" data-path="konverzace/index.html">
@@ -44,7 +46,17 @@
  <div class="share-buttons"><button id="copyLinkBtn" class="button primary" type="button">Kop&#237;rovat odkaz</button><a id="previewBtn" class="button subtle" href="#" target="_blank" rel="noopener">N&#225;hled karty</a></div>
  <div class="share-bottom"><div class="qr-shell"><div id="qrSlot" class="qr-slot" role="img" aria-label="QR kód odkazu"></div><button id="downloadQRBtn" class="text-button" type="button">Ulo&#382;it QR (SVG)</button></div><div class="short-shell"><span class="eyebrow">KR&#193;TK&#221; K&#211;D</span><output id="shareShortCode">----</output><button id="copyCodeBtn" class="button outline" type="button">Kop&#237;rovat k&#243;d</button><p>Student zad&#225; k&#243;d na str&#225;nce Otev&#345;&#237;t k&#243;d. Odkaz je sou&#269;&#225;st&#237; testovac&#237;ho prost&#345;ed&#237;.</p></div></div>
  <p id="shareStatus" class="form-status" role="status" aria-live="polite"></p>
- </div></dialog></main>
+ </div></dialog><section class="container editorial-inventory" aria-labelledby="editorialHeading">
+  <div class="section-title">
+    <span class="eyebrow">REDAKČNÍ EVIDENCE · BEZ STUDENTSKÝCH ODKAZŮ</span>
+    <h2 id="editorialHeading">Další karty k přípravě</h2>
+    <p id="editorialInventorySummary" role="status">Načítám evidenci připravovaných témat…</p>
+  </div>
+  <p id="editorialReferenceCandidate" class="inventory-reference">Ověřuji návrh referenční karty…</p>
+  <div id="editorialInventoryList" class="inventory-grid" aria-label="Evidované připravované karty"></div>
+  <p class="catalog-note">Tento přehled názvů je veřejný. Rozpracované studentské HTML, učitelské klíče ani soukromé hodnoticí podklady zde nejsou zveřejněny. Z evidenčního záznamu nelze vytvořit studentský QR kód.</p>
+</section>
+</main>
   <footer class="site-footer"><div class="footer-inner"><span>Language Skills Hub <b>RC1 / GitHub</b></span><span>Bez studentského přihlášení a analytiky. Slovíčka a případné odpovědi jsou pouze v tomto prohlížeči; pro přenos používejte zálohu JSON.</span></div></footer>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <noscript><p class="no-script">Pro zobrazen&#237; katalogu a sd&#237;len&#237; zapn&#283;te JavaScript.</p></noscript>
