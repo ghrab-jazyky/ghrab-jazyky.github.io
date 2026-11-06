@@ -14,7 +14,7 @@ test('RC1 is a staging-only pilot, not an approved Reading/Listening launch',()=
   assert.match(config,/mode: 'staging'/);
   assert.match(config,/stage: 'RC1'/);
   assert.match(config,/basePath: '\/zkusebni\/'/);
-  assert.match(config,/0\.4\.0-rc1-staging/);
+  assert.match(config,/0\.4\.1-rc1-github-only/);
   const conversation=manifest.topics.filter(t=>t.skill==='konverzace');
   const reading=manifest.topics.filter(t=>t.skill==='cteni');
   const listening=manifest.topics.filter(t=>t.skill==='poslech');
