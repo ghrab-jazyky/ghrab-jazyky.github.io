@@ -5,7 +5,7 @@
   "basePath": "/zkusebni/",
   "visibility": "PUBLIC_TEST_ONLY",
   "created": "2026-11-06",
-  "note": "Original student HTML archives supplied by the teacher. Teacher key files are not part of this release. SHA256 is byte-for-byte source integrity, not pedagogical approval.",
+  "note": "Eight original student-only public TEST HTML previews, including Asteroids reference v2.3. No teacher keys. SHA256 authenticates original uploaded student bytes, not pedagogical test approval.",
   "entries": [
     {
       "id": "can-mistakes",
@@ -25,8 +25,8 @@
       "id": "asteroids",
       "skill": "cteni",
       "file": "nahledy/cteni/asteroids/index.html",
-      "sha256": "2992e2034738a63f867227300702a3d03542646b2d21806a4ae5771c9a2eaafc",
-      "bytes": 1426181
+      "sha256": "fc667a52f5f48407aa10dea31adda836ffdc88008e206a46727e94cc9991f82b",
+      "bytes": 1442681
     },
     {
       "id": "email-friend",
