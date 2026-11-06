@@ -208,14 +208,14 @@ test('ONLINE TEST: eight real student HTML previews and mobile navigation are re
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,'preview hub mobile overflow');
   const entries=JSON.parse(fs.readFileSync(path.join(ROOT,'zkusebni/data/preview-provenance.json'),'utf8')).entries;
   for(const entry of entries){
-   const route=STAGE+entry.file.replace(/index\\.html$/,'');
+   const route=STAGE+entry.file.replace(/index\.html$/,'');
    const response=await page.request.get(route,{timeout:20000});
    assert.equal(response.status(),200,entry.id+' must open at school Pages-equivalent URL');
-   assert.match(response.headers()['content-type']||'',/text\\/html/,entry.id+' must be HTML');
+   assert.match(response.headers()['content-type']||'',/text\/html/,entry.id+' must be HTML');
   }
   // Real source smoke is intentionally shallow: detailed activity-level QA comes next.
   for(const entry of [entries[0],entries[5]]){
-   const url=STAGE+entry.file.replace(/index\\.html$/,'');
+   const url=STAGE+entry.file.replace(/index\.html$/,'');
    const response=await page.goto(url,{waitUntil:'domcontentloaded',timeout:35000});
    assert.equal(response.status(),200,entry.id+' must render in browser');
    assert.ok((await page.title()).trim().length>8,entry.id+' title should be visible');
