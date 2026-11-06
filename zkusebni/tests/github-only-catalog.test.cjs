@@ -68,6 +68,7 @@ test('New selector supports offline PWA install without leaving original scope',
  assert.match(read('vyber/index.html'),/assets\/lsh\/v3\/pwa\.js/);
  assert.match(read('vyber/index.html'),/rel="manifest"/);
  assert.match(read('assets/lsh/v2/config.js'),/basePath: '\/zkusebni\/'/);
+ assert.ok(read('assets/lsh/v2/config.js').includes("release: '"+manifest.manifestVersion+"'"),'Manifest and shared shell must use the same release version');
 });
 test('No private teacher key files are included in public tree',()=>{
  const stack=[root];let count=0;
