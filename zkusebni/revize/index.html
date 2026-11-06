@@ -50,11 +50,12 @@
 <h2 id="newRecord">Nový záznam</h2>
 <form id="qaForm">
 <div class="qa-field"><label for="card">Karta</label><select id="card" required>
-<option value="konverzace">Conversation Lab · Rodina</option>
+<option value="konverzace-ai-reference">Conversation Lab · Umělá inteligence (reference)</option>
+<option value="konverzace">Conversation Lab · Rodina (starší záznamy)</option>
 <option value="cteni-asteroids-v23">Reading Lab · Asteroids v2.3</option>
 <option value="poslech">Listening Lab · Matthew McConaughey</option>
 </select></div>
-<a class="qa-open" id="cardLink" href="../konverzace/rodina/" target="_blank" rel="noopener noreferrer">Otevřít kartu ↗</a>
+<a class="qa-open" id="cardLink" href="../reference/konverzace/umela-inteligence/" target="_blank" rel="noopener noreferrer">Otevřít kartu ↗</a>
 <div class="qa-pair">
 <div class="qa-field"><label for="device">Zařízení</label><select id="device"><option value="PC">Počítač</option><option value="Android">Android</option><option value="iPhone">iPhone</option><option value="iPad">iPad</option><option value="tablet">Jiný tablet</option></select></div>
 <div class="qa-field"><label for="browser">Prohlížeč</label><select id="browser"><option>Chrome</option><option>Safari</option><option>Firefox</option><option>Edge</option><option>Jiný</option></select></div>
@@ -94,7 +95,8 @@
 'use strict';
 var KEY='lsh-r4a-local-testing-v1';
 var TARGETS={
- konverzace:{title:'Rodina',url:'../konverzace/rodina/'},
+ 'konverzace-ai-reference':{title:'Umělá inteligence (referenční TEST)',url:'../reference/konverzace/umela-inteligence/'},
+ konverzace:{title:'Rodina (starší kontrolní záznamy)',url:'../konverzace/rodina/'},
  cteni:{title:'Can Mistakes Help Us Learn? (starší kontrolní záznam)',url:'../nahledy/cteni/can-mistakes/'},
  'cteni-asteroids-v23':{title:'Asteroids v2.3',url:'../nahledy/cteni/asteroids/'},
  poslech:{title:'Matthew McConaughey',url:'../nahledy/poslech/matthew-mcconaughey/'}
