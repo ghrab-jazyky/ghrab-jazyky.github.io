@@ -66,7 +66,7 @@
     const match = SHORT_RE.exec(normalized);
     if (!match) return null;
     const entry = manifest.topics.find(t => t.shortCode === match[1]);
-    if (!entry) return null;
+    if (!entry || !isEntryShareable(entry, manifest)) return null;
     const def = defaultVariant(entry);
     const lang = match[2] ? match[2].toLowerCase() : def.lang;
     const level = match[3] || def.level;
