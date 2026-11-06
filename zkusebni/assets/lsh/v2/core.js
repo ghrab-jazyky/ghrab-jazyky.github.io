@@ -173,5 +173,5 @@
     }
     return true;
   }
-  return Object.freeze({LANGS, LEVELS, SKILLS, ALPHABET, validBasePath, siteRoot, safeCardPath, hasVariant, defaultVariant, studentUrl, normalizeStudentParams, formatShortCode, resolveShortCode, isUnifiedSelectable, validateManifest});
+  return Object.freeze({LANGS, LEVELS, SKILLS, ALPHABET, validBasePath, siteRoot, safeCardPath, hasVariant, defaultVariant, studentUrl, normalizeStudentParams, formatShortCode, resolveShortCode, isUnifiedSelectable, isEntryShareable, selectCatalogTopics, validateManifest});
 });
