@@ -75,3 +75,18 @@ test('R3A: no unpublished real Reading/Listening HTML can be committed to public
     }
   }
 });
+
+// The legacy root is ALSO public GitHub Pages. It must never become a
+// back-door publishing location for private review or unapproved student cards.
+test('R3A: legacy public root contains only its known fictional Reading demo',()=>{
+  const publicRoot=path.resolve(root,'..');
+  const legacy=JSON.parse(fs.readFileSync(path.join(publicRoot,'data/manifest.json'),'utf8'));
+  assert.ok(legacy.topics.filter(t=>t.skill==='cteni'||t.skill==='poslech').every(t=>t.demo===true),
+    'Do not add real Reading/Listening topics to legacy root manifest');
+  for(const skill of ['cteni','poslech']){
+    const dirs=fs.readdirSync(path.join(publicRoot,skill),{withFileTypes:true})
+      .filter(item=>item.isDirectory()).map(item=>item.name).sort();
+    assert.deepEqual(dirs,skill==='cteni'?['muzeum-niva']:[],
+      'Unexpected public Reading/Listening directory under legacy root: '+skill);
+  }
+});
