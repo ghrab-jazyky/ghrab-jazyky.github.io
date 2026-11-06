@@ -10,7 +10,7 @@ const core=require('../assets/lsh/v2/core.js');
 
 test('R3B: three categories have explicit pending reference candidates without fake approval',()=>{
  assert.equal(inventory.schemaVersion,1);
- assert.match(inventory.inventoryVersion,/^r3b-/);
+ assert.match(inventory.inventoryVersion,/^r(?:3b|4a)-/);
  assert.equal(inventory.referenceCandidates.konverzace.approved,false);
  assert.equal(inventory.referenceCandidates.cteni.approved,false);
  assert.equal(inventory.referenceCandidates.poslech.approved,false);
