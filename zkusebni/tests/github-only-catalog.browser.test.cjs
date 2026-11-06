@@ -240,7 +240,7 @@ test('R4A teacher QA journal: Chromium and WebKit save notes locally, export, an
    const res=await page.goto(STAGE+'revize/',{waitUntil:'domcontentloaded'});
    assert.equal(res.status(),200,label);
    assert.equal(await page.locator('select#level option').count(),6,label+' must offer exactly A1-C2');
-   await page.locator('#card').selectOption('cteni');
+   await page.locator('#card').selectOption('cteni-asteroids-v23');
    assert.match(await page.locator('#cardLink').getAttribute('href'),/nahledy\/cteni\/asteroids\/$/);
    await page.locator('#device').selectOption('iPad');
    await page.locator('#browser').selectOption('Safari');
