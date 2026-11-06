@@ -1,19 +1,20 @@
 /* LSH E3D native local QR scanner. Never opens untrusted QR destinations. */
 (function(root,factory){
   'use strict';
-  const api=factory();
+  const api=factory(root);
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
   else if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',api.init,{once:true});
   else api.init();
-})(typeof window!=='undefined'?window:this,function(){
+})(typeof window!=='undefined'?window:this,function(root){
   'use strict';
   const CODE=/^([A-HJKMNP-Z2-9]{4})(?:-(EN|ES|DE|FR)(A1|A2|B1|B2|C1|C2)(Z)?)?$/;
+  const CORE=typeof module!=='undefined'&&module.exports ? require('../v2/core.js') : root.LSH_CORE;
   function scanTarget(raw,origin,basePath,manifest){
     if(typeof raw!=='string'||raw.length>1300||!Array.isArray(manifest&&manifest.topics))return null;
     const value=raw.trim(),code=CODE.exec(value.toUpperCase());
     if(code){
       const entry=manifest.topics.find(t=>t.shortCode===code[1]);
-      if(!entry)return null;
+      if(!entry||!CORE||!CORE.isEntryShareable(entry,manifest))return null;
       const lang=code[2]?code[2].toLowerCase():null,level=code[3]||null;
       if(lang&&!entry.variants.some(v=>v.lang===lang&&v.level===level))return null;
       return {kind:'code',value:value.toUpperCase()};
@@ -25,7 +26,7 @@
     const relative=url.pathname.slice(basePath.length);
     if(!/^(?:konverzace|cteni|poslech)\/[a-z0-9-]+\/$/.test(relative))return null;
     const entry=manifest.topics.find(t=>t.cardPath===relative);
-    if(!entry)return null;
+    if(!entry||!CORE||!CORE.isEntryShareable(entry,manifest))return null;
     const params=url.searchParams;
     const allowed=new Set(['lang','level','zamek']);
     for(const key of params.keys())if(!allowed.has(key)||params.getAll(key).length!==1)return null;
