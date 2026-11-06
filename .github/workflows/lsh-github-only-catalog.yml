@@ -46,9 +46,10 @@ jobs:
           node --check zkusebni/tests/r4a-notebook-security.test.cjs
           node --check zkusebni/tests/r4b-asteroids-reference.test.cjs
           node --check zkusebni/tests/r4c-conversation-reference.test.cjs
+          node --check zkusebni/tests/r4d-matthew-listening-reference.test.cjs
       - name: Existing RC1 and new public-only security regression
         run: |
-          node --test zkusebni/tests/e3a.test.cjs zkusebni/tests/e3b.static.test.cjs zkusebni/tests/e3c.test.cjs zkusebni/tests/e3d.test.cjs zkusebni/tests/rc1-gates.test.cjs zkusebni/tests/github-only-catalog.test.cjs zkusebni/tests/r2-publication-gate.test.cjs zkusebni/tests/r3a-reading-publication.test.cjs zkusebni/tests/r3b-editorial-inventory.test.cjs zkusebni/tests/online-previews.test.cjs zkusebni/tests/r4a-reference-preflight.test.cjs zkusebni/tests/r4a-notebook-security.test.cjs zkusebni/tests/r4b-asteroids-reference.test.cjs zkusebni/tests/r4c-conversation-reference.test.cjs
+          node --test zkusebni/tests/e3a.test.cjs zkusebni/tests/e3b.static.test.cjs zkusebni/tests/e3c.test.cjs zkusebni/tests/e3d.test.cjs zkusebni/tests/rc1-gates.test.cjs zkusebni/tests/github-only-catalog.test.cjs zkusebni/tests/r2-publication-gate.test.cjs zkusebni/tests/r3a-reading-publication.test.cjs zkusebni/tests/r3b-editorial-inventory.test.cjs zkusebni/tests/online-previews.test.cjs zkusebni/tests/r4a-reference-preflight.test.cjs zkusebni/tests/r4a-notebook-security.test.cjs zkusebni/tests/r4b-asteroids-reference.test.cjs zkusebni/tests/r4c-conversation-reference.test.cjs zkusebni/tests/r4d-matthew-listening-reference.test.cjs
   browser-qa:
     runs-on: ubuntu-24.04
     timeout-minutes: 18
