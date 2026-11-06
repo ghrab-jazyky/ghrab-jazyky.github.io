@@ -278,3 +278,38 @@ test('R4A teacher QA journal: Chromium and WebKit save notes locally, export, an
   }finally{await browser.close();}
  }
 });
+
+
+test('R4B Asteroids v2.3 original TEST preview supports direct FR C1, dictionary OFF/ON and responsive layout', {timeout:160000},async()=>{
+ for(const [engine,label,viewport] of [
+   [chromium,'Chromium desktop',{width:1440,height:900}],
+   [webkit,'WebKit mobile',{width:390,height:844}]
+ ]){
+  const browser=await engine.launch({headless:true});
+  try{
+   const context=await browser.newContext({viewport,serviceWorkers:'block'});
+   const page=await context.newPage();page.setDefaultTimeout(30000);
+   const errors=[],external=[];
+   page.on('pageerror',e=>errors.push(e.message));
+   page.on('request',r=>{if(!r.url().startsWith(ORIGIN))external.push(r.url());});
+   const res=await page.goto(STAGE+'nahledy/cteni/asteroids/?lang=fr&level=C1',{waitUntil:'domcontentloaded'});
+   assert.equal(res.status(),200,label);
+   await page.waitForFunction(()=>document.querySelectorAll('[role="tab"]').length===7);
+   assert.match(await page.title(),/Asteroids.*v2\.3/);
+   assert.equal(await page.locator('#language').inputValue(),'fr',label+' direct language link');
+   assert.match(await page.locator('#levels button.active').innerText(),/C1/,label+' direct CEFR link');
+   assert.equal(await page.locator('#dictionaryToggle').getAttribute('aria-pressed'),'false',label+' original dictionary must default OFF');
+   await page.locator('#dictionaryToggle').click();
+   assert.equal(await page.locator('#dictionaryToggle').getAttribute('aria-pressed'),'true',label+' dictionary ON');
+   await page.locator('#dictionaryToggle').click();
+   assert.equal(await page.locator('#dictionaryToggle').getAttribute('aria-pressed'),'false',label+' dictionary OFF again');
+   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,label+' no horizontal overflow');
+   await page.goto(STAGE+'nahledy/cteni/asteroids/',{waitUntil:'domcontentloaded'});
+   await page.waitForFunction(()=>document.querySelectorAll('[role="tab"]').length>0);
+   assert.equal(await page.locator('#language').inputValue(),'en',label+' default language must reset to English');
+   assert.deepEqual(errors,[],label+' page errors');
+   assert.deepEqual(external,[],label+' original student HTML must be self-contained');
+   await context.close();
+  }finally{await browser.close();}
+ }
+});
