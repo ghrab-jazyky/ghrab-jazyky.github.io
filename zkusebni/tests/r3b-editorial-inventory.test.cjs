@@ -15,7 +15,7 @@ test('R3B: three categories have explicit pending reference candidates without f
  assert.equal(inventory.referenceCandidates.cteni.approved,false);
  assert.equal(inventory.referenceCandidates.poslech.approved,false);
  assert.equal(inventory.referenceCandidates.konverzace.id,'cl-umela-inteligence');
- assert.ok(manifest.topics.some(t=>t.id==='cl-rodina'&&t.skill==='konverzace'));
+ assert.ok(manifest.topics.some(t=>t.id==='cl-umela-inteligence'&&t.skill==='konverzace'));
  for(const skill of ['cteni','poslech']) {
   const id=inventory.referenceCandidates[skill].id;
   assert.ok(inventory.topics.some(t=>t.id===id&&t.skill===skill));
