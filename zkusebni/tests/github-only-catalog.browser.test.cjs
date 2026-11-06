@@ -297,7 +297,7 @@ test('R4B Asteroids v2.3 original TEST preview supports direct FR C1, dictionary
    await page.waitForFunction(()=>document.querySelectorAll('[role="tab"]').length===7);
    assert.match(await page.title(),/Asteroids.*v2\.3/);
    assert.equal(await page.locator('#language').inputValue(),'fr',label+' direct language link');
-   assert.match(await page.locator('#levels button.active').innerText(),/C1/,label+' direct CEFR link');
+   assert.match(await page.locator('#levels button[aria-pressed="true"]').innerText(),/C1/,label+' direct CEFR link');
    assert.equal(await page.locator('#dictionaryToggle').getAttribute('aria-pressed'),'false',label+' original dictionary must default OFF');
    await page.locator('#dictionaryToggle').click();
    assert.equal(await page.locator('#dictionaryToggle').getAttribute('aria-pressed'),'true',label+' dictionary ON');
