@@ -9,6 +9,7 @@ Datum: 6. 11. 2026. Status: **TECHNICKÝ KANDIDÁT**. Žádné pedagogické schv
 - Rozcestník i stránky čtení, poslechu a jednotného výběru odvozují text o dostupnosti z **jediného validovaného manifestu**. Historický statický text je fallback do načtení JS.
 - Krátké kódy a lokální QR čtečka odmítají skutečné Reading/Listening položky ve stavu `ROZPRACOVANO`, `ZKONTROLOVANO` a `STAZENO`. Jedinou testovací výjimkou je výslovně fiktivní čtecí demo ve staging manifestu.
 - Statický test odmítne jakýkoli nový adresář veřejné Reading/Listening HTML karty, pokud v manifestu není řádně publikovaná položka. Brání tak nejběžnější nechtěné publikaci draftů.
+- Samostatný guard hlídá i **starší veřejný kořenový web**: ve složkách `/cteni/` a `/poslech/` se nesmí nechtěně objevit nový skutečný obsah ani v kořenovém manifestu. Kořenový historický Niva demo je výslovně ponechán a není považován za schválenou kartu.
 - Browser test používá **pouze syntetickou příští schválenou kartu vloženou do odpovědi manifestu v paměti**. Skutečný studentský text ani správné odpovědi se nenahrávají na GitHub.
 
 ## Bezpečnostní hranice
