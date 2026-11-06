@@ -6,7 +6,7 @@ const BASE=new URL(self.registration.scope);
 const SHELL=[
   '', 'index.html', 'offline.html', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png',
-  'konverzace/', 'cteni/', 'poslech/', 'vyber/', 'slovnicek/', 'k/', 'nahledy/',
+  'konverzace/', 'cteni/', 'poslech/', 'vyber/', 'slovnicek/', 'k/', 'nahledy/', 'revize/',
   'data/manifest.json','data/editorial-inventory.json',
   'assets/lsh/v2/config.js','assets/lsh/v2/core.js',
   'assets/lsh/v2/qr.js','assets/lsh/v2/app.js','assets/lsh/v2/styles.css',
