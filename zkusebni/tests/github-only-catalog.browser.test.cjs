@@ -55,8 +55,8 @@ async function exercise(engine,label,viewport){
   assert.match(await page.locator('#topicList .topic-card h3').textContent(),/nemovitost/i);
   await page.locator('#topicList .topic-card button').filter({hasText:'Sdílet studentům'}).click();
   await page.locator('#shareDialog[open]').waitFor({state:'visible'});
-  await page.locator('#shareLang').selectOption('es');
-  await page.locator('#shareLevel').selectOption('C2');
+  assert.equal(await page.locator('#shareLang').inputValue(),'es','Sharing must inherit the teacher language filter');
+  assert.equal(await page.locator('#shareLevel').inputValue(),'C2','Sharing must inherit the teacher CEFR filter');
   await page.locator('#shareLock').check();
   const url=new URL(await page.locator('#shareUrl').inputValue());
   assert.equal(url.origin,ORIGIN);
