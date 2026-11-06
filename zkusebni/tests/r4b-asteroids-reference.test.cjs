@@ -6,7 +6,7 @@ const read=p=>fs.readFileSync(path.join(root,p));
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const studentPath='nahledy/cteni/asteroids/index.html';
 const promptPath='docs/READING_LAB_MASTER_PROMPT_v3_5.txt';
-const promptHash='3ca303c966fbf438c77691e180b417af7e765a361b508078eab3b1099a34f5a';
+const promptHash='3ca303c966fbf438c77691e180b417af7e765a361b508078eab3b1099a34f5a3';
 const studentHash='fc667a52f5f48407aa10dea31adda836ffdc88008e206a46727e94cc9991f82b';
 
 function readStudentData(){
