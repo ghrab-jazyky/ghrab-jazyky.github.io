@@ -30,9 +30,9 @@ test('R3A: current pilot keeps the Reading demo isolated; never lists it in the 
 test('R3A: future independently approved Reading/Listening work in both catalogs and QR without leaking drafts',()=>{
   const m=structuredClone(manifest);
   const reading=makeFixture('cteni','synthetic-approved','R3AA',true);
-  const listening=makeFixture('poslech','synthetic-approved','L3AA',true);
+  const listening=makeFixture('poslech','synthetic-approved','P3AA',true);
   const readingDraft=makeFixture('cteni','synthetic-draft','R3AB',false);
-  const listeningDraft=makeFixture('poslech','synthetic-draft','L3AB',false);
+  const listeningDraft=makeFixture('poslech','synthetic-draft','P3AB',false);
   m.topics.push(reading,listening,readingDraft,listeningDraft);
   core.validateManifest(m);
   const selected=core.selectCatalogTopics(m);
@@ -42,9 +42,9 @@ test('R3A: future independently approved Reading/Listening work in both catalogs
   assert.deepEqual(core.selectCatalogTopics(m,'cteni').map(t=>t.id),[reading.id]);
   assert.deepEqual(core.selectCatalogTopics(m,'poslech').map(t=>t.id),[listening.id]);
   assert.equal(core.resolveShortCode('R3AA-ENB1',m).entry.id,reading.id);
-  assert.equal(core.resolveShortCode('L3AA-ENB1',m).entry.id,listening.id);
+  assert.equal(core.resolveShortCode('P3AA-ENB1',m).entry.id,listening.id);
   assert.equal(core.resolveShortCode('R3AB-ENB1',m),null);
-  assert.equal(core.resolveShortCode('L3AB-ENB1',m),null);
+  assert.equal(core.resolveShortCode('P3AB-ENB1',m),null);
   const publishedUrl=origin+base+reading.cardPath+'?lang=en&level=B1';
   const draftUrl=origin+base+readingDraft.cardPath+'?lang=en&level=B1';
   assert.deepEqual(scanner.scanTarget(publishedUrl,origin,base,m),{kind:'url',value:publishedUrl});
