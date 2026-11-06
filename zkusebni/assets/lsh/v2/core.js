@@ -73,6 +73,15 @@
     if (!hasVariant(entry, lang, level)) return null;
     return {entry, lang, level, locked: !!match[4], normalized};
   }
+  // A public GitHub Pages catalog cannot keep drafts confidential. As a defense in depth,
+  // the unified teacher selector lists Reading/Listening only after explicit publication.
+  // The legacy Conversation set remains visible as a clearly labelled technical pilot.
+  function isUnifiedSelectable(t) {
+    if (!t || !SKILLS.includes(t.skill) || t.demo === true || t.status === 'STAZENO') return false;
+    if (t.skill === 'konverzace') return true;
+    return t.status === 'PUBLIKOVANO' && typeof t.publishedAt === 'string' &&
+      t.publishedAt.length >= 10 && !Number.isNaN(Date.parse(t.publishedAt));
+  }
   function validateManifest(m) {
     assert(m && typeof m === 'object' && !Array.isArray(m), 'Manifest must be an object');
     assert(m.schemaVersion === 1, 'Unsupported schema version');
