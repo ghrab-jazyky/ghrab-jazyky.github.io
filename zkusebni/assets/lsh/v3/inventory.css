@@ -12,4 +12,6 @@
 .inventory-source{margin:0 0 10px;color:var(--mint);font-size:.81rem;font-weight:650}
 .inventory-note{margin:0;color:var(--muted);font-size:.88rem;line-height:1.55}
 @media(max-width:680px){.inventory-grid{grid-template-columns:minmax(0,1fr)}.inventory-card{padding:16px}.editorial-inventory{margin-top:26px;margin-bottom:58px}}
+.online-preview-section{padding-top:28px;margin-top:24px;margin-bottom:32px;border-top:1px solid var(--line)}
+.online-preview-section h2{margin:5px 0 14px}.online-preview-section .inventory-card{display:flex;flex-direction:column;align-items:flex-start;gap:10px}.online-preview-section .inventory-card .button{margin-top:auto;text-align:center;white-space:normal}.online-preview-section .inventory-note a{text-decoration:underline;text-underline-offset:3px;color:var(--sky)}
 @media(prefers-reduced-motion:reduce){.inventory-card{scroll-behavior:auto}}

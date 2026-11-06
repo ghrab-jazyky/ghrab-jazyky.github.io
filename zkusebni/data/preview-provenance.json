@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "host": "ghrab-jazyky.github.io",
+  "repo": "ghrab-jazyky/ghrab-jazyky.github.io",
+  "basePath": "/zkusebni/",
+  "visibility": "PUBLIC_TEST_ONLY",
+  "created": "2026-11-06",
+  "note": "Original student HTML archives supplied by the teacher. Teacher key files are not part of this release. SHA256 is byte-for-byte source integrity, not pedagogical approval.",
+  "entries": [
+    {
+      "id": "can-mistakes",
+      "skill": "cteni",
+      "file": "nahledy/cteni/can-mistakes/index.html",
+      "sha256": "1e15ca8bd4625d1efc271684de6324cc4ff353269749cacf4a5a68abcd24c8e3",
+      "bytes": 1284999
+    },
+    {
+      "id": "plastic-ocean",
+      "skill": "cteni",
+      "file": "nahledy/cteni/plastic-ocean/index.html",
+      "sha256": "6a87e08fad4f1fb8e6689fc5a95d811127f26097cf289f679ea17b7d5979be78",
+      "bytes": 1342792
+    },
+    {
+      "id": "asteroids",
+      "skill": "cteni",
+      "file": "nahledy/cteni/asteroids/index.html",
+      "sha256": "2992e2034738a63f867227300702a3d03542646b2d21806a4ae5771c9a2eaafc",
+      "bytes": 1426181
+    },
+    {
+      "id": "email-friend",
+      "skill": "cteni",
+      "file": "nahledy/cteni/email-friend/index.html",
+      "sha256": "71d42b32576c99219a97623aa5a26d39ce2cfdffafae3b5b18d3e4906d3b98a8",
+      "bytes": 1366955
+    },
+    {
+      "id": "instant-messages",
+      "skill": "cteni",
+      "file": "nahledy/cteni/instant-messages/index.html",
+      "sha256": "3f0888f75a575f6e97f174e40744d8d92e3cd69d20486f5acf6a604e486eb856",
+      "bytes": 1442837
+    },
+    {
+      "id": "matthew-mcconaughey",
+      "skill": "poslech",
+      "file": "nahledy/poslech/matthew-mcconaughey/index.html",
+      "sha256": "65073fca5036b3c0caa1e3874275221813db9eb0f9aaeba43b759f6faf0e41aa",
+      "bytes": 93587
+    },
+    {
+      "id": "harrison-ford",
+      "skill": "poslech",
+      "file": "nahledy/poslech/harrison-ford/index.html",
+      "sha256": "bc8f9840ad955a3723f3353abceed1aac2f4ae8211b1654d1dea97443b7eb22e",
+      "bytes": 86579
+    },
+    {
+      "id": "peaky-blinders",
+      "skill": "poslech",
+      "file": "nahledy/poslech/peaky-blinders/index.html",
+      "sha256": "30f2a52ff27759729e16a8a2e7fb00af945749304c08fdc00d241c59d5d8df9f",
+      "bytes": 92707
+    }
+  ]
+}

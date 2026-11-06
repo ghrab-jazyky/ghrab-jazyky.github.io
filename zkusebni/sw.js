@@ -1,12 +1,12 @@
 /* LSH E3D: restricted /zkusebni/ shell cache. No user data or remote URLs. */
 'use strict';
 const CACHE_PREFIX='lsh-e3d-shell-';
-const CACHE_NAME=CACHE_PREFIX+'2026-11-06-v2';
+const CACHE_NAME=CACHE_PREFIX+'2026-11-06-v3';
 const BASE=new URL(self.registration.scope);
 const SHELL=[
   '', 'index.html', 'offline.html', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png',
-  'konverzace/', 'cteni/', 'poslech/', 'vyber/', 'slovnicek/', 'k/',
+  'konverzace/', 'cteni/', 'poslech/', 'vyber/', 'slovnicek/', 'k/', 'nahledy/',
   'data/manifest.json','data/editorial-inventory.json',
   'assets/lsh/v2/config.js','assets/lsh/v2/core.js',
   'assets/lsh/v2/qr.js','assets/lsh/v2/app.js','assets/lsh/v2/styles.css',
