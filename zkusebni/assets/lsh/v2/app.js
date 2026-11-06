@@ -224,7 +224,7 @@
     append(article,main,actions);
     return article;
   }
-  // Recompute public readiness from the signed-off manifest, never from stale
+  // Recompute public readiness from the validated public manifest, never from stale
   // labels in the HTML shell. This is a display status, not an approval mechanism.
   function updateContentStatus(m) {
     const count = skill => m.topics.filter(t=>t.skill===skill && CORE.isUnifiedSelectable(t)).length;
@@ -238,11 +238,11 @@
     set('readingLabStatus',reading?'Reading Lab: '+cards(reading):'Technické demo, schválené karty zatím nejsou');
     set('listeningLabStatus',listening?'Listening Lab: '+cards(listening):'Katalog zatím bez karet');
     if(reading){
-      set('readingStatus','Reading Lab: '+cards(reading)+' připravených ke sdílení po pedagogické revizi.');
+      set('readingStatus','Reading Lab: '+cards(reading)+'. Aktivitu můžete otevřít nebo sdílet pomocí QR kódu.');
       set('readingNote','Fiktivní demonstrace Niva se při dostupnosti schválených karet v katalogu nezobrazuje.');
     }
     if(listening){
-      set('listeningStatus','Listening Lab: '+cards(listening)+' připravených ke sdílení.');
+      set('listeningStatus','Listening Lab: '+cards(listening)+'. Aktivitu můžete otevřít nebo sdílet pomocí QR kódu.');
       set('listeningNote','Vybírejte z pedagogicky schválených poslechových aktivit.');
     }
   }
