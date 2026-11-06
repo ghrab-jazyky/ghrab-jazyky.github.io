@@ -159,7 +159,7 @@ test('R3B: three separate editorial inventories show reference candidates but ne
   const page=await context.newPage();page.setDefaultTimeout(30000);
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   for(const config of [
-   {skill:'konverzace',count:1,title:'Human Rights',ref:'Rodina'},
+   {skill:'konverzace',count:1,title:'Human Rights',ref:'Umělá inteligence'},
    {skill:'cteni',count:5,title:'Can Mistakes Help Us Learn?',ref:'Asteroids'},
    {skill:'poslech',count:3,title:'Matthew McConaughey',ref:'Matthew McConaughey'}
   ]){
