@@ -41,6 +41,13 @@ test('R3A: future independently approved Reading/Listening work in both catalogs
   assert.ok(!selected.some(t=>t.id===readingDraft.id||t.id===listeningDraft.id||t.demo));
   assert.deepEqual(core.selectCatalogTopics(m,'cteni').map(t=>t.id),[reading.id]);
   assert.deepEqual(core.selectCatalogTopics(m,'poslech').map(t=>t.id),[listening.id]);
+  const oldDemo=m.topics.find(t=>t.skill==='cteni'&&t.demo);
+  assert.equal(core.isEntryShareable(oldDemo,m),false,'Demo links are retired when approved Reading exists');
+  assert.equal(core.resolveShortCode(oldDemo.shortCode,m),null);
+  assert.equal(scanner.scanTarget(origin+base+oldDemo.cardPath,origin,base,m),null);
+  const missingDemoFlag={...reading};
+  delete missingDemoFlag.demo;
+  assert.equal(core.isUnifiedSelectable(missingDemoFlag),false,'Publication needs explicit demo:false');
   assert.equal(core.resolveShortCode('R3AA-ENB1',m).entry.id,reading.id);
   assert.equal(core.resolveShortCode('P3AA-ENB1',m).entry.id,listening.id);
   assert.equal(core.resolveShortCode('R3AB-ENB1',m),null);
