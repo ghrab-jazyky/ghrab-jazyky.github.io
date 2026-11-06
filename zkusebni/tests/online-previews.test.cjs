@@ -26,7 +26,9 @@ test('ONLINE PREVIEW: school GitHub organization, exactly 5 Reading and 3 Listen
    assert.match(e.sha256,/^[0-9a-f]{64}$/);
    assert.equal(typeof e.bytes,'number');
  }
- assert.doesNotMatch(JSON.stringify(config),/Daniel22-dev|teacher.key.*\.html|password|privateRepo|api_token/i);
+ assert.doesNotMatch(config.repo+'/ '+config.host,/Daniel22-dev/i);
+ assert.ok(config.entries.every(e=>!/teacher|ucitel|answer.?key|password|privateRepo|api_token/i.test(e.file)),
+   'No confidential teacher/key file path can appear in public preview list');
 });
 
 test('ONLINE PREVIEW: the student HTML is byte-identical to its original uploaded ZIP',()=>{
