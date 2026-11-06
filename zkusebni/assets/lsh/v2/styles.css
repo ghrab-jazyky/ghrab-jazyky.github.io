@@ -153,3 +153,9 @@ input[readonly]{cursor:text}
 /* GitHub-only single activity selector; public, no authentication or teacher keys. */
 .filters.lsh-unified-filters{grid-template-columns:minmax(145px,1fr) minmax(210px,1.5fr) minmax(125px,.85fr) minmax(100px,.7fr) auto}
 @media(max-width:940px){.filters.lsh-unified-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.filters.lsh-unified-filters .filter-search{grid-column:1/-1}.filters.lsh-unified-filters .button{grid-column:1/-1;width:100%}}
+
+/* Keep three topic action buttons inside 375px WebKit viewport (no horizontal page overflow). */
+@media(max-width:630px){
+  .topic-actions{display:flex;flex-wrap:wrap;min-width:0;max-width:100%}
+  .topic-actions .button{min-width:0;flex:1 1 145px;white-space:normal;overflow-wrap:anywhere}
+}
