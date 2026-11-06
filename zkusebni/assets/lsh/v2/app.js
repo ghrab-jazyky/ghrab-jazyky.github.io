@@ -1,4 +1,4 @@
-/* Language Skills Hub E2 pilot: 21 Conversation topics and one synthetic Reading fixture. */
+/* Language Skills Hub RC1: GitHub Pages only, unified activity selection and skill catalogs. */
 (function () {
   'use strict';
   const CONFIG = window.LSH_CONFIG;
@@ -6,6 +6,7 @@
   const QR = window.CLBQRCode;
   const LANG_NAMES = Object.freeze({en: 'Angli\u010dtina', es: '\u0160pan\u011bl\u0161tina', de: 'N\u011bm\u010dina', fr: 'Francouz\u0161tina'});
   const $ = id => document.getElementById(id);
+  const normalizeSearch = value => String(value).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('cs');
   const page = document.body.dataset.page;
   let manifestPromise;
   let toastTimer = null;
@@ -143,7 +144,7 @@
       const blobURL = URL.createObjectURL(blob);
       const anchor = element('a');
       anchor.href = blobURL;
-      anchor.download = 'LSH_E2_' + CORE.formatShortCode(topic, lang.value, level.value, lock.checked) + '.svg';
+      anchor.download = 'LSH_RC1_' + CORE.formatShortCode(topic, lang.value, level.value, lock.checked) + '.svg';
       document.body.appendChild(anchor);
       anchor.click();
       anchor.remove();
@@ -156,8 +157,11 @@
       lang.replaceChildren();
       for (const l of getLangs(topic)) option(lang, l, LANG_NAMES[l]);
       const defaults = CORE.defaultVariant(topic);
-      lang.value = defaults.lang;
-      fillLevels(defaults.level);
+      // Keep the teacher's chosen language/CEFR filter when opening the share dialog.
+      const preferredLang = $('langFilter')?.value;
+      const preferredLevel = $('levelFilter')?.value;
+      lang.value = getLangs(topic).includes(preferredLang) ? preferredLang : defaults.lang;
+      fillLevels(preferredLevel || defaults.level);
       lock.checked = false;
       refresh();
       dialog.showModal();
@@ -184,7 +188,7 @@
     const main = element('div','topic-main');
     const badges = element('div','topic-badges');
     append(badges,
-      element('span',topic.demo ? 'demo-chip' : 'pending-tag',topic.demo ? 'DEMO' : 'PILOT E2'),
+      element('span',topic.demo ? 'demo-chip' : 'pending-tag',topic.demo ? 'DEMO' : (topic.status==='PUBLIKOVANO' ? 'PUBLIKOVÁNO' : 'PILOT RC1')),
       element('span','skill-tag',topic.skill.toUpperCase())
     );
     if (topic.category && CATEGORY_NAMES[topic.category])
@@ -224,11 +228,13 @@
     const list = $('topicList'), count = $('catalogCount');
     const empty = $('catalogEmpty'), clear = $('clearFilters'), search = $('topicSearch');
     const langFilter = $('langFilter'), levelFilter = $('levelFilter');
-    const kind = page;
+    const kind = page==='vyber' ? null : page;
+    const skillFilter=$('skillFilter');
     try {
       const m = await loadManifest();
       checkForTeacherUpdate(m);
-      const topics = m.topics.filter(t => t.skill === kind);
+      // The cross-skill selector must never advertise fake Reading demos or withdrawn cards.
+      const topics = m.topics.filter(t => kind ? t.skill===kind : (t.demo!==true && t.status!=='STAZENO'));
       const availableLangs = CORE.LANGS.filter(l => topics.some(t => t.variants.some(v => v.lang === l)));
       const availableLevels = CORE.LEVELS.filter(l => topics.some(t => t.variants.some(v => v.level === l)));
       for (const l of availableLangs) option(langFilter,l,LANG_NAMES[l]);
@@ -266,29 +272,42 @@
         favoriteToggle.setAttribute('aria-pressed','false');
         append(extra,fieldset,favoriteToggle);
       }
+      if (kind===null && extra) {
+        // Saved Conversation favorites also work in the unified teacher activity selector.
+        const favoriteToggle=button('☆ Jen oblíbené','button outline favorites-filter',()=>{
+          favoritesOnly=!favoritesOnly;
+          favoriteToggle.setAttribute('aria-pressed',String(favoritesOnly));
+          favoriteToggle.textContent=favoritesOnly?'★ Jen oblíbené':'☆ Jen oblíbené';
+          render();
+        });
+        favoriteToggle.setAttribute('aria-pressed','false');
+        extra.appendChild(favoriteToggle);
+      }
       function toggleFavorite(id) {
         if (favorites.has(id)) favorites.delete(id); else favorites.add(id);
         saveFavorites(favorites); render();
       }
       function render() {
-        const q = search.value.trim().toLocaleLowerCase('cs');
+        const q = normalizeSearch(search.value.trim());
+        const selectedSkill = skillFilter ? skillFilter.value : kind;
         const language = langFilter.value, level = levelFilter.value;
         const filtered = topics.filter(t => {
-          const haystack = (t.title+' '+t.summary+' '+t.tags.join(' ')).toLocaleLowerCase('cs');
+          const haystack = normalizeSearch(t.title+' '+t.summary+' '+t.tags.join(' '));
           const matchesText = !q || haystack.includes(q);
+          const matchesSkill = !selectedSkill || t.skill===selectedSkill;
           const matchesVariant = t.variants.some(v => (!language || v.lang === language) && (!level || v.level === level));
           const matchesCategory = !category || t.category === category;
           const matchesFavorites = !favoritesOnly || favorites.has(t.id);
-          return matchesText && matchesVariant && matchesCategory && matchesFavorites;
+          return matchesText && matchesSkill && matchesVariant && matchesCategory && matchesFavorites;
         });
         list.replaceChildren(...filtered.map(t => renderTopic(t,share,favorites,toggleFavorite)));
         count.textContent = 'Zobrazeno '+filtered.length+' z '+topics.length+' témat.';
         empty.hidden = filtered.length > 0;
         if (!filtered.length) {
-          const noTopics = topics.length === 0;
-          $('emptyTitle').textContent = noTopics ? 'Katalog teprve připravujeme' : 'Žádné téma neodpovídá výběru';
+          const noTopics = !topics.some(t => !selectedSkill || t.skill===selectedSkill);
+          $('emptyTitle').textContent = noTopics ? 'Tato laboratoř zatím nemá dostupné karty' : 'Žádné téma neodpovídá výběru';
           $('emptyDescription').textContent = noTopics ?
-            'Poslechové karty se připravují v etapě E5.' : 'Změňte jazyk, úroveň, kategorii nebo hledaný výraz.';
+            'Skutečné čtecí karty čekají na pedagogické schválení a poslechové na integraci. Technická demonstrační karta se zde nenabízí.' : 'Změňte dovednost, jazyk, úroveň, kategorii nebo hledaný výraz.';
           clear.hidden = noTopics;
         }
       }
@@ -316,6 +335,7 @@
       clear.addEventListener('click', () => $('filterForm').reset());
       search.addEventListener('input',render);
       langFilter.addEventListener('change',render);
+      if(skillFilter)skillFilter.addEventListener('change',render);
       levelFilter.addEventListener('change',render);
       render();
     } catch (error) {
@@ -404,7 +424,7 @@
   }
   const VERSION_KEY = 'lsh-test-teacher-manifest-version-v1';
   function checkForTeacherUpdate(m) {
-    if (!['home','konverzace','cteni','poslech'].includes(page)) return;
+    if (!['home','vyber','konverzace','cteni','poslech'].includes(page)) return;
     const version = m && typeof m.manifestVersion === 'string' ? m.manifestVersion : null;
     if (!version) return;
     let previous = null;
@@ -435,7 +455,7 @@
       console.warn('E2 is not being served under the configured basePath; sharing links use the configured path.');
     }
     if (page==='home') loadManifest().then(checkForTeacherUpdate).catch(()=>{});
-    if (CORE.SKILLS.includes(page)) initCatalog();
+    if (page==='vyber' || CORE.SKILLS.includes(page)) initCatalog();
     else if (page==='student') initStudent();
     else if (page==='code') initCode();
   }

@@ -4,6 +4,6 @@ window.LSH_CONFIG = Object.freeze({
   mode: 'staging',
   stage: 'RC1',
   basePath: '/zkusebni/',
-  release: '0.4.0-rc1-staging',
+  release: '0.4.1-rc1-github-only',
   manifestPath: 'data/manifest.json'
 });

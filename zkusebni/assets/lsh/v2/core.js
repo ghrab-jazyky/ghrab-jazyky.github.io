@@ -117,11 +117,10 @@
       }
       assert(t.variants.some(v => v.lang === 'en' && v.level === t.defaultLevel), 'Missing English default');
       assert(typeof t.hasTeacherKey === 'boolean', 'Invalid hasTeacherKey');
-      if (t.hasTeacherKey) {
-        assert(['cteni', 'poslech'].includes(t.skill), 'Conversation teacher key forbidden');
-        assert(typeof t.teacherKeyUrl === 'string' &&
-          /^https:\/\/(?:drive|docs)\.google\.com\//.test(t.teacherKeyUrl), 'Teacher key must be a school Drive link');
-      } else assert(t.teacherKeyUrl === null, 'Unexpected teacher key URL');
+      // GitHub Pages is public: never expose even a pointer to a restricted teacher key.
+      // Teacher-only materials are kept in a separate private GitHub repository.
+      assert(t.hasTeacherKey === false && t.teacherKeyUrl === null,
+        'Public manifest must never contain teacher keys or private URLs');
       if ('contentNote' in t)
         assert(t.contentNote === null || (typeof t.contentNote === 'string' && t.contentNote.length <= 1000), 'Invalid contentNote');
       if ('media' in t)
