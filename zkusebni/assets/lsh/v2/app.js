@@ -234,7 +234,7 @@
       const m = await loadManifest();
       checkForTeacherUpdate(m);
       // The cross-skill selector must never advertise fake Reading demos or withdrawn cards.
-      const topics = m.topics.filter(t => kind ? t.skill===kind : (t.demo!==true && t.status!=='STAZENO'));
+      const topics = m.topics.filter(t => kind ? t.skill===kind : CORE.isUnifiedSelectable(t));
       const availableLangs = CORE.LANGS.filter(l => topics.some(t => t.variants.some(v => v.lang === l)));
       const availableLevels = CORE.LEVELS.filter(l => topics.some(t => t.variants.some(v => v.level === l)));
       for (const l of availableLangs) option(langFilter,l,LANG_NAMES[l]);
