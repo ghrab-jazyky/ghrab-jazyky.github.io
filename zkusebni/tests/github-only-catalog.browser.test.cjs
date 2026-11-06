@@ -267,7 +267,8 @@ test('R4A teacher QA journal: Chromium and WebKit save notes locally, export, an
    page.on('dialog',dialog=>dialog.accept());
    await page.locator('#removeAll').click();
    assert.match(await page.locator('#recordCount').textContent(),/^0 uložených záznamů$/);
-   await page.locator('#card').selectOption('poslech');
+   await page.locator('#card').selectOption('poslech-matthew-v3');
+   assert.match(await page.locator('#cardLink').getAttribute('href'),/reference\/poslech\/matthew-mcconaughey\/$/);
    assert.equal(await page.locator('#language').isDisabled(),true,'Listening is English-only');
    assert.equal(await page.locator('#language').inputValue(),'en');
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,
