@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "topicId": "ll-matthew-oscars",
+  "skill": "poslech",
+  "title": "Matthew McConaughey — Oscars 2014",
+  "sourceArchive": "Matthew McConaughey - Oscars.zip",
+  "sourceStudentVersion": "v2",
+  "sourceStudentSha256": "12a3ba415a771e647de00f3d8d1b35e6fbc2095a469603ac50bfa4d0d659b187",
+  "sourceTaskDataSha256": "6b95af7f65ca5fd63032a1dc881be7e22937ec169280b4d9339bf12b58313fc6",
+  "practiceReferenceVersion": "v3",
+  "studentReferencePath": "reference/poslech/matthew-mcconaughey/index.html",
+  "studentReferenceSha256": "403022392cbd045cef72ed3554960f922f81545e5e077ad2d1fc9be2ad91a1df",
+  "studentReferenceBytes": 101767,
+  "teacherKeySha256": "178595288ad26a6dded6157f651334a552d558f76ab57b531f6312e37f09d2df",
+  "teacherKeyIsPublic": false,
+  "sourcePracticeQuestionsPreserved": true,
+  "pedagogicallyApproved": false,
+  "gradedTestModeImplemented": false,
+  "visibility": "PUBLIC_TEST_ONLY",
+  "notes": "Only the revised practice structure is published. Private teacher key stays in local ZIP. No automatic grading of Written Evidence."
+}
