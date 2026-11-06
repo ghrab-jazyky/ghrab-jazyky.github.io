@@ -4,6 +4,13 @@ const assert=require('node:assert/strict'),http=require('node:http'),fs=require(
 const {chromium,webkit}=require('playwright');
 const ORIGIN='http://127.0.0.1:8777',STAGE=ORIGIN+'/zkusebni/';
 const ROOT=path.resolve(__dirname,'../..');
+const CORE=require('../assets/lsh/v2/core.js');
+const CURRENT=JSON.parse(fs.readFileSync(path.join(ROOT,'zkusebni/data/manifest.json'),'utf8'));
+const LISTED=CORE.selectCatalogTopics(CURRENT);
+const TOTAL=LISTED.length;
+const CONVERSATIONS=LISTED.filter(t=>t.skill==='konverzace').length;
+const READING=LISTED.filter(t=>t.skill==='cteni').length;
+const LISTENING=LISTED.filter(t=>t.skill==='poslech').length;
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8',
  '.css':'text/css; charset=utf-8','.json':'application/json',
  '.webmanifest':'application/manifest+json','.png':'image/png','.svg':'image/svg+xml'};
@@ -35,20 +42,20 @@ async function exercise(engine,label,viewport){
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   const response=await page.goto(STAGE+'vyber/',{waitUntil:'domcontentloaded'});
   assert.equal(response.status(),200);
-  await page.waitForFunction(()=>document.querySelectorAll('#topicList .topic-card').length===21);
-  assert.match(await page.locator('#catalogCount').textContent(),/21 z 21/);
+  await page.waitForFunction(n=>document.querySelectorAll('#topicList .topic-card').length===n,TOTAL);
+  assert.match(await page.locator('#catalogCount').textContent(),new RegExp(TOTAL+' z '+TOTAL));
   assert.equal(await page.locator('#topicList .demo-chip').count(),0,'Synthetic Reading demo must not be offered');
   assert.equal(await page.locator('#topicList').textContent().then(s=>s.includes('Niva')),false);
   await page.locator('#skillFilter').selectOption('cteni');
-  assert.equal(await page.locator('#topicList .topic-card').count(),0);
-  assert.match(await page.locator('#emptyDescription').textContent(),/čtecí karty/);
+  assert.equal(await page.locator('#topicList .topic-card').count(),READING);
+  if(!READING) assert.match(await page.locator('#emptyDescription').textContent(),/čtecí karty/);
   await page.locator('#skillFilter').selectOption('poslech');
-  assert.equal(await page.locator('#topicList .topic-card').count(),0);
+  assert.equal(await page.locator('#topicList .topic-card').count(),LISTENING);
   await page.locator('#skillFilter').selectOption('konverzace');
-  assert.equal(await page.locator('#topicList .topic-card').count(),21);
+  assert.equal(await page.locator('#topicList .topic-card').count(),CONVERSATIONS);
   await page.locator('#langFilter').selectOption('es');
   await page.locator('#levelFilter').selectOption('C2');
-  assert.equal(await page.locator('#topicList .topic-card').count(),21);
+  assert.equal(await page.locator('#topicList .topic-card').count(),CONVERSATIONS);
   await page.locator('#topicSearch').fill('nemovitosti');
   assert.equal(await page.locator('#topicList .topic-card').count(),1,
     'Accent-neutral search must find Czech topic without diacritics');
@@ -79,7 +86,7 @@ async function exercise(engine,label,viewport){
   await page.locator('#shareClose').click();
   // Existing Conversation catalog uses the same accent-normalized search logic.
   await page.goto(STAGE+'konverzace/',{waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>document.querySelectorAll('#topicList .topic-card').length===21);
+  await page.waitForFunction(n=>document.querySelectorAll('#topicList .topic-card').length===n,CONVERSATIONS);
   await page.locator('#topicSearch').fill('nemovitosti');
   assert.equal(await page.locator('#topicList .topic-card').count(),1);
   assert.deepEqual(errors,[],label+' JS runtime errors');
@@ -92,6 +99,41 @@ test('GitHub-only unified selector: Chromium mobile viewport', {timeout:140000},
  ()=>exercise(chromium,'Chromium mobile',{width:390,height:844}));
 test('GitHub-only unified selector: WebKit mobile viewport', {timeout:140000},
  ()=>exercise(webkit,'WebKit mobile',{width:375,height:812}));
+test('R3A synthetic approved Reading enters both catalogues without demo or stale copy', {timeout:140000},async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});
+  const page=await context.newPage();page.setDefaultTimeout(20000);
+  const synthetic={...structuredClone(CURRENT.topics.find(t=>t.skill==='konverzace')),
+   id:'rl-synthetic-approved',skill:'cteni',slug:'approved-synthetic',shortCode:'R3AA',
+   title:'Synthetic approved Reading',summary:'Test-only in-memory data',version:'r3a-test-only',
+   cardPath:'cteni/approved-synthetic/',status:'PUBLIKOVANO',
+   publishedAt:'2026-11-06T07:00:00Z',demo:false};
+  const mock={...structuredClone(CURRENT),topics:[...structuredClone(CURRENT.topics),synthetic]};
+  CORE.validateManifest(mock);
+  await page.route('**/zkusebni/data/manifest.json',route=>route.fulfill({
+   status:200,contentType:'application/json',body:JSON.stringify(mock)
+  }));
+  await page.goto(STAGE+'vyber/',{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(n=>document.querySelectorAll('#topicList .topic-card').length===n,TOTAL+1);
+  assert.match(await page.locator('#unifiedContentStatus').textContent(),/1 schválená karta/);
+  await page.locator('#skillFilter').selectOption('cteni');
+  assert.equal(await page.locator('#topicList .topic-card').count(),1);
+  assert.match(await page.locator('#topicList .topic-card h3').textContent(),/Synthetic approved Reading/);
+  assert.equal(await page.locator('#topicList').textContent().then(x=>x.includes('Niva')),false);
+  await page.locator('#topicList .topic-card button').filter({hasText:'Sdílet studentům'}).click();
+  const url=new URL(await page.locator('#shareUrl').inputValue());
+  assert.equal(url.pathname,'/zkusebni/cteni/approved-synthetic/');
+  assert.equal(url.searchParams.get('lang'),'en');
+  assert.equal(url.searchParams.get('level'),'B1');
+  await page.locator('#shareClose').click();
+  await page.goto(STAGE+'cteni/',{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>document.querySelectorAll('#topicList .topic-card').length===1);
+  assert.match(await page.locator('#readingStatus').textContent(),/1 schválená karta/);
+  assert.equal(await page.locator('#topicList').textContent().then(x=>x.includes('Niva')),false);
+  await context.close();
+ }finally{await browser.close();}
+});
 test('Offline service-worker shell includes unified selector and manifest', {timeout:140000},async()=>{
  const browser=await chromium.launch({headless:true});
  try{
@@ -101,11 +143,11 @@ test('Offline service-worker shell includes unified selector and manifest', {tim
   const ready=await page.evaluate(async()=>{const r=await navigator.serviceWorker.ready;return r.scope;});
   assert.equal(ready,STAGE);
   await page.goto(STAGE+'vyber/',{waitUntil:'load'});
-  await page.waitForFunction(()=>document.querySelectorAll('#topicList .topic-card').length===21);
+  await page.waitForFunction(n=>document.querySelectorAll('#topicList .topic-card').length===n,TOTAL);
   await context.setOffline(true);
   await page.reload({waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>document.querySelectorAll('#topicList .topic-card').length===21);
-  assert.match(await page.locator('#catalogCount').textContent(),/21 z 21/);
+  await page.waitForFunction(n=>document.querySelectorAll('#topicList .topic-card').length===n,TOTAL);
+  assert.match(await page.locator('#catalogCount').textContent(),new RegExp(TOTAL+' z '+TOTAL));
   await context.close();
  }finally{await browser.close();}
 });
