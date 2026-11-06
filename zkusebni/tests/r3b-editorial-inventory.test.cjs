@@ -32,7 +32,7 @@ test('R3B: read-only inventory carries no source, keys, student URLs or release 
   assert.deepEqual(Object.keys(t).sort(),[...approvedKeys].sort());
   assert.ok(!ids.has(t.id));ids.add(t.id);
   assert.ok(['konverzace','cteni','poslech'].includes(t.skill));
-  assert.ok(['private-source-verified','previously-audited-needs-restoration','planned-only'].includes(t.sourceState));
+  assert.ok(['private-source-verified','previously-audited-needs-restoration','public-test-preview','planned-only'].includes(t.sourceState));
   assert.ok(['PLANOVANO','CEKA_NA_PODKLADY','CEKA_NA_REFERENCI','CEKA_NA_NEZAVISLOU_REVIZI','CEKA_NA_INTEGRACNI_AUDIT'].includes(t.state));
  }
  const serialized=JSON.stringify(inventory);
