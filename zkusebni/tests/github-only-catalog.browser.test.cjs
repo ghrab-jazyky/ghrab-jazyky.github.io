@@ -160,7 +160,7 @@ test('R3B: three separate editorial inventories show reference candidates but ne
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   for(const config of [
    {skill:'konverzace',count:1,title:'Human Rights',ref:'Rodina'},
-   {skill:'cteni',count:5,title:'Can Mistakes Help Us Learn?',ref:'Can Mistakes Help Us Learn?'},
+   {skill:'cteni',count:5,title:'Can Mistakes Help Us Learn?',ref:'Asteroids'},
    {skill:'poslech',count:3,title:'Matthew McConaughey',ref:'Matthew McConaughey'}
   ]){
    const response=await page.goto(STAGE+config.skill+'/',{waitUntil:'domcontentloaded'});
@@ -241,7 +241,7 @@ test('R4A teacher QA journal: Chromium and WebKit save notes locally, export, an
    assert.equal(res.status(),200,label);
    assert.equal(await page.locator('select#level option').count(),6,label+' must offer exactly A1-C2');
    await page.locator('#card').selectOption('cteni');
-   assert.match(await page.locator('#cardLink').getAttribute('href'),/nahledy\/cteni\/can-mistakes\/$/);
+   assert.match(await page.locator('#cardLink').getAttribute('href'),/nahledy\/cteni\/asteroids\/$/);
    await page.locator('#device').selectOption('iPad');
    await page.locator('#browser').selectOption('Safari');
    await page.locator('#language').selectOption('fr');
