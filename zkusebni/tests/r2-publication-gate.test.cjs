@@ -35,5 +35,5 @@ test('R2: fail closed for drafts and withdrawn Reading/Listening, including forg
 });
 test('R2: UI selector uses centralized safety predicate',()=>{
   const js=fs.readFileSync(path.join(__dirname,'../assets/lsh/v2/app.js'),'utf8');
-  assert.match(js,/const topics = m\.topics\.filter\(t => kind \? t\.skill===kind : CORE\.isUnifiedSelectable\(t\)\)/);
+  assert.match(js,/const topics = CORE\.selectCatalogTopics\(m,kind\)/);
 });
