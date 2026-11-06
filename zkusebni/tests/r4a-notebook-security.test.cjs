@@ -11,6 +11,8 @@ test('R4A QA notebook is linked from online previews, uses only school-org stude
  assert.match(html,/konverzace:\{title:'Rodina \(starší kontrolní záznamy\)'/);
  assert.match(html,/nahledy\/cteni\/asteroids\//);
  assert.match(html,/nahledy\/poslech\/matthew-mcconaughey\//);
+ assert.match(html,/reference\/poslech\/matthew-mcconaughey\//);
+ assert.match(html,/poslech-matthew-v3/);
  assert.match(html,/Ochrana soukromí/);
  assert.match(html,/Kontrolní list referenčních karet/);
  assert.match(read('sw.js'),/'revize\/'/);

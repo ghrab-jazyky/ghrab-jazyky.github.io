@@ -26,7 +26,7 @@
 .qa-check input{margin-top:5px;flex-shrink:0;accent-color:var(--mint)}
 .qa-actions{display:flex;flex-wrap:wrap;gap:9px}
 .qa-wrap button,.qa-open{font:inherit;cursor:pointer;font-weight:750;padding:9px 13px;min-height:42px;border:1px solid var(--line);border-radius:10px;background:var(--surface-raised);color:var(--ink)}
-.qa-open{display:inline-flex;margin:0 0 18px;max-width:100%;overflow-wrap:anywhere}
+.qa-open{display:inline-block;box-sizing:border-box;margin:0 0 18px;max-width:100%;white-space:normal;overflow-wrap:anywhere;word-break:break-word}
 .qa-wrap button.qa-primary{background:var(--sky);border-color:var(--sky);color:var(--bg)}
 .qa-wrap button:disabled{cursor:not-allowed;opacity:.55}
 .qa-status{min-height:24px;color:var(--mint);font-size:.9rem}
@@ -53,7 +53,8 @@
 <option value="konverzace-ai-reference">Conversation Lab · Umělá inteligence (reference)</option>
 <option value="konverzace">Conversation Lab · Rodina (starší záznamy)</option>
 <option value="cteni-asteroids-v23">Reading Lab · Asteroids v2.3</option>
-<option value="poslech">Listening Lab · Matthew McConaughey</option>
+<option value="poslech-matthew-v3">Listening · Matthew McConaughey v3</option>
+<option value="poslech">Listening · Matthew v1 (historie)</option>
 </select></div>
 <a class="qa-open" id="cardLink" href="../reference/konverzace/umela-inteligence/" target="_blank" rel="noopener noreferrer">Otevřít kartu ↗</a>
 <div class="qa-pair">
@@ -99,7 +100,8 @@ var TARGETS={
  konverzace:{title:'Rodina (starší kontrolní záznamy)',url:'../konverzace/rodina/'},
  cteni:{title:'Can Mistakes Help Us Learn? (starší kontrolní záznam)',url:'../nahledy/cteni/can-mistakes/'},
  'cteni-asteroids-v23':{title:'Asteroids v2.3',url:'../nahledy/cteni/asteroids/'},
- poslech:{title:'Matthew McConaughey',url:'../nahledy/poslech/matthew-mcconaughey/'}
+ 'poslech-matthew-v3':{title:'Matthew McConaughey v3 – referenční TEST',url:'../reference/poslech/matthew-mcconaughey/'},
+ poslech:{title:'Matthew McConaughey v1 (starší záznamy)',url:'../nahledy/poslech/matthew-mcconaughey/'}
 };
 var $=function(id){return document.getElementById(id)};
 var data=[];
@@ -108,8 +110,8 @@ function load(){try{var v=JSON.parse(localStorage.getItem(KEY)||'[]');return Arr
 function save(){try{localStorage.setItem(KEY,JSON.stringify(data));return true;}catch(e){$('storageStatus').textContent='Uložení do prohlížeče selhalo. Záznamy nyní zůstávají jen v otevřené stránce.';return false;}}
 function updateTarget(){
  var t=TARGETS[$('card').value]||TARGETS.konverzace;
- $('cardLink').textContent='Otevřít: '+t.title+' ↗';$('cardLink').href=t.url;
- $('language').disabled=$('card').value==='poslech';
+ $('cardLink').textContent='Otevřít vybranou kartu ↗';$('cardLink').setAttribute('aria-label','Otevřít '+t.title+' v nové kartě');$('cardLink').href=t.url;
+ $('language').disabled=$('card').value.startsWith('poslech');
  if($('language').disabled)$('language').value='en';
 }
 function render(){
@@ -133,7 +135,7 @@ $('qaForm').addEventListener('submit',function(e){
  if(result==='CHYBA'&&!notes){$('formStatus').textContent='Popiš prosím konkrétní nalezený problém.';return;}
  data.push({schemaVersion:1,when:new Date().toISOString(),card:$('card').value,
  device:$('device').value,browser:$('browser').value,
- language:$('card').value==='poslech'?'en':$('language').value,level:$('level').value,
+ language:$('card').value.startsWith('poslech')?'en':$('language').value,level:$('level').value,
  result:result,checks:Array.from(document.querySelectorAll('.qa-checks input:checked')).map(function(x){return x.value;}),
  notes:notes.slice(0,4000)});
  if(data.length>200)data.shift();

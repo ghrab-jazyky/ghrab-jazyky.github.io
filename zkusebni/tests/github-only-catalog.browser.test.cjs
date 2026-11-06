@@ -267,7 +267,8 @@ test('R4A teacher QA journal: Chromium and WebKit save notes locally, export, an
    page.on('dialog',dialog=>dialog.accept());
    await page.locator('#removeAll').click();
    assert.match(await page.locator('#recordCount').textContent(),/^0 uložených záznamů$/);
-   await page.locator('#card').selectOption('poslech');
+   await page.locator('#card').selectOption('poslech-matthew-v3');
+   assert.match(await page.locator('#cardLink').getAttribute('href'),/reference\/poslech\/matthew-mcconaughey\/$/);
    assert.equal(await page.locator('#language').isDisabled(),true,'Listening is English-only');
    assert.equal(await page.locator('#language').inputValue(),'en');
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,
@@ -345,6 +346,60 @@ test('R4C original Conversation AI reference: public TEST source runs in Chromiu
    assert.equal(await page.locator('#questions .question-detail').first().isVisible(),true);
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,label+' no horizontal overflow');
    assert.deepEqual(errors,[],label+' JS runtime exceptions');
+   await context.close();
+  }finally{await browser.close();}
+ }
+});
+
+
+test('R4D Matthew v3 reference: 3 independent checks, separate optional vocabulary and teacher-reviewed writing', {timeout:170000},async()=>{
+ for(const [engine,label,viewport] of [
+  [chromium,'Chromium desktop',{width:1366,height:900}],
+  [webkit,'WebKit phone-sized',{width:390,height:844}]
+ ]){
+  const browser=await engine.launch({headless:true});
+  try{
+   const context=await browser.newContext({viewport,serviceWorkers:'block'});
+   const page=await context.newPage();
+   page.setDefaultTimeout(25000);
+   const errors=[];page.on('pageerror',error=>errors.push(error.message));
+   const response=await page.goto(STAGE+'reference/poslech/matthew-mcconaughey/',{waitUntil:'domcontentloaded'});
+   assert.equal(response.status(),200,label+' reference HTTP');
+   await page.waitForFunction(()=>document.querySelectorAll('#levelPills button').length===6);
+   assert.match(await page.title(),/Listening A1–C2|Listening \| v3/);
+   assert.equal(await page.locator('#topLevelText').textContent(),'B2');
+   assert.equal(await page.locator('#gistTasks article.task').count(),3);
+   assert.equal(await page.locator('#detailTasks article.task').count(),6);
+   assert.equal(await page.locator('#factsTasks .short-task').count()+await page.locator('#openTasks .short-task').count(),5);
+   for(const [id,heading] of [['gist','FIRST LISTENING'],['detail','SECOND LISTENING'],['evidence','THIRD LISTENING']]){
+    assert.match((await page.locator('#'+id+' .section-number').textContent()).toUpperCase(),new RegExp(heading));
+   }
+   await page.locator('#checkFirstBtn').click();
+   assert.match(await page.locator('#firstReview').textContent(),/^0\/3 correct/);
+   assert.match(await page.locator('#secondReview').textContent(),/Not checked yet/);
+   assert.match(await page.locator('#scoreNumber').textContent(),/—/);
+   await page.locator('#checkSecondBtn').click();
+   assert.match(await page.locator('#secondReview').textContent(),/^0\/6 correct/);
+   assert.match(await page.locator('#scoreNumber').textContent(),/—/);
+   await page.locator('#checkThirdBtn').click();
+   assert.match(await page.locator('#thirdReview').textContent(),/^Sequence: 0\/6/);
+   assert.equal(await page.locator('#scoreNumber').textContent(),'0 / 15');
+   assert.match(await page.locator('#reviewSummary').textContent(),/No numerical points assigned to writing/);
+   await page.locator('#v-0').selectOption('0');
+   await page.locator('#checkVocabBtn').click();
+   assert.equal(await page.locator('#scoreNumber').textContent(),'0 / 15','Optional vocabulary never affects core score');
+   await page.locator('#levelPills button[data-level="C1"]').click();
+   assert.equal(await page.locator('#topLevelText').textContent(),'C1');
+   assert.match(await page.locator('#scoreNumber').textContent(),/—/);
+   await page.locator('#o-0').fill('Synthetic open answer: only a teacher can evaluate this interpretation.');
+   await page.locator('#checkThirdBtn').click();
+   assert.match(await page.locator('#openTasks .feedback').first().textContent(),/Teacher review only/);
+   await page.reload({waitUntil:'domcontentloaded'});
+   await page.waitForFunction(()=>document.querySelectorAll('#levelPills button').length===6);
+   assert.equal(await page.locator('#topLevelText').textContent(),'C1');
+   assert.match(await page.locator('#o-0').inputValue(),/Synthetic open answer/);
+   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,label+' no horizontal overflow');
+   assert.deepEqual(errors,[],label+' no JS runtime errors');
    await context.close();
   }finally{await browser.close();}
  }
