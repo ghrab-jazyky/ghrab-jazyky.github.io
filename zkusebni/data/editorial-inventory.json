@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "inventoryVersion": "r4b-2026-11-06",
+  "inventoryVersion": "r4c-2026-11-06",
   "purpose": "Editorial inventory of online TEST student previews (Reading/Listening) and existing Conversation pilots; reference candidates are not pedagogically approved.",
   "releasePolicy": "An online TEST preview is not a pedagogically approved lesson. Only entries independently approved may enter the shareable student manifest.",
   "referenceCandidates": {
     "konverzace": {
-      "id": "cl-rodina",
-      "source": "published-technical-pilot",
+      "id": "cl-umela-inteligence",
+      "source": "teacher-uploaded-original-HTML-and-audit-prompt-2026-11-06",
       "approved": false
     },
     "cteni": {
