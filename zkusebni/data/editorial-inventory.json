@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "inventoryVersion": "r4c-2026-11-06",
+  "inventoryVersion": "r4d-2026-11-06",
   "purpose": "Editorial inventory of online TEST student previews (Reading/Listening) and existing Conversation pilots; reference candidates are not pedagogically approved.",
   "releasePolicy": "An online TEST preview is not a pedagogically approved lesson. Only entries independently approved may enter the shareable student manifest.",
   "referenceCandidates": {
@@ -17,7 +17,8 @@
     },
     "poslech": {
       "id": "ll-matthew-oscars",
-      "source": "private-source-archive",
+      "source": "teacher-uploaded-v2-restructured-into-v3-three-pass-reference",
+      "referenceVersion": "v3",
       "approved": false
     }
   },
@@ -86,11 +87,11 @@
       "id": "ll-matthew-oscars",
       "skill": "poslech",
       "title": "Matthew McConaughey — Oscars 2014",
-      "version": "v1",
+      "version": "v3 · referenční TEST",
       "sourceState": "public-test-preview",
       "state": "CEKA_NA_INTEGRACNI_AUDIT",
       "scope": "Doložené studentské HTML · EN · A1–C2",
-      "note": "Studentské HTML je online jako TEST. Referenční kandidát; ověřit všech šest úrovní, skutečné přehrávání oficiálního videa a mobilní zařízení."
+      "note": "Referenční procvičovací poslech v3: First Listening / Second Listening / Third Listening (Written Evidence + Reconstruct the Speech), volitelná Language of the Speech a Beyond the Speech. Každý poslech lze zkontrolovat samostatně i společně. Psaní kontroluje učitel, původní v1 náhled zůstává zachován. Není to ještě samostatný krátký klasifikovaný TEST režim."
     },
     {
       "id": "ll-peaky-no-fighting",
