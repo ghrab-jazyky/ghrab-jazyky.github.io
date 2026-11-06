@@ -66,7 +66,7 @@
       const entries=inventory.topics.filter(t=>t.skill===skill);
       summary.textContent=skill==='konverzace'
         ? entries.length+' další téma v přípravě. Stávající konverzační karty jsou výše v katalogu.'
-        : entries.length+' témat evidováno. Zatím nejsou zveřejněna jako studentské karty.';
+        : entries.length+' témat evidováno. Nejsou schválená pro běžný studentský katalog; testovací HTML najdete nad tímto přehledem.';
       const refId=inventory.referenceCandidates[skill].id;
       let refTitle=entries.find(t=>t.id===refId)?.title;
       if(skill==='konverzace'){
