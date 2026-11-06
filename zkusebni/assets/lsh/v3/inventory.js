@@ -64,7 +64,6 @@
       if(!response.ok)throw new Error('Inventory not available');
       const inventory=validate(await response.json());
       const entries=inventory.topics.filter(t=>t.skill===skill);
-      const label=entries.length===1?'1 téma':' '+entries.length+' témat';
       summary.textContent=skill==='konverzace'
         ? entries.length+' další téma v přípravě. Stávající konverzační karty jsou výše v katalogu.'
         : entries.length+' témat evidováno. Zatím nejsou zveřejněna jako studentské karty.';
