@@ -176,3 +176,21 @@ test('R3B: three separate editorial inventories show reference candidates but ne
   await context.close();
  }finally{await browser.close();}
 });
+
+test('R3B: editorial Reading inventory remains readable offline after PWA shell precache', {timeout:140000},async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'allow'});
+  const page=await context.newPage();page.setDefaultTimeout(30000);
+  await page.goto(STAGE,{waitUntil:'load'});
+  const ready=await page.evaluate(async()=>{const reg=await navigator.serviceWorker.ready;return reg.scope;});
+  assert.equal(ready,STAGE);
+  await page.goto(STAGE+'cteni/',{waitUntil:'load'});
+  await page.waitForFunction(()=>document.querySelectorAll('#editorialInventoryList article.inventory-card').length===5);
+  await context.setOffline(true);
+  await page.reload({waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>document.querySelectorAll('#editorialInventoryList article.inventory-card').length===5);
+  assert.match(await page.locator('#editorialInventoryList').textContent(),/Can Mistakes Help Us Learn/);
+  await context.close();
+ }finally{await browser.close();}
+});
