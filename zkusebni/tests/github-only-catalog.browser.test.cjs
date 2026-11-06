@@ -151,3 +151,28 @@ test('Offline service-worker shell includes unified selector and manifest', {tim
   await context.close();
  }finally{await browser.close();}
 });
+
+test('R3B: three separate editorial inventories show reference candidates but never share draft activities', {timeout:140000},async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});
+  const page=await context.newPage();page.setDefaultTimeout(30000);
+  const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  for(const config of [
+   {skill:'konverzace',count:1,title:'Human Rights',ref:'Rodina'},
+   {skill:'cteni',count:5,title:'Can Mistakes Help Us Learn?',ref:'Can Mistakes Help Us Learn?'},
+   {skill:'poslech',count:3,title:'Matthew McConaughey',ref:'Matthew McConaughey'}
+  ]){
+   const response=await page.goto(STAGE+config.skill+'/',{waitUntil:'domcontentloaded'});
+   assert.ok(response&&response.ok(),config.skill+' HTTP');
+   await page.waitForFunction(n=>document.querySelectorAll('#editorialInventoryList article.inventory-card').length===n,config.count);
+   assert.match(await page.locator('#editorialInventoryList').textContent(),new RegExp(config.title,'i'));
+   assert.match(await page.locator('#editorialReferenceCandidate').textContent(),new RegExp(config.ref,'i'));
+   assert.equal(await page.locator('#editorialInventoryList a').count(),0,'A pending topic must not link to student HTML');
+   assert.equal(await page.locator('#editorialInventoryList button').count(),0,'A pending topic must not show a Share/QR button');
+   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,config.skill+' horizontal overflow');
+  }
+  assert.deepEqual(errors,[],'Unexpected editorial inventory JavaScript errors');
+  await context.close();
+ }finally{await browser.close();}
+});
