@@ -223,7 +223,7 @@ for(const item of additionalReading){
   for(const level of ['A1','A2','B1','B2','C1','C2']){
    const v=data[language][level];
    assert.ok(v.title&&Array.isArray(v.paragraphs)&&v.paragraphs.length>0);
-   assert.ok(Array.isArray(v.questions)&&v.questions.length===15);
+   assert.ok(Array.isArray(v.questions)&&v.questions.length==={A1:9,A2:9,B1:12,B2:18,C1:21,C2:21}[level], 'Unexpected Reading CEFR exercise count: '+item.id+'/'+language+'/'+level);
    questions+=v.questions.length;count++;
   }
  }
