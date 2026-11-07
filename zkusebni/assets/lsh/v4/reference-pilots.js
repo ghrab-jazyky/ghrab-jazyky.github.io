@@ -167,6 +167,8 @@ async function init(){
   const data=await response.json();
   if(data.schemaVersion!==1||data.approvedForTeaching!==false||!Array.isArray(data.entries)||data.entries.length<3||data.entries.length>500||!data.entries.every(isValid)||new Set(data.entries.map(x=>x.id)).size!==data.entries.length||new Set(data.entries.filter(x=>x.isReference).map(x=>x.skill)).size!==3||data.entries.filter(x=>x.isReference).length!==3)throw new Error('Invalid pilot inventory');
   entries=data.entries;
+  const requested=new URLSearchParams(location.search).getAll('skill');
+  if(requested.length===1&&SKILLS[requested[0]])$('refSkill').value=requested[0];
   render();
  }catch(err){console.error('Reference catalog:',err);$('refCount').textContent='Referenční katalog momentálně není dostupný.';list.replaceChildren(el('p','ref-empty','Zkontrolujte připojení nebo načtěte stránku znovu.'));}
 }

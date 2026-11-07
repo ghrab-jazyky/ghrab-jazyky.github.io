@@ -593,3 +593,26 @@ test('R5N complete offline ZIP for legacy Conversation: fixed ES C1, original pr
   }finally{await browser.close();fs.rmSync(folder,{recursive:true,force:true});}
  }
 });
+
+test('R5P home tiles and skill-prefilter URLs lead to one consistent 29-card pilot directory', {timeout:140000},async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});
+  const page=await context.newPage();page.setDefaultTimeout(20000);
+  const res=await page.goto(STAGE,{waitUntil:'domcontentloaded'});
+  assert.equal(res.status(),200);
+  for(const [skill,count,theme] of [['konverzace',21,'tone-speak'],['cteni',5,'tone-read'],['poslech',3,'tone-listen']]){
+   const href=await page.locator('.lab-card.'+theme).getAttribute('href');
+   assert.equal(href,'reference-karty/?skill='+skill);
+   const ref=await page.goto(STAGE+href,{waitUntil:'domcontentloaded'});
+   assert.equal(ref.status(),200);
+   await page.waitForFunction(n=>document.querySelectorAll('#refList .ref-card').length===n,count);
+   assert.equal(await page.locator('#refSkill').inputValue(),skill);
+   await page.goto(STAGE,{waitUntil:'domcontentloaded'});
+  }
+  await page.goto(STAGE+'reference-karty/?skill=unknown',{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>document.querySelectorAll('#refList .ref-card').length===29);
+  assert.equal(await page.locator('#refSkill').inputValue(),'');
+  await context.close();
+ }finally{await browser.close();}
+});
