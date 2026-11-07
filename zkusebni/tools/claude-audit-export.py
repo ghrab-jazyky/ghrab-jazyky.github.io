@@ -41,9 +41,12 @@ def prompt(item,sha):
  "List each issue with P0/P1/P2 severity, language, CEFR, exact exercise/station, original wording, proposed fix and proof. Distinguish definite errors from hypotheses.",
  "P0 critical, P1 pedagogically significant, P2 minor language/UX. State when native Safari/iOS/Android or real media were not tested.",
  "Never infer new grading rubrics. No student data or private teacher keys in public repositories.",
- "Return an individual report with EXACT JSON fields:",
- '{"topicId":"'+id+'","sourceSha256":"'+sha+'","status":"REVIEWED_WITH_FINDINGS","requiresTeacherDecision":true,"findings":[{"severity":"P1","language":"es","level":"A1","location":"station 8 question 1","observed":"...","proposed":"...","evidence":"..."}]}',
- 'Only use status "REVIEWED_NO_FINDINGS" with findings:[] if all inspected variants truly have no issues.',
+ "Return one JSON report for every card; reviewedVariants MUST contain EVERY actual language x CEFR combination, 24 for Conversation/Reading and 6 for Listening.",
+ "Each reviewedVariants item needs language, level, and a genuine source-specific evidence note of at least 20 characters. Do not claim review of an uninspected variant; incomplete reports will be rejected.",
+ "unverifiedChecks is mandatory and lists device tests, external media, private answer keys, offline storage or school network that were not actually tested. [] is allowed only when all relevant checks were genuinely verified.",
+ "Return the following schema, expanding reviewedVariants to ALL required variants:",
+ '{"topicId":"'+id+'","sourceSha256":"'+sha+'","status":"REVIEWED_WITH_FINDINGS","requiresTeacherDecision":true,"reviewedVariants":[{"language":"en","level":"A1","evidence":"Source-specific inspected observation for actual EN A1 content"}],"unverifiedChecks":["Native iOS and school Wi-Fi not physically tested"],"findings":[{"severity":"P1","language":"es","level":"A1","location":"station 8 question 1","observed":"Original text from source","proposed":"Concrete corrected text","evidence":"Concrete source finding"}]}',
+ 'Use "REVIEWED_NO_FINDINGS" with findings:[] only after all declared variants are inspected without findings. This never certifies media, devices or private teacher keys.',
  "Include a short narrative summary outside the JSON. Claude approval does NOT replace teacher approval or real-device UAT.",
  ""
  ])
@@ -76,7 +79,7 @@ def main():
      z.writestr("prompts/"+q["id"]+".md",prompt(card,digest))
      report["reports"].append({"topicId":q["id"],"sourceSha256":digest,
       "status":"FILL_REVIEWED_WITH_FINDINGS_OR_REVIEWED_NO_FINDINGS",
-      "requiresTeacherDecision":True,"findings":[]})
+      "requiresTeacherDecision":True,"reviewedVariants":[],"unverifiedChecks":[],"findings":[]})
      index.append("- "+q["id"]+": "+dest.name+", SHA-256 "+digest)
     z.writestr("reports.template.json",json.dumps(report,ensure_ascii=False,indent=2))
    allpacks.append(dest)
