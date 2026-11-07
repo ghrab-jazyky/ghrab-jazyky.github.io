@@ -10,9 +10,13 @@ on:
       - 'zkusebni/data/claude-audit-queue.json'
       - 'zkusebni/tools/**'
       - 'zkusebni/podklady/**'
+      - 'zkusebni/pridat-kartu/**'
+      - 'zkusebni/revize-claude/**'
       - 'zkusebni/data/claude-audit-queue.json'
       - 'zkusebni/tools/**'
       - 'zkusebni/podklady/**'
+      - 'zkusebni/pridat-kartu/**'
+      - 'zkusebni/revize-claude/**'
       - 'zkusebni/reference-karty/**'
       - 'zkusebni/tests/reference-integrity.cjs'
       - '.github/workflows/lsh-reference-integrity.yml'
@@ -48,3 +52,16 @@ jobs:
           node zkusebni/tests/reference-integrity.cjs
           node zkusebni/tools/card-intake.cjs --verify
           node zkusebni/tools/card-intake.cjs --self-test
+          node --check zkusebni/tools/claude-audit-import.cjs
+      - name: End-to-end intake smoke test (runner only, never committed)
+        run: |
+          set -eu
+          mkdir -p "$RUNNER_TEMP/lsh-intake-example"
+          cp zkusebni/nahledy/cteni/asteroids/index.html "$RUNNER_TEMP/lsh-intake-example/asteroids.html"
+          node -e 'const fs=require("node:fs");const d={schemaVersion:1,cards:[{id:"rl-intake-smoke",skill:"cteni",title:"Asteroids intake smoke test",summary:"Automated disposable validation of the complete multilingual reference reading card.",focus:"Structural import test, not a publication",version:"v2.3-fixture",sourceFile:"asteroids.html"}]};fs.writeFileSync(process.env.RUNNER_TEMP+"/lsh-intake-example/cards.json",JSON.stringify(d,null,2));'
+          node zkusebni/tools/card-intake.cjs --batch "$RUNNER_TEMP/lsh-intake-example/cards.json"
+          node zkusebni/tools/card-intake.cjs --batch "$RUNNER_TEMP/lsh-intake-example/cards.json" --apply
+          node zkusebni/tools/card-intake.cjs --verify
+          node zkusebni/tools/card-intake.cjs --audit-export "$RUNNER_TEMP/lsh-claude-export"
+          test -f "$RUNNER_TEMP/lsh-claude-export/rl-intake-smoke.md"
+

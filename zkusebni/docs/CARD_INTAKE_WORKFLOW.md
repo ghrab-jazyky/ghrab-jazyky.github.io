@@ -55,3 +55,7 @@ Vznikne \`INDEX.md\` a jednotlivá zadání \`cl-*.md\`, \`rl-*.md\`, \`ll-*.md\
 
 ## Doporučený uživatelský postup v ChatGPT
 Přiložit nové studentské HTML a sdělit dovednost, název, konkrétní anotaci a verzi. Asistent přes oprávněný konektor nebo připravený intake balíček provede validaci a zápis do DRAFT PR. **Není nutné opakovaně zadávat, jak ručně doplnit seznam 29 karet.**
+
+## Webové rozhraní příjmu
+
+`/zkusebni/pridat-kartu/` — přetažení až 12 studentských HTML, doplnění metadata, stažení místně vygenerovaného ZIP. ZIP lze vložit do ChatGPT pro přidání přes oprávněný GitHub konektor; statická stránka **nikdy sama nepublikuje**. Node importer použije uvnitř ZIP obsažené `cards.json` a zdroje.

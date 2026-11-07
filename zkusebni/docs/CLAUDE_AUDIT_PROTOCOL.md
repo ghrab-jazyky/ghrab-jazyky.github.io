@@ -20,3 +20,14 @@ Claude má:
 Výsledky se ukládají nejprve **mimo veřejné repozitáře**; veřejná je jen bezpečná evidence stavu bez učitelských klíčů nebo identifikovatelných žáků. Claude Pro není samo o sobě automatické API propojení s GitHubem. Pro úplnou automatizaci je nutná samostatná a bezpečně schválená integrace; do té doby se jednotlivá zadání předávají Claude řízeně.
 
 Přesun karet do ostrého katalogu se neděje při importu, dokončení Claudeovy kontroly ani při zeleném CI. Až učitel pedagogicky potvrdí konkrétní varianty a UAT, je možné zvážit vydání.
+
+## Dávkový export a ověřování zpráv
+
+`/zkusebni/revize-claude/` — zvolit laboratoř a automaticky připravenou dávku až 5 karet, stáhnout ZIP se student-only source HTML, individuálními prompty a SHA-256. Claude vrací JSON report `schemaVersion:1, reports:[...]`. Import nejprve ověřte bez zápisu:
+
+```bash
+node zkusebni/tools/claude-audit-import.cjs --report ./private/claude-reports.json
+node zkusebni/tools/claude-audit-import.cjs --report ./private/claude-reports.json --apply
+```
+
+Do veřejného GitHubu se zapíší jen souhrnné počty P0/P1/P2 a kontrolní otisk zdroje. Celý report se ponechává v soukromém úložišti; ani dokončený audit není souhlasem s publikací.

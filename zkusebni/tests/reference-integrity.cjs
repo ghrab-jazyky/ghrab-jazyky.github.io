@@ -313,4 +313,17 @@ const doc=read('reference-karty/index.html');
 for(const required of ['id="refMode"','id="refShareLang"','id="refShareLevel"','id="refSaveHtml"','id="refQr"']){
  assert.ok(doc.includes(required),'Missing dialog control: '+required);
 }
+
+/* R5K: front-end intake and Claude audit pages must remain static, local-only and syntax valid. */
+for(const [script,page,ids] of [
+ ['assets/lsh/v4/intake-ui.js','pridat-kartu/index.html',['intakeFiles','intakeBuild','intakeList','intakeWarnings']],
+ ['assets/lsh/v4/claude-review.js','revize-claude/index.html',['audSkill','audBatch','audBuild','audCards']]
+]){
+ const js=read(script),html=read(page);
+ new vm.Script(js,{filename:script});
+ for(const id of ids)assert.ok(html.includes('id="'+id+'"'),'Missing UI control '+id);
+ assert.ok(html.includes("connect-src 'self'"),'Public intake/audit pages may not upload to third parties');
+ assert.ok(!/github_token|anthropic_api_key|github_pat|ghp_[A-Za-z0-9]{25,}/i.test(js),'No embedded credentials');
+}
+
 console.log('PASS R5I technical catalog: all 29 existing cards indexed; School explicitly held for pedagogical correction');

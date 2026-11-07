@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="cs" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Připravit až 12 nových studentských karet pro bezpečný dávkový import do Language Skills Hubu.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; frame-src 'none'; form-action 'none'">
+<title>Nové karty · Language Skills Hub</title>
+<link rel="stylesheet" href="../assets/lsh/v2/styles.css">
+<link rel="stylesheet" href="../assets/lsh/v4/intake-ui.css">
+<script defer src="../assets/lsh/v4/intake-ui.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Přeskočit na obsah</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../"><span class="brand-glyph" aria-hidden="true">L<span>S</span>H</span><span class="brand-text"><strong>Language Skills Hub</strong><small>Gymnázium · příprava nových karet</small></span></a>
+<nav class="primary-nav" aria-label="Navigace"><a href="../">Rozcestník</a><a href="../reference-karty/">Pilotní katalog</a><a href="../konverzace/">Conversation</a><a href="../cteni/">Reading</a><a href="../poslech/">Listening</a></nav>
+</div></header>
+<div class="demo-banner"><span class="demo-dot"></span><strong>PŘÍPRAVA IMPORTU</strong><span>HTML zůstává na vašem zařízení. Žádné automatické zveřejňování ani nahrávání hesel.</span></div>
+<main id="main" class="container intake-main">
+<section class="intake-hero">
+<span class="eyebrow">PŘIDAT VÍCE KARET NAJEDNOU</span>
+<h1>Nové karty do Language Skills Hubu</h1>
+<p class="intake-intro">Připravte najednou až 12 nových <strong>studentských HTML</strong> souborů pro Conversation, Reading a Listening Lab. Po doplnění názvů, anotací a verzí získáte jeden ZIP balíček. Ten se následně ověří a zapíše do školního GitHub repozitáře bez ručního přepisování katalogu.</p>
+<p class="intake-intro"><strong>Bezpečnost:</strong> veřejný GitHub Pages nemůže bezpečně přijímat a publikovat soubory bez autentizovaného backendu. Tato stránka pracuje pouze lokálně. Zvolené HTML se neodesílá na server.</p>
+</section>
+<section id="intakeDrop" class="intake-drop" aria-label="Nahrát HTML do lokální přípravy">
+<div><strong>Vyberte nebo sem přetáhněte studentská HTML</strong><span>1–12 souborů · maximálně 6 MB každý</span></div>
+<input id="intakeFiles" type="file" accept=".html,.htm,text/html" multiple aria-label="Vybrat studentské HTML karty">
+</section>
+<div class="intake-footer"><strong id="intakeCount">0 / 12 souborů</strong><span id="intakeStatus" role="status" aria-live="polite">Nejdříve vyberte soubory.</span></div>
+<section id="intakeList" class="intake-list" aria-label="Připravené karty"></section>
+<p id="intakeWarnings" role="status" aria-live="polite"></p>
+<div class="intake-footer"><button id="intakeBuild" type="button" class="button primary" disabled>Stáhnout validační ZIP balíček</button><a class="button outline" href="../reference-karty/">Zpět do katalogu</a></div>
+<section class="intake-steps">
+<h2>Co udělat s balíčkem</h2>
+<ol>
+<li>Přiložte ZIP v ChatGPT s pokynem <strong>„Přidej tyto nové karty do Language Skills Hubu.“</strong> Nebo jej předejte oprávněnému správci školního GitHubu.</li>
+<li>Importer ověří strukturu a vytvoří studentské odkazy, QR, pilotní katalogový záznam i auditní úkol. Zápis se připraví v kontrolované větvi.</li>
+<li>Claude následně provede obsahovou kontrolu; až po pedagogickém schválení a fyzickém testování lze kartu uvolnit k běžné výuce.</li>
+</ol>
+<p><strong>Testování:</strong> samostatné hodnoticí verze nejsou automaticky generované. Import ani ZIP nezakládá schválení klasifikovaného testu.</p>
+</section>
+</main>
+<footer class="site-footer"><div class="footer-inner"><span>Language Skills Hub · bezpečný dávkový příjem</span><span>Nikdy nevkládejte učitelské klíče nebo osobní údaje žáků do veřejného studentského HTML.</span></div></footer>
+</body></html>
