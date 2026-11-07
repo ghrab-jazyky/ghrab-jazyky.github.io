@@ -15,6 +15,7 @@ try{
  if(raw.schemaVersion!==1||!Array.isArray(raw.reports)||!raw.reports.length||raw.reports.length>12)fail('Expected schemaVersion:1 with reports[1..12]');
  const queue=read('data/claude-audit-queue.json'),tracker=read('data/unification-tracker.json'),catalog=read('data/reference-pilots.json');
  const validStatuses=['REVIEWED_WITH_FINDINGS','REVIEWED_NO_FINDINGS'],validSeverities=['P0','P1','P2'],seen=new Set(),result=[];
+ const meaningful=(v,min,max)=>typeof v==='string'&&v.trim().length>=min&&v.length<=max;
  for(const r of raw.reports){
   if(!r||typeof r.topicId!=='string'||seen.has(r.topicId))fail('Missing or duplicate topicId');
   seen.add(r.topicId);
@@ -22,23 +23,41 @@ try{
   if(!q||!c)fail('Unknown topic '+r.topicId);
   if(!validStatuses.includes(r.status)||r.requiresTeacherDecision!==true)fail('Report must be review-only and require teacher decision');
   if(!Array.isArray(r.findings)||r.findings.length>250)fail('Findings must be array up to 250');
-  if(!r.findings.every(f=>f&&validSeverities.includes(f.severity)&&typeof f.location==='string'&&f.location.trim().length>0&&
-   typeof f.evidence==='string'&&f.evidence.trim().length>0))fail('Findings missing severity/location/evidence');
+  if(!r.findings.every(f=>f&&validSeverities.includes(f.severity)&&
+   (c.languages.includes(f.language)||f.language==='all')&&
+   (c.levels.includes(f.level)||f.level==='all')&&
+   meaningful(f.location,4,300)&&meaningful(f.observed,5,1000)&&
+   meaningful(f.proposed,5,1000)&&meaningful(f.evidence,10,1500)))
+   fail('Findings require severity, language/CEFR, location, original, proposed and evidence');
   if(r.status==='REVIEWED_NO_FINDINGS'&&r.findings.length)fail('No-findings status conflicts with findings');
   if(r.status==='REVIEWED_WITH_FINDINGS'&&!r.findings.length)fail('Findings status requires findings');
+  const expected=new Set(c.languages.flatMap(lang=>c.levels.map(level=>lang+'/'+level)));
+  if(!Array.isArray(r.reviewedVariants)||r.reviewedVariants.length!==expected.size)
+   fail('Incomplete coverage for '+r.topicId+' (expected '+expected.size+' evidenced variants)');
+  const checked=new Set();
+  for(const v of r.reviewedVariants){
+   if(!v||typeof v.language!=='string'||typeof v.level!=='string'||!meaningful(v.evidence,20,700))
+    fail('Every reviewed variant requires language, CEFR and source-specific evidence');
+   const key=v.language+'/'+v.level;
+   if(!expected.has(key)||checked.has(key))fail('Unknown or duplicate reviewed variant '+key);
+   checked.add(key);
+  }
+  if(!Array.isArray(r.unverifiedChecks)||r.unverifiedChecks.length>30||
+   !r.unverifiedChecks.every(v=>meaningful(v,12,500)))
+   fail('An explicit unverifiedChecks array is required for devices/media/answer keys');
   const filePath=path.resolve(ROOT,q.sourcePath);
   if(!filePath.startsWith(ROOT+path.sep)||!fs.existsSync(filePath))fail('Source missing or outside repo');
   const actual=sha(fs.readFileSync(filePath));
   if(actual!==r.sourceSha256)fail('Stale source hash, must repeat Claude review for '+r.topicId);
   const counts=Object.fromEntries(validSeverities.map(s=>[s,r.findings.filter(f=>f.severity===s).length]));
-  result.push({id:r.topicId,status:r.status,sourceSha256:actual,counts});
+  result.push({id:r.topicId,status:r.status,sourceSha256:actual,counts,reviewedVariantsCount:checked.size,unverifiedChecksCount:r.unverifiedChecks.length});
  }
  if(!apply){console.log(JSON.stringify({mode:'dry-run',validReports:result.length,summary:result},null,2));process.exit(0)}
  for(const x of result){
   const q=queue.topics.find(y=>y.id===x.id);q.status=x.status;q.reviewedSourceSha256=x.sourceSha256;
-  q.findingsSummary=x.counts;q.teacherApproval=false;q.reviewer='Claude';
+  q.findingsSummary=x.counts;q.reviewedVariantsCount=x.reviewedVariantsCount;q.unverifiedChecksCount=x.unverifiedChecksCount;q.teacherApproval=false;q.reviewer='Claude';
   const t=tracker.topics.find(y=>y.id===x.id);
-  if(t){t.externalReview={sourceSha256:x.sourceSha256,reviewer:'Claude',status:x.status,counts:x.counts,teacherApproval:false};
+  if(t){t.externalReview={sourceSha256:x.sourceSha256,reviewer:'Claude',status:x.status,counts:x.counts,reviewedVariantsCount:x.reviewedVariantsCount,unverifiedChecksCount:x.unverifiedChecksCount,teacherApproval:false};
     t.publicRelease='BLOCKED_PENDING_REVIEW';}
  }
  fs.writeFileSync(path.join(ROOT,'data/claude-audit-queue.json'),JSON.stringify(queue,null,2)+'\n');
