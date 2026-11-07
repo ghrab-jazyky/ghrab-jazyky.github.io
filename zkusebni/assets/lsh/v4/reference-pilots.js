@@ -12,11 +12,21 @@ const list=$('refList'),dialog=$('refDialog'),status=$('refDialogStatus');
 function el(tag,klass,txt){const x=document.createElement(tag);if(klass)x.className=klass;if(txt!==undefined)x.textContent=String(txt);return x;}
 function isValid(v){
  return v&&/^(cl|rl|ll)-[a-z0-9-]+$/.test(v.id)&&SKILLS[v.skill]&&typeof v.title==='string'&&v.title.length<160&&typeof v.summary==='string'&&
- typeof v.studentPath==='string'&&/^(reference|nahledy)\/(konverzace|cteni|poslech)\/[a-z0-9-]+\/$/.test(v.studentPath)&&
+ typeof v.studentPath==='string'&&/^integrace\/(konverzace|cteni|poslech)\/[a-z0-9-]+\/$/.test(v.studentPath)&&v.fixedVariantSupported===true&&v.defaultLanguage==='en'&&LEVELS.includes(v.defaultLevel)&&
  Array.isArray(v.languages)&&v.languages.length>0&&v.languages.every(x=>LANGS[x])&&
  Array.isArray(v.levels)&&v.levels.length===6&&LEVELS.every(x=>v.levels.includes(x))&&v.practice==='preview'&&v.test==='not-ready';
 }
-function urlOf(entry){return new URL(entry.studentPath,new URL(ROOT,location.origin)).href;}
+function urlOf(entry,mode,lang,level){
+ const url=new URL(entry.studentPath,new URL(ROOT,location.origin));
+ if(mode==='fixed'){
+  if(!entry.languages.includes(lang)||!entry.levels.includes(level))throw new Error('Unavailable variant');
+  url.searchParams.set('lang',lang);
+  url.searchParams.set('level',level);
+  url.searchParams.set('zamek','1');
+ }
+ url.searchParams.set('practice','1');
+ return url.href;
+}
 function filtered(){
  const q=$('refSearch').value.trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('cs');
  return entries.filter(v=>{
@@ -45,16 +55,40 @@ function render(){
   card.append(top,info,focus,actions);list.append(card);
  }
 }
+function refreshShare(){
+ if(!selected)return;
+ const fixed=$('refMode').value==='fixed';
+ $('refFixedFields').hidden=!fixed;
+ $('refModeHint').textContent=fixed?
+  'Zvolené nastavení bude ve studentské kartě uzamčeno v rozhraní. GitHub Pages však nezaručuje bezpečné zkoušení.' :
+  'Student může v kartě přepínat všechny skutečně dostupné jazyky a úrovně. Odkaz a QR obsahují procvičovací režim.';
+ try{
+  const url=urlOf(selected,fixed?'fixed':'free',$('refShareLang').value,$('refShareLevel').value);
+  $('refUrl').value=url;$('refOpen').href=url;$('refOpen').removeAttribute('aria-disabled');
+  const qr=$('refQr');qr.replaceChildren();
+  if(!window.CLBQRCode||typeof window.CLBQRCode.svg!=='function')throw new Error('QR unavailable');
+  qr.append(window.CLBQRCode.svg(url));$('refSaveQr').disabled=false;status.textContent='';
+ }catch(error){
+  $('refUrl').value='';$('refOpen').removeAttribute('href');$('refOpen').setAttribute('aria-disabled','true');
+  $('refQr').replaceChildren();$('refSaveQr').disabled=true;
+  status.textContent='Odkaz nebo QR se nepodařilo připravit. Zkontrolujte nastavení.';
+  console.error('Reference share:',error);
+ }
+}
 function open(e){
  selected=e;
- const url=urlOf(e);
  $('refDialogTitle').textContent=e.title;
  $('refDialogDetail').textContent=SKILLS[e.skill]+' · '+e.languages.map(l=>LANGS[l]).join(', ')+' · A1–C2 · '+e.sourceVersion;
- $('refUrl').value=url;$('refOpen').href=url;
- const qr=$('refQr');qr.replaceChildren();
- try{if(!window.CLBQRCode||typeof window.CLBQRCode.svg!=='function')throw new Error('QR unavailable');qr.append(window.CLBQRCode.svg(url));$('refSaveQr').disabled=false;status.textContent='';}
- catch(err){$('refSaveQr').disabled=true;status.textContent='QR se nepodařilo připravit. Přímý odkaz zůstává funkční.';}
- dialog.showModal();$('refClose').focus();
+ $('refMode').value='free';
+ const langs=$('refShareLang');langs.replaceChildren();
+ for(const l of e.languages)langs.add(new Option(LANGS[l],l));
+ langs.value=e.languages.includes($('refLanguage').value)?$('refLanguage').value:e.defaultLanguage;
+ langs.disabled=e.languages.length===1;
+ const levels=$('refShareLevel');levels.replaceChildren();
+ for(const l of e.levels)levels.add(new Option(l,l));
+ levels.value=e.levels.includes($('refLevel').value)?$('refLevel').value:e.defaultLevel;
+ refreshShare();
+ dialog.showModal();$('refMode').focus();
 }
 async function copyLink(){
  const val=$('refUrl').value;let copied=false;
@@ -76,6 +110,9 @@ function bind(){
  for(const id of ['refSkill','refLanguage','refLevel'])$(id).addEventListener('change',render);
  $('refSearch').addEventListener('input',render);
  $('refReset').addEventListener('click',()=>{for(const id of ['refSkill','refLanguage','refLevel','refSearch'])$(id).value='';render();});
+ $('refMode').addEventListener('change',refreshShare);
+ $('refShareLang').addEventListener('change',refreshShare);
+ $('refShareLevel').addEventListener('change',refreshShare);
  $('refClose').addEventListener('click',()=>dialog.close());
  dialog.addEventListener('click',ev=>{if(ev.target===dialog)dialog.close();});
  $('refCopy').addEventListener('click',copyLink);
