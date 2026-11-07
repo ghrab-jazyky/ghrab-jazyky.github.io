@@ -67,6 +67,15 @@ jobs:
           test -f "$RUNNER_TEMP/lsh-claude-export/cl-smoke-conversation.md"
           test -f "$RUNNER_TEMP/lsh-claude-export/rl-smoke-reading.md"
           test -f "$RUNNER_TEMP/lsh-claude-export/ll-smoke-listening.md"
+          node -e 'const fs=require("node:fs"),c=require("node:crypto");const folder=process.env.RUNNER_TEMP+"/lsh-intake-fixture";const q=JSON.parse(fs.readFileSync("zkusebni/data/claude-audit-queue.json"));const ids=["cl-smoke-conversation","rl-smoke-reading","ll-smoke-listening"];const reports=ids.map((id,i)=>{const t=q.topics.find(x=>x.id===id),hash=c.createHash("sha256").update(fs.readFileSync("zkusebni/"+t.sourcePath)).digest("hex");return{topicId:id,sourceSha256:hash,status:i===0?"REVIEWED_WITH_FINDINGS":"REVIEWED_NO_FINDINGS",requiresTeacherDecision:true,findings:i===0?[{severity:"P1",location:"synthetic fixture",evidence:"Synthetic non-public test issue; no teacher approval"}]:[]}});fs.writeFileSync(folder+"/claude-synthetic-reports.json",JSON.stringify({schemaVersion:1,reports},null,2));const bad=JSON.parse(JSON.stringify({schemaVersion:1,reports}));bad.reports[0].sourceSha256="0".repeat(64);fs.writeFileSync(folder+"/claude-stale-reports.json",JSON.stringify(bad));'
+          node zkusebni/tools/claude-audit-import.cjs --report "$RUNNER_TEMP/lsh-intake-fixture/claude-synthetic-reports.json"
+          if node zkusebni/tools/claude-audit-import.cjs --report "$RUNNER_TEMP/lsh-intake-fixture/claude-stale-reports.json"; then
+            echo "ERROR: stale Claude report was accepted"
+            exit 1
+          fi
+          node zkusebni/tools/claude-audit-import.cjs --report "$RUNNER_TEMP/lsh-intake-fixture/claude-synthetic-reports.json" --apply
+          node zkusebni/tools/card-intake.cjs --verify
+          node -e 'const fs=require("node:fs");const q=JSON.parse(fs.readFileSync("zkusebni/data/claude-audit-queue.json"));for(const id of ["cl-smoke-conversation","rl-smoke-reading","ll-smoke-listening"]){const x=q.topics.find(t=>t.id===id);if(!x||x.status==="PENDING"||x.teacherApproval!==false||!x.reviewedSourceSha256)throw Error("Wrong reviewed status for "+id)}console.log("PASS Claude report intake and publication gate remain separate");'
           if node zkusebni/tools/card-intake.cjs --batch "$RUNNER_TEMP/lsh-intake-fixture/cards.json"; then
             echo "ERROR: duplicate IDs were accepted by the importer"
             exit 1
