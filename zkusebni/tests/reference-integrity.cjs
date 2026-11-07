@@ -242,7 +242,7 @@ for(const item of additionalReading){
 {
  const s=read('konverzace/skola/index.html');
  const buffer=fs.readFileSync(path.join(root,'konverzace/skola/index.html'));
- const actual=crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+buffer.length+'\\0'),buffer])).digest('hex');
+ const actual=crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+buffer.length+'\0'),buffer])).digest('hex');
  assert.equal(actual,'f3d609bcd021ef812fb4821140a58b26bcc140fe','School original changed');
  const data=parseConversationContent(s);
  assert.deepEqual(Object.keys(data).sort(),['de','en','es','fr']);
