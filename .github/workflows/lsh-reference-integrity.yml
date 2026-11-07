@@ -7,6 +7,12 @@ on:
       - 'zkusebni/integrace/**'
       - 'zkusebni/assets/lsh/v4/**'
       - 'zkusebni/data/reference-pilots.json'
+      - 'zkusebni/data/claude-audit-queue.json'
+      - 'zkusebni/tools/**'
+      - 'zkusebni/podklady/**'
+      - 'zkusebni/data/claude-audit-queue.json'
+      - 'zkusebni/tools/**'
+      - 'zkusebni/podklady/**'
       - 'zkusebni/reference-karty/**'
       - 'zkusebni/tests/reference-integrity.cjs'
       - '.github/workflows/lsh-reference-integrity.yml'
@@ -38,4 +44,7 @@ jobs:
         with:
           node-version: '24'
       - name: Verify source cards and practice adapters
-        run: node zkusebni/tests/reference-integrity.cjs
+        run: |
+          node zkusebni/tests/reference-integrity.cjs
+          node zkusebni/tools/card-intake.cjs --verify
+          node zkusebni/tools/card-intake.cjs --self-test
