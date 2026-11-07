@@ -44,7 +44,7 @@ function render(){
   const card=el('article',e.isReference?'ref-card ref-card-reference':'ref-card ref-card-migration');
   const top=el('div','ref-card-top');
   const badges=el('div','ref-tags');
-  badges.append(el('span','ref-chip',SKILLS[e.skill]),el('span','ref-chip',e.isReference?'REFERENČNÍ VZOR':'MIGRACE · 1. DÁVKA'),el('span','ref-chip ref-pilot','PILOT · NESCHVÁLENO'));
+  badges.append(el('span','ref-chip',SKILLS[e.skill]),el('span','ref-chip',e.isReference?'REFERENČNÍ VZOR':'MIGRACE · ČEKÁ NA SCHVÁLENÍ'),el('span','ref-chip ref-pilot','PILOT · NESCHVÁLENO'));
   top.append(badges,el('h3',null,e.title),el('p',null,e.summary));
   const info=el('p','ref-info',e.languages.map(l=>LANGS[l]).join(' · ')+'   |   A1–C2   |   '+e.sourceVersion);
   const focus=el('p','ref-focus',e.focus);
