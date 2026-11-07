@@ -60,3 +60,8 @@
 /* R5G: distinguish source media and age-suitability warnings from generic pilot metadata. */
 .ref-content-note{margin:6px 0 10px;border-left:3px solid var(--coral);padding:9px 12px;background:var(--bg-soft);color:var(--muted-strong);font-size:.82rem}
 .ref-content-note[hidden]{display:none!important}
+
+/* R5S: public review progress stays neutral and is never a publishing badge. */
+.ref-review-summary{color:var(--muted-strong);font-size:.87rem;margin:10px 0 18px}
+.ref-card .ref-audit-line{font-size:.81rem;color:var(--muted-strong);border-top:1px solid var(--line);padding-top:10px}
+@media(min-width:1081px){.ref-controls{grid-template-columns:1fr 1.2fr .85fr .65fr 1fr auto}}

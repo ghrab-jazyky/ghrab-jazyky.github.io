@@ -616,3 +616,39 @@ test('R5P home tiles and skill-prefilter URLs lead to one consistent 29-card pil
   await context.close();
  }finally{await browser.close();}
 });
+
+test('R5S Claude review progress and findings are shown without claiming teacher approval', {timeout:140000},async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});
+  const page=await context.newPage();page.setDefaultTimeout(20000);
+  const queue=JSON.parse(fs.readFileSync(path.join(ROOT,'zkusebni/data/claude-audit-queue.json'),'utf8'));
+  const reading=queue.topics.find(x=>x.id==='rl-asteroids');
+  assert.ok(reading);reading.status='REVIEWED_WITH_FINDINGS';reading.findingsSummary={P0:0,P1:1,P2:2};reading.teacherApproval=false;
+  await page.route('**/zkusebni/data/claude-audit-queue.json',route=>route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(queue)}));
+  await page.goto(STAGE+'reference-karty/?skill=cteni',{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>document.querySelectorAll('#refList .ref-card').length===5);
+  assert.match(await page.locator('#refAuditProgress').textContent(),/1 z 29/);
+  await page.locator('#refReviewStatus').selectOption('REVIEWED_WITH_FINDINGS');
+  assert.equal(await page.locator('#refList .ref-card').count(),1);
+  const content=await page.locator('#refList .ref-card').textContent();
+  assert.match(content,/Asteroids/);assert.match(content,/P1: 1/);assert.match(content,/P2: 2/);
+  assert.match(content,/Učitelské schválení/);assert.match(content,/PILOT · NESCHVÁLENO/);
+  await page.locator('#refReset').click();
+  assert.equal(await page.locator('#refList .ref-card').count(),29);
+  await context.close();
+ }finally{await browser.close();}
+});
+test('R5S audit service failure never hides technical catalogue or claims approval', {timeout:140000},async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});
+  const page=await context.newPage();page.setDefaultTimeout(20000);
+  await page.route('**/zkusebni/data/claude-audit-queue.json',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.goto(STAGE+'reference-karty/',{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>document.querySelectorAll('#refList .ref-card').length===29);
+  assert.match(await page.locator('#refAuditProgress').textContent(),/nelze ověřit/);
+  assert.match(await page.locator('#refList .ref-card').first().textContent(),/stav auditu momentálně nedostupný/);
+  await context.close();
+ }finally{await browser.close();}
+});

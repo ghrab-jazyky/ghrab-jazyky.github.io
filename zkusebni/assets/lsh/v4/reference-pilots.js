@@ -7,6 +7,8 @@ const LANGS=Object.freeze({en:'EN',es:'ES',de:'DE',fr:'FR'});
 const LEVELS=['A1','A2','B1','B2','C1','C2'];
 const $=id=>document.getElementById(id);
 let entries=[];
+let audits=new Map();
+let auditLoaded=false;
 let selected=null;
 const list=$('refList'),dialog=$('refDialog'),status=$('refDialogStatus');
 function el(tag,klass,txt){const x=document.createElement(tag);if(klass)x.className=klass;if(txt!==undefined)x.textContent=String(txt);return x;}
@@ -27,11 +29,24 @@ function urlOf(entry,mode,lang,level){
  url.searchParams.set('practice','1');
  return url.href;
 }
+function auditText(entry){
+ if(!auditLoaded)return 'Claude: stav auditu momentálně nedostupný.';
+ const a=audits.get(entry.id);
+ if(!a)return 'Claude: karta chybí v auditní frontě.';
+ if(a.status==='PENDING')return 'Claude: čeká na kontrolu. Učitelské schválení neuděleno.';
+ if(a.status==='REVIEWED_NO_FINDINGS')return 'Claude: dokončena kontrola bez zaznamenaných chyb. Učitelské schválení stále neuděleno.';
+ if(a.status==='REVIEWED_WITH_FINDINGS'){
+  const count=a.findingsSummary||{};
+  return 'Claude: zkontrolováno, nálezy P0: '+(count.P0||0)+' · P1: '+(count.P1||0)+' · P2: '+(count.P2||0)+'. Čeká na posouzení učitelem.';
+ }
+ return 'Claude: neznámý stav auditu. Učitelské schválení neuděleno.';
+}
 function filtered(){
  const q=$('refSearch').value.trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('cs');
  return entries.filter(v=>{
   const text=(v.title+' '+v.summary+' '+v.focus).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('cs');
-  return (!$('refSkill').value||v.skill===$('refSkill').value)&&
+  return (!$('refReviewStatus').value||(audits.get(v.id)?.status||'')===$('refReviewStatus').value)&&
+  (!$('refSkill').value||v.skill===$('refSkill').value)&&
    (!$('refLanguage').value||v.languages.includes($('refLanguage').value))&&
    (!$('refLevel').value||v.levels.includes($('refLevel').value))&&(!q||text.includes(q));
  });
@@ -40,6 +55,10 @@ function render(){
  const items=filtered();list.replaceChildren();
  $('refCount').textContent='Zobrazeno '+items.length+' z '+entries.length+' kontrolovaných technických náhledů.';
  $('refEmpty').hidden=items.length!==0;
+ if(auditLoaded){
+  const done=[...audits.values()].filter(x=>x.status==='REVIEWED_WITH_FINDINGS'||x.status==='REVIEWED_NO_FINDINGS').length;
+  $('refAuditProgress').textContent='Claude: zkontrolováno '+done+' z '+entries.length+' karet. Učitelské schválení je samostatný krok.';
+ }
  for(const e of items){
   const card=el('article',e.isReference?'ref-card ref-card-reference':'ref-card ref-card-migration');
   const top=el('div','ref-card-top');
@@ -48,11 +67,12 @@ function render(){
   top.append(badges,el('h3',null,e.title),el('p',null,e.summary));
   const info=el('p','ref-info',e.languages.map(l=>LANGS[l]).join(' · ')+'   |   A1–C2   |   '+e.sourceVersion);
   const focus=el('p','ref-focus',e.focus);
+  const audit=el('p','ref-audit-line',auditText(e));
   const actions=el('div','ref-card-actions');
   const preview=el('button','button primary','Procvičování · náhled');preview.type='button';preview.addEventListener('click',()=>open(e));
   const test=el('button','button outline','Testování · připravujeme');test.type='button';test.disabled=true;test.setAttribute('aria-label','Testovací verze karty '+e.title+' zatím není hotová');
   actions.append(preview,test);
-  card.append(top,info,focus);if(e.contentNote)card.append(el('p','ref-content-note',e.contentNote));card.append(actions);list.append(card);
+  card.append(top,info,focus,audit);if(e.contentNote)card.append(el('p','ref-content-note',e.contentNote));card.append(actions);list.append(card);
  }
 }
 function refreshShare(){
@@ -147,9 +167,9 @@ async function saveHtml(){
  finally{btn.disabled=false;}
 }
 function bind(){
- for(const id of ['refSkill','refLanguage','refLevel'])$(id).addEventListener('change',render);
+ for(const id of ['refSkill','refLanguage','refLevel','refReviewStatus'])$(id).addEventListener('change',render);
  $('refSearch').addEventListener('input',render);
- $('refReset').addEventListener('click',()=>{for(const id of ['refSkill','refLanguage','refLevel','refSearch'])$(id).value='';render();});
+ $('refReset').addEventListener('click',()=>{for(const id of ['refSkill','refLanguage','refLevel','refReviewStatus','refSearch'])$(id).value='';render();});
  $('refMode').addEventListener('change',refreshShare);
  $('refShareLang').addEventListener('change',refreshShare);
  $('refShareLevel').addEventListener('change',refreshShare);
@@ -167,6 +187,21 @@ async function init(){
   const data=await response.json();
   if(data.schemaVersion!==1||data.approvedForTeaching!==false||!Array.isArray(data.entries)||data.entries.length<3||data.entries.length>500||!data.entries.every(isValid)||new Set(data.entries.map(x=>x.id)).size!==data.entries.length||new Set(data.entries.filter(x=>x.isReference).map(x=>x.skill)).size!==3||data.entries.filter(x=>x.isReference).length!==3)throw new Error('Invalid pilot inventory');
   entries=data.entries;
+  try{
+   const response=await fetch(new URL('data/claude-audit-queue.json',new URL(ROOT,location.origin)),{cache:'no-store'});
+   if(!response.ok)throw new Error('HTTP '+response.status);
+   const queue=await response.json();
+   if(queue.schemaVersion!==1||!Array.isArray(queue.topics)||queue.topics.length!==entries.length||
+     new Set(queue.topics.map(x=>x.id)).size!==queue.topics.length||!queue.topics.every(x=>
+     typeof x.id==='string'&&entries.some(e=>e.id===x.id)&&
+     ['PENDING','REVIEWED_WITH_FINDINGS','REVIEWED_NO_FINDINGS'].includes(x.status)&&
+     x.teacherApproval===false))throw new Error('Audit queue does not match the catalog');
+   audits=new Map(queue.topics.map(x=>[x.id,x]));auditLoaded=true;
+  }catch(error){
+   audits=new Map();auditLoaded=false;
+   $('refAuditProgress').textContent='Stav Claude auditu nyní nelze ověřit. Karty zůstávají neschválenými technickými náhledy.';
+   console.warn('LSH audit queue:',error);
+  }
   const requested=new URLSearchParams(location.search).getAll('skill');
   if(requested.length===1&&SKILLS[requested[0]])$('refSkill').value=requested[0];
   render();
