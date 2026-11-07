@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "collectionVersion": "R5F-conversation-compatible-20-of-21-2026-11-07",
-  "purpose": "Public technical pilot of 3 reference practice cards and 19 structurally verified Conversation originals; School ES A1 is held for a duplicate question. NOT pedagogy approved.",
+  "collectionVersion": "R5G-conversation-plus-listening-2026-11-07",
+  "purpose": "Public unapproved technical pilot: 3 references, 19 structurally checked Conversation cards, 2 URL-bridged Listening cards. School ES A1 and 4 Reading cards pending. Not a production catalog.",
   "approvedForTeaching": false,
   "entries": [
     {
@@ -742,6 +742,70 @@
       "isReference": false,
       "reviewState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
       "sourceGitBlob": "b3003f1be2ffec6db7308385807b059793e3a648"
+    },
+    {
+      "id": "ll-harrison-ford",
+      "skill": "poslech",
+      "title": "Harrison Ford — Life Achievement Speech",
+      "summary": "Poslech autentického projevu při ocenění za celoživotní přínos; soustředění na hlavní myšlenky, detaily a způsob vyjadřování.",
+      "focus": "Původní poslechová cvičení · zámek EN A1–C2",
+      "languages": [
+        "en"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "sourceVersion": "v6 · technická URL integrace R5G",
+      "studentPath": "integrace/poslech/harrison-ford/",
+      "selfContainedHtml": true,
+      "mediaExternal": true,
+      "practice": "preview",
+      "fixedVariantSupported": true,
+      "test": "not-ready",
+      "defaultLanguage": "en",
+      "defaultLevel": "B2",
+      "practiceQueryFlag": "practice=1",
+      "isReference": false,
+      "reviewState": "URL_BRIDGE_PEDAGOGICAL_STRUCTURE_PENDING",
+      "sourceGitBlob": "f816dbbbc2d9d2e7fc5b7a4c40d9e7dcfb331dbc",
+      "contentNote": "Externí video je nutné ověřit na školní síti; samostatný test ještě neexistuje."
+    },
+    {
+      "id": "ll-peaky-no-fighting",
+      "skill": "poslech",
+      "title": "Peaky Blinders — No Fighting",
+      "summary": "Anglickojazyčná dramatická scéna s napětím a příkazy; práce s porozuměním dialogu a jeho tónu.",
+      "focus": "Původní poslechová cvičení · zámek EN A1–C2",
+      "languages": [
+        "en"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "sourceVersion": "v2 · technická URL integrace R5G",
+      "studentPath": "integrace/poslech/peaky-blinders/",
+      "selfContainedHtml": true,
+      "mediaExternal": true,
+      "practice": "preview",
+      "fixedVariantSupported": true,
+      "test": "not-ready",
+      "defaultLanguage": "en",
+      "defaultLevel": "B2",
+      "practiceQueryFlag": "practice=1",
+      "isReference": false,
+      "reviewState": "URL_BRIDGE_PEDAGOGICAL_STRUCTURE_PENDING",
+      "sourceGitBlob": "cfda1197882b8107ddce2f80665abd681526efc5",
+      "contentNote": "POZOR: věková vhodnost (násilí, vulgarismy, narážky na drogy), dostupnost videa a soulad úloh musí projít učitelskou kontrolou."
     }
   ]
 }
