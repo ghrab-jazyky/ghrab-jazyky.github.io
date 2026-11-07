@@ -24,10 +24,10 @@ const original=[
 const inventory=JSON.parse(read('data/reference-pilots.json'));
 assert.equal(inventory.schemaVersion,1);
 assert.equal(inventory.approvedForTeaching,false);
-assert.equal(inventory.entries.length,5,'Pilot consists of 3 references and 2 migration candidates');
+assert.equal(inventory.entries.length,9,'Pilot consists of 3 references and 6 migration candidates');
 assert.equal(inventory.entries.filter(e=>e.isReference).length,3);
-assert.equal(inventory.entries.filter(e=>!e.isReference).length,2);
-assert.equal(new Set(inventory.entries.map(e=>e.id)).size,5);
+assert.equal(inventory.entries.filter(e=>!e.isReference).length,6);
+assert.equal(new Set(inventory.entries.map(e=>e.id)).size,9);
 const isJS=s=>!/^\s*(?:\{)/.test(s);
 for(const t of original){
  const before=read(t.original),after=read(t.integrated);
@@ -116,7 +116,11 @@ function verifyConversationVariants(data,topicId){
  * and are surfaced only as unapproved pilots. Git blob SHA verifies bytes. */
 const migrants=[
  {id:'cl-socialni-media',file:'konverzace/socialni-media/index.html',blob:'c81683e238dcdb96f3d4f39768a5d2d0d9b5f0da'},
- {id:'cl-hrani-her',file:'konverzace/hrani-her/index.html',blob:'1cafcbaa0a9f35d2ff1d0a152e915c5010743364'}
+ {id:'cl-hrani-her',file:'konverzace/hrani-her/index.html',blob:'1cafcbaa0a9f35d2ff1d0a152e915c5010743364'},
+ {id:'cl-rodina',file:'konverzace/rodina/index.html',blob:'d93d87f587f29c7afa5c1946faa7c81f608ab855'},
+ {id:'cl-prazdniny',file:'konverzace/prazdniny/index.html',blob:'7c92c7808b7eac5c1a8f489921914ca3b85e97ec'},
+ {id:'cl-jidlo-piti-restaurace',file:'konverzace/jidlo-piti-restaurace/index.html',blob:'9d16d00de0e79baea3f9f87201678c326bc80989'},
+ {id:'cl-vanoce',file:'konverzace/vanoce/index.html',blob:'e07f24575f2dc131c3ad9226f10b78579295df03'}
 ];
 for(const candidate of migrants){
  const buffer=fs.readFileSync(path.join(root,candidate.file));
@@ -177,11 +181,12 @@ for(const entry of inventory.entries){
  }
  if(entry.skill==='poslech')assert.throws(()=>makeUrl(entry,'fixed','es','B2'));
 }
-assert.equal(checkedVariants,5*24-18,'Five pilot topic variants must cover 102 combinations');
-console.log('PASS',checkedVariants,'fixed URLs + 5 free URLs across pilots');
+assert.equal(checkedVariants,inventory.entries.reduce((a,e)=>a+e.languages.length*e.levels.length,0));
+assert.equal(checkedVariants,198,'Expected 198 checked fixed URLs');
+console.log('PASS',checkedVariants,'fixed URLs + 9 free URLs across pilots');
 
 const doc=read('reference-karty/index.html');
 for(const required of ['id="refMode"','id="refShareLang"','id="refShareLevel"','id="refSaveHtml"','id="refQr"']){
  assert.ok(doc.includes(required),'Missing dialog control: '+required);
 }
-console.log('PASS R5E pilot catalog: 3 original references, 2 unchanged Conversation candidates');
+console.log('PASS R5E pilot catalog: 3 original references, 6 unchanged Conversation candidates');
