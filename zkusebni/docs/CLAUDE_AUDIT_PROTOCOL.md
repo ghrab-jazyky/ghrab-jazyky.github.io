@@ -31,3 +31,7 @@ node zkusebni/tools/claude-audit-import.cjs --report ./private/claude-reports.js
 ```
 
 Do veřejného GitHubu se zapíší jen souhrnné počty P0/P1/P2 a kontrolní otisk zdroje. Celý report se ponechává v soukromém úložišti; ani dokončený audit není souhlasem s publikací.
+
+## Auditní ZIPy přímo z GitHub Actions (bez čekání na Pages)
+
+Workflow `.github/workflows/lsh-claude-audit-packages.yml` vytváří při změně zdrojů **sedm ZIP balíčků** s originálními studentskými HTML, individuálními SHA-256 prompty a bezpečným reportovým JSON vzorem. Najdete je jako artefakt `lsh-claude-seven-batches` u příslušného běhu GitHub Actions. Archiv se uchovává 30 dní. Po vypršení lze workflow znovu spustit z oprávněného GitHub účtu, až bude dostupný ve výchozí větvi.

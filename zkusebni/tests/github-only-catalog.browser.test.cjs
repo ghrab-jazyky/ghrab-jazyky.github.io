@@ -498,7 +498,7 @@ test('R5I combined pilot catalog displays all 29, filters and fixed School ES A1
   await page.locator('#refReset').click();
   await page.locator('#refSearch').fill('skola');
   assert.equal(await page.locator('#refList .ref-card').count(),1);
-  assert.match(await page.locator('#refList .ref-card').textContent(),/ES A1/);
+  assert.match(await page.locator('#refList .ref-card').textContent(),/španělštině A1.*¿Es grande o pequeño\?/);
   await page.locator('#refList button').filter({hasText:'Procvičování'}).click();
   await page.locator('#refMode').selectOption('fixed');
   await page.locator('#refShareLang').selectOption('es');

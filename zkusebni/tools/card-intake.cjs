@@ -127,6 +127,8 @@ function validateAll(){
   ensure(entry.test==='not-ready'&&entry.practice==='preview'&&entry.fixedVariantSupported===true,'Unsafe release status: '+entry.id);
   ensure(ids.has(entry.id),'Tracker missing: '+entry.id);
   ensure(queue.topics.some(q=>q.id===entry.id&&q.teacherApproval===false),'Audit queue missing or prematurely approved: '+entry.id);
+  const audit=queue.topics.find(q=>q.id===entry.id);
+  if(audit.status!=='PENDING'&&audit.reviewedSourceSha256){ensure(fs.existsSync(path.join(ROOT,audit.sourcePath)),'Reviewed source missing');ensure(hash(existing(audit.sourcePath))===audit.reviewedSourceSha256,'Stale Claude review for '+entry.id+'; re-audit required');}
   if(entry.integrationVersion==='INTAKE_V1'){
    ensure(entry.sourceOriginalPath&&safePath(entry.sourceOriginalPath),'Missing intake source path: '+entry.id);
    const orig=existing(entry.sourceOriginalPath),current=existing(entry.studentPath+'index.html');
@@ -192,6 +194,7 @@ function importBatch(file,apply){
   tracker.currentPopulation.total++;
   tracker.migrationProgress.pilotCatalogEntries++;
   tracker.migrationProgress.allTechnicalCandidatesIndexed++;
+  if(!tracker.statusVocabulary.includes('NEW_CARD_AUDIT_PENDING'))tracker.statusVocabulary.push('NEW_CARD_AUDIT_PENDING');
   queue.topics.push({id:p.pilot.id,skill:p.pilot.skill,title:p.pilot.title,
    studentPath:p.pilot.studentPath,sourcePath:p.originalPath,sourceSha256:p.pilot.sourceSha256,
    status:'PENDING',reviewer:'Claude',teacherApproval:false,reviewedSourceSha256:null,findingsSummary:null});

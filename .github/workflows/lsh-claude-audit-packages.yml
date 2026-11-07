@@ -1,0 +1,39 @@
+name: LSH Claude source audit packages (NO deployment)
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'feat/lsh-*'
+    paths:
+      - 'zkusebni/data/reference-pilots.json'
+      - 'zkusebni/data/claude-audit-queue.json'
+      - 'zkusebni/konverzace/**'
+      - 'zkusebni/nahledy/**'
+      - 'zkusebni/reference/**'
+      - 'zkusebni/podklady/**'
+      - 'zkusebni/tools/claude-audit-export.py'
+      - '.github/workflows/lsh-claude-audit-packages.yml'
+permissions:
+  contents: read
+jobs:
+  build-claude-review-packages:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validate and prepare source-bound Claude audit archives
+        run: |
+          python3 zkusebni/tools/claude-audit-export.py --output "$RUNNER_TEMP/lsh-claude-audit"
+          test "$(find "$RUNNER_TEMP/lsh-claude-audit" -name '*.zip' | wc -l)" -eq 7
+          python3 -c 'import pathlib,sys,zipfile; root=pathlib.Path(sys.argv[1]); x=list(root.glob("*.zip")); print("Archives:",len(x)); assert all(zipfile.ZipFile(a).testzip() is None for a in x)' "$RUNNER_TEMP/lsh-claude-audit"
+      - name: Attach audit packages for teacher and Claude (no source changes)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-claude-seven-batches
+          path: |
+            ${{ runner.temp }}/lsh-claude-audit/*.zip
+            ${{ runner.temp }}/lsh-claude-audit/INDEX.md
+          if-no-files-found: error
+          retention-days: 30
