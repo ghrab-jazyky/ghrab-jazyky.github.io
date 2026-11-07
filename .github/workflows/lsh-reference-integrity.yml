@@ -1,0 +1,41 @@
+name: LSH reference integrity
+on:
+  pull_request:
+    paths:
+      - 'zkusebni/reference/**'
+      - 'zkusebni/nahledy/cteni/asteroids/**'
+      - 'zkusebni/integrace/**'
+      - 'zkusebni/assets/lsh/v4/**'
+      - 'zkusebni/data/reference-pilots.json'
+      - 'zkusebni/reference-karty/**'
+      - 'zkusebni/tests/reference-integrity.cjs'
+      - '.github/workflows/lsh-reference-integrity.yml'
+  push:
+    branches:
+      - main
+      - 'feat/lsh-*'
+    paths:
+      - 'zkusebni/reference/**'
+      - 'zkusebni/nahledy/cteni/asteroids/**'
+      - 'zkusebni/integrace/**'
+      - 'zkusebni/assets/lsh/v4/**'
+      - 'zkusebni/data/reference-pilots.json'
+      - 'zkusebni/reference-karty/**'
+      - 'zkusebni/tests/reference-integrity.cjs'
+      - '.github/workflows/lsh-reference-integrity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reference-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify source cards and practice adapters
+        run: node zkusebni/tests/reference-integrity.cjs
