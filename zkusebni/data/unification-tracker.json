@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-07-r5-f-conversation-20-of-21",
+  "version": "2026-11-07-r5-g-24-of-29-pilot",
   "sourceRevision": {
     "conversationManifest": "0.4.1-rc1-github-only",
     "editorialInventory": "r4d-2026-11-06"
@@ -16,7 +16,8 @@
     "PUBLISHED",
     "URL_INTEGRATED_QA_PENDING",
     "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
-    "CONTENT_REVIEW_REQUIRED"
+    "CONTENT_REVIEW_REQUIRED",
+    "URL_BRIDGE_PEDAGOGICAL_STRUCTURE_PENDING"
   ],
   "referenceStandards": {
     "konverzace": "cl-umela-inteligence",
@@ -402,11 +403,13 @@
       "title": "Peaky Blinders — No Fighting",
       "origin": "editorial-inventory",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "URL_BRIDGE_PEDAGOGICAL_STRUCTURE_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "STANDALONE_HTML_MEDIA_REQUIRES_NETWORK",
+      "technicalNote": "R5G: source-preserving EN A1-C2 fixed/free URL bridge; source scene may involve violence, strong language/drug references. Age suitability, video reliability and Matthew three-pass pedagogy not approved. Original source unchanged."
     },
     {
       "id": "ll-harrison-ford",
@@ -414,11 +417,13 @@
       "title": "Harrison Ford — Life Achievement Speech",
       "origin": "editorial-inventory",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "URL_BRIDGE_PEDAGOGICAL_STRUCTURE_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "STANDALONE_HTML_MEDIA_REQUIRES_NETWORK",
+      "technicalNote": "R5G: source-preserving EN A1-C2 fixed/free URL bridge; external video availability unverified; must align listening pedagogy with Matthew, assess level tasks and teacher feedback. Original source unchanged."
     }
   ],
   "backlog": [
@@ -505,6 +510,21 @@
       "offlineExport": "not-yet-available",
       "linguisticApproval": false,
       "testModeApproved": false
+    },
+    {
+      "id": "R5G-LISTEN-01",
+      "skill": "poslech",
+      "topicIds": [
+        "ll-harrison-ford",
+        "ll-peaky-no-fighting"
+      ],
+      "count": 2,
+      "status": "URL_BRIDGE_PEDAGOGICAL_STRUCTURE_PENDING",
+      "sourceHtmlUnchanged": true,
+      "technicalPreviewInCatalog": true,
+      "mediaOnlineOnly": true,
+      "linguisticApproval": false,
+      "testModeApproved": false
     }
   ],
   "migrationProgress": {
@@ -514,9 +534,10 @@
     "remainingConversationCandidatesUnreviewed": 0,
     "conversationCardsHeldForContentCorrection": 1,
     "remainingReadingCandidatesUnreviewed": 4,
-    "remainingListeningCandidatesUnreviewed": 2,
+    "remainingListeningCandidatesUnreviewed": 0,
+    "listeningCardsNeedingPedagogicalRestructure": 2,
     "allApproved": 0,
-    "pilotCatalogEntries": 22
+    "pilotCatalogEntries": 24
   },
   "contentIssues": [
     {
