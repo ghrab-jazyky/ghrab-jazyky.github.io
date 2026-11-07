@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "batch": "R6-2026-11-07",
+  "baseBranch": "feat/lsh-r5-reference-pilot-catalog-2026-11-07",
+  "status": "CANDIDATES_ONLY",
+  "teacherApproval": false,
+  "published": false,
+  "catalogUpdated": false,
+  "reviewComplete": false,
+  "cards": [
+    {
+      "id": "cl-ceny-nemovitosti",
+      "candidatePath": "konverzace/k/cl-ceny-nemovitosti.html",
+      "originalPath": "konverzace/ceny-nemovitosti/index.html",
+      "originalGitBlob": "b3003f1be2ffec6db7308385807b059793e3a648",
+      "candidateGitBlob": "75f3ca464a9f1c62f889b25dfe25faecf9eeb8e1",
+      "candidateSha256": "145e06008c52879a5d3dcd50372e8bfde1521206aab480df8af2b48b2d271d49",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-hrani-her",
+      "candidatePath": "konverzace/k/cl-hrani-her.html",
+      "originalPath": "konverzace/hrani-her/index.html",
+      "originalGitBlob": "1cafcbaa0a9f35d2ff1d0a152e915c5010743364",
+      "candidateGitBlob": "b34b79cff7fcbac83768efb2c50b0c43ee7f91ff",
+      "candidateSha256": "f22707df2ff15fe033d2ce21cd805a50386cf835e97acb42a3f65668ed0c1c67",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-jak-se-ucit-na-testy",
+      "candidatePath": "konverzace/k/cl-jak-se-ucit-na-testy.html",
+      "originalPath": "konverzace/jak-se-ucit-na-testy/index.html",
+      "originalGitBlob": "5ce6a37ff31549d5cb176439aa18ff54266861cb",
+      "candidateGitBlob": "355f005dab3930173102cd00f5a148062b60a8fc",
+      "candidateSha256": "5ca1606a4d885289e439014403c3190a26d0db17ae813e33c9c0ea6d9ee3e4de",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-jidlo-piti-restaurace",
+      "candidatePath": "konverzace/k/cl-jidlo-piti-restaurace.html",
+      "originalPath": "konverzace/jidlo-piti-restaurace/index.html",
+      "originalGitBlob": "9d16d00de0e79baea3f9f87201678c326bc80989",
+      "candidateGitBlob": "16373878c448b0fdbd7513c51843ab7b579e73b6",
+      "candidateSha256": "e57b27ca4a163a5449585db0bed93039791ce5e7ec0f996f2e247eb914353eec",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-majetkove-nerovnosti",
+      "candidatePath": "konverzace/k/cl-majetkove-nerovnosti.html",
+      "originalPath": "konverzace/majetkove-nerovnosti/index.html",
+      "originalGitBlob": "725d215eb9cef83f8e362cfec254fc78e146c05e",
+      "candidateGitBlob": "15dec0c9d36fe1535ac9dec61b9bbd4eb3df54f6",
+      "candidateSha256": "b661bf5a34c3c7470aa8b7a7d2a010efbb7447eb27831b40a0cd9e26ddb4dcf1",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-muzi-a-zeny",
+      "candidatePath": "konverzace/k/cl-muzi-a-zeny.html",
+      "originalPath": "konverzace/muzi-a-zeny/index.html",
+      "originalGitBlob": "89973450f1f58540cb94a1ab243ebc3fe2195d9c",
+      "candidateGitBlob": "c1d920fc60c2ef8a5d6b47891ef5108ed07d6e24",
+      "candidateSha256": "2b4d94084e3cffa6e64228bd123d486d22a99eae003553f01ffdab1ebf605ad8",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-nemoci-u-lekare",
+      "candidatePath": "konverzace/k/cl-nemoci-u-lekare.html",
+      "originalPath": "konverzace/nemoci-u-lekare/index.html",
+      "originalGitBlob": "c710e3d8d3cd74eb2993ee98b0fcf39c31961597",
+      "candidateGitBlob": "fd4d30cd5c5e88e731a52727af1e8d525250cc1e",
+      "candidateSha256": "934399c23098a607f5e9f92bd49a116ddf92459a2658b3ae07d0afcf748ea868",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-pratele",
+      "candidatePath": "konverzace/k/cl-pratele.html",
+      "originalPath": "konverzace/pratele/index.html",
+      "originalGitBlob": "38e19362fa8dd00fdc59155456ac480ebe32ec84",
+      "candidateGitBlob": "1cde2ed4054dfa410d2fbe1e409f68e68cf26cb1",
+      "candidateSha256": "66612a7fcbdcd86fa915a3fb73b2747154dc578d081462a0326895721a513bb5",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-prazdniny",
+      "candidatePath": "konverzace/k/cl-prazdniny.html",
+      "originalPath": "konverzace/prazdniny/index.html",
+      "originalGitBlob": "7c92c7808b7eac5c1a8f489921914ca3b85e97ec",
+      "candidateGitBlob": "d2d522cf6a76c24b209a8a0a0ba7949b8596bb3e",
+      "candidateSha256": "7fcdc17a566812775da1126ad8dc418ddbdfc6c053e2fc2fe2da8063fbe710e7",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-problemy-teenageru",
+      "candidatePath": "konverzace/k/cl-problemy-teenageru.html",
+      "originalPath": "konverzace/problemy-teenageru/index.html",
+      "originalGitBlob": "bb1c1a33196683a41087f37ffba3742cc9f8c1b9",
+      "candidateGitBlob": "4a34ad5cd5c5e798709a02b103beea647628a156",
+      "candidateSha256": "fd3018e314b91ce38c1e426e475a242ca9848800c06db38452d43e1e9fe41ee3",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-rodina",
+      "candidatePath": "konverzace/k/cl-rodina.html",
+      "originalPath": "konverzace/rodina/index.html",
+      "originalGitBlob": "d93d87f587f29c7afa5c1946faa7c81f608ab855",
+      "candidateGitBlob": "0e8b4bb41c20cb3efb63c5acefccffc0f6636eda",
+      "candidateSha256": "f5463aa78574ccf8715e79c96997700f4c0697548e65616f0310555c5f1196df",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-skola",
+      "candidatePath": "konverzace/k/cl-skola.html",
+      "originalPath": "konverzace/skola/index.html",
+      "originalGitBlob": "f3d609bcd021ef812fb4821140a58b26bcc140fe",
+      "candidateGitBlob": "82fe5db9c0f2917af08b63329ad72d4b49b35ca6",
+      "candidateSha256": "89ce1d8bf21ed26a871bb6da158810a5f1c0aa5057c94c5c2d5552557c28ab96",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-socialni-media",
+      "candidatePath": "konverzace/k/cl-socialni-media.html",
+      "originalPath": "konverzace/socialni-media/index.html",
+      "originalGitBlob": "c81683e238dcdb96f3d4f39768a5d2d0d9b5f0da",
+      "candidateGitBlob": "bb12ca7600e45217eaa9c307347889273f48cdc8",
+      "candidateSha256": "06dc6de2722dcb392dd1aca3fed470875fe4961efb58d81da1e80c10192ecb95",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-socialni-site-a-dusevni-zdravi",
+      "candidatePath": "konverzace/k/cl-socialni-site-a-dusevni-zdravi.html",
+      "originalPath": "konverzace/socialni-site-a-dusevni-zdravi/index.html",
+      "originalGitBlob": "6d5928d4d14eda3273814465ff3c7db0bd6e7b1a",
+      "candidateGitBlob": "b945fa27c39e908ff277b5a4e0378b0e99f4dc63",
+      "candidateSha256": "d459ecd070d0e68b68e8769ed6c8f5858743cb2a2a3f2804d339b3a3ba38ddc2",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-spolecenske-problemy",
+      "candidatePath": "konverzace/k/cl-spolecenske-problemy.html",
+      "originalPath": "konverzace/spolecenske-problemy/index.html",
+      "originalGitBlob": "d19ecac6914e3f79cf45e074fad9db4df397a3c2",
+      "candidateGitBlob": "01e452276daf102427830141679f094de20c45b4",
+      "candidateSha256": "1aa31f44fe12a28310e1ba7483980a9856b3142205e060f5923f6237c974ca30",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-svetova-politika",
+      "candidatePath": "konverzace/k/cl-svetova-politika.html",
+      "originalPath": "konverzace/svetova-politika/index.html",
+      "originalGitBlob": "c651c7fc9e96ece021d87f53fdf56307e84887e8",
+      "candidateGitBlob": "c5f6f0fc9cc07dff97f38ba1c5c6af02329dffe0",
+      "candidateSha256": "777bc31292136edbcd60d2d9729ef0217b4fe4848ca195d06e964107cfc1fcef",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-tlak-na-vykon",
+      "candidatePath": "konverzace/k/cl-tlak-na-vykon.html",
+      "originalPath": "konverzace/tlak-na-vykon/index.html",
+      "originalGitBlob": "e619a6e5bc68097a0cbeafc4a9049c2225e38937",
+      "candidateGitBlob": "ae4cc75fcd7d6fb09a9e59ee782cedb2198a0b3a",
+      "candidateSha256": "30a629e7640d85bb8f9ab683ca658877cfd8a219715531ba57e195db962bc75d",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-umela-inteligence",
+      "candidatePath": "konverzace/k/cl-umela-inteligence.html",
+      "originalPath": "reference/konverzace/umela-inteligence/index.html",
+      "originalGitBlob": "8c220aa960a1cbc2d7733518570fbe68deb970b8",
+      "candidateGitBlob": "afc719122c5dfa85e30e1f77f750cff4c888aeda",
+      "candidateSha256": "27146c4c3d9b354b0b29617b57678de4138896673923f853ed19b5f1ac7d9236",
+      "reference": true,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-vanoce",
+      "candidatePath": "konverzace/k/cl-vanoce.html",
+      "originalPath": "konverzace/vanoce/index.html",
+      "originalGitBlob": "e07f24575f2dc131c3ad9226f10b78579295df03",
+      "candidateGitBlob": "9ffa28b5c854d1f9a7f82e4eed6faa820ac07862",
+      "candidateSha256": "588c93da5c1622fe55260fa3322317b02c9208f3c2dfd75e075393d389eddc45",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-volny-cas-a-konicky",
+      "candidatePath": "konverzace/k/cl-volny-cas-a-konicky.html",
+      "originalPath": "konverzace/volny-cas-a-konicky/index.html",
+      "originalGitBlob": "cc975658abcddeb9e00299781dfb956d1c63e402",
+      "candidateGitBlob": "0053dea9f29fcb30bed45dfe6631222d608d83db",
+      "candidateSha256": "4ad4e9c7dabd811e7c984988e06551aabf236e50a323a55ba3a58ee7d596c20a",
+      "reference": false,
+      "technicalPreviewOnly": true
+    },
+    {
+      "id": "cl-zivot-bez-ai",
+      "candidatePath": "konverzace/k/cl-zivot-bez-ai.html",
+      "originalPath": "konverzace/zivot-bez-ai/index.html",
+      "originalGitBlob": "90c94f4c90e56555c7bb9d7c7fdb02c9851b65cb",
+      "candidateGitBlob": "5dd488a6b6c1724a5006899b3822523156d11a72",
+      "candidateSha256": "02ac0ef5c74f62533833931224c13580bea6f7da49ae187a5fe0e5568c59b09b",
+      "reference": false,
+      "technicalPreviewOnly": true
+    }
+  ]
+}
