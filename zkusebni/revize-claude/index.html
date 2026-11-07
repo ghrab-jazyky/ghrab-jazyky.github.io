@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="cs" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Auditní fronta všech Language Skills Hub karet pro nezávislé skupinové kontroly v Claude.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; frame-src 'none'; form-action 'none'">
+<title>Claude audit · Language Skills Hub</title>
+<link rel="stylesheet" href="../assets/lsh/v2/styles.css">
+<link rel="stylesheet" href="../assets/lsh/v4/claude-review.css">
+<script defer src="../assets/lsh/v4/claude-review.js"></script>
+</head>
+<body>
+<a href="#main" class="skip-link">Přeskočit na obsah</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../"><span class="brand-glyph" aria-hidden="true">L<span>S</span>H</span><span class="brand-text"><strong>Language Skills Hub</strong><small>Nezávislý audit · Claude</small></span></a>
+<nav class="primary-nav" aria-label="Navigace"><a href="../">Rozcestník</a><a href="../reference-karty/">Pilotní katalog</a><a href="../pridat-kartu/">Nová karta</a></nav>
+</div></header>
+<div class="demo-banner"><span class="demo-dot"></span><strong>AUDITNÍ FRONTA</strong><span>Nejde o potvrzení schválených karet ani automatické propojení s Claude API.</span></div>
+<main id="main" class="container aud-main">
+<section class="aud-hero">
+<span class="eyebrow">VŠECHNY EXISTUJÍCÍ KARTY · NEZÁVISLÁ REVIZE</span>
+<h1>Připravit kontrolu pro Claude</h1>
+<p>Zvolte laboratoř a sérii po pěti kartách. Jedním kliknutím připravíte ZIP s originálními studentskými HTML, jednotlivými auditními zadáními a jejich SHA-256. Balíček nahrajte do Clauda, který provede jazykovou, pedagogickou a technickou kontrolu podle každé reference.</p>
+<p><strong>Důležité:</strong> Claude Pro není automaticky propojen s touto stránkou ani se školním GitHubem. Balíčky se vytvářejí lokálně; není zde žádné pozadí pro hromadné odeslání ani automatické schválení. Učitelské klíče jsou soukromé a do ZIP se nepřidávají.</p>
+</section>
+<section class="aud-controls" aria-label="Výběr auditní dávky">
+<label>Laboratoř<select id="audSkill"><option value="konverzace">Conversation Lab</option><option value="cteni">Reading Lab</option><option value="poslech">Listening Lab</option></select></label>
+<label>Dávka<select id="audBatch"><option value="1">Dávka 1</option></select></label>
+<p id="audCount" role="status">Načítání…</p>
+</section>
+<section id="audCards" class="aud-list" aria-label="Karty v dávce"></section>
+<div class="aud-footer"><button id="audBuild" class="button primary" type="button" disabled>Stáhnout auditní ZIP pro Claude</button><a class="button outline" href="../reference-karty/">Zpět do katalogu</a></div>
+<p id="audStatus" role="status" aria-live="polite"></p>
+<section class="aud-hero">
+<h2>Jak pokračovat po kontrole</h2>
+<p>Claude vrátí konkrétní nálezy s jazykem, úrovní, umístěním a návrhem opravy. Výstup lze hromadně zpracovat přes <code>zkusebni/tools/claude-audit-import.cjs</code>. Do veřejného GitHubu se ukládají pouze bezpečná metadata (počty nálezů a stav), nikoli odpovědní klíče a celé interní recenze. Opravy provádíme až po zhodnocení, a před vydáním opakujeme kontrolní testy.</p>
+</section>
+</main>
+<footer class="site-footer"><div class="footer-inner"><span>Language Skills Hub · Claude audit</span><span>Studentské HTML je veřejný technický náhled. Pedagogické schválení zůstává na učiteli.</span></div></footer>
+</body></html>

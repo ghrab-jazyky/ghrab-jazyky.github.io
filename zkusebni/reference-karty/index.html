@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="cs" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Language Skills Hub · referenční pilotní karty pro učitelskou kontrolu.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; font-src 'self'; frame-src 'none'; form-action 'none'">
+<title>Pilotní katalog · Language Skills Hub</title>
+<link rel="stylesheet" href="../assets/lsh/v2/styles.css">
+<link rel="stylesheet" href="../assets/lsh/v4/reference-pilots.css">
+<script defer src="../assets/lsh/v2/qr.js"></script>
+<script defer src="../assets/lsh/v4/offline-bundle.js"></script>
+<script defer src="../assets/lsh/v4/reference-pilots.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Přeskočit na obsah</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../"><span class="brand-glyph" aria-hidden="true">L<span>S</span>H</span><span class="brand-text"><strong>Language Skills Hub</strong><small>Gymnázium · technický pilot</small></span></a>
+<nav class="primary-nav" aria-label="Hlavní navigace"><a href="../">Rozcestník</a><a href="../vyber/">Původní výběr aktivit</a><a href="?skill=konverzace">Conversation Lab</a><a href="?skill=cteni">Reading Lab</a><a href="?skill=poslech">Listening Lab</a></nav>
+</div></header>
+<div class="demo-banner"><span class="demo-dot"></span><strong>TECHNICKÝ PILOT</strong><span>Veřejné technické náhledy · nejedná se o schválené testy ani uzavřený učitelský účet</span></div>
+<main id="main" class="container ref-main">
+<section class="ref-heading">
+<span class="eyebrow">JEDNO MÍSTO · TŘI JAZYKOVÉ DOVEDNOSTI</span>
+<h1>Pilotní katalog jazykových dovedností</h1>
+<p class="page-lead">Všech 29 dosavadních témat je nyní dostupných jako technické náhledy: 21 konverzačních, 5 čtecích a 3 poslechová. Karta Škola čeká na obsahovou opravu (ES A1). Filtrujte podle dovednosti, jazyka nebo CEFR a připravte procvičovací odkaz či QR kód.</p>
+<p class="ref-warning"><strong>Důležité:</strong> Všechny zde uvedené karty jsou zatím technické piloty, nikoli pedagogicky schválený katalog. U 20 starších konverzačních karet lze stáhnout kompletní offline ZIP včetně potřebných souborů. Při otevření z disku závisí ukládání slovníčku na prohlížeči. Samostatné testovací sady nejsou hotové. Soukromé učitelské klíče nejsou na veřejném webu.</p>
+</section>
+<p id="refAuditProgress" role="status" aria-live="polite" class="ref-review-summary">Načítání fronty pro Claude…</p>
+<div class="ref-modal-actions"><a href="../pridat-kartu/" class="button outline">Připravit nové karty (dávka 12)</a><a href="../revize-claude/" class="button outline">Export pro Claude (dávky 5)</a></div>
+<section class="ref-controls" aria-label="Filtry referenčních karet">
+<label>Dovednost<select id="refSkill"><option value="">Všechny dovednosti</option><option value="konverzace">Conversation Lab</option><option value="cteni">Reading Lab</option><option value="poslech">Listening Lab</option></select></label>
+<label class="ref-query">Hledat<input id="refSearch" type="search" placeholder="Název nebo obsah" autocomplete="off"></label>
+<label>Jazyk<select id="refLanguage"><option value="">Všechny jazyky</option><option value="en">Angličtina</option><option value="es">Španělština</option><option value="de">Němčina</option><option value="fr">Francouzština</option></select></label>
+<label>CEFR<select id="refLevel"><option value="">Všechny úrovně</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></label>
+<label>Audit Clauda<select id="refReviewStatus"><option value="">Všechny stavy</option><option value="PENDING">Čeká na kontrolu</option><option value="REVIEWED_WITH_FINDINGS">Zkontrolováno s nálezy</option><option value="REVIEWED_NO_FINDINGS">Zkontrolováno bez nálezů</option></select></label>
+<button id="refReset" class="button outline" type="button">Vymazat filtry</button>
+</section>
+<section aria-label="Pilotní témata"><div class="ref-listhead"><h2>Aktivity</h2><p id="refCount" aria-live="polite">Načítání…</p></div><div id="refList" class="ref-grid" aria-live="polite"></div><p id="refEmpty" class="ref-empty" hidden>Žádná referenční karta neodpovídá filtrům.</p></section>
+<section class="ref-next"><h2>Co bude následovat</h2><p>Všech 29 témat má v tomto technickém pilotu odkaz a QR. Chybí ale jazykové schválení, pedagogická migrace dvou starších poslechů, oprava opakované otázky Škola ES A1, ověření offline ZIP na fyzických zařízeních, mobilní UAT a oddělené testové verze.</p></section>
+</main>
+<dialog id="refDialog" class="ref-dialog" aria-labelledby="refDialogTitle"><div class="ref-modal">
+<div class="ref-modal-top"><div><span class="eyebrow">PROCVIČOVÁNÍ · NÁHLED</span><h2 id="refDialogTitle">Otevřít kartu</h2></div><button id="refClose" class="close-button" type="button" aria-label="Zavřít dialog">×</button></div>
+<p id="refDialogDetail"></p><p id="refContentNote" class="ref-content-note" hidden></p>
+<label class="ref-mode-label" for="refMode">Nastavení pro studenty
+<select id="refMode"><option value="free">Volná volba — student si vybere</option><option value="fixed">Pevná varianta — určuje učitel</option></select>
+</label>
+<div id="refFixedFields" class="ref-fixed-fields" hidden>
+<label for="refShareLang">Jazyk<select id="refShareLang"></select></label>
+<label for="refShareLevel">Úroveň CEFR<select id="refShareLevel"></select></label>
+</div>
+<p id="refModeHint" class="ref-warning">Student může přepínat všechny jazyky a úrovně podporované kartou.</p>
+<label for="refUrl">Přímý odkaz</label><input id="refUrl" class="share-url" type="text" readonly aria-readonly="true">
+<div class="ref-modal-actions"><a id="refOpen" class="button primary" target="_blank" rel="noopener">Otevřít studentskou kartu</a><button id="refCopy" class="button outline" type="button">Kopírovat odkaz</button></div>
+<div id="refQr" class="ref-qr" role="img" aria-label="QR kód studentské karty"></div>
+<button id="refSaveQr" class="button outline" type="button">Stáhnout QR (SVG)</button>
+<div class="ref-download">
+<button id="refSaveHtml" class="button primary" type="button">Stáhnout procvičovací HTML do hodiny</button>
+<p id="refOfflineNote">Stažená karta obsahuje vlastní HTML. Dostupnost lokálního slovníčku závisí na prohlížeči.</p>
+</div>
+<p id="refDialogStatus" role="status" aria-live="polite"></p>
+</div></dialog>
+<footer class="site-footer"><div class="footer-inner"><span>Language Skills Hub · školní GitHub Pages</span><span>Veřejný pilot bez studentských účtů. Nepoužívat k ukládání identifikovatelných odpovědí žáků.</span></div></footer>
+</body></html>
