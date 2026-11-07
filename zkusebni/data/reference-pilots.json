@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "collectionVersion": "R5-reference-pilot-2026-11-07",
+  "purpose": "Public teacher-facing reference previews only. NOT a publishable student manifest or a teacher answer repository.",
+  "approvedForTeaching": false,
+  "entries": [
+    {
+      "id": "cl-umela-inteligence",
+      "skill": "konverzace",
+      "title": "Umělá inteligence",
+      "summary": "Každodenní použití AI, její možnosti a rizika, odpovědnost za rozhodnutí a pravidla pro nové technologie.",
+      "focus": "Diskusní stanoviště a jazyková opora",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "sourceVersion": "R4C · původní HTML",
+      "studentPath": "reference/konverzace/umela-inteligence/",
+      "selfContainedHtml": true,
+      "mediaExternal": false,
+      "practice": "preview",
+      "fixedVariantSupported": false,
+      "test": "not-ready"
+    },
+    {
+      "id": "rl-asteroids",
+      "skill": "cteni",
+      "title": "Asteroids",
+      "summary": "Čtení o asteroidech s úkoly na vyhledávání informací, detailní porozumění a doložení odpovědí v textu.",
+      "focus": "Text, čtenářské strategie a evidence",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "sourceVersion": "v2.3",
+      "studentPath": "nahledy/cteni/asteroids/",
+      "selfContainedHtml": true,
+      "mediaExternal": false,
+      "practice": "preview",
+      "fixedVariantSupported": false,
+      "test": "not-ready"
+    },
+    {
+      "id": "ll-matthew-oscars",
+      "skill": "poslech",
+      "title": "Matthew McConaughey — Oscars 2014",
+      "summary": "Autentický děkovný projev: první poslech pro hlavní sdělení, druhý pro interpretaci a třetí pro písemné důkazy a rekonstrukci řeči.",
+      "focus": "Tři poslechy, samostatné kontroly a reflexe",
+      "languages": [
+        "en"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "sourceVersion": "v3",
+      "studentPath": "reference/poslech/matthew-mcconaughey/",
+      "selfContainedHtml": true,
+      "mediaExternal": true,
+      "practice": "preview",
+      "fixedVariantSupported": false,
+      "test": "not-ready"
+    }
+  ]
+}
