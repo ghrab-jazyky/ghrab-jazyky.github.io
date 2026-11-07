@@ -4,6 +4,7 @@ on:
     paths:
       - 'zkusebni/konverzace/k/**'
       - 'zkusebni/data/conversation-r6-candidates.json'
+      - 'zkusebni/tools/conversation-r6-claude-packages.py'
       - 'zkusebni/tests/conversation-r6-candidates.test.cjs'
       - '.github/workflows/lsh-conversation-r6-review.yml'
   push:
@@ -12,6 +13,7 @@ on:
     paths:
       - 'zkusebni/konverzace/k/**'
       - 'zkusebni/data/conversation-r6-candidates.json'
+      - 'zkusebni/tools/conversation-r6-claude-packages.py'
       - 'zkusebni/tests/conversation-r6-candidates.test.cjs'
       - '.github/workflows/lsh-conversation-r6-review.yml'
 permissions:
@@ -29,3 +31,16 @@ jobs:
           node-version: '24'
       - name: Audit candidates without touching canonical sources or catalog
         run: node zkusebni/tests/conversation-r6-candidates.test.cjs
+      - name: Export source-verified Claude R6 batches (no deployment)
+        run: |
+          python3 zkusebni/tools/conversation-r6-claude-packages.py --output "$RUNNER_TEMP/lsh-r6-claude"
+          python3 -c 'import json,pathlib,sys,zipfile;p=pathlib.Path(sys.argv[1]);i=json.loads((p/"INDEX.json").read_text());assert i["totalCards"]==21 and i["totalBatches"]==5;assert sum(x["cards"] for x in i["packages"])==21;assert all(zipfile.ZipFile(p/x["file"]).testzip() is None for x in i["packages"])' "$RUNNER_TEMP/lsh-r6-claude"
+      - name: Attach five candidate audit ZIPs for manual Claude review
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-r6-conversation-claude-five-batches
+          path: |
+            ${{ runner.temp }}/lsh-r6-claude/*.zip
+            ${{ runner.temp }}/lsh-r6-claude/INDEX.json
+          if-no-files-found: error
+          retention-days: 30
