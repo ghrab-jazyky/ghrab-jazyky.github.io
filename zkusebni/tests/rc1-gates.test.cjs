@@ -38,8 +38,13 @@ test('All public staging shell pages truthfully warn about pilot status and are 
     assert.match(html,/TECHNICKÝ PILOT RC1/,page);
     assert.doesNotMatch(html,/ZKUŠEBNÍ VERZE E2|E2 \/ 0\.2\.1/,page);
   }
-  assert.match(read('index.html'),/21 konverzačních karet/);
-  assert.match(read('index.html'),/pouze fiktivní demonstraci/);
+  // R5P homepage leads to a separate UNAPPROVED 29-card pilot. The legacy
+  // publishing manifest remains protected by the original RC1 gates above.
+  const home=read('index.html');
+  assert.match(home,/Jednotný učitelský katalog zahrnuje konverzace, čtení i poslech/);
+  assert.match(home,/technické náhledy bez dokončené jazykové a pedagogické kontroly/);
+  for(const skill of ['konverzace','cteni','poslech'])
+    assert.match(home,new RegExp('href="reference-karty/\\?skill='+skill+'"'));
   assert.match(read('cteni/index.html'),/pedagogické schválení/);
   assert.match(read('poslech/index.html'),/žádné poslechové karty/);
 });
