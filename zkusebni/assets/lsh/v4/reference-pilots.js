@@ -12,7 +12,7 @@ const list=$('refList'),dialog=$('refDialog'),status=$('refDialogStatus');
 function el(tag,klass,txt){const x=document.createElement(tag);if(klass)x.className=klass;if(txt!==undefined)x.textContent=String(txt);return x;}
 function isValid(v){
  return v&&/^(cl|rl|ll)-[a-z0-9-]+$/.test(v.id)&&SKILLS[v.skill]&&typeof v.title==='string'&&v.title.length<160&&typeof v.summary==='string'&&
- typeof v.studentPath==='string'&&/^integrace\/(konverzace|cteni|poslech)\/[a-z0-9-]+\/$/.test(v.studentPath)&&v.fixedVariantSupported===true&&v.defaultLanguage==='en'&&LEVELS.includes(v.defaultLevel)&&
+ typeof v.studentPath==='string'&&/^integrace\/(konverzace|cteni|poslech)\/[a-z0-9-]+\/$/.test(v.studentPath)&&v.fixedVariantSupported===true&&v.selfContainedHtml===true&&v.defaultLanguage==='en'&&LEVELS.includes(v.defaultLevel)&&
  Array.isArray(v.languages)&&v.languages.length>0&&v.languages.every(x=>LANGS[x])&&
  Array.isArray(v.levels)&&v.levels.length===6&&LEVELS.every(x=>v.levels.includes(x))&&v.practice==='preview'&&v.test==='not-ready';
 }
@@ -67,10 +67,10 @@ function refreshShare(){
   $('refUrl').value=url;$('refOpen').href=url;$('refOpen').removeAttribute('aria-disabled');
   const qr=$('refQr');qr.replaceChildren();
   if(!window.CLBQRCode||typeof window.CLBQRCode.svg!=='function')throw new Error('QR unavailable');
-  qr.append(window.CLBQRCode.svg(url));$('refSaveQr').disabled=false;status.textContent='';
+  qr.append(window.CLBQRCode.svg(url));$('refSaveQr').disabled=false;$('refSaveHtml').disabled=false;status.textContent='';
  }catch(error){
   $('refUrl').value='';$('refOpen').removeAttribute('href');$('refOpen').setAttribute('aria-disabled','true');
-  $('refQr').replaceChildren();$('refSaveQr').disabled=true;
+  $('refQr').replaceChildren();$('refSaveQr').disabled=true;$('refSaveHtml').disabled=true;
   status.textContent='Odkaz nebo QR se nepodařilo připravit. Zkontrolujte nastavení.';
   console.error('Reference share:',error);
  }
@@ -78,6 +78,9 @@ function refreshShare(){
 function open(e){
  selected=e;
  $('refDialogTitle').textContent=e.title;
+ $('refOfflineNote').textContent=e.mediaExternal?
+  'Offline HTML obsahuje úlohy a uložené nastavení, ale video se nepřibaluje a pro přehrání vyžaduje internet. Osobní slovníček se může lišit podle prohlížeče.' :
+  'Offline HTML uchová volnou či pevnou variantu. Při otevření jako místní soubor mohou některé prohlížeče omezit uložený osobní slovníček.';
  $('refDialogDetail').textContent=SKILLS[e.skill]+' · '+e.languages.map(l=>LANGS[l]).join(', ')+' · A1–C2 · '+e.sourceVersion;
  $('refMode').value='free';
  const langs=$('refShareLang');langs.replaceChildren();
@@ -106,6 +109,33 @@ function saveQr(){
  setTimeout(()=>URL.revokeObjectURL(blobURL),1500);
  status.textContent='QR kód připraven ke stažení.';
 }
+async function saveHtml(){
+ if(!selected||!$('refUrl').value)return;
+ const btn=$('refSaveHtml');btn.disabled=true;
+ try{
+  const chosen=new URL($('refUrl').value);
+  const source=new URL(selected.studentPath,new URL(ROOT,location.origin));
+  if(chosen.origin!==location.origin||chosen.pathname!==source.pathname)throw new Error('Unexpected download URL');
+  const response=await fetch(source.href,{cache:'no-store'});
+  if(!response.ok)throw new Error('HTTP '+response.status);
+  const html=await response.text();
+  const marker='<script>\\n/* LSH-R5 variant bridge:';
+  if(html.split(marker).length!==2)throw new Error('Integrated standalone HTML marker missing');
+  const prefix='<script>window.LSH_OFFLINE_QS='+JSON.stringify(chosen.search).replace(/</g,'\\u003c')+';</script>\\n';
+  const offline=html.replace(marker,prefix+marker);
+  const blob=new Blob([offline],{type:'text/html;charset=utf-8'});
+  const blobURL=URL.createObjectURL(blob);
+  const fixed=$('refMode').value==='fixed';
+  const suffix=fixed?$('refShareLang').value+'-'+$('refShareLevel').value+'-fixed':'free';
+  const a=el('a');a.href=blobURL;a.download='LSH_'+selected.id+'_'+suffix+'_practice.html';
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(blobURL),60000);
+  status.textContent=selected.mediaExternal?
+    'Stažení HTML zahájeno. Video není v souboru přibaleno a vyžaduje internet.':
+    'Stažení procvičovacího HTML se zvoleným nastavením zahájeno.';
+ }catch(error){console.error('Reference offline download:',error);status.textContent='HTML nelze stáhnout. Zkontrolujte připojení a opakujte akci.';}
+ finally{btn.disabled=false;}
+}
 function bind(){
  for(const id of ['refSkill','refLanguage','refLevel'])$(id).addEventListener('change',render);
  $('refSearch').addEventListener('input',render);
@@ -117,6 +147,7 @@ function bind(){
  dialog.addEventListener('click',ev=>{if(ev.target===dialog)dialog.close();});
  $('refCopy').addEventListener('click',copyLink);
  $('refSaveQr').addEventListener('click',saveQr);
+ $('refSaveHtml').addEventListener('click',saveHtml);
 }
 async function init(){
  bind();
