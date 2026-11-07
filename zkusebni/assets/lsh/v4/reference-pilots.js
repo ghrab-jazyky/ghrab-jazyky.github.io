@@ -12,7 +12,7 @@ const list=$('refList'),dialog=$('refDialog'),status=$('refDialogStatus');
 function el(tag,klass,txt){const x=document.createElement(tag);if(klass)x.className=klass;if(txt!==undefined)x.textContent=String(txt);return x;}
 function isValid(v){
  return v&&/^(cl|rl|ll)-[a-z0-9-]+$/.test(v.id)&&SKILLS[v.skill]&&typeof v.title==='string'&&v.title.length<160&&typeof v.summary==='string'&&
- typeof v.studentPath==='string'&&/^(?:integrace\/(?:konverzace|cteni|poslech)|konverzace)\/[a-z0-9-]+\/$/.test(v.studentPath)&&v.studentPath.includes('/'+v.skill+'/')&&v.fixedVariantSupported===true&&typeof v.selfContainedHtml==='boolean'&&typeof v.isReference==='boolean'&&v.defaultLanguage==='en'&&LEVELS.includes(v.defaultLevel)&&
+ typeof v.studentPath==='string'&&/^(?:integrace\/(?:konverzace|cteni|poslech)|konverzace)\/[a-z0-9-]+\/$/.test(v.studentPath)&&v.studentPath.split('/').includes(v.skill)&&v.fixedVariantSupported===true&&typeof v.selfContainedHtml==='boolean'&&typeof v.isReference==='boolean'&&v.defaultLanguage==='en'&&LEVELS.includes(v.defaultLevel)&&
  Array.isArray(v.languages)&&v.languages.length>0&&v.languages.every(x=>LANGS[x])&&
  Array.isArray(v.levels)&&v.levels.length===6&&LEVELS.every(x=>v.levels.includes(x))&&v.practice==='preview'&&v.test==='not-ready';
 }
