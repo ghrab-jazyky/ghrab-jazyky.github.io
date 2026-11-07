@@ -119,9 +119,9 @@ async function saveHtml(){
   const response=await fetch(source.href,{cache:'no-store'});
   if(!response.ok)throw new Error('HTTP '+response.status);
   const html=await response.text();
-  const marker='<script>\\n/* LSH-R5 variant bridge:';
+  const marker='<script>\n/* LSH-R5 variant bridge:';
   if(html.split(marker).length!==2)throw new Error('Integrated standalone HTML marker missing');
-  const prefix='<script>window.LSH_OFFLINE_QS='+JSON.stringify(chosen.search).replace(/</g,'\\u003c')+';</script>\\n';
+  const prefix='<script>window.LSH_OFFLINE_QS='+JSON.stringify(chosen.search).replace(/</g,'\\u003c')+';</script>\n';
   const offline=html.replace(marker,prefix+marker);
   const blob=new Blob([offline],{type:'text/html;charset=utf-8'});
   const blobURL=URL.createObjectURL(blob);
