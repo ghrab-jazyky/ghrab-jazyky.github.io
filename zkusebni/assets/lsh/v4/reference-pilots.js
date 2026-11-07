@@ -12,7 +12,7 @@ const list=$('refList'),dialog=$('refDialog'),status=$('refDialogStatus');
 function el(tag,klass,txt){const x=document.createElement(tag);if(klass)x.className=klass;if(txt!==undefined)x.textContent=String(txt);return x;}
 function isValid(v){
  return v&&/^(cl|rl|ll)-[a-z0-9-]+$/.test(v.id)&&SKILLS[v.skill]&&typeof v.title==='string'&&v.title.length<160&&typeof v.summary==='string'&&
- typeof v.studentPath==='string'&&/^integrace\/(konverzace|cteni|poslech)\/[a-z0-9-]+\/$/.test(v.studentPath)&&v.fixedVariantSupported===true&&v.selfContainedHtml===true&&v.defaultLanguage==='en'&&LEVELS.includes(v.defaultLevel)&&
+ typeof v.studentPath==='string'&&/^(?:integrace\/(?:konverzace|cteni|poslech)|konverzace)\/[a-z0-9-]+\/$/.test(v.studentPath)&&v.studentPath.includes('/'+v.skill+'/')&&v.fixedVariantSupported===true&&typeof v.selfContainedHtml==='boolean'&&typeof v.isReference==='boolean'&&v.defaultLanguage==='en'&&LEVELS.includes(v.defaultLevel)&&
  Array.isArray(v.languages)&&v.languages.length>0&&v.languages.every(x=>LANGS[x])&&
  Array.isArray(v.levels)&&v.levels.length===6&&LEVELS.every(x=>v.levels.includes(x))&&v.practice==='preview'&&v.test==='not-ready';
 }
@@ -38,13 +38,13 @@ function filtered(){
 }
 function render(){
  const items=filtered();list.replaceChildren();
- $('refCount').textContent='Zobrazeno '+items.length+' ze '+entries.length+' referenčních karet.';
+ $('refCount').textContent='Zobrazeno '+items.length+' z '+entries.length+' pilotních karet.';
  $('refEmpty').hidden=items.length!==0;
  for(const e of items){
-  const card=el('article','ref-card');
+  const card=el('article',e.isReference?'ref-card ref-card-reference':'ref-card ref-card-migration');
   const top=el('div','ref-card-top');
   const badges=el('div','ref-tags');
-  badges.append(el('span','ref-chip',SKILLS[e.skill]),el('span','ref-chip ref-pilot','PILOT · NESCHVÁLENO'));
+  badges.append(el('span','ref-chip',SKILLS[e.skill]),el('span','ref-chip',e.isReference?'REFERENČNÍ VZOR':'MIGRACE · 1. DÁVKA'),el('span','ref-chip ref-pilot','PILOT · NESCHVÁLENO'));
   top.append(badges,el('h3',null,e.title),el('p',null,e.summary));
   const info=el('p','ref-info',e.languages.map(l=>LANGS[l]).join(' · ')+'   |   A1–C2   |   '+e.sourceVersion);
   const focus=el('p','ref-focus',e.focus);
@@ -67,7 +67,7 @@ function refreshShare(){
   $('refUrl').value=url;$('refOpen').href=url;$('refOpen').removeAttribute('aria-disabled');
   const qr=$('refQr');qr.replaceChildren();
   if(!window.CLBQRCode||typeof window.CLBQRCode.svg!=='function')throw new Error('QR unavailable');
-  qr.append(window.CLBQRCode.svg(url));$('refSaveQr').disabled=false;$('refSaveHtml').disabled=false;status.textContent='';
+  qr.append(window.CLBQRCode.svg(url));$('refSaveQr').disabled=false;$('refSaveHtml').disabled=!selected.selfContainedHtml;status.textContent='';
  }catch(error){
   $('refUrl').value='';$('refOpen').removeAttribute('href');$('refOpen').setAttribute('aria-disabled','true');
   $('refQr').replaceChildren();$('refSaveQr').disabled=true;$('refSaveHtml').disabled=true;
@@ -78,7 +78,8 @@ function refreshShare(){
 function open(e){
  selected=e;
  $('refDialogTitle').textContent=e.title;
- $('refOfflineNote').textContent=e.mediaExternal?
+ $('refOfflineNote').textContent=!e.selfContainedHtml?
+  'Tato karta používá další společné skripty. Samostatné offline HTML zatím není dostupné; odkaz a QR fungují online.' : e.mediaExternal?
   'Offline HTML obsahuje úlohy a uložené nastavení, ale video se nepřibaluje a pro přehrání vyžaduje internet. Osobní slovníček se může lišit podle prohlížeče.' :
   'Offline HTML uchová volnou či pevnou variantu. Při otevření jako místní soubor mohou některé prohlížeče omezit uložený osobní slovníček.';
  $('refDialogDetail').textContent=SKILLS[e.skill]+' · '+e.languages.map(l=>LANGS[l]).join(', ')+' · A1–C2 · '+e.sourceVersion;
@@ -110,7 +111,7 @@ function saveQr(){
  status.textContent='QR kód připraven ke stažení.';
 }
 async function saveHtml(){
- if(!selected||!$('refUrl').value)return;
+ if(!selected||!selected.selfContainedHtml||!$('refUrl').value)return;
  const btn=$('refSaveHtml');btn.disabled=true;
  try{
   const chosen=new URL($('refUrl').value);
@@ -155,7 +156,7 @@ async function init(){
   const response=await fetch(new URL('data/reference-pilots.json',new URL(ROOT,location.origin)),{cache:'no-store'});
   if(!response.ok)throw new Error('HTTP '+response.status);
   const data=await response.json();
-  if(data.schemaVersion!==1||data.approvedForTeaching!==false||!Array.isArray(data.entries)||data.entries.length!==3||!data.entries.every(isValid)||new Set(data.entries.map(x=>x.skill)).size!==3)throw new Error('Invalid pilot inventory');
+  if(data.schemaVersion!==1||data.approvedForTeaching!==false||!Array.isArray(data.entries)||data.entries.length<3||data.entries.length>29||!data.entries.every(isValid)||new Set(data.entries.map(x=>x.id)).size!==data.entries.length||new Set(data.entries.filter(x=>x.isReference).map(x=>x.skill)).size!==3||data.entries.filter(x=>x.isReference).length!==3)throw new Error('Invalid pilot inventory');
   entries=data.entries;
   render();
  }catch(err){console.error('Reference catalog:',err);$('refCount').textContent='Referenční katalog momentálně není dostupný.';list.replaceChildren(el('p','ref-empty','Zkontrolujte připojení nebo načtěte stránku znovu.'));}
