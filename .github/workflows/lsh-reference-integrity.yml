@@ -12,11 +12,6 @@ on:
       - 'zkusebni/podklady/**'
       - 'zkusebni/pridat-kartu/**'
       - 'zkusebni/revize-claude/**'
-      - 'zkusebni/data/claude-audit-queue.json'
-      - 'zkusebni/tools/**'
-      - 'zkusebni/podklady/**'
-      - 'zkusebni/pridat-kartu/**'
-      - 'zkusebni/revize-claude/**'
       - 'zkusebni/reference-karty/**'
       - 'zkusebni/tests/reference-integrity.cjs'
       - '.github/workflows/lsh-reference-integrity.yml'
@@ -30,6 +25,10 @@ on:
       - 'zkusebni/integrace/**'
       - 'zkusebni/assets/lsh/v4/**'
       - 'zkusebni/data/reference-pilots.json'
+      - 'zkusebni/data/claude-audit-queue.json'
+      - 'zkusebni/tools/**'
+      - 'zkusebni/podklady/**'
+      - 'zkusebni/konverzace/**'
       - 'zkusebni/reference-karty/**'
       - 'zkusebni/tests/reference-integrity.cjs'
       - '.github/workflows/lsh-reference-integrity.yml'
@@ -53,15 +52,22 @@ jobs:
           node zkusebni/tools/card-intake.cjs --verify
           node zkusebni/tools/card-intake.cjs --self-test
           node --check zkusebni/tools/claude-audit-import.cjs
-      - name: End-to-end intake smoke test (runner only, never committed)
+      - name: End-to-end batch intake for all THREE skills (runner only, no deployment)
         run: |
           set -eu
-          mkdir -p "$RUNNER_TEMP/lsh-intake-example"
-          cp zkusebni/nahledy/cteni/asteroids/index.html "$RUNNER_TEMP/lsh-intake-example/asteroids.html"
-          node -e 'const fs=require("node:fs");const d={schemaVersion:1,cards:[{id:"rl-intake-smoke",skill:"cteni",title:"Asteroids intake smoke test",summary:"Automated disposable validation of the complete multilingual reference reading card.",focus:"Structural import test, not a publication",version:"v2.3-fixture",sourceFile:"asteroids.html"}]};fs.writeFileSync(process.env.RUNNER_TEMP+"/lsh-intake-example/cards.json",JSON.stringify(d,null,2));'
-          node zkusebni/tools/card-intake.cjs --batch "$RUNNER_TEMP/lsh-intake-example/cards.json"
-          node zkusebni/tools/card-intake.cjs --batch "$RUNNER_TEMP/lsh-intake-example/cards.json" --apply
+          mkdir -p "$RUNNER_TEMP/lsh-intake-fixture"
+          cp zkusebni/nahledy/cteni/asteroids/index.html "$RUNNER_TEMP/lsh-intake-fixture/asteroids.html"
+          cp zkusebni/reference/poslech/matthew-mcconaughey/index.html "$RUNNER_TEMP/lsh-intake-fixture/matthew.html"
+          node -e 'const fs=require("node:fs");const root=process.env.RUNNER_TEMP+"/lsh-intake-fixture";const a=fs.readFileSync("zkusebni/konverzace/socialni-media/index.html","utf8");if(!a.includes("data-lsh-topic-id=\"cl-socialni-media\""))throw Error("Conversation fixture missing");fs.writeFileSync(root+"/conversation.html",a.replace("data-lsh-topic-id=\"cl-socialni-media\"","data-lsh-topic-id=\"cl-smoke-conversation\""));const d={schemaVersion:1,cards:[{id:"cl-smoke-conversation",skill:"konverzace",title:"Conversation intake smoke",summary:"Disposable automated check of a shared-asset multilingual conversation source.",version:"smoke",sourceFile:"conversation.html"},{id:"rl-smoke-reading",skill:"cteni",title:"Reading intake smoke",summary:"Disposable automated check of the multilingual reading reference and integrated source.",version:"smoke",sourceFile:"asteroids.html"},{id:"ll-smoke-listening",skill:"poslech",title:"Listening intake smoke",summary:"Disposable automated check of the single-language listening reference and its URL adapter.",version:"smoke",sourceFile:"matthew.html"}]};fs.writeFileSync(root+"/cards.json",JSON.stringify(d,null,2));'
+          node zkusebni/tools/card-intake.cjs --batch "$RUNNER_TEMP/lsh-intake-fixture/cards.json"
+          node zkusebni/tools/card-intake.cjs --batch "$RUNNER_TEMP/lsh-intake-fixture/cards.json" --apply
           node zkusebni/tools/card-intake.cjs --verify
+          node -e 'const fs=require("node:fs");const j=JSON.parse(fs.readFileSync("zkusebni/data/reference-pilots.json"));const q=JSON.parse(fs.readFileSync("zkusebni/data/claude-audit-queue.json"));if(j.entries.length!==32||q.topics.length!==32)throw Error("Batch intake counts wrong");for(const [id,skill,self,offline] of [["cl-smoke-conversation","konverzace",false,"clb-v1"],["rl-smoke-reading","cteni",true,undefined],["ll-smoke-listening","poslech",true,undefined]]){const e=j.entries.find(x=>x.id===id);if(!e||e.skill!==skill||e.selfContainedHtml!==self||e.offlineBundle!==offline||e.test!=="not-ready")throw Error("Incorrect "+id)}console.log("PASS bulk import of all three skills, 32/32 audit queue entries")'
           node zkusebni/tools/card-intake.cjs --audit-export "$RUNNER_TEMP/lsh-claude-export"
-          test -f "$RUNNER_TEMP/lsh-claude-export/rl-intake-smoke.md"
-
+          test -f "$RUNNER_TEMP/lsh-claude-export/cl-smoke-conversation.md"
+          test -f "$RUNNER_TEMP/lsh-claude-export/rl-smoke-reading.md"
+          test -f "$RUNNER_TEMP/lsh-claude-export/ll-smoke-listening.md"
+          if node zkusebni/tools/card-intake.cjs --batch "$RUNNER_TEMP/lsh-intake-fixture/cards.json"; then
+            echo "ERROR: duplicate IDs were accepted by the importer"
+            exit 1
+          fi
