@@ -242,7 +242,9 @@ function auditExport(out){
    'Výstup: seznam konkrétních chyb P0/P1/P2 s umístěním language/level/exercise, původním a navrženým opraveným textem; rozdělte ověřené chyby a domněnky.',
    'Uveďte také jaká zařízení / média nebyla reálně otestována; netvrďte, že je vše PASS, pouze z důvodu automatických kontrol.',
    'Nikdy neoznačujte kartu ani Test jako schválené. Učitel musí výslovně potvrdit výsledek.',
-   'Vraťte strojově čitelný JSON: {"topicId":"'+t.id+'","sourceSha256":"'+sha+'","findings":[{"severity":"P1","language":"es","level":"A1","location":"station/question","observed":"...","proposed":"...","evidence":"..."}],"status":"REVIEWED_WITH_FINDINGS|REVIEWED_NO_FINDINGS","requiresTeacherDecision":true}.',
+   'Doložte v reviewedVariants každou skutečně kontrolovanou jazykovou a CEFR variantu zvlášť. Přidejte konkrétní source-specific evidence délky alespoň 20 znaků. Kontrola jen EN B2 nepostačuje; nevymýšlejte neověřené varianty.',
+   'V unverifiedChecks povinně vyjmenujte netestovaná zařízení, externí video, školní Wi-Fi, offline režim či nedodaný soukromý učitelský klíč. Pole [] použijte jen po skutečném ověření.',
+   'Strojově čitelný JSON: {"topicId":"'+t.id+'","sourceSha256":"'+sha+'","reviewedVariants":[{"language":"en","level":"A1","evidence":"Konkrétní poznatek ze skutečné EN A1 varianty"}],"unverifiedChecks":["Nativní iOS nebyl fyzicky testován"],"findings":[{"severity":"P1","language":"es","level":"A1","location":"stanoviště a otázka","observed":"Původní text","proposed":"Konkrétní oprava","evidence":"Důkaz ze zdroje"}],"status":"REVIEWED_WITH_FINDINGS|REVIEWED_NO_FINDINGS","requiresTeacherDecision":true}. Rozepište všechny varianty, ukázka obsahuje pouze jednu.',
    ''
   ].join('\n');
   fs.writeFileSync(path.join(out,t.id+'.md'),prompt);batches[e.skill].push(t.id);
