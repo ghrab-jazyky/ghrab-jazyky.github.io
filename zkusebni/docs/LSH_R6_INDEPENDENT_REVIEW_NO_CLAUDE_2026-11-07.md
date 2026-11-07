@@ -21,7 +21,7 @@
 | `cl-majetkove-nerovnosti`, stanoviště 4, hlavní | `¿Qué hace que una casa sea segura y cómoda?` | `¿Cómo es una casa segura y cómoda?` |
 | `cl-muzi-a-zeny`, stanoviště 4, hlavní | `¿Qué hace que alguien sea un buen amigo?` | `¿Cómo es un buen amigo?` |
 
-Všechny navržené úpravy zachovávají základní význam, ale vynechávají konstrukci `hacer que + subjuntivo`. Konkrétní formulace mají být ještě potvrzeny v kontextu celé aktivity. **V této etapě jsou pouze zaznamenané; dosud nebyly aplikovány do HTML.** Při aplikaci je povinné přepočítat CSP SHA-256 inline skriptu, kontrolní SHA-256 souboru a Git blob v manifestu R6. Kanonické originály bez přejímky nepřepisovat.
+Všechny navržené úpravy zachovávají základní význam, ale vynechávají konstrukci `hacer que + subjuntivo`. Konkrétní formulace mají být ještě potvrzeny v kontextu celé aktivity. **Opravy byly implementovány pouze v kandidátech R6; nejsou publikovány ani pedagogicky schváleny.** Při aplikaci je povinné přepočítat CSP SHA-256 inline skriptu, kontrolní SHA-256 souboru a Git blob v manifestu R6. Kanonické originály bez přejímky nepřepisovat.
 
 ## Další kontrolní brány
 1. Doložit obsahovou přejímku ve všech skutečných jazykových a úrovňových variantách. Automatický screening odhaluje jen vybrané typy chyb; zejména gramatiku DE/FR, užitečnost Explain a skutečnou diferenciaci CEFR je nutné posoudit zvlášť.
@@ -31,3 +31,7 @@ Všechny navržené úpravy zachovávají základní význam, ale vynechávají 
 5. Před jakýmkoli vydáním provést skutečnou UAT telefonu, iPhonu/iPadu, školní Wi-Fi, QR a offline ukládání.
 
 **Rozhodnutí:** pokračovat bez Clauda, bez publikace do main a bez vydávání automatické kontroly za úplné pedagogické schválení.
+
+## Aplikace ověřených oprav v R6 kandidátech
+
+Čtyři výše uvedené návrhy byly zapracovány **výhradně do tří kandidátních souborů R6** v pracovní větvi. Společně se změnily přesné zdrojové SHA-256, Git blobs a CSP SHA-256; původní kanonické HTML zůstává beze změn. Kontrola po opravě musí znovu projít CI a výstup zůstává pedagogicky neschválený. Tyto 4 opravy neznamenají kompletní jazykové ověření 504 variant.

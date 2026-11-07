@@ -13,8 +13,8 @@
       "candidatePath": "konverzace/k/cl-ceny-nemovitosti.html",
       "originalPath": "konverzace/ceny-nemovitosti/index.html",
       "originalGitBlob": "b3003f1be2ffec6db7308385807b059793e3a648",
-      "candidateGitBlob": "75f3ca464a9f1c62f889b25dfe25faecf9eeb8e1",
-      "candidateSha256": "145e06008c52879a5d3dcd50372e8bfde1521206aab480df8af2b48b2d271d49",
+      "candidateGitBlob": "1b50f180a353d45801cbf822310881a1f7aa5828",
+      "candidateSha256": "9af63a3fb1585fbb5b60ab1abca69ddfd9ed2c72fccebb813aae224ed07ccd7f",
       "reference": false,
       "technicalPreviewOnly": true
     },
@@ -53,8 +53,8 @@
       "candidatePath": "konverzace/k/cl-majetkove-nerovnosti.html",
       "originalPath": "konverzace/majetkove-nerovnosti/index.html",
       "originalGitBlob": "725d215eb9cef83f8e362cfec254fc78e146c05e",
-      "candidateGitBlob": "15dec0c9d36fe1535ac9dec61b9bbd4eb3df54f6",
-      "candidateSha256": "b661bf5a34c3c7470aa8b7a7d2a010efbb7447eb27831b40a0cd9e26ddb4dcf1",
+      "candidateGitBlob": "1b30dc875a19ad191a3a2720bd7088b4f00cf19a",
+      "candidateSha256": "eef1ad5ed80698b94f191cdd25ef6c5c9c6a9acda24af67daaf40a88d8c1fe13",
       "reference": false,
       "technicalPreviewOnly": true
     },
@@ -63,8 +63,8 @@
       "candidatePath": "konverzace/k/cl-muzi-a-zeny.html",
       "originalPath": "konverzace/muzi-a-zeny/index.html",
       "originalGitBlob": "89973450f1f58540cb94a1ab243ebc3fe2195d9c",
-      "candidateGitBlob": "c1d920fc60c2ef8a5d6b47891ef5108ed07d6e24",
-      "candidateSha256": "2b4d94084e3cffa6e64228bd123d486d22a99eae003553f01ffdab1ebf605ad8",
+      "candidateGitBlob": "bdc2b987f91c394a4128b985c2686ccb56cf12b0",
+      "candidateSha256": "4df5f1afbff79147af9121dbd81fb3248cfd174372eae20820e8a8a0cd600deb",
       "reference": false,
       "technicalPreviewOnly": true
     },
