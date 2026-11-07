@@ -782,7 +782,7 @@ loadPrefs();applyTheme();renderAll();
 (function(){
 'use strict';
 try{
- const p=new URLSearchParams(location.search),langs=p.getAll('lang'),levels=p.getAll('level');
+ const p=new URLSearchParams(window.LSH_OFFLINE_QS||location.search),langs=p.getAll('lang'),levels=p.getAll('level');
  const fixed=langs.length===1&&levels.length===1&&Object.prototype.hasOwnProperty.call(CONTENT,langs[0])&&ORDER.includes(levels[0]);
  if(fixed)switchVariant(langs[0],levels[0]);
  const locked=fixed&&p.getAll('zamek').length===1&&p.get('zamek')==='1';
