@@ -10,7 +10,7 @@ import zipfile
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 INDEX = ROOT / "data/conversation-r6-candidates.json"
-SAFE_PATH = re.compile(r"^konverzace/k/cl-[a-z0-9-]+\\.html$")
+SAFE_PATH = re.compile(r"^konverzace/k/cl-[a-z0-9-]+\.html$")
 
 def build(outdir):
     manifest = json.loads(INDEX.read_text(encoding="utf-8"))
