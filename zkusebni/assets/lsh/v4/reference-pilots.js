@@ -34,10 +34,13 @@ function auditText(entry){
  const a=audits.get(entry.id);
  if(!a)return 'Claude: karta chybí v auditní frontě.';
  if(a.status==='PENDING')return 'Claude: čeká na kontrolu. Učitelské schválení neuděleno.';
- if(a.status==='REVIEWED_NO_FINDINGS')return 'Claude: dokončena kontrola bez zaznamenaných chyb. Učitelské schválení stále neuděleno.';
+ const total=entry.languages.length*entry.levels.length;
+ const coverage=a.reviewedVariantsCount===total?' · obsahové varianty '+total+'/'+total:' · rozsah kontroly nedoložen';
+ const gaps=Number.isInteger(a.unverifiedChecksCount)?' · neověřené oblasti: '+a.unverifiedChecksCount:' · neověřené oblasti nejsou zdokumentovány';
+ if(a.status==='REVIEWED_NO_FINDINGS')return 'Claude: kontrola bez zjištěných chyb'+coverage+gaps+'. Učitelské schválení neuděleno.';
  if(a.status==='REVIEWED_WITH_FINDINGS'){
   const count=a.findingsSummary||{};
-  return 'Claude: zkontrolováno, nálezy P0: '+(count.P0||0)+' · P1: '+(count.P1||0)+' · P2: '+(count.P2||0)+'. Učitelské schválení neuděleno; nálezy čekají na posouzení.';
+  return 'Claude: nálezy P0: '+(count.P0||0)+' · P1: '+(count.P1||0)+' · P2: '+(count.P2||0)+coverage+gaps+'. Nálezy čekají na posouzení učitelem.';
  }
  return 'Claude: neznámý stav auditu. Učitelské schválení neuděleno.';
 }
