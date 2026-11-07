@@ -574,7 +574,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&returnQ){const lk=$
 (function(){
 'use strict';
 try{
- const p=new URLSearchParams(location.search),langs=p.getAll('lang'),levels=p.getAll('level');
+ const p=new URLSearchParams(window.LSH_OFFLINE_QS||location.search),langs=p.getAll('lang'),levels=p.getAll('level');
  const langOK=langs.length===1&&Object.prototype.hasOwnProperty.call(DATA,langs[0]);
  const levelOK=levels.length===1&&LEVELS.includes(levels[0]);
  if(langOK)state.language=langs[0];
