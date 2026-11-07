@@ -1,0 +1,96 @@
+/* R5 reference preview directory. Does not claim fixed variants or approved tests. */
+(function(){
+'use strict';
+const ROOT='/zkusebni/';
+const SKILLS=Object.freeze({konverzace:'Conversation Lab',cteni:'Reading Lab',poslech:'Listening Lab'});
+const LANGS=Object.freeze({en:'EN',es:'ES',de:'DE',fr:'FR'});
+const LEVELS=['A1','A2','B1','B2','C1','C2'];
+const $=id=>document.getElementById(id);
+let entries=[];
+let selected=null;
+const list=$('refList'),dialog=$('refDialog'),status=$('refDialogStatus');
+function el(tag,klass,txt){const x=document.createElement(tag);if(klass)x.className=klass;if(txt!==undefined)x.textContent=String(txt);return x;}
+function isValid(v){
+ return v&&/^(cl|rl|ll)-[a-z0-9-]+$/.test(v.id)&&SKILLS[v.skill]&&typeof v.title==='string'&&v.title.length<160&&typeof v.summary==='string'&&
+ typeof v.studentPath==='string'&&/^(reference|nahledy)\/(konverzace|cteni|poslech)\/[a-z0-9-]+\/$/.test(v.studentPath)&&
+ Array.isArray(v.languages)&&v.languages.length>0&&v.languages.every(x=>LANGS[x])&&
+ Array.isArray(v.levels)&&v.levels.length===6&&LEVELS.every(x=>v.levels.includes(x))&&v.practice==='preview'&&v.test==='not-ready';
+}
+function urlOf(entry){return new URL(entry.studentPath,new URL(ROOT,location.origin)).href;}
+function filtered(){
+ const q=$('refSearch').value.trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('cs');
+ return entries.filter(v=>{
+  const text=(v.title+' '+v.summary+' '+v.focus).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('cs');
+  return (!$('refSkill').value||v.skill===$('refSkill').value)&&
+   (!$('refLanguage').value||v.languages.includes($('refLanguage').value))&&
+   (!$('refLevel').value||v.levels.includes($('refLevel').value))&&(!q||text.includes(q));
+ });
+}
+function render(){
+ const items=filtered();list.replaceChildren();
+ $('refCount').textContent='Zobrazeno '+items.length+' ze '+entries.length+' referenčních karet.';
+ $('refEmpty').hidden=items.length!==0;
+ for(const e of items){
+  const card=el('article','ref-card');
+  const top=el('div','ref-card-top');
+  const badges=el('div','ref-tags');
+  badges.append(el('span','ref-chip',SKILLS[e.skill]),el('span','ref-chip ref-pilot','PILOT · NESCHVÁLENO'));
+  top.append(badges,el('h3',null,e.title),el('p',null,e.summary));
+  const info=el('p','ref-info',e.languages.map(l=>LANGS[l]).join(' · ')+'   |   A1–C2   |   '+e.sourceVersion);
+  const focus=el('p','ref-focus',e.focus);
+  const actions=el('div','ref-card-actions');
+  const preview=el('button','button primary','Procvičování · náhled');preview.type='button';preview.addEventListener('click',()=>open(e));
+  const test=el('button','button outline','Testování · připravujeme');test.type='button';test.disabled=true;test.setAttribute('aria-label','Testovací verze karty '+e.title+' zatím není hotová');
+  actions.append(preview,test);
+  card.append(top,info,focus,actions);list.append(card);
+ }
+}
+function open(e){
+ selected=e;
+ const url=urlOf(e);
+ $('refDialogTitle').textContent=e.title;
+ $('refDialogDetail').textContent=SKILLS[e.skill]+' · '+e.languages.map(l=>LANGS[l]).join(', ')+' · A1–C2 · '+e.sourceVersion;
+ $('refUrl').value=url;$('refOpen').href=url;
+ const qr=$('refQr');qr.replaceChildren();
+ try{if(!window.CLBQRCode||typeof window.CLBQRCode.svg!=='function')throw new Error('QR unavailable');qr.append(window.CLBQRCode.svg(url));$('refSaveQr').disabled=false;status.textContent='';}
+ catch(err){$('refSaveQr').disabled=true;status.textContent='QR se nepodařilo připravit. Přímý odkaz zůstává funkční.';}
+ dialog.showModal();$('refClose').focus();
+}
+async function copyLink(){
+ const val=$('refUrl').value;let copied=false;
+ try{if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(val);copied=true;}}catch(_){}
+ if(!copied){$('refUrl').focus();$('refUrl').select();try{copied=document.execCommand('copy');}catch(_){}}
+ status.textContent=copied?'Odkaz zkopírován.':'Kopírování nebylo povoleno. Odkaz lze vybrat ručně.';
+}
+function saveQr(){
+ if(!selected)return;
+ const svg=$('refQr').querySelector('svg');if(!svg)return;
+ const xml=new XMLSerializer().serializeToString(svg);
+ const blob=new Blob([xml],{type:'image/svg+xml;charset=utf-8'});
+ const blobURL=URL.createObjectURL(blob);
+ const a=el('a');a.href=blobURL;a.download='LSH_'+selected.id+'_QR.svg';document.body.append(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(blobURL),1500);
+ status.textContent='QR kód připraven ke stažení.';
+}
+function bind(){
+ for(const id of ['refSkill','refLanguage','refLevel'])$(id).addEventListener('change',render);
+ $('refSearch').addEventListener('input',render);
+ $('refReset').addEventListener('click',()=>{for(const id of ['refSkill','refLanguage','refLevel','refSearch'])$(id).value='';render();});
+ $('refClose').addEventListener('click',()=>dialog.close());
+ dialog.addEventListener('click',ev=>{if(ev.target===dialog)dialog.close();});
+ $('refCopy').addEventListener('click',copyLink);
+ $('refSaveQr').addEventListener('click',saveQr);
+}
+async function init(){
+ bind();
+ try{
+  const response=await fetch(new URL('data/reference-pilots.json',new URL(ROOT,location.origin)),{cache:'no-store'});
+  if(!response.ok)throw new Error('HTTP '+response.status);
+  const data=await response.json();
+  if(data.schemaVersion!==1||data.approvedForTeaching!==false||!Array.isArray(data.entries)||data.entries.length!==3||!data.entries.every(isValid)||new Set(data.entries.map(x=>x.skill)).size!==3)throw new Error('Invalid pilot inventory');
+  entries=data.entries;
+  render();
+ }catch(err){console.error('Reference catalog:',err);$('refCount').textContent='Referenční katalog momentálně není dostupný.';list.replaceChildren(el('p','ref-empty','Zkontrolujte připojení nebo načtěte stránku znovu.'));}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
