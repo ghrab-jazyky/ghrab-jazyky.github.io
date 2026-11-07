@@ -127,7 +127,7 @@ const migrants=[
  {id:'cl-tlak-na-vykon',file:'konverzace/tlak-na-vykon/index.html',blob:'e619a6e5bc68097a0cbeafc4a9049c2225e38937'},
  {id:'cl-pratele',file:'konverzace/pratele/index.html',blob:'38e19362fa8dd00fdc59155456ac480ebe32ec84'},
  {id:'cl-problemy-teenageru',file:'konverzace/problemy-teenageru/index.html',blob:'bb1c1a33196683a41087f37ffba3742cc9f8c1b9'},
- {id:'cl-muzi-a-zeny',file:'konverzace/muzi-a-zeny/index.html',blob:'89973450f1f58540cb94a1ab243ebc3fe2195d9'},
+ {id:'cl-muzi-a-zeny',file:'konverzace/muzi-a-zeny/index.html',blob:'89973450f1f58540cb94a1ab243ebc3fe2195d9c'},
  {id:'cl-spolecenske-problemy',file:'konverzace/spolecenske-problemy/index.html',blob:'d19ecac6914e3f79cf45e074fad9db4df397a3c2'},
  {id:'cl-majetkove-nerovnosti',file:'konverzace/majetkove-nerovnosti/index.html',blob:'725d215eb9cef83f8e362cfec254fc78e146c05e'},
  {id:'cl-volny-cas-a-konicky',file:'konverzace/volny-cas-a-konicky/index.html',blob:'cc975658abcddeb9e00299781dfb956d1c63e402'},
