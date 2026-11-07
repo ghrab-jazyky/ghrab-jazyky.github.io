@@ -24,10 +24,10 @@ const original=[
 const inventory=JSON.parse(read('data/reference-pilots.json'));
 assert.equal(inventory.schemaVersion,1);
 assert.equal(inventory.approvedForTeaching,false);
-assert.equal(inventory.entries.length,9,'Pilot consists of 3 references and 6 migration candidates');
+assert.equal(inventory.entries.length,22,'Pilot consists of 3 references and 19 migration candidates');
 assert.equal(inventory.entries.filter(e=>e.isReference).length,3);
-assert.equal(inventory.entries.filter(e=>!e.isReference).length,6);
-assert.equal(new Set(inventory.entries.map(e=>e.id)).size,9);
+assert.equal(inventory.entries.filter(e=>!e.isReference).length,19);
+assert.equal(new Set(inventory.entries.map(e=>e.id)).size,22);
 const isJS=s=>!/^\s*(?:\{)/.test(s);
 for(const t of original){
  const before=read(t.original),after=read(t.integrated);
@@ -120,7 +120,20 @@ const migrants=[
  {id:'cl-rodina',file:'konverzace/rodina/index.html',blob:'d93d87f587f29c7afa5c1946faa7c81f608ab855'},
  {id:'cl-prazdniny',file:'konverzace/prazdniny/index.html',blob:'7c92c7808b7eac5c1a8f489921914ca3b85e97ec'},
  {id:'cl-jidlo-piti-restaurace',file:'konverzace/jidlo-piti-restaurace/index.html',blob:'9d16d00de0e79baea3f9f87201678c326bc80989'},
- {id:'cl-vanoce',file:'konverzace/vanoce/index.html',blob:'e07f24575f2dc131c3ad9226f10b78579295df03'}
+ {id:'cl-vanoce',file:'konverzace/vanoce/index.html',blob:'e07f24575f2dc131c3ad9226f10b78579295df03'},
+ {id:'cl-zivot-bez-ai',file:'konverzace/zivot-bez-ai/index.html',blob:'90c94f4c90e56555c7bb9d7c7fdb02c9851b65cb'},
+ {id:'cl-socialni-site-a-dusevni-zdravi',file:'konverzace/socialni-site-a-dusevni-zdravi/index.html',blob:'6d5928d4d14eda3273814465ff3c7db0bd6e7b1a'},
+ {id:'cl-jak-se-ucit-na-testy',file:'konverzace/jak-se-ucit-na-testy/index.html',blob:'5ce6a37ff31549d5cb176439aa18ff54266861cb'},
+ {id:'cl-tlak-na-vykon',file:'konverzace/tlak-na-vykon/index.html',blob:'e619a6e5bc68097a0cbeafc4a9049c2225e38937'},
+ {id:'cl-pratele',file:'konverzace/pratele/index.html',blob:'38e19362fa8dd00fdc59155456ac480ebe32ec84'},
+ {id:'cl-problemy-teenageru',file:'konverzace/problemy-teenageru/index.html',blob:'bb1c1a33196683a41087f37ffba3742cc9f8c1b9'},
+ {id:'cl-muzi-a-zeny',file:'konverzace/muzi-a-zeny/index.html',blob:'89973450f1f58540cb94a1ab243ebc3fe2195d9'},
+ {id:'cl-spolecenske-problemy',file:'konverzace/spolecenske-problemy/index.html',blob:'d19ecac6914e3f79cf45e074fad9db4df397a3c2'},
+ {id:'cl-majetkove-nerovnosti',file:'konverzace/majetkove-nerovnosti/index.html',blob:'725d215eb9cef83f8e362cfec254fc78e146c05e'},
+ {id:'cl-volny-cas-a-konicky',file:'konverzace/volny-cas-a-konicky/index.html',blob:'cc975658abcddeb9e00299781dfb956d1c63e402'},
+ {id:'cl-nemoci-u-lekare',file:'konverzace/nemoci-u-lekare/index.html',blob:'c710e3d8d3cd74eb2993ee98b0fcf39c31961597'},
+ {id:'cl-svetova-politika',file:'konverzace/svetova-politika/index.html',blob:'c651c7fc9e96ece021d87f53fdf56307e84887e8'},
+ {id:'cl-ceny-nemovitosti',file:'konverzace/ceny-nemovitosti/index.html',blob:'b3003f1be2ffec6db7308385807b059793e3a648'}
 ];
 for(const candidate of migrants){
  const buffer=fs.readFileSync(path.join(root,candidate.file));
@@ -194,11 +207,11 @@ for(const entry of inventory.entries){
  if(entry.skill==='poslech')assert.throws(()=>makeUrl(entry,'fixed','es','B2'));
 }
 assert.equal(checkedVariants,inventory.entries.reduce((a,e)=>a+e.languages.length*e.levels.length,0));
-assert.equal(checkedVariants,198,'Expected 198 checked fixed URLs');
-console.log('PASS',checkedVariants,'fixed URLs + 9 free URLs across pilots');
+assert.equal(checkedVariants,510,'Expected 510 checked fixed URLs');
+console.log('PASS',checkedVariants,'fixed URLs + 22 free URLs across pilots');
 
 const doc=read('reference-karty/index.html');
 for(const required of ['id="refMode"','id="refShareLang"','id="refShareLevel"','id="refSaveHtml"','id="refQr"']){
  assert.ok(doc.includes(required),'Missing dialog control: '+required);
 }
-console.log('PASS R5E pilot catalog: 3 original references, 6 unchanged Conversation candidates');
+console.log('PASS R5F pilot catalog: 3 original references, 19 unchanged Conversation candidates');
