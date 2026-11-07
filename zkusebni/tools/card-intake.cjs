@@ -83,7 +83,21 @@ function auditSource(skill,html){
  cteni:['id="language"','id="levels"','let state=','function render(){','function save(){','const LEVELS='],
  poslech:['id="levelPills"','const LEVEL_IDS','function renderLevel','function persist']};
  if(target==='standalone')for(const key of requirements[skill])ensure(html.includes(key),'Unsupported card runtime: missing '+key);
- if(target==='clb-shared')ensure(/data-lsh-topic-id="cl-[a-z0-9-]+"/.test(html),'Missing Conversation Lab topic-id marker');
+ if(target==='clb-shared'){
+  ensure(/data-lsh-topic-id="cl-[a-z0-9-]+"/.test(html),'Missing Conversation Lab topic-id marker');
+  const assets=[...html.matchAll(/<(?:script|link|img|source|video|audio)[^>]*(?:src|href)\s*=\s*["']([^"']+)["']/gi)].map(x=>x[1]);
+  const expected=['../../assets/lsh/v2/lock.js','../../assets/lsh/v3/card-bridge.css','../../assets/lsh/v3/model.js','../../assets/lsh/v3/store.js','../../assets/lsh/v3/card-bridge.js'];
+  ensure(JSON.stringify(assets)===JSON.stringify(expected),'Unexpected shared-runtime dependencies');
+  ensure(html.split('const clbPreset = new URLSearchParams(window.location.search);').length===2,'Shared Conversation preset bridge missing');
+  const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
+  const matches=[...html.matchAll(/sha256-([A-Za-z0-9+/]{43}=)/g)];
+  ensure(scripts.length===1&&matches.length===1,'Unexpected Conversation CSP script policy');
+  const actual=crypto.createHash('sha256').update(scripts[0][1],'utf8').digest('base64');
+  ensure(actual===matches[0][1],'Conversation script differs from the declared CSP SHA-256');
+ }else{
+  ensure(!/<script\b[^>]*\bsrc\s*=/i.test(html),'Standalone student HTML has external scripts; supply a complete package');
+  ensure(!/<link\b[^>]*\brel\s*=\s*["']stylesheet["'][^>]*\bhref\s*=/i.test(html),'Standalone student HTML has external stylesheets');
+ }
  return {languages:langs,levels:LEVELS,variants:count,exerciseRecords:exercises,type:target};
 }
 function referenceBridge(skill){
@@ -130,6 +144,7 @@ function validateAll(){
   const audit=queue.topics.find(q=>q.id===entry.id);
   if(audit.status!=='PENDING'&&audit.reviewedSourceSha256){ensure(fs.existsSync(path.join(ROOT,audit.sourcePath)),'Reviewed source missing');ensure(hash(existing(audit.sourcePath))===audit.reviewedSourceSha256,'Stale Claude review for '+entry.id+'; re-audit required');}
   if(entry.integrationVersion==='INTAKE_V1'){
+   ensure(entry.selfContainedHtml||entry.offlineBundle==='clb-v1','Non-standalone new card lacks full offline bundle');
    ensure(entry.sourceOriginalPath&&safePath(entry.sourceOriginalPath),'Missing intake source path: '+entry.id);
    const orig=existing(entry.sourceOriginalPath),current=existing(entry.studentPath+'index.html');
    ensure(blob(orig)===entry.sourceGitBlob,'Source blob changed: '+entry.id);
@@ -169,6 +184,7 @@ function importBatch(file,apply){
   const pilot={id:card.id,skill:card.skill,title,summary,focus,languages:audit.languages,levels:LEVELS.slice(),
    sourceVersion:card.version+' · automatický příjem INTAKE_V1',studentPath:newPath.replace(/index\.html$/,''),
    selfContainedHtml:audit.type!=='clb-shared',mediaExternal:card.skill==='poslech',practice:'preview',
+   ...(audit.type==='clb-shared'?{offlineBundle:'clb-v1'}:{}),
    fixedVariantSupported:true,test:'not-ready',integrationVersion:'INTAKE_V1',
    defaultLanguage:'en',defaultLevel:card.defaultLevel&&LEVELS.includes(card.defaultLevel)?card.defaultLevel:'B1',
    practiceQueryFlag:'practice=1',isReference:false,reviewState:'NEW_CARD_AUDIT_PENDING',
@@ -180,9 +196,10 @@ function importBatch(file,apply){
  const result=planned.map(p=>({id:p.pilot.id,path:p.newPath,sourceSha256:p.pilot.sourceSha256,variants:p.variants,exerciseRecords:p.exerciseRecords}));
  if(!apply){console.log(JSON.stringify({mode:'dry-run',safeToApply:true,cards:result},null,2));return}
  for(const p of planned){
-  for(const [f,content] of [[p.originalPath,p.source],[p.newPath,p.output]]){
-   fs.mkdirSync(path.dirname(path.join(ROOT,f)),{recursive:true});
-   fs.writeFileSync(path.join(ROOT,f),content,{flag:'wx'});
+  const files=p.newPath===p.originalPath?[[p.originalPath,p.source]]:[[p.originalPath,p.source],[p.newPath,p.output]];
+  for(const [destination,content] of files){
+   fs.mkdirSync(path.dirname(path.join(ROOT,destination)),{recursive:true});
+   fs.writeFileSync(path.join(ROOT,destination),content,{flag:'wx'});
   }
   catalog.entries.push(p.pilot);
   tracker.topics.push({id:p.pilot.id,skill:p.pilot.skill,title:p.pilot.title,origin:'card-intake-v1',
