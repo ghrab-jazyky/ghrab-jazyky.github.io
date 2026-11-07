@@ -394,7 +394,7 @@ createLevelPills();renderLevel(loadStored()||'B2');measureBars();
 (function(){
 'use strict';
 try{
- const p=new URLSearchParams(location.search),langs=p.getAll('lang'),levels=p.getAll('level');
+ const p=new URLSearchParams(window.LSH_OFFLINE_QS||location.search),langs=p.getAll('lang'),levels=p.getAll('level');
  const english=langs.length===0||(langs.length===1&&langs[0]==='en');
  const levelOK=levels.length===1&&LEVEL_IDS.includes(levels[0]);
  if(english&&levelOK&&current!==levels[0]){capture();renderLevel(levels[0]);persist();}
