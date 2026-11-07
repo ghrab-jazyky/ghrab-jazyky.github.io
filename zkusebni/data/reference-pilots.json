@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "collectionVersion": "R5E-conversation-batch1-2026-11-07",
-  "purpose": "Public pilot catalog: 3 reference practice previews plus 2 source-preserving Conversation migration candidates; NOT the approved student manifest.",
+  "collectionVersion": "R5E-conversation-batches-1-2-2026-11-07",
+  "purpose": "Public technical pilot: 3 practice references and 6 independently structurally checked Conversation candidates. Not pedagogy-approved.",
   "approvedForTeaching": false,
   "entries": [
     {
@@ -168,6 +168,138 @@
       "practiceQueryFlag": "practice=1",
       "isReference": false,
       "reviewState": "TECHNICAL_COMPATIBILITY_PENDING_PEDAGOGY"
+    },
+    {
+      "id": "cl-rodina",
+      "skill": "konverzace",
+      "title": "Rodina",
+      "summary": "Rodinné vztahy, soužití, vzájemná pomoc, komunikace mezi generacemi.",
+      "focus": "Rozhovory o každodenním rodinném životě",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "sourceVersion": "CLB RC1 · struktura ověřena 2026-11-07",
+      "studentPath": "konverzace/rodina/",
+      "selfContainedHtml": false,
+      "mediaExternal": false,
+      "practice": "preview",
+      "fixedVariantSupported": true,
+      "test": "not-ready",
+      "defaultLanguage": "en",
+      "defaultLevel": "B1",
+      "practiceQueryFlag": "practice=1",
+      "isReference": false,
+      "reviewState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING"
+    },
+    {
+      "id": "cl-prazdniny",
+      "skill": "konverzace",
+      "title": "Prázdniny a cestování",
+      "summary": "Plány na prázdniny, cestování, poznávání míst a společné zážitky.",
+      "focus": "Konverzace o cestách, plánech a zkušenostech",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "sourceVersion": "CLB RC1 · struktura ověřena 2026-11-07",
+      "studentPath": "konverzace/prazdniny/",
+      "selfContainedHtml": false,
+      "mediaExternal": false,
+      "practice": "preview",
+      "fixedVariantSupported": true,
+      "test": "not-ready",
+      "defaultLanguage": "en",
+      "defaultLevel": "B1",
+      "practiceQueryFlag": "practice=1",
+      "isReference": false,
+      "reviewState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING"
+    },
+    {
+      "id": "cl-jidlo-piti-restaurace",
+      "skill": "konverzace",
+      "title": "Jídlo, pití a restaurace",
+      "summary": "Stravovací návyky, nabídka restaurací a každodenní rozhodování o jídle.",
+      "focus": "Dialogy a argumentace o jídle a stravování",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "sourceVersion": "CLB RC1 · struktura ověřena 2026-11-07",
+      "studentPath": "konverzace/jidlo-piti-restaurace/",
+      "selfContainedHtml": false,
+      "mediaExternal": false,
+      "practice": "preview",
+      "fixedVariantSupported": true,
+      "test": "not-ready",
+      "defaultLanguage": "en",
+      "defaultLevel": "B1",
+      "practiceQueryFlag": "practice=1",
+      "isReference": false,
+      "reviewState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING"
+    },
+    {
+      "id": "cl-vanoce",
+      "skill": "konverzace",
+      "title": "Vánoce",
+      "summary": "Vánoční zvyky, tradice, oslavy a jejich význam v různých rodinách.",
+      "focus": "Konverzace o tradicích a svátečních zvycích",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "sourceVersion": "CLB RC1 · struktura ověřena 2026-11-07",
+      "studentPath": "konverzace/vanoce/",
+      "selfContainedHtml": false,
+      "mediaExternal": false,
+      "practice": "preview",
+      "fixedVariantSupported": true,
+      "test": "not-ready",
+      "defaultLanguage": "en",
+      "defaultLevel": "B1",
+      "practiceQueryFlag": "practice=1",
+      "isReference": false,
+      "reviewState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING"
     }
   ]
 }
