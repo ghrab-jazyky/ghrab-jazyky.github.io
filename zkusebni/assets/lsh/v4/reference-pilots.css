@@ -51,3 +51,8 @@
 .ref-fixed-fields[hidden]{display:none!important}
 .ref-modal a[aria-disabled="true"]{opacity:.55;pointer-events:none}
 @media(max-width:450px){.ref-fixed-fields{grid-template-columns:1fr}}
+
+/* R5D offline standalone HTML action. */
+.ref-download{margin-top:18px;padding:16px 0 8px;border-top:1px solid var(--line);text-align:center}
+.ref-download .button{width:100%;justify-content:center}
+.ref-download p{margin:10px 0 0;color:var(--muted);font-size:.8rem}
