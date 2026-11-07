@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-07-r5-g-24-of-29-pilot",
+  "version": "2026-11-07-r5-h-28-of-29-technical-pilot",
   "sourceRevision": {
     "conversationManifest": "0.4.1-rc1-github-only",
     "editorialInventory": "r4d-2026-11-06"
@@ -17,7 +17,8 @@
     "URL_INTEGRATED_QA_PENDING",
     "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
     "CONTENT_REVIEW_REQUIRED",
-    "URL_BRIDGE_PEDAGOGICAL_STRUCTURE_PENDING"
+    "URL_BRIDGE_PEDAGOGICAL_STRUCTURE_PENDING",
+    "URL_INTEGRATED_CONTENT_QA_PENDING"
   ],
   "referenceStandards": {
     "konverzace": "cl-umela-inteligence",
@@ -329,11 +330,13 @@
       "title": "Can Mistakes Help Us Learn?",
       "origin": "editorial-inventory",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "URL_INTEGRATED_CONTENT_QA_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "STANDALONE_HTML_CANDIDATE_DEVICE_QA_PENDING",
+      "technicalNote": "R5H: original v4.3 reading HTML preserved (Git blob ca88591cbe890d6166605f5133486f5fc17a865e); only one identical Asteroids URL/CEFR/practice lock adapter added in separate integration copy; 24 language-level variants and 360 question records confirmed structurally. Not a pedagogical or independent key audit, no separate Test mode or physical UAT."
     },
     {
       "id": "rl-plastic-ocean",
@@ -341,11 +344,13 @@
       "title": "Plastic Ocean — Film Review",
       "origin": "editorial-inventory",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "URL_INTEGRATED_CONTENT_QA_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "STANDALONE_HTML_CANDIDATE_DEVICE_QA_PENDING",
+      "technicalNote": "R5H: original v2 reading HTML preserved (Git blob 444c7f027fb6f4c0fb9170aecf085363f90b5da3); only one identical Asteroids URL/CEFR/practice lock adapter added in separate integration copy; 24 language-level variants and 360 question records confirmed structurally. Not a pedagogical or independent key audit, no separate Test mode or physical UAT. Catalog/source title mismatch: editorial 'Plastic Ocean — Film Review' vs original HTML 'Plastic in Our World'; must be reconciled before approval."
     },
     {
       "id": "rl-asteroids",
@@ -366,11 +371,13 @@
       "title": "Email to a Friend",
       "origin": "editorial-inventory",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "URL_INTEGRATED_CONTENT_QA_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "STANDALONE_HTML_CANDIDATE_DEVICE_QA_PENDING",
+      "technicalNote": "R5H: original v2 reading HTML preserved (Git blob 9178645eaa2d4fcd522a8a52bf2cd4741dfce05f); only one identical Asteroids URL/CEFR/practice lock adapter added in separate integration copy; 24 language-level variants and 360 question records confirmed structurally. Not a pedagogical or independent key audit, no separate Test mode or physical UAT."
     },
     {
       "id": "rl-instant-messages",
@@ -378,11 +385,13 @@
       "title": "Instant Messages",
       "origin": "editorial-inventory",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "URL_INTEGRATED_CONTENT_QA_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "STANDALONE_HTML_CANDIDATE_DEVICE_QA_PENDING",
+      "technicalNote": "R5H: original v2.1 reading HTML preserved (Git blob 274140b4799bfaef6125063e554b86d741d01289); only one identical Asteroids URL/CEFR/practice lock adapter added in separate integration copy; 24 language-level variants and 360 question records confirmed structurally. Not a pedagogical or independent key audit, no separate Test mode or physical UAT."
     },
     {
       "id": "ll-matthew-oscars",
@@ -525,6 +534,26 @@
       "mediaOnlineOnly": true,
       "linguisticApproval": false,
       "testModeApproved": false
+    },
+    {
+      "id": "R5H-READING-01",
+      "skill": "cteni",
+      "topicIds": [
+        "rl-can-mistakes",
+        "rl-plastic-ocean",
+        "rl-email-friend",
+        "rl-instant-messages"
+      ],
+      "count": 4,
+      "status": "URL_INTEGRATED_CONTENT_QA_PENDING",
+      "sourceHtmlUnchanged": true,
+      "technicalPreviewInCatalog": true,
+      "variantsStructurallyChecked": 96,
+      "questionRecordsStructurallyChecked": 1440,
+      "separatePedagogicalAudit": false,
+      "independentAnswerKeyAudit": false,
+      "physicalUAT": false,
+      "testModeApproved": false
     }
   ],
   "migrationProgress": {
@@ -537,7 +566,10 @@
     "remainingListeningCandidatesUnreviewed": 0,
     "listeningCardsNeedingPedagogicalRestructure": 2,
     "allApproved": 0,
-    "pilotCatalogEntries": 24
+    "pilotCatalogEntries": 28,
+    "readingCardsURLIntegrated": 4,
+    "remainingReadingCandidatesWithoutTechnicalURLIntegration": 0,
+    "readingCardsNeedingPedagogicalReview": 4
   },
   "contentIssues": [
     {

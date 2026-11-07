@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "collectionVersion": "R5G-conversation-plus-listening-2026-11-07",
-  "purpose": "Public unapproved technical pilot: 3 references, 19 structurally checked Conversation cards, 2 URL-bridged Listening cards. School ES A1 and 4 Reading cards pending. Not a production catalog.",
+  "collectionVersion": "R5H-reading-url-bridges-2026-11-07",
+  "purpose": "Public unapproved technical pilot: 3 references, 19 structurally checked Conversation candidates, 2 Listening URL adapters, 4 Reading URL adapters. School ES A1 held for teacher-approved wording. Not a production catalog.",
   "approvedForTeaching": false,
   "entries": [
     {
@@ -806,6 +806,150 @@
       "reviewState": "URL_BRIDGE_PEDAGOGICAL_STRUCTURE_PENDING",
       "sourceGitBlob": "cfda1197882b8107ddce2f80665abd681526efc5",
       "contentNote": "POZOR: věková vhodnost (násilí, vulgarismy, narážky na drogy), dostupnost videa a soulad úloh musí projít učitelskou kontrolou."
+    },
+    {
+      "id": "rl-can-mistakes",
+      "skill": "cteni",
+      "title": "Can Mistakes Help Us Learn?",
+      "summary": "Příběhy a úvahy o učení z chyb, zpětné vazbě a strategiích pro další pokrok.",
+      "focus": "Čtení s porozuměním · práce s důkazy v textu",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "sourceVersion": "v4.3 · technická URL integrace R5H",
+      "studentPath": "integrace/cteni/can-mistakes/",
+      "selfContainedHtml": true,
+      "mediaExternal": false,
+      "practice": "preview",
+      "fixedVariantSupported": true,
+      "test": "not-ready",
+      "integrationVersion": "R5H-reading-practice-URL-bridge",
+      "defaultLanguage": "en",
+      "defaultLevel": "B1",
+      "practiceQueryFlag": "practice=1",
+      "isReference": false,
+      "reviewState": "URL_INTEGRATED_CONTENT_QA_PENDING",
+      "sourceGitBlob": "ca88591cbe890d6166605f5133486f5fc17a865e",
+      "contentNote": "Pouze integrace studentských URL a QR; jazyková a CEFR správnost, přesnost klíče, offline chování na zařízení a samostatná testová sada čekají na nezávislou kontrolu."
+    },
+    {
+      "id": "rl-plastic-ocean",
+      "skill": "cteni",
+      "title": "Plastic in Our World (Plastic Ocean)",
+      "summary": "Plastový odpad a ochrana prostředí; některé úrovně pracují také s recenzí fiktivního dokumentárního filmu.",
+      "focus": "Čtení · argumentace · evidence",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "sourceVersion": "v2 · technická URL integrace R5H",
+      "studentPath": "integrace/cteni/plastic-ocean/",
+      "selfContainedHtml": true,
+      "mediaExternal": false,
+      "practice": "preview",
+      "fixedVariantSupported": true,
+      "test": "not-ready",
+      "integrationVersion": "R5H-reading-practice-URL-bridge",
+      "defaultLanguage": "en",
+      "defaultLevel": "B1",
+      "practiceQueryFlag": "practice=1",
+      "isReference": false,
+      "reviewState": "URL_INTEGRATED_CONTENT_QA_PENDING",
+      "sourceGitBlob": "444c7f027fb6f4c0fb9170aecf085363f90b5da3",
+      "contentNote": "Zdrojový HTML název je Plastic in Our World, zatímco redakční inventář uvádí Plastic Ocean — Film Review. Úrovně používají rozdílné typy textů; přesný titul, návaznost na film a pedagogickou konzistenci musí učitel odsouhlasit."
+    },
+    {
+      "id": "rl-email-friend",
+      "skill": "cteni",
+      "title": "An Email from a Friend",
+      "summary": "Osobní e-maily a komunikace s přáteli v autenticky působících situacích.",
+      "focus": "Čtení osobní korespondence · důležité detaily",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "sourceVersion": "v2 · technická URL integrace R5H",
+      "studentPath": "integrace/cteni/email-friend/",
+      "selfContainedHtml": true,
+      "mediaExternal": false,
+      "practice": "preview",
+      "fixedVariantSupported": true,
+      "test": "not-ready",
+      "integrationVersion": "R5H-reading-practice-URL-bridge",
+      "defaultLanguage": "en",
+      "defaultLevel": "B1",
+      "practiceQueryFlag": "practice=1",
+      "isReference": false,
+      "reviewState": "URL_INTEGRATED_CONTENT_QA_PENDING",
+      "sourceGitBlob": "9178645eaa2d4fcd522a8a52bf2cd4741dfce05f",
+      "contentNote": "Pouze integrace studentských URL a QR; jazyková a CEFR správnost, přesnost klíče, offline chování na zařízení a samostatná testová sada čekají na nezávislou kontrolu."
+    },
+    {
+      "id": "rl-instant-messages",
+      "skill": "cteni",
+      "title": "Instant Messages",
+      "summary": "Krátké zprávy, digitální komunikace a možné příčiny nedorozumění.",
+      "focus": "Význam v kontextu · čtení zpráv",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "sourceVersion": "v2.1 · technická URL integrace R5H",
+      "studentPath": "integrace/cteni/instant-messages/",
+      "selfContainedHtml": true,
+      "mediaExternal": false,
+      "practice": "preview",
+      "fixedVariantSupported": true,
+      "test": "not-ready",
+      "integrationVersion": "R5H-reading-practice-URL-bridge",
+      "defaultLanguage": "en",
+      "defaultLevel": "B1",
+      "practiceQueryFlag": "practice=1",
+      "isReference": false,
+      "reviewState": "URL_INTEGRATED_CONTENT_QA_PENDING",
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289",
+      "contentNote": "Pouze integrace studentských URL a QR; jazyková a CEFR správnost, přesnost klíče, offline chování na zařízení a samostatná testová sada čekají na nezávislou kontrolu."
     }
   ]
 }

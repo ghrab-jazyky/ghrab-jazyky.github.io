@@ -24,10 +24,10 @@ const original=[
 const inventory=JSON.parse(read('data/reference-pilots.json'));
 assert.equal(inventory.schemaVersion,1);
 assert.equal(inventory.approvedForTeaching,false);
-assert.equal(inventory.entries.length,24,'Pilot consists of 3 references, 19 Conversation candidates, 2 Listening candidates');
+assert.equal(inventory.entries.length,28,'Pilot consists of 3 references, 19 Conversation candidates, 2 Listening candidates and 4 Reading candidates');
 assert.equal(inventory.entries.filter(e=>e.isReference).length,3);
-assert.equal(inventory.entries.filter(e=>!e.isReference).length,21);
-assert.equal(new Set(inventory.entries.map(e=>e.id)).size,24);
+assert.equal(inventory.entries.filter(e=>!e.isReference).length,25);
+assert.equal(new Set(inventory.entries.map(e=>e.id)).size,28);
 const isJS=s=>!/^\s*(?:\{)/.test(s);
 for(const t of original){
  const before=read(t.original),after=read(t.integrated);
@@ -191,6 +191,53 @@ for(const t of additionalListening){
  console.log('PASS',t.id,'Listening source unmodified, EN-only adapter and video caution present');
 }
 
+/* R5H: four Reading integrations preserve the full original material.
+ * This is structural/URL QA; it does NOT certify semantics, answer keys or CEFR authenticity. */
+const additionalReading=[
+ {id:'rl-can-mistakes',original:'nahledy/cteni/can-mistakes/index.html',integrated:'integrace/cteni/can-mistakes/index.html',blob:'ca88591cbe890d6166605f5133486f5fc17a865e'},
+ {id:'rl-plastic-ocean',original:'nahledy/cteni/plastic-ocean/index.html',integrated:'integrace/cteni/plastic-ocean/index.html',blob:'444c7f027fb6f4c0fb9170aecf085363f90b5da3'},
+ {id:'rl-email-friend',original:'nahledy/cteni/email-friend/index.html',integrated:'integrace/cteni/email-friend/index.html',blob:'9178645eaa2d4fcd522a8a52bf2cd4741dfce05f'},
+ {id:'rl-instant-messages',original:'nahledy/cteni/instant-messages/index.html',integrated:'integrace/cteni/instant-messages/index.html',blob:'274140b4799bfaef6125063e554b86d741d01289'}
+];
+const referenceReadingAdapter=read('integrace/cteni/asteroids/index.html').match(/<script>\n\/\* LSH-R5 variant bridge:[\s\S]*?<\/script>\n/g);
+assert.ok(referenceReadingAdapter&&referenceReadingAdapter.length===1);
+for(const item of additionalReading){
+ const buffer=fs.readFileSync(path.join(root,item.original));
+ const blob=crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+buffer.length+'\0'),buffer])).digest('hex');
+ assert.equal(blob,item.blob,'Reading original changed: '+item.id);
+ const originalHtml=buffer.toString('utf8');
+ const linkedHtml=read(item.integrated);
+ const markers=linkedHtml.match(/<script>\n\/\* LSH-R5 variant bridge:[\s\S]*?<\/script>\n/g);
+ assert.ok(markers&&markers.length===1,'Expected one Reading bridge: '+item.id);
+ assert.equal(markers[0],referenceReadingAdapter[0],'Reading adapter differs from reference: '+item.id);
+ assert.equal(linkedHtml.replace(markers[0],''),originalHtml,'Original Reading material was altered: '+item.id);
+ assert.ok(linkedHtml.includes('window.LSH_OFFLINE_QS||location.search'));
+ assert.ok(linkedHtml.includes("p.get('zamek')==='1'"));
+ const at=originalHtml.indexOf('const DATA='),end=originalHtml.indexOf(';\n',at);
+ assert.ok(at>=0&&end>at,'Reading data missing');
+ const data=JSON.parse(originalHtml.slice(at+'const DATA='.length,end));
+ assert.deepEqual(Object.keys(data).sort(),['de','en','es','fr']);
+ let count=0,questions=0;
+ for(const language of ['en','es','de','fr']){
+  assert.deepEqual(Object.keys(data[language]).sort(),['A1','A2','B1','B2','C1','C2']);
+  for(const level of ['A1','A2','B1','B2','C1','C2']){
+   const v=data[language][level];
+   assert.ok(v.title&&Array.isArray(v.paragraphs)&&v.paragraphs.length>0);
+   assert.ok(Array.isArray(v.questions)&&v.questions.length===15);
+   questions+=v.questions.length;count++;
+  }
+ }
+ assert.equal(count,24);assert.equal(questions,360);
+ const entry=inventory.entries.find(v=>v.id===item.id);
+ assert.ok(entry&&entry.skill==='cteni'&&entry.test==='not-ready'&&entry.reviewState==='URL_INTEGRATED_CONTENT_QA_PENDING');
+ assert.equal(entry.studentPath,item.integrated.replace(/index\.html$/,''));
+ assert.equal(entry.sourceGitBlob,item.blob);
+ assert.equal(entry.selfContainedHtml,true);
+ const scripts=[...linkedHtml.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)];
+ for(let i=0;i<scripts.length;i++)if(scripts[i][1].trim())new vm.Script(scripts[i][1],{filename:item.id+'#'+i});
+ console.log('PASS',item.id,'preserved original; 24 variants / 360 exercises; adapter JS valid');
+}
+
 const ui=read('assets/lsh/v4/reference-pilots.js');
 new vm.Script(ui,{filename:'reference-pilots.js'});
 
@@ -235,11 +282,11 @@ for(const entry of inventory.entries){
  if(entry.skill==='poslech')assert.throws(()=>makeUrl(entry,'fixed','es','B2'));
 }
 assert.equal(checkedVariants,inventory.entries.reduce((a,e)=>a+e.languages.length*e.levels.length,0));
-assert.equal(checkedVariants,522,'Expected 522 checked fixed URLs');
-console.log('PASS',checkedVariants,'fixed URLs + 24 free URLs across pilots');
+assert.equal(checkedVariants,618,'Expected 618 checked fixed URLs');
+console.log('PASS',checkedVariants,'fixed URLs + 28 free URLs across pilots');
 
 const doc=read('reference-karty/index.html');
 for(const required of ['id="refMode"','id="refShareLang"','id="refShareLevel"','id="refSaveHtml"','id="refQr"']){
  assert.ok(doc.includes(required),'Missing dialog control: '+required);
 }
-console.log('PASS R5G pilot catalog: 3 references, 19 Conversation originals, 2 source-preserving Listening URL bridges');
+console.log('PASS R5H pilot catalog: 3 references, 19 Conversation originals, 2 Listening URL bridges, 4 Reading URL bridges');
