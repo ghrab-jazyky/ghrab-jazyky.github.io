@@ -63,13 +63,13 @@ const migrants=[
 ];
 for(const candidate of migrants){
  const buffer=fs.readFileSync(path.join(root,candidate.file));
- const gitBlob=Buffer.concat([Buffer.from('blob '+buffer.length+'\\0'),buffer]);
+ const gitBlob=Buffer.concat([Buffer.from('blob '+buffer.length+'\0'),buffer]);
  const checksum=crypto.createHash('sha1').update(gitBlob).digest('hex');
  assert.equal(checksum,candidate.blob,'Original migrated candidate source changed: '+candidate.id);
  const html=buffer.toString('utf8');
  const item=inventory.entries.find(x=>x.id===candidate.id);
  assert.ok(item&&item.isReference===false&&item.test==='not-ready','Candidate must remain unapproved');
- assert.equal(item.studentPath,candidate.file.replace(/index\\.html$/,''));
+ assert.equal(item.studentPath,candidate.file.replace(/index\.html$/,''));
  assert.equal(item.selfContainedHtml,false,'Cannot claim standalone offline HTML with relative JS assets');
  for(const piece of ['data-lsh-topic-id="'+candidate.id+'"','id="languageSelect"','id="levelSwitch"',
    '../../assets/lsh/v2/lock.js','../../assets/lsh/v3/model.js',
@@ -77,7 +77,7 @@ for(const candidate of migrants){
    'CATALOG_PRESET_V1','const clbPreset = new URLSearchParams(window.location.search)']){
   assert.ok(html.includes(piece),'Missing URL/CEFR/bridge contract: '+piece+' in '+candidate.id);
  }
- const scripts=[...html.matchAll(/<script(?:\\s[^>]*)?>([\\s\\S]*?)<\\/script>/gi)];
+ const scripts=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)];
  const inline=scripts.map(x=>x[1]).filter(x=>x.trim());
  assert.equal(inline.length,1,'Expected single existing inline Conversation engine');
  new vm.Script(inline[0],{filename:candidate.file});
@@ -96,7 +96,7 @@ for(const feature of ['function refreshShare()','function saveHtml()',"url.searc
 }
 
 /* Verify every pilot URL variant without trusting a card's advertised label. */
-const block=ui.match(/function urlOf\\(entry,mode,lang,level\\)\\{[\\s\\S]*?\\n\\}/);
+const block=ui.match(/function urlOf\(entry,mode,lang,level\)\{[\s\S]*?\n\}/);
 assert.ok(block,'Missing URL builder');
 const makeUrl=vm.runInNewContext('const ROOT="/zkusebni/"; const location={origin:"https://ghrab-jazyky.github.io"};('+block[0]+')',{URL,Error});
 let checkedVariants=0;
