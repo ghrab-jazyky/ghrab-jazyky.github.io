@@ -404,3 +404,112 @@ test('R4D Matthew v3 reference: 3 independent checks, separate optional vocabula
   }finally{await browser.close();}
  }
 });
+
+
+
+/* R5K batch intake and Claude queue: real browser download tests for static teacher UI. */
+function unzipStored(buffer){
+ const entries={};let offset=0,cap=0;
+ while(offset+30<buffer.length&&buffer.readUInt32LE(offset)===0x04034b50){
+  const method=buffer.readUInt16LE(offset+8),size=buffer.readUInt32LE(offset+18);
+  const nlen=buffer.readUInt16LE(offset+26),elen=buffer.readUInt16LE(offset+28);
+  assert.equal(method,0,'Expected ZIP stored entries (browser portability)');
+  const name=buffer.subarray(offset+30,offset+30+nlen).toString('utf8');
+  offset+=30+nlen+elen;
+  assert.ok(size<7*1024*1024,'ZIP entry size cap');
+  entries[name]=buffer.subarray(offset,offset+size);
+  offset+=size;
+  cap++;
+  assert.ok(cap<=40,'ZIP cannot have unlimited entries');
+ }
+ assert.ok(offset+46<buffer.length&&buffer.readUInt32LE(offset)===0x02014b50,'ZIP central directory missing');
+ return entries;
+}
+test('R5K batch intake: local ZIP with two new HTML files and matching cards.json (Chromium + WebKit)',{timeout:170000},async()=>{
+ for(const [engine,label,width] of [[chromium,'Chromium',390],[webkit,'WebKit',375]]){
+  const browser=await engine.launch({headless:true});
+  try{
+   const context=await browser.newContext({viewport:{width,height:844},acceptDownloads:true,serviceWorkers:'block'});
+   const page=await context.newPage(),errors=[];
+   page.on('pageerror',e=>errors.push(String(e)));
+   const res=await page.goto(STAGE+'pridat-kartu/',{waitUntil:'domcontentloaded'});
+   assert.equal(res.status(),200);
+   const a='<!doctype html><html><head><title>Future Topic</title></head><body><main>Student HTML 1</main></body></html>';
+   const b='<!doctype html><html><head><title>Next Topic</title></head><body><main>Student HTML 2</main></body></html>';
+   await page.locator('#intakeFiles').setInputFiles([
+    {name:'future-topic.html',mimeType:'text/html',buffer:Buffer.from(a)},
+    {name:'next-topic.html',mimeType:'text/html',buffer:Buffer.from(b)}
+   ]);
+   await page.waitForFunction(()=>document.querySelectorAll('#intakeList .intake-row').length===2);
+   for(const row of await page.locator('#intakeList .intake-row').all())
+    await row.locator('textarea').fill('An original student conversation activity about everyday choices and personal responsibility.');
+   assert.equal(await page.locator('#intakeBuild').isEnabled(),true,label+' valid metadata enables ZIP');
+   const dl=page.waitForEvent('download');
+   await page.locator('#intakeBuild').click();
+   const download=await dl,content=fs.readFileSync(await download.path()),z=unzipStored(content);
+   assert.ok(z['cards.json'],label+' card manifest in ZIP');
+   const manifest=JSON.parse(z['cards.json'].toString('utf8'));
+   assert.equal(manifest.cards.length,2);
+   assert.deepEqual(manifest.cards.map(x=>x.id),['cl-future-topic','cl-next-topic']);
+   assert.equal(z['cl-future-topic.html'].toString('utf8'),a);
+   assert.equal(z['cl-next-topic.html'].toString('utf8'),b);
+   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,label+' no page-wide overflow');
+   assert.deepEqual(errors,[],label+' browser errors');
+   await context.close();
+  }finally{await browser.close();}
+ }
+});
+test('R5K Claude audit: three Listening sources + immutable SHA prompts download as one ZIP', {timeout:140000},async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},acceptDownloads:true,serviceWorkers:'block'});
+  const page=await context.newPage(),errors=[];
+  page.on('pageerror',e=>errors.push(String(e)));
+  const res=await page.goto(STAGE+'revize-claude/',{waitUntil:'domcontentloaded'});
+  assert.equal(res.status(),200);
+  await page.locator('#audSkill').selectOption('poslech');
+  await page.waitForFunction(()=>document.querySelectorAll('#audCards .aud-row').length===3);
+  const dl=page.waitForEvent('download');
+  await page.locator('#audBuild').click();
+  const zip=unzipStored(fs.readFileSync(await (await dl).path()));
+  for(const id of ['ll-matthew-oscars','ll-harrison-ford','ll-peaky-no-fighting']){
+   assert.ok(zip['source/'+id+'.html'],'Listening source missing '+id);
+   const md=zip['prompts/'+id+'.md']?.toString('utf8');
+   assert.ok(md&&md.includes('SHA-256')&&md.includes('source/'+id+'.html'),'Claude prompt not source-bound '+id);
+   const checksum=require('node:crypto').createHash('sha256').update(zip['source/'+id+'.html']).digest('hex');
+   assert.ok(md.includes(checksum),'Claude prompt hash mismatch '+id);
+  }
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);
+  assert.deepEqual(errors,[],'Claude UI runtime errors');
+  await context.close();
+ }finally{await browser.close();}
+});
+test('R5I combined pilot catalog displays all 29, filters and fixed School ES A1 QR metadata', {timeout:140000},async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});
+  const page=await context.newPage(),errors=[];
+  page.on('pageerror',e=>errors.push(String(e)));
+  const res=await page.goto(STAGE+'reference-karty/',{waitUntil:'domcontentloaded'});
+  assert.equal(res.status(),200);
+  await page.waitForFunction(()=>document.querySelectorAll('#refList .ref-card').length===29);
+  await page.locator('#refSkill').selectOption('cteni');
+  assert.equal(await page.locator('#refList .ref-card').count(),5);
+  await page.locator('#refReset').click();
+  await page.locator('#refSearch').fill('skola');
+  assert.equal(await page.locator('#refList .ref-card').count(),1);
+  assert.match(await page.locator('#refList .ref-card').textContent(),/ES A1/);
+  await page.locator('#refList button').filter({hasText:'Procvičování'}).click();
+  await page.locator('#refMode').selectOption('fixed');
+  await page.locator('#refShareLang').selectOption('es');
+  await page.locator('#refShareLevel').selectOption('A1');
+  const url=new URL(await page.locator('#refUrl').inputValue());
+  assert.equal(url.pathname,'/zkusebni/konverzace/skola/');
+  assert.equal(url.searchParams.get('lang'),'es');
+  assert.equal(url.searchParams.get('level'),'A1');
+  assert.equal(url.searchParams.get('zamek'),'1');
+  assert.equal(await page.locator('#refQr svg').count(),1);
+  assert.deepEqual(errors,[],'Pilot catalog page errors');
+  await context.close();
+ }finally{await browser.close();}
+});
