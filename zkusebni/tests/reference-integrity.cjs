@@ -24,10 +24,10 @@ const original=[
 const inventory=JSON.parse(read('data/reference-pilots.json'));
 assert.equal(inventory.schemaVersion,1);
 assert.equal(inventory.approvedForTeaching,false);
-assert.equal(inventory.entries.length,22,'Pilot consists of 3 references and 19 migration candidates');
+assert.equal(inventory.entries.length,24,'Pilot consists of 3 references, 19 Conversation candidates, 2 Listening candidates');
 assert.equal(inventory.entries.filter(e=>e.isReference).length,3);
-assert.equal(inventory.entries.filter(e=>!e.isReference).length,19);
-assert.equal(new Set(inventory.entries.map(e=>e.id)).size,22);
+assert.equal(inventory.entries.filter(e=>!e.isReference).length,21);
+assert.equal(new Set(inventory.entries.map(e=>e.id)).size,24);
 const isJS=s=>!/^\s*(?:\{)/.test(s);
 for(const t of original){
  const before=read(t.original),after=read(t.integrated);
@@ -163,6 +163,34 @@ for(const candidate of migrants){
  console.log('PASS',candidate.id,'original source and CSP intact; URL + bridge; '+coverage.variants+' variants / '+coverage.stations+' stations / '+coverage.questions+' follow-ups');
 }
 
+
+/* R5G: Listening source data remain byte-identical when the URL bridge is removed.
+ * Media verification and pedagogical restructuring are deliberately separate. */
+const additionalListening=[
+ {id:'ll-harrison-ford',original:'nahledy/poslech/harrison-ford/index.html',integrated:'integrace/poslech/harrison-ford/index.html',blob:'f816dbbbc2d9d2e7fc5b7a4c40d9e7dcfb331dbc'},
+ {id:'ll-peaky-no-fighting',original:'nahledy/poslech/peaky-blinders/index.html',integrated:'integrace/poslech/peaky-blinders/index.html',blob:'cfda1197882b8107ddce2f80665abd681526efc5'}
+];
+for(const t of additionalListening){
+ const originalBuffer=fs.readFileSync(path.join(root,t.original));
+ const gitSha=crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+originalBuffer.length+'\0'),originalBuffer])).digest('hex');
+ assert.equal(gitSha,t.blob,'Listening original source has moved');
+ const before=originalBuffer.toString('utf8'),after=read(t.integrated);
+ const a=/<script>\n\/\* LSH-R5 variant bridge:[\s\S]*?<\/script>\n/g;
+ assert.equal([...after.matchAll(a)].length,1,'Exactly one listener adapter required');
+ assert.equal(after.replace(a,''),before,'Listening questions or UI original modified: '+t.id);
+ assert.ok(after.includes('window.LSH_OFFLINE_QS||location.search'));
+ assert.ok(after.includes("qp.get('zamek')==='1'"));
+ const entry=inventory.entries.find(x=>x.id===t.id);
+ assert.ok(entry&&entry.isReference===false&&entry.mediaExternal===true&&entry.selfContainedHtml===true);
+ assert.equal(entry.studentPath,t.integrated.replace(/index\.html$/,''));
+ assert.equal(entry.languages.length,1);assert.equal(entry.languages[0],'en');
+ assert.equal(entry.test,'not-ready');
+ assert.ok(entry.contentNote&&entry.contentNote.length>20,'External media warning missing');
+ const scripts=[...after.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)];
+ for(let i=0;i<scripts.length;i++)if(scripts[i][1].trim())new vm.Script(scripts[i][1],{filename:t.id+'#'+i});
+ console.log('PASS',t.id,'Listening source unmodified, EN-only adapter and video caution present');
+}
+
 const ui=read('assets/lsh/v4/reference-pilots.js');
 new vm.Script(ui,{filename:'reference-pilots.js'});
 
@@ -207,11 +235,11 @@ for(const entry of inventory.entries){
  if(entry.skill==='poslech')assert.throws(()=>makeUrl(entry,'fixed','es','B2'));
 }
 assert.equal(checkedVariants,inventory.entries.reduce((a,e)=>a+e.languages.length*e.levels.length,0));
-assert.equal(checkedVariants,510,'Expected 510 checked fixed URLs');
-console.log('PASS',checkedVariants,'fixed URLs + 22 free URLs across pilots');
+assert.equal(checkedVariants,522,'Expected 522 checked fixed URLs');
+console.log('PASS',checkedVariants,'fixed URLs + 24 free URLs across pilots');
 
 const doc=read('reference-karty/index.html');
 for(const required of ['id="refMode"','id="refShareLang"','id="refShareLevel"','id="refSaveHtml"','id="refQr"']){
  assert.ok(doc.includes(required),'Missing dialog control: '+required);
 }
-console.log('PASS R5F pilot catalog: 3 original references, 19 unchanged Conversation candidates');
+console.log('PASS R5G pilot catalog: 3 references, 19 Conversation originals, 2 source-preserving Listening URL bridges');
