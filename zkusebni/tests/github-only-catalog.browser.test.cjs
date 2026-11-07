@@ -513,3 +513,66 @@ test('R5I combined pilot catalog displays all 29, filters and fixed School ES A1
   await context.close();
  }finally{await browser.close();}
 });
+
+
+test('R5N complete offline ZIP for legacy Conversation: fixed ES C1, original preserved and CSP verified', {timeout:170000},async()=>{
+ const os=require('node:os'),{pathToFileURL}=require('node:url'),hash=require('node:crypto');
+ for(const [engine,label,width] of [[chromium,'Chromium',390],[webkit,'WebKit',375]]){
+  const browser=await engine.launch({headless:true});
+  const folder=fs.mkdtempSync(path.join(os.tmpdir(),'lsh-r5n-'));
+  try{
+   const context=await browser.newContext({viewport:{width,height:844},acceptDownloads:true,serviceWorkers:'block'});
+   const page=await context.newPage();page.setDefaultTimeout(30000);
+   const errors=[];page.on('pageerror',e=>errors.push(String(e)));
+   const opened=await page.goto(STAGE+'reference-karty/',{waitUntil:'domcontentloaded'});
+   assert.equal(opened.status(),200);
+   await page.waitForFunction(()=>document.querySelectorAll('#refList article').length===29);
+   await page.locator('#refSearch').fill('Hraní počítačových her');
+   assert.equal(await page.locator('#refList article').count(),1);
+   await page.locator('#refList article button').filter({hasText:'Procvičování'}).click();
+   await page.locator('#refMode').selectOption('fixed');
+   await page.locator('#refShareLang').selectOption('es');
+   await page.locator('#refShareLevel').selectOption('C1');
+   assert.equal(await page.locator('#refSaveHtml').isEnabled(),true);
+   assert.match(await page.locator('#refSaveHtml').textContent(),/ZIP/);
+   const dialogUrl=new URL(await page.locator('#refUrl').inputValue());
+   assert.equal(dialogUrl.searchParams.get('zamek'),'1');
+   const ready=page.waitForEvent('download');
+   await page.locator('#refSaveHtml').click();
+   const download=await ready,entries=unzipStored(fs.readFileSync(await download.path()));
+   assert.match(download.suggestedFilename(),/cl-hrani-her.*OFFLINE\.zip/);
+   assert.deepEqual(Object.keys(entries).sort(),[
+     'NAVOD.txt',
+     'assets/lsh/v2/lock.js',
+     'assets/lsh/v3/card-bridge.css',
+     'assets/lsh/v3/card-bridge.js',
+     'assets/lsh/v3/model.js',
+     'assets/lsh/v3/store.js',
+     'konverzace/hrani-her/index.html'
+   ]);
+   const html=entries['konverzace/hrani-her/index.html'].toString('utf8');
+   assert.ok(html.includes('new URLSearchParams("?lang=es&level=C1&zamek=1&practice=1")'),label+' fixed offline preset');
+   assert.ok(entries['assets/lsh/v2/lock.js'].toString('utf8').includes('new URLSearchParams("?lang=es&level=C1&zamek=1&practice=1")'),label+' locked offline controls');
+   const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)],declared=html.match(/sha256-([A-Za-z0-9+/]{43}=)/);
+   assert.equal(scripts.length,1);
+   assert.ok(declared);
+   const sha=hash.createHash('sha256').update(scripts[0][1],'utf8').digest('base64');
+   assert.equal(sha,declared[1],'Modified offline HTML must retain valid CSP SHA-256');
+   assert.ok(!html.includes('const clbPreset = new URLSearchParams(window.location.search);'));
+   for(const [name,data] of Object.entries(entries)){
+     const full=path.resolve(folder,name);assert.ok(full.startsWith(folder+path.sep));
+     fs.mkdirSync(path.dirname(full),{recursive:true});fs.writeFileSync(full,data);
+   }
+   await context.setOffline(true);
+   const offline=await page.goto(pathToFileURL(path.join(folder,'konverzace/hrani-her/index.html')).href,{waitUntil:'domcontentloaded'});
+   assert.ok(offline&&offline.ok(),label+' offline HTML file opens');
+   await page.waitForFunction(()=>document.querySelector('#languageSelect')?.value==='es'&&
+     document.querySelector('#levelSwitch button[data-level="C1"]')?.classList.contains('active'));
+   assert.equal(await page.locator('#languageSelect').isDisabled(),true,label+' offline language locked');
+   assert.equal(await page.locator('#levelSwitch button[data-level="C1"]').isDisabled(),true,label+' offline CEFR locked');
+   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,label+' layout');
+   assert.deepEqual(errors,[],label+' no runtime exceptions');
+   await context.close();
+  }finally{await browser.close();fs.rmSync(folder,{recursive:true,force:true});}
+ }
+});
