@@ -42,3 +42,12 @@
 @media(max-width:1080px){.ref-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.ref-controls .ref-query{grid-column:1/-1;grid-row:1}.ref-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.ref-main{padding-top:34px}.ref-controls{grid-template-columns:1fr}.ref-controls .ref-query{grid-column:auto;grid-row:auto}.ref-grid{grid-template-columns:1fr}.ref-modal{padding:17px}.ref-modal-actions>*{flex:1 1 100%}.ref-dialog{max-height:94dvh}}
 @media(prefers-reduced-motion:reduce){.ref-card,.ref-modal{scroll-behavior:auto}}
+
+/* R5C share configurator: mobile touch targets, fixed mode and focus order. */
+.ref-mode-label{display:block;margin:10px 0 14px;font-size:.9rem;font-weight:750}
+.ref-mode-label select,.ref-fixed-fields select{display:block;width:100%;min-width:0;min-height:44px;margin-top:7px;border:1px solid var(--line);border-radius:10px;background:var(--bg-soft);color:var(--ink);padding:9px 11px}
+.ref-fixed-fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:10px 0 16px}
+.ref-fixed-fields label{min-width:0;font-size:.85rem;font-weight:700}
+.ref-fixed-fields[hidden]{display:none!important}
+.ref-modal a[aria-disabled="true"]{opacity:.55;pointer-events:none}
+@media(max-width:450px){.ref-fixed-fields{grid-template-columns:1fr}}
