@@ -97,3 +97,4 @@ fs.writeFileSync(path.join(output,'R6_CONTENT_AUDIT_SUMMARY.md'),summary.join('\
 console.log('PASS R6 HEURISTIC CONTENT SCREEN:',result.totalCards,'cards,',
  result.totalVariants,'variants,',result.totalStations,'stations,',result.totalPrompts,'prompts');
 console.log('REVIEW QUEUE:',JSON.stringify(groups),'total',findings.length);
+console.log('REVIEW CANDIDATES:',JSON.stringify(findings.slice(0,20).map(f=>({id:f.id,language:f.language,level:f.level,code:f.code,location:f.location,observed:f.observed}))));
