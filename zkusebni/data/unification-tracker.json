@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-07-r5-scope-1",
+  "version": "2026-11-07-r5-scope-2-integrated-references",
   "sourceRevision": {
     "conversationManifest": "0.4.1-rc1-github-only",
     "editorialInventory": "r4d-2026-11-06"
@@ -13,7 +13,8 @@
     "INTEGRATION_PENDING",
     "QA_PENDING",
     "PEDAGOGICAL_APPROVAL_PENDING",
-    "PUBLISHED"
+    "PUBLISHED",
+    "URL_INTEGRATED_QA_PENDING"
   ],
   "referenceStandards": {
     "konverzace": "cl-umela-inteligence",
@@ -58,10 +59,11 @@
       "origin": "conversation-manifest",
       "isReference": true,
       "practiceState": "REFERENCE_SELECTED_UNDER_REVIEW",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "technicalNote": "R5C: integrated student HTML supports free/fixed CEFR and language presets; QR and self-contained practice export implemented. Isolated Chromium checks passed; online release, physical device QA and pedagogy approval still pending."
     },
     {
       "id": "cl-zivot-bez-ai",
@@ -310,10 +312,11 @@
       "origin": "editorial-inventory",
       "isReference": true,
       "practiceState": "REFERENCE_SELECTED_UNDER_REVIEW",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "technicalNote": "R5C: integrated student HTML supports free/fixed CEFR and language presets; QR and self-contained practice export implemented. Isolated Chromium checks passed; online release, physical device QA and pedagogy approval still pending."
     },
     {
       "id": "rl-email-friend",
@@ -346,10 +349,11 @@
       "origin": "editorial-inventory",
       "isReference": true,
       "practiceState": "REFERENCE_SELECTED_UNDER_REVIEW",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "technicalNote": "R5C: integrated student HTML supports free/fixed CEFR and language presets; QR and self-contained practice export implemented. Isolated Chromium checks passed; online release, physical device QA and pedagogy approval still pending."
     },
     {
       "id": "ll-peaky-no-fighting",
@@ -390,5 +394,16 @@
     "eachVariantQARequired": true,
     "practiceAndTestApprovalsSeparate": true,
     "manualUATBeforeRelease": true
+  },
+  "referenceIntegration": {
+    "referenceCount": 3,
+    "stage": "R5C/R5D",
+    "branchOnly": true,
+    "fixedAndFreeVariantImplemented": true,
+    "qrAndHtmlExportImplemented": true,
+    "qa": "LOCAL_CHROMIUM_PASS_CI_RUNNING_REAL_DEVICE_PENDING",
+    "sourceContentPreserved": true,
+    "teacherKeysPublic": false,
+    "testModesApproved": false
   }
 }
