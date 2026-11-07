@@ -37,7 +37,7 @@ function auditText(entry){
  if(a.status==='REVIEWED_NO_FINDINGS')return 'Claude: dokončena kontrola bez zaznamenaných chyb. Učitelské schválení stále neuděleno.';
  if(a.status==='REVIEWED_WITH_FINDINGS'){
   const count=a.findingsSummary||{};
-  return 'Claude: zkontrolováno, nálezy P0: '+(count.P0||0)+' · P1: '+(count.P1||0)+' · P2: '+(count.P2||0)+'. Čeká na posouzení učitelem.';
+  return 'Claude: zkontrolováno, nálezy P0: '+(count.P0||0)+' · P1: '+(count.P1||0)+' · P2: '+(count.P2||0)+'. Učitelské schválení neuděleno; nálezy čekají na posouzení.';
  }
  return 'Claude: neznámý stav auditu. Učitelské schválení neuděleno.';
 }
