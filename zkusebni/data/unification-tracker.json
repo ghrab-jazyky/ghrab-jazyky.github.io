@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-07-r5-scope-2-integrated-references",
+  "version": "2026-11-07-r5-e-conversation-batch-1",
   "sourceRevision": {
     "conversationManifest": "0.4.1-rc1-github-only",
     "editorialInventory": "r4d-2026-11-06"
@@ -14,7 +14,8 @@
     "QA_PENDING",
     "PEDAGOGICAL_APPROVAL_PENDING",
     "PUBLISHED",
-    "URL_INTEGRATED_QA_PENDING"
+    "URL_INTEGRATED_QA_PENDING",
+    "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING"
   ],
   "referenceStandards": {
     "konverzace": "cl-umela-inteligence",
@@ -34,11 +35,13 @@
       "title": "Sociální média",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5E: Existing public card verified against the AI reference: EN/ES/DE/FR x A1-C2 (24 variants); 8 stations, 24 supplemental questions, 12 vocabulary words and 4 toolkit items per variant, no empty main prompts or duplicate supplemental questions within variants. Existing lang/level + v2 lock.js supports UI-locked sharing. Source HTML SHA (Git blob) unchanged. Student content/linguistics, real browsers, offline export and separate test mode remain pending."
     },
     {
       "id": "cl-hrani-her",
@@ -46,11 +49,13 @@
       "title": "Hraní počítačových her",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5E: Existing public card verified against the AI reference: EN/ES/DE/FR x A1-C2 (24 variants); 8 stations, 24 supplemental questions, 12 vocabulary words and 4 toolkit items per variant, no empty main prompts or duplicate supplemental questions within variants. Existing lang/level + v2 lock.js supports UI-locked sharing. Source HTML SHA (Git blob) unchanged. Student content/linguistics, real browsers, offline export and separate test mode remain pending."
     },
     {
       "id": "cl-umela-inteligence",
@@ -405,5 +410,22 @@
     "sourceContentPreserved": true,
     "teacherKeysPublic": false,
     "testModesApproved": false
-  }
+  },
+  "migrationBatches": [
+    {
+      "id": "R5E-CONVO-01",
+      "skill": "konverzace",
+      "topicIds": [
+        "cl-socialni-media",
+        "cl-hrani-her"
+      ],
+      "count": 2,
+      "status": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "sourceHtmlUnchanged": true,
+      "technicalPreviewInCatalog": true,
+      "offlineExport": "not-yet-available",
+      "linguisticApproval": false,
+      "testModeApproved": false
+    }
+  ]
 }
