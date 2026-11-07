@@ -38,13 +38,13 @@ function filtered(){
 }
 function render(){
  const items=filtered();list.replaceChildren();
- $('refCount').textContent='Zobrazeno '+items.length+' z '+entries.length+' pilotních karet.';
+ $('refCount').textContent='Zobrazeno '+items.length+' z '+entries.length+' kontrolovaných technických náhledů.';
  $('refEmpty').hidden=items.length!==0;
  for(const e of items){
   const card=el('article',e.isReference?'ref-card ref-card-reference':'ref-card ref-card-migration');
   const top=el('div','ref-card-top');
   const badges=el('div','ref-tags');
-  badges.append(el('span','ref-chip',SKILLS[e.skill]),el('span','ref-chip',e.isReference?'REFERENČNÍ VZOR':'MIGRACE · ČEKÁ NA SCHVÁLENÍ'),el('span','ref-chip ref-pilot','PILOT · NESCHVÁLENO'));
+  badges.append(el('span','ref-chip',SKILLS[e.skill]),el('span','ref-chip',e.isReference?'REFERENČNÍ VZOR':e.reviewState==='CONTENT_REVIEW_REQUIRED'?'OBSAHOVÁ OPRAVA NUTNÁ':'MIGRACE · ČEKÁ NA SCHVÁLENÍ'),el('span','ref-chip ref-pilot','PILOT · NESCHVÁLENO'));
   top.append(badges,el('h3',null,e.title),el('p',null,e.summary));
   const info=el('p','ref-info',e.languages.map(l=>LANGS[l]).join(' · ')+'   |   A1–C2   |   '+e.sourceVersion);
   const focus=el('p','ref-focus',e.focus);
@@ -157,7 +157,7 @@ async function init(){
   const response=await fetch(new URL('data/reference-pilots.json',new URL(ROOT,location.origin)),{cache:'no-store'});
   if(!response.ok)throw new Error('HTTP '+response.status);
   const data=await response.json();
-  if(data.schemaVersion!==1||data.approvedForTeaching!==false||!Array.isArray(data.entries)||data.entries.length<3||data.entries.length>29||!data.entries.every(isValid)||new Set(data.entries.map(x=>x.id)).size!==data.entries.length||new Set(data.entries.filter(x=>x.isReference).map(x=>x.skill)).size!==3||data.entries.filter(x=>x.isReference).length!==3)throw new Error('Invalid pilot inventory');
+  if(data.schemaVersion!==1||data.approvedForTeaching!==false||!Array.isArray(data.entries)||data.entries.length<3||data.entries.length>500||!data.entries.every(isValid)||new Set(data.entries.map(x=>x.id)).size!==data.entries.length||new Set(data.entries.filter(x=>x.isReference).map(x=>x.skill)).size!==3||data.entries.filter(x=>x.isReference).length!==3)throw new Error('Invalid pilot inventory');
   entries=data.entries;
   render();
  }catch(err){console.error('Reference catalog:',err);$('refCount').textContent='Referenční katalog momentálně není dostupný.';list.replaceChildren(el('p','ref-empty','Zkontrolujte připojení nebo načtěte stránku znovu.'));}

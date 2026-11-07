@@ -24,10 +24,10 @@ const original=[
 const inventory=JSON.parse(read('data/reference-pilots.json'));
 assert.equal(inventory.schemaVersion,1);
 assert.equal(inventory.approvedForTeaching,false);
-assert.equal(inventory.entries.length,28,'Pilot consists of 3 references, 19 Conversation candidates, 2 Listening candidates and 4 Reading candidates');
+assert.ok(inventory.entries.length>=29,'All 29 existing cards must be indexed; newly imported cards may increase the count');
 assert.equal(inventory.entries.filter(e=>e.isReference).length,3);
-assert.equal(inventory.entries.filter(e=>!e.isReference).length,25);
-assert.equal(new Set(inventory.entries.map(e=>e.id)).size,28);
+assert.ok(inventory.entries.filter(e=>!e.isReference).length>=26);
+assert.equal(new Set(inventory.entries.map(e=>e.id)).size,inventory.entries.length);
 const isJS=s=>!/^\s*(?:\{)/.test(s);
 for(const t of original){
  const before=read(t.original),after=read(t.integrated);
@@ -238,6 +238,30 @@ for(const item of additionalReading){
  console.log('PASS',item.id,'preserved original; 24 variants / 360 exercises; adapter JS valid');
 }
 
+// R5I: School has one known duplicate in ES A1. Keep original bytes and do not claim pedagogical approval.
+{
+ const s=read('konverzace/skola/index.html');
+ const buffer=fs.readFileSync(path.join(root,'konverzace/skola/index.html'));
+ const actual=crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+buffer.length+'\\0'),buffer])).digest('hex');
+ assert.equal(actual,'f3d609bcd021ef812fb4821140a58b26bcc140fe','School original changed');
+ const data=parseConversationContent(s);
+ assert.deepEqual(Object.keys(data).sort(),['de','en','es','fr']);
+ let variants=0,occurrences=0;
+ for(const lang of ['en','es','de','fr'])for(const lvl of ['A1','A2','B1','B2','C1','C2']){
+  const v=data[lang].levels[lvl];
+  assert.equal(v.stations.length,8);
+  for(const station of v.stations)assert.equal(station.questions.length,3);
+  variants++;
+ }
+ for(const i of [0,7])if(data.es.levels.A1.stations[i].questions[0]==='¿Es grande o pequeño?')occurrences++;
+ assert.equal(variants,24);assert.equal(occurrences,2,'School duplicate must be tracked, not silently ignored');
+ const item=inventory.entries.find(e=>e.id==='cl-skola');
+ assert.ok(item&&item.reviewState==='CONTENT_REVIEW_REQUIRED'&&item.test==='not-ready');
+ assert.equal(item.selfContainedHtml,false);
+ assert.equal(item.sourceGitBlob,actual);
+ console.log('PASS School preserved, held for ES A1 linguistic correction; 24 technical variants');
+}
+
 const ui=read('assets/lsh/v4/reference-pilots.js');
 new vm.Script(ui,{filename:'reference-pilots.js'});
 
@@ -282,11 +306,11 @@ for(const entry of inventory.entries){
  if(entry.skill==='poslech')assert.throws(()=>makeUrl(entry,'fixed','es','B2'));
 }
 assert.equal(checkedVariants,inventory.entries.reduce((a,e)=>a+e.languages.length*e.levels.length,0));
-assert.equal(checkedVariants,618,'Expected 618 checked fixed URLs');
-console.log('PASS',checkedVariants,'fixed URLs + 28 free URLs across pilots');
+assert.ok(checkedVariants>=642,'Expected at least 642 fixed URLs for 29 existing cards');
+console.log('PASS',checkedVariants,'fixed URLs + '+inventory.entries.length+' free URLs across pilots');
 
 const doc=read('reference-karty/index.html');
 for(const required of ['id="refMode"','id="refShareLang"','id="refShareLevel"','id="refSaveHtml"','id="refQr"']){
  assert.ok(doc.includes(required),'Missing dialog control: '+required);
 }
-console.log('PASS R5H pilot catalog: 3 references, 19 Conversation originals, 2 Listening URL bridges, 4 Reading URL bridges');
+console.log('PASS R5I technical catalog: all 29 existing cards indexed; School explicitly held for pedagogical correction');

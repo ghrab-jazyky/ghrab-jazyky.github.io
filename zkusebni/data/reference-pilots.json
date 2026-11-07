@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "collectionVersion": "R5H-reading-url-bridges-2026-11-07",
-  "purpose": "Public unapproved technical pilot: 3 references, 19 structurally checked Conversation candidates, 2 Listening URL adapters, 4 Reading URL adapters. School ES A1 held for teacher-approved wording. Not a production catalog.",
+  "collectionVersion": "R5I-all-29-technical-candidates-2026-11-07",
+  "purpose": "Public unapproved technical pilot; all 29 known existing cards (21 Conversation, 5 Reading, 3 Listening). School ES A1 has unresolved duplicate question. All are pending pedagogical approval.",
   "approvedForTeaching": false,
   "entries": [
     {
@@ -950,6 +950,41 @@
       "reviewState": "URL_INTEGRATED_CONTENT_QA_PENDING",
       "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289",
       "contentNote": "Pouze integrace studentských URL a QR; jazyková a CEFR správnost, přesnost klíče, offline chování na zařízení a samostatná testová sada čekají na nezávislou kontrolu."
+    },
+    {
+      "id": "cl-skola",
+      "skill": "konverzace",
+      "title": "Škola — My School",
+      "summary": "Prostředí školy, předměty, spolužáci a představy o ideální škole; ve španělské A1 je zaznamenána opakovaná otázka.",
+      "focus": "Konverzační stanoviště · školní život · zamýšlená škola",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "sourceVersion": "2026-11-03 CLB · technický pilot R5I · obsahová oprava čeká",
+      "studentPath": "konverzace/skola/",
+      "selfContainedHtml": false,
+      "mediaExternal": false,
+      "practice": "preview",
+      "fixedVariantSupported": true,
+      "test": "not-ready",
+      "defaultLanguage": "en",
+      "defaultLevel": "B1",
+      "practiceQueryFlag": "practice=1",
+      "isReference": false,
+      "reviewState": "CONTENT_REVIEW_REQUIRED",
+      "sourceGitBlob": "f3d609bcd021ef812fb4821140a58b26bcc140fe",
+      "contentNote": "NEOVĚŘENO K VÝUCE: ve španělštině A1 se opakuje otázka «¿Es grande o pequeño?» na stanovištích 1 a 8. Návrh řešení čeká na pedagogické schválení. Jde pouze o technický náhled; bez testů a offline HTML."
     }
   ]
 }

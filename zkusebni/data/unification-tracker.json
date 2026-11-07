@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-07-r5-h-28-of-29-technical-pilot",
+  "version": "2026-11-07-r5-i-all-29-technical-candidates",
   "sourceRevision": {
     "conversationManifest": "0.4.1-rc1-github-only",
     "editorialInventory": "r4d-2026-11-06"
@@ -108,11 +108,11 @@
       "origin": "conversation-manifest",
       "isReference": false,
       "practiceState": "CONTENT_REVIEW_REQUIRED",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "technicalNote": "R5F audit: 24/24 language-level variants structurally present. One exact duplicate follow-up question in es/A1: '¿Es grande o pequeño?' is question 1 at stations 1 (Mi instituto) and 8 (Mi instituto ideal). Do not mark migrated or edit the original until a revised wording is pedagogically checked; possible station-8 replacement: '¿Tu instituto ideal es grande o pequeño?'."
+      "technicalNote": "R5F audit: 24/24 language-level variants structurally present. One exact duplicate follow-up question in es/A1: '¿Es grande o pequeño?' is question 1 at stations 1 (Mi instituto) and 8 (Mi instituto ideal). Do not mark migrated or edit the original until a revised wording is pedagogically checked; possible station-8 replacement: '¿Tu instituto ideal es grande o pequeño?'. R5I: School added to unapproved technical catalogue without modifying its original source or approving the ES A1 question. Existing lang/level + UI lock URL works; corrective wording remains pending. Do not release."
     },
     {
       "id": "cl-jak-se-ucit-na-testy",
@@ -554,6 +554,19 @@
       "independentAnswerKeyAudit": false,
       "physicalUAT": false,
       "testModeApproved": false
+    },
+    {
+      "id": "R5I-CONVO-HOLD",
+      "skill": "konverzace",
+      "topicIds": [
+        "cl-skola"
+      ],
+      "count": 1,
+      "status": "CONTENT_REVIEW_REQUIRED",
+      "sourceHtmlUnchanged": true,
+      "technicalPreviewInCatalog": true,
+      "pedagogicalCorrectionApproved": false,
+      "testModeApproved": false
     }
   ],
   "migrationProgress": {
@@ -566,10 +579,11 @@
     "remainingListeningCandidatesUnreviewed": 0,
     "listeningCardsNeedingPedagogicalRestructure": 2,
     "allApproved": 0,
-    "pilotCatalogEntries": 28,
+    "pilotCatalogEntries": 29,
     "readingCardsURLIntegrated": 4,
     "remainingReadingCandidatesWithoutTechnicalURLIntegration": 0,
-    "readingCardsNeedingPedagogicalReview": 4
+    "readingCardsNeedingPedagogicalReview": 4,
+    "allTechnicalCandidatesIndexed": 29
   },
   "contentIssues": [
     {
