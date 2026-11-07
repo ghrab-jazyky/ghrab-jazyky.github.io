@@ -564,8 +564,25 @@ test('R5N complete offline ZIP for legacy Conversation: fixed ES C1, original pr
      fs.mkdirSync(path.dirname(full),{recursive:true});fs.writeFileSync(full,data);
    }
    await context.setOffline(true);
-   const offline=await page.goto(pathToFileURL(path.join(folder,'konverzace/hrani-her/index.html')).href,{waitUntil:'domcontentloaded'});
-   assert.ok(offline&&offline.ok(),label+' offline HTML file opens');
+   let openTarget;
+   if(label==='WebKit'){
+    // Linux Playwright WebKit cannot reliably navigate file://; exercise the
+    // same ZIP bytes through controlled in-memory local responses with network OFF.
+    // This is NOT a substitute for a real iPhone/iPad Safari file:// UAT.
+    const prefix=STAGE+'offline-package/';
+    await page.route(prefix+'**',route=>{
+     const relative=decodeURIComponent(new URL(route.request().url()).pathname.split('/zkusebni/offline-package/')[1]||'');
+     const data=entries[relative];
+     if(!data)return route.fulfill({status:404,body:'Missing bundled dependency'});
+     const mime=relative.endsWith('.js')?'text/javascript':relative.endsWith('.css')?'text/css':relative.endsWith('.html')?'text/html':'text/plain';
+     return route.fulfill({status:200,contentType:mime,body:data});
+    });
+    openTarget=prefix+'konverzace/hrani-her/index.html';
+   }else{
+    openTarget=pathToFileURL(path.join(folder,'konverzace/hrani-her/index.html')).href;
+   }
+   const offline=await page.goto(openTarget,{waitUntil:'domcontentloaded'});
+   assert.ok(offline&&offline.ok(),label+' offline bundled HTML opens');
    await page.waitForFunction(()=>document.querySelector('#languageSelect')?.value==='es'&&
      document.querySelector('#levelSwitch button[data-level="C1"]')?.classList.contains('active'));
    assert.equal(await page.locator('#languageSelect').isDisabled(),true,label+' offline language locked');
