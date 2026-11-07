@@ -35,3 +35,11 @@ Do veřejného GitHubu se zapíší jen souhrnné počty P0/P1/P2 a kontrolní o
 ## Auditní ZIPy přímo z GitHub Actions (bez čekání na Pages)
 
 Workflow `.github/workflows/lsh-claude-audit-packages.yml` automaticky vytváří **tolik ZIP balíčků, kolik právě vyžaduje auditní fronta** (maximálně pět karet na dávku; aktuálně sedm dávek pro 29 témat) s originálními studentskými HTML, individuálními SHA-256 prompty a bezpečným reportovým JSON vzorem. Najdete je jako artefakt `lsh-claude-source-batches` (historické běhy R5M mají původní název `lsh-claude-seven-batches`) u příslušného běhu GitHub Actions. Archiv se uchovává 30 dní. Po vypršení lze workflow znovu spustit z oprávněného GitHub účtu, až bude dostupný ve výchozí větvi.
+
+## R5T — povinný důkaz pokrytí všech variant
+
+Dávkový audit vrací pro každou kartu povinné pole `reviewedVariants`: samostatný objekt `{ "language": "en", "level": "A1", "evidence": "konkrétní zdrojově ověřené pozorování" }` pro **každou** skutečně zkontrolovanou variantu. Conversation/Reading má 24, Listening šest. Duplicitní, chybějící nebo neplatné kombinace a prázdná/generická krátká evidence blokují import. Strukturované pole není samo důkazem kvalitní jazykové revize; obsah musí ověřit nezávislý reviewer a učitel.
+
+Druhé povinné pole `unverifiedChecks` je seznam konkrétních oblastí bez skutečného ověření (např. školní Wi-Fi, iPhone/iPad, lokální slovníček, externí video, samostatný soukromý učitelský klíč). Prázdný seznam lze vrátit jen po věcném prověření všech relevantních oblastí. Problémy ve `findings` musí uvádět `severity`, `language`, `level`, `location`, `observed`, `proposed` a `evidence`. Je-li zjištění obecné, připouští se `language: "all"` nebo `level: "all"`.
+
+Veřejná auditní fronta a katalog uchovávají **jen počty** `reviewedVariantsCount`, `unverifiedChecksCount`, počty P0/P1/P2 a SHA-256. Podrobné odpovědi, opravné návrhy, učitelské klíče ani osobní údaje žáků nepatří do GitHub Pages. Report s neúplným pokrytím odmítnout; nikdy nevytvářet falešné označení „zkontrolováno“. Import ani `REVIEWED_NO_FINDINGS` nejsou pedagogickým schválením a testové režimy zůstávají vypnuté.
