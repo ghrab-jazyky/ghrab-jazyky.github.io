@@ -56,3 +56,7 @@
 .ref-download{margin-top:18px;padding:16px 0 8px;border-top:1px solid var(--line);text-align:center}
 .ref-download .button{width:100%;justify-content:center}
 .ref-download p{margin:10px 0 0;color:var(--muted);font-size:.8rem}
+
+/* R5G: distinguish source media and age-suitability warnings from generic pilot metadata. */
+.ref-content-note{margin:6px 0 10px;border-left:3px solid var(--coral);padding:9px 12px;background:var(--bg-soft);color:var(--muted-strong);font-size:.82rem}
+.ref-content-note[hidden]{display:none!important}
