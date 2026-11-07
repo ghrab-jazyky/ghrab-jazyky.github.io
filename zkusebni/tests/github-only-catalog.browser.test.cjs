@@ -563,13 +563,13 @@ test('R5N complete offline ZIP for legacy Conversation: fixed ES C1, original pr
      const full=path.resolve(folder,name);assert.ok(full.startsWith(folder+path.sep));
      fs.mkdirSync(path.dirname(full),{recursive:true});fs.writeFileSync(full,data);
    }
-   await context.setOffline(true);
    let openTarget;
    if(label==='WebKit'){
     // Linux Playwright WebKit cannot reliably navigate file://; exercise the
     // same ZIP bytes through controlled in-memory local responses with network OFF.
     // This is NOT a substitute for a real iPhone/iPad Safari file:// UAT.
     const prefix=STAGE+'offline-package/';
+    await page.route('**/*',route=>route.abort('internetdisconnected'));
     await page.route(prefix+'**',route=>{
      const relative=decodeURIComponent(new URL(route.request().url()).pathname.split('/zkusebni/offline-package/')[1]||'');
      const data=entries[relative];
@@ -579,6 +579,7 @@ test('R5N complete offline ZIP for legacy Conversation: fixed ES C1, original pr
     });
     openTarget=prefix+'konverzace/hrani-her/index.html';
    }else{
+    await context.setOffline(true);
     openTarget=pathToFileURL(path.join(folder,'konverzace/hrani-her/index.html')).href;
    }
    const offline=await page.goto(openTarget,{waitUntil:'domcontentloaded'});
