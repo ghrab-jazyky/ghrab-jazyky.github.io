@@ -55,6 +55,63 @@ for(const t of original){
  console.log('PASS',t.id,'source intact; JS scripts:',scripts.length);
 }
 
+
+function parseConversationContent(html) {
+ const key='const CONTENT = ';
+ const at=html.indexOf(key);
+ assert.ok(at>=0,'Conversation CONTENT data object missing');
+ const start=html.indexOf('{',at+key.length);
+ assert.ok(start>at,'Conversation data opening brace missing');
+ let depth=0,quote=false,escape=false;
+ for(let i=start;i<html.length;i++){
+  const ch=html[i];
+  if(quote){
+   if(escape)escape=false;
+   else if(ch==='\\')escape=true;
+   else if(ch==='"')quote=false;
+   continue;
+  }
+  if(ch==='"'){quote=true;continue;}
+  if(ch==='{')depth++;
+  if(ch==='}'&&--depth===0)return JSON.parse(html.slice(start,i+1));
+ }
+ throw new Error('Conversation CONTENT data object incomplete');
+}
+function verifyConversationVariants(data,topicId){
+ const langs=['en','es','de','fr'],levels=['A1','A2','B1','B2','C1','C2'];
+ assert.deepEqual(Object.keys(data).sort(),langs.slice().sort(),'Unexpected language coverage in '+topicId);
+ let variants=0,stations=0,questions=0;
+ for(const lang of langs){
+  assert.deepEqual(Object.keys(data[lang].levels).sort(),levels.slice().sort(),'Incomplete CEFR levels');
+  for(const level of levels){
+   const d=data[lang].levels[level];
+   assert.equal(d.stations.length,8,'Wrong Conversation station count');
+   assert.equal(d.vocab.length,12,'Wrong vocabulary size');
+   assert.equal(d.toolkit.length,4,'Wrong toolkit size');
+   const seen=new Set();
+   for(const st of d.stations){
+    assert.ok(typeof st.title==='string'&&st.title.trim()&&typeof st.main==='string'&&st.main.trim(),'Missing station prompt');
+    assert.ok(Array.isArray(st.questions)&&st.questions.length===3,'Wrong number of follow-up questions');
+    assert.ok(Array.isArray(st.support)&&st.support.length>0,'Missing differentiated support');
+    assert.ok(typeof st.challenge==='string'&&st.challenge.trim(),'Missing Challenge');
+    assert.ok(typeof st.stretch==='string'&&st.stretch.trim(),'Missing Stretch');
+    for(const q of st.questions){
+     assert.ok(typeof q==='string'&&q.trim(),'Missing question');
+     const norm=q.trim().toLocaleLowerCase();
+     assert.ok(!seen.has(norm),'Duplicate follow-up question inside variant');
+     seen.add(norm);questions++;
+    }
+    if(['B2','C1','C2'].includes(level))
+     assert.ok(Array.isArray(st.explanations)&&st.explanations.length===3,'Upper-level Explain missing');
+    stations++;
+   }
+   variants++;
+  }
+ }
+ assert.equal(variants,24);assert.equal(stations,192);assert.equal(questions,576);
+ return {variants,stations,questions};
+}
+
 /* Stage R5E: two already-public conversation HTML files remain byte-exact
  * and are surfaced only as unapproved pilots. Git blob SHA verifies bytes. */
 const migrants=[
@@ -85,7 +142,8 @@ for(const candidate of migrants){
  assert.ok(token,'Original Conversation CSP hash missing');
  assert.equal(crypto.createHash('sha256').update(inline[0]).digest('base64'),token,
   'Conversation inline CSP hash must match source; UI scripts would otherwise be blocked');
- console.log('PASS',candidate.id,'original blob and CSP intact, URL and shared bridge present');
+ const coverage=verifyConversationVariants(parseConversationContent(html),candidate.id);
+ console.log('PASS',candidate.id,'original source and CSP intact; URL + bridge; '+coverage.variants+' variants / '+coverage.stations+' stations / '+coverage.questions+' follow-ups');
 }
 
 const ui=read('assets/lsh/v4/reference-pilots.js');
