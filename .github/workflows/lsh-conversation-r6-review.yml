@@ -4,6 +4,7 @@ on:
     paths:
       - 'zkusebni/konverzace/k/**'
       - 'zkusebni/data/conversation-r6-candidates.json'
+      - 'zkusebni/tools/r6-content-audit.cjs'
       - 'zkusebni/tools/conversation-r6-claude-packages.py'
       - 'zkusebni/tests/conversation-r6-candidates.test.cjs'
       - '.github/workflows/lsh-conversation-r6-review.yml'
@@ -13,6 +14,7 @@ on:
     paths:
       - 'zkusebni/konverzace/k/**'
       - 'zkusebni/data/conversation-r6-candidates.json'
+      - 'zkusebni/tools/r6-content-audit.cjs'
       - 'zkusebni/tools/conversation-r6-claude-packages.py'
       - 'zkusebni/tests/conversation-r6-candidates.test.cjs'
       - '.github/workflows/lsh-conversation-r6-review.yml'
@@ -31,6 +33,19 @@ jobs:
           node-version: '24'
       - name: Audit candidates without touching canonical sources or catalog
         run: node zkusebni/tests/conversation-r6-candidates.test.cjs
+      - name: Independently screen all R6 variants without AI API (no source edits)
+        run: |
+          node zkusebni/tools/r6-content-audit.cjs "$RUNNER_TEMP/lsh-r6-content-audit"
+          node -e 'const r=require(process.argv[1]);if(r.totalCards!==21||r.totalVariants!==504||r.totalStations!==4032||r.totalPrompts!==16128||r.releaseApproved!==false)throw Error("Audit coverage or approval gate failure");console.log("PASS audited 21 R6 source files, 504 variants")' "$RUNNER_TEMP/lsh-r6-content-audit/R6_CONTENT_AUDIT.json"
+      - name: Attach independent R6 content findings (not teaching approval)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-r6-independent-content-screen
+          path: |
+            ${{ runner.temp }}/lsh-r6-content-audit/*.json
+            ${{ runner.temp }}/lsh-r6-content-audit/*.md
+          if-no-files-found: error
+          retention-days: 30
       - name: Export source-verified Claude R6 batches (no deployment)
         run: |
           python3 zkusebni/tools/conversation-r6-claude-packages.py --output "$RUNNER_TEMP/lsh-r6-claude"
