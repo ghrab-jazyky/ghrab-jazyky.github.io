@@ -34,4 +34,4 @@ Do veřejného GitHubu se zapíší jen souhrnné počty P0/P1/P2 a kontrolní o
 
 ## Auditní ZIPy přímo z GitHub Actions (bez čekání na Pages)
 
-Workflow `.github/workflows/lsh-claude-audit-packages.yml` vytváří při změně zdrojů **sedm ZIP balíčků** s originálními studentskými HTML, individuálními SHA-256 prompty a bezpečným reportovým JSON vzorem. Najdete je jako artefakt `lsh-claude-seven-batches` u příslušného běhu GitHub Actions. Archiv se uchovává 30 dní. Po vypršení lze workflow znovu spustit z oprávněného GitHub účtu, až bude dostupný ve výchozí větvi.
+Workflow `.github/workflows/lsh-claude-audit-packages.yml` automaticky vytváří **tolik ZIP balíčků, kolik právě vyžaduje auditní fronta** (maximálně pět karet na dávku; aktuálně sedm dávek pro 29 témat) s originálními studentskými HTML, individuálními SHA-256 prompty a bezpečným reportovým JSON vzorem. Najdete je jako artefakt `lsh-claude-source-batches` (historické běhy R5M mají původní název `lsh-claude-seven-batches`) u příslušného běhu GitHub Actions. Archiv se uchovává 30 dní. Po vypršení lze workflow znovu spustit z oprávněného GitHub účtu, až bude dostupný ve výchozí větvi.
