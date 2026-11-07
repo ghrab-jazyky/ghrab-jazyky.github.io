@@ -13,6 +13,7 @@ on:
       - 'zkusebni/pridat-kartu/**'
       - 'zkusebni/revize-claude/**'
       - 'zkusebni/reference-karty/**'
+      - 'zkusebni/tests/catalog-ledger-consistency.test.cjs'
       - 'zkusebni/tests/reference-integrity.cjs'
       - '.github/workflows/lsh-reference-integrity.yml'
   push:
@@ -30,6 +31,7 @@ on:
       - 'zkusebni/podklady/**'
       - 'zkusebni/konverzace/**'
       - 'zkusebni/reference-karty/**'
+      - 'zkusebni/tests/catalog-ledger-consistency.test.cjs'
       - 'zkusebni/tests/reference-integrity.cjs'
       - '.github/workflows/lsh-reference-integrity.yml'
   workflow_dispatch:
@@ -49,6 +51,7 @@ jobs:
       - name: Verify source cards and practice adapters
         run: |
           node zkusebni/tests/reference-integrity.cjs
+          node --test zkusebni/tests/catalog-ledger-consistency.test.cjs
           node zkusebni/tools/card-intake.cjs --verify
           node zkusebni/tools/card-intake.cjs --self-test
           node --check zkusebni/tools/claude-audit-import.cjs
