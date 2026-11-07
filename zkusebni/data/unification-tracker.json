@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-07-r5-e-conversation-batches-1-2",
+  "version": "2026-11-07-r5-f-conversation-20-of-21",
   "sourceRevision": {
     "conversationManifest": "0.4.1-rc1-github-only",
     "editorialInventory": "r4d-2026-11-06"
@@ -15,7 +15,8 @@
     "PEDAGOGICAL_APPROVAL_PENDING",
     "PUBLISHED",
     "URL_INTEGRATED_QA_PENDING",
-    "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING"
+    "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+    "CONTENT_REVIEW_REQUIRED"
   ],
   "referenceStandards": {
     "konverzace": "cl-umela-inteligence",
@@ -76,11 +77,13 @@
       "title": "Život bez AI",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
       "id": "cl-socialni-site-a-dusevni-zdravi",
@@ -88,11 +91,13 @@
       "title": "Sociální sítě a duševní zdraví",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
       "id": "cl-skola",
@@ -100,11 +105,12 @@
       "title": "Škola",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
+      "practiceState": "CONTENT_REVIEW_REQUIRED",
       "urlAndQr": "INTEGRATION_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "technicalNote": "R5F audit: 24/24 language-level variants structurally present. One exact duplicate follow-up question in es/A1: '¿Es grande o pequeño?' is question 1 at stations 1 (Mi instituto) and 8 (Mi instituto ideal). Do not mark migrated or edit the original until a revised wording is pedagogically checked; possible station-8 replacement: '¿Tu instituto ideal es grande o pequeño?'."
     },
     {
       "id": "cl-jak-se-ucit-na-testy",
@@ -112,11 +118,13 @@
       "title": "Jak se učit na testy",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
       "id": "cl-tlak-na-vykon",
@@ -124,11 +132,13 @@
       "title": "Tlak na výkon",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
       "id": "cl-pratele",
@@ -136,11 +146,13 @@
       "title": "Přátelé a přátelství",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
       "id": "cl-rodina",
@@ -162,11 +174,13 @@
       "title": "Problémy teenagerů",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
       "id": "cl-muzi-a-zeny",
@@ -174,11 +188,13 @@
       "title": "Muži a ženy",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
       "id": "cl-spolecenske-problemy",
@@ -186,11 +202,13 @@
       "title": "Společenské problémy",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
       "id": "cl-majetkove-nerovnosti",
@@ -198,11 +216,13 @@
       "title": "Majetkové nerovnosti",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
       "id": "cl-volny-cas-a-konicky",
@@ -210,11 +230,13 @@
       "title": "Volný čas a koníčky",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
       "id": "cl-prazdniny",
@@ -250,11 +272,13 @@
       "title": "Nemoci a návštěva lékaře",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
       "id": "cl-vanoce",
@@ -276,11 +300,13 @@
       "title": "Světová politika",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
       "id": "cl-ceny-nemovitosti",
@@ -288,11 +314,13 @@
       "title": "Ceny nemovitostí u nás a v zahraničí",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
       "id": "rl-can-mistakes",
@@ -451,15 +479,68 @@
       "offlineExport": "not-yet-available",
       "linguisticApproval": false,
       "testModeApproved": false
+    },
+    {
+      "id": "R5F-CONVO-03",
+      "skill": "konverzace",
+      "topicIds": [
+        "cl-zivot-bez-ai",
+        "cl-socialni-site-a-dusevni-zdravi",
+        "cl-jak-se-ucit-na-testy",
+        "cl-tlak-na-vykon",
+        "cl-pratele",
+        "cl-problemy-teenageru",
+        "cl-muzi-a-zeny",
+        "cl-spolecenske-problemy",
+        "cl-majetkove-nerovnosti",
+        "cl-volny-cas-a-konicky",
+        "cl-nemoci-u-lekare",
+        "cl-svetova-politika",
+        "cl-ceny-nemovitosti"
+      ],
+      "count": 13,
+      "status": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "sourceHtmlUnchanged": true,
+      "technicalPreviewInCatalog": true,
+      "offlineExport": "not-yet-available",
+      "linguisticApproval": false,
+      "testModeApproved": false
     }
   ],
   "migrationProgress": {
     "totalExisting": 29,
     "referenceCandidates": 3,
-    "conversationCandidatesStructurallyCompatible": 6,
-    "remainingConversationCandidatesUnreviewed": 14,
+    "conversationCandidatesStructurallyCompatible": 19,
+    "remainingConversationCandidatesUnreviewed": 0,
+    "conversationCardsHeldForContentCorrection": 1,
     "remainingReadingCandidatesUnreviewed": 4,
     "remainingListeningCandidatesUnreviewed": 2,
-    "allApproved": 0
-  }
+    "allApproved": 0,
+    "pilotCatalogEntries": 22
+  },
+  "contentIssues": [
+    {
+      "id": "R5F-CL-SKOLA-ES-A1-Q-DUPLICATE",
+      "topicId": "cl-skola",
+      "severity": "MINOR_CONTENT_DUPLICATE",
+      "language": "es",
+      "level": "A1",
+      "duplicateText": "¿Es grande o pequeño?",
+      "occurrences": [
+        {
+          "station": 1,
+          "question": 1,
+          "stationTitle": "Mi instituto"
+        },
+        {
+          "station": 8,
+          "question": 1,
+          "stationTitle": "Mi instituto ideal"
+        }
+      ],
+      "suggestedReplacement": "¿Tu instituto ideal es grande o pequeño?",
+      "proposalApproved": false,
+      "sourceGitBlob": "f3d609bcd021ef812fb4821140a58b26bcc140fe"
+    }
+  ]
 }
