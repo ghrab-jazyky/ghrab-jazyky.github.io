@@ -49,8 +49,10 @@ function prompt(item,e,sha){
  'P0 = chyba ohrožující správnost/bezpečnost/test, P1 = pedagogicky významná chyba, P2 = menší jazyková/UX chyba.',
  'Výstup neznamená schválení. Žádné učitelské klíče nebo identifikovatelná žákovská data nepatří do veřejného repozitáře.',
  '',
- 'VRAŤTE STRIKTNĚ JSON:',
- '{"topicId":"'+e.id+'","sourceSha256":"'+sha+'","status":"REVIEWED_WITH_FINDINGS|REVIEWED_NO_FINDINGS","requiresTeacherDecision":true,"findings":[{"severity":"P1","language":"es","level":"A1","location":"station 8 question 1","observed":"...","proposed":"...","evidence":"..."}]}',
+ 'Povinné reviewedVariants musí mít přesně všechny skutečně zkontrolované kombinace jazyka/CEFR: 24 pro Conversation/Reading, šest pro Listening. Každá kombinace má své source-specific evidence (20+ znaků); nevymýšlejte chybějící kontroly.',
+ 'Povinné unverifiedChecks: popište všechny dosud neověřené oblasti, nativní zařízení, externí média, školní Wi-Fi, offline slovník a soukromý učitelský klíč. [] jen po skutečném prověření.',
+ 'VRAŤTE STRIKTNĚ JSON, reviewedVariants rozepište na všechny kombinace:',
+ '{"topicId":"'+e.id+'","sourceSha256":"'+sha+'","status":"REVIEWED_WITH_FINDINGS|REVIEWED_NO_FINDINGS","requiresTeacherDecision":true,"reviewedVariants":[{"language":"en","level":"A1","evidence":"Konkrétní obsahové pozorování k EN A1"}],"unverifiedChecks":["Nativní iOS nebyl fyzicky otestován"],"findings":[{"severity":"P1","language":"es","level":"A1","location":"station 8 question 1","observed":"Původní formulace","proposed":"Navržené znění","evidence":"Konkrétní zdrojový důkaz"}]}',
  '',
  'Zároveň připojte stručný lidsky čitelný souhrn. Pokud nebylo možné reálně otestovat iOS/Android/video, výslovně to napište.',
  ''
@@ -101,7 +103,7 @@ async function makePackage(){
   const readme=[
    '# CLAUDE — Language Skills Hub: hromadný audit','',
    'V tomto balíčku je '+active.length+' studentských HTML originálů, z nichž každý má vlastní auditní prompt se SHA-256.',
-   'Zpracovávejte všechny karty, ne pouze jednu; výsledky v souboru reports.json jako {"schemaVersion":1,"reports":[...]}',
+   'Zpracovávejte všechny karty, ne pouze jednu; doložte reviewedVariants a unverifiedChecks; výsledky v souboru reports.json jako {"schemaVersion":1,"reports":[...]}',
    'Učitel provede konečné schválení; bezpečně sdílejte jen anonymizovaná zjištění a žádné učitelské klíče.',
    'Testování dosud není samostatně schválené. Předložené karty jsou technické piloty.', ''
   ].join('\n');
