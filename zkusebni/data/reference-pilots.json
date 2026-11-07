@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "collectionVersion": "R5C-reference-integrations-2026-11-07",
-  "purpose": "Public teacher-facing reference previews only. NOT a publishable student manifest or a teacher answer repository.",
+  "collectionVersion": "R5E-conversation-batch1-2026-11-07",
+  "purpose": "Public pilot catalog: 3 reference practice previews plus 2 source-preserving Conversation migration candidates; NOT the approved student manifest.",
   "approvedForTeaching": false,
   "entries": [
     {
@@ -34,7 +34,9 @@
       "integrationVersion": "R5C-practice-URL-bridge",
       "defaultLanguage": "en",
       "defaultLevel": "B2",
-      "practiceQueryFlag": "practice=1"
+      "practiceQueryFlag": "practice=1",
+      "isReference": true,
+      "reviewState": "REFERENCE_SELECTED_TECHNICAL_PILOT"
     },
     {
       "id": "rl-asteroids",
@@ -66,7 +68,9 @@
       "integrationVersion": "R5C-practice-URL-bridge",
       "defaultLanguage": "en",
       "defaultLevel": "B1",
-      "practiceQueryFlag": "practice=1"
+      "practiceQueryFlag": "practice=1",
+      "isReference": true,
+      "reviewState": "REFERENCE_SELECTED_TECHNICAL_PILOT"
     },
     {
       "id": "ll-matthew-oscars",
@@ -95,7 +99,75 @@
       "integrationVersion": "R5C-practice-URL-bridge",
       "defaultLanguage": "en",
       "defaultLevel": "B2",
-      "practiceQueryFlag": "practice=1"
+      "practiceQueryFlag": "practice=1",
+      "isReference": true,
+      "reviewState": "REFERENCE_SELECTED_TECHNICAL_PILOT"
+    },
+    {
+      "id": "cl-socialni-media",
+      "skill": "konverzace",
+      "title": "Sociální média",
+      "summary": "Jak sociální sítě ovlivňují komunikaci, digitální návyky a každodenní rozhodování.",
+      "focus": "Konverzační stanoviště, slovní zásoba a argumentace",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "sourceVersion": "2026-11-03 · CLB pilot",
+      "studentPath": "konverzace/socialni-media/",
+      "selfContainedHtml": false,
+      "mediaExternal": false,
+      "practice": "preview",
+      "fixedVariantSupported": true,
+      "test": "not-ready",
+      "defaultLanguage": "en",
+      "defaultLevel": "B1",
+      "practiceQueryFlag": "practice=1",
+      "isReference": false,
+      "reviewState": "TECHNICAL_COMPATIBILITY_PENDING_PEDAGOGY"
+    },
+    {
+      "id": "cl-hrani-her",
+      "skill": "konverzace",
+      "title": "Hraní počítačových her",
+      "summary": "Výhody a rizika hraní her, čas u obrazovek, zdraví a rovnováha mezi digitálním a skutečným světem.",
+      "focus": "Konverzace o návycích, pravidlech a zdravém životním stylu",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "sourceVersion": "2026-11-03 · CLB pilot",
+      "studentPath": "konverzace/hrani-her/",
+      "selfContainedHtml": false,
+      "mediaExternal": false,
+      "practice": "preview",
+      "fixedVariantSupported": true,
+      "test": "not-ready",
+      "defaultLanguage": "en",
+      "defaultLevel": "B1",
+      "practiceQueryFlag": "practice=1",
+      "isReference": false,
+      "reviewState": "TECHNICAL_COMPATIBILITY_PENDING_PEDAGOGY"
     }
   ]
 }
