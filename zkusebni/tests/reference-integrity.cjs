@@ -152,6 +152,18 @@ for(const candidate of migrants){
 
 const ui=read('assets/lsh/v4/reference-pilots.js');
 new vm.Script(ui,{filename:'reference-pilots.js'});
+
+const validatorBlock=ui.match(/function isValid\(v\)\{[\s\S]*?\n\}/);
+assert.ok(validatorBlock,'Catalog entry validation function missing');
+const validateEntry=vm.runInNewContext('('+validatorBlock[0]+')',{
+ SKILLS:{konverzace:'Conversation Lab',cteni:'Reading Lab',poslech:'Listening Lab'},
+ LANGS:{en:'EN',es:'ES',de:'DE',fr:'FR'},
+ LEVELS:['A1','A2','B1','B2','C1','C2']
+});
+for(const entry of inventory.entries)
+ assert.ok(validateEntry(entry),'Pilot entry fails actual browser schema: '+entry.id);
+console.log('PASS',inventory.entries.length,'public catalog records validate');
+
 for(const feature of ['function refreshShare()','function saveHtml()',"url.searchParams.set('zamek','1')",
  "url.searchParams.set('practice','1')",'LSH_OFFLINE_QS']){
  assert.ok(ui.includes(feature),'Missing catalog feature: '+feature);
