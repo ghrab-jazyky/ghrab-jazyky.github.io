@@ -52,7 +52,7 @@ function render(){
   const preview=el('button','button primary','Procvičování · náhled');preview.type='button';preview.addEventListener('click',()=>open(e));
   const test=el('button','button outline','Testování · připravujeme');test.type='button';test.disabled=true;test.setAttribute('aria-label','Testovací verze karty '+e.title+' zatím není hotová');
   actions.append(preview,test);
-  card.append(top,info,focus,actions);list.append(card);
+  card.append(top,info,focus);if(e.contentNote)card.append(el('p','ref-content-note',e.contentNote));card.append(actions);list.append(card);
  }
 }
 function refreshShare(){
@@ -78,6 +78,7 @@ function refreshShare(){
 function open(e){
  selected=e;
  $('refDialogTitle').textContent=e.title;
+ const note=$('refContentNote');note.hidden=!e.contentNote;note.textContent=e.contentNote||'';
  $('refOfflineNote').textContent=!e.selfContainedHtml?
   'Tato karta používá další společné skripty. Samostatné offline HTML zatím není dostupné; odkaz a QR fungují online.' : e.mediaExternal?
   'Offline HTML obsahuje úlohy a uložené nastavení, ale video se nepřibaluje a pro přehrání vyžaduje internet. Osobní slovníček se může lišit podle prohlížeče.' :
