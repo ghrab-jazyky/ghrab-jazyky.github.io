@@ -23,7 +23,7 @@
 <section class="ref-heading">
 <span class="eyebrow">JEDNO MÍSTO · TŘI JAZYKOVÉ DOVEDNOSTI</span>
 <h1>Referenční karty</h1>
-<p class="page-lead">Společné prostředí pro kontrolu tří vzorových aktivit. Vyberte dovednost, jazyk a úroveň; otevřete studentskou kartu nebo promítněte QR kód. Nastavení jazyka a úrovně na této stránce zatím slouží jako filtr, ne jako uzamčená studentská konfigurace.</p>
+<p class="page-lead">Společné prostředí pro kontrolu tří vzorových aktivit. Vyberte dovednost, jazyk a úroveň; otevřete studentskou kartu nebo promítněte QR kód. V katalogu lze filtrovat témata; při sdílení můžete vybrat volnou nebo pevnou studentskou variantu včetně odkazu a QR.</p>
 <p class="ref-warning"><strong>Důležité:</strong> Obsah je zatím pilotní. Procvičovací reference jsou k vyzkoušení; kratší, pedagogicky samostatné testovací verze nejsou vytvořeny. Učitelské klíče nejsou součástí veřejného webu.</p>
 </section>
 <section class="ref-controls" aria-label="Filtry referenčních karet">
@@ -34,11 +34,19 @@
 <button id="refReset" class="button outline" type="button">Vymazat filtry</button>
 </section>
 <section aria-label="Referenční témata"><div class="ref-listhead"><h2>Aktivity</h2><p id="refCount" aria-live="polite">Načítání…</p></div><div id="refList" class="ref-grid" aria-live="polite"></div><p id="refEmpty" class="ref-empty" hidden>Žádná referenční karta neodpovídá filtrům.</p></section>
-<section class="ref-next"><h2>Co bude následovat</h2><p>V další integrační etapě doplníme skutečné převzetí jazykové a úrovňové varianty přes studentské URL, volnou a pevnou volbu, stažení procvičovacího HTML a samostatně navržené testové sady. Do té doby QR kód otevírá pouze původní referenční kartu, bez předstíraného uzamčení.</p></section>
+<section class="ref-next"><h2>Co bude následovat</h2><p>Pilotní studentské odkazy už podporují volnou i pevnou variantu jazyka a úrovně a QR odpovídá zvolenému nastavení. Před publikací zbývá ověřit reálné telefony, tablety a školní Wi-Fi, dořešit offline exporty a vytvořit samostatně navržené a schválené testové sady.</p></section>
 </main>
 <dialog id="refDialog" class="ref-dialog" aria-labelledby="refDialogTitle"><div class="ref-modal">
 <div class="ref-modal-top"><div><span class="eyebrow">PROCVIČOVÁNÍ · NÁHLED</span><h2 id="refDialogTitle">Otevřít kartu</h2></div><button id="refClose" class="close-button" type="button" aria-label="Zavřít dialog">×</button></div>
-<p id="refDialogDetail"></p><p class="ref-warning">Odkaz a QR otevřou původní kartu. Volba jazyka a úrovně se v této pilotní etapě nepřenáší a není uzamčena.</p>
+<p id="refDialogDetail"></p>
+<label class="ref-mode-label" for="refMode">Nastavení pro studenty
+<select id="refMode"><option value="free">Volná volba — student si vybere</option><option value="fixed">Pevná varianta — určuje učitel</option></select>
+</label>
+<div id="refFixedFields" class="ref-fixed-fields" hidden>
+<label for="refShareLang">Jazyk<select id="refShareLang"></select></label>
+<label for="refShareLevel">Úroveň CEFR<select id="refShareLevel"></select></label>
+</div>
+<p id="refModeHint" class="ref-warning">Student může přepínat všechny jazyky a úrovně podporované kartou.</p>
 <label for="refUrl">Přímý odkaz</label><input id="refUrl" class="share-url" type="text" readonly aria-readonly="true">
 <div class="ref-modal-actions"><a id="refOpen" class="button primary" target="_blank" rel="noopener">Otevřít studentskou kartu</a><button id="refCopy" class="button outline" type="button">Kopírovat odkaz</button></div>
 <div id="refQr" class="ref-qr" role="img" aria-label="QR kód studentské karty"></div>
