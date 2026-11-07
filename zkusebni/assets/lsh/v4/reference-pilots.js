@@ -12,7 +12,7 @@ const list=$('refList'),dialog=$('refDialog'),status=$('refDialogStatus');
 function el(tag,klass,txt){const x=document.createElement(tag);if(klass)x.className=klass;if(txt!==undefined)x.textContent=String(txt);return x;}
 function isValid(v){
  return v&&/^(cl|rl|ll)-[a-z0-9-]+$/.test(v.id)&&SKILLS[v.skill]&&typeof v.title==='string'&&v.title.length<160&&typeof v.summary==='string'&&
- typeof v.studentPath==='string'&&/^(?:integrace\/(?:konverzace|cteni|poslech)|konverzace)\/[a-z0-9-]+\/$/.test(v.studentPath)&&v.studentPath.split('/').includes(v.skill)&&v.fixedVariantSupported===true&&typeof v.selfContainedHtml==='boolean'&&typeof v.isReference==='boolean'&&v.defaultLanguage==='en'&&LEVELS.includes(v.defaultLevel)&&
+ typeof v.studentPath==='string'&&/^(?:integrace\/(?:konverzace|cteni|poslech)|konverzace)\/[a-z0-9-]+\/$/.test(v.studentPath)&&v.studentPath.split('/').includes(v.skill)&&v.fixedVariantSupported===true&&typeof v.selfContainedHtml==='boolean'&&typeof v.isReference==='boolean'&&(!v.offlineBundle||(v.offlineBundle==='clb-v1'&&v.skill==='konverzace'&&!v.selfContainedHtml))&&v.defaultLanguage==='en'&&LEVELS.includes(v.defaultLevel)&&
  Array.isArray(v.languages)&&v.languages.length>0&&v.languages.every(x=>LANGS[x])&&
  Array.isArray(v.levels)&&v.levels.length===6&&LEVELS.every(x=>v.levels.includes(x))&&v.practice==='preview'&&v.test==='not-ready';
 }
@@ -67,7 +67,7 @@ function refreshShare(){
   $('refUrl').value=url;$('refOpen').href=url;$('refOpen').removeAttribute('aria-disabled');
   const qr=$('refQr');qr.replaceChildren();
   if(!window.CLBQRCode||typeof window.CLBQRCode.svg!=='function')throw new Error('QR unavailable');
-  qr.append(window.CLBQRCode.svg(url));$('refSaveQr').disabled=false;$('refSaveHtml').disabled=!selected.selfContainedHtml;status.textContent='';
+  qr.append(window.CLBQRCode.svg(url));$('refSaveQr').disabled=false;$('refSaveHtml').disabled=!(selected.selfContainedHtml||selected.offlineBundle==='clb-v1');status.textContent='';
  }catch(error){
   $('refUrl').value='';$('refOpen').removeAttribute('href');$('refOpen').setAttribute('aria-disabled','true');
   $('refQr').replaceChildren();$('refSaveQr').disabled=true;$('refSaveHtml').disabled=true;
@@ -79,8 +79,10 @@ function open(e){
  selected=e;
  $('refDialogTitle').textContent=e.title;
  const note=$('refContentNote');note.hidden=!e.contentNote;note.textContent=e.contentNote||'';
- $('refOfflineNote').textContent=!e.selfContainedHtml?
-  'Tato karta používá další společné skripty. Samostatné offline HTML zatím není dostupné; odkaz a QR fungují online.' : e.mediaExternal?
+ $('refSaveHtml').textContent=e.offlineBundle==='clb-v1'?'Stáhnout kompletní offline ZIP':'Stáhnout procvičovací HTML do hodiny';
+ $('refOfflineNote').textContent=!e.selfContainedHtml&&e.offlineBundle==='clb-v1'?
+  'Kompletní ZIP obsahuje kartu, skripty i CSS. Rozbalte celý archiv a otevřete konverzace/<téma>/index.html; při file:// může být ukládání osobního slovníčku omezené.' : !e.selfContainedHtml?
+  'Tato karta vyžaduje další závislosti; offline export zatím nelze nabídnout.' : e.mediaExternal?
   'Offline HTML obsahuje úlohy a uložené nastavení, ale video se nepřibaluje a pro přehrání vyžaduje internet. Osobní slovníček se může lišit podle prohlížeče.' :
   'Offline HTML uchová volnou či pevnou variantu. Při otevření jako místní soubor mohou některé prohlížeče omezit uložený osobní slovníček.';
  $('refDialogDetail').textContent=SKILLS[e.skill]+' · '+e.languages.map(l=>LANGS[l]).join(', ')+' · A1–C2 · '+e.sourceVersion;
@@ -112,10 +114,16 @@ function saveQr(){
  status.textContent='QR kód připraven ke stažení.';
 }
 async function saveHtml(){
- if(!selected||!selected.selfContainedHtml||!$('refUrl').value)return;
+ if(!selected||!$('refUrl').value)return;
  const btn=$('refSaveHtml');btn.disabled=true;
  try{
   const chosen=new URL($('refUrl').value);
+  if(!selected.selfContainedHtml){
+   if(selected.offlineBundle!=='clb-v1'||!window.LSH_OFFLINE_BUNDLE)throw new Error('Offline ZIP is not available for this card');
+   const filename=await window.LSH_OFFLINE_BUNDLE.download(selected,chosen.href);
+   status.textContent='Offline ZIP připraven: '+filename+'. Rozbalte celý archiv včetně složky assets.';
+   return;
+  }
   const source=new URL(selected.studentPath,new URL(ROOT,location.origin));
   if(chosen.origin!==location.origin||chosen.pathname!==source.pathname)throw new Error('Unexpected download URL');
   const response=await fetch(source.href,{cache:'no-store'});

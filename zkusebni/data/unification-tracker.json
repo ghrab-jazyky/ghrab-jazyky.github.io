@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-07-r5-i-all-29-technical-candidates",
+  "version": "2026-11-07-r5-n-offline-zip",
   "sourceRevision": {
     "conversationManifest": "0.4.1-rc1-github-only",
     "editorialInventory": "r4d-2026-11-06"
@@ -43,7 +43,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5E: Existing public card verified against the AI reference: EN/ES/DE/FR x A1-C2 (24 variants); 8 stations, 24 supplemental questions, 12 vocabulary words and 4 toolkit items per variant, no empty main prompts or duplicate supplemental questions within variants. Existing lang/level + v2 lock.js supports UI-locked sharing. Source HTML SHA (Git blob) unchanged. Student content/linguistics, real browsers, offline export and separate test mode remain pending."
     },
     {
@@ -57,7 +57,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5E: Existing public card verified against the AI reference: EN/ES/DE/FR x A1-C2 (24 variants); 8 stations, 24 supplemental questions, 12 vocabulary words and 4 toolkit items per variant, no empty main prompts or duplicate supplemental questions within variants. Existing lang/level + v2 lock.js supports UI-locked sharing. Source HTML SHA (Git blob) unchanged. Student content/linguistics, real browsers, offline export and separate test mode remain pending."
     },
     {
@@ -84,7 +84,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
@@ -98,7 +98,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
@@ -112,7 +112,8 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "technicalNote": "R5F audit: 24/24 language-level variants structurally present. One exact duplicate follow-up question in es/A1: '¿Es grande o pequeño?' is question 1 at stations 1 (Mi instituto) and 8 (Mi instituto ideal). Do not mark migrated or edit the original until a revised wording is pedagogically checked; possible station-8 replacement: '¿Tu instituto ideal es grande o pequeño?'. R5I: School added to unapproved technical catalogue without modifying its original source or approving the ES A1 question. Existing lang/level + UI lock URL works; corrective wording remains pending. Do not release."
+      "technicalNote": "R5F audit: 24/24 language-level variants structurally present. One exact duplicate follow-up question in es/A1: '¿Es grande o pequeño?' is question 1 at stations 1 (Mi instituto) and 8 (Mi instituto ideal). Do not mark migrated or edit the original until a revised wording is pedagogically checked; possible station-8 replacement: '¿Tu instituto ideal es grande o pequeño?'. R5I: School added to unapproved technical catalogue without modifying its original source or approving the ES A1 question. Existing lang/level + UI lock URL works; corrective wording remains pending. Do not release.",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING"
     },
     {
       "id": "cl-jak-se-ucit-na-testy",
@@ -125,7 +126,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
@@ -139,7 +140,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
@@ -153,7 +154,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
@@ -167,7 +168,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5E batch 2: existing public HTML retained byte-identical; verified 24 language/CEFR combinations (EN/ES/DE/FR x A1-C2), 8 stations, 24 follow-up questions, 12 vocabulary words and 4 language supports each; v2 QR URL preset+UI lock and v3 vocabulary bridge present. Automated integrity and variant checks added. Independent language review, offline packaging, separate Test and physical UAT pending."
     },
     {
@@ -181,7 +182,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
@@ -195,7 +196,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
@@ -209,7 +210,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
@@ -223,7 +224,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
@@ -237,7 +238,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
@@ -251,7 +252,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5E batch 2: existing public HTML retained byte-identical; verified 24 language/CEFR combinations (EN/ES/DE/FR x A1-C2), 8 stations, 24 follow-up questions, 12 vocabulary words and 4 language supports each; v2 QR URL preset+UI lock and v3 vocabulary bridge present. Automated integrity and variant checks added. Independent language review, offline packaging, separate Test and physical UAT pending."
     },
     {
@@ -265,7 +266,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5E batch 2: existing public HTML retained byte-identical; verified 24 language/CEFR combinations (EN/ES/DE/FR x A1-C2), 8 stations, 24 follow-up questions, 12 vocabulary words and 4 language supports each; v2 QR URL preset+UI lock and v3 vocabulary bridge present. Automated integrity and variant checks added. Independent language review, offline packaging, separate Test and physical UAT pending."
     },
     {
@@ -279,7 +280,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
@@ -293,7 +294,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5E batch 2: existing public HTML retained byte-identical; verified 24 language/CEFR combinations (EN/ES/DE/FR x A1-C2), 8 stations, 24 follow-up questions, 12 vocabulary words and 4 language supports each; v2 QR URL preset+UI lock and v3 vocabulary bridge present. Automated integrity and variant checks added. Independent language review, offline packaging, separate Test and physical UAT pending."
     },
     {
@@ -307,7 +308,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
@@ -321,7 +322,7 @@
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
       "publicRelease": "BLOCKED_PENDING_REVIEW",
-      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "offlineExport": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
       "technicalNote": "R5F batch 3: source HTML unchanged, all EN/ES/DE/FR x A1-C2 variants structurally checked for 8 stations, 3 follow-ups/station, 12 vocab + 4 toolkit, Support/Challenge/Stretch and upper-level Explain. Existing URL preset, v2 UI-only lock, v3 vocabulary bridge and CSP present. Original Git blob verified in CI. Independent linguistic/pedagogical UAT, standalone offline package, separate TEST pending."
     },
     {
@@ -567,6 +568,38 @@
       "technicalPreviewInCatalog": true,
       "pedagogicalCorrectionApproved": false,
       "testModeApproved": false
+    },
+    {
+      "id": "R5N-CONVO-OFFLINE-ZIP",
+      "skill": "konverzace",
+      "topicIds": [
+        "cl-socialni-media",
+        "cl-hrani-her",
+        "cl-rodina",
+        "cl-prazdniny",
+        "cl-jidlo-piti-restaurace",
+        "cl-vanoce",
+        "cl-zivot-bez-ai",
+        "cl-socialni-site-a-dusevni-zdravi",
+        "cl-jak-se-ucit-na-testy",
+        "cl-tlak-na-vykon",
+        "cl-pratele",
+        "cl-problemy-teenageru",
+        "cl-muzi-a-zeny",
+        "cl-spolecenske-problemy",
+        "cl-majetkove-nerovnosti",
+        "cl-volny-cas-a-konicky",
+        "cl-nemoci-u-lekare",
+        "cl-svetova-politika",
+        "cl-ceny-nemovitosti",
+        "cl-skola"
+      ],
+      "count": 20,
+      "status": "ZIP_WITH_FIVE_DEPENDENCIES_QA_PENDING",
+      "sourceHtmlUnchanged": true,
+      "downloadMode": "client-side-one-click-complete-zip",
+      "pedagogicalApproval": false,
+      "physicalUAT": false
     }
   ],
   "migrationProgress": {
@@ -583,7 +616,8 @@
     "readingCardsURLIntegrated": 4,
     "remainingReadingCandidatesWithoutTechnicalURLIntegration": 0,
     "readingCardsNeedingPedagogicalReview": 4,
-    "allTechnicalCandidatesIndexed": 29
+    "allTechnicalCandidatesIndexed": 29,
+    "offlineConversationPackagesAvailable": 20
   },
   "contentIssues": [
     {

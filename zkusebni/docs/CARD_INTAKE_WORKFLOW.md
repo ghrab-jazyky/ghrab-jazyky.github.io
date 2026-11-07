@@ -59,3 +59,7 @@ Přiložit nové studentské HTML a sdělit dovednost, název, konkrétní anota
 ## Webové rozhraní příjmu
 
 `/zkusebni/pridat-kartu/` — přetažení až 12 studentských HTML, doplnění metadata, stažení místně vygenerovaného ZIP. ZIP lze vložit do ChatGPT pro přidání přes oprávněný GitHub konektor; statická stránka **nikdy sama nepublikuje**. Node importer použije uvnitř ZIP obsažené `cards.json` a zdroje.
+
+## Offline ZIP pro dvacet starších konverzačních karet (R5N)
+
+U všech 20 starších Conversation Lab karet byl potvrzen stejný seznam pěti závislostí. Pilot nabízí kompletní ZIP: `konverzace/<slug>/index.html` a soubory `assets/lsh/v2/lock.js`, `assets/lsh/v3/card-bridge.css`, `assets/lsh/v3/model.js`, `assets/lsh/v3/store.js`, `assets/lsh/v3/card-bridge.js` plus návod. Při exportu se nejprve ověří CSP SHA-256 původního inline skriptu. Pevná varianta a zámek se upraví jen v offline kopii s novým CSP hashem. Původní HTML a Git blob zůstávají nedotčené. Ukládání slovníčku při `file://` může být na některých zařízeních omezené; fyzická UAT je samostatná.

@@ -262,6 +262,23 @@ for(const item of additionalReading){
  console.log('PASS School preserved, held for ES A1 linguistic correction; 24 technical variants');
 }
 
+
+/* R5N: verify every legacy CLB card's exact five-file offline dependency closure. */
+const offlineEntries=inventory.entries.filter(x=>x.offlineBundle==='clb-v1');
+assert.equal(offlineEntries.length,20,'All 20 older CLB cards need an offline ZIP');
+const offlineAssets=['../../assets/lsh/v2/lock.js','../../assets/lsh/v3/card-bridge.css','../../assets/lsh/v3/model.js','../../assets/lsh/v3/store.js','../../assets/lsh/v3/card-bridge.js'];
+for(const entry of offlineEntries){
+ assert.equal(entry.skill,'konverzace');assert.equal(entry.selfContainedHtml,false);
+ const source=read(entry.studentPath+'index.html');
+ const refs=[...source.matchAll(/<(?:script|link|img|source|video|audio)[^>]*(?:src|href)\s*=\s*["']([^"']+)["']/gi)].map(x=>x[1]);
+ assert.deepEqual(refs,offlineAssets,'Unsupported dependency list: '+entry.id);
+ assert.equal(source.split('const clbPreset = new URLSearchParams(window.location.search);').length,2);
+ assert.equal((source.match(/<script>[\s\S]*?<\/script>/g)||[]).length,1);
+ assert.equal((source.match(/sha256-[A-Za-z0-9+/]{43}=/g)||[]).length,1);
+}
+new vm.Script(read('assets/lsh/v4/offline-bundle.js'),{filename:'offline-bundle.js'});
+console.log('PASS 20 older Conversation HTML source files ready for complete ZIP export');
+
 const ui=read('assets/lsh/v4/reference-pilots.js');
 new vm.Script(ui,{filename:'reference-pilots.js'});
 
