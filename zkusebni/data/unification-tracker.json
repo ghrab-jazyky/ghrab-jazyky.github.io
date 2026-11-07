@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-07-r5-e-conversation-batch-1",
+  "version": "2026-11-07-r5-e-conversation-batches-1-2",
   "sourceRevision": {
     "conversationManifest": "0.4.1-rc1-github-only",
     "editorialInventory": "r4d-2026-11-06"
@@ -148,11 +148,13 @@
       "title": "Rodina",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5E batch 2: existing public HTML retained byte-identical; verified 24 language/CEFR combinations (EN/ES/DE/FR x A1-C2), 8 stations, 24 follow-up questions, 12 vocabulary words and 4 language supports each; v2 QR URL preset+UI lock and v3 vocabulary bridge present. Automated integrity and variant checks added. Independent language review, offline packaging, separate Test and physical UAT pending."
     },
     {
       "id": "cl-problemy-teenageru",
@@ -220,11 +222,13 @@
       "title": "Prázdniny a cestování",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5E batch 2: existing public HTML retained byte-identical; verified 24 language/CEFR combinations (EN/ES/DE/FR x A1-C2), 8 stations, 24 follow-up questions, 12 vocabulary words and 4 language supports each; v2 QR URL preset+UI lock and v3 vocabulary bridge present. Automated integrity and variant checks added. Independent language review, offline packaging, separate Test and physical UAT pending."
     },
     {
       "id": "cl-jidlo-piti-restaurace",
@@ -232,11 +236,13 @@
       "title": "Jídlo, pití a restaurace",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5E batch 2: existing public HTML retained byte-identical; verified 24 language/CEFR combinations (EN/ES/DE/FR x A1-C2), 8 stations, 24 follow-up questions, 12 vocabulary words and 4 language supports each; v2 QR URL preset+UI lock and v3 vocabulary bridge present. Automated integrity and variant checks added. Independent language review, offline packaging, separate Test and physical UAT pending."
     },
     {
       "id": "cl-nemoci-u-lekare",
@@ -256,11 +262,13 @@
       "title": "Vánoce",
       "origin": "conversation-manifest",
       "isReference": false,
-      "practiceState": "WAITING_REFERENCE_STANDARD",
-      "urlAndQr": "INTEGRATION_PENDING",
+      "practiceState": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "urlAndQr": "URL_INTEGRATED_QA_PENDING",
       "browserAndPedagogyQA": "QA_PENDING",
       "separateTestMode": "NOT_DESIGNED_OR_APPROVED",
-      "publicRelease": "BLOCKED_PENDING_REVIEW"
+      "publicRelease": "BLOCKED_PENDING_REVIEW",
+      "offlineExport": "BLOCKED_DEPENDENT_ON_SHARED_SCRIPTS",
+      "technicalNote": "R5E batch 2: existing public HTML retained byte-identical; verified 24 language/CEFR combinations (EN/ES/DE/FR x A1-C2), 8 stations, 24 follow-up questions, 12 vocabulary words and 4 language supports each; v2 QR URL preset+UI lock and v3 vocabulary bridge present. Automated integrity and variant checks added. Independent language review, offline packaging, separate Test and physical UAT pending."
     },
     {
       "id": "cl-svetova-politika",
@@ -426,6 +434,32 @@
       "offlineExport": "not-yet-available",
       "linguisticApproval": false,
       "testModeApproved": false
+    },
+    {
+      "id": "R5E-CONVO-02",
+      "skill": "konverzace",
+      "topicIds": [
+        "cl-rodina",
+        "cl-prazdniny",
+        "cl-jidlo-piti-restaurace",
+        "cl-vanoce"
+      ],
+      "count": 4,
+      "status": "STRUCTURE_MATCH_REFERENCE_PEDAGOGY_PENDING",
+      "sourceHtmlUnchanged": true,
+      "technicalPreviewInCatalog": true,
+      "offlineExport": "not-yet-available",
+      "linguisticApproval": false,
+      "testModeApproved": false
     }
-  ]
+  ],
+  "migrationProgress": {
+    "totalExisting": 29,
+    "referenceCandidates": 3,
+    "conversationCandidatesStructurallyCompatible": 6,
+    "remainingConversationCandidatesUnreviewed": 14,
+    "remainingReadingCandidatesUnreviewed": 4,
+    "remainingListeningCandidatesUnreviewed": 2,
+    "allApproved": 0
+  }
 }
