@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "collectionVersion": "R5-reference-pilot-2026-11-07",
+  "collectionVersion": "R5C-reference-integrations-2026-11-07",
   "purpose": "Public teacher-facing reference previews only. NOT a publishable student manifest or a teacher answer repository.",
   "approvedForTeaching": false,
   "entries": [
@@ -24,13 +24,17 @@
         "C1",
         "C2"
       ],
-      "sourceVersion": "R4C · původní HTML",
-      "studentPath": "reference/konverzace/umela-inteligence/",
+      "sourceVersion": "R4C · původní HTML · R5C pilotní integrace",
+      "studentPath": "integrace/konverzace/umela-inteligence/",
       "selfContainedHtml": true,
       "mediaExternal": false,
       "practice": "preview",
-      "fixedVariantSupported": false,
-      "test": "not-ready"
+      "fixedVariantSupported": true,
+      "test": "not-ready",
+      "integrationVersion": "R5C-practice-URL-bridge",
+      "defaultLanguage": "en",
+      "defaultLevel": "B2",
+      "practiceQueryFlag": "practice=1"
     },
     {
       "id": "rl-asteroids",
@@ -52,13 +56,17 @@
         "C1",
         "C2"
       ],
-      "sourceVersion": "v2.3",
-      "studentPath": "nahledy/cteni/asteroids/",
+      "sourceVersion": "v2.3 · R5C pilotní integrace",
+      "studentPath": "integrace/cteni/asteroids/",
       "selfContainedHtml": true,
       "mediaExternal": false,
       "practice": "preview",
-      "fixedVariantSupported": false,
-      "test": "not-ready"
+      "fixedVariantSupported": true,
+      "test": "not-ready",
+      "integrationVersion": "R5C-practice-URL-bridge",
+      "defaultLanguage": "en",
+      "defaultLevel": "B1",
+      "practiceQueryFlag": "practice=1"
     },
     {
       "id": "ll-matthew-oscars",
@@ -77,13 +85,17 @@
         "C1",
         "C2"
       ],
-      "sourceVersion": "v3",
-      "studentPath": "reference/poslech/matthew-mcconaughey/",
+      "sourceVersion": "v3 · R5C pilotní integrace",
+      "studentPath": "integrace/poslech/matthew-mcconaughey/",
       "selfContainedHtml": true,
       "mediaExternal": true,
       "practice": "preview",
-      "fixedVariantSupported": false,
-      "test": "not-ready"
+      "fixedVariantSupported": true,
+      "test": "not-ready",
+      "integrationVersion": "R5C-practice-URL-bridge",
+      "defaultLanguage": "en",
+      "defaultLevel": "B2",
+      "practiceQueryFlag": "practice=1"
     }
   ]
 }
