@@ -3,7 +3,7 @@ on:
   pull_request:
     paths:
       - 'zkusebni/reference/**'
-      - 'zkusebni/nahledy/cteni/asteroids/**'
+      - 'zkusebni/nahledy/cteni/**'
       - 'zkusebni/integrace/**'
       - 'zkusebni/assets/lsh/v4/**'
       - 'zkusebni/data/reference-pilots.json'
@@ -22,7 +22,7 @@ on:
       - 'feat/lsh-*'
     paths:
       - 'zkusebni/reference/**'
-      - 'zkusebni/nahledy/cteni/asteroids/**'
+      - 'zkusebni/nahledy/cteni/**'
       - 'zkusebni/integrace/**'
       - 'zkusebni/assets/lsh/v4/**'
       - 'zkusebni/data/reference-pilots.json'
@@ -55,6 +55,19 @@ jobs:
           node zkusebni/tools/card-intake.cjs --verify
           node zkusebni/tools/card-intake.cjs --self-test
           node --check zkusebni/tools/claude-audit-import.cjs
+      - name: Audit all five original Reading sources (120 variants, no answer keys)
+        run: |
+          node zkusebni/tools/reading-content-audit.cjs "$RUNNER_TEMP/lsh-reading-source-qa"
+          node -e 'const a=require(process.argv[1]);if(a.topicCount!==5||a.variantCount!==120||a.questionCount!==1800||a.approval!==false||a.teacherApproval!==false)throw Error("Reading QA coverage or release gate mismatch");console.log("PASS five Reading sources and 120 CEFR variants audited")' "$RUNNER_TEMP/lsh-reading-source-qa/READING_5_SOURCE_QA.json"
+      - name: Attach Reading content and evidence QA (not teacher approval)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-reading-five-content-evidence-qa
+          path: |
+            ${{ runner.temp }}/lsh-reading-source-qa/*.json
+            ${{ runner.temp }}/lsh-reading-source-qa/*.md
+          if-no-files-found: error
+          retention-days: 30
       - name: End-to-end batch intake for all THREE skills (runner only, no deployment)
         run: |
           set -eu
