@@ -50,7 +50,11 @@ async function reviewOffline(engine,label,viewport){
   await catalog.waitForFunction(expected=>document.querySelectorAll('#refList .ref-card').length===expected,
    inventory.entries.length);
   const offline=await browser.newContext({viewport,serviceWorkers:'block'});
-  await offline.setOffline(true);
+  // Linux Playwright WebKit may reject file:// navigation when OS network-offline
+  // mode is enabled. For WebKit block every HTTP(S) request instead: the
+  // downloaded file remains the only permitted content source.
+  if(label==='WebKit')await offline.route(/^https?:/,route=>route.abort());
+  else await offline.setOffline(true);
   const student=await offline.newPage();
   student.setDefaultTimeout(16000);
   let unexpectedErrors=[];
