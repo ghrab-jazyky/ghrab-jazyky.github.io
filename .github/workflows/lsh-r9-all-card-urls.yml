@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'zkusebni/tests/lsh-all-29-fixed-urls.browser.test.cjs'
+      - 'zkusebni/tests/lsh-standalone-offline.browser.test.cjs'
       - 'zkusebni/data/reference-pilots.json'
       - 'zkusebni/assets/lsh/v4/reference-pilots.js'
       - 'zkusebni/reference-karty/**'
@@ -16,6 +17,7 @@ on:
       - 'feat/lsh-*'
     paths:
       - 'zkusebni/tests/lsh-all-29-fixed-urls.browser.test.cjs'
+      - 'zkusebni/tests/lsh-standalone-offline.browser.test.cjs'
       - 'zkusebni/data/reference-pilots.json'
       - 'zkusebni/assets/lsh/v4/reference-pilots.js'
       - 'zkusebni/reference-karty/**'
@@ -43,3 +45,5 @@ jobs:
           npx playwright install --with-deps chromium webkit
       - name: Verify all 29 free/locked student URLs and QR in two engines
         run: node --test zkusebni/tests/lsh-all-29-fixed-urls.browser.test.cjs
+      - name: Verify real single-file offline HTML downloads from teacher catalog
+        run: node --test zkusebni/tests/lsh-standalone-offline.browser.test.cjs
