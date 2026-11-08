@@ -42,10 +42,21 @@ GitHub Pages je veřejný statický web bez bezpečného serverového zápisu. D
 - Zjevné soukromé klíče a učitelské klíče blokuje. Automatické skenování není náhradou za ruční kontrolu soukromí.
 
 ### Co automatická validace NEUMÍ
-- Zhodnotit skutečnou jazykovou úroveň, autentičnost obsahu, vhodnost videa nebo správné odpovědi. To je práce pro Claude + učitele.
+- Zhodnotit skutečnou jazykovou úroveň, autentičnost obsahu, vhodnost videa nebo správné odpovědi. Vyžaduje to nezávislou obsahovou revizi a rozhodnutí učitele; Claude je jen volitelný pomocník, nikoli podmínka pokračování.
 - Ověřit nativní Safari/iOS/iPadOS, školní Wi-Fi a skutečně funkční offline IndexedDB. Je nutná fyzická UAT.
 - Vytvořit samostatně schválenou testovací sadu. \`Testování\` zůstává do schválení vypnuté.
 - Poskytovat přímé nahrání HTML na Pages bez autentizovaného backendu.
+
+## Zabezpečení hromadného importu (R8, 8. 11. 2026)
+
+Příkaz `--apply` je určen pro **pracovní kopii repozitáře ve vývojové větvi**. Před každým zápisem znovu zkontroluje celkovou konzistenci existujícího katalogu a založí lokální zámek `data/.card-intake.lock`, aby se nepotkaly dvě současné instance importeru.
+
+- Vytvářené HTML se zapisuje v režimu **exclusive create**. Existující soubor se nepřepíše; originály karet zůstávají zachované.
+- Původní tři evidence (`reference-pilots.json`, `unification-tracker.json`, `claude-audit-queue.json`) se před zápisem uchovají v byte-identických kopiích v paměti; nové evidence se nejprve připraví do dočasného souboru a poté atomicky přejmenují.
+- Pokud během importu nastane zachycená chyba, obnoví se dokončené zápisy evidencí a odstraní se pouze soubory vytvořené danou instancí. Jde o **best-effort rollback při výjimce**; přerušení napájení nebo násilné ukončení procesu uprostřed více zápisů nemůže běžný filesystem garantovat jako jednu databázovou transakci. Před commitem je proto povinný `--verify`.
+- CI umí záměrně vyvolat chybu po prvním HTML a po první evidenci, porovnat všechny tři evidence byte-for-byte, zkontrolovat nepřítomnost částečných souborů a poté dokončit skutečný tříkartový smoke import.
+
+**Platí nadále:** importer nic neposílá na veřejné Pages, neaktivuje `Testování`, nepovažuje technický PASS za pedagogické schválení a nepřijímá učitelské klíče.
 
 ## Claude — export fronty pro nezávislé kontroly
 \`\`\`bash
