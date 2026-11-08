@@ -114,6 +114,17 @@ for(const card of MANIFEST.cards){
       if(document.getElementById('stationTitle').textContent!==v.title)fail(where,'Station heading not rendered');
       const target=squish(document.getElementById('mainQuestion').textContent);
       if(target!==squish(v.main))fail(where,'Main prompt differs from source data');
+      // Both historical reference and unified cards must render their actual
+      // B2-C2 explanations; accepting an alias in JSON without visible UI is a regression.
+      const explanation=(typeof v.mainExplain==='string'&&v.mainExplain.trim())?
+       v.mainExplain:v.mainExplanation;
+      const shouldExplain=['B2','C1','C2'].includes(lev)&&typeof explanation==='string'&&!!explanation.trim();
+      const explanationRow=document.getElementById('mainExplainRow');
+      if(!explanationRow)fail(where,'Missing main-explanation UI control');
+      else if(explanationRow.hidden===shouldExplain)
+       fail(where,'Main-explanation visibility differs from language/level CONTENT');
+      if(shouldExplain&&squish(document.getElementById('mainExplainText')?.textContent)!==squish(explanation))
+       fail(where,'Rendered main explanation is missing or differs from original');
       const questions=[...document.querySelectorAll('#questions .question-text')].map(x=>squish(x.textContent));
       if(questions.length!==3||questions.some((x,j)=>x!==squish(v.questions[j])))
        fail(where,'One of three follow-up prompts differs from source data');
