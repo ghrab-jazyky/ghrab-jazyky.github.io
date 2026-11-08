@@ -73,9 +73,13 @@ for(const card of manifest.cards){
        'English instruction may have leaked into the target-language prompt.','PRIORITY_REVIEW');
    }
    if(LEVELS.indexOf(level)>=3){
-    if(!s.mainExplain||!s.mainExplain.trim())
+    const explainFields=[s.mainExplain,s.mainExplanation].filter(v=>typeof v==='string'&&!!v.trim());
+    if(explainFields.length===0)
       note(card.id,lang,level,'MISSING_MAIN_EXPLAIN','station '+(i+1),s.main,
-       'B2–C2 main question has no explanation; evaluate reference requirement.');
+       'B2–C2 main question has no explanation in mainExplain nor mainExplanation.');
+    if(explainFields.length===2&&explainFields[0]!==explainFields[1])
+      note(card.id,lang,level,'CONFLICTING_MAIN_EXPLAIN','station '+(i+1),s.main,
+       'Both explanation aliases exist with different text; verify which is rendered.','PRIORITY_REVIEW');
     if(!Array.isArray(s.explanations)||s.explanations.length!==3)
       note(card.id,lang,level,'MISSING_FOLLOWUP_EXPLAINS','station '+(i+1),s.title,
        'B2–C2 follow-up explanations absent or incomplete.');
