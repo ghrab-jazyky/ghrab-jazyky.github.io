@@ -1,9 +1,12 @@
-name: LSH R11 all29 + 642 offline review matrix (NO deployment)
+name: LSH R12 content triage and R11 review matrix (NO deployment)
 on:
   pull_request:
     paths:
       - 'zkusebni/tools/r10-unified-review-bundle.cjs'
       - 'zkusebni/tools/r11-review-matrix.cjs'
+      - 'zkusebni/tools/r12-content-triage.cjs'
+      - 'zkusebni/tests/r12-*.test.cjs'
+      - 'zkusebni/docs/LSH_R12_CONTENT_TRIAGE.md'
       - 'zkusebni/tests/r11-*.test.cjs'
       - 'zkusebni/assets/lsh/r11/**'
       - 'zkusebni/docs/LSH_R11_REVIEW_MATRIX.md'
@@ -26,6 +29,9 @@ on:
     paths:
       - 'zkusebni/tools/r10-unified-review-bundle.cjs'
       - 'zkusebni/tools/r11-review-matrix.cjs'
+      - 'zkusebni/tools/r12-content-triage.cjs'
+      - 'zkusebni/tests/r12-*.test.cjs'
+      - 'zkusebni/docs/LSH_R12_CONTENT_TRIAGE.md'
       - 'zkusebni/tests/r11-*.test.cjs'
       - 'zkusebni/assets/lsh/r11/**'
       - 'zkusebni/docs/LSH_R11_REVIEW_MATRIX.md'
@@ -64,10 +70,14 @@ jobs:
         run: node --test zkusebni/tests/r11-review-matrix.test.cjs
       - name: Add the private offline review worksheet to the existing R10 folder
         run: node zkusebni/tools/r11-review-matrix.cjs "$RUNNER_TEMP/lsh-r10-review"
+      - name: Independently validate 30 content decisions, 80 hidden gaps and editorial signals
+        run: node --test zkusebni/tests/r12-content-triage.test.cjs
+      - name: Add R12 pedagogical triage to the same portable review package
+        run: node zkusebni/tools/r12-content-triage.cjs "$RUNNER_TEMP/lsh-r10-review"
       - name: Attach offline index and 29 cards (NO TEACHER KEYS)
         uses: actions/upload-artifact@v4
         with:
-          name: lsh-r11-642-variant-review-offline-NO-KEYS
+          name: lsh-r12-content-triage-642-offline-NO-KEYS
           path: ${{ runner.temp }}/lsh-r10-review/
           retention-days: 7
           if-no-files-found: error
@@ -89,3 +99,5 @@ jobs:
         run: node --test zkusebni/tests/r10-review-bundle.browser.test.cjs
       - name: Verify review UX, JSON import/export and locked R7 candidate links
         run: node --test zkusebni/tests/r11-review-matrix.browser.test.cjs
+      - name: Verify pedagogical triage links on desktop and mobile
+        run: node --test zkusebni/tests/r12-content-triage.browser.test.cjs
