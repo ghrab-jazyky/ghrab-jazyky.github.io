@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "stage": "R5D_TEST_DRAFTS",
+  "status": "REVIEW_ONLY_NOT_READY",
+  "topicCount": 3,
+  "variantCount": 54,
+  "teacherApproval": false,
+  "approvedForRelease": false,
+  "published": false,
+  "automaticScoring": false,
+  "collectStudentIdentity": false,
+  "linkedInCatalog": false,
+  "purpose": "Three separately generated shorter test-form prototypes, each based on one SHA-pinned canonical reference. No grading criteria, answers, teacher keys or student data. Not deployed or activated.",
+  "sources": [
+    {
+      "topicId": "cl-umela-inteligence",
+      "skill": "konverzace",
+      "path": "reference/konverzace/umela-inteligence/index.html",
+      "gitBlob": "8c220aa960a1cbc2d7733518570fbe68deb970b8",
+      "sha256": "0598c67e27a126385875155310a042104c2f1fafa59cbec0884d4deef58a7813",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "durationEstimate": "8–12 min (ústní dvojice, návrh)",
+      "targetGroup": "gymnázium / podle zařazení jazykové skupiny"
+    },
+    {
+      "topicId": "rl-asteroids",
+      "skill": "cteni",
+      "path": "nahledy/cteni/asteroids/index.html",
+      "gitBlob": "3f9f477e3c40ff71fc9403fac587cd9cce1ef4e2",
+      "sha256": "fc667a52f5f48407aa10dea31adda836ffdc88008e206a46727e94cc9991f82b",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "durationEstimate": "12–25 min podle úrovně (návrh)",
+      "targetGroup": "gymnázium / podle zařazení jazykové skupiny"
+    },
+    {
+      "topicId": "ll-matthew-oscars",
+      "skill": "poslech",
+      "path": "reference/poslech/matthew-mcconaughey/index.html",
+      "gitBlob": "78e17abe60d29fe41c3775ecf78d966ae1549225",
+      "sha256": "403022392cbd045cef72ed3554960f922f81545e5e077ad2d1fc9be2ad91a1df",
+      "languages": [
+        "en"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "durationEstimate": "20–30 min včetně přehrávání (návrh)",
+      "targetGroup": "gymnázium / poslech podle úrovně"
+    }
+  ],
+  "pedagogy": {
+    "conversation": {
+      "stationIndices": [
+        0,
+        3,
+        6
+      ],
+      "additionalQuestionIndex": 0,
+      "objective": "Ústně reagovat na otázky a podložit odpovědi příkladem; bez automatického hodnocení.",
+      "weaker": "Přípravný čas, případně přiměřená jazyková opora po rozhodnutí učitele.",
+      "stronger": "Požadavek na propracovanější příklad nebo protiargument po rozhodnutí učitele."
+    },
+    "reading": {
+      "shortLevelCount": 5,
+      "longLevelCount": 6,
+      "lowerTabs": [
+        "gist",
+        "scan",
+        "detail",
+        "gist",
+        "scan"
+      ],
+      "b1Tabs": [
+        "gist",
+        "scan",
+        "detail",
+        "gist",
+        "scan",
+        "detail"
+      ],
+      "higherTabs": [
+        "gist",
+        "scan",
+        "detail",
+        "inference",
+        "matching",
+        "structure"
+      ],
+      "objective": "Porozumět zvolenému autenticky laděnému textu a odpovídat na kratší sadu otázek bez zobrazení klíče.",
+      "weaker": "Možný delší čas nebo vybraná jazyková opora, pokud ji učitel schválí.",
+      "stronger": "Vyžádat si důkaz v konkrétní pasáži po individuálním pokynu učitele."
+    },
+    "listening": {
+      "gistCount": 2,
+      "detailCount": 2,
+      "openCount": 1,
+      "sequenceMin": 3,
+      "objective": "Zachytit hlavní sdělení, detaily a uspořádání řeči; písemnou část posuzuje učitel.",
+      "weaker": "Upravit počet přehrání, případné titulky až po rozhodnutí učitele.",
+      "stronger": "Doplnit argumentaci založenou na konkrétním momentu projevu."
+    }
+  },
+  "safetyNotes": [
+    "Static GitHub Pages does not secure test content or prevent inspecting bundled source.",
+    "No marks, rubric, result collection, student names, autosave or model answer keys.",
+    "Students must not be given these unapproved R5D prototypes.",
+    "Source-media access and replay rules require classroom UAT and teacher approval.",
+    "Assessment conditions and any point scheme remain pending for every skill and level."
+  ]
+}
