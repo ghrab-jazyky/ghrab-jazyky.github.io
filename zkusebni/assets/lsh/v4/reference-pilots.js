@@ -30,19 +30,19 @@ function urlOf(entry,mode,lang,level){
  return url.href;
 }
 function auditText(entry){
- if(!auditLoaded)return 'Claude: stav auditu momentálně nedostupný.';
+ if(!auditLoaded)return 'Externí revize: stav auditu momentálně nedostupný.';
  const a=audits.get(entry.id);
- if(!a)return 'Claude: karta chybí v auditní frontě.';
- if(a.status==='PENDING')return 'Claude: čeká na kontrolu. Učitelské schválení neuděleno.';
+ if(!a)return 'Externí revize: karta chybí v auditní frontě.';
+ if(a.status==='PENDING')return 'Externí revize: čeká na kontrolu. Učitelské schválení neuděleno.';
  const total=entry.languages.length*entry.levels.length;
  const coverage=a.reviewedVariantsCount===total?' · obsahové varianty '+total+'/'+total:' · rozsah kontroly nedoložen';
  const gaps=Number.isInteger(a.unverifiedChecksCount)?' · neověřené oblasti: '+a.unverifiedChecksCount:' · neověřené oblasti nejsou zdokumentovány';
- if(a.status==='REVIEWED_NO_FINDINGS')return 'Claude: kontrola bez zjištěných chyb'+coverage+gaps+'. Učitelské schválení neuděleno.';
+ if(a.status==='REVIEWED_NO_FINDINGS')return 'Externí revize: kontrola bez zjištěných chyb'+coverage+gaps+'. Učitelské schválení neuděleno.';
  if(a.status==='REVIEWED_WITH_FINDINGS'){
   const count=a.findingsSummary||{};
-  return 'Claude: nálezy P0: '+(count.P0||0)+' · P1: '+(count.P1||0)+' · P2: '+(count.P2||0)+coverage+gaps+'. Nálezy čekají na posouzení učitelem. Učitelské schválení neuděleno.';
+  return 'Externí revize: nálezy P0: '+(count.P0||0)+' · P1: '+(count.P1||0)+' · P2: '+(count.P2||0)+coverage+gaps+'. Nálezy čekají na posouzení učitelem. Učitelské schválení neuděleno.';
  }
- return 'Claude: neznámý stav auditu. Učitelské schválení neuděleno.';
+ return 'Externí revize: neznámý stav auditu. Učitelské schválení neuděleno.';
 }
 function filtered(){
  const q=$('refSearch').value.trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('cs');
@@ -60,7 +60,7 @@ function render(){
  $('refEmpty').hidden=items.length!==0;
  if(auditLoaded){
   const done=[...audits.values()].filter(x=>x.status==='REVIEWED_WITH_FINDINGS'||x.status==='REVIEWED_NO_FINDINGS').length;
-  $('refAuditProgress').textContent='Claude: zkontrolováno '+done+' z '+entries.length+' karet. Učitelské schválení je samostatný krok.';
+  $('refAuditProgress').textContent='Externí revize: zkontrolováno '+done+' z '+entries.length+' karet. Učitelské schválení je samostatný krok.';
  }
  for(const e of items){
   const card=el('article',e.isReference?'ref-card ref-card-reference':'ref-card ref-card-migration');
@@ -202,7 +202,7 @@ async function init(){
    audits=new Map(queue.topics.map(x=>[x.id,x]));auditLoaded=true;
   }catch(error){
    audits=new Map();auditLoaded=false;
-   $('refAuditProgress').textContent='Stav Claude auditu nyní nelze ověřit. Karty zůstávají neschválenými technickými náhledy.';
+   $('refAuditProgress').textContent='Stav externí revize nyní nelze ověřit. Karty zůstávají neschválenými technickými náhledy.';
    console.warn('LSH audit queue:',error);
   }
   const requested=new URLSearchParams(location.search).getAll('skill');
