@@ -1,8 +1,12 @@
-name: LSH R10 unified offline teacher review all29 (NO deployment)
+name: LSH R11 all29 + 642 offline review matrix (NO deployment)
 on:
   pull_request:
     paths:
       - 'zkusebni/tools/r10-unified-review-bundle.cjs'
+      - 'zkusebni/tools/r11-review-matrix.cjs'
+      - 'zkusebni/tests/r11-*.test.cjs'
+      - 'zkusebni/assets/lsh/r11/**'
+      - 'zkusebni/docs/LSH_R11_REVIEW_MATRIX.md'
       - 'zkusebni/tests/r10-*.test.cjs'
       - 'zkusebni/docs/LSH_R10_UNIFIED_REVIEW_BUNDLE.md'
       - 'zkusebni/tools/conversation-r8-source-recovery.cjs'
@@ -21,6 +25,10 @@ on:
     branches: ['feat/lsh-*']
     paths:
       - 'zkusebni/tools/r10-unified-review-bundle.cjs'
+      - 'zkusebni/tools/r11-review-matrix.cjs'
+      - 'zkusebni/tests/r11-*.test.cjs'
+      - 'zkusebni/assets/lsh/r11/**'
+      - 'zkusebni/docs/LSH_R11_REVIEW_MATRIX.md'
       - 'zkusebni/tests/r10-*.test.cjs'
       - 'zkusebni/docs/LSH_R10_UNIFIED_REVIEW_BUNDLE.md'
       - 'zkusebni/tools/conversation-r8-source-recovery.cjs'
@@ -52,10 +60,14 @@ jobs:
         run: node --test zkusebni/tests/r10-review-bundle.test.cjs
       - name: Assemble isolated review bundle
         run: node zkusebni/tools/r10-unified-review-bundle.cjs "$RUNNER_TEMP/lsh-r10-review"
+      - name: Verify all 642 review rows, protected card data and R7 URL adapters
+        run: node --test zkusebni/tests/r11-review-matrix.test.cjs
+      - name: Add the private offline review worksheet to the existing R10 folder
+        run: node zkusebni/tools/r11-review-matrix.cjs "$RUNNER_TEMP/lsh-r10-review"
       - name: Attach offline index and 29 cards (NO TEACHER KEYS)
         uses: actions/upload-artifact@v4
         with:
-          name: lsh-r10-unified-all29-review-NO-KEYS
+          name: lsh-r11-642-variant-review-offline-NO-KEYS
           path: ${{ runner.temp }}/lsh-r10-review/
           retention-days: 7
           if-no-files-found: error
@@ -75,3 +87,5 @@ jobs:
           npx playwright install --with-deps chromium webkit
       - name: Verify all 29 HTML offline in Chromium and WebKit
         run: node --test zkusebni/tests/r10-review-bundle.browser.test.cjs
+      - name: Verify review UX, JSON import/export and locked R7 candidate links
+        run: node --test zkusebni/tests/r11-review-matrix.browser.test.cjs
