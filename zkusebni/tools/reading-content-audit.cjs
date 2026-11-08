@@ -75,8 +75,8 @@ for(const t of topics){
    if(!Array.isArray(q.choices)||q.choices.length<3||q.choices.some(x=>typeof x!=='string'||!x.trim())){
     flag(t.id,language,level,'CHOICES_MISSING',at,'Multiple choice options are incomplete or invalid');
    }else{
-    const unique=new Set(q.choices.map(normalize));
-    if(unique.size!==q.choices.length)flag(t.id,language,level,'DUPLICATE_CHOICES',at,'Two choices are effectively identical');
+    const unique=new Set(q.choices.map(x=>String(x).normalize('NFKC').toLocaleLowerCase().trim().replace(/\s+/g,' ')));
+    if(unique.size!==q.choices.length)flag(t.id,language,level,'DUPLICATE_CHOICES',at,'Two choices are identical including punctuation (spacing and case ignored)');
    }
    if(!Number.isInteger(q.answer)||q.answer<0||q.answer>=q.choices.length)
     flag(t.id,language,level,'INVALID_ANSWER_INDEX',at,'Answer index missing or out of available choices','BLOCKING');
@@ -87,8 +87,10 @@ for(const t of topics){
     answersLong.push(clearly);
     answerLengths.push({topicId:t.id,language,level,questionId:q.id,correctClearlyLongest:clearly});
    }
-   if(typeof q.explanation!=='string'||q.explanation.trim().length<10)
-    flag(t.id,language,level,'EXPLANATION_MISSING',at,'Explanation absent or too brief');
+   if(typeof q.explanation!=='string'||!q.explanation.trim())
+    flag(t.id,language,level,'EXPLANATION_MISSING',at,'Explanation absent','BLOCKING');
+   else if(q.explanation.trim().length<10)
+    flag(t.id,language,level,'EXPLANATION_BRIEF',at,'Short explanation; check whether it sufficiently supports this question');
    const ev=q.evidence||[];
    if(!Array.isArray(ev)||!ev.length)flag(t.id,language,level,'EVIDENCE_MISSING',at,'No supporting passage');
    else for(const [k,a] of ev.entries()){
