@@ -204,6 +204,43 @@ fs.writeFileSync(path.join(OUT,'R8_QUESTION_CHANGE_REVIEW.json'),
   total:questionReview.length,teacherApproval:false,approvedForRelease:false,
   note:'38 R6 question changes require separate linguistic judgment. R8 restores originals except 7 explicit A1 fixes; changedByExplicitPatch identifies overlap. Neither original nor R6 text is automatically approved.',
   entries:questionReview},null,2)+'\n');
+// Human-readable, finite review queue. This is evidence for teacher review,
+// never a publication approval and never a replacement for CEFR/semantic QA.
+const md=val=>String(val??'').replace(/[\r\n]+/g,' ').trim();
+const reviewMd=[
+ '# Conversation Lab R8 – jazyková a pedagogická kontrola změn',
+ '',
+ '**Stav: NEOVĚŘENO / NEPUBLIKOVAT.** Kandidáti R8 obnovují původní otázky,',
+ 's výjimkou sedmi zdrojově potvrzených oprav A1. Žádná položka nemá automatický souhlas učitele.',
+ '',
+ '## A. Sedm cílených oprav A1', ''
+];
+for(const [i,p] of plan.patches.entries()){
+ reviewMd.push('### A'+(i+1)+'. '+md(p.topicId)+' · '+md(p.language.toUpperCase())+
+  ' '+md(p.level)+' · stanoviště '+(p.stationIndex+1),
+  '- Umístění: '+md(p.field)+(p.questionIndex===undefined?'':' / doplňující otázka '+(p.questionIndex+1)),
+  '- Původní: '+md(p.original),
+  '- R8 návrh: '+md(p.replacement),
+  '- Důvod návrhu: '+md(p.reason),
+  '- Rozhodnutí učitele: **ČEKÁ**', '');
+}
+reviewMd.push('## B. Všech 38 rozdílů v otázkách mezi originálem a R6', '',
+ 'R8 nepřebírá automaticky úpravy R6. Následující řádky umožní posoudit',
+ 'původní a R6 verzi bez generických změn v ostatním obsahu.', '');
+for(const [i,e] of questionReview.entries()){
+ reviewMd.push('### B'+(i+1)+'. '+md(e.topicId)+' · '+md(e.language.toUpperCase())+' '+
+   md(e.level)+' · stanoviště '+e.station+' · '+md(e.target),
+  '- Původní: '+md(e.original),
+  '- Odmítnutý/neposouzený návrh R6: '+md(e.r6Candidate),
+  '- Aktuální izolovaný kandidát R8: '+md(e.r8Candidate),
+  '- Cílená oprava v R8: '+(e.changedByExplicitPatch?'ANO (čeká na schválení)':'NE'),
+  '- Rozhodnutí učitele: **ČEKÁ**', '');
+}
+reviewMd.push('---','','Dokument vzniká výhradně ve výstupním artefaktu CI. '+
+ 'Schválená produkční karta ani soukromý učitelský klíč se tímto nemění.','');
+assert.equal(questionReview.length,38);
+assert.equal(plan.patches.length,7);
+fs.writeFileSync(path.join(OUT,'R8_QUESTION_CHANGE_REVIEW.md'),reviewMd.join('\n'));
 const lines=['# Conversation Lab R8 – bezpečná obnova původního pedagogického obsahu','',
  'Důvod: R6 kandidáti obsahují masivní generické nahrazování tematicky specifických opor. To je pedagogická regrese, přestože strukturální kontroly R6 byly zelené.',
  '', '## Rozsah předběžného zjištění','',
