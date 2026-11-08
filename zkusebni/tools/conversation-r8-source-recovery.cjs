@@ -145,6 +145,21 @@ for(const item of mf.cards){
    station.questions[p.questionIndex]=p.replacement;
   }else throw Error('Unapproved targeted repair field '+p.field);
  }
+ // Strong negative invariant: reverting ONLY the 7+5 recorded field edits
+ // must recreate the complete source CONTENT byte-for-byte as a JS object.
+ // This catches any hidden regeneration of support, vocabulary or questions.
+ const revert=structuredClone(repaired);
+ for(const p of [...fixes,...targetedFixes]){
+  const station=revert[p.language].levels[p.level].stations[p.stationIndex];
+  if(p.field==='main'){
+   assert.equal(station.main,p.replacement,'Candidate main not applied exactly');
+   station.main=p.original;
+  }else{
+   assert.equal(station.questions[p.questionIndex],p.replacement,'Candidate followup not applied exactly');
+   station.questions[p.questionIndex]=p.original;
+  }
+ }
+ assert.deepEqual(revert,a.data,'Unexpected candidate CONTENT mutation outside 12 recorded prompts '+item.id);
  verifyCoverage(repaired,item.id);
  // Preserve an exact review list of the 38 R6 question edits, even when R8 does
  // not adopt them. Only a human linguistic review can decide the remaining edits.
