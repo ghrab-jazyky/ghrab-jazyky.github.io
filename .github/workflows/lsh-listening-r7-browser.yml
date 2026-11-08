@@ -1,0 +1,35 @@
+name: LSH Listening R7 3-pass browser candidates (NO deployment)
+on:
+  pull_request:
+    paths:
+      - 'zkusebni/tools/listening-r7-three-phase-candidates.cjs'
+      - 'zkusebni/tests/listening-r7-browser.test.cjs'
+      - 'zkusebni/nahledy/poslech/**'
+      - '.github/workflows/lsh-listening-r7-browser.yml'
+  push:
+    branches:
+      - 'feat/lsh-*'
+    paths:
+      - 'zkusebni/tools/listening-r7-three-phase-candidates.cjs'
+      - 'zkusebni/tests/listening-r7-browser.test.cjs'
+      - 'zkusebni/nahledy/poslech/**'
+      - '.github/workflows/lsh-listening-r7-browser.yml'
+permissions:
+  contents: read
+jobs:
+  browser-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser engines for isolated local-only preview
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Run R7 3-stage student UX regression in Chromium and WebKit
+        run: node --test zkusebni/tests/listening-r7-browser.test.cjs
