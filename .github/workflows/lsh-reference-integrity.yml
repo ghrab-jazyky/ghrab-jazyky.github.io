@@ -8,6 +8,7 @@ on:
       - 'zkusebni/assets/lsh/v4/**'
       - 'zkusebni/data/reference-pilots.json'
       - 'zkusebni/data/claude-audit-queue.json'
+      - 'zkusebni/data/reading-r7-matching-proposals.json'
       - 'zkusebni/tools/**'
       - 'zkusebni/podklady/**'
       - 'zkusebni/pridat-kartu/**'
@@ -27,6 +28,7 @@ on:
       - 'zkusebni/assets/lsh/v4/**'
       - 'zkusebni/data/reference-pilots.json'
       - 'zkusebni/data/claude-audit-queue.json'
+      - 'zkusebni/data/reading-r7-matching-proposals.json'
       - 'zkusebni/tools/**'
       - 'zkusebni/podklady/**'
       - 'zkusebni/konverzace/**'
@@ -66,6 +68,20 @@ jobs:
           path: |
             ${{ runner.temp }}/lsh-reading-source-qa/*.json
             ${{ runner.temp }}/lsh-reading-source-qa/*.md
+          if-no-files-found: error
+          retention-days: 30
+      - name: Build and verify R7 Reading matching fixes as private-to-run CI candidates
+        run: |
+          node zkusebni/tools/reading-r7-candidates.cjs "$RUNNER_TEMP/lsh-reading-r7-candidates"
+          node -e 'const a=require(process.argv[1]);if(a.cards.length!==2||a.cards.reduce((s,c)=>s+c.repairedQuestions.length,0)!==16||a.teacherApproval!==false||a.approvedForRelease!==false)throw Error("R7 verification mismatch");console.log("PASS 16 exact replacements across 2 isolated Reading candidates")' "$RUNNER_TEMP/lsh-reading-r7-candidates/R7_CANDIDATES_MANIFEST.json"
+      - name: Attach unapproved R7 Reading student candidate HTML and change manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-reading-r7-16-matching-repairs-candidates
+          path: |
+            ${{ runner.temp }}/lsh-reading-r7-candidates/*.html
+            ${{ runner.temp }}/lsh-reading-r7-candidates/*.json
+            ${{ runner.temp }}/lsh-reading-r7-candidates/*.md
           if-no-files-found: error
           retention-days: 30
       - name: End-to-end batch intake for all THREE skills (runner only, no deployment)
