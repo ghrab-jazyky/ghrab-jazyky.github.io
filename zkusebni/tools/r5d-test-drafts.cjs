@@ -185,7 +185,7 @@ function listening(data,lang,level,cfg){
  assert.ok(d.sequence.length>=cfg.sequenceMin);
  const gist=d.gist.slice(0,cfg.gistCount),detail=d.detail.slice(0,cfg.detailCount);
  // Never copy item.correct, item.why, facts.answer, or open.answer/criteria.
- const sequence=scrambledSequence(d.sequence,title+'|'+level);
+ const sequence=scrambledSequence(d.sequence,'ll-matthew-oscars|'+level);
  const phase=(name,items,prefix)=>'<section><h2>'+esc(name)+'</h2>'+
   items.map((q,i)=>group((i+1)+'. '+q.title,q.options,prefix+'-'+i)).join('')+'</section>';
  const open=d.open[0];
