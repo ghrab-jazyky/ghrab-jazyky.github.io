@@ -89,8 +89,8 @@ for(const t of topics){
    }
    if(typeof q.explanation!=='string'||!q.explanation.trim())
     flag(t.id,language,level,'EXPLANATION_MISSING',at,'Explanation absent','BLOCKING');
-   else if(q.explanation.trim().length<10)
-    flag(t.id,language,level,'EXPLANATION_BRIEF',at,'Short explanation; check whether it sufficiently supports this question');
+   else if(q.explanation.trim().length<10 && q.tab!=='scan')
+    flag(t.id,language,level,'EXPLANATION_BRIEF',at,'Short explanation outside literal scanning; check whether it justifies the paragraph or interpretation');
    const ev=q.evidence||[];
    if(!Array.isArray(ev)||!ev.length)flag(t.id,language,level,'EVIDENCE_MISSING',at,'No supporting passage');
    else for(const [k,a] of ev.entries()){
