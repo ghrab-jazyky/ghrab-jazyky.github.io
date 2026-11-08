@@ -275,8 +275,9 @@ const md=val=>String(val??'').replace(/[\r\n]+/g,' ').trim();
 const reviewMd=[
  '# Conversation Lab R8 – jazyková a pedagogická kontrola změn',
  '',
- '**Stav: NEOVĚŘENO / NEPUBLIKOVAT.** Kandidáti R8 obnovují původní otázky,',
- 's výjimkou sedmi zdrojově potvrzených oprav A1. Žádná položka nemá automatický souhlas učitele.',
+ '**Stav: NEOVĚŘENO / NEPUBLIKOVAT.** R8.1 obnovuje původní výukový obsah',
+ 's výjimkou sedmi přesně evidovaných návrhů A1 a pěti dalších cílených jazykových návrhů.',
+ 'Žádný z těchto návrhů nemá automatický souhlas učitele.',
  '',
  '## A. Sedm cílených oprav A1', ''
 ];
