@@ -16,6 +16,7 @@ on:
       - 'zkusebni/revize-claude/**'
       - 'zkusebni/reference-karty/**'
       - 'zkusebni/tests/catalog-ledger-consistency.test.cjs'
+      - 'zkusebni/tests/card-intake-12-batch.cjs'
       - 'zkusebni/tests/reference-integrity.cjs'
       - '.github/workflows/lsh-reference-integrity.yml'
   push:
@@ -36,6 +37,7 @@ on:
       - 'zkusebni/konverzace/**'
       - 'zkusebni/reference-karty/**'
       - 'zkusebni/tests/catalog-ledger-consistency.test.cjs'
+      - 'zkusebni/tests/card-intake-12-batch.cjs'
       - 'zkusebni/tests/reference-integrity.cjs'
       - '.github/workflows/lsh-reference-integrity.yml'
   workflow_dispatch:
@@ -165,3 +167,16 @@ jobs:
             echo "ERROR: duplicate IDs were accepted by the importer"
             exit 1
           fi
+
+  batch-twelve-intake:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify real mixed 12-card import in disposable staging copy
+        run: node zkusebni/tests/card-intake-12-batch.cjs
