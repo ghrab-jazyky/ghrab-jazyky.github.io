@@ -177,7 +177,7 @@ function reading(data,lang,level,cfg){
   '<h2>'+esc(L[lang].reading)+'</h2>'+
   selected.map((q,i)=>group((i+1)+'. '+q.q,q.choices,q.id)).join('');
  return {html:htmlPage(lang,level,d.title+' · '+level,L[lang].reading,body),
-  taskIds:selected.map(q=>q.id),count};
+  taskIds:selected.map(q=>q.id),count,structureIndex:selected.findIndex(q=>q.tab==='structure')};
 }
 function listening(data,lang,level,cfg,title){
  assert.equal(lang,'en');
@@ -232,7 +232,8 @@ for(const entry of pinPlan.entries){
   variants.push({topicId:entry.topicId,skill:entry.skill,language:lang,level,
    file:relative,sha256:sha256(result.html),sourceGitBlob:entry.gitBlob,sourceSha256:originalSha256,
    sourceKind:pinPlan.sourceCandidateType,
-   taskIds:result.taskIds,taskCount:result.count,teacherApproval:false,
+   taskIds:result.taskIds,taskCount:result.count,
+   structureIndex:result.structureIndex??-1,teacherApproval:false,
    automaticScoring:false,notesForTeacher:{
     targetLevel:level,targetGroup:baseMeta.targetGroup,estimatedDuration:baseMeta.durationEstimate,
     objective:cfg.pedagogy[entry.skill==='konverzace'?'conversation':entry.skill==='cteni'?'reading':'listening'].objective,
