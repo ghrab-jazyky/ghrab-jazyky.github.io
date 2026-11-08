@@ -1,0 +1,85 @@
+/* Listening R7 isolated candidate browser regression.
+ * Browser uses local HTTP, no source or teacher-key changes, no media playback.
+ */
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict');
+const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),http=require('node:http');
+const {execFileSync}=require('node:child_process');
+const {chromium,webkit}=require('playwright');
+const root=path.resolve(__dirname,'..');
+const work=fs.mkdtempSync(path.join(process.env.RUNNER_TEMP||os.tmpdir(),'lsh-r7-ui-browser-'));
+const generator=path.join(root,'tools/listening-r7-three-phase-candidates.cjs');
+execFileSync(process.execPath,[generator,work],{encoding:'utf8',timeout:60000});
+const manifest=JSON.parse(fs.readFileSync(path.join(work,'LISTENING_R7_UI_MANIFEST.json'),'utf8'));
+assert.equal(manifest.cards.length,2);
+const cases=[
+ {id:'ll-harrison-ford',file:manifest.cards.find(x=>x.id==='ll-harrison-ford').candidate},
+ {id:'ll-peaky-no-fighting',file:manifest.cards.find(x=>x.id==='ll-peaky-no-fighting').candidate}
+];
+let server,base;
+test.before(async()=>{
+ server=http.createServer((req,res)=>{
+  const name=decodeURIComponent(new URL(req.url,'http://127.0.0.1').pathname).replace(/^\/+/,'');
+  if(!cases.some(x=>x.file===name)){res.writeHead(404);res.end();return;}
+  fs.readFile(path.join(work,name),(error,body)=>{
+   if(error){res.writeHead(404);res.end();return;}
+   res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store',
+      'Content-Security-Policy':"default-src 'self' 'unsafe-inline' data:; connect-src 'none'; frame-src 'none'"});
+   res.end(body);
+  });
+ });
+ await new Promise((resolve,reject)=>server.once('error',reject).listen(0,'127.0.0.1',resolve));
+ base='http://127.0.0.1:'+server.address().port;
+});
+test.after(async()=>{if(server)await new Promise(r=>server.close(r));fs.rmSync(work,{recursive:true,force:true});});
+for(const [engine,name] of [[chromium,'Chromium'],[webkit,'WebKit']]){
+ for(const viewport of [{width:1366,height:850},{width:390,height:844}]){
+  for(const c of cases){
+   test(name+' '+viewport.width+'px '+c.id+': stages independent, scores safe, no JS exceptions',async()=>{
+    const browser=await engine.launch({headless:true});
+    try{
+     const context=await browser.newContext({viewport,serviceWorkers:'block'});
+     const page=await context.newPage(),errors=[];
+     page.on('pageerror',error=>errors.push(String(error)));
+     await page.goto(base+'/'+c.file,{waitUntil:'domcontentloaded',timeout:25000});
+     await page.locator('#gistTasks .task').first().waitFor({timeout:15000});
+     const sectionIds=await page.locator('main > section').evaluateAll(els=>els.map(e=>e.id));
+     for(const id of ['gist','detail','evidence','language']){
+      assert.ok(sectionIds.includes(id),'missing section '+id);
+     }
+     assert.ok(sectionIds.indexOf('detail')<sectionIds.indexOf('evidence'));
+     assert.ok(sectionIds.indexOf('evidence')<sectionIds.indexOf('language'));
+     assert.equal(await page.locator('#firstReview').innerText(),'Not checked yet.');
+     assert.equal(await page.locator('#secondReview').innerText(),'Not checked yet.');
+     assert.equal(await page.locator('#thirdReview').innerText(),'Not checked yet.');
+     const max=await page.evaluate(()=>DATA[current].gist.length+DATA[current].detail.length+DATA[current].sequence.length);
+     const initial=await page.locator('#scoreNumber').innerText();
+     assert.ok(initial.includes('/ '+max),'Initial score denominator should exclude optional vocabulary: '+initial);
+     await page.locator('#checkFirstBtn').click();
+     assert.match(await page.locator('#firstReview').innerText(),/correct|answered/i);
+     assert.equal(await page.locator('#secondReview').innerText(),'Not checked yet.');
+     assert.equal(await page.locator('#thirdReview').innerText(),'Not checked yet.');
+     await page.locator('#checkSecondBtn').click();
+     assert.match(await page.locator('#secondReview').innerText(),/correct|answered/i);
+     assert.equal(await page.locator('#thirdReview').innerText(),'Not checked yet.');
+     await page.locator('#checkThirdBtn').click();
+     assert.match(await page.locator('#thirdReview').innerText(),/teacher review/i);
+     const afterThree=await page.locator('#scoreNumber').innerText();
+     assert.ok(afterThree.includes('/ '+max),afterThree);
+     assert.match(await page.locator('#scoreDescription').innerText(),/all three/i);
+     await page.locator('#checkVocabBtn').click();
+     assert.equal(await page.locator('#scoreNumber').innerText(),afterThree,'Optional vocabulary changed the core score');
+     await page.locator('#checkBtn').click();
+     assert.match(await page.locator('#scoreDescription').innerText(),/all three/i);
+     await page.locator('#gistTasks .option').first().click();
+     assert.equal(await page.locator('#firstReview').innerText(),'Not checked yet.','Edits must invalidate old review');
+     assert.equal(await page.locator('#thirdReview').innerText(),'Not checked yet.','Stale third-stage result must be invalidated');
+     const x=await page.evaluate(()=>({screen:innerWidth,scroll:document.documentElement.scrollWidth,hasTeacherApproval:!!window.teacherApproval}));
+     assert.ok(x.scroll<=x.screen+8,'Horizontal overflow '+JSON.stringify(x));
+     assert.deepEqual(errors,[],'JS exceptions: '+errors.join('; '));
+     await context.close();
+    }finally{await browser.close();}
+   });
+  }
+ }
+}
