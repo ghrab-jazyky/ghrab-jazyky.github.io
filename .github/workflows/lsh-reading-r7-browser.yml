@@ -1,0 +1,37 @@
+name: LSH Reading R7 candidates browser QA (NO deployment)
+on:
+  pull_request:
+    paths:
+      - 'zkusebni/tools/reading-r7-candidates.cjs'
+      - 'zkusebni/data/reading-r7-matching-proposals.json'
+      - 'zkusebni/nahledy/cteni/**'
+      - 'zkusebni/tests/reading-r7-browser.test.cjs'
+      - '.github/workflows/lsh-reading-r7-browser.yml'
+  push:
+    branches:
+      - 'feat/lsh-*'
+    paths:
+      - 'zkusebni/tools/reading-r7-candidates.cjs'
+      - 'zkusebni/data/reading-r7-matching-proposals.json'
+      - 'zkusebni/nahledy/cteni/**'
+      - 'zkusebni/tests/reading-r7-browser.test.cjs'
+      - '.github/workflows/lsh-reading-r7-browser.yml'
+permissions:
+  contents: read
+jobs:
+  browser-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium and WebKit for isolated candidate HTML
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Verify R7 Reading content fixes, evidence, privacy and responsive CEFR variants
+        run: node --test zkusebni/tests/reading-r7-browser.test.cjs
