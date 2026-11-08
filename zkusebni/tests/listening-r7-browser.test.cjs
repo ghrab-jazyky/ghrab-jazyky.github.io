@@ -49,6 +49,14 @@ for(const [engine,name] of [[chromium,'Chromium'],[webkit,'WebKit']]){
      }
      assert.ok(sectionIds.indexOf('detail')<sectionIds.indexOf('evidence'));
      assert.ok(sectionIds.indexOf('evidence')<sectionIds.indexOf('language'));
+     const navOrder=await page.locator('.sidenav a[href^="#"]').evaluateAll(els=>els.map(el=>el.getAttribute('href')));
+     for(const anchor of ['#gist','#detail','#evidence','#language','#thinking','#finish']){
+      assert.ok(navOrder.includes(anchor),'Missing stage navigation '+anchor);
+     }
+     assert.ok(navOrder.indexOf('#detail')<navOrder.indexOf('#evidence'));
+     assert.ok(navOrder.indexOf('#evidence')<navOrder.indexOf('#language'));
+     assert.match(await page.locator('.sidenav').innerText(),/Completed core tasks/);
+     assert.match(await page.locator('.sidenav a[href="#evidence"]').innerText(),/Third Listening/);
      assert.equal(await page.locator('#firstReview').innerText(),'Not checked yet.');
      assert.equal(await page.locator('#secondReview').innerText(),'Not checked yet.');
      assert.equal(await page.locator('#thirdReview').innerText(),'Not checked yet.');
@@ -77,6 +85,19 @@ for(const [engine,name] of [[chromium,'Chromium'],[webkit,'WebKit']]){
      const x=await page.evaluate(()=>({screen:innerWidth,scroll:document.documentElement.scrollWidth,hasTeacherApproval:!!window.teacherApproval}));
      assert.ok(x.scroll<=x.screen+8,'Horizontal overflow '+JSON.stringify(x));
      assert.deepEqual(errors,[],'JS exceptions: '+errors.join('; '));
+     // Repeat the essential UI contract for every available CEFR variant.
+     for(const level of ['A1','A2','B1','B2','C1','C2']){
+      await page.locator('.level-pill[data-level="'+level+'"]').click();
+      assert.equal(await page.locator('#heroLevel').innerText(),level);
+      const expected=await page.evaluate(()=>DATA[current].gist.length+DATA[current].detail.length+DATA[current].sequence.length);
+      assert.ok((await page.locator('#scoreNumber').innerText()).includes('/ '+expected),'Wrong core total for '+level);
+      assert.ok((await page.locator('#progressLabel').innerText()).includes('/ '+expected),'Wrong progress total for '+level);
+      assert.equal(await page.locator('#firstReview').innerText(),'Not checked yet.','Old phase feedback leaked to '+level);
+      assert.equal(await page.locator('#secondReview').innerText(),'Not checked yet.','Old phase feedback leaked to '+level);
+      assert.equal(await page.locator('#thirdReview').innerText(),'Not checked yet.','Old phase feedback leaked to '+level);
+      const width=await page.evaluate(()=>({screen:innerWidth,scroll:document.documentElement.scrollWidth}));
+      assert.ok(width.scroll<=width.screen+8,'Overflow '+level+': '+JSON.stringify(width));
+     }
      await context.close();
     }finally{await browser.close();}
    });
