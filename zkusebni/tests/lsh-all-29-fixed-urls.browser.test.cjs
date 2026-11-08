@@ -65,11 +65,13 @@ async function check(engine,label,viewport){
     const card=catalog.locator('#refList .ref-card').filter({
      has:catalog.getByRole('heading',{name:e.title,exact:true})
     });
-    assert.equal(await card.count(),1,'Missing or duplicated catalog title');
-    const testButton=card.getByRole('button',{name:/Testování/});
-    assert.equal(await testButton.count(),1);
+    assert.equal(await card.count(),1,'Missing or duplicated catalog title: '+e.id+' / '+e.title);
+    // Accessible name is intentionally overridden by aria-label
+    // ("Testovací verze karty…"); match its visible label instead.
+    const testButton=card.locator('button').filter({hasText:'Testování'});
+    assert.equal(await testButton.count(),1,'Missing disabled Testování button for '+e.id);
     assert.equal(await testButton.isDisabled(),true,
-     'Unapproved test mode must remain disabled');
+     'Unapproved test mode must remain disabled: '+e.id);
     await card.getByRole('button',{name:/Procvičování/}).click();
     await catalog.locator('#refMode').selectOption('fixed');
     await catalog.locator('#refShareLang').selectOption(lang);
