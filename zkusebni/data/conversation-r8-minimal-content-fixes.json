@@ -6,7 +6,7 @@
   "teacherApproval": false,
   "published": false,
   "reviewComplete": false,
-  "description": "Preserve original topic-specific conversation content. Apply only exact source-confirmed ES A1 grammar or duplicate corrections. No generic support replacement.",
+  "description": "Preserve original topic-specific conversation content. Apply only exact source-confirmed ES A1 grammar or duplicate corrections. No generic support replacement. Three further exact A1 cross-station duplicate corrections were added after the complete 21-card source comparison.",
   "patches": [
     {
       "topicId": "cl-ceny-nemovitosti",
@@ -48,6 +48,39 @@
       "original": "¿Es grande o pequeño?",
       "replacement": "¿Tu instituto ideal es grande o pequeño?",
       "reason": "Resolve exact duplication between real and ideal school stations with A1 wording."
+    },
+    {
+      "topicId": "cl-nemoci-u-lekare",
+      "language": "es",
+      "level": "A1",
+      "stationIndex": 1,
+      "field": "questions",
+      "questionIndex": 2,
+      "original": "¿Qué dices cuando estás enfermo?",
+      "replacement": "¿Tu amigo está bien o está enfermo?",
+      "reason": "Original duplicates the main question of station 3; a short A1 question instead."
+    },
+    {
+      "topicId": "cl-nemoci-u-lekare",
+      "language": "de",
+      "level": "A1",
+      "stationIndex": 1,
+      "field": "questions",
+      "questionIndex": 2,
+      "original": "Was sagst du, wenn du krank bist?",
+      "replacement": "Ist dein Freund krank oder gesund?",
+      "reason": "Original duplicates the main question of station 3; short A1 contrast instead."
+    },
+    {
+      "topicId": "cl-rodina",
+      "language": "fr",
+      "level": "A1",
+      "stationIndex": 6,
+      "field": "questions",
+      "questionIndex": 0,
+      "original": "Qui en fait partie ?",
+      "replacement": "Il y a combien de personnes dans ta famille imaginaire ?",
+      "reason": "Original duplicates the main question of station 1; count people in the imagined family instead."
     }
   ]
 }
