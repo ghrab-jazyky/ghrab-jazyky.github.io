@@ -59,6 +59,20 @@ function migrate(html){
   '<p class="section-lead">Optional practice; not included in Listening 1–3 score.</p><div id="vocabTasks"></div>','vocab body');
  section=section.replace(/<\/section>\s*$/,button('checkVocabBtn','✓ Check Optional Vocabulary','vocabReview')+'</section>\n');
  s=s.slice(0,a)+section+s.slice(b);
+ // The original sidebar has no Third Listening link. Align every anchor and progress label
+ // with the R7 stages; keep this correction inside the isolated candidate only.
+ for(const [source,target,label] of [
+  [/<a href="#language">04 (?:&middot;|·) Vocabulary<\/a>/i,
+   '<a href="#evidence">04 · Third Listening</a><a href="#language">05 · Optional Vocabulary</a>','third listening sidebar link'],
+  [/<a href="#thinking">05 (?:&middot;|·) Discussion<\/a>/i,
+   '<a href="#thinking">06 · After Listening</a>','after listening sidebar link'],
+  [/<a href="#finish">06 (?:&middot;|·) Check answers<\/a>/i,
+   '<a href="#finish">07 · Overall Review</a>','review sidebar link']
+ ]){
+  assert.ok(source.test(s),'Missing '+label);
+  s=s.replace(source,target);
+ }
+ s=once(s,'Completed closed tasks','Completed core tasks','core-progress sidebar label');
  s=s.replace(/05 (?:&middot;|·) AFTER LISTENING/,'06 · AFTER LISTENING');
  s=s.replace(/06 (?:&middot;|·) REVIEW/,'07 · OVERALL REVIEW');
  s=s.replace('CLOSED-QUESTION SCORE (AUTOMATIC)','LISTENING 1–3 · AUTOMATICALLY MARKED CORE TASKS');
@@ -108,6 +122,11 @@ for(const f of sources){
  let last=-1;for(const id of ['gist','detail','evidence','language','thinking','finish']){
   const at=candidate.indexOf('id="'+id+'"');assert.ok(at>last,'Stage order '+id);last=at;
  }
+ for(const marker of ['href="#evidence">04','href="#language">05','href="#thinking">06',
+  'href="#finish">07','Completed core tasks']){
+  assert.ok(candidate.includes(marker),'Outdated sidebar '+f.id+': '+marker);
+ }
+ assert.equal((candidate.match(/href="#evidence"/g)||[]).length,1,'Third Listening navigation must be unique');
  const name=f.slug+'_R7_THREE_LISTENINGS_CANDIDATE.html';
  fs.writeFileSync(path.join(out,name),candidate);
  manifest.cards.push({id:f.id,original:f.original,originalGitBlob:f.blob,
