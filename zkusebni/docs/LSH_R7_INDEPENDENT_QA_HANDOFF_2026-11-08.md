@@ -92,3 +92,39 @@
 4. Získat a technicky ověřit původní student HTML dvou dalších poslechů (TED Conlangs a How to Choose Your News); druhý nemá všechny úrovně.
 5. Odlišné krátké testovací sady a jejich hodnoticí pravidla vytvořit až samostatně; `Testování` zůstává vypnuto.
 6. Fyzická UAT Android/iOS/iPad Safari, škola, QR, offline ZIP a osobní slovníček; výslovný souhlas učitele před merge.
+
+
+## 8. R8 – nález pedagogické regrese R6 a obnova původních obsahů (8. listopadu 2026)
+
+**Závěr hloubkového diff auditu:** Předchozí R6 kandidáti úspěšně prošli strukturálními a prohlížečovými testy, ale jejich výukový obsah byl ve velkém rozsahu nahrazen obecnými frázemi. Mezi 21 kanonickými Conversation originály a R6 daty `CONTENT` byly zdrojově potvrzeny tyto změny:
+
+| Porovnání původních HTML vs R6 | Počet změněných |
+|---|---:|
+| Jazykové opory Support – stanoviště | **3 840 z 4 032** |
+| Jednotlivé podpůrné výrazy | **10 899** |
+| Vysvětlení/Explain | **417** |
+| Sady slovní zásoby | **34** |
+| Hlavní a doplňující otázky | **6 + 32 = 38** |
+| Challenge/Stretch | **25 / 31** |
+
+**Důsledek:** automatický PASS R6 pro JavaScript, CSP, strukturu a počty otázek nebyl oprávněním považovat nové podpůrné věty za pedagogicky sjednocené. Nové generické formulace typu `And you?` či `I agree / disagree because…` často vytlačily původní tematicky relevantní opory.
+
+### Bezpečná obnova – R8
+- `tools/conversation-r8-source-recovery.cjs` vezme přesné Git-blob-ově ověřené **kanonické originály** a technický R6 runtime; vygeneruje 21 samostatných kandidátních HTML výhradně do zvolené výstupní složky.
+- Všech **504 kombinací EN/ES/DE/FR × A1–C2** zachovává původní `CONTENT` (Support, Challenge, Stretch, slovní zásobu, čtyři jazykové opory) kromě **sedmi explicitně vymezených oprav A1** v `data/conversation-r8-minimal-content-fixes.json`.
+- Tři původní ES A1 otázky se složitou vazbou byly zjednodušeny. Čtyři prokazatelné duplicity napříč stanovišti byly odstraněny: Škola ES A1, Nemoci ES/DE A1 a Rodina FR A1.
+- Validátor u celé sady ověřuje **nulové přesné duplicity hlavních a doplňujících otázek**, neporušené původní soubory, vstupní a výstupní SHA-256/Git blob, JavaScript syntaxi a správný nový CSP SHA-256.
+- `R8_QUESTION_CHANGE_REVIEW.json` v artefaktu eviduje všech **38 R6 změn v otázkách** s původní, R6 i R8 formulací. Rozhodnutí o dalších návrzích zůstává na nezávislé jazykové revizi; nelze automaticky převzít celý R6 přepis ani každou jeho změnu bez kontroly.
+- Kandidáti R8 nejsou integrováni do studentských cest a **nejsou** označeni za schválené testy nebo pedagogicky vydané materiály. Soukromé učitelské klíče ani data žáků se neukládají do veřejného repozitáře.
+
+**Obsahová obnova 21 karet – CI PASS:** https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42491292379
+
+**R8 prohlížečová regrese:** https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42491292405 (Chromium + WebKit, 21 karet × 24 variant × 8 stanovišť na engine; výsledek vždy ověřit v CI).
+
+### Co nedělat a co následuje
+1. **Neslučovat** genericky přepsané kandidáty R6 do veřejného katalogu.
+2. Před vydáním R8 prověřit výsledky browser QA, fyzickou UAT iOS/Android a kvalitu 38 změněných otázek; nejde o automatické pedagogické schválení původních ani opravených textů.
+3. Po obsahové přejímce zprovoznit cílenou staged integraci R8 s odkazem/QR a testy, ale publikaci provést až se souhlasem učitele.
+4. U Reading R7 bezpečně synchronizovat neveřejné učitelské klíče; u Listening ověřit média a vhodnost věku; dvě další dodané poslechové karty potřebují původní zdroje.
+5. Zůstává **DRAFT PR #27 / NO MERGE / Testování not-ready / žádný zásah do main**. Claude je volitelný, nikoli blokující.
+
