@@ -12,6 +12,7 @@ const ROOT=path.resolve(__dirname,'..');
 const OUT=path.resolve(process.argv[2]||path.join(os.tmpdir(),'lsh-conversation-r8-candidates'));
 const mf=JSON.parse(fs.readFileSync(path.join(ROOT,'data/conversation-r6-candidates.json'),'utf8'));
 const plan=JSON.parse(fs.readFileSync(path.join(ROOT,'data/conversation-r8-minimal-content-fixes.json'),'utf8'));
+const linguisticPlan=JSON.parse(fs.readFileSync(path.join(ROOT,'data/conversation-r8-targeted-language-proposals.json'),'utf8'));
 const LANGS=['en','es','de','fr'],LEVELS=['A1','A2','B1','B2','C1','C2'];
 const sha256=b=>crypto.createHash('sha256').update(b).digest('hex');
 const blob=b=>crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+b.length+'\0'),b])).digest('hex');
@@ -87,6 +88,17 @@ assert.equal(plan.teacherApproval,false);
 assert.equal(plan.published,false);
 assert.equal(plan.patches.length,7);
 assert.equal(new Set(plan.patches.map(p=>p.topicId+'/'+p.language+'/'+p.level+'/'+p.stationIndex+'/'+p.field+'/'+(p.questionIndex??''))).size,7);
+assert.equal(linguisticPlan.schemaVersion,1);
+assert.equal(linguisticPlan.kind,'R8_1_NARROW_LANGUAGE_CANDIDATES');
+assert.equal(linguisticPlan.state,'CANDIDATES_ONLY');
+assert.equal(linguisticPlan.teacherApproval,false);
+assert.equal(linguisticPlan.published,false);
+assert.equal(linguisticPlan.reviewComplete,false);
+assert.equal(linguisticPlan.patches.length,5);
+assert.ok(linguisticPlan.patches.every(p=>p.reviewState==='LINGUISTIC_CANDIDATE_NOT_TEACHER_APPROVED'));
+const patchKey=p=>p.topicId+'/'+p.language+'/'+p.level+'/'+p.stationIndex+'/'+p.field+'/'+(p.questionIndex??'');
+const patchKeys=[...plan.patches,...linguisticPlan.patches].map(patchKey);
+assert.equal(new Set(patchKeys).size,12,'No overlapping content fixes permitted');
 const cards=[],total={},questionReview=[];
 fs.mkdirSync(OUT,{recursive:true});
 for(const item of mf.cards){
@@ -102,6 +114,7 @@ for(const item of mf.cards){
  for(const [key,value] of Object.entries(changes))total[key]=(total[key]||0)+value;
  const repaired=structuredClone(a.data);
  const fixes=plan.patches.filter(p=>p.topicId===item.id);
+ const targetedFixes=linguisticPlan.patches.filter(p=>p.topicId===item.id);
  for(const p of fixes){
   assert.ok(LANGS.includes(p.language)&&LEVELS.includes(p.level));
   assert.ok(Number.isInteger(p.stationIndex)&&p.stationIndex>=0&&p.stationIndex<8);
@@ -115,6 +128,22 @@ for(const item of mf.cards){
    assert.equal(station.questions[p.questionIndex],p.original,'Question precondition failed '+item.id);
    station.questions[p.questionIndex]=p.replacement;
   }else throw Error('Unapproved patch target '+p.field);
+ }
+ // Apply five separately traceable, review-pending language fixes only where
+ // each canonical source exactly equals the recorded precondition. These are
+ // additional *candidates*, not teacher-approved content or new R6 rewrites.
+ for(const p of targetedFixes){
+  assert.ok(LANGS.includes(p.language)&&LEVELS.includes(p.level));
+  assert.ok(Number.isInteger(p.stationIndex)&&p.stationIndex>=0&&p.stationIndex<8);
+  const station=repaired[p.language].levels[p.level].stations[p.stationIndex];
+  if(p.field==='main'){
+   assert.equal(station.main,p.original,'Targeted main prompt precondition failed '+item.id);
+   station.main=p.replacement;
+  }else if(p.field==='questions'){
+   assert.ok(Number.isInteger(p.questionIndex)&&p.questionIndex>=0&&p.questionIndex<3);
+   assert.equal(station.questions[p.questionIndex],p.original,'Targeted followup precondition failed '+item.id);
+   station.questions[p.questionIndex]=p.replacement;
+  }else throw Error('Unapproved targeted repair field '+p.field);
  }
  verifyCoverage(repaired,item.id);
  // Preserve an exact review list of the 38 R6 question edits, even when R8 does
@@ -131,6 +160,8 @@ for(const item of mf.cards){
     target:q===0?'main':'followup-'+q,original:before,r6Candidate:afterR6,
     r8Candidate:afterR8,r8UsedR6Proposal:afterR8===afterR6,
     changedByExplicitPatch:fixes.some(p=>p.language===l&&p.level===lev&&
+     p.stationIndex===i&&p.field===field&&(q===0||p.questionIndex===q-1)),
+    changedByTargetedLanguagePatch:targetedFixes.some(p=>p.language===l&&p.level===lev&&
      p.stationIndex===i&&p.field===field&&(q===0||p.questionIndex===q-1)),
     status:'CONTENT_CHANGE_NEEDS_TEACHER_REVIEW',teacherApproval:false});
   }
@@ -199,11 +230,12 @@ for(const item of mf.cards){
   sourceOriginalGitBlob:item.originalGitBlob,r6GitBlob:item.candidateGitBlob,
   originalSha256:sha256(orig),r6CandidateSha256:sha256(r6),
   repairedCandidateSha256:sha256(Buffer.from(html)),exactPatches:fixes.map(p=>({language:p.language,level:p.level,station:p.stationIndex+1,field:p.field,question:p.questionIndex===undefined?null:p.questionIndex+1})),
+  targetedLanguagePatches:targetedFixes.map(p=>({language:p.language,level:p.level,station:p.stationIndex+1,field:p.field,question:p.questionIndex===undefined?null:p.questionIndex+1,teacherApproval:false})),
   contentDifferencesDiscarded:changes,mainExplanationRuntimeCompatibility:item.id==='cl-umela-inteligence',
   teacherApproval:false,published:false});
 }
 const result={schemaVersion:1,kind:'R8_SOURCE_CONTENT_RECOVERY_CANDIDATES_ONLY',
- source:'21 SHA-verified canonical Conversation HTML plus 7 exact A1 grammar/duplicate fixes',
+ source:'21 SHA-verified canonical Conversation HTML plus 7 exact A1 and 5 independently scoped language candidate fixes',
  originalSourcesUnchanged:true,r6CandidatesUnchanged:true,teacherApproval:false,
  published:false,catalogUpdated:false,approvedForRelease:false,testModeReady:false,
  statistics:total,cards};
@@ -214,11 +246,13 @@ assert.equal(questionReview.length,38);
 assert.equal(total.variantCount,504);
 assert.equal(total.stationCount,4032);
 assert.equal(cards.reduce((n,c)=>n+c.exactPatches.length,0),7);
+assert.equal(cards.reduce((n,c)=>n+c.targetedLanguagePatches.length,0),5);
+assert.equal(cards.every(c=>c.teacherApproval===false&&c.published===false),true);
 fs.writeFileSync(path.join(OUT,'R8_RECOVERY_MANIFEST.json'),JSON.stringify(result,null,2)+'\n');
 fs.writeFileSync(path.join(OUT,'R8_QUESTION_CHANGE_REVIEW.json'),
  JSON.stringify({schemaVersion:1,kind:'R8_QUESTION_CHANGE_REVIEW',
   total:questionReview.length,teacherApproval:false,approvedForRelease:false,
-  note:'38 R6 question changes require separate linguistic judgment. R8 restores originals except 7 explicit A1 fixes; changedByExplicitPatch identifies overlap. Neither original nor R6 text is automatically approved.',
+  note:'38 R6 question changes require linguistic judgment. R8.1 preserves original text except 7 A1 and 5 narrow language candidate changes. Neither the originals nor the proposals are teacher-approved.',
   entries:questionReview},null,2)+'\n');
 // Human-readable, finite review queue. This is evidence for teacher review,
 // never a publication approval and never a replacement for CEFR/semantic QA.
@@ -240,6 +274,16 @@ for(const [i,p] of plan.patches.entries()){
   '- Důvod návrhu: '+md(p.reason),
   '- Rozhodnutí učitele: **ČEKÁ**', '');
 }
+reviewMd.push('## A2. Pět dalších cílených jazykových návrhů R8.1 (bez schválení)', '');
+for(const [i,p] of linguisticPlan.patches.entries()){
+ reviewMd.push('### L'+(i+1)+'. '+md(p.topicId)+' · '+md(p.language.toUpperCase())+
+  ' '+md(p.level)+' · stanoviště '+(p.stationIndex+1),
+  '- Umístění: '+md(p.field)+(p.questionIndex===undefined?'':' / doplňující otázka '+(p.questionIndex+1)),
+  '- Původní: '+md(p.original),
+  '- Návrh R8.1: '+md(p.replacement),
+  '- Zdůvodnění: '+md(p.reason),
+  '- Rozhodnutí učitele: **ČEKÁ**', '');
+}
 reviewMd.push('## B. Všech 38 rozdílů v otázkách mezi originálem a R6', '',
  'R8 nepřebírá automaticky úpravy R6. Následující řádky umožní posoudit',
  'původní a R6 verzi bez generických změn v ostatním obsahu.', '');
@@ -249,7 +293,7 @@ for(const [i,e] of questionReview.entries()){
   '- Původní: '+md(e.original),
   '- Odmítnutý/neposouzený návrh R6: '+md(e.r6Candidate),
   '- Aktuální izolovaný kandidát R8: '+md(e.r8Candidate),
-  '- Cílená oprava v R8: '+(e.changedByExplicitPatch?'ANO (čeká na schválení)':'NE'),
+  '- Cílená oprava v R8: '+(e.changedByExplicitPatch?'ANO A1 (čeká na schválení)':e.changedByTargetedLanguagePatch?'ANO R8.1 jazyk (čeká na schválení)':'NE'),
   '- Rozhodnutí učitele: **ČEKÁ**', '');
 }
 reviewMd.push('---','','Dokument vzniká výhradně ve výstupním artefaktu CI. '+
@@ -269,7 +313,8 @@ const lines=['# Conversation Lab R8 – bezpečná obnova původního pedagogick
  '- Seznam všech 38 změněných hlavních/doplňujících otázek a rozhodnutí R8 je v R8_QUESTION_CHANGE_REVIEW.json; nevybrané formulace z R6 stále čekají na obsahovou revizi.',
  '', '## Obnova','',
  '- Všech 21 R8 HTML kopíruje kompletní **původní CONTENT** (EN/ES/DE/FR × A1–C2), původní Support, Challenge, Stretch, Vocabulary a Toolkit.',
- '- Jediných sedm obsahových odchýlení jsou přesné zdrojově ověřené opravy A1 definované v data/conversation-r8-minimal-content-fixes.json.',
+ '- Sedm přesných oprav A1 je v data/conversation-r8-minimal-content-fixes.json.',
+ '- Pět dalších cílených jazykových kandidátních oprav je v data/conversation-r8-targeted-language-proposals.json. Všechny potřebují schválení učitelem.',
  '- Pro AI referenci je navíc opraven výhradně runtime alias mainExplanation → mainExplain (96 původních B2–C2 vysvětlení); text CONTENT se nemění.',
  '- Kandidátní UI a technická integrace R6 zůstávají; JS syntaxe a CSP SHA-256 přepočteny a ověřeny.',
  '- 21 HTML vzniklo **jen v tomto CI výstupu**, žádný kanonický zdroj, R6 kandidát, teacher key ani katalog se nepřepisuje.',
@@ -279,6 +324,6 @@ const lines=['# Conversation Lab R8 – bezpečná obnova původního pedagogick
  '- Potřeba ověřit skutečné prohlížeče, mobilní ergonomii, časovač, slovníček a jejich chování na fyzickém zařízení.',
  '', 'Stav: DRAFT, bez učitelského schválení.',''];
 fs.writeFileSync(path.join(OUT,'R8_RECOVERY_REPORT.md'),lines.join('\n')+'\n');
-console.log('PASS R8 CONTENT RECOVERY: 21 source-verified cards, 504 variants, 4032 stations, 7 targeted A1 patches');
+console.log('PASS R8 CONTENT RECOVERY: 21 source-verified cards, 504 variants, 4032 stations, 7 A1 + 5 language candidate patches');
 console.log('R6 DEGRADATION COUNTS:',JSON.stringify(total));
 console.log('CANDIDATES ONLY:',OUT,'teacherApproval false, published false');
