@@ -1,0 +1,46 @@
+name: LSH R5D draft-only 54 separate test prototypes (NO deployment)
+on:
+  pull_request:
+    paths:
+      - 'zkusebni/data/r5d-test-draft-plan.json'
+      - 'zkusebni/tools/r5d-test-drafts.cjs'
+      - 'zkusebni/tests/r5d-test-drafts.test.cjs'
+      - 'zkusebni/reference/konverzace/umela-inteligence/index.html'
+      - 'zkusebni/nahledy/cteni/asteroids/index.html'
+      - 'zkusebni/reference/poslech/matthew-mcconaughey/index.html'
+      - '.github/workflows/lsh-r5d-test-drafts.yml'
+  push:
+    branches:
+      - 'feat/lsh-*'
+    paths:
+      - 'zkusebni/data/r5d-test-draft-plan.json'
+      - 'zkusebni/tools/r5d-test-drafts.cjs'
+      - 'zkusebni/tests/r5d-test-drafts.test.cjs'
+      - 'zkusebni/reference/konverzace/umela-inteligence/index.html'
+      - 'zkusebni/nahledy/cteni/asteroids/index.html'
+      - 'zkusebni/reference/poslech/matthew-mcconaughey/index.html'
+      - '.github/workflows/lsh-r5d-test-drafts.yml'
+permissions:
+  contents: read
+jobs:
+  isolated-review-prototypes:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify 54 source-derived drafts with release/privacy invariants
+        run: node --test zkusebni/tests/r5d-test-drafts.test.cjs
+      - name: Build 54 separate review-only HTML prototypes OUTSIDE Git worktree
+        run: node zkusebni/tools/r5d-test-drafts.cjs "$RUNNER_TEMP/r5d-teacher-review"
+      - name: Archive short, unapproved candidate tasks for teachers (no keys)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-r5d-54-unapproved-test-drafts-NO-KEYS
+          path: ${{ runner.temp }}/r5d-teacher-review/
+          if-no-files-found: error
+          retention-days: 7
