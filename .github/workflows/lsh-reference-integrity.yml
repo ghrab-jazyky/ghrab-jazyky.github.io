@@ -4,6 +4,7 @@ on:
     paths:
       - 'zkusebni/reference/**'
       - 'zkusebni/nahledy/cteni/**'
+      - 'zkusebni/nahledy/poslech/**'
       - 'zkusebni/integrace/**'
       - 'zkusebni/assets/lsh/v4/**'
       - 'zkusebni/data/reference-pilots.json'
@@ -24,6 +25,7 @@ on:
     paths:
       - 'zkusebni/reference/**'
       - 'zkusebni/nahledy/cteni/**'
+      - 'zkusebni/nahledy/poslech/**'
       - 'zkusebni/integrace/**'
       - 'zkusebni/assets/lsh/v4/**'
       - 'zkusebni/data/reference-pilots.json'
@@ -82,6 +84,19 @@ jobs:
             ${{ runner.temp }}/lsh-reading-r7-candidates/*.html
             ${{ runner.temp }}/lsh-reading-r7-candidates/*.json
             ${{ runner.temp }}/lsh-reading-r7-candidates/*.md
+          if-no-files-found: error
+          retention-days: 30
+      - name: Compare all three Listening sources to Matthew v3 (no media claims)
+        run: |
+          node zkusebni/tools/listening-reference-parity.cjs "$RUNNER_TEMP/lsh-listening-parity"
+          node -e 'const r=require(process.argv[1]);if(r.sourceCards!==3||r.sourceVariants!==18||r.releaseApproved!==false)throw Error("Listening coverage or approval guard");console.log("PASS 3 listening sources / 18 CEFR variants")' "$RUNNER_TEMP/lsh-listening-parity/LISTENING_MATTHEW_PARITY.json"
+      - name: Attach Listening reference-parity report (not teacher approval)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-listening-matthew-v3-parity-audit
+          path: |
+            ${{ runner.temp }}/lsh-listening-parity/*.json
+            ${{ runner.temp }}/lsh-listening-parity/*.md
           if-no-files-found: error
           retention-days: 30
       - name: End-to-end batch intake for all THREE skills (runner only, no deployment)
