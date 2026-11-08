@@ -107,6 +107,25 @@ for(const [engine,name] of [[chromium,'Chromium'],[webkit,'WebKit']]){
       assert.equal(await page.locator('#firstReview').innerText(),'Not checked yet.','Old phase feedback leaked to '+level);
       assert.equal(await page.locator('#secondReview').innerText(),'Not checked yet.','Old phase feedback leaked to '+level);
       assert.equal(await page.locator('#thirdReview').innerText(),'Not checked yet.','Old phase feedback leaked to '+level);
+      if(c.id==='ll-peaky-no-fighting'&&level==='C1'){
+       const source=await page.evaluate(()=>({
+        prompt:DATA.C1.gist[1].title,correct:DATA.C1.gist[1].correct,
+        label:DATA.C1.gist[1].options[0]
+       }));
+       assert.equal(source.prompt,'What is the overall dramatic effect of the interruptions?');
+       assert.equal(source.correct,0,'Peaky C1 gist must reject unsupported disobedience inference');
+       assert.match(source.label,/puncture his attempt/);
+       const options=page.locator('#gistTasks .task').nth(1).locator('.option');
+       assert.equal(await options.count(),3);
+       await options.nth(0).click();
+       await page.locator('#checkFirstBtn').click();
+       assert.match(await page.locator('#firstReview').innerText(),/^1\/\d+ correct/,
+        'Actual C1 first option must be graded correct');
+       await options.nth(1).click();
+       await page.locator('#checkFirstBtn').click();
+       assert.match(await page.locator('#firstReview').innerText(),/^0\/\d+ correct/,
+        'Unsupported disobedience option must be graded incorrect');
+      }
       const width=await page.evaluate(()=>({screen:innerWidth,scroll:document.documentElement.scrollWidth}));
       assert.ok(width.scroll<=width.screen+8,'Overflow '+level+': '+JSON.stringify(width));
      }
