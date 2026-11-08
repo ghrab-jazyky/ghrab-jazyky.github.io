@@ -36,7 +36,7 @@ jobs:
       - name: Assert all originals and R6 candidates remain untouched
         run: |
           node zkusebni/tests/conversation-r6-candidates.test.cjs
-          node -e 'const r=require(process.argv[1]);if(r.cards.length!==21||r.statistics.variantCount!==504||r.statistics.stationCount!==4032||r.cards.reduce((n,c)=>n+c.exactPatches.length,0)!==4||r.teacherApproval!==false||r.published!==false||r.catalogUpdated!==false||r.approvedForRelease!==false)throw Error("R8 candidate/source contract mismatch");console.log("PASS R8 source-content recovery, 21 candidates/504 variants/4 minimal repairs")' "$RUNNER_TEMP/lsh-r8-conversation/R8_RECOVERY_MANIFEST.json"
+          node -e 'const r=require(process.argv[1]);if(r.cards.length!==21||r.statistics.variantCount!==504||r.statistics.stationCount!==4032||r.cards.reduce((n,c)=>n+c.exactPatches.length,0)!==7||r.teacherApproval!==false||r.published!==false||r.catalogUpdated!==false||r.approvedForRelease!==false)throw Error("R8 candidate/source contract mismatch");console.log("PASS R8 source-content recovery, 21 candidates/504 variants/7 scoped A1 repairs")' "$RUNNER_TEMP/lsh-r8-conversation/R8_RECOVERY_MANIFEST.json"
       - name: Attach unapproved content-preserving R8 student HTML candidates
         uses: actions/upload-artifact@v4
         with:
