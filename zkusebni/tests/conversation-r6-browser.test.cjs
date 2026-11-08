@@ -5,7 +5,8 @@
 'use strict';
 const {test,before,after}=require('node:test');
 const assert=require('node:assert/strict');
-const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
+const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),os=require('node:os');
+const {execFileSync}=require('node:child_process');
 const {chromium,webkit}=require('playwright');
 const ROOT=path.resolve(__dirname,'../..');
 const STAGE=path.join(ROOT,'zkusebni');
@@ -15,6 +16,22 @@ assert.equal(MANIFEST.teacherApproval,false);
 assert.equal(MANIFEST.published,false);
 assert.equal(MANIFEST.catalogUpdated,false);
 assert.equal(MANIFEST.cards.length,21);
+const R8_PREVIEW=process.env.LSH_R8_PREVIEW==='1';
+let R8_TEMP=null,R8_ALIASES=new Map();
+if(R8_PREVIEW){
+ R8_TEMP=fs.mkdtempSync(path.join(process.env.RUNNER_TEMP||os.tmpdir(),'lsh-r8-dom-preview-'));
+ execFileSync(process.execPath,[path.join(STAGE,'tools/conversation-r8-source-recovery.cjs'),R8_TEMP],
+  {timeout:180000,encoding:'utf8'});
+ const r8=JSON.parse(fs.readFileSync(path.join(R8_TEMP,'R8_RECOVERY_MANIFEST.json'),'utf8'));
+ assert.equal(r8.cards.length,21);
+ assert.equal(r8.statistics.variantCount,504);
+ assert.equal(r8.teacherApproval,false);
+ assert.equal(r8.published,false);
+ assert.equal(r8.catalogUpdated,false);
+ R8_ALIASES=new Map(MANIFEST.cards.map(c=>[
+  '/zkusebni/'+c.candidatePath,path.join(R8_TEMP,c.id+'-r8.html')
+ ]));
+}
 const LANGS=['en','es','de','fr'],LEVELS=['A1','A2','B1','B2','C1','C2'];
 const ENGINE=process.env.LSH_R6_ENGINE||'chromium';
 assert.ok(['chromium','webkit'].includes(ENGINE));
@@ -27,8 +44,9 @@ before(async()=>{
   let p;
   try{p=decodeURIComponent(new URL(req.url,'http://127.0.0.1').pathname)}
   catch{res.writeHead(400);res.end();return}
-  const file=path.resolve(ROOT,'.'+p);
-  if(!file.startsWith(ROOT+path.sep)||!file.startsWith(STAGE+path.sep)){res.writeHead(403);res.end();return}
+  const resolved=path.resolve(ROOT,'.'+p);
+  if(!resolved.startsWith(ROOT+path.sep)||!resolved.startsWith(STAGE+path.sep)){res.writeHead(403);res.end();return}
+  const file=R8_ALIASES.get(p)||resolved;
   fs.readFile(file,(err,body)=>{
    if(err){res.writeHead(404);res.end();return}
    res.writeHead(200,{'Content-Type':mime[path.extname(file)]||'application/octet-stream',
@@ -38,9 +56,12 @@ before(async()=>{
  await new Promise((resolve,reject)=>server.once('error',reject).listen(0,'127.0.0.1',resolve));
  origin='http://127.0.0.1:'+server.address().port;
 });
-after(async()=>{if(server)await new Promise(resolve=>server.close(resolve))});
+after(async()=>{
+ if(server)await new Promise(resolve=>server.close(resolve));
+ if(R8_TEMP)fs.rmSync(R8_TEMP,{recursive:true,force:true});
+});
 for(const card of MANIFEST.cards){
- test(ENGINE+' full 24-variant/8-station UI: '+card.id,{timeout:180000},async()=>{
+ test((R8_PREVIEW?'R8 source-restored ':'R6 ')+ENGINE+' full 24-variant/8-station UI: '+card.id,{timeout:180000},async()=>{
   const browser=await engine.launch({headless:true});
   try{
    const context=await browser.newContext({viewport:VIEWPORT,serviceWorkers:'block'});
@@ -59,6 +80,13 @@ for(const card of MANIFEST.cards){
    assert.equal(await page.locator('#levelSwitch button:not([disabled])').count(),0,'CEFR buttons unlocked');
    assert.ok(await page.locator('#mainQuestion').innerText(),'Locked candidate rendered no main question');
    assert.equal(await page.locator('#sectionNav button').count(),8);
+   if(R8_PREVIEW&&card.id==='cl-skola'){
+    const q=await page.evaluate(()=>CONTENT.es.levels.A1.stations);
+    assert.notEqual(q[0].questions[0],q[7].questions[0],
+     'School ES A1 original exact duplicate must be resolved in R8');
+    assert.match(q[7].questions[0],/instituto ideal/i);
+   }
+
    const unlocked=await page.goto(url+'?lang=en&level=B1',{waitUntil:'domcontentloaded',timeout:45000});
    assert.ok(unlocked&&unlocked.ok(),'Free-mode candidate must load');
    await page.locator('#languageSelect:not([disabled])').waitFor();
