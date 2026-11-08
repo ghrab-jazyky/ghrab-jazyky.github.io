@@ -9,6 +9,9 @@ const ROOT=path.resolve(__dirname,'..');
 const LEVELS=['A1','A2','B1','B2','C1','C2'];
 const LANGS=['en','es','de','fr'];
 const manifest=JSON.parse(fs.readFileSync(path.join(ROOT,'data/conversation-r6-candidates.json'),'utf8'));
+const R8_DIR=process.env.LSH_R8_CANDIDATES_DIR?path.resolve(process.env.LSH_R8_CANDIDATES_DIR):null;
+const R8=R8_DIR?JSON.parse(fs.readFileSync(path.join(R8_DIR,'R8_RECOVERY_MANIFEST.json'),'utf8')):null;
+const version=R8?'R8':'R6';
 const output=path.resolve(process.argv[2]||path.join(ROOT,'_qa-out'));
 const findings=[],metrics=[];
 const squish=s=>String(s||'').normalize('NFKC').toLocaleLowerCase('und').replace(/[^\p{L}\p{N}]+/gu,' ').trim().replace(/\s+/g,' ');
@@ -21,10 +24,22 @@ assert.equal(manifest.status,'CANDIDATES_ONLY');
 assert.equal(manifest.teacherApproval,false);
 assert.equal(manifest.published,false);
 assert.equal(manifest.cards.length,21);
+if(R8){
+ assert.equal(R8.cards.length,21);
+ assert.equal(R8.teacherApproval,false);
+ assert.equal(R8.published,false);
+ assert.equal(R8.catalogUpdated,false);
+ assert.equal(R8.approvedForRelease,false);
+ assert.equal(R8.statistics.variantCount,504);
+ assert.equal(R8.statistics.stationCount,4032);
+}
 for(const card of manifest.cards){
- const src=fs.readFileSync(path.join(ROOT,card.candidatePath),'utf8');
+ const recovered=R8&&R8.cards.find(c=>c.id===card.id);
+ if(R8)assert.ok(recovered,'Missing restored R8 card '+card.id);
+ const src=fs.readFileSync(R8?path.join(R8_DIR,recovered.file):path.join(ROOT,card.candidatePath),'utf8');
  const sha=crypto.createHash('sha256').update(src,'utf8').digest('hex');
- assert.equal(sha,card.candidateSha256,'Source SHA-256 mismatch for '+card.id);
+ assert.equal(sha,R8?recovered.repairedCandidateSha256:card.candidateSha256,
+  version+' source SHA-256 mismatch for '+card.id);
  const a=src.indexOf('const CONTENT = '),b=src.indexOf(';\nconst ORDER = ',a);
  assert.ok(a>=0&&b>a,'Cannot parse CONTENT of '+card.id);
  const data=JSON.parse(src.slice(a+'const CONTENT = '.length,b));
@@ -72,15 +87,15 @@ for(const card of manifest.cards){
    maxWords:Math.max(...words)});
  }
 }
-const result={schemaVersion:1,source:'R6_CANDIDATES_ONLY',kind:'HEURISTIC_CONTENT_QA',
+const result={schemaVersion:1,source:R8?'R8_SOURCE_PRESERVING_CANDIDATES_ONLY':'R6_CANDIDATES_ONLY',kind:'HEURISTIC_CONTENT_QA',
  teacherApproval:false,releaseApproved:false,totalCards:manifest.cards.length,
  totalVariants:metrics.length,totalStations:metrics.length*8,totalPrompts:metrics.length*32,
  note:'Deterministic lint flags potential problems; no lexical/semantic accuracy, CEFR or teacher approval is established.',
  findings,metrics};
 fs.mkdirSync(output,{recursive:true});
-fs.writeFileSync(path.join(output,'R6_CONTENT_AUDIT.json'),JSON.stringify(result,null,2)+'\n','utf8');
+fs.writeFileSync(path.join(output,version+'_CONTENT_AUDIT.json'),JSON.stringify(result,null,2)+'\n','utf8');
 const groups={};for(const f of findings)groups[f.code]=(groups[f.code]||0)+1;
-const summary=['# R6 – nezávislý automatizovaný obsahový screening','',
+const summary=['# '+version+' – nezávislý automatizovaný obsahový screening','',
  'Zdroj: 21 SHA-256 ověřených studentských kandidátů; žádné zveřejnění ani přepsání originálů.',
  'Rozsah: '+result.totalVariants+' variant, '+result.totalStations+' stanovišť, '+result.totalPrompts+' hlavních a doplňujících otázek.',
  'Nalezených upozornění (pouze kandidáti na lidskou kontrolu): '+findings.length+'.',
@@ -93,8 +108,8 @@ const summary=['# R6 – nezávislý automatizovaný obsahový screening','',
  'Žádný tento test nedokazuje idiomatičnost ve 4 jazycích, správnou úroveň CEFR,',
  'pedagogickou kvalitu ani reálné chování iOS, Android, offline slovníčku či QR.',
  'Zdrojová HTML zůstávají beze změn. Učitelské schválení neuděleno.',''];
-fs.writeFileSync(path.join(output,'R6_CONTENT_AUDIT_SUMMARY.md'),summary.join('\n'),'utf8');
-console.log('PASS R6 HEURISTIC CONTENT SCREEN:',result.totalCards,'cards,',
+fs.writeFileSync(path.join(output,version+'_CONTENT_AUDIT_SUMMARY.md'),summary.join('\n'),'utf8');
+console.log('PASS '+version+' HEURISTIC CONTENT SCREEN:',result.totalCards,'cards,',
  result.totalVariants,'variants,',result.totalStations,'stations,',result.totalPrompts,'prompts');
 console.log('REVIEW QUEUE:',JSON.stringify(groups),'total',findings.length);
 console.log('REVIEW CANDIDATES:',JSON.stringify(findings.slice(0,20).map(f=>({id:f.id,language:f.language,level:f.level,code:f.code,location:f.location,observed:f.observed}))));
