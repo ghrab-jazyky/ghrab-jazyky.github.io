@@ -1,0 +1,77 @@
+name: LSH R10 unified offline teacher review all29 (NO deployment)
+on:
+  pull_request:
+    paths:
+      - 'zkusebni/tools/r10-unified-review-bundle.cjs'
+      - 'zkusebni/tests/r10-*.test.cjs'
+      - 'zkusebni/docs/LSH_R10_UNIFIED_REVIEW_BUNDLE.md'
+      - 'zkusebni/tools/conversation-r8-source-recovery.cjs'
+      - 'zkusebni/tools/reading-r7-candidates.cjs'
+      - 'zkusebni/tools/listening-r7-three-phase-candidates.cjs'
+      - 'zkusebni/data/reference-pilots.json'
+      - 'zkusebni/data/conversation-r8-*.json'
+      - 'zkusebni/data/reading-r7-matching-proposals.json'
+      - 'zkusebni/konverzace/**'
+      - 'zkusebni/nahledy/**'
+      - 'zkusebni/integrace/**'
+      - 'zkusebni/assets/lsh/v2/lock.js'
+      - 'zkusebni/assets/lsh/v3/**'
+      - '.github/workflows/lsh-r10-unified-review.yml'
+  push:
+    branches: ['feat/lsh-*']
+    paths:
+      - 'zkusebni/tools/r10-unified-review-bundle.cjs'
+      - 'zkusebni/tests/r10-*.test.cjs'
+      - 'zkusebni/docs/LSH_R10_UNIFIED_REVIEW_BUNDLE.md'
+      - 'zkusebni/tools/conversation-r8-source-recovery.cjs'
+      - 'zkusebni/tools/reading-r7-candidates.cjs'
+      - 'zkusebni/tools/listening-r7-three-phase-candidates.cjs'
+      - 'zkusebni/data/reference-pilots.json'
+      - 'zkusebni/data/conversation-r8-*.json'
+      - 'zkusebni/data/reading-r7-matching-proposals.json'
+      - 'zkusebni/konverzace/**'
+      - 'zkusebni/nahledy/**'
+      - 'zkusebni/integrace/**'
+      - 'zkusebni/assets/lsh/v2/lock.js'
+      - 'zkusebni/assets/lsh/v3/**'
+      - '.github/workflows/lsh-r10-unified-review.yml'
+permissions:
+  contents: read
+jobs:
+  build-review-29:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify source and privacy invariants
+        run: node --test zkusebni/tests/r10-review-bundle.test.cjs
+      - name: Assemble isolated review bundle
+        run: node zkusebni/tools/r10-unified-review-bundle.cjs "$RUNNER_TEMP/lsh-r10-review"
+      - name: Attach offline index and 29 cards (NO TEACHER KEYS)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-r10-unified-all29-review-NO-KEYS
+          path: ${{ runner.temp }}/lsh-r10-review/
+          retention-days: 7
+          if-no-files-found: error
+  browser-offline-29:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install browser engines
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Verify all 29 HTML offline in Chromium and WebKit
+        run: node --test zkusebni/tests/r10-review-bundle.browser.test.cjs
