@@ -31,7 +31,8 @@ async function verify(engine,name,viewport){
    const before=js.length,href=pathToFileURL(path.join(OUT,v.file)).href;
    try{
     const res=await page.goto(href,{waitUntil:'domcontentloaded',timeout:30000});
-    assert.ok(res&&res.ok(),'Could not load offline draft '+v.file);
+    assert.equal(page.url(),href,'Wrong offline preview URL');
+    if(res)assert.ok(res.ok(),'Could not load offline draft '+v.file);
     assert.equal(await page.locator('.warning').count(),1,'Warning banner missing');
     assert.ok((await page.locator('.warning').innerText()).length>20);
     assert.equal(await page.locator('form').count(),0,'No score/submit forms permitted');
