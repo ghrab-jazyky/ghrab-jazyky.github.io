@@ -116,8 +116,34 @@ fs.mkdirSync(out,{recursive:true});
 for(const f of sources){
  const original=fs.readFileSync(path.join(root,f.original));
  assert.equal(gitBlob(original),f.blob,'Original changed '+f.id);
- const text=original.toString('utf8'),candidate=migrate(text,f.id);
- assert.equal(getData(text),getData(candidate),'Lesson data modified '+f.id);
+ const text=original.toString('utf8'),uiOnly=migrate(text,f.id);
+ let candidate=uiOnly,semanticRepairs=[];
+ if(f.id==='ll-peaky-no-fighting'){
+  // Source-anchored semantic correction. BBC scene transcript contains
+  // interruptions that undermine the speech, NOT an explicit plan to disobey.
+  // Option 1 already matches the original rationale; change only correct 1->0.
+  const before=JSON.parse(getData(text).slice('const DATA='.length,-1));
+  const q=before.C1.gist[1];
+  assert.equal(q.title,'What is the overall dramatic effect of the interruptions?');
+  assert.equal(q.type,'single');
+  assert.equal(q.correct,1);
+  assert.equal(q.options[0],'They puncture his attempt at a controlled, intimidating address');
+  assert.equal(q.options[1],'They show that the men are openly planning to disobey him');
+  assert.equal(q.why,'The interruptions undercut his attempt to control the encounter.');
+  const oldLiteral=JSON.stringify(q),fixed={...q,correct:0},newLiteral=JSON.stringify(fixed);
+  assert.equal(uiOnly.split(oldLiteral).length,2,'C1 gist original answer target not unique');
+  candidate=uiOnly.replace(oldLiteral,newLiteral);
+  assert.equal(candidate.split(newLiteral).length,2,'C1 gist candidate answer target not unique');
+  assert.equal(candidate.replace(newLiteral,oldLiteral),uiOnly,'Unexpected HTML modification outside correction');
+  const after=JSON.parse(getData(candidate).slice('const DATA='.length,-1));
+  const expected=structuredClone(before);expected.C1.gist[1].correct=0;
+  assert.deepEqual(after,expected,'Unexpected Peaky educational-data changes');
+  semanticRepairs=[{level:'C1',phase:'First Listening',kind:'gist',index:2,
+   reason:'Option B overclaims intent to disobey; option A matches original explanation and dialogue',
+   teacherApproval:false}];
+ }else{
+  assert.equal(getData(text),getData(candidate),'Lesson data modified '+f.id);
+ }
  const scripts=[...candidate.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)];
  assert.equal(scripts.length,1,'Expected one JS program');
  new vm.Script(scripts[0][1],{filename:f.slug+'.html'});
@@ -142,16 +168,19 @@ for(const f of sources){
    candidate:name,sourceSHA256:sha256(original),candidateSHA256:sha256(Buffer.from(candidate)),
    levels:6,teacherApproval:false,mediaVerified:false,
    contentSuitabilityReviewed:false,externalMediaAccessVerified:false,
-   contentWarning:f.id==='ll-peaky-no-fighting'?'strong language, drugs, aggressive threats':'external Facebook-hosted media; possible sign-in/network limits'});
+   contentWarning:f.id==='ll-peaky-no-fighting'?'strong language, drugs, aggressive threats':'external Facebook-hosted media; possible sign-in/network limits',
+   semanticRepairs});
 }
 assert.equal(manifest.cards.length,2);
+assert.equal(manifest.cards.reduce((n,c)=>n+c.semanticRepairs.length,0),1,'Exactly one source-grounded semantic repair');
 fs.writeFileSync(path.join(out,'LISTENING_R7_UI_MANIFEST.json'),JSON.stringify(manifest,null,2)+'\n');
 fs.writeFileSync(path.join(out,'README.md'),[
  '# Listening Lab R7 – kandidáti rozděleného třífázového UI','',
  'Opravené kopie nejsou publikovány. Původní HTML obou karet zůstává beze změn.',
  'First = gist; Second = detail; Third = Written Evidence + Reconstruction.',
  'Každá fáze a nepovinná slovní zásoba mají samostatnou kontrolu. Vocabulary se do hlavního skóre nepočítá.',
- 'Ověřeno šest nezměněných datových úrovní a syntaktická správnost JS.',
+ 'Ověřeno šest datových úrovní a syntaktická správnost JS; Peaky C1 First Listening má jednu izolovanou zdrojově ověřenou opravu klíče (původně B, správně A).',
+ 'Původní zdroje jsou beze změny; jeden změněný objekt se vrací přesným reverzním patchem.',
  'U Peaky je explicitní upozornění na silné vulgarity, odkazy na drogy a agresivní výhrůžky; není schválena vhodnost pro mladší žáky.',
  'U Harrisona je upozornění na možné vyžadované přihlášení a omezení přístupu k videu ve školní síti.',
  'Není ověřeno reálné přehrávání videa, pedagogická správnost, Peaky věková vhodnost, ani fyzická mobilní UAT.',''
