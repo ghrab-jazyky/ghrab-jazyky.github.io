@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "kind": "R8_ORIGINAL_CONTENT_RECOVERY",
+  "state": "CANDIDATES_ONLY",
+  "sourceOfTruth": "CANONICAL_ORIGINAL_CONTENT",
+  "teacherApproval": false,
+  "published": false,
+  "reviewComplete": false,
+  "description": "Preserve original topic-specific conversation content. Apply only exact source-confirmed ES A1 grammar or duplicate corrections. No generic support replacement.",
+  "patches": [
+    {
+      "topicId": "cl-ceny-nemovitosti",
+      "language": "es",
+      "level": "A1",
+      "stationIndex": 6,
+      "field": "main",
+      "original": "¿Qué hace que una casa sea buena para una persona?",
+      "replacement": "¿Qué necesita una persona en su casa?",
+      "reason": "A1: avoid causative subjunctive; same basic housing focus."
+    },
+    {
+      "topicId": "cl-majetkove-nerovnosti",
+      "language": "es",
+      "level": "A1",
+      "stationIndex": 3,
+      "field": "main",
+      "original": "¿Qué hace que una casa sea segura y cómoda?",
+      "replacement": "¿Cómo es una casa segura y cómoda?",
+      "reason": "A1: remove causative subjunctive without changing the topic."
+    },
+    {
+      "topicId": "cl-muzi-a-zeny",
+      "language": "es",
+      "level": "A1",
+      "stationIndex": 3,
+      "field": "main",
+      "original": "¿Qué hace que alguien sea un buen amigo?",
+      "replacement": "¿Cómo es un buen amigo?",
+      "reason": "A1: use common present tense rather than subjunctive."
+    },
+    {
+      "topicId": "cl-skola",
+      "language": "es",
+      "level": "A1",
+      "stationIndex": 7,
+      "field": "questions",
+      "questionIndex": 0,
+      "original": "¿Es grande o pequeño?",
+      "replacement": "¿Tu instituto ideal es grande o pequeño?",
+      "reason": "Resolve exact duplication between real and ideal school stations with A1 wording."
+    }
+  ]
+}
