@@ -195,32 +195,77 @@ function importBatch(file,apply){
  }
  const result=planned.map(p=>({id:p.pilot.id,path:p.newPath,sourceSha256:p.pilot.sourceSha256,variants:p.variants,exerciseRecords:p.exerciseRecords}));
  if(!apply){console.log(JSON.stringify({mode:'dry-run',safeToApply:true,cards:result},null,2));return}
- for(const p of planned){
-  const files=p.newPath===p.originalPath?[[p.originalPath,p.source]]:[[p.originalPath,p.source],[p.newPath,p.output]];
-  for(const [destination,content] of files){
-   fs.mkdirSync(path.dirname(path.join(ROOT,destination)),{recursive:true});
-   fs.writeFileSync(path.join(ROOT,destination),content,{flag:'wx'});
+ // A failed bulk import must not leave half a card or partially updated ledgers.
+ // The lock serialises cooperating importers; each ledger replacement is atomic.
+ const lockPath=path.join(ROOT,'data/.card-intake.lock');
+ let lockFd=null;
+ try{
+  lockFd=fs.openSync(lockPath,'wx');
+  validateAll(); // Refuse to modify an already inconsistent catalogue.
+  const originals=new Map(Object.values(FILES).map(f=>[f,fs.readFileSync(path.join(ROOT,f))]));
+  const created=[],changedLedgers=[],staged=new Set();
+  const inject=process.env.CI==='true'?process.env.LSH_INTAKE_TEST_FAILURE:null;
+  const tempPath=relative=>path.join(ROOT,'data/.intake-'+path.basename(relative)+'-'+process.pid+'-'+crypto.randomBytes(8).toString('hex')+'.tmp');
+  const putLedger=(relative,bytes)=>{
+   const dest=path.join(ROOT,relative),expected=originals.get(relative);
+   ensure(fs.readFileSync(dest).equals(expected),'Ledger modified during import: '+relative);
+   const tmp=tempPath(relative);staged.add(tmp);
+   fs.writeFileSync(tmp,bytes,{flag:'wx'});
+   fs.renameSync(tmp,dest);staged.delete(tmp);
+   changedLedgers.push(relative);
+   if(inject==='after-first-ledger'&&changedLedgers.length===1)fail('Injected failure after first ledger (CI rollback test)');
+  };
+  const restoreLedger=(relative)=>{
+   const dest=path.join(ROOT,relative),tmp=tempPath(relative);
+   staged.add(tmp);fs.writeFileSync(tmp,originals.get(relative),{flag:'wx'});
+   fs.renameSync(tmp,dest);staged.delete(tmp);
+  };
+  try{
+   for(const p of planned){
+    const files=p.newPath===p.originalPath?[[p.originalPath,p.source]]:[[p.originalPath,p.source],[p.newPath,p.output]];
+    for(const [destination,content] of files){
+     const absolute=path.join(ROOT,destination);
+     fs.mkdirSync(path.dirname(absolute),{recursive:true});
+     const fd=fs.openSync(absolute,'wx');
+     created.push(absolute); // Tracked even if writing its contents subsequently fails.
+     try{fs.writeFileSync(fd,content,'utf8')}finally{fs.closeSync(fd)}
+     if(inject==='after-first-file'&&created.length===1)fail('Injected failure after first file (CI rollback test)');
+    }
+   catalog.entries.push(p.pilot);
+   tracker.topics.push({id:p.pilot.id,skill:p.pilot.skill,title:p.pilot.title,origin:'card-intake-v1',
+    isReference:false,practiceState:'NEW_CARD_AUDIT_PENDING',urlAndQr:'URL_INTEGRATED_QA_PENDING',
+    browserAndPedagogyQA:'QA_PENDING',separateTestMode:'NOT_DESIGNED_OR_APPROVED',
+    publicRelease:'BLOCKED_PENDING_REVIEW',
+    technicalNote:'Imported public student source with SHA-256 '+p.pilot.sourceSha256+'; pending Claude audit, teacher approval and real-device QA.'});
+   tracker.currentPopulation[p.pilot.skill]++;
+   tracker.currentPopulation.total++;
+   tracker.migrationProgress.pilotCatalogEntries++;
+   tracker.migrationProgress.allTechnicalCandidatesIndexed++;
+   if(!tracker.statusVocabulary.includes('NEW_CARD_AUDIT_PENDING'))tracker.statusVocabulary.push('NEW_CARD_AUDIT_PENDING');
+   queue.topics.push({id:p.pilot.id,skill:p.pilot.skill,title:p.pilot.title,
+    studentPath:p.pilot.studentPath,sourcePath:p.originalPath,sourceSha256:p.pilot.sourceSha256,
+    status:'PENDING',reviewer:'Claude',teacherApproval:false,reviewedSourceSha256:null,findingsSummary:null});
+   }
+   catalog.collectionVersion='INTAKE_V1-'+new Date().toISOString().slice(0,10);
+   tracker.version='INTAKE_V1-'+new Date().toISOString().slice(0,10);
+   for(const [relative,obj] of [[FILES.catalog,catalog],[FILES.tracker,tracker],[FILES.queue,queue]]){
+    putLedger(relative,Buffer.from(JSON.stringify(obj,null,2)+'\n','utf8'));
+   }
+   const verification=validateAll();
+   console.log(JSON.stringify({mode:'applied',cards:result,verification},null,2));
+  }catch(error){
+   const rollbackErrors=[];
+   // Reverse completed ledger swaps first, then remove only files created by us.
+   for(const relative of changedLedgers.reverse())try{restoreLedger(relative)}catch(e){rollbackErrors.push(e)}
+   for(const absolute of created.reverse())try{fs.rmSync(absolute,{force:true})}catch(e){rollbackErrors.push(e)}
+   for(const absolute of staged)try{fs.rmSync(absolute,{force:true})}catch(e){rollbackErrors.push(e)}
+   if(rollbackErrors.length)throw new AggregateError([error,...rollbackErrors],
+    'Import failed and one or more rollback operations also failed; inspect the working tree');
+   throw error;
   }
-  catalog.entries.push(p.pilot);
-  tracker.topics.push({id:p.pilot.id,skill:p.pilot.skill,title:p.pilot.title,origin:'card-intake-v1',
-   isReference:false,practiceState:'NEW_CARD_AUDIT_PENDING',urlAndQr:'URL_INTEGRATED_QA_PENDING',
-   browserAndPedagogyQA:'QA_PENDING',separateTestMode:'NOT_DESIGNED_OR_APPROVED',
-   publicRelease:'BLOCKED_PENDING_REVIEW',
-   technicalNote:'Imported public student source with SHA-256 '+p.pilot.sourceSha256+'; pending Claude audit, teacher approval and real-device QA.'});
-  tracker.currentPopulation[p.pilot.skill]++;
-  tracker.currentPopulation.total++;
-  tracker.migrationProgress.pilotCatalogEntries++;
-  tracker.migrationProgress.allTechnicalCandidatesIndexed++;
-  if(!tracker.statusVocabulary.includes('NEW_CARD_AUDIT_PENDING'))tracker.statusVocabulary.push('NEW_CARD_AUDIT_PENDING');
-  queue.topics.push({id:p.pilot.id,skill:p.pilot.skill,title:p.pilot.title,
-   studentPath:p.pilot.studentPath,sourcePath:p.originalPath,sourceSha256:p.pilot.sourceSha256,
-   status:'PENDING',reviewer:'Claude',teacherApproval:false,reviewedSourceSha256:null,findingsSummary:null});
+ }finally{
+  if(lockFd!==null){fs.closeSync(lockFd);fs.rmSync(lockPath,{force:true})}
  }
- catalog.collectionVersion='INTAKE_V1-'+new Date().toISOString().slice(0,10);
- tracker.version='INTAKE_V1-'+new Date().toISOString().slice(0,10);
- const writeJSON=(f,obj)=>fs.writeFileSync(path.join(ROOT,f),JSON.stringify(obj,null,2)+'\n');
- writeJSON(FILES.catalog,catalog);writeJSON(FILES.tracker,tracker);writeJSON(FILES.queue,queue);
- console.log(JSON.stringify({mode:'applied',cards:result,verification:validateAll()},null,2));
 }
 function auditExport(out){
  const catalog=load(FILES.catalog),queue=readQueue(catalog);
