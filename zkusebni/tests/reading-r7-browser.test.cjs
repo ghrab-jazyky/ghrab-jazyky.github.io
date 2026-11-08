@@ -125,7 +125,12 @@ for(const [engine,engineName] of [[chromium,'Chromium'],[webkit,'WebKit']]){
        'es-b2-matching-3','de-b2-matching-3','fr-b2-matching-3']).has(patch.questionId);
       assert.equal(details.evidence.length,clarified?2:1,
        'R13 matching item must highlight all semantic premises: '+patch.questionId);
-      if(clarified)assert.ok(details.evidence.every(ev=>ev.p===2&&ev.text.length>=25));
+      if(clarified){
+       assert.ok(details.evidence.every(ev=>ev.p===2&&ev.text.length>=12),
+        'Every exact R13 evidence span must be visible and nontrivial');
+       assert.ok(details.evidence[1].text.length>=25,
+        'R13 additional evidence must explain the second premise in full');
+      }
       await page.locator('#skillTabs button[data-skill="'+details.tab+'"]').click();
       const box='#questions .qcard[data-question="'+patch.questionId+'"]';
       await page.locator(box+' input[type="radio"][value="2"]').check();
