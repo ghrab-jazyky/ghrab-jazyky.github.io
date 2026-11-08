@@ -1,10 +1,14 @@
-name: LSH R12 content triage and R11 review matrix (NO deployment)
+name: LSH R15 offline UAT and classified NO-GO (NO deployment)
 on:
   pull_request:
     paths:
       - 'zkusebni/tools/r10-unified-review-bundle.cjs'
       - 'zkusebni/tools/r11-review-matrix.cjs'
       - 'zkusebni/tools/r12-content-triage.cjs'
+      - 'zkusebni/tools/r15-release-guard.cjs'
+      - 'zkusebni/tests/r15-*.test.cjs'
+      - 'zkusebni/assets/lsh/r15/**'
+      - 'zkusebni/docs/LSH_R15_RELEASE_READINESS_2026-11-08.md'
       - 'zkusebni/tests/r12-*.test.cjs'
       - 'zkusebni/docs/LSH_R12_CONTENT_TRIAGE.md'
       - 'zkusebni/tests/r11-*.test.cjs'
@@ -30,6 +34,10 @@ on:
       - 'zkusebni/tools/r10-unified-review-bundle.cjs'
       - 'zkusebni/tools/r11-review-matrix.cjs'
       - 'zkusebni/tools/r12-content-triage.cjs'
+      - 'zkusebni/tools/r15-release-guard.cjs'
+      - 'zkusebni/tests/r15-*.test.cjs'
+      - 'zkusebni/assets/lsh/r15/**'
+      - 'zkusebni/docs/LSH_R15_RELEASE_READINESS_2026-11-08.md'
       - 'zkusebni/tests/r12-*.test.cjs'
       - 'zkusebni/docs/LSH_R12_CONTENT_TRIAGE.md'
       - 'zkusebni/tests/r11-*.test.cjs'
@@ -74,10 +82,14 @@ jobs:
         run: node --test zkusebni/tests/r12-content-triage.test.cjs
       - name: Add R12 pedagogical triage to the same portable review package
         run: node zkusebni/tools/r12-content-triage.cjs "$RUNNER_TEMP/lsh-r10-review"
+      - name: Verify R15 strict NO-GO and all 14 manual readiness gates
+        run: node --test zkusebni/tests/r15-release-guard.test.cjs
+      - name: Append R15 readiness UI to disposable offline review bundle
+        run: node zkusebni/tools/r15-release-guard.cjs "$RUNNER_TEMP/lsh-r10-review"
       - name: Attach offline index and 29 cards (NO TEACHER KEYS)
         uses: actions/upload-artifact@v4
         with:
-          name: lsh-r12-content-triage-642-offline-NO-KEYS
+          name: lsh-r15-29-cards-642-reviews-UAT-NO-KEYS
           path: ${{ runner.temp }}/lsh-r10-review/
           retention-days: 7
           if-no-files-found: error
@@ -101,3 +113,5 @@ jobs:
         run: node --test zkusebni/tests/r11-review-matrix.browser.test.cjs
       - name: Verify pedagogical triage links on desktop and mobile
         run: node --test zkusebni/tests/r12-content-triage.browser.test.cjs
+      - name: Verify R15 real UAT controls, JSON import/export and permanent classified NO-GO
+        run: node --test zkusebni/tests/r15-release-guard.browser.test.cjs
