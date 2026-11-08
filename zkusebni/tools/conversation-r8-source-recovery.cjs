@@ -87,7 +87,7 @@ assert.equal(plan.teacherApproval,false);
 assert.equal(plan.published,false);
 assert.equal(plan.patches.length,7);
 assert.equal(new Set(plan.patches.map(p=>p.topicId+'/'+p.language+'/'+p.level+'/'+p.stationIndex+'/'+p.field+'/'+(p.questionIndex??''))).size,7);
-const cards=[],total={};
+const cards=[],total={},questionReview=[];
 fs.mkdirSync(OUT,{recursive:true});
 for(const item of mf.cards){
  const orig=fs.readFileSync(path.join(ROOT,item.originalPath));
@@ -117,6 +117,24 @@ for(const item of mf.cards){
   }else throw Error('Unapproved patch target '+p.field);
  }
  verifyCoverage(repaired,item.id);
+ // Preserve an exact review list of the 38 R6 question edits, even when R8 does
+ // not adopt them. Only a human linguistic review can decide the remaining edits.
+ for(const l of LANGS)for(const lev of LEVELS){
+  const originalVariant=a.data[l].levels[lev],r6Variant=b.data[l].levels[lev],
+   restoredVariant=repaired[l].levels[lev];
+  for(let i=0;i<8;i++)for(let q=0;q<4;q++){
+   const field=q===0?'main':'questions';
+   const get=(v)=>q===0?v.stations[i].main:v.stations[i].questions[q-1];
+   const before=get(originalVariant),afterR6=get(r6Variant),afterR8=get(restoredVariant);
+   if(before===afterR6)continue;
+   questionReview.push({topicId:item.id,language:l,level:lev,station:i+1,
+    target:q===0?'main':'followup-'+q,original:before,r6Candidate:afterR6,
+    r8Candidate:afterR8,r8UsedR6Proposal:afterR8===afterR6,
+    changedByExplicitPatch:fixes.some(p=>p.language===l&&p.level===lev&&
+     p.stationIndex===i&&p.field===field&&(q===0||p.questionIndex===q-1)),
+    status:'CONTENT_CHANGE_NEEDS_TEACHER_REVIEW',teacherApproval:false});
+  }
+ }
  // Validate the complete recovered teaching content, not just HTML shape.
  for(const l of LANGS)for(const lev of LEVELS){
   const seen=new Map();
@@ -174,10 +192,18 @@ const result={schemaVersion:1,kind:'R8_SOURCE_CONTENT_RECOVERY_CANDIDATES_ONLY',
  published:false,catalogUpdated:false,approvedForRelease:false,testModeReady:false,
  statistics:total,cards};
 assert.equal(cards.length,21);
+assert.equal(questionReview.length,total.changedMainPrompts+total.changedFollowups,
+ 'Prompt diff queue must contain every original-versus-R6 question change');
+assert.equal(questionReview.length,38);
 assert.equal(total.variantCount,504);
 assert.equal(total.stationCount,4032);
 assert.equal(cards.reduce((n,c)=>n+c.exactPatches.length,0),7);
 fs.writeFileSync(path.join(OUT,'R8_RECOVERY_MANIFEST.json'),JSON.stringify(result,null,2)+'\n');
+fs.writeFileSync(path.join(OUT,'R8_QUESTION_CHANGE_REVIEW.json'),
+ JSON.stringify({schemaVersion:1,kind:'R8_QUESTION_CHANGE_REVIEW',
+  total:questionReview.length,teacherApproval:false,approvedForRelease:false,
+  note:'38 R6 question changes require separate linguistic judgment. R8 restores originals except 7 explicit A1 fixes; changedByExplicitPatch identifies overlap. Neither original nor R6 text is automatically approved.',
+  entries:questionReview},null,2)+'\n');
 const lines=['# Conversation Lab R8 – bezpečná obnova původního pedagogického obsahu','',
  'Důvod: R6 kandidáti obsahují masivní generické nahrazování tematicky specifických opor. To je pedagogická regrese, přestože strukturální kontroly R6 byly zelené.',
  '', '## Rozsah předběžného zjištění','',
@@ -187,6 +213,7 @@ const lines=['# Conversation Lab R8 – bezpečná obnova původního pedagogick
    ', doplňující otázky '+total.changedFollowups+', Challenge '+total.changedChallenges+
    ', Stretch '+total.changedStretches+', vysvětlení '+total.changedExplanations+
    ', sady slovní zásoby '+total.changedVocabularySets+'.',
+ '- Seznam všech 38 změněných hlavních/doplňujících otázek a rozhodnutí R8 je v R8_QUESTION_CHANGE_REVIEW.json; nevybrané formulace z R6 stále čekají na obsahovou revizi.',
  '', '## Obnova','',
  '- Všech 21 R8 HTML kopíruje kompletní **původní CONTENT** (EN/ES/DE/FR × A1–C2), původní Support, Challenge, Stretch, Vocabulary a Toolkit.',
  '- Jediných sedm povolených odchýlení jsou přesné zdrojově ověřené opravy A1 definované v data/conversation-r8-minimal-content-fixes.json.',
