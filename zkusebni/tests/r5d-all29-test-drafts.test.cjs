@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Node-only functional smoke of the 54 isolated R5D test-form prototypes.
+/* Node-only functional verification of all 642 isolated R5D ALL29 test-form drafts.
  * All outputs created in OS temp dir and destroyed. Never modify public tree.
  */
 'use strict';
@@ -21,7 +21,7 @@ test('R5D ALL29 642 test drafts: no answers, grades, teacher keys, student ident
  try{
   const result=execFileSync(process.execPath,[GEN,dir+'/out'],
    {encoding:'utf8',timeout:120000});
-  assert.match(result,/PASS R5D 54 review-only/);
+  assert.match(result,/PASS R5D ALL29 642 review-only/);
   const out=path.join(dir,'out');
   const manifest=JSON.parse(fs.readFileSync(path.join(out,'R5D_ALL29_DRAFT_MANIFEST.json'),'utf8'));
   assert.equal(manifest.schemaVersion,1);
