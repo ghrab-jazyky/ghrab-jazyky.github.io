@@ -37,8 +37,12 @@ for(const f of files){
   for(const key of ['before','gist','detail','facts','open','sequence','vocab','talk','challenge'])if(!Array.isArray(v[key]))problems.push('missing array '+key);
   if(problems.length)flag(f.id,level,'DATA_SHAPE',problems.join(', '));
   for(const key of ['gist','detail'])for(const [i,q] of v[key].entries()){
-   if(typeof q.title!=='string'||!q.title.trim()||!Array.isArray(q.options)||q.options.length<2||!Number.isInteger(q.correct)||q.correct<0||q.correct>=q.options.length)
-    flag(f.id,level,'OBJECTIVE_QUESTION_INVALID',key+' #'+(i+1)+' missing prompt/choices/valid correct index');
+   const optionsValid=Array.isArray(q.options)&&q.options.length>=2&&q.options.every(x=>typeof x==='string'&&!!x.trim());
+   const answerValid=optionsValid&&(q.type==='multi'?
+      Array.isArray(q.correct)&&q.correct.length>=2&&new Set(q.correct).size===q.correct.length&&q.correct.every(i=>Number.isInteger(i)&&i>=0&&i<q.options.length):
+      Number.isInteger(q.correct)&&q.correct>=0&&q.correct<q.options.length);
+   if(typeof q.title!=='string'||!q.title.trim()||!answerValid)
+    flag(f.id,level,'OBJECTIVE_QUESTION_INVALID',key+' #'+(i+1)+' missing prompt/choices or invalid single/multiple answer index');
    if(typeof q.why!=='string'||q.why.trim().length<6)
     flag(f.id,level,'OBJECTIVE_EXPLANATION_TOO_SHORT',key+' #'+(i+1)+' has insufficient justification');
   }
