@@ -22,9 +22,16 @@ const CSS_PATCH="\n/* Listening R7 preview – three-pass progression */\n.liste
 const SCORE_PATCH="\nfunction r7Summary(){\n const s=state(),reviews=s.r7Reviews||{},parts=['first','second','third'],checked=parts.filter(x=>reviews[x]);\n const n=checked.reduce((a,k)=>a+reviews[k].correct,0),done=checked.reduce((a,k)=>a+reviews[k].attempted,0);\n $('scoreNumber').textContent=checked.length?n+' / '+getMax():'— / '+getMax();\n $('scoreLabel').textContent='Listening 1–3 only; optional vocabulary excluded';\n $('scoreDescription').textContent=checked.length===3?\n  'All three listening stages reviewed. Written responses require teacher review.':\n  checked.length+'/3 listening stages reviewed; this is a partial result.';\n const names={first:'First Listening',second:'Second Listening',third:'Third Listening'};\n $('scoreBreakdown').innerHTML=parts.map(k=>'<li>'+names[k]+': '+\n  (reviews[k]?reviews[k].correct+'/'+reviews[k].total+' ('+reviews[k].attempted+' attempted)':'not checked')+'</li>').join('');\n const t=reviews.third;\n if(t)$('reviewSummary').innerHTML='<h3>Written Evidence · teacher review</h3><p>'+\n  t.factRight+'/'+DATA[current].facts.length+' recognised facts; '+t.factReview+\n  ' require checking; '+t.factMissing+' blank; '+t.writtenAnswered+\n  '/'+DATA[current].open.length+' open interpretations submitted. No unknown wording is automatically marked wrong.</p>';\n s.last={correct:n,total:getMax(),attempted:done,factGrades:t?t.factGrades:[],\n   factRight:t?t.factRight:0,factReview:t?t.factReview:0,\n   factMissing:t?t.factMissing:0,writtenAnswered:t?t.writtenAnswered:0};\n}\nfunction r7Check(phase,scroll){\n capture();\n const s=state(),d=DATA[current],U=ui();\n if(!s.r7Reviews)s.r7Reviews={};\n let correct=0,attempted=0,total=0,factRight=0,factReview=0,factMissing=0,writtenAnswered=0;\n const factGrades=[];\n if(phase==='first'||phase==='second'){\n  const prefix=phase==='first'?'g':'d',qs=phase==='first'?d.gist:d.detail;\n  total=qs.length;\n  qs.forEach((q,i)=>{\n   const got=getChoices(prefix,i),empty=Array.isArray(got)?got.length===0:got===null;\n   if(!empty)attempted++;\n   const wanted=Array.isArray(q.correct)?q.correct.slice().sort((a,b)=>a-b):q.correct;\n   const ok=!empty&&(Array.isArray(wanted)?\n    Array.isArray(got)&&got.length===wanted.length&&got.every((v,k)=>v===wanted[k]):got===wanted);\n   if(ok)correct++;\n   const right=(Array.isArray(q.correct)?q.correct:[q.correct]).map(k=>ABC[k]).join(' + ');\n   mark(answerKey(prefix,i),empty?'missing':ok?'ok':'bad',empty?'Not answered.':ok?'Correct. '+q.why:'Review: '+right+'. '+q.why);\n  });\n }else if(phase==='third'){\n  total=d.sequence.length;\n  $('sequenceList').querySelectorAll('.seq-item').forEach((li,i)=>{\n   const ok=s.seqTouched&&s.order[i]===i;if(ok)correct++;\n   li.classList.toggle('right',!!s.seqTouched&&ok);li.classList.toggle('wrong',!!s.seqTouched&&!ok);\n  });\n  if(s.seqTouched)attempted=total;\n  d.facts.forEach((f,i)=>{\n   const v=$('f-'+i).value.trim();let status;\n   if(!v){status='empty';factMissing++;mark('f-'+i,'missing','Not answered. Example: '+f.answer);}\n   else if(factOK(v,f)){status='recognised';factRight++;mark('f-'+i,'tentative',U.factOk+f.answer);}\n   else{status='review';factReview++;mark('f-'+i,'missing',U.factUnknown+f.answer);}\n   factGrades.push({answer:v,status});\n  });\n  d.open.forEach((q,i)=>{\n   const v=$('o-'+i).value.trim();if(v)writtenAnswered++;\n   mark('o-'+i,'missing','Teacher review. Example: '+q.answer+' Criteria: '+q.criteria);\n  });\n }else if(phase==='vocabulary'){\n  total=d.vocab.length;\n  d.vocab.forEach((v,i)=>{\n   const value=$('v-'+i).value,empty=value==='';if(!empty)attempted++;\n   const ok=!empty&&Number(value)===i;if(ok)correct++;\n   mark('v-'+i,empty?'missing':ok?'ok':'bad',\n    empty?'Not answered.':ok?'Correct.':'Correct meaning: '+v.meaning);\n  });\n }else throw Error('Unexpected phase');\n s.r7Reviews[phase]={correct,attempted,total,factGrades,factRight,factReview,factMissing,writtenAnswered};\n s.checked=false;r7Summary();persist();\n const status={first:'firstReview',second:'secondReview',third:'thirdReview',vocabulary:'vocabReview'}[phase];\n $(status).textContent=phase==='third'?\n  correct+'/'+total+' sequence steps correct. Written answers await teacher review.':\n  correct+'/'+total+' correct · '+attempted+' answered'+(phase==='vocabulary'?' (optional)':'');\n if(scroll)$(status).scrollIntoView({behavior:'smooth',block:'center'});\n}\nfunction checkAnswers(scroll){\n for(const p of ['first','second','third'])r7Check(p,false);\n if(DATA[current].vocab.some((_,i)=>$('v-'+i).value!==''))r7Check('vocabulary',false);\n state().checked=true;r7Summary();persist();\n if(scroll)$('finish').scrollIntoView({behavior:'smooth',block:'start'});\n}\n";
 const INVALIDATE_PATCH="\nfunction invalidate(){\n const s=state();\n if(s.checked||(s.r7Reviews&&Object.keys(s.r7Reviews).length)){\n  s.checked=false;s.last=null;s.r7Reviews={};\n  $('scoreNumber').textContent='— / '+getMax();\n  $('scoreDescription').textContent='Answers changed; check the listening stage again.';\n  $('scoreBreakdown').innerHTML='';\n  document.querySelectorAll('.feedback').forEach(x=>{x.className='feedback';x.textContent='';});\n  document.querySelectorAll('.seq-item').forEach(x=>x.classList.remove('right','wrong'));\n  for(const id of ['firstReview','secondReview','thirdReview','vocabReview'])$(id).textContent='Not checked yet.';\n }\n updateProgress();\n}\n";
 
-function migrate(html){
+function migrate(html,sourceId){
  let s=once(html,'</style>',CSS_PATCH+'</style>','style');
  s=once(s,'<main class="content">','<main class="content"><div role="note" class="r7-warning">R7 PREVIEW – not approved for classroom release. Original sources unchanged.</div>','preview marker');
+ // Media and age suitability are never implied by valid CEFR question data.
+ // Only the isolated candidates gain these explicit warnings; source DATA stays unchanged.
+ const notice=sourceId==='ll-peaky-no-fighting'
+  ?'<div id="r7MediaSafetyNotice" role="note" class="r7-warning"><strong>Content warning:</strong> The Peaky Blinders scene contains strong profanity, references to drugs and aggressive threats. This activity is NOT suitable for younger classes without a teacher-led age and content review. Preview the entire clip and confirm school-network access before use.</div>'
+  :'<div id="r7MediaSafetyNotice" role="note" class="r7-warning"><strong>External video:</strong> The Harrison Ford speech is hosted on Facebook/Netflix-related sources. Playback or sign-in may be restricted by the school network. The clip has not been automatically verified; preview it before class.</div>';
+ assert.ok(['ll-peaky-no-fighting','ll-harrison-ford'].includes(sourceId),'Unexpected listening ID');
+ s=once(s,'<main class="content">','<main class="content">'+notice,'media safety notice');
  s=once(s,'<section class="section" id="gist">','<section class="section listening-stage" id="gist">','gist section');
  s=once(s,'<div id="gistTasks"></div></section>',
   instructions(1,'Listen once for the main idea, situation and mood.')+
@@ -109,11 +116,13 @@ fs.mkdirSync(out,{recursive:true});
 for(const f of sources){
  const original=fs.readFileSync(path.join(root,f.original));
  assert.equal(gitBlob(original),f.blob,'Original changed '+f.id);
- const text=original.toString('utf8'),candidate=migrate(text);
+ const text=original.toString('utf8'),candidate=migrate(text,f.id);
  assert.equal(getData(text),getData(candidate),'Lesson data modified '+f.id);
  const scripts=[...candidate.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)];
  assert.equal(scripts.length,1,'Expected one JS program');
  new vm.Script(scripts[0][1],{filename:f.slug+'.html'});
+ assert.equal((candidate.match(/id="r7MediaSafetyNotice"/g)||[]).length,1,'Expected exactly one source-specific media safety notice');
+ assert.ok(candidate.includes(f.id==='ll-peaky-no-fighting'?'strong profanity':'Playback or sign-in may be restricted'),'Missing source-specific media warning '+f.id);
  for(const id of ['gist','detail','evidence','language','before','finish','gistTasks','detailTasks',
   'factsTasks','openTasks','sequenceList','vocabTasks','checkFirstBtn','checkSecondBtn','checkThirdBtn',
   'checkVocabBtn','firstReview','secondReview','thirdReview','vocabReview']){
@@ -131,7 +140,9 @@ for(const f of sources){
  fs.writeFileSync(path.join(out,name),candidate);
  manifest.cards.push({id:f.id,original:f.original,originalGitBlob:f.blob,
    candidate:name,sourceSHA256:sha256(original),candidateSHA256:sha256(Buffer.from(candidate)),
-   levels:6,teacherApproval:false,mediaVerified:false});
+   levels:6,teacherApproval:false,mediaVerified:false,
+   contentSuitabilityReviewed:false,externalMediaAccessVerified:false,
+   contentWarning:f.id==='ll-peaky-no-fighting'?'strong language, drugs, aggressive threats':'external Facebook-hosted media; possible sign-in/network limits'});
 }
 assert.equal(manifest.cards.length,2);
 fs.writeFileSync(path.join(out,'LISTENING_R7_UI_MANIFEST.json'),JSON.stringify(manifest,null,2)+'\n');
@@ -141,6 +152,8 @@ fs.writeFileSync(path.join(out,'README.md'),[
  'First = gist; Second = detail; Third = Written Evidence + Reconstruction.',
  'Každá fáze a nepovinná slovní zásoba mají samostatnou kontrolu. Vocabulary se do hlavního skóre nepočítá.',
  'Ověřeno šest nezměněných datových úrovní a syntaktická správnost JS.',
+ 'U Peaky je explicitní upozornění na silné vulgarity, odkazy na drogy a agresivní výhrůžky; není schválena vhodnost pro mladší žáky.',
+ 'U Harrisona je upozornění na možné vyžadované přihlášení a omezení přístupu k videu ve školní síti.',
  'Není ověřeno reálné přehrávání videa, pedagogická správnost, Peaky věková vhodnost, ani fyzická mobilní UAT.',''
 ].join('\n'));
 console.log('PASS LISTENING R7 3-PASS UI: 2 protected HTML sources, 12 unmodified CEFR data variants, three stages and separate review controls; NO DEPLOY');
