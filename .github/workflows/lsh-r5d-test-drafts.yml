@@ -5,6 +5,7 @@ on:
       - 'zkusebni/data/r5d-test-draft-plan.json'
       - 'zkusebni/tools/r5d-test-drafts.cjs'
       - 'zkusebni/tests/r5d-test-drafts.test.cjs'
+      - 'zkusebni/tests/r5d-test-drafts.browser.test.cjs'
       - 'zkusebni/reference/konverzace/umela-inteligence/index.html'
       - 'zkusebni/nahledy/cteni/asteroids/index.html'
       - 'zkusebni/reference/poslech/matthew-mcconaughey/index.html'
@@ -16,6 +17,7 @@ on:
       - 'zkusebni/data/r5d-test-draft-plan.json'
       - 'zkusebni/tools/r5d-test-drafts.cjs'
       - 'zkusebni/tests/r5d-test-drafts.test.cjs'
+      - 'zkusebni/tests/r5d-test-drafts.browser.test.cjs'
       - 'zkusebni/reference/konverzace/umela-inteligence/index.html'
       - 'zkusebni/nahledy/cteni/asteroids/index.html'
       - 'zkusebni/reference/poslech/matthew-mcconaughey/index.html'
@@ -44,3 +46,20 @@ jobs:
           path: ${{ runner.temp }}/r5d-teacher-review/
           if-no-files-found: error
           retention-days: 7
+
+  isolated-browser-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install CI browser engines
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Verify 54 standalone test drafts at desktop and mobile viewports
+        run: node --test zkusebni/tests/r5d-test-drafts.browser.test.cjs
