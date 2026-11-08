@@ -22,7 +22,13 @@
         "text": "she treasured them because each one proved that he had thought of the family on a particular day."
       },
       "newExplanation": "The postcards mattered as signs of attention, though they could not compensate for his long absence.",
-      "sourceGitBlob": "9178645eaa2d4fcd522a8a52bf2cd4741dfce05f"
+      "sourceGitBlob": "9178645eaa2d4fcd522a8a52bf2cd4741dfce05f",
+      "additionalEvidence": [
+        {
+          "p": 2,
+          "text": "he had been absent for most of her childhood, and the cards could not make up for that."
+        }
+      ]
     },
     {
       "topicId": "rl-email-friend",
@@ -86,7 +92,13 @@
         "text": "Nobody had been rude, yet the group lost two days"
       },
       "newExplanation": "A brief answer is misinterpreted and the group needlessly delays the gift.",
-      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289",
+      "additionalEvidence": [
+        {
+          "p": 2,
+          "text": "Dana read it as a sign that he disliked the idea and quietly started looking for something else."
+        }
+      ]
     },
     {
       "topicId": "rl-instant-messages",
@@ -102,7 +114,13 @@
         "text": "el grupo perdió dos días"
       },
       "newExplanation": "Dana interpreta mal la respuesta de Marek y el grupo pierde tiempo.",
-      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289",
+      "additionalEvidence": [
+        {
+          "p": 2,
+          "text": "Dana lo interpretó como señal de que no le gustaba la idea y, sin decir nada, empezó a buscar otra cosa."
+        }
+      ]
     },
     {
       "topicId": "rl-instant-messages",
@@ -118,7 +136,13 @@
         "text": "doch verlor die Gruppe zwei Tage"
       },
       "newExplanation": "Danas Missverständnis verzögert die Bestellung des Geschenks.",
-      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289",
+      "additionalEvidence": [
+        {
+          "p": 2,
+          "text": "Dana verstand das als Zeichen, dass ihm die Idee nicht gefiel, und suchte stillschweigend nach etwas anderem."
+        }
+      ]
     },
     {
       "topicId": "rl-instant-messages",
@@ -134,7 +158,13 @@
         "text": "le groupe a perdu deux jours"
       },
       "newExplanation": "Dana comprend mal la réponse de Marek, ce qui retarde la commande.",
-      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289",
+      "additionalEvidence": [
+        {
+          "p": 2,
+          "text": "Dana a compris qu’il n’aimait pas l’idée et a cherché autre chose sans rien dire."
+        }
+      ]
     },
     {
       "topicId": "rl-instant-messages",
@@ -264,5 +294,10 @@
       "newExplanation": "La capture garde les mots, mais pas le ton ni l'histoire partagée.",
       "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
     }
-  ]
+  ],
+  "r13EvidenceClarifications": {
+    "status": "UNAPPROVED_EXACT_SOURCE_PASSAGES",
+    "count": 5,
+    "note": "The second quotation makes both parts of a compound matching question visible in Show Supporting Passages. Answer indices, questions, paragraphs and all other student content remain unchanged."
+  }
 }

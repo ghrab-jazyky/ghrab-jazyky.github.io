@@ -121,6 +121,11 @@ for(const [engine,engineName] of [[chromium,'Chromium'],[webkit,'WebKit']]){
       assert.equal(details.kind,'match','R7 repair changed exercise kind');
       assert.equal(details.answer,2,'R7 repaired answer no longer targets third paragraph');
       assert.ok(details.evidence.length&&details.evidence[0].p===2,'R7 evidence paragraph missing');
+      const clarified=new Set(['en-c2-matching-2','en-b2-matching-3',
+       'es-b2-matching-3','de-b2-matching-3','fr-b2-matching-3']).has(patch.questionId);
+      assert.equal(details.evidence.length,clarified?2:1,
+       'R13 matching item must highlight all semantic premises: '+patch.questionId);
+      if(clarified)assert.ok(details.evidence.every(ev=>ev.p===2&&ev.text.length>=25));
       await page.locator('#skillTabs button[data-skill="'+details.tab+'"]').click();
       const box='#questions .qcard[data-question="'+patch.questionId+'"]';
       await page.locator(box+' input[type="radio"][value="2"]').check();
@@ -131,6 +136,10 @@ for(const [engine,engineName] of [[chromium,'Chromium'],[webkit,'WebKit']]){
       assert.ok(marked.length>0,'R7 repaired evidence must visibly highlight '+patch.questionId);
       assert.ok(marked.join('').includes(details.evidence[0].text),
        'R7 evidence highlighted the wrong passage '+patch.questionId);
+      if(clarified){
+       for(const ev of details.evidence)assert.ok(marked.join('').includes(ev.text),
+        'R13 compound matching question did not visibly highlight both premises '+patch.questionId);
+      }
       await page.locator(box+' input[type="radio"][value="1"]').check();
       assert.equal(await page.locator(box+' .verdict:not([hidden])').count(),0,
        'R7 stale grading feedback not cleared '+patch.questionId);

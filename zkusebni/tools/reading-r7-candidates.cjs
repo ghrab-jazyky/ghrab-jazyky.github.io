@@ -19,6 +19,8 @@ assert.equal(plan.teacherApproval,false);
 assert.equal(plan.published,false);
 assert.equal(plan.privateTeacherKeyRevalidationRequired,true);
 assert.equal(plan.patches.length,16);
+assert.equal(plan.patches.filter(p=>Array.isArray(p.additionalEvidence)).length,5,
+ 'R13 source-supported clarification count has changed');
 const uniq=new Set(plan.patches.map(p=>p.topicId+'/'+p.language+'/'+p.level+'/'+p.questionId));
 assert.equal(uniq.size,16);
 const gitBlob=src=>crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+src.length+'\0'),src])).digest('hex');
@@ -56,7 +58,17 @@ for(const s of sources){
   assert.ok(p.newQuestion.length>=24&&p.newExplanation.length>=24);
   newQ.q=p.newQuestion;
   newQ.answer=p.newAnswerIndex;
-  newQ.evidence=[p.newEvidence];
+  const supplements=p.additionalEvidence||[];
+  assert.ok(Array.isArray(supplements)&&supplements.length<=1,'Unexpected R13 evidence shape');
+  for(const ev of supplements){
+   assert.equal(ev.p,2,'R13 supplementary evidence must stay in the source paragraph');
+   assert.ok(typeof ev.text==='string'&&ev.text.length>=25,'R13 supporting quotation too short');
+   assert.equal(original.paragraphs[ev.p].split(ev.text).length,2,
+    'R13 supporting quotation absent or ambiguous: '+p.questionId);
+   assert.ok(!p.newEvidence.text.includes(ev.text)&&!ev.text.includes(p.newEvidence.text),
+    'R13 supplementary evidence overlaps the original quotation');
+  }
+  newQ.evidence=[p.newEvidence,...supplements];
   newQ.explanation=p.newExplanation;
   const oldLiteral=JSON.stringify(oldQ);
   assert.equal(html.split(oldLiteral).length,2,'Non-unique original question payload: '+p.questionId);
