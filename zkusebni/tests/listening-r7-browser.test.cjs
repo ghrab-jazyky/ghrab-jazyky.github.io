@@ -129,6 +129,18 @@ for(const [engine,name] of [[chromium,'Chromium'],[webkit,'WebKit']]){
       const width=await page.evaluate(()=>({screen:innerWidth,scroll:document.documentElement.scrollWidth}));
       assert.ok(width.scroll<=width.screen+8,'Overflow '+level+': '+JSON.stringify(width));
      }
+     if(c.id==='ll-peaky-no-fighting'){
+      // A previously reviewed variant retains its own result, but this must
+      // never bleed into another level's phase-feedback text.
+      await page.locator('.level-pill[data-level="C1"]').click();
+      assert.match(await page.locator('#firstReview').innerText(),/^0\/\d+ correct/,
+       'C1 phase result should be restored for the same level');
+      await page.locator('.level-pill[data-level="A1"]').click();
+      assert.equal(await page.locator('#firstReview').innerText(),'Not checked yet.',
+       'C1 review must never appear on unreviewed A1');
+      assert.equal(await page.locator('#secondReview').innerText(),'Not checked yet.');
+      assert.equal(await page.locator('#thirdReview').innerText(),'Not checked yet.');
+     }
      await context.close();
     }finally{await browser.close();}
    });
