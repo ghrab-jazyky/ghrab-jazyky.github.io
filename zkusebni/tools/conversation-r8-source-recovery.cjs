@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* R8: recover the source-authored educational content for all 21 R6 candidates.
  * R6 candidate UI / CSP / shared assets stay intact, but genericised or altered
- * R6 CONTENT is replaced by the exact canonical original plus 4 explicit fixes.
+ * R6 CONTENT is replaced by the exact canonical original plus 7 explicit fixes.
  * Output is an isolated directory (CI artifact) ONLY: never overwrite sources.
  */
 'use strict';
@@ -85,8 +85,8 @@ assert.equal(plan.schemaVersion,1);
 assert.equal(plan.state,'CANDIDATES_ONLY');
 assert.equal(plan.teacherApproval,false);
 assert.equal(plan.published,false);
-assert.equal(plan.patches.length,4);
-assert.equal(new Set(plan.patches.map(p=>p.topicId+'/'+p.language+'/'+p.level+'/'+p.stationIndex+'/'+p.field+'/'+(p.questionIndex??''))).size,4);
+assert.equal(plan.patches.length,7);
+assert.equal(new Set(plan.patches.map(p=>p.topicId+'/'+p.language+'/'+p.level+'/'+p.stationIndex+'/'+p.field+'/'+(p.questionIndex??''))).size,7);
 const cards=[],total={};
 fs.mkdirSync(OUT,{recursive:true});
 for(const item of mf.cards){
@@ -117,6 +117,21 @@ for(const item of mf.cards){
   }else throw Error('Unapproved patch target '+p.field);
  }
  verifyCoverage(repaired,item.id);
+ // Validate the complete recovered teaching content, not just HTML shape.
+ for(const l of LANGS)for(const lev of LEVELS){
+  const seen=new Map();
+  const v=repaired[l].levels[lev];
+  for(const [i,station] of v.stations.entries()){
+   for(const [j,prompt] of [station.main,...station.questions].entries()){
+    const key=norm(prompt);
+    assert.ok(key,'Empty prompt '+item.id+'/'+l+'/'+lev);
+    assert.ok(!seen.has(key),
+     'Unresolved duplicate '+item.id+'/'+l+'/'+lev+'/'+(i+1)+' question '+j+
+     ' repeats '+seen.get(key)+': '+prompt);
+    seen.set(key,(i+1)+'/'+j);
+   }
+  }
+ }
  // Source-specific non-repeated follow-ups: station 1 vs station 8 in School ES A1.
  if(item.id==='cl-skola'){
   const v=repaired.es.levels.A1.stations;
@@ -154,14 +169,14 @@ for(const item of mf.cards){
   contentDifferencesDiscarded:changes,teacherApproval:false,published:false});
 }
 const result={schemaVersion:1,kind:'R8_SOURCE_CONTENT_RECOVERY_CANDIDATES_ONLY',
- source:'21 SHA-verified canonical Conversation HTML plus 4 explicit minimal ES A1 fixes',
+ source:'21 SHA-verified canonical Conversation HTML plus 7 exact A1 grammar/duplicate fixes',
  originalSourcesUnchanged:true,r6CandidatesUnchanged:true,teacherApproval:false,
  published:false,catalogUpdated:false,approvedForRelease:false,testModeReady:false,
  statistics:total,cards};
 assert.equal(cards.length,21);
 assert.equal(total.variantCount,504);
 assert.equal(total.stationCount,4032);
-assert.equal(cards.reduce((n,c)=>n+c.exactPatches.length,0),4);
+assert.equal(cards.reduce((n,c)=>n+c.exactPatches.length,0),7);
 fs.writeFileSync(path.join(OUT,'R8_RECOVERY_MANIFEST.json'),JSON.stringify(result,null,2)+'\n');
 const lines=['# Conversation Lab R8 – bezpečná obnova původního pedagogického obsahu','',
  'Důvod: R6 kandidáti obsahují masivní generické nahrazování tematicky specifických opor. To je pedagogická regrese, přestože strukturální kontroly R6 byly zelené.',
@@ -174,7 +189,7 @@ const lines=['# Conversation Lab R8 – bezpečná obnova původního pedagogick
    ', sady slovní zásoby '+total.changedVocabularySets+'.',
  '', '## Obnova','',
  '- Všech 21 R8 HTML kopíruje kompletní **původní CONTENT** (EN/ES/DE/FR × A1–C2), původní Support, Challenge, Stretch, Vocabulary a Toolkit.',
- '- Jediná čtyři povolená odchýlení jsou přesné zdrojově ověřené opravy španělské A1 definované v data/conversation-r8-minimal-content-fixes.json.',
+ '- Jediných sedm povolených odchýlení jsou přesné zdrojově ověřené opravy A1 definované v data/conversation-r8-minimal-content-fixes.json.',
  '- Kandidátní UI a technická integrace R6 zůstávají; JS syntaxe a CSP SHA-256 přepočteny a ověřeny.',
  '- 21 HTML vzniklo **jen v tomto CI výstupu**, žádný kanonický zdroj, R6 kandidát, teacher key ani katalog se nepřepisuje.',
  '', '## Důležité limity','',
@@ -183,6 +198,6 @@ const lines=['# Conversation Lab R8 – bezpečná obnova původního pedagogick
  '- Potřeba ověřit skutečné prohlížeče, mobilní ergonomii, časovač, slovníček a jejich chování na fyzickém zařízení.',
  '', 'Stav: DRAFT, bez učitelského schválení.',''];
 fs.writeFileSync(path.join(OUT,'R8_RECOVERY_REPORT.md'),lines.join('\n')+'\n');
-console.log('PASS R8 CONTENT RECOVERY: 21 source-verified cards, 504 variants, 4032 stations, 4 minimal ES A1 patches');
+console.log('PASS R8 CONTENT RECOVERY: 21 source-verified cards, 504 variants, 4032 stations, 7 targeted A1 patches');
 console.log('R6 DEGRADATION COUNTS:',JSON.stringify(total));
 console.log('CANDIDATES ONLY:',OUT,'teacherApproval false, published false');
