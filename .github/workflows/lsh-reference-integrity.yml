@@ -121,6 +121,18 @@ jobs:
           cp zkusebni/reference/poslech/matthew-mcconaughey/index.html "$RUNNER_TEMP/lsh-intake-fixture/matthew.html"
           node -e 'const fs=require("node:fs");const root=process.env.RUNNER_TEMP+"/lsh-intake-fixture";const a=fs.readFileSync("zkusebni/konverzace/socialni-media/index.html","utf8");if(!a.includes("data-lsh-topic-id=\"cl-socialni-media\""))throw Error("Conversation fixture missing");fs.writeFileSync(root+"/conversation.html",a.replace("data-lsh-topic-id=\"cl-socialni-media\"","data-lsh-topic-id=\"cl-smoke-conversation\""));const d={schemaVersion:1,cards:[{id:"cl-smoke-conversation",skill:"konverzace",title:"Conversation intake smoke",summary:"Disposable automated check of a shared-asset multilingual conversation source.",version:"smoke",sourceFile:"conversation.html"},{id:"rl-smoke-reading",skill:"cteni",title:"Reading intake smoke",summary:"Disposable automated check of the multilingual reading reference and integrated source.",version:"smoke",sourceFile:"asteroids.html"},{id:"ll-smoke-listening",skill:"poslech",title:"Listening intake smoke",summary:"Disposable automated check of the single-language listening reference and its URL adapter.",version:"smoke",sourceFile:"matthew.html"}]};fs.writeFileSync(root+"/cards.json",JSON.stringify(d,null,2));'
           node zkusebni/tools/card-intake.cjs --batch "$RUNNER_TEMP/lsh-intake-fixture/cards.json"
+          # Fail-closed preflight: never say safeToApply if an existing catalog
+          # entry has silently changed from an unapproved preview to test-ready.
+          cp zkusebni/data/reference-pilots.json "$RUNNER_TEMP/lsh-intake-fixture/preflight-original.json"
+          node -e 'const fs=require("node:fs");const p="zkusebni/data/reference-pilots.json";const d=JSON.parse(fs.readFileSync(p,"utf8"));d.entries[0].test="ready";fs.writeFileSync(p,JSON.stringify(d,null,2)+"\n")'
+          if node zkusebni/tools/card-intake.cjs --batch "$RUNNER_TEMP/lsh-intake-fixture/cards.json"; then
+            echo "ERROR: importer dry-run wrongly declared an invalid catalog safe"
+            exit 1
+          fi
+          cp "$RUNNER_TEMP/lsh-intake-fixture/preflight-original.json" zkusebni/data/reference-pilots.json
+          cmp zkusebni/data/reference-pilots.json "$RUNNER_TEMP/lsh-intake-fixture/preflight-original.json"
+          node zkusebni/tools/card-intake.cjs --verify
+          echo "PASS card-intake dry-run refuses inconsistent catalog baseline"
           # Fault-injection regression: both an interrupted file write and a partially
           # swapped ledger must leave the original 29-card catalogue byte-identical.
           for name in reference-pilots.json unification-tracker.json claude-audit-queue.json; do
