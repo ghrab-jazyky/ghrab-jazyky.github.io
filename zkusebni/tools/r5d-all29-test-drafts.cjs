@@ -95,7 +95,7 @@ const CSS=[
  '.number{width:60px;font:inherit;padding:9px;border:1px solid var(--line);border-radius:8px}',
  'textarea{width:100%;min-height:100px;resize:vertical;font:inherit;padding:10px;border:1px solid var(--line);border-radius:8px}',
  '.footer{font-size:.85rem;color:var(--muted);margin-top:30px}',
- 'a{color:var(--accent)}:focus-visible{outline:3px solid #c07821;outline-offset:3px}',
+ 'a{color:var(--accent)}details summary{cursor:pointer;min-height:40px;font-size:1.05rem}details ul{columns:2;column-gap:28px;margin:15px 0 0}details li{break-inside:avoid;margin:6px 0}:focus-visible{outline:3px solid #c07821;outline-offset:3px}',
  '@media(max-width:480px){article,.reading,.task{padding:13px}main{padding:12px}}',
  '@media print{body{background:white}main{max-width:none;padding:0}.warning{font-size:12px}article,.reading,.task{box-shadow:none;break-inside:avoid}textarea{min-height:80px}}'
 ].join('\n');
@@ -252,10 +252,23 @@ const intro=[
  'Všechny soubory vznikly mimo Git worktree. Pouze review podklady; nejsou připojeny k žádné katalogové položce.'
 ].join('\n')+'\n';
 fs.writeFileSync(path.join(OUT,'README_R5D.md'),intro,{flag:'wx',mode:0o600});
-const links=variants.map(v=>'<li><a href="'+esc(v.file)+'">'+esc(v.topicId+' · '+v.language.toUpperCase()+' '+v.level)+'</a></li>').join('');
-fs.writeFileSync(path.join(OUT,'index.html'),htmlPage('en','A1','R5D · teacher-only draft preview index',
- 'Not approved, not scored, not deployed. For review by a teacher only.',
- '<ul>'+links+'</ul>'),{flag:'wx',mode:0o600});
+// 29 native accessible <details> groups rather than a 642-line unstructured
+// catalogue: browse by skill/topic and choose language/CEFR offline, no JS.
+const displaySkill={konverzace:'Conversation Lab',cteni:'Reading Lab',poslech:'Listening Lab'};
+const sections=['konverzace','cteni','poslech'].map(skill=>{
+ const topics=pinPlan.entries.filter(e=>e.skill===skill);
+ const groups=topics.map(entry=>{
+  const matches=variants.filter(v=>v.topicId===entry.topicId);
+  const items=matches.map(v=>'<li><a href="'+esc(v.file)+'">'+
+   esc(v.language.toUpperCase()+' · '+v.level)+'</a></li>').join('');
+  return '<article><details><summary><strong>'+esc(entry.title)+'</strong> · '+
+   matches.length+' variant(s)</summary><ul>'+items+'</ul></details></article>';
+ }).join('');
+ return '<section><h2>'+displaySkill[skill]+' · '+topics.length+' topics</h2>'+groups+'</section>';
+}).join('');
+fs.writeFileSync(path.join(OUT,'index.html'),htmlPage('en','A1','R5D · 29-topic teacher review index',
+ '642 unapproved short test drafts. Expand a topic and choose a CEFR variant. No marks or student keys.',
+ sections),{flag:'wx',mode:0o600});
 console.log('PASS R5D ALL29 642 review-only standalone HTML drafts (504 Conversation, 120 Reading, 18 Listening)');
 console.log('PASS pinned catalog + 29 Git source blobs, SHA256 output, no keys/grades/student IDs, no repository writes');
 console.log('R5D_REVIEW_OUTPUT '+OUT);
