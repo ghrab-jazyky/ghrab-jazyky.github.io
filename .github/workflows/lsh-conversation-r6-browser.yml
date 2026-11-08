@@ -1,9 +1,11 @@
-name: LSH Conversation R6 21-card browser QA (NO deployment)
+name: LSH Conversation R8 source-restored browser QA (NO deployment)
 on:
   pull_request:
     paths:
       - 'zkusebni/tests/conversation-r6-browser.test.cjs'
       - 'zkusebni/konverzace/k/**'
+      - 'zkusebni/tools/conversation-r8-source-recovery.cjs'
+      - 'zkusebni/data/conversation-r8-minimal-content-fixes.json'
       - 'zkusebni/data/conversation-r6-candidates.json'
       - 'zkusebni/assets/lsh/v2/lock.js'
       - 'zkusebni/assets/lsh/v3/**'
@@ -14,6 +16,8 @@ on:
     paths:
       - 'zkusebni/tests/conversation-r6-browser.test.cjs'
       - 'zkusebni/konverzace/k/**'
+      - 'zkusebni/tools/conversation-r8-source-recovery.cjs'
+      - 'zkusebni/data/conversation-r8-minimal-content-fixes.json'
       - 'zkusebni/data/conversation-r6-candidates.json'
       - 'zkusebni/assets/lsh/v2/lock.js'
       - 'zkusebni/assets/lsh/v3/**'
@@ -30,6 +34,7 @@ jobs:
         engine: [chromium, webkit]
     env:
       LSH_R6_ENGINE: ${{ matrix.engine }}
+      LSH_R8_PREVIEW: '1'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -41,5 +46,5 @@ jobs:
         run: |
           npm install --no-save --ignore-scripts playwright@1.56.1
           npx playwright install --with-deps "${LSH_R6_ENGINE}"
-      - name: Verify all candidate cards and 24 language/level variants per card
+      - name: Verify 21 recovered cards, all 24 variants and 8 stations each
         run: node --test --test-concurrency=1 zkusebni/tests/conversation-r6-browser.test.cjs
