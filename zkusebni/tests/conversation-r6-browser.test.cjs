@@ -17,6 +17,13 @@ assert.equal(MANIFEST.published,false);
 assert.equal(MANIFEST.catalogUpdated,false);
 assert.equal(MANIFEST.cards.length,21);
 const R8_PREVIEW=process.env.LSH_R8_PREVIEW==='1';
+const LANGUAGE_PROPOSALS=R8_PREVIEW?JSON.parse(fs.readFileSync(path.join(STAGE,'data/conversation-r8-targeted-language-proposals.json'),'utf8')):null;
+if(LANGUAGE_PROPOSALS){
+ assert.equal(LANGUAGE_PROPOSALS.kind,'R8_1_NARROW_LANGUAGE_CANDIDATES');
+ assert.equal(LANGUAGE_PROPOSALS.patches.length,5);
+ assert.equal(LANGUAGE_PROPOSALS.teacherApproval,false);
+ assert.equal(LANGUAGE_PROPOSALS.published,false);
+}
 let R8_TEMP=null,R8_ALIASES=new Map();
 if(R8_PREVIEW){
  R8_TEMP=fs.mkdtempSync(path.join(process.env.RUNNER_TEMP||os.tmpdir(),'lsh-r8-dom-preview-'));
@@ -87,6 +94,17 @@ for(const card of MANIFEST.cards){
     assert.match(q[7].questions[0],/instituto ideal/i);
    }
 
+   if(R8_PREVIEW){
+    const proposals=LANGUAGE_PROPOSALS.patches.filter(p=>p.topicId===card.id);
+    if(proposals.length){
+     const actual=await page.evaluate(patches=>patches.map(p=>{
+      const station=CONTENT[p.language].levels[p.level].stations[p.stationIndex];
+      return p.field==='main'?station.main:station.questions[p.questionIndex];
+     }),proposals);
+     assert.deepEqual(actual,proposals.map(p=>p.replacement),
+      card.id+' targeted R8.1 linguistic proposal not present in candidate CONTENT');
+    }
+   }
    const unlocked=await page.goto(url+'?lang=en&level=B1',{waitUntil:'domcontentloaded',timeout:45000});
    assert.ok(unlocked&&unlocked.ok(),'Free-mode candidate must load');
    await page.locator('#languageSelect:not([disabled])').waitFor();
