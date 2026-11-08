@@ -1,0 +1,646 @@
+{
+  "schemaVersion": 1,
+  "stage": "R5D_ALL29_DRAFTS",
+  "status": "NOT_READY_UNAPPROVED",
+  "sourceCatalogGitBlob": "b3c66cf8e884ef8d53b42be0a734d774a5a57576",
+  "topics": 29,
+  "totalVariants": 642,
+  "approvedForRelease": false,
+  "teacherApproval": false,
+  "published": false,
+  "automaticScoring": false,
+  "collectStudentIdentity": false,
+  "catalogLinked": false,
+  "sourceCandidateType": "CURRENT_UNAPPROVED_CATALOG_HTML_NOT_R7_R8_REPAIRED_CANDIDATES",
+  "entries": [
+    {
+      "topicId": "cl-umela-inteligence",
+      "skill": "konverzace",
+      "title": "Umělá inteligence",
+      "path": "integrace/konverzace/umela-inteligence/index.html",
+      "gitBlob": "a86808614d41a4a0ed2d7bfb982e673b994fc18f",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": true
+    },
+    {
+      "topicId": "rl-asteroids",
+      "skill": "cteni",
+      "title": "Asteroids",
+      "path": "integrace/cteni/asteroids/index.html",
+      "gitBlob": "3a4bd9a2f48c5e5ab138b13d668b3bf7f5ab4662",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": true
+    },
+    {
+      "topicId": "ll-matthew-oscars",
+      "skill": "poslech",
+      "title": "Matthew McConaughey — Oscars 2014",
+      "path": "integrace/poslech/matthew-mcconaughey/index.html",
+      "gitBlob": "60109b2df8e65122e889e3461e0f9c67e4317ac4",
+      "languages": [
+        "en"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": true
+    },
+    {
+      "topicId": "cl-socialni-media",
+      "skill": "konverzace",
+      "title": "Sociální média",
+      "path": "konverzace/socialni-media/index.html",
+      "gitBlob": "c81683e238dcdb96f3d4f39768a5d2d0d9b5f0da",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-hrani-her",
+      "skill": "konverzace",
+      "title": "Hraní počítačových her",
+      "path": "konverzace/hrani-her/index.html",
+      "gitBlob": "1cafcbaa0a9f35d2ff1d0a152e915c5010743364",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-rodina",
+      "skill": "konverzace",
+      "title": "Rodina",
+      "path": "konverzace/rodina/index.html",
+      "gitBlob": "d93d87f587f29c7afa5c1946faa7c81f608ab855",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-prazdniny",
+      "skill": "konverzace",
+      "title": "Prázdniny a cestování",
+      "path": "konverzace/prazdniny/index.html",
+      "gitBlob": "7c92c7808b7eac5c1a8f489921914ca3b85e97ec",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-jidlo-piti-restaurace",
+      "skill": "konverzace",
+      "title": "Jídlo, pití a restaurace",
+      "path": "konverzace/jidlo-piti-restaurace/index.html",
+      "gitBlob": "9d16d00de0e79baea3f9f87201678c326bc80989",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-vanoce",
+      "skill": "konverzace",
+      "title": "Vánoce",
+      "path": "konverzace/vanoce/index.html",
+      "gitBlob": "e07f24575f2dc131c3ad9226f10b78579295df03",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-zivot-bez-ai",
+      "skill": "konverzace",
+      "title": "Život bez AI",
+      "path": "konverzace/zivot-bez-ai/index.html",
+      "gitBlob": "90c94f4c90e56555c7bb9d7c7fdb02c9851b65cb",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-socialni-site-a-dusevni-zdravi",
+      "skill": "konverzace",
+      "title": "Sociální sítě a duševní zdraví",
+      "path": "konverzace/socialni-site-a-dusevni-zdravi/index.html",
+      "gitBlob": "6d5928d4d14eda3273814465ff3c7db0bd6e7b1a",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-jak-se-ucit-na-testy",
+      "skill": "konverzace",
+      "title": "Jak se učit na testy",
+      "path": "konverzace/jak-se-ucit-na-testy/index.html",
+      "gitBlob": "5ce6a37ff31549d5cb176439aa18ff54266861cb",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-tlak-na-vykon",
+      "skill": "konverzace",
+      "title": "Tlak na výkon",
+      "path": "konverzace/tlak-na-vykon/index.html",
+      "gitBlob": "e619a6e5bc68097a0cbeafc4a9049c2225e38937",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-pratele",
+      "skill": "konverzace",
+      "title": "Přátelé a přátelství",
+      "path": "konverzace/pratele/index.html",
+      "gitBlob": "38e19362fa8dd00fdc59155456ac480ebe32ec84",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-problemy-teenageru",
+      "skill": "konverzace",
+      "title": "Problémy teenagerů",
+      "path": "konverzace/problemy-teenageru/index.html",
+      "gitBlob": "bb1c1a33196683a41087f37ffba3742cc9f8c1b9",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-muzi-a-zeny",
+      "skill": "konverzace",
+      "title": "Muži a ženy",
+      "path": "konverzace/muzi-a-zeny/index.html",
+      "gitBlob": "89973450f1f58540cb94a1ab243ebc3fe2195d9c",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-spolecenske-problemy",
+      "skill": "konverzace",
+      "title": "Společenské problémy",
+      "path": "konverzace/spolecenske-problemy/index.html",
+      "gitBlob": "d19ecac6914e3f79cf45e074fad9db4df397a3c2",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-majetkove-nerovnosti",
+      "skill": "konverzace",
+      "title": "Majetkové nerovnosti",
+      "path": "konverzace/majetkove-nerovnosti/index.html",
+      "gitBlob": "725d215eb9cef83f8e362cfec254fc78e146c05e",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-volny-cas-a-konicky",
+      "skill": "konverzace",
+      "title": "Volný čas a koníčky",
+      "path": "konverzace/volny-cas-a-konicky/index.html",
+      "gitBlob": "cc975658abcddeb9e00299781dfb956d1c63e402",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-nemoci-u-lekare",
+      "skill": "konverzace",
+      "title": "Nemoci a návštěva lékaře",
+      "path": "konverzace/nemoci-u-lekare/index.html",
+      "gitBlob": "c710e3d8d3cd74eb2993ee98b0fcf39c31961597",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-svetova-politika",
+      "skill": "konverzace",
+      "title": "Světová politika",
+      "path": "konverzace/svetova-politika/index.html",
+      "gitBlob": "c651c7fc9e96ece021d87f53fdf56307e84887e8",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-ceny-nemovitosti",
+      "skill": "konverzace",
+      "title": "Ceny nemovitostí u nás a v zahraničí",
+      "path": "konverzace/ceny-nemovitosti/index.html",
+      "gitBlob": "b3003f1be2ffec6db7308385807b059793e3a648",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "ll-harrison-ford",
+      "skill": "poslech",
+      "title": "Harrison Ford — Life Achievement Speech",
+      "path": "integrace/poslech/harrison-ford/index.html",
+      "gitBlob": "5f6d6e0adc732d98bf61139ca954b1d6c4c8e27b",
+      "languages": [
+        "en"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "ll-peaky-no-fighting",
+      "skill": "poslech",
+      "title": "Peaky Blinders — No Fighting",
+      "path": "integrace/poslech/peaky-blinders/index.html",
+      "gitBlob": "f908dd7d1d008ecb0fe6a0e543ffa2aaf23cfe7b",
+      "languages": [
+        "en"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "rl-can-mistakes",
+      "skill": "cteni",
+      "title": "Can Mistakes Help Us Learn?",
+      "path": "integrace/cteni/can-mistakes/index.html",
+      "gitBlob": "d9f72e906a65dde02866f9b955e51ad49e87fe0b",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "rl-plastic-ocean",
+      "skill": "cteni",
+      "title": "Plastic in Our World (Plastic Ocean)",
+      "path": "integrace/cteni/plastic-ocean/index.html",
+      "gitBlob": "6246476cfa7d49110d880fd36fecd9f1e907c854",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "rl-email-friend",
+      "skill": "cteni",
+      "title": "An Email from a Friend",
+      "path": "integrace/cteni/email-friend/index.html",
+      "gitBlob": "37e1433e3ffdc7fc7e24472cd06ae27316d8933e",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "rl-instant-messages",
+      "skill": "cteni",
+      "title": "Instant Messages",
+      "path": "integrace/cteni/instant-messages/index.html",
+      "gitBlob": "89f9c3e114514eaa7cc8872f4a54547b5693eba0",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    },
+    {
+      "topicId": "cl-skola",
+      "skill": "konverzace",
+      "title": "Škola — My School",
+      "path": "konverzace/skola/index.html",
+      "gitBlob": "f3d609bcd021ef812fb4821140a58b26bcc140fe",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "reference": false
+    }
+  ]
+}
