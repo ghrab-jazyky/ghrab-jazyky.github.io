@@ -1,0 +1,49 @@
+name: LSH Conversation R8 source content recovery (NO deployment)
+on:
+  pull_request:
+    paths:
+      - 'zkusebni/tools/conversation-r8-source-recovery.cjs'
+      - 'zkusebni/data/conversation-r8-minimal-content-fixes.json'
+      - 'zkusebni/data/conversation-r6-candidates.json'
+      - 'zkusebni/konverzace/k/**'
+      - 'zkusebni/konverzace/**/index.html'
+      - '.github/workflows/lsh-conversation-r8-recovery.yml'
+  push:
+    branches:
+      - 'feat/lsh-*'
+    paths:
+      - 'zkusebni/tools/conversation-r8-source-recovery.cjs'
+      - 'zkusebni/data/conversation-r8-minimal-content-fixes.json'
+      - 'zkusebni/data/conversation-r6-candidates.json'
+      - 'zkusebni/konverzace/k/**'
+      - 'zkusebni/konverzace/**/index.html'
+      - '.github/workflows/lsh-conversation-r8-recovery.yml'
+permissions:
+  contents: read
+jobs:
+  verify-recovery:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Generate 21 source-preserving R8 candidates outside repository
+        run: node zkusebni/tools/conversation-r8-source-recovery.cjs "$RUNNER_TEMP/lsh-r8-conversation"
+      - name: Assert all originals and R6 candidates remain untouched
+        run: |
+          node zkusebni/tests/conversation-r6-candidates.test.cjs
+          node -e 'const r=require(process.argv[1]);if(r.cards.length!==21||r.statistics.variantCount!==504||r.statistics.stationCount!==4032||r.cards.reduce((n,c)=>n+c.exactPatches.length,0)!==4||r.teacherApproval!==false||r.published!==false||r.catalogUpdated!==false||r.approvedForRelease!==false)throw Error("R8 candidate/source contract mismatch");console.log("PASS R8 source-content recovery, 21 candidates/504 variants/4 minimal repairs")' "$RUNNER_TEMP/lsh-r8-conversation/R8_RECOVERY_MANIFEST.json"
+      - name: Attach unapproved content-preserving R8 student HTML candidates
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-r8-source-preserving-conversation-candidates
+          path: |
+            ${{ runner.temp }}/lsh-r8-conversation/*.html
+            ${{ runner.temp }}/lsh-r8-conversation/*.json
+            ${{ runner.temp }}/lsh-r8-conversation/*.md
+          if-no-files-found: error
+          retention-days: 30
