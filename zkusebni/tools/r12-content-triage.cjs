@@ -254,17 +254,17 @@ const html='<!doctype html><html lang="cs"><head><meta charset="utf-8">'+
  '<div class="metric"><strong class="number">'+shortReadings.length+'</strong>kratších čtecích variant</div></div>'+
  '<section><h2>1. Přesné obsahové změny ke schválení ('+changes.length+')</h2>'+
  '<p class="muted">12 Conversation, 17 Reading, 1 Listening. Nález není automatické povolení vydání.</p>'+
- '<table>'+row(['Původ','Téma','Jazyk / CEFR','Položka','Původní','Kandidát','Karta'],true)+drows+'</table></section>'+
+ '<table><thead>'+row(['Původ','Téma','Jazyk / CEFR','Položka','Původní','Kandidát','Karta'],true)+'</thead><tbody>'+drows+'</tbody></table></section>'+
  '<section><h2>2. Dostupnost a vhodnost externích poslechů ('+media.length+')</h2>'+
- '<table>'+row(['Karta','Kontrolní úkol','Odkaz'],true)+medRows+'</table></section>'+
+ '<table><thead>'+row(['Karta','Kontrolní úkol','Odkaz'],true)+'</thead><tbody>'+medRows+'</tbody></table></section>'+
  '<section><h2>3. Kratší Reading varianty ('+shortReadings.length+')</h2>'+
  '<p class="muted">Interní filtr &lt; 13 slov textu na otázku. Není to externí normativ CEFR; '+ 
  'posoudit autenticky, včetně obtížnosti úloh.</p>'+
- '<table>'+row(['Téma','Varianta','Slova','Úlohy','Slova/úloha','Karta'],true)+shortRows+'</table></section>'+
+ '<table><thead>'+row(['Téma','Varianta','Slova','Úlohy','Slova/úloha','Karta'],true)+'</thead><tbody>'+shortRows+'</tbody></table></section>'+
  '<section><h2>4. Stejná otázka ve více tématech ('+repeatedPrompts.length+')</h2>'+
  '<p class="muted">Často jde o záměrně jednoduché otázky A1. Doporučuje se pouze kontrola '+ 
  'tematické relevance, nikoli plošné přepsání.</p>'+
- '<table>'+row(['Varianta','Stejná formulace','Témata','Otevřít'],true)+repRows+'</table></section>'+
+ '<table><thead>'+row(['Varianta','Stejná formulace','Témata','Otevřít'],true)+'</thead><tbody>'+repRows+'</tbody></table></section>'+
  '<footer><p>80 z 80 úloh na chybějící větu má správně propojenou větu a '+ 
  'počáteční odstavec; v UI je věta skryta před kontrolou odpovědí. '+ 
  'Výukový obsah, soukromé klíče, původní studentské karty ani main se zde nemění.</p></footer>'+
