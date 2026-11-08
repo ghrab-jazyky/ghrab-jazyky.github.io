@@ -105,6 +105,57 @@ for(const [engine,engineName] of [[chromium,'Chromium'],[webkit,'WebKit']]){
       }
      }
      assert.equal(visited,24);
+     // The original R7 browser test exercised only the FIRST proposal in each
+     // card. Verify all 16 repairs through actual controls, verdict, supporting
+     // passage highlighting, and stale-feedback invalidation in both engines.
+     const repaired=manifest.cards.find(c=>c.topicId===card.id).repairedQuestions;
+     let checkedRepairs=0;
+     for(const patch of repaired){
+      await page.locator('#language').selectOption(patch.language);
+      await page.locator('#levels button[data-level="'+patch.level+'"]').click();
+      const details=await page.evaluate(id=>{
+       const d=DATA[state.language][state.level],q=d.questions.find(x=>x.id===id);
+       return q&&{id:q.id,tab:q.tab,kind:q.kind,answer:q.answer,evidence:q.evidence};
+      },patch.questionId);
+      assert.ok(details,'R7 missing repaired item '+card.id+'/'+patch.questionId);
+      assert.equal(details.kind,'match','R7 repair changed exercise kind');
+      assert.equal(details.answer,2,'R7 repaired answer no longer targets third paragraph');
+      assert.ok(details.evidence.length&&details.evidence[0].p===2,'R7 evidence paragraph missing');
+      await page.locator('#skillTabs button[data-skill="'+details.tab+'"]').click();
+      const box='#questions .qcard[data-question="'+patch.questionId+'"]';
+      await page.locator(box+' input[type="radio"][value="2"]').check();
+      await page.locator('#check').click();
+      await page.locator(box+' .verdict.good').waitFor({state:'visible'});
+      await page.locator(box+' button[data-evidence="'+patch.questionId+'"]').click();
+      const marked=await page.locator('#readingBody .evidence-hit').allTextContents();
+      assert.ok(marked.length>0,'R7 repaired evidence must visibly highlight '+patch.questionId);
+      assert.ok(marked.join('').includes(details.evidence[0].text),
+       'R7 evidence highlighted the wrong passage '+patch.questionId);
+      await page.locator(box+' input[type="radio"][value="1"]').check();
+      assert.equal(await page.locator(box+' .verdict:not([hidden])').count(),0,
+       'R7 stale grading feedback not cleared '+patch.questionId);
+      assert.equal(await page.locator('#readingBody .evidence-hit').count(),0,
+       'R7 stale evidence highlight not cleared '+patch.questionId);
+      checkedRepairs++;
+     }
+     assert.equal(checkedRepairs,card.id==='rl-email-friend'?4:12);
+     // Seventeenth change: meaningful de/B2 explanation, without modifying
+     // the original historical source or distributing a separate answer key.
+     if(card.id==='rl-email-friend'){
+      await page.locator('#language').selectOption('de');
+      await page.locator('#levels button[data-level="B2"]').click();
+      const extra=await page.evaluate(()=>{
+       const q=DATA.de.B2.questions.find(x=>x.id==='de-b2-matching-2');
+       return {tab:q.tab,answer:q.answer,explanation:q.explanation};
+      });
+      assert.match(extra.explanation,/Im letzten Absatz bietet Lena/);
+      await page.locator('#skillTabs button[data-skill="'+extra.tab+'"]').click();
+      const sel='#questions .qcard[data-question="de-b2-matching-2"]';
+      await page.locator(sel+' input[type="radio"][value="'+extra.answer+'"]').check();
+      await page.locator('#check').click();
+      assert.ok((await page.locator(sel+' .verdict.good').innerText()).includes(extra.explanation),
+       'R7 de/B2 strengthened explanation must be visible after grading');
+     }
      assert.deepEqual(outside,[],'Unexpected external network requests');
      assert.deepEqual(errors,[],'JavaScript runtime errors');
      await context.close();
