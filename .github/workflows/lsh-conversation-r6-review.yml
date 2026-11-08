@@ -5,6 +5,7 @@ on:
       - 'zkusebni/konverzace/k/**'
       - 'zkusebni/data/conversation-r6-candidates.json'
       - 'zkusebni/tools/r6-content-audit.cjs'
+      - 'zkusebni/tools/r6-pedagogy-matrix.cjs'
       - 'zkusebni/tools/conversation-r6-claude-packages.py'
       - 'zkusebni/tests/conversation-r6-candidates.test.cjs'
       - '.github/workflows/lsh-conversation-r6-review.yml'
@@ -15,6 +16,7 @@ on:
       - 'zkusebni/konverzace/k/**'
       - 'zkusebni/data/conversation-r6-candidates.json'
       - 'zkusebni/tools/r6-content-audit.cjs'
+      - 'zkusebni/tools/r6-pedagogy-matrix.cjs'
       - 'zkusebni/tools/conversation-r6-claude-packages.py'
       - 'zkusebni/tests/conversation-r6-candidates.test.cjs'
       - '.github/workflows/lsh-conversation-r6-review.yml'
@@ -46,16 +48,16 @@ jobs:
             ${{ runner.temp }}/lsh-r6-content-audit/*.md
           if-no-files-found: error
           retention-days: 30
-      - name: Export source-verified Claude R6 batches (no deployment)
+      - name: Cross-level linguistic and pedagogical matrix (heuristic, no API)
         run: |
-          python3 zkusebni/tools/conversation-r6-claude-packages.py --output "$RUNNER_TEMP/lsh-r6-claude"
-          python3 -c 'import json,pathlib,sys,zipfile;p=pathlib.Path(sys.argv[1]);i=json.loads((p/"INDEX.json").read_text());assert i["totalCards"]==21 and i["totalBatches"]==5;assert sum(x["cards"] for x in i["packages"])==21;assert all(zipfile.ZipFile(p/x["file"]).testzip() is None for x in i["packages"])' "$RUNNER_TEMP/lsh-r6-claude"
-      - name: Attach five candidate audit ZIPs for manual Claude review
+          node zkusebni/tools/r6-pedagogy-matrix.cjs "$RUNNER_TEMP/lsh-r6-pedagogical-matrix"
+          node -e 'const r=require(process.argv[1]);if(r.totalCards!==21||r.variantCount!==504||r.levelTransitions!==420||r.releaseApproved!==false||r.teacherApproval!==false)throw Error("R6 matrix coverage or approval gate failed");console.log("PASS R6 matrix has 504 variants and 420 CEFR transitions")' "$RUNNER_TEMP/lsh-r6-pedagogical-matrix/R6_PEDAGOGICAL_MATRIX.json"
+      - name: Attach R6 cross-level review matrix (not pedagogical approval)
         uses: actions/upload-artifact@v4
         with:
-          name: lsh-r6-conversation-claude-five-batches
+          name: lsh-r6-cross-level-content-matrix
           path: |
-            ${{ runner.temp }}/lsh-r6-claude/*.zip
-            ${{ runner.temp }}/lsh-r6-claude/INDEX.json
+            ${{ runner.temp }}/lsh-r6-pedagogical-matrix/*.json
+            ${{ runner.temp }}/lsh-r6-pedagogical-matrix/*.md
           if-no-files-found: error
           retention-days: 30
