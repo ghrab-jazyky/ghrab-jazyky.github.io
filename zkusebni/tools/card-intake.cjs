@@ -194,7 +194,13 @@ function importBatch(file,apply){
   known.add(card.id);
  }
  const result=planned.map(p=>({id:p.pilot.id,path:p.newPath,sourceSha256:p.pilot.sourceSha256,variants:p.variants,exerciseRecords:p.exerciseRecords}));
- if(!apply){console.log(JSON.stringify({mode:'dry-run',safeToApply:true,cards:result},null,2));return}
+ if(!apply){
+  // A dry-run must not claim safeToApply when the EXISTING catalog, tracker
+  // or audit queue is already inconsistent; --apply rechecks under the lock.
+  validateAll();
+  console.log(JSON.stringify({mode:'dry-run',safeToApply:true,cards:result},null,2));
+  return;
+ }
  // A failed bulk import must not leave half a card or partially updated ledgers.
  // The lock serialises cooperating importers; each ledger replacement is atomic.
  const lockPath=path.join(ROOT,'data/.card-intake.lock');
