@@ -63,6 +63,20 @@ for(const s of sources){
   html=html.replace(oldLiteral,JSON.stringify(newQ));
   replacements++;
  }
+ let improvedExplanation=null;
+ if(s.id==='rl-email-friend'){
+  const oldQ=before.de.B2.questions.find(q=>q.id==='de-b2-matching-2');
+  const newQ=expected.de.B2.questions.find(q=>q.id==='de-b2-matching-2');
+  assert.ok(oldQ&&newQ&&oldQ.kind==='match');
+  assert.equal(oldQ.explanation,'Das Sofa.');
+  assert.equal(oldQ.answer,3);
+  assert.ok(oldQ.evidence.some(a=>a.p===3&&before.de.B2.paragraphs[a.p].includes(a.text)));
+  newQ.explanation='Im letzten Absatz bietet Lena einen Schlafplatz an: „Auf meinem Sofa ist Platz“.';
+  const literal=JSON.stringify(oldQ);
+  assert.equal(html.split(literal).length,2,'Expected one German B2 matching explanation');
+  html=html.replace(literal,JSON.stringify(newQ));
+  improvedExplanation={language:'de',level:'B2',questionId:oldQ.id};
+ }
  const after=payload(html);
  assert.deepEqual(after,expected,'Unexpected data modification in '+s.id);
  // The source is byte-identical outside the 16 specified question objects.
@@ -85,13 +99,14 @@ for(const s of sources){
  manifest.cards.push({topicId:s.id,originalSource:s.file,originalGitBlob:s.blob,
   sourceSha256:sha256(bytes),candidateFile:file,candidateSha256:sha256(Buffer.from(html,'utf8')),
   repairedQuestions:patches.map(x=>({language:x.language,level:x.level,questionId:x.questionId,kind:'match',evidenceParagraph:3})),
+  improvedExplanations:improvedExplanation?[improvedExplanation]:[],
   teacherApproval:false,published:false});
 }
 assert.equal(replacements,16);
 fs.writeFileSync(path.join(out,'R7_CANDIDATES_MANIFEST.json'),JSON.stringify(manifest,null,2)+'\n');
 fs.writeFileSync(path.join(out,'README.md'),[
  '# Reading Lab R7 – pouze kandidáti na obsahové opravy','',
- 'Změněny přesně dvě kopie studentských HTML a celkem 16 Multiple Matching otázek (4 v Email, 12 v Instant Messages).',
+ 'Změněny přesně dvě kopie studentských HTML: 16 Multiple Matching otázek (4 v Email, 12 v Instant Messages) a 1 slabé vysvětlení v Email DE B2.',
  'Zachovány originální soubory, texty, všechny jiné úlohy a veškeré odpovědi mimo vybrané matching položky.',
  'Nové odpovědi jsou indexovány na třetí odstavec a mají přesnou evidence citaci.',
  'Ověřena jedinečnost tří cílových odstavců na všech úrovních B2–C2 a v EN/ES/DE/FR.',
