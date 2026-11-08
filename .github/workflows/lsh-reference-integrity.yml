@@ -99,6 +99,20 @@ jobs:
             ${{ runner.temp }}/lsh-listening-parity/*.md
           if-no-files-found: error
           retention-days: 30
+      - name: Create R7 Harrison and Peaky three-listening UI candidates (no deployment)
+        run: |
+          node zkusebni/tools/listening-r7-three-phase-candidates.cjs "$RUNNER_TEMP/lsh-listening-r7-ui"
+          node -e 'const r=require(process.argv[1]);if(r.cards.length!==2||r.teacherApproval!==false||r.releaseApproved!==false||r.mediaVerified!==false||r.cards.some(c=>c.levels!==6))throw Error("R7 Listening UI coverage or safety gate failure");console.log("PASS two independent three-phase listening candidate HTML files")' "$RUNNER_TEMP/lsh-listening-r7-ui/LISTENING_R7_UI_MANIFEST.json"
+      - name: Attach R7 three-listening UI candidate HTML (not approved)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-listening-r7-three-pass-ui-candidates
+          path: |
+            ${{ runner.temp }}/lsh-listening-r7-ui/*.html
+            ${{ runner.temp }}/lsh-listening-r7-ui/*.json
+            ${{ runner.temp }}/lsh-listening-r7-ui/*.md
+          if-no-files-found: error
+          retention-days: 30
       - name: End-to-end batch intake for all THREE skills (runner only, no deployment)
         run: |
           set -eu
