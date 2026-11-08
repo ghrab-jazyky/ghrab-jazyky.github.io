@@ -162,6 +162,33 @@ for(const card of MANIFEST.cards){
    assert.equal((await page.locator('#stationNum').innerText()).trim(),'1');
    const width=await page.evaluate(()=>({innerWidth,scrollWidth:document.documentElement.scrollWidth}));
    assert.ok(width.scrollWidth<=width.innerWidth+8,card.id+' mobile overflow after interaction '+JSON.stringify(width));
+   // R8 responsive smoke: one real, interactive fixed-card view at all device classes.
+   // The full 24 x 8 variant/station matrix above remains unchanged; this adds
+   // breakpoint coverage without claiming native iOS/Android device testing.
+   for(const device of [
+    {name:'small-phone',width:320,height:640},
+    {name:'phone',width:390,height:844},
+    {name:'phone-landscape',width:568,height:320},
+    {name:'tablet-portrait',width:768,height:1024},
+    {name:'tablet-landscape',width:1024,height:768},
+    {name:'desktop',width:1366,height:768}
+   ]){
+    await page.setViewportSize({width:device.width,height:device.height});
+    const before=await page.evaluate(()=>({innerWidth,documentWidth:document.documentElement.scrollWidth,
+      bodyWidth:document.body.scrollWidth}));
+    assert.ok(Math.max(before.documentWidth,before.bodyWidth)<=before.innerWidth+8,
+      card.id+' '+ENGINE+' '+device.name+' horizontal overflow before navigation '+JSON.stringify(before));
+    await page.locator('#nextBtn').click();
+    assert.equal((await page.locator('#stationNum').innerText()).trim(),'2',
+      card.id+' '+ENGINE+' '+device.name+' next button failed');
+    await page.locator('#previousBtn').click();
+    assert.equal((await page.locator('#stationNum').innerText()).trim(),'1',
+      card.id+' '+ENGINE+' '+device.name+' previous button failed');
+    const after=await page.evaluate(()=>({innerWidth,documentWidth:document.documentElement.scrollWidth,
+      bodyWidth:document.body.scrollWidth}));
+    assert.ok(Math.max(after.documentWidth,after.bodyWidth)<=after.innerWidth+8,
+      card.id+' '+ENGINE+' '+device.name+' horizontal overflow after navigation '+JSON.stringify(after));
+   }
    assert.deepEqual(errors,[],'Client JavaScript exceptions');
    assert.deepEqual(outside,[],'Unexpected external requests');
    assert.deepEqual(badResponses,[],'Missing local CSS/JS dependency');
