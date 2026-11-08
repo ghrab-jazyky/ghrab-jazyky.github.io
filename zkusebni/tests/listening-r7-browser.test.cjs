@@ -43,6 +43,18 @@ for(const [engine,name] of [[chromium,'Chromium'],[webkit,'WebKit']]){
      page.on('pageerror',error=>errors.push(String(error)));
      await page.goto(base+'/'+c.file,{waitUntil:'domcontentloaded',timeout:25000});
      await page.locator('#gistTasks .task').first().waitFor({timeout:15000});
+     const notice=page.locator('#r7MediaSafetyNotice');
+     assert.equal(await notice.count(),1,'Every unpublished Listening candidate needs a visible media/content notice');
+     assert.equal(await notice.isVisible(),true);
+     const noticeText=await notice.innerText();
+     if(c.id==='ll-peaky-no-fighting'){
+      assert.match(noticeText,/strong profanity/i);
+      assert.match(noticeText,/drugs/i);
+      assert.match(noticeText,/younger classes/i);
+     }else{
+      assert.match(noticeText,/external video/i);
+      assert.match(noticeText,/school network/i);
+     }
      const sectionIds=await page.locator('main > section').evaluateAll(els=>els.map(e=>e.id));
      for(const id of ['gist','detail','evidence','language']){
       assert.ok(sectionIds.includes(id),'missing section '+id);
