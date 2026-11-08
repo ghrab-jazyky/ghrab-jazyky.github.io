@@ -42,3 +42,7 @@ R5D poskytuje první **54 samostatných návrhů testovacích zadání** odvozen
 6. Výslovná rozhodovací brána „GO“ pro každou dovednost, ne hromadné povolení všech 29 témat.
 
 **Další technický krok:** po schválení testové koncepce převést generator z původních tří referencí na zdrojově validované jednotlivé kandidáty; následně rozšířit katalog tak, aby `Procvičování` a `Testování` zůstaly dvěma oddělenými, skutečně schválenými realizacemi **jediného tématu**. Dokud tento krok není dokončen, `Testování` zůstává deaktivované.
+
+## R5D correction: sentence-gap answer disclosure (2026-11-08)
+
+The initial generated review ZIP included reading structure questions whose answer was visible verbatim in the full reading text. Both preview generators now remove the exact missing sentence from the passage and replace it with `[ … ]`; if the match is ambiguous or absent they fail closed. Automated tests assert that the answer is not visibly repeated. Previous review ZIP is superseded. No student use, grading, or release without pedagogical approval.

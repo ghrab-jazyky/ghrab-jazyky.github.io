@@ -119,6 +119,23 @@ function conversation(data,lang,level,cfg){
  return {html:htmlPage(lang,level,'AI · '+level,L[lang].speaking,body),
   taskIds:select.map(i=>'station-'+(i+1)+'-main-and-followup'),count:select.length};
 }
+// Sentence-gap test items must not leave the complete answer in the source text.
+// Fail closed if the matching sentence cannot be located exactly once.
+function withStructureGap(paragraphs,questions,context){
+ const tasks=questions.filter(q=>q.tab==='structure');
+ if(!tasks.length)return paragraphs;
+ assert.equal(tasks.length,1,context+' multiple structure tasks');
+ const hits=[];
+ for(let i=0;i<paragraphs.length;i++)for(const option of tasks[0].choices){
+  if(typeof option!=='string'||option.trim().length<25)continue;
+  let n=paragraphs[i].indexOf(option);
+  while(n>=0){hits.push({i,option});n=paragraphs[i].indexOf(option,n+option.length)}
+ }
+ assert.equal(hits.length,1,context+' expected exactly one verbatim sentence-gap answer');
+ const updated=paragraphs.slice(),hit=hits[0];
+ updated[hit.i]=updated[hit.i].replace(hit.option,'[ … ]');
+ return updated;
+}
 function reading(data,lang,level,cfg){
  const d=data[lang][level];
  assert.ok(Array.isArray(d.paragraphs)&&d.paragraphs.length>=3);
@@ -133,8 +150,9 @@ function reading(data,lang,level,cfg){
  const count=['A1','A2'].includes(level)?cfg.shortLevelCount:cfg.longLevelCount;
  assert.equal(selected.length,count);
  assert.equal(new Set(selected.map(q=>q.id)).size,count);
+ const visibleParagraphs=withStructureGap(d.paragraphs,selected,lang+'/'+level);
  const body='<section class="reading"><h2>'+esc(d.title)+'</h2>'+
-  d.paragraphs.map(p=>'<p>'+esc(p)+'</p>').join('')+'</section>'+
+  visibleParagraphs.map(p=>'<p>'+esc(p)+'</p>').join('')+'</section>'+
   '<h2>'+esc(L[lang].reading)+'</h2>'+
   selected.map((q,i)=>group((i+1)+'. '+q.q,q.choices,q.id)).join('');
  return {html:htmlPage(lang,level,d.title+' · '+level,L[lang].reading,body),

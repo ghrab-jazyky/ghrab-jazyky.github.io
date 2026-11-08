@@ -49,3 +49,7 @@ Podklady se vytvářejí z 29 přesně verzovaných studentských HTML stávají
 - Získat výslovné pedagogické schválení a teprve pak jednotlivě uvolnit tlačítko `Testování` v katalogu.
 
 **Závěr:** R5D ALL29 je podklad pro rychlou hromadnou pedagogickou kontrolu; **není to vydaná ostrá testovací aplikace**.
+
+## R5D correction: sentence-gap answer disclosure (2026-11-08)
+
+The initial generated review ZIP included reading structure questions whose answer was visible verbatim in the full reading text. Both preview generators now remove the exact missing sentence from the passage and replace it with `[ … ]`; if the match is ambiguous or absent they fail closed. Automated tests assert that the answer is not visibly repeated. Previous review ZIP is superseded. No student use, grading, or release without pedagogical approval.
