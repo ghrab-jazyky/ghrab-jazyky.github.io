@@ -155,8 +155,23 @@ for(const item of mf.cards){
   const v=repaired.es.levels.A1.stations;
   assert.notEqual(norm(v[0].questions[0]),norm(v[7].questions[0]));
  }
- // The R6 script/UI is preserved verbatim except the CONTENT literal and its CSP hash.
+ // Keep the entire canonical CONTENT; change runtime only for the AI reference's
+ // pre-existing mainExplanation field. R6 engine expects mainExplain and would
+ // silently hide 96 original B2-C2 explanations after source restoration.
  let html=candidate.slice(0,b.start)+JSON.stringify(repaired)+candidate.slice(b.end);
+ if(item.id==='cl-umela-inteligence'){
+  const aliasCount=LANGS.reduce((n,lang)=>n+['B2','C1','C2'].reduce((m,lev)=>m+
+   repaired[lang].levels[lev].stations.filter(st=>typeof st.mainExplanation==='string'&&
+    !!st.mainExplanation.trim()&&st.mainExplain===undefined).length,0),0);
+  assert.equal(aliasCount,96,'AI reference must have 96 mainExplanation values');
+  const prior="const hasMainExplain=ORDER.indexOf(level)>=3&&typeof s.mainExplain==='string'&&!!s.mainExplain.trim();";
+  const compatible="const mainExplainValue=(typeof s.mainExplain==='string'&&s.mainExplain.trim())?s.mainExplain:s.mainExplanation;"+
+   "const hasMainExplain=ORDER.indexOf(level)>=3&&typeof mainExplainValue==='string'&&!!mainExplainValue.trim();";
+  const textPrior="setText('mainExplainText',s.mainExplain);";
+  assert.equal(html.split(prior).length,2,'AI mainExplanation visibility guard drift');
+  assert.equal(html.split(textPrior).length,2,'AI mainExplanation text binding drift');
+  html=html.replace(prior,compatible).replace(textPrior,"setText('mainExplainText',mainExplainValue);");
+ }
  const hashes=[...html.matchAll(/sha256-([A-Za-z0-9+/]{43}=)/g)];
  assert.equal(hashes.length,1,'Expected exactly one CSP script hash '+item.id);
  const nextHash=scriptHash(html,item.id);
@@ -184,7 +199,8 @@ for(const item of mf.cards){
   sourceOriginalGitBlob:item.originalGitBlob,r6GitBlob:item.candidateGitBlob,
   originalSha256:sha256(orig),r6CandidateSha256:sha256(r6),
   repairedCandidateSha256:sha256(Buffer.from(html)),exactPatches:fixes.map(p=>({language:p.language,level:p.level,station:p.stationIndex+1,field:p.field,question:p.questionIndex===undefined?null:p.questionIndex+1})),
-  contentDifferencesDiscarded:changes,teacherApproval:false,published:false});
+  contentDifferencesDiscarded:changes,mainExplanationRuntimeCompatibility:item.id==='cl-umela-inteligence',
+  teacherApproval:false,published:false});
 }
 const result={schemaVersion:1,kind:'R8_SOURCE_CONTENT_RECOVERY_CANDIDATES_ONLY',
  source:'21 SHA-verified canonical Conversation HTML plus 7 exact A1 grammar/duplicate fixes',
@@ -253,7 +269,8 @@ const lines=['# Conversation Lab R8 – bezpečná obnova původního pedagogick
  '- Seznam všech 38 změněných hlavních/doplňujících otázek a rozhodnutí R8 je v R8_QUESTION_CHANGE_REVIEW.json; nevybrané formulace z R6 stále čekají na obsahovou revizi.',
  '', '## Obnova','',
  '- Všech 21 R8 HTML kopíruje kompletní **původní CONTENT** (EN/ES/DE/FR × A1–C2), původní Support, Challenge, Stretch, Vocabulary a Toolkit.',
- '- Jediných sedm povolených odchýlení jsou přesné zdrojově ověřené opravy A1 definované v data/conversation-r8-minimal-content-fixes.json.',
+ '- Jediných sedm obsahových odchýlení jsou přesné zdrojově ověřené opravy A1 definované v data/conversation-r8-minimal-content-fixes.json.',
+ '- Pro AI referenci je navíc opraven výhradně runtime alias mainExplanation → mainExplain (96 původních B2–C2 vysvětlení); text CONTENT se nemění.',
  '- Kandidátní UI a technická integrace R6 zůstávají; JS syntaxe a CSP SHA-256 přepočteny a ověřeny.',
  '- 21 HTML vzniklo **jen v tomto CI výstupu**, žádný kanonický zdroj, R6 kandidát, teacher key ani katalog se nepřepisuje.',
  '', '## Důležité limity','',
