@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "status": "REVIEW_CANDIDATES_ONLY",
+  "teacherApproval": false,
+  "published": false,
+  "canonicalSourcesUnchanged": true,
+  "privateTeacherKeyRevalidationRequired": true,
+  "reference": "Asteroids v2.3",
+  "rationale": "Each matching set must use three distinct source paragraphs; source-specific questions replace repeated-target items with accurately anchored third-paragraph evidence.",
+  "patches": [
+    {
+      "topicId": "rl-email-friend",
+      "language": "en",
+      "level": "C2",
+      "matchingIndex": 1,
+      "questionId": "en-c2-matching-2",
+      "oldAnswerIndex": 1,
+      "newAnswerIndex": 2,
+      "newQuestion": "Which paragraph contrasts the emotional value of brief postcards with a father's long absence?",
+      "newEvidence": {
+        "p": 2,
+        "text": "she treasured them because each one proved that he had thought of the family on a particular day."
+      },
+      "newExplanation": "The postcards mattered as signs of attention, though they could not compensate for his long absence.",
+      "sourceGitBlob": "9178645eaa2d4fcd522a8a52bf2cd4741dfce05f"
+    },
+    {
+      "topicId": "rl-email-friend",
+      "language": "es",
+      "level": "C1",
+      "matchingIndex": 1,
+      "questionId": "es-c1-matching-2",
+      "oldAnswerIndex": 1,
+      "newAnswerIndex": 2,
+      "newQuestion": "¿En qué párrafo se admite que una sola velada no puede reparar un año de contacto superficial?",
+      "newEvidence": {
+        "p": 2,
+        "text": "Sería injusto fingir que una sola tarde pudiera reparar un año de contacto superficial."
+      },
+      "newExplanation": "La autora no presenta la invitación como una solución inmediata a su distanciamiento.",
+      "sourceGitBlob": "9178645eaa2d4fcd522a8a52bf2cd4741dfce05f"
+    },
+    {
+      "topicId": "rl-email-friend",
+      "language": "de",
+      "level": "C1",
+      "matchingIndex": 1,
+      "questionId": "de-c1-matching-2",
+      "oldAnswerIndex": 1,
+      "newAnswerIndex": 2,
+      "newQuestion": "In welchem Absatz wird eingeräumt, dass ein schöner Abend ein ganzes Jahr oberflächlichen Kontakts nicht ausgleichen kann?",
+      "newEvidence": {
+        "p": 2,
+        "text": "Ein einziger schöner Abend könnte außerdem ein ganzes Jahr oberflächlichen Kontakts nicht einfach reparieren."
+      },
+      "newExplanation": "Die Verfasserin stellt die Einladung nicht als schnelle Lösung für die Entfremdung dar.",
+      "sourceGitBlob": "9178645eaa2d4fcd522a8a52bf2cd4741dfce05f"
+    },
+    {
+      "topicId": "rl-email-friend",
+      "language": "fr",
+      "level": "C1",
+      "matchingIndex": 1,
+      "questionId": "fr-c1-matching-2",
+      "oldAnswerIndex": 1,
+      "newAnswerIndex": 2,
+      "newQuestion": "Dans quel paragraphe l'auteure reconnaît-elle qu'une seule soirée ne peut réparer une année de relations superficielles ?",
+      "newEvidence": {
+        "p": 2,
+        "text": "Il serait aussi injuste de prétendre qu'une soirée réparerait une année de contacts superficiels."
+      },
+      "newExplanation": "Elle refuse de présenter l'invitation comme une solution immédiate à leur éloignement.",
+      "sourceGitBlob": "9178645eaa2d4fcd522a8a52bf2cd4741dfce05f"
+    },
+    {
+      "topicId": "rl-instant-messages",
+      "language": "en",
+      "level": "B2",
+      "matchingIndex": 2,
+      "questionId": "en-b2-matching-3",
+      "oldAnswerIndex": 1,
+      "newAnswerIndex": 2,
+      "newQuestion": "In which paragraph do a misunderstood reply and a delayed gift order show the cost of making assumptions?",
+      "newEvidence": {
+        "p": 2,
+        "text": "Nobody had been rude, yet the group lost two days"
+      },
+      "newExplanation": "A brief answer is misinterpreted and the group needlessly delays the gift.",
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
+    },
+    {
+      "topicId": "rl-instant-messages",
+      "language": "es",
+      "level": "B2",
+      "matchingIndex": 2,
+      "questionId": "es-b2-matching-3",
+      "oldAnswerIndex": 1,
+      "newAnswerIndex": 2,
+      "newQuestion": "¿En qué párrafo una respuesta malinterpretada retrasa dos días la compra de un regalo?",
+      "newEvidence": {
+        "p": 2,
+        "text": "el grupo perdió dos días"
+      },
+      "newExplanation": "Dana interpreta mal la respuesta de Marek y el grupo pierde tiempo.",
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
+    },
+    {
+      "topicId": "rl-instant-messages",
+      "language": "de",
+      "level": "B2",
+      "matchingIndex": 2,
+      "questionId": "de-b2-matching-3",
+      "oldAnswerIndex": 1,
+      "newAnswerIndex": 2,
+      "newQuestion": "In welchem Absatz verzögert eine falsch verstandene Antwort die Bestellung eines Geschenks um zwei Tage?",
+      "newEvidence": {
+        "p": 2,
+        "text": "doch verlor die Gruppe zwei Tage"
+      },
+      "newExplanation": "Danas Missverständnis verzögert die Bestellung des Geschenks.",
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
+    },
+    {
+      "topicId": "rl-instant-messages",
+      "language": "fr",
+      "level": "B2",
+      "matchingIndex": 2,
+      "questionId": "fr-b2-matching-3",
+      "oldAnswerIndex": 1,
+      "newAnswerIndex": 2,
+      "newQuestion": "Dans quel paragraphe un message mal compris retarde-t-il de deux jours la commande d'un cadeau ?",
+      "newEvidence": {
+        "p": 2,
+        "text": "le groupe a perdu deux jours"
+      },
+      "newExplanation": "Dana comprend mal la réponse de Marek, ce qui retarde la commande.",
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
+    },
+    {
+      "topicId": "rl-instant-messages",
+      "language": "en",
+      "level": "C1",
+      "matchingIndex": 2,
+      "questionId": "en-c1-matching-3",
+      "oldAnswerIndex": 3,
+      "newAnswerIndex": 2,
+      "newQuestion": "In which paragraph is disabling read receipts described as a choice that may itself send a message?",
+      "newEvidence": {
+        "p": 2,
+        "text": "turning receipts off can itself look like a statement."
+      },
+      "newExplanation": "Turning the setting off may itself be interpreted as a social signal.",
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
+    },
+    {
+      "topicId": "rl-instant-messages",
+      "language": "es",
+      "level": "C1",
+      "matchingIndex": 2,
+      "questionId": "es-c1-matching-3",
+      "oldAnswerIndex": 3,
+      "newAnswerIndex": 2,
+      "newQuestion": "¿En qué párrafo se señala que desactivar las confirmaciones puede interpretarse como una declaración?",
+      "newEvidence": {
+        "p": 2,
+        "text": "desactivar las confirmaciones puede parecer en sí mismo una declaración."
+      },
+      "newExplanation": "La decisión de desactivar la función también puede tener un significado social.",
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
+    },
+    {
+      "topicId": "rl-instant-messages",
+      "language": "de",
+      "level": "C1",
+      "matchingIndex": 2,
+      "questionId": "de-c1-matching-3",
+      "oldAnswerIndex": 3,
+      "newAnswerIndex": 2,
+      "newQuestion": "In welchem Absatz wird erklärt, dass schon das Abschalten der Lesebestätigungen als Botschaft gelten kann?",
+      "newEvidence": {
+        "p": 2,
+        "text": "denn auch das Abschalten kann wie eine Botschaft wirken."
+      },
+      "newExplanation": "Die Entscheidung, die Funktion abzuschalten, wird ebenfalls von anderen gedeutet.",
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
+    },
+    {
+      "topicId": "rl-instant-messages",
+      "language": "fr",
+      "level": "C1",
+      "matchingIndex": 2,
+      "questionId": "fr-c1-matching-3",
+      "oldAnswerIndex": 3,
+      "newAnswerIndex": 2,
+      "newQuestion": "Dans quel paragraphe explique-t-on que désactiver les accusés de lecture peut être interprété comme un message ?",
+      "newEvidence": {
+        "p": 2,
+        "text": "la désactiver peut aussi passer pour un message."
+      },
+      "newExplanation": "Même ce réglage peut avoir une signification sociale pour les autres.",
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
+    },
+    {
+      "topicId": "rl-instant-messages",
+      "language": "en",
+      "level": "C2",
+      "matchingIndex": 2,
+      "questionId": "en-c2-matching-3",
+      "oldAnswerIndex": 1,
+      "newAnswerIndex": 2,
+      "newQuestion": "In which paragraph does the writer argue that a screenshot preserves words but strips away their original context?",
+      "newEvidence": {
+        "p": 2,
+        "text": "What it preserves, however, are the words; what it discards is the situation"
+      },
+      "newExplanation": "A screenshot shows the wording but loses tone, participants and shared history.",
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
+    },
+    {
+      "topicId": "rl-instant-messages",
+      "language": "es",
+      "level": "C2",
+      "matchingIndex": 2,
+      "questionId": "es-c2-matching-3",
+      "oldAnswerIndex": 1,
+      "newAnswerIndex": 2,
+      "newQuestion": "¿En qué párrafo se explica que una captura conserva las palabras, pero pierde el contexto en que se escribieron?",
+      "newEvidence": {
+        "p": 2,
+        "text": "Lo que conserva, sin embargo, son las palabras; lo que descarta es la situación"
+      },
+      "newExplanation": "Una captura registra el texto, pero no el tono ni la historia compartida.",
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
+    },
+    {
+      "topicId": "rl-instant-messages",
+      "language": "de",
+      "level": "C2",
+      "matchingIndex": 2,
+      "questionId": "de-c2-matching-3",
+      "oldAnswerIndex": 1,
+      "newAnswerIndex": 2,
+      "newQuestion": "In welchem Absatz wird erklärt, dass ein Screenshot Wörter bewahrt, aber ihren ursprünglichen Kontext verliert?",
+      "newEvidence": {
+        "p": 2,
+        "text": "Was er bewahrt, sind allerdings die Worte; was er verwirft, ist die Situation"
+      },
+      "newExplanation": "Ein Screenshot zeigt den Wortlaut, aber nicht den Ton oder die gemeinsame Vorgeschichte.",
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
+    },
+    {
+      "topicId": "rl-instant-messages",
+      "language": "fr",
+      "level": "C2",
+      "matchingIndex": 2,
+      "questionId": "fr-c2-matching-3",
+      "oldAnswerIndex": 1,
+      "newAnswerIndex": 2,
+      "newQuestion": "Dans quel paragraphe explique-t-on qu'une capture d'écran conserve les mots tout en supprimant leur contexte initial ?",
+      "newEvidence": {
+        "p": 2,
+        "text": "Ce qu’elle conserve, toutefois, ce sont les mots ; ce qu’elle écarte, c’est la situation"
+      },
+      "newExplanation": "La capture garde les mots, mais pas le ton ni l'histoire partagée.",
+      "sourceGitBlob": "274140b4799bfaef6125063e554b86d741d01289"
+    }
+  ]
+}
