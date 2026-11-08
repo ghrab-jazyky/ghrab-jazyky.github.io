@@ -1,0 +1,45 @@
+name: LSH Conversation R6 21-card browser QA (NO deployment)
+on:
+  pull_request:
+    paths:
+      - 'zkusebni/tests/conversation-r6-browser.test.cjs'
+      - 'zkusebni/konverzace/k/**'
+      - 'zkusebni/data/conversation-r6-candidates.json'
+      - 'zkusebni/assets/lsh/v2/lock.js'
+      - 'zkusebni/assets/lsh/v3/**'
+      - '.github/workflows/lsh-conversation-r6-browser.yml'
+  push:
+    branches:
+      - 'feat/lsh-*'
+    paths:
+      - 'zkusebni/tests/conversation-r6-browser.test.cjs'
+      - 'zkusebni/konverzace/k/**'
+      - 'zkusebni/data/conversation-r6-candidates.json'
+      - 'zkusebni/assets/lsh/v2/lock.js'
+      - 'zkusebni/assets/lsh/v3/**'
+      - '.github/workflows/lsh-conversation-r6-browser.yml'
+permissions:
+  contents: read
+jobs:
+  full-dom-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, webkit]
+    env:
+      LSH_R6_ENGINE: ${{ matrix.engine }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser engine
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps "${LSH_R6_ENGINE}"
+      - name: Verify all candidate cards and 24 language/level variants per card
+        run: node --test --test-concurrency=1 zkusebni/tests/conversation-r6-browser.test.cjs
