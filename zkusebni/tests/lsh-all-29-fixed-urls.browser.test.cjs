@@ -124,6 +124,45 @@ async function check(engine,label,viewport){
      'Horizontal overflow at '+viewport.width+'px: '+JSON.stringify(w));
     if(pageErrors.length!==previousErrors)
      assert.fail('JavaScript exception(s): '+pageErrors.slice(previousErrors).join(' | '));
+    // A real free-mode URL must not be a locked variant with its dictionary
+    // merely switched back on. Generate it through the *same* catalog UI.
+    await card.getByRole('button',{name:/Procvičování/}).click();
+    await catalog.locator('#refMode').selectOption('free');
+    const freeHref=await catalog.locator('#refUrl').inputValue();
+    const freeUrl=new URL(freeHref);
+    assert.equal(freeUrl.pathname,'/zkusebni/'+e.studentPath);
+    assert.equal(freeUrl.searchParams.get('practice'),'1');
+    for(const key of ['zamek','lang','level'])
+     assert.equal(freeUrl.searchParams.has(key),false,'Free URL retained '+key);
+    assert.equal(await catalog.locator('#refQr svg').count(),1,'Free URL QR missing');
+    await catalog.locator('#refClose').click();
+    const openedFree=await student.goto(freeHref,{waitUntil:'domcontentloaded',timeout:45000});
+    assert.ok(openedFree&&openedFree.ok(),'Unrestricted student URL did not load');
+    if(e.skill==='konverzace'){
+     await student.locator('#languageSelect:not(:disabled)').waitFor();
+     assert.equal(await student.locator('#levelSwitch button:not(:disabled)').count(),6,
+      'Free Conversation must allow choosing any CEFR level');
+     assert.ok((await student.locator('#mainQuestion').innerText()).trim().length>5);
+    }else if(e.skill==='cteni'){
+     await student.locator('#language:not(:disabled)').waitFor();
+     assert.equal(await student.locator('#levels button:not(:disabled)').count(),6,
+      'Free Reading must allow changing the CEFR level');
+     assert.ok(await student.locator('#readingBody p').count()>0);
+    }else{
+     await student.locator('#levelPills button[data-level]').first().waitFor();
+     assert.equal(await student.locator('#levelPills button:not(:disabled)').count(),6,
+      'Free Listening must allow changing the CEFR level');
+     await student.locator('#gistTasks .task').first().waitFor();
+    }
+    const freeWidth=await student.evaluate(()=>({
+     viewport:innerWidth,document:document.documentElement.scrollWidth,
+     body:document.body.scrollWidth
+    }));
+    assert.ok(Math.max(freeWidth.document,freeWidth.body)<=freeWidth.viewport+8,
+     'Free variant horizontal overflow: '+JSON.stringify(freeWidth));
+    if(pageErrors.length!==previousErrors)
+     assert.fail('JavaScript exception(s) in fixed/free variants: '+
+      pageErrors.slice(previousErrors).join(' | '));
     seen.push(e.id);
    }catch(err){
     failures.push(e.id+': '+String(err&&err.message||err).slice(0,650));
@@ -135,12 +174,12 @@ async function check(engine,label,viewport){
   }
   await context.close();
  }finally{await browser.close()}
- console.log(label+' checked '+seen.length+'/'+ENTRIES.length+' real fixed URLs, QR and student UI');
+ console.log(label+' checked '+seen.length+'/'+ENTRIES.length+' real fixed+free URLs, QR and student UI');
  for(const message of failures)console.error('R9 '+label+' '+message);
  assert.deepEqual(failures,[],label+' school catalog/student-link failures');
  assert.equal(seen.length,29);
 }
-test('R9 all 29 pilot topics: Chromium, desktop fixed links and QR', {timeout:900000},
+test('R9 all 29 pilot topics: Chromium, desktop free+fixed links and QR', {timeout:900000},
  ()=>check(chromium,'Chromium',{width:1366,height:768}));
-test('R9 all 29 pilot topics: WebKit, phone fixed links and QR', {timeout:900000},
+test('R9 all 29 pilot topics: WebKit, phone free+fixed links and QR', {timeout:900000},
  ()=>check(webkit,'WebKit',{width:390,height:844}));
