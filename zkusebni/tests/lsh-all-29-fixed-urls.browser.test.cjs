@@ -74,7 +74,11 @@ async function check(engine,label,viewport){
      'Unapproved test mode must remain disabled: '+e.id);
     await card.getByRole('button',{name:/Procvičování/}).click();
     await catalog.locator('#refMode').selectOption('fixed');
-    await catalog.locator('#refShareLang').selectOption(lang);
+    const languagePick=catalog.locator('#refShareLang');
+    if(await languagePick.isDisabled()){
+     assert.equal(await languagePick.inputValue(),lang,
+      'EN-only Listening must show the fixed available language');
+    }else await languagePick.selectOption(lang);
     await catalog.locator('#refShareLevel').selectOption(level);
     const href=await catalog.locator('#refUrl').inputValue();
     const url=new URL(href);
@@ -108,7 +112,12 @@ async function check(engine,label,viewport){
     }
     const w=await student.evaluate(()=>({
      viewport:innerWidth,document:document.documentElement.scrollWidth,
-     body:document.body.scrollWidth,locked:!!document.getElementById('lshVariantHint')
+     body:document.body.scrollWidth,
+     // Three reference bridges expose #lshVariantHint; historical CLB cards
+     // expose a status pill with different markup (both are UI-only locks).
+     locked:!!document.getElementById('lshVariantHint')||
+      [...document.querySelectorAll('.controls .pill[role="status"]')]
+        .some(e=>e.textContent.includes('Jazyk a úroveň určeny učitelem'))
     }));
     assert.equal(w.locked,true,'Explicit teacher-fixed UI hint missing');
     assert.ok(Math.max(w.document,w.body)<=w.viewport+8,
