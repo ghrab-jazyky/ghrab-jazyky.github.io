@@ -100,6 +100,12 @@ test('R5D ALL29 642 test drafts: no answers, grades, teacher keys, student ident
   assert.ok(radioCount>200);
   const index=fs.readFileSync(path.join(out,'index.html'),'utf8');
   assert.equal((index.match(/<li><a href=/g)||[]).length,642,'Teacher index missing variants');
+  assert.equal((index.match(/<details>/g)||[]).length,29,
+   'All 29 topics need a separate offline review expander');
+  assert.equal((index.match(/<section><h2>/g)||[]).length,3,
+   'Separate the three language skills in the offline review index');
+  assert.equal((index.match(/<script\b/gi)||[]).length,0,
+   'Teacher review index must not need JavaScript or the network');
   assert.match(fs.readFileSync(path.join(out,'README_R5D.md'),'utf8'),/NEPOUŽÍVAT KE ZNÁMKOVÁNÍ/);
   assert.equal(JSON.parse(read('data/reference-pilots.json')).entries.length,29);
   assert.equal(JSON.parse(read('data/r5d-all29-source-pins.json')).entries.length,29);
