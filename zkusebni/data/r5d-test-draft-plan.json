@@ -119,7 +119,15 @@
       ],
       "objective": "Porozumět zvolenému autenticky laděnému textu a odpovídat na kratší sadu otázek bez zobrazení klíče.",
       "weaker": "Možný delší čas nebo vybraná jazyková opora, pokud ji učitel schválí.",
-      "stronger": "Vyžádat si důkaz v konkrétní pasáži po individuálním pokynu učitele."
+      "stronger": "Vyžádat si důkaz v konkrétní pasáži po individuálním pokynu učitele.",
+      "c2Tabs": [
+        "gist",
+        "scan",
+        "inference",
+        "tone",
+        "matching",
+        "structure"
+      ]
     },
     "listening": {
       "gistCount": 2,
