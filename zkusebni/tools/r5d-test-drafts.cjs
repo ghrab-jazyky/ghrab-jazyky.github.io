@@ -122,7 +122,7 @@ function conversation(data,lang,level,cfg){
 function reading(data,lang,level,cfg){
  const d=data[lang][level];
  assert.ok(Array.isArray(d.paragraphs)&&d.paragraphs.length>=3);
- const tabs=['A1','A2'].includes(level)?cfg.lowerTabs:level==='B1'?cfg.b1Tabs:cfg.higherTabs;
+ const tabs=['A1','A2'].includes(level)?cfg.lowerTabs:level==='B1'?cfg.b1Tabs:level==='C2'?cfg.c2Tabs:cfg.higherTabs;
  const used=new Map(),selected=[];
  for(const tab of tabs){
   const options=d.questions.filter(q=>q.tab===tab&&Array.isArray(q.choices)&&q.choices.length>=2);
