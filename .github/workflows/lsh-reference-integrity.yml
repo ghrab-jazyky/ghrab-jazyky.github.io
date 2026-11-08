@@ -121,6 +121,25 @@ jobs:
           cp zkusebni/reference/poslech/matthew-mcconaughey/index.html "$RUNNER_TEMP/lsh-intake-fixture/matthew.html"
           node -e 'const fs=require("node:fs");const root=process.env.RUNNER_TEMP+"/lsh-intake-fixture";const a=fs.readFileSync("zkusebni/konverzace/socialni-media/index.html","utf8");if(!a.includes("data-lsh-topic-id=\"cl-socialni-media\""))throw Error("Conversation fixture missing");fs.writeFileSync(root+"/conversation.html",a.replace("data-lsh-topic-id=\"cl-socialni-media\"","data-lsh-topic-id=\"cl-smoke-conversation\""));const d={schemaVersion:1,cards:[{id:"cl-smoke-conversation",skill:"konverzace",title:"Conversation intake smoke",summary:"Disposable automated check of a shared-asset multilingual conversation source.",version:"smoke",sourceFile:"conversation.html"},{id:"rl-smoke-reading",skill:"cteni",title:"Reading intake smoke",summary:"Disposable automated check of the multilingual reading reference and integrated source.",version:"smoke",sourceFile:"asteroids.html"},{id:"ll-smoke-listening",skill:"poslech",title:"Listening intake smoke",summary:"Disposable automated check of the single-language listening reference and its URL adapter.",version:"smoke",sourceFile:"matthew.html"}]};fs.writeFileSync(root+"/cards.json",JSON.stringify(d,null,2));'
           node zkusebni/tools/card-intake.cjs --batch "$RUNNER_TEMP/lsh-intake-fixture/cards.json"
+          # Fault-injection regression: both an interrupted file write and a partially
+          # swapped ledger must leave the original 29-card catalogue byte-identical.
+          for name in reference-pilots.json unification-tracker.json claude-audit-queue.json; do
+            cp "zkusebni/data/$name" "$RUNNER_TEMP/lsh-intake-fixture/$name"
+          done
+          for point in after-first-file after-first-ledger; do
+            if CI=true LSH_INTAKE_TEST_FAILURE="$point" node zkusebni/tools/card-intake.cjs --batch "$RUNNER_TEMP/lsh-intake-fixture/cards.json" --apply; then
+              echo "ERROR: failure injection $point unexpectedly succeeded"
+              exit 1
+            fi
+            for name in reference-pilots.json unification-tracker.json claude-audit-queue.json; do
+              cmp "zkusebni/data/$name" "$RUNNER_TEMP/lsh-intake-fixture/$name"
+            done
+            for file in zkusebni/konverzace/smoke-conversation/index.html zkusebni/podklady/cteni/smoke-reading/index.html zkusebni/integrace/cteni/smoke-reading/index.html zkusebni/podklady/poslech/smoke-listening/index.html zkusebni/integrace/poslech/smoke-listening/index.html zkusebni/data/.card-intake.lock; do
+              test ! -e "$file"
+            done
+            node zkusebni/tools/card-intake.cjs --verify
+          done
+          echo "PASS both rollback fault injections; no partial cards or ledger changes"
           node zkusebni/tools/card-intake.cjs --batch "$RUNNER_TEMP/lsh-intake-fixture/cards.json" --apply
           node zkusebni/tools/card-intake.cjs --verify
           node -e 'const fs=require("node:fs");const j=JSON.parse(fs.readFileSync("zkusebni/data/reference-pilots.json"));const q=JSON.parse(fs.readFileSync("zkusebni/data/claude-audit-queue.json"));if(j.entries.length!==32||q.topics.length!==32)throw Error("Batch intake counts wrong");for(const [id,skill,self,offline] of [["cl-smoke-conversation","konverzace",false,"clb-v1"],["rl-smoke-reading","cteni",true,undefined],["ll-smoke-listening","poslech",true,undefined]]){const e=j.entries.find(x=>x.id===id);if(!e||e.skill!==skill||e.selfContainedHtml!==self||e.offlineBundle!==offline||e.test!=="not-ready")throw Error("Incorrect "+id)}console.log("PASS bulk import of all three skills, 32/32 audit queue entries")'
