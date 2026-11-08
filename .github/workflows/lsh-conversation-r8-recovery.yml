@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'zkusebni/tools/conversation-r8-source-recovery.cjs'
+      - 'zkusebni/tools/r6-content-audit.cjs'
       - 'zkusebni/data/conversation-r8-minimal-content-fixes.json'
       - 'zkusebni/data/conversation-r6-candidates.json'
       - 'zkusebni/konverzace/k/**'
@@ -13,6 +14,7 @@ on:
       - 'feat/lsh-*'
     paths:
       - 'zkusebni/tools/conversation-r8-source-recovery.cjs'
+      - 'zkusebni/tools/r6-content-audit.cjs'
       - 'zkusebni/data/conversation-r8-minimal-content-fixes.json'
       - 'zkusebni/data/conversation-r6-candidates.json'
       - 'zkusebni/konverzace/k/**'
@@ -33,6 +35,12 @@ jobs:
           node-version: '24'
       - name: Generate 21 source-preserving R8 candidates outside repository
         run: node zkusebni/tools/conversation-r8-source-recovery.cjs "$RUNNER_TEMP/lsh-r8-conversation"
+      - name: Screen recovered R8 content (504 variants; findings are review items, not approvals)
+        env:
+          LSH_R8_CANDIDATES_DIR: ${{ runner.temp }}/lsh-r8-conversation
+        run: |
+          node zkusebni/tools/r6-content-audit.cjs "$RUNNER_TEMP/lsh-r8-conversation"
+          node -e 'const a=require(process.argv[1]); if(a.source!=="R8_SOURCE_PRESERVING_CANDIDATES_ONLY"||a.totalCards!==21||a.totalVariants!==504||a.totalStations!==4032||a.totalPrompts!==16128||a.teacherApproval!==false||a.releaseApproved!==false)throw Error("R8 content audit coverage/approval invariant");console.log("PASS source-restored content QA report across all 21 cards")' "$RUNNER_TEMP/lsh-r8-conversation/R8_CONTENT_AUDIT.json"
       - name: Assert all originals and R6 candidates remain untouched
         run: |
           node zkusebni/tests/conversation-r6-candidates.test.cjs
