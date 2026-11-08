@@ -62,3 +62,33 @@
 - [R7 Reading/Listening source + kandidáti – PASS](https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42452516226)
 
 **Stav po pokračování:** opravené a otestované kandidáty jsou připraveny k pedagogické / mediální přejímce, nikoli k automatickému vydání. Původní student HTML, neveřejné klíče, studentská data a `main` se nemění.
+
+
+## 7. R8 – pokračování po obnovení vlákna (8. listopadu 2026)
+
+**Závazný stav:** PR #27 je stále DRAFT, pouze větev `feat/lsh-r5-reference-pilot-catalog-2026-11-07`, bez merge/deploymentu do `main`, bez úprav původních zdrojů a bez učitelského schválení. Počty technicky zařazených témat jsou stále **21 Conversation + 5 Reading + 3 Listening = 29**.
+
+### R7 Listening – doplnění UI regresí
+- Třífázové kandidáty Harrison Ford a Peaky Blinders dostaly v generátoru opravené odkazy boční navigace na Third Listening, Optional Vocabulary, After Listening a Overall Review.
+- Kontrola zahrnuje všech šest úrovní A1–C2, oddělené fáze, hlavní skóre bez slovní zásoby, mobilní přetékání a nulové JS výjimky v Chromium/WebKit.
+- [CI PASS – 42489241409](https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42489241409); originální studentská HTML nebyla přepsána.
+
+### Hromadný import – ochrana před částečným zápisem
+- `tools/card-intake.cjs`: zámek pro souběžné instance, ověření konzistence před změnami, exkluzivní vytváření souborů, dočasné zápisy a přejmenování tří evidenčních JSON, best-effort rollback při zachycené chybě.
+- CI fault-injection simuluje poruchu po prvním HTML a po prvním zapsaném ledgeru, kontroluje byte-identické obnovení všech JSON a absenci částečných HTML; následně úspěšný tříkartový import.
+- [CI PASS – 42489493786](https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42489493786).
+- **Limit:** náhlá ztráta napájení / SIGKILL není databázová transakce; po takové události vždy `--verify` a kontrola pracovního stromu před commitem.
+
+### Reading R7 – skutečné browser testování kandidátů
+- Nový `tests/reading-r7-browser.test.cjs` a `.github/workflows/lsh-reading-r7-browser.yml` sestavují izolovaně dva nezveřejněné HTML kandidáty; žádné nahrávání na Pages.
+- **8 konfigurací** (Email/Instant × Chromium/WebKit × PC/mobil), v každé **24 kombinací EN/ES/DE/FR × A1–C2**, tedy 192 renderovacích průchodů. Kontrola cílových odstavců u opravených Multiple Matching, skutečného zviditelnění supporting passage, invalidace výsledků po změně odpovědi, zapnutí/vypnutí slovníku, funkčních tabů, počtu úloh, absence horizontálního overflow a absence nečekaných síťových požadavků.
+- [CI PASS – 42489814085](https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42489814085).
+- **Neprokazuje:** sémantickou správnost všech úloh, skutečné jazyky/CEFR, učitelské odpovědní klíče ani reálné iOS/Android zařízení.
+
+### Další otevřené kroky (nepřeskakovat)
+1. Samostatná pedagogická přejímka 21 Conversation, 5 Reading, 3 Listening. Claude není povinný: nezávislou revizi lze provádět jinak.
+2. Bezpečně sladit **neveřejné učitelské klíče** se 17 obsahovými opravami obou Reading kandidátů před jejich zpřístupněním.
+3. Obsahově ověřit Harrison Ford / Peaky Blinders proti skutečným médiím, věkovou vhodnost Peaky, a teprve pak rozhodnout o přijetí třífázových kandidátů.
+4. Získat a technicky ověřit původní student HTML dvou dalších poslechů (TED Conlangs a How to Choose Your News); druhý nemá všechny úrovně.
+5. Odlišné krátké testovací sady a jejich hodnoticí pravidla vytvořit až samostatně; `Testování` zůstává vypnuto.
+6. Fyzická UAT Android/iOS/iPad Safari, škola, QR, offline ZIP a osobní slovníček; výslovný souhlas učitele před merge.
