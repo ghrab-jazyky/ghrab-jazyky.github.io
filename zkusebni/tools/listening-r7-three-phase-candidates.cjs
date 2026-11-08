@@ -99,6 +99,22 @@ function migrate(html,sourceId){
  const cA=s.indexOf('function checkAnswers(scroll){'),cB=s.indexOf('function createLevelPills(){',cA);
  assert.ok(cA>=0&&cB>cA);
  s=s.slice(0,cA)+SCORE_PATCH+'\n'+s.slice(cB);
+ // A level change must never display feedback from a different CEFR variant.
+ // Preserve reviewed stages in memory within their own variant, or show
+ // explicit "not checked" for a newly selected variant. Answer data is untouched.
+ const stale="restore();updateProgress();\n if(state().checked)checkAnswers(false);";
+ const fresh="restore();updateProgress();\n"+
+  " const reviews=state().r7Reviews||{};\n"+
+  " const statusIds={first:'firstReview',second:'secondReview',third:'thirdReview',vocabulary:'vocabReview'};\n"+
+  " for(const [phase,id] of Object.entries(statusIds)){\n"+
+  "  const r=reviews[phase];\n"+
+  "  $(id).textContent=!r?'Not checked yet.':phase==='third'?\n"+
+  "   r.correct+'/'+r.total+' sequence steps correct. Written answers await teacher review.':\n"+
+  "   r.correct+'/'+r.total+' correct · '+r.attempted+' answered'+(phase==='vocabulary'?' (optional)':'');\n"+
+  " }\n"+
+  " if(state().checked)checkAnswers(false);\n"+
+  " else if(Object.keys(reviews).length)r7Summary();";
+ s=once(s,stale,fresh,'level-specific review status restore');
  const event="$('checkBtn').addEventListener('click',()=>checkAnswers(true));";
  s=once(s,event,
   "$('checkFirstBtn').addEventListener('click',()=>r7Check('first',true));\n"+
