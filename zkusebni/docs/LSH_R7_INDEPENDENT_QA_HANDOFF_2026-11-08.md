@@ -47,3 +47,18 @@
 - Reading + Listening R7 CI: https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42446806240
 
 **Stav této etapy:** reprodukovatelné, bezplatné, zdrojově vázané kontroly všech tří dovedností zavedeny; skutečné opravy konverzačních variant R6 i kandidáti 16 úloh Reading R7 připraveny. Kompletní obsahová přejímka a sjednocení Listening zůstávají nedokončené.
+
+## 6. Pokračování po browser QA – 8. listopadu
+
+- **R7 Reading:** kontrola všech 5 zdrojů opět PASS (120 variant / 1800 otázek / 2000 doslovných důkazových úryvků; chybějících 0). Původních 15 upozornění na krátké vysvětlení bylo ručně prověřeno: **14** šlo o legitimní stručné odpovědi na Scanning a detektor je již neoznačuje. Zbývající **1** slabé vysvětlení (`An Email from a Friend`, DE B2, `de-b2-matching-2`, „Das Sofa.“) bylo v **izolované R7 kopii** doplněno textem odpovídajícím doloženému čtvrtému odstavci. Originál zůstává nedotčen.
+- Reprodukovatelný audit před implementací výhrad do kandidátů eviduje **27 podnětů**: 16 opakovaných cílových odstavců Multiple Matching, 10 orientačních anglických délek a 1 stručné vysvětlení. Z těchto 27 je 17 obsahových oprav zachyceno ve dvou izolovaných R7 kandidátech; doporučené délky nejsou automatické chyby a texty nebyly mechanicky prodlouženy.
+- **R7 Listening UI:** nový generátor `tools/listening-r7-three-phase-candidates.cjs` tvoří **dvě samostatné nezveřejněné HTML kopie** Harrison Ford / Peaky Blinders. Zachovává všech **12 původních EN × A1–C2 datových sad**, odděluje First / Second / Third Listening, Written Evidence a Reconstruction, přidává samostatné vyhodnocení fáze a volitelnou slovní zásobu **mimo** skóre hlavních úloh.
+- Statická CI kontrola v `lsh-reference-integrity.yml` prošla. Samostatný browser regression v `lsh-listening-r7-browser.yml` ověřil **8 kombinací**: dva zdroje × Chromium/WebKit × mobilní/desktopový viewport; kontroly samostatných tlačítek, správného jmenovatele skóre, zachování 3 fází, zneplatnění výsledku po úpravě odpovědi a absence JS výjimek prošly.
+- Browser test probíhal na lokálním HTTP serveru; **nejde o fyzický iPhone/iPad**, neověřuje Facebook/YouTube média ani věkovou vhodnost scény.
+- **Bez Clauda:** žádná fáze již nevyžaduje vyčerpané Claude tokeny; exporty pro Claude jsou pouze volitelné.
+
+### Přímé kontrolní odkazy
+- [R7 Browser QA, Chromium/WebKit – PASS](https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42452435267)
+- [R7 Reading/Listening source + kandidáti – PASS](https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42452516226)
+
+**Stav po pokračování:** opravené a otestované kandidáty jsou připraveny k pedagogické / mediální přejímce, nikoli k automatickému vydání. Původní student HTML, neveřejné klíče, studentská data a `main` se nemění.
