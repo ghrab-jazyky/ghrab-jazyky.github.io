@@ -98,6 +98,24 @@ test('R5D ALL29 642 test drafts: no answers, grades, teacher keys, student ident
     assert.equal(v.taskCount,6);
     assert.equal((content.match(/<fieldset class="task">/g)||[]).length,4);
     assert.ok((content.match(/type="number"/g)||[]).length>=3);
+    const orderFields=[...content.matchAll(/<p><label><span>([\s\S]*?)<\/span> <input class="number" type="number" inputmode="numeric" name="sequence-(\d+)" min="1" max="(\d+)" aria-label="[^"]+"><\/label><\/p>/g)];
+    assert.ok(orderFields.length>=3,'Chronological order requires named and labelled fields: '+v.file);
+    assert.deepEqual(orderFields.map(m=>Number(m[2])),Array.from({length:orderFields.length},(_,i)=>i+1));
+    assert.ok(orderFields.every(m=>Number(m[3])===orderFields.length));
+    const plan=JSON.parse(read('data/r5d-all29-source-pins.json'));
+    const refs=JSON.parse(read('data/r5d-test-draft-plan.json'));
+    const source=[...plan.entries,...refs.sources].find(s=>s.topicId===v.topicId&&s.gitBlob===v.sourceGitBlob);
+    assert.ok(source,'Missing original Listening source: '+v.topicId);
+    const sourceHtml=read(source.path).toString('utf8');
+    const start=sourceHtml.indexOf('const DATA='),stop=sourceHtml.indexOf(';\nconst SOURCES=',start);
+    assert.ok(start>=0&&stop>start,'Missing original Listening data');
+    const original=JSON.parse(sourceHtml.slice(start+'const DATA='.length,stop))[v.level].sequence;
+    const escaped=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const scrambled=orderFields.map(m=>m[1]);
+    assert.deepEqual(scrambled.slice().sort(),original.map(escaped).sort(),'Some original speech moments were lost');
+    assert.ok(!Array.from({length:original.length},(_,shift)=>
+     scrambled.every((line,i)=>line===escaped(original[(i+shift)%original.length]))).some(Boolean),
+     'Reconstruction still uses an easily predictable cyclic rotation');
     assert.match(content,/First Listening/);
     assert.match(content,/Second Listening/);
     assert.match(content,/Third Listening/);

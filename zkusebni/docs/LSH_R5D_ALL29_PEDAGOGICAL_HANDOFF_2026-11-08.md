@@ -53,3 +53,7 @@ Podklady se vytvářejí z 29 přesně verzovaných studentských HTML stávají
 ## R5D correction: sentence-gap answer disclosure (2026-11-08)
 
 The initial generated review ZIP included reading structure questions whose answer was visible verbatim in the full reading text. Both preview generators now remove the exact missing sentence from the passage and replace it with `[ … ]`; if the match is ambiguous or absent they fail closed. Automated tests assert that the answer is not visibly repeated. Previous review ZIP is superseded. No student use, grading, or release without pedagogical approval.
+
+## R5D Listening – verified reconstruction tasks (8 Nov 2026)
+
+The initial prototypes displayed original chronological moments in a simple one-step cycle. Both generators now use a deterministic SHA-256 based shuffle and reject pure cyclic rotations, while preserving every original moment. All chronology inputs include a distinct machine-readable name and a descriptive accessibility label. Regression tests check original moment preservation and reject cyclic rotations. No correct answer sequence is added to student HTML or the public ZIP manifest. Materials remain unapproved review drafts.

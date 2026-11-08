@@ -179,6 +179,25 @@ function reading(data,lang,level,cfg){
  return {html:htmlPage(lang,level,d.title+' · '+level,L[lang].reading,body),
   taskIds:selected.map(q=>q.id),count,structureIndex:selected.findIndex(q=>q.tab==='structure')};
 }
+// Independent, reproducible permutation. A simple cyclic rotation would leave
+// most neighbouring speech moments in chronological order and is too easy.
+// Hash-derived shuffling keeps reviewer builds reproducible WITHOUT exposing a
+// correct-answer mapping in HTML or the public review manifest.
+function scrambledSequence(lines,salt){
+ const n=lines.length;
+ assert.ok(n>=3,'Reconstruction needs at least three unique moments');
+ assert.equal(new Set(lines).size,n,'Ambiguous duplicate reconstruction moments');
+ const indices=Array.from({length:n},(_,i)=>i);
+ for(let attempt=0;attempt<128;attempt++){
+  const score=i=>sha256(salt+'|'+attempt+'|'+i);
+  const order=indices.slice().sort((a,b)=>score(a).localeCompare(score(b)));
+  const rotation=order.every((v,i)=>v===(i+order[0])%n);
+  const adjacent=order.slice(1).filter((v,i)=>v===order[i]+1).length;
+  if(!rotation&&adjacent<=Math.floor((n-2)/2))
+   return order.map(i=>lines[i]);
+ }
+ throw Error('Could not generate a sufficiently mixed chronology: '+salt);
+}
 function listening(data,lang,level,cfg,title){
  assert.equal(lang,'en');
  const d=data[level];
@@ -187,16 +206,14 @@ function listening(data,lang,level,cfg,title){
  assert.ok(d.sequence.length>=cfg.sequenceMin);
  const gist=d.gist.slice(0,cfg.gistCount),detail=d.detail.slice(0,cfg.detailCount);
  // Never copy item.correct, item.why, facts.answer, or open.answer/criteria.
- // A one-step rotation deliberately prevents the canonical order appearing in UI.
- const sequence=d.sequence.slice(1).concat(d.sequence[0]);
- assert.notDeepEqual(sequence,d.sequence,'Sequence accidentally reveals order');
+ const sequence=scrambledSequence(d.sequence,title+'|'+level);
  const phase=(name,items,prefix)=>'<section><h2>'+esc(name)+'</h2>'+
   items.map((q,i)=>group((i+1)+'. '+q.title,q.options,prefix+'-'+i)).join('')+'</section>';
  const open=d.open[0];
  assert.ok(open.title);
  const order='<article><h2>'+esc(L.en.reorder)+'</h2>'+sequence.map((line,i)=>
-  '<p><label><input class="number" type="number" min="1" max="'+sequence.length+
-  '" aria-label="Position '+(i+1)+'"> '+esc(line)+'</label></p>').join('')+'</article>';
+  '<p><label><span>'+esc(line)+'</span> <input class="number" type="number" inputmode="numeric" name="sequence-'+(i+1)+
+  '" min="1" max="'+sequence.length+'" aria-label="'+esc('Chronological position for: '+line)+'"></label></p>').join('')+'</article>';
  const body='<p>'+esc(L.en.listening)+'</p>'+
   phase(L.en.first,gist,'gist')+phase(L.en.second,detail,'detail')+
   '<section><h2>'+esc(L.en.third)+'</h2><article><p><strong>'+esc(open.title)+'</strong></p>'+
