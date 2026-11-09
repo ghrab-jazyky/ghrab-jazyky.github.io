@@ -5,6 +5,7 @@ on:
       - feat/lsh-r25-result-consistency-and-audit-2026-11-09
     paths:
       - 'language-skills-hub/**'
+      - 'README.md'
       - '.github/workflows/lsh-r25-final-audit.yml'
   workflow_dispatch:
 permissions:
