@@ -303,6 +303,8 @@
    $('title').textContent=variant.title;
    $('lead').textContent=ui.lead;
    renderReading();renderQuestions();
+   if(new URLSearchParams(location.search).has('timer')&&!window.LSHSessionUI)
+    throw new Error('Timed test engine is unavailable.');
    timedUI=window.LSHSessionUI?.mount({
     skill:'reading',topic:selected.topic,lang:selected.lang,level:selected.level,
     workspace:$('workspace'),
