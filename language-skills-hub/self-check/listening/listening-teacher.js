@@ -1,7 +1,7 @@
 /* R24 teacher-facing helper. Public page, NOT authenticated and NOT a remote media controller. */
 (()=>{
  'use strict';
- const core=window.LSHListeningCore;
+ const core=window.LSHListeningCore,shareTools=window.LSHShareTools;
  const $=id=>document.getElementById(id);
  const params=new URLSearchParams(location.search);
  let passes=0,sequence=0;
@@ -45,6 +45,7 @@
   const link=urlForStudent();
   $('studentUrl').value=link;
   $('studentPreview').href=link;
+  shareTools.render(link,$('qrMount'),$('downloadQr'));
   const locationUrl=new URL(location.href);
   locationUrl.searchParams.set('topic',$('topic').value);
   locationUrl.searchParams.set('level',$('level').value);
@@ -95,15 +96,7 @@
   }
  }
  async function copy(){
-  const text=$('studentUrl').value;
-  try{
-   if(!navigator.clipboard?.writeText)throw new Error('Schránka není dostupná');
-   await navigator.clipboard.writeText(text);
-   $('copyStatus').textContent='Odkaz zkopírován.';
-  }catch(_){
-   $('studentUrl').focus();$('studentUrl').select();
-   $('copyStatus').textContent='Automatické kopírování selhalo. Označený odkaz zkopíruj přes Ctrl+C nebo nabídku telefonu.';
-  }
+  await shareTools.copy($('studentUrl').value,$('studentUrl'),$('copyStatus'));
  }
  function start(){
   initTheme();
@@ -114,6 +107,8 @@
   $('markPass').addEventListener('click',()=>{if(passes<2){passes++;count()}});
   $('resetPass').addEventListener('click',()=>{passes=0;count()});
   $('copyUrl').addEventListener('click',copy);
+  $('downloadQr').addEventListener('click',()=>shareTools.download($('qrMount'),$('copyStatus'),'listening-test-bez-znamky-qr.svg'));
+  $('studentUrl').addEventListener('focus',e=>e.target.select());
   loadSources();
  }
  start();
