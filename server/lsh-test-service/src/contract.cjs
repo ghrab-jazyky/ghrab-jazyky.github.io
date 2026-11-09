@@ -53,7 +53,7 @@ function validatePrivateDefinition(def){
     invalid('Invalid choice options');
    const options=new Set();
    for(const option of task.options){
-    if(!isRecord(option)||!/^opt[a-z0-9_-]{1,40}$/.test(option.id||'')||
+    if(!isRecord(option)||!/^[a-z][a-z0-9_-]{0,40}$/.test(option.id||'')||
        !validText(option.text,1,1000)||options.has(option.id))
      invalid('Malformed/duplicate option');
     options.add(option.id);
