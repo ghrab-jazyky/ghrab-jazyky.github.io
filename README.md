@@ -2,26 +2,40 @@
 
 ## Language Skills Hub
 
-**Veřejný katalog:** [Otevřít Language Skills Hub](https://ghrab-jazyky.github.io/language-skills-hub/).
+**Veřejný katalog:** https://ghrab-jazyky.github.io/language-skills-hub/
 
-Language Skills Hub spojuje Conversation Lab, Reading Lab a Listening Lab: **29 původních témat a 642 jazykových/CEFR variant pro procvičování**. Původní karty se neměnily.
+Language Skills Hub spojuje Conversation Lab, Reading Lab a Listening Lab. Obsahuje **29 původních procvičovacích témat a 642 jazykových/úrovňových variant A1–C2**, všechny původní karty zůstávají nezměněny.
 
-### Procvičování a samostatné ověření
+### Procvičování a hodnocené testy
 
 - **Conversation Lab:** pouze procvičování a sdílení.
-- **Reading Lab:** procvičování + samostatné *neklasifikované* ověření porozumění textu (EN/ES/DE/FR, A1–C2).
-- **Listening Lab:** procvičování + samostatné *neklasifikované* ověření (EN, A1–C2); učitel spustí původní nahrávku dvakrát ve svém panelu, studenti nemají přehrávač.
-- Učitel v katalogu klikne na **„Test bez známky“**, zvolí jazyk a úroveň a může zkopírovat studentský odkaz. Procvičovací tlačítka „Otevřít aktivitu“ a „Sdílet se studenty“ zůstávají zachována.
+- **Reading Lab:** procvičování a **Test – známka 1–5** pro všech pět čtecích témat, EN/ES/DE/FR, A1–C2. Učitel nastaví variantu a pošle odkaz/QR. Student po odevzdání uvidí objektivní body, procenta, opravy a **návrh známky 1–5**.
+- **Listening Lab:** procvičování a **Test – známka 1–5** pro tři poslechy EN A1–C2. Učitel řídí dvě přehrání původního externího videa. Student odevzdá uzavřené i písemné úlohy. **Celkové procento a návrh známky vzniknou až po učitelském posouzení všech písemných odpovědí** přímo na zařízení, každá písemná úloha za 0 nebo 1 bod.
 
-**Bezpečnostní omezení:** GitHub Pages je statický web. Klíče správných odpovědí jsou dostupné v původních veřejných procvičovacích kartách a nejde je spolehlivě tajit. Student může otevřít další relaci či změnit URL, výsledky nelze bezpečně ověřit ani automaticky odeslat učiteli. **Nejde o zabezpečenou klasifikovanou zkoušku a aplikace nevydává školní známku.** Písemné odpovědi v Listening vyžadují učitelské posouzení.
+### Převod na známky
 
-### Dokumentace
+Pracovní jazyková stupnice z dokumentu `Pravidla hodnoceni_pracovní verze 2026.docx.pdf`, příloha č. 1, čl. 1, bod 24:
 
-- [R22 – rozhodnutí o statické architektuře](language-skills-hub/docs/R22-STATIC-ONLY-DECISION.md)
-- [R23 – Reading self-check](language-skills-hub/docs/R23-READING-LOCAL-SELFCHECK-PILOT.md)
-- [R24 – Listening self-check](language-skills-hub/docs/R24-LISTENING-LOCAL-SELFCHECK-PILOT.md)
-- [R25 – výsledkové karty a školní přejímka](language-skills-hub/docs/R25-FINAL-AUDIT-AND-SCHOOL-ACCEPTANCE.md)
+- Známka 1: od 88 %
+- Známka 2: od 74 %
+- Známka 3: od 59 %
+- Známka 4: od 44 %
+- Známka 5: pod 44 %
 
-Pracovní procentní stupnice 88/74/59/44 % nebyla potvrzena jako závazná a **nepoužívá se k automatické klasifikaci**.
+Výpočet porovnává **přesný poměr získaných/maximálních bodů bez zaokrouhlení**, např. 87,5 % znamená návrh známky 2. **Nebylo ověřeno, že tento pracovní návrh je platnou školní stupnicí** a že zvolený výpočet desetinných procent škola schválila. Proto aplikace výsledek označuje jako **návrh známky**, nikoli automaticky ověřený zápis do Bakalářů.
 
-**Historický pilot:** [zkusebni (archiv původních požadavků)](zkusebni/). Nepředstavuje aktuální ostrý katalog.
+### Co bez backendu nelze zabezpečit
+
+GitHub Pages je veřejný statický web. **Klíče správných odpovědí jsou dostupné v procvičovacích kartách**, studenta nelze bezpečně autentizovat, nelze zabránit novému pokusu ani dokázat pravost lokálního výsledku. Učitelské posuzování písemných odpovědí na zařízení žáka **není technicky chráněno proti manipulaci**. Žádné studentské odpovědi ani známky se neposílají na server.
+
+Pokud má být známka použita pro oficiální školní klasifikaci, musí učitel **osobně ověřit skutečný výkon a výsledek** a převod podle účinných pravidel školy. Aplikace sama nedokáže zaručit podmínky zabezpečené klasifikované zkoušky.
+
+## Související podklady
+
+- [Rozhodnutí R22: statická architektura](language-skills-hub/docs/R22-STATIC-ONLY-DECISION.md)
+- [Reading R23](language-skills-hub/docs/R23-READING-LOCAL-SELFCHECK-PILOT.md)
+- [Listening R24](language-skills-hub/docs/R24-LISTENING-LOCAL-SELFCHECK-PILOT.md)
+- [Audit R25](language-skills-hub/docs/R25-FINAL-AUDIT-AND-SCHOOL-ACCEPTANCE.md)
+- [Publikace R27](language-skills-hub/docs/R27-PUBLIC-RELEASE-2026-11-09.md)
+
+Historická `zkusebni` aplikace a jiné školní aplikace nejsou tímto vydáním měněny.

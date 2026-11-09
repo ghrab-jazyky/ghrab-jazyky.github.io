@@ -16,7 +16,7 @@ const release = json('version.json');
 test('R22 remains a static-only design; neither secure grades nor student accounts can be activated', () => {
  assert.equal(policy.kind, 'LSH_STATIC_ASSESSMENT_POLICY_R22_V1');
  assert.equal(policy.deployment, 'GITHUB_PAGES_STATIC_ONLY');
- assert.equal(policy.status, 'PUBLIC_LOCAL_SELF_CHECK_NO_GRADES');
+ assert.equal(policy.status, 'PUBLIC_LOCAL_GRADE_PROPOSALS');
  for (const flag of [
   'backendEnabled', 'gradedTestsEnabled', 'officialGradesEnabled',
   'studentAccountsEnabled', 'centralResultCollectionEnabled',
@@ -27,8 +27,8 @@ test('R22 remains a static-only design; neither secure grades nor student accoun
  assert.equal(policy.publication.officialClassificationForbidden, true);
  assert.equal(catalog.gradedTestsEnabled, false);
  assert.equal(release.gradedTestsEnabled, false);
- assert.equal(release.mode, 'public_practice_and_local_self_check');
- assert.equal(release.version, 'R27');
+ assert.equal(release.mode, 'public_practice_and_unverified_grade_proposals');
+ assert.equal(release.version, 'R28');
 });
 
 test('R22 local self-check is planned for Reading/Listening only and cannot be called anti-cheat', () => {
@@ -78,7 +78,7 @@ test('R22 public catalog offers practice sharing and only explicit ungraded test
  assert.match(html, /Uzamčení je pouze v uživatelském rozhraní/);
  assert.match(js, /Otevřít aktivitu/);
  assert.match(js, /Sdílet se studenty/);
- assert.match(js,/Test bez známky/);
+ assert.match(js,/Test – známka 1–5/);
  assert.match(js,/if\(localSelfCheck&&\['cteni','poslech'\]/);
  assert.doesNotMatch(html + js, /LSH_TEST_GRADED_ENABLED|verifiedSchoolGrade/);
 });
