@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="color-scheme" content="dark light">
+ <meta name="description" content="Language Skills Hub – local, non-graded Reading Lab self-check. No student data is transmitted.">
+ <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'; frame-ancestors 'none'">
+ <title>Reading Lab · Local self-check pilot</title>
+ <link rel="stylesheet" href="reading.css">
+ <script defer src="reading-core.js"></script>
+ <script defer src="reading.js"></script>
+</head>
+<body>
+ <header class="topbar">
+  <a class="brand" href="../../index.html" id="catalogLink">
+   <span class="mark" aria-hidden="true">R</span>
+   <span><strong>Language Skills Hub</strong><small>Reading Lab</small></span>
+  </a>
+  <div class="topactions">
+   <span id="modeTag" class="mode">SELF-CHECK · NOT GRADED</span>
+   <button id="themeButton" type="button" class="action ghost" aria-pressed="false">☀ Light mode</button>
+  </div>
+ </header>
+ <main class="container" id="app">
+  <section class="hero" aria-labelledby="title">
+   <p class="eyebrow" id="topicLabel">READING LAB · A1–C2</p>
+   <h1 id="title">Loading reading activity…</h1>
+   <p class="subtitle" id="lead">Preparing the selected text and its original reading tasks.</p>
+   <div class="notice" role="note" id="securityNotice">
+    This is a local self-check, not a secure or graded exam. All answer data is publicly available in the practice cards. Your answers are not sent to a teacher or server.
+   </div>
+  </section>
+  <div id="loading" class="loading" role="status" aria-live="polite">Loading…</div>
+  <section class="workspace" id="workspace" hidden aria-label="Reading self-check">
+   <article class="panel reading-panel" aria-labelledby="readingHeading">
+    <div class="panel-head">
+     <div><span class="kicker" id="readingKicker">READING TEXT</span><h2 id="readingHeading">Text</h2></div>
+     <span id="readingVariant" class="pill">EN · B2</span>
+    </div>
+    <div class="reading-body" id="readingParagraphs"></div>
+    <p id="readingGapNote" class="small-note" hidden></p>
+   </article>
+   <section class="panel question-panel" aria-labelledby="questionsHeading">
+    <div class="panel-head question-heading">
+     <div><span class="kicker" id="questionKicker">COMPREHENSION</span><h2 id="questionsHeading">Questions</h2></div>
+     <span id="counter" class="pill" aria-live="polite">0 / 0</span>
+    </div>
+    <div class="progress-track" role="progressbar" id="progress" aria-label="Answered questions" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progressFill"></div></div>
+    <p class="small-note progress-summary" id="remaining"></p>
+    <div id="questionList" class="question-list"></div>
+    <section id="reflectionWrap" class="reflection" hidden>
+     <label class="reflection-label" for="reflection" id="reflectionHeading">Optional reflection · not scored</label>
+     <p class="small-note" id="reflectionPrompt"></p>
+     <textarea id="reflection" rows="4" maxlength="5000" spellcheck="true"></textarea>
+     <p class="small-note" id="reflectionNote"></p>
+    </section>
+    <section class="submit-panel">
+     <p class="small-note" id="submitNote"></p>
+     <button id="submitButton" type="button" class="action primary">Submit all answers</button>
+    </section>
+   </section>
+  </section>
+  <section class="results panel" id="results" hidden aria-labelledby="resultHeading" tabindex="-1">
+   <div class="panel-head"><div><span class="kicker" id="resultKicker">YOUR RESULT</span><h2 id="resultHeading">Self-check complete</h2></div></div>
+   <div id="scoreSummary" class="score-summary"></div>
+   <p id="resultCaution" class="small-note"></p>
+   <div id="resultDetails" class="result-details"></div>
+   <p class="small-note" id="resultReflection"></p>
+  </section>
+ </main>
+ <footer class="footer" id="footer">
+  Public practice content · no login, no uploaded student results, no official school grade.
+ </footer>
+</body>
+</html>
