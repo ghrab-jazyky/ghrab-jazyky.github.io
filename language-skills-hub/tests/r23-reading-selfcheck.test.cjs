@@ -100,18 +100,19 @@ test('R23 rejects invalid variants, unknown topics, malformed definitions and da
  assert.throws(()=>core.parseReadingData(''),Error);
 });
 
-test('R23 pilot remains unlinked from the school catalog and discloses its limitations',()=>{
+test('R23 publicly linked Reading self-check discloses non-graded limitations',()=>{
  const html=read('self-check/reading/index.html');
  const js=read('self-check/reading/reading.js');
  const policy=JSON.parse(read('data/test-mode-policy.json'));
- assert.equal(policy.testUiEnabled,false);
- assert.equal(policy.selfCheckEnabled,false);
+ assert.equal(policy.testUiEnabled,true);
+ assert.equal(policy.selfCheckEnabled,true);
  assert.equal(policy.gradedTestsEnabled,false);
  assert.equal(policy.officialGradesEnabled,false);
  assert.match(html,/Reading Lab · Local self-check pilot/);
  assert.match(html,/not a secure or graded exam/);
  assert.match(js,/teacher|server/i);
- assert.doesNotMatch(read('index.html')+read('assets/hub.js'),/self-check\/reading|testLaunchUrl|id="testButton"/);
+ assert.match(read('assets/hub.js'),/self-check\/reading\/teacher\.html/);
+ assert.doesNotMatch(read('assets/hub.js'),/LSH_TEST_GRADED_ENABLED/);
  assert.doesNotMatch(js,/fetch\([^\n]*method\s*:\s*['"]POST|eval\(|new Function/);
  assert.doesNotMatch(html,/https:\/\/[^'"]+\.js/);
 });
