@@ -9,7 +9,10 @@
  <title>Listening Lab · Učitelský panel</title>
  <link rel="stylesheet" href="../reading/reading.css">
  <link rel="stylesheet" href="listening.css">
+ <link rel="stylesheet" href="../results/share.css">
+ <script defer src="../../assets/qr.js"></script>
  <script defer src="listening-core.js"></script>
+ <script defer src="../results/share-tools.js"></script>
  <script defer src="listening-teacher.js"></script>
 </head>
 <body>
@@ -60,11 +63,13 @@
   <section class="panel teacher-panel" aria-labelledby="shareHeading">
    <div class="panel-head"><div><span class="kicker">STUDENTSKÁ KARTA · BEZ PŘEHRÁVAČE</span><h2 id="shareHeading">Odkaz pro studenty</h2></div></div>
    <div class="teacher-form">
+    <div id="qrMount" class="share-result-qr" aria-label="QR kód pro studenty"></div>
     <label for="studentUrl">Sdílitelný odkaz
      <textarea id="studentUrl" rows="3" readonly spellcheck="false"></textarea>
     </label>
     <div class="teacher-actions">
      <button type="button" class="action primary" id="copyUrl">Kopírovat odkaz</button>
+     <button type="button" class="action" id="downloadQr">Stáhnout QR kód</button>
      <a id="studentPreview" class="action" href="student.html" target="_blank" rel="noopener noreferrer">Otevřít studentský náhled</a>
     </div>
     <p class="small-note" id="copyStatus" aria-live="polite">Žáci mají pevně danou úroveň v rozhraní, ale URL lze upravit. Správné odpovědi nejsou na statickém webu technicky utajené.</p>
