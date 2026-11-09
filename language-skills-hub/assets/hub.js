@@ -10,7 +10,7 @@ const allowed=new Set(['konverzace','cteni','poslech']);
 let entries=[],translations=new Map(),skill=allowed.has(params.get('skill'))?params.get('skill'):null;
 let introTimer=null;
 const welcome=byId('welcome'),chooser=byId('skillChooser'),catalog=byId('catalog');
-let qrUrl='', qrTitle='', toastTimeout=null;
+let qrUrl='', qrTitle='', shareEntry=null, toastTimeout=null;
 const qrDialog=byId('qrDialog'),qrMount=byId('qrMount');
 function toast(message){
  const el=byId('toast');el.textContent=message;el.classList.remove('hidden');
@@ -85,9 +85,9 @@ function card(e){
  const open=one('a','action primary','Otevřít aktivitu');
  open.href=currentUrl(e);open.target='_blank';open.rel='noopener';
  open.setAttribute('aria-label','Otevřít '+translation.title);
- const share=one('button','action','QR a odkaz');share.type='button';
- share.setAttribute('aria-label','Zobrazit QR kód a odkaz pro '+translation.title);
- share.addEventListener('click',()=>showQr(e));
+ const share=one('button','action','Sdílet se studenty');share.type='button';
+ share.setAttribute('aria-label','Sdílet se studenty: '+translation.title);
+ share.addEventListener('click',()=>openShare(e));
  actions.append(open,share);article.appendChild(actions);
  return article;
 }
@@ -112,10 +112,10 @@ function render(){
  byId('summary').textContent=shown.length+' z '+active.length+' témat';
  byId('heading').textContent=titles[skill];
  byId('variantNote').textContent=locale==='all'&&level==='all'?
-  'Bez filtrů se otevře volný výběr jazyka a úrovně.':
+  'Při otevření bez filtrů si student může vybrat jazyk a úroveň. Sdílení nastavíš samostatně.':
   locale!=='all'&&level!=='all'?
-  'Nastavený jazyk a úroveň se otevřou jako pevná varianta.':
-  'Je nastavena část parametrů. Ostatní volbu lze změnit v kartě.';
+  'Otevření aktivity použije zvolenou variantu. Způsob sdílení studentům nastavíš zvlášť.':
+  'Otevření aktivity použije dostupné filtry. Nastavení sdílení se vybírá samostatně.';
 }
 function setAppInert(blocked){
  for(const el of document.querySelectorAll('body > header, body > main, body > footer'))
@@ -193,31 +193,92 @@ function initEntry(){
   introTimer=setTimeout(showChooser,reduced?0:3000);
  }
 }
-function showQr(e){
- qrUrl=currentUrl(e);qrTitle=localized(e).title;
- byId('qrTitle').textContent=qrTitle;
- byId('qrUrl').textContent=qrUrl;
- qrMount.replaceChildren();
+/* R21: sharing settings are independent of optional catalog preview filters.
+ * The "fixed" URL is a UI-only preset and NEVER a secure testing mechanism. */
+function shareMode(){
+ return byId('shareFixed').checked?'fixed':'free';
+}
+function makeShareUrl(e,mode,language,level){
+ const url=new URL(e.lockSource||e.relative,document.baseURI);
+ url.searchParams.set('practice','1');
+ if(mode==='free')return url.href;
+ if(mode!=='fixed'||!e.languages.includes(language)||!e.levels.includes(level))
+  return '';
+ url.searchParams.set('lang',language);
+ url.searchParams.set('level',level);
+ url.searchParams.set('zamek','1');
+ return url.href;
+}
+function updateSharePreview(){
+ if(!shareEntry)return;
+ const fixed=shareMode()==='fixed';
+ byId('shareFixedFields').hidden=!fixed;
+ const locale=byId('shareLanguage').value,level=byId('shareLevel').value;
+ const valid=!fixed||(shareEntry.languages.includes(locale)&&shareEntry.levels.includes(level));
+ qrUrl=valid?makeShareUrl(shareEntry,fixed?'fixed':'free',locale,level):'';
+ const box=byId('qrUrl');
+ box.value=qrUrl;
+ byId('qrCopy').disabled=!valid;
+ byId('qrSave').disabled=true;
+ const mount=qrMount;
+ mount.replaceChildren();
+ if(!valid){
+  const missing=[];
+  if(!shareEntry.languages.includes(locale))missing.push('jazyk');
+  if(!shareEntry.levels.includes(level))missing.push('úroveň');
+  byId('shareStatus').textContent='Pro sdílení s přednastavením vyber '+missing.join(' a ')+'.';
+  mount.appendChild(one('p','share-qr-placeholder','Po výběru se zde zobrazí QR kód.'));
+  return;
+ }
+ byId('shareStatus').textContent=fixed?
+  'Učitel nastavil '+labels[locale]+' · '+level+'. Zámek je pouze v rozhraní karty.':
+  shareEntry.languages.length===1?
+  'Student si vybere úroveň A1–C2. Jazyk této karty je pouze '+labels[shareEntry.languages[0]]+'.':
+  'Student si v kartě vybere jazyk i úroveň A1–C2.';
  try{
   if(!window.CLBQRCode||typeof window.CLBQRCode.svg!=='function')
    throw new Error('QR modul není dostupný');
-  qrMount.appendChild(window.CLBQRCode.svg(qrUrl));
+  const svg=window.CLBQRCode.svg(qrUrl);
+  if(!svg||svg.nodeName.toLowerCase()!=='svg')throw new Error('Neplatný QR kód');
+  mount.appendChild(svg);
   byId('qrSave').disabled=false;
- }catch(err){
-  qrMount.appendChild(one('p','note','QR nelze vytvořit. Odkaz lze zkopírovat: '+err.message));
-  byId('qrSave').disabled=true;
+ }catch(_){
+  mount.appendChild(one('p','share-qr-placeholder','QR kód momentálně není dostupný. Odkaz lze stále zkopírovat.'));
  }
- if(typeof qrDialog.showModal==='function')qrDialog.showModal();else qrDialog.setAttribute('open','');
+}
+function openShare(e){
+ shareEntry=e;
+ qrTitle=localized(e).title;
+ byId('qrTitle').textContent=qrTitle;
+ byId('shareFree').checked=true;
+ byId('shareFixed').checked=false;
+ const selected=byId('language').value,level=byId('level').value;
+ const languages=[['','Vyber jazyk'],...e.languages.map(l=>[l,labels[l]])];
+ const preferred=e.languages.includes(selected)?selected:(e.languages.length===1?e.languages[0]:'');
+ opt(byId('shareLanguage'),languages,preferred);
+ byId('shareLevel').value=e.levels.includes(level)?level:'';
+ updateSharePreview();
+ if(typeof qrDialog.showModal==='function')qrDialog.showModal();
+ else qrDialog.setAttribute('open','');
+ byId('shareFree').focus({preventScroll:true});
 }
 async function copyLink(){
- if(!qrUrl)return;
+ if(!qrUrl||!shareEntry)return;
+ const field=byId('qrUrl');
  try{
-  await navigator.clipboard.writeText(qrUrl);toast('Odkaz zkopírován');
+  if(!navigator.clipboard||typeof navigator.clipboard.writeText!=='function')
+   throw new Error('Clipboard API unavailable');
+  await navigator.clipboard.writeText(qrUrl);
+  toast('Odkaz pro studenty zkopírován');
  }catch(_){
-  const input=one('textarea');input.value=qrUrl;document.body.appendChild(input);
-  input.select();
-  const ok=document.execCommand&&document.execCommand('copy');
-  input.remove();toast(ok?'Odkaz zkopírován':'Odkaz označ a zkopíruj ručně');
+  field.focus();
+  field.select();
+  field.setSelectionRange(0,field.value.length);
+  let copied=false;
+  try{copied=Boolean(document.execCommand&&document.execCommand('copy'));}
+  catch(_){}
+  toast(copied?'Odkaz pro studenty zkopírován':
+   'Odkaz je označen. Použij Ctrl+C nebo nabídku Kopírovat.');
  }
 }
 function saveQr(){
@@ -293,7 +354,16 @@ window.addEventListener('popstate',restoreLocation);
 byId('language').addEventListener('change',updateFilters);
 byId('level').addEventListener('change',updateFilters);
 byId('search').addEventListener('input',render);
-byId('qrClose').addEventListener('click',()=>qrDialog.close());
+byId('qrClose').addEventListener('click',()=>{
+ if(typeof qrDialog.close==='function')qrDialog.close();else qrDialog.removeAttribute('open');
+});
+byId('shareFree').addEventListener('change',updateSharePreview);
+byId('shareFixed').addEventListener('change',updateSharePreview);
+byId('shareLanguage').addEventListener('change',updateSharePreview);
+byId('shareLevel').addEventListener('change',updateSharePreview);
+byId('qrUrl').addEventListener('focus',event=>event.target.select());
+byId('qrUrl').addEventListener('click',event=>event.target.select());
+qrDialog.addEventListener('close',()=>{shareEntry=null;qrUrl='';});
 byId('qrCopy').addEventListener('click',copyLink);
 byId('qrSave').addEventListener('click',saveQr);
 

@@ -222,3 +222,76 @@ dialog{border:1px solid #83a5be;border-radius:16px;background:#10243a;color:var(
  color:var(--accent);
  margin:0;
 }
+
+
+/* R21: teacher-controlled sharing; URL and QR preview must always match. */
+dialog.share-dialog{
+ width:min(880px,calc(100vw - 24px));
+ max-width:min(880px,calc(100vw - 24px));
+ max-height:calc(100dvh - 30px);
+ overflow-y:auto;overflow-x:hidden;
+ padding:clamp(15px,2.5vw,26px);
+}
+.share-dialog .dialog-top{align-items:flex-start;gap:12px}
+.share-dialog .dialog-top h2{font-size:clamp(1.15rem,2.4vw,1.5rem);margin:2px 0 0}
+.share-eyebrow{margin:0;font-size:.69rem}
+.share-explanation{color:var(--muted);font-size:.89rem;line-height:1.5;margin:8px 0 20px}
+.share-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(14px,2vw,24px)}
+.share-layout>*{min-width:0}
+.share-mode{border:0;padding:0;margin:0;min-width:0}
+.share-mode legend{font-weight:800;margin-bottom:12px;padding:0;font-size:.95rem}
+.share-option{display:flex;gap:12px;align-items:flex-start;cursor:pointer;
+ padding:14px;border:1px solid var(--line);background:var(--panel);
+ border-radius:12px;margin:0 0 10px;min-width:0}
+.share-option:has(input:checked){border-color:var(--accent);background:#174653}
+.share-option:has(input:focus-visible){outline:3px solid var(--gold);outline-offset:2px}
+.share-option input[type="radio"]{appearance:auto;width:18px;min-width:18px;height:18px;
+ flex:0 0 18px;margin:3px 0 0;accent-color:var(--accent)}
+.share-option-text{display:flex;flex-direction:column;gap:5px;min-width:0;font-size:.9rem}
+.share-option-text strong{font-size:.96rem}
+.share-option-text small{font-size:.82rem;line-height:1.45;color:var(--muted)}
+.share-fixed-fields{background:var(--panel);border:1px solid var(--line);
+ border-radius:12px;padding:14px;margin-top:10px}
+.share-fields-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.share-fixed-fields label{font-size:.82rem;margin-bottom:6px}
+.share-fixed-fields select{width:100%;min-height:45px}
+.share-caution{color:var(--muted);font-size:.79rem;line-height:1.45;margin:10px 0 0}
+.share-result{background:var(--panel);border:1px solid var(--line);
+ border-radius:14px;padding:clamp(13px,2.2vw,19px);min-width:0}
+.share-status{font-size:.86rem;line-height:1.5;color:var(--fg);
+ font-weight:630;margin:0 0 12px;min-height:2.7em}
+.share-result #qrMount{max-width:260px;width:min(100%,260px);
+ min-height:100px;margin:12px auto;background:#fff;border-radius:12px;
+ padding:12px;display:grid;place-items:center}
+.share-result #qrMount svg{display:block;max-width:100%;width:230px;height:auto}
+.share-qr-placeholder{color:#23435b;font-size:.82rem;text-align:center;line-height:1.5;margin:3px}
+.share-result label[for="qrUrl"]{font-size:.82rem;margin:15px 0 5px;font-weight:780}
+.share-result textarea#qrUrl{display:block;width:100%;min-height:83px;
+ padding:10px 12px;resize:vertical;border:1px solid #7194af;
+ border-radius:10px;background:#071a2a;color:#eef6ff;
+ font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;
+ font-size:.82rem;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+.share-result textarea#qrUrl:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.share-actions{margin-top:13px;padding-top:0;gap:9px}
+.share-actions .action{flex:1 1 150px;white-space:normal;text-align:center}
+.share-actions .action:disabled{opacity:.55;cursor:not-allowed}
+.share-copy-tip{color:var(--muted);font-size:.76rem;line-height:1.45;margin:12px 0 0}
+:root[data-theme="light"] .share-option:has(input:checked){background:#d6edf4}
+:root[data-theme="light"] .share-option{background:#f5fafe}
+:root[data-theme="light"] .share-fixed-fields{background:#f5fafe}
+:root[data-theme="light"] .share-result{background:#f5fafe}
+:root[data-theme="light"] .share-result textarea#qrUrl{
+ background:#fff;color:#183249;border-color:#7f9fb7
+}
+@media(max-width:770px){
+ .share-layout{grid-template-columns:1fr;gap:13px}
+ .share-option{padding:12px}
+ .share-dialog .dialog-top{align-items:center}
+}
+@media(max-width:380px){
+ dialog.share-dialog{width:calc(100vw - 14px);max-width:calc(100vw - 14px);
+  padding:13px;max-height:calc(100dvh - 14px)}
+ .share-fields-grid{grid-template-columns:1fr}
+ .share-result{padding:13px}
+ .share-actions .action{flex:1 1 100%}
+}
