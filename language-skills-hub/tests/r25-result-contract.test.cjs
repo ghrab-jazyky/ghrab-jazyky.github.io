@@ -28,8 +28,8 @@ test('R25 school bands remain an unapproved reference and can never issue a grad
  assert.equal(grading.exportAsOfficialSchoolGrade,false);
  assert.equal(policy.officialGradesEnabled,false);
  assert.equal(policy.gradedTestsEnabled,false);
- assert.equal(policy.testUiEnabled,false);
- assert.equal(policy.selfCheckEnabled,false);
+ assert.equal(policy.testUiEnabled,true);
+ assert.equal(policy.selfCheckEnabled,true);
  assert.equal(version.gradedTestsEnabled,false);
  assert.equal(catalog.gradedTestsEnabled,false);
  assert.deepEqual(grading.illustrativeWholePercentBands.map(b=>[b.grade,b.minimumInclusive,b.maximumInclusive]),
@@ -167,12 +167,13 @@ test('R25 shared result contract fails closed on forged grades, impossible score
 test('R25 repository README points at the real live school catalog, not the archived pilot',()=>{
  const readme=fs.readFileSync(path.resolve(root,'..','README.md'),'utf8');
  assert.match(readme,/https:\/\/ghrab-jazyky\.github\.io\/language-skills-hub\//);
- assert.match(readme,/Nejsou dostupné z ostrého katalogu|nejsou dostupné z ostrého katalogu/);
+ assert.match(readme,/Test bez známky/);
+ assert.match(readme,/Nejde o zabezpečenou klasifikovanou zkoušku/);
  const live=readme.match(/\[Otevřít Language Skills Hub\]\(([^)]+)\)/);
  assert.ok(live);
  assert.equal(live[1],'https://ghrab-jazyky.github.io/language-skills-hub/');
 });
-test('R25 public practice and the catalog remain unchanged, results loaded locally',()=>{
+test('R25 public practice cards remain unchanged and local results keep grading off',()=>{
  assert.equal(catalog.entries.length,29);
  assert.equal(catalog.entries.reduce((n,e)=>n+e.languages.length*e.levels.length,0),642);
  for(const entry of catalog.entries){
@@ -185,7 +186,8 @@ test('R25 public practice and the catalog remain unchanged, results loaded local
  assert.match(listenHtml,/\.\.\/results\/result-core\.js/);
  assert.match(read('self-check/reading/reading.js'),/resultsCore\.reviewReading/);
  assert.match(read('self-check/listening/listening-student.js'),/resultsCore\.reviewListening/);
- assert.doesNotMatch(read('index.html')+read('assets/hub.js'),/self-check\/reading|self-check\/listening/);
+ assert.match(read('assets/hub.js'),/self-check\/reading\/teacher\.html/);
+ assert.match(read('assets/hub.js'),/self-check\/listening\/teacher\.html/);
  assert.doesNotMatch(read('self-check/results/result-core.js'),
   /(?:https?:\/\/|fetch\(|XMLHttpRequest|navigator\.sendBeacon)/);
 });
