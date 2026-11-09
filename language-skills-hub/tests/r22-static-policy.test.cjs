@@ -16,16 +16,19 @@ const release = json('version.json');
 test('R22 remains a static-only design; neither secure grades nor student accounts can be activated', () => {
  assert.equal(policy.kind, 'LSH_STATIC_ASSESSMENT_POLICY_R22_V1');
  assert.equal(policy.deployment, 'GITHUB_PAGES_STATIC_ONLY');
- assert.equal(policy.status, 'DESIGN_ONLY_TEST_UI_DISABLED');
+ assert.equal(policy.status, 'PUBLIC_LOCAL_SELF_CHECK_NO_GRADES');
  for (const flag of [
   'backendEnabled', 'gradedTestsEnabled', 'officialGradesEnabled',
   'studentAccountsEnabled', 'centralResultCollectionEnabled',
-  'clientAnswerKeySecrecyGuaranteed', 'tamperProofResultsGuaranteed',
-  'testUiEnabled', 'selfCheckEnabled'
+  'clientAnswerKeySecrecyGuaranteed', 'tamperProofResultsGuaranteed'
  ]) assert.equal(policy[flag], false, flag + ' must stay false');
+ assert.equal(policy.testUiEnabled, true);
+ assert.equal(policy.selfCheckEnabled, true);
+ assert.equal(policy.publication.officialClassificationForbidden, true);
  assert.equal(catalog.gradedTestsEnabled, false);
  assert.equal(release.gradedTestsEnabled, false);
- assert.equal(release.mode, 'public_practice');
+ assert.equal(release.mode, 'public_practice_and_local_self_check');
+ assert.equal(release.version, 'R27');
 });
 
 test('R22 local self-check is planned for Reading/Listening only and cannot be called anti-cheat', () => {
@@ -68,14 +71,16 @@ test('R22 does not modify 29 live practice cards or the 642 published variants',
  assert.equal(variants, 642);
 });
 
-test('R22 public catalog offers practice sharing only, not a simulated graded test', () => {
+test('R22 public catalog offers practice sharing and only explicit ungraded tests', () => {
  const html = read('index.html');
  const js = read('assets/hub.js');
  assert.match(html, /Nejde o zabezpečený klasifikovaný test/);
  assert.match(html, /Uzamčení je pouze v uživatelském rozhraní/);
  assert.match(js, /Otevřít aktivitu/);
  assert.match(js, /Sdílet se studenty/);
- assert.doesNotMatch(html + js, /data-test-mode="enabled"|testLaunchUrl|id="testButton"|LSH_TEST_GRADED_ENABLED/);
+ assert.match(js,/Test bez známky/);
+ assert.match(js,/if\(localSelfCheck&&\['cteni','poslech'\]/);
+ assert.doesNotMatch(html + js, /LSH_TEST_GRADED_ENABLED|verifiedSchoolGrade/);
 });
 
 test('R22 documentation states the irreducible absence of server-side answer secrecy', () => {
