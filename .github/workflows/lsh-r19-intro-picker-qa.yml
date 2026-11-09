@@ -1,0 +1,33 @@
+name: LSH R19 welcome and skill picker regression (NO deployment)
+on:
+  push:
+    branches:
+      - feat/lsh-r19-welcome-skill-selection-2026-11-09
+    paths:
+      - 'language-skills-hub/index.html'
+      - 'language-skills-hub/assets/hub.css'
+      - 'language-skills-hub/assets/hub.js'
+      - 'zkusebni/tests/r19-*.test.cjs'
+      - '.github/workflows/lsh-r19-intro-picker-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 21
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: R19 static and SHA-256 source integrity gate
+        run: |
+          node --check language-skills-hub/assets/hub.js
+          node --test zkusebni/tests/r19-welcome-skill-selection.test.cjs
+      - name: Install Chromium and WebKit
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: R19 real-browser timed splash, selectors, mobile, QR and history
+        run: node --test zkusebni/tests/r19-welcome-skill-selection.browser.test.cjs
