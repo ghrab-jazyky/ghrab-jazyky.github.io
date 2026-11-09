@@ -58,7 +58,7 @@ for(const [name,browserType] of [['chromium',chromium],['webkit',webkit]]){
      assert.match(displayed,/Written answers requiring teacher review/);
     }else{
      const total=await page.locator('fieldset.question').count();
-     const points=/^(\\d+)\\s*\\/\\s*(\\d+)/.exec(vals[0].trim());
+     const points=/^(\d+)\s*\/\s*(\d+)/.exec(vals[0].trim());
      assert.ok(points,'Result must expose numeric earned/maximum points');
      assert.equal(Number(points[2]),total,'All Reading questions count toward maximum points');
      assert.equal(await page.locator('#resultDetails .review').count(),
