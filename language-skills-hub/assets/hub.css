@@ -295,3 +295,9 @@ dialog.share-dialog{
  .share-result{padding:13px}
  .share-actions .action{flex:1 1 100%}
 }
+
+/* R27 non-graded self-check entry. Practice and sharing remain primary. */
+.card .action.test{border-color:var(--accent);background:var(--panel2);color:var(--fg)}
+.card .action.test:hover,.card .action.test:focus-visible{filter:brightness(1.13)}
+:root[data-theme="light"] .card .action.test{color:var(--fg);background:#e8f4fb;border-color:#087a92}
+.card .actions .action{white-space:normal;text-align:center}

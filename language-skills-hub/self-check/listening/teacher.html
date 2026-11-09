@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="cs" data-theme="dark">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+ <meta name="color-scheme" content="dark light">
+ <meta name="description" content="Language Skills Hub – učitelské ovládání dvou poslechů a sdílení neklasifikované studentské aktivity.">
+ <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'; frame-ancestors 'none'">
+ <title>Listening Lab · Učitelský panel</title>
+ <link rel="stylesheet" href="../reading/reading.css">
+ <link rel="stylesheet" href="listening.css">
+ <link rel="stylesheet" href="../results/share.css">
+ <script defer src="../../assets/qr.js"></script>
+ <script defer src="listening-core.js"></script>
+ <script defer src="../results/share-tools.js"></script>
+ <script defer src="listening-teacher.js"></script>
+</head>
+<body>
+ <header class="topbar">
+  <a class="brand" href="../../index.html"><span class="mark" aria-hidden="true">L</span><span><strong>Language Skills Hub</strong><small>Listening Lab · učitel</small></span></a>
+  <div class="topactions"><span class="mode">PRACOVNÍ REŽIM · BEZ KLASIFIKACE</span><button type="button" class="action ghost" id="themeButton" aria-pressed="false">☀ Světlý režim</button></div>
+ </header>
+ <main class="container teacher-layout">
+  <section class="hero">
+   <p class="eyebrow">UČITELSKÝ PANEL · PŘEHRÁVÁNÍ OVLÁDÁ UČITEL</p>
+   <h1>Listening Lab – dva poslechy</h1>
+   <p class="subtitle">Vyber téma a úroveň. Studenti pracují ve třech oddílech, zatímco nahrávku přehráváš pouze ty na svém zařízení.</p>
+   <div class="notice" role="note">
+    Tento panel je veřejná statická stránka, nikoli přihlášení učitele. Přehrávání probíhá v externím přehrávači (YouTube, Facebook či další původní zdroj), který otevřeš ty. Ovládání tady <strong>nesynchronizuje</strong> žádná studentská zařízení. Jde o neklasifikované ověřování.
+   </div>
+  </section>
+  <section class="panel teacher-panel" aria-labelledby="teacherControls">
+   <div class="panel-head"><div><span class="kicker">NASTAVENÍ AKTIVITY</span><h2 id="teacherControls">Téma a úroveň</h2></div></div>
+   <div class="teacher-form">
+    <label for="topic">Poslechová karta
+     <select id="topic" required>
+      <option value="ll-matthew-oscars">Matthew McConaughey · Oscars 2014</option>
+      <option value="ll-harrison-ford">Harrison Ford · Life Achievement Speech</option>
+      <option value="ll-peaky-no-fighting">Peaky Blinders · No Fighting</option>
+     </select>
+    </label>
+    <label for="level">Úroveň CEFR
+     <select id="level" required>
+      <option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option>
+     </select>
+    </label>
+   </div>
+   <p id="loadStatus" class="small-note" role="status" aria-live="polite">Načítám originální zdroje…</p>
+   <div id="mediaSources" class="media-sources" aria-label="Původní mediální zdroje"></div>
+   <p class="small-note" id="mediaCaution"></p>
+  </section>
+  <section class="panel teacher-panel" aria-labelledby="playbackHeading">
+   <div class="panel-head"><div><span class="kicker">DVA POSLECHY · OVLÁDÁ UČITEL</span><h2 id="playbackHeading">Průběh přehrávání</h2></div><span class="pill" id="passCount">0 / 2</span></div>
+   <div class="teacher-form">
+    <p id="playbackInstruction">Otevři zdroj na svém zařízení. Po prvním přehrání klikni na „První poslech dokončen“. Po druhém přehrání klikni na „Druhý poslech dokončen“.</p>
+    <div class="teacher-actions">
+     <button class="action primary" type="button" id="markPass">První poslech dokončen</button>
+     <button class="action" type="button" id="resetPass">Vynulovat počítadlo</button>
+    </div>
+    <p class="small-note" id="passNote" aria-live="polite">Počítadlo je pouze tvoje místní pomůcka; nespouští ani neomezuje externí video.</p>
+   </div>
+  </section>
+  <section class="panel teacher-panel" aria-labelledby="shareHeading">
+   <div class="panel-head"><div><span class="kicker">STUDENTSKÁ KARTA · BEZ PŘEHRÁVAČE</span><h2 id="shareHeading">Odkaz pro studenty</h2></div></div>
+   <div class="teacher-form">
+    <div id="qrMount" class="share-result-qr" aria-label="QR kód pro studenty"></div>
+    <label for="studentUrl">Sdílitelný odkaz
+     <textarea id="studentUrl" rows="3" readonly spellcheck="false"></textarea>
+    </label>
+    <div class="teacher-actions">
+     <button type="button" class="action primary" id="copyUrl">Kopírovat odkaz</button>
+     <button type="button" class="action" id="downloadQr">Stáhnout QR kód</button>
+     <a id="studentPreview" class="action" href="student.html" target="_blank" rel="noopener noreferrer">Otevřít studentský náhled</a>
+    </div>
+    <p class="small-note" id="copyStatus" aria-live="polite">Žáci mají pevně danou úroveň v rozhraní, ale URL lze upravit. Správné odpovědi nejsou na statickém webu technicky utajené.</p>
+   </div>
+  </section>
+ </main>
+ <footer class="footer">Ověření znalostí bez serveru · výsledky se nesbírají · žádné školní známky</footer>
+</body>
+</html>

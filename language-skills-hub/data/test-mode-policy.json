@@ -1,0 +1,51 @@
+{
+  "kind": "LSH_STATIC_ASSESSMENT_POLICY_R22_V1",
+  "deployment": "GITHUB_PAGES_STATIC_ONLY",
+  "status": "PUBLIC_LOCAL_SELF_CHECK_NO_GRADES",
+  "backendEnabled": false,
+  "gradedTestsEnabled": false,
+  "officialGradesEnabled": false,
+  "studentAccountsEnabled": false,
+  "centralResultCollectionEnabled": false,
+  "clientAnswerKeySecrecyGuaranteed": false,
+  "tamperProofResultsGuaranteed": false,
+  "testUiEnabled": true,
+  "selfCheckEnabled": true,
+  "enabledPracticeSkills": [
+    "konverzace",
+    "cteni",
+    "poslech"
+  ],
+  "plannedLocalSelfCheckSkills": [
+    "cteni",
+    "poslech"
+  ],
+  "forbiddenSelfCheckSkills": [
+    "konverzace"
+  ],
+  "futureSelfCheck": {
+    "languageLevelFixedInStudentUi": true,
+    "dictionaryEnabled": false,
+    "myVocabularyEnabled": false,
+    "feedbackBeforeSubmission": false,
+    "localOneSubmissionUiRule": true,
+    "submissionsCannotBeServerVerified": true,
+    "resultStorage": "STUDENT_DEVICE_ONLY",
+    "openAnswersRequireTeacherReview": true,
+    "showOfficialGradeBeforeApproval": false,
+    "teacherControlledListening": true,
+    "listeningSections": [
+      "first-listening",
+      "listen-and-interpret",
+      "listen-write-and-reconstruct"
+    ],
+    "listeningPasses": 2
+  },
+  "publication": {
+    "mode": "VISIBLE_IN_CATALOG_READING_LISTENING_ONLY",
+    "teacherSetupRequired": true,
+    "studentLinkSource": "teacher_panel",
+    "noBackend": true,
+    "officialClassificationForbidden": true
+  }
+}

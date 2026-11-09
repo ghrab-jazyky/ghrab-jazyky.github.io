@@ -1,0 +1,53 @@
+name: LSH R25 unified results and static-only final QA (NO deployment)
+on:
+  push:
+    branches:
+      - feat/lsh-r25-result-consistency-and-audit-2026-11-09
+    paths:
+      - 'language-skills-hub/**'
+      - 'README.md'
+      - '.github/workflows/lsh-r25-final-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Syntax and local result policy
+        run: |
+          node --check language-skills-hub/self-check/results/result-core.js
+          node --check language-skills-hub/self-check/reading/reading.js
+          node --check language-skills-hub/self-check/listening/listening-student.js
+          node --check language-skills-hub/tests/r25-result-contract.test.cjs
+          node --check language-skills-hub/tests/r25-result-browser.test.cjs
+      - name: All static-only and real-card regression contracts R22-R25
+        run: |
+          node --test language-skills-hub/tests/r22-static-policy.test.cjs language-skills-hub/tests/r23-reading-selfcheck.test.cjs language-skills-hub/tests/r24-listening-selfcheck.test.cjs language-skills-hub/tests/r25-result-contract.test.cjs
+  audit-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install Chromium and WebKit
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Cross-skill desktop/mobile smoke and R25 result cards
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-r25-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:8765/language-skills-hub/self-check/reading/index.html >/dev/null; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/r23-reading-selfcheck.browser.test.cjs language-skills-hub/tests/r24-listening-selfcheck.browser.test.cjs language-skills-hub/tests/r25-result-browser.test.cjs

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="cs" data-theme="dark">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="color-scheme" content="dark light">
+ <meta name="description" content="Language Skills Hub – učitelský panel samostatného neklasifikovaného Reading Testu.">
+ <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' blob: data:; font-src 'self'; form-action 'none'; frame-ancestors 'none'">
+ <title>Reading Lab · Učitelský panel</title>
+ <link rel="stylesheet" href="reading.css">
+ <link rel="stylesheet" href="../listening/listening.css">
+ <link rel="stylesheet" href="../results/share.css">
+ <script defer src="../../assets/qr.js"></script>
+ <script defer src="reading-core.js"></script>
+ <script defer src="../results/share-tools.js"></script>
+ <script defer src="reading-teacher.js"></script>
+</head>
+<body>
+ <header class="topbar">
+  <a class="brand" href="../../index.html?skill=cteni"><span class="mark" aria-hidden="true">R</span><span><strong>Language Skills Hub</strong><small>Reading Lab · učitel</small></span></a>
+  <div class="topactions">
+   <span class="mode">TEST BEZ ZNÁMKY · VEŘEJNÉ PROCVIČOVÁNÍ</span>
+   <button type="button" class="action ghost" id="themeButton" aria-pressed="false">☀ Světlý režim</button>
+  </div>
+ </header>
+ <main class="container teacher-layout">
+  <section class="hero">
+   <p class="eyebrow">READING LAB · SAMOSTATNÉ OVĚŘENÍ</p>
+   <h1>Reading Test – nastavení pro studenty</h1>
+   <p class="subtitle">Zvol téma, jazyk a úroveň A1–C2, potom studentům pošli přesný odkaz nebo QR kód. Původní procvičovací karty zůstávají beze změny.</p>
+   <div class="notice" role="note">Jde o <strong>neklasifikované ověření znalostí</strong>, nikoli zabezpečenou školní zkoušku. Správné odpovědi lze zjistit ve veřejných procvičovacích kartách a studentské výsledky nejsou ověřené ani ukládané u učitele. Úroveň a jazyk jsou pevné pouze v rozhraní; student může upravit URL.</div>
+  </section>
+  <section class="panel teacher-panel" aria-labelledby="setupHeading">
+   <div class="panel-head"><div><span class="kicker">UČITELSKÉ NASTAVENÍ</span><h2 id="setupHeading">Vyber variantu</h2></div></div>
+   <div class="teacher-form">
+    <label for="topic">Čtecí téma
+     <select id="topic" aria-label="Čtecí téma"></select>
+    </label>
+    <label for="language">Jazyk
+     <select id="language" aria-label="Jazyk">
+      <option value="en">Angličtina</option>
+      <option value="es">Španělština</option>
+      <option value="de">Němčina</option>
+      <option value="fr">Francouzština</option>
+     </select>
+    </label>
+    <label for="level">Úroveň CEFR
+     <select id="level" aria-label="Úroveň CEFR">
+      <option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option>
+     </select>
+    </label>
+    <p class="small-note" id="loadStatus" role="status" aria-live="polite">Načítání katalogu…</p>
+   </div>
+  </section>
+  <section class="panel teacher-panel" aria-labelledby="shareHeading">
+   <div class="panel-head"><div><span class="kicker">SDÍLENÍ SE STUDENTY</span><h2 id="shareHeading">Odkaz a QR kód</h2></div></div>
+   <div class="teacher-form">
+    <p class="small-note">Tento odkaz vede na samostatné studentské ověřování, nikoli na běžné procvičování.</p>
+    <div class="share-result-qr" id="qrMount" aria-label="QR kód pro studenty"></div>
+    <label for="studentUrl">Úplný studentský odkaz
+     <textarea id="studentUrl" rows="3" readonly spellcheck="false"></textarea>
+    </label>
+    <div class="teacher-actions">
+     <button type="button" class="action primary" id="copyUrl" disabled>Kopírovat odkaz</button>
+     <button type="button" class="action" id="downloadQr" disabled>Stáhnout QR</button>
+     <a id="studentPreview" class="action" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">Otevřít studentskou kartu</a>
+    </div>
+    <p id="copyStatus" class="small-note" role="status" aria-live="polite">Nejprve vyber dostupnou variantu.</p>
+   </div>
+  </section>
+ </main>
+ <footer class="footer">Reading Lab · EN/ES/DE/FR · A1–C2 · pouze lokální neklasifikované ověření</footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{
+  "kind": "LSH_R25_GRADING_REVIEW_V1",
+  "status": "UNAPPROVED_WORKING_REFERENCE",
+  "enabled": false,
+  "schoolGradesEnabled": false,
+  "appliesTo": [
+    "Czech",
+    "Foreign languages"
+  ],
+  "workingSource": {
+    "title": "Pravidla hodnoceni_pracovni verze 2026.docx.pdf",
+    "reference": "Priloha c. 1, cl. 1, bod 24",
+    "scope": "orientacni prevod procentni uspesnosti",
+    "schoolApprovalVerified": false
+  },
+  "illustrativeWholePercentBands": [
+    {
+      "grade": 1,
+      "minimumInclusive": 88,
+      "maximumInclusive": 100
+    },
+    {
+      "grade": 2,
+      "minimumInclusive": 74,
+      "maximumInclusive": 87
+    },
+    {
+      "grade": 3,
+      "minimumInclusive": 59,
+      "maximumInclusive": 73
+    },
+    {
+      "grade": 4,
+      "minimumInclusive": 44,
+      "maximumInclusive": 58
+    },
+    {
+      "grade": 5,
+      "minimumInclusive": 0,
+      "maximumInclusive": 43
+    }
+  ],
+  "decimalPercentRule": "UNDECIDED",
+  "roundingRule": "UNDECIDED",
+  "weightingOfObjectiveAndWrittenTasks": "UNDECIDED",
+  "teacherReviewNeededForOpenAnswers": true,
+  "exportAsOfficialSchoolGrade": false,
+  "activationBlockers": [
+    "Obtain and verify approved school rules and their date of effect.",
+    "Clarify that the language scale applies to this activity type.",
+    "Resolve fractional percentages and exact boundary rules, including 87.5, 73.5, 58.5, 43.5.",
+    "Approve points/weights and who reviews all meaningful written alternatives.",
+    "Choose a trustworthy result collection and identity model before any official grading."
+  ]
+}
