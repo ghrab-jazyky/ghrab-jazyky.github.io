@@ -1,6 +1,6 @@
 /* R23 Reading Lab – standalone local self-check, not a protected exam.
  * No analytics, no student identifiers, no student submissions over the network.
- * Existing public practice cards are fetched as inert text; never eval() their JS.
+ * Existing public practice cards are fetched as inert text; their scripts are never executed.
  */
 (()=>{
  'use strict';
