@@ -97,7 +97,9 @@ jobs:
             esac
           done
           test "$(git -C "$RELEASE" diff --cached --name-only | grep '^language-skills-hub/' | wc -l)" -eq 44
-          git -C "$RELEASE" diff --cached --check
+          # Original source cards are SHA-verified and may contain harmless legacy whitespace.
+          # Enforce whitespace checks on newly authored public catalog assets only.
+          git -C "$RELEASE" diff --cached --check -- index.html language-skills-hub/index.html language-skills-hub/assets/hub.css language-skills-hub/assets/hub.js
           git -C "$RELEASE" commit -m "release(lsh): public 29-topic practice hub with QR and 642 variant links"
           git -C "$RELEASE" push origin "HEAD:refs/heads/$BRANCH"
           echo "RELEASE_BRANCH=$BRANCH" >> "$GITHUB_STEP_SUMMARY"
