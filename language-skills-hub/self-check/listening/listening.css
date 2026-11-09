@@ -24,7 +24,7 @@
 .teacher-panel{margin:16px 0;overflow:hidden}
 .teacher-form{padding:19px clamp(15px,2.2vw,26px)}
 .teacher-form>label{display:block;font-weight:750;font-size:.91rem;margin-bottom:13px}
-.teacher-form select,.teacher-form textarea{display:block;width:100%;background:var(--field);border:1px solid var(--line);border-radius:10px;color:var(--text);padding:11px 12px;min-height:47px;margin-top:6px}
+.teacher-form select,.teacher-form textarea,.teacher-form input[type=number]{display:block;width:100%;background:var(--field);border:1px solid var(--line);border-radius:10px;color:var(--text);padding:11px 12px;min-height:47px;margin-top:6px}
 .teacher-form textarea{min-height:90px;resize:vertical}
 .teacher-form .small-note{margin:7px 0 14px}
 .teacher-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
