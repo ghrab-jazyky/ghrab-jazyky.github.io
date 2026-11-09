@@ -38,7 +38,7 @@ jobs:
                   assert data['kind']=='LSH_PUBLIC_PRACTICE_R17'
                   assert data['gradedTestsEnabled'] is False
                   release=json.loads(get('/language-skills-hub/version.json?verify='+str(attempt)))
-                  assert release['version']=='R28'
+                  assert release['version']=='R29'
                   assert release['localGradeProposalsEnabled'] is True
                   assert release['selfCheckEnabled'] is True
                   assert release['gradedTestsEnabled'] is False
@@ -81,7 +81,7 @@ jobs:
                     'assets/lsh/v3/card-bridge.js','assets/lsh/v3/card-bridge.css',
                     'assets/lsh/v3/store.js']:
                       head('/language-skills-hub/'+asset)
-                  print('PASS LIVE HTTPS R28: original cards + local 1-5 grade proposals, no secure grades',flush=True)
+                  print('PASS LIVE HTTPS R29: grading proposals and mistakes-only feedback, no secure grades',flush=True)
                   print('PRODUCTION URL:',base+'/language-skills-hub/',flush=True)
                   sys.exit(0)
               except Exception as ex:
