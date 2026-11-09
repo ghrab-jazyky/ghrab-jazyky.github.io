@@ -5,3 +5,18 @@
 @media(max-width:460px){.topactions{width:100%;justify-content:space-between}.hero{padding:16px}.question{padding:11px}.choice{padding:9px}.score-summary{padding:12px}.score-value{flex:1;min-width:110px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 @media print{.topbar,.submit-panel,#reflectionWrap,.notice{display:none!important}.container{max-width:none}.workspace{display:block}.reading-panel{position:static;max-height:none}.reading-body{max-height:none}.panel{box-shadow:none;break-inside:avoid}body{background:#fff;color:#000}}
+
+/* R28 – a proposed grade is visually separate from the verified school grade field. */
+.grade-proposal{margin:0 18px 15px;padding:15px 18px;border:1px solid var(--accent);border-radius:14px;background:var(--panel2);display:flex;flex-wrap:wrap;align-items:center;gap:13px}
+.grade-proposal .grade-caption{font-weight:850;font-size:.94rem}
+.grade-proposal .grade-number{display:grid;place-items:center;min-width:65px;min-height:65px;padding:7px 14px;border-radius:14px;background:var(--accent);color:var(--bg);font-size:2.35rem;line-height:1;font-weight:900;font-variant-numeric:tabular-nums}
+.grade-proposal .small-note{margin:0;flex:1 1 210px}
+.grade-proposal[hidden]{display:none}
+.manual-grading{margin:16px 18px;padding:16px;border:1px solid var(--warn);border-radius:14px;background:var(--panel2)}
+.manual-grading h3{margin:0 0 6px}
+.manual-grading .review-grade-controls{display:grid;gap:10px}
+.manual-grade-question{border:1px solid var(--line);border-radius:9px;padding:11px;background:var(--panel)}
+.manual-grade-question label{display:block;font-weight:750;margin:0 0 7px}
+.manual-grade-question select{display:block;max-width:100%;width:100%;padding:10px;border:1px solid var(--line);border-radius:9px;color:var(--text);background:var(--field);min-height:44px}
+.manual-grade-status{margin:12px 0;font-weight:800}
+@media print{.manual-grading{border:1px solid #aaa}.grade-proposal{background:white;border:1px solid black;color:black}.grade-proposal .grade-number{background:white;color:black;border:2px solid black}}
