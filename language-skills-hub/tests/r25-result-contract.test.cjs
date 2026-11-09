@@ -164,6 +164,14 @@ test('R25 shared result contract fails closed on forged grades, impossible score
  assert.throws(()=>resultCore.scoreTiles(normalized,{points:'Points'},'en'));
 });
 
+test('R25 repository README points at the real live school catalog, not the archived pilot',()=>{
+ const readme=fs.readFileSync(path.resolve(root,'..','README.md'),'utf8');
+ assert.match(readme,/https:\/\/ghrab-jazyky\.github\.io\/language-skills-hub\//);
+ assert.match(readme,/Nejsou dostupné z ostrého katalogu|nejsou dostupné z ostrého katalogu/);
+ const live=readme.match(/\[Otevřít Language Skills Hub\]\(([^)]+)\)/);
+ assert.ok(live);
+ assert.equal(live[1],'https://ghrab-jazyky.github.io/language-skills-hub/');
+});
 test('R25 public practice and the catalog remain unchanged, results loaded locally',()=>{
  assert.equal(catalog.entries.length,29);
  assert.equal(catalog.entries.reduce((n,e)=>n+e.languages.length*e.levels.length,0),642);
