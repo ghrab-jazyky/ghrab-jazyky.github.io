@@ -1,0 +1,78 @@
+name: LSH R21 LIVE teacher/student sharing HTTPS verification (READ ONLY)
+on:
+  push:
+    branches:
+      - feat/lsh-r21-share-student-choice-2026-11-09
+    paths:
+      - '.github/workflows/lsh-r21-live-verify.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-published-r21:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Verify public free/fixed share UI, actual QR assets, and all student cards
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json,time,urllib.request,sys
+          base='https://ghrab-jazyky.github.io/language-skills-hub/'
+          def get(path):
+              req=urllib.request.Request(base+path,headers={
+                  'User-Agent':'LSH-R21-live-read-only/1.0','Cache-Control':'no-cache'})
+              with urllib.request.urlopen(req,timeout=16) as r:
+                  assert r.status==200,(path,r.status)
+                  return r.read().decode('utf-8')
+          def head(path):
+              req=urllib.request.Request(base+path,method='HEAD',headers={
+                  'User-Agent':'LSH-R21-live-read-only/1.0'})
+              with urllib.request.urlopen(req,timeout=16) as r:
+                  assert r.status==200,(path,r.status)
+          for attempt in range(1,37):
+              try:
+                  suffix='?r21='+str(attempt)
+                  html=get(suffix)
+                  assert 'Sdílet se studenty' in html
+                  assert 'id="shareFree"' in html and 'id="shareFixed"' in html
+                  assert 'id="shareFixedFields" hidden' in html
+                  assert 'id="shareLanguage"' in html and 'id="shareLevel"' in html
+                  assert '<textarea id="qrUrl"' in html
+                  assert 'id="qrCopy"' in html and 'id="qrSave"' in html
+                  assert 'Nejde o zabezpečený ani klasifikovaný test' in html
+                  assert 'id="themeToggle"' in html and 'id="fullscreenToggle"' in html
+                  assert 'id="welcome"' in html and 'id="skillChooser"' in html
+                  js=get('assets/hub.js'+suffix)
+                  for token in ["function makeShareUrl(","if(mode==='free')return url.href",
+                    "url.searchParams.set('zamek','1')",
+                    "Sdílet se studenty","navigator.clipboard.writeText(qrUrl)"]:
+                      assert token in js,token
+                  css=get('assets/hub.css'+suffix)
+                  assert 'dialog.share-dialog' in css
+                  assert 'share-fields-grid' in css
+                  assert ':root[data-theme="light"] .share-result' in css
+                  qr=get('assets/qr.js'+suffix)
+                  assert len(qr)>5000
+                  data=json.loads(get('data/cards.json'+suffix))
+                  assert len(data['entries'])==29 and data['gradedTestsEnabled'] is False
+                  version=json.loads(get('version.json'+suffix))
+                  assert version['topicCount']==29 and version['variantCount']==642
+                  assert version['gradedTestsEnabled'] is False
+                  lexicon=json.loads(get('data/catalog-i18n.json'+suffix))
+                  assert len(lexicon['entries'])==29
+                  bridges=0
+                  for e in data['entries']:
+                      head(e['relative'])
+                      if e.get('lockSource'):
+                          head(e['lockSource'])
+                          bridges+=1
+                  assert bridges==4
+                  print('PASS R21 PUBLIC HTTPS: student free/fixed share + raw copyable URL + QR + 29 cards + 4 bridges',flush=True)
+                  print('PRODUCTION URL:',base,flush=True)
+                  sys.exit(0)
+              except Exception as e:
+                  print(f'Attempt {attempt}/36: {type(e).__name__}: {e}',flush=True)
+                  if attempt==36:raise
+                  time.sleep(10)
+          PY
