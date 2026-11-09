@@ -309,6 +309,8 @@
    if(!resource.ok)throw new Error('Source HTTP '+resource.status);
    chosen=core.variant(core.extractJson(await resource.text(),'DATA'),selection.level);
    render();
+   if(new URLSearchParams(location.search).has('timer')&&!window.LSHSessionUI)
+    throw new Error('Timed test engine is unavailable.');
    timedUI=window.LSHSessionUI?.mount({
     skill:'listening',topic:selection.topic,lang:'en',level:selection.level,
     workspace:$('workspace'),
