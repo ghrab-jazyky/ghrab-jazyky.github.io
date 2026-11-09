@@ -3,6 +3,7 @@
  'use strict';
  const core=window.LSHListeningCore;
  const resultsCore=window.LSHResultCore;
+ const gradeCore=window.LSHGradeCore;
  const $=id=>document.getElementById(id);
  const element=(tag,cls,text)=>{
   const el=document.createElement(tag);
@@ -179,6 +180,61 @@
   row.append(element('strong',null,key+': '),document.createTextNode(String(value)));
   box.appendChild(row);
  }
+ function gradeBadge(container,gradeResult,label){
+  container.replaceChildren();
+  container.append(
+   element('span','grade-caption',label),
+   element('strong','grade-number',String(gradeResult.grade)),
+   element('p','small-note','Návrh známky podle přesného poměru '+gradeResult.earned+' / '+gradeResult.max+
+    ' bodů ('+gradeResult.displayedPercent.toFixed(2)+' %). Bez ověření identity a výsledku nejde o platný školní záznam.')
+  );
+ }
+ function teacherReview(normalized){
+  const wrapper=$('manualGrade'),controls=$('manualGradeTasks');
+  wrapper.hidden=false;
+  controls.replaceChildren();
+  const marks=normalized.writtenReview.map(()=>null);
+  const gradeContainer=$('gradeProposal'),status=$('manualGradeStatus');
+  function update(){
+   const reviewed=gradeCore.listening(normalized,marks);
+   status.textContent=reviewed.pending?
+    'Čeká na posouzení '+reviewed.pending+' z '+marks.length+' písemných odpovědí. Zatím nelze vypočítat celkovou známku.':
+    'Učitelské posouzení dokončeno. '+reviewed.earned+' / '+reviewed.max+
+    ' bodů (objektivní: '+reviewed.objectiveEarned+'/'+reviewed.objectiveMax+
+    ', písemné: '+reviewed.writtenEarned+'/'+reviewed.writtenMax+').';
+   if(reviewed.suggested)gradeBadge(gradeContainer,reviewed.suggested,'Návrh známky po učitelské kontrole (1–5)');
+   else {
+    gradeContainer.replaceChildren();
+    gradeContainer.append(
+     element('span','grade-caption','Známka: čeká na učitelskou kontrolu písemných odpovědí'),
+     element('p','small-note','Celkové procento a známku lze vypočítat až po ohodnocení všech písemných úloh. Objektivní procento není celkový výsledek.')
+    );
+   }
+  }
+  for(let i=0;i<normalized.writtenReview.length;i++){
+   const task=normalized.writtenReview[i],part=element('div','manual-grade-question');
+   const select=element('select'),label=element('label',null,
+    (i+1)+'. '+task.question);
+   const id='manual-grade-'+i;label.htmlFor=id;select.id=id;
+   const choices=[
+    ['','— Čeká na učitelské hodnocení —'],
+    ['0','0 bodů – nesprávně / bez odpovědi'],
+    ['1','1 bod – významově správně']
+   ];
+   for(const [value,name]of choices){
+    const o=element('option',null,name);o.value=value;select.appendChild(o);
+   }
+   select.setAttribute('aria-label','Učitelské hodnocení: '+task.question);
+   select.addEventListener('change',()=>{
+    marks[i]=select.value===''?null:Number(select.value);
+    update();
+   });
+   part.append(label,element('p','quiz-hint','Odpověď: '+(task.answer||'—')),
+    element('p','quiz-hint','Referenční řešení: '+task.reference),select);
+   controls.appendChild(part);
+  }
+  update();
+ }
  function results(report){
   const normalized=resultsCore.reviewListening(report);
   const summary=$('scoreSummary');summary.replaceChildren();
@@ -216,6 +272,7 @@
    if(task.criteria)kv(box,'Assessment guidance',task.criteria);
    list.appendChild(box);
   }
+  teacherReview(normalized);
   $('results').hidden=false;
   $('results').focus({preventScroll:true});
   $('results').scrollIntoView({behavior:'smooth',block:'start'});
