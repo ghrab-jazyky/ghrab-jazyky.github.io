@@ -104,7 +104,7 @@ function card(e){
  if(localSelfCheck&&['cteni','poslech'].includes(e.skill)){
   const check=one('a','action test','Test – známka 1–5');
   check.href=testSetupUrl(e);check.target='_blank';check.rel='noopener noreferrer';
-  check.setAttribute('aria-label','Neklasifikované samostatné ověření: '+translation.title);
+  check.setAttribute('aria-label','Test s návrhem známky 1–5: '+translation.title);
   check.title='Návrh známky 1–5 po odevzdání / kontrole učitelem. Bez backendu nelze ověřit identitu a výsledky.';
   actions.appendChild(check);
  }
