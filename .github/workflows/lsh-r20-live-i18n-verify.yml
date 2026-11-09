@@ -1,0 +1,67 @@
+name: LSH R20 LIVE Czech and multilingual catalog HTTPS QA (READ ONLY)
+on:
+  push:
+    branches:
+      - feat/lsh-r20-catalog-i18n-29-2026-11-09
+    paths:
+      - '.github/workflows/lsh-r20-live-i18n-verify.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-live-r20:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - name: Verify public HTTPS translated catalog, 29 cards, and NO test keys
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json,time,urllib.request,sys
+          base='https://ghrab-jazyky.github.io/language-skills-hub/'
+          def get(path):
+              req=urllib.request.Request(base+path,headers={'User-Agent':'LSH-R20-live-verify/1.0','Cache-Control':'no-cache'})
+              with urllib.request.urlopen(req,timeout=16) as response:
+                  assert response.status==200
+                  return response.read().decode('utf-8')
+          for attempt in range(1,30):
+              try:
+                  suffix='?r20='+str(attempt)
+                  html=get(suffix)
+                  assert 'id="welcome" class="welcome"' in html
+                  assert 'id="skillChooser"' in html
+                  assert 'Všechny jazyky' in html and 'id="themeToggle"' in html
+                  assert 'Bez filtrů jsou všechny názvy a popisy česky' in html
+                  js=get('assets/hub.js'+suffix)
+                  assert 'LSH_CATALOG_I18N_R20' in js
+                  assert 'data/catalog-i18n.json' in js
+                  assert "const tags={konverzace:'Mluvení',cteni:'Čtení',poslech:'Poslech'}" in js
+                  data=json.loads(get('data/catalog-i18n.json'+suffix))
+                  assert data['kind']=='LSH_CATALOG_I18N_R20'
+                  assert data['defaultLanguage']=='cs'
+                  assert len(data['entries'])==29
+                  cards=json.loads(get('data/cards.json'+suffix))
+                  assert len(cards['entries'])==29 and cards['gradedTestsEnabled'] is False
+                  assert data['entries']['rl-asteroids']['cs']['title']=='Asteroidy'
+                  assert data['entries']['rl-asteroids']['fr']['title']=='Astéroïdes'
+                  assert data['entries']['cl-skola']['es']['title']=='Mi escuela'
+                  pairs=0
+                  for card in cards['entries']:
+                      row=data['entries'][card['id']]
+                      expected={'cs'}|set(card['languages'])
+                      assert set(row)==expected,card['id']
+                      for lang,text in row.items():
+                          assert text['title'] and text['summary'],(card['id'],lang)
+                          pairs+=1
+                  assert pairs==136,pairs
+                  version=json.loads(get('version.json'+suffix))
+                  assert version['topicCount']==29 and version['variantCount']==642
+                  assert version['gradedTestsEnabled'] is False
+                  print('PASS R20 LIVE HTTPS: 29 topics, 136 translated descriptions, CZ default, 642 variants, NO grading',flush=True)
+                  print('https://ghrab-jazyky.github.io/language-skills-hub/',flush=True)
+                  sys.exit(0)
+              except Exception as e:
+                  print('Attempt %d/29: %s: %s'%(attempt,type(e).__name__,e),flush=True)
+                  if attempt==29:raise
+                  time.sleep(10)
+          PY
