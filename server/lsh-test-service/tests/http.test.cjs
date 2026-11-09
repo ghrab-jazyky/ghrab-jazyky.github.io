@@ -8,6 +8,7 @@ const TEACHER='teacher_verified_fixture_token_123456789';
 const ALICE='student_alice_fixture_token_123456789';
 const BOB='student_bob_fixture_token_123456789';
 let now=1762704000000,server,base,store;
+const throttleChecks=[];
 const artificialReading={
  topicId:'rl-asteroids',skill:'cteni',language:'en',level:'B2',
  revision:'r22-fixture-2026',title:'Imaginary Planet: Mock Reading',
@@ -54,9 +55,10 @@ function storage(){
    attempts.set(attempt.attemptId,{...attempt});
   },
   async getAttempt(id){return attempts.get(id)||null;},
-  async finalizeAttempt({attemptId,studentId,submittedAt,result}){
+  async finalizeAttempt({attemptId,studentId,submittedAt,expiresAt,result}){
    const attempt=attempts.get(attemptId);
-   if(!attempt||attempt.studentId!==studentId||attempt.status!=='active')return false;
+   if(!attempt||attempt.studentId!==studentId||attempt.status!=='active'||
+      attempt.expiresAt!==expiresAt||submittedAt>=expiresAt)return false;
    // This mocked in-memory operation is atomic in the single-threaded test harness.
    // Production MUST use a conditional database write + durable transaction.
    attempt.status='submitted';attempt.submittedAt=submittedAt;attempt.result=result;
@@ -83,7 +85,7 @@ function service(opts={}){
   studentAuth:async ({token})=>token===ALICE?
    {subjectId:'student-alice-pseudonym',role:'student'}:
    token===BOB?{subjectId:'student-bob-pseudonym',role:'student'}:null,
-  throttle:{check:async()=>true},
+  throttle:{check:async bucket=>{throttleChecks.push(bucket);return true;}},
   ...opts
  });
  if(!Object.hasOwn(opts,'store'))store=ownStore;
@@ -160,6 +162,10 @@ test('R22 teacher session -> student attempt -> one server submission -> feedbac
  assert.equal(made.status,201);
  assert.equal(made.data.skill,'cteni');
  assert.equal(made.data.authenticationRequired,true);
+ assert.deepEqual(throttleChecks.slice(-2).map(bucket=>bucket.scope),['peer','token']);
+ assert.match(throttleChecks.at(-2).keyDigest,/^[a-f0-9]{64}$/);
+ assert.match(throttleChecks.at(-1).keyDigest,/^[a-f0-9]{64}$/);
+ assert.match(store.sessions.get(made.data.sessionId).bankSha256,/^[a-f0-9]{64}$/);
  assert.equal(made.data.mediaControlledByTeacher,false);
  assert.equal(made.headers.get('cache-control'),'no-store, private');
  assert.equal(made.headers.get('access-control-allow-origin'),null);
@@ -169,6 +175,7 @@ test('R22 teacher session -> student attempt -> one server submission -> feedbac
  assert.equal(started.status,201);
  const attemptId=started.data.attemptId;
  assert.match(attemptId,/^[A-Za-z0-9_-]{32}$/);
+ assert.equal(store.attempts.get(attemptId).bankSha256,store.sessions.get(sessionId).bankSha256);
  mustNotLeak(started.data);
  assert.equal(started.data.test.restrictions.dictionaryEnabled,false);
  assert.equal(started.data.test.restrictions.myVocabularyEnabled,false);
@@ -257,6 +264,41 @@ test('R22 concurrent duplicate submission makes only one atomic commit',async()=
  assert.equal(after.status,200);
  assert.equal(store.attempts.get(a.data.attemptId).status,'submitted');
  console.log('PASS R22 simultaneous submit at most one committed result, duplicate returns 409');
+});
+test('R22 pins the private answer key even if the revision label is unchanged',async()=>{
+ const s=await createTeacherSession();
+ const a=await startAttempt(s.data.sessionId,BOB);
+ const saved=artificialReading.tasks[0].correct;
+ artificialReading.tasks[0].correct='opone';
+ try{
+  const read=await request('/v1/student/attempts/'+a.data.attemptId,BOB);
+  assert.equal(read.status,409);
+  assert.equal(read.data.error,'BANK_CONTENT_CHANGED');
+  const submit=await request('/v1/student/attempts/'+a.data.attemptId+'/submit',BOB,{
+   method:'POST',body:{answers:{q1:'opone'}}});
+  assert.equal(submit.status,409);
+  assert.equal(store.attempts.get(a.data.attemptId).status,'active');
+ }finally{artificialReading.tasks[0].correct=saved;}
+ console.log('PASS R22 immutable bank content even when revision is unchanged');
+});
+test('R22 rejects submissions crossing the deadline while awaiting the bank',async()=>{
+ const s=await createTeacherSession();
+ const a=await startAttempt(s.data.sessionId,BOB);
+ const saved=bank.load;let crossed=false;
+ bank.load=async function(selection){
+  const def=await saved.call(this,selection);
+  if(selection.bankSha256){now+=1201000;crossed=true;}
+  return def;
+ };
+ try{
+  const submitted=await request('/v1/student/attempts/'+a.data.attemptId+'/submit',BOB,{
+   method:'POST',body:{answers:{q1:'optwo'}}});
+  assert.equal(crossed,true);
+  assert.equal(submitted.status,410);
+  assert.equal(submitted.data.error,'TIME_EXPIRED');
+  assert.equal(store.attempts.get(a.data.attemptId).status,'active');
+ }finally{bank.load=saved;}
+ console.log('PASS R22 deadline is rechecked after asynchronous bank lookup');
 });
 test('R22 strict CORS only allows exact configured school Pages origin, without credentials wildcard',async()=>{
  const cors=await request('/v1/teacher/sessions',TEACHER,{method:'POST',
