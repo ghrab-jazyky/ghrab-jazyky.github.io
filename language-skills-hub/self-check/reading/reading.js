@@ -6,6 +6,7 @@
  'use strict';
  const core=window.LSHReadingCore;
  const resultsCore=window.LSHResultCore;
+ const gradeCore=window.LSHGradeCore;
  const $=id=>document.getElementById(id);
  const add=(tag,cls,text)=>{
   const e=document.createElement(tag);
@@ -15,11 +16,11 @@
  };
  const T={
   en:{
-   mode:'SELF-CHECK · NOT GRADED',themeLight:'☀ Light',themeDark:'☾ Dark',
+   mode:'LOCAL GRADE 1–5 · TEACHER REVIEW',themeLight:'☀ Light',themeDark:'☾ Dark',
    topic:'READING LAB · LOCAL SELF-CHECK',loading:'Loading the original reading questions…',
    error:'The Reading self-check could not be loaded.',
    lead:'Read the text and answer every question. Solutions appear only after you submit.',
-   security:'This is a local practice self-check, NOT a secure or graded exam. Answer keys are publicly available in the existing practice cards. Your responses are not sent anywhere.',
+   security:'This test calculates a proposed grade 1–5 after submission. It is not a secure school exam: answer keys are public, attempts can be restarted, and no results are sent to a teacher. The teacher must verify the result.',
    reading:'READING TEXT',questions:'COMPREHENSION',remaining:'questions left',answered:'answered',
    gap:'This sentence has been removed. Choose the missing sentence in the tasks.',
    mc:'Choose one answer',match:'Match to the paragraph',gapType:'Choose the missing sentence',
@@ -31,17 +32,18 @@
    points:'Points',percentage:'Success rate',grade:'No official school grade',
    review:'Review your answers',right:'Correct',wrong:'Incorrect',
    notAnswered:'No answer',your:'Your answer',expected:'Correct answer',because:'Explanation',
-   after:'The result is local, can be modified and is not verified by the school. No grade was issued.',
+   after:'The proposed grade uses exact unrounded percentages and a provisional language scale. It is not a verified school record.',
    reflectionAfter:'The optional open reflection was not assessed automatically.',
    footer:'Public practice content · no login, no uploaded student results, no official school grade.',
+   gradeProposal:'Suggested grade (1–5)',gradeWarning:'Unverified local proposal. The teacher must confirm any school grade.',
    loadingFailed:'Loading failed'
   },
   es:{
-   mode:'AUTOEVALUACIÓN · SIN NOTA',themeLight:'☀ Claro',themeDark:'☾ Oscuro',
+   mode:'PROPUESTA DE NOTA 1–5 · REVISIÓN DOCENTE',themeLight:'☀ Claro',themeDark:'☾ Oscuro',
    topic:'READING LAB · AUTOEVALUACIÓN LOCAL',loading:'Cargando las actividades originales…',
    error:'No se ha podido cargar la actividad de lectura.',
    lead:'Lee el texto y responde a las preguntas. Las soluciones aparecerán solo después de entregar.',
-   security:'Esta es una actividad local de autoevaluación, NO un examen seguro ni calificado. Las soluciones están disponibles en las tarjetas públicas de práctica. Tus respuestas no se envían a ningún servidor.',
+   security:'Esta actividad calcula una nota propuesta (1–5) tras la entrega. No es un examen escolar seguro: las soluciones son públicas y puedes repetir. Las respuestas no se envían al docente, que debe verificar el resultado.',
    reading:'TEXTO',questions:'COMPRENSIÓN',remaining:'preguntas pendientes',answered:'respondidas',
    gap:'Se ha eliminado una oración. Elige la que falta en las actividades.',
    mc:'Elige una respuesta',match:'Relaciona con el párrafo',gapType:'Elige la oración que falta',
@@ -53,17 +55,18 @@
    points:'Puntos',percentage:'Porcentaje',grade:'Sin calificación oficial',
    review:'Revisa tus respuestas',right:'Correcto',wrong:'Incorrecto',
    notAnswered:'Sin responder',your:'Tu respuesta',expected:'Respuesta correcta',because:'Explicación',
-   after:'El resultado es local, se puede modificar y no está verificado por el centro. No se ha asignado ninguna nota.',
+   after:'La propuesta usa el porcentaje exacto sin redondeo y una escala provisional. No es una calificación escolar verificada.',
    reflectionAfter:'La reflexión abierta opcional no se ha evaluado automáticamente.',
    footer:'Contenido público de práctica · sin registro ni envío de resultados · sin nota oficial.',
+   gradeProposal:'Nota propuesta (1–5)',gradeWarning:'Propuesta local sin verificación. El docente debe confirmar la nota escolar.',
    loadingFailed:'Error de carga'
   },
   de:{
-   mode:'SELBSTTEST · OHNE NOTE',themeLight:'☀ Hell',themeDark:'☾ Dunkel',
+   mode:'NOTENVORSCHLAG 1–5 · LEHRKRAFT PRÜFT',themeLight:'☀ Hell',themeDark:'☾ Dunkel',
    topic:'READING LAB · LOKALER SELBSTTEST',loading:'Die ursprünglichen Leseaufgaben werden geladen…',
    error:'Der Lese-Selbsttest konnte nicht geladen werden.',
    lead:'Lies den Text und beantworte die Fragen. Lösungen erscheinen erst nach der Abgabe.',
-   security:'Dies ist ein lokaler Selbsttest zum Üben, KEINE gesicherte oder benotete Prüfung. Die Lösungen sind in den öffentlichen Übungskarten zugänglich. Deine Antworten werden nicht an einen Server gesendet.',
+   security:'Diese Aufgabe zeigt nach der Abgabe einen Notenvorschlag (1–5). Sie ist keine sichere Schulprüfung: Lösungen sind öffentlich, Versuche wiederholbar und Antworten werden nicht gesendet. Lehrkräfte müssen das Ergebnis prüfen.',
    reading:'LESETEXT',questions:'TEXTVERSTÄNDNIS',remaining:'Fragen offen',answered:'beantwortet',
    gap:'Ein Satz wurde entfernt. Wähle in den Aufgaben den passenden Satz aus.',
    mc:'Wähle eine Antwort',match:'Ordne dem Absatz zu',gapType:'Wähle den fehlenden Satz',
@@ -75,17 +78,18 @@
    points:'Punkte',percentage:'Erfolgsquote',grade:'Keine offizielle Schulnote',
    review:'Antworten überprüfen',right:'Richtig',wrong:'Falsch',
    notAnswered:'Keine Antwort',your:'Deine Antwort',expected:'Richtige Antwort',because:'Erklärung',
-   after:'Das Ergebnis ist lokal, veränderbar und nicht von der Schule überprüft. Es wurde keine Note vergeben.',
+   after:'Der Vorschlag basiert auf exakten Prozentwerten ohne Rundung und einer vorläufigen Skala. Er ist keine bestätigte Schulnote.',
    reflectionAfter:'Die freiwillige offene Reflexion wurde nicht automatisch bewertet.',
    footer:'Öffentliche Übungsinhalte · keine Anmeldung, keine Übermittlung der Antworten, keine Schulnote.',
+   gradeProposal:'Notenvorschlag (1–5)',gradeWarning:'Unverifizierter Vorschlag. Die Lehrkraft muss jede Schulnote bestätigen.',
    loadingFailed:'Ladefehler'
   },
   fr:{
-   mode:'AUTOÉVALUATION · SANS NOTE',themeLight:'☀ Clair',themeDark:'☾ Sombre',
+   mode:'PROPOSITION DE NOTE 1–5 · VALIDATION ENSEIGNANT',themeLight:'☀ Clair',themeDark:'☾ Sombre',
    topic:'READING LAB · AUTOÉVALUATION LOCALE',loading:'Chargement des exercices de lecture d’origine…',
    error:'Impossible de charger cette autoévaluation de lecture.',
    lead:'Lis le texte et réponds aux questions. Les solutions ne s’affichent qu’après l’envoi.',
-   security:'Il s’agit d’une autoévaluation locale, PAS d’un examen sécurisé ou noté. Les corrigés figurent dans les cartes d’entraînement publiques. Tes réponses ne sont transmises à aucun serveur.',
+   security:'Cette activité calcule une proposition de note (1–5) après la remise. Ce n’est pas un examen scolaire sécurisé : les corrigés sont publics et on peut recommencer. Les réponses ne sont pas envoyées à l’enseignant, qui doit vérifier le résultat.',
    reading:'TEXTE À LIRE',questions:'COMPRÉHENSION',remaining:'questions restantes',answered:'répondues',
    gap:'Une phrase a été retirée du texte. Choisis la phrase manquante dans les exercices.',
    mc:'Choisis une réponse',match:'Associe au paragraphe',gapType:'Choisis la phrase manquante',
@@ -97,9 +101,10 @@
    points:'Points',percentage:'Taux de réussite',grade:'Aucune note scolaire officielle',
    review:'Vérifie tes réponses',right:'Correct',wrong:'Incorrect',
    notAnswered:'Sans réponse',your:'Ta réponse',expected:'Bonne réponse',because:'Explication',
-   after:'Le résultat est local, modifiable et non vérifié par l’établissement. Aucune note n’a été attribuée.',
+   after:'La proposition est calculée sur le pourcentage exact, sans arrondi, à partir d’un barème provisoire. Ce n’est pas une note scolaire vérifiée.',
    reflectionAfter:'La réflexion ouverte facultative n’a pas été évaluée automatiquement.',
    footer:'Exercices publics · sans connexion ni envoi des résultats · aucune note officielle.',
+   gradeProposal:'Note proposée (1–5)',gradeWarning:'Proposition locale non vérifiée. L’enseignant doit confirmer la note scolaire.',
    loadingFailed:'Échec du chargement'
   }
  };
@@ -224,6 +229,13 @@
  }
  function renderResult(report){
   $('resultCaution').textContent=ui.after+' '+ui.grade+'.';
+  const proposal=gradeCore.proposal(report.points,report.maxPoints);
+  $('gradeProposal').replaceChildren();
+  $('gradeProposal').append(
+   add('span','grade-caption',ui.gradeProposal),
+   add('strong','grade-number',String(proposal.grade)),
+   add('p','small-note',ui.gradeWarning)
+  );
   const normalized=resultsCore.reviewReading(report);
   const tiles=resultsCore.scoreTiles(normalized,{
    points:ui.points,objectivePercent:ui.percentage,
