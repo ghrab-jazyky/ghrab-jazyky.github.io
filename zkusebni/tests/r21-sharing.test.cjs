@@ -33,7 +33,7 @@ test('R21 user-facing controls, selectable links, WCAG labels and accessible raw
  assert.match(js,/field\.select\(\)/);
  assert.match(js,/field\.setSelectionRange\(0,field\.value\.length\)/);
  assert.match(js,/navigator\.clipboard\.writeText\(qrUrl\)/);
- assert.match(js,/qrMount\.replaceChildren\(\)/);
+ assert.match(js,/mount\.replaceChildren\(\)/);
  assert.match(js,/const svg=window\.CLBQRCode\.svg\(qrUrl\)/);
  assert.match(js,/shareEntry=null;qrUrl=''/);
  assert.match(js,/byId\('shareFree'\)\.checked=true/);
