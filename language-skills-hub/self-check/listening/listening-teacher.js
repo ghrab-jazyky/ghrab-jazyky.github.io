@@ -4,6 +4,7 @@
  const core=window.LSHListeningCore,shareTools=window.LSHShareTools;
  const $=id=>document.getElementById(id);
  const params=new URLSearchParams(location.search);
+ const attemptId='class'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
  let passes=0,sequence=0;
  const names={
   'll-matthew-oscars':'Matthew McConaughey · Oscars 2014',
@@ -39,9 +40,18 @@
   url.search='';
   url.searchParams.set('topic',$('topic').value);
   url.searchParams.set('level',$('level').value);
+  url.searchParams.set('timer',$('timerMinutes').value);
+  url.searchParams.set('attempt',attemptId);
   return url.href;
  }
  function share(){
+  const limit=Number($('timerMinutes').value);
+  if(!Number.isInteger(limit)||limit<5||limit>120){
+   $('studentUrl').value='';$('studentPreview').href='#';
+   shareTools.render('',$('qrMount'),$('downloadQr'));
+   $('copyStatus').textContent='Vyber platný časový limit 5–120 minut.';
+   return;
+  }
   const link=urlForStudent();
   $('studentUrl').value=link;
   $('studentPreview').href=link;
@@ -49,6 +59,7 @@
   const locationUrl=new URL(location.href);
   locationUrl.searchParams.set('topic',$('topic').value);
   locationUrl.searchParams.set('level',$('level').value);
+  locationUrl.searchParams.set('timer',String(limit));
   history.replaceState(null,'',locationUrl);
  }
  async function loadSources(){
@@ -102,8 +113,12 @@
   initTheme();
   $('topic').value=core.TOPICS.includes(params.get('topic'))?params.get('topic'):'ll-matthew-oscars';
   $('level').value=core.LEVELS.includes(params.get('level'))?params.get('level'):'B2';
+  const preset=Number(params.get('timer'));
+  $('timerMinutes').value=Number.isInteger(preset)&&preset>=5&&preset<=120?String(preset):'30';
   $('topic').addEventListener('change',loadSources);
   $('level').addEventListener('change',loadSources);
+  $('timerMinutes').addEventListener('input',share);
+  $('timerMinutes').addEventListener('change',share);
   $('markPass').addEventListener('click',()=>{if(passes<2){passes++;count()}});
   $('resetPass').addEventListener('click',()=>{passes=0;count()});
   $('copyUrl').addEventListener('click',copy);
