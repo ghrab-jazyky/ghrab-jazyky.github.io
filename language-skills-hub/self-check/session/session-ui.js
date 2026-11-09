@@ -92,7 +92,7 @@
   overlay.append(panel,corners);
   workspace.before(intro,bar);
   workspace.parentElement.appendChild(overlay);
-  let initialized=false,autoSubmitting=false;
+  let initialized=false,autoSubmitting=false,lastPhase=null;
   function displayTime(ms){
    const seconds=Math.max(0,Math.ceil(ms/1000));
    return String(Math.floor(seconds/60)).padStart(2,'0')+':'+
@@ -104,10 +104,16 @@
    workspace.hidden=state.phase==='ready';
    bar.hidden=state.phase==='ready';
    overlay.hidden=state.phase!=='interrupted';
+   if(state.phase==='interrupted'&&lastPhase!=='interrupted'){
+    next=0;
+    const first=corners.querySelector('button');if(first)first.focus({preventScroll:true});
+   }
+   if(state.phase==='interrupted')workspace.setAttribute('inert','');
+   else workspace.removeAttribute('inert');
+   lastPhase=state.phase;
    remaining.textContent=state.phase==='submitted'?ui.submitted:
     ui.remaining+': '+displayTime(state.remainingMs);
    warning.textContent=state.persistent?'':ui.saveWarning;
-   if(state.phase==='interrupted')next=0;
   }
   function autoSubmit(){
    if(!initialized||autoSubmitting)return;
@@ -121,6 +127,13 @@
   function tick(){render();autoSubmit();}
   start.addEventListener('click',()=>{
    if(engine.status().phase==='ready'){engine.start();render()}
+  });
+  let seenFullscreen=!!document.fullscreenElement;
+  document.addEventListener('fullscreenchange',()=>{
+   if(seenFullscreen&&!document.fullscreenElement&&engine.status().phase==='running'){
+    engine.interrupt('fullscreen-exit');render();
+   }
+   seenFullscreen=!!document.fullscreenElement;
   });
   document.addEventListener('visibilitychange',()=>{
    if(document.hidden&&engine.status().phase==='running'){
