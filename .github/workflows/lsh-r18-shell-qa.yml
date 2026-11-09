@@ -1,0 +1,35 @@
+name: LSH R18 teacher header theme/fullscreen regression (NO deployment)
+on:
+  push:
+    branches:
+      - feat/lsh-r18-theme-fullscreen-navigation-2026-11-09
+    paths:
+      - 'language-skills-hub/index.html'
+      - 'language-skills-hub/assets/hub.js'
+      - 'language-skills-hub/assets/hub.css'
+      - 'language-skills-hub/assets/theme-boot.js'
+      - 'zkusebni/tests/r18-*.test.cjs'
+      - '.github/workflows/lsh-r18-shell-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Source immutability and R18 UI accessibility checks
+        run: |
+          node --check language-skills-hub/assets/theme-boot.js
+          node --check language-skills-hub/assets/hub.js
+          node --test zkusebni/tests/r18-catalog-ui.test.cjs
+      - name: Install Chromium and WebKit for real-browser smoke
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Desktop/mobile real browser regression
+        run: node --test zkusebni/tests/r18-catalog-ui.browser.test.cjs

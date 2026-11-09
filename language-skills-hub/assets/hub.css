@@ -14,3 +14,64 @@ dialog{border:1px solid #83a5be;border-radius:16px;background:#10243a;color:var(
 .hidden{display:none!important}.empty{grid-column:1/-1;padding:30px;border:1px dashed #5a7692;border-radius:12px;color:var(--muted)}.skip{position:absolute;top:-60px;left:12px;background:white;color:#111;padding:8px;z-index:20}.skip:focus{top:8px}
 @media(max-width:680px){.controls{grid-template-columns:1fr 1fr}.controls>div:first-child{grid-column:1/-1}.card{min-height:0}.actions{justify-content:flex-start}.action{flex:1}.menu{gap:9px}header,main,footer{padding-left:15px;padding-right:15px}.counts{gap:8px}.counts div{flex:1;min-width:95px}.hero{padding:25px 0 12px}}
 @media(max-width:420px){.controls{grid-template-columns:1fr}.controls>div:first-child{grid-column:auto}.tabs .tab{flex:1}.counts div{min-width:80px;padding:9px}}
+
+
+/* R18 controls: keyboard-accessible buttons next to the simplified teacher navigation. */
+.header-actions{display:flex;align-items:center;gap:9px;margin-left:auto}
+.chrome-button{display:inline-flex;justify-content:center;align-items:center;gap:7px;min-height:44px;min-width:44px;padding:9px 12px;border:1px solid var(--line);background:var(--panel);color:var(--fg);border-radius:11px;font-weight:650;font-size:.85rem;white-space:nowrap;transition:background-color .16s,border-color .16s}
+.chrome-button:hover{border-color:var(--accent)}
+.chrome-button[aria-pressed="true"]{border-color:var(--accent)}
+.chrome-icon{display:inline-flex;align-items:center;justify-content:center;min-width:1.35em;font-size:1.25rem;line-height:1}
+.chrome-label{line-height:1.15}
+
+/* Explicit light palette covers every dark-only surface in the existing R17 UI.
+   Theme changes only the catalog; student card styles remain untouched. */
+:root[data-theme="light"]{
+ --bg:#f4f8fc;--panel:#fff;--panel2:#e9f2fa;--fg:#132b43;
+ --muted:#3e5771;--line:#a9c0d4;--accent:#086579;--gold:#946018;
+ color-scheme:light
+}
+:root[data-theme="light"] body{
+ background:radial-gradient(circle at 85% 5%,#d6eaf8 0,transparent 38%),var(--bg)
+}
+:root[data-theme="light"] .brand{color:#142d43}
+:root[data-theme="light"] .menu a{color:#355672}
+:root[data-theme="light"] .counts div{background:#e9f3fc;border-color:var(--line)}
+:root[data-theme="light"] input,
+:root[data-theme="light"] select{background:#fff;color:var(--fg);border-color:#6c8ba6}
+:root[data-theme="light"] .tab{background:#eaf3fb;color:var(--fg);border-color:var(--line)}
+:root[data-theme="light"] .tab[aria-pressed="true"]{
+ background:#c7e8ee;border-color:#18768a;color:#103b48
+}
+:root[data-theme="light"] .card{
+ background:linear-gradient(158deg,#fff,#eaf3fa);border-color:var(--line)
+}
+:root[data-theme="light"] .action{
+ background:#d5e8f6;border-color:#678aa4;color:#173950
+}
+:root[data-theme="light"] .action.primary{
+ background:#087082;border-color:#087082;color:#fff
+}
+:root[data-theme="light"] .footnote{background:#eaf3fb;border-color:#aa7b31}
+:root[data-theme="light"] dialog{
+ background:#fff;border-color:#769ab5;color:var(--fg);box-shadow:0 20px 90px #0e26374d
+}
+:root[data-theme="light"] .chrome-button{background:#fff;color:var(--fg)}
+:root[data-theme="light"] #toast{background:#d8f0e9;color:#10382f;border-color:#599c89;box-shadow:0 8px 25px #0e263733}
+:root[data-theme="light"] .empty{border-color:#8cabc2}
+:root[data-theme="light"] .note{color:var(--muted)}
+:root[data-theme="light"] .skip{background:#fff;color:#111}
+@media(max-width:680px){
+ .topbar{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand actions" "menu menu";gap:8px 10px}
+ .topbar .brand{grid-area:brand;min-width:0}
+ .topbar .header-actions{grid-area:actions;justify-self:end;margin-left:0;gap:7px}
+ .topbar .menu{grid-area:menu;justify-content:flex-end;gap:10px}
+ .chrome-label{display:none}
+ .chrome-button{padding:8px;min-width:44px;min-height:44px}
+}
+@media(max-width:420px){
+ .topbar .brand{font-size:.82rem;letter-spacing:.025em}
+}
+@media(prefers-reduced-motion:reduce){
+ .chrome-button{transition:none}
+}

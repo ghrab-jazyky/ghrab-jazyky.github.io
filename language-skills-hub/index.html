@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="cs">
+<html lang="cs" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -7,6 +7,7 @@
 <meta name="description" content="Language Skills Hub – Conversation Lab, Reading Lab a Listening Lab na jednom místě. 29 témat, interaktivní procvičování A1–C2.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; font-src 'self'; connect-src 'self'; frame-src https:; form-action 'none'">
 <title>Language Skills Hub – jazykové laboratoře</title>
+<script src="assets/theme-boot.js"></script>
 <link rel="stylesheet" href="assets/hub.css">
 <script defer src="assets/qr.js"></script>
 <script defer src="assets/hub.js"></script>
@@ -16,15 +17,21 @@
 <header><div class="topbar">
 <a class="brand" href="./" aria-label="Language Skills Hub – úvod">LANGUAGE <span>SKILLS</span> HUB</a>
 <nav class="menu" aria-label="Hlavní navigace">
-<a href="#catalog">Katalog aktivit</a>
 <a href="#howto">Jak to funguje</a>
-<a href="../slovnicek/">Můj slovníček</a>
 </nav>
+<div class="header-actions" role="group" aria-label="Nastavení zobrazení">
+<button type="button" class="chrome-button" id="themeToggle" aria-label="Zapnout denní režim" aria-pressed="false" title="Zapnout denní režim">
+<span class="chrome-icon" id="themeIcon" aria-hidden="true">☀</span><span class="chrome-label" id="themeLabel">Denní režim</span>
+</button>
+<button type="button" class="chrome-button" id="fullscreenToggle" aria-label="Přejít na celou obrazovku" aria-pressed="false" title="Přejít na celou obrazovku">
+<span class="chrome-icon" id="fullscreenIcon" aria-hidden="true">⛶</span><span class="chrome-label" id="fullscreenLabel">Celá obrazovka</span>
+</button>
+</div>
 </div></header>
 <main id="main">
-<section class="hero" aria-labelledby="title">
+<section class="hero" aria-labelledby="homeTitle">
 <div class="eyebrow">Gymnázium Ostrava-Hrabůvka · jazykové vzdělávání</div>
-<h1>Tři dovednosti.<br><span>Jedno místo.</span></h1>
+<h1 id="homeTitle">Tři dovednosti.<br><span>Jedno místo.</span></h1>
 <p class="lead">Konverzace, čtení a poslech v jednotném katalogu. Vyber si aktivitu, jazyk a úroveň, nebo otevři odkaz či QR kód od učitele.</p>
 <div class="counts"><div><strong>21</strong>Conversation</div><div><strong>5</strong>Reading</div><div><strong>3</strong>Listening</div></div>
 </section>
