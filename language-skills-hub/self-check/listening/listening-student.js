@@ -335,9 +335,11 @@
        }
       }
      }
+     const usedSequence=new Set();
      for(let i=0;i<chosen.sequence.length;i++){
       const value=saved.sequence?.[i];
-      if(!Number.isInteger(value)||value<0||value>=chosen.sequence.length)continue;
+      if(!Number.isInteger(value)||value<0||value>=chosen.sequence.length||usedSequence.has(value))continue;
+      usedSequence.add(value);
       answers.sequence[i]=value;
       const sel=$('seq-'+i);if(sel)sel.value=String(value);
      }
