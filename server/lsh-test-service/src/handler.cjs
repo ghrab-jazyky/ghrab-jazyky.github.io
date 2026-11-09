@@ -17,6 +17,15 @@ const sessionIdValid=s=>typeof s==='string'&&/^[A-Za-z0-9_-]{28,80}$/.test(s);
 const tokenValue=s=>typeof s==='string'&&/^Bearer [A-Za-z0-9._~-]{20,2048}$/.test(s);
 const epoch=()=>Date.now();
 const freshId=()=>randomBytes(24).toString('base64url');
+// Private SHA-256 seal pins exact questions and answer keys to a session.
+function canonicalJson(value){
+ if(Array.isArray(value))return '['+value.map(canonicalJson).join(',')+']';
+ if(isRecord(value))return '{'+Object.keys(value).filter(key=>value[key]!==undefined)
+  .sort().map(key=>JSON.stringify(key)+':'+canonicalJson(value[key])).join(',')+'}';
+ return JSON.stringify(value);
+}
+const bankFingerprint=definition=>createHash('sha256')
+ .update(canonicalJson(definition)).digest('hex');
 const METHODS=[
  ['bank.load','bank','load'],['store.createSession','store','createSession'],
  ['store.getSession','store','getSession'],['store.createAttempt','store','createAttempt'],
@@ -92,9 +101,18 @@ function createHandler(options={}){
    throw ERROR(401,'AUTH_REQUIRED','Bearer authentication required');
   const token=authorization.slice(7);
   const tokenDigest=createHash('sha256').update(token).digest('hex');
-  if(await throttle.check({route:req.url.split('?')[0],method:req.method,
-   tokenDigest})!==true)
-   throw ERROR(429,'RATE_LIMIT','Request frequency exceeded');
+  // Also limit by actual transport peer: rotating invalid tokens must not evade limits.
+  // Never trust client-controlled X-Forwarded-For.
+  const peerDigest=createHash('sha256')
+   .update(String(req.socket?.remoteAddress||'unknown')).digest('hex');
+  const route=req.url.split('?')[0],method=req.method;
+  for(const bucket of [
+   {scope:'peer',keyDigest:peerDigest,route,method},
+   {scope:'token',keyDigest:tokenDigest,route,method}
+  ]){
+   if(await throttle.check(bucket)!==true)
+    throw ERROR(429,'RATE_LIMIT','Request frequency exceeded');
+  }
   // Auth adapters MUST validate signatures, expiry, audience and role server-side.
   const provider=role==='teacher'?teacherAuth:studentAuth;
   let principal;
@@ -114,6 +132,8 @@ function createHandler(options={}){
      definition.language!==selection.language||definition.level!==selection.level||
      (selection.revision!==undefined&&definition.revision!==selection.revision))
    throw ERROR(409,'REVISION_MISMATCH','Test bank revision has changed');
+  if(selection.bankSha256!==undefined&&bankFingerprint(definition)!==selection.bankSha256)
+   throw ERROR(409,'BANK_CONTENT_CHANGED','Approved test content changed during the session');
   return definition;
  }
  function validateSelection(data){
@@ -134,7 +154,7 @@ function createHandler(options={}){
  }
  async function getDefinitionForAttempt(attempt){
   return loadBank({topicId:attempt.topicId,language:attempt.language,
-   level:attempt.level,revision:attempt.revision});
+   level:attempt.level,revision:attempt.revision,bankSha256:attempt.bankSha256});
  }
  async function execute(req,method,url){
   if(method==='POST'&&url.pathname==='/v1/teacher/sessions'){
@@ -145,7 +165,8 @@ function createHandler(options={}){
    await store.createSession({sessionId,teacherId:teacher.subjectId,
     topicId:definition.topicId,skill:definition.skill,
     language:definition.language,level:definition.level,
-    revision:definition.revision,issuedAt,expiresAt});
+    revision:definition.revision,bankSha256:bankFingerprint(definition),
+    issuedAt,expiresAt});
    return {status:201,data:{sessionId,topicId:definition.topicId,skill:definition.skill,
     language:definition.language,level:definition.level,
     revision:definition.revision,expiresAt,
@@ -158,8 +179,11 @@ function createHandler(options={}){
    const session=await store.getSession(body.sessionId);
    if(!session||session.expiresAt<=now()||session.closed===true)
     throw ERROR(404,'NOT_FOUND','Active session not found');
+   if(!/^[a-f0-9]{64}$/.test(session.bankSha256||''))
+    throw ERROR(409,'BANK_NOT_PINNED','Session integrity seal is missing');
    const definition=await loadBank({topicId:session.topicId,
-    language:session.language,level:session.level,revision:session.revision});
+    language:session.language,level:session.level,
+    revision:session.revision,bankSha256:session.bankSha256});
    const startedAt=now(),expiresAt=Math.min(
     startedAt+definition.timeLimitSeconds*1000,session.expiresAt);
    const attemptId=freshId();
@@ -167,7 +191,8 @@ function createHandler(options={}){
    await store.createAttempt({attemptId,sessionId:body.sessionId,
     studentId:student.subjectId,topicId:session.topicId,
     skill:definition.skill,language:session.language,level:session.level,
-    revision:session.revision,startedAt,expiresAt,status:'active'});
+    revision:session.revision,bankSha256:session.bankSha256,
+    startedAt,expiresAt,status:'active'});
    return {status:201,data:{attemptId,startedAt,expiresAt,
     test:safeStudentDefinition(definition)}};
   }
@@ -200,9 +225,13 @@ function createHandler(options={}){
    const body=await readJson(req);exactKeys(body,['answers']);
    const definition=await getDefinitionForAttempt(attempt);
    const result=scoreSubmitted(definition,body.answers);
-   // MUST be one durable atomic transaction. Never send corrections before COMMIT.
+   // Check again after the complete body, validation and async bank lookup.
+   const submittedAt=now();
+   if(submittedAt>=attempt.expiresAt)
+    throw ERROR(410,'TIME_EXPIRED','Test time has expired');
+   // Production DB must atomically enforce submittedAt < stored expiresAt.
    const committed=await store.finalizeAttempt({attemptId:attempt.attemptId,
-    studentId:student.subjectId,submittedAt:now(),result});
+    studentId:student.subjectId,submittedAt,expiresAt:attempt.expiresAt,result});
    if(committed!==true)
     throw ERROR(409,'ATTEMPT_CLOSED','Submission already recorded');
    return {status:200,data:{attemptId:attempt.attemptId,...result}};
