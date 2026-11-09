@@ -1,0 +1,64 @@
+name: LSH LIVE – verify published practice catalog and every card
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/**'
+      - '.github/workflows/lsh-live-site-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-live-github-pages:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - name: Verify public Pages HTML, JSON and all 29 cards via HTTPS
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json,time,urllib.request,urllib.error,sys
+          base='https://ghrab-jazyky.github.io'
+          def get(path):
+              req=urllib.request.Request(base+path,headers={
+                'User-Agent':'LSH-live-deployment-healthcheck/1.0','Cache-Control':'no-cache'})
+              with urllib.request.urlopen(req,timeout=18) as r:
+                  assert r.status==200,(path,r.status)
+                  return r.read()
+          def head(path):
+              req=urllib.request.Request(base+path,method='HEAD',headers={
+                'User-Agent':'LSH-live-deployment-healthcheck/1.0'})
+              with urllib.request.urlopen(req,timeout=18) as r:
+                  assert r.status==200,(path,r.status)
+          for attempt in range(1,22):
+              try:
+                  home=get('/language-skills-hub/?verify='+str(attempt)).decode('utf-8')
+                  assert 'Tři dovednosti.' in home and 'Katalog aktivit' in home
+                  data=json.loads(get('/language-skills-hub/data/cards.json?verify='+str(attempt)))
+                  assert data['kind']=='LSH_PUBLIC_PRACTICE_R17'
+                  assert data['gradedTestsEnabled'] is False
+                  entries=data['entries']
+                  assert len(entries)==29
+                  skills={}
+                  for e in entries:skills[e['skill']]=skills.get(e['skill'],0)+1
+                  assert skills=={'konverzace':21,'cteni':5,'poslech':3}
+                  root=get('/?verify='+str(attempt)).decode('utf-8')
+                  assert 'href="language-skills-hub/"' in root
+                  head('/zkusebni/')
+                  for e in entries:
+                      head('/language-skills-hub/'+e['relative'])
+                      if e.get('lockSource'):
+                          head('/language-skills-hub/'+e['lockSource'])
+                  for asset in ['assets/hub.css','assets/hub.js','assets/qr.js',
+                    'assets/lsh/v2/lock.js','assets/lsh/v3/model.js',
+                    'assets/lsh/v3/card-bridge.js','assets/lsh/v3/card-bridge.css',
+                    'assets/lsh/v3/store.js']:
+                      head('/language-skills-hub/'+asset)
+                  print('PASS LIVE HTTPS: root link + 29 student cards + 4 R7 adapters + 8 assets, no graded tests',flush=True)
+                  print('PRODUCTION URL:',base+'/language-skills-hub/',flush=True)
+                  sys.exit(0)
+              except Exception as ex:
+                  print(f'Attempt {attempt}/21: {type(ex).__name__}: {ex}',flush=True)
+                  if attempt==21:raise
+                  time.sleep(12)
+          PY
