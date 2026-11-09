@@ -6,7 +6,7 @@
   downloadButton.disabled=true;
   if(!url)return false;
   try{
-   if(!host.CLBQRCode||typeof host.CLBQRCode.svg!=='function)
+   if(!host.CLBQRCode||typeof host.CLBQRCode.svg!=='function')
     throw new Error('QR module not available');
    const svg=host.CLBQRCode.svg(url);
    if(!svg||svg.nodeName.toLowerCase()!=='svg')throw new Error('Invalid SVG');
