@@ -33,7 +33,7 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#sessionLock:not([hidden])').waitFor();
    assert.equal(await page.locator('#workspace').getAttribute('inert'),'');
    for(const c of ['tl','tr','bl','br'])await page.locator('.lsh-corner-'+c).click();
-   await page.locator('#sessionLock[hidden]').waitFor();
+   await page.locator('#sessionLock').waitFor({state:'hidden'});
    assert.equal(await page.locator('#workspace').getAttribute('inert'),null);
    await page.locator('#submitButton').click();
    await page.locator('#results:not([hidden])').waitFor();
