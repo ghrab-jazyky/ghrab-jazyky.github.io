@@ -1,7 +1,7 @@
 {
   "name": "Language Skills Hub",
-  "version": "R17",
-  "mode": "public_practice",
+  "version": "R27",
+  "mode": "public_practice_and_local_self_check",
   "gradedTestsEnabled": false,
   "topicCount": 29,
   "variantCount": 642,
@@ -36,5 +36,9 @@
     "rl-email-friend": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
     "rl-instant-messages": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
     "cl-skola": "dd0d83ea18e4672bf9588f9d484807a8969768120d5775218e219f8c1fe71a17"
-  }
+  },
+  "sourceSnapshot": "R17",
+  "selfCheckEnabled": true,
+  "officialGradesEnabled": false,
+  "backendEnabled": false
 }
