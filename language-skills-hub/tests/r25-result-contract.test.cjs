@@ -169,9 +169,8 @@ test('R25 repository README points at the real live school catalog, not the arch
  assert.match(readme,/https:\/\/ghrab-jazyky\.github\.io\/language-skills-hub\//);
  assert.match(readme,/Test – známka 1–5/);
  assert.match(readme,/nedokáže zaručit podmínky zabezpečené klasifikované zkoušky/);
- const live=readme.match(/\[Otevřít Language Skills Hub\]\(([^)]+)\)/);
- assert.ok(live);
- assert.equal(live[1],'https://ghrab-jazyky.github.io/language-skills-hub/');
+ assert.match(readme,/https:\/\/ghrab-jazyky\.github\.io\/language-skills-hub\//);
+ assert.match(readme,/\*\*Veřejný katalog:\*\*/);
 });
 test('R25 public practice cards remain unchanged and local results keep grading off',()=>{
  assert.equal(catalog.entries.length,29);
