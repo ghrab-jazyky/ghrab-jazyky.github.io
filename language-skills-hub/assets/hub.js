@@ -9,6 +9,7 @@ const levels=['A1','A2','B1','B2','C1','C2'];
 const allowed=new Set(['konverzace','cteni','poslech']);
 let entries=[],translations=new Map(),skill=allowed.has(params.get('skill'))?params.get('skill'):null;
 let introTimer=null;
+let localSelfCheck=false;
 const welcome=byId('welcome'),chooser=byId('skillChooser'),catalog=byId('catalog');
 let qrUrl='', qrTitle='', shareEntry=null, toastTimeout=null;
 const qrDialog=byId('qrDialog'),qrMount=byId('qrMount');
@@ -62,6 +63,17 @@ function normalizeSearch(s){
  return String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'')
   .toLocaleLowerCase('cs').trim();
 }
+function testSetupUrl(e){
+ if(!['cteni','poslech'].includes(e.skill))return '';
+ const target=e.skill==='cteni'?
+  'self-check/reading/teacher.html':'self-check/listening/teacher.html';
+ const url=new URL(target,document.baseURI);
+ url.searchParams.set('topic',e.id);
+ const filter=byId('language').value,level=byId('level').value;
+ if(e.languages.includes(filter))url.searchParams.set('lang',filter);
+ if(e.levels.includes(level))url.searchParams.set('level',level);
+ return url.href;
+}
 function card(e){
  const filter=byId('language').value;
  const language=filter==='all'?'cs':filter;
@@ -88,7 +100,15 @@ function card(e){
  const share=one('button','action','Sdílet se studenty');share.type='button';
  share.setAttribute('aria-label','Sdílet se studenty: '+translation.title);
  share.addEventListener('click',()=>openShare(e));
- actions.append(open,share);article.appendChild(actions);
+ actions.append(open,share);
+ if(localSelfCheck&&['cteni','poslech'].includes(e.skill)){
+  const check=one('a','action test','Test bez známky');
+  check.href=testSetupUrl(e);check.target='_blank';check.rel='noopener noreferrer';
+  check.setAttribute('aria-label','Neklasifikované samostatné ověření: '+translation.title);
+  check.title='Správné odpovědi nejsou před prohlížečem technicky utajené.';
+  actions.appendChild(check);
+ }
+ article.appendChild(actions);
  return article;
 }
 function render(){
@@ -293,13 +313,21 @@ function saveQr(){
 }
 async function load(){
  try{
-  const [cardsResponse,i18nResponse]=await Promise.all([
+  const [cardsResponse,i18nResponse,policyResponse]=await Promise.all([
    fetch('data/cards.json',{cache:'no-store'}),
-   fetch('data/catalog-i18n.json',{cache:'no-store'})
+   fetch('data/catalog-i18n.json',{cache:'no-store'}),
+   fetch('data/test-mode-policy.json',{cache:'no-store'}).catch(()=>null)
   ]);
   if(!cardsResponse.ok||!i18nResponse.ok)
    throw new Error('HTTP '+cardsResponse.status+' / '+i18nResponse.status);
   const [body,i18n]=await Promise.all([cardsResponse.json(),i18nResponse.json()]);
+  const policy=policyResponse?.ok?
+   await policyResponse.json().catch(()=>null):null;
+  // Fail closed: optional test links require an explicit safe public policy.
+  localSelfCheck=policy?.status==='PUBLIC_LOCAL_SELF_CHECK_NO_GRADES'&&
+   policy?.backendEnabled===false&&policy?.gradedTestsEnabled===false&&
+   policy?.officialGradesEnabled===false&&policy?.selfCheckEnabled===true&&
+   policy?.testUiEnabled===true;
   if(body.kind!=='LSH_PUBLIC_PRACTICE_R17'||!Array.isArray(body.entries)||body.entries.length!==29)
    throw new Error('Katalog nemá očekávanou strukturu');
   if(i18n.kind!=='LSH_CATALOG_I18N_R20'||i18n.schemaVersion!==1||
