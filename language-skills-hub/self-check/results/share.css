@@ -1,0 +1,5 @@
+.share-result-qr{width:fit-content;min-height:140px;min-width:140px;max-width:100%;display:grid;place-items:center;border:1px solid var(--line);border-radius:14px;background:#fff;color:#10243b;padding:12px;margin:10px 0 20px;overflow:hidden}
+.share-result-qr svg{display:block;width:min(240px,65vw);height:auto;max-width:100%;aspect-ratio:1}
+.share-result-qr p{max-width:260px;color:#10243b;font-size:.8rem;padding:12px;line-height:1.4}
+.teacher-actions a[aria-disabled=true]{pointer-events:none;opacity:.45}
+.teacher-form select:disabled{opacity:.55}
