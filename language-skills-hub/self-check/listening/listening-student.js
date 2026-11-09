@@ -2,6 +2,7 @@
 (()=>{
  'use strict';
  const core=window.LSHListeningCore;
+ const resultsCore=window.LSHResultCore;
  const $=id=>document.getElementById(id);
  const element=(tag,cls,text)=>{
   const el=document.createElement(tag);
@@ -179,16 +180,18 @@
   box.appendChild(row);
  }
  function results(report){
-  const summary=$('scoreSummary');
-  summary.replaceChildren();
-  const tile=(a,b)=>{
+  const normalized=resultsCore.reviewListening(report);
+  const summary=$('scoreSummary');summary.replaceChildren();
+  const tiles=resultsCore.scoreTiles(normalized,{
+   points:'Objective tasks (points earned)',objectivePercent:'Objective success rate',
+   completion:'Tasks answered',manualReview:'Written answers requiring teacher review',
+   schoolGrade:'Official school grade',noGrade:'—'
+  },'en');
+  for(const tile of tiles){
    const item=element('div','score-value');
-   item.append(element('strong',null,a),element('span',null,b));
+   item.append(element('strong',null,tile.value),element('span',null,tile.label));
    summary.appendChild(item);
-  };
-  tile(report.objectiveCorrect+' / '+report.objectiveMax,'Objective tasks correct');
-  tile(report.objectivePercent.toFixed(2)+' %','Objective tasks only');
-  tile(report.writingReviewCount+'/'+report.writing.length,'Written answers awaiting teacher review');
+  }
   $('resultCaution').textContent=
    'The percentage covers only automatically checked choices and sequencing, not the written answers. The overall result is NOT final and no official school grade is issued. Answers and references are shown only after this page submission. This local result can be changed or restarted.';
   const list=$('resultDetails');list.replaceChildren();
