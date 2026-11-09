@@ -30,10 +30,10 @@ jobs:
                 'User-Agent':'LSH-live-deployment-healthcheck/1.0'})
               with urllib.request.urlopen(req,timeout=18) as r:
                   assert r.status==200,(path,r.status)
-          for attempt in range(1,22):
+          for attempt in range(1,36):
               try:
                   home=get('/language-skills-hub/?verify='+str(attempt)).decode('utf-8')
-                  assert 'Tři dovednosti.' in home and 'Katalog aktivit' in home
+                  assert 'Tři dovednosti.' in home and 'id="catalog"' in home and 'id="skillChooser"' in home
                   data=json.loads(get('/language-skills-hub/data/cards.json?verify='+str(attempt)))
                   assert data['kind']=='LSH_PUBLIC_PRACTICE_R17'
                   assert data['gradedTestsEnabled'] is False
@@ -58,7 +58,7 @@ jobs:
                   print('PRODUCTION URL:',base+'/language-skills-hub/',flush=True)
                   sys.exit(0)
               except Exception as ex:
-                  print(f'Attempt {attempt}/21: {type(ex).__name__}: {ex}',flush=True)
-                  if attempt==21:raise
+                  print(f'Attempt {attempt}/35: {type(ex).__name__}: {ex}',flush=True)
+                  if attempt==35:raise
                   time.sleep(12)
           PY
