@@ -3,11 +3,11 @@
 const byId=id=>document.getElementById(id);
 const params=new URLSearchParams(location.search);
 const titles={konverzace:'Conversation Lab',cteni:'Reading Lab',poslech:'Listening Lab'};
-const tags={konverzace:'Speaking',cteni:'Reading',poslech:'Listening'};
+const tags={konverzace:'Mluvení',cteni:'Čtení',poslech:'Poslech'};
 const labels={en:'English',es:'Español',de:'Deutsch',fr:'Français'};
 const levels=['A1','A2','B1','B2','C1','C2'];
 const allowed=new Set(['konverzace','cteni','poslech']);
-let entries=[],skill=allowed.has(params.get('skill'))?params.get('skill'):null;
+let entries=[],translations=new Map(),skill=allowed.has(params.get('skill'))?params.get('skill'):null;
 let introTimer=null;
 const welcome=byId('welcome'),chooser=byId('skillChooser'),catalog=byId('catalog');
 let qrUrl='', qrTitle='', toastTimeout=null;
@@ -50,36 +50,62 @@ function one(tag,cls,text){
  if(text!==undefined)x.textContent=text;
  return x;
 }
+/* R20: translations are display-only; original student HTML is never modified. */
+function localized(e,filter=byId('language').value){
+ const entry=translations.get(e.id);
+ if(!entry)throw new Error('Chybí překlad karty: '+e.id);
+ const language=filter==='all'?'cs':filter;
+ if(!entry[language])throw new Error('Chybí jazyk '+language+' pro '+e.id);
+ return entry[language];
+}
+function normalizeSearch(s){
+ return String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+  .toLocaleLowerCase('cs').trim();
+}
 function card(e){
+ const filter=byId('language').value;
+ const language=filter==='all'?'cs':filter;
+ const translation=localized(e,filter),czech=localized(e,'all');
  const article=one('article','card');
  article.dataset.topicId=e.id;
+ article.dataset.catalogLanguage=language;
  const meta=one('div','skill',tags[e.skill]);article.appendChild(meta);
- const title=one('h3',null,e.title);article.appendChild(title);
- if(e.summary)article.appendChild(one('p',null,e.summary));
- const locale=byId('language').value;
+ const title=one('h3',null,translation.title);
+ title.lang=language;article.appendChild(title);
+ if(filter!=='all'&&translation.title!==czech.title){
+  const subtitle=one('p','catalog-czech','Česky: '+czech.title);
+  subtitle.lang='cs';article.appendChild(subtitle);
+ }
+ const summary=one('p','catalog-summary',translation.summary);
+ summary.lang=language;article.appendChild(summary);
  article.appendChild(one('p','note',e.languages.length===1?
   'Dostupný jazyk: '+labels[e.languages[0]]:
-  'Jazyky: '+e.languages.map(l=>l.toUpperCase()).join(' · ')+
-  (locale==='all'||e.languages.includes(locale)?'':' · Zvolený jazyk není dostupný')));
+  'Jazyky: '+e.languages.map(l=>l.toUpperCase()).join(' · ')));
  const actions=one('div','actions');
  const open=one('a','action primary','Otevřít aktivitu');
  open.href=currentUrl(e);open.target='_blank';open.rel='noopener';
- open.setAttribute('aria-label','Otevřít '+e.title);
+ open.setAttribute('aria-label','Otevřít '+translation.title);
  const share=one('button','action','QR a odkaz');share.type='button';
- share.setAttribute('aria-label','Zobrazit QR kód a odkaz pro '+e.title);
+ share.setAttribute('aria-label','Zobrazit QR kód a odkaz pro '+translation.title);
  share.addEventListener('click',()=>showQr(e));
  actions.append(open,share);article.appendChild(actions);
  return article;
 }
 function render(){
  if(!skill)return;
- const search=byId('search').value.toLocaleLowerCase('cs').trim();
+ const search=normalizeSearch(byId('search').value);
  const locale=byId('language').value,level=byId('level').value;
  const active=entries.filter(e=>e.skill===skill);
- const shown=active.filter(e=>
-  (locale==='all'||e.languages.includes(locale))&&
-  (level==='all'||e.levels.includes(level))&&
-  (!search||(e.title+' '+(e.summary||'')+' '+titles[e.skill]).toLocaleLowerCase('cs').includes(search)));
+ const shown=active.filter(e=>{
+  if(locale!=='all'&&!e.languages.includes(locale))return false;
+  if(level!=='all'&&!e.levels.includes(level))return false;
+  if(!search)return true;
+  const cs=localized(e,'all'),target=localized(e,locale);
+  return normalizeSearch([cs.title,cs.summary,target.title,target.summary,e.title,e.summary,titles[e.skill]].join(' '))
+    .includes(search);
+ });
+ shown.sort((a,b)=>localized(a,locale).title.localeCompare(
+  localized(b,locale).title,locale==='all'?'cs':locale));
  const list=byId('cards');list.replaceChildren();
  for(const e of shown)list.appendChild(card(e));
  if(!shown.length)list.appendChild(one('p','empty','Nenalezena žádná aktivita. Zkus jiný jazyk, úroveň nebo hledaný výraz.'));
@@ -168,8 +194,8 @@ function initEntry(){
  }
 }
 function showQr(e){
- qrUrl=currentUrl(e);qrTitle=e.title;
- byId('qrTitle').textContent=e.title;
+ qrUrl=currentUrl(e);qrTitle=localized(e).title;
+ byId('qrTitle').textContent=qrTitle;
  byId('qrUrl').textContent=qrUrl;
  qrMount.replaceChildren();
  try{
@@ -206,16 +232,36 @@ function saveQr(){
 }
 async function load(){
  try{
-  const response=await fetch('data/cards.json',{cache:'no-store'});
-  if(!response.ok)throw new Error('HTTP '+response.status);
-  const body=await response.json();
+  const [cardsResponse,i18nResponse]=await Promise.all([
+   fetch('data/cards.json',{cache:'no-store'}),
+   fetch('data/catalog-i18n.json',{cache:'no-store'})
+  ]);
+  if(!cardsResponse.ok||!i18nResponse.ok)
+   throw new Error('HTTP '+cardsResponse.status+' / '+i18nResponse.status);
+  const [body,i18n]=await Promise.all([cardsResponse.json(),i18nResponse.json()]);
   if(body.kind!=='LSH_PUBLIC_PRACTICE_R17'||!Array.isArray(body.entries)||body.entries.length!==29)
    throw new Error('Katalog nemá očekávanou strukturu');
+  if(i18n.kind!=='LSH_CATALOG_I18N_R20'||i18n.schemaVersion!==1||
+     i18n.defaultLanguage!=='cs'||!i18n.entries||
+     typeof i18n.entries!=='object'||Object.keys(i18n.entries).length!==29)
+   throw new Error('Překladový slovník nemá očekávanou strukturu');
+  const seen=new Set();
+  for(const e of body.entries){
+   if(!allowed.has(e.skill)||!e.id||seen.has(e.id)||!e.title||!e.relative||
+      !e.languages?.length||!e.languages.every(l=>l in labels))
+    throw new Error('Neplatná metadata katalogu');
+   seen.add(e.id);
+   const translated=i18n.entries[e.id],expected=['cs',...e.languages].sort();
+   if(!translated||JSON.stringify(Object.keys(translated).sort())!==JSON.stringify(expected))
+    throw new Error('Chybějící překlad jazykové varianty: '+e.id);
+   for(const lang of expected){
+    if(typeof translated[lang]?.title!=='string'||translated[lang].title.trim().length<2||
+       typeof translated[lang]?.summary!=='string'||translated[lang].summary.trim().length<10)
+     throw new Error('Neplatný překlad '+lang+' pro '+e.id);
+   }
+  }
+  translations=new Map(Object.entries(i18n.entries));
   entries=body.entries;
-  if(entries.some(e=>!allowed.has(e.skill)||!e.id||!e.title||!e.relative||
-   !e.languages?.length||!e.languages.every(l=>l in labels)))
-   throw new Error('Neplatná metadata katalogu');
-  entries.sort((a,b)=>a.title.localeCompare(b.title,'cs'));
   if(skill){
    langChoices();
    const query=new URLSearchParams(location.search);

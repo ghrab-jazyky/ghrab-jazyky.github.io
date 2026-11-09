@@ -206,3 +206,19 @@ dialog{border:1px solid #83a5be;border-radius:16px;background:#10243a;color:var(
  .chooser-choice{transition:none}
  .chooser-choice:hover{transform:none}
 }
+
+
+/* R20: bilingual teacher catalog cards; Czech remains discoverable in all modes. */
+.card h3,.card .catalog-summary,.card .catalog-czech{
+ overflow-wrap:anywhere;
+ hyphens:auto;
+}
+.card .catalog-summary{
+ line-height:1.55;
+}
+.card .catalog-czech{
+ font-size:.8rem;
+ font-weight:650;
+ color:var(--accent);
+ margin:0;
+}
