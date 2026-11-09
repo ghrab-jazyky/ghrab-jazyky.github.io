@@ -1,0 +1,60 @@
+name: LSH R19 LIVE HTTPS verification (READ ONLY)
+on:
+  push:
+    branches:
+      - feat/lsh-r19-welcome-skill-selection-2026-11-09
+    paths:
+      - '.github/workflows/lsh-r19-live-verify.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-site-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - name: Verify public splash, three skill panels, optional filters and source integrity
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json,time,urllib.request,sys
+          base='https://ghrab-jazyky.github.io/language-skills-hub/'
+          def get(path):
+              req=urllib.request.Request(base+path,headers={
+                  'User-Agent':'LSH-R19-live-QA/1.0','Cache-Control':'no-cache'})
+              with urllib.request.urlopen(req,timeout=16) as r:
+                  assert r.status==200,(path,r.status)
+                  return r.read().decode('utf-8')
+          for attempt in range(1,29):
+              try:
+                  html=get('?r19live='+str(attempt))
+                  assert 'id="welcome" class="welcome"' in html
+                  assert 'id="skillChooser"' in html
+                  assert 'id="skipIntro"' in html
+                  assert 'id="changeLab"' in html
+                  assert html.count('data-choose-skill="')==3
+                  for skill in ['konverzace','cteni','poslech']:
+                      assert 'data-choose-skill="'+skill+'"' in html
+                  assert 'Všechny jazyky' in html and 'Všechny úrovně' in html
+                  assert 'id="themeToggle"' in html and 'id="fullscreenToggle"' in html
+                  js=get('assets/hub.js?r19live='+str(attempt))
+                  assert 'setTimeout(showChooser,reduced?0:3000)' in js
+                  assert "history.pushState({skill}" in js
+                  assert "url.searchParams.set('zamek','1')" in js
+                  css=get('assets/hub.css?r19live='+str(attempt))
+                  assert '.skill-chooser{' in css and 'min-height:100dvh' in css
+                  assert ':root[data-theme="light"] .welcome' in css
+                  d=json.loads(get('data/cards.json?r19live='+str(attempt)))
+                  assert len(d['entries'])==29 and d['gradedTestsEnabled'] is False
+                  c={'konverzace':0,'cteni':0,'poslech':0}
+                  for card in d['entries']:
+                      c[card['skill']]+=1
+                  assert c=={'konverzace':21,'cteni':5,'poslech':3}
+                  print('PASS R19 PUBLIC: 3-second full-screen welcome, 3 lab panels, optional filters, R18 controls, 29 cards',flush=True)
+                  print('https://ghrab-jazyky.github.io/language-skills-hub/',flush=True)
+                  sys.exit(0)
+              except Exception as e:
+                  print(f'Attempt {attempt}/28: {type(e).__name__}: {e}',flush=True)
+                  if attempt==28:raise
+                  time.sleep(11)
+          PY
