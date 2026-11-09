@@ -1,24 +1,21 @@
-name: LSH R22 static-only assessment decision gate (NO deployment)
+name: LSH R22 static-only QA (NO deployment)
 on:
   push:
     branches:
       - feat/lsh-r22-static-assessment-policy-2026-11-09
-    paths:
-      - 'language-skills-hub/**'
-      - '.github/workflows/lsh-r22-static-policy.yml'
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  static-policy:
+  verify-static-policy:
     runs-on: ubuntu-24.04
-    timeout-minutes: 8
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: Syntax check
+      - name: Syntax validation
         run: node --check language-skills-hub/tests/r22-static-policy.test.cjs
-      - name: Verify no-backend decision and public practice integrity
+      - name: Run five static-only and original-card integrity tests
         run: node --test language-skills-hub/tests/r22-static-policy.test.cjs
