@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="cs"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><meta name="color-scheme" content="dark">
+<title>Language Skills Hub – osobní testování R16</title>
+<style>
+:root{font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:dark;--bg:#071626;--panel:#142c41;--line:#40607b;--text:#f0f7ff;--muted:#b6cadc;--accent:#83dcf2}
+*{box-sizing:border-box}body{background:var(--bg);color:var(--text);margin:0;min-width:0}
+.container{max-width:1040px;margin:auto;padding:clamp(14px,3vw,34px)}
+h1{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;letter-spacing:-.03em;margin:.4em 0}
+h2{font-size:1.22rem;margin:0 0 12px}p{margin:8px 0 14px}.lead{color:var(--muted)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:clamp(15px,2vw,24px);margin:18px 0}
+.warning{border-left:5px solid #e6be76;padding:12px 16px;background:#25271f;border-radius:8px}
+.linkbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}a{color:var(--accent);text-underline-offset:3px}
+.linkbar a{padding:8px 10px;border:1px solid var(--line);border-radius:9px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+label{display:block;font-weight:650;font-size:.95rem;margin-bottom:5px}
+input,select,textarea,button{font:inherit;color:var(--text);max-width:100%}
+select,textarea{width:100%;padding:11px;background:#071a2b;border:1px solid #6483a0;border-radius:8px;min-height:46px}
+textarea{min-height:118px;resize:vertical}
+button,.primary{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 16px;background:#27526e;border:1px solid #7eafcc;border-radius:9px;cursor:pointer;text-decoration:none;font-weight:700;color:#fff}
+.primary{background:#a0e6f7;color:#06283a;border-color:#a0e6f7}
+button:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #ffe193;outline-offset:3px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.note{color:var(--muted);font-size:.86rem}
+.smallprint{font-size:.86rem;color:var(--muted)}
+.counts{display:flex;gap:12px;flex-wrap:wrap}
+.count{background:#0b2337;border:1px solid var(--line);border-radius:10px;padding:9px 14px}
+.count strong{display:block;font-size:1.35rem}
+#issues{margin:10px 0;padding:0;list-style:none}
+#issues li{border:1px solid var(--line);padding:12px;border-radius:10px;margin:8px 0;overflow-wrap:anywhere}
+.issue-top{font-weight:700}.issue-text{white-space:pre-wrap;margin:4px 0}
+#message{min-height:26px;color:#afeacb}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.actions{flex-direction:column}.actions>*{width:100%}.linkbar a{flex:1 1 100%;text-align:center}}
+</style></head><body><main class="container">
+<header><p class="smallprint">LANGUAGE SKILLS HUB · R16 · OSOBNÍ UAT</p>
+<h1>Začni testovat všech 29 karet</h1>
+<p class="lead">Jediný vstup pro Conversation Lab, Reading Lab a Listening Lab. Výběr konkrétního jazyka a úrovně funguje i z rozbaleného ZIPu bez internetu.</p>
+<div class="counts"><div class="count"><strong>21</strong>konverzací</div><div class="count"><strong>5</strong>čtení</div><div class="count"><strong>3</strong>poslechy</div><div class="count"><strong>642</strong>variant k revizi</div></div>
+<p class="warning"><strong>POUZE K TESTOVÁNÍ A PROCVIČOVÁNÍ.</strong> Tento balíček není pedagogicky schválen. Nezadávat známkované testy: odpovědi v procvičovacích HTML nejsou utajené. Poslechová videa mohou vyžadovat internet.</p>
+<div class="linkbar"><a href="index.html">Všechna témata</a><a href="review.html">Revizní matice 642 variant</a><a href="triage.html">Obsahové nálezy</a><a href="release-check.html">Přejímka před vydáním</a></div>
+</header>
+<section class="panel" aria-labelledby="selecttitle">
+<h2 id="selecttitle">1. Otevři vybranou kartu</h2>
+<div class="grid">
+<div><label for="skill">Laboratoř</label><select id="skill"><option value="konverzace">Conversation Lab</option><option value="cteni">Reading Lab</option><option value="poslech">Listening Lab</option></select></div>
+<div><label for="topic">Téma</label><select id="topic"></select></div>
+<div><label for="language">Jazyk</label><select id="language"></select></div>
+<div><label for="level">Úroveň CEFR</label><select id="level"><option>A1</option><option>A2</option><option>B1</option><option selected>B2</option><option>C1</option><option>C2</option></select></div>
+<div><label for="mode">Způsob otevření</label><select id="mode"><option value="fixed">Pevně nastavený jazyk a úroveň</option><option value="free">Volný výběr ve studentské kartě</option></select></div>
+</div>
+<div class="actions"><a id="launch" class="primary" href="#" target="_blank" rel="noopener">Otevřít studentskou kartu</a><a href="review.html">Zapsat pedagogickou revizi</a></div>
+<p class="note" id="currentVariant"></p>
+</section>
+<section class="panel" aria-labelledby="checktitle">
+<h2 id="checktitle">2. Co při osobním testování zkontrolovat</h2>
+<p>Otevři kartu, vyzkoušej přepínání a dotykové ovládání. Všímej si především těchto situací:</p>
+<ol>
+<li>Správné téma, jazyk a úroveň; žádné prázdné nebo cizojazyčné sekce.</li>
+<li>Funkčnost všech tlačítek a zpětné vazby po změně odpovědi.</li>
+<li>Slovníček zapnutý/vypnutý, ukládání slov a správné vysvětlování.</li>
+<li>Mobilní šířka bez samovolného vodorovného posouvání a bez nutnosti fullscreen.</li>
+<li>Reading: zdrojové pasáže; Listening: dostupnost a přesný úsek videa, obsahová přiměřenost.</li>
+<li>Offline otevření rozbaleného HTML na PC, iPhonu/iPadu i Androidu, pokud to zařízení umožňuje.</li>
+</ol><p class="smallprint">Nezadávej do poznámek jména ani údaje žáků. Výsledek automatických testů nenahrazuje fyzickou přejímku zařízení.</p>
+</section>
+<section class="panel" aria-labelledby="issuetitle">
+<h2 id="issuetitle">3. Nahlas nalezený problém</h2>
+<div class="grid">
+<div><label for="severity">Závažnost</label><select id="severity"><option value="P1">P1 – brání použití</option><option value="P2" selected>P2 – potřeba opravy</option><option value="P3">P3 – drobnost</option></select></div>
+<div><label for="area">Oblast</label><select id="area"><option value="content">Jazyk / výukový obsah</option><option value="interaction">Tlačítka a ovládání</option><option value="mobile">Mobil / responzivita</option><option value="dictionary">Slovníček</option><option value="media">Video / audio</option><option value="offline">Offline / QR</option><option value="other">Jiné</option></select></div>
+</div>
+<p><label for="issueText">Popis problému (min. 10 znaků)</label><textarea id="issueText" maxlength="1500" placeholder="Např. ES B2: po kliknutí na Show Supporting Passages se nezvýrazní druhý důkaz..."></textarea></p>
+<div class="actions"><button type="button" id="addIssue">Přidat nález</button><button type="button" id="exportIssues">Exportovat report JSON</button><button type="button" id="clearIssues">Vymazat lokální nálezy</button></div>
+<p class="smallprint"><label for="importIssues">Obnovit dříve uložený report JSON</label><input id="importIssues" type="file" accept=".json,application/json"></p>
+<p id="message" aria-live="polite"></p><p class="smallprint" id="issueCount">0 uložených nálezů</p><ul id="issues"></ul>
+<p class="smallprint">Nálezy se ukládají jen v tomto prohlížeči, pokud úložiště dovolí. Pravidelně používej Exportovat report JSON; žádná data se automaticky neodesílají.</p>
+</section>
+<footer class="smallprint">Obsah se načítá pouze ze souborů v tomto ZIPu. Soukromé učitelské klíče nejsou součástí. Žádné schválení ani nasazení z této stránky neprobíhá.</footer>
+</main>
+<script id="lsh-data" type="application/json">__LSH_DATA__</script>
+<script>
+(function(){
+ 'use strict';
+ const data=JSON.parse(document.getElementById('lsh-data').textContent);
+ const byId=id=>document.getElementById(id);
+ const topics=data.topics,variants=data.variants;
+ const topicMap=new Map(topics.map(t=>[t.id,t]));
+ const known=new Map(variants.map(v=>[v.id,v]));
+ const labels={en:'English',es:'Español',de:'Deutsch',fr:'Français'};
+ const issueKey='lsh-r16-uat-issues-'+data.bundleId;
+ let issues=[];
+ function store(){try{localStorage.setItem(issueKey,JSON.stringify(issues))}catch(_){}}
+ function notify(message){byId('message').textContent=message}
+ function options(select,choices,current){
+  select.replaceChildren();
+  choices.forEach(([value,label])=>{
+   const el=document.createElement('option');el.value=value;el.textContent=label;select.appendChild(el);
+  });
+  if(choices.some(x=>x[0]===current))select.value=current;
+ }
+ function updateTopics(){
+  const list=topics.filter(t=>t.skill===byId('skill').value);
+  const prev=byId('topic').value;
+  options(byId('topic'),list.map(t=>[t.id,t.title]),prev);
+  updateLanguages();
+ }
+ function updateLanguages(){
+  const t=topicMap.get(byId('topic').value);if(!t)return;
+  const prev=byId('language').value;
+  options(byId('language'),t.languages.map(l=>[l,labels[l]||l]),prev);
+  updateLink();
+ }
+ function updateLink(){
+  const t=topicMap.get(byId('topic').value);if(!t)return;
+  const lang=byId('language').value,level=byId('level').value,mode=byId('mode').value;
+  const id=t.id+'|'+lang+'|'+level,v=known.get(id);
+  const href=mode==='fixed'&&v?v.href:t.relative+'?practice=1';
+  byId('launch').href=href;
+  byId('currentVariant').textContent=t.title+' · '+lang.toUpperCase()+' · '+level+
+   (mode==='fixed'?' · pevná varianta':' · volný výběr')+' · '+t.skill;
+ }
+ function validIssue(i){
+  return i&&typeof i==='object'&&typeof i.id==='string'&&known.has(i.id)&&
+   ['P1','P2','P3'].includes(i.severity)&&
+   ['content','interaction','mobile','dictionary','media','offline','other'].includes(i.area)&&
+   typeof i.note==='string'&&i.note.trim().length>=10&&i.note.length<=1500&&
+   typeof i.createdAt==='string'&&i.createdAt.length<=50;
+ }
+ function renderIssues(){
+  byId('issues').replaceChildren();
+  issues.forEach((r,index)=>{
+   const li=document.createElement('li'),header=document.createElement('div');
+   header.className='issue-top';header.textContent=r.severity+' · '+r.id+' · '+r.area;
+   const p=document.createElement('div');p.className='issue-text';p.textContent=r.note;
+   const button=document.createElement('button');button.type='button';button.textContent='Odstranit záznam';
+   button.addEventListener('click',()=>{issues.splice(index,1);store();renderIssues()});
+   li.append(header,p,button);byId('issues').appendChild(li);
+  });
+  byId('issueCount').textContent=issues.length+' uložených nálezů';
+ }
+ function exportFile(){
+  const report={schemaVersion:1,kind:'LSH_R16_PERSONAL_UAT_NOT_APPROVAL',
+   bundleId:data.bundleId,sourceCommit:data.sourceCommit,
+   teacherApproval:false,approvedForRelease:false,classifiedTestingAllowed:false,
+   issues:issues};
+  const blob=new Blob([JSON.stringify(report,null,2)+'\n'],{type:'application/json'});
+  const url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download='LSH_R16_osobni_testovani_nalezy.json';
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000);
+  notify('Report byl připraven ke stažení. Nálezy nejsou odeslány na server.');
+ }
+ byId('skill').addEventListener('change',updateTopics);
+ byId('topic').addEventListener('change',updateLanguages);
+ byId('language').addEventListener('change',updateLink);
+ byId('level').addEventListener('change',updateLink);
+ byId('mode').addEventListener('change',updateLink);
+ byId('addIssue').addEventListener('click',()=>{
+  const note=byId('issueText').value.trim();
+  if(note.length<10){notify('Popis musí mít alespoň 10 znaků.');return}
+  const t=topicMap.get(byId('topic').value),id=t.id+'|'+byId('language').value+'|'+byId('level').value;
+  const row={id,severity:byId('severity').value,area:byId('area').value,
+   note,createdAt:new Date().toISOString()};
+  if(!validIssue(row)){notify('Nález nelze uložit – neplatná varianta.');return}
+  issues.push(row);store();renderIssues();byId('issueText').value='';
+  notify('Nález přidán. Doporučuji exportovat report JSON.');
+ });
+ byId('exportIssues').addEventListener('click',exportFile);
+ byId('clearIssues').addEventListener('click',()=>{
+  if(!confirm('Vymazat všechny lokální nálezy?'))return;
+  issues=[];store();renderIssues();notify('Nálezy byly vymazány.');
+ });
+ byId('importIssues').addEventListener('change',async ev=>{
+  const f=ev.target.files&&ev.target.files[0];if(!f)return;
+  try{
+   if(f.size>1000000)throw Error('soubor je příliš velký');
+   const imported=JSON.parse(await f.text());
+   if(imported.kind!=='LSH_R16_PERSONAL_UAT_NOT_APPROVAL'||
+      imported.bundleId!==data.bundleId||
+      imported.teacherApproval!==false||
+      imported.approvedForRelease!==false||
+      imported.classifiedTestingAllowed!==false||
+      !Array.isArray(imported.issues)||imported.issues.length>500||
+      !imported.issues.every(validIssue))
+    throw Error('soubor neodpovídá této verzi balíčku nebo obsahuje neplatná data');
+   issues=imported.issues.map(i=>({...i}));store();renderIssues();
+   notify('Import dokončen: '+issues.length+' nálezů.');
+  }catch(err){notify('Import odmítnut: '+String(err.message||err))}
+  ev.target.value='';
+ });
+ try{
+  const saved=JSON.parse(localStorage.getItem(issueKey)||'[]');
+  if(Array.isArray(saved)&&saved.length<=500&&saved.every(validIssue))issues=saved;
+ }catch(_){}
+ updateTopics();renderIssues();
+})();
+</script></body></html>

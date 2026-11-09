@@ -1,4 +1,4 @@
-name: LSH R15 offline UAT and classified NO-GO (NO deployment)
+name: LSH R16 personal UAT launch (NO deployment)
 on:
   pull_request:
     paths:
@@ -6,6 +6,10 @@ on:
       - 'zkusebni/tools/r11-review-matrix.cjs'
       - 'zkusebni/tools/r12-content-triage.cjs'
       - 'zkusebni/tools/r15-release-guard.cjs'
+      - 'zkusebni/tools/r16-personal-uat.cjs'
+      - 'zkusebni/tests/r16-*.test.cjs'
+      - 'zkusebni/assets/lsh/r16/**'
+      - 'zkusebni/docs/LSH_R16_PERSONAL_UAT_HANDOFF.md'
       - 'zkusebni/tests/r15-*.test.cjs'
       - 'zkusebni/assets/lsh/r15/**'
       - 'zkusebni/docs/LSH_R15_RELEASE_READINESS_2026-11-08.md'
@@ -35,6 +39,10 @@ on:
       - 'zkusebni/tools/r11-review-matrix.cjs'
       - 'zkusebni/tools/r12-content-triage.cjs'
       - 'zkusebni/tools/r15-release-guard.cjs'
+      - 'zkusebni/tools/r16-personal-uat.cjs'
+      - 'zkusebni/tests/r16-*.test.cjs'
+      - 'zkusebni/assets/lsh/r16/**'
+      - 'zkusebni/docs/LSH_R16_PERSONAL_UAT_HANDOFF.md'
       - 'zkusebni/tests/r15-*.test.cjs'
       - 'zkusebni/assets/lsh/r15/**'
       - 'zkusebni/docs/LSH_R15_RELEASE_READINESS_2026-11-08.md'
@@ -86,10 +94,14 @@ jobs:
         run: node --test zkusebni/tests/r15-release-guard.test.cjs
       - name: Append R15 readiness UI to disposable offline review bundle
         run: node zkusebni/tools/r15-release-guard.cjs "$RUNNER_TEMP/lsh-r10-review"
+      - name: Validate R16 one-click manual UAT with 642 verified variant links
+        run: node --test zkusebni/tests/r16-personal-uat.test.cjs
+      - name: Add personal test launchpad and issue report to disposable review artifact
+        run: node zkusebni/tools/r16-personal-uat.cjs "$RUNNER_TEMP/lsh-r10-review"
       - name: Attach offline index and 29 cards (NO TEACHER KEYS)
         uses: actions/upload-artifact@v4
         with:
-          name: lsh-r15-29-cards-642-reviews-UAT-NO-KEYS
+          name: lsh-r16-personal-uat-29-cards-642-variants-NO-KEYS
           path: ${{ runner.temp }}/lsh-r10-review/
           retention-days: 7
           if-no-files-found: error
@@ -115,3 +127,5 @@ jobs:
         run: node --test zkusebni/tests/r12-content-triage.browser.test.cjs
       - name: Verify R15 real UAT controls, JSON import/export and permanent classified NO-GO
         run: node --test zkusebni/tests/r15-release-guard.browser.test.cjs
+      - name: Verify R16 personal test entry on Chromium desktop and WebKit mobile
+        run: node --test zkusebni/tests/r16-personal-uat.browser.test.cjs
