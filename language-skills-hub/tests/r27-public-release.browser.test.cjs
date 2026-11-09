@@ -21,7 +21,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
     assert.ok(overflow<=2,'Catalog overflow '+skill+': '+overflow);
     if(expected){
      const all=await buttons.allTextContents();
-     assert.ok(all.every(x=>x==='Test bez známky'));
+     assert.ok(all.every(x=>x==='Test – známka 1–5'));
     }
    }
    await page.goto(withParams('index.html',{skill:'cteni',lang:'es',level:'C1'}));
