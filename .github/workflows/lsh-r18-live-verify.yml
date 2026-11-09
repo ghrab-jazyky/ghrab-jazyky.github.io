@@ -1,0 +1,54 @@
+name: LSH R18 LIVE public HTTPS read-only verification
+on:
+  push:
+    branches:
+      - feat/lsh-r18-theme-fullscreen-navigation-2026-11-09
+    paths:
+      - '.github/workflows/lsh-r18-live-verify.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-public-R18:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - name: Wait for GitHub Pages CDN to expose exact R18 teacher controls
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json,time,urllib.request,sys
+          base='https://ghrab-jazyky.github.io/language-skills-hub/'
+          def get(path):
+              req=urllib.request.Request(base+path,headers={
+                'User-Agent':'LSH-R18-live-verify/1.0',
+                'Cache-Control':'no-cache'})
+              with urllib.request.urlopen(req,timeout=15) as response:
+                  assert response.status==200,(path,response.status)
+                  return response.read().decode('utf-8')
+          for attempt in range(1,25):
+              try:
+                  html=get('?r18='+str(attempt))
+                  assert 'id="themeToggle"' in html and 'id="fullscreenToggle"' in html
+                  assert 'assets/theme-boot.js' in html
+                  assert '<a href="#howto">Jak to funguje</a>' in html
+                  header=html.split('<nav class="menu"',1)[1].split('</nav>',1)[0]
+                  assert 'Katalog aktivit' not in header and 'Můj slovníček' not in header
+                  assert html.index('src="assets/theme-boot.js"')<html.index('href="assets/hub.css"')
+                  js=get('assets/hub.js?r18='+str(attempt))
+                  assert "localStorage.setItem(THEME_KEY,next)" in js
+                  assert 'requestFullscreen' in js and 'fullscreenchange' in js
+                  css=get('assets/hub.css?r18='+str(attempt))
+                  assert ':root[data-theme="light"]' in css
+                  boot=get('assets/theme-boot.js?r18='+str(attempt))
+                  assert "localStorage.getItem('lsh:catalog-theme:v1')" in boot
+                  card=json.loads(get('data/cards.json?r18='+str(attempt)))
+                  assert len(card['entries'])==29 and card['gradedTestsEnabled'] is False
+                  print('PASS R18 LIVE HTTPS new header, light/dark, fullscreen, 29 cards and test NO-GO',flush=True)
+                  print('https://ghrab-jazyky.github.io/language-skills-hub/',flush=True)
+                  sys.exit(0)
+              except Exception as e:
+                  print('Attempt %s: %s: %s'%(attempt,type(e).__name__,e),flush=True)
+                  if attempt==24:raise
+                  time.sleep(10)
+          PY
