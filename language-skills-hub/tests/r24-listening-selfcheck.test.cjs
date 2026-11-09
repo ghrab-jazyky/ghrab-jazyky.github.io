@@ -92,8 +92,8 @@ test('R24 teacher controls media; student has no video or audio controls',()=>{
  const teacherJs=read('self-check/listening/listening-teacher.js');
  const policy=JSON.parse(read('data/test-mode-policy.json'));
  assert.equal(policy.gradedTestsEnabled,false);
- assert.equal(policy.selfCheckEnabled,false);
- assert.equal(policy.testUiEnabled,false);
+ assert.equal(policy.selfCheckEnabled,true);
+ assert.equal(policy.testUiEnabled,true);
  assert.equal(policy.futureSelfCheck.listeningPasses,2);
  assert.deepEqual(policy.futureSelfCheck.listeningSections,core.PHASES);
  assert.doesNotMatch(student,/<(?:iframe|video|audio)\b|youtube\.com|facebook\.com/i);
@@ -106,7 +106,8 @@ test('R24 teacher controls media; student has no video or audio controls',()=>{
  assert.match(teacher,/studentUrl/);
  assert.match(teacherJs,/passes<2/);
  assert.match(teacherJs,/target='_blank'|target='_blank'/);
- assert.doesNotMatch(read('index.html')+read('assets/hub.js'),/self-check\/listening|LSH_LISTENING_TEST/);
+ assert.match(read('assets/hub.js'),/self-check\/listening\/teacher\.html/);
+ assert.doesNotMatch(read('assets/hub.js'),/LSH_LISTENING_TEST_GRADED/);
 });
 
 test('R24 uses no student POST, login, database or official grading API',()=>{
