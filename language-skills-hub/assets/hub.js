@@ -102,10 +102,10 @@ function card(e){
  share.addEventListener('click',()=>openShare(e));
  actions.append(open,share);
  if(localSelfCheck&&['cteni','poslech'].includes(e.skill)){
-  const check=one('a','action test','Test bez známky');
+  const check=one('a','action test','Test – známka 1–5');
   check.href=testSetupUrl(e);check.target='_blank';check.rel='noopener noreferrer';
   check.setAttribute('aria-label','Neklasifikované samostatné ověření: '+translation.title);
-  check.title='Správné odpovědi nejsou před prohlížečem technicky utajené.';
+  check.title='Návrh známky 1–5 po odevzdání / kontrole učitelem. Bez backendu nelze ověřit identitu a výsledky.';
   actions.appendChild(check);
  }
  article.appendChild(actions);
@@ -324,10 +324,11 @@ async function load(){
   const policy=policyResponse?.ok?
    await policyResponse.json().catch(()=>null):null;
   // Fail closed: optional test links require an explicit safe public policy.
-  localSelfCheck=policy?.status==='PUBLIC_LOCAL_SELF_CHECK_NO_GRADES'&&
+  localSelfCheck=policy?.status==='PUBLIC_LOCAL_GRADE_PROPOSALS'&&
    policy?.backendEnabled===false&&policy?.gradedTestsEnabled===false&&
    policy?.officialGradesEnabled===false&&policy?.selfCheckEnabled===true&&
-   policy?.testUiEnabled===true;
+   policy?.testUiEnabled===true&&
+   policy?.localGradeProposalsEnabled===true;
   if(body.kind!=='LSH_PUBLIC_PRACTICE_R17'||!Array.isArray(body.entries)||body.entries.length!==29)
    throw new Error('Katalog nemá očekávanou strukturu');
   if(i18n.kind!=='LSH_CATALOG_I18N_R20'||i18n.schemaVersion!==1||
