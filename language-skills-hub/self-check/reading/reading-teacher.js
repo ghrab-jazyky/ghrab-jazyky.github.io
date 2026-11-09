@@ -4,6 +4,7 @@
  const core=window.LSHReadingCore,share=window.LSHShareTools;
  const $=id=>document.getElementById(id);
  const qs=new URLSearchParams(location.search);
+ const attemptId='class'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
  const langNames={en:'Angličtina',es:'Španělština',de:'Němčina',fr:'Francouzština'};
  let entries=[],valid=false,studentLink='';
  function appearance(light,save){
@@ -39,18 +40,23 @@
  function refresh(){
   const entry=selectedEntry();
   const language=$('language').value,level=$('level').value;
-  valid=!!entry&&entry.languages.includes(language)&&entry.levels.includes(level);
+  const limit=Number($('timerMinutes').value);
+  valid=!!entry&&entry.languages.includes(language)&&entry.levels.includes(level)&&
+   Number.isInteger(limit)&&limit>=5&&limit<=120;
   studentLink='';
   if(valid){
    const url=new URL('index.html',document.baseURI);url.search='';
    url.searchParams.set('topic',entry.id);
    url.searchParams.set('lang',language);
    url.searchParams.set('level',level);
+   url.searchParams.set('timer',String(limit));
+   url.searchParams.set('attempt',attemptId);
    studentLink=url.href;
    const page=new URL(location.href);
    page.searchParams.set('topic',entry.id);
    page.searchParams.set('lang',language);
    page.searchParams.set('level',level);
+   page.searchParams.set('timer',String(limit));
    history.replaceState(null,'',page);
   }
   $('studentUrl').value=studentLink;
@@ -58,9 +64,9 @@
   $('studentPreview').setAttribute('aria-disabled',String(!valid));
   $('studentPreview').href=valid?studentLink:'#';
   $('loadStatus').textContent=valid?
-   'Připraveno: '+entry.title+' · '+langNames[language]+' · '+level+
+   'Připraveno: '+entry.title+' · '+langNames[language]+' · '+level+' · '+limit+' minut'+ 
    '. Student na stránce nemá přepínač jazyka ani úrovně.':
-   'Zvolená varianta není dostupná. Zkontroluj téma, jazyk a úroveň.';
+   'Zvolená varianta nebo časový limit nejsou platné. Vyber 5–120 minut.';
   $('copyStatus').textContent=valid?'Odkaz a QR odpovídají zvolené variantě.':'Nejprve vyber dostupnou variantu.';
   share.render(studentLink,$('qrMount'),$('downloadQr'));
  }
@@ -73,6 +79,8 @@
   $('topic').addEventListener('change',()=>{updateLanguage();refresh()});
   $('language').addEventListener('change',refresh);
   $('level').addEventListener('change',refresh);
+  $('timerMinutes').addEventListener('change',refresh);
+  $('timerMinutes').addEventListener('input',refresh);
   $('studentPreview').addEventListener('click',e=>{if(!valid)e.preventDefault()});
   $('copyUrl').disabled=true;
   $('downloadQr').disabled=true;
@@ -97,6 +105,8 @@
    if(core.LANGUAGES.includes(qs.get('lang'))&&selectedEntry().languages.includes(qs.get('lang')))
     $('language').value=qs.get('lang');
    $('level').value=core.LEVELS.includes(qs.get('level'))?qs.get('level'):'B2';
+   const preset=Number(qs.get('timer'));
+   $('timerMinutes').value=Number.isInteger(preset)&&preset>=5&&preset<=120?String(preset):'30';
    refresh();
   }catch(error){
    $('loadStatus').textContent='Nelze připravit studentský odkaz: '+String(error.message||error);
