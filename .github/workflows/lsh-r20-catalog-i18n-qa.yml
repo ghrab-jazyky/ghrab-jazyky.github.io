@@ -9,6 +9,7 @@ on:
       - 'language-skills-hub/assets/hub.css'
       - 'language-skills-hub/data/catalog-i18n.json'
       - 'zkusebni/tests/r20-*.test.cjs'
+      - 'zkusebni/tests/r19-*.test.cjs'
       - '.github/workflows/lsh-r20-catalog-i18n-qa.yml'
   workflow_dispatch:
 permissions:
