@@ -1,0 +1,610 @@
+{
+  "kind": "LSH_CATALOG_I18N_R20",
+  "schemaVersion": 1,
+  "defaultLanguage": "cs",
+  "scope": "Teacher catalog display only; student card HTML untouched.",
+  "entries": {
+    "cl-umela-inteligence": {
+      "cs": {
+        "title": "Umělá inteligence",
+        "summary": "Každodenní použití AI, její možnosti a rizika, odpovědnost za rozhodnutí a pravidla pro nové technologie."
+      },
+      "de": {
+        "title": "Künstliche Intelligenz",
+        "summary": "Künstliche Intelligenz im Alltag: Chancen, Risiken, verantwortungsvolle Entscheidungen und Regeln für neue Technologien."
+      },
+      "en": {
+        "title": "Artificial Intelligence",
+        "summary": "Uses of AI in daily life, opportunities and risks, responsible decisions, and rules for new technologies."
+      },
+      "es": {
+        "title": "Inteligencia artificial",
+        "summary": "Uso cotidiano de la inteligencia artificial, oportunidades y riesgos, decisiones responsables y normas para nuevas tecnologías."
+      },
+      "fr": {
+        "title": "Intelligence artificielle",
+        "summary": "L'intelligence artificielle au quotidien : possibilités, risques, décisions responsables et règles pour les nouvelles technologies."
+      }
+    },
+    "rl-asteroids": {
+      "cs": {
+        "title": "Asteroidy",
+        "summary": "Čtení o asteroidech: vyhledávání informací, porozumění detailům a dokládání odpovědí pasážemi z textu."
+      },
+      "de": {
+        "title": "Asteroiden",
+        "summary": "Lesetext über Asteroiden: Informationen finden, Einzelheiten verstehen und Antworten mit Textstellen belegen."
+      },
+      "en": {
+        "title": "Asteroids",
+        "summary": "Reading about asteroids: finding information, understanding details, and supporting answers with passages from the text."
+      },
+      "es": {
+        "title": "Asteroides",
+        "summary": "Lectura sobre asteroides: localizar información, comprender detalles y justificar las respuestas con fragmentos del texto."
+      },
+      "fr": {
+        "title": "Astéroïdes",
+        "summary": "Lecture sur les astéroïdes : repérer des informations, comprendre les détails et justifier les réponses par des passages du texte."
+      }
+    },
+    "ll-matthew-oscars": {
+      "cs": {
+        "title": "Matthew McConaughey – projev na Oscarech 2014",
+        "summary": "Autentický děkovný projev: hlavní sdělení, interpretace a písemná rekonstrukce vybraných myšlenek."
+      },
+      "en": {
+        "title": "Matthew McConaughey – Oscars 2014",
+        "summary": "An authentic acceptance speech: identifying the main message, interpreting ideas, and reconstructing parts of the speech in writing."
+      }
+    },
+    "cl-socialni-media": {
+      "cs": {
+        "title": "Sociální média",
+        "summary": "Jak sociální sítě ovlivňují komunikaci, digitální návyky a každodenní rozhodování."
+      },
+      "de": {
+        "title": "Soziale Medien",
+        "summary": "Wie soziale Netzwerke die Kommunikation, digitale Gewohnheiten und alltägliche Entscheidungen beeinflussen."
+      },
+      "en": {
+        "title": "Social Media",
+        "summary": "How social networks influence communication, digital habits, and everyday choices."
+      },
+      "es": {
+        "title": "Redes sociales",
+        "summary": "Cómo influyen las redes sociales en la comunicación, los hábitos digitales y las decisiones cotidianas."
+      },
+      "fr": {
+        "title": "Réseaux sociaux",
+        "summary": "Comment les réseaux sociaux influencent la communication, les habitudes numériques et les choix quotidiens."
+      }
+    },
+    "cl-hrani-her": {
+      "cs": {
+        "title": "Hraní počítačových her",
+        "summary": "Výhody a rizika hraní her, čas u obrazovek, zdraví a rovnováha mezi digitálním a skutečným světem."
+      },
+      "de": {
+        "title": "Computerspiele spielen",
+        "summary": "Chancen und Risiken des Spielens, Bildschirmzeit, Gesundheit und die Balance zwischen digitaler und realer Welt."
+      },
+      "en": {
+        "title": "Playing Video Games",
+        "summary": "Benefits and risks of gaming, screen time, health, and the balance between digital and real life."
+      },
+      "es": {
+        "title": "Jugar a videojuegos",
+        "summary": "Ventajas y riesgos de los videojuegos, tiempo de pantalla, salud y equilibrio entre la vida digital y la real."
+      },
+      "fr": {
+        "title": "Jouer aux jeux vidéo",
+        "summary": "Les avantages et les risques des jeux vidéo, le temps d'écran, la santé et l'équilibre entre le numérique et la vie réelle."
+      }
+    },
+    "cl-rodina": {
+      "cs": {
+        "title": "Rodina",
+        "summary": "Rodinné vztahy, soužití, vzájemná pomoc, komunikace mezi generacemi."
+      },
+      "de": {
+        "title": "Familie",
+        "summary": "Familienbeziehungen, Zusammenleben, gegenseitige Unterstützung und Kommunikation zwischen den Generationen."
+      },
+      "en": {
+        "title": "Family",
+        "summary": "Family relationships, living together, mutual support, and communication between generations."
+      },
+      "es": {
+        "title": "La familia",
+        "summary": "Las relaciones familiares, la convivencia, el apoyo mutuo y la comunicación entre generaciones."
+      },
+      "fr": {
+        "title": "La famille",
+        "summary": "Les relations familiales, la vie en commun, l'entraide et la communication entre les générations."
+      }
+    },
+    "cl-prazdniny": {
+      "cs": {
+        "title": "Prázdniny a cestování",
+        "summary": "Plány na prázdniny, cestování, poznávání míst a společné zážitky."
+      },
+      "de": {
+        "title": "Ferien und Reisen",
+        "summary": "Ferienpläne, Reisen, neue Orte entdecken und gemeinsame Erlebnisse."
+      },
+      "en": {
+        "title": "Holidays and Travel",
+        "summary": "Holiday plans, travelling, discovering new places, and sharing experiences."
+      },
+      "es": {
+        "title": "Vacaciones y viajes",
+        "summary": "Planes de vacaciones, viajes, descubrimiento de nuevos lugares y experiencias compartidas."
+      },
+      "fr": {
+        "title": "Vacances et voyages",
+        "summary": "Les projets de vacances, les voyages, la découverte de nouveaux lieux et les expériences partagées."
+      }
+    },
+    "cl-jidlo-piti-restaurace": {
+      "cs": {
+        "title": "Jídlo, pití a restaurace",
+        "summary": "Stravovací návyky, nabídka restaurací a každodenní rozhodování o jídle."
+      },
+      "de": {
+        "title": "Essen, Trinken und Restaurants",
+        "summary": "Essgewohnheiten, Speisekarten und alltägliche Entscheidungen rund ums Essen."
+      },
+      "en": {
+        "title": "Food, Drinks and Restaurants",
+        "summary": "Eating habits, restaurant menus, and everyday choices about food."
+      },
+      "es": {
+        "title": "Comida, bebida y restaurantes",
+        "summary": "Los hábitos alimentarios, los menús de los restaurantes y las decisiones cotidianas sobre la comida."
+      },
+      "fr": {
+        "title": "Nourriture, boissons et restaurants",
+        "summary": "Les habitudes alimentaires, les menus au restaurant et les choix quotidiens concernant l'alimentation."
+      }
+    },
+    "cl-vanoce": {
+      "cs": {
+        "title": "Vánoce",
+        "summary": "Vánoční zvyky, tradice, oslavy a jejich význam v různých rodinách."
+      },
+      "de": {
+        "title": "Weihnachten",
+        "summary": "Weihnachtsbräuche, Traditionen, Feiern und ihre Bedeutung für verschiedene Familien."
+      },
+      "en": {
+        "title": "Christmas",
+        "summary": "Christmas customs, traditions, celebrations, and their meaning to different families."
+      },
+      "es": {
+        "title": "La Navidad",
+        "summary": "Las costumbres, tradiciones y celebraciones navideñas y su significado en distintas familias."
+      },
+      "fr": {
+        "title": "Noël",
+        "summary": "Les coutumes, les traditions et les fêtes de Noël, ainsi que leur signification dans différentes familles."
+      }
+    },
+    "cl-zivot-bez-ai": {
+      "cs": {
+        "title": "Život bez AI",
+        "summary": "Život bez umělé inteligence a naše závislost na technologiích."
+      },
+      "de": {
+        "title": "Leben ohne künstliche Intelligenz",
+        "summary": "Wie ein Leben ohne künstliche Intelligenz aussehen könnte und wie abhängig wir von Technik sind."
+      },
+      "en": {
+        "title": "Life Without Artificial Intelligence",
+        "summary": "What life might look like without AI and how much we depend on technology."
+      },
+      "es": {
+        "title": "La vida sin inteligencia artificial",
+        "summary": "Cómo sería la vida sin inteligencia artificial y hasta qué punto dependemos de la tecnología."
+      },
+      "fr": {
+        "title": "La vie sans intelligence artificielle",
+        "summary": "À quoi ressemblerait la vie sans intelligence artificielle et dans quelle mesure dépendons-nous de la technologie ?"
+      }
+    },
+    "cl-socialni-site-a-dusevni-zdravi": {
+      "cs": {
+        "title": "Sociální sítě a duševní zdraví",
+        "summary": "Digitální návyky, pohoda a psychické zdraví mladých."
+      },
+      "de": {
+        "title": "Soziale Netzwerke und psychische Gesundheit",
+        "summary": "Digitale Gewohnheiten, psychisches Wohlbefinden und die psychische Gesundheit von Jugendlichen."
+      },
+      "en": {
+        "title": "Social Networks and Mental Health",
+        "summary": "Digital habits, emotional well-being, and teenagers' mental health."
+      },
+      "es": {
+        "title": "Redes sociales y salud mental",
+        "summary": "Los hábitos digitales, el bienestar emocional y la salud mental de los adolescentes."
+      },
+      "fr": {
+        "title": "Réseaux sociaux et santé mentale",
+        "summary": "Les habitudes numériques, le bien-être psychologique et la santé mentale des adolescents."
+      }
+    },
+    "cl-jak-se-ucit-na-testy": {
+      "cs": {
+        "title": "Jak se učit na testy",
+        "summary": "Učení, efektivní příprava a zvládání zkoušek."
+      },
+      "de": {
+        "title": "Wie man für Tests lernt",
+        "summary": "Lernstrategien, wirksame Vorbereitung und der Umgang mit Tests und Prüfungen."
+      },
+      "en": {
+        "title": "How to Study for Tests",
+        "summary": "Study strategies, effective preparation, and handling tests and exams."
+      },
+      "es": {
+        "title": "Cómo estudiar para los exámenes",
+        "summary": "Estrategias de estudio, preparación eficaz y formas de afrontar pruebas y exámenes."
+      },
+      "fr": {
+        "title": "Comment réviser pour les contrôles",
+        "summary": "Les stratégies d'apprentissage, une préparation efficace et la manière d'aborder les contrôles et examens."
+      }
+    },
+    "cl-tlak-na-vykon": {
+      "cs": {
+        "title": "Tlak na výkon",
+        "summary": "Ambice, stres a úspěch ve škole i životě."
+      },
+      "de": {
+        "title": "Leistungsdruck",
+        "summary": "Ehrgeiz, Stress und Erwartungen an schulischen und persönlichen Erfolg."
+      },
+      "en": {
+        "title": "Pressure to Perform",
+        "summary": "Ambition, stress, and expectations about success at school and in life."
+      },
+      "es": {
+        "title": "La presión por rendir",
+        "summary": "La ambición, el estrés y las expectativas relacionadas con el éxito en los estudios y en la vida."
+      },
+      "fr": {
+        "title": "La pression de la réussite",
+        "summary": "L'ambition, le stress et les attentes liées à la réussite à l'école et dans la vie."
+      }
+    },
+    "cl-pratele": {
+      "cs": {
+        "title": "Přátelé a přátelství",
+        "summary": "Důvěra, blízkost, konflikty a mezilidské vztahy."
+      },
+      "de": {
+        "title": "Freunde und Freundschaft",
+        "summary": "Vertrauen, Nähe, Konflikte und Beziehungen zwischen Freunden."
+      },
+      "en": {
+        "title": "Friends and Friendship",
+        "summary": "Trust, closeness, conflicts, and relationships between friends."
+      },
+      "es": {
+        "title": "Amigos y amistad",
+        "summary": "La confianza, la cercanía, los conflictos y las relaciones de amistad."
+      },
+      "fr": {
+        "title": "Les amis et l'amitié",
+        "summary": "La confiance, la proximité, les conflits et les relations entre amis."
+      }
+    },
+    "cl-problemy-teenageru": {
+      "cs": {
+        "title": "Problémy teenagerů",
+        "summary": "Dospívání, rozhodování a tlak okolí."
+      },
+      "de": {
+        "title": "Probleme von Jugendlichen",
+        "summary": "Erwachsenwerden, Entscheidungen und Druck durch Gleichaltrige und das Umfeld."
+      },
+      "en": {
+        "title": "Teenagers' Problems",
+        "summary": "Growing up, making decisions, and pressure from peers and people around us."
+      },
+      "es": {
+        "title": "Los problemas de los adolescentes",
+        "summary": "La adolescencia, las decisiones y la presión de los compañeros y del entorno."
+      },
+      "fr": {
+        "title": "Les problèmes des adolescents",
+        "summary": "L'adolescence, les décisions et la pression des camarades et de l'entourage."
+      }
+    },
+    "cl-muzi-a-zeny": {
+      "cs": {
+        "title": "Muži a ženy",
+        "summary": "Stereotypy, rovnost a očekávání společnosti."
+      },
+      "de": {
+        "title": "Männer und Frauen",
+        "summary": "Geschlechterstereotype, Gleichberechtigung und gesellschaftliche Erwartungen an Männer und Frauen."
+      },
+      "en": {
+        "title": "Men and Women",
+        "summary": "Gender stereotypes, equality, and society's expectations of men and women."
+      },
+      "es": {
+        "title": "Hombres y mujeres",
+        "summary": "Los estereotipos de género, la igualdad y las expectativas sociales hacia hombres y mujeres."
+      },
+      "fr": {
+        "title": "Hommes et femmes",
+        "summary": "Les stéréotypes de genre, l'égalité et les attentes de la société envers les hommes et les femmes."
+      }
+    },
+    "cl-spolecenske-problemy": {
+      "cs": {
+        "title": "Společenské problémy",
+        "summary": "Aktuální problémy společnosti a hledání řešení."
+      },
+      "de": {
+        "title": "Gesellschaftliche Probleme",
+        "summary": "Aktuelle gesellschaftliche Probleme, ihre Ursachen und mögliche Lösungen."
+      },
+      "en": {
+        "title": "Social Issues",
+        "summary": "Current social problems, their causes, and possible solutions."
+      },
+      "es": {
+        "title": "Problemas sociales",
+        "summary": "Los problemas actuales de la sociedad, sus causas y posibles soluciones."
+      },
+      "fr": {
+        "title": "Problèmes de société",
+        "summary": "Les problèmes actuels de la société, leurs causes et les solutions possibles."
+      }
+    },
+    "cl-majetkove-nerovnosti": {
+      "cs": {
+        "title": "Majetkové nerovnosti",
+        "summary": "Bohatství, chudoba a spravedlivé příležitosti."
+      },
+      "de": {
+        "title": "Vermögensungleichheit",
+        "summary": "Reichtum, Armut, Einkommensunterschiede und faire Chancen."
+      },
+      "en": {
+        "title": "Wealth Inequality",
+        "summary": "Wealth, poverty, income differences, and fair opportunities."
+      },
+      "es": {
+        "title": "Desigualdad económica",
+        "summary": "La riqueza, la pobreza, las diferencias de ingresos y la igualdad de oportunidades."
+      },
+      "fr": {
+        "title": "Inégalités de richesse",
+        "summary": "La richesse, la pauvreté, les écarts de revenus et l'égalité des chances."
+      }
+    },
+    "cl-volny-cas-a-konicky": {
+      "cs": {
+        "title": "Volný čas a koníčky",
+        "summary": "Zájmy, odpočinek a rovnováha každodenního života."
+      },
+      "de": {
+        "title": "Freizeit und Hobbys",
+        "summary": "Interessen, Erholung und die Balance zwischen Pflichten und Freizeit."
+      },
+      "en": {
+        "title": "Free Time and Hobbies",
+        "summary": "Interests, relaxation, and a balance between responsibilities and free time."
+      },
+      "es": {
+        "title": "Tiempo libre y aficiones",
+        "summary": "Los intereses, el descanso y el equilibrio entre las obligaciones y el tiempo libre."
+      },
+      "fr": {
+        "title": "Temps libre et loisirs",
+        "summary": "Les centres d'intérêt, la détente et l'équilibre entre les obligations et le temps libre."
+      }
+    },
+    "cl-nemoci-u-lekare": {
+      "cs": {
+        "title": "Nemoci a návštěva lékaře",
+        "summary": "Zdraví, komunikace s lékařem a pomoc druhým."
+      },
+      "de": {
+        "title": "Krankheiten und Arztbesuche",
+        "summary": "Gesundheit, Krankheiten, Gespräche mit dem Arzt und anderen Menschen helfen."
+      },
+      "en": {
+        "title": "Illnesses and Visiting the Doctor",
+        "summary": "Health, illnesses, talking to a doctor, and helping other people."
+      },
+      "es": {
+        "title": "Enfermedades y visita al médico",
+        "summary": "La salud, las enfermedades, la comunicación con el médico y la ayuda a los demás."
+      },
+      "fr": {
+        "title": "Maladies et consultation médicale",
+        "summary": "La santé, les maladies, les échanges avec le médecin et l'aide aux autres."
+      }
+    },
+    "cl-svetova-politika": {
+      "cs": {
+        "title": "Světová politika",
+        "summary": "Politika, mír, společenská odpovědnost a hlas mladých lidí."
+      },
+      "de": {
+        "title": "Weltpolitik",
+        "summary": "Weltgeschehen, Frieden, gesellschaftliche Verantwortung und die Stimmen junger Menschen in öffentlichen Debatten."
+      },
+      "en": {
+        "title": "World Politics",
+        "summary": "World affairs, peace, social responsibility, and young people's voices in public debate."
+      },
+      "es": {
+        "title": "Política mundial",
+        "summary": "La actualidad internacional, la paz, la responsabilidad social y la voz de los jóvenes en el debate público."
+      },
+      "fr": {
+        "title": "Politique mondiale",
+        "summary": "L'actualité internationale, la paix, la responsabilité sociale et la voix des jeunes dans le débat public."
+      }
+    },
+    "cl-ceny-nemovitosti": {
+      "cs": {
+        "title": "Ceny nemovitostí u nás a v zahraničí",
+        "summary": "Bydlení, nájmy, ceny a dostupnost domova v Česku a zahraničí. Ukázkové ceny jsou fiktivní."
+      },
+      "de": {
+        "title": "Immobilienpreise im In- und Ausland",
+        "summary": "Wohnen, Mieten, Preise und die Bezahlbarkeit von Wohnraum in Tschechien und im Ausland. Beispielpreise sind fiktiv."
+      },
+      "en": {
+        "title": "Property Prices at Home and Abroad",
+        "summary": "Housing, rents, prices, and affordability in Czechia and abroad. All sample prices are fictional."
+      },
+      "es": {
+        "title": "Precios de la vivienda aquí y en el extranjero",
+        "summary": "La vivienda, los alquileres, los precios y el acceso a un hogar en Chequia y en otros países. Los precios de ejemplo son ficticios."
+      },
+      "fr": {
+        "title": "Prix de l'immobilier ici et à l'étranger",
+        "summary": "Le logement, les loyers, les prix et l'accès à un logement en Tchéquie et à l'étranger. Les prix donnés en exemple sont fictifs."
+      }
+    },
+    "ll-harrison-ford": {
+      "cs": {
+        "title": "Harrison Ford – projev při ocenění za celoživotní přínos",
+        "summary": "Autentický děkovný projev: hlavní myšlenky, důležité detaily a způsob řečníkova vyjadřování."
+      },
+      "en": {
+        "title": "Harrison Ford – Life Achievement Speech",
+        "summary": "An authentic lifetime achievement acceptance speech: main ideas, important details, and the speaker's choice of words."
+      }
+    },
+    "ll-peaky-no-fighting": {
+      "cs": {
+        "title": "Peaky Blinders – Žádné rvačky",
+        "summary": "Dramatická anglickojazyčná scéna s napětím a příkazy: porozumění dialogu a jeho tónu."
+      },
+      "en": {
+        "title": "Peaky Blinders – No Fighting",
+        "summary": "A dramatic English-language scene with tension and commands: understanding the dialogue and its tone."
+      }
+    },
+    "rl-can-mistakes": {
+      "cs": {
+        "title": "Mohou nám chyby pomoci v učení?",
+        "summary": "Příběhy a úvahy o učení z chyb, využívání zpětné vazby a strategiích pro další pokrok."
+      },
+      "de": {
+        "title": "Können uns Fehler beim Lernen helfen?",
+        "summary": "Geschichten und Überlegungen zum Lernen aus Fehlern, zum Umgang mit Rückmeldungen und zu Strategien für Fortschritte."
+      },
+      "en": {
+        "title": "Can Mistakes Help Us Learn?",
+        "summary": "Stories and reflections on learning from mistakes, using feedback, and strategies for making progress."
+      },
+      "es": {
+        "title": "¿Pueden ayudarnos los errores a aprender?",
+        "summary": "Historias y reflexiones sobre aprender de los errores, aprovechar los comentarios y avanzar en el aprendizaje."
+      },
+      "fr": {
+        "title": "Les erreurs peuvent-elles nous aider à apprendre ?",
+        "summary": "Des récits et des réflexions sur l'apprentissage par l'erreur, l'utilisation des retours et les stratégies pour progresser."
+      }
+    },
+    "rl-plastic-ocean": {
+      "cs": {
+        "title": "Plasty v našem světě (Plastic Ocean)",
+        "summary": "Plastový odpad a ochrana životního prostředí. Některé úrovně zahrnují také recenzi fiktivního dokumentárního filmu."
+      },
+      "de": {
+        "title": "Plastik in unserer Welt (Plastic Ocean)",
+        "summary": "Plastikmüll und Umweltschutz. Einige Niveaustufen enthalten auch eine Rezension eines fiktiven Dokumentarfilms."
+      },
+      "en": {
+        "title": "Plastic in Our World (Plastic Ocean)",
+        "summary": "Plastic waste and environmental protection. Some levels also include a review of a fictional documentary film."
+      },
+      "es": {
+        "title": "El plástico en nuestro mundo (Plastic Ocean)",
+        "summary": "Los residuos plásticos y la protección del medio ambiente. Algunos niveles incluyen la reseña de un documental ficticio."
+      },
+      "fr": {
+        "title": "Le plastique dans notre monde (Plastic Ocean)",
+        "summary": "Les déchets plastiques et la protection de l'environnement. Certains niveaux comprennent aussi la critique d'un documentaire fictif."
+      }
+    },
+    "rl-email-friend": {
+      "cs": {
+        "title": "E-mail od přítele",
+        "summary": "Osobní e-maily a komunikace s přáteli v uvěřitelných každodenních situacích."
+      },
+      "de": {
+        "title": "Eine E-Mail von einem Freund",
+        "summary": "Persönliche E-Mails und Kommunikation zwischen Freunden in realistischen Alltagssituationen."
+      },
+      "en": {
+        "title": "An Email from a Friend",
+        "summary": "Personal emails and communication between friends in realistic everyday situations."
+      },
+      "es": {
+        "title": "Un correo electrónico de un amigo",
+        "summary": "Correos personales y comunicación entre amigos en situaciones cotidianas realistas."
+      },
+      "fr": {
+        "title": "Un courriel d'un ami",
+        "summary": "Des courriels personnels et la communication entre amis dans des situations réalistes du quotidien."
+      }
+    },
+    "rl-instant-messages": {
+      "cs": {
+        "title": "Zprávy v chatu",
+        "summary": "Krátké zprávy, digitální komunikace a možné příčiny nedorozumění."
+      },
+      "de": {
+        "title": "Chatnachrichten",
+        "summary": "Kurze Nachrichten, digitale Kommunikation und mögliche Ursachen für Missverständnisse."
+      },
+      "en": {
+        "title": "Instant Messages",
+        "summary": "Short messages, digital communication, and possible causes of misunderstandings."
+      },
+      "es": {
+        "title": "Mensajes instantáneos",
+        "summary": "Los mensajes breves, la comunicación digital y las posibles causas de malentendidos."
+      },
+      "fr": {
+        "title": "Messages instantanés",
+        "summary": "Les messages courts, la communication numérique et les causes possibles de malentendus."
+      }
+    },
+    "cl-skola": {
+      "cs": {
+        "title": "Škola",
+        "summary": "Školní prostředí, předměty, spolužáci a představy o ideální škole. Ve španělské A1 je evidována opakovaná otázka."
+      },
+      "de": {
+        "title": "Meine Schule",
+        "summary": "Schulalltag, Fächer, Mitschüler und die ideale Schule. In Spanisch A1 ist eine doppelte Frage erfasst."
+      },
+      "en": {
+        "title": "My School",
+        "summary": "School life, subjects, classmates, and the ideal school. A duplicate question is flagged in Spanish A1."
+      },
+      "es": {
+        "title": "Mi escuela",
+        "summary": "El entorno escolar, las asignaturas, los compañeros y la escuela ideal. Hay una pregunta duplicada en español A1."
+      },
+      "fr": {
+        "title": "Mon école",
+        "summary": "La vie scolaire, les matières, les camarades et l'école idéale. Une question en double est signalée en espagnol A1."
+      }
+    }
+  }
+}
