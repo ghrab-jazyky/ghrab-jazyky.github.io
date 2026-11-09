@@ -1,0 +1,28 @@
+name: LSH R23 Reading public-data self-check QA (NO deployment)
+on:
+  push:
+    branches:
+      - feat/lsh-r23-reading-selfcheck-pilot-2026-11-09
+    paths:
+      - 'language-skills-hub/**'
+      - '.github/workflows/lsh-r23-reading-selfcheck.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reading-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Node syntax
+        run: |
+          node --check language-skills-hub/self-check/reading/reading-core.js
+          node --check language-skills-hub/self-check/reading/reading.js
+          node --check language-skills-hub/tests/r22-static-policy.test.cjs
+          node --check language-skills-hub/tests/r23-reading-selfcheck.test.cjs
+      - name: Real Reading content and safe static-only regression
+        run: node --test language-skills-hub/tests/r22-static-policy.test.cjs language-skills-hub/tests/r23-reading-selfcheck.test.cjs
