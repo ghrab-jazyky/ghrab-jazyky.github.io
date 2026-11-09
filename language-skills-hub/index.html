@@ -14,6 +14,54 @@
 </head>
 <body>
 <a class="skip" href="#main">Přejít na obsah</a>
+<section id="welcome" class="welcome" aria-labelledby="welcomeTitle">
+ <div class="welcome-content">
+  <div class="welcome-eyebrow">Gymnázium Ostrava-Hrabůvka · jazykové vzdělávání</div>
+  <p class="welcome-brand">LANGUAGE <span>SKILLS</span> HUB</p>
+  <h1 id="welcomeTitle">Tři dovednosti.<br><span>Jedno místo.</span></h1>
+  <p class="welcome-lead">Konverzace, čtení a poslech v jednom přehledném prostředí. Vyber si jazykovou dovednost a otevři potřebnou aktivitu.</p>
+  <div class="welcome-counts" aria-label="Počty připravených témat">
+   <div><strong>21</strong><span>Conversation</span></div>
+   <div><strong>5</strong><span>Reading</span></div>
+   <div><strong>3</strong><span>Listening</span></div>
+  </div>
+  <button type="button" id="skipIntro" class="welcome-skip">Vybrat laboratoř nyní</button>
+  <p class="welcome-timing">Výběr laboratoře se zobrazí automaticky za 3 sekundy.</p>
+ </div>
+ <div id="skillChooser" class="skill-chooser" role="dialog" aria-modal="true"
+      aria-labelledby="skillChooserTitle" aria-describedby="skillChooserDescription" hidden>
+  <div class="chooser-panel">
+   <div class="chooser-header">
+    <div>
+     <p class="chooser-eyebrow">Language Skills Hub</p>
+     <h2 id="skillChooserTitle">Co dnes potřebuješ?</h2>
+     <p id="skillChooserDescription">Vyber laboratoř. V katalogu pak uvidíš všechny její karty a můžeš je dále filtrovat.</p>
+    </div>
+    <button type="button" class="chooser-back" id="closeChooser">Zpět na úvod</button>
+   </div>
+   <div class="chooser-grid" aria-label="Výběr laboratoře">
+    <button type="button" class="chooser-choice" data-choose-skill="konverzace">
+     <span class="chooser-symbol" aria-hidden="true">◉</span>
+     <span class="chooser-name">Conversation Lab</span>
+     <span class="chooser-description">Mluvení, otázky a diskuse</span>
+     <span class="chooser-count">21 témat <span aria-hidden="true">→</span></span>
+    </button>
+    <button type="button" class="chooser-choice" data-choose-skill="cteni">
+     <span class="chooser-symbol" aria-hidden="true">▤</span>
+     <span class="chooser-name">Reading Lab</span>
+     <span class="chooser-description">Texty a čtení s porozuměním</span>
+     <span class="chooser-count">5 témat <span aria-hidden="true">→</span></span>
+    </button>
+    <button type="button" class="chooser-choice" data-choose-skill="poslech">
+     <span class="chooser-symbol" aria-hidden="true">♫</span>
+     <span class="chooser-name">Listening Lab</span>
+     <span class="chooser-description">Autentické nahrávky a poslech</span>
+     <span class="chooser-count">3 témata <span aria-hidden="true">→</span></span>
+    </button>
+   </div>
+  </div>
+ </div>
+</section>
 <header><div class="topbar">
 <a class="brand" href="./" aria-label="Language Skills Hub – úvod">LANGUAGE <span>SKILLS</span> HUB</a>
 <nav class="menu" aria-label="Hlavní navigace">
@@ -29,26 +77,22 @@
 </div>
 </div></header>
 <main id="main">
-<section class="hero" aria-labelledby="homeTitle">
-<div class="eyebrow">Gymnázium Ostrava-Hrabůvka · jazykové vzdělávání</div>
-<h1 id="homeTitle">Tři dovednosti.<br><span>Jedno místo.</span></h1>
-<p class="lead">Konverzace, čtení a poslech v jednotném katalogu. Vyber si aktivitu, jazyk a úroveň, nebo otevři odkaz či QR kód od učitele.</p>
-<div class="counts"><div><strong>21</strong>Conversation</div><div><strong>5</strong>Reading</div><div><strong>3</strong>Listening</div></div>
-</section>
-<section id="catalog" aria-labelledby="catalogTitle">
-<div class="headline"><h2 id="catalogTitle">Katalog aktivit</h2><span id="summary" aria-live="polite">Načítání…</span></div>
-<div class="tabs" aria-label="Filtr podle jazykové dovednosti">
-<button class="tab" type="button" data-skill="all" aria-pressed="true">Vše</button>
-<button class="tab" type="button" data-skill="konverzace" aria-pressed="false">Mluvení</button>
-<button class="tab" type="button" data-skill="cteni" aria-pressed="false">Čtení</button>
-<button class="tab" type="button" data-skill="poslech" aria-pressed="false">Poslech</button>
+<section id="catalog" aria-labelledby="catalogTitle" hidden>
+<div class="lab-context">
+ <div>
+  <p class="eyebrow">Vybraná laboratoř</p>
+  <h1 id="heading" tabindex="-1">Conversation Lab</h1>
+ </div>
+ <button type="button" id="changeLab" class="lab-change">Změnit laboratoř</button>
 </div>
+<div class="headline"><h2 id="catalogTitle">Vyber aktivitu</h2><span id="summary" aria-live="polite">Načítání…</span></div>
+<p class="filter-help">Bez filtrů uvidíš všechny karty této laboratoře. Jazyk a úroveň můžeš určit podle potřeby.</p>
 <div class="controls">
 <div><label for="search">Hledat téma</label><input id="search" type="search" placeholder="Např. umělá inteligence, rodina, film…"></div>
-<div><label for="language">Jazyk aktivity</label><select id="language" aria-label="Jazyk aktivity"><option value="en">English</option><option value="es">Español</option><option value="de">Deutsch</option><option value="fr">Français</option></select></div>
-<div><label for="level">Úroveň CEFR</label><select id="level" aria-label="Úroveň CEFR"><option>A1</option><option>A2</option><option>B1</option><option selected>B2</option><option>C1</option><option>C2</option></select></div>
+<div><label for="language">Jazyk aktivity</label><select id="language" aria-label="Jazyk aktivity"><option value="all" selected>Všechny jazyky</option></select></div>
+<div><label for="level">Úroveň CEFR</label><select id="level" aria-label="Úroveň CEFR"><option value="all" selected>Všechny úrovně</option><option value="A1">A1</option><option value="A2">A2</option><option value="B1">B1</option><option value="B2">B2</option><option value="C1">C1</option><option value="C2">C2</option></select></div>
 </div>
-<div class="headline"><h2 id="heading">Všechny jazykové aktivity</h2><span class="note">Odkazy nastaví zvolenou variantu</span></div>
+<div class="headline"><h2 id="cardsTitle">Dostupné karty</h2><span class="note" id="variantNote">Bez filtrů se otevře volný výběr jazyka a úrovně.</span></div>
 <div id="cards" class="cards" aria-live="polite"><p class="empty">Načítání aktivit…</p></div>
 </section>
 <section id="howto" class="footnote" aria-labelledby="howTitle">

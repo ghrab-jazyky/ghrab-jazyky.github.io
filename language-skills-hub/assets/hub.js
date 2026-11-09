@@ -7,7 +7,9 @@ const tags={konverzace:'Speaking',cteni:'Reading',poslech:'Listening'};
 const labels={en:'English',es:'Español',de:'Deutsch',fr:'Français'};
 const levels=['A1','A2','B1','B2','C1','C2'];
 const allowed=new Set(['konverzace','cteni','poslech']);
-let entries=[],skill=allowed.has(params.get('skill'))?params.get('skill'):'all';
+let entries=[],skill=allowed.has(params.get('skill'))?params.get('skill'):null;
+let introTimer=null;
+const welcome=byId('welcome'),chooser=byId('skillChooser'),catalog=byId('catalog');
 let qrUrl='', qrTitle='', toastTimeout=null;
 const qrDialog=byId('qrDialog'),qrMount=byId('qrMount');
 function toast(message){
@@ -23,16 +25,24 @@ function opt(select,items,previous){
  if(items.some(([value])=>value===previous))select.value=previous;
 }
 function langChoices(){
- const active=entries.filter(e=>skill==='all'||e.skill===skill);
+ const active=entries.filter(e=>e.skill===skill);
  const langs=['en','es','de','fr'].filter(l=>active.some(e=>e.languages.includes(l)));
- opt(byId('language'),langs.map(l=>[l,labels[l]]),byId('language').value||'en');
+ opt(byId('language'),[['all','Všechny jazyky'],...langs.map(l=>[l,labels[l]])],
+  byId('language').value||'all');
 }
 function currentUrl(e){
- const language=e.languages.includes(byId('language').value)?
-  byId('language').value:e.languages[0];
- const level=byId('level').value;
+ const language=byId('language').value,level=byId('level').value;
  const source=e.lockSource||e.relative;
- return new URL(source+'?lang='+language+'&level='+level+'&zamek=1&practice=1',document.baseURI).href;
+ const url=new URL(source,document.baseURI);
+ url.searchParams.set('practice','1');
+ if(language!=='all'&&e.languages.includes(language))url.searchParams.set('lang',language);
+ if(level!=='all'&&e.levels.includes(level))url.searchParams.set('level',level);
+ // R19: filters are optional. A fully specified pair keeps the original R17
+ // fixed-variant behavior; unfiltered cards permit student selection.
+ // R21 will add an explicit fixed/free sharing choice independent of filters.
+ if(language!=='all'&&level!=='all'&&e.languages.includes(language)&&e.levels.includes(level))
+  url.searchParams.set('zamek','1');
+ return url.href;
 }
 function one(tag,cls,text){
  const x=document.createElement(tag);
@@ -50,7 +60,7 @@ function card(e){
  article.appendChild(one('p','note',e.languages.length===1?
   'Dostupný jazyk: '+labels[e.languages[0]]:
   'Jazyky: '+e.languages.map(l=>l.toUpperCase()).join(' · ')+
-  (e.languages.includes(locale)?'':' · Otevře se '+labels[e.languages[0]])));
+  (locale==='all'||e.languages.includes(locale)?'':' · Zvolený jazyk není dostupný')));
  const actions=one('div','actions');
  const open=one('a','action primary','Otevřít aktivitu');
  open.href=currentUrl(e);open.target='_blank';open.rel='noopener';
@@ -62,23 +72,100 @@ function card(e){
  return article;
 }
 function render(){
- for(const b of document.querySelectorAll('.tab'))
-  b.setAttribute('aria-pressed',String(b.dataset.skill===skill));
+ if(!skill)return;
  const search=byId('search').value.toLocaleLowerCase('cs').trim();
- const shown=entries.filter(e=>(skill==='all'||e.skill===skill)&&
+ const locale=byId('language').value,level=byId('level').value;
+ const active=entries.filter(e=>e.skill===skill);
+ const shown=active.filter(e=>
+  (locale==='all'||e.languages.includes(locale))&&
+  (level==='all'||e.levels.includes(level))&&
   (!search||(e.title+' '+(e.summary||'')+' '+titles[e.skill]).toLocaleLowerCase('cs').includes(search)));
  const list=byId('cards');list.replaceChildren();
  for(const e of shown)list.appendChild(card(e));
- if(!shown.length)list.appendChild(one('p','empty','Nenalezena žádná aktivita. Zkus jiný filtr nebo vymazat hledání.'));
- byId('summary').textContent=shown.length+' z '+entries.length+' témat · A1–C2';
- byId('heading').textContent=skill==='all'?'Všechny jazykové aktivity':titles[skill];
+ if(!shown.length)list.appendChild(one('p','empty','Nenalezena žádná aktivita. Zkus jiný jazyk, úroveň nebo hledaný výraz.'));
+ byId('summary').textContent=shown.length+' z '+active.length+' témat';
+ byId('heading').textContent=titles[skill];
+ byId('variantNote').textContent=locale==='all'&&level==='all'?
+  'Bez filtrů se otevře volný výběr jazyka a úrovně.':
+  locale!=='all'&&level!=='all'?
+  'Nastavený jazyk a úroveň se otevřou jako pevná varianta.':
+  'Je nastavena část parametrů. Ostatní volbu lze změnit v kartě.';
 }
-function setSkill(next){
+function setAppInert(blocked){
+ for(const el of document.querySelectorAll('body > header, body > main, body > footer'))
+  el.inert=blocked;
+}
+function closeChooser(){
+ chooser.hidden=true;
+ const content=welcome.querySelector('.welcome-content');
+ content.inert=false;
+ byId('skipIntro').focus();
+}
+function showChooser(){
+ if(introTimer!==null){clearTimeout(introTimer);introTimer=null;}
+ welcome.hidden=false;
+ chooser.hidden=false;
+ welcome.querySelector('.welcome-content').inert=true;
+ setAppInert(true);
+ chooser.querySelector('[data-choose-skill]').focus();
+}
+function showCatalog(next,{recordHistory=true,restoreFilters=false}={}){
+ if(!allowed.has(next))return;
+ if(introTimer!==null){clearTimeout(introTimer);introTimer=null;}
  skill=next;
- langChoices();render();
- const u=new URL(location.href);
- if(skill==='all')u.searchParams.delete('skill');else u.searchParams.set('skill',skill);
- history.replaceState(null,'',u);
+ welcome.hidden=true;chooser.hidden=true;
+ welcome.querySelector('.welcome-content').inert=false;
+ setAppInert(false);
+ catalog.hidden=false;
+ byId('search').value='';
+ if(!restoreFilters){byId('language').value='all';byId('level').value='all';}
+ langChoices();
+ if(restoreFilters){
+  const query=new URLSearchParams(location.search);
+  const language=query.get('lang'),level=query.get('level');
+  if(language&&[...byId('language').options].some(o=>o.value===language))
+   byId('language').value=language;
+  if(level&&levels.includes(level))byId('level').value=level;
+ }
+ render();
+ if(recordHistory){
+  const url=new URL(location.href);
+  url.searchParams.set('skill',skill);
+  url.searchParams.delete('lang');url.searchParams.delete('level');
+  history.pushState({skill},'',url);
+ }
+ byId('heading').focus({preventScroll:true});
+ catalog.scrollIntoView({behavior:'auto',block:'start'});
+}
+function updateFilters(){
+ if(!skill)return;
+ render();
+ const url=new URL(location.href);
+ for(const [key,element] of [['lang',byId('language')],['level',byId('level')]]){
+  if(element.value==='all')url.searchParams.delete(key);
+  else url.searchParams.set(key,element.value);
+ }
+ history.replaceState({skill},'',url);
+}
+function restoreLocation(){
+ const query=new URLSearchParams(location.search),chosen=query.get('skill');
+ if(allowed.has(chosen)){
+  showCatalog(chosen,{recordHistory:false,restoreFilters:true});
+ }else{
+  skill=null;catalog.hidden=true;
+  setAppInert(true);showChooser();
+ }
+}
+function initEntry(){
+ const query=new URLSearchParams(location.search),chosen=query.get('skill');
+ if(allowed.has(chosen)){
+  showCatalog(chosen,{recordHistory:false,restoreFilters:true});
+ }else{
+  catalog.hidden=true;
+  setAppInert(true);
+  const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  introTimer=setTimeout(showChooser,reduced?0:3000);
+ }
 }
 function showQr(e){
  qrUrl=currentUrl(e);qrTitle=e.title;
@@ -129,18 +216,36 @@ async function load(){
    !e.languages?.length||!e.languages.every(l=>l in labels)))
    throw new Error('Neplatná metadata katalogu');
   entries.sort((a,b)=>a.title.localeCompare(b.title,'cs'));
-  langChoices();
-  render();
+  if(skill){
+   langChoices();
+   const query=new URLSearchParams(location.search);
+   if([...byId('language').options].some(o=>o.value===query.get('lang')))
+    byId('language').value=query.get('lang');
+   if(levels.includes(query.get('level')))byId('level').value=query.get('level');
+   render();
+  }
  }catch(err){
   const cards=byId('cards');cards.replaceChildren();
   cards.appendChild(one('p','empty','Katalog se nepodařilo načíst. Obnov stránku nebo informuj správce: '+err.message));
   byId('summary').textContent='Katalog není dostupný';
  }
 }
-for(const b of document.querySelectorAll('.tab'))
- b.addEventListener('click',()=>setSkill(b.dataset.skill));
-byId('language').addEventListener('change',render);
-byId('level').addEventListener('change',render);
+for(const b of chooser.querySelectorAll('[data-choose-skill]'))
+ b.addEventListener('click',()=>showCatalog(b.dataset.chooseSkill));
+byId('skipIntro').addEventListener('click',showChooser);
+byId('closeChooser').addEventListener('click',closeChooser);
+byId('changeLab').addEventListener('click',showChooser);
+chooser.addEventListener('keydown',event=>{
+ if(event.key==='Escape'){event.preventDefault();closeChooser();return;}
+ if(event.key!=='Tab')return;
+ const items=[...chooser.querySelectorAll('button:not([disabled])')];
+ const first=items[0],last=items.at(-1);
+ if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+ else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
+});
+window.addEventListener('popstate',restoreLocation);
+byId('language').addEventListener('change',updateFilters);
+byId('level').addEventListener('change',updateFilters);
 byId('search').addEventListener('input',render);
 byId('qrClose').addEventListener('click',()=>qrDialog.close());
 byId('qrCopy').addEventListener('click',copyLink);
@@ -203,5 +308,6 @@ document.addEventListener('fullscreenchange',syncFullscreen);
 document.addEventListener('fullscreenerror',()=>toast('Prohlížeč nepovolil režim celé obrazovky.'));
 syncTheme();
 syncFullscreen();
+initEntry();
 load();
 })();
