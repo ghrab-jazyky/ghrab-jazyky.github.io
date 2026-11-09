@@ -107,7 +107,7 @@
   $('markPass').addEventListener('click',()=>{if(passes<2){passes++;count()}});
   $('resetPass').addEventListener('click',()=>{passes=0;count()});
   $('copyUrl').addEventListener('click',copy);
-  $('downloadQr').addEventListener('click',()=>shareTools.download($('qrMount'),$('copyStatus'),'listening-test-bez-znamky-qr.svg'));
+  $('downloadQr').addEventListener('click',()=>shareTools.download($('qrMount'),$('copyStatus'),'listening-test-navrh-znamky-qr.svg'));
   $('studentUrl').addEventListener('focus',e=>e.target.select());
   loadSources();
  }
