@@ -5,6 +5,7 @@
 (()=>{
  'use strict';
  const core=window.LSHReadingCore;
+ const resultsCore=window.LSHResultCore;
  const $=id=>document.getElementById(id);
  const add=(tag,cls,text)=>{
   const e=document.createElement(tag);
@@ -223,11 +224,12 @@
  }
  function renderResult(report){
   $('resultCaution').textContent=ui.after+' '+ui.grade+'.';
-  $('scoreSummary').replaceChildren(
-   resultValue(report.correct+' / '+report.total,ui.correct),
-   resultValue(report.points+' / '+report.maxPoints,ui.points),
-   resultValue(new Intl.NumberFormat(locale,{maximumFractionDigits:2}).format(report.percentage)+' %',ui.percentage)
-  );
+  const normalized=resultsCore.reviewReading(report);
+  const tiles=resultsCore.scoreTiles(normalized,{
+   points:ui.points,objectivePercent:ui.percentage,
+   completion:ui.answered,schoolGrade:ui.grade,noGrade:'—'
+  },locale);
+  $('scoreSummary').replaceChildren(...tiles.map(tile=>resultValue(tile.value,tile.label)));
   const details=$('resultDetails');details.replaceChildren();
   details.appendChild(add('h3',null,ui.review));
   for(const item of report.details){
