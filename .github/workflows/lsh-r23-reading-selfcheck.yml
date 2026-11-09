@@ -1,0 +1,50 @@
+name: LSH R23 Reading public-data self-check QA (NO deployment)
+on:
+  push:
+    branches:
+      - feat/lsh-r23-reading-selfcheck-pilot-2026-11-09
+    paths:
+      - 'language-skills-hub/**'
+      - '.github/workflows/lsh-r23-reading-selfcheck.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reading-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Node syntax
+        run: |
+          node --check language-skills-hub/self-check/reading/reading-core.js
+          node --check language-skills-hub/self-check/reading/reading.js
+          node --check language-skills-hub/tests/r22-static-policy.test.cjs
+          node --check language-skills-hub/tests/r23-reading-selfcheck.test.cjs
+      - name: Real Reading content and safe static-only regression
+        run: node --test language-skills-hub/tests/r22-static-policy.test.cjs language-skills-hub/tests/r23-reading-selfcheck.test.cjs
+  reading-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install real browser engines
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Test R23 Reading in Chromium and WebKit, desktop and mobile
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-r23-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:8765/language-skills-hub/self-check/reading/index.html >/dev/null; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/r23-reading-selfcheck.browser.test.cjs
