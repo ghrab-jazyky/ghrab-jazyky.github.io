@@ -52,7 +52,7 @@ for(const [name,browserType] of [['chromium',chromium],['webkit',webkit]]){
     assert.match(displayed,/%/);
     assert.match(displayed,/—/,'Grade must be unassigned');
     assert.doesNotMatch(displayed,/NaN|Infinity|undefined/);
-    assert.ok((await page.locator('#resultDetails .review').count())>=example.reviewCount||1);
+    assert.ok((await page.locator('#resultDetails .review').count())>0,'Missing submitted answers review');
     if(example.skill==='listening'){
      assert.match(await page.locator('#resultCaution').textContent(),/NOT final/);
      assert.match(displayed,/Written answers requiring teacher review/);
