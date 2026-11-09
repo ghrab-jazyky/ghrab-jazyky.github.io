@@ -253,7 +253,10 @@
   const list=$('resultDetails');list.replaceChildren();
   const segment=(phase)=>phase==='gist'?'First Listening':
    phase==='detail'?'Listen and Interpret':'Listen, Write and Reconstruct';
-  for(const task of report.reviewed){
+  const mistakes=report.reviewed.filter(task=>!task.correct);
+  if(!mistakes.length)list.appendChild(element('p','small-note',
+   'All automatically assessed answers are correct. No objective mistakes to review.'));
+  for(const task of mistakes){
    const box=element('article','review '+(task.correct?'correct':'wrong'));
    box.appendChild(element('span','state',(task.correct?'CORRECT':'NOT CORRECT')+' · '+segment(task.phase)));
    box.appendChild(element('h3',null,task.question));
@@ -262,6 +265,7 @@
    if(task.reason)kv(box,'Explanation',task.reason);
    list.appendChild(box);
   }
+  // Written responses are not automatically incorrect; retain them for teacher review.
   for(const task of report.writing){
    const box=element('article','review manual');
    box.appendChild(element('span','state',

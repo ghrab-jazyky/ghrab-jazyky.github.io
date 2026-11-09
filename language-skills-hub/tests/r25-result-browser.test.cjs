@@ -6,9 +6,9 @@ const {chromium,webkit}=require('playwright');
 const root='http://127.0.0.1:8765/language-skills-hub/self-check/';
 const examples=[
  {skill:'reading',file:'reading/index.html',topic:'rl-asteroids',lang:'en',level:'B2',
-  width:1280,height:900,tiles:4,reviewCount:18},
+  width:1280,height:900,tiles:4},
  {skill:'reading',file:'reading/index.html',topic:'rl-can-mistakes',lang:'es',level:'A1',
-  width:390,height:844,tiles:4,reviewCount:9},
+  width:390,height:844,tiles:4},
  {skill:'listening',file:'listening/student.html',topic:'ll-harrison-ford',level:'B1',
   width:390,height:844,tiles:5}
 ];
@@ -57,7 +57,12 @@ for(const [name,browserType] of [['chromium',chromium],['webkit',webkit]]){
      assert.match(await page.locator('#resultCaution').textContent(),/NOT final/);
      assert.match(displayed,/Written answers requiring teacher review/);
     }else{
-     assert.equal(await page.locator('#resultDetails .review').count(),example.reviewCount);
+     const total=await page.locator('fieldset.question').count();
+     const points=/^(\d+)\s*\/\s*(\d+)/.exec(vals[0].trim());
+     assert.ok(points,'Result must expose numeric earned/maximum points');
+     assert.equal(Number(points[2]),total,'All Reading questions count toward maximum points');
+     assert.equal(await page.locator('#resultDetails .review').count(),
+      total-Number(points[1]),'Only incorrect or unanswered Reading answers should be reviewed');
     }
     assert.equal(methods.length,0,'Unexpected uploaded student results');
     assert.deepEqual(errors,[]);
