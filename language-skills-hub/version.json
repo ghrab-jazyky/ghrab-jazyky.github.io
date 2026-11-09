@@ -1,7 +1,7 @@
 {
   "name": "Language Skills Hub",
-  "version": "R27",
-  "mode": "public_practice_and_local_self_check",
+  "version": "R28",
+  "mode": "public_practice_and_unverified_grade_proposals",
   "gradedTestsEnabled": false,
   "topicCount": 29,
   "variantCount": 642,
@@ -40,5 +40,6 @@
   "sourceSnapshot": "R17",
   "selfCheckEnabled": true,
   "officialGradesEnabled": false,
-  "backendEnabled": false
+  "backendEnabled": false,
+  "localGradeProposalsEnabled": true
 }
