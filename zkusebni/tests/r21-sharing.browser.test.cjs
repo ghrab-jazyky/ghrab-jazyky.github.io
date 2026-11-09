@@ -34,7 +34,7 @@ async function setup(engine,width,height){
  const context=await browser.newContext({viewport:{width,height},locale:'cs-CZ',
   serviceWorkers:'block',acceptDownloads:true});
  await context.route(/^https?:/,route=>
-  new URL(route.request().url).origin===new URL(origin).origin?
+  new URL(route.request().url()).origin===new URL(origin).origin?
   route.continue():route.abort('internetdisconnected'));
  const page=await context.newPage(),errors=[];
  page.on('pageerror',e=>errors.push(String(e)));
