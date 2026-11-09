@@ -1,5 +1,4 @@
 name: LSH R22 static-only assessment decision gate (NO deployment)
-
 on:
   push:
     branches:
@@ -7,17 +6,9 @@ on:
     paths:
       - 'language-skills-hub/**'
       - '.github/workflows/lsh-r22-static-policy.yml'
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'language-skills-hub/**'
-      - '.github/workflows/lsh-r22-static-policy.yml'
   workflow_dispatch:
-
 permissions:
   contents: read
-
 jobs:
   static-policy:
     runs-on: ubuntu-24.04
@@ -29,5 +20,5 @@ jobs:
           node-version: '24'
       - name: Syntax check
         run: node --check language-skills-hub/tests/r22-static-policy.test.cjs
-      - name: No-backend policy and live practice integrity regression
+      - name: Verify no-backend decision and public practice integrity
         run: node --test language-skills-hub/tests/r22-static-policy.test.cjs
