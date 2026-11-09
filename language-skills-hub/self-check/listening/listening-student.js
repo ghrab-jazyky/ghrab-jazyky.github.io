@@ -183,7 +183,7 @@
   const normalized=resultsCore.reviewListening(report);
   const summary=$('scoreSummary');summary.replaceChildren();
   const tiles=resultsCore.scoreTiles(normalized,{
-   points:'Objective points',objectivePercent:'Objective success rate',
+   points:'Objective tasks (points earned)',objectivePercent:'Objective success rate',
    completion:'Tasks answered',manualReview:'Written answers requiring teacher review',
    schoolGrade:'Official school grade',noGrade:'—'
   },'en');
