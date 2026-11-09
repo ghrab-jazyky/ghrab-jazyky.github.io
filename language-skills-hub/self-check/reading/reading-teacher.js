@@ -67,7 +67,7 @@
  async function init(){
   themeInit();
   $('copyUrl').addEventListener('click',()=>share.copy(studentLink,$('studentUrl'),$('copyStatus')));
-  $('downloadQr').addEventListener('click',()=>share.download($('qrMount'),$('copyStatus'),'reading-test-bez-znamky-qr.svg'));
+  $('downloadQr').addEventListener('click',()=>share.download($('qrMount'),$('copyStatus'),'reading-test-navrh-znamky-qr.svg'));
   $('studentUrl').addEventListener('focus',e=>e.target.select());
   $('studentUrl').addEventListener('click',e=>e.target.select());
   $('topic').addEventListener('change',()=>{updateLanguage();refresh()});
