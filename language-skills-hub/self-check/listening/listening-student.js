@@ -308,9 +308,9 @@
    const resource=await fetch('../../'+entry.relative,{credentials:'omit',redirect:'error'});
    if(!resource.ok)throw new Error('Source HTTP '+resource.status);
    chosen=core.variant(core.extractJson(await resource.text(),'DATA'),selection.level);
-   render();
    if(new URLSearchParams(location.search).has('timer')&&!window.LSHSessionUI)
     throw new Error('Timed test engine is unavailable.');
+   render();
    timedUI=window.LSHSessionUI?.mount({
     skill:'listening',topic:selection.topic,lang:'en',level:selection.level,
     workspace:$('workspace'),
@@ -356,6 +356,7 @@
    if(timedUI)timedUI.initialize();
    $('workspace').hidden=timedUI?timedUI.status().phase==='ready':false;
   }catch(error){
+   $('workspace').hidden=true;
    $('loading').classList.add('error');
    $('loading').textContent='Listening activity unavailable: '+String(error.message||error);
    $('title').textContent='Unable to load Listening Lab';
