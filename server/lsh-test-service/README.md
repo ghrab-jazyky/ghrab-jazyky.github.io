@@ -24,6 +24,9 @@ Aktuální rozhodnutí učitele z 9. 11. 2026 mají přednost před starším ma
 - Povinné autentizační adaptéry zvlášť pro učitele a studenty. Nepřijímá klientem deklarované jméno nebo roli jako důkaz totožnosti.
 - Soukromá bankovní vrstva, trvalé a transakčně atomické úložiště, distribuované omezení požadavků — vše povinné externí adaptéry.
 - Serverem generované 24bajtové náhodné identifikátory testové relace a studentského pokusu, serverový časový limit, jednorázové odevzdání.
+- Soukromý SHA-256 otisk plné definice testu, včetně klíče odpovědí, se uloží k relaci i pokusu. Jakákoli změna sady pod stejným označením revize způsobí bezpečné odmítnutí, nikoli tichou změnu hodnocení.
+- Distribuovaný rate-limit se volá odděleně pro skutečného síťového protějška (`peer`) a token (`token`). Na neověřené `X-Forwarded-For` se nespoléhá; v produkci je nutný audit chování reverse proxy.
+- Časový limit se ověřuje znovu po načtení a zpracování celého požadavku; produkční databáze musí atomicky potvrdit `submittedAt < stored expiresAt` před uložením výsledku.
 - Odpovědi a opravy jsou dostupné až po úspěšném atomickém uložení výsledku.
 - Omezení JSON těla na 32 KiB, přesné HTTPS origin v CORS, bez wildcard, bez cookies, bez cachování testových výsledků.
 
@@ -45,7 +48,7 @@ Aktuální rozhodnutí učitele z 9. 11. 2026 mají přednost před starším ma
 4. Distribuované omezení žádostí, kontrola přístupu a nastavená pravidla soukromí/retence; do testových URL nepatří jména studentů. Používat anonymizované/pseudonymizované záznamy.
 5. Soukromé média pro učitele a ovládání přehrávání budou předmětem R24; studentova testová odpověď nedostává učitelský odkaz na média.
 
-Povinné metody adaptérů: teacherAuth, studentAuth, bank.load, store.createSession, store.getSession, store.createAttempt, store.getAttempt, store.finalizeAttempt, throttle.check. Runtime vyžaduje explicitní enabled=true a vynucuje bank.serverOnly, store.durable, store.atomicAttemptStart a store.atomicFinalize. Tyto značky nenahrazují audit skutečné implementace databáze.
+Povinné metody adaptérů: teacherAuth, studentAuth, bank.load, store.createSession, store.getSession, store.createAttempt, store.getAttempt, store.finalizeAttempt, throttle.check. Produkční `throttle.check` musí nezávisle uplatnit obě `scope` (peer a token). `store.finalizeAttempt` musí atomicky porovnat uložený konec pokusu a časy odevzdání; pouhá deklarace `atomicFinalize:true` není důkaz skutečného DB omezení. Runtime vyžaduje explicitní enabled=true a vynucuje bank.serverOnly, store.durable, store.atomicAttemptStart a store.atomicFinalize. Tyto značky nenahrazují audit skutečné implementace databáze.
 
 ## Bezpečnostní omezení a otevřené úkoly
 
