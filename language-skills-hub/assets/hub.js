@@ -145,5 +145,63 @@ byId('search').addEventListener('input',render);
 byId('qrClose').addEventListener('click',()=>qrDialog.close());
 byId('qrCopy').addEventListener('click',copyLink);
 byId('qrSave').addEventListener('click',saveQr);
+
+/* R18: teacher catalog theme and fullscreen are deliberately independent
+   from language/CEFR selection and from the underlying student cards. */
+const THEME_KEY='lsh:catalog-theme:v1';
+function syncTheme(){
+ const light=document.documentElement.getAttribute('data-theme')==='light';
+ const button=byId('themeToggle');
+ const action=light?'Zapnout noční režim':'Zapnout denní režim';
+ button.setAttribute('aria-pressed',String(light));
+ button.setAttribute('aria-label',action);
+ button.title=action;
+ byId('themeIcon').textContent=light?'☾':'☀';
+ byId('themeLabel').textContent=light?'Noční režim':'Denní režim';
+ const meta=document.querySelector('meta[name="theme-color"]');
+ if(meta)meta.setAttribute('content',light?'#f4f8fc':'#081526');
+}
+function toggleTheme(){
+ const next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+ document.documentElement.setAttribute('data-theme',next);
+ try{window.localStorage.setItem(THEME_KEY,next);}catch(_){}
+ syncTheme();
+}
+function syncFullscreen(){
+ const active=Boolean(document.fullscreenElement);
+ const action=active?'Ukončit celou obrazovku':'Přejít na celou obrazovku';
+ const button=byId('fullscreenToggle');
+ button.setAttribute('aria-pressed',String(active));
+ button.setAttribute('aria-label',action);
+ button.title=action;
+ byId('fullscreenIcon').textContent=active?'▣':'⛶';
+ byId('fullscreenLabel').textContent=active?'Ukončit fullscreen':'Celá obrazovka';
+}
+async function toggleFullscreen(){
+ try{
+  if(document.fullscreenElement){
+   if(typeof document.exitFullscreen!=='function')
+    throw new Error('Fullscreen exit is unsupported');
+   await document.exitFullscreen();
+  }else{
+   const target=document.documentElement;
+   if(typeof target.requestFullscreen!=='function'){
+    toast('Na tomto zařízení prohlížeč fullscreen nepodporuje.');
+    return;
+   }
+   await target.requestFullscreen();
+  }
+ }catch(_){
+  toast('Prohlížeč nepovolil režim celé obrazovky.');
+ }finally{
+  syncFullscreen();
+ }
+}
+byId('themeToggle').addEventListener('click',toggleTheme);
+byId('fullscreenToggle').addEventListener('click',toggleFullscreen);
+document.addEventListener('fullscreenchange',syncFullscreen);
+document.addEventListener('fullscreenerror',()=>toast('Prohlížeč nepovolil režim celé obrazovky.'));
+syncTheme();
+syncFullscreen();
 load();
 })();
