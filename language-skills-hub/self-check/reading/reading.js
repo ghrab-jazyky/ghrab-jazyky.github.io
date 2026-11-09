@@ -30,7 +30,7 @@
    submit:'Submit all answers',confirm:'Submit your answers now?',missing:'questions are unanswered.',
    result:'Self-check finished',resultKicker:'YOUR RESULT',correct:'Correct answers',
    points:'Points',percentage:'Success rate',grade:'No official school grade',
-   review:'Review your answers',right:'Correct',wrong:'Incorrect',
+   review:'Review incorrect answers',right:'Correct',wrong:'Incorrect',
    notAnswered:'No answer',your:'Your answer',expected:'Correct answer',because:'Explanation',
    after:'The proposed grade uses exact unrounded percentages and a provisional language scale. It is not a verified school record.',
    reflectionAfter:'The optional open reflection was not assessed automatically.',
@@ -53,7 +53,7 @@
    submit:'Entregar todas las respuestas',confirm:'¿Quieres entregar tus respuestas?',missing:'preguntas sin responder.',
    result:'Autoevaluación terminada',resultKicker:'TU RESULTADO',correct:'Respuestas correctas',
    points:'Puntos',percentage:'Porcentaje',grade:'Sin calificación oficial',
-   review:'Revisa tus respuestas',right:'Correcto',wrong:'Incorrecto',
+   review:'Revisa las respuestas incorrectas',right:'Correcto',wrong:'Incorrecto',
    notAnswered:'Sin responder',your:'Tu respuesta',expected:'Respuesta correcta',because:'Explicación',
    after:'La propuesta usa el porcentaje exacto sin redondeo y una escala provisional. No es una calificación escolar verificada.',
    reflectionAfter:'La reflexión abierta opcional no se ha evaluado automáticamente.',
@@ -76,7 +76,7 @@
    submit:'Alle Antworten abgeben',confirm:'Möchtest du deine Antworten jetzt abgeben?',missing:'Fragen sind unbeantwortet.',
    result:'Selbsttest abgeschlossen',resultKicker:'DEIN ERGEBNIS',correct:'Richtige Antworten',
    points:'Punkte',percentage:'Erfolgsquote',grade:'Keine offizielle Schulnote',
-   review:'Antworten überprüfen',right:'Richtig',wrong:'Falsch',
+   review:'Falsche Antworten überprüfen',right:'Richtig',wrong:'Falsch',
    notAnswered:'Keine Antwort',your:'Deine Antwort',expected:'Richtige Antwort',because:'Erklärung',
    after:'Der Vorschlag basiert auf exakten Prozentwerten ohne Rundung und einer vorläufigen Skala. Er ist keine bestätigte Schulnote.',
    reflectionAfter:'Die freiwillige offene Reflexion wurde nicht automatisch bewertet.',
@@ -99,7 +99,7 @@
    submit:'Envoyer toutes les réponses',confirm:'Envoyer tes réponses maintenant ?',missing:'questions sans réponse.',
    result:'Autoévaluation terminée',resultKicker:'TON RÉSULTAT',correct:'Bonnes réponses',
    points:'Points',percentage:'Taux de réussite',grade:'Aucune note scolaire officielle',
-   review:'Vérifie tes réponses',right:'Correct',wrong:'Incorrect',
+   review:'Vérifie tes réponses incorrectes',right:'Correct',wrong:'Incorrect',
    notAnswered:'Sans réponse',your:'Ta réponse',expected:'Bonne réponse',because:'Explication',
    after:'La proposition est calculée sur le pourcentage exact, sans arrondi, à partir d’un barème provisoire. Ce n’est pas une note scolaire vérifiée.',
    reflectionAfter:'La réflexion ouverte facultative n’a pas été évaluée automatiquement.',
@@ -244,7 +244,14 @@
   $('scoreSummary').replaceChildren(...tiles.map(tile=>resultValue(tile.value,tile.label)));
   const details=$('resultDetails');details.replaceChildren();
   details.appendChild(add('h3',null,ui.review));
-  for(const item of report.details){
+  const mistakes=report.details.filter(item=>!item.correct);
+  if(!mistakes.length)details.appendChild(add('p','small-note',{
+   en:'All answers are correct. There are no mistakes to review.',
+   es:'Todas las respuestas son correctas. No hay errores que revisar.',
+   de:'Alle Antworten sind richtig. Es gibt keine Fehler zu überprüfen.',
+   fr:'Toutes les réponses sont correctes. Il n’y a aucune erreur à revoir.'
+  }[locale]));
+  for(const item of mistakes){
    const box=add('article','review '+(item.correct?'correct':'wrong'));
    box.appendChild(add('span','state',item.correct?ui.right:ui.wrong));
    box.appendChild(add('h3',null,item.prompt));
