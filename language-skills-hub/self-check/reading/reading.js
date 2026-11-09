@@ -118,7 +118,7 @@
  const ui=T[locale];
  let variant=null;
  const answers=Object.create(null);
- let submitted=false;
+ let submitted=false,timedUI=null;
  function themeSet(light,save){
   document.documentElement.dataset.theme=light?'light':'dark';
   $('themeButton').textContent=light?ui.themeDark:ui.themeLight;
@@ -204,6 +204,7 @@
       if(submitted)return;
       answers[q.id]=i;
       updateProgress();
+      timedUI?.save();
      });
      label.append(radio,add('span',null,choice));
      card.appendChild(label);
@@ -265,12 +266,13 @@
   $('results').focus({preventScroll:true});
   $('results').scrollIntoView({behavior:'smooth',block:'start'});
  }
- function submit(){
+ function submit(automatic=false,restored=false){
   if(submitted||!variant)return;
   const missing=variant.questions.length-getAnsweredCount();
   const message=ui.confirm+(missing?' '+missing+' '+ui.missing:'');
-  if(!window.confirm(message))return;
+  if(!automatic&&!window.confirm(message))return;
   const report=core.score(variant,answers);
+  if(timedUI&&!restored)timedUI.finish();
   submitted=true;
   $('submitButton').disabled=true;
   $('submitButton').textContent=ui.result;
@@ -285,7 +287,8 @@
  }
  async function start(){
   translate();themeInit();
-  $('submitButton').addEventListener('click',submit);
+  $('submitButton').addEventListener('click',()=>submit(false,false));
+  $('reflection').addEventListener('input',()=>timedUI?.save());
   try{
    const catalog=await fetchJson('../../data/cards.json');
    const entry=core.readingEntry(catalog,selected.topic);
@@ -300,7 +303,26 @@
    $('title').textContent=variant.title;
    $('lead').textContent=ui.lead;
    renderReading();renderQuestions();
-   $('workspace').hidden=false;
+   timedUI=window.LSHSessionUI?.mount({
+    skill:'reading',topic:selected.topic,lang:selected.lang,level:selected.level,
+    workspace:$('workspace'),
+    getAnswers:()=>({answers:{...answers},reflection:$('reflection').value}),
+    restoreAnswers:saved=>{
+     if(!saved||typeof saved!=='object')return;
+     for(const q of variant.questions){
+      const index=saved.answers?.[q.id];
+      if(!Number.isInteger(index)||index<0||index>=q.choices.length)continue;
+      const input=[...$('questionList').querySelectorAll('input')].find(el=>
+       el.name===q.id&&el.value===String(index));
+      if(input){input.checked=true;answers[q.id]=index;}
+     }
+     if(typeof saved.reflection==='string')$('reflection').value=saved.reflection.slice(0,5000);
+     updateProgress();
+    },
+    onSubmit:({automatic,restored})=>submit(automatic,restored)
+   })||null;
+   if(timedUI)timedUI.initialize();
+   $('workspace').hidden=timedUI?timedUI.status().phase==='ready':false;
    $('loading').hidden=true;
   }catch(error){
    $('loading').classList.add('error');
