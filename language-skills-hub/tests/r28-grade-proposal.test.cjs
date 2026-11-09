@@ -19,7 +19,7 @@ test('R28 exact grade bands: no rounding of fractional values, no school-verifie
   [0,100,5],[43,100,5],[44,100,4],[58,100,4],[59,100,3],
   [73,100,3],[74,100,2],[87,100,2],[88,100,1],[100,100,1],
   [175,200,2],[175,200,2],[147,200,3],[117,200,4],[87,200,5],
-  [7,8,2],[22,25,1],[8,9,1],[3,5,3],[1,3,4]
+  [7,8,2],[22,25,1],[8,9,1],[3,5,3],[1,3,5]
  ];
  for(const [points,max,expected]of cases){
   const actual=grade.proposal(points,max);
