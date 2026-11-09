@@ -97,16 +97,58 @@
 </section>
 <section id="howto" class="footnote" aria-labelledby="howTitle">
 <h2 id="howTitle">Jak aktivity používat</h2>
-<p><strong>Učitel:</strong> zvol jazyk a úroveň, klikni na <em>QR a odkaz</em> a sdílej vybranou aktivitu se třídou. <strong>Student:</strong> otevři odkaz a procvičuj vlastním tempem. U poslechů může být potřeba internetové připojení k videu.</p>
+<p><strong>Učitel:</strong> otevři konkrétní aktivitu, nebo klikni na <em>Sdílet se studenty</em>. Před sdílením rozhodni, zda jazyk a úroveň nastavíš ty, nebo zda si je studenti zvolí sami. Zkopíruj odkaz nebo stáhni QR kód. <strong>Student:</strong> otevři odkaz a procvičuj vlastním tempem. U poslechů může být potřeba internetové připojení k videu.</p>
 <p class="note">Tento katalog je určený k procvičování. Obsah průběžně aktualizujeme podle zpětné vazby. Nejde o zabezpečený klasifikovaný test; správné odpovědi jsou u procvičovacích karet součástí klientské aplikace.</p>
 </section>
 </main>
 <footer><p class="note">Language Skills Hub · Gymnázium Ostrava-Hrabůvka · EN / ES / DE / FR · úrovně A1–C2</p></footer>
-<dialog id="qrDialog" aria-labelledby="qrTitle">
-<div class="dialog-top"><h2 id="qrTitle">Sdílení karty</h2><button type="button" id="qrClose" class="action" aria-label="Zavřít">Zavřít</button></div>
-<div id="qrMount" aria-label="QR kód vybrané aktivity"></div>
-<p class="note" id="qrUrl"></p>
-<div class="actions"><button class="action primary" id="qrCopy" type="button">Kopírovat odkaz</button><button class="action" id="qrSave" type="button">Stáhnout QR SVG</button></div>
+<dialog id="qrDialog" aria-labelledby="qrTitle" aria-describedby="shareExplanation" class="share-dialog">
+<div class="dialog-top">
+ <div>
+  <p class="eyebrow share-eyebrow">Language Skills Hub · sdílení</p>
+  <h2 id="qrTitle">Sdílet se studenty</h2>
+ </div>
+ <button type="button" id="qrClose" class="action" aria-label="Zavřít sdílení">Zavřít</button>
+</div>
+<p class="share-explanation" id="shareExplanation">Vyber, kdo bude určovat jazyk a úroveň karty. QR kód i odkaz se vytvoří podle této volby.</p>
+<div class="share-layout">
+ <div class="share-settings">
+  <fieldset class="share-mode">
+   <legend>Nastavení sdílení</legend>
+   <label class="share-option" for="shareFree">
+    <input id="shareFree" type="radio" name="shareMode" value="free" checked>
+    <span class="share-option-text"><strong>Vybírá student</strong><small>Student si může měnit dostupný jazyk a úroveň A1–C2 přímo v kartě.</small></span>
+   </label>
+   <label class="share-option" for="shareFixed">
+    <input id="shareFixed" type="radio" name="shareMode" value="fixed">
+    <span class="share-option-text"><strong>Určuje učitel</strong><small>Zvolený jazyk a úroveň budou v kartě přednastavené a přepínače deaktivované.</small></span>
+   </label>
+  </fieldset>
+  <div class="share-fixed-fields" id="shareFixedFields" hidden>
+   <div class="share-fields-grid">
+    <div><label for="shareLanguage">Jazyk pro studenty</label><select id="shareLanguage">
+     <option value="">Vyber jazyk</option>
+    </select></div>
+    <div><label for="shareLevel">Úroveň CEFR</label><select id="shareLevel">
+     <option value="">Vyber úroveň</option>
+     <option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option>
+    </select></div>
+   </div>
+   <p class="share-caution">Uzamčení je pouze v uživatelském rozhraní. Nejde o zabezpečený ani klasifikovaný test.</p>
+  </div>
+ </div>
+ <div class="share-result">
+  <p id="shareStatus" class="share-status" aria-live="polite">Odkaz pro volný výběr jazyka a úrovně.</p>
+  <div id="qrMount" aria-label="QR kód vybrané aktivity"></div>
+  <label for="qrUrl">Odkaz pro studenty</label>
+  <textarea id="qrUrl" rows="3" readonly spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="shareStatus" placeholder="Zvol jazyk a úroveň, aby bylo možné odkaz vytvořit."></textarea>
+  <div class="actions share-actions">
+   <button class="action primary" id="qrCopy" type="button" disabled>Kopírovat odkaz</button>
+   <button class="action" id="qrSave" type="button" disabled>Stáhnout QR kód</button>
+  </div>
+  <p class="share-copy-tip">Odkaz můžeš také přímo označit a zkopírovat pomocí Ctrl+C nebo nabídky Kopírovat v telefonu.</p>
+ </div>
+</div>
 </dialog>
 <div id="toast" class="hidden" aria-live="polite" role="status"></div>
 <noscript><p>Katalog potřebuje povolený JavaScript.</p></noscript>
