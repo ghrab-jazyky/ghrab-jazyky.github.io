@@ -1,0 +1,638 @@
+{
+  "kind": "LSH_PUBLIC_PRACTICE_R17",
+  "schemaVersion": 1,
+  "revision": "5c1675c39827b3efb190d36bc1cb3b97a3712a08",
+  "mode": "practice",
+  "gradedTestsEnabled": false,
+  "entries": [
+    {
+      "id": "cl-umela-inteligence",
+      "skill": "konverzace",
+      "title": "Umělá inteligence",
+      "summary": "Každodenní použití AI, její možnosti a rizika, odpovědnost za rozhodnutí a pravidla pro nové technologie.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/umela-inteligence/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "rl-asteroids",
+      "skill": "cteni",
+      "title": "Asteroids",
+      "summary": "Čtení o asteroidech s úkoly na vyhledávání informací, detailní porozumění a doložení odpovědí v textu.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "cteni/asteroids/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "ll-matthew-oscars",
+      "skill": "poslech",
+      "title": "Matthew McConaughey — Oscars 2014",
+      "summary": "Autentický děkovný projev: první poslech pro hlavní sdělení, druhý pro interpretaci a třetí pro písemné důkazy a rekonstrukci řeči.",
+      "languages": [
+        "en"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "poslech/matthew-oscars/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-socialni-media",
+      "skill": "konverzace",
+      "title": "Sociální média",
+      "summary": "Jak sociální sítě ovlivňují komunikaci, digitální návyky a každodenní rozhodování.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/socialni-media/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-hrani-her",
+      "skill": "konverzace",
+      "title": "Hraní počítačových her",
+      "summary": "Výhody a rizika hraní her, čas u obrazovek, zdraví a rovnováha mezi digitálním a skutečným světem.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/hrani-her/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-rodina",
+      "skill": "konverzace",
+      "title": "Rodina",
+      "summary": "Rodinné vztahy, soužití, vzájemná pomoc, komunikace mezi generacemi.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/rodina/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-prazdniny",
+      "skill": "konverzace",
+      "title": "Prázdniny a cestování",
+      "summary": "Plány na prázdniny, cestování, poznávání míst a společné zážitky.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/prazdniny/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-jidlo-piti-restaurace",
+      "skill": "konverzace",
+      "title": "Jídlo, pití a restaurace",
+      "summary": "Stravovací návyky, nabídka restaurací a každodenní rozhodování o jídle.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/jidlo-piti-restaurace/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-vanoce",
+      "skill": "konverzace",
+      "title": "Vánoce",
+      "summary": "Vánoční zvyky, tradice, oslavy a jejich význam v různých rodinách.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/vanoce/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-zivot-bez-ai",
+      "skill": "konverzace",
+      "title": "Život bez AI",
+      "summary": "Život bez umělé inteligence a naše závislost na technologiích.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/zivot-bez-ai/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-socialni-site-a-dusevni-zdravi",
+      "skill": "konverzace",
+      "title": "Sociální sítě a duševní zdraví",
+      "summary": "Digitální návyky, pohoda a psychické zdraví mladých.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/socialni-site-a-dusevni-zdravi/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-jak-se-ucit-na-testy",
+      "skill": "konverzace",
+      "title": "Jak se učit na testy",
+      "summary": "Učení, efektivní příprava a zvládání zkoušek.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/jak-se-ucit-na-testy/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-tlak-na-vykon",
+      "skill": "konverzace",
+      "title": "Tlak na výkon",
+      "summary": "Ambice, stres a úspěch ve škole i životě.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/tlak-na-vykon/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-pratele",
+      "skill": "konverzace",
+      "title": "Přátelé a přátelství",
+      "summary": "Důvěra, blízkost, konflikty a mezilidské vztahy.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/pratele/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-problemy-teenageru",
+      "skill": "konverzace",
+      "title": "Problémy teenagerů",
+      "summary": "Dospívání, rozhodování a tlak okolí.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/problemy-teenageru/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-muzi-a-zeny",
+      "skill": "konverzace",
+      "title": "Muži a ženy",
+      "summary": "Stereotypy, rovnost a očekávání společnosti.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/muzi-a-zeny/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-spolecenske-problemy",
+      "skill": "konverzace",
+      "title": "Společenské problémy",
+      "summary": "Aktuální problémy společnosti a hledání řešení.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/spolecenske-problemy/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-majetkove-nerovnosti",
+      "skill": "konverzace",
+      "title": "Majetkové nerovnosti",
+      "summary": "Bohatství, chudoba a spravedlivé příležitosti.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/majetkove-nerovnosti/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-volny-cas-a-konicky",
+      "skill": "konverzace",
+      "title": "Volný čas a koníčky",
+      "summary": "Zájmy, odpočinek a rovnováha každodenního života.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/volny-cas-a-konicky/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-nemoci-u-lekare",
+      "skill": "konverzace",
+      "title": "Nemoci a návštěva lékaře",
+      "summary": "Zdraví, komunikace s lékařem a pomoc druhým.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/nemoci-u-lekare/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-svetova-politika",
+      "skill": "konverzace",
+      "title": "Světová politika",
+      "summary": "Politika, mír, společenská odpovědnost a hlas mladých lidí.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/svetova-politika/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-ceny-nemovitosti",
+      "skill": "konverzace",
+      "title": "Ceny nemovitostí u nás a v zahraničí",
+      "summary": "Bydlení, nájmy, ceny a dostupnost domova v Česku a zahraničí. Ukázkové ceny jsou fiktivní.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/ceny-nemovitosti/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "ll-harrison-ford",
+      "skill": "poslech",
+      "title": "Harrison Ford — Life Achievement Speech",
+      "summary": "Poslech autentického projevu při ocenění za celoživotní přínos; soustředění na hlavní myšlenky, detaily a způsob vyjadřování.",
+      "languages": [
+        "en"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "poslech/harrison-ford/index.html",
+      "lockSource": "r11/variant-copies/ll-harrison-ford.html"
+    },
+    {
+      "id": "ll-peaky-no-fighting",
+      "skill": "poslech",
+      "title": "Peaky Blinders — No Fighting",
+      "summary": "Anglickojazyčná dramatická scéna s napětím a příkazy; práce s porozuměním dialogu a jeho tónu.",
+      "languages": [
+        "en"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "poslech/peaky-no-fighting/index.html",
+      "lockSource": "r11/variant-copies/ll-peaky-no-fighting.html"
+    },
+    {
+      "id": "rl-can-mistakes",
+      "skill": "cteni",
+      "title": "Can Mistakes Help Us Learn?",
+      "summary": "Příběhy a úvahy o učení z chyb, zpětné vazbě a strategiích pro další pokrok.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "cteni/can-mistakes/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "rl-plastic-ocean",
+      "skill": "cteni",
+      "title": "Plastic in Our World (Plastic Ocean)",
+      "summary": "Plastový odpad a ochrana prostředí; některé úrovně pracují také s recenzí fiktivního dokumentárního filmu.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "cteni/plastic-ocean/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "rl-email-friend",
+      "skill": "cteni",
+      "title": "An Email from a Friend",
+      "summary": "Osobní e-maily a komunikace s přáteli v autenticky působících situacích.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "cteni/email-friend/index.html",
+      "lockSource": "r11/variant-copies/rl-email-friend.html"
+    },
+    {
+      "id": "rl-instant-messages",
+      "skill": "cteni",
+      "title": "Instant Messages",
+      "summary": "Krátké zprávy, digitální komunikace a možné příčiny nedorozumění.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "cteni/instant-messages/index.html",
+      "lockSource": "r11/variant-copies/rl-instant-messages.html"
+    },
+    {
+      "id": "cl-skola",
+      "skill": "konverzace",
+      "title": "Škola — My School",
+      "summary": "Prostředí školy, předměty, spolužáci a představy o ideální škole; ve španělské A1 je zaznamenána opakovaná otázka.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/skola/index.html",
+      "lockSource": null
+    }
+  ]
+}
