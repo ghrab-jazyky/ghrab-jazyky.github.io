@@ -1,0 +1,104 @@
+name: LSH R17 public practice - verified release candidate (no automatic main update)
+on:
+  push:
+    branches:
+      - feat/lsh-r5-reference-pilot-catalog-2026-11-07
+    paths:
+      - 'zkusebni/tools/r17-production-export.cjs'
+      - 'zkusebni/tests/r17-production-export*.test.cjs'
+      - 'zkusebni/assets/lsh/r17/**'
+      - '.github/workflows/lsh-r17-live-practice-release.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: lsh-r17-production-candidate
+  cancel-in-progress: false
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Static source-integrity and privacy checks
+        run: node --test zkusebni/tests/r17-production-export.test.cjs
+      - name: Generate R8 + R13 source-corrected practice candidates
+        run: |
+          node zkusebni/tools/r10-unified-review-bundle.cjs "$RUNNER_TEMP/lsh-r17-source"
+          node zkusebni/tools/r11-review-matrix.cjs "$RUNNER_TEMP/lsh-r17-source"
+      - name: Build public practice website (no teacher keys)
+        run: node zkusebni/tools/r17-production-export.cjs "$RUNNER_TEMP/lsh-r17-source" "$RUNNER_TEMP/lsh-r17-site"
+      - name: Check syntax and no-grade safeguard
+        run: |
+          node --check "$RUNNER_TEMP/lsh-r17-site/assets/hub.js"
+          node -e "const fs=require('fs'),p=process.env.RUNNER_TEMP+'/lsh-r17-site';const c=require(p+'/data/cards.json');const v=require(p+'/version.json');if(c.entries.length!==29||v.variantCount!==642||c.gradedTestsEnabled!==false||v.gradedTestsEnabled!==false)process.exit(1);console.log('PASS production metadata and no-grade safeguard')"
+      - name: Install browser engines
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Desktop and mobile browser verification (QR, link, R7 bridge)
+        run: node --test zkusebni/tests/r17-production-export.browser.test.cjs
+      - name: Upload public candidate artifact (no private keys)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-r17-public-practice-production-candidate
+          path: '${{ runner.temp }}/lsh-r17-site/'
+          retention-days: 14
+          if-no-files-found: error
+  prepare-release-branch:
+    needs: build-and-validate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: lsh-r17-public-practice-production-candidate
+          path: public-candidate
+      - name: Create isolated release commit based on main, never auto-publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          BRANCH="release/lsh-public-practice-${GITHUB_SHA:0:12}"
+          git fetch origin main
+          git worktree add -b "$BRANCH" "$RUNNER_TEMP/lsh-public-release" origin/main
+          RELEASE="$RUNNER_TEMP/lsh-public-release"
+          mkdir -p "$RELEASE/language-skills-hub"
+          cp -a public-candidate/. "$RELEASE/language-skills-hub/"
+          LSH_ROOT="$RELEASE" node - <<'NODE'
+          const fs=require('fs'),path=require('path');
+          const file=path.join(process.env.LSH_ROOT,'index.html');
+          const s=fs.readFileSync(file,'utf8');
+          const anchor='<main id="main">';
+          if(!s.includes(anchor))throw Error('Public home layout changed');
+          if(s.includes('href="language-skills-hub/"'))throw Error('Production entry already added; review before modifying');
+          const block='<section class="container utility-row" aria-label="Nový Language Skills Hub"><div>'+
+          '<span class="eyebrow">JAZYKOVÉ LABORATOŘE PRO PRAXI</span>'+
+          '<h2>Language Skills Hub: všech 29 témat na jednom místě</h2>'+
+          '<p>Conversation, Reading a Listening Lab, jazykové varianty A1–C2. Otevři katalog, sdílej odkaz nebo QR kód a začni procvičovat.</p>'+
+          '</div><div class="utility-links"><a class="button primary" href="language-skills-hub/">Otevřít Language Skills Hub →</a></div></section>';
+          fs.writeFileSync(file,s.replace(anchor,anchor+block));
+          NODE
+          git -C "$RELEASE" config user.name "github-actions[bot]"
+          git -C "$RELEASE" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C "$RELEASE" add -- index.html language-skills-hub/
+          git -C "$RELEASE" diff --cached --name-only | while read -r p; do
+            case "$p" in
+              index.html|language-skills-hub/*) ;;
+              *) echo "Unexpected public file mutation: $p"; exit 1 ;;
+            esac
+          done
+          test "$(git -C "$RELEASE" diff --cached --name-only | grep '^language-skills-hub/' | wc -l)" -eq 44
+          git -C "$RELEASE" diff --cached --check
+          git -C "$RELEASE" commit -m "release(lsh): public 29-topic practice hub with QR and 642 variant links"
+          git -C "$RELEASE" push origin "HEAD:refs/heads/$BRANCH"
+          echo "RELEASE_BRANCH=$BRANCH" >> "$GITHUB_STEP_SUMMARY"
+          echo "Release prepared for controlled main promotion; main unchanged." >> "$GITHUB_STEP_SUMMARY"
