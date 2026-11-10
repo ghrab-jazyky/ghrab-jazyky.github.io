@@ -1,0 +1,187 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "C2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-AUTHOR-DRAFT-1",
+  "description": "Original, unapproved C2 independent test-bank draft on When Resilience Becomes an Obligation. Item-level evidence and distractor audit is required.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Concepts and Distinctions",
+      "description": "Independent draft items for C2 students."
+    },
+    {
+      "id": "argument",
+      "title": "Rhetoric and Reasoning",
+      "description": "Independent draft items for C2 students."
+    },
+    {
+      "id": "inference",
+      "title": "Implied Consequences",
+      "description": "Independent draft items for C2 students."
+    },
+    {
+      "id": "apply",
+      "title": "Evaluating Applications",
+      "description": "Independent draft items for C2 students."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-c2-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What changes when resilience becomes a moral expectation?",
+      "choices": [
+        "Setbacks are accepted as unavoidable limits.",
+        "Perseverance is rewarded only after success.",
+        "Circumstances may be ignored when endurance is demanded.",
+        "Students gain more freedom to reconsider their goals."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c2-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What separates agency from endurance in the second paragraph?",
+      "choices": [
+        "Whether renewed effort has a realistic chance to help.",
+        "Whether the pupil receives praise from others.",
+        "Whether improvement can be measured in a short test.",
+        "Whether the pupil remains visibly determined."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c2-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why can celebrating endurance be convenient for an institution?",
+      "choices": [
+        "It makes pupils less interested in their grades.",
+        "It proves the institution provides enough support.",
+        "It shows that all barriers are personal choices.",
+        "It avoids questioning why the obstacles persist."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c2-04",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "What is the effect of saying that indicators 'colonise' what they should illuminate?",
+      "choices": [
+        "It suggests that indicators are always inaccurate.",
+        "It portrays measurement as taking over educational values.",
+        "It praises increasingly detailed progress reports.",
+        "It claims that only measurable activities are useful."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c2-05",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "Why is the learner who explores an unfamiliar idea contrasted with one drilling familiar questions?",
+      "choices": [
+        "To show that exploration must always produce better marks.",
+        "To claim that practice questions are educationally useless.",
+        "To expose what a narrow progress metric can overlook.",
+        "To demonstrate that difficult ideas should be avoided."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c2-06",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "How does the final paragraph avoid simply rejecting resilience?",
+      "choices": [
+        "It keeps perseverance valuable but makes it conditional and discerning.",
+        "It argues that individual responsibility should be removed.",
+        "It recommends abandoning all performance indicators.",
+        "It presents rest as a substitute for learning."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c2-07",
+      "tab": "inference",
+      "kind": "mc",
+      "q": "What limitation is implied by inspirational stories told only after a struggle has ended?",
+      "choices": [
+        "They are useful only to high-achieving pupils.",
+        "They prove that continued effort is always rewarded.",
+        "They make it impossible to learn from the past.",
+        "They may conceal how uncertain persistence felt at the time."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c2-08",
+      "tab": "inference",
+      "kind": "mc",
+      "q": "Why might choosing to abandon a goal indicate maturity?",
+      "choices": [
+        "It guarantees that the next goal will be easier.",
+        "It can reflect judgement about whether persistence remains worthwhile.",
+        "It means the student is no longer accountable.",
+        "It shows that measurable success is undesirable."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c2-09",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "A school records only how quickly students improve test scores. Which policy best follows the essay?",
+      "choices": [
+        "Reward the fastest learners without further evidence.",
+        "Remove all assessment from every course.",
+        "Consider exploration, support and the limits of the measure.",
+        "Use the same indicator for hobbies and leisure activities."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c2-10",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "Which educational culture most closely matches the writer's ideal?",
+      "choices": [
+        "One that gives pupils support and freedom to reassess aims.",
+        "One that requires pupils to persist in every chosen task.",
+        "One that treats rest as proof of low ambition.",
+        "One that replaces judgement with more frequent measurements."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    }
+  ]
+}
