@@ -1,0 +1,179 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "C2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-CONTENT-AUDIT-1",
+  "description": "Original nuanced C2 Reading bank. Human content approval pending.",
+  "tabs": [
+    {
+      "id": "argument",
+      "title": "Argument and Qualification"
+    },
+    {
+      "id": "rhetoric",
+      "title": "Rhetoric and Implications"
+    },
+    {
+      "id": "application",
+      "title": "Critical Application"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-c2-01",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "What separates responsible resilience from unconditional perseverance?",
+      "choices": [
+        "Persistence always reflects strength of character.",
+        "Its value depends on conditions and the usefulness of the goal.",
+        "It should replace formal assessment.",
+        "It matters only after a setback has ended."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "The second paragraph judges effort partly by the likelihood of meaningful change under actual conditions."
+    },
+    {
+      "id": "r34-en-c2-02",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "What problem arises when resilience becomes a moral requirement?",
+      "choices": [
+        "Improvement becomes impossible to measure.",
+        "Students may be encouraged to rest too often.",
+        "Schools must remove all individual responsibilities.",
+        "Structural barriers can be mistaken for personal shortcomings."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "The opening warns that a moral demand to bounce back can obscure the sources of an individual's setback."
+    },
+    {
+      "id": "r34-en-c2-03",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "What limitation is illustrated by measuring rapid score improvements?",
+      "choices": [
+        "Practising familiar material is never useful.",
+        "Deeper learning always produces quick marks.",
+        "A real gain can conceal other valuable forms of learning.",
+        "Exploration cannot be compared with any form of practice."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "The assessment comparison shows that score gains measure a narrower outcome than intellectual development."
+    },
+    {
+      "id": "r34-en-c2-04",
+      "tab": "rhetoric",
+      "kind": "mc",
+      "q": "Why contrast endurance with actually benefiting from education?",
+      "choices": [
+        "To show that visible effort may coexist with poor educational support.",
+        "To argue that long-term effort should not be rewarded.",
+        "To suggest that persistence is a substitute for teaching.",
+        "To make personal effort irrelevant to schooling."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "The author contrasts enduring obstacles with receiving the resources needed to learn."
+    },
+    {
+      "id": "r34-en-c2-05",
+      "tab": "rhetoric",
+      "kind": "mc",
+      "q": "What does it mean for an indicator to 'colonise' an activity?",
+      "choices": [
+        "It becomes legally compulsory in every school.",
+        "It starts to dominate the activity it was meant to describe.",
+        "It makes all numerical measurements false.",
+        "It prevents students from achieving higher scores."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "The metaphor in paragraph three implies that measurement takes over the activity it once merely described."
+    },
+    {
+      "id": "r34-en-c2-06",
+      "tab": "rhetoric",
+      "kind": "mc",
+      "q": "Why does the conclusion reject the claim that talent is fixed?",
+      "choices": [
+        "To suggest abilities are completely inherited.",
+        "To replace perseverance with rest as the only goal.",
+        "To reject assessment as an educational tool.",
+        "To avoid turning criticism of compulsory perseverance into fatalism."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "The conclusion rejects fixed talent and powerlessness even as it criticises compulsory optimism."
+    },
+    {
+      "id": "r34-en-c2-07",
+      "tab": "application",
+      "kind": "mc",
+      "q": "How should a school respond to pupils overcoming persistent resource shortages?",
+      "choices": [
+        "Reward more hours of visible effort.",
+        "Advise every pupil to develop more resilience.",
+        "Examine and address the obstacles that require extraordinary endurance.",
+        "Remove all targets for students receiving support."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Celebrating effort can allow institutions to avoid asking why an obstacle persists."
+    },
+    {
+      "id": "r34-en-c2-08",
+      "tab": "application",
+      "kind": "mc",
+      "q": "How might abandoning a poor goal demonstrate maturity?",
+      "choices": [
+        "It can reveal judgement about whether further persistence serves a purpose.",
+        "It shows the learner has no interest in improvement.",
+        "It demonstrates that goals need not be evaluated.",
+        "It proves the original goal was always impossible."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "The third paragraph sees the capacity to reconsider an unsuitable goal as mature judgement."
+    },
+    {
+      "id": "r34-en-c2-09",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Which policy is most compatible with the author's conclusion?",
+      "choices": [
+        "Compulsory public rankings of weekly improvement.",
+        "Providing support while allowing learners to reconsider their aims.",
+        "Treating every private activity as a performance target.",
+        "Replacing all personal choices with standard plans."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "The final paragraph combines support to continue with the freedom to reconsider goals."
+    },
+    {
+      "id": "r34-en-c2-10",
+      "tab": "application",
+      "kind": "mc",
+      "q": "What should we infer about an accurate but narrow assessment indicator?",
+      "choices": [
+        "It must be discarded as an entirely false description.",
+        "It shows slow learners are less determined.",
+        "It explains everything that education should value.",
+        "It may describe something real while omitting other essential outcomes."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "The author says an indicator need not be false to answer a much narrower question."
+    }
+  ]
+}
