@@ -56,7 +56,7 @@ test('R37 spot regression: repaired Asteroids EN B2/C2 keys map to defensible co
   [b2,9,/evidence, careful preparation and cooperation/i],
   [c2,4,/additional evidence can transform/i],
   [c2,6,/guarantees a solution for every asteroid/i],
-  [c2,8,/benefits.*invisible/i]
+  [c2,8,/prevention.*invisible/i]
  ];
  for(const [bank,index,correct]of cases){
   const q=bank.questions[index];
