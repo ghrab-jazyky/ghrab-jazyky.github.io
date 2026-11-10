@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "B2",
+  "sourceVariantTitle": "The Last Cup: A Film That Does Not Let Us Look Away",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "auditRevision": "R35-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "Original English B2 independent Reading draft with ten inference and transfer questions; requires later pedagogical review.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Reading the Review",
+      "description": "Evaluate the reviewer's qualified assessment."
+    },
+    {
+      "id": "argument",
+      "title": "Reasons and Limitations",
+      "description": "Find how the examples support or challenge the film's message."
+    },
+    {
+      "id": "transfer",
+      "title": "Practical Decisions",
+      "description": "Apply the ideas to realistic festival planning."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-plastic-ocean-en-b2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What does the reviewer suggest when saying the film sometimes trusts images more than arguments?",
+      "choices": [
+        "The film has too many interviews and not enough images.",
+        "Its cheerful soundtrack makes the opening unwatchable.",
+        "Some scenes are memorable without fully explaining the problem.",
+        "The director avoids showing rubbish until the end."
+      ],
+      "answer": 2,
+      "explanation": "The reviewer uses this episode to distinguish vivid imagery, practical constraints, measurable costs and sustained responsibility for waste."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why is the street cleaner's explanation especially powerful in the reviewer's view?",
+      "choices": [
+        "It shows that cleaning staff are responsible for all plastic waste.",
+        "It turns a general environmental concern into a specific practical problem.",
+        "It proves that one extra bin will solve the problem permanently.",
+        "It allows the filmmaker to avoid discussing the event's budget."
+      ],
+      "answer": 1,
+      "explanation": "The reviewer uses this episode to distinguish vivid imagery, practical constraints, measurable costs and sustained responsibility for waste."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What attitude does the director show by including the teenagers' messy first evening?",
+      "choices": [
+        "She expects the audience to reject the teenagers' idea.",
+        "She argues that no concert should ever be held on a beach.",
+        "She suggests that borrowing equipment is always the cheapest option.",
+        "She treats an imperfect attempt as worth watching without ridicule."
+      ],
+      "answer": 3,
+      "explanation": "The reviewer uses this episode to distinguish vivid imagery, practical constraints, measurable costs and sustained responsibility for waste."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b2-04",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "How do the venue's security rules complicate the advice to bring a reusable cup?",
+      "choices": [
+        "They show that an apparently simple choice may not be available to everyone.",
+        "They prove that the director had no permission to film at the venue.",
+        "They suggest the café owner is unwilling to support any environmental action.",
+        "They explain why all visitors preferred single-use bottles."
+      ],
+      "answer": 0,
+      "explanation": "The reviewer uses this episode to distinguish vivid imagery, practical constraints, measurable costs and sustained responsibility for waste."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b2-05",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why does the reviewer value the organisers' admission that the first summer was expensive?",
+      "choices": [
+        "It demonstrates that reusable cups should never be introduced.",
+        "It indicates that water for washing is the only remaining problem.",
+        "It makes the solution credible by showing costs that still need testing.",
+        "It proves that a single summer gives a complete financial picture."
+      ],
+      "answer": 2,
+      "explanation": "The reviewer uses this episode to distinguish vivid imagery, practical constraints, measurable costs and sustained responsibility for waste."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b2-06",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Which uncertainty would a school need to investigate before adopting the deposit scheme?",
+      "choices": [
+        "How many cups will be lost or reused and what cleaning will cost.",
+        "Whether the shoreline looks clean in a film's final shot.",
+        "Whether the teenagers can borrow the exact same jugs again.",
+        "Whether the director will film the school event."
+      ],
+      "answer": 0,
+      "explanation": "The reviewer uses this episode to distinguish vivid imagery, practical constraints, measurable costs and sustained responsibility for waste."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b2-07",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "What does the reviewer most clearly want the audience to do after watching?",
+      "choices": [
+        "Admire the final image without raising practical questions.",
+        "Discuss the routine work and responsibilities behind any change.",
+        "Replace school festivals with documentaries about beaches.",
+        "Assume that shame will be enough to change behaviour."
+      ],
+      "answer": 1,
+      "explanation": "The reviewer uses this episode to distinguish vivid imagery, practical constraints, measurable costs and sustained responsibility for waste."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A pupil criticises classmates for not using reusable cups, even though they cannot bring them through security. How would the reviewer's reasoning challenge the criticism?",
+      "choices": [
+        "Ask students to ignore the rules whenever the environmental goal is important.",
+        "Cancel all events until every guest owns a reusable cup.",
+        "Focus on a more dramatic picture of the problem.",
+        "Look at the constraints and find workable alternatives before assigning blame."
+      ],
+      "answer": 3,
+      "explanation": "The reviewer uses this episode to distinguish vivid imagery, practical constraints, measurable costs and sustained responsibility for waste."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "A festival committee says, 'Our cup system cost more this year, so it failed.' What response fits the review?",
+      "choices": [
+        "Ignore expenses because environmental action cannot be measured.",
+        "Consider repeated use and longer-term costs before judging the result.",
+        "Conclude that reusable cups always cost less from the first day.",
+        "Treat the number of borrowed cups as the only relevant measure."
+      ],
+      "answer": 1,
+      "explanation": "The reviewer uses this episode to distinguish vivid imagery, practical constraints, measurable costs and sustained responsibility for waste."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Which question would best continue the discussion the reviewer hopes the film will begin?",
+      "choices": [
+        "Which shot of the coastline looked most beautiful on screen?",
+        "Could the director add a sadder soundtrack to the ending?",
+        "Can every individual promise never to make a mistake?",
+        "Who will maintain the bins, measure the costs and take responsibility next week?"
+      ],
+      "answer": 3,
+      "explanation": "The reviewer uses this episode to distinguish vivid imagery, practical constraints, measurable costs and sustained responsibility for waste."
+    }
+  ]
+}

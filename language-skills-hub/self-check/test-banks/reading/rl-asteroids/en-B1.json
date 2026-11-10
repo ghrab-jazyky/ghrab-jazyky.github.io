@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "B1",
+  "sourceVariantTitle": "How Do We Keep an Eye on Asteroids?",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "auditRevision": "R35-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "Original ten-question B1 English Reading assessment draft; teacher content audit is still required.",
+  "tabs": [
+    {
+      "id": "understanding",
+      "title": "Understanding",
+      "description": "Understand the central ideas and the people."
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasons and Evidence",
+      "description": "Explain why important events matter."
+    },
+    {
+      "id": "transfer",
+      "title": "Using What You Read",
+      "description": "Apply the idea in a new situation."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-asteroids-en-b1-01",
+      "tab": "understanding",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why do scientists study asteroids as objects from the distant past?",
+      "choices": [
+        "They can reveal the exact date Earth will stop orbiting the Sun.",
+        "They always contain materials that do not exist on Earth.",
+        "They can provide clues to the early solar system.",
+        "They all have identical shapes after travelling for billions of years."
+      ],
+      "answer": 2,
+      "explanation": "The article distinguishes careful measurement and controlled experiments from claims that every possible asteroid hazard can be prevented."
+    },
+    {
+      "id": "r35-asteroids-en-b1-02",
+      "tab": "understanding",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does a single photograph give only limited information about an asteroid's future path?",
+      "choices": [
+        "A photograph can show only the colour of the object.",
+        "More observations are needed to calculate its orbit with confidence.",
+        "Asteroids stop moving when telescopes cannot see them.",
+        "One photograph is enough only when the object is very large."
+      ],
+      "answer": 1,
+      "explanation": "The article distinguishes careful measurement and controlled experiments from claims that every possible asteroid hazard can be prevented."
+    },
+    {
+      "id": "r35-asteroids-en-b1-03",
+      "tab": "understanding",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "How should a reader understand DART's success in the article?",
+      "choices": [
+        "The spacecraft was sent to stop an asteroid already approaching Earth.",
+        "It proved that a single impact would destroy any future asteroid.",
+        "It prevented Dimorphos from travelling around the Sun.",
+        "It was a useful preparation experiment, not the end of every possible threat."
+      ],
+      "answer": 3,
+      "explanation": "The article distinguishes careful measurement and controlled experiments from claims that every possible asteroid hazard can be prevented."
+    },
+    {
+      "id": "r35-asteroids-en-b1-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why did flying glass cause many injuries in Chelyabinsk?",
+      "choices": [
+        "The shock wave broke windows even though the rock exploded high above the ground.",
+        "People stood too close to a newly formed crater.",
+        "The meteorite landed directly inside the city's hospitals.",
+        "Scientists had warned everyone to watch through open windows."
+      ],
+      "answer": 0,
+      "explanation": "The article distinguishes careful measurement and controlled experiments from claims that every possible asteroid hazard can be prevented."
+    },
+    {
+      "id": "r35-asteroids-en-b1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What makes the direction from which the Chelyabinsk rock arrived important?",
+      "choices": [
+        "The object came from the direction of Jupiter's asteroid belt.",
+        "A rock arriving near the Sun cannot cause damage.",
+        "Bright sunlight can make small incoming objects hard to detect.",
+        "Scientists could only use computers during the day."
+      ],
+      "answer": 2,
+      "explanation": "The article distinguishes careful measurement and controlled experiments from claims that every possible asteroid hazard can be prevented."
+    },
+    {
+      "id": "r35-asteroids-en-b1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What does the article suggest about an early warning of a real impact risk?",
+      "choices": [
+        "It could provide essential time for decisions and possible action.",
+        "It would remove the need for any international cooperation.",
+        "It would guarantee that a spacecraft could stop every impact.",
+        "It would show that observing the sky is no longer necessary."
+      ],
+      "answer": 0,
+      "explanation": "The article distinguishes careful measurement and controlled experiments from claims that every possible asteroid hazard can be prevented."
+    },
+    {
+      "id": "r35-asteroids-en-b1-07",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why does the author mention exaggerated headlines near the end?",
+      "choices": [
+        "Headlines are more reliable than telescope measurements.",
+        "Clear explanations help the public distinguish careful preparation from panic.",
+        "Asteroid warnings are useful only when they make people frightened.",
+        "The writer wants all news about space to disappear."
+      ],
+      "answer": 1,
+      "explanation": "The article distinguishes careful measurement and controlled experiments from claims that every possible asteroid hazard can be prevented."
+    },
+    {
+      "id": "r35-asteroids-en-b1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "A telescope team gets a new orbit estimate that differs from last week's result. What should they do?",
+      "choices": [
+        "Use the original estimate because it was published first.",
+        "Assume the asteroid changed its orbit deliberately.",
+        "Stop collecting data until the result looks less alarming.",
+        "Compare further observations and explain how the estimate changed."
+      ],
+      "answer": 3,
+      "explanation": "The article distinguishes careful measurement and controlled experiments from claims that every possible asteroid hazard can be prevented."
+    },
+    {
+      "id": "r35-asteroids-en-b1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "A pupil says, 'DART changed an orbit, so we no longer need to look for asteroids.' What is the best response?",
+      "choices": [
+        "A spacecraft can always find and stop a threat without telescope data.",
+        "Finding a possible danger early remains necessary before anyone can respond.",
+        "Only the largest asteroids should ever be observed.",
+        "Scientists should spend all their time repeating the same impact experiment."
+      ],
+      "answer": 1,
+      "explanation": "The article distinguishes careful measurement and controlled experiments from claims that every possible asteroid hazard can be prevented."
+    },
+    {
+      "id": "r35-asteroids-en-b1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Which school newspaper headline would be most consistent with the article's message?",
+      "choices": [
+        "A close pass proves that a collision will follow soon.",
+        "Every asteroid seen near Earth is a new emergency.",
+        "There is no reason to continue observing the sky.",
+        "Asteroid monitoring improves preparation although major impacts are rare."
+      ],
+      "answer": 3,
+      "explanation": "The article distinguishes careful measurement and controlled experiments from claims that every possible asteroid hazard can be prevented."
+    }
+  ]
+}

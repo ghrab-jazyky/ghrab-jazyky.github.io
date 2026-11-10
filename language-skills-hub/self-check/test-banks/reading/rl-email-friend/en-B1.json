@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "B1",
+  "sourceVariantTitle": "Back to Our Old Neighbourhood",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "auditRevision": "R35-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "Original ten-question B1 English Reading assessment draft; teacher content audit is still required.",
+  "tabs": [
+    {
+      "id": "understanding",
+      "title": "Understanding",
+      "description": "Understand the central ideas and the people."
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasons and Evidence",
+      "description": "Explain why important events matter."
+    },
+    {
+      "id": "transfer",
+      "title": "Using What You Read",
+      "description": "Apply the idea in a new situation."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-email-friend-en-b1-01",
+      "tab": "understanding",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does seeing the old square make Tomas think of writing to Robin?",
+      "choices": [
+        "The shop owners ask him to contact his old classmates.",
+        "He finds a message from Robin painted on the wall.",
+        "It reminds him of their friendship and how little they have spoken since the move.",
+        "He needs permission to enter the workshop."
+      ],
+      "answer": 2,
+      "explanation": "Tomas uses the workshop and invitation to reconnect with Robin and emphasises helping others even without special expertise."
+    },
+    {
+      "id": "r35-email-friend-en-b1-02",
+      "tab": "understanding",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does Tomas's experience teaching the children show?",
+      "choices": [
+        "Only trained mechanics are allowed to help at the workshop.",
+        "He can contribute even while he is still learning himself.",
+        "Children usually know more about repairs than adults.",
+        "Helping others is useful only when someone gives you a certificate."
+      ],
+      "answer": 1,
+      "explanation": "Tomas uses the workshop and invitation to reconnect with Robin and emphasises helping others even without special expertise."
+    },
+    {
+      "id": "r35-email-friend-en-b1-03",
+      "tab": "understanding",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What has the workshop added to the old shoe shop?",
+      "choices": [
+        "A new cinema and a large fountain in the square.",
+        "A private school for people who want to become mechanics.",
+        "A shopping centre specialising in football boots.",
+        "A space where people repair things and share memories of the area."
+      ],
+      "answer": 3,
+      "explanation": "Tomas uses the workshop and invitation to reconnect with Robin and emphasises helping others even without special expertise."
+    },
+    {
+      "id": "r35-email-friend-en-b1-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does the story about the bicycle light make Tomas laugh?",
+      "choices": [
+        "The child thinks he is an expert even though he is only beginning to learn.",
+        "The bicycle has a broken wheel as well as a light.",
+        "The workshop has accidentally received the wrong tools.",
+        "Robin used to repair the same bicycle at school."
+      ],
+      "answer": 0,
+      "explanation": "Tomas uses the workshop and invitation to reconnect with Robin and emphasises helping others even without special expertise."
+    },
+    {
+      "id": "r35-email-friend-en-b1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why is Mrs Okafor an important person in the workshop?",
+      "choices": [
+        "She decides which children are allowed to repair bicycles.",
+        "She can make every visitor agree about the old fountain.",
+        "She connects old photographs with stories about the neighbourhood.",
+        "She is the only person who remembers where the workshop is."
+      ],
+      "answer": 2,
+      "explanation": "Tomas uses the workshop and invitation to reconnect with Robin and emphasises helping others even without special expertise."
+    },
+    {
+      "id": "r35-email-friend-en-b1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does Tomas say Robin does not need to prepare a speech?",
+      "choices": [
+        "He wants the invitation to feel easy and without pressure.",
+        "The open day will not include any visitors.",
+        "He has already prepared a speech for Robin.",
+        "Robin has never taken a photograph in the neighbourhood."
+      ],
+      "answer": 0,
+      "explanation": "Tomas uses the workshop and invitation to reconnect with Robin and emphasises helping others even without special expertise."
+    },
+    {
+      "id": "r35-email-friend-en-b1-07",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What is the purpose of offering a video call or a later visit?",
+      "choices": [
+        "The workshop has decided to cancel its open day.",
+        "Tomas wants to rebuild the connection even if travelling now is difficult.",
+        "He would rather never see Robin in person again.",
+        "A video call is needed to repair the bicycle lights."
+      ],
+      "answer": 1,
+      "explanation": "Tomas uses the workshop and invitation to reconnect with Robin and emphasises helping others even without special expertise."
+    },
+    {
+      "id": "r35-email-friend-en-b1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "A friend wants to join a community project but feels inexperienced. What would Tomas likely say?",
+      "choices": [
+        "Wait until you are a professional before attending.",
+        "Choose only a project in which you can earn a prize.",
+        "Avoid talking to new people at every meeting.",
+        "Start with simple tasks and learn how to help gradually."
+      ],
+      "answer": 3,
+      "explanation": "Tomas uses the workshop and invitation to reconnect with Robin and emphasises helping others even without special expertise."
+    },
+    {
+      "id": "r35-email-friend-en-b1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Robin is busy and cannot bring photographs to the open day. Which response best fits Tomas's message?",
+      "choices": [
+        "Robin must bring pictures or cannot enter.",
+        "A short visit would still be welcome, and other ways to connect are possible.",
+        "Tomas will cancel the whole event.",
+        "They cannot speak again until Robin has a free weekend."
+      ],
+      "answer": 1,
+      "explanation": "Tomas uses the workshop and invitation to reconnect with Robin and emphasises helping others even without special expertise."
+    },
+    {
+      "id": "r35-email-friend-en-b1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What is the best way for Tomas and Robin to stop waiting for special occasions?",
+      "choices": [
+        "Send only photographs of important celebrations.",
+        "Avoid discussing their new towns until the next school reunion.",
+        "Wait until both can travel before sending any messages.",
+        "Agree on a simple way to talk regularly and share their everyday lives."
+      ],
+      "answer": 3,
+      "explanation": "Tomas uses the workshop and invitation to reconnect with Robin and emphasises helping others even without special expertise."
+    }
+  ]
+}

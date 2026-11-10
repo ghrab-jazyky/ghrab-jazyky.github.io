@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="color-scheme" content="dark light">
+ <meta name="robots" content="noindex,nofollow">
+ <meta name="description" content="R35 generic independently authored Reading assessment – teacher draft, never publish, not for student distribution.">
+ <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'; frame-ancestors 'none'">
+ <title>Independent Reading QA – unpublished content</title>
+ <link rel="stylesheet" href="../../reading/reading.css">
+ <link rel="stylesheet" href="../../session/session.css">
+ <link rel="stylesheet" href="preview.css">
+ <script defer src="../../reading/reading-core.js"></script>
+ <script defer src="../../results/grade-core.js"></script>
+ <script defer src="../../session/attempt-core.js"></script>
+ <script defer src="../../session/session-ui.js"></script>
+ <script defer src="generic-bank-core.js"></script>
+ <script defer src="universal-preview.js"></script>
+</head>
+<body>
+ <header class="topbar">
+  <a class="brand" href="../../../index.html">
+   <span class="mark" aria-hidden="true">R</span>
+   <span><strong>Language Skills Hub</strong><small>Independent Reading – QA only</small></span>
+  </a>
+  <span class="mode">UNAPPROVED DRAFT · EN/B1 or B2</span>
+ </header>
+ <main class="container">
+  <section class="hero">
+   <p class="eyebrow">INDEPENDENT READING TEST · QA PILOT</p>
+   <h1 id="title">Preparing independent reading…</h1>
+   <p class="subtitle">Teacher-only independent Reading content draft – loading source…</p>
+   <div class="notice r32-warning" role="note" id="pilotWarning">
+    Unapproved teacher QA preview – do not distribute to students or use for official grading.
+    Correct answers are public in a static website. The result is local and unverified.
+   </div>
+  </section>
+  <div id="loading" class="loading" role="status" aria-live="polite">Checking the original source and draft test bank…</div>
+  <section id="workspace" class="workspace" hidden aria-label="Unapproved R32 Reading assessment">
+   <article class="panel reading-panel" aria-labelledby="readingHeading">
+    <div class="panel-head">
+     <div><span class="kicker">SOURCE PASSAGE · NOT ALTERED</span><h2 id="readingHeading">Preparing reading text…</h2></div>
+     <span class="pill">EN · —</span>
+    </div>
+    <div class="reading-body" id="readingParagraphs"></div>
+   </article>
+   <section class="panel question-panel" aria-labelledby="questionsHeading">
+    <div class="panel-head">
+     <div><span class="kicker">INDEPENDENT TEST · 1 POINT PER ITEM</span><h2 id="questionsHeading">Comprehension and reasoning</h2></div>
+     <span class="pill" id="counter">0 / 10</span>
+    </div>
+    <div class="progress-track" role="progressbar" id="progress" aria-label="Answered questions" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progressFill"></div></div>
+    <p class="small-note" id="remaining">10 unanswered</p>
+    <div id="questionList" class="question-list"></div>
+    <section class="submit-panel">
+     <p class="small-note">One local attempt only in this browser session. Answers and proposed grade appear after submission; they are not official results.</p>
+     <button id="submitButton" type="button" class="action primary">Submit draft test</button>
+    </section>
+   </section>
+  </section>
+  <section class="results panel" id="results" hidden tabindex="-1" aria-labelledby="resultHeading">
+   <div class="panel-head"><div><span class="kicker">QA RESULT · LOCAL ONLY</span><h2 id="resultHeading">Draft test result</h2></div></div>
+   <div class="score-summary" id="scoreSummary"></div>
+   <div class="grade-proposal" id="gradeProposal"></div>
+   <p class="small-note">Provisional result using an unapproved assessment bank. Teacher review and B2 calibration are still required. Feedback lists only incorrect or unanswered questions.</p>
+   <div class="result-details" id="resultDetails"></div>
+  </section>
+ </main>
+ <footer class="footer">R35 QA DRAFT · Original practice questions are not modified · No student data transmitted · Not a secure exam</footer>
+</body>
+</html>
