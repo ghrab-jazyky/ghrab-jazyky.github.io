@@ -18,3 +18,5 @@
 .lsh-corner-bl{left:max(9px,env(safe-area-inset-left));bottom:max(9px,env(safe-area-inset-bottom))}
 .lsh-corner-br{right:max(9px,env(safe-area-inset-right));bottom:max(9px,env(safe-area-inset-bottom))}
 @media(max-width:420px){.lsh-session-lock-panel{padding:16px;margin:70px auto}}
+
+#sessionErase{margin:12px 20px;min-height:44px}
