@@ -39,6 +39,12 @@
    if(s.phase==='submitted'?!time(s.submittedAt):s.submittedAt!==null)return false;
   }
   if(!s.answers||typeof s.answers!=='object'||Array.isArray(s.answers))return false;
+  // R31 is backwards-compatible with R30 saved sessions (no reviewMarks).
+  if(s.reviewMarks!==undefined&&s.reviewMarks!==null){
+   if(s.phase!=='submitted'||!Array.isArray(s.reviewMarks)||
+    s.reviewMarks.length<1||s.reviewMarks.length>50||
+    !s.reviewMarks.every(m=>m===null||m===0||m===1))return false;
+  }
   if(!Array.isArray(s.incidents)||s.incidents.length>40||
    !s.incidents.every(i=>i&&typeof i==='object'&&
     ['hidden','fullscreen-exit'].includes(i.kind)&&time(i.at)))return false;
@@ -57,7 +63,7 @@
   }
   const fresh=()=>({
    kind:KIND,limitMinutes:n,phase:'ready',startedAt:null,deadlineAt:null,
-   submittedAt:null,answers:{},incidents:[]
+   submittedAt:null,answers:{},reviewMarks:null,incidents:[]
   });
   let state=fresh();
   if(storage){
@@ -85,7 +91,9 @@
   function status(){return {
    phase:state.phase,startedAt:state.startedAt,deadlineAt:state.deadlineAt,
    remainingMs:remainingMs(),expired:expired(),persistent,
-   answers:clone(state.answers),incidents:clone(state.incidents)
+   answers:clone(state.answers),
+   reviewMarks:Array.isArray(state.reviewMarks)?clone(state.reviewMarks):null,
+   incidents:clone(state.incidents)
   }}
   function start(){
    requireValid(state.phase==='ready','Attempt already started');
@@ -102,6 +110,16 @@
    requireValid(parsed&&typeof parsed==='object'&&!Array.isArray(parsed),
     'Invalid stored answers');
    state.answers=parsed;persist();return status();
+  }
+  function saveReviewMarks(marks){
+   requireValid(state.phase==='submitted','Review available only after submission');
+   requireValid(Array.isArray(marks)&&marks.length>=1&&marks.length<=50&&
+    marks.every(x=>x===null||x===0||x===1),'Invalid teacher review marks');
+   if(Array.isArray(state.reviewMarks))
+    requireValid(state.reviewMarks.length===marks.length,'Review task count changed');
+   state.reviewMarks=marks.slice();
+   persist();
+   return status();
   }
   function interrupt(kind){
    requireValid(['hidden','fullscreen-exit'].includes(kind),'Invalid incident kind');
@@ -128,7 +146,7 @@
    if(storage){try{storage.removeItem(id)}catch(_){persistent=false;}}
    return status();
   }
-  return Object.freeze({id,start,saveAnswers,interrupt,resume,finish,clear,status,remainingMs,expired});
+  return Object.freeze({id,start,saveAnswers,saveReviewMarks,interrupt,resume,finish,clear,status,remainingMs,expired});
  }
  const api=Object.freeze({KIND,STATES,minutes,key,open});
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
