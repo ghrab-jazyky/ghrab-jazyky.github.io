@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "de",
+  "level": "A2",
+  "sourceTitle": "Ein Geschenk für Eva",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Zehn eigenständig formulierte Verständnis- und Transferaufgaben, noch nicht durch Fachlehrkräfte freigegeben.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Verstehen"
+    },
+    {
+      "id": "reasoning",
+      "title": "Zusammenhänge"
+    },
+    {
+      "id": "transfer",
+      "title": "Anwenden"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-de-a2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Warum braucht Felix Hannas Hilfe beim Geschenkkauf?",
+      "choices": [
+        "Er muss arbeiten und kann nicht selbst einkaufen.",
+        "Er kennt die Adresse seiner Cousine nicht.",
+        "Er hat sein Handy in der Schule verloren.",
+        "Die Geburtstagsfeier ist ausgefallen."
+      ],
+      "answer": 0,
+      "explanation": "Seine Schicht im Fahrradladen endet erst spät."
+    },
+    {
+      "id": "r41-de-a2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was kann Felix aus Hannas Bemerkung über Bücher lernen?",
+      "choices": [
+        "Eva möchte unbedingt noch mehr Bücher.",
+        "Man sollte beachten, was jemand früher nicht mochte.",
+        "Jedes Buch ist als Geschenk zu teuer.",
+        "Die Bibliothek ist für Felix geschlossen."
+      ],
+      "answer": 1,
+      "explanation": "Das Buch vom Vorjahr blieb unberührt."
+    },
+    {
+      "id": "r41-de-a2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum können die beiden kein Konzertticket wählen?",
+      "choices": [
+        "Eva interessiert sich nicht mehr für Musik.",
+        "Das Konzert findet erst in zehn Jahren statt.",
+        "Für Evas Lieblingsband gibt es keine Karten mehr.",
+        "Die Band spielt im Fahrradladen."
+      ],
+      "answer": 2,
+      "explanation": "Die Karten sind bereits ausverkauft."
+    },
+    {
+      "id": "r41-de-a2-04",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Warum passt der Klettergutschein zum Budget?",
+      "choices": [
+        "Felix bekommt kostenlos hochwertige Kopfhörer.",
+        "Die Kletterhalle gibt allen Geld zurück.",
+        "Der Gutschein ist deutlich teurer als geplant.",
+        "Zwei Besuche kosten weniger als dreißig Euro."
+      ],
+      "answer": 3,
+      "explanation": "Der Preis von achtundzwanzig Euro liegt innerhalb der genannten Grenze."
+    },
+    {
+      "id": "r41-de-a2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Warum gefällt Felix die Idee mit der Kletterhalle?",
+      "choices": [
+        "Eva hat noch nie Interesse am Klettern gezeigt.",
+        "Eva findet die Kletterwand in der Schule zu leicht.",
+        "Hanna möchte nie in die Halle gehen.",
+        "Die neue Halle gehört der Schule."
+      ],
+      "answer": 1,
+      "explanation": "Der Gutschein bietet Eva eine interessantere Herausforderung."
+    },
+    {
+      "id": "r41-de-a2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Was bedeutet Hannas Vorschlag mit dem Handykalender?",
+      "choices": [
+        "Die Feier wurde auf nächstes Jahr verlegt.",
+        "Man darf die Halle nur mit einem Handy betreten.",
+        "Eva möchte statt des Geschenks einen Kalender.",
+        "Felix soll Geburtstage künftig rechtzeitig eintragen."
+      ],
+      "answer": 3,
+      "explanation": "Hanna macht einen Scherz über das vergessene Datum."
+    },
+    {
+      "id": "r41-de-a2-07",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Warum kauft Felix zusätzlich eine Geburtstagskarte?",
+      "choices": [
+        "Er kann selbst einen Teil des Geschenks vorbereiten.",
+        "Er will den Klettergutschein ersetzen.",
+        "Sein Chef verlangt eine schriftliche Nachricht.",
+        "In der Bibliothek braucht man eine Karte."
+      ],
+      "answer": 0,
+      "explanation": "Hanna kümmert sich um den Gutschein, Felix um die Glückwünsche."
+    },
+    {
+      "id": "r41-de-a2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Für ein Konzert gibt es keine Tickets mehr. Wie könnte man trotzdem ein passendes Geschenk finden?",
+      "choices": [
+        "Ausverkaufte Tickets einfach unbegrenzt kaufen.",
+        "Das unbeliebte Geschenk vom letzten Jahr wiederholen.",
+        "Eine andere Erfahrung auswählen, die zum Hobby passt.",
+        "Die Feier absagen, ohne etwas zu sagen."
+      ],
+      "answer": 2,
+      "explanation": "Hanna sucht eine Alternative im Bereich Evas Interessen."
+    },
+    {
+      "id": "r41-de-a2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Hanna bezahlt heute den Gutschein für Felix. Was sollte er danach tun?",
+      "choices": [
+        "Ein noch teureres Geschenk verlangen.",
+        "Sich bedanken und den vereinbarten Betrag zurückgeben.",
+        "Eva verbieten, den Gutschein zu nutzen.",
+        "Die Geburtstagskarte nicht mehr schreiben."
+      ],
+      "answer": 1,
+      "explanation": "Die Hilfe beim Einkauf setzt eine faire Rückzahlung voraus."
+    },
+    {
+      "id": "r41-de-a2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Warum sind gute Kopfhörer hier wahrscheinlich keine gute Wahl?",
+      "choices": [
+        "Eva hört ausdrücklich nie Musik.",
+        "Kopfhörer sind in der Stadt verboten.",
+        "Elektronische Geräte darf man nicht verschenken.",
+        "Sie kosten mehr als Felix ausgeben kann."
+      ],
+      "answer": 3,
+      "explanation": "Hanna vergleicht den Preis mit Felix' begrenztem Budget."
+    }
+  ]
+}
