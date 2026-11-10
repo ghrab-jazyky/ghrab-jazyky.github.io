@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-AUTHOR-DRAFT-1",
+  "description": "Original, unapproved C1 independent test-bank draft on The Hidden Cost of Constant Improvement. Item-level evidence and distractor audit is required.",
+  "tabs": [
+    {
+      "id": "argument",
+      "title": "Analysing the Argument",
+      "description": "Independent draft items for C1 students."
+    },
+    {
+      "id": "inference",
+      "title": "Reading Between the Lines",
+      "description": "Independent draft items for C1 students."
+    },
+    {
+      "id": "apply",
+      "title": "Wider Implications",
+      "description": "Independent draft items for C1 students."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-c1-01",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "What is the central risk in treating every setback as a personal problem?",
+      "choices": [
+        "Students might become less willing to read novels.",
+        "Teachers may become more generous with grades.",
+        "Schools may ignore unequal access to support.",
+        "All learners may stop setting ambitious goals."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c1-02",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "Why does the writer present two students with similar results?",
+      "choices": [
+        "To question advice that ignores unequal circumstances.",
+        "To show that both students should change subjects.",
+        "To argue that good results depend only on quiet study.",
+        "To suggest assessment is never meaningful."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c1-03",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "What can 'try harder' advice fail to provide?",
+      "choices": [
+        "A clear description of the learning task.",
+        "More practice with existing resources.",
+        "Encouragement to choose challenging work.",
+        "The time and space a student actually needs."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c1-04",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "What concern does the writer raise about measuring every activity?",
+      "choices": [
+        "Students may be forced to read books too slowly.",
+        "Enjoyment and curiosity may become performance duties.",
+        "Teachers will be unable to set any grades.",
+        "Informal debate will always produce disagreement."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c1-05",
+      "tab": "inference",
+      "kind": "mc",
+      "q": "Why could praising only the first student be misleading?",
+      "choices": [
+        "It may confuse available resources with character.",
+        "It may make the student work fewer hours.",
+        "It proves the second student lacks ambition.",
+        "It suggests that both students have equal support."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c1-06",
+      "tab": "inference",
+      "kind": "mc",
+      "q": "Why is a discussion without agreement a useful example?",
+      "choices": [
+        "It demonstrates that disagreement is always desirable.",
+        "It shows that marks can measure any conversation.",
+        "It illustrates value without an easily counted outcome.",
+        "It proves that reading novels is less demanding."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c1-07",
+      "tab": "inference",
+      "kind": "mc",
+      "q": "How are student responsibility and school support related in the conclusion?",
+      "choices": [
+        "Support removes the need for students to decide.",
+        "Responsibility matters only when grades are high.",
+        "Students should resolve every difficulty independently.",
+        "Support makes students' choices more realistic."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c1-08",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "A school notices some pupils cannot work quietly at home. Which action most fits the text?",
+      "choices": [
+        "Tell all pupils to increase their effort.",
+        "Offer supervised space for studying.",
+        "Reward only those who improve fastest.",
+        "Stop giving students feedback."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c1-09",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "A student reads a novel for enjoyment but gains no grade. What would the writer likely say?",
+      "choices": [
+        "The activity can still be valuable.",
+        "The student should record each improvement.",
+        "The novel has no educational purpose.",
+        "Enjoyment matters only during holidays."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-c1-10",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "A teacher gives vague advice to improve. Which change best follows the conclusion?",
+      "choices": [
+        "Ask students to work longer each evening.",
+        "Make everyone repeat the same exercise.",
+        "Replace all assignments with tests.",
+        "Give clearer feedback and chances to revise."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    }
+  ]
+}
