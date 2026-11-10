@@ -54,10 +54,24 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(packet.practice.questions.length,21);
    assert.equal(packet.proposedTest.questions.length,10);
    assert.equal(packet.language,'fr');
+   const topicDownload=page.waitForEvent('download',{timeout:20000});
+   await page.locator('#downloadTopicPacket').click();
+   const topicFile=await topicDownload,topicPack=JSON.parse(fs.readFileSync(await topicFile.path(),'utf8'));
+   assert.equal(topicPack.kind,'LSH_R34_CLAUDE_TOPIC_AUDIT_PACKET_V1');
+   assert.equal(topicPack.topic,'rl-plastic-ocean');
+   assert.equal(topicPack.sourceVerified,true);
+   assert.equal(topicPack.variants.length,24);
+   assert.ok(topicPack.variants.every(v=>v.proposedTest.published===false&&v.teacherApproved===false));
    await page.locator('#skill').selectOption('poslech');
    await page.locator('#level').selectOption('A1');
    assert.match(await page.locator('#selectedStatus').textContent(),/Listening autorský návrh/);
    assert.match(await page.locator('#previewLink').getAttribute('href'),/listening\/preview/);
+   const listenEvent=page.waitForEvent('download',{timeout:20000});
+   await page.locator('#downloadTopicPacket').click();
+   const lfile=await listenEvent,listenPack=JSON.parse(fs.readFileSync(await lfile.path(),'utf8'));
+   assert.equal(listenPack.skill,'poslech');
+   assert.equal(listenPack.variants.length,6);
+   assert.ok(listenPack.variants.every(v=>v.sourceAudioVerified===false));
    assert.deepEqual(errors,[]);assert.deepEqual(writes,[]);
    await ctx.close();
   }finally{await browser.close()}
