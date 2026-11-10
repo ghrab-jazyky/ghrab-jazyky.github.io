@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-CONTENT-AUDIT-1",
+  "description": "Original A1 assessment of Mia's short English reading story; independent wording and situations. Teacher approval pending.",
+  "tabs": [
+    {
+      "id": "story",
+      "title": "Mia and Her Story",
+      "description": "Understand what Mia does."
+    },
+    {
+      "id": "why",
+      "title": "Why It Helps",
+      "description": "Understand how Mia learns."
+    },
+    {
+      "id": "try",
+      "title": "Try It Yourself",
+      "description": "Use the ideas in simple situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-a1-st-01",
+      "tab": "story",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Mia sees a difficult sentence. What does she do first?",
+      "choices": [
+        "She closes her book and goes home.",
+        "She makes a small mark next to the sentence.",
+        "She asks Leo to write the story.",
+        "She reads a different book."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph one says Mia writes a question mark next to the difficult sentence."
+    },
+    {
+      "id": "r34-en-a1-st-02",
+      "tab": "story",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What helps Mia understand a word in the story?",
+      "choices": [
+        "A message on her phone.",
+        "Her brother's homework.",
+        "A long list of answers from Leo.",
+        "A picture next to the story."
+      ],
+      "answer": 3,
+      "explanation": "Leo shows Mia a picture, which helps her understand one new word."
+    },
+    {
+      "id": "r34-en-a1-st-03",
+      "tab": "story",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why does Mia smile on Friday?",
+      "choices": [
+        "Her teacher gives her no reading homework.",
+        "She finishes school early that day.",
+        "She can understand more of a new story.",
+        "Leo reads the new story for her."
+      ],
+      "answer": 2,
+      "explanation": "Mia smiles because the new story is easier for her to understand than before."
+    },
+    {
+      "id": "r34-en-a1-why-01",
+      "tab": "why",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does Leo NOT tell Mia all the answers?",
+      "choices": [
+        "He wants Mia to think and learn too.",
+        "He does not want to be her friend.",
+        "He cannot read the story himself.",
+        "He is busy reading a new book."
+      ],
+      "answer": 0,
+      "explanation": "Leo supports Mia with a picture while allowing her to work out a meaning."
+    },
+    {
+      "id": "r34-en-a1-why-02",
+      "tab": "why",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Mia asks about words she does not know. What does this show?",
+      "choices": [
+        "She does not want to practise English.",
+        "She can read every word alone.",
+        "She is ready to get help with learning.",
+        "She thinks books are too easy."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph two describes asking about two unfamiliar words and learning from help."
+    },
+    {
+      "id": "r34-en-a1-why-03",
+      "tab": "why",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "How does Mia feel about reading at the end?",
+      "choices": [
+        "She wants to read again.",
+        "She wants to stop reading stories.",
+        "She only wants to study at school.",
+        "She is worried about her next story."
+      ],
+      "answer": 0,
+      "explanation": "At the end Mia wants to continue practising and reads at home."
+    },
+    {
+      "id": "r34-en-a1-try-01",
+      "tab": "try",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Your friend does not know a word in a story. What can you do?",
+      "choices": [
+        "Tell them to stop reading today.",
+        "Show them a useful picture or example.",
+        "Tell them not to ask any questions.",
+        "Give them a new book with no pictures."
+      ],
+      "answer": 1,
+      "explanation": "Leo helps Mia with a picture instead of giving every answer."
+    },
+    {
+      "id": "r34-en-a1-try-02",
+      "tab": "try",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "You do not understand one sentence. What is a good idea?",
+      "choices": [
+        "Forget the whole story now.",
+        "Read only the last sentence.",
+        "Say that you do not like English.",
+        "Mark it and ask about it later."
+      ],
+      "answer": 3,
+      "explanation": "Mia marks the hard sentence and later asks for help."
+    },
+    {
+      "id": "r34-en-a1-try-03",
+      "tab": "try",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "A new story is still difficult for you. What can you learn from Mia?",
+      "choices": [
+        "You must understand every word today.",
+        "You can learn more by practising again.",
+        "You should ask a friend to read it all.",
+        "You need to get a perfect mark first."
+      ],
+      "answer": 1,
+      "explanation": "Mia improves even though the new story is still not easy."
+    },
+    {
+      "id": "r34-en-a1-try-04",
+      "tab": "try",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Which sentence is true about learning English in the story?",
+      "choices": [
+        "Good students never ask questions.",
+        "Only a teacher can help with words.",
+        "Reading once is enough for everyone.",
+        "Small steps can help you understand more."
+      ],
+      "answer": 3,
+      "explanation": "The story shows that a second try, a notebook and questions lead to progress."
+    }
+  ]
+}
