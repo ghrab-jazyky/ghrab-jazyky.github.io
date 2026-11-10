@@ -11,12 +11,12 @@ const sourceCore=require('../self-check/listening/listening-core.js');
 const listening=require('../self-check/test-banks/listening/test-bank-core.js');
 const inventory=require('./r35-content-coverage.cjs');
 const topics=catalog.filter(x=>x.skill==='poslech');
-test('R39 combined teacher-review corpus reports 78 Reading + 18 Listening, remaining 42 explicit',()=>{
+test('R39 full teacher-review corpus reports 120 Reading + 18 Listening, none structurally missing',()=>{
  assert.equal(inventory.expected.total,138);
- assert.equal(inventory.actual.draftReading,78);
+ assert.equal(inventory.actual.draftReading,120);
  assert.equal(inventory.actual.draftListening,18);
- assert.equal(inventory.actual.draft,96);
- assert.equal(inventory.actual.missing,42);
+ assert.equal(inventory.actual.draft,138);
+ assert.equal(inventory.actual.missing,0);
  assert.equal(inventory.actual.invalid,0);
  assert.equal(inventory.actual.approvedForStudents,0);
  assert.equal(manifest.version,'R31');

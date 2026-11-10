@@ -22,7 +22,7 @@ test('R35 planned coverage counts exact approved source variants without claimin
  // Reading questions use questions[]. Listening banks instead use objective[]
  // and written[]; never conflate their counts in the simple inventory.
  assert.equal(inventory.actual.authoredQuestions,inventory.actual.draftReading*10);
- assert.equal(inventory.actual.draftReading,78);
+ assert.equal(inventory.actual.draftReading,120);
  assert.equal(inventory.actual.missing,138-inventory.actual.draftReading-inventory.actual.draftListening);
 });
 test('R35 every authored bank has exact hash/title, separate questions, scoring and publication locks',()=>{
