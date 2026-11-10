@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "de",
+  "level": "B1",
+  "sourceTitle": "Zurück in unserem alten Viertel",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e4a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Zehn eigenständige Aufgaben zum Verstehen, Schlussfolgern und Übertragen; noch nicht pädagogisch freigegeben.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Verständnis"
+    },
+    {
+      "id": "reasoning",
+      "title": "Begründungen und Beziehungen"
+    },
+    {
+      "id": "transfer",
+      "title": "Anwendung"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-de-b1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Was macht den früheren Platz für Tomas heute anders?",
+      "choices": [
+        "Ein leerer Laden ist nun ein lebendiger Treffpunkt.",
+        "Die Schule wurde vollständig abgerissen.",
+        "Niemand darf den Platz mehr besuchen.",
+        "Alle Häuser sehen genauso aus wie früher."
+      ],
+      "answer": 0,
+      "explanation": "Die Nachbarschaftswerkstatt bringt neue Aktivitäten an den früher leeren Ort."
+    },
+    {
+      "id": "r41-de-b1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was erkennt Tomas beim Reparieren des Fahrradlichts?",
+      "choices": [
+        "Nur ausgebildete Mechaniker dürfen mitmachen.",
+        "Auch Lernende können anderen bereits helfen.",
+        "Die Kinder möchten lieber Tee trinken.",
+        "Reparaturen sind immer ohne Übung möglich."
+      ],
+      "answer": 1,
+      "explanation": "Tomas ist kein Experte und kann trotzdem zwei Kindern etwas zeigen."
+    },
+    {
+      "id": "r41-de-b1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was verrät der Wechsel von kleinen Aufgaben zum Unterrichten?",
+      "choices": [
+        "Er möchte die Werkstatt allein leiten.",
+        "Er hat seine Nachbarn verlassen.",
+        "Tomas wird offener und traut sich mehr zu.",
+        "Er kann sich anfangs nicht an die Kinder erinnern."
+      ],
+      "answer": 2,
+      "explanation": "Zunächst scheut er neue Menschen, später hilft er aktiv beim Lernen."
+    },
+    {
+      "id": "r41-de-b1-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Warum erwähnt Tomas den seltenen Kontakt seit Robins Umzug?",
+      "choices": [
+        "Er will Robin für den Umzug bestrafen.",
+        "Er beweist, dass früher alles besser war.",
+        "Er möchte keine Fotos mehr sehen.",
+        "Er merkt, dass die Freundschaft wieder mehr Aufmerksamkeit braucht."
+      ],
+      "answer": 3,
+      "explanation": "Die Erinnerung an den Platz lässt ihn die längere Gesprächspause bemerken."
+    },
+    {
+      "id": "r41-de-b1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum soll Robin keine Rede vorbereiten müssen?",
+      "choices": [
+        "Tomas interessiert sich nicht für Robins Bilder.",
+        "Die Einladung soll freundlich und unkompliziert sein.",
+        "Die Werkstatt verbietet alle Gespräche.",
+        "Die Besucher dürfen nichts mitbringen."
+      ],
+      "answer": 1,
+      "explanation": "Der Tag der offenen Tür wird bewusst als unverbindliches Treffen angeboten."
+    },
+    {
+      "id": "r41-de-b1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Welche Funktion hat der Hinweis auf Reisekosten?",
+      "choices": [
+        "Er verlangt eine genaue Geldsumme von Robin.",
+        "Er verspricht, alle Tickets zu bezahlen.",
+        "Er empfiehlt wöchentliche Fernreisen.",
+        "Er nimmt Robins mögliche Hindernisse ernst."
+      ],
+      "answer": 3,
+      "explanation": "Tomas möchte kein schlechtes Gewissen auslösen, falls eine Reise zu teuer ist."
+    },
+    {
+      "id": "r41-de-b1-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Jemand möchte im Verein helfen, ist aber noch Anfänger. Was würde Tomas raten?",
+      "choices": [
+        "Mit kleinen Aufgaben anfangen und beim Helfen weiterlernen.",
+        "Erst nach einer Berufsausbildung mitmachen.",
+        "Sofort alle Aufgaben allein übernehmen.",
+        "Mit niemandem in Kontakt treten."
+      ],
+      "answer": 0,
+      "explanation": "Die Erfahrung in der Werkstatt zeigt, dass man auch ohne Expertenwissen nützlich sein kann."
+    },
+    {
+      "id": "r41-de-b1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Robin hat nur wenig Zeit. Wie kann ein Besuch trotzdem gelingen?",
+      "choices": [
+        "Die Gemeinschaft muss den ganzen Tag absagen.",
+        "Er braucht eine ausführliche Präsentation.",
+        "Er kann kurz vorbeikommen, ohne ein Programm zu leiten.",
+        "Er soll niemandem von der Reise erzählen."
+      ],
+      "answer": 2,
+      "explanation": "Tomas betont, dass auch ein kurzer Besuch völlig ausreicht."
+    },
+    {
+      "id": "r41-de-b1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Welche Lösung bietet sich bei einer zu teuren Reise an?",
+      "choices": [
+        "Das Treffen ohne weitere Nachricht verschieben.",
+        "Ein Videoanruf mit einem Gespräch über alte Erinnerungen.",
+        "Robin muss seine neue Stadt verlassen.",
+        "Tomas sollte nur Internetfotos anschauen."
+      ],
+      "answer": 1,
+      "explanation": "Der Videokontakt ist eine ausdrückliche Alternative zur persönlichen Anreise."
+    },
+    {
+      "id": "r41-de-b1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Was wäre ein guter nächster Schritt für ihre Freundschaft?",
+      "choices": [
+        "Nur bei großen Veranstaltungen schreiben.",
+        "Alle Erinnerungen aus der Schulzeit vergessen.",
+        "Die Freundschaft über fremde Fotos bewerten.",
+        "Auch ohne besonderen Anlass regelmäßig miteinander sprechen."
+      ],
+      "answer": 3,
+      "explanation": "Die abschließende Frage zielt auf gewöhnlichen, regelmäßigen Kontakt."
+    }
+  ]
+}
