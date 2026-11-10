@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "fr",
+  "level": "B1",
+  "sourceTitle": "Ma semaine sans messagerie",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Dix questions inédites de compréhension et de transfert, sans approbation pédagogique définitive.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Compréhension"
+    },
+    {
+      "id": "reasoning",
+      "title": "Interprétation"
+    },
+    {
+      "id": "transfer",
+      "title": "Application"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-fr-b1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Quelles possibilités de communication restent autorisées pendant le défi ?",
+      "choices": [
+        "Téléphoner et envoyer des courriels reste possible.",
+        "Les élèves ne peuvent plus parler du tout.",
+        "Tous les téléphones doivent être détruits.",
+        "Le travail scolaire sur ordinateur est interdit."
+      ],
+      "answer": 0,
+      "explanation": "La professeure cible les applications de messagerie, pas toute communication."
+    },
+    {
+      "id": "r41-fr-b1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Que suggèrent les vérifications répétées du téléphone sans message nouveau ?",
+      "choices": [
+        "Le narrateur attend un appel urgent du médecin.",
+        "Le geste est devenu une habitude difficile à abandonner.",
+        "Quarante messages arrivent réellement avant midi.",
+        "La professeure demande de regarder l'écran chaque minute."
+      ],
+      "answer": 1,
+      "explanation": "Il consulte son téléphone même lorsqu'il ne peut recevoir aucun chat."
+    },
+    {
+      "id": "r41-fr-b1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Pourquoi Karim semble-t-il inquiet quand il reçoit l'appel ?",
+      "choices": [
+        "Il a oublié le lieu de l'entraînement.",
+        "Il ne reconnaît plus la voix de son ami.",
+        "Il pense qu'un appel inhabituel annonce peut-être un problème.",
+        "Il croit que la conversation durera toute la soirée."
+      ],
+      "answer": 2,
+      "explanation": "La réaction de Karim montre que les appels ordinaires sont devenus rares."
+    },
+    {
+      "id": "r41-fr-b1-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Que découvre le narrateur en comparant un appel et un long groupe de discussion ?",
+      "choices": [
+        "Les groupes de messages sont toujours inutiles.",
+        "Il faut éviter de parler du football.",
+        "Un appel ne convient jamais aux questions simples.",
+        "Une question pratique peut être réglée plus vite à l'oral."
+      ],
+      "answer": 3,
+      "explanation": "Deux minutes d'appel remplacent une longue suite de messages."
+    },
+    {
+      "id": "r41-fr-b1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Quel risque apparaît avec la réunion déplacée au café ?",
+      "choices": [
+        "La bibliothèque ferme définitivement.",
+        "Un membre déconnecté peut manquer un changement important.",
+        "Le groupe n'a pas préparé son exposé.",
+        "Les réunions ne sont autorisées que dans les cafés."
+      ],
+      "answer": 1,
+      "explanation": "Le narrateur découvre le changement trop tard, dans la bibliothèque vide."
+    },
+    {
+      "id": "r41-fr-b1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Pourquoi le narrateur garde-t-il les applications en changeant leur utilisation ?",
+      "choices": [
+        "La professeure exige une réponse immédiate.",
+        "Ses amis ont arrêté d'utiliser les téléphones.",
+        "Le défi a prouvé que tous les messages sont dangereux.",
+        "Il veut choisir quand répondre plutôt qu'interdire tous les messages."
+      ],
+      "answer": 3,
+      "explanation": "Il réduit les notifications et utilise davantage les appels."
+    },
+    {
+      "id": "r41-fr-b1-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Il faut poser une question rapide à un ami. Que peut-on faire comme le narrateur ?",
+      "choices": [
+        "Téléphoner brièvement plutôt que lancer un long échange.",
+        "Envoyer vingt fois la même question.",
+        "Attendre la réponse de toute la classe.",
+        "Éviter de demander parce qu'appeler est étrange."
+      ],
+      "answer": 0,
+      "explanation": "L'appel à Karim montre une solution directe et rapide."
+    },
+    {
+      "id": "r41-fr-b1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Un groupe change de salle pendant qu'un élève est déconnecté. Que faudrait-il prévoir ?",
+      "choices": [
+        "Supposer que tous lisent leurs chats à chaque instant.",
+        "Ne jamais modifier le lieu d'une réunion.",
+        "Une autre manière de prévenir des changements urgents.",
+        "Prévenir seulement après le cours."
+      ],
+      "answer": 2,
+      "explanation": "Le rendez-vous manqué montre les limites d'un canal unique."
+    },
+    {
+      "id": "r41-fr-b1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Une élève se sent obligée de réagir à chaque notification. Que peut-elle essayer ?",
+      "choices": [
+        "Supprimer tous les numéros de ses amis.",
+        "Couper les alertes secondaires et répondre plus volontairement.",
+        "Regarder l'écran encore plus souvent.",
+        "Ne plus jamais communiquer avec sa famille."
+      ],
+      "answer": 1,
+      "explanation": "Le narrateur sélectionne les notifications qu'il souhaite recevoir."
+    },
+    {
+      "id": "r41-fr-b1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Quelle conclusion respecte le mieux son expérience ?",
+      "choices": [
+        "Toutes les applications de messagerie sont mauvaises.",
+        "Les appels doivent remplacer absolument tous les e-mails.",
+        "Une semaine sans chats détruit les amitiés.",
+        "Chaque situation peut demander une forme de communication différente."
+      ],
+      "answer": 3,
+      "explanation": "La conclusion défend un usage conscient et varié des moyens de communication."
+    }
+  ]
+}

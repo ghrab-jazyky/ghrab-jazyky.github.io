@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "de",
+  "level": "A1",
+  "sourceTitle": "Ein Samstag im Park",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Zehn eigenständig formulierte Verständnis- und Transferaufgaben, noch nicht durch Fachlehrkräfte freigegeben.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Verstehen"
+    },
+    {
+      "id": "reasoning",
+      "title": "Zusammenhänge"
+    },
+    {
+      "id": "transfer",
+      "title": "Anwenden"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-de-a1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Warum fragt Jonas, wer am Samstag kommen kann?",
+      "choices": [
+        "Er möchte mit Freunden ein Picknick organisieren.",
+        "Er braucht Hilfe bei einer Hausaufgabe.",
+        "Er will den Klavierunterricht absagen.",
+        "Er möchte eine Zugfahrkarte kaufen."
+      ],
+      "answer": 0,
+      "explanation": "Jonas schlägt ein Treffen vor und fragt nach der Zeit seiner Freunde."
+    },
+    {
+      "id": "r41-de-a1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was erfahren wir über Lenas Samstagvormittag?",
+      "choices": [
+        "Sie kann schon morgens im Park sein.",
+        "Sie hat einen Termin, der um elf Uhr endet.",
+        "Sie muss zwanzig Minuten Bus fahren.",
+        "Sie arbeitet bis zum Abend in einem Laden."
+      ],
+      "answer": 1,
+      "explanation": "Lenas Klavierunterricht endet um elf, deshalb schlägt sie zwölf vor."
+    },
+    {
+      "id": "r41-de-a1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum nennt Tim das Café am See?",
+      "choices": [
+        "Dort müssen alle das Mittagessen kaufen.",
+        "Im Café findet Lenas Klavierunterricht statt.",
+        "Alle können diesen Ort leicht wiederfinden.",
+        "Der Park ist nur im Café geöffnet."
+      ],
+      "answer": 2,
+      "explanation": "Tim meint, dass der große Park einen klaren Treffpunkt braucht."
+    },
+    {
+      "id": "r41-de-a1-04",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Welche Informationen bestätigt Jonas zum Schluss?",
+      "choices": [
+        "Den Preis der Busfahrkarte.",
+        "Das Essen auf der Speisekarte.",
+        "Den Namen von Lenas Klavierstück.",
+        "Die Uhrzeit und den erkennbaren Treffpunkt."
+      ],
+      "answer": 3,
+      "explanation": "Er bestätigt das Café mit der grünen Tür um zwölf Uhr."
+    },
+    {
+      "id": "r41-de-a1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Warum kann Lena zu Fuß zum Treffen gehen?",
+      "choices": [
+        "Samstags fahren keine Busse.",
+        "Sie wohnt in der Nähe des Parks.",
+        "Sie hat keine Fahrräder zu Hause.",
+        "Ihre Klavierlehrerin wohnt im Café."
+      ],
+      "answer": 1,
+      "explanation": "Lena sagt selbst, dass der Park nahe ihrer Wohnung liegt."
+    },
+    {
+      "id": "r41-de-a1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Wozu ist die Beschreibung der grünen Tür nützlich?",
+      "choices": [
+        "Tim möchte das Café neu streichen.",
+        "Jonas sucht eine grüne Jacke.",
+        "Lena will die Tür fotografieren.",
+        "Die Freunde erkennen damit das richtige Café."
+      ],
+      "answer": 3,
+      "explanation": "Eine auffällige Tür macht den Treffpunkt leichter zu finden."
+    },
+    {
+      "id": "r41-de-a1-07",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Warum sollen die Freunde pünktlich ankommen?",
+      "choices": [
+        "Jonas' Mutter kann nur bis drei Uhr bleiben.",
+        "Lena beginnt um zwölf mit Klavier.",
+        "Der See wird nachmittags geschlossen.",
+        "Der Bus braucht drei Stunden."
+      ],
+      "answer": 0,
+      "explanation": "Die Zeit mit Jonas' Mutter ist begrenzt."
+    },
+    {
+      "id": "r41-de-a1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Eine Klasse trifft sich in einem großen Park. Was wäre hilfreich?",
+      "choices": [
+        "Alle sollen an verschiedenen Eingängen warten.",
+        "Niemand soll wissen, wo das Treffen stattfindet.",
+        "Einen gut erkennbaren Treffpunkt vereinbaren.",
+        "Die Schüler dürfen nicht miteinander sprechen."
+      ],
+      "answer": 2,
+      "explanation": "Tim zeigt mit dem Café, wie man einen klaren Treffpunkt findet."
+    },
+    {
+      "id": "r41-de-a1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Eine Freundin ist bis elf Uhr beschäftigt. Wann könnte man sich treffen?",
+      "choices": [
+        "Vor dem Ende ihrer Unterrichtsstunde.",
+        "Zu einer späteren Zeit, wenn sie frei ist.",
+        "Während ihres Termins ohne Nachfrage.",
+        "Zu einer Uhrzeit, die niemand kennt."
+      ],
+      "answer": 1,
+      "explanation": "Die Freunde wählen zwölf Uhr nach Lenas Klavierunterricht."
+    },
+    {
+      "id": "r41-de-a1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Warum ist es praktisch, wenn jeder etwas anderes zum Picknick mitbringt?",
+      "choices": [
+        "Dann muss niemand mehr den Plan besprechen.",
+        "Das Picknick dauert automatisch mehrere Tage.",
+        "Jeder muss genau dasselbe mitbringen.",
+        "Alle können Essen und Getränke miteinander teilen."
+      ],
+      "answer": 3,
+      "explanation": "Jonas und Lena bieten unterschiedliche Dinge für das gemeinsame Treffen an."
+    }
+  ]
+}

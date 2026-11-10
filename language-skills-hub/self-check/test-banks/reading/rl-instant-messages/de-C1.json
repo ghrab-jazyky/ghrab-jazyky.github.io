@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "de",
+  "level": "C1",
+  "sourceTitle": "Die Tyrannei der blauen Haken",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Zehn eigenständige Interpretations- und Transferfragen; Entwurf ohne externe didaktische Freigabe.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interpretation"
+    },
+    {
+      "id": "argument",
+      "title": "Argumentationsanalyse"
+    },
+    {
+      "id": "transfer",
+      "title": "Kritische Anwendung"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-de-c1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Welche soziale Erwartung kann durch eine Lesebestätigung entstehen?",
+      "choices": [
+        "Wer gelesen hat, soll offenbar auch schnell antworten.",
+        "Der Absender kennt dadurch die Meinung des Lesers.",
+        "Der Empfänger kann unbequeme Nachrichten nie ignorieren.",
+        "Die App erkennt die freie Zeit des Lesers genau."
+      ],
+      "answer": 0,
+      "explanation": "Lesen wird aus Sicht mancher Absender als Versprechen einer Antwort behandelt."
+    },
+    {
+      "id": "r41-de-c1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Warum steht die Café-Angestellte für ungleich verteilten Druck?",
+      "choices": [
+        "Alle Beschäftigten können nachts gleich gut reagieren.",
+        "Wer jederzeit erreichbar ist, bekommt zusätzliche Chancen.",
+        "Die Chefin verpflichtet alle schriftlich zur Dauerbereitschaft.",
+        "Arbeitsnachrichten kommen nur während der Schicht."
+      ],
+      "answer": 1,
+      "explanation": "Das System belohnt sofortige Reaktionen und benachteiligt Schlafende."
+    },
+    {
+      "id": "r41-de-c1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Welche Unterscheidung kann ein blauer Haken nicht leisten?",
+      "choices": [
+        "Ob die Nachricht auf dem Bildschirm geöffnet wurde.",
+        "Ob ein Notfalltext an die richtige Person ging.",
+        "Ob jemand nach dem Lesen tatsächlich antworten kann.",
+        "Ob die Beteiligten dieselbe Anwendung benutzen."
+      ],
+      "answer": 2,
+      "explanation": "Der Text trennt Kenntnisnahme von Zeit, Energie und Informationen für eine Antwort."
+    },
+    {
+      "id": "r41-de-c1-04",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum gesteht der Autor Lesebestätigungen einen Nutzen im Notfall zu?",
+      "choices": [
+        "Er betrachtet jede Nachricht als dringend.",
+        "Er hält jede verzögerte Antwort für absichtlich.",
+        "Er empfiehlt eine Überwachung privater Gespräche.",
+        "Er erkennt einen berechtigten Vorteil an, bevor er Grenzen erklärt."
+      ],
+      "answer": 3,
+      "explanation": "Die Konzession macht die Argumentation differenzierter."
+    },
+    {
+      "id": "r41-de-c1-05",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Weshalb führen unausgesprochene Regeln zu indirektem Streit?",
+      "choices": [
+        "Alle Gruppen haben dieselben schriftlichen Regeln.",
+        "Menschen deuten Zeiten nach unterschiedlichen, unbekannten Erwartungen.",
+        "Späte Antworten bedeuten immer Ablehnung.",
+        "Emojis lösen jede Spannung verlässlich."
+      ],
+      "answer": 1,
+      "explanation": "Unsichtbare Kommunikationsnormen begünstigen gegenseitige Fehlinterpretationen."
+    },
+    {
+      "id": "r41-de-c1-06",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Was verdeutlicht der Vergleich mit dem Recht auf Abschalten?",
+      "choices": [
+        "Schulclubs müssen direkt alle Arbeitsgesetze übernehmen.",
+        "Freunde sollten sämtliche Nachrichten verbieten.",
+        "Nur gesetzlich geregelte Länder dürfen Antwortzeiten vereinbaren.",
+        "Vereinbarte Grenzen schützen freie Zeit auch in kleinen Gruppen."
+      ],
+      "answer": 3,
+      "explanation": "Der Artikel überträgt den Gedanken expliziter Grenzen auf Vereine und Freundeskreise."
+    },
+    {
+      "id": "r41-de-c1-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Ein Betrieb vergibt Zusatzschichten nur an die erste Antwort um Mitternacht. Was sollte er prüfen?",
+      "choices": [
+        "Ob ständige Verfügbarkeit unfair belohnt wird.",
+        "Ob alle Antworten orthografisch korrekt sind.",
+        "Ob die Beschäftigten genug Emojis benutzen.",
+        "Ob Nachrichten farbig genug markiert sind."
+      ],
+      "answer": 0,
+      "explanation": "Das Beispiel zeigt versteckte Nachteile ohne formelle Bereitschaftspflicht."
+    },
+    {
+      "id": "r41-de-c1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Jemand schaltet Lesebestätigungen aus und Freunde fühlen sich zurückgewiesen. Was zeigt das?",
+      "choices": [
+        "Die Freundschaft ist damit sicher beendet.",
+        "Die App verhindert jede emotionale Reaktion.",
+        "Technische Einstellungen können soziale Signale aussenden.",
+        "Freunde haben ein Recht auf eingeschaltete Haken."
+      ],
+      "answer": 2,
+      "explanation": "Das Abschalten ist gesellschaftlich nicht immer neutral."
+    },
+    {
+      "id": "r41-de-c1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Ein neues Teammitglied kennt die üblichen Antwortzeiten nicht. Was würde helfen?",
+      "choices": [
+        "Jede Nachricht sofort und nachts beantworten.",
+        "Die Erwartungen offen besprechen und Grenzen vereinbaren.",
+        "Keine Fragen stellen, weil die Regeln offensichtlich sind.",
+        "Verspätete Nachrichten mit ironischen Emojis beantworten."
+      ],
+      "answer": 1,
+      "explanation": "Der Text fordert die Klärung bisher ungeschriebener Regeln."
+    },
+    {
+      "id": "r41-de-c1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Du siehst zwei blaue Haken, aber keine Antwort. Was lässt sich sicher schließen?",
+      "choices": [
+        "Du bist dieser Person unwichtig geworden.",
+        "Sie bestraft dich ganz bewusst.",
+        "Morgen kommt auf jeden Fall eine Antwort.",
+        "Die Nachricht wurde gesehen, nicht wie sehr die Person dich schätzt."
+      ],
+      "answer": 3,
+      "explanation": "Der Schlusssatz trennt die Lesebestätigung von der persönlichen Wertschätzung."
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "fr",
+  "level": "C2",
+  "sourceTitle": "La distance entre deux nouvelles",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e4a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Dix questions inédites de compréhension et d'interprétation, encore soumises à une validation didactique externe.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interprétation"
+    },
+    {
+      "id": "reasoning",
+      "title": "Argumentation"
+    },
+    {
+      "id": "transfer",
+      "title": "Application"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-fr-c2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Quel sens prend la critique d'Elias envers sa propre justification du silence ?",
+      "choices": [
+        "Des contraintes réelles peuvent aussi servir d'alibi partiel.",
+        "Le travail n'a jamais affecté son emploi du temps.",
+        "Amara a seule interrompu les échanges.",
+        "Toutes ses expériences de voyage étaient inventées."
+      ],
+      "answer": 0,
+      "explanation": "Elias distingue les difficultés objectives de l'usage commode qu'il en a fait."
+    },
+    {
+      "id": "r41-fr-c2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Quelle confusion Elias reconnaît-il entre informations et disponibilité personnelle ?",
+      "choices": [
+        "Les informations géographiques sont nécessairement fausses.",
+        "Savoir où se trouve quelqu'un n'implique pas accéder à son vécu.",
+        "Les amis doivent publier quotidiennement leurs activités.",
+        "Tout échange honnête exige une rencontre physique."
+      ],
+      "answer": 1,
+      "explanation": "La scène du ferry révèle l'écart entre donner sa position et partager son désarroi."
+    },
+    {
+      "id": "r41-fr-c2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Pourquoi Elias choisit-il de conserver la contradiction du docker ?",
+      "choices": [
+        "L'exposition doit provoquer un scandale.",
+        "La solidarité était absente du quartier.",
+        "Une représentation fidèle ne devrait pas supprimer les ambivalences.",
+        "Le musée refuse systématiquement les conclusions chaleureuses."
+      ],
+      "answer": 2,
+      "explanation": "L'entraide et l'amertume pouvaient coexister, malgré le souhait d'un récit lisse."
+    },
+    {
+      "id": "r41-fr-c2-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Que signifie renoncer au plaisir de se rendre utile quand on écoute ?",
+      "choices": [
+        "Refuser toute forme d'aide à autrui.",
+        "Remplacer chaque dialogue par un rapport écrit.",
+        "Ne plus s'intéresser aux souvenirs des autres.",
+        "Ne pas imposer immédiatement une solution à une histoire complexe."
+      ],
+      "answer": 3,
+      "explanation": "Elias s'aperçoit que ses réponses ordonnées avaient parfois écarté la complexité."
+    },
+    {
+      "id": "r41-fr-c2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Pourquoi le calendrier de la lettre rend-il les intentions d'Elias suspectes ?",
+      "choices": [
+        "Amara a déjà visité la salle d'écoute.",
+        "Il écrit juste avant un événement pour lequel il souhaite du public.",
+        "Le musée a fermé depuis plusieurs années.",
+        "La lettre est envoyée après la cérémonie."
+      ],
+      "answer": 1,
+      "explanation": "Il reconnaît qu'une invitation intéressée peut se mêler au désir de reprendre contact."
+    },
+    {
+      "id": "r41-fr-c2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "En quoi une confession totale pourrait-elle imposer un fardeau à Amara ?",
+      "choices": [
+        "Elle prouverait l'impossibilité de toute amitié.",
+        "Le musée exigerait une réponse écrite.",
+        "Elle devrait organiser l'ouverture de la salle.",
+        "Elle devrait rassurer Elias sur sa valeur morale comme ami."
+      ],
+      "answer": 3,
+      "explanation": "Elias refuse de transférer le travail émotionnel de sa culpabilité à Amara."
+    },
+    {
+      "id": "r41-fr-c2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Comment inviter quelqu'un sans faire de son refus une faute ?",
+      "choices": [
+        "Ne pas transformer sa décision en verdict contre la relation.",
+        "Exiger une justification détaillée de chaque absence.",
+        "Faire de la présence une preuve définitive d'affection.",
+        "Demander plus tard le remboursement d'un service rendu."
+      ],
+      "answer": 0,
+      "explanation": "Le texte rappelle qu'une invitation peut dissimuler une facture émotionnelle invisible."
+    },
+    {
+      "id": "r41-fr-c2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Un musée veut effacer les tensions d'un témoignage pour le rendre plus positif. Que doit-il examiner ?",
+      "choices": [
+        "Si seuls les récits heureux attirent les visiteurs.",
+        "Si les employés souhaitent travailler moins longtemps.",
+        "Si cette version agréable trahit une part essentielle de l'expérience.",
+        "Si les habitants connaissent personnellement le commissaire."
+      ],
+      "answer": 2,
+      "explanation": "L'exemple du docker défend la vérité d'un souvenir contradictoire."
+    },
+    {
+      "id": "r41-fr-c2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Amara préfère correspondre sans délais de réponse. Pourquoi cette proposition convient-elle ?",
+      "choices": [
+        "L'amitié doit redevenir identique à celle d'autrefois.",
+        "La relation peut évoluer sans reproduire exactement son ancienne forme.",
+        "Chaque lettre appelle une réponse immédiate.",
+        "Une réponse lente prouve forcément le désintérêt."
+      ],
+      "answer": 1,
+      "explanation": "La correspondance modeste laisserait dialoguer deux personnes transformées."
+    },
+    {
+      "id": "r41-fr-c2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Que traduit le refus d'Elias de juger sa valeur à travers la réponse reçue ?",
+      "choices": [
+        "Il sait déjà qu'Amara acceptera l'invitation.",
+        "Il renonce définitivement à parler de ses sentiments.",
+        "Il croit que les émotions d'Amara n'ont aucune importance.",
+        "Il ne veut plus faire dépendre son identité morale d'une réaction ponctuelle."
+      ],
+      "answer": 3,
+      "explanation": "Le dernier engagement évite de traiter chaque réponse comme un jugement définitif."
+    }
+  ]
+}

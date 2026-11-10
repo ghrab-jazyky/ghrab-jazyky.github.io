@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "de",
+  "level": "C1",
+  "sourceTitle": "Was wir nie gepostet haben",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e4a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Eigenständig formulierte Fragen zu Deutung, Argumentation und Transfer; nicht pädagogisch freigegeben.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interpretation"
+    },
+    {
+      "id": "reasoning",
+      "title": "Argumentation"
+    },
+    {
+      "id": "transfer",
+      "title": "Anwendung"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-de-c1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Warum vermeidet Mara eine gewöhnliche Entschuldigung für die lange Funkstille?",
+      "choices": [
+        "Sie will nicht so tun, als sei ihr Schweigen bloßer Zufall gewesen.",
+        "Sie bestreitet, dass ihre Arbeit Zeit beansprucht hat.",
+        "Sie möchte Jules für die Distanz verantwortlich machen.",
+        "Sie betrachtet Entschuldigungen als grundsätzlich unehrlich."
+      ],
+      "answer": 0,
+      "explanation": "Mara übernimmt Verantwortung dafür, dass beide kaum ehrlich miteinander gesprochen haben."
+    },
+    {
+      "id": "r41-de-c1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Welche Bedeutung hat das als Antwort verschickte Sonnenuntergangsfoto?",
+      "choices": [
+        "Es zeigt die wichtigste Aufnahme des Stadtarchivs.",
+        "Es ersetzt eine verletzliche Antwort durch eine schöne Oberfläche.",
+        "Es beweist, dass Jules ihre Lage bereits kannte.",
+        "Es war eine ausdrückliche Einladung nach Bristol."
+      ],
+      "answer": 1,
+      "explanation": "Mara erkennt rückblickend, dass sie der Frage nach ihrem Glück ausgewichen ist."
+    },
+    {
+      "id": "r41-de-c1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Welche gemeinsame Botschaft vermitteln die zwei unterschiedlichen Archivbeiträge?",
+      "choices": [
+        "Alle Erinnerungen sollten als Tonaufnahme veröffentlicht werden.",
+        "Vergangene Konflikte müssen aus den Berichten verschwinden.",
+        "Erinnerungen dürfen auf verschiedene Weise geteilt oder begrenzt werden.",
+        "Nur optimistische Berichte verdienen Aufmerksamkeit."
+      ],
+      "answer": 2,
+      "explanation": "Die Krankenschwester und die Person ohne Aufnahme zeigen unterschiedliche legitime Grenzen."
+    },
+    {
+      "id": "r41-de-c1-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Warum verzichtet das Archiv auf vorgeschriebene inspirierende Schlussfolgerungen?",
+      "choices": [
+        "Die Besucher interessieren sich nicht für persönliche Erlebnisse.",
+        "Die Redaktion möchte sämtliche Aufnahmen verkürzen.",
+        "Alle Geschichten enthalten ausschließlich negative Erfahrungen.",
+        "Widersprüche sollen Teil einer glaubwürdigen Erinnerung bleiben."
+      ],
+      "answer": 3,
+      "explanation": "Das Archiv respektiert Erfahrungen, die sich nicht zu einfachen Lebensweisheiten formen lassen."
+    },
+    {
+      "id": "r41-de-c1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Welches Problem erkennt Mara in einer gut gemeinten Einladung an Jules?",
+      "choices": [
+        "Die Veranstaltung könnte zu wenige Tonaufnahmen haben.",
+        "Sie könnte ungewollt zu einer Prüfung ihrer Freundschaft werden.",
+        "Jules müsste das Archiv ehrenamtlich leiten.",
+        "Die Reise ließe sich nur mit dem Flugzeug machen."
+      ],
+      "answer": 1,
+      "explanation": "Mara will Jules' Teilnahme nicht als Beweis persönlicher Nähe verlangen."
+    },
+    {
+      "id": "r41-de-c1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum erklärt Mara, dass ein Abend nicht ein ganzes Jahr ersetzen kann?",
+      "choices": [
+        "Sie hält eine Verbesserung der Beziehung für unmöglich.",
+        "Sie will sich grundsätzlich nicht mehr treffen.",
+        "Sie betrachtet den Hörabend als bedeutungslos.",
+        "Sie begrenzt die Erwartung an eine schnelle Wiederannäherung."
+      ],
+      "answer": 3,
+      "explanation": "Die Autorin unterscheidet einen einzelnen schönen Anlass von längerfristiger Nähe."
+    },
+    {
+      "id": "r41-de-c1-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Eine Zeitzeugin möchte nur schriftlich über einen Ort berichten. Wie sollte das Archiv reagieren?",
+      "choices": [
+        "Die schriftliche Beschreibung als eigenständigen Beitrag respektieren.",
+        "Ihre Stimme ohne Einverständnis aufnehmen.",
+        "Den Beitrag wegen fehlender Aufnahme ablehnen.",
+        "Sie zu einer öffentlichen Rede verpflichten."
+      ],
+      "answer": 0,
+      "explanation": "Das Beispiel zeigt, dass die Art des Erinnerns von den Beteiligten bestimmt werden darf."
+    },
+    {
+      "id": "r41-de-c1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Jules ist nach Prüfungen erschöpft. Was wäre Maras Argumentation zufolge angemessen?",
+      "choices": [
+        "Auf seine Teilnahme als Pflicht bestehen.",
+        "Seine Erschöpfung als mangelndes Interesse deuten.",
+        "Die Absage akzeptieren, ohne daraus ein Urteil über die Freundschaft abzuleiten.",
+        "Den Hörabend verschieben, bis er zustimmt."
+      ],
+      "answer": 2,
+      "explanation": "Mara möchte keinen zusätzlichen Zwang als netten Ausflug tarnen."
+    },
+    {
+      "id": "r41-de-c1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Zwei Freunde kommentieren ständig Bilder, kennen aber die Sorgen des anderen kaum. Was wäre hilfreich?",
+      "choices": [
+        "Noch häufiger attraktive Bilder veröffentlichen.",
+        "Wieder Raum für ungeschönte Gespräche und Unsicherheit schaffen.",
+        "Alle digitalen Kontakte ohne Gespräch beenden.",
+        "Treffen nur mit ausgefülltem Programm organisieren."
+      ],
+      "answer": 1,
+      "explanation": "Im Schluss wünscht Mara, dass sich beide auch Zweifel zeigen können."
+    },
+    {
+      "id": "r41-de-c1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Woran ließe sich eine ehrliche statt gespielte Nähe erkennen?",
+      "choices": [
+        "Eine öffentliche Veranstaltung ist immer besser als ein Telefonat.",
+        "Gespräche dürfen nie unbequem werden.",
+        "Die Beziehung wird als fertiges Projekt betrachtet.",
+        "Beide können frei teilnehmen oder absagen, ohne etwas beweisen zu müssen."
+      ],
+      "answer": 3,
+      "explanation": "Mara lehnt Nähe als Leistung und den Zwang zur Bestätigung ab."
+    }
+  ]
+}

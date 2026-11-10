@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "de",
+  "level": "B2",
+  "sourceTitle": "Zwischen zwei Städten",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e4a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Eigenständig formulierte Fragen zu Deutung, Argumentation und Transfer; nicht pädagogisch freigegeben.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interpretation"
+    },
+    {
+      "id": "reasoning",
+      "title": "Argumentation"
+    },
+    {
+      "id": "transfer",
+      "title": "Anwendung"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-de-b2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Was zeigt der Gegensatz zwischen Museumsbesuchen und fehlenden Gesprächspartnern?",
+      "choices": [
+        "Stadtkenntnis ersetzt keine persönlichen Beziehungen.",
+        "Der Museumsbesuch verhindert neue Freundschaften.",
+        "Rotterdam bietet zu wenige kulturelle Angebote.",
+        "Lena spricht grundsätzlich nicht gern mit Menschen."
+      ],
+      "answer": 0,
+      "explanation": "Lena kennt viele Orte, weiß aber nicht, wen sie an einem schlechten Tag anrufen kann."
+    },
+    {
+      "id": "r41-de-b2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Welche Wirkung haben die fröhlichen Fotos in Lenas Nachrichten?",
+      "choices": [
+        "Sie zeigen ihre beruflichen Erfolge beim Radio.",
+        "Sie verdecken einen Teil ihrer schwierigen Erfahrungen.",
+        "Sie beweisen, dass sie sich nie einsam fühlte.",
+        "Sie dienen ausschließlich als Werbung für die Stadt."
+      ],
+      "answer": 1,
+      "explanation": "Lena verschickt schöne Bilder, weil sie ihre Einsamkeit nicht zugeben möchte."
+    },
+    {
+      "id": "r41-de-b2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Warum hilft Lena das Gespräch mit einer neu angekommenen Frau?",
+      "choices": [
+        "Sie erfährt, wie man sämtliche Buslinien auswendig lernt.",
+        "Die Frau vermittelt ihr eine bezahlte Arbeitsstelle.",
+        "Sie erkennt ihre eigenen Gefühle in der fremden Erfahrung.",
+        "Sie muss danach nicht mehr Niederländisch lernen."
+      ],
+      "answer": 2,
+      "explanation": "Die Schilderung der geheimnisvoll wirkenden Buslinien erinnert Lena an sich selbst."
+    },
+    {
+      "id": "r41-de-b2-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was zeigt Lenas Vergleich zwischen Gesprächen und Zertifikaten?",
+      "choices": [
+        "Sie lehnt jede Art von Abschluss grundsätzlich ab.",
+        "Sie möchte das Radioteam allein führen.",
+        "Sie sieht ehrenamtliche Arbeit als nutzlos an.",
+        "Persönliche Begegnungen sind ihr wichtiger als formelle Anerkennung."
+      ],
+      "answer": 3,
+      "explanation": "Die Gespräche bedeuten Lena mehr als das Zertifikat, das sie später erhält."
+    },
+    {
+      "id": "r41-de-b2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum denkt Lena über ihre beinahe verschickte alte Fotografie nach?",
+      "choices": [
+        "Sie hat das Foto vom Prüfungstag verloren.",
+        "Sie erkennt, dass sie kaum nach Alex' wirklichen Problemen gefragt hat.",
+        "Alex hat alle gemeinsamen Erinnerungen gelöscht.",
+        "Sie möchte die Universität ihres Freundes besuchen."
+      ],
+      "answer": 1,
+      "explanation": "Das Foto erinnert Lena an frühere Gespräche, in denen beide auch Schwierigkeiten teilten."
+    },
+    {
+      "id": "r41-de-b2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum kann Lena nachvollziehen, dass sich Alex ausgeschlossen fühlte?",
+      "choices": [
+        "Alex darf nicht an ihrem Radioprojekt teilnehmen.",
+        "Das Studienjahr von Alex wurde abgesagt.",
+        "Ihre Mitbewohner möchten keine Gäste empfangen.",
+        "Ihre ausgewählten Bilder konnten falsche Nähe und Leichtigkeit vermitteln."
+      ],
+      "answer": 3,
+      "explanation": "Lena erklärt, dass ihre Nachrichten ihr Leben einfacher erscheinen ließen, als es war."
+    },
+    {
+      "id": "r41-de-b2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Alex möchte nicht vor Publikum auftreten. Wie könnte er trotzdem kommen?",
+      "choices": [
+        "Einfach zuhören und am nächsten Tag mit Lena spazieren gehen.",
+        "Selbst ein Interview mit den neuen Bewohnern führen.",
+        "Den ganzen Erzählabend moderieren.",
+        "Nur kommen, wenn er eine Rede hält."
+      ],
+      "answer": 0,
+      "explanation": "Lena stellt klar, dass Alex weder auftreten noch vor anderen sprechen muss."
+    },
+    {
+      "id": "r41-de-b2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Alex kann die Zugfahrt nicht bezahlen. Was wäre eine passende Alternative?",
+      "choices": [
+        "Lena muss seine Fahrt ohne Rückfrage bezahlen.",
+        "Alex soll sein Studium unterbrechen.",
+        "Einen festen Termin für ein gemeinsames Telefonat finden.",
+        "Die beiden sollten einander nicht mehr schreiben."
+      ],
+      "answer": 2,
+      "explanation": "Die Einladung enthält ausdrücklich einen Telefonvorschlag, falls die Reise nicht klappt."
+    },
+    {
+      "id": "r41-de-b2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Eine Freundin zeigt online nur schöne Bilder, fühlt sich aber einsam. Was lässt sich aus Lena lernen?",
+      "choices": [
+        "Onlinefotos beweisen immer das Gegenteil der Wahrheit.",
+        "Veröffentlichte Bilder erzählen nicht unbedingt die ganze Geschichte.",
+        "Ein gutes Foto ersetzt ein persönliches Gespräch.",
+        "In einer neuen Stadt kann niemand Freunde finden."
+      ],
+      "answer": 1,
+      "explanation": "Der Beginn trennt die attraktive Außendarstellung von Lenas tatsächlichen Gefühlen."
+    },
+    {
+      "id": "r41-de-b2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Wie lässt sich Lenas wichtigster Wunsch am besten umsetzen?",
+      "choices": [
+        "Noch ein perfekt wirkendes Foto veröffentlichen.",
+        "Das Zertifikat vom Radio an Alex schicken.",
+        "Alle unangenehmen Themen künftig vermeiden.",
+        "Ein offenes Gespräch führen, auch wenn es unperfekt ist."
+      ],
+      "answer": 3,
+      "explanation": "Am Schluss wünscht sich Lena wirklichen Austausch statt weiterer Glücksbilder."
+    }
+  ]
+}

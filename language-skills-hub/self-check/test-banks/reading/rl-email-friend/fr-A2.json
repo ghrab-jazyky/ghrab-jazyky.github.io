@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "fr",
+  "level": "A2",
+  "sourceTitle": "Un week-end à partager",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e4a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Dix nouvelles questions de compréhension et de transfert ; contenu non validé par un enseignant indépendant.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Compréhension"
+    },
+    {
+      "id": "reasoning",
+      "title": "Interprétation"
+    },
+    {
+      "id": "transfer",
+      "title": "Application"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-fr-a2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Qu'est-ce qui montre que Sofia se sent mieux à Galway ?",
+      "choices": [
+        "Elle a trouvé des amis avec qui elle cuisine.",
+        "Elle a quitté son cours de langues.",
+        "Elle est déjà rentrée définitivement.",
+        "Il fait désormais toujours très chaud."
+      ],
+      "answer": 0,
+      "explanation": "Le premier paragraphe oppose son début difficile à ses nouvelles amitiés."
+    },
+    {
+      "id": "r41-fr-a2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Pourquoi cette exposition pourrait-elle intéresser Noah ?",
+      "choices": [
+        "Noah travaille dans l'ancienne gare.",
+        "Elle présente des scènes de vie photographiées.",
+        "Sofia veut lui acheter un appareil photo.",
+        "Elle montre les matches de son équipe de basket."
+      ],
+      "answer": 1,
+      "explanation": "Sofia connaît l'intérêt de Noah pour la photo et lui propose cette visite."
+    },
+    {
+      "id": "r41-fr-a2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Quel est l'intérêt des sujets photographiés dans l'exposition ?",
+      "choices": [
+        "Les images montrent uniquement des célébrités.",
+        "Tous les portraits ont été pris dans des trains.",
+        "Des personnes ordinaires vivent des moments intéressants.",
+        "Le photographe ne représente que des paysages."
+      ],
+      "answer": 2,
+      "explanation": "La description insiste sur les activités intéressantes de gens ordinaires."
+    },
+    {
+      "id": "r41-fr-a2-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Pourquoi Sofia évoque-t-elle ses premières difficultés à Galway ?",
+      "choices": [
+        "Elle conseille à Noah de ne jamais voyager.",
+        "Elle explique que le cours était inutile.",
+        "Elle cherche une nouvelle tante.",
+        "Elle montre comment sa situation s'est améliorée."
+      ],
+      "answer": 3,
+      "explanation": "Le contraste souligne son adaptation progressive à la ville."
+    },
+    {
+      "id": "r41-fr-a2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Pourquoi Sofia mentionne-t-elle le musée des sciences ?",
+      "choices": [
+        "Elle préfère obligatoirement ce musée.",
+        "C'est une solution si l'exposition n'a plus de places.",
+        "L'exposition doit se tenir dans le musée.",
+        "Le musée remplace le cours de langues."
+      ],
+      "answer": 1,
+      "explanation": "Elle propose ce deuxième lieu uniquement si les billets manquent."
+    },
+    {
+      "id": "r41-fr-a2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Pourquoi Sofia ne demande-t-elle pas une journée parfaite ?",
+      "choices": [
+        "Elle veut rester seule à la maison.",
+        "Elle ne souhaite plus aller au musée.",
+        "Elle a oublié le jour du retour.",
+        "Passer du temps avec Noah lui suffit pour être heureuse."
+      ],
+      "answer": 3,
+      "explanation": "Sofia dit que même une heure ensemble serait agréable."
+    },
+    {
+      "id": "r41-fr-a2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Noah préfère discuter plutôt que visiter un musée. Que peut-il proposer ?",
+      "choices": [
+        "Un moment simple pour se retrouver et parler.",
+        "Refuser de répondre parce que le programme est fixe.",
+        "Demander à Sofia de rester à Galway.",
+        "Remplacer l'exposition sans la consulter."
+      ],
+      "answer": 0,
+      "explanation": "Le message donne la priorité aux retrouvailles plutôt qu'au programme."
+    },
+    {
+      "id": "r41-fr-a2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Que faudrait-il vérifier avant de choisir la visite du dimanche ?",
+      "choices": [
+        "Si Sofia recommence son cours en septembre.",
+        "Si l'équipe de basket utilise un appareil photo.",
+        "S'il reste des billets pour l'exposition.",
+        "Si la gare vend de nouveaux ballons."
+      ],
+      "answer": 2,
+      "explanation": "Le risque d'une exposition complète motive l'existence d'un autre plan."
+    },
+    {
+      "id": "r41-fr-a2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Noah n'est libre qu'après midi. Quelle réponse aidera Sofia ?",
+      "choices": [
+        "Attendre lundi pour répondre.",
+        "Lui préciser ses horaires avant la réservation.",
+        "Accepter sans expliquer son empêchement.",
+        "Lui demander de prolonger son cours."
+      ],
+      "answer": 1,
+      "explanation": "Sofia demande une réponse avant vendredi soir car elle doit réserver."
+    },
+    {
+      "id": "r41-fr-a2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Quel détail prouve que Sofia s'intéresse encore à la vie de Noah ?",
+      "choices": [
+        "Elle décrit le froid de Galway.",
+        "Elle indique le prix d'entrée.",
+        "Elle parle de la vieille gare.",
+        "Elle demande des nouvelles de son équipe de basket."
+      ],
+      "answer": 3,
+      "explanation": "La question personnelle montre le maintien du lien malgré la distance."
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "es",
+  "level": "C1",
+  "sourceTitle": "La tiranía del doble check azul",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Diez preguntas nuevas de inferencia, razonamiento y transferencia; borrador no autorizado para alumnos.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interpretación"
+    },
+    {
+      "id": "argument",
+      "title": "Razonamiento"
+    },
+    {
+      "id": "transfer",
+      "title": "Transferencia crítica"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-es-c1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué obligación social puede parecer que nace al abrir un mensaje?",
+      "choices": [
+        "Quien lo ha leído debería responder de inmediato.",
+        "Quien lo envió ya conoce la opinión del lector.",
+        "El receptor nunca puede ignorar el contenido.",
+        "La aplicación sabe cuándo el lector dispone de tiempo."
+      ],
+      "answer": 0,
+      "explanation": "La lectura se convierte para algunos en una promesa de respuesta rápida."
+    },
+    {
+      "id": "r41-es-c1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Por qué el caso de la trabajadora de cafetería refleja una presión desigual?",
+      "choices": [
+        "Todas las personas tienen idénticas oportunidades.",
+        "Las recompensas favorecen a quien puede contestar a cualquier hora.",
+        "El encargado obliga formalmente a permanecer conectados.",
+        "Solo se esperan respuestas durante la jornada laboral."
+      ],
+      "answer": 1,
+      "explanation": "El sistema premia la disponibilidad nocturna sin reconocer las diferencias de circunstancias."
+    },
+    {
+      "id": "r41-es-c1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué diferencia importante no registra una confirmación de lectura?",
+      "choices": [
+        "La aplicación no distingue nunca un mensaje leído.",
+        "Los mensajes urgentes siempre llegan a un número erróneo.",
+        "Leer un mensaje no implica poder responderlo en ese momento.",
+        "Todos los participantes usan plataformas distintas."
+      ],
+      "answer": 2,
+      "explanation": "El autor separa la recepción del tiempo y los recursos para contestar."
+    },
+    {
+      "id": "r41-es-c1-04",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Por qué el texto admite que las confirmaciones sirven en una emergencia?",
+      "choices": [
+        "Defiende que cualquier mensaje debe tratarse como urgente.",
+        "Demuestra que toda demora es intencional.",
+        "Recomienda que los jefes controlen los chats privados.",
+        "Reconoce una ventaja real antes de señalar las limitaciones."
+      ],
+      "answer": 3,
+      "explanation": "La concesión hace más matizada la crítica a la tecnología."
+    },
+    {
+      "id": "r41-es-c1-05",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "¿Por qué las normas tácitas producen conflictos indirectos?",
+      "choices": [
+        "Cada grupo aplica normas escritas idénticas.",
+        "Las personas pueden discrepar sin conocer las expectativas ajenas.",
+        "Una respuesta lenta expresa siempre desprecio.",
+        "Los emojis eliminan automáticamente cualquier problema."
+      ],
+      "answer": 1,
+      "explanation": "Los retrasos se interpretan según reglas implícitas y diferentes."
+    },
+    {
+      "id": "r41-es-c1-06",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "¿Qué aporta la comparación con el derecho a desconectar?",
+      "choices": [
+        "Los clubes escolares deben aplicar literalmente las leyes laborales.",
+        "Los amigos deben dejar de enviar mensajes.",
+        "Solo los países con esa ley pueden fijar horarios.",
+        "Los límites pactados pueden proteger el tiempo personal de distintos grupos."
+      ],
+      "answer": 3,
+      "explanation": "Se traslada la idea de normas explícitas del trabajo a los clubes y amistades."
+    },
+    {
+      "id": "r41-es-c1-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Un encargado concede turnos extra al primero que responde a medianoche. ¿Qué debería revisar?",
+      "choices": [
+        "Si premia injustamente la disponibilidad constante.",
+        "Si los mensajes contienen errores gramaticales.",
+        "Si los trabajadores usan emojis suficientes.",
+        "Si los turnos se anuncian con letras de otro color."
+      ],
+      "answer": 0,
+      "explanation": "El ejemplo muestra desigualdad sin una obligación formal."
+    },
+    {
+      "id": "r41-es-c1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Alguien desactiva las confirmaciones y sus amigos lo interpretan como rechazo. ¿Qué enseña esto?",
+      "choices": [
+        "Desactivar la función demuestra el fin de la amistad.",
+        "La tecnología impide cualquier interpretación emocional.",
+        "Una opción técnica también puede transmitir significados sociales no deseados.",
+        "Los amigos tienen derecho legal a exigir la función."
+      ],
+      "answer": 2,
+      "explanation": "La decisión de desactivar no es necesariamente socialmente neutra."
+    },
+    {
+      "id": "r41-es-c1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Una alumna nueva ignora cuánto puede tardar en responder en un equipo. ¿Qué solución sería útil?",
+      "choices": [
+        "Responder a todo inmediatamente, incluso mientras duerme.",
+        "Hablar de las expectativas y acordar límites claros.",
+        "No preguntar porque las normas deberían ser obvias.",
+        "Probar respuestas cada vez más sarcásticas."
+      ],
+      "answer": 1,
+      "explanation": "El problema radica en normas no expresadas, no solo en minutos."
+    },
+    {
+      "id": "r41-es-c1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Ves dos checks azules sin recibir respuesta. ¿Qué conclusión justifica el texto?",
+      "choices": [
+        "El destinatario ya no te aprecia.",
+        "El silencio es necesariamente un castigo.",
+        "La respuesta llegará con seguridad mañana.",
+        "El mensaje se ha leído, pero desconoces cuánto le importas al lector."
+      ],
+      "answer": 3,
+      "explanation": "El cierre niega que un indicador de lectura mida el afecto."
+    }
+  ]
+}

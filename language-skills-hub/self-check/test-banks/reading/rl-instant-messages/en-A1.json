@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "en",
+  "level": "A1",
+  "sourceTitle": "Saturday in the Park",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Ten newly written comprehension, interpretation and situational transfer questions; pending independent teacher review.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Meaning and Context"
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasons and Implications"
+    },
+    {
+      "id": "transfer",
+      "title": "New Situations"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-en-a1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does Leo ask the group who can come?",
+      "choices": [
+        "He wants to arrange a picnic with his friends.",
+        "He is collecting money for a new school.",
+        "He needs somebody to teach Max to swim.",
+        "He wants to cancel a music performance."
+      ],
+      "answer": 0,
+      "explanation": "Leo proposes a picnic and checks who is available before arranging details."
+    },
+    {
+      "id": "r41-en-a1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does Ana's message tell us about the morning?",
+      "choices": [
+        "She cannot visit the park at any time.",
+        "She is busy until her piano lesson finishes.",
+        "She has already spent the morning in the park.",
+        "She needs a bus to reach the café."
+      ],
+      "answer": 1,
+      "explanation": "Ana explains why noon suits her better than the morning."
+    },
+    {
+      "id": "r41-en-a1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why is it useful for Sam to name the café?",
+      "choices": [
+        "The group must buy a full lunch there.",
+        "It is where Ana has her piano lesson.",
+        "It gives everyone one place that is easy to find.",
+        "The park has no other place to sit."
+      ],
+      "answer": 2,
+      "explanation": "Sam worries that the park is large and suggests a recognizable meeting point."
+    },
+    {
+      "id": "r41-en-a1-04",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Which two details make the final arrangement clear?",
+      "choices": [
+        "The kind of fruit and Sam's music.",
+        "The number of sandwiches and the bus fare.",
+        "The exact piano piece Ana will play.",
+        "The meeting time and the café's green door."
+      ],
+      "answer": 3,
+      "explanation": "Leo confirms both noon and the clearly described café location."
+    },
+    {
+      "id": "r41-en-a1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why is Ana able to walk to the picnic?",
+      "choices": [
+        "The bus does not run on Saturday.",
+        "Her home is close to Riverside Park.",
+        "She has forgotten her bus ticket.",
+        "She plans to meet Sam at his house."
+      ],
+      "answer": 1,
+      "explanation": "Ana says she lives near the park and can go there on foot."
+    },
+    {
+      "id": "r41-en-a1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why does Sam mention the big green door?",
+      "choices": [
+        "He wants to paint the café.",
+        "He is asking the group to buy a green jacket.",
+        "He wants to describe the café's menu.",
+        "It helps his friends recognize the right café."
+      ],
+      "answer": 3,
+      "explanation": "The door is a visible landmark that makes the meeting easier."
+    },
+    {
+      "id": "r41-en-a1-07",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why should the group begin the picnic on time?",
+      "choices": [
+        "Leo's mother can stay only until three.",
+        "Ana must leave for her piano lesson at noon.",
+        "The park closes exactly at midday.",
+        "Sam's bus takes three hours to arrive."
+      ],
+      "answer": 0,
+      "explanation": "The limited time Leo's mother can stay makes punctuality important."
+    },
+    {
+      "id": "r41-en-a1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "A classmate is worried about finding friends in a large park. What can help?",
+      "choices": [
+        "Tell everybody to enter from a different gate.",
+        "Leave the meeting place undecided.",
+        "Choose a clear landmark everyone can find.",
+        "Ask people not to bring phones."
+      ],
+      "answer": 2,
+      "explanation": "Sam uses the café near the lake as a recognizable point in a large park."
+    },
+    {
+      "id": "r41-en-a1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What should a friend bring if the picnic is by the water?",
+      "choices": [
+        "A thick coat because snow is expected.",
+        "A jacket for the wind, even on a sunny day.",
+        "A swimming ticket for the café.",
+        "A piano because Ana has a lesson."
+      ],
+      "answer": 1,
+      "explanation": "Leo warns that the lakeside can be windy despite sunshine."
+    },
+    {
+      "id": "r41-en-a1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "One friend can come only after eleven. Which plan follows the chat's example?",
+      "choices": [
+        "Start the picnic before that friend's lesson ends.",
+        "Cancel the whole weekend immediately.",
+        "Tell the friend to skip the lesson.",
+        "Pick a time when that friend is free."
+      ],
+      "answer": 3,
+      "explanation": "The group agrees on noon so that Ana can finish her morning lesson."
+    }
+  ]
+}

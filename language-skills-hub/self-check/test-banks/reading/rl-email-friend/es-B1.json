@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "es",
+  "level": "B1",
+  "sourceTitle": "De vuelta a nuestro barrio",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e4a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Diez preguntas originales de comprensión, inferencia y transferencia; borrador sin validación pedagógica externa.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Comprensión"
+    },
+    {
+      "id": "reasoning",
+      "title": "Razones y relaciones"
+    },
+    {
+      "id": "transfer",
+      "title": "Aplicación"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-es-b1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué hace que la antigua plaza resulte diferente para Tomás?",
+      "choices": [
+        "El espacio abandonado ahora sirve a la comunidad.",
+        "La plaza ha perdido todos sus edificios.",
+        "Los antiguos alumnos ya no pueden entrar.",
+        "La escuela ha cerrado por completo."
+      ],
+      "answer": 0,
+      "explanation": "La tienda vacía se convirtió en un taller comunitario abierto al barrio."
+    },
+    {
+      "id": "r41-es-b1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué descubre Tomás cuando ayuda a reparar una bicicleta?",
+      "choices": [
+        "Que necesita ser mecánico profesional.",
+        "Que puede ayudar aunque siga aprendiendo.",
+        "Que reparar objetos es demasiado fácil.",
+        "Que enseñar a niños no requiere paciencia."
+      ],
+      "answer": 1,
+      "explanation": "La reacción del niño le permite reconocer el valor de contribuir sin dominar todo."
+    },
+    {
+      "id": "r41-es-b1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué muestra la evolución de las tareas de Tomás en el taller?",
+      "choices": [
+        "Pasa de dirigir el taller a trabajar solo.",
+        "Deja de interesarse por la comunidad.",
+        "Pasa de ayudar de manera discreta a compartir conocimientos.",
+        "Aprende que preparar té es una pérdida de tiempo."
+      ],
+      "answer": 2,
+      "explanation": "Primero evita conocer gente y después enseña a dos niños a reparar algo."
+    },
+    {
+      "id": "r41-es-b1-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Por qué Tomás menciona que casi no ha hablado con Robin?",
+      "choices": [
+        "Intenta demostrar que Robin olvidó la plaza.",
+        "Quiere culpar a Robin por haberse mudado.",
+        "Piensa que las fotografías son suficientes.",
+        "Reconoce que su amistad necesita más contacto real."
+      ],
+      "answer": 3,
+      "explanation": "El regreso al barrio le recuerda una relación que se ha enfriado."
+    },
+    {
+      "id": "r41-es-b1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Por qué Tomás insiste en que Robin no prepare un discurso?",
+      "choices": [
+        "No confía en las fotografías de Robin.",
+        "Busca que la invitación sea sencilla y sin presión.",
+        "El taller prohíbe hablar durante las visitas.",
+        "Los visitantes deben guardar silencio."
+      ],
+      "answer": 1,
+      "explanation": "Tomás presenta la jornada de puertas abiertas como una ocasión flexible."
+    },
+    {
+      "id": "r41-es-b1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "¿Qué sentido tiene mencionar el coste del viaje?",
+      "choices": [
+        "Quiere calcular cuánto dinero debe Robin.",
+        "Promete pagar todos los gastos del viaje.",
+        "Propone que Robin viaje cada sábado.",
+        "Tomás reconoce los límites reales de Robin."
+      ],
+      "answer": 3,
+      "explanation": "El texto admite que el tiempo y el dinero pueden impedir la visita."
+    },
+    {
+      "id": "r41-es-b1-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Un alumno quiere participar en un proyecto pero no es experto. ¿Qué idea ofrece Tomás?",
+      "choices": [
+        "Puede empezar con tareas pequeñas y aprender mientras ayuda.",
+        "Debe esperar a conocer todas las técnicas.",
+        "Tiene que dirigir el grupo desde el primer día.",
+        "Es mejor no hablar con personas nuevas."
+      ],
+      "answer": 0,
+      "explanation": "El voluntariado de Tomás muestra que contribuir y aprender pueden ocurrir juntos."
+    },
+    {
+      "id": "r41-es-b1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Cómo podría Robin participar si solo dispone de una hora?",
+      "choices": [
+        "Cancelar las actividades de toda la comunidad.",
+        "Preparar una presentación extensa.",
+        "Visitar brevemente el taller sin obligaciones especiales.",
+        "Enviar a otra persona en su lugar."
+      ],
+      "answer": 2,
+      "explanation": "Tomás indica expresamente que una visita corta sería suficiente."
+    },
+    {
+      "id": "r41-es-b1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Si Robin vive muy lejos, ¿qué alternativa mantiene el contacto?",
+      "choices": [
+        "Esperar a que se inaugure otra tienda.",
+        "Hablar por videollamada y compartir recuerdos.",
+        "Dejar de enviar fotografías para siempre.",
+        "Volver al antiguo instituto cada semana."
+      ],
+      "answer": 1,
+      "explanation": "La llamada es una alternativa realista cuando el viaje no resulta posible."
+    },
+    {
+      "id": "r41-es-b1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "¿Qué decisión encaja con la última pregunta de Tomás?",
+      "choices": [
+        "Contactar únicamente cuando haya una fiesta.",
+        "Pedir a Robin que publique más fotos.",
+        "Evitar hablar del presente para conservar recuerdos.",
+        "Proponer conversaciones regulares, no solo en ocasiones especiales."
+      ],
+      "answer": 3,
+      "explanation": "El cierre propone recuperar la comunicación cotidiana entre amigos."
+    }
+  ]
+}

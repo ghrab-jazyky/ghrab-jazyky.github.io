@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "de",
+  "level": "B1",
+  "sourceTitle": "Meine Woche ohne Messenger",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Zehn eigenständig formulierte Verständnis- und Transferaufgaben, noch nicht durch Fachlehrkräfte freigegeben.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Verstehen"
+    },
+    {
+      "id": "reasoning",
+      "title": "Zusammenhänge"
+    },
+    {
+      "id": "transfer",
+      "title": "Anwenden"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-de-b1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Welche Form der Kommunikation ist während des Experiments weiterhin erlaubt?",
+      "choices": [
+        "Telefonate und E-Mails bleiben möglich.",
+        "Die Klasse darf überhaupt nicht sprechen.",
+        "Alle Handys müssen abgegeben werden.",
+        "Jede Form des digitalen Lernens ist verboten."
+      ],
+      "answer": 0,
+      "explanation": "Die Lehrerin untersagt Messenger, nicht alle Kommunikationswege."
+    },
+    {
+      "id": "r41-de-b1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was zeigt das häufige Kontrollieren des Handys ohne neue Nachrichten?",
+      "choices": [
+        "Er wartet auf einen Notruf seines Trainers.",
+        "Der Erzähler handelt oft aus Gewohnheit.",
+        "Vor dem Mittagessen kommen vierzig Nachrichten.",
+        "Die Lehrerin verlangt ständige Kontrollen."
+      ],
+      "answer": 1,
+      "explanation": "Das automatische Nachsehen findet trotz fehlender Chats statt."
+    },
+    {
+      "id": "r41-de-b1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum reagiert Karim so überrascht auf den Anruf?",
+      "choices": [
+        "Er hat den Trainingstermin vergessen.",
+        "Er erkennt die Stimme des Freundes nicht.",
+        "Er vermutet zunächst ein ernstes Problem.",
+        "Er erwartet ein zwanzigminütiges Gespräch."
+      ],
+      "answer": 2,
+      "explanation": "Ein normaler Telefonanruf ist für Karim ungewöhnlich geworden."
+    },
+    {
+      "id": "r41-de-b1-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Welche Erkenntnis bringt der Vergleich von Anruf und Gruppenchat?",
+      "choices": [
+        "Alle Chats verursachen immer tagelange Verzögerungen.",
+        "Niemand sollte im Chat über Fußball sprechen.",
+        "Telefonate eignen sich nicht für kurze Fragen.",
+        "Ein kurzer Anruf kann eine praktische Frage schneller klären."
+      ],
+      "answer": 3,
+      "explanation": "Der Erzähler erhält die Information in zwei Minuten."
+    },
+    {
+      "id": "r41-de-b1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Welches Risiko zeigt der verlegte Treffpunkt der Geschichtsgruppe?",
+      "choices": [
+        "Die Bibliothek ist die ganze Woche geschlossen.",
+        "Wer offline ist, erfährt wichtige Änderungen möglicherweise zu spät.",
+        "Die Schüler können keine Referate vorbereiten.",
+        "Gruppenarbeiten dürfen nur in Cafés stattfinden."
+      ],
+      "answer": 1,
+      "explanation": "Der Erzähler sitzt in der leeren Bibliothek, als das Treffen längst verlegt wurde."
+    },
+    {
+      "id": "r41-de-b1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Warum nutzt der Erzähler die Apps nach der Woche wieder anders?",
+      "choices": [
+        "Die Lehrerin verlangt sofortige Antworten.",
+        "Seine Freunde haben alle Messenger gelöscht.",
+        "Der Versuch beweist, dass Chats grundsätzlich gefährlich sind.",
+        "Er möchte selbst bestimmen, wann er erreichbar ist."
+      ],
+      "answer": 3,
+      "explanation": "Er behält die Apps, stellt aber Benachrichtigungen gezielt ab."
+    },
+    {
+      "id": "r41-de-b1-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Du brauchst schnell eine Auskunft von einem Mitschüler. Was passt zum Ergebnis des Experiments?",
+      "choices": [
+        "Ein kurzer Anruf statt einer langen Gruppendiskussion.",
+        "Dieselbe Frage zwanzigmal verschicken.",
+        "Warten, bis alle Gruppenmitglieder antworten.",
+        "Nicht fragen, weil Anrufen seltsam ist."
+      ],
+      "answer": 0,
+      "explanation": "Karims Anruf zeigt den Nutzen direkter Kommunikation."
+    },
+    {
+      "id": "r41-de-b1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Eine Gruppe verlegt kurzfristig die Besprechung. Was sollte sie bedenken?",
+      "choices": [
+        "Annehmen, dass jeder ständig den Chat liest.",
+        "Nie einen Plan verändern, selbst wenn es nötig ist.",
+        "Dringende Änderungen auch auf einem vereinbarten anderen Weg mitteilen.",
+        "Erst nach dem Termin Bescheid geben."
+      ],
+      "answer": 2,
+      "explanation": "Das verpasste Treffen verdeutlicht die Abhängigkeit vom Gruppenchat."
+    },
+    {
+      "id": "r41-de-b1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Eine Schülerin fühlt sich durch alle Gruppenmeldungen gestresst. Was könnte helfen?",
+      "choices": [
+        "Sämtliche Kontakte aus dem Handy löschen.",
+        "Unwichtige Benachrichtigungen ausschalten und bewusst antworten.",
+        "Das Telefon noch häufiger kontrollieren.",
+        "Überhaupt nicht mehr mit Freunden sprechen."
+      ],
+      "answer": 1,
+      "explanation": "Der Erzähler reduziert Nachrichtenhinweise, ohne alle Apps zu verbieten."
+    },
+    {
+      "id": "r41-de-b1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Welche Schlussfolgerung beschreibt die neue Haltung des Erzählers?",
+      "choices": [
+        "Alle Messenger sind für Jugendliche schlecht.",
+        "Telefonate müssen E-Mails vollständig ersetzen.",
+        "Eine Woche ohne Chats beendet digitale Freundschaften.",
+        "Je nach Situation kann eine andere Kommunikationsform besser sein."
+      ],
+      "answer": 3,
+      "explanation": "Am Ende wählt er Kommunikation und Erreichbarkeit bewusster."
+    }
+  ]
+}

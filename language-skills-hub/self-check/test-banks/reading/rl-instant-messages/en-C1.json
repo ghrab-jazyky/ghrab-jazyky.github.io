@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "en",
+  "level": "C1",
+  "sourceTitle": "The Tyranny of the Blue Ticks",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Ten independent interpretation, argument and critical-transfer questions, pending teacher review.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interpreting Meaning"
+    },
+    {
+      "id": "argument",
+      "title": "Reasoning and Discourse"
+    },
+    {
+      "id": "transfer",
+      "title": "Critical Transfer"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-en-c1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What new social meaning do read receipts attach to opening a message?",
+      "choices": [
+        "Reading can be mistaken for a commitment to answer promptly.",
+        "They confirm the sender understood the message correctly.",
+        "They prevent the receiver from ignoring unwanted requests.",
+        "They show exactly when the reader has free time."
+      ],
+      "answer": 0,
+      "explanation": "The writer describes opening a message as a promise from the sender's perspective."
+    },
+    {
+      "id": "r41-en-c1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why is the café worker an example of unequal communication pressure?",
+      "choices": [
+        "Every worker has an identical chance to accept a shift.",
+        "Fast replies bring rewards unavailable to people who are offline.",
+        "The manager formally orders workers to stay online.",
+        "Workers must answer only during their contracted hours."
+      ],
+      "answer": 1,
+      "explanation": "The informal system rewards whoever is available immediately, regardless of circumstances."
+    },
+    {
+      "id": "r41-en-c1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Which important distinction cannot a read receipt make?",
+      "choices": [
+        "Whether the message has been opened at all.",
+        "Whether an emergency message is sent to the right number.",
+        "Whether the reader is also in a position to respond.",
+        "Whether both participants use the same application."
+      ],
+      "answer": 2,
+      "explanation": "The author separates seeing a message from having the time or resources to answer it."
+    },
+    {
+      "id": "r41-en-c1-04",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why does the writer concede that receipts can be useful in an emergency?",
+      "choices": [
+        "To suggest that all messages should be treated as urgent.",
+        "To establish that every delay is intentionally disrespectful.",
+        "To argue that employers should monitor private reading.",
+        "To acknowledge a legitimate benefit before showing the feature's limits."
+      ],
+      "answer": 3,
+      "explanation": "The qualified concession makes the criticism more balanced."
+    },
+    {
+      "id": "r41-en-c1-05",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why do groups' unspoken expectations create indirect conflict?",
+      "choices": [
+        "Every group has written and consistently enforced rules.",
+        "Members may follow different rules without knowing they disagree.",
+        "Longer delays always mean a lack of commitment.",
+        "Emojis reliably resolve every disagreement about tone."
+      ],
+      "answer": 1,
+      "explanation": "The author links invisible norms to misread delays and passive-aggressive responses."
+    },
+    {
+      "id": "r41-en-c1-06",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What is the point of comparing a school club with the right to disconnect?",
+      "choices": [
+        "School clubs must apply employment law directly.",
+        "The author wants friends to replace all work messages.",
+        "Only countries with such laws can agree on response times.",
+        "Explicit boundaries can protect free time in formal and informal groups."
+      ],
+      "answer": 3,
+      "explanation": "The article transfers the principle of agreed communication limits to small groups."
+    },
+    {
+      "id": "r41-en-c1-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "A staff chat grants extra shifts to whoever replies at midnight first. What should a fair manager reconsider?",
+      "choices": [
+        "Whether the system unfairly rewards constant availability.",
+        "Whether the fastest responders write grammatically correct texts.",
+        "Whether late-night messages are more honest.",
+        "Whether the chat should use brighter notification colours."
+      ],
+      "answer": 0,
+      "explanation": "The example demonstrates unequal access and pressure despite no explicit order."
+    },
+    {
+      "id": "r41-en-c1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Someone turns off read receipts and their friends see that as rejection. What is the relevant lesson?",
+      "choices": [
+        "Turning off receipts always means a friendship is ending.",
+        "The app can guarantee that no one interprets the choice.",
+        "Technical choices can carry social meanings that users cannot fully control.",
+        "Friends should be legally required to leave receipts on."
+      ],
+      "answer": 2,
+      "explanation": "The author challenges the claim that switching off is a socially neutral option."
+    },
+    {
+      "id": "r41-en-c1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A newcomer is unsure whether a delayed reply offends a team. What would best address the problem?",
+      "choices": [
+        "Answer every message immediately, even at night.",
+        "Agree openly on expected response times instead of guessing.",
+        "Avoid asking because the rule should be obvious.",
+        "Send increasingly cheerful emojis to test reactions."
+      ],
+      "answer": 1,
+      "explanation": "The problem is not merely timing but the absence of stated shared norms."
+    },
+    {
+      "id": "r41-en-c1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "A friend sees two blue ticks but no reply. Which conclusion is most consistent with the essay?",
+      "choices": [
+        "The friendship is now less important to the reader.",
+        "The reader is deliberately refusing all communication.",
+        "A prompt reply is therefore guaranteed tomorrow.",
+        "The message was seen; the person's level of care remains unknown."
+      ],
+      "answer": 3,
+      "explanation": "The final sentence warns against turning evidence of reading into a moral judgement."
+    }
+  ]
+}
