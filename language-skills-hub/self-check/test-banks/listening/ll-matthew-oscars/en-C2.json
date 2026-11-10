@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-matthew-oscars",
+  "language": "en",
+  "level": "C2",
+  "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
+  "durationMinutesSuggested": 22,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "auditRevision": "R37-AUTHOR-DRAFT-1",
+  "notes": "Language and factual correspondence to the original speech needs direct media review before publication.",
+  "objective": [
+    {
+      "id": "r37-mm-c2-01",
+      "category": "interpretation",
+      "q": "Which tension most closely structures the relationship between his award and the hero narrative?",
+      "options": [
+        "The praise of past achievement coexists with a deliberately unfinished ideal",
+        "The personal account undermines the legitimacy of the ceremony",
+        "The ideal of continuous striving excludes the possibility of gratitude",
+        "The speech presents public success as unrelated to private values"
+      ],
+      "answer": 0,
+      "explanation": "An accomplished present is balanced against a future self that remains out of reach.",
+      "sourceEvidence": "The Oscar is a completed honour; the hero ideal keeps moving."
+    },
+    {
+      "id": "r37-mm-c2-02",
+      "category": "interpretation",
+      "q": "What is the strongest alternative reading of the speaker's modest public persona?",
+      "options": [
+        "It proves that celebrity status is fundamentally incompatible with gratitude",
+        "It can be both sincerely felt and rhetorically useful in constructing an admired identity",
+        "It conceals an explicit criticism of other actors nominated for the award",
+        "It depends entirely on the listeners sharing his personal beliefs"
+      ],
+      "answer": 1,
+      "explanation": "Self-disclosure and gratitude can be genuine while also shaping celebrity ethos.",
+      "sourceEvidence": "The speaker's family references and appreciation build public relatability."
+    },
+    {
+      "id": "r37-mm-c2-03",
+      "category": "interpretation",
+      "q": "What does presenting personal gratitude as a universal principle potentially risk?",
+      "options": [
+        "Reducing the ceremony to a technical explanation of Oscar voting",
+        "Making emotional sincerity impossible for audiences who do not know his family",
+        "Giving a situated belief a broader authority than the speech can itself demonstrate",
+        "Removing the connection between the audience and the family anecdotes"
+      ],
+      "answer": 2,
+      "explanation": "A personal insight can sound like a general truth without comparable evidence.",
+      "sourceEvidence": "The speaker talks as though thankfulness produces further thankfulness."
+    },
+    {
+      "id": "r37-mm-c2-04",
+      "category": "interpretation",
+      "q": "How might the vivid father anecdote function beyond commemorating absence?",
+      "options": [
+        "It excludes the audience from understanding the emotional significance",
+        "It establishes that grief and public celebration cannot coexist",
+        "It rejects the importance of the speaker's professional colleagues",
+        "It gives the audience an emotionally accessible scene that also performs intimacy"
+      ],
+      "answer": 3,
+      "explanation": "The imaginative detail enables an apparent private encounter within a public ceremony.",
+      "sourceEvidence": "His late father is remembered through a lively sensory image."
+    },
+    {
+      "id": "r37-mm-c2-05",
+      "category": "interpretation",
+      "q": "How does the repetition of an ever-distant ideal complicate the concept of success?",
+      "options": [
+        "It treats aspiration as self-renewing, which may motivate but also defer satisfaction",
+        "It proves that no kind of professional recognition can ever be meaningful",
+        "It shows the speaker has abandoned his ambitions since adolescence",
+        "It suggests that reaching a fixed goal should be the purpose of education"
+      ],
+      "answer": 0,
+      "explanation": "The ideal continually recedes; this can be energising and potentially ambivalent.",
+      "sourceEvidence": "The hero is his self ten years in the future at more than one age."
+    },
+    {
+      "id": "r37-mm-c2-06",
+      "category": "interpretation",
+      "q": "Why can the recurring short phrases at the end be seen as an act of identity construction?",
+      "options": [
+        "They replace serious argument with content unrelated to the speech",
+        "They link the ceremony's formal closure with a recognisable informal persona",
+        "They imply that artistic reputation is created entirely through repetition",
+        "They distance the speaker from the personal memories he has shared"
+      ],
+      "answer": 1,
+      "explanation": "The closing style affirms a familiar public voice within the formal event.",
+      "sourceEvidence": "He ends with memorable repeated expressions."
+    }
+  ],
+  "written": [
+    {
+      "id": "r37-mm-c2-w1",
+      "q": "Evaluate the possible tension between sincerity and self-presentation in this acceptance speech.",
+      "modelAnswer": "Personal thanks and family memories may be sincere; their selection and sequence also produce an approachable celebrity identity.",
+      "teacherCriterion": "Award 1 point for a substantiated reading and a plausible counter-reading supported by two distinct examples.",
+      "sourceEvidence": "Acknowledgements, family memories and recurrent informal phrases contribute to public ethos."
+    },
+    {
+      "id": "r37-mm-c2-w2",
+      "q": "Could a constantly deferred hero ideal be both productive and emotionally costly? Use evidence.",
+      "modelAnswer": "The moving ideal supplies ambition, yet can also postpone satisfaction by making the next benchmark permanently more distant.",
+      "teacherCriterion": "Award 1 point for both productive and critical readings anchored in the age-based anecdote.",
+      "sourceEvidence": "The ideal is ten years ahead and shifts again as the speaker grows older."
+    }
+  ]
+}
