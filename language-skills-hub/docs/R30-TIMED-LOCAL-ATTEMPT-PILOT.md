@@ -8,7 +8,7 @@
 
 ## Architektura
 
-R30 je samostatná **DRAFT** etapa nad veřejnou R29. Statický GitHub Pages, žádný backend, studentské účty, POST výsledků ani serverové časování.
+R30 navazuje na R29 jako funkčně oddělený pilot pro školní používání pod dohledem. Statický GitHub Pages, žádný backend, studentské účty, POST výsledků ani serverové časování.
 
 - V učitelském panelu se volí čas v celých minutách (5–120); studentské QR/URL obsahuje `timer` a neosobní identifikátor konkrétního učitelského odkazu `attempt`.
 - Nová časovaná studentská stránka má úvodní obrazovku a tlačítko Start; od tohoto okamžiku je deadline `startedAt + timer*60000`. Používá se čas zařízení.
@@ -42,5 +42,5 @@ U Listening se po odevzdání obnovují studentské odpovědi, ale **ruční zn�
 
 ## Publikační brána
 
-GitHub Actions `lsh-r30-timer-recovery.yml` musí projít na přesném HEAD (Node a Chromium/WebKit). Pak následuje nezávislá funkční a pedagogická přejímka. **Neslučovat automaticky na `main`.** Ostrá R29 zůstává rollback bodem.
+GitHub Actions `lsh-r30-timer-recovery.yml` musí projít na přesném HEAD (Node a Chromium/WebKit). Pak následuje nezávislá funkční a pedagogická přejímka. **Slučovat teprve po úspěšných testech na přesném commitu.** R29 zůstává rollback bodem; ověření na fyzických Android/iOS/iPadOS zařízeních je samostatnou následnou přejímkou.
 
