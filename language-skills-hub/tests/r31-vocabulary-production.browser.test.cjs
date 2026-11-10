@@ -40,6 +40,10 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#lshBridgeVocabularyLink').click();
    await page.waitForURL('**/language-skills-hub/slovnicek/**');
    await page.waitForFunction(()=>document.querySelector('#wordCount')?.textContent==='1');
+   const recovery=page.locator('details.vocab-recovery');
+   await recovery.locator('summary').click();
+   assert.equal(await recovery.locator('a').getAttribute('href'),'../../zkusebni/slovnicek/');
+   assert.ok(await recovery.getByText('Export JSON').isVisible());
    // Independent of the markup: the storage configured on this page is production.
    assert.equal(await page.evaluate(()=>window.LSH_CONFIG.mode),'production');
    await page.locator('#backToCard').waitFor({state:'visible',timeout:10000});

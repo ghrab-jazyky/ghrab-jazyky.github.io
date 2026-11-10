@@ -57,3 +57,10 @@
 @media(max-width:800px){.vocab-list{grid-template-columns:1fr}.vocab-filter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.vocab-grid,.vocab-grid.three,.vocab-filter-grid,.vocab-edit-grid{grid-template-columns:1fr}.vocab-stat-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}.vocab-stat{padding:10px}.vocab-stat strong{font-size:1.25rem}.vocab-stat span{font-size:.72rem}.vocab-panel{padding:15px}.vocab-shell .vocab-intro{padding-top:23px}}
 @media print{.vocab-actions,.vocab-backup,.vocab-dialog,.vocab-practice-rating,.vocab-stat-grid,.vocab-panel:has(#addWordForm),.vocab-panel:has(#wordSearch){display:none!important}.vocab-list{grid-template-columns:repeat(2,minmax(0,1fr))}.vocab-card{break-inside:avoid}}
+
+/* Explicit, optional recovery instructions for words saved before production isolation. */
+.vocab-recovery{border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:16px 0 20px;background:var(--surface-raised);color:var(--ink)}
+.vocab-recovery summary{cursor:pointer;font-weight:750;line-height:1.5}
+.vocab-recovery summary:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.vocab-recovery p{margin:12px 0 0;font-size:.93rem;line-height:1.65;color:var(--muted-strong)}
+.vocab-recovery a{text-decoration:underline;text-underline-offset:3px;font-weight:750}

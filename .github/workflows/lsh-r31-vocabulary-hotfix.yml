@@ -51,3 +51,4 @@ jobs:
             sleep 1
           done
           node --test language-skills-hub/tests/r31-vocabulary-production.browser.test.cjs
+          node --test language-skills-hub/tests/r31-vocabulary-catalog.browser.test.cjs

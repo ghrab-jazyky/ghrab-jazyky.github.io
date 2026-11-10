@@ -19,6 +19,9 @@ test('Production vocabulary page loads local assets and contains no staging/PWA 
  assert.match(html,/<script defer src="\.\.\/assets\/lsh\/v3\/vocab\.js"><\/script>/);
  assert.doesNotMatch(html,/zkusebni|TECHNICKÝ PILOT|zkušební E3C|manifest\.webmanifest|pwa\.js|href="\.\.\/vyber\/"/i);
  assert.match(get('index.html'),/href="slovnicek\/">Můj slovníček/);
+ assert.match(html,/<details class="vocab-recovery">/);
+ assert.match(html,/href="\.\.\/\.\.\/zkusebni\/slovnicek\/"/);
+ assert.match(html,/Nezaškrtávejte/);
 });
 
 test('Production conversation bridge writes to the real production store',()=>{

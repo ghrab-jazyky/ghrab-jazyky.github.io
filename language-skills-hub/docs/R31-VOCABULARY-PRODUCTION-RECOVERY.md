@@ -7,6 +7,8 @@
 - Odkaz "Zpět ke konverzační kartě" přijímá jen URL na stejném originu pod /language-skills-hub/konverzace/<slug>/ nebo /index.html; cizí návratové URL ignoruje.
 - Můj slovníček podporuje ručně přidaná slova, seznam, filtry, procvičování, opakování a JSON zálohu. Přímé ukládání z Reading/Listening není v této verzi slíbeno.
 - Stávajících 29 procvičovacích karet a jejich obsahových SHA se změna nedotýká.
+- Produkční stránka má rozbalovací návod pro historická data; migrace je výslovně **manuální a volitelná**.
+- Nový Chromium smoke test prochází všech 21 konverzačních karet a kontroluje odkazy i sdílení uložených slov.
 
 ## Bezpečná obnova historických slov
 Před opravou některé ostré konverzační karty chybně ukládaly slova do zkušební databáze **lsh-test**. **Nesmí se provádět automatická migrace:** zkušební databáze může také obsahovat skutečná testovací slova a plošná migrace by smíchala izolované sady.
