@@ -36,12 +36,12 @@
       "kind": "mc",
       "q": "How has Sofia's time in Galway changed since her arrival?",
       "choices": [
+        "The weather is now warmer than she expected.",
         "Her aunt now works fewer hours.",
         "She has made friends after a difficult start.",
-        "She has decided to leave her language course early.",
-        "The weather is now warmer than she expected."
+        "She has decided to leave her language course early."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Sofia initially knew nobody but now cooks with a group of friends."
     },
     {
@@ -51,12 +51,12 @@
       "kind": "mc",
       "q": "Why does Sofia suggest a photography exhibition to Noah?",
       "choices": [
+        "She remembers his interest and wants to share something he may enjoy.",
         "She wants him to help organise the event.",
         "It is part of an exam she has to pass.",
-        "She has already booked two tickets for them.",
-        "She remembers his interest and wants to share something he may enjoy."
+        "She has already booked two tickets for them."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "Sofia immediately thinks of Noah because he enjoys photography."
     },
     {
@@ -66,12 +66,12 @@
       "kind": "mc",
       "q": "What is unusual about the main subjects of the exhibition?",
       "choices": [
+        "They are only professional photographers.",
         "They are all famous people.",
         "They are all students at Sofia's course.",
-        "They are ordinary workers shown doing interesting things.",
-        "They are only professional photographers."
+        "They are ordinary workers shown doing interesting things."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "The exhibition depicts bakers, drivers, nurses and musicians, not celebrities."
     },
     {
@@ -81,12 +81,12 @@
       "kind": "mc",
       "q": "What does the invitation show about Sofia's expectations for the visit?",
       "choices": [
+        "She will be disappointed unless they spend a whole day together.",
         "She values time together more than a perfectly planned programme.",
         "She expects Noah to organise every activity.",
-        "She wants to visit the exhibition even if Noah cannot come.",
-        "She will be disappointed unless they spend a whole day together."
+        "She wants to visit the exhibition even if Noah cannot come."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "Sofia explicitly says that even an hour together would make her happy."
     },
     {
@@ -96,12 +96,12 @@
       "kind": "mc",
       "q": "Why might Sofia's aunt not be at home when Sofia returns?",
       "choices": [
+        "She studies at the same language school.",
         "Her aunt often travels with friends.",
         "She sometimes works late at the hospital.",
-        "She spends most evenings at the photography exhibition.",
-        "She studies at the same language school."
+        "She spends most evenings at the photography exhibition."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "The first paragraph explains that Sofia's aunt often comes home late from hospital work."
     },
     {
@@ -111,12 +111,12 @@
       "kind": "mc",
       "q": "Why might Noah enjoy the workshop after the exhibition?",
       "choices": [
+        "It introduces students to the basketball team.",
         "It offers visitors free professional cameras.",
         "It teaches everyone how to repair bicycles.",
-        "It helps people improve photographs taken with a phone.",
-        "It introduces students to the basketball team."
+        "It helps people improve photographs taken with a phone."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "Visitors can learn to take better phone photographs at a free workshop."
     },
     {
@@ -126,12 +126,12 @@
       "kind": "mc",
       "q": "Why does Sofia suggest the science museum as another option?",
       "choices": [
+        "They can still meet if the photography exhibition is full.",
         "She prefers science museums to photography.",
         "The exhibition will close before noon.",
-        "She has already visited every exhibition in town.",
-        "They can still meet if the photography exhibition is full."
+        "She has already visited every exhibition in town."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The museum is a backup plan if tickets are unavailable."
     },
     {
@@ -141,12 +141,12 @@
       "kind": "mc",
       "q": "Noah wants to meet but can stay only one hour. What is Sofia likely to say?",
       "choices": [
+        "They should cancel because the plan is too short.",
         "He should wait until he has an entire free day.",
         "A short meeting is fine because she mainly wants to see him.",
-        "He must complete the photography workshop first.",
-        "They should cancel because the plan is too short."
+        "He must complete the photography workshop first."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Sofia says that even an hour together is worth having."
     },
     {
@@ -156,12 +156,12 @@
       "kind": "mc",
       "q": "Noah does not know whether his basketball match ends in time. What should he do?",
       "choices": [
+        "Wait until after Sunday to explain.",
         "Tell Sofia his situation before Friday evening so she can plan tickets.",
         "Arrive without a message and hope to find Sofia.",
-        "Ask Sofia to buy tickets without knowing if he can go.",
-        "Wait until after Sunday to explain."
+        "Ask Sofia to buy tickets without knowing if he can go."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "Sofia needs an answer by Friday evening because booking is required."
     },
     {
@@ -171,12 +171,12 @@
       "kind": "mc",
       "q": "Which reply would best match Sofia's friendly tone?",
       "choices": [
+        "I would love to catch up; even a short visit and a chat sound great.",
         "You should not have moved away without telling me.",
         "I cannot join unless the workshop gives certificates.",
-        "I am not interested in hearing about your new friends.",
-        "I would love to catch up; even a short visit and a chat sound great."
+        "I am not interested in hearing about your new friends."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The writer is informal, flexible and focused on friendship rather than a rigid schedule."
     }
   ]
