@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "fr",
+  "level": "A1",
+  "sourceTitle": "Des roches qui voyagent dans l’espace",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-CONTENT-AUDIT-1",
+  "description": "Independent A1 asteroid Reading bank, external review pending.",
+  "tabs": [
+    {
+      "id": "espace",
+      "title": "Des roches dans l'espace"
+    },
+    {
+      "id": "science",
+      "title": "Observer le ciel"
+    },
+    {
+      "id": "terre",
+      "title": "La Terre et les astéroïdes"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-fr-a1-01",
+      "tab": "espace",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Pourquoi un astéroïde n'est-il pas une étoile ?",
+      "choices": [
+        "Parce qu'il est toujours près de la Terre.",
+        "Parce qu'il n'a pas de lumière propre.",
+        "Parce qu'il est fait seulement d'eau.",
+        "Parce qu'il ne tourne jamais autour du Soleil."
+      ],
+      "answer": 1,
+      "explanation": "Le premier paragraphe indique que les astéroïdes ne produisent pas leur propre lumière."
+    },
+    {
+      "id": "r36-fr-a1-02",
+      "tab": "espace",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Que peut-on dire de la taille des astéroïdes ?",
+      "choices": [
+        "Ils ont tous la taille d'une montagne.",
+        "Ils sont tous plus petits qu'une voiture.",
+        "Ils sont tous exactement pareils.",
+        "Certains sont petits et d'autres très grands."
+      ],
+      "answer": 3,
+      "explanation": "Le début du texte décrit des astéroïdes de tailles différentes."
+    },
+    {
+      "id": "r36-fr-a1-03",
+      "tab": "espace",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Pourquoi les scientifiques prennent-ils des photos ?",
+      "choices": [
+        "Pour changer la vitesse des roches.",
+        "Pour compter toutes les étoiles.",
+        "Pour suivre le déplacement des astéroïdes.",
+        "Pour fabriquer un nouveau Soleil."
+      ],
+      "answer": 2,
+      "explanation": "Dans le deuxième paragraphe, les scientifiques observent la direction des roches."
+    },
+    {
+      "id": "r36-fr-a1-04",
+      "tab": "science",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Quel objet permet de voir très loin dans le ciel ?",
+      "choices": [
+        "Un grand télescope.",
+        "Une carte de l'école.",
+        "Une montre au mur.",
+        "Un petit cahier."
+      ],
+      "answer": 0,
+      "explanation": "Le télescope permet d'observer des objets très éloignés."
+    },
+    {
+      "id": "r36-fr-a1-05",
+      "tab": "science",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Tous les astéroïdes ont-ils la même orbite ?",
+      "choices": [
+        "Oui, ils passent tous près de la Terre.",
+        "Oui, ils suivent exactement le même trajet.",
+        "Non, leurs orbites peuvent être différentes.",
+        "Non, aucun ne tourne autour du Soleil."
+      ],
+      "answer": 2,
+      "explanation": "Le deuxième paragraphe précise que les orbites ne sont pas toutes identiques."
+    },
+    {
+      "id": "r36-fr-a1-06",
+      "tab": "science",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Un astéroïde passe près de la Terre. Va-t-il nécessairement la toucher ?",
+      "choices": [
+        "Non, un très grand choc est rare.",
+        "Oui, toute approche provoque un choc.",
+        "Oui, il devient alors une étoile.",
+        "Non, les astéroïdes restent immobiles."
+      ],
+      "answer": 0,
+      "explanation": "Le troisième paragraphe explique que les grands impacts sont rares."
+    },
+    {
+      "id": "r36-fr-a1-07",
+      "tab": "terre",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Ton ami pense que tous les astéroïdes vont tomber. Que peux-tu dire ?",
+      "choices": [
+        "Chaque astéroïde est très dangereux.",
+        "Les très grands chocs sont rares.",
+        "Personne ne peut observer le ciel.",
+        "Les astéroïdes ont toujours leur lumière."
+      ],
+      "answer": 1,
+      "explanation": "La fin du texte souligne la rareté des chocs très importants."
+    },
+    {
+      "id": "r36-fr-a1-08",
+      "tab": "terre",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Un petit morceau de roche arrive dans l'air. Que peut-il se passer ?",
+      "choices": [
+        "Il devient une nouvelle lune.",
+        "Il grandit rapidement.",
+        "Il arrête de tourner autour du Soleil.",
+        "Il brûle avant d'arriver au sol."
+      ],
+      "answer": 3,
+      "explanation": "Beaucoup de petits morceaux brûlent avant de toucher le sol."
+    },
+    {
+      "id": "r36-fr-a1-09",
+      "tab": "terre",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Pourquoi observer les astéroïdes est-il utile ?",
+      "choices": [
+        "Pour faire changer le Soleil de forme.",
+        "Pour mieux comprendre l'espace et protéger les personnes.",
+        "Pour empêcher les planètes de tourner.",
+        "Pour ne plus avoir besoin de questions."
+      ],
+      "answer": 1,
+      "explanation": "Les scientifiques observent le ciel pour apprendre et nous protéger."
+    },
+    {
+      "id": "r36-fr-a1-10",
+      "tab": "terre",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Que propose le texte à un lecteur curieux ?",
+      "choices": [
+        "Ne jamais regarder le ciel la nuit.",
+        "Apprendre seulement les noms des planètes.",
+        "Éviter toute question sur l'espace.",
+        "Regarder les étoiles et poser des questions."
+      ],
+      "answer": 3,
+      "explanation": "La dernière phrase encourage le lecteur à regarder le ciel et à poser des questions."
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "C1",
+  "sourceTitle": "Watching the Sky, Interpreting the Odds",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-CONTENT-AUDIT-1",
+  "description": "Advanced original Astronomy Reading test, expert content approval pending.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Interpreting the Text"
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasoning and Evidence"
+    },
+    {
+      "id": "evaluation",
+      "title": "Critical Evaluation"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-en-c1-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why is an asteroid's near-Earth label insufficient to establish danger?",
+      "choices": [
+        "It is determined only by the rock's chemical composition.",
+        "It proves the object is closer than any communication satellite.",
+        "It describes orbital geometry rather than a predicted impact.",
+        "It refers exclusively to asteroids that have recently changed direction."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "The opening paragraph separates a geometrical classification from a judgement of danger."
+    },
+    {
+      "id": "r36-en-c1-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Where does the uncertainty about a distant asteroid primarily arise?",
+      "choices": [
+        "From limitations in our observations of its present trajectory.",
+        "From the asteroid moving randomly between different orbits.",
+        "From the impossibility of using physics in space.",
+        "From the inability of telescopes to detect objects close to Earth."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "The writer says uncertainty is chiefly in what researchers know about the motion."
+    },
+    {
+      "id": "r36-en-c1-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "How do infrared instruments improve the investigation of space objects?",
+      "choices": [
+        "They reveal the precise composition of every asteroid.",
+        "They remove all uncertainty immediately after discovery.",
+        "They make optical observations unnecessary.",
+        "They can detect thermal emissions from objects difficult to see in reflected light."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "The second paragraph describes infrared and optical observations as complementary."
+    },
+    {
+      "id": "r36-en-c1-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "q": "Why might an estimated impact probability rise temporarily as data improve?",
+      "choices": [
+        "Because the asteroid's orbit necessarily becomes more dangerous.",
+        "Because revised measurements can narrow the set of plausible future trajectories.",
+        "Because every additional measurement increases the object's speed.",
+        "Because scientists stop using their original calculations."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "The writer explains that updated observations change how likely trajectories fit the data."
+    },
+    {
+      "id": "r36-en-c1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "q": "What is the strongest conclusion supported by the DART experiment?",
+      "choices": [
+        "Every possible asteroid impact can now be prevented.",
+        "Asteroid composition never changes the outcome of a collision.",
+        "Momentum transfer can change an orbit under observed conditions.",
+        "The spacecraft achieved a complete mapping of Dimorphos."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph three distinguishes an experimental result from a universal guarantee."
+    },
+    {
+      "id": "r36-en-c1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "q": "Why can a modest change years in advance be preferable to a dramatic late action?",
+      "choices": [
+        "Small early changes may accumulate into a safer future position.",
+        "Last-minute interventions require no knowledge of the target.",
+        "A spacecraft becomes more powerful the longer it waits.",
+        "The asteroid's material properties stop affecting its motion."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "The engineering discussion emphasises early detection and sufficient warning time."
+    },
+    {
+      "id": "r36-en-c1-07",
+      "tab": "evaluation",
+      "kind": "mc",
+      "q": "What made the physical effect of DART larger than its momentum alone suggested?",
+      "choices": [
+        "Infrared measurements changed the meaning of the impact.",
+        "Dimorphos was already slowing down before the mission.",
+        "Didymos pulled the smaller asteroid much closer to Earth.",
+        "Ejected debris produced an additional push on Dimorphos."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "The debris plume contributed extra momentum beyond the collision itself."
+    },
+    {
+      "id": "r36-en-c1-08",
+      "tab": "evaluation",
+      "kind": "mc",
+      "q": "Why is the follow-up Hera mission relevant to the earlier experiment?",
+      "choices": [
+        "It will turn the target into a stable planet.",
+        "It can examine the system's material properties and help explain the deflection.",
+        "It will replace the need for observations from Earth.",
+        "It is designed to repeat the same impact without new measurements."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph four connects uncertainty about rubble-pile structure with Hera's investigation."
+    },
+    {
+      "id": "r36-en-c1-09",
+      "tab": "evaluation",
+      "kind": "mc",
+      "q": "Which pair of communication mistakes does the author identify?",
+      "choices": [
+        "Reporting risk with numbers and reporting it with words.",
+        "Using optical and infrared observations together.",
+        "Treating every close approach as a crisis and ignoring rare risks.",
+        "Revising estimates and explaining why they changed."
+      ],
+      "answer": 2,
+      "sourceParagraph": 5,
+      "explanation": "The last paragraph warns against both exaggerated alarm and dismissive complacency."
+    },
+    {
+      "id": "r36-en-c1-10",
+      "tab": "evaluation",
+      "kind": "mc",
+      "q": "What does the author imply about openness when a prediction changes?",
+      "choices": [
+        "Public trust can grow when revisions and evidence are explained transparently.",
+        "Changes should be hidden until all debate has ended.",
+        "An updated estimate proves that the original researchers lacked competence.",
+        "The public should receive only the most reassuring figure."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "The conclusion links credible planetary defence to transparent, proportionate communication."
+    }
+  ]
+}

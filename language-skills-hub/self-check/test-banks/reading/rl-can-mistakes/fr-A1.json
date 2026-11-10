@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "fr",
+  "level": "A1",
+  "sourceTitle": "Je peux réessayer",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Questions indépendantes A1 sur Mia ; validation pédagogique en attente.",
+  "tabs": [
+    {
+      "id": "histoire",
+      "title": "L'histoire de Mia"
+    },
+    {
+      "id": "raisons",
+      "title": "Comprendre pourquoi"
+    },
+    {
+      "id": "situations",
+      "title": "Dans la vie"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-fr-a1-01",
+      "tab": "histoire",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Lundi, Mia lit une histoire. Qu'est-ce qui est nouveau pour elle ?",
+      "choices": [
+        "Son école est nouvelle.",
+        "Elle ne connaît pas certains mots.",
+        "Son ami change de classe.",
+        "Elle veut écrire un long livre."
+      ],
+      "answer": 1,
+      "explanation": "Le premier paragraphe dit que Mia découvre des mots qu'elle ne connaît pas encore."
+    },
+    {
+      "id": "r35-fr-a1-02",
+      "tab": "histoire",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Après le conseil de Léo, que fait Mia ?",
+      "choices": [
+        "Elle écrit une autre histoire.",
+        "Elle arrête de lire ce jour-là.",
+        "Elle écoute seulement son ami.",
+        "Elle relit le texte lentement."
+      ],
+      "answer": 3,
+      "explanation": "Dans le deuxième paragraphe, Mia suit le conseil de Léo et lit plus lentement."
+    },
+    {
+      "id": "r35-fr-a1-03",
+      "tab": "histoire",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Où Mia écrit-elle les deux mots ?",
+      "choices": [
+        "Sur une grande affiche.",
+        "Dans le livre de Léo.",
+        "Dans son cahier.",
+        "Sur la porte de la classe."
+      ],
+      "answer": 2,
+      "explanation": "Le deuxième paragraphe explique que Mia écrit deux mots dans son cahier."
+    },
+    {
+      "id": "r35-fr-a1-04",
+      "tab": "raisons",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Pourquoi certains mots sont-ils difficiles pour Mia ?",
+      "choices": [
+        "Elle ne connaît pas encore ces mots.",
+        "Elle n'a pas de livre en classe.",
+        "Léo refuse de lire avec elle.",
+        "Elle doit lire un texte en allemand."
+      ],
+      "answer": 0,
+      "explanation": "Lundi, Mia trouve des mots nouveaux dans une petite histoire."
+    },
+    {
+      "id": "r35-fr-a1-05",
+      "tab": "raisons",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Pourquoi Mia sourit-elle vendredi ?",
+      "choices": [
+        "Elle ne doit plus travailler.",
+        "Elle a fini tous ses examens.",
+        "Elle comprend mieux sa nouvelle histoire.",
+        "Elle ne veut plus lire d'histoires."
+      ],
+      "answer": 2,
+      "explanation": "Le troisième paragraphe dit que Mia comprend mieux et qu'elle sourit."
+    },
+    {
+      "id": "r35-fr-a1-06",
+      "tab": "raisons",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Que veut faire Mia le jour suivant ?",
+      "choices": [
+        "S'entraîner encore une fois.",
+        "Ne plus apprendre de mots.",
+        "Acheter tous les livres.",
+        "Faire les exercices de Léo."
+      ],
+      "answer": 0,
+      "explanation": "À la fin, Mia veut continuer à pratiquer le lendemain."
+    },
+    {
+      "id": "r35-fr-a1-07",
+      "tab": "situations",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Ton ami ne comprend pas un mot. Que peux-tu faire ?",
+      "choices": [
+        "Dire que lire est trop difficile.",
+        "Chercher le sens avec lui.",
+        "Fermer son livre immédiatement.",
+        "Lui demander de ne plus parler."
+      ],
+      "answer": 1,
+      "explanation": "Comme Léo, tu peux aider quelqu'un à comprendre sans faire tout le travail à sa place."
+    },
+    {
+      "id": "r35-fr-a1-08",
+      "tab": "situations",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Tu ne comprends pas une phrase. Quel conseil convient ?",
+      "choices": [
+        "Ne jamais poser de questions.",
+        "Lire seulement la dernière page.",
+        "Attendre la fin de l'année.",
+        "Relire la phrase tranquillement."
+      ],
+      "answer": 3,
+      "explanation": "Léo conseille de relire le texte, et Mia essaie encore une fois."
+    },
+    {
+      "id": "r35-fr-a1-09",
+      "tab": "situations",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Un texte reste difficile. Que nous apprend Mia ?",
+      "choices": [
+        "Il faut lire uniquement des textes très faciles.",
+        "On peut progresser petit à petit.",
+        "Il faut connaître tous les mots tout de suite.",
+        "On ne doit jamais lire seul."
+      ],
+      "answer": 1,
+      "explanation": "Même si la nouvelle histoire n'est pas facile, Mia comprend plus qu'avant."
+    },
+    {
+      "id": "r35-fr-a1-10",
+      "tab": "situations",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Quelle idée est utile pour apprendre une langue ?",
+      "choices": [
+        "Ne jamais demander de l'aide.",
+        "Étudier seulement le vendredi.",
+        "Toujours apprendre tout très vite.",
+        "Poser des questions et continuer à lire."
+      ],
+      "answer": 3,
+      "explanation": "Mia apprend en posant des questions et en essayant de nouveau."
+    }
+  ]
+}

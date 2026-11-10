@@ -14,6 +14,9 @@
   return el;
  };
  const params=new URLSearchParams(location.search);
+ const topic=params.get('topic')||'rl-can-mistakes';
+ const lang=params.get('lang')||'en';
+ const level=params.get('level')||'B2';
  const answers=Object.create(null);
  let variant=null,timed=null,submitted=false;
  function requireCondition(ok,message){if(!ok)throw new Error(message)}
@@ -119,27 +122,40 @@
     'Required local assessment modules are unavailable');
    // A fixed 20-minute URL is intentional for this *unapproved* pedagogical pilot.
    // It must not be exposed through the public teacher catalogue.
+   requireCondition(['A1','A2','B1','B2','C1','C2'].includes(level),'Unsupported independent test level');
+   requireCondition(['en','es','de','fr'].includes(lang),'Unsupported independent test language');
    requireCondition(params.get('timer')==='20'&&
     /^[a-z0-9_-]{6,40}$/i.test(params.get('attempt')||''),
-    'This draft preview requires ?timer=20&attempt=<local-id>');
-   const [manifest,originalHtml,bank]=await Promise.all([
+    'This draft preview requires ?level=A1|A2|B1|B2|C1|C2&timer=20&attempt=<local-id>');
+   const [manifest,catalog]=await Promise.all([
     get('../../../version.json',true),
-    get('../../../cteni/can-mistakes/index.html'),
-    get('rl-can-mistakes/en-B2.json',true)
+    get('../../../data/cards.json',true)
+   ]);
+   const entry=reading.readingEntry(catalog,topic);
+   requireCondition(entry.languages.includes(lang)&&entry.levels.includes(level),
+    'Requested Reading topic, language or level is unavailable');
+   const [originalHtml,bank]=await Promise.all([
+    get('../../../'+entry.relative),
+    get(topic+'/'+lang+'-'+level+'.json',true)
    ]);
    requireCondition(manifest.version==='R31'&&
     manifest.backendEnabled===false&&manifest.gradedTestsEnabled===false,
     'Unexpected production baseline');
    const actual=await sourceHash(originalHtml);
-   requireCondition(actual===manifest.contentHashes['rl-can-mistakes'],
+   requireCondition(actual===manifest.contentHashes[topic],
     'Original source checksum mismatch: draft preview disabled');
-   const practice=reading.variantFromData(reading.parseReadingData(originalHtml),'en','B2');
+   const practice=reading.variantFromData(reading.parseReadingData(originalHtml),lang,level);
    variant=testBank.makeQaVariant(bank,practice,actual);
    reading.validateVariant(variant);
    $('title').textContent=practice.title;
+   document.title='Independent Reading '+lang.toUpperCase()+'/'+level+' – unapproved QA preview';
+   document.documentElement.lang=lang;
+   document.querySelector('.subtitle').textContent=entry.title+' · '+lang.toUpperCase()+'/'+level+' · 10 independent questions · 20 minutes';
+   document.querySelector('.mode').textContent='UNAPPROVED DRAFT · '+lang.toUpperCase()+'/'+level;
+   document.querySelector('.reading-panel .pill').textContent=lang.toUpperCase()+' · '+level;
    renderText();renderTasks();
    timed=window.LSHSessionUI.mount({
-    skill:'reading',topic:'rl-can-mistakes',lang:'en',level:'B2',
+    skill:'reading',topic,lang,level,
     workspace:$('workspace'),
     getAnswers:()=>({answers:{...answers}}),
     restoreAnswers:saved=>{

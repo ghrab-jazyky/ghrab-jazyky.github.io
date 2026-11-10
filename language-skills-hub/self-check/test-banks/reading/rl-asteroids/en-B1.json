@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "B1",
+  "sourceTitle": "How Do We Keep an Eye on Asteroids?",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-CONTENT-AUDIT-1",
+  "description": "Original astronomy assessment variant; factual, CEFR and pedagogical review pending.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interpret the Topic"
+    },
+    {
+      "id": "argument",
+      "title": "Evidence and Reasoning"
+    },
+    {
+      "id": "application",
+      "title": "Apply the Implications"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-en-b1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "q": "Why do scientists investigate asteroids for more than safety reasons?",
+      "choices": [
+        "They are easier to photograph than stars.",
+        "They contain information about the early solar system.",
+        "They can tell us exactly when Earth was formed.",
+        "They all follow the same path around the Sun."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "The first paragraph links asteroid studies with evidence about the solar system's distant past."
+    },
+    {
+      "id": "r36-en-b1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "q": "What can differences in asteroid shapes tell researchers?",
+      "choices": [
+        "That all asteroids are made of solid metal.",
+        "That every asteroid was once a planet.",
+        "That asteroids never change after they form.",
+        "That small space objects have developed and broken apart over time."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph one says irregular shapes can reveal how these bodies formed and were broken apart."
+    },
+    {
+      "id": "r36-en-b1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "q": "Why do astronomers share measurements of the same object?",
+      "choices": [
+        "To increase its speed around the Sun.",
+        "To publish a single impressive photograph.",
+        "To improve the reliability of its predicted path.",
+        "To move the asteroid away from Earth."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph two explains that more observations reduce uncertainty and sometimes change forecasts."
+    },
+    {
+      "id": "r36-en-b1-04",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "What can we conclude about a newly discovered near-Earth asteroid?",
+      "choices": [
+        "Its orbit may come close without indicating a future collision.",
+        "It will always strike Earth during the next year.",
+        "Scientists can calculate its path from one photograph.",
+        "Its exact shape and material must already be known."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Near-Earth describes a region of an orbit, not a confirmed impact, as paragraph two states."
+    },
+    {
+      "id": "r36-en-b1-05",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "Why is the DART experiment not proof that Earth was saved from a threat?",
+      "choices": [
+        "The spacecraft did not hit the intended object.",
+        "The experiment only photographed a distant asteroid.",
+        "The target was chosen as a safe trial rather than a real danger.",
+        "The asteroid was too far from Earth to be observed."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph three describes a controlled experiment on a system posing no collision threat."
+    },
+    {
+      "id": "r36-en-b1-06",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "What did the change to Dimorphos demonstrate?",
+      "choices": [
+        "A spacecraft can alter an object's motion under the tested conditions.",
+        "Every asteroid can be destroyed by a single spacecraft.",
+        "All future threats can be removed with no warning.",
+        "Earth's gravity controls every asteroid's orbit."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "DART shortened the time Dimorphos needed to orbit Didymos, demonstrating a real change."
+    },
+    {
+      "id": "r36-en-b1-07",
+      "tab": "application",
+      "kind": "mc",
+      "q": "What made the Chelyabinsk event a reminder about observing the sky?",
+      "choices": [
+        "A large crater formed in the centre of the city.",
+        "A relatively small unseen object caused damage and injuries.",
+        "The explosion was predicted several years earlier.",
+        "The rock arrived from the direction opposite the Sun."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph four says the unseen rock caused a shock wave and broken glass despite its modest size."
+    },
+    {
+      "id": "r36-en-b1-08",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Why were many people injured during the Chelyabinsk incident?",
+      "choices": [
+        "They were directly hit by a large asteroid.",
+        "The air temperature suddenly dropped.",
+        "They were caught inside a new crater.",
+        "The shock wave shattered windows and sent glass flying."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "The text attributes most injuries to glass broken by the shock wave."
+    },
+    {
+      "id": "r36-en-b1-09",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Which public message best reflects the author's final position?",
+      "choices": [
+        "Every near-Earth asteroid should trigger an immediate evacuation.",
+        "A large impact is certain in the next few years.",
+        "Serious events are rare, but careful observation and preparation matter.",
+        "There is no reason to study small objects if big impacts are rare."
+      ],
+      "answer": 2,
+      "sourceParagraph": 5,
+      "explanation": "The final paragraph combines an acknowledgement of rarity with a case for preparedness."
+    },
+    {
+      "id": "r36-en-b1-10",
+      "tab": "application",
+      "kind": "mc",
+      "q": "How can accurate explanations help people who read asteroid headlines?",
+      "choices": [
+        "They reduce needless fear while keeping real risks in perspective.",
+        "They ensure no asteroid will ever enter Earth's neighbourhood.",
+        "They replace the need for international scientific cooperation.",
+        "They allow scientists to avoid making further observations."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "The conclusion says clear explanations can prevent panic about ordinary close approaches."
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "de",
+  "level": "A1",
+  "sourceTitle": "Weltraumsteine auf ihrer Reise",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-CONTENT-AUDIT-1",
+  "description": "Independent A1 asteroid Reading bank, external review pending.",
+  "tabs": [
+    {
+      "id": "weltall",
+      "title": "Steine im Weltall"
+    },
+    {
+      "id": "forschung",
+      "title": "Den Himmel beobachten"
+    },
+    {
+      "id": "erde",
+      "title": "Die Erde und Asteroiden"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-de-a1-01",
+      "tab": "weltall",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Warum ist ein Asteroid kein Stern?",
+      "choices": [
+        "Weil er immer ganz nah an der Erde ist.",
+        "Weil er kein eigenes Licht hat.",
+        "Weil er nur aus Wasser besteht.",
+        "Weil er nicht um die Sonne fliegt."
+      ],
+      "answer": 1,
+      "explanation": "Im ersten Absatz steht, dass Asteroiden kein eigenes Licht besitzen."
+    },
+    {
+      "id": "r36-de-a1-02",
+      "tab": "weltall",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Was stimmt über die Größe von Asteroiden?",
+      "choices": [
+        "Alle sind so groß wie ein Berg.",
+        "Alle sind kleiner als ein Auto.",
+        "Jeder Asteroid hat dieselbe Größe.",
+        "Manche sind klein, andere sind sehr groß."
+      ],
+      "answer": 3,
+      "explanation": "Im ersten Absatz werden verschiedene Größen beschrieben."
+    },
+    {
+      "id": "r36-de-a1-03",
+      "tab": "weltall",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Warum machen Forschende Fotos von Asteroiden?",
+      "choices": [
+        "Um die Steine schneller fliegen zu lassen.",
+        "Um alle Sterne zu zählen.",
+        "Um ihre Bewegung besser zu beobachten.",
+        "Um den Mond zu verändern."
+      ],
+      "answer": 2,
+      "explanation": "Der zweite Absatz verbindet Bilder mit dem Beobachten der Flugbahnen."
+    },
+    {
+      "id": "r36-de-a1-04",
+      "tab": "forschung",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was brauchen Wissenschaftler für die Beobachtung weit entfernter Dinge?",
+      "choices": [
+        "Ein großes Teleskop.",
+        "Ein Schulbuch über Geschichte.",
+        "Eine kleine Taschenlampe.",
+        "Eine Karte der nächsten Stadt."
+      ],
+      "answer": 0,
+      "explanation": "Teleskope helfen laut Absatz zwei beim Sehen weit entfernter Objekte."
+    },
+    {
+      "id": "r36-de-a1-05",
+      "tab": "forschung",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Fliegen alle Asteroiden auf derselben Bahn?",
+      "choices": [
+        "Ja, alle kommen täglich zur Erde.",
+        "Ja, alle folgen genau dem gleichen Weg.",
+        "Nein, ihre Umlaufbahnen sind verschieden.",
+        "Nein, keiner fliegt um die Sonne."
+      ],
+      "answer": 2,
+      "explanation": "Der zweite Absatz sagt, dass nicht alle Asteroiden dieselbe Umlaufbahn haben."
+    },
+    {
+      "id": "r36-de-a1-06",
+      "tab": "forschung",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Ein Asteroid kommt der Erde näher. Bedeutet das einen Einschlag?",
+      "choices": [
+        "Nein, ein großer Einschlag ist selten.",
+        "Ja, jede Annäherung ist ein Einschlag.",
+        "Ja, dann wird der Asteroid zu einem Stern.",
+        "Nein, Asteroiden können sich nie bewegen."
+      ],
+      "answer": 0,
+      "explanation": "Nähe bedeutet nicht unbedingt einen Einschlag; große Einschläge sind selten."
+    },
+    {
+      "id": "r36-de-a1-07",
+      "tab": "erde",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Dein Freund hat Angst vor jedem Asteroiden. Was kannst du sagen?",
+      "choices": [
+        "Jeder Asteroid muss auf die Erde fallen.",
+        "Sehr große Einschläge sind selten.",
+        "Niemand kann etwas am Himmel beobachten.",
+        "Asteroiden fliegen immer ohne Bahn."
+      ],
+      "answer": 1,
+      "explanation": "Der dritte Absatz erklärt, dass große Einschläge nur selten passieren."
+    },
+    {
+      "id": "r36-de-a1-08",
+      "tab": "erde",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Ein kleiner Stein gelangt in die Luft über der Erde. Was kann geschehen?",
+      "choices": [
+        "Er wird sofort ein neuer Planet.",
+        "Er wird so groß wie ein Berg.",
+        "Er bleibt immer unverändert im Himmel.",
+        "Er verglüht möglicherweise vor dem Boden."
+      ],
+      "answer": 3,
+      "explanation": "Viele kleine Steine aus dem Weltall verglühen in der Luft."
+    },
+    {
+      "id": "r36-de-a1-09",
+      "tab": "erde",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Warum lohnt es sich, den Himmel zu beobachten?",
+      "choices": [
+        "Dann kann man die Sonne größer machen.",
+        "Man lernt mehr und kann Menschen besser schützen.",
+        "Danach bewegen sich keine Asteroiden mehr.",
+        "Dann braucht man keine Fragen zu stellen."
+      ],
+      "answer": 1,
+      "explanation": "Der Text verbindet das Beobachten mit Wissen und Sicherheit."
+    },
+    {
+      "id": "r36-de-a1-10",
+      "tab": "erde",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Was kannst du laut Text selbst tun?",
+      "choices": [
+        "Nachts niemals nach draußen schauen.",
+        "Nur Namen von Planeten lernen.",
+        "Fragen über das Weltall vermeiden.",
+        "In den Nachthimmel schauen und Fragen stellen."
+      ],
+      "answer": 3,
+      "explanation": "Am Ende werden die Leser zum Beobachten und Fragen eingeladen."
+    }
+  ]
+}

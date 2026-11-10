@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "C2",
+  "sourceTitle": "When a Probability Becomes a Headline",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-CONTENT-AUDIT-1",
+  "description": "Advanced original Astronomy Reading test, expert content approval pending.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Interpreting the Text"
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasoning and Evidence"
+    },
+    {
+      "id": "evaluation",
+      "title": "Critical Evaluation"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-en-c2-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What is the chief limitation of portraying planetary defence as a fight against a hostile universe?",
+      "choices": [
+        "It makes astronomical objects appear too small for serious study.",
+        "It overstates the historical role of scientific institutions.",
+        "It replaces the slower work of evidence and preparation with a misleading drama.",
+        "It suggests that spacecraft can be designed without engineering."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "The introduction challenges the battle metaphor because it obscures measurement and planning."
+    },
+    {
+      "id": "r36-en-c2-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why must proximity, hazard and impact probability remain separate ideas?",
+      "choices": [
+        "They answer distinct scientific and policy questions and cannot be reduced to a single alarm.",
+        "Each refers to a different class of rock that cannot enter Earth's orbit.",
+        "They are quantities that cannot be compared under any circumstances.",
+        "None can be estimated using the observations currently available."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph one argues that the distinctions are necessary for proportionate public decisions."
+    },
+    {
+      "id": "r36-en-c2-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "How can a seemingly precise statistic still conceal a selection effect?",
+      "choices": [
+        "The instrument may stop working after the probability is calculated.",
+        "A calculation must always refer to a future date rather than the present.",
+        "The asteroid may decide to change its orbit after observation.",
+        "The detected sample reflects which objects the survey was able to observe."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph two stresses that a catalogue reflects observing conditions and missed objects."
+    },
+    {
+      "id": "r36-en-c2-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "q": "What is the force of the claim that precision and completeness are not synonyms?",
+      "choices": [
+        "Precise values are inherently less useful than rough estimates.",
+        "A carefully calculated value may still omit part of the relevant population.",
+        "No observational method is capable of estimating an object's motion.",
+        "A longer observational record always increases the measured danger."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "The writer distinguishes exact-looking orbital values from the completeness of the detection catalogue."
+    },
+    {
+      "id": "r36-en-c2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "q": "Why does the evolution of Apophis estimates matter to the article's argument?",
+      "choices": [
+        "It proves that early probabilities are deliberately misleading.",
+        "It shows all near-Earth objects eventually become harmless.",
+        "It suggests that scientists should avoid studying visible asteroids.",
+        "It demonstrates how additional evidence can transform a perceived threat into research opportunity."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "The Apophis example shows substantial revision after further measurements."
+    },
+    {
+      "id": "r36-en-c2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "q": "What could readers reasonably learn from the early Apophis headlines?",
+      "choices": [
+        "An initial probability is not a permanent verdict and may be revised decisively.",
+        "Scientists always predict a collision before locating an asteroid.",
+        "A later safe approach proves earlier observations were fabricated.",
+        "A close flyby is necessarily more dangerous than a direct collision."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "The account contrasts initial alarms with later evidence ruling out impact."
+    },
+    {
+      "id": "r36-en-c2-07",
+      "tab": "evaluation",
+      "kind": "mc",
+      "q": "Which generalisation would exceed what the DART result establishes?",
+      "choices": [
+        "A kinetic collision can alter a tested asteroid's orbital period.",
+        "Future interventions depend on structure, trajectory and warning time.",
+        "One successful experiment guarantees a solution for every asteroid.",
+        "Early detection is essential to making a planned response useful."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "The fourth paragraph explicitly rejects treating DART as an all-purpose shield."
+    },
+    {
+      "id": "r36-en-c2-08",
+      "tab": "evaluation",
+      "kind": "mc",
+      "q": "Why might early small deflection matter more than late large intervention?",
+      "choices": [
+        "A distant asteroid has less gravity than a nearby one.",
+        "An early alteration has more time to shift the object's eventual position.",
+        "Later interventions require less precise measurements.",
+        "A spacecraft always travels faster if it launches years in advance."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "The engineering argument stresses adequate warning and a modest change applied early."
+    },
+    {
+      "id": "r36-en-c2-09",
+      "tab": "evaluation",
+      "kind": "mc",
+      "q": "What complicates public investment decisions about rare asteroid disasters?",
+      "choices": [
+        "There is no way to compare any public spending priorities.",
+        "All prevention measures provide immediate visible benefits.",
+        "Only scientific organisations can make political resource choices.",
+        "Costs are immediate while successful prevention may remain largely invisible."
+      ],
+      "answer": 2,
+      "sourceParagraph": 5,
+      "explanation": "The final paragraph presents competing priorities and invisible benefits as a policy difficulty."
+    },
+    {
+      "id": "r36-en-c2-10",
+      "tab": "evaluation",
+      "kind": "mc",
+      "q": "According to the conclusion, what should be a central test of scientific authority?",
+      "choices": [
+        "Whether institutions revise assumptions openly and sustain systems that tolerate correction.",
+        "Whether institutions promise absolute protection from every possible event.",
+        "Whether estimates remain unchanged after the first announcement.",
+        "Whether the most dramatic interpretation attracts public interest."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "The conclusion privileges inspectable assumptions, revisions and reliable institutions over certainty claims."
+    }
+  ]
+}

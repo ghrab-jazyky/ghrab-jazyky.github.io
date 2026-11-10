@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "es",
+  "level": "B1",
+  "sourceTitle": "El problema de querer hacerlo todo bien",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Original B1 test draft; independent pedagogy approval pending.",
+  "tabs": [
+    {
+      "id": "personaje",
+      "title": "Cómo piensa Lara"
+    },
+    {
+      "id": "cambios",
+      "title": "La experiencia musical"
+    },
+    {
+      "id": "aplicar",
+      "title": "Aplicar la idea"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-es-b1-01",
+      "tab": "personaje",
+      "kind": "mc",
+      "q": "¿Por qué evita Lara algunas asignaturas al principio?",
+      "choices": [
+        "No le interesa aprender cosas nuevas.",
+        "No se siente segura de poder sacar buenas notas.",
+        "Sus padres le prohíben estudiarlas.",
+        "No conoce a ningún compañero de clase."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Lara empieza a evitar las materias donde no se siente capaz de destacar."
+    },
+    {
+      "id": "r35-es-b1-02",
+      "tab": "personaje",
+      "kind": "mc",
+      "q": "¿Qué cree Lara cuando no consigue algo a la primera?",
+      "choices": [
+        "Que necesita cambiar de profesora.",
+        "Que debe practicar solo por la noche.",
+        "Que todos sus amigos tienen el mismo problema.",
+        "Que quizás no tiene suficiente talento."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "En el primer párrafo interpreta la dificultad inicial como falta de talento."
+    },
+    {
+      "id": "r35-es-b1-03",
+      "tab": "personaje",
+      "kind": "mc",
+      "q": "¿Qué hace Lara después de recibir el consejo de música?",
+      "choices": [
+        "Intenta tocar toda la pieza más rápido.",
+        "Deja de aprender música por una semana.",
+        "Repite poco a poco la parte difícil.",
+        "Pide a otra persona que toque por ella."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "La profesora recomienda cuatro compases, y Lara practica esa parte lentamente."
+    },
+    {
+      "id": "r35-es-b1-04",
+      "tab": "cambios",
+      "kind": "mc",
+      "q": "¿Por qué la profesora recomienda practicar cuatro compases?",
+      "choices": [
+        "Para concentrarse en una dificultad concreta.",
+        "Porque el resto de la pieza no tiene valor.",
+        "Porque Lara ya conoce todas las otras notas.",
+        "Para terminar la clase más temprano."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Trabajar una parte pequeña permite abordar el problema sin repetirlo todo."
+    },
+    {
+      "id": "r35-es-b1-05",
+      "tab": "cambios",
+      "kind": "mc",
+      "q": "¿Qué cambia después de una semana?",
+      "choices": [
+        "Lara decide no mostrar más sus resultados.",
+        "La profesora le da una pieza mucho más corta.",
+        "Lara puede tocar la pieza entera sin parar.",
+        "La clase deja de aprender música."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "El tercer párrafo describe el progreso logrado después de varios intentos."
+    },
+    {
+      "id": "r35-es-b1-06",
+      "tab": "cambios",
+      "kind": "mc",
+      "q": "¿Qué es más importante que convertirse en una gran música?",
+      "choices": [
+        "Cambiar su manera de reaccionar ante los errores.",
+        "Obtener la mejor nota de toda la clase.",
+        "No volver a tocar delante de compañeros.",
+        "Aprender a tocar siempre más rápido."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "El texto destaca un cambio de actitud, no una transformación del talento."
+    },
+    {
+      "id": "r35-es-b1-07",
+      "tab": "aplicar",
+      "kind": "mc",
+      "q": "Un compañero teme hacer preguntas. ¿Qué puede aprender de Lara?",
+      "choices": [
+        "Que es mejor evitar todas las preguntas.",
+        "Que pedir ayuda puede ser parte del aprendizaje.",
+        "Que solo los profesores deben corregir errores.",
+        "Que una mala nota nunca se puede mejorar."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "La experiencia de Lara muestra que afrontar una dificultad es más útil que ocultarla."
+    },
+    {
+      "id": "r35-es-b1-08",
+      "tab": "aplicar",
+      "kind": "mc",
+      "q": "¿Qué significa para Lara avanzar al final del texto?",
+      "choices": [
+        "Dejar de preocuparse por todas las notas.",
+        "Evitar nuevos trabajos difíciles.",
+        "No necesitar practicar nunca más.",
+        "Reconocer qué necesita seguir practicando."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "En el último párrafo el progreso consiste también en identificar una dificultad."
+    },
+    {
+      "id": "r35-es-b1-09",
+      "tab": "aplicar",
+      "kind": "mc",
+      "q": "Tienes un problema de matemáticas. ¿Qué idea encaja con la historia?",
+      "choices": [
+        "Repetir todos los cálculos sin mirar dónde fallaste.",
+        "Practicar primero el paso que no entiendes.",
+        "Copiar solo la respuesta final del libro.",
+        "Elegir otra asignatura y olvidar el problema."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "La estrategia de centrarse en una parte difícil puede aplicarse a otras tareas."
+    },
+    {
+      "id": "r35-es-b1-10",
+      "tab": "aplicar",
+      "kind": "mc",
+      "q": "¿Qué mensaje es coherente con la experiencia de Lara?",
+      "choices": [
+        "Una buena nota demuestra talento permanente.",
+        "Todos los errores desaparecen rápidamente.",
+        "Las materias difíciles deben evitarse.",
+        "Un error puede indicar qué hacer de otra manera."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "La pregunta nueva de Lara busca una mejora concreta en lugar de juzgar su capacidad."
+    }
+  ]
+}

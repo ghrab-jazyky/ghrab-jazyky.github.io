@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-CONTENT-AUDIT-1",
+  "description": "Original C1 assessment of institutional support and learners' agency; awaiting independent pedagogical approval.",
+  "tabs": [
+    {
+      "id": "arg",
+      "title": "Argument and Implications"
+    },
+    {
+      "id": "rhe",
+      "title": "Language and Reasoning"
+    },
+    {
+      "id": "transfer",
+      "title": "Applying the Argument"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-c1-01",
+      "tab": "arg",
+      "kind": "mc",
+      "q": "What does the writer accept about a growth-oriented approach?",
+      "choices": [
+        "It can empower learners while still masking structural obstacles.",
+        "It is effective only when students have equal resources.",
+        "It makes traditional grades irrelevant to students.",
+        "It prevents all learners from experiencing failure."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "The introduction recognises the benefits of resilience while questioning its potential to conceal unequal conditions."
+    },
+    {
+      "id": "r34-en-c1-02",
+      "tab": "arg",
+      "kind": "mc",
+      "q": "Why is judging the two students by effort alone problematic?",
+      "choices": [
+        "Their teacher may be using different assessment criteria.",
+        "Both learners necessarily need different methods.",
+        "Their identical marks prove that material resources are unimportant.",
+        "Their opportunities to turn effort into progress are unequal."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "The second paragraph distinguishes visible effort from the circumstances that can make it productive."
+    },
+    {
+      "id": "r34-en-c1-03",
+      "tab": "arg",
+      "kind": "mc",
+      "q": "What assumption is challenged by the examples of debates and hobbies?",
+      "choices": [
+        "Leisure should be assessed in the same way as homework.",
+        "Every worthwhile learning experience must produce measurable progress.",
+        "Informal discussion is necessarily more valuable than formal education.",
+        "Students learn only when a disagreement reaches a conclusion."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "The third paragraph argues for experiences whose value cannot readily be converted into a measured outcome."
+    },
+    {
+      "id": "r34-en-c1-04",
+      "tab": "rhe",
+      "kind": "mc",
+      "q": "Why does the writer note that advice cannot create extra time?",
+      "choices": [
+        "To imply that planning is never an effective study strategy.",
+        "To identify a practical limit on individual advice.",
+        "To suggest that timetables explain every difference in results.",
+        "To demonstrate that the first learner is less motivated."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Time and quiet space are resources that encouragement alone cannot provide."
+    },
+    {
+      "id": "r34-en-c1-05",
+      "tab": "rhe",
+      "kind": "mc",
+      "q": "What danger is conveyed by curiosity becoming 'another obligation'?",
+      "choices": [
+        "Students may become unwilling to read novels.",
+        "Teachers may have to grade every hobby.",
+        "Voluntary exploration could become another demand for productivity.",
+        "Learners could forget to complete their assessed assignments."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "The writer warns that treating every activity as self-optimisation can undermine curiosity itself."
+    },
+    {
+      "id": "r34-en-c1-06",
+      "tab": "rhe",
+      "kind": "mc",
+      "q": "How does the conclusion connect institutional responsibility with personal agency?",
+      "choices": [
+        "It removes the need for students to make decisions.",
+        "It recommends identical study strategies for everyone.",
+        "It regards the school's intervention as more important than student choice.",
+        "It argues that support can make independent decisions more meaningful."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "The final paragraph proposes institutional resources without eliminating students' responsibility."
+    },
+    {
+      "id": "r34-en-c1-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "A school praises a pupil who studies in a crowded home every night. What concern follows from the text?",
+      "choices": [
+        "Praise might distract the school from improving an avoidable obstacle.",
+        "The pupil should be discouraged from further study.",
+        "The school should reward the pupil with a higher examination mark.",
+        "The pupil should be told not to ask for additional support."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Celebrating endurance risks overlooking the inadequate conditions that require it."
+    },
+    {
+      "id": "r34-en-c1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "A school ranks after-school clubs by examination gains. What could be overlooked?",
+      "choices": [
+        "The number of students attending each club.",
+        "The resources available to each school department.",
+        "Valuable exploration and discussion without measurable outcomes.",
+        "The ability to schedule more compulsory revision sessions."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph three defends forms of learning that are difficult to quantify."
+    },
+    {
+      "id": "r34-en-c1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "Why are specific feedback and supervised study space complementary?",
+      "choices": [
+        "They make every pupil choose the same approach.",
+        "They improve both guidance and opportunities to act on it.",
+        "They shift all responsibility for results onto school staff.",
+        "They eliminate differences in students' available time."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "The conclusion calls for both effective strategies and support that enables students to use them."
+    },
+    {
+      "id": "r34-en-c1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "Which practice would the author most likely challenge?",
+      "choices": [
+        "Allowing learners to revise an argument after receiving feedback.",
+        "Offering access to a supervised study room.",
+        "Recognising that rest can support well-being.",
+        "Requiring measurable self-improvement during all leisure activities."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "The author objects to treating even leisure as an obligation to demonstrate constant improvement."
+    }
+  ],
+  "sourceTitle": "The Hidden Cost of Constant Improvement"
+}

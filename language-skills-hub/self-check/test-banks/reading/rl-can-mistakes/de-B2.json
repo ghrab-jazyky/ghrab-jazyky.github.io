@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "de",
+  "level": "B2",
+  "sourceTitle": "Wenn Rückmeldungen wie Niederlagen wirken",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Independent B2 inference and feedback assessment; pedagogical validation pending.",
+  "tabs": [
+    {
+      "id": "deutung",
+      "title": "Die Aussagen deuten"
+    },
+    {
+      "id": "argumente",
+      "title": "Die Argumentation prüfen"
+    },
+    {
+      "id": "transfer",
+      "title": "Das Gelernte anwenden"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-de-b2-01",
+      "tab": "deutung",
+      "kind": "mc",
+      "q": "Warum fällt erfolgreichen Lernenden eine Rückmeldung manchmal besonders schwer?",
+      "choices": [
+        "Weil Lehrkräfte ihre Leistungen grundsätzlich abwerten.",
+        "Weil sie Kritik an der Arbeit als Urteil über ihre Person auffassen können.",
+        "Weil gute Schülerinnen niemals konstruktive Hinweise erhalten.",
+        "Weil sie die Bewertungskriterien immer vollständig kennen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Der erste Absatz beschreibt, wie ein Kommentar zur Leistung als Angriff auf die eigene Intelligenz verstanden werden kann."
+    },
+    {
+      "id": "r35-de-b2-02",
+      "tab": "deutung",
+      "kind": "mc",
+      "q": "Was kann passieren, wenn ein Hinweis als persönliche Abwertung erscheint?",
+      "choices": [
+        "Die Verbesserung der Arbeit fällt sofort leichter.",
+        "Die ursprüngliche Note wird automatisch neu berechnet.",
+        "Die Lehrkraft darf keine Rückmeldung mehr geben.",
+        "Ein eigentlich nützlicher Hinweis wird schwerer angenommen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Die emotionale Deutung kann im ersten Absatz den Umgang mit sinnvoller Rückmeldung erschweren."
+    },
+    {
+      "id": "r35-de-b2-03",
+      "tab": "deutung",
+      "kind": "mc",
+      "q": "Was verdeutlichen die zwei Reaktionen auf die enttäuschende Aufsatznote?",
+      "choices": [
+        "Dass die Benotung nur vom Schreibstil abhängt.",
+        "Dass jede Kritik an einer Argumentation falsch sein könnte.",
+        "Dass sich bei gleicher Note unterschiedliche Lernchancen ergeben.",
+        "Dass der Aufsatz nach einer Besprechung immer neu bewertet wird."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Der zweite Absatz lässt die alte Note bestehen, stellt aber zwei Lernhaltungen gegenüber."
+    },
+    {
+      "id": "r35-de-b2-04",
+      "tab": "argumente",
+      "kind": "mc",
+      "q": "Warum kann die Überarbeitung eines Absatzes trotz unveränderter Note sinnvoll sein?",
+      "choices": [
+        "Sie bereitet eine bessere Argumentation bei künftigen Aufgaben vor.",
+        "Sie verpflichtet die Lehrkraft dazu, die Note anzuheben.",
+        "Sie zeigt, dass die Belege von Anfang an perfekt waren.",
+        "Sie vermeidet jede weitere Auseinandersetzung mit Kritik."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Die bessere Ordnung der Belege kann beim nächsten Aufsatz helfen, obwohl die Note bleibt."
+    },
+    {
+      "id": "r35-de-b2-05",
+      "tab": "argumente",
+      "kind": "mc",
+      "q": "Welche Einschränkung macht der dritte Absatz deutlich?",
+      "choices": [
+        "Rückmeldungen müssen bei guten Noten immer freundlich klingen.",
+        "Schüler sollten jede unerwünschte Kritik ignorieren.",
+        "Auch Lehrkräfte und Bewertungssysteme können Fehler machen.",
+        "Eine präzise Rückfrage ist weniger wertvoll als Schweigen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Der Text räumt Missverständnisse und enge Bewertungsvorstellungen ein."
+    },
+    {
+      "id": "r35-de-b2-06",
+      "tab": "argumente",
+      "kind": "mc",
+      "q": "Weshalb ist eine genaue Frage zur unklaren Begründung hilfreich?",
+      "choices": [
+        "Sie erlaubt, die konkrete Stelle gemeinsam zu untersuchen.",
+        "Sie beweist, dass die erste Beurteilung unzulässig war.",
+        "Sie ersetzt die Notwendigkeit, den Text zu verbessern.",
+        "Sie verpflichtet die Lehrkraft zur vollständigen Zustimmung."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Eine präzise Frage lenkt das Gespräch auf die nachvollziehbaren Belege."
+    },
+    {
+      "id": "r35-de-b2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "Ein Schüler hält seine Verbindung zwischen zwei Ideen für verständlich. Was wäre angemessen?",
+      "choices": [
+        "Den Kommentar ungelesen verwerfen.",
+        "Die betreffenden Stellen zeigen und gezielt nachfragen.",
+        "Den ganzen Aufsatz schweigend neu schreiben.",
+        "Die Rückmeldung allein wegen der Note akzeptieren."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Der dritte Absatz empfiehlt, die eigene Argumentation anhand konkreter Textstellen zu klären."
+    },
+    {
+      "id": "r35-de-b2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "Was ist laut Schlussabsatz mit Enttäuschung vereinbar?",
+      "choices": [
+        "Man darf sie erst nach einer Notenänderung überwinden.",
+        "Wer sich verletzt fühlt, kann nicht mehr lernen.",
+        "Kritik wird nur dann nützlich, wenn man sie gern hört.",
+        "Man kann sich schlecht fühlen und trotzdem über Hinweise nachdenken."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Der Schluss unterscheidet das unangenehme Gefühl von der Entscheidung, welche Hinweise zu prüfen sind."
+    },
+    {
+      "id": "r35-de-b2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "Welche Bedeutung hat die Unterscheidung zwischen Leistung und Identität?",
+      "choices": [
+        "Eine Note beschreibt endgültig den Wert einer Person.",
+        "Eine einzelne Leistung ist kein dauerhaftes Urteil über einen Menschen.",
+        "Bewertungen sollten alle Lebensbereiche berücksichtigen.",
+        "Die Identität einer Person entsteht durch schulische Noten."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Der letzte Absatz spricht von einer vorübergehenden Leistung im Gegensatz zur persönlichen Identität."
+    },
+    {
+      "id": "r35-de-b2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "Wie geht man ernsthaft, aber nicht blind gehorsam mit einem Rat um?",
+      "choices": [
+        "Man befolgt ihn sofort, unabhängig von den Belegen.",
+        "Man verwirft ihn grundsätzlich, wenn er unangenehm ist.",
+        "Man beendet das Gespräch ohne Rückfrage.",
+        "Man prüft die Hinweise und entscheidet dann, was sinnvoll ist."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Die Argumentation verlangt ein kritisches Prüfen statt automatischer Zustimmung oder Ablehnung."
+    }
+  ]
+}

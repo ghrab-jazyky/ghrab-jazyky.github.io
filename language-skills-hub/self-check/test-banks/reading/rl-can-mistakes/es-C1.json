@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "es",
+  "level": "C1",
+  "sourceTitle": "El coste oculto de mejorar constantemente",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Independent C1 Reading test draft; second-teacher review required.",
+  "tabs": [
+    {
+      "id": "tesis",
+      "title": "Tesis y matices"
+    },
+    {
+      "id": "razones",
+      "title": "Razonamiento crítico"
+    },
+    {
+      "id": "aplicar",
+      "title": "Implicaciones prácticas"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-es-c1-01",
+      "tab": "tesis",
+      "kind": "mc",
+      "q": "¿Qué reconoce el autor antes de cuestionar el discurso de la mejora?",
+      "choices": [
+        "Que las buenas notas reflejan siempre un esfuerzo similar.",
+        "Que confiar en el desarrollo personal puede resultar liberador.",
+        "Que los retos deben eliminarse de los sistemas educativos.",
+        "Que toda dificultad procede de una falta de disciplina."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "El primer párrafo reconoce el valor de una mentalidad abierta al progreso antes de señalar sus límites."
+    },
+    {
+      "id": "r35-es-c1-02",
+      "tab": "tesis",
+      "kind": "mc",
+      "q": "¿Cuál es el riesgo de presentar toda dificultad como un problema individual?",
+      "choices": [
+        "Que los centros educativos pierdan toda capacidad de evaluar.",
+        "Que los estudiantes se nieguen a pedir ayuda.",
+        "Que las familias dejen de apoyar el aprendizaje.",
+        "Que se oculten las condiciones externas que limitan el esfuerzo."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "El texto critica que la responsabilidad se atribuya solo al estudiante sin examinar el contexto."
+    },
+    {
+      "id": "r35-es-c1-03",
+      "tab": "tesis",
+      "kind": "mc",
+      "q": "¿Por qué es engañoso recomendar lo mismo a los dos estudiantes del ejemplo?",
+      "choices": [
+        "Porque uno obtuvo una nota claramente más baja.",
+        "Porque sus profesores aplican criterios diferentes.",
+        "Porque sus condiciones para estudiar no son comparables.",
+        "Porque uno ha dejado de interesarse por los exámenes."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "El segundo párrafo describe notas igualmente bajas pero circunstancias muy distintas."
+    },
+    {
+      "id": "r35-es-c1-04",
+      "tab": "razones",
+      "kind": "mc",
+      "q": "¿Qué revela la comparación entre una habitación tranquila y un espacio compartido?",
+      "choices": [
+        "Que el acceso a recursos influye en las posibilidades de aprovechar el esfuerzo.",
+        "Que el alumnado con menos espacio siempre trabaja con menor interés.",
+        "Que las diferencias de resultados desaparecen con buenos consejos.",
+        "Que todas las familias deben estudiar de la misma manera."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "El ejemplo muestra cómo el entorno facilita o dificulta el aprendizaje."
+    },
+    {
+      "id": "r35-es-c1-05",
+      "tab": "razones",
+      "kind": "mc",
+      "q": "¿Por qué se citan novelas, debates y aficiones?",
+      "choices": [
+        "Para afirmar que la lectura debe sustituir las evaluaciones.",
+        "Para recomendar que se eliminen todas las actividades dirigidas.",
+        "Para mostrar que aprender puede tener valor sin una nota medible.",
+        "Para demostrar que los hobbies mejoran siempre las calificaciones."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "El tercer párrafo defiende experiencias educativas valiosas aunque difíciles de medir."
+    },
+    {
+      "id": "r35-es-c1-06",
+      "tab": "razones",
+      "kind": "mc",
+      "q": "¿Qué ocurre si el tiempo libre se considera siempre una oportunidad de mejora?",
+      "choices": [
+        "La curiosidad puede convertirse en otra obligación.",
+        "Los estudiantes adquieren automáticamente más autonomía.",
+        "Toda actividad pasa a ser más agradable.",
+        "Las notas dejan de tener importancia para aprender."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "El texto advierte que la optimización permanente puede transformar la curiosidad en un deber."
+    },
+    {
+      "id": "r35-es-c1-07",
+      "tab": "aplicar",
+      "kind": "mc",
+      "q": "Un centro anima a estudiar más a quienes no tienen un espacio tranquilo. ¿Qué objeción plantea el artículo?",
+      "choices": [
+        "Que estudiar en casa nunca tiene sentido.",
+        "Que el consejo ignora una desigualdad material importante.",
+        "Que las dificultades siempre se solucionan con más motivación.",
+        "Que el profesorado debe evitar cualquier orientación."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "El segundo párrafo invita a considerar las condiciones materiales, no solo el esfuerzo."
+    },
+    {
+      "id": "r35-es-c1-08",
+      "tab": "aplicar",
+      "kind": "mc",
+      "q": "Una discusión termina sin acuerdo. ¿Por qué podría seguir siendo educativa?",
+      "choices": [
+        "Porque demuestra que ninguna opinión puede cambiar.",
+        "Porque siempre debe producir una calificación.",
+        "Porque evita tener que estudiar argumentos contrarios.",
+        "Porque permite explorar ideas aunque no haya resultado medible."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "El tercer párrafo menciona debates sin acuerdo como experiencias con valor educativo."
+    },
+    {
+      "id": "r35-es-c1-09",
+      "tab": "aplicar",
+      "kind": "mc",
+      "q": "¿Qué combinación defiende la conclusión?",
+      "choices": [
+        "La iniciativa individual sin responsabilidades para la escuela.",
+        "El trabajo sobre los errores junto con apoyo institucional.",
+        "El descanso como sustituto de cualquier aprendizaje.",
+        "Las notas como único criterio para valorar el progreso."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "El último párrafo une la capacidad personal de aprender con la responsabilidad de los centros."
+    },
+    {
+      "id": "r35-es-c1-10",
+      "tab": "aplicar",
+      "kind": "mc",
+      "q": "¿Cuándo tiene sentido mejorar, según el cierre del texto?",
+      "choices": [
+        "Cuando cada actividad demuestra el valor personal.",
+        "Cuando se convierte en una exigencia constante.",
+        "Cuando permite competir por una nota más alta.",
+        "Cuando abre posibilidades en lugar de exigir probar la propia valía."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "La frase final contrapone ampliar opciones y exigir una demostración permanente de valor."
+    }
+  ]
+}

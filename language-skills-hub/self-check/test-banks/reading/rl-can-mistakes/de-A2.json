@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "de",
+  "level": "A2",
+  "sourceTitle": "Eine kleine Änderung, ein besseres Ergebnis",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Independent A2 Reading draft, content review pending.",
+  "tabs": [
+    {
+      "id": "plan",
+      "title": "Ein neuer Plan"
+    },
+    {
+      "id": "gruende",
+      "title": "Warum funktioniert er?"
+    },
+    {
+      "id": "alltag",
+      "title": "Im Alltag"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-de-a2-01",
+      "tab": "plan",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Was macht Daniel diese Woche bei der Vorbereitung anders?",
+      "choices": [
+        "Er lernt nur am Sonntagabend.",
+        "Er verteilt das Lernen auf mehrere Tage.",
+        "Er bleibt vor dem Test die ganze Nacht wach.",
+        "Er lässt seine Schwester die Aufgaben machen."
+      ],
+      "answer": 1,
+      "explanation": "Daniel lernt am Montag, Dienstag und Mittwoch auf unterschiedliche Weise."
+    },
+    {
+      "id": "r35-de-a2-02",
+      "tab": "plan",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Woran merkt Daniel, dass er eine Idee nicht gut verstanden hat?",
+      "choices": [
+        "Er sieht seine alte Note an.",
+        "Er zählt die Seiten seines Heftes.",
+        "Er fragt, ob der Test leicht wird.",
+        "Er versucht, die Idee seiner Schwester zu erklären."
+      ],
+      "answer": 3,
+      "explanation": "Beim Erklären merkt er, was noch unklar ist und erneut gelesen werden sollte."
+    },
+    {
+      "id": "r35-de-a2-03",
+      "tab": "plan",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was macht Daniel am Mittwoch vor dem Blick auf die Lösungen?",
+      "choices": [
+        "Er schreibt alle Lösungen ab.",
+        "Er lernt nur die Überschriften.",
+        "Er versucht selbst einige Fragen zu beantworten.",
+        "Er bittet seine Schwester um die Antworten."
+      ],
+      "answer": 2,
+      "explanation": "Daniel beantwortet Fragen zunächst ohne die Lösungen anzusehen."
+    },
+    {
+      "id": "r35-de-a2-04",
+      "tab": "gruende",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Warum will Daniel nicht mehr so lange aufbleiben?",
+      "choices": [
+        "Weil er am nächsten Tag müde ist.",
+        "Weil seine Schwester schon alles weiß.",
+        "Weil der Test auf Freitag verschoben wurde.",
+        "Weil seine Notizen verloren gegangen sind."
+      ],
+      "answer": 0,
+      "explanation": "Die bisherige späte Vorbereitung macht Daniel am Testtag müde."
+    },
+    {
+      "id": "r35-de-a2-05",
+      "tab": "gruende",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Warum liest Daniel seine Notizen noch einmal?",
+      "choices": [
+        "Er möchte wissen, wie spät es ist.",
+        "Er sucht nach einer neuen Geschichte.",
+        "Er möchte eine unklare Idee besser verstehen.",
+        "Er bereitet ein ganz anderes Fach vor."
+      ],
+      "answer": 2,
+      "explanation": "Daniel prüft seine Notizen, wenn er eine Idee nicht deutlich erklären kann."
+    },
+    {
+      "id": "r35-de-a2-06",
+      "tab": "gruende",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Was ist Daniel nach dem Test besonders wichtig?",
+      "choices": [
+        "Er ist ruhiger und weiß, was er üben muss.",
+        "Alle Antworten waren richtig.",
+        "Der Lehrer gibt ihm keine Aufgaben mehr.",
+        "Er muss nie wieder einen Test schreiben."
+      ],
+      "answer": 0,
+      "explanation": "Trotz zweier Fehler ist Daniel ruhiger und plant weiteres Üben."
+    },
+    {
+      "id": "r35-de-a2-07",
+      "tab": "alltag",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Ein Freund versteht ein Thema nicht. Was könnte helfen?",
+      "choices": [
+        "Ohne Pause die ganze Nacht lernen.",
+        "Das Thema erklären und schwierige Stellen nachlesen.",
+        "Nur die fertigen Lösungen auswendig lernen.",
+        "Erst am Tag vor dem Test anfangen."
+      ],
+      "answer": 1,
+      "explanation": "Erklären zeigt wie bei Daniel, an welchen Stellen Verständnis fehlt."
+    },
+    {
+      "id": "r35-de-a2-08",
+      "tab": "alltag",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Du machst im Test noch Fehler. Was würde Daniel tun?",
+      "choices": [
+        "Den Lernplan sofort wegwerfen.",
+        "Alle schwierigen Fragen vergessen.",
+        "Beim nächsten Mal gar nicht lernen.",
+        "Notieren, was noch geübt werden muss."
+      ],
+      "answer": 3,
+      "explanation": "Nach dem Test schreibt Daniel die Themen auf, die er weiter üben möchte."
+    },
+    {
+      "id": "r35-de-a2-09",
+      "tab": "alltag",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Was erkennt Daniel über einen guten Lernplan?",
+      "choices": [
+        "Er muss für jedes Fach genau gleich sein.",
+        "Er kann hilfreich sein, ohne perfekt zu sein.",
+        "Er verhindert jeden Fehler sicher.",
+        "Er funktioniert nur bei Naturwissenschaften."
+      ],
+      "answer": 1,
+      "explanation": "Am Ende erkennt Daniel, dass ein guter Plan nicht vollkommen sein muss."
+    },
+    {
+      "id": "r35-de-a2-10",
+      "tab": "alltag",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Welcher Lerntipp passt zur Geschichte?",
+      "choices": [
+        "Nur die letzte Nacht vor dem Test zählt.",
+        "Pausen verhindern einen guten Lernerfolg.",
+        "Man sollte jede Lösung sofort ansehen.",
+        "Ruhig üben und das eigene Verständnis prüfen."
+      ],
+      "answer": 3,
+      "explanation": "Daniel lernt mit kurzen Pausen, Erklärungen und selbstständigen Fragen."
+    }
+  ]
+}

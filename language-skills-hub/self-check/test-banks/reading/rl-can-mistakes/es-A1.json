@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "es",
+  "level": "A1",
+  "sourceTitle": "Puedo intentarlo otra vez",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Nueva prueba A1 en español, independiente de los ejercicios de práctica. Pendiente de revisión.",
+  "tabs": [
+    {
+      "id": "historia",
+      "title": "La historia de Mía"
+    },
+    {
+      "id": "motivos",
+      "title": "Comprender por qué"
+    },
+    {
+      "id": "situaciones",
+      "title": "Usar las ideas"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-es-a1-01",
+      "tab": "historia",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Mía ve palabras nuevas el lunes. ¿Qué hace?",
+      "choices": [
+        "Lee otro libro más fácil.",
+        "Sigue con una historia corta.",
+        "Escribe un examen en clase.",
+        "Sale de la escuela antes."
+      ],
+      "answer": 1,
+      "explanation": "En el primer párrafo, Mía lee una historia corta con palabras que todavía no conoce."
+    },
+    {
+      "id": "r35-es-a1-02",
+      "tab": "historia",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué hace Mía después de hablar con Leo?",
+      "choices": [
+        "Escribe otra historia sola.",
+        "Deja el libro en la escuela.",
+        "Escucha música toda la tarde.",
+        "Lee la historia más despacio."
+      ],
+      "answer": 3,
+      "explanation": "En el segundo párrafo, Mía sigue el consejo de Leo y lee con calma."
+    },
+    {
+      "id": "r35-es-a1-03",
+      "tab": "historia",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Dónde guarda Mía las palabras que aprende?",
+      "choices": [
+        "En su teléfono móvil.",
+        "En un papel de Leo.",
+        "En su propio cuaderno.",
+        "En el libro del profesor."
+      ],
+      "answer": 2,
+      "explanation": "El segundo párrafo explica que Mía escribe dos palabras en su cuaderno."
+    },
+    {
+      "id": "r35-es-a1-04",
+      "tab": "motivos",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Por qué las palabras del lunes son difíciles?",
+      "choices": [
+        "Porque Mía todavía no las conoce.",
+        "Porque Leo no quiere hablar con ella.",
+        "Porque la historia es demasiado larga.",
+        "Porque Mía no tiene un cuaderno."
+      ],
+      "answer": 0,
+      "explanation": "El texto dice que Mía encuentra algunas palabras nuevas que no comprende todavía."
+    },
+    {
+      "id": "r35-es-a1-05",
+      "tab": "motivos",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué nos dice la sonrisa de Mía el viernes?",
+      "choices": [
+        "Que la clase termina más temprano.",
+        "Que ya no quiere estudiar inglés.",
+        "Que está contenta porque entiende más.",
+        "Que Leo ha escrito su nueva historia."
+      ],
+      "answer": 2,
+      "explanation": "Mía sonríe después de leer una nueva historia y entender más que antes."
+    },
+    {
+      "id": "r35-es-a1-06",
+      "tab": "motivos",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué quiere hacer Mía al día siguiente?",
+      "choices": [
+        "Practicar otra vez.",
+        "No leer ninguna historia.",
+        "Hacer un examen de inglés.",
+        "Comprar todos los libros."
+      ],
+      "answer": 0,
+      "explanation": "Al final del tercer párrafo, Mía quiere continuar practicando mañana."
+    },
+    {
+      "id": "r35-es-a1-07",
+      "tab": "situaciones",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Tu amigo no entiende una palabra. ¿Qué puedes hacer?",
+      "choices": [
+        "Decirle que no lea más.",
+        "Ayudarle a buscar su significado.",
+        "Pedirle que cierre el libro.",
+        "Escribir toda la historia por él."
+      ],
+      "answer": 1,
+      "explanation": "Leo apoya a Mía sin hacer todo el trabajo; ella también pregunta y aprende."
+    },
+    {
+      "id": "r35-es-a1-08",
+      "tab": "situaciones",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Lees un texto difícil. ¿Qué consejo de Leo puedes seguir?",
+      "choices": [
+        "Buscar un libro sin palabras.",
+        "Leer solamente el final.",
+        "Esperar hasta la semana siguiente.",
+        "Leer el mismo texto otra vez."
+      ],
+      "answer": 3,
+      "explanation": "Leo propone volver a leer la historia, y Mía practica con más calma."
+    },
+    {
+      "id": "r35-es-a1-09",
+      "tab": "situaciones",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Una historia nueva no es fácil. ¿Qué puedes recordar?",
+      "choices": [
+        "Nunca debes leer textos nuevos.",
+        "Puedes aprender poco a poco.",
+        "Es mejor leer solo con Leo.",
+        "Una historia difícil no sirve."
+      ],
+      "answer": 1,
+      "explanation": "El viernes, la lectura sigue siendo difícil, pero Mía comprende más."
+    },
+    {
+      "id": "r35-es-a1-10",
+      "tab": "situaciones",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué idea puedes usar cuando estudias inglés?",
+      "choices": [
+        "Nunca debes hacer preguntas.",
+        "Hay que saber todas las palabras.",
+        "Solo puedes aprender los lunes.",
+        "Preguntar y practicar te ayuda."
+      ],
+      "answer": 3,
+      "explanation": "La experiencia de Mía combina volver a leer, preguntar y continuar practicando."
+    }
+  ]
+}

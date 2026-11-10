@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-CONTENT-AUDIT-1",
+  "description": "Original A2 test on Daniel's study plan; comprehension and small real-life decisions; draft.",
+  "tabs": [
+    {
+      "id": "plan",
+      "title": "A New Plan",
+      "description": "Understand how Daniel prepares."
+    },
+    {
+      "id": "reasons",
+      "title": "Why It Works",
+      "description": "Connect actions with reasons."
+    },
+    {
+      "id": "choices",
+      "title": "Your Next Test",
+      "description": "Apply Daniel's choices."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-a2-pl-01",
+      "tab": "plan",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What is different about Daniel's plan this week?",
+      "choices": [
+        "He plans to study only at the weekend.",
+        "He does some studying on more than one day.",
+        "He studies all night before the test.",
+        "He asks his sister to do his schoolwork."
+      ],
+      "answer": 1,
+      "explanation": "Daniel spreads his preparation across Monday, Tuesday and Wednesday."
+    },
+    {
+      "id": "r34-en-a2-pl-02",
+      "tab": "plan",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "How does Daniel find out that he does not fully understand an idea?",
+      "choices": [
+        "He looks at his science test mark.",
+        "He checks the time on his phone.",
+        "He reads the same notes all evening.",
+        "He tries to explain the idea to his sister."
+      ],
+      "answer": 3,
+      "explanation": "Explaining to his sister reveals where he needs to check his notes."
+    },
+    {
+      "id": "r34-en-a2-pl-03",
+      "tab": "plan",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does Daniel do before looking at the answers on Wednesday?",
+      "choices": [
+        "He reads another student's test.",
+        "He phones his teacher for help.",
+        "He attempts some questions himself.",
+        "He writes down only the easy facts."
+      ],
+      "answer": 2,
+      "explanation": "He tries questions without looking at the answers."
+    },
+    {
+      "id": "r34-en-a2-rea-01",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why is going to bed late a problem for Daniel?",
+      "choices": [
+        "He feels tired when he needs to take the test.",
+        "He misses his sister's questions in the evening.",
+        "He cannot find the answers in his textbook.",
+        "He is not allowed to study on Wednesday."
+      ],
+      "answer": 0,
+      "explanation": "His previous late-night study left him tired the next day."
+    },
+    {
+      "id": "r34-en-a2-rea-02",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does Daniel switch off notifications while studying?",
+      "choices": [
+        "To make his phone charge more quickly.",
+        "To help his sister use her own phone.",
+        "To make it easier to concentrate on his work.",
+        "To avoid getting any messages after school."
+      ],
+      "answer": 2,
+      "explanation": "Notifications distract Daniel from the questions he wants to practise."
+    },
+    {
+      "id": "r34-en-a2-rea-03",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What is most important to Daniel after the test?",
+      "choices": [
+        "He has improved his result and feels better prepared.",
+        "His teacher has given him a perfect score.",
+        "He has finished studying every school subject.",
+        "He no longer needs to prepare for history."
+      ],
+      "answer": 0,
+      "explanation": "Daniel values feeling calm and rested as well as the slightly improved grade."
+    },
+    {
+      "id": "r34-en-a2-cho-01",
+      "tab": "choices",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Your notes are confusing. What could Daniel's method help you do?",
+      "choices": [
+        "Copy the notes without reading them.",
+        "Try explaining one idea and check what is unclear.",
+        "Stop practising until the night before the test.",
+        "Look at all the answers before trying questions."
+      ],
+      "answer": 1,
+      "explanation": "Daniel learns what he does not understand by explaining an idea and checking his notes."
+    },
+    {
+      "id": "r34-en-a2-cho-02",
+      "tab": "choices",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Your new method helps, but you still make a mistake. What could you do next?",
+      "choices": [
+        "Decide the method is not useful.",
+        "Only study the questions you already know.",
+        "Forget the mistake and study nothing else.",
+        "Write down what to practise for next time."
+      ],
+      "answer": 3,
+      "explanation": "Daniel notes what he still needs to practise after the test."
+    },
+    {
+      "id": "r34-en-a2-cho-03",
+      "tab": "choices",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Daniel wants to use his plan for history. What should he remember?",
+      "choices": [
+        "Every test needs exactly the same study time.",
+        "He can change the plan if it does not work well.",
+        "He should only use the plan for science.",
+        "A good plan means never making a mistake."
+      ],
+      "answer": 1,
+      "explanation": "The final paragraph says Daniel will make changes if needed."
+    },
+    {
+      "id": "r34-en-a2-cho-04",
+      "tab": "choices",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Which advice best matches the end of Daniel's story?",
+      "choices": [
+        "A high mark matters more than sleep.",
+        "Study longer when you feel very tired.",
+        "Never change a plan that once worked.",
+        "A useful routine should help learning and well-being."
+      ],
+      "answer": 3,
+      "explanation": "Daniel appreciates a little improvement and the benefit of rest and a calmer evening."
+    }
+  ],
+  "sourceTitle": "A Small Change, a Better Result"
+}

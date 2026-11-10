@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "fr",
+  "level": "C1",
+  "sourceTitle": "Le coût caché de l’amélioration permanente",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Independent C1 Reading test draft; second-teacher review required.",
+  "tabs": [
+    {
+      "id": "these",
+      "title": "Thèse et nuances"
+    },
+    {
+      "id": "argument",
+      "title": "Analyser les arguments"
+    },
+    {
+      "id": "application",
+      "title": "Conséquences pratiques"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-fr-c1-01",
+      "tab": "these",
+      "kind": "mc",
+      "q": "Que reconnaît l'auteur avant de critiquer le discours de l'amélioration ?",
+      "choices": [
+        "Les bonnes notes reflètent toujours des efforts identiques.",
+        "Croire au développement des capacités peut libérer certains élèves.",
+        "L'école devrait supprimer toutes les évaluations.",
+        "Toute difficulté vient d'un manque de volonté."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Le premier paragraphe reconnaît les avantages d'une conception évolutive des capacités avant d'en examiner les limites."
+    },
+    {
+      "id": "r35-fr-c1-02",
+      "tab": "these",
+      "kind": "mc",
+      "q": "Quel risque comporte l'idée que tout problème exige seulement plus d'efforts personnels ?",
+      "choices": [
+        "Les établissements ne pourront plus évaluer les élèves.",
+        "Les familles cesseront nécessairement d'aider leurs enfants.",
+        "Les élèves refuseront toute forme de conseil.",
+        "Les obstacles liés aux conditions de vie risquent de rester invisibles."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Le texte critique la tendance à attribuer les difficultés uniquement aux individus."
+    },
+    {
+      "id": "r35-fr-c1-03",
+      "tab": "these",
+      "kind": "mc",
+      "q": "Pourquoi conseiller la même chose aux deux élèves n'est-il pas suffisant ?",
+      "choices": [
+        "Le premier élève a obtenu une meilleure note.",
+        "Les professeurs évaluent deux sujets différents.",
+        "Leurs possibilités de travailler dans de bonnes conditions diffèrent.",
+        "Le deuxième élève a décidé de ne plus étudier."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Le deuxième paragraphe oppose des résultats semblables à des ressources très différentes."
+    },
+    {
+      "id": "r35-fr-c1-04",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "Que montre le contraste entre une pièce calme et un logement surpeuplé ?",
+      "choices": [
+        "Les ressources disponibles influencent l'efficacité possible des efforts.",
+        "Un logement surpeuplé empêche nécessairement toute réussite.",
+        "Une méthode de travail peut supprimer toutes les inégalités.",
+        "Chaque famille doit adopter exactement les mêmes habitudes."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Les conditions matérielles modifient la possibilité de transformer l'effort en progrès."
+    },
+    {
+      "id": "r35-fr-c1-05",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "Pourquoi les romans, les débats et les loisirs sont-ils mentionnés ?",
+      "choices": [
+        "Pour défendre la disparition complète des notes.",
+        "Pour affirmer que l'enseignement formel est inutile.",
+        "Pour montrer que certaines expériences ont une valeur difficile à mesurer.",
+        "Pour prouver que les activités libres donnent toujours de meilleurs résultats."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Le troisième paragraphe valorise des apprentissages qui ne produisent pas forcément une note."
+    },
+    {
+      "id": "r35-fr-c1-06",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "Que devient la curiosité lorsque chaque loisir sert à s'améliorer ?",
+      "choices": [
+        "Elle risque de se transformer en une nouvelle obligation.",
+        "Elle rend automatiquement tous les élèves plus autonomes.",
+        "Elle remplace complètement le travail scolaire.",
+        "Elle garantit de meilleures notes aux évaluations."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Le texte souligne le danger de transformer le temps libre en exigence de productivité."
+    },
+    {
+      "id": "r35-fr-c1-07",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Un établissement demande à un élève sans espace calme de travailler davantage. Quelle objection peut-on faire ?",
+      "choices": [
+        "Il devrait renoncer à conseiller ses élèves.",
+        "Il ne tient pas compte des conditions matérielles de l'effort.",
+        "Il doit toujours supprimer les devoirs à la maison.",
+        "Il pense que tous les élèves ont les mêmes notes."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Le deuxième paragraphe met en garde contre des conseils qui ignorent les inégalités."
+    },
+    {
+      "id": "r35-fr-c1-08",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Une discussion se termine sans accord. Pourquoi peut-elle être instructive ?",
+      "choices": [
+        "Parce que les opinions ne peuvent jamais changer.",
+        "Parce qu'une discussion doit toujours être notée.",
+        "Parce qu'elle remplace toutes les activités de classe.",
+        "Parce qu'explorer des idées peut avoir une valeur sans résultat chiffré."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Le troisième paragraphe défend la valeur des débats sans conclusion commune."
+    },
+    {
+      "id": "r35-fr-c1-09",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Quelle association l'auteur défend-il à la fin ?",
+      "choices": [
+        "L'effort personnel sans responsabilité institutionnelle.",
+        "L'initiative des élèves associée à un soutien de l'établissement.",
+        "Le repos comme seul objectif de la scolarité.",
+        "La note comme mesure complète de l'apprentissage."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Le dernier paragraphe relie la responsabilité des élèves et celle des établissements."
+    },
+    {
+      "id": "r35-fr-c1-10",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Quand le progrès a-t-il du sens selon la conclusion ?",
+      "choices": [
+        "Quand il oblige à démontrer sans cesse sa valeur.",
+        "Quand il augmente toutes les exigences.",
+        "Quand il remplace la curiosité par des objectifs chiffrés.",
+        "Quand il ouvre de nouvelles possibilités plutôt que de juger la personne."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "L'auteur oppose l'élargissement des possibilités à l'obligation perpétuelle de faire ses preuves."
+    }
+  ]
+}

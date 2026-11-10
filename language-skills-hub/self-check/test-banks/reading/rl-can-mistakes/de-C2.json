@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "de",
+  "level": "C2",
+  "sourceTitle": "Wenn Widerstandsfähigkeit zur Pflicht wird",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Independent C2 Reading critical analysis draft; expert approval pending.",
+  "tabs": [
+    {
+      "id": "these",
+      "title": "Die differenzierte These"
+    },
+    {
+      "id": "deutung",
+      "title": "Kritische Textdeutung"
+    },
+    {
+      "id": "anwendung",
+      "title": "Anwendung und Urteil"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-de-c2-01",
+      "tab": "these",
+      "kind": "mc",
+      "q": "Wodurch unterscheidet sich die Argumentation von einem vorbehaltlosen Lob der Resilienz?",
+      "choices": [
+        "Sie bewertet Beharrlichkeit nur anhand der erreichten Noten.",
+        "Sie fragt nach den Bedingungen und Zielen, unter denen Durchhalten sinnvoll ist.",
+        "Sie betrachtet Resilienz als Ersatz für schulische Leistungsbewertung.",
+        "Sie geht davon aus, dass die Umwelt für Rückschläge keine Rolle spielt."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Der Einstieg würdigt Resilienz, kritisiert aber ihre Erhebung zur allgemeinen moralischen Pflicht."
+    },
+    {
+      "id": "r35-de-c2-02",
+      "tab": "these",
+      "kind": "mc",
+      "q": "Was kann verdeckt werden, wenn das Wiederaufstehen moralisch eingefordert wird?",
+      "choices": [
+        "Dass Lernende ihre Methoden nach Kritik verbessern können.",
+        "Dass Lehrkräfte manchmal ungenau bewerten.",
+        "Dass manche Ziele bewusst überdacht werden sollten.",
+        "Die Bedingungen, die den Rückschlag besonders schwer gemacht haben."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Der moralische Imperativ kann von den Ursachen eines schwierigen Rückschlags ablenken."
+    },
+    {
+      "id": "r35-de-c2-03",
+      "tab": "these",
+      "kind": "mc",
+      "q": "Warum wirken zwei sehr entschlossene Lernende nur oberflächlich gleich?",
+      "choices": [
+        "Weil beide zwingend dieselben materiellen Ressourcen besitzen.",
+        "Weil sich Motivation aus Noten objektiv ablesen lässt.",
+        "Weil hinter sichtbarem Einsatz unterschiedliche Chancen auf echte Veränderung stehen.",
+        "Weil Beharrlichkeit jede strukturelle Ungleichheit aufhebt."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Der zweite Absatz unterscheidet selbstbestimmte Strategiewechsel vom Ausgleichen fehlender Unterstützung."
+    },
+    {
+      "id": "r35-de-c2-04",
+      "tab": "deutung",
+      "kind": "mc",
+      "q": "Was ist der entscheidende Unterschied zwischen Handlungsspielraum und bloßem Durchhalten?",
+      "choices": [
+        "Ob erneute Anstrengung unter den gegebenen Bedingungen sinnvoll etwas ändern kann.",
+        "Wie oft ein Lernender dieselbe Aufgabe wiederholt.",
+        "Ob Lehrkräfte jede Kritik schriftlich formulieren.",
+        "Wie schnell ein Lernender auf schwierige Aufgaben verzichtet."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Entscheidend ist laut Absatz zwei die realistische Aussicht auf eine bedeutsame Veränderung."
+    },
+    {
+      "id": "r35-de-c2-05",
+      "tab": "deutung",
+      "kind": "mc",
+      "q": "Was bedeutet die Aussage, Indikatoren bemächtigten sich der Tätigkeiten, die sie nur sichtbar machen sollten?",
+      "choices": [
+        "Quantitative Bewertungen seien in allen Fällen unbrauchbar.",
+        "Nicht messbare Tätigkeiten seien immer leichter als Prüfungen.",
+        "Das Messen könne zum beherrschenden Zweck einer Tätigkeit werden.",
+        "Indikatoren würden automatisch genauer, wenn sie häufiger eingesetzt werden."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Die Metapher aus dem dritten Absatz warnt davor, dass Maßstäbe ihren ursprünglichen Zweck verdrängen."
+    },
+    {
+      "id": "r35-de-c2-06",
+      "tab": "deutung",
+      "kind": "mc",
+      "q": "Warum kann das Aufgeben eines schlecht gewählten Ziels ein Zeichen von Reife sein?",
+      "choices": [
+        "Weil Urteilsvermögen auch bedeutet zu erkennen, wann Durchhalten sinnvoll ist.",
+        "Weil jedes anspruchsvolle Ziel nach Schwierigkeiten aufgegeben werden sollte.",
+        "Weil persönliche Entscheidungen nie begründet werden müssen.",
+        "Weil eine Kursänderung zukünftige Bewertungen überflüssig macht."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Im dritten Absatz gehört die Entscheidung über den Sinn des Beharrens zur Mündigkeit."
+    },
+    {
+      "id": "r35-de-c2-07",
+      "tab": "anwendung",
+      "kind": "mc",
+      "q": "Eine Schule lobt Jugendliche, die fehlende Unterstützung ständig kompensieren. Was sollte sie prüfen?",
+      "choices": [
+        "Wie sich Auszeichnungen für Durchhaltevermögen vervielfachen lassen.",
+        "Warum die Hindernisse bestehen bleiben und ob Einsatz echte Wirkung haben kann.",
+        "Wie sich alle Lernenden auf identische Fortschritte verpflichten lassen.",
+        "Warum Jugendliche nicht jede Lehreranweisung sofort übernehmen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Der zweite Absatz stellt infrage, ob bewunderte Ausdauer auf unzureichende Bedingungen hinweist."
+    },
+    {
+      "id": "r35-de-c2-08",
+      "tab": "anwendung",
+      "kind": "mc",
+      "q": "Ein Bewertungssystem belohnt rasch steigende Punktzahlen. Was könnte es übersehen?",
+      "choices": [
+        "Schnelle Verbesserungen seien niemals echte Lernerfolge.",
+        "Die Beschäftigung mit schwierigen Ideen brauche grundsätzlich keine Bewertung.",
+        "Jede numerische Darstellung sei moralisch verwerflich.",
+        "Erkenntnisprozesse, die sich nicht in schnellen Zahlen abbilden lassen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Der dritte Absatz kritisiert die Abwertung nicht quantifizierbarer Lernwege."
+    },
+    {
+      "id": "r35-de-c2-09",
+      "tab": "anwendung",
+      "kind": "mc",
+      "q": "Was zeichnet eine verantwortbare Bildungskultur im Schlussabsatz aus?",
+      "choices": [
+        "Sie verlangt dauerhafte Leistungssteigerungen als Beweis des eigenen Wertes.",
+        "Sie ermöglicht sowohl weiteres Lernen als auch das Überdenken eigener Ziele.",
+        "Sie ersetzt persönliche Entscheidungen durch feste Schulprogramme.",
+        "Sie verzichtet vollständig auf die Beurteilung von Leistungen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Die Schlussfolgerung verbindet die Mittel zum Weiterlernen mit Freiheit bei der Zielwahl."
+    },
+    {
+      "id": "r35-de-c2-10",
+      "tab": "anwendung",
+      "kind": "mc",
+      "q": "Welche Praxis widerspräche der Argumentation am stärksten?",
+      "choices": [
+        "Lernende dürfen ungeeignete Ziele überdenken.",
+        "Schulen berücksichtigen strukturelle Einschränkungen.",
+        "Erholung gilt nicht als Scheitern des Ehrgeizes.",
+        "Jede Pause wird als fehlender Ehrgeiz und als Versagen gewertet."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Der Schluss grenzt das Recht auf Erholung von der moralischen Pflicht zur ständigen Steigerung ab."
+    }
+  ]
+}
