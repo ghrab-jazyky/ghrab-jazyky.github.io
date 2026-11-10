@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "A2",
+  "sourceTitle": "A Night at the Space Club",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-AUTHOR-DRAFT-1",
+  "description": "EN/A2 independently drafted Asteroids Reading test; not reviewed by second teacher.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Understanding the message",
+      "description": "Interpret the passage and its purpose."
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasons and connections",
+      "description": "Find explanations supported by the text."
+    },
+    {
+      "id": "application",
+      "title": "Use what you have read",
+      "description": "Apply the information to new situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-en-a2-01",
+      "tab": "interpretation",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "What surprises many people about the asteroid belt?",
+      "choices": [
+        "It is found much closer to Earth than the Moon.",
+        "It has no asteroids at all.",
+        "There is a lot of empty space between its objects.",
+        "It is a road that astronauts can drive on."
+      ],
+      "answer": 2,
+      "explanation": "The teacher points out that the belt is not crowded because the rocks are far apart."
+    },
+    {
+      "id": "r35-en-a2-02",
+      "tab": "interpretation",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Why does the club teacher say that a near-Earth asteroid is not automatically dangerous?",
+      "choices": [
+        "Passing near Earth and colliding with it are different events.",
+        "Scientists cannot calculate its path.",
+        "Space rocks near Earth are always tiny.",
+        "The Moon keeps every asteroid away."
+      ],
+      "answer": 0,
+      "explanation": "The text explicitly distinguishes an object coming near Earth from one actually hitting it."
+    },
+    {
+      "id": "r35-en-a2-03",
+      "tab": "interpretation",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "What do the students discover when the telescope does not show an asteroid?",
+      "choices": [
+        "The Moon is too far away to see clearly.",
+        "Their teacher has forgotten to prepare the telescope.",
+        "The club has to meet during the daytime instead.",
+        "They can still study marks made by space rocks on the Moon."
+      ],
+      "answer": 3,
+      "explanation": "The students observe lunar craters even though the asteroids themselves are too faint."
+    },
+    {
+      "id": "r35-en-a2-04",
+      "tab": "interpretation",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "What does Nina understand after watching the DART film?",
+      "choices": [
+        "Scientists have stopped looking for dangerous asteroids.",
+        "A small planned push may change how a space object moves.",
+        "All asteroids now follow a new path around Earth.",
+        "The school telescope is strong enough to move space rocks."
+      ],
+      "answer": 1,
+      "explanation": "The film shows that a spacecraft can give a small asteroid moon a push and change its orbit."
+    },
+    {
+      "id": "r35-en-a2-05",
+      "tab": "reasoning",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Why do scientists keep observing a newly found asteroid?",
+      "choices": [
+        "The first observations show exactly where it will go.",
+        "They want to make it easier to photograph the Moon.",
+        "New observations help them predict its future path more accurately.",
+        "Most asteroids change their size every day."
+      ],
+      "answer": 2,
+      "explanation": "More observations reduce uncertainty about a newly discovered object's orbit."
+    },
+    {
+      "id": "r35-en-a2-06",
+      "tab": "reasoning",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "Why are old craters easier to see on the Moon than on Earth?",
+      "choices": [
+        "The Moon is closer to most asteroids than Earth.",
+        "They were made by larger rocks on the Moon.",
+        "Earth has no old craters at all.",
+        "The Moon lacks wind and rain that would slowly hide them."
+      ],
+      "answer": 3,
+      "explanation": "The text contrasts the Moon's lack of weather with Earth's erosion."
+    },
+    {
+      "id": "r35-en-a2-07",
+      "tab": "reasoning",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "Why was the DART collision useful for scientists?",
+      "choices": [
+        "It tested whether a spacecraft could change an asteroid moon's orbit.",
+        "It showed that telescopes cannot find asteroids.",
+        "It protected Earth from a collision that was already happening.",
+        "It destroyed the asteroid belt."
+      ],
+      "answer": 0,
+      "explanation": "DART intentionally struck Dimorphos and its orbital period changed, proving a method could be tested."
+    },
+    {
+      "id": "r35-en-a2-08",
+      "tab": "application",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "A new object is spotted near Earth, but there are few observations. What is a sensible next step?",
+      "choices": [
+        "Assume it will move away without any further checks.",
+        "Warn everyone that a collision is certain.",
+        "Take more measurements before drawing strong conclusions.",
+        "Stop using computers to calculate orbits."
+      ],
+      "answer": 2,
+      "explanation": "The teacher describes repeated observations as necessary for a reliable orbit prediction."
+    },
+    {
+      "id": "r35-en-a2-09",
+      "tab": "application",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "A pupil wants to explain how craters form but cannot photograph an asteroid. What could they do?",
+      "choices": [
+        "Claim that a school telescope can see all small asteroids.",
+        "Use a picture of the Moon's craters as supporting evidence.",
+        "Say that craters disappear immediately in space.",
+        "Explain that the Moon's craters were made by rain."
+      ],
+      "answer": 1,
+      "explanation": "The club uses visible lunar craters to discuss the long-term effects of impacts."
+    },
+    {
+      "id": "r35-en-a2-10",
+      "tab": "application",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "Which conclusion best combines the last two parts of Nina's club visit?",
+      "choices": [
+        "Observation and experiments can both help us prepare for space hazards.",
+        "Watching the Moon means we no longer need spacecraft.",
+        "Space travel has made asteroids completely harmless.",
+        "Photographs of craters are not useful for science."
+      ],
+      "answer": 0,
+      "explanation": "Nina experiences observation through the telescope and learning about a controlled spacecraft experiment."
+    }
+  ]
+}

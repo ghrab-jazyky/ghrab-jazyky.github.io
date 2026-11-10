@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "C1",
+  "sourceTitle": "Watching the Sky, Interpreting the Odds",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-AUTHOR-DRAFT-1",
+  "description": "EN/C1 independently authored Asteroids test: uncertainty, evidence and planetary-defence reasoning. Human content review pending.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Interpreting the evidence",
+      "description": "Read between the lines and establish the main argument."
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasoning and uncertainty",
+      "description": "Assess claims, limits and explanations."
+    },
+    {
+      "id": "application",
+      "title": "Evidence in practice",
+      "description": "Transfer scientific reasoning to new situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-en-c1-01",
+      "tab": "interpretation",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "What epistemic distinction does the writer draw when discussing an asteroid's trajectory?",
+      "choices": [
+        "The uncertainty exists only when reporters use imprecise headlines.",
+        "The asteroid's physical motion cannot be predicted even in principle.",
+        "Uncertainty is mainly in our knowledge of its path, not in whether physical laws apply.",
+        "Astronomers disagree about whether asteroids orbit the Sun."
+      ],
+      "answer": 2,
+      "explanation": "The author distinguishes a lawful physical orbit from an incompletely observed trajectory."
+    },
+    {
+      "id": "r35-en-c1-02",
+      "tab": "interpretation",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "How should readers interpret an increase in an estimated collision probability during early tracking?",
+      "choices": [
+        "It may be part of narrowing a range of trajectories, not a simple worsening of the situation.",
+        "It is proof that the asteroid has suddenly changed speed.",
+        "It means the risk is statistically certain until scientists deny it.",
+        "It reveals that the first measurements were intentionally inaccurate."
+      ],
+      "answer": 0,
+      "explanation": "An apparently higher risk can arise while successive measurements constrain possible orbits."
+    },
+    {
+      "id": "r35-en-c1-03",
+      "tab": "interpretation",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "What is the deeper engineering problem raised beyond hitting an asteroid?",
+      "choices": [
+        "Proving that all possible impact scenarios are equally manageable.",
+        "Choosing a sufficiently dramatic spacecraft design to reassure the public.",
+        "Deciding which government should publicly announce the mission first.",
+        "Predicting the physical effect and checking whether the intended orbital change occurred."
+      ],
+      "answer": 3,
+      "explanation": "The text identifies target understanding and follow-up measurement as essential engineering capabilities."
+    },
+    {
+      "id": "r35-en-c1-04",
+      "tab": "interpretation",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "Why is the debris plume after DART's impact an especially important observation?",
+      "choices": [
+        "It makes further study of the system unnecessary.",
+        "It indicates that the deflection depended on more than the spacecraft's direct momentum.",
+        "It proves Dimorphos must have been a solid, uniform boulder.",
+        "It suggests the mission's observed orbital change was an optical illusion."
+      ],
+      "answer": 1,
+      "explanation": "The ejecta amplified the impact's effect, showing why material properties matter."
+    },
+    {
+      "id": "r35-en-c1-05",
+      "tab": "reasoning",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "Why does the writer contrast scientific descriptions with alarmist headlines?",
+      "choices": [
+        "To suggest public safety is irrelevant to curiosity-driven space research.",
+        "To make the case that journalism should never cover asteroid science.",
+        "To show how accurate uncertainty communication differs from unsupported certainty.",
+        "To demonstrate that researchers and journalists use incompatible measurements."
+      ],
+      "answer": 2,
+      "explanation": "The author presents accurate risk language as intellectual honesty, against compressed warnings."
+    },
+    {
+      "id": "r35-en-c1-06",
+      "tab": "reasoning",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "Why does the author emphasise that DART produced a result rather than a guarantee?",
+      "choices": [
+        "The experiment showed that momentum transfer does not change orbits.",
+        "The spacecraft's collision was impossible to observe independently.",
+        "The target asteroid had not been identified before the mission.",
+        "The result is conditional on physical structure and available time to act."
+      ],
+      "answer": 3,
+      "explanation": "A particular demonstration cannot guarantee success under different structures, deflection directions and warning times."
+    },
+    {
+      "id": "r35-en-c1-07",
+      "tab": "reasoning",
+      "sourceParagraph": 5,
+      "kind": "mc",
+      "q": "Which pair of communication failures is the writer attempting to avoid?",
+      "choices": [
+        "Overstating the urgency of every approach and dismissing small risks altogether.",
+        "Providing too many observations and coordinating too closely.",
+        "Warning about distant objects and publishing detailed measurements.",
+        "Treating all probability estimates as exactly equivalent."
+      ],
+      "answer": 0,
+      "explanation": "The final paragraph warns against both indiscriminate alarm and complacent dismissal."
+    },
+    {
+      "id": "r35-en-c1-08",
+      "tab": "application",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "An early impact estimate rises, but the range of possible trajectories is shrinking. Which explanation is best?",
+      "choices": [
+        "The higher number itself confirms a future collision.",
+        "The asteroid must be changing course because of unseen forces.",
+        "The new measurements refine a provisional model, which may temporarily raise the estimated risk.",
+        "The previous telescope images should be discarded as useless."
+      ],
+      "answer": 2,
+      "explanation": "The text explains that narrowing uncertainty may produce temporary increases before resolution."
+    },
+    {
+      "id": "r35-en-c1-09",
+      "tab": "application",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "A planner proposes deflecting a poorly understood rubble pile without studying its structure. What question is missing?",
+      "choices": [
+        "Whether its name is familiar to the public.",
+        "How its material properties could influence the momentum transfer and resulting orbit.",
+        "Whether a sufficiently large explosion would be more impressive in public footage.",
+        "Why scientists should continue observing a target after the mission."
+      ],
+      "answer": 1,
+      "explanation": "The Dimorphos findings show that material properties significantly determine deflection outcomes."
+    },
+    {
+      "id": "r35-en-c1-10",
+      "tab": "application",
+      "sourceParagraph": 5,
+      "kind": "mc",
+      "q": "What is the strongest reason to fund asteroid surveys even without an identified immediate threat?",
+      "choices": [
+        "Early knowledge and international coordination make later proportionate intervention possible.",
+        "They guarantee that a collision with Earth will never occur.",
+        "They remove the need to build instruments for future missions.",
+        "They make possible impacts more exciting subjects for science communication."
+      ],
+      "answer": 0,
+      "explanation": "The conclusion identifies surveys and data sharing as necessary conditions for effective decisions."
+    }
+  ]
+}
