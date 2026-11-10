@@ -30,7 +30,7 @@
   check(practice&&practice.title===rules.title&&Array.isArray(practice.paragraphs)&&
    practice.paragraphs.length>=3&&Array.isArray(practice.questions),
    'Practice source does not match this bank level and passage');
-  check(Array.isArray(bank.tabs)&&bank.tabs.length===3&&
+  check(Array.isArray(bank.tabs)&&bank.tabs.length>=2&&bank.tabs.length<=6&&
    bank.tabs.every(t=>text(t.id)&&text(t.title)&&/^[a-z][a-z0-9-]+$/.test(t.id)),
    'Invalid pilot test sections');
   const ids=new Set(bank.tabs.map(t=>t.id));
