@@ -14,6 +14,7 @@
   return el;
  };
  const params=new URLSearchParams(location.search);
+ const level=params.get('level')||'B2';
  const answers=Object.create(null);
  let variant=null,timed=null,submitted=false;
  function requireCondition(ok,message){if(!ok)throw new Error(message)}
@@ -119,13 +120,14 @@
     'Required local assessment modules are unavailable');
    // A fixed 20-minute URL is intentional for this *unapproved* pedagogical pilot.
    // It must not be exposed through the public teacher catalogue.
+   requireCondition(['B1','B2'].includes(level),'Unsupported independent test level');
    requireCondition(params.get('timer')==='20'&&
     /^[a-z0-9_-]{6,40}$/i.test(params.get('attempt')||''),
-    'This draft preview requires ?timer=20&attempt=<local-id>');
+    'This draft preview requires ?level=B1|B2&timer=20&attempt=<local-id>');
    const [manifest,originalHtml,bank]=await Promise.all([
     get('../../../version.json',true),
     get('../../../cteni/can-mistakes/index.html'),
-    get('rl-can-mistakes/en-B2.json',true)
+    get('rl-can-mistakes/en-'+level+'.json',true)
    ]);
    requireCondition(manifest.version==='R31'&&
     manifest.backendEnabled===false&&manifest.gradedTestsEnabled===false,
@@ -133,13 +135,16 @@
    const actual=await sourceHash(originalHtml);
    requireCondition(actual===manifest.contentHashes['rl-can-mistakes'],
     'Original source checksum mismatch: draft preview disabled');
-   const practice=reading.variantFromData(reading.parseReadingData(originalHtml),'en','B2');
+   const practice=reading.variantFromData(reading.parseReadingData(originalHtml),'en',level);
    variant=testBank.makeQaVariant(bank,practice,actual);
    reading.validateVariant(variant);
    $('title').textContent=practice.title;
+   document.querySelector('.subtitle').textContent='Can Mistakes Help Us Learn? · English '+level+' · 10 independent questions · 20 minutes';
+   document.querySelector('.mode').textContent='UNAPPROVED DRAFT · EN/'+level;
+   document.querySelector('.reading-panel .pill').textContent='EN · '+level;
    renderText();renderTasks();
    timed=window.LSHSessionUI.mount({
-    skill:'reading',topic:'rl-can-mistakes',lang:'en',level:'B2',
+    skill:'reading',topic:'rl-can-mistakes',lang:'en',level,
     workspace:$('workspace'),
     getAnswers:()=>({answers:{...answers}}),
     restoreAnswers:saved=>{
