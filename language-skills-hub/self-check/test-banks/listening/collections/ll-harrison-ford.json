@@ -1,131 +1,100 @@
 {
-  "kind": "LSH_LISTENING_DRAFT_COLLECTION_R34_V1",
+  "kind": "LSH_LISTENING_DRAFT_COLLECTION_R34_V2",
   "topic": "ll-harrison-ford",
   "relativeSource": "poslech/harrison-ford/index.html",
   "published": false,
   "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
-  "auditStatus": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+  "auditStatus": "CLAUDE_CONTENT_AUDIT_PENDING",
   "variants": {
     "A1": {
       "goal": "Find a few clear facts: people, jobs and thanks.",
       "gist": [
         {
-          "title": "Who gives this speech?",
+          "type": "single",
+          "title": "Who is the man talking to?",
           "options": [
-            "A football player",
-            "A singer",
-            "An actor"
-          ],
-          "correct": 2,
-          "why": "Harrison Ford is an actor.",
-          "type": "single"
-        },
-        {
-          "title": "How does he feel?",
-          "options": [
-            "Happy and thankful",
-            "Angry and sad",
-            "Bored and tired"
+            "People at an award event",
+            "People in his classroom",
+            "Customers in a shop"
           ],
           "correct": 0,
-          "why": "He says thank you many times. He is happy and thankful.",
-          "type": "single"
+          "why": "He speaks at a ceremony honouring his acting career."
+        },
+        {
+          "type": "single",
+          "title": "Which word best describes his feeling?",
+          "options": [
+            "Worried",
+            "Thankful",
+            "Angry"
+          ],
+          "correct": 1,
+          "why": "He expresses gratitude and speaks warmly about others."
         }
       ],
       "detail": [
         {
-          "title": "What does he say about the award?",
+          "type": "single",
+          "title": "What other job did he do when he was not acting?",
           "options": [
-            "It comes too late",
-            "It is for his family",
-            "It comes a little early"
+            "A teacher",
+            "A doctor",
+            "A carpenter"
           ],
           "correct": 2,
-          "why": "He says: \"It's a little early, isn't it?\" He still works as an actor.",
-          "type": "single"
+          "why": "Ford talks about work as a carpenter."
         },
         {
-          "title": "Where did he find people who liked plays?",
+          "type": "single",
+          "title": "What did he find when he met students making plays?",
           "options": [
-            "At a hospital",
-            "At college",
-            "At a football club"
-          ],
-          "correct": 1,
-          "why": "At college he found people who put on plays.",
-          "type": "single"
-        },
-        {
-          "title": "What does he say about other people?",
-          "options": [
-            "He needed help from others",
-            "He did not want help from others",
-            "He always worked alone"
+            "A group where he belonged",
+            "A new film director",
+            "A job outside college"
           ],
           "correct": 0,
-          "why": "Other people helped him.",
-          "type": "single"
+          "why": "The theatre group helped him feel part of a community."
+        },
+        {
+          "type": "single",
+          "title": "What does he do near the end of the speech?",
+          "options": [
+            "He asks everybody to leave",
+            "He thanks his family",
+            "He tells a story about a science test"
+          ],
+          "correct": 1,
+          "why": "He closes by acknowledging loved ones."
         }
       ],
       "sequence": [
-        "He talks about his difficult first years.",
-        "He talks about people from his work.",
-        "He gives advice to other actors."
+        "He begins with a joke about his prize.",
+        "He remembers the period when acting was difficult.",
+        "He talks about finding people who made plays."
       ],
       "facts": [
         {
-          "title": "Write the number of years he struggled.",
-          "answer": "15 years",
-          "tokens": [
-            [
-              "15",
-              "fifteen"
-            ]
-          ],
-          "hint": "Write a number or a word.",
-          "kind": "fact"
+          "title": "What job did Harrison Ford do apart from acting?",
+          "answer": "Carpenter / carpentry.",
+          "criteria": "Accept carpenter or carpentry."
         }
       ],
       "open": [
         {
-          "title": "Who does Harrison Ford thank? Write ONE short sentence.",
-          "answer": "He thanks his wife and his family. / He thanks George Lucas.",
-          "criteria": "One comprehensible sentence that names a person or group he thanks.",
-          "hint": "",
-          "kind": "open"
+          "title": "Name one group or person Harrison Ford thanks, and say why.",
+          "answer": "He is thankful to his family or people who helped his career.",
+          "criteria": "Accept a short understandable example supported by the speech."
         }
       ],
-      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
-      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
       "published": false,
       "topic": "ll-harrison-ford",
       "level": "A1",
       "language": "en",
       "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
       "suggestedMinutes": 20,
-      "sourceIndices": {
-        "gist": [
-          0,
-          2
-        ],
-        "detail": [
-          0,
-          2,
-          3
-        ],
-        "sequence": [
-          0,
-          1,
-          2
-        ],
-        "facts": [
-          0
-        ],
-        "open": [
-          0
-        ]
-      },
-      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "provenance": "assistant-authored assessment prompts from public practice metadata; video not independently verified; Claude and teacher must check",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     },
@@ -133,122 +102,91 @@
       "goal": "Understand the main story and short, clear factual details.",
       "gist": [
         {
-          "title": "What is the main purpose of the speech?",
+          "type": "single",
+          "title": "What does the speaker want listeners to understand about success?",
           "options": [
-            "To advertise his new film to fans",
-            "To thank people and talk about his career",
-            "To complain about his life as an actor"
+            "Only the most famous actor succeeds",
+            "Other people's help matters",
+            "Success means never having a difficult year"
           ],
           "correct": 1,
-          "why": "He talks about his life and says thank you.",
-          "type": "single"
+          "why": "He tells stories about the people who supported him."
         },
         {
-          "title": "What is his message at the end?",
+          "type": "single",
+          "title": "Why does he tell a personal story about his younger years?",
           "options": [
-            "Help people who are just starting",
-            "Always work alone to be the best",
-            "Winning prizes is the most important thing"
+            "To show that belonging and direction took time",
+            "To encourage students to leave college",
+            "To explain how an award is produced"
           ],
           "correct": 0,
-          "why": "He asks actors to help the next young actors.",
-          "type": "single"
+          "why": "His early difficulties contrast with finding a community."
         }
       ],
       "detail": [
         {
-          "title": "He jokes that the award comes ...",
+          "type": "single",
+          "title": "Why is the comment about getting the award 'early' humorous?",
           "options": [
-            "after the end of his career",
-            "halfway through his career",
-            "on his birthday"
+            "He thinks awards belong only to young actors",
+            "He was too tired to attend",
+            "He suggests he still has much of his career ahead"
+          ],
+          "correct": 2,
+          "why": "He jokes about being only halfway through his career."
+        },
+        {
+          "type": "single",
+          "title": "What change happens when he finds the theatre group?",
+          "options": [
+            "He feels less alone",
+            "He immediately becomes famous",
+            "He stops learning new skills"
+          ],
+          "correct": 0,
+          "why": "Joining people who put on plays brings a feeling of belonging."
+        },
+        {
+          "type": "single",
+          "title": "What does he ask people with experience to do?",
+          "options": [
+            "Keep their knowledge private",
+            "Make room for beginners",
+            "Give every actor the same role"
           ],
           "correct": 1,
-          "why": "He says he is still a working actor.",
-          "type": "single"
-        },
-        {
-          "title": "At college he found people who ...",
-          "options": [
-            "played football",
-            "built houses",
-            "put on plays"
-          ],
-          "correct": 2,
-          "why": "He found people who put on plays.",
-          "type": "single"
-        },
-        {
-          "title": "At the end, he thanks ...",
-          "options": [
-            "his school teachers",
-            "the journalists",
-            "his wife and family"
-          ],
-          "correct": 2,
-          "why": "He thanks his wife Calista and his family.",
-          "type": "single"
+          "why": "His final appeal asks established actors to support newcomers."
         }
       ],
       "sequence": [
-        "He makes a joke about the award.",
-        "He describes his difficult early career.",
-        "He talks about his time at college."
+        "He jokes about receiving the prize.",
+        "He remembers years of uncertain work.",
+        "He describes the people he met at college."
       ],
       "facts": [
         {
-          "title": "How many years did he struggle?",
-          "answer": "about 15 years",
-          "tokens": [
-            [
-              "15",
-              "fifteen"
-            ]
-          ],
-          "hint": "",
-          "kind": "fact"
+          "title": "Approximately how many years did he struggle before his breakthrough?",
+          "answer": "About fifteen years.",
+          "criteria": "Accept 15 or fifteen, with or without 'about'."
         }
       ],
       "open": [
         {
-          "title": "How did the people he found at college help him?",
-          "answer": "It helped him find friends and a place to belong.",
-          "criteria": "Accept a clear idea about friends, a group or belonging.",
-          "hint": "",
-          "kind": "open"
+          "title": "Why was meeting people in the theatre group important to him?",
+          "answer": "It helped him find friends and a sense of belonging.",
+          "criteria": "Accept a relevant explanation of friendship, direction or belonging."
         }
       ],
-      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
-      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
       "published": false,
       "topic": "ll-harrison-ford",
       "level": "A2",
       "language": "en",
       "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
       "suggestedMinutes": 20,
-      "sourceIndices": {
-        "gist": [
-          0,
-          2
-        ],
-        "detail": [
-          0,
-          2,
-          4
-        ],
-        "sequence": [
-          0,
-          1,
-          2
-        ],
-        "facts": [
-          0
-        ],
-        "open": [
-          0
-        ]
-      },
-      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "provenance": "assistant-authored assessment prompts from public practice metadata; video not independently verified; Claude and teacher must check",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     },
@@ -256,124 +194,97 @@
       "goal": "Follow key events, supporting details and a speaker's main message.",
       "gist": [
         {
-          "title": "Which idea best summarises the speech?",
+          "type": "single",
+          "title": "What is a central lesson of the speech?",
           "options": [
-            "Success comes from talent and hard work alone.",
-            "Success comes from effort, help and belonging.",
-            "Success means winning awards and being famous."
+            "Success depends on talent alone",
+            "People who succeed should avoid looking backwards",
+            "Careers are shaped by persistence and help from others",
+            "Fame is the best measure of an actor's life"
           ],
-          "correct": 1,
-          "why": "He gives credit to other people and talks about belonging.",
-          "type": "single"
+          "correct": 2,
+          "why": "Ford connects sustained effort with the support of collaborators."
         },
         {
-          "title": "Which description fits his tone?",
+          "type": "single",
+          "title": "How does Ford create an approachable mood at the beginning?",
           "options": [
-            "Warm and sometimes funny",
-            "Angry and often critical",
-            "Cold and very formal"
+            "By making a light joke about his own award",
+            "By criticising another actor",
+            "By listing all of his film roles",
+            "By explaining the judging process"
           ],
           "correct": 0,
-          "why": "He makes jokes, but he is also moved and grateful.",
-          "type": "single"
+          "why": "His opening self-deprecating humour helps him connect with listeners."
         }
       ],
       "detail": [
         {
-          "title": "Why does he joke about the lifetime award?",
+          "type": "single",
+          "title": "What is important about the years before he became successful?",
           "options": [
-            "He says he is only halfway through his career.",
-            "He says he is planning to stop acting soon.",
-            "He says he did not want to come tonight."
-          ],
-          "correct": 0,
-          "why": "He is still a working actor.",
-          "type": "single"
-        },
-        {
-          "title": "What happened in his third year at college?",
-          "options": [
-            "He met people who were making a short film.",
-            "He joined a group of students who played in a band.",
-            "He found a group of people putting on plays."
-          ],
-          "correct": 2,
-          "why": "He felt lost and alone, then found people putting on plays.",
-          "type": "single"
-        },
-        {
-          "title": "What does he say about entertainment and art?",
-          "options": [
-            "He says he prefers making art to making entertainment.",
-            "Actors sometimes make entertainment and sometimes art.",
-            "He says most films today are entertainment, not art."
+            "They show that he never considered another kind of work",
+            "They challenge the idea that success happened immediately",
+            "They prove all acting jobs are equally difficult",
+            "They explain why he stopped studying drama"
           ],
           "correct": 1,
-          "why": "\"Sometimes we make entertainment. Sometimes we make art\" - and if they are lucky, both at once.",
-          "type": "single"
+          "why": "The long early struggle undermines the overnight-success myth."
+        },
+        {
+          "type": "single",
+          "title": "What does the memory of his college group help explain?",
+          "options": [
+            "Why he later preferred working alone",
+            "Why he never became interested in stories",
+            "How finding a community gave him direction",
+            "How his teachers chose film parts for him"
+          ],
+          "correct": 2,
+          "why": "He moves from isolation to finding 'his people'."
+        },
+        {
+          "type": "single",
+          "title": "Why does he speak about people who helped his career?",
+          "options": [
+            "To acknowledge that filmmaking is a shared effort",
+            "To suggest they deserved the award instead",
+            "To avoid mentioning any personal achievements",
+            "To recommend a particular college"
+          ],
+          "correct": 0,
+          "why": "His gratitude presents achievement as collaborative."
         }
       ],
       "sequence": [
-        "He jokes about the lifetime achievement award.",
-        "He remembers the years before his breakthrough.",
-        "He names people from his career.",
-        "He talks about his time at college."
+        "He questions the timing of his lifetime award.",
+        "He recalls years of hard work before recognition.",
+        "He remembers people who supported him.",
+        "He asks established actors to help others."
       ],
       "facts": [
         {
-          "title": "How many years did he struggle?",
-          "answer": "about fifteen years",
-          "tokens": [
-            [
-              "15",
-              "fifteen"
-            ]
-          ],
-          "hint": "",
-          "kind": "fact"
+          "title": "Name one filmmaker Ford specifically thanks.",
+          "answer": "George Lucas or Steven Spielberg.",
+          "criteria": "Accept either correctly identified director."
         }
       ],
       "open": [
         {
-          "title": "Why were the people he met at college important to him?",
-          "answer": "He felt isolated and then found a group in which he belonged.",
-          "criteria": "Accept loneliness and community, expressed in the student's own words.",
-          "hint": "",
-          "kind": "open"
+          "title": "What could a young actor learn from Ford's account of his career?",
+          "answer": "Success may take time and support; people should keep working and help others.",
+          "criteria": "Accept a coherent message supported by his early career or final appeal."
         }
       ],
-      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
-      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
       "published": false,
       "topic": "ll-harrison-ford",
       "level": "B1",
       "language": "en",
       "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
       "suggestedMinutes": 20,
-      "sourceIndices": {
-        "gist": [
-          0,
-          2
-        ],
-        "detail": [
-          0,
-          3,
-          5
-        ],
-        "sequence": [
-          0,
-          1,
-          2,
-          3
-        ],
-        "facts": [
-          0
-        ],
-        "open": [
-          0
-        ]
-      },
-      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "provenance": "assistant-authored assessment prompts from public practice metadata; video not independently verified; Claude and teacher must check",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     },
@@ -381,126 +292,97 @@
       "goal": "Identify detail and sequence; interpret the speaker's tone and main messages.",
       "gist": [
         {
-          "title": "Choose the best overall headline.",
+          "type": "single",
+          "title": "How does the speech challenge a simple story of individual fame?",
           "options": [
-            "A veteran actor warns young performers about the dangers of fame.",
-            "An actor looks back on the films that made him famous.",
-            "An actor reflects on belonging, collaboration and gratitude."
-          ],
-          "correct": 2,
-          "why": "He repeatedly credits others and explores connection and gratitude.",
-          "type": "single"
-        },
-        {
-          "title": "How would you describe the overall tone?",
-          "options": [
-            "Irritated and defensive",
-            "Humorous, sincere and reflective",
-            "Competitive and self-congratulatory"
+            "It attributes the career entirely to chance",
+            "It focuses on collaboration, support and belonging",
+            "It presents celebrity as a problem to be avoided",
+            "It treats every acting opportunity as equally important"
           ],
           "correct": 1,
-          "why": "Self-deprecating jokes accompany moving memories.",
-          "type": "single"
+          "why": "Ford repeatedly makes room for the people behind his achievements."
+        },
+        {
+          "type": "single",
+          "title": "What role do memories of difficulty play in the address?",
+          "options": [
+            "They make the later achievement seem effortless",
+            "They turn a formal ceremony into an unrelated confession",
+            "They frame the award within a longer personal journey",
+            "They prove that arts education guarantees success"
+          ],
+          "correct": 2,
+          "why": "The early years explain why the later gratitude matters."
         }
       ],
       "detail": [
         {
-          "title": "What is the point of his joke about receiving a lifetime award?",
+          "type": "single",
+          "title": "What does the joke about being only part-way through his career imply?",
           "options": [
-            "He still sees his career as ongoing.",
-            "He has decided to retire immediately.",
-            "He believes such awards are meaningless."
+            "Ford continues to see himself as an active professional",
+            "The organisers have made a serious error",
+            "The career has not begun properly",
+            "He plans to refuse future honours"
           ],
           "correct": 0,
-          "why": "He calls it \"a little early\" because he is still a working actor.",
-          "type": "single"
+          "why": "The joke makes a lifetime prize sound premature."
         },
         {
-          "title": "What helped him find direction at college?",
+          "type": "single",
+          "title": "Why is the college anecdote central to the speech's message?",
           "options": [
-            "A teacher who believed in his talent",
-            "People who were putting on plays",
-            "A part-time job at a film studio"
+            "It explains exactly how acting technique is taught",
+            "It creates a contrast between academic success and film success",
+            "It proves friendships are more important than all other work",
+            "It shows how finding others changed a period of isolation"
+          ],
+          "correct": 3,
+          "why": "The group of theatre students provides belonging and direction."
+        },
+        {
+          "type": "single",
+          "title": "What responsibility does he connect with professional freedom?",
+          "options": [
+            "Choosing roles without outside advice",
+            "Helping other people gain opportunities",
+            "Protecting a private reputation",
+            "Avoiding work that is purely entertaining"
           ],
           "correct": 1,
-          "why": "The theatre group gave him a calling and a place to belong.",
-          "type": "single"
-        },
-        {
-          "title": "What does he say successful people should do?",
-          "options": [
-            "Support others and keep opportunities open",
-            "Protect their position against younger actors",
-            "Enjoy their freedom and avoid responsibility"
-          ],
-          "correct": 0,
-          "why": "Success brings freedom, but also responsibility towards others.",
-          "type": "single"
+          "why": "The closing appeal associates success with support for newcomers."
         }
       ],
       "sequence": [
-        "He opens with a joke about the award.",
-        "He talks about his early career.",
-        "He names people who mattered in his career.",
-        "He talks about his time at college."
+        "He opens by undercutting the seriousness of the prize.",
+        "He describes working through an uncertain early period.",
+        "He expresses debts to professional supporters.",
+        "He turns his own experience into advice for colleagues."
       ],
       "facts": [
         {
-          "title": "Name the TWO famous filmmakers he thanks.",
-          "answer": "George Lucas and Steven Spielberg",
-          "tokens": [
-            [
-              "lucas"
-            ],
-            [
-              "spielberg"
-            ]
-          ],
-          "hint": "",
-          "kind": "fact"
+          "title": "Which two major directors does Ford name?",
+          "answer": "George Lucas and Steven Spielberg.",
+          "criteria": "Both names are required."
         }
       ],
       "open": [
         {
-          "title": "Describe TWO difficulties he experienced in his third year of college.",
-          "answer": "He was failing at school and felt isolated or alone.",
-          "criteria": "Both an academic problem and loneliness should appear.",
-          "hint": "",
-          "kind": "open"
+          "title": "Explain how Ford combines self-deprecating humour with gratitude.",
+          "answer": "The jokes reduce self-importance, while naming collaborators recognises their contribution.",
+          "criteria": "Accept a specific humour example and a supported point about acknowledgement."
         }
       ],
-      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
-      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
       "published": false,
       "topic": "ll-harrison-ford",
       "level": "B2",
       "language": "en",
       "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
       "suggestedMinutes": 20,
-      "sourceIndices": {
-        "gist": [
-          0,
-          2
-        ],
-        "detail": [
-          0,
-          3,
-          5
-        ],
-        "sequence": [
-          0,
-          1,
-          2,
-          3
-        ],
-        "facts": [
-          0
-        ],
-        "open": [
-          0
-        ]
-      },
-      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "provenance": "assistant-authored assessment prompts from public practice metadata; video not independently verified; Claude and teacher must check",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     },
@@ -508,126 +390,97 @@
       "goal": "Interpret subtext, rhetorical choices and nuanced attitudes to success.",
       "gist": [
         {
-          "title": "What broader claim links the personal stories?",
+          "type": "single",
+          "title": "What does the speech present as an alternative to a solitary star narrative?",
           "options": [
-            "A successful career is ultimately the result of individual talent and persistence.",
-            "An individual career can be understood through community and shared creative work.",
-            "Public recognition finally compensates for years of insecurity and rejection."
-          ],
-          "correct": 1,
-          "why": "His memories build a collaborative rather than individualistic view.",
-          "type": "single"
-        },
-        {
-          "title": "How does the opening humour function?",
-          "options": [
-            "It softens self-praise and builds rapport.",
-            "It signals irritation with the ceremony.",
-            "It distances him from the nominees present."
+            "A career shaped by mutual dependence and a creative community",
+            "A biography built only around financial opportunity",
+            "A strict contrast between art and entertainment",
+            "An explanation of why fame should be rejected"
           ],
           "correct": 0,
-          "why": "The jokes acknowledge the honour without sounding self-important.",
-          "type": "single"
+          "why": "The address foregrounds community and collaboration."
+        },
+        {
+          "type": "single",
+          "title": "How does the college recollection support the concluding ethical appeal?",
+          "options": [
+            "It shows academic qualifications determine artistic value",
+            "It turns an experience of isolation into a reason to welcome others",
+            "It presents early failure as a necessary career goal",
+            "It asks established actors to return to college"
+          ],
+          "correct": 1,
+          "why": "His recollection of belonging gives personal force to his call for inclusion."
         }
       ],
       "detail": [
         {
-          "title": "His joke about receiving the award at the \"half point\" of his career mainly implies that ...",
+          "type": "single",
+          "title": "What might opening with humour achieve in this public setting?",
           "options": [
-            "he remains committed to working",
-            "he is dissatisfied with his career so far",
-            "he objects to honours based on age"
-          ],
-          "correct": 0,
-          "why": "\"I'm still a working actor\" - the exaggeration underlines continuing motivation.",
-          "type": "single"
-        },
-        {
-          "title": "His account of college emphasises the transition from ...",
-          "options": [
-            "alienation to belonging",
-            "poverty to financial security",
-            "acting to directing"
-          ],
-          "correct": 0,
-          "why": "He moves from feeling lost and isolated to finding \"my people\".",
-          "type": "single"
-        },
-        {
-          "title": "What follows from his idea that success brings freedom?",
-          "options": [
-            "Greater status frees people from obligations.",
-            "Success is a private matter, not a public one.",
-            "Freedom comes with responsibility to help others."
+            "It makes listeners doubt his professional record",
+            "It avoids the need to thank collaborators",
+            "It softens the potential self-importance of a lifetime honour",
+            "It invites the audience to question the award's legitimacy"
           ],
           "correct": 2,
-          "why": "\"A certain freedom that comes with responsibility\" - to support others and keep the door open.",
-          "type": "single"
+          "why": "Self-directed humour makes the celebratory moment approachable."
+        },
+        {
+          "type": "single",
+          "title": "How does naming people from different phases of his career function?",
+          "options": [
+            "It locates achievement in a network of professional relationships",
+            "It creates a chronological list of every film he made",
+            "It draws attention away from the audience",
+            "It suggests artistic independence is undesirable"
+          ],
+          "correct": 0,
+          "why": "Specific acknowledgements make collaboration concrete."
+        },
+        {
+          "type": "single",
+          "title": "What is implied by his remarks about the freedom that success affords?",
+          "options": [
+            "Freedom removes obligations towards others",
+            "Freedom is a reward for avoiding ordinary work",
+            "The film industry cannot provide further opportunity",
+            "Greater influence can create duties to help others"
+          ],
+          "correct": 3,
+          "why": "The closing argument links privilege and responsibility."
         }
       ],
       "sequence": [
-        "He opens with a joke about the award.",
-        "He looks back on his early career.",
-        "He names people from his past.",
-        "He tells a story from his college years."
+        "He treats the honour with a self-mocking joke.",
+        "He revisits a long period of insecure work.",
+        "He recalls the people through whom he found a creative home.",
+        "He closes by directing attention towards the next generation."
       ],
       "facts": [
         {
-          "title": "Name the two directors he thanks.",
-          "answer": "George Lucas and Steven Spielberg",
-          "tokens": [
-            [
-              "lucas"
-            ],
-            [
-              "spielberg"
-            ]
-          ],
-          "hint": "",
-          "kind": "fact"
+          "title": "Give the surname of one of the two early supporters Ford mentions.",
+          "answer": "Roos or McQueeney.",
+          "criteria": "Accept Fred Roos or Pat McQueeney."
         }
       ],
       "open": [
         {
-          "title": "Explain how the jokes about the award contribute to Ford's ethos.",
-          "answer": "The self-deprecating humour presents him as modest, approachable and still active.",
-          "criteria": "Analyse a rhetorical effect with one concrete example.",
-          "hint": "",
-          "kind": "open"
+          "title": "Discuss how Ford's public persona combines prestige and vulnerability.",
+          "answer": "A career honour establishes authority, while memories of isolation and dependence on others present humility.",
+          "criteria": "Require a specific rhetorical observation and one source-based example."
         }
       ],
-      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
-      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
       "published": false,
       "topic": "ll-harrison-ford",
       "level": "C1",
       "language": "en",
       "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
       "suggestedMinutes": 20,
-      "sourceIndices": {
-        "gist": [
-          0,
-          2
-        ],
-        "detail": [
-          0,
-          3,
-          6
-        ],
-        "sequence": [
-          0,
-          1,
-          2,
-          3
-        ],
-        "facts": [
-          0
-        ],
-        "open": [
-          0
-        ]
-      },
-      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "provenance": "assistant-authored assessment prompts from public practice metadata; video not independently verified; Claude and teacher must check",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     },
@@ -635,128 +488,100 @@
       "goal": "Analyse rhetoric, implicit assumptions, narrative architecture and competing interpretations.",
       "gist": [
         {
-          "title": "Which reading best captures the speech's central tension?",
+          "type": "single",
+          "title": "Which tension most strongly animates the acceptance speech?",
           "options": [
-            "He accepts the honour but suggests lifetime awards should be abolished.",
-            "He accepts a personal honour while redistributing credit to those behind his career.",
-            "He presents his long career as the product of his own talent, discipline and persistence alone."
-          ],
-          "correct": 1,
-          "why": "The speech both accepts an individual honour and redistributes credit.",
-          "type": "single"
-        },
-        {
-          "title": "His treatment of fame is best described as ...",
-          "options": [
-            "a repositioning of fame within collaboration and belonging",
-            "a wholesale rejection of popular success and celebrity",
-            "a claim that stardom remains the only truly meaningful reward for an actor's work"
+            "An individual prize is used to make visible a collective history",
+            "An actor praises his early years while denying later achievements",
+            "A formal thank-you is replaced by an argument against film",
+            "Personal gratitude is shown to be incompatible with professional ambition"
           ],
           "correct": 0,
-          "why": "He values work and connection over the myth of solitary triumph.",
-          "type": "single"
+          "why": "Ford accepts individual recognition while redistributing attention to collaborators."
+        },
+        {
+          "type": "single",
+          "title": "What makes the final appeal more than a generic message of kindness?",
+          "options": [
+            "It demands that award winners retire early",
+            "It grows from an autobiographical account of exclusion and assistance",
+            "It claims all actors should work in the same way",
+            "It treats audience emotion as a substitute for professional work"
+          ],
+          "correct": 1,
+          "why": "His own story of needing inclusion underpins the appeal."
         }
       ],
       "detail": [
         {
-          "title": "What is the main effect of calling the honour \"a prize for being alive\"?",
+          "type": "single",
+          "title": "How does the line about a lifetime award reframe the ceremony?",
           "options": [
-            "It openly questions whether lifetime achievement awards should exist at all.",
-            "It signals that he plans to retire soon and is looking back on a career he considers finished.",
-            "It is self-deprecating: he contrasts himself with nominees honoured for specific work."
+            "It calls for a new judging panel",
+            "It suggests he may stop acting immediately",
+            "It uses self-irony to resist a final, completed-career narrative",
+            "It denies that the award carries any honour"
           ],
           "correct": 2,
-          "why": "Nominees are there for their work; he gets \"a prize for being alive\". He then adds that it is \"a little early\" for a working actor.",
-          "type": "single"
+          "why": "The joke presents his career as continuing."
         },
         {
-          "title": "The college anecdote is structurally important because it ...",
+          "type": "single",
+          "title": "What is the structural significance of the college episode?",
           "options": [
-            "shows that formal education played no role at all in his eventual success as a professional actor",
-            "serves mainly as a humorous digression before the serious thanks",
-            "links the autobiographical past to the later call to welcome newcomers"
+            "It links earlier isolation to the later ethics of opening doors for others",
+            "It interrupts the argument without contributing to it",
+            "It establishes his expertise in educational policy",
+            "It proves that personal success was inevitable"
           ],
-          "correct": 2,
-          "why": "The outsider who found \"my people\" later asks others to keep the door open.",
-          "type": "single"
+          "correct": 0,
+          "why": "The story of finding 'his people' prepares the final call to support newcomers."
         },
         {
-          "title": "What reading most closely follows his remarks about freedom?",
+          "type": "single",
+          "title": "How do the acknowledgements complicate the meritocratic star image?",
           "options": [
-            "Career autonomy matters more than obligations to others.",
-            "Artistic freedom and public responsibility are incompatible.",
-            "Influence should be matched by active support for others."
+            "They suggest the star acted without ambition",
+            "They imply professional fame depends entirely on luck",
+            "They make aesthetic merit irrelevant",
+            "They expose the network of help behind visible individual achievement"
           ],
-          "correct": 2,
-          "why": "Success brings \"a certain freedom that comes with responsibility\".",
-          "type": "single"
+          "correct": 3,
+          "why": "He emphasizes sustained support and collective creative work."
         }
       ],
       "sequence": [
-        "He opens with a joke about the occasion.",
-        "He turns to the early years of his career.",
-        "He names figures from his professional past.",
-        "He recounts an episode from his college years."
+        "He begins with a humorous distance from the honour itself.",
+        "He remembers prolonged professional uncertainty.",
+        "He identifies colleagues and supporters as indispensable.",
+        "He turns personal memory into a broader responsibility."
       ],
       "facts": [
         {
-          "title": "Name the two filmmakers acknowledged after the career-struggle passage.",
-          "answer": "George Lucas and Steven Spielberg",
-          "tokens": [
-            [
-              "lucas"
-            ],
-            [
-              "spielberg"
-            ]
-          ],
-          "hint": "",
-          "kind": "fact"
+          "title": "Name both early supporters Ford honours by name.",
+          "answer": "Fred Roos and Pat McQueeney.",
+          "criteria": "Both names are required, allowing minor orthographic variation after teacher review."
         }
       ],
       "open": [
         {
-          "title": "To what extent is the persona Ford presents in this speech itself carefully constructed?",
-          "answer": "The speech resists heroic individualism through humour and gratitude, although even humility can help construct star charisma.",
-          "criteria": "Offer both a reading and a counter-reading, grounded in two moments.",
-          "hint": "",
-          "kind": "open"
+          "title": "Evaluate whether the speech escapes the mythology of individual success or merely reshapes it.",
+          "answer": "It gives real attention to shared effort and luck, although humility may itself reinforce the star's appeal.",
+          "criteria": "Accept a nuanced argument supported by references to early struggle and final exhortation."
         }
       ],
-      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
-      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
       "published": false,
       "topic": "ll-harrison-ford",
       "level": "C2",
       "language": "en",
       "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
       "suggestedMinutes": 20,
-      "sourceIndices": {
-        "gist": [
-          0,
-          3
-        ],
-        "detail": [
-          0,
-          3,
-          6
-        ],
-        "sequence": [
-          0,
-          1,
-          2,
-          3
-        ],
-        "facts": [
-          0
-        ],
-        "open": [
-          0
-        ]
-      },
-      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "provenance": "assistant-authored assessment prompts from public practice metadata; video not independently verified; Claude and teacher must check",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     }
-  }
+  },
+  "authoredDraft": true
 }
