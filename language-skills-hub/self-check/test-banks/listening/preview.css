@@ -1,0 +1,9 @@
+.r35-warning{border-left:4px solid var(--warn);margin-top:15px}
+.stage-phase{margin:22px 0 7px}
+#loading.error{color:var(--wrong);border:1px solid var(--wrong);padding:14px;border-radius:13px}
+#teacherReview{border-top:1px solid var(--line);margin-top:22px;padding:18px}
+#teacherReview .question{padding:16px;margin:15px 0}
+#teacherReview .select-response{max-width:270px;margin-left:9px}
+.result-export{padding:16px 20px;border-top:1px solid var(--line)}
+#exportResult{min-height:44px}
+@media(max-width:500px){#teacherReview{padding:12px}#teacherReview .select-response{display:block;margin:7px 0}}
