@@ -1,5 +1,7 @@
 name: LSH R34 independent Reading EN A1-C2 pilots – stacked draft QA
 on:
+  push:
+    branches: [feat/lsh-r33-independent-reading-b1-pilot-2026-11-10]
   pull_request:
     branches: [feat/lsh-r32-reading-independent-test-pilot-2026-11-10]
   workflow_dispatch:
