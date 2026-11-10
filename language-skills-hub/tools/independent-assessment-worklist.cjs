@@ -23,15 +23,21 @@ const report=all.map(row=>{
  if(!fs.existsSync(file))return {...row,state:'missing'};
  try{
   const bank=JSON.parse(fs.readFileSync(file,'utf8'));
+  const count=row.skill==='reading'?
+   (Array.isArray(bank.questions)?bank.questions.length:0):
+   (bank.kind==='LSH_INDEPENDENT_LISTENING_DRAFT_R37_V1'&&
+    bank.variant&&['gist','detail','sequence','facts','open'].every(
+     part=>Array.isArray(bank.variant[part])&&bank.variant[part].length>0)?
+    ['gist','detail','sequence','facts','open'].reduce(
+     (n,part)=>n+bank.variant[part].length,0):0);
   if(bank.topic!==row.topic||bank.language!==row.language||
-   bank.level!==row.level||!Array.isArray(bank.questions)||
-   bank.questions.length===0)return {...row,state:'invalid'};
+   bank.level!==row.level||count===0)return {...row,state:'invalid'};
   if(bank.published===true){
    // No human approval evidence present in this workflow.
    return {...row,state:'unexpected-published'};
   }
   if(bank.status==='DRAFT_PENDING_TEACHER_CONTENT_APPROVAL'&&bank.published===false)
-   return {...row,state:'draft',questions:bank.questions.length};
+   return {...row,state:'draft',questions:count};
   return {...row,state:'invalid'};
  }catch(_){return {...row,state:'invalid'}}
 });
