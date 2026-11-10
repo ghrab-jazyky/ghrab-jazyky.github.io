@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="cs" data-theme="dark">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="color-scheme" content="dark light">
+ <meta name="robots" content="noindex,nofollow">
+ <meta name="description" content="Language Skills Hub – interní QA přehled všech 138 rozpracovaných variant, žádné schválené testy.">
+ <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'; frame-ancestors 'none'">
+ <title>LSH – redakční přejímka testů R34</title>
+ <link rel="stylesheet" href="../reading/reading.css">
+ <link rel="stylesheet" href="../listening/listening.css">
+ <link rel="stylesheet" href="dashboard.css">
+ <script defer src="dashboard.js"></script>
+</head>
+<body>
+ <header class="topbar"><a class="brand" href="../../index.html"><span class="mark">Q</span><span><strong>Language Skills Hub</strong><small>Assessment QA · pracovní větev</small></span></a><span class="mode">DRAFT · ŽÁDNÉ SCHVÁLENÉ TESTY</span></header>
+ <main class="container teacher-layout">
+  <section class="hero">
+   <p class="eyebrow">R34 · REDAKČNÍ KONTROLA · NO PUBLICATION</p>
+   <h1>Pokrytí testových variant Reading / Listening</h1>
+   <p class="subtitle">Technická kontrola všech dostupných témat a úrovní. Náhledy jsou pouze pro interní redakční práci, nejsou určené studentům ani ke klasifikaci.</p>
+   <div class="notice" role="alert">Z 138 variant je zatím 0 pedagogicky schválených. Dvě sady byly autorsky připraveny; většina čtecích sad jsou mechanické návrhy a poslechové sady představují výběr procvičovacích úloh. Neposílat žákům ani nepoužívat k udělování známek.</div>
+  </section>
+  <section class="panel" aria-labelledby="summaryHeading">
+   <div class="panel-head"><h2 id="summaryHeading">Stav zpracování</h2></div>
+   <div class="r34-stats" id="stats" aria-live="polite"><p>Načítání…</p></div>
+  </section>
+  <section class="panel" aria-labelledby="selectorHeading">
+   <div class="panel-head"><h2 id="selectorHeading">Technická přejímka konkrétní varianty</h2></div>
+   <form id="setup" class="teacher-form" autocomplete="off">
+    <label for="skill">Dovednost <select id="skill"><option value="reading">Reading Lab</option><option value="listening">Listening Lab</option></select></label>
+    <label for="topic">Téma <select id="topic"></select></label>
+    <label for="language">Jazyk <select id="language"><option value="en">Angličtina</option><option value="es">Španělština</option><option value="de">Němčina</option><option value="fr">Francouzština</option></select></label>
+    <label for="level">CEFR <select id="level"><option>A1</option><option>A2</option><option>B1</option><option selected>B2</option><option>C1</option><option>C2</option></select></label>
+    <label for="timer">Čas v minutách <input id="timer" type="number" min="5" max="120" value="20" step="1" required></label>
+   </form>
+   <div class="r34-status" id="variantStatus" role="status" aria-live="polite"></div>
+   <div class="r34-actions"><a class="action primary" id="previewLink" href="#" aria-disabled="true" target="_blank" rel="noopener noreferrer">Otevřít pouze interní QA náhled</a><button type="button" class="action ghost" id="copyLink" disabled>Zkopírovat odkaz pro audit</button></div>
+   <p class="small-note" id="copyStatus"></p>
+   <p class="small-note">Správné odpovědi jsou v této statické pracovní větvi technicky viditelné. Odkaz není utajený a nemá nahrazovat GIT.</p>
+  </section>
+ </main>
+ <footer class="footer">R34 · 138 technických variant · 0 schválených · ostrý katalog R31 beze změny</footer>
+</body>
+</html>
