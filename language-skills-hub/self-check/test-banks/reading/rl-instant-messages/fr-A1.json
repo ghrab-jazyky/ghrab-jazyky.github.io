@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "fr",
+  "level": "A1",
+  "sourceTitle": "Un samedi au parc",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Dix questions inédites de compréhension et de transfert, sans approbation pédagogique définitive.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Compréhension"
+    },
+    {
+      "id": "reasoning",
+      "title": "Interprétation"
+    },
+    {
+      "id": "transfer",
+      "title": "Application"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-fr-a1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Pourquoi Hugo propose-t-il une rencontre samedi ?",
+      "choices": [
+        "Il veut organiser un pique-nique avec ses amis.",
+        "Il demande de l'aide pour un exercice.",
+        "Il souhaite annuler le cours de piano.",
+        "Il doit acheter un billet de train."
+      ],
+      "answer": 0,
+      "explanation": "Hugo parle du beau temps et propose un repas ensemble au parc."
+    },
+    {
+      "id": "r41-fr-a1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Que sait-on de la matinée de Chloé ?",
+      "choices": [
+        "Elle passe déjà la matinée au café.",
+        "Elle a un cours qui se termine à onze heures.",
+        "Elle doit prendre le bus pendant vingt minutes.",
+        "Elle travaille jusqu'à quinze heures."
+      ],
+      "answer": 1,
+      "explanation": "Son cours de piano finit à onze heures et elle propose midi."
+    },
+    {
+      "id": "r41-fr-a1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Pourquoi Théo indique-t-il le café près du lac ?",
+      "choices": [
+        "Tout le monde doit y acheter son repas.",
+        "C'est l'endroit où Chloé apprend le piano.",
+        "Ce lieu est facile à trouver dans un grand parc.",
+        "Le parc n'a pas d'autre entrée."
+      ],
+      "answer": 2,
+      "explanation": "Théo souhaite éviter que les amis se cherchent dans le parc."
+    },
+    {
+      "id": "r41-fr-a1-04",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Que confirme Hugo dans son dernier message ?",
+      "choices": [
+        "Le prix du billet de bus de Théo.",
+        "Le menu proposé au café.",
+        "Le nom du morceau joué par Chloé.",
+        "Le lieu précis et l'heure du rendez-vous."
+      ],
+      "answer": 3,
+      "explanation": "Il rappelle midi et le café à la porte verte."
+    },
+    {
+      "id": "r41-fr-a1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Pourquoi Chloé propose-t-elle de se voir à midi ?",
+      "choices": [
+        "Elle a besoin de prendre le bus de Théo.",
+        "Elle sera libre après son cours du matin.",
+        "Le parc est fermé avant douze heures.",
+        "Elle doit quitter la ville à onze heures."
+      ],
+      "answer": 1,
+      "explanation": "Le cours de piano se termine à onze heures, ce qui permet une rencontre ensuite."
+    },
+    {
+      "id": "r41-fr-a1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "À quoi sert la précision sur la porte verte ?",
+      "choices": [
+        "Théo veut repeindre l'entrée du parc.",
+        "Hugo doit acheter une nouvelle veste.",
+        "Chloé souhaite réserver une salle de musique.",
+        "Elle aide les amis à reconnaître le bon café."
+      ],
+      "answer": 3,
+      "explanation": "La couleur est un repère pratique pour trouver le lieu convenu."
+    },
+    {
+      "id": "r41-fr-a1-07",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Pourquoi est-il important de ne pas arriver en retard ?",
+      "choices": [
+        "La mère d'Hugo ne peut rester que jusqu'à quinze heures.",
+        "Chloé commence le piano à midi.",
+        "Le lac ferme à treize heures.",
+        "Le bus de Théo prend trois heures."
+      ],
+      "answer": 0,
+      "explanation": "Le temps pendant lequel la mère d'Hugo peut rester est limité."
+    },
+    {
+      "id": "r41-fr-a1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Des élèves doivent se retrouver dans un grand parc. Quel conseil leur donner ?",
+      "choices": [
+        "Attendre chacun devant une entrée différente.",
+        "Ne communiquer aucune adresse.",
+        "Choisir un point de rencontre facile à reconnaître.",
+        "Demander à tout le monde de partir seul."
+      ],
+      "answer": 2,
+      "explanation": "Théo choisit un repère visuel précis pour faciliter le rendez-vous."
+    },
+    {
+      "id": "r41-fr-a1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Une amie a cours jusqu'à onze heures. Quel projet convient ?",
+      "choices": [
+        "Commencer avant que son cours soit terminé.",
+        "Fixer le rendez-vous après la fin du cours.",
+        "La faire venir pendant sa leçon.",
+        "Choisir une heure sans lui demander."
+      ],
+      "answer": 1,
+      "explanation": "Les amis adaptent l'horaire à la disponibilité de Chloé."
+    },
+    {
+      "id": "r41-fr-a1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Pourquoi est-il utile que chacun apporte une chose différente ?",
+      "choices": [
+        "Cela évite toute discussion entre les amis.",
+        "Le pique-nique doit durer trois jours.",
+        "Tout le monde doit apporter exactement la même chose.",
+        "Les amis peuvent partager nourriture et boissons."
+      ],
+      "answer": 3,
+      "explanation": "Le message d'Hugo montre comment répartir simplement les préparatifs."
+    }
+  ]
+}
