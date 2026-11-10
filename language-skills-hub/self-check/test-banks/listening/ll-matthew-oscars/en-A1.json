@@ -71,16 +71,16 @@
     {
       "id": "r37-mm-a1-05",
       "category": "interpretation",
-      "q": "How many things does he say he needs each day?",
+      "q": "Why does the speaker name important things in his life?",
       "options": [
-        "One thing",
-        "Three things",
-        "Five things",
-        "Ten things"
+        "To explain what helps him in life",
+        "To introduce three new films",
+        "To ask the audience for more awards",
+        "To describe his plans for a holiday"
       ],
-      "answer": 1,
-      "explanation": "The speech includes a three-part personal framework.",
-      "sourceEvidence": "He describes three things he needs."
+      "answer": 0,
+      "explanation": "He explains the guiding ideas that help him live and keep moving forward.",
+      "sourceEvidence": "He talks about needing someone to look up to, something to look forward to and someone to chase."
     },
     {
       "id": "r37-mm-a1-06",
