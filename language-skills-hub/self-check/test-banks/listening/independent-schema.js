@@ -10,7 +10,7 @@
   must(bank&&bank.kind==='LSH_INDEPENDENT_LISTENING_DRAFT_R37_V1','Invalid independent Listening bank');
   must(bank.published===false&&bank.status==='DRAFT_PENDING_TEACHER_CONTENT_APPROVAL',
    'Independent Listening content published without teacher approval');
-  must(selection&&selection.topic==='ll-harrison-ford'&&selection.lang==='en'&&selection.level==='B2',
+  must(selection&&['ll-harrison-ford','ll-matthew-oscars','ll-peaky-no-fighting'].includes(selection.topic)&&selection.lang==='en'&&selection.level==='B2',
    'Unsupported independent Listening pilot variant');
   must(bank.topic===selection.topic&&bank.language===selection.lang&&bank.level===selection.level,
    'Independent Listening selection mismatch');
@@ -18,7 +18,7 @@
    'Original Listening source checksum mismatch');
   must(bank.durationMinutesSuggested===20&&bank.listeningPasses===2,
    'Listening reference uses 20 minutes and two teacher-controlled playbacks');
-  must(bank.auditRevision==='R37-AUTHOR-DRAFT-1'&&nonempty(bank.scoreRule),
+  must(['R37-AUTHOR-DRAFT-1','R38-AUTHOR-DRAFT-1'].includes(bank.auditRevision)&&nonempty(bank.scoreRule),
    'Invalid author review tag or scoring contract');
   core.validate(practice);core.validate(bank.variant);
   const v=bank.variant,objective=v.gist.length+v.detail.length+v.sequence.length,

@@ -64,6 +64,6 @@ test('R37 new Listening bank is unadvertised in production teacher/student UIs',
  assert.doesNotMatch(main,/test-banks\/listening|LSHIndependentListeningSchema/);
  const current=JSON.parse(execFileSync(process.execPath,[
   path.join(root,'tools/independent-assessment-worklist.cjs'),'--json'],{encoding:'utf8'}));
- assert.equal(current.overview.states.draft,11);
- assert.equal(current.overview.states.missing,127);
+ assert.equal(current.overview.states.draft,13);
+ assert.equal(current.overview.states.missing,125);
 });
