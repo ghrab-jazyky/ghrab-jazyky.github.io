@@ -12,8 +12,8 @@
     "total": 138,
     "reading": 120,
     "listening": 18,
-    "drafted": 10,
-    "missing": 128,
+    "drafted": 14,
+    "missing": 124,
     "teacherApproved": 0
   },
   "conversationPolicy": "No auto-graded oral test; requires separately approved teacher rubric and pedagogy",
@@ -42,8 +42,8 @@
       "language": "en",
       "level": "B1",
       "sourceHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
-      "status": "MISSING",
-      "testBank": null
+      "status": "DRAFT_UNAPPROVED",
+      "testBank": "self-check/test-banks/reading/rl-asteroids/en-B1.json"
     },
     {
       "topic": "rl-asteroids",
@@ -636,8 +636,8 @@
       "language": "en",
       "level": "B1",
       "sourceHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
-      "status": "MISSING",
-      "testBank": null
+      "status": "DRAFT_UNAPPROVED",
+      "testBank": "self-check/test-banks/reading/rl-plastic-ocean/en-B1.json"
     },
     {
       "topic": "rl-plastic-ocean",
@@ -852,8 +852,8 @@
       "language": "en",
       "level": "B1",
       "sourceHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
-      "status": "MISSING",
-      "testBank": null
+      "status": "DRAFT_UNAPPROVED",
+      "testBank": "self-check/test-banks/reading/rl-email-friend/en-B1.json"
     },
     {
       "topic": "rl-email-friend",
@@ -1068,8 +1068,8 @@
       "language": "en",
       "level": "B1",
       "sourceHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
-      "status": "MISSING",
-      "testBank": null
+      "status": "DRAFT_UNAPPROVED",
+      "testBank": "self-check/test-banks/reading/rl-instant-messages/en-B1.json"
     },
     {
       "topic": "rl-instant-messages",
