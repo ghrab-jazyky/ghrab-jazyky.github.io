@@ -1,0 +1,117 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "de",
+  "level": "A2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 15,
+  "auditRevision": "R34-CM-DE-A2-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 6 points maximum; local provisional grade only",
+  "description": "Originale Fragen für Deutsch A2. Entwurf, noch nicht didaktisch freigegeben.",
+  "tabs": [
+    {
+      "id": "verstehen",
+      "title": "Text verstehen",
+      "description": "Gedanken und Aussagen verstehen."
+    },
+    {
+      "id": "anwenden",
+      "title": "Übertragen und prüfen",
+      "description": "Ideen auf andere Situationen beziehen."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-cm-de-a2-01",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Warum möchte Daniel seine Lerngewohnheiten ändern?",
+      "choices": [
+        "Der Test findet nicht mehr statt.",
+        "Er hat alle Bücher verloren.",
+        "Das nächtliche Lernen macht ihn am nächsten Tag müde.",
+        "Seine Schwester schreibt den Test."
+      ],
+      "answer": 2,
+      "explanation": "Im ersten Absatz erklärt der Text die Folgen des späten Lernens."
+    },
+    {
+      "id": "r34-cm-de-a2-02",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Welchen Vorteil könnte die Pause am Montag haben?",
+      "choices": [
+        "Daniel kann lernen, ohne sich ständig zu überfordern.",
+        "Die Pause ersetzt das gesamte Lernen.",
+        "Damit bekommt er automatisch die beste Note.",
+        "Er muss danach nicht mehr schlafen."
+      ],
+      "answer": 0,
+      "explanation": "Die neue Methode beginnt mit einer kurzen Einheit und einer Pause."
+    },
+    {
+      "id": "r34-cm-de-a2-03",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Warum liest Daniel seine Notizen noch einmal?",
+      "choices": [
+        "Er möchte die Antworten seiner Schwester abschreiben.",
+        "Er will den Test verschieben.",
+        "Er hat keine Fragen mehr.",
+        "Er merkt beim Erklären, was ihm noch unklar ist."
+      ],
+      "answer": 3,
+      "explanation": "Ein schwieriger Erklärungsversuch zeigt ihm eine Wissenslücke."
+    },
+    {
+      "id": "r34-cm-de-a2-04",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Wozu beantwortet er Fragen ohne Lösungen?",
+      "choices": [
+        "Er kann dadurch den Unterricht überspringen.",
+        "Er kann prüfen, was er selbst schon weiß.",
+        "Er muss dann nie wieder wiederholen.",
+        "Er möchte keine Wissenschaft mehr lernen."
+      ],
+      "answer": 1,
+      "explanation": "Er prüft seinen Wissensstand, statt nur Lösungen anzusehen."
+    },
+    {
+      "id": "r34-cm-de-a2-05",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum ist Daniel trotz zweier Fehler zufriedener?",
+      "choices": [
+        "Er hat gar keinen Test geschrieben.",
+        "Seine Note ist schlechter geworden.",
+        "Er bleibt ruhiger und erkennt weiteren Übungsbedarf.",
+        "Er hat die Aufgaben nicht gelesen."
+      ],
+      "answer": 2,
+      "explanation": "Der letzte Absatz verbindet Fehler mit Gelassenheit und Reflexion."
+    },
+    {
+      "id": "r34-cm-de-a2-06",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Was sollte Daniel tun, wenn sein Plan für Geschichte nicht passt?",
+      "choices": [
+        "Er sollte den Plan sinnvoll anpassen.",
+        "Er muss alles genau gleich wiederholen.",
+        "Er soll nur in der Nacht vor dem Test lernen.",
+        "Er muss das Fach sofort wechseln."
+      ],
+      "answer": 0,
+      "explanation": "Ein Lernplan muss laut Text nicht perfekt und unveränderlich sein."
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "de",
+  "level": "C2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 25,
+  "auditRevision": "R34-CM-DE-C2-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 6 points maximum; local provisional grade only",
+  "description": "Originale Fragen für Deutsch C2. Entwurf, noch nicht didaktisch freigegeben.",
+  "tabs": [
+    {
+      "id": "verstehen",
+      "title": "Text verstehen",
+      "description": "Gedanken und Aussagen verstehen."
+    },
+    {
+      "id": "anwenden",
+      "title": "Übertragen und prüfen",
+      "description": "Ideen auf andere Situationen beziehen."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-cm-de-c2-01",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Wann wird Resilienz zu einer problematischen moralischen Forderung?",
+      "choices": [
+        "Wenn jemand eine falsche Annahme überdenkt.",
+        "Wenn ein Schüler neue Lösungswege ausprobiert.",
+        "Wenn sie unabhängig von den Lebensumständen eingefordert wird.",
+        "Wenn Unterstützung zum Lernen beiträgt."
+      ],
+      "answer": 2,
+      "explanation": "Die Einleitung kritisiert eine von Ressourcen gelöste Pflicht zum Durchhalten."
+    },
+    {
+      "id": "r34-cm-de-c2-02",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was unterscheidet selbstbestimmte Veränderung von bloßem Durchhalten?",
+      "choices": [
+        "Es besteht eine realistische Möglichkeit, die Lage durch Handeln zu verbessern.",
+        "Beide werden ausschließlich nach Noten unterschieden.",
+        "Durchhalten bedeutet immer bessere Bildung.",
+        "Selbstbestimmung erfordert keinerlei äußere Bedingungen."
+      ],
+      "answer": 0,
+      "explanation": "Der zweite Absatz fragt nach der Aussicht auf wirksame Veränderung."
+    },
+    {
+      "id": "r34-cm-de-c2-03",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was könnte eine Schule übersehen, wenn sie Ausdauer ausschließlich feiert?",
+      "choices": [
+        "Dass manche Lernende engagiert sind.",
+        "Dass Prüfungen verschiedene Aufgaben enthalten.",
+        "Den Wert sinnvoller Strategien.",
+        "Die Frage, warum unzureichende Bedingungen fortbestehen."
+      ],
+      "answer": 3,
+      "explanation": "Lob für Ausdauer kann von fortbestehenden Hindernissen ablenken."
+    },
+    {
+      "id": "r34-cm-de-c2-04",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum reicht ein präziser Leistungsindikator nicht als Gesamtbild des Lernens?",
+      "choices": [
+        "Jede mathematische Zahl ist grundsätzlich falsch.",
+        "Er erfasst nur einen Ausschnitt und lässt andere wertvolle Erfahrungen aus.",
+        "Nicht messbare Erfahrungen sind bedeutungslos.",
+        "Er macht eigenständige Entscheidungen unmöglich."
+      ],
+      "answer": 1,
+      "explanation": "Der Text problematisiert die Verwechslung von Messbarem und Bedeutsamem."
+    },
+    {
+      "id": "r34-cm-de-c2-05",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Wann kann das Aufgeben eines Ziels Ausdruck von Urteilsfähigkeit sein?",
+      "choices": [
+        "Sobald die erste Schwierigkeit auftaucht.",
+        "Wenn es keine offizielle Note gibt.",
+        "Wenn weiteres Festhalten keinen sinnvollen Zweck mehr erfüllt.",
+        "Immer wenn andere eine Aufgabe nicht mögen."
+      ],
+      "answer": 2,
+      "explanation": "Reife umfasst die Frage, wann Beharrlichkeit sinnvoll bleibt."
+    },
+    {
+      "id": "r34-cm-de-c2-06",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Welche Bildungskultur befürwortet der Schluss?",
+      "choices": [
+        "Sie bietet Unterstützung und erlaubt zugleich, Ziele kritisch zu überdenken.",
+        "Sie belohnt Durchhalten ohne jede Einschränkung.",
+        "Sie verzichtet vollständig auf Bewertung.",
+        "Sie fordert ständig nachweisbare Verbesserung."
+      ],
+      "answer": 0,
+      "explanation": "Das Fazit verbindet Ressourcen mit selbstständiger Urteilsfähigkeit."
+    }
+  ]
+}
