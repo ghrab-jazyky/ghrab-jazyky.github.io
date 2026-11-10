@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-EN-C1-AUTHOR-DRAFT-1",
+  "description": "Independent C1 assessment draft requiring human source/CEFR review, not a verified grade.",
+  "tabs": [
+    {
+      "id": "argument",
+      "title": "Argument and Qualification",
+      "description": "Examine the claims and their limits."
+    },
+    {
+      "id": "implications",
+      "title": "Hidden Assumptions",
+      "description": "Recognise implications and competing interpretations."
+    },
+    {
+      "id": "evaluation",
+      "title": "Reasoned Application",
+      "description": "Evaluate how the argument transfers to educational policy."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-c1-01",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What makes 'never give up' an inadequate message in some educational settings?",
+      "choices": [
+        "It assumes all pupils will respond to public praise.",
+        "It may overlook material obstacles that encouragement cannot remove.",
+        "It suggests that students need to set measurable targets.",
+        "It treats failure as evidence of an ineffective strategy."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph one contrasts motivational slogans with a lack of practical support."
+    },
+    {
+      "id": "r34-en-c1-02",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What is the significance of the two students receiving similarly poor results?",
+      "choices": [
+        "It proves that their home environments have no effect on learning.",
+        "It shows that one student has less determination than the other.",
+        "It suggests that assessments cannot identify weaknesses.",
+        "It highlights how identical outcomes can conceal unequal opportunities."
+      ],
+      "answer": 3,
+      "explanation": "The example deliberately holds performance constant while comparing unequal conditions."
+    },
+    {
+      "id": "r34-en-c1-03",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "How does the discussion of leisure extend the earlier criticism?",
+      "choices": [
+        "It questions the assumption that every valuable activity must show progress.",
+        "It shows that schools should measure informal learning more often.",
+        "It identifies relaxation as the most reliable way to improve grades.",
+        "It argues that studying for pleasure is less useful than formal work."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph three broadens the critique to non-measurable forms of learning and curiosity."
+    },
+    {
+      "id": "r34-en-c1-04",
+      "tab": "implications",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What would be misleading about praising only the first student's determination?",
+      "choices": [
+        "The student might begin to expect better marks.",
+        "The teacher would be unable to compare future work.",
+        "The praise might mistake access to resources for personal character.",
+        "The other student would no longer benefit from study strategies."
+      ],
+      "answer": 2,
+      "explanation": "The text explicitly warns that resource advantages can be confused with strength of character."
+    },
+    {
+      "id": "r34-en-c1-05",
+      "tab": "implications",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Which claim is most consistent with the author's view of educational value?",
+      "choices": [
+        "Every learning activity should eventually be converted into a grade.",
+        "An experience may be valuable without producing a measurable result.",
+        "Leisure becomes valuable only when it leads to a new qualification.",
+        "Disagreement is unproductive unless the participants reach consensus."
+      ],
+      "answer": 1,
+      "explanation": "Novel reading and thoughtful disagreement are valuable although they may produce no measurable outcome."
+    },
+    {
+      "id": "r34-en-c1-06",
+      "tab": "implications",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does the final paragraph retain the idea of individual responsibility?",
+      "choices": [
+        "To argue that support should be withdrawn once pupils make progress.",
+        "To make students solely responsible for their future opportunities.",
+        "To suggest that schools should intervene only when grades fall.",
+        "To show that institutional support should enable rather than replace agency."
+      ],
+      "answer": 3,
+      "explanation": "The writer states that practical support makes learners' choices more meaningful without removing responsibility."
+    },
+    {
+      "id": "r34-en-c1-07",
+      "tab": "evaluation",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A school puts motivational posters in every corridor but removes supervised study rooms. How would the author most likely respond?",
+      "choices": [
+        "Encouragement without access to practical support leaves the underlying problem unsolved.",
+        "The posters would be sufficient if students agreed to work harder.",
+        "The change would help students become more independent of teachers.",
+        "There is no evidence that study spaces affect students' opportunities."
+      ],
+      "answer": 0,
+      "explanation": "The first, second and final paragraphs explicitly distinguish motivation from the resources that make action possible."
+    },
+    {
+      "id": "r34-en-c1-08",
+      "tab": "evaluation",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What concern might the author raise about a school that grades students' hobbies?",
+      "choices": [
+        "The grades could be more reliable than academic assessment.",
+        "Students might become unwilling to practise unfamiliar skills.",
+        "Activities done for curiosity could become another obligation to improve.",
+        "Students might be encouraged to spend more time outside school."
+      ],
+      "answer": 2,
+      "explanation": "The author warns that treating leisure as self-optimisation can turn curiosity into a demand."
+    },
+    {
+      "id": "r34-en-c1-09",
+      "tab": "evaluation",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "A teacher recommends the same study strategy to every student. What important question is missing?",
+      "choices": [
+        "Whether the teacher has explained the strategy clearly enough.",
+        "Whether students actually have the time and conditions to use it.",
+        "Whether the strategy can improve marks within a single week.",
+        "Whether students already enjoy the subject being taught."
+      ],
+      "answer": 1,
+      "explanation": "The comparison between the two students shows that access to time and support changes what advice can achieve."
+    },
+    {
+      "id": "r34-en-c1-10",
+      "tab": "evaluation",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Which policy would best represent the article's overall position?",
+      "choices": [
+        "Replace personal targets with uniform school-wide expectations.",
+        "Judge progress exclusively by measurable improvement in grades.",
+        "Require students to explain every period of rest or leisure.",
+        "Combine specific learning feedback with accessible support and time to rest."
+      ],
+      "answer": 3,
+      "explanation": "The final paragraph explicitly links personal strategy, institutional support, assessment and rest."
+    }
+  ]
+}
