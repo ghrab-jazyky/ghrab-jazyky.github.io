@@ -16,13 +16,13 @@
 | | Practice EN/B2 | R32 testový návrh EN/B2 |
 |---|---|---|
 | Počet hodnotitelných otázek | 18 | 10 |
-| Typy úloh | mc, match, gap | původních 10 **nově napsaných** mc |
+| Typy úloh | mc, match, gap | 10 **nově napsaných** multiple-choice otázek |
 | Odstavce čtecího textu | 4 | stejné 4 |
 | Rozvržení | 6 učebních oddílů | 3 testové oddíly |
 | Nápovědy / slovníček | podle procvičovací karty | nepovolovat v běžícím testu |
 | Hodnocení | procvičovací pravidla | 1 bod za správnou odpověď, max. 10, známka jen jako lokální návrh podle stávající stupnice |
 
-Nové otázky cílí na výklad významu, logiku argumentace a přenos do modelových situací. Nejde o kopii ID, zadání ani přesných možností procvičovacích otázek. Automatický test ověřuje rozdílnost zadání a úplnost klíče, **nedokáže však prokázat jazykovou správnost ani absenci významové podobnosti**. To vyžaduje pedagoga.
+Nové otázky cílí na výklad významu, logiku argumentace a přenos do modelových situací. Po první nezávislé revizi byly upraveny příliš snadné distraktory a vyváženo rozložení klíče A/B/C/D (2/3/2/3). Nejde o kopii ID, zadání ani přesných možností procvičovacích otázek. Automatický test ověřuje rozdílnost zadání a úplnost klíče, **nedokáže však prokázat jazykovou správnost ani absenci významové podobnosti**. To vyžaduje pedagoga.
 
 ## Nutné schválení před aktivací
 
@@ -36,7 +36,10 @@ Nové otázky cílí na výklad významu, logiku argumentace a přenos do modelo
 
 - `self-check/test-banks/reading/rl-can-mistakes/en-B2.json` – původní sada 10 testových otázek, vlastní ID, taby, odpovědi a vysvětlení, **draft/published=false**.
 - `test-bank-core.js` – validátor pro status, odlišná ID a zadání, počet, CEFR, checksum původní karty; sestaví QA variantu bez původní maskované gap věty.
-- `tests/r32-independent-reading-pilot.test.cjs` – automatické kontrakty a skórování, které nezmění původní practice.
-- Testová banka není zařazena do veřejného studentského menu ani do produkčního renderovacího toku R31. Zcela záměrně se jedná o oddělenou učitelskou pedagogickou referenci.
+- `tests/r32-independent-reading-pilot.test.cjs` – automatické kontrakty, skutečný SHA-256 původního HTML, vyvážení klíče a skórování, které nezmění původní practice.
+- `preview.html?timer=20&attempt=r32localqa1` – izolovaný náhled dostupný pouze z lokálního checkoutu pracovní větve (na veřejné R31 neexistuje), používá stávající časovač a zpětnou vazbu.
+- `tests/r32-independent-reading.browser.test.cjs` – Chromium/WebKit QA pro odevzdání, obnovu, bezchybné řešení a odmítnutí porušených dat.
+- Samostatný položkový audit v `docs/R32-EN-B2-INDEPENDENT-CONTENT-AUDIT.md`.
+- Testová banka není zařazena do veřejného studentského menu ani do produkčního renderovacího toku R31. Má pouze pracovní QA stránku v PR #39, která **nesmí být publikována v ostrém katalogu** bez pedagogického schválení.
 
 **Bezpečnost:** HTML/JS a správné odpovědi zůstanou veřejné při nasazení na GitHub Pages. Nové otázky tedy nejsou tajným zabezpečeným testem. Pro reálně zabezpečenou klasifikaci by se musel použít GIT / serverové vyhodnocení.
