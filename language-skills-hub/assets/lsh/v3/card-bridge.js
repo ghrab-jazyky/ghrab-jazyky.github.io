@@ -1,4 +1,4 @@
-/* Language Skills Hub E3C – Conversation card → shared vocabulary bridge.
+/* Language Skills Hub R31 – Conversation card → production shared vocabulary bridge.
    Requires model.js/store.js. Original Conversation engine and its inline CSP hash remain untouched.
    This connector runs without network and NEVER claims durable storage when IndexedDB is unavailable. */
 (function (root, factory) {
@@ -90,7 +90,7 @@
       console.error('LSH E3C: card DOM is not compatible');
       return;
     }
-    const store=STORE.createStore({mode:'staging'});
+    const store=STORE.createStore({mode:'production'});
     const textNode=(tag,cls,content)=>{
       const node=document.createElement(tag);
       if(cls)node.className=cls;
