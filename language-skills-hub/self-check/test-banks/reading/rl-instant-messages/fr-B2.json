@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "fr",
+  "level": "B2",
+  "sourceTitle": "Pourquoi ce message semblait-il impoli ?",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Dix questions originales de compréhension, de raisonnement et de transfert; validation externe nécessaire.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interprétation"
+    },
+    {
+      "id": "argument",
+      "title": "Argumentation"
+    },
+    {
+      "id": "transfer",
+      "title": "Transfert critique"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-fr-b2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Pourquoi un message très bref peut-il être compris de deux façons différentes ?",
+      "choices": [
+        "Le lecteur ignore souvent le ton et la situation de l'expéditeur.",
+        "Un message écrit ne contient jamais d'information.",
+        "Le destinataire voit toujours le visage de l'expéditeur.",
+        "La ponctuation a exactement le même sens pour tous."
+      ],
+      "answer": 0,
+      "explanation": "Les échanges écrits suppriment la voix et les expressions qui aident à interpréter."
+    },
+    {
+      "id": "r41-fr-b2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Pourquoi les mêmes mots envoyés plus tard peuvent-ils sembler différents ?",
+      "choices": [
+        "Le texte change automatiquement après trois heures.",
+        "Le retard peut être pris pour un manque d'intérêt.",
+        "Toute réponse tardive est un refus volontaire.",
+        "Les phrases courtes ne fonctionnent qu'en journée."
+      ],
+      "answer": 1,
+      "explanation": "Les attentes sur le délai influencent le jugement porté sur le message."
+    },
+    {
+      "id": "r41-fr-b2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Quelle erreur Dana commet-elle en lisant « ça marche » ?",
+      "choices": [
+        "Marek a proposé ouvertement un autre cadeau.",
+        "Le professeur a déjà reçu l'album.",
+        "Elle prend une réponse favorable pour un signe de désaccord.",
+        "Le groupe ne dispose plus de budget."
+      ],
+      "answer": 2,
+      "explanation": "Dana change de projet sans vérifier l'intention de Marek."
+    },
+    {
+      "id": "r41-fr-b2-04",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Pourquoi l'exemple du groupe est-il présenté comme inventé ?",
+      "choices": [
+        "Pour affirmer que ces malentendus ne se produisent jamais.",
+        "Pour dire que toutes les conversations sont imaginaires.",
+        "Pour éviter de donner la raison du retard.",
+        "Pour illustrer un problème possible sans prétendre raconter un fait réel."
+      ],
+      "answer": 3,
+      "explanation": "Le récit fictif sert d'illustration d'une difficulté courante."
+    },
+    {
+      "id": "r41-fr-b2-05",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Pourquoi écrire de façon excessivement formelle ne serait-il pas la meilleure solution ?",
+      "choices": [
+        "Les téléphones ne permettent pas les longues phrases.",
+        "Cela semblerait étrange entre amis et créerait d'autres malentendus.",
+        "Une phrase formelle ne peut jamais être mal comprise.",
+        "Les élèves ne connaissent pas les règles de grammaire."
+      ],
+      "answer": 1,
+      "explanation": "L'auteur propose plutôt d'adapter la précision à l'enjeu de la conversation."
+    },
+    {
+      "id": "r41-fr-b2-06",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Quel principe relie une demande de clarification à un appel téléphonique ?",
+      "choices": [
+        "Choisir systématiquement l'application la plus récente.",
+        "Partager publiquement toutes les disputes.",
+        "Ne plus répondre lorsque quelqu'un est contrarié.",
+        "Vérifier l'intention au lieu de la deviner."
+      ],
+      "answer": 3,
+      "explanation": "Les deux solutions redonnent du contexte à un message ambigu."
+    },
+    {
+      "id": "r41-fr-b2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Un camarade répond « ça marche » à une décision importante. Que faire ?",
+      "choices": [
+        "Vérifier qu'il approuve vraiment avant de changer le projet.",
+        "Annuler immédiatement le projet sans lui parler.",
+        "Conclure qu'il se moque volontairement du groupe.",
+        "Ne plus lui répondre pendant plusieurs jours."
+      ],
+      "answer": 0,
+      "explanation": "L'épisode de Dana et Marek montre qu'une interprétation rapide peut être fausse."
+    },
+    {
+      "id": "r41-fr-b2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Une grand-mère finit tous ses messages par un point. Que faut-il envisager ?",
+      "choices": [
+        "Elle est nécessairement en colère.",
+        "Il faut lui interdire d'utiliser la ponctuation.",
+        "Elle applique peut-être simplement la ponctuation habituelle.",
+        "Une réponse tardive est toujours plus polie."
+      ],
+      "answer": 2,
+      "explanation": "Des générations différentes peuvent attribuer des sens différents aux mêmes signes."
+    },
+    {
+      "id": "r41-fr-b2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Des amis ne comprennent pas tous le même signe d'approbation. Quelle solution choisir ?",
+      "choices": [
+        "Interdire tout symbole sans en parler.",
+        "Décider ensemble de ce que le signe signifie.",
+        "Utiliser le même symbole encore plus souvent.",
+        "Laisser chacun deviner le sens de l'autre."
+      ],
+      "answer": 1,
+      "explanation": "Un code partagé aide à réduire les interprétations contradictoires."
+    },
+    {
+      "id": "r41-fr-b2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Deux amis discutent d'un conflit douloureux uniquement par écrit. Que conseille l'article ?",
+      "choices": [
+        "Écrire des réponses de plus en plus courtes.",
+        "Transmettre le conflit à toute la classe.",
+        "Terminer la discussion par un simple « OK. ».",
+        "Passer à un appel ou à une rencontre quand c'est possible."
+      ],
+      "answer": 3,
+      "explanation": "Le dialogue oral peut rendre le ton et l'intention plus clairs."
+    }
+  ]
+}
