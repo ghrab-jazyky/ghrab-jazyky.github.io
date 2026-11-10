@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-CONTENT-AUDIT-1",
+  "description": "Original A2 independent assessment draft with ten new inference, argument or transfer questions. Content requires teacher approval.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "A Better Study Plan",
+      "description": "Understand Daniel's choices."
+    },
+    {
+      "id": "change",
+      "title": "Progress and Feelings",
+      "description": "Understand what changed for Daniel."
+    },
+    {
+      "id": "application",
+      "title": "Useful Study Habits",
+      "description": "Use Daniel's ideas in everyday learning."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-a2-meaning-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does Daniel put a study plan above his desk?",
+      "choices": [
+        "He wants to prepare in a different, calmer way.",
+        "He needs to remember where his desk is.",
+        "He has to show his sister his test mark.",
+        "He wants to stop studying for science."
+      ],
+      "answer": 0,
+      "explanation": "Daniel wants to avoid the tiring routine of studying everything the night before."
+    },
+    {
+      "id": "r34-en-a2-meaning-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does Daniel discover when he cannot explain an idea to his sister?",
+      "choices": [
+        "He should change the subject of the test.",
+        "He needs to check and understand it better.",
+        "His sister has already learnt everything.",
+        "He should stop practising questions."
+      ],
+      "answer": 1,
+      "explanation": "Not being able to explain an idea shows a gap, so he goes back to his notes."
+    },
+    {
+      "id": "r34-en-a2-meaning-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why is the test not a complete success?",
+      "choices": [
+        "He forgets to bring his notes to school.",
+        "He does not sit the science test.",
+        "Daniel still answers two questions incorrectly.",
+        "He goes to sleep too early."
+      ],
+      "answer": 2,
+      "explanation": "The third paragraph makes it clear that Daniel still makes two mistakes."
+    },
+    {
+      "id": "r34-en-a2-change-04",
+      "tab": "change",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "How does Daniel's Wednesday change in the new plan?",
+      "choices": [
+        "He studies for three hours without a break.",
+        "He spends the entire evening doing the test.",
+        "He asks his sister to answer every question.",
+        "He studies without phone notifications and has a calmer evening."
+      ],
+      "answer": 3,
+      "explanation": "Daniel turns off notifications and is happy that he can enjoy Wednesday evening."
+    },
+    {
+      "id": "r34-en-a2-change-05",
+      "tab": "change",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why is Daniel happy even though the mark is not perfect?",
+      "choices": [
+        "His teacher has cancelled the next test.",
+        "He feels rested and knows how to improve.",
+        "He has finished studying every subject.",
+        "He no longer needs to revise for history."
+      ],
+      "answer": 1,
+      "explanation": "The last paragraph values calmness and sleep as well as a slightly improved mark."
+    },
+    {
+      "id": "r34-en-a2-change-06",
+      "tab": "change",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What will Daniel do before his history test?",
+      "choices": [
+        "Study only on the evening before.",
+        "Ask his sister not to help him.",
+        "Follow the exact plan even if it fails.",
+        "Use the plan again, changing it if needed."
+      ],
+      "answer": 3,
+      "explanation": "He intends to try the same approach for history and adapt it when necessary."
+    },
+    {
+      "id": "r34-en-a2-application-07",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Ella reads her notes for hours but forgets the facts. Which idea from Daniel's plan could help?",
+      "choices": [
+        "Try questions without looking at the answers.",
+        "Wait until the night before the test.",
+        "Read notes but never take a break.",
+        "Keep all phone notifications on."
+      ],
+      "answer": 0,
+      "explanation": "Trying questions without answers is part of Daniel's more active study plan."
+    },
+    {
+      "id": "r34-en-a2-application-08",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "You cannot explain a science idea to a friend. What is a useful next step?",
+      "choices": [
+        "Pretend that you understand everything.",
+        "Stop asking your friend questions.",
+        "Check your notes and try to explain it again.",
+        "Write a new study timetable only."
+      ],
+      "answer": 2,
+      "explanation": "Daniel learns from being unable to explain an idea and checks his notes."
+    },
+    {
+      "id": "r34-en-a2-application-09",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What might Daniel say to someone who wants to study all night?",
+      "choices": [
+        "A good mark means you never need sleep.",
+        "Short sessions and enough rest may work better.",
+        "Every subject should be studied for three hours at once.",
+        "Studying longer always helps you remember more."
+      ],
+      "answer": 1,
+      "explanation": "His earlier late-night approach made him tired, whereas the new one includes breaks and sleep."
+    },
+    {
+      "id": "r34-en-a2-application-10",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "A test result shows you missed one topic. Which response fits Daniel's example?",
+      "choices": [
+        "Ignore the result because one mark is enough.",
+        "Give up on the topic that caused a mistake.",
+        "Study exactly the same way without checking why.",
+        "Write down what you need to practise next."
+      ],
+      "answer": 3,
+      "explanation": "After the science test Daniel records what still needs practice instead of giving up."
+    }
+  ]
+}
