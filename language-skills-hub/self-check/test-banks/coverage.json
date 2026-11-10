@@ -1,5 +1,5 @@
 {
-  "kind": "LSH_INDEPENDENT_TEST_CONTENT_INVENTORY_R34_V1",
+  "kind": "LSH_INDEPENDENT_TEST_CONTENT_INVENTORY_R35_V1",
   "productionBaseline": "R31",
   "originPracticeManifestHash": "sourceSha:5c1675c39827b3efb190d36bc1cb3b97a3712a08",
   "generatedFrom": "language-skills-hub/data/cards.json and version.json",
@@ -12,8 +12,8 @@
     "total": 138,
     "reading": 120,
     "listening": 18,
-    "drafted": 6,
-    "missing": 132,
+    "drafted": 7,
+    "missing": 131,
     "teacherApproved": 0
   },
   "conversationPolicy": "No auto-graded oral test; requires separately approved teacher rubric and pedagogy",
@@ -51,8 +51,8 @@
       "language": "en",
       "level": "B2",
       "sourceHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
-      "status": "MISSING",
-      "testBank": null
+      "status": "DRAFT_UNAPPROVED",
+      "testBank": "self-check/test-banks/reading/rl-asteroids/en-B2.json"
     },
     {
       "topic": "rl-asteroids",
