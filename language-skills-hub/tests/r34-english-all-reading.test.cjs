@@ -53,7 +53,7 @@ test('R34 no unauthorized practice mutations or approved publication from Englis
   for(const level of reading.LEVELS){
    const b=JSON.parse(data('self-check/test-banks/reading/'+entry.id+'/en-'+level+'.json'));
    assert.equal(b.published,false);
-   assert.equal(b.review?.contentApproved,true,false);
+   assert.notEqual(b.review?.contentApproved,true);
   }
  }
  assert.equal(manifest.version,'R31');
