@@ -26,8 +26,12 @@ for(const [browserName,browserType]of [['chromium',chromium],['webkit',webkit]])
     const bank=JSON.parse(fs.readFileSync(path.resolve(__dirname,
      '../self-check/test-banks/reading/'+topic+'/en-B2.json'),'utf8'));
     for(let i=0;i<10;i++){
-     const q=bank.questions[i],option=i===0?(q.answer+1)%4:q.answer;
-     await page.locator('fieldset.question').nth(i).locator('input').nth(option).check();
+     const field=page.locator('fieldset.question').nth(i);
+     const id=await field.locator('input').first().getAttribute('name');
+     const q=bank.questions.find(q=>q.id===id);
+     assert.ok(q,'Unknown rendered task '+id);
+     const option=i===0?(q.answer+1)%4:q.answer;
+     await field.locator('input').nth(option).check();
     }
     await page.locator('#submitButton').click();
     await page.locator('#results:not([hidden])').waitFor();
