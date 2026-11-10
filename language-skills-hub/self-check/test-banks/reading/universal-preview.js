@@ -145,7 +145,7 @@
    requireCondition(actual===manifest.contentHashes[entry.id],
     'Original source checksum mismatch: draft preview disabled');
    const practice=reading.variantFromData(reading.parseReadingData(originalHtml),language,level);
-   variant=testBank.variant(bank,practice,entry,actual);
+   variant=testBank.variant(bank,practice,entry,actual,{language,level});
    requireCondition(params.get('timer')===String(bank.durationMinutesSuggested),
     'The draft timer must match the approved-for-review bank metadata');
    reading.validateVariant(variant);
