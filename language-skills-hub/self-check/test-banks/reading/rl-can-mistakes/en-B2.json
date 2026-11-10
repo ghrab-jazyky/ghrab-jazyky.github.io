@@ -1,0 +1,171 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "description": "Original B2 assessment items analysing the same reading passage from a fresh angle. NOT copied from the practice question bank.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Meaning and Implications",
+      "description": "Interpret the message and its assumptions."
+    },
+    {
+      "id": "argument",
+      "title": "Reasoning and Structure",
+      "description": "Evaluate how the writer supports and qualifies claims."
+    },
+    {
+      "id": "transfer",
+      "title": "Applying the Ideas",
+      "description": "Apply the author's reasoning to new realistic situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r32-en-b2-int-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why might constructive advice be less useful to a student who usually receives high grades?",
+      "choices": [
+        "They may treat a comment about a piece of work as a judgement about their intelligence.",
+        "They are unlikely to understand detailed teacher comments.",
+        "Their teacher will not suggest improvements to successful students.",
+        "They already know exactly how to improve without guidance."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph one distinguishes advice about work from a judgement about the learner's identity."
+    },
+    {
+      "id": "r32-en-b2-int-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What is the student's likely purpose in rewriting one paragraph before meeting the teacher?",
+      "choices": [
+        "To replace the original grade with a new one.",
+        "To demonstrate that the teacher's criticism was necessarily unfair.",
+        "To try a more effective way of connecting evidence and the main claim.",
+        "To avoid discussing weaknesses in the original argument."
+      ],
+      "answer": 2,
+      "explanation": "The revision is a trial of how the reasoning could be made clearer, not a request to change the existing mark."
+    },
+    {
+      "id": "r32-en-b2-int-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What potential problem is suggested by a marking system that favours a narrow writing style?",
+      "choices": [
+        "A logically argued essay might be undervalued because of its style.",
+        "All students will earn equally high marks.",
+        "Teachers will stop assessing whether evidence is relevant.",
+        "Writing style will become completely irrelevant to evaluation."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph three notes that assessment criteria themselves may favour a limited range of expression."
+    },
+    {
+      "id": "r32-en-b2-arg-01",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "Why does the writer contrast two reactions to the same disappointing essay result?",
+      "choices": [
+        "To prove that the grade was calculated incorrectly.",
+        "To separate the unchanged result from the different opportunities for future learning.",
+        "To demonstrate that grades should be removed from essays.",
+        "To suggest the student should choose the more emotionally satisfying reaction."
+      ],
+      "answer": 1,
+      "explanation": "Both reactions leave the existing mark unchanged, but only one helps the learner improve."
+    },
+    {
+      "id": "r32-en-b2-arg-02",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "What important qualification does the writer introduce in the third paragraph?",
+      "choices": [
+        "Only highly experienced students can benefit from criticism.",
+        "Students should question any grade that disappoints them.",
+        "Feedback itself may be mistaken, so questions and evidence still matter.",
+        "The best feedback focuses on writing style rather than the argument."
+      ],
+      "answer": 2,
+      "explanation": "The author recognises the fallibility of teachers and grading systems and advocates precise clarification."
+    },
+    {
+      "id": "r32-en-b2-arg-03",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "Why are coaches, colleagues and friends mentioned near the end?",
+      "choices": [
+        "To rank personal advice above teachers' feedback.",
+        "To argue that feedback is useful only outside formal education.",
+        "To show that the principle applies beyond school, even when advice is incomplete.",
+        "To explain why personal relationships prevent criticism."
+      ],
+      "answer": 2,
+      "explanation": "The final paragraph transfers the argument to other settings while preserving the need to examine evidence."
+    },
+    {
+      "id": "r32-en-b2-app-01",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "A student believes the teacher missed a link between two claims in an essay. What is the most constructive response?",
+      "choices": [
+        "Ignore the comment because teachers sometimes misunderstand.",
+        "Point to the relevant passages and ask where the connection remains unclear.",
+        "Copy the teacher's wording into the essay without further discussion.",
+        "Ask for a higher grade without revisiting the argument."
+      ],
+      "answer": 1,
+      "explanation": "A specific, evidence-based question allows both the student and teacher to examine the issue."
+    },
+    {
+      "id": "r32-en-b2-app-02",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "A classmate argues, 'Criticism that makes you upset cannot help you learn.' Which response best fits the article?",
+      "choices": [
+        "Discomfort and the usefulness of advice are separate questions.",
+        "A learner should always enjoy useful criticism.",
+        "Unpleasant comments are accurate more often than pleasant ones.",
+        "Criticism should be followed without checking its accuracy."
+      ],
+      "answer": 0,
+      "explanation": "The final paragraph separates emotional discomfort from deciding what is worth testing."
+    },
+    {
+      "id": "r32-en-b2-app-03",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "A student revises an essay only to persuade the teacher to raise the old mark. Which learning benefit is being overlooked?",
+      "choices": [
+        "Memorising the teacher's favourite vocabulary.",
+        "Improving the approach to organising arguments in future assignments.",
+        "Writing fewer sentences in every future essay.",
+        "Getting teachers to avoid criticism in the future."
+      ],
+      "answer": 1,
+      "explanation": "The example focuses on improving future performance even when the original grade is unchanged."
+    },
+    {
+      "id": "r32-en-b2-app-04",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "A coach identifies a weakness but has not seen the athlete's full situation. What should the athlete do according to the writer's reasoning?",
+      "choices": [
+        "Ignore the coach's observation completely.",
+        "Apply the advice immediately because expertise guarantees accuracy.",
+        "Examine the observation against further evidence before deciding what to change.",
+        "Ask a friend to replace the coach's judgement without further investigation."
+      ],
+      "answer": 2,
+      "explanation": "The author says partial observations can still be valuable, but their usefulness must be tested against evidence."
+    }
+  ]
+}
