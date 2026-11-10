@@ -181,13 +181,17 @@
    const s=engine.status();
    if(s.phase==='running'&&!s.expired)engine.saveAnswers(cfg.getAnswers());
   }
+  function saveReviewMarks(marks){
+   if(purged)throw new Error('Attempt erased');
+   return engine.saveReviewMarks(marks);
+  }
   function finish(){
    const s=engine.status();
    if(s.phase==='submitted')return s;
    if(s.phase==='running'&&!s.expired)save();
    const out=engine.finish();render();return out;
   }
-  return Object.freeze({initialize,save,finish,status:engine.status,stop:()=>clearInterval(interval)});
+  return Object.freeze({initialize,save,saveReviewMarks,finish,status:engine.status,stop:()=>clearInterval(interval)});
  }
  const api=Object.freeze({mount});
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
