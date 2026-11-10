@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-AUTHOR-DRAFT-1",
+  "description": "Independent ten-item B2 assessment draft for The Last Cup: A Film That Does Not Let Us Look Away; human pedagogy approval required.",
+  "tabs": [
+    {
+      "id": "interpret",
+      "title": "Interpretation",
+      "description": "Understand ideas and distinctions."
+    },
+    {
+      "id": "reason",
+      "title": "Writer's Reasoning",
+      "description": "Follow evidence and explanation."
+    },
+    {
+      "id": "apply",
+      "title": "Applying the Argument",
+      "description": "Use the text in new situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-plastic-ocean-en-b2-01",
+      "tab": "interpret",
+      "kind": "mc",
+      "q": "What makes the red cup an effective opening image for the reviewer?",
+      "choices": [
+        "It proves that every concert hall has a serious waste problem.",
+        "It identifies the person who is responsible for recycling.",
+        "It represents rubbish that remains when the celebration is over.",
+        "It shows that the documentary uses only invented scenes."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "The discarded cup stands for waste normally ignored after an event, although the reviewer questions the reliance on images."
+    },
+    {
+      "id": "r36-plastic-ocean-en-b2-02",
+      "tab": "interpret",
+      "kind": "mc",
+      "q": "Why does the reviewer favour the street cleaner's conversation over dramatic wildlife imagery?",
+      "choices": [
+        "It makes waste management a practical question of time, resources and people.",
+        "It offers a more emotional appeal without giving any numbers.",
+        "It proves that animal pollution is less important than city cleaning.",
+        "It shows the film is mainly about the career of a cleaner."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "The conversation reveals a real timetable, budget and people working on solutions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-b2-03",
+      "tab": "interpret",
+      "kind": "mc",
+      "q": "What is implied by the director's refusal to mock the teenagers' first chaotic evening?",
+      "choices": [
+        "The director thinks their plan was perfectly organised.",
+        "The director believes mistakes should be hidden from viewers.",
+        "The concert should have been cancelled until everything worked.",
+        "The director allows imperfect experiments to be part of meaningful action."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph three values filming practical mistakes sympathetically rather than presenting flawless action."
+    },
+    {
+      "id": "r36-plastic-ocean-en-b2-04",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "Why does the reviewer criticise the film's advice about reusable cups?",
+      "choices": [
+        "It overlooks that reusable cups can never be cleaned safely.",
+        "It treats a choice as simple even where rules or facilities make it difficult.",
+        "It assumes teenagers are uninterested in environmental issues.",
+        "It suggests that single-use bottles cost more in every case."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "The reviewer cites security restrictions and limited washing facilities as overlooked barriers."
+    },
+    {
+      "id": "r36-plastic-ocean-en-b2-05",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "Why is the deposit scheme described as the documentary 'at its best'?",
+      "choices": [
+        "Its success is guaranteed after the first summer.",
+        "The documentary avoids showing how much it costs.",
+        "It presents an option alongside costs, uncertainties and further measurements.",
+        "It proves that every guest is willing to return a borrowed cup."
+      ],
+      "answer": 2,
+      "sourceParagraph": 5,
+      "explanation": "The scheme includes transparent cost data and important limitations rather than a simple promise."
+    },
+    {
+      "id": "r36-plastic-ocean-en-b2-06",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "What is the point of the imagined question about who will empty the bins next Friday?",
+      "choices": [
+        "It highlights the need for sustained practical organisation beyond a hopeful ending.",
+        "It suggests the final beach concert should move to another venue.",
+        "It criticises the teenagers for not making an exciting film.",
+        "It shows that rubbish removal is only a problem on Fridays."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "The review wants operational follow-through rather than relying on a beautiful final image."
+    },
+    {
+      "id": "r36-plastic-ocean-en-b2-07",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "How does the review distinguish a social barrier from an 'excuse'?",
+      "choices": [
+        "It says personal responsibility has no role in waste reduction.",
+        "It argues that viewers should always choose the cheapest product.",
+        "It claims that only organisers are responsible for the cups.",
+        "It asks the film to investigate real constraints before judging individuals."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "The reviewer wishes the director had explored security and washing problems rather than dismissing them."
+    },
+    {
+      "id": "r36-plastic-ocean-en-b2-08",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "A school wants to introduce reusable cups. Which plan best matches the reviewer's preferred approach?",
+      "choices": [
+        "Announce that everyone must bring a cup and consider no exceptions.",
+        "Test a deposit system and publish its costs, returns and washing needs.",
+        "Show pictures of clean beaches without changing the event plan.",
+        "Purchase the most expensive reusable cups immediately."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "The strongest example is a tested scheme with transparent measurements and costs."
+    },
+    {
+      "id": "r36-plastic-ocean-en-b2-09",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "Students discover that the cheapest supplier uses disposable bottles. What response follows the film's useful example?",
+      "choices": [
+        "Choose the supplier and keep the packaging problem private.",
+        "Cancel the event rather than test an alternative.",
+        "Try accessible shared containers and learn from early difficulties.",
+        "Ask the guests not to drink anything during the event."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "The teenagers borrow jugs and ask guests to bring cups, experimenting despite an imperfect first evening."
+    },
+    {
+      "id": "r36-plastic-ocean-en-b2-10",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "What would make a class discussion of the film most valuable?",
+      "choices": [
+        "Question both its practical solutions and the obstacles it underplays.",
+        "Decide whether the final shoreline image is attractive enough.",
+        "List the interviewees' names without considering their points.",
+        "Agree that every environmental problem is an individual failure."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "The conclusion recommends viewing critically and continuing the practical discussion."
+    }
+  ]
+}
