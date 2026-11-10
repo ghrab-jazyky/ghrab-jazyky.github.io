@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+ <meta name="color-scheme" content="dark light">
+ <meta name="description" content="R34 teacher QA only – listening test blueprints from practice; NOT independently rewritten, NOT approved or for student distribution.">
+ <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'; frame-ancestors 'none'">
+ <title>Listening Lab · UNAPPROVED QA candidate</title>
+ <link rel="stylesheet" href="../../reading/reading.css">
+ <link rel="stylesheet" href="../../listening/listening.css">
+ <link rel="stylesheet" href="../../session/session.css">
+ <script defer src="../../listening/listening-core.js"></script>
+ <script defer src="../../results/result-core.js"></script>
+ <script defer src="../../results/grade-core.js"></script>
+ <script defer src="../../results/export-core.js"></script>
+ <script defer src="../../session/attempt-core.js"></script>
+ <script defer src="../../session/session-ui.js"></script>
+ <script defer src="../candidate-core.js"></script>
+ <script defer src="preview.js"></script>
+</head>
+<body>
+ <header class="topbar">
+  <a class="brand" href="../../../index.html"><span class="mark" aria-hidden="true">L</span><span><strong>Language Skills Hub</strong><small>Listening Lab</small></span></a>
+  <div class="topactions">
+   <span class="mode">R34 QA · UNAPPROVED SOURCE SUBSET</span>
+   <button type="button" class="action ghost" id="themeButton" aria-pressed="false">☀ Light</button>
+  </div>
+ </header>
+ <main class="container">
+  <section class="hero">
+   <p class="eyebrow">LISTENING LAB · ENGLISH · A1–C2</p>
+   <h1 id="title">Loading Listening Lab…</h1>
+   <p class="subtitle" id="goal"></p>
+   <div class="notice" id="notice" role="note">
+    UNAPPROVED QA PREVIEW ONLY. These tasks are selected from the original practice, NOT independently designed. Claude must rewrite them and a teacher must approve every CEFR variant. No result is an official school grade; no data is uploaded.
+   </div>
+  </section>
+  <p id="loading" class="loading" role="status" aria-live="polite">Loading the original tasks…</p>
+  <section id="workspace" class="listening-workspace" hidden aria-labelledby="questionHeading">
+   <div class="panel-head listening-heading">
+    <div><span class="kicker">ENGLISH LISTENING · TWO TEACHER-CONTROLLED PLAYBACKS</span><h2 id="questionHeading">Comprehension questions</h2></div>
+    <span class="pill" id="levelLabel">EN · B2</span>
+   </div>
+   <div class="progress-track" role="progressbar" id="progress" aria-label="Answered tasks" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progressFill"></div></div>
+   <p id="progressLabel" class="small-note" aria-live="polite"></p>
+   <div id="taskList" class="question-list"></div>
+   <div class="submit-panel">
+    <p id="submitHint" class="small-note">Submit your work after both teacher-controlled playbacks. The final section can be completed from your notes.</p>
+    <button class="action primary" id="submitButton" type="button">Submit all answers</button>
+   </div>
+  </section>
+  <section class="results panel" id="results" hidden tabindex="-1" aria-labelledby="resultHeading">
+   <div class="panel-head"><div><span class="kicker">LOCAL RESULT · GRADE AFTER TEACHER REVIEW</span><h2 id="resultHeading">Unapproved candidate result</h2></div></div>
+   <div class="score-summary" id="scoreSummary"></div>
+   <div class="grade-proposal" id="gradeProposal" aria-live="polite"></div>
+   <section id="manualGrade" class="manual-grading" hidden aria-labelledby="manualGradeHeading">
+    <h3 id="manualGradeHeading">Učitelská kontrola písemných odpovědí</h3>
+    <p class="small-note">Výsledné známkování vyžaduje kontrolu učitelem na tomto zařízení. V časovaném režimu se přidělené body 0/1 ukládají pouze v prohlížeči a obnoví se po načtení stejné relace. Tento formulář může změnit i žák, nejde o důvěryhodný školní záznam.</p>
+    <div id="manualGradeTasks" class="review-grade-controls"></div>
+    <p id="manualGradeStatus" class="manual-grade-status" aria-live="polite"></p>
+   </section>
+   <p id="resultCaution" class="small-note"></p>
+   <div id="resultDetails" class="result-details"></div>
+   <div class="result-export">
+    <button type="button" id="exportResult" class="action ghost" hidden>Download local result CSV (no name or answers)</button>
+    <p class="small-note" id="exportStatus" role="note">CSV is not a verified school record. No student name or written answers are included.</p>
+   </div>
+  </section>
+ </main>
+ <footer class="footer">R34 QA ONLY · Source-subset candidate, not a finished independent Listening test · No login or uploads</footer>
+</body>
+</html>
