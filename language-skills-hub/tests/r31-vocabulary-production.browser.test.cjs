@@ -21,6 +21,14 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#lshBridgeVocabularyLink').waitFor({state:'visible',timeout:20000});
    await page.waitForFunction(()=>document.querySelectorAll('#vocabGrid .vocab-item .lsh-bridge-save').length>0);
    const term=(await page.locator('#vocabGrid .vocab-item b').first().textContent()).trim();
+   // Pre-existing staging data must survive unchanged, never silently migrate.
+   await page.evaluate(async()=>{
+    const stage=window.LSH_STORE.createStore({mode:'staging'});
+    await stage.open();
+    await stage.addManualWord({language:'es',term:'isolated staging word',
+      translationCs:'jen testovací databáze',level:'A2'});
+    stage.close();
+   });
    await page.locator('#vocabGrid .vocab-item .lsh-bridge-save').first().click();
    await page.waitForFunction(()=>document.querySelector('#lshBridgeVocabularyLink')?.textContent?.includes('(1)'));
    const stageCount=await page.evaluate(async()=>{
@@ -28,14 +36,23 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
     await stage.open();
     const count=(await stage.listWords()).length;stage.close();return count;
    });
-   assert.equal(stageCount,0,'Production saved a word in staging DB!');
+   assert.equal(stageCount,1,'Production modified the existing staging database!');
    await page.locator('#lshBridgeVocabularyLink').click();
    await page.waitForURL('**/language-skills-hub/slovnicek/**');
    await page.waitForFunction(()=>document.querySelector('#wordCount')?.textContent==='1');
+   // Independent of the markup: the storage configured on this page is production.
+   assert.equal(await page.evaluate(()=>window.LSH_CONFIG.mode),'production');
    await page.locator('#backToCard').waitFor({state:'visible',timeout:10000});
    assert.match(await page.locator('#backToCard').getAttribute('href'),/ceny-nemovitosti\/index\.html$/);
    await page.reload({waitUntil:'domcontentloaded'});
    await page.waitForFunction(()=>document.querySelector('#wordCount')?.textContent==='1');
+   // Responsive safety: no horizontal clipping on phone, tablet or desktop.
+   for(const width of [320,390,768,1440]){
+    await page.setViewportSize({width,height:850});
+    const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth);
+    assert.ok(overflow<=2,'Horizontal overflow at '+width+'px: '+overflow);
+   }
+   await page.setViewportSize({width:390,height:844});
    const downloadEvent=page.waitForEvent('download',{timeout:12000});
    await page.locator('#exportBtn').click();
    const download=await downloadEvent;
@@ -53,6 +70,10 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#backToCard').click();
    await page.waitForURL('**/konverzace/ceny-nemovitosti/index.html');
    await page.waitForFunction(()=>document.querySelector('#lshBridgeVocabularyLink')?.textContent?.includes('(1)'));
+   // An untrusted zpet URL may not turn the vocabulary into an open redirect.
+   await page.goto(ROOT+'slovnicek/?zpet='+encodeURIComponent('https://example.org/steal'),{waitUntil:'domcontentloaded'});
+   await page.waitForFunction(()=>document.querySelector('#wordCount')?.textContent==='1');
+   assert.equal(await page.locator('#backToCard').isVisible(),false,'External return URL was accepted');
    assert.deepEqual(errors,[],'Unexpected JS errors: '+errors.join('; '));
    assert.deepEqual(uploads,[],'Unexpected uploads from local vocabulary!');
   }finally{
