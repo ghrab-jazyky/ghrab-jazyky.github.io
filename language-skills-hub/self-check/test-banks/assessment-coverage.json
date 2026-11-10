@@ -13,13 +13,14 @@
     "Other 132 Reading/Listening variants do not have independent tasks or keys and must not use practice bank as a fallback.",
     "Claude review and human teacher signoff are required before any student publication.",
     "One independent Listening EN/B2 Harrison Ford draft is authored with 6 objective and 2 teacher-reviewed written tasks; audio facts not independently rechecked yet.",
-    "All six Harrison Ford Listening CEFR test banks have distinct draft questions. No direct media audit or school approval has been completed."
+    "All six Harrison Ford Listening CEFR test banks have distinct draft questions. No direct media audit or school approval has been completed.",
+    "All 18 Listening English CEFR test banks have independently worded unapproved draft questions. Media accuracy and classroom fitness remain unaudited."
   ],
   "counts": {
     "reading": 120,
     "listening": 18,
-    "drafts": 12,
-    "missing": 126
+    "drafts": 24,
+    "missing": 114
   },
   "records": [
     {
@@ -1347,9 +1348,9 @@
       "topic": "ll-matthew-oscars",
       "language": "en",
       "level": "A1",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/matthew-oscars/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-matthew-oscars/en-A1.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
@@ -1358,9 +1359,9 @@
       "topic": "ll-matthew-oscars",
       "language": "en",
       "level": "A2",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/matthew-oscars/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-matthew-oscars/en-A2.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
@@ -1369,9 +1370,9 @@
       "topic": "ll-matthew-oscars",
       "language": "en",
       "level": "B1",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/matthew-oscars/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-matthew-oscars/en-B1.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
@@ -1380,9 +1381,9 @@
       "topic": "ll-matthew-oscars",
       "language": "en",
       "level": "B2",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/matthew-oscars/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-matthew-oscars/en-B2.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
@@ -1391,9 +1392,9 @@
       "topic": "ll-matthew-oscars",
       "language": "en",
       "level": "C1",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/matthew-oscars/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-matthew-oscars/en-C1.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
@@ -1402,9 +1403,9 @@
       "topic": "ll-matthew-oscars",
       "language": "en",
       "level": "C2",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/matthew-oscars/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-matthew-oscars/en-C2.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
@@ -1479,9 +1480,9 @@
       "topic": "ll-peaky-no-fighting",
       "language": "en",
       "level": "A1",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/peaky-no-fighting/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-peaky-no-fighting/en-A1.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
@@ -1490,9 +1491,9 @@
       "topic": "ll-peaky-no-fighting",
       "language": "en",
       "level": "A2",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/peaky-no-fighting/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-peaky-no-fighting/en-A2.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
@@ -1501,9 +1502,9 @@
       "topic": "ll-peaky-no-fighting",
       "language": "en",
       "level": "B1",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/peaky-no-fighting/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-peaky-no-fighting/en-B1.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
@@ -1512,9 +1513,9 @@
       "topic": "ll-peaky-no-fighting",
       "language": "en",
       "level": "B2",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/peaky-no-fighting/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-peaky-no-fighting/en-B2.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
@@ -1523,9 +1524,9 @@
       "topic": "ll-peaky-no-fighting",
       "language": "en",
       "level": "C1",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/peaky-no-fighting/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-peaky-no-fighting/en-C1.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
@@ -1534,9 +1535,9 @@
       "topic": "ll-peaky-no-fighting",
       "language": "en",
       "level": "C2",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/peaky-no-fighting/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-peaky-no-fighting/en-C2.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     }
