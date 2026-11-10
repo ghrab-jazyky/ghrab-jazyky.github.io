@@ -1,0 +1,117 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "es",
+  "level": "C1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 25,
+  "auditRevision": "R34-CM-ES-C1-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 6 points maximum; local provisional grade only",
+  "description": "Preguntas originales del nivel C1 sobre el texto español. Borrador pendiente de revisión.",
+  "tabs": [
+    {
+      "id": "interpretacion",
+      "title": "Comprender",
+      "description": "Interpretar hechos y significados."
+    },
+    {
+      "id": "aplicacion",
+      "title": "Pensar y aplicar",
+      "description": "Aplicar las ideas a otras situaciones."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-cm-es-c1-01",
+      "tab": "interpretacion",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué riesgo oculta un discurso que atribuye toda dificultad al esfuerzo personal?",
+      "choices": [
+        "Garantiza igualdad de oportunidades.",
+        "Elimina la necesidad de orientación.",
+        "Puede ignorar obstáculos materiales y trasladar la culpa al estudiante.",
+        "Demuestra que la capacidad es inmutable."
+      ],
+      "answer": 2,
+      "explanation": "El texto critica la mejora entendida sin apoyo real."
+    },
+    {
+      "id": "r34-cm-es-c1-02",
+      "tab": "interpretacion",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Por qué la comparación de los dos alumnos cuestiona el consejo de esforzarse más?",
+      "choices": [
+        "Sus posibilidades de actuar dependen de recursos desiguales.",
+        "Los resultados de ambos son incomparables.",
+        "Ninguno puede mejorar sus estrategias.",
+        "La nota de uno es necesariamente injusta."
+      ],
+      "answer": 0,
+      "explanation": "El ejemplo mantiene resultados similares y revela condiciones distintas."
+    },
+    {
+      "id": "r34-cm-es-c1-03",
+      "tab": "interpretacion",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué error supone elogiar únicamente al alumno con mejores recursos?",
+      "choices": [
+        "Reconocer la importancia del tiempo de estudio.",
+        "Investigar las condiciones familiares.",
+        "Valorar una estrategia eficiente.",
+        "Confundir las ventajas disponibles con una virtud personal."
+      ],
+      "answer": 3,
+      "explanation": "La narración advierte contra atribuir los recursos a la fuerza de carácter."
+    },
+    {
+      "id": "r34-cm-es-c1-04",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Por qué una discusión sin acuerdo puede tener valor educativo?",
+      "choices": [
+        "Siempre mejora una calificación.",
+        "Puede ampliar la perspectiva sin producir un resultado medible.",
+        "Permite evitar todos los argumentos.",
+        "Sustituye la necesidad de leer."
+      ],
+      "answer": 1,
+      "explanation": "El tercer párrafo defiende aprendizajes difíciles de cuantificar."
+    },
+    {
+      "id": "r34-cm-es-c1-05",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué sucede si el ocio debe convertirse siempre en optimización personal?",
+      "choices": [
+        "El descanso se vuelve automáticamente más eficaz.",
+        "Toda actividad pasa a ser gratuita.",
+        "La curiosidad corre el riesgo de transformarse en obligación.",
+        "Desaparecen las diferencias entre alumnos."
+      ],
+      "answer": 2,
+      "explanation": "El autor advierte de la presión de mejorar incluso durante el tiempo libre."
+    },
+    {
+      "id": "r34-cm-es-c1-06",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "¿Qué política escolar sería coherente con la conclusión?",
+      "choices": [
+        "Combinar estrategias personales con apoyo accesible y derecho al descanso.",
+        "Sustituir las ayudas por carteles motivadores.",
+        "Medir cada minuto de ocio de los alumnos.",
+        "Atribuir todas las dificultades a la voluntad."
+      ],
+      "answer": 0,
+      "explanation": "El final combina autonomía personal y responsabilidad institucional."
+    }
+  ]
+}

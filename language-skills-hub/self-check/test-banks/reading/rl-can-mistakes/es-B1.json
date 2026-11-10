@@ -1,0 +1,117 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "es",
+  "level": "B1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 17,
+  "auditRevision": "R34-CM-ES-B1-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 6 points maximum; local provisional grade only",
+  "description": "Preguntas originales del nivel B1 sobre el texto español. Borrador pendiente de revisión.",
+  "tabs": [
+    {
+      "id": "interpretacion",
+      "title": "Comprender",
+      "description": "Interpretar hechos y significados."
+    },
+    {
+      "id": "aplicacion",
+      "title": "Pensar y aplicar",
+      "description": "Aplicar las ideas a otras situaciones."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-cm-es-b1-01",
+      "tab": "interpretacion",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué relación establece Lara entre equivocarse y su talento al principio?",
+      "choices": [
+        "Cree que el error indica qué estudiar.",
+        "Considera que las notas ya no importan.",
+        "Piensa que un error demuestra que no tiene capacidad.",
+        "Está segura de que todos aprenden igual."
+      ],
+      "answer": 2,
+      "explanation": "Al principio confunde una dificultad inicial con falta de talento."
+    },
+    {
+      "id": "r34-cm-es-b1-02",
+      "tab": "interpretacion",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Por qué practicar unos pocos compases puede ayudar más que repetir todo?",
+      "choices": [
+        "Permite concentrarse en una dificultad concreta.",
+        "Evita escuchar la música.",
+        "Hace innecesaria la ayuda de la profesora.",
+        "Garantiza tocar perfectamente a la primera."
+      ],
+      "answer": 0,
+      "explanation": "La profesora dirige el esfuerzo a cuatro compases difíciles."
+    },
+    {
+      "id": "r34-cm-es-b1-03",
+      "tab": "interpretacion",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué muestra que Lara no se hizo una música extraordinaria?",
+      "choices": [
+        "Su práctica no produjo ningún avance.",
+        "Abandonó las clases de música.",
+        "Dejó de interesarse por las notas.",
+        "El cambio importante fue su actitud ante los problemas."
+      ],
+      "answer": 3,
+      "explanation": "El texto distingue una mejora real de convertirse en una experta."
+    },
+    {
+      "id": "r34-cm-es-b1-04",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Por qué pregunta ahora qué podría hacer de otra manera?",
+      "choices": [
+        "Quiere ocultar todas sus dificultades.",
+        "Busca una acción concreta para mejorar.",
+        "Desea que otros hagan su trabajo.",
+        "Piensa que sus profesores no saben enseñar."
+      ],
+      "answer": 1,
+      "explanation": "La nueva pregunta sustituye un juicio fijo por una estrategia."
+    },
+    {
+      "id": "r34-cm-es-b1-05",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "¿Qué significa para Lara avanzar después de un error?",
+      "choices": [
+        "No cometer nunca más errores.",
+        "Dejar de recibir calificaciones.",
+        "Reconocer qué necesita seguir practicando.",
+        "Ser mejor que todos sus compañeros."
+      ],
+      "answer": 2,
+      "explanation": "El último párrafo valora identificar el siguiente paso."
+    },
+    {
+      "id": "r34-cm-es-b1-06",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Un alumno se bloquea en una parte de una presentación. ¿Qué le sugeriría Lara?",
+      "choices": [
+        "Practicar esa parte despacio y volver a intentarlo.",
+        "Memorizar todo sin detenerse.",
+        "Cambiar de tema inmediatamente.",
+        "No participar en la presentación."
+      ],
+      "answer": 0,
+      "explanation": "Su experiencia favorece trabajar una dificultad limitada."
+    }
+  ]
+}
