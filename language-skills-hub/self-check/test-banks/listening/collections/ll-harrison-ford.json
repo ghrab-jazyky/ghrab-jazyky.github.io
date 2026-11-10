@@ -94,7 +94,7 @@
       "language": "en",
       "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
       "suggestedMinutes": 20,
-      "provenance": "assistant-authored assessment prompts from public practice metadata; video not independently verified; Claude and teacher must check",
+      "provenance": "Assistant-authored new questions based on original public practice metadata; not checked against recording. Independent Claude content audit and teacher review required.",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     },
@@ -186,7 +186,7 @@
       "language": "en",
       "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
       "suggestedMinutes": 20,
-      "provenance": "assistant-authored assessment prompts from public practice metadata; video not independently verified; Claude and teacher must check",
+      "provenance": "Assistant-authored new questions based on original public practice metadata; not checked against recording. Independent Claude content audit and teacher review required.",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     },
@@ -284,7 +284,7 @@
       "language": "en",
       "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
       "suggestedMinutes": 20,
-      "provenance": "assistant-authored assessment prompts from public practice metadata; video not independently verified; Claude and teacher must check",
+      "provenance": "Assistant-authored new questions based on original public practice metadata; not checked against recording. Independent Claude content audit and teacher review required.",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     },
@@ -382,7 +382,7 @@
       "language": "en",
       "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
       "suggestedMinutes": 20,
-      "provenance": "assistant-authored assessment prompts from public practice metadata; video not independently verified; Claude and teacher must check",
+      "provenance": "Assistant-authored new questions based on original public practice metadata; not checked against recording. Independent Claude content audit and teacher review required.",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     },
@@ -480,7 +480,7 @@
       "language": "en",
       "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
       "suggestedMinutes": 20,
-      "provenance": "assistant-authored assessment prompts from public practice metadata; video not independently verified; Claude and teacher must check",
+      "provenance": "Assistant-authored new questions based on original public practice metadata; not checked against recording. Independent Claude content audit and teacher review required.",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     },
@@ -578,7 +578,7 @@
       "language": "en",
       "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
       "suggestedMinutes": 20,
-      "provenance": "assistant-authored assessment prompts from public practice metadata; video not independently verified; Claude and teacher must check",
+      "provenance": "Assistant-authored new questions based on original public practice metadata; not checked against recording. Independent Claude content audit and teacher review required.",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     }
