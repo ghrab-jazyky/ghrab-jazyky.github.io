@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 30,
+  "auditRevision": "R34-PO-C1-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "description": "Original independent C1 Plastic Ocean review-based test proposal pending human audit.",
+  "tabs": [
+    {
+      "id": "aesthetics",
+      "title": "Aesthetics and Argument",
+      "description": "Analyse the documentary's artistic and rhetorical choices."
+    },
+    {
+      "id": "silences",
+      "title": "What Remains Unsaid",
+      "description": "Examine missing perspectives and complexity."
+    },
+    {
+      "id": "evaluation",
+      "title": "Critical Judgement",
+      "description": "Apply the review's standards to new documentary choices."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-po-c1-01",
+      "tab": "aesthetics",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What distinction is established by the claim that knowing what to feel is not knowing what to do?",
+      "choices": [
+        "A well-made film should avoid any emotional response.",
+        "Viewers rarely understand a clear visual metaphor.",
+        "Emotional clarity is not equivalent to understanding possible action.",
+        "Environmental problems can be solved by stronger feelings alone."
+      ],
+      "answer": 2,
+      "explanation": "The opening acknowledges the force of the wrapper image while questioning its practical usefulness."
+    },
+    {
+      "id": "r34-po-c1-02",
+      "tab": "aesthetics",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why is the beauty of the cleaners' work described as 'double-edged'?",
+      "choices": [
+        "It grants visibility to their labour but obscures their conditions and influence.",
+        "It gives the cleaners too much time to speak.",
+        "It proves that the director has invented the night shift.",
+        "It makes waste look less visible in the square."
+      ],
+      "answer": 0,
+      "explanation": "The reviewer notes that attractive images can conceal the workers' circumstances."
+    },
+    {
+      "id": "r34-po-c1-03",
+      "tab": "aesthetics",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "How does the cleaner's remark about the square being empty at its cleanest function?",
+      "choices": [
+        "It suggests that cleaners prefer working in complete silence.",
+        "It proves that litter occurs only during the day.",
+        "It allows the director to explain exactly how waste contracts operate.",
+        "It draws attention to necessary labour that the public seldom witnesses."
+      ],
+      "answer": 3,
+      "explanation": "The irony exposes how the finished square is seen while the work remains hidden."
+    },
+    {
+      "id": "r34-po-c1-04",
+      "tab": "silences",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What distinguishes the council-desk interview from the documentary's more symbolic scenes?",
+      "choices": [
+        "It claims that reusable cups are too expensive everywhere.",
+        "It allows practical constraints to remain complex instead of immediately moralised.",
+        "It gives organisers a single perfect answer.",
+        "It avoids showing a person with institutional responsibility."
+      ],
+      "answer": 1,
+      "explanation": "The facilities manager discusses storage, training and washing costs without a neat solution."
+    },
+    {
+      "id": "r34-po-c1-05",
+      "tab": "silences",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What rhetorical effect does repeating the teenager's bottle-dropping scene have?",
+      "choices": [
+        "It explains why the proposed deposit scheme is profitable.",
+        "It makes the film's earlier measurements more reliable.",
+        "It shifts attention from systems to individual guilt.",
+        "It gives the teenager a chance to defend their decision."
+      ],
+      "answer": 2,
+      "explanation": "The review says the repeated image replaces an institutional discussion with a personal moral lesson."
+    },
+    {
+      "id": "r34-po-c1-06",
+      "tab": "silences",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Why does the reviewer regard the unequal treatment of cleaners, manager and teenager as meaningful?",
+      "choices": [
+        "How people are named or represented influences the argument viewers receive.",
+        "All participants must have exactly the same time on screen.",
+        "An environmental film should avoid real people.",
+        "The camera's position has no impact on interpretation."
+      ],
+      "answer": 0,
+      "explanation": "The review highlights the asymmetry between unnamed workers, a speaking manager and a symbolic teenager."
+    },
+    {
+      "id": "r34-po-c1-07",
+      "tab": "evaluation",
+      "kind": "mc",
+      "sourceParagraph": 7,
+      "q": "What makes the volunteer's admission of extra washing trips credible?",
+      "choices": [
+        "It proves that plastic cups are preferable in every context.",
+        "It shows that no one collected any waste at the event.",
+        "It allows the director to remove all uncertain conclusions.",
+        "It presents an unforeseen cost as something to examine, not a reason to abandon the idea."
+      ],
+      "answer": 3,
+      "explanation": "The reviewer praises the admission because it invites revision rather than applause."
+    },
+    {
+      "id": "r34-po-c1-08",
+      "tab": "evaluation",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "A filmmaker says, 'Every moving scene must be followed by a spreadsheet.' How would the reviewer respond?",
+      "choices": [
+        "Spreadsheets are the only reliable form of documentary evidence.",
+        "Cinema can use emotion and surprise, but should not systematically hide causation.",
+        "Any environmental film should become a formal council report.",
+        "A moving film is unable to discuss practical systems."
+      ],
+      "answer": 1,
+      "explanation": "The sixth paragraph explicitly rejects turning the whole documentary into a council report."
+    },
+    {
+      "id": "r34-po-c1-09",
+      "tab": "evaluation",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What would the reviewer most likely want the film to explore after the facilities manager speaks?",
+      "choices": [
+        "Who bears costs and has the power to implement a deposit scheme.",
+        "Whether the manager appears sympathetic enough on camera.",
+        "How quickly the teenage littering scene can be repeated.",
+        "Which colour should be chosen for the square's bins."
+      ],
+      "answer": 0,
+      "explanation": "The review identifies storage, staff training and washing equipment as significant complexities."
+    },
+    {
+      "id": "r34-po-c1-10",
+      "tab": "evaluation",
+      "kind": "mc",
+      "sourceParagraph": 7,
+      "q": "Which revision would best address the documentary's principal missed opportunity?",
+      "choices": [
+        "Replace all cleaner interviews with scenic images.",
+        "Focus more closely on the teenager's personal guilt.",
+        "Use visual storytelling to reveal how waste-management systems function.",
+        "Remove the admission that some reuse schemes need adjustment."
+      ],
+      "answer": 2,
+      "explanation": "The closing paragraph wants the systems around the wrapper to be made as visible as the wrapper itself."
+    }
+  ]
+}
