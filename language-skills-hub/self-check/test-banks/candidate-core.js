@@ -37,12 +37,13 @@
   check(['locate','evidence','cohesion'].every(t=>tabIds.has(t)),
    'Missing test section');
   const oldQ=new Set(practice.questions.map(q=>norm(q.q)));
-  const ids=new Set(),stems=new Set();
+  const ids=new Set(),itemSignatures=new Set();
   for(const q of candidate.questions){
    check(obj(q)&&/^r34-[a-z0-9-]+$/.test(q.id)&&!ids.has(q.id)&&
     q.kind==='mc'&&tabIds.has(q.tab)&&text(q.q)&&!oldQ.has(norm(q.q))&&
-    !stems.has(norm(q.q)),'Missing, reused or duplicated candidate question');
-   ids.add(q.id);stems.add(norm(q.q));
+    !itemSignatures.has(norm(q.q)+'|'+q.choices.map(norm).join('|')),
+    'Missing, reused or duplicated candidate question');
+   ids.add(q.id);itemSignatures.add(norm(q.q)+'|'+q.choices.map(norm).join('|'));
    check(Number.isInteger(q.sourceParagraph)&&q.sourceParagraph>=1&&
     q.sourceParagraph<=practice.paragraphs.length,'Bad evidence paragraph');
    const para=practice.paragraphs[q.sourceParagraph-1];
