@@ -43,8 +43,8 @@ test('R34 all 138 Reading/Listening variants have explicit honest coverage',()=>
    assert.equal(row.independentBank,null);
   }
  }
- assert.deepEqual(counts,{reading:120,listening:18,draft:7,missing:131});
- assert.deepEqual(cover.counts,{reading:120,listening:18,drafts:7,missing:131});
+ assert.deepEqual(counts,{reading:120,listening:18,draft:12,missing:126});
+ assert.deepEqual(cover.counts,{reading:120,listening:18,drafts:12,missing:126});
 });
 test('R34 no unapproved draft is auto-exposed by student directory',()=>{
  const index=fs.readFileSync(path.join(base,'index.html'),'utf8');
