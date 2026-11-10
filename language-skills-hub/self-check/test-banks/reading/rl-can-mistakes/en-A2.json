@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-CONTENT-DRAFT-1",
+  "description": "Original English A2 reading-test draft about Daniel's plan and reasons for improving.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Understanding the Plan",
+      "description": "Understand Daniel's new preparation routine."
+    },
+    {
+      "id": "reasons",
+      "title": "Reasons and Results",
+      "description": "Connect what Daniel does with why it helps."
+    },
+    {
+      "id": "new-situations",
+      "title": "Using the Learning Strategy",
+      "description": "Apply the idea in other classes."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-a2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What does Daniel want to change before his next science test?",
+      "choices": [
+        "The time of the science lesson.",
+        "The subject of the science test.",
+        "How he prepares during the week.",
+        "The teacher who marks the paper."
+      ],
+      "answer": 2,
+      "explanation": "In paragraph one, Daniel identifies his late-night studying as a problem and wants a different plan."
+    },
+    {
+      "id": "r34-en-a2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why is Wednesday evening a problem in Daniel's usual routine?",
+      "choices": [
+        "He always meets his friends that evening.",
+        "He studies late and feels tired the next day.",
+        "His sister needs the room for music.",
+        "He forgets to take his textbook home."
+      ],
+      "answer": 1,
+      "explanation": "In paragraph one, Daniel identifies his late-night studying as a problem and wants a different plan."
+    },
+    {
+      "id": "r34-en-a2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "When does Daniel try questions without looking at the answers?",
+      "choices": [
+        "On Monday, after a short break.",
+        "On Friday, after school.",
+        "On Thursday, during the test.",
+        "On Wednesday, before the test."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph two describes short sessions, explaining ideas, looking at notes and answering questions independently."
+    },
+    {
+      "id": "r34-en-a2-04",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does Daniel ask his sister about a topic?",
+      "choices": [
+        "Explaining it can show what he does not understand.",
+        "She can answer the science test for him.",
+        "His teacher asks her to give him a mark.",
+        "He wants to avoid looking at his notes."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph two describes short sessions, explaining ideas, looking at notes and answering questions independently."
+    },
+    {
+      "id": "r34-en-a2-05",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does Daniel do after he finds a difficult idea?",
+      "choices": [
+        "He stops all his preparation.",
+        "He changes the date of the test.",
+        "He checks his notes and looks for help.",
+        "He copies his sister's answers."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph two describes short sessions, explaining ideas, looking at notes and answering questions independently."
+    },
+    {
+      "id": "r34-en-a2-06",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What matters to Daniel besides his slightly better grade?",
+      "choices": [
+        "He feels calmer and has enough rest.",
+        "He finishes his test earlier than everyone.",
+        "He studies without ever making a mistake.",
+        "His sister has learnt his science textbook."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph three connects his calmer result with reflection and plans for future subjects."
+    },
+    {
+      "id": "r34-en-a2-07",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why does Daniel write down what to practise after the test?",
+      "choices": [
+        "He wants to change all his answers.",
+        "He wants to know what he can improve next.",
+        "He has already forgotten the test date.",
+        "He wants to study the same facts forever."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph three connects his calmer result with reflection and plans for future subjects."
+    },
+    {
+      "id": "r34-en-a2-08",
+      "tab": "new-situations",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "You cannot explain a new word to a partner. Which step is closest to Daniel's strategy?",
+      "choices": [
+        "Give up on the topic immediately.",
+        "Pretend you understand the word.",
+        "Read only the correct answer without thinking.",
+        "Check your notes and then try explaining it again."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph two describes short sessions, explaining ideas, looking at notes and answering questions independently."
+    },
+    {
+      "id": "r34-en-a2-09",
+      "tab": "new-situations",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why might Daniel use his plan for history next week?",
+      "choices": [
+        "His science teacher also teaches history.",
+        "He thinks a useful routine can work in another subject.",
+        "He has no other homework.",
+        "The history test uses exactly the same questions."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph three connects his calmer result with reflection and plans for future subjects."
+    },
+    {
+      "id": "r34-en-a2-10",
+      "tab": "new-situations",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Which student has a plan most like Daniel's?",
+      "choices": [
+        "A student who stays up all night before each test.",
+        "A student who only reads answers without practising.",
+        "A student who never changes a plan that fails.",
+        "A student who studies in short sessions and checks progress."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph three connects his calmer result with reflection and plans for future subjects."
+    }
+  ]
+}
