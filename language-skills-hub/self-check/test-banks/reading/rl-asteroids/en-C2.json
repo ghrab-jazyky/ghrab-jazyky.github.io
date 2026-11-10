@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "C2",
+  "sourceTitle": "When a Probability Becomes a Headline",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-AUTHOR-DRAFT-1",
+  "description": "EN/C2 independently authored Asteroids test: uncertainty, evidence and planetary-defence reasoning. Human content review pending.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Interpreting the evidence",
+      "description": "Read between the lines and establish the main argument."
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasoning and uncertainty",
+      "description": "Assess claims, limits and explanations."
+    },
+    {
+      "id": "application",
+      "title": "Evidence in practice",
+      "description": "Transfer scientific reasoning to new situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-en-c2-01",
+      "tab": "interpretation",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "What is obscured by the metaphor of humanity fighting a hostile universe?",
+      "choices": [
+        "The fact that asteroid orbits are impossible to study scientifically.",
+        "The slower, evidence-dependent work that makes a proportionate response possible.",
+        "The historical frequency of every asteroid collision.",
+        "The reasons that scientists use telescopes instead of spacecraft."
+      ],
+      "answer": 1,
+      "explanation": "The opening challenges dramatic conflict framing because it conceals sustained observation and interpretation."
+    },
+    {
+      "id": "r35-en-c2-02",
+      "tab": "interpretation",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "What is the strongest implication of the observation that 'precision and completeness are not synonyms'?",
+      "choices": [
+        "Precise measurements are meaningless unless every object is visible.",
+        "Completeness can be calculated directly from a single telescope image.",
+        "Infrared instruments provide no additional information about dark objects.",
+        "Accurate estimates about detected objects may still omit populations surveys fail to observe."
+      ],
+      "answer": 3,
+      "explanation": "The writer distinguishes precision about known orbits from catalogue selection effects."
+    },
+    {
+      "id": "r35-en-c2-03",
+      "tab": "interpretation",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "Why does the Apophis episode illustrate a problem beyond a mistaken early prediction?",
+      "choices": [
+        "The asteroid's orbit changed abruptly after a human intervention.",
+        "Radar observations contradicted basic physical laws.",
+        "A preliminary warning later became a scientific opportunity through revised evidence.",
+        "The original media coverage accurately anticipated how astronomers would respond in 2029."
+      ],
+      "answer": 2,
+      "explanation": "Apophis shifted from apparent threat to valuable close approach as improved data excluded impact."
+    },
+    {
+      "id": "r35-en-c2-04",
+      "tab": "interpretation",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "What is the force of the description of DART as an 'instructive counterpoint'?",
+      "choices": [
+        "The experiment demonstrates an evidence-based, conditional method rather than a cinematic universal shield.",
+        "It establishes that a kinetic impact must always be the preferred response.",
+        "It shows that dramatic emergency intervention is more reliable than early warning.",
+        "It replaces the need for orbit modelling with direct spacecraft observations."
+      ],
+      "answer": 0,
+      "explanation": "The DART paragraph uses an actual but limited deflection to counter theatrical assumptions."
+    },
+    {
+      "id": "r35-en-c2-05",
+      "tab": "reasoning",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Why does the writer call apparently rising risk estimates a possible sign of responsible reasoning?",
+      "choices": [
+        "The early estimates are selected to maximise public concern.",
+        "They reflect updates to a model as available orbital solutions are constrained.",
+        "Scientific institutions require risk to rise before they can act.",
+        "The object's actual path changes whenever its probability is recalculated."
+      ],
+      "answer": 1,
+      "explanation": "Revisions are part of evidence-based narrowing of uncertainty, not necessarily institutional indecision."
+    },
+    {
+      "id": "r35-en-c2-06",
+      "tab": "reasoning",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "What does the distinction between experimental evidence and a 'universal shield' emphasise?",
+      "choices": [
+        "One mission is sufficient only if every asteroid has the same orbit.",
+        "Experiments cannot meaningfully inform decisions about genuine threats.",
+        "The effect of an impact depends on conditions that a single mission cannot exhaustively test.",
+        "Detection can be abandoned once kinetic deflection has been demonstrated."
+      ],
+      "answer": 2,
+      "explanation": "The text stresses the conditionality of outcomes across composition, structure, warning and verification."
+    },
+    {
+      "id": "r35-en-c2-07",
+      "tab": "reasoning",
+      "sourceParagraph": 5,
+      "kind": "mc",
+      "q": "Why does the conclusion prefer systems that can withstand correction to reassuring declarations?",
+      "choices": [
+        "Scientific credibility requires all uncertainty to be eliminated in advance.",
+        "Such systems avoid the need for political decisions under uncertainty.",
+        "An institution proves authority by never changing its forecasts.",
+        "Public trust is better supported by inspectable assumptions and revisable decisions."
+      ],
+      "answer": 3,
+      "explanation": "The conclusion explicitly defines authority through transparent evidence and openness to correction."
+    },
+    {
+      "id": "r35-en-c2-08",
+      "tab": "application",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "A government presents a precise risk percentage but omits its observational selection effects. What is the key danger?",
+      "choices": [
+        "The estimate cannot possibly reflect a real asteroid's trajectory.",
+        "The audience may confuse numerical accuracy about detected objects with complete knowledge of hazards.",
+        "The percentage becomes impossible to communicate in ordinary language.",
+        "The instruments will automatically stop detecting dim asteroids."
+      ],
+      "answer": 1,
+      "explanation": "The author warns that a precise catalogue statistic can conceal which objects are difficult to detect."
+    },
+    {
+      "id": "r35-en-c2-09",
+      "tab": "application",
+      "sourceParagraph": 5,
+      "kind": "mc",
+      "q": "Two public messages follow a changed orbit estimate. Which is more defensible?",
+      "choices": [
+        "Explain what new measurements changed and which assumptions remain uncertain.",
+        "Insist the original estimate was certain to prevent public confusion.",
+        "Avoid mentioning the revision until all future observations are complete.",
+        "Present the change as evidence that no asteroid risk deserves attention."
+      ],
+      "answer": 0,
+      "explanation": "The writer favours open revision and explanation of assumptions over false certainty."
+    },
+    {
+      "id": "r35-en-c2-10",
+      "tab": "application",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "A proposed defence plan uses DART as proof that late interventions always work. What is the strongest rebuttal?",
+      "choices": [
+        "The spacecraft never measurably changed Dimorphos's orbit.",
+        "A collision with Dimorphos was legally impossible to arrange.",
+        "An asteroid's distance from the Sun alone determines whether deflection succeeds.",
+        "A modest early change may matter more than a dramatic last-minute attempt, depending on the target."
+      ],
+      "answer": 3,
+      "explanation": "The article directly contrasts early measured deflection with late theatrical interventions and emphasises conditional efficacy."
+    }
+  ]
+}
