@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "A2",
+  "sourceVariantTitle": "A Festival with Fewer Cups",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "auditRevision": "R36-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "Original English independent Plastic Ocean Reading draft, teacher approval pending.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Understanding",
+      "description": "Read the main ideas."
+    },
+    {
+      "id": "reasons",
+      "title": "Reasons",
+      "description": "Explain events and consequences."
+    },
+    {
+      "id": "application",
+      "title": "New Situations",
+      "description": "Apply what you read."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-plastic-ocean-en-a2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why did the festival organisers decide to change how drinks were served?",
+      "choices": [
+        "The musicians asked for colder water.",
+        "Visitors did not like the festival's music.",
+        "Plastic cups were leaving large amounts of rubbish after concerts.",
+        "The cleaning team wanted the event to close earlier."
+      ],
+      "answer": 2,
+      "explanation": "The story's paragraph 1 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why did volunteers add clear signs and another return desk?",
+      "choices": [
+        "They wanted to stop people bringing their own bottles.",
+        "They wanted visitors to find the system easily and avoid long queues.",
+        "The second desk was only for musicians.",
+        "The organisers wanted to raise the deposit price."
+      ],
+      "answer": 1,
+      "explanation": "The story's paragraph 2 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "How did the deposit encourage visitors to return a cup?",
+      "choices": [
+        "The cup became free only if it was broken.",
+        "The deposit was paid to the singer.",
+        "They could use the same ticket for another concert.",
+        "They could get the money back by bringing it to the desk."
+      ],
+      "answer": 3,
+      "explanation": "The story's paragraph 3 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a2-04",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why did some children look for cups on the grass?",
+      "choices": [
+        "They could return them and keep the deposit money.",
+        "They were asked to count the musicians.",
+        "They needed cups for the school cafeteria.",
+        "They wanted to throw them into the river."
+      ],
+      "answer": 0,
+      "explanation": "The story's paragraph 3 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a2-05",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What does the end of Saturday show about the new cup system?",
+      "choices": [
+        "All visitors had stopped buying food.",
+        "Not one cup had been returned.",
+        "It helped, but some cups and other rubbish were still missing or left behind.",
+        "The cleaning team had no more work to do."
+      ],
+      "answer": 2,
+      "explanation": "The story's paragraph 4 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a2-06",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why is comparing the number of rubbish bags useful?",
+      "choices": [
+        "It gives a simple way to see whether the amount collected changed.",
+        "It tells the organisers which band was most popular.",
+        "It proves that all litter came from cups.",
+        "It shows which food seller paid the most rent."
+      ],
+      "answer": 0,
+      "explanation": "The story's paragraph 5 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a2-07",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why did cleaners still collect bags even with reusable cups?",
+      "choices": [
+        "The water stations were full of plastic bottles.",
+        "Food wrappers and plates were still being thrown away.",
+        "The return desk had closed at noon.",
+        "Visitors had stopped drinking water."
+      ],
+      "answer": 1,
+      "explanation": "The story's paragraph 5 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a2-08",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "What might improve the festival further next year?",
+      "choices": [
+        "Remove all drinking water stations.",
+        "Give visitors more single-use cups for free.",
+        "Stop cleaning the food area after each concert.",
+        "Work with food sellers to reduce packaging as well as cups."
+      ],
+      "answer": 3,
+      "explanation": "The story's paragraph 6 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a2-09",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "If visitors cannot find the cup-return desk, what is a sensible response?",
+      "choices": [
+        "Keep deposits without explaining the rule.",
+        "Add clearer signs or make the return point easier to reach.",
+        "Close both return desks immediately.",
+        "Stop allowing visitors to bring their own bottles."
+      ],
+      "answer": 1,
+      "explanation": "The story's paragraph 2 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a2-10",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "What is the main lesson of the organisers' plans for next year?",
+      "choices": [
+        "No further improvements are possible.",
+        "Reusable cups make all future planning unnecessary.",
+        "Festival visitors should bring no food at all.",
+        "One successful change does not solve every type of waste."
+      ],
+      "answer": 3,
+      "explanation": "The story's paragraph 6 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    }
+  ]
+}
