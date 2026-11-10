@@ -20,3 +20,8 @@
 .manual-grade-question select{display:block;max-width:100%;width:100%;padding:10px;border:1px solid var(--line);border-radius:9px;color:var(--text);background:var(--field);min-height:44px}
 .manual-grade-status{margin:12px 0;font-weight:800}
 @media print{.manual-grading{border:1px solid #aaa}.grade-proposal{background:white;border:1px solid black;color:black}.grade-proposal .grade-number{background:white;color:black;border:2px solid black}}
+
+/* R31 local CSV receipt controls. No upload or user identifiers. */
+.result-export{padding:12px 20px 18px;border-top:1px solid var(--line)}
+.result-export .small-note{margin:9px 0 0}
+#exportResult{min-height:44px}
