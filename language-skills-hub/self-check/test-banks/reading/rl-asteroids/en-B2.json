@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "B2",
+  "sourceTitle": "Asteroids: A Question of Risk, Not Panic",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-CONTENT-AUDIT-1",
+  "description": "Original astronomy assessment variant; factual, CEFR and pedagogical review pending.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interpret the Topic"
+    },
+    {
+      "id": "argument",
+      "title": "Evidence and Reasoning"
+    },
+    {
+      "id": "application",
+      "title": "Apply the Implications"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-en-b2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "q": "Why can the phrase 'heading towards Earth' be misleading in a headline?",
+      "choices": [
+        "Any asteroid moving towards Earth must be made of metal.",
+        "It can sound like a collision prediction without enough orbital evidence.",
+        "It shows that scientists have already ruled out every possible risk.",
+        "It describes only objects that are invisible to telescopes."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "The opening distinguishes a close approach from a path that would actually intersect Earth."
+    },
+    {
+      "id": "r36-en-b2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "q": "Why does the writer challenge the everyday meaning of the word 'near'?",
+      "choices": [
+        "It is a term used only for spacecraft close to the Moon.",
+        "It usually refers to distance below one hundred kilometres.",
+        "It cannot be calculated without infrared observations.",
+        "Distances described as near in space can still be enormous."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph one warns that cosmic proximity is not the same as everyday closeness."
+    },
+    {
+      "id": "r36-en-b2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "q": "What is the value of comparing observations from several nights?",
+      "choices": [
+        "It proves every early impact prediction must be wrong.",
+        "It allows telescopes to see only the brightest objects.",
+        "It refines the asteroid's orbit as more evidence becomes available.",
+        "It removes the need for uncertainty in scientific reports."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph two explains how repeated observations improve the orbit estimate."
+    },
+    {
+      "id": "r36-en-b2-04",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "What is the most responsible way to report a newly calculated risk figure?",
+      "choices": [
+        "State whether it is preliminary and explain the uncertainty.",
+        "Give the largest number without its context to attract attention.",
+        "Present every change as proof that scientists are guessing.",
+        "Treat all close approaches as equally dangerous."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "The writer says risk numbers should be accompanied by evidence quality and uncertainty."
+    },
+    {
+      "id": "r36-en-b2-05",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "What does the changing estimate for 2024 YR4 illustrate?",
+      "choices": [
+        "Its size increased rapidly during the observations.",
+        "A change in orbit was caused by news reports.",
+        "A temporary higher risk estimate can fall after the orbit is refined.",
+        "The asteroid's final impact date became more certain each week."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "The example shows that new measurements can strongly reduce an earlier estimated probability."
+    },
+    {
+      "id": "r36-en-b2-06",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "Why was the YR4 sequence unsurprising to astronomers?",
+      "choices": [
+        "Because every asteroid's impact probability must rise first.",
+        "Because the original measurements were deliberately misleading.",
+        "Because large telescopes always report identical estimates.",
+        "Because preliminary orbital probabilities are expected to change with evidence."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph three presents updated risk estimates as normal consequences of accumulating data."
+    },
+    {
+      "id": "r36-en-b2-07",
+      "tab": "application",
+      "kind": "mc",
+      "q": "What is the justified conclusion from the DART collision?",
+      "choices": [
+        "It showed that a spacecraft can alter an orbit, but not that every impact is preventable.",
+        "A single spacecraft can destroy any asteroid approaching Earth.",
+        "A dangerous asteroid must always have the same structure as Dimorphos.",
+        "The tested technique works equally well without advance notice."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph four states a demonstrated deflection is not universal protection."
+    },
+    {
+      "id": "r36-en-b2-08",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Why does the amount of warning time matter to a possible response?",
+      "choices": [
+        "It determines whether a telescope can take photographs.",
+        "Changing an orbit takes planning and cannot be treated as instantaneous.",
+        "It fixes the asteroid's composition in advance.",
+        "It proves whether an asteroid will pass through the belt."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "The text explains that size, structure and available warning time affect the response."
+    },
+    {
+      "id": "r36-en-b2-09",
+      "tab": "application",
+      "kind": "mc",
+      "q": "What should organisations communicating asteroid risks share?",
+      "choices": [
+        "Only the newest probability without older context.",
+        "Predictions only after every uncertainty has disappeared.",
+        "Reliable information and explanations of why estimates change.",
+        "Dramatic imagery intended to increase interest in emergencies."
+      ],
+      "answer": 2,
+      "sourceParagraph": 5,
+      "explanation": "The conclusion advocates cooperative communication that distinguishes knowledge from uncertainty."
+    },
+    {
+      "id": "r36-en-b2-10",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Which statement best captures the author's overall advice to readers?",
+      "choices": [
+        "Treat every risk estimate as a permanent fact.",
+        "Avoid reading about asteroids until a real threat appears.",
+        "Assume that experiments have already made Earth completely safe.",
+        "Evaluate new claims through evidence, careful preparation and cooperation."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "The final paragraph rejects both panic and complacency in favour of reasoned preparedness."
+    }
+  ]
+}
