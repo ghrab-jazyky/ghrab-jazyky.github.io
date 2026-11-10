@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-CONTENT-DRAFT-1",
+  "description": "Original C1 assessment draft testing qualified argument, structural inequality and the value of unmeasured learning.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Interpretation",
+      "description": "Interpret the author's qualified criticism."
+    },
+    {
+      "id": "analysis",
+      "title": "Argument and Evidence",
+      "description": "Examine the structure and logic of the argument."
+    },
+    {
+      "id": "transfer",
+      "title": "Implications",
+      "description": "Apply the reasoning to educational choices."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-c1-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What is the author's main reservation about encouraging students to embrace every challenge?",
+      "choices": [
+        "The message is too difficult for younger learners to remember.",
+        "It makes successful students less interested in higher marks.",
+        "The message can suggest that obstacles are always a matter of individual effort.",
+        "It prevents teachers from giving detailed practical feedback."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph one criticises the individualising implication of improvement slogans, not the general value of resilience."
+    },
+    {
+      "id": "r34-en-c1-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What is the central weakness of advising both students simply to 'try harder'?",
+      "choices": [
+        "It gives the students too much freedom to choose their methods.",
+        "It ignores unequal opportunities to act on that advice.",
+        "It assumes that the two students received different marks.",
+        "It asks both students to use the same school textbook."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph two contrasts equal results with unequal material support and distinguishes useful strategies from access to resources."
+    },
+    {
+      "id": "r34-en-c1-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What does the phrase 'curiosity risks becoming another obligation' imply?",
+      "choices": [
+        "Students no longer want to discuss ideas with their friends.",
+        "Curiosity becomes valuable only when linked to a career.",
+        "Every leisure activity should be included in the school timetable.",
+        "Learners may begin judging even enjoyable exploration by productivity."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph three argues that exploration, debate and leisure can have value even when no progress indicator records it."
+    },
+    {
+      "id": "r34-en-c1-04",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does the writer make the two students' assessment results equally poor?",
+      "choices": [
+        "To isolate differences in resources rather than the marks themselves.",
+        "To prove that their knowledge and effort were identical.",
+        "To argue that no assessment can ever measure learning.",
+        "To suggest that both students should receive the same advice."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph two contrasts equal results with unequal material support and distinguishes useful strategies from access to resources."
+    },
+    {
+      "id": "r34-en-c1-05",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What is the point of saying that advice cannot create a quiet room or an extra hour?",
+      "choices": [
+        "Teachers should stop suggesting better learning strategies.",
+        "Only students with private study rooms can improve.",
+        "Strategies can be helpful without removing material constraints.",
+        "Homework should never be assigned to disadvantaged students."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph two contrasts equal results with unequal material support and distinguishes useful strategies from access to resources."
+    },
+    {
+      "id": "r34-en-c1-06",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What role does the example of a debate without agreement play?",
+      "choices": [
+        "It shows how learning may be valuable without a measurable result.",
+        "It demonstrates why debates should replace written examinations.",
+        "It shows that reaching agreement is usually undesirable.",
+        "It suggests students should avoid receiving feedback on debates."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph three argues that exploration, debate and leisure can have value even when no progress indicator records it."
+    },
+    {
+      "id": "r34-en-c1-07",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "How does the final paragraph qualify its call for greater school responsibility?",
+      "choices": [
+        "Student effort is unnecessary when support is provided.",
+        "Students still have an active role in examining their work.",
+        "Responsibility belongs entirely to the student's family.",
+        "Schools should allow students to choose their own grades."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph four retains student responsibility while also calling for more concrete support from schools."
+    },
+    {
+      "id": "r34-en-c1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A school gives motivational posters but no quiet place for study. Which improvement best reflects the article?",
+      "choices": [
+        "Replace all tests with student self-evaluations.",
+        "Ask teachers to reward enthusiasm instead of attainment.",
+        "Tell students to spend more leisure time studying.",
+        "Provide supervised study facilities as well as encouragement."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph four retains student responsibility while also calling for more concrete support from schools."
+    },
+    {
+      "id": "r34-en-c1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "A pupil reads widely for pleasure but cannot show a rising score. How would the author most likely assess that activity?",
+      "choices": [
+        "It should be stopped until examination results improve.",
+        "It may have educational value beyond the score that is measured.",
+        "Its value depends on how quickly the pupil finishes each book.",
+        "It is only useful if the pupil writes a formal book review."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph three argues that exploration, debate and leisure can have value even when no progress indicator records it."
+    },
+    {
+      "id": "r34-en-c1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Which policy best combines personal agency with institutional responsibility?",
+      "choices": [
+        "Promise every learner an improved grade after additional effort.",
+        "Assume the same advice is fair whenever grades are the same.",
+        "Measure all learning activities so that effort is always visible.",
+        "Offer specific feedback, access to support and opportunities to revise."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph four retains student responsibility while also calling for more concrete support from schools."
+    }
+  ]
+}
