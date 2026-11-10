@@ -1,10 +1,11 @@
-/* R32 unapproved B2 Reading preview. Strictly separate from public R31 student pages.
+/* R35 generic draft Reading preview, never part of R31 public catalog.
  * No telemetry, POST, student identity or client key secrecy guarantees.
  */
 (()=>{
  'use strict';
  const reading=window.LSHReadingCore;
  const testBank=window.LSHIndependentTestBank;
+ const schema=window.LSHIndependentReadingSchema;
  const grade=window.LSHGradeCore;
  const $=id=>document.getElementById(id);
  const make=(tag,cls,text)=>{
@@ -15,6 +16,8 @@
  };
  const params=new URLSearchParams(location.search);
  const level=params.get('level')||'B2';
+ const topic=params.get('topic')||'rl-can-mistakes';
+ const lang=params.get('lang')||'en';
  const answers=Object.create(null);
  let variant=null,timed=null,submitted=false;
  function requireCondition(ok,message){if(!ok)throw new Error(message)}
@@ -116,36 +119,51 @@
  }
  async function initialize(){
   try{
-   requireCondition(reading&&testBank&&grade&&window.LSHSessionUI,
+   requireCondition(reading&&testBank&&schema&&grade&&window.LSHSessionUI,
     'Required local assessment modules are unavailable');
    // A fixed 20-minute URL is intentional for this *unapproved* pedagogical pilot.
    // It must not be exposed through the public teacher catalogue.
    requireCondition(['A1','A2','B1','B2','C1','C2'].includes(level),'Unsupported independent test level');
+   requireCondition(['en','es','de','fr'].includes(lang),'Unsupported independent test language');
+   requireCondition(/^rl-[a-z0-9-]+$/.test(topic),'Unsupported independent test topic');
    requireCondition(params.get('timer')==='20'&&
     /^[a-z0-9_-]{6,40}$/i.test(params.get('attempt')||''),
     'This draft preview requires ?level=A1|A2|B1|B2|C1|C2&timer=20&attempt=<local-id>');
-   const [manifest,originalHtml,bank]=await Promise.all([
-    get('../../../version.json',true),
-    get('../../../cteni/can-mistakes/index.html'),
-    get('rl-can-mistakes/en-'+level+'.json',true)
+   const [manifest,catalog]=await Promise.all([
+    get('../../../version.json',true),get('../../../data/cards.json',true)
+   ]);
+   const entry=catalog.entries?.find(e=>e.id===topic&&e.skill==='cteni');
+   requireCondition(entry&&entry.languages.includes(lang)&&entry.levels.includes(level),
+    'Independent test selection unsupported by approved practice catalog');
+   requireCondition(/^cteni\/[a-z0-9-]+\/index\.html$/.test(entry.relative),
+    'Invalid original practice location');
+   const [originalHtml,bank]=await Promise.all([
+    get('../../../'+entry.relative),
+    get(topic+'/'+lang+'-'+level+'.json',true)
    ]);
    requireCondition(manifest.version==='R31'&&
     manifest.backendEnabled===false&&manifest.gradedTestsEnabled===false,
     'Unexpected production baseline');
    const actual=await sourceHash(originalHtml);
-   requireCondition(actual===manifest.contentHashes['rl-can-mistakes'],
+   requireCondition(actual===manifest.contentHashes[topic],
     'Original source checksum mismatch: draft preview disabled');
-   const practice=reading.variantFromData(reading.parseReadingData(originalHtml),'en',level);
-   variant=testBank.makeQaVariant(bank,practice,actual);
+   const practice=reading.variantFromData(reading.parseReadingData(originalHtml),lang,level);
+   const selection={topic,lang,level};
+   schema.validate(bank,selection,practice,actual);
+   // Preserve stricter R32-R34 pilot invariants on the initial EN reference.
+   if(topic==='rl-can-mistakes'&&lang==='en')
+    variant=testBank.makeQaVariant(bank,practice,actual);
+   else
+    variant=schema.qaVariant(bank,selection,practice,actual);
    reading.validateVariant(variant);
    $('title').textContent=practice.title;
    document.title='Independent Reading '+level+' – unapproved QA preview';
-   document.querySelector('.subtitle').textContent='Can Mistakes Help Us Learn? · English '+level+' · 10 independent questions · 20 minutes';
-   document.querySelector('.mode').textContent='UNAPPROVED DRAFT · EN/'+level;
-   document.querySelector('.reading-panel .pill').textContent='EN · '+level;
+   document.querySelector('.subtitle').textContent=entry.title+' · '+lang.toUpperCase()+' '+level+' · '+variant.questions.length+' independent questions · '+params.get('timer')+' minutes';
+   document.querySelector('.mode').textContent='UNAPPROVED DRAFT · '+lang.toUpperCase()+'/'+level;
+   document.querySelector('.reading-panel .pill').textContent=lang.toUpperCase()+' · '+level;
    renderText();renderTasks();
    timed=window.LSHSessionUI.mount({
-    skill:'reading',topic:'rl-can-mistakes',lang:'en',level,
+    skill:'reading',topic,lang,level,
     workspace:$('workspace'),
     getAnswers:()=>({answers:{...answers}}),
     restoreAnswers:saved=>{
