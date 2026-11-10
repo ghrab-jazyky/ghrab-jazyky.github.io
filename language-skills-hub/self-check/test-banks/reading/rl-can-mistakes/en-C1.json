@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-en-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Imagine two students who perform equally poorly on an assessment.",
+        "Schools often encourage learners to embrace challenges, treat setbacks as information and believe that abilities can develop.",
+        "Moreover, not every educational activity needs to be measured as progress.",
+        "A more convincing approach combines personal agency with institutional responsibility."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Schools often encourage learners to embrace challenges, treat setbacks as information and believe that abilities can develop.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Imagine two students who perform equally poorly on an assessment.",
+        "Moreover, not every educational activity needs to be measured as progress.",
+        "A more convincing approach combines personal agency with institutional responsibility.",
+        "Schools often encourage learners to embrace challenges, treat setbacks as information and believe that abilities can develop."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Imagine two students who perform equally poorly on an assessment.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "A more convincing approach combines personal agency with institutional responsibility.",
+        "Schools often encourage learners to embrace challenges, treat setbacks as information and believe that abilities can develop.",
+        "Imagine two students who perform equally poorly on an assessment.",
+        "Moreover, not every educational activity needs to be measured as progress."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: Moreover, not every educational activity needs to be measured as progress.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "Schools often encourage learners to embrace challenges, treat setbacks as information and believe that abilities can develop.",
+        "Imagine two students who perform equally poorly on an assessment.",
+        "A more convincing approach combines personal agency with institutional responsibility.",
+        "Moreover, not every educational activity needs to be measured as progress."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: A more convincing approach combines personal agency with institutional responsibility.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "One has access to a quiet room, reliable internet and an adult who can help explain unfamiliar material.",
+        "These ideas can be empowering, particularly for students who have come to regard a single disappointing result as a verdict on their potential.",
+        "Reading an absorbing novel, debating an idea without reaching agreement or experimenting with a new hobby may have value that is difficult to capture in a grade.",
+        "Students should learn to analyse mistakes and revise ineffective strategies, but schools should also consider access to support, assessment design and the right to rest."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: These ideas can be empowering, particularly for students who have come to regard a single disappointing result as a verdict on their potential.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "One has access to a quiet room, reliable internet and an adult who can help explain unfamiliar material.",
+        "Reading an absorbing novel, debating an idea without reaching agreement or experimenting with a new hobby may have value that is difficult to capture in a grade.",
+        "Students should learn to analyse mistakes and revise ineffective strategies, but schools should also consider access to support, assessment design and the right to rest.",
+        "These ideas can be empowering, particularly for students who have come to regard a single disappointing result as a verdict on their potential."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: One has access to a quiet room, reliable internet and an adult who can help explain unfamiliar material.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "Students should learn to analyse mistakes and revise ineffective strategies, but schools should also consider access to support, assessment design and the right to rest.",
+        "These ideas can be empowering, particularly for students who have come to regard a single disappointing result as a verdict on their potential.",
+        "One has access to a quiet room, reliable internet and an adult who can help explain unfamiliar material.",
+        "Reading an absorbing novel, debating an idea without reaching agreement or experimenting with a new hobby may have value that is difficult to capture in a grade."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: Reading an absorbing novel, debating an idea without reaching agreement or experimenting with a new hobby may have value that is difficult to capture in a grade.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "These ideas can be empowering, particularly for students who have come to regard a single disappointing result as a verdict on their potential.",
+        "One has access to a quiet room, reliable internet and an adult who can help explain unfamiliar material.",
+        "Students should learn to analyse mistakes and revise ineffective strategies, but schools should also consider access to support, assessment design and the right to rest.",
+        "Reading an absorbing novel, debating an idea without reaching agreement or experimenting with a new hobby may have value that is difficult to capture in a grade."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: Students should learn to analyse mistakes and revise ineffective strategies, but schools should also consider access to support, assessment design and the right to rest.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "The other shares a crowded space, works after school and struggles to find uninterrupted study time.",
+        "Yet the language of improvement has a less comfortable side: it can imply that every difficulty is a personal problem to be solved through additional effort.",
+        "If students come to regard even their leisure time as an opportunity for self-optimisation, curiosity risks becoming another obligation.",
+        "Improvement is meaningful when it expands possibilities, not when it becomes an endless demand to justify one’s worth."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Yet the language of improvement has a less comfortable side: it can imply that every difficulty is a personal problem to be solved through additional effort.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "The other shares a crowded space, works after school and struggles to find uninterrupted study time.",
+        "If students come to regard even their leisure time as an opportunity for self-optimisation, curiosity risks becoming another obligation.",
+        "Improvement is meaningful when it expands possibilities, not when it becomes an endless demand to justify one’s worth.",
+        "Yet the language of improvement has a less comfortable side: it can imply that every difficulty is a personal problem to be solved through additional effort."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: The other shares a crowded space, works after school and struggles to find uninterrupted study time.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

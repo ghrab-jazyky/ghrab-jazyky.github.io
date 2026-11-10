@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "fr",
+  "level": "B1",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-instant-messages-fr-b1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Le premier jour a été plus difficile que prévu.",
+        "Le mois dernier, notre professeure d’éducation aux médias, Mme Lambert, nous a lancé un défi original : passer une semaine sans applications de messagerie.",
+        "J’ai donc dû faire quelque chose d’un peu démodé : j’ai téléphoné aux gens.",
+        "Pourtant, tout n’était pas mieux."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Le mois dernier, notre professeure d’éducation aux médias, Mme Lambert, nous a lancé un défi original : passer une semaine sans applications de messagerie.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Le premier jour a été plus difficile que prévu.",
+        "J’ai donc dû faire quelque chose d’un peu démodé : j’ai téléphoné aux gens.",
+        "Pourtant, tout n’était pas mieux.",
+        "La semaine est loin maintenant, les applications sont revenues sur mon téléphone, mais je les utilise autrement."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Le premier jour a été plus difficile que prévu.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Pourtant, tout n’était pas mieux.",
+        "La semaine est loin maintenant, les applications sont revenues sur mon téléphone, mais je les utilise autrement.",
+        "Le mois dernier, notre professeure d’éducation aux médias, Mme Lambert, nous a lancé un défi original : passer une semaine sans applications de messagerie.",
+        "J’ai donc dû faire quelque chose d’un peu démodé : j’ai téléphoné aux gens."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: J’ai donc dû faire quelque chose d’un peu démodé : j’ai téléphoné aux gens.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "La semaine est loin maintenant, les applications sont revenues sur mon téléphone, mais je les utilise autrement.",
+        "Le mois dernier, notre professeure d’éducation aux médias, Mme Lambert, nous a lancé un défi original : passer une semaine sans applications de messagerie.",
+        "Pourtant, tout n’était pas mieux.",
+        "Le premier jour a été plus difficile que prévu."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Pourtant, tout n’était pas mieux.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 5?",
+      "choices": [
+        "Le mois dernier, notre professeure d’éducation aux médias, Mme Lambert, nous a lancé un défi original : passer une semaine sans applications de messagerie.",
+        "La semaine est loin maintenant, les applications sont revenues sur mon téléphone, mais je les utilise autrement.",
+        "Le premier jour a été plus difficile que prévu.",
+        "J’ai donc dû faire quelque chose d’un peu démodé : j’ai téléphoné aux gens."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraphe 5: La semaine est loin maintenant, les applications sont revenues sur mon téléphone, mais je les utilise autrement.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Les appels et les e-mails étaient autorisés, mais pas les discussions ni les messages vocaux.",
+        "Avant le déjeuner, j’ai regardé mon téléphone environ quarante fois, alors qu’il n’y avait rien de nouveau.",
+        "Mon ami Karim était si surpris qu’il a cru qu’il s’était passé quelque chose de grave.",
+        "Le jeudi, mon groupe d’histoire a déplacé la réunion de la bibliothèque dans un café, et je l’ai découvert seulement quand j’étais déjà assis dans la bibliothèque vide."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Les appels et les e-mails étaient autorisés, mais pas les discussions ni les messages vocaux.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Mon ami Karim était si surpris qu’il a cru qu’il s’était passé quelque chose de grave.",
+        "Le jeudi, mon groupe d’histoire a déplacé la réunion de la bibliothèque dans un café, et je l’ai découvert seulement quand j’étais déjà assis dans la bibliothèque vide.",
+        "J’ai désactivé les notifications de deux de mes quatre groupes, et j’appelle ma grand-mère au lieu de lui envoyer des émojis.",
+        "Avant le déjeuner, j’ai regardé mon téléphone environ quarante fois, alors qu’il n’y avait rien de nouveau."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Avant le déjeuner, j’ai regardé mon téléphone environ quarante fois, alors qu’il n’y avait rien de nouveau.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Le jeudi, mon groupe d’histoire a déplacé la réunion de la bibliothèque dans un café, et je l’ai découvert seulement quand j’étais déjà assis dans la bibliothèque vide.",
+        "J’ai désactivé les notifications de deux de mes quatre groupes, et j’appelle ma grand-mère au lieu de lui envoyer des émojis.",
+        "Mon ami Karim était si surpris qu’il a cru qu’il s’était passé quelque chose de grave.",
+        "Les appels et les e-mails étaient autorisés, mais pas les discussions ni les messages vocaux."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Mon ami Karim était si surpris qu’il a cru qu’il s’était passé quelque chose de grave.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "J’ai désactivé les notifications de deux de mes quatre groupes, et j’appelle ma grand-mère au lieu de lui envoyer des émojis.",
+        "Le jeudi, mon groupe d’histoire a déplacé la réunion de la bibliothèque dans un café, et je l’ai découvert seulement quand j’étais déjà assis dans la bibliothèque vide.",
+        "Les appels et les e-mails étaient autorisés, mais pas les discussions ni les messages vocaux.",
+        "Avant le déjeuner, j’ai regardé mon téléphone environ quarante fois, alors qu’il n’y avait rien de nouveau."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Le jeudi, mon groupe d’histoire a déplacé la réunion de la bibliothèque dans un café, et je l’ai découvert seulement quand j’étais déjà assis dans la bibliothèque vide.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 5?",
+      "choices": [
+        "J’ai désactivé les notifications de deux de mes quatre groupes, et j’appelle ma grand-mère au lieu de lui envoyer des émojis.",
+        "Les appels et les e-mails étaient autorisés, mais pas les discussions ni les messages vocaux.",
+        "Avant le déjeuner, j’ai regardé mon téléphone environ quarante fois, alors qu’il n’y avait rien de nouveau.",
+        "Mon ami Karim était si surpris qu’il a cru qu’il s’était passé quelque chose de grave."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Paragraphe 5: J’ai désactivé les notifications de deux de mes quatre groupes, et j’appelle ma grand-mère au lieu de lui envoyer des émojis.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

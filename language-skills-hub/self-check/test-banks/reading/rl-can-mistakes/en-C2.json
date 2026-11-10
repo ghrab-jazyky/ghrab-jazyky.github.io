@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "C2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-en-c2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "The distinction is more than semantic.",
+        "Few educational ideals are as difficult to oppose as resilience.",
+        "This matters because performance indicators have an unfortunate tendency to colonise the activities they were intended to illuminate.",
+        "None of this warrants a return to the comforting fiction that talent is fixed or that students are powerless."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Few educational ideals are as difficult to oppose as resilience.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "The distinction is more than semantic.",
+        "This matters because performance indicators have an unfortunate tendency to colonise the activities they were intended to illuminate.",
+        "None of this warrants a return to the comforting fiction that talent is fixed or that students are powerless.",
+        "Few educational ideals are as difficult to oppose as resilience."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: The distinction is more than semantic.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "None of this warrants a return to the comforting fiction that talent is fixed or that students are powerless.",
+        "Few educational ideals are as difficult to oppose as resilience.",
+        "The distinction is more than semantic.",
+        "This matters because performance indicators have an unfortunate tendency to colonise the activities they were intended to illuminate."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: This matters because performance indicators have an unfortunate tendency to colonise the activities they were intended to illuminate.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "Few educational ideals are as difficult to oppose as resilience.",
+        "The distinction is more than semantic.",
+        "None of this warrants a return to the comforting fiction that talent is fixed or that students are powerless.",
+        "This matters because performance indicators have an unfortunate tendency to colonise the activities they were intended to illuminate."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: None of this warrants a return to the comforting fiction that talent is fixed or that students are powerless.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "A pupil who revises an ineffective strategy after receiving criticism exercises agency; a pupil repeatedly required to overcome inadequate support may be displaying…",
+        "The capacity to recover from disappointment, reconsider an assumption and persevere through uncertainty is plainly valuable.",
+        "Once improvement can be charted, it becomes tempting to assume that uncharted experiences are unproductive.",
+        "Rather, it calls for a richer account of educational success: one attentive to structural constraints, willing to question the metrics it employs and sufficiently co…"
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: The capacity to recover from disappointment, reconsider an assumption and persevere through uncertainty is plainly valuable.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "A pupil who revises an ineffective strategy after receiving criticism exercises agency; a pupil repeatedly required to overcome inadequate support may be displaying…",
+        "Once improvement can be charted, it becomes tempting to assume that uncharted experiences are unproductive.",
+        "Rather, it calls for a richer account of educational success: one attentive to structural constraints, willing to question the metrics it employs and sufficiently co…",
+        "The capacity to recover from disappointment, reconsider an assumption and persevere through uncertainty is plainly valuable."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: A pupil who revises an ineffective strategy after receiving criticism exercises agency; a pupil repeatedly required to overcome inadequate support may be displaying…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "Rather, it calls for a richer account of educational success: one attentive to structural constraints, willing to question the metrics it employs and sufficiently co…",
+        "The capacity to recover from disappointment, reconsider an assumption and persevere through uncertainty is plainly valuable.",
+        "A pupil who revises an ineffective strategy after receiving criticism exercises agency; a pupil repeatedly required to overcome inadequate support may be displaying…",
+        "Once improvement can be charted, it becomes tempting to assume that uncharted experiences are unproductive."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: Once improvement can be charted, it becomes tempting to assume that uncharted experiences are unproductive.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "The capacity to recover from disappointment, reconsider an assumption and persevere through uncertainty is plainly valuable.",
+        "A pupil who revises an ineffective strategy after receiving criticism exercises agency; a pupil repeatedly required to overcome inadequate support may be displaying…",
+        "Rather, it calls for a richer account of educational success: one attentive to structural constraints, willing to question the metrics it employs and sufficiently co…",
+        "Once improvement can be charted, it becomes tempting to assume that uncharted experiences are unproductive."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: Rather, it calls for a richer account of educational success: one attentive to structural constraints, willing to question the metrics it employs and sufficiently co…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Both can appear equally determined from a distance.",
+        "Problems arise, however, when resilience ceases to describe an individual’s available resources and becomes a moral expectation imposed irrespective of circumstance.",
+        "Hesitation, intellectual wandering and even the decision to abandon a poorly chosen goal may then be interpreted as shortcomings.",
+        "The most defensible educational culture does not celebrate perseverance without qualification."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Problems arise, however, when resilience ceases to describe an individual’s available resources and becomes a moral expectation imposed irrespective of circumstance.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-c2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Both can appear equally determined from a distance.",
+        "Hesitation, intellectual wandering and even the decision to abandon a poorly chosen goal may then be interpreted as shortcomings.",
+        "The most defensible educational culture does not celebrate perseverance without qualification.",
+        "Problems arise, however, when resilience ceases to describe an individual’s available resources and becomes a moral expectation imposed irrespective of circumstance."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Both can appear equally determined from a distance.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

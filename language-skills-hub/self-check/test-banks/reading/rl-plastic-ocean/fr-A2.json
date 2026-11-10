@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "fr",
+  "level": "A2",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-fr-a2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "À l’entrée, on pouvait recevoir un gobelet réutilisable en donnant une petite consigne.",
+        "L’année dernière, après la fête du quartier, il y avait des gobelets en plastique partout.",
+        "Dimanche soir, la plupart des gobelets étaient revenus.",
+        "Pour la prochaine fête, les organisateurs veulent discuter avec les vendeurs de nourriture."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: L’année dernière, après la fête du quartier, il y avait des gobelets en plastique partout.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "À l’entrée, on pouvait recevoir un gobelet réutilisable en donnant une petite consigne.",
+        "Dimanche soir, la plupart des gobelets étaient revenus.",
+        "Pour la prochaine fête, les organisateurs veulent discuter avec les vendeurs de nourriture.",
+        "L’année dernière, après la fête du quartier, il y avait des gobelets en plastique partout."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: À l’entrée, on pouvait recevoir un gobelet réutilisable en donnant une petite consigne.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Pour la prochaine fête, les organisateurs veulent discuter avec les vendeurs de nourriture.",
+        "L’année dernière, après la fête du quartier, il y avait des gobelets en plastique partout.",
+        "À l’entrée, on pouvait recevoir un gobelet réutilisable en donnant une petite consigne.",
+        "Dimanche soir, la plupart des gobelets étaient revenus."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Dimanche soir, la plupart des gobelets étaient revenus.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "L’année dernière, après la fête du quartier, il y avait des gobelets en plastique partout.",
+        "À l’entrée, on pouvait recevoir un gobelet réutilisable en donnant une petite consigne.",
+        "Pour la prochaine fête, les organisateurs veulent discuter avec les vendeurs de nourriture.",
+        "Dimanche soir, la plupart des gobelets étaient revenus."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Pour la prochaine fête, les organisateurs veulent discuter avec les vendeurs de nourriture.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Quand on rapportait le gobelet, on récupérait son argent.",
+        "Les agents de nettoyage ont travaillé très tard et les habitants étaient mécontents.",
+        "Quelques-uns manquaient et il restait des emballages de nourriture près de la scène.",
+        "Leur objectif est de réduire les autres emballages sans compliquer inutilement le travail des petites entreprises."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Les agents de nettoyage ont travaillé très tard et les habitants étaient mécontents.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Quand on rapportait le gobelet, on récupérait son argent.",
+        "Quelques-uns manquaient et il restait des emballages de nourriture près de la scène.",
+        "Leur objectif est de réduire les autres emballages sans compliquer inutilement le travail des petites entreprises.",
+        "Les agents de nettoyage ont travaillé très tard et les habitants étaient mécontents."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Quand on rapportait le gobelet, on récupérait son argent.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Leur objectif est de réduire les autres emballages sans compliquer inutilement le travail des petites entreprises.",
+        "Les agents de nettoyage ont travaillé très tard et les habitants étaient mécontents.",
+        "Quand on rapportait le gobelet, on récupérait son argent.",
+        "Quelques-uns manquaient et il restait des emballages de nourriture près de la scène."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Quelques-uns manquaient et il restait des emballages de nourriture près de la scène.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Les agents de nettoyage ont travaillé très tard et les habitants étaient mécontents.",
+        "Quand on rapportait le gobelet, on récupérait son argent.",
+        "Leur objectif est de réduire les autres emballages sans compliquer inutilement le travail des petites entreprises.",
+        "Quelques-uns manquaient et il restait des emballages de nourriture près de la scène."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Leur objectif est de réduire les autres emballages sans compliquer inutilement le travail des petites entreprises.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Il y avait aussi deux fontaines pour remplir les gourdes.",
+        "Cette année, les organisateurs ont donc décidé de changer leurs habitudes.",
+        "Mais les agents ont terminé plus tôt.",
+        "Pour la prochaine fête, les organisateurs veulent discuter avec les vendeurs de nourriture."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Cette année, les organisateurs ont donc décidé de changer leurs habitudes.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Il y avait aussi deux fontaines pour remplir les gourdes.",
+        "Mais les agents ont terminé plus tôt.",
+        "Pour la prochaine fête, les organisateurs veulent discuter avec les vendeurs de nourriture.",
+        "Cette année, les organisateurs ont donc décidé de changer leurs habitudes."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Il y avait aussi deux fontaines pour remplir les gourdes.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

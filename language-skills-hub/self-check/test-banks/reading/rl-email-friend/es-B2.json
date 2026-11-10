@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "es",
+  "level": "B2",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-es-b2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Todo empezó a cambiar cuando una vecina me invitó a colaborar en una radio comunitaria.",
+        "Hola, Alex: Te debo un mensaje de verdad y no otra foto con una frase alegre.",
+        "La semana pasada encontré nuestra foto del último día de exámenes.",
+        "Así que te invito a nuestra velada de historias del barrio, el segundo sábado de junio."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Hola, Alex: Te debo un mensaje de verdad y no otra foto con una frase alegre.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Todo empezó a cambiar cuando una vecina me invitó a colaborar en una radio comunitaria.",
+        "La semana pasada encontré nuestra foto del último día de exámenes.",
+        "Así que te invito a nuestra velada de historias del barrio, el segundo sábado de junio.",
+        "Hola, Alex: Te debo un mensaje de verdad y no otra foto con una frase alegre."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Todo empezó a cambiar cuando una vecina me invitó a colaborar en una radio comunitaria.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Así que te invito a nuestra velada de historias del barrio, el segundo sábado de junio.",
+        "Hola, Alex: Te debo un mensaje de verdad y no otra foto con una frase alegre.",
+        "Todo empezó a cambiar cuando una vecina me invitó a colaborar en una radio comunitaria.",
+        "La semana pasada encontré nuestra foto del último día de exámenes."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: La semana pasada encontré nuestra foto del último día de exámenes.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Hola, Alex: Te debo un mensaje de verdad y no otra foto con una frase alegre.",
+        "Todo empezó a cambiar cuando una vecina me invitó a colaborar en una radio comunitaria.",
+        "Así que te invito a nuestra velada de historias del barrio, el segundo sábado de junio.",
+        "La semana pasada encontré nuestra foto del último día de exámenes."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Así que te invito a nuestra velada de historias del barrio, el segundo sábado de junio.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Acepté porque necesitaban a alguien para transportar material, pero pronto estaba grabando entrevistas con personas recién llegadas.",
+        "Cuando llegué a Róterdam para mi intercambio, pensaba que cada semana sería como unas vacaciones.",
+        "Estuve a punto de enviártela con un simple «¿Te acuerdas?» y una carita sonriente.",
+        "No tendrás que actuar ni hablar en público: podemos limitarnos a escuchar y, al día siguiente, pasear por la ciudad."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Cuando llegué a Róterdam para mi intercambio, pensaba que cada semana sería como unas vacaciones.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Acepté porque necesitaban a alguien para transportar material, pero pronto estaba grabando entrevistas con personas recién llegadas.",
+        "Estuve a punto de enviártela con un simple «¿Te acuerdas?» y una carita sonriente.",
+        "No tendrás que actuar ni hablar en público: podemos limitarnos a escuchar y, al día siguiente, pasear por la ciudad.",
+        "Cuando llegué a Róterdam para mi intercambio, pensaba que cada semana sería como unas vacaciones."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Acepté porque necesitaban a alguien para transportar material, pero pronto estaba grabando entrevistas con personas recién llegadas.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "No tendrás que actuar ni hablar en público: podemos limitarnos a escuchar y, al día siguiente, pasear por la ciudad.",
+        "Cuando llegué a Róterdam para mi intercambio, pensaba que cada semana sería como unas vacaciones.",
+        "Acepté porque necesitaban a alguien para transportar material, pero pronto estaba grabando entrevistas con personas recién llegadas.",
+        "Estuve a punto de enviártela con un simple «¿Te acuerdas?» y una carita sonriente."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Estuve a punto de enviártela con un simple «¿Te acuerdas?» y una carita sonriente.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Cuando llegué a Róterdam para mi intercambio, pensaba que cada semana sería como unas vacaciones.",
+        "Acepté porque necesitaban a alguien para transportar material, pero pronto estaba grabando entrevistas con personas recién llegadas.",
+        "No tendrás que actuar ni hablar en público: podemos limitarnos a escuchar y, al día siguiente, pasear por la ciudad.",
+        "Estuve a punto de enviártela con un simple «¿Te acuerdas?» y una carita sonriente."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: No tendrás que actuar ni hablar en público: podemos limitarnos a escuchar y, al día siguiente, pasear por la ciudad.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Una mujer explicó que aprender las rutas de autobús era como descubrir un idioma secreto.",
+        "La ciudad es fantástica, con carriles bici, edificios sorprendentes y un mercado donde oigo cinco idiomas antes de desayunar.",
+        "Entonces comprendí que no sabía cómo te iba en tu primer año de universidad.",
+        "Puedes dormir en el sofá de mi piso, aunque tendrás que pagar tu billete de tren."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: La ciudad es fantástica, con carriles bici, edificios sorprendentes y un mercado donde oigo cinco idiomas antes de desayunar.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Una mujer explicó que aprender las rutas de autobús era como descubrir un idioma secreto.",
+        "Entonces comprendí que no sabía cómo te iba en tu primer año de universidad.",
+        "Puedes dormir en el sofá de mi piso, aunque tendrás que pagar tu billete de tren.",
+        "La ciudad es fantástica, con carriles bici, edificios sorprendentes y un mercado donde oigo cinco idiomas antes de desayunar."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Una mujer explicó que aprender las rutas de autobús era como descubrir un idioma secreto.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

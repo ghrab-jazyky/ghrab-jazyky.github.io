@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "fr",
+  "level": "B1",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-fr-b1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Elle leur a montré une bouche d’égout à côté de l’arrêt de bus.",
+        "Après un gros orage, des élèves ont découvert beaucoup d’emballages près du ruisseau des Tilleuls.",
+        "Pendant une semaine, ils ont noté les lieux où les déchets étaient les plus nombreux.",
+        "Un mois plus tard, les élèves ont vu moins de déchets après les petites pluies."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Après un gros orage, des élèves ont découvert beaucoup d’emballages près du ruisseau des Tilleuls.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Elle leur a montré une bouche d’égout à côté de l’arrêt de bus.",
+        "Pendant une semaine, ils ont noté les lieux où les déchets étaient les plus nombreux.",
+        "Un mois plus tard, les élèves ont vu moins de déchets après les petites pluies.",
+        "Au départ, ils voulaient demander aux gens d’être plus propres."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Elle leur a montré une bouche d’égout à côté de l’arrêt de bus.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Un mois plus tard, les élèves ont vu moins de déchets après les petites pluies.",
+        "Au départ, ils voulaient demander aux gens d’être plus propres.",
+        "Après un gros orage, des élèves ont découvert beaucoup d’emballages près du ruisseau des Tilleuls.",
+        "Pendant une semaine, ils ont noté les lieux où les déchets étaient les plus nombreux."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Pendant une semaine, ils ont noté les lieux où les déchets étaient les plus nombreux.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Au départ, ils voulaient demander aux gens d’être plus propres.",
+        "Après un gros orage, des élèves ont découvert beaucoup d’emballages près du ruisseau des Tilleuls.",
+        "Un mois plus tard, les élèves ont vu moins de déchets après les petites pluies.",
+        "Elle leur a montré une bouche d’égout à côté de l’arrêt de bus."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Un mois plus tard, les élèves ont vu moins de déchets après les petites pluies.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 5?",
+      "choices": [
+        "Après un gros orage, des élèves ont découvert beaucoup d’emballages près du ruisseau des Tilleuls.",
+        "Au départ, ils voulaient demander aux gens d’être plus propres.",
+        "Elle leur a montré une bouche d’égout à côté de l’arrêt de bus.",
+        "Pendant une semaine, ils ont noté les lieux où les déchets étaient les plus nombreux."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraphe 5: Au départ, ils voulaient demander aux gens d’être plus propres.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Ils pensaient que des promeneurs avaient jeté leurs déchets dans l’eau.",
+        "Quand il pleut, l’eau entraîne les papiers et les petits emballages présents sur le trottoir.",
+        "Ils en ont trouvé surtout à l’arrêt de bus, près d’une poubelle souvent pleine en fin d’après-midi.",
+        "Pourtant, ils savaient que le vent pouvait encore en apporter d’autres rues."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Ils pensaient que des promeneurs avaient jeté leurs déchets dans l’eau.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Ils en ont trouvé surtout à l’arrêt de bus, près d’une poubelle souvent pleine en fin d’après-midi.",
+        "Pourtant, ils savaient que le vent pouvait encore en apporter d’autres rues.",
+        "Finalement, leur enquête leur a appris à poser une question plus précise : quel trajet suit un emballage avant d’arriver dans l’eau ?",
+        "Quand il pleut, l’eau entraîne les papiers et les petits emballages présents sur le trottoir."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Quand il pleut, l’eau entraîne les papiers et les petits emballages présents sur le trottoir.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Pourtant, ils savaient que le vent pouvait encore en apporter d’autres rues.",
+        "Finalement, leur enquête leur a appris à poser une question plus précise : quel trajet suit un emballage avant d’arriver dans l’eau ?",
+        "Ils en ont trouvé surtout à l’arrêt de bus, près d’une poubelle souvent pleine en fin d’après-midi.",
+        "Ils pensaient que des promeneurs avaient jeté leurs déchets dans l’eau."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Ils en ont trouvé surtout à l’arrêt de bus, près d’une poubelle souvent pleine en fin d’après-midi.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Finalement, leur enquête leur a appris à poser une question plus précise : quel trajet suit un emballage avant d’arriver dans l’eau ?",
+        "Pourtant, ils savaient que le vent pouvait encore en apporter d’autres rues.",
+        "Ils pensaient que des promeneurs avaient jeté leurs déchets dans l’eau.",
+        "Quand il pleut, l’eau entraîne les papiers et les petits emballages présents sur le trottoir."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Pourtant, ils savaient que le vent pouvait encore en apporter d’autres rues.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 5?",
+      "choices": [
+        "Finalement, leur enquête leur a appris à poser une question plus précise : quel trajet suit un emballage avant d’arriver dans l’eau ?",
+        "Ils pensaient que des promeneurs avaient jeté leurs déchets dans l’eau.",
+        "Quand il pleut, l’eau entraîne les papiers et les petits emballages présents sur le trottoir.",
+        "Ils en ont trouvé surtout à l’arrêt de bus, près d’une poubelle souvent pleine en fin d’après-midi."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Paragraphe 5: Finalement, leur enquête leur a appris à poser une question plus précise : quel trajet suit un emballage avant d’arriver dans l’eau ?",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

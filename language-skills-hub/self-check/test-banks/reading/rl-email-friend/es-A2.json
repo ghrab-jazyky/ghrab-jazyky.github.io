@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "es",
+  "level": "A2",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-es-a2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Tengo una sorpresa: el curso termina el próximo viernes y volveré unos días.",
+        "¡Hola, Noah!",
+        "Podemos tomar el autobús a las nueve y media y comer después.",
+        "El domingo hay una exposición de fotografía en la antigua estación de tren."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: ¡Hola, Noah!",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Tengo una sorpresa: el curso termina el próximo viernes y volveré unos días.",
+        "Podemos tomar el autobús a las nueve y media y comer después.",
+        "¡Hola, Noah!",
+        "Si no quedan entradas, podemos ir al museo de ciencias."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Tengo una sorpresa: el curso termina el próximo viernes y volveré unos días.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "¡Hola, Noah!",
+        "Tengo una sorpresa: el curso termina el próximo viernes y volveré unos días.",
+        "Perdona por no escribir antes.",
+        "Podemos tomar el autobús a las nueve y media y comer después."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Podemos tomar el autobús a las nueve y media y comer después.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "El domingo hay una exposición de fotografía en la antigua estación de tren.",
+        "Si no quedan entradas, podemos ir al museo de ciencias.",
+        "Perdona por no escribir antes.",
+        "Abre a las diez y la entrada cuesta cuatro euros."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Perdona por no escribir antes.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Si no quedan entradas, podemos ir al museo de ciencias.",
+        "El domingo hay una exposición de fotografía en la antigua estación de tren.",
+        "Perdona por no escribir antes.",
+        "Quiero saber cómo va tu equipo de baloncesto, pero no hace falta preparar un día perfecto."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: El domingo hay una exposición de fotografía en la antigua estación de tren.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Si no quedan entradas, podemos ir al museo de ciencias.",
+        "Perdona por no escribir antes.",
+        "El domingo hay una exposición de fotografía en la antigua estación de tren.",
+        "Desde septiembre vivo con mi tía en Galway y hago un curso de idiomas."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Si no quedan entradas, podemos ir al museo de ciencias.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Abre a las diez y la entrada cuesta cuatro euros.",
+        "Quiero saber cómo va tu equipo de baloncesto, pero no hace falta preparar un día perfecto.",
+        "El fotógrafo muestra a personas corrientes haciendo cosas interesantes.",
+        "Desde septiembre vivo con mi tía en Galway y hago un curso de idiomas."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Desde septiembre vivo con mi tía en Galway y hago un curso de idiomas.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Quiero saber cómo va tu equipo de baloncesto, pero no hace falta preparar un día perfecto.",
+        "Desde septiembre vivo con mi tía en Galway y hago un curso de idiomas.",
+        "Abre a las diez y la entrada cuesta cuatro euros.",
+        "Incluso una hora contigo me haría feliz."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Abre a las diez y la entrada cuesta cuatro euros.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Desde septiembre vivo con mi tía en Galway y hago un curso de idiomas.",
+        "Quiero saber cómo va tu equipo de baloncesto, pero no hace falta preparar un día perfecto.",
+        "Abre a las diez y la entrada cuesta cuatro euros.",
+        "Al principio estaba triste porque no conocía a nadie y hacía más frío de lo que esperaba."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Quiero saber cómo va tu equipo de baloncesto, pero no hace falta preparar un día perfecto.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Al principio estaba triste porque no conocía a nadie y hacía más frío de lo que esperaba.",
+        "El fotógrafo muestra a personas corrientes haciendo cosas interesantes.",
+        "Incluso una hora contigo me haría feliz.",
+        "Sé que te encanta la fotografía y por eso pensé en ti."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Al principio estaba triste porque no conocía a nadie y hacía más frío de lo que esperaba.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

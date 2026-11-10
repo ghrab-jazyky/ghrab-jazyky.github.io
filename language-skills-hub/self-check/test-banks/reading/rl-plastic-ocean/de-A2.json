@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "de",
+  "level": "A2",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-de-a2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Am Eingang konnte man einen stabilen Mehrwegbecher gegen Pfand bekommen.",
+        "Nach dem Stadtfest im letzten Jahr lagen überall Plastikbecher.",
+        "Am Samstagabend kamen die meisten Becher zurück.",
+        "Für das nächste Fest möchte die Gruppe mit den Essensständen sprechen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Nach dem Stadtfest im letzten Jahr lagen überall Plastikbecher.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Am Eingang konnte man einen stabilen Mehrwegbecher gegen Pfand bekommen.",
+        "Am Samstagabend kamen die meisten Becher zurück.",
+        "Für das nächste Fest möchte die Gruppe mit den Essensständen sprechen.",
+        "Nach dem Stadtfest im letzten Jahr lagen überall Plastikbecher."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Am Eingang konnte man einen stabilen Mehrwegbecher gegen Pfand bekommen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Für das nächste Fest möchte die Gruppe mit den Essensständen sprechen.",
+        "Nach dem Stadtfest im letzten Jahr lagen überall Plastikbecher.",
+        "Am Eingang konnte man einen stabilen Mehrwegbecher gegen Pfand bekommen.",
+        "Am Samstagabend kamen die meisten Becher zurück."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Am Samstagabend kamen die meisten Becher zurück.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Nach dem Stadtfest im letzten Jahr lagen überall Plastikbecher.",
+        "Am Eingang konnte man einen stabilen Mehrwegbecher gegen Pfand bekommen.",
+        "Für das nächste Fest möchte die Gruppe mit den Essensständen sprechen.",
+        "Am Samstagabend kamen die meisten Becher zurück."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Für das nächste Fest möchte die Gruppe mit den Essensständen sprechen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Wer den Becher zurückbrachte, erhielt das Geld wieder.",
+        "Die Reinigungskräfte arbeiteten lange, und viele Besucher waren unzufrieden.",
+        "Einige fehlten, und auf der Wiese lagen weiterhin Verpackungen vom Essen.",
+        "Das neue System war ein guter Anfang, aber noch keine Lösung für alle Abfälle."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Die Reinigungskräfte arbeiteten lange, und viele Besucher waren unzufrieden.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Wer den Becher zurückbrachte, erhielt das Geld wieder.",
+        "Einige fehlten, und auf der Wiese lagen weiterhin Verpackungen vom Essen.",
+        "Das neue System war ein guter Anfang, aber noch keine Lösung für alle Abfälle.",
+        "Die Reinigungskräfte arbeiteten lange, und viele Besucher waren unzufrieden."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Wer den Becher zurückbrachte, erhielt das Geld wieder.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Das neue System war ein guter Anfang, aber noch keine Lösung für alle Abfälle.",
+        "Die Reinigungskräfte arbeiteten lange, und viele Besucher waren unzufrieden.",
+        "Wer den Becher zurückbrachte, erhielt das Geld wieder.",
+        "Einige fehlten, und auf der Wiese lagen weiterhin Verpackungen vom Essen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Einige fehlten, und auf der Wiese lagen weiterhin Verpackungen vom Essen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Die Reinigungskräfte arbeiteten lange, und viele Besucher waren unzufrieden.",
+        "Wer den Becher zurückbrachte, erhielt das Geld wieder.",
+        "Das neue System war ein guter Anfang, aber noch keine Lösung für alle Abfälle.",
+        "Einige fehlten, und auf der Wiese lagen weiterhin Verpackungen vom Essen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Das neue System war ein guter Anfang, aber noch keine Lösung für alle Abfälle.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Außerdem gab es zwei Stellen mit kostenlosem Trinkwasser.",
+        "Deshalb wollte die Jugendgruppe dieses Jahr etwas Neues versuchen.",
+        "Trotzdem musste das Reinigungsteam weniger Becher einsammeln als früher.",
+        "Für das nächste Fest möchte die Gruppe mit den Essensständen sprechen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Deshalb wollte die Jugendgruppe dieses Jahr etwas Neues versuchen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Außerdem gab es zwei Stellen mit kostenlosem Trinkwasser.",
+        "Trotzdem musste das Reinigungsteam weniger Becher einsammeln als früher.",
+        "Für das nächste Fest möchte die Gruppe mit den Essensständen sprechen.",
+        "Deshalb wollte die Jugendgruppe dieses Jahr etwas Neues versuchen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Außerdem gab es zwei Stellen mit kostenlosem Trinkwasser.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

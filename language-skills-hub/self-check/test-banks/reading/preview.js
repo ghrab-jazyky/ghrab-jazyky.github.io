@@ -15,8 +15,12 @@
  };
  const params=new URLSearchParams(location.search);
  const level=params.get('level')||'B2';
+ const lang=params.get('lang')||'en';
+ const topic=params.get('topic')||'rl-can-mistakes';
+ const timer=params.get('timer');
  const answers=Object.create(null);
- let variant=null,timed=null,submitted=false;
+ let variant=null,timed=null,submitted=false,currentBank=null;
+ const locale={en:{choose:'Choose one answer.',remaining:'unanswered',correct:'Correct answer',yours:'Your answer',notAnswered:'Not answered',review:'NEEDS REVIEW · PARAGRAPH ',evidence:'Evidence / rationale',all:'All ten answers are correct. No mistakes to display.',submit:'Submit draft test'},es:{choose:'Elige una respuesta.',remaining:'sin responder',correct:'Respuesta correcta',yours:'Tu respuesta',notAnswered:'Sin responder',review:'REVISAR · PÁRRAFO ',evidence:'Prueba / explicación',all:'Las diez respuestas son correctas.',submit:'Entregar prueba de borrador'},de:{choose:'Wähle eine Antwort.',remaining:'unbeantwortet',correct:'Richtige Antwort',yours:'Deine Antwort',notAnswered:'Nicht beantwortet',review:'PRÜFEN · ABSATZ ',evidence:'Beleg / Erklärung',all:'Alle zehn Antworten sind richtig.',submit:'Testentwurf abgeben'},fr:{choose:'Choisis une réponse.',remaining:'sans réponse',correct:'Bonne réponse',yours:'Ta réponse',notAnswered:'Sans réponse',review:'À REVOIR · PARAGRAPHE ',evidence:'Preuve / explication',all:'Les dix réponses sont correctes.',submit:'Remettre le test provisoire'}};
  function requireCondition(ok,message){if(!ok)throw new Error(message)}
  async function get(url,json=false){
   const response=await fetch(url,{credentials:'omit',redirect:'error',cache:'no-store'});
@@ -39,7 +43,7 @@
   const n=variant.questions.reduce((sum,q)=>sum+
    (Object.prototype.hasOwnProperty.call(answers,q.id)?1:0),0);
   $('counter').textContent=n+' / '+variant.questions.length;
-  $('remaining').textContent=variant.questions.length-n+' unanswered';
+  $('remaining').textContent=variant.questions.length-n+' '+locale[lang].remaining;
   $('progress').setAttribute('aria-valuenow',String(n*100/variant.questions.length));
   $('progressFill').style.width=String(n*100/variant.questions.length)+'%';
  }
@@ -53,7 +57,7 @@
     number++;
     const field=make('fieldset','question');
     field.appendChild(make('legend',null,number+'. '+q.q));
-    field.appendChild(make('p','question-kind','Choose one answer.'));
+    field.appendChild(make('p','question-kind',locale[lang].choose));
     q.choices.forEach((choice,index)=>{
      const label=make('label','choice'),input=make('input');
      input.type='radio';input.name=q.id;input.value=String(index);
@@ -81,22 +85,26 @@
   tile.append(make('strong',null,report.points+' / '+report.maxPoints),
    make('span',null,'Correct answers'));
   summary.appendChild(tile);
-  const candidate=grade.proposal(report.points,report.maxPoints);
-  $('gradeProposal').replaceChildren(make('span','grade-caption',
-   'Proposed local grade (not approved)'),make('strong','grade-number',String(candidate.grade)),
-   make('p','small-note','Not a verified school grade. Review the independent questions and criteria before any classroom use.'));
+  if(currentBank.editorialStatus==='AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED'){
+   $('gradeProposal').replaceChildren(make('p','small-note',
+    'NOT SCORED AS AN ASSESSMENT: automatically generated content has not been independently written or CEFR-validated. Points are technical QA only.'));
+  }else{
+   const candidate=grade.proposal(report.points,report.maxPoints);
+   $('gradeProposal').replaceChildren(make('span','grade-caption',
+    'Proposed local grade (not approved)'),make('strong','grade-number',String(candidate.grade)),
+    make('p','small-note','Not a verified school grade. Teacher review is required.'));
+  }
   const details=$('resultDetails');details.replaceChildren();
   const mistakes=report.details.filter(item=>!item.correct);
-  if(!mistakes.length)details.appendChild(make('p','small-note',
-   'All ten answers are correct. No mistakes to display.'));
+  if(!mistakes.length)details.appendChild(make('p','small-note',locale[lang].all));
   for(const error of mistakes){
    const item=variant.questions.find(q=>q.id===error.id);
    const block=make('article','review wrong');
-   block.appendChild(make('span','state','NEEDS REVIEW · PARAGRAPH '+item.sourceParagraph));
+   block.appendChild(make('span','state',locale[lang].review+item.sourceParagraph));
    block.appendChild(make('h3',null,error.prompt));
-   resultLine(block,'Your answer',error.answered?error.selectedAnswer:'Not answered');
-   resultLine(block,'Correct answer',error.correctAnswer);
-   resultLine(block,'Evidence / rationale',error.explanation);
+   resultLine(block,locale[lang].yours,error.answered?error.selectedAnswer:locale[lang].notAnswered);
+   resultLine(block,locale[lang].correct,error.correctAnswer);
+   resultLine(block,locale[lang].evidence,error.explanation);
    details.appendChild(block);
   }
   $('results').hidden=false;
@@ -118,34 +126,45 @@
   try{
    requireCondition(reading&&testBank&&grade&&window.LSHSessionUI,
     'Required local assessment modules are unavailable');
-   // A fixed 20-minute URL is intentional for this *unapproved* pedagogical pilot.
-   // It must not be exposed through the public teacher catalogue.
-   requireCondition(['B1','B2'].includes(level),'Unsupported independent test level');
-   requireCondition(params.get('timer')==='20'&&
+   requireCondition(testBank.LEVELS.includes(level)&&testBank.LANGUAGES.includes(lang)&&
+    testBank.TOPICS.includes(topic),'Unsupported independent test level, language or topic');
+   requireCondition(/^[1-9][0-9]{0,2}$/.test(timer||'')&&
+    Number(timer)>=5&&Number(timer)<=120&&
     /^[a-z0-9_-]{6,40}$/i.test(params.get('attempt')||''),
-    'This draft preview requires ?level=B1|B2&timer=20&attempt=<local-id>');
-   const [manifest,originalHtml,bank]=await Promise.all([
+    'This draft preview requires a valid topic, lang, level, timer 5–120 and attempt.');
+   const [manifest,catalog,bank]=await Promise.all([
     get('../../../version.json',true),
-    get('../../../cteni/can-mistakes/index.html'),
-    get('rl-can-mistakes/en-'+level+'.json',true)
+    get('../../../data/cards.json',true),
+    get(topic+'/'+lang+'-'+level+'.json',true)
    ]);
+   const entry=reading.readingEntry(catalog,topic);
+   requireCondition(entry.languages.includes(lang)&&entry.levels.includes(level),
+    'This variant is not available in the public source card');
+   const originalHtml=await get('../../../'+entry.relative);
    requireCondition(manifest.version==='R31'&&
     manifest.backendEnabled===false&&manifest.gradedTestsEnabled===false,
     'Unexpected production baseline');
    const actual=await sourceHash(originalHtml);
-   requireCondition(actual===manifest.contentHashes['rl-can-mistakes'],
+   requireCondition(actual===manifest.contentHashes[topic],
     'Original source checksum mismatch: draft preview disabled');
-   const practice=reading.variantFromData(reading.parseReadingData(originalHtml),'en',level);
-   variant=testBank.makeQaVariant(bank,practice,actual);
+   const practice=reading.variantFromData(reading.parseReadingData(originalHtml),lang,level);
+   currentBank=bank;
+   variant=testBank.makeQaVariant(bank,practice,actual,{topic,lang,level});
    reading.validateVariant(variant);
    $('title').textContent=practice.title;
-   document.title='Independent Reading '+level+' – unapproved QA preview';
-   document.querySelector('.subtitle').textContent='Can Mistakes Help Us Learn? · English '+level+' · 10 independent questions · 20 minutes';
-   document.querySelector('.mode').textContent='UNAPPROVED DRAFT · EN/'+level;
-   document.querySelector('.reading-panel .pill').textContent='EN · '+level;
+   document.documentElement.lang=lang;
+   document.title='Independent Reading '+level+' · '+topic+' / '+lang.toUpperCase()+' – unapproved QA';
+   document.querySelector('.subtitle').textContent=entry.title+' · '+lang.toUpperCase()+'/'+level+
+    ' · 10 draft questions · '+timer+' minutes';
+   document.querySelector('.mode').textContent='UNAPPROVED DRAFT · '+lang.toUpperCase()+'/'+level;
+   document.querySelector('.reading-panel .pill').textContent=lang.toUpperCase()+' · '+level;
+   if(bank.editorialStatus==='AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED'){
+    $('pilotWarning').textContent='AUTOMATED CONTENT SCAFFOLD – not a finished CEFR-level assessment. No grade is available. Teacher and editorial review required; do not share with pupils.';
+   }
+   $('submitButton').textContent=locale[lang].submit;
    renderText();renderTasks();
    timed=window.LSHSessionUI.mount({
-    skill:'reading',topic:'rl-can-mistakes',lang:'en',level,
+    skill:'reading',topic,lang,level,
     workspace:$('workspace'),
     getAnswers:()=>({answers:{...answers}}),
     restoreAnswers:saved=>{
@@ -160,7 +179,7 @@
     },
     onSubmit:({automatic,restored})=>submit(automatic,restored)
    });
-   requireCondition(timed,'R32 pilot may not run without the local timer');
+   requireCondition(timed,'Independent draft may not run without the local timer');
    timed.initialize();
    $('workspace').hidden=timed.status().phase==='ready';
    $('loading').hidden=true;

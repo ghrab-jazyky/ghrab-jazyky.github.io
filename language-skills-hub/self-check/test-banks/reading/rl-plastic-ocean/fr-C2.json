@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "fr",
+  "level": "C2",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-fr-c2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Il serait tentant de dénoncer immédiatement l’hypocrisie de la soirée.",
+        "À la fin d’un documentaire fictif intitulé Une bouteille de moins, le public applaudit une lycéenne qui utilise la même gourde depuis trois ans.",
+        "Le consommateur exemplaire constitue un personnage extrêmement commode.",
+        "L’argument inverse n’est pas plus satisfaisant."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: À la fin d’un documentaire fictif intitulé Une bouteille de moins, le public applaudit une lycéenne qui utilise la même gourde depuis trois ans.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Il serait tentant de dénoncer immédiatement l’hypocrisie de la soirée.",
+        "Le consommateur exemplaire constitue un personnage extrêmement commode.",
+        "L’argument inverse n’est pas plus satisfaisant.",
+        "Le danger commence lorsqu’un exemple devient une explication universelle."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Il serait tentant de dénoncer immédiatement l’hypocrisie de la soirée.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "L’argument inverse n’est pas plus satisfaisant.",
+        "Le danger commence lorsqu’un exemple devient une explication universelle.",
+        "Certains cinéastes invoquent l’urgence pour défendre cette simplification.",
+        "Le consommateur exemplaire constitue un personnage extrêmement commode."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Le consommateur exemplaire constitue un personnage extrêmement commode.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Le danger commence lorsqu’un exemple devient une explication universelle.",
+        "Certains cinéastes invoquent l’urgence pour défendre cette simplification.",
+        "L’argument inverse n’est pas plus satisfaisant.",
+        "Un film plus exigeant demanderait comment les résultats ont été mesurés, quelles alternatives étaient envisageables et qui supporterait les coûts d’un ajustement."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: L’argument inverse n’est pas plus satisfaisant.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 5?",
+      "choices": [
+        "Certains cinéastes invoquent l’urgence pour défendre cette simplification.",
+        "Le danger commence lorsqu’un exemple devient une explication universelle.",
+        "Un film plus exigeant demanderait comment les résultats ont été mesurés, quelles alternatives étaient envisageables et qui supporterait les coûts d’un ajustement.",
+        "À la fin d’un documentaire fictif intitulé Une bouteille de moins, le public applaudit une lycéenne qui utilise la même gourde depuis trois ans."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraphe 5: Le danger commence lorsqu’un exemple devient une explication universelle.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 6?",
+      "choices": [
+        "Certains cinéastes invoquent l’urgence pour défendre cette simplification.",
+        "Un film plus exigeant demanderait comment les résultats ont été mesurés, quelles alternatives étaient envisageables et qui supporterait les coûts d’un ajustement.",
+        "À la fin d’un documentaire fictif intitulé Une bouteille de moins, le public applaudit une lycéenne qui utilise la même gourde depuis trois ans.",
+        "Il serait tentant de dénoncer immédiatement l’hypocrisie de la soirée."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "Paragraphe 6: Certains cinéastes invoquent l’urgence pour défendre cette simplification.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 7?",
+      "choices": [
+        "À la fin d’un documentaire fictif intitulé Une bouteille de moins, le public applaudit une lycéenne qui utilise la même gourde depuis trois ans.",
+        "Il serait tentant de dénoncer immédiatement l’hypocrisie de la soirée.",
+        "Le consommateur exemplaire constitue un personnage extrêmement commode.",
+        "Un film plus exigeant demanderait comment les résultats ont été mesurés, quelles alternatives étaient envisageables et qui supporterait les coûts d’un ajustement."
+      ],
+      "answer": 3,
+      "sourceParagraph": 7,
+      "explanation": "Paragraphe 7: Un film plus exigeant demanderait comment les résultats ont été mesurés, quelles alternatives étaient envisageables et qui supporterait les coûts d’un ajustement.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Le plaisir de découvrir une contradiction est cependant rarement proportionnel à ce qu’elle nous apprend.",
+        "Il refuse une paille, la musique souligne sa décision et l’histoire dispose aussitôt d’une conclusion.",
+        "Sa voix hésitante échappe heureusement au ton publicitaire du commentaire.",
+        "Affirmer que seules les entreprises ou les autorités publiques peuvent agir procure aux spectateurs une innocence tout aussi confortable."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Sa voix hésitante échappe heureusement au ton publicitaire du commentaire.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Il refuse une paille, la musique souligne sa décision et l’histoire dispose aussitôt d’une conclusion.",
+        "Le plaisir de découvrir une contradiction est cependant rarement proportionnel à ce qu’elle nous apprend.",
+        "Affirmer que seules les entreprises ou les autorités publiques peuvent agir procure aux spectateurs une innocence tout aussi confortable.",
+        "Une gourde métallique n’est pas automatiquement préférable dans toute situation : sa fabrication, sa durée de vie et ses usages réels comptent."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Le plaisir de découvrir une contradiction est cependant rarement proportionnel à ce qu’elle nous apprend.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Il refuse une paille, la musique souligne sa décision et l’histoire dispose aussitôt d’une conclusion.",
+        "Affirmer que seules les entreprises ou les autorités publiques peuvent agir procure aux spectateurs une innocence tout aussi confortable.",
+        "Une gourde métallique n’est pas automatiquement préférable dans toute situation : sa fabrication, sa durée de vie et ses usages réels comptent.",
+        "Il faudrait toucher le public d’abord, lui proposer les nuances plus tard."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Il refuse une paille, la musique souligne sa décision et l’histoire dispose aussitôt d’une conclusion.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

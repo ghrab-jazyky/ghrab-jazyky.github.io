@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "de",
+  "level": "B1",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-instant-messages-de-b1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Der erste Tag war schwerer als erwartet.",
+        "Letzten Monat hat uns unsere Medienlehrerin, Frau Berger, eine ungewöhnliche Aufgabe gegeben: eine Woche ganz ohne Messenger-Apps.",
+        "Also musste ich etwas Altmodisches tun: Ich habe Leute angerufen.",
+        "Allerdings war nicht alles besser."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Letzten Monat hat uns unsere Medienlehrerin, Frau Berger, eine ungewöhnliche Aufgabe gegeben: eine Woche ganz ohne Messenger-Apps.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-b1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Der erste Tag war schwerer als erwartet.",
+        "Also musste ich etwas Altmodisches tun: Ich habe Leute angerufen.",
+        "Allerdings war nicht alles besser.",
+        "Die Woche ist längst vorbei, die Apps sind wieder auf meinem Handy, aber ich nutze sie anders."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Der erste Tag war schwerer als erwartet.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-b1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Allerdings war nicht alles besser.",
+        "Die Woche ist längst vorbei, die Apps sind wieder auf meinem Handy, aber ich nutze sie anders.",
+        "Letzten Monat hat uns unsere Medienlehrerin, Frau Berger, eine ungewöhnliche Aufgabe gegeben: eine Woche ganz ohne Messenger-Apps.",
+        "Also musste ich etwas Altmodisches tun: Ich habe Leute angerufen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Also musste ich etwas Altmodisches tun: Ich habe Leute angerufen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Die Woche ist längst vorbei, die Apps sind wieder auf meinem Handy, aber ich nutze sie anders.",
+        "Letzten Monat hat uns unsere Medienlehrerin, Frau Berger, eine ungewöhnliche Aufgabe gegeben: eine Woche ganz ohne Messenger-Apps.",
+        "Allerdings war nicht alles besser.",
+        "Der erste Tag war schwerer als erwartet."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Allerdings war nicht alles besser.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-b1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 5?",
+      "choices": [
+        "Letzten Monat hat uns unsere Medienlehrerin, Frau Berger, eine ungewöhnliche Aufgabe gegeben: eine Woche ganz ohne Messenger-Apps.",
+        "Die Woche ist längst vorbei, die Apps sind wieder auf meinem Handy, aber ich nutze sie anders.",
+        "Der erste Tag war schwerer als erwartet.",
+        "Also musste ich etwas Altmodisches tun: Ich habe Leute angerufen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Absatz 5: Die Woche ist längst vorbei, die Apps sind wieder auf meinem Handy, aber ich nutze sie anders.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-b1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Anrufe und E-Mails waren erlaubt, aber keine Chats und keine Sprachnachrichten.",
+        "Ich habe vor dem Mittagessen ungefähr vierzig Mal auf mein Handy geschaut, obwohl es nichts Neues gab.",
+        "Mein Freund Karim war so überrascht, dass er dachte, es sei etwas Schlimmes passiert.",
+        "Am Donnerstag hat meine Gruppe für das Geschichtsreferat das Treffen von der Bibliothek in ein Café verlegt, und ich habe es erst gemerkt, als ich schon in der leere…"
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Anrufe und E-Mails waren erlaubt, aber keine Chats und keine Sprachnachrichten.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-b1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Mein Freund Karim war so überrascht, dass er dachte, es sei etwas Schlimmes passiert.",
+        "Am Donnerstag hat meine Gruppe für das Geschichtsreferat das Treffen von der Bibliothek in ein Café verlegt, und ich habe es erst gemerkt, als ich schon in der leere…",
+        "Bei zwei meiner vier Gruppen habe ich die Benachrichtigungen ausgeschaltet, und meine Oma rufe ich an, statt ihr Emojis zu schicken.",
+        "Ich habe vor dem Mittagessen ungefähr vierzig Mal auf mein Handy geschaut, obwohl es nichts Neues gab."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Ich habe vor dem Mittagessen ungefähr vierzig Mal auf mein Handy geschaut, obwohl es nichts Neues gab.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-b1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Am Donnerstag hat meine Gruppe für das Geschichtsreferat das Treffen von der Bibliothek in ein Café verlegt, und ich habe es erst gemerkt, als ich schon in der leere…",
+        "Bei zwei meiner vier Gruppen habe ich die Benachrichtigungen ausgeschaltet, und meine Oma rufe ich an, statt ihr Emojis zu schicken.",
+        "Mein Freund Karim war so überrascht, dass er dachte, es sei etwas Schlimmes passiert.",
+        "Anrufe und E-Mails waren erlaubt, aber keine Chats und keine Sprachnachrichten."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Mein Freund Karim war so überrascht, dass er dachte, es sei etwas Schlimmes passiert.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-b1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Bei zwei meiner vier Gruppen habe ich die Benachrichtigungen ausgeschaltet, und meine Oma rufe ich an, statt ihr Emojis zu schicken.",
+        "Am Donnerstag hat meine Gruppe für das Geschichtsreferat das Treffen von der Bibliothek in ein Café verlegt, und ich habe es erst gemerkt, als ich schon in der leere…",
+        "Anrufe und E-Mails waren erlaubt, aber keine Chats und keine Sprachnachrichten.",
+        "Ich habe vor dem Mittagessen ungefähr vierzig Mal auf mein Handy geschaut, obwohl es nichts Neues gab."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Am Donnerstag hat meine Gruppe für das Geschichtsreferat das Treffen von der Bibliothek in ein Café verlegt, und ich habe es erst gemerkt, als ich schon in der leere…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-b1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 5?",
+      "choices": [
+        "Bei zwei meiner vier Gruppen habe ich die Benachrichtigungen ausgeschaltet, und meine Oma rufe ich an, statt ihr Emojis zu schicken.",
+        "Anrufe und E-Mails waren erlaubt, aber keine Chats und keine Sprachnachrichten.",
+        "Ich habe vor dem Mittagessen ungefähr vierzig Mal auf mein Handy geschaut, obwohl es nichts Neues gab.",
+        "Mein Freund Karim war so überrascht, dass er dachte, es sei etwas Schlimmes passiert."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Absatz 5: Bei zwei meiner vier Gruppen habe ich die Benachrichtigungen ausgeschaltet, und meine Oma rufe ich an, statt ihr Emojis zu schicken.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

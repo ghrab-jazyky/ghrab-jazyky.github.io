@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "de",
+  "level": "C1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-de-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Man stelle sich zwei Lernende vor, die bei einer Prüfung gleich schlecht abschneiden.",
+        "Schulen ermutigen Lernende häufig, Herausforderungen anzunehmen, Rückschläge als Informationen zu betrachten und daran zu glauben, dass Fähigkeiten entwicklungsfähig…",
+        "Darüber hinaus muss nicht jede Bildungserfahrung als messbarer Fortschritt erscheinen.",
+        "Ein überzeugenderer Ansatz verbindet individuelle Handlungsfähigkeit mit institutioneller Verantwortung."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Schulen ermutigen Lernende häufig, Herausforderungen anzunehmen, Rückschläge als Informationen zu betrachten und daran zu glauben, dass Fähigkeiten entwicklungsfähig…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Man stelle sich zwei Lernende vor, die bei einer Prüfung gleich schlecht abschneiden.",
+        "Darüber hinaus muss nicht jede Bildungserfahrung als messbarer Fortschritt erscheinen.",
+        "Ein überzeugenderer Ansatz verbindet individuelle Handlungsfähigkeit mit institutioneller Verantwortung.",
+        "Schulen ermutigen Lernende häufig, Herausforderungen anzunehmen, Rückschläge als Informationen zu betrachten und daran zu glauben, dass Fähigkeiten entwicklungsfähig…"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Man stelle sich zwei Lernende vor, die bei einer Prüfung gleich schlecht abschneiden.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Ein überzeugenderer Ansatz verbindet individuelle Handlungsfähigkeit mit institutioneller Verantwortung.",
+        "Schulen ermutigen Lernende häufig, Herausforderungen anzunehmen, Rückschläge als Informationen zu betrachten und daran zu glauben, dass Fähigkeiten entwicklungsfähig…",
+        "Man stelle sich zwei Lernende vor, die bei einer Prüfung gleich schlecht abschneiden.",
+        "Darüber hinaus muss nicht jede Bildungserfahrung als messbarer Fortschritt erscheinen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Darüber hinaus muss nicht jede Bildungserfahrung als messbarer Fortschritt erscheinen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Schulen ermutigen Lernende häufig, Herausforderungen anzunehmen, Rückschläge als Informationen zu betrachten und daran zu glauben, dass Fähigkeiten entwicklungsfähig…",
+        "Man stelle sich zwei Lernende vor, die bei einer Prüfung gleich schlecht abschneiden.",
+        "Ein überzeugenderer Ansatz verbindet individuelle Handlungsfähigkeit mit institutioneller Verantwortung.",
+        "Darüber hinaus muss nicht jede Bildungserfahrung als messbarer Fortschritt erscheinen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Ein überzeugenderer Ansatz verbindet individuelle Handlungsfähigkeit mit institutioneller Verantwortung.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Die eine Person verfügt über ein ruhiges Zimmer, verlässlichen Internetzugang und eine erwachsene Bezugsperson, die schwierige Inhalte erklären kann.",
+        "Gerade für Jugendliche, die aus einer enttäuschenden Note ein endgültiges Urteil über ihre Möglichkeiten ableiten, kann diese Haltung befreiend wirken.",
+        "Einen fesselnden Roman zu lesen, eine Frage zu diskutieren, ohne Einigkeit zu erzielen, oder ein neues Hobby auszuprobieren, kann einen Wert haben, der sich nicht in…",
+        "Lernende sollten Fehler analysieren und untaugliche Strategien ändern können; Schulen müssen zugleich Zugang zu Unterstützung, Prüfungsformen und das Recht auf Erhol…"
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Gerade für Jugendliche, die aus einer enttäuschenden Note ein endgültiges Urteil über ihre Möglichkeiten ableiten, kann diese Haltung befreiend wirken.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Die eine Person verfügt über ein ruhiges Zimmer, verlässlichen Internetzugang und eine erwachsene Bezugsperson, die schwierige Inhalte erklären kann.",
+        "Einen fesselnden Roman zu lesen, eine Frage zu diskutieren, ohne Einigkeit zu erzielen, oder ein neues Hobby auszuprobieren, kann einen Wert haben, der sich nicht in…",
+        "Lernende sollten Fehler analysieren und untaugliche Strategien ändern können; Schulen müssen zugleich Zugang zu Unterstützung, Prüfungsformen und das Recht auf Erhol…",
+        "Gerade für Jugendliche, die aus einer enttäuschenden Note ein endgültiges Urteil über ihre Möglichkeiten ableiten, kann diese Haltung befreiend wirken."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Die eine Person verfügt über ein ruhiges Zimmer, verlässlichen Internetzugang und eine erwachsene Bezugsperson, die schwierige Inhalte erklären kann.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Lernende sollten Fehler analysieren und untaugliche Strategien ändern können; Schulen müssen zugleich Zugang zu Unterstützung, Prüfungsformen und das Recht auf Erhol…",
+        "Gerade für Jugendliche, die aus einer enttäuschenden Note ein endgültiges Urteil über ihre Möglichkeiten ableiten, kann diese Haltung befreiend wirken.",
+        "Die eine Person verfügt über ein ruhiges Zimmer, verlässlichen Internetzugang und eine erwachsene Bezugsperson, die schwierige Inhalte erklären kann.",
+        "Einen fesselnden Roman zu lesen, eine Frage zu diskutieren, ohne Einigkeit zu erzielen, oder ein neues Hobby auszuprobieren, kann einen Wert haben, der sich nicht in…"
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Einen fesselnden Roman zu lesen, eine Frage zu diskutieren, ohne Einigkeit zu erzielen, oder ein neues Hobby auszuprobieren, kann einen Wert haben, der sich nicht in…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Gerade für Jugendliche, die aus einer enttäuschenden Note ein endgültiges Urteil über ihre Möglichkeiten ableiten, kann diese Haltung befreiend wirken.",
+        "Die eine Person verfügt über ein ruhiges Zimmer, verlässlichen Internetzugang und eine erwachsene Bezugsperson, die schwierige Inhalte erklären kann.",
+        "Lernende sollten Fehler analysieren und untaugliche Strategien ändern können; Schulen müssen zugleich Zugang zu Unterstützung, Prüfungsformen und das Recht auf Erhol…",
+        "Einen fesselnden Roman zu lesen, eine Frage zu diskutieren, ohne Einigkeit zu erzielen, oder ein neues Hobby auszuprobieren, kann einen Wert haben, der sich nicht in…"
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Lernende sollten Fehler analysieren und untaugliche Strategien ändern können; Schulen müssen zugleich Zugang zu Unterstützung, Prüfungsformen und das Recht auf Erhol…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Die andere teilt einen überfüllten Wohnraum, arbeitet nach dem Unterricht und findet kaum ungestörte Lernzeit.",
+        "Doch die Rhetorik der Selbstverbesserung hat eine problematische Kehrseite: Sie kann suggerieren, jede Schwierigkeit lasse sich durch zusätzlichen persönlichen Einsa…",
+        "Wird selbst die Freizeit zum Projekt der Selbstoptimierung, droht Neugier in eine weitere Pflicht umzuschlagen.",
+        "Verbesserung ist sinnvoll, wenn sie Möglichkeiten eröffnet, nicht wenn sie zur endlosen Aufforderung wird, den eigenen Wert zu beweisen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Doch die Rhetorik der Selbstverbesserung hat eine problematische Kehrseite: Sie kann suggerieren, jede Schwierigkeit lasse sich durch zusätzlichen persönlichen Einsa…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Die andere teilt einen überfüllten Wohnraum, arbeitet nach dem Unterricht und findet kaum ungestörte Lernzeit.",
+        "Wird selbst die Freizeit zum Projekt der Selbstoptimierung, droht Neugier in eine weitere Pflicht umzuschlagen.",
+        "Verbesserung ist sinnvoll, wenn sie Möglichkeiten eröffnet, nicht wenn sie zur endlosen Aufforderung wird, den eigenen Wert zu beweisen.",
+        "Doch die Rhetorik der Selbstverbesserung hat eine problematische Kehrseite: Sie kann suggerieren, jede Schwierigkeit lasse sich durch zusätzlichen persönlichen Einsa…"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Die andere teilt einen überfüllten Wohnraum, arbeitet nach dem Unterricht und findet kaum ungestörte Lernzeit.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "es",
+  "level": "B1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-es-b1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Una tarde, su profesora de música pidió a la clase aprender una pieza corta.",
+        "Cuando Lara empezó la secundaria, estaba orgullosa de sacar buenas notas.",
+        "Una semana después, pudo tocar la pieza entera sin parar.",
+        "A Lara todavía le importan las notas."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Cuando Lara empezó la secundaria, estaba orgullosa de sacar buenas notas.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Una tarde, su profesora de música pidió a la clase aprender una pieza corta.",
+        "Una semana después, pudo tocar la pieza entera sin parar.",
+        "A Lara todavía le importan las notas.",
+        "Cuando Lara empezó la secundaria, estaba orgullosa de sacar buenas notas."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Una tarde, su profesora de música pidió a la clase aprender una pieza corta.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "A Lara todavía le importan las notas.",
+        "Cuando Lara empezó la secundaria, estaba orgullosa de sacar buenas notas.",
+        "Una tarde, su profesora de música pidió a la clase aprender una pieza corta.",
+        "Una semana después, pudo tocar la pieza entera sin parar."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Una semana después, pudo tocar la pieza entera sin parar.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Cuando Lara empezó la secundaria, estaba orgullosa de sacar buenas notas.",
+        "Una tarde, su profesora de música pidió a la clase aprender una pieza corta.",
+        "A Lara todavía le importan las notas.",
+        "Una semana después, pudo tocar la pieza entera sin parar."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: A Lara todavía le importan las notas.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Lara se equivocó varias veces delante de sus compañeros.",
+        "Le gustaba enseñarles sus resultados a sus padres, pero pronto empezó a evitar las asignaturas en las que no se sentía segura.",
+        "La experiencia no la convirtió en una música brillante, pero cambió su manera de reaccionar ante los problemas.",
+        "La diferencia es que ya no interpreta cada error como una prueba de fracaso."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Le gustaba enseñarles sus resultados a sus padres, pero pronto empezó a evitar las asignaturas en las que no se sentía segura.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Lara se equivocó varias veces delante de sus compañeros.",
+        "La experiencia no la convirtió en una música brillante, pero cambió su manera de reaccionar ante los problemas.",
+        "La diferencia es que ya no interpreta cada error como una prueba de fracaso.",
+        "Le gustaba enseñarles sus resultados a sus padres, pero pronto empezó a evitar las asignaturas en las que no se sentía segura."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Lara se equivocó varias veces delante de sus compañeros.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "La diferencia es que ya no interpreta cada error como una prueba de fracaso.",
+        "Le gustaba enseñarles sus resultados a sus padres, pero pronto empezó a evitar las asignaturas en las que no se sentía segura.",
+        "Lara se equivocó varias veces delante de sus compañeros.",
+        "La experiencia no la convirtió en una música brillante, pero cambió su manera de reaccionar ante los problemas."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: La experiencia no la convirtió en una música brillante, pero cambió su manera de reaccionar ante los problemas.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Le gustaba enseñarles sus resultados a sus padres, pero pronto empezó a evitar las asignaturas en las que no se sentía segura.",
+        "Lara se equivocó varias veces delante de sus compañeros.",
+        "La diferencia es que ya no interpreta cada error como una prueba de fracaso.",
+        "La experiencia no la convirtió en una música brillante, pero cambió su manera de reaccionar ante los problemas."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: La diferencia es que ya no interpreta cada error como una prueba de fracaso.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "En lugar de pedirle que tocara más rápido, la profesora le recomendó practicar solo cuatro compases difíciles.",
+        "Si no conseguía hacer algo bien a la primera, pensaba que simplemente no tenía talento.",
+        "Empezó a preguntarse «¿Qué podría hacer de otra manera?» en lugar de «¿Soy buena en esto?».",
+        "A veces, avanzar significa simplemente descubrir qué hay que practicar más."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Si no conseguía hacer algo bien a la primera, pensaba que simplemente no tenía talento.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "En lugar de pedirle que tocara más rápido, la profesora le recomendó practicar solo cuatro compases difíciles.",
+        "Empezó a preguntarse «¿Qué podría hacer de otra manera?» en lugar de «¿Soy buena en esto?».",
+        "A veces, avanzar significa simplemente descubrir qué hay que practicar más.",
+        "Si no conseguía hacer algo bien a la primera, pensaba que simplemente no tenía talento."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: En lugar de pedirle que tocara más rápido, la profesora le recomendó practicar solo cuatro compases difíciles.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

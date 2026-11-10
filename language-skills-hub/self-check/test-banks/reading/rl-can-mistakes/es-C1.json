@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "es",
+  "level": "C1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-es-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Imaginemos a dos estudiantes con resultados igualmente bajos en una evaluación.",
+        "Los centros educativos suelen animar al alumnado a aceptar los retos, interpretar los tropiezos como información útil y confiar en que las capacidades pueden desarro…",
+        "Además, no toda experiencia educativa tiene que traducirse en un progreso medible.",
+        "Una perspectiva más convincente combina la iniciativa individual con la responsabilidad institucional."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Los centros educativos suelen animar al alumnado a aceptar los retos, interpretar los tropiezos como información útil y confiar en que las capacidades pueden desarro…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Imaginemos a dos estudiantes con resultados igualmente bajos en una evaluación.",
+        "Además, no toda experiencia educativa tiene que traducirse en un progreso medible.",
+        "Una perspectiva más convincente combina la iniciativa individual con la responsabilidad institucional.",
+        "Los centros educativos suelen animar al alumnado a aceptar los retos, interpretar los tropiezos como información útil y confiar en que las capacidades pueden desarro…"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Imaginemos a dos estudiantes con resultados igualmente bajos en una evaluación.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Una perspectiva más convincente combina la iniciativa individual con la responsabilidad institucional.",
+        "Los centros educativos suelen animar al alumnado a aceptar los retos, interpretar los tropiezos como información útil y confiar en que las capacidades pueden desarro…",
+        "Imaginemos a dos estudiantes con resultados igualmente bajos en una evaluación.",
+        "Además, no toda experiencia educativa tiene que traducirse en un progreso medible."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Además, no toda experiencia educativa tiene que traducirse en un progreso medible.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Los centros educativos suelen animar al alumnado a aceptar los retos, interpretar los tropiezos como información útil y confiar en que las capacidades pueden desarro…",
+        "Imaginemos a dos estudiantes con resultados igualmente bajos en una evaluación.",
+        "Una perspectiva más convincente combina la iniciativa individual con la responsabilidad institucional.",
+        "Además, no toda experiencia educativa tiene que traducirse en un progreso medible."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Una perspectiva más convincente combina la iniciativa individual con la responsabilidad institucional.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Uno dispone de una habitación tranquila, conexión fiable y una persona adulta que puede explicarle los contenidos difíciles.",
+        "Estas ideas pueden resultar liberadoras, especialmente para quienes han convertido una sola nota decepcionante en un juicio definitivo sobre su potencial.",
+        "Leer una novela absorbente, debatir una cuestión sin llegar a un acuerdo o experimentar con una afición nueva puede tener un valor difícil de reflejar en una calific…",
+        "Los estudiantes deberían aprender a analizar errores y modificar estrategias ineficaces, pero los centros también deben examinar el acceso al apoyo, la evaluación y…"
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Estas ideas pueden resultar liberadoras, especialmente para quienes han convertido una sola nota decepcionante en un juicio definitivo sobre su potencial.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Uno dispone de una habitación tranquila, conexión fiable y una persona adulta que puede explicarle los contenidos difíciles.",
+        "Leer una novela absorbente, debatir una cuestión sin llegar a un acuerdo o experimentar con una afición nueva puede tener un valor difícil de reflejar en una calific…",
+        "Los estudiantes deberían aprender a analizar errores y modificar estrategias ineficaces, pero los centros también deben examinar el acceso al apoyo, la evaluación y…",
+        "Estas ideas pueden resultar liberadoras, especialmente para quienes han convertido una sola nota decepcionante en un juicio definitivo sobre su potencial."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Uno dispone de una habitación tranquila, conexión fiable y una persona adulta que puede explicarle los contenidos difíciles.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Los estudiantes deberían aprender a analizar errores y modificar estrategias ineficaces, pero los centros también deben examinar el acceso al apoyo, la evaluación y…",
+        "Estas ideas pueden resultar liberadoras, especialmente para quienes han convertido una sola nota decepcionante en un juicio definitivo sobre su potencial.",
+        "Uno dispone de una habitación tranquila, conexión fiable y una persona adulta que puede explicarle los contenidos difíciles.",
+        "Leer una novela absorbente, debatir una cuestión sin llegar a un acuerdo o experimentar con una afición nueva puede tener un valor difícil de reflejar en una calific…"
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Leer una novela absorbente, debatir una cuestión sin llegar a un acuerdo o experimentar con una afición nueva puede tener un valor difícil de reflejar en una calific…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Estas ideas pueden resultar liberadoras, especialmente para quienes han convertido una sola nota decepcionante en un juicio definitivo sobre su potencial.",
+        "Uno dispone de una habitación tranquila, conexión fiable y una persona adulta que puede explicarle los contenidos difíciles.",
+        "Los estudiantes deberían aprender a analizar errores y modificar estrategias ineficaces, pero los centros también deben examinar el acceso al apoyo, la evaluación y…",
+        "Leer una novela absorbente, debatir una cuestión sin llegar a un acuerdo o experimentar con una afición nueva puede tener un valor difícil de reflejar en una calific…"
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Los estudiantes deberían aprender a analizar errores y modificar estrategias ineficaces, pero los centros también deben examinar el acceso al apoyo, la evaluación y…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "El otro comparte un espacio lleno de gente, trabaja después de clase y apenas encuentra momentos para estudiar sin interrupciones.",
+        "No obstante, el discurso de la mejora tiene una cara menos cómoda: puede sugerir que toda dificultad se resuelve mediante un esfuerzo personal adicional.",
+        "Si incluso el tiempo libre se convierte en una oportunidad de optimización personal, la curiosidad corre el riesgo de transformarse en otra obligación.",
+        "Mejorar tiene sentido cuando amplía las posibilidades, no cuando impone una exigencia interminable de demostrar la propia valía."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: No obstante, el discurso de la mejora tiene una cara menos cómoda: puede sugerir que toda dificultad se resuelve mediante un esfuerzo personal adicional.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "El otro comparte un espacio lleno de gente, trabaja después de clase y apenas encuentra momentos para estudiar sin interrupciones.",
+        "Si incluso el tiempo libre se convierte en una oportunidad de optimización personal, la curiosidad corre el riesgo de transformarse en otra obligación.",
+        "Mejorar tiene sentido cuando amplía las posibilidades, no cuando impone una exigencia interminable de demostrar la propia valía.",
+        "No obstante, el discurso de la mejora tiene una cara menos cómoda: puede sugerir que toda dificultad se resuelve mediante un esfuerzo personal adicional."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: El otro comparte un espacio lleno de gente, trabaja después de clase y apenas encuentra momentos para estudiar sin interrupciones.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

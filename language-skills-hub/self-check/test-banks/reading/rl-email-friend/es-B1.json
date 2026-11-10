@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "es",
+  "level": "B1",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-es-b1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Empecé a colaborar en el taller los sábados.",
+        "Hola, Robin: ¿Recuerdas la plaza detrás de nuestro antiguo instituto?",
+        "Por eso te escribo ahora: organizamos una jornada de puertas abiertas el próximo mes.",
+        "Sé que el viaje cuesta tiempo y dinero, y no quiero que te sientas culpable si no puedes venir."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Hola, Robin: ¿Recuerdas la plaza detrás de nuestro antiguo instituto?",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Empecé a colaborar en el taller los sábados.",
+        "Por eso te escribo ahora: organizamos una jornada de puertas abiertas el próximo mes.",
+        "Sé que el viaje cuesta tiempo y dinero, y no quiero que te sientas culpable si no puedes venir.",
+        "Hola, Robin: ¿Recuerdas la plaza detrás de nuestro antiguo instituto?"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Empecé a colaborar en el taller los sábados.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Sé que el viaje cuesta tiempo y dinero, y no quiero que te sientas culpable si no puedes venir.",
+        "Hola, Robin: ¿Recuerdas la plaza detrás de nuestro antiguo instituto?",
+        "Empecé a colaborar en el taller los sábados.",
+        "Por eso te escribo ahora: organizamos una jornada de puertas abiertas el próximo mes."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Por eso te escribo ahora: organizamos una jornada de puertas abiertas el próximo mes.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Hola, Robin: ¿Recuerdas la plaza detrás de nuestro antiguo instituto?",
+        "Empecé a colaborar en el taller los sábados.",
+        "Sé que el viaje cuesta tiempo y dinero, y no quiero que te sientas culpable si no puedes venir.",
+        "Por eso te escribo ahora: organizamos una jornada de puertas abiertas el próximo mes."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Sé que el viaje cuesta tiempo y dinero, y no quiero que te sientas culpable si no puedes venir.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Primero solo preparaba té y llevaba cajas porque me daba vergüenza conocer a gente nueva.",
+        "Nos sentábamos allí después de clase y decíamos que nunca pasaba nada interesante.",
+        "Los visitantes podrán reparar objetos, hacer actividades artísticas y contar historias del barrio.",
+        "También podemos hacer una videollamada y mirar las fotos antiguas juntos."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Nos sentábamos allí después de clase y decíamos que nunca pasaba nada interesante.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Primero solo preparaba té y llevaba cajas porque me daba vergüenza conocer a gente nueva.",
+        "Los visitantes podrán reparar objetos, hacer actividades artísticas y contar historias del barrio.",
+        "También podemos hacer una videollamada y mirar las fotos antiguas juntos.",
+        "Nos sentábamos allí después de clase y decíamos que nunca pasaba nada interesante."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Primero solo preparaba té y llevaba cajas porque me daba vergüenza conocer a gente nueva.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "También podemos hacer una videollamada y mirar las fotos antiguas juntos.",
+        "Nos sentábamos allí después de clase y decíamos que nunca pasaba nada interesante.",
+        "Primero solo preparaba té y llevaba cajas porque me daba vergüenza conocer a gente nueva.",
+        "Los visitantes podrán reparar objetos, hacer actividades artísticas y contar historias del barrio."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Los visitantes podrán reparar objetos, hacer actividades artísticas y contar historias del barrio.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Nos sentábamos allí después de clase y decíamos que nunca pasaba nada interesante.",
+        "Primero solo preparaba té y llevaba cajas porque me daba vergüenza conocer a gente nueva.",
+        "También podemos hacer una videollamada y mirar las fotos antiguas juntos.",
+        "Los visitantes podrán reparar objetos, hacer actividades artísticas y contar historias del barrio."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: También podemos hacer una videollamada y mirar las fotos antiguas juntos.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "La semana pasada enseñé a dos niños a reparar la luz de una bicicleta.",
+        "El mes pasado volví por primera vez en dos años y encontré un lugar muy distinto.",
+        "Recordé tus fotografías de la vida cotidiana y pensé que podrías traer algunas.",
+        "Prefiero conocer tu nueva ciudad por lo que me cuentes, no solo por las imágenes de internet."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: El mes pasado volví por primera vez en dos años y encontré un lugar muy distinto.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-b1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "La semana pasada enseñé a dos niños a reparar la luz de una bicicleta.",
+        "Recordé tus fotografías de la vida cotidiana y pensé que podrías traer algunas.",
+        "Prefiero conocer tu nueva ciudad por lo que me cuentes, no solo por las imágenes de internet.",
+        "El mes pasado volví por primera vez en dos años y encontré un lugar muy distinto."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: La semana pasada enseñé a dos niños a reparar la luz de una bicicleta.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

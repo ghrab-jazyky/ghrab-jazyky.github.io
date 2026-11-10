@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "de",
+  "level": "C1",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-instant-messages-de-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Der Druck ist nicht gleich verteilt.",
+        "Wenige Zeichen haben so viel stille Unruhe ausgelöst wie zwei kleine Haken, die blau werden.",
+        "Befürworter von Lesebestätigungen argumentieren, sie machten Kommunikation ehrlicher.",
+        "Verschärft wird die Lage dadurch, dass Erwartungen selten ausgesprochen werden."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Wenige Zeichen haben so viel stille Unruhe ausgelöst wie zwei kleine Haken, die blau werden.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Der Druck ist nicht gleich verteilt.",
+        "Befürworter von Lesebestätigungen argumentieren, sie machten Kommunikation ehrlicher.",
+        "Verschärft wird die Lage dadurch, dass Erwartungen selten ausgesprochen werden.",
+        "Die Lösung besteht nicht darin, auf Nachrichten zu verzichten, sondern ihre Regeln offen auszusprechen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Der Druck ist nicht gleich verteilt.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Verschärft wird die Lage dadurch, dass Erwartungen selten ausgesprochen werden.",
+        "Die Lösung besteht nicht darin, auf Nachrichten zu verzichten, sondern ihre Regeln offen auszusprechen.",
+        "Wenige Zeichen haben so viel stille Unruhe ausgelöst wie zwei kleine Haken, die blau werden.",
+        "Befürworter von Lesebestätigungen argumentieren, sie machten Kommunikation ehrlicher."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Befürworter von Lesebestätigungen argumentieren, sie machten Kommunikation ehrlicher.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Die Lösung besteht nicht darin, auf Nachrichten zu verzichten, sondern ihre Regeln offen auszusprechen.",
+        "Wenige Zeichen haben so viel stille Unruhe ausgelöst wie zwei kleine Haken, die blau werden.",
+        "Verschärft wird die Lage dadurch, dass Erwartungen selten ausgesprochen werden.",
+        "Der Druck ist nicht gleich verteilt."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Verschärft wird die Lage dadurch, dass Erwartungen selten ausgesprochen werden.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 5?",
+      "choices": [
+        "Wenige Zeichen haben so viel stille Unruhe ausgelöst wie zwei kleine Haken, die blau werden.",
+        "Die Lösung besteht nicht darin, auf Nachrichten zu verzichten, sondern ihre Regeln offen auszusprechen.",
+        "Der Druck ist nicht gleich verteilt.",
+        "Befürworter von Lesebestätigungen argumentieren, sie machten Kommunikation ehrlicher."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Absatz 5: Die Lösung besteht nicht darin, auf Nachrichten zu verzichten, sondern ihre Regeln offen auszusprechen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Lesebestätigungen sollten vermutlich den Absender beruhigen, dass seine Nachricht gelesen wurde.",
+        "Nehmen wir eine Sechzehnjährige mit einem Wochenendjob in einem Café: Sie gehört vielleicht zu einer Mitarbeitergruppe, in der spätabends Schichten getauscht werden.",
+        "Ohne sie, so das Argument, könnten Menschen unbequeme Nachrichten endlos ignorieren und so tun, als hätten sie sie nicht bemerkt.",
+        "Familien, Freundeskreise und Teams entwickeln ungeschriebene Regeln darüber, wie schnell man antworten sollte, und Neue lernen sie meist erst, indem sie gegen sie ve…"
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Lesebestätigungen sollten vermutlich den Absender beruhigen, dass seine Nachricht gelesen wurde.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Ohne sie, so das Argument, könnten Menschen unbequeme Nachrichten endlos ignorieren und so tun, als hätten sie sie nicht bemerkt.",
+        "Familien, Freundeskreise und Teams entwickeln ungeschriebene Regeln darüber, wie schnell man antworten sollte, und Neue lernen sie meist erst, indem sie gegen sie ve…",
+        "Einige Länder, darunter Frankreich, haben vielen Beschäftigten ein gesetzliches Recht eingeräumt, außerhalb der Arbeitszeit für dienstliche Nachrichten nicht erreich…",
+        "Nehmen wir eine Sechzehnjährige mit einem Wochenendjob in einem Café: Sie gehört vielleicht zu einer Mitarbeitergruppe, in der spätabends Schichten getauscht werden."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Nehmen wir eine Sechzehnjährige mit einem Wochenendjob in einem Café: Sie gehört vielleicht zu einer Mitarbeitergruppe, in der spätabends Schichten getauscht werden.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Familien, Freundeskreise und Teams entwickeln ungeschriebene Regeln darüber, wie schnell man antworten sollte, und Neue lernen sie meist erst, indem sie gegen sie ve…",
+        "Einige Länder, darunter Frankreich, haben vielen Beschäftigten ein gesetzliches Recht eingeräumt, außerhalb der Arbeitszeit für dienstliche Nachrichten nicht erreich…",
+        "Ohne sie, so das Argument, könnten Menschen unbequeme Nachrichten endlos ignorieren und so tun, als hätten sie sie nicht bemerkt.",
+        "Lesebestätigungen sollten vermutlich den Absender beruhigen, dass seine Nachricht gelesen wurde."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Ohne sie, so das Argument, könnten Menschen unbequeme Nachrichten endlos ignorieren und so tun, als hätten sie sie nicht bemerkt.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Einige Länder, darunter Frankreich, haben vielen Beschäftigten ein gesetzliches Recht eingeräumt, außerhalb der Arbeitszeit für dienstliche Nachrichten nicht erreich…",
+        "Familien, Freundeskreise und Teams entwickeln ungeschriebene Regeln darüber, wie schnell man antworten sollte, und Neue lernen sie meist erst, indem sie gegen sie ve…",
+        "Lesebestätigungen sollten vermutlich den Absender beruhigen, dass seine Nachricht gelesen wurde.",
+        "Nehmen wir eine Sechzehnjährige mit einem Wochenendjob in einem Café: Sie gehört vielleicht zu einer Mitarbeitergruppe, in der spätabends Schichten getauscht werden."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Familien, Freundeskreise und Teams entwickeln ungeschriebene Regeln darüber, wie schnell man antworten sollte, und Neue lernen sie meist erst, indem sie gegen sie ve…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 5?",
+      "choices": [
+        "Einige Länder, darunter Frankreich, haben vielen Beschäftigten ein gesetzliches Recht eingeräumt, außerhalb der Arbeitszeit für dienstliche Nachrichten nicht erreich…",
+        "Lesebestätigungen sollten vermutlich den Absender beruhigen, dass seine Nachricht gelesen wurde.",
+        "Nehmen wir eine Sechzehnjährige mit einem Wochenendjob in einem Café: Sie gehört vielleicht zu einer Mitarbeitergruppe, in der spätabends Schichten getauscht werden.",
+        "Ohne sie, so das Argument, könnten Menschen unbequeme Nachrichten endlos ignorieren und so tun, als hätten sie sie nicht bemerkt."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Absatz 5: Einige Länder, darunter Frankreich, haben vielen Beschäftigten ein gesetzliches Recht eingeräumt, außerhalb der Arbeitszeit für dienstliche Nachrichten nicht erreich…",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "de",
+  "level": "A1",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-asteroids-de-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Wissenschaftler suchen Asteroiden mit großen Teleskopen.",
+        "Ein Asteroid ist ein Stein im Weltall.",
+        "Kann ein Asteroid die Erde treffen?",
+        "Mit einem Teleskop kann man sehr weit sehen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Ein Asteroid ist ein Stein im Weltall.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Wissenschaftler suchen Asteroiden mit großen Teleskopen.",
+        "Kann ein Asteroid die Erde treffen?",
+        "Ein Asteroid ist ein Stein im Weltall.",
+        "Ja, aber ein sehr großer Einschlag ist selten."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Wissenschaftler suchen Asteroiden mit großen Teleskopen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Ein Asteroid ist ein Stein im Weltall.",
+        "Wissenschaftler suchen Asteroiden mit großen Teleskopen.",
+        "Er fliegt um die Sonne, genau wie die Erde.",
+        "Kann ein Asteroid die Erde treffen?"
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Kann ein Asteroid die Erde treffen?",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Mit einem Teleskop kann man sehr weit sehen.",
+        "Ja, aber ein sehr großer Einschlag ist selten.",
+        "Er fliegt um die Sonne, genau wie die Erde.",
+        "Die Wissenschaftler machen Bilder und beobachten, wohin die Steine fliegen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Er fliegt um die Sonne, genau wie die Erde.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Ja, aber ein sehr großer Einschlag ist selten.",
+        "Mit einem Teleskop kann man sehr weit sehen.",
+        "Er fliegt um die Sonne, genau wie die Erde.",
+        "Kleine Steine aus dem Weltall fliegen manchmal in die Luft über der Erde."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Mit einem Teleskop kann man sehr weit sehen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Ja, aber ein sehr großer Einschlag ist selten.",
+        "Er fliegt um die Sonne, genau wie die Erde.",
+        "Mit einem Teleskop kann man sehr weit sehen.",
+        "Asteroiden sind keine Sterne."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Ja, aber ein sehr großer Einschlag ist selten.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Die Wissenschaftler machen Bilder und beobachten, wohin die Steine fliegen.",
+        "Kleine Steine aus dem Weltall fliegen manchmal in die Luft über der Erde.",
+        "Ein Asteroid bewegt sich auf einer Bahn um die Sonne.",
+        "Asteroiden sind keine Sterne."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Asteroiden sind keine Sterne.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Kleine Steine aus dem Weltall fliegen manchmal in die Luft über der Erde.",
+        "Asteroiden sind keine Sterne.",
+        "Die Wissenschaftler machen Bilder und beobachten, wohin die Steine fliegen.",
+        "Viele verglühen, bevor sie den Boden erreichen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Die Wissenschaftler machen Bilder und beobachten, wohin die Steine fliegen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Asteroiden sind keine Sterne.",
+        "Kleine Steine aus dem Weltall fliegen manchmal in die Luft über der Erde.",
+        "Die Wissenschaftler machen Bilder und beobachten, wohin die Steine fliegen.",
+        "Sie haben kein eigenes Licht."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Kleine Steine aus dem Weltall fliegen manchmal in die Luft über der Erde.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Sie haben kein eigenes Licht.",
+        "Ein Asteroid bewegt sich auf einer Bahn um die Sonne.",
+        "Viele verglühen, bevor sie den Boden erreichen.",
+        "Diese Bahn heißt Umlaufbahn."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Sie haben kein eigenes Licht.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

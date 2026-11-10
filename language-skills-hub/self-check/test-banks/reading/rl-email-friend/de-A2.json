@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "de",
+  "level": "A2",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-de-a2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Ich habe eine Überraschung: Mein Kurs endet nächsten Freitag und ich komme für einige Tage nach Hause.",
+        "Hallo Noah!",
+        "Wir könnten um halb zehn den Bus nehmen und danach zusammen essen.",
+        "Am Sonntag gibt es eine Fotoausstellung im alten Bahnhof."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Hallo Noah!",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Ich habe eine Überraschung: Mein Kurs endet nächsten Freitag und ich komme für einige Tage nach Hause.",
+        "Wir könnten um halb zehn den Bus nehmen und danach zusammen essen.",
+        "Hallo Noah!",
+        "Falls die Ausstellung ausgebucht ist, besuchen wir stattdessen das Wissenschaftsmuseum."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Ich habe eine Überraschung: Mein Kurs endet nächsten Freitag und ich komme für einige Tage nach Hause.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Hallo Noah!",
+        "Ich habe eine Überraschung: Mein Kurs endet nächsten Freitag und ich komme für einige Tage nach Hause.",
+        "Entschuldige, dass ich so lange nicht geschrieben habe.",
+        "Wir könnten um halb zehn den Bus nehmen und danach zusammen essen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Wir könnten um halb zehn den Bus nehmen und danach zusammen essen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Am Sonntag gibt es eine Fotoausstellung im alten Bahnhof.",
+        "Falls die Ausstellung ausgebucht ist, besuchen wir stattdessen das Wissenschaftsmuseum.",
+        "Entschuldige, dass ich so lange nicht geschrieben habe.",
+        "Sie öffnet um zehn Uhr und der Eintritt kostet vier Euro."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Entschuldige, dass ich so lange nicht geschrieben habe.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Falls die Ausstellung ausgebucht ist, besuchen wir stattdessen das Wissenschaftsmuseum.",
+        "Am Sonntag gibt es eine Fotoausstellung im alten Bahnhof.",
+        "Entschuldige, dass ich so lange nicht geschrieben habe.",
+        "Ich möchte von deinem Basketballteam hören, aber du musst keinen perfekten Tag planen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Am Sonntag gibt es eine Fotoausstellung im alten Bahnhof.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Falls die Ausstellung ausgebucht ist, besuchen wir stattdessen das Wissenschaftsmuseum.",
+        "Entschuldige, dass ich so lange nicht geschrieben habe.",
+        "Am Sonntag gibt es eine Fotoausstellung im alten Bahnhof.",
+        "Seit September wohne ich bei meiner Tante in Galway und besuche einen Sprachkurs."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Falls die Ausstellung ausgebucht ist, besuchen wir stattdessen das Wissenschaftsmuseum.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Sie öffnet um zehn Uhr und der Eintritt kostet vier Euro.",
+        "Ich möchte von deinem Basketballteam hören, aber du musst keinen perfekten Tag planen.",
+        "Der Fotograf zeigt normale Menschen bei interessanten Tätigkeiten.",
+        "Seit September wohne ich bei meiner Tante in Galway und besuche einen Sprachkurs."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Seit September wohne ich bei meiner Tante in Galway und besuche einen Sprachkurs.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Ich möchte von deinem Basketballteam hören, aber du musst keinen perfekten Tag planen.",
+        "Seit September wohne ich bei meiner Tante in Galway und besuche einen Sprachkurs.",
+        "Sie öffnet um zehn Uhr und der Eintritt kostet vier Euro.",
+        "Schon eine Stunde mit dir würde mich glücklich machen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Sie öffnet um zehn Uhr und der Eintritt kostet vier Euro.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Seit September wohne ich bei meiner Tante in Galway und besuche einen Sprachkurs.",
+        "Ich möchte von deinem Basketballteam hören, aber du musst keinen perfekten Tag planen.",
+        "Sie öffnet um zehn Uhr und der Eintritt kostet vier Euro.",
+        "Am Anfang war es schwer, weil ich niemanden kannte und das Wetter kälter war als erwartet."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Ich möchte von deinem Basketballteam hören, aber du musst keinen perfekten Tag planen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Am Anfang war es schwer, weil ich niemanden kannte und das Wetter kälter war als erwartet.",
+        "Der Fotograf zeigt normale Menschen bei interessanten Tätigkeiten.",
+        "Schon eine Stunde mit dir würde mich glücklich machen.",
+        "Ich weiß, wie sehr du Fotografie magst, und musste sofort an dich denken."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Am Anfang war es schwer, weil ich niemanden kannte und das Wetter kälter war als erwartet.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

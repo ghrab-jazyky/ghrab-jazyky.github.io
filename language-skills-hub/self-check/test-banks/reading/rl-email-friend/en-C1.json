@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-en-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "The archive has taught me a strange lesson about memory.",
+        "Dear Jules, I almost started this email with the familiar apology about being busy, but that would make the silence sound accidental.",
+        "One recording has stayed with me more than the others.",
+        "Last month our team discussed holding a public evening where people could listen to the recordings and share their own memories."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Dear Jules, I almost started this email with the familiar apology about being busy, but that would make the silence sound accidental.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "The archive has taught me a strange lesson about memory.",
+        "One recording has stayed with me more than the others.",
+        "Last month our team discussed holding a public evening where people could listen to the recordings and share their own memories.",
+        "None of this is meant to turn friendship into another project to complete."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: The archive has taught me a strange lesson about memory.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "Last month our team discussed holding a public evening where people could listen to the recordings and share their own memories.",
+        "None of this is meant to turn friendship into another project to complete.",
+        "Dear Jules, I almost started this email with the familiar apology about being busy, but that would make the silence sound accidental.",
+        "One recording has stayed with me more than the others."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: One recording has stayed with me more than the others.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "None of this is meant to turn friendship into another project to complete.",
+        "Dear Jules, I almost started this email with the familiar apology about being busy, but that would make the silence sound accidental.",
+        "Last month our team discussed holding a public evening where people could listen to the recordings and share their own memories.",
+        "The archive has taught me a strange lesson about memory."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: Last month our team discussed holding a public evening where people could listen to the recordings and share their own memories.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "Dear Jules, I almost started this email with the familiar apology about being busy, but that would make the silence sound accidental.",
+        "None of this is meant to turn friendship into another project to complete.",
+        "The archive has taught me a strange lesson about memory.",
+        "One recording has stayed with me more than the others."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: None of this is meant to turn friendship into another project to complete.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "We have exchanged plenty of reactions to photographs over the past year; what we have not exchanged is much that would have told either of us how the other was actua…",
+        "We collect stories from residents, but we do not ask them to turn their experiences into neat lessons or inspiring endings.",
+        "A man in his eighties described the corner shop where he had worked for forty years, listing the brands of tea it sold as if they were the names of old friends.",
+        "I immediately thought you could help, because you have always noticed the details everyone else walks past."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: We have exchanged plenty of reactions to photographs over the past year; what we have not exchanged is much that would have told either of us how the other was actua…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "A man in his eighties described the corner shop where he had worked for forty years, listing the brands of tea it sold as if they were the names of old friends.",
+        "I immediately thought you could help, because you have always noticed the details everyone else walks past.",
+        "The listening evening takes place on the first Friday in July, and you would be welcome to come without contributing anything.",
+        "We collect stories from residents, but we do not ask them to turn their experiences into neat lessons or inspiring endings."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: We collect stories from residents, but we do not ask them to turn their experiences into neat lessons or inspiring endings.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "I immediately thought you could help, because you have always noticed the details everyone else walks past.",
+        "The listening evening takes place on the first Friday in July, and you would be welcome to come without contributing anything.",
+        "A man in his eighties described the corner shop where he had worked for forty years, listing the brands of tea it sold as if they were the names of old friends.",
+        "We have exchanged plenty of reactions to photographs over the past year; what we have not exchanged is much that would have told either of us how the other was actua…"
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: A man in his eighties described the corner shop where he had worked for forty years, listing the brands of tea it sold as if they were the names of old friends.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "The listening evening takes place on the first Friday in July, and you would be welcome to come without contributing anything.",
+        "I immediately thought you could help, because you have always noticed the details everyone else walks past.",
+        "We have exchanged plenty of reactions to photographs over the past year; what we have not exchanged is much that would have told either of us how the other was actua…",
+        "We collect stories from residents, but we do not ask them to turn their experiences into neat lessons or inspiring endings."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: I immediately thought you could help, because you have always noticed the details everyone else walks past.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "The listening evening takes place on the first Friday in July, and you would be welcome to come without contributing anything.",
+        "We have exchanged plenty of reactions to photographs over the past year; what we have not exchanged is much that would have told either of us how the other was actua…",
+        "We collect stories from residents, but we do not ask them to turn their experiences into neat lessons or inspiring endings.",
+        "A man in his eighties described the corner shop where he had worked for forty years, listing the brands of tea it sold as if they were the names of old friends."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: The listening evening takes place on the first Friday in July, and you would be welcome to come without contributing anything.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

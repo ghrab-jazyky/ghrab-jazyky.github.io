@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-en-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Our town has a film night in the park this Saturday.",
+        "It's Ben from your old school.",
+        "The film is about a dog who travels across the sea in a small boat.",
+        "If it rains, we will watch the film at the youth centre."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: It's Ben from your old school.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Our town has a film night in the park this Saturday.",
+        "The film is about a dog who travels across the sea in a small boat.",
+        "If it rains, we will watch the film at the youth centre.",
+        "It's Ben from your old school."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Our town has a film night in the park this Saturday.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "If it rains, we will watch the film at the youth centre.",
+        "It's Ben from your old school.",
+        "Our town has a film night in the park this Saturday.",
+        "The film is about a dog who travels across the sea in a small boat."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: The film is about a dog who travels across the sea in a small boat.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "It's Ben from your old school.",
+        "Our town has a film night in the park this Saturday.",
+        "If it rains, we will watch the film at the youth centre.",
+        "The film is about a dog who travels across the sea in a small boat."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: If it rains, we will watch the film at the youth centre.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "The film starts at six o'clock.",
+        "I live in Greenhill now.",
+        "It is a funny film for families.",
+        "I hope you can come, but I understand if you are busy."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: I live in Greenhill now.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "The film starts at six o'clock.",
+        "It is a funny film for families.",
+        "I hope you can come, but I understand if you are busy.",
+        "I live in Greenhill now."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: The film starts at six o'clock.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "I hope you can come, but I understand if you are busy.",
+        "I live in Greenhill now.",
+        "The film starts at six o'clock.",
+        "It is a funny film for families."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: It is a funny film for families.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "I live in Greenhill now.",
+        "The film starts at six o'clock.",
+        "I hope you can come, but I understand if you are busy.",
+        "It is a funny film for families."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: I hope you can come, but I understand if you are busy.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "It is free, and we can bring sandwiches.",
+        "My house is near a small park.",
+        "Many people bring blankets and sit on the grass.",
+        "I can lend you a blanket, but please bring a warm jacket."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: My house is near a small park.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "It is free, and we can bring sandwiches.",
+        "Many people bring blankets and sit on the grass.",
+        "I can lend you a blanket, but please bring a warm jacket.",
+        "My house is near a small park."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: It is free, and we can bring sandwiches.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

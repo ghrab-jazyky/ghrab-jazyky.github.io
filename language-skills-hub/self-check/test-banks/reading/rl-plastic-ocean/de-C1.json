@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "de",
+  "level": "C1",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-de-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "An sehenswerten Bildern fehlt es der Regisseurin nicht.",
+        "Ein Bonbonpapier wird über einen leeren Marktplatz geweht.",
+        "Die aufschlussreichste Passage spielt in einem schmucklosen Sitzungszimmer.",
+        "Ausgerechnet an diesem Punkt verliert die Regie die Geduld mit ihrer eigenen Entdeckung."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Ein Bonbonpapier wird über einen leeren Marktplatz geweht.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "An sehenswerten Bildern fehlt es der Regisseurin nicht.",
+        "Die aufschlussreichste Passage spielt in einem schmucklosen Sitzungszimmer.",
+        "Ausgerechnet an diesem Punkt verliert die Regie die Geduld mit ihrer eigenen Entdeckung.",
+        "Natürlich muss ein Dokumentarfilm kein Verwaltungsbericht sein."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: An sehenswerten Bildern fehlt es der Regisseurin nicht.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Ausgerechnet an diesem Punkt verliert die Regie die Geduld mit ihrer eigenen Entdeckung.",
+        "Natürlich muss ein Dokumentarfilm kein Verwaltungsbericht sein.",
+        "Erst nach dem Abspann räumt eine ehrenamtliche Organisatorin ein, dass bei ihrem ersten Mehrwegfest mehr Fahrten zur Spülstation nötig waren als geplant.",
+        "Die aufschlussreichste Passage spielt in einem schmucklosen Sitzungszimmer."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Die aufschlussreichste Passage spielt in einem schmucklosen Sitzungszimmer.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Natürlich muss ein Dokumentarfilm kein Verwaltungsbericht sein.",
+        "Erst nach dem Abspann räumt eine ehrenamtliche Organisatorin ein, dass bei ihrem ersten Mehrwegfest mehr Fahrten zur Spülstation nötig waren als geplant.",
+        "Ausgerechnet an diesem Punkt verliert die Regie die Geduld mit ihrer eigenen Entdeckung.",
+        "Ein Bonbonpapier wird über einen leeren Marktplatz geweht."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Ausgerechnet an diesem Punkt verliert die Regie die Geduld mit ihrer eigenen Entdeckung.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 5?",
+      "choices": [
+        "Erst nach dem Abspann räumt eine ehrenamtliche Organisatorin ein, dass bei ihrem ersten Mehrwegfest mehr Fahrten zur Spülstation nötig waren als geplant.",
+        "Natürlich muss ein Dokumentarfilm kein Verwaltungsbericht sein.",
+        "Ein Bonbonpapier wird über einen leeren Marktplatz geweht.",
+        "An sehenswerten Bildern fehlt es der Regisseurin nicht."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Absatz 5: Natürlich muss ein Dokumentarfilm kein Verwaltungsbericht sein.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 6?",
+      "choices": [
+        "Erst nach dem Abspann räumt eine ehrenamtliche Organisatorin ein, dass bei ihrem ersten Mehrwegfest mehr Fahrten zur Spülstation nötig waren als geplant.",
+        "Ein Bonbonpapier wird über einen leeren Marktplatz geweht.",
+        "An sehenswerten Bildern fehlt es der Regisseurin nicht.",
+        "Die aufschlussreichste Passage spielt in einem schmucklosen Sitzungszimmer."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "Absatz 6: Erst nach dem Abspann räumt eine ehrenamtliche Organisatorin ein, dass bei ihrem ersten Mehrwegfest mehr Fahrten zur Spülstation nötig waren als geplant.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Sie filmt die Straßen nach einem Stadtfest, begleitet die Reinigungskräfte vor Sonnenaufgang und zeigt, wie schnell Abfälle an bestimmten Orten liegen bleiben.",
+        "Eine Verwaltungsmitarbeiterin stellt ein Mehrwegsystem für Veranstaltungen vor.",
+        "Eine kurze Aufnahme zeigt einen Jugendlichen, der achtlos eine Flasche fallen lässt; die Szene wird mehrfach wiederholt.",
+        "Die Kamera verfolgt es, als stünde das Schicksal der Stadt auf dem Spiel."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Die Kamera verfolgt es, als stünde das Schicksal der Stadt auf dem Spiel.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Eine Verwaltungsmitarbeiterin stellt ein Mehrwegsystem für Veranstaltungen vor.",
+        "Eine kurze Aufnahme zeigt einen Jugendlichen, der achtlos eine Flasche fallen lässt; die Szene wird mehrfach wiederholt.",
+        "Sie filmt die Straßen nach einem Stadtfest, begleitet die Reinigungskräfte vor Sonnenaufgang und zeigt, wie schnell Abfälle an bestimmten Orten liegen bleiben.",
+        "Das Medium lebt von Rhythmus, Perspektive und Auswahl."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Sie filmt die Straßen nach einem Stadtfest, begleitet die Reinigungskräfte vor Sonnenaufgang und zeigt, wie schnell Abfälle an bestimmten Orten liegen bleiben.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Eine kurze Aufnahme zeigt einen Jugendlichen, der achtlos eine Flasche fallen lässt; die Szene wird mehrfach wiederholt.",
+        "Eine Verwaltungsmitarbeiterin stellt ein Mehrwegsystem für Veranstaltungen vor.",
+        "Das Medium lebt von Rhythmus, Perspektive und Auswahl.",
+        "Die Information widerlegt das Projekt nicht; sie macht es überprüfbar."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Eine Verwaltungsmitarbeiterin stellt ein Mehrwegsystem für Veranstaltungen vor.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Eine kurze Aufnahme zeigt einen Jugendlichen, der achtlos eine Flasche fallen lässt; die Szene wird mehrfach wiederholt.",
+        "Das Medium lebt von Rhythmus, Perspektive und Auswahl.",
+        "Die Information widerlegt das Projekt nicht; sie macht es überprüfbar.",
+        "Die Kamera verfolgt es, als stünde das Schicksal der Stadt auf dem Spiel."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Eine kurze Aufnahme zeigt einen Jugendlichen, der achtlos eine Flasche fallen lässt; die Szene wird mehrfach wiederholt.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "es",
+  "level": "B1",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-es-b1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "La trabajadora les enseñó una alcantarilla junto a la parada del autobús.",
+        "Después de una tormenta, un grupo de estudiantes vio muchas bolsas pequeñas junto al canal que llega al puerto.",
+        "Durante una semana hicieron un mapa de la zona.",
+        "Un mes después, encontraron menos basura en la orilla, aunque todavía había residuos después de días de mucho viento."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Después de una tormenta, un grupo de estudiantes vio muchas bolsas pequeñas junto al canal que llega al puerto.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-b1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "La trabajadora les enseñó una alcantarilla junto a la parada del autobús.",
+        "Durante una semana hicieron un mapa de la zona.",
+        "Un mes después, encontraron menos basura en la orilla, aunque todavía había residuos después de días de mucho viento.",
+        "El proyecto les enseñó algo inesperado."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: La trabajadora les enseñó una alcantarilla junto a la parada del autobús.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-b1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Un mes después, encontraron menos basura en la orilla, aunque todavía había residuos después de días de mucho viento.",
+        "El proyecto les enseñó algo inesperado.",
+        "Después de una tormenta, un grupo de estudiantes vio muchas bolsas pequeñas junto al canal que llega al puerto.",
+        "Durante una semana hicieron un mapa de la zona."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Durante una semana hicieron un mapa de la zona.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "El proyecto les enseñó algo inesperado.",
+        "Después de una tormenta, un grupo de estudiantes vio muchas bolsas pequeñas junto al canal que llega al puerto.",
+        "Un mes después, encontraron menos basura en la orilla, aunque todavía había residuos después de días de mucho viento.",
+        "La trabajadora les enseñó una alcantarilla junto a la parada del autobús."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Un mes después, encontraron menos basura en la orilla, aunque todavía había residuos después de días de mucho viento.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-b1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 5?",
+      "choices": [
+        "Después de una tormenta, un grupo de estudiantes vio muchas bolsas pequeñas junto al canal que llega al puerto.",
+        "El proyecto les enseñó algo inesperado.",
+        "La trabajadora les enseñó una alcantarilla junto a la parada del autobús.",
+        "Durante una semana hicieron un mapa de la zona."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Párrafo 5: El proyecto les enseñó algo inesperado.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-b1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Pensaron que alguien había tirado la basura al agua durante la noche.",
+        "Cuando llueve, el agua arrastra papeles y envases desde la calle.",
+        "Contaron más envoltorios junto a la parada, donde una papelera estaba siempre llena al final de la tarde.",
+        "Publicaron el mapa para que otros vecinos añadieran nuevas observaciones."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Pensaron que alguien había tirado la basura al agua durante la noche.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-b1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Contaron más envoltorios junto a la parada, donde una papelera estaba siempre llena al final de la tarde.",
+        "Publicaron el mapa para que otros vecinos añadieran nuevas observaciones.",
+        "Antes de decir «la gente debería cambiar», a veces conviene preguntar dónde, cuándo y por qué aparece el problema.",
+        "Cuando llueve, el agua arrastra papeles y envases desde la calle."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Cuando llueve, el agua arrastra papeles y envases desde la calle.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-b1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Publicaron el mapa para que otros vecinos añadieran nuevas observaciones.",
+        "Antes de decir «la gente debería cambiar», a veces conviene preguntar dónde, cuándo y por qué aparece el problema.",
+        "Contaron más envoltorios junto a la parada, donde una papelera estaba siempre llena al final de la tarde.",
+        "Pensaron que alguien había tirado la basura al agua durante la noche."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Contaron más envoltorios junto a la parada, donde una papelera estaba siempre llena al final de la tarde.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-b1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Antes de decir «la gente debería cambiar», a veces conviene preguntar dónde, cuándo y por qué aparece el problema.",
+        "Publicaron el mapa para que otros vecinos añadieran nuevas observaciones.",
+        "Pensaron que alguien había tirado la basura al agua durante la noche.",
+        "Cuando llueve, el agua arrastra papeles y envases desde la calle."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Publicaron el mapa para que otros vecinos añadieran nuevas observaciones.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-b1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 5?",
+      "choices": [
+        "Antes de decir «la gente debería cambiar», a veces conviene preguntar dónde, cuándo y por qué aparece el problema.",
+        "Pensaron que alguien había tirado la basura al agua durante la noche.",
+        "Cuando llueve, el agua arrastra papeles y envases desde la calle.",
+        "Contaron más envoltorios junto a la parada, donde una papelera estaba siempre llena al final de la tarde."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Párrafo 5: Antes de decir «la gente debería cambiar», a veces conviene preguntar dónde, cuándo y por qué aparece el problema.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

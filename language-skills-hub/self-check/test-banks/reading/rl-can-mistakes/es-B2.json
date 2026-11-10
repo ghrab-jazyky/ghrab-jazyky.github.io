@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "es",
+  "level": "B2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-es-b2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Imaginemos a una alumna que recibe una nota inferior a la esperada en una redacción.",
+        "Un resultado decepcionante puede parecernos un juicio sobre quiénes somos, en vez de una muestra de lo que sabemos en un momento concreto.",
+        "Por supuesto, los comentarios del profesorado no siempre son acertados.",
+        "Aprender de una crítica no exige disfrutarla."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Un resultado decepcionante puede parecernos un juicio sobre quiénes somos, en vez de una muestra de lo que sabemos en un momento concreto.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Imaginemos a una alumna que recibe una nota inferior a la esperada en una redacción.",
+        "Por supuesto, los comentarios del profesorado no siempre son acertados.",
+        "Aprender de una crítica no exige disfrutarla.",
+        "Un resultado decepcionante puede parecernos un juicio sobre quiénes somos, en vez de una muestra de lo que sabemos en un momento concreto."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Imaginemos a una alumna que recibe una nota inferior a la esperada en una redacción.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Aprender de una crítica no exige disfrutarla.",
+        "Un resultado decepcionante puede parecernos un juicio sobre quiénes somos, en vez de una muestra de lo que sabemos en un momento concreto.",
+        "Imaginemos a una alumna que recibe una nota inferior a la esperada en una redacción.",
+        "Por supuesto, los comentarios del profesorado no siempre son acertados."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Por supuesto, los comentarios del profesorado no siempre son acertados.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Un resultado decepcionante puede parecernos un juicio sobre quiénes somos, en vez de una muestra de lo que sabemos en un momento concreto.",
+        "Imaginemos a una alumna que recibe una nota inferior a la esperada en una redacción.",
+        "Aprender de una crítica no exige disfrutarla.",
+        "Por supuesto, los comentarios del profesorado no siempre son acertados."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Aprender de una crítica no exige disfrutarla.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "El profesor señala que su argumento es interesante, pero que los datos que lo apoyan están mal organizados.",
+        "Para quienes suelen obtener buenas notas, incluso un comentario bien redactado de un profesor puede sonar como una crítica a su inteligencia.",
+        "Un docente puede interpretar mal una idea y algunos sistemas de evaluación favorecen una forma de escribir demasiado limitada.",
+        "Significa distinguir entre un rendimiento puntual y una identidad permanente, y decidir qué sugerencias vale la pena poner a prueba."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Para quienes suelen obtener buenas notas, incluso un comentario bien redactado de un profesor puede sonar como una crítica a su inteligencia.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "El profesor señala que su argumento es interesante, pero que los datos que lo apoyan están mal organizados.",
+        "Un docente puede interpretar mal una idea y algunos sistemas de evaluación favorecen una forma de escribir demasiado limitada.",
+        "Significa distinguir entre un rendimiento puntual y una identidad permanente, y decidir qué sugerencias vale la pena poner a prueba.",
+        "Para quienes suelen obtener buenas notas, incluso un comentario bien redactado de un profesor puede sonar como una crítica a su inteligencia."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: El profesor señala que su argumento es interesante, pero que los datos que lo apoyan están mal organizados.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Significa distinguir entre un rendimiento puntual y una identidad permanente, y decidir qué sugerencias vale la pena poner a prueba.",
+        "Para quienes suelen obtener buenas notas, incluso un comentario bien redactado de un profesor puede sonar como una crítica a su inteligencia.",
+        "El profesor señala que su argumento es interesante, pero que los datos que lo apoyan están mal organizados.",
+        "Un docente puede interpretar mal una idea y algunos sistemas de evaluación favorecen una forma de escribir demasiado limitada."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Un docente puede interpretar mal una idea y algunos sistemas de evaluación favorecen una forma de escribir demasiado limitada.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Para quienes suelen obtener buenas notas, incluso un comentario bien redactado de un profesor puede sonar como una crítica a su inteligencia.",
+        "El profesor señala que su argumento es interesante, pero que los datos que lo apoyan están mal organizados.",
+        "Significa distinguir entre un rendimiento puntual y una identidad permanente, y decidir qué sugerencias vale la pena poner a prueba.",
+        "Un docente puede interpretar mal una idea y algunos sistemas de evaluación favorecen una forma de escribir demasiado limitada."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Significa distinguir entre un rendimiento puntual y una identidad permanente, y decidir qué sugerencias vale la pena poner a prueba.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Ella puede rechazar la nota por injusta o analizar cómo cada párrafo podría apoyar mejor la idea central.",
+        "Esta reacción es comprensible, pero dificulta aprovechar la información recibida.",
+        "Por eso, además de mantener una actitud constructiva, el alumnado necesita confianza para formular preguntas concretas: «¿Podría mostrarme dónde deja de estar claro…",
+        "El objetivo no es evitar la decepción, sino impedir que cierre la conversación."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Esta reacción es comprensible, pero dificulta aprovechar la información recibida.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-b2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Ella puede rechazar la nota por injusta o analizar cómo cada párrafo podría apoyar mejor la idea central.",
+        "Por eso, además de mantener una actitud constructiva, el alumnado necesita confianza para formular preguntas concretas: «¿Podría mostrarme dónde deja de estar claro…",
+        "El objetivo no es evitar la decepción, sino impedir que cierre la conversación.",
+        "Esta reacción es comprensible, pero dificulta aprovechar la información recibida."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Ella puede rechazar la nota por injusta o analizar cómo cada párrafo podría apoyar mejor la idea central.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "de",
+  "level": "B1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-de-b1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Eines Nachmittags sollten alle im Musikunterricht ein kurzes Stück lernen.",
+        "Als Lara auf die weiterführende Schule kam, war sie stolz auf ihre guten Noten.",
+        "Eine Woche später konnte sie das ganze Stück ohne Pause spielen.",
+        "Gute Noten sind Lara immer noch wichtig."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Als Lara auf die weiterführende Schule kam, war sie stolz auf ihre guten Noten.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-b1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Eines Nachmittags sollten alle im Musikunterricht ein kurzes Stück lernen.",
+        "Eine Woche später konnte sie das ganze Stück ohne Pause spielen.",
+        "Gute Noten sind Lara immer noch wichtig.",
+        "Als Lara auf die weiterführende Schule kam, war sie stolz auf ihre guten Noten."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Eines Nachmittags sollten alle im Musikunterricht ein kurzes Stück lernen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-b1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Gute Noten sind Lara immer noch wichtig.",
+        "Als Lara auf die weiterführende Schule kam, war sie stolz auf ihre guten Noten.",
+        "Eines Nachmittags sollten alle im Musikunterricht ein kurzes Stück lernen.",
+        "Eine Woche später konnte sie das ganze Stück ohne Pause spielen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Eine Woche später konnte sie das ganze Stück ohne Pause spielen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Als Lara auf die weiterführende Schule kam, war sie stolz auf ihre guten Noten.",
+        "Eines Nachmittags sollten alle im Musikunterricht ein kurzes Stück lernen.",
+        "Gute Noten sind Lara immer noch wichtig.",
+        "Eine Woche später konnte sie das ganze Stück ohne Pause spielen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Gute Noten sind Lara immer noch wichtig.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-b1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Lara machte vor der Klasse mehrere Fehler.",
+        "Sie zeigte ihren Eltern gern ihre Ergebnisse.",
+        "Dadurch wurde sie nicht plötzlich zu einer großartigen Musikerin.",
+        "Sie betrachtet jedoch nicht mehr jeden Fehler als Beweis für ein Versagen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Sie zeigte ihren Eltern gern ihre Ergebnisse.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-b1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Lara machte vor der Klasse mehrere Fehler.",
+        "Dadurch wurde sie nicht plötzlich zu einer großartigen Musikerin.",
+        "Sie betrachtet jedoch nicht mehr jeden Fehler als Beweis für ein Versagen.",
+        "Sie zeigte ihren Eltern gern ihre Ergebnisse."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Lara machte vor der Klasse mehrere Fehler.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-b1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Sie betrachtet jedoch nicht mehr jeden Fehler als Beweis für ein Versagen.",
+        "Sie zeigte ihren Eltern gern ihre Ergebnisse.",
+        "Lara machte vor der Klasse mehrere Fehler.",
+        "Dadurch wurde sie nicht plötzlich zu einer großartigen Musikerin."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Dadurch wurde sie nicht plötzlich zu einer großartigen Musikerin.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-b1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Sie zeigte ihren Eltern gern ihre Ergebnisse.",
+        "Lara machte vor der Klasse mehrere Fehler.",
+        "Sie betrachtet jedoch nicht mehr jeden Fehler als Beweis für ein Versagen.",
+        "Dadurch wurde sie nicht plötzlich zu einer großartigen Musikerin."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Sie betrachtet jedoch nicht mehr jeden Fehler als Beweis für ein Versagen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-b1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Ihre Lehrerin forderte sie nicht auf, schneller zu spielen, sondern schlug vor, nur vier schwierige Takte zu üben.",
+        "Bald vermied sie jedoch Fächer, in denen sie sich nicht sicher fühlte.",
+        "Aber sie reagierte anders auf Schwierigkeiten.",
+        "Manchmal bedeutet Fortschritt einfach zu erkennen, was man noch üben sollte."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Bald vermied sie jedoch Fächer, in denen sie sich nicht sicher fühlte.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-b1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Ihre Lehrerin forderte sie nicht auf, schneller zu spielen, sondern schlug vor, nur vier schwierige Takte zu üben.",
+        "Aber sie reagierte anders auf Schwierigkeiten.",
+        "Manchmal bedeutet Fortschritt einfach zu erkennen, was man noch üben sollte.",
+        "Bald vermied sie jedoch Fächer, in denen sie sich nicht sicher fühlte."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Ihre Lehrerin forderte sie nicht auf, schneller zu spielen, sondern schlug vor, nur vier schwierige Takte zu üben.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

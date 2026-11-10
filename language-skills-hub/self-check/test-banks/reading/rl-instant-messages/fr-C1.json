@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "fr",
+  "level": "C1",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-instant-messages-fr-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "La pression n’est pas répartie de façon égale.",
+        "Peu de signes ont provoqué autant d’inquiétude silencieuse que deux petites coches qui deviennent bleues.",
+        "Les partisans des accusés de lecture affirment qu’ils rendent la communication plus honnête.",
+        "La situation est aggravée par le fait que les attentes sont rarement formulées."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Peu de signes ont provoqué autant d’inquiétude silencieuse que deux petites coches qui deviennent bleues.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "La pression n’est pas répartie de façon égale.",
+        "Les partisans des accusés de lecture affirment qu’ils rendent la communication plus honnête.",
+        "La situation est aggravée par le fait que les attentes sont rarement formulées.",
+        "La solution n’est pas de renoncer aux messages, mais de rendre leurs règles explicites."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: La pression n’est pas répartie de façon égale.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "La situation est aggravée par le fait que les attentes sont rarement formulées.",
+        "La solution n’est pas de renoncer aux messages, mais de rendre leurs règles explicites.",
+        "Peu de signes ont provoqué autant d’inquiétude silencieuse que deux petites coches qui deviennent bleues.",
+        "Les partisans des accusés de lecture affirment qu’ils rendent la communication plus honnête."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Les partisans des accusés de lecture affirment qu’ils rendent la communication plus honnête.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "La solution n’est pas de renoncer aux messages, mais de rendre leurs règles explicites.",
+        "Peu de signes ont provoqué autant d’inquiétude silencieuse que deux petites coches qui deviennent bleues.",
+        "La situation est aggravée par le fait que les attentes sont rarement formulées.",
+        "La pression n’est pas répartie de façon égale."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: La situation est aggravée par le fait que les attentes sont rarement formulées.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 5?",
+      "choices": [
+        "Peu de signes ont provoqué autant d’inquiétude silencieuse que deux petites coches qui deviennent bleues.",
+        "La solution n’est pas de renoncer aux messages, mais de rendre leurs règles explicites.",
+        "La pression n’est pas répartie de façon égale.",
+        "Les partisans des accusés de lecture affirment qu’ils rendent la communication plus honnête."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraphe 5: La solution n’est pas de renoncer aux messages, mais de rendre leurs règles explicites.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Les accusés de lecture étaient sans doute censés rassurer l’expéditeur : son message avait bien été lu.",
+        "Une lycéenne de seize ans qui travaille le week-end dans un café peut, par exemple, faire partie d’un groupe du personnel où l’on s’échange des services tard le soir.",
+        "Sans eux, selon cet argument, on pourrait ignorer indéfiniment les messages gênants en faisant semblant de ne pas les avoir remarqués.",
+        "Les familles, les groupes d’amis et les équipes développent des règles tacites sur la vitesse de réponse, et les nouveaux venus ne les découvrent souvent qu’en les e…"
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Les accusés de lecture étaient sans doute censés rassurer l’expéditeur : son message avait bien été lu.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Sans eux, selon cet argument, on pourrait ignorer indéfiniment les messages gênants en faisant semblant de ne pas les avoir remarqués.",
+        "Les familles, les groupes d’amis et les équipes développent des règles tacites sur la vitesse de réponse, et les nouveaux venus ne les découvrent souvent qu’en les e…",
+        "Certains pays, dont la France, ont reconnu à de nombreux salariés un droit à la déconnexion en dehors de leurs heures de travail.",
+        "Une lycéenne de seize ans qui travaille le week-end dans un café peut, par exemple, faire partie d’un groupe du personnel où l’on s’échange des services tard le soir."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Une lycéenne de seize ans qui travaille le week-end dans un café peut, par exemple, faire partie d’un groupe du personnel où l’on s’échange des services tard le soir.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Les familles, les groupes d’amis et les équipes développent des règles tacites sur la vitesse de réponse, et les nouveaux venus ne les découvrent souvent qu’en les e…",
+        "Certains pays, dont la France, ont reconnu à de nombreux salariés un droit à la déconnexion en dehors de leurs heures de travail.",
+        "Sans eux, selon cet argument, on pourrait ignorer indéfiniment les messages gênants en faisant semblant de ne pas les avoir remarqués.",
+        "Les accusés de lecture étaient sans doute censés rassurer l’expéditeur : son message avait bien été lu."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Sans eux, selon cet argument, on pourrait ignorer indéfiniment les messages gênants en faisant semblant de ne pas les avoir remarqués.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Certains pays, dont la France, ont reconnu à de nombreux salariés un droit à la déconnexion en dehors de leurs heures de travail.",
+        "Les familles, les groupes d’amis et les équipes développent des règles tacites sur la vitesse de réponse, et les nouveaux venus ne les découvrent souvent qu’en les e…",
+        "Les accusés de lecture étaient sans doute censés rassurer l’expéditeur : son message avait bien été lu.",
+        "Une lycéenne de seize ans qui travaille le week-end dans un café peut, par exemple, faire partie d’un groupe du personnel où l’on s’échange des services tard le soir."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Les familles, les groupes d’amis et les équipes développent des règles tacites sur la vitesse de réponse, et les nouveaux venus ne les découvrent souvent qu’en les e…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 5?",
+      "choices": [
+        "Certains pays, dont la France, ont reconnu à de nombreux salariés un droit à la déconnexion en dehors de leurs heures de travail.",
+        "Les accusés de lecture étaient sans doute censés rassurer l’expéditeur : son message avait bien été lu.",
+        "Une lycéenne de seize ans qui travaille le week-end dans un café peut, par exemple, faire partie d’un groupe du personnel où l’on s’échange des services tard le soir.",
+        "Sans eux, selon cet argument, on pourrait ignorer indéfiniment les messages gênants en faisant semblant de ne pas les avoir remarqués."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Paragraphe 5: Certains pays, dont la France, ont reconnu à de nombreux salariés un droit à la déconnexion en dehors de leurs heures de travail.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

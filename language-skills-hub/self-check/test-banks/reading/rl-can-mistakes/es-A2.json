@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "es",
+  "level": "A2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-es-a2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "El lunes estudia veinte minutos y descansa un poco.",
+        "Daniel tiene un examen de ciencias el jueves.",
+        "El examen sigue siendo difícil y Daniel comete dos errores.",
+        "El martes explica una idea importante a su hermana."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Daniel tiene un examen de ciencias el jueves.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-a2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "El lunes estudia veinte minutos y descansa un poco.",
+        "El examen sigue siendo difícil y Daniel comete dos errores.",
+        "Daniel tiene un examen de ciencias el jueves.",
+        "Sin embargo, está más tranquilo que otras veces."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: El lunes estudia veinte minutos y descansa un poco.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-a2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Daniel tiene un examen de ciencias el jueves.",
+        "El lunes estudia veinte minutos y descansa un poco.",
+        "Normalmente estudia todo el miércoles por la noche.",
+        "El examen sigue siendo difícil y Daniel comete dos errores."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: El examen sigue siendo difícil y Daniel comete dos errores.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-a2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "El martes explica una idea importante a su hermana.",
+        "Sin embargo, está más tranquilo que otras veces.",
+        "Normalmente estudia todo el miércoles por la noche.",
+        "Cuando no puede explicarla bien, vuelve a mirar sus apuntes."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Normalmente estudia todo el miércoles por la noche.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-a2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Sin embargo, está más tranquilo que otras veces.",
+        "El martes explica una idea importante a su hermana.",
+        "Normalmente estudia todo el miércoles por la noche.",
+        "Después de clase, escribe lo que necesita practicar."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: El martes explica una idea importante a su hermana.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-a2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Sin embargo, está más tranquilo que otras veces.",
+        "Normalmente estudia todo el miércoles por la noche.",
+        "El martes explica una idea importante a su hermana.",
+        "Se acuesta muy tarde y al día siguiente está cansado."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Sin embargo, está más tranquilo que otras veces.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-a2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Cuando no puede explicarla bien, vuelve a mirar sus apuntes.",
+        "Después de clase, escribe lo que necesita practicar.",
+        "El miércoles intenta contestar algunas preguntas sin mirar las respuestas.",
+        "Se acuesta muy tarde y al día siguiente está cansado."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Se acuesta muy tarde y al día siguiente está cansado.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-a2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Después de clase, escribe lo que necesita practicar.",
+        "Se acuesta muy tarde y al día siguiente está cansado.",
+        "Cuando no puede explicarla bien, vuelve a mirar sus apuntes.",
+        "Comprende que un buen plan no tiene que ser perfecto."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Cuando no puede explicarla bien, vuelve a mirar sus apuntes.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-a2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Se acuesta muy tarde y al día siguiente está cansado.",
+        "Después de clase, escribe lo que necesita practicar.",
+        "Cuando no puede explicarla bien, vuelve a mirar sus apuntes.",
+        "Esta vez quiere probar un plan diferente."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Después de clase, escribe lo que necesita practicar.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-a2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Esta vez quiere probar un plan diferente.",
+        "El miércoles intenta contestar algunas preguntas sin mirar las respuestas.",
+        "Comprende que un buen plan no tiene que ser perfecto.",
+        "El lunes estudia veinte minutos y descansa un poco."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Esta vez quiere probar un plan diferente.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

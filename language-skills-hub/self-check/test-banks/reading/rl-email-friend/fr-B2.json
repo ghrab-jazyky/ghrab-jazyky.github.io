@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "fr",
+  "level": "B2",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-fr-b2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Les choses ont changé lorsqu'une voisine m'a invitée à participer à une radio associative.",
+        "Salut Alex, je te dois un vrai message plutôt qu'une nouvelle photo accompagnée d'une légende joyeuse.",
+        "La semaine dernière, j'ai retrouvé notre photo prise après les derniers examens.",
+        "Je t'invite donc à notre soirée de récits de quartier, le deuxième samedi de juin."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Salut Alex, je te dois un vrai message plutôt qu'une nouvelle photo accompagnée d'une légende joyeuse.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Les choses ont changé lorsqu'une voisine m'a invitée à participer à une radio associative.",
+        "La semaine dernière, j'ai retrouvé notre photo prise après les derniers examens.",
+        "Je t'invite donc à notre soirée de récits de quartier, le deuxième samedi de juin.",
+        "Salut Alex, je te dois un vrai message plutôt qu'une nouvelle photo accompagnée d'une légende joyeuse."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Les choses ont changé lorsqu'une voisine m'a invitée à participer à une radio associative.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Je t'invite donc à notre soirée de récits de quartier, le deuxième samedi de juin.",
+        "Salut Alex, je te dois un vrai message plutôt qu'une nouvelle photo accompagnée d'une légende joyeuse.",
+        "Les choses ont changé lorsqu'une voisine m'a invitée à participer à une radio associative.",
+        "La semaine dernière, j'ai retrouvé notre photo prise après les derniers examens."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: La semaine dernière, j'ai retrouvé notre photo prise après les derniers examens.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Salut Alex, je te dois un vrai message plutôt qu'une nouvelle photo accompagnée d'une légende joyeuse.",
+        "Les choses ont changé lorsqu'une voisine m'a invitée à participer à une radio associative.",
+        "Je t'invite donc à notre soirée de récits de quartier, le deuxième samedi de juin.",
+        "La semaine dernière, j'ai retrouvé notre photo prise après les derniers examens."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Je t'invite donc à notre soirée de récits de quartier, le deuxième samedi de juin.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "J'avais d'abord accepté de venir porter du matériel, puis j'ai commencé à enregistrer des entretiens avec de nouveaux habitants.",
+        "Quand je suis arrivée à Rotterdam pour mon année d'échange, je pensais que chaque semaine ressemblerait à des vacances.",
+        "J'ai failli te l'envoyer avec un simple « Tu te souviens ? » et un emoji.",
+        "Tu n'aurais pas besoin de te produire devant un public ; nous pourrions simplement écouter et visiter la ville le lendemain."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Quand je suis arrivée à Rotterdam pour mon année d'échange, je pensais que chaque semaine ressemblerait à des vacances.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "J'avais d'abord accepté de venir porter du matériel, puis j'ai commencé à enregistrer des entretiens avec de nouveaux habitants.",
+        "J'ai failli te l'envoyer avec un simple « Tu te souviens ? » et un emoji.",
+        "Tu n'aurais pas besoin de te produire devant un public ; nous pourrions simplement écouter et visiter la ville le lendemain.",
+        "Quand je suis arrivée à Rotterdam pour mon année d'échange, je pensais que chaque semaine ressemblerait à des vacances."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: J'avais d'abord accepté de venir porter du matériel, puis j'ai commencé à enregistrer des entretiens avec de nouveaux habitants.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Tu n'aurais pas besoin de te produire devant un public ; nous pourrions simplement écouter et visiter la ville le lendemain.",
+        "Quand je suis arrivée à Rotterdam pour mon année d'échange, je pensais que chaque semaine ressemblerait à des vacances.",
+        "J'avais d'abord accepté de venir porter du matériel, puis j'ai commencé à enregistrer des entretiens avec de nouveaux habitants.",
+        "J'ai failli te l'envoyer avec un simple « Tu te souviens ? » et un emoji."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: J'ai failli te l'envoyer avec un simple « Tu te souviens ? » et un emoji.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Quand je suis arrivée à Rotterdam pour mon année d'échange, je pensais que chaque semaine ressemblerait à des vacances.",
+        "J'avais d'abord accepté de venir porter du matériel, puis j'ai commencé à enregistrer des entretiens avec de nouveaux habitants.",
+        "Tu n'aurais pas besoin de te produire devant un public ; nous pourrions simplement écouter et visiter la ville le lendemain.",
+        "J'ai failli te l'envoyer avec un simple « Tu te souviens ? » et un emoji."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Tu n'aurais pas besoin de te produire devant un public ; nous pourrions simplement écouter et visiter la ville le lendemain.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Une femme racontait qu'apprendre les lignes de bus, c'était comme découvrir une langue secrète.",
+        "La ville est formidable : des pistes cyclables partout, des bâtiments audacieux et un marché où j'entends cinq langues avant le petit déjeuner.",
+        "Puis j'ai compris que j'ignorais tout de ta première année à l'université.",
+        "Tu pourrais dormir sur mon canapé, mais il te faudrait payer ton billet de train."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: La ville est formidable : des pistes cyclables partout, des bâtiments audacieux et un marché où j'entends cinq langues avant le petit déjeuner.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Une femme racontait qu'apprendre les lignes de bus, c'était comme découvrir une langue secrète.",
+        "Puis j'ai compris que j'ignorais tout de ta première année à l'université.",
+        "Tu pourrais dormir sur mon canapé, mais il te faudrait payer ton billet de train.",
+        "La ville est formidable : des pistes cyclables partout, des bâtiments audacieux et un marché où j'entends cinq langues avant le petit déjeuner."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Une femme racontait qu'apprendre les lignes de bus, c'était comme découvrir une langue secrète.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

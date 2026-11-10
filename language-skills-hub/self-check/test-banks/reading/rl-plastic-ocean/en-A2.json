@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-en-a2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "At the entrance, each visitor could borrow a strong, reusable cup for a small deposit.",
+        "Last summer, the town music festival had a problem.",
+        "The deposit was two euros.",
+        "At the end of Saturday evening, many cups came back."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Last summer, the town music festival had a problem.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "At the entrance, each visitor could borrow a strong, reusable cup for a small deposit.",
+        "The deposit was two euros.",
+        "At the end of Saturday evening, many cups came back.",
+        "The organisers also counted the rubbish bags."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: At the entrance, each visitor could borrow a strong, reusable cup for a small deposit.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "At the end of Saturday evening, many cups came back.",
+        "The organisers also counted the rubbish bags.",
+        "Next year, the organisers want to ask food sellers to use less packaging too.",
+        "The deposit was two euros."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: The deposit was two euros.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "The organisers also counted the rubbish bags.",
+        "Next year, the organisers want to ask food sellers to use less packaging too.",
+        "At the end of Saturday evening, many cups came back.",
+        "Last summer, the town music festival had a problem."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: At the end of Saturday evening, many cups came back.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "Next year, the organisers want to ask food sellers to use less packaging too.",
+        "The organisers also counted the rubbish bags.",
+        "Last summer, the town music festival had a problem.",
+        "At the entrance, each visitor could borrow a strong, reusable cup for a small deposit."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: The organisers also counted the rubbish bags.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 6?",
+      "choices": [
+        "Next year, the organisers want to ask food sellers to use less packaging too.",
+        "Last summer, the town music festival had a problem.",
+        "At the entrance, each visitor could borrow a strong, reusable cup for a small deposit.",
+        "The deposit was two euros."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "Paragraph 6: Next year, the organisers want to ask food sellers to use less packaging too.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "There were also two free water stations.",
+        "When visitors returned their cup, they got the money back.",
+        "A few disappeared, and the team still collected food wrappers from the grass.",
+        "After every concert, the grass was full of plastic cups."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: After every concert, the grass was full of plastic cups.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "When visitors returned their cup, they got the money back.",
+        "A few disappeared, and the team still collected food wrappers from the grass.",
+        "There were also two free water stations.",
+        "Last year, the cleaning team filled forty bags on Saturday night."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: There were also two free water stations.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "A few disappeared, and the team still collected food wrappers from the grass.",
+        "When visitors returned their cup, they got the money back.",
+        "Last year, the cleaning team filled forty bags on Saturday night.",
+        "One change helped, but it did not remove every kind of waste."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: When visitors returned their cup, they got the money back.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "A few disappeared, and the team still collected food wrappers from the grass.",
+        "Last year, the cleaning team filled forty bags on Saturday night.",
+        "One change helped, but it did not remove every kind of waste.",
+        "After every concert, the grass was full of plastic cups."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: A few disappeared, and the team still collected food wrappers from the grass.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "de",
+  "level": "B2",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-asteroids-de-b2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Die erste Herausforderung besteht darin, solche Objekte überhaupt zu entdecken.",
+        "Manche Schlagzeilen erwecken den Eindruck, ein Asteroid „rase auf die Erde zu“ und werde bald eine Katastrophe auslösen.",
+        "Die zweite Herausforderung ist die Frage, wie man reagieren könnte, wenn ein Objekt wirklich gefährlich wäre.",
+        "Letztlich ist planetare Verteidigung auch eine Aufgabe der Kommunikation."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Manche Schlagzeilen erwecken den Eindruck, ein Asteroid „rase auf die Erde zu“ und werde bald eine Katastrophe auslösen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-b2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Die erste Herausforderung besteht darin, solche Objekte überhaupt zu entdecken.",
+        "Die zweite Herausforderung ist die Frage, wie man reagieren könnte, wenn ein Objekt wirklich gefährlich wäre.",
+        "Letztlich ist planetare Verteidigung auch eine Aufgabe der Kommunikation.",
+        "Manche Schlagzeilen erwecken den Eindruck, ein Asteroid „rase auf die Erde zu“ und werde bald eine Katastrophe auslösen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Die erste Herausforderung besteht darin, solche Objekte überhaupt zu entdecken.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-b2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Letztlich ist planetare Verteidigung auch eine Aufgabe der Kommunikation.",
+        "Manche Schlagzeilen erwecken den Eindruck, ein Asteroid „rase auf die Erde zu“ und werde bald eine Katastrophe auslösen.",
+        "Die erste Herausforderung besteht darin, solche Objekte überhaupt zu entdecken.",
+        "Die zweite Herausforderung ist die Frage, wie man reagieren könnte, wenn ein Objekt wirklich gefährlich wäre."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Die zweite Herausforderung ist die Frage, wie man reagieren könnte, wenn ein Objekt wirklich gefährlich wäre.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-b2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Manche Schlagzeilen erwecken den Eindruck, ein Asteroid „rase auf die Erde zu“ und werde bald eine Katastrophe auslösen.",
+        "Die erste Herausforderung besteht darin, solche Objekte überhaupt zu entdecken.",
+        "Letztlich ist planetare Verteidigung auch eine Aufgabe der Kommunikation.",
+        "Die zweite Herausforderung ist die Frage, wie man reagieren könnte, wenn ein Objekt wirklich gefährlich wäre."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Letztlich ist planetare Verteidigung auch eine Aufgabe der Kommunikation.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-b2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Teleskope am Boden fotografieren regelmäßig den Himmel; Computerprogramme suchen nach Lichtpunkten, die ihre Position verändern.",
+        "Solche Formulierungen können irreführend sein.",
+        "Im Jahr 2022 ließ die NASA ihre Raumsonde DART absichtlich mit Dimorphos zusammenstoßen, der einen größeren Asteroiden namens Didymos umkreist.",
+        "Forscher müssen erklären, was bekannt ist, wo noch Unsicherheit besteht und warum neue Prognosen von früheren abweichen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Solche Formulierungen können irreführend sein.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-b2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Teleskope am Boden fotografieren regelmäßig den Himmel; Computerprogramme suchen nach Lichtpunkten, die ihre Position verändern.",
+        "Im Jahr 2022 ließ die NASA ihre Raumsonde DART absichtlich mit Dimorphos zusammenstoßen, der einen größeren Asteroiden namens Didymos umkreist.",
+        "Forscher müssen erklären, was bekannt ist, wo noch Unsicherheit besteht und warum neue Prognosen von früheren abweichen.",
+        "Solche Formulierungen können irreführend sein."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Teleskope am Boden fotografieren regelmäßig den Himmel; Computerprogramme suchen nach Lichtpunkten, die ihre Position verändern.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-b2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Forscher müssen erklären, was bekannt ist, wo noch Unsicherheit besteht und warum neue Prognosen von früheren abweichen.",
+        "Solche Formulierungen können irreführend sein.",
+        "Teleskope am Boden fotografieren regelmäßig den Himmel; Computerprogramme suchen nach Lichtpunkten, die ihre Position verändern.",
+        "Im Jahr 2022 ließ die NASA ihre Raumsonde DART absichtlich mit Dimorphos zusammenstoßen, der einen größeren Asteroiden namens Didymos umkreist."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Im Jahr 2022 ließ die NASA ihre Raumsonde DART absichtlich mit Dimorphos zusammenstoßen, der einen größeren Asteroiden namens Didymos umkreist.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-b2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Solche Formulierungen können irreführend sein.",
+        "Teleskope am Boden fotografieren regelmäßig den Himmel; Computerprogramme suchen nach Lichtpunkten, die ihre Position verändern.",
+        "Forscher müssen erklären, was bekannt ist, wo noch Unsicherheit besteht und warum neue Prognosen von früheren abweichen.",
+        "Im Jahr 2022 ließ die NASA ihre Raumsonde DART absichtlich mit Dimorphos zusammenstoßen, der einen größeren Asteroiden namens Didymos umkreist."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Forscher müssen erklären, was bekannt ist, wo noch Unsicherheit besteht und warum neue Prognosen von früheren abweichen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-b2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Infrarotbeobachtungen helfen außerdem, dunkle Körper zu erkennen, die wenig Sonnenlicht reflektieren.",
+        "Asteroiden sind uralte Brocken aus Gestein und Metall, die um die Sonne kreisen.",
+        "Beobachtungen zeigten, dass Dimorphos danach für einen Umlauf um Didymos weniger Zeit benötigte.",
+        "Behörden und Sternwarten sollten verlässliche Informationen lange vor einem möglichen Notfall austauschen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Asteroiden sind uralte Brocken aus Gestein und Metall, die um die Sonne kreisen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-b2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Infrarotbeobachtungen helfen außerdem, dunkle Körper zu erkennen, die wenig Sonnenlicht reflektieren.",
+        "Beobachtungen zeigten, dass Dimorphos danach für einen Umlauf um Didymos weniger Zeit benötigte.",
+        "Behörden und Sternwarten sollten verlässliche Informationen lange vor einem möglichen Notfall austauschen.",
+        "Asteroiden sind uralte Brocken aus Gestein und Metall, die um die Sonne kreisen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Infrarotbeobachtungen helfen außerdem, dunkle Körper zu erkennen, die wenig Sonnenlicht reflektieren.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "es",
+  "level": "C1",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-asteroids-es-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Las limitaciones de la observación explican por qué cambian las predicciones.",
+        "El estudio de los asteroides ocupa una posición peculiar entre la investigación científica y la seguridad pública.",
+        "DART proporcionó un resultado experimental importante, no una garantía universal.",
+        "También surge una cuestión de prioridades: qué recibe atención y recursos."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: El estudio de los asteroides ocupa una posición peculiar entre la investigación científica y la seguridad pública.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Las limitaciones de la observación explican por qué cambian las predicciones.",
+        "DART proporcionó un resultado experimental importante, no una garantía universal.",
+        "También surge una cuestión de prioridades: qué recibe atención y recursos.",
+        "El estudio de los asteroides ocupa una posición peculiar entre la investigación científica y la seguridad pública."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Las limitaciones de la observación explican por qué cambian las predicciones.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "También surge una cuestión de prioridades: qué recibe atención y recursos.",
+        "El estudio de los asteroides ocupa una posición peculiar entre la investigación científica y la seguridad pública.",
+        "Las limitaciones de la observación explican por qué cambian las predicciones.",
+        "DART proporcionó un resultado experimental importante, no una garantía universal."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: DART proporcionó un resultado experimental importante, no una garantía universal.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "El estudio de los asteroides ocupa una posición peculiar entre la investigación científica y la seguridad pública.",
+        "Las limitaciones de la observación explican por qué cambian las predicciones.",
+        "También surge una cuestión de prioridades: qué recibe atención y recursos.",
+        "DART proporcionó un resultado experimental importante, no una garantía universal."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: También surge una cuestión de prioridades: qué recibe atención y recursos.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Al principio, un asteroide débilmente visible puede aparecer en pocas imágenes, que representan solo un tramo corto de su órbita.",
+        "Estos cuerpos conservan indicios de las condiciones en que se formó el sistema solar, pero una pequeña parte sigue órbitas que los llevan a las proximidades de la Tierra.",
+        "En septiembre de 2022, la nave impactó contra Dimorphos, el miembro menor de un sistema binario de asteroides, y modificó su movimiento alrededor de Didymos.",
+        "Los programas de observación, el intercambio internacional de datos y las explicaciones públicas cuidadosas llaman menos la atención que las imágenes de una misión e…"
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Estos cuerpos conservan indicios de las condiciones en que se formó el sistema solar, pero una pequeña parte sigue órbitas que los llevan a las proximidades de la Tierra.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Al principio, un asteroide débilmente visible puede aparecer en pocas imágenes, que representan solo un tramo corto de su órbita.",
+        "En septiembre de 2022, la nave impactó contra Dimorphos, el miembro menor de un sistema binario de asteroides, y modificó su movimiento alrededor de Didymos.",
+        "Los programas de observación, el intercambio internacional de datos y las explicaciones públicas cuidadosas llaman menos la atención que las imágenes de una misión e…",
+        "Estos cuerpos conservan indicios de las condiciones en que se formó el sistema solar, pero una pequeña parte sigue órbitas que los llevan a las proximidades de la Tierra."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Al principio, un asteroide débilmente visible puede aparecer en pocas imágenes, que representan solo un tramo corto de su órbita.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Los programas de observación, el intercambio internacional de datos y las explicaciones públicas cuidadosas llaman menos la atención que las imágenes de una misión e…",
+        "Estos cuerpos conservan indicios de las condiciones en que se formó el sistema solar, pero una pequeña parte sigue órbitas que los llevan a las proximidades de la Tierra.",
+        "Al principio, un asteroide débilmente visible puede aparecer en pocas imágenes, que representan solo un tramo corto de su órbita.",
+        "En septiembre de 2022, la nave impactó contra Dimorphos, el miembro menor de un sistema binario de asteroides, y modificó su movimiento alrededor de Didymos."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: En septiembre de 2022, la nave impactó contra Dimorphos, el miembro menor de un sistema binario de asteroides, y modificó su movimiento alrededor de Didymos.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Estos cuerpos conservan indicios de las condiciones en que se formó el sistema solar, pero una pequeña parte sigue órbitas que los llevan a las proximidades de la Tierra.",
+        "Al principio, un asteroide débilmente visible puede aparecer en pocas imágenes, que representan solo un tramo corto de su órbita.",
+        "Los programas de observación, el intercambio internacional de datos y las explicaciones públicas cuidadosas llaman menos la atención que las imágenes de una misión e…",
+        "En septiembre de 2022, la nave impactó contra Dimorphos, el miembro menor de un sistema binario de asteroides, y modificó su movimiento alrededor de Didymos."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Los programas de observación, el intercambio internacional de datos y las explicaciones públicas cuidadosas llaman menos la atención que las imágenes de una misión e…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Varias trayectorias futuras pueden ser compatibles con esas mediciones.",
+        "La etiqueta «cercano a la Tierra» describe una característica orbital, no una sentencia de peligro.",
+        "El éxito demostró que transferir impulso puede alterar una órbita en condiciones espaciales reales.",
+        "La comunicación del riesgo debe evitar dos errores opuestos: presentar cada acercamiento como una emergencia y despreciar los acontecimientos poco probables como si…"
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: La etiqueta «cercano a la Tierra» describe una característica orbital, no una sentencia de peligro.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Varias trayectorias futuras pueden ser compatibles con esas mediciones.",
+        "El éxito demostró que transferir impulso puede alterar una órbita en condiciones espaciales reales.",
+        "La comunicación del riesgo debe evitar dos errores opuestos: presentar cada acercamiento como una emergencia y despreciar los acontecimientos poco probables como si…",
+        "La etiqueta «cercano a la Tierra» describe una característica orbital, no una sentencia de peligro."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Varias trayectorias futuras pueden ser compatibles con esas mediciones.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

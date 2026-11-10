@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "C2",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-en-c2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "It would be easy to dismiss this contrast as hypocrisy.",
+        "At the end of an invented documentary called One Less Bottle, an audience applauds a teenager who has carried the same metal flask for three years.",
+        "This is the peculiar advantage of the perfect-consumer narrative.",
+        "Nor should the opposite argument be made too conveniently."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: At the end of an invented documentary called One Less Bottle, an audience applauds a teenager who has carried the same metal flask for three years.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "It would be easy to dismiss this contrast as hypocrisy.",
+        "This is the peculiar advantage of the perfect-consumer narrative.",
+        "Nor should the opposite argument be made too conveniently.",
+        "The more serious question is what the documentary asks us to infer from its example."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: It would be easy to dismiss this contrast as hypocrisy.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "Nor should the opposite argument be made too conveniently.",
+        "The more serious question is what the documentary asks us to infer from its example.",
+        "Some filmmakers defend simplification by invoking urgency: audiences must be moved before they can be informed.",
+        "This is the peculiar advantage of the perfect-consumer narrative."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: This is the peculiar advantage of the perfect-consumer narrative.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "The more serious question is what the documentary asks us to infer from its example.",
+        "Some filmmakers defend simplification by invoking urgency: audiences must be moved before they can be informed.",
+        "Nor should the opposite argument be made too conveniently.",
+        "The result might be less immediately gratifying than a shot of spotless sand at sunset."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: Nor should the opposite argument be made too conveniently.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "Some filmmakers defend simplification by invoking urgency: audiences must be moved before they can be informed.",
+        "The more serious question is what the documentary asks us to infer from its example.",
+        "The result might be less immediately gratifying than a shot of spotless sand at sunset.",
+        "At the end of an invented documentary called One Less Bottle, an audience applauds a teenager who has carried the same metal flask for three years."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: The more serious question is what the documentary asks us to infer from its example.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 6?",
+      "choices": [
+        "Some filmmakers defend simplification by invoking urgency: audiences must be moved before they can be informed.",
+        "The result might be less immediately gratifying than a shot of spotless sand at sunset.",
+        "At the end of an invented documentary called One Less Bottle, an audience applauds a teenager who has carried the same metal flask for three years.",
+        "It would be easy to dismiss this contrast as hypocrisy."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "Paragraph 6: Some filmmakers defend simplification by invoking urgency: audiences must be moved before they can be informed.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 7?",
+      "choices": [
+        "At the end of an invented documentary called One Less Bottle, an audience applauds a teenager who has carried the same metal flask for three years.",
+        "It would be easy to dismiss this contrast as hypocrisy.",
+        "This is the peculiar advantage of the perfect-consumer narrative.",
+        "The result might be less immediately gratifying than a shot of spotless sand at sunset."
+      ],
+      "answer": 3,
+      "sourceParagraph": 7,
+      "explanation": "Paragraph 7: The result might be less immediately gratifying than a shot of spotless sand at sunset.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "That would be satisfying and uninformative.",
+        "It produces visible protagonists and legible endings.",
+        "The moment is genuinely touching, not least because the teenager speaks without the polished certainty of the film's narrator.",
+        "To insist that only governments or manufacturers can act is to offer consumers an equally flattering absolution."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: The moment is genuinely touching, not least because the teenager speaks without the polished certainty of the film's narrator.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "It produces visible protagonists and legible endings.",
+        "That would be satisfying and uninformative.",
+        "To insist that only governments or manufacturers can act is to offer consumers an equally flattering absolution.",
+        "A metal flask is not automatically more responsible in every conceivable context; its material, manufacture, longevity and actual use matter."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: That would be satisfying and uninformative.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "It produces visible protagonists and legible endings.",
+        "To insist that only governments or manufacturers can act is to offer consumers an equally flattering absolution.",
+        "A metal flask is not automatically more responsible in every conceivable context; its material, manufacture, longevity and actual use matter.",
+        "There is truth in the claim that an emotionally inert documentary may change nothing."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: It produces visible protagonists and legible endings.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

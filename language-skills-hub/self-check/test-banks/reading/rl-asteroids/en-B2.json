@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-asteroids-en-b2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "The first challenge is discovery.",
+        "Headlines sometimes suggest that an asteroid “heading towards Earth” is about to cause disaster.",
+        "A recent case shows how this works in practice.",
+        "The second challenge is deciding what could be done if a genuinely threatening object were found."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Headlines sometimes suggest that an asteroid “heading towards Earth” is about to cause disaster.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "The first challenge is discovery.",
+        "A recent case shows how this works in practice.",
+        "The second challenge is deciding what could be done if a genuinely threatening object were found.",
+        "In the end, planetary defence is as much about communication as about engineering."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: The first challenge is discovery.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "The second challenge is deciding what could be done if a genuinely threatening object were found.",
+        "In the end, planetary defence is as much about communication as about engineering.",
+        "Headlines sometimes suggest that an asteroid “heading towards Earth” is about to cause disaster.",
+        "A recent case shows how this works in practice."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: A recent case shows how this works in practice.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "In the end, planetary defence is as much about communication as about engineering.",
+        "Headlines sometimes suggest that an asteroid “heading towards Earth” is about to cause disaster.",
+        "The second challenge is deciding what could be done if a genuinely threatening object were found.",
+        "The first challenge is discovery."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: The second challenge is deciding what could be done if a genuinely threatening object were found.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "Headlines sometimes suggest that an asteroid “heading towards Earth” is about to cause disaster.",
+        "In the end, planetary defence is as much about communication as about engineering.",
+        "The first challenge is discovery.",
+        "A recent case shows how this works in practice."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: In the end, planetary defence is as much about communication as about engineering.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "That phrase can be misleading.",
+        "Ground-based telescopes repeatedly photograph the sky, and computer programs look for points of light that change position.",
+        "In December 2024, astronomers discovered an asteroid called 2024 YR4, estimated at between 40 and 90 metres across.",
+        "In 2022, NASA's DART spacecraft deliberately collided with Dimorphos, which orbits a larger asteroid called Didymos."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: That phrase can be misleading.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "In December 2024, astronomers discovered an asteroid called 2024 YR4, estimated at between 40 and 90 metres across.",
+        "In 2022, NASA's DART spacecraft deliberately collided with Dimorphos, which orbits a larger asteroid called Didymos.",
+        "Researchers must explain what is known, what remains uncertain and why an updated prediction may differ from an earlier one.",
+        "Ground-based telescopes repeatedly photograph the sky, and computer programs look for points of light that change position."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Ground-based telescopes repeatedly photograph the sky, and computer programs look for points of light that change position.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "In 2022, NASA's DART spacecraft deliberately collided with Dimorphos, which orbits a larger asteroid called Didymos.",
+        "Researchers must explain what is known, what remains uncertain and why an updated prediction may differ from an earlier one.",
+        "In December 2024, astronomers discovered an asteroid called 2024 YR4, estimated at between 40 and 90 metres across.",
+        "That phrase can be misleading."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: In December 2024, astronomers discovered an asteroid called 2024 YR4, estimated at between 40 and 90 metres across.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "Researchers must explain what is known, what remains uncertain and why an updated prediction may differ from an earlier one.",
+        "In 2022, NASA's DART spacecraft deliberately collided with Dimorphos, which orbits a larger asteroid called Didymos.",
+        "That phrase can be misleading.",
+        "Ground-based telescopes repeatedly photograph the sky, and computer programs look for points of light that change position."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: In 2022, NASA's DART spacecraft deliberately collided with Dimorphos, which orbits a larger asteroid called Didymos.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "Researchers must explain what is known, what remains uncertain and why an updated prediction may differ from an earlier one.",
+        "That phrase can be misleading.",
+        "Ground-based telescopes repeatedly photograph the sky, and computer programs look for points of light that change position.",
+        "In December 2024, astronomers discovered an asteroid called 2024 YR4, estimated at between 40 and 90 metres across."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: Researchers must explain what is known, what remains uncertain and why an updated prediction may differ from an earlier one.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

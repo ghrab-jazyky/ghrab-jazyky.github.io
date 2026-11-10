@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-en-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Near the water, we see a blue plastic bag.",
+        "I am on holiday by the sea with my cousin Eva.",
+        "The woman in the café is called Rosa.",
+        "We walk along the beach for one hour."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: I am on holiday by the sea with my cousin Eva.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Near the water, we see a blue plastic bag.",
+        "The woman in the café is called Rosa.",
+        "We walk along the beach for one hour.",
+        "Later, we buy cold drinks."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Near the water, we see a blue plastic bag.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "We walk along the beach for one hour.",
+        "Later, we buy cold drinks.",
+        "Tomorrow, Eva wants to show her photos to Rosa.",
+        "The woman in the café is called Rosa."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: The woman in the café is called Rosa.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "Later, we buy cold drinks.",
+        "Tomorrow, Eva wants to show her photos to Rosa.",
+        "We walk along the beach for one hour.",
+        "I am on holiday by the sea with my cousin Eva."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: We walk along the beach for one hour.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "Tomorrow, Eva wants to show her photos to Rosa.",
+        "Later, we buy cold drinks.",
+        "I am on holiday by the sea with my cousin Eva.",
+        "Near the water, we see a blue plastic bag."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: Later, we buy cold drinks.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 6?",
+      "choices": [
+        "Tomorrow, Eva wants to show her photos to Rosa.",
+        "I am on holiday by the sea with my cousin Eva.",
+        "Near the water, we see a blue plastic bag.",
+        "The woman in the café is called Rosa."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "Paragraph 6: Tomorrow, Eva wants to show her photos to Rosa.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Eva says, “It is not our bag.” I say, “No, but it is near the sea.” We pick it up carefully.",
+        "She sees the bag and smiles.",
+        "We find six bottles, four cups and a small toy car.",
+        "It is a sunny morning."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: It is a sunny morning.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "She sees the bag and smiles.",
+        "We find six bottles, four cups and a small toy car.",
+        "Eva says, “It is not our bag.” I say, “No, but it is near the sea.” We pick it up carefully.",
+        "I use my own bottle, but Eva buys a drink in a plastic cup."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Eva says, “It is not our bag.” I say, “No, but it is near the sea.” We pick it up carefully.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "We find six bottles, four cups and a small toy car.",
+        "She sees the bag and smiles.",
+        "I use my own bottle, but Eva buys a drink in a plastic cup.",
+        "Maybe Rosa can put them on the café wall."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: She sees the bag and smiles.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "We find six bottles, four cups and a small toy car.",
+        "I use my own bottle, but Eva buys a drink in a plastic cup.",
+        "Maybe Rosa can put them on the café wall.",
+        "It is a sunny morning."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: We find six bottles, four cups and a small toy car.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

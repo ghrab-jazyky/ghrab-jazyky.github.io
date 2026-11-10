@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-en-a2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "I have a surprise: my course finishes next Friday, and I will travel home for a short visit.",
+        "Sorry I have not written for so long.",
+        "The exhibition is called “People at Work”.",
+        "We could take the bus at half past nine and have lunch afterwards."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Sorry I have not written for so long.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "I have a surprise: my course finishes next Friday, and I will travel home for a short visit.",
+        "The exhibition is called “People at Work”.",
+        "We could take the bus at half past nine and have lunch afterwards.",
+        "Sorry I have not written for so long."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: I have a surprise: my course finishes next Friday, and I will travel home for a short visit.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "We could take the bus at half past nine and have lunch afterwards.",
+        "Sorry I have not written for so long.",
+        "I have a surprise: my course finishes next Friday, and I will travel home for a short visit.",
+        "The exhibition is called “People at Work”."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: The exhibition is called “People at Work”.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "Sorry I have not written for so long.",
+        "I have a surprise: my course finishes next Friday, and I will travel home for a short visit.",
+        "We could take the bus at half past nine and have lunch afterwards.",
+        "The exhibition is called “People at Work”."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: We could take the bus at half past nine and have lunch afterwards.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "On Sunday morning, there is a photography exhibition at the old railway station.",
+        "Since September, I have been living with my aunt in Galway and attending a language course.",
+        "There are about forty photos of bakers, bus drivers, nurses and street musicians.",
+        "If the exhibition is full, we can go to the science museum instead."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Since September, I have been living with my aunt in Galway and attending a language course.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "On Sunday morning, there is a photography exhibition at the old railway station.",
+        "There are about forty photos of bakers, bus drivers, nurses and street musicians.",
+        "If the exhibition is full, we can go to the science museum instead.",
+        "Since September, I have been living with my aunt in Galway and attending a language course."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: On Sunday morning, there is a photography exhibition at the old railway station.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "If the exhibition is full, we can go to the science museum instead.",
+        "Since September, I have been living with my aunt in Galway and attending a language course.",
+        "On Sunday morning, there is a photography exhibition at the old railway station.",
+        "There are about forty photos of bakers, bus drivers, nurses and street musicians."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: There are about forty photos of bakers, bus drivers, nurses and street musicians.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "Since September, I have been living with my aunt in Galway and attending a language course.",
+        "On Sunday morning, there is a photography exhibition at the old railway station.",
+        "If the exhibition is full, we can go to the science museum instead.",
+        "There are about forty photos of bakers, bus drivers, nurses and street musicians."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: If the exhibition is full, we can go to the science museum instead.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "It opens at ten and the tickets cost four euros.",
+        "My aunt works at a hospital, so she often comes home late.",
+        "My favourite shows an old man who repairs bicycles in a tiny shop.",
+        "I would like to hear about your basketball team, but please do not feel you need to plan a perfect day."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: My aunt works at a hospital, so she often comes home late.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-a2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "It opens at ten and the tickets cost four euros.",
+        "My favourite shows an old man who repairs bicycles in a tiny shop.",
+        "I would like to hear about your basketball team, but please do not feel you need to plan a perfect day.",
+        "My aunt works at a hospital, so she often comes home late."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: It opens at ten and the tickets cost four euros.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

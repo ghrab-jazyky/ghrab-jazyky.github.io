@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-en-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "The film's director, Lena Ortiz, has an enviable eye for small details.",
+        "In the opening minutes of the fictional documentary The Blue Bin, a single sweet wrapper drifts across a spotless public square.",
+        "Ortiz is equally attentive to sound.",
+        "The most revealing interview takes place not in the square but at a town council desk."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: In the opening minutes of the fictional documentary The Blue Bin, a single sweet wrapper drifts across a spotless public square.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "The film's director, Lena Ortiz, has an enviable eye for small details.",
+        "Ortiz is equally attentive to sound.",
+        "The most revealing interview takes place not in the square but at a town council desk.",
+        "Just as that complexity becomes interesting, however, the narrative returns to the familiar figure of the careless consumer."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: The film's director, Lena Ortiz, has an enviable eye for small details.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "The most revealing interview takes place not in the square but at a town council desk.",
+        "Just as that complexity becomes interesting, however, the narrative returns to the familiar figure of the careless consumer.",
+        "A documentary need not resemble a council report.",
+        "Ortiz is equally attentive to sound."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: Ortiz is equally attentive to sound.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "Just as that complexity becomes interesting, however, the narrative returns to the familiar figure of the careless consumer.",
+        "A documentary need not resemble a council report.",
+        "The most revealing interview takes place not in the square but at a town council desk.",
+        "There is an illuminating moment after the credits when a volunteer admits that their first waste-free event generated more washing trips than expected."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: The most revealing interview takes place not in the square but at a town council desk.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "A documentary need not resemble a council report.",
+        "Just as that complexity becomes interesting, however, the narrative returns to the familiar figure of the careless consumer.",
+        "There is an illuminating moment after the credits when a volunteer admits that their first waste-free event generated more washing trips than expected.",
+        "In the opening minutes of the fictional documentary The Blue Bin, a single sweet wrapper drifts across a spotless public square."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: Just as that complexity becomes interesting, however, the narrative returns to the familiar figure of the careless consumer.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 6?",
+      "choices": [
+        "A documentary need not resemble a council report.",
+        "There is an illuminating moment after the credits when a volunteer admits that their first waste-free event generated more washing trips than expected.",
+        "In the opening minutes of the fictional documentary The Blue Bin, a single sweet wrapper drifts across a spotless public square.",
+        "The film's director, Lena Ortiz, has an enviable eye for small details."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "Paragraph 6: A documentary need not resemble a council report.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 7?",
+      "choices": [
+        "In the opening minutes of the fictional documentary The Blue Bin, a single sweet wrapper drifts across a spotless public square.",
+        "The film's director, Lena Ortiz, has an enviable eye for small details.",
+        "Ortiz is equally attentive to sound.",
+        "There is an illuminating moment after the credits when a volunteer admits that their first waste-free event generated more washing trips than expected."
+      ],
+      "answer": 3,
+      "sourceParagraph": 7,
+      "explanation": "Paragraph 7: There is an illuminating moment after the credits when a volunteer admits that their first waste-free event generated more washing trips than expected.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "An overhead shot reveals how quickly litter accumulates after a crowded concert; an almost silent sequence follows the night cleaners as they sort what can be recovered.",
+        "The clatter of glass in a recycling lorry, the hiss of a pressure washer and the rustle of bags being tied are mixed so precisely that the night shift acquires its o…",
+        "The camera follows it with the solemn attention normally reserved for a rare animal.",
+        "A facilities manager describes a proposed deposit scheme for reusable cups."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: The camera follows it with the solemn attention normally reserved for a rare animal.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "The clatter of glass in a recycling lorry, the hiss of a pressure washer and the rustle of bags being tied are mixed so precisely that the night shift acquires its o…",
+        "An overhead shot reveals how quickly litter accumulates after a crowded concert; an almost silent sequence follows the night cleaners as they sort what can be recovered.",
+        "A facilities manager describes a proposed deposit scheme for reusable cups.",
+        "A slow-motion shot of a teenager dropping a bottle is repeated while an ominous soundtrack swells."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: An overhead shot reveals how quickly litter accumulates after a crowded concert; an almost silent sequence follows the night cleaners as they sort what can be recovered.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "The clatter of glass in a recycling lorry, the hiss of a pressure washer and the rustle of bags being tied are mixed so precisely that the night shift acquires its o…",
+        "A facilities manager describes a proposed deposit scheme for reusable cups.",
+        "A slow-motion shot of a teenager dropping a bottle is repeated while an ominous soundtrack swells.",
+        "Film works through rhythm, character and visual surprise, and The Blue Bin would be unbearable if every moving scene were followed by a spreadsheet."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: The clatter of glass in a recycling lorry, the hiss of a pressure washer and the rustle of bags being tied are mixed so precisely that the night shift acquires its o…",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

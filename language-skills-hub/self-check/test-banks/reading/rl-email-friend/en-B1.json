@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "B1",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-en-b1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "I started helping at the workshop on Saturdays.",
+        "Hi Robin, Do you remember the little square behind our old school?",
+        "The workshop is in the old shoe shop where we once bought football boots.",
+        "This is why I am writing now: we are organising a small open day next month."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Hi Robin, Do you remember the little square behind our old school?",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "I started helping at the workshop on Saturdays.",
+        "The workshop is in the old shoe shop where we once bought football boots.",
+        "This is why I am writing now: we are organising a small open day next month.",
+        "I know that travelling here takes time and money, and I do not want you to feel guilty if you cannot come."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: I started helping at the workshop on Saturdays.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "This is why I am writing now: we are organising a small open day next month.",
+        "I know that travelling here takes time and money, and I do not want you to feel guilty if you cannot come.",
+        "Hi Robin, Do you remember the little square behind our old school?",
+        "The workshop is in the old shoe shop where we once bought football boots."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: The workshop is in the old shoe shop where we once bought football boots.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "I know that travelling here takes time and money, and I do not want you to feel guilty if you cannot come.",
+        "Hi Robin, Do you remember the little square behind our old school?",
+        "This is why I am writing now: we are organising a small open day next month.",
+        "I started helping at the workshop on Saturdays."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: This is why I am writing now: we are organising a small open day next month.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "Hi Robin, Do you remember the little square behind our old school?",
+        "I know that travelling here takes time and money, and I do not want you to feel guilty if you cannot come.",
+        "I started helping at the workshop on Saturdays.",
+        "The workshop is in the old shoe shop where we once bought football boots."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: I know that travelling here takes time and money, and I do not want you to feel guilty if you cannot come.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "We used to sit there after lessons and complain that nothing exciting ever happened in our neighbourhood.",
+        "At first I only made tea and carried boxes, because I was nervous about meeting new people.",
+        "Inside, there are long tables, boxes of tools and a wall of photos that people have brought from home.",
+        "Visitors can fix old objects, try simple art activities and share stories about the neighbourhood."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: We used to sit there after lessons and complain that nothing exciting ever happened in our neighbourhood.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Inside, there are long tables, boxes of tools and a wall of photos that people have brought from home.",
+        "Visitors can fix old objects, try simple art activities and share stories about the neighbourhood.",
+        "My bus pass is cheap, so I could visit you during the holidays.",
+        "At first I only made tea and carried boxes, because I was nervous about meeting new people."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: At first I only made tea and carried boxes, because I was nervous about meeting new people.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "Visitors can fix old objects, try simple art activities and share stories about the neighbourhood.",
+        "My bus pass is cheap, so I could visit you during the holidays.",
+        "Inside, there are long tables, boxes of tools and a wall of photos that people have brought from home.",
+        "We used to sit there after lessons and complain that nothing exciting ever happened in our neighbourhood."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: Inside, there are long tables, boxes of tools and a wall of photos that people have brought from home.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "My bus pass is cheap, so I could visit you during the holidays.",
+        "Visitors can fix old objects, try simple art activities and share stories about the neighbourhood.",
+        "We used to sit there after lessons and complain that nothing exciting ever happened in our neighbourhood.",
+        "At first I only made tea and carried boxes, because I was nervous about meeting new people."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: Visitors can fix old objects, try simple art activities and share stories about the neighbourhood.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "My bus pass is cheap, so I could visit you during the holidays.",
+        "We used to sit there after lessons and complain that nothing exciting ever happened in our neighbourhood.",
+        "At first I only made tea and carried boxes, because I was nervous about meeting new people.",
+        "Inside, there are long tables, boxes of tools and a wall of photos that people have brought from home."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: My bus pass is cheap, so I could visit you during the holidays.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

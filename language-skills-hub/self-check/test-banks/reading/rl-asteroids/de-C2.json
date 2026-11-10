@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "de",
+  "level": "C2",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-asteroids-de-c2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Bereits die Beobachtung ist selektiv.",
+        "Planetare Verteidigung wird häufig als Kampf der Menschheit gegen ein feindseliges Universum inszeniert.",
+        "Das DART-Experiment von 2022 bildete einen aufschlussreichen Gegenpol zu filmreifen Weltuntergangsszenarien.",
+        "Politisch ist die Lage zusätzlich schwierig: Mittel zur Vorsorge gegen extrem seltene Katastrophen konkurrieren mit unmittelbaren gesellschaftlichen Bedürfnissen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Planetare Verteidigung wird häufig als Kampf der Menschheit gegen ein feindseliges Universum inszeniert.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-c2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Bereits die Beobachtung ist selektiv.",
+        "Das DART-Experiment von 2022 bildete einen aufschlussreichen Gegenpol zu filmreifen Weltuntergangsszenarien.",
+        "Politisch ist die Lage zusätzlich schwierig: Mittel zur Vorsorge gegen extrem seltene Katastrophen konkurrieren mit unmittelbaren gesellschaftlichen Bedürfnissen.",
+        "Planetare Verteidigung wird häufig als Kampf der Menschheit gegen ein feindseliges Universum inszeniert."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Bereits die Beobachtung ist selektiv.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-c2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Politisch ist die Lage zusätzlich schwierig: Mittel zur Vorsorge gegen extrem seltene Katastrophen konkurrieren mit unmittelbaren gesellschaftlichen Bedürfnissen.",
+        "Planetare Verteidigung wird häufig als Kampf der Menschheit gegen ein feindseliges Universum inszeniert.",
+        "Bereits die Beobachtung ist selektiv.",
+        "Das DART-Experiment von 2022 bildete einen aufschlussreichen Gegenpol zu filmreifen Weltuntergangsszenarien."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Das DART-Experiment von 2022 bildete einen aufschlussreichen Gegenpol zu filmreifen Weltuntergangsszenarien.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-c2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Planetare Verteidigung wird häufig als Kampf der Menschheit gegen ein feindseliges Universum inszeniert.",
+        "Bereits die Beobachtung ist selektiv.",
+        "Politisch ist die Lage zusätzlich schwierig: Mittel zur Vorsorge gegen extrem seltene Katastrophen konkurrieren mit unmittelbaren gesellschaftlichen Bedürfnissen.",
+        "Das DART-Experiment von 2022 bildete einen aufschlussreichen Gegenpol zu filmreifen Weltuntergangsszenarien."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Politisch ist die Lage zusätzlich schwierig: Mittel zur Vorsorge gegen extrem seltene Katastrophen konkurrieren mit unmittelbaren gesellschaftlichen Bedürfnissen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-c2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Optische Himmelsdurchmusterungen erfassen bevorzugt Objekte, die hell genug und günstig positioniert sind.",
+        "Diese Metapher funktioniert im Kino, verstellt jedoch den Blick auf die mühsame Erkenntnisarbeit, von der jeder realistische Eingriff abhängt.",
+        "Die Sonde traf Dimorphos, einen Mond des Asteroiden Didymos, und änderte nachweisbar die Umlaufzeit von Dimorphos.",
+        "Gleichzeitig bleibt der Nutzen gelungener Vorbereitung meist unsichtbar."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Diese Metapher funktioniert im Kino, verstellt jedoch den Blick auf die mühsame Erkenntnisarbeit, von der jeder realistische Eingriff abhängt.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-c2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Optische Himmelsdurchmusterungen erfassen bevorzugt Objekte, die hell genug und günstig positioniert sind.",
+        "Die Sonde traf Dimorphos, einen Mond des Asteroiden Didymos, und änderte nachweisbar die Umlaufzeit von Dimorphos.",
+        "Gleichzeitig bleibt der Nutzen gelungener Vorbereitung meist unsichtbar.",
+        "Diese Metapher funktioniert im Kino, verstellt jedoch den Blick auf die mühsame Erkenntnisarbeit, von der jeder realistische Eingriff abhängt."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Optische Himmelsdurchmusterungen erfassen bevorzugt Objekte, die hell genug und günstig positioniert sind.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-c2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Gleichzeitig bleibt der Nutzen gelungener Vorbereitung meist unsichtbar.",
+        "Diese Metapher funktioniert im Kino, verstellt jedoch den Blick auf die mühsame Erkenntnisarbeit, von der jeder realistische Eingriff abhängt.",
+        "Optische Himmelsdurchmusterungen erfassen bevorzugt Objekte, die hell genug und günstig positioniert sind.",
+        "Die Sonde traf Dimorphos, einen Mond des Asteroiden Didymos, und änderte nachweisbar die Umlaufzeit von Dimorphos."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Die Sonde traf Dimorphos, einen Mond des Asteroiden Didymos, und änderte nachweisbar die Umlaufzeit von Dimorphos.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-c2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Diese Metapher funktioniert im Kino, verstellt jedoch den Blick auf die mühsame Erkenntnisarbeit, von der jeder realistische Eingriff abhängt.",
+        "Optische Himmelsdurchmusterungen erfassen bevorzugt Objekte, die hell genug und günstig positioniert sind.",
+        "Gleichzeitig bleibt der Nutzen gelungener Vorbereitung meist unsichtbar.",
+        "Die Sonde traf Dimorphos, einen Mond des Asteroiden Didymos, und änderte nachweisbar die Umlaufzeit von Dimorphos."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Gleichzeitig bleibt der Nutzen gelungener Vorbereitung meist unsichtbar.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-c2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Dunklere Körper werden leichter übersehen.",
+        "Ein Asteroid ist weder ein Gegner noch eine Warnung der Natur, sondern ein physikalischer Körper, dessen Bewegung sich untersuchen lässt.",
+        "Es handelte sich um den Nachweis einer kinetischen Ablenkung, nicht um einen universellen Schutzschild.",
+        "Absolute Sicherheit zu versprechen wäre unverantwortlich; perfekte Vorhersagen abzuwarten, bevor in Beobachtung investiert wird, wäre ebenso unklug."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Ein Asteroid ist weder ein Gegner noch eine Warnung der Natur, sondern ein physikalischer Körper, dessen Bewegung sich untersuchen lässt.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-c2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Dunklere Körper werden leichter übersehen.",
+        "Es handelte sich um den Nachweis einer kinetischen Ablenkung, nicht um einen universellen Schutzschild.",
+        "Absolute Sicherheit zu versprechen wäre unverantwortlich; perfekte Vorhersagen abzuwarten, bevor in Beobachtung investiert wird, wäre ebenso unklug.",
+        "Ein Asteroid ist weder ein Gegner noch eine Warnung der Natur, sondern ein physikalischer Körper, dessen Bewegung sich untersuchen lässt."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Dunklere Körper werden leichter übersehen.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

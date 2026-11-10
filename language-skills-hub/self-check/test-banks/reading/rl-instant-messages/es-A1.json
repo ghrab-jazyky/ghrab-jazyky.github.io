@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "es",
+  "level": "A1",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-instant-messages-es-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Lucía: ¡Qué buena idea!",
+        "Lucas: ¡Hola a todos!",
+        "Diego: A las doce me va bien.",
+        "Lucas: ¡Perfecto!"
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Lucas: ¡Hola a todos!",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Lucía: ¡Qué buena idea!",
+        "Diego: A las doce me va bien.",
+        "Lucas: ¡Perfecto!",
+        "Lucas: ¡Hola a todos!"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Lucía: ¡Qué buena idea!",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Lucas: ¡Perfecto!",
+        "Lucas: ¡Hola a todos!",
+        "Lucía: ¡Qué buena idea!",
+        "Diego: A las doce me va bien."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Diego: A las doce me va bien.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Lucas: ¡Hola a todos!",
+        "Lucía: ¡Qué buena idea!",
+        "Lucas: ¡Perfecto!",
+        "Diego: A las doce me va bien."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Lucas: ¡Perfecto!",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "El sábado por la mañana tengo clase de piano, pero termina a las once.",
+        "El sábado va a hacer sol.",
+        "Voy en autobús: el número 14 para en la puerta del parque.",
+        "A las doce en la cafetería de la puerta verde."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: El sábado va a hacer sol.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "El sábado por la mañana tengo clase de piano, pero termina a las once.",
+        "Voy en autobús: el número 14 para en la puerta del parque.",
+        "A las doce en la cafetería de la puerta verde.",
+        "El sábado va a hacer sol."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: El sábado por la mañana tengo clase de piano, pero termina a las once.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "A las doce en la cafetería de la puerta verde.",
+        "El sábado va a hacer sol.",
+        "El sábado por la mañana tengo clase de piano, pero termina a las once.",
+        "Voy en autobús: el número 14 para en la puerta del parque."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Voy en autobús: el número 14 para en la puerta del parque.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "El sábado va a hacer sol.",
+        "El sábado por la mañana tengo clase de piano, pero termina a las once.",
+        "A las doce en la cafetería de la puerta verde.",
+        "Voy en autobús: el número 14 para en la puerta del parque."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: A las doce en la cafetería de la puerta verde.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "¿Quedamos a las doce?",
+        "¿Hacemos un pícnic en el Parque del Río?",
+        "El viaje dura veinte minutos.",
+        "No lleguéis tarde, porque mi madre solo puede quedarse con nosotros hasta las tres."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: ¿Hacemos un pícnic en el Parque del Río?",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "¿Quedamos a las doce?",
+        "El viaje dura veinte minutos.",
+        "No lleguéis tarde, porque mi madre solo puede quedarse con nosotros hasta las tres.",
+        "¿Hacemos un pícnic en el Parque del Río?"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: ¿Quedamos a las doce?",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

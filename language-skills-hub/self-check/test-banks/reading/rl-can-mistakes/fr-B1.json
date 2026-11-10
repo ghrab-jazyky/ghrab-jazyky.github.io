@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "fr",
+  "level": "B1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-fr-b1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Un après-midi, sa professeure de musique a demandé à la classe d’apprendre un petit morceau.",
+        "Quand Lara est entrée au collège, elle était fière d’avoir de bonnes notes.",
+        "Une semaine plus tard, elle a joué tout le morceau sans s’arrêter.",
+        "Les notes sont encore importantes pour Lara."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Quand Lara est entrée au collège, elle était fière d’avoir de bonnes notes.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Un après-midi, sa professeure de musique a demandé à la classe d’apprendre un petit morceau.",
+        "Une semaine plus tard, elle a joué tout le morceau sans s’arrêter.",
+        "Les notes sont encore importantes pour Lara.",
+        "Quand Lara est entrée au collège, elle était fière d’avoir de bonnes notes."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Un après-midi, sa professeure de musique a demandé à la classe d’apprendre un petit morceau.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Les notes sont encore importantes pour Lara.",
+        "Quand Lara est entrée au collège, elle était fière d’avoir de bonnes notes.",
+        "Un après-midi, sa professeure de musique a demandé à la classe d’apprendre un petit morceau.",
+        "Une semaine plus tard, elle a joué tout le morceau sans s’arrêter."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Une semaine plus tard, elle a joué tout le morceau sans s’arrêter.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Quand Lara est entrée au collège, elle était fière d’avoir de bonnes notes.",
+        "Un après-midi, sa professeure de musique a demandé à la classe d’apprendre un petit morceau.",
+        "Les notes sont encore importantes pour Lara.",
+        "Une semaine plus tard, elle a joué tout le morceau sans s’arrêter."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Les notes sont encore importantes pour Lara.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Lara a fait plusieurs erreurs devant les autres.",
+        "Elle aimait montrer ses résultats à ses parents.",
+        "Cette expérience n’a pas fait d’elle une musicienne exceptionnelle, mais elle a changé sa réaction face aux difficultés.",
+        "Mais elle ne considère plus chaque erreur comme la preuve d’un échec."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Elle aimait montrer ses résultats à ses parents.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Lara a fait plusieurs erreurs devant les autres.",
+        "Cette expérience n’a pas fait d’elle une musicienne exceptionnelle, mais elle a changé sa réaction face aux difficultés.",
+        "Mais elle ne considère plus chaque erreur comme la preuve d’un échec.",
+        "Elle aimait montrer ses résultats à ses parents."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Lara a fait plusieurs erreurs devant les autres.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Mais elle ne considère plus chaque erreur comme la preuve d’un échec.",
+        "Elle aimait montrer ses résultats à ses parents.",
+        "Lara a fait plusieurs erreurs devant les autres.",
+        "Cette expérience n’a pas fait d’elle une musicienne exceptionnelle, mais elle a changé sa réaction face aux difficultés."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Cette expérience n’a pas fait d’elle une musicienne exceptionnelle, mais elle a changé sa réaction face aux difficultés.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Elle aimait montrer ses résultats à ses parents.",
+        "Lara a fait plusieurs erreurs devant les autres.",
+        "Mais elle ne considère plus chaque erreur comme la preuve d’un échec.",
+        "Cette expérience n’a pas fait d’elle une musicienne exceptionnelle, mais elle a changé sa réaction face aux difficultés."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Mais elle ne considère plus chaque erreur comme la preuve d’un échec.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Au lieu de lui demander de jouer plus vite, la professeure lui a conseillé de travailler seulement quatre mesures difficiles.",
+        "Cependant, elle a bientôt commencé à éviter les matières où elle se sentait moins à l’aise.",
+        "Elle a commencé à se demander : « Qu’est-ce que je pourrais faire autrement ? » plutôt que : « Est-ce que je suis douée ? »",
+        "Parfois, progresser, c’est simplement comprendre ce qu’il faut travailler davantage."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Cependant, elle a bientôt commencé à éviter les matières où elle se sentait moins à l’aise.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Au lieu de lui demander de jouer plus vite, la professeure lui a conseillé de travailler seulement quatre mesures difficiles.",
+        "Elle a commencé à se demander : « Qu’est-ce que je pourrais faire autrement ? » plutôt que : « Est-ce que je suis douée ? »",
+        "Parfois, progresser, c’est simplement comprendre ce qu’il faut travailler davantage.",
+        "Cependant, elle a bientôt commencé à éviter les matières où elle se sentait moins à l’aise."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Au lieu de lui demander de jouer plus vite, la professeure lui a conseillé de travailler seulement quatre mesures difficiles.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

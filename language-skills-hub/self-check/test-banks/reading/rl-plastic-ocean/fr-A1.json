@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "fr",
+  "level": "A1",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-fr-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "À côté d’un banc, nous voyons un sac en plastique jaune.",
+        "Aujourd’hui, je suis à la plage avec mon amie Zoé.",
+        "Plus tard, nous achetons des fruits.",
+        "Zoé dit : « Ce n’est pas notre sac. » Je réponds : « Oui, mais il est près de l’eau. » Nous le ramassons avec prudence."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Aujourd’hui, je suis à la plage avec mon amie Zoé.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "À côté d’un banc, nous voyons un sac en plastique jaune.",
+        "Plus tard, nous achetons des fruits.",
+        "Aujourd’hui, je suis à la plage avec mon amie Zoé.",
+        "J’ai ma bouteille d’eau de la maison."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: À côté d’un banc, nous voyons un sac en plastique jaune.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Aujourd’hui, je suis à la plage avec mon amie Zoé.",
+        "À côté d’un banc, nous voyons un sac en plastique jaune.",
+        "Il fait beau.",
+        "Plus tard, nous achetons des fruits."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Plus tard, nous achetons des fruits.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Zoé dit : « Ce n’est pas notre sac. » Je réponds : « Oui, mais il est près de l’eau. » Nous le ramassons avec prudence.",
+        "J’ai ma bouteille d’eau de la maison.",
+        "Il fait beau.",
+        "Il y a une poubelle devant le petit café."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Il fait beau.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "J’ai ma bouteille d’eau de la maison.",
+        "Zoé dit : « Ce n’est pas notre sac. » Je réponds : « Oui, mais il est près de l’eau. » Nous le ramassons avec prudence.",
+        "Il fait beau.",
+        "Zoé garde son petit emballage pour le mettre à la poubelle."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Zoé dit : « Ce n’est pas notre sac. » Je réponds : « Oui, mais il est près de l’eau. » Nous le ramassons avec prudence.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "J’ai ma bouteille d’eau de la maison.",
+        "Il fait beau.",
+        "Zoé dit : « Ce n’est pas notre sac. » Je réponds : « Oui, mais il est près de l’eau. » Nous le ramassons avec prudence.",
+        "Nous avons de l’eau et des sandwichs dans nos sacs."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: J’ai ma bouteille d’eau de la maison.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Il y a une poubelle devant le petit café.",
+        "Zoé garde son petit emballage pour le mettre à la poubelle.",
+        "À côté d’un banc, nous voyons un sac en plastique jaune.",
+        "Nous avons de l’eau et des sandwichs dans nos sacs."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Nous avons de l’eau et des sandwichs dans nos sacs.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Zoé garde son petit emballage pour le mettre à la poubelle.",
+        "Nous avons de l’eau et des sandwichs dans nos sacs.",
+        "Il y a une poubelle devant le petit café.",
+        "Nous ne pouvons pas nettoyer toute la plage."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Il y a une poubelle devant le petit café.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Nous avons de l’eau et des sandwichs dans nos sacs.",
+        "Zoé garde son petit emballage pour le mettre à la poubelle.",
+        "Il y a une poubelle devant le petit café.",
+        "Nous voulons marcher près de la mer."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Zoé garde son petit emballage pour le mettre à la poubelle.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Nous voulons marcher près de la mer.",
+        "À côté d’un banc, nous voyons un sac en plastique jaune.",
+        "Nous ne pouvons pas nettoyer toute la plage.",
+        "Zoé dit : « Ce n’est pas notre sac. » Je réponds : « Oui, mais il est près de l’eau. » Nous le ramassons avec prudence."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Nous voulons marcher près de la mer.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

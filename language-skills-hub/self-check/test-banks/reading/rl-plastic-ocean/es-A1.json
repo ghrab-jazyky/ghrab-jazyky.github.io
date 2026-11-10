@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "es",
+  "level": "A1",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-es-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Cerca de un banco vemos una bolsa de plástico verde.",
+        "Estoy en la playa con mi primo Nico.",
+        "Después compramos fruta.",
+        "Nico dice: «No es nuestra»."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Estoy en la playa con mi primo Nico.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Cerca de un banco vemos una bolsa de plástico verde.",
+        "Después compramos fruta.",
+        "Estoy en la playa con mi primo Nico.",
+        "Yo llevo mi botella de casa."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Cerca de un banco vemos una bolsa de plástico verde.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Estoy en la playa con mi primo Nico.",
+        "Cerca de un banco vemos una bolsa de plástico verde.",
+        "Es sábado y hace sol.",
+        "Después compramos fruta."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Después compramos fruta.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Nico dice: «No es nuestra».",
+        "Yo llevo mi botella de casa.",
+        "Es sábado y hace sol.",
+        "Yo respondo: «Sí, pero está muy cerca del agua»."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Es sábado y hace sol.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Yo llevo mi botella de casa.",
+        "Nico dice: «No es nuestra».",
+        "Es sábado y hace sol.",
+        "Nico compra una bebida y guarda el vaso para tirarlo después."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Nico dice: «No es nuestra».",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Yo llevo mi botella de casa.",
+        "Es sábado y hace sol.",
+        "Nico dice: «No es nuestra».",
+        "Tenemos agua y bocadillos en las mochilas."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Yo llevo mi botella de casa.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Yo respondo: «Sí, pero está muy cerca del agua».",
+        "Nico compra una bebida y guarda el vaso para tirarlo después.",
+        "La recogemos con cuidado.",
+        "Tenemos agua y bocadillos en las mochilas."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Tenemos agua y bocadillos en las mochilas.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Nico compra una bebida y guarda el vaso para tirarlo después.",
+        "Tenemos agua y bocadillos en las mochilas.",
+        "Yo respondo: «Sí, pero está muy cerca del agua».",
+        "La playa no está completamente limpia, pero nuestro sitio está mejor."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Yo respondo: «Sí, pero está muy cerca del agua».",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Tenemos agua y bocadillos en las mochilas.",
+        "Nico compra una bebida y guarda el vaso para tirarlo después.",
+        "Yo respondo: «Sí, pero está muy cerca del agua».",
+        "Queremos pasear y hacer fotos del mar."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Nico compra una bebida y guarda el vaso para tirarlo después.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Queremos pasear y hacer fotos del mar.",
+        "La recogemos con cuidado.",
+        "La playa no está completamente limpia, pero nuestro sitio está mejor.",
+        "Hay una papelera al lado del quiosco."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Queremos pasear y hacer fotos del mar.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

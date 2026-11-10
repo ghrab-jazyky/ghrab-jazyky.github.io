@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "de",
+  "level": "B2",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-de-b2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Das änderte sich, als meine Nachbarin mich zu einem Bürgerradio einlud.",
+        "Hallo Alex, ich schulde dir eine richtige Nachricht statt eines weiteren Fotos mit fröhlicher Bildunterschrift.",
+        "Letzte Woche fand ich unser Foto vom Ende der Prüfungen.",
+        "Darum lade ich dich zu unserem Erzählabend am zweiten Samstag im Juni ein."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Hallo Alex, ich schulde dir eine richtige Nachricht statt eines weiteren Fotos mit fröhlicher Bildunterschrift.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Das änderte sich, als meine Nachbarin mich zu einem Bürgerradio einlud.",
+        "Letzte Woche fand ich unser Foto vom Ende der Prüfungen.",
+        "Darum lade ich dich zu unserem Erzählabend am zweiten Samstag im Juni ein.",
+        "Hallo Alex, ich schulde dir eine richtige Nachricht statt eines weiteren Fotos mit fröhlicher Bildunterschrift."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Das änderte sich, als meine Nachbarin mich zu einem Bürgerradio einlud.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Darum lade ich dich zu unserem Erzählabend am zweiten Samstag im Juni ein.",
+        "Hallo Alex, ich schulde dir eine richtige Nachricht statt eines weiteren Fotos mit fröhlicher Bildunterschrift.",
+        "Das änderte sich, als meine Nachbarin mich zu einem Bürgerradio einlud.",
+        "Letzte Woche fand ich unser Foto vom Ende der Prüfungen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Letzte Woche fand ich unser Foto vom Ende der Prüfungen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Hallo Alex, ich schulde dir eine richtige Nachricht statt eines weiteren Fotos mit fröhlicher Bildunterschrift.",
+        "Das änderte sich, als meine Nachbarin mich zu einem Bürgerradio einlud.",
+        "Darum lade ich dich zu unserem Erzählabend am zweiten Samstag im Juni ein.",
+        "Letzte Woche fand ich unser Foto vom Ende der Prüfungen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Darum lade ich dich zu unserem Erzählabend am zweiten Samstag im Juni ein.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Eigentlich sollte ich nur Geräte tragen, bald nahm ich aber Interviews mit Menschen auf, die neu in der Stadt waren.",
+        "Als ich für mein Austauschjahr nach Rotterdam kam, dachte ich, jede Woche würde sich wie Urlaub anfühlen.",
+        "Fast hätte ich es mit einem einfachen „Weißt du noch?“ und einem lachenden Emoji geschickt.",
+        "Du müsstest nicht auftreten oder vor Leuten sprechen; wir könnten einfach zuhören und am nächsten Morgen die Stadt erkunden."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Als ich für mein Austauschjahr nach Rotterdam kam, dachte ich, jede Woche würde sich wie Urlaub anfühlen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Eigentlich sollte ich nur Geräte tragen, bald nahm ich aber Interviews mit Menschen auf, die neu in der Stadt waren.",
+        "Fast hätte ich es mit einem einfachen „Weißt du noch?“ und einem lachenden Emoji geschickt.",
+        "Du müsstest nicht auftreten oder vor Leuten sprechen; wir könnten einfach zuhören und am nächsten Morgen die Stadt erkunden.",
+        "Als ich für mein Austauschjahr nach Rotterdam kam, dachte ich, jede Woche würde sich wie Urlaub anfühlen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Eigentlich sollte ich nur Geräte tragen, bald nahm ich aber Interviews mit Menschen auf, die neu in der Stadt waren.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Du müsstest nicht auftreten oder vor Leuten sprechen; wir könnten einfach zuhören und am nächsten Morgen die Stadt erkunden.",
+        "Als ich für mein Austauschjahr nach Rotterdam kam, dachte ich, jede Woche würde sich wie Urlaub anfühlen.",
+        "Eigentlich sollte ich nur Geräte tragen, bald nahm ich aber Interviews mit Menschen auf, die neu in der Stadt waren.",
+        "Fast hätte ich es mit einem einfachen „Weißt du noch?“ und einem lachenden Emoji geschickt."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Fast hätte ich es mit einem einfachen „Weißt du noch?“ und einem lachenden Emoji geschickt.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Als ich für mein Austauschjahr nach Rotterdam kam, dachte ich, jede Woche würde sich wie Urlaub anfühlen.",
+        "Eigentlich sollte ich nur Geräte tragen, bald nahm ich aber Interviews mit Menschen auf, die neu in der Stadt waren.",
+        "Du müsstest nicht auftreten oder vor Leuten sprechen; wir könnten einfach zuhören und am nächsten Morgen die Stadt erkunden.",
+        "Fast hätte ich es mit einem einfachen „Weißt du noch?“ und einem lachenden Emoji geschickt."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Du müsstest nicht auftreten oder vor Leuten sprechen; wir könnten einfach zuhören und am nächsten Morgen die Stadt erkunden.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Eine Frau erzählte, dass sich das Lernen der Buslinien angefühlt habe, als entschlüssle sie eine Geheimsprache.",
+        "Die Stadt ist tatsächlich großartig: überall Radwege, ungewöhnliche Gebäude und ein Markt, auf dem ich vor dem Frühstück fünf Sprachen höre.",
+        "Dann fiel mir auf, dass ich gar nicht wusste, wie dein erstes Studienjahr lief.",
+        "Auf meinem Sofa ist Platz, die Zugfahrt müsstest du allerdings selbst bezahlen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Die Stadt ist tatsächlich großartig: überall Radwege, ungewöhnliche Gebäude und ein Markt, auf dem ich vor dem Frühstück fünf Sprachen höre.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Eine Frau erzählte, dass sich das Lernen der Buslinien angefühlt habe, als entschlüssle sie eine Geheimsprache.",
+        "Dann fiel mir auf, dass ich gar nicht wusste, wie dein erstes Studienjahr lief.",
+        "Auf meinem Sofa ist Platz, die Zugfahrt müsstest du allerdings selbst bezahlen.",
+        "Die Stadt ist tatsächlich großartig: überall Radwege, ungewöhnliche Gebäude und ein Markt, auf dem ich vor dem Frühstück fünf Sprachen höre."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Eine Frau erzählte, dass sich das Lernen der Buslinien angefühlt habe, als entschlüssle sie eine Geheimsprache.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

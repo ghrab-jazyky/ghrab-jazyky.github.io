@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "de",
+  "level": "A2",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-asteroids-de-a2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Nina war überrascht, dass einige Asteroiden der Erde nahekommen.",
+        "Letzten Freitag besuchte Nina die Weltraum-AG ihrer Schule.",
+        "Zum Schluss sah die Gruppe einen kurzen Film über die Raumsonde DART.",
+        "Wissenschaftler entdecken sie mit Teleskopen und untersuchen ihre Bahnen mit Computern."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Letzten Freitag besuchte Nina die Weltraum-AG ihrer Schule.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Nina war überrascht, dass einige Asteroiden der Erde nahekommen.",
+        "Zum Schluss sah die Gruppe einen kurzen Film über die Raumsonde DART.",
+        "Letzten Freitag besuchte Nina die Weltraum-AG ihrer Schule.",
+        "Im Jahr 2022 traf sie absichtlich den kleinen Asteroidenmond Dimorphos."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Nina war überrascht, dass einige Asteroiden der Erde nahekommen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Letzten Freitag besuchte Nina die Weltraum-AG ihrer Schule.",
+        "Nina war überrascht, dass einige Asteroiden der Erde nahekommen.",
+        "Die Schülerinnen und Schüler sahen Fotos von Asteroiden an.",
+        "Zum Schluss sah die Gruppe einen kurzen Film über die Raumsonde DART."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Zum Schluss sah die Gruppe einen kurzen Film über die Raumsonde DART.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Wissenschaftler entdecken sie mit Teleskopen und untersuchen ihre Bahnen mit Computern.",
+        "Im Jahr 2022 traf sie absichtlich den kleinen Asteroidenmond Dimorphos.",
+        "Die Schülerinnen und Schüler sahen Fotos von Asteroiden an.",
+        "Wenn sie ein neues Objekt finden, beobachten sie es immer wieder."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Die Schülerinnen und Schüler sahen Fotos von Asteroiden an.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Im Jahr 2022 traf sie absichtlich den kleinen Asteroidenmond Dimorphos.",
+        "Wissenschaftler entdecken sie mit Teleskopen und untersuchen ihre Bahnen mit Computern.",
+        "Die Schülerinnen und Schüler sahen Fotos von Asteroiden an.",
+        "Nach diesem Test brauchte Dimorphos weniger Zeit für eine Runde um einen größeren Asteroiden."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Wissenschaftler entdecken sie mit Teleskopen und untersuchen ihre Bahnen mit Computern.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Im Jahr 2022 traf sie absichtlich den kleinen Asteroidenmond Dimorphos.",
+        "Die Schülerinnen und Schüler sahen Fotos von Asteroiden an.",
+        "Wissenschaftler entdecken sie mit Teleskopen und untersuchen ihre Bahnen mit Computern.",
+        "Ihre Lehrerin erklärte, dass Asteroiden Stücke aus Stein oder Metall sind, die um die Sonne kreisen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Im Jahr 2022 traf sie absichtlich den kleinen Asteroidenmond Dimorphos.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Wenn sie ein neues Objekt finden, beobachten sie es immer wieder.",
+        "Nach diesem Test brauchte Dimorphos weniger Zeit für eine Runde um einen größeren Asteroiden.",
+        "Mit mehr Beobachtungen können sie besser berechnen, wohin es fliegt.",
+        "Ihre Lehrerin erklärte, dass Asteroiden Stücke aus Stein oder Metall sind, die um die Sonne kreisen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Ihre Lehrerin erklärte, dass Asteroiden Stücke aus Stein oder Metall sind, die um die Sonne kreisen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Nach diesem Test brauchte Dimorphos weniger Zeit für eine Runde um einen größeren Asteroiden.",
+        "Ihre Lehrerin erklärte, dass Asteroiden Stücke aus Stein oder Metall sind, die um die Sonne kreisen.",
+        "Wenn sie ein neues Objekt finden, beobachten sie es immer wieder.",
+        "Nina fand es erstaunlich, dass eine Raumsonde einem Weltraumstein einen kleinen Stoß geben kann."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Wenn sie ein neues Objekt finden, beobachten sie es immer wieder.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Ihre Lehrerin erklärte, dass Asteroiden Stücke aus Stein oder Metall sind, die um die Sonne kreisen.",
+        "Nach diesem Test brauchte Dimorphos weniger Zeit für eine Runde um einen größeren Asteroiden.",
+        "Wenn sie ein neues Objekt finden, beobachten sie es immer wieder.",
+        "Die meisten befinden sich zwischen Mars und Jupiter im Asteroidengürtel."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Nach diesem Test brauchte Dimorphos weniger Zeit für eine Runde um einen größeren Asteroiden.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-de-a2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Die meisten befinden sich zwischen Mars und Jupiter im Asteroidengürtel.",
+        "Mit mehr Beobachtungen können sie besser berechnen, wohin es fliegt.",
+        "Nina fand es erstaunlich, dass eine Raumsonde einem Weltraumstein einen kleinen Stoß geben kann.",
+        "Die Lehrerin sagte: Der Erde nahezukommen bedeutet nicht, mit ihr zusammenzustoßen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Die meisten befinden sich zwischen Mars und Jupiter im Asteroidengürtel.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

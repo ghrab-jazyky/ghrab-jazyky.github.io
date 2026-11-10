@@ -49,7 +49,7 @@ test('R33 unapproved independent B1/B2 content keeps original approved R31 untou
 test('R33 B1 and B2 banks cannot be mixed with another CEFR variant',()=>{
  assert.throws(()=>draft.validate(bankB1,practiceB2,hash),/does not match this bank level/);
  assert.throws(()=>draft.validate(bankB2,practiceB1,hash),/does not match this bank level/);
- assert.throws(()=>draft.validate({...bankB1,level:'A2'},practiceB1,hash),/supports only/);
+ assert.throws(()=>draft.validate({...bankB1,level:'A2'},practiceB1,hash),/supports only|explicitly unreviewed/);
  assert.throws(()=>draft.validate({...bankB1,published:true},practiceB1,hash),/teacher approval/);
  assert.throws(()=>draft.validate({...bankB1,status:'APPROVED'},practiceB1,hash),/teacher approval/);
  assert.throws(()=>draft.validate(bankB1,practiceB1,'0'.repeat(64)),/changed/);
@@ -78,10 +78,10 @@ test('R33 draft preview selects level from URL but never adds an approved studen
  const preview=read('self-check/test-banks/reading/preview.js');
  const html=read('self-check/test-banks/reading/preview.html');
  assert.match(preview,/const level=params.get\('level'\)\|\|'B2'/);
- assert.match(preview,/en-'\+level\+'\.json/);
+ assert.match(preview,/topic\+'\/\'\+lang\+'-'\+level\+'\.json/);
  assert.match(preview,/sourceHash\(originalHtml\)/);
- assert.match(preview,/manifest.contentHashes\['rl-can-mistakes'\]/);
- assert.match(preview,/reading\.variantFromData\(reading\.parseReadingData\(originalHtml\),'en',level\)/);
+ assert.match(preview,/manifest.contentHashes\[topic\]/);
+ assert.match(preview,/reading\.variantFromData\(reading\.parseReadingData\(originalHtml\),lang,level\)/);
  assert.match(html,/UNAPPROVED DRAFT/);
  assert.doesNotMatch(read('index.html'),/r33-en-b1|test-banks\/reading/);
  assert.doesNotMatch(read('assets/hub.js'),/r33-en-b1|test-banks\/reading/);

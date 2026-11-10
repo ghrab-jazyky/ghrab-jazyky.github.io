@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "es",
+  "level": "C1",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-es-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "El archivo me ha enseñado una lección extraña sobre la memoria.",
+        "Querido Jules: Estuve a punto de empezar con la típica disculpa de que estaba muy ocupada, pero eso haría parecer accidental nuestro silencio.",
+        "El mes pasado hablamos de organizar una velada pública para escuchar las grabaciones y compartir recuerdos.",
+        "Nada de esto significa que quiera convertir la amistad en otro proyecto por completar."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Querido Jules: Estuve a punto de empezar con la típica disculpa de que estaba muy ocupada, pero eso haría parecer accidental nuestro silencio.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "El archivo me ha enseñado una lección extraña sobre la memoria.",
+        "El mes pasado hablamos de organizar una velada pública para escuchar las grabaciones y compartir recuerdos.",
+        "Nada de esto significa que quiera convertir la amistad en otro proyecto por completar.",
+        "Querido Jules: Estuve a punto de empezar con la típica disculpa de que estaba muy ocupada, pero eso haría parecer accidental nuestro silencio."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: El archivo me ha enseñado una lección extraña sobre la memoria.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Nada de esto significa que quiera convertir la amistad en otro proyecto por completar.",
+        "Querido Jules: Estuve a punto de empezar con la típica disculpa de que estaba muy ocupada, pero eso haría parecer accidental nuestro silencio.",
+        "El archivo me ha enseñado una lección extraña sobre la memoria.",
+        "El mes pasado hablamos de organizar una velada pública para escuchar las grabaciones y compartir recuerdos."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: El mes pasado hablamos de organizar una velada pública para escuchar las grabaciones y compartir recuerdos.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Querido Jules: Estuve a punto de empezar con la típica disculpa de que estaba muy ocupada, pero eso haría parecer accidental nuestro silencio.",
+        "El archivo me ha enseñado una lección extraña sobre la memoria.",
+        "Nada de esto significa que quiera convertir la amistad en otro proyecto por completar.",
+        "El mes pasado hablamos de organizar una velada pública para escuchar las grabaciones y compartir recuerdos."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Nada de esto significa que quiera convertir la amistad en otro proyecto por completar.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Recogemos testimonios de vecinos, pero no les pedimos que conviertan sus experiencias en historias con finales inspiradores.",
+        "Durante el último año hemos reaccionado a muchas fotos sin contarnos casi nada de lo que realmente nos pasaba.",
+        "Pensé inmediatamente en ti porque siempre ves detalles que los demás pasan por alto.",
+        "La velada será el primer viernes de julio y podrás venir sin participar en nada."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Durante el último año hemos reaccionado a muchas fotos sin contarnos casi nada de lo que realmente nos pasaba.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Recogemos testimonios de vecinos, pero no les pedimos que conviertan sus experiencias en historias con finales inspiradores.",
+        "Pensé inmediatamente en ti porque siempre ves detalles que los demás pasan por alto.",
+        "La velada será el primer viernes de julio y podrás venir sin participar en nada.",
+        "Durante el último año hemos reaccionado a muchas fotos sin contarnos casi nada de lo que realmente nos pasaba."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Recogemos testimonios de vecinos, pero no les pedimos que conviertan sus experiencias en historias con finales inspiradores.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "La velada será el primer viernes de julio y podrás venir sin participar en nada.",
+        "Durante el último año hemos reaccionado a muchas fotos sin contarnos casi nada de lo que realmente nos pasaba.",
+        "Recogemos testimonios de vecinos, pero no les pedimos que conviertan sus experiencias en historias con finales inspiradores.",
+        "Pensé inmediatamente en ti porque siempre ves detalles que los demás pasan por alto."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Pensé inmediatamente en ti porque siempre ves detalles que los demás pasan por alto.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Durante el último año hemos reaccionado a muchas fotos sin contarnos casi nada de lo que realmente nos pasaba.",
+        "Recogemos testimonios de vecinos, pero no les pedimos que conviertan sus experiencias en historias con finales inspiradores.",
+        "La velada será el primer viernes de julio y podrás venir sin participar en nada.",
+        "Pensé inmediatamente en ti porque siempre ves detalles que los demás pasan por alto."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: La velada será el primer viernes de julio y podrás venir sin participar en nada.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Una enfermera jubilada recordaba su calle por las discusiones entre vecinos: eran una prueba de que a la gente le importaba participar.",
+        "Cuando me mudé a Bristol para trabajar en un archivo comunitario, empecé a registrar pequeños detalles de la ciudad: un cine cerrado, el último cliente de un café no…",
+        "Sin embargo, dudé antes de escribirte: no quería que la invitación se convirtiera en una prueba de nuestra amistad.",
+        "Puedo pagar tu entrada, pero no el viaje; también podemos marcharnos temprano si hay demasiada gente."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Cuando me mudé a Bristol para trabajar en un archivo comunitario, empecé a registrar pequeños detalles de la ciudad: un cine cerrado, el último cliente de un café no…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Una enfermera jubilada recordaba su calle por las discusiones entre vecinos: eran una prueba de que a la gente le importaba participar.",
+        "Sin embargo, dudé antes de escribirte: no quería que la invitación se convirtiera en una prueba de nuestra amistad.",
+        "Puedo pagar tu entrada, pero no el viaje; también podemos marcharnos temprano si hay demasiada gente.",
+        "Cuando me mudé a Bristol para trabajar en un archivo comunitario, empecé a registrar pequeños detalles de la ciudad: un cine cerrado, el último cliente de un café no…"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Una enfermera jubilada recordaba su calle por las discusiones entre vecinos: eran una prueba de que a la gente le importaba participar.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

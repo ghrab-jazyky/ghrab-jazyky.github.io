@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "de",
+  "level": "A1",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-de-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Unter der Bank liegt ein blauer Plastikbecher.",
+        "Heute bin ich mit meiner Freundin Lina am See.",
+        "Später kaufen wir Eis.",
+        "Lina sagt: „Das ist nicht unser Becher.“ Ich sage: „Aber er gehört nicht in den See.“ Wir nehmen ihn vorsichtig mit."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Heute bin ich mit meiner Freundin Lina am See.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Unter der Bank liegt ein blauer Plastikbecher.",
+        "Später kaufen wir Eis.",
+        "Heute bin ich mit meiner Freundin Lina am See.",
+        "Lina möchte einen Becher aus Plastik, aber es gibt auch Waffeln."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Unter der Bank liegt ein blauer Plastikbecher.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Heute bin ich mit meiner Freundin Lina am See.",
+        "Unter der Bank liegt ein blauer Plastikbecher.",
+        "Es ist warm.",
+        "Später kaufen wir Eis."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Später kaufen wir Eis.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Lina sagt: „Das ist nicht unser Becher.“ Ich sage: „Aber er gehört nicht in den See.“ Wir nehmen ihn vorsichtig mit.",
+        "Lina möchte einen Becher aus Plastik, aber es gibt auch Waffeln.",
+        "Es ist warm.",
+        "Neben dem Kiosk steht ein Mülleimer."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Es ist warm.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Lina möchte einen Becher aus Plastik, aber es gibt auch Waffeln.",
+        "Lina sagt: „Das ist nicht unser Becher.“ Ich sage: „Aber er gehört nicht in den See.“ Wir nehmen ihn vorsichtig mit.",
+        "Es ist warm.",
+        "Sie nimmt eine Waffel."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Lina sagt: „Das ist nicht unser Becher.“ Ich sage: „Aber er gehört nicht in den See.“ Wir nehmen ihn vorsichtig mit.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Lina möchte einen Becher aus Plastik, aber es gibt auch Waffeln.",
+        "Es ist warm.",
+        "Lina sagt: „Das ist nicht unser Becher.“ Ich sage: „Aber er gehört nicht in den See.“ Wir nehmen ihn vorsichtig mit.",
+        "Wir haben Brot, Obst und Wasser dabei."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Lina möchte einen Becher aus Plastik, aber es gibt auch Waffeln.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Neben dem Kiosk steht ein Mülleimer.",
+        "Sie nimmt eine Waffel.",
+        "Unter der Bank liegt ein blauer Plastikbecher.",
+        "Wir haben Brot, Obst und Wasser dabei."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Wir haben Brot, Obst und Wasser dabei.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Sie nimmt eine Waffel.",
+        "Wir haben Brot, Obst und Wasser dabei.",
+        "Neben dem Kiosk steht ein Mülleimer.",
+        "Ich habe meine Wasserflasche von zu Hause dabei."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Neben dem Kiosk steht ein Mülleimer.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Wir haben Brot, Obst und Wasser dabei.",
+        "Sie nimmt eine Waffel.",
+        "Neben dem Kiosk steht ein Mülleimer.",
+        "Wir sitzen auf einer Bank und sehen die Boote."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Sie nimmt eine Waffel.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Wir sitzen auf einer Bank und sehen die Boote.",
+        "Unter der Bank liegt ein blauer Plastikbecher.",
+        "Ich habe meine Wasserflasche von zu Hause dabei.",
+        "Lina sagt: „Das ist nicht unser Becher.“ Ich sage: „Aber er gehört nicht in den See.“ Wir nehmen ihn vorsichtig mit."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Wir sitzen auf einer Bank und sehen die Boote.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

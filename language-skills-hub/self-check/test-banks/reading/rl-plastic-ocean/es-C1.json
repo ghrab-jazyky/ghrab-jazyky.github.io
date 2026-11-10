@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "es",
+  "level": "C1",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-es-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "La directora posee una sensibilidad visual indudable.",
+        "En la primera secuencia del documental ficticio Fuera de marea, una bolsa blanca atraviesa lentamente una plaza vacía.",
+        "El momento más revelador tiene lugar en una reunión municipal.",
+        "Precisamente entonces, el montaje regresa a una imagen convencional: un joven tira un envase al suelo mientras una música inquietante anuncia consecuencias terribles."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: En la primera secuencia del documental ficticio Fuera de marea, una bolsa blanca atraviesa lentamente una plaza vacía.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "La directora posee una sensibilidad visual indudable.",
+        "El momento más revelador tiene lugar en una reunión municipal.",
+        "Precisamente entonces, el montaje regresa a una imagen convencional: un joven tira un envase al suelo mientras una música inquietante anuncia consecuencias terribles.",
+        "No pido que cada documental se convierta en un informe administrativo."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: La directora posee una sensibilidad visual indudable.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Precisamente entonces, el montaje regresa a una imagen convencional: un joven tira un envase al suelo mientras una música inquietante anuncia consecuencias terribles.",
+        "No pido que cada documental se convierta en un informe administrativo.",
+        "Tras los créditos, una voluntaria reconoce que su primer evento con vasos reutilizables obligó a realizar más viajes de lavado de los previstos.",
+        "El momento más revelador tiene lugar en una reunión municipal."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: El momento más revelador tiene lugar en una reunión municipal.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "No pido que cada documental se convierta en un informe administrativo.",
+        "Tras los créditos, una voluntaria reconoce que su primer evento con vasos reutilizables obligó a realizar más viajes de lavado de los previstos.",
+        "Precisamente entonces, el montaje regresa a una imagen convencional: un joven tira un envase al suelo mientras una música inquietante anuncia consecuencias terribles.",
+        "En la primera secuencia del documental ficticio Fuera de marea, una bolsa blanca atraviesa lentamente una plaza vacía."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Precisamente entonces, el montaje regresa a una imagen convencional: un joven tira un envase al suelo mientras una música inquietante anuncia consecuencias terribles.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 5?",
+      "choices": [
+        "Tras los créditos, una voluntaria reconoce que su primer evento con vasos reutilizables obligó a realizar más viajes de lavado de los previstos.",
+        "No pido que cada documental se convierta en un informe administrativo.",
+        "En la primera secuencia del documental ficticio Fuera de marea, una bolsa blanca atraviesa lentamente una plaza vacía.",
+        "La directora posee una sensibilidad visual indudable."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Párrafo 5: No pido que cada documental se convierta en un informe administrativo.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 6?",
+      "choices": [
+        "Tras los créditos, una voluntaria reconoce que su primer evento con vasos reutilizables obligó a realizar más viajes de lavado de los previstos.",
+        "En la primera secuencia del documental ficticio Fuera de marea, una bolsa blanca atraviesa lentamente una plaza vacía.",
+        "La directora posee una sensibilidad visual indudable.",
+        "El momento más revelador tiene lugar en una reunión municipal."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "Párrafo 6: Tras los créditos, una voluntaria reconoce que su primer evento con vasos reutilizables obligó a realizar más viajes de lavado de los previstos.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Observa los restos de una fiesta al amanecer y acompaña a los equipos de limpieza cuando casi nadie los ve.",
+        "Una técnica presenta un proyecto de vasos reutilizables para las fiestas populares.",
+        "El recurso consigue indignarnos, aunque desplaza la atención desde el diseño del servicio hacia la culpa personal.",
+        "La cámara la sigue como si se tratara de un personaje importante."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: La cámara la sigue como si se tratara de un personaje importante.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Una técnica presenta un proyecto de vasos reutilizables para las fiestas populares.",
+        "El recurso consigue indignarnos, aunque desplaza la atención desde el diseño del servicio hacia la culpa personal.",
+        "Observa los restos de una fiesta al amanecer y acompaña a los equipos de limpieza cuando casi nadie los ve.",
+        "El cine necesita ritmo, personajes y decisiones estéticas."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Observa los restos de una fiesta al amanecer y acompaña a los equipos de limpieza cuando casi nadie los ve.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "El recurso consigue indignarnos, aunque desplaza la atención desde el diseño del servicio hacia la culpa personal.",
+        "Una técnica presenta un proyecto de vasos reutilizables para las fiestas populares.",
+        "El cine necesita ritmo, personajes y decisiones estéticas.",
+        "La confesión no invalida el proyecto: lo vuelve creíble."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Una técnica presenta un proyecto de vasos reutilizables para las fiestas populares.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "El recurso consigue indignarnos, aunque desplaza la atención desde el diseño del servicio hacia la culpa personal.",
+        "El cine necesita ritmo, personajes y decisiones estéticas.",
+        "La confesión no invalida el proyecto: lo vuelve creíble.",
+        "La cámara la sigue como si se tratara de un personaje importante."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: El recurso consigue indignarnos, aunque desplaza la atención desde el diseño del servicio hacia la culpa personal.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

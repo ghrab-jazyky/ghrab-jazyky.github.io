@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "de",
+  "level": "A1",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-de-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Am Samstag gibt es einen Filmabend im Park.",
+        "Hallo Maya!",
+        "Wenn es regnet, sehen wir den Film im Jugendzentrum.",
+        "Der Film beginnt um sechs Uhr."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Hallo Maya!",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Am Samstag gibt es einen Filmabend im Park.",
+        "Wenn es regnet, sehen wir den Film im Jugendzentrum.",
+        "Hallo Maya!",
+        "Ich hoffe, du kannst kommen, aber ich verstehe, wenn du keine Zeit hast."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Am Samstag gibt es einen Filmabend im Park.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Hallo Maya!",
+        "Am Samstag gibt es einen Filmabend im Park.",
+        "Ich bin Ben aus deiner alten Schule.",
+        "Wenn es regnet, sehen wir den Film im Jugendzentrum."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Wenn es regnet, sehen wir den Film im Jugendzentrum.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Der Film beginnt um sechs Uhr.",
+        "Ich hoffe, du kannst kommen, aber ich verstehe, wenn du keine Zeit hast.",
+        "Ich bin Ben aus deiner alten Schule.",
+        "Der Eintritt ist kostenlos und wir können Brote mitbringen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Ich bin Ben aus deiner alten Schule.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Ich hoffe, du kannst kommen, aber ich verstehe, wenn du keine Zeit hast.",
+        "Der Film beginnt um sechs Uhr.",
+        "Ich bin Ben aus deiner alten Schule.",
+        "Schreib mir bitte vor Donnerstag."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Der Film beginnt um sechs Uhr.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Ich hoffe, du kannst kommen, aber ich verstehe, wenn du keine Zeit hast.",
+        "Ich bin Ben aus deiner alten Schule.",
+        "Der Film beginnt um sechs Uhr.",
+        "Jetzt wohne ich in Greenhill, in der Nähe eines kleinen Parks."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Ich hoffe, du kannst kommen, aber ich verstehe, wenn du keine Zeit hast.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Der Eintritt ist kostenlos und wir können Brote mitbringen.",
+        "Schreib mir bitte vor Donnerstag.",
+        "Meine Schwester möchte den Film auch sehen, aber sie ist erst acht.",
+        "Jetzt wohne ich in Greenhill, in der Nähe eines kleinen Parks."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Jetzt wohne ich in Greenhill, in der Nähe eines kleinen Parks.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Schreib mir bitte vor Donnerstag.",
+        "Jetzt wohne ich in Greenhill, in der Nähe eines kleinen Parks.",
+        "Der Eintritt ist kostenlos und wir können Brote mitbringen.",
+        "Erzähl mir auch von deiner neuen Klasse."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Der Eintritt ist kostenlos und wir können Brote mitbringen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Jetzt wohne ich in Greenhill, in der Nähe eines kleinen Parks.",
+        "Schreib mir bitte vor Donnerstag.",
+        "Der Eintritt ist kostenlos und wir können Brote mitbringen.",
+        "Ich vermisse unsere Mittagspausen und unsere Spiele nach der Schule."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Schreib mir bitte vor Donnerstag.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Ich vermisse unsere Mittagspausen und unsere Spiele nach der Schule.",
+        "Meine Schwester möchte den Film auch sehen, aber sie ist erst acht.",
+        "Erzähl mir auch von deiner neuen Klasse.",
+        "Du kannst mit dem Zug kommen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Ich vermisse unsere Mittagspausen und unsere Spiele nach der Schule.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

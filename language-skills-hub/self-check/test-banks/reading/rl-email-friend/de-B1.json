@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "de",
+  "level": "B1",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-de-b1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Samstags helfe ich inzwischen in der Werkstatt.",
+        "Hallo Robin, erinnerst du dich an den kleinen Platz hinter unserer alten Schule?",
+        "Deshalb schreibe ich jetzt: Nächsten Monat veranstalten wir einen kleinen Tag der offenen Tür.",
+        "Mir ist klar, dass die Reise Zeit und Geld kostet, und ich möchte nicht, dass du ein schlechtes Gewissen hast, falls du nicht kommen kannst."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Hallo Robin, erinnerst du dich an den kleinen Platz hinter unserer alten Schule?",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Samstags helfe ich inzwischen in der Werkstatt.",
+        "Deshalb schreibe ich jetzt: Nächsten Monat veranstalten wir einen kleinen Tag der offenen Tür.",
+        "Mir ist klar, dass die Reise Zeit und Geld kostet, und ich möchte nicht, dass du ein schlechtes Gewissen hast, falls du nicht kommen kannst.",
+        "Hallo Robin, erinnerst du dich an den kleinen Platz hinter unserer alten Schule?"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Samstags helfe ich inzwischen in der Werkstatt.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Mir ist klar, dass die Reise Zeit und Geld kostet, und ich möchte nicht, dass du ein schlechtes Gewissen hast, falls du nicht kommen kannst.",
+        "Hallo Robin, erinnerst du dich an den kleinen Platz hinter unserer alten Schule?",
+        "Samstags helfe ich inzwischen in der Werkstatt.",
+        "Deshalb schreibe ich jetzt: Nächsten Monat veranstalten wir einen kleinen Tag der offenen Tür."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Deshalb schreibe ich jetzt: Nächsten Monat veranstalten wir einen kleinen Tag der offenen Tür.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Hallo Robin, erinnerst du dich an den kleinen Platz hinter unserer alten Schule?",
+        "Samstags helfe ich inzwischen in der Werkstatt.",
+        "Mir ist klar, dass die Reise Zeit und Geld kostet, und ich möchte nicht, dass du ein schlechtes Gewissen hast, falls du nicht kommen kannst.",
+        "Deshalb schreibe ich jetzt: Nächsten Monat veranstalten wir einen kleinen Tag der offenen Tür."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Mir ist klar, dass die Reise Zeit und Geld kostet, und ich möchte nicht, dass du ein schlechtes Gewissen hast, falls du nicht kommen kannst.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Anfangs kochte ich nur Tee und trug Kisten, weil ich mich vor neuen Leuten fürchtete.",
+        "Dort saßen wir nach dem Unterricht und beschwerten uns, dass in unserem Viertel nichts Interessantes passierte.",
+        "Besucher können kaputte Dinge reparieren, Kunst ausprobieren und Geschichten über das Viertel erzählen.",
+        "Wir könnten auch einen Videoanruf machen und alte Fotos ansehen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Dort saßen wir nach dem Unterricht und beschwerten uns, dass in unserem Viertel nichts Interessantes passierte.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Anfangs kochte ich nur Tee und trug Kisten, weil ich mich vor neuen Leuten fürchtete.",
+        "Besucher können kaputte Dinge reparieren, Kunst ausprobieren und Geschichten über das Viertel erzählen.",
+        "Wir könnten auch einen Videoanruf machen und alte Fotos ansehen.",
+        "Dort saßen wir nach dem Unterricht und beschwerten uns, dass in unserem Viertel nichts Interessantes passierte."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Anfangs kochte ich nur Tee und trug Kisten, weil ich mich vor neuen Leuten fürchtete.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Wir könnten auch einen Videoanruf machen und alte Fotos ansehen.",
+        "Dort saßen wir nach dem Unterricht und beschwerten uns, dass in unserem Viertel nichts Interessantes passierte.",
+        "Anfangs kochte ich nur Tee und trug Kisten, weil ich mich vor neuen Leuten fürchtete.",
+        "Besucher können kaputte Dinge reparieren, Kunst ausprobieren und Geschichten über das Viertel erzählen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Besucher können kaputte Dinge reparieren, Kunst ausprobieren und Geschichten über das Viertel erzählen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Dort saßen wir nach dem Unterricht und beschwerten uns, dass in unserem Viertel nichts Interessantes passierte.",
+        "Anfangs kochte ich nur Tee und trug Kisten, weil ich mich vor neuen Leuten fürchtete.",
+        "Wir könnten auch einen Videoanruf machen und alte Fotos ansehen.",
+        "Besucher können kaputte Dinge reparieren, Kunst ausprobieren und Geschichten über das Viertel erzählen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Wir könnten auch einen Videoanruf machen und alte Fotos ansehen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Letzte Woche zeigte ich zwei Kindern, wie man ein Fahrradlicht repariert.",
+        "Letzten Monat kam ich zum ersten Mal seit zwei Jahren wieder dorthin, und alles sah anders aus.",
+        "Ich erinnerte mich an deine Alltagsfotos und dachte, du könntest einige mitbringen.",
+        "Lieber würde ich von dir selbst hören, wie deine neue Stadt ist, statt es nur aus deinen Internetbildern zu erraten."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Letzten Monat kam ich zum ersten Mal seit zwei Jahren wieder dorthin, und alles sah anders aus.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-b1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Letzte Woche zeigte ich zwei Kindern, wie man ein Fahrradlicht repariert.",
+        "Ich erinnerte mich an deine Alltagsfotos und dachte, du könntest einige mitbringen.",
+        "Lieber würde ich von dir selbst hören, wie deine neue Stadt ist, statt es nur aus deinen Internetbildern zu erraten.",
+        "Letzten Monat kam ich zum ersten Mal seit zwei Jahren wieder dorthin, und alles sah anders aus."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Letzte Woche zeigte ich zwei Kindern, wie man ein Fahrradlicht repariert.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

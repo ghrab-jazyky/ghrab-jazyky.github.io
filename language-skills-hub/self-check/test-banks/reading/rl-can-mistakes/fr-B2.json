@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "fr",
+  "level": "B2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-fr-b2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Imaginons une élève qui obtient une note inférieure à ses attentes pour une dissertation.",
+        "Un résultat décevant peut nous sembler être un jugement sur notre personne plutôt qu’une photographie de ce que nous savons à un moment donné.",
+        "Bien entendu, les remarques ne sont pas nécessairement justes.",
+        "Apprendre d’une critique ne signifie pas l’apprécier."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Un résultat décevant peut nous sembler être un jugement sur notre personne plutôt qu’une photographie de ce que nous savons à un moment donné.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Imaginons une élève qui obtient une note inférieure à ses attentes pour une dissertation.",
+        "Bien entendu, les remarques ne sont pas nécessairement justes.",
+        "Apprendre d’une critique ne signifie pas l’apprécier.",
+        "Un résultat décevant peut nous sembler être un jugement sur notre personne plutôt qu’une photographie de ce que nous savons à un moment donné."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Imaginons une élève qui obtient une note inférieure à ses attentes pour une dissertation.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Apprendre d’une critique ne signifie pas l’apprécier.",
+        "Un résultat décevant peut nous sembler être un jugement sur notre personne plutôt qu’une photographie de ce que nous savons à un moment donné.",
+        "Imaginons une élève qui obtient une note inférieure à ses attentes pour une dissertation.",
+        "Bien entendu, les remarques ne sont pas nécessairement justes."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Bien entendu, les remarques ne sont pas nécessairement justes.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Un résultat décevant peut nous sembler être un jugement sur notre personne plutôt qu’une photographie de ce que nous savons à un moment donné.",
+        "Imaginons une élève qui obtient une note inférieure à ses attentes pour une dissertation.",
+        "Apprendre d’une critique ne signifie pas l’apprécier.",
+        "Bien entendu, les remarques ne sont pas nécessairement justes."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Apprendre d’une critique ne signifie pas l’apprécier.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Son professeur souligne que l’argumentation est intéressante, mais que les preuves sont mal organisées.",
+        "Pour les élèves habitués à réussir, même une remarque soigneusement formulée peut être ressentie comme une critique de leur intelligence.",
+        "Un enseignant peut mal comprendre une idée et certains systèmes d’évaluation privilégient une façon trop étroite d’écrire.",
+        "Cela consiste à distinguer un résultat provisoire de son identité et à décider quelles suggestions méritent d’être essayées."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Pour les élèves habitués à réussir, même une remarque soigneusement formulée peut être ressentie comme une critique de leur intelligence.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Son professeur souligne que l’argumentation est intéressante, mais que les preuves sont mal organisées.",
+        "Un enseignant peut mal comprendre une idée et certains systèmes d’évaluation privilégient une façon trop étroite d’écrire.",
+        "Cela consiste à distinguer un résultat provisoire de son identité et à décider quelles suggestions méritent d’être essayées.",
+        "Pour les élèves habitués à réussir, même une remarque soigneusement formulée peut être ressentie comme une critique de leur intelligence."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Son professeur souligne que l’argumentation est intéressante, mais que les preuves sont mal organisées.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Cela consiste à distinguer un résultat provisoire de son identité et à décider quelles suggestions méritent d’être essayées.",
+        "Pour les élèves habitués à réussir, même une remarque soigneusement formulée peut être ressentie comme une critique de leur intelligence.",
+        "Son professeur souligne que l’argumentation est intéressante, mais que les preuves sont mal organisées.",
+        "Un enseignant peut mal comprendre une idée et certains systèmes d’évaluation privilégient une façon trop étroite d’écrire."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Un enseignant peut mal comprendre une idée et certains systèmes d’évaluation privilégient une façon trop étroite d’écrire.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Pour les élèves habitués à réussir, même une remarque soigneusement formulée peut être ressentie comme une critique de leur intelligence.",
+        "Son professeur souligne que l’argumentation est intéressante, mais que les preuves sont mal organisées.",
+        "Cela consiste à distinguer un résultat provisoire de son identité et à décider quelles suggestions méritent d’être essayées.",
+        "Un enseignant peut mal comprendre une idée et certains systèmes d’évaluation privilégient une façon trop étroite d’écrire."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Cela consiste à distinguer un résultat provisoire de son identité et à décider quelles suggestions méritent d’être essayées.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Elle peut considérer la note comme injuste ou examiner comment chaque paragraphe pourrait mieux soutenir l’idée principale.",
+        "Cette réaction est compréhensible, mais elle rend les conseils plus difficiles à entendre.",
+        "Les élèves ont donc besoin de plus qu’une attitude positive : ils doivent aussi oser poser des questions précises.",
+        "Il ne s’agit pas de supprimer toute déception, mais d’éviter qu’elle mette fin au dialogue."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Cette réaction est compréhensible, mais elle rend les conseils plus difficiles à entendre.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-b2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Elle peut considérer la note comme injuste ou examiner comment chaque paragraphe pourrait mieux soutenir l’idée principale.",
+        "Les élèves ont donc besoin de plus qu’une attitude positive : ils doivent aussi oser poser des questions précises.",
+        "Il ne s’agit pas de supprimer toute déception, mais d’éviter qu’elle mette fin au dialogue.",
+        "Cette réaction est compréhensible, mais elle rend les conseils plus difficiles à entendre."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Elle peut considérer la note comme injuste ou examiner comment chaque paragraphe pourrait mieux soutenir l’idée principale.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}
