@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "es",
+  "level": "A2",
+  "sourceTitle": "Un pequeño cambio, un mejor resultado",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Independent A2 Reading draft, content review pending.",
+  "tabs": [
+    {
+      "id": "plan",
+      "title": "Un nuevo plan"
+    },
+    {
+      "id": "motivos",
+      "title": "Por qué funciona"
+    },
+    {
+      "id": "ideas",
+      "title": "En la vida diaria"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-es-a2-01",
+      "tab": "plan",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué cambia Daniel esta semana para preparar el examen?",
+      "choices": [
+        "Solo estudia el domingo por la tarde.",
+        "Estudia un poco en varios días.",
+        "Se queda despierto toda la noche.",
+        "Deja que su hermana haga el trabajo."
+      ],
+      "answer": 1,
+      "explanation": "Daniel distribuye la preparación entre el lunes, el martes y el miércoles."
+    },
+    {
+      "id": "r35-es-a2-02",
+      "tab": "plan",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Cómo descubre Daniel que una idea no está clara?",
+      "choices": [
+        "Mira su nota del examen anterior.",
+        "Pregunta si el examen será fácil.",
+        "Lee el libro sin hacer preguntas.",
+        "Intenta explicársela a su hermana."
+      ],
+      "answer": 3,
+      "explanation": "En el segundo párrafo, explicar la idea le ayuda a descubrir qué debe revisar."
+    },
+    {
+      "id": "r35-es-a2-03",
+      "tab": "plan",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué hace Daniel antes de ver las respuestas el miércoles?",
+      "choices": [
+        "Copia las respuestas del libro.",
+        "Escribe un nuevo horario escolar.",
+        "Intenta responder algunas preguntas.",
+        "Pide a su hermana que responda por él."
+      ],
+      "answer": 2,
+      "explanation": "Daniel intenta contestar preguntas sin mirar primero las soluciones."
+    },
+    {
+      "id": "r35-es-a2-04",
+      "tab": "motivos",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Por qué Daniel quiere dejar de estudiar tan tarde?",
+      "choices": [
+        "Porque al día siguiente está cansado.",
+        "Porque ya no tiene examen de ciencias.",
+        "Porque su hermana no quiere estudiar.",
+        "Porque no tiene apuntes de la clase."
+      ],
+      "answer": 0,
+      "explanation": "Estudiar todo el miércoles por la noche le deja cansado el jueves."
+    },
+    {
+      "id": "r35-es-a2-05",
+      "tab": "motivos",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Para qué vuelve Daniel a mirar sus apuntes?",
+      "choices": [
+        "Para saber cuántos días faltan.",
+        "Para copiar todas las palabras nuevas.",
+        "Para aclarar una idea que no explica bien.",
+        "Para enseñar a su hermana otra asignatura."
+      ],
+      "answer": 2,
+      "explanation": "Revisar los apuntes le ayuda cuando su explicación a la hermana no es clara."
+    },
+    {
+      "id": "r35-es-a2-06",
+      "tab": "motivos",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué valora Daniel después del examen?",
+      "choices": [
+        "Estar más tranquilo y saber qué mejorar.",
+        "No tener que hacer más exámenes.",
+        "Que todas sus respuestas sean correctas.",
+        "Que nadie le pregunte por sus errores."
+      ],
+      "answer": 0,
+      "explanation": "Daniel sigue cometiendo errores, pero está más tranquilo y tiene un plan."
+    },
+    {
+      "id": "r35-es-a2-07",
+      "tab": "ideas",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Tu amigo no entiende un tema. ¿Qué puede intentar?",
+      "choices": [
+        "Estudiar sin hacer nunca pausas.",
+        "Explicarlo y revisar lo que no entiende.",
+        "Esperar hasta la noche anterior.",
+        "Mirar todas las respuestas sin pensar."
+      ],
+      "answer": 1,
+      "explanation": "Daniel comprueba lo aprendido al explicar un concepto a su hermana."
+    },
+    {
+      "id": "r35-es-a2-08",
+      "tab": "ideas",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Cometes dos errores en una prueba. ¿Qué haría Daniel?",
+      "choices": [
+        "Pensar que el plan no sirve para nada.",
+        "Olvidar las preguntas que fueron difíciles.",
+        "Dejar de preparar la siguiente prueba.",
+        "Anotar qué necesita practicar más."
+      ],
+      "answer": 3,
+      "explanation": "El tercer párrafo dice que Daniel escribe lo que todavía debe practicar."
+    },
+    {
+      "id": "r35-es-a2-09",
+      "tab": "ideas",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué aprende Daniel sobre un buen plan de estudio?",
+      "choices": [
+        "Debe ser igual para todos los estudiantes.",
+        "Puede ser útil sin ser perfecto.",
+        "Siempre elimina todos los errores.",
+        "Solo funciona para las ciencias."
+      ],
+      "answer": 1,
+      "explanation": "Daniel comprende que un buen método no necesita ser perfecto."
+    },
+    {
+      "id": "r35-es-a2-10",
+      "tab": "ideas",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué consejo coincide con la experiencia de Daniel?",
+      "choices": [
+        "Estudiar toda la noche es la mejor opción.",
+        "Solo importa recibir la nota más alta.",
+        "Las pausas impiden aprender bien.",
+        "Prepararse con calma y comprobar ideas ayuda."
+      ],
+      "answer": 3,
+      "explanation": "El nuevo plan incluye pausas y preguntas para comprender mejor el contenido."
+    }
+  ]
+}
