@@ -61,10 +61,10 @@ test('R35 reject duplicated or reused tasks and invalid keys',()=>{
  assert.throws(()=>generic.validate({...bank,questions:wrongParagraph},practice,entry,hash,selection),/passage reference/);
 });
 
-test('R35 inventory represents precisely seven unapproved banks and no published assessment',()=>{
+test('R35 inventory represents precisely ten unapproved banks and no published assessment',()=>{
  assert.equal(coverage.counts.total,138);
- assert.equal(coverage.counts.drafted,7);
- assert.equal(coverage.counts.missing,131);
+ assert.equal(coverage.counts.drafted,10);
+ assert.equal(coverage.counts.missing,128);
  assert.equal(coverage.counts.teacherApproved,0);
  const slot=coverage.slots.find(s=>s.topic==='rl-asteroids'&&s.language==='en'&&s.level==='B2');
  assert.equal(slot.status,'DRAFT_UNAPPROVED');
