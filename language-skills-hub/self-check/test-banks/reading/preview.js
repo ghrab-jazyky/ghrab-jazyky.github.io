@@ -139,6 +139,7 @@
    variant=testBank.makeQaVariant(bank,practice,actual);
    reading.validateVariant(variant);
    $('title').textContent=practice.title;
+   document.title='Independent Reading '+level+' – unapproved QA preview';
    document.querySelector('.subtitle').textContent='Can Mistakes Help Us Learn? · English '+level+' · 10 independent questions · 20 minutes';
    document.querySelector('.mode').textContent='UNAPPROVED DRAFT · EN/'+level;
    document.querySelector('.reading-panel .pill').textContent='EN · '+level;
