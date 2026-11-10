@@ -36,12 +36,12 @@
       "kind": "mc",
       "q": "What is suggested by the contrast between the cheerful song and the arriving cleaners?",
       "choices": [
-        "The film begins during the concert rather than afterwards.",
         "The event's entertainment is over, but its environmental consequences remain.",
         "The cleaners are unhappy with the type of music being played.",
-        "The red cup is meant to be a symbol of successful recycling."
+        "The red cup is meant to be a symbol of successful recycling.",
+        "The film begins during the concert rather than afterwards."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "The opening places the aftermath of a cheerful event beside the work of dealing with what it leaves behind."
     },
     {
@@ -51,12 +51,12 @@
       "kind": "mc",
       "q": "Why does the cleaner's explanation of the overflowing bin stand out to the reviewer?",
       "choices": [
-        "It shows that all rubbish comes from one café.",
         "It offers the film's most dramatic image of wildlife.",
         "It proves that a cleaner can solve the issue alone.",
-        "It makes the problem concrete by revealing schedules, money and responsibility."
+        "It makes the problem concrete by revealing schedules, money and responsibility.",
+        "It shows that all rubbish comes from one café."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "The practical detail about the bus-stop bin gives a timetable and budget to a usually abstract concern."
     },
     {
@@ -66,12 +66,12 @@
       "kind": "mc",
       "q": "What does the reviewer value in the portrayal of the teenagers' imperfect first evening?",
       "choices": [
-        "Their ability to organise a concert without needing help.",
         "The simplicity of the solution compared with the supplier's offer.",
         "The director's willingness to show difficulties without humiliating them.",
-        "Their refusal to use cups or jugs in the event."
+        "Their refusal to use cups or jugs in the event.",
+        "Their ability to organise a concert without needing help."
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "The reviewer appreciates a scene in which characters can make mistakes without being mocked."
     },
     {
@@ -81,12 +81,12 @@
       "kind": "mc",
       "q": "Why does the reviewer criticise the short treatment of difficult circumstances?",
       "choices": [
-        "The film overlooks barriers that personal choices alone may not remove.",
         "The director spends too much time discussing how cups are made.",
         "The people interviewed refuse to use any reusable products.",
-        "The film suggests no-one should take responsibility for their rubbish."
+        "The film suggests no-one should take responsibility for their rubbish.",
+        "The film overlooks barriers that personal choices alone may not remove."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "Security rules and travel arrangements can complicate seemingly simple changes."
     },
     {
@@ -96,12 +96,12 @@
       "kind": "mc",
       "q": "What makes the deposit-system sequence more persuasive than a general call to use fewer cups?",
       "choices": [
-        "It includes impressive views of the clean coast.",
         "It presents real costs, limitations and questions that still need answers.",
         "It shows that the first year was already cheaper than the old system.",
-        "It treats reusable cups as a complete answer to beach litter."
+        "It treats reusable cups as a complete answer to beach litter.",
+        "It includes impressive views of the clean coast."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "The reviewer values specific evidence, costs and unresolved measurements."
     },
     {
@@ -111,12 +111,12 @@
       "kind": "mc",
       "q": "What does it mean that the film sometimes 'trusts its images more than its arguments'?",
       "choices": [
-        "The reviewer thinks the film should contain no visual storytelling.",
         "The director has failed to include any real people.",
         "Powerful images are sometimes asked to replace a full explanation of causes.",
-        "The soundtrack is too cheerful for the subject."
+        "The soundtrack is too cheerful for the subject.",
+        "The reviewer thinks the film should contain no visual storytelling."
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "The opening critique suggests the film's compelling imagery may simplify the issue."
     },
     {
@@ -126,12 +126,12 @@
       "kind": "mc",
       "q": "Why does the reviewer imagine a meeting about emptying the bins next Friday?",
       "choices": [
-        "To suggest the film should have shown the next concert.",
         "To prove clean beaches are impossible to achieve.",
         "To argue that documentaries cannot change public habits.",
-        "To bring attention back to everyday planning and accountability."
+        "To bring attention back to everyday planning and accountability.",
+        "To suggest the film should have shown the next concert."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "The imagined meeting highlights practical responsibility as a more useful ending than a spotless visual image."
     },
     {
@@ -141,12 +141,12 @@
       "kind": "mc",
       "q": "A school insists students use reusable bottles but prohibits all containers at its event entrance. What question follows the reviewer's reasoning?",
       "choices": [
-        "Whether guests would prefer louder music.",
         "How the event rules could be changed to make reuse possible.",
         "Whether teachers should stop discussing plastic pollution.",
-        "How many students can recognise a reusable bottle."
+        "How many students can recognise a reusable bottle.",
+        "Whether guests would prefer louder music."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "The film reviewer criticises messaging that ignores institutional constraints on personal choice."
     },
     {
@@ -156,12 +156,12 @@
       "kind": "mc",
       "q": "A proposed cup scheme is more expensive at first but should save money after repeated reuse. What information is needed?",
       "choices": [
-        "The rate of missing cups and the cleaning costs over time.",
         "Only the opening price of the first reusable cup.",
         "The number of people who enjoyed the music.",
-        "Whether reusable cups appear attractive in promotional photos."
+        "Whether reusable cups appear attractive in promotional photos.",
+        "The rate of missing cups and the cleaning costs over time."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The reviewer praises the measurement of repeated use, losses and washing water."
     },
     {
@@ -171,12 +171,12 @@
       "kind": "mc",
       "q": "Which review would the author most likely consider balanced?",
       "choices": [
-        "A review claiming every visitor is personally responsible for all waste.",
         "A review praising the final beach scene without considering costs.",
         "A review condemning any scheme that costs more in its first year.",
-        "A review that appreciates the film's strengths while testing its claims and omissions."
+        "A review that appreciates the film's strengths while testing its claims and omissions.",
+        "A review claiming every visitor is personally responsible for all waste."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "The conclusion recommends the film critically and acknowledges both its honesty and its unresolved weaknesses."
     }
   ]
