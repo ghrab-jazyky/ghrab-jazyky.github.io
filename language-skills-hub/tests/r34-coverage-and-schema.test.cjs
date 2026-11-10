@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict');
-const fs=require('node:fs'),path=require('node:path'),{execFileSync}=require('node:child_process');
+const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),{execFileSync}=require('node:child_process');
 const root=path.resolve(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const schema=require('../self-check/test-banks/reading/independent-schema.js');
@@ -45,4 +45,31 @@ test('R34 absence is not replaced by an unapproved practice question bank',()=>{
  assert.doesNotMatch(validator,/window\.fetch|XMLHttpRequest|sendBeacon|WebSocket/);
  assert.doesNotMatch(read('assets/hub.js'),/independent-schema|R34-AUTHOR-DRAFT/);
  assert.doesNotMatch(read('self-check/reading/reading.js'),/independent-schema|R34-AUTHOR-DRAFT/);
+});
+
+test('R34 138 complete source-grounded local authoring packets export without production changes',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'lsh-authoring-r34-'));
+ try{
+  const output=execFileSync(process.execPath,[
+   path.join(root,'tools/build-assessment-authoring-packets.cjs'),'--out',dir
+  ],{encoding:'utf8'});
+  assert.match(output,/Prepared 138 local authoring packets/);
+  const files=fs.readdirSync(dir);
+  assert.equal(files.filter(x=>x.endsWith('.json')).length,139);
+  const summary=JSON.parse(fs.readFileSync(path.join(dir,'SUMMARY.json'),'utf8'));
+  assert.equal(summary.total,138);
+  assert.equal(summary.reading,120);
+  assert.equal(summary.listening,18);
+  const sample=JSON.parse(fs.readFileSync(path.join(dir,'rl-can-mistakes--en-B2.json'),'utf8'));
+  assert.equal(sample.source.title,'Can Mistakes Help Us Learn?');
+  assert.equal(sample.sourceContent.paragraphs.length,4);
+  assert.equal(sample.independentBankPresent,true);
+  assert.equal(sample.outputRequirement.published,false);
+  const missing=JSON.parse(fs.readFileSync(path.join(dir,'rl-asteroids--es-A2.json'),'utf8'));
+  assert.equal(missing.independentBankPresent,false);
+  assert.equal(missing.source.lang,'es');
+  const audio=JSON.parse(fs.readFileSync(path.join(dir,'ll-harrison-ford--en-C1.json'),'utf8'));
+  assert.equal(audio.source.skill,'listening');
+  assert.equal(audio.source.level,'C1');
+ }finally{fs.rmSync(dir,{recursive:true,force:true})}
 });
