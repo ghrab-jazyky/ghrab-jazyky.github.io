@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-CONTENT-AUDIT-1",
+  "description": "New EN/A2 Reading independent questions; unapproved teacher draft.",
+  "tabs": [
+    {
+      "id": "understand",
+      "title": "Understand the Story",
+      "description": "Answer questions about the text and its ideas."
+    },
+    {
+      "id": "reason",
+      "title": "Reasons and Meaning",
+      "description": "Answer questions about the text and its ideas."
+    },
+    {
+      "id": "apply",
+      "title": "Use What You Read",
+      "description": "Answer questions about the text and its ideas."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-a2-u1",
+      "tab": "understand",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why is Daniel unhappy with his old way of studying?",
+      "choices": [
+        "The science teacher is new",
+        "His sister is often busy",
+        "He has lost his textbook",
+        "Studying late makes him tired"
+      ],
+      "answer": 3,
+      "explanation": "Daniel's old late-night routine leaves him tired before a test."
+    },
+    {
+      "id": "r34-en-a2-u2",
+      "tab": "understand",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does Daniel learn by explaining an idea to his sister?",
+      "choices": [
+        "Whether his sister enjoys science",
+        "Whether he really understands it",
+        "Whether his teacher likes his notes",
+        "Whether the next test will be easy"
+      ],
+      "answer": 1,
+      "explanation": "Daniel checks his notes when he cannot explain the idea clearly."
+    },
+    {
+      "id": "r34-en-a2-u3",
+      "tab": "understand",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does Daniel turn off phone notifications?",
+      "choices": [
+        "To study with fewer distractions",
+        "To make his phone battery last longer",
+        "To stop his sister from calling",
+        "To check the time of his test"
+      ],
+      "answer": 0,
+      "explanation": "The phone notifications are switched off while he studies."
+    },
+    {
+      "id": "r34-en-a2-r1",
+      "tab": "reason",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why is Daniel pleased although he makes two mistakes?",
+      "choices": [
+        "He thinks the mistakes do not count",
+        "He does not need to study history",
+        "He feels calmer and has slept well",
+        "He has finished before all his classmates"
+      ],
+      "answer": 2,
+      "explanation": "Paragraph three values a calmer routine and better sleep, not a perfect score."
+    },
+    {
+      "id": "r34-en-a2-r2",
+      "tab": "reason",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What does Daniel's plan for history suggest?",
+      "choices": [
+        "Every subject is always the same",
+        "Only science needs short study sessions",
+        "His sister will help with history too",
+        "He can try a useful plan in another subject"
+      ],
+      "answer": 3,
+      "explanation": "Daniel intends to use the new approach for history, changing it as needed."
+    },
+    {
+      "id": "r34-en-a2-r3",
+      "tab": "reason",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why is answering questions without notes useful?",
+      "choices": [
+        "It shows what Daniel can remember",
+        "It lets Daniel avoid the textbook",
+        "It means he can skip Monday's work",
+        "It changes the teacher's questions"
+      ],
+      "answer": 0,
+      "explanation": "Working without answers helps him see what he has learned."
+    },
+    {
+      "id": "r34-en-a2-a1",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "You cannot explain an idea to a friend. What should you do?",
+      "choices": [
+        "Move to a completely new topic",
+        "Read your notes and try again",
+        "Ask the friend to write your test",
+        "Ignore the difficult question"
+      ],
+      "answer": 1,
+      "explanation": "Daniel checks his notes when an idea is not clear."
+    },
+    {
+      "id": "r34-en-a2-a2",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "A friend studies very late before every test. Which change could help?",
+      "choices": [
+        "Study all evening without a break",
+        "Stop studying until test day",
+        "Plan short sessions across several days",
+        "Stay awake even later than usual"
+      ],
+      "answer": 2,
+      "explanation": "Daniel changes from one exhausting evening to short sessions."
+    },
+    {
+      "id": "r34-en-a2-a3",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why might it be helpful to change a study plan?",
+      "choices": [
+        "A useful plan does not have to be perfect",
+        "Teachers want a different plan every day",
+        "Only difficult subjects need planning",
+        "A good plan must never be repeated"
+      ],
+      "answer": 0,
+      "explanation": "Daniel learns a useful plan can be adapted when necessary."
+    },
+    {
+      "id": "r34-en-a2-a4",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Which description best fits Daniel's result?",
+      "choices": [
+        "He learns all the science facts perfectly",
+        "He stops asking questions at school",
+        "He studies longer but sleeps less",
+        "He still makes mistakes but improves his routine"
+      ],
+      "answer": 3,
+      "explanation": "His grade improves slightly, while his preparation and sleep improve too."
+    }
+  ]
+}

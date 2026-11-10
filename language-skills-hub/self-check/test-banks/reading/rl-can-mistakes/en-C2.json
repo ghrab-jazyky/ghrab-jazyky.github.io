@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "C2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-CONTENT-AUDIT-1",
+  "description": "New EN/C2 independent Reading questions; unapproved teacher review draft.",
+  "tabs": [
+    {
+      "id": "interpret",
+      "title": "Interpreting the Argument",
+      "description": "Identify the implications of the author's claims."
+    },
+    {
+      "id": "rhetoric",
+      "title": "Claims and Qualifications",
+      "description": "Examine the structure and limits of reasoning."
+    },
+    {
+      "id": "apply",
+      "title": "Critical Application",
+      "description": "Apply the argument to unfamiliar educational situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-c2-int-01",
+      "tab": "interpret",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why might telling a struggling pupil to 'bounce back' amount to an evasion of responsibility?",
+      "choices": [
+        "The exhortation can disregard the continuing conditions that made the setback damaging",
+        "It presumes that failure necessarily reveals a lack of personal resilience",
+        "It implies that assessment cannot capture genuine intellectual progress",
+        "The advice is generally effective only after a learner's difficulties have ended"
+      ],
+      "answer": 0,
+      "explanation": "The opening criticises perseverance advice imposed irrespective of ongoing material constraints."
+    },
+    {
+      "id": "r34-en-c2-int-02",
+      "tab": "interpret",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What separates an exercise of agency from the endurance described in the second paragraph?",
+      "choices": [
+        "Agency produces visibly higher grades, whereas endurance rarely does",
+        "Endurance is an irrational reaction to criticism in every circumstance",
+        "Agency involves adjusting a strategy where support makes meaningful progress plausible",
+        "Agency requires a pupil to disregard obstacles that are outside their control"
+      ],
+      "answer": 2,
+      "explanation": "The text contrasts revising an ineffective method with repeatedly compensating for inadequate support."
+    },
+    {
+      "id": "r34-en-c2-int-03",
+      "tab": "interpret",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Which condition determines whether renewed effort can reasonably be expected to help?",
+      "choices": [
+        "The pupil's willingness to display determination to others",
+        "The learner's circumstances provide a realistic chance of consequential change",
+        "The institution rewards endurance regardless of academic outcome",
+        "A pupil can repeat the same strategy with greater intensity"
+      ],
+      "answer": 1,
+      "explanation": "The second paragraph asks whether the learner's environment offers a reasonable prospect of meaningful change."
+    },
+    {
+      "id": "r34-en-c2-rhe-01",
+      "tab": "rhetoric",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What does the metaphor of performance indicators 'colonising' education imply?",
+      "choices": [
+        "Quantitative measures eventually become too unreliable to calculate",
+        "The activities being measured inevitably become less demanding",
+        "The institutional incentives surrounding measurement cease to matter",
+        "Measures start shaping which experiences count instead of merely describing them"
+      ],
+      "answer": 3,
+      "explanation": "The metaphor suggests that progress indicators intrude upon activities they were designed to illuminate."
+    },
+    {
+      "id": "r34-en-c2-rhe-02",
+      "tab": "rhetoric",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why does the writer concede that an indicator may be 'not necessarily false'?",
+      "choices": [
+        "A narrowly accurate measure can still miss educationally important dimensions",
+        "Imprecise progress data is more useful than a judgement of intellectual maturity",
+        "The difference between exploration and repetition cannot be measured at all",
+        "The author's proposed alternatives would necessarily produce comparable statistics"
+      ],
+      "answer": 0,
+      "explanation": "The problem is the indicator's restricted scope, not necessarily factual inaccuracy."
+    },
+    {
+      "id": "r34-en-c2-rhe-03",
+      "tab": "rhetoric",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What does the rejection of a return to 'fixed talent' accomplish in the argument?",
+      "choices": [
+        "It denies the existence of meaningful differences in learners' resources",
+        "It prevents the critique of resilience from being mistaken for a denial of agency",
+        "It makes the author's critique dependent on the rejection of all assessment",
+        "It suggests that effort has no role in learning without institutional support"
+      ],
+      "answer": 1,
+      "explanation": "The author explicitly resists the false alternative between unqualified perseverance and powerlessness."
+    },
+    {
+      "id": "r34-en-c2-app-01",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "A school chiefly rewards rapid rises in scores, overlooking pupils who explore difficult ideas. What is the problem?",
+      "choices": [
+        "The assessment assumes that unfamiliar ideas are always harder than familiar questions",
+        "The school has insufficiently differentiated the grading scale between subjects",
+        "It risks treating a restricted metric as a complete account of educational progress",
+        "The pupils with lower gains must be practising less effectively than their peers"
+      ],
+      "answer": 2,
+      "explanation": "The example in paragraph three warns that score gains answer only a narrower question."
+    },
+    {
+      "id": "r34-en-c2-app-02",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A student abandons an ill-chosen goal after careful reflection. What would this reveal in the author's framework?",
+      "choices": [
+        "Potentially mature judgement about the ends that perseverance ought to serve",
+        "A loss of resilience that educational institutions should try to correct",
+        "An inability to tolerate uncertainty despite sufficient external support",
+        "Evidence that the original goal was necessarily impossible to attain"
+      ],
+      "answer": 0,
+      "explanation": "The third and fourth paragraphs allow reconsidering a goal rather than persisting ritualistically."
+    },
+    {
+      "id": "r34-en-c2-app-03",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What is the institutional risk of repeatedly praising pupils for overcoming the same preventable obstacle?",
+      "choices": [
+        "Pupils will cease to believe that effort can improve results",
+        "Praise may deflect attention from the school's responsibility for persistent conditions",
+        "The institution may overestimate the reliability of its assessment indicators",
+        "Teachers will become unable to distinguish agency from intellectual curiosity"
+      ],
+      "answer": 1,
+      "explanation": "Celebrating visible endurance can spare an institution from asking why the obstacle remains."
+    },
+    {
+      "id": "r34-en-c2-app-04",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Which statement most faithfully preserves the author's proposed educational balance?",
+      "choices": [
+        "All evaluation ought to give way to freely chosen learning experiences",
+        "Students should always determine institutional priorities for assessment",
+        "Structural constraints ought to excuse pupils from reconsidering their goals",
+        "Institutions should enable persistence while leaving learners free to question its purpose"
+      ],
+      "answer": 3,
+      "explanation": "The conclusion gives learners both means to continue and freedom to reconsider worthwhile goals."
+    }
+  ]
+}

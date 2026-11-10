@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-CONTENT-AUDIT-1",
+  "description": "New EN/A1 Reading independent questions; unapproved teacher draft.",
+  "tabs": [
+    {
+      "id": "understand",
+      "title": "Understand the Story",
+      "description": "Answer questions about the text and its ideas."
+    },
+    {
+      "id": "reason",
+      "title": "Reasons and Meaning",
+      "description": "Answer questions about the text and its ideas."
+    },
+    {
+      "id": "apply",
+      "title": "Use What You Read",
+      "description": "Answer questions about the text and its ideas."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-a1-u1",
+      "tab": "understand",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "How does Mia feel when she finds new words?",
+      "choices": [
+        "Very angry with Leo",
+        "Happy about her grade",
+        "Worried about reading",
+        "Ready for her next test"
+      ],
+      "answer": 2,
+      "explanation": "Mia finds unfamiliar words and feels worried at the beginning."
+    },
+    {
+      "id": "r34-en-a1-u2",
+      "tab": "understand",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does Leo show Mia the picture?",
+      "choices": [
+        "To help her understand a word",
+        "To tell her the end of the story",
+        "To show her his new book",
+        "To help her count the pages"
+      ],
+      "answer": 0,
+      "explanation": "Mia understands a new word when she looks at the picture."
+    },
+    {
+      "id": "r34-en-a1-u3",
+      "tab": "understand",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Who helps with the word Mia does not understand from the picture?",
+      "choices": [
+        "Her younger brother",
+        "Her friend Leo",
+        "Her mother at home",
+        "Her English teacher"
+      ],
+      "answer": 3,
+      "explanation": "The teacher helps Mia understand the other word."
+    },
+    {
+      "id": "r34-en-a1-r1",
+      "tab": "reason",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does Mia put a question mark near the train sentence?",
+      "choices": [
+        "She wants to remember the train",
+        "She does not understand it yet",
+        "She wants to finish reading early",
+        "She wants Leo to write for her"
+      ],
+      "answer": 1,
+      "explanation": "The question mark shows the place where Mia needs help."
+    },
+    {
+      "id": "r34-en-a1-r2",
+      "tab": "reason",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does Mia write new words in her notebook?",
+      "choices": [
+        "To remember them later",
+        "To give the notebook to Leo",
+        "To make her book look nice",
+        "To count how many pages she reads"
+      ],
+      "answer": 0,
+      "explanation": "Mia keeps two words in her notebook as part of learning."
+    },
+    {
+      "id": "r34-en-a1-r3",
+      "tab": "reason",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why does Mia smile on Friday?",
+      "choices": [
+        "Her teacher gives her a gift",
+        "The story has no new words",
+        "She understands more now",
+        "Her friend reads the story for her"
+      ],
+      "answer": 2,
+      "explanation": "Mia understands more of the new story and feels happy."
+    },
+    {
+      "id": "r34-en-a1-a1",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Your friend cannot read a new word. What can you suggest?",
+      "choices": [
+        "Stop reading the story",
+        "Ask for a different subject",
+        "Never read that word again",
+        "Look at a picture and try again"
+      ],
+      "answer": 3,
+      "explanation": "Leo uses the picture to help Mia understand a word."
+    },
+    {
+      "id": "r34-en-a1-a2",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why does Mia want to read again tomorrow?",
+      "choices": [
+        "She does not have school",
+        "She can see that practice helps",
+        "Leo must give her all the answers",
+        "Every story is now very easy"
+      ],
+      "answer": 1,
+      "explanation": "Mia understands more and wants to keep practising."
+    },
+    {
+      "id": "r34-en-a1-a3",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Where could you keep words that are new to you?",
+      "choices": [
+        "In your notebook",
+        "On the school door",
+        "In a train station",
+        "On a classroom window"
+      ],
+      "answer": 0,
+      "explanation": "Mia writes two unfamiliar words in her notebook."
+    },
+    {
+      "id": "r34-en-a1-a4",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What is the best message from Mia's story?",
+      "choices": [
+        "Only read very easy books",
+        "Ask nobody for help",
+        "Try again and ask questions",
+        "Stop when a word is new"
+      ],
+      "answer": 2,
+      "explanation": "Mia learns through a second reading and asking for help."
+    }
+  ]
+}
