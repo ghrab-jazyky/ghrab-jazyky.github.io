@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "es",
+  "level": "B2",
+  "sourceTitle": "Cuando los comentarios parecen un fracaso",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Independent B2 inference and feedback assessment; pedagogical validation pending.",
+  "tabs": [
+    {
+      "id": "ideas",
+      "title": "Interpretar las ideas"
+    },
+    {
+      "id": "argumento",
+      "title": "Analizar el argumento"
+    },
+    {
+      "id": "transferencia",
+      "title": "Aplicar lo aprendido"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-es-b2-01",
+      "tab": "ideas",
+      "kind": "mc",
+      "q": "¿Por qué puede costarle aceptar una crítica a quien suele sacar buenas notas?",
+      "choices": [
+        "Porque los docentes siempre usan expresiones ofensivas.",
+        "Porque puede confundir una observación sobre el trabajo con un juicio personal.",
+        "Porque nunca ha recibido ningún comentario del profesorado.",
+        "Porque considera que las buenas notas no tienen valor."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "El primer párrafo distingue los comentarios sobre una tarea de los juicios acerca de la inteligencia."
+    },
+    {
+      "id": "r35-es-b2-02",
+      "tab": "ideas",
+      "kind": "mc",
+      "q": "¿Qué consecuencia tiene interpretar un comentario como un ataque a la propia capacidad?",
+      "choices": [
+        "El estudiante comprende inmediatamente cómo mejorar.",
+        "El docente deja de explicar los criterios de evaluación.",
+        "La nota anterior desaparece del expediente.",
+        "Puede resultar más difícil aprovechar una orientación útil."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "La reacción emocional descrita al principio puede impedir que se escuche la información útil."
+    },
+    {
+      "id": "r35-es-b2-03",
+      "tab": "ideas",
+      "kind": "mc",
+      "q": "¿Qué demuestra el contraste entre las dos reacciones a la nota de la redacción?",
+      "choices": [
+        "Que las calificaciones deberían negociarse después de clase.",
+        "Que toda observación sobre el estilo es subjetiva.",
+        "Que una misma nota permite respuestas con distinto potencial de aprendizaje.",
+        "Que la alumna debe aceptar cualquier interpretación de su texto."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "El segundo párrafo mantiene fija la nota y contrasta rechazarla con revisar el argumento."
+    },
+    {
+      "id": "r35-es-b2-04",
+      "tab": "argumento",
+      "kind": "mc",
+      "q": "¿Por qué revisar la organización del texto puede ser útil aunque no cambie la nota?",
+      "choices": [
+        "Porque facilita mejorar el razonamiento en una tarea futura.",
+        "Porque obliga al profesor a corregir el examen de nuevo.",
+        "Porque elimina la decepción sin necesidad de hablar.",
+        "Porque confirma que todos los datos iniciales eran irrelevantes."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "La revisión no modifica la calificación, pero prepara mejor el siguiente escrito."
+    },
+    {
+      "id": "r35-es-b2-05",
+      "tab": "argumento",
+      "kind": "mc",
+      "q": "¿Qué matiz introduce la posibilidad de que el docente malinterprete una idea?",
+      "choices": [
+        "Que el alumnado debe ignorar las correcciones que no le gustan.",
+        "Que toda evaluación es necesariamente arbitraria.",
+        "Que la crítica también necesita preguntas y pruebas para ser útil.",
+        "Que la alumna debería centrarse solo en obtener otra nota."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "El tercer párrafo admite errores del profesorado y defiende examinar la retroalimentación."
+    },
+    {
+      "id": "r35-es-b2-06",
+      "tab": "argumento",
+      "kind": "mc",
+      "q": "¿Por qué resulta más productiva una pregunta sobre un razonamiento concreto?",
+      "choices": [
+        "Porque permite localizar la dificultad y discutirla con precisión.",
+        "Porque impide que el profesor mantenga la nota original.",
+        "Porque transforma automáticamente la crítica en un elogio.",
+        "Porque demuestra que la alumna ya no necesita practicar."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Una pregunta concreta abre un diálogo sobre la lógica del texto y no solo sobre la nota."
+    },
+    {
+      "id": "r35-es-b2-07",
+      "tab": "transferencia",
+      "kind": "mc",
+      "q": "El alumno piensa que su conexión entre ideas está clara. ¿Qué debería hacer según el texto?",
+      "choices": [
+        "Aceptar en silencio que su profesor tiene siempre razón.",
+        "Mostrar la conexión y preguntar dónde deja de entenderse.",
+        "Rechazar la corrección sin volver a leerla.",
+        "Cambiar toda su redacción para evitar discutir el problema."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "El tercer párrafo propone comprobar si faltan datos o si se ha entendido mal una conexión."
+    },
+    {
+      "id": "r35-es-b2-08",
+      "tab": "transferencia",
+      "kind": "mc",
+      "q": "¿Cómo se relacionan la decepción y el aprendizaje en el último párrafo?",
+      "choices": [
+        "Una crítica solo sirve después de desaparecer la tristeza.",
+        "Disfrutar de los comentarios es necesario para progresar.",
+        "La decepción demuestra que la corrección es injusta.",
+        "La emoción puede existir sin impedir una reflexión posterior."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "El texto reconoce que la crítica molesta, pero no debe cerrar la conversación."
+    },
+    {
+      "id": "r35-es-b2-09",
+      "tab": "transferencia",
+      "kind": "mc",
+      "q": "¿Qué representa una calificación en la distinción final del artículo?",
+      "choices": [
+        "Una medida permanente de la identidad de una persona.",
+        "Una observación puntual que no define para siempre su capacidad.",
+        "Una explicación completa de todos los factores del aprendizaje.",
+        "Un juicio que debe aceptarse sin discutir con el docente."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "El último párrafo diferencia el rendimiento de un momento de la identidad personal."
+    },
+    {
+      "id": "r35-es-b2-10",
+      "tab": "transferencia",
+      "kind": "mc",
+      "q": "¿Qué haría un estudiante que toma en serio una sugerencia sin obedecerla ciegamente?",
+      "choices": [
+        "Aplicarla siempre, aunque contradiga las pruebas.",
+        "Despreciarla si produce una reacción desagradable.",
+        "Evitar futuras conversaciones con el profesor.",
+        "Examinar las pruebas y decidir qué cambios merecen probarse."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "El artículo propone poner a prueba las sugerencias antes de aceptarlas o rechazarlas."
+    }
+  ]
+}
