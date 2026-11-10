@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "es",
+  "level": "A2",
+  "sourceTitle": "Una fiesta con menos vasos",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent festival waste-reduction comprehension draft, pending second-teacher review",
+  "tabs": [
+    {
+      "id": "comprender",
+      "title": "Comprender lo que pasó"
+    },
+    {
+      "id": "razonar",
+      "title": "Explicar por qué"
+    },
+    {
+      "id": "aplicar",
+      "title": "Pensar en soluciones"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-es-a2-01",
+      "tab": "comprender",
+      "kind": "mc",
+      "q": "¿Qué situación llevó a los organizadores a cambiar las bebidas de la fiesta?",
+      "choices": [
+        "Los músicos dejaron de actuar.",
+        "Los vecinos encontraron demasiados vasos tirados.",
+        "Los puestos de comida cerraron.",
+        "El barrio dejó de tener visitantes."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "El primer párrafo describe los vasos abandonados y el trabajo nocturno de limpieza."
+    },
+    {
+      "id": "r39-es-a2-02",
+      "tab": "comprender",
+      "kind": "mc",
+      "q": "¿Qué recibe una persona cuando devuelve el vaso reutilizable?",
+      "choices": [
+        "Una entrada para otra fiesta.",
+        "Una bebida adicional.",
+        "Un vaso nuevo de regalo.",
+        "El dinero que había dejado como depósito."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "La asociación devuelve la pequeña cantidad cuando el vaso regresa."
+    },
+    {
+      "id": "r39-es-a2-03",
+      "tab": "comprender",
+      "kind": "mc",
+      "q": "¿Qué ofrecían las dos fuentes de agua?",
+      "choices": [
+        "Refrescos de pago.",
+        "Vasos de plástico nuevos.",
+        "Agua para rellenar las botellas.",
+        "Comida gratuita junto al escenario."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "El segundo párrafo menciona dos fuentes para llenar las botellas."
+    },
+    {
+      "id": "r39-es-a2-04",
+      "tab": "razonar",
+      "kind": "mc",
+      "q": "¿Por qué se abrió otra mesa para devolver vasos?",
+      "choices": [
+        "Para reducir las esperas que preocupaban a algunos visitantes.",
+        "Para vender bebidas más caras.",
+        "Para sustituir todos los puestos de comida.",
+        "Para guardar la basura recogida."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Los voluntarios responden a la preocupación por las colas con carteles y otra mesa."
+    },
+    {
+      "id": "r39-es-a2-05",
+      "tab": "razonar",
+      "kind": "mc",
+      "q": "¿Qué tipo de residuo seguía cerca del escenario?",
+      "choices": [
+        "Solo botellas de vidrio.",
+        "Todos los vasos devueltos.",
+        "Envoltorios de comida.",
+        "Los carteles que señalaban las fuentes."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "El tercer párrafo dice que todavía había envases de comida cerca del escenario."
+    },
+    {
+      "id": "r39-es-a2-06",
+      "tab": "razonar",
+      "kind": "mc",
+      "q": "¿Qué resultado indica que el nuevo sistema ayudó?",
+      "choices": [
+        "Casi todos los vasos volvieron al punto de recogida.",
+        "No quedó ningún tipo de basura.",
+        "Los visitantes dejaron de beber agua.",
+        "Los puestos regalaron todos sus productos."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "La mayoría de los vasos fue devuelta, aunque algunos faltaban."
+    },
+    {
+      "id": "r39-es-a2-07",
+      "tab": "razonar",
+      "kind": "mc",
+      "q": "¿Por qué quieren hablar los organizadores con los puestos de comida?",
+      "choices": [
+        "Para prohibir todas las fiestas.",
+        "Para reducir también otros envases sin perjudicar su trabajo.",
+        "Para vender los vasos perdidos.",
+        "Para quitar las fuentes gratuitas."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "La asociación quiere reducir envases manteniendo opciones prácticas y económicas para los vendedores."
+    },
+    {
+      "id": "r39-es-a2-08",
+      "tab": "aplicar",
+      "kind": "mc",
+      "q": "¿Qué demuestra que la solución todavía no era completa?",
+      "choices": [
+        "Ya no había visitantes en la fiesta.",
+        "Las fuentes de agua funcionaban.",
+        "Todos los vendedores estaban contentos.",
+        "Faltaban algunos vasos y seguían apareciendo envoltorios."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "El texto menciona vasos perdidos y basura de comida que permanece."
+    },
+    {
+      "id": "r39-es-a2-09",
+      "tab": "aplicar",
+      "kind": "mc",
+      "q": "Si muchos visitantes temen esperar demasiado, ¿qué medida es razonable?",
+      "choices": [
+        "Cobrar un depósito más alto.",
+        "Cerrar el acceso al agua.",
+        "Poner indicaciones claras y facilitar la devolución.",
+        "Eliminar los vasos reutilizables inmediatamente."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "La fiesta usó carteles y una mesa adicional para resolver ese problema."
+    },
+    {
+      "id": "r39-es-a2-10",
+      "tab": "aplicar",
+      "kind": "mc",
+      "q": "¿Cuál es el siguiente paso más coherente con la experiencia?",
+      "choices": [
+        "Trabajar también sobre los envases de comida y buscar soluciones viables.",
+        "Declarar que no queda ningún problema.",
+        "Volver a los vasos desechables sin evaluar los resultados.",
+        "Dejar la limpieza únicamente a los vecinos."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "La asociación propone implicar a los vendedores y atender el resto de los residuos."
+    }
+  ]
+}
