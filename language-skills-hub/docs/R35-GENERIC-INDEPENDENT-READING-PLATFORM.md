@@ -19,7 +19,7 @@
 
 ## Vytvořená druhá obsahová reference
 
-**Asteroids EN/B2**: 10 původních multiple-choice otázek zaměřených na interpretaci údajů o riziku, měření a nejistotu, experiment DART a odpovědnou komunikaci. Původní téma, text i 18 procvičovacích úloh jsou nezměněné. Všechny položky mají 4 možnosti, konkrétní oporu v odstavcích a učitelská vysvětlení.
+**Všech pět čtecích témat má již samostatnou EN/B2 referenci a všech pět také EN/B1.** K původní šestici Can Mistakes EN/A1–C2 nyní existuje osm dalších B1/B2 návrhů: Asteroids, Plastic Ocean, Email from a Friend a Instant Messages. Každý obsahuje deset původních MC úloh s konkrétní oporou v odstavci, čtyřmi možnostmi a učitelským vysvětlením; originální texty a procvičovací úlohy zůstávají beze změn.
 
 **Obsahové omezení:** Některé položky nutně vycházejí ze stejných tvrzení jako procvičovací karta. To, že otázky mají jiný text a ID, není důkaz didaktické nezávislosti; vyžaduje pozdější důkladný audit.
 
@@ -28,11 +28,11 @@
 - Počet možných variant Reading: **120**.
 - Počet možných variant Listening: **18**.
 - Celkem: **138**.
-- Obsahově nově navrženo: **7** (Can Mistakes EN A1–C2 = 6; Asteroids EN B2 = 1).
-- Zbývající nové sady: **131**.
+- Obsahově nově navrženo: **14** (Can Mistakes EN A1–C2 = 6; ostatní čtyři Reading témata EN/B1 a EN/B2 = 8).
+- Zbývající nové sady: **124**.
 - Obsahově schválené: **0**.
 
-`test-banks/coverage.json` tento stav eviduje. Nesmí automaticky přiřazovat `DRAFT_UNAPPROVED` variantám, které jsou pouze procvičovací, ani tvrdit, že nevyrobené jazykové mutace mají vlastní test.
+`test-banks/coverage.json` tento stav eviduje. Deterministický generátor `scripts/rebuild-test-bank-coverage.cjs --check` porovnává inventář se skutečnými JSON bankami a znovu ověřuje jejich původní zdroje. Přidání další banky vyžaduje regeneraci s přepínačem `--write` a nové CI, nikoliv ruční deklaraci schválení. Nesmí automaticky přiřazovat `DRAFT_UNAPPROVED` variantám, které jsou pouze procvičovací, ani tvrdit, že nevyrobené jazykové mutace mají vlastní test.
 
 ## QA před publikací
 
