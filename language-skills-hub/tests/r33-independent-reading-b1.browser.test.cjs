@@ -119,7 +119,7 @@ for(const [engineName,engine]of [['chromium',chromium],['webkit',webkit]]){
    assert.match(await page.locator('#loading').textContent(),/does not match this bank level/);
    assert.equal(await page.locator('#sessionStart').count(),0);
    await page.unrouteAll();
-   await page.goto(url('A2','r33unsupportedcase'));
+   await page.goto(url('X9','r33unsupportedcase'));
    await page.locator('#loading.error').waitFor();
    assert.match(await page.locator('#loading').textContent(),/Unsupported independent test level/);
    assert.equal(await page.locator('#workspace').isHidden(),true);
