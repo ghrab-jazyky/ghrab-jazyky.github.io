@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "C2",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 30,
+  "auditRevision": "R34-PO-C2-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "description": "Original independent C2 Plastic Ocean review-based test proposal pending human audit.",
+  "tabs": [
+    {
+      "id": "narrative",
+      "title": "Narratives and Responsibility",
+      "description": "Critically assess the documentarian's construction of causation."
+    },
+    {
+      "id": "qualification",
+      "title": "Nuance and Counterargument",
+      "description": "Weigh competing explanations and limits."
+    },
+    {
+      "id": "transfer",
+      "title": "Public Reasoning",
+      "description": "Apply the author's critique to environmental claims."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-po-c2-01",
+      "tab": "narrative",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What makes the screening's overflowing bin more significant than a simple accusation of hypocrisy?",
+      "choices": [
+        "It proves that the teenager did not really use a flask for three years.",
+        "It demonstrates that screenings can never reduce disposable waste.",
+        "It makes the documentary's personal example completely false.",
+        "It exposes institutional conditions left outside the film's model of responsibility."
+      ],
+      "answer": 3,
+      "explanation": "The opening juxtaposes a visible personal hero with the unseen venue arrangements."
+    },
+    {
+      "id": "r34-po-c2-02",
+      "tab": "narrative",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "How does the 'perfect consumer' narrative influence viewers' understanding of causation?",
+      "choices": [
+        "It provides a complete account of the municipal waste system.",
+        "It favours easily filmed individual acts over less visible procurement and infrastructure.",
+        "It demonstrates that individual decisions have no consequences.",
+        "It gives equal narrative weight to institutions and people."
+      ],
+      "answer": 1,
+      "explanation": "The text argues that omitted systemic details reflect a choice about causation."
+    },
+    {
+      "id": "r34-po-c2-03",
+      "tab": "narrative",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why does the author describe the family's recycling sequence as narratively convenient?",
+      "choices": [
+        "It offers a legible, uplifting action while ignoring what happens further along the system.",
+        "It shows that the family refuses to cooperate with waste collection.",
+        "It establishes that sorting waste is the only environmental action.",
+        "It questions whether the family actually lives in the town."
+      ],
+      "answer": 0,
+      "explanation": "The municipal plant's absence illustrates the limitations of the neatly resolved montage."
+    },
+    {
+      "id": "r34-po-c2-04",
+      "tab": "qualification",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What is the function of the author's refusal to dismiss the organisers merely as hypocrites?",
+      "choices": [
+        "It absolves every organisation of responsibility for waste.",
+        "It implies that venues should never attempt reusable systems.",
+        "It separates a valid logistical constraint from the film's misleading moral framing.",
+        "It reduces environmental responsibility solely to personal choice."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph two acknowledges practical barriers while maintaining the need to analyse arrangements."
+    },
+    {
+      "id": "r34-po-c2-05",
+      "tab": "qualification",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What is the significance of describing systemic determinism as an 'equally flattering absolution'?",
+      "choices": [
+        "Consumers have no influence on public facilities.",
+        "Institutional measures should always precede individual changes.",
+        "The teenager's flask proves that collective policy is unnecessary.",
+        "Blaming only institutions can excuse personal agency just as individual moralism excuses institutions."
+      ],
+      "answer": 3,
+      "explanation": "The author rejects both extremes and describes how everyday habits and public provision interact."
+    },
+    {
+      "id": "r34-po-c2-06",
+      "tab": "qualification",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why is the metal flask example framed as context-dependent rather than inherently virtuous?",
+      "choices": [
+        "Every reusable item is more harmful than a disposable cup.",
+        "Production, lifespan and actual use determine its comparative effects.",
+        "The teenager could not have influenced other students.",
+        "The film must calculate a universal environmental score."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph five contrasts the symbol with the conditions needed to judge its impact."
+    },
+    {
+      "id": "r34-po-c2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "What would be a more intellectually demanding edit of the festival deposit-cup trial?",
+      "choices": [
+        "Present only the successful shots to encourage immediate action.",
+        "Interpret a poor first year as proof that reuse never works.",
+        "Show both reduced litter and missing returns, then examine how costs were measured.",
+        "Avoid mention of the staff or people responsible for collecting cups."
+      ],
+      "answer": 2,
+      "explanation": "The author argues that the same evidence can be edited into either triumph or failure."
+    },
+    {
+      "id": "r34-po-c2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "How does the writer qualify the claim that urgency justifies simplifying environmental films?",
+      "choices": [
+        "Emotion can motivate action, but urgency does not excuse inaccuracies or unexamined uncertainty.",
+        "Any urgency necessarily makes a film less persuasive.",
+        "Viewers can only act after reading a complete technical report.",
+        "Artistic clarity is impossible without removing all emotion."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph six concedes the importance of an engaging film but insists on precision."
+    },
+    {
+      "id": "r34-po-c2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 7,
+      "q": "Why would an ending that offers questions rather than moral innocence be preferable?",
+      "choices": [
+        "It allows the audience to leave without considering responsibility.",
+        "It equips viewers to identify missing actors and test an appealing explanation.",
+        "It ensures that no individual changes their habits.",
+        "It gives the filmmaker a more dramatic closing soundtrack."
+      ],
+      "answer": 1,
+      "explanation": "The conclusion values a framework for critical inquiry over temporary virtue."
+    },
+    {
+      "id": "r34-po-c2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What is the strongest objection to treating either private habits or public infrastructure as entirely sufficient?",
+      "choices": [
+        "A single private act must always lead to a new public policy.",
+        "Public institutions cannot respond to choices made by consumers.",
+        "Environmental outcomes are independent of the systems available.",
+        "They influence each other through demand, collective action, provision and practice."
+      ],
+      "answer": 3,
+      "explanation": "The text explicitly describes traffic between private habit and public provision."
+    }
+  ]
+}
