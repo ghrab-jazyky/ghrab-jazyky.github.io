@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "A1",
+  "sourceVariantTitle": "A Message from Ben",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "auditRevision": "R36-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "Original independent A1 English email-reading draft; awaiting human pedagogical approval.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Understanding the Message",
+      "description": "Understand the writer and plans."
+    },
+    {
+      "id": "reasons",
+      "title": "Reasons and Details",
+      "description": "Connect details with reasons."
+    },
+    {
+      "id": "new-situations",
+      "title": "Responding to the Invitation",
+      "description": "Use what the message tells you."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-email-friend-en-a1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does Ben write about his new town?",
+      "choices": [
+        "He wants Maya to move into his house.",
+        "He is asking for help with homework.",
+        "He wants to share news with his old friend Maya.",
+        "He has lost his football boots."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph 1 of the A1 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What does Ben still miss from his old school?",
+      "choices": [
+        "Taking the bus with his new friend.",
+        "Having lunch and playing games with Maya.",
+        "Going to the cinema on Fridays.",
+        "Working in the garden with Eva."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph 1 of the A1 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why is Ben's father going to the station?",
+      "choices": [
+        "He needs to buy sandwiches.",
+        "He wants to visit the film park alone.",
+        "He is taking Ben to football practice.",
+        "He can meet Maya when her train arrives."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph 2 of the A1 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a1-04",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What makes the film night easy for Maya to attend?",
+      "choices": [
+        "It is free and she can travel there by train.",
+        "It lasts all Saturday morning.",
+        "Ben says every visitor gets a free train.",
+        "The park is next to Maya's house."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph 2 of the A1 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a1-05",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why do people bring blankets to the film?",
+      "choices": [
+        "The cinema has no chairs for children.",
+        "They want to give blankets to the dog.",
+        "They sit outside on the grass.",
+        "The blankets are for selling popcorn."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph 3 of the A1 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a1-06",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What happens to money from the hot chocolate and popcorn?",
+      "choices": [
+        "It helps the park.",
+        "It pays for Ben's train ticket.",
+        "It buys football shirts for Eva.",
+        "It goes to Maya's old school."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph 3 of the A1 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a1-07",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What is Ben's plan if the weather is bad?",
+      "choices": [
+        "Cancel the film for a whole year.",
+        "Watch the film at the youth centre.",
+        "Go swimming near the park.",
+        "Stay at the railway station."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph 4 of the A1 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a1-08",
+      "tab": "new-situations",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does Ben ask Maya to bring a warm jacket?",
+      "choices": [
+        "The train station has no roof.",
+        "His sister needs a new coat.",
+        "The film takes place in the snow.",
+        "Greenhill can be cold in the evening."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph 4 of the A1 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a1-09",
+      "tab": "new-situations",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What does Ben want Maya to write about?",
+      "choices": [
+        "Only the number of films she watches.",
+        "Her new class and what is happening in her life.",
+        "The price of food in Greenhill.",
+        "The story of a dog in the film."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph 4 of the A1 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a1-10",
+      "tab": "new-situations",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Maya cannot come this Saturday. What would be a friendly reply?",
+      "choices": [
+        "Ignore the message because she is busy.",
+        "Ask him to stop talking about Greenhill.",
+        "Say that his new friend must not come.",
+        "Tell Ben kindly and answer his questions about her class."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph 4 of the A1 email supports the answer through the writer's invitation, activities or personal circumstances."
+    }
+  ]
+}
