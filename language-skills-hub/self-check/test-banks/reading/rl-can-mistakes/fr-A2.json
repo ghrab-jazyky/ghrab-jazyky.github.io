@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "fr",
+  "level": "A2",
+  "sourceTitle": "Un petit changement, un meilleur résultat",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Independent A2 Reading draft, content review pending.",
+  "tabs": [
+    {
+      "id": "plan",
+      "title": "Une autre méthode"
+    },
+    {
+      "id": "raisons",
+      "title": "Pourquoi ça marche"
+    },
+    {
+      "id": "situations",
+      "title": "Au quotidien"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-fr-a2-01",
+      "tab": "plan",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Que change Daniel dans sa préparation cette semaine ?",
+      "choices": [
+        "Il révise seulement le dimanche.",
+        "Il travaille un peu pendant plusieurs jours.",
+        "Il reste éveillé toute la nuit.",
+        "Il demande à sa sœur de faire son travail."
+      ],
+      "answer": 1,
+      "explanation": "Daniel répartit son travail entre lundi, mardi et mercredi, au lieu de tout faire le soir."
+    },
+    {
+      "id": "r35-fr-a2-02",
+      "tab": "plan",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Comment Daniel voit-il qu'il ne comprend pas bien une idée ?",
+      "choices": [
+        "Il regarde sa dernière note.",
+        "Il regarde l'heure du contrôle.",
+        "Il copie les réponses du manuel.",
+        "Il essaie de l'expliquer à sa sœur."
+      ],
+      "answer": 3,
+      "explanation": "Dans le deuxième paragraphe, expliquer une idée lui montre ce qu'il doit revoir."
+    },
+    {
+      "id": "r35-fr-a2-03",
+      "tab": "plan",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Que fait Daniel mercredi avant de regarder les réponses ?",
+      "choices": [
+        "Il lit les réponses de sa sœur.",
+        "Il écrit un nouveau livre.",
+        "Il essaie de répondre lui-même à des questions.",
+        "Il demande au professeur de changer le contrôle."
+      ],
+      "answer": 2,
+      "explanation": "Mercredi, Daniel essaie des questions sans consulter les réponses."
+    },
+    {
+      "id": "r35-fr-a2-04",
+      "tab": "raisons",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Pourquoi Daniel veut-il éviter de se coucher trop tard ?",
+      "choices": [
+        "Il est fatigué le lendemain.",
+        "Il n'aime plus les sciences.",
+        "Sa sœur refuse de l'aider.",
+        "Il a perdu son cahier."
+      ],
+      "answer": 0,
+      "explanation": "Avant, Daniel travaillait le mercredi soir jusqu'à très tard et était fatigué jeudi."
+    },
+    {
+      "id": "r35-fr-a2-05",
+      "tab": "raisons",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Pourquoi Daniel relit-il ses notes mardi ?",
+      "choices": [
+        "Pour savoir combien de jours il reste.",
+        "Pour recopier son emploi du temps.",
+        "Pour comprendre une idée qu'il explique mal.",
+        "Pour préparer un examen d'histoire."
+      ],
+      "answer": 2,
+      "explanation": "Daniel relit ses notes lorsque son explication n'est pas claire."
+    },
+    {
+      "id": "r35-fr-a2-06",
+      "tab": "raisons",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Qu'apprécie Daniel après le contrôle ?",
+      "choices": [
+        "Il est plus calme et sait ce qu'il doit travailler.",
+        "Il a répondu correctement à tout.",
+        "Le contrôle est annulé pour la semaine suivante.",
+        "Il ne fera plus jamais d'erreurs."
+      ],
+      "answer": 0,
+      "explanation": "Il fait encore deux erreurs, mais se sent plus calme et note les points à revoir."
+    },
+    {
+      "id": "r35-fr-a2-07",
+      "tab": "situations",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Ton ami ne comprend pas un sujet. Que peut-il faire ?",
+      "choices": [
+        "Travailler toute la nuit sans pause.",
+        "Essayer de l'expliquer puis relire ses notes.",
+        "Attendre le dernier soir avant le contrôle.",
+        "Regarder toutes les réponses sans essayer."
+      ],
+      "answer": 1,
+      "explanation": "Comme Daniel, expliquer une idée permet de découvrir ce qui reste difficile."
+    },
+    {
+      "id": "r35-fr-a2-08",
+      "tab": "situations",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Tu fais deux erreurs dans un contrôle. Que ferait Daniel ?",
+      "choices": [
+        "Décider que sa méthode ne sert à rien.",
+        "Oublier immédiatement les questions difficiles.",
+        "Ne plus préparer le prochain contrôle.",
+        "Noter ce qu'il doit encore pratiquer."
+      ],
+      "answer": 3,
+      "explanation": "Dans le dernier paragraphe, Daniel écrit ce qu'il doit améliorer."
+    },
+    {
+      "id": "r35-fr-a2-09",
+      "tab": "situations",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Que comprend Daniel au sujet d'une bonne méthode ?",
+      "choices": [
+        "Elle doit être identique pour tous.",
+        "Elle peut être utile sans être parfaite.",
+        "Elle évite nécessairement toute erreur.",
+        "Elle fonctionne uniquement en sciences."
+      ],
+      "answer": 1,
+      "explanation": "Daniel comprend qu'une méthode utile n'a pas besoin d'être parfaite."
+    },
+    {
+      "id": "r35-fr-a2-10",
+      "tab": "situations",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Quel conseil correspond le mieux à l'expérience de Daniel ?",
+      "choices": [
+        "Réviser une seule nuit suffit toujours.",
+        "Il faut éviter de faire des pauses.",
+        "Il vaut mieux copier les réponses.",
+        "Travailler calmement et vérifier sa compréhension."
+      ],
+      "answer": 3,
+      "explanation": "La préparation de Daniel associe petites pauses et vérification de ses connaissances."
+    }
+  ]
+}
