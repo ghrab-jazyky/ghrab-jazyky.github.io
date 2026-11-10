@@ -33,7 +33,7 @@ for(const [engineName,engine]of [['chromium',chromium],['webkit',webkit]]){
    assert.equal((await page.goto(url('B1','r33b1scenarioone'))).status(),200);
    await page.locator('#sessionIntro:not([hidden])').waitFor({timeout:30000});
    assert.match(await page.locator('.mode').textContent(),/B1/);
-   assert.match(await page.title(),/Reading B1/);
+   assert.match(await page.title(),/Reading EN\/B1/);
    assert.match(await page.locator('#title').textContent(),/The Problem with Being Good at Everything/);
    assert.equal(await page.locator('#readingParagraphs p').count(),4);
    assert.equal(await page.locator('fieldset.question').count(),10);
