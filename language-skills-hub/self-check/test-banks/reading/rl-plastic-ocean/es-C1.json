@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "es",
+  "level": "C1",
+  "sourceTitle": "Lo que no entra en el plano",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent C1 film critique and institutional responsibility Reading tasks, pending teacher/Claude audit",
+  "tabs": [
+    {
+      "id": "imagenes",
+      "title": "Leer las imágenes"
+    },
+    {
+      "id": "argumentacion",
+      "title": "Evaluar la argumentación"
+    },
+    {
+      "id": "sistemas",
+      "title": "Pensar en los sistemas"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-es-c1-01",
+      "tab": "imagenes",
+      "kind": "mc",
+      "q": "¿Qué límite del lenguaje cinematográfico apunta la escena inicial de la bolsa?",
+      "choices": [
+        "Que una imagen nunca puede provocar emociones.",
+        "Que causar una emoción no equivale a explicar las causas de la contaminación.",
+        "Que la directora no sabe filmar objetos pequeños.",
+        "Que la película solo se ocupa del viento."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "La escena funciona visualmente, pero el texto cuestiona su capacidad explicativa."
+    },
+    {
+      "id": "r39-es-c1-02",
+      "tab": "imagenes",
+      "kind": "mc",
+      "q": "¿Qué problema encuentra la crítica en la manera de mostrar al personal de limpieza?",
+      "choices": [
+        "Las imágenes son demasiado cortas.",
+        "Los trabajadores aparecen siempre de noche.",
+        "La película exagera la cantidad de residuos.",
+        "Los trabajadores son visibles, pero apenas se oyen sus condiciones y decisiones."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "La reseña distingue la visibilidad de los trabajadores de la posibilidad de explicar su situación."
+    },
+    {
+      "id": "r39-es-c1-03",
+      "tab": "imagenes",
+      "kind": "mc",
+      "q": "¿Por qué resulta especialmente reveladora la reunión municipal?",
+      "choices": [
+        "Porque la técnica demuestra que cualquier solución es gratuita.",
+        "Porque los comerciantes rechazan toda forma de reutilización.",
+        "Porque aparecen exigencias de almacenamiento, limpieza y financiación.",
+        "Porque el ayuntamiento decide prohibir las fiestas."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "La escena admite la complejidad práctica de un sistema que parecía sencillo."
+    },
+    {
+      "id": "r39-es-c1-04",
+      "tab": "argumentacion",
+      "kind": "mc",
+      "q": "¿Qué demuestra la intervención de los comerciantes sobre los vasos reutilizables?",
+      "choices": [
+        "Las buenas intenciones necesitan organización y recursos para convertirse en acciones.",
+        "El entusiasmo de los participantes garantiza el éxito.",
+        "Los vasos reutilizables no pueden funcionar en ninguna ciudad.",
+        "Una reunión municipal sustituye cualquier prueba real."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Los comerciantes exponen condiciones materiales para aplicar el proyecto."
+    },
+    {
+      "id": "r39-es-c1-05",
+      "tab": "argumentacion",
+      "kind": "mc",
+      "q": "¿Qué efecto tiene repetir la imagen del joven que tira un envase?",
+      "choices": [
+        "Amplía el debate sobre los costes del sistema.",
+        "Permite conocer al joven en profundidad.",
+        "Desplaza la atención desde la organización hacia la culpa individual.",
+        "Demuestra que la reunión anterior había sido inútil."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "El montaje pasa de las alternativas colectivas a juzgar a un desconocido."
+    },
+    {
+      "id": "r39-es-c1-06",
+      "tab": "argumentacion",
+      "kind": "mc",
+      "q": "¿Qué denuncia la crítica al comparar a la técnica municipal, los trabajadores y el joven?",
+      "choices": [
+        "Que el montaje distribuye de forma desigual la capacidad de explicar y actuar.",
+        "Que el cine siempre debe dedicar el mismo tiempo a cada persona.",
+        "Que los trabajadores se negaron a hablar con la directora.",
+        "Que la técnica carecía de conocimientos sobre el proyecto."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "La técnica puede argumentar, los trabajadores aparecen silenciosos y el joven es un ejemplo negativo."
+    },
+    {
+      "id": "r39-es-c1-07",
+      "tab": "argumentacion",
+      "kind": "mc",
+      "q": "¿Qué aporta la confesión sobre los viajes adicionales a la estación de lavado?",
+      "choices": [
+        "La prueba de que deben abandonarse todos los vasos reutilizables.",
+        "Información para revisar y mejorar una iniciativa real.",
+        "Una justificación de la culpa individual.",
+        "Una razón para dejar de medir los resultados."
+      ],
+      "answer": 1,
+      "sourceParagraph": 6,
+      "explanation": "El reconocimiento de un coste inesperado permite evaluar y mejorar la propuesta."
+    },
+    {
+      "id": "r39-es-c1-08",
+      "tab": "sistemas",
+      "kind": "mc",
+      "q": "¿Por qué esa confesión hace más creíble el proyecto, según la reseña?",
+      "choices": [
+        "Porque demuestra que el gasto ya no importa.",
+        "Porque los voluntarios ocultan el trabajo adicional.",
+        "Porque deja claro que no hay preguntas pendientes.",
+        "Porque permite reconocer límites sin negar el objetivo ambiental."
+      ],
+      "answer": 3,
+      "sourceParagraph": 6,
+      "explanation": "La transparencia acerca de las dificultades permite una evaluación razonada."
+    },
+    {
+      "id": "r39-es-c1-09",
+      "tab": "sistemas",
+      "kind": "mc",
+      "q": "¿Qué idea sostiene el argumento sobre las decisiones estéticas del cine?",
+      "choices": [
+        "Las imágenes deben evitar cualquier interpretación.",
+        "Solo los informes administrativos pueden ser rigurosos.",
+        "La selección de voces e imágenes influye en quién parece responsable.",
+        "La música hace imposible el análisis de un problema."
+      ],
+      "answer": 2,
+      "sourceParagraph": 5,
+      "explanation": "El artículo destaca que la representación distribuye autoridad y responsabilidad."
+    },
+    {
+      "id": "r39-es-c1-10",
+      "tab": "sistemas",
+      "kind": "mc",
+      "q": "¿Qué habría querido ver con más claridad la persona que escribe la reseña?",
+      "choices": [
+        "Las decisiones colectivas que condicionan el recorrido de los residuos.",
+        "La historia personal de cada asistente al festival.",
+        "Un final con más imágenes de playas limpias.",
+        "Una explicación de por qué se rodó la primera escena."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "La conclusión reclama mostrar las decisiones colectivas alrededor de los residuos."
+    }
+  ]
+}
