@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-CONTENT-AUDIT-1",
+  "description": "Original A1 independent assessment draft with ten new inference, argument or transfer questions. Content requires teacher approval.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Understanding the Story",
+      "description": "Find clues about Mia's reading."
+    },
+    {
+      "id": "change",
+      "title": "Changes and Feelings",
+      "description": "Notice how Mia feels and learns."
+    },
+    {
+      "id": "application",
+      "title": "Try It Yourself",
+      "description": "Choose a helpful action in a new situation."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-a1-meaning-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does Mia write a question mark in her book?",
+      "choices": [
+        "She wants help with a part she does not understand.",
+        "She wants to give the book to Leo.",
+        "She wants to read only one page.",
+        "She wants to write a new story."
+      ],
+      "answer": 0,
+      "explanation": "The mark shows where the sentence about a train is difficult for her."
+    },
+    {
+      "id": "r34-en-a1-meaning-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "How does the picture help Mia?",
+      "choices": [
+        "It tells her how the story ends.",
+        "It gives her a clue about one new word.",
+        "It shows her which book to take home.",
+        "It helps her read the story faster."
+      ],
+      "answer": 1,
+      "explanation": "Leo points to the picture, and Mia understands one word by looking at it."
+    },
+    {
+      "id": "r34-en-a1-meaning-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does Mia still speak to her teacher?",
+      "choices": [
+        "Leo is not her friend now.",
+        "She has lost her notebook.",
+        "There is another word she cannot understand.",
+        "She wants a different story."
+      ],
+      "answer": 2,
+      "explanation": "The teacher helps Mia with the second word after the picture helps with the first."
+    },
+    {
+      "id": "r34-en-a1-change-04",
+      "tab": "change",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "How does Mia feel when she finds new words on Monday?",
+      "choices": [
+        "Angry with her younger brother.",
+        "Happy that every word is easy.",
+        "Ready to teach the whole class.",
+        "Worried about the difficult reading."
+      ],
+      "answer": 3,
+      "explanation": "The first paragraph describes her concern when she cannot understand everything."
+    },
+    {
+      "id": "r34-en-a1-change-05",
+      "tab": "change",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why does Mia smile after reading on Friday?",
+      "choices": [
+        "Her teacher has given her a prize.",
+        "She can understand more than before.",
+        "She no longer needs to read books.",
+        "Leo has done the reading for her."
+      ],
+      "answer": 1,
+      "explanation": "The last paragraph says the new story remains difficult, but her understanding improves."
+    },
+    {
+      "id": "r34-en-a1-change-06",
+      "tab": "change",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What does Mia want to do after Friday?",
+      "choices": [
+        "Stop reading until the next school year.",
+        "Read only with Leo's help.",
+        "Write a book about trains.",
+        "Keep practising her reading."
+      ],
+      "answer": 3,
+      "explanation": "Mia plans to practise again the next day because she can see progress."
+    },
+    {
+      "id": "r34-en-a1-application-07",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Sam does not understand a word in a picture story. What can he try?",
+      "choices": [
+        "Look at the picture for a clue.",
+        "Stop reading the whole story.",
+        "Ask a friend to read every page.",
+        "Choose a word without looking."
+      ],
+      "answer": 0,
+      "explanation": "Mia uses a picture as a clue, so this is a suitable first step for Sam."
+    },
+    {
+      "id": "r34-en-a1-application-08",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "A friend asks you to read a sentence again. What would Mia probably do?",
+      "choices": [
+        "Hide the book in a bag.",
+        "Say that reading is not useful.",
+        "Try reading it one more time.",
+        "Ask the friend to do all the reading."
+      ],
+      "answer": 2,
+      "explanation": "Mia reads lines again for her brother and becomes more confident through practice."
+    },
+    {
+      "id": "r34-en-a1-application-09",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "You have two new words to learn. Which plan is like Mia's?",
+      "choices": [
+        "Forget the words and turn the page.",
+        "Write the words down and ask for help.",
+        "Read only the words you already know.",
+        "Wait until someone tells you the whole story."
+      ],
+      "answer": 1,
+      "explanation": "Mia asks about unfamiliar words and writes them in her notebook."
+    },
+    {
+      "id": "r34-en-a1-application-10",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What would be a good message to Mia after Friday?",
+      "choices": [
+        "You must understand every word today.",
+        "You should never ask for help.",
+        "You only did well because reading was easy.",
+        "You kept trying and now understand more."
+      ],
+      "answer": 3,
+      "explanation": "Mia has made progress even though the reading is still challenging."
+    }
+  ]
+}
