@@ -1,4 +1,4 @@
-/* R35/R36 isolated EN/A1-C2 Listening teacher QA reference, not part of catalog.
+/* R35–R37 isolated three-topic EN/A1-C2 Listening teacher QA, not part of catalog.
  * Original audio/video is played by teacher; original source hash is checked.
  */
 (()=>{
@@ -17,8 +17,14 @@
  let bank=null,timed=null,submitted=false;
  const answers=Object.create(null);
  const marks=[null,null];
- const originalTopic='ll-harrison-ford';
  const params=new URLSearchParams(location.search);
+ const topics={
+  'll-harrison-ford':{slug:'harrison-ford',title:'Harrison Ford · Life Achievement Speech'},
+  'll-matthew-oscars':{slug:'matthew-oscars',title:'Matthew McConaughey · Oscars 2014'},
+  'll-peaky-no-fighting':{slug:'peaky-no-fighting',title:'Peaky Blinders · No Fighting'}
+ };
+ const originalTopic=params.get('topic')||'ll-harrison-ford';
+ const topic=Object.prototype.hasOwnProperty.call(topics,originalTopic)?topics[originalTopic]:null;
  const level=params.get('level')||'B2';
  const valid=(ok,msg)=>{if(!ok)throw new Error(msg)};
  async function get(url,isJson=false){
@@ -184,12 +190,13 @@
    const requestedMinutes=Number(params.get('timer'));
    valid(sourceCore.LEVELS.includes(level),'Unsupported Listening CEFR level');
    valid(Number.isInteger(requestedMinutes)&&requestedMinutes>=5&&
-    requestedMinutes<=120&&/^r3[56][a-z0-9_-]{4,36}$/i.test(params.get('attempt')||''),
-    'Required ?level=A1-C2&timer=minutes&attempt=r35... or r36... for teacher QA');
+    requestedMinutes<=120&&/^r3[567][a-z0-9_-]{4,36}$/i.test(params.get('attempt')||''),
+    'Required ?topic=ll-...&level=A1-C2&timer=minutes&attempt=r35/r36/r37... for teacher QA');
+   valid(!!topic,'Unsupported independent Listening topic');
    const [manifest,html,independent]=await Promise.all([
     get('../../../version.json',true),
-    get('../../../poslech/harrison-ford/index.html'),
-    get('ll-harrison-ford/en-'+level+'.json',true)
+    get('../../../poslech/'+topic.slug+'/index.html'),
+    get(originalTopic+'/en-'+level+'.json',true)
    ]);
    valid(manifest.version==='R31'&&manifest.backendEnabled===false,
     'Unexpected production source baseline');
@@ -202,11 +209,19 @@
    valid(independent.durationMinutesSuggested===requestedMinutes,
     'The source-specific time limit does not match the reviewed draft');
    bank=independent;
-   document.title='Independent Listening '+level+' – unapproved teacher QA';
-   document.querySelector('.mode').textContent=(level==='B2'?'R35':'R36')+' DRAFT · EN/'+level;
+   document.title='Independent Listening '+level+' – '+topic.title+' – unapproved QA';
+   const revision=originalTopic==='ll-harrison-ford'?(level==='B2'?'R35':'R36'):'R37';
+   document.querySelector('.mode').textContent=revision+' DRAFT · EN/'+level;
+   $('title').textContent=topic.title;
    document.querySelector('.hero .subtitle').textContent='English '+level+
     ' · 6 objective items + 2 teacher-reviewed responses · '+requestedMinutes+' minutes';
    document.querySelector('.listening-heading .pill').textContent='EN · '+level;
+   document.querySelector('.listening-heading .kicker').textContent=
+    'ENGLISH '+level+' · TWO TEACHER-CONTROLLED PLAYBACKS';
+   if(originalTopic==='ll-peaky-no-fighting'){
+    const notice=document.querySelector('.r35-warning');
+    notice.textContent+=' The original dialogue includes aggressive language and profanity; teacher must check age suitability.';
+   }
    render();
    timed=window.LSHSessionUI.mount({
     skill:'listening',topic:originalTopic,lang:'en',level,
