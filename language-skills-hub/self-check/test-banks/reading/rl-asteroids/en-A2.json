@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 18,
+  "auditRevision": "R34-AST-A2-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "tabs": [
+    {
+      "id": "experience",
+      "title": "The Club Visit",
+      "description": "Understand what Nina saw and learnt."
+    },
+    {
+      "id": "logic",
+      "title": "Causes and Effects",
+      "description": "Connect scientific ideas and examples."
+    },
+    {
+      "id": "transfer",
+      "title": "New Situations",
+      "description": "Use information from the article."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-ast-a2-01",
+      "tab": "experience",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why is the asteroid belt not like a busy road?",
+      "choices": [
+        "It has no objects moving around the Sun.",
+        "Most of its objects are satellites.",
+        "Its rocks are separated by a lot of empty space.",
+        "It exists only in photographs."
+      ],
+      "answer": 2,
+      "explanation": "The teacher explains that the asteroid belt contains a great deal of empty space."
+    },
+    {
+      "id": "r34-ast-a2-02",
+      "tab": "experience",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What did the students use their telescope to examine?",
+      "choices": [
+        "The Moon and its craters.",
+        "The surface of Dimorphos.",
+        "A spacecraft flying near Jupiter.",
+        "A new asteroid close to the school."
+      ],
+      "answer": 0,
+      "explanation": "They could not see the small dark asteroids and instead observed the Moon."
+    },
+    {
+      "id": "r34-ast-a2-03",
+      "tab": "experience",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What made the DART film especially interesting to Nina?",
+      "choices": [
+        "It proved that all asteroids would hit Earth.",
+        "It showed that a spacecraft could change a space rock's movement.",
+        "It explained why the Moon has rain.",
+        "It showed the first human flight to Mars."
+      ],
+      "answer": 1,
+      "explanation": "Nina finds it amazing that a spacecraft can give a space rock a small push."
+    },
+    {
+      "id": "r34-ast-a2-04",
+      "tab": "logic",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why do astronomers observe a newly found object more than once?",
+      "choices": [
+        "They want to make it brighter.",
+        "They need to discover its colour every day.",
+        "They want to turn it into a comet.",
+        "They need a better idea of its future path."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph two says further observations help astronomers know where an object will go."
+    },
+    {
+      "id": "r34-ast-a2-05",
+      "tab": "logic",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why are old marks on the Moon easier to see than similar marks on Earth?",
+      "choices": [
+        "Earth's rocks are always softer.",
+        "The Moon has more telescopes.",
+        "The Moon has no wind or rain to wear them away.",
+        "All space rocks fall only on the Moon."
+      ],
+      "answer": 2,
+      "explanation": "Without weather, lunar craters remain visible for millions of years."
+    },
+    {
+      "id": "r34-ast-a2-06",
+      "tab": "logic",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What important difference does the teacher make about an asteroid near Earth?",
+      "choices": [
+        "Being near does not mean it will hit us.",
+        "Near-Earth objects never orbit the Sun.",
+        "Nearby objects are bigger than all others.",
+        "Every object close to Earth is already dangerous."
+      ],
+      "answer": 0,
+      "explanation": "The teacher says a close approach is not the same as an impact."
+    },
+    {
+      "id": "r34-ast-a2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A friend says, 'The club did not see an asteroid, so the visit was useless.' What could Nina say?",
+      "choices": [
+        "The telescope was too small to see the Moon.",
+        "Space rocks do not leave any marks.",
+        "The film was not about asteroids.",
+        "Seeing lunar craters also helped them understand space rocks."
+      ],
+      "answer": 3,
+      "explanation": "The Moon observation showed craters made by impacts, contributing to the lesson."
+    },
+    {
+      "id": "r34-ast-a2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A scientist sees a new object once. What should happen before a confident prediction?",
+      "choices": [
+        "People should decide its name first.",
+        "The object should be watched on more occasions.",
+        "The club should take photos of Earth.",
+        "The scientist should stop using computers."
+      ],
+      "answer": 1,
+      "explanation": "Repeated observations make the orbit prediction more reliable."
+    },
+    {
+      "id": "r34-ast-a2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why is a small change to an asteroid's orbit important for protecting Earth?",
+      "choices": [
+        "It could help an object miss a dangerous future path.",
+        "It would stop the Sun from moving.",
+        "It would turn all asteroids into moons.",
+        "It would make every space rock much smaller."
+      ],
+      "answer": 0,
+      "explanation": "The DART test illustrates a possible small push as a form of planetary defence."
+    },
+    {
+      "id": "r34-ast-a2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What did Nina learn about staying safe from asteroids?",
+      "choices": [
+        "People should stop looking through telescopes.",
+        "A movie gives scientists all the answers.",
+        "Observing possible hazards is a useful first step.",
+        "Spacecraft can remove every threat without study."
+      ],
+      "answer": 2,
+      "explanation": "The article ends by stressing that watching the sky starts the process of protecting Earth."
+    }
+  ],
+  "description": "Original independent A2 asteroid Reading assessment draft; pending content validation"
+}
