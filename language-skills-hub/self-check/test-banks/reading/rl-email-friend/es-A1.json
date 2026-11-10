@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "es",
+  "level": "A1",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-es-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Este sábado hay una noche de cine en el parque.",
+        "¡Hola, Maya!",
+        "Si llueve, veremos la película en el centro juvenil.",
+        "La película empieza a las seis."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: ¡Hola, Maya!",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Este sábado hay una noche de cine en el parque.",
+        "Si llueve, veremos la película en el centro juvenil.",
+        "¡Hola, Maya!",
+        "Espero que puedas venir, pero entiendo si estás ocupada."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Este sábado hay una noche de cine en el parque.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "¡Hola, Maya!",
+        "Este sábado hay una noche de cine en el parque.",
+        "Soy Ben, de tu antiguo colegio.",
+        "Si llueve, veremos la película en el centro juvenil."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Si llueve, veremos la película en el centro juvenil.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "La película empieza a las seis.",
+        "Espero que puedas venir, pero entiendo si estás ocupada.",
+        "Soy Ben, de tu antiguo colegio.",
+        "Es gratis y podemos llevar bocadillos."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Soy Ben, de tu antiguo colegio.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Espero que puedas venir, pero entiendo si estás ocupada.",
+        "La película empieza a las seis.",
+        "Soy Ben, de tu antiguo colegio.",
+        "Escríbeme antes del jueves, por favor."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: La película empieza a las seis.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Espero que puedas venir, pero entiendo si estás ocupada.",
+        "Soy Ben, de tu antiguo colegio.",
+        "La película empieza a las seis.",
+        "Ahora vivo en Greenhill, cerca de un parque pequeño."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Espero que puedas venir, pero entiendo si estás ocupada.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Es gratis y podemos llevar bocadillos.",
+        "Escríbeme antes del jueves, por favor.",
+        "Mi hermana también quiere verla, pero solo tiene ocho años.",
+        "Ahora vivo en Greenhill, cerca de un parque pequeño."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Ahora vivo en Greenhill, cerca de un parque pequeño.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Escríbeme antes del jueves, por favor.",
+        "Ahora vivo en Greenhill, cerca de un parque pequeño.",
+        "Es gratis y podemos llevar bocadillos.",
+        "Cuéntame también cómo es tu nueva clase."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Es gratis y podemos llevar bocadillos.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Ahora vivo en Greenhill, cerca de un parque pequeño.",
+        "Escríbeme antes del jueves, por favor.",
+        "Es gratis y podemos llevar bocadillos.",
+        "Echo de menos nuestros almuerzos y los juegos después de clase."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Escríbeme antes del jueves, por favor.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-es-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Echo de menos nuestros almuerzos y los juegos después de clase.",
+        "Mi hermana también quiere verla, pero solo tiene ocho años.",
+        "Cuéntame también cómo es tu nueva clase.",
+        "Puedes venir en tren."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Echo de menos nuestros almuerzos y los juegos después de clase.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "fr",
+  "level": "A1",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-fr-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Samedi, il y a une soirée cinéma dans le parc.",
+        "Salut Maya !",
+        "S'il pleut, nous regarderons le film à la maison des jeunes.",
+        "Le film commence à six heures."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Salut Maya !",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Samedi, il y a une soirée cinéma dans le parc.",
+        "S'il pleut, nous regarderons le film à la maison des jeunes.",
+        "Salut Maya !",
+        "J'espère que tu peux venir, mais je comprends si tu es occupée."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Samedi, il y a une soirée cinéma dans le parc.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Salut Maya !",
+        "Samedi, il y a une soirée cinéma dans le parc.",
+        "C'est Ben, de ton ancienne école.",
+        "S'il pleut, nous regarderons le film à la maison des jeunes."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: S'il pleut, nous regarderons le film à la maison des jeunes.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Le film commence à six heures.",
+        "J'espère que tu peux venir, mais je comprends si tu es occupée.",
+        "C'est Ben, de ton ancienne école.",
+        "C'est gratuit et nous pouvons apporter des sandwichs."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: C'est Ben, de ton ancienne école.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "J'espère que tu peux venir, mais je comprends si tu es occupée.",
+        "Le film commence à six heures.",
+        "C'est Ben, de ton ancienne école.",
+        "Écris-moi avant jeudi, s'il te plaît."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Le film commence à six heures.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "J'espère que tu peux venir, mais je comprends si tu es occupée.",
+        "C'est Ben, de ton ancienne école.",
+        "Le film commence à six heures.",
+        "J'habite maintenant à Greenhill, près d'un petit parc."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: J'espère que tu peux venir, mais je comprends si tu es occupée.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "C'est gratuit et nous pouvons apporter des sandwichs.",
+        "Écris-moi avant jeudi, s'il te plaît.",
+        "Ma sœur veut aussi voir le film, mais elle n'a que huit ans.",
+        "J'habite maintenant à Greenhill, près d'un petit parc."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: J'habite maintenant à Greenhill, près d'un petit parc.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Écris-moi avant jeudi, s'il te plaît.",
+        "J'habite maintenant à Greenhill, près d'un petit parc.",
+        "C'est gratuit et nous pouvons apporter des sandwichs.",
+        "Raconte-moi aussi ta nouvelle classe."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: C'est gratuit et nous pouvons apporter des sandwichs.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "J'habite maintenant à Greenhill, près d'un petit parc.",
+        "Écris-moi avant jeudi, s'il te plaît.",
+        "C'est gratuit et nous pouvons apporter des sandwichs.",
+        "Nos déjeuners et nos jeux après les cours me manquent."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Écris-moi avant jeudi, s'il te plaît.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Nos déjeuners et nos jeux après les cours me manquent.",
+        "Ma sœur veut aussi voir le film, mais elle n'a que huit ans.",
+        "Raconte-moi aussi ta nouvelle classe.",
+        "Tu peux venir en train."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Nos déjeuners et nos jeux après les cours me manquent.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

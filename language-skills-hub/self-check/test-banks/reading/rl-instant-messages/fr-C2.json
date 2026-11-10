@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "fr",
+  "level": "C2",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-instant-messages-fr-c2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "En ce sens, les conventions qui se sont développées autour des messages forment une trousse de secours pour la voix absente.",
+        "Les linguistes ont longtemps eu du mal à classer le message instantané.",
+        "Une seconde difficulté tient à la permanence.",
+        "Prenons un cas que bien des lecteurs reconnaîtront, même si les détails sont inventés."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Les linguistes ont longtemps eu du mal à classer le message instantané.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "En ce sens, les conventions qui se sont développées autour des messages forment une trousse de secours pour la voix absente.",
+        "Une seconde difficulté tient à la permanence.",
+        "Prenons un cas que bien des lecteurs reconnaîtront, même si les détails sont inventés.",
+        "Aucune de ces réponses n’est entièrement satisfaisante, ce qui laisse penser que le problème tient en partie à nos attentes envers le support."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: En ce sens, les conventions qui se sont développées autour des messages forment une trousse de secours pour la voix absente.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Prenons un cas que bien des lecteurs reconnaîtront, même si les détails sont inventés.",
+        "Aucune de ces réponses n’est entièrement satisfaisante, ce qui laisse penser que le problème tient en partie à nos attentes envers le support.",
+        "Ce qu’il faut plutôt, c’est une forme de littératie que les écoles commencent à peine à enseigner.",
+        "Une seconde difficulté tient à la permanence."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Une seconde difficulté tient à la permanence.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Aucune de ces réponses n’est entièrement satisfaisante, ce qui laisse penser que le problème tient en partie à nos attentes envers le support.",
+        "Ce qu’il faut plutôt, c’est une forme de littératie que les écoles commencent à peine à enseigner.",
+        "Prenons un cas que bien des lecteurs reconnaîtront, même si les détails sont inventés.",
+        "Les linguistes ont longtemps eu du mal à classer le message instantané."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Prenons un cas que bien des lecteurs reconnaîtront, même si les détails sont inventés.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 5?",
+      "choices": [
+        "Ce qu’il faut plutôt, c’est une forme de littératie que les écoles commencent à peine à enseigner.",
+        "Aucune de ces réponses n’est entièrement satisfaisante, ce qui laisse penser que le problème tient en partie à nos attentes envers le support.",
+        "Les linguistes ont longtemps eu du mal à classer le message instantané.",
+        "En ce sens, les conventions qui se sont développées autour des messages forment une trousse de secours pour la voix absente."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraphe 5: Aucune de ces réponses n’est entièrement satisfaisante, ce qui laisse penser que le problème tient en partie à nos attentes envers le support.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 6?",
+      "choices": [
+        "Ce qu’il faut plutôt, c’est une forme de littératie que les écoles commencent à peine à enseigner.",
+        "Les linguistes ont longtemps eu du mal à classer le message instantané.",
+        "En ce sens, les conventions qui se sont développées autour des messages forment une trousse de secours pour la voix absente.",
+        "Une seconde difficulté tient à la permanence."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "Paragraphe 6: Ce qu’il faut plutôt, c’est une forme de littératie que les écoles commencent à peine à enseigner.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Les émojis, les lettres répétées et les minuscules choisies à dessein restituent une partie du ton et du rythme que la parole fournit d’elle-même.",
+        "Les paroles s’envolent, les messages restent.",
+        "Dans le groupe d’une classe, un élève se moque d’une nouvelle règle du lycée en exagérant volontairement et ajoute trois émojis qui rient aux larmes.",
+        "Il est tapé, mais composé au rythme d’une conversation ; il est informel, mais peut être enregistré, transféré et cité des années plus tard."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Il est tapé, mais composé au rythme d’une conversation ; il est informel, mais peut être enregistré, transféré et cité des années plus tard.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Les paroles s’envolent, les messages restent.",
+        "Dans le groupe d’une classe, un élève se moque d’une nouvelle règle du lycée en exagérant volontairement et ajoute trois émojis qui rient aux larmes.",
+        "Les émojis, les lettres répétées et les minuscules choisies à dessein restituent une partie du ton et du rythme que la parole fournit d’elle-même.",
+        "Nous traitons volontiers les messages comme de la parole quand nous les écrivons, et comme des documents quand nous les lisons."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Les émojis, les lettres répétées et les minuscules choisies à dessein restituent une partie du ton et du rythme que la parole fournit d’elle-même.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Dans le groupe d’une classe, un élève se moque d’une nouvelle règle du lycée en exagérant volontairement et ajoute trois émojis qui rient aux larmes.",
+        "Les paroles s’envolent, les messages restent.",
+        "Nous traitons volontiers les messages comme de la parole quand nous les écrivons, et comme des documents quand nous les lisons.",
+        "Envoyer un message est facile ; en lire un, c’est-à-dire se demander pour qui il a été écrit, ce qui l’a précédé et ce qui a été coupé, est bien plus difficile."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Les paroles s’envolent, les messages restent.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-c2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Dans le groupe d’une classe, un élève se moque d’une nouvelle règle du lycée en exagérant volontairement et ajoute trois émojis qui rient aux larmes.",
+        "Nous traitons volontiers les messages comme de la parole quand nous les écrivons, et comme des documents quand nous les lisons.",
+        "Envoyer un message est facile ; en lire un, c’est-à-dire se demander pour qui il a été écrit, ce qui l’a précédé et ce qui a été coupé, est bien plus difficile.",
+        "Il est tapé, mais composé au rythme d’une conversation ; il est informel, mais peut être enregistré, transféré et cité des années plus tard."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Dans le groupe d’une classe, un élève se moque d’une nouvelle règle du lycée en exagérant volontairement et ajoute trois émojis qui rient aux larmes.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

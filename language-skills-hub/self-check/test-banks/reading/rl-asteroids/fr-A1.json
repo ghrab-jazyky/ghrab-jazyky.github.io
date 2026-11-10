@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "fr",
+  "level": "A1",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-asteroids-fr-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Les scientifiques cherchent les astéroïdes avec de grands télescopes.",
+        "Un astéroïde est une roche dans l’espace.",
+        "Un astéroïde peut-il toucher la Terre ?",
+        "Un télescope permet de voir des choses très loin."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Un astéroïde est une roche dans l’espace.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Les scientifiques cherchent les astéroïdes avec de grands télescopes.",
+        "Un astéroïde peut-il toucher la Terre ?",
+        "Un astéroïde est une roche dans l’espace.",
+        "Oui, mais un très grand choc est rare."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Les scientifiques cherchent les astéroïdes avec de grands télescopes.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Un astéroïde est une roche dans l’espace.",
+        "Les scientifiques cherchent les astéroïdes avec de grands télescopes.",
+        "Il tourne autour du Soleil, comme la Terre.",
+        "Un astéroïde peut-il toucher la Terre ?"
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Un astéroïde peut-il toucher la Terre ?",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Un télescope permet de voir des choses très loin.",
+        "Oui, mais un très grand choc est rare.",
+        "Il tourne autour du Soleil, comme la Terre.",
+        "Les scientifiques prennent des photos et regardent où vont les roches."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Il tourne autour du Soleil, comme la Terre.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Oui, mais un très grand choc est rare.",
+        "Un télescope permet de voir des choses très loin.",
+        "Il tourne autour du Soleil, comme la Terre.",
+        "De petits morceaux de roche arrivent parfois dans l’air autour de la Terre."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Un télescope permet de voir des choses très loin.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Oui, mais un très grand choc est rare.",
+        "Il tourne autour du Soleil, comme la Terre.",
+        "Un télescope permet de voir des choses très loin.",
+        "Les astéroïdes ne sont pas des étoiles."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Oui, mais un très grand choc est rare.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Les scientifiques prennent des photos et regardent où vont les roches.",
+        "De petits morceaux de roche arrivent parfois dans l’air autour de la Terre.",
+        "Un astéroïde suit un chemin autour du Soleil.",
+        "Les astéroïdes ne sont pas des étoiles."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Les astéroïdes ne sont pas des étoiles.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "De petits morceaux de roche arrivent parfois dans l’air autour de la Terre.",
+        "Les astéroïdes ne sont pas des étoiles.",
+        "Les scientifiques prennent des photos et regardent où vont les roches.",
+        "Beaucoup brûlent avant de toucher le sol."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Les scientifiques prennent des photos et regardent où vont les roches.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Les astéroïdes ne sont pas des étoiles.",
+        "De petits morceaux de roche arrivent parfois dans l’air autour de la Terre.",
+        "Les scientifiques prennent des photos et regardent où vont les roches.",
+        "Ils n’ont pas leur propre lumière."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: De petits morceaux de roche arrivent parfois dans l’air autour de la Terre.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Ils n’ont pas leur propre lumière.",
+        "Un astéroïde suit un chemin autour du Soleil.",
+        "Beaucoup brûlent avant de toucher le sol.",
+        "Ce chemin s’appelle une orbite."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Ils n’ont pas leur propre lumière.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

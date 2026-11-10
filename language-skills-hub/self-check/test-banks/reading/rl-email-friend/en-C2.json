@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "C2",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-en-c2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "My current work, collecting oral histories for a small coastal museum, has made these evasions harder to ignore.",
+        "Dear Amara, I have postponed this letter often enough to become suspicious of my own explanations.",
+        "One afternoon a fisherman’s daughter brought a shoebox of postcards her father had sent home from distant ports.",
+        "There is a less flattering complication."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Dear Amara, I have postponed this letter often enough to become suspicious of my own explanations.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "My current work, collecting oral histories for a small coastal museum, has made these evasions harder to ignore.",
+        "One afternoon a fisherman’s daughter brought a shoebox of postcards her father had sent home from distant ports.",
+        "There is a less flattering complication.",
+        "This is an invitation, not a test of what remains between us."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: My current work, collecting oral histories for a small coastal museum, has made these evasions harder to ignore.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "There is a less flattering complication.",
+        "This is an invitation, not a test of what remains between us.",
+        "Dear Amara, I have postponed this letter often enough to become suspicious of my own explanations.",
+        "One afternoon a fisherman’s daughter brought a shoebox of postcards her father had sent home from distant ports."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: One afternoon a fisherman’s daughter brought a shoebox of postcards her father had sent home from distant ports.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "This is an invitation, not a test of what remains between us.",
+        "Dear Amara, I have postponed this letter often enough to become suspicious of my own explanations.",
+        "There is a less flattering complication.",
+        "My current work, collecting oral histories for a small coastal museum, has made these evasions harder to ignore."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: There is a less flattering complication.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "Dear Amara, I have postponed this letter often enough to become suspicious of my own explanations.",
+        "This is an invitation, not a test of what remains between us.",
+        "My current work, collecting oral histories for a small coastal museum, has made these evasions harder to ignore.",
+        "One afternoon a fisherman’s daughter brought a shoebox of postcards her father had sent home from distant ports."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: This is an invitation, not a test of what remains between us.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "The easy version is that several moves, a demanding job and a succession of unfamiliar cities have left little time for correspondence.",
+        "We invite residents to describe places they have known, yet the most revealing moments often occur when someone declines our invitation or corrects the confident sto…",
+        "Most said almost nothing – the weather, the cargo, a greeting to the dog – yet she treasured them because each one proved that he had thought of the family on a part…",
+        "I am writing in the week before the museum opens a public listening room, an event for which I would dearly like your company."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: The easy version is that several moves, a demanding job and a succession of unfamiliar cities have left little time for correspondence.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Most said almost nothing – the weather, the cargo, a greeting to the dog – yet she treasured them because each one proved that he had thought of the family on a part…",
+        "I am writing in the week before the museum opens a public listening room, an event for which I would dearly like your company.",
+        "The listening room opens on the last Sunday of August, and the exhibition includes an afternoon conversation with residents rather than a formal ceremony.",
+        "We invite residents to describe places they have known, yet the most revealing moments often occur when someone declines our invitation or corrects the confident sto…"
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: We invite residents to describe places they have known, yet the most revealing moments often occur when someone declines our invitation or corrects the confident sto…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "I am writing in the week before the museum opens a public listening room, an event for which I would dearly like your company.",
+        "The listening room opens on the last Sunday of August, and the exhibition includes an afternoon conversation with residents rather than a formal ceremony.",
+        "Most said almost nothing – the weather, the cargo, a greeting to the dog – yet she treasured them because each one proved that he had thought of the family on a part…",
+        "The easy version is that several moves, a demanding job and a succession of unfamiliar cities have left little time for correspondence."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: Most said almost nothing – the weather, the cargo, a greeting to the dog – yet she treasured them because each one proved that he had thought of the family on a part…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "The listening room opens on the last Sunday of August, and the exhibition includes an afternoon conversation with residents rather than a formal ceremony.",
+        "I am writing in the week before the museum opens a public listening room, an event for which I would dearly like your company.",
+        "The easy version is that several moves, a demanding job and a succession of unfamiliar cities have left little time for correspondence.",
+        "We invite residents to describe places they have known, yet the most revealing moments often occur when someone declines our invitation or corrects the confident sto…"
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: I am writing in the week before the museum opens a public listening room, an event for which I would dearly like your company.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-c2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "The listening room opens on the last Sunday of August, and the exhibition includes an afternoon conversation with residents rather than a formal ceremony.",
+        "The easy version is that several moves, a demanding job and a succession of unfamiliar cities have left little time for correspondence.",
+        "We invite residents to describe places they have known, yet the most revealing moments often occur when someone declines our invitation or corrects the confident sto…",
+        "Most said almost nothing – the weather, the cargo, a greeting to the dog – yet she treasured them because each one proved that he had thought of the family on a part…"
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: The listening room opens on the last Sunday of August, and the exhibition includes an afternoon conversation with residents rather than a formal ceremony.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

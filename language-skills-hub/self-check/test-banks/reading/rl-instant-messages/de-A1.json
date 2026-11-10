@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "de",
+  "level": "A1",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-instant-messages-de-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Lena: Super Idee!",
+        "Jonas: Hallo zusammen!",
+        "Tim: Zwölf passt mir.",
+        "Jonas: Perfekt!"
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Jonas: Hallo zusammen!",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Lena: Super Idee!",
+        "Tim: Zwölf passt mir.",
+        "Jonas: Perfekt!",
+        "Jonas: Hallo zusammen!"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Lena: Super Idee!",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Jonas: Perfekt!",
+        "Jonas: Hallo zusammen!",
+        "Lena: Super Idee!",
+        "Tim: Zwölf passt mir."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Tim: Zwölf passt mir.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Jonas: Hallo zusammen!",
+        "Lena: Super Idee!",
+        "Jonas: Perfekt!",
+        "Tim: Zwölf passt mir."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Jonas: Perfekt!",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Am Samstagvormittag habe ich Klavierunterricht, aber er ist um elf zu Ende.",
+        "Am Samstag scheint die Sonne.",
+        "Ich komme mit dem Bus.",
+        "Um zwölf am Café mit der grünen Tür."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Am Samstag scheint die Sonne.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Am Samstagvormittag habe ich Klavierunterricht, aber er ist um elf zu Ende.",
+        "Ich komme mit dem Bus.",
+        "Um zwölf am Café mit der grünen Tür.",
+        "Am Samstag scheint die Sonne."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Am Samstagvormittag habe ich Klavierunterricht, aber er ist um elf zu Ende.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Um zwölf am Café mit der grünen Tür.",
+        "Am Samstag scheint die Sonne.",
+        "Am Samstagvormittag habe ich Klavierunterricht, aber er ist um elf zu Ende.",
+        "Ich komme mit dem Bus."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Ich komme mit dem Bus.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Am Samstag scheint die Sonne.",
+        "Am Samstagvormittag habe ich Klavierunterricht, aber er ist um elf zu Ende.",
+        "Um zwölf am Café mit der grünen Tür.",
+        "Ich komme mit dem Bus."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Um zwölf am Café mit der grünen Tür.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Treffen wir uns um zwölf?",
+        "Machen wir ein Picknick im Stadtpark am Fluss?",
+        "Die Linie 14 hält direkt am Parktor.",
+        "Kommt bitte nicht zu spät, denn meine Mutter kann nur bis drei bei uns bleiben."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Machen wir ein Picknick im Stadtpark am Fluss?",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Treffen wir uns um zwölf?",
+        "Die Linie 14 hält direkt am Parktor.",
+        "Kommt bitte nicht zu spät, denn meine Mutter kann nur bis drei bei uns bleiben.",
+        "Machen wir ein Picknick im Stadtpark am Fluss?"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Treffen wir uns um zwölf?",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

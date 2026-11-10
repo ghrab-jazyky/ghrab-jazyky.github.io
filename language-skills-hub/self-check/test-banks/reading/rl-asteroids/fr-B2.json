@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "fr",
+  "level": "B2",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-asteroids-fr-b2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Le premier défi consiste à découvrir ces objets.",
+        "Certains titres de presse laissent entendre qu’un astéroïde « se dirige vers la Terre » et qu’une catastrophe est imminente.",
+        "Le deuxième défi est de déterminer ce qu’il faudrait faire si un corps réellement dangereux était découvert.",
+        "En définitive, la défense planétaire relève aussi de la communication."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Certains titres de presse laissent entendre qu’un astéroïde « se dirige vers la Terre » et qu’une catastrophe est imminente.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-b2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Le premier défi consiste à découvrir ces objets.",
+        "Le deuxième défi est de déterminer ce qu’il faudrait faire si un corps réellement dangereux était découvert.",
+        "En définitive, la défense planétaire relève aussi de la communication.",
+        "Certains titres de presse laissent entendre qu’un astéroïde « se dirige vers la Terre » et qu’une catastrophe est imminente."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Le premier défi consiste à découvrir ces objets.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-b2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "En définitive, la défense planétaire relève aussi de la communication.",
+        "Certains titres de presse laissent entendre qu’un astéroïde « se dirige vers la Terre » et qu’une catastrophe est imminente.",
+        "Le premier défi consiste à découvrir ces objets.",
+        "Le deuxième défi est de déterminer ce qu’il faudrait faire si un corps réellement dangereux était découvert."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Le deuxième défi est de déterminer ce qu’il faudrait faire si un corps réellement dangereux était découvert.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-b2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Certains titres de presse laissent entendre qu’un astéroïde « se dirige vers la Terre » et qu’une catastrophe est imminente.",
+        "Le premier défi consiste à découvrir ces objets.",
+        "En définitive, la défense planétaire relève aussi de la communication.",
+        "Le deuxième défi est de déterminer ce qu’il faudrait faire si un corps réellement dangereux était découvert."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: En définitive, la défense planétaire relève aussi de la communication.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-b2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Les télescopes au sol photographient régulièrement le ciel et des logiciels cherchent les points lumineux qui changent de position.",
+        "Cette formule peut être trompeuse.",
+        "En 2022, la sonde DART de la NASA a volontairement percuté Dimorphos, une petite lune qui tourne autour d’un astéroïde plus grand appelé Didymos.",
+        "Les chercheurs doivent expliquer ce qui est établi, ce qui reste incertain et pourquoi une nouvelle prévision peut différer de la précédente."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Cette formule peut être trompeuse.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-b2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Les télescopes au sol photographient régulièrement le ciel et des logiciels cherchent les points lumineux qui changent de position.",
+        "En 2022, la sonde DART de la NASA a volontairement percuté Dimorphos, une petite lune qui tourne autour d’un astéroïde plus grand appelé Didymos.",
+        "Les chercheurs doivent expliquer ce qui est établi, ce qui reste incertain et pourquoi une nouvelle prévision peut différer de la précédente.",
+        "Cette formule peut être trompeuse."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Les télescopes au sol photographient régulièrement le ciel et des logiciels cherchent les points lumineux qui changent de position.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-b2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Les chercheurs doivent expliquer ce qui est établi, ce qui reste incertain et pourquoi une nouvelle prévision peut différer de la précédente.",
+        "Cette formule peut être trompeuse.",
+        "Les télescopes au sol photographient régulièrement le ciel et des logiciels cherchent les points lumineux qui changent de position.",
+        "En 2022, la sonde DART de la NASA a volontairement percuté Dimorphos, une petite lune qui tourne autour d’un astéroïde plus grand appelé Didymos."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: En 2022, la sonde DART de la NASA a volontairement percuté Dimorphos, une petite lune qui tourne autour d’un astéroïde plus grand appelé Didymos.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-b2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Cette formule peut être trompeuse.",
+        "Les télescopes au sol photographient régulièrement le ciel et des logiciels cherchent les points lumineux qui changent de position.",
+        "Les chercheurs doivent expliquer ce qui est établi, ce qui reste incertain et pourquoi une nouvelle prévision peut différer de la précédente.",
+        "En 2022, la sonde DART de la NASA a volontairement percuté Dimorphos, une petite lune qui tourne autour d’un astéroïde plus grand appelé Didymos."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Les chercheurs doivent expliquer ce qui est établi, ce qui reste incertain et pourquoi une nouvelle prévision peut différer de la précédente.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-b2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Les observations infrarouges aident également à repérer les corps sombres qui réfléchissent peu la lumière solaire.",
+        "Les astéroïdes sont d’anciens fragments de roche et de métal qui tournent autour du Soleil.",
+        "Les observations ont montré que la période orbitale de Dimorphos avait diminué.",
+        "Gouvernements et observatoires ont intérêt à partager des informations fiables longtemps avant une urgence."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Les astéroïdes sont d’anciens fragments de roche et de métal qui tournent autour du Soleil.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-b2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Les observations infrarouges aident également à repérer les corps sombres qui réfléchissent peu la lumière solaire.",
+        "Les observations ont montré que la période orbitale de Dimorphos avait diminué.",
+        "Gouvernements et observatoires ont intérêt à partager des informations fiables longtemps avant une urgence.",
+        "Les astéroïdes sont d’anciens fragments de roche et de métal qui tournent autour du Soleil."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Les observations infrarouges aident également à repérer les corps sombres qui réfléchissent peu la lumière solaire.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

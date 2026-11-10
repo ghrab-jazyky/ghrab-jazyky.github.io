@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "fr",
+  "level": "A1",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-instant-messages-fr-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Chloé : Super idée !",
+        "Hugo : Salut !",
+        "Théo : Midi, ça me va.",
+        "Hugo : Parfait !"
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Hugo : Salut !",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Chloé : Super idée !",
+        "Théo : Midi, ça me va.",
+        "Hugo : Parfait !",
+        "Hugo : Salut !"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Chloé : Super idée !",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Hugo : Parfait !",
+        "Hugo : Salut !",
+        "Chloé : Super idée !",
+        "Théo : Midi, ça me va."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Théo : Midi, ça me va.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Hugo : Salut !",
+        "Chloé : Super idée !",
+        "Hugo : Parfait !",
+        "Théo : Midi, ça me va."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Hugo : Parfait !",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Le samedi matin, j’ai un cours de piano, mais il finit à onze heures.",
+        "Samedi, il va faire beau.",
+        "Je viens en bus.",
+        "À midi au café avec la porte verte."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Samedi, il va faire beau.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Le samedi matin, j’ai un cours de piano, mais il finit à onze heures.",
+        "Je viens en bus.",
+        "À midi au café avec la porte verte.",
+        "Samedi, il va faire beau."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Le samedi matin, j’ai un cours de piano, mais il finit à onze heures.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "À midi au café avec la porte verte.",
+        "Samedi, il va faire beau.",
+        "Le samedi matin, j’ai un cours de piano, mais il finit à onze heures.",
+        "Je viens en bus."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Je viens en bus.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Samedi, il va faire beau.",
+        "Le samedi matin, j’ai un cours de piano, mais il finit à onze heures.",
+        "À midi au café avec la porte verte.",
+        "Je viens en bus."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: À midi au café avec la porte verte.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "On se retrouve à midi ?",
+        "On fait un pique-nique au parc de la Rivière ?",
+        "La ligne 14 s’arrête juste devant l’entrée du parc.",
+        "Ne soyez pas en retard : ma mère peut rester avec nous seulement jusqu’à quinze heures."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: On fait un pique-nique au parc de la Rivière ?",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "On se retrouve à midi ?",
+        "La ligne 14 s’arrête juste devant l’entrée du parc.",
+        "Ne soyez pas en retard : ma mère peut rester avec nous seulement jusqu’à quinze heures.",
+        "On fait un pique-nique au parc de la Rivière ?"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: On se retrouve à midi ?",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

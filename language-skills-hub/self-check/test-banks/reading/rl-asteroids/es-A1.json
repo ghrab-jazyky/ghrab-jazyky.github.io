@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "es",
+  "level": "A1",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-asteroids-es-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Los científicos buscan asteroides con grandes telescopios.",
+        "Un asteroide es una roca en el espacio.",
+        "¿Puede un asteroide chocar con la Tierra?",
+        "Un telescopio ayuda a ver cosas que están muy lejos."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Un asteroide es una roca en el espacio.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Los científicos buscan asteroides con grandes telescopios.",
+        "¿Puede un asteroide chocar con la Tierra?",
+        "Un asteroide es una roca en el espacio.",
+        "Sí, pero un choque muy grande es poco frecuente."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Los científicos buscan asteroides con grandes telescopios.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Un asteroide es una roca en el espacio.",
+        "Los científicos buscan asteroides con grandes telescopios.",
+        "Gira alrededor del Sol, como la Tierra.",
+        "¿Puede un asteroide chocar con la Tierra?"
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: ¿Puede un asteroide chocar con la Tierra?",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Un telescopio ayuda a ver cosas que están muy lejos.",
+        "Sí, pero un choque muy grande es poco frecuente.",
+        "Gira alrededor del Sol, como la Tierra.",
+        "Los científicos hacen fotos y observan adónde van las rocas."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Gira alrededor del Sol, como la Tierra.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Sí, pero un choque muy grande es poco frecuente.",
+        "Un telescopio ayuda a ver cosas que están muy lejos.",
+        "Gira alrededor del Sol, como la Tierra.",
+        "A veces, pequeños trozos de roca entran en el aire de la Tierra."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Un telescopio ayuda a ver cosas que están muy lejos.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Sí, pero un choque muy grande es poco frecuente.",
+        "Gira alrededor del Sol, como la Tierra.",
+        "Un telescopio ayuda a ver cosas que están muy lejos.",
+        "Los asteroides no son estrellas."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Sí, pero un choque muy grande es poco frecuente.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Los científicos hacen fotos y observan adónde van las rocas.",
+        "A veces, pequeños trozos de roca entran en el aire de la Tierra.",
+        "Un asteroide sigue un camino alrededor del Sol.",
+        "Los asteroides no son estrellas."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Los asteroides no son estrellas.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "A veces, pequeños trozos de roca entran en el aire de la Tierra.",
+        "Los asteroides no son estrellas.",
+        "Los científicos hacen fotos y observan adónde van las rocas.",
+        "Muchos se queman antes de llegar al suelo."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Los científicos hacen fotos y observan adónde van las rocas.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Los asteroides no son estrellas.",
+        "A veces, pequeños trozos de roca entran en el aire de la Tierra.",
+        "Los científicos hacen fotos y observan adónde van las rocas.",
+        "No tienen luz propia."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: A veces, pequeños trozos de roca entran en el aire de la Tierra.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "No tienen luz propia.",
+        "Un asteroide sigue un camino alrededor del Sol.",
+        "Muchos se queman antes de llegar al suelo.",
+        "Este camino se llama órbita."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: No tienen luz propia.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

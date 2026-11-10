@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-asteroids-en-a2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Nina was surprised to learn that some asteroids come near Earth.",
+        "Last Friday, Nina visited the school space club.",
+        "After that, the students took turns with the club telescope.",
+        "At the end of the club, they watched a short film about a spacecraft called DART."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Last Friday, Nina visited the school space club.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Nina was surprised to learn that some asteroids come near Earth.",
+        "After that, the students took turns with the club telescope.",
+        "At the end of the club, they watched a short film about a spacecraft called DART.",
+        "Last Friday, Nina visited the school space club."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Nina was surprised to learn that some asteroids come near Earth.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "At the end of the club, they watched a short film about a spacecraft called DART.",
+        "Last Friday, Nina visited the school space club.",
+        "Nina was surprised to learn that some asteroids come near Earth.",
+        "After that, the students took turns with the club telescope."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: After that, the students took turns with the club telescope.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "Last Friday, Nina visited the school space club.",
+        "Nina was surprised to learn that some asteroids come near Earth.",
+        "At the end of the club, they watched a short film about a spacecraft called DART.",
+        "After that, the students took turns with the club telescope."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: At the end of the club, they watched a short film about a spacecraft called DART.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Scientists use telescopes to find them and computers to study their orbits.",
+        "The students looked at photos of asteroids.",
+        "They could not see an asteroid, because most asteroids are too small and too dark.",
+        "In 2022, it hit a small asteroid moon named Dimorphos on purpose."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: The students looked at photos of asteroids.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Scientists use telescopes to find them and computers to study their orbits.",
+        "They could not see an asteroid, because most asteroids are too small and too dark.",
+        "In 2022, it hit a small asteroid moon named Dimorphos on purpose.",
+        "The students looked at photos of asteroids."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Scientists use telescopes to find them and computers to study their orbits.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "In 2022, it hit a small asteroid moon named Dimorphos on purpose.",
+        "The students looked at photos of asteroids.",
+        "Scientists use telescopes to find them and computers to study their orbits.",
+        "They could not see an asteroid, because most asteroids are too small and too dark."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: They could not see an asteroid, because most asteroids are too small and too dark.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "The students looked at photos of asteroids.",
+        "Scientists use telescopes to find them and computers to study their orbits.",
+        "In 2022, it hit a small asteroid moon named Dimorphos on purpose.",
+        "They could not see an asteroid, because most asteroids are too small and too dark."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: In 2022, it hit a small asteroid moon named Dimorphos on purpose.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "When they discover a new object, they observe it many times.",
+        "Their teacher explained that asteroids are pieces of rock or metal that travel around the Sun.",
+        "Instead, they looked at the Moon and saw its craters very clearly.",
+        "The test changed the time Dimorphos needed to go around a larger asteroid."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Their teacher explained that asteroids are pieces of rock or metal that travel around the Sun.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "When they discover a new object, they observe it many times.",
+        "Instead, they looked at the Moon and saw its craters very clearly.",
+        "The test changed the time Dimorphos needed to go around a larger asteroid.",
+        "Their teacher explained that asteroids are pieces of rock or metal that travel around the Sun."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: When they discover a new object, they observe it many times.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-en-b2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Things began to change when my neighbour invited me to help at a community radio station.",
+        "Hi Alex, I owe you a proper message rather than another photo with a cheerful caption.",
+        "The programme has also changed how I see the city.",
+        "Last week I found the photograph we took outside our school on the day we finished our exams."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Hi Alex, I owe you a proper message rather than another photo with a cheerful caption.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Things began to change when my neighbour invited me to help at a community radio station.",
+        "The programme has also changed how I see the city.",
+        "Last week I found the photograph we took outside our school on the day we finished our exams.",
+        "So here is my invitation: come to our neighbourhood storytelling evening on the second Saturday in June."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Things began to change when my neighbour invited me to help at a community radio station.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "Last week I found the photograph we took outside our school on the day we finished our exams.",
+        "So here is my invitation: come to our neighbourhood storytelling evening on the second Saturday in June.",
+        "Hi Alex, I owe you a proper message rather than another photo with a cheerful caption.",
+        "The programme has also changed how I see the city."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: The programme has also changed how I see the city.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "So here is my invitation: come to our neighbourhood storytelling evening on the second Saturday in June.",
+        "Hi Alex, I owe you a proper message rather than another photo with a cheerful caption.",
+        "Last week I found the photograph we took outside our school on the day we finished our exams.",
+        "Things began to change when my neighbour invited me to help at a community radio station."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: Last week I found the photograph we took outside our school on the day we finished our exams.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "Hi Alex, I owe you a proper message rather than another photo with a cheerful caption.",
+        "So here is my invitation: come to our neighbourhood storytelling evening on the second Saturday in June.",
+        "Things began to change when my neighbour invited me to help at a community radio station.",
+        "The programme has also changed how I see the city."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: So here is my invitation: come to our neighbourhood storytelling evening on the second Saturday in June.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "When I left for my exchange year in Rotterdam, I imagined that every week would feel like the start of a holiday.",
+        "I only agreed because they needed someone to carry equipment, but soon I was recording short interviews with people who had recently moved here.",
+        "Last month we interviewed a bakery owner who arrived from Syria twenty years ago and now teaches newcomers to bake Dutch apple cake.",
+        "I nearly sent it with the usual 'Remember this?' and a laughing emoji."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: When I left for my exchange year in Rotterdam, I imagined that every week would feel like the start of a holiday.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Last month we interviewed a bakery owner who arrived from Syria twenty years ago and now teaches newcomers to bake Dutch apple cake.",
+        "I nearly sent it with the usual 'Remember this?' and a laughing emoji.",
+        "You would not have to perform or speak to a crowd; we could just listen and explore the city the next morning.",
+        "I only agreed because they needed someone to carry equipment, but soon I was recording short interviews with people who had recently moved here."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: I only agreed because they needed someone to carry equipment, but soon I was recording short interviews with people who had recently moved here.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "I nearly sent it with the usual 'Remember this?' and a laughing emoji.",
+        "You would not have to perform or speak to a crowd; we could just listen and explore the city the next morning.",
+        "Last month we interviewed a bakery owner who arrived from Syria twenty years ago and now teaches newcomers to bake Dutch apple cake.",
+        "When I left for my exchange year in Rotterdam, I imagined that every week would feel like the start of a holiday."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: Last month we interviewed a bakery owner who arrived from Syria twenty years ago and now teaches newcomers to bake Dutch apple cake.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "You would not have to perform or speak to a crowd; we could just listen and explore the city the next morning.",
+        "I nearly sent it with the usual 'Remember this?' and a laughing emoji.",
+        "When I left for my exchange year in Rotterdam, I imagined that every week would feel like the start of a holiday.",
+        "I only agreed because they needed someone to carry equipment, but soon I was recording short interviews with people who had recently moved here."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: I nearly sent it with the usual 'Remember this?' and a laughing emoji.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-en-b2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "You would not have to perform or speak to a crowd; we could just listen and explore the city the next morning.",
+        "When I left for my exchange year in Rotterdam, I imagined that every week would feel like the start of a holiday.",
+        "I only agreed because they needed someone to carry equipment, but soon I was recording short interviews with people who had recently moved here.",
+        "Last month we interviewed a bakery owner who arrived from Syria twenty years ago and now teaches newcomers to bake Dutch apple cake."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: You would not have to perform or speak to a crowd; we could just listen and explore the city the next morning.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

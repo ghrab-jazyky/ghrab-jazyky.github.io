@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "fr",
+  "level": "C2",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-asteroids-fr-c2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "L’observation elle-même est sélective.",
+        "La défense planétaire est souvent racontée comme un affrontement entre l’humanité et un univers hostile.",
+        "L’expérience DART, réalisée en 2022, apporte un contrepoint éclairant aux récits de catastrophe.",
+        "Les choix politiques ajoutent une difficulté : les ressources consacrées à des catastrophes très rares entrent en concurrence avec des besoins urgents, tandis que le…"
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: La défense planétaire est souvent racontée comme un affrontement entre l’humanité et un univers hostile.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-c2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "L’observation elle-même est sélective.",
+        "L’expérience DART, réalisée en 2022, apporte un contrepoint éclairant aux récits de catastrophe.",
+        "Les choix politiques ajoutent une difficulté : les ressources consacrées à des catastrophes très rares entrent en concurrence avec des besoins urgents, tandis que le…",
+        "La défense planétaire est souvent racontée comme un affrontement entre l’humanité et un univers hostile."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: L’observation elle-même est sélective.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-c2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Les choix politiques ajoutent une difficulté : les ressources consacrées à des catastrophes très rares entrent en concurrence avec des besoins urgents, tandis que le…",
+        "La défense planétaire est souvent racontée comme un affrontement entre l’humanité et un univers hostile.",
+        "L’observation elle-même est sélective.",
+        "L’expérience DART, réalisée en 2022, apporte un contrepoint éclairant aux récits de catastrophe."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: L’expérience DART, réalisée en 2022, apporte un contrepoint éclairant aux récits de catastrophe.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-c2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "La défense planétaire est souvent racontée comme un affrontement entre l’humanité et un univers hostile.",
+        "L’observation elle-même est sélective.",
+        "Les choix politiques ajoutent une difficulté : les ressources consacrées à des catastrophes très rares entrent en concurrence avec des besoins urgents, tandis que le…",
+        "L’expérience DART, réalisée en 2022, apporte un contrepoint éclairant aux récits de catastrophe."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Les choix politiques ajoutent une difficulté : les ressources consacrées à des catastrophes très rares entrent en concurrence avec des besoins urgents, tandis que le…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-c2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Les relevés optiques favorisent les corps assez lumineux et bien placés dans le ciel ; les objets sombres sont plus difficiles à déceler.",
+        "Cette métaphore captive le public, mais elle occulte le travail intellectuel beaucoup plus lent dont dépend toute intervention réaliste.",
+        "En frappant Dimorphos, une lune de Didymos, la sonde a modifié de façon mesurable la période orbitale de Dimorphos.",
+        "Promettre une sécurité absolue serait irresponsable ; exiger des prévisions parfaites avant d’investir dans l’observation le serait tout autant."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Cette métaphore captive le public, mais elle occulte le travail intellectuel beaucoup plus lent dont dépend toute intervention réaliste.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-c2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Les relevés optiques favorisent les corps assez lumineux et bien placés dans le ciel ; les objets sombres sont plus difficiles à déceler.",
+        "En frappant Dimorphos, une lune de Didymos, la sonde a modifié de façon mesurable la période orbitale de Dimorphos.",
+        "Promettre une sécurité absolue serait irresponsable ; exiger des prévisions parfaites avant d’investir dans l’observation le serait tout autant.",
+        "Cette métaphore captive le public, mais elle occulte le travail intellectuel beaucoup plus lent dont dépend toute intervention réaliste."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Les relevés optiques favorisent les corps assez lumineux et bien placés dans le ciel ; les objets sombres sont plus difficiles à déceler.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-c2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Promettre une sécurité absolue serait irresponsable ; exiger des prévisions parfaites avant d’investir dans l’observation le serait tout autant.",
+        "Cette métaphore captive le public, mais elle occulte le travail intellectuel beaucoup plus lent dont dépend toute intervention réaliste.",
+        "Les relevés optiques favorisent les corps assez lumineux et bien placés dans le ciel ; les objets sombres sont plus difficiles à déceler.",
+        "En frappant Dimorphos, une lune de Didymos, la sonde a modifié de façon mesurable la période orbitale de Dimorphos."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: En frappant Dimorphos, une lune de Didymos, la sonde a modifié de façon mesurable la période orbitale de Dimorphos.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-c2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Cette métaphore captive le public, mais elle occulte le travail intellectuel beaucoup plus lent dont dépend toute intervention réaliste.",
+        "Les relevés optiques favorisent les corps assez lumineux et bien placés dans le ciel ; les objets sombres sont plus difficiles à déceler.",
+        "Promettre une sécurité absolue serait irresponsable ; exiger des prévisions parfaites avant d’investir dans l’observation le serait tout autant.",
+        "En frappant Dimorphos, une lune de Didymos, la sonde a modifié de façon mesurable la période orbitale de Dimorphos."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Promettre une sécurité absolue serait irresponsable ; exiger des prévisions parfaites avant d’investir dans l’observation le serait tout autant.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-c2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Les instruments infrarouges fournissent des indices complémentaires, sans être infaillibles pour autant.",
+        "Un astéroïde n’est ni un adversaire ni un avertissement envoyé par la nature : c’est un objet physique soumis à des forces que nous pouvons étudier.",
+        "Il s’agissait d’une démonstration de déviation cinétique, non de la preuve que l’humanité possède un bouclier universel.",
+        "Les institutions doivent expliquer l’incertitude sans perdre la confiance du public, et les médias résister à la tentation de tourner chaque révision en dérision ou…"
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Un astéroïde n’est ni un adversaire ni un avertissement envoyé par la nature : c’est un objet physique soumis à des forces que nous pouvons étudier.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-fr-c2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Les instruments infrarouges fournissent des indices complémentaires, sans être infaillibles pour autant.",
+        "Il s’agissait d’une démonstration de déviation cinétique, non de la preuve que l’humanité possède un bouclier universel.",
+        "Les institutions doivent expliquer l’incertitude sans perdre la confiance du public, et les médias résister à la tentation de tourner chaque révision en dérision ou…",
+        "Un astéroïde n’est ni un adversaire ni un avertissement envoyé par la nature : c’est un objet physique soumis à des forces que nous pouvons étudier."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Les instruments infrarouges fournissent des indices complémentaires, sans être infaillibles pour autant.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

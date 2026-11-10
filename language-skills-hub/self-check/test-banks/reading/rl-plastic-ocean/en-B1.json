@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "B1",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-en-b1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "She explained that the drains were cleaned only twice a year.",
+        "On Monday morning, volunteers found dozens of snack wrappers beside Brook Lane stream.",
+        "The group spent two afternoons recording where they saw litter.",
+        "Next, the students talked to people who used the street."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: On Monday morning, volunteers found dozens of snack wrappers beside Brook Lane stream.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "She explained that the drains were cleaned only twice a year.",
+        "The group spent two afternoons recording where they saw litter.",
+        "Next, the students talked to people who used the street.",
+        "A month later, the stream looked better after ordinary rain."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: She explained that the drains were cleaned only twice a year.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "Next, the students talked to people who used the street.",
+        "A month later, the stream looked better after ordinary rain.",
+        "Their project started with an ugly discovery beside the water.",
+        "The group spent two afternoons recording where they saw litter."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: The group spent two afternoons recording where they saw litter.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "A month later, the stream looked better after ordinary rain.",
+        "Their project started with an ugly discovery beside the water.",
+        "Next, the students talked to people who used the street.",
+        "On Monday morning, volunteers found dozens of snack wrappers beside Brook Lane stream."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: Next, the students talked to people who used the street.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "Their project started with an ugly discovery beside the water.",
+        "A month later, the stream looked better after ordinary rain.",
+        "On Monday morning, volunteers found dozens of snack wrappers beside Brook Lane stream.",
+        "She explained that the drains were cleaned only twice a year."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: A month later, the stream looked better after ordinary rain.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 6?",
+      "choices": [
+        "Their project started with an ugly discovery beside the water.",
+        "On Monday morning, volunteers found dozens of snack wrappers beside Brook Lane stream.",
+        "She explained that the drains were cleaned only twice a year.",
+        "The group spent two afternoons recording where they saw litter."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "Paragraph 6: Their project started with an ugly discovery beside the water.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Then she showed the group a street drain outside a busy bus stop.",
+        "They divided the street into five sections and counted wrappers after the last lesson, when the bus stop was busiest.",
+        "A café owner said that customers often bought snacks while waiting for the bus.",
+        "Students from the nearby secondary school were angry."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Students from the nearby secondary school were angry.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "They divided the street into five sections and counted wrappers after the last lesson, when the bus stop was busiest.",
+        "A café owner said that customers often bought snacks while waiting for the bus.",
+        "Then she showed the group a street drain outside a busy bus stop.",
+        "However, nobody claimed that the problem had disappeared."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Then she showed the group a street drain outside a busy bus stop.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "A café owner said that customers often bought snacks while waiting for the bus.",
+        "They divided the street into five sections and counted wrappers after the last lesson, when the bus stop was busiest.",
+        "However, nobody claimed that the problem had disappeared.",
+        "It ended with a more useful question: where does the rubbish begin its journey?"
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: They divided the street into five sections and counted wrappers after the last lesson, when the bus stop was busiest.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "A café owner said that customers often bought snacks while waiting for the bus.",
+        "However, nobody claimed that the problem had disappeared.",
+        "It ended with a more useful question: where does the rubbish begin its journey?",
+        "Students from the nearby secondary school were angry."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: A café owner said that customers often bought snacks while waiting for the bus.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

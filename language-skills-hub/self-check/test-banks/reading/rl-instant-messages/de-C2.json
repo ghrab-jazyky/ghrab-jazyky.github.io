@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "de",
+  "level": "C2",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-instant-messages-de-c2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "In diesem Sinne sind die Konventionen, die sich rund um Nachrichten entwickelt haben, ein Reparaturset für die fehlende Stimme.",
+        "Sprachwissenschaftler tun sich seit Langem schwer damit, die Sofortnachricht einzuordnen.",
+        "Eine zweite Schwierigkeit betrifft die Dauerhaftigkeit.",
+        "Man denke an einen Fall, den viele Lesende wiedererkennen werden, auch wenn die Einzelheiten erfunden sind."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Sprachwissenschaftler tun sich seit Langem schwer damit, die Sofortnachricht einzuordnen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "In diesem Sinne sind die Konventionen, die sich rund um Nachrichten entwickelt haben, ein Reparaturset für die fehlende Stimme.",
+        "Eine zweite Schwierigkeit betrifft die Dauerhaftigkeit.",
+        "Man denke an einen Fall, den viele Lesende wiedererkennen werden, auch wenn die Einzelheiten erfunden sind.",
+        "Keine dieser Antworten überzeugt ganz, was darauf hindeutet, dass das Problem zum Teil in unseren Erwartungen an das Medium liegt."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: In diesem Sinne sind die Konventionen, die sich rund um Nachrichten entwickelt haben, ein Reparaturset für die fehlende Stimme.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Man denke an einen Fall, den viele Lesende wiedererkennen werden, auch wenn die Einzelheiten erfunden sind.",
+        "Keine dieser Antworten überzeugt ganz, was darauf hindeutet, dass das Problem zum Teil in unseren Erwartungen an das Medium liegt.",
+        "Gebraucht wird stattdessen eine Form von Lesekompetenz, die Schulen gerade erst zu vermitteln beginnen.",
+        "Eine zweite Schwierigkeit betrifft die Dauerhaftigkeit."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Eine zweite Schwierigkeit betrifft die Dauerhaftigkeit.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Keine dieser Antworten überzeugt ganz, was darauf hindeutet, dass das Problem zum Teil in unseren Erwartungen an das Medium liegt.",
+        "Gebraucht wird stattdessen eine Form von Lesekompetenz, die Schulen gerade erst zu vermitteln beginnen.",
+        "Man denke an einen Fall, den viele Lesende wiedererkennen werden, auch wenn die Einzelheiten erfunden sind.",
+        "Sprachwissenschaftler tun sich seit Langem schwer damit, die Sofortnachricht einzuordnen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Man denke an einen Fall, den viele Lesende wiedererkennen werden, auch wenn die Einzelheiten erfunden sind.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 5?",
+      "choices": [
+        "Gebraucht wird stattdessen eine Form von Lesekompetenz, die Schulen gerade erst zu vermitteln beginnen.",
+        "Keine dieser Antworten überzeugt ganz, was darauf hindeutet, dass das Problem zum Teil in unseren Erwartungen an das Medium liegt.",
+        "Sprachwissenschaftler tun sich seit Langem schwer damit, die Sofortnachricht einzuordnen.",
+        "In diesem Sinne sind die Konventionen, die sich rund um Nachrichten entwickelt haben, ein Reparaturset für die fehlende Stimme."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Absatz 5: Keine dieser Antworten überzeugt ganz, was darauf hindeutet, dass das Problem zum Teil in unseren Erwartungen an das Medium liegt.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 6?",
+      "choices": [
+        "Gebraucht wird stattdessen eine Form von Lesekompetenz, die Schulen gerade erst zu vermitteln beginnen.",
+        "Sprachwissenschaftler tun sich seit Langem schwer damit, die Sofortnachricht einzuordnen.",
+        "In diesem Sinne sind die Konventionen, die sich rund um Nachrichten entwickelt haben, ein Reparaturset für die fehlende Stimme.",
+        "Eine zweite Schwierigkeit betrifft die Dauerhaftigkeit."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "Absatz 6: Gebraucht wird stattdessen eine Form von Lesekompetenz, die Schulen gerade erst zu vermitteln beginnen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Emojis, verdoppelte Buchstaben und gezielte Kleinschreibung stellen einen Teil des Tons und Rhythmus wieder her, den gesprochene Sprache automatisch mitliefert.",
+        "Gesprochenes verfliegt, Getipptes bleibt.",
+        "In einem Klassenchat macht sich ein Schüler mit bewusster Übertreibung über eine neue Schulregel lustig und setzt drei lachende Emojis dahinter.",
+        "Sie wird getippt, aber im Tempo eines Gesprächs verfasst; sie ist informell, kann aber gespeichert, weitergeleitet und Jahre später zitiert werden."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Sie wird getippt, aber im Tempo eines Gesprächs verfasst; sie ist informell, kann aber gespeichert, weitergeleitet und Jahre später zitiert werden.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Gesprochenes verfliegt, Getipptes bleibt.",
+        "In einem Klassenchat macht sich ein Schüler mit bewusster Übertreibung über eine neue Schulregel lustig und setzt drei lachende Emojis dahinter.",
+        "Emojis, verdoppelte Buchstaben und gezielte Kleinschreibung stellen einen Teil des Tons und Rhythmus wieder her, den gesprochene Sprache automatisch mitliefert.",
+        "Wir behandeln Nachrichten gern wie gesprochene Sprache, wenn wir sie schreiben, und wie Dokumente, wenn wir sie lesen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Emojis, verdoppelte Buchstaben und gezielte Kleinschreibung stellen einen Teil des Tons und Rhythmus wieder her, den gesprochene Sprache automatisch mitliefert.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "In einem Klassenchat macht sich ein Schüler mit bewusster Übertreibung über eine neue Schulregel lustig und setzt drei lachende Emojis dahinter.",
+        "Gesprochenes verfliegt, Getipptes bleibt.",
+        "Wir behandeln Nachrichten gern wie gesprochene Sprache, wenn wir sie schreiben, und wie Dokumente, wenn wir sie lesen.",
+        "Eine Nachricht zu senden ist leicht; eine zu lesen – zu fragen, für wen sie geschrieben wurde, was ihr vorausging und was weggeschnitten wurde – ist deutlich schwerer."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Gesprochenes verfliegt, Getipptes bleibt.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-de-c2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "In einem Klassenchat macht sich ein Schüler mit bewusster Übertreibung über eine neue Schulregel lustig und setzt drei lachende Emojis dahinter.",
+        "Wir behandeln Nachrichten gern wie gesprochene Sprache, wenn wir sie schreiben, und wie Dokumente, wenn wir sie lesen.",
+        "Eine Nachricht zu senden ist leicht; eine zu lesen – zu fragen, für wen sie geschrieben wurde, was ihr vorausging und was weggeschnitten wurde – ist deutlich schwerer.",
+        "Sie wird getippt, aber im Tempo eines Gesprächs verfasst; sie ist informell, kann aber gespeichert, weitergeleitet und Jahre später zitiert werden."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: In einem Klassenchat macht sich ein Schüler mit bewusster Übertreibung über eine neue Schulregel lustig und setzt drei lachende Emojis dahinter.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

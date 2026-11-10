@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "de",
+  "level": "B1",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-de-b1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Sie zeigte ihnen einen Gully an der Bushaltestelle.",
+        "Nach einem starken Regen entdeckten Jugendliche aus einer Schul-AG viele Verpackungen am Mühlenbach.",
+        "Die Jugendlichen notierten eine Woche lang, wo besonders viel Müll lag.",
+        "Bei der nächsten Kontrolle fanden die Jugendlichen weniger Verpackungen am Bach."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Nach einem starken Regen entdeckten Jugendliche aus einer Schul-AG viele Verpackungen am Mühlenbach.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-b1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Sie zeigte ihnen einen Gully an der Bushaltestelle.",
+        "Die Jugendlichen notierten eine Woche lang, wo besonders viel Müll lag.",
+        "Bei der nächsten Kontrolle fanden die Jugendlichen weniger Verpackungen am Bach.",
+        "Aus einer schnellen Schuldzuweisung war ein kleines Forschungsprojekt geworden."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Sie zeigte ihnen einen Gully an der Bushaltestelle.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-b1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Bei der nächsten Kontrolle fanden die Jugendlichen weniger Verpackungen am Bach.",
+        "Aus einer schnellen Schuldzuweisung war ein kleines Forschungsprojekt geworden.",
+        "Nach einem starken Regen entdeckten Jugendliche aus einer Schul-AG viele Verpackungen am Mühlenbach.",
+        "Die Jugendlichen notierten eine Woche lang, wo besonders viel Müll lag."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Die Jugendlichen notierten eine Woche lang, wo besonders viel Müll lag.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Aus einer schnellen Schuldzuweisung war ein kleines Forschungsprojekt geworden.",
+        "Nach einem starken Regen entdeckten Jugendliche aus einer Schul-AG viele Verpackungen am Mühlenbach.",
+        "Bei der nächsten Kontrolle fanden die Jugendlichen weniger Verpackungen am Bach.",
+        "Sie zeigte ihnen einen Gully an der Bushaltestelle."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Bei der nächsten Kontrolle fanden die Jugendlichen weniger Verpackungen am Bach.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-b1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 5?",
+      "choices": [
+        "Nach einem starken Regen entdeckten Jugendliche aus einer Schul-AG viele Verpackungen am Mühlenbach.",
+        "Aus einer schnellen Schuldzuweisung war ein kleines Forschungsprojekt geworden.",
+        "Sie zeigte ihnen einen Gully an der Bushaltestelle.",
+        "Die Jugendlichen notierten eine Woche lang, wo besonders viel Müll lag."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Absatz 5: Aus einer schnellen Schuldzuweisung war ein kleines Forschungsprojekt geworden.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-b1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Zuerst vermuteten sie, dass Spaziergänger ihren Müll direkt ins Wasser geworfen hatten.",
+        "Bei Regen fließt Wasser vom Gehweg in den Gully und weiter durch Rohre.",
+        "Am meisten fanden sie an der Haltestelle neben einem oft überfüllten Abfalleimer.",
+        "Trotzdem behaupteten sie nicht, das Problem sei gelöst."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Zuerst vermuteten sie, dass Spaziergänger ihren Müll direkt ins Wasser geworfen hatten.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-b1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Am meisten fanden sie an der Haltestelle neben einem oft überfüllten Abfalleimer.",
+        "Trotzdem behaupteten sie nicht, das Problem sei gelöst.",
+        "Die wichtigste Frage lautete nun nicht mehr: Wer hat das getan?",
+        "Bei Regen fließt Wasser vom Gehweg in den Gully und weiter durch Rohre."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Bei Regen fließt Wasser vom Gehweg in den Gully und weiter durch Rohre.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-b1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Trotzdem behaupteten sie nicht, das Problem sei gelöst.",
+        "Die wichtigste Frage lautete nun nicht mehr: Wer hat das getan?",
+        "Am meisten fanden sie an der Haltestelle neben einem oft überfüllten Abfalleimer.",
+        "Zuerst vermuteten sie, dass Spaziergänger ihren Müll direkt ins Wasser geworfen hatten."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Am meisten fanden sie an der Haltestelle neben einem oft überfüllten Abfalleimer.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-b1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Die wichtigste Frage lautete nun nicht mehr: Wer hat das getan?",
+        "Trotzdem behaupteten sie nicht, das Problem sei gelöst.",
+        "Zuerst vermuteten sie, dass Spaziergänger ihren Müll direkt ins Wasser geworfen hatten.",
+        "Bei Regen fließt Wasser vom Gehweg in den Gully und weiter durch Rohre."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Trotzdem behaupteten sie nicht, das Problem sei gelöst.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-b1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 5?",
+      "choices": [
+        "Die wichtigste Frage lautete nun nicht mehr: Wer hat das getan?",
+        "Zuerst vermuteten sie, dass Spaziergänger ihren Müll direkt ins Wasser geworfen hatten.",
+        "Bei Regen fließt Wasser vom Gehweg in den Gully und weiter durch Rohre.",
+        "Am meisten fanden sie an der Haltestelle neben einem oft überfüllten Abfalleimer."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Absatz 5: Die wichtigste Frage lautete nun nicht mehr: Wer hat das getan?",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

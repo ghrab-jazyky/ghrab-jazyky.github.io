@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "fr",
+  "level": "C1",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-fr-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "La réalisatrice possède un sens remarquable du détail.",
+        "Dans les premières minutes du documentaire fictif Après la marée, un emballage léger traverse une place déserte.",
+        "Le moment le plus révélateur se situe dans une réunion municipale.",
+        "C’est précisément là que le montage abandonne cette piste."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Dans les premières minutes du documentaire fictif Après la marée, un emballage léger traverse une place déserte.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "La réalisatrice possède un sens remarquable du détail.",
+        "Le moment le plus révélateur se situe dans une réunion municipale.",
+        "C’est précisément là que le montage abandonne cette piste.",
+        "Il serait absurde d’exiger d’un film qu’il adopte les codes d’un rapport administratif."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: La réalisatrice possède un sens remarquable du détail.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "C’est précisément là que le montage abandonne cette piste.",
+        "Il serait absurde d’exiger d’un film qu’il adopte les codes d’un rapport administratif.",
+        "Après le générique, une bénévole reconnaît que le premier festival utilisant des gobelets réemployables a nécessité davantage de trajets vers la station de lavage qu…",
+        "Le moment le plus révélateur se situe dans une réunion municipale."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Le moment le plus révélateur se situe dans une réunion municipale.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Il serait absurde d’exiger d’un film qu’il adopte les codes d’un rapport administratif.",
+        "Après le générique, une bénévole reconnaît que le premier festival utilisant des gobelets réemployables a nécessité davantage de trajets vers la station de lavage qu…",
+        "C’est précisément là que le montage abandonne cette piste.",
+        "Dans les premières minutes du documentaire fictif Après la marée, un emballage léger traverse une place déserte."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: C’est précisément là que le montage abandonne cette piste.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 5?",
+      "choices": [
+        "Après le générique, une bénévole reconnaît que le premier festival utilisant des gobelets réemployables a nécessité davantage de trajets vers la station de lavage qu…",
+        "Il serait absurde d’exiger d’un film qu’il adopte les codes d’un rapport administratif.",
+        "Dans les premières minutes du documentaire fictif Après la marée, un emballage léger traverse une place déserte.",
+        "La réalisatrice possède un sens remarquable du détail."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraphe 5: Il serait absurde d’exiger d’un film qu’il adopte les codes d’un rapport administratif.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 6?",
+      "choices": [
+        "Après le générique, une bénévole reconnaît que le premier festival utilisant des gobelets réemployables a nécessité davantage de trajets vers la station de lavage qu…",
+        "Dans les premières minutes du documentaire fictif Après la marée, un emballage léger traverse une place déserte.",
+        "La réalisatrice possède un sens remarquable du détail.",
+        "Le moment le plus révélateur se situe dans une réunion municipale."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "Paragraphe 6: Après le générique, une bénévole reconnaît que le premier festival utilisant des gobelets réemployables a nécessité davantage de trajets vers la station de lavage qu…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Elle filme les rues au lendemain d’un festival et accompagne les agents d’entretien bien avant l’ouverture des cafés.",
+        "Une responsable présente un projet de gobelets réutilisables pour les manifestations publiques.",
+        "Il montre à plusieurs reprises un adolescent laissant tomber une bouteille, accompagné d’une musique inquiétante.",
+        "La caméra le suit avec une gravité presque théâtrale."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: La caméra le suit avec une gravité presque théâtrale.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Une responsable présente un projet de gobelets réutilisables pour les manifestations publiques.",
+        "Il montre à plusieurs reprises un adolescent laissant tomber une bouteille, accompagné d’une musique inquiétante.",
+        "Elle filme les rues au lendemain d’un festival et accompagne les agents d’entretien bien avant l’ouverture des cafés.",
+        "Le cinéma sélectionne, condense et transforme, et ce sont aussi ses forces."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Elle filme les rues au lendemain d’un festival et accompagne les agents d’entretien bien avant l’ouverture des cafés.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Il montre à plusieurs reprises un adolescent laissant tomber une bouteille, accompagné d’une musique inquiétante.",
+        "Une responsable présente un projet de gobelets réutilisables pour les manifestations publiques.",
+        "Le cinéma sélectionne, condense et transforme, et ce sont aussi ses forces.",
+        "Cet aveu ne rend pas le projet ridicule ; il permet de l’améliorer."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Une responsable présente un projet de gobelets réutilisables pour les manifestations publiques.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Il montre à plusieurs reprises un adolescent laissant tomber une bouteille, accompagné d’une musique inquiétante.",
+        "Le cinéma sélectionne, condense et transforme, et ce sont aussi ses forces.",
+        "Cet aveu ne rend pas le projet ridicule ; il permet de l’améliorer.",
+        "La caméra le suit avec une gravité presque théâtrale."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Il montre à plusieurs reprises un adolescent laissant tomber une bouteille, accompagné d’une musique inquiétante.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "fr",
+  "level": "A2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-fr-a2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Lundi, il travaille vingt minutes puis fait une petite pause.",
+        "Daniel a un contrôle de sciences jeudi.",
+        "Le contrôle est toujours difficile et Daniel fait deux erreurs.",
+        "Mardi, il explique une idée importante à sa sœur."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Daniel a un contrôle de sciences jeudi.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Lundi, il travaille vingt minutes puis fait une petite pause.",
+        "Le contrôle est toujours difficile et Daniel fait deux erreurs.",
+        "Daniel a un contrôle de sciences jeudi.",
+        "Pourtant, il se sent plus calme que d’habitude."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Lundi, il travaille vingt minutes puis fait une petite pause.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Daniel a un contrôle de sciences jeudi.",
+        "Lundi, il travaille vingt minutes puis fait une petite pause.",
+        "D’habitude, il révise tout le mercredi soir.",
+        "Le contrôle est toujours difficile et Daniel fait deux erreurs."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Le contrôle est toujours difficile et Daniel fait deux erreurs.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Mardi, il explique une idée importante à sa sœur.",
+        "Pourtant, il se sent plus calme que d’habitude.",
+        "D’habitude, il révise tout le mercredi soir.",
+        "Quand son explication n’est pas claire, il relit ses notes."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: D’habitude, il révise tout le mercredi soir.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Pourtant, il se sent plus calme que d’habitude.",
+        "Mardi, il explique une idée importante à sa sœur.",
+        "D’habitude, il révise tout le mercredi soir.",
+        "Après les cours, il écrit ce qu’il doit encore travailler."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Mardi, il explique une idée importante à sa sœur.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Pourtant, il se sent plus calme que d’habitude.",
+        "D’habitude, il révise tout le mercredi soir.",
+        "Mardi, il explique une idée importante à sa sœur.",
+        "Il se couche très tard et il est fatigué le lendemain."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Pourtant, il se sent plus calme que d’habitude.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Quand son explication n’est pas claire, il relit ses notes.",
+        "Après les cours, il écrit ce qu’il doit encore travailler.",
+        "Mercredi, il essaie de répondre à quelques questions sans regarder les réponses.",
+        "Il se couche très tard et il est fatigué le lendemain."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Il se couche très tard et il est fatigué le lendemain.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Après les cours, il écrit ce qu’il doit encore travailler.",
+        "Il se couche très tard et il est fatigué le lendemain.",
+        "Quand son explication n’est pas claire, il relit ses notes.",
+        "Il comprend qu’une bonne méthode n’a pas besoin d’être parfaite."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Quand son explication n’est pas claire, il relit ses notes.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Il se couche très tard et il est fatigué le lendemain.",
+        "Après les cours, il écrit ce qu’il doit encore travailler.",
+        "Quand son explication n’est pas claire, il relit ses notes.",
+        "Cette fois, il veut essayer une autre méthode."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Après les cours, il écrit ce qu’il doit encore travailler.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Cette fois, il veut essayer une autre méthode.",
+        "Mercredi, il essaie de répondre à quelques questions sans regarder les réponses.",
+        "Il comprend qu’une bonne méthode n’a pas besoin d’être parfaite.",
+        "Lundi, il travaille vingt minutes puis fait une petite pause."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Cette fois, il veut essayer une autre méthode.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

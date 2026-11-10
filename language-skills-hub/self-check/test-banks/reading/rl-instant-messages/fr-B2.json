@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "fr",
+  "level": "B2",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-instant-messages-fr-b2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "C’est pourquoi de petits détails prennent une importance surprenante.",
+        "Tu envoies un « OK. » rapide à une amie, et une heure plus tard, elle te demande si tu es fâché contre elle.",
+        "Prenons une situation que beaucoup d’élèves connaissent (les détails sont inventés).",
+        "Cela ne veut pas dire qu’il faille écrire de longs messages formels à ses amis."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Tu envoies un « OK. » rapide à une amie, et une heure plus tard, elle te demande si tu es fâché contre elle.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "C’est pourquoi de petits détails prennent une importance surprenante.",
+        "Prenons une situation que beaucoup d’élèves connaissent (les détails sont inventés).",
+        "Cela ne veut pas dire qu’il faille écrire de longs messages formels à ses amis.",
+        "Il est utile aussi de se rappeler que la personne en face lit sans savoir dans quelle situation tu te trouves."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: C’est pourquoi de petits détails prennent une importance surprenante.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Cela ne veut pas dire qu’il faille écrire de longs messages formels à ses amis.",
+        "Il est utile aussi de se rappeler que la personne en face lit sans savoir dans quelle situation tu te trouves.",
+        "Tu envoies un « OK. » rapide à une amie, et une heure plus tard, elle te demande si tu es fâché contre elle.",
+        "Prenons une situation que beaucoup d’élèves connaissent (les détails sont inventés)."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Prenons une situation que beaucoup d’élèves connaissent (les détails sont inventés).",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Il est utile aussi de se rappeler que la personne en face lit sans savoir dans quelle situation tu te trouves.",
+        "Tu envoies un « OK. » rapide à une amie, et une heure plus tard, elle te demande si tu es fâché contre elle.",
+        "Cela ne veut pas dire qu’il faille écrire de longs messages formels à ses amis.",
+        "C’est pourquoi de petits détails prennent une importance surprenante."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Cela ne veut pas dire qu’il faille écrire de longs messages formels à ses amis.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 5?",
+      "choices": [
+        "Tu envoies un « OK. » rapide à une amie, et une heure plus tard, elle te demande si tu es fâché contre elle.",
+        "Il est utile aussi de se rappeler que la personne en face lit sans savoir dans quelle situation tu te trouves.",
+        "C’est pourquoi de petits détails prennent une importance surprenante.",
+        "Prenons une situation que beaucoup d’élèves connaissent (les détails sont inventés)."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraphe 5: Il est utile aussi de se rappeler que la personne en face lit sans savoir dans quelle situation tu te trouves.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Tu ne l’étais pas : tu étais simplement dans le bus, les doigts gelés.",
+        "Pour beaucoup de jeunes, un point à la fin d’une réponse courte paraît froid ou définitif, alors que des proches plus âgés le mettent simplement parce que c’est la p…",
+        "Dana a créé un groupe afin d’organiser un cadeau de départ pour un professeur.",
+        "Ce serait bizarre et cela créerait d’autres malentendus."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Tu ne l’étais pas : tu étais simplement dans le bus, les doigts gelés.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Dana a créé un groupe afin d’organiser un cadeau de départ pour un professeur.",
+        "Ce serait bizarre et cela créerait d’autres malentendus.",
+        "Si un message te met mal à l’aise, demande avant de supposer : « Tu voulais dire… ? » est bien moins dramatique que des jours de silence.",
+        "Pour beaucoup de jeunes, un point à la fin d’une réponse courte paraît froid ou définitif, alors que des proches plus âgés le mettent simplement parce que c’est la p…"
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Pour beaucoup de jeunes, un point à la fin d’une réponse courte paraît froid ou définitif, alors que des proches plus âgés le mettent simplement parce que c’est la p…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Ce serait bizarre et cela créerait d’autres malentendus.",
+        "Si un message te met mal à l’aise, demande avant de supposer : « Tu voulais dire… ? » est bien moins dramatique que des jours de silence.",
+        "Dana a créé un groupe afin d’organiser un cadeau de départ pour un professeur.",
+        "Tu ne l’étais pas : tu étais simplement dans le bus, les doigts gelés."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Dana a créé un groupe afin d’organiser un cadeau de départ pour un professeur.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Si un message te met mal à l’aise, demande avant de supposer : « Tu voulais dire… ? » est bien moins dramatique que des jours de silence.",
+        "Ce serait bizarre et cela créerait d’autres malentendus.",
+        "Tu ne l’étais pas : tu étais simplement dans le bus, les doigts gelés.",
+        "Pour beaucoup de jeunes, un point à la fin d’une réponse courte paraît froid ou définitif, alors que des proches plus âgés le mettent simplement parce que c’est la p…"
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Ce serait bizarre et cela créerait d’autres malentendus.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-fr-b2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 5?",
+      "choices": [
+        "Si un message te met mal à l’aise, demande avant de supposer : « Tu voulais dire… ? » est bien moins dramatique que des jours de silence.",
+        "Tu ne l’étais pas : tu étais simplement dans le bus, les doigts gelés.",
+        "Pour beaucoup de jeunes, un point à la fin d’une réponse courte paraît froid ou définitif, alors que des proches plus âgés le mettent simplement parce que c’est la p…",
+        "Dana a créé un groupe afin d’organiser un cadeau de départ pour un professeur."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Paragraphe 5: Si un message te met mal à l’aise, demande avant de supposer : « Tu voulais dire… ? » est bien moins dramatique que des jours de silence.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

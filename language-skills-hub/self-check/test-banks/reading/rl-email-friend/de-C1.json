@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "de",
+  "level": "C1",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-de-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Die Arbeit im Archiv hat mir eine merkwürdige Lektion über Erinnerung erteilt.",
+        "Lieber Jules, beinahe hätte ich mich wieder mit der üblichen Bemerkung entschuldigt, ich sei beschäftigt gewesen.",
+        "Letzten Monat planten wir einen öffentlichen Abend, an dem Besucher die Aufnahmen hören und eigene Erinnerungen teilen können.",
+        "Freundschaft soll für uns nicht zu einem weiteren Projekt werden, das man abhaken muss."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Lieber Jules, beinahe hätte ich mich wieder mit der üblichen Bemerkung entschuldigt, ich sei beschäftigt gewesen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Die Arbeit im Archiv hat mir eine merkwürdige Lektion über Erinnerung erteilt.",
+        "Letzten Monat planten wir einen öffentlichen Abend, an dem Besucher die Aufnahmen hören und eigene Erinnerungen teilen können.",
+        "Freundschaft soll für uns nicht zu einem weiteren Projekt werden, das man abhaken muss.",
+        "Lieber Jules, beinahe hätte ich mich wieder mit der üblichen Bemerkung entschuldigt, ich sei beschäftigt gewesen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Die Arbeit im Archiv hat mir eine merkwürdige Lektion über Erinnerung erteilt.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Freundschaft soll für uns nicht zu einem weiteren Projekt werden, das man abhaken muss.",
+        "Lieber Jules, beinahe hätte ich mich wieder mit der üblichen Bemerkung entschuldigt, ich sei beschäftigt gewesen.",
+        "Die Arbeit im Archiv hat mir eine merkwürdige Lektion über Erinnerung erteilt.",
+        "Letzten Monat planten wir einen öffentlichen Abend, an dem Besucher die Aufnahmen hören und eigene Erinnerungen teilen können."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Letzten Monat planten wir einen öffentlichen Abend, an dem Besucher die Aufnahmen hören und eigene Erinnerungen teilen können.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Lieber Jules, beinahe hätte ich mich wieder mit der üblichen Bemerkung entschuldigt, ich sei beschäftigt gewesen.",
+        "Die Arbeit im Archiv hat mir eine merkwürdige Lektion über Erinnerung erteilt.",
+        "Freundschaft soll für uns nicht zu einem weiteren Projekt werden, das man abhaken muss.",
+        "Letzten Monat planten wir einen öffentlichen Abend, an dem Besucher die Aufnahmen hören und eigene Erinnerungen teilen können."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Freundschaft soll für uns nicht zu einem weiteren Projekt werden, das man abhaken muss.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Wir sammeln Geschichten von Bewohnern, erwarten aber keine glatten Lebensweisheiten mit inspirierendem Ende.",
+        "Das würde unser Schweigen jedoch als Zufall darstellen: Wir haben im letzten Jahr viele Fotos kommentiert, aber kaum darüber gesprochen, wie es uns wirklich geht.",
+        "Dabei dachte ich sofort an dich, denn du entdeckst immer Details, die andere übersehen.",
+        "Der Hörabend findet am ersten Freitag im Juli statt; du könntest kommen, ohne etwas beizutragen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Das würde unser Schweigen jedoch als Zufall darstellen: Wir haben im letzten Jahr viele Fotos kommentiert, aber kaum darüber gesprochen, wie es uns wirklich geht.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Wir sammeln Geschichten von Bewohnern, erwarten aber keine glatten Lebensweisheiten mit inspirierendem Ende.",
+        "Dabei dachte ich sofort an dich, denn du entdeckst immer Details, die andere übersehen.",
+        "Der Hörabend findet am ersten Freitag im Juli statt; du könntest kommen, ohne etwas beizutragen.",
+        "Das würde unser Schweigen jedoch als Zufall darstellen: Wir haben im letzten Jahr viele Fotos kommentiert, aber kaum darüber gesprochen, wie es uns wirklich geht."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Wir sammeln Geschichten von Bewohnern, erwarten aber keine glatten Lebensweisheiten mit inspirierendem Ende.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Der Hörabend findet am ersten Freitag im Juli statt; du könntest kommen, ohne etwas beizutragen.",
+        "Das würde unser Schweigen jedoch als Zufall darstellen: Wir haben im letzten Jahr viele Fotos kommentiert, aber kaum darüber gesprochen, wie es uns wirklich geht.",
+        "Wir sammeln Geschichten von Bewohnern, erwarten aber keine glatten Lebensweisheiten mit inspirierendem Ende.",
+        "Dabei dachte ich sofort an dich, denn du entdeckst immer Details, die andere übersehen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Dabei dachte ich sofort an dich, denn du entdeckst immer Details, die andere übersehen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Das würde unser Schweigen jedoch als Zufall darstellen: Wir haben im letzten Jahr viele Fotos kommentiert, aber kaum darüber gesprochen, wie es uns wirklich geht.",
+        "Wir sammeln Geschichten von Bewohnern, erwarten aber keine glatten Lebensweisheiten mit inspirierendem Ende.",
+        "Der Hörabend findet am ersten Freitag im Juli statt; du könntest kommen, ohne etwas beizutragen.",
+        "Dabei dachte ich sofort an dich, denn du entdeckst immer Details, die andere übersehen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Der Hörabend findet am ersten Freitag im Juli statt; du könntest kommen, ohne etwas beizutragen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Eine pensionierte Krankenschwester erinnerte sich vor allem an Streitigkeiten mit den Nachbarn: Gerade diese hätten gezeigt, dass die Menschen Anteil aneinander nahmen.",
+        "Seit ich für ein Stadtarchiv nach Bristol gezogen bin, sammle ich kleine Geschichten: ein geschlossenes Kino, den letzten Gast eines Nachtcafés, die Fähre vor Sonnen…",
+        "Doch ich zögerte: Aus der Einladung sollte keine Prüfung unserer Freundschaft werden.",
+        "Die Eintrittskarte bezahle ich, die Reise leider nicht; bei zu großem Gedränge können wir auch früher gehen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Seit ich für ein Stadtarchiv nach Bristol gezogen bin, sammle ich kleine Geschichten: ein geschlossenes Kino, den letzten Gast eines Nachtcafés, die Fähre vor Sonnen…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Eine pensionierte Krankenschwester erinnerte sich vor allem an Streitigkeiten mit den Nachbarn: Gerade diese hätten gezeigt, dass die Menschen Anteil aneinander nahmen.",
+        "Doch ich zögerte: Aus der Einladung sollte keine Prüfung unserer Freundschaft werden.",
+        "Die Eintrittskarte bezahle ich, die Reise leider nicht; bei zu großem Gedränge können wir auch früher gehen.",
+        "Seit ich für ein Stadtarchiv nach Bristol gezogen bin, sammle ich kleine Geschichten: ein geschlossenes Kino, den letzten Gast eines Nachtcafés, die Fähre vor Sonnen…"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Eine pensionierte Krankenschwester erinnerte sich vor allem an Streitigkeiten mit den Nachbarn: Gerade diese hätten gezeigt, dass die Menschen Anteil aneinander nahmen.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

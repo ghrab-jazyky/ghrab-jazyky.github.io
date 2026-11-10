@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "es",
+  "level": "A2",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-asteroids-es-a2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Nina se sorprendió al saber que algunos asteroides pasan cerca de la Tierra.",
+        "El viernes pasado, Nina fue al club de astronomía de su instituto.",
+        "Al final del club, vieron un vídeo sobre una nave llamada DART.",
+        "Los científicos utilizan telescopios para encontrarlos y ordenadores para estudiar sus órbitas."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: El viernes pasado, Nina fue al club de astronomía de su instituto.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Nina se sorprendió al saber que algunos asteroides pasan cerca de la Tierra.",
+        "Al final del club, vieron un vídeo sobre una nave llamada DART.",
+        "El viernes pasado, Nina fue al club de astronomía de su instituto.",
+        "En 2022, la nave chocó a propósito con Dimorphos, una pequeña luna de un asteroide."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Nina se sorprendió al saber que algunos asteroides pasan cerca de la Tierra.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "El viernes pasado, Nina fue al club de astronomía de su instituto.",
+        "Nina se sorprendió al saber que algunos asteroides pasan cerca de la Tierra.",
+        "Los alumnos miraron fotografías de asteroides.",
+        "Al final del club, vieron un vídeo sobre una nave llamada DART."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Al final del club, vieron un vídeo sobre una nave llamada DART.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Los científicos utilizan telescopios para encontrarlos y ordenadores para estudiar sus órbitas.",
+        "En 2022, la nave chocó a propósito con Dimorphos, una pequeña luna de un asteroide.",
+        "Los alumnos miraron fotografías de asteroides.",
+        "Cuando descubren uno nuevo, lo observan varias veces."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Los alumnos miraron fotografías de asteroides.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "En 2022, la nave chocó a propósito con Dimorphos, una pequeña luna de un asteroide.",
+        "Los científicos utilizan telescopios para encontrarlos y ordenadores para estudiar sus órbitas.",
+        "Los alumnos miraron fotografías de asteroides.",
+        "Después de la prueba, Dimorphos tardaba menos en dar una vuelta alrededor de otro asteroide más grande."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Los científicos utilizan telescopios para encontrarlos y ordenadores para estudiar sus órbitas.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "En 2022, la nave chocó a propósito con Dimorphos, una pequeña luna de un asteroide.",
+        "Los alumnos miraron fotografías de asteroides.",
+        "Los científicos utilizan telescopios para encontrarlos y ordenadores para estudiar sus órbitas.",
+        "Su profesora explicó que son trozos de roca o metal que giran alrededor del Sol."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: En 2022, la nave chocó a propósito con Dimorphos, una pequeña luna de un asteroide.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Cuando descubren uno nuevo, lo observan varias veces.",
+        "Después de la prueba, Dimorphos tardaba menos en dar una vuelta alrededor de otro asteroide más grande.",
+        "Con más observaciones pueden calcular mejor su camino.",
+        "Su profesora explicó que son trozos de roca o metal que giran alrededor del Sol."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Su profesora explicó que son trozos de roca o metal que giran alrededor del Sol.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Después de la prueba, Dimorphos tardaba menos en dar una vuelta alrededor de otro asteroide más grande.",
+        "Su profesora explicó que son trozos de roca o metal que giran alrededor del Sol.",
+        "Cuando descubren uno nuevo, lo observan varias veces.",
+        "A Nina le pareció increíble que una nave pudiera dar un pequeño empujón a una roca espacial."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Cuando descubren uno nuevo, lo observan varias veces.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Su profesora explicó que son trozos de roca o metal que giran alrededor del Sol.",
+        "Después de la prueba, Dimorphos tardaba menos en dar una vuelta alrededor de otro asteroide más grande.",
+        "Cuando descubren uno nuevo, lo observan varias veces.",
+        "La mayoría está en una región entre Marte y Júpiter, llamada cinturón de asteroides."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Después de la prueba, Dimorphos tardaba menos en dar una vuelta alrededor de otro asteroide más grande.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-a2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "La mayoría está en una región entre Marte y Júpiter, llamada cinturón de asteroides.",
+        "Con más observaciones pueden calcular mejor su camino.",
+        "A Nina le pareció increíble que una nave pudiera dar un pequeño empujón a una roca espacial.",
+        "La profesora dijo que pasar cerca de la Tierra no significa chocar con ella."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: La mayoría está en una región entre Marte y Júpiter, llamada cinturón de asteroides.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

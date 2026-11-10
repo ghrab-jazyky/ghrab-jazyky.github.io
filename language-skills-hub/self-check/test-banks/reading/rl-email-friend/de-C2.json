@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "de",
+  "level": "C2",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-de-c2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Meine jetzige Arbeit an Lebensgeschichten für ein kleines Küstenmuseum macht solche Ausflüchte schwerer.",
+        "Liebe Amara, ich habe diesen Brief so oft aufgeschoben, dass ich meinen eigenen Erklärungen inzwischen misstraue.",
+        "Es gibt noch eine weniger schmeichelhafte Schwierigkeit.",
+        "Dies ist eine Einladung, kein Test dessen, was uns geblieben ist."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Liebe Amara, ich habe diesen Brief so oft aufgeschoben, dass ich meinen eigenen Erklärungen inzwischen misstraue.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Meine jetzige Arbeit an Lebensgeschichten für ein kleines Küstenmuseum macht solche Ausflüchte schwerer.",
+        "Es gibt noch eine weniger schmeichelhafte Schwierigkeit.",
+        "Dies ist eine Einladung, kein Test dessen, was uns geblieben ist.",
+        "Liebe Amara, ich habe diesen Brief so oft aufgeschoben, dass ich meinen eigenen Erklärungen inzwischen misstraue."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Meine jetzige Arbeit an Lebensgeschichten für ein kleines Küstenmuseum macht solche Ausflüchte schwerer.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Dies ist eine Einladung, kein Test dessen, was uns geblieben ist.",
+        "Liebe Amara, ich habe diesen Brief so oft aufgeschoben, dass ich meinen eigenen Erklärungen inzwischen misstraue.",
+        "Meine jetzige Arbeit an Lebensgeschichten für ein kleines Küstenmuseum macht solche Ausflüchte schwerer.",
+        "Es gibt noch eine weniger schmeichelhafte Schwierigkeit."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Es gibt noch eine weniger schmeichelhafte Schwierigkeit.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Liebe Amara, ich habe diesen Brief so oft aufgeschoben, dass ich meinen eigenen Erklärungen inzwischen misstraue.",
+        "Meine jetzige Arbeit an Lebensgeschichten für ein kleines Küstenmuseum macht solche Ausflüchte schwerer.",
+        "Dies ist eine Einladung, kein Test dessen, was uns geblieben ist.",
+        "Es gibt noch eine weniger schmeichelhafte Schwierigkeit."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Dies ist eine Einladung, kein Test dessen, was uns geblieben ist.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Wir bitten Bewohner, vertraute Orte zu beschreiben; aufschlussreich wird es aber oft erst, wenn jemand ablehnt oder unsere vermeintlich sichere Deutung korrigiert.",
+        "Die einfache Fassung lautet, dass häufige Umzüge, anspruchsvolle Arbeit und ständig fremde Städte kaum Zeit für Briefe gelassen hätten.",
+        "Ich schreibe ausgerechnet kurz vor der Eröffnung unseres öffentlichen Hörraums, zu der ich dich sehr gern einladen würde.",
+        "Der Hörraum öffnet am letzten Sonntag im August, und statt einer feierlichen Zeremonie gibt es ein Gespräch mit Bewohnern."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Die einfache Fassung lautet, dass häufige Umzüge, anspruchsvolle Arbeit und ständig fremde Städte kaum Zeit für Briefe gelassen hätten.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Wir bitten Bewohner, vertraute Orte zu beschreiben; aufschlussreich wird es aber oft erst, wenn jemand ablehnt oder unsere vermeintlich sichere Deutung korrigiert.",
+        "Ich schreibe ausgerechnet kurz vor der Eröffnung unseres öffentlichen Hörraums, zu der ich dich sehr gern einladen würde.",
+        "Der Hörraum öffnet am letzten Sonntag im August, und statt einer feierlichen Zeremonie gibt es ein Gespräch mit Bewohnern.",
+        "Die einfache Fassung lautet, dass häufige Umzüge, anspruchsvolle Arbeit und ständig fremde Städte kaum Zeit für Briefe gelassen hätten."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Wir bitten Bewohner, vertraute Orte zu beschreiben; aufschlussreich wird es aber oft erst, wenn jemand ablehnt oder unsere vermeintlich sichere Deutung korrigiert.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Der Hörraum öffnet am letzten Sonntag im August, und statt einer feierlichen Zeremonie gibt es ein Gespräch mit Bewohnern.",
+        "Die einfache Fassung lautet, dass häufige Umzüge, anspruchsvolle Arbeit und ständig fremde Städte kaum Zeit für Briefe gelassen hätten.",
+        "Wir bitten Bewohner, vertraute Orte zu beschreiben; aufschlussreich wird es aber oft erst, wenn jemand ablehnt oder unsere vermeintlich sichere Deutung korrigiert.",
+        "Ich schreibe ausgerechnet kurz vor der Eröffnung unseres öffentlichen Hörraums, zu der ich dich sehr gern einladen würde."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Ich schreibe ausgerechnet kurz vor der Eröffnung unseres öffentlichen Hörraums, zu der ich dich sehr gern einladen würde.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Die einfache Fassung lautet, dass häufige Umzüge, anspruchsvolle Arbeit und ständig fremde Städte kaum Zeit für Briefe gelassen hätten.",
+        "Wir bitten Bewohner, vertraute Orte zu beschreiben; aufschlussreich wird es aber oft erst, wenn jemand ablehnt oder unsere vermeintlich sichere Deutung korrigiert.",
+        "Der Hörraum öffnet am letzten Sonntag im August, und statt einer feierlichen Zeremonie gibt es ein Gespräch mit Bewohnern.",
+        "Ich schreibe ausgerechnet kurz vor der Eröffnung unseres öffentlichen Hörraums, zu der ich dich sehr gern einladen würde."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Der Hörraum öffnet am letzten Sonntag im August, und statt einer feierlichen Zeremonie gibt es ein Gespräch mit Bewohnern.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Ein ehemaliger Hafenarbeiter wollte sein Viertel keine „enge Gemeinschaft“ nennen: Man half einander auch deshalb, weil man keine Wahl hatte, und Solidarität konnte…",
+        "Falsch ist das nicht, aber bequem unvollständig: Für Updates, in denen jeder Aufbruch abenteuerlich und jede Ankunft selbstverständlich aussieht, fand ich reichlich Zeit.",
+        "Von außen könnte mein neues Interesse verdächtig berechnend wirken, als hätte ich erst dann an unsere Freundschaft gedacht, als ich Publikum brauchte.",
+        "Ich kann einen Platz reservieren, doch deine Anwesenheit ist weder Pflicht noch Gegenleistung; falls dich die Fahrt erschöpft, sag bitte ohne erfundene Ausrede ab."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Falsch ist das nicht, aber bequem unvollständig: Für Updates, in denen jeder Aufbruch abenteuerlich und jede Ankunft selbstverständlich aussieht, fand ich reichlich Zeit.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-de-c2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Ein ehemaliger Hafenarbeiter wollte sein Viertel keine „enge Gemeinschaft“ nennen: Man half einander auch deshalb, weil man keine Wahl hatte, und Solidarität konnte…",
+        "Von außen könnte mein neues Interesse verdächtig berechnend wirken, als hätte ich erst dann an unsere Freundschaft gedacht, als ich Publikum brauchte.",
+        "Ich kann einen Platz reservieren, doch deine Anwesenheit ist weder Pflicht noch Gegenleistung; falls dich die Fahrt erschöpft, sag bitte ohne erfundene Ausrede ab.",
+        "Falsch ist das nicht, aber bequem unvollständig: Für Updates, in denen jeder Aufbruch abenteuerlich und jede Ankunft selbstverständlich aussieht, fand ich reichlich Zeit."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Ein ehemaliger Hafenarbeiter wollte sein Viertel keine „enge Gemeinschaft“ nennen: Man half einander auch deshalb, weil man keine Wahl hatte, und Solidarität konnte…",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

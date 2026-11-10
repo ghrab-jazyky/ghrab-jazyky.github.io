@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "de",
+  "level": "C2",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-de-c2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Man könnte den Widerspruch einfach als Heuchelei entlarven.",
+        "Am Ende einer erfundenen Dokumentation mit dem Titel Ohne Plastik, ohne Schuld wird eine Schülerin gefeiert, die seit Jahren dieselbe Trinkflasche benutzt.",
+        "Das Bild des perfekten Konsumenten ist filmisch außerordentlich praktisch.",
+        "Ebenso verführerisch wäre allerdings die Gegenbehauptung, nur Politik und Industrie müssten handeln."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Am Ende einer erfundenen Dokumentation mit dem Titel Ohne Plastik, ohne Schuld wird eine Schülerin gefeiert, die seit Jahren dieselbe Trinkflasche benutzt.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Man könnte den Widerspruch einfach als Heuchelei entlarven.",
+        "Das Bild des perfekten Konsumenten ist filmisch außerordentlich praktisch.",
+        "Ebenso verführerisch wäre allerdings die Gegenbehauptung, nur Politik und Industrie müssten handeln.",
+        "Entscheidend ist, welche Schlussfolgerung aus dem Vorbild gezogen werden soll."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Man könnte den Widerspruch einfach als Heuchelei entlarven.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Ebenso verführerisch wäre allerdings die Gegenbehauptung, nur Politik und Industrie müssten handeln.",
+        "Entscheidend ist, welche Schlussfolgerung aus dem Vorbild gezogen werden soll.",
+        "Manche Filmschaffende verteidigen ihre Vereinfachungen mit dem Hinweis auf die Dringlichkeit.",
+        "Das Bild des perfekten Konsumenten ist filmisch außerordentlich praktisch."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Das Bild des perfekten Konsumenten ist filmisch außerordentlich praktisch.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 4?",
+      "choices": [
+        "Entscheidend ist, welche Schlussfolgerung aus dem Vorbild gezogen werden soll.",
+        "Manche Filmschaffende verteidigen ihre Vereinfachungen mit dem Hinweis auf die Dringlichkeit.",
+        "Ebenso verführerisch wäre allerdings die Gegenbehauptung, nur Politik und Industrie müssten handeln.",
+        "Ein anspruchsvollerer Film würde vielmehr untersuchen, wie die Verluste erfasst wurden, welche Alternativen realistisch waren und wer die Anpassungen bezahlen müsste."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz 4: Ebenso verführerisch wäre allerdings die Gegenbehauptung, nur Politik und Industrie müssten handeln.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 5?",
+      "choices": [
+        "Manche Filmschaffende verteidigen ihre Vereinfachungen mit dem Hinweis auf die Dringlichkeit.",
+        "Entscheidend ist, welche Schlussfolgerung aus dem Vorbild gezogen werden soll.",
+        "Ein anspruchsvollerer Film würde vielmehr untersuchen, wie die Verluste erfasst wurden, welche Alternativen realistisch waren und wer die Anpassungen bezahlen müsste.",
+        "Am Ende einer erfundenen Dokumentation mit dem Titel Ohne Plastik, ohne Schuld wird eine Schülerin gefeiert, die seit Jahren dieselbe Trinkflasche benutzt."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Absatz 5: Entscheidend ist, welche Schlussfolgerung aus dem Vorbild gezogen werden soll.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 6?",
+      "choices": [
+        "Manche Filmschaffende verteidigen ihre Vereinfachungen mit dem Hinweis auf die Dringlichkeit.",
+        "Ein anspruchsvollerer Film würde vielmehr untersuchen, wie die Verluste erfasst wurden, welche Alternativen realistisch waren und wer die Anpassungen bezahlen müsste.",
+        "Am Ende einer erfundenen Dokumentation mit dem Titel Ohne Plastik, ohne Schuld wird eine Schülerin gefeiert, die seit Jahren dieselbe Trinkflasche benutzt.",
+        "Man könnte den Widerspruch einfach als Heuchelei entlarven."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "Absatz 6: Manche Filmschaffende verteidigen ihre Vereinfachungen mit dem Hinweis auf die Dringlichkeit.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 7?",
+      "choices": [
+        "Am Ende einer erfundenen Dokumentation mit dem Titel Ohne Plastik, ohne Schuld wird eine Schülerin gefeiert, die seit Jahren dieselbe Trinkflasche benutzt.",
+        "Man könnte den Widerspruch einfach als Heuchelei entlarven.",
+        "Das Bild des perfekten Konsumenten ist filmisch außerordentlich praktisch.",
+        "Ein anspruchsvollerer Film würde vielmehr untersuchen, wie die Verluste erfasst wurden, welche Alternativen realistisch waren und wer die Anpassungen bezahlen müsste."
+      ],
+      "answer": 3,
+      "sourceParagraph": 7,
+      "explanation": "Absatz 7: Ein anspruchsvollerer Film würde vielmehr untersuchen, wie die Verluste erfasst wurden, welche Alternativen realistisch waren und wer die Anpassungen bezahlen müsste.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Damit wäre zwar die eigene Überlegenheit demonstriert, aber kaum etwas verstanden.",
+        "Es kennt erkennbare Helden, eindeutige Handlungen und einen Schlussakkord.",
+        "Sie spricht unspektakulär und gerade deshalb glaubwürdig.",
+        "Sie bietet dem Einzelnen einen Freispruch, der dem moralischen Druck des Films an Bequemlichkeit kaum nachsteht."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Sie spricht unspektakulär und gerade deshalb glaubwürdig.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Es kennt erkennbare Helden, eindeutige Handlungen und einen Schlussakkord.",
+        "Damit wäre zwar die eigene Überlegenheit demonstriert, aber kaum etwas verstanden.",
+        "Sie bietet dem Einzelnen einen Freispruch, der dem moralischen Druck des Films an Bequemlichkeit kaum nachsteht.",
+        "Eine Metallflasche ist nicht unter allen Umständen automatisch die umweltfreundlichere Wahl; Herstellung, Nutzungsdauer und tatsächliche Verwendung zählen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Damit wäre zwar die eigene Überlegenheit demonstriert, aber kaum etwas verstanden.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-de-c2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Es kennt erkennbare Helden, eindeutige Handlungen und einen Schlussakkord.",
+        "Sie bietet dem Einzelnen einen Freispruch, der dem moralischen Druck des Films an Bequemlichkeit kaum nachsteht.",
+        "Eine Metallflasche ist nicht unter allen Umständen automatisch die umweltfreundlichere Wahl; Herstellung, Nutzungsdauer und tatsächliche Verwendung zählen.",
+        "Erst müsse man berühren, die Analyse könne später folgen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Es kennt erkennbare Helden, eindeutige Handlungen und einen Schlussakkord.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "es",
+  "level": "C2",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-es-c2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Denunciar la contradicción como simple hipocresía sería cómodo y poco instructivo.",
+        "Al finalizar un documental ficticio titulado Ni una botella más, el público aplaude a una estudiante que lleva años utilizando la misma cantimplora.",
+        "El relato del consumidor perfecto tiene una ventaja narrativa formidable.",
+        "Tampoco conviene abrazar la excusa contraria: sostener que solo la industria o la administración puede actuar libera al individuo de toda responsabilidad con una fac…"
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Al finalizar un documental ficticio titulado Ni una botella más, el público aplaude a una estudiante que lleva años utilizando la misma cantimplora.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Denunciar la contradicción como simple hipocresía sería cómodo y poco instructivo.",
+        "El relato del consumidor perfecto tiene una ventaja narrativa formidable.",
+        "Tampoco conviene abrazar la excusa contraria: sostener que solo la industria o la administración puede actuar libera al individuo de toda responsabilidad con una fac…",
+        "El problema surge cuando un ejemplo se transforma en una explicación suficiente."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Denunciar la contradicción como simple hipocresía sería cómodo y poco instructivo.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Tampoco conviene abrazar la excusa contraria: sostener que solo la industria o la administración puede actuar libera al individuo de toda responsabilidad con una fac…",
+        "El problema surge cuando un ejemplo se transforma en una explicación suficiente.",
+        "Algunos realizadores justifican estas simplificaciones apelando a la urgencia.",
+        "El relato del consumidor perfecto tiene una ventaja narrativa formidable."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: El relato del consumidor perfecto tiene una ventaja narrativa formidable.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "El problema surge cuando un ejemplo se transforma en una explicación suficiente.",
+        "Algunos realizadores justifican estas simplificaciones apelando a la urgencia.",
+        "Tampoco conviene abrazar la excusa contraria: sostener que solo la industria o la administración puede actuar libera al individuo de toda responsabilidad con una fac…",
+        "Quizá el cine ambiental debería aspirar a algo menos gratificante que fabricar espectadores moralmente intachables."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Tampoco conviene abrazar la excusa contraria: sostener que solo la industria o la administración puede actuar libera al individuo de toda responsabilidad con una fac…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 5?",
+      "choices": [
+        "Algunos realizadores justifican estas simplificaciones apelando a la urgencia.",
+        "El problema surge cuando un ejemplo se transforma en una explicación suficiente.",
+        "Quizá el cine ambiental debería aspirar a algo menos gratificante que fabricar espectadores moralmente intachables.",
+        "Al finalizar un documental ficticio titulado Ni una botella más, el público aplaude a una estudiante que lleva años utilizando la misma cantimplora."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Párrafo 5: El problema surge cuando un ejemplo se transforma en una explicación suficiente.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 6?",
+      "choices": [
+        "Algunos realizadores justifican estas simplificaciones apelando a la urgencia.",
+        "Quizá el cine ambiental debería aspirar a algo menos gratificante que fabricar espectadores moralmente intachables.",
+        "Al finalizar un documental ficticio titulado Ni una botella más, el público aplaude a una estudiante que lleva años utilizando la misma cantimplora.",
+        "Denunciar la contradicción como simple hipocresía sería cómodo y poco instructivo."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "Párrafo 6: Algunos realizadores justifican estas simplificaciones apelando a la urgencia.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 7?",
+      "choices": [
+        "Al finalizar un documental ficticio titulado Ni una botella más, el público aplaude a una estudiante que lleva años utilizando la misma cantimplora.",
+        "Denunciar la contradicción como simple hipocresía sería cómodo y poco instructivo.",
+        "El relato del consumidor perfecto tiene una ventaja narrativa formidable.",
+        "Quizá el cine ambiental debería aspirar a algo menos gratificante que fabricar espectadores moralmente intachables."
+      ],
+      "answer": 3,
+      "sourceParagraph": 7,
+      "explanation": "Párrafo 7: Quizá el cine ambiental debería aspirar a algo menos gratificante que fabricar espectadores moralmente intachables.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Un cine pequeño puede carecer de personal, espacio o instalaciones para organizar la recogida de recipientes reutilizables.",
+        "Ofrece protagonistas identificables y desenlaces claros.",
+        "Su intervención es conmovedora precisamente porque no suena a anuncio.",
+        "Las costumbres privadas influyen en la demanda, y las decisiones públicas dependen, al menos en parte, de quienes participan en ellas."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Su intervención es conmovedora precisamente porque no suena a anuncio.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Ofrece protagonistas identificables y desenlaces claros.",
+        "Un cine pequeño puede carecer de personal, espacio o instalaciones para organizar la recogida de recipientes reutilizables.",
+        "Las costumbres privadas influyen en la demanda, y las decisiones públicas dependen, al menos en parte, de quienes participan en ellas.",
+        "Una cantimplora no es automáticamente la opción más razonable en cualquier circunstancia: importan su fabricación, su duración y el uso real que se haga de ella."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Un cine pequeño puede carecer de personal, espacio o instalaciones para organizar la recogida de recipientes reutilizables.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-es-c2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Ofrece protagonistas identificables y desenlaces claros.",
+        "Las costumbres privadas influyen en la demanda, y las decisiones públicas dependen, al menos en parte, de quienes participan en ellas.",
+        "Una cantimplora no es automáticamente la opción más razonable en cualquier circunstancia: importan su fabricación, su duración y el uso real que se haga de ella.",
+        "Primero hay que emocionar, argumentan; los matices pueden esperar."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Ofrece protagonistas identificables y desenlaces claros.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

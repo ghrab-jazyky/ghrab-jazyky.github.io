@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-instant-messages-en-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Ana: Great idea!",
+        "Leo: Hi everyone!",
+        "Sam: Twelve is good for me.",
+        "Leo: Perfect!"
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Leo: Hi everyone!",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Ana: Great idea!",
+        "Sam: Twelve is good for me.",
+        "Leo: Perfect!",
+        "Leo: Hi everyone!"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Ana: Great idea!",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "Leo: Perfect!",
+        "Leo: Hi everyone!",
+        "Ana: Great idea!",
+        "Sam: Twelve is good for me."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: Sam: Twelve is good for me.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "Leo: Hi everyone!",
+        "Ana: Great idea!",
+        "Leo: Perfect!",
+        "Sam: Twelve is good for me."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: Leo: Perfect!",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Max is very welcome.",
+        "The weather will be sunny on Saturday, so let's have a picnic in Riverside Park.",
+        "I can come by bus.",
+        "Twelve o'clock at the café with the green door."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: The weather will be sunny on Saturday, so let's have a picnic in Riverside Park.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Max is very welcome.",
+        "I can come by bus.",
+        "Twelve o'clock at the café with the green door.",
+        "The weather will be sunny on Saturday, so let's have a picnic in Riverside Park."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Max is very welcome.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "Twelve o'clock at the café with the green door.",
+        "The weather will be sunny on Saturday, so let's have a picnic in Riverside Park.",
+        "Max is very welcome.",
+        "I can come by bus."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: I can come by bus.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "The weather will be sunny on Saturday, so let's have a picnic in Riverside Park.",
+        "Max is very welcome.",
+        "Twelve o'clock at the café with the green door.",
+        "I can come by bus."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: Twelve o'clock at the café with the green door.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "I can bring a big blanket and some lemonade.",
+        "I can bring sandwiches and apples.",
+        "The number 14 stops at the park gate.",
+        "Please don't be late, because my mum can only stay with us until three."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: I can bring sandwiches and apples.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "I can bring a big blanket and some lemonade.",
+        "The number 14 stops at the park gate.",
+        "Please don't be late, because my mum can only stay with us until three.",
+        "I can bring sandwiches and apples."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: I can bring a big blanket and some lemonade.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

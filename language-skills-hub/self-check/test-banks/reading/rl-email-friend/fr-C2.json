@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "fr",
+  "level": "C2",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-fr-c2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Mon travail actuel sur les récits de vie pour un petit musée côtier rend ces échappatoires plus difficiles.",
+        "Chère Amara, j'ai repoussé cette lettre si souvent que mes propres explications me paraissent suspectes.",
+        "Une autre difficulté, moins flatteuse, demeure.",
+        "Voici une invitation, et non un examen de ce qui subsiste entre nous."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Chère Amara, j'ai repoussé cette lettre si souvent que mes propres explications me paraissent suspectes.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Mon travail actuel sur les récits de vie pour un petit musée côtier rend ces échappatoires plus difficiles.",
+        "Une autre difficulté, moins flatteuse, demeure.",
+        "Voici une invitation, et non un examen de ce qui subsiste entre nous.",
+        "Chère Amara, j'ai repoussé cette lettre si souvent que mes propres explications me paraissent suspectes."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Mon travail actuel sur les récits de vie pour un petit musée côtier rend ces échappatoires plus difficiles.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Voici une invitation, et non un examen de ce qui subsiste entre nous.",
+        "Chère Amara, j'ai repoussé cette lettre si souvent que mes propres explications me paraissent suspectes.",
+        "Mon travail actuel sur les récits de vie pour un petit musée côtier rend ces échappatoires plus difficiles.",
+        "Une autre difficulté, moins flatteuse, demeure."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Une autre difficulté, moins flatteuse, demeure.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Chère Amara, j'ai repoussé cette lettre si souvent que mes propres explications me paraissent suspectes.",
+        "Mon travail actuel sur les récits de vie pour un petit musée côtier rend ces échappatoires plus difficiles.",
+        "Voici une invitation, et non un examen de ce qui subsiste entre nous.",
+        "Une autre difficulté, moins flatteuse, demeure."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Voici une invitation, et non un examen de ce qui subsiste entre nous.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Nous invitons des habitants à décrire les lieux qu'ils ont connus, mais les moments révélateurs surviennent souvent lorsqu'une personne refuse ou corrige le récit as…",
+        "La version commode serait que des déménagements successifs, un travail exigeant et plusieurs villes inconnues m'ont laissé peu de temps pour écrire.",
+        "Je t'écris précisément la semaine précédant l'ouverture d'une salle d'écoute publique au musée, à laquelle j'aimerais beaucoup que tu viennes.",
+        "La salle ouvre le dernier dimanche d'août, avec une conversation entre habitants plutôt qu'une cérémonie officielle."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: La version commode serait que des déménagements successifs, un travail exigeant et plusieurs villes inconnues m'ont laissé peu de temps pour écrire.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Nous invitons des habitants à décrire les lieux qu'ils ont connus, mais les moments révélateurs surviennent souvent lorsqu'une personne refuse ou corrige le récit as…",
+        "Je t'écris précisément la semaine précédant l'ouverture d'une salle d'écoute publique au musée, à laquelle j'aimerais beaucoup que tu viennes.",
+        "La salle ouvre le dernier dimanche d'août, avec une conversation entre habitants plutôt qu'une cérémonie officielle.",
+        "La version commode serait que des déménagements successifs, un travail exigeant et plusieurs villes inconnues m'ont laissé peu de temps pour écrire."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Nous invitons des habitants à décrire les lieux qu'ils ont connus, mais les moments révélateurs surviennent souvent lorsqu'une personne refuse ou corrige le récit as…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "La salle ouvre le dernier dimanche d'août, avec une conversation entre habitants plutôt qu'une cérémonie officielle.",
+        "La version commode serait que des déménagements successifs, un travail exigeant et plusieurs villes inconnues m'ont laissé peu de temps pour écrire.",
+        "Nous invitons des habitants à décrire les lieux qu'ils ont connus, mais les moments révélateurs surviennent souvent lorsqu'une personne refuse ou corrige le récit as…",
+        "Je t'écris précisément la semaine précédant l'ouverture d'une salle d'écoute publique au musée, à laquelle j'aimerais beaucoup que tu viennes."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Je t'écris précisément la semaine précédant l'ouverture d'une salle d'écoute publique au musée, à laquelle j'aimerais beaucoup que tu viennes.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "La version commode serait que des déménagements successifs, un travail exigeant et plusieurs villes inconnues m'ont laissé peu de temps pour écrire.",
+        "Nous invitons des habitants à décrire les lieux qu'ils ont connus, mais les moments révélateurs surviennent souvent lorsqu'une personne refuse ou corrige le récit as…",
+        "La salle ouvre le dernier dimanche d'août, avec une conversation entre habitants plutôt qu'une cérémonie officielle.",
+        "Je t'écris précisément la semaine précédant l'ouverture d'une salle d'écoute publique au musée, à laquelle j'aimerais beaucoup que tu viennes."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: La salle ouvre le dernier dimanche d'août, avec une conversation entre habitants plutôt qu'une cérémonie officielle.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Un ancien docker refusait de qualifier son quartier de « communauté soudée » : les voisins s'entraidaient aussi parce qu'ils n'avaient pas le choix, et la solidarité…",
+        "Ce n'est pas faux, mais c'est incomplet, et d'une manière qui m'arrange : j'ai pourtant trouvé le temps de publier des nouvelles dans lesquelles chaque départ sembla…",
+        "Le calendrier rend ma sollicitude suspecte, comme si je me souvenais d'une amitié uniquement lorsqu'elle pouvait m'apporter un public.",
+        "Je peux te réserver une place, mais ta présence n'est ni requise ni due ; si voyager t'épuise, refuse sans inventer de prétexte."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Ce n'est pas faux, mais c'est incomplet, et d'une manière qui m'arrange : j'ai pourtant trouvé le temps de publier des nouvelles dans lesquelles chaque départ sembla…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Un ancien docker refusait de qualifier son quartier de « communauté soudée » : les voisins s'entraidaient aussi parce qu'ils n'avaient pas le choix, et la solidarité…",
+        "Le calendrier rend ma sollicitude suspecte, comme si je me souvenais d'une amitié uniquement lorsqu'elle pouvait m'apporter un public.",
+        "Je peux te réserver une place, mais ta présence n'est ni requise ni due ; si voyager t'épuise, refuse sans inventer de prétexte.",
+        "Ce n'est pas faux, mais c'est incomplet, et d'une manière qui m'arrange : j'ai pourtant trouvé le temps de publier des nouvelles dans lesquelles chaque départ sembla…"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Un ancien docker refusait de qualifier son quartier de « communauté soudée » : les voisins s'entraidaient aussi parce qu'ils n'avaient pas le choix, et la solidarité…",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

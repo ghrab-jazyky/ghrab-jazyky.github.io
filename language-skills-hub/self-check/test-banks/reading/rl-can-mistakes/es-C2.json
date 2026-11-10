@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "es",
+  "level": "C2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-es-c2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "La distinción no es meramente terminológica.",
+        "Pocos ideales educativos parecen tan difíciles de cuestionar como la resiliencia.",
+        "Esto importa porque los indicadores de rendimiento tienden, lamentablemente, a apropiarse de las actividades que pretendían explicar.",
+        "Nada de ello justifica recuperar la cómoda ficción de que el talento es inmutable o de que el alumnado carece de capacidad de decisión."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Pocos ideales educativos parecen tan difíciles de cuestionar como la resiliencia.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "La distinción no es meramente terminológica.",
+        "Esto importa porque los indicadores de rendimiento tienden, lamentablemente, a apropiarse de las actividades que pretendían explicar.",
+        "Nada de ello justifica recuperar la cómoda ficción de que el talento es inmutable o de que el alumnado carece de capacidad de decisión.",
+        "Pocos ideales educativos parecen tan difíciles de cuestionar como la resiliencia."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: La distinción no es meramente terminológica.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Nada de ello justifica recuperar la cómoda ficción de que el talento es inmutable o de que el alumnado carece de capacidad de decisión.",
+        "Pocos ideales educativos parecen tan difíciles de cuestionar como la resiliencia.",
+        "La distinción no es meramente terminológica.",
+        "Esto importa porque los indicadores de rendimiento tienden, lamentablemente, a apropiarse de las actividades que pretendían explicar."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Esto importa porque los indicadores de rendimiento tienden, lamentablemente, a apropiarse de las actividades que pretendían explicar.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Pocos ideales educativos parecen tan difíciles de cuestionar como la resiliencia.",
+        "La distinción no es meramente terminológica.",
+        "Nada de ello justifica recuperar la cómoda ficción de que el talento es inmutable o de que el alumnado carece de capacidad de decisión.",
+        "Esto importa porque los indicadores de rendimiento tienden, lamentablemente, a apropiarse de las actividades que pretendían explicar."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Nada de ello justifica recuperar la cómoda ficción de que el talento es inmutable o de que el alumnado carece de capacidad de decisión.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Un alumno que modifica una estrategia ineficaz tras recibir críticas ejerce su autonomía; otro al que se obliga repetidamente a superar carencias de apoyo quizá esté…",
+        "La capacidad de recuperarse de una decepción, reconsiderar una premisa y perseverar ante la incertidumbre es indudablemente valiosa.",
+        "Una vez que el progreso puede representarse en una gráfica, resulta tentador concluir que las experiencias no cuantificables son improductivas.",
+        "Más bien, invita a adoptar una noción más rica del éxito educativo: atenta a las limitaciones estructurales, dispuesta a cuestionar sus propios criterios de medida y…"
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: La capacidad de recuperarse de una decepción, reconsiderar una premisa y perseverar ante la incertidumbre es indudablemente valiosa.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Un alumno que modifica una estrategia ineficaz tras recibir críticas ejerce su autonomía; otro al que se obliga repetidamente a superar carencias de apoyo quizá esté…",
+        "Una vez que el progreso puede representarse en una gráfica, resulta tentador concluir que las experiencias no cuantificables son improductivas.",
+        "Más bien, invita a adoptar una noción más rica del éxito educativo: atenta a las limitaciones estructurales, dispuesta a cuestionar sus propios criterios de medida y…",
+        "La capacidad de recuperarse de una decepción, reconsiderar una premisa y perseverar ante la incertidumbre es indudablemente valiosa."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Un alumno que modifica una estrategia ineficaz tras recibir críticas ejerce su autonomía; otro al que se obliga repetidamente a superar carencias de apoyo quizá esté…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Más bien, invita a adoptar una noción más rica del éxito educativo: atenta a las limitaciones estructurales, dispuesta a cuestionar sus propios criterios de medida y…",
+        "La capacidad de recuperarse de una decepción, reconsiderar una premisa y perseverar ante la incertidumbre es indudablemente valiosa.",
+        "Un alumno que modifica una estrategia ineficaz tras recibir críticas ejerce su autonomía; otro al que se obliga repetidamente a superar carencias de apoyo quizá esté…",
+        "Una vez que el progreso puede representarse en una gráfica, resulta tentador concluir que las experiencias no cuantificables son improductivas."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Una vez que el progreso puede representarse en una gráfica, resulta tentador concluir que las experiencias no cuantificables son improductivas.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "La capacidad de recuperarse de una decepción, reconsiderar una premisa y perseverar ante la incertidumbre es indudablemente valiosa.",
+        "Un alumno que modifica una estrategia ineficaz tras recibir críticas ejerce su autonomía; otro al que se obliga repetidamente a superar carencias de apoyo quizá esté…",
+        "Más bien, invita a adoptar una noción más rica del éxito educativo: atenta a las limitaciones estructurales, dispuesta a cuestionar sus propios criterios de medida y…",
+        "Una vez que el progreso puede representarse en una gráfica, resulta tentador concluir que las experiencias no cuantificables son improductivas."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Más bien, invita a adoptar una noción más rica del éxito educativo: atenta a las limitaciones estructurales, dispuesta a cuestionar sus propios criterios de medida y…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "A distancia, ambos pueden parecer igual de tenaces.",
+        "El problema surge cuando deja de describir los recursos de una persona y se transforma en una expectativa moral impuesta con independencia de sus circunstancias.",
+        "La vacilación, la exploración intelectual e incluso la decisión de abandonar una meta mal elegida se convierten así en supuestas deficiencias.",
+        "Una cultura educativa defendible no celebra la perseverancia sin matices."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: El problema surge cuando deja de describir los recursos de una persona y se transforma en una expectativa moral impuesta con independencia de sus circunstancias.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-es-c2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "A distancia, ambos pueden parecer igual de tenaces.",
+        "La vacilación, la exploración intelectual e incluso la decisión de abandonar una meta mal elegida se convierten así en supuestas deficiencias.",
+        "Una cultura educativa defendible no celebra la perseverancia sin matices.",
+        "El problema surge cuando deja de describir los recursos de una persona y se transforma en una expectativa moral impuesta con independencia de sus circunstancias."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: A distancia, ambos pueden parecer igual de tenaces.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

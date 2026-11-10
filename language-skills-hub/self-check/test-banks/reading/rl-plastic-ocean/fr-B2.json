@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "fr",
+  "level": "B2",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-fr-b2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "La réalisatrice, Camille Moreau, accompagne une petite équipe dans une ville côtière.",
+        "La première scène de L’autre rive montre un gobelet rouge qui tourne dans une flaque devant une salle de concert.",
+        "Le documentaire devient moins convaincant lorsqu’il présente la gourde personnelle comme une solution accessible à tout le monde.",
+        "Cette réserve compte : culpabiliser le public ne signifie pas lui donner des solutions utilisables."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: La première scène de L’autre rive montre un gobelet rouge qui tourne dans une flaque devant une salle de concert.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "La réalisatrice, Camille Moreau, accompagne une petite équipe dans une ville côtière.",
+        "Le documentaire devient moins convaincant lorsqu’il présente la gourde personnelle comme une solution accessible à tout le monde.",
+        "Cette réserve compte : culpabiliser le public ne signifie pas lui donner des solutions utilisables.",
+        "Je conseillerais L’autre rive à des élèves qui préparent un événement."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: La réalisatrice, Camille Moreau, accompagne une petite équipe dans une ville côtière.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Cette réserve compte : culpabiliser le public ne signifie pas lui donner des solutions utilisables.",
+        "Je conseillerais L’autre rive à des élèves qui préparent un événement.",
+        "La première scène de L’autre rive montre un gobelet rouge qui tourne dans une flaque devant une salle de concert.",
+        "Le documentaire devient moins convaincant lorsqu’il présente la gourde personnelle comme une solution accessible à tout le monde."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Le documentaire devient moins convaincant lorsqu’il présente la gourde personnelle comme une solution accessible à tout le monde.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Je conseillerais L’autre rive à des élèves qui préparent un événement.",
+        "La première scène de L’autre rive montre un gobelet rouge qui tourne dans une flaque devant une salle de concert.",
+        "Cette réserve compte : culpabiliser le public ne signifie pas lui donner des solutions utilisables.",
+        "La réalisatrice, Camille Moreau, accompagne une petite équipe dans une ville côtière."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Cette réserve compte : culpabiliser le public ne signifie pas lui donner des solutions utilisables.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 5?",
+      "choices": [
+        "La première scène de L’autre rive montre un gobelet rouge qui tourne dans une flaque devant une salle de concert.",
+        "Je conseillerais L’autre rive à des élèves qui préparent un événement.",
+        "La réalisatrice, Camille Moreau, accompagne une petite équipe dans une ville côtière.",
+        "Le documentaire devient moins convaincant lorsqu’il présente la gourde personnelle comme une solution accessible à tout le monde."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraphe 5: Je conseillerais L’autre rive à des élèves qui préparent un événement.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "À l’intérieur, la musique continue ; dehors, les agents de nettoyage commencent leur travail.",
+        "Elle interroge un agent municipal, une gérante de café et deux jeunes qui organisent une fête.",
+        "Une spectatrice raconte qu’elle ne peut pas entrer dans une salle de spectacle avec son propre contenant.",
+        "Plus loin, on découvre un système de gobelets consignés testé lors d’un festival."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: À l’intérieur, la musique continue ; dehors, les agents de nettoyage commencent leur travail.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Une spectatrice raconte qu’elle ne peut pas entrer dans une salle de spectacle avec son propre contenant.",
+        "Plus loin, on découvre un système de gobelets consignés testé lors d’un festival.",
+        "Le plan final sur une plage propre est agréable, mais la vraie question se pose après la séance : qui videra les poubelles vendredi prochain ?",
+        "Elle interroge un agent municipal, une gérante de café et deux jeunes qui organisent une fête."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Elle interroge un agent municipal, une gérante de café et deux jeunes qui organisent une fête.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Plus loin, on découvre un système de gobelets consignés testé lors d’un festival.",
+        "Le plan final sur une plage propre est agréable, mais la vraie question se pose après la séance : qui videra les poubelles vendredi prochain ?",
+        "Une spectatrice raconte qu’elle ne peut pas entrer dans une salle de spectacle avec son propre contenant.",
+        "À l’intérieur, la musique continue ; dehors, les agents de nettoyage commencent leur travail."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Une spectatrice raconte qu’elle ne peut pas entrer dans une salle de spectacle avec son propre contenant.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Le plan final sur une plage propre est agréable, mais la vraie question se pose après la séance : qui videra les poubelles vendredi prochain ?",
+        "Plus loin, on découvre un système de gobelets consignés testé lors d’un festival.",
+        "À l’intérieur, la musique continue ; dehors, les agents de nettoyage commencent leur travail.",
+        "Elle interroge un agent municipal, une gérante de café et deux jeunes qui organisent une fête."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Plus loin, on découvre un système de gobelets consignés testé lors d’un festival.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-fr-b2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 5?",
+      "choices": [
+        "Le plan final sur une plage propre est agréable, mais la vraie question se pose après la séance : qui videra les poubelles vendredi prochain ?",
+        "À l’intérieur, la musique continue ; dehors, les agents de nettoyage commencent leur travail.",
+        "Elle interroge un agent municipal, une gérante de café et deux jeunes qui organisent une fête.",
+        "Une spectatrice raconte qu’elle ne peut pas entrer dans une salle de spectacle avec son propre contenant."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Paragraphe 5: Le plan final sur une plage propre est agréable, mais la vraie question se pose après la séance : qui videra les poubelles vendredi prochain ?",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

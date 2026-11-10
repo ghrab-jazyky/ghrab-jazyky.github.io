@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-instant-messages-en-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "The pressure is not evenly distributed.",
+        "Few symbols have caused as much quiet anxiety as two small ticks turning blue.",
+        "Defenders of read receipts argue that they make communication more honest.",
+        "What makes the situation worse is that expectations are rarely spoken aloud."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Few symbols have caused as much quiet anxiety as two small ticks turning blue.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "The pressure is not evenly distributed.",
+        "Defenders of read receipts argue that they make communication more honest.",
+        "What makes the situation worse is that expectations are rarely spoken aloud.",
+        "The solution is not to abandon messaging, but to make its rules explicit."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: The pressure is not evenly distributed.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "What makes the situation worse is that expectations are rarely spoken aloud.",
+        "The solution is not to abandon messaging, but to make its rules explicit.",
+        "Few symbols have caused as much quiet anxiety as two small ticks turning blue.",
+        "Defenders of read receipts argue that they make communication more honest."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: Defenders of read receipts argue that they make communication more honest.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "The solution is not to abandon messaging, but to make its rules explicit.",
+        "Few symbols have caused as much quiet anxiety as two small ticks turning blue.",
+        "What makes the situation worse is that expectations are rarely spoken aloud.",
+        "The pressure is not evenly distributed."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: What makes the situation worse is that expectations are rarely spoken aloud.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "Few symbols have caused as much quiet anxiety as two small ticks turning blue.",
+        "The solution is not to abandon messaging, but to make its rules explicit.",
+        "The pressure is not evenly distributed.",
+        "Defenders of read receipts argue that they make communication more honest."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: The solution is not to abandon messaging, but to make its rules explicit.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Read receipts were presumably designed to reassure senders that their message had been read.",
+        "A sixteen-year-old with a weekend job at a café, for instance, may belong to a staff group in which shifts are swapped late at night.",
+        "Without them, the argument goes, people could ignore inconvenient messages indefinitely while pretending not to have noticed them.",
+        "Families, friends and teams each develop unwritten rules about how quickly one should answer, and newcomers usually learn them only by breaking them."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Read receipts were presumably designed to reassure senders that their message had been read.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Without them, the argument goes, people could ignore inconvenient messages indefinitely while pretending not to have noticed them.",
+        "Families, friends and teams each develop unwritten rules about how quickly one should answer, and newcomers usually learn them only by breaking them.",
+        "Some countries, France among them, have given many employees a legal right to disconnect from work messages outside working hours.",
+        "A sixteen-year-old with a weekend job at a café, for instance, may belong to a staff group in which shifts are swapped late at night."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: A sixteen-year-old with a weekend job at a café, for instance, may belong to a staff group in which shifts are swapped late at night.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "Families, friends and teams each develop unwritten rules about how quickly one should answer, and newcomers usually learn them only by breaking them.",
+        "Some countries, France among them, have given many employees a legal right to disconnect from work messages outside working hours.",
+        "Without them, the argument goes, people could ignore inconvenient messages indefinitely while pretending not to have noticed them.",
+        "Read receipts were presumably designed to reassure senders that their message had been read."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: Without them, the argument goes, people could ignore inconvenient messages indefinitely while pretending not to have noticed them.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "Some countries, France among them, have given many employees a legal right to disconnect from work messages outside working hours.",
+        "Families, friends and teams each develop unwritten rules about how quickly one should answer, and newcomers usually learn them only by breaking them.",
+        "Read receipts were presumably designed to reassure senders that their message had been read.",
+        "A sixteen-year-old with a weekend job at a café, for instance, may belong to a staff group in which shifts are swapped late at night."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: Families, friends and teams each develop unwritten rules about how quickly one should answer, and newcomers usually learn them only by breaking them.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-en-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "Some countries, France among them, have given many employees a legal right to disconnect from work messages outside working hours.",
+        "Read receipts were presumably designed to reassure senders that their message had been read.",
+        "A sixteen-year-old with a weekend job at a café, for instance, may belong to a staff group in which shifts are swapped late at night.",
+        "Without them, the argument goes, people could ignore inconvenient messages indefinitely while pretending not to have noticed them."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: Some countries, France among them, have given many employees a legal right to disconnect from work messages outside working hours.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-plastic-ocean-en-b2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "For twenty minutes, director Mara Kent follows a volunteer team along a coastal town's drains and beaches.",
+        "The opening shot of The Last Cup is almost ridiculous: a red plastic cup spinning slowly in a puddle outside a concert hall.",
+        "The two teenagers provide the film’s lighter moments.",
+        "The film is less convincing when it suggests that bringing a reusable cup is always an easy choice."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: The opening shot of The Last Cup is almost ridiculous: a red plastic cup spinning slowly in a puddle outside a concert hall.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "For twenty minutes, director Mara Kent follows a volunteer team along a coastal town's drains and beaches.",
+        "The two teenagers provide the film’s lighter moments.",
+        "The film is less convincing when it suggests that bringing a reusable cup is always an easy choice.",
+        "That neglect matters because the film is asking us to change behaviour, not merely feel ashamed."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: For twenty minutes, director Mara Kent follows a volunteer team along a coastal town's drains and beaches.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "The film is less convincing when it suggests that bringing a reusable cup is always an easy choice.",
+        "That neglect matters because the film is asking us to change behaviour, not merely feel ashamed.",
+        "I would recommend The Last Cup to anyone planning a school festival, especially if they watch it with a critical eye.",
+        "The two teenagers provide the film’s lighter moments."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: The two teenagers provide the film’s lighter moments.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "That neglect matters because the film is asking us to change behaviour, not merely feel ashamed.",
+        "I would recommend The Last Cup to anyone planning a school festival, especially if they watch it with a critical eye.",
+        "The film is less convincing when it suggests that bringing a reusable cup is always an easy choice.",
+        "The opening shot of The Last Cup is almost ridiculous: a red plastic cup spinning slowly in a puddle outside a concert hall."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: The film is less convincing when it suggests that bringing a reusable cup is always an easy choice.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "I would recommend The Last Cup to anyone planning a school festival, especially if they watch it with a critical eye.",
+        "That neglect matters because the film is asking us to change behaviour, not merely feel ashamed.",
+        "The opening shot of The Last Cup is almost ridiculous: a red plastic cup spinning slowly in a puddle outside a concert hall.",
+        "For twenty minutes, director Mara Kent follows a volunteer team along a coastal town's drains and beaches."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: That neglect matters because the film is asking us to change behaviour, not merely feel ashamed.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 6?",
+      "choices": [
+        "I would recommend The Last Cup to anyone planning a school festival, especially if they watch it with a critical eye.",
+        "The opening shot of The Last Cup is almost ridiculous: a red plastic cup spinning slowly in a puddle outside a concert hall.",
+        "For twenty minutes, director Mara Kent follows a volunteer team along a coastal town's drains and beaches.",
+        "The two teenagers provide the film’s lighter moments."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "Paragraph 6: I would recommend The Last Cup to anyone planning a school festival, especially if they watch it with a critical eye.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "She interviews a street cleaner, a café owner and two teenagers who organise a community event.",
+        "They are planning a beach concert for three hundred people.",
+        "One interviewee works at a venue where visitors cannot take containers through security.",
+        "A cheerful song is still playing inside, but the cleaners have already arrived."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: A cheerful song is still playing inside, but the cleaners have already arrived.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "They are planning a beach concert for three hundred people.",
+        "One interviewee works at a venue where visitors cannot take containers through security.",
+        "She interviews a street cleaner, a café owner and two teenagers who organise a community event.",
+        "A later sequence shows organisers testing a deposit system for cups and publishing what it cost."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: She interviews a street cleaner, a café owner and two teenagers who organise a community event.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "One interviewee works at a venue where visitors cannot take containers through security.",
+        "They are planning a beach concert for three hundred people.",
+        "A later sequence shows organisers testing a deposit system for cups and publishing what it cost.",
+        "Its beautiful final image of a clean shoreline is satisfying, but the more useful ending would be a meeting where someone asks who will empty the bins next Friday."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: They are planning a beach concert for three hundred people.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-plastic-ocean-en-b2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "One interviewee works at a venue where visitors cannot take containers through security.",
+        "A later sequence shows organisers testing a deposit system for cups and publishing what it cost.",
+        "Its beautiful final image of a clean shoreline is satisfying, but the more useful ending would be a meeting where someone asks who will empty the bins next Friday.",
+        "A cheerful song is still playing inside, but the cleaners have already arrived."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: One interviewee works at a venue where visitors cannot take containers through security.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

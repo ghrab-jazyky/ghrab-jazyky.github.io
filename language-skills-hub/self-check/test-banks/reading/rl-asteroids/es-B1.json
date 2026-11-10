@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "es",
+  "level": "B1",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-asteroids-es-b1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Encontrar un asteroide es solo el principio.",
+        "Los asteroides son objetos rocosos que quedaron de la formación del sistema solar.",
+        "Un experimento demostró que es posible modificar un poco el movimiento de un asteroide.",
+        "No debemos imaginar que el cielo está lleno de asteroides a punto de caer sobre nosotros."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Los asteroides son objetos rocosos que quedaron de la formación del sistema solar.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-b1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Encontrar un asteroide es solo el principio.",
+        "Un experimento demostró que es posible modificar un poco el movimiento de un asteroide.",
+        "No debemos imaginar que el cielo está lleno de asteroides a punto de caer sobre nosotros.",
+        "Los asteroides son objetos rocosos que quedaron de la formación del sistema solar."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Encontrar un asteroide es solo el principio.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-b1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "No debemos imaginar que el cielo está lleno de asteroides a punto de caer sobre nosotros.",
+        "Los asteroides son objetos rocosos que quedaron de la formación del sistema solar.",
+        "Encontrar un asteroide es solo el principio.",
+        "Un experimento demostró que es posible modificar un poco el movimiento de un asteroide."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Un experimento demostró que es posible modificar un poco el movimiento de un asteroide.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Los asteroides son objetos rocosos que quedaron de la formación del sistema solar.",
+        "Encontrar un asteroide es solo el principio.",
+        "No debemos imaginar que el cielo está lleno de asteroides a punto de caer sobre nosotros.",
+        "Un experimento demostró que es posible modificar un poco el movimiento de un asteroide."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: No debemos imaginar que el cielo está lleno de asteroides a punto de caer sobre nosotros.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-b1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Los astrónomos hacen varias observaciones y utilizan ordenadores para calcular su órbita.",
+        "La mayoría gira alrededor del Sol entre Marte y Júpiter, aunque otros siguen caminos diferentes.",
+        "En septiembre de 2022, la nave DART de la NASA chocó de forma intencionada con Dimorphos, una pequeña luna que gira alrededor del asteroide Didymos.",
+        "Los grandes impactos son poco frecuentes, pero prepararse sigue siendo razonable."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: La mayoría gira alrededor del Sol entre Marte y Júpiter, aunque otros siguen caminos diferentes.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-b1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Los astrónomos hacen varias observaciones y utilizan ordenadores para calcular su órbita.",
+        "En septiembre de 2022, la nave DART de la NASA chocó de forma intencionada con Dimorphos, una pequeña luna que gira alrededor del asteroide Didymos.",
+        "Los grandes impactos son poco frecuentes, pero prepararse sigue siendo razonable.",
+        "La mayoría gira alrededor del Sol entre Marte y Júpiter, aunque otros siguen caminos diferentes."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Los astrónomos hacen varias observaciones y utilizan ordenadores para calcular su órbita.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-b1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Los grandes impactos son poco frecuentes, pero prepararse sigue siendo razonable.",
+        "La mayoría gira alrededor del Sol entre Marte y Júpiter, aunque otros siguen caminos diferentes.",
+        "Los astrónomos hacen varias observaciones y utilizan ordenadores para calcular su órbita.",
+        "En septiembre de 2022, la nave DART de la NASA chocó de forma intencionada con Dimorphos, una pequeña luna que gira alrededor del asteroide Didymos."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: En septiembre de 2022, la nave DART de la NASA chocó de forma intencionada con Dimorphos, una pequeña luna que gira alrededor del asteroide Didymos.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-b1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "La mayoría gira alrededor del Sol entre Marte y Júpiter, aunque otros siguen caminos diferentes.",
+        "Los astrónomos hacen varias observaciones y utilizan ordenadores para calcular su órbita.",
+        "Los grandes impactos son poco frecuentes, pero prepararse sigue siendo razonable.",
+        "En septiembre de 2022, la nave DART de la NASA chocó de forma intencionada con Dimorphos, una pequeña luna que gira alrededor del asteroide Didymos."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Los grandes impactos son poco frecuentes, pero prepararse sigue siendo razonable.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-b1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Una sola fotografía no basta para predecir su movimiento con seguridad.",
+        "Algunos contienen principalmente roca y otros tienen más metal.",
+        "Después del impacto, Dimorphos tardaba menos tiempo en completar su vuelta a Didymos.",
+        "Los mejores telescopios, las mediciones precisas y la cooperación internacional dan más tiempo para tomar decisiones."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Algunos contienen principalmente roca y otros tienen más metal.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-es-b1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Una sola fotografía no basta para predecir su movimiento con seguridad.",
+        "Después del impacto, Dimorphos tardaba menos tiempo en completar su vuelta a Didymos.",
+        "Los mejores telescopios, las mediciones precisas y la cooperación internacional dan más tiempo para tomar decisiones.",
+        "Algunos contienen principalmente roca y otros tienen más metal."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Una sola fotografía no basta para predecir su movimiento con seguridad.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

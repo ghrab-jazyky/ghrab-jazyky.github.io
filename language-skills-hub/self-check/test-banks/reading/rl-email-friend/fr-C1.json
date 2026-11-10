@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "fr",
+  "level": "C1",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-fr-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Les archives m'ont enseigné une étrange leçon sur la mémoire.",
+        "Cher Jules, j'ai failli commencer par l'excuse habituelle du manque de temps, mais cela ferait passer notre silence pour un accident.",
+        "Le mois dernier, notre équipe a proposé une soirée publique pour écouter des enregistrements et partager des souvenirs.",
+        "Je ne veux surtout pas transformer l'amitié en un autre projet à terminer."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Cher Jules, j'ai failli commencer par l'excuse habituelle du manque de temps, mais cela ferait passer notre silence pour un accident.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Les archives m'ont enseigné une étrange leçon sur la mémoire.",
+        "Le mois dernier, notre équipe a proposé une soirée publique pour écouter des enregistrements et partager des souvenirs.",
+        "Je ne veux surtout pas transformer l'amitié en un autre projet à terminer.",
+        "Cher Jules, j'ai failli commencer par l'excuse habituelle du manque de temps, mais cela ferait passer notre silence pour un accident."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Les archives m'ont enseigné une étrange leçon sur la mémoire.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Je ne veux surtout pas transformer l'amitié en un autre projet à terminer.",
+        "Cher Jules, j'ai failli commencer par l'excuse habituelle du manque de temps, mais cela ferait passer notre silence pour un accident.",
+        "Les archives m'ont enseigné une étrange leçon sur la mémoire.",
+        "Le mois dernier, notre équipe a proposé une soirée publique pour écouter des enregistrements et partager des souvenirs."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Le mois dernier, notre équipe a proposé une soirée publique pour écouter des enregistrements et partager des souvenirs.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Cher Jules, j'ai failli commencer par l'excuse habituelle du manque de temps, mais cela ferait passer notre silence pour un accident.",
+        "Les archives m'ont enseigné une étrange leçon sur la mémoire.",
+        "Je ne veux surtout pas transformer l'amitié en un autre projet à terminer.",
+        "Le mois dernier, notre équipe a proposé une soirée publique pour écouter des enregistrements et partager des souvenirs."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Je ne veux surtout pas transformer l'amitié en un autre projet à terminer.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Nous recueillons des récits d'habitants sans exiger qu'ils deviennent des histoires exemplaires à la morale édifiante.",
+        "Cette année, nous avons réagi à beaucoup de photos sans vraiment savoir comment l'autre allait.",
+        "J'ai immédiatement pensé à toi, car tu remarques toujours les détails que les autres ignorent.",
+        "La soirée aura lieu le premier vendredi de juillet ; tu seras bienvenu sans avoir à contribuer."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Cette année, nous avons réagi à beaucoup de photos sans vraiment savoir comment l'autre allait.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Nous recueillons des récits d'habitants sans exiger qu'ils deviennent des histoires exemplaires à la morale édifiante.",
+        "J'ai immédiatement pensé à toi, car tu remarques toujours les détails que les autres ignorent.",
+        "La soirée aura lieu le premier vendredi de juillet ; tu seras bienvenu sans avoir à contribuer.",
+        "Cette année, nous avons réagi à beaucoup de photos sans vraiment savoir comment l'autre allait."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Nous recueillons des récits d'habitants sans exiger qu'ils deviennent des histoires exemplaires à la morale édifiante.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "La soirée aura lieu le premier vendredi de juillet ; tu seras bienvenu sans avoir à contribuer.",
+        "Cette année, nous avons réagi à beaucoup de photos sans vraiment savoir comment l'autre allait.",
+        "Nous recueillons des récits d'habitants sans exiger qu'ils deviennent des histoires exemplaires à la morale édifiante.",
+        "J'ai immédiatement pensé à toi, car tu remarques toujours les détails que les autres ignorent."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: J'ai immédiatement pensé à toi, car tu remarques toujours les détails que les autres ignorent.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Cette année, nous avons réagi à beaucoup de photos sans vraiment savoir comment l'autre allait.",
+        "Nous recueillons des récits d'habitants sans exiger qu'ils deviennent des histoires exemplaires à la morale édifiante.",
+        "La soirée aura lieu le premier vendredi de juillet ; tu seras bienvenu sans avoir à contribuer.",
+        "J'ai immédiatement pensé à toi, car tu remarques toujours les détails que les autres ignorent."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: La soirée aura lieu le premier vendredi de juillet ; tu seras bienvenu sans avoir à contribuer.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Une infirmière retraitée se souvenait surtout des disputes avec les voisins : pour elle, elles prouvaient que les gens tenaient à participer.",
+        "En m'installant à Bristol pour travailler dans des archives de quartier, j'ai commencé à recueillir des fragments de la ville : un cinéma fermé, le dernier client d'…",
+        "Pourtant, j'ai hésité à t'écrire : je ne voulais pas que mon invitation devienne une épreuve pour notre amitié.",
+        "Je peux payer ton entrée, mais pas le trajet, et nous pourrions partir tôt si la salle est bondée."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: En m'installant à Bristol pour travailler dans des archives de quartier, j'ai commencé à recueillir des fragments de la ville : un cinéma fermé, le dernier client d'…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Une infirmière retraitée se souvenait surtout des disputes avec les voisins : pour elle, elles prouvaient que les gens tenaient à participer.",
+        "Pourtant, j'ai hésité à t'écrire : je ne voulais pas que mon invitation devienne une épreuve pour notre amitié.",
+        "Je peux payer ton entrée, mais pas le trajet, et nous pourrions partir tôt si la salle est bondée.",
+        "En m'installant à Bristol pour travailler dans des archives de quartier, j'ai commencé à recueillir des fragments de la ville : un cinéma fermé, le dernier client d'…"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Une infirmière retraitée se souvenait surtout des disputes avec les voisins : pour elle, elles prouvaient que les gens tenaient à participer.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

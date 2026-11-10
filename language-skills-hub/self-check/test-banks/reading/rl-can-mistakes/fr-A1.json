@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "fr",
+  "level": "A1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-fr-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Son ami Léo dit : « Ce n’est pas grave.",
+        "Mia a quinze ans.",
+        "Vendredi, Mia lit une nouvelle histoire.",
+        "Lis l’histoire encore une fois. » Mia lit lentement."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Mia a quinze ans.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Son ami Léo dit : « Ce n’est pas grave.",
+        "Vendredi, Mia lit une nouvelle histoire.",
+        "Mia a quinze ans.",
+        "Elle n’est pas facile, mais Mia comprend mieux."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Son ami Léo dit : « Ce n’est pas grave.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Mia a quinze ans.",
+        "Son ami Léo dit : « Ce n’est pas grave.",
+        "Elle aime l’anglais, mais elle ne connaît pas tous les mots.",
+        "Vendredi, Mia lit une nouvelle histoire."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Vendredi, Mia lit une nouvelle histoire.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Lis l’histoire encore une fois. » Mia lit lentement.",
+        "Elle n’est pas facile, mais Mia comprend mieux.",
+        "Elle aime l’anglais, mais elle ne connaît pas tous les mots.",
+        "Elle demande le sens de deux mots et les écrit dans son cahier."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Elle aime l’anglais, mais elle ne connaît pas tous les mots.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Elle n’est pas facile, mais Mia comprend mieux.",
+        "Lis l’histoire encore une fois. » Mia lit lentement.",
+        "Elle aime l’anglais, mais elle ne connaît pas tous les mots.",
+        "Elle sourit."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Lis l’histoire encore une fois. » Mia lit lentement.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Elle n’est pas facile, mais Mia comprend mieux.",
+        "Elle aime l’anglais, mais elle ne connaît pas tous les mots.",
+        "Lis l’histoire encore une fois. » Mia lit lentement.",
+        "Lundi, elle lit une petite histoire."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Elle n’est pas facile, mais Mia comprend mieux.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Elle demande le sens de deux mots et les écrit dans son cahier.",
+        "Elle sourit.",
+        "Son ami Léo dit : « Ce n’est pas grave.",
+        "Lundi, elle lit une petite histoire."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Lundi, elle lit une petite histoire.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Elle sourit.",
+        "Lundi, elle lit une petite histoire.",
+        "Elle demande le sens de deux mots et les écrit dans son cahier.",
+        "Elle veut encore s’entraîner demain."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Elle demande le sens de deux mots et les écrit dans son cahier.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Lundi, elle lit une petite histoire.",
+        "Elle sourit.",
+        "Elle demande le sens de deux mots et les écrit dans son cahier.",
+        "Il y a des mots nouveaux."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Elle sourit.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Il y a des mots nouveaux.",
+        "Son ami Léo dit : « Ce n’est pas grave.",
+        "Elle veut encore s’entraîner demain.",
+        "Lis l’histoire encore une fois. » Mia lit lentement."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Il y a des mots nouveaux.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

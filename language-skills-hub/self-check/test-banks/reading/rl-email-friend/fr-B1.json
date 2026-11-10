@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "fr",
+  "level": "B1",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-friend-fr-b1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "J'aide maintenant à l'atelier le samedi.",
+        "Salut Robin, tu te souviens de la petite place derrière notre ancienne école ?",
+        "Voilà pourquoi je t'écris : nous organisons une journée portes ouvertes le mois prochain.",
+        "Je sais que le voyage prend du temps et coûte de l'argent ; je ne veux pas que tu te sentes coupable si tu ne peux pas venir."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Salut Robin, tu te souviens de la petite place derrière notre ancienne école ?",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "J'aide maintenant à l'atelier le samedi.",
+        "Voilà pourquoi je t'écris : nous organisons une journée portes ouvertes le mois prochain.",
+        "Je sais que le voyage prend du temps et coûte de l'argent ; je ne veux pas que tu te sentes coupable si tu ne peux pas venir.",
+        "Salut Robin, tu te souviens de la petite place derrière notre ancienne école ?"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: J'aide maintenant à l'atelier le samedi.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Je sais que le voyage prend du temps et coûte de l'argent ; je ne veux pas que tu te sentes coupable si tu ne peux pas venir.",
+        "Salut Robin, tu te souviens de la petite place derrière notre ancienne école ?",
+        "J'aide maintenant à l'atelier le samedi.",
+        "Voilà pourquoi je t'écris : nous organisons une journée portes ouvertes le mois prochain."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Voilà pourquoi je t'écris : nous organisons une journée portes ouvertes le mois prochain.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Salut Robin, tu te souviens de la petite place derrière notre ancienne école ?",
+        "J'aide maintenant à l'atelier le samedi.",
+        "Je sais que le voyage prend du temps et coûte de l'argent ; je ne veux pas que tu te sentes coupable si tu ne peux pas venir.",
+        "Voilà pourquoi je t'écris : nous organisons une journée portes ouvertes le mois prochain."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Je sais que le voyage prend du temps et coûte de l'argent ; je ne veux pas que tu te sentes coupable si tu ne peux pas venir.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Au début, je préparais seulement du thé et je portais des cartons, car j'avais peur des nouvelles rencontres.",
+        "Nous nous y retrouvions après les cours en disant qu'il ne se passait jamais rien d'intéressant.",
+        "Les visiteurs pourront réparer des objets, essayer des activités artistiques et partager des histoires sur le quartier.",
+        "Nous pourrions aussi organiser un appel vidéo et regarder ensemble nos vieilles photos."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Nous nous y retrouvions après les cours en disant qu'il ne se passait jamais rien d'intéressant.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Au début, je préparais seulement du thé et je portais des cartons, car j'avais peur des nouvelles rencontres.",
+        "Les visiteurs pourront réparer des objets, essayer des activités artistiques et partager des histoires sur le quartier.",
+        "Nous pourrions aussi organiser un appel vidéo et regarder ensemble nos vieilles photos.",
+        "Nous nous y retrouvions après les cours en disant qu'il ne se passait jamais rien d'intéressant."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Au début, je préparais seulement du thé et je portais des cartons, car j'avais peur des nouvelles rencontres.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Nous pourrions aussi organiser un appel vidéo et regarder ensemble nos vieilles photos.",
+        "Nous nous y retrouvions après les cours en disant qu'il ne se passait jamais rien d'intéressant.",
+        "Au début, je préparais seulement du thé et je portais des cartons, car j'avais peur des nouvelles rencontres.",
+        "Les visiteurs pourront réparer des objets, essayer des activités artistiques et partager des histoires sur le quartier."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Les visiteurs pourront réparer des objets, essayer des activités artistiques et partager des histoires sur le quartier.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Nous nous y retrouvions après les cours en disant qu'il ne se passait jamais rien d'intéressant.",
+        "Au début, je préparais seulement du thé et je portais des cartons, car j'avais peur des nouvelles rencontres.",
+        "Nous pourrions aussi organiser un appel vidéo et regarder ensemble nos vieilles photos.",
+        "Les visiteurs pourront réparer des objets, essayer des activités artistiques et partager des histoires sur le quartier."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Nous pourrions aussi organiser un appel vidéo et regarder ensemble nos vieilles photos.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "La semaine dernière, j'ai appris à deux enfants à réparer une lampe de vélo.",
+        "Le mois dernier, j'y suis retourné pour la première fois depuis deux ans : tout avait changé.",
+        "Je me suis souvenu de tes photos du quotidien et j'ai pensé que tu pourrais en apporter quelques-unes.",
+        "J'aimerais découvrir ta nouvelle ville par tes récits plutôt que deviner à partir de tes publications."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Le mois dernier, j'y suis retourné pour la première fois depuis deux ans : tout avait changé.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-email-friend-fr-b1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "La semaine dernière, j'ai appris à deux enfants à réparer une lampe de vélo.",
+        "Je me suis souvenu de tes photos du quotidien et j'ai pensé que tu pourrais en apporter quelques-unes.",
+        "J'aimerais découvrir ta nouvelle ville par tes récits plutôt que deviner à partir de tes publications.",
+        "Le mois dernier, j'y suis retourné pour la première fois depuis deux ans : tout avait changé."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: La semaine dernière, j'ai appris à deux enfants à réparer une lampe de vélo.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-en-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Her friend Leo says, ‘It is OK.",
+        "Mia is fifteen.",
+        "On Friday, Mia reads a new story.",
+        "Read the story again.’ Mia reads it slowly."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Mia is fifteen.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Her friend Leo says, ‘It is OK.",
+        "On Friday, Mia reads a new story.",
+        "Mia is fifteen.",
+        "It is not easy, but she understands more."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Her friend Leo says, ‘It is OK.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "Mia is fifteen.",
+        "Her friend Leo says, ‘It is OK.",
+        "She likes English, but she does not know every word.",
+        "On Friday, Mia reads a new story."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: On Friday, Mia reads a new story.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Read the story again.’ Mia reads it slowly.",
+        "It is not easy, but she understands more.",
+        "She likes English, but she does not know every word.",
+        "She asks about two words and writes them in her notebook."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: She likes English, but she does not know every word.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "It is not easy, but she understands more.",
+        "Read the story again.’ Mia reads it slowly.",
+        "She likes English, but she does not know every word.",
+        "She smiles."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Read the story again.’ Mia reads it slowly.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "It is not easy, but she understands more.",
+        "She likes English, but she does not know every word.",
+        "Read the story again.’ Mia reads it slowly.",
+        "On Monday, she reads a short story."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: It is not easy, but she understands more.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "She asks about two words and writes them in her notebook.",
+        "She smiles.",
+        "Leo does not give her all the answers.",
+        "On Monday, she reads a short story."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: On Monday, she reads a short story.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "She smiles.",
+        "On Monday, she reads a short story.",
+        "She asks about two words and writes them in her notebook.",
+        "She wants to practise again tomorrow."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: She asks about two words and writes them in her notebook.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "On Monday, she reads a short story.",
+        "She smiles.",
+        "She asks about two words and writes them in her notebook.",
+        "Some words are new."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: She smiles.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-en-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Some words are new.",
+        "Leo does not give her all the answers.",
+        "She wants to practise again tomorrow.",
+        "He shows her a picture next to the story."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Some words are new.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

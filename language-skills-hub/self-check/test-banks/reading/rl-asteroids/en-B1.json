@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "B1",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-asteroids-en-b1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Finding an asteroid is only the beginning.",
+        "Asteroids are rocky objects left over from the early solar system.",
+        "One experiment showed that a small change in an asteroid's movement is possible.",
+        "Small objects can still cause damage."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Asteroids are rocky objects left over from the early solar system.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Finding an asteroid is only the beginning.",
+        "One experiment showed that a small change in an asteroid's movement is possible.",
+        "Small objects can still cause damage.",
+        "There is no reason to imagine that the sky is full of asteroids about to fall on us."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Finding an asteroid is only the beginning.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "Small objects can still cause damage.",
+        "There is no reason to imagine that the sky is full of asteroids about to fall on us.",
+        "Asteroids are rocky objects left over from the early solar system.",
+        "One experiment showed that a small change in an asteroid's movement is possible."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: One experiment showed that a small change in an asteroid's movement is possible.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "There is no reason to imagine that the sky is full of asteroids about to fall on us.",
+        "Asteroids are rocky objects left over from the early solar system.",
+        "Small objects can still cause damage.",
+        "Finding an asteroid is only the beginning."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: Small objects can still cause damage.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "Asteroids are rocky objects left over from the early solar system.",
+        "There is no reason to imagine that the sky is full of asteroids about to fall on us.",
+        "Finding an asteroid is only the beginning.",
+        "One experiment showed that a small change in an asteroid's movement is possible."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: There is no reason to imagine that the sky is full of asteroids about to fall on us.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Most travel around the Sun between Mars and Jupiter, although others follow different paths.",
+        "Astronomers take several observations and use computers to calculate its orbit.",
+        "In September 2022, NASA's DART spacecraft deliberately hit Dimorphos, a small moon orbiting the asteroid Didymos.",
+        "In February 2013, a rock about twenty metres wide exploded high in the air above the Russian city of Chelyabinsk."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Most travel around the Sun between Mars and Jupiter, although others follow different paths.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "In September 2022, NASA's DART spacecraft deliberately hit Dimorphos, a small moon orbiting the asteroid Didymos.",
+        "In February 2013, a rock about twenty metres wide exploded high in the air above the Russian city of Chelyabinsk.",
+        "Big impacts are rare, but careful preparation still makes sense.",
+        "Astronomers take several observations and use computers to calculate its orbit."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Astronomers take several observations and use computers to calculate its orbit.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "In February 2013, a rock about twenty metres wide exploded high in the air above the Russian city of Chelyabinsk.",
+        "Big impacts are rare, but careful preparation still makes sense.",
+        "In September 2022, NASA's DART spacecraft deliberately hit Dimorphos, a small moon orbiting the asteroid Didymos.",
+        "Most travel around the Sun between Mars and Jupiter, although others follow different paths."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: In September 2022, NASA's DART spacecraft deliberately hit Dimorphos, a small moon orbiting the asteroid Didymos.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "Big impacts are rare, but careful preparation still makes sense.",
+        "In February 2013, a rock about twenty metres wide exploded high in the air above the Russian city of Chelyabinsk.",
+        "Most travel around the Sun between Mars and Jupiter, although others follow different paths.",
+        "Astronomers take several observations and use computers to calculate its orbit."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: In February 2013, a rock about twenty metres wide exploded high in the air above the Russian city of Chelyabinsk.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-b1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 5?",
+      "choices": [
+        "Big impacts are rare, but careful preparation still makes sense.",
+        "Most travel around the Sun between Mars and Jupiter, although others follow different paths.",
+        "Astronomers take several observations and use computers to calculate its orbit.",
+        "In September 2022, NASA's DART spacecraft deliberately hit Dimorphos, a small moon orbiting the asteroid Didymos."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Paragraph 5: Big impacts are rare, but careful preparation still makes sense.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

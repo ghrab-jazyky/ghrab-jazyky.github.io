@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "es",
+  "level": "B1",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-instant-messages-es-b1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "El primer día fue más difícil de lo que esperaba.",
+        "El mes pasado, nuestra profesora de comunicación, la señora Ruiz, nos propuso un reto poco habitual: pasar una semana sin aplicaciones de mensajería.",
+        "Así que tuve que hacer algo anticuado: llamé por teléfono.",
+        "Sin embargo, no todo fue mejor."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: El mes pasado, nuestra profesora de comunicación, la señora Ruiz, nos propuso un reto poco habitual: pasar una semana sin aplicaciones de mensajería.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-b1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "El primer día fue más difícil de lo que esperaba.",
+        "Así que tuve que hacer algo anticuado: llamé por teléfono.",
+        "Sin embargo, no todo fue mejor.",
+        "Aquella semana ya pasó y las aplicaciones han vuelto a mi móvil, pero las uso de otra manera."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: El primer día fue más difícil de lo que esperaba.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-b1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Sin embargo, no todo fue mejor.",
+        "Aquella semana ya pasó y las aplicaciones han vuelto a mi móvil, pero las uso de otra manera.",
+        "El mes pasado, nuestra profesora de comunicación, la señora Ruiz, nos propuso un reto poco habitual: pasar una semana sin aplicaciones de mensajería.",
+        "Así que tuve que hacer algo anticuado: llamé por teléfono."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Así que tuve que hacer algo anticuado: llamé por teléfono.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Aquella semana ya pasó y las aplicaciones han vuelto a mi móvil, pero las uso de otra manera.",
+        "El mes pasado, nuestra profesora de comunicación, la señora Ruiz, nos propuso un reto poco habitual: pasar una semana sin aplicaciones de mensajería.",
+        "Sin embargo, no todo fue mejor.",
+        "El primer día fue más difícil de lo que esperaba."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Sin embargo, no todo fue mejor.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-b1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 5?",
+      "choices": [
+        "El mes pasado, nuestra profesora de comunicación, la señora Ruiz, nos propuso un reto poco habitual: pasar una semana sin aplicaciones de mensajería.",
+        "Aquella semana ya pasó y las aplicaciones han vuelto a mi móvil, pero las uso de otra manera.",
+        "El primer día fue más difícil de lo que esperaba.",
+        "Así que tuve que hacer algo anticuado: llamé por teléfono."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Párrafo 5: Aquella semana ya pasó y las aplicaciones han vuelto a mi móvil, pero las uso de otra manera.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-b1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Podíamos llamar por teléfono y escribir correos, pero nada de chats, audios ni grupos.",
+        "Miré el móvil unas cuarenta veces antes de comer, aunque no había nada nuevo.",
+        "Mi amigo Karim se sorprendió tanto que pensó que había pasado algo malo.",
+        "El jueves, mi grupo del trabajo de historia trasladó la reunión de la biblioteca a una cafetería, y me enteré cuando ya estaba sentado en la biblioteca vacía."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Podíamos llamar por teléfono y escribir correos, pero nada de chats, audios ni grupos.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-b1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Mi amigo Karim se sorprendió tanto que pensó que había pasado algo malo.",
+        "El jueves, mi grupo del trabajo de historia trasladó la reunión de la biblioteca a una cafetería, y me enteré cuando ya estaba sentado en la biblioteca vacía.",
+        "He desactivado las notificaciones de dos de mis cuatro grupos y llamo a mi abuela en vez de mandarle emojis.",
+        "Miré el móvil unas cuarenta veces antes de comer, aunque no había nada nuevo."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Miré el móvil unas cuarenta veces antes de comer, aunque no había nada nuevo.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-b1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "El jueves, mi grupo del trabajo de historia trasladó la reunión de la biblioteca a una cafetería, y me enteré cuando ya estaba sentado en la biblioteca vacía.",
+        "He desactivado las notificaciones de dos de mis cuatro grupos y llamo a mi abuela en vez de mandarle emojis.",
+        "Mi amigo Karim se sorprendió tanto que pensó que había pasado algo malo.",
+        "Podíamos llamar por teléfono y escribir correos, pero nada de chats, audios ni grupos."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Mi amigo Karim se sorprendió tanto que pensó que había pasado algo malo.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-b1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "He desactivado las notificaciones de dos de mis cuatro grupos y llamo a mi abuela en vez de mandarle emojis.",
+        "El jueves, mi grupo del trabajo de historia trasladó la reunión de la biblioteca a una cafetería, y me enteré cuando ya estaba sentado en la biblioteca vacía.",
+        "Podíamos llamar por teléfono y escribir correos, pero nada de chats, audios ni grupos.",
+        "Miré el móvil unas cuarenta veces antes de comer, aunque no había nada nuevo."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: El jueves, mi grupo del trabajo de historia trasladó la reunión de la biblioteca a una cafetería, y me enteré cuando ya estaba sentado en la biblioteca vacía.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-b1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 5?",
+      "choices": [
+        "He desactivado las notificaciones de dos de mis cuatro grupos y llamo a mi abuela en vez de mandarle emojis.",
+        "Podíamos llamar por teléfono y escribir correos, pero nada de chats, audios ni grupos.",
+        "Miré el móvil unas cuarenta veces antes de comer, aunque no había nada nuevo.",
+        "Mi amigo Karim se sorprendió tanto que pensó que había pasado algo malo."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Párrafo 5: He desactivado las notificaciones de dos de mis cuatro grupos y llamo a mi abuela en vez de mandarle emojis.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

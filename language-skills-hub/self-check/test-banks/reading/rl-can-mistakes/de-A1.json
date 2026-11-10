@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "de",
+  "level": "A1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-de-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Ihr Freund Leo sagt: „Das ist nicht schlimm.",
+        "Mia ist fünfzehn Jahre alt.",
+        "Am Freitag liest Mia eine neue Geschichte.",
+        "Lies die Geschichte noch einmal.“ Mia liest langsam."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Mia ist fünfzehn Jahre alt.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Ihr Freund Leo sagt: „Das ist nicht schlimm.",
+        "Am Freitag liest Mia eine neue Geschichte.",
+        "Mia ist fünfzehn Jahre alt.",
+        "Sie ist nicht leicht, aber Mia versteht mehr."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Ihr Freund Leo sagt: „Das ist nicht schlimm.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Mia ist fünfzehn Jahre alt.",
+        "Ihr Freund Leo sagt: „Das ist nicht schlimm.",
+        "Sie mag Englisch, aber sie kennt nicht alle Wörter.",
+        "Am Freitag liest Mia eine neue Geschichte."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Am Freitag liest Mia eine neue Geschichte.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Lies die Geschichte noch einmal.“ Mia liest langsam.",
+        "Sie ist nicht leicht, aber Mia versteht mehr.",
+        "Sie mag Englisch, aber sie kennt nicht alle Wörter.",
+        "Sie fragt nach zwei Wörtern und schreibt sie in ihr Heft."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Sie mag Englisch, aber sie kennt nicht alle Wörter.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Sie ist nicht leicht, aber Mia versteht mehr.",
+        "Lies die Geschichte noch einmal.“ Mia liest langsam.",
+        "Sie mag Englisch, aber sie kennt nicht alle Wörter.",
+        "Sie lächelt."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Lies die Geschichte noch einmal.“ Mia liest langsam.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Sie ist nicht leicht, aber Mia versteht mehr.",
+        "Sie mag Englisch, aber sie kennt nicht alle Wörter.",
+        "Lies die Geschichte noch einmal.“ Mia liest langsam.",
+        "Am Montag liest sie eine kurze Geschichte."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Sie ist nicht leicht, aber Mia versteht mehr.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Sie fragt nach zwei Wörtern und schreibt sie in ihr Heft.",
+        "Sie lächelt.",
+        "Ihr Freund Leo sagt: „Das ist nicht schlimm.",
+        "Am Montag liest sie eine kurze Geschichte."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Am Montag liest sie eine kurze Geschichte.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Sie lächelt.",
+        "Am Montag liest sie eine kurze Geschichte.",
+        "Sie fragt nach zwei Wörtern und schreibt sie in ihr Heft.",
+        "Morgen möchte sie wieder üben."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Sie fragt nach zwei Wörtern und schreibt sie in ihr Heft.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Am Montag liest sie eine kurze Geschichte.",
+        "Sie lächelt.",
+        "Sie fragt nach zwei Wörtern und schreibt sie in ihr Heft.",
+        "Einige Wörter sind neu."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Sie lächelt.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Einige Wörter sind neu.",
+        "Ihr Freund Leo sagt: „Das ist nicht schlimm.",
+        "Morgen möchte sie wieder üben.",
+        "Lies die Geschichte noch einmal.“ Mia liest langsam."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Einige Wörter sind neu.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

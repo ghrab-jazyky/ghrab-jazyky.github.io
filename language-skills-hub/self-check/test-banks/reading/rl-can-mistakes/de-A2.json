@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "de",
+  "level": "A2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Belege",
+      "description": "Belege"
+    },
+    {
+      "id": "close",
+      "title": "Genaues Lesen",
+      "description": "Genaues Lesen"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-de-a2-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Am Montag lernt er zwanzig Minuten und macht eine kurze Pause.",
+        "Daniel schreibt am Donnerstag einen Test in Naturwissenschaften.",
+        "Der Test ist immer noch schwierig, und Daniel macht zwei Fehler.",
+        "Am Dienstag erklärt er seiner Schwester eine wichtige Idee."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Daniel schreibt am Donnerstag einen Test in Naturwissenschaften.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a2-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Am Montag lernt er zwanzig Minuten und macht eine kurze Pause.",
+        "Der Test ist immer noch schwierig, und Daniel macht zwei Fehler.",
+        "Daniel schreibt am Donnerstag einen Test in Naturwissenschaften.",
+        "Trotzdem ist er ruhiger als sonst."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Am Montag lernt er zwanzig Minuten und macht eine kurze Pause.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a2-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Daniel schreibt am Donnerstag einen Test in Naturwissenschaften.",
+        "Am Montag lernt er zwanzig Minuten und macht eine kurze Pause.",
+        "Normalerweise lernt er am Mittwochabend alles auf einmal.",
+        "Der Test ist immer noch schwierig, und Daniel macht zwei Fehler."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Der Test ist immer noch schwierig, und Daniel macht zwei Fehler.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Am Dienstag erklärt er seiner Schwester eine wichtige Idee.",
+        "Trotzdem ist er ruhiger als sonst.",
+        "Normalerweise lernt er am Mittwochabend alles auf einmal.",
+        "Wenn er etwas nicht gut erklären kann, liest er seine Notizen noch einmal."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Normalerweise lernt er am Mittwochabend alles auf einmal.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a2-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Trotzdem ist er ruhiger als sonst.",
+        "Am Dienstag erklärt er seiner Schwester eine wichtige Idee.",
+        "Normalerweise lernt er am Mittwochabend alles auf einmal.",
+        "Nach der Schule notiert er, was er noch üben muss."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Am Dienstag erklärt er seiner Schwester eine wichtige Idee.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a2-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Trotzdem ist er ruhiger als sonst.",
+        "Normalerweise lernt er am Mittwochabend alles auf einmal.",
+        "Am Dienstag erklärt er seiner Schwester eine wichtige Idee.",
+        "Er bleibt lange wach und ist am nächsten Tag müde."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Trotzdem ist er ruhiger als sonst.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a2-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Wenn er etwas nicht gut erklären kann, liest er seine Notizen noch einmal.",
+        "Nach der Schule notiert er, was er noch üben muss.",
+        "Am Mittwoch beantwortet er einige Fragen, ohne die Lösungen anzusehen.",
+        "Er bleibt lange wach und ist am nächsten Tag müde."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Er bleibt lange wach und ist am nächsten Tag müde.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a2-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 2?",
+      "choices": [
+        "Nach der Schule notiert er, was er noch üben muss.",
+        "Er bleibt lange wach und ist am nächsten Tag müde.",
+        "Wenn er etwas nicht gut erklären kann, liest er seine Notizen noch einmal.",
+        "Er versteht: Ein guter Lernplan muss nicht perfekt sein."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Absatz 2: Wenn er etwas nicht gut erklären kann, liest er seine Notizen noch einmal.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a2-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 3?",
+      "choices": [
+        "Er bleibt lange wach und ist am nächsten Tag müde.",
+        "Nach der Schule notiert er, was er noch üben muss.",
+        "Wenn er etwas nicht gut erklären kann, liest er seine Notizen noch einmal.",
+        "Diesmal möchte er einen anderen Plan ausprobieren."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Absatz 3: Nach der Schule notiert er, was er noch üben muss.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-de-a2-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Welcher Satz steht in Absatz 1?",
+      "choices": [
+        "Diesmal möchte er einen anderen Plan ausprobieren.",
+        "Am Mittwoch beantwortet er einige Fragen, ohne die Lösungen anzusehen.",
+        "Er versteht: Ein guter Lernplan muss nicht perfekt sein.",
+        "Am Montag lernt er zwanzig Minuten und macht eine kurze Pause."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Absatz 1: Diesmal möchte er einen anderen Plan ausprobieren.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

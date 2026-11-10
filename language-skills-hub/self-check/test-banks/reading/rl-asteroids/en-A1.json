@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Evidence",
+      "description": "Evidence"
+    },
+    {
+      "id": "close",
+      "title": "Close reading",
+      "description": "Close reading"
+    },
+    {
+      "id": "detail",
+      "title": "Details",
+      "description": "Details"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-asteroids-en-a1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Scientists look for asteroids with large telescopes.",
+        "An asteroid is a rock in space.",
+        "The biggest asteroid is called Ceres.",
+        "Can an asteroid hit Earth?"
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: An asteroid is a rock in space.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Scientists look for asteroids with large telescopes.",
+        "The biggest asteroid is called Ceres.",
+        "Can an asteroid hit Earth?",
+        "An asteroid is a rock in space."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Scientists look for asteroids with large telescopes.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "Can an asteroid hit Earth?",
+        "An asteroid is a rock in space.",
+        "Scientists look for asteroids with large telescopes.",
+        "The biggest asteroid is called Ceres."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: The biggest asteroid is called Ceres.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "An asteroid is a rock in space.",
+        "Scientists look for asteroids with large telescopes.",
+        "Can an asteroid hit Earth?",
+        "The biggest asteroid is called Ceres."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: Can an asteroid hit Earth?",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "A telescope helps them see things very far away.",
+        "It goes around the Sun, just like Earth.",
+        "It is almost one thousand kilometres wide.",
+        "Yes, but a very big hit is rare."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: It goes around the Sun, just like Earth.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "A telescope helps them see things very far away.",
+        "It is almost one thousand kilometres wide.",
+        "Yes, but a very big hit is rare.",
+        "It goes around the Sun, just like Earth."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: A telescope helps them see things very far away.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 3?",
+      "choices": [
+        "Yes, but a very big hit is rare.",
+        "It goes around the Sun, just like Earth.",
+        "A telescope helps them see things very far away.",
+        "It is almost one thousand kilometres wide."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3: It is almost one thousand kilometres wide.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 4?",
+      "choices": [
+        "It goes around the Sun, just like Earth.",
+        "A telescope helps them see things very far away.",
+        "Yes, but a very big hit is rare.",
+        "It is almost one thousand kilometres wide."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph 4: Yes, but a very big hit is rare.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 1?",
+      "choices": [
+        "Scientists work at night, when the sky is dark.",
+        "Asteroids are not stars.",
+        "Scientists call it a dwarf planet.",
+        "Small pieces of space rock sometimes enter the air around Earth."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1: Asteroids are not stars.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-asteroids-en-a1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Which sentence appears in paragraph 2?",
+      "choices": [
+        "Scientists work at night, when the sky is dark.",
+        "Scientists call it a dwarf planet.",
+        "Small pieces of space rock sometimes enter the air around Earth.",
+        "Asteroids are not stars."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2: Scientists work at night, when the sky is dark.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

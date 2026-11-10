@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "fr",
+  "level": "C1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Preuves",
+      "description": "Preuves"
+    },
+    {
+      "id": "close",
+      "title": "Lecture attentive",
+      "description": "Lecture attentive"
+    },
+    {
+      "id": "detail",
+      "title": "Détails",
+      "description": "Détails"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-can-mistakes-fr-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Imaginons deux élèves qui obtiennent des résultats également faibles à une évaluation.",
+        "Les établissements scolaires encouragent souvent les élèves à relever des défis, à considérer les revers comme des informations utiles et à croire au développement d…",
+        "Par ailleurs, toute expérience éducative ne doit pas nécessairement se traduire par un progrès mesurable.",
+        "Une approche plus convaincante associe l’initiative personnelle à la responsabilité des institutions."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Les établissements scolaires encouragent souvent les élèves à relever des défis, à considérer les revers comme des informations utiles et à croire au développement d…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Imaginons deux élèves qui obtiennent des résultats également faibles à une évaluation.",
+        "Par ailleurs, toute expérience éducative ne doit pas nécessairement se traduire par un progrès mesurable.",
+        "Une approche plus convaincante associe l’initiative personnelle à la responsabilité des institutions.",
+        "Les établissements scolaires encouragent souvent les élèves à relever des défis, à considérer les revers comme des informations utiles et à croire au développement d…"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Imaginons deux élèves qui obtiennent des résultats également faibles à une évaluation.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Une approche plus convaincante associe l’initiative personnelle à la responsabilité des institutions.",
+        "Les établissements scolaires encouragent souvent les élèves à relever des défis, à considérer les revers comme des informations utiles et à croire au développement d…",
+        "Imaginons deux élèves qui obtiennent des résultats également faibles à une évaluation.",
+        "Par ailleurs, toute expérience éducative ne doit pas nécessairement se traduire par un progrès mesurable."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Par ailleurs, toute expérience éducative ne doit pas nécessairement se traduire par un progrès mesurable.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Les établissements scolaires encouragent souvent les élèves à relever des défis, à considérer les revers comme des informations utiles et à croire au développement d…",
+        "Imaginons deux élèves qui obtiennent des résultats également faibles à une évaluation.",
+        "Une approche plus convaincante associe l’initiative personnelle à la responsabilité des institutions.",
+        "Par ailleurs, toute expérience éducative ne doit pas nécessairement se traduire par un progrès mesurable."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Une approche plus convaincante associe l’initiative personnelle à la responsabilité des institutions.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Le premier dispose d’une pièce calme, d’une connexion Internet fiable et d’un adulte capable de lui expliquer les notions difficiles.",
+        "Ces idées peuvent être libératrices, surtout pour ceux qui interprètent une seule mauvaise note comme un jugement définitif sur leur potentiel.",
+        "Lire un roman captivant, discuter d’une question sans parvenir à un accord ou découvrir un nouveau loisir peut avoir une valeur difficile à exprimer par une note.",
+        "Les élèves devraient apprendre à analyser leurs erreurs et à modifier leurs méthodes inefficaces, tandis que les établissements devraient examiner l’accès à l’aide,…"
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Ces idées peuvent être libératrices, surtout pour ceux qui interprètent une seule mauvaise note comme un jugement définitif sur leur potentiel.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Le premier dispose d’une pièce calme, d’une connexion Internet fiable et d’un adulte capable de lui expliquer les notions difficiles.",
+        "Lire un roman captivant, discuter d’une question sans parvenir à un accord ou découvrir un nouveau loisir peut avoir une valeur difficile à exprimer par une note.",
+        "Les élèves devraient apprendre à analyser leurs erreurs et à modifier leurs méthodes inefficaces, tandis que les établissements devraient examiner l’accès à l’aide,…",
+        "Ces idées peuvent être libératrices, surtout pour ceux qui interprètent une seule mauvaise note comme un jugement définitif sur leur potentiel."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Le premier dispose d’une pièce calme, d’une connexion Internet fiable et d’un adulte capable de lui expliquer les notions difficiles.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 3?",
+      "choices": [
+        "Les élèves devraient apprendre à analyser leurs erreurs et à modifier leurs méthodes inefficaces, tandis que les établissements devraient examiner l’accès à l’aide,…",
+        "Ces idées peuvent être libératrices, surtout pour ceux qui interprètent une seule mauvaise note comme un jugement définitif sur leur potentiel.",
+        "Le premier dispose d’une pièce calme, d’une connexion Internet fiable et d’un adulte capable de lui expliquer les notions difficiles.",
+        "Lire un roman captivant, discuter d’une question sans parvenir à un accord ou découvrir un nouveau loisir peut avoir une valeur difficile à exprimer par une note."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraphe 3: Lire un roman captivant, discuter d’une question sans parvenir à un accord ou découvrir un nouveau loisir peut avoir une valeur difficile à exprimer par une note.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 4?",
+      "choices": [
+        "Ces idées peuvent être libératrices, surtout pour ceux qui interprètent une seule mauvaise note comme un jugement définitif sur leur potentiel.",
+        "Le premier dispose d’une pièce calme, d’une connexion Internet fiable et d’un adulte capable de lui expliquer les notions difficiles.",
+        "Les élèves devraient apprendre à analyser leurs erreurs et à modifier leurs méthodes inefficaces, tandis que les établissements devraient examiner l’accès à l’aide,…",
+        "Lire un roman captivant, discuter d’une question sans parvenir à un accord ou découvrir un nouveau loisir peut avoir une valeur difficile à exprimer par une note."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraphe 4: Les élèves devraient apprendre à analyser leurs erreurs et à modifier leurs méthodes inefficaces, tandis que les établissements devraient examiner l’accès à l’aide,…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 1?",
+      "choices": [
+        "Le second partage un logement surpeuplé, travaille après les cours et trouve rarement du temps pour étudier sans être interrompu.",
+        "Pourtant, le discours de l’amélioration possède une face moins rassurante : il peut laisser entendre que toute difficulté relève d’un problème individuel à résoudre…",
+        "Lorsque les élèves envisagent même leur temps libre comme un projet d’optimisation personnelle, la curiosité risque de devenir une obligation supplémentaire.",
+        "Le progrès a du sens lorsqu’il ouvre de nouvelles possibilités, non lorsqu’il devient une exigence interminable de prouver sa valeur."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraphe 1: Pourtant, le discours de l’amélioration possède une face moins rassurante : il peut laisser entendre que toute difficulté relève d’un problème individuel à résoudre…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-can-mistakes-fr-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Quelle phrase figure au paragraphe 2?",
+      "choices": [
+        "Le second partage un logement surpeuplé, travaille après les cours et trouve rarement du temps pour étudier sans être interrompu.",
+        "Lorsque les élèves envisagent même leur temps libre comme un projet d’optimisation personnelle, la curiosité risque de devenir une obligation supplémentaire.",
+        "Le progrès a du sens lorsqu’il ouvre de nouvelles possibilités, non lorsqu’il devient une exigence interminable de prouver sa valeur.",
+        "Pourtant, le discours de l’amélioration possède une face moins rassurante : il peut laisser entendre que toute difficulté relève d’un problème individuel à résoudre…"
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraphe 2: Le second partage un logement surpeuplé, travaille après les cours et trouve rarement du temps pour étudier sans être interrompu.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}

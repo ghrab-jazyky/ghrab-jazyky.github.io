@@ -1,0 +1,193 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "es",
+  "level": "C1",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-STRUCTURAL-DRAFT",
+  "editorialStatus": "AUTO_GENERATED_NOT_PEDAGOGICALLY_VALIDATED",
+  "description": "Ten source-grounded mechanical evidence-location questions. NOT a pedagogically validated independent CEFR test; rewrite/approval required.",
+  "tabs": [
+    {
+      "id": "evidence",
+      "title": "Pruebas",
+      "description": "Pruebas"
+    },
+    {
+      "id": "close",
+      "title": "Lectura detallada",
+      "description": "Lectura detallada"
+    },
+    {
+      "id": "detail",
+      "title": "Detalles",
+      "description": "Detalles"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-instant-messages-es-c1-01",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "La presión no se reparte por igual.",
+        "Pocos símbolos han causado tanta ansiedad silenciosa como dos pequeños checks que se vuelven azules.",
+        "Los defensores de las confirmaciones de lectura sostienen que hacen la comunicación más honesta.",
+        "Lo que empeora la situación es que las expectativas casi nunca se dicen en voz alta."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Pocos símbolos han causado tanta ansiedad silenciosa como dos pequeños checks que se vuelven azules.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-c1-02",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "La presión no se reparte por igual.",
+        "Los defensores de las confirmaciones de lectura sostienen que hacen la comunicación más honesta.",
+        "Lo que empeora la situación es que las expectativas casi nunca se dicen en voz alta.",
+        "La solución no es abandonar los mensajes, sino hacer explícitas sus normas."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: La presión no se reparte por igual.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-c1-03",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Lo que empeora la situación es que las expectativas casi nunca se dicen en voz alta.",
+        "La solución no es abandonar los mensajes, sino hacer explícitas sus normas.",
+        "Pocos símbolos han causado tanta ansiedad silenciosa como dos pequeños checks que se vuelven azules.",
+        "Los defensores de las confirmaciones de lectura sostienen que hacen la comunicación más honesta."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Los defensores de las confirmaciones de lectura sostienen que hacen la comunicación más honesta.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-c1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "La solución no es abandonar los mensajes, sino hacer explícitas sus normas.",
+        "Pocos símbolos han causado tanta ansiedad silenciosa como dos pequeños checks que se vuelven azules.",
+        "Lo que empeora la situación es que las expectativas casi nunca se dicen en voz alta.",
+        "La presión no se reparte por igual."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Lo que empeora la situación es que las expectativas casi nunca se dicen en voz alta.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-c1-05",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 5?",
+      "choices": [
+        "Pocos símbolos han causado tanta ansiedad silenciosa como dos pequeños checks que se vuelven azules.",
+        "La solución no es abandonar los mensajes, sino hacer explícitas sus normas.",
+        "La presión no se reparte por igual.",
+        "Los defensores de las confirmaciones de lectura sostienen que hacen la comunicación más honesta."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Párrafo 5: La solución no es abandonar los mensajes, sino hacer explícitas sus normas.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-c1-06",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 1?",
+      "choices": [
+        "Es de suponer que las confirmaciones de lectura se diseñaron para tranquilizar a quien envía un mensaje: ya lo han leído.",
+        "Una chica de dieciséis años con un trabajo de fin de semana en una cafetería, por ejemplo, puede pertenecer a un grupo de empleados en el que los turnos se cambian a…",
+        "Sin ellas, dicen, la gente podría ignorar indefinidamente los mensajes incómodos fingiendo no haberlos visto.",
+        "Las familias, los amigos y los equipos desarrollan normas no escritas sobre la rapidez con la que hay que contestar, y los recién llegados suelen aprenderlas solo cu…"
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Párrafo 1: Es de suponer que las confirmaciones de lectura se diseñaron para tranquilizar a quien envía un mensaje: ya lo han leído.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-c1-07",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 2?",
+      "choices": [
+        "Sin ellas, dicen, la gente podría ignorar indefinidamente los mensajes incómodos fingiendo no haberlos visto.",
+        "Las familias, los amigos y los equipos desarrollan normas no escritas sobre la rapidez con la que hay que contestar, y los recién llegados suelen aprenderlas solo cu…",
+        "Algunos países, entre ellos Francia, han reconocido a muchos trabajadores el derecho legal a desconectarse de los mensajes del trabajo fuera del horario laboral.",
+        "Una chica de dieciséis años con un trabajo de fin de semana en una cafetería, por ejemplo, puede pertenecer a un grupo de empleados en el que los turnos se cambian a…"
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Párrafo 2: Una chica de dieciséis años con un trabajo de fin de semana en una cafetería, por ejemplo, puede pertenecer a un grupo de empleados en el que los turnos se cambian a…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-c1-08",
+      "tab": "close",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 3?",
+      "choices": [
+        "Las familias, los amigos y los equipos desarrollan normas no escritas sobre la rapidez con la que hay que contestar, y los recién llegados suelen aprenderlas solo cu…",
+        "Algunos países, entre ellos Francia, han reconocido a muchos trabajadores el derecho legal a desconectarse de los mensajes del trabajo fuera del horario laboral.",
+        "Sin ellas, dicen, la gente podría ignorar indefinidamente los mensajes incómodos fingiendo no haberlos visto.",
+        "Es de suponer que las confirmaciones de lectura se diseñaron para tranquilizar a quien envía un mensaje: ya lo han leído."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Párrafo 3: Sin ellas, dicen, la gente podría ignorar indefinidamente los mensajes incómodos fingiendo no haberlos visto.",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-c1-09",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 4?",
+      "choices": [
+        "Algunos países, entre ellos Francia, han reconocido a muchos trabajadores el derecho legal a desconectarse de los mensajes del trabajo fuera del horario laboral.",
+        "Las familias, los amigos y los equipos desarrollan normas no escritas sobre la rapidez con la que hay que contestar, y los recién llegados suelen aprenderlas solo cu…",
+        "Es de suponer que las confirmaciones de lectura se diseñaron para tranquilizar a quien envía un mensaje: ya lo han leído.",
+        "Una chica de dieciséis años con un trabajo de fin de semana en una cafetería, por ejemplo, puede pertenecer a un grupo de empleados en el que los turnos se cambian a…"
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Párrafo 4: Las familias, los amigos y los equipos desarrollan normas no escritas sobre la rapidez con la que hay que contestar, y los recién llegados suelen aprenderlas solo cu…",
+      "generationMethod": "mechanical_evidence_location"
+    },
+    {
+      "id": "r34-instant-messages-es-c1-10",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "¿Qué oración aparece en el párrafo 5?",
+      "choices": [
+        "Algunos países, entre ellos Francia, han reconocido a muchos trabajadores el derecho legal a desconectarse de los mensajes del trabajo fuera del horario laboral.",
+        "Es de suponer que las confirmaciones de lectura se diseñaron para tranquilizar a quien envía un mensaje: ya lo han leído.",
+        "Una chica de dieciséis años con un trabajo de fin de semana en una cafetería, por ejemplo, puede pertenecer a un grupo de empleados en el que los turnos se cambian a…",
+        "Sin ellas, dicen, la gente podría ignorar indefinidamente los mensajes incómodos fingiendo no haberlos visto."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Párrafo 5: Algunos países, entre ellos Francia, han reconocido a muchos trabajadores el derecho legal a desconectarse de los mensajes del trabajo fuera del horario laboral.",
+      "generationMethod": "mechanical_evidence_location"
+    }
+  ]
+}
