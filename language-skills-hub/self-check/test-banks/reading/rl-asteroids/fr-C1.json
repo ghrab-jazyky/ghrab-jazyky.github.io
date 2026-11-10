@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "fr",
+  "level": "C1",
+  "sourceTitle": "Observer le ciel et comprendre les probabilités",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R37-CONTENT-AUDIT-1",
+  "description": "Original independent C1 evidence-based astronomical-risk argument test, pending review",
+  "tabs": [
+    {
+      "id": "nuances",
+      "title": "Nuances scientifiques"
+    },
+    {
+      "id": "raisonnement",
+      "title": "Analyser le raisonnement"
+    },
+    {
+      "id": "decisions",
+      "title": "Évaluer les décisions"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r37-fr-c1-01",
+      "tab": "nuances",
+      "kind": "mc",
+      "q": "Pourquoi l'étiquette « proche de la Terre » ne suffit-elle pas pour déclarer une urgence ?",
+      "choices": [
+        "Elle n'est utilisée que pour les astéroïdes métalliques.",
+        "Elle décrit une géométrie orbitale plutôt qu'un impact prévu.",
+        "Elle concerne uniquement des objets déjà parfaitement connus.",
+        "Elle indique que les télescopes sont devenus inutiles."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Le début distingue une caractéristique de l'orbite d'une menace confirmée."
+    },
+    {
+      "id": "r37-fr-c1-02",
+      "tab": "nuances",
+      "kind": "mc",
+      "q": "Quel est le principal défaut d'un titre plus catégorique que les mesures disponibles ?",
+      "choices": [
+        "Il donne trop de détails sur le système solaire.",
+        "Il présente une explication trop longue de l'incertitude.",
+        "Il empêche les scientifiques de poursuivre les observations.",
+        "Il laisse croire à une certitude que les données ne justifient pas."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Le premier paragraphe critique une formulation plus affirmative que les résultats."
+    },
+    {
+      "id": "r37-fr-c1-03",
+      "tab": "nuances",
+      "kind": "mc",
+      "q": "Pourquoi plusieurs trajectoires peuvent-elles correspondre aux premières mesures ?",
+      "choices": [
+        "Parce que la matière de l'astéroïde change chaque nuit.",
+        "Parce que les orbites ne suivent aucune loi physique.",
+        "Parce que les images couvrent initialement une portion très courte de l'orbite.",
+        "Parce que l'infrarouge perturbe toujours les instruments optiques."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Le deuxième paragraphe relie l'incertitude à un arc orbital initialement très court."
+    },
+    {
+      "id": "r37-fr-c1-04",
+      "tab": "raisonnement",
+      "kind": "mc",
+      "q": "En quoi les instruments infrarouges complètent-ils les télescopes optiques ?",
+      "choices": [
+        "Ils peuvent révéler des corps grâce à leur rayonnement thermique.",
+        "Ils éliminent toute incertitude dès la première observation.",
+        "Ils dispensent les chercheurs de calculer une trajectoire.",
+        "Ils sont utiles seulement pour les objets les plus brillants."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Le texte présente le rayonnement thermique comme une source de données complémentaire."
+    },
+    {
+      "id": "r37-fr-c1-05",
+      "tab": "raisonnement",
+      "kind": "mc",
+      "q": "Comment une probabilité d'impact peut-elle augmenter provisoirement après de nouvelles mesures ?",
+      "choices": [
+        "L'astéroïde choisit une nouvelle direction.",
+        "Les premières données étaient nécessairement inventées.",
+        "Les mesures peuvent réduire l'ensemble des trajectoires compatibles.",
+        "Toute incertitude scientifique a définitivement disparu."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Des observations supplémentaires modifient l'éventail des trajectoires possibles."
+    },
+    {
+      "id": "r37-fr-c1-06",
+      "tab": "raisonnement",
+      "kind": "mc",
+      "q": "Quelle conclusion l'expérience DART permet-elle réellement de tirer ?",
+      "choices": [
+        "Un transfert de quantité de mouvement peut modifier une orbite dans le cas étudié.",
+        "Une seule sonde peut empêcher n'importe quel impact futur.",
+        "La structure d'un astéroïde ne change jamais le résultat.",
+        "La Terre était directement menacée pendant cette expérience."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Le troisième paragraphe évoque un résultat expérimental réel sans garantie universelle."
+    },
+    {
+      "id": "r37-fr-c1-07",
+      "tab": "raisonnement",
+      "kind": "mc",
+      "q": "Pourquoi une petite déviation réalisée longtemps à l'avance peut-elle être utile ?",
+      "choices": [
+        "Elle rend toutes les observations suivantes inutiles.",
+        "Elle laisse davantage de temps au changement de trajectoire pour agir.",
+        "Elle empêche l'astéroïde de continuer à tourner autour du Soleil.",
+        "Elle permet de connaître sa composition sans autre mesure."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Le texte souligne le rôle du temps disponible avant l'impact éventuel."
+    },
+    {
+      "id": "r37-fr-c1-08",
+      "tab": "decisions",
+      "kind": "mc",
+      "q": "Comment faut-il vérifier qu'une tentative de déviation a réussi ?",
+      "choices": [
+        "Une image du choc suffit à le prouver.",
+        "Il n'est plus nécessaire de mesurer l'orbite.",
+        "Une vérification indépendante serait superflue.",
+        "De nouvelles observations indépendantes doivent confirmer la trajectoire."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Le troisième paragraphe exige des mesures postérieures à l'intervention."
+    },
+    {
+      "id": "r37-fr-c1-09",
+      "tab": "decisions",
+      "kind": "mc",
+      "q": "Quelles sont les deux erreurs opposées en matière de communication du risque ?",
+      "choices": [
+        "Financer la recherche et négliger les voyages spatiaux.",
+        "Partager les données et expliquer les incertitudes.",
+        "Transformer tout rapprochement en crise ou négliger les risques rares.",
+        "Présenter des mesures détaillées et demander davantage d'observations."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "La conclusion oppose l'alarmisme à la sous-estimation des événements improbables."
+    },
+    {
+      "id": "r37-fr-c1-10",
+      "tab": "decisions",
+      "kind": "mc",
+      "q": "Qu'est-ce qui peut renforcer la confiance du public ?",
+      "choices": [
+        "Des corrections expliquées clairement et de manière transparente.",
+        "La promesse qu'aucune estimation ne changera jamais.",
+        "La diffusion d'un seul chiffre sans son contexte.",
+        "Le silence tant qu'il reste une incertitude."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Le dernier paragraphe associe la confiance à des révisions justifiées et expliquées."
+    }
+  ]
+}
