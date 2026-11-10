@@ -88,6 +88,6 @@ test('R34 student catalog retains no links to unapproved assessment banks',()=>{
   const content=read(file);
   assert.doesNotMatch(content,/test-banks\/reading|R34-CONTENT-DRAFT-1/);
  }
- assert.equal(coverage.slots.filter(s=>s.status==='DRAFT_UNAPPROVED').length,10);
+ assert.equal(coverage.slots.filter(s=>s.status==='DRAFT_UNAPPROVED').length,14);
  assert.equal(coverage.slots.filter(s=>s.status==='TEACHER_APPROVED').length,0);
 });
