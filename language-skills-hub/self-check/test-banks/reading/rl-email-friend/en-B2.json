@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-AUTHOR-DRAFT-1",
+  "description": "Independent ten-item B2 assessment draft for Somewhere Between Two Cities; human pedagogy approval required.",
+  "tabs": [
+    {
+      "id": "interpret",
+      "title": "Interpretation",
+      "description": "Understand ideas and distinctions."
+    },
+    {
+      "id": "reason",
+      "title": "Writer's Reasoning",
+      "description": "Follow evidence and explanation."
+    },
+    {
+      "id": "apply",
+      "title": "Applying the Argument",
+      "description": "Use the text in new situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-email-friend-en-b2-01",
+      "tab": "interpret",
+      "kind": "mc",
+      "q": "What did Lena's cheerful photographs fail to communicate to Alex?",
+      "choices": [
+        "The names of the places she visited in Rotterdam.",
+        "That she could feel isolated despite enjoying the city.",
+        "That she regretted accepting the exchange placement.",
+        "That her host family had asked her to leave."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "The first paragraph contrasts attractive captions with the loneliness Lena found difficult to admit."
+    },
+    {
+      "id": "r36-email-friend-en-b2-02",
+      "tab": "interpret",
+      "kind": "mc",
+      "q": "Why was the woman's description of bus routes significant to Lena?",
+      "choices": [
+        "It inspired her to take a job as a bus driver.",
+        "It convinced her to stop volunteering at the station.",
+        "It showed that her own confusion was a shared experience rather than a failure.",
+        "It demonstrated that life abroad is mostly about transport."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "The unfamiliar bus routes symbolised the hidden rules newcomers struggle to learn."
+    },
+    {
+      "id": "r36-email-friend-en-b2-03",
+      "tab": "interpret",
+      "kind": "mc",
+      "q": "What does the reaction to the bakery interview suggest about loneliness?",
+      "choices": [
+        "A personal feeling may be widespread even when people hide it.",
+        "Radio listeners tend to have more difficulties than other residents.",
+        "A good interview can immediately solve social isolation.",
+        "Food traditions are the main cause of successful integration."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "The listener responses reveal that seemingly settled people can share the same invisible experience."
+    },
+    {
+      "id": "r36-email-friend-en-b2-04",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "Why does Lena reconsider sending the old school photograph with a brief joke?",
+      "choices": [
+        "She dislikes the photo now that she has moved abroad.",
+        "The picture no longer includes most of her friends.",
+        "She thinks Alex will not recognise the building.",
+        "She realises it would avoid asking about Alex's real situation."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "The photograph prompts her to question the superficial pattern of messages and reconnect more honestly."
+    },
+    {
+      "id": "r36-email-friend-en-b2-05",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "Why does Lena say she values the conversations more than the radio certificate?",
+      "choices": [
+        "She has decided to work as a professional journalist.",
+        "The conversations have helped her feel connected and rethink her situation.",
+        "She will not receive the certificate until she returns home.",
+        "The volunteers have promised to pay her for later programmes."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "The unpaid work and shared stories have become a source of belonging and understanding."
+    },
+    {
+      "id": "r36-email-friend-en-b2-06",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "What makes Lena's invitation considerate rather than demanding?",
+      "choices": [
+        "She promises to cover the full cost of Alex's journey.",
+        "She expects Alex to perform for the radio audience.",
+        "She offers a visit but also a regular call if travelling is impossible.",
+        "She asks Alex to reply before the weekend."
+      ],
+      "answer": 2,
+      "sourceParagraph": 5,
+      "explanation": "The final paragraph offers a practical alternative and allows Alex to choose what works."
+    },
+    {
+      "id": "r36-email-friend-en-b2-07",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "What does Lena acknowledge by saying Alex may have felt left out?",
+      "choices": [
+        "Her curated updates may have damaged their sense of closeness.",
+        "Alex has definitely stopped liking their friendship.",
+        "Her radio work has prevented Alex from attending college.",
+        "She knows exactly what difficulties Alex faces."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Lena recognises that her apparently effortless life may have made Alex feel excluded."
+    },
+    {
+      "id": "r36-email-friend-en-b2-08",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "A student posts joyful pictures while finding a new school difficult. Which response best follows Lena's insight?",
+      "choices": [
+        "Delete every photograph taken at school.",
+        "Tell all classmates that social media is dishonest.",
+        "Avoid discussing the situation with anyone.",
+        "Share the difficulty with a trusted friend instead of relying only on captions."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Lena's central lesson is to allow genuine conversation to replace an edited public image."
+    },
+    {
+      "id": "r36-email-friend-en-b2-09",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "A newcomer feels embarrassed about not understanding local routines. What advice does Lena's radio experience support?",
+      "choices": [
+        "Find shared experiences through conversations with other newcomers.",
+        "Memorise a map before speaking to anyone.",
+        "Avoid volunteering until the local language is perfect.",
+        "Assume everyone else has always found moving easy."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Listening to another newcomer's difficulties helps Lena normalise her own experience."
+    },
+    {
+      "id": "r36-email-friend-en-b2-10",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "Which reply from Alex would best match the kind of friendship Lena wants to rebuild?",
+      "choices": [
+        "A single picture with no accompanying words.",
+        "An honest update and a suggestion for a time they could talk.",
+        "A list of the best tourist sites in Rotterdam.",
+        "An apology for not being able to visit immediately."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Lena explicitly seeks sincere conversation, not another outwardly cheerful photograph."
+    }
+  ]
+}
