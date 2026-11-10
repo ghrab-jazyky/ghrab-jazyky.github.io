@@ -35,12 +35,12 @@
       "kind": "mc",
       "q": "What is the chief danger when resilience becomes a moral expectation?",
       "choices": [
-        "It renders the idea of perseverance too vague to influence behaviour.",
         "It can conceal adverse circumstances by treating recovery as an individual duty.",
         "It makes students underestimate the value of setbacks once overcome.",
-        "It replaces educational assessment with personal wellbeing measures."
+        "It replaces educational assessment with personal wellbeing measures.",
+        "It renders the idea of perseverance too vague to influence behaviour."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "The opening distinguishes resilience as a valuable capacity from an indiscriminate demand to overcome constraints."
     },
     {
@@ -50,12 +50,12 @@
       "kind": "mc",
       "q": "Why does the writer distinguish agency from mere endurance?",
       "choices": [
-        "Agency is visible to teachers, whereas endurance cannot be observed.",
         "Agency produces higher grades, whereas endurance affects wellbeing.",
         "Endurance depends on institutional support, whereas agency does not.",
-        "Effort is educationally meaningful only when conditions permit an effective change."
+        "Effort is educationally meaningful only when conditions permit an effective change.",
+        "Agency is visible to teachers, whereas endurance cannot be observed."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "Paragraph two asks whether renewed effort has a reasonable prospect of producing meaningful change."
     },
     {
@@ -65,12 +65,12 @@
       "kind": "mc",
       "q": "What does the writer mean by saying indicators may 'colonise' the activities they illuminate?",
       "choices": [
-        "Evaluation systems can gradually reduce the available range of school subjects.",
         "Measurement can make teachers favour advanced pupils over beginners.",
         "Measures can start shaping what counts as worthwhile learning.",
-        "Performance data can lead institutions to stop offering formal feedback."
+        "Performance data can lead institutions to stop offering formal feedback.",
+        "Evaluation systems can gradually reduce the available range of school subjects."
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "The metaphor describes measurement extending beyond observation to dominate values and practice."
     },
     {
@@ -80,12 +80,12 @@
       "kind": "mc",
       "q": "What kind of learner does the final sentence especially commend?",
       "choices": [
-        "One who can reassess a goal rather than merely pursue it without question.",
         "One who chooses persistence even when success seems unlikely.",
         "One who achieves measurable progress without institutional assistance.",
-        "One who avoids externally imposed goals by refusing assessment."
+        "One who avoids externally imposed goals by refusing assessment.",
+        "One who can reassess a goal rather than merely pursue it without question."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The conclusion values discerning whether a goal deserves pursuit as a form of judgement."
     },
     {
@@ -95,12 +95,12 @@
       "kind": "mc",
       "q": "What is the rhetorical force of the contrast between advice offered after and during hardship?",
       "choices": [
-        "It implies that retrospective accounts are necessarily dishonest.",
         "It reveals how successful outcomes can obscure the risks of urging perseverance in the moment.",
         "It shows that practical constraints disappear once a setback ends.",
-        "It argues that advice is valuable only if given after recovery."
+        "It argues that advice is valuable only if given after recovery.",
+        "It implies that retrospective accounts are necessarily dishonest."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "The writer contrasts reassuring narratives after success with the uncertainty of advising persistence amid continuing constraints."
     },
     {
@@ -110,12 +110,12 @@
       "kind": "mc",
       "q": "What follows from the claim that two pupils can appear equally determined 'from a distance'?",
       "choices": [
-        "Observers can reliably identify the pupil who has the better study strategy.",
         "Visible determination is a sufficient basis for evaluating educational opportunity.",
         "The distinction between effort and ability can never be assessed.",
-        "Similar outward behaviour may conceal fundamentally different prospects of progress."
+        "Similar outward behaviour may conceal fundamentally different prospects of progress.",
+        "Observers can reliably identify the pupil who has the better study strategy."
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "The example warns that determination alone fails to reveal whether an environment makes change possible."
     },
     {
@@ -125,12 +125,12 @@
       "kind": "mc",
       "q": "Why does the writer say a narrow performance indicator is 'not necessarily false'?",
       "choices": [
-        "Because all measurable outcomes are legitimate descriptions of learning.",
         "Because assessments can be redesigned to cover every kind of progress.",
         "Because a metric may be accurate about a limited dimension while misleading as a total judgement.",
-        "Because complex ideas can eventually be reduced to a single number."
+        "Because complex ideas can eventually be reduced to a single number.",
+        "Because all measurable outcomes are legitimate descriptions of learning."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "The concern is not that speed of score improvement is inaccurately recorded, but that it is only one aspect of learning."
     },
     {
@@ -140,12 +140,12 @@
       "kind": "mc",
       "q": "A school rewards only rapid score increases. Which unintended effect best fits the essay?",
       "choices": [
-        "Students may avoid difficult intellectual exploration that does not yield quick gains.",
         "Students may become less willing to complete familiar practice questions.",
         "Teachers may stop identifying the sources of factual errors.",
-        "Assessment may become too subjective to compare progress."
+        "Assessment may become too subjective to compare progress.",
+        "Students may avoid difficult intellectual exploration that does not yield quick gains."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "The example contrasts a learner exploring difficult ideas with another drilling familiar questions under a speed-based measure."
     },
     {
@@ -155,12 +155,12 @@
       "kind": "mc",
       "q": "A teacher praises a pupil for abandoning a poorly chosen project after careful reflection. Why might this be defensible?",
       "choices": [
-        "It proves the pupil was never genuinely interested in the subject.",
         "It recognises that changing direction can be a considered exercise of judgement.",
         "It ensures the pupil will face fewer academic difficulties in future.",
-        "It treats the pupil's earlier effort as irrelevant to learning."
+        "It treats the pupil's earlier effort as irrelevant to learning.",
+        "It proves the pupil was never genuinely interested in the subject."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The writer explicitly argues that discerning whether persistence serves a purpose is a mark of maturity."
     },
     {
@@ -170,12 +170,12 @@
       "kind": "mc",
       "q": "Which policy most faithfully combines the writer's final recommendations?",
       "choices": [
-        "Replace individual assessment with resilience workshops and encouragement.",
         "Judge pupils' improvement only against their own past scores.",
         "Celebrate perseverance uniformly but offer additional study support when requested.",
-        "Support students materially, scrutinise metrics and leave room to revise goals or rest."
+        "Support students materially, scrutinise metrics and leave room to revise goals or rest.",
+        "Replace individual assessment with resilience workshops and encouragement."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "The conclusion joins structural support, critical scrutiny of measurement and freedom to reconsider what is worth pursuing."
     }
   ]
