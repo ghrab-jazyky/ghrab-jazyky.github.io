@@ -33,7 +33,7 @@ for(const [engineName,engine]of [['chromium',chromium],['webkit',webkit]]){
    assert.equal((await page.goto(url('B1','r33b1scenarioone'))).status(),200);
    await page.locator('#sessionIntro:not([hidden])').waitFor({timeout:30000});
    assert.match(await page.locator('.mode').textContent(),/B1/);
-   assert.match(await page.title(),/Reading B1/);
+   assert.match(await page.title(),/Reading (EN\/)?B1/);
    assert.match(await page.locator('#title').textContent(),/The Problem with Being Good at Everything/);
    assert.equal(await page.locator('#readingParagraphs p').count(),4);
    assert.equal(await page.locator('fieldset.question').count(),10);
@@ -106,7 +106,7 @@ for(const [engineName,engine]of [['chromium',chromium],['webkit',webkit]]){
    await context.close();
   }finally{await browser.close()}
  });
- test('R33 '+engineName+' mixed-level bank and unsupported A2 are rejected before test begins',async()=>{
+ test('R33 '+engineName+' mixed-level bank and unsupported C3 are rejected before test begins',async()=>{
   const browser=await engine.launch({headless:true});
   try{
    const context=await browser.newContext(),page=await context.newPage(),errors=[];
@@ -119,9 +119,9 @@ for(const [engineName,engine]of [['chromium',chromium],['webkit',webkit]]){
    assert.match(await page.locator('#loading').textContent(),/does not match this bank level/);
    assert.equal(await page.locator('#sessionStart').count(),0);
    await page.unrouteAll();
-   await page.goto(url('A2','r33unsupportedcase'));
+   await page.goto(url('C3','r33unsupportedcase'));
    await page.locator('#loading.error').waitFor();
-   assert.match(await page.locator('#loading').textContent(),/Unsupported independent test level/);
+   assert.match(await page.locator('#loading').textContent(),/Unsupported independent test level or language/);
    assert.equal(await page.locator('#workspace').isHidden(),true);
    assert.deepEqual(errors,[]);
    await context.close();
