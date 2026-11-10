@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "C2",
+  "sourceVariantTitle": "The Convenient Virtue of the Perfect Consumer",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "auditRevision": "R36-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "Independent English C2 film-review comprehension bank requiring human pedagogical approval.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Interpretation",
+      "description": "Consider the writer's qualified position."
+    },
+    {
+      "id": "analysis",
+      "title": "Analysis",
+      "description": "Interpret argument and evidence."
+    },
+    {
+      "id": "application",
+      "title": "Evaluation",
+      "description": "Apply the ideas to new situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-plastic-ocean-en-c2-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What is the central irony in the film's celebration of the teenager with the flask?",
+      "choices": [
+        "The teenager's flask was made in the same factory as disposable cups.",
+        "The audience was not genuinely moved by the teenager's speech.",
+        "The institutional arrangements at the screening remain unexamined while individual virtue is applauded.",
+        "The venue had banned all private reusable containers."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph 1 of this C2 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c2-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why is immediately accusing the venue of hypocrisy 'satisfying and uninformative'?",
+      "choices": [
+        "The venue has already published a complete impact study.",
+        "It delivers a moral verdict without examining the logistical limitations involved.",
+        "A critic cannot judge an institution's own policies.",
+        "It proves that all recycling plans are financially impossible."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph 2 of this C2 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c2-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "How does the writer challenge the film's implied account of environmental causation?",
+      "choices": [
+        "It assumes that people can never choose how to behave.",
+        "It claims public procurement has no relation to consumption.",
+        "It argues that narrative techniques prevent any environmental change.",
+        "It leaves out systems that make individual habits more or less effective."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph 3 of this C2 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c2-04",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why would blaming governments alone give consumers an 'equally flattering absolution'?",
+      "choices": [
+        "It releases private actors from considering their contribution to collective change.",
+        "It makes every consumer responsible for all public contracts.",
+        "It proves that purchasing habits cannot affect design decisions.",
+        "It requires citizens to act without any public support."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph 4 of this C2 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c2-05",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What does the hypothetical flask lost after one month illustrate?",
+      "choices": [
+        "Metal is necessarily more harmful than every disposable material.",
+        "The only measure of sustainability is whether an object can be found.",
+        "A sustainable symbol must also be evaluated through manufacture, lifespan and actual use.",
+        "Any individual product can be assessed without considering its context."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph 5 of this C2 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c2-06",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "What concession does the writer make to filmmakers who appeal to urgency?",
+      "choices": [
+        "Emotional engagement matters, but it does not cancel the duty to describe uncertainty accurately.",
+        "Urgency makes all omissions morally acceptable.",
+        "A moving film should never include costs or measurements.",
+        "The time available for a decision has no effect on environmental action."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph 6 of this C2 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c2-07",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Why would a shot of a clipboard be more informative than another aerial coastline image?",
+      "choices": [
+        "It would show that the entire trial had been free of problems.",
+        "It would reveal measurable returns, losses and questions for future revisions.",
+        "It would prove that the coastline would never become polluted.",
+        "It would remove the need to consult anyone who ran the event."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph 6 of this C2 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c2-08",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "How does the example of students campaigning for drinking fountains complicate the individual-versus-system debate?",
+      "choices": [
+        "It proves that schools are required to follow every student demand.",
+        "It demonstrates that public provision always comes before any private habit.",
+        "It suggests that students cannot influence the design of shared facilities.",
+        "It shows that private initiative and institutional provision can reinforce each other."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph 4 of this C2 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c2-09",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "A deposit trial loses more cups than expected. What would constitute a responsible response?",
+      "choices": [
+        "Reject the idea of reuse without making any measurements.",
+        "Investigate design, losses and costs rather than declaring instant triumph or failure.",
+        "Praise the scheme because a trial's costs do not matter.",
+        "Hide missing cups to keep the audience's enthusiasm."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph 6 of this C2 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c2-10",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 7,
+      "q": "What kind of audience does the writer ultimately hope environmental cinema will develop?",
+      "choices": [
+        "One that can confidently declare itself morally innocent.",
+        "One that judges the quality of a film by its final scenic image.",
+        "One that accepts simple explanations without examining causation.",
+        "One capable of asking questions about missing actors, constraints and consequences."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph 7 of this C2 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    }
+  ]
+}
