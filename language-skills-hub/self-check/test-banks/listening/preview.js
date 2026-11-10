@@ -196,6 +196,8 @@
    const actual=await sha256(html);
    valid(actual===manifest.contentHashes[originalTopic],'Original media source checksum mismatch');
    const source=sourceCore.variant(sourceCore.extractJson(html,'DATA'),level);
+   valid(independent.level===level&&independent.topic===originalTopic,
+    'Listening bank is not the requested level and topic');
    draftCore.validate(independent,source,actual);
    valid(independent.durationMinutesSuggested===requestedMinutes,
     'The source-specific time limit does not match the reviewed draft');
