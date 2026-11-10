@@ -332,9 +332,9 @@
   themeInit();
   $('submitButton').addEventListener('click',()=>submit(false,false));
   try{
-   if(selection.topic!=='ll-harrison-ford'||selection.level!=='B2'||
+   if(!['ll-harrison-ford','ll-matthew-oscars','ll-peaky-no-fighting'].includes(selection.topic)||selection.level!=='B2'||
     params.get('timer')!=='20'||!/^[a-z0-9_-]{6,40}$/i.test(params.get('attempt')||''))
-    throw new Error('Unapproved R37 B2 pilot requires fixed topic, level, timer and attempt');
+    throw new Error('Unapproved R37/R38 B2 pilot requires approved pilot topic, level, timer and attempt');
    if(!schema||!window.LSHSessionUI)
     throw new Error('Independent Listening validation or timer unavailable');
    const [manifestRes,catalogRes]=await Promise.all([
@@ -352,7 +352,7 @@
     throw new Error('Invalid Listening source path');
    const [resource,bankResponse]=await Promise.all([
     fetch('../../../'+entry.relative,{credentials:'omit',redirect:'error',cache:'no-store'}),
-    fetch('ll-harrison-ford/en-B2.json',{credentials:'omit',redirect:'error',cache:'no-store'})
+    fetch(selection.topic+'/en-B2.json',{credentials:'omit',redirect:'error',cache:'no-store'})
    ]);
    if(!resource.ok||!bankResponse.ok)throw new Error('Independent Listening source/bank unavailable');
    const [source,bank]=await Promise.all([resource.text(),bankResponse.json()]);
