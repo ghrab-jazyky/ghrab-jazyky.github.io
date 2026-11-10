@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-harrison-ford",
+  "language": "en",
+  "level": "B1",
+  "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
+  "durationMinutesSuggested": 17,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "auditRevision": "R36-AUTHOR-DRAFT-1",
+  "notes": "Unapproved audio-dependent test; original clip must be independently checked.",
+  "objective": [
+    {
+      "id": "r36-hf-b1-01",
+      "category": "listening",
+      "q": "Why does Ford mix a joke with memories of difficult years?",
+      "options": [
+        "To show that his career was never important to him.",
+        "To make his account friendly while admitting that success took time.",
+        "To suggest every actor should work in carpentry.",
+        "To explain why he did not expect to attend the ceremony."
+      ],
+      "answer": 1,
+      "explanation": "Humour softens the reflection on a long and uncertain career.",
+      "sourceEvidence": "He jokes about the award and later describes years of struggle."
+    },
+    {
+      "id": "r36-hf-b1-02",
+      "category": "listening",
+      "q": "What did Ford gain when he met the people putting on plays?",
+      "options": [
+        "A chance to become a professional director at once.",
+        "A guaranteed job after college.",
+        "A new family business in carpentry.",
+        "A place where he felt he belonged."
+      ],
+      "answer": 3,
+      "explanation": "The anecdote stresses community and direction, not instant success.",
+      "sourceEvidence": "He found his people in a theatre group at college."
+    },
+    {
+      "id": "r36-hf-b1-03",
+      "category": "listening",
+      "q": "What is Ford's point when he thanks people behind his films?",
+      "options": [
+        "A successful film needs contributions from many people.",
+        "Only actors should be recognised by awards.",
+        "Most film jobs are less important than the leading role.",
+        "A good performance can replace the work of a film crew."
+      ],
+      "answer": 0,
+      "explanation": "His gratitude frames filmmaking as collaborative work.",
+      "sourceEvidence": "He thanks writers, directors, cast and crew."
+    },
+    {
+      "id": "r36-hf-b1-04",
+      "category": "listening",
+      "q": "What does his story about the long wait before success suggest?",
+      "options": [
+        "The beginning of a career is always the most enjoyable part.",
+        "Good acting can be learned without any practical work.",
+        "Progress may require patience and more than one kind of work.",
+        "Famous people usually know exactly where they will end up."
+      ],
+      "answer": 2,
+      "explanation": "Ford spent years struggling and doing carpentry between acting jobs.",
+      "sourceEvidence": "He describes about fifteen years before his breakthrough."
+    },
+    {
+      "id": "r36-hf-b1-05",
+      "category": "listening",
+      "q": "Why does Ford talk about the importance of stories?",
+      "options": [
+        "They help audiences connect with experiences and feelings.",
+        "They are more valuable than everyone who creates them.",
+        "They are mainly useful when a story is about a famous person.",
+        "They always teach viewers one simple lesson."
+      ],
+      "answer": 0,
+      "explanation": "Ford describes storytelling as a source of shared emotion.",
+      "sourceEvidence": "Stories connect audiences through experience."
+    },
+    {
+      "id": "r36-hf-b1-06",
+      "category": "listening",
+      "q": "What responsibility does Ford connect with being successful?",
+      "options": [
+        "Being more competitive with younger actors.",
+        "Keeping the same roles throughout a career.",
+        "Explaining every career decision in public.",
+        "Giving other people opportunities to succeed."
+      ],
+      "answer": 3,
+      "explanation": "He encourages established artists to support newcomers.",
+      "sourceEvidence": "Success brings freedom and a responsibility to others."
+    }
+  ],
+  "written": [
+    {
+      "id": "r36-hf-b1-w1",
+      "q": "How does the story from college help explain Ford's choice of career?",
+      "modelAnswer": "Finding a theatre group made Ford feel he belonged and gave acting a clearer purpose.",
+      "teacherCriterion": "One supported link between a theatre community and his sense of career direction.",
+      "sourceEvidence": "Ford finds people staging plays at college."
+    },
+    {
+      "id": "r36-hf-b1-w2",
+      "q": "Give one example of the way Ford shares credit for his success.",
+      "modelAnswer": "He thanks particular collaborators or describes the importance of cast, writers, directors and crew.",
+      "teacherCriterion": "One concrete supported example of thanking or recognising other people.",
+      "sourceEvidence": "Ford gives credit to multiple colleagues and supporters."
+    }
+  ]
+}
