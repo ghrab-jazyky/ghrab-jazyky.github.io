@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "C1",
+  "sourceTitle": "The Things We Never Posted",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R40-CONTENT-AUDIT-1",
+  "description": "Independent friendship-email reading assessment with original questions, pending pedagogical validation",
+  "tabs": [
+    {
+      "id": "understanding",
+      "title": "Understanding the Message"
+    },
+    {
+      "id": "interpretation",
+      "title": "Meaning and Intent"
+    },
+    {
+      "id": "transfer",
+      "title": "Interpreting the Invitation"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r40-en-c1-01",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "What is Mara admitting by refusing the usual excuse that she was busy?",
+      "choices": [
+        "She has not sent any photographs at all.",
+        "The silence reflects avoidance rather than a lack of time alone.",
+        "She has forgotten Jules's address.",
+        "Her archive work has prevented all communication."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Mara recognises that she chose polished posts in place of meaningful contact."
+    },
+    {
+      "id": "r40-en-c1-02",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "What does the sunset photograph illustrate?",
+      "choices": [
+        "Her skill at recording beautiful views.",
+        "The importance of Bristol's waterfront.",
+        "A way to advertise the community archive.",
+        "An attractive response that concealed an uncomfortable truth."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Mara used a sunset picture instead of answering whether she was happy."
+    },
+    {
+      "id": "r40-en-c1-03",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "How does the archive challenge a simple idea of what a good memory should be?",
+      "choices": [
+        "It accepts stories without requiring inspirational endings.",
+        "It asks contributors to prove every detail with documents.",
+        "It refuses to preserve disagreements between neighbours.",
+        "It allows only positive accounts of the city."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Contributors can describe arguments or withhold recordings; the archive respects complexity."
+    },
+    {
+      "id": "r40-en-c1-04",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What does the contributor who refused to be recorded demonstrate?",
+      "choices": [
+        "People cannot trust any archive to preserve material.",
+        "Written descriptions always contain more information.",
+        "Respect for a person can include accepting limits on what is recorded.",
+        "The community archive has no place for audio."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "The archive honours a request to keep only a written account of the room."
+    },
+    {
+      "id": "r40-en-c1-05",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why does the retired shopkeeper's story stay with Mara?",
+      "choices": [
+        "It explains why he had moved to the seaside.",
+        "He seeks recognition of a place's importance rather than sympathy or advice.",
+        "It proves that the shop sold better tea than others.",
+        "It prompts Mara to change her employer."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "The man wants someone to know the shop mattered without being offered consolation."
+    },
+    {
+      "id": "r40-en-c1-06",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What broader lesson does Mara draw from that interview?",
+      "choices": [
+        "Friends should give one another practical advice immediately.",
+        "Memories matter only if they are recorded.",
+        "The archive should avoid interviewing people in grief.",
+        "Attentive listening may matter more than providing solutions."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Mara concludes that attention is often more important than advice."
+    },
+    {
+      "id": "r40-en-c1-07",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why does Mara hesitate before inviting Jules?",
+      "choices": [
+        "The invitation could feel like a test of their friendship.",
+        "She is uncertain about the location of the archive event.",
+        "She wants Jules to deliver a public lecture.",
+        "The archive has already cancelled the evening."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Mara wants the invitation not to become a measurement of whether the friendship still works."
+    },
+    {
+      "id": "r40-en-c1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "What does Mara acknowledge about an enjoyable evening together?",
+      "choices": [
+        "It can necessarily repair a year of silence.",
+        "It makes ordinary conversations unnecessary.",
+        "It cannot automatically undo a year of superficial contact.",
+        "It would prove that neither friend has changed."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Mara rejects the claim that one event can repair their neglected connection."
+    },
+    {
+      "id": "r40-en-c1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "Why does Mara allow Jules to attend without contributing?",
+      "choices": [
+        "She needs another person to manage the recordings.",
+        "She wants company without imposing a performance or obligation.",
+        "Only trained archivists are permitted to contribute.",
+        "She expects Jules to pay the event costs."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "The invitation explicitly removes any expectation to take part formally."
+    },
+    {
+      "id": "r40-en-c1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "What tension shapes the closing invitation?",
+      "choices": [
+        "The desire to share professional success and avoid disagreement.",
+        "The need to give Jules an inspiring personal lesson.",
+        "The wish to end the relationship without saying so.",
+        "The desire for renewed connection without turning it into another task."
+      ],
+      "answer": 3,
+      "sourceParagraph": 5,
+      "explanation": "Mara wants space for uncertain, genuine friendship rather than managed closeness."
+    }
+  ]
+}
