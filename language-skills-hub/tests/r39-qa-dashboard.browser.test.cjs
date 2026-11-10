@@ -31,7 +31,7 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(await pilot.locator('fieldset.question').count(),10);
    assert.match(await pilot.locator('.subtitle').textContent(),/25 minutes/);
    await pilot.locator('#sessionStart').click();
-   assert.match(await pilot.locator('#timeRemaining').textContent(),/Time remaining: 2[45]:/);
+   assert.match(await pilot.locator('#timeRemaining').textContent(),/2[45]:[0-5][0-9]/);
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
  });
