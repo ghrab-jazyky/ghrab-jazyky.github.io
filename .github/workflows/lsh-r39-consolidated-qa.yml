@@ -25,6 +25,8 @@ jobs:
           node --check language-skills-hub/self-check/test-banks/listening/test-bank-core.js
           node --check language-skills-hub/self-check/test-banks/listening/preview.js
           node --check language-skills-hub/self-check/test-banks/reading/test-bank-core.js
+          node --check language-skills-hub/self-check/test-banks/dashboard.js
+          node --check language-skills-hub/tests/r39-qa-dashboard.browser.test.cjs
       - name: Check source integrity and all authored bank data
         run: |
           node --test language-skills-hub/tests/r35-content-coverage.test.cjs language-skills-hub/tests/r37-asteroids-coverage.test.cjs language-skills-hub/tests/r41-complete-reading-120.test.cjs language-skills-hub/tests/r39-consolidated-independent.test.cjs
@@ -54,3 +56,4 @@ jobs:
           done
           node --test language-skills-hub/tests/r35-multilingual-reading.browser.test.cjs language-skills-hub/tests/r37-asteroids.browser.test.cjs
           node --test language-skills-hub/tests/r35-independent-listening-b2.browser.test.cjs language-skills-hub/tests/r36-harrison-ford-six-level-listening.browser.test.cjs
+          node --test language-skills-hub/tests/r39-qa-dashboard.browser.test.cjs
