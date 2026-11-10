@@ -1,4 +1,4 @@
-/* R32/R33 independent Reading test-bank draft validator. NEVER auto-publish.
+/* R32-R34 independent Reading draft-bank validator. NEVER auto-publish.
  * Passages may be shared with practice but student test prompts must differ.
  * No external API, keys or private student data.
  */
@@ -15,12 +15,16 @@
   check(bank.status===STATUS&&bank.published===false,
    'R32 content cannot be published without teacher approval');
   const permittedLevels={
+   A1:{prefix:'r34',audit:'R34-CONTENT-DRAFT-1',title:'I Can Try Again'},
+   A2:{prefix:'r34',audit:'R34-CONTENT-DRAFT-1',title:'A Small Change, a Better Result'},
    B1:{prefix:'r33',audit:'R33-CONTENT-AUDIT-1',title:'The Problem with Being Good at Everything'},
-   B2:{prefix:'r32',audit:'R32-CONTENT-AUDIT-1',title:'When Feedback Feels Like Failure'}
+   B2:{prefix:'r32',audit:'R32-CONTENT-AUDIT-1',title:'When Feedback Feels Like Failure'},
+   C1:{prefix:'r34',audit:'R34-CONTENT-DRAFT-1',title:'The Hidden Cost of Constant Improvement'},
+   C2:{prefix:'r34',audit:'R34-CONTENT-DRAFT-1',title:'When Resilience Becomes an Obligation'}
   };
   const rules=permittedLevels[bank.level];
   check(bank.topic==='rl-can-mistakes'&&bank.language==='en'&&!!rules,
-   'This draft validator supports only Can Mistakes EN/B1 and EN/B2');
+   'This draft validator supports only Can Mistakes EN/A1-C2');
   check(/^[a-f0-9]{64}$/.test(expectedSourceHash)&&
    bank.sourcePracticeContentHash===expectedSourceHash,'The practice source has changed');
   check(practice&&practice.title===rules.title&&Array.isArray(practice.paragraphs)&&
@@ -32,7 +36,7 @@
   const ids=new Set(bank.tabs.map(t=>t.id));
   check(ids.size===bank.tabs.length,'Duplicate test section');
   check(Array.isArray(bank.questions)&&bank.questions.length===10,
-   'Independent EN/B1 or EN/B2 pilot must have 10 manually reviewed tasks');
+   'Independent EN/A1-C2 pilot must have exactly 10 independently authored tasks');
   const stems=new Set(practice.questions.map(q=>norm(q.q)));
   const practiceIds=new Set(practice.questions.map(q=>q.id));
   const seen=new Set();
@@ -56,7 +60,9 @@
   check(answerPositions.every(n=>n>=2&&n<=3),
    'Correct answer locations are unbalanced across four positions');
   check(bank.auditRevision===rules.audit,
-   'Independent pedagogy audit not completed');
+   'Draft content version is not registered for this level');
+  check(Number.isInteger(bank.durationMinutesSuggested)&&bank.durationMinutesSuggested>=5&&
+   bank.durationMinutesSuggested<=120,'Invalid proposed test duration');
   check(bank.scoreRule.startsWith('1 point per correct MC item'),'Unknown scoring method');
   return true;
  }
