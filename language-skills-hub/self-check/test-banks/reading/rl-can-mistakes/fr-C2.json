@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "fr",
+  "level": "C2",
+  "sourceTitle": "Quand la résilience devient une obligation",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Independent C2 Reading critical analysis draft; expert approval pending.",
+  "tabs": [
+    {
+      "id": "nuances",
+      "title": "Une thèse nuancée"
+    },
+    {
+      "id": "analyse",
+      "title": "Analyse critique"
+    },
+    {
+      "id": "application",
+      "title": "Applications et jugement"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-fr-c2-01",
+      "tab": "nuances",
+      "kind": "mc",
+      "q": "Qu'est-ce qui distingue la position de l'auteur d'une célébration sans réserve de la résilience ?",
+      "choices": [
+        "La persévérance ne vaut que lorsqu'elle fait monter les notes.",
+        "Son intérêt dépend des circonstances et du sens de l'objectif poursuivi.",
+        "La résilience devrait remplacer tous les systèmes d'évaluation.",
+        "Les conditions de vie n'influencent pas les difficultés scolaires."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Le premier paragraphe valorise la résilience tout en refusant d'en faire une obligation morale universelle."
+    },
+    {
+      "id": "r35-fr-c2-02",
+      "tab": "nuances",
+      "kind": "mc",
+      "q": "Que risque de masquer l'injonction morale à « rebondir » ?",
+      "choices": [
+        "La possibilité de modifier une stratégie inefficace.",
+        "La nécessité de poser des questions après une critique.",
+        "La liberté de réexaminer ses objectifs personnels.",
+        "Les circonstances qui ont rendu un revers particulièrement douloureux."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "L'injonction à se relever peut dissimuler les causes réelles de l'échec plutôt que les résoudre."
+    },
+    {
+      "id": "r35-fr-c2-03",
+      "tab": "nuances",
+      "kind": "mc",
+      "q": "Pourquoi deux élèves apparemment aussi déterminés ne se trouvent-ils pas nécessairement dans la même situation ?",
+      "choices": [
+        "Ils reçoivent toujours exactement le même soutien.",
+        "Leurs notes indiquent leur motivation réelle.",
+        "Un même effort apparent peut cacher des possibilités de progrès très différentes.",
+        "La volonté personnelle supprime les inégalités de conditions."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Le deuxième paragraphe oppose l'autonomie réelle à l'endurance imposée par un manque de soutien."
+    },
+    {
+      "id": "r35-fr-c2-04",
+      "tab": "analyse",
+      "kind": "mc",
+      "q": "Quelle différence décisive sépare l'autonomie de la simple endurance ?",
+      "choices": [
+        "L'existence d'une chance réelle que de nouveaux efforts produisent un changement significatif.",
+        "Le nombre de répétitions d'un exercice difficile.",
+        "La capacité d'éviter tout commentaire des professeurs.",
+        "La rapidité avec laquelle un élève abandonne un travail."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "L'auteur considère la perspective d'un changement réel comme essentielle pour juger l'effort."
+    },
+    {
+      "id": "r35-fr-c2-05",
+      "tab": "analyse",
+      "kind": "mc",
+      "q": "Que suggère l'image d'indicateurs qui s'emparent des activités qu'ils devaient rendre visibles ?",
+      "choices": [
+        "Les mesures deviennent toujours fausses lorsqu'elles se multiplient.",
+        "Toute activité non mesurable est forcément simple.",
+        "La logique de mesure peut finir par dominer l'activité elle-même.",
+        "Les critères doivent être appliqués à chaque moment de la vie."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Dans le troisième paragraphe, les indicateurs risquent de remplacer le but qu'ils éclairaient."
+    },
+    {
+      "id": "r35-fr-c2-06",
+      "tab": "analyse",
+      "kind": "mc",
+      "q": "Pourquoi renoncer à un objectif mal choisi peut-il relever de la maturité ?",
+      "choices": [
+        "Parce que juger de l'utilité de persévérer fait partie de l'autonomie.",
+        "Parce que tout objectif difficile devrait être abandonné.",
+        "Parce que les objectifs personnels n'ont pas besoin de justification.",
+        "Parce qu'un changement de voie rend toute évaluation inutile."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Le troisième paragraphe inclut le discernement du moment où la persévérance garde un sens."
+    },
+    {
+      "id": "r35-fr-c2-07",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Une école félicite des élèves qui compensent sans cesse un manque d'aide. Que devrait-elle examiner ?",
+      "choices": [
+        "Comment multiplier les prix récompensant leur endurance.",
+        "Pourquoi les obstacles persistent et si les efforts peuvent réellement changer la situation.",
+        "Comment obliger tous les élèves à progresser au même rythme.",
+        "Pourquoi certains élèves n'acceptent aucune critique."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Le deuxième paragraphe invite à examiner le soutien manquant au lieu de célébrer seulement l'effort."
+    },
+    {
+      "id": "r35-fr-c2-08",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Un système récompense surtout la hausse rapide des notes. Que peut-il négliger ?",
+      "choices": [
+        "Les progrès rapides ne sont jamais de vrais apprentissages.",
+        "Les élèves qui explorent des idées difficiles n'ont jamais besoin d'évaluation.",
+        "Toutes les mesures scolaires sont nécessairement injustes.",
+        "Des formes d'apprentissage qui échappent aux courbes de progression."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Le troisième paragraphe critique l'idée selon laquelle le non-mesurable serait improductif."
+    },
+    {
+      "id": "r35-fr-c2-09",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Selon la conclusion, que doit offrir une culture éducative défendable ?",
+      "choices": [
+        "L'obligation de prouver sa valeur par des améliorations constantes.",
+        "Les moyens de continuer et la liberté de réexaminer la valeur de ses objectifs.",
+        "Un programme rigide remplaçant les décisions des élèves.",
+        "L'abandon complet de toute forme de jugement sur les résultats."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "La conclusion associe des ressources pour poursuivre et la liberté de réévaluer les objectifs."
+    },
+    {
+      "id": "r35-fr-c2-10",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Quelle mesure contredirait le plus directement le raisonnement de l'auteur ?",
+      "choices": [
+        "Permettre à un élève de réexaminer un objectif peu pertinent.",
+        "Tenir compte des contraintes structurelles dans les décisions scolaires.",
+        "Considérer le repos autrement que comme un échec de l'ambition.",
+        "Interpréter chaque pause comme un manque de volonté et imposer des gains continus."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Le dernier paragraphe refuse d'assimiler le repos à un échec personnel."
+    }
+  ]
+}
