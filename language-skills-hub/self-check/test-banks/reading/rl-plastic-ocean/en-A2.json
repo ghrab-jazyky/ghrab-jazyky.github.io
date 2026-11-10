@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "A2",
+  "sourceTitle": "A Festival with Fewer Cups",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-AUTHOR-DRAFT-1",
+  "description": "Original EN/A2 Plastic Ocean reading assessment draft. Human review pending.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Understanding the text",
+      "description": "Read for meaning and significant details."
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasons and consequences",
+      "description": "Explain why choices matter."
+    },
+    {
+      "id": "application",
+      "title": "Real-life decisions",
+      "description": "Apply a useful idea in a new setting."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-en-a2-01",
+      "tab": "interpretation",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "What is the main change the organisers make for the new festival?",
+      "choices": [
+        "They move the festival to a different town.",
+        "They cancel the concerts.",
+        "They offer reusable cups instead of relying on disposable ones.",
+        "They stop visitors from bringing drinks."
+      ],
+      "answer": 2,
+      "explanation": "The festival tries a reusable cup deposit system to reduce rubbish."
+    },
+    {
+      "id": "r36-en-a2-02",
+      "tab": "interpretation",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Why do volunteers add clearer signs and another return desk?",
+      "choices": [
+        "Some guests are worried they will have to wait in long lines.",
+        "The festival is expecting no visitors.",
+        "The water stations have been closed.",
+        "The organisers have run out of cups."
+      ],
+      "answer": 0,
+      "explanation": "The additional signs and return desk are a response to concerns about queues."
+    },
+    {
+      "id": "r36-en-a2-03",
+      "tab": "interpretation",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "Why do some children become interested in collecting used cups?",
+      "choices": [
+        "They need to take the cups to the water station.",
+        "They must help the cleaning team after school.",
+        "The cups have different colours they can exchange.",
+        "They can receive the deposits as pocket money."
+      ],
+      "answer": 3,
+      "explanation": "The children can keep the two-euro deposits when they return abandoned cups."
+    },
+    {
+      "id": "r36-en-a2-04",
+      "tab": "interpretation",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "What shows that the cup system is a partial success rather than a perfect solution?",
+      "choices": [
+        "Every food seller has already changed their packaging.",
+        "Fewer cups are left, but some disappear and other rubbish remains.",
+        "The team cannot find any returned cups at all.",
+        "The cleaners have to work later than last year."
+      ],
+      "answer": 1,
+      "explanation": "The fourth paragraph reports improvements while acknowledging missing cups and food wrappers."
+    },
+    {
+      "id": "r36-en-a2-05",
+      "tab": "reasoning",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Why is borrowing a cup different from buying a disposable one?",
+      "choices": [
+        "The festival pays every visitor two euros to drink.",
+        "The reusable cup belongs to the visitor forever.",
+        "The visitor can return it and receive the deposit back.",
+        "A reusable cup can never be damaged."
+      ],
+      "answer": 2,
+      "explanation": "Returning a borrowed cup makes its deposit refundable and encourages reuse."
+    },
+    {
+      "id": "r36-en-a2-06",
+      "tab": "reasoning",
+      "sourceParagraph": 5,
+      "kind": "mc",
+      "q": "Why does the smaller number of rubbish bags matter?",
+      "choices": [
+        "It means every visitor returned a cup.",
+        "It proves that visitors bought fewer tickets.",
+        "It shows the concert had fewer food stalls.",
+        "It provides evidence that the festival produced less collected waste."
+      ],
+      "answer": 3,
+      "explanation": "Counting rubbish bags offers a measurable comparison with the previous year."
+    },
+    {
+      "id": "r36-en-a2-07",
+      "tab": "reasoning",
+      "sourceParagraph": 6,
+      "kind": "mc",
+      "q": "Why do organisers plan to speak to food sellers next year?",
+      "choices": [
+        "They have noticed that wrappers and plates remain a significant problem.",
+        "They want to close every food stall.",
+        "They need to increase the price of music tickets.",
+        "They believe food should not be sold at concerts."
+      ],
+      "answer": 0,
+      "explanation": "After cup waste falls, packaging from food is still present in the collected rubbish."
+    },
+    {
+      "id": "r36-en-a2-08",
+      "tab": "application",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "A school event removes disposable cups but leaves food wrappers everywhere. What lesson fits the article?",
+      "choices": [
+        "Reusable cups make waste collection unnecessary.",
+        "One successful change does not solve every type of rubbish.",
+        "Visitors should not be allowed to drink water.",
+        "The organisers should stop counting rubbish."
+      ],
+      "answer": 2,
+      "explanation": "The festival's organisers recognise that cup reuse helps but does not eliminate other waste."
+    },
+    {
+      "id": "r36-en-a2-09",
+      "tab": "application",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "People avoid water stations because they cannot find them. What solution follows the festival's example?",
+      "choices": [
+        "Keep the stations hidden to avoid long lines.",
+        "Ask every visitor to buy a separate bottle.",
+        "Place clear signs where people need them.",
+        "Remove the stations and save money."
+      ],
+      "answer": 1,
+      "explanation": "Volunteers use signs to make facilities easy to find."
+    },
+    {
+      "id": "r36-en-a2-10",
+      "tab": "application",
+      "sourceParagraph": 6,
+      "kind": "mc",
+      "q": "Which next improvement is most consistent with the organisers' plan?",
+      "choices": [
+        "Work with food vendors to reduce packaging and add bins near food.",
+        "Tell cleaners not to collect wrappers anymore.",
+        "Remove all return desks from the event.",
+        "Change the music programme rather than waste management."
+      ],
+      "answer": 0,
+      "explanation": "The organisers specifically plan less food packaging and more bins near the food area."
+    }
+  ]
+}
