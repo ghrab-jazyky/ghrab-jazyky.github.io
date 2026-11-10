@@ -14,7 +14,7 @@
  const params=new URLSearchParams(location.search);
  const selection={topic:params.get('topic')||'ll-matthew-oscars',
   level:params.get('level')||'B2'};
- let chosen=null,submitted=false;
+ let chosen=null,submitted=false,timedUI=null;
  const answers={gist:[],detail:[],sequence:[],facts:[],open:[]};
  const phases=[
   {id:'first-listening',heading:'First Listening',
@@ -81,7 +81,7 @@
      if(submitted)return;
      if(q.type==='single')answers[part][i]=j;
      else answers[part][i]=[...item.querySelectorAll('input:checked')].map(x=>Number(x.value));
-     progress();
+     progress();timedUI?.save();
     });
     label.append(input,element('span',null,option));
     item.appendChild(label);
@@ -130,7 +130,7 @@
      }
     }
     answers.sequence[i]=value;
-    progress();
+    progress();timedUI?.save();
    });
    row.append(label,select);list.appendChild(row);
   }
@@ -149,7 +149,7 @@
    const input=element('textarea','written-response');
    input.id=id;input.rows=part==='facts'?2:4;input.maxLength=5000;
    input.setAttribute('aria-label',q.title);
-   input.addEventListener('input',()=>{if(!submitted){answers[part][i]=input.value;progress()}});
+   input.addEventListener('input',()=>{if(!submitted){answers[part][i]=input.value;progress();timedUI?.save()}});
    block.appendChild(input);
    list.appendChild(block);
   }
@@ -281,14 +281,15 @@
   $('results').focus({preventScroll:true});
   $('results').scrollIntoView({behavior:'smooth',block:'start'});
  }
- function submit(){
+ function submit(automatic=false,restored=false){
   if(submitted||!chosen)return;
   const pending=totalTasks()-completed();
   const question='Submit your answers now?'+(pending?' '+pending+' task(s) are still unanswered.':'');
-  if(!window.confirm(question))return;
+  if(!automatic&&!window.confirm(question))return;
   let report;
   try{report=core.assess(chosen,answers)}
-  catch(_){window.alert('Please review the reconstruction order. Use each statement at most once.');return}
+  catch(_){if(!automatic)window.alert('Please review the reconstruction order. Use each statement at most once.');return}
+  if(timedUI&&!restored)timedUI.finish();
   submitted=true;
   for(const el of $('taskList').querySelectorAll('input,textarea,select'))el.disabled=true;
   $('submitButton').disabled=true;
@@ -297,7 +298,7 @@
  }
  async function load(){
   themeInit();
-  $('submitButton').addEventListener('click',submit);
+  $('submitButton').addEventListener('click',()=>submit(false,false));
   try{
    const res=await fetch('../../data/cards.json',{credentials:'omit',redirect:'error'});
    if(!res.ok)throw new Error('Catalogue HTTP '+res.status);
@@ -307,8 +308,55 @@
    const resource=await fetch('../../'+entry.relative,{credentials:'omit',redirect:'error'});
    if(!resource.ok)throw new Error('Source HTTP '+resource.status);
    chosen=core.variant(core.extractJson(await resource.text(),'DATA'),selection.level);
+   if(new URLSearchParams(location.search).has('timer')&&!window.LSHSessionUI)
+    throw new Error('Timed test engine is unavailable.');
    render();
+   timedUI=window.LSHSessionUI?.mount({
+    skill:'listening',topic:selection.topic,lang:'en',level:selection.level,
+    workspace:$('workspace'),
+    getAnswers:()=>JSON.parse(JSON.stringify(answers)),
+    restoreAnswers:saved=>{
+     if(!saved||typeof saved!=='object')return;
+     for(const part of ['gist','detail']){
+      const arr=Array.isArray(saved[part])?saved[part]:[];
+      for(let i=0;i<chosen[part].length;i++){
+       const q=chosen[part][i],picked=arr[i];
+       const indices=q.type==='single'?(Number.isInteger(picked)?[picked]:[]):
+        (Array.isArray(picked)?picked:[]);
+       if(q.type==='single'){
+        if(indices.length===1&&indices[0]>=0&&indices[0]<q.options.length)
+         answers[part][i]=indices[0];
+       }else{
+        const clean=indices.filter(n=>Number.isInteger(n)&&n>=0&&n<q.options.length);
+        answers[part][i]=[...new Set(clean)];
+       }
+       for(const input of $('taskList').querySelectorAll('input')){
+        if(input.name===part+'-'+i&&indices.includes(Number(input.value)))input.checked=true;
+       }
+      }
+     }
+     const usedSequence=new Set();
+     for(let i=0;i<chosen.sequence.length;i++){
+      const value=saved.sequence?.[i];
+      if(!Number.isInteger(value)||value<0||value>=chosen.sequence.length||usedSequence.has(value))continue;
+      usedSequence.add(value);
+      answers.sequence[i]=value;
+      const sel=$('seq-'+i);if(sel)sel.value=String(value);
+     }
+     for(const part of ['facts','open'])for(let i=0;i<chosen[part].length;i++){
+      const value=saved[part]?.[i];
+      if(typeof value!=='string')continue;
+      answers[part][i]=value.slice(0,5000);
+      const field=$('write-'+part+'-'+i);if(field)field.value=answers[part][i];
+     }
+     progress();
+    },
+    onSubmit:({automatic,restored})=>submit(automatic,restored)
+   })||null;
+   if(timedUI)timedUI.initialize();
+   $('workspace').hidden=timedUI?timedUI.status().phase==='ready':false;
   }catch(error){
+   $('workspace').hidden=true;
    $('loading').classList.add('error');
    $('loading').textContent='Listening activity unavailable: '+String(error.message||error);
    $('title').textContent='Unable to load Listening Lab';

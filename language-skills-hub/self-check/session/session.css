@@ -1,0 +1,22 @@
+.lsh-session-intro{border:1px solid var(--line);border-radius:17px;background:var(--panel);padding:clamp(18px,3vw,30px);margin:15px 0;box-shadow:var(--shadow)}
+.lsh-session-intro h2{margin:0 0 8px;font-size:clamp(1.3rem,3vw,1.9rem)}
+.lsh-session-intro p{max-width:72ch;line-height:1.65}
+.lsh-session-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:10px 16px;margin:0 0 14px;font-variant-numeric:tabular-nums}
+.lsh-session-bar strong{font-size:1.13rem}
+.lsh-session-warning{color:var(--warn);font-size:.81rem}
+.lsh-session-overlay{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom);background:rgba(2,7,16,.96);color:#f4f8ff;overflow:auto}
+.lsh-session-overlay[hidden]{display:none}
+.lsh-session-lock-panel{width:min(550px,100%);background:#152338;border:1px solid #667a90;border-radius:18px;padding:25px 23px;margin:42px auto}
+.lsh-session-lock-panel h2{margin:0 0 8px}
+.lsh-session-lock-panel p{line-height:1.6}
+.lsh-session-hint{font-size:.87rem;color:#c7d1e6}
+.lsh-session-status{font-weight:700;color:#e1f1f6}
+.lsh-corner{position:fixed;width:54px;height:54px;z-index:10001;border:2px solid #d4e7fc;background:#1b3554;color:white;border-radius:12px;font-weight:900;font-size:1.4rem;cursor:pointer;touch-action:manipulation}
+.lsh-corner:focus-visible{outline:3px solid #fbd38d;outline-offset:2px}
+.lsh-corner-tl{left:max(9px,env(safe-area-inset-left));top:max(9px,env(safe-area-inset-top))}
+.lsh-corner-tr{right:max(9px,env(safe-area-inset-right));top:max(9px,env(safe-area-inset-top))}
+.lsh-corner-bl{left:max(9px,env(safe-area-inset-left));bottom:max(9px,env(safe-area-inset-bottom))}
+.lsh-corner-br{right:max(9px,env(safe-area-inset-right));bottom:max(9px,env(safe-area-inset-bottom))}
+@media(max-width:420px){.lsh-session-lock-panel{padding:16px;margin:70px auto}}
+
+#sessionErase{margin:12px 20px;min-height:44px}

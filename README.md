@@ -24,6 +24,12 @@ Pracovní jazyková stupnice z dokumentu `Pravidla hodnoceni_pracovní verze 202
 
 Výpočet porovnává **přesný poměr získaných/maximálních bodů bez zaokrouhlení**, např. 87,5 % znamená návrh známky 2. **Nebylo ověřeno, že tento pracovní návrh je platnou školní stupnicí** a že zvolený výpočet desetinných procent škola schválila. Proto aplikace výsledek označuje jako **návrh známky**, nikoli automaticky ověřený zápis do Bakalářů.
 
+### R30 – časované lokální testy a obnova odpovědí
+
+U Reading i Listening může učitel zvolit časový limit **5–120 minut** a vytvořit studentský odkaz či QR kód. Student musí kliknout na **Začít test**; čas běží od zahájení, při opuštění stránky se může aktivovat upozornění a místní přerušení, při vypršení času se test automaticky odevzdá. Přerušenou práci lze v daném prohlížeči obnovit servisním gestem čtyř rohů; toto gesto **není bezpečnostní autentizace**.
+
+Studentovy odpovědi se během pokusu ukládají **pouze lokálně**. Nové otevření třídního odkazu vytváří vlastní místní relaci, aby si žáci na sdíleném zařízení běžně nepřebírali cizí pokusy. Po odevzdání je možné místní odpovědi vymazat. Všechna tato opatření lze ze strany uživatele technicky obejít, nejsou proto zárukou zabezpečeného klasifikovaného testu. Doporučuje se osobní dohled a fyzická přejímka Android/iOS/iPadOS.
+
 ### Co bez backendu nelze zabezpečit
 
 GitHub Pages je veřejný statický web. **Klíče správných odpovědí jsou dostupné v procvičovacích kartách**, studenta nelze bezpečně autentizovat, nelze zabránit novému pokusu ani dokázat pravost lokálního výsledku. Učitelské posuzování písemných odpovědí na zařízení žáka **není technicky chráněno proti manipulaci**. Žádné studentské odpovědi ani známky se neposílají na server.

@@ -69,7 +69,10 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.match(changed,/lang=fr/);
    assert.match(changed,/level=C2/);
    assert.notEqual(student,changed);
+   assert.match(student,/timer=30/);
    await page.goto(student,{waitUntil:'domcontentloaded'});
+   await page.waitForSelector('#sessionIntro:not([hidden])',{timeout:30000});
+   await page.locator('#sessionStart').click();
    await page.waitForSelector('#workspace:not([hidden])',{timeout:30000});
    assert.equal(await page.locator('#readingVariant').textContent(),'ES · B1');
    assert.equal(await page.locator('#language').count(),0,'Student cannot switch the language in the UI');
@@ -106,7 +109,10 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#markPass').click();
    await page.locator('#markPass').click();
    assert.equal(await page.locator('#passCount').textContent(),'2 / 2');
+   assert.match(student,/timer=30/);
    await page.goto(student,{waitUntil:'domcontentloaded'});
+   await page.waitForSelector('#sessionIntro:not([hidden])',{timeout:30000});
+   await page.locator('#sessionStart').click();
    await page.waitForSelector('#workspace:not([hidden])');
    assert.deepEqual(await page.locator('#taskList .stage h3').allTextContents(),
     ['First Listening','Listen and Interpret','Listen, Write and Reconstruct']);
