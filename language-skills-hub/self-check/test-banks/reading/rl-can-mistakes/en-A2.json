@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-EN-A2-AUTHOR-DRAFT-1",
+  "description": "Original A2 test draft, independently authored with four options per question. Teacher approval pending.",
+  "tabs": [
+    {
+      "id": "habits",
+      "title": "Old and New Habits",
+      "description": "Compare the ways Daniel studies."
+    },
+    {
+      "id": "reasoning",
+      "title": "Making a Change",
+      "description": "Understand why his plan is useful."
+    },
+    {
+      "id": "transfer",
+      "title": "Try It Yourself",
+      "description": "Apply the ideas to a new situation."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-a2-01",
+      "tab": "habits",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why is Daniel's usual Wednesday evening not good for him?",
+      "choices": [
+        "He has to travel to another town.",
+        "He helps his sister with homework.",
+        "He studies too late and feels tired.",
+        "He forgets to bring his textbook."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph one describes late-night study and tiredness the following day."
+    },
+    {
+      "id": "r34-en-a2-02",
+      "tab": "habits",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "How is Daniel's plan on Monday different from his old plan?",
+      "choices": [
+        "He studies in a short session and rests.",
+        "He waits until Thursday to start.",
+        "He studies for three hours without a break.",
+        "He asks his sister to take the test."
+      ],
+      "answer": 0,
+      "explanation": "Monday contains a twenty-minute session followed by a break."
+    },
+    {
+      "id": "r34-en-a2-03",
+      "tab": "habits",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does Daniel do when he cannot explain an idea?",
+      "choices": [
+        "He decides it is not important.",
+        "He asks for a better mark.",
+        "He stops studying for the week.",
+        "He looks at his notes again."
+      ],
+      "answer": 3,
+      "explanation": "In paragraph two he checks the notes when his explanation is not clear."
+    },
+    {
+      "id": "r34-en-a2-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does Daniel answer some questions without looking at his notes?",
+      "choices": [
+        "To finish his homework in class.",
+        "To check what he knows by himself.",
+        "To show his sister the answers.",
+        "To avoid using the textbook again."
+      ],
+      "answer": 1,
+      "explanation": "Testing himself without notes helps him discover what he remembers."
+    },
+    {
+      "id": "r34-en-a2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What is Daniel pleased about, apart from his mark?",
+      "choices": [
+        "He misses part of the test.",
+        "He never makes mistakes now.",
+        "He has slept well and feels calmer.",
+        "He has changed his science teacher."
+      ],
+      "answer": 2,
+      "explanation": "The final paragraph says he is pleased to have slept well and enjoyed Wednesday."
+    },
+    {
+      "id": "r34-en-a2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why will Daniel make changes to the plan if needed?",
+      "choices": [
+        "A useful study plan can be improved.",
+        "A good study plan must be perfect.",
+        "History does not need any practice.",
+        "His old plan always worked well."
+      ],
+      "answer": 0,
+      "explanation": "The final sentence explains that he will adapt the plan to another subject."
+    },
+    {
+      "id": "r34-en-a2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Your friend cannot explain a maths idea. What could help?",
+      "choices": [
+        "Study for hours without stopping.",
+        "Turn on phone notifications.",
+        "Wait for the next test result.",
+        "Look at the notes and try an example."
+      ],
+      "answer": 3,
+      "explanation": "Daniel checks notes and uses a textbook example when an idea is difficult."
+    },
+    {
+      "id": "r34-en-a2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Someone says, 'Two mistakes mean the new plan failed.' What would Daniel say?",
+      "choices": [
+        "A plan works only if the mark is perfect.",
+        "Mistakes can show what to practise next.",
+        "Studying without sleep is always better.",
+        "There is no point in changing habits."
+      ],
+      "answer": 1,
+      "explanation": "Daniel makes two mistakes but feels calmer and identifies what to practise."
+    },
+    {
+      "id": "r34-en-a2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "How can a student check learning before a quiz?",
+      "choices": [
+        "Answer some questions without the notes.",
+        "Copy every answer from the textbook.",
+        "Study only the easiest questions.",
+        "Leave all the work until late at night."
+      ],
+      "answer": 0,
+      "explanation": "Daniel uses practice questions without looking at the answers."
+    },
+    {
+      "id": "r34-en-a2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What does Daniel really want from his new routine?",
+      "choices": [
+        "To stop learning science.",
+        "To spend three hours on every subject.",
+        "To prepare well without feeling so tired.",
+        "To have someone else check every answer."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph one says he wants a calmer day, not only a better mark."
+    }
+  ]
+}
