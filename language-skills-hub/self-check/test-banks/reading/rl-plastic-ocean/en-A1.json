@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "A1",
+  "sourceTitle": "A Bag by the Sea",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-AUTHOR-DRAFT-1",
+  "description": "Original EN/A1 Plastic Ocean reading assessment draft. Human review pending.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Understanding the text",
+      "description": "Read for meaning and significant details."
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasons and consequences",
+      "description": "Explain why choices matter."
+    },
+    {
+      "id": "application",
+      "title": "Real-life decisions",
+      "description": "Apply a useful idea in a new setting."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-en-a1-01",
+      "tab": "interpretation",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "What do the two cousins want to do at the beach first?",
+      "choices": [
+        "Buy new clothes.",
+        "Take some photos.",
+        "Visit a large museum.",
+        "Play with a toy car."
+      ],
+      "answer": 1,
+      "explanation": "The first paragraph says the cousins want to take photographs of the beach."
+    },
+    {
+      "id": "r36-en-a1-02",
+      "tab": "interpretation",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Why do they decide to pick up a bag that does not belong to them?",
+      "choices": [
+        "They want to give it to Eva.",
+        "They need a new bag for lunch.",
+        "They want to show it to their teacher.",
+        "It is close to the water and could become rubbish in the sea."
+      ],
+      "answer": 3,
+      "explanation": "The narrator notices that the unwanted bag is near the sea, so they collect it."
+    },
+    {
+      "id": "r36-en-a1-03",
+      "tab": "interpretation",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "Who explains that wind carries rubbish into the water?",
+      "choices": [
+        "The narrator's brother.",
+        "The children's teacher.",
+        "Rosa from the café.",
+        "A man walking along the beach."
+      ],
+      "answer": 2,
+      "explanation": "Rosa tells the cousins that wind moves rubbish left on the beach into the sea."
+    },
+    {
+      "id": "r36-en-a1-04",
+      "tab": "interpretation",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "How do the cousins feel after collecting rubbish for an hour?",
+      "choices": [
+        "They are tired but pleased with what they have done.",
+        "They are angry because they cannot buy drinks.",
+        "They are disappointed because they find nothing.",
+        "They are worried because they lose their bags."
+      ],
+      "answer": 0,
+      "explanation": "The fourth paragraph says that the children are hot and tired but happy."
+    },
+    {
+      "id": "r36-en-a1-05",
+      "tab": "reasoning",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "Why does Rosa give the children gloves?",
+      "choices": [
+        "To help them take better pictures.",
+        "To help them pick up rubbish more safely.",
+        "To keep them warm in the café.",
+        "To help them swim in the sea."
+      ],
+      "answer": 1,
+      "explanation": "Rosa offers gloves and large bags after seeing that they want to collect litter."
+    },
+    {
+      "id": "r36-en-a1-06",
+      "tab": "reasoning",
+      "sourceParagraph": 5,
+      "kind": "mc",
+      "q": "What is important about the cup Eva buys later?",
+      "choices": [
+        "It is made of glass instead of plastic.",
+        "It is a present for Rosa.",
+        "Eva keeps it until she can put it in the bin.",
+        "Eva throws it into the sea when she is finished."
+      ],
+      "answer": 2,
+      "explanation": "Eva does not avoid every plastic item but disposes of her cup properly."
+    },
+    {
+      "id": "r36-en-a1-07",
+      "tab": "reasoning",
+      "sourceParagraph": 6,
+      "kind": "mc",
+      "q": "Why could Eva's photos be useful in the café?",
+      "choices": [
+        "They show that the sea has no rubbish.",
+        "They help Rosa sell more drinks.",
+        "They prove that the cousins never use plastic.",
+        "They may encourage other people to care for the beach."
+      ],
+      "answer": 3,
+      "explanation": "The final paragraph imagines other visitors seeing the photographs on the wall."
+    },
+    {
+      "id": "r36-en-a1-08",
+      "tab": "application",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "You see a plastic bottle left on a windy beach. What would the cousins probably do?",
+      "choices": [
+        "Leave it there because it is not theirs.",
+        "Put it in a suitable bin if it is safe to pick up.",
+        "Hide it under the sand so nobody sees it.",
+        "Wait until the wind moves it into the sea."
+      ],
+      "answer": 1,
+      "explanation": "The cousins choose to collect litter even when it does not belong to them."
+    },
+    {
+      "id": "r36-en-a1-09",
+      "tab": "application",
+      "sourceParagraph": 5,
+      "kind": "mc",
+      "q": "You buy a drink in a plastic cup. Which action best follows Eva's example?",
+      "choices": [
+        "Keep the cup until you find a bin.",
+        "Drop the cup beside the café.",
+        "Throw it into the sea after drinking.",
+        "Leave it on the table for the wind."
+      ],
+      "answer": 0,
+      "explanation": "Eva's useful action is keeping the cup for proper disposal rather than littering."
+    },
+    {
+      "id": "r36-en-a1-10",
+      "tab": "application",
+      "sourceParagraph": 6,
+      "kind": "mc",
+      "q": "What could the photos on Rosa's wall tell visitors?",
+      "choices": [
+        "The beach is always perfectly clean.",
+        "The two cousins work at the café every day.",
+        "Only children can help keep a beach clean.",
+        "Small actions can help, even if the beach is not perfect."
+      ],
+      "answer": 3,
+      "explanation": "The story ends with the possibility that their modest clean-up will inspire other visitors."
+    }
+  ]
+}
