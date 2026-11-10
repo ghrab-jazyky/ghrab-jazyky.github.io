@@ -78,3 +78,43 @@ test('R35 inventory represents precisely fourteen unapproved banks and no publis
   assert.doesNotMatch(read(page),/universal-preview|generic-bank-core|rl-asteroids\/en-B2\.json/);
  }
 });
+
+
+test('R35 all four other Reading topics have independently authored EN/B1 and EN/B2 drafts',()=>{
+ const topics=['rl-asteroids','rl-plastic-ocean','rl-email-friend','rl-instant-messages'];
+ const seenIds=new Set();
+ for(const topic of topics){
+  const sourceEntry=reading.readingEntry(catalog,topic);
+  const html=read(sourceEntry.relative);
+  const sha=crypto.createHash('sha256').update(fs.readFileSync(path.join(root,sourceEntry.relative))).digest('hex');
+  assert.equal(sha,manifest.contentHashes[topic]);
+  const data=reading.parseReadingData(html);
+  for(const level of ['B1','B2']){
+   const current=JSON.parse(read('self-check/test-banks/reading/'+topic+'/en-'+level+'.json'));
+   const original=reading.variantFromData(data,'en',level);
+   const selection={language:'en',level};
+   assert.equal(current.published,false);
+   assert.equal(current.sourceVariantTitle,original.title);
+   assert.equal(generic.validate(current,original,sourceEntry,sha,selection),true);
+   const v=generic.variant(current,original,sourceEntry,sha,selection);
+   reading.validateVariant(v);
+   assert.equal(v.questions.length,10);
+   assert.deepEqual(v.paragraphs,original.paragraphs);
+   const originalIds=new Set(original.questions.map(x=>x.id));
+   const stems=new Set(original.questions.map(x=>x.q.toLowerCase().replace(/\s+/g,' ').trim()));
+   const correct={};
+   for(const q of v.questions){
+    assert.ok(!seenIds.has(q.id),'Cross-topic assessment question IDs must be unique');
+    seenIds.add(q.id);
+    assert.ok(!originalIds.has(q.id));
+    assert.ok(!stems.has(q.q.toLowerCase().replace(/\s+/g,' ').trim()));
+    correct[q.id]=q.answer;
+   }
+   const assessment=reading.score(v,correct);
+   assert.equal(assessment.points,10);
+   assert.equal(assessment.unanswered,0);
+   assert.equal(grade.proposal(assessment.points,assessment.maxPoints).grade,1);
+  }
+ }
+ assert.equal(seenIds.size,80);
+});
