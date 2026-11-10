@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "C2",
+  "sourceVariantTitle": "When a Probability Becomes a Headline",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "auditRevision": "R36-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "New English C2 asteroid Reading draft, ten source-grounded items, pending independent linguistic and pedagogical verification.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Rhetorical Precision",
+      "description": "Original independent assessment tasks; teacher content validation pending."
+    },
+    {
+      "id": "analysis",
+      "title": "Inference and Limits",
+      "description": "Original independent assessment tasks; teacher content validation pending."
+    },
+    {
+      "id": "application",
+      "title": "Critical Decisions",
+      "description": "Original independent assessment tasks; teacher content validation pending."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-asteroids-en-c2-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does the writer object to treating planetary defence as a conflict with a 'hostile universe'?",
+      "choices": [
+        "It suggests that asteroids are more dangerous than comets.",
+        "It encourages scientists to use mathematics instead of telescope observations.",
+        "The metaphor disguises physical uncertainty and the slower reasoning required for action.",
+        "It accurately describes the political motives of natural objects."
+      ],
+      "answer": 2,
+      "explanation": "The answer is supported by paragraph 1 of the original C2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c2-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What is the consequence of collapsing proximity, potential hazard and probability into a single category?",
+      "choices": [
+        "It proves that current astronomical terminology is mathematically invalid.",
+        "It prevents the public from distinguishing investigation from justified intervention.",
+        "It removes the political need to decide how resources are used.",
+        "It automatically makes every measured object physically more dangerous."
+      ],
+      "answer": 1,
+      "explanation": "The answer is supported by paragraph 1 of the original C2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c2-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does the author mean by saying that precise statistics can conceal selection effects?",
+      "choices": [
+        "The objects found by infrared instruments must all be brighter than others.",
+        "The existence of a catalogue makes future observations unnecessary.",
+        "A precise orbital calculation always includes every asteroid not yet detected.",
+        "Apparently exact numbers may omit objects the instruments are poorly placed to discover."
+      ],
+      "answer": 3,
+      "explanation": "The answer is supported by paragraph 2 of the original C2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c2-04",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why is a revised estimate sometimes a sign of responsible reasoning rather than indecision?",
+      "choices": [
+        "New measurements can constrain several previously plausible orbital solutions.",
+        "The laws governing an asteroid's movement change after each observation.",
+        "Institutional credibility depends on keeping the first prediction unchanged.",
+        "All revisions show that the original observations were fabricated."
+      ],
+      "answer": 0,
+      "explanation": "The answer is supported by paragraph 2 of the original C2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c2-05",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What is the strongest conclusion supported by the changing Apophis predictions?",
+      "choices": [
+        "Its close 2029 passage must therefore be treated as an inevitable collision.",
+        "The preliminary 2004 estimate was the only scientifically valid calculation.",
+        "Apparent danger can be reassessed as observations accumulate, creating new scientific opportunities.",
+        "Any object visible without a telescope must be harmless."
+      ],
+      "answer": 2,
+      "explanation": "The answer is supported by paragraph 3 of the original C2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c2-06",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What is the main limit of interpreting DART as proof of an 'all-purpose shield'?",
+      "choices": [
+        "The response of a real target depends on timing, composition and its future trajectory.",
+        "Dimorphos was never actually struck by the spacecraft.",
+        "All asteroid bodies have the same physical structure.",
+        "Kinetic deflection cannot alter any orbital motion."
+      ],
+      "answer": 0,
+      "explanation": "The answer is supported by paragraph 4 of the original C2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c2-07",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does the writer suggest that engineering success without detection lacks practical context?",
+      "choices": [
+        "Detection systems require fewer resources than any spacecraft.",
+        "A technical capability cannot help if a possible hazard is not identified in time.",
+        "Scientists should stop experimenting until a collision is certain.",
+        "Observations are useful only for measuring the success of a completed strike."
+      ],
+      "answer": 1,
+      "explanation": "The answer is supported by paragraph 4 of the original C2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c2-08",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "A policymaker demands perfect predictions before funding surveys. What would the article say?",
+      "choices": [
+        "Perfect accuracy can be obtained by postponing all decisions.",
+        "Rare threats should always be funded above every immediate need.",
+        "The best way to maintain trust is to promise that no risk exists.",
+        "Waiting for certainty ignores the value of detecting weak signals while action remains possible."
+      ],
+      "answer": 3,
+      "explanation": "The answer is supported by paragraph 5 of the original C2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c2-09",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why are visible successes an inadequate sole measure of planetary-defence policy?",
+      "choices": [
+        "Successful action always produces an impressive public image.",
+        "Much of the benefit consists in quiet preparation and systems that can be corrected.",
+        "Public funding should be linked only to dramatic spacecraft footage.",
+        "The science is too uncertain to allow any assessment of its quality."
+      ],
+      "answer": 1,
+      "explanation": "The answer is supported by paragraph 5 of the original C2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c2-10",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Which institutional behaviour best reflects the author's conclusion?",
+      "choices": [
+        "Publish one final forecast and discourage questions about its assumptions.",
+        "Replace scientific uncertainty with repeated promises of absolute safety.",
+        "Treat any correction of an earlier estimate as an admission that preparation was pointless.",
+        "Make assumptions inspectable, revise decisions as evidence changes and communicate proportionately."
+      ],
+      "answer": 3,
+      "explanation": "The answer is supported by paragraph 5 of the original C2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    }
+  ]
+}
