@@ -1,4 +1,4 @@
-/* R32/R33 independent Reading test-bank draft validator. NEVER auto-publish.
+/* R32-R35 independent Reading test-bank draft validator. NEVER auto-publish.
  * Passages may be shared with practice but student test prompts must differ.
  * No external API, keys or private student data.
  */
@@ -9,7 +9,7 @@
  const text=s=>typeof s==='string'&&s.trim().length>0;
  const norm=s=>s.normalize('NFKC').toLowerCase().replace(/\s+/g,' ').trim();
  function check(ok,msg){if(!ok)throw new Error(msg)}
- function validate(bank,practice,expectedSourceHash){
+ function validate(bank,practice,expectedSourceHash,selection){
   check(bank&&typeof bank==='object'&&!Array.isArray(bank)&&bank.kind===KIND,
    'Invalid pilot test-bank format');
   check(bank.status===STATUS&&bank.published===false,
@@ -22,13 +22,28 @@
    C1:{prefix:'r34',audit:'R34-AUTHOR-DRAFT-1',title:'The Hidden Cost of Constant Improvement',paragraphs:4,minutes:25},
    C2:{prefix:'r34',audit:'R34-AUTHOR-DRAFT-1',title:'When Resilience Becomes an Obligation',paragraphs:4,minutes:25}
   };
-  const rules=permittedLevels[bank.level];
-  check(bank.topic==='rl-can-mistakes'&&bank.language==='en'&&!!rules,
-   'This draft validator supports only Can Mistakes EN A1-C2');
+  const legacy=bank.topic==='rl-can-mistakes'&&bank.language==='en';
+  const rules=legacy?permittedLevels[bank.level]:(
+   typeof bank.sourceTitle==='string'&&bank.sourceTitle.trim().length>=5&&
+   Number.isInteger(bank.durationMinutesSuggested)&&
+   bank.durationMinutesSuggested>=5&&bank.durationMinutesSuggested<=120&&
+   /^R[0-9]{2}-AUTHOR-DRAFT-[0-9]+$/.test(bank.auditRevision||'')?
+   {prefix:'r'+bank.auditRevision.slice(1,3),audit:bank.auditRevision,
+    title:bank.sourceTitle,paragraphs:null,minutes:bank.durationMinutesSuggested}:null
+  );
+  check(!!rules,'This draft validator supports only valid authored Reading test banks');
+  const wanted=selection||{topic:bank.topic,language:bank.language,level:bank.level};
+  check(wanted&&bank.topic===wanted.topic&&bank.language===wanted.language&&
+   bank.level===wanted.level,'Bank metadata does not match selected Reading variant');
+  check(/^rl-[a-z0-9-]+$/.test(bank.topic)&&
+   ['en','es','de','fr'].includes(bank.language)&&
+   ['A1','A2','B1','B2','C1','C2'].includes(bank.level),
+   'Invalid Reading variant identity');
   check(/^[a-f0-9]{64}$/.test(expectedSourceHash)&&
    bank.sourcePracticeContentHash===expectedSourceHash,'The practice source has changed');
   check(practice&&practice.title===rules.title&&Array.isArray(practice.paragraphs)&&
-   practice.paragraphs.length===rules.paragraphs&&Array.isArray(practice.questions),
+   (rules.paragraphs===null||practice.paragraphs.length===rules.paragraphs)&&
+   Array.isArray(practice.questions),
    'Practice source does not match this bank level and passage');
   check(Array.isArray(bank.tabs)&&bank.tabs.length===3&&
    bank.tabs.every(t=>text(t.id)&&text(t.title)&&/^[a-z][a-z0-9-]+$/.test(t.id)),
@@ -42,7 +57,7 @@
   const seen=new Set();
   const answerPositions=[0,0,0,0];
   for(const q of bank.questions){
-   check(q&&text(q.id)&&new RegExp('^'+rules.prefix+'-en-'+bank.level.toLowerCase()+'-[a-z0-9-]+$').test(q.id)&&
+   check(q&&text(q.id)&&new RegExp('^'+rules.prefix+'-'+bank.language+'-'+bank.level.toLowerCase()+'-[a-z0-9-]+$').test(q.id)&&
     !seen.has(q.id)&&!practiceIds.has(q.id),'Duplicate or reused question ID');
    seen.add(q.id);
    check(Number.isInteger(q.sourceParagraph)&&q.sourceParagraph>=1&&
@@ -63,11 +78,12 @@
    'Unexpected CEFR-specific test duration');
   check(bank.auditRevision===rules.audit,
    'Independent pedagogy audit not completed');
-  check(bank.scoreRule.startsWith('1 point per correct MC item'),'Unknown scoring method');
+  check(bank.scoreRule==='1 point per correct MC item; 10 points maximum; local provisional grade only',
+   'Unknown scoring method');
   return true;
  }
- function makeQaVariant(bank,practice,expectedSourceHash){
-  validate(bank,practice,expectedSourceHash);
+ function makeQaVariant(bank,practice,expectedSourceHash,selection){
+  validate(bank,practice,expectedSourceHash,selection);
   return {
    title:practice.title+' — independent '+bank.level+' test draft',
    paragraphs:practice.paragraphs.slice(),
