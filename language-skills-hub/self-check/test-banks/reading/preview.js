@@ -149,11 +149,11 @@
     'Original source checksum mismatch: draft preview disabled');
    const practice=reading.variantFromData(reading.parseReadingData(originalHtml),lang,level);
    const selection={topic,lang,level};
-   schema.validate(bank,selection,practice,actual);
-   // Preserve stricter R32-R34 pilot invariants on the initial EN reference.
-   if(topic==='rl-can-mistakes'&&lang==='en')
+   // Preserve historical R32-R34 fail-closed contracts and their errors.
+   if(topic==='rl-can-mistakes'&&lang==='en'){
     variant=testBank.makeQaVariant(bank,practice,actual);
-   else
+    schema.validate(bank,selection,practice,actual);
+   }else
     variant=schema.qaVariant(bank,selection,practice,actual);
    reading.validateVariant(variant);
    $('title').textContent=practice.title;
