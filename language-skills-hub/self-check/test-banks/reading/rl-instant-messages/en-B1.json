@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "en",
+  "level": "B1",
+  "sourceVariantTitle": "My Week Without Instant Messages",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "auditRevision": "R35-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "Original ten-question B1 English Reading assessment draft; teacher content audit is still required.",
+  "tabs": [
+    {
+      "id": "understanding",
+      "title": "Understanding",
+      "description": "Understand the central ideas and the people."
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasons and Evidence",
+      "description": "Explain why important events matter."
+    },
+    {
+      "id": "transfer",
+      "title": "Using What You Read",
+      "description": "Apply the idea in a new situation."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-instant-messages-en-b1-01",
+      "tab": "understanding",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What did the writer want to demonstrate when he accepted the challenge?",
+      "choices": [
+        "That phone calls were forbidden at school.",
+        "That everyone in his class spent too little time online.",
+        "That living without chat apps would not be difficult for him.",
+        "That email was always more popular than messages."
+      ],
+      "answer": 2,
+      "explanation": "The diary contrasts the speed of calls with the coordination benefits of group messages and ends by choosing more mindful communication."
+    },
+    {
+      "id": "r35-instant-messages-en-b1-02",
+      "tab": "understanding",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What did checking an empty phone many times reveal to the writer?",
+      "choices": [
+        "His phone was not working properly that morning.",
+        "He was used to looking for new messages even when there were none.",
+        "The teacher had secretly turned off the school internet.",
+        "His classmates had stopped sending messages to one another."
+      ],
+      "answer": 1,
+      "explanation": "The diary contrasts the speed of calls with the coordination benefits of group messages and ends by choosing more mindful communication."
+    },
+    {
+      "id": "r35-instant-messages-en-b1-03",
+      "tab": "understanding",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why did Karim initially react with concern to the call?",
+      "choices": [
+        "The writer had forgotten to invite Karim to football.",
+        "The coach asked Karim to change the training time.",
+        "Karim was waiting for a message from his grandparents.",
+        "He was not used to his friend phoning him unexpectedly."
+      ],
+      "answer": 3,
+      "explanation": "The diary contrasts the speed of calls with the coordination benefits of group messages and ends by choosing more mindful communication."
+    },
+    {
+      "id": "r35-instant-messages-en-b1-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why could a quick phone call be more efficient than the group chat?",
+      "choices": [
+        "It answered a specific question without a long discussion.",
+        "It was the only way to use the internet on the bus.",
+        "It allowed the writer to change all his friends' plans.",
+        "It stopped anyone else from attending football training."
+      ],
+      "answer": 0,
+      "explanation": "The diary contrasts the speed of calls with the coordination benefits of group messages and ends by choosing more mindful communication."
+    },
+    {
+      "id": "r35-instant-messages-en-b1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What did the missed history meeting show about the challenge?",
+      "choices": [
+        "His friends did not want him to work on the presentation.",
+        "The library had been permanently closed that morning.",
+        "Not using group messages could leave him without important updates.",
+        "He had forgotten the correct date of the school project."
+      ],
+      "answer": 2,
+      "explanation": "The diary contrasts the speed of calls with the coordination benefits of group messages and ends by choosing more mindful communication."
+    },
+    {
+      "id": "r35-instant-messages-en-b1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why did the writer feel 'like a tourist in my own class'?",
+      "choices": [
+        "He missed a shared experience that everyone else could discuss.",
+        "He had started studying at a different school.",
+        "The history presentation was about tourism.",
+        "His classmates were speaking a language he could not understand."
+      ],
+      "answer": 0,
+      "explanation": "The diary contrasts the speed of calls with the coordination benefits of group messages and ends by choosing more mindful communication."
+    },
+    {
+      "id": "r35-instant-messages-en-b1-07",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What does the writer's new use of notifications suggest?",
+      "choices": [
+        "He has decided never to use a phone again.",
+        "He now chooses which messages need his attention.",
+        "He reads every group message as soon as it arrives.",
+        "He uses only email for all communication."
+      ],
+      "answer": 1,
+      "explanation": "The diary contrasts the speed of calls with the coordination benefits of group messages and ends by choosing more mindful communication."
+    },
+    {
+      "id": "r35-instant-messages-en-b1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "You need a quick answer about tomorrow's training. What option follows the writer's experience?",
+      "choices": [
+        "Wait for a long chat even if it gives no clear answer.",
+        "Avoid finding out because the question is not important.",
+        "Send the same question to everyone twenty times.",
+        "A brief call can be useful when messages are slow or confusing."
+      ],
+      "answer": 3,
+      "explanation": "The diary contrasts the speed of calls with the coordination benefits of group messages and ends by choosing more mindful communication."
+    },
+    {
+      "id": "r35-instant-messages-en-b1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A class project changes its meeting location. What would help a pupil who cannot access the group chat?",
+      "choices": [
+        "Assume that every meeting will always be held in the same room.",
+        "Agree on another reliable way to receive important changes.",
+        "Stop going to all meetings until the week is over.",
+        "Ask the teacher to cancel the project."
+      ],
+      "answer": 1,
+      "explanation": "The diary contrasts the speed of calls with the coordination benefits of group messages and ends by choosing more mindful communication."
+    },
+    {
+      "id": "r35-instant-messages-en-b1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Which conclusion best matches the writer's final attitude to messaging?",
+      "choices": [
+        "All chat apps should be banned because they always waste time.",
+        "Communication was easier in every situation without them.",
+        "A week away from messaging proved that phones cannot help friendships.",
+        "The apps can be useful, but he can make more deliberate choices about using them."
+      ],
+      "answer": 3,
+      "explanation": "The diary contrasts the speed of calls with the coordination benefits of group messages and ends by choosing more mindful communication."
+    }
+  ]
+}
