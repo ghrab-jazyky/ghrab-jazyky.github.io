@@ -1,0 +1,26 @@
+name: LSH R32 independent Reading B2 reference – draft QA
+on:
+  push:
+    branches: [feat/lsh-r32-reading-independent-test-pilot-2026-11-10]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  independent-reading-draft:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Syntax check
+        run: |
+          node --check language-skills-hub/self-check/test-banks/reading/test-bank-core.js
+          node --check language-skills-hub/tests/r32-independent-reading-pilot.test.cjs
+      - name: R32 content and scoring integrity
+        run: node --test language-skills-hub/tests/r32-independent-reading-pilot.test.cjs
+      - name: R31 production functionality remains unmodified
+        run: node --test language-skills-hub/tests/r22-static-policy.test.cjs language-skills-hub/tests/r23-reading-selfcheck.test.cjs language-skills-hub/tests/r24-listening-selfcheck.test.cjs language-skills-hub/tests/r25-result-contract.test.cjs language-skills-hub/tests/r27-public-release.test.cjs language-skills-hub/tests/r28-grade-proposal.test.cjs language-skills-hub/tests/r29-feedback.test.cjs language-skills-hub/tests/r30-attempt.test.cjs language-skills-hub/tests/r31-review-export.test.cjs
