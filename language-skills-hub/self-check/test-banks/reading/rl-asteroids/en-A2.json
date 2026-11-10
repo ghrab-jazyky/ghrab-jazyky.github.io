@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "A2",
+  "sourceVariantTitle": "A Night at the Space Club",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "auditRevision": "R36-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "New English A2 asteroid Reading draft, ten source-grounded items, pending independent linguistic and pedagogical verification.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "At the Space Club",
+      "description": "Original independent assessment tasks; teacher content validation pending."
+    },
+    {
+      "id": "analysis",
+      "title": "Evidence and Discovery",
+      "description": "Original independent assessment tasks; teacher content validation pending."
+    },
+    {
+      "id": "application",
+      "title": "Using the Ideas",
+      "description": "Original independent assessment tasks; teacher content validation pending."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-asteroids-en-a2-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why is the asteroid belt not like a crowded road?",
+      "choices": [
+        "Every asteroid moves in exactly the same direction.",
+        "The rocks travel only at night.",
+        "There is a great deal of space between most of its rocks.",
+        "Cars and buses cannot drive in space."
+      ],
+      "answer": 2,
+      "explanation": "The answer is supported by paragraph 1 of the original A2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a2-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What can scientists learn by observing the same object many times?",
+      "choices": [
+        "They can make it move faster through space.",
+        "They can make a better estimate of its future path.",
+        "They can change its colour with a telescope.",
+        "They can choose a new name for the Sun."
+      ],
+      "answer": 1,
+      "explanation": "The answer is supported by paragraph 2 of the original A2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a2-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why did the students look at the Moon rather than at an asteroid?",
+      "choices": [
+        "Asteroids cannot be seen with any telescope.",
+        "The teacher forgot all the photographs of asteroids.",
+        "The club did not have permission to look at planets.",
+        "The Moon was easier to see through their telescope."
+      ],
+      "answer": 3,
+      "explanation": "The answer is supported by paragraph 3 of the original A2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a2-04",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What do the old craters on the Moon show?",
+      "choices": [
+        "Space rocks hit it long ago, and the marks stayed.",
+        "The Moon has strong winds that make new holes.",
+        "Rain often washes the Moon's surface clean.",
+        "The craters were built by people who visited it."
+      ],
+      "answer": 0,
+      "explanation": "The answer is supported by paragraph 3 of the original A2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a2-05",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why is 'near Earth' not the same as 'about to hit Earth'?",
+      "choices": [
+        "Every object near Earth is already on the ground.",
+        "Scientists cannot calculate anything about moving rocks.",
+        "An object can pass nearby without travelling into our planet.",
+        "A nearby asteroid always becomes a small moon."
+      ],
+      "answer": 2,
+      "explanation": "The answer is supported by paragraph 2 of the original A2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a2-06",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What did the DART experiment demonstrate?",
+      "choices": [
+        "A spacecraft could change a small object's movement.",
+        "The spacecraft made the asteroid disappear.",
+        "It showed that the Moon has no craters.",
+        "A telescope can push a rock away without touching it."
+      ],
+      "answer": 0,
+      "explanation": "The answer is supported by paragraph 4 of the original A2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a2-07",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why did Nina feel excited after learning about DART?",
+      "choices": [
+        "It showed that school clubs never need to study the sky.",
+        "It showed a possible way people could prepare for a future danger.",
+        "It proved that every asteroid will hit Earth.",
+        "It let Nina travel to the asteroid herself."
+      ],
+      "answer": 1,
+      "explanation": "The answer is supported by paragraph 4 of the original A2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a2-08",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "A newly found asteroid is seen in only one photo. What should a team do next?",
+      "choices": [
+        "Announce that it will certainly hit Earth.",
+        "Ignore its movement because it is still far away.",
+        "Ask students to choose its orbit by voting.",
+        "Take more observations before deciding where it will travel."
+      ],
+      "answer": 3,
+      "explanation": "The answer is supported by paragraph 2 of the original A2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a2-09",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "A friend asks why craters are easier to see on the Moon than on Earth. What is the clearest reply?",
+      "choices": [
+        "Earth has never been hit by space rocks.",
+        "The Moon has no wind or rain to hide them in the same way.",
+        "The Moon has a much faster weather system.",
+        "Earth's telescope images are always less clear."
+      ],
+      "answer": 1,
+      "explanation": "The answer is supported by paragraph 3 of the original A2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a2-10",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Which statement best reflects the end of Nina's visit?",
+      "choices": [
+        "Scientists can now stop all possible impacts immediately.",
+        "All space rocks can be seen from every school telescope.",
+        "Learning about the Moon is unrelated to asteroid research.",
+        "Watching and understanding space is the first step towards protecting Earth."
+      ],
+      "answer": 3,
+      "explanation": "The answer is supported by paragraph 4 of the original A2 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    }
+  ]
+}
