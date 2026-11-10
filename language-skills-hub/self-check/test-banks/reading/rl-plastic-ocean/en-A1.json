@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "A1",
+  "sourceVariantTitle": "A Bag by the Sea",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "auditRevision": "R36-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "Original English independent Plastic Ocean Reading draft, teacher approval pending.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Understanding",
+      "description": "Read the main ideas."
+    },
+    {
+      "id": "reasons",
+      "title": "Reasons",
+      "description": "Explain events and consequences."
+    },
+    {
+      "id": "application",
+      "title": "New Situations",
+      "description": "Apply what you read."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-plastic-ocean-en-a1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why do the cousins pick up the blue bag even though it is not theirs?",
+      "choices": [
+        "They want to use it for sandwiches.",
+        "Rosa asks them to take it home.",
+        "They want to keep rubbish away from the sea.",
+        "The bag belongs to Eva's family."
+      ],
+      "answer": 2,
+      "explanation": "The story's paragraph 1 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "How does Rosa help the cousins clean the beach?",
+      "choices": [
+        "She drives them to a different beach.",
+        "She gives them paper bags and gloves.",
+        "She brings them six new bottles.",
+        "She asks them to stop taking photographs."
+      ],
+      "answer": 1,
+      "explanation": "The story's paragraph 3 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What can happen to cups and bottles left on the beach in the evening?",
+      "choices": [
+        "They always disappear by themselves.",
+        "They become small toys for children.",
+        "They turn into sand before morning.",
+        "The wind may carry them into the water."
+      ],
+      "answer": 3,
+      "explanation": "The story's paragraph 3 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a1-04",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What does Eva do while they find rubbish along the beach?",
+      "choices": [
+        "She takes pictures of what they find.",
+        "She collects money from people.",
+        "She leaves all the bags beside the café.",
+        "She calls the police about the weather."
+      ],
+      "answer": 0,
+      "explanation": "The story's paragraph 4 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a1-05",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why are the cousins happy after the long walk?",
+      "choices": [
+        "They have found a new toy shop.",
+        "They no longer need to go to school.",
+        "They have helped make part of the beach cleaner.",
+        "They have finished their teacher's homework."
+      ],
+      "answer": 2,
+      "explanation": "The story's paragraph 4 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a1-06",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What does Eva do with the plastic cup after her drink?",
+      "choices": [
+        "She keeps it until she can put it in a bin.",
+        "She leaves it on the sand for Rosa.",
+        "She throws it into the water.",
+        "She puts it in her cousin's sandwich bag."
+      ],
+      "answer": 0,
+      "explanation": "The story's paragraph 5 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a1-07",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What can we learn from the fact that the beach is not perfect?",
+      "choices": [
+        "The cousins should never return.",
+        "Cleaning one place is still useful even if rubbish remains elsewhere.",
+        "Only the café worker can help the beach.",
+        "People cannot do anything about plastic waste."
+      ],
+      "answer": 1,
+      "explanation": "The story's paragraph 5 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a1-08",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Why might Eva's photos help when they are put on the café wall?",
+      "choices": [
+        "They will show where to buy a cold drink.",
+        "They will make the sea change colour.",
+        "They will tell visitors when a film starts.",
+        "Other visitors can see the rubbish problem and think about it."
+      ],
+      "answer": 3,
+      "explanation": "The story's paragraph 6 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a1-09",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "You have a drink on a beach. Which action is most like the narrator's?",
+      "choices": [
+        "Leave the bottle beside the water.",
+        "Use your own bottle and put any rubbish in a bin.",
+        "Ask somebody else to carry every empty cup.",
+        "Throw the cup away when the wind starts."
+      ],
+      "answer": 1,
+      "explanation": "The story's paragraph 5 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    },
+    {
+      "id": "r36-plastic-ocean-en-a1-10",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "You find a plastic bag near the sea. What would fit the story's message?",
+      "choices": [
+        "Leave it because it is not your bag.",
+        "Push it closer to the waves.",
+        "Take a photo and leave it there forever.",
+        "If it is safe, pick it up and use a rubbish bin."
+      ],
+      "answer": 3,
+      "explanation": "The story's paragraph 2 describes the relevant event and supports the correct interpretation rather than the alternatives."
+    }
+  ]
+}
