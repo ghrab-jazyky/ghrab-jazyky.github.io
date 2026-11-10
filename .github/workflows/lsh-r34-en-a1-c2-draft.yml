@@ -25,6 +25,7 @@ jobs:
           node --check language-skills-hub/tests/r34-six-level-reading.browser.test.cjs
           node --check language-skills-hub/self-check/test-banks/reading/independent-schema.js
           node --check language-skills-hub/tools/independent-assessment-worklist.cjs
+          node --check language-skills-hub/tools/build-assessment-authoring-packets.cjs
           node --check language-skills-hub/tests/r34-coverage-and-schema.test.cjs
       - name: All six English independent reading drafts and R31 regression contracts
         run: |
