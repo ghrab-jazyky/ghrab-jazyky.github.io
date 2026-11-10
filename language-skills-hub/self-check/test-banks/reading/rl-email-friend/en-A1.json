@@ -105,16 +105,16 @@
       "id": "r40-en-a1-06",
       "tab": "interpretation",
       "kind": "mc",
-      "q": "What is the film about?",
+      "q": "Why could Ben's younger sister enjoy the film too?",
       "choices": [
-        "A dog travelling by boat across the sea.",
-        "A football team that moves towns.",
-        "A family building a new park.",
-        "A train trip to a school."
+        "It is a funny film made for families.",
+        "It is a serious film for older students.",
+        "It is a film about their old school.",
+        "It is a football game recorded on video."
       ],
       "answer": 0,
       "sourceParagraph": 3,
-      "explanation": "The third paragraph describes a family film about a dog travelling in a boat."
+      "explanation": "The third paragraph calls the film funny and suitable for families, which explains why his young sister may like it."
     },
     {
       "id": "r40-en-a1-07",
