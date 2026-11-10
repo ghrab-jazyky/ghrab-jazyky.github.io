@@ -36,12 +36,12 @@
       "kind": "mc",
       "q": "What is the implication of Elias calling his explanation of limited time 'conveniently incomplete'?",
       "choices": [
-        "He cannot remember the order of his journeys.",
-        "His professional busyness disguises how actively he chose polished public updates over honest correspondence.",
         "His old friend has unfairly exaggerated the length of their silence.",
-        "His job requires him to conceal all personal experiences."
+        "His job requires him to conceal all personal experiences.",
+        "He cannot remember the order of his journeys.",
+        "His professional busyness disguises how actively he chose polished public updates over honest correspondence."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "He admits having ample time for curated updates while failing to offer real personal availability."
     },
     {
@@ -51,12 +51,12 @@
       "kind": "mc",
       "q": "Why does the dockworker's rejection of the phrase 'close-knit community' matter to the museum's work?",
       "choices": [
-        "It shows that all oral-history interviews should be anonymous.",
-        "It demonstrates that local communities never offer mutual assistance.",
         "It proves that the museum should avoid discussing difficult memories.",
-        "It challenges a comforting narrative by preserving both solidarity and resentment."
+        "It challenges a comforting narrative by preserving both solidarity and resentment.",
+        "It shows that all oral-history interviews should be anonymous.",
+        "It demonstrates that local communities never offer mutual assistance."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The dockworker describes mutual help under necessity, not uncomplicated community harmony."
     },
     {
@@ -66,12 +66,12 @@
       "kind": "mc",
       "q": "What distinguishes the father's postcards from Elias's own carefully composed updates?",
       "choices": [
-        "The postcards contained more detailed information about daily life.",
-        "The postcards made up for every absence during the daughter's childhood.",
         "Their limited claims honestly signalled attention without pretending to repair what was missing.",
-        "They were sent more frequently than Elias's modern messages."
+        "They were sent more frequently than Elias's modern messages.",
+        "The postcards contained more detailed information about daily life.",
+        "The postcards made up for every absence during the daughter's childhood."
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "The daughter values modest signs of life while refusing to romanticise the father's absence."
     },
     {
@@ -81,12 +81,12 @@
       "kind": "mc",
       "q": "What does Elias mean by the risk of an invitation acquiring an 'invisible invoice'?",
       "choices": [
-        "A generous-sounding gesture may carry an unspoken demand for emotional repayment.",
-        "The museum might charge guests unexpected admission costs.",
         "An invitation can be accepted only after travel expenses are reimbursed.",
-        "A public event may require additional staff to keep accounts."
+        "A public event may require additional staff to keep accounts.",
+        "A generous-sounding gesture may carry an unspoken demand for emotional repayment.",
+        "The museum might charge guests unexpected admission costs."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "Elias fears making friendship transactional by treating attendance or refusal as evidence of loyalty."
     },
     {
@@ -96,12 +96,12 @@
       "kind": "mc",
       "q": "Why does the writer suggest that listening sometimes means giving up the pleasure of being useful?",
       "choices": [
-        "He believes practical help is always disrespectful.",
-        "Offering tidy solutions can overwrite complex experiences that deserve to be heard on their own terms.",
         "He thinks interviews become successful only when contributors agree with the curator.",
-        "The museum has stopped presenting stories of community support."
+        "The museum has stopped presenting stories of community support.",
+        "He believes practical help is always disrespectful.",
+        "Offering tidy solutions can overwrite complex experiences that deserve to be heard on their own terms."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The archive experience shows that correction and complexity may require restraint instead of fixing a story."
     },
     {
@@ -111,12 +111,12 @@
       "kind": "mc",
       "q": "Why would an extensive confession risk transferring emotional labour to Amara?",
       "choices": [
-        "It would reveal information she had already read online.",
-        "It would force Amara to attend the museum's opening ceremony.",
         "It might oblige her to reassure Elias about his moral worth rather than respond freely.",
-        "It would make the invitation impossible to understand."
+        "It would make the invitation impossible to understand.",
+        "It would reveal information she had already read online.",
+        "It would force Amara to attend the museum's opening ceremony."
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "Elias explicitly refuses to seek reassurance that he is still a decent friend."
     },
     {
@@ -126,12 +126,12 @@
       "kind": "mc",
       "q": "What does the closing promise to resist treating Amara's response as a 'verdict' chiefly establish?",
       "choices": [
-        "Elias expects Amara to answer positively after reading the letter.",
-        "He believes the earlier friendship can be reconstructed exactly.",
         "He intends to withdraw the invitation if she appears uncertain.",
-        "Her answer should not become a judgement on his identity or a test of her loyalty."
+        "Her answer should not become a judgement on his identity or a test of her loyalty.",
+        "Elias expects Amara to answer positively after reading the letter.",
+        "He believes the earlier friendship can be reconstructed exactly."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The conclusion seeks a relationship that accommodates changed people and free responses."
     },
     {
@@ -141,12 +141,12 @@
       "kind": "mc",
       "q": "A museum editor wants to remove a contributor's difficult memories to create a reassuring ending. What response follows Elias's reasoning?",
       "choices": [
-        "Accept the edit because inspiration matters more than accuracy.",
-        "Retain the tensions if they better reflect the person's lived experience.",
         "Replace the contributor's words with an approved community summary.",
-        "Ask the contributor to change their account to sound more positive."
+        "Ask the contributor to change their account to sound more positive.",
+        "Accept the edit because inspiration matters more than accuracy.",
+        "Retain the tensions if they better reflect the person's lived experience."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Elias values the museum leaving the dockworker's contradiction intact rather than polishing it away."
     },
     {
@@ -156,12 +156,12 @@
       "kind": "mc",
       "q": "Amara declines the listening-room event but proposes exchanging letters slowly. What response most respects the letter?",
       "choices": [
-        "Welcome the alternative without requiring a rapid reply or explanation.",
-        "Ask for a firm future attendance commitment before continuing contact.",
         "Explain that correspondence counts only after a face-to-face meeting.",
-        "Interpret her refusal as evidence against her sincerity."
+        "Interpret her refusal as evidence against her sincerity.",
+        "Welcome the alternative without requiring a rapid reply or explanation.",
+        "Ask for a firm future attendance commitment before continuing contact."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "The final paragraph proposes unhurried correspondence as a legitimate form of renewed contact."
     },
     {
@@ -171,12 +171,12 @@
       "kind": "mc",
       "q": "Which description best captures the ethical ambition of Elias's invitation?",
       "choices": [
-        "To demonstrate sincerity through a sufficiently detailed apology.",
-        "To secure an audience for the museum's opening while avoiding criticism.",
         "To recreate their past friendship through a memorable public event.",
-        "To offer contact without coercing a particular response or demanding reassurance."
+        "To offer contact without coercing a particular response or demanding reassurance.",
+        "To demonstrate sincerity through a sufficiently detailed apology.",
+        "To secure an audience for the museum's opening while avoiding criticism."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "Elias openly recognises potentially instrumental motives and refuses to punish a refusal or demand emotional validation."
     }
   ]
