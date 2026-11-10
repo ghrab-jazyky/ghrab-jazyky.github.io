@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-CONTENT-DRAFT-1",
+  "description": "Original ten-question A1 draft for Mia's short reading story; teacher content approval pending.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Understanding the Story",
+      "description": "Understand the main ideas and the people."
+    },
+    {
+      "id": "reasons",
+      "title": "Reasons and Changes",
+      "description": "Think about why things happen."
+    },
+    {
+      "id": "new-situations",
+      "title": "Using What You Read",
+      "description": "Use the ideas in simple situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-a1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why is Mia worried at the start?",
+      "choices": [
+        "Her friend is not at school.",
+        "She cannot find her book.",
+        "She finds some words difficult.",
+        "Her teacher gives her no time."
+      ],
+      "answer": 2,
+      "explanation": "The first paragraph describes Mia's difficulty with new words and the start of the reading task."
+    },
+    {
+      "id": "r34-en-a1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What does Mia do when she cannot understand a sentence?",
+      "choices": [
+        "She closes the book.",
+        "She makes a small mark next to it.",
+        "She goes home.",
+        "She asks for a new story."
+      ],
+      "answer": 1,
+      "explanation": "The first paragraph describes Mia's difficulty with new words and the start of the reading task."
+    },
+    {
+      "id": "r34-en-a1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does Leo want Mia to do first?",
+      "choices": [
+        "Forget the story.",
+        "Ask for a different book.",
+        "Read only the last page.",
+        "Try reading the story again."
+      ],
+      "answer": 3,
+      "explanation": "The second paragraph shows how Mia and Leo use rereading, a picture and a notebook."
+    },
+    {
+      "id": "r34-en-a1-04",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does Leo show Mia a picture?",
+      "choices": [
+        "It can help her understand a word.",
+        "It is a picture of her family.",
+        "He wants her to draw it.",
+        "He cannot read the story."
+      ],
+      "answer": 0,
+      "explanation": "The second paragraph shows how Mia and Leo use rereading, a picture and a notebook."
+    },
+    {
+      "id": "r34-en-a1-05",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does Mia do with two new words?",
+      "choices": [
+        "She sends them to her brother.",
+        "She leaves them out of the story.",
+        "She writes them in her notebook.",
+        "She writes them on her hand."
+      ],
+      "answer": 2,
+      "explanation": "The second paragraph shows how Mia and Leo use rereading, a picture and a notebook."
+    },
+    {
+      "id": "r34-en-a1-06",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "How does Mia feel about her reading on Friday?",
+      "choices": [
+        "She is happy because she understands more.",
+        "She is angry with Leo.",
+        "She thinks every story is now easy.",
+        "She wants to stop reading."
+      ],
+      "answer": 0,
+      "explanation": "The final paragraph shows progress through practice and Mia reading to her brother."
+    },
+    {
+      "id": "r34-en-a1-07",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why is Mia's second story important?",
+      "choices": [
+        "It shows that Mia knows every word.",
+        "It shows that practising can help.",
+        "It teaches Leo a new word.",
+        "It is a story about trains."
+      ],
+      "answer": 1,
+      "explanation": "The final paragraph shows progress through practice and Mia reading to her brother."
+    },
+    {
+      "id": "r34-en-a1-08",
+      "tab": "new-situations",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "You see a new word next to a picture. What can you do?",
+      "choices": [
+        "Stop reading the whole story.",
+        "Write down a different word.",
+        "Close the notebook.",
+        "Look at the picture to help with the word."
+      ],
+      "answer": 3,
+      "explanation": "The second paragraph shows how Mia and Leo use rereading, a picture and a notebook."
+    },
+    {
+      "id": "r34-en-a1-09",
+      "tab": "new-situations",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Your little brother asks you to read again. What did Mia do in this situation?",
+      "choices": [
+        "She put the story away.",
+        "She read the lines again.",
+        "She asked Leo to come home.",
+        "She gave him a new book."
+      ],
+      "answer": 1,
+      "explanation": "The final paragraph shows progress through practice and Mia reading to her brother."
+    },
+    {
+      "id": "r34-en-a1-10",
+      "tab": "new-situations",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "A story is difficult today. Which plan is closest to Mia's idea?",
+      "choices": [
+        "Wait until every word is easy.",
+        "Try only a new subject.",
+        "Never write down words.",
+        "Read again and ask for help with hard words."
+      ],
+      "answer": 3,
+      "explanation": "The first paragraph describes Mia's difficulty with new words and the start of the reading task."
+    }
+  ]
+}
