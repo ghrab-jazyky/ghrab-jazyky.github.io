@@ -1,0 +1,4094 @@
+{
+  "kind": "LSH_READING_DRAFT_COLLECTION_R34_V1",
+  "topic": "rl-email-friend",
+  "relativeSource": "cteni/email-friend/index.html",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "auditStatus": "CLAUDE_CONTENT_REWRITE_PENDING",
+  "published": false,
+  "version": "R34-DRAFT",
+  "variants": {
+    "en": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "en",
+        "level": "A1",
+        "title": "A Message from Ben",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-en-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “It's Ben from your old”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "It's Ben from your old"
+          },
+          {
+            "id": "r34-email-friend-en-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "want to tell you some",
+              "bring a warm jacket. The",
+              "and we can bring sandwiches.",
+              "The film is about a"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "bring a warm jacket. The"
+          },
+          {
+            "id": "r34-email-friend-en-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “park. Last year, two”",
+            "choices": [
+              "and we play football together",
+              "but she is only eight.",
+              "hundred people came. I",
+              "you can come, but I"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "park. Last year, two hundred people came. I"
+          },
+          {
+            "id": "r34-email-friend-en-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “bring sandwiches. My sister likes”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "bring sandwiches. My sister likes"
+          },
+          {
+            "id": "r34-email-friend-en-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 2?",
+            "choices": [
+              "the station at five. We",
+              "It's Ben from your old",
+              "popcorn, and the money helps",
+              "I understand if you are"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "the station at five. We"
+          },
+          {
+            "id": "r34-email-friend-en-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “It's Ben from your”",
+            "choices": [
+              "five. We can walk to",
+              "old school. I live",
+              "stand with hot chocolate and",
+              "hope you can come, but"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "It's Ben from your old school. I live"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "en",
+        "level": "A2",
+        "title": "A Weekend Worth Sharing",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-en-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “Sorry I have not written”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "Sorry I have not written"
+          },
+          {
+            "id": "r34-email-friend-en-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "Now I have a good",
+              "you need to plan a",
+              "is a photography exhibition at",
+              "The exhibition is called “People"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "you need to plan a"
+          },
+          {
+            "id": "r34-email-friend-en-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “morning. After the exhibition,”",
+            "choices": [
+              "miss our long walks home",
+              "ten and the tickets cost",
+              "visitors can join a",
+              "we can go to the"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "morning. After the exhibition, visitors can join a"
+          },
+          {
+            "id": "r34-email-friend-en-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “exhibition at the old railway”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "exhibition at the old railway"
+          },
+          {
+            "id": "r34-email-friend-en-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 2?",
+            "choices": [
+              "I remember you love photography,",
+              "I have not written for",
+              "years and still opens at",
+              "the science museum instead. I"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "I remember you love photography,"
+          },
+          {
+            "id": "r34-email-friend-en-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “I have not written”",
+            "choices": [
+              "love photography, so I thought",
+              "for so long. Since",
+              "worked there for fifty years",
+              "is full, we can go"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "I have not written for so long. Since"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "en",
+        "level": "B1",
+        "title": "Back to Our Old Neighbourhood",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-en-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “Do you remember the little square behind our”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "Do you remember the little square behind our"
+          },
+          {
+            "id": "r34-email-friend-en-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "have painted bright pictures on the walls. I",
+              "stories about the neighbourhood. I remembered your photographs",
+              "week I taught two younger children how to",
+              "The workshop is in the old shoe shop"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "stories about the neighbourhood. I remembered your photographs"
+          },
+          {
+            "id": "r34-email-friend-en-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “made everyone laugh. I am still”",
+            "choices": [
+              "I realised we had hardly spoken since you",
+              "and a cinema. An older volunteer, Mrs Okafor,",
+              "learning, but the project has shown",
+              "open day next month. Visitors can fix old"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "made everyone laugh. I am still learning, but the project has shown"
+          },
+          {
+            "id": "r34-email-friend-en-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “We could also arrange a video call and”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "We could also arrange a video call and"
+          },
+          {
+            "id": "r34-email-friend-en-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "was a teenager, and that people still argue",
+              "you remember the little square behind our old",
+              "whether I was a professional mechanic, which made",
+              "month. Visitors can fix old objects, try simple"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "was a teenager, and that people still argue"
+          },
+          {
+            "id": "r34-email-friend-en-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “at the workshop on Saturdays. At”",
+            "choices": [
+              "it, but I realised we had hardly spoken",
+              "first I only made tea and",
+              "fountain and a cinema. An older volunteer, Mrs",
+              "small open day next month. Visitors can fix"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "at the workshop on Saturdays. At first I only made tea and"
+          },
+          {
+            "id": "r34-email-friend-en-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “post online. Whatever you decide, could we stop”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "post online. Whatever you decide, could we stop"
+          },
+          {
+            "id": "r34-email-friend-en-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "exciting ever happened in our neighbourhood. I walked",
+              "shown me that you do not need to",
+              "neighbourhood. I remembered your photographs of everyday life",
+              "of photos that people have brought from home."
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "of photos that people have brought from home."
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "en",
+        "level": "B2",
+        "title": "Somewhere Between Two Cities",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-en-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “owe you a proper message rather than another”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "owe you a proper message rather than another"
+          },
+          {
+            "id": "r34-email-friend-en-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "knew how to find the museum but not",
+              "We used to tell each other when things",
+              "recently moved here. One woman talked about learning",
+              "programme has also changed how I see the"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "We used to tell each other when things"
+          },
+          {
+            "id": "r34-email-friend-en-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “on Wednesdays, and my job now”",
+            "choices": [
+              "that I was struggling felt harder than posting",
+              "that everyone else already knew the rules. When",
+              "is to edit a five-minute programme",
+              "sent it with the usual 'Remember this?' and"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "on Wednesdays, and my job now is to edit a five-minute programme"
+          },
+          {
+            "id": "r34-email-friend-en-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “can offer you the sofa in my flat,”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "can offer you the sofa in my flat,"
+          },
+          {
+            "id": "r34-email-friend-en-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "that loneliness is often invisible precisely because people",
+              "you a proper message rather than another photo",
+              "treating my own confusion as an embarrassing failure.",
+              "'Remember this?' and a laughing emoji. Then I"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "that loneliness is often invisible precisely because people"
+          },
+          {
+            "id": "r34-email-friend-en-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “when my neighbour invited me to”",
+            "choices": [
+              "pictures because admitting that I was struggling felt",
+              "help at a community radio station.",
+              "feeling that everyone else already knew the rules.",
+              "I nearly sent it with the usual 'Remember"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "when my neighbour invited me to help at a community radio station."
+          },
+          {
+            "id": "r34-email-friend-en-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “room for an actual conversation, not collect another”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "room for an actual conversation, not collect another"
+          },
+          {
+            "id": "r34-email-friend-en-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "the start of a holiday. The city really",
+              "memories. It is unpaid, but I value the",
+              "each other when things were difficult, not just",
+              "teaches newcomers to bake Dutch apple cake. She"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "teaches newcomers to bake Dutch apple cake. She"
+          },
+          {
+            "id": "r34-email-friend-en-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “that every week would feel like”",
+            "choices": [
+              "the start of a holiday. The",
+              "is unpaid, but I value the conversations more",
+              "but the feeling that everyone else already knew",
+              "our exams. I nearly sent it with the"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "that every week would feel like the start of a holiday. The"
+          },
+          {
+            "id": "r34-email-friend-en-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “'Remember this?' and a laughing emoji. Then I”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "'Remember this?' and a laughing emoji. Then I"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "en",
+        "level": "C1",
+        "title": "The Things We Never Posted",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-en-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “started this email with the familiar apology about”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "started this email with the familiar apology about"
+          },
+          {
+            "id": "r34-email-friend-en-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "even as I was finding it difficult to",
+              "of measuring whether our friendship was still 'working'.",
+              "arguments with the neighbours; the arguments, she said,",
+              "recording has stayed with me more than the"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "of measuring whether our friendship was still 'working'."
+          },
+          {
+            "id": "r34-email-friend-en-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “began wondering why I felt entitled”",
+            "choices": [
+              "an answer, and I have regretted that easy",
+              "visited the street since his wife died. He",
+              "to know every detail of my",
+              "you could help, because you have always noticed"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "began wondering why I felt entitled to know every detail of my"
+          },
+          {
+            "id": "r34-email-friend-en-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “if the atmosphere felt too crowded. If July”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "if the atmosphere felt too crowded. If July"
+          },
+          {
+            "id": "r34-email-friend-en-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "session thinking that attention, more than advice, may",
+              "this email with the familiar apology about being",
+              "a written description of the room where we",
+              "always noticed the details everyone else walks past."
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "session thinking that attention, more than advice, may"
+          },
+          {
+            "id": "r34-email-friend-en-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “a strange lesson about memory. We”",
+            "choices": [
+              "instead of an answer, and I have regretted",
+              "collect stories from residents, but we",
+              "had not visited the street since his wife",
+              "I immediately thought you could help, because you"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "a strange lesson about memory. We collect stories from residents, but we"
+          },
+          {
+            "id": "r34-email-friend-en-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “I am writing because our conversations used to”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "I am writing because our conversations used to"
+          },
+          {
+            "id": "r34-email-friend-en-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "much that would have told either of us",
+              "carefully edited versions of my own. Perhaps constant",
+              "was still 'working'. You may be overwhelmed with",
+              "of tea it sold as if they were"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "of tea it sold as if they were"
+          },
+          {
+            "id": "r34-email-friend-en-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “what we have not exchanged is”",
+            "choices": [
+              "much that would have told either",
+              "versions of my own. Perhaps constant visibility is",
+              "that he had not visited the street since",
+              "own memories. I immediately thought you could help,"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "what we have not exchanged is much that would have told either"
+          },
+          {
+            "id": "r34-email-friend-en-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “always noticed the details everyone else walks past.”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "always noticed the details everyone else walks past."
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "en",
+        "level": "C2",
+        "title": "The Distance Between Updates",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-en-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “postponed this letter often enough to become suspicious”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "postponed this letter often enough to become suspicious"
+          },
+          {
+            "id": "r34-email-friend-en-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "I felt lost. Perhaps we have mistaken the",
+              "it would be manipulative to demand that you",
+              "already understood. A former dockworker refused to call",
+              "afternoon a fisherman’s daughter brought a shoebox of"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "it would be manipulative to demand that you"
+          },
+          {
+            "id": "r34-email-friend-en-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “of care. I thought of the”",
+            "choices": [
+              "what I have offered when honesty would have",
+              "to romanticise him; he had been absent for",
+              "occasions when you told me something",
+              "On paper, the timing makes my renewed interest"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "of care. I thought of the occasions when you told me something"
+          },
+          {
+            "id": "r34-email-friend-en-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “an excuse. We might instead exchange letters, one”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "an excuse. We might instead exchange letters, one"
+          },
+          {
+            "id": "r34-email-friend-en-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "way my polished updates are not: they never",
+              "letter often enough to become suspicious of my",
+              "a warmer ending for the exhibition, but leaving",
+              "look suspiciously instrumental, as though I have remembered"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "way my polished updates are not: they never"
+          },
+          {
+            "id": "r34-email-friend-en-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “histories for a small coastal museum,”",
+            "choices": [
+              "been precisely what I have offered when honesty",
+              "has made these evasions harder to",
+              "careful not to romanticise him; he had been",
+              "like your company. On paper, the timing makes"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "histories for a small coastal museum, has made these evasions harder to"
+          },
+          {
+            "id": "r34-email-friend-en-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “that I will always find the right words.”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "that I will always find the right words."
+          },
+          {
+            "id": "r34-email-friend-en-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "not false, but it is conveniently incomplete: I",
+              "tidy solution. Listening, I am beginning to learn,",
+              "you accept my sincerity as an article of",
+              "dog – yet she treasured them because each"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "dog – yet she treasured them because each"
+          },
+          {
+            "id": "r34-email-friend-en-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “time for correspondence. That account is”",
+            "choices": [
+              "not false, but it is conveniently",
+              "solution. Listening, I am beginning to learn, sometimes",
+              "She was careful not to romanticise him; he",
+              "I would dearly like your company. On paper,"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "time for correspondence. That account is not false, but it is conveniently"
+          },
+          {
+            "id": "r34-email-friend-en-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “look suspiciously instrumental, as though I have remembered”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "look suspiciously instrumental, as though I have remembered"
+          }
+        ]
+      }
+    },
+    "es": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "es",
+        "level": "A1",
+        "title": "Un mensaje de Ben",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-es-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «Maya! Soy Ben, de tu»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "Maya! Soy Ben, de tu"
+          },
+          {
+            "id": "r34-email-friend-es-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 1?",
+            "choices": [
+              "años. Puedes venir en tren.",
+              "de menos nuestros almuerzos y",
+              "venir, pero entiendo si estás"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "de menos nuestros almuerzos y"
+          },
+          {
+            "id": "r34-email-friend-es-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «clase. Tengo buenas noticias:»",
+            "choices": [
+              "esperarte en la estación a",
+              "antes del jueves, por favor.",
+              "mi nueva amiga Eva"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "clase. Tengo buenas noticias: mi nueva amiga Eva"
+          },
+          {
+            "id": "r34-email-friend-es-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «y podemos llevar bocadillos. Mi»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "y podemos llevar bocadillos. Mi"
+          },
+          {
+            "id": "r34-email-friend-es-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "Maya! Soy Ben, de tu",
+              "Mi padre puede esperarte en",
+              "jueves, por favor. Cuéntame también"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "Mi padre puede esperarte en"
+          },
+          {
+            "id": "r34-email-friend-es-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «sábado hay una noche»",
+            "choices": [
+              "Eva y yo jugamos al",
+              "Escríbeme antes del jueves, por",
+              "de cine en el"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "sábado hay una noche de cine en el"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "es",
+        "level": "A2",
+        "title": "Un fin de semana para compartir",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-es-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «Noah! Perdona por no escribir»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "Noah! Perdona por no escribir"
+          },
+          {
+            "id": "r34-email-friend-es-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 1?",
+            "choices": [
+              "a personas corrientes haciendo cosas",
+              "triste porque no conocía a",
+              "de ciencias. Quiero saber cómo"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "triste porque no conocía a"
+          },
+          {
+            "id": "r34-email-friend-es-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «esperaba. Ahora tengo buenos»",
+            "choices": [
+              "fotografía y por eso pensé",
+              "hace falta preparar un día",
+              "amigos y solemos cocinar"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "esperaba. Ahora tengo buenos amigos y solemos cocinar"
+          },
+          {
+            "id": "r34-email-friend-es-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «antigua estación de tren. Abre»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "antigua estación de tren. Abre"
+          },
+          {
+            "id": "r34-email-friend-es-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "Perdona por no escribir antes.",
+              "te encanta la fotografía y",
+              "un día perfecto. Incluso una"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "te encanta la fotografía y"
+          },
+          {
+            "id": "r34-email-friend-es-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «sorpresa: el curso termina»",
+            "choices": [
+              "echo de menos nuestras caminatas",
+              "no hace falta preparar un",
+              "el próximo viernes y"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "sorpresa: el curso termina el próximo viernes y"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "es",
+        "level": "B1",
+        "title": "De vuelta a nuestro barrio",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-es-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «¿Recuerdas la plaza detrás de nuestro antiguo instituto?»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "¿Recuerdas la plaza detrás de nuestro antiguo instituto?"
+          },
+          {
+            "id": "r34-email-friend-es-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "comunitario con dibujos de colores en las paredes.",
+              "antiguas juntos. Prefiero conocer tu nueva ciudad por",
+              "a gente nueva. La semana pasada enseñé a",
+              "Por eso te escribo ahora: organizamos una jornada"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "antiguas juntos. Prefiero conocer tu nueva ciudad por"
+          },
+          {
+            "id": "r34-email-friend-es-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «pensé que podrías traer algunas. No»",
+            "choices": [
+              "cuenta de que casi no hablamos desde que",
+              "la luz de una bicicleta. Uno me preguntó",
+              "tienes que dar un discurso ni",
+              "te sientas culpable si no puedes venir. También"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "pensé que podrías traer algunas. No tienes que dar un discurso ni"
+          },
+          {
+            "id": "r34-email-friend-es-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «La semana pasada enseñé a dos niños a»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "La semana pasada enseñé a dos niños a"
+          },
+          {
+            "id": "r34-email-friend-es-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "Todavía estoy aprendiendo, pero he descubierto que no",
+              "¿Recuerdas la plaza detrás de nuestro antiguo instituto?",
+              "la vida cotidiana y pensé que podrías traer",
+              "si no puedes venir. También podemos hacer una"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "Todavía estoy aprendiendo, pero he descubierto que no"
+          },
+          {
+            "id": "r34-email-friend-es-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «¿Recuerdas la plaza detrás de nuestro»",
+            "choices": [
+              "pero he descubierto que no hace falta ser",
+              "antiguo instituto? Nos sentábamos allí después",
+              "Recordé tus fotografías de la vida cotidiana y",
+              "que te sientas culpable si no puedes venir."
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "¿Recuerdas la plaza detrás de nuestro antiguo instituto? Nos sentábamos allí después"
+          },
+          {
+            "id": "r34-email-friend-es-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «lo que decidas, ¿podemos dejar de esperar una»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "lo que decidas, ¿podemos dejar de esperar una"
+          },
+          {
+            "id": "r34-email-friend-es-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "nunca pasaba nada interesante. El mes pasado volví",
+              "estoy aprendiendo, pero he descubierto que no hace",
+              "conocer tu nueva ciudad por lo que me",
+              "visitantes podrán reparar objetos, hacer actividades artísticas y"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "visitantes podrán reparar objetos, hacer actividades artísticas y"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "es",
+        "level": "B2",
+        "title": "Entre dos ciudades",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-es-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «Te debo un mensaje de verdad y no»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "Te debo un mensaje de verdad y no"
+          },
+          {
+            "id": "r34-email-friend-es-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "pero no sabía a quién llamar después de",
+              "en el sofá de mi piso, aunque tendrás",
+              "Una mujer explicó que aprender las rutas de",
+              "La semana pasada encontré nuestra foto del último"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "en el sofá de mi piso, aunque tendrás"
+          },
+          {
+            "id": "r34-email-friend-es-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «mi vida más fácil de lo»",
+            "choices": [
+              "pasando mal me parecía más difícil que publicar",
+              "resultó familiar y dejé de considerar mi confusión",
+              "que es. Si te has sentido",
+              "tendrás que actuar ni hablar en público: podemos"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "mi vida más fácil de lo que es. Si te has sentido"
+          },
+          {
+            "id": "r34-email-friend-es-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «las rutas de autobús era como descubrir un»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "las rutas de autobús era como descubrir un"
+          },
+          {
+            "id": "r34-email-friend-es-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "recuerdos del barrio. No me pagan, pero valoro",
+              "debo un mensaje de verdad y no otra",
+              "celebrar. Siento que mis mensajes hayan hecho parecer",
+              "hablar en público: podemos limitarnos a escuchar y,"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "recuerdos del barrio. No me pagan, pero valoro"
+          },
+          {
+            "id": "r34-email-friend-es-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «debo un mensaje de verdad y»",
+            "choices": [
+              "me pagan, pero valoro las conversaciones más que",
+              "no otra foto con una frase",
+              "dificultades, no solo los motivos para celebrar. Siento",
+              "junio. No tendrás que actuar ni hablar en"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "debo un mensaje de verdad y no otra foto con una frase"
+          },
+          {
+            "id": "r34-email-friend-es-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «Quiero tener una conversación real, no coleccionar otra»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "Quiero tener una conversación real, no coleccionar otra"
+          },
+          {
+            "id": "r34-email-friend-es-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "semana sería como unas vacaciones. La ciudad es",
+              "del barrio. No me pagan, pero valoro las",
+              "mi piso, aunque tendrás que pagar tu billete",
+              "Entonces comprendí que no sabía cómo te iba"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "Entonces comprendí que no sabía cómo te iba"
+          },
+          {
+            "id": "r34-email-friend-es-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? ««¿Te acuerdas?» y una carita sonriente.»",
+            "choices": [
+              "Entonces comprendí que no sabía cómo",
+              "reconocer que lo estaba pasando mal me parecía",
+              "Su historia me resultó familiar y dejé de",
+              "de junio. No tendrás que actuar ni hablar"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "«¿Te acuerdas?» y una carita sonriente. Entonces comprendí que no sabía cómo"
+          },
+          {
+            "id": "r34-email-friend-es-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «pero pronto estaba grabando entrevistas con personas recién»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "pero pronto estaba grabando entrevistas con personas recién"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "es",
+        "level": "C1",
+        "title": "Lo que nunca publicamos",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-es-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «a punto de empezar con la típica disculpa»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "a punto de empezar con la típica disculpa"
+          },
+          {
+            "id": "r34-email-friend-es-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "yo seguía sin sentirme parte de ningún sitio.",
+              "te viene bien, podríamos empezar por una llamada",
+              "eran una prueba de que a la gente",
+              "mes pasado hablamos de organizar una velada pública"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "te viene bien, podríamos empezar por una llamada"
+          },
+          {
+            "id": "r34-email-friend-es-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «disfrazada de plan agradable. Sería injusto»",
+            "choices": [
+              "vez de una respuesta y todavía me avergüenza",
+              "solo una descripción escrita del lugar de nuestro",
+              "fingir que una sola tarde pudiera",
+              "julio y podrás venir sin participar en nada."
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "disfrazada de plan agradable. Sería injusto fingir que una sola tarde pudiera"
+          },
+          {
+            "id": "r34-email-friend-es-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «la gente le importaba participar. Otra persona se»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "la gente le importaba participar. Otra persona se"
+          },
+          {
+            "id": "r34-email-friend-es-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "una versión cuidadosamente editada de mi vida. Quizá",
+              "punto de empezar con la típica disculpa de",
+              "por los exámenes finales y no necesites otra",
+              "en nada. Puedo pagar tu entrada, pero no"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "una versión cuidadosamente editada de mi vida. Quizá"
+          },
+          {
+            "id": "r34-email-friend-es-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «punto de empezar con la típica»",
+            "choices": [
+              "mi vida. Quizá estar siempre visible no equivalga",
+              "disculpa de que estaba muy ocupada,",
+              "nuestra amistad. Tal vez estés agotado por los",
+              "viernes de julio y podrás venir sin participar"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "punto de empezar con la típica disculpa de que estaba muy ocupada,"
+          },
+          {
+            "id": "r34-email-friend-es-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «ti. Te escribo porque nuestras conversaciones antes dejaban»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "ti. Te escribo porque nuestras conversaciones antes dejaban"
+          },
+          {
+            "id": "r34-email-friend-es-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "sin contarnos casi nada de lo que realmente",
+              "versión cuidadosamente editada de mi vida. Quizá estar",
+              "por una llamada la próxima semana, siempre que",
+              "pasan por alto. Sin embargo, dudé antes de"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "pasan por alto. Sin embargo, dudé antes de"
+          },
+          {
+            "id": "r34-email-friend-es-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «siempre ves detalles que los demás»",
+            "choices": [
+              "pasan por alto. Sin embargo, dudé",
+              "una puesta de sol en vez de una",
+              "y pidió que conserváramos solo una descripción escrita",
+              "el primer viernes de julio y podrás venir"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "siempre ves detalles que los demás pasan por alto. Sin embargo, dudé"
+          },
+          {
+            "id": "r34-email-friend-es-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «Una enfermera jubilada recordaba su calle por las»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "Una enfermera jubilada recordaba su calle por las"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "es",
+        "level": "C2",
+        "title": "La distancia entre las actualizaciones",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-es-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «esta carta tantas veces que ya desconfío de»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "esta carta tantas veces que ya desconfío de"
+          },
+          {
+            "id": "r34-email-friend-es-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "me sentía perdido. Quizá confundamos la disponibilidad de",
+              "excusas. También podríamos intercambiar cartas sin exigir respuestas",
+              "Un antiguo estibador se negó a llamar a",
+              "otra complicación, menos halagadora. Escribo justo antes de"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "excusas. También podríamos intercambiar cartas sin exigir respuestas"
+          },
+          {
+            "id": "r34-email-friend-es-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «trasladaría todo el trabajo emocional. La»",
+            "choices": [
+              "precisamente información cuando la sinceridad me habría resultado",
+              "solidaridad podía convivir con el resentimiento. Nuestra editora",
+              "dificultad consiste en invitar sin convertir",
+              "conversación con vecinos, no una ceremonia formal. Puedo"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "trasladaría todo el trabajo emocional. La dificultad consiste en invitar sin convertir"
+          },
+          {
+            "id": "r34-email-friend-es-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «llamar a su barrio «una comunidad unida»: la»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "llamar a su barrio «una comunidad unida»: la"
+          },
+          {
+            "id": "r34-email-friend-es-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "y yo respondía con una solución ordenada. Escuchar,",
+              "carta tantas veces que ya desconfío de mis",
+              "el problema: pedirte que me confirmaras que sigo",
+              "formal. Puedo reservarte un sitio, pero tu presencia"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "y yo respondía con una solución ordenada. Escuchar,"
+          },
+          {
+            "id": "r34-email-friend-es-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «carta tantas veces que ya desconfío»",
+            "choices": [
+              "ordenada. Escuchar, voy aprendiendo, a veces exige renunciar",
+              "de mis propias explicaciones. La versión",
+              "sinceridad como un dogma. Una confesión detallada tampoco",
+              "incluye una conversación con vecinos, no una ceremonia"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "carta tantas veces que ya desconfío de mis propias explicaciones. La versión"
+          },
+          {
+            "id": "r34-email-friend-es-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «encontrar siempre las palabras adecuadas. Sí prometo no»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "encontrar siempre las palabras adecuadas. Sí prometo no"
+          },
+          {
+            "id": "r34-email-friend-es-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "No es una explicación falsa, pero sí convenientemente",
+              "respondía con una solución ordenada. Escuchar, voy aprendiendo,",
+              "sin exigir respuestas inmediatas. Una correspondencia modesta no",
+              "instrumental, como si recordara la amistad solo cuando"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "instrumental, como si recordara la amistad solo cuando"
+          },
+          {
+            "id": "r34-email-friend-es-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «el momento hace que mi renovado»",
+            "choices": [
+              "interés parezca instrumental, como si recordara",
+              "deja en buen lugar: he ofrecido precisamente información",
+              "no tenía alternativa, y la solidaridad podía convivir",
+              "de agosto e incluye una conversación con vecinos,"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "el momento hace que mi renovado interés parezca instrumental, como si recordara"
+          },
+          {
+            "id": "r34-email-friend-es-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «surgen cuando alguien rechaza nuestra propuesta o corrige»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "surgen cuando alguien rechaza nuestra propuesta o corrige"
+          }
+        ]
+      }
+    },
+    "de": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "de",
+        "level": "A1",
+        "title": "Eine Nachricht von Ben",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-de-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Maya! Ich bin Ben aus“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Maya! Ich bin Ben aus"
+          },
+          {
+            "id": "r34-email-friend-de-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 1?",
+            "choices": [
+              "acht. Du kannst mit dem",
+              "kleinen Parks. Ich vermisse unsere",
+              "aber ich verstehe, wenn du"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "kleinen Parks. Ich vermisse unsere"
+          },
+          {
+            "id": "r34-email-friend-de-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „nach der Schule. Ich“",
+            "choices": [
+              "kann dich um fünf am",
+              "hast. Schreib mir bitte vor",
+              "habe gute Nachrichten: Meine"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "nach der Schule. Ich habe gute Nachrichten: Meine"
+          },
+          {
+            "id": "r34-email-friend-de-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „wir können Brote mitbringen. Meine“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "wir können Brote mitbringen. Meine"
+          },
+          {
+            "id": "r34-email-friend-de-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "Maya! Ich bin Ben aus",
+              "kommen. Mein Vater kann dich",
+              "mir bitte vor Donnerstag. Erzähl"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "kommen. Mein Vater kann dich"
+          },
+          {
+            "id": "r34-email-friend-de-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „gibt es einen Filmabend“",
+            "choices": [
+              "neue Freundin Eva und ich",
+              "hast. Schreib mir bitte vor",
+              "im Park. Der Film"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "gibt es einen Filmabend im Park. Der Film"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "de",
+        "level": "A2",
+        "title": "Ein Wochenende zusammen",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-de-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Noah! Entschuldige, dass ich so“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Noah! Entschuldige, dass ich so"
+          },
+          {
+            "id": "r34-email-friend-de-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 1?",
+            "choices": [
+              "normale Menschen bei interessanten Tätigkeiten.",
+              "es schwer, weil ich niemanden",
+              "das Wissenschaftsmuseum. Ich möchte von"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "es schwer, weil ich niemanden"
+          },
+          {
+            "id": "r34-email-friend-de-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „habe ich gute Freunde“",
+            "choices": [
+              "magst, und musste sofort an",
+              "perfekten Tag planen. Schon eine",
+              "und wir kochen oft"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "habe ich gute Freunde und wir kochen oft"
+          },
+          {
+            "id": "r34-email-friend-de-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „im alten Bahnhof. Sie öffnet“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "im alten Bahnhof. Sie öffnet"
+          },
+          {
+            "id": "r34-email-friend-de-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "Entschuldige, dass ich so lange",
+              "wie sehr du Fotografie magst,",
+              "Schon eine Stunde mit dir"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "wie sehr du Fotografie magst,"
+          },
+          {
+            "id": "r34-email-friend-de-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „eine Überraschung: Mein Kurs“",
+            "choices": [
+              "langen Spaziergänge nach der Schule",
+              "keinen perfekten Tag planen. Schon",
+              "endet nächsten Freitag und"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "eine Überraschung: Mein Kurs endet nächsten Freitag und"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "de",
+        "level": "B1",
+        "title": "Zurück in unserem alten Viertel",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-de-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „erinnerst du dich an den kleinen Platz hinter“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "erinnerst du dich an den kleinen Platz hinter"
+          },
+          {
+            "id": "r34-email-friend-de-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "jetzt eine Nachbarschaftswerkstatt mit bunten Bildern an den",
+              "Fotos ansehen. Lieber würde ich von dir selbst",
+              "Leuten fürchtete. Letzte Woche zeigte ich zwei Kindern,",
+              "Deshalb schreibe ich jetzt: Nächsten Monat veranstalten wir"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Fotos ansehen. Lieber würde ich von dir selbst"
+          },
+          {
+            "id": "r34-email-friend-de-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „und dachte, du könntest einige mitbringen.“",
+            "choices": [
+              "merkte aber, dass wir seit deinem Umzug kaum",
+              "Fahrradlicht repariert. Eines fragte, ob ich ein richtiger",
+              "Du musst weder eine Rede halten",
+              "du ein schlechtes Gewissen hast, falls du nicht"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "und dachte, du könntest einige mitbringen. Du musst weder eine Rede halten"
+          },
+          {
+            "id": "r34-email-friend-de-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Woche zeigte ich zwei Kindern, wie man ein“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Woche zeigte ich zwei Kindern, wie man ein"
+          },
+          {
+            "id": "r34-email-friend-de-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "viel, aber inzwischen weiß ich, dass man kein",
+              "du dich an den kleinen Platz hinter unserer",
+              "mich an deine Alltagsfotos und dachte, du könntest",
+              "Gewissen hast, falls du nicht kommen kannst. Wir"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "viel, aber inzwischen weiß ich, dass man kein"
+          },
+          {
+            "id": "r34-email-friend-de-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „du dich an den kleinen Platz“",
+            "choices": [
+              "weiß ich, dass man kein Experte sein muss,",
+              "hinter unserer alten Schule? Dort saßen",
+              "erzählen. Ich erinnerte mich an deine Alltagsfotos und",
+              "nicht, dass du ein schlechtes Gewissen hast, falls"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "du dich an den kleinen Platz hinter unserer alten Schule? Dort saßen"
+          },
+          {
+            "id": "r34-email-friend-de-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „dich auch entscheidest: Können wir wieder miteinander sprechen,“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "dich auch entscheidest: Können wir wieder miteinander sprechen,"
+          },
+          {
+            "id": "r34-email-friend-de-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "uns, dass in unserem Viertel nichts Interessantes passierte.",
+              "aber inzwischen weiß ich, dass man kein Experte",
+              "würde ich von dir selbst hören, wie deine",
+              "können kaputte Dinge reparieren, Kunst ausprobieren und Geschichten"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "können kaputte Dinge reparieren, Kunst ausprobieren und Geschichten"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "de",
+        "level": "B2",
+        "title": "Zwischen zwei Städten",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-de-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „ich schulde dir eine richtige Nachricht statt eines“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "ich schulde dir eine richtige Nachricht statt eines"
+          },
+          {
+            "id": "r34-email-friend-de-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "einsam. Ich kannte bald jedes Museum, wusste aber",
+              "ist Platz, die Zugfahrt müsstest du allerdings selbst",
+              "Frau erzählte, dass sich das Lernen der Buslinien",
+              "Letzte Woche fand ich unser Foto vom Ende"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "ist Platz, die Zugfahrt müsstest du allerdings selbst"
+          },
+          {
+            "id": "r34-email-friend-de-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „mein Leben leichter erscheinen ließen, als“",
+            "choices": [
+              "Lieber schickte ich Bilder, als zuzugeben, dass ich",
+              "kam mir bekannt vor, und ich schämte mich",
+              "es ist. Falls du dich ausgeschlossen",
+              "nicht auftreten oder vor Leuten sprechen; wir könnten"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "mein Leben leichter erscheinen ließen, als es ist. Falls du dich ausgeschlossen"
+          },
+          {
+            "id": "r34-email-friend-de-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „das Lernen der Buslinien angefühlt habe, als entschlüssle“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "das Lernen der Buslinien angefühlt habe, als entschlüssle"
+          },
+          {
+            "id": "r34-email-friend-de-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "aus dem Viertel. Geld bekomme ich nicht, aber",
+              "schulde dir eine richtige Nachricht statt eines weiteren",
+              "von Erfolgen. Tut mir leid, dass meine Nachrichten",
+              "Leuten sprechen; wir könnten einfach zuhören und am"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "aus dem Viertel. Geld bekomme ich nicht, aber"
+          },
+          {
+            "id": "r34-email-friend-de-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „schulde dir eine richtige Nachricht statt“",
+            "choices": [
+              "bekomme ich nicht, aber die Gespräche bedeuten mir",
+              "eines weiteren Fotos mit fröhlicher Bildunterschrift.",
+              "auch von Problemen und nicht nur von Erfolgen.",
+              "müsstest nicht auftreten oder vor Leuten sprechen; wir"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "schulde dir eine richtige Nachricht statt eines weiteren Fotos mit fröhlicher Bildunterschrift."
+          },
+          {
+            "id": "r34-email-friend-de-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „ein echtes Gespräch statt eines weiteren Fotos, auf“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "ein echtes Gespräch statt eines weiteren Fotos, auf"
+          },
+          {
+            "id": "r34-email-friend-de-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "ich, jede Woche würde sich wie Urlaub anfühlen.",
+              "dem Viertel. Geld bekomme ich nicht, aber die",
+              "Zugfahrt müsstest du allerdings selbst bezahlen. Falls die",
+              "Dann fiel mir auf, dass ich gar nicht"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "Dann fiel mir auf, dass ich gar nicht"
+          },
+          {
+            "id": "r34-email-friend-de-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „noch?“ und einem lachenden Emoji geschickt.“",
+            "choices": [
+              "Dann fiel mir auf, dass ich",
+              "Tag anrufen sollte. Lieber schickte ich Bilder, als",
+              "eine Geheimsprache. Ihre Geschichte kam mir bekannt vor,",
+              "ein. Du müsstest nicht auftreten oder vor Leuten"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "noch?“ und einem lachenden Emoji geschickt. Dann fiel mir auf, dass ich"
+          },
+          {
+            "id": "r34-email-friend-de-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „mit Menschen auf, die neu in der Stadt“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "mit Menschen auf, die neu in der Stadt"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "de",
+        "level": "C1",
+        "title": "Was wir nie gepostet haben",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-de-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „hätte ich mich wieder mit der üblichen Bemerkung“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "hätte ich mich wieder mit der üblichen Bemerkung"
+          },
+          {
+            "id": "r34-email-friend-de-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "während ich mich selbst nirgendwo richtig zugehörig fühlte.",
+              "gehen. Falls Juli nicht passt, könnten wir nächste",
+              "den Nachbarn: Gerade diese hätten gezeigt, dass die",
+              "Monat planten wir einen öffentlichen Abend, an dem"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "gehen. Falls Juli nicht passt, könnten wir nächste"
+          },
+          {
+            "id": "r34-email-friend-de-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „eines netten Ausflugs. Ein einziger schöner“",
+            "choices": [
+              "ich ein Sonnenuntergangsfoto; diese bequeme Ausrede bereue ich",
+              "werden und erlaubte uns nur eine schriftliche Beschreibung",
+              "Abend könnte außerdem ein ganzes Jahr",
+              "im Juli statt; du könntest kommen, ohne etwas"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "eines netten Ausflugs. Ein einziger schöner Abend könnte außerdem ein ganzes Jahr"
+          },
+          {
+            "id": "r34-email-friend-de-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „gezeigt, dass die Menschen Anteil aneinander nahmen. Eine“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "gezeigt, dass die Menschen Anteil aneinander nahmen. Eine"
+          },
+          {
+            "id": "r34-email-friend-de-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "eine sorgfältig bearbeitete Version meines Lebens zeigte. Vielleicht",
+              "ich mich wieder mit der üblichen Bemerkung entschuldigt,",
+              "erschöpft und brauchst keine weitere Verpflichtung im Gewand",
+              "kommen, ohne etwas beizutragen. Die Eintrittskarte bezahle ich,"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "eine sorgfältig bearbeitete Version meines Lebens zeigte. Vielleicht"
+          },
+          {
+            "id": "r34-email-friend-de-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „ich mich wieder mit der üblichen“",
+            "choices": [
+              "meines Lebens zeigte. Vielleicht ist ständige Sichtbarkeit nicht",
+              "Bemerkung entschuldigt, ich sei beschäftigt gewesen.",
+              "bist du wegen deiner Abschlussprüfungen völlig erschöpft und",
+              "ersten Freitag im Juli statt; du könntest kommen,"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "ich mich wieder mit der üblichen Bemerkung entschuldigt, ich sei beschäftigt gewesen."
+          },
+          {
+            "id": "r34-email-friend-de-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Ich schreibe, weil in unseren Gesprächen früher Unsicherheit“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Ich schreibe, weil in unseren Gesprächen früher Unsicherheit"
+          },
+          {
+            "id": "r34-email-friend-de-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "viele Fotos kommentiert, aber kaum darüber gesprochen, wie",
+              "sorgfältig bearbeitete Version meines Lebens zeigte. Vielleicht ist",
+              "passt, könnten wir nächste Woche telefonieren, vorausgesetzt, wir",
+              "entdeckst immer Details, die andere übersehen. Doch ich"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "entdeckst immer Details, die andere übersehen. Doch ich"
+          },
+          {
+            "id": "r34-email-friend-de-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „ich sofort an dich, denn du“",
+            "choices": [
+              "entdeckst immer Details, die andere übersehen.",
+              "Statt einer Antwort schickte ich ein Sonnenuntergangsfoto; diese",
+              "wollte überhaupt nicht aufgenommen werden und erlaubte uns",
+              "findet am ersten Freitag im Juli statt; du"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "ich sofort an dich, denn du entdeckst immer Details, die andere übersehen."
+          },
+          {
+            "id": "r34-email-friend-de-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Eine pensionierte Krankenschwester erinnerte sich vor allem an“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Eine pensionierte Krankenschwester erinnerte sich vor allem an"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "de",
+        "level": "C2",
+        "title": "Die Entfernung zwischen den Updates",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-de-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „diesen Brief so oft aufgeschoben, dass ich meinen“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "diesen Brief so oft aufgeschoben, dass ich meinen"
+          },
+          {
+            "id": "r34-email-friend-de-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "fühlte. Vielleicht haben wir die Verfügbarkeit von Informationen",
+              "ab. Wir könnten stattdessen Briefe austauschen, ohne sofortige",
+              "„enge Gemeinschaft“ nennen: Man half einander auch deshalb,",
+              "gibt noch eine weniger schmeichelhafte Schwierigkeit. Ich schreibe"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "ab. Wir könnten stattdessen Briefe austauschen, ohne sofortige"
+          },
+          {
+            "id": "r34-email-friend-de-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „ich dir die emotionale Arbeit. Die“",
+            "choices": [
+              "habe, wo Aufrichtigkeit nötig, wenn auch weniger effizient",
+              "ein wärmeres Ende für die Ausstellung, doch den",
+              "eigentliche Aufgabe besteht darin, jemanden einzuladen,",
+              "gibt es ein Gespräch mit Bewohnern. Ich kann"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "ich dir die emotionale Arbeit. Die eigentliche Aufgabe besteht darin, jemanden einzuladen,"
+          },
+          {
+            "id": "r34-email-friend-de-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „auch deshalb, weil man keine Wahl hatte, und“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "auch deshalb, weil man keine Wahl hatte, und"
+          },
+          {
+            "id": "r34-email-friend-de-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "Lösung antwortete. Zuhören verlangt, so lerne ich langsam,",
+              "Brief so oft aufgeschoben, dass ich meinen eigenen",
+              "lösen: Wenn du mir versichern müsstest, dass ich",
+              "Ich kann einen Platz reservieren, doch deine Anwesenheit"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Lösung antwortete. Zuhören verlangt, so lerne ich langsam,"
+          },
+          {
+            "id": "r34-email-friend-de-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Brief so oft aufgeschoben, dass ich“",
+            "choices": [
+              "lerne ich langsam, manchmal den Verzicht auf das",
+              "meinen eigenen Erklärungen inzwischen misstraue. Die",
+              "verlangen wäre manipulativ. Auch ein ausführliches Geständnis würde",
+              "einer feierlichen Zeremonie gibt es ein Gespräch mit"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Brief so oft aufgeschoben, dass ich meinen eigenen Erklärungen inzwischen misstraue. Die"
+          },
+          {
+            "id": "r34-email-friend-de-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Ich verspreche nicht, immer die richtigen Worte zu“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Ich verspreche nicht, immer die richtigen Worte zu"
+          },
+          {
+            "id": "r34-email-friend-de-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "nicht, aber bequem unvollständig: Für Updates, in denen",
+              "Zuhören verlangt, so lerne ich langsam, manchmal den",
+              "austauschen, ohne sofortige Antworten zu erwarten. Eine bescheidene",
+              "dann an unsere Freundschaft gedacht, als ich Publikum"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "dann an unsere Freundschaft gedacht, als ich Publikum"
+          },
+          {
+            "id": "r34-email-friend-de-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Interesse verdächtig berechnend wirken, als hätte“",
+            "choices": [
+              "ich erst dann an unsere Freundschaft",
+              "weil ich gerade dort Informationen angeboten habe, wo",
+              "Unsere Redakteurin wünschte sich ein wärmeres Ende für",
+              "und statt einer feierlichen Zeremonie gibt es ein"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "Interesse verdächtig berechnend wirken, als hätte ich erst dann an unsere Freundschaft"
+          },
+          {
+            "id": "r34-email-friend-de-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „unsere vermeintlich sichere Deutung korrigiert. Ein ehemaliger Hafenarbeiter“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "unsere vermeintlich sichere Deutung korrigiert. Ein ehemaliger Hafenarbeiter"
+          }
+        ]
+      }
+    },
+    "fr": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "fr",
+        "level": "A1",
+        "title": "Un message de Ben",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-fr-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « Maya ! C'est Ben, de »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "Maya ! C'est Ben, de"
+          },
+          {
+            "id": "r34-email-friend-fr-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 1 ?",
+            "choices": [
+              "Tu peux venir en train.",
+              "déjeuners et nos jeux après",
+              "venir, mais je comprends si"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "déjeuners et nos jeux après"
+          },
+          {
+            "id": "r34-email-friend-fr-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « J'ai une bonne nouvelle »",
+            "choices": [
+              "chercher à la gare à",
+              "Écris-moi avant jeudi, s'il te",
+              ": ma nouvelle amie"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "J'ai une bonne nouvelle : ma nouvelle amie"
+          },
+          {
+            "id": "r34-email-friend-fr-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « apporter des sandwichs. Ma sœur »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "apporter des sandwichs. Ma sœur"
+          },
+          {
+            "id": "r34-email-friend-fr-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "Maya ! C'est Ben, de",
+              "peut venir te chercher à",
+              "jeudi, s'il te plaît. Raconte-moi"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "peut venir te chercher à"
+          },
+          {
+            "id": "r34-email-friend-fr-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « y a une soirée »",
+            "choices": [
+              "Eva et moi jouons au",
+              "occupée. Écris-moi avant jeudi, s'il",
+              "cinéma dans le parc."
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "y a une soirée cinéma dans le parc."
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "fr",
+        "level": "A2",
+        "title": "Un week-end à partager",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-fr-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « Noah ! Désolée de ne »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "Noah ! Désolée de ne"
+          },
+          {
+            "id": "r34-email-friend-fr-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 1 ?",
+            "choices": [
+              "font des choses intéressantes. Je",
+              "début, c'était difficile : je",
+              "des sciences. J'aimerais avoir des"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "début, c'était difficile : je"
+          },
+          {
+            "id": "r34-email-friend-fr-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « prévu. Maintenant, j'ai de »",
+            "choices": [
+              "j'ai tout de suite pensé",
+              "n'as pas besoin de préparer",
+              "bons amis et nous"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "prévu. Maintenant, j'ai de bons amis et nous"
+          },
+          {
+            "id": "r34-email-friend-fr-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « gare. Elle ouvre à dix »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "gare. Elle ouvre à dix"
+          },
+          {
+            "id": "r34-email-friend-fr-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "! Désolée de ne pas",
+              "aimes la photo, alors j'ai",
+              "de préparer une journée parfaite."
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "aimes la photo, alors j'ai"
+          },
+          {
+            "id": "r34-email-friend-fr-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « surprise : mon cours »",
+            "choices": [
+              "Nos longues promenades après l'école",
+              "tu n'as pas besoin de",
+              "finit vendredi prochain et"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "surprise : mon cours finit vendredi prochain et"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "fr",
+        "level": "B1",
+        "title": "Retour dans notre ancien quartier",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-fr-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « tu te souviens de la petite place derrière »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "tu te souviens de la petite place derrière"
+          },
+          {
+            "id": "r34-email-friend-fr-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "quartier avec des peintures colorées sur les murs.",
+              "un appel vidéo et regarder ensemble nos vieilles",
+              "nouvelles rencontres. La semaine dernière, j'ai appris à",
+              "Voilà pourquoi je t'écris : nous organisons une"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "un appel vidéo et regarder ensemble nos vieilles"
+          },
+          {
+            "id": "r34-email-friend-fr-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « que tu pourrais en apporter quelques-unes. »",
+            "choices": [
+              "réalisé que nous avions à peine parlé depuis",
+              "une lampe de vélo. L'un m'a demandé si",
+              "Pas besoin de faire un discours",
+              "ne veux pas que tu te sentes coupable"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "que tu pourrais en apporter quelques-unes. Pas besoin de faire un discours"
+          },
+          {
+            "id": "r34-email-friend-fr-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « semaine dernière, j'ai appris à deux enfants à »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "semaine dernière, j'ai appris à deux enfants à"
+          },
+          {
+            "id": "r34-email-friend-fr-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "J'apprends encore, mais j'ai compris qu'il n'est pas",
+              "te souviens de la petite place derrière notre",
+              "photos du quotidien et j'ai pensé que tu",
+              "tu te sentes coupable si tu ne peux"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "J'apprends encore, mais j'ai compris qu'il n'est pas"
+          },
+          {
+            "id": "r34-email-friend-fr-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « te souviens de la petite place »",
+            "choices": [
+              "j'ai compris qu'il n'est pas nécessaire d'être expert",
+              "derrière notre ancienne école ? Nous",
+              "suis souvenu de tes photos du quotidien et",
+              "je ne veux pas que tu te sentes"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "te souviens de la petite place derrière notre ancienne école ? Nous"
+          },
+          {
+            "id": "r34-email-friend-fr-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « publications. Quelle que soit ta décision, pourrions-nous cesser »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "publications. Quelle que soit ta décision, pourrions-nous cesser"
+          },
+          {
+            "id": "r34-email-friend-fr-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "disant qu'il ne se passait jamais rien d'intéressant.",
+              "encore, mais j'ai compris qu'il n'est pas nécessaire",
+              "regarder ensemble nos vieilles photos. J'aimerais découvrir ta",
+              "objets, essayer des activités artistiques et partager des"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "objets, essayer des activités artistiques et partager des"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "fr",
+        "level": "B2",
+        "title": "Entre deux villes",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-fr-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « je te dois un vrai message plutôt qu'une »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "je te dois un vrai message plutôt qu'une"
+          },
+          {
+            "id": "r34-email-friend-fr-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "Je savais trouver les musées, mais pas qui",
+              "pourrais dormir sur mon canapé, mais il te",
+              "Une femme racontait qu'apprendre les lignes de bus,",
+              "La semaine dernière, j'ai retrouvé notre photo prise"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "pourrais dormir sur mon canapé, mais il te"
+          },
+          {
+            "id": "r34-email-friend-fr-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « paraître ma vie plus facile qu'elle »",
+            "choices": [
+              "difficultés me semblait plus pénible que publier une",
+              "et j'ai cessé de trouver ma confusion honteuse.",
+              "ne l'est. Si tu t'es senti",
+              "n'aurais pas besoin de te produire devant un"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "paraître ma vie plus facile qu'elle ne l'est. Si tu t'es senti"
+          },
+          {
+            "id": "r34-email-friend-fr-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « lignes de bus, c'était comme découvrir une langue »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "lignes de bus, c'était comme découvrir une langue"
+          },
+          {
+            "id": "r34-email-friend-fr-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "quartier. Ce n'est pas rémunéré, mais les conversations",
+              "dois un vrai message plutôt qu'une nouvelle photo",
+              "réussites. Je regrette que mes messages aient fait",
+              "te produire devant un public ; nous pourrions"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "quartier. Ce n'est pas rémunéré, mais les conversations"
+          },
+          {
+            "id": "r34-email-friend-fr-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « dois un vrai message plutôt qu'une »",
+            "choices": [
+              "rémunéré, mais les conversations comptent davantage que le",
+              "nouvelle photo accompagnée d'une légende joyeuse.",
+              "aussi nos difficultés, pas seulement nos réussites. Je",
+              "Tu n'aurais pas besoin de te produire devant"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "dois un vrai message plutôt qu'une nouvelle photo accompagnée d'une légende joyeuse."
+          },
+          {
+            "id": "r34-email-friend-fr-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « veux retrouver une vraie conversation, pas collectionner une »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "veux retrouver une vraie conversation, pas collectionner une"
+          },
+          {
+            "id": "r34-email-friend-fr-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "pensais que chaque semaine ressemblerait à des vacances.",
+              "Ce n'est pas rémunéré, mais les conversations comptent",
+              "canapé, mais il te faudrait payer ton billet",
+              "et un emoji. Puis j'ai compris que j'ignorais"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "et un emoji. Puis j'ai compris que j'ignorais"
+          },
+          {
+            "id": "r34-email-friend-fr-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « « Tu te souviens ? » »",
+            "choices": [
+              "et un emoji. Puis j'ai compris",
+              "photos parce qu'avouer mes difficultés me semblait plus",
+              "histoire m'a parlé et j'ai cessé de trouver",
+              "de juin. Tu n'aurais pas besoin de te"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "« Tu te souviens ? » et un emoji. Puis j'ai compris"
+          },
+          {
+            "id": "r34-email-friend-fr-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « commencé à enregistrer des entretiens avec de nouveaux »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "commencé à enregistrer des entretiens avec de nouveaux"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "fr",
+        "level": "C1",
+        "title": "Ce que nous n’avons jamais publié",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-fr-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « failli commencer par l'excuse habituelle du manque de »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "failli commencer par l'excuse habituelle du manque de"
+          },
+          {
+            "id": "r34-email-friend-fr-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "peinais à me sentir chez moi. Un jour,",
+              "convient pas, commençons par un appel la semaine",
+              "elles prouvaient que les gens tenaient à participer.",
+              "mois dernier, notre équipe a proposé une soirée"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "convient pas, commençons par un appel la semaine"
+          },
+          {
+            "id": "r34-email-friend-fr-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « obligation déguisée en sortie agréable. Il »",
+            "choices": [
+              "coucher de soleil, et je regrette encore cette",
+              "qu'une description écrite de notre lieu de rencontre.",
+              "serait aussi injuste de prétendre qu'une",
+              "tu seras bienvenu sans avoir à contribuer. Je"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "obligation déguisée en sortie agréable. Il serait aussi injuste de prétendre qu'une"
+          },
+          {
+            "id": "r34-email-friend-fr-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « à participer. Une autre personne a refusé d'être »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "à participer. Une autre personne a refusé d'être"
+          },
+          {
+            "id": "r34-email-friend-fr-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "montrant qu'une version soigneusement retouchée de moi-même. Peut-être",
+              "commencer par l'excuse habituelle du manque de temps,",
+              "par tes examens, et tu n'as pas besoin",
+              "contribuer. Je peux payer ton entrée, mais pas"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "montrant qu'une version soigneusement retouchée de moi-même. Peut-être"
+          },
+          {
+            "id": "r34-email-friend-fr-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « commencer par l'excuse habituelle du manque »",
+            "choices": [
+              "retouchée de moi-même. Peut-être que la visibilité permanente",
+              "de temps, mais cela ferait passer",
+              "notre amitié. Tu es peut-être épuisé par tes",
+              "juillet ; tu seras bienvenu sans avoir à"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "commencer par l'excuse habituelle du manque de temps, mais cela ferait passer"
+          },
+          {
+            "id": "r34-email-friend-fr-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « une artificielle. Je t'écris parce que nos conversations »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "une artificielle. Je t'écris parce que nos conversations"
+          },
+          {
+            "id": "r34-email-friend-fr-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "savoir comment l'autre allait. En m'installant à Bristol",
+              "qu'une version soigneusement retouchée de moi-même. Peut-être que",
+              "appel la semaine prochaine, à condition d'être capables",
+              "détails que les autres ignorent. Pourtant, j'ai hésité"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "détails que les autres ignorent. Pourtant, j'ai hésité"
+          },
+          {
+            "id": "r34-email-friend-fr-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « toi, car tu remarques toujours les »",
+            "choices": [
+              "détails que les autres ignorent. Pourtant,",
+              "répondre, je t'ai envoyé un coucher de soleil,",
+              "demandé de ne garder qu'une description écrite de",
+              "vendredi de juillet ; tu seras bienvenu sans"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "toi, car tu remarques toujours les détails que les autres ignorent. Pourtant,"
+          },
+          {
+            "id": "r34-email-friend-fr-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « se souvenait surtout des disputes avec les voisins »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "se souvenait surtout des disputes avec les voisins"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-email-friend",
+        "language": "fr",
+        "level": "C2",
+        "title": "La distance entre deux nouvelles",
+        "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-email-friend-fr-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « cette lettre si souvent que mes propres explications »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "cette lettre si souvent que mes propres explications"
+          },
+          {
+            "id": "r34-email-friend-fr-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "une vieille amie pourquoi je me sentais perdu.",
+              "lettres sans attendre de réponse immédiate. Une correspondance",
+              "docker refusait de qualifier son quartier de «",
+              "autre difficulté, moins flatteuse, demeure. Je t'écris précisément"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "lettres sans attendre de réponse immédiate. Une correspondance"
+          },
+          {
+            "id": "r34-email-friend-fr-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « à te transférer le travail émotionnel. »",
+            "choices": [
+              "j'ai précisément offert des informations lorsque la sincérité",
+              "avec l'amertume. Notre commissaire d'exposition voulait une conclusion",
+              "Il s'agit donc d'inviter sans transformer",
+              "plutôt qu'une cérémonie officielle. Je peux te réserver"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "à te transférer le travail émotionnel. Il s'agit donc d'inviter sans transformer"
+          },
+          {
+            "id": "r34-email-friend-fr-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « « communauté soudée » : les voisins s'entraidaient »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "« communauté soudée » : les voisins s'entraidaient"
+          },
+          {
+            "id": "r34-email-friend-fr-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "une solution bien rangée. Écouter, je commence à",
+              "lettre si souvent que mes propres explications me",
+              "rien : te demander de me rassurer sur",
+              "réserver une place, mais ta présence n'est ni"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "une solution bien rangée. Écouter, je commence à"
+          },
+          {
+            "id": "r34-email-friend-fr-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « si souvent que mes propres explications »",
+            "choices": [
+              "commence à l'apprendre, suppose parfois de renoncer au",
+              "me paraissent suspectes. La version commode",
+              "une forme de manipulation. Une confession détaillée ne",
+              "entre habitants plutôt qu'une cérémonie officielle. Je peux"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "si souvent que mes propres explications me paraissent suspectes. La version commode"
+          },
+          {
+            "id": "r34-email-friend-fr-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « de trouver toujours les mots justes. Je promets »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "de trouver toujours les mots justes. Je promets"
+          },
+          {
+            "id": "r34-email-friend-fr-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "pas faux, mais c'est incomplet, et d'une manière",
+              "solution bien rangée. Écouter, je commence à l'apprendre,",
+              "Une correspondance modeste ne nous rendrait pas ce",
+              "d'une amitié uniquement lorsqu'elle pouvait m'apporter un public."
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "d'une amitié uniquement lorsqu'elle pouvait m'apporter un public."
+          },
+          {
+            "id": "r34-email-friend-fr-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « ma sollicitude suspecte, comme si je »",
+            "choices": [
+              "me souvenais d'une amitié uniquement lorsqu'elle",
+              "formule m'épargne un peu : j'ai précisément offert",
+              "et la solidarité pouvait cohabiter avec l'amertume. Notre",
+              "une conversation entre habitants plutôt qu'une cérémonie officielle."
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "ma sollicitude suspecte, comme si je me souvenais d'une amitié uniquement lorsqu'elle"
+          },
+          {
+            "id": "r34-email-friend-fr-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « personne refuse ou corrige le récit assuré que »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "personne refuse ou corrige le récit assuré que"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,4207 @@
+{
+  "kind": "LSH_READING_DRAFT_COLLECTION_R34_V1",
+  "topic": "rl-instant-messages",
+  "relativeSource": "cteni/instant-messages/index.html",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "auditStatus": "CLAUDE_CONTENT_REWRITE_PENDING",
+  "published": false,
+  "version": "R34-DRAFT",
+  "variants": {
+    "en": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "en",
+        "level": "A1",
+        "title": "Saturday in the Park",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-en-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “Hi everyone! The weather will”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "Hi everyone! The weather will"
+          },
+          {
+            "id": "r34-instant-messages-en-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "My little brother Max wants",
+              "only stay with us until",
+              "lemonade. I have a piano",
+              "Sam: Twelve is good for"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "only stay with us until"
+          },
+          {
+            "id": "r34-instant-messages-en-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “It has a big”",
+            "choices": [
+              "too. Is that OK? Who",
+              "morning, but it finishes at",
+              "green door. I can",
+              "the green door. Please don't"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "It has a big green door. I can"
+          },
+          {
+            "id": "r34-instant-messages-en-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “have a piano lesson on”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "have a piano lesson on"
+          },
+          {
+            "id": "r34-instant-messages-en-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 2?",
+            "choices": [
+              "live near the park, so",
+              "Hi everyone! The weather will",
+              "near the lake is easy",
+              "door. Please don't be late,"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "live near the park, so"
+          },
+          {
+            "id": "r34-instant-messages-en-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “Hi everyone! The weather”",
+            "choices": [
+              "near the park, so I",
+              "will be sunny on",
+              "we meet? The café near",
+              "with the green door. Please"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "Hi everyone! The weather will be sunny on"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "en",
+        "level": "A2",
+        "title": "A Present for Eva",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-en-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “17:12: Mia, help! My cousin”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "17:12: Mia, help! My cousin"
+          },
+          {
+            "id": "r34-instant-messages-en-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "shop until seven tonight, so",
+              "the station sells gift cards.",
+              "the shops after that. What",
+              "Tom, 17:18: Ha, you're right."
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "the station sells gift cards."
+          },
+          {
+            "id": "r34-instant-messages-en-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “bike shop until seven”",
+            "choices": [
+              "last year and she never",
+              "are sold out. Maybe headphones?",
+              "tonight, so I can't",
+              "euros. But I have another"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "bike shop until seven tonight, so I can't"
+          },
+          {
+            "id": "r34-instant-messages-en-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “centre next to the station”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "centre next to the station"
+          },
+          {
+            "id": "r34-instant-messages-en-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 1?",
+            "choices": [
+              "so I can't go shopping.",
+              "17:15: Yes, I'm at the",
+              "out. Maybe headphones? I can",
+              "I have another idea. The"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "so I can't go shopping."
+          },
+          {
+            "id": "r34-instant-messages-en-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 4,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “17:24: Good headphones cost”",
+            "choices": [
+              "can't go shopping. Are you",
+              "much more than thirty",
+              "Eva like? And please don't",
+              "loves climbing and music. Her"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "17:24: Good headphones cost much more than thirty"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "en",
+        "level": "B1",
+        "title": "My Week Without Instant Messages",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-en-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “month our media teacher, Ms Patel, gave us”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "month our media teacher, Ms Patel, gave us"
+          },
+          {
+            "id": "r34-instant-messages-en-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "Most of my class laughed. I said yes,",
+              "out when I was already sitting in the",
+              "see. On the bus, everyone around me was",
+              "So I had to do something old-fashioned: I"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "out when I was already sitting in the"
+          },
+          {
+            "id": "r34-instant-messages-en-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “the evening I realised that I”",
+            "choices": [
+              "because I wanted to prove that it would",
+              "got the answer immediately, without the usual twenty",
+              "didn't know the time of Tuesday's",
+              "history presentation moved our meeting from the library"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "the evening I realised that I didn't know the time of Tuesday's"
+          },
+          {
+            "id": "r34-instant-messages-en-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “two of my four group chats, and I”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "two of my four group chats, and I"
+          },
+          {
+            "id": "r34-instant-messages-en-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "Wednesday I had noticed that short calls often",
+              "our media teacher, Ms Patel, gave us an",
+              "the bus who wasn't chatting. In the evening",
+              "our meeting from the library to a café,"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "Wednesday I had noticed that short calls often"
+          },
+          {
+            "id": "r34-instant-messages-en-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “day was harder than I expected.”",
+            "choices": [
+              "mainly because I wanted to prove that it",
+              "I checked my phone about forty",
+              "I got the answer immediately, without the usual",
+              "a history presentation moved our meeting from the"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "day was harder than I expected. I checked my phone about forty"
+          },
+          {
+            "id": "r34-instant-messages-en-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “messaging is bad. It showed me that I”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "messaging is bad. It showed me that I"
+          },
+          {
+            "id": "r34-instant-messages-en-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "week without any messaging apps. Phone calls and",
+              "Tuesday's football training, because the coach always sends",
+              "I was already sitting in the empty library.",
+              "he thought something bad had happened. But the"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "he thought something bad had happened. But the"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "en",
+        "level": "B2",
+        "title": "Why Did That Message Sound Rude?",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-en-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “send a friend a quick \"OK.\" and an”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "send a friend a quick \"OK.\" and an"
+          },
+          {
+            "id": "r34-instant-messages-en-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "almost everything that helps us interpret spoken words:",
+              "replying to someone who is upset, a few",
+              "simply be punctuating correctly. Speed matters too. A",
+              "a situation that many students will recognise (the"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "replying to someone who is upset, a few"
+          },
+          {
+            "id": "r34-instant-messages-en-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “the sender was in a lesson”",
+            "choices": [
+              "facial expressions, pauses and the chance to correct",
+              "started looking for something else. Two days later",
+              "or at work. Even the choice",
+              "could create misunderstandings of its own. A better"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "the sender was in a lesson or at work. Even the choice"
+          },
+          {
+            "id": "r34-instant-messages-en-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “you assume: \"Did you mean...?\" is far less”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "you assume: \"Did you mean...?\" is far less"
+          },
+          {
+            "id": "r34-instant-messages-en-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "Nobody had been rude, yet the group lost",
+              "a friend a quick \"OK.\" and an hour",
+              "may look like a lack of interest, even",
+              "own. A better habit is to notice when"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "Nobody had been rude, yet the group lost"
+          },
+          {
+            "id": "r34-instant-messages-en-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “carry a surprising amount of meaning.”",
+            "choices": [
+              "voice, facial expressions, pauses and the chance to",
+              "For many younger users, a full",
+              "and quietly started looking for something else. Two",
+              "strange and could create misunderstandings of its own."
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "carry a surprising amount of meaning. For many younger users, a full"
+          },
+          {
+            "id": "r34-instant-messages-en-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “call or a face-to-face talk is not old-fashioned.”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "call or a face-to-face talk is not old-fashioned."
+          },
+          {
+            "id": "r34-instant-messages-en-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "angry with her. You weren't – you were",
+              "a voice note and a typed message can",
+              "is upset, a few extra words such as",
+              "she suggested a photo book, Marek answered only"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "she suggested a photo book, Marek answered only"
+          },
+          {
+            "id": "r34-instant-messages-en-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “whether you are angry with her.”",
+            "choices": [
+              "You weren't – you were just",
+              "voice note and a typed message can be",
+              "the idea and quietly started looking for something",
+              "would look strange and could create misunderstandings of"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "whether you are angry with her. You weren't – you were just"
+          },
+          {
+            "id": "r34-instant-messages-en-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “own. A better habit is to notice when”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "own. A better habit is to notice when"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "en",
+        "level": "C1",
+        "title": "The Tyranny of the Blue Ticks",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-en-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “caused as much quiet anxiety as two small”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "caused as much quiet anxiety as two small"
+          },
+          {
+            "id": "r34-instant-messages-en-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "of information that costs nothing. Yet anyone who",
+              "another sees it as a snub. Because the",
+              "at night. If the manager posts at 23:40",
+              "of read receipts argue that they make communication"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "another sees it as a snub. Because the"
+          },
+          {
+            "id": "r34-instant-messages-en-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “reputation for being reliable. Nobody has”",
+            "choices": [
+              "silence with a receipt feels different from silence",
+              "it, and it is precisely that gap which",
+              "formally required anyone to stay online,",
+              "about how quickly one should answer, and newcomers"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "reputation for being reliable. Nobody has formally required anyone to stay online,"
+          },
+          {
+            "id": "r34-instant-messages-en-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “friends can do something similar on a smaller”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "friends can do something similar on a smaller"
+          },
+          {
+            "id": "r34-instant-messages-en-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "assumes a freedom many users do not feel,",
+              "as much quiet anxiety as two small ticks",
+              "gets the extra hours – along with a",
+              "should answer, and newcomers usually learn them only"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "assumes a freedom many users do not feel,"
+          },
+          {
+            "id": "r34-instant-messages-en-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “not evenly distributed. A sixteen-year-old with”",
+            "choices": [
+              "knows that silence with a receipt feels different",
+              "a weekend job at a café,",
+              "to respond to it, and it is precisely",
+              "unwritten rules about how quickly one should answer,"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "not evenly distributed. A sixteen-year-old with a weekend job at a café,"
+          },
+          {
+            "id": "r34-instant-messages-en-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “both sides. Ultimately, a tick should tell us”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "both sides. Ultimately, a tick should tell us"
+          },
+          {
+            "id": "r34-instant-messages-en-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "practice, they have turned reading into a kind",
+              "yet the system rewards those who do and",
+              "a snub. Because the rules are invisible, disagreements",
+              "that a message has been read can matter"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "that a message has been read can matter"
+          },
+          {
+            "id": "r34-instant-messages-en-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “message had been read. In practice,”",
+            "choices": [
+              "they have turned reading into a",
+              "the system rewards those who do and quietly",
+              "or information to respond to it, and it",
+              "each develop unwritten rules about how quickly one"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "message had been read. In practice, they have turned reading into a"
+          },
+          {
+            "id": "r34-instant-messages-en-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “should answer, and newcomers usually learn them only”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "should answer, and newcomers usually learn them only"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "en",
+        "level": "C2",
+        "title": "Writing That Behaves Like Speech",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-en-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “long struggled to classify the instant message. It”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "long struggled to classify the instant message. It"
+          },
+          {
+            "id": "r34-instant-messages-en-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "chooses to whisper rather than shout, and the",
+              "circulates as proof of disrespect. The student can",
+              "'sure!!' can signal quite different degrees of commitment,",
+              "second difficulty concerns permanence. Spoken remarks fade; typed"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "circulates as proof of disrespect. The student can"
+          },
+          {
+            "id": "r34-instant-messages-en-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “to whisper rather than shout, and”",
+            "choices": [
+              "in which the full stop has never been",
+              "that made them intelligible. The screenshot looks like",
+              "the choice itself says something about",
+              "mocks a new school rule with deliberate exaggeration,"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "to whisper rather than shout, and the choice itself says something about"
+          },
+          {
+            "id": "r34-instant-messages-en-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “a parent, and the remark circulates as proof”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "a parent, and the remark circulates as proof"
+          },
+          {
+            "id": "r34-instant-messages-en-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 1?",
+            "choices": [
+              "the relationship. The question is not whether such",
+              "around messaging are, in this sense, a repair",
+              "screenshot looks like evidence, and in a narrow",
+              "with deliberate exaggeration, adding three laughing emojis. Weeks"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "the relationship. The question is not whether such"
+          },
+          {
+            "id": "r34-instant-messages-en-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 4,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “many readers will recognise, although the”",
+            "choices": [
+              "is not whether such writing is correct, but",
+              "details here are invented. In a",
+              "begins when the code is not shared –",
+              "of five can be screenshotted, cropped and shown"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "many readers will recognise, although the details here are invented. In a"
+          },
+          {
+            "id": "r34-instant-messages-en-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “with a full stop is not being cold;”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "with a full stop is not being cold;"
+          },
+          {
+            "id": "r34-instant-messages-en-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 5?",
+            "choices": [
+              "be stored, forwarded and quoted years later. Dismissing",
+              "she is writing in a system in which",
+              "stripped of the shared history that made them",
+              "them and as documents when we read them."
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "them and as documents when we read them."
+          },
+          {
+            "id": "r34-instant-messages-en-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “rhythm that speech carries automatically. They”",
+            "choices": [
+              "are far from decorative. A 'sure'",
+              "The question is not whether such writing is",
+              "of the shared history that made them intelligible.",
+              "class chat, a student mocks a new school"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "rhythm that speech carries automatically. They are far from decorative. A 'sure'"
+          },
+          {
+            "id": "r34-instant-messages-en-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “as speech when we write them and as”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "as speech when we write them and as"
+          }
+        ]
+      }
+    },
+    "es": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "es",
+        "level": "A1",
+        "title": "Un sábado en el parque",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-es-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «Lucas: ¡Hola a todos! El»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "Lucas: ¡Hola a todos! El"
+          },
+          {
+            "id": "r34-instant-messages-es-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "Parque del Río? Yo llevo",
+              "verde. No lleguéis tarde, porque",
+              "tengo clase de piano, pero",
+              "Diego: A las doce me"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "verde. No lleguéis tarde, porque"
+          },
+          {
+            "id": "r34-instant-messages-es-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «muy grande. ¿Dónde quedamos?»",
+            "choices": [
+              "llevo bocadillos y fruta. ¿Quién",
+              "termina a las once. ¿Quedamos",
+              "La cafetería del lago",
+              "en la cafetería de la"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "muy grande. ¿Dónde quedamos? La cafetería del lago"
+          },
+          {
+            "id": "r34-instant-messages-es-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «clase de piano, pero termina»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "clase de piano, pero termina"
+          },
+          {
+            "id": "r34-instant-messages-es-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "Vivo cerca del parque y",
+              "Lucas: ¡Hola a todos! El",
+              "el parque es muy grande.",
+              "la cafetería de la puerta"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "Vivo cerca del parque y"
+          },
+          {
+            "id": "r34-instant-messages-es-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «Lucas: ¡Hola a todos!»",
+            "choices": [
+              "cerca del parque y puedo",
+              "El sábado va a",
+              "veinte minutos. Pero el parque",
+              "doce en la cafetería de"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "Lucas: ¡Hola a todos! El sábado va a"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "es",
+        "level": "A2",
+        "title": "Un regalo para Eva",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-es-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «17:12: ¡Marta, socorro! Esta noche»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5",
+              "Párrafo 6"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "17:12: ¡Marta, socorro! Esta noche"
+          },
+          {
+            "id": "r34-instant-messages-es-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "bicis hasta las siete, así",
+              "nuevo rocódromo junto a la",
+              "seis. ¿Qué le gusta a",
+              "Tomás, 17:18: Tienes razón. Le"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "nuevo rocódromo junto a la"
+          },
+          {
+            "id": "r34-instant-messages-es-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «de bicis hasta las»",
+            "choices": [
+              "le regalaste uno y nunca",
+              "toca pronto aquí, pero las",
+              "siete, así que no",
+              "cuestan más. Tengo otra idea:"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "de bicis hasta las siete, así que no"
+          },
+          {
+            "id": "r34-instant-messages-es-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «idea: el nuevo rocódromo junto»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5",
+              "Párrafo 6"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "idea: el nuevo rocódromo junto"
+          },
+          {
+            "id": "r34-instant-messages-es-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 1?",
+            "choices": [
+              "no puedo ir de compras.",
+              "17:15: Sí, estoy en la",
+              "pronto aquí, pero las entradas",
+              "más. Tengo otra idea: el"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "no puedo ir de compras."
+          },
+          {
+            "id": "r34-instant-messages-es-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 4,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «Marta, 17:24: Unos auriculares»",
+            "choices": [
+              "puedo ir de compras. ¿Estás",
+              "buenos cuestan más. Tengo",
+              "a Eva? Y no digas",
+              "Le encantan la escalada y"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "Marta, 17:24: Unos auriculares buenos cuestan más. Tengo"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "es",
+        "level": "B1",
+        "title": "Mi semana sin mensajería instantánea",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-es-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «mes pasado, nuestra profesora de comunicación, la señora»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "mes pasado, nuestra profesora de comunicación, la señora"
+          },
+          {
+            "id": "r34-instant-messages-es-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "audios ni grupos. Casi toda la clase se",
+              "enteré cuando ya estaba sentado en la biblioteca",
+              "nada nuevo. En el autobús todos escribían a",
+              "Así que tuve que hacer algo anticuado: llamé"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "enteré cuando ya estaba sentado en la biblioteca"
+          },
+          {
+            "id": "r34-instant-messages-es-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «que no sabía a qué hora»",
+            "choices": [
+              "Yo acepté, sobre todo porque quería demostrar que",
+              "la respuesta enseguida, sin los veinte mensajes habituales",
+              "era el entrenamiento de fútbol del",
+              "trabajo de historia trasladó la reunión de la"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "que no sabía a qué hora era el entrenamiento de fútbol del"
+          },
+          {
+            "id": "r34-instant-messages-es-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «de dos de mis cuatro grupos y llamo»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 4,
+            "explanation": "Compara el texto exacto del párrafo 5.",
+            "evidence": "de dos de mis cuatro grupos y llamo"
+          },
+          {
+            "id": "r34-instant-messages-es-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "sabía que una llamada corta resolvía los problemas",
+              "pasado, nuestra profesora de comunicación, la señora Ruiz,",
+              "la noche me di cuenta de que no",
+              "trasladó la reunión de la biblioteca a una"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "sabía que una llamada corta resolvía los problemas"
+          },
+          {
+            "id": "r34-instant-messages-es-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «día fue más difícil de lo»",
+            "choices": [
+              "rió. Yo acepté, sobre todo porque quería demostrar",
+              "que esperaba. Miré el móvil unas",
+              "tuve la respuesta enseguida, sin los veinte mensajes",
+              "del trabajo de historia trasladó la reunión de"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "día fue más difícil de lo que esperaba. Miré el móvil unas"
+          },
+          {
+            "id": "r34-instant-messages-es-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «los mensajes sean malos. Me enseñó que puedo»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 4,
+            "explanation": "Compara el texto exacto del párrafo 5.",
+            "evidence": "los mensajes sean malos. Me enseñó que puedo"
+          },
+          {
+            "id": "r34-instant-messages-es-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "reto poco habitual: pasar una semana sin aplicaciones",
+              "fútbol del martes, porque el entrenador siempre lo",
+              "ya estaba sentado en la biblioteca vacía. También",
+              "pensó que había pasado algo malo. Pero la"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "pensó que había pasado algo malo. Pero la"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "es",
+        "level": "B2",
+        "title": "¿Por qué sonó borde ese mensaje?",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-es-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «a una amiga un «Vale.» rápido y una»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "a una amiga un «Vale.» rápido y una"
+          },
+          {
+            "id": "r34-instant-messages-es-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "a interpretar las palabras habladas: el tono de",
+              "estás de acuerdo o respondes a alguien que",
+              "mayores quizá solo estén puntuando correctamente. La rapidez",
+              "en una situación que muchos estudiantes reconocerán (los"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "estás de acuerdo o respondes a alguien que"
+          },
+          {
+            "id": "r34-instant-messages-es-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «desinterés, aunque quien las escribió estuviera»",
+            "choices": [
+              "cara, las pausas y la posibilidad de corregirnos",
+              "nada, empezó a buscar otra cosa. Dos días",
+              "en clase o trabajando. Incluso elegir",
+              "y podría crear sus propios malentendidos. Es mejor"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "desinterés, aunque quien las escribió estuviera en clase o trabajando. Incluso elegir"
+          },
+          {
+            "id": "r34-instant-messages-es-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «menos dramático que varios días de silencio. Y»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 4,
+            "explanation": "Compara el texto exacto del párrafo 5.",
+            "evidence": "menos dramático que varios días de silencio. Y"
+          },
+          {
+            "id": "r34-instant-messages-es-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "Nadie había sido maleducado, pero el grupo perdió",
+              "a una amiga un «Vale.» rápido y una",
+              "mismas palabras enviadas tres horas después pueden transmitir",
+              "propios malentendidos. Es mejor acostumbrarse a notar cuándo"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "Nadie había sido maleducado, pero el grupo perdió"
+          },
+          {
+            "id": "r34-instant-messages-es-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «pequeños detalles transmiten muchísimo significado. Para»",
+            "choices": [
+              "la cara, las pausas y la posibilidad de",
+              "muchos usuarios jóvenes, un punto al",
+              "sin decir nada, empezó a buscar otra cosa.",
+              "resultaría extraño y podría crear sus propios malentendidos."
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "pequeños detalles transmiten muchísimo significado. Para muchos usuarios jóvenes, un punto al"
+          },
+          {
+            "id": "r34-instant-messages-es-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «cara a cara no es anticuado. A menudo»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 4,
+            "explanation": "Compara el texto exacto del párrafo 5.",
+            "evidence": "cara a cara no es anticuado. A menudo"
+          },
+          {
+            "id": "r34-instant-messages-es-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "No lo estabas: simplemente ibas en el autobús",
+              "entre un audio y un mensaje escrito puede",
+              "respondes a alguien que está molesto, unas palabras",
+              "un álbum de fotos, Marek contestó solo «bueno»."
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "un álbum de fotos, Marek contestó solo «bueno»."
+          },
+          {
+            "id": "r34-instant-messages-es-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «estás enfadado con ella. No lo»",
+            "choices": [
+              "estabas: simplemente ibas en el autobús",
+              "un audio y un mensaje escrito puede interpretarse",
+              "idea y, sin decir nada, empezó a buscar",
+              "amigos. Eso resultaría extraño y podría crear sus"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "estás enfadado con ella. No lo estabas: simplemente ibas en el autobús"
+          },
+          {
+            "id": "r34-instant-messages-es-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «propios malentendidos. Es mejor acostumbrarse a notar cuándo»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "propios malentendidos. Es mejor acostumbrarse a notar cuándo"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "es",
+        "level": "C1",
+        "title": "La tiranía del doble check azul",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-es-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «causado tanta ansiedad silenciosa como dos pequeños checks»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "causado tanta ansiedad silenciosa como dos pequeños checks"
+          },
+          {
+            "id": "r34-instant-messages-es-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "nada. Sin embargo, quien ha visto cómo se",
+              "dos horas es completamente normal; para otra, es",
+              "turnos se cambian a altas horas de la",
+              "defensores de las confirmaciones de lectura sostienen que"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "dos horas es completamente normal; para otra, es"
+          },
+          {
+            "id": "r34-instant-messages-es-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «y, de paso, con fama de»",
+            "choices": [
+              "confirmación no se vive igual que el silencio",
+              "para responderlo, y es justamente esa diferencia la",
+              "responsable. Nadie ha exigido formalmente que",
+              "desarrollan normas no escritas sobre la rapidez con"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "y, de paso, con fama de responsable. Nadie ha exigido formalmente que"
+          },
+          {
+            "id": "r34-instant-messages-es-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «grupo de amigos puede hacer algo parecido a»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 4,
+            "explanation": "Compara el texto exacto del párrafo 5.",
+            "evidence": "grupo de amigos puede hacer algo parecido a"
+          },
+          {
+            "id": "r34-instant-messages-es-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "una libertad que muchos usuarios no sienten, porque",
+              "tanta ansiedad silenciosa como dos pequeños checks que",
+              "la primera persona que contesta se queda con",
+              "rapidez con la que hay que contestar, y"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "una libertad que muchos usuarios no sienten, porque"
+          },
+          {
+            "id": "r34-instant-messages-es-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «reparte por igual. Una chica de»",
+            "choices": [
+              "el silencio con confirmación no se vive igual",
+              "dieciséis años con un trabajo de",
+              "la información para responderlo, y es justamente esa",
+              "los equipos desarrollan normas no escritas sobre la"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "reparte por igual. Una chica de dieciséis años con un trabajo de"
+          },
+          {
+            "id": "r34-instant-messages-es-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «fin y al cabo, un check debería decirnos»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 4,
+            "explanation": "Compara el texto exacto del párrafo 5.",
+            "evidence": "fin y al cabo, un check debería decirnos"
+          },
+          {
+            "id": "r34-instant-messages-es-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "ya lo han leído. En la práctica, han",
+              "conectado, pero el sistema premia a quien lo",
+              "para otra, es un desaire. Como las normas",
+              "saber que un mensaje se ha leído puede"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "saber que un mensaje se ha leído puede"
+          },
+          {
+            "id": "r34-instant-messages-es-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «a quien envía un mensaje: ya»",
+            "choices": [
+              "lo han leído. En la práctica,",
+              "pero el sistema premia a quien lo está",
+              "energía o la información para responderlo, y es",
+              "amigos y los equipos desarrollan normas no escritas"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "a quien envía un mensaje: ya lo han leído. En la práctica,"
+          },
+          {
+            "id": "r34-instant-messages-es-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «rapidez con la que hay que contestar, y»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "rapidez con la que hay que contestar, y"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "es",
+        "level": "C2",
+        "title": "Una escritura que se comporta como el habla",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-es-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «lingüistas les ha costado mucho clasificar el mensaje»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5",
+              "Párrafo 6"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "lingüistas les ha costado mucho clasificar el mensaje"
+          },
+          {
+            "id": "r34-instant-messages-es-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "decide susurrar en vez de gritar, y la",
+              "una madre, y el comentario circula como prueba",
+              "automática. No son en absoluto decorativos. Un «vale»",
+              "segunda dificultad tiene que ver con la permanencia."
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "una madre, y el comentario circula como prueba"
+          },
+          {
+            "id": "r34-instant-messages-es-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «decide susurrar en vez de gritar,»",
+            "choices": [
+              "en el que el punto nunca ha sido",
+              "que las hacía comprensibles. La captura de pantalla",
+              "y la elección misma dice algo",
+              "burla de una nueva norma del instituto con"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "decide susurrar en vez de gritar, y la elección misma dice algo"
+          },
+          {
+            "id": "r34-instant-messages-es-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «sin los emojis, llega a una madre, y»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5",
+              "Párrafo 6"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "sin los emojis, llega a una madre, y"
+          },
+          {
+            "id": "r34-instant-messages-es-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 1?",
+            "choices": [
+              "sobre la relación. La cuestión no es si",
+              "que han surgido en torno a los mensajes",
+              "captura de pantalla parece una prueba y, en",
+              "del instituto con una exageración deliberada y añade"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "sobre la relación. La cuestión no es si"
+          },
+          {
+            "id": "r34-instant-messages-es-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 4,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «que muchos lectores reconocerán, aunque los»",
+            "choices": [
+              "cuestión no es si esa escritura es correcta,",
+              "detalles son inventados. En el chat",
+              "descifran la diferencia casi al instante. El problema",
+              "medianoche en un grupo de cinco puede capturarse,"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "que muchos lectores reconocerán, aunque los detalles son inventados. En el chat"
+          },
+          {
+            "id": "r34-instant-messages-es-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «termina cada mensaje con un punto no está»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5",
+              "Párrafo 6"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "termina cada mensaje con un punto no está"
+          },
+          {
+            "id": "r34-instant-messages-es-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 5?",
+            "choices": [
+              "guardarse, reenviarse y citarse años después. Despacharlo como",
+              "siendo fría; escribe dentro de un sistema en",
+              "otro, despojadas de la historia compartida que las",
+              "como documentos cuando los leemos. Una ética más"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 5.",
+            "evidence": "como documentos cuando los leemos. Una ética más"
+          },
+          {
+            "id": "r34-instant-messages-es-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «las minúsculas devuelven parte del tono»",
+            "choices": [
+              "y del ritmo que el habla",
+              "relación. La cuestión no es si esa escritura",
+              "despojadas de la historia compartida que las hacía",
+              "clase, un alumno se burla de una nueva"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "las minúsculas devuelven parte del tono y del ritmo que el habla"
+          },
+          {
+            "id": "r34-instant-messages-es-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «habla cuando los escribimos y como documentos cuando»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5",
+              "Párrafo 6"
+            ],
+            "answer": 4,
+            "explanation": "Compara el texto exacto del párrafo 5.",
+            "evidence": "habla cuando los escribimos y como documentos cuando"
+          }
+        ]
+      }
+    },
+    "de": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "de",
+        "level": "A1",
+        "title": "Ein Samstag im Park",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-de-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Jonas: Hallo zusammen! Am Samstag“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Jonas: Hallo zusammen! Am Samstag"
+          },
+          {
+            "id": "r34-instant-messages-de-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "am Fluss? Ich bringe Brötchen",
+              "Kommt bitte nicht zu spät,",
+              "er ist um elf zu",
+              "Tim: Zwölf passt mir. Ich"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Kommt bitte nicht zu spät,"
+          },
+          {
+            "id": "r34-instant-messages-de-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „treffen wir uns? Das“",
+            "choices": [
+              "Brötchen und Obst mit. Wer",
+              "Ende. Treffen wir uns um",
+              "Café am See ist",
+              "am Café mit der grünen"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "treffen wir uns? Das Café am See ist"
+          },
+          {
+            "id": "r34-instant-messages-de-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „ist um elf zu Ende.“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "ist um elf zu Ende."
+          },
+          {
+            "id": "r34-instant-messages-de-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "nah am Park und kann",
+              "Jonas: Hallo zusammen! Am Samstag",
+              "sehr groß. Wo treffen wir",
+              "Café mit der grünen Tür."
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "nah am Park und kann"
+          },
+          {
+            "id": "r34-instant-messages-de-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Jonas: Hallo zusammen! Am“",
+            "choices": [
+              "am Park und kann zu",
+              "Samstag scheint die Sonne.",
+              "der Park ist sehr groß.",
+              "am Café mit der grünen"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Jonas: Hallo zusammen! Am Samstag scheint die Sonne."
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "de",
+        "level": "A2",
+        "title": "Ein Geschenk für Eva",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-de-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Felix, 17:12: Hanna, Hilfe! Heute“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5",
+              "Absatz 6"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Felix, 17:12: Hanna, Hilfe! Heute"
+          },
+          {
+            "id": "r34-instant-messages-de-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "sieben im Fahrradladen und kann",
+              "Idee: Die neue Kletterhalle neben",
+              "Bibliothek. Was mag Eva? Und",
+              "Felix, 17:18: Stimmt. Sie liebt"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Idee: Die neue Kletterhalle neben"
+          },
+          {
+            "id": "r34-instant-messages-de-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „bis sieben im Fahrradladen“",
+            "choices": [
+              "geschenkt und sie hat es",
+              "der Stadt, aber die Karten",
+              "und kann nicht einkaufen",
+              "viel mehr. Ich habe eine"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "bis sieben im Fahrradladen und kann nicht einkaufen"
+          },
+          {
+            "id": "r34-instant-messages-de-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „eine andere Idee: Die neue“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5",
+              "Absatz 6"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "eine andere Idee: Die neue"
+          },
+          {
+            "id": "r34-instant-messages-de-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 1?",
+            "choices": [
+              "kann nicht einkaufen gehen. Bist",
+              "17:15: Ja, ich bin bis",
+              "Stadt, aber die Karten sind",
+              "mehr. Ich habe eine andere"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "kann nicht einkaufen gehen. Bist"
+          },
+          {
+            "id": "r34-instant-messages-de-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 4,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Hanna, 17:24: Gute Kopfhörer“",
+            "choices": [
+              "einkaufen gehen. Bist du in",
+              "kosten viel mehr. Ich",
+              "bitte keine Bücher: Letztes Jahr",
+              "liebt Klettern und Musik. Ihre"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Hanna, 17:24: Gute Kopfhörer kosten viel mehr. Ich"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "de",
+        "level": "B1",
+        "title": "Meine Woche ohne Messenger",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-de-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Monat hat uns unsere Medienlehrerin, Frau Berger, eine“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Monat hat uns unsere Medienlehrerin, Frau Berger, eine"
+          },
+          {
+            "id": "r34-instant-messages-de-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "ganze Klasse hat gelacht. Ich habe zugesagt, vor",
+              "erst gemerkt, als ich schon in der leeren",
+              "nichts Neues gab. Im Bus haben alle um",
+              "Also musste ich etwas Altmodisches tun: Ich habe"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "erst gemerkt, als ich schon in der leeren"
+          },
+          {
+            "id": "r34-instant-messages-de-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „mir klar geworden, dass ich die“",
+            "choices": [
+              "allem, weil ich beweisen wollte, dass es leicht",
+              "hatte sofort eine Antwort, ohne die üblichen zwanzig",
+              "Uhrzeit des Fußballtrainings am Dienstag nicht",
+              "Geschichtsreferat das Treffen von der Bibliothek in ein"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "mir klar geworden, dass ich die Uhrzeit des Fußballtrainings am Dienstag nicht"
+          },
+          {
+            "id": "r34-instant-messages-de-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „die Benachrichtigungen ausgeschaltet, und meine Oma rufe ich“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 4,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 5.",
+            "evidence": "die Benachrichtigungen ausgeschaltet, und meine Oma rufe ich"
+          },
+          {
+            "id": "r34-instant-messages-de-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "Mittwoch hatte ich gemerkt, dass kurze Anrufe Probleme",
+              "Monat hat uns unsere Medienlehrerin, Frau Berger, eine",
+              "mich ausgeschlossen gefühlt. Am Abend ist mir klar",
+              "von der Bibliothek in ein Café verlegt, und"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "Mittwoch hatte ich gemerkt, dass kurze Anrufe Probleme"
+          },
+          {
+            "id": "r34-instant-messages-de-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Tag war schwerer als erwartet. Ich“",
+            "choices": [
+              "vor allem, weil ich beweisen wollte, dass es",
+              "habe vor dem Mittagessen ungefähr vierzig",
+              "ich hatte sofort eine Antwort, ohne die üblichen",
+              "für das Geschichtsreferat das Treffen von der Bibliothek"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Tag war schwerer als erwartet. Ich habe vor dem Mittagessen ungefähr vierzig"
+          },
+          {
+            "id": "r34-instant-messages-de-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „sind. Es hat mir gezeigt, dass ich selbst“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 4,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 5.",
+            "evidence": "sind. Es hat mir gezeigt, dass ich selbst"
+          },
+          {
+            "id": "r34-instant-messages-de-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "eine Woche ganz ohne Messenger-Apps. Anrufe und E-Mails",
+              "am Dienstag nicht kannte, weil der Trainer sie",
+              "ich schon in der leeren Bibliothek saß. Außerdem",
+              "er dachte, es sei etwas Schlimmes passiert. Aber"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "er dachte, es sei etwas Schlimmes passiert. Aber"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "de",
+        "level": "B2",
+        "title": "Warum klang die Nachricht so unfreundlich?",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-de-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „schickst einer Freundin ein schnelles „Ok.“ und eine“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "schickst einer Freundin ein schnelles „Ok.“ und eine"
+          },
+          {
+            "id": "r34-instant-messages-de-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "fehlt fast alles, was uns hilft, gesprochene Worte",
+              "triffst, widersprichst oder jemandem antwortest, der verärgert ist,",
+              "setzen, weil es korrekt ist. Auch das Tempo",
+              "wir eine Situation, die viele Schülerinnen und Schüler"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "triffst, widersprichst oder jemandem antwortest, der verärgert ist,"
+          },
+          {
+            "id": "r34-instant-messages-de-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „selbst wenn die Person im Unterricht“",
+            "choices": [
+              "Tonfall, Gesichtsausdruck, Pausen und die Möglichkeit, uns sofort",
+              "stillschweigend nach etwas anderem. Zwei Tage später fragte",
+              "oder bei der Arbeit war. Sogar",
+              "und eigene Missverständnisse erzeugen. Besser ist es, darauf"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "selbst wenn die Person im Unterricht oder bei der Arbeit war. Sogar"
+          },
+          {
+            "id": "r34-instant-messages-de-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „nach, bevor du etwas annimmst: „Meintest du ...?““",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 4,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 5.",
+            "evidence": "nach, bevor du etwas annimmst: „Meintest du ...?“"
+          },
+          {
+            "id": "r34-instant-messages-de-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "unhöflich gewesen, und doch verlor die Gruppe zwei",
+              "einer Freundin ein schnelles „Ok.“ und eine Stunde",
+              "drei Stunden später können nach Desinteresse aussehen, selbst",
+              "Besser ist es, darauf zu achten, wann ein"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "unhöflich gewesen, und doch verlor die Gruppe zwei"
+          },
+          {
+            "id": "r34-instant-messages-de-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „deshalb erstaunlich viel Gewicht. Für viele“",
+            "choices": [
+              "deuten: Tonfall, Gesichtsausdruck, Pausen und die Möglichkeit, uns",
+              "junge Nutzer wirkt ein Punkt am",
+              "suchte stillschweigend nach etwas anderem. Zwei Tage später",
+              "wirken und eigene Missverständnisse erzeugen. Besser ist es,"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "deshalb erstaunlich viel Gewicht. Für viele junge Nutzer wirkt ein Punkt am"
+          },
+          {
+            "id": "r34-instant-messages-de-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „zu einem Anruf oder einem persönlichen Gespräch nicht“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 4,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 5.",
+            "evidence": "zu einem Anruf oder einem persönlichen Gespräch nicht"
+          },
+          {
+            "id": "r34-instant-messages-de-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "sauer auf sie bist. Warst du nicht –",
+              "die Wahl zwischen Sprachnachricht und getippter Nachricht kann",
+              "jemandem antwortest, der verärgert ist, können ein paar",
+              "sie ein Fotobuch vorschlug, antwortete Marek nur „passt“."
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "sie ein Fotobuch vorschlug, antwortete Marek nur „passt“."
+          },
+          {
+            "id": "r34-instant-messages-de-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „sie, ob du sauer auf sie“",
+            "choices": [
+              "bist. Warst du nicht – du",
+              "Wahl zwischen Sprachnachricht und getippter Nachricht kann als",
+              "gefiel, und suchte stillschweigend nach etwas anderem. Zwei",
+              "würde seltsam wirken und eigene Missverständnisse erzeugen. Besser"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "sie, ob du sauer auf sie bist. Warst du nicht – du"
+          },
+          {
+            "id": "r34-instant-messages-de-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Besser ist es, darauf zu achten, wann ein“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Besser ist es, darauf zu achten, wann ein"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "de",
+        "level": "C1",
+        "title": "Die Tyrannei der blauen Haken",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-de-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „haben so viel stille Unruhe ausgelöst wie zwei“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "haben so viel stille Unruhe ausgelöst wie zwei"
+          },
+          {
+            "id": "r34-instant-messages-de-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "Information, die nichts kostet. Doch wer einmal gesehen",
+              "zwei Stunden völlig normal, für den anderen eine",
+              "getauscht werden. Schreibt die Chefin um 23:40, wer",
+              "von Lesebestätigungen argumentieren, sie machten Kommunikation ehrlicher. Ohne"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "zwei Stunden völlig normal, für den anderen eine"
+          },
+          {
+            "id": "r34-instant-messages-de-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Ruf, zuverlässig zu sein. Niemand hat“",
+            "choices": [
+              "Schweigen mit Bestätigung fühlt sich anders an als",
+              "um darauf zu antworten – und genau diese",
+              "offiziell verlangt, online zu bleiben, doch",
+              "wie schnell man antworten sollte, und Neue lernen"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Ruf, zuverlässig zu sein. Niemand hat offiziell verlangt, online zu bleiben, doch"
+          },
+          {
+            "id": "r34-instant-messages-de-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Schul-AG oder ein Freundeskreis kann im Kleinen Ähnliches“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 4,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 5.",
+            "evidence": "Schul-AG oder ein Freundeskreis kann im Kleinen Ähnliches"
+          },
+          {
+            "id": "r34-instant-messages-de-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "Argument setzt eine Freiheit voraus, die viele nicht",
+              "viel stille Unruhe ausgelöst wie zwei kleine Haken,",
+              "antwortet, die zusätzlichen Stunden – und den Ruf,",
+              "und Neue lernen sie meist erst, indem sie"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "Argument setzt eine Freiheit voraus, die viele nicht"
+          },
+          {
+            "id": "r34-instant-messages-de-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „nicht gleich verteilt. Nehmen wir eine“",
+            "choices": [
+              "wurde, weiß: Schweigen mit Bestätigung fühlt sich anders",
+              "Sechzehnjährige mit einem Wochenendjob in einem",
+              "Kraft oder Information, um darauf zu antworten –",
+              "Regeln darüber, wie schnell man antworten sollte, und"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "nicht gleich verteilt. Nehmen wir eine Sechzehnjährige mit einem Wochenendjob in einem"
+          },
+          {
+            "id": "r34-instant-messages-de-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Letztlich sollte ein Haken uns sagen, dass eine“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 4,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 5.",
+            "evidence": "Letztlich sollte ein Haken uns sagen, dass eine"
+          },
+          {
+            "id": "r34-instant-messages-de-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "der Praxis haben sie das Lesen in eine",
+              "doch das System belohnt diejenigen, die es tun,",
+              "für den anderen eine Kränkung. Weil die Regeln",
+              "Notfall kann es sehr wichtig sein zu wissen,"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "Notfall kann es sehr wichtig sein zu wissen,"
+          },
+          {
+            "id": "r34-instant-messages-de-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „seine Nachricht gelesen wurde. In der“",
+            "choices": [
+              "Praxis haben sie das Lesen in",
+              "das System belohnt diejenigen, die es tun, und",
+              "der Zeit, Kraft oder Information, um darauf zu",
+              "ungeschriebene Regeln darüber, wie schnell man antworten sollte,"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "seine Nachricht gelesen wurde. In der Praxis haben sie das Lesen in"
+          },
+          {
+            "id": "r34-instant-messages-de-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „und Neue lernen sie meist erst, indem sie“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "und Neue lernen sie meist erst, indem sie"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "de",
+        "level": "C2",
+        "title": "Schreiben, das sich wie Sprechen verhält",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-de-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „sich seit Langem schwer damit, die Sofortnachricht einzuordnen.“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5",
+              "Absatz 6"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "sich seit Langem schwer damit, die Sofortnachricht einzuordnen."
+          },
+          {
+            "id": "r34-instant-messages-de-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "beschließt, zu flüstern statt zu schreien, und schon",
+              "und die Bemerkung kursiert als Beleg für Respektlosigkeit.",
+              "sind sie keineswegs. Ein „klar“ und ein „klar!!“",
+              "zweite Schwierigkeit betrifft die Dauerhaftigkeit. Gesprochenes verfliegt, Getipptes"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "und die Bemerkung kursiert als Beleg für Respektlosigkeit."
+          },
+          {
+            "id": "r34-instant-messages-de-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „zu flüstern statt zu schreien, und“",
+            "choices": [
+              "einem System, in dem der Punkt nie eine",
+              "die sie verständlich machte. Der Screenshot sieht aus",
+              "schon die Wahl sagt etwas über",
+              "ein Schüler mit bewusster Übertreibung über eine neue"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "zu flüstern statt zu schreien, und schon die Wahl sagt etwas über"
+          },
+          {
+            "id": "r34-instant-messages-de-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Screenshot ohne die Emojis eine Mutter, und die“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5",
+              "Absatz 6"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Screenshot ohne die Emojis eine Mutter, und die"
+          },
+          {
+            "id": "r34-instant-messages-de-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 1?",
+            "choices": [
+              "über die Beziehung. Die Frage ist nicht, ob",
+              "Konventionen, die sich rund um Nachrichten entwickelt haben,",
+              "Screenshot sieht aus wie ein Beweis, und in",
+              "über eine neue Schulregel lustig und setzt drei"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "über die Beziehung. Die Frage ist nicht, ob"
+          },
+          {
+            "id": "r34-instant-messages-de-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 4,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Fall, den viele Lesende wiedererkennen werden,“",
+            "choices": [
+              "Frage ist nicht, ob dieses Schreiben korrekt ist,",
+              "auch wenn die Einzelheiten erfunden sind.",
+              "den Unterschied fast sofort. Schwierig wird es, wenn",
+              "kann per Screenshot festgehalten, zugeschnitten und einem Publikum"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Fall, den viele Lesende wiedererkennen werden, auch wenn die Einzelheiten erfunden sind."
+          },
+          {
+            "id": "r34-instant-messages-de-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Großmutter, die jede Nachricht mit einem Punkt beendet,“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5",
+              "Absatz 6"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Großmutter, die jede Nachricht mit einem Punkt beendet,"
+          },
+          {
+            "id": "r34-instant-messages-de-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 5?",
+            "choices": [
+              "weitergeleitet und Jahre später zitiert werden. Sie als",
+              "ist nicht kühl; sie schreibt in einem System,",
+              "beurteilt, losgelöst von der gemeinsamen Vorgeschichte, die sie",
+              "schreiben, und wie Dokumente, wenn wir sie lesen."
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 5.",
+            "evidence": "schreiben, und wie Dokumente, wenn wir sie lesen."
+          },
+          {
+            "id": "r34-instant-messages-de-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „des Tons und Rhythmus wieder her,“",
+            "choices": [
+              "den gesprochene Sprache automatisch mitliefert. Schmückendes",
+              "Beziehung. Die Frage ist nicht, ob dieses Schreiben",
+              "von der gemeinsamen Vorgeschichte, die sie verständlich machte.",
+              "einem Klassenchat macht sich ein Schüler mit bewusster"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "des Tons und Rhythmus wieder her, den gesprochene Sprache automatisch mitliefert. Schmückendes"
+          },
+          {
+            "id": "r34-instant-messages-de-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „gesprochene Sprache, wenn wir sie schreiben, und wie“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5",
+              "Absatz 6"
+            ],
+            "answer": 4,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 5.",
+            "evidence": "gesprochene Sprache, wenn wir sie schreiben, und wie"
+          }
+        ]
+      }
+    },
+    "fr": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "fr",
+        "level": "A1",
+        "title": "Un samedi au parc",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-fr-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « Hugo : Salut ! Samedi, »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "Hugo : Salut ! Samedi,"
+          },
+          {
+            "id": "r34-instant-messages-fr-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "parc de la Rivière ?",
+              "Ne soyez pas en retard",
+              "matin, j’ai un cours de",
+              "Théo : Midi, ça me"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "Ne soyez pas en retard"
+          },
+          {
+            "id": "r34-instant-messages-fr-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « retrouve où ? Le »",
+            "choices": [
+              "? J’apporte du pain et",
+              "de piano, mais il finit",
+              "café près du lac",
+              "midi au café avec la"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "retrouve où ? Le café près du lac"
+          },
+          {
+            "id": "r34-instant-messages-fr-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « j’ai un cours de piano, »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "j’ai un cours de piano,"
+          },
+          {
+            "id": "r34-instant-messages-fr-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "onze heures. On se retrouve",
+              "Hugo : Salut ! Samedi,",
+              "très grand. On se retrouve",
+              "café avec la porte verte."
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "onze heures. On se retrouve"
+          },
+          {
+            "id": "r34-instant-messages-fr-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « Hugo : Salut ! »",
+            "choices": [
+              "heures. On se retrouve à",
+              "Samedi, il va faire",
+              "le parc est très grand.",
+              "midi au café avec la"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "Hugo : Salut ! Samedi, il va faire"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "fr",
+        "level": "A2",
+        "title": "Un cadeau pour Eva",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-fr-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « 17:12 : Inès, au secours »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5",
+              "Paragraphe 6"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "17:12 : Inès, au secours"
+          },
+          {
+            "id": "r34-instant-messages-fr-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "travaille jusqu’à sept heures au",
+              "nouvelle salle d’escalade à côté",
+              "heures. Qu’est-ce qu’Eva aime ?",
+              "Louis, 17:18 : C’est vrai."
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "nouvelle salle d’escalade à côté"
+          },
+          {
+            "id": "r34-instant-messages-fr-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « cadeau. Je travaille jusqu’à »",
+            "choices": [
+              "un et elle ne l’a",
+              "en ville, mais il n’y",
+              "sept heures au magasin",
+              "coûte plus cher. Autre idée"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "cadeau. Je travaille jusqu’à sept heures au magasin"
+          },
+          {
+            "id": "r34-instant-messages-fr-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « la nouvelle salle d’escalade à »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5",
+              "Paragraphe 6"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "la nouvelle salle d’escalade à"
+          },
+          {
+            "id": "r34-instant-messages-fr-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 1 ?",
+            "choices": [
+              "au magasin de vélos. Tu",
+              "17:15 : Oui, je suis",
+              "mais il n’y a plus",
+              "plus cher. Autre idée :"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "au magasin de vélos. Tu"
+          },
+          {
+            "id": "r34-instant-messages-fr-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 4,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « 17:24 : Un bon »",
+            "choices": [
+              "de vélos. Tu es en",
+              "casque coûte plus cher.",
+              "pas de livres : l’année",
+              "Elle adore l’escalade et la"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "17:24 : Un bon casque coûte plus cher."
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "fr",
+        "level": "B1",
+        "title": "Ma semaine sans messagerie",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-fr-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « mois dernier, notre professeure d’éducation aux médias, Mme »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "mois dernier, notre professeure d’éducation aux médias, Mme"
+          },
+          {
+            "id": "r34-instant-messages-fr-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "autorisés, mais pas les discussions ni les messages",
+              "découvert seulement quand j’étais déjà assis dans la",
+              "avait rien de nouveau. Dans le bus, tout",
+              "J’ai donc dû faire quelque chose d’un peu"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "découvert seulement quand j’étais déjà assis dans la"
+          },
+          {
+            "id": "r34-instant-messages-fr-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « compris que je ne connaissais pas »",
+            "choices": [
+              "vocaux. J’ai accepté, surtout pour prouver que ce",
+              "une réponse tout de suite, sans les vingt",
+              "l’heure de l’entraînement de foot du",
+              "a déplacé la réunion de la bibliothèque dans"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "compris que je ne connaissais pas l’heure de l’entraînement de foot du"
+          },
+          {
+            "id": "r34-instant-messages-fr-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « notifications de deux de mes quatre groupes, et »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare les mots exacts du paragraphe 5.",
+            "evidence": "notifications de deux de mes quatre groupes, et"
+          },
+          {
+            "id": "r34-instant-messages-fr-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "remarqué que les appels courts réglaient souvent les",
+              "mois dernier, notre professeure d’éducation aux médias, Mme",
+              "me sentais exclu. Le soir, j’ai compris que",
+              "réunion de la bibliothèque dans un café, et"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "remarqué que les appels courts réglaient souvent les"
+          },
+          {
+            "id": "r34-instant-messages-fr-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « jour a été plus difficile que »",
+            "choices": [
+              "messages vocaux. J’ai accepté, surtout pour prouver que",
+              "prévu. Avant le déjeuner, j’ai regardé",
+              "j’ai eu une réponse tout de suite, sans",
+              "d’histoire a déplacé la réunion de la bibliothèque"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "jour a été plus difficile que prévu. Avant le déjeuner, j’ai regardé"
+          },
+          {
+            "id": "r34-instant-messages-fr-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « expérience m’a montré que je peux décider moi-même »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare les mots exacts du paragraphe 5.",
+            "evidence": "expérience m’a montré que je peux décider moi-même"
+          },
+          {
+            "id": "r34-instant-messages-fr-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "lancé un défi original : passer une semaine",
+              "foot du mardi, parce que l’entraîneur l’envoie toujours",
+              "j’étais déjà assis dans la bibliothèque vide. J’ai",
+              "cru qu’il s’était passé quelque chose de grave."
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "cru qu’il s’était passé quelque chose de grave."
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "fr",
+        "level": "B2",
+        "title": "Pourquoi ce message semblait-il impoli ?",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-fr-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « un « OK. » rapide à une amie, »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "un « OK. » rapide à une amie,"
+          },
+          {
+            "id": "r34-instant-messages-fr-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "suppriment presque tout ce qui nous aide à",
+              "une décision, quand tu n’es pas d’accord ou",
+              "simplement parce que c’est la ponctuation correcte. La",
+              "une situation que beaucoup d’élèves connaissent (les détails"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "une décision, quand tu n’es pas d’accord ou"
+          },
+          {
+            "id": "r34-instant-messages-fr-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « même si la personne était en »",
+            "choices": [
+              "ton de la voix, les expressions du visage,",
+              "chose sans rien dire. Deux jours plus tard,",
+              "cours ou au travail. Même le",
+              "Ce serait bizarre et cela créerait d’autres malentendus."
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "même si la personne était en cours ou au travail. Même le"
+          },
+          {
+            "id": "r34-instant-messages-fr-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « supposer : « Tu voulais dire… ? » »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare les mots exacts du paragraphe 5.",
+            "evidence": "supposer : « Tu voulais dire… ? »"
+          },
+          {
+            "id": "r34-instant-messages-fr-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "« super, vas-y ». Personne n’avait été impoli,",
+              "un « OK. » rapide à une amie,",
+              "trois heures plus tard peuvent donner une impression",
+              "cela créerait d’autres malentendus. Mieux vaut repérer les"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "« super, vas-y ». Personne n’avait été impoli,"
+          },
+          {
+            "id": "r34-instant-messages-fr-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « détails prennent une importance surprenante. Pour »",
+            "choices": [
+              "le ton de la voix, les expressions du",
+              "beaucoup de jeunes, un point à",
+              "cherché autre chose sans rien dire. Deux jours",
+              "amis. Ce serait bizarre et cela créerait d’autres"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "détails prennent une importance surprenante. Pour beaucoup de jeunes, un point à"
+          },
+          {
+            "id": "r34-instant-messages-fr-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « une conversation en face à face n’a rien »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare les mots exacts du paragraphe 5.",
+            "evidence": "une conversation en face à face n’a rien"
+          },
+          {
+            "id": "r34-instant-messages-fr-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "tu es fâché contre elle. Tu ne l’étais",
+              "entre un message vocal et un message écrit",
+              "tu n’es pas d’accord ou quand tu réponds",
+              "proposé un album photo, Marek a seulement répondu"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "proposé un album photo, Marek a seulement répondu"
+          },
+          {
+            "id": "r34-instant-messages-fr-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « te demande si tu es fâché »",
+            "choices": [
+              "contre elle. Tu ne l’étais pas",
+              "un message vocal et un message écrit peut",
+              "et a cherché autre chose sans rien dire.",
+              "à ses amis. Ce serait bizarre et cela"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "te demande si tu es fâché contre elle. Tu ne l’étais pas"
+          },
+          {
+            "id": "r34-instant-messages-fr-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « cela créerait d’autres malentendus. Mieux vaut repérer les »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "cela créerait d’autres malentendus. Mieux vaut repérer les"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "fr",
+        "level": "C1",
+        "title": "La tyrannie des coches bleues",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-fr-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « ont provoqué autant d’inquiétude silencieuse que deux petites »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "ont provoqué autant d’inquiétude silencieuse que deux petites"
+          },
+          {
+            "id": "r34-instant-messages-fr-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "coûte rien. Mais quiconque a vu un message",
+              "; pour d’autres, c’est un affront. Comme ces",
+              "des services tard le soir. Si la responsable",
+              "partisans des accusés de lecture affirment qu’ils rendent"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "; pour d’autres, c’est un affront. Comme ces"
+          },
+          {
+            "id": "r34-instant-messages-fr-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « plus, ainsi qu’une réputation de fiabilité. »",
+            "choices": [
+              "ne ressemble pas à un silence sans accusé",
+              "temps, l’énergie ou l’information nécessaires pour y répondre,",
+              "Personne n’a officiellement exigé de rester",
+              "tacites sur la vitesse de réponse, et les"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "plus, ainsi qu’une réputation de fiabilité. Personne n’a officiellement exigé de rester"
+          },
+          {
+            "id": "r34-instant-messages-fr-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « peut faire quelque chose de comparable à petite »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare les mots exacts du paragraphe 5.",
+            "evidence": "peut faire quelque chose de comparable à petite"
+          },
+          {
+            "id": "r34-instant-messages-fr-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "argument suppose une liberté que beaucoup ne ressentent",
+              "provoqué autant d’inquiétude silencieuse que deux petites coches",
+              "matin, la première personne qui répond obtient les",
+              "et les nouveaux venus ne les découvrent souvent"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "argument suppose une liberté que beaucoup ne ressentent"
+          },
+          {
+            "id": "r34-instant-messages-fr-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « pas répartie de façon égale. Une »",
+            "choices": [
+              "une lecture confirmée ne ressemble pas à un",
+              "lycéenne de seize ans qui travaille",
+              "d’avoir le temps, l’énergie ou l’information nécessaires pour",
+              "développent des règles tacites sur la vitesse de"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "pas répartie de façon égale. Une lycéenne de seize ans qui travaille"
+          },
+          {
+            "id": "r34-instant-messages-fr-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « fond, une coche devrait nous dire qu’un message »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare les mots exacts du paragraphe 5.",
+            "evidence": "fond, une coche devrait nous dire qu’un message"
+          },
+          {
+            "id": "r34-instant-messages-fr-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "pratique, ils ont transformé la lecture en une",
+              "connecté, mais le système récompense ceux qui le",
+              "affront. Comme ces règles sont invisibles, les conflits",
+              "faux : en cas d’urgence, savoir qu’un message"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "faux : en cas d’urgence, savoir qu’un message"
+          },
+          {
+            "id": "r34-instant-messages-fr-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « message avait bien été lu. En »",
+            "choices": [
+              "pratique, ils ont transformé la lecture",
+              "mais le système récompense ceux qui le font",
+              "du fait d’avoir le temps, l’énergie ou l’information",
+              "les équipes développent des règles tacites sur la"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "message avait bien été lu. En pratique, ils ont transformé la lecture"
+          },
+          {
+            "id": "r34-instant-messages-fr-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « et les nouveaux venus ne les découvrent souvent »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "et les nouveaux venus ne les découvrent souvent"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-instant-messages",
+        "language": "fr",
+        "level": "C2",
+        "title": "Une écriture qui se comporte comme la parole",
+        "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-instant-messages-fr-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « longtemps eu du mal à classer le message »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5",
+              "Paragraphe 6"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "longtemps eu du mal à classer le message"
+          },
+          {
+            "id": "r34-instant-messages-fr-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "chuchoter plutôt que de crier, et ce choix",
+              "la mère d’un élève, et la remarque circule",
+              "en rien de simples ornements. Un « oui",
+              "seconde difficulté tient à la permanence. Les paroles"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "la mère d’un élève, et la remarque circule"
+          },
+          {
+            "id": "r34-instant-messages-fr-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « plutôt que de crier, et ce »",
+            "choices": [
+              "dans un système où le point n’a jamais",
+              "l’histoire commune qui les rendait compréhensibles. La capture",
+              "choix en dit déjà long sur",
+              "d’une nouvelle règle du lycée en exagérant volontairement"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "plutôt que de crier, et ce choix en dit déjà long sur"
+          },
+          {
+            "id": "r34-instant-messages-fr-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « recadrée, sans les émojis, parvient à la mère »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5",
+              "Paragraphe 6"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "recadrée, sans les émojis, parvient à la mère"
+          },
+          {
+            "id": "r34-instant-messages-fr-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 1 ?",
+            "choices": [
+              "relation. La question n’est pas de savoir si",
+              "qui se sont développées autour des messages forment",
+              "La capture d’écran a l’air d’une preuve, et",
+              "en exagérant volontairement et ajoute trois émojis qui"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "relation. La question n’est pas de savoir si"
+          },
+          {
+            "id": "r34-instant-messages-fr-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 4,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « bien des lecteurs reconnaîtront, même si »",
+            "choices": [
+              "de savoir si cette écriture est correcte, mais",
+              "les détails sont inventés. Dans le",
+              "qui partagent le code saisissent la nuance presque",
+              "de cinq personnes peut être capturée, recadrée et"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "bien des lecteurs reconnaîtront, même si les détails sont inventés. Dans le"
+          },
+          {
+            "id": "r34-instant-messages-fr-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « Une grand-mère qui termine chaque message par un »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5",
+              "Paragraphe 6"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "Une grand-mère qui termine chaque message par un"
+          },
+          {
+            "id": "r34-instant-messages-fr-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 5 ?",
+            "choices": [
+              "cité des années plus tard. Le réduire à",
+              "n’est pas froide ; elle écrit dans un",
+              "par un autre, coupés de l’histoire commune qui",
+              "écrivons, et comme des documents quand nous les"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 5.",
+            "evidence": "écrivons, et comme des documents quand nous les"
+          },
+          {
+            "id": "r34-instant-messages-fr-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « une partie du ton et du »",
+            "choices": [
+              "rythme que la parole fournit d’elle-même.",
+              "n’est pas de savoir si cette écriture est",
+              "un autre, coupés de l’histoire commune qui les",
+              "classe, un élève se moque d’une nouvelle règle"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "une partie du ton et du rythme que la parole fournit d’elle-même."
+          },
+          {
+            "id": "r34-instant-messages-fr-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « de la parole quand nous les écrivons, et »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5",
+              "Paragraphe 6"
+            ],
+            "answer": 4,
+            "explanation": "Compare les mots exacts du paragraphe 5.",
+            "evidence": "de la parole quand nous les écrivons, et"
+          }
+        ]
+      }
+    }
+  }
+}

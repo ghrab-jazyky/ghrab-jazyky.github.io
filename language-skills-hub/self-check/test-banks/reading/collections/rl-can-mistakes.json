@@ -1,0 +1,3703 @@
+{
+  "kind": "LSH_READING_DRAFT_COLLECTION_R34_V1",
+  "topic": "rl-can-mistakes",
+  "relativeSource": "cteni/can-mistakes/index.html",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "auditStatus": "CLAUDE_CONTENT_REWRITE_PENDING",
+  "published": false,
+  "version": "R34-DRAFT",
+  "variants": {
+    "en": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "en",
+        "level": "A1",
+        "title": "I Can Try Again",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-en-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “is fifteen. She likes English,”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "is fifteen. She likes English,"
+          },
+          {
+            "id": "r34-can-mistakes-en-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 1?",
+            "choices": [
+              "the story. Mia can understand",
+              "At school, her teacher gives",
+              "tomorrow. She tells Leo that"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "At school, her teacher gives"
+          },
+          {
+            "id": "r34-can-mistakes-en-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “page, but she stops”",
+            "choices": [
+              "teacher helps her with the",
+              "she puts the notebook in",
+              "at a sentence about"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "page, but she stops at a sentence about"
+          },
+          {
+            "id": "r34-can-mistakes-en-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “her notebook. Leo does not”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "her notebook. Leo does not"
+          },
+          {
+            "id": "r34-can-mistakes-en-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 2?",
+            "choices": [
+              "fifteen. She likes English, but",
+              "from the picture. Her teacher",
+              "notebook in her bag. At"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "from the picture. Her teacher"
+          },
+          {
+            "id": "r34-can-mistakes-en-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “Leo says, ‘It is”",
+            "choices": [
+              "writes a small question mark",
+              "class, she puts the notebook",
+              "OK. Read the story"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "Leo says, ‘It is OK. Read the story"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "en",
+        "level": "A2",
+        "title": "A Small Change, a Better Result",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-en-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “a science test on Thursday.”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "a science test on Thursday."
+          },
+          {
+            "id": "r34-can-mistakes-en-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 1?",
+            "choices": [
+              "his phone. When his sister",
+              "different plan. Last month, he",
+              "He understands that a useful"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "different plan. Last month, he"
+          },
+          {
+            "id": "r34-can-mistakes-en-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “test. Now he writes”",
+            "choices": [
+              "in his textbook instead of",
+              "is a little better, but",
+              "a simple plan above"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "test. Now he writes a simple plan above"
+          },
+          {
+            "id": "r34-can-mistakes-en-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “checks his notes again. On”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "checks his notes again. On"
+          },
+          {
+            "id": "r34-can-mistakes-en-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 2?",
+            "choices": [
+              "a science test on Thursday.",
+              "Daniel looks for an example",
+              "but he is especially pleased"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "Daniel looks for an example"
+          },
+          {
+            "id": "r34-can-mistakes-en-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “studies for twenty minutes”",
+            "choices": [
+              "a calmer day, not just",
+              "grade is a little better,",
+              "and takes a short"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "studies for twenty minutes and takes a short"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "en",
+        "level": "C1",
+        "title": "The Hidden Cost of Constant Improvement",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-en-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “encourage learners to embrace challenges, treat setbacks as”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "encourage learners to embrace challenges, treat setbacks as"
+          },
+          {
+            "id": "r34-can-mistakes-en-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "problem to be solved through additional effort. Posters",
+              "is meaningful when it expands possibilities, not when",
+              "space, works after school and struggles to find",
+              "Moreover, not every educational activity needs to be"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "is meaningful when it expands possibilities, not when"
+          },
+          {
+            "id": "r34-can-mistakes-en-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “another obligation. A thoughtful disagreement with”",
+            "choices": [
+              "but encouragement without practical support can sound remarkably",
+              "the unequal conditions under which their effort takes",
+              "a friend may reveal a new",
+              "and revise ineffective strategies, but schools should also"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "another obligation. A thoughtful disagreement with a friend may reveal a new"
+          },
+          {
+            "id": "r34-can-mistakes-en-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “and struggles to find uninterrupted study time. Advising”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "and struggles to find uninterrupted study time. Advising"
+          },
+          {
+            "id": "r34-can-mistakes-en-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 2?",
+            "choices": [
+              "hour. Celebrating only the first student’s progress risks",
+              "learners to embrace challenges, treat setbacks as information",
+              "as an opportunity for self-optimisation, curiosity risks becoming",
+              "but schools should also consider access to support,"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "hour. Celebrating only the first student’s progress risks"
+          },
+          {
+            "id": "r34-can-mistakes-en-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “learners to embrace challenges, treat setbacks”",
+            "choices": [
+              "first student’s progress risks confusing access to resources",
+              "as information and believe that abilities",
+              "regard even their leisure time as an opportunity",
+              "mistakes and revise ineffective strategies, but schools should"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "learners to embrace challenges, treat setbacks as information and believe that abilities"
+          },
+          {
+            "id": "r34-can-mistakes-en-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “making feedback more specific and allowing revision. None”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "making feedback more specific and allowing revision. None"
+          },
+          {
+            "id": "r34-can-mistakes-en-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "students who have come to regard a single",
+              "Celebrating only the first student’s progress risks confusing",
+              "expands possibilities, not when it becomes an endless",
+              "a new hobby may have value that is"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "a new hobby may have value that is"
+          },
+          {
+            "id": "r34-can-mistakes-en-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “reaching agreement or experimenting with a”",
+            "choices": [
+              "new hobby may have value that",
+              "easy to applaud, but encouragement without practical support",
+              "to ‘try harder’ obscures the unequal conditions under",
+              "to analyse mistakes and revise ineffective strategies, but"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "reaching agreement or experimenting with a new hobby may have value that"
+          },
+          {
+            "id": "r34-can-mistakes-en-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “can help explain unfamiliar material. The other shares”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "can help explain unfamiliar material. The other shares"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "en",
+        "level": "C2",
+        "title": "When Resilience Becomes an Obligation",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-en-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “ideals are as difficult to oppose as resilience.”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "ideals are as difficult to oppose as resilience."
+          },
+          {
+            "id": "r34-can-mistakes-en-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "so damaging. The familiar inspirational story is usually",
+              "than a failure of ambition. The most defensible",
+              "endurance rather than benefiting from education. Both can",
+              "matters because performance indicators have an unfortunate tendency"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "than a failure of ambition. The most defensible"
+          },
+          {
+            "id": "r34-can-mistakes-en-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “how quickly students improve their scores.”",
+            "choices": [
+              "to advise perseverance responsibly while someone still faces",
+              "them is whether their environment offers a reasonable",
+              "A learner exploring a difficult idea",
+              "for a richer account of educational success: one"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "how quickly students improve their scores. A learner exploring a difficult idea"
+          },
+          {
+            "id": "r34-can-mistakes-en-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “from education. Both can appear equally determined from”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "from education. Both can appear equally determined from"
+          },
+          {
+            "id": "r34-can-mistakes-en-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 2?",
+            "choices": [
+              "Yet celebrating it can spare an institution the",
+              "are as difficult to oppose as resilience. The",
+              "purpose and when it has become ritual. Consider",
+              "success: one attentive to structural constraints, willing to"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "Yet celebrating it can spare an institution the"
+          },
+          {
+            "id": "r34-can-mistakes-en-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “are as difficult to oppose as”",
+            "choices": [
+              "can spare an institution the awkward question of",
+              "resilience. The capacity to recover from",
+              "someone capable of judging when persistence serves a",
+              "it calls for a richer account of educational"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "are as difficult to oppose as resilience. The capacity to recover from"
+          },
+          {
+            "id": "r34-can-mistakes-en-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “matters; it simply becomes more discerning. A student”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "matters; it simply becomes more discerning. A student"
+          },
+          {
+            "id": "r34-can-mistakes-en-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "Problems arise, however, when resilience ceases to describe",
+              "celebrating it can spare an institution the awkward",
+              "ambition. The most defensible educational culture does not",
+              "and even the decision to abandon a poorly"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "and even the decision to abandon a poorly"
+          },
+          {
+            "id": "r34-can-mistakes-en-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “uncharted experiences are unproductive. Hesitation, intellectual”",
+            "choices": [
+              "wandering and even the decision to",
+              "ended. It is harder to advise perseverance responsibly",
+              "a distance. What separates them is whether their",
+              "powerless. Rather, it calls for a richer account"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "uncharted experiences are unproductive. Hesitation, intellectual wandering and even the decision to"
+          },
+          {
+            "id": "r34-can-mistakes-en-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “repeatedly required to overcome inadequate support may be”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "repeatedly required to overcome inadequate support may be"
+          }
+        ]
+      }
+    },
+    "es": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "es",
+        "level": "A1",
+        "title": "Puedo intentarlo otra vez",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-es-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «Mía tiene quince años. Le»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "Mía tiene quince años. Le"
+          },
+          {
+            "id": "r34-can-mistakes-es-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 1?",
+            "choices": [
+              "Pregunta qué significan dos palabras",
+              "todas las palabras. El lunes",
+              "otra historia. No es fácil,"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "todas las palabras. El lunes"
+          },
+          {
+            "id": "r34-can-mistakes-es-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «lunes lee una historia»",
+            "choices": [
+              "palabras y las escribe en",
+              "es fácil, pero entiende más.",
+              "corta. Algunas palabras son"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "lunes lee una historia corta. Algunas palabras son"
+          },
+          {
+            "id": "r34-can-mistakes-es-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «historia otra vez». Mía lee»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "historia otra vez». Mía lee"
+          },
+          {
+            "id": "r34-can-mistakes-es-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "tiene quince años. Le gusta",
+              "dos palabras y las escribe",
+              "es fácil, pero entiende más."
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "dos palabras y las escribe"
+          },
+          {
+            "id": "r34-can-mistakes-es-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «Su amigo Leo dice:»",
+            "choices": [
+              "palabras son nuevas. Está un",
+              "es fácil, pero entiende más.",
+              "«No pasa nada. Lee"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "Su amigo Leo dice: «No pasa nada. Lee"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "es",
+        "level": "A2",
+        "title": "Un pequeño cambio, un mejor resultado",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-es-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «Daniel tiene un examen de»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "Daniel tiene un examen de"
+          },
+          {
+            "id": "r34-can-mistakes-es-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 1?",
+            "choices": [
+              "a mirar sus apuntes. El",
+              "por la noche. Se acuesta",
+              "embargo, está más tranquilo que"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "por la noche. Se acuesta"
+          },
+          {
+            "id": "r34-can-mistakes-es-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «tarde y al día»",
+            "choices": [
+              "contestar algunas preguntas sin mirar",
+              "Después de clase, escribe lo",
+              "siguiente está cansado. Esta"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "tarde y al día siguiente está cansado. Esta"
+          },
+          {
+            "id": "r34-can-mistakes-es-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «importante a su hermana. Cuando»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "importante a su hermana. Cuando"
+          },
+          {
+            "id": "r34-can-mistakes-es-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "tiene un examen de ciencias",
+              "miércoles intenta contestar algunas preguntas",
+              "de clase, escribe lo que"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "miércoles intenta contestar algunas preguntas"
+          },
+          {
+            "id": "r34-can-mistakes-es-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «lunes estudia veinte minutos»",
+            "choices": [
+              "Esta vez quiere probar un",
+              "veces. Después de clase, escribe",
+              "y descansa un poco."
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "lunes estudia veinte minutos y descansa un poco."
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "es",
+        "level": "B1",
+        "title": "El problema de querer hacerlo todo bien",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-es-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «Lara empezó la secundaria, estaba orgullosa de sacar»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "Lara empezó la secundaria, estaba orgullosa de sacar"
+          },
+          {
+            "id": "r34-can-mistakes-es-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "se sentía segura. Si no conseguía hacer algo",
+              "ya no interpreta cada error como una prueba",
+              "veces delante de sus compañeros. En lugar de",
+              "Una semana después, pudo tocar la pieza entera"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "ya no interpreta cada error como una prueba"
+          },
+          {
+            "id": "r34-can-mistakes-es-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «ante los problemas. Empezó a preguntarse»",
+            "choices": [
+              "bien a la primera, pensaba que simplemente no",
+              "tocara más rápido, la profesora le recomendó practicar",
+              "«¿Qué podría hacer de otra manera?»",
+              "las notas. La diferencia es que ya no"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "ante los problemas. Empezó a preguntarse «¿Qué podría hacer de otra manera?»"
+          },
+          {
+            "id": "r34-can-mistakes-es-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «de sus compañeros. En lugar de pedirle que»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "de sus compañeros. En lugar de pedirle que"
+          },
+          {
+            "id": "r34-can-mistakes-es-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "repitió despacio, escuchó con atención y lo volvió",
+              "Lara empezó la secundaria, estaba orgullosa de sacar",
+              "de reaccionar ante los problemas. Empezó a preguntarse",
+              "notas. La diferencia es que ya no interpreta"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "repitió despacio, escuchó con atención y lo volvió"
+          },
+          {
+            "id": "r34-can-mistakes-es-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «Lara empezó la secundaria, estaba orgullosa»",
+            "choices": [
+              "escuchó con atención y lo volvió a intentar",
+              "de sacar buenas notas. Le gustaba",
+              "cambió su manera de reaccionar ante los problemas.",
+              "importan las notas. La diferencia es que ya"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "Lara empezó la secundaria, estaba orgullosa de sacar buenas notas. Le gustaba"
+          },
+          {
+            "id": "r34-can-mistakes-es-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «de fracaso. A veces, avanzar significa simplemente descubrir»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "de fracaso. A veces, avanzar significa simplemente descubrir"
+          },
+          {
+            "id": "r34-can-mistakes-es-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "gustaba enseñarles sus resultados a sus padres, pero",
+              "despacio, escuchó con atención y lo volvió a",
+              "no interpreta cada error como una prueba de",
+              "experiencia no la convirtió en una música brillante,"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "experiencia no la convirtió en una música brillante,"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "es",
+        "level": "B2",
+        "title": "Cuando los comentarios parecen un fracaso",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-es-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «resultado decepcionante puede parecernos un juicio sobre quiénes»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "resultado decepcionante puede parecernos un juicio sobre quiénes"
+          },
+          {
+            "id": "r34-can-mistakes-es-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "un profesor puede sonar como una crítica a",
+              "identidad permanente, y decidir qué sugerencias vale la",
+              "pero que los datos que lo apoyan están",
+              "Por supuesto, los comentarios del profesorado no siempre"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "identidad permanente, y decidir qué sugerencias vale la"
+          },
+          {
+            "id": "r34-can-mistakes-es-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «preguntas concretas: «¿Podría mostrarme dónde deja»",
+            "choices": [
+              "Esta reacción es comprensible, pero dificulta aprovechar la",
+              "la nota por injusta o analizar cómo cada",
+              "de estar claro mi razonamiento?» resulta",
+              "Significa distinguir entre un rendimiento puntual y una"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "preguntas concretas: «¿Podría mostrarme dónde deja de estar claro mi razonamiento?» resulta"
+          },
+          {
+            "id": "r34-can-mistakes-es-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «que lo apoyan están mal organizados. Ella puede»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "que lo apoyan están mal organizados. Ella puede"
+          },
+          {
+            "id": "r34-can-mistakes-es-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "calificación, pero solo la segunda ofrece una oportunidad",
+              "decepcionante puede parecernos un juicio sobre quiénes somos,",
+              "el alumnado necesita confianza para formular preguntas concretas:",
+              "distinguir entre un rendimiento puntual y una identidad"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "calificación, pero solo la segunda ofrece una oportunidad"
+          },
+          {
+            "id": "r34-can-mistakes-es-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «decepcionante puede parecernos un juicio sobre»",
+            "choices": [
+              "la segunda ofrece una oportunidad realista de mejorar",
+              "quiénes somos, en vez de una",
+              "mantener una actitud constructiva, el alumnado necesita confianza",
+              "disfrutarla. Significa distinguir entre un rendimiento puntual y"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "decepcionante puede parecernos un juicio sobre quiénes somos, en vez de una"
+          },
+          {
+            "id": "r34-can-mistakes-es-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «prueba. El objetivo no es evitar la decepción,»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "prueba. El objetivo no es evitar la decepción,"
+          },
+          {
+            "id": "r34-can-mistakes-es-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "muestra de lo que sabemos en un momento",
+              "pero solo la segunda ofrece una oportunidad realista",
+              "y decidir qué sugerencias vale la pena poner",
+              "sistemas de evaluación favorecen una forma de escribir"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "sistemas de evaluación favorecen una forma de escribir"
+          },
+          {
+            "id": "r34-can-mistakes-es-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «mal una idea y algunos sistemas»",
+            "choices": [
+              "de evaluación favorecen una forma de",
+              "su inteligencia. Esta reacción es comprensible, pero dificulta",
+              "puede rechazar la nota por injusta o analizar",
+              "exige disfrutarla. Significa distinguir entre un rendimiento puntual"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "mal una idea y algunos sistemas de evaluación favorecen una forma de"
+          },
+          {
+            "id": "r34-can-mistakes-es-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «señala que su argumento es interesante, pero que»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "señala que su argumento es interesante, pero que"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "es",
+        "level": "C1",
+        "title": "El coste oculto de mejorar constantemente",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-es-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «educativos suelen animar al alumnado a aceptar los»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "educativos suelen animar al alumnado a aceptar los"
+          },
+          {
+            "id": "r34-can-mistakes-es-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "obstante, el discurso de la mejora tiene una",
+              "los centros también deben examinar el acceso al",
+              "adulta que puede explicarle los contenidos difíciles. El",
+              "Además, no toda experiencia educativa tiene que traducirse"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "los centros también deben examinar el acceso al"
+          },
+          {
+            "id": "r34-can-mistakes-es-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «incluso el tiempo libre se convierte»",
+            "choices": [
+              "que toda dificultad se resuelve mediante un esfuerzo",
+              "de gente, trabaja después de clase y apenas",
+              "en una oportunidad de optimización personal,",
+              "institucional. Los estudiantes deberían aprender a analizar errores"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "incluso el tiempo libre se convierte en una oportunidad de optimización personal,"
+          },
+          {
+            "id": "r34-can-mistakes-es-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «los contenidos difíciles. El otro comparte un espacio»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "los contenidos difíciles. El otro comparte un espacio"
+          },
+          {
+            "id": "r34-can-mistakes-es-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "simplemente «se esfuercen más» oculta las condiciones desiguales",
+              "educativos suelen animar al alumnado a aceptar los",
+              "de reflejar en una calificación. Si incluso el",
+              "estudiantes deberían aprender a analizar errores y modificar"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "simplemente «se esfuercen más» oculta las condiciones desiguales"
+          },
+          {
+            "id": "r34-can-mistakes-es-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «educativos suelen animar al alumnado a»",
+            "choices": [
+              "más» oculta las condiciones desiguales en las que",
+              "aceptar los retos, interpretar los tropiezos",
+              "tener un valor difícil de reflejar en una",
+              "responsabilidad institucional. Los estudiantes deberían aprender a analizar"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "educativos suelen animar al alumnado a aceptar los retos, interpretar los tropiezos"
+          },
+          {
+            "id": "r34-can-mistakes-es-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «sentido cuando amplía las posibilidades, no cuando impone»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "sentido cuando amplía las posibilidades, no cuando impone"
+          },
+          {
+            "id": "r34-can-mistakes-es-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "en que las capacidades pueden desarrollarse. Estas ideas",
+              "«se esfuercen más» oculta las condiciones desiguales en",
+              "deben examinar el acceso al apoyo, la evaluación",
+              "cuestión sin llegar a un acuerdo o experimentar"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "cuestión sin llegar a un acuerdo o experimentar"
+          },
+          {
+            "id": "r34-can-mistakes-es-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «una novela absorbente, debatir una cuestión»",
+            "choices": [
+              "sin llegar a un acuerdo o",
+              "cómoda: puede sugerir que toda dificultad se resuelve",
+              "un espacio lleno de gente, trabaja después de",
+              "la responsabilidad institucional. Los estudiantes deberían aprender a"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "una novela absorbente, debatir una cuestión sin llegar a un acuerdo o"
+          },
+          {
+            "id": "r34-can-mistakes-es-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «tranquila, conexión fiable y una persona adulta que»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "tranquila, conexión fiable y una persona adulta que"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "es",
+        "level": "C2",
+        "title": "Cuando la resiliencia se convierte en una obligación",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-es-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «educativos parecen tan difíciles de cuestionar como la»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "educativos parecen tan difíciles de cuestionar como la"
+          },
+          {
+            "id": "r34-can-mistakes-es-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "moral impuesta con independencia de sus circunstancias. Entonces,",
+              "las limitaciones estructurales, dispuesta a cuestionar sus propios",
+              "obliga repetidamente a superar carencias de apoyo quizá",
+              "Esto importa porque los indicadores de rendimiento tienden,"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "las limitaciones estructurales, dispuesta a cuestionar sus propios"
+          },
+          {
+            "id": "r34-can-mistakes-es-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «deficiencias. Sin embargo, la madurez no»",
+            "choices": [
+              "ocultar precisamente las condiciones que hicieron tan perjudicial",
+              "beneficiándose de una educación adecuada. A distancia, ambos",
+              "consiste únicamente en persistir, sino en",
+              "el alumnado carece de capacidad de decisión. Más"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "deficiencias. Sin embargo, la madurez no consiste únicamente en persistir, sino en"
+          },
+          {
+            "id": "r34-can-mistakes-es-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «superar carencias de apoyo quizá esté demostrando resistencia,»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "superar carencias de apoyo quizá esté demostrando resistencia,"
+          },
+          {
+            "id": "r34-can-mistakes-es-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "entorno ofrece una posibilidad razonable de que el",
+              "educativos parecen tan difíciles de cuestionar como la",
+              "meta mal elegida se convierten así en supuestas",
+              "capacidad de decisión. Más bien, invita a adoptar"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "entorno ofrece una posibilidad razonable de que el"
+          },
+          {
+            "id": "r34-can-mistakes-es-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «educativos parecen tan difíciles de cuestionar»",
+            "choices": [
+              "posibilidad razonable de que el esfuerzo renovado produzca",
+              "como la resiliencia. La capacidad de",
+              "incluso la decisión de abandonar una meta mal",
+              "de que el alumnado carece de capacidad de"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "educativos parecen tan difíciles de cuestionar como la resiliencia. La capacidad de"
+          },
+          {
+            "id": "r34-can-mistakes-es-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «defendible no celebra la perseverancia sin matices. Ofrece»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "defendible no celebra la perseverancia sin matices. Ofrece"
+          },
+          {
+            "id": "r34-can-mistakes-es-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "una premisa y perseverar ante la incertidumbre es",
+              "ofrece una posibilidad razonable de que el esfuerzo",
+              "a cuestionar sus propios criterios de medida y",
+              "una gráfica, resulta tentador concluir que las experiencias"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "una gráfica, resulta tentador concluir que las experiencias"
+          },
+          {
+            "id": "r34-can-mistakes-es-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «que el progreso puede representarse en»",
+            "choices": [
+              "una gráfica, resulta tentador concluir que",
+              "de «sobreponerse» puede ocultar precisamente las condiciones que",
+              "resistencia, no beneficiándose de una educación adecuada. A",
+              "o de que el alumnado carece de capacidad"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "que el progreso puede representarse en una gráfica, resulta tentador concluir que"
+          },
+          {
+            "id": "r34-can-mistakes-es-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «ejerce su autonomía; otro al que se obliga»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "ejerce su autonomía; otro al que se obliga"
+          }
+        ]
+      }
+    },
+    "de": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "de",
+        "level": "A1",
+        "title": "Ich kann es noch einmal versuchen",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-de-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Mia ist fünfzehn Jahre alt.“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Mia ist fünfzehn Jahre alt."
+          },
+          {
+            "id": "r34-can-mistakes-de-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 1?",
+            "choices": [
+              "Sie fragt nach zwei Wörtern",
+              "alle Wörter. Am Montag liest",
+              "Geschichte. Sie ist nicht leicht,"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "alle Wörter. Am Montag liest"
+          },
+          {
+            "id": "r34-can-mistakes-de-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „sie eine kurze Geschichte.“",
+            "choices": [
+              "Wörtern und schreibt sie in",
+              "nicht leicht, aber Mia versteht",
+              "Einige Wörter sind neu."
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "sie eine kurze Geschichte. Einige Wörter sind neu."
+          },
+          {
+            "id": "r34-can-mistakes-de-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „die Geschichte noch einmal.“ Mia“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "die Geschichte noch einmal.“ Mia"
+          },
+          {
+            "id": "r34-can-mistakes-de-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "ist fünfzehn Jahre alt. Sie",
+              "zwei Wörtern und schreibt sie",
+              "leicht, aber Mia versteht mehr."
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "zwei Wörtern und schreibt sie"
+          },
+          {
+            "id": "r34-can-mistakes-de-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Ihr Freund Leo sagt:“",
+            "choices": [
+              "sind neu. Mia ist ein",
+              "nicht leicht, aber Mia versteht",
+              "„Das ist nicht schlimm."
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Ihr Freund Leo sagt: „Das ist nicht schlimm."
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "de",
+        "level": "A2",
+        "title": "Eine kleine Änderung, ein besseres Ergebnis",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-de-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Daniel schreibt am Donnerstag einen“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Daniel schreibt am Donnerstag einen"
+          },
+          {
+            "id": "r34-can-mistakes-de-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 1?",
+            "choices": [
+              "er seine Notizen noch einmal.",
+              "alles auf einmal. Er bleibt",
+              "Trotzdem ist er ruhiger als"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "alles auf einmal. Er bleibt"
+          },
+          {
+            "id": "r34-can-mistakes-de-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „wach und ist am“",
+            "choices": [
+              "er einige Fragen, ohne die",
+              "der Schule notiert er, was",
+              "nächsten Tag müde. Diesmal"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "wach und ist am nächsten Tag müde. Diesmal"
+          },
+          {
+            "id": "r34-can-mistakes-de-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Schwester eine wichtige Idee. Wenn“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Schwester eine wichtige Idee. Wenn"
+          },
+          {
+            "id": "r34-can-mistakes-de-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "schreibt am Donnerstag einen Test",
+              "Mittwoch beantwortet er einige Fragen,",
+              "Schule notiert er, was er"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Mittwoch beantwortet er einige Fragen,"
+          },
+          {
+            "id": "r34-can-mistakes-de-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Montag lernt er zwanzig“",
+            "choices": [
+              "Diesmal möchte er einen anderen",
+              "Nach der Schule notiert er,",
+              "Minuten und macht eine"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Montag lernt er zwanzig Minuten und macht eine"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "de",
+        "level": "B1",
+        "title": "Das Problem, immer gut sein zu wollen",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-de-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Lara auf die weiterführende Schule kam, war sie“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Lara auf die weiterführende Schule kam, war sie"
+          },
+          {
+            "id": "r34-can-mistakes-de-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "sicher fühlte. Wenn sie etwas nicht sofort richtig",
+              "nicht mehr jeden Fehler als Beweis für ein",
+              "mehrere Fehler. Ihre Lehrerin forderte sie nicht auf,",
+              "Eine Woche später konnte sie das ganze Stück"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "nicht mehr jeden Fehler als Beweis für ein"
+          },
+          {
+            "id": "r34-can-mistakes-de-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „sie reagierte anders auf Schwierigkeiten. Statt“",
+            "choices": [
+              "machen konnte, glaubte sie, dass ihr einfach das",
+              "zu spielen, sondern schlug vor, nur vier schwierige",
+              "„Bin ich gut darin?“ fragte sie",
+              "immer noch wichtig. Sie betrachtet jedoch nicht mehr"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "sie reagierte anders auf Schwierigkeiten. Statt „Bin ich gut darin?“ fragte sie"
+          },
+          {
+            "id": "r34-can-mistakes-de-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Lehrerin forderte sie nicht auf, schneller zu spielen,“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Lehrerin forderte sie nicht auf, schneller zu spielen,"
+          },
+          {
+            "id": "r34-can-mistakes-de-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "wiederholte sie langsam, hörte genau zu und versuchte",
+              "Lara auf die weiterführende Schule kam, war sie",
+              "Musikerin. Aber sie reagierte anders auf Schwierigkeiten. Statt",
+              "noch wichtig. Sie betrachtet jedoch nicht mehr jeden"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "wiederholte sie langsam, hörte genau zu und versuchte"
+          },
+          {
+            "id": "r34-can-mistakes-de-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Lara auf die weiterführende Schule kam,“",
+            "choices": [
+              "langsam, hörte genau zu und versuchte es am",
+              "war sie stolz auf ihre guten",
+              "einer großartigen Musikerin. Aber sie reagierte anders auf",
+              "immer noch wichtig. Sie betrachtet jedoch nicht mehr"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Lara auf die weiterführende Schule kam, war sie stolz auf ihre guten"
+          },
+          {
+            "id": "r34-can-mistakes-de-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Versagen. Manchmal bedeutet Fortschritt einfach zu erkennen, was“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Versagen. Manchmal bedeutet Fortschritt einfach zu erkennen, was"
+          },
+          {
+            "id": "r34-can-mistakes-de-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "guten Noten. Sie zeigte ihren Eltern gern ihre",
+              "sie langsam, hörte genau zu und versuchte es",
+              "mehr jeden Fehler als Beweis für ein Versagen.",
+              "spielen. Dadurch wurde sie nicht plötzlich zu einer"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "spielen. Dadurch wurde sie nicht plötzlich zu einer"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "de",
+        "level": "B2",
+        "title": "Wenn Rückmeldungen wie Niederlagen wirken",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-de-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „enttäuschendes Ergebnis kann sich wie ein Urteil über“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "enttäuschendes Ergebnis kann sich wie ein Urteil über"
+          },
+          {
+            "id": "r34-can-mistakes-de-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "sorgfältig formulierte Kommentare manchmal als Kritik an ihrer",
+              "der eigenen Identität zu unterscheiden und zu prüfen,",
+              "jedoch den Aufbau der Belege. Die Schülerin kann",
+              "Natürlich sind Rückmeldungen nicht automatisch richtig. Lehrkräfte können"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "der eigenen Identität zu unterscheiden und zu prüfen,"
+          },
+          {
+            "id": "r34-can-mistakes-de-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „gezielt nachzufragen. „Können Sie mir zeigen,“",
+            "choices": [
+              "Das ist nachvollziehbar, erschwert aber den sinnvollen Umgang",
+              "zurückweisen oder untersuchen, wie die einzelnen Absätze ihre",
+              "an welcher Stelle meine Begründung unklar",
+              "mögen zu müssen. Entscheidend ist, zwischen einer vorübergehenden"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "gezielt nachzufragen. „Können Sie mir zeigen, an welcher Stelle meine Begründung unklar"
+          },
+          {
+            "id": "r34-can-mistakes-de-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „der Belege. Die Schülerin kann die Note als“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "der Belege. Die Schülerin kann die Note als"
+          },
+          {
+            "id": "r34-can-mistakes-de-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "Note, aber nur die zweite eröffnet eine echte",
+              "Ergebnis kann sich wie ein Urteil über unsere",
+              "den Mut haben, gezielt nachzufragen. „Können Sie mir",
+              "müssen. Entscheidend ist, zwischen einer vorübergehenden Leistung und"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Note, aber nur die zweite eröffnet eine echte"
+          },
+          {
+            "id": "r34-can-mistakes-de-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „enttäuschendes Ergebnis kann sich wie ein“",
+            "choices": [
+              "die zweite eröffnet eine echte Chance, den nächsten",
+              "Urteil über unsere Person anfühlen und",
+              "Einstellung: Sie müssen auch den Mut haben, gezielt",
+              "mögen zu müssen. Entscheidend ist, zwischen einer vorübergehenden"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "enttäuschendes Ergebnis kann sich wie ein Urteil über unsere Person anfühlen und"
+          },
+          {
+            "id": "r34-can-mistakes-de-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „geht nicht darum, Enttäuschung zu beseitigen, sondern zu“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "geht nicht darum, Enttäuschung zu beseitigen, sondern zu"
+          },
+          {
+            "id": "r34-can-mistakes-de-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "nicht wie eine Momentaufnahme dessen, was wir gerade",
+              "aber nur die zweite eröffnet eine echte Chance,",
+              "Identität zu unterscheiden und zu prüfen, welche Hinweise",
+              "bevorzugen einen engen Schreibstil. Deshalb brauchen Lernende mehr"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "bevorzugen einen engen Schreibstil. Deshalb brauchen Lernende mehr"
+          },
+          {
+            "id": "r34-can-mistakes-de-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „und manche Bewertungsverfahren bevorzugen einen engen“",
+            "choices": [
+              "Schreibstil. Deshalb brauchen Lernende mehr als",
+              "ihrer Intelligenz. Das ist nachvollziehbar, erschwert aber den",
+              "als ungerecht zurückweisen oder untersuchen, wie die einzelnen",
+              "sie mögen zu müssen. Entscheidend ist, zwischen einer"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "und manche Bewertungsverfahren bevorzugen einen engen Schreibstil. Deshalb brauchen Lernende mehr als"
+          },
+          {
+            "id": "r34-can-mistakes-de-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Die Lehrkraft findet die Argumentation interessant, bemängelt jedoch“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Die Lehrkraft findet die Argumentation interessant, bemängelt jedoch"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "de",
+        "level": "C1",
+        "title": "Der verborgene Preis ständiger Verbesserung",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-de-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „ermutigen Lernende häufig, Herausforderungen anzunehmen, Rückschläge als Informationen“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "ermutigen Lernende häufig, Herausforderungen anzunehmen, Rückschläge als Informationen"
+          },
+          {
+            "id": "r34-can-mistakes-de-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "Doch die Rhetorik der Selbstverbesserung hat eine problematische",
+              "zugleich Zugang zu Unterstützung, Prüfungsformen und das Recht",
+              "verlässlichen Internetzugang und eine erwachsene Bezugsperson, die schwierige",
+              "Darüber hinaus muss nicht jede Bildungserfahrung als messbarer"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "zugleich Zugang zu Unterstützung, Prüfungsformen und das Recht"
+          },
+          {
+            "id": "r34-can-mistakes-de-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „sich nicht in Noten ausdrücken lässt.“",
+            "choices": [
+              "suggerieren, jede Schwierigkeit lasse sich durch zusätzlichen persönlichen",
+              "Die andere teilt einen überfüllten Wohnraum, arbeitet nach",
+              "Wird selbst die Freizeit zum Projekt",
+              "Lernende sollten Fehler analysieren und untaugliche Strategien ändern"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "sich nicht in Noten ausdrücken lässt. Wird selbst die Freizeit zum Projekt"
+          },
+          {
+            "id": "r34-can-mistakes-de-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „eine erwachsene Bezugsperson, die schwierige Inhalte erklären kann.“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "eine erwachsene Bezugsperson, die schwierige Inhalte erklären kann."
+          },
+          {
+            "id": "r34-can-mistakes-de-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "zu empfehlen, sich „mehr anzustrengen“, verschleiert die ungleichen",
+              "Lernende häufig, Herausforderungen anzunehmen, Rückschläge als Informationen zu",
+              "einen Wert haben, der sich nicht in Noten",
+              "Fehler analysieren und untaugliche Strategien ändern können; Schulen"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "zu empfehlen, sich „mehr anzustrengen“, verschleiert die ungleichen"
+          },
+          {
+            "id": "r34-can-mistakes-de-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Lernende häufig, Herausforderungen anzunehmen, Rückschläge als“",
+            "choices": [
+              "„mehr anzustrengen“, verschleiert die ungleichen Bedingungen, unter denen",
+              "Informationen zu betrachten und daran zu",
+              "Hobby auszuprobieren, kann einen Wert haben, der sich",
+              "Verantwortung. Lernende sollten Fehler analysieren und untaugliche Strategien"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Lernende häufig, Herausforderungen anzunehmen, Rückschläge als Informationen zu betrachten und daran zu"
+          },
+          {
+            "id": "r34-can-mistakes-de-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „sie Möglichkeiten eröffnet, nicht wenn sie zur endlosen“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "sie Möglichkeiten eröffnet, nicht wenn sie zur endlosen"
+          },
+          {
+            "id": "r34-can-mistakes-de-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "Fähigkeiten entwicklungsfähig sind. Gerade für Jugendliche, die aus",
+              "empfehlen, sich „mehr anzustrengen“, verschleiert die ungleichen Bedingungen,",
+              "zu Unterstützung, Prüfungsformen und das Recht auf Erholung",
+              "eine Frage zu diskutieren, ohne Einigkeit zu erzielen,"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "eine Frage zu diskutieren, ohne Einigkeit zu erzielen,"
+          },
+          {
+            "id": "r34-can-mistakes-de-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „fesselnden Roman zu lesen, eine Frage“",
+            "choices": [
+              "zu diskutieren, ohne Einigkeit zu erzielen,",
+              "Sie kann suggerieren, jede Schwierigkeit lasse sich durch",
+              "erklären kann. Die andere teilt einen überfüllten Wohnraum,",
+              "institutioneller Verantwortung. Lernende sollten Fehler analysieren und untaugliche"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "fesselnden Roman zu lesen, eine Frage zu diskutieren, ohne Einigkeit zu erzielen,"
+          },
+          {
+            "id": "r34-can-mistakes-de-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Person verfügt über ein ruhiges Zimmer, verlässlichen Internetzugang“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Person verfügt über ein ruhiges Zimmer, verlässlichen Internetzugang"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "de",
+        "level": "C2",
+        "title": "Wenn Widerstandsfähigkeit zur Pflicht wird",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-de-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „pädagogisches Ideal scheint so schwer angreifbar wie Resilienz.“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "pädagogisches Ideal scheint so schwer angreifbar wie Resilienz."
+          },
+          {
+            "id": "r34-can-mistakes-de-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "von seinen Lebensumständen eingefordert wird. Dann kann der",
+              "nimmt, seine eigenen Messverfahren hinterfragt und Erholung nicht",
+              "unzureichende Unterstützung kompensieren muss, beweist womöglich Durchhaltevermögen, ohne",
+              "Das ist bedeutsam, weil Leistungsindikatoren dazu neigen, sich"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "nimmt, seine eigenen Messverfahren hinterfragt und Erholung nicht"
+          },
+          {
+            "id": "r34-can-mistakes-de-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „zeichnet sich jedoch nicht bloß durch“",
+            "choices": [
+              "jene Bedingungen verdecken, die einen Rückschlag so folgenschwer",
+              "Bildung zu profitieren. Aus der Ferne wirken beide",
+              "Beharrlichkeit aus, sondern auch durch das",
+              "Ohnmacht der Lernenden. Erforderlich ist vielmehr ein anspruchsvollerer"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "zeichnet sich jedoch nicht bloß durch Beharrlichkeit aus, sondern auch durch das"
+          },
+          {
+            "id": "r34-can-mistakes-de-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „muss, beweist womöglich Durchhaltevermögen, ohne tatsächlich von guter“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "muss, beweist womöglich Durchhaltevermögen, ohne tatsächlich von guter"
+          },
+          {
+            "id": "r34-can-mistakes-de-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "jeweilige Umfeld eine realistische Aussicht darauf bietet, dass",
+              "pädagogisches Ideal scheint so schwer angreifbar wie Resilienz.",
+              "können dann als Defizite gelten. Ein mündiger Mensch",
+              "Erforderlich ist vielmehr ein anspruchsvollerer Begriff von Bildungserfolg:"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "jeweilige Umfeld eine realistische Aussicht darauf bietet, dass"
+          },
+          {
+            "id": "r34-can-mistakes-de-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „pädagogisches Ideal scheint so schwer angreifbar“",
+            "choices": [
+              "eine realistische Aussicht darauf bietet, dass erneute Anstrengung",
+              "wie Resilienz. Die Fähigkeit, sich von",
+              "ein unklug gewähltes Ziel aufzugeben, können dann als",
+              "oder völliger Ohnmacht der Lernenden. Erforderlich ist vielmehr"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "pädagogisches Ideal scheint so schwer angreifbar wie Resilienz. Die Fähigkeit, sich von"
+          },
+          {
+            "id": "r34-can-mistakes-de-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Lernenden sowohl die Mittel zum Weitermachen als auch“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Lernenden sowohl die Mittel zum Weitermachen als auch"
+          },
+          {
+            "id": "r34-can-mistakes-de-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "zu überprüfen und Unsicherheit auszuhalten, ist zweifellos wertvoll.",
+              "jeweilige Umfeld eine realistische Aussicht darauf bietet, dass",
+              "Messverfahren hinterfragt und Erholung nicht als gescheiterten Ehrgeiz",
+              "abbilden lässt, erscheint es verführerisch, nicht quantifizierbare Erfahrungen"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "abbilden lässt, erscheint es verführerisch, nicht quantifizierbare Erfahrungen"
+          },
+          {
+            "id": "r34-can-mistakes-de-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Sobald sich Verbesserung in Diagrammen abbilden“",
+            "choices": [
+              "lässt, erscheint es verführerisch, nicht quantifizierbare",
+              "aufzurappeln“, gerade jene Bedingungen verdecken, die einen Rückschlag",
+              "von guter Bildung zu profitieren. Aus der Ferne",
+              "Begabung oder völliger Ohnmacht der Lernenden. Erforderlich ist"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "Sobald sich Verbesserung in Diagrammen abbilden lässt, erscheint es verführerisch, nicht quantifizierbare"
+          },
+          {
+            "id": "r34-can-mistakes-de-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „überarbeitet, handelt selbstbestimmt; wer wiederholt unzureichende Unterstützung kompensieren“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "überarbeitet, handelt selbstbestimmt; wer wiederholt unzureichende Unterstützung kompensieren"
+          }
+        ]
+      }
+    },
+    "fr": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "fr",
+        "level": "A1",
+        "title": "Je peux réessayer",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-fr-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « Mia a quinze ans. Elle »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "Mia a quinze ans. Elle"
+          },
+          {
+            "id": "r34-can-mistakes-fr-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 1 ?",
+            "choices": [
+              "demande le sens de deux",
+              "les mots. Lundi, elle lit",
+              "histoire. Elle n’est pas facile,"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "les mots. Lundi, elle lit"
+          },
+          {
+            "id": "r34-can-mistakes-fr-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « une petite histoire. Il »",
+            "choices": [
+              "mots et les écrit dans",
+              "facile, mais Mia comprend mieux.",
+              "y a des mots"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "une petite histoire. Il y a des mots"
+          },
+          {
+            "id": "r34-can-mistakes-fr-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « l’histoire encore une fois. » »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "l’histoire encore une fois. »"
+          },
+          {
+            "id": "r34-can-mistakes-fr-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "a quinze ans. Elle aime",
+              "de deux mots et les",
+              "facile, mais Mia comprend mieux."
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "de deux mots et les"
+          },
+          {
+            "id": "r34-can-mistakes-fr-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « ami Léo dit : »",
+            "choices": [
+              "mots nouveaux. Elle est un",
+              "pas facile, mais Mia comprend",
+              "« Ce n’est pas"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "ami Léo dit : « Ce n’est pas"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "fr",
+        "level": "A2",
+        "title": "Un petit changement, un meilleur résultat",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-fr-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « Daniel a un contrôle de »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "Daniel a un contrôle de"
+          },
+          {
+            "id": "r34-can-mistakes-fr-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 1 ?",
+            "choices": [
+              "ses notes. Mercredi, il essaie",
+              "soir. Il se couche très",
+              "se sent plus calme que"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "soir. Il se couche très"
+          },
+          {
+            "id": "r34-can-mistakes-fr-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « et il est fatigué »",
+            "choices": [
+              "à quelques questions sans regarder",
+              "les cours, il écrit ce",
+              "le lendemain. Cette fois,"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "et il est fatigué le lendemain. Cette fois,"
+          },
+          {
+            "id": "r34-can-mistakes-fr-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « importante à sa sœur. Quand »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "importante à sa sœur. Quand"
+          },
+          {
+            "id": "r34-can-mistakes-fr-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "a un contrôle de sciences",
+              "de répondre à quelques questions",
+              "il écrit ce qu’il doit"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "de répondre à quelques questions"
+          },
+          {
+            "id": "r34-can-mistakes-fr-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « il travaille vingt minutes »",
+            "choices": [
+              "fois, il veut essayer une",
+              "Après les cours, il écrit",
+              "puis fait une petite"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "il travaille vingt minutes puis fait une petite"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "fr",
+        "level": "B1",
+        "title": "Le problème de vouloir toujours réussir",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-fr-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « Lara est entrée au collège, elle était fière »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "Lara est entrée au collège, elle était fière"
+          },
+          {
+            "id": "r34-can-mistakes-fr-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "sentait moins à l’aise. Si elle ne réussissait",
+              "considère plus chaque erreur comme la preuve d’un",
+              "plusieurs erreurs devant les autres. Au lieu de",
+              "Une semaine plus tard, elle a joué tout"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "considère plus chaque erreur comme la preuve d’un"
+          },
+          {
+            "id": "r34-can-mistakes-fr-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « : « Qu’est-ce que je pourrais »",
+            "choices": [
+              "immédiatement, elle pensait qu’elle n’avait tout simplement pas",
+              "de jouer plus vite, la professeure lui a",
+              "faire autrement ? » plutôt que",
+              "importantes pour Lara. Mais elle ne considère plus"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": ": « Qu’est-ce que je pourrais faire autrement ? » plutôt que"
+          },
+          {
+            "id": "r34-can-mistakes-fr-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « les autres. Au lieu de lui demander de »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "les autres. Au lieu de lui demander de"
+          },
+          {
+            "id": "r34-can-mistakes-fr-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "Lara les a répétées lentement, a écouté attentivement",
+              "est entrée au collège, elle était fière d’avoir",
+              "a commencé à se demander : « Qu’est-ce",
+              "pour Lara. Mais elle ne considère plus chaque"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "Lara les a répétées lentement, a écouté attentivement"
+          },
+          {
+            "id": "r34-can-mistakes-fr-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « Lara est entrée au collège, elle »",
+            "choices": [
+              "a répétées lentement, a écouté attentivement et a",
+              "était fière d’avoir de bonnes notes.",
+              "aux difficultés. Elle a commencé à se demander",
+              "importantes pour Lara. Mais elle ne considère plus"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "Lara est entrée au collège, elle était fière d’avoir de bonnes notes."
+          },
+          {
+            "id": "r34-can-mistakes-fr-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « d’un échec. Parfois, progresser, c’est simplement comprendre ce »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "d’un échec. Parfois, progresser, c’est simplement comprendre ce"
+          },
+          {
+            "id": "r34-can-mistakes-fr-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "Elle aimait montrer ses résultats à ses parents.",
+              "Lara les a répétées lentement, a écouté attentivement",
+              "plus chaque erreur comme la preuve d’un échec.",
+              "fait d’elle une musicienne exceptionnelle, mais elle a"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "fait d’elle une musicienne exceptionnelle, mais elle a"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "fr",
+        "level": "B2",
+        "title": "Quand les remarques ressemblent à un échec",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-fr-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « résultat décevant peut nous sembler être un jugement »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "résultat décevant peut nous sembler être un jugement"
+          },
+          {
+            "id": "r34-can-mistakes-fr-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "ressentie comme une critique de leur intelligence. Cette",
+              "son identité et à décider quelles suggestions méritent",
+              "mais que les preuves sont mal organisées. Elle",
+              "Bien entendu, les remarques ne sont pas nécessairement"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "son identité et à décider quelles suggestions méritent"
+          },
+          {
+            "id": "r34-can-mistakes-fr-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « à quel endroit mon raisonnement devient »",
+            "choices": [
+              "compréhensible, mais elle rend les conseils plus difficiles",
+              "comme injuste ou examiner comment chaque paragraphe pourrait",
+              "moins clair ? » est plus",
+              "Cela consiste à distinguer un résultat provisoire de"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "à quel endroit mon raisonnement devient moins clair ? » est plus"
+          },
+          {
+            "id": "r34-can-mistakes-fr-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « preuves sont mal organisées. Elle peut considérer la »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "preuves sont mal organisées. Elle peut considérer la"
+          },
+          {
+            "id": "r34-can-mistakes-fr-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "change la note actuelle, mais seule la seconde",
+              "décevant peut nous sembler être un jugement sur",
+              "des questions précises. « Pourriez-vous me montrer à",
+              "consiste à distinguer un résultat provisoire de son"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "change la note actuelle, mais seule la seconde"
+          },
+          {
+            "id": "r34-can-mistakes-fr-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « décevant peut nous sembler être un »",
+            "choices": [
+              "actuelle, mais seule la seconde permet réellement d’améliorer",
+              "jugement sur notre personne plutôt qu’une",
+              "ils doivent aussi oser poser des questions précises.",
+              "l’apprécier. Cela consiste à distinguer un résultat provisoire"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "décevant peut nous sembler être un jugement sur notre personne plutôt qu’une"
+          },
+          {
+            "id": "r34-can-mistakes-fr-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « ne s’agit pas de supprimer toute déception, mais »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "ne s’agit pas de supprimer toute déception, mais"
+          },
+          {
+            "id": "r34-can-mistakes-fr-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "de ce que nous savons à un moment",
+              "la note actuelle, mais seule la seconde permet",
+              "et à décider quelles suggestions méritent d’être essayées.",
+              "une façon trop étroite d’écrire. Les élèves ont"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "une façon trop étroite d’écrire. Les élèves ont"
+          },
+          {
+            "id": "r34-can-mistakes-fr-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « et certains systèmes d’évaluation privilégient une »",
+            "choices": [
+              "façon trop étroite d’écrire. Les élèves",
+              "réaction est compréhensible, mais elle rend les conseils",
+              "la note comme injuste ou examiner comment chaque",
+              "pas l’apprécier. Cela consiste à distinguer un résultat"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "et certains systèmes d’évaluation privilégient une façon trop étroite d’écrire. Les élèves"
+          },
+          {
+            "id": "r34-can-mistakes-fr-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « professeur souligne que l’argumentation est intéressante, mais que »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "professeur souligne que l’argumentation est intéressante, mais que"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "fr",
+        "level": "C1",
+        "title": "Le coût caché de l’amélioration permanente",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-fr-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « scolaires encouragent souvent les élèves à relever des »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "scolaires encouragent souvent les élèves à relever des"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "l’amélioration possède une face moins rassurante : il",
+              "que les établissements devraient examiner l’accès à l’aide,",
+              "adulte capable de lui expliquer les notions difficiles.",
+              "Par ailleurs, toute expérience éducative ne doit pas"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "que les établissements devraient examiner l’accès à l’aide,"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « note. Lorsque les élèves envisagent même »",
+            "choices": [
+              "relève d’un problème individuel à résoudre par un",
+              "surpeuplé, travaille après les cours et trouve rarement",
+              "leur temps libre comme un projet",
+              "Les élèves devraient apprendre à analyser leurs erreurs"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "note. Lorsque les élèves envisagent même leur temps libre comme un projet"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « lui expliquer les notions difficiles. Le second partage »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "lui expliquer les notions difficiles. Le second partage"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "travailler davantage » masque les inégalités des conditions",
+              "encouragent souvent les élèves à relever des défis,",
+              "valeur difficile à exprimer par une note. Lorsque",
+              "apprendre à analyser leurs erreurs et à modifier"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "travailler davantage » masque les inégalités des conditions"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « encouragent souvent les élèves à relever »",
+            "choices": [
+              "masque les inégalités des conditions dans lesquelles cet",
+              "des défis, à considérer les revers",
+              "loisir peut avoir une valeur difficile à exprimer",
+              "institutions. Les élèves devraient apprendre à analyser leurs"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "encouragent souvent les élèves à relever des défis, à considérer les revers"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « du sens lorsqu’il ouvre de nouvelles possibilités, non »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "du sens lorsqu’il ouvre de nouvelles possibilités, non"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "croire au développement de leurs capacités. Ces idées",
+              "davantage » masque les inégalités des conditions dans",
+              "devraient examiner l’accès à l’aide, la conception des",
+              "captivant, discuter d’une question sans parvenir à un"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "captivant, discuter d’une question sans parvenir à un"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « progrès mesurable. Lire un roman captivant, »",
+            "choices": [
+              "discuter d’une question sans parvenir à",
+              "que toute difficulté relève d’un problème individuel à",
+              "un logement surpeuplé, travaille après les cours et",
+              "des institutions. Les élèves devraient apprendre à analyser"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "progrès mesurable. Lire un roman captivant, discuter d’une question sans parvenir à"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « calme, d’une connexion Internet fiable et d’un adulte »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "calme, d’une connexion Internet fiable et d’un adulte"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-can-mistakes",
+        "language": "fr",
+        "level": "C2",
+        "title": "Quand la résilience devient une obligation",
+        "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-can-mistakes-fr-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « éducatifs semblent aussi difficiles à contester que la »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "éducatifs semblent aussi difficiles à contester que la"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "attente morale imposée indépendamment des circonstances. L’injonction à",
+              "d’interroger les critères qu’elle utilise et assez assurée",
+              "constamment contraint de compenser l’insuffisance des soutiens disponibles,",
+              "nuance importe, car les indicateurs de performance ont"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "d’interroger les critères qu’elle utilise et assez assurée"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « apprenant véritablement autonome n’est pas seulement »",
+            "choices": [
+              "dissimuler les conditions mêmes qui ont rendu l’échec",
+              "pour autant bénéficier d’une éducation satisfaisante. Vus de",
+              "celui qui persévère : c’est celui",
+              "ou les élèves entièrement démunis. Il s’agit plutôt"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "apprenant véritablement autonome n’est pas seulement celui qui persévère : c’est celui"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « l’insuffisance des soutiens disponibles, manifeste peut-être de l’endurance »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "l’insuffisance des soutiens disponibles, manifeste peut-être de l’endurance"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "l’existence, ou non, d’une perspective raisonnable de voir",
+              "semblent aussi difficiles à contester que la résilience.",
+              "risquent alors d’être considérés comme des défauts. Pourtant,",
+              "Il s’agit plutôt d’élaborer une conception plus riche"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "l’existence, ou non, d’une perspective raisonnable de voir"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « éducatifs semblent aussi difficiles à contester »",
+            "choices": [
+              "d’une perspective raisonnable de voir l’effort renouvelé produire",
+              "que la résilience. La faculté de",
+              "même l’abandon d’un objectif mal choisi risquent alors",
+              "immuable ou les élèves entièrement démunis. Il s’agit"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "éducatifs semblent aussi difficiles à contester que la résilience. La faculté de"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « offre aux apprenants à la fois les moyens »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "offre aux apprenants à la fois les moyens"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "une hypothèse et de persévérer dans l’incertitude possède",
+              "ou non, d’une perspective raisonnable de voir l’effort",
+              "utilise et assez assurée pour ne pas confondre",
+              "sous forme de courbe, il devient tentant de"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "sous forme de courbe, il devient tentant de"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « que le progrès peut se représenter »",
+            "choices": [
+              "sous forme de courbe, il devient",
+              "risque alors de dissimuler les conditions mêmes qui",
+              "l’endurance sans pour autant bénéficier d’une éducation satisfaisante.",
+              "talent serait immuable ou les élèves entièrement démunis."
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "que le progrès peut se représenter sous forme de courbe, il devient"
+          },
+          {
+            "id": "r34-can-mistakes-fr-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « exerce son autonomie ; un autre, constamment contraint »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "exerce son autonomie ; un autre, constamment contraint"
+          }
+        ]
+      }
+    }
+  }
+}
