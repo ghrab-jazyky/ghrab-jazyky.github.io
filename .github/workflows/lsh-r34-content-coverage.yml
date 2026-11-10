@@ -20,6 +20,7 @@ jobs:
       - name: Validate inventory compiler and protect original content
         run: |
           node --check language-skills-hub/tools/independent-coverage.cjs
+          node --check language-skills-hub/tools/build-audit-pack.cjs
           node language-skills-hub/tools/independent-coverage.cjs --integrity
       - name: Generate transparent R34 gap report
         run: |
@@ -29,6 +30,17 @@ jobs:
         with:
           name: lsh-r34-coverage-and-backlog
           path: independent-test-coverage.json
+          retention-days: 30
+      - name: Reproducible offline Claude audit dossier
+        run: |
+          node language-skills-hub/tools/build-audit-pack.cjs audit-pack
+          test -f audit-pack/README-FOR-CLAUDE.md
+          test -f audit-pack/coverage.json
+          test -f audit-pack/MISSING-VARIANTS.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lsh-r34-claude-review-dossier
+          path: audit-pack/
           retention-days: 30
       - name: Existing independent B1/B2 draft and R31 regression tests
         run: |
