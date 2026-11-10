@@ -124,9 +124,12 @@
    // It must not be exposed through the public teacher catalogue.
    requireCondition(['A1','A2','B1','B2','C1','C2'].includes(level),'Unsupported independent test level');
    requireCondition(['en','es','de','fr'].includes(lang),'Unsupported independent test language');
-   requireCondition(params.get('timer')==='20'&&
+   const timerText=params.get('timer')||'';
+   const timerMinutes=Number(timerText);
+   requireCondition(/^[1-9][0-9]{0,2}$/.test(timerText)&&Number.isInteger(timerMinutes)&&
+    timerMinutes>=5&&timerMinutes<=120&&
     /^[a-z0-9_-]{6,40}$/i.test(params.get('attempt')||''),
-    'This draft preview requires ?level=A1|A2|B1|B2|C1|C2&timer=20&attempt=<local-id>');
+    'This draft preview requires a valid 5–120 minute timer and local attempt ID');
    const [manifest,catalog]=await Promise.all([
     get('../../../version.json',true),
     get('../../../data/cards.json',true)
@@ -150,7 +153,7 @@
    $('title').textContent=practice.title;
    document.title='Independent Reading '+lang.toUpperCase()+'/'+level+' – unapproved QA preview';
    document.documentElement.lang=lang;
-   document.querySelector('.subtitle').textContent=entry.title+' · '+lang.toUpperCase()+'/'+level+' · 10 independent questions · 20 minutes';
+   document.querySelector('.subtitle').textContent=entry.title+' · '+lang.toUpperCase()+'/'+level+' · 10 independent questions · '+timerMinutes+' minutes';
    document.querySelector('.mode').textContent='UNAPPROVED DRAFT · '+lang.toUpperCase()+'/'+level;
    document.querySelector('.reading-panel .pill').textContent=lang.toUpperCase()+' · '+level;
    renderText();renderTasks();
