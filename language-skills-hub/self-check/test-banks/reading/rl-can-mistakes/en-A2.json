@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-AUTHOR-DRAFT-1",
+  "description": "Original, unapproved A2 independent test-bank draft on A Small Change, a Better Result. Item-level evidence and distractor audit is required.",
+  "tabs": [
+    {
+      "id": "reason",
+      "title": "Reasons",
+      "description": "Independent draft items for A2 students."
+    },
+    {
+      "id": "detail",
+      "title": "Reading Carefully",
+      "description": "Independent draft items for A2 students."
+    },
+    {
+      "id": "apply",
+      "title": "Using the Ideas",
+      "description": "Independent draft items for A2 students."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-a2-01",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "Why does Daniel plan his study time differently?",
+      "choices": [
+        "He wants a longer school day.",
+        "He needs to help his sister.",
+        "His old routine left him tired.",
+        "He has already finished every subject."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a2-02",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Why does Daniel check his notes after speaking to his sister?",
+      "choices": [
+        "He has forgotten where she lives.",
+        "He cannot explain an idea clearly.",
+        "She asks him to study history.",
+        "His phone is sending messages."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a2-03",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "What does Daniel do before checking the answers to Wednesday's questions?",
+      "choices": [
+        "He writes a new textbook.",
+        "He calls his teacher.",
+        "He takes the science test.",
+        "He tries to answer on his own."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a2-04",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "Why does Daniel turn off phone notifications?",
+      "choices": [
+        "To help himself concentrate.",
+        "To save the phone battery.",
+        "To stop his sister calling.",
+        "To make his notes shorter."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a2-05",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "Why is Daniel pleased after the test, although he still made mistakes?",
+      "choices": [
+        "The questions were very easy.",
+        "He received a perfect result.",
+        "His new routine made him calmer.",
+        "He did not need to study."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a2-06",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "What does Daniel plan to do with his study routine next week?",
+      "choices": [
+        "Stop using it for science.",
+        "Try it for history and change it if needed.",
+        "Study every subject in one night.",
+        "Ask his sister to make every decision."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a2-07",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "A student can read notes but cannot explain an idea. What might help?",
+      "choices": [
+        "Ask someone else to take the test.",
+        "Read the notes once and stop.",
+        "Switch to a different subject forever.",
+        "Look again at the difficult part."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a2-08",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "Your friend studies all night before a test and feels tired. What could Daniel suggest?",
+      "choices": [
+        "Make a plan with shorter study times.",
+        "Stop taking tests at school.",
+        "Study for three hours without a break.",
+        "Never revise anything on Monday."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a2-09",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "Why does the text suggest that a study plan does not have to be perfect?",
+      "choices": [
+        "Mistakes mean nobody should study.",
+        "A plan only works for easy subjects.",
+        "A useful plan can still be changed.",
+        "Good plans always give perfect grades."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a2-10",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "After a difficult test, what is a sensible next step?",
+      "choices": [
+        "Throw away all the notes.",
+        "Write down what needs more practice.",
+        "Study the same way without thinking.",
+        "Forget about the next subject."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    }
+  ]
+}
