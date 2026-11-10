@@ -30,7 +30,7 @@
   ],
   "questions": [
     {
-      "id": "r35-en-b2-01",
+      "id": "r35-asteroids-en-b2-01",
       "tab": "evaluation",
       "kind": "mc",
       "sourceParagraph": 1,
@@ -45,7 +45,7 @@
       "explanation": "Paragraph one separates a close approach from a possible collision and warns against interpreting 'near' without a distance."
     },
     {
-      "id": "r35-en-b2-02",
+      "id": "r35-asteroids-en-b2-02",
       "tab": "evaluation",
       "kind": "mc",
       "sourceParagraph": 2,
@@ -60,7 +60,7 @@
       "explanation": "Paragraph two explains that repeated observations refine an orbit and may change the reported estimate without implying random guessing."
     },
     {
-      "id": "r35-en-b2-03",
+      "id": "r35-asteroids-en-b2-03",
       "tab": "evaluation",
       "kind": "mc",
       "sourceParagraph": 3,
@@ -75,7 +75,7 @@
       "explanation": "Paragraph three describes the rise and subsequent fall in 2024 YR4's estimated impact chance as more observations became available."
     },
     {
-      "id": "r35-en-b2-04",
+      "id": "r35-asteroids-en-b2-04",
       "tab": "reasoning",
       "kind": "mc",
       "sourceParagraph": 2,
@@ -90,7 +90,7 @@
       "explanation": "Paragraph two explains that repeated observations refine an orbit and may change the reported estimate without implying random guessing."
     },
     {
-      "id": "r35-en-b2-05",
+      "id": "r35-asteroids-en-b2-05",
       "tab": "reasoning",
       "kind": "mc",
       "sourceParagraph": 4,
@@ -105,7 +105,7 @@
       "explanation": "Paragraph four explains the limited significance of DART and the importance of an object's structure and the warning time available."
     },
     {
-      "id": "r35-en-b2-06",
+      "id": "r35-asteroids-en-b2-06",
       "tab": "reasoning",
       "kind": "mc",
       "sourceParagraph": 4,
@@ -120,7 +120,7 @@
       "explanation": "Paragraph four explains the limited significance of DART and the importance of an object's structure and the warning time available."
     },
     {
-      "id": "r35-en-b2-07",
+      "id": "r35-asteroids-en-b2-07",
       "tab": "reasoning",
       "kind": "mc",
       "sourceParagraph": 3,
@@ -135,7 +135,7 @@
       "explanation": "Paragraph three describes the rise and subsequent fall in 2024 YR4's estimated impact chance as more observations became available."
     },
     {
-      "id": "r35-en-b2-08",
+      "id": "r35-asteroids-en-b2-08",
       "tab": "decisions",
       "kind": "mc",
       "sourceParagraph": 5,
@@ -150,7 +150,7 @@
       "explanation": "Paragraph five presents careful observation, international cooperation and honest communication of uncertainty as central to planetary defence."
     },
     {
-      "id": "r35-en-b2-09",
+      "id": "r35-asteroids-en-b2-09",
       "tab": "decisions",
       "kind": "mc",
       "sourceParagraph": 5,
@@ -165,7 +165,7 @@
       "explanation": "Paragraph five presents careful observation, international cooperation and honest communication of uncertainty as central to planetary defence."
     },
     {
-      "id": "r35-en-b2-10",
+      "id": "r35-asteroids-en-b2-10",
       "tab": "decisions",
       "kind": "mc",
       "sourceParagraph": 5,
