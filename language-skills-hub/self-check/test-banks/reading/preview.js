@@ -15,6 +15,7 @@
  };
  const params=new URLSearchParams(location.search);
  const level=params.get('level')||'B2';
+ const timerByLevel={A1:20,A2:20,B1:20,B2:20,C1:25,C2:25};
  const answers=Object.create(null);
  let variant=null,timed=null,submitted=false;
  function requireCondition(ok,message){if(!ok)throw new Error(message)}
@@ -120,10 +121,10 @@
     'Required local assessment modules are unavailable');
    // A fixed 20-minute URL is intentional for this *unapproved* pedagogical pilot.
    // It must not be exposed through the public teacher catalogue.
-   requireCondition(['B1','B2'].includes(level),'Unsupported independent test level');
-   requireCondition(params.get('timer')==='20'&&
+   requireCondition(Object.prototype.hasOwnProperty.call(timerByLevel,level),'Unsupported independent test level');
+   requireCondition(params.get('timer')===String(timerByLevel[level])&&
     /^[a-z0-9_-]{6,40}$/i.test(params.get('attempt')||''),
-    'This draft preview requires ?level=B1|B2&timer=20&attempt=<local-id>');
+    'This draft preview requires valid ?level=A1..C2&timer=20|25&attempt=<local-id>');
    const [manifest,originalHtml,bank]=await Promise.all([
     get('../../../version.json',true),
     get('../../../cteni/can-mistakes/index.html'),
@@ -140,7 +141,7 @@
    reading.validateVariant(variant);
    $('title').textContent=practice.title;
    document.title='Independent Reading '+level+' – unapproved QA preview';
-   document.querySelector('.subtitle').textContent='Can Mistakes Help Us Learn? · English '+level+' · 10 independent questions · 20 minutes';
+   document.querySelector('.subtitle').textContent='Can Mistakes Help Us Learn? · English '+level+' · 10 independent questions · '+timerByLevel[level]+' minutes';
    document.querySelector('.mode').textContent='UNAPPROVED DRAFT · EN/'+level;
    document.querySelector('.reading-panel .pill').textContent='EN · '+level;
    renderText();renderTasks();
