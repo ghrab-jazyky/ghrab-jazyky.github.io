@@ -19,7 +19,7 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
     page.on('request',r=>{if(!['GET','HEAD'].includes(r.method()))writes.push(r.url())});
     await page.goto(url(level,'r34pilot'+level.toLowerCase()));
     await page.locator('#sessionIntro:not([hidden])').waitFor({timeout:30000});
-    assert.match(await page.title(),new RegExp('Reading '+level));
+    assert.match(await page.title(),new RegExp('Reading EN/'+level));
     assert.match(await page.locator('.mode').textContent(),new RegExp(level));
     assert.equal(await page.locator('fieldset.question').count(),10);
     assert.equal(await page.locator('#results').isHidden(),true);
