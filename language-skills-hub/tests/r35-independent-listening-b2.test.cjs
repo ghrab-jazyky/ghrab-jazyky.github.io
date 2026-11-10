@@ -47,7 +47,7 @@ test('R35 Listening objective 6 points and written 2 marks yield only provisiona
  assert.equal(final.objectiveEarned,6);
  assert.equal(final.writtenEarned,1);
  assert.equal(final.totalEarned,7);
- assert.equal(grade.proposal(final.totalEarned,final.totalMax).grade,1);
+ assert.equal(grade.proposal(final.totalEarned,final.totalMax).grade,2); // 7/8 = 87.5%, below the exact 88% threshold
  assert.equal(final.officialSchoolResult,false);
  assert.equal(final.localOnly,true);
  const noAnswers=core.score(bank,{},[0,0]);
