@@ -33,6 +33,15 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#workspace:not([hidden])').waitFor({timeout:30000});
    assert.equal(await page.locator('fieldset.question').first().locator('input').first().isChecked(),true);
    assert.equal(await page.locator('#results').isHidden(),true);
+   // R30 may correctly lock a reloaded timed attempt if the page-visibility
+   // event was observed. Resume through the actual teacher four-corner gesture.
+   if(await page.locator('#sessionLock').isVisible()){
+    assert.equal(await page.locator('#workspace').getAttribute('inert'),'');
+    for(const corner of ['tl','tr','bl','br'])
+     await page.locator('.lsh-corner-'+corner).click();
+    await page.locator('#sessionLock').waitFor({state:'hidden'});
+    assert.equal(await page.locator('#workspace').getAttribute('inert'),null);
+   }
    await page.locator('#submitButton').click();
    await page.locator('#results:not([hidden])').waitFor();
    assert.equal(await page.locator('#resultDetails .review').count(),10);
