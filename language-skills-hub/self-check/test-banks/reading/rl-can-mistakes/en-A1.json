@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-AUTHOR-DRAFT-1",
+  "description": "Original, unapproved A1 independent test-bank draft on I Can Try Again. Item-level evidence and distractor audit is required.",
+  "tabs": [
+    {
+      "id": "detail",
+      "title": "What Happened?",
+      "description": "Independent draft items for A1 students."
+    },
+    {
+      "id": "reason",
+      "title": "Why Did It Happen?",
+      "description": "Independent draft items for A1 students."
+    },
+    {
+      "id": "apply",
+      "title": "Try It Yourself",
+      "description": "Independent draft items for A1 students."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-a1-01",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "Why does Mia put a question mark by a sentence?",
+      "choices": [
+        "She does not understand it.",
+        "She wants Leo to draw a train.",
+        "She is ready to finish the story.",
+        "She wants a new notebook."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a1-02",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "What does Leo do when Mia needs help?",
+      "choices": [
+        "He reads the whole story to her.",
+        "He gives her every answer.",
+        "He shows her a picture.",
+        "He asks her to stop reading."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a1-03",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "How does Mia learn the other new word?",
+      "choices": [
+        "She sees it on a train.",
+        "Her teacher helps her.",
+        "Her brother tells her.",
+        "She finds it in a new story."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a1-04",
+      "tab": "detail",
+      "kind": "mc",
+      "q": "What is different when Mia reads on Friday?",
+      "choices": [
+        "She reads with a new teacher.",
+        "She never needs help again.",
+        "She reads only one page.",
+        "She understands more than before."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a1-05",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "Why is Mia worried on Monday?",
+      "choices": [
+        "She has no English class.",
+        "She must go home early.",
+        "Some words are new to her.",
+        "Her notebook is missing."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph 1 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a1-06",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "Why does Mia read the story again?",
+      "choices": [
+        "To try to understand it better.",
+        "To show Leo that he is wrong.",
+        "To finish a school test.",
+        "To find her younger brother."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a1-07",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "Why does Mia smile on Friday?",
+      "choices": [
+        "She wins a reading prize.",
+        "She can understand more now.",
+        "She does not have to read again.",
+        "She has a new school bag."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a1-08",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "You do not understand a word in a story. What can you try first?",
+      "choices": [
+        "Close the book and stop.",
+        "Ask a friend to read every line.",
+        "Write the whole story again.",
+        "Look at a picture for help."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph 2 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a1-09",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "Your friend is learning to read in English. What would Mia say?",
+      "choices": [
+        "Never ask questions in class.",
+        "Try again and practise a little.",
+        "Only read very easy books.",
+        "Learn every word in one day."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    },
+    {
+      "id": "r34-en-a1-10",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "Mia wants to read again tomorrow. What does that show?",
+      "choices": [
+        "She wants to keep learning.",
+        "She thinks Friday was a bad day.",
+        "She no longer likes English.",
+        "She must read on a train."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph 3 provides the evidence for this interpretation. Review the relevant statement and how the other options conflict with it."
+    }
+  ]
+}
