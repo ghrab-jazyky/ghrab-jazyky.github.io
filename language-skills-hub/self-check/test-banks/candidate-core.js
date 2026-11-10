@@ -76,38 +76,53 @@
    tabs:candidate.tabs.map(t=>({...t})),
    questions:candidate.questions.map(q=>({...q,choices:q.choices.slice()})),open:''};
  }
- const LCOLLECTION='LSH_LISTENING_DRAFT_COLLECTION_R34_V1';
- const LCANDIDATE='LSH_LISTENING_TEST_CANDIDATE_R34_V1';
- const LSTAGE='CLAUDE_INDEPENDENT_REWRITE_PENDING';
+ const LCOLLECTION='LSH_LISTENING_DRAFT_COLLECTION_R34_V2';
+ const LCANDIDATE='LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2';
+ const LSTAGE='CLAUDE_CONTENT_AUDIT_PENDING';
  function validateListening(collection,candidate,practice,ctx){
   check(obj(ctx)&&/^ll-[a-z0-9-]+$/.test(ctx.topic)&&LEVELS.includes(ctx.level)&&
    /^[a-f0-9]{64}$/.test(ctx.sourceHash),'Invalid Listening context');
   check(obj(collection)&&collection.kind===LCOLLECTION&&collection.published===false&&
-   collection.auditStatus===LSTAGE&&collection.topic===ctx.topic&&
-   collection.sourcePracticeContentHash===ctx.sourceHash,
+   collection.authoredDraft===true&&collection.auditStatus===LSTAGE&&
+   collection.topic===ctx.topic&&collection.sourcePracticeContentHash===ctx.sourceHash,
    'Unapproved or mismatched Listening collection');
   check(obj(candidate)&&candidate.kind===LCANDIDATE&&candidate.stage===LSTAGE&&
    candidate.published===false&&candidate.topic===ctx.topic&&
    candidate.level===ctx.level&&candidate.language==='en'&&
    candidate.sourcePracticeContentHash===ctx.sourceHash,
    'Unapproved or mismatched Listening candidate');
-  check(candidate.teacherControlledPasses===2,'Unsupported media playback contract');
+  check(candidate.teacherControlledPasses===2,'Unsupported playback contract');
   check(obj(practice)&&text(practice.goal)&&candidate.goal===practice.goal,
    'Listening practice source mismatch');
-  const parts=['gist','detail','sequence','facts','open'];
-  for(const part of parts){
-   check(Array.isArray(candidate.sourceIndices?.[part])&&
-    Array.isArray(candidate[part])&&
-    candidate[part].length===candidate.sourceIndices[part].length&&
-    candidate[part].length>=1,'Invalid Listening part '+part);
-   const used=new Set();
-   for(let i=0;i<candidate[part].length;i++){
-    const index=candidate.sourceIndices[part][i];
-    check(Number.isInteger(index)&&index>=0&&index<practice[part].length&&!used.has(index),
-     'Invalid Listening blueprint source index');
-    used.add(index);
-    check(JSON.stringify(candidate[part][i])===JSON.stringify(practice[part][index]),
-     'Listening structural seed no longer matches original; independent rewrite required');
+  check(candidate.sourceIndices===undefined&&text(candidate.provenance)&&
+   /audit|review/i.test(candidate.provenance),'Original question provenance or audit status missing');
+  const sections=['gist','detail','sequence','facts','open'];
+  for(const part of sections)check(Array.isArray(candidate[part])&&
+   candidate[part].length>0,'Missing Listening section '+part);
+  check(candidate.gist.length===2&&candidate.detail.length===3&&
+   [3,4].includes(candidate.sequence.length)&&candidate.facts.length===1&&
+   candidate.open.length===1,'Unexpected Listening assessment blueprint size');
+  for(const part of ['gist','detail']){
+   const stems=new Set(practice[part].map(q=>norm(q.title)));
+   for(const q of candidate[part]){
+    check(obj(q)&&q.type==='single'&&text(q.title)&&q.title.length>=12&&
+     !stems.has(norm(q.title)),'Unrewritten practice prompt found in Listening');
+    check(Array.isArray(q.options)&&q.options.length>=3&&q.options.length<=5&&
+     q.options.every(text)&&new Set(q.options.map(norm)).size===q.options.length&&
+     Number.isInteger(q.correct)&&q.correct>=0&&q.correct<q.options.length,
+     'Invalid Listening objective options or key');
+    check(text(q.why)&&q.why.length>=25,'Missing Listening teacher rationale');
+   }
+  }
+  const oldSequence=new Set(practice.sequence.map(norm));
+  check(candidate.sequence.every(s=>text(s)&&s.length>=14&&!oldSequence.has(norm(s)))&&
+   new Set(candidate.sequence.map(norm)).size===candidate.sequence.length,
+   'Unrewritten or duplicated Listening reconstruction');
+  for(const part of ['facts','open']){
+   const old=new Set(practice[part].map(q=>norm(q.title)));
+   for(const q of candidate[part]){
+    check(obj(q)&&text(q.title)&&!old.has(norm(q.title))&&text(q.answer)&&
+     text(q.criteria),'Invalid or duplicated written question');
    }
   }
   return true;
