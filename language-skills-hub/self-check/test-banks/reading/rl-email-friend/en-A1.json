@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "A1",
+  "sourceTitle": "A Message from Ben",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R40-CONTENT-AUDIT-1",
+  "description": "Independent friendship-email reading assessment with original questions, pending pedagogical validation",
+  "tabs": [
+    {
+      "id": "understanding",
+      "title": "Understanding the Message"
+    },
+    {
+      "id": "interpretation",
+      "title": "Meaning and Intent"
+    },
+    {
+      "id": "transfer",
+      "title": "Interpreting the Invitation"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r40-en-a1-01",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "Why does Ben write to Maya?",
+      "choices": [
+        "To tell her that his school is closed.",
+        "To share news and invite her to visit.",
+        "To ask Maya to buy a new football.",
+        "To explain why he has stopped studying."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Ben shares his new home and friend, then invites Maya to a film night."
+    },
+    {
+      "id": "r40-en-a1-02",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "What does Ben miss about their old school days?",
+      "choices": [
+        "The bus to Greenhill.",
+        "The school library.",
+        "The apple harvest.",
+        "Lunches and games with Maya."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "He says he misses their lunches and games after school."
+    },
+    {
+      "id": "r40-en-a1-03",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "Where will people watch the film if the weather is good?",
+      "choices": [
+        "At the railway station.",
+        "At Ben's house.",
+        "In the park.",
+        "Inside the youth centre."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "The outdoor film night takes place in the park if it does not rain."
+    },
+    {
+      "id": "r40-en-a1-04",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What should Maya expect when she arrives by train?",
+      "choices": [
+        "Ben's dad can meet her at the station.",
+        "She must find the park by herself.",
+        "Eva will drive her to the cinema.",
+        "She will need to buy a film ticket."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Ben's father offers to meet Maya at five and walk with them to the park."
+    },
+    {
+      "id": "r40-en-a1-05",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why can Maya bring sandwiches?",
+      "choices": [
+        "The park has no food nearby.",
+        "Ben wants her to cook for his family.",
+        "The film evening allows people to bring their own food.",
+        "Eva has lost the money for dinner."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "The invitation says that entry is free and visitors may bring sandwiches."
+    },
+    {
+      "id": "r40-en-a1-06",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What is the film about?",
+      "choices": [
+        "A dog travelling by boat across the sea.",
+        "A football team that moves towns.",
+        "A family building a new park.",
+        "A train trip to a school."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "The third paragraph describes a family film about a dog travelling in a boat."
+    },
+    {
+      "id": "r40-en-a1-07",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What does buying popcorn at the park help support?",
+      "choices": [
+        "Ben's new school.",
+        "The park.",
+        "Maya's train ticket.",
+        "Eva's football team."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Money from the popcorn and hot chocolate stand helps the park."
+    },
+    {
+      "id": "r40-en-a1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "What happens to the film night if it rains?",
+      "choices": [
+        "It is cancelled until next week.",
+        "People will sit in the rain.",
+        "The film moves to the train station.",
+        "People will watch it in the youth centre."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "The last paragraph gives the youth centre as a bad-weather location."
+    },
+    {
+      "id": "r40-en-a1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "Why does Ben ask Maya to answer before Thursday?",
+      "choices": [
+        "He needs her to borrow a football.",
+        "He wants to change the film.",
+        "He needs to know whether she can come.",
+        "He plans to leave Greenhill."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Ben asks Maya to write before Thursday in response to the invitation."
+    },
+    {
+      "id": "r40-en-a1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "Which reply would answer Ben's message most helpfully?",
+      "choices": [
+        "Tell him if she can come and share news about her class.",
+        "Send only a picture of the weather.",
+        "Ask him to visit an unrelated shop.",
+        "Tell him nothing about her new school."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "He invites Maya and also asks how her new class is going."
+    }
+  ]
+}
