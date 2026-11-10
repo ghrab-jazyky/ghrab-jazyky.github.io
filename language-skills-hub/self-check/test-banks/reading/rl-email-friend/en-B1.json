@@ -36,12 +36,12 @@
       "kind": "mc",
       "q": "Why does the changed town square remind Tomas to contact Robin?",
       "choices": [
-        "The shop has started selling the same football boots as before.",
-        "Seeing the new workshop makes him think of their shared past and lost contact.",
         "He wants Robin to complain about the changes to the council.",
-        "He has heard that Robin will move back next week."
+        "He has heard that Robin will move back next week.",
+        "The shop has started selling the same football boots as before.",
+        "Seeing the new workshop makes him think of their shared past and lost contact."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The transformation prompts memories and the realisation that the friends have barely spoken."
     },
     {
@@ -51,12 +51,12 @@
       "kind": "mc",
       "q": "What does Tomas learn from helping younger children at the workshop?",
       "choices": [
-        "It is essential to be a professional before offering help.",
-        "Children can teach adults to repair bicycle lights.",
         "Volunteer work is useful only when it earns money.",
-        "Even someone still learning can make a useful contribution."
+        "Even someone still learning can make a useful contribution.",
+        "It is essential to be a professional before offering help.",
+        "Children can teach adults to repair bicycle lights."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The children treat Tomas like an expert, but he reflects that help need not require expertise."
     },
     {
@@ -66,12 +66,12 @@
       "kind": "mc",
       "q": "What does the collection of old photographs contribute to the workshop?",
       "choices": [
-        "It mainly advertises tools that people can borrow.",
-        "It replaces the need for older volunteers.",
         "It connects people with different periods of the neighbourhood's history.",
-        "It shows that the present-day square has not changed."
+        "It shows that the present-day square has not changed.",
+        "It mainly advertises tools that people can borrow.",
+        "It replaces the need for older volunteers."
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "The photographs and Mrs Okafor's stories preserve memories of the former square."
     },
     {
@@ -81,12 +81,12 @@
       "kind": "mc",
       "q": "Why does Tomas say Robin need not prepare a speech for the open day?",
       "choices": [
-        "He wants the invitation to feel relaxed and easy to accept.",
-        "He knows Robin dislikes speaking in every situation.",
         "The organisers have cancelled all planned activities.",
-        "He hopes Robin will bring no photographs."
+        "He hopes Robin will bring no photographs.",
+        "He wants the invitation to feel relaxed and easy to accept.",
+        "He knows Robin dislikes speaking in every situation."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "Tomas removes expectations so even a brief appearance is welcome."
     },
     {
@@ -96,12 +96,12 @@
       "kind": "mc",
       "q": "Why does Tomas describe his small first tasks at the workshop?",
       "choices": [
-        "He wants Robin to know that making tea is the main goal.",
-        "They help show how he moved from feeling nervous to participating confidently.",
         "He thinks carrying boxes is more important than repairing objects.",
-        "He is disappointed that he was not trusted with difficult repairs at first."
+        "He is disappointed that he was not trusted with difficult repairs at first.",
+        "He wants Robin to know that making tea is the main goal.",
+        "They help show how he moved from feeling nervous to participating confidently."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "His early nervousness contrasts with later teaching younger children."
     },
     {
@@ -111,12 +111,12 @@
       "kind": "mc",
       "q": "What does Tomas's memory of Robin's photographs help explain?",
       "choices": [
-        "He expects Robin to organise all the workshop activities.",
-        "He needs photographs of other towns for the wall.",
         "He thinks Robin's hobby could make a meaningful contribution to the open day.",
-        "He wants Robin to pay for a professional photographer."
+        "He wants Robin to pay for a professional photographer.",
+        "He expects Robin to organise all the workshop activities.",
+        "He needs photographs of other towns for the wall."
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "Tomas associates Robin with photographs of everyday life and invites that interest into the event."
     },
     {
@@ -126,12 +126,12 @@
       "kind": "mc",
       "q": "Why does Tomas offer travel alternatives instead of insisting on the open day?",
       "choices": [
-        "He prefers speaking on a screen to meeting in person.",
-        "He has decided to stop volunteering at the workshop.",
         "Robin is not allowed to visit the old neighbourhood.",
-        "He recognises the time and expense involved and values keeping in contact anyway."
+        "He recognises the time and expense involved and values keeping in contact anyway.",
+        "He prefers speaking on a screen to meeting in person.",
+        "He has decided to stop volunteering at the workshop."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "Tomas offers to travel himself or arrange a call and says Robin should not feel guilty."
     },
     {
@@ -141,12 +141,12 @@
       "kind": "mc",
       "q": "A nervous newcomer wants to help a community project but has few skills. What would Tomas's experience suggest?",
       "choices": [
-        "Start with manageable tasks and learn while contributing.",
-        "Avoid helping anyone until they earn a qualification.",
         "Take on the hardest job to prove they belong.",
-        "Wait until another volunteer asks for money."
+        "Wait until another volunteer asks for money.",
+        "Start with manageable tasks and learn while contributing.",
+        "Avoid helping anyone until they earn a qualification."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "Tomas begins with small tasks and gains confidence and useful skills."
     },
     {
@@ -156,12 +156,12 @@
       "kind": "mc",
       "q": "Robin cannot afford the journey home. Which action best fits the tone of Tomas's email?",
       "choices": [
-        "Accept a video call or suggest meeting during the holidays.",
-        "Stop replying because the invitation cannot be accepted.",
         "Ask Tomas to cancel the open day.",
-        "Promise to attend despite the travel cost."
+        "Promise to attend despite the travel cost.",
+        "Accept a video call or suggest meeting during the holidays.",
+        "Stop replying because the invitation cannot be accepted."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "Tomas explicitly offers calls and a different visit because he values their relationship."
     },
     {
@@ -171,12 +171,12 @@
       "kind": "mc",
       "q": "What would be the most constructive response to Tomas's closing question?",
       "choices": [
-        "Tell him that only a large event justifies keeping in contact.",
-        "Send only a reaction to the latest social-media picture.",
         "Suggest waiting another year until there is a special occasion.",
-        "Propose a simple regular conversation rather than waiting for a major event."
+        "Propose a simple regular conversation rather than waiting for a major event.",
+        "Tell him that only a large event justifies keeping in contact.",
+        "Send only a reaction to the latest social-media picture."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "Tomas closes by asking that they stop treating special occasions as a condition for speaking."
     }
   ]
