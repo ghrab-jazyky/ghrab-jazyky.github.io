@@ -1,4 +1,4 @@
-/* R35/R36 isolated Listening A1–C2 authoring reference. No release, no student credentials. */
+/* R35–R37 independent Listening A1–C2 authoring references. No release, no student credentials. */
 (function(root){
  'use strict';
  const KIND='LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1';
@@ -11,10 +11,16 @@
    bank.status===STATUS&&bank.published===false,
    'Independent Listening bank must remain unapproved');
   const CEFR=['A1','A2','B1','B2','C1','C2'];
-  requireValid(bank.topic==='ll-harrison-ford'&&bank.language==='en'&&
-   CEFR.includes(bank.level),'Unsupported Listening reference');
-  const audit=bank.level==='B2'?'R35-AUTHOR-DRAFT-1':'R36-AUTHOR-DRAFT-1';
-  const prefix=bank.level==='B2'?'r35-hf-b2-':'r36-hf-'+bank.level.toLowerCase()+'-';
+  const topics={
+   'll-harrison-ford':'hf','ll-matthew-oscars':'mm','ll-peaky-no-fighting':'pk'
+  };
+  requireValid(Object.prototype.hasOwnProperty.call(topics,bank.topic)&&
+   bank.language==='en'&&CEFR.includes(bank.level),'Unsupported Listening reference');
+  const isHarrison=bank.topic==='ll-harrison-ford';
+  const audit=isHarrison?(bank.level==='B2'?'R35-AUTHOR-DRAFT-1':'R36-AUTHOR-DRAFT-1'):
+   'R37-AUTHOR-DRAFT-1';
+  const prefix=isHarrison?(bank.level==='B2'?'r35-hf-b2-':'r36-hf-'+bank.level.toLowerCase()+'-'):
+   'r37-'+topics[bank.topic]+'-'+bank.level.toLowerCase()+'-';
   requireValid(bank.auditRevision===audit,'Unsupported Listening reference audit revision');
   requireValid(Number.isInteger(bank.durationMinutesSuggested)&&
    bank.durationMinutesSuggested>=5&&bank.durationMinutesSuggested<=120,
