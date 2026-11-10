@@ -1,4 +1,4 @@
-/* R32 unapproved B2 Reading preview. Strictly separate from public R31 student pages.
+/* R32–R34 unapproved Reading A1–C2 preview. Strictly separate from public R31 student pages.
  * No telemetry, POST, student identity or client key secrecy guarantees.
  */
 (()=>{
@@ -118,12 +118,11 @@
   try{
    requireCondition(reading&&testBank&&grade&&window.LSHSessionUI,
     'Required local assessment modules are unavailable');
-   // A fixed 20-minute URL is intentional for this *unapproved* pedagogical pilot.
-   // It must not be exposed through the public teacher catalogue.
-   requireCondition(['B1','B2'].includes(level),'Unsupported independent test level');
-   requireCondition(params.get('timer')==='20'&&
-    /^[a-z0-9_-]{6,40}$/i.test(params.get('attempt')||''),
-    'This draft preview requires ?level=B1|B2&timer=20&attempt=<local-id>');
+   // Only explicitly authored CEFR banks may run in this *unapproved* pilot.
+   // The advertised timer must match the bank's suggested limit exactly.
+   requireCondition(reading.LEVELS.includes(level),'Unsupported independent test level');
+   requireCondition(/^[a-z0-9_-]{6,40}$/i.test(params.get('attempt')||''),
+    'This draft preview needs a local attempt identifier');
    const [manifest,originalHtml,bank]=await Promise.all([
     get('../../../version.json',true),
     get('../../../cteni/can-mistakes/index.html'),
@@ -137,10 +136,12 @@
     'Original source checksum mismatch: draft preview disabled');
    const practice=reading.variantFromData(reading.parseReadingData(originalHtml),'en',level);
    variant=testBank.makeQaVariant(bank,practice,actual);
+   requireCondition(params.get('timer')===String(bank.durationMinutesSuggested),
+    'The draft timer must match the approved-for-review bank metadata');
    reading.validateVariant(variant);
    $('title').textContent=practice.title;
    document.title='Independent Reading '+level+' – unapproved QA preview';
-   document.querySelector('.subtitle').textContent='Can Mistakes Help Us Learn? · English '+level+' · 10 independent questions · 20 minutes';
+   document.querySelector('.subtitle').textContent='Can Mistakes Help Us Learn? · English '+level+' · 10 independent questions · '+bank.durationMinutesSuggested+' minutes';
    document.querySelector('.mode').textContent='UNAPPROVED DRAFT · EN/'+level;
    document.querySelector('.reading-panel .pill').textContent='EN · '+level;
    renderText();renderTasks();
@@ -160,7 +161,7 @@
     },
     onSubmit:({automatic,restored})=>submit(automatic,restored)
    });
-   requireCondition(timed,'R32 pilot may not run without the local timer');
+   requireCondition(timed,'Independent pilot may not run without the local timer');
    timed.initialize();
    $('workspace').hidden=timed.status().phase==='ready';
    $('loading').hidden=true;
