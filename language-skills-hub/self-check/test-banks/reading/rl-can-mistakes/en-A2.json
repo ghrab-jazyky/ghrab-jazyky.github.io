@@ -35,12 +35,12 @@
       "kind": "mc",
       "q": "What is Daniel trying to change before Thursday's test?",
       "choices": [
+        "The time his science lesson starts.",
         "The subject of the test.",
         "The way he prepares during the week.",
-        "The teacher who marks his answers.",
-        "The time his science lesson starts."
+        "The teacher who marks his answers."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Daniel replaces last-minute study with a plan that spreads practice through the week."
     },
     {
@@ -50,12 +50,12 @@
       "kind": "mc",
       "q": "How was Daniel's old plan different from his new plan?",
       "choices": [
+        "He used to study late on one evening.",
         "He used to study with his sister every day.",
         "He used to work for only twenty minutes.",
-        "He used to take many breaks on Wednesday.",
-        "He used to study late on one evening."
+        "He used to take many breaks on Wednesday."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "Daniel usually studied everything on Wednesday night and felt tired the next day."
     },
     {
@@ -65,12 +65,12 @@
       "kind": "mc",
       "q": "What does Daniel discover when he explains an idea to his sister?",
       "choices": [
+        "His teacher has given the wrong homework.",
         "He needs to write his notes again.",
         "She already knows everything.",
-        "He does not understand every part clearly.",
-        "His teacher has given the wrong homework."
+        "He does not understand every part clearly."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "Explaining the idea helps Daniel notice what he still needs to check."
     },
     {
@@ -80,12 +80,12 @@
       "kind": "mc",
       "q": "Which part of Daniel's result pleases him most?",
       "choices": [
+        "His result was the highest in his class.",
         "He prepared calmly and slept well.",
         "He answered every question correctly.",
-        "His sister helped during the test.",
-        "His result was the highest in his class."
+        "His sister helped during the test."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "Daniel is especially pleased with sleeping well and enjoying his Wednesday evening."
     },
     {
@@ -95,12 +95,12 @@
       "kind": "mc",
       "q": "Why does Daniel answer questions without looking at the answers?",
       "choices": [
+        "To show his sister that the book is easy.",
         "To make the questions shorter.",
         "To find out what he can remember.",
-        "To practise writing very quickly.",
-        "To show his sister that the book is easy."
+        "To practise writing very quickly."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Trying questions without answers lets Daniel check what he can do by himself."
     },
     {
@@ -110,12 +110,12 @@
       "kind": "mc",
       "q": "Why does Daniel turn off phone notifications?",
       "choices": [
+        "He is waiting for an important message.",
         "He wants to save the phone battery.",
         "He has lost his phone at school.",
-        "He wants fewer interruptions while studying.",
-        "He is waiting for an important message."
+        "He wants fewer interruptions while studying."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "Switching off notifications is part of Daniel's more focused study plan."
     },
     {
@@ -125,12 +125,12 @@
       "kind": "mc",
       "q": "Why does Daniel write down things to practise after the test?",
       "choices": [
+        "He wants to work on the things he missed.",
         "He wants to copy his friend's answers.",
         "He thinks the teacher will cancel the test.",
-        "He wants to forget the difficult questions.",
-        "He wants to work on the things he missed."
+        "He wants to forget the difficult questions."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "After making two mistakes, Daniel records what he still needs to practise."
     },
     {
@@ -140,12 +140,12 @@
       "kind": "mc",
       "q": "A friend cannot explain a science idea. What could Daniel suggest?",
       "choices": [
+        "Read the answer without thinking about it.",
         "Move on and forget that part.",
         "Check the notes and look for an example.",
-        "Study for three hours without stopping.",
-        "Read the answer without thinking about it."
+        "Study for three hours without stopping."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Daniel checks his notes and uses a textbook example when he does not understand."
     },
     {
@@ -155,12 +155,12 @@
       "kind": "mc",
       "q": "A student gets a good mark but feels very tired. What can they learn from Daniel?",
       "choices": [
+        "They should not prepare for the next test.",
         "Rest and a calmer plan are important too.",
         "Only the mark matters after a test.",
-        "They should study longer next time.",
-        "They should not prepare for the next test."
+        "They should study longer next time."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "Daniel values getting enough sleep as well as improving his mark."
     },
     {
@@ -170,12 +170,12 @@
       "kind": "mc",
       "q": "Daniel wants to study history next week. Which plan fits the story?",
       "choices": [
+        "Try the useful parts of his plan and make changes if needed.",
         "Use the same questions as in science.",
         "Wait until the night before his history test.",
-        "Ask his sister to learn the facts for him.",
-        "Try the useful parts of his plan and make changes if needed."
+        "Ask his sister to learn the facts for him."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The final paragraph says Daniel plans to use the approach for history and adjust it if necessary."
     }
   ]
