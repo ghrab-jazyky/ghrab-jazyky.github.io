@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "de",
+  "level": "B2",
+  "sourceTitle": "Warum klang die Nachricht so unfreundlich?",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Zehn eigenständige Interpretations- und Transferfragen; Entwurf ohne externe didaktische Freigabe.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interpretation"
+    },
+    {
+      "id": "argument",
+      "title": "Argumentationsanalyse"
+    },
+    {
+      "id": "transfer",
+      "title": "Kritische Anwendung"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-de-b2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Warum kann eine knappe geschriebene Antwort falsch verstanden werden?",
+      "choices": [
+        "Der Empfänger kennt Stimme und Situation des Absenders nicht.",
+        "Schriftliche Nachrichten enthalten nie eine echte Information.",
+        "Der Empfänger sieht immer den Gesichtsausdruck des Absenders.",
+        "Satzzeichen bedeuten für alle Altersgruppen dasselbe."
+      ],
+      "answer": 0,
+      "explanation": "Im Text fehlen Tonfall, Mimik und die Möglichkeit, sofort nachzufragen."
+    },
+    {
+      "id": "r41-de-b2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Warum kann dieselbe Antwort nach einigen Stunden anders wirken?",
+      "choices": [
+        "Der Inhalt ändert sich nach drei Stunden automatisch.",
+        "Die Verzögerung wird möglicherweise als Desinteresse gedeutet.",
+        "Jede späte Antwort wird absichtlich zurückgehalten.",
+        "Kurze Antworten sind nur am Arbeitsplatz verständlich."
+      ],
+      "answer": 1,
+      "explanation": "Die Reaktion hängt von Erwartungen ab, obwohl der Absender beschäftigt sein kann."
+    },
+    {
+      "id": "r41-de-b2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Welche falsche Annahme macht Dana bei Mareks knapper Antwort?",
+      "choices": [
+        "Marek hat ausdrücklich ein anderes Geschenk bestellt.",
+        "Der Lehrer hat das Fotobuch bereits erhalten.",
+        "Sie deutet seine Zustimmung als Ablehnung ihres Vorschlags.",
+        "Die Gruppe hat kein Geld mehr."
+      ],
+      "answer": 2,
+      "explanation": "Dana überprüft nicht, was Marek mit seinem kurzen Wort meint."
+    },
+    {
+      "id": "r41-de-b2-04",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum wird der Gruppenchat ausdrücklich als erfunden bezeichnet?",
+      "choices": [
+        "Solche Missverständnisse gibt es in Wirklichkeit nie.",
+        "Alle Chats im Schulalltag sind erfunden.",
+        "Der Autor will die Verzögerung verschweigen.",
+        "Er soll ein realistisches Muster zeigen, ohne als dokumentierter Fall zu gelten."
+      ],
+      "answer": 3,
+      "explanation": "Das Beispiel veranschaulicht eine typische Kommunikationsschwierigkeit."
+    },
+    {
+      "id": "r41-de-b2-05",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Warum wäre übertrieben formelles Schreiben keine allgemeine Lösung?",
+      "choices": [
+        "Handys können technisch keine längeren Sätze speichern.",
+        "Es würde in Freundeskreisen unnatürlich wirken und neue Missverständnisse schaffen.",
+        "Förmliche Nachrichten haben immer eine eindeutige Bedeutung.",
+        "Jugendliche kennen überhaupt keine Grammatik."
+      ],
+      "answer": 1,
+      "explanation": "Der Text fordert situationsabhängige Klarheit, keine starren Regeln."
+    },
+    {
+      "id": "r41-de-b2-06",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Was verbindet Nachfragen und einen Wechsel zum Telefonat?",
+      "choices": [
+        "Beide sorgen dafür, dass immer die neueste App benutzt wird.",
+        "Beide machen private Konflikte automatisch öffentlich.",
+        "Beide ersetzen jedes schwierige Gespräch durch Schweigen.",
+        "Beide helfen, Absichten zu klären statt sie bloß zu vermuten."
+      ],
+      "answer": 3,
+      "explanation": "Eine Rückfrage oder ein Anruf stellt fehlenden Kontext wieder her."
+    },
+    {
+      "id": "r41-de-b2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Ein Mitschüler antwortet auf eine wichtige Entscheidung nur mit „passt“. Was wäre hilfreich?",
+      "choices": [
+        "Nachfragen, ob er dem Plan tatsächlich zustimmt.",
+        "Den Vorschlag ohne Rücksprache zurückziehen.",
+        "Sofort annehmen, dass die Antwort ironisch ist.",
+        "Mehrere Tage nicht mehr antworten."
+      ],
+      "answer": 0,
+      "explanation": "Dan as Missverständnis entsteht durch eine ungeprüfte Interpretation."
+    },
+    {
+      "id": "r41-de-b2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Eine Großmutter setzt nach jeder kurzen Nachricht einen Punkt. Was könnte dahinterstecken?",
+      "choices": [
+        "Sie ist sicher auf alle Familienmitglieder wütend.",
+        "Sie möchte, dass niemand mehr Satzzeichen verwendet.",
+        "Sie folgt einfach den ihr vertrauten Schreibregeln.",
+        "Sie verlangt absichtlich eine verspätete Antwort."
+      ],
+      "answer": 2,
+      "explanation": "Die Bewertung von Zeichensetzung kann von der Generation abhängen."
+    },
+    {
+      "id": "r41-de-b2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Eine Gruppe versteht ein Daumen-hoch-Zeichen unterschiedlich. Was wäre sinnvoll?",
+      "choices": [
+        "Alle Symbole ohne Gespräch verbieten.",
+        "Gemeinsam eine feste Bedeutung für das Zeichen vereinbaren.",
+        "Das Zeichen häufiger ohne Erklärung verwenden.",
+        "Ein Mitglied alle Bedeutungen erraten lassen."
+      ],
+      "answer": 1,
+      "explanation": "Der Text nennt gemeinsame Signale als Mittel gegen Unsicherheit."
+    },
+    {
+      "id": "r41-de-b2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Zwei Freunde klären ein verletzendes Problem nur per Chat. Was empfiehlt der Text?",
+      "choices": [
+        "Immer kürzere Antworten ohne Erklärung senden.",
+        "Den Streit an eine große Gruppe weiterleiten.",
+        "Das Gespräch einfach mit „Ok.“ beenden.",
+        "Nach Möglichkeit telefonieren oder persönlich miteinander sprechen."
+      ],
+      "answer": 3,
+      "explanation": "Bei emotionalen Themen hilft direkter Austausch, fehlende Signale zurückzugewinnen."
+    }
+  ]
+}
