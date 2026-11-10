@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "de",
+  "level": "B2",
+  "sourceTitle": "Asteroiden: Risiko statt Panik",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R37-CONTENT-AUDIT-1",
+  "description": "Original independent B2 planetary defence reading test draft, awaiting content audit",
+  "tabs": [
+    {
+      "id": "verstehen",
+      "title": "Bedeutung verstehen"
+    },
+    {
+      "id": "belege",
+      "title": "Belege prüfen"
+    },
+    {
+      "id": "anwenden",
+      "title": "Folgerungen anwenden"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r37-de-b2-01",
+      "tab": "verstehen",
+      "kind": "mc",
+      "q": "Warum kann die Schlagzeile, ein Asteroid „rase auf die Erde zu“, irreführend sein?",
+      "choices": [
+        "Sie zeigt, dass ein Objekt sehr groß sein muss.",
+        "Sie kann einen Einschlag behaupten, den die Bahndaten nicht belegen.",
+        "Sie beschreibt immer einen Körper in der Erdatmosphäre.",
+        "Sie bedeutet, dass Forschende keine Messungen mehr durchführen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz eins trennt eine Annäherung von einer tatsächlich berechneten Kollision."
+    },
+    {
+      "id": "r37-de-b2-02",
+      "tab": "verstehen",
+      "kind": "mc",
+      "q": "Was folgt daraus, dass ein Körper relativ nahe an der Erdbahn vorbeizieht?",
+      "choices": [
+        "Seine Bewegung ist bereits völlig sicher bekannt.",
+        "Er ist für optische Teleskope grundsätzlich unsichtbar.",
+        "Er besteht immer aus demselben Material.",
+        "Eine solche Nähe bedeutet noch keine unmittelbare Bedrohung."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Die meisten bekannten Objekte in Erdnähe stellen keine unmittelbare Gefahr dar."
+    },
+    {
+      "id": "r37-de-b2-03",
+      "tab": "verstehen",
+      "kind": "mc",
+      "q": "Welchen Vorteil haben Infrarotbeobachtungen?",
+      "choices": [
+        "Sie ersetzen jede andere astronomische Methode.",
+        "Sie können einen Einschlag automatisch verhindern.",
+        "Sie machen lichtschwache, dunkle Körper leichter erkennbar.",
+        "Sie verändern die Bewegung eines beobachteten Asteroiden."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Infrarotgeräte unterstützen die Suche nach Körpern, die wenig Sonnenlicht reflektieren."
+    },
+    {
+      "id": "r37-de-b2-04",
+      "tab": "belege",
+      "kind": "mc",
+      "q": "Warum vergleichen Astronomen Bilder aus mehreren Nächten?",
+      "choices": [
+        "Weitere Messungen verbessern die Berechnung der Umlaufbahn.",
+        "So lässt sich beweisen, dass die ersten Daten absichtlich falsch waren.",
+        "Computerprogramme können dadurch vermieden werden.",
+        "So erkennt man die chemische Zusammensetzung ohne zusätzliche Untersuchung."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz zwei beschreibt, wie zusätzliche Beobachtungen Bahnberechnungen präzisieren."
+    },
+    {
+      "id": "r37-de-b2-05",
+      "tab": "belege",
+      "kind": "mc",
+      "q": "Wie sollte man Änderungen an einer frühen Vorhersage verstehen?",
+      "choices": [
+        "Sie bedeuten immer, dass der Asteroid seine Größe verändert hat.",
+        "Sie beweisen, dass Forschung ohne Methode stattfindet.",
+        "Sie können das Ergebnis einer besser begründeten Berechnung sein.",
+        "Sie zeigen, dass erste Beobachtungen geheim bleiben müssen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Der Text erklärt, dass neue Daten zu genaueren Prognosen führen."
+    },
+    {
+      "id": "r37-de-b2-06",
+      "tab": "belege",
+      "kind": "mc",
+      "q": "Welche Schlussfolgerung aus dem DART-Versuch wäre zu weitgehend?",
+      "choices": [
+        "Die nachgewiesene Ablenkung garantiert noch keinen Schutz vor jedem Einschlag.",
+        "Die Sonde hat das Zielobjekt nicht erreicht.",
+        "Alle Asteroiden haben dieselbe innere Struktur.",
+        "Die Entdeckung weiterer Objekte ist überflüssig geworden."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Absatz drei unterscheidet den erfolgreichen Versuch von einer universellen Sicherheitsgarantie."
+    },
+    {
+      "id": "r37-de-b2-07",
+      "tab": "belege",
+      "kind": "mc",
+      "q": "Was zeigte die Messung nach dem Zusammenstoß mit Dimorphos?",
+      "choices": [
+        "Der Körper verwandelte sich in einen Meteoriten.",
+        "Seine Umlaufzeit um Didymos wurde kürzer.",
+        "Er umkreiste anschließend die Erde.",
+        "Er verlor jede Bewegung im Raum."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Nach dem Einschlag brauchte Dimorphos weniger Zeit für eine Umrundung."
+    },
+    {
+      "id": "r37-de-b2-08",
+      "tab": "anwenden",
+      "kind": "mc",
+      "q": "Warum spielt die Vorwarnzeit bei einem echten gefährlichen Objekt eine Rolle?",
+      "choices": [
+        "Weil der Asteroid mit der Zeit grundsätzlich kleiner wird.",
+        "Weil Raumsonden ohne Vorbereitung starten können.",
+        "Weil alle Umlaufbahnen unverändert bleiben.",
+        "Weil Aufbau, Größe und verfügbare Zeit die Möglichkeiten beeinflussen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Der dritte Absatz nennt physische Eigenschaften und Warnzeit als entscheidend."
+    },
+    {
+      "id": "r37-de-b2-09",
+      "tab": "anwenden",
+      "kind": "mc",
+      "q": "Was gehört zu einer verantwortungsvollen aktualisierten Risikomeldung?",
+      "choices": [
+        "Eine dramatische Aufnahme ohne Erklärung.",
+        "Eine Zusage, dass es nie einen Einschlag geben wird.",
+        "Eine Erläuterung des Wissensstands und der verbleibenden Unsicherheit.",
+        "Nur eine neue Zahl ohne Vergleich mit früheren Aussagen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Der Schluss fordert eine offene Erklärung von Fakten, Unsicherheit und Änderungen."
+    },
+    {
+      "id": "r37-de-b2-10",
+      "tab": "anwenden",
+      "kind": "mc",
+      "q": "Welche Strategie entspricht am besten der Gesamtaussage?",
+      "choices": [
+        "Zuverlässig beobachten, rechtzeitig planen und international zusammenarbeiten.",
+        "Jede Annäherung sofort als Katastrophe darstellen.",
+        "Mit Entscheidungen bis zum letzten Moment warten.",
+        "Sich ausschließlich auf spektakuläre Raumfahrtmissionen verlassen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Die Schlussfolgerung verbindet Daten, Vorbereitung und Zusammenarbeit."
+    }
+  ]
+}
