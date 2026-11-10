@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "B2",
+  "sourceTitle": "Asteroids: A Question of Risk, Not Panic",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-AUTHOR-DRAFT-1",
+  "description": "EN/B2 independently authored Asteroids test: uncertainty, evidence and planetary-defence reasoning. Human content review pending.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Interpreting the evidence",
+      "description": "Read between the lines and establish the main argument."
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasoning and uncertainty",
+      "description": "Assess claims, limits and explanations."
+    },
+    {
+      "id": "application",
+      "title": "Evidence in practice",
+      "description": "Transfer scientific reasoning to new situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-en-b2-01",
+      "tab": "interpretation",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "Why does the writer object to headlines that describe an asteroid as 'heading towards Earth'?",
+      "choices": [
+        "They fail to explain why asteroids orbit the Sun.",
+        "They may turn an ordinary approach into an impression of imminent impact.",
+        "They usually refer to objects that do not exist.",
+        "They place too much emphasis on the size of the asteroid belt."
+      ],
+      "answer": 1,
+      "explanation": "The opening separates proximity from a calculated collision probability and cautions that 'near' is misleading in everyday terms."
+    },
+    {
+      "id": "r35-en-b2-02",
+      "tab": "interpretation",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "What does a revised orbital estimate most strongly indicate in the writer's account?",
+      "choices": [
+        "Astronomers have been using different laws of physics.",
+        "The object has suddenly changed its direction without a cause.",
+        "The first detection was not an asteroid at all.",
+        "Additional evidence is narrowing an earlier range of possibilities."
+      ],
+      "answer": 3,
+      "explanation": "Successive observations improve orbit estimates; changing numbers reflect revised evidence rather than random guessing."
+    },
+    {
+      "id": "r35-en-b2-03",
+      "tab": "interpretation",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "What makes the rise and subsequent fall of the 2024 YR4 estimate scientifically understandable?",
+      "choices": [
+        "A threatening object must become harmless after a fixed number of weeks.",
+        "The telescope measurements were deliberately kept secret at first.",
+        "Uncertainty can initially admit a concerning possibility before later observations exclude it.",
+        "The predicted collision date was constantly moved to a later year."
+      ],
+      "answer": 2,
+      "explanation": "The initially uncertain orbit admitted impact possibilities that were ruled out by later measurements."
+    },
+    {
+      "id": "r35-en-b2-04",
+      "tab": "interpretation",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "Which qualification is essential when discussing the DART experiment?",
+      "choices": [
+        "A successful change in one orbit does not establish a universal defence solution.",
+        "The mission proved it is impossible to influence a space object's motion.",
+        "The target was about to collide with Earth before the experiment.",
+        "The experiment cannot be measured because it occurred in space."
+      ],
+      "answer": 0,
+      "explanation": "The experiment showed a feasible change, not that every potential impact can be prevented regardless of composition or warning time."
+    },
+    {
+      "id": "r35-en-b2-05",
+      "tab": "reasoning",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Why should an early risk estimate be reported together with its uncertainty?",
+      "choices": [
+        "It makes the probability easier to remember.",
+        "An isolated number may appear more definite than the available data justify.",
+        "It allows journalists to calculate the asteroid's exact composition.",
+        "It proves that further measurements are unnecessary."
+      ],
+      "answer": 1,
+      "explanation": "The writer argues that a dramatic probability divorced from its uncertainty misleads readers."
+    },
+    {
+      "id": "r35-en-b2-06",
+      "tab": "reasoning",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "What is the rhetorical purpose of the 2024 YR4 case?",
+      "choices": [
+        "To prove that all large asteroids are visible well before an approach.",
+        "To argue that February forecasts should never be trusted.",
+        "To demonstrate how headlines can race ahead of changing scientific evidence.",
+        "To show that impact predictions are always false."
+      ],
+      "answer": 2,
+      "explanation": "The example traces a moving estimate and its publicity to illustrate the normal refinement of orbit predictions."
+    },
+    {
+      "id": "r35-en-b2-07",
+      "tab": "reasoning",
+      "sourceParagraph": 5,
+      "kind": "mc",
+      "q": "Why might years of routine observation be more useful than a spectacular last-minute response?",
+      "choices": [
+        "Large impacts are certain to happen within a few years.",
+        "Spacecraft are less accurate than ordinary telescopes in every case.",
+        "Public communication matters only after a predicted collision.",
+        "Reliable early information creates time for proportionate decisions and preparation."
+      ],
+      "answer": 3,
+      "explanation": "The article repeatedly connects effective defence to early discovery, uncertainty reduction and cooperative planning."
+    },
+    {
+      "id": "r35-en-b2-08",
+      "tab": "application",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "A news site reports a 2% impact probability but gives no date or measurement history. What would the article suggest asking first?",
+      "choices": [
+        "Whether the asteroid has appeared in a science-fiction film.",
+        "Whether this is a preliminary estimate and what observations support it.",
+        "Whether the space rock has already entered Earth's atmosphere.",
+        "Whether the quoted percentage can be rounded to zero."
+      ],
+      "answer": 1,
+      "explanation": "A responsible report clarifies how provisional the estimate is and which measurements underlie it."
+    },
+    {
+      "id": "r35-en-b2-09",
+      "tab": "application",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "A proposed defence plan assumes DART's result will be identical for every asteroid. What is its chief weakness?",
+      "choices": [
+        "An asteroid's structure and the available warning time can change the outcome.",
+        "The DART spacecraft was never tested against a real asteroid.",
+        "The method can work only when the target is inside Earth's atmosphere.",
+        "All future asteroids have been shown to be far smaller than Dimorphos."
+      ],
+      "answer": 0,
+      "explanation": "The experiment does not establish uniform effects across different physical objects and warning times."
+    },
+    {
+      "id": "r35-en-b2-10",
+      "tab": "application",
+      "sourceParagraph": 5,
+      "kind": "mc",
+      "q": "Which public message best matches the article's conclusion?",
+      "choices": [
+        "Every close approach should trigger an emergency response.",
+        "Once a spacecraft succeeds, international cooperation becomes unnecessary.",
+        "Scientists should avoid discussing uncertainties until they disappear.",
+        "Monitoring and revising predictions openly are reasons for preparedness, not panic."
+      ],
+      "answer": 3,
+      "explanation": "The conclusion rejects both complacency and inevitable catastrophe in favour of evidence and cooperation."
+    }
+  ]
+}
