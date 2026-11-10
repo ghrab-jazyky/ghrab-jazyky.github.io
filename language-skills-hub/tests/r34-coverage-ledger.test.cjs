@@ -27,8 +27,8 @@ test('R34 all 138 Reading/Listening variants have explicit honest coverage',()=>
   counts[row.skill]++;
   if(row.state==='draft_authored_unapproved'){
    counts.draft++;
-   assert.equal(row.skill,'reading');
-   assert.equal(row.topic,'rl-can-mistakes');
+   assert.ok(['reading','listening'].includes(row.skill));
+   assert.ok(row.topic==='rl-can-mistakes'||row.topic==='ll-harrison-ford');
    assert.equal(row.language,'en');
    assert.ok(row.independentBank);
    const bank=read(row.independentBank);
@@ -36,15 +36,15 @@ test('R34 all 138 Reading/Listening variants have explicit honest coverage',()=>
    assert.equal(bank.status,'DRAFT_PENDING_TEACHER_CONTENT_APPROVAL');
    assert.equal(bank.published,false);
    assert.equal(bank.sourcePracticeContentHash,manifest.contentHashes[row.topic]);
-   assert.equal(bank.questions.length,10);
+   assert.equal(row.skill==='reading'?bank.questions.length:bank.objective.length, row.skill==='reading'?10:6);
   }else{
    assert.equal(row.state,'content_not_authored');
    counts.missing++;
    assert.equal(row.independentBank,null);
   }
  }
- assert.deepEqual(counts,{reading:120,listening:18,draft:6,missing:132});
- assert.deepEqual(cover.counts,{reading:120,listening:18,drafts:6,missing:132});
+ assert.deepEqual(counts,{reading:120,listening:18,draft:7,missing:131});
+ assert.deepEqual(cover.counts,{reading:120,listening:18,drafts:7,missing:131});
 });
 test('R34 no unapproved draft is auto-exposed by student directory',()=>{
  const index=fs.readFileSync(path.join(base,'index.html'),'utf8');
