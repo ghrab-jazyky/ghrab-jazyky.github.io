@@ -30,6 +30,12 @@ U Reading i Listening může učitel zvolit časový limit **5–120 minut** a v
 
 Studentovy odpovědi se během pokusu ukládají **pouze lokálně**. Nové otevření třídního odkazu vytváří vlastní místní relaci, aby si žáci na sdíleném zařízení běžně nepřebírali cizí pokusy. Po odevzdání je možné místní odpovědi vymazat. Všechna tato opatření lze ze strany uživatele technicky obejít, nejsou proto zárukou zabezpečeného klasifikovaného testu. Doporučuje se osobní dohled a fyzická přejímka Android/iOS/iPadOS.
 
+### R31 – uložení učitelských bodů a CSV export
+
+U časovaného Listening Testu se ruční hodnocení **0/1 bod** za písemné odpovědi ukládá do stejné **místní relace v prohlížeči**. Po obnovení odkazu se hodnocení načte; návrh celkové známky vzniká až po posouzení všech písemných odpovědí. U starších nečasovaných odkazů nemusí být uchování výsledku k dispozici.
+
+Reading po odevzdání a Listening po dokončení učitelské kontroly umožňují **stáhnout lokální CSV souhrn**. Obsahuje jen body, návrh známky, úroveň a téma; **nikdy jméno, e-mail ani text studentských odpovědí**. CSV není podepsaný ani ověřený školní záznam. Učitel jej musí nezávisle ověřit, nesmí jej automaticky importovat do klasifikace. Po přijetí výsledku lze místní odpovědi smazat, stažený soubor však zůstane na zařízení.
+
 ### Co bez backendu nelze zabezpečit
 
 GitHub Pages je veřejný statický web. **Klíče správných odpovědí jsou dostupné v procvičovacích kartách**, studenta nelze bezpečně autentizovat, nelze zabránit novému pokusu ani dokázat pravost lokálního výsledku. Učitelské posuzování písemných odpovědí na zařízení žáka **není technicky chráněno proti manipulaci**. Žádné studentské odpovědi ani známky se neposílají na server.

@@ -1,6 +1,6 @@
 # R31 – uchování učitelského hodnocení a export lokálního výsledku
 
-Stav: pracovní implementace (PR); nezávislé prohlížečové testy musí projít před nasazením.
+Vydání: R31. Stabilní předchozí verze R30 zůstává kontrolním bodem; provozní omezení statické aplikace platí i po nasazení.
 
 ## Výukové použití
 - **Cílová úroveň:** Reading EN/ES/DE/FR A1–C2; Listening EN A1–C2.

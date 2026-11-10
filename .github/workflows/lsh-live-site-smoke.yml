@@ -38,8 +38,10 @@ jobs:
                   assert data['kind']=='LSH_PUBLIC_PRACTICE_R17'
                   assert data['gradedTestsEnabled'] is False
                   release=json.loads(get('/language-skills-hub/version.json?verify='+str(attempt)))
-                  assert release['version']=='R30'
+                  assert release['version']=='R31'
                   assert release['localGradeProposalsEnabled'] is True
+                  assert release['localTeacherReviewPersistenceEnabled'] is True
+                  assert release['localAnonymousCsvExportEnabled'] is True
                   assert release['selfCheckEnabled'] is True
                   assert release['gradedTestsEnabled'] is False
                   assert release['officialGradesEnabled'] is False
@@ -74,6 +76,7 @@ jobs:
                     'self-check/listening/listening-teacher.js',
                     'self-check/results/result-core.js',
                     'self-check/results/grade-core.js',
+                    'self-check/results/export-core.js',
                     'self-check/results/share-tools.js',
                     'self-check/results/share.css',
                     'self-check/session/attempt-core.js',
@@ -84,7 +87,7 @@ jobs:
                     'assets/lsh/v3/card-bridge.js','assets/lsh/v3/card-bridge.css',
                     'assets/lsh/v3/store.js']:
                       head('/language-skills-hub/'+asset)
-                  print('PASS LIVE HTTPS R30: timed local attempts, mistakes-only review, no secure grades',flush=True)
+                  print('PASS LIVE HTTPS R31: persistent local teacher review and CSV receipts, no secure grades',flush=True)
                   print('PRODUCTION URL:',base+'/language-skills-hub/',flush=True)
                   sys.exit(0)
               except Exception as ex:

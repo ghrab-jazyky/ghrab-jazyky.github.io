@@ -98,6 +98,16 @@ test('R31 Listening receipt with pending written answers cannot masquerade as fi
  assert.match(txt,/1\|0\|1/);
  assert.throws(()=>receipts.listening(normalized,[1,2,1],meta));
 });
+test('R31 release manifest acknowledges local-only review and CSV features',()=>{
+ const manifest=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../version.json'),'utf8'));
+ assert.equal(manifest.version,'R31');
+ assert.equal(manifest.backendEnabled,false);
+ assert.equal(manifest.gradedTestsEnabled,false);
+ assert.equal(manifest.officialGradesEnabled,false);
+ assert.equal(manifest.localGradeProposalsEnabled,true);
+ assert.equal(manifest.localTeacherReviewPersistenceEnabled,true);
+ assert.equal(manifest.localAnonymousCsvExportEnabled,true);
+});
 test('R31 local exporter sanitizes formula-like values and has no uploading behavior',()=>{
  const src=fs.readFileSync(path.resolve(__dirname,'../self-check/results/export-core.js'),'utf8');
  assert.doesNotMatch(src,/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|document.cookie|postMessage\s*\(/);
