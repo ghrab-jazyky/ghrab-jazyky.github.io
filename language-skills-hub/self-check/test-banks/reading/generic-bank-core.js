@@ -9,13 +9,15 @@
  const ID=/^rl-[a-z0-9-]{3,76}$/,TEXT=s=>typeof s==='string'&&s.trim().length>0;
  const normalized=s=>s.normalize('NFKC').toLowerCase().replace(/\s+/g,' ').trim();
  function requireValid(ok,reason){if(!ok)throw new Error(reason)}
- function validate(bank,practice,entry,sourceHash){
+ function validate(bank,practice,entry,sourceHash,selection){
   requireValid(bank&&typeof bank==='object'&&!Array.isArray(bank)&&bank.kind===KIND,
    'Invalid independent Reading bank');
   requireValid(bank.published===false&&bank.status===STATUS,
    'Unapproved test must not be presented as published');
   requireValid(entry&&entry.skill==='cteni'&&ID.test(entry.id)&&
    Array.isArray(entry.languages)&&Array.isArray(entry.levels),'Invalid approved practice entry');
+  requireValid(selection&&selection.language===bank.language&&selection.level===bank.level,
+   'Assessment bank does not match the requested language and CEFR');
   requireValid(bank.topic===entry.id&&LANGS.includes(bank.language)&&
    entry.languages.includes(bank.language)&&LEVELS.includes(bank.level)&&
    entry.levels.includes(bank.level),'Test metadata does not match the practice catalog');
@@ -70,8 +72,8 @@
    'Assessment answer positions are seriously unbalanced');
   return true;
  }
- function variant(bank,practice,entry,sourceHash){
-  validate(bank,practice,entry,sourceHash);
+ function variant(bank,practice,entry,sourceHash,selection){
+  validate(bank,practice,entry,sourceHash,selection);
   return {
    title:practice.title+' — independent '+bank.level+' assessment (DRAFT)',
    paragraphs:practice.paragraphs.slice(),
