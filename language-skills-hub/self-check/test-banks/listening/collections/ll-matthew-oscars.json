@@ -1,131 +1,100 @@
 {
-  "kind": "LSH_LISTENING_DRAFT_COLLECTION_R34_V1",
+  "kind": "LSH_LISTENING_DRAFT_COLLECTION_R34_V2",
   "topic": "ll-matthew-oscars",
   "relativeSource": "poslech/matthew-oscars/index.html",
   "published": false,
   "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
-  "auditStatus": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+  "auditStatus": "CLAUDE_CONTENT_AUDIT_PENDING",
   "variants": {
     "A1": {
       "goal": "Understand a few simple facts and recognise the speaker’s feelings.",
       "gist": [
         {
-          "title": "What does the man do at the start of his speech?",
+          "type": "single",
+          "title": "Why is the actor standing in front of this audience?",
           "options": [
-            "He tells everyone to sit down.",
-            "He thanks several people.",
-            "He sings a short song."
+            "To speak after getting a prize",
+            "To explain a school lesson",
+            "To introduce a new film"
           ],
-          "correct": 1,
-          "why": "He begins by thanking people on stage.",
-          "type": "single"
+          "correct": 0,
+          "why": "He is speaking at an awards ceremony."
         },
         {
-          "title": "How does the speaker sound for most of the speech?",
+          "type": "single",
+          "title": "Which feeling can listeners hear when he mentions other people?",
           "options": [
-            "Angry and impatient",
-            "Afraid and confused",
-            "Happy and thankful"
+            "Anger",
+            "Gratitude",
+            "Fear"
           ],
-          "correct": 2,
-          "why": "His voice is warm and grateful.",
-          "type": "single"
+          "correct": 1,
+          "why": "He thanks people warmly throughout the speech."
         }
       ],
       "detail": [
         {
-          "title": "How many things does he say he needs each day?",
+          "type": "single",
+          "title": "Which number does he use for the things important to him every day?",
           "options": [
             "Two",
-            "Three",
-            "Four"
-          ],
-          "correct": 1,
-          "why": "He introduces three things.",
-          "type": "single"
-        },
-        {
-          "title": "What does he say about his children?",
-          "options": [
-            "He wants them to be proud of him.",
-            "He wants them to make films.",
-            "He wants them to come up on stage with him."
-          ],
-          "correct": 0,
-          "why": "He tells his children that he wants to make them proud.",
-          "type": "single"
-        },
-        {
-          "title": "Which period of his life does he describe near the end?",
-          "options": [
-            "His first day at university",
-            "A recent trip with his family",
-            "His life as a teenager"
+            "Four",
+            "Three"
           ],
           "correct": 2,
-          "why": "The last part includes a story about his teenage years.",
-          "type": "single"
+          "why": "He introduces three things that guide him."
+        },
+        {
+          "type": "single",
+          "title": "Which relative is watching the ceremony that evening?",
+          "options": [
+            "His mother",
+            "His grandfather",
+            "His uncle"
+          ],
+          "correct": 0,
+          "why": "He mentions his mother in the audience."
+        },
+        {
+          "type": "single",
+          "title": "What kind of person does he want his children to see?",
+          "options": [
+            "Someone famous for spending money",
+            "A father they can feel proud of",
+            "Someone who never needs advice"
+          ],
+          "correct": 1,
+          "why": "He hopes his children can be proud of their father."
         }
       ],
       "sequence": [
-        "He talks about the other actors.",
-        "He talks about his family.",
-        "He tells a story about his hero."
+        "First, he shows respect for other actors.",
+        "Next, he speaks about people close to him.",
+        "Later, he remembers his idea of a hero."
       ],
       "facts": [
         {
-          "title": "How many children does he name?",
-          "answer": "3 / three",
-          "tokens": [
-            [
-              "3",
-              "three"
-            ]
-          ],
-          "hint": "Write a number or a word.",
-          "kind": "fact"
+          "title": "Write the number of children the speaker mentions.",
+          "answer": "Three (3).",
+          "criteria": "Accept 'three' or '3'."
         }
       ],
       "open": [
         {
-          "title": "Write one sentence: What does he say about one person in his family?",
-          "answer": "He says his mother is here tonight. / He wants his wife and children to be proud of him.",
-          "criteria": "One comprehensible sentence with a correct detail about a family member.",
-          "hint": "",
-          "kind": "open"
+          "title": "In one sentence, say why his family matters to him.",
+          "answer": "He loves his family and wants his children to be proud of him.",
+          "criteria": "Accept a clear, relevant personal message supported by the recording."
         }
       ],
-      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
-      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
       "published": false,
       "topic": "ll-matthew-oscars",
       "level": "A1",
       "language": "en",
       "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
       "suggestedMinutes": 20,
-      "sourceIndices": {
-        "gist": [
-          0,
-          2
-        ],
-        "detail": [
-          0,
-          2,
-          3
-        ],
-        "sequence": [
-          0,
-          1,
-          2
-        ],
-        "facts": [
-          0
-        ],
-        "open": [
-          0
-        ]
-      },
-      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "provenance": "assistant-authored fresh English assessment prompts from public practice metadata; not yet verified against recording; independent Claude and teacher audit required",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     },
@@ -133,122 +102,91 @@
       "goal": "Follow the main message, identify key people and understand a few exact details.",
       "gist": [
         {
-          "title": "What is the speaker mainly doing?",
+          "type": "single",
+          "title": "What is the speech about besides receiving an award?",
           "options": [
-            "Explaining how to enter the film business",
-            "Thanking people and sharing personal ideas",
-            "Describing the story of his latest film in detail"
+            "How to become a film director",
+            "People who matter to him and ideas for life",
+            "The history of the ceremony"
           ],
           "correct": 1,
-          "why": "He thanks people and gives a personal reflection.",
-          "type": "single"
+          "why": "He moves from thanks to family values and personal motivation."
         },
         {
-          "title": "Which statement best describes the ending?",
+          "type": "single",
+          "title": "What makes the speech feel friendly?",
           "options": [
-            "He apologises and leaves quickly.",
-            "He announces a new film project with his family.",
-            "He finishes in a positive, energetic way."
+            "A mixture of thanks and jokes",
+            "A long list of film prices",
+            "A formal lesson about acting"
           ],
-          "correct": 2,
-          "why": "The closing words are upbeat and warmly received.",
-          "type": "single"
+          "correct": 0,
+          "why": "Personal thanks and humour create a warm atmosphere."
         }
       ],
       "detail": [
         {
-          "title": "Who does he thank for directing the film?",
+          "type": "single",
+          "title": "What does he imagine his late father doing?",
           "options": [
-            "Martin Scorsese",
-            "Christopher Nolan",
-            "Jean-Marc Vallée"
+            "Watching a football game",
+            "Cooking a small breakfast",
+            "Enjoying a pot of gumbo"
           ],
           "correct": 2,
-          "why": "He names the director Jean-Marc Vallée.",
-          "type": "single"
+          "why": "The imagined food is gumbo."
         },
         {
-          "title": "What does his mother teach him and his brothers?",
+          "type": "single",
+          "title": "What did he learn at home about respecting others?",
           "options": [
-            "To win every competition",
-            "To respect themselves",
-            "To travel around the world"
+            "It starts with respecting yourself",
+            "Only older people deserve respect",
+            "Respect has little to do with how we behave"
+          ],
+          "correct": 0,
+          "why": "He connects self-respect with respect for others."
+        },
+        {
+          "type": "single",
+          "title": "What happens to his goal after another ten years?",
+          "options": [
+            "He forgets his old ambition",
+            "He moves the ideal person into the future again",
+            "He decides that being famous is enough"
           ],
           "correct": 1,
-          "why": "He says his mother taught them self-respect.",
-          "type": "single"
-        },
-        {
-          "title": "What is his reaction when he is asked the question again ten years later?",
-          "options": [
-            "He says the question no longer matters.",
-            "He says he has finally achieved it.",
-            "He says he has not achieved it yet."
-          ],
-          "correct": 2,
-          "why": "He answers that he is still far from the goal.",
-          "type": "single"
+          "why": "He still wants to become a better version of himself."
         }
       ],
       "sequence": [
-        "He talks about people from his film.",
-        "He talks about his father.",
-        "He speaks about his wife and children."
+        "He thanks colleagues connected with his film.",
+        "He remembers his father in an affectionate way.",
+        "He recalls a question from his teenage years."
       ],
       "facts": [
         {
-          "title": "How many older brothers does he mention?",
-          "answer": "2 / two",
-          "tokens": [
-            [
-              "2",
-              "two"
-            ]
-          ],
-          "hint": "A number is enough.",
-          "kind": "fact"
+          "title": "What is the first name of the person he married?",
+          "answer": "Camila.",
+          "criteria": "Accept 'Camila'."
         }
       ],
       "open": [
         {
-          "title": "Choose one person he talks about. What does he say about him or her?",
-          "answer": "He thanks people who worked with him or talks warmly about family members.",
-          "criteria": "Accept one relevant person/group and one clear example of appreciation.",
-          "hint": "",
-          "kind": "open"
+          "title": "Why does he tell a funny memory during a serious ceremony?",
+          "answer": "To make the tribute personal and connect with listeners.",
+          "criteria": "Accept a coherent explanation referring to humour or connection."
         }
       ],
-      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
-      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
       "published": false,
       "topic": "ll-matthew-oscars",
       "level": "A2",
       "language": "en",
       "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
       "suggestedMinutes": 20,
-      "sourceIndices": {
-        "gist": [
-          0,
-          2
-        ],
-        "detail": [
-          0,
-          2,
-          4
-        ],
-        "sequence": [
-          0,
-          1,
-          2
-        ],
-        "facts": [
-          0
-        ],
-        "open": [
-          0
-        ]
-      },
-      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "provenance": "assistant-authored fresh English assessment prompts from public practice metadata; not yet verified against recording; independent Claude and teacher audit required",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     },
@@ -256,126 +194,97 @@
       "goal": "Follow a personal narrative, recognise supporting details and explain a central idea.",
       "gist": [
         {
-          "title": "Which description best summarises the speech?",
+          "type": "single",
+          "title": "What can listeners learn from the personal story at the end?",
           "options": [
-            "A report on the film industry and how it is changing",
-            "A personal thank-you that also gives a life lesson",
-            "A defence of why one film deserved to win"
+            "A goal may continue to guide us as we grow",
+            "Adults must stop setting new goals",
+            "Career awards bring an end to learning",
+            "Teenagers should avoid big ambitions"
           ],
-          "correct": 1,
-          "why": "He combines appreciation with a personal idea about life.",
-          "type": "single"
+          "correct": 0,
+          "why": "The hero stays a future ideal rather than an achieved target."
         },
         {
-          "title": "Who does the speaker mainly address?",
+          "type": "single",
+          "title": "What is the effect of moving from colleagues to family memories?",
           "options": [
-            "Mainly the other actors in his category who did not win",
-            "Mainly the director and the producers of the film",
-            "The people at the ceremony and a wider audience"
+            "The speaker forgets his professional role",
+            "It turns a public thank-you into a personal story",
+            "The speech becomes only about his childhood",
+            "He changes the subject to promote a new film"
           ],
-          "correct": 2,
-          "why": "He speaks to the room and then broadens his closing message.",
-          "type": "single"
+          "correct": 1,
+          "why": "He broadens the acceptance speech from film work to personal values."
         }
       ],
       "detail": [
         {
-          "title": "How does he describe the other nominees’ performances?",
+          "type": "single",
+          "title": "Why does he speak positively about other performers before describing his own beliefs?",
           "options": [
-            "He praises their acting.",
-            "He says they were disappointing.",
-            "He refuses to compare them."
-          ],
-          "correct": 0,
-          "why": "He compliments the other nominated performances.",
-          "type": "single"
-        },
-        {
-          "title": "Who turns out to be the person he is trying to become?",
-          "options": [
-            "A future version of himself",
-            "A famous actor he admired at school",
-            "An older relative who inspired his work"
-          ],
-          "correct": 0,
-          "why": "He uses an imagined future self as an ideal.",
-          "type": "single"
-        },
-        {
-          "title": "What happens in the last part of the speech?",
-          "options": [
-            "He tells a final joke about his co-stars and the director",
-            "He tells the audience about the next film he will make",
-            "He returns to earlier ideas and closes energetically"
+            "He hopes they will give him another role",
+            "He wants to avoid talking about his family",
+            "He recognises that the honour takes place among talented colleagues",
+            "He is explaining the rules for choosing a winner"
           ],
           "correct": 2,
-          "why": "His conclusion echoes the speech’s earlier structure.",
-          "type": "single"
+          "why": "He acknowledges fellow performers rather than claiming exclusive credit."
+        },
+        {
+          "type": "single",
+          "title": "What lesson does the story about his mother support?",
+          "options": [
+            "Respect begins with how people value themselves",
+            "Children should accept any opinion they hear",
+            "People become successful only by following parents",
+            "The audience should think less about other people"
+          ],
+          "correct": 0,
+          "why": "The family lesson links confidence and respectful behaviour."
+        },
+        {
+          "type": "single",
+          "title": "How does the remembered conversation about a hero end?",
+          "options": [
+            "With a decision to change careers",
+            "With a warning not to dream too far ahead",
+            "With the discovery that he has already reached his ideal",
+            "With the idea that his ideal self remains ahead of him"
+          ],
+          "correct": 3,
+          "why": "He continues to chase the person he hopes to become."
         }
       ],
       "sequence": [
-        "He recognises other people in the film business.",
-        "He says he needs three things every day.",
-        "He talks about his father.",
-        "He explains a lesson he learnt at home."
+        "He credits people from the film world.",
+        "He introduces three daily guides.",
+        "He recalls a family memory.",
+        "He tells a story from adolescence."
       ],
       "facts": [
         {
-          "title": "Name ONE of the two co-stars he thanks near the beginning.",
-          "answer": "Jared Leto or Jennifer Garner",
-          "tokens": [
-            [
-              "leto",
-              "jared",
-              "garner",
-              "jennifer"
-            ]
-          ],
-          "hint": "",
-          "kind": "fact"
+          "title": "At what age did somebody first ask who his hero was?",
+          "answer": "Fifteen (15).",
+          "criteria": "Accept 15 or fifteen."
         }
       ],
       "open": [
         {
-          "title": "Choose a family memory from the speech and explain what it shows about his relationships.",
-          "answer": "For example, he recalls a lesson from his mother and connects it with respect for other people.",
-          "criteria": "Identify a real detail from the recording and explain its significance.",
-          "hint": "",
-          "kind": "open"
+          "title": "Explain how one family example supports a wider message in the speech.",
+          "answer": "The speaker turns a memory about family into a point about gratitude, self-respect or motivation.",
+          "criteria": "Accept accurate links between a family memory and a broader idea, not a generic summary."
         }
       ],
-      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
-      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
       "published": false,
       "topic": "ll-matthew-oscars",
       "level": "B1",
       "language": "en",
       "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
       "suggestedMinutes": 20,
-      "sourceIndices": {
-        "gist": [
-          0,
-          2
-        ],
-        "detail": [
-          0,
-          3,
-          5
-        ],
-        "sequence": [
-          0,
-          1,
-          2,
-          3
-        ],
-        "facts": [
-          0
-        ],
-        "open": [
-          0
-        ]
-      },
-      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "provenance": "assistant-authored fresh English assessment prompts from public practice metadata; not yet verified against recording; independent Claude and teacher audit required",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     },
@@ -383,124 +292,97 @@
       "goal": "Identify detail and argument, trace the structure and interpret tone and purpose.",
       "gist": [
         {
-          "title": "Which headline best fits the whole speech?",
+          "type": "single",
+          "title": "Which description of the speech's development is most convincing?",
           "options": [
-            "A prize-winner explains why acting is an unusually difficult job.",
-            "Personal recognition becomes an opportunity for wider reflection.",
-            "An actor looks back on the decisions that built his career."
+            "It remains a formal list of thanks",
+            "It shifts from recognition to an explanation of personal values",
+            "It rejects the idea that cinema matters",
+            "It argues that awards have no meaning"
           ],
           "correct": 1,
-          "why": "He moves beyond the award and shares a broader personal perspective.",
-          "type": "single"
+          "why": "The address combines acknowledgement with values and a life lesson."
         },
         {
-          "title": "Which best describes the overall progression?",
+          "type": "single",
+          "title": "What unites the examples about family and the final ambition?",
           "options": [
-            "From a list of films to a debate about which of them deserves the prize",
-            "From an argument with critics to an apology for his career",
-            "From acknowledgements to personal examples and a closing reflection"
+            "They show how personal relationships and ideals shape the speaker",
+            "They explain how films are financed",
+            "They prove success is a result of competition alone",
+            "They suggest every ambition has a fixed deadline"
           ],
-          "correct": 2,
-          "why": "The speech develops from thanks to a personal closing message.",
-          "type": "single"
+          "correct": 0,
+          "why": "Both family and the future ideal are part of his view of identity."
         }
       ],
       "detail": [
         {
-          "title": "Why does he praise the other nominees early in the speech?",
+          "type": "single",
+          "title": "Why can the imagined scene involving his father make the tribute more effective?",
           "options": [
-            "He recognises their work before focusing on himself.",
-            "He suggests the judges may have chosen the wrong winner.",
-            "He wants the other nominees to join him on stage."
+            "It replaces an emotional memory with an unrelated joke",
+            "It makes the ceremony appear informal and unimportant",
+            "It combines affection with a vivid, humorous picture",
+            "It proves the speaker knew exactly what his father would do"
           ],
-          "correct": 0,
-          "why": "He acknowledges the quality of the other nominees’ work.",
-          "type": "single"
+          "correct": 2,
+          "why": "The sensory image gives warmth and humour to remembrance."
         },
         {
-          "title": "How does his mother’s lesson develop?",
+          "type": "single",
+          "title": "What does his example about gratitude suggest?",
           "options": [
-            "Respect for oneself helps to build respect for others.",
-            "Respect is presented as something that must be earned through fame.",
-            "People should rely on their families rather than their own judgement."
+            "Appreciating what we have can shape what follows",
+            "Gratitude matters only after professional success",
+            "People should publicly thank everyone they know",
+            "Being grateful prevents further disappointment"
           ],
           "correct": 0,
-          "why": "He describes self-respect as a foundation for respecting others.",
-          "type": "single"
+          "why": "He presents gratitude as a way of approaching opportunities."
         },
         {
-          "title": "What is the effect of returning to a series of short phrases at the end?",
+          "type": "single",
+          "title": "Why is the future hero never completely reached?",
           "options": [
-            "It introduces an unexpected argument about politics and the industry.",
-            "It creates a memorable conclusion with a sense of completion.",
-            "It corrects what the speaker said earlier in the speech."
+            "The speaker regrets his younger ambitions",
+            "He finds that his former goals no longer interest him",
+            "He is unwilling to accept his present achievements",
+            "The ideal becomes a continuing reason to improve"
           ],
-          "correct": 1,
-          "why": "The ending echoes earlier themes and creates closure.",
-          "type": "single"
+          "correct": 3,
+          "why": "He moves the ideal self forward and values ongoing effort."
         }
       ],
       "sequence": [
-        "He mentions the other nominees and his colleagues.",
-        "He names three things he needs every day.",
-        "He talks about his father.",
-        "He talks about his mother."
+        "He speaks with respect about his peers.",
+        "He describes the principles he needs in daily life.",
+        "He gives an affectionate picture of his father.",
+        "He returns to a long-standing personal ambition."
       ],
       "facts": [
         {
-          "title": "Write the surname of the director he thanks.",
-          "answer": "Vallée / Vallee",
-          "tokens": [
-            [
-              "vallee",
-              "vallée"
-            ]
-          ],
-          "hint": "",
-          "kind": "fact"
+          "title": "Write the director's surname as mentioned in the speech.",
+          "answer": "Vallée (Vallee).",
+          "criteria": "Accept Vallée or Vallee."
         }
       ],
       "open": [
         {
-          "title": "Choose one moment in the speech and explain how it affects the audience.",
-          "answer": "The speech moves between reverent appreciation and comic family images, making a formal moment feel personal.",
-          "criteria": "Identify two contrasting tones and link the shift to a specific moment.",
-          "hint": "",
-          "kind": "open"
+          "title": "How does the speaker combine serious feeling with humour? Use a moment from the speech.",
+          "answer": "His tribute to his father uses an amusing imagined scene while communicating real affection.",
+          "criteria": "Accept another well-supported contrast between sincere emotion and a joke."
         }
       ],
-      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
-      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
       "published": false,
       "topic": "ll-matthew-oscars",
       "level": "B2",
       "language": "en",
       "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
       "suggestedMinutes": 20,
-      "sourceIndices": {
-        "gist": [
-          0,
-          2
-        ],
-        "detail": [
-          0,
-          3,
-          5
-        ],
-        "sequence": [
-          0,
-          1,
-          2,
-          3
-        ],
-        "facts": [
-          0
-        ],
-        "open": [
-          0
-        ]
-      },
-      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "provenance": "assistant-authored fresh English assessment prompts from public practice metadata; not yet verified against recording; independent Claude and teacher audit required",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     },
@@ -508,123 +390,97 @@
       "goal": "Analyse rhetorical choices, implied values and the speaker’s construction of a public persona.",
       "gist": [
         {
-          "title": "Which account best explains the speech’s broader purpose?",
+          "type": "single",
+          "title": "What role does the acceptance speech play beyond celebrating a prize?",
           "options": [
-            "He argues that professional recognition is ultimately unimportant.",
-            "He uses a public honour to reflect on values and motivation.",
-            "He presents his success as the outcome of a carefully planned career."
+            "It publicly constructs values and a sense of identity",
+            "It rejects the usefulness of public ceremonies",
+            "It critiques the careers of the other nominees",
+            "It outlines a future film production"
           ],
-          "correct": 1,
-          "why": "He uses a personal occasion to express wider guiding values.",
-          "type": "single"
+          "correct": 0,
+          "why": "The speaker uses a ceremonial honour to describe who he hopes to be."
         },
         {
-          "title": "How is the speaker’s public persona chiefly established?",
+          "type": "single",
+          "title": "Which relationship between public success and personal aspiration emerges?",
           "options": [
-            "By offering an objective analysis of the competing performances",
-            "By challenging the audience’s understanding of cinema as an art",
-            "By combining professional status with intimate disclosure"
+            "The award proves his personal work is complete",
+            "Success is acknowledged while self-development remains unfinished",
+            "He suggests ambition should end at the ceremony",
+            "Professional recognition is treated as a family obligation"
           ],
-          "correct": 2,
-          "why": "The speech joins a formal setting to personal storytelling.",
-          "type": "single"
+          "correct": 1,
+          "why": "The fixed award contrasts with a self-renewing ideal."
         }
       ],
       "detail": [
         {
-          "title": "What is the effect of acknowledging his fellow nominees?",
+          "type": "single",
+          "title": "Why can naming colleagues be rhetorically important?",
           "options": [
-            "He frames his win within a respected group of performers.",
-            "He undermines the authority of the award before accepting it.",
-            "He implies the other nominees did not have enough experience."
+            "It delays the start of the speech without adding meaning",
+            "It turns the occasion into a competition",
+            "It situates the speaker's honour within a shared professional achievement",
+            "It makes the later family stories irrelevant"
           ],
-          "correct": 0,
-          "why": "He positions himself appreciatively in relation to fellow artists.",
-          "type": "single"
+          "correct": 2,
+          "why": "Acknowledgements temper self-focus and recognise the wider professional community."
         },
         {
-          "title": "What is the causal link in the lesson attributed to his mother?",
+          "type": "single",
+          "title": "How does his account of a parent challenge a uniformly solemn tribute?",
           "options": [
-            "A strong sense of self-respect allows more respect for others.",
-            "Public success creates the confidence needed to respect others.",
-            "It is easier to gain respect by avoiding close relationships."
+            "By introducing comic detail without denying emotion",
+            "By avoiding any mention of the person he remembers",
+            "By suggesting family relationships are always simple",
+            "By presenting a strictly chronological biography"
           ],
           "correct": 0,
-          "why": "He links respect for oneself with respect for other people.",
-          "type": "single"
+          "why": "The father is remembered through warmth and imagined humour."
         },
         {
-          "title": "What is the main effect of the final series of short declarations?",
+          "type": "single",
+          "title": "What does the repeated shift of his ideal self into the future imply?",
           "options": [
-            "They reconnect his themes with an informal public identity.",
-            "They reverse his earlier argument in favour of a new one.",
-            "They signal his disappointment with how the whole ceremony has gone."
+            "The ideal was never important to him",
+            "The remembered exchange is historically inaccurate",
+            "He thinks age determines a person's worth",
+            "Self-development is framed as continuing rather than finally complete"
           ],
-          "correct": 0,
-          "why": "The memorable close returns to his themes in an informal voice.",
-          "type": "single"
+          "correct": 3,
+          "why": "The story values the pursuit rather than a completed endpoint."
         }
       ],
       "sequence": [
-        "He credits professional peers and collaborators.",
-        "He offers a general organising principle.",
-        "He turns to his late father.",
-        "He recalls a lesson from his upbringing."
+        "He recognises professional peers.",
+        "He offers a framework for his values.",
+        "He moves into his father's memory.",
+        "He uses an extended anecdote to describe ambition."
       ],
       "facts": [
         {
-          "title": "Give the surname of the director he thanks before naming the co-stars.",
-          "answer": "Vallée / Vallee",
-          "tokens": [
-            [
-              "vallee"
-            ]
-          ],
-          "hint": "",
-          "kind": "fact"
+          "title": "How many years older is the ideal person in the speaker's story?",
+          "answer": "Ten years.",
+          "criteria": "Accept ten or 10 years."
         }
       ],
       "open": [
         {
-          "title": "Choose two moments that sound very different and discuss the effect of the contrast.",
-          "answer": "The formal acknowledgements establish professionalism; informal scenes and anecdotes make the speaker relatable.",
-          "criteria": "Explain two distinct registers or modes, a transition and its possible impact.",
-          "hint": "",
-          "kind": "open"
+          "title": "Evaluate how personal disclosure helps the speaker build an image of himself.",
+          "answer": "He balances professional status with gratitude, faith, family affection and a never-finished ideal.",
+          "criteria": "Look for one supported rhetorical effect and a reference to a specific passage."
         }
       ],
-      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
-      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
       "published": false,
       "topic": "ll-matthew-oscars",
       "level": "C1",
       "language": "en",
       "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
       "suggestedMinutes": 20,
-      "sourceIndices": {
-        "gist": [
-          0,
-          2
-        ],
-        "detail": [
-          0,
-          3,
-          6
-        ],
-        "sequence": [
-          0,
-          1,
-          2,
-          3
-        ],
-        "facts": [
-          0
-        ],
-        "open": [
-          0
-        ]
-      },
-      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "provenance": "assistant-authored fresh English assessment prompts from public practice metadata; not yet verified against recording; independent Claude and teacher audit required",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     },
@@ -632,131 +488,100 @@
       "goal": "Evaluate the speech’s argumentative tensions, identity work, rhetorical patterning and alternative interpretations.",
       "gist": [
         {
-          "title": "Which overarching tension is most central to the speech?",
+          "type": "single",
+          "title": "Which paradox best defines the speaker's closing self-portrait?",
           "options": [
-            "A public rejection of recognition conflicts with the speaker’s desire to win the prize.",
-            "A completed public achievement stands beside an unfinished personal ambition.",
-            "Artistic success is presented as the opposite of commitment to family life."
+            "He seeks private success while refusing public attention",
+            "An achieved external honour accompanies a perpetually unfinished inner project",
+            "His family values contradict his claims about ambition",
+            "He celebrates a prize while dismissing his professional peers"
           ],
           "correct": 1,
-          "why": "He accepts a finished public accolade while describing an ongoing personal pursuit.",
-          "type": "single"
+          "why": "The acceptance of an award and the unreachable future hero sit in productive tension."
         },
         {
-          "title": "What is the strongest explanation for the speech’s final tonal shift?",
+          "type": "single",
+          "title": "How is the speaker's authority assembled across the address?",
           "options": [
-            "It blends public ceremony with an informal and recognisable persona.",
-            "It abandons the earlier personal themes for unrelated comic material.",
-            "It replaces direct address with a strictly institutional register."
+            "By presenting professional recognition alongside carefully selected intimate memories",
+            "By keeping a strict distance from listeners",
+            "By turning every acknowledgement into an argument about status",
+            "By denying the importance of rhetorical organisation"
           ],
           "correct": 0,
-          "why": "The close combines a serious occasion with conversational familiarity.",
-          "type": "single"
+          "why": "Achievement, gratitude, humour and private memories jointly construct the public persona."
         }
       ],
       "detail": [
         {
-          "title": "Which inference about the opening acknowledgements is best supported?",
+          "type": "single",
+          "title": "Why is the imagined father scene more than a moment of comic relief?",
           "options": [
-            "They imply that collective credit makes individual honours logically invalid.",
-            "They serve chiefly to distance the speaker from the other nominees.",
-            "They frame the achievement generously without undermining its significance."
+            "It is evidence about the precise circumstances of his father's death",
+            "It changes the subject before the audience can respond",
+            "It gives absence a sensory form without abandoning affectionate humour",
+            "It displaces the personal element of the entire speech"
           ],
           "correct": 2,
-          "why": "He honours other performers while accepting his own recognition.",
-          "type": "single"
+          "why": "The vivid image allows remembrance, loss and warmth to coexist."
         },
         {
-          "title": "What is the force of the transition from self-respect to respect for others?",
+          "type": "single",
+          "title": "What is the tension in presenting gratitude as an almost scientific principle?",
           "options": [
-            "It presents self-interest as incompatible with interpersonal obligations.",
-            "It implies that respecting others is unnecessary once one has self-esteem.",
-            "It reframes an apparently inward-looking value as a social one."
+            "A subjective moral view is offered with the force of a general law",
+            "The speaker claims his family produced scientific evidence",
+            "He abandons emotion to adopt a purely empirical register",
+            "The reference makes the hero anecdote impossible to interpret"
           ],
-          "correct": 2,
-          "why": "The personal lesson is extended to an interpersonal ethic.",
-          "type": "single"
+          "correct": 0,
+          "why": "The rhetoric lifts a personal belief into a claim with broad scope."
         },
         {
-          "title": "What is the rhetorical effect of revisiting the opening framework in the closing moments?",
+          "type": "single",
+          "title": "What role does the moving hero play in his account of achievement?",
           "options": [
-            "It invalidates the original framework through contradictory examples.",
-            "It leaves the audience with a deliberately unresolved list of facts.",
-            "It produces coherence while expanding the focus to include listeners."
+            "It proves the award should have been given later",
+            "It makes success dependent on the audience's approval",
+            "It denies that younger people can set useful goals",
+            "It reframes an unfulfilled ideal as the engine of continued aspiration"
           ],
-          "correct": 2,
-          "why": "The conclusion reconnects his strands and addresses the audience more widely.",
-          "type": "single"
+          "correct": 3,
+          "why": "Not reaching the ideal is presented as motivation, not straightforward failure."
         }
       ],
       "sequence": [
-        "He acknowledges other figures connected with the film.",
-        "He presents a brief organising device.",
-        "He turns to his late father.",
-        "He articulates a lesson from his upbringing."
+        "The speaker identifies members of the professional community.",
+        "He lays out a recurring organising principle.",
+        "He introduces a vivid memory of his father.",
+        "He concludes through a story about the self he continues to pursue."
       ],
       "facts": [
         {
-          "title": "Give BOTH ages at which the speaker is questioned in the remembered conversations.",
-          "answer": "15 and 25",
-          "tokens": [
-            [
-              "15",
-              "fifteen"
-            ],
-            [
-              "25",
-              "twenty five",
-              "twenty-five"
-            ]
-          ],
-          "hint": "",
-          "kind": "fact"
+          "title": "Give both ages at which the person in the anecdote asks the hero question.",
+          "answer": "15 and 25.",
+          "criteria": "Both ages must be present: 15 and 25."
         }
       ],
       "open": [
         {
-          "title": "How does the ending of the speech relate to its opening? Argue your case.",
-          "answer": "The close returns to the three-part framework; the Oscar marks an achievement while the hero story keeps the pursuit open, so the speech ends in productive tension rather than closure.",
-          "criteria": "A clear thesis on how the ending relates to the opening, supported by two moments.",
-          "hint": "",
-          "kind": "open"
+          "title": "Discuss one productive tension between personal conviction and public persuasion in the speech.",
+          "answer": "Private values are expressed as shared lessons; humour and ceremonial ethos help reach listeners who may not share every belief.",
+          "criteria": "Accept nuanced supported interpretations, including critical ones."
         }
       ],
-      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
-      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
       "published": false,
       "topic": "ll-matthew-oscars",
       "level": "C2",
       "language": "en",
       "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
       "suggestedMinutes": 20,
-      "sourceIndices": {
-        "gist": [
-          0,
-          3
-        ],
-        "detail": [
-          0,
-          3,
-          6
-        ],
-        "sequence": [
-          0,
-          1,
-          2,
-          3
-        ],
-        "facts": [
-          0
-        ],
-        "open": [
-          0
-        ]
-      },
-      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "provenance": "assistant-authored fresh English assessment prompts from public practice metadata; not yet verified against recording; independent Claude and teacher audit required",
       "teacherControlledPasses": 2,
       "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
     }
-  }
+  },
+  "authoredDraft": true
 }
