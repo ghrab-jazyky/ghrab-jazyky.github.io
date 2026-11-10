@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "C1",
+  "sourceTitle": "The Shot Outside the Frame",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-AUTHOR-DRAFT-1",
+  "description": "Independently authored EN/C1 review-comprehension test draft. External linguistic and didactic audit pending.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Interpretation",
+      "description": "Identify implications of the review."
+    },
+    {
+      "id": "argument",
+      "title": "Evidence and evaluation",
+      "description": "Evaluate what the reviewer supports and questions."
+    },
+    {
+      "id": "application",
+      "title": "Critical transfer",
+      "description": "Apply the review's argument in new contexts."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-en-c1-01",
+      "tab": "interpretation",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "What contrast does the opening paragraph establish?",
+      "choices": [
+        "A concern about recycling is less important than camera technique.",
+        "The film makes viewers feel responsible before helping them understand practical solutions.",
+        "Litter is too small a subject to deserve serious film-making.",
+        "The reviewer believes documentaries should never evoke emotion."
+      ],
+      "answer": 1,
+      "explanation": "The wrapper scene generates a strong emotional judgement before the film has explained what action might follow."
+    },
+    {
+      "id": "r36-en-c1-02",
+      "tab": "interpretation",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Why are the beautiful images of the cleaners described as having a double effect?",
+      "choices": [
+        "They make the square look dirtier than it really is.",
+        "They establish working conditions more clearly than interviews could.",
+        "They contradict the earlier image of an empty square.",
+        "They highlight labour but risk turning workers' conditions into an aesthetic spectacle."
+      ],
+      "answer": 3,
+      "explanation": "The reviewer praises the visual detail while noting how little the audience learns about workers' agency or conditions."
+    },
+    {
+      "id": "r36-en-c1-03",
+      "tab": "interpretation",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "What broader issue may be implied by the cleaner's observation that the square is cleanest when nobody sees it?",
+      "choices": [
+        "Night cleaning is more expensive than daytime cleaning.",
+        "Viewers should avoid using public squares after concerts.",
+        "Essential work is often invisible to the people who benefit from it.",
+        "The film crew could not find the cleaner's name."
+      ],
+      "answer": 2,
+      "explanation": "The remark points to unseen labour and the social invisibility of those doing it."
+    },
+    {
+      "id": "r36-en-c1-04",
+      "tab": "interpretation",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "Why does the facilities manager's interview change the reviewer's view of the film?",
+      "choices": [
+        "It allows the complexity of a proposed solution to remain visible rather than reducing it to good intentions.",
+        "It reveals that the manager opposes all environmental measures.",
+        "It proves that spreadsheets are more appealing than cinema.",
+        "It establishes that deposit schemes should be abandoned."
+      ],
+      "answer": 0,
+      "explanation": "The manager details storage, training and washing costs without dismissing the goal."
+    },
+    {
+      "id": "r36-en-c1-05",
+      "tab": "argument",
+      "sourceParagraph": 5,
+      "kind": "mc",
+      "q": "How does the repeated slow-motion shot of the teenager affect the documentary's argument?",
+      "choices": [
+        "It helps viewers understand the difficulties faced by cleaning staff.",
+        "It shifts attention from systems and infrastructure to the guilt of an individual.",
+        "It provides a balanced comparison with the manager's interview.",
+        "It proves that the teenager is solely responsible for the town's waste."
+      ],
+      "answer": 1,
+      "explanation": "The repeated image redirects a structural problem into a moralised individual scene."
+    },
+    {
+      "id": "r36-en-c1-06",
+      "tab": "argument",
+      "sourceParagraph": 6,
+      "kind": "mc",
+      "q": "Why does the reviewer discuss who is named, explained or shown only as a silhouette?",
+      "choices": [
+        "The filmmaker has accidentally forgotten some production credits.",
+        "The film needs more characters to hold the audience's attention.",
+        "The distinction affects the meaning and agency assigned to each person on screen.",
+        "The narrator should provide the full names of all visitors."
+      ],
+      "answer": 2,
+      "explanation": "The film's unequal treatment of cleaners, manager and teenager functions as an argument through representation."
+    },
+    {
+      "id": "r36-en-c1-07",
+      "tab": "argument",
+      "sourceParagraph": 7,
+      "kind": "mc",
+      "q": "Why does the volunteer's admission about extra washing trips strengthen rather than weaken the reusable-cup case?",
+      "choices": [
+        "It shows the idea never should have been tested.",
+        "It proves that the first event was already cheaper than disposable cups.",
+        "It gives the director an opportunity for a more dramatic soundtrack.",
+        "It makes improvement open to evidence and revision instead of unqualified praise."
+      ],
+      "answer": 3,
+      "explanation": "The reviewer finds an honest account of unforeseen costs more credible than a spotless success narrative."
+    },
+    {
+      "id": "r36-en-c1-08",
+      "tab": "application",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "An environmental campaign proposes reusable cups but says nothing about where they will be washed. What is missing?",
+      "choices": [
+        "A sufficiently striking image of a disposable cup.",
+        "An operational plan addressing facilities, staffing and actual costs.",
+        "A list of celebrities willing to promote the campaign.",
+        "A promise that all guests will become more responsible."
+      ],
+      "answer": 1,
+      "explanation": "The facilities manager's example insists that logistics are part of the solution."
+    },
+    {
+      "id": "r36-en-c1-09",
+      "tab": "application",
+      "sourceParagraph": 6,
+      "kind": "mc",
+      "q": "In a film, workers appear only as anonymous silhouettes while managers explain policy in detail. What should a critical viewer ask?",
+      "choices": [
+        "Whose experience and decision-making power the film makes visible.",
+        "Whether the film contains enough music for a broad audience.",
+        "Which characters would look best in close-up shots.",
+        "How to reduce the total length of the film."
+      ],
+      "answer": 0,
+      "explanation": "The reviewer treats such representational choices as substantive claims about agency."
+    },
+    {
+      "id": "r36-en-c1-10",
+      "tab": "application",
+      "sourceParagraph": 7,
+      "kind": "mc",
+      "q": "What would make a school waste-reduction documentary more convincing to this reviewer?",
+      "choices": [
+        "Editing out failed attempts to keep the message positive.",
+        "Showing only the neatest moment after an event.",
+        "Blaming individual pupils instead of discussing practical arrangements.",
+        "Including evidence of what worked, what failed and what needs to change."
+      ],
+      "answer": 3,
+      "explanation": "The final paragraph celebrates admitting unexpected consequences and inviting correction."
+    }
+  ]
+}
