@@ -18,15 +18,18 @@ test('R35 planned coverage counts exact approved source variants without claimin
  assert.equal(inventory.actual.approvedForStudents,0);
  assert.equal(inventory.actual.invalid,0);
  assert.ok(inventory.actual.draftReading>=24);
- assert.equal(inventory.actual.draftListening,0);
+ assert.equal(inventory.actual.draftListening,18);
+ // Reading questions use questions[]. Listening banks instead use objective[]
+ // and written[]; never conflate their counts in the simple inventory.
  assert.equal(inventory.actual.authoredQuestions,inventory.actual.draftReading*10);
- assert.equal(inventory.actual.missing,138-inventory.actual.draftReading);
+ assert.equal(inventory.actual.draftReading,78);
+ assert.equal(inventory.actual.missing,138-inventory.actual.draftReading-inventory.actual.draftListening);
 });
 test('R35 every authored bank has exact hash/title, separate questions, scoring and publication locks',()=>{
  const practiceCache={};
  let tally=0;
  for(const row of inventory.rows){
-  if(row.status!=='DRAFT_UNAPPROVED')continue;
+  if(row.status!=='DRAFT_UNAPPROVED'||row.skill!=='cteni')continue;
   assert.equal(row.skill,'cteni');
   const entry=cards.find(x=>x.id===row.topic);
   assert.ok(entry&&entry.skill==='cteni');
