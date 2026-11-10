@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "de",
+  "level": "C1",
+  "sourceTitle": "Der verborgene Preis ständiger Verbesserung",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Independent C1 Reading test draft; second-teacher review required.",
+  "tabs": [
+    {
+      "id": "these",
+      "title": "These und Einschränkungen"
+    },
+    {
+      "id": "begr",
+      "title": "Argumente verstehen"
+    },
+    {
+      "id": "transfer",
+      "title": "Praktische Konsequenzen"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-de-c1-01",
+      "tab": "these",
+      "kind": "mc",
+      "q": "Was erkennt der Verfasser an, bevor er ständige Verbesserung kritisch betrachtet?",
+      "choices": [
+        "Dass alle guten Noten auf gleichen Bedingungen beruhen.",
+        "Dass die Vorstellung entwickelbarer Fähigkeiten befreiend sein kann.",
+        "Dass Schulen auf Leistungsbewertung verzichten sollten.",
+        "Dass jede Schwierigkeit durch mehr Disziplin zu lösen ist."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Der erste Absatz würdigt die motivierende Wirkung des Entwicklungsgedankens, bevor er die Kehrseite benennt."
+    },
+    {
+      "id": "r35-de-c1-02",
+      "tab": "these",
+      "kind": "mc",
+      "q": "Was ist problematisch daran, jedes Hindernis als persönliches Problem zu sehen?",
+      "choices": [
+        "Schulen können keine unterschiedlichen Leistungen mehr vergleichen.",
+        "Jugendliche stellen grundsätzlich keine Fragen mehr.",
+        "Lehrkräfte können keine Lernstrategien mehr empfehlen.",
+        "Ungleiche äußere Bedingungen geraten aus dem Blick."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Die Kritik richtet sich gegen die einseitige Zuweisung von Verantwortung an die Lernenden."
+    },
+    {
+      "id": "r35-de-c1-03",
+      "tab": "these",
+      "kind": "mc",
+      "q": "Warum wäre derselbe Rat an beide Schülerinnen und Schüler unzureichend?",
+      "choices": [
+        "Weil einer von beiden deutlich bessere Noten erhalten hat.",
+        "Weil ihre Lehrkräfte verschiedene Fächer unterrichten.",
+        "Weil ihre Lernbedingungen erheblich voneinander abweichen.",
+        "Weil einer von beiden keinerlei Interesse am Lernen zeigt."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Der zweite Absatz schildert gleiche schwache Ergebnisse unter sehr ungleichen Bedingungen."
+    },
+    {
+      "id": "r35-de-c1-04",
+      "tab": "begr",
+      "kind": "mc",
+      "q": "Was zeigt der Gegensatz zwischen einem ruhigen und einem überfüllten Raum?",
+      "choices": [
+        "Ressourcen beeinflussen, was persönlicher Einsatz bewirken kann.",
+        "Menschen mit weniger Platz bemühen sich grundsätzlich weniger.",
+        "Lernbedingungen werden durch passende Ratschläge bedeutungslos.",
+        "Alle Familien sollten dieselben Lernmethoden anwenden."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Der Vergleich verdeutlicht die Bedeutung praktischer Unterstützung und verfügbarer Zeit."
+    },
+    {
+      "id": "r35-de-c1-05",
+      "tab": "begr",
+      "kind": "mc",
+      "q": "Wozu nennt der Text Romane, Diskussionen und Hobbys?",
+      "choices": [
+        "Um die Abschaffung von Prüfungen zu fordern.",
+        "Um Freizeitaktivitäten grundsätzlich wichtiger als Unterricht zu machen.",
+        "Um auf Lernen hinzuweisen, das sich schwer in Noten ausdrücken lässt.",
+        "Um einen sicheren Zusammenhang zwischen Hobbys und Noten zu beweisen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Im dritten Absatz wird der Wert von Erfahrungen betont, die nicht messbar sein müssen."
+    },
+    {
+      "id": "r35-de-c1-06",
+      "tab": "begr",
+      "kind": "mc",
+      "q": "Was droht, wenn sogar Freizeit der Selbstoptimierung dienen soll?",
+      "choices": [
+        "Neugier kann sich in eine weitere Pflicht verwandeln.",
+        "Lernende entwickeln zwangsläufig mehr Selbstständigkeit.",
+        "Alle freiwilligen Aktivitäten machen dann mehr Freude.",
+        "Schulische Bewertungen verlieren automatisch ihre Bedeutung."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Der dritte Absatz warnt vor der Umwandlung von Neugier in einen Leistungsauftrag."
+    },
+    {
+      "id": "r35-de-c1-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "Eine Schule fordert Lernende ohne ruhigen Arbeitsplatz auf, mehr zu üben. Was fehlt daran?",
+      "choices": [
+        "Ein Vergleich mit den besten Noten der Klasse.",
+        "Die Berücksichtigung der ungleichen materiellen Möglichkeiten.",
+        "Die Annahme, dass alle Jugendlichen selbst entscheiden können.",
+        "Der Verzicht auf jede Form von Lernberatung."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Der zweite Absatz kritisiert einen Appell an Anstrengung ohne Beachtung der Bedingungen."
+    },
+    {
+      "id": "r35-de-c1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "Eine Diskussion endet ohne Einigung. Warum kann sie trotzdem wertvoll sein?",
+      "choices": [
+        "Weil damit bewiesen ist, dass niemand seine Ansicht ändern kann.",
+        "Weil jede Diskussion zu einer Benotung führen muss.",
+        "Weil gegensätzliche Argumente vermieden werden konnten.",
+        "Weil das Nachdenken auch ohne messbares Ergebnis bedeutsam sein kann."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Der dritte Absatz nennt Debatten ohne Einigung als Beispiel für wertvolles Lernen."
+    },
+    {
+      "id": "r35-de-c1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "Welche Verbindung fordert das Schlussargument?",
+      "choices": [
+        "Eigeninitiative ohne Verantwortung der Schule.",
+        "Individuelle Lernstrategien und institutionelle Unterstützung.",
+        "Erholung als Ersatz für sämtliche schulischen Ziele.",
+        "Messbare Noten als einzigen Maßstab für Fortschritt."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Der vierte Absatz verknüpft die Handlungsfähigkeit von Lernenden mit der Verantwortung der Institutionen."
+    },
+    {
+      "id": "r35-de-c1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "Wann ist Verbesserung dem Verfasser zufolge sinnvoll?",
+      "choices": [
+        "Wenn jede Tätigkeit den eigenen Wert beweisen muss.",
+        "Wenn alle Lernziele verpflichtend messbar sind.",
+        "Wenn immer höhere Anforderungen gestellt werden.",
+        "Wenn sie Möglichkeiten erweitert, statt dauernd Leistung zu erzwingen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Der Schluss beurteilt Fortschritt daran, ob er neue Möglichkeiten eröffnet."
+    }
+  ]
+}
