@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-peaky-no-fighting",
+  "language": "en",
+  "level": "C2",
+  "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d308736b8478",
+  "durationMinutesSuggested": 22,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "auditRevision": "R37-AUTHOR-DRAFT-1",
+  "notes": "Contains hostile dialogue and profanity. Require age-appropriate teacher supervision and direct recording check.",
+  "objective": [
+    {
+      "id": "r37-pk-c2-01",
+      "category": "interpretation",
+      "q": "What paradox defines the speaker's use of power?",
+      "options": [
+        "He tries to secure restraint through verbal aggression",
+        "He claims no authority while issuing invitations",
+        "He encourages an argument so that peace may follow",
+        "He demands an informal celebration in formal language"
+      ],
+      "answer": 0,
+      "explanation": "His attempt at order is itself confrontational.",
+      "sourceEvidence": "The speaker warns against trouble while sounding threatening."
+    },
+    {
+      "id": "r37-pk-c2-02",
+      "category": "interpretation",
+      "q": "How does the snow exchange create bathos?",
+      "options": [
+        "It confirms that the group understands the seriousness of the occasion",
+        "It introduces a literal discussion of climate conditions",
+        "It interjects a trivial or euphemistic concern into a high-stakes warning",
+        "It removes the possibility of further conflict"
+      ],
+      "answer": 2,
+      "explanation": "The sudden topic brings comic incongruity.",
+      "sourceEvidence": "A question about snow disrupts an aggressive address."
+    },
+    {
+      "id": "r37-pk-c2-03",
+      "category": "interpretation",
+      "q": "What is the most precise function of the concessive 'nevertheless'?",
+      "options": [
+        "It invites an alternative proposal",
+        "It acknowledges an objection while refusing to surrender the floor",
+        "It converts the rule into a shared agreement",
+        "It admits the speaker has forgotten his promise"
+      ],
+      "answer": 1,
+      "explanation": "A token concession does not change the speaker's demand.",
+      "sourceEvidence": "The uniform objection is overridden with 'Nevertheless'."
+    },
+    {
+      "id": "r37-pk-c2-04",
+      "category": "interpretation",
+      "q": "What is Grace's role in the argumentative structure?",
+      "options": [
+        "She acts as the direct enforcer of the speaker's rules",
+        "She personally announces the restrictions",
+        "Her authority is explicitly placed above the speaker's",
+        "Her possible embarrassment supplies moral support for coercive instructions"
+      ],
+      "answer": 3,
+      "explanation": "The speaker invokes concern for a third party to legitimise obedience.",
+      "sourceEvidence": "He urges the men not to embarrass Grace."
+    },
+    {
+      "id": "r37-pk-c2-05",
+      "category": "interpretation",
+      "q": "How does repeated shouting complicate the impression of control?",
+      "options": [
+        "It projects force while suggesting the speaker doubts voluntary compliance",
+        "It proves the men accept all the restrictions",
+        "It makes the words legally binding",
+        "It shows that the earlier threats were not serious"
+      ],
+      "answer": 0,
+      "explanation": "Repetition may signal power and underlying insecurity.",
+      "sourceEvidence": "The final order is repeated loudly."
+    },
+    {
+      "id": "r37-pk-c2-06",
+      "category": "interpretation",
+      "q": "Which conclusion about the men's future behaviour is justified by the excerpt alone?",
+      "options": [
+        "They have explicitly agreed to all the restrictions",
+        "They will inevitably ignore the speaker",
+        "The speaker demands compliance, but later conduct is not established",
+        "The emotional appeal guarantees a peaceful ceremony"
+      ],
+      "answer": 2,
+      "explanation": "A demand is observable; later compliance is not.",
+      "sourceEvidence": "The scene ends with an intensified warning rather than an outcome."
+    }
+  ],
+  "written": [
+    {
+      "id": "r37-pk-c2-w1",
+      "q": "Evaluate how the dialogue makes threat and comedy coexist.",
+      "modelAnswer": "The aggressive warnings establish a genuine possibility of conflict while incongruous interruptions provide comic beats.",
+      "teacherCriterion": "Explain both effects with distinct moments from the dialogue.",
+      "sourceEvidence": "Angry prohibitions coexist with off-topic interruptions."
+    },
+    {
+      "id": "r37-pk-c2-w2",
+      "q": "Can the repeated orders be read as insecurity? Offer a balanced interpretation.",
+      "modelAnswer": "Their repetition enforces dominance but may suggest the speaker doubts that the others will obey voluntarily.",
+      "teacherCriterion": "A reasoned position and counter-reading grounded in the scene.",
+      "sourceEvidence": "The warnings intensify after multiple challenges."
+    }
+  ]
+}
