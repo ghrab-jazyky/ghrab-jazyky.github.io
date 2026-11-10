@@ -170,7 +170,7 @@
    document.getElementById('languageLevelBadge').textContent=lang.toUpperCase()+' · '+level;
    renderText();renderTasks();
    timed=window.LSHSessionUI.mount({
-    skill:'reading',topic,lang,level,
+    skill:'reading',topic:'qa-'+topic,lang,level,
     workspace:$('workspace'),
     getAnswers:()=>({answers:{...answers}}),
     restoreAnswers:saved=>{
