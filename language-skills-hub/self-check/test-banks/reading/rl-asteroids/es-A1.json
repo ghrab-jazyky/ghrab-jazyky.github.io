@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "es",
+  "level": "A1",
+  "sourceTitle": "Rocas que viajan por el espacio",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-CONTENT-AUDIT-1",
+  "description": "Independent A1 asteroid Reading bank, external review pending.",
+  "tabs": [
+    {
+      "id": "espacio",
+      "title": "Rocas del espacio"
+    },
+    {
+      "id": "ciencia",
+      "title": "Observar el cielo"
+    },
+    {
+      "id": "seguridad",
+      "title": "La Tierra y los asteroides"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-es-a1-01",
+      "tab": "espacio",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Por qué un asteroide no es una estrella?",
+      "choices": [
+        "Porque siempre está cerca de la Tierra.",
+        "Porque no tiene luz propia.",
+        "Porque está hecho de agua.",
+        "Porque no gira alrededor del Sol."
+      ],
+      "answer": 1,
+      "explanation": "En el primer párrafo se explica que los asteroides no producen luz."
+    },
+    {
+      "id": "r36-es-a1-02",
+      "tab": "espacio",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué podemos decir del tamaño de los asteroides?",
+      "choices": [
+        "Son todos como una montaña.",
+        "Son siempre más grandes que un coche.",
+        "No existen asteroides pequeños.",
+        "Unos son pequeños y otros muy grandes."
+      ],
+      "answer": 3,
+      "explanation": "El primer párrafo presenta asteroides de tamaños diferentes."
+    },
+    {
+      "id": "r36-es-a1-03",
+      "tab": "espacio",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Para qué hacen fotos los científicos?",
+      "choices": [
+        "Para cambiar la velocidad de las rocas.",
+        "Para saber cuántas estrellas hay.",
+        "Para observar por dónde se mueven los asteroides.",
+        "Para construir un nuevo planeta."
+      ],
+      "answer": 2,
+      "explanation": "En el segundo párrafo los científicos hacen fotos y siguen el movimiento."
+    },
+    {
+      "id": "r36-es-a1-04",
+      "tab": "ciencia",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué ayuda a ver cosas muy lejanas?",
+      "choices": [
+        "Un telescopio grande.",
+        "Un pequeño mapa de la escuela.",
+        "Un museo de la ciudad.",
+        "Un reloj de la pared."
+      ],
+      "answer": 0,
+      "explanation": "El segundo párrafo presenta el telescopio como instrumento de observación."
+    },
+    {
+      "id": "r36-es-a1-05",
+      "tab": "ciencia",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Todos los asteroides siguen exactamente el mismo camino?",
+      "choices": [
+        "Sí, todos pasan siempre junto a la Tierra.",
+        "Sí, todos van por la misma órbita.",
+        "No, sus órbitas pueden ser diferentes.",
+        "No, ninguno se mueve alrededor del Sol."
+      ],
+      "answer": 2,
+      "explanation": "El texto explica que los asteroides tienen órbitas distintas."
+    },
+    {
+      "id": "r36-es-a1-06",
+      "tab": "ciencia",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué significa que un asteroide pase cerca de la Tierra?",
+      "choices": [
+        "Que no necesariamente va a chocar con ella.",
+        "Que tiene que caer en nuestro planeta.",
+        "Que ya no gira alrededor del Sol.",
+        "Que se convierte en una estrella."
+      ],
+      "answer": 0,
+      "explanation": "La cercanía no garantiza una colisión, según los párrafos dos y tres."
+    },
+    {
+      "id": "r36-es-a1-07",
+      "tab": "seguridad",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Un amigo cree que todos los asteroides van a caer. ¿Qué puedes decir?",
+      "choices": [
+        "Todos los asteroides son peligrosos.",
+        "Los choques muy grandes son poco frecuentes.",
+        "Nadie puede mirar el espacio.",
+        "Todos los asteroides tienen luz."
+      ],
+      "answer": 1,
+      "explanation": "El tercer párrafo señala que los grandes impactos son raros."
+    },
+    {
+      "id": "r36-es-a1-08",
+      "tab": "seguridad",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Una roca pequeña entra en el aire de la Tierra. ¿Qué puede pasar?",
+      "choices": [
+        "Se transforma en una luna.",
+        "Se hace más grande cada minuto.",
+        "Empieza a girar alrededor de Marte.",
+        "Puede quemarse antes de llegar al suelo."
+      ],
+      "answer": 3,
+      "explanation": "Muchos trozos pequeños se queman en la atmósfera."
+    },
+    {
+      "id": "r36-es-a1-09",
+      "tab": "seguridad",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué hace útil la observación del cielo?",
+      "choices": [
+        "Permite cambiar la forma del Sol.",
+        "Ayuda a conocer los objetos y a protegernos.",
+        "Hace desaparecer todos los asteroides.",
+        "Impide que los planetas se muevan."
+      ],
+      "answer": 1,
+      "explanation": "Los científicos observan el cielo para aprender y proteger a las personas."
+    },
+    {
+      "id": "r36-es-a1-10",
+      "tab": "seguridad",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué actividad recomienda el texto a una persona curiosa?",
+      "choices": [
+        "Evitar mirar el cielo de noche.",
+        "Aprender solo los nombres de planetas.",
+        "Pensar que las preguntas no sirven.",
+        "Mirar las estrellas y hacer preguntas."
+      ],
+      "answer": 3,
+      "explanation": "Al final se invita al lector a mirar el cielo y plantear preguntas."
+    }
+  ]
+}
