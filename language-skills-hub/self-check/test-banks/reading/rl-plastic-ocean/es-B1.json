@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "es",
+  "level": "B1",
+  "sourceTitle": "Lo que encontró la lluvia",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent B1 waste journey interpretation bank, teacher content review pending",
+  "tabs": [
+    {
+      "id": "investigar",
+      "title": "Entender la investigación"
+    },
+    {
+      "id": "pruebas",
+      "title": "Seguir las pruebas"
+    },
+    {
+      "id": "conclusiones",
+      "title": "Sacar conclusiones"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-es-b1-01",
+      "tab": "investigar",
+      "kind": "mc",
+      "q": "¿Por qué habría sido insuficiente colocar solo un cartel junto al canal?",
+      "choices": [
+        "Porque no había visitantes cerca del agua.",
+        "Porque la basura podía proceder de calles y alcantarillas.",
+        "Porque no se permitían carteles en el puerto.",
+        "Porque los alumnos no conocían el idioma local."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "La investigación mostró que los residuos podían llegar al canal desde una alcantarilla."
+    },
+    {
+      "id": "r39-es-b1-02",
+      "tab": "investigar",
+      "kind": "mc",
+      "q": "¿Qué hizo la trabajadora municipal antes de que los estudiantes actuaran?",
+      "choices": [
+        "Les pidió que buscaran otro canal.",
+        "Les dio una lista de personas culpables.",
+        "Les prohibió hablar con los vecinos.",
+        "Les mostró cómo una alcantarilla recibía el agua de la calle."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "La trabajadora enseñó una alcantarilla cerca de la parada para explicar el recorrido del agua."
+    },
+    {
+      "id": "r39-es-b1-03",
+      "tab": "investigar",
+      "kind": "mc",
+      "q": "¿Cómo pueden llegar los envases desde la parada hasta el canal?",
+      "choices": [
+        "Los lleva siempre el personal de limpieza.",
+        "Los transportan los peces por el agua.",
+        "La lluvia los arrastra por la calle y las tuberías.",
+        "Se convierten automáticamente en agua cuando llueve."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "El agua de lluvia transporta los envases ligeros desde la calle hasta el canal."
+    },
+    {
+      "id": "r39-es-b1-04",
+      "tab": "pruebas",
+      "kind": "mc",
+      "q": "¿Qué consiguió el grupo al hacer un mapa durante una semana?",
+      "choices": [
+        "Reconoció los lugares donde aparecía más basura.",
+        "Demostró que toda la basura procedía del puerto.",
+        "Eliminó la necesidad de recoger residuos.",
+        "Identificó a una sola persona responsable."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Al registrar observaciones descubrieron muchos envoltorios junto a la parada."
+    },
+    {
+      "id": "r39-es-b1-05",
+      "tab": "pruebas",
+      "kind": "mc",
+      "q": "¿Qué cambió después de hablar con la cafetería y el ayuntamiento?",
+      "choices": [
+        "La cafetería dejó de vender productos.",
+        "El canal se cerró al público.",
+        "Mejoró la limpieza exterior y cambió el horario de recogida.",
+        "Se prohibieron todos los autobuses en la calle."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "La cafetería limpió mejor sus mesas y el ayuntamiento modificó la recogida."
+    },
+    {
+      "id": "r39-es-b1-06",
+      "tab": "pruebas",
+      "kind": "mc",
+      "q": "¿Por qué dejaron de buscar una sola persona culpable?",
+      "choices": [
+        "Comprendieron que los residuos podían seguir distintas rutas.",
+        "Demostraron que nadie había tirado basura.",
+        "Querían evitar hablar con la administración.",
+        "El problema había desaparecido por completo."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "El grupo cambió la búsqueda de culpables por una investigación del recorrido de la basura."
+    },
+    {
+      "id": "r39-es-b1-07",
+      "tab": "pruebas",
+      "kind": "mc",
+      "q": "¿Qué hallaron al volver al lugar un mes después?",
+      "choices": [
+        "El canal estaba lleno de los mismos envases.",
+        "Había menos basura, aunque no había desaparecido el problema.",
+        "Ya no caía lluvia en la zona.",
+        "Todos los vecinos habían dejado de usar plástico."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Observaron menos residuos, pero aún aparecían después de días ventosos."
+    },
+    {
+      "id": "r39-es-b1-08",
+      "tab": "conclusiones",
+      "kind": "mc",
+      "q": "¿Por qué no podían afirmar que el canal estaba definitivamente limpio?",
+      "choices": [
+        "Porque ninguna de sus observaciones era útil.",
+        "Porque el mapa no incluía la parada.",
+        "Porque la cafetería había cerrado.",
+        "Porque el viento podía traer residuos de otros lugares."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "El viento seguía pudiendo transportar basura desde otras calles."
+    },
+    {
+      "id": "r39-es-b1-09",
+      "tab": "conclusiones",
+      "kind": "mc",
+      "q": "¿Qué utilidad tenía invitar a los vecinos a añadir observaciones?",
+      "choices": [
+        "Garantizar una solución sin nuevas acciones.",
+        "Sustituir las pruebas por opiniones sin comprobar.",
+        "Ampliar la información sobre distintos lugares y momentos.",
+        "Demostrar que todos los residuos eran del mismo tipo."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "La participación de los vecinos permitía observar más partes de la zona."
+    },
+    {
+      "id": "r39-es-b1-10",
+      "tab": "conclusiones",
+      "kind": "mc",
+      "q": "¿Qué pregunta resume mejor la enseñanza del proyecto?",
+      "choices": [
+        "Dónde, cuándo y por qué comienza el problema de la basura.",
+        "Qué vecino merece recibir toda la culpa.",
+        "Qué cartel tiene los colores más visibles.",
+        "Cuándo dejarán de existir las lluvias."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "La conclusión prioriza investigar el origen y las condiciones de los residuos antes de acusar."
+    }
+  ]
+}
