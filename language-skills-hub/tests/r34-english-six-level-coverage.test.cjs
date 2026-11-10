@@ -25,7 +25,7 @@ test('R34 coverage includes all 138 Reading/Listening slots and NO invented appr
  const actual=coverage.slots.map(s=>[s.topic,s.language,s.level].join(':'));
  assert.deepEqual(actual.sort(),expected.sort());
  assert.equal(new Set(actual).size,actual.length);
- assert.deepEqual(coverage.counts,{total:138,reading:120,listening:18,drafted:6,missing:132,teacherApproved:0});
+ assert.deepEqual(coverage.counts,{total:138,reading:120,listening:18,drafted:7,missing:131,teacherApproved:0});
  assert.equal(coverage.productionBaseline,'R31');
  assert.equal(manifest.version,'R31');
  assert.equal(manifest.gradedTestsEnabled,false);
@@ -36,10 +36,11 @@ test('R34 coverage includes all 138 Reading/Listening slots and NO invented appr
   if(slot.status==='MISSING')assert.equal(slot.testBank,null);
   else{
    assert.equal(slot.status,'DRAFT_UNAPPROVED');
-   assert.equal(slot.topic,'rl-can-mistakes');
+   assert.ok(['rl-can-mistakes','rl-asteroids'].includes(slot.topic));
    assert.equal(slot.language,'en');
    assert.ok(levels.includes(slot.level));
    assert.ok(slot.testBank.endsWith('en-'+slot.level+'.json'));
+   assert.equal(fs.existsSync(path.join(root,slot.testBank)),true);
   }
  }
 });
@@ -87,6 +88,6 @@ test('R34 student catalog retains no links to unapproved assessment banks',()=>{
   const content=read(file);
   assert.doesNotMatch(content,/test-banks\/reading|R34-CONTENT-DRAFT-1/);
  }
- assert.equal(coverage.slots.filter(s=>s.status==='DRAFT_UNAPPROVED').length,6);
+ assert.equal(coverage.slots.filter(s=>s.status==='DRAFT_UNAPPROVED').length,7);
  assert.equal(coverage.slots.filter(s=>s.status==='TEACHER_APPROVED').length,0);
 });
