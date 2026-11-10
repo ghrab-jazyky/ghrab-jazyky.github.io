@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "fr",
+  "level": "B2",
+  "sourceTitle": "Astéroïdes : le risque, pas la panique",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R37-CONTENT-AUDIT-1",
+  "description": "Original independent B2 planetary defence reading test draft, awaiting content audit",
+  "tabs": [
+    {
+      "id": "sens",
+      "title": "Comprendre le sens"
+    },
+    {
+      "id": "preuves",
+      "title": "Examiner les preuves"
+    },
+    {
+      "id": "appliquer",
+      "title": "Appliquer les conclusions"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r37-fr-b2-01",
+      "tab": "sens",
+      "kind": "mc",
+      "q": "Pourquoi le titre affirmant qu'un astéroïde « se dirige vers la Terre » peut-il tromper ?",
+      "choices": [
+        "Il prouve que l'objet contient un métal dangereux.",
+        "Il peut laisser croire à un impact que les données ne confirment pas.",
+        "Il signifie que l'objet a déjà traversé l'atmosphère.",
+        "Il indique que les astronomes ont arrêté leurs observations."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Le premier paragraphe distingue un passage proche d'une véritable trajectoire de collision."
+    },
+    {
+      "id": "r37-fr-b2-02",
+      "tab": "sens",
+      "kind": "mc",
+      "q": "Que signifie le passage d'un corps dans une région proche de l'orbite terrestre ?",
+      "choices": [
+        "Sa trajectoire est connue avec une certitude absolue.",
+        "Il ne peut être observé par aucun télescope.",
+        "Il doit être plus grand que la Terre.",
+        "Une telle proximité ne prouve pas un danger immédiat."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "La plupart des objets connus dans notre voisinage ne présentent pas de risque immédiat."
+    },
+    {
+      "id": "r37-fr-b2-03",
+      "tab": "sens",
+      "kind": "mc",
+      "q": "Quel est l'intérêt des observations infrarouges ?",
+      "choices": [
+        "Elles remplacent toutes les images prises au sol.",
+        "Elles suppriment toutes les incertitudes des calculs.",
+        "Elles aident à trouver des objets sombres réfléchissant peu de lumière.",
+        "Elles peuvent directement modifier une orbite."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Le deuxième paragraphe explique que l'infrarouge facilite la détection de corps sombres."
+    },
+    {
+      "id": "r37-fr-b2-04",
+      "tab": "preuves",
+      "kind": "mc",
+      "q": "Pourquoi comparer des images prises pendant plusieurs nuits ?",
+      "choices": [
+        "Pour améliorer le calcul de l'orbite grâce à de nouvelles données.",
+        "Pour montrer que les premières mesures ont été falsifiées.",
+        "Pour remplacer les logiciels informatiques par des images.",
+        "Pour déterminer sans autre examen la composition des roches."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Les observations répétées permettent de préciser la trajectoire."
+    },
+    {
+      "id": "r37-fr-b2-05",
+      "tab": "preuves",
+      "kind": "mc",
+      "q": "Comment interpréter une première prévision révisée après de nouvelles mesures ?",
+      "choices": [
+        "L'astéroïde a nécessairement changé de taille.",
+        "Les astronomes travaillent sans méthode.",
+        "La révision peut traduire une estimation mieux fondée.",
+        "Les résultats précédents doivent être cachés au public."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Le texte rappelle que les calculs deviennent plus précis avec davantage d'observations."
+    },
+    {
+      "id": "r37-fr-b2-06",
+      "tab": "preuves",
+      "kind": "mc",
+      "q": "Quelle limite faut-il retenir de l'expérience DART ?",
+      "choices": [
+        "Modifier une orbite ne prouve pas que tous les impacts pourraient être évités.",
+        "La sonde n'a pas atteint son objectif.",
+        "Tous les astéroïdes ont la même structure.",
+        "Il devient inutile de découvrir les objets menaçants."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Le résultat positif de DART n'est pas la preuve d'un bouclier universel."
+    },
+    {
+      "id": "r37-fr-b2-07",
+      "tab": "preuves",
+      "kind": "mc",
+      "q": "Quelle observation a confirmé les effets de la collision avec Dimorphos ?",
+      "choices": [
+        "Sa composition s'est changée en métal.",
+        "Sa période orbitale autour de Didymos a diminué.",
+        "Il s'est mis à tourner autour de la Terre.",
+        "Il a complètement cessé de se déplacer."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Les mesures ont montré une diminution de la durée de révolution de Dimorphos."
+    },
+    {
+      "id": "r37-fr-b2-08",
+      "tab": "appliquer",
+      "kind": "mc",
+      "q": "Pourquoi le délai d'intervention compte-t-il en cas de menace réelle ?",
+      "choices": [
+        "Parce que les astéroïdes deviennent toujours plus petits.",
+        "Parce qu'une sonde peut partir sans préparation.",
+        "Parce que toutes les trajectoires restent identiques.",
+        "Parce que la taille, la structure et le temps influencent la réponse possible."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Le troisième paragraphe cite les caractéristiques physiques et le délai disponible."
+    },
+    {
+      "id": "r37-fr-b2-09",
+      "tab": "appliquer",
+      "kind": "mc",
+      "q": "Que faut-il préciser lorsqu'une nouvelle prévision diffère de l'ancienne ?",
+      "choices": [
+        "Une image spectaculaire sans explication.",
+        "Une garantie de sécurité définitive.",
+        "Ce qui est établi, ce qui reste incertain et pourquoi le calcul évolue.",
+        "Seulement un nouveau pourcentage sans contexte."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "La conclusion exige des explications transparentes sur les connaissances et leurs limites."
+    },
+    {
+      "id": "r37-fr-b2-10",
+      "tab": "appliquer",
+      "kind": "mc",
+      "q": "Quelle démarche exprime le mieux le message final ?",
+      "choices": [
+        "Partager des données fiables, se préparer et coopérer avant l'urgence.",
+        "Présenter chaque rapprochement comme une catastrophe certaine.",
+        "Attendre le dernier moment pour choisir une réaction.",
+        "Compter uniquement sur une mission spatiale spectaculaire."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Le dernier paragraphe valorise les données, la préparation et la coopération."
+    }
+  ]
+}
