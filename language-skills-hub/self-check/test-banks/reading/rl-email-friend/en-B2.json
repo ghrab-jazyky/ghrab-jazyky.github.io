@@ -36,12 +36,12 @@
       "kind": "mc",
       "q": "What tension does Lena describe between her early posts and her actual experiences?",
       "choices": [
-        "The city looked less interesting than her photographs suggested.",
         "Her cheerful updates concealed the loneliness she was reluctant to admit.",
         "The host family objected to the number of photographs she shared.",
-        "Her friends knew more about Rotterdam than she did."
+        "Her friends knew more about Rotterdam than she did.",
+        "The city looked less interesting than her photographs suggested."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "Lena's attractive pictures masked how lonely and unsettled she felt after arriving."
     },
     {
@@ -51,12 +51,12 @@
       "kind": "mc",
       "q": "Why does the community radio project become important to Lena beyond the certificate?",
       "choices": [
-        "It gives her a professional job in journalism.",
         "It allows her to travel around the Netherlands for free.",
         "It replaces the need to communicate with her old friends.",
-        "It creates conversations in which she recognises experiences similar to her own."
+        "It creates conversations in which she recognises experiences similar to her own.",
+        "It gives her a professional job in journalism."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "Interviews with newcomers help Lena recognise her own difficulties and value genuine contact."
     },
     {
@@ -66,12 +66,12 @@
       "kind": "mc",
       "q": "What do the calls from listeners after the bakery interview suggest?",
       "choices": [
-        "The station broadcasts only programmes about food.",
         "The bakery owner's story was mainly about learning Dutch.",
         "The feelings discussed are shared by people whose struggles may not be visible.",
-        "The bakery owner was already famous in the neighbourhood."
+        "The bakery owner was already famous in the neighbourhood.",
+        "The station broadcasts only programmes about food."
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "Three listeners relate comparable experiences, reinforcing Lena's sense that loneliness can remain hidden."
     },
     {
@@ -81,12 +81,12 @@
       "kind": "mc",
       "q": "Why does Lena reconsider sending Alex the old school photograph with a casual caption?",
       "choices": [
-        "She realises it would avoid asking how Alex is actually doing.",
         "She discovers the photograph was taken in another city.",
         "She cannot remember when they finished their exams.",
-        "She wants Alex to organise a larger reunion instead."
+        "She wants Alex to organise a larger reunion instead.",
+        "She realises it would avoid asking how Alex is actually doing."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The almost-sent message prompts Lena to notice how superficial their recent contact has become."
     },
     {
@@ -96,12 +96,12 @@
       "kind": "mc",
       "q": "What does Lena's contrast between knowing a museum and knowing whom to call reveal?",
       "choices": [
-        "She regards cultural activities as a waste of time.",
         "Practical familiarity with a place is different from emotional belonging.",
         "She has never learnt to travel around Rotterdam independently.",
-        "Her host family refuses to help with transport."
+        "Her host family refuses to help with transport.",
+        "She regards cultural activities as a waste of time."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "Knowing places to visit did not mean Lena had people she could confide in."
     },
     {
@@ -111,12 +111,12 @@
       "kind": "mc",
       "q": "Why does the bakery owner's observation about unwritten rules matter to Lena?",
       "choices": [
-        "It suggests that language courses are generally ineffective.",
         "It demonstrates that only recent migrants feel uncomfortable.",
         "It identifies a kind of uncertainty Lena recognises in her own adjustment.",
-        "It proves newcomers should avoid learning local customs."
+        "It proves newcomers should avoid learning local customs.",
+        "It suggests that language courses are generally ineffective."
       ],
-      "answer": 2,
+      "answer": 1,
       "explanation": "The interview mirrors Lena's experience of not understanding how to fit into a new city."
     },
     {
@@ -126,12 +126,12 @@
       "kind": "mc",
       "q": "What is the purpose of Lena acknowledging that Alex may have felt left out?",
       "choices": [
-        "To establish that Alex caused their friendship to weaken.",
         "To argue that social-media updates are never useful.",
         "To ask Alex to apologise for not replying more often.",
-        "To recognise how her curated messages might have affected someone else."
+        "To recognise how her curated messages might have affected someone else.",
+        "To establish that Alex caused their friendship to weaken."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "Lena acknowledges the possible emotional consequences of her own selective communication."
     },
     {
@@ -141,12 +141,12 @@
       "kind": "mc",
       "q": "Alex cannot afford the train journey. What response would best match Lena's intentions?",
       "choices": [
-        "Buy the ticket anyway to prove the friendship matters.",
         "Suggest a regular call and share honestly what life at college is like.",
         "Ask Lena to pay for travel before answering.",
-        "Send a cheerful photograph without discussing the invitation."
+        "Send a cheerful photograph without discussing the invitation.",
+        "Buy the ticket anyway to prove the friendship matters."
       ],
-      "answer": 1,
+      "answer": 0,
       "explanation": "Lena explicitly offers regular calls and invites genuine conversation as an alternative."
     },
     {
@@ -156,12 +156,12 @@
       "kind": "mc",
       "q": "A new student feels embarrassed about struggling in a city where everyone seems settled. What might Lena's experience suggest?",
       "choices": [
-        "Listening to others' experiences can make private difficulties feel less isolating.",
         "Keeping all difficulties secret is the quickest way to make friends.",
         "A certificate matters more than informal conversations.",
-        "People who appear confident never experience uncertainty."
+        "People who appear confident never experience uncertainty.",
+        "Listening to others' experiences can make private difficulties feel less isolating."
       ],
-      "answer": 0,
+      "answer": 3,
       "explanation": "The newcomer interviews helped Lena understand that difficulties are common despite outward appearances."
     },
     {
@@ -171,12 +171,12 @@
       "kind": "mc",
       "q": "Which reply would most directly answer Lena's final request?",
       "choices": [
-        "A list of Rotterdam's best tourist attractions.",
         "A request for a new photograph of Lena and her host family.",
         "A reminder that exchange years are supposed to be enjoyable.",
-        "A candid update about Alex's experiences and a practical suggestion for talking."
+        "A candid update about Alex's experiences and a practical suggestion for talking.",
+        "A list of Rotterdam's best tourist attractions."
       ],
-      "answer": 3,
+      "answer": 2,
       "explanation": "Lena asks Alex to say what would work and wants an actual conversation about both their lives."
     }
   ]
