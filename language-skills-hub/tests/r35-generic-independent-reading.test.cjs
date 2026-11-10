@@ -41,7 +41,7 @@ test('R35 generic bank validates actual catalog, source, title, 10 original task
 
 test('R35 independent-bank validator rejects forged topic, lang, CEFR and title',()=>{
  assert.throws(()=>generic.validate({...bank,topic:'rl-email-friend'},practice,entry,hash,selection),/metadata/);
- assert.throws(()=>generic.validate({...bank,language:'ru'},practice,entry,hash,selection),/metadata/);
+ assert.throws(()=>generic.validate({...bank,language:'ru'},practice,entry,hash,selection),/does not match the requested/);
  assert.throws(()=>generic.validate({...bank,level:'A1'},practice,entry,hash,selection),/does not match the requested/);
  assert.throws(()=>generic.validate({...bank,sourceVariantTitle:'Not The Same'},practice,entry,hash,selection),/does not match/);
  assert.throws(()=>generic.validate({...bank,published:true},practice,entry,hash,selection),/must not/);
