@@ -20,6 +20,10 @@
 
 Tento součet znamená **existující autorské návrhy**, nikoli 138 hotových pedagogicky schválených testů. Každý návrh musí projít jazykovou a didaktickou kontrolou: přiměřenost CEFR, pravdivost opory v původním textu/audiu, kvalitu distraktorů, jednoznačnost správné odpovědi a odlišnost od practice. Všechny zůstávají `published:false` a bez studentské veřejné nabídky.
 
+## Učitelská technická přejímka
+
+Pro společnou přejímku 138 variant slouží izolovaná stránka `self-check/test-banks/index.html` přímo z checkoutu integrační větve. Učitel zvolí Reading/Listening, téma, podporovaný jazyk, CEFR a čas 5–120 minut. Výběr před zpřístupněním náhledu ověřuje existenci banky, její zdrojový SHA-256, počet úloh a nepovolený stav publikace. Přímý náhled poté znovu ověřuje zdroj a pracuje s R30 lokálním časovačem. Žádná z těchto stránek není odkázána z produkčního katalogu R31 a QR se nevytváří jako studentské schválení.
+
 ## Technická integrace
 
 - Výchozí čtecí větev `feat/lsh-r34-independent-test-coverage-2026-11-10`: 120 autorsky sestavených Reading bank (78 původních plus 42 z R41), společná čtecí QA stránka, soupis očekávaných 138 variant a testy.
