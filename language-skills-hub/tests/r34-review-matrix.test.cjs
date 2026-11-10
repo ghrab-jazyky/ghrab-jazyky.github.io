@@ -27,7 +27,7 @@ test('R34 all 138 variants are individually tracked as not approved',()=>{
   assert.equal(item.practiceIndependenceVerified,false,item.id);
   assert.ok(cards.entries.some(e=>e.id===item.topic));
   assert.equal(item.sourcePracticeContentHash,version.contentHashes[item.topic]);
-  assert.ok(fs.existsSync(path.join(root,item.content)));
+  assert.ok(fs.existsSync(path.resolve(root,'..',item.content)),item.content);
   if(item.skill==='reading'){
    assert.equal(item.sourceRecordingVerified,null);
    assert.ok(['mechanically-seeded','authored-pilot'].includes(item.provenance));
