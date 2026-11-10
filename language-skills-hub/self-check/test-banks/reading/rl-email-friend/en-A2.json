@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "A2",
+  "sourceVariantTitle": "A Weekend Worth Sharing",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "auditRevision": "R36-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "Original independent A2 English email-reading draft; awaiting human pedagogical approval.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Understanding the Message",
+      "description": "Understand the writer and plans."
+    },
+    {
+      "id": "reasons",
+      "title": "Reasons and Details",
+      "description": "Connect details with reasons."
+    },
+    {
+      "id": "new-situations",
+      "title": "Responding to the Invitation",
+      "description": "Use what the message tells you."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-email-friend-en-a2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why were Sofia's first weeks in Galway difficult?",
+      "choices": [
+        "She could not find the language school.",
+        "Her aunt did not want her to stay.",
+        "She knew no one and found the weather colder than expected.",
+        "All her friends had moved to another town."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph 1 of the A2 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "How has Sofia's everyday life improved since September?",
+      "choices": [
+        "She has stopped attending the language course.",
+        "She has found friends and often cooks with them.",
+        "She now works full-time in a hospital.",
+        "Her family has moved to the same town."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph 1 of the A2 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why is the photography exhibition a good idea for Noah?",
+      "choices": [
+        "Noah has asked her to buy a train ticket.",
+        "The exhibition is run by his basketball coach.",
+        "He needs pictures for a school science exam.",
+        "Sofia knows that he enjoys taking photographs."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph 2 of the A2 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a2-04",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What is special about the man in Sofia's favourite photo?",
+      "choices": [
+        "He has repaired bicycles in the same small shop for many years.",
+        "He has travelled to forty different cities.",
+        "He teaches professional photography at night.",
+        "He has never opened his workshop in the morning."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph 3 of the A2 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a2-05",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What can visitors learn after viewing the exhibition?",
+      "choices": [
+        "How to repair every kind of bicycle.",
+        "How to drive a bus around Galway.",
+        "Ways to take better photographs using a phone.",
+        "How to work as a hospital nurse."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph 3 of the A2 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a2-06",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does Sofia suggest the science museum as another option?",
+      "choices": [
+        "The photography exhibition might be full.",
+        "The photographer has asked them to leave.",
+        "The railway station will be closed on Sunday.",
+        "Noah does not like taking pictures."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph 4 of the A2 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a2-07",
+      "tab": "reasons",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What is Sofia's attitude towards planning their day together?",
+      "choices": [
+        "She wants Noah to organise a very expensive trip.",
+        "Spending some time together matters more than making everything perfect.",
+        "She expects him to choose a different exhibition.",
+        "She does not want to hear about his basketball team."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph 4 of the A2 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a2-08",
+      "tab": "new-situations",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does Sofia ask for an answer by Friday evening?",
+      "choices": [
+        "She is planning to leave Galway on Friday.",
+        "The museum is closed every Saturday.",
+        "She wants Noah to buy a new camera.",
+        "She needs to book a ticket in time."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph 4 of the A2 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a2-09",
+      "tab": "new-situations",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Noah has only an hour free. What would Sofia most likely say?",
+      "choices": [
+        "The meeting cannot happen without a full day.",
+        "An hour together would still be lovely.",
+        "He must stop playing basketball first.",
+        "He should pay for her whole language course."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph 4 of the A2 email supports the answer through the writer's invitation, activities or personal circumstances."
+    },
+    {
+      "id": "r36-email-friend-en-a2-10",
+      "tab": "new-situations",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Which reply would best answer Sofia's invitation?",
+      "choices": [
+        "Send a photo without mentioning Sunday.",
+        "Wait until after the exhibition to answer.",
+        "Ask her to visit the museum alone.",
+        "Tell her if Sunday is possible and suggest a plan."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph 4 of the A2 email supports the answer through the writer's invitation, activities or personal circumstances."
+    }
+  ]
+}
