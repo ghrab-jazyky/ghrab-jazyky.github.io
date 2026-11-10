@@ -4,6 +4,7 @@
  const core=window.LSHListeningCore;
  const resultsCore=window.LSHResultCore;
  const gradeCore=window.LSHGradeCore;
+ const exportCore=window.LSHExportCore;
  const $=id=>document.getElementById(id);
  const element=(tag,cls,text)=>{
   const el=document.createElement(tag);
@@ -193,10 +194,15 @@
   const wrapper=$('manualGrade'),controls=$('manualGradeTasks');
   wrapper.hidden=false;
   controls.replaceChildren();
-  const marks=normalized.writtenReview.map(()=>null);
+  const savedMarks=timedUI?.status()?.reviewMarks;
+  const marks=Array.isArray(savedMarks)&&
+   savedMarks.length===normalized.writtenReview.length&&
+   savedMarks.every(x=>x===null||x===0||x===1)?
+   savedMarks.slice():normalized.writtenReview.map(()=>null);
   const gradeContainer=$('gradeProposal'),status=$('manualGradeStatus');
   function update(){
    const reviewed=gradeCore.listening(normalized,marks);
+   $('exportResult').disabled=reviewed.pending>0;
    status.textContent=reviewed.pending?
     'Čeká na posouzení '+reviewed.pending+' z '+marks.length+' písemných odpovědí. Zatím nelze vypočítat celkovou známku.':
     'Učitelské posouzení dokončeno. '+reviewed.earned+' / '+reviewed.max+
@@ -227,12 +233,32 @@
    select.setAttribute('aria-label','Učitelské hodnocení: '+task.question);
    select.addEventListener('change',()=>{
     marks[i]=select.value===''?null:Number(select.value);
+    if(timedUI)timedUI.saveReviewMarks(marks);
     update();
    });
+   if(marks[i]!==null)select.value=String(marks[i]);
    part.append(label,element('p','quiz-hint','Odpověď: '+(task.answer||'—')),
     element('p','quiz-hint','Referenční řešení: '+task.reference),select);
    controls.appendChild(part);
   }
+  const exportButton=$('exportResult');
+  exportButton.hidden=!exportCore;
+  $('exportStatus').textContent=timedUI?
+   'Anonymní CSV obsahuje pouze bodové hodnoty a návrh známky. Ruční hodnocení se ukládá v tomto prohlížeči. Soubor lze upravit, není to ověřený školní záznam.':
+   'Anonymní CSV obsahuje pouze body a návrh známky. V tomto starším odkazu se hodnocení po obnovení stránky neuchová.';
+  exportButton.onclick=()=>{
+   if(!exportCore||marks.some(m=>m===null))return;
+   try{
+    const state=timedUI?.status();
+    exportCore.download(exportCore.listening(normalized,marks,{
+     topic:selection.topic,language:'en',level:selection.level,
+     submittedAt:state?.submittedAt??null,
+     interruptionCount:state?.incidents?.length??0
+    }));
+   }catch(error){
+    $('exportStatus').textContent='Export se nezdařil: '+String(error.message||error);
+   }
+  };
   update();
  }
  function results(report){

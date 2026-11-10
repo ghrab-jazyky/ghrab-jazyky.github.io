@@ -13,6 +13,7 @@
  <script defer src="listening-core.js"></script>
  <script defer src="../results/result-core.js"></script>
  <script defer src="../results/grade-core.js"></script>
+ <script defer src="../results/export-core.js"></script>
  <script defer src="../session/attempt-core.js"></script>
  <script defer src="../session/session-ui.js"></script>
  <script defer src="listening-student.js"></script>
@@ -54,12 +55,16 @@
    <div class="grade-proposal" id="gradeProposal" aria-live="polite"></div>
    <section id="manualGrade" class="manual-grading" hidden aria-labelledby="manualGradeHeading">
     <h3 id="manualGradeHeading">Učitelská kontrola písemných odpovědí</h3>
-    <p class="small-note">Výsledné známkování vyžaduje kontrolu učitelem na tomto zařízení. Tento formulář není zabezpečený před změnou žákem; není důvěryhodným školním záznamem.</p>
+    <p class="small-note">Výsledné známkování vyžaduje kontrolu učitelem na tomto zařízení. V časovaném režimu se přidělené body 0/1 ukládají pouze v prohlížeči a obnoví se po načtení stejné relace. Tento formulář může změnit i žák, nejde o důvěryhodný školní záznam.</p>
     <div id="manualGradeTasks" class="review-grade-controls"></div>
     <p id="manualGradeStatus" class="manual-grade-status" aria-live="polite"></p>
    </section>
    <p id="resultCaution" class="small-note"></p>
    <div id="resultDetails" class="result-details"></div>
+   <div class="result-export">
+    <button type="button" id="exportResult" class="action ghost" hidden>Download local result CSV (no name or answers)</button>
+    <p class="small-note" id="exportStatus" role="note">CSV is not a verified school record. No student name or written answers are included.</p>
+   </div>
   </section>
  </main>
  <footer class="footer">Local proposed grade 1–5 after teacher review · no login, no uploaded student data</footer>

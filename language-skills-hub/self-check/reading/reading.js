@@ -7,6 +7,7 @@
  const core=window.LSHReadingCore;
  const resultsCore=window.LSHResultCore;
  const gradeCore=window.LSHGradeCore;
+ const exportCore=window.LSHExportCore;
  const $=id=>document.getElementById(id);
  const add=(tag,cls,text)=>{
   const e=document.createElement(tag);
@@ -116,9 +117,15 @@
  };
  const locale=core.LANGUAGES.includes(selected.lang)?selected.lang:'en';
  const ui=T[locale];
+ const exportsCopy={
+  en:{button:'Download anonymous CSV result',note:'Local and unverified. This file contains no student name, answers or reflections.',error:'The file could not be downloaded.'},
+  es:{button:'Descargar resultado CSV sin datos personales',note:'Resultado local no verificado. El archivo no contiene nombres, respuestas ni reflexiones.',error:'No se pudo descargar el archivo.'},
+  de:{button:'Anonymes CSV-Ergebnis herunterladen',note:'Lokales, nicht verifiziertes Ergebnis. Die Datei enthält keine Namen, Antworten oder Reflexionen.',error:'Die Datei konnte nicht heruntergeladen werden.'},
+  fr:{button:'Télécharger le résultat CSV anonyme',note:'Résultat local non vérifié. Le fichier ne contient ni nom, ni réponses, ni réflexions.',error:'Le fichier n’a pas pu être téléchargé.'}
+ }[locale];
  let variant=null;
  const answers=Object.create(null);
- let submitted=false,timedUI=null;
+ let submitted=false,timedUI=null,lastReport=null;
  function themeSet(light,save){
   document.documentElement.dataset.theme=light?'light':'dark';
   $('themeButton').textContent=light?ui.themeDark:ui.themeLight;
@@ -150,6 +157,8 @@
   $('resultHeading').textContent=ui.result;
   $('resultKicker').textContent=ui.resultKicker;
   $('footer').textContent=ui.footer;
+  $('exportResult').textContent=exportsCopy.button;
+  $('exportStatus').textContent=exportsCopy.note;
  }
  function renderReading(){
   $('readingHeading').textContent=variant.title;
@@ -262,6 +271,7 @@
    details.appendChild(box);
   }
   $('resultReflection').textContent=ui.reflectionAfter;
+  $('exportResult').hidden=!exportCore;
   $('results').hidden=false;
   $('results').focus({preventScroll:true});
   $('results').scrollIntoView({behavior:'smooth',block:'start'});
@@ -273,6 +283,7 @@
   if(!automatic&&!window.confirm(message))return;
   const report=core.score(variant,answers);
   if(timedUI&&!restored)timedUI.finish();
+  lastReport=report;
   submitted=true;
   $('submitButton').disabled=true;
   $('submitButton').textContent=ui.result;
@@ -289,6 +300,19 @@
   translate();themeInit();
   $('submitButton').addEventListener('click',()=>submit(false,false));
   $('reflection').addEventListener('input',()=>timedUI?.save());
+  $('exportResult').addEventListener('click',()=>{
+   if(!submitted||!lastReport||!exportCore)return;
+   try{
+    const state=timedUI?.status();
+    exportCore.download(exportCore.reading(lastReport,{
+     topic:selected.topic,language:selected.lang,level:selected.level,
+     submittedAt:state?.submittedAt??null,
+     interruptionCount:state?.incidents?.length??0
+    }));
+   }catch(error){
+    $('exportStatus').textContent=exportsCopy.error+' '+String(error.message||error);
+   }
+  });
   try{
    const catalog=await fetchJson('../../data/cards.json');
    const entry=core.readingEntry(catalog,selected.topic);
