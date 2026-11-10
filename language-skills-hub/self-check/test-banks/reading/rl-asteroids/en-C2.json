@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "C2",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 30,
+  "auditRevision": "R34-AST-C2-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "tabs": [
+    {
+      "id": "framing",
+      "title": "Framing and Knowledge",
+      "description": "Evaluate the article's conceptual distinctions."
+    },
+    {
+      "id": "evidence",
+      "title": "Cases and Conditional Evidence",
+      "description": "Assess how examples qualify general claims."
+    },
+    {
+      "id": "governance",
+      "title": "Institutional Judgement",
+      "description": "Reason about evidence, uncertainty and policy choices."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-ast-c2-01",
+      "tab": "framing",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What is lost when planetary defence is presented chiefly as a struggle against an enemy?",
+      "choices": [
+        "The fact that physical bodies obey observable forces becomes irrelevant.",
+        "The need for political choices disappears from public discussion.",
+        "Asteroid trajectories can no longer be expressed numerically.",
+        "Attention shifts from conditional scientific knowledge to a misleading dramatic conflict."
+      ],
+      "answer": 3,
+      "explanation": "The opening criticises a cinematic metaphor that conceals the slower scientific work required."
+    },
+    {
+      "id": "r34-ast-c2-02",
+      "tab": "framing",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does the author resist treating high numerical precision as evidence of complete knowledge?",
+      "choices": [
+        "The calculations necessarily contain random errors too large to evaluate.",
+        "Observed samples are shaped by detection biases and may exclude unobserved objects.",
+        "Infrared telescopes measure only the temperature of the Sun.",
+        "Probability theory cannot be applied to astronomical observations."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph two distinguishes precise orbit solutions from completeness of the observed catalogue."
+    },
+    {
+      "id": "r34-ast-c2-03",
+      "tab": "framing",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "How can a rise in a preliminary risk estimate be consistent with responsible reasoning?",
+      "choices": [
+        "New observations may constrain possible trajectories in a way that temporarily raises the calculated chance.",
+        "Institutional hesitation automatically improves astronomical accuracy.",
+        "The object's gravitational forces change according to media coverage.",
+        "The first calculation must have been intentionally misleading."
+      ],
+      "answer": 0,
+      "explanation": "The text explains why a narrower set of admissible orbits can yield changing risk estimates."
+    },
+    {
+      "id": "r34-ast-c2-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What does the later observational history of Apophis chiefly demonstrate?",
+      "choices": [
+        "An initially alarming estimate must always be ignored.",
+        "The 2029 pass was already understood as harmless in 2004.",
+        "Revised evidence can transform an apparent threat into a well-characterised research opportunity.",
+        "Radar observations are useful only for objects visible to the naked eye."
+      ],
+      "answer": 2,
+      "explanation": "The text traces how observations ruled out impacts and reframed the close passage as an opportunity."
+    },
+    {
+      "id": "r34-ast-c2-05",
+      "tab": "evidence",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why is DART's successful impact described as a conditional engineering lesson?",
+      "choices": [
+        "DART's target was selected after an unavoidable collision with Earth.",
+        "The collision showed that every asteroid responds identically.",
+        "The experiment proved detection systems could be eliminated.",
+        "The result depends on target structure, available warning and a measurable change in future position."
+      ],
+      "answer": 3,
+      "explanation": "The fourth paragraph stresses the context-dependent nature of a demonstrated kinetic deflection."
+    },
+    {
+      "id": "r34-ast-c2-06",
+      "tab": "evidence",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What is the force of comparing a solid rock with a loosely bound collection of fragments?",
+      "choices": [
+        "It suggests that loosely bound targets cannot follow an orbit.",
+        "It challenges the assumption that one impact result transfers unchanged to every target.",
+        "It proves that all planetary-defence experiments are unreliable.",
+        "It reduces the importance of detecting objects early."
+      ],
+      "answer": 1,
+      "explanation": "The comparison shows why physical structure affects the outcome of an intervention."
+    },
+    {
+      "id": "r34-ast-c2-07",
+      "tab": "governance",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What makes rare-impact preparedness especially difficult to justify in public policy?",
+      "choices": [
+        "Every low-probability risk can be forecast with perfect accuracy.",
+        "International cooperation is impossible for infrequent events.",
+        "Its benefits are largely invisible and compete with urgent demands for resources.",
+        "Observation has no measurable scientific value."
+      ],
+      "answer": 2,
+      "explanation": "The author acknowledges both opportunity costs and the difficulty of demonstrating success through disasters that do not occur."
+    },
+    {
+      "id": "r34-ast-c2-08",
+      "tab": "governance",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "A government demands perfectly certain forecasts before funding asteroid surveys. Why is that reasoning circular?",
+      "choices": [
+        "Better forecasts depend on the observations the unfunded surveys would provide.",
+        "Asteroid detection becomes unnecessary once a government accepts uncertainty.",
+        "Scientific measurements are never relevant to public decisions.",
+        "Funding alone guarantees that no asteroid will reach Earth."
+      ],
+      "answer": 0,
+      "explanation": "The conclusion argues that uncertainty does not justify withholding investment in observation."
+    },
+    {
+      "id": "r34-ast-c2-09",
+      "tab": "governance",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What standard of institutional authority does the author ultimately endorse?",
+      "choices": [
+        "A record of never retracting an earlier statement.",
+        "Inspectable assumptions and willingness to revise decisions as evidence changes.",
+        "A promise to eliminate scientific uncertainty.",
+        "The largest possible number of public reassurances."
+      ],
+      "answer": 1,
+      "explanation": "The final sentence ties trust to accessible assumptions and revisability rather than pretended certainty."
+    },
+    {
+      "id": "r34-ast-c2-10",
+      "tab": "governance",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What practical distinction follows from separating scientific investigation from political action?",
+      "choices": [
+        "Any object on a near-Earth orbit must trigger immediate evacuation.",
+        "Political decisions should ignore scientific probabilities.",
+        "Scientists should not publish observations before government approval.",
+        "The evidence sufficient to monitor an asteroid need not yet justify an emergency response."
+      ],
+      "answer": 3,
+      "explanation": "The opening distinguishes a scientific reason to investigate from a political reason to act."
+    }
+  ],
+  "description": "Original EN/C2 Asteroids assessment draft; human CEFR/content review required."
+}
