@@ -5,7 +5,7 @@
  const levels=['A1','A2','B1','B2','C1','C2'],langs=['en','es','de','fr'];
  const entries=[],collections=new Map(),styles={manual:'Autorská reference – audit čeká',
   candidate:'Automatický kandidát – přepsat',
-  subset:'Listening osnova – nové otázky nutné'};
+  subset:'Listening autorský návrh – čeká audit nahrávky'};
  let manifest=null,link=null,active=null;
  const el=(tag,txt)=>{const n=document.createElement(tag);if(txt!==undefined)n.textContent=txt;return n};
  async function fetchJson(url){const r=await fetch(url,{credentials:'omit',redirect:'error',cache:'no-store'});
@@ -98,7 +98,7 @@
     catalogId:entry.id,skill:entry.skill,language:lang,level,
     currentProductionVersion:manifest.version,
     sourceContentHash:manifest.contentHashes[entry.id],
-    provenance:manual?'human authored draft':entry.skill==='cteni'?'machine source-anchor seed':'practice task subset blueprint (requires fully new tasks)',
+    provenance:manual?'human authored draft':entry.skill==='cteni'?'machine source-anchor seed':'assistant-authored new Listening draft; original audio and CEFR not independently audited',
     practice,proposedTest:body,
     requiredReview:['Grammar, CEFR and unambiguous answers','Genuine independence from practice','Plausible distractors and source evidence','Appropriate scope and duration','No leakage or privacy risk']
    });
