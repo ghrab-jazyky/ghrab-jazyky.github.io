@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "A2",
+  "sourceTitle": "A Weekend Worth Sharing",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R37-AUTHOR-DRAFT-1",
+  "description": "Original EN/A2 Email Friend test bank for independent reading; pedagogical approval pending.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Understanding the message",
+      "description": "Interpret the writer's purpose and feelings."
+    },
+    {
+      "id": "reasoning",
+      "title": "Details and choices",
+      "description": "Explain practical arrangements and reasons."
+    },
+    {
+      "id": "application",
+      "title": "Responding appropriately",
+      "description": "Choose a response supported by the message."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r37-en-a2-01",
+      "tab": "interpretation",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "How has Sofia's time in Galway changed since her arrival?",
+      "choices": [
+        "Her aunt now works fewer hours.",
+        "She has made friends after a difficult start.",
+        "She has decided to leave her language course early.",
+        "The weather is now warmer than she expected."
+      ],
+      "answer": 1,
+      "explanation": "Sofia initially knew nobody but now cooks with a group of friends."
+    },
+    {
+      "id": "r37-en-a2-02",
+      "tab": "interpretation",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Why does Sofia suggest a photography exhibition to Noah?",
+      "choices": [
+        "She wants him to help organise the event.",
+        "It is part of an exam she has to pass.",
+        "She has already booked two tickets for them.",
+        "She remembers his interest and wants to share something he may enjoy."
+      ],
+      "answer": 3,
+      "explanation": "Sofia immediately thinks of Noah because he enjoys photography."
+    },
+    {
+      "id": "r37-en-a2-03",
+      "tab": "interpretation",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "What is unusual about the main subjects of the exhibition?",
+      "choices": [
+        "They are all famous people.",
+        "They are all students at Sofia's course.",
+        "They are ordinary workers shown doing interesting things.",
+        "They are only professional photographers."
+      ],
+      "answer": 2,
+      "explanation": "The exhibition depicts bakers, drivers, nurses and musicians, not celebrities."
+    },
+    {
+      "id": "r37-en-a2-04",
+      "tab": "interpretation",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "What does the invitation show about Sofia's expectations for the visit?",
+      "choices": [
+        "She values time together more than a perfectly planned programme.",
+        "She expects Noah to organise every activity.",
+        "She wants to visit the exhibition even if Noah cannot come.",
+        "She will be disappointed unless they spend a whole day together."
+      ],
+      "answer": 0,
+      "explanation": "Sofia explicitly says that even an hour together would make her happy."
+    },
+    {
+      "id": "r37-en-a2-05",
+      "tab": "reasoning",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "Why might Sofia's aunt not be at home when Sofia returns?",
+      "choices": [
+        "Her aunt often travels with friends.",
+        "She sometimes works late at the hospital.",
+        "She spends most evenings at the photography exhibition.",
+        "She studies at the same language school."
+      ],
+      "answer": 1,
+      "explanation": "The first paragraph explains that Sofia's aunt often comes home late from hospital work."
+    },
+    {
+      "id": "r37-en-a2-06",
+      "tab": "reasoning",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "Why might Noah enjoy the workshop after the exhibition?",
+      "choices": [
+        "It offers visitors free professional cameras.",
+        "It teaches everyone how to repair bicycles.",
+        "It helps people improve photographs taken with a phone.",
+        "It introduces students to the basketball team."
+      ],
+      "answer": 2,
+      "explanation": "Visitors can learn to take better phone photographs at a free workshop."
+    },
+    {
+      "id": "r37-en-a2-07",
+      "tab": "reasoning",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "Why does Sofia suggest the science museum as another option?",
+      "choices": [
+        "She prefers science museums to photography.",
+        "The exhibition will close before noon.",
+        "She has already visited every exhibition in town.",
+        "They can still meet if the photography exhibition is full."
+      ],
+      "answer": 3,
+      "explanation": "The museum is a backup plan if tickets are unavailable."
+    },
+    {
+      "id": "r37-en-a2-08",
+      "tab": "application",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "Noah wants to meet but can stay only one hour. What is Sofia likely to say?",
+      "choices": [
+        "He should wait until he has an entire free day.",
+        "A short meeting is fine because she mainly wants to see him.",
+        "He must complete the photography workshop first.",
+        "They should cancel because the plan is too short."
+      ],
+      "answer": 1,
+      "explanation": "Sofia says that even an hour together is worth having."
+    },
+    {
+      "id": "r37-en-a2-09",
+      "tab": "application",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "Noah does not know whether his basketball match ends in time. What should he do?",
+      "choices": [
+        "Tell Sofia his situation before Friday evening so she can plan tickets.",
+        "Arrive without a message and hope to find Sofia.",
+        "Ask Sofia to buy tickets without knowing if he can go.",
+        "Wait until after Sunday to explain."
+      ],
+      "answer": 0,
+      "explanation": "Sofia needs an answer by Friday evening because booking is required."
+    },
+    {
+      "id": "r37-en-a2-10",
+      "tab": "application",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Which reply would best match Sofia's friendly tone?",
+      "choices": [
+        "You should not have moved away without telling me.",
+        "I cannot join unless the workshop gives certificates.",
+        "I am not interested in hearing about your new friends.",
+        "I would love to catch up; even a short visit and a chat sound great."
+      ],
+      "answer": 3,
+      "explanation": "The writer is informal, flexible and focused on friendship rather than a rigid schedule."
+    }
+  ]
+}
