@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "B1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R33-CONTENT-AUDIT-1",
+  "description": "Ten original B1 questions on Lara's learning habits: beliefs, reasoning and new situations. This is a teacher-review draft, NOT an approved school test.",
+  "tabs": [
+    {
+      "id": "understanding",
+      "title": "Understanding Lara",
+      "description": "Understand her thoughts and how she approaches a problem."
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasons and Changes",
+      "description": "Explain why events matter and how her thinking changes."
+    },
+    {
+      "id": "application",
+      "title": "Using the Lesson",
+      "description": "Choose sensible ways to use the ideas in everyday situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r33-en-b1-und-01",
+      "tab": "understanding",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What did Lara believe when she could not do something well at once?",
+      "choices": [
+        "A teacher should always explain the task in a different way.",
+        "Trying a new subject was usually more enjoyable.",
+        "She might not have enough natural ability for it.",
+        "She needed to spend more time reviewing easy subjects."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph one says that Lara took a difficult first attempt as a sign that she was not talented enough."
+    },
+    {
+      "id": "r33-en-b1-und-02",
+      "tab": "understanding",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why might playing in front of the class have felt especially difficult for Lara?",
+      "choices": [
+        "She had practised too long without taking a break.",
+        "Making visible mistakes challenged how she wanted others to see her.",
+        "She preferred to practise whole pieces rather than difficult sections.",
+        "She believed the teacher had already praised her performance."
+      ],
+      "answer": 1,
+      "explanation": "The public mistakes conflict with Lara's earlier fear that other pupils would notice what she could not do."
+    },
+    {
+      "id": "r33-en-b1-und-03",
+      "tab": "understanding",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does Lara's practice over several days suggest about making progress?",
+      "choices": [
+        "It mainly depends on working as quickly as possible.",
+        "It works best when a learner changes tasks every day.",
+        "It becomes easier when mistakes are no longer noticed.",
+        "It may take several short attempts rather than one long try."
+      ],
+      "answer": 3,
+      "explanation": "The second paragraph shows Lara practising a few minutes each day rather than endlessly repeating the whole piece."
+    },
+    {
+      "id": "r33-en-b1-rea-01",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why does the writer say Lara did not become 'a brilliant musician'?",
+      "choices": [
+        "The success mattered more for her attitude towards difficulties than for her talent.",
+        "She had not learnt to play the whole piece without stopping.",
+        "The teacher had asked her to learn only part of the music.",
+        "Her performance had become worse during the week."
+      ],
+      "answer": 0,
+      "explanation": "The third paragraph contrasts improved playing with a more important change in Lara's approach to mistakes."
+    },
+    {
+      "id": "r33-en-b1-rea-02",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What is different about Lara's new question, 'What could I do differently?'",
+      "choices": [
+        "It asks other people to decide whether she is talented.",
+        "It helps her find a reason to avoid a difficult subject.",
+        "It encourages her to think about a change she can try.",
+        "It shows that she no longer cares about her school marks."
+      ],
+      "answer": 2,
+      "explanation": "The new question looks for a practical action rather than a fixed judgement about Lara's ability."
+    },
+    {
+      "id": "r33-en-b1-rea-03",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why is checking the first wrong step in maths a sensible next move?",
+      "choices": [
+        "It helps Lara find the part of the problem she needs to understand.",
+        "It means she no longer has to check any other part of the calculation.",
+        "It allows her to reach an answer without doing the full problem.",
+        "It proves that her earlier method of practising music was wrong."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph three describes identifying where a calculation first went wrong instead of repeating everything."
+    },
+    {
+      "id": "r33-en-b1-app-01",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "A student is nervous about speaking English because they may make mistakes. What could they learn from Lara?",
+      "choices": [
+        "It is better to stay quiet until speaking feels completely easy.",
+        "Practising one difficult part and asking questions can be useful.",
+        "Students should work only on subjects where they get good marks.",
+        "It is important to speak quickly so others do not notice mistakes."
+      ],
+      "answer": 1,
+      "explanation": "Lara's experience suggests working on a manageable difficulty and no longer treating questions as a sign of failure."
+    },
+    {
+      "id": "r33-en-b1-app-02",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does Lara tell a younger pupil about her uncomfortable first attempt?",
+      "choices": [
+        "To show that music lessons give better results than maths lessons.",
+        "To recommend choosing easier tasks whenever mistakes appear.",
+        "To explain that high marks are no longer important to her.",
+        "To show that a difficult start can lead to a better next attempt."
+      ],
+      "answer": 3,
+      "explanation": "The last paragraph shows Lara sharing a realistic lesson: careful practice helped without promising quick success."
+    },
+    {
+      "id": "r33-en-b1-app-03",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "A classmate keeps getting one part of a presentation wrong but can do the rest well. What might Lara suggest?",
+      "choices": [
+        "Start again from the beginning each time without changing the method.",
+        "Work on that difficult part separately, then try the full talk again.",
+        "Skip the difficult part because other parts are already good.",
+        "Choose a new presentation topic instead of practising this one."
+      ],
+      "answer": 1,
+      "explanation": "The classroom scenario transfers the strategy of concentrating on four difficult bars to a new type of task."
+    },
+    {
+      "id": "r33-en-b1-app-04",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What can we conclude from Lara's refusal to promise quick success?",
+      "choices": [
+        "Learning a new skill is mostly a matter of natural talent.",
+        "The best method always produces high marks in one week.",
+        "Younger students need more help than older students.",
+        "A useful strategy can help even when improvement is slow."
+      ],
+      "answer": 3,
+      "explanation": "Lara says careful practice made the next attempt easier while refusing to promise a quick result."
+    }
+  ]
+}
