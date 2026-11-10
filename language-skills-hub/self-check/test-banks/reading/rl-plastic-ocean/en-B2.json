@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 25,
+  "auditRevision": "R34-PO-B2-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "description": "Original independent B2 Plastic Ocean review-based test proposal pending human audit.",
+  "tabs": [
+    {
+      "id": "cinema",
+      "title": "Film and Viewpoint",
+      "description": "Evaluate how the reviewer presents the film."
+    },
+    {
+      "id": "limits",
+      "title": "Solutions and Limitations",
+      "description": "Connect practical problems with the film's message."
+    },
+    {
+      "id": "judgement",
+      "title": "Critical Review",
+      "description": "Use the review to evaluate environmental arguments."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-po-b2-01",
+      "tab": "cinema",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does the reviewer describe the opening image as 'almost ridiculous'?",
+      "choices": [
+        "It shows the concert hall before visitors arrive.",
+        "It gives an ordinary discarded cup unusually dramatic attention.",
+        "It tries to prove that the cleaners are responsible for all litter.",
+        "It shows a serious disaster caused by a single cup."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph one turns an ordinary cup into a visual symbol, while questioning the film's reliance on images."
+    },
+    {
+      "id": "r34-po-b2-02",
+      "tab": "cinema",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What makes the street cleaner's conversation more effective than a shocking animal image?",
+      "choices": [
+        "It allows the film to avoid discussing people.",
+        "It makes the beach look more beautiful.",
+        "It proves that disposable cups have been banned.",
+        "It connects the waste problem with specific decisions, timing and resources."
+      ],
+      "answer": 3,
+      "explanation": "The review values the cleaner's explanation of schedules, budgets and practical responsibility."
+    },
+    {
+      "id": "r34-po-b2-03",
+      "tab": "cinema",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "How does filming the teenagers' chaotic preparation affect their portrayal?",
+      "choices": [
+        "It treats imperfect effort seriously without making the young organisers look foolish.",
+        "It shows that they are dishonest about their event.",
+        "It suggests that improvising is more expensive than planning.",
+        "It presents them as experienced professionals with no problems."
+      ],
+      "answer": 0,
+      "explanation": "The reviewer praises the director for recording difficulties without mocking the teenagers."
+    },
+    {
+      "id": "r34-po-b2-04",
+      "tab": "limits",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does the reviewer object to the film's treatment of reusable cups?",
+      "choices": [
+        "It fails to mention that plastic cups can be coloured.",
+        "It suggests that security rules never affect visitors.",
+        "It understates the barriers faced by people in different situations.",
+        "It ignores how reusable cups are made from metal."
+      ],
+      "answer": 2,
+      "explanation": "The reviewer says personal responsibility is emphasised while practical constraints are brushed aside."
+    },
+    {
+      "id": "r34-po-b2-05",
+      "tab": "limits",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What makes the deposit-system sequence unusually convincing to the reviewer?",
+      "choices": [
+        "Every cup is reused immediately with no washing.",
+        "Organisers admit costs and uncertainties instead of presenting a flawless solution.",
+        "The system makes all packaging unnecessary.",
+        "It promises to remove every item of litter in the first year."
+      ],
+      "answer": 1,
+      "explanation": "The scene compares a proposal with its costs, losses and water consumption."
+    },
+    {
+      "id": "r34-po-b2-06",
+      "tab": "limits",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why does the first summer's higher cost not automatically prove the deposit system failed?",
+      "choices": [
+        "Higher costs are always a sign of better cleaning.",
+        "Lost cups make the system completely free.",
+        "Organisers can ignore the cost of washing.",
+        "Repeated use may lower the price per cup over time."
+      ],
+      "answer": 3,
+      "explanation": "The review says the organisers expect costs to fall once cups are reused many times."
+    },
+    {
+      "id": "r34-po-b2-07",
+      "tab": "judgement",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Why would the reviewer prefer an ending about a meeting on bin collection?",
+      "choices": [
+        "It would turn an appealing image into a discussion of who will maintain the solution.",
+        "It would make the film look less realistic.",
+        "It would remove all of the documentary's personal stories.",
+        "It would show that the coast cannot be cleaned."
+      ],
+      "answer": 0,
+      "explanation": "The final paragraph contrasts a beautiful clean shoreline with practical follow-through."
+    },
+    {
+      "id": "r34-po-b2-08",
+      "tab": "judgement",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A school film says that everyone can easily bring a reusable cup. What critical question should viewers ask?",
+      "choices": [
+        "What colour should the cups be in the final scene?",
+        "How quickly can the film's music become more dramatic?",
+        "Are there rules or practical difficulties that make this harder for some people?",
+        "Which actor has the most lines?"
+      ],
+      "answer": 2,
+      "explanation": "Paragraph four challenges universal claims about ease of reuse."
+    },
+    {
+      "id": "r34-po-b2-09",
+      "tab": "judgement",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Which lesson about documentary-making emerges from the cleaner interview?",
+      "choices": [
+        "Only professional actors can explain environmental problems.",
+        "Emotional footage is always more reliable than any interview.",
+        "Showing schedules makes an environmental film less informative.",
+        "A strong explanation can show how everyday systems work, not only evoke emotion."
+      ],
+      "answer": 3,
+      "explanation": "The reviewer values practical details that give the problem a timetable and budget."
+    },
+    {
+      "id": "r34-po-b2-10",
+      "tab": "judgement",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why are lost cups and washing water relevant to judging the proposed system?",
+      "choices": [
+        "They determine which film scenes should be removed.",
+        "They affect whether the environmental and financial benefits are real.",
+        "They show how many teenagers came to the beach concert.",
+        "They prove that reuse always requires more plastic."
+      ],
+      "answer": 1,
+      "explanation": "The review identifies these measurements as necessary limits of the proposed solution."
+    }
+  ]
+}
