@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "A1",
+  "sourceTitle": "Space Rocks Around the Sun",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-AUTHOR-DRAFT-1",
+  "description": "EN/A1 independently drafted Asteroids Reading test; not reviewed by second teacher.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Understanding the message",
+      "description": "Interpret the passage and its purpose."
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasons and connections",
+      "description": "Find explanations supported by the text."
+    },
+    {
+      "id": "application",
+      "title": "Use what you have read",
+      "description": "Apply the information to new situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-en-a1-01",
+      "tab": "interpretation",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "Why is an asteroid different from a star?",
+      "choices": [
+        "It travels very close to Earth.",
+        "It does not make its own light.",
+        "It is always bigger than a mountain.",
+        "It stays in the same place."
+      ],
+      "answer": 1,
+      "explanation": "The first paragraph explains that asteroids are rocks and do not produce light as stars do."
+    },
+    {
+      "id": "r35-en-a1-02",
+      "tab": "interpretation",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "What can we learn about the size of asteroids?",
+      "choices": [
+        "All asteroids are as small as cars.",
+        "The largest asteroids are smaller than cars.",
+        "Every asteroid is bigger than Earth.",
+        "Some are small and others are very large."
+      ],
+      "answer": 3,
+      "explanation": "The passage compares some asteroids with cars and others with mountains."
+    },
+    {
+      "id": "r35-en-a1-03",
+      "tab": "interpretation",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "What do scientists learn by watching an asteroid move?",
+      "choices": [
+        "The colour of its light.",
+        "The age of the Sun.",
+        "The path it follows in space.",
+        "The number of people on Earth."
+      ],
+      "answer": 2,
+      "explanation": "Observing changing positions helps scientists learn an asteroid's orbit."
+    },
+    {
+      "id": "r35-en-a1-04",
+      "tab": "interpretation",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "Which fact makes Ceres different from most asteroids?",
+      "choices": [
+        "Ceres is round, while many other asteroids have irregular shapes.",
+        "Ceres is the only space rock that goes around the Sun.",
+        "Ceres is so small that scientists cannot see it.",
+        "Ceres enters the air above Earth every year."
+      ],
+      "answer": 0,
+      "explanation": "Ceres is round and classed as a dwarf planet, while most asteroids are not round."
+    },
+    {
+      "id": "r35-en-a1-05",
+      "tab": "reasoning",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Why do scientists use large telescopes?",
+      "choices": [
+        "To make space rocks move faster.",
+        "To see objects that are very far away.",
+        "To make the night sky darker.",
+        "To find mountains on Earth."
+      ],
+      "answer": 1,
+      "explanation": "A telescope makes distant objects easier to see."
+    },
+    {
+      "id": "r35-en-a1-06",
+      "tab": "reasoning",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "Why is a meteorite interesting to a museum visitor?",
+      "choices": [
+        "It can make its own light at night.",
+        "It is always larger than a car.",
+        "It is a very old piece of space rock that reached Earth.",
+        "It is a living thing from another planet."
+      ],
+      "answer": 2,
+      "explanation": "The text describes a museum meteorite as a dark, heavy and extremely old piece of space rock."
+    },
+    {
+      "id": "r35-en-a1-07",
+      "tab": "reasoning",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "Why do many small space rocks not reach the ground?",
+      "choices": [
+        "They stop moving near Earth.",
+        "Telescopes catch them in the sky.",
+        "They return to the asteroid belt.",
+        "They burn in the air around Earth."
+      ],
+      "answer": 3,
+      "explanation": "The final paragraph says many small pieces burn up before reaching the ground."
+    },
+    {
+      "id": "r35-en-a1-08",
+      "tab": "application",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "You hear that a large asteroid will hit Earth tomorrow. What should you remember from the passage?",
+      "choices": [
+        "All news about asteroids is false.",
+        "Very big impacts are rare, and scientists watch the sky.",
+        "Asteroids cannot come near Earth.",
+        "Every asteroid is visible without a telescope."
+      ],
+      "answer": 1,
+      "explanation": "The text says major hits are rare and scientists monitor the sky to learn more and help keep people safe."
+    },
+    {
+      "id": "r35-en-a1-09",
+      "tab": "application",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "You see a small light moving slowly in a series of telescope photos. What might scientists study?",
+      "choices": [
+        "Whether it follows an orbit around the Sun.",
+        "Whether it will turn into a star tomorrow.",
+        "Whether the Moon has made the light.",
+        "Whether it is larger than every mountain."
+      ],
+      "answer": 0,
+      "explanation": "Scientists compare pictures to find the paths followed by objects in space."
+    },
+    {
+      "id": "r35-en-a1-10",
+      "tab": "application",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "Why is looking at a clear night sky a good idea at the end of the story?",
+      "choices": [
+        "It helps us stop all asteroids.",
+        "It makes a big asteroid hit less likely.",
+        "It lets us see Ceres with our eyes.",
+        "It can make us curious and ask questions about space."
+      ],
+      "answer": 3,
+      "explanation": "The writer encourages readers to look at the sky and ask questions about space."
+    }
+  ]
+}
