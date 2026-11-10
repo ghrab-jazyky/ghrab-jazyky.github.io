@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "C1",
+  "sourceVariantTitle": "The Shot Outside the Frame",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "auditRevision": "R36-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "Independent English C1 film-review comprehension bank requiring human pedagogical approval.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Interpretation",
+      "description": "Consider the writer's qualified position."
+    },
+    {
+      "id": "analysis",
+      "title": "Analysis",
+      "description": "Interpret argument and evidence."
+    },
+    {
+      "id": "application",
+      "title": "Evaluation",
+      "description": "Apply the ideas to new situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-plastic-ocean-en-c1-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does the reviewer distinguish knowing what to feel from knowing what to do?",
+      "choices": [
+        "The film's opening is too abstract for the audience to understand.",
+        "The camera wrongly presents a wrapper as an actual rare animal.",
+        "Moving images can make a problem vivid without explaining a workable response.",
+        "The reviewer believes emotional responses have no place in documentaries."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph 1 of this C1 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c1-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What makes the elegant images of the night cleaners 'double-edged'?",
+      "choices": [
+        "They suggest that cleaners are uninterested in environmental questions.",
+        "They honour the work visually while keeping the workers' conditions and influence obscure.",
+        "They prove that the square is always clean during the day.",
+        "They establish that beautiful images cannot contain any argument."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph 2 of this C1 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c1-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why is the cleaner's remark about five in the morning arguably political?",
+      "choices": [
+        "It is an explicit request for the director to support a political party.",
+        "It demonstrates that the square is most polluted at dawn.",
+        "It shows the cleaner intends to leave the job immediately.",
+        "It draws attention to essential work that goes unseen by most beneficiaries."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph 3 of this C1 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c1-04",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why is the council manager's interview especially revealing?",
+      "choices": [
+        "It presents real constraints without denying the desirability of change.",
+        "It demonstrates that the council has already rejected every deposit scheme.",
+        "It confirms that washing equipment is the only factor to consider.",
+        "It shows the manager has complete control over all local waste policy."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph 4 of this C1 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c1-05",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What is the effect of repeating the image of a teenager dropping a bottle?",
+      "choices": [
+        "It makes the costs of the return system more transparent.",
+        "It proves that no adult has ever discarded a bottle.",
+        "It shifts attention from systemic design towards an individual who can be blamed.",
+        "It encourages the audience to compare different cleaning shifts."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph 5 of this C1 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c1-06",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Why is the distinction between named people and silhouettes an ethical issue for the reviewer?",
+      "choices": [
+        "It affects whose perspective is recognised as part of the film's argument.",
+        "It shows the producer could not afford additional cameras.",
+        "The documentary is required by law to name every participant.",
+        "It proves the manager was more important than the cleaners in every way."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph 6 of this C1 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c1-07",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 7,
+      "q": "Why does the volunteer's admission after the credits make the proposed system more credible?",
+      "choices": [
+        "It proves the volunteers had hidden all their mistakes from the audience.",
+        "It invites revision after acknowledging an unexpected practical cost.",
+        "It makes the film's opening sequence factually impossible.",
+        "It means no reusable container could ever be efficient."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph 7 of this C1 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c1-08",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A film praises reusable cups but never mentions collection or washing. Which improvement would the reviewer prefer?",
+      "choices": [
+        "Replace the entire film with a technical spreadsheet.",
+        "Remove interviews with anyone who might disagree.",
+        "Include a second dramatic shot of a careless consumer.",
+        "Let the audience see both the appealing goal and the practical work that supports it."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph 4 of this C1 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c1-09",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Why does the writer say a documentary should not resemble a council report?",
+      "choices": [
+        "Detailed evidence is incompatible with visual storytelling.",
+        "Artistic rhythm and character are valuable, although framing choices still carry implications.",
+        "Any discussion of budgets necessarily spoils a documentary.",
+        "The reviewer rejects the value of public institutions."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph 6 of this C1 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    },
+    {
+      "id": "r36-plastic-ocean-en-c1-10",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 7,
+      "q": "Which possible final scene would best address the film's missed opportunity?",
+      "choices": [
+        "A longer view of an empty square without workers.",
+        "A celebrity praising everyone who used a reusable cup.",
+        "A scene that blames the public without explaining any alternative.",
+        "A discussion of the project's costs, problems and next adjustments."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph 7 of this C1 film criticism develops the stated argument; the competing interpretations omit or exaggerate relevant conditions."
+    }
+  ]
+}
