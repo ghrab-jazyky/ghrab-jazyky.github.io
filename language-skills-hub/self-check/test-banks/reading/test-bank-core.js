@@ -60,7 +60,7 @@
   check(answerPositions.every(n=>n>=2&&n<=3),
    'Correct answer locations are unbalanced across four positions');
   check(bank.auditRevision===rules.audit,
-   'Draft content version is not registered for this level');
+   'Independent pedagogy audit not completed');
   check(Number.isInteger(bank.durationMinutesSuggested)&&bank.durationMinutesSuggested>=5&&
    bank.durationMinutesSuggested<=120,'Invalid proposed test duration');
   check(bank.scoreRule.startsWith('1 point per correct MC item'),'Unknown scoring method');
