@@ -34,7 +34,8 @@ test('R39 all 18 authored Listening banks have valid source binding and 6+2 own 
   for(const level of sourceCore.LEVELS){
    const file='self-check/test-banks/listening/'+entry.id+'/en-'+level+'.json';
    const b=json(file),variant=sourceCore.variant(data,level);
-   assert.equal(listening.validate(b,variant,originalHash),true,file);
+   try{assert.equal(listening.validate(b,variant,originalHash),true,file)}
+   catch(error){throw new Error(file+': '+error.message,{cause:error})}
    assert.equal(b.published,false);
    assert.equal(b.status,'DRAFT_PENDING_TEACHER_CONTENT_APPROVAL');
    assert.equal(b.objective.length,6);
@@ -68,7 +69,7 @@ test('R39 no automatically approved test or student entry point was added',()=>{
  assert.doesNotMatch(home,/self-check\/test-banks\/(?:reading|listening)\/preview/);
  assert.doesNotMatch(hub,/self-check\/test-banks\/(?:reading|listening)\/preview/);
  const qa=read('self-check/test-banks/listening/preview.js');
- assert.match(qa,/Original source/);
+ assert.match(qa,/Original media source checksum mismatch/);
  assert.match(qa,/DRAFT|unapproved/i);
  assert.doesNotMatch(qa,/sendBeacon\s*\(|XMLHttpRequest|navigator\.mediaDevices\.getUserMedia/);
 });

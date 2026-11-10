@@ -18,7 +18,7 @@ test('R37 independent Reading has all 24 Asteroids variants, never approved auto
  }
  assert.equal(inventory.expected.total,138);
  assert.equal(inventory.actual.draftReading>=48,true);
- assert.equal(inventory.actual.draftListening,0);
+ assert.equal(inventory.actual.draftListening,18);
  assert.equal(inventory.actual.approvedForStudents,0);
  assert.equal(inventory.actual.invalid,0);
 });

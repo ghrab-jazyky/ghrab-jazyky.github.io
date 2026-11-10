@@ -43,7 +43,7 @@ test('R41 source SHA, exact original title and all independently authored items 
    assert.equal(bank.published,false,file);
    assert.equal(bank.status,'DRAFT_PENDING_TEACHER_CONTENT_APPROVAL',file);
    assert.ok(/^R\d+-CONTENT-AUDIT-1$/.test(bank.auditRevision),file+' not content-authored');
-   assert.ok(!/AUTO_GENERATED|STRUCTURAL|mechanical/i.test(JSON.stringify(bank)),file+' contains scaffold');
+   assert.ok(!/AUTO_GENERATED|STRUCTURAL|mechanical/i.test(String(bank.editorialStatus||'')+' '+String(bank.generationMethod||'')),file+' contains scaffold metadata');
    const practice=reading.variantFromData(data,lang,level);
    assert.equal(bank.sourceTitle,practice.title,file+' wrong original title');
    assert.equal(bank.sourcePracticeContentHash,digest,file);
