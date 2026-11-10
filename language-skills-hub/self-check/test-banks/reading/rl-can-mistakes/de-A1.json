@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "de",
+  "level": "A1",
+  "sourceTitle": "Ich kann es noch einmal versuchen",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Eigenständige A1-Testfragen zum Mia-Text; pädagogische Freigabe ausstehend.",
+  "tabs": [
+    {
+      "id": "geschichte",
+      "title": "Mias Geschichte"
+    },
+    {
+      "id": "gruende",
+      "title": "Warum hilft es?"
+    },
+    {
+      "id": "alltag",
+      "title": "Neue Situationen"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-de-a1-01",
+      "tab": "geschichte",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Mia liest am Montag. Was ist neu für sie?",
+      "choices": [
+        "Die Schule ist heute geschlossen.",
+        "Sie kennt einige Wörter noch nicht.",
+        "Sie hat keine Zeit für eine Geschichte.",
+        "Ihr Freund hat ihr ein neues Heft gekauft."
+      ],
+      "answer": 1,
+      "explanation": "Im ersten Absatz liest Mia eine Geschichte und sieht einige Wörter, die sie noch nicht kennt."
+    },
+    {
+      "id": "r35-de-a1-02",
+      "tab": "geschichte",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was macht Mia nach dem Rat von Leo?",
+      "choices": [
+        "Sie schreibt einen neuen Text.",
+        "Sie hört nur Leo beim Lesen zu.",
+        "Sie lässt die Geschichte zu Hause.",
+        "Sie liest die Geschichte langsam noch einmal."
+      ],
+      "answer": 3,
+      "explanation": "Leo rät Mia, den Text noch einmal zu lesen, und Mia macht genau das."
+    },
+    {
+      "id": "r35-de-a1-03",
+      "tab": "geschichte",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Wohin schreibt Mia zwei neue Wörter?",
+      "choices": [
+        "Auf ein großes Schulplakat.",
+        "Auf die letzte Buchseite.",
+        "In ihr eigenes Heft.",
+        "Auf Leos Hausaufgabenblatt."
+      ],
+      "answer": 2,
+      "explanation": "Im zweiten Absatz steht, dass Mia nach zwei Wörtern fragt und sie in ihr Heft schreibt."
+    },
+    {
+      "id": "r35-de-a1-04",
+      "tab": "gruende",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Warum sind manche Wörter für Mia schwierig?",
+      "choices": [
+        "Weil sie die Wörter noch nicht kennt.",
+        "Weil Leo nicht mit ihr sprechen möchte.",
+        "Weil der Text auf Französisch ist.",
+        "Weil sie am Freitag keine Schule hat."
+      ],
+      "answer": 0,
+      "explanation": "Am Montag kennt Mia noch nicht alle Wörter der kurzen Geschichte."
+    },
+    {
+      "id": "r35-de-a1-05",
+      "tab": "gruende",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Was zeigt Mias Lächeln am Freitag?",
+      "choices": [
+        "Sie hat heute keine Hausaufgaben.",
+        "Sie liest jetzt überhaupt nicht mehr.",
+        "Sie freut sich, weil sie mehr versteht.",
+        "Sie hat die ganze Woche nicht gelernt."
+      ],
+      "answer": 2,
+      "explanation": "Im dritten Absatz versteht Mia mehr von der neuen Geschichte und lächelt."
+    },
+    {
+      "id": "r35-de-a1-06",
+      "tab": "gruende",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Was möchte Mia am nächsten Tag machen?",
+      "choices": [
+        "Wieder etwas üben.",
+        "Nicht mehr Englisch lernen.",
+        "Alle Aufgaben von Leo kopieren.",
+        "Den ganzen Tag nur spielen."
+      ],
+      "answer": 0,
+      "explanation": "Mia möchte nach dem Freitag noch einmal üben, obwohl der Text nicht leicht war."
+    },
+    {
+      "id": "r35-de-a1-07",
+      "tab": "alltag",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Dein Freund versteht ein Wort nicht. Was hilft?",
+      "choices": [
+        "Sagen, dass Lesen zu schwierig ist.",
+        "Gemeinsam die Bedeutung suchen.",
+        "Das Buch sofort weglegen.",
+        "Eine ganz andere Sprache lernen."
+      ],
+      "answer": 1,
+      "explanation": "Leo hilft Mia weiter, ohne ihr die ganze Aufgabe abzunehmen."
+    },
+    {
+      "id": "r35-de-a1-08",
+      "tab": "alltag",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Ein Satz ist schwer. Welchen Tipp kannst du nutzen?",
+      "choices": [
+        "Nicht mehr in dem Buch lesen.",
+        "Nur die letzte Seite lesen.",
+        "Bis nächste Woche nichts machen.",
+        "Den Satz noch einmal langsam lesen."
+      ],
+      "answer": 3,
+      "explanation": "Leo empfiehlt Mia, den Text ein weiteres Mal zu lesen."
+    },
+    {
+      "id": "r35-de-a1-09",
+      "tab": "alltag",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Ein neuer Text ist noch schwer. Was zeigt Mias Erfahrung?",
+      "choices": [
+        "Man darf keine Fragen stellen.",
+        "Man kann trotzdem Schritt für Schritt lernen.",
+        "Man muss sofort jedes Wort verstehen.",
+        "Nur leichte Texte sind gut zum Lernen."
+      ],
+      "answer": 1,
+      "explanation": "Die neue Geschichte ist nicht leicht, aber Mia versteht bereits mehr."
+    },
+    {
+      "id": "r35-de-a1-10",
+      "tab": "alltag",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Welche Lernidee passt gut zur Geschichte?",
+      "choices": [
+        "Fragen zeigen, dass man nichts lernen kann.",
+        "Nur am Montag darf man lesen üben.",
+        "Man darf nie ein Wort vergessen.",
+        "Fragen und wiederholtes Lesen können helfen."
+      ],
+      "answer": 3,
+      "explanation": "Mia fragt nach Wörtern, liest erneut und gewinnt dadurch mehr Sicherheit."
+    }
+  ]
+}
