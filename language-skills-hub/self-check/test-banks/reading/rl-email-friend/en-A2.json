@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "A2",
+  "sourceTitle": "A Weekend Worth Sharing",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R40-CONTENT-AUDIT-1",
+  "description": "Independent friendship-email reading assessment with original questions, pending pedagogical validation",
+  "tabs": [
+    {
+      "id": "understanding",
+      "title": "Understanding the Message"
+    },
+    {
+      "id": "interpretation",
+      "title": "Meaning and Intent"
+    },
+    {
+      "id": "transfer",
+      "title": "Interpreting the Invitation"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r40-en-a2-01",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "Why were Sofia's first weeks in Galway difficult?",
+      "choices": [
+        "She could not find her aunt's house.",
+        "She knew nobody and found the weather colder than expected.",
+        "She was not allowed to attend her course.",
+        "Her aunt asked her to move away."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "The message says Sofia was lonely and surprised by the cold weather."
+    },
+    {
+      "id": "r40-en-a2-02",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "What has made life in Galway more pleasant for Sofia?",
+      "choices": [
+        "Her aunt no longer has to work.",
+        "The town now has warmer weather.",
+        "She has joined a basketball club.",
+        "She has made friends who often cook together."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Sofia now has friends and regularly prepares meals with them."
+    },
+    {
+      "id": "r40-en-a2-03",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "Why does Sofia think Noah might enjoy the Sunday activity?",
+      "choices": [
+        "The museum is free for everyone.",
+        "The photographer is a relative.",
+        "She remembers Noah's interest in photography.",
+        "His basketball team will perform there."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "She connects the exhibition invitation with Noah's love of photography."
+    },
+    {
+      "id": "r40-en-a2-04",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What is the most likely reason Sofia needs Noah's decision by Friday?",
+      "choices": [
+        "She needs time to book a ticket.",
+        "She has to return to Galway immediately.",
+        "The station closes on Friday afternoon.",
+        "The photographer will change the pictures."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "She requests a reply by Friday evening because she needs to reserve a ticket."
+    },
+    {
+      "id": "r40-en-a2-05",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What does the exhibition focus on?",
+      "choices": [
+        "Famous athletes in competition.",
+        "Scenes from historic battles.",
+        "Ordinary people doing interesting work.",
+        "The history of Galway's weather."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "The collection features photographs of people engaged in their everyday jobs."
+    },
+    {
+      "id": "r40-en-a2-06",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What might visitors learn at the workshop?",
+      "choices": [
+        "How to take better photos using a phone.",
+        "How to repair old bicycles.",
+        "How to become professional nurses.",
+        "How to build a railway station."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "The free workshop teaches techniques for phone photography."
+    },
+    {
+      "id": "r40-en-a2-07",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What is special about the bicycle repairer in Sofia's favourite photo?",
+      "choices": [
+        "He owns a very large shop.",
+        "He has worked in his little shop for fifty years.",
+        "He is the photographer's grandfather.",
+        "He now works only at night."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "The caption describes an elderly man repairing bicycles in the same shop for fifty years."
+    },
+    {
+      "id": "r40-en-a2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "What will Sofia and Noah do if the photography exhibition is full?",
+      "choices": [
+        "Return to Galway without meeting.",
+        "Go to the basketball stadium.",
+        "Try to photograph the old station.",
+        "Visit the science museum instead."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "The last paragraph offers the science museum as a backup plan."
+    },
+    {
+      "id": "r40-en-a2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "How does Sofia show that meeting Noah matters more than a perfect schedule?",
+      "choices": [
+        "She asks him to organise every detail.",
+        "She insists on the photography exhibition.",
+        "She says even an hour together would be enough.",
+        "She tells him not to discuss his basketball team."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Sofia explicitly says a short meeting would still make her happy."
+    },
+    {
+      "id": "r40-en-a2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "Which response best fits the tone of Sofia's email?",
+      "choices": [
+        "A friendly reply about availability and Noah's recent news.",
+        "A formal complaint about the exhibition tickets.",
+        "A list of the photographer's achievements.",
+        "A refusal to talk about school or sport."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Sofia makes a personal invitation and also asks how her friend is doing."
+    }
+  ]
+}
