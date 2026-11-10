@@ -11,13 +11,14 @@
     "Coverage state is inventory, not evidence of pedagogical validity.",
     "A1/A2/B1/B2/C1/C2 English can-mistakes are new independent draft question banks with local test-browser preview.",
     "Other 132 Reading/Listening variants do not have independent tasks or keys and must not use practice bank as a fallback.",
-    "Claude review and human teacher signoff are required before any student publication."
+    "Claude review and human teacher signoff are required before any student publication.",
+    "One independent Listening EN/B2 Harrison Ford draft is authored with 6 objective and 2 teacher-reviewed written tasks; audio facts not independently rechecked yet."
   ],
   "counts": {
     "reading": 120,
     "listening": 18,
-    "drafts": 6,
-    "missing": 132
+    "drafts": 7,
+    "missing": 131
   },
   "records": [
     {
@@ -1444,9 +1445,9 @@
       "topic": "ll-harrison-ford",
       "language": "en",
       "level": "B2",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/harrison-ford/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-harrison-ford/en-B2.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
