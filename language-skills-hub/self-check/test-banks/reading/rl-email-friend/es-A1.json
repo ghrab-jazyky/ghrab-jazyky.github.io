@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "es",
+  "level": "A1",
+  "sourceTitle": "Un mensaje de Ben",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e4a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Diez preguntas originales de comprensión, inferencia y transferencia; borrador sin validación pedagógica externa.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Comprensión"
+    },
+    {
+      "id": "reasoning",
+      "title": "Razones y relaciones"
+    },
+    {
+      "id": "transfer",
+      "title": "Aplicación"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-es-a1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué nos dice Ben sobre su vida en Greenhill?",
+      "choices": [
+        "Vive cerca de un parque pequeño.",
+        "Vive en el antiguo colegio.",
+        "Vive en una estación de tren.",
+        "Vive lejos de todos sus amigos."
+      ],
+      "answer": 0,
+      "explanation": "Ben explica dónde vive ahora y menciona el pequeño parque cercano."
+    },
+    {
+      "id": "r41-es-a1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué hacen Ben y Eva juntos los viernes?",
+      "choices": [
+        "Van a la estación a esperar a Maya.",
+        "Juegan al fútbol después de conocerse.",
+        "Ven películas con el padre de Ben.",
+        "Escriben cartas a su antigua clase."
+      ],
+      "answer": 1,
+      "explanation": "La noticia de Ben es que tiene una nueva amiga con la que juega al fútbol."
+    },
+    {
+      "id": "r41-es-a1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Por qué Maya puede llevar algo para comer al cine?",
+      "choices": [
+        "Porque no hay comida en Greenhill.",
+        "Porque todos deben preparar una cena.",
+        "Porque los visitantes pueden traer bocadillos.",
+        "Porque la película empieza por la mañana."
+      ],
+      "answer": 2,
+      "explanation": "La invitación dice que la actividad es gratuita y permite llevar bocadillos."
+    },
+    {
+      "id": "r41-es-a1-04",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué plan propone Ben para el viaje de Maya?",
+      "choices": [
+        "Llegar en coche directamente al cine.",
+        "Venir el viernes con la hermana de Ben.",
+        "Esperar en casa hasta que acabe la película.",
+        "Llegar en tren y después ir juntos al parque."
+      ],
+      "answer": 3,
+      "explanation": "Su padre puede esperar a Maya en la estación y después pueden ir al parque."
+    },
+    {
+      "id": "r41-es-a1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Por qué Ben recuerda los juegos de su antiguo colegio?",
+      "choices": [
+        "Porque quiere volver a estudiar allí.",
+        "Porque echa de menos momentos con Maya.",
+        "Porque Eva no sabe jugar al fútbol.",
+        "Porque sus profesores le piden escribir."
+      ],
+      "answer": 1,
+      "explanation": "Los recuerdos muestran que la amistad anterior sigue siendo importante para Ben."
+    },
+    {
+      "id": "r41-es-a1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué nos indica que la hermana pequeña quiera ver la película?",
+      "choices": [
+        "Que solo los niños pueden entrar al cine.",
+        "Que Maya tiene que llevar a su hermana.",
+        "Que no habrá adultos en el parque.",
+        "Que puede ser un plan para personas de distintas edades."
+      ],
+      "answer": 3,
+      "explanation": "Ben cuenta que su hermana de ocho años también desea ir a la actividad."
+    },
+    {
+      "id": "r41-es-a1-07",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Por qué Ben dice que entiende si Maya está ocupada?",
+      "choices": [
+        "Porque quiere invitarla sin obligarla.",
+        "Porque ya sabe que Maya no irá.",
+        "Porque cambia el plan a otra ciudad.",
+        "Porque no quiere volver a verla."
+      ],
+      "answer": 0,
+      "explanation": "La última parte del mensaje expresa una invitación amable y flexible."
+    },
+    {
+      "id": "r41-es-a1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Si Maya no conoce bien Greenhill, ¿qué puede ayudarla?",
+      "choices": [
+        "Que viaje sin saber dónde está el parque.",
+        "Que llegue después de que termine la película.",
+        "Que el padre de Ben la espere al llegar.",
+        "Que no responda al mensaje de Ben."
+      ],
+      "answer": 2,
+      "explanation": "El encuentro previsto en la estación facilita el desplazamiento por una ciudad nueva."
+    },
+    {
+      "id": "r41-es-a1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Si Maya no puede venir el sábado, ¿qué respuesta sería amable?",
+      "choices": [
+        "No escribir nunca más a Ben.",
+        "Explicar que está ocupada y enviar noticias de su clase.",
+        "Decir que Ben debe cambiar de ciudad.",
+        "Pedir que todos cancelen el cine."
+      ],
+      "answer": 1,
+      "explanation": "Ben acepta que Maya pueda estar ocupada y también desea conocer sus noticias."
+    },
+    {
+      "id": "r41-es-a1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué detalle muestra que Ben piensa en su amistad y no solo en el cine?",
+      "choices": [
+        "Solo le dice cuánto cuesta el transporte.",
+        "No habla de ninguna experiencia pasada.",
+        "Le exige que compre palomitas.",
+        "Le pide a Maya que le cuente cómo es su nueva clase."
+      ],
+      "answer": 3,
+      "explanation": "La invitación también busca recuperar el contacto personal con una antigua amiga."
+    }
+  ]
+}
