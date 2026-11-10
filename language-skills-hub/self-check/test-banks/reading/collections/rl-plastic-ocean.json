@@ -1,0 +1,4224 @@
+{
+  "kind": "LSH_READING_DRAFT_COLLECTION_R34_V1",
+  "topic": "rl-plastic-ocean",
+  "relativeSource": "cteni/plastic-ocean/index.html",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "auditStatus": "CLAUDE_CONTENT_REWRITE_PENDING",
+  "published": false,
+  "version": "R34-DRAFT",
+  "variants": {
+    "en": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "en",
+        "level": "A1",
+        "title": "A Bag by the Sea",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-en-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “I am on holiday by”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "I am on holiday by"
+          },
+          {
+            "id": "r34-plastic-ocean-en-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "and sandwiches in our bags.",
+              "cups and a small toy",
+              "not our bag.” I say,",
+              "The woman in the café"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "cups and a small toy"
+          },
+          {
+            "id": "r34-plastic-ocean-en-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “bottles and sandwiches in”",
+            "choices": [
+              "a rubbish bin next to",
+              "here. In the evening, the",
+              "our bags. We want",
+              "one hour. We find six"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "bottles and sandwiches in our bags. We want"
+          },
+          {
+            "id": "r34-plastic-ocean-en-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “four cups and a small”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "four cups and a small"
+          },
+          {
+            "id": "r34-plastic-ocean-en-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 1?",
+            "choices": [
+              "bags. We want to take",
+              "the water, we see a",
+              "the evening, the wind takes",
+              "hour. We find six bottles,"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "bags. We want to take"
+          },
+          {
+            "id": "r34-plastic-ocean-en-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 4,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “walk along the beach”",
+            "choices": [
+              "want to take photos of",
+              "for one hour. We",
+              "but it is near the",
+              "She sees the bag and"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "walk along the beach for one hour. We"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "en",
+        "level": "A2",
+        "title": "A Festival with Fewer Cups",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-en-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “summer, the town music festival”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "summer, the town music festival"
+          },
+          {
+            "id": "r34-plastic-ocean-en-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "and visitors complained about the",
+              "wrappers from the grass. The",
+              "were also two free water",
+              "The deposit was two euros."
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "wrappers from the grass. The"
+          },
+          {
+            "id": "r34-plastic-ocean-en-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “worked late, and visitors”",
+            "choices": [
+              "stations and opened a second",
+              "them to the desk. They",
+              "complained about the rubbish.",
+              "came back. A few disappeared,"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "worked late, and visitors complained about the rubbish."
+          },
+          {
+            "id": "r34-plastic-ocean-en-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “collected food wrappers from the”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "collected food wrappers from the"
+          },
+          {
+            "id": "r34-plastic-ocean-en-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 1?",
+            "choices": [
+              "the rubbish. This year, the",
+              "the entrance, each visitor could",
+              "the desk. They kept the",
+              "A few disappeared, and the"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "the rubbish. This year, the"
+          },
+          {
+            "id": "r34-plastic-ocean-en-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 4,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “the end of Saturday”",
+            "choices": [
+              "This year, the organisers tried",
+              "evening, many cups came",
+              "bring their own bottles. Some",
+              "their cup, they got the"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "the end of Saturday evening, many cups came"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "en",
+        "level": "B1",
+        "title": "The Litter That Travelled Underground",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-en-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “Monday morning, volunteers found dozens of snack wrappers”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "Monday morning, volunteers found dozens of snack wrappers"
+          },
+          {
+            "id": "r34-plastic-ocean-en-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "people not to throw rubbish into the river.",
+              "explained that the bin was emptied early in",
+              "busy bus stop. When rain falls, water carries",
+              "The group spent two afternoons recording where they"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "explained that the bin was emptied early in"
+          },
+          {
+            "id": "r34-plastic-ocean-en-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “sign telling people not to throw”",
+            "choices": [
+              "the river would miss an important part of",
+              "forty-three wrappers near the stop and only six",
+              "rubbish into the river. But the",
+              "owner said that customers often bought snacks while"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "sign telling people not to throw rubbish into the river. But the"
+          },
+          {
+            "id": "r34-plastic-ocean-en-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “A bus driver explained that the bin was”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "A bus driver explained that the bin was"
+          },
+          {
+            "id": "r34-plastic-ocean-en-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 1?",
+            "choices": [
+              "into the river. But the town engineer asked",
+              "that the drains were cleaned only twice a",
+              "the stop and only six beside the library",
+              "customers often bought snacks while waiting for the"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "into the river. But the town engineer asked"
+          },
+          {
+            "id": "r34-plastic-ocean-en-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 4,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “students talked to people who used”",
+            "choices": [
+              "river. But the town engineer asked them to",
+              "the street. A café owner said",
+              "from the pavement into a pipe. Some of",
+              "the street into five sections and counted wrappers"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "students talked to people who used the street. A café owner said"
+          },
+          {
+            "id": "r34-plastic-ocean-en-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “The students realised that a sign beside the”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "The students realised that a sign beside the"
+          },
+          {
+            "id": "r34-plastic-ocean-en-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 5?",
+            "choices": [
+              "stream. Students from the nearby secondary school were",
+              "a sign beside the river would miss an",
+              "afternoon, they counted forty-three wrappers near the stop",
+              "could still carry rubbish from other streets, and"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "could still carry rubbish from other streets, and"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "en",
+        "level": "B2",
+        "title": "The Last Cup: A Film That Does Not Let Us Look Away",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-en-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “shot of The Last Cup is almost ridiculous:”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "shot of The Last Cup is almost ridiculous:"
+          },
+          {
+            "id": "r34-plastic-ocean-en-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "disappears from view once an event is over.",
+              "Another relies on a late bus and has",
+              "who organise a community event. The strongest scene",
+              "The two teenagers provide the film’s lighter moments."
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "Another relies on a late bus and has"
+          },
+          {
+            "id": "r34-plastic-ocean-en-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “disappears from view once an event”",
+            "choices": [
+              "a timetable, a budget and people trying to",
+              "guests to bring their own cups. It is",
+              "is over. It is a clever",
+              "always an easy choice. One interviewee works at"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "disappears from view once an event is over. It is a clever"
+          },
+          {
+            "id": "r34-plastic-ocean-en-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “containers through security. Another relies on a late”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "containers through security. Another relies on a late"
+          },
+          {
+            "id": "r34-plastic-ocean-en-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 1?",
+            "choices": [
+              "is a clever introduction, although the film sometimes",
+              "director Mara Kent follows a volunteer team along",
+              "own cups. It is improvised rather than elegant,",
+              "choice. One interviewee works at a venue where"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "is a clever introduction, although the film sometimes"
+          },
+          {
+            "id": "r34-plastic-ocean-en-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 4,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “is less convincing when it suggests”",
+            "choices": [
+              "although the film sometimes trusts its images more",
+              "that bringing a reusable cup is",
+              "a trapped animal. It is a conversation in",
+              "for three hundred people. Then they discover that"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "is less convincing when it suggests that bringing a reusable cup is"
+          },
+          {
+            "id": "r34-plastic-ocean-en-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “up before the evening shift. Suddenly, the problem”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "up before the evening shift. Suddenly, the problem"
+          },
+          {
+            "id": "r34-plastic-ocean-en-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 5?",
+            "choices": [
+              "a concert hall. A cheerful song is still",
+              "Suddenly, the problem has a timetable, a budget",
+              "school canteen and ask guests to bring their",
+              "publishing what it cost. The organisers admit that"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "publishing what it cost. The organisers admit that"
+          },
+          {
+            "id": "r34-plastic-ocean-en-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “a street cleaner, a café owner”",
+            "choices": [
+              "and two teenagers who organise a",
+              "clever introduction, although the film sometimes trusts its",
+              "canteen and ask guests to bring their own",
+              "reusable cup is always an easy choice. One"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "a street cleaner, a café owner and two teenagers who organise a"
+          },
+          {
+            "id": "r34-plastic-ocean-en-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “deposit system for cups and publishing what it”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "deposit system for cups and publishing what it"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "en",
+        "level": "C1",
+        "title": "The Shot Outside the Frame",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-en-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “the opening minutes of the fictional documentary The”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6",
+              "Paragraph 7"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "the opening minutes of the fictional documentary The"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "the viewer knows exactly what to feel. The",
+              "training, and someone must pay for washing equipment.",
+              "sequence follows the night cleaners as they sort",
+              "Ortiz is equally attentive to sound. The clatter"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "training, and someone must pay for washing equipment."
+          },
+          {
+            "id": "r34-plastic-ocean-en-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 7,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “uncertainty. Its central achievement is to”",
+            "choices": [
+              "what to feel is mistaken for knowing what",
+              "the comforting idea that waste vanishes when a",
+              "make an ordinary wrapper difficult to",
+              "a pressure washer and the rustle of bags"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 7.",
+            "evidence": "uncertainty. Its central achievement is to make an ordinary wrapper difficult to"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “night shift acquires its own rhythm. One cleaner,”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6",
+              "Paragraph 7"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "night shift acquires its own rhythm. One cleaner,"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 6,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 6?",
+            "choices": [
+              "reduced to a cautionary image. The asymmetry deserves",
+              "opening minutes of the fictional documentary The Blue",
+              "waste vanishes when a bin lid closes. Yet",
+              "the rustle of bags being tied are mixed"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 6.",
+            "evidence": "reduced to a cautionary image. The asymmetry deserves"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “Lena Ortiz, has an enviable eye”",
+            "choices": [
+              "knowing what to feel is mistaken for knowing",
+              "for small details. An overhead shot",
+              "behind, remarks that the square is cleanest at",
+              "facilities manager describes a proposed deposit scheme for"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "Lena Ortiz, has an enviable eye for small details. An overhead shot"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “town can design a workable system; it is”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6",
+              "Paragraph 7"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "town can design a workable system; it is"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 2?",
+            "choices": [
+              "spotless public square. The camera follows it with",
+              "perhaps its most political, though the director moves",
+              "pay for washing equipment. A spreadsheet, briefly visible",
+              "concert; an almost silent sequence follows the night"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "concert; an almost silent sequence follows the night"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 5,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “consumer. A slow-motion shot of a”",
+            "choices": [
+              "teenager dropping a bottle is repeated",
+              "when knowing what to feel is mistaken for",
+              "These images resist the comforting idea that waste",
+              "lorry, the hiss of a pressure washer and"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "consumer. A slow-motion shot of a teenager dropping a bottle is repeated"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “across a spotless public square. The camera follows”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6",
+              "Paragraph 7"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "across a spotless public square. The camera follows"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "en",
+        "level": "C2",
+        "title": "The Convenient Virtue of the Perfect Consumer",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-en-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “end of an invented documentary called One Less”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6",
+              "Paragraph 7"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "end of an invented documentary called One Less"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "venue. The camera has already stopped rolling. The",
+              "others. The teenager with the flask may influence",
+              "require cleaning facilities, staffing and a supply chain",
+              "is the peculiar advantage of the perfect-consumer narrative."
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "others. The teenager with the flask may influence"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 7,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “innocent. It should be to produce”",
+            "choices": [
+              "a particularly useful account of the institution hosting",
+              "revealing issue is not that the organisers fell",
+              "an audience capable of recognising when",
+              "the refusal; the music resolves. In one sequence,"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 7.",
+            "evidence": "innocent. It should be to produce an audience capable of recognising when"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “discipline. The municipal plant that receives those containers”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6",
+              "Paragraph 7"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "discipline. The municipal plant that receives those containers"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 6,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 6?",
+            "choices": [
+              "of a clipboard listing returned and missing cups",
+              "of an invented documentary called One Less Bottle,",
+              "that the organisers fell short of an ideal.",
+              "one sequence, a family of four sorts its"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 6.",
+            "evidence": "of a clipboard listing returned and missing cups"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “easy to dismiss this contrast as”",
+            "choices": [
+              "but not a particularly useful account of the",
+              "hypocrisy. That would be satisfying and",
+              "rules, waste contracts and the physical location of",
+              "to offer consumers an equally flattering absolution. Collective"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "easy to dismiss this contrast as hypocrisy. That would be satisfying and"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “under which the symbol becomes meaningful. When that”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6",
+              "Paragraph 7"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "under which the symbol becomes meaningful. When that"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 2?",
+            "choices": [
+              "for three years. The moment is genuinely touching,",
+              "that excludes such questions has made a choice",
+              "the flask may influence peers, provide evidence that",
+              "a reusable system may require cleaning facilities, staffing"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "a reusable system may require cleaning facilities, staffing"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 5,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “every conceivable context; its material, manufacture,”",
+            "choices": [
+              "longevity and actual use matter. A",
+              "hero, but not a particularly useful account of",
+              "cannot immediately command. The revealing issue is not",
+              "plastic straw; the camera records the refusal; the"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "every conceivable context; its material, manufacture, longevity and actual use matter. A"
+          },
+          {
+            "id": "r34-plastic-ocean-en-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “metal flask for three years. The moment is”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5",
+              "Paragraph 6",
+              "Paragraph 7"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "metal flask for three years. The moment is"
+          }
+        ]
+      }
+    },
+    "es": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "es",
+        "level": "A1",
+        "title": "Una bolsa junto al paseo",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-es-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «Estoy en la playa con»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "Estoy en la playa con"
+          },
+          {
+            "id": "r34-plastic-ocean-es-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 1?",
+            "choices": [
+              "del agua». La recogemos con",
+              "y hace sol. Tenemos agua",
+              "una bebida y guarda el"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "y hace sol. Tenemos agua"
+          },
+          {
+            "id": "r34-plastic-ocean-es-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «agua y bocadillos en»",
+            "choices": [
+              "Hay una papelera al lado",
+              "para tirarlo después. La playa",
+              "las mochilas. Queremos pasear"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "agua y bocadillos en las mochilas. Queremos pasear"
+          },
+          {
+            "id": "r34-plastic-ocean-es-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «es nuestra». Yo respondo: «Sí,»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "es nuestra». Yo respondo: «Sí,"
+          },
+          {
+            "id": "r34-plastic-ocean-es-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "Estoy en la playa con",
+              "con cuidado. Hay una papelera",
+              "después. La playa no está"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "con cuidado. Hay una papelera"
+          },
+          {
+            "id": "r34-plastic-ocean-es-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «de un banco vemos»",
+            "choices": [
+              "Queremos pasear y hacer fotos",
+              "para tirarlo después. La playa",
+              "una bolsa de plástico"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "de un banco vemos una bolsa de plástico"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "es",
+        "level": "A2",
+        "title": "Una fiesta con menos vasos",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-es-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «año pasado, la fiesta del»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "año pasado, la fiesta del"
+          },
+          {
+            "id": "r34-plastic-ocean-es-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "muy tarde. Por eso, este",
+              "Su idea es reducir también",
+              "Al devolverlo, recuperaba el dinero.",
+              "El domingo, casi todos los"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "Su idea es reducir también"
+          },
+          {
+            "id": "r34-plastic-ocean-es-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «escenario y faltaban algunos»",
+            "choices": [
+              "asociación organizó las bebidas de",
+              "de agua para llenar las",
+              "vasos. La solución funcionó",
+              "ahora con los puestos de"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "escenario y faltaban algunos vasos. La solución funcionó"
+          },
+          {
+            "id": "r34-plastic-ocean-es-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «recuperaba el dinero. También había»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "recuperaba el dinero. También había"
+          },
+          {
+            "id": "r34-plastic-ocean-es-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "cola, pero los voluntarios colocaron",
+              "año pasado, la fiesta del",
+              "del escenario y faltaban algunos",
+              "con los puestos de comida."
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "cola, pero los voluntarios colocaron"
+          },
+          {
+            "id": "r34-plastic-ocean-es-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «año pasado, la fiesta»",
+            "choices": [
+              "los voluntarios colocaron carteles y",
+              "del barrio terminó con",
+              "comida cerca del escenario y",
+              "ahora con los puestos de"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "año pasado, la fiesta del barrio terminó con"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "es",
+        "level": "B1",
+        "title": "Lo que encontró la lluvia",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-es-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «de una tormenta, un grupo de estudiantes vio»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "de una tormenta, un grupo de estudiantes vio"
+          },
+          {
+            "id": "r34-plastic-ocean-es-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "un cartel para pedir a los vecinos que",
+              "mucho viento. Publicaron el mapa para que otros",
+              "llueve, el agua arrastra papeles y envases desde",
+              "Durante una semana hicieron un mapa de la"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "mucho viento. Publicaron el mapa para que otros"
+          },
+          {
+            "id": "r34-plastic-ocean-es-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «de esa agua acaba en el»",
+            "choices": [
+              "el canal, pero una trabajadora municipal les propuso",
+              "tarde. Hablaron con la cafetería cercana y enviaron",
+              "canal. Los estudiantes comprendieron que el",
+              "la orilla, aunque todavía había residuos después de"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "de esa agua acaba en el canal. Los estudiantes comprendieron que el"
+          },
+          {
+            "id": "r34-plastic-ocean-es-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «de decir «la gente debería cambiar», a veces»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 4,
+            "explanation": "Compara el texto exacto del párrafo 5.",
+            "evidence": "de decir «la gente debería cambiar», a veces"
+          },
+          {
+            "id": "r34-plastic-ocean-es-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "limpió mejor las mesas exteriores y el ayuntamiento",
+              "de una tormenta, un grupo de estudiantes vio",
+              "calle. Parte de esa agua acaba en el",
+              "aunque todavía había residuos después de días de"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "limpió mejor las mesas exteriores y el ayuntamiento"
+          },
+          {
+            "id": "r34-plastic-ocean-es-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «trabajadora les enseñó una alcantarilla junto»",
+            "choices": [
+              "cuidaran el canal, pero una trabajadora municipal les",
+              "a la parada del autobús. Cuando",
+              "la tarde. Hablaron con la cafetería cercana y",
+              "la orilla, aunque todavía había residuos después de"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "trabajadora les enseñó una alcantarilla junto a la parada del autobús. Cuando"
+          },
+          {
+            "id": "r34-plastic-ocean-es-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «a veces conviene preguntar dónde, cuándo y por»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 4,
+            "explanation": "Compara el texto exacto del párrafo 5.",
+            "evidence": "a veces conviene preguntar dónde, cuándo y por"
+          },
+          {
+            "id": "r34-plastic-ocean-es-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "al canal que llega al puerto. Pensaron que",
+              "Los estudiantes comprendieron que el problema no empezaba",
+              "Publicaron el mapa para que otros vecinos añadieran",
+              "la parada, donde una papelera estaba siempre llena"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "la parada, donde una papelera estaba siempre llena"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "es",
+        "level": "B2",
+        "title": "La última botella: una reseña con preguntas",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-es-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «imagen de La última botella es sorprendentemente sencilla:»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "imagen de La última botella es sorprendentemente sencilla:"
+          },
+          {
+            "id": "r34-plastic-ocean-es-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "ocurre con los objetos que dejamos de mirar.",
+              "depósito. Los organizadores hablan tanto de los gastos",
+              "un bar y jóvenes que preparan un festival.",
+              "Sin embargo, la película insiste varias veces en"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "depósito. Los organizadores hablan tanto de los gastos"
+          },
+          {
+            "id": "r34-plastic-ocean-es-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «antes de que llegue el camión»",
+            "choices": [
+              "el mensaje no siempre resulta tan preciso como",
+              "participante explica que cerca de su casa no",
+              "y que muchos envases terminan en",
+              "cómo cambiar una costumbre. Más adelante vemos un"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "antes de que llegue el camión y que muchos envases terminan en"
+          },
+          {
+            "id": "r34-plastic-ocean-es-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «una emoción. La pregunta útil es quién recogerá»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 4,
+            "explanation": "Compara el texto exacto del párrafo 5.",
+            "evidence": "una emoción. La pregunta útil es quién recogerá"
+          },
+          {
+            "id": "r34-plastic-ocean-es-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "las imágenes de playas sucias. Me habría gustado",
+              "de La última botella es sorprendentemente sencilla: una",
+              "La trabajadora explica que se llena antes de",
+              "costumbre. Más adelante vemos un festival que prueba"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "las imágenes de playas sucias. Me habría gustado"
+          },
+          {
+            "id": "r34-plastic-ocean-es-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «Inés Robles, sigue a un equipo»",
+            "choices": [
+              "aunque el mensaje no siempre resulta tan preciso",
+              "de voluntarios por las calles de",
+              "Otro participante explica que cerca de su casa",
+              "comprender cómo cambiar una costumbre. Más adelante vemos"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "Inés Robles, sigue a un equipo de voluntarios por las calles de"
+          },
+          {
+            "id": "r34-plastic-ocean-es-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «su mayor defecto es que algunas veces parece»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 4,
+            "explanation": "Compara el texto exacto del párrafo 5.",
+            "evidence": "su mayor defecto es que algunas veces parece"
+          },
+          {
+            "id": "r34-plastic-ocean-es-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "pabellón donde acaba de terminar un concierto. El",
+              "en el suelo. De pronto, el problema tiene",
+              "hablan tanto de los gastos como de los",
+              "muchas personas, pero una entrevistada cuenta que en"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "muchas personas, pero una entrevistada cuenta que en"
+          },
+          {
+            "id": "r34-plastic-ocean-es-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «lluvia, delante de un pabellón donde»",
+            "choices": [
+              "acaba de terminar un concierto. El",
+              "en el suelo. De pronto, el problema tiene",
+              "recipientes propios. Otro participante explica que cerca de",
+              "a comprender cómo cambiar una costumbre. Más adelante"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "lluvia, delante de un pabellón donde acaba de terminar un concierto. El"
+          },
+          {
+            "id": "r34-plastic-ocean-es-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «costumbre. Más adelante vemos un festival que prueba»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "costumbre. Más adelante vemos un festival que prueba"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "es",
+        "level": "C1",
+        "title": "Lo que no entra en el plano",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-es-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «la primera secuencia del documental ficticio Fuera de»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5",
+              "Párrafo 6"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "la primera secuencia del documental ficticio Fuera de"
+          },
+          {
+            "id": "r34-plastic-ocean-es-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "y parece evidente quién ha fallado: nosotros, los",
+              "indignarnos, aunque desplaza la atención desde el diseño",
+              "silencio de esas escenas contrasta con los conciertos",
+              "El momento más revelador tiene lugar en una"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "indignarnos, aunque desplaza la atención desde el diseño"
+          },
+          {
+            "id": "r34-plastic-ocean-es-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «detiene y parece evidente quién ha»",
+            "choices": [
+              "ni su capacidad para decidir cómo se organiza",
+              "y una forma de pagar su lavado. La",
+              "fallado: nosotros, los consumidores. La escena",
+              "tira un envase al suelo mientras una música"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "detiene y parece evidente quién ha fallado: nosotros, los consumidores. La escena"
+          },
+          {
+            "id": "r34-plastic-ocean-es-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «El recurso consigue indignarnos, aunque desplaza la atención»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5",
+              "Párrafo 6"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "El recurso consigue indignarnos, aunque desplaza la atención"
+          },
+          {
+            "id": "r34-plastic-ocean-es-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 1?",
+            "choices": [
+              "consumidores. La escena funciona como cine. Como explicación",
+              "una sensibilidad visual indudable. Observa los restos de",
+              "de pagar su lavado. La técnica no rechaza",
+              "al suelo mientras una música inquietante anuncia consecuencias"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "consumidores. La escena funciona como cine. Como explicación"
+          },
+          {
+            "id": "r34-plastic-ocean-es-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 4,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «el montaje regresa a una imagen»",
+            "choices": [
+              "funciona como cine. Como explicación del problema, resulta",
+              "convencional: un joven tira un envase",
+              "que una ciudad no se limpia por arte",
+              "un proyecto de vasos reutilizables para las fiestas"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "el montaje regresa a una imagen convencional: un joven tira un envase"
+          },
+          {
+            "id": "r34-plastic-ocean-es-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «identificadas; conocemos sus gestos, pero no sus condiciones»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5",
+              "Párrafo 6"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "identificadas; conocemos sus gestos, pero no sus condiciones"
+          },
+          {
+            "id": "r34-plastic-ocean-es-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 5?",
+            "choices": [
+              "vacía. La cámara la sigue como si se",
+              "no sus condiciones laborales ni su capacidad para",
+              "vasos, turnos para devolverlos y una forma de",
+              "Pero esas decisiones también distribuyen la autoridad. A"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 5.",
+            "evidence": "Pero esas decisiones también distribuyen la autoridad. A"
+          },
+          {
+            "id": "r34-plastic-ocean-es-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «equipos de limpieza cuando casi nadie»",
+            "choices": [
+              "los ve. El silencio de esas",
+              "escena funciona como cine. Como explicación del problema,",
+              "turnos para devolverlos y una forma de pagar",
+              "un joven tira un envase al suelo mientras"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "equipos de limpieza cuando casi nadie los ve. El silencio de esas"
+          },
+          {
+            "id": "r34-plastic-ocean-es-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «y decisiones estéticas. Pero esas decisiones también distribuyen»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5",
+              "Párrafo 6"
+            ],
+            "answer": 4,
+            "explanation": "Compara el texto exacto del párrafo 5.",
+            "evidence": "y decisiones estéticas. Pero esas decisiones también distribuyen"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "es",
+        "level": "C2",
+        "title": "La comodidad del consumidor impecable",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-es-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «un documental ficticio titulado Ni una botella más,»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5",
+              "Párrafo 6",
+              "Párrafo 7"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "un documental ficticio titulado Ni una botella más,"
+          },
+          {
+            "id": "r34-plastic-ocean-es-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "El contraste permitiría una magnífica escena adicional, pero",
+              "decisiones públicas dependen, al menos en parte, de",
+              "recogida de recipientes reutilizables. Lo interesante no es",
+              "El relato del consumidor perfecto tiene una ventaja"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "decisiones públicas dependen, al menos en parte, de"
+          },
+          {
+            "id": "r34-plastic-ocean-es-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 7,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «quién paga, decide y evalúa lo»",
+            "choices": [
+              "limpio y una frase sobre la fuerza de",
+              "advertir que la película trata las decisiones del",
+              "producido puede acompañarnos mucho más tiempo.",
+              "desenlaces claros. Una persona rechaza una bolsa, la"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 7.",
+            "evidence": "quién paga, decide y evalúa lo producido puede acompañarnos mucho más tiempo."
+          },
+          {
+            "id": "r34-plastic-ocean-es-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «música promete que algo ha cambiado. En cambio,»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5",
+              "Párrafo 6",
+              "Párrafo 7"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "música promete que algo ha cambiado. En cambio,"
+          },
+          {
+            "id": "r34-plastic-ocean-es-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 6,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 6?",
+            "choices": [
+              "triunfo indiscutible o un fracaso rotundo. Ninguno de",
+              "documental ficticio titulado Ni una botella más, el",
+              "película trata las decisiones del consumidor como si",
+              "rechaza una bolsa, la cámara registra el gesto"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 6.",
+            "evidence": "triunfo indiscutible o un fracaso rotundo. Ninguno de"
+          },
+          {
+            "id": "r34-plastic-ocean-es-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «contradicción como simple hipocresía sería cómodo»",
+            "choices": [
+              "un horizonte limpio y una frase sobre la",
+              "y poco instructivo. Un cine pequeño",
+              "contratos de recogida, las normas de compra pública",
+              "puede actuar libera al individuo de toda responsabilidad"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "contradicción como simple hipocresía sería cómodo y poco instructivo. Un cine pequeño"
+          },
+          {
+            "id": "r34-plastic-ocean-es-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «narración rigurosa distinguiría entre el símbolo visible y»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5",
+              "Párrafo 6",
+              "Párrafo 7"
+            ],
+            "answer": 4,
+            "explanation": "Compara el texto exacto del párrafo 5.",
+            "evidence": "narración rigurosa distinguiría entre el símbolo visible y"
+          },
+          {
+            "id": "r34-plastic-ocean-es-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "Su intervención es conmovedora precisamente porque no suena",
+              "escasa fotogenia no los hace irrelevantes; simplemente obliga",
+              "al menos en parte, de quienes participan en",
+              "instalaciones para organizar la recogida de recipientes reutilizables."
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "instalaciones para organizar la recogida de recipientes reutilizables."
+          },
+          {
+            "id": "r34-plastic-ocean-es-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 5,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «la opción más razonable en cualquier»",
+            "choices": [
+              "circunstancia: importan su fabricación, su duración",
+              "con un horizonte limpio y una frase sobre",
+              "pureza imposible, sino advertir que la película trata",
+              "protagonistas identificables y desenlaces claros. Una persona rechaza"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 5.",
+            "evidence": "la opción más razonable en cualquier circunstancia: importan su fabricación, su duración"
+          },
+          {
+            "id": "r34-plastic-ocean-es-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «la misma cantimplora. Su intervención es conmovedora precisamente»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4",
+              "Párrafo 5",
+              "Párrafo 6",
+              "Párrafo 7"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "la misma cantimplora. Su intervención es conmovedora precisamente"
+          }
+        ]
+      }
+    },
+    "de": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "de",
+        "level": "A1",
+        "title": "Ein Becher am See",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-de-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Heute bin ich mit meiner“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Heute bin ich mit meiner"
+          },
+          {
+            "id": "r34-plastic-ocean-de-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 1?",
+            "choices": [
+              "den See.“ Wir nehmen ihn",
+              "warm. Wir haben Brot, Obst",
+              "Waffeln. Sie nimmt eine Waffel."
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "warm. Wir haben Brot, Obst"
+          },
+          {
+            "id": "r34-plastic-ocean-de-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Obst und Wasser dabei.“",
+            "choices": [
+              "mit. Neben dem Kiosk steht",
+              "Wasserflasche von zu Hause dabei.",
+              "Wir sitzen auf einer"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Obst und Wasser dabei. Wir sitzen auf einer"
+          },
+          {
+            "id": "r34-plastic-ocean-de-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „unser Becher.“ Ich sage: „Aber“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "unser Becher.“ Ich sage: „Aber"
+          },
+          {
+            "id": "r34-plastic-ocean-de-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "bin ich mit meiner Freundin",
+              "ihn vorsichtig mit. Neben dem",
+              "zu Hause dabei. Wir können"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "ihn vorsichtig mit. Neben dem"
+          },
+          {
+            "id": "r34-plastic-ocean-de-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „der Bank liegt ein“",
+            "choices": [
+              "auf einer Bank und sehen",
+              "meine Wasserflasche von zu Hause",
+              "blauer Plastikbecher. Lina sagt:"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "der Bank liegt ein blauer Plastikbecher. Lina sagt:"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "de",
+        "level": "A2",
+        "title": "Das Stadtfest und die vielen Becher",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-de-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Nach dem Stadtfest im letzten“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Nach dem Stadtfest im letzten"
+          },
+          {
+            "id": "r34-plastic-ocean-de-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "waren unzufrieden. Deshalb wollte die",
+              "Essensständen sprechen. Das neue System",
+              "das Geld wieder. Außerdem gab",
+              "Am Samstagabend kamen die meisten"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Essensständen sprechen. Das neue System"
+          },
+          {
+            "id": "r34-plastic-ocean-de-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „das Reinigungsteam weniger Becher“",
+            "choices": [
+              "die Jugendgruppe dieses Jahr etwas",
+              "mit kostenlosem Trinkwasser. Manche Leute",
+              "einsammeln als früher. Viele",
+              "möchte die Gruppe mit den"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "das Reinigungsteam weniger Becher einsammeln als früher. Viele"
+          },
+          {
+            "id": "r34-plastic-ocean-de-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „wieder. Außerdem gab es zwei“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "wieder. Außerdem gab es zwei"
+          },
+          {
+            "id": "r34-plastic-ocean-de-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "deshalb zusätzliche Schilder auf und",
+              "Nach dem Stadtfest im letzten",
+              "Trotzdem musste das Reinigungsteam weniger",
+              "die Gruppe mit den Essensständen"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "deshalb zusätzliche Schilder auf und"
+          },
+          {
+            "id": "r34-plastic-ocean-de-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Nach dem Stadtfest im“",
+            "choices": [
+              "zusätzliche Schilder auf und öffneten",
+              "letzten Jahr lagen überall",
+              "vom Essen. Trotzdem musste das",
+              "Fest möchte die Gruppe mit"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Nach dem Stadtfest im letzten Jahr lagen überall"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "de",
+        "level": "B1",
+        "title": "Der Weg zum Bach",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-de-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „einem starken Regen entdeckten Jugendliche aus einer Schul-AG“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "einem starken Regen entdeckten Jugendliche aus einer Schul-AG"
+          },
+          {
+            "id": "r34-plastic-ocean-de-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "sofort Warnschilder aufstellen. Doch eine Mitarbeiterin der Stadt",
+              "das Problem sei gelöst. Nach einem Sturm könnte",
+              "den Gully und weiter durch Rohre. Dabei können",
+              "Die Jugendlichen notierten eine Woche lang, wo besonders"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "das Problem sei gelöst. Nach einem Sturm könnte"
+          },
+          {
+            "id": "r34-plastic-ocean-de-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Teil des Wassers erreicht schließlich den“",
+            "choices": [
+              "bat die Gruppe, erst den Weg des Abfalls",
+              "mit dem benachbarten Imbiss und schickten ihre Ergebnisse",
+              "Bach. Plötzlich war klar: Nicht jeder",
+              "weniger Verpackungen am Bach. Trotzdem behaupteten sie nicht,"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Teil des Wassers erreicht schließlich den Bach. Plötzlich war klar: Nicht jeder"
+          },
+          {
+            "id": "r34-plastic-ocean-de-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Forschungsprojekt geworden. Die wichtigste Frage lautete nun nicht“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 4,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 5.",
+            "evidence": "Forschungsprojekt geworden. Die wichtigste Frage lautete nun nicht"
+          },
+          {
+            "id": "r34-plastic-ocean-de-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "wurde der Eimer häufiger geleert, und der Imbiss",
+              "einem starken Regen entdeckten Jugendliche aus einer Schul-AG",
+              "mitgerissen werden. Ein Teil des Wassers erreicht schließlich",
+              "Verpackungen am Bach. Trotzdem behaupteten sie nicht, das"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "wurde der Eimer häufiger geleert, und der Imbiss"
+          },
+          {
+            "id": "r34-plastic-ocean-de-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „zeigte ihnen einen Gully an der“",
+            "choices": [
+              "Stadt bat die Gruppe, erst den Weg des",
+              "Bushaltestelle. Bei Regen fließt Wasser vom",
+              "sprachen mit dem benachbarten Imbiss und schickten ihre",
+              "Jugendlichen weniger Verpackungen am Bach. Trotzdem behaupteten sie"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "zeigte ihnen einen Gully an der Bushaltestelle. Bei Regen fließt Wasser vom"
+          },
+          {
+            "id": "r34-plastic-ocean-de-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „nicht mehr: Wer hat das getan? Sondern: Welchen“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 4,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 5.",
+            "evidence": "nicht mehr: Wer hat das getan? Sondern: Welchen"
+          },
+          {
+            "id": "r34-plastic-ocean-de-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "am Mühlenbach. Zuerst vermuteten sie, dass Spaziergänger ihren",
+              "war klar: Nicht jeder Gegenstand am Ufer war",
+              "sei gelöst. Nach einem Sturm könnte Müll aus",
+              "fanden sie an der Haltestelle neben einem oft"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "fanden sie an der Haltestelle neben einem oft"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "de",
+        "level": "B2",
+        "title": "Nach der Flut: Ein Film, der Fragen offenlässt",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-de-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „zu Beginn von Nach der Flut treibt ein“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "zu Beginn von Nach der Flut treibt ein"
+          },
+          {
+            "id": "r34-plastic-ocean-de-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "unseres Abfalls zu verfolgen. Die Szene ist einfallsreich.",
+              "die Rückgabe kostet und wie viele Becher verloren",
+              "vor dem Abend voll sind. Anschließend sprechen ein",
+              "Weniger überzeugend finde ich die wiederholte Aufforderung, einfach"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "die Rückgabe kostet und wie viele Becher verloren"
+          },
+          {
+            "id": "r34-plastic-ocean-de-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Festen. Besonders gelungen ist, dass hier“",
+            "choices": [
+              "die Argumentation nicht immer mit der Qualität der",
+              "entfernt von der nächsten Wasserstelle. Diese Einwände sind",
+              "nicht nur ein schmutziger Strand gezeigt",
+              "Später stellt die Dokumentation ein Pfandsystem für Mehrwegbecher"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Festen. Besonders gelungen ist, dass hier nicht nur ein schmutziger Strand gezeigt"
+          },
+          {
+            "id": "r34-plastic-ocean-de-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „ein schönes Bild. Spannender wäre aber die Frage“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 4,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 5.",
+            "evidence": "ein schönes Bild. Spannender wäre aber die Frage"
+          },
+          {
+            "id": "r34-plastic-ocean-de-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "hätten mehr Raum verdient. Stattdessen überdeckt traurige Musik",
+              "Beginn von Nach der Flut treibt ein roter",
+              "über die Schwierigkeiten bei großen Festen. Besonders gelungen",
+              "Dokumentation ein Pfandsystem für Mehrwegbecher vor. Die Organisatoren"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "hätten mehr Raum verdient. Stattdessen überdeckt traurige Musik"
+          },
+          {
+            "id": "r34-plastic-ocean-de-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Nora Berg begleitet einen Reinigungstrupp durch“",
+            "choices": [
+              "hält die Argumentation nicht immer mit der Qualität",
+              "eine Küstenstadt. Eine Mitarbeiterin erklärt, warum",
+              "weit entfernt von der nächsten Wasserstelle. Diese Einwände",
+              "kann. Später stellt die Dokumentation ein Pfandsystem für"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Nora Berg begleitet einen Reinigungstrupp durch eine Küstenstadt. Eine Mitarbeiterin erklärt, warum"
+          },
+          {
+            "id": "r34-plastic-ocean-de-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Dokumentarfilm sollte nicht nur berühren, sondern zeigen, welche“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 4,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 5.",
+            "evidence": "Dokumentarfilm sollte nicht nur berühren, sondern zeigen, welche"
+          },
+          {
+            "id": "r34-plastic-ocean-de-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "vor einer Konzerthalle. Drinnen spielt noch Musik, draußen",
+              "schmutziger Strand gezeigt wird: Plötzlich geht es um",
+              "und wie viele Becher verloren gehen. Sie wollen",
+              "im Stadion keine Flaschen durch die Sicherheitskontrolle tragen."
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "im Stadion keine Flaschen durch die Sicherheitskontrolle tragen."
+          },
+          {
+            "id": "r34-plastic-ocean-de-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „durch eine Regenpfütze vor einer Konzerthalle.“",
+            "choices": [
+              "Drinnen spielt noch Musik, draußen beginnt",
+              "Strand gezeigt wird: Plötzlich geht es um Dienstpläne,",
+              "wohnt weit entfernt von der nächsten Wasserstelle. Diese",
+              "gehen kann. Später stellt die Dokumentation ein Pfandsystem"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "durch eine Regenpfütze vor einer Konzerthalle. Drinnen spielt noch Musik, draußen beginnt"
+          },
+          {
+            "id": "r34-plastic-ocean-de-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Dokumentation ein Pfandsystem für Mehrwegbecher vor. Die Organisatoren“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Dokumentation ein Pfandsystem für Mehrwegbecher vor. Die Organisatoren"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "de",
+        "level": "C1",
+        "title": "Wem gehört die Geschichte vom Müll?",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-de-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Bonbonpapier wird über einen leeren Marktplatz geweht. Die“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5",
+              "Absatz 6"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Bonbonpapier wird über einen leeren Marktplatz geweht. Die"
+          },
+          {
+            "id": "r34-plastic-ocean-de-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "ersten Minute, welches Gefühl er erzeugen will. Ob",
+              "mehrfach wiederholt. So entsteht ein leicht verständlicher Gegensatz",
+              "Abfälle an bestimmten Orten liegen bleiben. Das verleiht",
+              "Die aufschlussreichste Passage spielt in einem schmucklosen Sitzungszimmer."
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "mehrfach wiederholt. So entsteht ein leicht verständlicher Gegensatz"
+          },
+          {
+            "id": "r34-plastic-ocean-de-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „der ersten Minute, welches Gefühl er“",
+            "choices": [
+              "Sichtbarkeit ist offenbar noch nicht dasselbe wie eine",
+              "Personal und eine sichere Rückgabe organisiert werden müssen.",
+              "erzeugen will. Ob er ebenso genau",
+              "Entdeckung. Eine kurze Aufnahme zeigt einen Jugendlichen, der"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "der ersten Minute, welches Gefühl er erzeugen will. Ob er ebenso genau"
+          },
+          {
+            "id": "r34-plastic-ocean-de-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „die Szene wird mehrfach wiederholt. So entsteht ein“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5",
+              "Absatz 6"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "die Szene wird mehrfach wiederholt. So entsteht ein"
+          },
+          {
+            "id": "r34-plastic-ocean-de-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 1?",
+            "choices": [
+              "Ob er ebenso genau weiß, was dieses Gefühl",
+              "Bildern fehlt es der Regisseurin nicht. Sie filmt",
+              "sichere Rückgabe organisiert werden müssen. Die Mitarbeiterin verteidigt",
+              "zeigt einen Jugendlichen, der achtlos eine Flasche fallen"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Ob er ebenso genau weiß, was dieses Gefühl"
+          },
+          {
+            "id": "r34-plastic-ocean-de-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 4,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „diesem Punkt verliert die Regie die“",
+            "choices": [
+              "genau weiß, was dieses Gefühl erklären soll, ist",
+              "Geduld mit ihrer eigenen Entdeckung. Eine",
+              "Gleichzeitig erfahren wir erstaunlich wenig über diejenigen, die",
+              "ein Mehrwegsystem für Veranstaltungen vor. Die Idee klingt"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "diesem Punkt verliert die Regie die Geduld mit ihrer eigenen Entdeckung. Eine"
+          },
+          {
+            "id": "r34-plastic-ocean-de-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „und ihre Mitsprache bei der Planung bleiben unerwähnt.“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5",
+              "Absatz 6"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "und ihre Mitsprache bei der Planung bleiben unerwähnt."
+          },
+          {
+            "id": "r34-plastic-ocean-de-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 5?",
+            "choices": [
+              "der Stadt auf dem Spiel. Schließlich verschwindet es",
+              "der Planung bleiben unerwähnt. Sichtbarkeit ist offenbar noch",
+              "hin, dass Lagerfläche, Personal und eine sichere Rückgabe",
+              "jede Auswahl verteilt Redezeit und Glaubwürdigkeit. Die Verwaltungsmitarbeiterin"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 5.",
+            "evidence": "jede Auswahl verteilt Redezeit und Glaubwürdigkeit. Die Verwaltungsmitarbeiterin"
+          },
+          {
+            "id": "r34-plastic-ocean-de-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „die Reinigungskräfte vor Sonnenaufgang und zeigt,“",
+            "choices": [
+              "wie schnell Abfälle an bestimmten Orten",
+              "ebenso genau weiß, was dieses Gefühl erklären soll,",
+              "hin, dass Lagerfläche, Personal und eine sichere Rückgabe",
+              "ihrer eigenen Entdeckung. Eine kurze Aufnahme zeigt einen"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "die Reinigungskräfte vor Sonnenaufgang und zeigt, wie schnell Abfälle an bestimmten Orten"
+          },
+          {
+            "id": "r34-plastic-ocean-de-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Auswahl. Aber jede Auswahl verteilt Redezeit und Glaubwürdigkeit.“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5",
+              "Absatz 6"
+            ],
+            "answer": 4,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 5.",
+            "evidence": "Auswahl. Aber jede Auswahl verteilt Redezeit und Glaubwürdigkeit."
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "de",
+        "level": "C2",
+        "title": "Das Märchen vom makellosen Verbraucher",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-de-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „einer erfundenen Dokumentation mit dem Titel Ohne Plastik,“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5",
+              "Absatz 6",
+              "Absatz 7"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "einer erfundenen Dokumentation mit dem Titel Ohne Plastik,"
+          },
+          {
+            "id": "r34-plastic-ocean-de-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "zusätzliche Frage schenken. Stattdessen endet er mit Sonnenlicht",
+              "die Gestaltung öffentlicher Räume beeinflussen sich gegenseitig. Die",
+              "verfügen nicht unbedingt über Spülanlagen, Lagerfläche oder Personal",
+              "Das Bild des perfekten Konsumenten ist filmisch außerordentlich"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "die Gestaltung öffentlicher Räume beeinflussen sich gegenseitig. Die"
+          },
+          {
+            "id": "r34-plastic-ocean-de-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 7,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „sollte nicht hauptsächlich Menschen hervorbringen, die“",
+            "choices": [
+              "Botschaft, jede und jeder könne allein die richtige",
+              "Die interessantere Kritik betrifft daher nicht das Scheitern",
+              "sich für unschuldig halten. Es sollte",
+              "Handlungen und einen Schlussakkord. Jemand lehnt eine Plastiktüte"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 7.",
+            "evidence": "sollte nicht hauptsächlich Menschen hervorbringen, die sich für unschuldig halten. Es sollte"
+          },
+          {
+            "id": "r34-plastic-ocean-de-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „bestätigt die moralische Ordnung. Vergaberegeln, Abfallverträge oder der“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5",
+              "Absatz 6",
+              "Absatz 7"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "bestätigt die moralische Ordnung. Vergaberegeln, Abfallverträge oder der"
+          },
+          {
+            "id": "r34-plastic-ocean-de-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 6,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 6?",
+            "choices": [
+              "einen strahlenden Erfolg oder ein vernichtendes Scheitern machen.",
+              "erfundenen Dokumentation mit dem Titel Ohne Plastik, ohne",
+              "betrifft daher nicht das Scheitern an einem Ideal,",
+              "Schlussakkord. Jemand lehnt eine Plastiktüte ab, ein Lächeln"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 6.",
+            "evidence": "einen strahlenden Erfolg oder ein vernichtendes Scheitern machen."
+          },
+          {
+            "id": "r34-plastic-ocean-de-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „den Widerspruch einfach als Heuchelei entlarven.“",
+            "choices": [
+              "beruhigenden Botschaft, jede und jeder könne allein die",
+              "Damit wäre zwar die eigene Überlegenheit",
+              "öffentlicher Trinkbrunnen ergeben dagegen keine brauchbare Montage. Ihre",
+              "bietet dem Einzelnen einen Freispruch, der dem moralischen"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "den Widerspruch einfach als Heuchelei entlarven. Damit wäre zwar die eigene Überlegenheit"
+          },
+          {
+            "id": "r34-plastic-ocean-de-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „weniger fotogenen Voraussetzungen seiner Wirksamkeit unterscheiden. Sonst entsteht“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5",
+              "Absatz 6",
+              "Absatz 7"
+            ],
+            "answer": 4,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 5.",
+            "evidence": "weniger fotogenen Voraussetzungen seiner Wirksamkeit unterscheiden. Sonst entsteht"
+          },
+          {
+            "id": "r34-plastic-ocean-de-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "benutzt. Sie spricht unspektakulär und gerade deshalb glaubwürdig.",
+              "was als Ursache gelten darf, auch wenn diese",
+              "beeinflussen sich gegenseitig. Die Schülerin kann mit ihrer",
+              "verstanden. Kleine Kinos verfügen nicht unbedingt über Spülanlagen,"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "verstanden. Kleine Kinos verfügen nicht unbedingt über Spülanlagen,"
+          },
+          {
+            "id": "r34-plastic-ocean-de-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 5,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Umständen automatisch die umweltfreundlichere Wahl; Herstellung,“",
+            "choices": [
+              "Nutzungsdauer und tatsächliche Verwendung zählen. Umgekehrt",
+              "und der beruhigenden Botschaft, jede und jeder könne",
+              "funktionierendes Rückgabesystem. Die interessantere Kritik betrifft daher nicht",
+              "erkennbare Helden, eindeutige Handlungen und einen Schlussakkord. Jemand"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 5.",
+            "evidence": "Umständen automatisch die umweltfreundlichere Wahl; Herstellung, Nutzungsdauer und tatsächliche Verwendung zählen. Umgekehrt"
+          },
+          {
+            "id": "r34-plastic-ocean-de-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „dieselbe Trinkflasche benutzt. Sie spricht unspektakulär und gerade“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4",
+              "Absatz 5",
+              "Absatz 6",
+              "Absatz 7"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "dieselbe Trinkflasche benutzt. Sie spricht unspektakulär und gerade"
+          }
+        ]
+      }
+    },
+    "fr": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "fr",
+        "level": "A1",
+        "title": "Un sac près de la plage",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-fr-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « Aujourd’hui, je suis à la »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "Aujourd’hui, je suis à la"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 1 ?",
+            "choices": [
+              "l’eau. » Nous le ramassons",
+              "beau. Nous avons de l’eau",
+              "maison. Zoé garde son petit"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "beau. Nous avons de l’eau"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « et des sandwichs dans »",
+            "choices": [
+              "a une poubelle devant le",
+              "le mettre à la poubelle.",
+              "nos sacs. Nous voulons"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "et des sandwichs dans nos sacs. Nous voulons"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « notre sac. » Je réponds »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "notre sac. » Je réponds"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "je suis à la plage",
+              "prudence. Il y a une",
+              "à la poubelle. Nous ne"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "prudence. Il y a une"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « côté d’un banc, nous »",
+            "choices": [
+              "Nous voulons marcher près de",
+              "pour le mettre à la",
+              "voyons un sac en"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "côté d’un banc, nous voyons un sac en"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "fr",
+        "level": "A2",
+        "title": "Un concert avec moins de gobelets",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-fr-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « dernière, après la fête du »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "dernière, après la fête du"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "habitants étaient mécontents. Cette année,",
+              "de nourriture. Leur objectif est",
+              "gobelet, on récupérait son argent.",
+              "Dimanche soir, la plupart des"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "de nourriture. Leur objectif est"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « Mais les agents ont »",
+            "choices": [
+              "ont donc décidé de changer",
+              "fontaines pour remplir les gourdes.",
+              "terminé plus tôt. Plusieurs",
+              "organisateurs veulent discuter avec les"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "Mais les agents ont terminé plus tôt. Plusieurs"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « son argent. Il y avait »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "son argent. Il y avait"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "ont installé des panneaux clairs",
+              "dernière, après la fête du",
+              "la scène. Mais les agents",
+              "veulent discuter avec les vendeurs"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "ont installé des panneaux clairs"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « dernière, après la fête »",
+            "choices": [
+              "des panneaux clairs et ouvert",
+              "du quartier, il y",
+              "près de la scène. Mais",
+              "les organisateurs veulent discuter avec"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "dernière, après la fête du quartier, il y"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "fr",
+        "level": "B1",
+        "title": "Le chemin d’un emballage",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-fr-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « un gros orage, des élèves ont découvert beaucoup »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "un gros orage, des élèves ont découvert beaucoup"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "près du pont. Mais une employée de la",
+              "le vent pouvait encore en apporter d’autres rues.",
+              "papiers et les petits emballages présents sur le",
+              "Pendant une semaine, ils ont noté les lieux"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "le vent pouvait encore en apporter d’autres rues."
+          },
+          {
+            "id": "r34-plastic-ocean-fr-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « rejoignent le ruisseau. Les élèves ont »",
+            "choices": [
+              "leur a conseillé de chercher d’abord d’où venait",
+              "poubelle souvent pleine en fin d’après-midi. Le café",
+              "compris que les déchets trouvés au",
+              "moins de déchets après les petites pluies. Pourtant,"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "rejoignent le ruisseau. Les élèves ont compris que les déchets trouvés au"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « Finalement, leur enquête leur a appris à poser »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare les mots exacts du paragraphe 5.",
+            "evidence": "Finalement, leur enquête leur a appris à poser"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "nettoyer sa terrasse. De son côté, la mairie",
+              "gros orage, des élèves ont découvert beaucoup d’emballages",
+              "dans des tuyaux qui rejoignent le ruisseau. Les",
+              "déchets après les petites pluies. Pourtant, ils savaient"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "nettoyer sa terrasse. De son côté, la mairie"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « a montré une bouche d’égout à »",
+            "choices": [
+              "mairie leur a conseillé de chercher d’abord d’où",
+              "côté de l’arrêt de bus. Quand",
+              "d’une poubelle souvent pleine en fin d’après-midi. Le",
+              "vu moins de déchets après les petites pluies."
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "a montré une bouche d’égout à côté de l’arrêt de bus. Quand"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « plus précise : quel trajet suit un emballage »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare les mots exacts du paragraphe 5.",
+            "evidence": "plus précise : quel trajet suit un emballage"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "des Tilleuls. Ils pensaient que des promeneurs avaient",
+              "déchets trouvés au bord de l’eau ne venaient",
+              "pouvait encore en apporter d’autres rues. Ils ont",
+              "nombreux. Ils en ont trouvé surtout à l’arrêt"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "nombreux. Ils en ont trouvé surtout à l’arrêt"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "fr",
+        "level": "B2",
+        "title": "L’autre rive : une critique qui ne donne pas toutes les réponses",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-fr-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « scène de L’autre rive montre un gobelet rouge »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "scène de L’autre rive montre un gobelet rouge"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "dès qu’ils quittent nos mains. L’idée est efficace,",
+              "responsables présentent les dépenses, les retours et les",
+              "qui organisent une fête. Le passage le plus",
+              "Le documentaire devient moins convaincant lorsqu’il présente la"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "responsables présentent les dépenses, les retours et les"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « certains événements. Tout à coup, la »",
+            "choices": [
+              "parfois plus sûr de son message que de",
+              "habitant vit loin des points d’eau. Le film",
+              "pollution n’est plus seulement une image",
+              "solutions utilisables. Plus loin, on découvre un système"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "certains événements. Tout à coup, la pollution n’est plus seulement une image"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « la vraie question se pose après la séance »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare les mots exacts du paragraphe 5.",
+            "evidence": "la vraie question se pose après la séance"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "polluée. J’aurais préféré qu’il examine davantage ce qui",
+              "scène de L’autre rive montre un gobelet rouge",
+              "pourquoi le ramassage arrive trop tard après certains",
+              "loin, on découvre un système de gobelets consignés"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "polluée. J’aurais préféré qu’il examine davantage ce qui"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « Camille Moreau, accompagne une petite équipe »",
+            "choices": [
+              "paraît parfois plus sûr de son message que",
+              "dans une ville côtière. Elle interroge",
+              "autre habitant vit loin des points d’eau. Le",
+              "donner des solutions utilisables. Plus loin, on découvre"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "Camille Moreau, accompagne une petite équipe dans une ville côtière. Elle interroge"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « vu précisément parce qu’il permet ce débat, même »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare les mots exacts du paragraphe 5.",
+            "evidence": "vu précisément parce qu’il permet ce débat, même"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "concert. À l’intérieur, la musique continue ; dehors,",
+              "une image triste : elle devient une question",
+              "dépenses, les retours et les problèmes qui restent",
+              "qu’elle ne peut pas entrer dans une salle"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "qu’elle ne peut pas entrer dans une salle"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « une salle de concert. À l’intérieur, »",
+            "choices": [
+              "la musique continue ; dehors, les",
+              "image triste : elle devient une question d’horaires,",
+              "Un autre habitant vit loin des points d’eau.",
+              "lui donner des solutions utilisables. Plus loin, on"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "une salle de concert. À l’intérieur, la musique continue ; dehors, les"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « loin, on découvre un système de gobelets consignés »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "loin, on découvre un système de gobelets consignés"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "fr",
+        "level": "C1",
+        "title": "Ce qui reste hors champ",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-fr-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « premières minutes du documentaire fictif Après la marée, »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5",
+              "Paragraphe 6"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "premières minutes du documentaire fictif Après la marée,"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "réelle. Elle devient pourtant problématique lorsque la mise",
+              "une indignation immédiate, mais déplace le centre du",
+              "la propreté d’une ville ne se maintient pas",
+              "Le moment le plus révélateur se situe dans"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "une indignation immédiate, mais déplace le centre du"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « est réelle. Elle devient pourtant problématique »",
+            "choices": [
+              "présence à l’image ne leur donne pas nécessairement",
+              "qui prendra en charge la main-d’œuvre supplémentaire ?",
+              "lorsque la mise en scène prétend,",
+              "à plusieurs reprises un adolescent laissant tomber une"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "est réelle. Elle devient pourtant problématique lorsque la mise en scène prétend,"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « inquiétante. L’image provoque une indignation immédiate, mais déplace »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5",
+              "Paragraphe 6"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "inquiétante. L’image provoque une indignation immédiate, mais déplace"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 1 ?",
+            "choices": [
+              "scène prétend, sans le dire, expliquer à elle",
+              "un sens remarquable du détail. Elle filme les",
+              "charge la main-d’œuvre supplémentaire ? La responsable répond",
+              "un adolescent laissant tomber une bouteille, accompagné d’une"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "scène prétend, sans le dire, expliquer à elle"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 4,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « là que le montage abandonne cette »",
+            "choices": [
+              "le dire, expliquer à elle seule les causes",
+              "piste. Il montre à plusieurs reprises",
+              "rarement nommés et leurs conditions de travail ne",
+              "présente un projet de gobelets réutilisables pour les"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "là que le montage abandonne cette piste. Il montre à plusieurs reprises"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « leurs horaires, de leur matériel ou des secteurs »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5",
+              "Paragraphe 6"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "leurs horaires, de leur matériel ou des secteurs"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 5 ?",
+            "choices": [
+              "le suit avec une gravité presque théâtrale. Lorsqu’il",
+              "des secteurs prioritaires. Leur présence à l’image ne",
+              "organiser le lavage et qui prendra en charge",
+              "sont aussi ses forces. Cependant, accorder à la"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 5.",
+            "evidence": "sont aussi ses forces. Cependant, accorder à la"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « d’entretien bien avant l’ouverture des cafés. »",
+            "choices": [
+              "Ces séquences rappellent que la propreté",
+              "prétend, sans le dire, expliquer à elle seule",
+              "le lavage et qui prendra en charge la",
+              "Il montre à plusieurs reprises un adolescent laissant"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "d’entretien bien avant l’ouverture des cafés. Ces séquences rappellent que la propreté"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « et transforme, et ce sont aussi ses forces. »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5",
+              "Paragraphe 6"
+            ],
+            "answer": 4,
+            "explanation": "Compare les mots exacts du paragraphe 5.",
+            "evidence": "et transforme, et ce sont aussi ses forces."
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-plastic-ocean",
+        "language": "fr",
+        "level": "C2",
+        "title": "La morale rassurante du petit geste",
+        "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-plastic-ocean-fr-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « fin d’un documentaire fictif intitulé Une bouteille de »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5",
+              "Paragraphe 6",
+              "Paragraphe 7"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "fin d’un documentaire fictif intitulé Une bouteille de"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "arrêtée juste avant cette scène. Le spectateur reçoit",
+              "revendications collectives et l’aménagement des espaces se répondent.",
+              "forcément des équipements, des salariés ou de la",
+              "Le consommateur exemplaire constitue un personnage extrêmement commode."
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "revendications collectives et l’aménagement des espaces se répondent."
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 7,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « faire sortir de la salle innocents. »",
+            "choices": [
+              "information sur l’institution qui organise la célébration de",
+              "décisive n’est donc pas de savoir pourquoi l’organisateur",
+              "Elle pourrait être de nous rendre",
+              "décision et l’histoire dispose aussitôt d’une conclusion. Les"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 7.",
+            "evidence": "faire sortir de la salle innocents. Elle pourrait être de nous rendre"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « des fontaines ne se prêtent pas aussi facilement »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5",
+              "Paragraphe 6",
+              "Paragraphe 7"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "des fontaines ne se prêtent pas aussi facilement"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 6,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 6 ?",
+            "choices": [
+              "un échec définitif. Ni l’un ni l’autre de",
+              "d’un documentaire fictif intitulé Une bouteille de moins,",
+              "de savoir pourquoi l’organisateur n’atteint pas la perfection.",
+              "aussitôt d’une conclusion. Les contrats de collecte, les"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 6.",
+            "evidence": "un échec définitif. Ni l’un ni l’autre de"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « de dénoncer immédiatement l’hypocrisie de la »",
+            "choices": [
+              "presque aucune information sur l’institution qui organise la",
+              "soirée. Le plaisir de découvrir une",
+              "une séquence émouvante. Leur absence n’est pourtant pas",
+              "autorités publiques peuvent agir procure aux spectateurs une"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "de dénoncer immédiatement l’hypocrisie de la soirée. Le plaisir de découvrir une"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « portée concrète. Sans cette distinction, le débat se »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5",
+              "Paragraphe 6",
+              "Paragraphe 7"
+            ],
+            "answer": 4,
+            "explanation": "Compare les mots exacts du paragraphe 5.",
+            "evidence": "portée concrète. Sans cette distinction, le débat se"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "depuis trois ans. Sa voix hésitante échappe heureusement",
+              "situation se dégrade, c’est d’abord parce que chacun",
+              "l’aménagement des espaces se répondent. La lycéenne qui",
+              "petit cinéma ne dispose pas forcément des équipements,"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "petit cinéma ne dispose pas forcément des équipements,"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 5,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « sa fabrication, sa durée de vie »",
+            "choices": [
+              "et ses usages réels comptent. Inversement,",
+              "mais presque aucune information sur l’institution qui organise",
+              "contenants réutilisables. La question décisive n’est donc pas",
+              "musique souligne sa décision et l’histoire dispose aussitôt"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 5.",
+            "evidence": "sa fabrication, sa durée de vie et ses usages réels comptent. Inversement,"
+          },
+          {
+            "id": "r34-plastic-ocean-fr-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « même gourde depuis trois ans. Sa voix hésitante »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4",
+              "Paragraphe 5",
+              "Paragraphe 6",
+              "Paragraphe 7"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "même gourde depuis trois ans. Sa voix hésitante"
+          }
+        ]
+      }
+    }
+  }
+}

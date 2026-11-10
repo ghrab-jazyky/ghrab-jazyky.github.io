@@ -1,0 +1,587 @@
+{
+  "kind": "LSH_LISTENING_DRAFT_COLLECTION_R34_V2",
+  "topic": "ll-peaky-no-fighting",
+  "relativeSource": "poslech/peaky-no-fighting/index.html",
+  "published": false,
+  "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+  "auditStatus": "CLAUDE_CONTENT_AUDIT_PENDING",
+  "variants": {
+    "A1": {
+      "goal": "Recognise a situation, changes in voice and a few basic instructions.",
+      "gist": [
+        {
+          "type": "single",
+          "title": "Why does the speaker gather the men?",
+          "options": [
+            "To tell them how to behave",
+            "To teach them a song",
+            "To choose a new leader"
+          ],
+          "correct": 0,
+          "why": "He sets rules for the celebration."
+        },
+        {
+          "type": "single",
+          "title": "Does his voice stay quiet from beginning to end?",
+          "options": [
+            "Yes, he whispers",
+            "No, he begins to shout",
+            "Yes, he sings"
+          ],
+          "correct": 1,
+          "why": "His voice gets louder as he repeats the warning."
+        }
+      ],
+      "detail": [
+        {
+          "type": "single",
+          "title": "Which celebration is he trying to protect?",
+          "options": [
+            "A birthday",
+            "A sports match",
+            "A wedding"
+          ],
+          "correct": 2,
+          "why": "The speaker is concerned about a wedding."
+        },
+        {
+          "type": "single",
+          "title": "What does he want to stop at the event?",
+          "options": [
+            "People fighting",
+            "People eating",
+            "People dancing"
+          ],
+          "correct": 0,
+          "why": "The repeated main instruction is not to fight."
+        },
+        {
+          "type": "single",
+          "title": "Why does he mention Grace?",
+          "options": [
+            "She is the band's singer",
+            "He does not want her to feel embarrassed",
+            "She is driving the guests home"
+          ],
+          "correct": 1,
+          "why": "Protecting Grace from embarrassment is a reason for his rules."
+        }
+      ],
+      "sequence": [
+        "He explains why this day matters.",
+        "Other men interrupt him with questions.",
+        "He repeats his warning more loudly."
+      ],
+      "facts": [
+        {
+          "title": "Write the first name of the woman the speaker wants to protect.",
+          "answer": "Grace.",
+          "criteria": "Accept Grace."
+        }
+      ],
+      "open": [
+        {
+          "title": "Describe the speaker's voice in one short sentence.",
+          "answer": "He becomes angry or shouts while giving rules.",
+          "criteria": "Accept stressed, angry or increasingly loud if grounded in the clip."
+        }
+      ],
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
+      "published": false,
+      "topic": "ll-peaky-no-fighting",
+      "level": "A1",
+      "language": "en",
+      "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+      "suggestedMinutes": 20,
+      "provenance": "assistant-authored original test questions from the public source practice metadata; actual clip and CEFR quality still require independent review",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    },
+    "A2": {
+      "goal": "Understand the purpose of the exchange and selected concrete details.",
+      "gist": [
+        {
+          "type": "single",
+          "title": "What is the main problem the speaker wants to prevent?",
+          "options": [
+            "A delay in the ceremony",
+            "A fight between groups",
+            "A problem with the music"
+          ],
+          "correct": 1,
+          "why": "He fears trouble among the wedding guests."
+        },
+        {
+          "type": "single",
+          "title": "How do the interruptions change his speech?",
+          "options": [
+            "They make the conversation less controlled",
+            "They help him finish calmly",
+            "They cause him to forget why he came"
+          ],
+          "correct": 0,
+          "why": "Interjections distract him and interrupt his orders."
+        }
+      ],
+      "detail": [
+        {
+          "type": "single",
+          "title": "What clothing leads to a complaint?",
+          "options": [
+            "School uniforms",
+            "Coats for cold weather",
+            "Official uniforms"
+          ],
+          "correct": 2,
+          "why": "A listener objects that some people are in uniform."
+        },
+        {
+          "type": "single",
+          "title": "Why does the speaker keep talking about his bride?",
+          "options": [
+            "He wants guests to avoid embarrassing her",
+            "He needs help choosing her dress",
+            "He is asking her to speak to the men"
+          ],
+          "correct": 0,
+          "why": "He frames restraint as a matter of respect for Grace."
+        },
+        {
+          "type": "single",
+          "title": "What does he do when one man brings up an odd topic?",
+          "options": [
+            "He changes to a friendly conversation",
+            "He gives a series of firm refusals",
+            "He invites everyone to join in"
+          ],
+          "correct": 1,
+          "why": "The unexpected interruption triggers emphatic refusals."
+        }
+      ],
+      "sequence": [
+        "He announces that the day is important.",
+        "A member of the group mentions a broken promise.",
+        "He begins listing behaviour that will not be allowed."
+      ],
+      "facts": [
+        {
+          "title": "What kind of clothing was the speaker told would not be present?",
+          "answer": "Uniforms.",
+          "criteria": "Accept 'uniforms'."
+        }
+      ],
+      "open": [
+        {
+          "title": "Give one reason the speaker seems nervous about the wedding.",
+          "answer": "There may be bad feeling between guests, and he fears a public scene.",
+          "criteria": "Accept reference to group tension, possible fighting or Grace's embarrassment."
+        }
+      ],
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
+      "published": false,
+      "topic": "ll-peaky-no-fighting",
+      "level": "A2",
+      "language": "en",
+      "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+      "suggestedMinutes": 20,
+      "provenance": "assistant-authored original test questions from the public source practice metadata; actual clip and CEFR quality still require independent review",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    },
+    "B1": {
+      "goal": "Follow the key conflict, specific restrictions and changes in tone.",
+      "gist": [
+        {
+          "type": "single",
+          "title": "What makes the scene more than a simple list of wedding rules?",
+          "options": [
+            "A conflict over who is in control",
+            "A sudden change to a different location",
+            "A long discussion about music",
+            "A quiet talk between two friends"
+          ],
+          "correct": 0,
+          "why": "The orders and challenges reveal a struggle over authority."
+        },
+        {
+          "type": "single",
+          "title": "How does the contrast between the subject and the speaker's tone affect the scene?",
+          "options": [
+            "It makes every instruction easy to accept",
+            "It gives a serious warning an unexpectedly comic edge",
+            "It suggests the wedding has already finished",
+            "It proves that nobody is listening"
+          ],
+          "correct": 1,
+          "why": "A demand for peace delivered with anger can also be funny."
+        }
+      ],
+      "detail": [
+        {
+          "type": "single",
+          "title": "What had the speaker apparently promised about the people at the event?",
+          "options": [
+            "Everyone would bring their own food",
+            "The gathering would be very small",
+            "There would be no uniforms",
+            "All guests would follow a written plan"
+          ],
+          "correct": 2,
+          "why": "The objection refers to an earlier promise about uniforms."
+        },
+        {
+          "type": "single",
+          "title": "Why is his reference to Grace persuasive within the group?",
+          "options": [
+            "He makes the consequences personal rather than merely practical",
+            "He promises that Grace will reward every guest",
+            "He says the bride has already left",
+            "He wants the group to choose a new host"
+          ],
+          "correct": 0,
+          "why": "He asks them not to embarrass the bride."
+        },
+        {
+          "type": "single",
+          "title": "Why does he turn towards a particular man later in the conversation?",
+          "options": [
+            "To ask him to organise the music",
+            "To challenge him about stories he has been telling",
+            "To give him responsibility for the ceremony",
+            "To request help from a family member"
+          ],
+          "correct": 1,
+          "why": "One listener is singled out for telling stories about the speaker."
+        }
+      ],
+      "sequence": [
+        "He explains the importance of the occasion.",
+        "One of the men disputes an earlier promise.",
+        "A seemingly unrelated question interrupts the warnings.",
+        "The speaker addresses one person directly."
+      ],
+      "facts": [
+        {
+          "title": "What name does the speaker use for the group in uniform?",
+          "answer": "Cavalry.",
+          "criteria": "Accept cavalry."
+        }
+      ],
+      "open": [
+        {
+          "title": "Explain one moment when the other men make it difficult for the speaker to stay in control.",
+          "answer": "A complaint about uniforms or the question about snow breaks his argument, forcing him to respond.",
+          "criteria": "Accept a named interruption with its effect on his speech."
+        }
+      ],
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
+      "published": false,
+      "topic": "ll-peaky-no-fighting",
+      "level": "B1",
+      "language": "en",
+      "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+      "suggestedMinutes": 20,
+      "provenance": "assistant-authored original test questions from the public source practice metadata; actual clip and CEFR quality still require independent review",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    },
+    "B2": {
+      "goal": "Understand what is meant but not said, idioms, and how the characters relate to each other.",
+      "gist": [
+        {
+          "type": "single",
+          "title": "Which contradiction creates much of the scene's effect?",
+          "options": [
+            "The men are asked to keep order by somebody who speaks aggressively",
+            "The bride is absent but still gives orders",
+            "The speaker wants a quiet wedding with no guests",
+            "The gathering is described as a business meeting"
+          ],
+          "correct": 0,
+          "why": "The speaker demands restraint while raising his voice and threatening consequences."
+        },
+        {
+          "type": "single",
+          "title": "What does the exchange reveal about the speaker's relationship with the men?",
+          "options": [
+            "He has no authority over them at all",
+            "He is listened to but frequently challenged or interrupted",
+            "He prefers to discuss each rule patiently",
+            "They never question his promises"
+          ],
+          "correct": 1,
+          "why": "Interruptions test his attempt to control the conversation."
+        }
+      ],
+      "detail": [
+        {
+          "type": "single",
+          "title": "Why does the objection about the uniformed guests matter?",
+          "options": [
+            "It is only a complaint about fashion",
+            "It proves the ceremony has ended",
+            "It recalls an unresolved source of tension between groups",
+            "It shows the men were invited by accident"
+          ],
+          "correct": 2,
+          "why": "Uniforms symbolise a group that may provoke the speaker's men."
+        },
+        {
+          "type": "single",
+          "title": "What does the speaker communicate by invoking Grace's feelings?",
+          "options": [
+            "The rules are meant to protect someone else from embarrassment",
+            "She expects him to read a speech aloud",
+            "The guests have already embarrassed her",
+            "She has asked for a different wedding venue"
+          ],
+          "correct": 0,
+          "why": "Grace becomes a personal reason to avoid conflict."
+        },
+        {
+          "type": "single",
+          "title": "What does the speaker seem to mean when he accuses a man of telling stories?",
+          "options": [
+            "The man has published a fictional book",
+            "The man has been describing him in a possibly misleading way",
+            "The man knows the programme for the event",
+            "The man is repeating the official guest list"
+          ],
+          "correct": 1,
+          "why": "The expression concerns stories or claims about the speaker, not literal fiction."
+        }
+      ],
+      "sequence": [
+        "He reminds the men of the significance of the day.",
+        "A listener objects to the presence of uniforms.",
+        "An awkward question interrupts his attempt to warn them.",
+        "He becomes more direct and personal in his orders."
+      ],
+      "facts": [
+        {
+          "title": "Name the man the speaker confronts about telling stories.",
+          "answer": "Charlie.",
+          "criteria": "Accept Charlie."
+        }
+      ],
+      "open": [
+        {
+          "title": "Explain how the interruption about 'snow' changes the tone of the scene.",
+          "answer": "It shifts a threatening address into an unexpected, almost comic exchange before the speaker resumes restrictions.",
+          "criteria": "Accept a balanced answer recognising comic interruption and continuing tension."
+        }
+      ],
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
+      "published": false,
+      "topic": "ll-peaky-no-fighting",
+      "level": "B2",
+      "language": "en",
+      "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+      "suggestedMinutes": 20,
+      "provenance": "assistant-authored original test questions from the public source practice metadata; actual clip and CEFR quality still require independent review",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    },
+    "C1": {
+      "goal": "Interpret indirect meanings, interpersonal power, idiomatic speech and comic incongruity.",
+      "gist": [
+        {
+          "type": "single",
+          "title": "What is the main paradox of the speaker's attempt to establish discipline?",
+          "options": [
+            "He performs authority through language that itself becomes increasingly uncontrolled",
+            "He asks the men to leave without giving any reason",
+            "He is prevented from speaking throughout the clip",
+            "He insists that nobody may disagree at a wedding"
+          ],
+          "correct": 0,
+          "why": "A demand for peaceful conduct is delivered in heated, coercive language."
+        },
+        {
+          "type": "single",
+          "title": "What do the interruptions reveal about his command of the exchange?",
+          "options": [
+            "His position is automatically accepted",
+            "Authority must be asserted repeatedly in an unstable group conversation",
+            "His emotional appeals have no effect",
+            "He abandons all attempts to control the men"
+          ],
+          "correct": 1,
+          "why": "Other speakers challenge or redirect him, requiring repeated attempts to reclaim the floor."
+        }
+      ],
+      "detail": [
+        {
+          "type": "single",
+          "title": "How does the short reply after the protest about uniforms operate?",
+          "options": [
+            "It accepts the complaint and changes the guest list",
+            "It asks the protester to explain his point",
+            "It acknowledges a challenge while allowing the speaker to proceed",
+            "It implies the speaker had forgotten his promise"
+          ],
+          "correct": 2,
+          "why": "The concessive response overrides the objection rather than resolving it."
+        },
+        {
+          "type": "single",
+          "title": "What rhetorical purpose does concern for the bride serve?",
+          "options": [
+            "It gives a moral and emotional reason for obedience",
+            "It makes the instructions less serious",
+            "It invites the bride to settle the disagreement",
+            "It removes the possibility of conflict"
+          ],
+          "correct": 0,
+          "why": "He frames obedience as avoiding harm to Grace's dignity."
+        },
+        {
+          "type": "single",
+          "title": "Why might the accumulation of prohibitions be comic as well as threatening?",
+          "options": [
+            "Every prohibited action is impossible at a wedding",
+            "The speaker combines extreme seriousness with oddly specific forms of misbehaviour",
+            "The listeners are already following every rule",
+            "The list is delivered as a calm formal announcement"
+          ],
+          "correct": 1,
+          "why": "The detailed bans juxtapose menace with incongruous possibilities."
+        }
+      ],
+      "sequence": [
+        "He invokes the importance of the occasion.",
+        "An earlier agreement is challenged.",
+        "An incongruous question breaks the flow.",
+        "He returns to increasingly specific prohibitions."
+      ],
+      "facts": [
+        {
+          "title": "Which word does the speaker use for the group he considers a possible provocation?",
+          "answer": "Cavalry.",
+          "criteria": "Accept cavalry."
+        }
+      ],
+      "open": [
+        {
+          "title": "Analyse one way the dialogue undermines the speaker's attempt to perform authority.",
+          "answer": "A protest or off-topic remark disrupts his monologue, exposing the need to negotiate or reassert control.",
+          "criteria": "Require a specific conversational event and an explanation of its pragmatic effect."
+        }
+      ],
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
+      "published": false,
+      "topic": "ll-peaky-no-fighting",
+      "level": "C1",
+      "language": "en",
+      "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+      "suggestedMinutes": 20,
+      "provenance": "assistant-authored original test questions from the public source practice metadata; actual clip and CEFR quality still require independent review",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    },
+    "C2": {
+      "goal": "Critically analyse power, register and comic timing in authentic colloquial dialogue.",
+      "gist": [
+        {
+          "type": "single",
+          "title": "Which account of power is most strongly supported by the excerpt?",
+          "options": [
+            "Power is asserted through speech but continually renegotiated by interlocutors",
+            "The speaker's commands are accepted without response",
+            "The wedding removes previous social tensions",
+            "The men abandon the event before any rules are stated"
+          ],
+          "correct": 0,
+          "why": "Repeated interventions make dominance an ongoing interactional achievement."
+        },
+        {
+          "type": "single",
+          "title": "How is the scene's humour best understood?",
+          "options": [
+            "It erases the possibility of violence",
+            "It grows out of the collision between high-stakes threats and mundane interruption",
+            "It depends entirely on the characters misunderstanding a word",
+            "It transforms the wedding into an official debate"
+          ],
+          "correct": 1,
+          "why": "Comic bathos arises within, not outside, the threatening setting."
+        }
+      ],
+      "detail": [
+        {
+          "type": "single",
+          "title": "What does the speaker's concessive response to an objection demonstrate?",
+          "options": [
+            "A willingness to concede the entire disputed point",
+            "An inability to hear other speakers",
+            "An attempt to register resistance without yielding conversational control",
+            "A plan to abandon the rules"
+          ],
+          "correct": 2,
+          "why": "The response both recognises the protest and reasserts the speaker's agenda."
+        },
+        {
+          "type": "single",
+          "title": "How does concern for the bride change the interpersonal stakes?",
+          "options": [
+            "It shifts the rationale for obedience towards protecting a third party",
+            "It proves the bride has already complained",
+            "It makes the conflict purely a private disagreement",
+            "It shows that the men have no knowledge of the ceremony"
+          ],
+          "correct": 0,
+          "why": "He gives public restraint an emotional justification tied to Grace."
+        },
+        {
+          "type": "single",
+          "title": "What is a plausible explanation for the escalating volume of the final rule?",
+          "options": [
+            "He wants the recording to be heard at a distance",
+            "It increases coercive intensity while potentially revealing fragile control",
+            "He is telling the men a different story",
+            "It signals he has forgotten the audience"
+          ],
+          "correct": 1,
+          "why": "Shouting both asserts authority and may betray anxiety about compliance."
+        }
+      ],
+      "sequence": [
+        "He frames the occasion as requiring unusual restraint.",
+        "An earlier agreement is disputed.",
+        "A tangential question produces an abrupt tonal shift.",
+        "The speaker attempts to restore authority through a string of bans."
+      ],
+      "facts": [
+        {
+          "title": "What first name does the speaker use for the bride?",
+          "answer": "Grace.",
+          "criteria": "Accept Grace."
+        }
+      ],
+      "open": [
+        {
+          "title": "Evaluate whether the profanity in the scene functions mainly as solidarity, intimidation or loss of control.",
+          "answer": "The familiar register signals in-group belonging but the same words exert coercive pressure and may reveal anxiety.",
+          "criteria": "Accept a nuanced interpretation with evidence from turns, interruptions or repeated orders."
+        }
+      ],
+      "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R34_V2",
+      "stage": "CLAUDE_CONTENT_AUDIT_PENDING",
+      "published": false,
+      "topic": "ll-peaky-no-fighting",
+      "level": "C2",
+      "language": "en",
+      "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+      "suggestedMinutes": 20,
+      "provenance": "assistant-authored original test questions from the public source practice metadata; actual clip and CEFR quality still require independent review",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    }
+  },
+  "authoredDraft": true
+}

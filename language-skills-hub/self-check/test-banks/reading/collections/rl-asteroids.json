@@ -1,0 +1,4094 @@
+{
+  "kind": "LSH_READING_DRAFT_COLLECTION_R34_V1",
+  "topic": "rl-asteroids",
+  "relativeSource": "cteni/asteroids/index.html",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "auditStatus": "CLAUDE_CONTENT_REWRITE_PENDING",
+  "published": false,
+  "version": "R34-DRAFT",
+  "variants": {
+    "en": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "en",
+        "level": "A1",
+        "title": "Space Rocks Around the Sun",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-en-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “asteroid is a rock in”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "asteroid is a rock in"
+          },
+          {
+            "id": "r34-asteroids-en-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "asteroids are far from Earth.",
+              "before they reach the ground.",
+              "sky is dark. They take",
+              "biggest asteroid is called Ceres."
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "before they reach the ground."
+          },
+          {
+            "id": "r34-asteroids-en-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “meteorite. It is heavy”",
+            "choices": [
+              "This place is called the",
+              "An asteroid does not always",
+              "and dark, and it",
+              "rare. Small pieces of space"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "meteorite. It is heavy and dark, and it"
+          },
+          {
+            "id": "r34-asteroids-en-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “They take pictures and watch”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "They take pictures and watch"
+          },
+          {
+            "id": "r34-asteroids-en-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 2?",
+            "choices": [
+              "This path is called an",
+              "is a rock in space.",
+              "a small piece of space",
+              "of space rock sometimes enter"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "This path is called an"
+          },
+          {
+            "id": "r34-asteroids-en-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “is a rock in”",
+            "choices": [
+              "called an orbit. Different asteroids",
+              "space. It goes around",
+              "a museum, you can sometimes",
+              "is rare. Small pieces of"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "is a rock in space. It goes around"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "en",
+        "level": "A2",
+        "title": "A Night at the Space Club",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-en-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “Friday, Nina visited the school”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "Friday, Nina visited the school"
+          },
+          {
+            "id": "r34-asteroids-en-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "the asteroid belt. It is",
+              "needed to go around a",
+              "When they discover a new",
+              "that, the students took turns"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "needed to go around a"
+          },
+          {
+            "id": "r34-asteroids-en-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “water and weather slowly”",
+            "choices": [
+              "lot of empty space between",
+              "help them understand where it",
+              "hide them. Nina took",
+              "DART. In 2022, it hit"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "water and weather slowly hide them. Nina took"
+          },
+          {
+            "id": "r34-asteroids-en-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “new object, they observe it”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "new object, they observe it"
+          },
+          {
+            "id": "r34-asteroids-en-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 2?",
+            "choices": [
+              "hitting it. Most known asteroids",
+              "Nina visited the school space",
+              "or rain, so the craters",
+              "hit a small asteroid moon"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "hitting it. Most known asteroids"
+          },
+          {
+            "id": "r34-asteroids-en-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “Nina visited the school”",
+            "choices": [
+              "known asteroids are not a",
+              "space club. The students",
+              "On the Moon there is",
+              "called DART. In 2022, it"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "Nina visited the school space club. The students"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "en",
+        "level": "B1",
+        "title": "How Do We Keep an Eye on Asteroids?",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-en-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “rocky objects left over from the early solar”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "rocky objects left over from the early solar"
+          },
+          {
+            "id": "r34-asteroids-en-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "ever come dangerously close to Earth. The unusual",
+              "small objects from telescopes. For a moment, the",
+              "observations can change a prediction, especially when an",
+              "experiment showed that a small change in an"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "small objects from telescopes. For a moment, the"
+          },
+          {
+            "id": "r34-asteroids-en-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “one that will hit our planet.”",
+            "choices": [
+              "objects were built and broken apart over billions",
+              "Earth from a real threat. It was a",
+              "Scientists often continue watching the same",
+              "above the Russian city of Chelyabinsk. Nobody had"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "one that will hit our planet. Scientists often continue watching the same"
+          },
+          {
+            "id": "r34-asteroids-en-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “measurements and international cooperation give scientists more time”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "measurements and international cooperation give scientists more time"
+          },
+          {
+            "id": "r34-asteroids-en-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "was chosen because it could be studied safely,",
+              "objects left over from the early solar system.",
+              "is one whose orbit enters Earth's neighbourhood, not",
+              "Chelyabinsk. Nobody had seen it coming, partly because"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "was chosen because it could be studied safely,"
+          },
+          {
+            "id": "r34-asteroids-en-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “is only the beginning. Astronomers take”",
+            "choices": [
+              "how small objects were built and broken apart",
+              "several observations and use computers to",
+              "not save Earth from a real threat. It",
+              "the air above the Russian city of Chelyabinsk."
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "is only the beginning. Astronomers take several observations and use computers to"
+          },
+          {
+            "id": "r34-asteroids-en-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “spacecraft. Good explanations also prevent unnecessary fear when”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "spacecraft. Good explanations also prevent unnecessary fear when"
+          },
+          {
+            "id": "r34-asteroids-en-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "different paths. Some are made mainly of rock,",
+              "object for months, because even a small improvement",
+              "For a moment, the explosion was brighter than",
+              "the asteroid Didymos. After the impact, Dimorphos completed"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "the asteroid Didymos. After the impact, Dimorphos completed"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "en",
+        "level": "B2",
+        "title": "Asteroids: A Question of Risk, Not Panic",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-en-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “that an asteroid “heading towards Earth” is about”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "that an asteroid “heading towards Earth” is about"
+          },
+          {
+            "id": "r34-asteroids-en-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "approach is therefore a reason for careful measurement,",
+              "of an asteroid, but it did not prove",
+              "scientists compare observations taken on different nights and",
+              "recent case shows how this works in practice."
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "of an asteroid, but it did not prove"
+          },
+          {
+            "id": "r34-asteroids-en-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “single dramatic number without its uncertainty”",
+            "choices": [
+              "should not be understood in its everyday sense",
+              "recorded for an object of that size. News",
+              "can easily give the wrong impression.",
+              "with Dimorphos, which orbits a larger asteroid called"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "single dramatic number without its uncertainty can easily give the wrong impression."
+          },
+          {
+            "id": "r34-asteroids-en-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “an emergency occurs. Stories about giant explosions make”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "an emergency occurs. Stories about giant explosions make"
+          },
+          {
+            "id": "r34-asteroids-en-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "within days the probability fell to almost zero.",
+              "an asteroid “heading towards Earth” is about to",
+              "random; it means their calculations become more precise",
+              "asteroid called Didymos. Observations showed that the smaller"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "within days the probability fell to almost zero."
+          },
+          {
+            "id": "r34-asteroids-en-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “discovery. Ground-based telescopes repeatedly photograph the”",
+            "choices": [
+              "and it should not be understood in its",
+              "sky, and computer programs look for",
+              "figure ever recorded for an object of that",
+              "deliberately collided with Dimorphos, which orbits a larger"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "discovery. Ground-based telescopes repeatedly photograph the sky, and computer programs look for"
+          },
+          {
+            "id": "r34-asteroids-en-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “central lesson is neither that asteroids are harmless”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "central lesson is neither that asteroids are harmless"
+          },
+          {
+            "id": "r34-asteroids-en-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "and tens of thousands move through regions relatively",
+              "a responsible report should make clear whether its",
+              "did not prove that every possible impact could",
+              "calculated chance of an impact in December 2032"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "calculated chance of an impact in December 2032"
+          },
+          {
+            "id": "r34-asteroids-en-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “metal that orbit the Sun, and”",
+            "choices": [
+              "tens of thousands move through regions",
+              "responsible report should make clear whether its figures",
+              "the highest figure ever recorded for an object",
+              "DART spacecraft deliberately collided with Dimorphos, which orbits"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "metal that orbit the Sun, and tens of thousands move through regions"
+          },
+          {
+            "id": "r34-asteroids-en-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “asteroid called Didymos. Observations showed that the smaller”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "asteroid called Didymos. Observations showed that the smaller"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "en",
+        "level": "C1",
+        "title": "Watching the Sky, Interpreting the Odds",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-en-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “unusual position between curiosity-driven research and public safety.”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "unusual position between curiosity-driven research and public safety."
+          },
+          {
+            "id": "r34-asteroids-en-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "follows the laws of physics; the uncertainty belongs",
+              "Dimorphos is probably a loosely bound 'rubble pile'",
+              "increasing it before the uncertainty is resolved. Infrared",
+              "supplied an important experimental result rather than a"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "Dimorphos is probably a loosely bound 'rubble pile'"
+          },
+          {
+            "id": "r34-asteroids-en-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “alarming until the public understands that”",
+            "choices": [
+              "honesty, not a sign that the object's motion",
+              "tiny amount years in advance may be more",
+              "the set of plausible trajectories is",
+              "debris thrown off by the collision pushed Dimorphos"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "alarming until the public understands that the set of plausible trajectories is"
+          },
+          {
+            "id": "r34-asteroids-en-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “message acknowledges what researchers cannot yet know while”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "message acknowledges what researchers cannot yet know while"
+          },
+          {
+            "id": "r34-asteroids-en-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "estimate the resulting change and must verify the",
+              "position between curiosity-driven research and public safety. These",
+              "provides evidence with which uncertainty can be tested",
+              "collision pushed Dimorphos further, so the total effect"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "estimate the resulting change and must verify the"
+          },
+          {
+            "id": "r34-asteroids-en-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “predictions evolve. A faint asteroid may”",
+            "choices": [
+              "matter of intellectual honesty, not a sign that",
+              "initially appear in only a handful",
+              "path by a tiny amount years in advance",
+              "plume of debris thrown off by the collision"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "predictions evolve. A faint asteroid may initially appear in only a handful"
+          },
+          {
+            "id": "r34-asteroids-en-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “to guide proportionate decisions. Trust grows when explanations”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "to guide proportionate decisions. Trust grows when explanations"
+          },
+          {
+            "id": "r34-asteroids-en-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "The familiar label 'near-Earth' is a description of",
+              "a headline, without the date of the estimate",
+              "loosely bound 'rubble pile' rather than a solid",
+              "conditions. Nevertheless, a response to a future threat"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "conditions. Nevertheless, a response to a future threat"
+          },
+          {
+            "id": "r34-asteroids-en-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “that take them into Earth's neighbourhood.”",
+            "choices": [
+              "The familiar label 'near-Earth' is a",
+              "without the date of the estimate or the",
+              "impact. Changing a path by a tiny amount",
+              "change: an enormous plume of debris thrown off"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "that take them into Earth's neighbourhood. The familiar label 'near-Earth' is a"
+          },
+          {
+            "id": "r34-asteroids-en-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “collision pushed Dimorphos further, so the total effect”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "collision pushed Dimorphos further, so the total effect"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "en",
+        "level": "C2",
+        "title": "When a Probability Becomes a Headline",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Find evidence"
+          },
+          {
+            "id": "evidence",
+            "title": "Close reading"
+          },
+          {
+            "id": "cohesion",
+            "title": "Follow the text"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-en-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “presented as a contest between humanity and a”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "presented as a contest between humanity and a"
+          },
+          {
+            "id": "r34-asteroids-en-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 4?",
+            "choices": [
+              "distinction is more than a question of terminology.",
+              "and path?' A modest deflection applied years in",
+              "those possibilities, sometimes making a preliminary risk estimate",
+              "history of Apophis illustrates the point. Shortly after"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "and path?' A modest deflection applied years in"
+          },
+          {
+            "id": "r34-asteroids-en-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “itself a product of observing conditions,”",
+            "choices": [
+              "the two as the same thing invites either",
+              "a century. In April 2029, Apophis will pass",
+              "so apparently precise statistics can conceal",
+              "deflection, not proof that humanity possesses an all-purpose"
+            ],
+            "answer": 2,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "itself a product of observing conditions, so apparently precise statistics can conceal"
+          },
+          {
+            "id": "r34-asteroids-en-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “into either panic or ridicule. The sensible conclusion”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "into either panic or ridicule. The sensible conclusion"
+          },
+          {
+            "id": "r34-asteroids-en-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "a threat will thus become a rare scientific",
+              "a contest between humanity and a hostile universe.",
+              "can suggest a level of certainty the calculation",
+              "shield. The relevant question in a real emergency"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "a threat will thus become a rare scientific"
+          },
+          {
+            "id": "r34-asteroids-en-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “to favour objects that are sufficiently”",
+            "choices": [
+              "take action. Treating the two as the same",
+              "bright and conveniently placed in the",
+              "at least a century. In April 2029, Apophis",
+              "demonstration of kinetic deflection, not proof that humanity"
+            ],
+            "answer": 1,
+            "explanation": "Compare the exact wording in paragraph 2.",
+            "evidence": "to favour objects that are sufficiently bright and conveniently placed in the"
+          },
+          {
+            "id": "r34-asteroids-en-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 5,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “can withstand correction when new facts emerge. Scientific”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 4,
+            "explanation": "Compare the exact wording in paragraph 5.",
+            "evidence": "can withstand correction when new facts emerge. Scientific"
+          },
+          {
+            "id": "r34-asteroids-en-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Which extract appears in paragraph 3?",
+            "choices": [
+              "by nature: it is a physical object moving",
+              "orbit we calculate but also which objects the",
+              "in advance could be more consequential than a",
+              "that further measurements soon eliminated. Smaller residual risks"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 3.",
+            "evidence": "that further measurements soon eliminated. Smaller residual risks"
+          },
+          {
+            "id": "r34-asteroids-en-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Which phrase follows this extract in the same paragraph? “neither an enemy nor a warning”",
+            "choices": [
+              "sent by nature: it is a",
+              "calculate but also which objects the instruments are",
+              "impact for at least a century. In April",
+              "This was a demonstration of kinetic deflection, not"
+            ],
+            "answer": 0,
+            "explanation": "Compare the exact wording in paragraph 1.",
+            "evidence": "neither an enemy nor a warning sent by nature: it is a"
+          },
+          {
+            "id": "r34-asteroids-en-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Which paragraph includes the following extract? “shield. The relevant question in a real emergency”",
+            "choices": [
+              "Paragraph 1",
+              "Paragraph 2",
+              "Paragraph 3",
+              "Paragraph 4",
+              "Paragraph 5"
+            ],
+            "answer": 3,
+            "explanation": "Compare the exact wording in paragraph 4.",
+            "evidence": "shield. The relevant question in a real emergency"
+          }
+        ]
+      }
+    },
+    "es": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "es",
+        "level": "A1",
+        "title": "Rocas que viajan por el espacio",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-es-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «asteroide es una roca en»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "asteroide es una roca en"
+          },
+          {
+            "id": "r34-asteroids-es-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 1?",
+            "choices": [
+              "se llama órbita. Los asteroides",
+              "Algunos son pequeños, como un",
+              "de roca entran en el"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "Algunos son pequeños, como un"
+          },
+          {
+            "id": "r34-asteroids-es-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «está lejos de la»",
+            "choices": [
+              "órbita. Algunos pasan cerca de",
+              "antes de llegar al suelo.",
+              "Tierra. Muchos viajan entre"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "está lejos de la Tierra. Muchos viajan entre"
+          },
+          {
+            "id": "r34-asteroids-es-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «y observan adónde van las»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "y observan adónde van las"
+          },
+          {
+            "id": "r34-asteroids-es-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "es una roca en el",
+              "todos la misma órbita. Algunos",
+              "al suelo. Los científicos observan"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "todos la misma órbita. Algunos"
+          },
+          {
+            "id": "r34-asteroids-es-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «buscan asteroides con grandes»",
+            "choices": [
+              "Júpiter. Este lugar se llama",
+              "queman antes de llegar al",
+              "telescopios. Un telescopio ayuda"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "buscan asteroides con grandes telescopios. Un telescopio ayuda"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "es",
+        "level": "A2",
+        "title": "Una tarde en el club de astronomía",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-es-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «viernes pasado, Nina fue al»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "viernes pasado, Nina fue al"
+          },
+          {
+            "id": "r34-asteroids-es-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 1?",
+            "choices": [
+              "pasar cerca de la Tierra",
+              "metal que giran alrededor del",
+              "de la prueba, Dimorphos tardaba"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "metal que giran alrededor del"
+          },
+          {
+            "id": "r34-asteroids-es-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «y Júpiter, llamada cinturón»",
+            "choices": [
+              "de los asteroides conocidos no",
+              "A Nina le pareció increíble",
+              "de asteroides. No es"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "y Júpiter, llamada cinturón de asteroides. No es"
+          },
+          {
+            "id": "r34-asteroids-es-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «descubren uno nuevo, lo observan»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "descubren uno nuevo, lo observan"
+          },
+          {
+            "id": "r34-asteroids-es-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "pasado, Nina fue al club",
+              "con ella. La mayoría de",
+              "increíble que una nave pudiera"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "con ella. La mayoría de"
+          },
+          {
+            "id": "r34-asteroids-es-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «sorprendió al saber que»",
+            "choices": [
+              "de rocas: entre ellas hay",
+              "más grande. A Nina le",
+              "algunos asteroides pasan cerca"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "sorprendió al saber que algunos asteroides pasan cerca"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "es",
+        "level": "B1",
+        "title": "¿Cómo vigilamos los asteroides?",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-es-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «asteroides son objetos rocosos que quedaron de la»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "asteroides son objetos rocosos que quedaron de la"
+          },
+          {
+            "id": "r34-asteroids-es-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "porque pueden revelar información sobre un pasado muy",
+              "mejores telescopios, las mediciones precisas y la cooperación",
+              "movimiento con seguridad. Las nuevas observaciones pueden cambiar",
+              "Un experimento demostró que es posible modificar un"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "mejores telescopios, las mediciones precisas y la cooperación"
+          },
+          {
+            "id": "r34-asteroids-es-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «a Didymos. La misión no salvó»",
+            "choices": [
+              "saber si un objeto podría acercarse peligrosamente a",
+              "se acaba de descubrir. Por eso los científicos",
+              "a la Tierra de un peligro",
+              "de caer sobre nosotros. Los grandes impactos son"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "a Didymos. La misión no salvó a la Tierra de un peligro"
+          },
+          {
+            "id": "r34-asteroids-es-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «nuevas observaciones pueden cambiar una predicción, sobre todo»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "nuevas observaciones pueden cambiar una predicción, sobre todo"
+          },
+          {
+            "id": "r34-asteroids-es-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "órbita que pasa por nuestra región del espacio,",
+              "son objetos rocosos que quedaron de la formación",
+              "tardaba menos tiempo en completar su vuelta a",
+              "nosotros. Los grandes impactos son poco frecuentes, pero"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "órbita que pasa por nuestra región del espacio,"
+          },
+          {
+            "id": "r34-asteroids-es-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «son objetos rocosos que quedaron de»",
+            "choices": [
+              "por nuestra región del espacio, pero no necesariamente",
+              "la formación del sistema solar. La",
+              "Didymos. Después del impacto, Dimorphos tardaba menos tiempo",
+              "punto de caer sobre nosotros. Los grandes impactos"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "son objetos rocosos que quedaron de la formación del sistema solar. La"
+          },
+          {
+            "id": "r34-asteroids-es-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «un objeto peligroso, recibir un aviso temprano puede»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "un objeto peligroso, recibir un aviso temprano puede"
+          },
+          {
+            "id": "r34-asteroids-es-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "alrededor del Sol entre Marte y Júpiter, aunque",
+              "que pasa por nuestra región del espacio, pero",
+              "mediciones precisas y la cooperación internacional dan más",
+              "la NASA chocó de forma intencionada con Dimorphos,"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "la NASA chocó de forma intencionada con Dimorphos,"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "es",
+        "level": "B2",
+        "title": "Asteroides: riesgo no significa pánico",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-es-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «a entender que un asteroide «se dirige hacia»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "a entender que un asteroide «se dirige hacia"
+          },
+          {
+            "id": "r34-asteroids-es-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "nuestro vecindario espacial y otro cuya trayectoria calculada",
+              "de una emergencia. Las grandes explosiones funcionan bien",
+              "que reflejan poca luz solar. Una vez identificado",
+              "segundo desafío es decidir qué hacer si se"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "de una emergencia. Las grandes explosiones funcionan bien"
+          },
+          {
+            "id": "r34-asteroids-es-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «real, influirían el tamaño y la»",
+            "choices": [
+              "un acercamiento merece una medición cuidadosa, no una",
+              "calculan su órbita con mayor precisión. Las primeras",
+              "estructura del objeto, así como el",
+              "siendo incierto y por qué una predicción actualizada"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "real, influirían el tamaño y la estructura del objeto, así como el"
+          },
+          {
+            "id": "r34-asteroids-es-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «vez identificado un posible asteroide, los científicos comparan»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "vez identificado un posible asteroide, los científicos comparan"
+          },
+          {
+            "id": "r34-asteroids-es-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "mejoran con cada observación. Una cifra espectacular presentada",
+              "entender que un asteroide «se dirige hacia la",
+              "demostró que sea posible evitar todos los impactos.",
+              "qué una predicción actualizada puede diferir de la"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "mejoran con cada observación. Una cifra espectacular presentada"
+          },
+          {
+            "id": "r34-asteroids-es-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «entender que un asteroide «se dirige»",
+            "choices": [
+              "cifra espectacular presentada sin explicar la incertidumbre puede",
+              "hacia la Tierra» y que una",
+              "modificar el movimiento de un asteroide, pero no",
+              "qué sigue siendo incierto y por qué una"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "entender que un asteroide «se dirige hacia la Tierra» y que una"
+          },
+          {
+            "id": "r34-asteroids-es-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «los asteroides sean inofensivos ni que el desastre»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "los asteroides sean inofensivos ni que el desastre"
+          },
+          {
+            "id": "r34-asteroids-es-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "de roca y metal que giran alrededor del",
+              "cada observación. Una cifra espectacular presentada sin explicar",
+              "grandes explosiones funcionan bien en el cine; en",
+              "mayor llamado Didymos. Las observaciones demostraron que el"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "mayor llamado Didymos. Las observaciones demostraron que el"
+          },
+          {
+            "id": "r34-asteroids-es-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «Dimorphos, que gira alrededor de un»",
+            "choices": [
+              "asteroide mayor llamado Didymos. Las observaciones",
+              "momento determinado. Por tanto, un acercamiento merece una",
+              "en noches diferentes y calculan su órbita con",
+              "se sabe, qué sigue siendo incierto y por"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "Dimorphos, que gira alrededor de un asteroide mayor llamado Didymos. Las observaciones"
+          },
+          {
+            "id": "r34-asteroids-es-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «posición. Las observaciones infrarrojas también ayudan a detectar»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "posición. Las observaciones infrarrojas también ayudan a detectar"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "es",
+        "level": "C1",
+        "title": "Observar el cielo e interpretar el riesgo",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-es-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «los asteroides ocupa una posición peculiar entre la»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "los asteroides ocupa una posición peculiar entre la"
+          },
+          {
+            "id": "r34-asteroids-es-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "comunicación suelen reducir esta diferencia a advertencias llamativas",
+              "emergencia y despreciar los acontecimientos poco probables como",
+              "suelen reducir el abanico de posibilidades: a veces",
+              "proporcionó un resultado experimental importante, no una garantía"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "emergencia y despreciar los acontecimientos poco probables como"
+          },
+          {
+            "id": "r34-asteroids-es-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «con años de antelación puede ser»",
+            "choices": [
+              "mucho más rotundo de lo que permiten los",
+              "incertidumbre. Los instrumentos infrarrojos complementan a los telescopios",
+              "más viable que intentar una intervención",
+              "llaman menos la atención que las imágenes de"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "con años de antelación puede ser más viable que intentar una intervención"
+          },
+          {
+            "id": "r34-asteroids-es-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «veces disminuye la probabilidad aparente de impacto y,»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "veces disminuye la probabilidad aparente de impacto y,"
+          },
+          {
+            "id": "r34-asteroids-es-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "y reducirla. El valor de una estimación depende",
+              "asteroides ocupa una posición peculiar entre la investigación",
+              "sobre todo, del tiempo disponible antes de un",
+              "de una misión extraordinaria, aunque son esenciales para"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "y reducirla. El valor de una estimación depende"
+          },
+          {
+            "id": "r34-asteroids-es-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «asteroides ocupa una posición peculiar entre»",
+            "choices": [
+              "una estimación depende también de cuándo se calculó",
+              "la investigación científica y la seguridad",
+              "la dirección en que habría que desviarlo y,",
+              "públicas cuidadosas llaman menos la atención que las"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "asteroides ocupa una posición peculiar entre la investigación científica y la seguridad"
+          },
+          {
+            "id": "r34-asteroids-es-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «sino cuando se entiende lo suficiente para tomar»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "sino cuando se entiende lo suficiente para tomar"
+          },
+          {
+            "id": "r34-asteroids-es-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "una pequeña parte sigue órbitas que los llevan",
+              "reducirla. El valor de una estimación depende también",
+              "probables como si no merecieran preparación. Un mensaje",
+              "demostró que transferir impulso puede alterar una órbita"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "demostró que transferir impulso puede alterar una órbita"
+          },
+          {
+            "id": "r34-asteroids-es-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «modificó su movimiento alrededor de Didymos.»",
+            "choices": [
+              "El éxito demostró que transferir impulso",
+              "puede acompañarse de un titular mucho más rotundo",
+              "temporalmente antes de aclararse la incertidumbre. Los instrumentos",
+              "las explicaciones públicas cuidadosas llaman menos la atención"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "modificó su movimiento alrededor de Didymos. El éxito demostró que transferir impulso"
+          },
+          {
+            "id": "r34-asteroids-es-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «Varias trayectorias futuras pueden ser compatibles con esas»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "Varias trayectorias futuras pueden ser compatibles con esas"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "es",
+        "level": "C2",
+        "title": "Cuando una probabilidad se convierte en titular",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Localizar datos"
+          },
+          {
+            "id": "evidence",
+            "title": "Lectura atenta"
+          },
+          {
+            "id": "cohesion",
+            "title": "Seguir el texto"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-es-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «se representa a menudo como una lucha entre»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "se representa a menudo como una lucha entre"
+          },
+          {
+            "id": "r34-asteroids-es-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 4?",
+            "choices": [
+              "son conceptos diferentes; reunirlos bajo una misma etiqueta",
+              "y los medios han de resistirse a convertir",
+              "durante un arco orbital muy corto, varias trayectorias",
+              "experimento DART de 2022 ofreció un contrapunto instructivo"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "y los medios han de resistirse a convertir"
+          },
+          {
+            "id": "r34-asteroids-es-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «Sin una detección fiable, incluso un»",
+            "choices": [
+              "en que la sociedad entiende y debate las",
+              "riesgo puede subir antes de bajar. Estas revisiones",
+              "éxito de ingeniería perdería buena parte",
+              "éxito apenas se ven. Sería irresponsable prometer seguridad"
+            ],
+            "answer": 2,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "Sin una detección fiable, incluso un éxito de ingeniería perdería buena parte"
+          },
+          {
+            "id": "r34-asteroids-es-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «trayectorias pueden ajustarse a las mediciones. Los datos»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "trayectorias pueden ajustarse a las mediciones. Los datos"
+          },
+          {
+            "id": "r34-asteroids-es-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 2?",
+            "choices": [
+              "nunca prometieron. La precisión de una cifra no",
+              "a menudo como una lucha entre la humanidad",
+              "modesta mantenida durante años podría ser más decisiva",
+              "prometer seguridad absoluta; sería igualmente imprudente exigir predicciones"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "nunca prometieron. La precisión de una cifra no"
+          },
+          {
+            "id": "r34-asteroids-es-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «a menudo como una lucha entre»",
+            "choices": [
+              "cifra no debe confundirse con la capacidad de",
+              "la humanidad y un universo hostil.",
+              "posición futura, conociendo su estructura y trayectoria?». Una",
+              "prepararse con éxito apenas se ven. Sería irresponsable"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 1.",
+            "evidence": "a menudo como una lucha entre la humanidad y un universo hostil."
+          },
+          {
+            "id": "r34-asteroids-es-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «tiempo suficiente para actuar con prudencia. Lo decisivo»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 4.",
+            "evidence": "tiempo suficiente para actuar con prudencia. Lo decisivo"
+          },
+          {
+            "id": "r34-asteroids-es-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "¿Qué fragmento se encuentra en el párrafo 3?",
+            "choices": [
+              "intervención verosímil. Un asteroide no es un enemigo",
+              "La precisión de una cifra no debe confundirse",
+              "resistirse a convertir cada cambio de estimación en",
+              "no una prueba de que poseamos un escudo"
+            ],
+            "answer": 3,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "no una prueba de que poseamos un escudo"
+          },
+          {
+            "id": "r34-asteroids-es-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "¿Qué palabras siguen a este fragmento en el mismo párrafo? «de Dimorphos. Fue una demostración de»",
+            "choices": [
+              "desviación cinética, no una prueba de",
+              "metáfora afecta a la manera en que la",
+              "que una estimación preliminar del riesgo puede subir",
+              "los beneficios de prepararse con éxito apenas se"
+            ],
+            "answer": 0,
+            "explanation": "Compara el texto exacto del párrafo 3.",
+            "evidence": "de Dimorphos. Fue una demostración de desviación cinética, no una prueba de"
+          },
+          {
+            "id": "r34-asteroids-es-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "¿En qué párrafo aparece este fragmento? «instrumentos infrarrojos aportan información complementaria, pero no omnisciencia.»",
+            "choices": [
+              "Párrafo 1",
+              "Párrafo 2",
+              "Párrafo 3",
+              "Párrafo 4"
+            ],
+            "answer": 1,
+            "explanation": "Compara el texto exacto del párrafo 2.",
+            "evidence": "instrumentos infrarrojos aportan información complementaria, pero no omnisciencia."
+          }
+        ]
+      }
+    },
+    "de": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "de",
+        "level": "A1",
+        "title": "Weltraumsteine auf ihrer Reise",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-de-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Asteroid ist ein Stein im“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Asteroid ist ein Stein im"
+          },
+          {
+            "id": "r34-asteroids-de-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 1?",
+            "choices": [
+              "Diese Bahn heißt Umlaufbahn. Nicht",
+              "Licht. Manche sind klein wie",
+              "in die Luft über der"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Licht. Manche sind klein wie"
+          },
+          {
+            "id": "r34-asteroids-de-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „meisten Asteroiden sind weit“",
+            "choices": [
+              "gleiche Bahn. Einige kommen unserer",
+              "erreichen. Wissenschaftler beobachten den Himmel,",
+              "von der Erde entfernt."
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "meisten Asteroiden sind weit von der Erde entfernt."
+          },
+          {
+            "id": "r34-asteroids-de-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „beobachten, wohin die Steine fliegen.“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "beobachten, wohin die Steine fliegen."
+          },
+          {
+            "id": "r34-asteroids-de-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "ist ein Stein im Weltall.",
+              "Asteroiden haben die gleiche Bahn.",
+              "den Himmel, um mehr zu"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Asteroiden haben die gleiche Bahn."
+          },
+          {
+            "id": "r34-asteroids-de-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Asteroiden mit großen Teleskopen.“",
+            "choices": [
+              "zwischen Mars und Jupiter. Dieser",
+              "Boden erreichen. Wissenschaftler beobachten den",
+              "Mit einem Teleskop kann"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Asteroiden mit großen Teleskopen. Mit einem Teleskop kann"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "de",
+        "level": "A2",
+        "title": "Ein Abend in der Weltraum-AG",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-de-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Freitag besuchte Nina die Weltraum-AG“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Freitag besuchte Nina die Weltraum-AG"
+          },
+          {
+            "id": "r34-asteroids-de-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 1?",
+            "choices": [
+              "Lehrerin sagte: Der Erde nahezukommen",
+              "Metall sind, die um die",
+              "Dimorphos weniger Zeit für eine"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Metall sind, die um die"
+          },
+          {
+            "id": "r34-asteroids-de-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Jupiter im Asteroidengürtel. Dort“",
+            "choices": [
+              "bekannten Asteroiden sind für uns",
+              "dass eine Raumsonde einem Weltraumstein",
+              "stehen die Steine nicht"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Jupiter im Asteroidengürtel. Dort stehen die Steine nicht"
+          },
+          {
+            "id": "r34-asteroids-de-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Objekt finden, beobachten sie es“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Objekt finden, beobachten sie es"
+          },
+          {
+            "id": "r34-asteroids-de-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "besuchte Nina die Weltraum-AG ihrer",
+              "ihr zusammenzustoßen. Die meisten bekannten",
+              "einem Weltraumstein einen kleinen Stoß"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "ihr zusammenzustoßen. Die meisten bekannten"
+          },
+          {
+            "id": "r34-asteroids-de-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „überrascht, dass einige Asteroiden“",
+            "choices": [
+              "Zwischen ihnen gibt es sehr",
+              "es erstaunlich, dass eine Raumsonde",
+              "der Erde nahekommen. Wissenschaftler"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "überrascht, dass einige Asteroiden der Erde nahekommen. Wissenschaftler"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "de",
+        "level": "B1",
+        "title": "Wie behalten wir Asteroiden im Blick?",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-de-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „sind Gesteinskörper aus der frühen Zeit unseres Sonnensystems.“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "sind Gesteinskörper aus der frühen Zeit unseres Sonnensystems."
+          },
+          {
+            "id": "r34-asteroids-de-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "sie uns viel über die Vergangenheit verraten können.",
+              "Bessere Teleskope, genaue Messungen und internationale Zusammenarbeit geben",
+              "Weg sicher vorherzusagen. Neue Messungen können eine Prognose",
+              "Ein Experiment zeigte, dass sich die Bewegung eines"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Bessere Teleskope, genaue Messungen und internationale Zusammenarbeit geben"
+          },
+          {
+            "id": "r34-asteroids-de-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „die Erde nicht vor einer echten“",
+            "choices": [
+              "sie wissen, ob uns ein Objekt einmal gefährlich",
+              "Kurzem entdeckt wurde. Deshalb arbeiten Forscher zusammen und",
+              "Gefahr. Sie war ein kontrollierter Test,",
+              "die Erde fallen. Große Einschläge sind selten, doch"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "die Erde nicht vor einer echten Gefahr. Sie war ein kontrollierter Test,"
+          },
+          {
+            "id": "r34-asteroids-de-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Messungen können eine Prognose verändern, besonders wenn ein“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Messungen können eine Prognose verändern, besonders wenn ein"
+          },
+          {
+            "id": "r34-asteroids-de-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "Nachbarschaft der Erde führt. Das heißt noch lange",
+              "Gesteinskörper aus der frühen Zeit unseres Sonnensystems. Die",
+              "Umrundung von Didymos. Die Mission rettete die Erde",
+              "Große Einschläge sind selten, doch gute Vorbereitung ist"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Nachbarschaft der Erde führt. Das heißt noch lange"
+          },
+          {
+            "id": "r34-asteroids-de-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Gesteinskörper aus der frühen Zeit unseres“",
+            "choices": [
+              "führt. Das heißt noch lange nicht, dass es",
+              "Sonnensystems. Die meisten kreisen zwischen Mars",
+              "weniger Zeit für eine Umrundung von Didymos. Die",
+              "auf die Erde fallen. Große Einschläge sind selten,"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Gesteinskörper aus der frühen Zeit unseres Sonnensystems. Die meisten kreisen zwischen Mars"
+          },
+          {
+            "id": "r34-asteroids-de-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Tages einen gefährlichen Himmelskörper entdecken, kann eine frühe“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Tages einen gefährlichen Himmelskörper entdecken, kann eine frühe"
+          },
+          {
+            "id": "r34-asteroids-de-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "und Jupiter um die Sonne, andere folgen unterschiedlichen",
+              "der Erde führt. Das heißt noch lange nicht,",
+              "genaue Messungen und internationale Zusammenarbeit geben Wissenschaftlern mehr",
+              "DART absichtlich Dimorphos, einen kleinen Mond des Asteroiden"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "DART absichtlich Dimorphos, einen kleinen Mond des Asteroiden"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "de",
+        "level": "B2",
+        "title": "Asteroiden: Risiko statt Panik",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-de-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „den Eindruck, ein Asteroid „rase auf die Erde“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "den Eindruck, ein Asteroid „rase auf die Erde"
+          },
+          {
+            "id": "r34-asteroids-de-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "zieht, und einem, der die Erde zu einem",
+              "möglichen Notfall austauschen. Spektakuläre Explosionen eignen sich für",
+              "die wenig Sonnenlicht reflektieren. Wird ein möglicher Asteroid",
+              "zweite Herausforderung ist die Frage, wie man reagieren"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "möglichen Notfall austauschen. Spektakuläre Explosionen eignen sich für"
+          },
+          {
+            "id": "r34-asteroids-de-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „jeder mögliche Einschlag verhindern lässt. Größe,“",
+            "choices": [
+              "für genaue Messungen, aber nicht automatisch ein Grund",
+              "ihre Bahnberechnung. Frühe Vorhersagen können sich mit zusätzlichen",
+              "Aufbau und verfügbare Vorwarnzeit würden dabei",
+              "wo noch Unsicherheit besteht und warum neue Prognosen"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "jeder mögliche Einschlag verhindern lässt. Größe, Aufbau und verfügbare Vorwarnzeit würden dabei"
+          },
+          {
+            "id": "r34-asteroids-de-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Wird ein möglicher Asteroid gefunden, vergleichen Forscher Aufnahmen“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Wird ein möglicher Asteroid gefunden, vergleichen Forscher Aufnahmen"
+          },
+          {
+            "id": "r34-asteroids-de-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "vorliegen. Eine dramatisch wirkende Zahl ohne Hinweis auf",
+              "Eindruck, ein Asteroid „rase auf die Erde zu“",
+              "Asteroiden verändern kann. Der Test zeigte jedoch nicht,",
+              "und warum neue Prognosen von früheren abweichen. Behörden"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "vorliegen. Eine dramatisch wirkende Zahl ohne Hinweis auf"
+          },
+          {
+            "id": "r34-asteroids-de-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Eindruck, ein Asteroid „rase auf die“",
+            "choices": [
+              "Zahl ohne Hinweis auf ihre Unsicherheit kann einen",
+              "Erde zu“ und werde bald eine",
+              "bewiesen, dass eine Raumsonde die Bewegung eines Asteroiden",
+              "ist, wo noch Unsicherheit besteht und warum neue"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "Eindruck, ein Asteroid „rase auf die Erde zu“ und werde bald eine"
+          },
+          {
+            "id": "r34-asteroids-de-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „weder, dass Asteroiden völlig ungefährlich sind, noch, dass“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "weder, dass Asteroiden völlig ungefährlich sind, noch, dass"
+          },
+          {
+            "id": "r34-asteroids-de-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "aus Gestein und Metall, die um die Sonne",
+              "Eine dramatisch wirkende Zahl ohne Hinweis auf ihre",
+              "Spektakuläre Explosionen eignen sich für Kinofilme; die wirksamste",
+              "der einen größeren Asteroiden namens Didymos umkreist. Beobachtungen"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "der einen größeren Asteroiden namens Didymos umkreist. Beobachtungen"
+          },
+          {
+            "id": "r34-asteroids-de-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „Raumsonde DART absichtlich mit Dimorphos zusammenstoßen,“",
+            "choices": [
+              "der einen größeren Asteroiden namens Didymos",
+              "ist deshalb ein Anlass für genaue Messungen, aber",
+              "verschiedenen Nächten und verbessern ihre Bahnberechnung. Frühe Vorhersagen",
+              "was bekannt ist, wo noch Unsicherheit besteht und"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "Raumsonde DART absichtlich mit Dimorphos zusammenstoßen, der einen größeren Asteroiden namens Didymos"
+          },
+          {
+            "id": "r34-asteroids-de-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „ihre Position verändern. Infrarotbeobachtungen helfen außerdem, dunkle Körper“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "ihre Position verändern. Infrarotbeobachtungen helfen außerdem, dunkle Körper"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "de",
+        "level": "C1",
+        "title": "Den Himmel beobachten, Risiken verstehen",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-de-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „an einer ungewöhnlichen Schnittstelle zwischen wissenschaftlicher Neugier und“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "an einer ungewöhnlichen Schnittstelle zwischen wissenschaftlicher Neugier und"
+          },
+          {
+            "id": "r34-asteroids-de-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "entfernten Gesteinsbrockens wird dann mit einer Schlagzeile versehen,",
+              "Gefahren als unwichtig abzutun. Eine verantwortliche Aussage benennt",
+              "schränken die Möglichkeiten gewöhnlich ein; dabei kann eine",
+              "lieferte ein bedeutsames Experiment, keine universelle Sicherheitsgarantie. Im"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Gefahren als unwichtig abzutun. Eine verantwortliche Aussage benennt"
+          },
+          {
+            "id": "r34-asteroids-de-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „viele Jahre im Voraus könnte wirkungsvoller“",
+            "choices": [
+              "weil eine wissenschaftliche Beobachtung nicht automatisch eine politische",
+              "sie die Wärmestrahlung von Körpern erfassen können, die",
+              "sein als ein spektakulärer Eingriff in",
+              "Bilder einer Raumfahrtmission, obwohl sie jede spätere Reaktion"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "viele Jahre im Voraus könnte wirkungsvoller sein als ein spektakulärer Eingriff in"
+          },
+          {
+            "id": "r34-asteroids-de-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „kann eine zunächst angenommene Einschlagswahrscheinlichkeit sinken oder vorübergehend“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "kann eine zunächst angenommene Einschlagswahrscheinlichkeit sinken oder vorübergehend"
+          },
+          {
+            "id": "r34-asteroids-de-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "überprüfen und verbessern lassen. Ein einzelner Prozentwert ist",
+              "einer ungewöhnlichen Schnittstelle zwischen wissenschaftlicher Neugier und öffentlicher",
+              "vor allem von der verbleibenden Zeit ab. Eine",
+              "jede spätere Reaktion erst ermöglichen. Gute Risikokommunikation muss"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "überprüfen und verbessern lassen. Ein einzelner Prozentwert ist"
+          },
+          {
+            "id": "r34-asteroids-de-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „einer ungewöhnlichen Schnittstelle zwischen wissenschaftlicher Neugier“",
+            "choices": [
+              "einzelner Prozentwert ist deshalb ohne Datum, Messgrundlage und",
+              "und öffentlicher Sicherheit. Diese Himmelskörper bewahren",
+              "Beschaffenheit des Asteroiden, der notwendigen Ablenkungsrichtung und vor",
+              "eindrucksvoll als Bilder einer Raumfahrtmission, obwohl sie jede"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "einer ungewöhnlichen Schnittstelle zwischen wissenschaftlicher Neugier und öffentlicher Sicherheit. Diese Himmelskörper bewahren"
+          },
+          {
+            "id": "r34-asteroids-de-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „die Unsicherheit für angemessene Entscheidungen verständlich gemacht wird.“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "die Unsicherheit für angemessene Entscheidungen verständlich gemacht wird."
+          },
+          {
+            "id": "r34-asteroids-de-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "die in die Nähe der Erde führen. Die",
+              "und verbessern lassen. Ein einzelner Prozentwert ist deshalb",
+              "Eine verantwortliche Aussage benennt das noch Unbekannte und",
+              "zeigte, dass eine Impulsübertragung unter realen Bedingungen eine"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "zeigte, dass eine Impulsübertragung unter realen Bedingungen eine"
+          },
+          {
+            "id": "r34-asteroids-de-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „veränderte dessen Bewegung um Didymos. Der“",
+            "choices": [
+              "Erfolg zeigte, dass eine Impulsübertragung unter",
+              "Diese Unterscheidung ist wichtig, weil eine wissenschaftliche Beobachtung",
+              "ergänzen optische Teleskope, weil sie die Wärmestrahlung von",
+              "sind weniger eindrucksvoll als Bilder einer Raumfahrtmission, obwohl"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "veränderte dessen Bewegung um Didymos. Der Erfolg zeigte, dass eine Impulsübertragung unter"
+          },
+          {
+            "id": "r34-asteroids-de-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „zeigen. Zu diesen Messungen können mehrere zukünftige Flugbahnen“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "zeigen. Zu diesen Messungen können mehrere zukünftige Flugbahnen"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "de",
+        "level": "C2",
+        "title": "Wenn aus Wahrscheinlichkeit eine Schlagzeile wird",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Belege finden"
+          },
+          {
+            "id": "evidence",
+            "title": "Genau lesen"
+          },
+          {
+            "id": "cohesion",
+            "title": "Textverlauf"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-de-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „häufig als Kampf der Menschheit gegen ein feindseliges“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "häufig als Kampf der Menschheit gegen ein feindseliges"
+          },
+          {
+            "id": "r34-asteroids-de-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 4?",
+            "choices": [
+              "alarmierenden Überschrift zusammenzufassen, ist zunächst ein Kommunikationsversagen und",
+              "Panik oder Spott zu übersetzen. Die vernünftige Schlussfolgerung",
+              "vereinbar bleiben. Neue Daten begrenzen diesen Spielraum, weshalb",
+              "DART-Experiment von 2022 bildete einen aufschlussreichen Gegenpol zu"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "Panik oder Spott zu übersetzen. Die vernünftige Schlussfolgerung"
+          },
+          {
+            "id": "r34-asteroids-de-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „eine technische Meisterleistung weitgehend ohne praktischen“",
+            "choices": [
+              "Handlungsdruck zu unterscheiden. Räumliche Nähe ist noch keine",
+              "ausgelegt, obwohl sie gerade Ausdruck sorgfältiger wissenschaftlicher Arbeit",
+              "Nutzen. Die Wirkung eines Zusammenstoßes hängt",
+              "Sicherheit zu versprechen wäre unverantwortlich; perfekte Vorhersagen abzuwarten,"
+            ],
+            "answer": 2,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "eine technische Meisterleistung weitgehend ohne praktischen Nutzen. Die Wirkung eines Zusammenstoßes hängt"
+          },
+          {
+            "id": "r34-asteroids-de-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „Spielraum, weshalb eine frühe Risikoschätzung vorübergehend steigen kann,“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "Spielraum, weshalb eine frühe Risikoschätzung vorübergehend steigen kann,"
+          },
+          {
+            "id": "r34-asteroids-de-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 2?",
+            "choices": [
+              "wie vollständig der Katalog entdeckter Objekte überhaupt ist.",
+              "als Kampf der Menschheit gegen ein feindseliges Universum",
+              "könnte bedeutsamer sein als ein gewaltsames Manöver kurz",
+              "Vorhersagen abzuwarten, bevor in Beobachtung investiert wird, wäre"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "wie vollständig der Katalog entdeckter Objekte überhaupt ist."
+          },
+          {
+            "id": "r34-asteroids-de-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „als Kampf der Menschheit gegen ein“",
+            "choices": [
+              "überhaupt ist. Gerade unsichtbare Auswahlverzerrungen müssen bei der",
+              "feindseliges Universum inszeniert. Diese Metapher funktioniert",
+              "seinen Weg kennen?“ Eine kleine Ablenkung, die über",
+              "meist unsichtbar. Absolute Sicherheit zu versprechen wäre unverantwortlich;"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 1.",
+            "evidence": "als Kampf der Menschheit gegen ein feindseliges Universum inszeniert. Diese Metapher funktioniert"
+          },
+          {
+            "id": "r34-asteroids-de-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „zeigt sich nicht an beruhigenden Versprechen, sondern an“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 4.",
+            "evidence": "zeigt sich nicht an beruhigenden Versprechen, sondern an"
+          },
+          {
+            "id": "r34-asteroids-de-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Welcher Ausschnitt steht in Absatz 3?",
+            "choices": [
+              "Ein Asteroid ist weder ein Gegner noch eine",
+              "der Katalog entdeckter Objekte überhaupt ist. Gerade unsichtbare",
+              "Die vernünftige Schlussfolgerung klingt bewusst unspektakulär: Wir schützen",
+              "einer echten Bedrohung wäre die entscheidende Frage weniger"
+            ],
+            "answer": 3,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "einer echten Bedrohung wäre die entscheidende Frage weniger"
+          },
+          {
+            "id": "r34-asteroids-de-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Was folgt im selben Absatz auf diesen Ausschnitt? „einer kinetischen Ablenkung, nicht um einen“",
+            "choices": [
+              "universellen Schutzschild. Bei einer echten Bedrohung",
+              "Öffentlichkeit, zwischen Forschungsbedarf und tatsächlichem Handlungsdruck zu unterscheiden.",
+              "werden gern als institutionelle Unentschlossenheit ausgelegt, obwohl sie",
+              "gelungener Vorbereitung meist unsichtbar. Absolute Sicherheit zu versprechen"
+            ],
+            "answer": 0,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 3.",
+            "evidence": "einer kinetischen Ablenkung, nicht um einen universellen Schutzschild. Bei einer echten Bedrohung"
+          },
+          {
+            "id": "r34-asteroids-de-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "In welchem Absatz steht dieser Textausschnitt? „nur über einen kurzen Bahnbogen beobachtet, können mehrere“",
+            "choices": [
+              "Absatz 1",
+              "Absatz 2",
+              "Absatz 3",
+              "Absatz 4"
+            ],
+            "answer": 1,
+            "explanation": "Vergleiche die genaue Formulierung in Absatz 2.",
+            "evidence": "nur über einen kurzen Bahnbogen beobachtet, können mehrere"
+          }
+        ]
+      }
+    },
+    "fr": {
+      "A1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "fr",
+        "level": "A1",
+        "title": "Des roches qui voyagent dans l’espace",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-fr-a1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « astéroïde est une roche dans »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "astéroïde est une roche dans"
+          },
+          {
+            "id": "r34-asteroids-fr-a1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 1 ?",
+            "choices": [
+              "chemin s’appelle une orbite. Tous",
+              "leur propre lumière. Certains sont",
+              "arrivent parfois dans l’air autour"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "leur propre lumière. Certains sont"
+          },
+          {
+            "id": "r34-asteroids-fr-a1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « plupart sont loin de »",
+            "choices": [
+              "orbite. Certains passent près de",
+              "toucher le sol. Les scientifiques",
+              "la Terre. Beaucoup passent"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "plupart sont loin de la Terre. Beaucoup passent"
+          },
+          {
+            "id": "r34-asteroids-fr-a1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « photos et regardent où vont »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "photos et regardent où vont"
+          },
+          {
+            "id": "r34-asteroids-fr-a1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "est une roche dans l’espace.",
+              "pas la même orbite. Certains",
+              "Les scientifiques observent le ciel"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "pas la même orbite. Certains"
+          },
+          {
+            "id": "r34-asteroids-fr-a1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « cherchent les astéroïdes avec »",
+            "choices": [
+              "et Jupiter. Cette région s’appelle",
+              "de toucher le sol. Les",
+              "de grands télescopes. Un"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "cherchent les astéroïdes avec de grands télescopes. Un"
+          }
+        ]
+      },
+      "A2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "fr",
+        "level": "A2",
+        "title": "Une soirée au club d’astronomie",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 6,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-fr-a2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « Nina est allée au club »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "Nina est allée au club"
+          },
+          {
+            "id": "r34-asteroids-fr-a2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 1 ?",
+            "choices": [
+              "près de la Terre ne",
+              "de métal qui tournent autour",
+              "ce test, Dimorphos mettait moins"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "de métal qui tournent autour"
+          },
+          {
+            "id": "r34-asteroids-fr-a2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « la ceinture d’astéroïdes. Ce »",
+            "choices": [
+              "ne représente pas un danger",
+              "a trouvé incroyable qu’une sonde",
+              "n’est pas une route"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "la ceinture d’astéroïdes. Ce n’est pas une route"
+          },
+          {
+            "id": "r34-asteroids-fr-a2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « trouvent un nouvel objet, ils »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "trouvent un nouvel objet, ils"
+          },
+          {
+            "id": "r34-asteroids-fr-a2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "Nina est allée au club",
+              "La majorité des astéroïdes connus",
+              "sonde puisse donner une petite"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "La majorité des astéroïdes connus"
+          },
+          {
+            "id": "r34-asteroids-fr-a2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 2,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « surprise d’apprendre que certains »",
+            "choices": [
+              "il y a beaucoup d’espace",
+              "grand. Nina a trouvé incroyable",
+              "astéroïdes passent près de"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "surprise d’apprendre que certains astéroïdes passent près de"
+          }
+        ]
+      },
+      "B1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "fr",
+        "level": "B1",
+        "title": "Comment surveille-t-on les astéroïdes ?",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 8,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-fr-b1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « sont des objets rocheux qui datent des débuts »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "sont des objets rocheux qui datent des débuts"
+          },
+          {
+            "id": "r34-asteroids-fr-b1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "peuvent raconter l’histoire lointaine de notre système solaire.",
+              "De meilleurs télescopes, des mesures précises et la",
+              "sa trajectoire avec certitude. De nouvelles observations peuvent",
+              "Une expérience a montré qu’il était possible de"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "De meilleurs télescopes, des mesures précises et la"
+          },
+          {
+            "id": "r34-asteroids-fr-b1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « Didymos. La mission n’a pas sauvé »",
+            "choices": [
+              "un objet pourrait un jour s’approcher dangereusement de",
+              "découvert. Les chercheurs collaborent donc et partagent leurs",
+              "la Terre d’un danger réel. C’était",
+              "de nous tomber dessus. Les grands impacts sont"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "Didymos. La mission n’a pas sauvé la Terre d’un danger réel. C’était"
+          },
+          {
+            "id": "r34-asteroids-fr-b1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « De nouvelles observations peuvent modifier une prédiction, surtout »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "De nouvelles observations peuvent modifier une prédiction, surtout"
+          },
+          {
+            "id": "r34-asteroids-fr-b1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "notre voisinage spatial. Cela ne signifie pas qu’il",
+              "sont des objets rocheux qui datent des débuts",
+              "temps à faire une révolution autour de Didymos.",
+              "dessus. Les grands impacts sont rares, mais une"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "notre voisinage spatial. Cela ne signifie pas qu’il"
+          },
+          {
+            "id": "r34-asteroids-fr-b1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « sont des objets rocheux qui datent »",
+            "choices": [
+              "Cela ne signifie pas qu’il va entrer en",
+              "des débuts du système solaire. La",
+              "l’impact, Dimorphos mettait moins de temps à faire",
+              "cesse de nous tomber dessus. Les grands impacts"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "sont des objets rocheux qui datent des débuts du système solaire. La"
+          },
+          {
+            "id": "r34-asteroids-fr-b1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « un objet dangereux est découvert un jour, une »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "un objet dangereux est découvert un jour, une"
+          },
+          {
+            "id": "r34-asteroids-fr-b1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "Mars et Jupiter, mais d’autres suivent des trajectoires",
+              "voisinage spatial. Cela ne signifie pas qu’il va",
+              "télescopes, des mesures précises et la coopération internationale",
+              "la NASA a volontairement frappé Dimorphos, une petite"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "la NASA a volontairement frappé Dimorphos, une petite"
+          }
+        ]
+      },
+      "B2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "fr",
+        "level": "B2",
+        "title": "Astéroïdes : le risque, pas la panique",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-fr-b2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « presse laissent entendre qu’un astéroïde « se dirige »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "presse laissent entendre qu’un astéroïde « se dirige"
+          },
+          {
+            "id": "r34-asteroids-fr-b2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "notre voisinage cosmique d’un objet dont la trajectoire",
+              "une urgence. Les explosions géantes sont passionnantes au",
+              "peu la lumière solaire. Lorsqu’un astéroïde possible est",
+              "deuxième défi est de déterminer ce qu’il faudrait"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "une urgence. Les explosions géantes sont passionnantes au"
+          },
+          {
+            "id": "r34-asteroids-fr-b2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « la structure et le délai d’intervention »",
+            "choices": [
+              "rapprochement demande donc des mesures attentives, pas une",
+              "affinent son orbite. Les premières estimations peuvent beaucoup",
+              "auraient leur importance. Le test DART",
+              "reste incertain et pourquoi une nouvelle prévision peut"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "la structure et le délai d’intervention auraient leur importance. Le test DART"
+          },
+          {
+            "id": "r34-asteroids-fr-b2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « astéroïde possible est identifié, les chercheurs comparent des »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "astéroïde possible est identifié, les chercheurs comparent des"
+          },
+          {
+            "id": "r34-asteroids-fr-b2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "de meilleures données. Un chiffre spectaculaire présenté sans",
+              "laissent entendre qu’un astéroïde « se dirige vers",
+              "astéroïde, mais pas qu’on pourrait empêcher tous les",
+              "une nouvelle prévision peut différer de la précédente."
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "de meilleures données. Un chiffre spectaculaire présenté sans"
+          },
+          {
+            "id": "r34-asteroids-fr-b2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « laissent entendre qu’un astéroïde « se »",
+            "choices": [
+              "spectaculaire présenté sans indiquer son incertitude risque de",
+              "dirige vers la Terre » et",
+              "qu’une sonde pouvait modifier le mouvement d’un astéroïde,",
+              "ce qui reste incertain et pourquoi une nouvelle"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "laissent entendre qu’un astéroïde « se dirige vers la Terre » et"
+          },
+          {
+            "id": "r34-asteroids-fr-b2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « sans danger ni que la catastrophe est inévitable »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "sans danger ni que la catastrophe est inévitable"
+          },
+          {
+            "id": "r34-asteroids-fr-b2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "de roche et de métal qui tournent autour",
+              "meilleures données. Un chiffre spectaculaire présenté sans indiquer",
+              "géantes sont passionnantes au cinéma ; dans la",
+              "qui tourne autour d’un astéroïde plus grand appelé"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "qui tourne autour d’un astéroïde plus grand appelé"
+          },
+          {
+            "id": "r34-asteroids-fr-b2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « volontairement percuté Dimorphos, une petite lune »",
+            "choices": [
+              "qui tourne autour d’un astéroïde plus",
+              "une date précise. Un rapprochement demande donc des",
+              "de nuits différentes et affinent son orbite. Les",
+              "est établi, ce qui reste incertain et pourquoi"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "volontairement percuté Dimorphos, une petite lune qui tourne autour d’un astéroïde plus"
+          },
+          {
+            "id": "r34-asteroids-fr-b2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « observations infrarouges aident également à repérer les corps »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "observations infrarouges aident également à repérer les corps"
+          }
+        ]
+      },
+      "C1": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "fr",
+        "level": "C1",
+        "title": "Observer le ciel et comprendre les probabilités",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-fr-c1-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « se situe à une frontière particulière entre la »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "se situe à une frontière particulière entre la"
+          },
+          {
+            "id": "r34-asteroids-fr-c1-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "rocher lointain s’accompagne alors d’un titre beaucoup plus",
+              "événements peu probables comme indignes de toute préparation.",
+              "en faisant baisser la probabilité apparente d’impact, parfois",
+              "a fourni un résultat expérimental important, et non"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "événements peu probables comme indignes de toute préparation."
+          },
+          {
+            "id": "r34-asteroids-fr-c1-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « minime effectuée des années à l’avance »",
+            "choices": [
+              "scientifique n’est pas automatiquement une raison politique de",
+              "télescopes optiques : le rayonnement thermique peut révéler",
+              "pourrait être plus efficace qu’une intervention",
+              "images d’une mission spatiale, alors qu’ils rendent toute"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "minime effectuée des années à l’avance pourrait être plus efficace qu’une intervention"
+          },
+          {
+            "id": "r34-asteroids-fr-c1-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « d’impact, parfois en la faisant provisoirement augmenter avant »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "d’impact, parfois en la faisant provisoirement augmenter avant"
+          },
+          {
+            "id": "r34-asteroids-fr-c1-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "réduire. Un chiffre isolé perd son sens si",
+              "à une frontière particulière entre la recherche fondamentale",
+              "la déviation et surtout du temps restant avant",
+              "qu’ils rendent toute intervention possible. Communiquer sur les"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "réduire. Un chiffre isolé perd son sens si"
+          },
+          {
+            "id": "r34-asteroids-fr-c1-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « à une frontière particulière entre la »",
+            "choices": [
+              "son sens si l’on ignore la date des",
+              "recherche fondamentale et la sécurité publique.",
+              "physique du corps, de la direction souhaitée pour",
+              "l’attention que les images d’une mission spatiale, alors"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "à une frontière particulière entre la recherche fondamentale et la sécurité publique."
+          },
+          {
+            "id": "r34-asteroids-fr-c1-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « lorsqu’elle est assez claire pour guider des décisions »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "lorsqu’elle est assez claire pour guider des décisions"
+          },
+          {
+            "id": "r34-asteroids-fr-c1-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "une petite partie d’entre eux suit des orbites",
+              "Un chiffre isolé perd son sens si l’on",
+              "indignes de toute préparation. Un message scientifique responsable",
+              "réussite montre qu’un transfert de quantité de mouvement"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "réussite montre qu’un transfert de quantité de mouvement"
+          },
+          {
+            "id": "r34-asteroids-fr-c1-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « et modifié son mouvement autour de »",
+            "choices": [
+              "Didymos. Cette réussite montre qu’un transfert",
+              "est essentielle : une observation scientifique n’est pas",
+              "Les instruments infrarouges complètent les télescopes optiques :",
+              "retiennent moins l’attention que les images d’une mission"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "et modifié son mouvement autour de Didymos. Cette réussite montre qu’un transfert"
+          },
+          {
+            "id": "r34-asteroids-fr-c1-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « alors compatibles avec les mesures. De nouvelles observations »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "alors compatibles avec les mesures. De nouvelles observations"
+          }
+        ]
+      },
+      "C2": {
+        "kind": "LSH_READING_TEST_CANDIDATE_R34_V1",
+        "stage": "CLAUDE_CONTENT_REWRITE_PENDING",
+        "published": false,
+        "topic": "rl-asteroids",
+        "language": "fr",
+        "level": "C2",
+        "title": "Quand une probabilité fait la une",
+        "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+        "maxPoints": 10,
+        "suggestedMinutes": 20,
+        "provenance": "mechanically generated source-anchored seed; not yet an independently designed pedagogical test",
+        "tabs": [
+          {
+            "id": "locate",
+            "title": "Repérer des informations"
+          },
+          {
+            "id": "evidence",
+            "title": "Lecture attentive"
+          },
+          {
+            "id": "cohesion",
+            "title": "Suivre le texte"
+          }
+        ],
+        "questions": [
+          {
+            "id": "r34-asteroids-fr-c2-01",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 1,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « est souvent racontée comme un affrontement entre l’humanité »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "est souvent racontée comme un affrontement entre l’humanité"
+          },
+          {
+            "id": "r34-asteroids-fr-c2-02",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 4 ?",
+            "choices": [
+              "Les fondre dans une même catégorie alarmiste constitue",
+              "de tourner chaque révision en dérision ou d’en",
+              "trajectoires peuvent correspondre aux mesures. Les observations ultérieures",
+              "DART, réalisée en 2022, apporte un contrepoint éclairant"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "de tourner chaque révision en dérision ou d’en"
+          },
+          {
+            "id": "r34-asteroids-fr-c2-03",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « largement privée de sa portée pratique. »",
+            "choices": [
+              "le public distingue la recherche nécessaire d’une décision",
+              "comme une hésitation des institutions alors qu’elles peuvent,",
+              "La structure interne de la cible",
+              "invisibles. Promettre une sécurité absolue serait irresponsable ;"
+            ],
+            "answer": 2,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "largement privée de sa portée pratique. La structure interne de la cible"
+          },
+          {
+            "id": "r34-asteroids-fr-c2-04",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « réduisent cette marge, si bien qu’une estimation initiale »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "réduisent cette marge, si bien qu’une estimation initiale"
+          },
+          {
+            "id": "r34-asteroids-fr-c2-05",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 2 ?",
+            "choices": [
+              "demander quels objets les instruments risquent de ne",
+              "racontée comme un affrontement entre l’humanité et un",
+              "années pourrait compter davantage qu’une manœuvre violente à",
+              "exiger des prévisions parfaites avant d’investir dans l’observation"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "demander quels objets les instruments risquent de ne"
+          },
+          {
+            "id": "r34-asteroids-fr-c2-06",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 1,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « racontée comme un affrontement entre l’humanité »",
+            "choices": [
+              "de ne pas détecter. Une mesure précise ne",
+              "et un univers hostile. Cette métaphore",
+              "de sa trajectoire ? ». Une légère déviation",
+              "réussie sont presque invisibles. Promettre une sécurité absolue"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 1.",
+            "evidence": "racontée comme un affrontement entre l’humanité et un univers hostile. Cette métaphore"
+          },
+          {
+            "id": "r34-asteroids-fr-c2-07",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 4,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « du temps à des décisions réfléchies. Une institution »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 4.",
+            "evidence": "du temps à des décisions réfléchies. Une institution"
+          },
+          {
+            "id": "r34-asteroids-fr-c2-08",
+            "kind": "mc",
+            "tab": "evidence",
+            "sourceParagraph": 3,
+            "taskDesign": "paragraph-evidence",
+            "q": "Quel extrait apparaît dans le paragraphe 3 ?",
+            "choices": [
+              "n’est ni un adversaire ni un avertissement envoyé",
+              "quels objets les instruments risquent de ne pas",
+              "d’en faire une source de panique. La conclusion",
+              "un bouclier universel. Face à une menace réelle,"
+            ],
+            "answer": 3,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "un bouclier universel. Face à une menace réelle,"
+          },
+          {
+            "id": "r34-asteroids-fr-c2-09",
+            "kind": "mc",
+            "tab": "cohesion",
+            "sourceParagraph": 3,
+            "taskDesign": "local-cohesion",
+            "q": "Quels mots suivent cet extrait dans le même paragraphe ? « déviation cinétique, non de la preuve »",
+            "choices": [
+              "que l’humanité possède un bouclier universel.",
+              "influe sur la manière dont le public distingue",
+              "Ces révisions sont parfois dénoncées comme une hésitation",
+              "bénéfices d’une préparation réussie sont presque invisibles. Promettre"
+            ],
+            "answer": 0,
+            "explanation": "Compare les mots exacts du paragraphe 3.",
+            "evidence": "déviation cinétique, non de la preuve que l’humanité possède un bouclier universel."
+          },
+          {
+            "id": "r34-asteroids-fr-c2-10",
+            "kind": "mc",
+            "tab": "locate",
+            "sourceParagraph": 2,
+            "taskDesign": "paragraph-location",
+            "q": "Dans quel paragraphe trouve-t-on cet extrait ? « infaillibles pour autant. Lorsqu’un astéroïde est observé sur »",
+            "choices": [
+              "Paragraphe 1",
+              "Paragraphe 2",
+              "Paragraphe 3",
+              "Paragraphe 4"
+            ],
+            "answer": 1,
+            "explanation": "Compare les mots exacts du paragraphe 2.",
+            "evidence": "infaillibles pour autant. Lorsqu’un astéroïde est observé sur"
+          }
+        ]
+      }
+    }
+  }
+}

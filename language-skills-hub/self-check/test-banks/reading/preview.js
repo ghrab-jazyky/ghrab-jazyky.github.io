@@ -1,10 +1,11 @@
-/* R32 unapproved B2 Reading preview. Strictly separate from public R31 student pages.
+/* R32-R34 unapproved Reading preview. Strictly separate from public R31 student pages.
  * No telemetry, POST, student identity or client key secrecy guarantees.
  */
 (()=>{
  'use strict';
  const reading=window.LSHReadingCore;
  const testBank=window.LSHIndependentTestBank;
+ const candidateCore=window.LSHCandidateCore;
  const grade=window.LSHGradeCore;
  const $=id=>document.getElementById(id);
  const make=(tag,cls,text)=>{
@@ -14,6 +15,8 @@
   return el;
  };
  const params=new URLSearchParams(location.search);
+ const topic=params.get('topic')||'rl-can-mistakes';
+ const lang=params.get('lang')||'en';
  const level=params.get('level')||'B2';
  const answers=Object.create(null);
  let variant=null,timed=null,submitted=false;
@@ -88,7 +91,7 @@
   const details=$('resultDetails');details.replaceChildren();
   const mistakes=report.details.filter(item=>!item.correct);
   if(!mistakes.length)details.appendChild(make('p','small-note',
-   'All ten answers are correct. No mistakes to display.'));
+   (variant.questions.length===10?'All ten answers are correct.':'All answers are correct.')+' No mistakes to display.'));
   for(const error of mistakes){
    const item=variant.questions.find(q=>q.id===error.id);
    const block=make('article','review wrong');
@@ -116,36 +119,58 @@
  }
  async function initialize(){
   try{
-   requireCondition(reading&&testBank&&grade&&window.LSHSessionUI,
+   requireCondition(reading&&testBank&&candidateCore&&grade&&window.LSHSessionUI,
     'Required local assessment modules are unavailable');
    // A fixed 20-minute URL is intentional for this *unapproved* pedagogical pilot.
    // It must not be exposed through the public teacher catalogue.
-   requireCondition(['B1','B2'].includes(level),'Unsupported independent test level');
+   requireCondition(reading.LEVELS.includes(level)&&reading.LANGUAGES.includes(lang),
+    'Unsupported independent test level or language');
    requireCondition(params.get('timer')==='20'&&
     /^[a-z0-9_-]{6,40}$/i.test(params.get('attempt')||''),
-    'This draft preview requires ?level=B1|B2&timer=20&attempt=<local-id>');
-   const [manifest,originalHtml,bank]=await Promise.all([
+    'This draft preview requires a valid language, level, timer=20 and attempt identifier');
+   const [manifest,catalog]=await Promise.all([
     get('../../../version.json',true),
-    get('../../../cteni/can-mistakes/index.html'),
-    get('rl-can-mistakes/en-'+level+'.json',true)
+    get('../../../data/cards.json',true)
    ]);
    requireCondition(manifest.version==='R31'&&
     manifest.backendEnabled===false&&manifest.gradedTestsEnabled===false,
     'Unexpected production baseline');
+   const entry=reading.readingEntry(catalog,topic);
+   requireCondition(entry.languages.includes(lang)&&entry.levels.includes(level),
+    'Unavailable Reading language or CEFR');
+   const originalHtml=await get('../../../'+entry.relative);
    const actual=await sourceHash(originalHtml);
-   requireCondition(actual===manifest.contentHashes['rl-can-mistakes'],
+   requireCondition(actual===manifest.contentHashes[topic],
     'Original source checksum mismatch: draft preview disabled');
-   const practice=reading.variantFromData(reading.parseReadingData(originalHtml),'en',level);
-   variant=testBank.makeQaVariant(bank,practice,actual);
+   const practice=reading.variantFromData(reading.parseReadingData(originalHtml),lang,level);
+   const manual=topic==='rl-can-mistakes'&&lang==='en'&&['B1','B2'].includes(level);
+   if(manual){
+    const bank=await get('rl-can-mistakes/en-'+level+'.json',true);
+    variant=testBank.makeQaVariant(bank,practice,actual);
+   }else{
+    const collection=await get('collections/'+topic+'.json',true);
+    const bank=collection?.variants?.[lang]?.[level];
+    requireCondition(!!bank,'Independent draft bank missing for this selection');
+    variant=candidateCore.readingVariant(collection,bank,practice,{
+     topic,lang,level,sourceHash:actual
+    });
+   }
    reading.validateVariant(variant);
    $('title').textContent=practice.title;
-   document.title='Independent Reading '+level+' – unapproved QA preview';
-   document.querySelector('.subtitle').textContent='Can Mistakes Help Us Learn? · English '+level+' · 10 independent questions · 20 minutes';
-   document.querySelector('.mode').textContent='UNAPPROVED DRAFT · EN/'+level;
-   document.querySelector('.reading-panel .pill').textContent='EN · '+level;
+   document.title='Reading '+lang.toUpperCase()+'/'+level+' – unapproved QA preview';
+   const langs={en:'English',es:'Español',de:'Deutsch',fr:'Français'};
+   document.querySelector('.subtitle').textContent=entry.title+' · '+langs[lang]+' '+level+
+    ' · '+variant.questions.length+' questions · 20 minutes';
+   document.querySelector('.mode').textContent=manual?
+    'UNAPPROVED DRAFT · '+lang.toUpperCase()+'/'+level:
+    'AUTO-GENERATED CANDIDATE · CLAUDE REWRITE REQUIRED · '+lang.toUpperCase()+'/'+level;
+   document.getElementById('pilotWarning').textContent=manual?
+    'Unapproved teacher QA preview. Do not distribute or use for official grading. Answer keys are public in static code.':
+    'AUTOMATIC SOURCE-ANCHOR SEED ONLY. These are not independent pedagogical test questions. Claude must rewrite and a teacher must approve the entire bank before any student publication.';
+   document.getElementById('languageLevelBadge').textContent=lang.toUpperCase()+' · '+level;
    renderText();renderTasks();
    timed=window.LSHSessionUI.mount({
-    skill:'reading',topic:'rl-can-mistakes',lang:'en',level,
+    skill:'reading',topic:'qa-'+topic,lang,level,
     workspace:$('workspace'),
     getAnswers:()=>({answers:{...answers}}),
     restoreAnswers:saved=>{
