@@ -57,7 +57,7 @@
   state.url='';
   const link=$('previewLink');
   if(valid){
-   const u=new URL(row.draftPreviewPath,document.baseURI);
+   const u=new URL('../../'+row.draftPreviewPath,document.baseURI);
    u.searchParams.set('topic',topic);
    u.searchParams.set('lang',lang);
    u.searchParams.set('level',level);
