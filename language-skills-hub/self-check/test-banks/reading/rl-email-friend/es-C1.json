@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "es",
+  "level": "C1",
+  "sourceTitle": "Lo que nunca publicamos",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Prueba independiente de comprensión e inferencia; borrador pendiente de evaluación humana del nivel y las claves.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interpretación"
+    },
+    {
+      "id": "reasoning",
+      "title": "Argumentación"
+    },
+    {
+      "id": "transfer",
+      "title": "Aplicación"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-es-c1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué sugiere que Mara rechazara empezar con una disculpa convencional?",
+      "choices": [
+        "Reconoce que el silencio prolongado también refleja decisiones propias.",
+        "Pretende culpar a Jules por no visitar Bristol.",
+        "Considera que el trabajo nunca influye en las amistades.",
+        "Quiere ocultar que se mudó a otra ciudad."
+      ],
+      "answer": 0,
+      "explanation": "Mara evita presentar como accidental una distancia que también ha mantenido."
+    },
+    {
+      "id": "r41-es-c1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué revela la foto de la puesta de sol enviada como respuesta?",
+      "choices": [
+        "Demostró que el archivo comunitario era un éxito.",
+        "Sustituyó una conversación vulnerable por una imagen atractiva.",
+        "Mostró que Jules no comprendía sus fotografías.",
+        "Fue una invitación explícita a visitar Bristol."
+      ],
+      "answer": 1,
+      "explanation": "La autora reconoce vergüenza por haber esquivado una pregunta directa sobre su felicidad."
+    },
+    {
+      "id": "r41-es-c1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué tienen en común las actitudes de los vecinos entrevistados?",
+      "choices": [
+        "Ambas rechazan cualquier memoria de la ciudad.",
+        "Ambas piden publicar más información personal.",
+        "Ambas cuestionan la idea de que todos deban contar su historia de la misma forma.",
+        "Ambas ofrecen relatos con finales felices."
+      ],
+      "answer": 2,
+      "explanation": "La enfermera y la persona que no desea grabarse expresan formas legítimas distintas de recordar."
+    },
+    {
+      "id": "r41-es-c1-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Por qué el archivo no exige testimonios con finales inspiradores?",
+      "choices": [
+        "Necesita atraer exclusivamente a visitantes jóvenes.",
+        "Quiere reducir el trabajo de sus editores.",
+        "Considera que todos los recuerdos son negativos.",
+        "Respeta la complejidad y las contradicciones de la memoria."
+      ],
+      "answer": 3,
+      "explanation": "El archivo acepta relatos difíciles en lugar de transformarlos en historias optimistas."
+    },
+    {
+      "id": "r41-es-c1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué riesgo ve Mara al proponer una velada pública a Jules?",
+      "choices": [
+        "Que el archivo pierda sus grabaciones.",
+        "Que una invitación amable se interprete como obligación afectiva.",
+        "Que Jules deba trabajar como voluntario.",
+        "Que no haya fotografías suficientes para exhibir."
+      ],
+      "answer": 1,
+      "explanation": "Mara no quiere que asistir al acto se convierta en una prueba de amistad."
+    },
+    {
+      "id": "r41-es-c1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué función tiene admitir que una tarde no reparará un año de distancia?",
+      "choices": [
+        "Niega que sea posible recuperar ninguna amistad.",
+        "Sugiere que Jules tiene toda la culpa.",
+        "Justifica cancelar la velada del archivo.",
+        "Limita con realismo las expectativas de reconciliación inmediata."
+      ],
+      "answer": 3,
+      "explanation": "La autora rechaza la ficción de que un solo evento resuelva un vínculo descuidado."
+    },
+    {
+      "id": "r41-es-c1-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Un participante del archivo desea recordar un lugar sin grabar su voz. ¿Qué reacción sería coherente?",
+      "choices": [
+        "Aceptar una descripción escrita como alternativa legítima.",
+        "Exigir una entrevista para asegurar autenticidad.",
+        "Excluirlo de todo proyecto comunitario.",
+        "Publicar su voz sin solicitar permiso."
+      ],
+      "answer": 0,
+      "explanation": "La narración reconoce el derecho del vecino a elegir cómo contribuir."
+    },
+    {
+      "id": "r41-es-c1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Si Jules está agotado por los exámenes, ¿qué debería hacer Mara?",
+      "choices": [
+        "Insistir en que la amistad obliga a acudir.",
+        "Organizar una conferencia para convencerlo.",
+        "Respetar su necesidad de descanso sin exigir asistencia.",
+        "Convertir su ausencia en un juicio sobre su cariño."
+      ],
+      "answer": 2,
+      "explanation": "Mara considera injusto disfrazar otra obligación de plan agradable."
+    },
+    {
+      "id": "r41-es-c1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Dos amigos solo intercambian reacciones a fotos. ¿Qué paso refleja la propuesta de Mara?",
+      "choices": [
+        "Publicar imágenes más frecuentes de su vida.",
+        "Reservar tiempo para hablar de experiencias menos perfectas.",
+        "Abandonar por completo la comunicación digital.",
+        "Planificar una actividad sin posibilidad de negarse."
+      ],
+      "answer": 1,
+      "explanation": "El cierre valora conversaciones que permitan dudas y vulnerabilidad real."
+    },
+    {
+      "id": "r41-es-c1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "¿Qué criterio distingue cercanía genuina de una representación de cercanía?",
+      "choices": [
+        "Que la reunión sea pública y tenga fotografías.",
+        "Que uno pague necesariamente los gastos del otro.",
+        "Que la amistad nunca incluya conversaciones incómodas.",
+        "Que ambos puedan participar o negarse sin demostrar nada."
+      ],
+      "answer": 3,
+      "explanation": "La autora rechaza convertir el vínculo en una actuación exigida."
+    }
+  ]
+}

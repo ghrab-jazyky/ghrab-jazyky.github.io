@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-peaky-no-fighting",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+  "durationMinutesSuggested": 18,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "auditRevision": "R37-AUTHOR-DRAFT-1",
+  "notes": "Contains hostile dialogue and profanity. Require age-appropriate teacher supervision and direct recording check.",
+  "objective": [
+    {
+      "id": "r37-pk-b2-01",
+      "category": "interpretation",
+      "q": "What contradiction characterises the main speaker's behaviour?",
+      "options": [
+        "He wants peace but speaks aggressively",
+        "He praises the guests but asks them to leave",
+        "He encourages the men to interrupt him",
+        "He cancels the wedding to prevent conflict"
+      ],
+      "answer": 0,
+      "explanation": "His demands for restraint are delivered as angry threats.",
+      "sourceEvidence": "He forbids fighting while shouting."
+    },
+    {
+      "id": "r37-pk-b2-02",
+      "category": "interpretation",
+      "q": "Why do the repeated interruptions matter to the scene?",
+      "options": [
+        "They prove the men accept all the rules",
+        "They reveal that nobody knows whose wedding this is",
+        "They weaken his attempt to maintain control",
+        "They make the wedding speech more formal"
+      ],
+      "answer": 2,
+      "explanation": "Other speakers interfere with his authority.",
+      "sourceEvidence": "The men interject during his warnings."
+    },
+    {
+      "id": "r37-pk-b2-03",
+      "category": "interpretation",
+      "q": "What does the objection about uniforms imply?",
+      "options": [
+        "All guests are soldiers",
+        "There is hostility between groups attending the event",
+        "The speaker has asked everyone to wear matching clothes",
+        "The men are planning to join the army"
+      ],
+      "answer": 1,
+      "explanation": "The uniforms serve as a reminder of existing tension.",
+      "sourceEvidence": "A man protests that there would be no uniforms."
+    },
+    {
+      "id": "r37-pk-b2-04",
+      "category": "interpretation",
+      "q": "Why does referring to Grace strengthen the order?",
+      "options": [
+        "It shows she has agreed to the prohibitions",
+        "It suggests the speaker has forgotten his own wishes",
+        "It makes the speaker's threats less serious",
+        "It presents obedience as protecting another person's dignity"
+      ],
+      "answer": 3,
+      "explanation": "He frames behaviour in terms of avoiding embarrassment for Grace.",
+      "sourceEvidence": "He demands the men not embarrass the bride."
+    },
+    {
+      "id": "r37-pk-b2-05",
+      "category": "interpretation",
+      "q": "What does the unexpected question about 'snow' add to the scene?",
+      "options": [
+        "It creates a comic contrast with the intimidating warning",
+        "It explains the location of the ceremony",
+        "It ends the tension permanently",
+        "It clarifies which men have uniforms"
+      ],
+      "answer": 0,
+      "explanation": "An incongruous remark interrupts an aggressive scene.",
+      "sourceEvidence": "The snow question prompts further refusals."
+    },
+    {
+      "id": "r37-pk-b2-06",
+      "category": "interpretation",
+      "q": "What is the effect of repeating the last instruction?",
+      "options": [
+        "It makes everyone agree to the conditions",
+        "It moves the discussion to a different issue",
+        "It intensifies pressure and exposes frustration",
+        "It signals the speaker is joking about fighting"
+      ],
+      "answer": 2,
+      "explanation": "His louder repetition increases intimidation while suggesting uncertainty.",
+      "sourceEvidence": "He repeats and shouts the closing order."
+    }
+  ],
+  "written": [
+    {
+      "id": "r37-pk-b2-w1",
+      "q": "Assess whether the speaker's way of talking is likely to prevent trouble. Use one moment from the scene.",
+      "modelAnswer": "His threats might gain obedience, but the anger and interruptions can also intensify conflict.",
+      "teacherCriterion": "One supported judgement on whether threats are effective, with a scene detail.",
+      "sourceEvidence": "The speaker seeks peace while using aggression."
+    },
+    {
+      "id": "r37-pk-b2-w2",
+      "q": "Choose one comic interruption and explain its effect beyond simply being funny.",
+      "modelAnswer": "The snow question undercuts a solemn warning and shows how difficult it is for the speaker to control the group.",
+      "teacherCriterion": "One identifiable interruption and a plausible dramatic effect.",
+      "sourceEvidence": "Unexpected questions disrupt the threats."
+    }
+  ]
+}

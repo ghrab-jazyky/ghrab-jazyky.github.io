@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "es",
+  "level": "C2",
+  "sourceTitle": "La distancia entre las actualizaciones",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Prueba independiente de comprensión e inferencia; borrador pendiente de evaluación humana del nivel y las claves.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interpretación"
+    },
+    {
+      "id": "reasoning",
+      "title": "Argumentación"
+    },
+    {
+      "id": "transfer",
+      "title": "Aplicación"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-es-c2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué matiz introduce Elías al llamar incompleta a su explicación de la distancia?",
+      "choices": [
+        "No niega sus dificultades, pero admite que le servían de excusa parcial.",
+        "Sostiene que el trabajo careció de toda influencia.",
+        "Acusa a Amara de haber perdido el contacto.",
+        "Presenta sus viajes como un castigo inevitable."
+      ],
+      "answer": 0,
+      "explanation": "Elías distingue entre razones verdaderas y una versión convenientemente selectiva."
+    },
+    {
+      "id": "r41-es-c2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué problema encierra confundir información con disponibilidad personal?",
+      "choices": [
+        "La información geográfica es siempre falsa.",
+        "Saber dónde está alguien no equivale a poder compartir su experiencia.",
+        "Las amistades necesitan recibir noticias diarias.",
+        "Los viajes impiden toda comunicación sincera."
+      ],
+      "answer": 1,
+      "explanation": "El ferry le hace ver la distancia entre publicar ubicaciones y confiar sus sentimientos."
+    },
+    {
+      "id": "r41-es-c2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Por qué el museo conserva la contradicción señalada por el estibador?",
+      "choices": [
+        "El editor necesita provocar escándalos en la exposición.",
+        "Los vecinos exigen suprimir cualquier referencia a ayuda mutua.",
+        "Una representación fiel no debe borrar la ambivalencia de la memoria.",
+        "La historia del barrio carece de acontecimientos positivos."
+      ],
+      "answer": 2,
+      "explanation": "La solidaridad y el resentimiento coexistían, aunque una conclusión cálida fuera más cómoda."
+    },
+    {
+      "id": "r41-es-c2-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué significa renunciar al placer de resultar útil al escuchar a alguien?",
+      "choices": [
+        "Negarse a ofrecer ayuda en cualquier circunstancia.",
+        "Guardar silencio para evitar toda responsabilidad.",
+        "Sustituir la conversación por un informe técnico.",
+        "Aceptar que escuchar puede exigir no imponer una solución inmediata."
+      ],
+      "answer": 3,
+      "explanation": "Elías recuerda cómo respondía con soluciones ordenadas a experiencias complejas."
+    },
+    {
+      "id": "r41-es-c2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué hace sospechoso el momento elegido para escribir la carta?",
+      "choices": [
+        "La inauguración está prohibida para amistades personales.",
+        "La invitación al museo puede hacer parecer instrumental su interés renovado.",
+        "Amara había rechazado una visita anterior.",
+        "La carta llega después de que el museo haya cerrado."
+      ],
+      "answer": 1,
+      "explanation": "El autor reconoce que escribe justo antes de necesitar público para una actividad."
+    },
+    {
+      "id": "r41-es-c2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Por qué una confesión exhaustiva tampoco resolvería el problema?",
+      "choices": [
+        "Demostraría que las amistades no pueden recuperarse.",
+        "El museo no permite registrar testimonios personales.",
+        "Convertiría una carta en un documento jurídico.",
+        "Podría cargar a Amara con la tarea de tranquilizarlo moralmente."
+      ],
+      "answer": 3,
+      "explanation": "Pedir confirmación de ser buen amigo trasladaría a Amara el trabajo emocional."
+    },
+    {
+      "id": "r41-es-c2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Un amigo invita a otro a un proyecto y teme una negativa. ¿Qué criterio propone Elías?",
+      "choices": [
+        "Permitir que la respuesta negativa no se convierta en reproche.",
+        "Exigir explicaciones detalladas para cualquier ausencia.",
+        "Interpretar la asistencia como prueba definitiva de cariño.",
+        "Ofrecer un favor que deba devolverse más tarde."
+      ],
+      "answer": 0,
+      "explanation": "La carta distingue una invitación libre de una prueba emocional de la relación."
+    },
+    {
+      "id": "r41-es-c2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Un archivo quiere editar un testimonio para eliminar conflictos vecinales. ¿Qué debería considerar?",
+      "choices": [
+        "Si un final alegre atrae más visitantes que los hechos.",
+        "Si todos los entrevistados conocen al editor.",
+        "Si la versión agradable sacrifica matices importantes del relato.",
+        "Si la exposición puede prescindir de testimonios."
+      ],
+      "answer": 2,
+      "explanation": "El ejemplo del estibador invita a respetar realidades incómodas en la narración."
+    },
+    {
+      "id": "r41-es-c2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Amara prefiere intercambiar cartas sin plazos fijos. ¿Qué lectura encaja con el final?",
+      "choices": [
+        "La amistad solo vale si se recupera su antigua forma.",
+        "La correspondencia puede renovarse sin reproducir exactamente el pasado.",
+        "Elías necesita controlar la frecuencia de respuesta.",
+        "No escribir inmediatamente significa rechazar el vínculo."
+      ],
+      "answer": 1,
+      "explanation": "La carta propone una relación modesta entre personas que han cambiado."
+    },
+    {
+      "id": "r41-es-c2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "¿Qué expresa la promesa de no interpretar cualquier respuesta como juicio definitivo?",
+      "choices": [
+        "La seguridad de que Amara aceptará la invitación.",
+        "La decisión de abandonar toda conversación futura.",
+        "La creencia de que las emociones no importan.",
+        "La voluntad de no convertir la reacción ajena en medida de su propia valía."
+      ],
+      "answer": 3,
+      "explanation": "El cierre intenta liberar a ambos de una evaluación moral inmediata."
+    }
+  ]
+}

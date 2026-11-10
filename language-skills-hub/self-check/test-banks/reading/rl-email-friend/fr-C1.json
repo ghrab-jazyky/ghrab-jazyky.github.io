@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "fr",
+  "level": "C1",
+  "sourceTitle": "Ce que nous n’avons jamais publié",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Dix questions inédites de compréhension et d'interprétation, encore soumises à une validation didactique externe.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interprétation"
+    },
+    {
+      "id": "reasoning",
+      "title": "Argumentation"
+    },
+    {
+      "id": "transfer",
+      "title": "Application"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-fr-c1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Pourquoi Mara refuse-t-elle de commencer par une excuse banale ?",
+      "choices": [
+        "Elle ne veut pas présenter leur silence comme un simple hasard.",
+        "Elle considère que le travail n'occupe jamais personne.",
+        "Elle souhaite faire porter la faute à Jules.",
+        "Elle nie qu'un déménagement puisse être difficile."
+      ],
+      "answer": 0,
+      "explanation": "Mara reconnaît que leur manque de dialogue n'était pas entièrement accidentel."
+    },
+    {
+      "id": "r41-fr-c1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Que révèle le coucher de soleil envoyé à la place d'une réponse ?",
+      "choices": [
+        "C'était la photographie essentielle des archives.",
+        "Une image séduisante peut éviter une question personnelle délicate.",
+        "Jules savait déjà exactement comment Mara allait.",
+        "Il s'agissait d'une invitation officielle à Bristol."
+      ],
+      "answer": 1,
+      "explanation": "Mara regrette d'avoir éludé une question directe sur son bonheur."
+    },
+    {
+      "id": "r41-fr-c1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Que mettent en évidence les deux attitudes différentes des habitants ?",
+      "choices": [
+        "Tout témoignage doit être enregistré et publié.",
+        "Les souvenirs négatifs n'ont pas leur place dans un musée.",
+        "Chacun peut décider comment et jusqu'où partager ses souvenirs.",
+        "Les archives devraient toujours chercher une morale heureuse."
+      ],
+      "answer": 2,
+      "explanation": "L'infirmière et la personne qui refuse l'enregistrement expriment des choix respectables."
+    },
+    {
+      "id": "r41-fr-c1-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Pourquoi les archives n'exigent-elles pas de morale inspirante ?",
+      "choices": [
+        "Le public préfère les récits sans témoins.",
+        "Les équipes veulent éviter tout travail d'édition.",
+        "Toutes les histoires finissent nécessairement mal.",
+        "Elles laissent place à la complexité des expériences vécues."
+      ],
+      "answer": 3,
+      "explanation": "L'approche décrite respecte les contradictions et ne force pas une conclusion édifiante."
+    },
+    {
+      "id": "r41-fr-c1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Quel danger Mara perçoit-elle dans son invitation à Jules ?",
+      "choices": [
+        "Les archives risquent de perdre leurs enregistrements.",
+        "L'événement pourrait devenir une épreuve imposée à leur amitié.",
+        "Jules devrait assumer la direction du projet.",
+        "La salle ne permet pas de projeter des photographies."
+      ],
+      "answer": 1,
+      "explanation": "Mara veut éviter que la présence de Jules serve de preuve d'affection."
+    },
+    {
+      "id": "r41-fr-c1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Pourquoi Mara limite-t-elle l'espoir placé dans une seule soirée ?",
+      "choices": [
+        "Elle juge toute réconciliation impossible.",
+        "Elle a décidé d'annuler l'événement.",
+        "Elle considère leurs souvenirs comme inutiles.",
+        "Une rencontre agréable ne répare pas immédiatement une longue distance."
+      ],
+      "answer": 3,
+      "explanation": "Elle distingue une occasion ponctuelle d'un lien à reconstruire dans la durée."
+    },
+    {
+      "id": "r41-fr-c1-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Une participante accepte de décrire un lieu par écrit mais refuse l'audio. Quelle réponse convient ?",
+      "choices": [
+        "Respecter cette contribution sans exiger sa voix.",
+        "Enregistrer la participante sans permission.",
+        "Refuser tout récit qui n'est pas oral.",
+        "L'obliger à parler devant le public."
+      ],
+      "answer": 0,
+      "explanation": "Les archives reconnaissent le droit de choisir la forme d'un témoignage."
+    },
+    {
+      "id": "r41-fr-c1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Jules est épuisé par ses examens. Comment Mara devrait-elle réagir ?",
+      "choices": [
+        "Présenter l'invitation comme un devoir d'amitié.",
+        "Voir toute absence comme un signe de rejet.",
+        "Accepter son besoin de repos sans exiger qu'il assiste à la soirée.",
+        "Reporter l'événement jusqu'à sa présence."
+      ],
+      "answer": 2,
+      "explanation": "Mara refuse de déguiser une obligation supplémentaire en sortie agréable."
+    },
+    {
+      "id": "r41-fr-c1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Deux amis commentent des photos mais ignorent leurs inquiétudes. Quelle action refléterait le message ?",
+      "choices": [
+        "Publier encore davantage de belles images.",
+        "Recréer des occasions de parler avec plus de franchise.",
+        "Arrêter toute communication numérique définitivement.",
+        "Organiser uniquement des sorties avec un programme complet."
+      ],
+      "answer": 1,
+      "explanation": "Mara souhaite retrouver des échanges laissant de la place aux doutes."
+    },
+    {
+      "id": "r41-fr-c1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Qu'est-ce qui distinguerait une proximité sincère d'une proximité jouée ?",
+      "choices": [
+        "Une rencontre publique toujours préférable à un appel.",
+        "L'absence totale de conversations difficiles.",
+        "Le fait de transformer l'amitié en projet à terminer.",
+        "La possibilité de choisir librement sans devoir prouver son attachement."
+      ],
+      "answer": 3,
+      "explanation": "Mara rejette les démonstrations obligatoires de proximité affective."
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "fr",
+  "level": "B1",
+  "sourceTitle": "Retour dans notre ancien quartier",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Dix nouvelles questions de compréhension et de transfert ; contenu non validé par un enseignant indépendant.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Compréhension"
+    },
+    {
+      "id": "reasoning",
+      "title": "Interprétation"
+    },
+    {
+      "id": "transfer",
+      "title": "Application"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-fr-b1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Qu'est-ce qui rend l'ancienne place différente pour Tomas ?",
+      "choices": [
+        "Un local vide est devenu un lieu actif pour les habitants.",
+        "L'école a été complètement détruite.",
+        "Les habitants n'ont plus accès à la place.",
+        "Toutes les maisons ont été remplacées."
+      ],
+      "answer": 0,
+      "explanation": "L'ancien magasin a été transformé en atelier de quartier."
+    },
+    {
+      "id": "r41-fr-b1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Que découvre Tomas en aidant à réparer une lampe de vélo ?",
+      "choices": [
+        "Il faut un diplôme de mécanicien pour aider.",
+        "On peut être utile sans maîtriser parfaitement une activité.",
+        "Les enfants souhaitent seulement boire du thé.",
+        "Les réparations réussissent sans pratique."
+      ],
+      "answer": 1,
+      "explanation": "Il enseigne un geste malgré son manque d'expérience professionnelle."
+    },
+    {
+      "id": "r41-fr-b1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Que montre l'évolution des activités de Tomas à l'atelier ?",
+      "choices": [
+        "Il choisit de travailler seul sans visiteurs.",
+        "Il perd tout intérêt pour le quartier.",
+        "Il devient plus à l'aise avec les autres et partage ce qu'il sait.",
+        "Il cesse de participer après sa première semaine."
+      ],
+      "answer": 2,
+      "explanation": "D'abord timide, Tomas finit par expliquer une réparation à des enfants."
+    },
+    {
+      "id": "r41-fr-b1-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Pourquoi Tomas remarque-t-il qu'ils ont peu parlé depuis le déménagement ?",
+      "choices": [
+        "Il veut reprocher à Robin d'avoir déménagé.",
+        "Il pense que les photos suffisent aux relations.",
+        "Il souhaite fermer l'atelier.",
+        "Il comprend qu'une ancienne amitié mérite d'être entretenue."
+      ],
+      "answer": 3,
+      "explanation": "Le retour dans le quartier lui rappelle le manque de conversations récentes."
+    },
+    {
+      "id": "r41-fr-b1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Pourquoi Tomas précise-t-il que Robin n'a pas besoin de discours ?",
+      "choices": [
+        "Les photographies de Robin ne l'intéressent pas.",
+        "Il veut proposer une rencontre facile, sans pression.",
+        "Personne n'a le droit de parler à l'atelier.",
+        "Tous les visiteurs doivent garder le silence."
+      ],
+      "answer": 1,
+      "explanation": "La journée portes ouvertes est présentée comme une occasion informelle."
+    },
+    {
+      "id": "r41-fr-b1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Que révèle la mention du prix et de la durée du voyage ?",
+      "choices": [
+        "Il exige un paiement pour entrer dans l'atelier.",
+        "Il promet de financer tous les transports.",
+        "Il souhaite que Robin voyage chaque semaine.",
+        "Tomas tient compte des contraintes réelles de Robin."
+      ],
+      "answer": 3,
+      "explanation": "Tomas accepte qu'un déplacement puisse être difficile ou coûteux."
+    },
+    {
+      "id": "r41-fr-b1-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Un élève aimerait aider dans un club mais débute complètement. Quelle idée de Tomas lui serait utile ?",
+      "choices": [
+        "Commencer par de petites tâches et apprendre en participant.",
+        "Attendre de devenir expert avant d'entrer.",
+        "Prendre immédiatement la direction du groupe.",
+        "Éviter toute personne inconnue."
+      ],
+      "answer": 0,
+      "explanation": "L'expérience à l'atelier montre qu'on peut contribuer tout en apprenant."
+    },
+    {
+      "id": "r41-fr-b1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Robin n'a qu'un moment libre. Quelle visite resterait possible ?",
+      "choices": [
+        "Demander d'annuler toutes les portes ouvertes.",
+        "Organiser une conférence complète.",
+        "Passer brièvement sans préparer une activité spéciale.",
+        "Venir seulement comme employé."
+      ],
+      "answer": 2,
+      "explanation": "Tomas précise qu'une visite courte suffirait."
+    },
+    {
+      "id": "r41-fr-b1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Robin ne peut pas payer le voyage. Quelle option garde leur lien vivant ?",
+      "choices": [
+        "Ne plus communiquer jusqu'au prochain événement.",
+        "Un appel vidéo pour discuter et regarder de vieilles photos.",
+        "Revenir définitivement vivre près de l'école.",
+        "Se contenter de regarder les publications en ligne."
+      ],
+      "answer": 1,
+      "explanation": "L'appel vidéo est une alternative explicite à une visite coûteuse."
+    },
+    {
+      "id": "r41-fr-b1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Quelle habitude correspondrait au souhait final de Tomas ?",
+      "choices": [
+        "N'écrire qu'en cas de fête importante.",
+        "Éviter d'évoquer leur vie actuelle.",
+        "Ne partager que des photographies publiques.",
+        "Se parler régulièrement sans attendre une grande occasion."
+      ],
+      "answer": 3,
+      "explanation": "La dernière question invite à maintenir un contact ordinaire et sincère."
+    }
+  ]
+}

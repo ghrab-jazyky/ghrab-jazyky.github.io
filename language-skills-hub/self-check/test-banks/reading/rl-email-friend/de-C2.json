@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "de",
+  "level": "C2",
+  "sourceTitle": "Die Entfernung zwischen den Updates",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Eigenständig formulierte Fragen zu Deutung, Argumentation und Transfer; nicht pädagogisch freigegeben.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interpretation"
+    },
+    {
+      "id": "reasoning",
+      "title": "Argumentation"
+    },
+    {
+      "id": "transfer",
+      "title": "Anwendung"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-de-c2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Was räumt Elias mit seiner Kritik an der einfachen Erklärung ein?",
+      "choices": [
+        "Wahre äußere Hindernisse können zugleich eine bequeme Ausrede liefern.",
+        "Umzüge hatten keinerlei Einfluss auf seine Zeit.",
+        "Amara allein hat den Kontakt abgebrochen.",
+        "Seine Reisen waren von Anfang an erfunden."
+      ],
+      "answer": 0,
+      "explanation": "Elias unterscheidet zwischen zutreffenden Umständen und einer selektiven Rechtfertigung."
+    },
+    {
+      "id": "r41-de-c2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Welche Verwechslung erkennt Elias zwischen Informationen und Erreichbarkeit?",
+      "choices": [
+        "Geografische Angaben sind grundsätzlich unzuverlässig.",
+        "Ortsangaben vermitteln noch keine persönliche Offenheit.",
+        "Echte Freunde müssen täglich neue Beiträge sehen.",
+        "Nur unmittelbare Begegnungen erlauben ehrliche Gespräche."
+      ],
+      "answer": 1,
+      "explanation": "Am Fährterminal erkennt er, dass viele seinen Standort kennen, aber nicht seine Gefühle."
+    },
+    {
+      "id": "r41-de-c2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Weshalb soll die Widersprüchlichkeit des Hafenarbeiters erhalten bleiben?",
+      "choices": [
+        "Die Ausstellung benötigt einen absichtlich provokativen Titel.",
+        "Die Nachbarschaft bestand ausschließlich aus Konflikten.",
+        "Eine treue Darstellung darf Ambivalenzen nicht zugunsten eines warmen Schlusses entfernen.",
+        "Die Redaktion verbietet jede Form von Hoffnung."
+      ],
+      "answer": 2,
+      "explanation": "Die Hilfe im Viertel bestand neben Verbitterung, was eine glatte Erzählung ausblenden würde."
+    },
+    {
+      "id": "r41-de-c2-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was bedeutet es hier, beim Zuhören auf das Gefühl der Nützlichkeit zu verzichten?",
+      "choices": [
+        "Unterstützung in jeder Form grundsätzlich abzulehnen.",
+        "Gespräche lieber durch Berichte ersetzen.",
+        "Sich für Erinnerungen anderer Menschen nicht mehr zu interessieren.",
+        "Nicht jede komplexe Erfahrung sofort mit einer Lösung zu beantworten."
+      ],
+      "answer": 3,
+      "explanation": "Elias erkennt, dass seine früheren sauberen Lösungen oft vorschnell waren."
+    },
+    {
+      "id": "r41-de-c2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Welcher Umstand lässt die neu erwachte Kontaktaufnahme zweifelhaft erscheinen?",
+      "choices": [
+        "Amara hat das Museum bereits besucht.",
+        "Der Brief kommt gerade vor einer Veranstaltung, für die Elias Gäste sucht.",
+        "Die Ausstellung ist schon seit Jahren geschlossen.",
+        "Elias wurde von seinem Arbeitsplatz versetzt."
+      ],
+      "answer": 1,
+      "explanation": "Der zeitliche Zusammenhang könnte den Eindruck eigennütziger Motive erwecken."
+    },
+    {
+      "id": "r41-de-c2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum wäre ein vollständiges Schuldbekenntnis keine einfache Lösung?",
+      "choices": [
+        "Es würde beweisen, dass Freundschaften grundsätzlich scheitern.",
+        "Das Museum verlangt schriftliche Rechenschaft.",
+        "Elias könnte danach keine Briefe mehr schreiben.",
+        "Amara müsste womöglich Elias' Selbstbild moralisch bestätigen."
+      ],
+      "answer": 3,
+      "explanation": "Er möchte ihr nicht die emotionale Arbeit aufbürden, ihn als guten Freund zu bestätigen."
+    },
+    {
+      "id": "r41-de-c2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Wie lässt sich eine Einladung aussprechen, ohne eine Ablehnung zu bestrafen?",
+      "choices": [
+        "Die Entscheidung des anderen nicht als Beweis gegen die Beziehung werten.",
+        "Jede Absage mit ausführlichen Gründen beantworten lassen.",
+        "Teilnahme als endgültigen Liebesbeweis verlangen.",
+        "Den Gefallen später als Schuld zurückfordern."
+      ],
+      "answer": 0,
+      "explanation": "Der Brief warnt vor einer unsichtbaren Rechnung hinter einer großzügigen Geste."
+    },
+    {
+      "id": "r41-de-c2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Ein Museum will alle Spannungen aus einem Zeitzeugenbericht entfernen. Was sollte es bedenken?",
+      "choices": [
+        "Ob nur positive Ausstellungen besucht werden.",
+        "Ob die Redakteurin genug Mitarbeiter hat.",
+        "Ob die angenehmere Fassung einen wesentlichen Teil der Wirklichkeit verschweigt.",
+        "Ob sich die Ausstellung ohne Bewohner gestalten lässt."
+      ],
+      "answer": 2,
+      "explanation": "Die Erzählung des Hafenarbeiters macht den Wert eines ungelösten Widerspruchs sichtbar."
+    },
+    {
+      "id": "r41-de-c2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Amara schlägt lockeren Briefwechsel ohne Antwortpflicht vor. Warum passt das?",
+      "choices": [
+        "Die frühere Form der Freundschaft muss unbedingt rekonstruiert werden.",
+        "Die Beziehung kann sich verändern, ohne die Vergangenheit exakt wiederherzustellen.",
+        "Jeder Brief muss innerhalb eines Tages beantwortet werden.",
+        "Langsame Antworten beweisen fehlendes Interesse."
+      ],
+      "answer": 1,
+      "explanation": "Elias sieht in bescheidener Korrespondenz zwischen veränderten Menschen einen möglichen Wert."
+    },
+    {
+      "id": "r41-de-c2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Was steckt hinter dem Versprechen, Amaras Reaktion nicht als endgültiges Urteil aufzufassen?",
+      "choices": [
+        "Er ist sicher, dass sie die Einladung annehmen wird.",
+        "Er will niemals wieder persönliche Themen besprechen.",
+        "Er betrachtet die Gefühle anderer als bedeutungslos.",
+        "Elias möchte seinen Wert nicht von ihrer jeweiligen Antwort abhängig machen."
+      ],
+      "answer": 3,
+      "explanation": "Die letzte Passage beendet die Logik, nach der jede Reaktion moralische Bestätigung liefern muss."
+    }
+  ]
+}

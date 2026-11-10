@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "fr",
+  "level": "B2",
+  "sourceTitle": "L’autre rive : une critique qui ne donne pas toutes les réponses",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent B2 film-review interpretation test bank, awaiting second-teacher assessment",
+  "tabs": [
+    {
+      "id": "images",
+      "title": "Images et message"
+    },
+    {
+      "id": "analyse",
+      "title": "Analyser la critique"
+    },
+    {
+      "id": "actions",
+      "title": "Réfléchir aux actions"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-fr-b2-01",
+      "tab": "images",
+      "kind": "mc",
+      "q": "Que représente le gobelet rouge dans la flaque après le concert ?",
+      "choices": [
+        "Le prix des boissons du café.",
+        "Les déchets et le travail qui restent après le départ du public.",
+        "Une expérience destinée à mesurer la pluie.",
+        "La décision de supprimer tous les concerts."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "L'ouverture montre le travail de nettoyage qui commence après le moment festif."
+    },
+    {
+      "id": "r39-fr-b2-02",
+      "tab": "images",
+      "kind": "mc",
+      "q": "Comment la critique juge-t-elle le rapport entre les images et les arguments du documentaire ?",
+      "choices": [
+        "Les arguments sont toujours plus convaincants que les images.",
+        "Les images n'ont aucune fonction dans le film.",
+        "Le documentaire ne transmet aucun message.",
+        "Les images sont efficaces, mais certaines affirmations paraissent trop assurées."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "La première partie souligne la force des images et la fragilité de certaines preuves."
+    },
+    {
+      "id": "r39-fr-b2-03",
+      "tab": "images",
+      "kind": "mc",
+      "q": "Pourquoi l'entretien près de la poubelle pleine est-il particulièrement instructif ?",
+      "choices": [
+        "Il révèle la vie personnelle de la gérante du café.",
+        "Il prouve que personne ne jette de déchets.",
+        "Il présente des horaires, des moyens et des décisions derrière le problème.",
+        "Il suggère de fermer les établissements du quartier."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "L'agent municipal transforme une image triste en question d'organisation concrète."
+    },
+    {
+      "id": "r39-fr-b2-04",
+      "tab": "analyse",
+      "kind": "mc",
+      "q": "Pourquoi la responsabilité ne dépend-elle pas seulement du comportement individuel ?",
+      "choices": [
+        "Les moyens et l'organisation des services influencent aussi la situation.",
+        "Tous les déchets sont produits par les agents municipaux.",
+        "Le film ne montre jamais de personnes réelles.",
+        "Une poubelle pleine ne peut jamais être vidée."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "La scène explique que le calendrier et les moyens disponibles façonnent la gestion des déchets."
+    },
+    {
+      "id": "r39-fr-b2-05",
+      "tab": "analyse",
+      "kind": "mc",
+      "q": "Quelle difficulté rencontre une personne qui souhaite utiliser son propre contenant ?",
+      "choices": [
+        "Une gourde coûte obligatoirement plus cher qu'une entrée.",
+        "Tous les spectacles offrent des points d'eau proches.",
+        "Certaines salles interdisent les contenants et l'accès à l'eau peut être difficile.",
+        "Chaque visiteur dispose d'un local pour laver sa gourde."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Les témoignages mentionnent les règles d'entrée et les points d'eau éloignés."
+    },
+    {
+      "id": "r39-fr-b2-06",
+      "tab": "analyse",
+      "kind": "mc",
+      "q": "Quelle limite de la démarche du film est critiquée dans ce passage ?",
+      "choices": [
+        "Les obstacles concrets sont trop vite remplacés par une morale générale.",
+        "Le film présente trop de solutions possibles avec leurs coûts.",
+        "La réalisatrice ne montre aucune scène de pollution.",
+        "Les interviews portent uniquement sur le financement du film."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "La critique regrette que ces situations soient reconnues puis rapidement écartées."
+    },
+    {
+      "id": "r39-fr-b2-07",
+      "tab": "analyse",
+      "kind": "mc",
+      "q": "Pourquoi la présentation des dépenses du système de consigne est-elle utile ?",
+      "choices": [
+        "Elle prouve que le système résout automatiquement tous les problèmes.",
+        "Elle permet d'évaluer la proposition et ses difficultés mesurables.",
+        "Elle rend inutile le suivi des gobelets rapportés.",
+        "Elle garantit que la première année est rentable."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Les coûts, les retours et les résultats permettent une évaluation plutôt qu'une simple adhésion."
+    },
+    {
+      "id": "r39-fr-b2-08",
+      "tab": "actions",
+      "kind": "mc",
+      "q": "Qu'est-ce qui montre que le système doit encore être étudié ?",
+      "choices": [
+        "Les organisateurs ne connaissent pas la musique du concert.",
+        "Les gobelets ne sont jamais utilisés.",
+        "La salle de spectacle n'existe plus.",
+        "Il reste des problèmes à mesurer et à résoudre."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Le quatrième paragraphe mentionne des retours, des dépenses et des aspects encore à mesurer."
+    },
+    {
+      "id": "r39-fr-b2-09",
+      "tab": "actions",
+      "kind": "mc",
+      "q": "Quelle question serait plus utile que le dernier plan sur une plage propre ?",
+      "choices": [
+        "Combien de films la réalisatrice a-t-elle tournés?",
+        "Quelle couleur était le gobelet du début ?",
+        "Qui videra les poubelles vendredi prochain ?",
+        "Pourquoi les visiteurs applaudissent-ils à la fin ?"
+      ],
+      "answer": 2,
+      "sourceParagraph": 5,
+      "explanation": "La dernière partie privilégie l'entretien régulier des services après le spectacle."
+    },
+    {
+      "id": "r39-fr-b2-10",
+      "tab": "actions",
+      "kind": "mc",
+      "q": "Quelle interprétation résume le mieux la recommandation du film ?",
+      "choices": [
+        "Il mérite d'être vu comme point de départ d'un débat, sans accepter toutes ses réponses.",
+        "Il doit être évité parce que les images sont trop efficaces.",
+        "Il offre un plan complet valable pour tous les événements.",
+        "Il démontre que les gestes individuels sont inutiles."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "La critique propose le film aux élèves précisément pour discuter de ses limites et solutions."
+    }
+  ]
+}

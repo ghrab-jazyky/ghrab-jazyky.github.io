@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "es",
+  "level": "A2",
+  "sourceTitle": "Un regalo para Eva",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Diez preguntas originales de comprensión, inferencia y aplicación; borrador pendiente de auditoría pedagógica.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Comprensión"
+    },
+    {
+      "id": "reasoning",
+      "title": "Relaciones y motivos"
+    },
+    {
+      "id": "transfer",
+      "title": "Aplicación"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-es-a2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué problema tiene Tomás antes de la fiesta?",
+      "choices": [
+        "Trabaja y no puede comprar el regalo por sí mismo.",
+        "Ha perdido la dirección de su prima.",
+        "No tiene ninguna forma de hablar con Marta.",
+        "La fiesta se ha cancelado."
+      ],
+      "answer": 0,
+      "explanation": "Tomás está en la tienda de bicicletas hasta tarde y pide ayuda."
+    },
+    {
+      "id": "r41-es-a2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué enseña el comentario de Marta sobre los libros?",
+      "choices": [
+        "Eva ha pedido más libros para este año.",
+        "Conviene recordar qué regalos no interesaron antes.",
+        "Los libros cuestan siempre demasiado.",
+        "La biblioteca no admite visitas."
+      ],
+      "answer": 1,
+      "explanation": "Marta recuerda que Eva no abrió el libro del año anterior."
+    },
+    {
+      "id": "r41-es-a2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Por qué el concierto no puede ser una solución?",
+      "choices": [
+        "Eva ha dejado de escuchar música.",
+        "El concierto es dentro de varios años.",
+        "Ya no quedan entradas disponibles.",
+        "Se celebra dentro de la tienda."
+      ],
+      "answer": 2,
+      "explanation": "Las entradas del grupo favorito de Eva se han agotado."
+    },
+    {
+      "id": "r41-es-a2-04",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "¿Cómo se ajusta el rocódromo al dinero disponible?",
+      "choices": [
+        "La tienda regala auriculares con cada entrada.",
+        "El centro devuelve siempre todo el dinero.",
+        "Tomás tiene que gastar mucho más de lo previsto.",
+        "La tarjeta para dos visitas cuesta menos del presupuesto."
+      ],
+      "answer": 3,
+      "explanation": "Veintiocho euros se ajustan a los treinta de Tomás."
+    },
+    {
+      "id": "r41-es-a2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "¿Por qué le gusta tanto a Tomás la idea de la escalada?",
+      "choices": [
+        "Eva no sabe qué deporte le interesa.",
+        "Eva necesita un reto mayor que el muro de su instituto.",
+        "Marta ha dicho que nunca visitará el centro.",
+        "El rocódromo está dentro del colegio."
+      ],
+      "answer": 1,
+      "explanation": "Eva considera demasiado fácil el muro de escalada escolar."
+    },
+    {
+      "id": "r41-es-a2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "¿Qué le recomienda Marta a Tomás para el año que viene?",
+      "choices": [
+        "Dejar de visitar a su prima.",
+        "No volver a comprar ningún regalo.",
+        "Esperar hasta el día siguiente de la fiesta.",
+        "Recordar el cumpleaños con un calendario."
+      ],
+      "answer": 3,
+      "explanation": "El último mensaje bromea con la importancia de organizarse antes."
+    },
+    {
+      "id": "r41-es-a2-07",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "¿Por qué Tomás se ofrece a comprar una tarjeta de felicitación?",
+      "choices": [
+        "Así también participa en la preparación del regalo.",
+        "Quiere sustituir la tarjeta de escalada.",
+        "Necesita escribir a su jefe.",
+        "La biblioteca exige una carta."
+      ],
+      "answer": 0,
+      "explanation": "Marta compra la tarjeta regalo y Tomás prepara la felicitación."
+    },
+    {
+      "id": "r41-es-a2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Las entradas de una actividad favorita están agotadas. ¿Qué alternativa sería buena?",
+      "choices": [
+        "Comprar entradas inexistentes a cualquier precio.",
+        "Repetir exactamente el regalo que no usó.",
+        "Buscar otra experiencia relacionada con los gustos de la persona.",
+        "Cancelar la celebración sin hablar con nadie."
+      ],
+      "answer": 2,
+      "explanation": "Los amigos pasan del concierto a la escalada por los intereses de Eva."
+    },
+    {
+      "id": "r41-es-a2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Marta paga hoy el regalo. ¿Qué debería hacer Tomás después?",
+      "choices": [
+        "Pedirle que compre algo más caro.",
+        "Darle las gracias y devolverle el dinero acordado.",
+        "Decir a Eva que no utilice la tarjeta.",
+        "Negarse a escribir la felicitación."
+      ],
+      "answer": 1,
+      "explanation": "Marta ayuda a comprar y Tomás debe cumplir el acuerdo económico."
+    },
+    {
+      "id": "r41-es-a2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "¿Por qué los auriculares no parecen una buena compra?",
+      "choices": [
+        "Eva ha dicho que no le gusta escuchar música.",
+        "En la ciudad está prohibido comprar auriculares.",
+        "Los auriculares no pueden ser un regalo.",
+        "Unos de buena calidad superarían el presupuesto."
+      ],
+      "answer": 3,
+      "explanation": "Marta calcula que unos buenos auriculares cuestan más de treinta euros."
+    }
+  ]
+}

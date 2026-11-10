@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "es",
+  "level": "A2",
+  "sourceTitle": "Un fin de semana para compartir",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Diez preguntas originales de comprensión, inferencia y transferencia; borrador sin validación pedagógica externa.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Comprensión"
+    },
+    {
+      "id": "reasoning",
+      "title": "Razones y relaciones"
+    },
+    {
+      "id": "transfer",
+      "title": "Aplicación"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-es-a2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué demuestra que Sofía se está adaptando mejor a Galway?",
+      "choices": [
+        "Ya tiene amigos con quienes pasa tiempo.",
+        "Ha dejado de estudiar idiomas.",
+        "Ha regresado definitivamente a casa.",
+        "Ya nunca siente frío en Irlanda."
+      ],
+      "answer": 0,
+      "explanation": "Sofía cuenta que al principio estaba triste, pero ahora suele cocinar con amigos."
+    },
+    {
+      "id": "r41-es-a2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Por qué la exposición puede interesarle especialmente a Noah?",
+      "choices": [
+        "Noah trabaja en la estación de tren.",
+        "Le gusta la fotografía y las historias de personas corrientes.",
+        "Sofía quiere que Noah compre una cámara.",
+        "La exposición trata de su equipo de baloncesto."
+      ],
+      "answer": 1,
+      "explanation": "Sofía recuerda el interés de Noah por la fotografía al pensar en la visita."
+    },
+    {
+      "id": "r41-es-a2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué sugiere que el fotógrafo muestre vidas cotidianas?",
+      "choices": [
+        "Que solo acepta fotos de deportistas famosos.",
+        "Que todas las imágenes son de trenes.",
+        "Que la exposición encuentra interés en situaciones normales.",
+        "Que sus fotos muestran únicamente paisajes."
+      ],
+      "answer": 2,
+      "explanation": "La descripción destaca acciones interesantes de personas corrientes."
+    },
+    {
+      "id": "r41-es-a2-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Por qué Sofía menciona el frío y la soledad del comienzo?",
+      "choices": [
+        "Para pedir que Noah no viaje nunca a Galway.",
+        "Para demostrar que el curso fue inútil.",
+        "Para decir que necesita cambiar de escuela.",
+        "Para explicar que su experiencia ha mejorado con el tiempo."
+      ],
+      "answer": 3,
+      "explanation": "El contraste entre el comienzo difícil y las amistades actuales presenta un cambio."
+    },
+    {
+      "id": "r41-es-a2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué importancia tiene la alternativa del museo de ciencias?",
+      "choices": [
+        "Es un lugar al que Sofía no quiere entrar.",
+        "Permite disfrutar del día si la primera visita falla.",
+        "Sustituye obligatoriamente a la exposición.",
+        "Es el único lugar abierto los domingos."
+      ],
+      "answer": 1,
+      "explanation": "La propuesta ofrece un plan alternativo cuando no quedan entradas."
+    },
+    {
+      "id": "r41-es-a2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Por qué dice Sofía que no necesita un día perfecto?",
+      "choices": [
+        "Porque no piensa salir de casa.",
+        "Porque ha olvidado la fecha de regreso.",
+        "Porque quiere cancelar todas las actividades.",
+        "Porque valora más compartir tiempo con Noah."
+      ],
+      "answer": 3,
+      "explanation": "El mensaje insiste en que incluso una hora juntos sería suficiente."
+    },
+    {
+      "id": "r41-es-a2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Si Noah prefiere hablar y no visitar museos, ¿qué puede proponer?",
+      "choices": [
+        "Pasar una hora juntos sin preparar muchas actividades.",
+        "No contestar porque el plan es fijo.",
+        "Reservar otra exposición sin preguntar.",
+        "Ir solo al museo de ciencias."
+      ],
+      "answer": 0,
+      "explanation": "Sofía afirma que el valor principal es encontrarse, no cumplir un programa perfecto."
+    },
+    {
+      "id": "r41-es-a2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué debería comprobar Noah antes de organizar la visita?",
+      "choices": [
+        "Si el curso de Sofía termina en septiembre.",
+        "Si el equipo de baloncesto usa fotografías.",
+        "Si las entradas están disponibles para ese domingo.",
+        "Si la estación vende cámaras nuevas."
+      ],
+      "answer": 2,
+      "explanation": "El plan depende de la disponibilidad de entradas y existe una alternativa."
+    },
+    {
+      "id": "r41-es-a2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Si Noah no puede salir por la mañana, ¿qué respuesta ayuda a decidir?",
+      "choices": [
+        "Aceptar sin mencionar sus dificultades.",
+        "Explicar su horario antes de que Sofía haga la reserva.",
+        "Pedir que Sofía viaje sin billete.",
+        "Esperar hasta después del domingo."
+      ],
+      "answer": 1,
+      "explanation": "Sofía necesita información antes del viernes por la noche para reservar."
+    },
+    {
+      "id": "r41-es-a2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué elemento del correo muestra una amistad que continúa a distancia?",
+      "choices": [
+        "La fotografía cuesta cuatro euros.",
+        "El autobús sale por la mañana.",
+        "La estación es antigua.",
+        "Sofía pregunta por el equipo de baloncesto de Noah."
+      ],
+      "answer": 3,
+      "explanation": "El interés por la vida actual de Noah muestra que su relación no depende solo de la visita."
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "en",
+  "level": "A2",
+  "sourceTitle": "A Present for Eva",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Ten newly written comprehension, interpretation and situational transfer questions; pending independent teacher review.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Meaning and Context"
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasons and Implications"
+    },
+    {
+      "id": "transfer",
+      "title": "New Situations"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-en-a2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What problem makes Tom depend on Mia's help?",
+      "choices": [
+        "He is at work and cannot shop before the party.",
+        "He does not know where his cousin lives.",
+        "He has lost the money for the birthday present.",
+        "He cannot attend the birthday celebration."
+      ],
+      "answer": 0,
+      "explanation": "Tom's shift at the bike shop prevents him from buying a gift himself."
+    },
+    {
+      "id": "r41-en-a2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does Mia's reaction to the book suggest?",
+      "choices": [
+        "Eva has asked for another book this year.",
+        "Past gifts can tell you what someone may not enjoy.",
+        "Mia thinks all books are too expensive.",
+        "The library refuses to sell presents."
+      ],
+      "answer": 1,
+      "explanation": "Mia remembers that Eva never opened the book she received last year."
+    },
+    {
+      "id": "r41-en-a2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why does a concert ticket fail as a present?",
+      "choices": [
+        "Eva dislikes music when she is climbing.",
+        "The concert is taking place at the bike shop.",
+        "There are no tickets left for Eva's favourite band.",
+        "Tom will be away for the whole next month."
+      ],
+      "answer": 2,
+      "explanation": "Tickets have sold out, so the friends need another idea."
+    },
+    {
+      "id": "r41-en-a2-04",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "How does Mia's suggestion solve the budget problem?",
+      "choices": [
+        "It allows Tom to borrow expensive headphones.",
+        "It gives Eva a concert ticket for free.",
+        "It costs more but the shop will pay the difference.",
+        "A two-visit climbing card fits within thirty euros."
+      ],
+      "answer": 3,
+      "explanation": "Mia identifies a gift costing twenty-eight euros, within Tom's limit."
+    },
+    {
+      "id": "r41-en-a2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why does Tom respond enthusiastically to the climbing-centre idea?",
+      "choices": [
+        "Eva has never shown any interest in climbing.",
+        "Eva already finds the school's climbing wall too easy.",
+        "The centre is closing after the party.",
+        "Mia promises a new bicycle as well."
+      ],
+      "answer": 1,
+      "explanation": "The new climbing centre matches Eva's interests and offers a new challenge."
+    },
+    {
+      "id": "r41-en-a2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "What does Mia's final comment about the phone calendar imply?",
+      "choices": [
+        "The party has been moved to next year.",
+        "A phone is necessary to enter the climbing centre.",
+        "Eva wants a new calendar instead of a present.",
+        "Tom should plan ahead to avoid forgetting birthdays."
+      ],
+      "answer": 3,
+      "explanation": "Mia jokes about Tom's last-minute problem and recommends remembering next year."
+    },
+    {
+      "id": "r41-en-a2-07",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why does Tom offer to buy a birthday card himself?",
+      "choices": [
+        "He can contribute something while Mia buys the gift.",
+        "He wants to change the gift back to a book.",
+        "He needs to write a card for his manager.",
+        "The climbing centre requires a handwritten letter."
+      ],
+      "answer": 0,
+      "explanation": "Tom divides the tasks so both friends help prepare Eva's present."
+    },
+    {
+      "id": "r41-en-a2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "You have a limited budget and concert tickets are unavailable. What should you do?",
+      "choices": [
+        "Buy tickets at any price even if they are sold out.",
+        "Choose the same unused gift as last year.",
+        "Find another activity linked to the person's interests.",
+        "Give up without asking what the person likes."
+      ],
+      "answer": 2,
+      "explanation": "Mia moves from an unavailable concert to another gift related to Eva's hobbies."
+    },
+    {
+      "id": "r41-en-a2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "What is the most helpful message Tom could send after Friday?",
+      "choices": [
+        "Ask Mia to buy an even more expensive gift.",
+        "Thank Mia and repay the money he owes her.",
+        "Tell Eva not to use the climbing card.",
+        "Refuse to help write the birthday card."
+      ],
+      "answer": 1,
+      "explanation": "The arrangement depends on Mia buying the present and Tom paying her back."
+    },
+    {
+      "id": "r41-en-a2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why would headphones be a poor choice in this situation?",
+      "choices": [
+        "Eva has explicitly refused to listen to music.",
+        "All headphone shops are closed for the year.",
+        "They cannot be wrapped as a birthday present.",
+        "Good ones cost more than Tom can spend."
+      ],
+      "answer": 3,
+      "explanation": "Mia compares the cost of quality headphones with Tom's budget."
+    }
+  ]
+}

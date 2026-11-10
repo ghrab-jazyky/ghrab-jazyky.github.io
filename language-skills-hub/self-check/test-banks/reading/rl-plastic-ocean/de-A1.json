@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "de",
+  "level": "A1",
+  "sourceTitle": "Ein Becher am See",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent short-story reading questions; unapproved teacher draft",
+  "tabs": [
+    {
+      "id": "text",
+      "title": "Text verstehen"
+    },
+    {
+      "id": "gruende",
+      "title": "Gründe verstehen"
+    },
+    {
+      "id": "alltag",
+      "title": "Im Alltag anwenden"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-de-a1-01",
+      "tab": "text",
+      "kind": "mc",
+      "q": "Was machen die beiden Freundinnen am See?",
+      "choices": [
+        "Sie suchen eine verlorene Flasche.",
+        "Sie sitzen auf einer Bank und sehen Boote.",
+        "Sie arbeiten in einem Geschäft.",
+        "Sie fahren mit einem Bus zur Schule."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Im ersten Absatz sitzen die Freundinnen an einem warmen Tag am See und beobachten Boote."
+    },
+    {
+      "id": "r39-de-a1-02",
+      "tab": "text",
+      "kind": "mc",
+      "q": "Wo liegt der blaue Plastikbecher?",
+      "choices": [
+        "Im Wasser zwischen den Booten.",
+        "Neben dem Eisstand.",
+        "Unter der Bank.",
+        "In Linas Tasche."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Absatz zwei beschreibt den blauen Becher unter der Bank."
+    },
+    {
+      "id": "r39-de-a1-03",
+      "tab": "text",
+      "kind": "mc",
+      "q": "Warum nehmen die Freundinnen den Becher mit?",
+      "choices": [
+        "Weil er nicht in den See gehört.",
+        "Weil sie daraus trinken möchten.",
+        "Weil der Kiosk geschlossen ist.",
+        "Weil sie einen Preis dafür bekommen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Sie nehmen ihn vorsichtig weg, obwohl er nicht ihnen gehört, damit er nicht am See bleibt."
+    },
+    {
+      "id": "r39-de-a1-04",
+      "tab": "gruende",
+      "kind": "mc",
+      "q": "Wo können sie den alten Becher entsorgen?",
+      "choices": [
+        "In einem Boot.",
+        "Auf der anderen Bank.",
+        "In einer Einkaufstasche.",
+        "Im Mülleimer neben dem Kiosk."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Im zweiten Absatz wird der Mülleimer beim Kiosk erwähnt."
+    },
+    {
+      "id": "r39-de-a1-05",
+      "tab": "gruende",
+      "kind": "mc",
+      "q": "Was wählt Lina anstelle eines Eisbechers aus Plastik?",
+      "choices": [
+        "Eine zweite Wasserflasche.",
+        "Eine Waffel für das Eis.",
+        "Eine Plastiktüte für das Obst.",
+        "Ein Glas mit Deckel."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Lina nimmt die Waffel, obwohl ein Plastikbecher angeboten wird."
+    },
+    {
+      "id": "r39-de-a1-06",
+      "tab": "gruende",
+      "kind": "mc",
+      "q": "Woher kommt die Wasserflasche der erzählenden Person?",
+      "choices": [
+        "Von der Schule.",
+        "Von einem fremden Besucher.",
+        "Von zu Hause.",
+        "Aus dem See."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Die Erzählerin hat ihre eigene Wasserflasche von zu Hause dabei."
+    },
+    {
+      "id": "r39-de-a1-07",
+      "tab": "gruende",
+      "kind": "mc",
+      "q": "Was schaffen die Freundinnen am Ende des Tages?",
+      "choices": [
+        "Sie hinterlassen ihren Platz sauber, auch wenn der ganze See nicht sauber ist.",
+        "Sie reinigen den See vollständig.",
+        "Sie verkaufen alle Plastikbecher.",
+        "Sie schließen den Kiosk."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Der letzte Satz unterscheidet den eigenen sauberen Platz vom ganzen See."
+    },
+    {
+      "id": "r39-de-a1-08",
+      "tab": "alltag",
+      "kind": "mc",
+      "q": "Du findest fremden Müll neben einem See. Welches Verhalten passt zur Geschichte?",
+      "choices": [
+        "Du wartest auf den Besitzer.",
+        "Du wirfst den Müll ins Wasser.",
+        "Du versteckst ihn unter einer Bank.",
+        "Du sammelst ihn vorsichtig auf und nutzt einen Mülleimer."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Die Freundinnen kümmern sich um einen fremden Becher und entsorgen ihn verantwortungsvoll."
+    },
+    {
+      "id": "r39-de-a1-09",
+      "tab": "alltag",
+      "kind": "mc",
+      "q": "Warum ist die Wahl einer Waffel sinnvoll?",
+      "choices": [
+        "Sie macht das Eis immer günstiger.",
+        "Man braucht dann kein Wasser mehr.",
+        "Sie vermeidet einen zusätzlichen Plastikbecher.",
+        "Sie verhindert automatisch jeden Abfall am See."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Lina entscheidet sich gegen den angebotenen Plastikbecher."
+    },
+    {
+      "id": "r39-de-a1-10",
+      "tab": "alltag",
+      "kind": "mc",
+      "q": "Welche Aussage fasst den Text am besten zusammen?",
+      "choices": [
+        "Auch kleine verantwortungsvolle Entscheidungen können einen Ort sauberer halten.",
+        "Nur Erwachsene können etwas gegen Müll tun.",
+        "Müll ist nur dann ein Problem, wenn er dir gehört.",
+        "Ein einziger Besuch macht jeden See perfekt sauber."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Der Schluss zeigt, dass die Freundinnen ihren eigenen Platz sauber hinterlassen."
+    }
+  ]
+}

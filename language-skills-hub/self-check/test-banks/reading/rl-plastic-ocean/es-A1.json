@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "es",
+  "level": "A1",
+  "sourceTitle": "Una bolsa junto al paseo",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent short-story reading questions; unapproved teacher draft",
+  "tabs": [
+    {
+      "id": "texto",
+      "title": "Comprender el texto"
+    },
+    {
+      "id": "motivos",
+      "title": "Explicar las decisiones"
+    },
+    {
+      "id": "vida",
+      "title": "Aplicar la idea"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-es-a1-01",
+      "tab": "texto",
+      "kind": "mc",
+      "q": "¿Qué quieren hacer los dos primos al llegar a la playa?",
+      "choices": [
+        "Jugar con un coche.",
+        "Pasear y hacer fotos del mar.",
+        "Comprar una bolsa nueva.",
+        "Limpiar el quiosco."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "En el primer párrafo dicen que quieren pasear y fotografiar el mar."
+    },
+    {
+      "id": "r39-es-a1-02",
+      "tab": "texto",
+      "kind": "mc",
+      "q": "¿Dónde encuentran la bolsa verde?",
+      "choices": [
+        "En el agua del mar.",
+        "Dentro de una mochila.",
+        "Junto a un banco.",
+        "En la mesa de una cafetería."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "El segundo párrafo sitúa la bolsa de plástico verde cerca de un banco."
+    },
+    {
+      "id": "r39-es-a1-03",
+      "tab": "texto",
+      "kind": "mc",
+      "q": "¿Por qué recogen la bolsa aunque no sea suya?",
+      "choices": [
+        "Porque está cerca del agua y puede ensuciarla.",
+        "Porque necesitan llevar fruta.",
+        "Porque quieren hacer una fotografía mejor.",
+        "Porque el quiosco les paga por recogerla."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Los primos actúan porque la bolsa se encuentra cerca del mar y no debe quedarse allí."
+    },
+    {
+      "id": "r39-es-a1-04",
+      "tab": "motivos",
+      "kind": "mc",
+      "q": "¿Qué pueden utilizar para tirar la bolsa?",
+      "choices": [
+        "Una mochila nueva.",
+        "La papelera de la escuela.",
+        "Una caja en la playa.",
+        "La papelera al lado del quiosco."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "El relato menciona una papelera junto al quiosco."
+    },
+    {
+      "id": "r39-es-a1-05",
+      "tab": "motivos",
+      "kind": "mc",
+      "q": "¿Qué lleva la persona que cuenta la historia desde casa?",
+      "choices": [
+        "Un vaso del quiosco.",
+        "Una botella para beber agua.",
+        "Una bolsa de plástico verde.",
+        "Un juguete para Nico."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "El narrador lleva su propia botella de casa."
+    },
+    {
+      "id": "r39-es-a1-06",
+      "tab": "motivos",
+      "kind": "mc",
+      "q": "¿Qué hace Nico con el vaso de su bebida?",
+      "choices": [
+        "Lo deja junto al banco.",
+        "Lo tira en la arena.",
+        "Lo guarda para tirarlo más tarde.",
+        "Lo lleva dentro del agua."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Nico guarda el vaso y tiene intención de tirarlo después."
+    },
+    {
+      "id": "r39-es-a1-07",
+      "tab": "motivos",
+      "kind": "mc",
+      "q": "¿Qué significa que el lugar esté «mejor» al final?",
+      "choices": [
+        "No han limpiado toda la playa, pero sí el espacio que usan.",
+        "El agua del mar ha cambiado de color.",
+        "El quiosco ya no vende bebidas.",
+        "Han recogido todas las bolsas de la ciudad."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "El cierre explica que la playa no está perfecta, pero la zona que han usado queda más limpia."
+    },
+    {
+      "id": "r39-es-a1-08",
+      "tab": "vida",
+      "kind": "mc",
+      "q": "Un amigo ve una bolsa de otra persona en la arena. ¿Qué le aconsejarías?",
+      "choices": [
+        "Que espere hasta el día siguiente.",
+        "Que la empuje hacia el mar.",
+        "Que la deje porque no es suya.",
+        "Que la recoja con cuidado y use una papelera."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Los primos recogen con cuidado una bolsa ajena que está cerca del agua."
+    },
+    {
+      "id": "r39-es-a1-09",
+      "tab": "vida",
+      "kind": "mc",
+      "q": "¿Qué muestra la decisión de Nico de guardar su vaso?",
+      "choices": [
+        "Que quiere comprar más bebidas.",
+        "Que necesita llevar el vaso a casa para jugar.",
+        "Que piensa en dónde dejar la basura después de beber.",
+        "Que prefiere las bolsas a las botellas."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "La historia presenta guardar el vaso para tirarlo como una pequeña acción responsable."
+    },
+    {
+      "id": "r39-es-a1-10",
+      "tab": "vida",
+      "kind": "mc",
+      "q": "¿Qué mensaje transmite mejor esta historia?",
+      "choices": [
+        "Podemos cuidar nuestro espacio aunque no podamos limpiar toda la playa.",
+        "Solo quien deja basura debe recogerla.",
+        "Ir a la playa significa comprar bebidas.",
+        "Una sola persona puede limpiar todos los lugares."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "El relato valora las pequeñas decisiones responsables sin prometer una playa perfecta."
+    }
+  ]
+}

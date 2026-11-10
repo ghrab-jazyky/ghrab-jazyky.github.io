@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "A2",
+  "sourceTitle": "A Festival with Fewer Cups",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R38-CONTENT-AUDIT-1",
+  "description": "Independent environmental reading assessment draft with ten newly authored questions and evidence references; content sign-off pending",
+  "tabs": [
+    {
+      "id": "reading",
+      "title": "Understanding the Text"
+    },
+    {
+      "id": "reasons",
+      "title": "Causes and Connections"
+    },
+    {
+      "id": "choices",
+      "title": "Ideas in Practice"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r38-en-a2-01",
+      "tab": "reading",
+      "kind": "mc",
+      "q": "What made the festival organisers look for a different system?",
+      "choices": [
+        "They wanted to stop all concerts.",
+        "The previous events left too many plastic cups.",
+        "The food sellers asked for fewer visitors.",
+        "There were no volunteers to help."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "The opening explains that discarded cups and late cleaning led to a change in the festival."
+    },
+    {
+      "id": "r38-en-a2-02",
+      "tab": "reading",
+      "kind": "mc",
+      "q": "What happens when someone brings a borrowed cup back?",
+      "choices": [
+        "They receive a concert ticket.",
+        "They can keep a new bottle.",
+        "They must pay a second deposit.",
+        "They get the deposit money back."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "The cup deposit is returned to a visitor who brings the cup back."
+    },
+    {
+      "id": "r38-en-a2-03",
+      "tab": "reading",
+      "kind": "mc",
+      "q": "What problem were the extra signs and return desk intended to reduce?",
+      "choices": [
+        "The number of food sellers.",
+        "The price of drinking water.",
+        "Long queues and confusion about returns.",
+        "The amount of music during the concert."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Volunteers added signs and a second return desk in response to concerns about waiting."
+    },
+    {
+      "id": "r38-en-a2-04",
+      "tab": "reasons",
+      "kind": "mc",
+      "q": "Why was picking up cups attractive to some children?",
+      "choices": [
+        "They could collect the deposit money.",
+        "They were given free concert tickets.",
+        "They had to do it for school.",
+        "They wanted to open their own desk."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Children returned abandoned cups and kept the deposits as pocket money."
+    },
+    {
+      "id": "r38-en-a2-05",
+      "tab": "reasons",
+      "kind": "mc",
+      "q": "Which type of rubbish was still a problem at the festival?",
+      "choices": [
+        "Only broken glass.",
+        "Music posters near the stage.",
+        "Food wrappers left on the grass.",
+        "Metal cups borrowed from stalls."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "The new cup system did not prevent food wrappers from being left behind."
+    },
+    {
+      "id": "r38-en-a2-06",
+      "tab": "reasons",
+      "kind": "mc",
+      "q": "How did the number of rubbish bags change from last year?",
+      "choices": [
+        "It fell from forty to twenty-six.",
+        "It increased from twenty-six to forty.",
+        "It remained exactly the same.",
+        "It fell from forty to four."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "The cleaners filled forty bags last year and twenty-six this year."
+    },
+    {
+      "id": "r38-en-a2-07",
+      "tab": "reasons",
+      "kind": "mc",
+      "q": "Why do the organisers want to involve food sellers next year?",
+      "choices": [
+        "They want to sell more drinks.",
+        "They still need to reduce packaging waste.",
+        "They plan to end the festival.",
+        "They want customers to pay higher deposits."
+      ],
+      "answer": 1,
+      "sourceParagraph": 6,
+      "explanation": "The final paragraph says organisers will ask food sellers to use less packaging."
+    },
+    {
+      "id": "r38-en-a2-08",
+      "tab": "choices",
+      "kind": "mc",
+      "q": "What shows that the new system did not solve every problem?",
+      "choices": [
+        "Visitors stopped drinking water.",
+        "The cups were too expensive to borrow.",
+        "Nobody used the return desks.",
+        "Some cups disappeared and food wrappers remained."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "The text notes missing cups and remaining food rubbish despite the improvement."
+    },
+    {
+      "id": "r38-en-a2-09",
+      "tab": "choices",
+      "kind": "mc",
+      "q": "What would probably happen if the festival removed its return desk?",
+      "choices": [
+        "The number of concerts would increase.",
+        "Visitors would need more food wrappers.",
+        "Borrowed cups could be harder to return.",
+        "The grass would immediately be cleaner."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "A return point is needed for visitors to give back borrowed cups and reclaim the deposit."
+    },
+    {
+      "id": "r38-en-a2-10",
+      "tab": "choices",
+      "kind": "mc",
+      "q": "Which conclusion best fits the organisers' plans?",
+      "choices": [
+        "One useful change can be followed by further improvements.",
+        "The festival should return to disposable cups.",
+        "The problem is solved and no more work is needed.",
+        "The festival should stop serving food."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "The organisers see progress in reducing cups but plan further measures against other waste."
+    }
+  ]
+}

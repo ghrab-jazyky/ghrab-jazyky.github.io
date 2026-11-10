@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "de",
+  "level": "C2",
+  "sourceTitle": "Schreiben, das sich wie Sprechen verhält",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Zehn eigenständige Interpretations- und Transferfragen; Entwurf ohne externe didaktische Freigabe.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interpretation"
+    },
+    {
+      "id": "argument",
+      "title": "Argumentationsanalyse"
+    },
+    {
+      "id": "transfer",
+      "title": "Kritische Anwendung"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-de-c2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Warum hält der Autor informelle Chats nicht einfach für schlechtes Schreiben?",
+      "choices": [
+        "Sie wählen oft bewusst ein passendes sprachliches Register.",
+        "In privaten Chats kommen nie Rechtschreibfehler vor.",
+        "Orthografie existiert im Digitalen nicht mehr.",
+        "Informelle Nachrichten lassen sich nicht dauerhaft speichern."
+      ],
+      "answer": 0,
+      "explanation": "Die Verkürzung ist vielfach eine soziale Entscheidung, nicht Unfähigkeit."
+    },
+    {
+      "id": "r41-de-c2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was bedeutet das Bild vom Reparaturset für die fehlende Stimme?",
+      "choices": [
+        "Sie garantieren weltweit dieselbe Interpretation.",
+        "Schriftliche Signale ersetzen teilweise den Ton gesprochener Sprache.",
+        "Sie machen jeden Chat zu einem Rechtsdokument.",
+        "Sie verhindern die Weitergabe von Bildschirmfotos."
+      ],
+      "answer": 1,
+      "explanation": "Emojis und Zeichenfolgen übertragen einige Merkmale von Rhythmus und Ton."
+    },
+    {
+      "id": "r41-de-c2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Was fehlt einem Screenshot außerhalb seines ursprünglichen Publikums?",
+      "choices": [
+        "Die ursprünglichen Buchstaben der Nachricht.",
+        "Die sichtbare Gestaltung des Textes.",
+        "Gemeinsame Vorgeschichte und Gesprächssituation.",
+        "Die technische Möglichkeit zur Weiterleitung."
+      ],
+      "answer": 2,
+      "explanation": "Beim Kontextkollaps bleiben die Worte, aber nicht ihre soziale Einbettung."
+    },
+    {
+      "id": "r41-de-c2-04",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Warum fragt der Text nach der Verantwortung mehrerer Beteiligter?",
+      "choices": [
+        "Derjenige, der das Bild zuschneidet, ist immer unschuldig.",
+        "Der ursprüngliche Verfasser kann sich nie irren.",
+        "Es gibt eine eindeutige schulische Strafe für alle Fälle.",
+        "Schuld lässt sich nicht ohne Weiteres nur einer Person zuschreiben."
+      ],
+      "answer": 3,
+      "explanation": "Schreiben, Zuschneiden und Weitergeben tragen unterschiedlich zur Wirkung bei."
+    },
+    {
+      "id": "r41-de-c2-05",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Welchen Widerspruch beschreibt die Unterscheidung zwischen Schreiben und Lesen?",
+      "choices": [
+        "Getippte Texte verschwinden schneller als gesprochene Worte.",
+        "Beim Schreiben erwarten wir Gesprächsfreiheit, beim Lesen dokumentarische Gewissheit.",
+        "Jeder Chat soll die Form eines Vertrages annehmen.",
+        "Empfänger und Publikum bleiben zwangsläufig identisch."
+      ],
+      "answer": 1,
+      "explanation": "Der Autor sieht zwei unvereinbare Erwartungen an dasselbe Medium."
+    },
+    {
+      "id": "r41-de-c2-06",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Warum wird darauf verwiesen, dass Löschen keine Kopien beseitigt?",
+      "choices": [
+        "Alle Bildschirmfotos sollten technisch verboten werden.",
+        "Jede Nachricht ist bereits öffentlich verfügbar.",
+        "Das Löschen hat niemals einen sinnvollen Zweck.",
+        "Die Technik kann die zugrunde liegenden Probleme allein nicht lösen."
+      ],
+      "answer": 3,
+      "explanation": "Die Dauerhaftigkeit macht eine reflektierte Haltung notwendig."
+    },
+    {
+      "id": "r41-de-c2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Ein Elternteil erhält einen Screenshot ohne die Emojis eines Scherzes. Was wäre angemessen?",
+      "choices": [
+        "Vor der Bewertung die ursprüngliche Unterhaltung erfragen.",
+        "Den Ausschnitt ohne Kontext als eindeutig betrachten.",
+        "Das Bild sofort an andere Eltern weiterleiten.",
+        "Jeden Scherz grundsätzlich für harmlos halten."
+      ],
+      "answer": 0,
+      "explanation": "Das Entfernen der Signale verändert möglicherweise die Bedeutung."
+    },
+    {
+      "id": "r41-de-c2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Eine neue Schülerin versteht Ironiezeichen im Gruppenchat falsch. Warum?",
+      "choices": [
+        "Die Gruppe hat aufgehört, Sprache zu benutzen.",
+        "Alle wollen die Schülerin gezielt beleidigen.",
+        "Sie kennt die gemeinsamen Kommunikationskonventionen noch nicht.",
+        "Satzzeichen tragen grundsätzlich keine soziale Bedeutung."
+      ],
+      "answer": 2,
+      "explanation": "Gruppenspezifische Signale müssen erst geteilt und gelernt werden."
+    },
+    {
+      "id": "r41-de-c2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Eine Lehrkraft lässt Schülerinnen einen Screenshot im Zusammenhang untersuchen. Was üben sie?",
+      "choices": [
+        "Alle peinlichen Nachrichten auf Geräten zu löschen.",
+        "Publikum und Vorgeschichte zu rekonstruieren, statt isoliert zu urteilen.",
+        "Für jede Gruppe ein Emoji vorzuschreiben.",
+        "Chats möglichst schnell zu verfassen."
+      ],
+      "answer": 1,
+      "explanation": "Der Schluss stellt genau diese anspruchsvolle Lesekompetenz in den Mittelpunkt."
+    },
+    {
+      "id": "r41-de-c2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Welche Kombination entspricht der vorgeschlagenen digitalen Ethik?",
+      "choices": [
+        "Schreibende verzichten auf Humor; Lesende urteilen sofort.",
+        "Alle müssen formell schreiben und dürfen keine Fehler machen.",
+        "Löschfunktionen reichen aus, um Verantwortung zu vermeiden.",
+        "Schreibende bedenken Weitergabe; Lesende berücksichtigen fehlenden Kontext."
+      ],
+      "answer": 3,
+      "explanation": "Verantwortung liegt sowohl bei Autoren als auch bei späteren Rezipienten."
+    }
+  ]
+}

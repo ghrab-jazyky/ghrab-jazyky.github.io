@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "fr",
+  "level": "A2",
+  "sourceTitle": "Un concert avec moins de gobelets",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent festival waste-reduction comprehension draft, pending second-teacher review",
+  "tabs": [
+    {
+      "id": "comprendre",
+      "title": "Comprendre les faits"
+    },
+    {
+      "id": "raisons",
+      "title": "Expliquer les raisons"
+    },
+    {
+      "id": "solutions",
+      "title": "Imaginer des solutions"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-fr-a2-01",
+      "tab": "comprendre",
+      "kind": "mc",
+      "q": "Pourquoi les organisateurs ont-ils décidé de modifier les boissons de la fête ?",
+      "choices": [
+        "Les musiciens ne voulaient plus jouer.",
+        "La fête précédente avait laissé trop de gobelets jetés.",
+        "Les vendeurs avaient fermé tous leurs stands.",
+        "Les habitants ne souhaitaient plus venir."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "La première partie décrit les nombreux gobelets et le nettoyage tardif."
+    },
+    {
+      "id": "r39-fr-a2-02",
+      "tab": "comprendre",
+      "kind": "mc",
+      "q": "Que récupère un visiteur lorsqu'il rapporte son gobelet réutilisable ?",
+      "choices": [
+        "Un billet pour un autre concert.",
+        "Une boisson supplémentaire.",
+        "Un nouveau gobelet à garder.",
+        "L'argent versé comme consigne."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "La consigne est remboursée au retour du gobelet."
+    },
+    {
+      "id": "r39-fr-a2-03",
+      "tab": "comprendre",
+      "kind": "mc",
+      "q": "Que permettaient les deux fontaines mises à disposition ?",
+      "choices": [
+        "D'acheter des billets.",
+        "De recevoir des gobelets en plastique.",
+        "De remplir les gourdes avec de l'eau.",
+        "D'obtenir gratuitement des plats chauds."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Le texte mentionne deux fontaines permettant de remplir les gourdes."
+    },
+    {
+      "id": "r39-fr-a2-04",
+      "tab": "raisons",
+      "kind": "mc",
+      "q": "Pourquoi les bénévoles ont-ils installé des panneaux et un deuxième comptoir ?",
+      "choices": [
+        "Pour faciliter les retours et limiter les longues files d'attente.",
+        "Pour vendre davantage de boissons.",
+        "Pour supprimer les stands de nourriture.",
+        "Pour remplacer les agents de nettoyage."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Ces mesures répondent à la peur d'attendre trop longtemps."
+    },
+    {
+      "id": "r39-fr-a2-05",
+      "tab": "raisons",
+      "kind": "mc",
+      "q": "Quels déchets étaient encore présents près de la scène ?",
+      "choices": [
+        "Seulement des bouteilles en verre.",
+        "Tous les gobelets rapportés.",
+        "Des emballages alimentaires.",
+        "Les panneaux des fontaines."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Le troisième paragraphe indique qu'il restait des emballages de nourriture."
+    },
+    {
+      "id": "r39-fr-a2-06",
+      "tab": "raisons",
+      "kind": "mc",
+      "q": "Quel résultat positif a été observé après la fête ?",
+      "choices": [
+        "Les agents de nettoyage ont fini plus tôt.",
+        "Il ne restait absolument aucun déchet.",
+        "Tous les visiteurs ont apporté une gourde.",
+        "Les stands ont arrêté de vendre de la nourriture."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Le nouveau système a permis aux agents de terminer leur travail plus tôt."
+    },
+    {
+      "id": "r39-fr-a2-07",
+      "tab": "raisons",
+      "kind": "mc",
+      "q": "Pourquoi les organisateurs veulent-ils rencontrer les vendeurs de nourriture ?",
+      "choices": [
+        "Pour augmenter les prix des entrées.",
+        "Pour réduire aussi les emballages sans rendre leur travail inutilement difficile.",
+        "Pour acheter les gobelets manquants.",
+        "Pour fermer les fontaines gratuites."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Le projet concerne les autres emballages tout en respectant le fonctionnement des petites entreprises."
+    },
+    {
+      "id": "r39-fr-a2-08",
+      "tab": "solutions",
+      "kind": "mc",
+      "q": "Quel détail montre que la solution ne réglait pas tout ?",
+      "choices": [
+        "Les visiteurs appréciaient l'eau gratuite.",
+        "La plupart des gobelets revenaient.",
+        "Les bénévoles avaient installé des panneaux.",
+        "Certains gobelets manquaient et des emballages restaient au sol."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Le texte présente à la fois des progrès et des déchets encore présents."
+    },
+    {
+      "id": "r39-fr-a2-09",
+      "tab": "solutions",
+      "kind": "mc",
+      "q": "Si les visiteurs craignent une longue attente, que peut-on améliorer ?",
+      "choices": [
+        "Supprimer l'eau gratuite.",
+        "Augmenter la consigne.",
+        "Rendre les retours plus faciles grâce à des panneaux et à un autre comptoir.",
+        "Interdire les gourdes personnelles."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Le texte décrit ces aménagements pour éviter de longues files."
+    },
+    {
+      "id": "r39-fr-a2-10",
+      "tab": "solutions",
+      "kind": "mc",
+      "q": "Quel projet serait une suite logique pour la prochaine fête ?",
+      "choices": [
+        "Travailler aussi sur les emballages des aliments avec les vendeurs.",
+        "Conclure qu'il n'y aura plus jamais de déchets.",
+        "Revenir aux seuls gobelets jetables.",
+        "Confier le nettoyage uniquement aux visiteurs."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "La dernière partie prévoit une concertation sur les emballages alimentaires."
+    }
+  ]
+}

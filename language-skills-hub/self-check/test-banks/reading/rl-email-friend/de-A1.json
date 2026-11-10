@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "de",
+  "level": "A1",
+  "sourceTitle": "Eine Nachricht von Ben",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Zehn eigenständige Aufgaben zum Verstehen, Schlussfolgern und Übertragen; noch nicht pädagogisch freigegeben.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Verständnis"
+    },
+    {
+      "id": "reasoning",
+      "title": "Begründungen und Beziehungen"
+    },
+    {
+      "id": "transfer",
+      "title": "Anwendung"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-de-a1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Was erfahren wir über Bens neues Zuhause?",
+      "choices": [
+        "Es liegt in der Nähe eines kleinen Parks.",
+        "Es befindet sich direkt in seiner alten Schule.",
+        "Es ist ein Haus am Bahnhof.",
+        "Es liegt weit von allen Freunden entfernt."
+      ],
+      "answer": 0,
+      "explanation": "Im ersten Absatz nennt Ben Greenhill und den Park in seiner Nähe."
+    },
+    {
+      "id": "r41-de-a1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Was macht Ben jetzt mit seiner neuen Freundin Eva?",
+      "choices": [
+        "Die beiden fahren samstags mit dem Zug.",
+        "Die beiden spielen freitags Fußball.",
+        "Sie besuchen jede Woche Mayas Schule.",
+        "Sie schauen Filme im Jugendzentrum."
+      ],
+      "answer": 1,
+      "explanation": "Ben stellt Eva als neue Freundin vor, mit der er Fußball spielt."
+    },
+    {
+      "id": "r41-de-a1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Warum kann Maya Essen zum Filmabend mitbringen?",
+      "choices": [
+        "Der Park hat kein Trinkwasser.",
+        "Alle müssen ein großes Abendessen kochen.",
+        "Besucher dürfen eigene Brote mitnehmen.",
+        "Der Film beginnt schon am Morgen."
+      ],
+      "answer": 2,
+      "explanation": "Ben schreibt, dass der Eintritt frei ist und man Brote mitbringen kann."
+    },
+    {
+      "id": "r41-de-a1-04",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Wie soll Maya nach Bens Vorschlag in den Park kommen?",
+      "choices": [
+        "Mit dem Fahrrad direkt aus ihrer Schule.",
+        "Am Freitag zusammen mit Eva.",
+        "Erst nach dem Ende des Films.",
+        "Mit dem Zug und danach mit Bens Hilfe."
+      ],
+      "answer": 3,
+      "explanation": "Bens Vater kann sie am Bahnhof treffen; danach können sie gemeinsam weitergehen."
+    },
+    {
+      "id": "r41-de-a1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Warum spricht Ben über die Pausen an der alten Schule?",
+      "choices": [
+        "Er möchte seine neue Schule verlassen.",
+        "Er erinnert sich gern an seine Zeit mit Maya.",
+        "Eva kennt keine Fußballregeln.",
+        "Er muss einen Bericht für Lehrer schreiben."
+      ],
+      "answer": 1,
+      "explanation": "Die gemeinsamen Erinnerungen zeigen, dass Ben die frühere Freundschaft vermisst."
+    },
+    {
+      "id": "r41-de-a1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was zeigt der Wunsch von Bens kleiner Schwester?",
+      "choices": [
+        "Nur Kinder dürfen im Park Filme sehen.",
+        "Maya muss ihre eigene Schwester mitnehmen.",
+        "Für Erwachsene ist der Eintritt verboten.",
+        "Der Filmabend ist wohl auch für jüngere Kinder interessant."
+      ],
+      "answer": 3,
+      "explanation": "Die achtjährige Schwester möchte den Film ebenfalls sehen."
+    },
+    {
+      "id": "r41-de-a1-07",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum sagt Ben, dass er Mayas Zeitprobleme versteht?",
+      "choices": [
+        "Er möchte sie einladen, ohne Druck zu machen.",
+        "Er weiß bereits, dass Maya nicht kommen wird.",
+        "Er plant den Film in eine andere Stadt zu verlegen.",
+        "Er will die Freundschaft beenden."
+      ],
+      "answer": 0,
+      "explanation": "Die Nachricht lässt Maya die Freiheit, die Einladung abzulehnen."
+    },
+    {
+      "id": "r41-de-a1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Maya kennt Greenhill noch nicht. Was erleichtert ihre Anreise?",
+      "choices": [
+        "Sie fährt ohne Informationen zum Park.",
+        "Sie kommt erst nach dem Film an.",
+        "Bens Vater wartet am Bahnhof auf sie.",
+        "Sie muss nicht auf Bens Nachricht reagieren."
+      ],
+      "answer": 2,
+      "explanation": "Ein Treffen am Bahnhof kann ihr helfen, den Weg in der neuen Stadt zu finden."
+    },
+    {
+      "id": "r41-de-a1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Wenn Maya am Samstag beschäftigt ist, was könnte sie freundlich schreiben?",
+      "choices": [
+        "Sie wird Ben nie wieder schreiben.",
+        "Sie kann nicht kommen, erzählt aber von ihrer neuen Klasse.",
+        "Ben muss den ganzen Filmabend absagen.",
+        "Sie möchte keine Neuigkeiten von Ben hören."
+      ],
+      "answer": 1,
+      "explanation": "Ben akzeptiert Zeitprobleme und fragt ausdrücklich nach Mayas Neuigkeiten."
+    },
+    {
+      "id": "r41-de-a1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Woran sieht man, dass Ben nicht nur über den Film sprechen will?",
+      "choices": [
+        "Er nennt ausschließlich die Uhrzeit des Films.",
+        "Er vergisst alle gemeinsamen Erlebnisse.",
+        "Er verlangt, dass Maya Fußball spielt.",
+        "Er möchte wissen, wie es Maya in ihrer neuen Klasse geht."
+      ],
+      "answer": 3,
+      "explanation": "Ben interessiert sich am Ende auch persönlich für seine alte Freundin."
+    }
+  ]
+}

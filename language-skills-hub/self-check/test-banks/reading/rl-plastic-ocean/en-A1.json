@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "A1",
+  "sourceTitle": "A Bag by the Sea",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R38-CONTENT-AUDIT-1",
+  "description": "Independent environmental reading assessment draft with ten newly authored questions and evidence references; content sign-off pending",
+  "tabs": [
+    {
+      "id": "reading",
+      "title": "Understanding the Text"
+    },
+    {
+      "id": "reasons",
+      "title": "Causes and Connections"
+    },
+    {
+      "id": "choices",
+      "title": "Ideas in Practice"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r38-en-a1-01",
+      "tab": "reading",
+      "kind": "mc",
+      "q": "What do the cousins want to do before they notice the bag?",
+      "choices": [
+        "Buy some new cups.",
+        "Take pictures of the beach.",
+        "Meet the town cleaner.",
+        "Look for a lost toy."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "At the beginning they come to the beach wanting to take photos."
+    },
+    {
+      "id": "r38-en-a1-02",
+      "tab": "reading",
+      "kind": "mc",
+      "q": "Why do the cousins take the blue bag away?",
+      "choices": [
+        "Rosa has asked them to collect it.",
+        "It is full of their sandwiches.",
+        "They want to use it for shopping.",
+        "They do not want it to stay beside the sea."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "The cousins decide to remove a bag near the water even though it does not belong to them."
+    },
+    {
+      "id": "r38-en-a1-03",
+      "tab": "reading",
+      "kind": "mc",
+      "q": "Why does Rosa thank the cousins?",
+      "choices": [
+        "They have taken photos of her café.",
+        "They have bought a drink.",
+        "They have removed rubbish from the beach.",
+        "They have found her missing bag."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Rosa sees the bag they picked up and thanks them for helping keep the beach clean."
+    },
+    {
+      "id": "r38-en-a1-04",
+      "tab": "reasons",
+      "kind": "mc",
+      "q": "What might happen to rubbish left beside the café?",
+      "choices": [
+        "The wind can carry it into the sea.",
+        "It will always stay beside the bin.",
+        "A visitor will put it into a bag.",
+        "It will turn into paper."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Rosa explains that evening winds blow rubbish from the beach into the water."
+    },
+    {
+      "id": "r38-en-a1-05",
+      "tab": "reasons",
+      "kind": "mc",
+      "q": "Why are paper bags and gloves useful for the cousins?",
+      "choices": [
+        "They need them to take better photos.",
+        "They can make new toys with them.",
+        "They help the cousins collect litter more safely.",
+        "They will keep the sandwiches fresh."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Rosa gives supplies that help the cousins collect discarded items on the beach."
+    },
+    {
+      "id": "r38-en-a1-06",
+      "tab": "reasons",
+      "kind": "mc",
+      "q": "What do the cousins find while walking for one hour?",
+      "choices": [
+        "Bottles, cups and a toy car.",
+        "Only blue plastic bags.",
+        "A missing bicycle and shoes.",
+        "Paper books from the café."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "The fourth paragraph describes bottles, cups and a small toy car gathered on their walk."
+    },
+    {
+      "id": "r38-en-a1-07",
+      "tab": "reasons",
+      "kind": "mc",
+      "q": "What does Eva plan to do with her used drink cup?",
+      "choices": [
+        "Throw it onto the sand.",
+        "Put it into a rubbish bin.",
+        "Take it to the sea.",
+        "Leave it outside the café."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "Eva keeps the plastic cup until she can put it in the bin."
+    },
+    {
+      "id": "r38-en-a1-08",
+      "tab": "choices",
+      "kind": "mc",
+      "q": "What could Rosa do with the photos?",
+      "choices": [
+        "Use them to sell sandwiches.",
+        "Send them to a school teacher.",
+        "Put them into the cousins' bags.",
+        "Show them on the café wall to other visitors."
+      ],
+      "answer": 3,
+      "sourceParagraph": 6,
+      "explanation": "The cousins hope Rosa can show their photographs on a wall so others can see them."
+    },
+    {
+      "id": "r38-en-a1-09",
+      "tab": "choices",
+      "kind": "mc",
+      "q": "Why would the photos be useful to other people?",
+      "choices": [
+        "They show where Eva bought a drink.",
+        "They explain how to find the beach.",
+        "They may help visitors notice the rubbish problem.",
+        "They show the price of Rosa's café."
+      ],
+      "answer": 2,
+      "sourceParagraph": 6,
+      "explanation": "Showing photos can help other beach visitors notice what people leave behind."
+    },
+    {
+      "id": "r38-en-a1-10",
+      "tab": "choices",
+      "kind": "mc",
+      "q": "What is the best choice if you see rubbish beside the water?",
+      "choices": [
+        "Pick it up safely and use a bin.",
+        "Leave it because another person dropped it.",
+        "Move it closer to the water.",
+        "Wait for the wind to take it away."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "The story shows the cousins removing rubbish safely rather than ignoring it."
+    }
+  ]
+}

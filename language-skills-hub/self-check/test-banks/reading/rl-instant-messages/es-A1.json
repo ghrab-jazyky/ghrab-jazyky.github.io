@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "es",
+  "level": "A1",
+  "sourceTitle": "Un sábado en el parque",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Diez preguntas originales de comprensión, inferencia y aplicación; borrador pendiente de auditoría pedagógica.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Comprensión"
+    },
+    {
+      "id": "reasoning",
+      "title": "Relaciones y motivos"
+    },
+    {
+      "id": "transfer",
+      "title": "Aplicación"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-es-a1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Por qué Lucas pregunta quién puede venir el sábado?",
+      "choices": [
+        "Quiere organizar un pícnic con sus amigos.",
+        "Necesita ayuda para hacer los deberes.",
+        "Quiere cancelar una clase de piano.",
+        "Debe comprar un billete de tren."
+      ],
+      "answer": 0,
+      "explanation": "Lucas propone pasar el sábado juntos y pregunta quién está libre."
+    },
+    {
+      "id": "r41-es-a1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué sabemos del horario de Lucía por la mañana?",
+      "choices": [
+        "Puede estar en el parque desde primera hora.",
+        "Tiene una actividad que termina antes de la comida.",
+        "Tiene que viajar veinte minutos en autobús.",
+        "Trabaja toda la tarde en una tienda."
+      ],
+      "answer": 1,
+      "explanation": "Lucía tiene piano hasta las once y propone quedar a las doce."
+    },
+    {
+      "id": "r41-es-a1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Por qué Diego habla de una cafetería cerca del lago?",
+      "choices": [
+        "Es la única tienda que vende fruta.",
+        "Allí se celebra la clase de piano.",
+        "Es un lugar que todos pueden encontrar fácilmente.",
+        "El parque cierra a la hora de comer."
+      ],
+      "answer": 2,
+      "explanation": "El parque es grande y Diego quiere acordar un lugar claro."
+    },
+    {
+      "id": "r41-es-a1-04",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "¿Qué información importante confirma Lucas al final?",
+      "choices": [
+        "La marca del autobús de Diego.",
+        "El menú completo de la cafetería.",
+        "El precio de las entradas del parque.",
+        "El lugar exacto y la hora del encuentro."
+      ],
+      "answer": 3,
+      "explanation": "Lucas confirma las doce en la cafetería de la puerta verde."
+    },
+    {
+      "id": "r41-es-a1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Por qué Lucía puede llegar andando?",
+      "choices": [
+        "El autobús no funciona los sábados.",
+        "Vive cerca del parque donde quedarán.",
+        "No sabe montar en bicicleta.",
+        "Su profesora de piano vive allí."
+      ],
+      "answer": 1,
+      "explanation": "Lucía explica que vive cerca y puede ir a pie."
+    },
+    {
+      "id": "r41-es-a1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Para qué sirve mencionar la puerta verde?",
+      "choices": [
+        "Para pedir pintura para las paredes.",
+        "Para saber si hay limonada.",
+        "Para indicar el color de los bocadillos.",
+        "Para reconocer la cafetería correcta."
+      ],
+      "answer": 3,
+      "explanation": "La puerta funciona como una señal visible para el grupo."
+    },
+    {
+      "id": "r41-es-a1-07",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "¿Por qué importa llegar puntualmente al pícnic?",
+      "choices": [
+        "La madre de Lucas solo puede quedarse hasta las tres.",
+        "Lucía tiene piano después del mediodía.",
+        "El lago desaparece por la tarde.",
+        "El autobús tarda tres horas."
+      ],
+      "answer": 0,
+      "explanation": "La presencia de la madre está limitada a una parte de la tarde."
+    },
+    {
+      "id": "r41-es-a1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Un compañero no encuentra a su grupo en un parque grande. ¿Qué puede ayudar?",
+      "choices": [
+        "Decir que cada uno entre por una puerta distinta.",
+        "No decidir ningún lugar.",
+        "Elegir un punto de encuentro que se reconozca bien.",
+        "Pedir a todos que apaguen el teléfono."
+      ],
+      "answer": 2,
+      "explanation": "Diego sugiere un lugar concreto y fácil de localizar."
+    },
+    {
+      "id": "r41-es-a1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Una amiga termina su actividad a las once. ¿Qué hora sería adecuada?",
+      "choices": [
+        "Una hora anterior al final de su clase.",
+        "Una hora posterior para que pueda llegar.",
+        "El mismo momento en que comienza su actividad.",
+        "Una hora sin consultar a nadie."
+      ],
+      "answer": 1,
+      "explanation": "Los amigos acuerdan las doce porque Lucía termina a las once."
+    },
+    {
+      "id": "r41-es-a1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Si cada amigo trae algo diferente, ¿qué ventaja puede tener?",
+      "choices": [
+        "Nadie necesita hablar del plan.",
+        "El pícnic debe durar varios días.",
+        "Todos tienen que llevar las mismas cosas.",
+        "Pueden compartir la comida y organizarse mejor."
+      ],
+      "answer": 3,
+      "explanation": "Lucas propone comida para compartir y Lucía se ofrece a colaborar."
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-peaky-no-fighting",
+  "language": "en",
+  "level": "B1",
+  "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+  "durationMinutesSuggested": 17,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "auditRevision": "R37-AUTHOR-DRAFT-1",
+  "notes": "Authentic dialogue includes aggression and profanity. Teacher must check age suitability and source recording.",
+  "objective": [
+    {
+      "id": "r37-pk-b1-01",
+      "category": "interpretation",
+      "q": "What makes this serious conversation funny at times?",
+      "options": [
+        "Everyone has prepared jokes",
+        "Unexpected interruptions break up strict warnings",
+        "The men are watching a comedy",
+        "All the rules are easy to follow"
+      ],
+      "answer": 1,
+      "explanation": "The questions interrupt an angry and serious speech.",
+      "sourceEvidence": "Unexpected remarks create humour during warnings."
+    },
+    {
+      "id": "r37-pk-b1-02",
+      "category": "interpretation",
+      "q": "Why is the complaint about uniforms important?",
+      "options": [
+        "The uniforms are not clean",
+        "Everybody wants to wear one",
+        "The men are preparing for a parade",
+        "They remind the group of existing tensions"
+      ],
+      "answer": 3,
+      "explanation": "Uniforms refer to a group that provokes conflict.",
+      "sourceEvidence": "A man complains that uniforms were not supposed to be there."
+    },
+    {
+      "id": "r37-pk-b1-03",
+      "category": "interpretation",
+      "q": "How does the speaker respond when someone says he broke a promise?",
+      "options": [
+        "He briefly acknowledges it and moves on",
+        "He changes all the rules",
+        "He asks everyone to vote",
+        "He apologises and leaves"
+      ],
+      "answer": 0,
+      "explanation": "He uses a brief concession, then continues.",
+      "sourceEvidence": "He says 'Nevertheless' after the uniform objection."
+    },
+    {
+      "id": "r37-pk-b1-04",
+      "category": "interpretation",
+      "q": "What happens when somebody asks about 'snow'?",
+      "options": [
+        "The men go outside",
+        "The wedding is delayed",
+        "The question interrupts and leads to more rules",
+        "The speaker agrees to stop talking"
+      ],
+      "answer": 2,
+      "explanation": "The unexpected question disrupts the serious instructions.",
+      "sourceEvidence": "The snow exchange produces further refusals."
+    },
+    {
+      "id": "r37-pk-b1-05",
+      "category": "interpretation",
+      "q": "Why does the speaker mention Grace?",
+      "options": [
+        "She has written the list of rules",
+        "He wants the men to behave for her sake",
+        "She is waiting to explain her plans",
+        "He wants her to leave the event"
+      ],
+      "answer": 1,
+      "explanation": "He uses concern for Grace to support the instructions.",
+      "sourceEvidence": "He does not want Grace embarrassed."
+    },
+    {
+      "id": "r37-pk-b1-06",
+      "category": "interpretation",
+      "q": "Why does he repeat the last warning?",
+      "options": [
+        "The others cannot speak English",
+        "He has forgotten the earlier orders",
+        "The wedding has already started",
+        "He is worried his instructions will not be followed"
+      ],
+      "answer": 3,
+      "explanation": "The repetition shows urgency and an effort to enforce authority.",
+      "sourceEvidence": "The final order grows more forceful."
+    }
+  ],
+  "written": [
+    {
+      "id": "r37-pk-b1-w1",
+      "q": "Describe one interruption and explain how it changes the conversation.",
+      "modelAnswer": "The question about snow interrupts the serious warning and leads to more restrictions.",
+      "teacherCriterion": "Identify one real interruption and a sensible effect.",
+      "sourceEvidence": "Interjections interrupt his attempt to control the discussion."
+    },
+    {
+      "id": "r37-pk-b1-w2",
+      "q": "What behaviour does the main speaker want from the men for Grace's sake?",
+      "modelAnswer": "He wants them not to fight or cause trouble at the wedding.",
+      "teacherCriterion": "One supported connection between avoiding trouble and Grace.",
+      "sourceEvidence": "He says not to embarrass Grace."
+    }
+  ]
+}

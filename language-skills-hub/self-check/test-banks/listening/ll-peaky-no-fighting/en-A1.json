@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-peaky-no-fighting",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+  "durationMinutesSuggested": 15,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "auditRevision": "R37-AUTHOR-DRAFT-1",
+  "notes": "Authentic dialogue includes aggression and profanity. Teacher must check age suitability and source recording.",
+  "objective": [
+    {
+      "id": "r37-pk-a1-01",
+      "category": "interpretation",
+      "q": "What is the man talking about?",
+      "options": [
+        "A new job",
+        "A family journey",
+        "Rules for a special day",
+        "A school lesson"
+      ],
+      "answer": 2,
+      "explanation": "He tells the group how to behave during the event.",
+      "sourceEvidence": "He gives instructions for a wedding."
+    },
+    {
+      "id": "r37-pk-a1-02",
+      "category": "interpretation",
+      "q": "What is the important event?",
+      "options": [
+        "A wedding",
+        "A birthday",
+        "A football match",
+        "A concert"
+      ],
+      "answer": 0,
+      "explanation": "The scene takes place before a wedding.",
+      "sourceEvidence": "He talks about his wedding day."
+    },
+    {
+      "id": "r37-pk-a1-03",
+      "category": "interpretation",
+      "q": "What are some guests wearing?",
+      "options": [
+        "Blue hats",
+        "Sports shirts",
+        "Long coats",
+        "Uniforms"
+      ],
+      "answer": 3,
+      "explanation": "A man complains about guests in uniform.",
+      "sourceEvidence": "The dispute concerns uniforms."
+    },
+    {
+      "id": "r37-pk-a1-04",
+      "category": "interpretation",
+      "q": "What do the other men do?",
+      "options": [
+        "They leave the room",
+        "They interrupt him",
+        "They sing together",
+        "They write the rules"
+      ],
+      "answer": 1,
+      "explanation": "Different men interrupt while he tries to speak.",
+      "sourceEvidence": "The main speaker is interrupted."
+    },
+    {
+      "id": "r37-pk-a1-05",
+      "category": "interpretation",
+      "q": "What happens to his voice?",
+      "options": [
+        "It gets louder",
+        "It gets quieter",
+        "It becomes a song",
+        "It stops suddenly"
+      ],
+      "answer": 0,
+      "explanation": "He becomes increasingly loud.",
+      "sourceEvidence": "The warning ends with shouting."
+    },
+    {
+      "id": "r37-pk-a1-06",
+      "category": "interpretation",
+      "q": "What does the man want to stop?",
+      "options": [
+        "People from eating",
+        "People from laughing",
+        "People from causing trouble",
+        "People from arriving early"
+      ],
+      "answer": 2,
+      "explanation": "He wants to prevent fighting and other problems.",
+      "sourceEvidence": "He is giving rules to prevent trouble."
+    }
+  ],
+  "written": [
+    {
+      "id": "r37-pk-a1-w1",
+      "q": "Write the first name of the woman he wants to protect.",
+      "modelAnswer": "Grace.",
+      "teacherCriterion": "One clearly recognisable correct first name.",
+      "sourceEvidence": "The bride is named Grace."
+    },
+    {
+      "id": "r37-pk-a1-w2",
+      "q": "Write one word to describe the main man's voice.",
+      "modelAnswer": "Angry, loud, stressed or worried.",
+      "teacherCriterion": "One appropriate adjective supported by the heard dialogue.",
+      "sourceEvidence": "The speaker becomes forceful and angry."
+    }
+  ]
+}

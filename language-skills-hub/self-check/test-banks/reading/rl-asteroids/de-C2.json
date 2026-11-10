@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "de",
+  "level": "C2",
+  "sourceTitle": "Wenn aus Wahrscheinlichkeit eine Schlagzeile wird",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R37-CONTENT-AUDIT-1",
+  "description": "Original C2 critical-reading and planetary-risk policy questions; pending independent external review",
+  "tabs": [
+    {
+      "id": "begriffe",
+      "title": "Begriffe unterscheiden"
+    },
+    {
+      "id": "argumentation",
+      "title": "Argumentation untersuchen"
+    },
+    {
+      "id": "politik",
+      "title": "Entscheidungen bewerten"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r37-de-c2-01",
+      "tab": "begriffe",
+      "kind": "mc",
+      "q": "Was kritisiert der Autor vor allem an der Darstellung eines Kampfes gegen das Universum?",
+      "choices": [
+        "Sie erklärt die Entstehung metallischer Asteroiden nicht.",
+        "Sie verdeckt die langsame Beobachtungsarbeit durch ein dramatisches Bild.",
+        "Sie enthält zu viele genaue wissenschaftliche Begriffe.",
+        "Sie macht deutlich, dass Raumsonden nutzlos sind."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Der Anfang stellt der dramatischen Metapher die mühsame wissenschaftliche Erkenntnisarbeit gegenüber."
+    },
+    {
+      "id": "r37-de-c2-02",
+      "tab": "begriffe",
+      "kind": "mc",
+      "q": "Warum müssen Nähe, Gefährdung und Einschlagswahrscheinlichkeit getrennt bleiben?",
+      "choices": [
+        "Weil alle drei Größen mit demselben Messwert bestimmt werden.",
+        "Weil nur sehr kleine Objekte als erdnah gelten.",
+        "Weil die Masse allein darüber entscheidet, ob Gefahr besteht.",
+        "Weil unterschiedliche Kategorien sonst zu falschem öffentlichem Handlungsdruck verschmelzen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Absatz eins behandelt die begriffliche Verwechslung als Problem verantwortungsvoller Kommunikation."
+    },
+    {
+      "id": "r37-de-c2-03",
+      "tab": "begriffe",
+      "kind": "mc",
+      "q": "Welche Auswahlverzerrung kann selbst ein sorgfältiger Asteroidenkatalog enthalten?",
+      "choices": [
+        "Er enthält ausschließlich Objekte, die bereits eingeschlagen sind.",
+        "Alle erfassten Bahnen stammen aus nur einer Aufnahme.",
+        "Hellere und günstig positionierte Objekte werden leichter entdeckt als andere.",
+        "Infrarotgeräte können nur Objekte in der Erdatmosphäre beobachten."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Die Beobachtung hängt von Helligkeit, Lage und Instrumenten ab."
+    },
+    {
+      "id": "r37-de-c2-04",
+      "tab": "argumentation",
+      "kind": "mc",
+      "q": "Was zeigt es möglicherweise, wenn sich eine Risikowahrscheinlichkeit nach neuen Daten verändert?",
+      "choices": [
+        "Eine wissenschaftlich begründete Korrektur anstelle von Unentschlossenheit.",
+        "Die absichtliche Täuschung durch frühere Berechnungen.",
+        "Eine zwangsläufig veränderte chemische Zusammensetzung.",
+        "Dass sich Umlaufbahnen grundsätzlich nicht berechnen lassen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Der Text deutet Korrekturen als Ausdruck sorgfältiger wissenschaftlicher Arbeit."
+    },
+    {
+      "id": "r37-de-c2-05",
+      "tab": "argumentation",
+      "kind": "mc",
+      "q": "Warum ist eine scheinbar präzise Prozentzahl nicht automatisch eine vollständige Beschreibung?",
+      "choices": [
+        "Weil jeder Prozentwert ohne Taschenrechner falsch ist.",
+        "Weil alle unbekannten Körper bereits in der Zahl enthalten sein müssen.",
+        "Weil Annahmen, Unsicherheit und unentdeckte Objekte weiterhin eine Rolle spielen.",
+        "Weil Infrarotdaten grundsätzlich weniger zuverlässig als optische Daten sind."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Ein genauer Wert sagt nichts darüber aus, wie vollständig die Entdeckungsliste ist."
+    },
+    {
+      "id": "r37-de-c2-06",
+      "tab": "argumentation",
+      "kind": "mc",
+      "q": "Welche Behauptung wäre nach dem DART-Versuch nicht gerechtfertigt?",
+      "choices": [
+        "Ein erfolgreicher Versuch beweist keinen universellen Schutz gegen Einschläge.",
+        "Die Umlaufzeit von Dimorphos wurde messbar verändert.",
+        "Die Wirkung eines Stoßes hängt auch vom Zielkörper ab.",
+        "Früherkennung ist für mögliche Maßnahmen wichtig."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Der dritte Absatz bezeichnet DART ausdrücklich nicht als universellen Schutzschild."
+    },
+    {
+      "id": "r37-de-c2-07",
+      "tab": "argumentation",
+      "kind": "mc",
+      "q": "Warum könnte eine kleine frühzeitige Ablenkung große Folgen haben?",
+      "choices": [
+        "Weil Asteroiden dadurch ihre Masse verlieren.",
+        "Weil die Veränderung viele Jahre Zeit hat, die spätere Position zu beeinflussen.",
+        "Weil der Körper danach nicht mehr durch Gravitation bewegt wird.",
+        "Weil weitere Beobachtungen überflüssig werden."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Die lange verbleibende Zeit macht eine frühe geringe Veränderung bedeutsam."
+    },
+    {
+      "id": "r37-de-c2-08",
+      "tab": "politik",
+      "kind": "mc",
+      "q": "Warum können zwei Asteroiden auf denselben Stoß unterschiedlich reagieren?",
+      "choices": [
+        "Weil nur die Geschwindigkeit der Sonde von Bedeutung ist.",
+        "Weil jede Bahn unabhängig vom Aufbau gleich bleibt.",
+        "Weil eine Mondbahn nie beeinflusst werden kann.",
+        "Weil ein kompakter Fels und locker verbundene Fragmente verschieden aufgebaut sind."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Der innere Aufbau des Zielkörpers beeinflusst die Wirkung einer Ablenkung."
+    },
+    {
+      "id": "r37-de-c2-09",
+      "tab": "politik",
+      "kind": "mc",
+      "q": "Welcher Konflikt erschwert die Finanzierung der Vorsorge?",
+      "choices": [
+        "Sie ist unmittelbar billiger als alle anderen öffentlichen Aufgaben.",
+        "Ihre Ergebnisse sind immer sofort sichtbar.",
+        "Gegenwärtige Kosten konkurrieren mit Bedürfnissen, während der Nutzen einer verhinderten Katastrophe unsichtbar bleibt.",
+        "Staaten dürfen nicht über seltene Gefahren entscheiden."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Absatz vier erklärt den Gegensatz zwischen aktuellen Ausgaben und unsichtbarem Nutzen."
+    },
+    {
+      "id": "r37-de-c2-10",
+      "tab": "politik",
+      "kind": "mc",
+      "q": "Woran zeigt sich laut Schluss die Stärke einer verantwortlichen Institution?",
+      "choices": [
+        "An der Bereitschaft, Entscheidungen bei neuer Evidenz öffentlich zu korrigieren.",
+        "An dem Versprechen, dass jede Vorhersage unverändert bleibt.",
+        "An der Vermeidung jeder unvollständigen Messung.",
+        "An möglichst spektakulären Warnmeldungen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Die Schlussfolgerung verbindet Vertrauen mit überprüfbaren und revidierbaren Entscheidungen."
+    }
+  ]
+}

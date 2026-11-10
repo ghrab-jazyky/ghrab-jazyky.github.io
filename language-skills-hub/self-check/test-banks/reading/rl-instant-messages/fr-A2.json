@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "fr",
+  "level": "A2",
+  "sourceTitle": "Un cadeau pour Eva",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Dix questions inédites de compréhension et de transfert, sans approbation pédagogique définitive.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Compréhension"
+    },
+    {
+      "id": "reasoning",
+      "title": "Interprétation"
+    },
+    {
+      "id": "transfer",
+      "title": "Application"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-fr-a2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Quel problème empêche Louis d'acheter le cadeau lui-même ?",
+      "choices": [
+        "Il travaille jusqu'au soir et ne peut pas faire les magasins.",
+        "Il a oublié l'adresse de sa cousine.",
+        "Il ne connaît aucun commerce en ville.",
+        "La fête d'anniversaire a été annulée."
+      ],
+      "answer": 0,
+      "explanation": "Louis est encore au magasin de vélos quand il écrit à Inès."
+    },
+    {
+      "id": "r41-fr-a2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Que montre la remarque d'Inès à propos des livres ?",
+      "choices": [
+        "Eva a demandé plusieurs livres cette année.",
+        "Un ancien cadeau peut aider à comprendre les goûts d'Eva.",
+        "Tous les livres coûtent trop cher.",
+        "La bibliothèque est fermée pour toujours."
+      ],
+      "answer": 1,
+      "explanation": "Eva n'a jamais ouvert le livre offert l'année précédente."
+    },
+    {
+      "id": "r41-fr-a2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Pourquoi les billets du concert ne conviennent-ils pas ?",
+      "choices": [
+        "Eva n'écoute plus jamais de musique.",
+        "Le concert se déroule au magasin de vélos.",
+        "Ils sont déjà tous vendus.",
+        "Le concert est réservé aux enseignants."
+      ],
+      "answer": 2,
+      "explanation": "Louis indique que les billets pour le groupe préféré d'Eva sont épuisés."
+    },
+    {
+      "id": "r41-fr-a2-04",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Pourquoi la carte d'escalade respecte-t-elle le budget ?",
+      "choices": [
+        "La salle offre gratuitement un casque.",
+        "Le vendeur promet de rembourser tous les cadeaux.",
+        "Elle coûte bien davantage que prévu.",
+        "Elle coûte moins que les trente euros prévus."
+      ],
+      "answer": 3,
+      "explanation": "Deux séances coûtent vingt-huit euros, dans le budget annoncé."
+    },
+    {
+      "id": "r41-fr-a2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Pourquoi Louis trouve-t-il l'idée de l'escalade si bonne ?",
+      "choices": [
+        "Eva refuse depuis toujours de faire du sport.",
+        "Eva juge déjà le mur de son lycée trop facile.",
+        "Inès lui interdit de visiter la salle.",
+        "La salle est réservée aux élèves de son lycée."
+      ],
+      "answer": 1,
+      "explanation": "La nouvelle salle propose une activité plus stimulante pour Eva."
+    },
+    {
+      "id": "r41-fr-a2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Que conseille Inès pour éviter le même oubli l'an prochain ?",
+      "choices": [
+        "Supprimer la fête de l'année suivante.",
+        "Ne plus parler à Eva.",
+        "Attendre le lendemain pour acheter le cadeau.",
+        "Noter la date de l'anniversaire dans un calendrier."
+      ],
+      "answer": 3,
+      "explanation": "La dernière remarque concerne l'organisation future de Louis."
+    },
+    {
+      "id": "r41-fr-a2-07",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Pourquoi Louis veut-il aussi acheter une carte d'anniversaire ?",
+      "choices": [
+        "Il participe aux préparatifs pendant qu'Inès achète le cadeau.",
+        "Il préfère remplacer la carte d'escalade.",
+        "Son employeur lui demande une lettre.",
+        "Le vendeur exige un document scolaire."
+      ],
+      "answer": 0,
+      "explanation": "Les deux amis se partagent les tâches avant la fête."
+    },
+    {
+      "id": "r41-fr-a2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Les billets d'un concert préféré sont épuisés. Quelle solution ressemble au choix d'Inès ?",
+      "choices": [
+        "Acheter des billets qui n'existent plus.",
+        "Répéter le cadeau inutilisé de l'an dernier.",
+        "Offrir une autre activité adaptée aux centres d'intérêt.",
+        "Annuler la fête sans prévenir personne."
+      ],
+      "answer": 2,
+      "explanation": "L'escalade devient une alternative liée aux passions d'Eva."
+    },
+    {
+      "id": "r41-fr-a2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Inès avance l'argent pour le cadeau. Que devrait faire Louis ensuite ?",
+      "choices": [
+        "Lui demander de choisir quelque chose de beaucoup plus cher.",
+        "La remercier et lui rendre la somme convenue.",
+        "Interdire à Eva d'utiliser sa carte.",
+        "Refuser d'écrire la carte de vœux."
+      ],
+      "answer": 1,
+      "explanation": "Un achat réalisé pour un ami suppose de respecter l'accord."
+    },
+    {
+      "id": "r41-fr-a2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Pourquoi un casque de bonne qualité ne paraît-il pas approprié ?",
+      "choices": [
+        "Eva déteste explicitement écouter de la musique.",
+        "Les casques ne se vendent plus en ville.",
+        "Un casque ne peut jamais être offert.",
+        "Son prix dépasserait le budget de Louis."
+      ],
+      "answer": 3,
+      "explanation": "Inès fait remarquer que les bons casques coûtent plus cher."
+    }
+  ]
+}

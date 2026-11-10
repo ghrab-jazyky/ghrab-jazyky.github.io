@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "de",
+  "level": "C1",
+  "sourceTitle": "Wem gehört die Geschichte vom Müll?",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent C1 film critique and institutional responsibility Reading tasks, pending teacher/Claude audit",
+  "tabs": [
+    {
+      "id": "bilder",
+      "title": "Die Bilder beurteilen"
+    },
+    {
+      "id": "argumente",
+      "title": "Argumente prüfen"
+    },
+    {
+      "id": "strukturen",
+      "title": "Strukturen erkennen"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-de-c1-01",
+      "tab": "bilder",
+      "kind": "mc",
+      "q": "Welche Grenze der emotionalen Anfangsszene betont der Rezensent?",
+      "choices": [
+        "Sie kann keine Gefühle beim Publikum erzeugen.",
+        "Das erzeugte Gefühl erklärt nicht automatisch die Ursachen des Müllproblems.",
+        "Die Kamera zeigt zu wenige Einzelheiten des Marktplatzes.",
+        "Sie belegt, dass der Müll nur vom Wind stammt."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Der erste Absatz trennt die genaue emotionale Wirkung von einer überzeugenden Erklärung."
+    },
+    {
+      "id": "r39-de-c1-02",
+      "tab": "bilder",
+      "kind": "mc",
+      "q": "Warum reicht es nicht, Reinigungskräfte in eindrucksvollen Bildern zu zeigen?",
+      "choices": [
+        "Die Reinigungskräfte arbeiten nicht wirklich vor Sonnenaufgang.",
+        "Die Aufnahmen sind technisch fehlerhaft.",
+        "Die Stadt wird dadurch sofort von jeder Verantwortung befreit.",
+        "Die Arbeitsbedingungen und Entscheidungsbefugnisse der Beschäftigten bleiben unsichtbar."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Der Text unterscheidet Sichtbarkeit von eigener Stimme und tatsächlichem Einfluss."
+    },
+    {
+      "id": "r39-de-c1-03",
+      "tab": "bilder",
+      "kind": "mc",
+      "q": "Was macht die Sitzung über Mehrwegbecher zu einem wichtigen Teil des Films?",
+      "choices": [
+        "Die Stadt beschließt, alle Veranstaltungen abzusagen.",
+        "Die Händler sprechen nur über Eintrittspreise.",
+        "Die praktischen Bedingungen eines scheinbar einfachen Plans werden sichtbar.",
+        "Das Publikum erfährt, dass alle Pfandsysteme nutzlos sind."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Die Besprechung zeigt Lagerung, Schichten und Abwasch als reale Bedingungen."
+    },
+    {
+      "id": "r39-de-c1-04",
+      "tab": "argumente",
+      "kind": "mc",
+      "q": "Welche Folgerung lässt sich aus den Einwänden der Händler ziehen?",
+      "choices": [
+        "Umweltschutzideen brauchen auch Personal, Platz und organisierte Abläufe.",
+        "Gute Absichten reichen in jedem Fall für eine Umsetzung.",
+        "Eine Sitzung ersetzt die praktische Erprobung vollständig.",
+        "Mehrwegbehälter dürfen von kleinen Betrieben nicht benutzt werden."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Die Händler machen deutlich, dass eine Idee praktisch vorbereitet sein muss."
+    },
+    {
+      "id": "r39-de-c1-05",
+      "tab": "argumente",
+      "kind": "mc",
+      "q": "Was bewirkt die mehrfach gezeigte Flasche, die ein Jugendlicher fallen lässt?",
+      "choices": [
+        "Sie klärt die Finanzierung des Mehrwegsystems.",
+        "Sie gibt dem Jugendlichen Gelegenheit, seine Situation zu erklären.",
+        "Sie lenkt von Zuständigkeiten und Systemgestaltung auf die Schuld einer Person.",
+        "Sie zeigt, dass die Straßen bereits sauber sind."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Die wiederholte Szene ersetzt ein Gespräch über Zuständigkeiten durch eine moralische Reaktion."
+    },
+    {
+      "id": "r39-de-c1-06",
+      "tab": "argumente",
+      "kind": "mc",
+      "q": "Was kritisiert der Rezensent an der Verteilung von Redezeit?",
+      "choices": [
+        "Die Verwaltungsmitarbeiterin darf erklären, andere Menschen werden stumm oder als Problem gezeigt.",
+        "Jeder darf ausführlich seine Sichtweise darstellen.",
+        "Die Beschäftigten erhalten zu viel Einfluss auf die Schlussfolgerung.",
+        "Der Jugendliche wird als Experte für Abfallwirtschaft eingeführt."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Die unterschiedliche Behandlung der Personen trägt die Argumentation des Films."
+    },
+    {
+      "id": "r39-de-c1-07",
+      "tab": "argumente",
+      "kind": "mc",
+      "q": "Worin liegt der Wert des Hinweises auf zusätzliche Fahrten zur Spülstation?",
+      "choices": [
+        "Er bestätigt, dass die Stadt das Projekt sofort beenden muss.",
+        "Er liefert neue überprüfbare Informationen für die Verbesserung.",
+        "Er macht die ursprünglichen Ziele bedeutungslos.",
+        "Er beweist, dass jede Wiederverwendung teurer ist."
+      ],
+      "answer": 1,
+      "sourceParagraph": 6,
+      "explanation": "Das Eingeständnis lässt die Belastung konkret werden und eröffnet Anpassungen."
+    },
+    {
+      "id": "r39-de-c1-08",
+      "tab": "strukturen",
+      "kind": "mc",
+      "q": "Warum wird das Projekt durch ein solches Eingeständnis glaubwürdiger?",
+      "choices": [
+        "Weil danach niemand mehr nach Kosten fragt.",
+        "Weil der Film ohne weitere Bilder auskommt.",
+        "Weil jede Kritik dadurch verboten wird.",
+        "Weil Schwierigkeiten offen erfasst werden, ohne die Idee pauschal zu verwerfen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 6,
+      "explanation": "Eine überprüfbare Schwierigkeit ist nützlicher als eine bloße Erfolgsgeschichte."
+    },
+    {
+      "id": "r39-de-c1-09",
+      "tab": "strukturen",
+      "kind": "mc",
+      "q": "Welche Bedeutung hat die Auswahl der Filmfiguren für die Aussage?",
+      "choices": [
+        "Sie betrifft ausschließlich die Länge des Films.",
+        "Sie hat keinen Einfluss auf die Interpretation des Zuschauers.",
+        "Sie legt nahe, wer handeln kann und wer als Problem erscheint.",
+        "Sie macht Gespräche über Infrastruktur grundsätzlich unmöglich."
+      ],
+      "answer": 2,
+      "sourceParagraph": 5,
+      "explanation": "Die ästhetische Auswahl verteilt Glaubwürdigkeit und Handlungsmacht."
+    },
+    {
+      "id": "r39-de-c1-10",
+      "tab": "strukturen",
+      "kind": "mc",
+      "q": "Was hätte die Dokumentation nach Ansicht der Kritik zusätzlich sichtbar machen sollen?",
+      "choices": [
+        "Die organisatorischen Bedingungen hinter dem Weg des Abfalls.",
+        "Die Hobbys aller Reinigungskräfte.",
+        "Weitere schöne Aufnahmen des leeren Platzes.",
+        "Nur die Gefühle des Jugendlichen mit der Flasche."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "Am Schluss werden die Bedingungen gefordert, die entscheiden, welchen Weg Müll nimmt."
+    }
+  ]
+}

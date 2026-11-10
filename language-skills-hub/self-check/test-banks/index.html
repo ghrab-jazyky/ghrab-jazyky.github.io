@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="cs" data-theme="dark">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="robots" content="noindex,nofollow">
+ <meta name="color-scheme" content="dark light">
+ <meta name="description" content="Isolated unpublished QA index for 138 independent Reading and Listening test drafts.">
+ <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'; frame-ancestors 'none'">
+ <title>Language Skills Hub – R39 návrhy testů · interní QA</title>
+ <link rel="stylesheet" href="../reading/reading.css">
+ <link rel="stylesheet" href="../listening/listening.css">
+ <link rel="stylesheet" href="dashboard.css">
+ <script defer src="dashboard.js"></script>
+</head>
+<body>
+ <header class="topbar"><a class="brand" href="../../index.html">
+  <span class="mark" aria-hidden="true">Q</span>
+  <span><strong>Language Skills Hub</strong><small>R39 · obsahová přejímka</small></span>
+ </a><span class="mode">NEPUBLIKOVANÉ NÁVRHY</span></header>
+ <main class="container teacher-layout">
+  <section class="hero">
+   <p class="eyebrow">138 VARIANT · 0 PEDAGOGICKY SCHVÁLENÝCH</p>
+   <h1>Přejímka nezávislých testových sad</h1>
+   <p class="subtitle">Výběr konkrétní varianty ke kontrole otázek, klíčů, časovače a zpětné vazby. Tento náhled není propojen s veřejným studentským katalogem.</p>
+   <div class="notice" role="alert">Všech 138 bank je pouze autorským návrhem. Ani úspěšný automatický test neprokazuje správnost jazykové úrovně, audio faktů ani jednoznačnost řešení. <strong>Neodesílat studentům a nepoužívat ke klasifikaci.</strong> Klíče v GitHub Pages nejsou tajné.</div>
+  </section>
+  <section class="panel" aria-labelledby="countHeading">
+   <div class="panel-head"><h2 id="countHeading">Pokrytí návrhů</h2></div>
+   <div class="r39-stats" id="stats" aria-live="polite">Načítám katalog a zdrojový manifest…</div>
+  </section>
+  <section class="panel" aria-labelledby="selectorHeading">
+   <div class="panel-head"><h2 id="selectorHeading">Výběr testové varianty</h2></div>
+   <form id="setup" class="teacher-form" autocomplete="off">
+    <label for="skill">Dovednost
+     <select id="skill"><option value="reading">Reading Lab</option><option value="listening">Listening Lab</option></select>
+    </label>
+    <label for="topic">Téma<select id="topic"></select></label>
+    <label for="language">Jazyk
+     <select id="language"><option value="en">Angličtina</option><option value="es">Španělština</option><option value="de">Němčina</option><option value="fr">Francouzština</option></select>
+    </label>
+    <label for="level">Úroveň CEFR
+     <select id="level"><option>A1</option><option>A2</option><option>B1</option><option selected>B2</option><option>C1</option><option>C2</option></select>
+    </label>
+    <label for="timer">Čas v minutách (5–120)
+     <input id="timer" type="number" min="5" max="120" step="1" value="20" required>
+    </label>
+   </form>
+   <p class="r39-status" id="variantStatus" role="status" aria-live="polite">Zvol variantu.</p>
+   <div class="r39-actions">
+    <a id="previewLink" class="action primary" href="#" aria-disabled="true" target="_blank" rel="noopener noreferrer">Otevřít izolovaný QA náhled</a>
+    <button type="button" id="copyLink" class="action ghost" disabled>Zkopírovat QA odkaz</button>
+   </div>
+   <p class="small-note" id="copyStatus" aria-live="polite"></p>
+   <p class="small-note">QA URL není autorizací učitele ani zabezpečeným testem. Přehled nesmí být použit jako náhrada školního GIT.</p>
+  </section>
+ </main>
+ <footer class="footer">R39 · 120 Reading + 18 Listening návrhů · 0 schválených · produkční R31 beze změn</footer>
+</body>
+</html>

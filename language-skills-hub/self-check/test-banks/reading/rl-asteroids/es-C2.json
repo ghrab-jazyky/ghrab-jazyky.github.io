@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "es",
+  "level": "C2",
+  "sourceTitle": "Cuando una probabilidad se convierte en titular",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R37-CONTENT-AUDIT-1",
+  "description": "Original C2 critical-reading and planetary-risk policy questions; pending independent external review",
+  "tabs": [
+    {
+      "id": "conceptos",
+      "title": "Distinguir conceptos"
+    },
+    {
+      "id": "razonamiento",
+      "title": "Evaluar el razonamiento"
+    },
+    {
+      "id": "politica",
+      "title": "Pensar en las decisiones"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r37-es-c2-01",
+      "tab": "conceptos",
+      "kind": "mc",
+      "q": "¿Qué objeción central plantea el autor a la metáfora de una batalla contra el universo?",
+      "choices": [
+        "Que no explica por qué existen asteroides metálicos.",
+        "Que oculta el trabajo de medición y planificación tras un relato dramático.",
+        "Que los medios deberían utilizar metáforas más complejas.",
+        "Que las sondas espaciales no pueden cambiar ninguna órbita."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "El inicio contrapone el espectáculo de una lucha a la investigación lenta y rigurosa."
+    },
+    {
+      "id": "r37-es-c2-02",
+      "tab": "conceptos",
+      "kind": "mc",
+      "q": "¿Por qué conviene separar proximidad, peligro y probabilidad de impacto?",
+      "choices": [
+        "Porque todos los cálculos parten de un mismo porcentaje.",
+        "Porque un objeto cercano siempre tiene una órbita desconocida.",
+        "Porque la composición determina por sí sola la urgencia.",
+        "Porque son conceptos distintos y confundirlos perjudica las decisiones públicas."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "El texto insiste en que mezclar las categorías convierte un hecho científico en alarma injustificada."
+    },
+    {
+      "id": "r37-es-c2-03",
+      "tab": "conceptos",
+      "kind": "mc",
+      "q": "¿Qué sesgo puede existir incluso en un catálogo elaborado con medidas precisas?",
+      "choices": [
+        "Solo incluye los cuerpos que se han acercado a la Tierra.",
+        "No distingue entre asteroides y cometas.",
+        "Los instrumentos detectan mejor los objetos brillantes y favorables a la observación.",
+        "Todas sus trayectorias deben calcularse desde una sola fotografía."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "La selección observacional puede dejar fuera cuerpos oscuros o mal posicionados."
+    },
+    {
+      "id": "r37-es-c2-04",
+      "tab": "razonamiento",
+      "kind": "mc",
+      "q": "¿Cómo debe interpretarse una probabilidad que cambia tras nuevas observaciones?",
+      "choices": [
+        "Puede ser una corrección rigurosa a partir de información adicional.",
+        "Demuestra necesariamente que la cifra anterior fue manipulada.",
+        "Indica que el cuerpo modificó su composición química.",
+        "Prueba que no existe un método para calcular trayectorias."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "El autor considera la revisión una posible muestra de razonamiento científico responsable."
+    },
+    {
+      "id": "r37-es-c2-05",
+      "tab": "razonamiento",
+      "kind": "mc",
+      "q": "¿Qué límite tiene un porcentaje aparentemente exacto?",
+      "choices": [
+        "Obliga a conocer con certeza cada objeto que existe.",
+        "Elimina la necesidad de mencionar fechas o suposiciones.",
+        "Puede ocultar incertidumbre y un inventario todavía incompleto.",
+        "Hace imposible distinguir datos ópticos de infrarrojos."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "La precisión de una cifra no garantiza ni un inventario completo ni una probabilidad sin supuestos."
+    },
+    {
+      "id": "r37-es-c2-06",
+      "tab": "razonamiento",
+      "kind": "mc",
+      "q": "¿Qué conclusión sobre DART excedería la evidencia disponible?",
+      "choices": [
+        "Una prueba exitosa de desviación no significa disponer de un escudo universal.",
+        "El choque alteró el movimiento del objeto estudiado.",
+        "El resultado debe interpretarse según las condiciones concretas.",
+        "La demostración puede orientar investigaciones futuras."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "El tercer párrafo rechaza la idea de una protección universal basada en un solo experimento."
+    },
+    {
+      "id": "r37-es-c2-07",
+      "tab": "razonamiento",
+      "kind": "mc",
+      "q": "¿Por qué puede ser decisiva una desviación pequeña aplicada muchos años antes?",
+      "choices": [
+        "Porque evita tener que conocer la estructura del cuerpo.",
+        "Porque dispone de más tiempo para alterar la posición futura del asteroide.",
+        "Porque los objetos dejan de estar sujetos a la gravedad.",
+        "Porque elimina cualquier necesidad de observación posterior."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "El autor destaca el efecto acumulado de una modificación temprana de trayectoria."
+    },
+    {
+      "id": "r37-es-c2-08",
+      "tab": "politica",
+      "kind": "mc",
+      "q": "¿Por qué no debería esperarse la misma respuesta de todos los asteroides a un choque?",
+      "choices": [
+        "Porque ninguna roca espacial tiene una trayectoria calculable.",
+        "Porque todos los asteroides pierden su masa al aproximarse.",
+        "Porque un impacto siempre destruye las lunas de los asteroides.",
+        "Porque un cuerpo compacto y un conjunto de fragmentos pueden reaccionar de manera distinta."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "La estructura física del objetivo condiciona el resultado de un impulso."
+    },
+    {
+      "id": "r37-es-c2-09",
+      "tab": "politica",
+      "kind": "mc",
+      "q": "¿Qué complica la inversión pública en defensa contra desastres muy raros?",
+      "choices": [
+        "Las observaciones son siempre más caras que cualquier misión.",
+        "Las instituciones no pueden informar sobre eventos improbables.",
+        "Los costes son inmediatos, mientras que el beneficio de prevenir puede ser invisible.",
+        "Solo los científicos pueden decidir el presupuesto de un gobierno."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "El último párrafo contrapone necesidades presentes con beneficios preventivos poco visibles."
+    },
+    {
+      "id": "r37-es-c2-10",
+      "tab": "politica",
+      "kind": "mc",
+      "q": "¿Qué característica de una institución inspira confianza según la conclusión?",
+      "choices": [
+        "La capacidad de explicar y revisar sus decisiones cuando cambian los datos.",
+        "La promesa de que nunca volverá a modificar un cálculo.",
+        "El rechazo de todas las medidas imperfectas.",
+        "El uso de titulares alarmantes para asegurar recursos."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "La conclusión valora instituciones que detectan señales débiles y corrigen abiertamente sus juicios."
+    }
+  ]
+}

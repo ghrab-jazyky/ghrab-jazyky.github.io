@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "en",
+  "level": "B1",
+  "sourceTitle": "My Week Without Instant Messages",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Ten newly written comprehension, interpretation and situational transfer questions; pending independent teacher review.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Meaning and Context"
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasons and Implications"
+    },
+    {
+      "id": "transfer",
+      "title": "New Situations"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-en-b1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What made the challenge a genuine change in communication?",
+      "choices": [
+        "It banned chats while still allowing calls and email.",
+        "It required pupils to stop speaking for a week.",
+        "It made all phones unusable after school.",
+        "It prevented every form of online learning."
+      ],
+      "answer": 0,
+      "explanation": "The experiment targets messaging habits, not all communication or phone use."
+    },
+    {
+      "id": "r41-en-b1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does the writer's repeated phone-checking reveal?",
+      "choices": [
+        "He is expecting an emergency call from his coach.",
+        "He has developed a strong habit of looking for messages.",
+        "His phone displays forty new messages before lunch.",
+        "His teacher asks him to monitor group chats."
+      ],
+      "answer": 1,
+      "explanation": "He keeps checking despite knowing there can be no new chats."
+    },
+    {
+      "id": "r41-en-b1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What surprised Karim about the telephone call?",
+      "choices": [
+        "He had forgotten the time of the football practice.",
+        "He could not recognize the writer's voice.",
+        "He thought a call might mean something serious had happened.",
+        "He expected the call to last twenty minutes."
+      ],
+      "answer": 2,
+      "explanation": "Karim's reaction shows how unusual a simple call has become."
+    },
+    {
+      "id": "r41-en-b1-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why does the writer compare a short call with many chat messages?",
+      "choices": [
+        "He concludes that sending text is never useful.",
+        "He wants everyone to stop discussing football.",
+        "He believes calls take longer than group chats.",
+        "He discovers that some practical questions are resolved faster by speaking."
+      ],
+      "answer": 3,
+      "explanation": "The call gives a direct answer without the usual lengthy group discussion."
+    },
+    {
+      "id": "r41-en-b1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What weakness of relying on chats does the history-group incident reveal?",
+      "choices": [
+        "Group meetings must always happen in the library.",
+        "Important changes may not reach somebody who is temporarily offline.",
+        "The writer has forgotten how to send an email.",
+        "Teachers should not assign group presentations."
+      ],
+      "answer": 1,
+      "explanation": "The group changes the meeting place, and the writer only learns too late."
+    },
+    {
+      "id": "r41-en-b1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why does the writer keep the apps but change their settings?",
+      "choices": [
+        "The teacher orders the whole class to delete messages.",
+        "His friends will never speak on the phone.",
+        "The challenge proves every messaging service is unsafe.",
+        "He wants more control rather than a complete ban."
+      ],
+      "answer": 3,
+      "explanation": "He resumes messaging while switching off unnecessary notifications."
+    },
+    {
+      "id": "r41-en-b1-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "A student needs one quick answer from a teammate. Which solution fits the experiment?",
+      "choices": [
+        "Make a short call instead of starting a long group discussion.",
+        "Send the same question twenty times in the chat.",
+        "Wait until every group member writes a reply.",
+        "Avoid asking because a call seems unusual."
+      ],
+      "answer": 0,
+      "explanation": "The writer's call to Karim provides a model for direct communication."
+    },
+    {
+      "id": "r41-en-b1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A project group changes the meeting room at short notice. What would help an offline member?",
+      "choices": [
+        "Assume everyone reads the group chat immediately.",
+        "Never change any plan even when necessary.",
+        "Use an agreed alternative way to share urgent updates.",
+        "Write only after the meeting has finished."
+      ],
+      "answer": 2,
+      "explanation": "The missed history meeting shows that a shared chat is not always enough."
+    },
+    {
+      "id": "r41-en-b1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Someone feels they must answer every group notification immediately. What could they try?",
+      "choices": [
+        "Delete every contact from their phone.",
+        "Turn off low-priority alerts and choose when to respond.",
+        "Keep checking the phone more often.",
+        "Stop speaking to people outside school."
+      ],
+      "answer": 1,
+      "explanation": "The conclusion describes selective notification settings and personal choice."
+    },
+    {
+      "id": "r41-en-b1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What would be a fair summary of the writer's new attitude?",
+      "choices": [
+        "Messaging apps are responsible for every problem.",
+        "Calls should replace all emails and group messages.",
+        "A week offline proves digital friendships are impossible.",
+        "Different situations need different ways to communicate."
+      ],
+      "answer": 3,
+      "explanation": "The writer keeps messaging but uses calls and notifications more deliberately."
+    }
+  ]
+}

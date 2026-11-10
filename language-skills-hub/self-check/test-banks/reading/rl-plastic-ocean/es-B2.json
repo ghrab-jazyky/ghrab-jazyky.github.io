@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "es",
+  "level": "B2",
+  "sourceTitle": "La última botella: una reseña con preguntas",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent B2 film-review interpretation test bank, awaiting second-teacher assessment",
+  "tabs": [
+    {
+      "id": "mirada",
+      "title": "Interpretación del documental"
+    },
+    {
+      "id": "critica",
+      "title": "Lectura crítica"
+    },
+    {
+      "id": "decisiones",
+      "title": "Decisiones y consecuencias"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-es-b2-01",
+      "tab": "mirada",
+      "kind": "mc",
+      "q": "¿Qué sugiere la botella que gira bajo la lluvia después del concierto?",
+      "choices": [
+        "Que la sala necesita vender más bebidas.",
+        "Que los residuos permanecen después de que se marcha el público.",
+        "Que la directora desconfía de todos los conciertos.",
+        "Que la botella se utiliza para medir la lluvia."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "La primera escena relaciona los desechos olvidados con el trabajo posterior al evento."
+    },
+    {
+      "id": "r39-es-b2-02",
+      "tab": "mirada",
+      "kind": "mc",
+      "q": "¿Cómo valora la reseña la relación entre las imágenes y el argumento de la película?",
+      "choices": [
+        "Ambos resultan siempre igual de convincentes.",
+        "El argumento es mucho más fuerte que las imágenes.",
+        "Las imágenes son útiles únicamente para presentar a los voluntarios.",
+        "La fuerza visual supera en ocasiones la precisión del mensaje."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "El primer párrafo elogia el recurso visual, pero considera que el mensaje no siempre está igual de bien fundamentado."
+    },
+    {
+      "id": "r39-es-b2-03",
+      "tab": "mirada",
+      "kind": "mc",
+      "q": "¿Qué hace especialmente interesante la conversación junto a una papelera?",
+      "choices": [
+        "Que revela la vida privada de la barrendera.",
+        "Que prueba que el bar es el único responsable.",
+        "Que introduce horarios, recursos y decisiones que explican el problema.",
+        "Que propone cerrar definitivamente el pabellón."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "La trabajadora muestra causas prácticas detrás de los envases abandonados."
+    },
+    {
+      "id": "r39-es-b2-04",
+      "tab": "critica",
+      "kind": "mc",
+      "q": "¿Por qué no basta con culpar a los asistentes por la basura?",
+      "choices": [
+        "También influyen la organización de los servicios y sus horarios.",
+        "El documental demuestra que nadie deja envases en la calle.",
+        "Las papeleras pueden vaciarse por sí solas.",
+        "La película no muestra ninguna escena de limpieza."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "La entrevista revela límites de recursos y decisiones organizativas, no solo acciones individuales."
+    },
+    {
+      "id": "r39-es-b2-05",
+      "tab": "critica",
+      "kind": "mc",
+      "q": "¿Qué dificultad presenta la reseña para algunas personas que quieren llevar su botella?",
+      "choices": [
+        "La botella siempre cuesta más que la entrada.",
+        "Las tiendas no venden ningún recipiente reutilizable.",
+        "Existen restricciones de acceso y problemas para lavarla.",
+        "Todos los espectadores viven junto a una fuente."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "La crítica recuerda las restricciones de acceso y la dificultad de lavar algunos recipientes."
+    },
+    {
+      "id": "r39-es-b2-06",
+      "tab": "critica",
+      "kind": "mc",
+      "q": "¿Qué error comete la película al abandonar pronto esas dificultades?",
+      "choices": [
+        "Reduce problemas organizativos a un mensaje demasiado simple de responsabilidad individual.",
+        "Da demasiada información sobre el presupuesto del bar.",
+        "Propone demasiadas soluciones prácticas diferentes.",
+        "Olvida por completo mostrar imágenes de la costa."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "El documental menciona obstáculos, pero vuelve enseguida a mensajes generalizadores."
+    },
+    {
+      "id": "r39-es-b2-07",
+      "tab": "critica",
+      "kind": "mc",
+      "q": "¿Por qué es útil que el festival explique los gastos de los vasos con depósito?",
+      "choices": [
+        "Permite demostrar que no quedará ningún residuo.",
+        "Da al público datos para evaluar una propuesta y sus límites.",
+        "Elimina la necesidad de medir los vasos perdidos.",
+        "Garantiza que cualquier solución será rentable."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Presentar costes y resultados permite evaluar una iniciativa en lugar de aceptarla por fe."
+    },
+    {
+      "id": "r39-es-b2-08",
+      "tab": "decisiones",
+      "kind": "mc",
+      "q": "¿Qué medida pendiente limita una conclusión sobre el sistema?",
+      "choices": [
+        "Conocer el nombre de todos los espectadores.",
+        "Volver a rodar la escena inicial.",
+        "Prohibir la música de los conciertos.",
+        "Calcular cuánta agua se utiliza al lavar los vasos."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Los organizadores admiten que todavía deben medir el agua necesaria para la limpieza."
+    },
+    {
+      "id": "r39-es-b2-09",
+      "tab": "decisiones",
+      "kind": "mc",
+      "q": "¿Qué pregunta sería más útil después de la bonita escena final?",
+      "choices": [
+        "Cuántas películas anteriores dirigió Inés Robles.",
+        "Qué música acompañó la primera botella.",
+        "Quién recogerá los vasos el próximo sábado y con qué medios.",
+        "Por qué no se muestran más playas durante la película."
+      ],
+      "answer": 2,
+      "sourceParagraph": 5,
+      "explanation": "El cierre pide decisiones concretas después de que termina la emoción de la proyección."
+    },
+    {
+      "id": "r39-es-b2-10",
+      "tab": "decisiones",
+      "kind": "mc",
+      "q": "¿Cuál es el sentido general de la recomendación de la reseñista?",
+      "choices": [
+        "Ver la película, pero examinar críticamente las respuestas que ofrece.",
+        "Evitarla porque sus imágenes son demasiado sencillas.",
+        "Considerarla una guía que resuelve todos los problemas.",
+        "Rechazar cualquier esfuerzo individual por reducir envases."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "La autora considera útil el documental para iniciar un debate sin aceptar sus respuestas sin preguntas."
+    }
+  ]
+}

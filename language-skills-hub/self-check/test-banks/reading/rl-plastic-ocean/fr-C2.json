@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "fr",
+  "level": "C2",
+  "sourceTitle": "La morale rassurante du petit geste",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent C2 media-criticism and systems reasoning test; awaiting independent didactic review",
+  "tabs": [
+    {
+      "id": "images",
+      "title": "Images et contradictions"
+    },
+    {
+      "id": "causes",
+      "title": "Analyser les causes"
+    },
+    {
+      "id": "responsabilite",
+      "title": "Responsabilités et choix"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-fr-c2-01",
+      "tab": "images",
+      "kind": "mc",
+      "q": "Quel contraste l'ouverture établit-elle entre la lycéenne et le cinéma ?",
+      "choices": [
+        "La lycéenne ne sait pas combien de temps elle a utilisé sa gourde.",
+        "Un geste individuel est célébré tandis que le lieu fournit des gobelets jetables.",
+        "Le public refuse de voir le film.",
+        "La gourde a été fabriquée pendant la projection."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "La première partie oppose une personne exemplaire au fonctionnement du lieu qui l'applaudit."
+    },
+    {
+      "id": "r39-fr-c2-02",
+      "tab": "images",
+      "kind": "mc",
+      "q": "Pourquoi une dénonciation immédiate de l'hypocrisie serait-elle trop facile ?",
+      "choices": [
+        "Parce que les cinémas doivent utiliser des contenants jetables.",
+        "Parce que les films n'ont jamais de responsabilité.",
+        "Parce que le public ne peut pas modifier ses habitudes.",
+        "Parce qu'elle éviterait d'examiner les contraintes matérielles et organisationnelles."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Le texte évoque équipements, salariés et espace avant de critiquer les limites du récit moral."
+    },
+    {
+      "id": "r39-fr-c2-03",
+      "tab": "images",
+      "kind": "mc",
+      "q": "Quel avantage narratif offre la figure du consommateur exemplaire ?",
+      "choices": [
+        "Elle montre le fonctionnement de tous les contrats de collecte.",
+        "Elle écarte toute émotion du documentaire.",
+        "Elle produit un héros et une conclusion simple à filmer.",
+        "Elle garantit une évaluation complète des coûts."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Le troisième paragraphe présente un geste filmable qui donne rapidement une fin satisfaisante."
+    },
+    {
+      "id": "r39-fr-c2-04",
+      "tab": "causes",
+      "kind": "mc",
+      "q": "Que risque-t-on d'ignorer lorsque seuls les gestes personnels apparaissent ?",
+      "choices": [
+        "Les infrastructures et les règles qui rendent certains choix possibles ou difficiles.",
+        "Le nom de tous les spectateurs.",
+        "La couleur exacte des contenants utilisés.",
+        "L'existence même de la musique du film."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Les contrats, les fontaines et les décisions d'achat restent peu visibles dans cette narration."
+    },
+    {
+      "id": "r39-fr-c2-05",
+      "tab": "causes",
+      "kind": "mc",
+      "q": "Pourquoi l'auteur rejette-t-il aussi l'argument selon lequel seules les entreprises peuvent agir ?",
+      "choices": [
+        "Parce que tous les consommateurs peuvent remplacer les autorités.",
+        "Parce que le vote ne change jamais rien.",
+        "Parce qu'il exonère trop facilement les individus de leur influence possible.",
+        "Parce qu'il nie l'existence de toute contrainte partagée."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "La consommation, les choix politiques et les revendications collectives interagissent."
+    },
+    {
+      "id": "r39-fr-c2-06",
+      "tab": "causes",
+      "kind": "mc",
+      "q": "Pourquoi une gourde métallique n'est-elle pas automatiquement préférable dans toute situation ?",
+      "choices": [
+        "Sa fabrication, sa durée de vie et ses usages réels influencent son intérêt.",
+        "Une gourde ne peut pas être utilisée plus d'un mois.",
+        "Le métal ne peut jamais être recyclé.",
+        "Sa couleur détermine sa valeur environnementale."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Le texte invite à examiner les conditions concrètes plutôt que le symbole isolé."
+    },
+    {
+      "id": "r39-fr-c2-07",
+      "tab": "causes",
+      "kind": "mc",
+      "q": "Quel serait le risque de présenter les gobelets consignés comme une victoire sans réserve ?",
+      "choices": [
+        "On supprimerait toutes les dépenses réelles.",
+        "On cacherait les pertes et les frais de lavage qui dépassent les prévisions.",
+        "Les visiteurs cesseraient immédiatement de jeter des déchets.",
+        "Les organisateurs connaîtraient enfin toutes les réponses."
+      ],
+      "answer": 1,
+      "sourceParagraph": 6,
+      "explanation": "Le bilan du festival contient des progrès, mais aussi des pertes et coûts inattendus."
+    },
+    {
+      "id": "r39-fr-c2-08",
+      "tab": "responsabilite",
+      "kind": "mc",
+      "q": "Pourquoi serait-il également injustifié de conclure à un échec définitif ?",
+      "choices": [
+        "Parce que les mesures seraient forcément inventées.",
+        "Parce que la consigne ne peut jamais être améliorée.",
+        "Parce qu'il n'existe aucune différence entre les deux systèmes.",
+        "Parce qu'une telle simplification ne montrerait pas comment préparer l'édition suivante."
+      ],
+      "answer": 3,
+      "sourceParagraph": 6,
+      "explanation": "Les deux récits extrêmes empêcheraient de tirer des leçons utiles de l'expérience."
+    },
+    {
+      "id": "r39-fr-c2-09",
+      "tab": "responsabilite",
+      "kind": "mc",
+      "q": "Quel but l'auteur trouve-t-il trop limité pour un cinéma écologique exigeant ?",
+      "choices": [
+        "Comparer les coûts et les effets.",
+        "Présenter les responsabilités collectives.",
+        "Faire sortir les spectateurs avec un simple sentiment d'innocence.",
+        "Poser des questions sur les décisions concrètes."
+      ],
+      "answer": 2,
+      "sourceParagraph": 7,
+      "explanation": "La conclusion refuse de réduire l'expérience du public à une pureté morale passagère."
+    },
+    {
+      "id": "r39-fr-c2-10",
+      "tab": "responsabilite",
+      "kind": "mc",
+      "q": "Que devrait plutôt apprendre un spectateur après la séance ?",
+      "choices": [
+        "À repérer les acteurs, contraintes et conséquences absents d'une explication séduisante.",
+        "À croire que les gestes individuels résolvent tous les problèmes.",
+        "À rejeter toute émotion dans les documentaires.",
+        "À penser que seul le gouvernement peut modifier les habitudes."
+      ],
+      "answer": 0,
+      "sourceParagraph": 7,
+      "explanation": "Le dernier paragraphe demande de reconnaître les limites des récits apparemment convaincants."
+    }
+  ]
+}

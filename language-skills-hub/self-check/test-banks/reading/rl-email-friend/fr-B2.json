@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "fr",
+  "level": "B2",
+  "sourceTitle": "Entre deux villes",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Dix questions inédites de compréhension et d'interprétation, encore soumises à une validation didactique externe.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interprétation"
+    },
+    {
+      "id": "reasoning",
+      "title": "Argumentation"
+    },
+    {
+      "id": "transfer",
+      "title": "Application"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-fr-b2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Quel contraste Lena établit-elle entre connaître Rotterdam et s'y sentir bien ?",
+      "choices": [
+        "Connaître des lieux ne remplace pas les relations personnelles.",
+        "Visiter les musées empêche de rencontrer des amis.",
+        "La ville n'a presque aucun lieu intéressant.",
+        "Lena n'aime pas parler aux nouveaux habitants."
+      ],
+      "answer": 0,
+      "explanation": "Elle connaît les musées mais n'a personne à appeler après une mauvaise journée."
+    },
+    {
+      "id": "r41-fr-b2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "À quoi servent les photos joyeuses dans le récit du début ?",
+      "choices": [
+        "Elles montrent sa réussite professionnelle à la radio.",
+        "Elles cachent une partie des difficultés de Lena.",
+        "Elles prouvent qu'elle n'a jamais été seule.",
+        "Elles font uniquement la publicité de Rotterdam."
+      ],
+      "answer": 1,
+      "explanation": "Lena préfère envoyer de belles images plutôt qu'avouer ses problèmes."
+    },
+    {
+      "id": "r41-fr-b2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Pourquoi l'entretien avec une nouvelle habitante touche-t-il Lena ?",
+      "choices": [
+        "La femme lui propose un travail payé.",
+        "Elle apprend toutes les lignes de bus en une journée.",
+        "Elle reconnaît sa propre confusion dans une expérience semblable.",
+        "La femme lui donne un billet de train."
+      ],
+      "answer": 2,
+      "explanation": "La comparaison des bus avec une langue secrète lui semble familière."
+    },
+    {
+      "id": "r41-fr-b2-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Que révèle l'importance accordée aux conversations plutôt qu'au certificat ?",
+      "choices": [
+        "Elle refuse toujours les diplômes et certificats.",
+        "Elle souhaite diriger seule la radio.",
+        "Elle ne voit aucun intérêt au bénévolat.",
+        "Lena apprécie davantage les liens humains que la reconnaissance officielle."
+      ],
+      "answer": 3,
+      "explanation": "Le texte oppose explicitement la valeur des échanges à celle d'un certificat."
+    },
+    {
+      "id": "r41-fr-b2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Que découvre Lena en retrouvant la photo de la fin des examens ?",
+      "choices": [
+        "Alex a perdu tous ses souvenirs de lycée.",
+        "Elle ne sait presque rien des difficultés actuelles d'Alex.",
+        "Elle doit changer d'université.",
+        "Les photos anciennes n'ont aucune valeur."
+      ],
+      "answer": 1,
+      "explanation": "L'image lui rappelle qu'avant ils se parlaient aussi de leurs problèmes."
+    },
+    {
+      "id": "r41-fr-b2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Pourquoi Lena imagine-t-elle qu'Alex a pu se sentir écarté ?",
+      "choices": [
+        "Alex n'a pas été admis dans l'association.",
+        "Ses amis lui interdisent de voyager.",
+        "Le premier semestre d'Alex a été annulé.",
+        "Ses messages sélectifs donnaient une image trompeusement facile de sa vie."
+      ],
+      "answer": 3,
+      "explanation": "Lena reconnaît que ses publications pouvaient créer une distance émotionnelle."
+    },
+    {
+      "id": "r41-fr-b2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Alex ne souhaite pas s'exprimer devant un public. Comment peut-il accepter l'invitation ?",
+      "choices": [
+        "Écouter simplement les récits puis se promener avec Lena.",
+        "Préparer un entretien à diffuser à la radio.",
+        "Animer obligatoirement la soirée entière.",
+        "Venir seulement s'il prononce un discours."
+      ],
+      "answer": 0,
+      "explanation": "Lena précise qu'Alex n'a pas à parler en public ou à jouer un rôle."
+    },
+    {
+      "id": "r41-fr-b2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Alex ne peut pas acheter le billet de train. Que peuvent-ils faire ?",
+      "choices": [
+        "Demander à Lena de payer le transport sans discussion.",
+        "Mettre fin à leur ancienne amitié.",
+        "Fixer une heure pour une conversation téléphonique régulière.",
+        "Attendre qu'Alex termine ses études."
+      ],
+      "answer": 2,
+      "explanation": "Lena propose un appel lorsque le voyage n'est pas possible."
+    },
+    {
+      "id": "r41-fr-b2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Une amie publie des moments heureux alors qu'elle se sent isolée. Que suggère l'expérience de Lena ?",
+      "choices": [
+        "Les photos démontrent toujours le contraire de la vérité.",
+        "Les images publiques ne racontent pas toujours toute la réalité.",
+        "Une belle image remplace une conversation sérieuse.",
+        "Seuls les étudiants en échange connaissent la solitude."
+      ],
+      "answer": 1,
+      "explanation": "Le début distingue l'apparence positive et les difficultés réellement vécues."
+    },
+    {
+      "id": "r41-fr-b2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Quel choix correspond au souhait le plus important de Lena à la fin ?",
+      "choices": [
+        "Créer de nouvelles publications qui semblent joyeuses.",
+        "Ne parler que du certificat obtenu à la radio.",
+        "Éviter les questions personnelles.",
+        "Avoir un échange sincère même sans photo parfaite."
+      ],
+      "answer": 3,
+      "explanation": "Le dernier paragraphe réclame une conversation réelle plutôt qu'une autre image heureuse."
+    }
+  ]
+}

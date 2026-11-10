@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "fr",
+  "level": "A1",
+  "sourceTitle": "Un message de Ben",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Dix nouvelles questions de compréhension et de transfert ; contenu non validé par un enseignant indépendant.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Compréhension"
+    },
+    {
+      "id": "reasoning",
+      "title": "Interprétation"
+    },
+    {
+      "id": "transfer",
+      "title": "Application"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-fr-a1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Où se trouve maintenant la maison de Ben ?",
+      "choices": [
+        "Près d'un petit parc à Greenhill.",
+        "Dans son ancienne école avec Maya.",
+        "Juste à côté de la grande gare.",
+        "Loin de tous ses nouveaux amis."
+      ],
+      "answer": 0,
+      "explanation": "Ben indique qu'il habite à Greenhill, à proximité d'un petit parc."
+    },
+    {
+      "id": "r41-fr-a1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Que font Ben et Eva lorsqu'ils se retrouvent le vendredi ?",
+      "choices": [
+        "Ils regardent des films au parc.",
+        "Ils jouent au football ensemble.",
+        "Ils prennent le train pour voir Maya.",
+        "Ils écrivent à leurs anciens professeurs."
+      ],
+      "answer": 1,
+      "explanation": "Ben présente Eva comme une nouvelle amie avec qui il joue au football."
+    },
+    {
+      "id": "r41-fr-a1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Pourquoi Maya peut-elle prendre un sandwich au cinéma ?",
+      "choices": [
+        "Il faut préparer le repas de tous les visiteurs.",
+        "Il n'y a aucun magasin dans la ville.",
+        "On peut apporter sa propre nourriture.",
+        "Le film est diffusé seulement le matin."
+      ],
+      "answer": 2,
+      "explanation": "L'invitation précise que les spectateurs peuvent apporter des sandwichs."
+    },
+    {
+      "id": "r41-fr-a1-04",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Comment Maya peut-elle rejoindre Ben à Greenhill ?",
+      "choices": [
+        "Venir en voiture avec la sœur de Ben.",
+        "Marcher directement depuis son ancienne école.",
+        "Arriver après la fin de la projection.",
+        "Venir en train puis retrouver son père à la gare."
+      ],
+      "answer": 3,
+      "explanation": "Le père de Ben peut aller la chercher à la gare à cinq heures."
+    },
+    {
+      "id": "r41-fr-a1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Pourquoi Ben parle-t-il des jeux après l'école ?",
+      "choices": [
+        "Il souhaite fermer son ancienne école.",
+        "Ces souvenirs montrent qu'il pense encore à Maya.",
+        "Eva n'aime pas jouer au football.",
+        "Il doit écrire un devoir pour sa classe."
+      ],
+      "answer": 1,
+      "explanation": "Ben associe leurs anciens moments ensemble au manque qu'il ressent."
+    },
+    {
+      "id": "r41-fr-a1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Que peut-on comprendre du souhait de la petite sœur de Ben ?",
+      "choices": [
+        "Les adultes n'ont pas le droit d'assister au film.",
+        "Maya doit venir avec une sœur.",
+        "Tous les visiteurs ont seulement huit ans.",
+        "Le film peut plaire à des enfants assez jeunes."
+      ],
+      "answer": 3,
+      "explanation": "La sœur de Ben n'a que huit ans et aimerait aussi voir le film."
+    },
+    {
+      "id": "r41-fr-a1-07",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Pourquoi Ben accepte-t-il que Maya puisse être occupée ?",
+      "choices": [
+        "Il veut lui laisser le choix de venir ou non.",
+        "Il sait déjà que Maya ne viendra pas.",
+        "Il compte partir vivre ailleurs.",
+        "Il ne souhaite plus revoir son amie."
+      ],
+      "answer": 0,
+      "explanation": "Son message reste une invitation, sans obligation pour Maya."
+    },
+    {
+      "id": "r41-fr-a1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Maya ne connaît pas Greenhill. Qu'est-ce qui peut l'aider ?",
+      "choices": [
+        "Elle doit chercher le parc seule toute la nuit.",
+        "Elle ne répond pas au message de Ben.",
+        "Quelqu'un l'attend à la gare pour la retrouver.",
+        "Elle arrive quand tous les autres sont partis."
+      ],
+      "answer": 2,
+      "explanation": "Le rendez-vous avec le père de Ben peut faciliter son arrivée."
+    },
+    {
+      "id": "r41-fr-a1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Maya ne peut pas venir samedi. Quelle réponse serait gentille ?",
+      "choices": [
+        "Ne plus jamais donner de nouvelles.",
+        "Expliquer son absence et raconter sa nouvelle classe.",
+        "Demander à tous d'annuler le film.",
+        "Dire à Ben de quitter Greenhill."
+      ],
+      "answer": 1,
+      "explanation": "Ben accepte l'idée qu'elle soit occupée et souhaite connaître sa vie."
+    },
+    {
+      "id": "r41-fr-a1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Quel détail montre que Ben veut aussi garder son amitié ?",
+      "choices": [
+        "Il indique seulement l'heure du film.",
+        "Il ne parle pas du passé.",
+        "Il demande d'acheter des sandwichs.",
+        "Il demande des nouvelles de la nouvelle classe de Maya."
+      ],
+      "answer": 3,
+      "explanation": "À la fin, Ben s'intéresse à Maya personnellement, pas uniquement au cinéma."
+    }
+  ]
+}

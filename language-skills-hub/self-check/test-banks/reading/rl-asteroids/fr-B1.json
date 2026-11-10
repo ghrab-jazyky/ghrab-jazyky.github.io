@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "fr",
+  "level": "B1",
+  "sourceTitle": "Comment surveille-t-on les astéroïdes ?",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R37-CONTENT-AUDIT-1",
+  "description": "Original independent B1 astronomy comprehension and interpretation draft; external pedagogy audit pending",
+  "tabs": [
+    {
+      "id": "comprendre",
+      "title": "Comprendre le texte"
+    },
+    {
+      "id": "raisonner",
+      "title": "Comprendre les raisons"
+    },
+    {
+      "id": "appliquer",
+      "title": "Appliquer les idées"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r37-fr-b1-01",
+      "tab": "comprendre",
+      "kind": "mc",
+      "q": "Pourquoi les scientifiques étudient-ils aussi des astéroïdes sans danger immédiat ?",
+      "choices": [
+        "Pour modifier leur composition.",
+        "Pour mieux connaître les débuts du système solaire.",
+        "Pour créer de nouvelles planètes.",
+        "Pour remplacer les roches terrestres."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Le premier paragraphe présente les astéroïdes comme des témoins des débuts du système solaire."
+    },
+    {
+      "id": "r37-fr-b1-02",
+      "tab": "comprendre",
+      "kind": "mc",
+      "q": "Que dit le texte des trajectoires des astéroïdes ?",
+      "choices": [
+        "Tous restent exactement entre Mars et Jupiter.",
+        "Ils ne se déplacent que près de la Terre.",
+        "La plupart passent entre Mars et Jupiter, mais d'autres suivent d'autres parcours.",
+        "Leur trajectoire dépend uniquement de leur taille."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Le premier paragraphe distingue la majorité située entre Mars et Jupiter des autres trajectoires."
+    },
+    {
+      "id": "r37-fr-b1-03",
+      "tab": "comprendre",
+      "kind": "mc",
+      "q": "Que signifie réellement « astéroïde proche de la Terre » ?",
+      "choices": [
+        "Son orbite passe près de notre région sans annoncer nécessairement un impact.",
+        "Il touchera certainement notre planète très bientôt.",
+        "Il traverse déjà l'atmosphère terrestre.",
+        "Il est toujours visible sans télescope."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Le deuxième paragraphe distingue proximité orbitale et collision annoncée."
+    },
+    {
+      "id": "r37-fr-b1-04",
+      "tab": "raisonner",
+      "kind": "mc",
+      "q": "Pourquoi une seule photographie ne suffit-elle pas à prévoir une trajectoire ?",
+      "choices": [
+        "Parce que la lumière change toujours la forme de l'astéroïde.",
+        "Parce que les ordinateurs ne peuvent pas lire une photo.",
+        "Parce qu'une image montre toutes les positions futures.",
+        "Parce que plusieurs observations permettent d'affiner le calcul de l'orbite."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Le texte explique que les mesures répétées améliorent les prévisions."
+    },
+    {
+      "id": "r37-fr-b1-05",
+      "tab": "raisonner",
+      "kind": "mc",
+      "q": "Pourquoi les chercheurs partagent-ils leurs observations ?",
+      "choices": [
+        "Pour éviter de refaire des mesures.",
+        "Pour comparer les données et rendre les prévisions plus fiables.",
+        "Pour conserver les premières estimations sans les revoir.",
+        "Pour déterminer lequel a trouvé l'objet en premier."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "La coopération permet de corriger les trajectoires prévues à partir de nouvelles données."
+    },
+    {
+      "id": "r37-fr-b1-06",
+      "tab": "raisonner",
+      "kind": "mc",
+      "q": "Quel résultat l'expérience DART a-t-elle réellement démontré ?",
+      "choices": [
+        "Une sonde peut modifier le mouvement d'un objet dans les conditions testées.",
+        "Une seule sonde pourrait éliminer tous les astéroïdes menaçants.",
+        "Dimorphos allait toucher la Terre avant l'expérience.",
+        "Les astronomes n'ont plus besoin de suivre les orbites."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "La durée de révolution de Dimorphos a changé après l'impact contrôlé."
+    },
+    {
+      "id": "r37-fr-b1-07",
+      "tab": "raisonner",
+      "kind": "mc",
+      "q": "Pourquoi la mission DART n'était-elle pas un sauvetage de la Terre ?",
+      "choices": [
+        "L'impact n'était pas volontaire.",
+        "La sonde n'a pas réussi à atteindre l'objet.",
+        "La cible ne représentait pas de menace réelle pour la Terre.",
+        "L'orbite n'a pas été mesurée après le test."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Le troisième paragraphe précise qu'il s'agissait d'un essai contrôlé."
+    },
+    {
+      "id": "r37-fr-b1-08",
+      "tab": "appliquer",
+      "kind": "mc",
+      "q": "Un objet potentiellement dangereux vient d'être découvert. Quelle première mesure semble utile ?",
+      "choices": [
+        "Attendre qu'il soit visible à l'œil nu.",
+        "Diffuser une alerte sans vérifier les observations.",
+        "Repousser toute décision au dernier moment.",
+        "Partager des observations fiables et permettre une alerte précoce."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Le dernier paragraphe souligne l'importance des mesures fiables et du temps de réaction."
+    },
+    {
+      "id": "r37-fr-b1-09",
+      "tab": "appliquer",
+      "kind": "mc",
+      "q": "Un ami pense que les grands impacts sont fréquents. Que lui répondre ?",
+      "choices": [
+        "Qu'il faut avoir peur de chaque astéroïde.",
+        "Qu'ils sont rares, mais qu'une préparation reste raisonnable.",
+        "Que les satellites empêchent désormais tous les impacts.",
+        "Que la recherche ne peut rien apprendre sur ce risque."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "La conclusion souligne que les grands impacts sont rares sans nier l'utilité de la préparation."
+    },
+    {
+      "id": "r37-fr-b1-10",
+      "tab": "appliquer",
+      "kind": "mc",
+      "q": "Quelle idée résume le mieux une défense planétaire responsable ?",
+      "choices": [
+        "Observer soigneusement, coopérer et disposer de temps pour décider.",
+        "Compter uniquement sur une mission spectaculaire.",
+        "Considérer chaque rapprochement comme une collision certaine.",
+        "Ne rien faire tant que tous les risques ne sont pas connus."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Le texte conclut sur les télescopes, les mesures et la coopération internationale."
+    }
+  ]
+}

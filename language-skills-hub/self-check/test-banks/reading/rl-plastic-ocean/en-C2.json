@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "C2",
+  "sourceTitle": "The Convenient Virtue of the Perfect Consumer",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R38-CONTENT-AUDIT-1",
+  "description": "Original film-review and environmental reading assessment, requiring independent linguistic and pedagogical validation",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Interpretation"
+    },
+    {
+      "id": "criticism",
+      "title": "Critical Reading"
+    },
+    {
+      "id": "implications",
+      "title": "Practical Implications"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r38-en-c2-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why does the author place an overflowing bin outside the film screening?",
+      "choices": [
+        "To suggest that the audience never pays attention to film.",
+        "To contrast a celebrated individual habit with the host institution's arrangements.",
+        "To prove that the teenager's flask has no environmental benefit.",
+        "To explain why the documentary was not shown at a larger venue."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "The opening contrasts the applauded flask user with disposable cups supplied by the venue."
+    },
+    {
+      "id": "r38-en-c2-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why does the author reject a simple accusation of hypocrisy?",
+      "choices": [
+        "Because the overflowing bin was merely a visual effect.",
+        "Because festivals should never be expected to offer reusable cups.",
+        "Because all environmental documentaries are necessarily inconsistent.",
+        "Because this verdict ignores logistical constraints and the way responsibility is framed."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "The second paragraph rejects a satisfying judgement in favour of examining systems and the film's causal story."
+    },
+    {
+      "id": "r38-en-c2-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What advantage does the 'perfect-consumer' narrative offer a filmmaker?",
+      "choices": [
+        "It makes municipal procurement rules visually dramatic.",
+        "It removes every disagreement about responsibility.",
+        "It produces clear protagonists and satisfying endings.",
+        "It reveals how all waste-processing plants operate."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Personal moral choices can be filmed as simple actions with legible emotional conclusions."
+    },
+    {
+      "id": "r38-en-c2-04",
+      "tab": "criticism",
+      "kind": "mc",
+      "q": "What does the absent municipal plant reveal about the documentary's approach?",
+      "choices": [
+        "The film highlights a visible household habit while omitting the system receiving its results.",
+        "The family was not actually sorting its waste.",
+        "Municipal plants were prohibited from appearing on film.",
+        "The director believed recycling was always ineffective."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "The film praises a visible act of sorting without following what happens to the sorted waste."
+    },
+    {
+      "id": "r38-en-c2-05",
+      "tab": "criticism",
+      "kind": "mc",
+      "q": "Why does the writer also reject blaming institutions alone?",
+      "choices": [
+        "It would remove the need to examine the film's narrator.",
+        "It would prove that consumers have no influence on public facilities.",
+        "It would excuse the role that personal choices and civic action can play.",
+        "It would require governments to provide free metal flasks."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "The writer treats purchasing, voting, protest and design as mutually connected."
+    },
+    {
+      "id": "r38-en-c2-06",
+      "tab": "criticism",
+      "kind": "mc",
+      "q": "Why is the metal flask not automatically the best choice in every context?",
+      "choices": [
+        "Manufacture, longevity and actual use influence its environmental value.",
+        "A metal flask always costs less than a disposable cup.",
+        "Flasks are never accepted through venue security.",
+        "The material is less important than the film's music."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "The text points to material, production and use over time when assessing the symbol's meaning."
+    },
+    {
+      "id": "r38-en-c2-07",
+      "tab": "criticism",
+      "kind": "mc",
+      "q": "What is the risk of editing the deposit-cup trial into an easy success story?",
+      "choices": [
+        "It would require viewers to count cups themselves.",
+        "It would leave out missing returns, costs and design problems.",
+        "It would make the film too short to be screened.",
+        "It would show that deposit schemes never reduce litter."
+      ],
+      "answer": 1,
+      "sourceParagraph": 6,
+      "explanation": "The trial reduces abandoned cups but reveals losses that require additional investigation."
+    },
+    {
+      "id": "r38-en-c2-08",
+      "tab": "implications",
+      "kind": "mc",
+      "q": "Why does the writer prefer a plain clipboard shot to another coastal aerial view?",
+      "choices": [
+        "It would prove that the coastline is cleaner.",
+        "It would eliminate the film's emotional content.",
+        "It could replace the need to interview organisers.",
+        "It would communicate measurable returns and losses more usefully."
+      ],
+      "answer": 3,
+      "sourceParagraph": 6,
+      "explanation": "The clipboard provides specific information about the scheme, beyond a pleasing scenic image."
+    },
+    {
+      "id": "r38-en-c2-09",
+      "tab": "implications",
+      "kind": "mc",
+      "q": "Which goal does the writer regard as too limited for environmental cinema?",
+      "choices": [
+        "Questioning which institutions influence consumer choices.",
+        "Helping audiences understand competing environmental costs.",
+        "Making spectators feel morally innocent after watching.",
+        "Recognising that a personal example may influence collective habits."
+      ],
+      "answer": 2,
+      "sourceParagraph": 7,
+      "explanation": "The conclusion rejects temporary virtue as the ultimate purpose of documentary criticism."
+    },
+    {
+      "id": "r38-en-c2-10",
+      "tab": "implications",
+      "kind": "mc",
+      "q": "What ability should viewers ideally take away from the documentary?",
+      "choices": [
+        "The ability to identify missing actors, constraints and consequences in an appealing story.",
+        "Confidence that buying the right container solves systemic waste problems.",
+        "A belief that every environmental film should avoid emotion.",
+        "The certainty that institutions alone control environmental change."
+      ],
+      "answer": 0,
+      "sourceParagraph": 7,
+      "explanation": "The writer wants audiences to question the causal explanations and omissions of environmental narratives."
+    }
+  ]
+}

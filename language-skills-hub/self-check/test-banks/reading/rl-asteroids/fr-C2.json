@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "fr",
+  "level": "C2",
+  "sourceTitle": "Quand une probabilité fait la une",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R37-CONTENT-AUDIT-1",
+  "description": "Original C2 critical-reading and planetary-risk policy questions; pending independent external review",
+  "tabs": [
+    {
+      "id": "notions",
+      "title": "Distinguer les notions"
+    },
+    {
+      "id": "argumentation",
+      "title": "Évaluer l'argumentation"
+    },
+    {
+      "id": "decisions",
+      "title": "Analyser les décisions"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r37-fr-c2-01",
+      "tab": "notions",
+      "kind": "mc",
+      "q": "Quelle critique l'auteur adresse-t-il à la métaphore du combat contre l'univers ?",
+      "choices": [
+        "Elle néglige le fait que certains astéroïdes contiennent du métal.",
+        "Elle masque le travail patient de recherche derrière une histoire spectaculaire.",
+        "Elle contient trop d'informations scientifiques pour être comprise.",
+        "Elle démontre que les sondes ne peuvent modifier aucune trajectoire."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Le début oppose le récit de confrontation au travail intellectuel et scientifique."
+    },
+    {
+      "id": "r37-fr-c2-02",
+      "tab": "notions",
+      "kind": "mc",
+      "q": "Pourquoi faut-il distinguer proximité, danger potentiel et probabilité d'impact ?",
+      "choices": [
+        "Parce que tous les calculs partent du même pourcentage.",
+        "Parce qu'un objet proche est nécessairement invisible.",
+        "Parce que sa composition fixe à elle seule le degré d'urgence.",
+        "Parce que les confondre transforme des constats différents en alarme publique."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Le premier paragraphe dénonce la fusion de trois notions scientifiques distinctes."
+    },
+    {
+      "id": "r37-fr-c2-03",
+      "tab": "notions",
+      "kind": "mc",
+      "q": "Quel biais peut subsister dans un catalogue d'astéroïdes pourtant établi avec soin ?",
+      "choices": [
+        "Il ne comprend que les objets ayant déjà touché la Terre.",
+        "Toutes les orbites sont déduites d'une seule photographie.",
+        "Les objets brillants et bien placés ont davantage de chances d'être détectés.",
+        "Les observations infrarouges ne concernent que les météorites au sol."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "La sélection dépend notamment de la luminosité et de la position des objets."
+    },
+    {
+      "id": "r37-fr-c2-04",
+      "tab": "argumentation",
+      "kind": "mc",
+      "q": "Comment interpréter une révision de probabilité après de nouvelles observations ?",
+      "choices": [
+        "Comme une correction pouvant témoigner d'un raisonnement rigoureux.",
+        "Comme une preuve certaine de manipulation des premières mesures.",
+        "Comme le signe d'un changement chimique de l'astéroïde.",
+        "Comme la démonstration que les trajectoires sont incalculables."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Le texte présente les révisions comme parfois caractéristiques d'un travail scientifique sérieux."
+    },
+    {
+      "id": "r37-fr-c2-05",
+      "tab": "argumentation",
+      "kind": "mc",
+      "q": "Pourquoi un chiffre précis ne suffit-il pas à décrire complètement le risque ?",
+      "choices": [
+        "Parce qu'un pourcentage n'est jamais calculé par des scientifiques.",
+        "Parce qu'il contient nécessairement tous les objets inconnus.",
+        "Parce que les hypothèses, l'incertitude et les objets non détectés restent importants.",
+        "Parce que l'infrarouge n'apporte aucune donnée utile."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Une mesure précise ne garantit ni l'absence d'incertitude ni un inventaire complet."
+    },
+    {
+      "id": "r37-fr-c2-06",
+      "tab": "argumentation",
+      "kind": "mc",
+      "q": "Quelle affirmation dépasserait les résultats de DART ?",
+      "choices": [
+        "Une expérience réussie ne constitue pas la preuve d'un bouclier universel.",
+        "La période orbitale de Dimorphos a été modifiée.",
+        "La structure interne peut influencer la réaction au choc.",
+        "Le délai avant une menace reste un facteur décisif."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Le paragraphe trois rejette explicitement l'idée d'une protection universelle."
+    },
+    {
+      "id": "r37-fr-c2-07",
+      "tab": "argumentation",
+      "kind": "mc",
+      "q": "Pourquoi une légère déviation précoce pourrait-elle être décisive ?",
+      "choices": [
+        "Parce qu'elle dispense d'identifier la structure de l'objet.",
+        "Parce que la modification peut agir sur sa position pendant plusieurs années.",
+        "Parce que l'astéroïde ne subirait plus de gravitation.",
+        "Parce que toute nouvelle observation deviendrait inutile."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Le texte souligne le temps laissé à une petite modification pour avoir un effet."
+    },
+    {
+      "id": "r37-fr-c2-08",
+      "tab": "decisions",
+      "kind": "mc",
+      "q": "Pourquoi la réponse à un choc peut-elle différer selon les astéroïdes ?",
+      "choices": [
+        "Parce que leur vitesse ne dépend jamais de leur structure.",
+        "Parce que toute roche compacte se comporte exactement comme des fragments.",
+        "Parce qu'une orbite ne peut changer après un impact.",
+        "Parce que la structure interne de la cible influence le résultat."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Le troisième paragraphe compare les réactions possibles d'un corps compact et de fragments."
+    },
+    {
+      "id": "r37-fr-c2-09",
+      "tab": "decisions",
+      "kind": "mc",
+      "q": "Quelle difficulté politique accompagne les investissements contre une catastrophe rare ?",
+      "choices": [
+        "La prévention ne nécessite jamais de moyens importants.",
+        "Ses bénéfices sont toujours immédiatement visibles.",
+        "Les dépenses actuelles sont visibles tandis que les catastrophes évitées le sont peu.",
+        "Les chercheurs ont seuls le droit de définir les dépenses publiques."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "La conclusion mentionne la concurrence des besoins immédiats et l'invisibilité d'une prévention réussie."
+    },
+    {
+      "id": "r37-fr-c2-10",
+      "tab": "decisions",
+      "kind": "mc",
+      "q": "Qu'est-ce qui caractérise une institution digne de confiance selon la conclusion ?",
+      "choices": [
+        "Elle explique comment elle corrigera ses décisions avec de nouvelles données.",
+        "Elle garantit qu'aucune prévision ne changera jamais.",
+        "Elle refuse toute décision fondée sur des mesures incomplètes.",
+        "Elle transforme chaque estimation en événement spectaculaire."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Le texte valorise la capacité de réviser ouvertement les jugements et décisions."
+    }
+  ]
+}

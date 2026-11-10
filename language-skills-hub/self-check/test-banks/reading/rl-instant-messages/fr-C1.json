@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "fr",
+  "level": "C1",
+  "sourceTitle": "La tyrannie des coches bleues",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Dix questions originales de compréhension, de raisonnement et de transfert; validation externe nécessaire.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interprétation"
+    },
+    {
+      "id": "argument",
+      "title": "Argumentation"
+    },
+    {
+      "id": "transfer",
+      "title": "Transfert critique"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-fr-c1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Quelle attente sociale peut naître d'un message marqué comme lu ?",
+      "choices": [
+        "Le destinataire semble devoir répondre rapidement.",
+        "L'expéditeur connaît immédiatement l'opinion du lecteur.",
+        "Le destinataire ne peut plus ignorer aucun message.",
+        "L'application sait si la personne a du temps libre."
+      ],
+      "answer": 0,
+      "explanation": "La lecture peut être interprétée comme une promesse implicite de réponse."
+    },
+    {
+      "id": "r41-fr-c1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Pourquoi le cas de la lycéenne salariée illustre-t-il une pression inégale ?",
+      "choices": [
+        "Tout le personnel a exactement les mêmes possibilités.",
+        "Les personnes toujours disponibles profitent davantage du système.",
+        "La responsable impose officiellement une présence nocturne.",
+        "Les messages professionnels sont envoyés uniquement au travail."
+      ],
+      "answer": 1,
+      "explanation": "La récompense va aux personnes capables de réagir la nuit."
+    },
+    {
+      "id": "r41-fr-c1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Quelle distinction essentielle les accusés de lecture ne permettent-ils pas ?",
+      "choices": [
+        "Il est impossible de savoir si un message a été ouvert.",
+        "Un message urgent n'arrive jamais au bon numéro.",
+        "Une personne peut lire sans avoir les moyens de répondre.",
+        "Les deux personnes utilisent forcément une application différente."
+      ],
+      "answer": 2,
+      "explanation": "Lire un message et disposer de temps, d'énergie ou d'informations sont distincts."
+    },
+    {
+      "id": "r41-fr-c1-04",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Pourquoi l'auteur reconnaît-il un intérêt à la fonction en cas d'urgence ?",
+      "choices": [
+        "Il considère que tous les messages sont urgents.",
+        "Il affirme que tout retard est une insulte volontaire.",
+        "Il souhaite surveiller les conversations privées des salariés.",
+        "Il admet un avantage légitime avant d'en discuter les limites."
+      ],
+      "answer": 3,
+      "explanation": "La concession introduit une critique plus nuancée."
+    },
+    {
+      "id": "r41-fr-c1-05",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Pourquoi les règles tacites provoquent-elles des conflits difficiles à voir ?",
+      "choices": [
+        "Chaque groupe possède les mêmes règles écrites.",
+        "Les membres appliquent des attentes différentes sans les avoir formulées.",
+        "Un retard signifie toujours de l'indifférence.",
+        "Les émojis suppriment toute possibilité de dispute."
+      ],
+      "answer": 1,
+      "explanation": "Les interprétations divergentes apparaissent lorsque les normes restent implicites."
+    },
+    {
+      "id": "r41-fr-c1-06",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "À quoi sert le rapprochement avec le droit à la déconnexion ?",
+      "choices": [
+        "Les clubs scolaires doivent appliquer directement le droit du travail.",
+        "Les groupes d'amis devraient interdire tout message.",
+        "Seuls les pays ayant ce droit peuvent fixer des horaires.",
+        "Des limites explicites peuvent aussi protéger les membres de petits groupes."
+      ],
+      "answer": 3,
+      "explanation": "Le texte propose de transposer le principe d'un accord sur les horaires."
+    },
+    {
+      "id": "r41-fr-c1-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Une responsable offre des heures supplémentaires au premier qui répond à minuit. Que devrait-elle examiner ?",
+      "choices": [
+        "Si ce dispositif favorise injustement la disponibilité permanente.",
+        "Si les employés font assez peu de fautes d'orthographe.",
+        "Si le groupe utilise des émojis appropriés.",
+        "Si les notifications ont la bonne couleur."
+      ],
+      "answer": 0,
+      "explanation": "L'exemple révèle une récompense indirecte d'une connexion constante."
+    },
+    {
+      "id": "r41-fr-c1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Un ami désactive les accusés de lecture et les autres se sentent rejetés. Qu'est-ce que cela montre ?",
+      "choices": [
+        "Désactiver l'option signifie toujours mettre fin à une amitié.",
+        "Les applications empêchent toute interprétation émotionnelle.",
+        "Un choix technique peut aussi être interprété comme un signal social.",
+        "Les amis ont un droit légal aux accusés de lecture."
+      ],
+      "answer": 2,
+      "explanation": "Le texte conteste l'idée que ce réglage soit parfaitement neutre."
+    },
+    {
+      "id": "r41-fr-c1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Une nouvelle membre ignore les délais de réponse attendus par son équipe. Que pourrait-on faire ?",
+      "choices": [
+        "Exiger des réponses immédiates, même pendant le sommeil.",
+        "Discuter ouvertement des attentes et convenir de limites.",
+        "Ne jamais poser de questions sur les habitudes.",
+        "Répondre par des émojis de plus en plus ironiques."
+      ],
+      "answer": 1,
+      "explanation": "La solution vise les règles invisibles plutôt que les seuls délais."
+    },
+    {
+      "id": "r41-fr-c1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Tu vois deux coches bleues sans recevoir de réponse. Quelle conclusion est justifiée ?",
+      "choices": [
+        "La personne ne tient plus du tout à toi.",
+        "Le silence constitue nécessairement une punition.",
+        "Une réponse arrivera avec certitude demain.",
+        "Le message a été lu, mais cela ne mesure pas l'affection de la personne."
+      ],
+      "answer": 3,
+      "explanation": "La dernière phrase distingue la lecture de l'importance accordée à autrui."
+    }
+  ]
+}

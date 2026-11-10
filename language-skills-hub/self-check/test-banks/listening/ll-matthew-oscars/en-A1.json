@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-matthew-oscars",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
+  "durationMinutesSuggested": 15,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "auditRevision": "R37-AUTHOR-DRAFT-1",
+  "notes": "Language and factual correspondence to the original speech needs direct media review before publication.",
+  "objective": [
+    {
+      "id": "r37-mm-a1-01",
+      "category": "interpretation",
+      "q": "Who is speaking to the people at the ceremony?",
+      "options": [
+        "A school teacher",
+        "A film actor",
+        "A football player",
+        "A book writer"
+      ],
+      "answer": 1,
+      "explanation": "He is an actor receiving an award.",
+      "sourceEvidence": "An actor accepts an Academy Award."
+    },
+    {
+      "id": "r37-mm-a1-02",
+      "category": "interpretation",
+      "q": "What do people do while he talks?",
+      "options": [
+        "They leave the room",
+        "They stay completely quiet",
+        "They watch a film",
+        "They clap and laugh"
+      ],
+      "answer": 3,
+      "explanation": "The audience applauds and laughs during the speech.",
+      "sourceEvidence": "Applause and laughter can be heard."
+    },
+    {
+      "id": "r37-mm-a1-03",
+      "category": "interpretation",
+      "q": "Who is at the ceremony with him?",
+      "options": [
+        "His mother",
+        "His school friend",
+        "His science teacher",
+        "His grandfather"
+      ],
+      "answer": 0,
+      "explanation": "He refers to his mother being there.",
+      "sourceEvidence": "He mentions his mother attending that evening."
+    },
+    {
+      "id": "r37-mm-a1-04",
+      "category": "interpretation",
+      "q": "What feeling does he show towards his family?",
+      "options": [
+        "He wants to live alone",
+        "He is angry with everyone",
+        "He is thankful and loving",
+        "He does not remember them"
+      ],
+      "answer": 2,
+      "explanation": "The speech expresses gratitude and affection for family.",
+      "sourceEvidence": "Personal thanks to family members."
+    },
+    {
+      "id": "r37-mm-a1-05",
+      "category": "interpretation",
+      "q": "Why does the speaker name important things in his life?",
+      "options": [
+        "To explain what helps him in life",
+        "To introduce three new films",
+        "To ask the audience for more awards",
+        "To describe his plans for a holiday"
+      ],
+      "answer": 0,
+      "explanation": "He explains the guiding ideas that help him live and keep moving forward.",
+      "sourceEvidence": "He talks about needing someone to look up to, something to look forward to and someone to chase."
+    },
+    {
+      "id": "r37-mm-a1-06",
+      "category": "interpretation",
+      "q": "What does the speaker hope for his children?",
+      "options": [
+        "That they become film stars",
+        "That they learn to act tomorrow",
+        "That they win an award",
+        "That they can feel proud of him"
+      ],
+      "answer": 3,
+      "explanation": "He says he hopes his children can be proud.",
+      "sourceEvidence": "The speech includes his hope that his children will be proud."
+    }
+  ],
+  "written": [
+    {
+      "id": "r37-mm-a1-w1",
+      "q": "Name one family member he talks about.",
+      "modelAnswer": "His mother, his father, his wife or his children.",
+      "teacherCriterion": "Award 1 point for one correctly supported family member.",
+      "sourceEvidence": "The speech mentions several close family members."
+    },
+    {
+      "id": "r37-mm-a1-w2",
+      "q": "Write one short sentence about his feeling during the speech.",
+      "modelAnswer": "He is happy and grateful for the award.",
+      "teacherCriterion": "Award 1 point for an understandable expression of joy, gratitude or pride.",
+      "sourceEvidence": "The speaker repeatedly thanks people and expresses gratitude."
+    }
+  ]
+}
