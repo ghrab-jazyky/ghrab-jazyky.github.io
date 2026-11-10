@@ -79,7 +79,7 @@ test('R34 level source swapping and altered draft metadata fail closed',()=>{
  assert.throws(()=>checker.validate({...b,published:true},A1,digest),/without teacher approval/);
  assert.throws(()=>checker.validate({...b,durationMinutesSuggested:2},A1,digest),/duration/);
  assert.throws(()=>checker.validate(b,A1,'0'.repeat(64)),/changed/);
- assert.throws(()=>checker.validate({...b,auditRevision:'FAKE'},A1,digest),/not registered/);
+ assert.throws(()=>checker.validate({...b,auditRevision:'FAKE'},A1,digest),/audit not completed/);
 });
 
 test('R34 student catalog retains no links to unapproved assessment banks',()=>{
