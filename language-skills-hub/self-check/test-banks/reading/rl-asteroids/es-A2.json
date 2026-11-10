@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "es",
+  "level": "A2",
+  "sourceTitle": "Una tarde en el club de astronomía",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-CONTENT-AUDIT-1",
+  "description": "Independent A2 astronomy comprehension draft, not approved for classroom testing.",
+  "tabs": [
+    {
+      "id": "club",
+      "title": "Aprender en el club"
+    },
+    {
+      "id": "observar",
+      "title": "Observar asteroides"
+    },
+    {
+      "id": "dart",
+      "title": "La prueba espacial"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-es-a2-01",
+      "tab": "club",
+      "kind": "mc",
+      "q": "¿Por qué el cinturón de asteroides no parece una carretera llena de coches?",
+      "choices": [
+        "Los asteroides no pueden girar alrededor del Sol.",
+        "Entre las rocas hay mucho espacio vacío.",
+        "Solo las naves pueden pasar por esa región.",
+        "Todas las rocas están juntas en un lugar pequeño."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "El primer párrafo señala el gran espacio vacío entre las rocas del cinturón."
+    },
+    {
+      "id": "r36-es-a2-02",
+      "tab": "club",
+      "kind": "mc",
+      "q": "¿Qué descubre Nina sobre los materiales de los asteroides?",
+      "choices": [
+        "Que están hechos solo de hielo.",
+        "Que todos tienen luz propia.",
+        "Que tienen siempre el mismo tamaño.",
+        "Que pueden contener roca o metal."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "En el primer párrafo, la profesora describe los asteroides como fragmentos de roca o metal."
+    },
+    {
+      "id": "r36-es-a2-03",
+      "tab": "club",
+      "kind": "mc",
+      "q": "¿Para qué observan los científicos varias veces el mismo objeto?",
+      "choices": [
+        "Para cambiar su movimiento con un ordenador.",
+        "Para demostrar que siempre llegará a la Tierra.",
+        "Para conocer mejor su recorrido futuro.",
+        "Para hacer fotografías sin ningún cálculo."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "El segundo párrafo relaciona nuevas observaciones con una órbita mejor calculada."
+    },
+    {
+      "id": "r36-es-a2-04",
+      "tab": "observar",
+      "kind": "mc",
+      "q": "¿Qué implica que una roca espacial pase cerca de la Tierra?",
+      "choices": [
+        "No significa necesariamente que vaya a chocar.",
+        "Significa que chocará en poco tiempo.",
+        "Demuestra que ya no gira alrededor del Sol.",
+        "Indica que los científicos han dejado de observarla."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "La profesora explica que cercanía no significa impacto."
+    },
+    {
+      "id": "r36-es-a2-05",
+      "tab": "observar",
+      "kind": "mc",
+      "q": "¿Por qué los ordenadores resultan útiles para los astrónomos?",
+      "choices": [
+        "Sirven principalmente para dar nombres a todas las rocas.",
+        "Permiten transformar una roca en metal.",
+        "Ayudan a estudiar las órbitas de los objetos.",
+        "Evitan tener que observar asteroides nuevos."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Los científicos usan ordenadores para estudiar las trayectorias."
+    },
+    {
+      "id": "r36-es-a2-06",
+      "tab": "observar",
+      "kind": "mc",
+      "q": "¿Qué mostró la prueba de DART?",
+      "choices": [
+        "Que una nave puede cambiar un poco el movimiento de una roca espacial.",
+        "Que todos los asteroides son peligrosos para la Tierra.",
+        "Que las rocas del cinturón están muy juntas.",
+        "Que la órbita de Dimorphos desapareció."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "El choque con Dimorphos modificó el tiempo de su órbita."
+    },
+    {
+      "id": "r36-es-a2-07",
+      "tab": "dart",
+      "kind": "mc",
+      "q": "¿Por qué le parece tan sorprendente a Nina la idea de DART?",
+      "choices": [
+        "Porque vio un asteroide con sus propios ojos.",
+        "Porque una nave puede dar un pequeño empujón a un objeto espacial.",
+        "Porque DART se convirtió en una luna natural.",
+        "Porque no hacen falta telescopios para investigar."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "El tercer párrafo presenta la posibilidad de cambiar ligeramente un movimiento."
+    },
+    {
+      "id": "r36-es-a2-08",
+      "tab": "dart",
+      "kind": "mc",
+      "q": "¿Cuál fue el objetivo de chocar deliberadamente con Dimorphos?",
+      "choices": [
+        "Construir un nuevo planeta cerca del Sol.",
+        "Destruir todas las rocas del cinturón.",
+        "Conseguir que los científicos dejen de observar el cielo.",
+        "Probar si una nave podía modificar su recorrido."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "DART realizó una prueba controlada de desviación."
+    },
+    {
+      "id": "r36-es-a2-09",
+      "tab": "dart",
+      "kind": "mc",
+      "q": "Un compañero se asusta por un asteroide cercano. ¿Qué dato sería útil?",
+      "choices": [
+        "Que todos los objetos cercanos provocan desastres.",
+        "Que estar cerca no demuestra que exista una colisión.",
+        "Que ninguna roca espacial se puede observar.",
+        "Que la Tierra nunca se encuentra cerca de asteroides."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "La distinción entre acercamiento y choque es central al segundo párrafo."
+    },
+    {
+      "id": "r36-es-a2-10",
+      "tab": "dart",
+      "kind": "mc",
+      "q": "¿Qué aprendizaje se lleva Nina a casa después del club?",
+      "choices": [
+        "Que los asteroides son imposibles de estudiar.",
+        "Que basta con conocer el nombre de cada roca.",
+        "Que observar el cielo no sirve para protegernos.",
+        "Que conocer los objetos es un primer paso para prevenir riesgos."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "La reflexión final de Nina une observación y protección de la Tierra."
+    }
+  ]
+}
