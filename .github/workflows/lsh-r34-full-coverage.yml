@@ -23,11 +23,12 @@ jobs:
         run: |
           node --check language-skills-hub/self-check/test-banks/candidate-core.js
           node --check language-skills-hub/tests/r34-full-coverage-contract.test.cjs
+          node --check language-skills-hub/tests/r34-review-matrix.test.cjs
           node --check language-skills-hub/self-check/test-banks/qa.js
           node --check language-skills-hub/self-check/test-banks/reading/preview.js
           node --check language-skills-hub/self-check/test-banks/listening/preview.js
           node --check language-skills-hub/tests/r34-candidate-preview.browser.test.cjs
-          node --test language-skills-hub/tests/r34-full-coverage-contract.test.cjs
+          node --test language-skills-hub/tests/r34-full-coverage-contract.test.cjs language-skills-hub/tests/r34-review-matrix.test.cjs
       - name: Keep R32, R33 and R31 regression contracts
         run: |
           node --test language-skills-hub/tests/r32-independent-reading-pilot.test.cjs language-skills-hub/tests/r33-independent-reading-b1.test.cjs
