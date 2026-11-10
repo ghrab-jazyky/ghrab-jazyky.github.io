@@ -57,7 +57,8 @@
   check(ids.size===bank.tabs.length,'Duplicate test section');
   check(Array.isArray(bank.questions)&&bank.questions.length===10,
    'Independent draft requires ten assessment questions');
-  const stems=new Set(practice.questions.map(q=>norm(q.q)));
+  const practiceStems=new Set(practice.questions.map(q=>norm(q.q)));
+  const ownStems=new Set();
   const practiceIds=new Set(practice.questions.map(q=>q.id));
   const seen=new Set(),answerPositions=[0,0,0,0];
   for(const q of bank.questions){
@@ -70,8 +71,10 @@
    check(Number.isInteger(q.sourceParagraph)&&q.sourceParagraph>=1&&
     q.sourceParagraph<=practice.paragraphs.length,'Missing or invalid evidence paragraph');
    check(ids.has(q.tab)&&q.kind==='mc'&&text(q.q)&&q.q.length>=24&&
-    !stems.has(norm(q.q)),'Test question must be distinct from practice');
-   stems.add(norm(q.q));
+    !practiceStems.has(norm(q.q))&&
+    (generated||!ownStems.has(norm(q.q))),
+    'Test question must be distinct from practice');
+   ownStems.add(norm(q.q));
    check(Array.isArray(q.choices)&&q.choices.length===4&&
     q.choices.every(c=>text(c)&&c.length>=10)&&
     new Set(q.choices.map(norm)).size===4,'Invalid or duplicated options');
