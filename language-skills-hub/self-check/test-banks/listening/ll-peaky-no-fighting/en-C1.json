@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-peaky-no-fighting",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d308736b8478",
+  "durationMinutesSuggested": 20,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "auditRevision": "R37-AUTHOR-DRAFT-1",
+  "notes": "Contains hostile dialogue and profanity. Require age-appropriate teacher supervision and direct recording check.",
+  "objective": [
+    {
+      "id": "r37-pk-c1-01",
+      "category": "interpretation",
+      "q": "Why is the speaker's demand for order rhetorically unstable?",
+      "options": [
+        "The others have formally accepted his authority",
+        "His instructions are too general to be understood",
+        "He has forgotten the reason for the meeting",
+        "His aggressive delivery contradicts the restraint he requires"
+      ],
+      "answer": 3,
+      "explanation": "The method of enforcing calm is itself threatening.",
+      "sourceEvidence": "He orders the men not to fight while escalating anger."
+    },
+    {
+      "id": "r37-pk-c1-02",
+      "category": "interpretation",
+      "q": "What does 'nevertheless' accomplish after the objection?",
+      "options": [
+        "It confirms that he is withdrawing the rule",
+        "It acknowledges resistance while keeping control of the discussion",
+        "It concedes that the ceremony cannot go ahead",
+        "It asks the objector to explain another proposal"
+      ],
+      "answer": 1,
+      "explanation": "The concessive marker recognises the protest but overrides it.",
+      "sourceEvidence": "He follows the uniform objection with 'Nevertheless'."
+    },
+    {
+      "id": "r37-pk-c1-03",
+      "category": "interpretation",
+      "q": "How does the 'snow' interruption work dramatically?",
+      "options": [
+        "An apparently mundane remark cuts across a threatening speech",
+        "It introduces an extended discussion about the weather",
+        "It removes all threat from the scene",
+        "It changes the ceremony into a formal debate"
+      ],
+      "answer": 0,
+      "explanation": "The incongruity interrupts the severe tone.",
+      "sourceEvidence": "A snow question diverts him into further prohibitions."
+    },
+    {
+      "id": "r37-pk-c1-04",
+      "category": "interpretation",
+      "q": "Why does the speaker invoke Grace's dignity?",
+      "options": [
+        "To explain that he has no authority over the men",
+        "To announce that she wrote all the rules",
+        "To turn compliance into a social and emotional obligation",
+        "To persuade her to speak to the gathering"
+      ],
+      "answer": 2,
+      "explanation": "He legitimises commands through concern for the bride.",
+      "sourceEvidence": "He frames good conduct as necessary to avoid embarrassing Grace."
+    },
+    {
+      "id": "r37-pk-c1-05",
+      "category": "interpretation",
+      "q": "What does the accumulation of prohibitions imply about the men?",
+      "options": [
+        "They have already confessed to every prohibited act",
+        "They understand the restrictions only when repeated",
+        "They have agreed in advance to observe strict rules",
+        "The speaker anticipates multiple forms of misbehaviour"
+      ],
+      "answer": 3,
+      "explanation": "The long list projects expectations of disorder.",
+      "sourceEvidence": "He rapidly names activities they must not do."
+    },
+    {
+      "id": "r37-pk-c1-06",
+      "category": "interpretation",
+      "q": "How might increasingly loud orders both establish and weaken authority?",
+      "options": [
+        "They show he can negotiate quietly if needed",
+        "They impose intimidation but may reveal anxiety about obedience",
+        "They prove that the men cannot hear the earlier rules",
+        "They transform the scene into a polite exchange"
+      ],
+      "answer": 1,
+      "explanation": "Rising volume can perform dominance and expose insecurity.",
+      "sourceEvidence": "He shouts the closing order repeatedly."
+    }
+  ],
+  "written": [
+    {
+      "id": "r37-pk-c1-w1",
+      "q": "Analyse how one interruption challenges the speaker's authority.",
+      "modelAnswer": "The question about snow changes the conversational focus and makes him respond rather than continue his intended warning.",
+      "teacherCriterion": "Identify an interruption, its effect on conversational control and an example.",
+      "sourceEvidence": "The men repeatedly interrupt his warnings."
+    },
+    {
+      "id": "r37-pk-c1-w2",
+      "q": "Is escalating loudness evidence of strength or insecurity? Present a supported interpretation.",
+      "modelAnswer": "It performs power but also suggests fear that the men may ignore him.",
+      "teacherCriterion": "Both an interpretation and a plausible counter-reading supported by the scene.",
+      "sourceEvidence": "The final warning is repeated more forcefully."
+    }
+  ]
+}
