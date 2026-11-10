@@ -43,10 +43,10 @@ test('Production and staging stores never mix local words',async()=>{
   assert.equal(prod.database,'lsh');
   assert.equal(stage.database,'lsh-test');
   await Promise.all([prod.open(),stage.open()]);
-  await stage.saveWord({language:'en',term:'staging-only',translationCs:'jen test',level:'A1'});
+  await stage.addManualWord({language:'en',term:'staging-only',translationCs:'jen test',level:'A1'});
   assert.equal((await stage.listWords()).length,1);
   assert.equal((await prod.listWords()).length,0);
-  await prod.saveWord({language:'en',term:'production-only',translationCs:'jen produkce',level:'A1'});
+  await prod.addManualWord({language:'en',term:'production-only',translationCs:'jen produkce',level:'A1'});
   assert.equal((await prod.listWords()).length,1);
   assert.equal((await stage.listWords()).length,1);
   const backup=await prod.exportWords();
