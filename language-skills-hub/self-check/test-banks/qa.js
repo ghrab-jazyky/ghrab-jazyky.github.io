@@ -10,6 +10,13 @@
  const el=(tag,txt)=>{const n=document.createElement(tag);if(txt!==undefined)n.textContent=txt;return n};
  async function fetchJson(url){const r=await fetch(url,{credentials:'omit',redirect:'error',cache:'no-store'});
   if(!r.ok)throw new Error(url+' HTTP '+r.status);return r.json()}
+ async function sha256(contents){
+  if(!window.crypto?.subtle||!window.TextEncoder)
+   throw new Error('Secure source integrity checks unavailable');
+  const bytes=new TextEncoder().encode(contents);
+  const hash=await window.crypto.subtle.digest('SHA-256',bytes);
+  return Array.from(new Uint8Array(hash),b=>b.toString(16).padStart(2,'0')).join('');
+ }
  function extract(html,name){
   const re=new RegExp('\\bconst\\s+'+name+'\\s*=\\s*\\{','g'),m=re.exec(html);
   if(!m)throw new Error('Source '+name+' not found');
@@ -90,14 +97,22 @@
    const {entry,lang,level,manual,bank}=active;
    const response=await fetch('../../'+entry.relative,{credentials:'omit',redirect:'error',cache:'no-store'});
    if(!response.ok)throw new Error('Original source HTTP '+response.status);
-   const original=extract(await response.text(),'DATA');
+   const sourceHtml=await response.text();
+   const actualHash=await sha256(sourceHtml);
+   if(actualHash!==manifest.contentHashes[entry.id])
+    throw new Error('Original text/audio task checksum mismatch – export blocked');
+   const original=extract(sourceHtml,'DATA');
    let body=manual?await fetchJson('reading/rl-can-mistakes/en-'+level+'.json'):bank;
+   if(!body||body.published!==false)
+    throw new Error('Draft bank missing or marked as published – export blocked');
    const practice=entry.skill==='cteni'?original[lang][level]:original[level];
    downloadJSON('lsh-claude-review-'+entry.id+'-'+lang+'-'+level+'.json',{
     kind:'LSH_R34_CLAUDE_REVIEW_PACKET_V1',stage:'NEVER_PUBLISH_UNREVIEWED',
     catalogId:entry.id,skill:entry.skill,language:lang,level,
     currentProductionVersion:manifest.version,
     sourceContentHash:manifest.contentHashes[entry.id],
+    sourceVerified:true,
+    approvedForStudents:false,
     provenance:manual?'human authored draft':entry.skill==='cteni'?'machine source-anchor seed':'assistant-authored new Listening draft; original audio and CEFR not independently audited',
     practice,proposedTest:body,
     requiredReview:['Grammar, CEFR and unambiguous answers','Genuine independence from practice','Plausible distractors and source evidence','Appropriate scope and duration','No leakage or privacy risk']
