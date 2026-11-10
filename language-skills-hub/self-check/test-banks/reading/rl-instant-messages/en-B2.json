@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "en",
+  "level": "B2",
+  "sourceVariantTitle": "Why Did That Message Sound Rude?",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "auditRevision": "R35-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "Original English B2 independent Reading draft with ten inference and transfer questions; requires later pedagogical review.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Reading Between the Lines",
+      "description": "Understand the role of missing context and expectations."
+    },
+    {
+      "id": "argument",
+      "title": "Evaluating the Examples",
+      "description": "Explain why misunderstandings happen and how they develop."
+    },
+    {
+      "id": "transfer",
+      "title": "Clearer Communication",
+      "description": "Choose practical responses in new situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-en-b2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why can 'OK.' seem unfriendly even when the sender is not upset?",
+      "choices": [
+        "The full stop always indicates anger in English.",
+        "The sender is required to add an emoji to every text.",
+        "The reader lacks the voice, expression and situation that would clarify the reply.",
+        "A one-word reply can only be written in a hurry."
+      ],
+      "answer": 2,
+      "explanation": "The article explains that missing social context can change the interpretation of text, and suggests clarification rather than assumptions."
+    },
+    {
+      "id": "r35-en-b2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why might an older relative and a younger friend understand the same punctuation differently?",
+      "choices": [
+        "Older relatives do not understand written grammar.",
+        "They may follow different expectations about how a short text should look.",
+        "Young people are unable to read a complete sentence.",
+        "They are necessarily using different messaging applications."
+      ],
+      "answer": 1,
+      "explanation": "The article explains that missing social context can change the interpretation of text, and suggests clarification rather than assumptions."
+    },
+    {
+      "id": "r35-en-b2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does the comparison between a fast and slow reply illustrate?",
+      "choices": [
+        "A slow response is more truthful than a quick one.",
+        "Teachers and employers usually respond faster than friends.",
+        "The sender's intentions change whenever the message is delayed.",
+        "Timing can influence the reader's interpretation even when the words stay the same."
+      ],
+      "answer": 3,
+      "explanation": "The article explains that missing social context can change the interpretation of text, and suggests clarification rather than assumptions."
+    },
+    {
+      "id": "r35-en-b2-04",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why does Marek's later question surprise Dana?",
+      "choices": [
+        "She had treated his agreement as disapproval and changed her plans.",
+        "She had never told Marek about the farewell present.",
+        "Marek had ordered a different photo book without telling anyone.",
+        "Their teacher had already received the planned gift."
+      ],
+      "answer": 0,
+      "explanation": "The article explains that missing social context can change the interpretation of text, and suggests clarification rather than assumptions."
+    },
+    {
+      "id": "r35-en-b2-05",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What does the writer achieve by stating that nobody was rude in the example?",
+      "choices": [
+        "The two students are shown to have identical views about the book.",
+        "Their delay is presented as a direct result of poor school rules.",
+        "The problem is shown as a mistaken interpretation rather than deliberate hostility.",
+        "The group's original plan is described as impossible to complete."
+      ],
+      "answer": 2,
+      "explanation": "The article explains that missing social context can change the interpretation of text, and suggests clarification rather than assumptions."
+    },
+    {
+      "id": "r35-en-b2-06",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does the writer reject making every message long and formal?",
+      "choices": [
+        "That change could feel unnatural and introduce new misunderstandings.",
+        "Long messages cannot be sent in group chats.",
+        "Formal writing always prevents friendly communication.",
+        "Students should avoid using full sentences altogether."
+      ],
+      "answer": 0,
+      "explanation": "The article explains that missing social context can change the interpretation of text, and suggests clarification rather than assumptions."
+    },
+    {
+      "id": "r35-en-b2-07",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What is the likely benefit of agreeing that a thumbs-up means 'seen, will answer later'?",
+      "choices": [
+        "The group can make decisions without ever discussing them.",
+        "Members have a shared explanation for a signal that might otherwise be unclear.",
+        "People no longer need to answer important questions.",
+        "The signal prevents anyone from changing their mind."
+      ],
+      "answer": 1,
+      "explanation": "The article explains that missing social context can change the interpretation of text, and suggests clarification rather than assumptions."
+    },
+    {
+      "id": "r35-en-b2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Your friend writes an unexpectedly short response about an upsetting event. What first step follows the article's advice?",
+      "choices": [
+        "Stop responding for several days to show that you are hurt.",
+        "Assume the person is rejecting your friendship.",
+        "Send the message to classmates and ask them to interpret it.",
+        "Ask whether you have understood the intended meaning before drawing conclusions."
+      ],
+      "answer": 3,
+      "explanation": "The article explains that missing social context can change the interpretation of text, and suggests clarification rather than assumptions."
+    },
+    {
+      "id": "r35-en-b2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A group must agree on tomorrow's event, but one student replies 'fine'. Which follow-up is most useful?",
+      "choices": [
+        "Avoid making a decision until the student adds an emoji.",
+        "Confirm explicitly that the student agrees with the proposed plan.",
+        "Choose a different event without asking anyone.",
+        "Interpret the shortest message as the strongest opposition."
+      ],
+      "answer": 1,
+      "explanation": "The article explains that missing social context can change the interpretation of text, and suggests clarification rather than assumptions."
+    },
+    {
+      "id": "r35-en-b2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "A disagreement keeps becoming more emotional through typed messages. Which response most closely fits the conclusion?",
+      "choices": [
+        "Add more punctuation to each reply until the other person agrees.",
+        "Continue texting because changing channels would appear old-fashioned.",
+        "Wait several days before asking whether anything is wrong.",
+        "Suggest a call or face-to-face discussion to restore missing context."
+      ],
+      "answer": 3,
+      "explanation": "The article explains that missing social context can change the interpretation of text, and suggests clarification rather than assumptions."
+    }
+  ]
+}
