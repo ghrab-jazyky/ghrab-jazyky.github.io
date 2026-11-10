@@ -80,8 +80,8 @@ test('R33 draft preview selects level from URL but never adds an approved studen
  assert.match(preview,/const level=params.get\('level'\)\|\|'B2'/);
  assert.match(preview,/en-'\+level\+'\.json/);
  assert.match(preview,/sourceHash\(originalHtml\)/);
- assert.match(preview,/manifest.contentHashes\['rl-can-mistakes'\]/);
- assert.match(preview,/reading\.variantFromData\(reading\.parseReadingData\(originalHtml\),'en',level\)/);
+ assert.match(preview,/manifest\.contentHashes\[topic\]/);
+ assert.match(preview,/reading\.variantFromData\(reading\.parseReadingData\(originalHtml\),lang,level\)/);
  assert.match(html,/UNAPPROVED DRAFT/);
  assert.doesNotMatch(read('index.html'),/r33-en-b1|test-banks\/reading/);
  assert.doesNotMatch(read('assets/hub.js'),/r33-en-b1|test-banks\/reading/);
