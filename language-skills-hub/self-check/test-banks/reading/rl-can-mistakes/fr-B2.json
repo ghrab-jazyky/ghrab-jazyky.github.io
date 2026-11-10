@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "fr",
+  "level": "B2",
+  "sourceTitle": "Quand les remarques ressemblent à un échec",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Independent B2 inference and feedback assessment; pedagogical validation pending.",
+  "tabs": [
+    {
+      "id": "sens",
+      "title": "Comprendre le message"
+    },
+    {
+      "id": "arguments",
+      "title": "Analyser le raisonnement"
+    },
+    {
+      "id": "application",
+      "title": "Mettre en pratique"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-fr-b2-01",
+      "tab": "sens",
+      "kind": "mc",
+      "q": "Pourquoi les bons élèves peuvent-ils mal recevoir une remarque constructive ?",
+      "choices": [
+        "Parce que les professeurs critiquent toujours leur intelligence.",
+        "Parce qu'ils peuvent prendre une remarque sur le travail pour un jugement personnel.",
+        "Parce qu'ils ne reçoivent jamais de conseils précis.",
+        "Parce qu'ils pensent que toute bonne note est inutile."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Le début du texte distingue les remarques sur une tâche et le jugement sur la personne."
+    },
+    {
+      "id": "r35-fr-b2-02",
+      "tab": "sens",
+      "kind": "mc",
+      "q": "Quelle conséquence peut avoir cette interprétation personnelle d'une critique ?",
+      "choices": [
+        "Elle permet de corriger immédiatement toutes les erreurs.",
+        "Elle conduit nécessairement à une nouvelle évaluation.",
+        "Elle empêche les enseignants de donner des explications.",
+        "Elle rend plus difficile l'utilisation d'un conseil pourtant utile."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Le premier paragraphe explique qu'une remarque utile peut devenir difficile à entendre."
+    },
+    {
+      "id": "r35-fr-b2-03",
+      "tab": "sens",
+      "kind": "mc",
+      "q": "Que révèle l'opposition entre deux réactions à une note décevante ?",
+      "choices": [
+        "Une mauvaise note prouve toujours une erreur de correction.",
+        "Un devoir doit être entièrement réécrit pour être utile.",
+        "Une même note peut conduire à des possibilités d'apprentissage différentes.",
+        "L'enseignant doit préférer une réaction calme à toute autre."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Dans le deuxième paragraphe, la note ne change pas, mais les conséquences pour l'avenir diffèrent."
+    },
+    {
+      "id": "r35-fr-b2-04",
+      "tab": "arguments",
+      "kind": "mc",
+      "q": "Pourquoi retravailler l'organisation d'une dissertation peut-il servir malgré la note inchangée ?",
+      "choices": [
+        "Cela peut améliorer le raisonnement dans un prochain devoir.",
+        "Cela oblige le professeur à réviser la note actuelle.",
+        "Cela supprime immédiatement la déception de l'élève.",
+        "Cela confirme que toutes les preuves étaient déjà suffisantes."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "L'élève peut préparer un meilleur devoir futur sans modifier la note précédente."
+    },
+    {
+      "id": "r35-fr-b2-05",
+      "tab": "arguments",
+      "kind": "mc",
+      "q": "Quelle réserve le troisième paragraphe apporte-t-il ?",
+      "choices": [
+        "Les remarques sont toujours inutiles lorsque la note est faible.",
+        "Les élèves doivent rejeter toute critique désagréable.",
+        "Les enseignants et les systèmes d'évaluation peuvent se tromper.",
+        "Les questions précises sont moins efficaces que le silence."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "L'auteur reconnaît que les enseignants peuvent mal comprendre un argument."
+    },
+    {
+      "id": "r35-fr-b2-06",
+      "tab": "arguments",
+      "kind": "mc",
+      "q": "Pourquoi une question ciblée sur le raisonnement est-elle préférable ?",
+      "choices": [
+        "Elle permet de situer précisément ce qui pose problème.",
+        "Elle prouve que la note initiale doit être augmentée.",
+        "Elle rend tout autre travail sur la rédaction inutile.",
+        "Elle oblige l'enseignant à accepter l'argument de l'élève."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Une question précise permet d'examiner la logique du texte et les preuves utilisées."
+    },
+    {
+      "id": "r35-fr-b2-07",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Un élève pense que le lien entre ses arguments est clair. Que devrait-il faire ?",
+      "choices": [
+        "Refuser toute remarque sans l'examiner.",
+        "Montrer les passages concernés et demander une précision.",
+        "Réécrire silencieusement tout le texte.",
+        "Considérer la note comme une preuve suffisante."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "L'auteur propose de vérifier si les preuves manquent ou si un lien a été mal compris."
+    },
+    {
+      "id": "r35-fr-b2-08",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Comment le dernier paragraphe envisage-t-il la déception ?",
+      "choices": [
+        "Il faut l'éliminer avant de réfléchir à une critique.",
+        "Se sentir blessé empêche toute progression.",
+        "Une remarque est utile seulement si elle fait plaisir.",
+        "On peut ressentir de la déception tout en examinant un conseil."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Le dernier paragraphe distingue l'émotion de la réflexion nécessaire à l'apprentissage."
+    },
+    {
+      "id": "r35-fr-b2-09",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Quelle idée traduit la distinction entre un résultat et l'identité ?",
+      "choices": [
+        "Une mauvaise note définit durablement les capacités de l'élève.",
+        "Un résultat ponctuel ne constitue pas un jugement permanent sur la personne.",
+        "Les notes doivent prendre en compte toutes les qualités personnelles.",
+        "L'identité dépend principalement de la réussite scolaire."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "L'auteur insiste sur la différence entre un rendement provisoire et l'identité."
+    },
+    {
+      "id": "r35-fr-b2-10",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Que signifie prendre une suggestion au sérieux sans l'appliquer aveuglément ?",
+      "choices": [
+        "La suivre toujours, même sans preuve.",
+        "L'ignorer dès qu'elle provoque une émotion désagréable.",
+        "Éviter toute discussion avec le professeur.",
+        "Examiner les arguments avant de choisir ce qui mérite d'être essayé."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Le texte invite à tester les suggestions plutôt qu'à les accepter ou à les rejeter immédiatement."
+    }
+  ]
+}
