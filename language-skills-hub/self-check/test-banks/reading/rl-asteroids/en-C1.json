@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "C1",
+  "sourceVariantTitle": "Watching the Sky, Interpreting the Odds",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "auditRevision": "R36-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "New English C1 asteroid Reading draft, ten source-grounded items, pending independent linguistic and pedagogical verification.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Qualified Claims",
+      "description": "Original independent assessment tasks; teacher content validation pending."
+    },
+    {
+      "id": "analysis",
+      "title": "Evidence and Engineering",
+      "description": "Original independent assessment tasks; teacher content validation pending."
+    },
+    {
+      "id": "application",
+      "title": "Public Decisions",
+      "description": "Original independent assessment tasks; teacher content validation pending."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-asteroids-en-c1-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What distinction does the author make between a hazardous asteroid and a near-Earth asteroid?",
+      "choices": [
+        "Near-Earth objects are defined by their brightness rather than their paths.",
+        "Only objects larger than Dimorphos can be classified as near-Earth.",
+        "Orbital proximity is a category of position, not proof of impact danger.",
+        "A hazardous asteroid must already be moving unpredictably."
+      ],
+      "answer": 2,
+      "explanation": "The answer is supported by paragraph 1 of the original C1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c1-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why can an apparently alarming rise in impact probability still be consistent with better science?",
+      "choices": [
+        "The object's physical orbit necessarily changes with each announcement.",
+        "The range of possible trajectories is changing as fresh evidence narrows it.",
+        "An increase shows that astronomers have abandoned mathematical modelling.",
+        "Every later estimate must be higher until the object is visible."
+      ],
+      "answer": 1,
+      "explanation": "The answer is supported by paragraph 2 of the original C1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c1-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "How do infrared observations complement ordinary optical searches?",
+      "choices": [
+        "They provide complete knowledge of all objects in the solar system.",
+        "They eliminate the need to compare images taken on different nights.",
+        "They change a faint asteroid into a brighter object.",
+        "They may reveal thermal emissions from bodies difficult to see in reflected light."
+      ],
+      "answer": 3,
+      "explanation": "The answer is supported by paragraph 2 of the original C1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c1-04",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What does the DART experiment leave uncertain about a future response to a different asteroid?",
+      "choices": [
+        "A successful strike does not specify the deflection produced by another target's structure.",
+        "It is not known whether the spacecraft reached Dimorphos at all.",
+        "The test was carried out after a real impact had already occurred.",
+        "The mission proved that warning time is irrelevant to any response."
+      ],
+      "answer": 0,
+      "explanation": "The answer is supported by paragraph 3 of the original C1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c1-05",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why did debris ejected by the DART collision matter?",
+      "choices": [
+        "It stopped astronomers from making any further measurements.",
+        "It proved that Dimorphos was an entirely solid boulder.",
+        "It contributed to the change in orbit beyond the spacecraft's own momentum.",
+        "It caused the asteroid to leave the solar system."
+      ],
+      "answer": 2,
+      "explanation": "The answer is supported by paragraph 4 of the original C1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c1-06",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why was the follow-up Hera mission scientifically useful?",
+      "choices": [
+        "It could investigate the target's material and the details of the measured response.",
+        "It was intended to repeat the same collision immediately.",
+        "It would remove the need for any future telescope surveys.",
+        "It was needed to give Dimorphos a new name."
+      ],
+      "answer": 0,
+      "explanation": "The answer is supported by paragraph 4 of the original C1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c1-07",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why may a small deflection made years before a possible impact be more useful than a dramatic last-minute action?",
+      "choices": [
+        "Asteroids are easier to see only after they have passed Earth.",
+        "A small early change can grow into a useful separation over time.",
+        "A last-minute spacecraft would always miss the asteroid.",
+        "An early warning automatically changes the asteroid's orbit."
+      ],
+      "answer": 1,
+      "explanation": "The answer is supported by paragraph 3 of the original C1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c1-08",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "A news report publishes a risk percentage but omits the date of the estimate. What is the key problem?",
+      "choices": [
+        "The article must use a more frightening photograph to gain attention.",
+        "Risk percentages are meaningless in all circumstances.",
+        "The date alone determines whether the object is dangerous.",
+        "Readers cannot assess the changing evidence and the estimate's uncertainty."
+      ],
+      "answer": 3,
+      "explanation": "The answer is supported by paragraph 5 of the original C1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c1-09",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why does the writer treat coordinated surveys and public explanations as part of planetary defence?",
+      "choices": [
+        "They are useful only after a deflection spacecraft has been launched.",
+        "They make proportionate decisions possible before a physical response is considered.",
+        "Their main purpose is to reduce public interest in science.",
+        "They guarantee that future estimates will never change."
+      ],
+      "answer": 1,
+      "explanation": "The answer is supported by paragraph 5 of the original C1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-c1-10",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Which communication policy is closest to the author's ideal?",
+      "choices": [
+        "Report only the highest risk estimate to avoid confusing the audience.",
+        "Avoid all discussion until every possible trajectory is excluded.",
+        "Describe every close approach as an emergency to attract resources.",
+        "Explain revisions openly while acknowledging both uncertainty and the value of preparation."
+      ],
+      "answer": 3,
+      "explanation": "The answer is supported by paragraph 5 of the original C1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    }
+  ]
+}
