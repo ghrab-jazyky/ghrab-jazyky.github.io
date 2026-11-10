@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "es",
+  "level": "B1",
+  "sourceTitle": "Mi semana sin mensajería instantánea",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Diez preguntas originales de comprensión, inferencia y aplicación; borrador pendiente de auditoría pedagógica.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Comprensión"
+    },
+    {
+      "id": "reasoning",
+      "title": "Relaciones y motivos"
+    },
+    {
+      "id": "transfer",
+      "title": "Aplicación"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-es-b1-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué hace que el reto sea una prueba específica de hábitos digitales?",
+      "choices": [
+        "Prohíbe los chats, pero permite llamadas y correos.",
+        "Impide que los alumnos hablen durante una semana.",
+        "Obliga a dejar todos los dispositivos en casa.",
+        "Prohíbe utilizar materiales digitales de clase."
+      ],
+      "answer": 0,
+      "explanation": "La profesora limita la mensajería, no todas las formas de comunicación."
+    },
+    {
+      "id": "r41-es-b1-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué demuestra que el narrador mire el móvil sin mensajes nuevos?",
+      "choices": [
+        "El entrenador le ha enviado cuarenta llamadas.",
+        "Está acostumbrado a comprobarlo automáticamente.",
+        "Su teléfono deja de funcionar por completo.",
+        "La profesora exige revisar grupos cada hora."
+      ],
+      "answer": 1,
+      "explanation": "El gesto repetido aparece incluso cuando no puede recibir mensajes nuevos."
+    },
+    {
+      "id": "r41-es-b1-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Por qué sorprende tanto a Karim la llamada?",
+      "choices": [
+        "Olvida quién juega en el equipo.",
+        "No reconoce la voz del narrador.",
+        "Piensa que una llamada inesperada puede indicar un problema.",
+        "Cree que deben hablar veinte minutos."
+      ],
+      "answer": 2,
+      "explanation": "Karim interpreta una llamada poco habitual como posible señal de alarma."
+    },
+    {
+      "id": "r41-es-b1-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué aprende el narrador al comparar una llamada con un chat largo?",
+      "choices": [
+        "Todos los chats tardan siempre varios días.",
+        "Nadie debería hablar de fútbol por mensajes.",
+        "Las llamadas no sirven para asuntos prácticos.",
+        "Una conversación directa puede resolver una duda con rapidez."
+      ],
+      "answer": 3,
+      "explanation": "Dos minutos de llamada sustituyen numerosos mensajes sobre el entrenamiento."
+    },
+    {
+      "id": "r41-es-b1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "¿Qué problema revela el cambio de lugar de la reunión?",
+      "choices": [
+        "La biblioteca está cerrada toda la semana.",
+        "Quien no lee el chat puede perder un aviso importante.",
+        "Los alumnos no saben preparar un trabajo de historia.",
+        "Las reuniones de grupo deben hacerse en cafeterías."
+      ],
+      "answer": 1,
+      "explanation": "El narrador se entera del cambio cuando ya está en la biblioteca vacía."
+    },
+    {
+      "id": "r41-es-b1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "¿Por qué vuelve a instalar las aplicaciones pero cambia sus ajustes?",
+      "choices": [
+        "La profesora le obliga a leer todos los mensajes.",
+        "Sus amigos dejan de utilizar los teléfonos.",
+        "El reto demuestra que todos los chats son peligrosos.",
+        "Busca controlar su uso en vez de prohibirlo totalmente."
+      ],
+      "answer": 3,
+      "explanation": "Al final mantiene las aplicaciones, pero desactiva avisos y llama más."
+    },
+    {
+      "id": "r41-es-b1-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Necesitas una respuesta rápida de un compañero. ¿Qué harías siguiendo el ejemplo?",
+      "choices": [
+        "Llamarlo brevemente en lugar de iniciar veinte mensajes.",
+        "Enviar la misma pregunta una y otra vez.",
+        "Esperar a que escriba todo el grupo.",
+        "No preguntar porque llamar es extraño."
+      ],
+      "answer": 0,
+      "explanation": "La llamada a Karim sirve como ejemplo de comunicación eficiente."
+    },
+    {
+      "id": "r41-es-b1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Un grupo cambia el aula cuando un miembro está desconectado. ¿Qué mejoraría la coordinación?",
+      "choices": [
+        "Suponer que todos revisan mensajes continuamente.",
+        "No cambiar nunca ningún plan aunque sea necesario.",
+        "Acordar otra manera de avisar de cambios urgentes.",
+        "Avisar solo después de la reunión."
+      ],
+      "answer": 2,
+      "explanation": "El malentendido muestra el límite de depender de un solo canal."
+    },
+    {
+      "id": "r41-es-b1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Una alumna se siente obligada a responder todas las alertas. ¿Qué podría probar?",
+      "choices": [
+        "Borrar el contacto de todos sus amigos.",
+        "Silenciar grupos poco urgentes y elegir cuándo contestar.",
+        "Revisar el móvil cada dos minutos.",
+        "Dejar de hablar con su familia."
+      ],
+      "answer": 1,
+      "explanation": "El narrador decide qué notificaciones necesita mantener."
+    },
+    {
+      "id": "r41-es-b1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "¿Qué conclusión sería justa sobre la experiencia?",
+      "choices": [
+        "Los mensajes instantáneos siempre son malos.",
+        "Las llamadas deben sustituir cualquier correo.",
+        "Una semana demuestra que las amistades digitales no existen.",
+        "Distintas situaciones pueden necesitar distintos medios de contacto."
+      ],
+      "answer": 3,
+      "explanation": "La reflexión final propone elegir cómo y cuándo comunicarse."
+    }
+  ]
+}
