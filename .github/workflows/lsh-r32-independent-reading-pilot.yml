@@ -1,10 +1,11 @@
 name: LSH R32 independent Reading B2 reference – draft QA
 on:
-  push:
-    branches: [feat/lsh-r32-reading-independent-test-pilot-2026-11-10]
   pull_request:
     branches: [main]
   workflow_dispatch:
+concurrency:
+  group: lsh-r32-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
