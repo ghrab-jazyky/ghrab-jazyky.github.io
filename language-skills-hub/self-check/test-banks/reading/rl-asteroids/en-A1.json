@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "A1",
+  "sourceVariantTitle": "Space Rocks Around the Sun",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "auditRevision": "R36-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "New English A1 asteroid Reading draft, ten source-grounded items, pending independent linguistic and pedagogical verification.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Space Basics",
+      "description": "Original independent assessment tasks; teacher content validation pending."
+    },
+    {
+      "id": "analysis",
+      "title": "Learning About Asteroids",
+      "description": "Original independent assessment tasks; teacher content validation pending."
+    },
+    {
+      "id": "application",
+      "title": "What Would You Do?",
+      "description": "Original independent assessment tasks; teacher content validation pending."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-asteroids-en-a1-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "A student says an asteroid is a star. What is the best correction?",
+      "choices": [
+        "A star is always smaller than a car.",
+        "Every asteroid has its own bright light.",
+        "An asteroid is a space rock, not a star.",
+        "Asteroids stay in one place in the sky."
+      ],
+      "answer": 2,
+      "explanation": "The answer is supported by paragraph 1 of the original A1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a1-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why can two asteroids look very different in size?",
+      "choices": [
+        "All asteroids are bigger than Earth.",
+        "Some are small, while others are very large.",
+        "All asteroids are the same size.",
+        "An asteroid grows whenever it moves."
+      ],
+      "answer": 1,
+      "explanation": "The answer is supported by paragraph 1 of the original A1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a1-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why do scientists take more than one picture of a space rock?",
+      "choices": [
+        "They need to make the rock brighter.",
+        "The same photo cannot be saved.",
+        "They want to move the rock themselves.",
+        "They can watch where the object goes."
+      ],
+      "answer": 3,
+      "explanation": "The answer is supported by paragraph 2 of the original A1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a1-04",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "You want to see an asteroid that is very far away. What would help?",
+      "choices": [
+        "A large telescope can show distant objects.",
+        "A book about the weather is enough.",
+        "You must wait for the rock to land.",
+        "You need to go to a museum first."
+      ],
+      "answer": 0,
+      "explanation": "The answer is supported by paragraph 2 of the original A1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a1-05",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "How is Ceres different from many other asteroids?",
+      "choices": [
+        "It is the only object near Mars.",
+        "It makes its own light.",
+        "It is round, while many others have uneven shapes.",
+        "It travels through the ocean."
+      ],
+      "answer": 2,
+      "explanation": "The answer is supported by paragraph 3 of the original A1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a1-06",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why might a museum show a very old meteorite?",
+      "choices": [
+        "It is a piece of space rock that reached Earth.",
+        "It is a star that has stopped shining.",
+        "It is a picture taken by a telescope.",
+        "It is a new rock made in a laboratory."
+      ],
+      "answer": 0,
+      "explanation": "The answer is supported by paragraph 3 of the original A1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a1-07",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A small rock enters the air around Earth but never reaches the ground. What probably happens?",
+      "choices": [
+        "It becomes a new planet.",
+        "It burns up while moving through the air.",
+        "It stops moving around the Sun forever.",
+        "It turns into a large moon."
+      ],
+      "answer": 1,
+      "explanation": "The answer is supported by paragraph 4 of the original A1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a1-08",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why do scientists watch the sky even when very big hits are rare?",
+      "choices": [
+        "They know a big rock will land tomorrow.",
+        "They want to stop the Sun from moving.",
+        "They can see every space rock without a telescope.",
+        "They want to learn more and help keep people safe."
+      ],
+      "answer": 3,
+      "explanation": "The answer is supported by paragraph 4 of the original A1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a1-09",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Two space rocks follow different paths. What word describes these paths?",
+      "choices": [
+        "Telescopes are paths used by scientists.",
+        "Orbits are the paths objects follow around the Sun.",
+        "Meteorites are roads between planets.",
+        "Stars are the names of all space paths."
+      ],
+      "answer": 1,
+      "explanation": "The answer is supported by paragraph 2 of the original A1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    },
+    {
+      "id": "r36-asteroids-en-a1-10",
+      "tab": "application",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "After reading about asteroids, what is a useful next step for a student?",
+      "choices": [
+        "Assume every space rock is dangerous.",
+        "Stop learning because the sky is too far away.",
+        "Call every light in the sky an asteroid.",
+        "Look at the night sky and ask questions about space."
+      ],
+      "answer": 3,
+      "explanation": "The answer is supported by paragraph 4 of the original A1 reading passage; other choices exaggerate or contradict the described evidence or its implications."
+    }
+  ]
+}
