@@ -14,15 +14,18 @@
    'Invalid pilot test-bank format');
   check(bank.status===STATUS&&bank.published===false,
    'R32 content cannot be published without teacher approval');
-  const permittedLevels={B1:{prefix:'r33',audit:'R33-CONTENT-AUDIT-1'},
-   B2:{prefix:'r32',audit:'R32-CONTENT-AUDIT-1'}};
+  const permittedLevels={
+   B1:{prefix:'r33',audit:'R33-CONTENT-AUDIT-1',title:'The Problem with Being Good at Everything'},
+   B2:{prefix:'r32',audit:'R32-CONTENT-AUDIT-1',title:'When Feedback Feels Like Failure'}
+  };
   const rules=permittedLevels[bank.level];
   check(bank.topic==='rl-can-mistakes'&&bank.language==='en'&&!!rules,
    'This draft validator supports only Can Mistakes EN/B1 and EN/B2');
   check(/^[a-f0-9]{64}$/.test(expectedSourceHash)&&
    bank.sourcePracticeContentHash===expectedSourceHash,'The practice source has changed');
-  check(practice&&Array.isArray(practice.paragraphs)&&practice.paragraphs.length>=3&&
-   Array.isArray(practice.questions),'Missing validated original passage');
+  check(practice&&practice.title===rules.title&&Array.isArray(practice.paragraphs)&&
+   practice.paragraphs.length>=3&&Array.isArray(practice.questions),
+   'Practice source does not match this bank level and passage');
   check(Array.isArray(bank.tabs)&&bank.tabs.length===3&&
    bank.tabs.every(t=>text(t.id)&&text(t.title)&&/^[a-z][a-z0-9-]+$/.test(t.id)),
    'Invalid pilot test sections');
