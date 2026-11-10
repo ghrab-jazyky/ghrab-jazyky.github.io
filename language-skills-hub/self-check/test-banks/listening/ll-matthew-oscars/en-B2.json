@@ -1,0 +1,102 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R37_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-matthew-oscars",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
+  "durationMinutesSuggested": 20,
+  "listeningPasses": 2,
+  "scoreRule": "1 point per automatically scored item or sequence position, and 1 point per teacher-reviewed written response; unverified local proposal",
+  "auditRevision": "R38-AUTHOR-DRAFT-1",
+  "description": "Original shorter EN/B2 independent Listening assessment draft. Teacher review is required before any use.",
+  "variant": {
+    "goal": "Understand how a public acceptance speech develops personal gratitude, family influences and ideas about continuing growth.",
+    "gist": [
+      {
+        "title": "Which broader idea links the speaker's award to his personal reflections?",
+        "type": "single",
+        "options": [
+          "Success is mainly a result of competition.",
+          "Public awards should replace personal goals.",
+          "Recognition becomes an occasion to reflect on gratitude and growth.",
+          "The audience should judge a career by its most famous role."
+        ],
+        "correct": 2,
+        "why": "He uses the award as a starting point for broader thanks and self-reflection."
+      },
+      {
+        "title": "What effect does the speaker's movement between humour and seriousness have?",
+        "type": "single",
+        "options": [
+          "It makes personal beliefs approachable while retaining their emotional weight.",
+          "It removes the need to discuss any difficult experiences.",
+          "It suggests that the speaker cannot decide whom to thank.",
+          "It turns the speech into a criticism of the other nominees."
+        ],
+        "correct": 0,
+        "why": "His family anecdotes and thoughtful reflections work together rather than cancelling each other."
+      }
+    ],
+    "detail": [
+      {
+        "title": "Why does the speaker mention respected fellow nominees?",
+        "type": "single",
+        "options": [
+          "To explain how the voting system works.",
+          "To contrast his own achievement with younger actors.",
+          "To ask the audience to award them prizes later.",
+          "To acknowledge that the occasion celebrates work beyond his own."
+        ],
+        "correct": 3,
+        "why": "He directs attention to others instead of treating recognition as only personal."
+      },
+      {
+        "title": "How is gratitude presented as more than a formal expression?",
+        "type": "single",
+        "options": [
+          "As something that becomes unnecessary after success.",
+          "As a way of recognising what one receives and influencing how one acts.",
+          "As proof that individual effort does not matter.",
+          "As a requirement to praise every person equally."
+        ],
+        "correct": 1,
+        "why": "His language about being thankful connects appreciation with a continuing response."
+      },
+      {
+        "title": "Why is the story about a future version of himself significant?",
+        "type": "single",
+        "options": [
+          "It gives the audience an exact plan for the next ten years.",
+          "It suggests that goals should remain the same throughout life.",
+          "It presents self-development as an ongoing process rather than a finished state.",
+          "It demonstrates that his childhood ambitions have all been forgotten."
+        ],
+        "correct": 2,
+        "why": "He keeps the person he wishes to become ahead of his present self."
+      }
+    ],
+    "sequence": [
+      "He begins by recognising other people on the night.",
+      "He connects his personal values to family memories.",
+      "He finishes by returning to a personal message about his direction in life."
+    ],
+    "facts": [
+      {
+        "title": "Name one family member whose influence the speaker discusses.",
+        "answer": "His father or his mother.",
+        "criteria": "Accept father or mother; assess meaning, not exact wording.",
+        "kind": "fact"
+      }
+    ],
+    "open": [
+      {
+        "title": "Explain how an example from the speech makes gratitude more personal than a simple list of names.",
+        "answer": "His memories of family or specific colleagues connect gratitude with lived experiences rather than formal acknowledgements.",
+        "criteria": "Give one identifiable personal anecdote plus a clear explanation of its emotional or rhetorical effect.",
+        "kind": "open"
+      }
+    ]
+  }
+}
