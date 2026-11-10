@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "de",
+  "level": "C1",
+  "sourceTitle": "Den Himmel beobachten, Risiken verstehen",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R37-CONTENT-AUDIT-1",
+  "description": "Original independent C1 evidence-based astronomical-risk argument test, pending review",
+  "tabs": [
+    {
+      "id": "nuancen",
+      "title": "Wissenschaftliche Nuancen"
+    },
+    {
+      "id": "argumente",
+      "title": "Argumente prüfen"
+    },
+    {
+      "id": "folgen",
+      "title": "Folgerungen ziehen"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r37-de-c1-01",
+      "tab": "nuancen",
+      "kind": "mc",
+      "q": "Warum rechtfertigt das Etikett „erdnah“ allein noch keinen Gefahrenalarm?",
+      "choices": [
+        "Weil es nur für Asteroiden aus Metall gilt.",
+        "Weil es die Bahn beschreibt, nicht einen vorhergesagten Einschlag.",
+        "Weil jedes dieser Objekte bereits vollständig erforscht wurde.",
+        "Weil solche Körper grundsätzlich unsichtbar bleiben."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Der erste Absatz unterscheidet die geometrische Kategorie von einer unmittelbaren Gefahrenaussage."
+    },
+    {
+      "id": "r37-de-c1-02",
+      "tab": "nuancen",
+      "kind": "mc",
+      "q": "Was ist an einer zu selbstsicheren Schlagzeile zu einem entfernten Asteroiden problematisch?",
+      "choices": [
+        "Sie enthält zu viele wissenschaftliche Einzelheiten.",
+        "Sie beschreibt ausschließlich die Entstehung des Sonnensystems.",
+        "Sie macht eine Messung im Nachhinein unmöglich.",
+        "Sie suggeriert mehr Gewissheit, als die verfügbaren Daten erlauben."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Der Text kritisiert Meldungen, deren Aussage stärker ist als die wissenschaftliche Evidenz."
+    },
+    {
+      "id": "r37-de-c1-03",
+      "tab": "nuancen",
+      "kind": "mc",
+      "q": "Warum sind nach den ersten Beobachtungen häufig mehrere zukünftige Bahnen denkbar?",
+      "choices": [
+        "Weil Asteroiden ihre Zusammensetzung jede Nacht ändern.",
+        "Weil Umlaufbahnen keinen physikalischen Regeln folgen.",
+        "Weil zunächst nur ein kleiner Abschnitt der Bahn gemessen wurde.",
+        "Weil Infrarotgeräte die optischen Aufnahmen verändern."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Ein kurzer beobachteter Bahnbogen kann zu mehreren passenden Flugbahnen führen."
+    },
+    {
+      "id": "r37-de-c1-04",
+      "tab": "argumente",
+      "kind": "mc",
+      "q": "Welche zusätzliche Information bieten Infrarotgeräte?",
+      "choices": [
+        "Wärmestrahlung von Körpern, die optisch schwer erkennbar sind.",
+        "Eine sofortige Lösung aller Unsicherheiten.",
+        "Eine Möglichkeit, Bahnrechnungen vollständig zu vermeiden.",
+        "Nur bessere Bilder sehr heller Objekte."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Absatz zwei erklärt die ergänzende Beobachtung über Wärmestrahlung."
+    },
+    {
+      "id": "r37-de-c1-05",
+      "tab": "argumente",
+      "kind": "mc",
+      "q": "Wie lässt sich ein vorübergehender Anstieg einer Risikoschätzung erklären?",
+      "choices": [
+        "Der Asteroid entscheidet sich für eine andere Flugrichtung.",
+        "Die ersten Beobachtungen müssen bewusst falsch gewesen sein.",
+        "Neue Daten können die Menge möglicher Bahnen verändern.",
+        "Alle wissenschaftlichen Unsicherheiten sind damit beseitigt."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Zusätzliche Messungen schränken plausible Bahnen ein und können Schätzungen zeitweise erhöhen."
+    },
+    {
+      "id": "r37-de-c1-06",
+      "tab": "argumente",
+      "kind": "mc",
+      "q": "Was belegt der DART-Versuch in erster Linie?",
+      "choices": [
+        "Ein Impuls kann die Umlaufbahn unter den erprobten Bedingungen beeinflussen.",
+        "Eine einzige Sonde bietet Schutz vor jedem Einschlag.",
+        "Die innere Struktur spielt bei einer Ablenkung keine Rolle.",
+        "Die Erde befand sich während der Mission in unmittelbarer Gefahr."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Der Versuch zeigte unter realen Bedingungen eine durch Impulsübertragung veränderte Bahn."
+    },
+    {
+      "id": "r37-de-c1-07",
+      "tab": "argumente",
+      "kind": "mc",
+      "q": "Warum könnte eine geringe frühzeitige Ablenkung wirkungsvoller sein als ein später großer Eingriff?",
+      "choices": [
+        "Weil danach nie wieder Messungen notwendig wären.",
+        "Weil die Bahnabweichung über einen längeren Zeitraum wirken kann.",
+        "Weil sich die Masse des Asteroiden automatisch verringert.",
+        "Weil man damit die genaue Zusammensetzung ohne Untersuchung erfährt."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Der dritte Absatz betont den Vorteil einer langen Vorwarnzeit."
+    },
+    {
+      "id": "r37-de-c1-08",
+      "tab": "folgen",
+      "kind": "mc",
+      "q": "Wie muss man den Erfolg einer möglichen Ablenkungsmission überprüfen?",
+      "choices": [
+        "Eine eindrucksvolle Aufnahme des Einschlags genügt.",
+        "Man kann künftig auf Bahnberechnungen verzichten.",
+        "Eine Bestätigung durch andere Messungen ist unnötig.",
+        "Die tatsächliche neue Flugbahn muss erneut und unabhängig gemessen werden."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Der Text verlangt die Kontrolle des realen Ergebnisses nach dem Eingriff."
+    },
+    {
+      "id": "r37-de-c1-09",
+      "tab": "folgen",
+      "kind": "mc",
+      "q": "Welche zwei gegensätzlichen Kommunikationsfehler erwähnt der Text?",
+      "choices": [
+        "Teleskope zu fördern und auf Raumsonden zu verzichten.",
+        "Über Daten auszutauschen und gleichzeitig Fragen zuzulassen.",
+        "Jede Annäherung als Krise darzustellen oder seltene Gefahren zu verharmlosen.",
+        "Alle Unsicherheiten offen zu benennen und weitere Beobachtungen zu erklären."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Der Schluss kritisiert sowohl Panik als auch unbegründete Gleichgültigkeit."
+    },
+    {
+      "id": "r37-de-c1-10",
+      "tab": "folgen",
+      "kind": "mc",
+      "q": "Wodurch lässt sich laut Schlussfolgerung öffentliches Vertrauen stärken?",
+      "choices": [
+        "Durch nachvollziehbar begründete Korrekturen wissenschaftlicher Prognosen.",
+        "Durch das Versprechen, nie eine Zahl ändern zu müssen.",
+        "Durch Nachrichten ohne Erklärung der Messgrundlage.",
+        "Durch Schweigen über vorläufige Risiken."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Die offene Begründung geänderter Berechnungen bildet eine Grundlage für Vertrauen."
+    }
+  ]
+}
