@@ -153,7 +153,7 @@
    reading.validateVariant(variant);
    $('title').textContent=practice.title;
    document.documentElement.lang=lang;
-   document.title='Reading '+topic+' '+lang.toUpperCase()+'/'+level+' – unapproved QA';
+   document.title='Independent Reading '+level+' · '+topic+' / '+lang.toUpperCase()+' – unapproved QA';
    document.querySelector('.subtitle').textContent=entry.title+' · '+lang.toUpperCase()+'/'+level+
     ' · 10 draft questions · '+timer+' minutes';
    document.querySelector('.mode').textContent='UNAPPROVED DRAFT · '+lang.toUpperCase()+'/'+level;
