@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="cs" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; font-src 'self'; img-src 'self'; form-action 'none'; frame-ancestors 'none'">
+<title>Language Skills Hub – obsahová přejímka 138 variant (R34 DRAFT)</title>
+<link rel="stylesheet" href="../reading/reading.css">
+<link rel="stylesheet" href="qa.css">
+<script defer src="qa.js"></script>
+</head>
+<body>
+<header class="topbar">
+<a class="brand" href="../../index.html"><span class="mark">Q</span><span><strong>Language Skills Hub</strong><small>R34 · Content QA dashboard · pouze pracovní větev</small></span></a>
+<span class="mode">NEOVĚŘENÝ OBSAH · NEPUBLIKOVAT</span>
+</header>
+<main class="container">
+<section class="hero">
+<p class="eyebrow">CONTENT PRODUCTION · CLAUDE HANDOFF</p>
+<h1>Kontrola všech variant Reading & Listening</h1>
+<p class="subtitle">Přehled 120 variant Reading a 18 variant Listening. Studenti tuto stránku v ostrém katalogu neuvidí.</p>
+<div class="notice r34-danger"><strong>NEJDE O HOTOVÉ TESTY.</strong> Většina Reading otázek je strojově vytvořený podklad s povrchovým dohledáváním detailů; Listening obsahuje výběrové osnovy z practice. Vše vyžaduje přepracování a nezávislé schválení. Žádné veřejné testové odkazy nerozesílat.</div>
+</section>
+<section class="panel r34-panel" aria-labelledby="chooseHeading">
+<div class="panel-head"><div><span class="kicker">JEDNA KONKRÉTNÍ VARIANTA</span><h2 id="chooseHeading">Připravit obsah k auditu</h2></div></div>
+<div class="r34-controls">
+<label for="skill">Dovednost<select id="skill"><option value="cteni">Reading</option><option value="poslech">Listening</option></select></label>
+<label for="topic">Téma<select id="topic"></select></label>
+<label for="language">Jazyk<select id="language"></select></label>
+<label for="level">Úroveň CEFR<select id="level"></select></label>
+</div>
+<p id="selectedStatus" class="small-note" role="status" aria-live="polite">Načítání schémat a variant…</p>
+<div class="r34-actions">
+<a href="#" id="previewLink" class="action primary" target="_blank" rel="noopener noreferrer" aria-disabled="true">Otevřít pracovní náhled</a>
+<button class="action ghost" type="button" id="copyLink">Kopírovat QA odkaz</button>
+<button class="action ghost" type="button" id="downloadPacket">Stáhnout podklady pro Clauda (JSON)</button>
+</div>
+<p id="shareStatus" class="small-note" aria-live="polite"></p>
+</section>
+<section class="panel r34-panel" aria-labelledby="coverageTitle">
+<div class="panel-head"><div><span class="kicker">POKRYTÍ & BLOKACE PUBLIKACE</span><h2 id="coverageTitle">Stav obsahových sad</h2></div></div>
+<div id="stats" class="r34-stats" aria-live="polite"></div>
+<div class="r34-scroll"><table class="r34-table"><thead><tr><th scope="col">Téma</th><th scope="col">Varianty</th><th scope="col">Stav</th></tr></thead><tbody id="coverageRows"></tbody></table></div>
+<p class="small-note">Záznam „kandidát“ znamená pouze datový podklad. Automatický test může ověřit strukturu, kontrolní součet a bodovací klíč; nikoli jazykovou a didaktickou správnost.</p>
+</section>
+<section class="panel r34-panel">
+<h2>Podmínky následného schválení</h2>
+<p>Claude: audit všech otázek, úrovní A1–C2, jazykové správnosti EN/ES/DE/FR, věrohodnosti distraktorů a nezávislosti na practice. U Listening navrhnout skutečně nové úlohy při zachování dvou přehrání a ruční kontroly písemných odpovědí. Učitel schvaluje až následně jednotlivé varianty.</p>
+<p><strong>Bez serveru nelze bezpečně utajit správné odpovědi nebo garantovat pravost výsledku.</strong> Po schválení lze použít pouze lokální dohledový režim; pro zabezpečenou klasifikaci je vhodný GIT.</p>
+</section>
+</main>
+<footer class="footer">R34 QA DRAFT · žádné studentské účty, žádná telemetrie ani publikace testových bank</footer>
+</body>
+</html>
