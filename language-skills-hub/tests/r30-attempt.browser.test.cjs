@@ -21,6 +21,16 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#workspace:not([hidden])').waitFor();
    assert.match(await page.locator('#timeRemaining').textContent(),/Time remaining: 0[45]:/);
    await page.locator('fieldset.question').first().locator('input').first().check();
+   assert.match(page.url(),/#lsh_session=[a-f0-9]{24}$/);
+   const other=await context.newPage();
+   await other.goto(url.href);
+   await other.locator('#sessionIntro:not([hidden])').waitFor();
+   assert.match(other.url(),/#lsh_session=[a-f0-9]{24}$/);
+   assert.notEqual(other.url(),page.url(),'Two pupils using one QR on the same browser require separate local attempts');
+   await other.locator('#sessionStart').click();
+   await other.locator('#workspace:not([hidden])').waitFor();
+   assert.equal(await other.locator('fieldset.question').first().locator('input').first().isChecked(),false);
+   await other.close();
    await page.reload();
    await page.locator('#workspace:not([hidden])').waitFor();
    assert.equal(await page.locator('fieldset.question').first().locator('input').first().isChecked(),true);
@@ -41,6 +51,11 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.reload();
    await page.locator('#results:not([hidden])').waitFor();
    assert.equal(await page.locator('#submitButton').isDisabled(),true);
+   await page.locator('#sessionErase').click();
+   assert.equal(await page.locator('#results').isHidden(),true);
+   assert.match(await page.locator('#timeRemaining').textContent(),/Local answers erased/);
+   await page.reload();
+   await page.locator('#sessionIntro:not([hidden])').waitFor();
    assert.deepEqual(errors,[]);assert.deepEqual(writes,[]);
    await context.close();
   }finally{await browser.close()}
