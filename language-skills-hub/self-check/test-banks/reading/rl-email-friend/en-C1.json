@@ -36,12 +36,12 @@
       "kind": "mc",
       "q": "What does Mara's reluctance to begin with a conventional apology reveal?",
       "choices": [
+        "She believes Jules has misunderstood the nature of her work.",
         "She wants to avoid describing any events in Bristol.",
         "She recognises that her silence involved choices, not merely a lack of time.",
-        "She considers social-media photographs a reliable substitute for friendship.",
-        "She believes Jules has misunderstood the nature of her work."
+        "She considers social-media photographs a reliable substitute for friendship."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Mara rejects the easy excuse of busyness and acknowledges her role in their superficial contact."
     },
     {
@@ -51,12 +51,12 @@
       "kind": "mc",
       "q": "What larger principle connects the retired nurse's memories and the contributor who refuses recording?",
       "choices": [
+        "Respectful listening does not require people to fit a tidy public narrative.",
         "All contributions should be preserved as audio rather than written accounts.",
         "Historical arguments are more authentic than peaceful memories.",
-        "Archives should accept only stories that have a clear conclusion.",
-        "Respectful listening does not require people to fit a tidy public narrative."
+        "Archives should accept only stories that have a clear conclusion."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The archive values contradictory recollections and honours different boundaries about recording."
     },
     {
@@ -66,12 +66,12 @@
       "kind": "mc",
       "q": "Why does the elderly man's account lead Mara to reconsider how she listens to friends?",
       "choices": [
+        "It reminds Mara that old shops often hold valuable records.",
         "It proves that advice is rarely correct for people who have lost someone.",
         "It shows that photographs preserve a place better than spoken memories.",
-        "It highlights the importance of being heard without having one's problem solved.",
-        "It reminds Mara that old shops often hold valuable records."
+        "It highlights the importance of being heard without having one's problem solved."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "The man wanted someone to know that the shop mattered, leading Mara to value attention over advice."
     },
     {
@@ -81,12 +81,12 @@
       "kind": "mc",
       "q": "What is Mara trying to avoid when inviting Jules to the listening evening?",
       "choices": [
+        "Admitting that she is unsure how Jules has been feeling.",
         "Making attendance a measure of whether their friendship is still valuable.",
         "Allowing Jules to hear recordings before they are published.",
-        "Explaining why the event's programme matters to her.",
-        "Admitting that she is unsure how Jules has been feeling."
+        "Explaining why the event's programme matters to her."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "Mara explicitly resists turning the invitation into a test of the relationship."
     },
     {
@@ -96,12 +96,12 @@
       "kind": "mc",
       "q": "What is implied by the sunset photograph that Mara sent instead of answering a question about happiness?",
       "choices": [
+        "The photograph provides proof that Mara felt at home in Bristol.",
         "Mara had forgotten the question by the time she took the photograph.",
         "A visually appealing update can function as an escape from vulnerability.",
-        "The recipient would have preferred photographs to personal conversation.",
-        "The photograph provides proof that Mara felt at home in Bristol."
+        "The recipient would have preferred photographs to personal conversation."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "Mara regrets choosing an easy curated image rather than speaking honestly about belonging."
     },
     {
@@ -111,12 +111,12 @@
       "kind": "mc",
       "q": "Why is the phrase 'constant visibility is not the same thing as mutual trust' important?",
       "choices": [
+        "It proves that social-media use inevitably destroys relationships.",
         "It shows how public archives should restrict access to recordings.",
         "It suggests that friends should share every private detail.",
-        "It distinguishes frequent exposure to information from reciprocal emotional honesty.",
-        "It proves that social-media use inevitably destroys relationships."
+        "It distinguishes frequent exposure to information from reciprocal emotional honesty."
       ],
-      "answer": 2,
+      "answer": 3,
       "explanation": "The archive experience makes Mara question expectations of access to others' lives while editing her own."
     },
     {
@@ -126,12 +126,12 @@
       "kind": "mc",
       "q": "Why does Mara acknowledge that one enjoyable evening cannot repair a whole year of superficial contact?",
       "choices": [
+        "She refuses to present a single invitation as a complete solution to a deeper problem.",
         "She wishes to cancel the listening event altogether.",
         "She thinks Jules should apologise before they meet.",
-        "She fears the event will be too crowded for an honest discussion.",
-        "She refuses to present a single invitation as a complete solution to a deeper problem."
+        "She fears the event will be too crowded for an honest discussion."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "Mara recognises that rebuilding a relationship requires more than a symbolic occasion."
     },
     {
@@ -141,12 +141,12 @@
       "kind": "mc",
       "q": "A museum contributor refuses to be recorded but offers a description of the meeting room. Which response fits Mara's approach?",
       "choices": [
+        "Ask another person to record the contributor without their knowledge.",
         "Insist that audio is necessary for an authentic archive.",
         "Accept the contribution on the terms the person has chosen.",
-        "Discard the entire encounter because it does not follow the standard format.",
-        "Ask another person to record the contributor without their knowledge."
+        "Discard the entire encounter because it does not follow the standard format."
       ],
-      "answer": 1,
+      "answer": 2,
       "explanation": "The archive respects a contributor's right to decline recording and choose what can be kept."
     },
     {
@@ -156,12 +156,12 @@
       "kind": "mc",
       "q": "Jules is overwhelmed with exams and cannot travel. What is the most appropriate response from Mara?",
       "choices": [
+        "Offer the event ticket again until Jules agrees.",
         "Accept this without guilt and suggest an ordinary call when possible.",
         "Ask Jules to prove the exam schedule is unavoidable.",
-        "Treat the refusal as proof that their friendship has ended.",
-        "Offer the event ticket again until Jules agrees."
+        "Treat the refusal as proof that their friendship has ended."
       ],
-      "answer": 0,
+      "answer": 1,
       "explanation": "Mara explicitly avoids making the trip an obligation and offers a simple call instead."
     },
     {
@@ -171,12 +171,12 @@
       "kind": "mc",
       "q": "Which message would best reflect the kind of friendship Mara hopes to recover?",
       "choices": [
+        "Can we talk honestly, even if neither of us has a neat answer?",
         "We should arrange a perfect reunion to make up for everything.",
         "Please promise that our friendship will return to how it used to be.",
-        "Let's keep reacting to photos until life is less complicated.",
-        "Can we talk honestly, even if neither of us has a neat answer?"
+        "Let's keep reacting to photos until life is less complicated."
       ],
-      "answer": 3,
+      "answer": 0,
       "explanation": "The ending invites uncertainty and ordinary candour rather than a performance of closeness."
     }
   ]
