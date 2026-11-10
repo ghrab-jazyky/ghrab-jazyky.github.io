@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-AUTHOR-DRAFT-1",
+  "description": "Independent ten-item B2 assessment draft for Asteroids: A Question of Risk, Not Panic; human pedagogy approval required.",
+  "tabs": [
+    {
+      "id": "interpret",
+      "title": "Interpretation",
+      "description": "Understand ideas and distinctions."
+    },
+    {
+      "id": "reason",
+      "title": "Writer's Reasoning",
+      "description": "Follow evidence and explanation."
+    },
+    {
+      "id": "apply",
+      "title": "Applying the Argument",
+      "description": "Use the text in new situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-asteroids-en-b2-01",
+      "tab": "interpret",
+      "kind": "mc",
+      "q": "A news report says an asteroid will pass close to Earth. What would the writer want readers to ask first?",
+      "choices": [
+        "How many headlines mention the asteroid?",
+        "Does the calculated orbit actually cross Earth's path?",
+        "Is the asteroid made entirely of rock?",
+        "Which telescope photographed it first?"
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "The opening paragraph distinguishes a cosmic close approach from a predicted intersection with Earth."
+    },
+    {
+      "id": "r36-asteroids-en-b2-02",
+      "tab": "interpret",
+      "kind": "mc",
+      "q": "Why can a revised impact estimate represent scientific progress rather than confusion?",
+      "choices": [
+        "A later measurement is always lower than an earlier one.",
+        "Early calculations are not based on observations.",
+        "Scientists have changed what they mean by impact.",
+        "New observations can narrow uncertainty in the estimated orbit."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph two says additional observations refine the orbit, so changing figures need not mean scientists are guessing."
+    },
+    {
+      "id": "r36-asteroids-en-b2-03",
+      "tab": "interpret",
+      "kind": "mc",
+      "q": "What was the main lesson of the 2024 YR4 example?",
+      "choices": [
+        "A worrying preliminary probability can fall as the evidence improves.",
+        "An asteroid discovered late in the year is more dangerous.",
+        "Once a risk rises, it usually continues to rise.",
+        "Only one observatory should issue an impact estimate."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "The impact probability first rose, then fell to almost zero after further telescope observations."
+    },
+    {
+      "id": "r36-asteroids-en-b2-04",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "Why does the author limit the conclusions that can be drawn from DART?",
+      "choices": [
+        "The spacecraft did not make contact with Dimorphos.",
+        "The experiment was conducted entirely by computer.",
+        "A successful orbit change does not cover every kind of dangerous asteroid.",
+        "The orbital period of the smaller body became longer."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph four distinguishes successful deflection of a test target from a guarantee for all asteroid sizes, structures and warning times."
+    },
+    {
+      "id": "r36-asteroids-en-b2-05",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "Which problem might a news article cause by quoting a single risk figure without its uncertainty?",
+      "choices": [
+        "Readers may mistake a preliminary estimate for a settled prediction.",
+        "Readers may fail to learn how telescopes are constructed.",
+        "The number may reveal an asteroid's exact composition.",
+        "The asteroid may disappear from the observation database."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph two warns that a dramatic isolated number can mislead without information about preliminary estimates and uncertainty."
+    },
+    {
+      "id": "r36-asteroids-en-b2-06",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "Why is advance warning important if an orbit must be changed?",
+      "choices": [
+        "It makes the asteroid easier to photograph in visible light.",
+        "A deflection needs time to alter the future path sufficiently.",
+        "It removes the need to consider the asteroid's structure.",
+        "Warning ensures all countries agree on one public headline."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Paragraph four notes that changing an orbit is not instantaneous and warning time is a critical constraint."
+    },
+    {
+      "id": "r36-asteroids-en-b2-07",
+      "tab": "reason",
+      "kind": "mc",
+      "q": "Why does the writer contrast spectacular film explosions with years of quiet observations?",
+      "choices": [
+        "To argue that space films should become more realistic.",
+        "To claim that engineering will never be needed.",
+        "To recommend suppressing reports about asteroids.",
+        "To emphasize that careful monitoring can matter more than drama."
+      ],
+      "answer": 3,
+      "sourceParagraph": 5,
+      "explanation": "The conclusion privileges reliable early observation and cooperation over sensational depictions of a crisis."
+    },
+    {
+      "id": "r36-asteroids-en-b2-08",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "Two observatories publish different probabilities on consecutive days. What public explanation best fits the text?",
+      "choices": [
+        "The second observatory must have made an error.",
+        "The asteroid must have changed its direction overnight.",
+        "Each estimate depends on available measurements and stated uncertainty.",
+        "The first estimate should be deleted without comment."
+      ],
+      "answer": 2,
+      "sourceParagraph": 5,
+      "explanation": "The final paragraphs ask researchers to explain why predictions change as evidence is updated."
+    },
+    {
+      "id": "r36-asteroids-en-b2-09",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "A student says that any asteroid described as 'near Earth' is about to strike. Which response best reflects the article?",
+      "choices": [
+        "In space, 'near' can describe huge distances; the calculated path matters.",
+        "Every near-Earth asteroid is small and therefore harmless.",
+        "The word 'near' always gives the exact distance in kilometres.",
+        "A near object can only be assessed after an impact."
+      ],
+      "answer": 0,
+      "sourceParagraph": 1,
+      "explanation": "The opening paragraph explains why the everyday meaning of 'near' exaggerates close approaches."
+    },
+    {
+      "id": "r36-asteroids-en-b2-10",
+      "tab": "apply",
+      "kind": "mc",
+      "q": "A school wants to prepare a reliable public information poster about asteroid risks. What should it prioritise?",
+      "choices": [
+        "Dramatic images without numbers, to avoid frightening pupils.",
+        "Only the highest probability ever reported for a given object.",
+        "A promise that modern spacecraft can prevent every impact.",
+        "Clear distinctions between known facts, uncertainty and preparation."
+      ],
+      "answer": 3,
+      "sourceParagraph": 5,
+      "explanation": "The conclusion emphasizes honest risk communication and cooperation rather than panic or promises of total protection."
+    }
+  ]
+}
