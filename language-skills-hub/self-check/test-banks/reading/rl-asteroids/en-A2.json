@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "A2",
+  "sourceTitle": "A Night at the Space Club",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-CONTENT-AUDIT-1",
+  "description": "Independent English A2 asteroid comprehension assessment awaiting external pedagogical validation.",
+  "tabs": [
+    {
+      "id": "understanding",
+      "title": "Understanding the Text"
+    },
+    {
+      "id": "reasoning",
+      "title": "Connecting Information"
+    },
+    {
+      "id": "application",
+      "title": "Applying the Ideas"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-en-a2-01",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "Why is the asteroid belt not like a busy road?",
+      "choices": [
+        "The asteroids stop moving there.",
+        "The rocks have a lot of empty space between them.",
+        "It is a place where only spacecraft travel.",
+        "There are no objects between Mars and Jupiter."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "The teacher explains that there is a lot of empty space in the asteroid belt."
+    },
+    {
+      "id": "r36-en-a2-02",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "What do several observations help scientists understand?",
+      "choices": [
+        "How long a school club meeting lasts.",
+        "Why the Moon is bright at night.",
+        "How to make every asteroid easier to see.",
+        "Where an asteroid is likely to travel."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph two explains that observations refine our knowledge of an asteroid's orbit."
+    },
+    {
+      "id": "r36-en-a2-03",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "What does Nina learn about an asteroid coming near Earth?",
+      "choices": [
+        "It will always hit our planet.",
+        "Scientists cannot study its movement.",
+        "Being nearby does not automatically mean a collision.",
+        "It must be the biggest asteroid in the belt."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "The text clearly distinguishes coming near Earth from striking it."
+    },
+    {
+      "id": "r36-en-a2-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "q": "Why could Nina see Moon craters but not an asteroid?",
+      "choices": [
+        "The Moon was visible, while most asteroids were too small and dark.",
+        "The teacher did not allow anyone to see asteroids.",
+        "Asteroids appear only in the early morning.",
+        "The telescope was not powerful enough to see the Moon."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "The class saw the Moon instead of an asteroid because asteroids were hard to see."
+    },
+    {
+      "id": "r36-en-a2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "q": "What helps explain the different appearance of craters on the Moon and Earth?",
+      "choices": [
+        "Scientists never study craters on our planet.",
+        "The Moon has much more water than Earth.",
+        "Weather gradually changes the surface of Earth.",
+        "Space rocks only fall on the Moon."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph three says Earth has weather that slowly hides old craters."
+    },
+    {
+      "id": "r36-en-a2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "q": "What was the purpose of the DART collision in the film?",
+      "choices": [
+        "To test whether a small push could change an object's motion.",
+        "To collect a sample from the Moon's surface.",
+        "To prove asteroids are made only of metal.",
+        "To send astronauts to the asteroid belt."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "DART deliberately hit Dimorphos and changed its orbit around a larger asteroid."
+    },
+    {
+      "id": "r36-en-a2-07",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Which idea excited Nina after the short film?",
+      "choices": [
+        "A school telescope could show every asteroid.",
+        "A spacecraft might change how a space rock moves.",
+        "Asteroids become stars after a collision.",
+        "The Moon has no signs of past impacts."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Nina is impressed that a spacecraft can give a space rock a small push."
+    },
+    {
+      "id": "r36-en-a2-08",
+      "tab": "application",
+      "kind": "mc",
+      "q": "A friend asks why old Moon craters are still visible. What is a good answer?",
+      "choices": [
+        "The Moon has stronger winds than Earth.",
+        "The Moon's craters are painted again every year.",
+        "All Moon craters were formed last week.",
+        "There is no weather like Earth's to erase them."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Paragraph three says the absence of wind and rain helps preserve Moon craters."
+    },
+    {
+      "id": "r36-en-a2-09",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Why might scientists continue to observe a newly found asteroid?",
+      "choices": [
+        "To change its colour in a photograph.",
+        "To improve the calculation of its future path.",
+        "To make the object move farther away immediately.",
+        "To turn it into a small natural moon."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "More observations allow scientists to calculate the orbit more reliably."
+    },
+    {
+      "id": "r36-en-a2-10",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Which statement combines the two main ideas Nina learned?",
+      "choices": [
+        "Asteroids are impossible to find and cannot be moved.",
+        "Any object near Earth will cause serious damage.",
+        "The best way to protect Earth is to avoid telescopes.",
+        "Watching objects and testing possible responses can help us prepare."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "The space club links observing asteroids with the DART experiment and future protection."
+    }
+  ]
+}
