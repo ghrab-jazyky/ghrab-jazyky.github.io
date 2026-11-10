@@ -34,14 +34,36 @@ for(const [engineName,engine]of [['chromium',chromium],['webkit',webkit]]){
   try{
    const page=await browser.newPage(),errors=[];
    page.on('pageerror',e=>errors.push(e.message));
-   await page.goto(url({topic:'rl-asteroids',level:'B2',attempt:'r35missingbank'}));
-   await page.locator('#loading.error').waitFor({timeout:30000});
+   await page.goto(url({topic:'rl-asteroids',lang:'es',level:'A2',attempt:'r35missingbank'}));
+   try{await page.locator('#loading.error').waitFor({timeout:7000})}
+   catch(e){
+    const diagnostic=await page.evaluate(()=>({
+     loading:document.querySelector('#loading')?.textContent,
+     className:document.querySelector('#loading')?.className,
+     hidden:document.querySelector('#loading')?.hidden,
+     startButtons:document.querySelectorAll('#sessionStart').length,
+     questionCount:document.querySelectorAll('fieldset.question').length
+    }));
+    throw new Error('Expected fail-closed preview '+JSON.stringify(diagnostic)+
+     '; pageerrors '+JSON.stringify(errors)+'; '+String(e));
+   }
    assert.match(await page.locator('#loading').textContent(),/Source HTTP 404/);
    assert.equal(await page.locator('#sessionStart').count(),0);
    assert.equal(await page.locator('fieldset.question').count(),0);
    assert.equal(await page.locator('#results').isHidden(),true);
    await page.goto(url({topic:'rl-can-mistakes',lang:'es',level:'B2',attempt:'r35spanishmissing'}));
-   await page.locator('#loading.error').waitFor({timeout:30000});
+   try{await page.locator('#loading.error').waitFor({timeout:7000})}
+   catch(e){
+    const diagnostic=await page.evaluate(()=>({
+     loading:document.querySelector('#loading')?.textContent,
+     className:document.querySelector('#loading')?.className,
+     hidden:document.querySelector('#loading')?.hidden,
+     startButtons:document.querySelectorAll('#sessionStart').length,
+     questionCount:document.querySelectorAll('fieldset.question').length
+    }));
+    throw new Error('Expected fail-closed preview '+JSON.stringify(diagnostic)+
+     '; pageerrors '+JSON.stringify(errors)+'; '+String(e));
+   }
    assert.match(await page.locator('#loading').textContent(),/Source HTTP 404/);
    assert.equal(await page.locator('#sessionStart').count(),0);
    assert.deepEqual(errors,[]);
@@ -53,11 +75,33 @@ for(const [engineName,engine]of [['chromium',chromium],['webkit',webkit]]){
    const page=await browser.newPage(),errors=[];
    page.on('pageerror',e=>errors.push(e.message));
    await page.goto(url({topic:'ll-harrison-ford',level:'B1',attempt:'r35badskill'}));
-   await page.locator('#loading.error').waitFor({timeout:30000});
-   assert.match(await page.locator('#loading').textContent(),/unsupported by approved practice catalog/);
+   try{await page.locator('#loading.error').waitFor({timeout:7000})}
+   catch(e){
+    const diagnostic=await page.evaluate(()=>({
+     loading:document.querySelector('#loading')?.textContent,
+     className:document.querySelector('#loading')?.className,
+     hidden:document.querySelector('#loading')?.hidden,
+     startButtons:document.querySelectorAll('#sessionStart').length,
+     questionCount:document.querySelectorAll('fieldset.question').length
+    }));
+    throw new Error('Expected fail-closed preview '+JSON.stringify(diagnostic)+
+     '; pageerrors '+JSON.stringify(errors)+'; '+String(e));
+   }
+   assert.match(await page.locator('#loading').textContent(),/Unsupported independent test topic|unsupported by approved practice catalog/);
    assert.equal(await page.locator('#sessionStart').count(),0);
    await page.goto(url({lang:'xx',attempt:'r35badlang'}));
-   await page.locator('#loading.error').waitFor({timeout:30000});
+   try{await page.locator('#loading.error').waitFor({timeout:7000})}
+   catch(e){
+    const diagnostic=await page.evaluate(()=>({
+     loading:document.querySelector('#loading')?.textContent,
+     className:document.querySelector('#loading')?.className,
+     hidden:document.querySelector('#loading')?.hidden,
+     startButtons:document.querySelectorAll('#sessionStart').length,
+     questionCount:document.querySelectorAll('fieldset.question').length
+    }));
+    throw new Error('Expected fail-closed preview '+JSON.stringify(diagnostic)+
+     '; pageerrors '+JSON.stringify(errors)+'; '+String(e));
+   }
    assert.match(await page.locator('#loading').textContent(),/Unsupported independent test language/);
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
