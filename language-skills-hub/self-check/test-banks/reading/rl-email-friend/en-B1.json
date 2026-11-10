@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "B1",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "auditRevision": "R34-EMAIL-B1-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "description": "Independent email comprehension EN/B1 draft; human review required.",
+  "tabs": [
+    {
+      "id": "change",
+      "title": "A Changing Neighbourhood",
+      "description": "Understand what has happened in the square."
+    },
+    {
+      "id": "meaning",
+      "title": "Why Volunteering Matters",
+      "description": "Interpret Tomas's experiences."
+    },
+    {
+      "id": "relationship",
+      "title": "An Invitation Without Pressure",
+      "description": "Evaluate his communication with Robin."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-b1-01",
+      "tab": "change",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does Tomas remember the old square with a different feeling now?",
+      "choices": [
+        "It has been closed to everyone.",
+        "It no longer has any shops.",
+        "It is now outside the town.",
+        "It has become a more active community place."
+      ],
+      "answer": 3,
+      "explanation": "The square's workshop and painted walls show a positive change from the old empty shop."
+    },
+    {
+      "id": "r34-email-b1-02",
+      "tab": "change",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What do the photographs in the workshop help visitors discover?",
+      "choices": [
+        "How to make the newest bicycles.",
+        "How the neighbourhood has changed over time.",
+        "Which films are shown this week.",
+        "Why nobody uses the square today."
+      ],
+      "answer": 1,
+      "explanation": "The old photos and Mrs Okafor's stories preserve the square's history."
+    },
+    {
+      "id": "r34-email-b1-03",
+      "tab": "change",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why could Robin's photographs be useful at the open day?",
+      "choices": [
+        "They would be used as entrance tickets.",
+        "They would replace all the volunteers.",
+        "They could show everyday local life and add to the shared stories.",
+        "They would prove that the cinema is still open."
+      ],
+      "answer": 2,
+      "explanation": "Tomas remembers Robin's pictures as suitable material for the community event."
+    },
+    {
+      "id": "r34-email-b1-04",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What did Tomas learn after teaching children to fix a bicycle light?",
+      "choices": [
+        "Being helpful does not require being an expert.",
+        "He should become a professional mechanic immediately.",
+        "The workshop is only for adults.",
+        "Making tea is the only useful job there."
+      ],
+      "answer": 0,
+      "explanation": "He reflects that people can contribute while they are still learning."
+    },
+    {
+      "id": "r34-email-b1-05",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why did Tomas begin with simple jobs at the workshop?",
+      "choices": [
+        "He wanted to avoid all practical work.",
+        "The workshop had no tools available.",
+        "He had already finished repairing everything.",
+        "He felt uncertain about meeting unfamiliar people."
+      ],
+      "answer": 3,
+      "explanation": "Tomas says nervousness made him start by making tea and carrying boxes."
+    },
+    {
+      "id": "r34-email-b1-06",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What does Mrs Okafor contribute that the pictures alone cannot provide?",
+      "choices": [
+        "A full set of new football boots.",
+        "Personal memories and stories about the places shown.",
+        "Instructions for painting the walls.",
+        "Tickets for the old cinema."
+      ],
+      "answer": 1,
+      "explanation": "She knows stories behind the old photographs."
+    },
+    {
+      "id": "r34-email-b1-07",
+      "tab": "relationship",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why does Tomas mention travel costs when inviting Robin?",
+      "choices": [
+        "He recognises that visiting may not be easy for his friend.",
+        "He is asking Robin to pay for the workshop.",
+        "He wants to stop the open day.",
+        "He is making an excuse not to meet."
+      ],
+      "answer": 0,
+      "explanation": "Tomas respects Robin's possible practical difficulties without making him feel guilty."
+    },
+    {
+      "id": "r34-email-b1-08",
+      "tab": "relationship",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What does the suggestion of a video call reveal about Tomas's goal?",
+      "choices": [
+        "He thinks video calls are better than any friendship.",
+        "He wants Robin to give a speech online.",
+        "He wants to reconnect even if Robin cannot attend in person.",
+        "He plans to close the workshop soon."
+      ],
+      "answer": 2,
+      "explanation": "Tomas offers more than one way to restore their conversation."
+    },
+    {
+      "id": "r34-email-b1-09",
+      "tab": "relationship",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "How does Tomas try to make the invitation less stressful?",
+      "choices": [
+        "He requires Robin to bring a full exhibition.",
+        "He says a short visit is enough and no special preparation is needed.",
+        "He expects Robin to lead all activities.",
+        "He refuses to discuss other dates."
+      ],
+      "answer": 1,
+      "explanation": "The invitation explicitly avoids pressure to perform."
+    },
+    {
+      "id": "r34-email-b1-10",
+      "tab": "relationship",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What important change does Tomas want in their friendship?",
+      "choices": [
+        "To stop sharing any photographs.",
+        "To work in the same town every day.",
+        "To use only public social media comments.",
+        "To communicate regularly rather than wait for special occasions."
+      ],
+      "answer": 3,
+      "explanation": "The closing question asks them not to wait for a special event before speaking."
+    }
+  ]
+}
