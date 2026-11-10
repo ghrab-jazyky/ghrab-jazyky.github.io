@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "es",
+  "level": "B1",
+  "sourceTitle": "¿Cómo vigilamos los asteroides?",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R37-CONTENT-AUDIT-1",
+  "description": "Original independent B1 astronomy comprehension and interpretation draft; external pedagogy audit pending",
+  "tabs": [
+    {
+      "id": "comprender",
+      "title": "Comprender el texto"
+    },
+    {
+      "id": "razonar",
+      "title": "Explicar las razones"
+    },
+    {
+      "id": "aplicar",
+      "title": "Aplicar las ideas"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r37-es-b1-01",
+      "tab": "comprender",
+      "kind": "mc",
+      "q": "¿Por qué se estudian asteroides además de vigilar posibles riesgos?",
+      "choices": [
+        "Para cambiar su composición.",
+        "Para conocer el pasado del sistema solar.",
+        "Para aumentar el número de satélites.",
+        "Para saber cuándo se formó la Tierra exactamente."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "El primer párrafo explica que los asteroides conservan información de un pasado muy lejano."
+    },
+    {
+      "id": "r37-es-b1-02",
+      "tab": "comprender",
+      "kind": "mc",
+      "q": "¿Qué relación tienen los asteroides con el Sol?",
+      "choices": [
+        "Todos permanecen en el mismo lugar.",
+        "Solo giran alrededor de Marte.",
+        "Siguen órbitas alrededor del Sol.",
+        "Se mueven únicamente cuando chocan."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "El texto distingue las órbitas de los asteroides alrededor del Sol."
+    },
+    {
+      "id": "r37-es-b1-03",
+      "tab": "comprender",
+      "kind": "mc",
+      "q": "¿Qué significa realmente la expresión «cercano a la Tierra»?",
+      "choices": [
+        "Describe una órbita que pasa por nuestro vecindario espacial.",
+        "Indica una colisión segura en el futuro.",
+        "Significa que el objeto ya ha atravesado la atmósfera.",
+        "Es una categoría reservada a los cuerpos grandes."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "El segundo párrafo distingue una órbita cercana de un choque confirmado."
+    },
+    {
+      "id": "r37-es-b1-04",
+      "tab": "razonar",
+      "kind": "mc",
+      "q": "¿Por qué no basta una sola fotografía para conocer el recorrido futuro?",
+      "choices": [
+        "Porque todos los asteroides son demasiado oscuros.",
+        "Porque una foto siempre muestra una órbita completa.",
+        "Porque los ordenadores no permiten comparar imágenes.",
+        "Porque hace falta observar el movimiento en distintos momentos."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Las mediciones realizadas en momentos diferentes permiten calcular mejor la órbita."
+    },
+    {
+      "id": "r37-es-b1-05",
+      "tab": "razonar",
+      "kind": "mc",
+      "q": "¿Por qué comparten datos los investigadores?",
+      "choices": [
+        "Para sustituir las observaciones por opiniones.",
+        "Para comparar medidas y reducir la incertidumbre.",
+        "Para evitar utilizar los telescopios.",
+        "Para mantener fija una predicción inicial."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "La colaboración y las observaciones adicionales mejoran las predicciones."
+    },
+    {
+      "id": "r37-es-b1-06",
+      "tab": "razonar",
+      "kind": "mc",
+      "q": "¿Qué demuestra el resultado de DART?",
+      "choices": [
+        "Una nave puede modificar el movimiento de un cuerpo en determinadas condiciones.",
+        "Todas las rocas cercanas pueden eliminarse con una nave.",
+        "Dimorphos se dirigía hacia la Tierra antes de la prueba.",
+        "No es necesario seguir observando los asteroides."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "El experimento cambió la duración de la vuelta de Dimorphos sin probar una protección universal."
+    },
+    {
+      "id": "r37-es-b1-07",
+      "tab": "razonar",
+      "kind": "mc",
+      "q": "¿Por qué no debe presentarse DART como un rescate de la Tierra?",
+      "choices": [
+        "Porque la nave nunca llegó a Dimorphos.",
+        "Porque se trató de un accidente durante otra misión.",
+        "Porque el objeto elegido no representaba una amenaza real.",
+        "Porque los investigadores no pudieron observar el resultado."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "El tercer párrafo dice expresamente que fue una prueba controlada, no una respuesta a un peligro."
+    },
+    {
+      "id": "r37-es-b1-08",
+      "tab": "aplicar",
+      "kind": "mc",
+      "q": "Se descubre un cuerpo potencialmente peligroso. ¿Qué ayudaría más al principio?",
+      "choices": [
+        "Esperar a que la amenaza sea visible a simple vista.",
+        "Publicar una predicción sin nuevas observaciones.",
+        "Dejar todas las decisiones para el último día.",
+        "Obtener datos fiables y avisar con suficiente antelación."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "El final destaca las observaciones y el aviso temprano para tomar decisiones."
+    },
+    {
+      "id": "r37-es-b1-09",
+      "tab": "aplicar",
+      "kind": "mc",
+      "q": "Un amigo piensa que los grandes impactos ocurren constantemente. ¿Qué le explicarías?",
+      "choices": [
+        "Que prepararse no tiene ningún sentido.",
+        "Que son poco frecuentes, pero sigue siendo útil observar y prepararse.",
+        "Que los telescopios ya han evitado todos los impactos.",
+        "Que las misiones espaciales hacen innecesaria la cooperación."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "El autor combina la rareza de impactos grandes con la necesidad de preparación."
+    },
+    {
+      "id": "r37-es-b1-10",
+      "tab": "aplicar",
+      "kind": "mc",
+      "q": "¿Qué idea resume mejor una defensa planetaria responsable?",
+      "choices": [
+        "Reunir observaciones, compartir información y ganar tiempo para actuar.",
+        "Confiar únicamente en una nave muy potente.",
+        "Tratar cada acercamiento como un desastre inevitable.",
+        "Esperar a tener una predicción absolutamente perfecta."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "La conclusión reúne mediciones fiables, cooperación y tiempo de reacción."
+    }
+  ]
+}
