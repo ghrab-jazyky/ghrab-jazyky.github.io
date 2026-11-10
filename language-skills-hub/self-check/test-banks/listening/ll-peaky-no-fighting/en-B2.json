@@ -1,0 +1,102 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R37_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-peaky-no-fighting",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+  "durationMinutesSuggested": 20,
+  "listeningPasses": 2,
+  "scoreRule": "1 point per automatically scored item or sequence position, and 1 point per teacher-reviewed written response; unverified local proposal",
+  "auditRevision": "R38-AUTHOR-DRAFT-1",
+  "description": "Original shorter EN/B2 independent Listening assessment draft. Teacher review is required before any use.",
+  "variant": {
+    "goal": "Interpret an escalating attempt to control a tense celebration and the humour created by repeated interruptions.",
+    "gist": [
+      {
+        "title": "What conflict drives most of the scene?",
+        "type": "single",
+        "options": [
+          "The speaker must prevent trouble while the others keep interrupting him.",
+          "The speaker wants the guests to leave before the celebration.",
+          "The men are arranging a new business partnership.",
+          "A family is debating whether the ceremony should happen at all."
+        ],
+        "correct": 0,
+        "why": "The speaker's insistence on peace clashes with the interruptions and the threat of conflict."
+      },
+      {
+        "title": "How does the scene use humour?",
+        "type": "single",
+        "options": [
+          "Everyone agrees with the rules but speaks very formally.",
+          "The conversation remains calm even when the orders become stricter.",
+          "Unexpected remarks interrupt an increasingly serious warning.",
+          "A storyteller retells a distant event with no effect on the group."
+        ],
+        "correct": 2,
+        "why": "Off-topic questions and protests break the speaker's attempt to maintain a stern warning."
+      }
+    ],
+    "detail": [
+      {
+        "title": "Why does the argument over clothing increase tension?",
+        "type": "single",
+        "options": [
+          "It reveals that the speaker has forgotten what event is taking place.",
+          "It shows that old divisions remain visible despite the celebration.",
+          "It proves that the guests have come to another ceremony.",
+          "It explains why one of the men needs a new uniform."
+        ],
+        "correct": 1,
+        "why": "The uniform-related complaint exposes hostility between groups attending the same event."
+      },
+      {
+        "title": "What is the speaker trying to achieve by listing many prohibited actions?",
+        "type": "single",
+        "options": [
+          "He wants everyone to remember a previous agreement.",
+          "He is planning a series of games for the guests.",
+          "He is checking which activities the men enjoy.",
+          "He attempts to anticipate and control every possible source of trouble."
+        ],
+        "correct": 3,
+        "why": "The long prohibitions show that he expects disorder and wants to prevent it."
+      },
+      {
+        "title": "What does the repeated final command communicate?",
+        "type": "single",
+        "options": [
+          "The speaker expects the men to obey despite their interruptions.",
+          "The speaker has decided his original instruction was unnecessary.",
+          "The group has already proved that there will be no trouble.",
+          "The speaker is inviting the men to argue about the rules."
+        ],
+        "correct": 0,
+        "why": "The repetition strengthens an order and makes his frustration apparent."
+      }
+    ],
+    "sequence": [
+      "The speaker reminds the men of the importance of the occasion.",
+      "Interruptions force him to become more specific about forbidden behaviour.",
+      "He finishes with an emphatic warning intended to keep the peace."
+    ],
+    "facts": [
+      {
+        "title": "What type of event is the speaker trying to keep peaceful?",
+        "answer": "A wedding.",
+        "criteria": "Accept wedding or wedding celebration, not a generic party.",
+        "kind": "fact"
+      }
+    ],
+    "open": [
+      {
+        "title": "Explain why the speaker's aggressive manner is ironic given the aim of his instructions.",
+        "answer": "He wants to prevent fighting, but he gives the order through threats, anger and repeated forceful commands.",
+        "criteria": "Mention both the peaceful goal and at least one aggressive feature of his delivery.",
+        "kind": "open"
+      }
+    ]
+  }
+}
