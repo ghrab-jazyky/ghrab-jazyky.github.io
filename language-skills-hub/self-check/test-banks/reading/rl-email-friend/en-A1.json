@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "A1",
+  "sourceTitle": "A Message from Ben",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R37-AUTHOR-DRAFT-1",
+  "description": "Original EN/A1 Email Friend test bank for independent reading; pedagogical approval pending.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Understanding the message",
+      "description": "Interpret the writer's purpose and feelings."
+    },
+    {
+      "id": "reasoning",
+      "title": "Details and choices",
+      "description": "Explain practical arrangements and reasons."
+    },
+    {
+      "id": "application",
+      "title": "Responding appropriately",
+      "description": "Choose a response supported by the message."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r37-en-a1-01",
+      "tab": "interpretation",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "What does Ben's description of Greenhill tell Maya?",
+      "choices": [
+        "It is a noisy city with no parks.",
+        "He has a friendly new home but still misses her.",
+        "He has returned to their old school.",
+        "He dislikes every part of his new town."
+      ],
+      "answer": 1,
+      "explanation": "Ben says Greenhill is quiet and friendly, but he misses lunches and games with Maya."
+    },
+    {
+      "id": "r37-en-a1-02",
+      "tab": "interpretation",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Why does Ben write about the film night?",
+      "choices": [
+        "He wants Maya to buy tickets for his sister.",
+        "He wants Maya to bring her own camera.",
+        "He wants to cancel their next meeting.",
+        "He hopes Maya can visit and spend the evening with him."
+      ],
+      "answer": 3,
+      "explanation": "Ben explains the free film night and how Maya could join him."
+    },
+    {
+      "id": "r37-en-a1-03",
+      "tab": "interpretation",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "Why do people sit on the grass with blankets?",
+      "choices": [
+        "They are waiting for a football match.",
+        "The café has no chairs for visitors.",
+        "The film is shown outside in the park.",
+        "They have come to clean the park."
+      ],
+      "answer": 2,
+      "explanation": "The park film night takes place outdoors, so people bring blankets."
+    },
+    {
+      "id": "r37-en-a1-04",
+      "tab": "interpretation",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "What does Ben show by offering a blanket and mentioning warm clothes?",
+      "choices": [
+        "He wants Maya to feel comfortable if she visits.",
+        "He expects Maya to bring food for everyone.",
+        "He does not want Maya to take the train.",
+        "He plans to move the film to his home."
+      ],
+      "answer": 0,
+      "explanation": "Ben offers help and warns that the evening will be cold."
+    },
+    {
+      "id": "r37-en-a1-05",
+      "tab": "reasoning",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Why does Ben say his father can meet Maya at the station?",
+      "choices": [
+        "His father works at the station.",
+        "Maya may need help getting from the train to the park.",
+        "He wants Maya to stay at the station all evening.",
+        "The film will be shown on the train."
+      ],
+      "answer": 1,
+      "explanation": "Ben offers an easy plan for Maya's arrival, including a meeting at five."
+    },
+    {
+      "id": "r37-en-a1-06",
+      "tab": "reasoning",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "What does the hot chocolate and popcorn stand help?",
+      "choices": [
+        "Ben's school football team.",
+        "The train station.",
+        "The park, through the money from sales.",
+        "The actors in the film."
+      ],
+      "answer": 2,
+      "explanation": "The message says the money from the stand helps the park."
+    },
+    {
+      "id": "r37-en-a1-07",
+      "tab": "reasoning",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "What will change if the weather is bad?",
+      "choices": [
+        "Maya will have to buy a more expensive ticket.",
+        "Ben will watch the film alone.",
+        "The film will start a week later.",
+        "The film will be shown at the youth centre."
+      ],
+      "answer": 3,
+      "explanation": "Ben gives a different indoor location if it rains."
+    },
+    {
+      "id": "r37-en-a1-08",
+      "tab": "application",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "Maya wants to visit but is free only after Thursday. What should she do?",
+      "choices": [
+        "Wait until Saturday evening to tell Ben.",
+        "Write before Thursday as Ben requests, or explain why she cannot.",
+        "Ask Eva to send Ben a reply for her.",
+        "Travel without telling Ben she is coming."
+      ],
+      "answer": 1,
+      "explanation": "Ben asks Maya to reply before Thursday so he can know her plans."
+    },
+    {
+      "id": "r37-en-a1-09",
+      "tab": "application",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "Maya cannot go to Greenhill on Saturday. Which reply fits Ben's message?",
+      "choices": [
+        "Thank Ben and tell him she is busy, then share news of her class.",
+        "Tell Ben he should not invite her to other events.",
+        "Ignore the invitation because she cannot attend.",
+        "Ask Ben to give his sister's ticket to another person."
+      ],
+      "answer": 0,
+      "explanation": "Ben says he understands if Maya is busy and wants news about her class as well."
+    },
+    {
+      "id": "r37-en-a1-10",
+      "tab": "application",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "What is the most important thing Ben wants from Maya, besides a visit?",
+      "choices": [
+        "A photograph of the park.",
+        "A new football for Eva.",
+        "A list of films she likes.",
+        "A reply that tells him how Maya is doing."
+      ],
+      "answer": 3,
+      "explanation": "The final lines ask Maya to write about her new class rather than just read his news."
+    }
+  ]
+}
