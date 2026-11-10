@@ -7,7 +7,7 @@
  <meta name="robots" content="noindex,nofollow">
  <meta name="description" content="R32/R33 independent Reading B1/B2 assessment – unapproved local QA draft, not for student distribution.">
  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'; frame-ancestors 'none'">
- <title>Independent Reading B1/B2 – unapproved QA preview</title>
+ <title>Independent Reading A1–C2 – internal QA preview</title>
  <link rel="stylesheet" href="../../reading/reading.css">
  <link rel="stylesheet" href="../../session/session.css">
  <link rel="stylesheet" href="preview.css">
@@ -16,6 +16,7 @@
  <script defer src="../../session/attempt-core.js"></script>
  <script defer src="../../session/session-ui.js"></script>
  <script defer src="test-bank-core.js"></script>
+ <script defer src="../candidate-core.js"></script>
  <script defer src="preview.js"></script>
 </head>
 <body>
@@ -24,13 +25,13 @@
    <span class="mark" aria-hidden="true">R</span>
    <span><strong>Language Skills Hub</strong><small>Independent Reading – QA only</small></span>
   </a>
-  <span class="mode">UNAPPROVED DRAFT · EN/B1 or B2</span>
+  <span class="mode">UNAPPROVED TEST CANDIDATE · QA ONLY</span>
  </header>
  <main class="container">
   <section class="hero">
    <p class="eyebrow">INDEPENDENT READING TEST · QA PILOT</p>
    <h1 id="title">Preparing independent reading…</h1>
-   <p class="subtitle">Can Mistakes Help Us Learn? · English B1/B2 · 10 independent questions · 20 minutes</p>
+   <p class="subtitle">Reading Lab · teacher-only draft candidates · timed local preview</p>
    <div class="notice r32-warning" role="note" id="pilotWarning">
     Unapproved teacher QA preview – do not distribute to students or use for official grading.
     Correct answers are public in a static website. The result is local and unverified.
@@ -41,7 +42,7 @@
    <article class="panel reading-panel" aria-labelledby="readingHeading">
     <div class="panel-head">
      <div><span class="kicker">SOURCE PASSAGE · NOT ALTERED</span><h2 id="readingHeading">Preparing reading text…</h2></div>
-     <span class="pill">EN · —</span>
+     <span class="pill" id="languageLevelBadge">—</span>
     </div>
     <div class="reading-body" id="readingParagraphs"></div>
    </article>
