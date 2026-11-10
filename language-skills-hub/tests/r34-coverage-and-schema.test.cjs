@@ -32,8 +32,8 @@ test('R34 coverage reporter inventories every Reading and Listening CEFR combina
  assert.equal(result.overview.reading,120);
  assert.equal(result.overview.listening,18);
  assert.equal(result.overview.total,138);
- assert.equal(result.overview.states.draft,11);
- assert.equal(result.overview.states.missing,127);
+ assert.equal(result.overview.states.draft,13);
+ assert.equal(result.overview.states.missing,125);
  assert.equal(result.rows.some(r=>r.topic==='rl-can-mistakes'&&r.level==='A1'&&r.language==='en'&&r.state==='draft'),true);
  assert.equal(result.rows.filter(r=>r.skill==='listening'&&r.state==='draft').length,1);
  assert.equal(result.rows.some(r=>r.skill==='reading'&&r.topic==='rl-asteroids'&&r.language==='es'&&r.level==='A2'&&r.state==='draft'),false);
