@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-harrison-ford",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
+  "durationMinutesSuggested": 18,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "notes": "The source speech/video is controlled by the teacher. The bank is an unapproved audio-dependent draft; original clip and facts require independent linguistic verification before use.",
+  "objective": [
+    {
+      "id": "r35-hf-b2-01",
+      "category": "interpretation",
+      "q": "Why does Ford's comment about receiving the award 'a little early' matter beyond being a joke?",
+      "options": [
+        "He wishes another performer had received the honour first.",
+        "He sees the recognition as part of an unfinished career.",
+        "He intends to stop working immediately after the ceremony.",
+        "He believes awards cannot reflect the quality of acting."
+      ],
+      "answer": 1,
+      "explanation": "The humour points to his continuing professional life rather than a completed career.",
+      "sourceEvidence": "Still a working actor; jokes that the lifetime achievement award is early."
+    },
+    {
+      "id": "r35-hf-b2-02",
+      "category": "argument",
+      "q": "Which contrast best captures the way he describes his early professional life?",
+      "options": [
+        "He immediately found the right role but later became dissatisfied.",
+        "He always valued technical work more than performing.",
+        "He trained actors while waiting to become a director.",
+        "His route into acting involved uncertainty and work outside acting."
+      ],
+      "answer": 3,
+      "explanation": "The speech refers to a long struggle before his breakthrough and carpentry between acting jobs.",
+      "sourceEvidence": "A struggle of about fifteen years; moved between acting work and carpentry."
+    },
+    {
+      "id": "r35-hf-b2-03",
+      "category": "interpretation",
+      "q": "What is the deeper function of recalling the people involved in plays at college?",
+      "options": [
+        "It shows how finding a community gave his ambitions direction.",
+        "It proves that his classmates were all future film stars.",
+        "It suggests that formal teaching was irrelevant to his career.",
+        "It explains why he would have preferred working only on stage."
+      ],
+      "answer": 0,
+      "explanation": "The theatre group gave him a sense of purpose and belonging during a difficult period.",
+      "sourceEvidence": "At college he found people putting on plays and a place to belong."
+    },
+    {
+      "id": "r35-hf-b2-04",
+      "category": "argument",
+      "q": "Why does the speaker repeatedly acknowledge people behind the camera?",
+      "options": [
+        "To explain why awards should only go to technical staff.",
+        "To show that different film jobs can be done by one person.",
+        "To challenge the idea that success belongs to the visible star alone.",
+        "To suggest that acting matters less than writing or directing."
+      ],
+      "answer": 2,
+      "explanation": "His thanks frame filmmaking as collective effort involving cast, writers, directors and crew.",
+      "sourceEvidence": "Recognises writers, directors, cast and every crew member."
+    },
+    {
+      "id": "r35-hf-b2-05",
+      "category": "transfer",
+      "q": "A successful performer wants to follow the principle Ford expresses near the end. What should they do?",
+      "options": [
+        "Limit opportunities for younger colleagues to protect their own career.",
+        "Use their position to support others and widen access to opportunities.",
+        "Avoid taking responsibility outside their own performance.",
+        "Focus on personal recognition as evidence of professional quality."
+      ],
+      "answer": 1,
+      "explanation": "Ford associates success and freedom with responsibility towards other people.",
+      "sourceEvidence": "Success creates freedom but also responsibility towards others."
+    },
+    {
+      "id": "r35-hf-b2-06",
+      "category": "transfer",
+      "q": "Which statement best applies Ford's remarks about stories to a school theatre project?",
+      "options": [
+        "The best result is always the performance with the largest audience.",
+        "The personal experience of a performer matters more than that of viewers.",
+        "A compelling story matters only if it presents an accurate biography.",
+        "A performance can make viewers feel connected through shared experiences."
+      ],
+      "answer": 3,
+      "explanation": "Ford describes storytelling as a means of emotional connection and shared experience.",
+      "sourceEvidence": "Stories can create emotional connection and bring people together."
+    }
+  ],
+  "written": [
+    {
+      "id": "r35-hf-b2-w1",
+      "q": "Explain how Ford balances humour with gratitude in his speech. Give one specific example of each.",
+      "modelAnswer": "His joke that the honour comes a little early makes the speech light, while his thanks to collaborators and supporters express sincere gratitude.",
+      "teacherCriterion": "1 point only if the response includes a specific instance of humour AND a supported expression of gratitude, explaining their effect.",
+      "sourceEvidence": "Early joke about the award; repeated recognition of others."
+    },
+    {
+      "id": "r35-hf-b2-w2",
+      "q": "In your own words, explain how Ford links belonging to his development as an actor. Refer to one moment he describes.",
+      "modelAnswer": "Finding the people putting on plays at college gave him a sense of belonging and helped him see acting as a direction he could pursue.",
+      "teacherCriterion": "1 point for a clear link between community/belonging and the development of his ambitions, supported by the college theatre example.",
+      "sourceEvidence": "College theatre group provided a place to belong and a sense of direction."
+    }
+  ],
+  "auditRevision": "R35-AUTHOR-DRAFT-1"
+}
