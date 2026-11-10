@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-CONTENT-AUDIT-1",
+  "description": "Original C1 independent assessment draft with ten new inference, argument or transfer questions. Content requires teacher approval.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Interpreting the Argument",
+      "description": "Analyse the assumptions and consequences."
+    },
+    {
+      "id": "argument",
+      "title": "Developing a Position",
+      "description": "Examine qualifications and supporting examples."
+    },
+    {
+      "id": "transfer",
+      "title": "Applying the Critique",
+      "description": "Use the ideas to judge new educational situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-c1-interpretation-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Which concern does the writer raise about apparently positive slogans on improvement?",
+      "choices": [
+        "They may shift blame onto learners when practical support is missing.",
+        "They discourage students from reflecting on unsuccessful strategies.",
+        "They imply that everyone learns best through direct criticism.",
+        "They invite schools to abandon all measures of progress."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph one contrasts encouraging growth language with the risk of treating structural problems as personal failures."
+    },
+    {
+      "id": "r34-en-c1-interpretation-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why is the comparison between the two students not simply a story about effort?",
+      "choices": [
+        "The second student is shown to be less interested in learning.",
+        "Their opportunities to turn effort into progress differ.",
+        "The first student receives a different assessment.",
+        "The text shows that good strategies are never useful."
+      ],
+      "answer": 1,
+      "explanation": "Both receive the same poor result, but their access to quiet space, time and support is unequal."
+    },
+    {
+      "id": "r34-en-c1-interpretation-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What is lost when leisure must always produce measurable improvement?",
+      "choices": [
+        "The need for learners to explain their personal goals.",
+        "The value of learning through regular school assessments.",
+        "The freedom to explore without proving immediate progress.",
+        "The possibility that students will ever improve their marks."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph three values reading, discussion and experimentation even without measurable outcomes."
+    },
+    {
+      "id": "r34-en-c1-argument-04",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does the author acknowledge that both students might benefit from better strategies?",
+      "choices": [
+        "To suggest the second student's difficulties are mainly motivational.",
+        "To prove that the same study advice will produce equal results.",
+        "To explain why teachers should rank students by effort.",
+        "To avoid presenting support and personal agency as alternatives."
+      ],
+      "answer": 3,
+      "explanation": "The concession preserves the value of strategies while distinguishing them from the resources needed to use them."
+    },
+    {
+      "id": "r34-en-c1-argument-05",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What is the role of the sentence about a quiet room or an extra hour?",
+      "choices": [
+        "It shows that time management is the writer's primary concern.",
+        "It identifies a practical limit of otherwise sensible advice.",
+        "It suggests that all students should be given identical homework.",
+        "It explains why study plans are ineffective for every student."
+      ],
+      "answer": 1,
+      "explanation": "The example grounds the argument that advice cannot itself provide missing study conditions."
+    },
+    {
+      "id": "r34-en-c1-argument-06",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "How does the last paragraph develop rather than reject individual responsibility?",
+      "choices": [
+        "It argues that students should leave most decisions to schools.",
+        "It recommends measuring the quality of every leisure activity.",
+        "It places the entire burden of improvement on teachers.",
+        "It pairs learners' decisions with institutional measures that enable them."
+      ],
+      "answer": 3,
+      "explanation": "The writer combines revising ineffective strategies with schools' obligations to provide support."
+    },
+    {
+      "id": "r34-en-c1-transfer-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "A school praises students who improve fastest, but some students have no quiet study space. What should it examine?",
+      "choices": [
+        "Whether its recognition confuses available resources with personal merit.",
+        "Whether students without space should receive no feedback.",
+        "Whether fewer assessments would always improve learning.",
+        "Whether high-scoring students should be asked to study longer."
+      ],
+      "answer": 0,
+      "explanation": "The two-student example warns that unequal access can be misread as difference in character."
+    },
+    {
+      "id": "r34-en-c1-transfer-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "A pupil enjoys reading a novel but cannot name a measurable skill gained. What follows from the argument?",
+      "choices": [
+        "The pupil should replace the novel with assessed reading.",
+        "The school should give the pupil a grade for leisure time.",
+        "The activity can still have educational value.",
+        "The experience must have been unproductive."
+      ],
+      "answer": 2,
+      "explanation": "The third paragraph maintains that valuable curiosity and exploration need not be charted."
+    },
+    {
+      "id": "r34-en-c1-transfer-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A teacher wants to encourage persistence without blaming students. Which approach fits the text?",
+      "choices": [
+        "Display more motivational slogans without changing access.",
+        "Offer concrete support and specific feedback alongside encouragement.",
+        "Ask students to explain publicly why they have not improved.",
+        "Measure effort only by the time spent studying."
+      ],
+      "answer": 1,
+      "explanation": "The conclusion names practical support and precise feedback as ways to make agency meaningful."
+    },
+    {
+      "id": "r34-en-c1-transfer-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What would best demonstrate the author's preferred balance in a school policy?",
+      "choices": [
+        "Students are judged by the same effort score regardless of circumstances.",
+        "Rest is rewarded only when it raises the next test result.",
+        "No outcomes are recorded because measurement is undesirable.",
+        "Students can revise their work and access supported study time."
+      ],
+      "answer": 3,
+      "explanation": "Combining support, revision and individual responsibility reflects the final paragraph."
+    }
+  ]
+}
