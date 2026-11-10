@@ -1,0 +1,762 @@
+{
+  "kind": "LSH_LISTENING_DRAFT_COLLECTION_R34_V1",
+  "topic": "ll-matthew-oscars",
+  "relativeSource": "poslech/matthew-oscars/index.html",
+  "published": false,
+  "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
+  "auditStatus": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+  "variants": {
+    "A1": {
+      "goal": "Understand a few simple facts and recognise the speaker’s feelings.",
+      "gist": [
+        {
+          "title": "What does the man do at the start of his speech?",
+          "options": [
+            "He tells everyone to sit down.",
+            "He thanks several people.",
+            "He sings a short song."
+          ],
+          "correct": 1,
+          "why": "He begins by thanking people on stage.",
+          "type": "single"
+        },
+        {
+          "title": "How does the speaker sound for most of the speech?",
+          "options": [
+            "Angry and impatient",
+            "Afraid and confused",
+            "Happy and thankful"
+          ],
+          "correct": 2,
+          "why": "His voice is warm and grateful.",
+          "type": "single"
+        }
+      ],
+      "detail": [
+        {
+          "title": "How many things does he say he needs each day?",
+          "options": [
+            "Two",
+            "Three",
+            "Four"
+          ],
+          "correct": 1,
+          "why": "He introduces three things.",
+          "type": "single"
+        },
+        {
+          "title": "What does he say about his children?",
+          "options": [
+            "He wants them to be proud of him.",
+            "He wants them to make films.",
+            "He wants them to come up on stage with him."
+          ],
+          "correct": 0,
+          "why": "He tells his children that he wants to make them proud.",
+          "type": "single"
+        },
+        {
+          "title": "Which period of his life does he describe near the end?",
+          "options": [
+            "His first day at university",
+            "A recent trip with his family",
+            "His life as a teenager"
+          ],
+          "correct": 2,
+          "why": "The last part includes a story about his teenage years.",
+          "type": "single"
+        }
+      ],
+      "sequence": [
+        "He talks about the other actors.",
+        "He talks about his family.",
+        "He tells a story about his hero."
+      ],
+      "facts": [
+        {
+          "title": "How many children does he name?",
+          "answer": "3 / three",
+          "tokens": [
+            [
+              "3",
+              "three"
+            ]
+          ],
+          "hint": "Write a number or a word.",
+          "kind": "fact"
+        }
+      ],
+      "open": [
+        {
+          "title": "Write one sentence: What does he say about one person in his family?",
+          "answer": "He says his mother is here tonight. / He wants his wife and children to be proud of him.",
+          "criteria": "One comprehensible sentence with a correct detail about a family member.",
+          "hint": "",
+          "kind": "open"
+        }
+      ],
+      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
+      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "published": false,
+      "topic": "ll-matthew-oscars",
+      "level": "A1",
+      "language": "en",
+      "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
+      "suggestedMinutes": 20,
+      "sourceIndices": {
+        "gist": [
+          0,
+          2
+        ],
+        "detail": [
+          0,
+          2,
+          3
+        ],
+        "sequence": [
+          0,
+          1,
+          2
+        ],
+        "facts": [
+          0
+        ],
+        "open": [
+          0
+        ]
+      },
+      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    },
+    "A2": {
+      "goal": "Follow the main message, identify key people and understand a few exact details.",
+      "gist": [
+        {
+          "title": "What is the speaker mainly doing?",
+          "options": [
+            "Explaining how to enter the film business",
+            "Thanking people and sharing personal ideas",
+            "Describing the story of his latest film in detail"
+          ],
+          "correct": 1,
+          "why": "He thanks people and gives a personal reflection.",
+          "type": "single"
+        },
+        {
+          "title": "Which statement best describes the ending?",
+          "options": [
+            "He apologises and leaves quickly.",
+            "He announces a new film project with his family.",
+            "He finishes in a positive, energetic way."
+          ],
+          "correct": 2,
+          "why": "The closing words are upbeat and warmly received.",
+          "type": "single"
+        }
+      ],
+      "detail": [
+        {
+          "title": "Who does he thank for directing the film?",
+          "options": [
+            "Martin Scorsese",
+            "Christopher Nolan",
+            "Jean-Marc Vallée"
+          ],
+          "correct": 2,
+          "why": "He names the director Jean-Marc Vallée.",
+          "type": "single"
+        },
+        {
+          "title": "What does his mother teach him and his brothers?",
+          "options": [
+            "To win every competition",
+            "To respect themselves",
+            "To travel around the world"
+          ],
+          "correct": 1,
+          "why": "He says his mother taught them self-respect.",
+          "type": "single"
+        },
+        {
+          "title": "What is his reaction when he is asked the question again ten years later?",
+          "options": [
+            "He says the question no longer matters.",
+            "He says he has finally achieved it.",
+            "He says he has not achieved it yet."
+          ],
+          "correct": 2,
+          "why": "He answers that he is still far from the goal.",
+          "type": "single"
+        }
+      ],
+      "sequence": [
+        "He talks about people from his film.",
+        "He talks about his father.",
+        "He speaks about his wife and children."
+      ],
+      "facts": [
+        {
+          "title": "How many older brothers does he mention?",
+          "answer": "2 / two",
+          "tokens": [
+            [
+              "2",
+              "two"
+            ]
+          ],
+          "hint": "A number is enough.",
+          "kind": "fact"
+        }
+      ],
+      "open": [
+        {
+          "title": "Choose one person he talks about. What does he say about him or her?",
+          "answer": "He thanks people who worked with him or talks warmly about family members.",
+          "criteria": "Accept one relevant person/group and one clear example of appreciation.",
+          "hint": "",
+          "kind": "open"
+        }
+      ],
+      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
+      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "published": false,
+      "topic": "ll-matthew-oscars",
+      "level": "A2",
+      "language": "en",
+      "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
+      "suggestedMinutes": 20,
+      "sourceIndices": {
+        "gist": [
+          0,
+          2
+        ],
+        "detail": [
+          0,
+          2,
+          4
+        ],
+        "sequence": [
+          0,
+          1,
+          2
+        ],
+        "facts": [
+          0
+        ],
+        "open": [
+          0
+        ]
+      },
+      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    },
+    "B1": {
+      "goal": "Follow a personal narrative, recognise supporting details and explain a central idea.",
+      "gist": [
+        {
+          "title": "Which description best summarises the speech?",
+          "options": [
+            "A report on the film industry and how it is changing",
+            "A personal thank-you that also gives a life lesson",
+            "A defence of why one film deserved to win"
+          ],
+          "correct": 1,
+          "why": "He combines appreciation with a personal idea about life.",
+          "type": "single"
+        },
+        {
+          "title": "Who does the speaker mainly address?",
+          "options": [
+            "Mainly the other actors in his category who did not win",
+            "Mainly the director and the producers of the film",
+            "The people at the ceremony and a wider audience"
+          ],
+          "correct": 2,
+          "why": "He speaks to the room and then broadens his closing message.",
+          "type": "single"
+        }
+      ],
+      "detail": [
+        {
+          "title": "How does he describe the other nominees’ performances?",
+          "options": [
+            "He praises their acting.",
+            "He says they were disappointing.",
+            "He refuses to compare them."
+          ],
+          "correct": 0,
+          "why": "He compliments the other nominated performances.",
+          "type": "single"
+        },
+        {
+          "title": "Who turns out to be the person he is trying to become?",
+          "options": [
+            "A future version of himself",
+            "A famous actor he admired at school",
+            "An older relative who inspired his work"
+          ],
+          "correct": 0,
+          "why": "He uses an imagined future self as an ideal.",
+          "type": "single"
+        },
+        {
+          "title": "What happens in the last part of the speech?",
+          "options": [
+            "He tells a final joke about his co-stars and the director",
+            "He tells the audience about the next film he will make",
+            "He returns to earlier ideas and closes energetically"
+          ],
+          "correct": 2,
+          "why": "His conclusion echoes the speech’s earlier structure.",
+          "type": "single"
+        }
+      ],
+      "sequence": [
+        "He recognises other people in the film business.",
+        "He says he needs three things every day.",
+        "He talks about his father.",
+        "He explains a lesson he learnt at home."
+      ],
+      "facts": [
+        {
+          "title": "Name ONE of the two co-stars he thanks near the beginning.",
+          "answer": "Jared Leto or Jennifer Garner",
+          "tokens": [
+            [
+              "leto",
+              "jared",
+              "garner",
+              "jennifer"
+            ]
+          ],
+          "hint": "",
+          "kind": "fact"
+        }
+      ],
+      "open": [
+        {
+          "title": "Choose a family memory from the speech and explain what it shows about his relationships.",
+          "answer": "For example, he recalls a lesson from his mother and connects it with respect for other people.",
+          "criteria": "Identify a real detail from the recording and explain its significance.",
+          "hint": "",
+          "kind": "open"
+        }
+      ],
+      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
+      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "published": false,
+      "topic": "ll-matthew-oscars",
+      "level": "B1",
+      "language": "en",
+      "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
+      "suggestedMinutes": 20,
+      "sourceIndices": {
+        "gist": [
+          0,
+          2
+        ],
+        "detail": [
+          0,
+          3,
+          5
+        ],
+        "sequence": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "facts": [
+          0
+        ],
+        "open": [
+          0
+        ]
+      },
+      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    },
+    "B2": {
+      "goal": "Identify detail and argument, trace the structure and interpret tone and purpose.",
+      "gist": [
+        {
+          "title": "Which headline best fits the whole speech?",
+          "options": [
+            "A prize-winner explains why acting is an unusually difficult job.",
+            "Personal recognition becomes an opportunity for wider reflection.",
+            "An actor looks back on the decisions that built his career."
+          ],
+          "correct": 1,
+          "why": "He moves beyond the award and shares a broader personal perspective.",
+          "type": "single"
+        },
+        {
+          "title": "Which best describes the overall progression?",
+          "options": [
+            "From a list of films to a debate about which of them deserves the prize",
+            "From an argument with critics to an apology for his career",
+            "From acknowledgements to personal examples and a closing reflection"
+          ],
+          "correct": 2,
+          "why": "The speech develops from thanks to a personal closing message.",
+          "type": "single"
+        }
+      ],
+      "detail": [
+        {
+          "title": "Why does he praise the other nominees early in the speech?",
+          "options": [
+            "He recognises their work before focusing on himself.",
+            "He suggests the judges may have chosen the wrong winner.",
+            "He wants the other nominees to join him on stage."
+          ],
+          "correct": 0,
+          "why": "He acknowledges the quality of the other nominees’ work.",
+          "type": "single"
+        },
+        {
+          "title": "How does his mother’s lesson develop?",
+          "options": [
+            "Respect for oneself helps to build respect for others.",
+            "Respect is presented as something that must be earned through fame.",
+            "People should rely on their families rather than their own judgement."
+          ],
+          "correct": 0,
+          "why": "He describes self-respect as a foundation for respecting others.",
+          "type": "single"
+        },
+        {
+          "title": "What is the effect of returning to a series of short phrases at the end?",
+          "options": [
+            "It introduces an unexpected argument about politics and the industry.",
+            "It creates a memorable conclusion with a sense of completion.",
+            "It corrects what the speaker said earlier in the speech."
+          ],
+          "correct": 1,
+          "why": "The ending echoes earlier themes and creates closure.",
+          "type": "single"
+        }
+      ],
+      "sequence": [
+        "He mentions the other nominees and his colleagues.",
+        "He names three things he needs every day.",
+        "He talks about his father.",
+        "He talks about his mother."
+      ],
+      "facts": [
+        {
+          "title": "Write the surname of the director he thanks.",
+          "answer": "Vallée / Vallee",
+          "tokens": [
+            [
+              "vallee",
+              "vallée"
+            ]
+          ],
+          "hint": "",
+          "kind": "fact"
+        }
+      ],
+      "open": [
+        {
+          "title": "Choose one moment in the speech and explain how it affects the audience.",
+          "answer": "The speech moves between reverent appreciation and comic family images, making a formal moment feel personal.",
+          "criteria": "Identify two contrasting tones and link the shift to a specific moment.",
+          "hint": "",
+          "kind": "open"
+        }
+      ],
+      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
+      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "published": false,
+      "topic": "ll-matthew-oscars",
+      "level": "B2",
+      "language": "en",
+      "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
+      "suggestedMinutes": 20,
+      "sourceIndices": {
+        "gist": [
+          0,
+          2
+        ],
+        "detail": [
+          0,
+          3,
+          5
+        ],
+        "sequence": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "facts": [
+          0
+        ],
+        "open": [
+          0
+        ]
+      },
+      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    },
+    "C1": {
+      "goal": "Analyse rhetorical choices, implied values and the speaker’s construction of a public persona.",
+      "gist": [
+        {
+          "title": "Which account best explains the speech’s broader purpose?",
+          "options": [
+            "He argues that professional recognition is ultimately unimportant.",
+            "He uses a public honour to reflect on values and motivation.",
+            "He presents his success as the outcome of a carefully planned career."
+          ],
+          "correct": 1,
+          "why": "He uses a personal occasion to express wider guiding values.",
+          "type": "single"
+        },
+        {
+          "title": "How is the speaker’s public persona chiefly established?",
+          "options": [
+            "By offering an objective analysis of the competing performances",
+            "By challenging the audience’s understanding of cinema as an art",
+            "By combining professional status with intimate disclosure"
+          ],
+          "correct": 2,
+          "why": "The speech joins a formal setting to personal storytelling.",
+          "type": "single"
+        }
+      ],
+      "detail": [
+        {
+          "title": "What is the effect of acknowledging his fellow nominees?",
+          "options": [
+            "He frames his win within a respected group of performers.",
+            "He undermines the authority of the award before accepting it.",
+            "He implies the other nominees did not have enough experience."
+          ],
+          "correct": 0,
+          "why": "He positions himself appreciatively in relation to fellow artists.",
+          "type": "single"
+        },
+        {
+          "title": "What is the causal link in the lesson attributed to his mother?",
+          "options": [
+            "A strong sense of self-respect allows more respect for others.",
+            "Public success creates the confidence needed to respect others.",
+            "It is easier to gain respect by avoiding close relationships."
+          ],
+          "correct": 0,
+          "why": "He links respect for oneself with respect for other people.",
+          "type": "single"
+        },
+        {
+          "title": "What is the main effect of the final series of short declarations?",
+          "options": [
+            "They reconnect his themes with an informal public identity.",
+            "They reverse his earlier argument in favour of a new one.",
+            "They signal his disappointment with how the whole ceremony has gone."
+          ],
+          "correct": 0,
+          "why": "The memorable close returns to his themes in an informal voice.",
+          "type": "single"
+        }
+      ],
+      "sequence": [
+        "He credits professional peers and collaborators.",
+        "He offers a general organising principle.",
+        "He turns to his late father.",
+        "He recalls a lesson from his upbringing."
+      ],
+      "facts": [
+        {
+          "title": "Give the surname of the director he thanks before naming the co-stars.",
+          "answer": "Vallée / Vallee",
+          "tokens": [
+            [
+              "vallee"
+            ]
+          ],
+          "hint": "",
+          "kind": "fact"
+        }
+      ],
+      "open": [
+        {
+          "title": "Choose two moments that sound very different and discuss the effect of the contrast.",
+          "answer": "The formal acknowledgements establish professionalism; informal scenes and anecdotes make the speaker relatable.",
+          "criteria": "Explain two distinct registers or modes, a transition and its possible impact.",
+          "hint": "",
+          "kind": "open"
+        }
+      ],
+      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
+      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "published": false,
+      "topic": "ll-matthew-oscars",
+      "level": "C1",
+      "language": "en",
+      "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
+      "suggestedMinutes": 20,
+      "sourceIndices": {
+        "gist": [
+          0,
+          2
+        ],
+        "detail": [
+          0,
+          3,
+          6
+        ],
+        "sequence": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "facts": [
+          0
+        ],
+        "open": [
+          0
+        ]
+      },
+      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    },
+    "C2": {
+      "goal": "Evaluate the speech’s argumentative tensions, identity work, rhetorical patterning and alternative interpretations.",
+      "gist": [
+        {
+          "title": "Which overarching tension is most central to the speech?",
+          "options": [
+            "A public rejection of recognition conflicts with the speaker’s desire to win the prize.",
+            "A completed public achievement stands beside an unfinished personal ambition.",
+            "Artistic success is presented as the opposite of commitment to family life."
+          ],
+          "correct": 1,
+          "why": "He accepts a finished public accolade while describing an ongoing personal pursuit.",
+          "type": "single"
+        },
+        {
+          "title": "What is the strongest explanation for the speech’s final tonal shift?",
+          "options": [
+            "It blends public ceremony with an informal and recognisable persona.",
+            "It abandons the earlier personal themes for unrelated comic material.",
+            "It replaces direct address with a strictly institutional register."
+          ],
+          "correct": 0,
+          "why": "The close combines a serious occasion with conversational familiarity.",
+          "type": "single"
+        }
+      ],
+      "detail": [
+        {
+          "title": "Which inference about the opening acknowledgements is best supported?",
+          "options": [
+            "They imply that collective credit makes individual honours logically invalid.",
+            "They serve chiefly to distance the speaker from the other nominees.",
+            "They frame the achievement generously without undermining its significance."
+          ],
+          "correct": 2,
+          "why": "He honours other performers while accepting his own recognition.",
+          "type": "single"
+        },
+        {
+          "title": "What is the force of the transition from self-respect to respect for others?",
+          "options": [
+            "It presents self-interest as incompatible with interpersonal obligations.",
+            "It implies that respecting others is unnecessary once one has self-esteem.",
+            "It reframes an apparently inward-looking value as a social one."
+          ],
+          "correct": 2,
+          "why": "The personal lesson is extended to an interpersonal ethic.",
+          "type": "single"
+        },
+        {
+          "title": "What is the rhetorical effect of revisiting the opening framework in the closing moments?",
+          "options": [
+            "It invalidates the original framework through contradictory examples.",
+            "It leaves the audience with a deliberately unresolved list of facts.",
+            "It produces coherence while expanding the focus to include listeners."
+          ],
+          "correct": 2,
+          "why": "The conclusion reconnects his strands and addresses the audience more widely.",
+          "type": "single"
+        }
+      ],
+      "sequence": [
+        "He acknowledges other figures connected with the film.",
+        "He presents a brief organising device.",
+        "He turns to his late father.",
+        "He articulates a lesson from his upbringing."
+      ],
+      "facts": [
+        {
+          "title": "Give BOTH ages at which the speaker is questioned in the remembered conversations.",
+          "answer": "15 and 25",
+          "tokens": [
+            [
+              "15",
+              "fifteen"
+            ],
+            [
+              "25",
+              "twenty five",
+              "twenty-five"
+            ]
+          ],
+          "hint": "",
+          "kind": "fact"
+        }
+      ],
+      "open": [
+        {
+          "title": "How does the ending of the speech relate to its opening? Argue your case.",
+          "answer": "The close returns to the three-part framework; the Oscar marks an achievement while the hero story keeps the pursuit open, so the speech ends in productive tension rather than closure.",
+          "criteria": "A clear thesis on how the ending relates to the opening, supported by two moments.",
+          "hint": "",
+          "kind": "open"
+        }
+      ],
+      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
+      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "published": false,
+      "topic": "ll-matthew-oscars",
+      "level": "C2",
+      "language": "en",
+      "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
+      "suggestedMinutes": 20,
+      "sourceIndices": {
+        "gist": [
+          0,
+          3
+        ],
+        "detail": [
+          0,
+          3,
+          6
+        ],
+        "sequence": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "facts": [
+          0
+        ],
+        "open": [
+          0
+        ]
+      },
+      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    }
+  }
+}

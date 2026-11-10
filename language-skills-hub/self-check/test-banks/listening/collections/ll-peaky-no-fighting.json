@@ -1,0 +1,750 @@
+{
+  "kind": "LSH_LISTENING_DRAFT_COLLECTION_R34_V1",
+  "topic": "ll-peaky-no-fighting",
+  "relativeSource": "poslech/peaky-no-fighting/index.html",
+  "published": false,
+  "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+  "auditStatus": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+  "variants": {
+    "A1": {
+      "goal": "Recognise a situation, changes in voice and a few basic instructions.",
+      "gist": [
+        {
+          "title": "What is the main man doing?",
+          "options": [
+            "Asking guests for directions",
+            "Explaining rules to a group",
+            "Inviting everyone to dance"
+          ],
+          "correct": 1,
+          "why": "He gives several instructions to other men.",
+          "type": "single"
+        },
+        {
+          "title": "Does anybody speak while he is talking?",
+          "options": [
+            "Yes; other men interrupt",
+            "No; the other men only listen",
+            "No; he speaks alone for the entire scene"
+          ],
+          "correct": 0,
+          "why": "Several other men speak briefly.",
+          "type": "single"
+        }
+      ],
+      "detail": [
+        {
+          "title": "What special event is taking place?",
+          "options": [
+            "A birthday dinner",
+            "A business meeting in the office",
+            "A wedding celebration"
+          ],
+          "correct": 2,
+          "why": "He says it is his wedding day.",
+          "type": "single"
+        },
+        {
+          "title": "Which activity does the speaker forbid?",
+          "options": [
+            "Singing",
+            "Taking photographs",
+            "Racing"
+          ],
+          "correct": 2,
+          "why": "He lists racing among the prohibited activities.",
+          "type": "single"
+        },
+        {
+          "title": "Why does he want people to behave?",
+          "options": [
+            "He does not want to embarrass someone",
+            "He wants to leave immediately",
+            "He worries about delays in the event programme"
+          ],
+          "correct": 0,
+          "why": "He wants to prevent embarrassment at this important event.",
+          "type": "single"
+        }
+      ],
+      "sequence": [
+        "He tells the men why today is special.",
+        "Someone asks a question about snow.",
+        "He says the most important rule again and again."
+      ],
+      "facts": [
+        {
+          "title": "Write the first name of the bride.",
+          "answer": "Grace",
+          "tokens": [
+            [
+              "grace"
+            ]
+          ],
+          "hint": "One first name.",
+          "kind": "fact"
+        }
+      ],
+      "open": [
+        {
+          "title": "How does the main speaker feel? Write a short sentence.",
+          "answer": "He sounds angry / stressed / worried about the event.",
+          "criteria": "Accept a clear adjective with a simple reason based on voice or situation.",
+          "hint": "",
+          "kind": "open"
+        }
+      ],
+      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
+      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "published": false,
+      "topic": "ll-peaky-no-fighting",
+      "level": "A1",
+      "language": "en",
+      "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+      "suggestedMinutes": 20,
+      "sourceIndices": {
+        "gist": [
+          0,
+          2
+        ],
+        "detail": [
+          0,
+          2,
+          3
+        ],
+        "sequence": [
+          0,
+          1,
+          2
+        ],
+        "facts": [
+          0
+        ],
+        "open": [
+          0
+        ]
+      },
+      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    },
+    "A2": {
+      "goal": "Understand the purpose of the exchange and selected concrete details.",
+      "gist": [
+        {
+          "title": "What does the speaker mainly want to achieve?",
+          "options": [
+            "Arrange transport for all the visitors",
+            "Prevent trouble during an event",
+            "Keep the guests entertained"
+          ],
+          "correct": 1,
+          "why": "His instructions are meant to prevent trouble.",
+          "type": "single"
+        },
+        {
+          "title": "How do the other men respond?",
+          "options": [
+            "They all agree loudly with him",
+            "They laugh at him and walk away",
+            "Some question or interrupt him"
+          ],
+          "correct": 2,
+          "why": "Several men interrupt or challenge him.",
+          "type": "single"
+        }
+      ],
+      "detail": [
+        {
+          "title": "What occasion does the speaker refer to?",
+          "options": [
+            "His own wedding",
+            "A family funeral",
+            "A military ceremony"
+          ],
+          "correct": 0,
+          "why": "He explicitly identifies the occasion as his wedding day.",
+          "type": "single"
+        },
+        {
+          "title": "Which of these is on his forbidden-activities list?",
+          "options": [
+            "Opening presents",
+            "Playing board games",
+            "Telling fortunes"
+          ],
+          "correct": 2,
+          "why": "Fortune-telling is one of the activities he rejects.",
+          "type": "single"
+        },
+        {
+          "title": "What does he do with his final instruction?",
+          "options": [
+            "He repeats it forcefully",
+            "He whispers it once",
+            "He writes it down on a piece of paper"
+          ],
+          "correct": 0,
+          "why": "Repetition and raised volume intensify his final warning.",
+          "type": "single"
+        }
+      ],
+      "sequence": [
+        "He tells the men what day it is.",
+        "A man says the speaker broke a promise.",
+        "He talks about the other family."
+      ],
+      "facts": [
+        {
+          "title": "Which woman's name does the speaker say? Write her first name.",
+          "answer": "Grace",
+          "tokens": [
+            [
+              "grace"
+            ]
+          ],
+          "hint": "",
+          "kind": "fact"
+        }
+      ],
+      "open": [
+        {
+          "title": "Explain ONE reason why the scene becomes tense.",
+          "answer": "The groups dislike each other (bad blood); some guests are in uniform; the speaker fears trouble.",
+          "criteria": "Accept any grounded cause, in one or two clear sentences.",
+          "hint": "",
+          "kind": "open"
+        }
+      ],
+      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
+      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "published": false,
+      "topic": "ll-peaky-no-fighting",
+      "level": "A2",
+      "language": "en",
+      "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+      "suggestedMinutes": 20,
+      "sourceIndices": {
+        "gist": [
+          0,
+          2
+        ],
+        "detail": [
+          0,
+          2,
+          4
+        ],
+        "sequence": [
+          0,
+          1,
+          2
+        ],
+        "facts": [
+          0
+        ],
+        "open": [
+          0
+        ]
+      },
+      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    },
+    "B1": {
+      "goal": "Follow the key conflict, specific restrictions and changes in tone.",
+      "gist": [
+        {
+          "title": "Which summary best matches the scene?",
+          "options": [
+            "A host tries to control a risky social gathering",
+            "Two friends plan a surprise celebration",
+            "An embarrassed guest apologises for a serious misunderstanding"
+          ],
+          "correct": 0,
+          "why": "The speaker attempts to prevent conflict at an important event.",
+          "type": "single"
+        },
+        {
+          "title": "What creates some of the humour?",
+          "options": [
+            "The speaker tells a long joke about the wedding",
+            "The men keep laughing at the clothes the speaker is wearing",
+            "Unexpected interruptions in the middle of serious warnings"
+          ],
+          "correct": 2,
+          "why": "The interruptions contrast with the speaker’s determination.",
+          "type": "single"
+        }
+      ],
+      "detail": [
+        {
+          "title": "One man says the speaker broke a promise. What was the promise?",
+          "options": [
+            "There would be no relatives at the party",
+            "There would be no uniforms",
+            "There would be more musicians at the event"
+          ],
+          "correct": 1,
+          "why": "A man complains about the presence of uniforms.",
+          "type": "single"
+        },
+        {
+          "title": "Which unusual thing does the speaker forbid?",
+          "options": [
+            "Leaving a coat in the kitchen",
+            "Taking fuel from other people’s cars",
+            "Using a telephone during the ceremony"
+          ],
+          "correct": 1,
+          "why": "He forbids siphoning petrol from the guests’ cars.",
+          "type": "single"
+        },
+        {
+          "title": "What happens to the final warning?",
+          "options": [
+            "He says it only once, and very quietly",
+            "He makes a joke about it",
+            "He repeats it, louder each time"
+          ],
+          "correct": 2,
+          "why": "His final command grows louder through repetition.",
+          "type": "single"
+        }
+      ],
+      "sequence": [
+        "He tells the men what day it is.",
+        "A man complains about something the speaker had promised.",
+        "He talks about the bride's family.",
+        "Someone asks a question that seems off-topic."
+      ],
+      "facts": [
+        {
+          "title": "Write the bride’s first name.",
+          "answer": "Grace",
+          "tokens": [
+            [
+              "grace"
+            ]
+          ],
+          "hint": "",
+          "kind": "fact"
+        }
+      ],
+      "open": [
+        {
+          "title": "Why does one man complain at the start, and how does the speaker deal with it?",
+          "answer": "He complains that there are uniforms although the speaker promised there would be none; the speaker just says \"Nevertheless\" and carries on.",
+          "criteria": "Mention the broken promise (uniforms) and the speaker's dismissive reply.",
+          "hint": "",
+          "kind": "open"
+        }
+      ],
+      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
+      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "published": false,
+      "topic": "ll-peaky-no-fighting",
+      "level": "B1",
+      "language": "en",
+      "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+      "suggestedMinutes": 20,
+      "sourceIndices": {
+        "gist": [
+          0,
+          2
+        ],
+        "detail": [
+          0,
+          3,
+          5
+        ],
+        "sequence": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "facts": [
+          0
+        ],
+        "open": [
+          0
+        ]
+      },
+      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    },
+    "B2": {
+      "goal": "Understand what is meant but not said, idioms, and how the characters relate to each other.",
+      "gist": [
+        {
+          "title": "What is the speaker trying to do?",
+          "options": [
+            "To announce a business deal for the future",
+            "To make sure the day goes without trouble",
+            "To make the two families friends for good"
+          ],
+          "correct": 1,
+          "why": "His aim is to prevent trouble during the gathering.",
+          "type": "single"
+        },
+        {
+          "title": "Why are the men's interruptions important?",
+          "options": [
+            "They make it harder for him to keep control",
+            "They show that the men support the bride's family",
+            "They make fun of him in front of the guests"
+          ],
+          "correct": 0,
+          "why": "Their objections and off-topic questions make control difficult.",
+          "type": "single"
+        }
+      ],
+      "detail": [
+        {
+          "title": "One man complains about the uniforms. Why does this matter?",
+          "options": [
+            "It reminds everyone that the two groups do not get on",
+            "It shows that the men would like to join the army themselves",
+            "It suggests that the wedding may be cancelled"
+          ],
+          "correct": 0,
+          "why": "The uniforms remind everyone of the bad blood between the groups.",
+          "type": "single"
+        },
+        {
+          "title": "One man says he was only trying to \"sell\" the speaker. What does he mean?",
+          "options": [
+            "He was trying to make him look good",
+            "He was warning everyone about the speaker's debts",
+            "He was offering the speaker a business deal"
+          ],
+          "correct": 0,
+          "why": "\"Sell\" here means to talk him up and make him look good.",
+          "type": "single"
+        },
+        {
+          "title": "He repeats his last order several times. What is the effect?",
+          "options": [
+            "It shows that the problem is already solved",
+            "It shows that he has given up trying to control them",
+            "It makes the order stronger and more forceful"
+          ],
+          "correct": 2,
+          "why": "Repetition and shouting turn an instruction into an emphatic threat.",
+          "type": "single"
+        }
+      ],
+      "sequence": [
+        "He reminds the men what day it is.",
+        "One of the men protests about the guests' clothing.",
+        "He explains why nothing must go wrong today.",
+        "Someone asks about snow."
+      ],
+      "facts": [
+        {
+          "title": "What word does he use for the group in uniform?",
+          "answer": "cavalry",
+          "tokens": [
+            [
+              "cavalry"
+            ]
+          ],
+          "hint": "",
+          "kind": "fact"
+        }
+      ],
+      "open": [
+        {
+          "title": "Does the way he speaks help him get what he wants? Give examples from the scene.",
+          "answer": "He seeks peace and restraint while using anger, intimidation and forceful threats.",
+          "criteria": "Identify both the de-escalatory aim and the aggressive delivery; support both with evidence.",
+          "hint": "",
+          "kind": "open"
+        }
+      ],
+      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
+      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "published": false,
+      "topic": "ll-peaky-no-fighting",
+      "level": "B2",
+      "language": "en",
+      "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+      "suggestedMinutes": 20,
+      "sourceIndices": {
+        "gist": [
+          0,
+          2
+        ],
+        "detail": [
+          0,
+          3,
+          5
+        ],
+        "sequence": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "facts": [
+          0
+        ],
+        "open": [
+          0
+        ]
+      },
+      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    },
+    "C1": {
+      "goal": "Interpret indirect meanings, interpersonal power, idiomatic speech and comic incongruity.",
+      "gist": [
+        {
+          "title": "Which tension is most central to the scene?",
+          "options": [
+            "An explicit rejection of family ties in favour of individual freedom",
+            "An effort to obtain approval through careful politeness",
+            "An attempt to create order performed through verbal aggression"
+          ],
+          "correct": 2,
+          "why": "He demands restraint while speaking aggressively.",
+          "type": "single"
+        },
+        {
+          "title": "What best explains the scene’s mixture of danger and comedy?",
+          "options": [
+            "Severe warnings collide with trivial or inappropriate concerns",
+            "The speaker deliberately jokes to make his rules easier to accept",
+            "The men openly laugh at the speaker's anger"
+          ],
+          "correct": 0,
+          "why": "The incongruity of threats and mundane requests creates dark humour.",
+          "type": "single"
+        }
+      ],
+      "detail": [
+        {
+          "title": "What is the rhetorical force of “nevertheless” after an objection?",
+          "options": [
+            "He admits the objection is valid and promises to fix the problem",
+            "He rejects the objection as a lie",
+            "He acknowledges the objection but overrides it"
+          ],
+          "correct": 2,
+          "why": "He acknowledges a challenge only to override it.",
+          "type": "single"
+        },
+        {
+          "title": "Why is “spinning yarns” not meant literally here?",
+          "options": [
+            "The man is accused of telling dubious stories about him",
+            "The man is accused of wasting everyone's time with pointless small talk",
+            "The man is accused of revealing family secrets"
+          ],
+          "correct": 0,
+          "why": "The idiom refers to exaggerating or inventing stories.",
+          "type": "single"
+        },
+        {
+          "title": "How would you best describe the register?",
+          "options": [
+            "Colloquial and profane, but mostly polite requests",
+            "Colloquial, profane and imperative",
+            "Formal and ceremonious, apart from a few swear words"
+          ],
+          "correct": 1,
+          "why": "Colloquialisms, swearing and commands dominate.",
+          "type": "single"
+        }
+      ],
+      "sequence": [
+        "He invokes the significance of the day.",
+        "A listener disputes what had been agreed.",
+        "He turns to the bride and her family.",
+        "A question about \"snow\" interrupts him."
+      ],
+      "facts": [
+        {
+          "title": "Which woman is explicitly at the centre of the speaker’s concern? Give her first name.",
+          "answer": "Grace",
+          "tokens": [
+            [
+              "grace"
+            ]
+          ],
+          "hint": "",
+          "kind": "fact"
+        }
+      ],
+      "open": [
+        {
+          "title": "Analyse one interruption: what does it do to the speaker's control of the conversation?",
+          "answer": "A mundane or inappropriate question diverts attention from his severe warning and forces a shift in topic.",
+          "criteria": "Name an observable interruption and show how it alters conversational power or pacing.",
+          "hint": "",
+          "kind": "open"
+        }
+      ],
+      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
+      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "published": false,
+      "topic": "ll-peaky-no-fighting",
+      "level": "C1",
+      "language": "en",
+      "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+      "suggestedMinutes": 20,
+      "sourceIndices": {
+        "gist": [
+          0,
+          2
+        ],
+        "detail": [
+          0,
+          3,
+          5
+        ],
+        "sequence": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "facts": [
+          0
+        ],
+        "open": [
+          0
+        ]
+      },
+      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    },
+    "C2": {
+      "goal": "Critically analyse power, register and comic timing in authentic colloquial dialogue.",
+      "gist": [
+        {
+          "title": "Which reading best captures the scene’s paradox?",
+          "options": [
+            "The speaker demands restraint while admitting that he himself provoked the conflict",
+            "The speaker demands restraint but secretly hopes for a fight",
+            "The speaker demands restraint while modelling rhetorical escalation"
+          ],
+          "correct": 2,
+          "why": "His attempt to stop conflict is itself verbally aggressive.",
+          "type": "single"
+        },
+        {
+          "title": "What is a plausible counter-reading of the speaker’s shouting?",
+          "options": [
+            "It shows he has already lost the men's respect",
+            "It is mainly meant to be heard by the guests outside the room",
+            "It could reveal concern that his authority may be fragile"
+          ],
+          "correct": 2,
+          "why": "His volume can signify both attempted dominance and threatened composure.",
+          "type": "single"
+        }
+      ],
+      "detail": [
+        {
+          "title": "How does the concessive marker after the objection operate?",
+          "options": [
+            "It acknowledges resistance while retaining the floor",
+            "It concedes the point and promises a compromise later",
+            "It signals sarcastic agreement with the objection"
+          ],
+          "correct": 0,
+          "why": "He briefly registers the challenge without relinquishing control.",
+          "type": "single"
+        },
+        {
+          "title": "What does the appeal to a shared external antagonist accomplish?",
+          "options": [
+            "It defines a perceived outside provocation to be resisted",
+            "It shifts responsibility away from any of the men present",
+            "It reveals that no actual disagreement exists"
+          ],
+          "correct": 0,
+          "why": "He places group restraint in the context of hostility from outsiders.",
+          "type": "single"
+        },
+        {
+          "title": "Which conclusion about power is best supported by the clip alone?",
+          "options": [
+            "Authority is loudly asserted but repeatedly negotiated in talk",
+            "The speaker's authority collapses completely and visibly by the end of the scene",
+            "The interruptions show the men openly reject his authority"
+          ],
+          "correct": 0,
+          "why": "We observe claims to authority and interruptions, not later compliance or mental states.",
+          "type": "single"
+        }
+      ],
+      "sequence": [
+        "He invokes the day itself as grounds for compliance.",
+        "Prior terms are contested.",
+        "He turns to the bride and her family.",
+        "An off-topic question about \"snow\" intervenes."
+      ],
+      "facts": [
+        {
+          "title": "Which woman does the speaker name? Give her first name.",
+          "answer": "Grace",
+          "tokens": [
+            [
+              "grace"
+            ]
+          ],
+          "hint": "",
+          "kind": "fact"
+        }
+      ],
+      "open": [
+        {
+          "title": "Evaluate the speaker's strategy for keeping order: how far does it persuade, and how far does it coerce?",
+          "answer": "His justification concerns another person’s welfare, yet his threats and profanity rely on intimidation; a counter-reading may emphasise a volatile setting.",
+          "criteria": "Make a nuanced argument with one supporting detail and an explicit counter-reading.",
+          "hint": "",
+          "kind": "open"
+        }
+      ],
+      "kind": "LSH_LISTENING_TEST_CANDIDATE_R34_V1",
+      "stage": "CLAUDE_INDEPENDENT_REWRITE_PENDING",
+      "published": false,
+      "topic": "ll-peaky-no-fighting",
+      "level": "C2",
+      "language": "en",
+      "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
+      "suggestedMinutes": 20,
+      "sourceIndices": {
+        "gist": [
+          0,
+          3
+        ],
+        "detail": [
+          0,
+          3,
+          6
+        ],
+        "sequence": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "facts": [
+          0
+        ],
+        "open": [
+          0
+        ]
+      },
+      "provenance": "selected existing practice tasks as structure-only seed; prompts and options must be independently rewritten and teacher-approved before student exposure",
+      "teacherControlledPasses": 2,
+      "assessmentNotes": "Keep three phases. Never imply completed independent authored test. Written answers require teacher 0/1 review."
+    }
+  }
+}
