@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "es",
+  "level": "B2",
+  "sourceTitle": "Entre dos ciudades",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e4a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Prueba independiente de comprensión e inferencia; borrador pendiente de evaluación humana del nivel y las claves.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interpretación"
+    },
+    {
+      "id": "reasoning",
+      "title": "Argumentación"
+    },
+    {
+      "id": "transfer",
+      "title": "Aplicación"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-es-b2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué contraste sugiere Lena entre conocer la ciudad y sentirse acompañada?",
+      "choices": [
+        "Dominar los lugares no garantiza tener relaciones cercanas.",
+        "Visitar museos impide hacer amistades.",
+        "Aprender rutas es más difícil que estudiar.",
+        "Vivir en Róterdam significa sentirse siempre sola."
+      ],
+      "answer": 0,
+      "explanation": "Lena sabe moverse por la ciudad, pero carece de alguien con quien compartir un mal día."
+    },
+    {
+      "id": "r41-es-b2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Qué función cumple la descripción de las fotos alegres de Lena?",
+      "choices": [
+        "Explica que quería ser fotógrafa profesional.",
+        "Muestra cómo su imagen pública ocultaba dificultades personales.",
+        "Demuestra que Róterdam no tiene lugares atractivos.",
+        "Indica que Alex había dejado de leer sus mensajes."
+      ],
+      "answer": 1,
+      "explanation": "Las fotos proyectaban felicidad mientras Lena se sentía sola durante su primer mes."
+    },
+    {
+      "id": "r41-es-b2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Por qué las entrevistas de radio cambian la percepción de Lena?",
+      "choices": [
+        "La convierten en la directora remunerada del proyecto.",
+        "Le enseñan todos los idiomas del mercado.",
+        "Le permiten reconocer sus propios sentimientos en los relatos ajenos.",
+        "Le obligan a dejar de visitar su barrio."
+      ],
+      "answer": 2,
+      "explanation": "La experiencia de una recién llegada le resulta familiar y reduce su vergüenza."
+    },
+    {
+      "id": "r41-es-b2-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué indica que Lena prefiera las conversaciones al certificado?",
+      "choices": [
+        "Desea abandonar toda actividad de voluntariado.",
+        "No cree que los certificados tengan ningún uso.",
+        "Piensa que el programa solo sirve para conseguir trabajo.",
+        "Valora las relaciones humanas más que el reconocimiento formal."
+      ],
+      "answer": 3,
+      "explanation": "El texto contrapone explícitamente el valor de hablar con personas y el certificado."
+    },
+    {
+      "id": "r41-es-b2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué reconoce Lena al pensar en enviar una vieja foto sin más palabras?",
+      "choices": [
+        "Que Alex ya no conserva recuerdos de los exámenes.",
+        "Que había evitado preguntar por las dificultades reales de Alex.",
+        "Que las fotos antiguas son siempre ofensivas.",
+        "Que no debería hablar de su propia experiencia."
+      ],
+      "answer": 1,
+      "explanation": "La foto le recuerda que antes compartían problemas y ahora solo imágenes felices."
+    },
+    {
+      "id": "r41-es-b2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Por qué Lena contempla que Alex pueda sentirse excluido?",
+      "choices": [
+        "Porque Alex ha perdido su plaza en la universidad.",
+        "Porque la radio ya no admite voluntarios.",
+        "Porque sus amigos le han prohibido viajar.",
+        "Porque entiende que una comunicación selectiva puede crear distancia."
+      ],
+      "answer": 3,
+      "explanation": "Lena reconoce que sus publicaciones podían hacer parecer su vida mejor de lo que era."
+    },
+    {
+      "id": "r41-es-b2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Si Alex no desea hablar en público, ¿cómo puede aceptar la invitación?",
+      "choices": [
+        "Asistir únicamente para escuchar y pasear al día siguiente.",
+        "Preparar una entrevista para la radio.",
+        "Dirigir la velada de historias del barrio.",
+        "Viajar solo para intervenir ante los asistentes."
+      ],
+      "answer": 0,
+      "explanation": "Lena aclara que participar no exige actuar ni hablar delante de los demás."
+    },
+    {
+      "id": "r41-es-b2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "¿Qué respuesta sería razonable si Alex no puede pagar el tren?",
+      "choices": [
+        "Solicitar que Lena pague obligatoriamente el viaje.",
+        "Romper la amistad por no asistir.",
+        "Proponer una llamada regular en vez de viajar.",
+        "Pedir a la radio un salario para cubrirlo."
+      ],
+      "answer": 2,
+      "explanation": "La alternativa de fijar una hora para hablar responde a la dificultad económica."
+    },
+    {
+      "id": "r41-es-b2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Una amiga publica fotos felices mientras pasa una mala época. ¿Qué enseña el relato de Lena?",
+      "choices": [
+        "Las redes siempre muestran la verdad completa.",
+        "Una imagen atractiva no cuenta necesariamente toda la experiencia.",
+        "Las fotos deberían sustituir las conversaciones.",
+        "Solo las personas recién llegadas se sienten solas."
+      ],
+      "answer": 1,
+      "explanation": "El primer párrafo distingue la imagen publicada del estado emocional real."
+    },
+    {
+      "id": "r41-es-b2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "¿Qué decisión refleja mejor el propósito final de Lena?",
+      "choices": [
+        "Organizar otra publicación para aparentar felicidad.",
+        "Dar prioridad al certificado frente a los encuentros.",
+        "Evitar mencionar dificultades para no preocupar a Alex.",
+        "Conversar con sinceridad aunque no produzcan una foto perfecta."
+      ],
+      "answer": 3,
+      "explanation": "El cierre pide un diálogo auténtico, no otra imagen de felicidad aparente."
+    }
+  ]
+}
