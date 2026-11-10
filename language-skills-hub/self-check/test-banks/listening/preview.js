@@ -1,4 +1,4 @@
-/* R34 QA-ONLY Listening candidate: structural subset, NOT independently authored. */
+/* R34 QA-ONLY Listening: newly authored assessment draft, awaiting video/CEFR review. */
 (()=>{
  'use strict';
  const core=window.LSHListeningCore;
