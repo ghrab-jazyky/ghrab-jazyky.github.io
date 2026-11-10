@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "de",
+  "level": "B1",
+  "sourceTitle": "Das Problem, immer gut sein zu wollen",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Original B1 test draft; independent pedagogy approval pending.",
+  "tabs": [
+    {
+      "id": "denken",
+      "title": "Wie Lara denkt"
+    },
+    {
+      "id": "musik",
+      "title": "Die Musikerfahrung"
+    },
+    {
+      "id": "alltag",
+      "title": "Die Idee anwenden"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-de-b1-01",
+      "tab": "denken",
+      "kind": "mc",
+      "q": "Warum vermeidet Lara anfangs bestimmte Schulfächer?",
+      "choices": [
+        "Sie möchte nur Musikunterricht haben.",
+        "Sie fühlt sich in diesen Fächern nicht sicher genug.",
+        "Ihre Eltern erlauben diese Fächer nicht.",
+        "Sie kennt die anderen Schülerinnen nicht."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Im ersten Absatz meidet Lara Fächer, in denen sie sich weniger sicher fühlt."
+    },
+    {
+      "id": "r35-de-b1-02",
+      "tab": "denken",
+      "kind": "mc",
+      "q": "Was glaubt Lara, wenn ihr etwas nicht sofort gelingt?",
+      "choices": [
+        "Die Lehrkraft hat falsch erklärt.",
+        "Alle Mitschüler haben dasselbe Problem.",
+        "Sie muss schneller arbeiten als die anderen.",
+        "Ihr fehlt vielleicht einfach das Talent."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Lara interpretiert Schwierigkeiten zunächst als Zeichen fehlender Begabung."
+    },
+    {
+      "id": "r35-de-b1-03",
+      "tab": "denken",
+      "kind": "mc",
+      "q": "Wie reagiert Lara auf den Vorschlag der Musiklehrerin?",
+      "choices": [
+        "Sie versucht, das ganze Stück schneller zu spielen.",
+        "Sie lässt das Instrument eine Woche liegen.",
+        "Sie übt den schwierigen Teil langsam.",
+        "Sie bittet andere, für sie vorzuspielen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Die Lehrerin empfiehlt vier schwierige Takte, die Lara langsam wiederholt."
+    },
+    {
+      "id": "r35-de-b1-04",
+      "tab": "musik",
+      "kind": "mc",
+      "q": "Warum soll Lara nur vier Takte üben?",
+      "choices": [
+        "Damit sie sich auf eine konkrete Schwierigkeit konzentriert.",
+        "Weil der Rest des Stückes bedeutungslos ist.",
+        "Weil sie alle anderen Noten schon kennt.",
+        "Damit der Unterricht früher beendet wird."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Eine kleine schwierige Stelle lässt sich gezielter bearbeiten als das ganze Stück."
+    },
+    {
+      "id": "r35-de-b1-05",
+      "tab": "musik",
+      "kind": "mc",
+      "q": "Was gelingt Lara eine Woche später?",
+      "choices": [
+        "Sie muss der Klasse nicht mehr vorspielen.",
+        "Sie bekommt sofort ein neues Instrument.",
+        "Sie spielt das ganze Stück ohne Pause.",
+        "Sie braucht überhaupt nicht mehr zu üben."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Nach einer Woche spielt sie das vollständige Stück durch."
+    },
+    {
+      "id": "r35-de-b1-06",
+      "tab": "musik",
+      "kind": "mc",
+      "q": "Was verändert sich stärker als Laras musikalisches Talent?",
+      "choices": [
+        "Ihre Einstellung zu Schwierigkeiten und Fehlern.",
+        "Ihre Bereitschaft, mit Musik aufzuhören.",
+        "Die Zahl der Mitschüler in ihrer Klasse.",
+        "Die Geschwindigkeit aller Musikstücke."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Der dritte Absatz betont den Wechsel ihrer Denkweise, nicht außergewöhnliche Begabung."
+    },
+    {
+      "id": "r35-de-b1-07",
+      "tab": "alltag",
+      "kind": "mc",
+      "q": "Ein Mitschüler hat Angst, Fragen zu stellen. Was zeigt Laras Beispiel?",
+      "choices": [
+        "Fragen sind nur etwas für schwache Lernende.",
+        "Hilfe und gezieltes Üben können sinnvoll sein.",
+        "Man sollte schwierige Fächer ganz vermeiden.",
+        "Gute Noten entstehen ohne eigenen Einsatz."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Laras Entwicklung spricht dafür, Schwierigkeiten gezielt anzusprechen und zu bearbeiten."
+    },
+    {
+      "id": "r35-de-b1-08",
+      "tab": "alltag",
+      "kind": "mc",
+      "q": "Was bedeutet Fortschritt für Lara am Ende?",
+      "choices": [
+        "Alle Noten völlig unwichtig zu finden.",
+        "Nur noch sehr leichte Aufgaben zu machen.",
+        "Sich nie wieder über Fehler zu ärgern.",
+        "Zu erkennen, was sie noch üben sollte."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Der letzte Absatz erklärt, dass Fortschritt auch die Einsicht in den Übungsbedarf sein kann."
+    },
+    {
+      "id": "r35-de-b1-09",
+      "tab": "alltag",
+      "kind": "mc",
+      "q": "Du hast einen Fehler beim Rechnen. Was passt zu Laras Methode?",
+      "choices": [
+        "Immer wieder alles rechnen, ohne die Stelle zu prüfen.",
+        "Zuerst den schwierigen Schritt genauer untersuchen.",
+        "Nur das Endergebnis aus dem Buch übernehmen.",
+        "Die Aufgabe sofort mit einem leichteren Fach ersetzen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Das Üben eines konkreten Problems lässt sich von Musik auf andere Fächer übertragen."
+    },
+    {
+      "id": "r35-de-b1-10",
+      "tab": "alltag",
+      "kind": "mc",
+      "q": "Welche Aussage passt am besten zu Laras Erfahrung?",
+      "choices": [
+        "Gute Noten beweisen ein für immer festes Talent.",
+        "Fehler verschwinden nach wenigen Minuten.",
+        "Wer unsicher ist, sollte Aufgaben meiden.",
+        "Ein Fehler kann zeigen, was man anders machen kann."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Laras neue Frage richtet sich auf eine mögliche Veränderung ihres Vorgehens."
+    }
+  ]
+}
