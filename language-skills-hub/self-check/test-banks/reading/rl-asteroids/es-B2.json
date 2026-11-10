@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "es",
+  "level": "B2",
+  "sourceTitle": "Asteroides: riesgo no significa pánico",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R37-CONTENT-AUDIT-1",
+  "description": "Original independent B2 planetary defence reading test draft, awaiting content audit",
+  "tabs": [
+    {
+      "id": "sentido",
+      "title": "Interpretar el mensaje"
+    },
+    {
+      "id": "evidencia",
+      "title": "Examinar las pruebas"
+    },
+    {
+      "id": "aplicacion",
+      "title": "Aplicar conclusiones"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r37-es-b2-01",
+      "tab": "sentido",
+      "kind": "mc",
+      "q": "¿Por qué puede resultar engañoso decir que un asteroide «se dirige hacia la Tierra»?",
+      "choices": [
+        "Demuestra que su composición es peligrosa.",
+        "Sugiere una colisión que los datos todavía no permiten afirmar.",
+        "Significa que ya ha entrado en la atmósfera.",
+        "Indica que los científicos dejaron de observarlo."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "El primer párrafo distingue el acercamiento espacial de una colisión calculada."
+    },
+    {
+      "id": "r37-es-b2-02",
+      "tab": "sentido",
+      "kind": "mc",
+      "q": "¿Qué implica que un objeto atraviese regiones próximas a nuestra órbita?",
+      "choices": [
+        "Que todos sus movimientos están perfectamente previstos.",
+        "Que no se puede observar con ningún telescopio.",
+        "Que tiene que ser más grande que la Tierra.",
+        "Que estar relativamente cerca no demuestra un peligro inmediato."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "La mayor parte de los objetos conocidos en regiones cercanas no supone una amenaza inmediata."
+    },
+    {
+      "id": "r37-es-b2-03",
+      "tab": "sentido",
+      "kind": "mc",
+      "q": "¿Qué ventaja aportan las observaciones infrarrojas?",
+      "choices": [
+        "Sustituyen completamente las fotografías terrestres.",
+        "Eliminan todos los errores de una predicción.",
+        "Ayudan a detectar objetos oscuros que reflejan poca luz.",
+        "Hacen que los asteroides cambien de dirección."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "El segundo párrafo explica que el infrarrojo ayuda a detectar cuerpos con poca luz reflejada."
+    },
+    {
+      "id": "r37-es-b2-04",
+      "tab": "evidencia",
+      "kind": "mc",
+      "q": "¿Por qué comparan los astrónomos imágenes de distintas noches?",
+      "choices": [
+        "Para mejorar el cálculo de la órbita con nuevas medidas.",
+        "Para demostrar que la primera predicción era falsa a propósito.",
+        "Para evitar que los programas informáticos analicen los datos.",
+        "Para conocer el material de cada roca sin otras pruebas."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Las observaciones realizadas en noches diferentes permiten refinar la trayectoria."
+    },
+    {
+      "id": "r37-es-b2-05",
+      "tab": "evidencia",
+      "kind": "mc",
+      "q": "¿Qué deberíamos pensar cuando una estimación cambia con nuevos datos?",
+      "choices": [
+        "Que el objeto ha cambiado necesariamente de tamaño.",
+        "Que los científicos no están siguiendo ningún método.",
+        "Que una revisión puede reflejar un cálculo mejor informado.",
+        "Que las imágenes iniciales deben ocultarse al público."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "El texto señala que los cálculos mejoran cuando llegan observaciones adicionales."
+    },
+    {
+      "id": "r37-es-b2-06",
+      "tab": "evidencia",
+      "kind": "mc",
+      "q": "¿Cuál es el límite más importante de lo que demostró DART?",
+      "choices": [
+        "Cambió una órbita, pero no garantiza que pueda evitarse cualquier impacto.",
+        "No llegó a tocar el objeto seleccionado.",
+        "Demostró que todos los asteroides tienen la misma estructura.",
+        "Probó que ya no es necesario descubrir objetos peligrosos."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "La prueba de desviación no equivale a una garantía frente a todas las amenazas."
+    },
+    {
+      "id": "r37-es-b2-07",
+      "tab": "evidencia",
+      "kind": "mc",
+      "q": "¿Qué observación confirmó el efecto del choque con Dimorphos?",
+      "choices": [
+        "Su composición se convirtió en metal.",
+        "Necesitó menos tiempo para completar su órbita.",
+        "Dejó de girar alrededor de Didymos.",
+        "Comenzó a acercarse a la Tierra."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Las mediciones posteriores registraron una reducción del periodo orbital."
+    },
+    {
+      "id": "r37-es-b2-08",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "q": "¿Por qué importa conocer con antelación una posible amenaza?",
+      "choices": [
+        "Porque la masa de un objeto siempre disminuye con el tiempo.",
+        "Porque una nave puede partir sin planificación.",
+        "Porque el tiempo disponible no afecta a la trayectoria.",
+        "Porque el tamaño, la estructura y el plazo condicionan la respuesta."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "El tercer párrafo enumera las condiciones físicas y el tiempo para reaccionar."
+    },
+    {
+      "id": "r37-es-b2-09",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "q": "¿Qué información debe acompañar una predicción revisada?",
+      "choices": [
+        "Una imagen dramática sin contexto.",
+        "Una promesa de seguridad total.",
+        "Una explicación de lo conocido y de la incertidumbre restante.",
+        "Solo el nuevo número, sin referencia al anterior."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "El cierre reclama explicar qué se sabe, qué se ignora y por qué cambian las previsiones."
+    },
+    {
+      "id": "r37-es-b2-10",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "q": "¿Qué estrategia representa mejor la conclusión del texto?",
+      "choices": [
+        "Conservar datos fiables, prepararse y cooperar antes de una emergencia.",
+        "Tratar cada acercamiento como una catástrofe inevitable.",
+        "Dejar todas las decisiones para la última hora.",
+        "Confiar solamente en misiones espectaculares."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "La conclusión defiende las observaciones, la preparación y el intercambio de información."
+    }
+  ]
+}

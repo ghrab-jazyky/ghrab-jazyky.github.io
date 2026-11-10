@@ -107,10 +107,10 @@
       "kind": "mc",
       "q": "Why was the YR4 sequence unsurprising to astronomers?",
       "choices": [
-        "Because every asteroid's impact probability must rise first.",
+        "Because preliminary orbital probabilities are expected to change with evidence.",
         "Because the original measurements were deliberately misleading.",
         "Because large telescopes always report identical estimates.",
-        "Because preliminary orbital probabilities are expected to change with evidence."
+        "Because every asteroid's impact probability must rise first."
       ],
       "answer": 0,
       "sourceParagraph": 3,
@@ -122,8 +122,8 @@
       "kind": "mc",
       "q": "What is the justified conclusion from the DART collision?",
       "choices": [
-        "It showed that a spacecraft can alter an orbit, but not that every impact is preventable.",
         "A single spacecraft can destroy any asteroid approaching Earth.",
+        "It showed that a spacecraft can alter an orbit, but not that every impact is preventable.",
         "A dangerous asteroid must always have the same structure as Dimorphos.",
         "The tested technique works equally well without advance notice."
       ],
@@ -138,9 +138,9 @@
       "q": "Why does the amount of warning time matter to a possible response?",
       "choices": [
         "It determines whether a telescope can take photographs.",
-        "Changing an orbit takes planning and cannot be treated as instantaneous.",
+        "It proves whether an asteroid will pass through the belt.",
         "It fixes the asteroid's composition in advance.",
-        "It proves whether an asteroid will pass through the belt."
+        "Changing an orbit takes planning and cannot be treated as instantaneous."
       ],
       "answer": 3,
       "sourceParagraph": 4,
@@ -167,10 +167,10 @@
       "kind": "mc",
       "q": "Which statement best captures the author's overall advice to readers?",
       "choices": [
-        "Treat every risk estimate as a permanent fact.",
+        "Evaluate new claims through evidence, careful preparation and cooperation.",
         "Avoid reading about asteroids until a real threat appears.",
         "Assume that experiments have already made Earth completely safe.",
-        "Evaluate new claims through evidence, careful preparation and cooperation."
+        "Treat every risk estimate as a permanent fact."
       ],
       "answer": 0,
       "sourceParagraph": 5,

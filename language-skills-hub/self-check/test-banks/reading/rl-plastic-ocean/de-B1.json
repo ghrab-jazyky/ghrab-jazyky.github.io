@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "de",
+  "level": "B1",
+  "sourceTitle": "Der Weg zum Bach",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent B1 waste journey interpretation bank, teacher content review pending",
+  "tabs": [
+    {
+      "id": "ursprung",
+      "title": "Den Ursprung verstehen"
+    },
+    {
+      "id": "hinweise",
+      "title": "Hinweise auswerten"
+    },
+    {
+      "id": "loesungen",
+      "title": "Lösungen beurteilen"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-de-b1-01",
+      "tab": "ursprung",
+      "kind": "mc",
+      "q": "Warum hätten Warnschilder am Bach allein das Problem wahrscheinlich nicht gelöst?",
+      "choices": [
+        "Weil niemand den Bach kannte.",
+        "Weil Verpackungen auch durch die Kanalisation aus anderen Straßen kamen.",
+        "Weil alle Schilder bei Regen verschwinden.",
+        "Weil die Jugendlichen keine Schilder herstellen konnten."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Der Müll kam nicht unbedingt von Menschen direkt am Bach; Wasser transportierte ihn aus der Straße."
+    },
+    {
+      "id": "r39-de-b1-02",
+      "tab": "ursprung",
+      "kind": "mc",
+      "q": "Was zeigte die städtische Mitarbeiterin den Jugendlichen?",
+      "choices": [
+        "Eine neue Müllsortieranlage.",
+        "Einen zweiten Bach in der Umgebung.",
+        "Eine Liste der vermeintlich Schuldigen.",
+        "Einen Gully, durch den Regenwasser samt Verpackungen fließen kann."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Absatz zwei beschreibt den Gully an der Bushaltestelle und den Weg des Regenwassers."
+    },
+    {
+      "id": "r39-de-b1-03",
+      "tab": "ursprung",
+      "kind": "mc",
+      "q": "Wie können Verpackungen von der Haltestelle in den Bach gelangen?",
+      "choices": [
+        "Sie werden immer vom Busfahrer dorthin getragen.",
+        "Sie bleiben unter jedem Abfalleimer liegen.",
+        "Regen spült leichte Gegenstände durch Gullys und Rohre.",
+        "Sie werden erst beim Reinigen des Baches hergestellt."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Das Wasser trägt leichte Abfälle von der Straße durch das Rohrsystem."
+    },
+    {
+      "id": "r39-de-b1-04",
+      "tab": "hinweise",
+      "kind": "mc",
+      "q": "Was machte die einwöchige Beobachtung deutlich?",
+      "choices": [
+        "Neben einer überfüllten Tonne an der Haltestelle lag besonders viel Müll.",
+        "Alle Verpackungen stammten vom Bachufer.",
+        "An keinem anderen Ort lag Abfall.",
+        "Der Kiosk war während der Woche geschlossen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Die Gruppe fand besonders viel Müll neben dem häufig überfüllten Behälter."
+    },
+    {
+      "id": "r39-de-b1-05",
+      "tab": "hinweise",
+      "kind": "mc",
+      "q": "Welche praktischen Änderungen folgten aus den Beobachtungen?",
+      "choices": [
+        "Die Bushaltestelle wurde abgerissen.",
+        "Alle Verpackungen wurden verboten.",
+        "Die Tonne wurde häufiger geleert und der Imbiss stellte einen Behälter auf.",
+        "Der Bach wurde durch eine Straße ersetzt."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Stadt und Imbiss verbesserten die Möglichkeiten zur Entsorgung."
+    },
+    {
+      "id": "r39-de-b1-06",
+      "tab": "hinweise",
+      "kind": "mc",
+      "q": "Warum ist die Frage nach dem Weg des Mülls hilfreicher als eine schnelle Schuldzuweisung?",
+      "choices": [
+        "Sie hilft, Ursachen und passende Gegenmaßnahmen zu finden.",
+        "Sie beweist, dass niemand verantwortlich ist.",
+        "Sie macht neue Beobachtungen unnötig.",
+        "Sie bedeutet, dass Müll nie am Bach liegen kann."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Der Schluss stellt eine Untersuchung der Wege der Suche nach Schuldigen gegenüber."
+    },
+    {
+      "id": "r39-de-b1-07",
+      "tab": "hinweise",
+      "kind": "mc",
+      "q": "Was zeigte eine spätere Kontrolle am Bach?",
+      "choices": [
+        "Der Bach war dauerhaft frei von allen Abfällen.",
+        "Es lagen weniger Verpackungen dort, aber das Problem konnte zurückkehren.",
+        "Die Stadt hatte alle Gullys entfernt.",
+        "Die Anwohner wollten die Karte nicht sehen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Nach der Veränderung fanden die Jugendlichen weniger Müll, blieben jedoch vorsichtig."
+    },
+    {
+      "id": "r39-de-b1-08",
+      "tab": "loesungen",
+      "kind": "mc",
+      "q": "Warum blieben zusätzliche Beobachtungen nach Stürmen sinnvoll?",
+      "choices": [
+        "Weil der Bach dann immer vollständig austrocknet.",
+        "Weil der Müll dann nur noch am Kiosk liegt.",
+        "Weil die Tonne nicht mehr geleert werden darf.",
+        "Weil Wind und Regen Abfälle aus weiteren Straßen herantragen können."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Der vierte Absatz nennt andere Straßen als mögliche Quellen nach einem Sturm."
+    },
+    {
+      "id": "r39-de-b1-09",
+      "tab": "loesungen",
+      "kind": "mc",
+      "q": "Was konnte die veröffentlichte Karte verbessern?",
+      "choices": [
+        "Die Fahrzeiten sämtlicher Busse.",
+        "Die Zahl der verkauften Lebensmittel.",
+        "Die Sammlung von Beobachtungen aus der Nachbarschaft.",
+        "Die Sicherheit, dass keine Verpackung mehr ins Wasser gelangt."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Mit der Karte bittet die Gruppe Anwohner um weitere Hinweise."
+    },
+    {
+      "id": "r39-de-b1-10",
+      "tab": "loesungen",
+      "kind": "mc",
+      "q": "Welche Schlussfolgerung passt zur Entwicklung des Projekts?",
+      "choices": [
+        "Eine sachliche Untersuchung des Abfallwegs führt zu gezielterem Handeln.",
+        "Ein Schild am Bach ersetzt die Zusammenarbeit mit der Stadt.",
+        "Jeder Abfall am Ufer wurde auch dort weggeworfen.",
+        "Wenn man niemanden beschuldigt, braucht man nichts zu verändern."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Das Projekt entwickelt sich von einem schnellen Vorwurf zu einer kleinen Untersuchung."
+    }
+  ]
+}

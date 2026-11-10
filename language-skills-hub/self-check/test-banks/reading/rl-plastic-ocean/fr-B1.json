@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "fr",
+  "level": "B1",
+  "sourceTitle": "Le chemin d’un emballage",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent B1 waste journey interpretation bank, teacher content review pending",
+  "tabs": [
+    {
+      "id": "origines",
+      "title": "Chercher les origines"
+    },
+    {
+      "id": "indices",
+      "title": "Utiliser les indices"
+    },
+    {
+      "id": "actions",
+      "title": "Évaluer les actions"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-fr-b1-01",
+      "tab": "origines",
+      "kind": "mc",
+      "q": "Pourquoi une grande affiche près du pont n'aurait-elle pas suffi ?",
+      "choices": [
+        "Parce qu'aucun habitant ne passait près du pont.",
+        "Parce que les déchets pouvaient arriver par les égouts depuis d'autres rues.",
+        "Parce que la mairie refusait toutes les affiches.",
+        "Parce que les élèves devaient étudier ailleurs."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "La pollution pouvait venir de la rue par une bouche d'égout et non du bord de l'eau."
+    },
+    {
+      "id": "r39-fr-b1-02",
+      "tab": "origines",
+      "kind": "mc",
+      "q": "Qu'a montré l'employée de la mairie aux élèves ?",
+      "choices": [
+        "Un nouveau centre de recyclage.",
+        "Un second ruisseau.",
+        "Une liste de personnes responsables.",
+        "Une bouche d'égout où l'eau emporte de petits déchets."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Le deuxième paragraphe explique le chemin de l'eau depuis l'arrêt de bus."
+    },
+    {
+      "id": "r39-fr-b1-03",
+      "tab": "origines",
+      "kind": "mc",
+      "q": "Comment un emballage jeté sur le trottoir peut-il atteindre le ruisseau ?",
+      "choices": [
+        "Un commerçant doit toujours l'y déposer.",
+        "Il traverse la route sans eau.",
+        "La pluie l'entraîne vers les tuyaux reliés au ruisseau.",
+        "Il se transforme en eau pendant l'orage."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "L'eau de pluie transporte des déchets légers par les égouts."
+    },
+    {
+      "id": "r39-fr-b1-04",
+      "tab": "indices",
+      "kind": "mc",
+      "q": "Que leur a appris la semaine d'observation ?",
+      "choices": [
+        "Les déchets étaient particulièrement nombreux près de l'arrêt et de sa poubelle pleine.",
+        "Tous les emballages venaient de la bibliothèque.",
+        "Aucun autre quartier n'avait de déchets.",
+        "Le café n'ouvrait jamais l'après-midi."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Les élèves ont localisé une concentration de déchets près de l'arrêt."
+    },
+    {
+      "id": "r39-fr-b1-05",
+      "tab": "indices",
+      "kind": "mc",
+      "q": "Quelles mesures ont suivi l'enquête ?",
+      "choices": [
+        "Les bus ont cessé de circuler.",
+        "Le ruisseau a été fermé au public.",
+        "Le café a mieux nettoyé sa terrasse et la collecte a changé d'horaire.",
+        "Tous les habitants ont reçu une amende."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Le café et la mairie ont modifié des pratiques concrètes après les observations."
+    },
+    {
+      "id": "r39-fr-b1-06",
+      "tab": "indices",
+      "kind": "mc",
+      "q": "Pourquoi rechercher le trajet des emballages est-il plus utile que désigner immédiatement un coupable ?",
+      "choices": [
+        "Cela permet de comprendre le mécanisme et de choisir une action adaptée.",
+        "Cela prouve que personne n'a jamais jeté de déchets.",
+        "Cela remplace définitivement tout nettoyage.",
+        "Cela signifie que la pluie n'a aucun effet."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "La conclusion oppose une enquête sur les causes à une simple accusation."
+    },
+    {
+      "id": "r39-fr-b1-07",
+      "tab": "indices",
+      "kind": "mc",
+      "q": "Qu'ont constaté les élèves un mois plus tard ?",
+      "choices": [
+        "Il n'y avait plus aucun déchet possible.",
+        "Il y avait moins de déchets, mais le problème pouvait revenir.",
+        "Le café avait complètement fermé.",
+        "Tous les habitants avaient quitté le quartier."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Le ruisseau était moins pollué après les petites pluies, sans garantie définitive."
+    },
+    {
+      "id": "r39-fr-b1-08",
+      "tab": "actions",
+      "kind": "mc",
+      "q": "Pourquoi les élèves invitaient-ils encore les habitants à observer ?",
+      "choices": [
+        "Pour leur demander de trouver un seul coupable.",
+        "Pour remplacer toute mesure par des impressions.",
+        "Pour éviter de publier leur carte.",
+        "Pour repérer aussi les déchets venant d'autres rues avec le vent."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Le texte mentionne le vent et de nouvelles observations sur la carte."
+    },
+    {
+      "id": "r39-fr-b1-09",
+      "tab": "actions",
+      "kind": "mc",
+      "q": "Quel avantage offrait la carte partagée ?",
+      "choices": [
+        "Elle montrait les prix des cafés du quartier.",
+        "Elle remplaçait la collecte municipale.",
+        "Elle permettait d'ajouter des indices provenant de plusieurs habitants.",
+        "Elle prouvait que chaque emballage avait la même origine."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "La carte recueillait des observations supplémentaires des riverains."
+    },
+    {
+      "id": "r39-fr-b1-10",
+      "tab": "actions",
+      "kind": "mc",
+      "q": "Quelle question exprime le mieux la leçon finale ?",
+      "choices": [
+        "Quel trajet un déchet suit-il avant d'arriver dans l'eau ?",
+        "Quel promeneur mérite toute la responsabilité ?",
+        "Quelle couleur d'affiche est la plus efficace ?",
+        "Combien de jours faudra-t-il pour arrêter la pluie ?"
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Le dernier paragraphe demande de comprendre le parcours d'un emballage."
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "fr",
+  "level": "C1",
+  "sourceTitle": "Ce qui reste hors champ",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent C1 film critique and institutional responsibility Reading tasks, pending teacher/Claude audit",
+  "tabs": [
+    {
+      "id": "images",
+      "title": "Interpréter les images"
+    },
+    {
+      "id": "argumentation",
+      "title": "Étudier l'argumentation"
+    },
+    {
+      "id": "systemes",
+      "title": "Comprendre les systèmes"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-fr-c1-01",
+      "tab": "images",
+      "kind": "mc",
+      "q": "Que met en question le début consacré à l'emballage filmé de manière théâtrale ?",
+      "choices": [
+        "La capacité du cinéma à susciter une émotion.",
+        "L'idée qu'une émotion créée par l'image suffise à expliquer les causes du problème.",
+        "La possibilité de filmer une place déserte.",
+        "La présence de déchets après un festival."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Le premier paragraphe distingue la mise en scène de la démonstration des causes."
+    },
+    {
+      "id": "r39-fr-c1-02",
+      "tab": "images",
+      "kind": "mc",
+      "q": "Pourquoi la représentation des agents d'entretien reste-t-elle insuffisante ?",
+      "choices": [
+        "Ils sont absents de toutes les images.",
+        "Le film ne montre aucun travail de nettoyage.",
+        "Leurs actions rendent tout débat inutile.",
+        "On les voit travailler sans connaître leur influence ni leur organisation."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "La critique souligne qu'être visible à l'écran ne signifie pas avoir la parole."
+    },
+    {
+      "id": "r39-fr-c1-03",
+      "tab": "images",
+      "kind": "mc",
+      "q": "Que révèle la réunion municipale sur le projet de gobelets réutilisables ?",
+      "choices": [
+        "Il n'existe aucun obstacle dans la mise en œuvre.",
+        "Tous les commerçants refusent automatiquement le projet.",
+        "Le stockage, le lavage et le financement demandent une organisation réelle.",
+        "Les dépenses disparaîtront dès le premier jour."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Les échanges rendent visibles les contraintes concrètes d'une transition."
+    },
+    {
+      "id": "r39-fr-c1-04",
+      "tab": "argumentation",
+      "kind": "mc",
+      "q": "Quelle conclusion peut-on tirer des difficultés présentées par les commerçants ?",
+      "choices": [
+        "Une intention écologique exige aussi des moyens et des choix pratiques.",
+        "L'enthousiasme suffit toujours à mettre un système en place.",
+        "Les petits commerces ne peuvent adopter aucune solution.",
+        "Il faut éviter tout essai de changement."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Le texte souligne la nécessité de négocier l'organisation et les coûts."
+    },
+    {
+      "id": "r39-fr-c1-05",
+      "tab": "argumentation",
+      "kind": "mc",
+      "q": "Quel effet produit la répétition de l'image de l'adolescent jetant une bouteille ?",
+      "choices": [
+        "Elle précise le budget de la collecte.",
+        "Elle permet de comprendre l'histoire de l'adolescent.",
+        "Elle détourne l'attention de l'organisation vers la faute d'un individu.",
+        "Elle explique comment fonctionnent les machines de lavage."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Le montage substitue l'indignation individuelle à une analyse du service collectif."
+    },
+    {
+      "id": "r39-fr-c1-06",
+      "tab": "argumentation",
+      "kind": "mc",
+      "q": "Que suggère la comparaison des rôles accordés aux personnes filmées ?",
+      "choices": [
+        "Le film répartit inégalement la possibilité d'expliquer et d'agir.",
+        "La réalisatrice donne exactement le même temps de parole à tous.",
+        "Les agents ont entièrement décidé du plan de tournage.",
+        "L'adolescent présente le système de consigne."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "La responsable parle, les agents restent silencieux et l'adolescent devient un symbole négatif."
+    },
+    {
+      "id": "r39-fr-c1-07",
+      "tab": "argumentation",
+      "kind": "mc",
+      "q": "Pourquoi l'aveu de trajets de lavage supplémentaires est-il utile ?",
+      "choices": [
+        "Il démontre que tout projet de réemploi doit être abandonné.",
+        "Il fournit une donnée concrète pour améliorer le système.",
+        "Il prouve que la pollution est uniquement individuelle.",
+        "Il supprime la nécessité de mesurer les coûts."
+      ],
+      "answer": 1,
+      "sourceParagraph": 6,
+      "explanation": "L'information inattendue permet une correction plutôt qu'un jugement définitif."
+    },
+    {
+      "id": "r39-fr-c1-08",
+      "tab": "systemes",
+      "kind": "mc",
+      "q": "Pourquoi cet aveu rend-il le projet plus crédible ?",
+      "choices": [
+        "Il signifie que tous les obstacles ont disparu.",
+        "Il permet d'éviter le débat sur l'organisation.",
+        "Il montre que les bénévoles peuvent cacher les difficultés.",
+        "Il reconnaît un problème réel sans condamner l'idée entière."
+      ],
+      "answer": 3,
+      "sourceParagraph": 6,
+      "explanation": "La critique valorise une transparence permettant de revoir les choix."
+    },
+    {
+      "id": "r39-fr-c1-09",
+      "tab": "systemes",
+      "kind": "mc",
+      "q": "Que dit implicitement le texte sur les choix esthétiques d'un documentaire ?",
+      "choices": [
+        "Ils doivent être identiques à ceux d'un rapport administratif.",
+        "Ils concernent seulement la longueur des scènes.",
+        "Ils influencent l'attribution de la responsabilité et du pouvoir d'agir.",
+        "Ils empêchent toujours le public de réfléchir."
+      ],
+      "answer": 2,
+      "sourceParagraph": 5,
+      "explanation": "Le cadrage, la sélection et le droit de parler portent un argument."
+    },
+    {
+      "id": "r39-fr-c1-10",
+      "tab": "systemes",
+      "kind": "mc",
+      "q": "Qu'aurait voulu voir davantage la personne qui critique le film ?",
+      "choices": [
+        "Les décisions collectives qui entourent les déchets et leur déplacement.",
+        "Une suite de portraits de tous les spectateurs.",
+        "Une scène finale encore plus spectaculaire.",
+        "Le récit complet de la carrière de la réalisatrice."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "La conclusion souhaite rendre visibles les conditions collectives du trajet des déchets."
+    }
+  ]
+}

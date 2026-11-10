@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "de",
+  "level": "B2",
+  "sourceTitle": "Nach der Flut: Ein Film, der Fragen offenlässt",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent B2 film-review interpretation test bank, awaiting second-teacher assessment",
+  "tabs": [
+    {
+      "id": "bilder",
+      "title": "Bilder und Aussage"
+    },
+    {
+      "id": "kritik",
+      "title": "Argumente prüfen"
+    },
+    {
+      "id": "folgen",
+      "title": "Praktische Folgerungen"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-de-b2-01",
+      "tab": "bilder",
+      "kind": "mc",
+      "q": "Welche Bedeutung erhält der rote Becher vor der Konzerthalle?",
+      "choices": [
+        "Er steht für den Verkauf neuer Getränke.",
+        "Er zeigt den Müll, der nach einer Veranstaltung zurückbleibt.",
+        "Er beweist, dass der Film nur vom Wetter handelt.",
+        "Er kennzeichnet den Ort einer wissenschaftlichen Messung."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Das Bild lenkt den Blick auf Abfall, der nach der Feier und vor der Reinigung bleibt."
+    },
+    {
+      "id": "r39-de-b2-02",
+      "tab": "bilder",
+      "kind": "mc",
+      "q": "Wie beurteilt die Kritik das Verhältnis zwischen Bildgestaltung und Argumentation?",
+      "choices": [
+        "Die Argumentation ist dem Bildmaterial in allen Punkten überlegen.",
+        "Der Film enthält keine erkennbare Aussage.",
+        "Die Bilder verhindern jede Diskussion über Umweltschutz.",
+        "Die schönen Bilder sind überzeugender als manche Schlussfolgerung des Films."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Die Besprechung würdigt die Bilder, kritisiert jedoch die nicht immer überzeugenden Argumente."
+    },
+    {
+      "id": "r39-de-b2-03",
+      "tab": "bilder",
+      "kind": "mc",
+      "q": "Was macht die Erklärung der Reinigungskraft besonders aufschlussreich?",
+      "choices": [
+        "Sie beschreibt ihre Lieblingskonzerte.",
+        "Sie nennt die teuersten Getränke des Ortes.",
+        "Sie zeigt Dienstpläne, Kosten und praktische Ursachen des Müllproblems.",
+        "Sie beweist, dass die Besucher immer alles richtig entsorgen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Die Szene stellt organisatorische Bedingungen hinter einen überfüllten Behälter."
+    },
+    {
+      "id": "r39-de-b2-04",
+      "tab": "kritik",
+      "kind": "mc",
+      "q": "Warum ist das Müllproblem nicht allein durch gutes Verhalten der Besucher erklärbar?",
+      "choices": [
+        "Auch die Verfügbarkeit und Organisation von Behältern spielt eine Rolle.",
+        "Alle weggeworfenen Verpackungen stammen von Reinigern.",
+        "Der Film enthält überhaupt keine Szene mit Menschen.",
+        "Die Besucher dürfen grundsätzlich keinen Müll mitbringen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Die Mitarbeiterin spricht über Behälter, die vor dem Abend überfüllt sind, und über konkrete Entscheidungen."
+    },
+    {
+      "id": "r39-de-b2-05",
+      "tab": "kritik",
+      "kind": "mc",
+      "q": "Welches praktische Hindernis beim eigenen Becher erwähnt die Rezension?",
+      "choices": [
+        "Alle Besucher möchten ausschließlich Glasflaschen.",
+        "Mehrwegbecher können niemals gereinigt werden.",
+        "Sicherheitsregeln und die Entfernung zu Wasserstellen können die Nutzung erschweren.",
+        "Jeder Zuschauer besitzt bereits einen passenden Behälter."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Die Rezension nennt die Stadionkontrolle und den weiten Weg zur Wasserstelle."
+    },
+    {
+      "id": "r39-de-b2-06",
+      "tab": "kritik",
+      "kind": "mc",
+      "q": "Worin besteht die Schwäche der wiederholten Aufforderung, einfach einen Becher mitzubringen?",
+      "choices": [
+        "Sie berücksichtigt unterschiedliche praktische Situationen zu wenig.",
+        "Sie führt zu einer zu ausführlichen Untersuchung der Reinigungskosten.",
+        "Sie erklärt genau, wie jede Rückgabestelle betrieben wird.",
+        "Sie enthält keinerlei Bilder von Plastikabfällen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Die Einwände werden schnell von emotionalen Bildern überlagert, statt sie zu prüfen."
+    },
+    {
+      "id": "r39-de-b2-07",
+      "tab": "kritik",
+      "kind": "mc",
+      "q": "Warum sind die Angaben über Pfandkosten und verlorene Becher wichtig?",
+      "choices": [
+        "Sie beweisen, dass jede Rückgabe sofort Gewinn bringt.",
+        "Sie erlauben eine überprüfbare Beurteilung des Systems.",
+        "Sie machen Messungen des Wasserverbrauchs überflüssig.",
+        "Sie zeigen, dass alle Besucher einen eigenen Becher besitzen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Offene Kosten und Ergebnisse machen aus einem Appell einen nachvollziehbaren Versuch."
+    },
+    {
+      "id": "r39-de-b2-08",
+      "tab": "folgen",
+      "kind": "mc",
+      "q": "Welche Frage bleibt bei dem Mehrwegsystem ausdrücklich offen?",
+      "choices": [
+        "Wie viele Musikstücke wurden gespielt?",
+        "Welche Farben die Behälter hatten?",
+        "Wer den Film finanziert hat?",
+        "Wie viel Wasser die Reinigung der Becher benötigt."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Der Film erwähnt ausdrücklich den noch zu messenden Wasserverbrauch."
+    },
+    {
+      "id": "r39-de-b2-09",
+      "tab": "folgen",
+      "kind": "mc",
+      "q": "Welche Diskussion wäre dem Rezensenten wichtiger als die schöne Schlussszene?",
+      "choices": [
+        "Welche Musik beim Abspann laufen sollte.",
+        "Wie viele Landschaftsbilder nötig sind.",
+        "Wer die überfüllten Behälter beim nächsten Fest leert.",
+        "Warum die Konzerthalle einen roten Becher verwendete."
+      ],
+      "answer": 2,
+      "sourceParagraph": 5,
+      "explanation": "Die Schlussfrage richtet sich auf dauerhafte Organisation und Zuständigkeit."
+    },
+    {
+      "id": "r39-de-b2-10",
+      "tab": "folgen",
+      "kind": "mc",
+      "q": "Wofür empfiehlt die Rezension den Film einer Schulklasse?",
+      "choices": [
+        "Als Anlass zum Nachdenken über konkrete Entscheidungen nach einer Veranstaltung.",
+        "Als vollständige Anleitung für ein garantiert müllfreies Schulfest.",
+        "Als Beweis dafür, dass nur Einzelpersonen verantwortlich sind.",
+        "Als reine Unterhaltung ohne praktischen Bezug."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Der Film kann eine Diskussion über Maßnahmen auslösen, obwohl er manche Fragen offenlässt."
+    }
+  ]
+}

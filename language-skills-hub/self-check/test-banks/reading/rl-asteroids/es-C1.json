@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "es",
+  "level": "C1",
+  "sourceTitle": "Observar el cielo e interpretar el riesgo",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R37-CONTENT-AUDIT-1",
+  "description": "Original independent C1 evidence-based astronomical-risk argument test, pending review",
+  "tabs": [
+    {
+      "id": "matices",
+      "title": "Matices científicos"
+    },
+    {
+      "id": "argumentos",
+      "title": "Analizar argumentos"
+    },
+    {
+      "id": "decisiones",
+      "title": "Evaluar decisiones"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r37-es-c1-01",
+      "tab": "matices",
+      "kind": "mc",
+      "q": "¿Por qué la etiqueta «cercano a la Tierra» no basta para justificar una alarma?",
+      "choices": [
+        "Porque no se aplica a objetos de metal.",
+        "Porque describe una órbita y no una colisión predicha.",
+        "Porque todos esos cuerpos ya están bien estudiados.",
+        "Porque los telescopios no permiten observarlos."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "El primer párrafo distingue una característica orbital de una conclusión sobre peligro."
+    },
+    {
+      "id": "r37-es-c1-02",
+      "tab": "matices",
+      "kind": "mc",
+      "q": "¿Qué problema plantea el titular rotundo que acompaña la foto de una roca distante?",
+      "choices": [
+        "Que revela demasiados detalles técnicos.",
+        "Que explica la incertidumbre de forma demasiado extensa.",
+        "Que impide calcular la velocidad del cuerpo.",
+        "Que transmite más seguridad de la que permiten los datos."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "El texto critica titulares que aparentan una certeza no justificada por la observación."
+    },
+    {
+      "id": "r37-es-c1-03",
+      "tab": "matices",
+      "kind": "mc",
+      "q": "¿Por qué puede haber varias trayectorias futuras posibles al principio?",
+      "choices": [
+        "Porque los cuerpos cambian de composición cada noche.",
+        "Porque las órbitas no siguen leyes físicas.",
+        "Porque las imágenes iniciales cubren un tramo muy corto de la órbita.",
+        "Porque el instrumento infrarrojo altera las medidas ópticas."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Un arco observado breve permite varias trayectorias compatibles con las primeras medidas."
+    },
+    {
+      "id": "r37-es-c1-04",
+      "tab": "argumentos",
+      "kind": "mc",
+      "q": "¿Qué aportan los instrumentos infrarrojos respecto a los telescopios ópticos?",
+      "choices": [
+        "Detectan emisión térmica que complementa la luz reflejada.",
+        "Eliminan toda incertidumbre desde la primera imagen.",
+        "Permiten prescindir de los cálculos orbitales.",
+        "Sirven exclusivamente para observar objetos brillantes."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "El segundo párrafo presenta el infrarrojo como una fuente complementaria de datos."
+    },
+    {
+      "id": "r37-es-c1-05",
+      "tab": "argumentos",
+      "kind": "mc",
+      "q": "¿Qué podría indicar un aumento temporal de la probabilidad de impacto?",
+      "choices": [
+        "Que el asteroide se dirige voluntariamente hacia nuestro planeta.",
+        "Que las observaciones anteriores eran necesariamente inventadas.",
+        "Que nuevas medidas han reducido el abanico de trayectorias posibles.",
+        "Que ha dejado de existir incertidumbre científica."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "La probabilidad aparente puede subir al restringirse los caminos compatibles con los datos."
+    },
+    {
+      "id": "r37-es-c1-06",
+      "tab": "argumentos",
+      "kind": "mc",
+      "q": "¿Cuál es la conclusión científica más ajustada del impacto DART?",
+      "choices": [
+        "La transferencia de impulso pudo modificar una órbita en el caso estudiado.",
+        "Todos los impactos futuros pueden evitarse con la misma nave.",
+        "La estructura del objeto no afecta al éxito de una misión.",
+        "La prueba se efectuó contra un peligro real para la Tierra."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "DART demostró una transferencia de impulso eficaz bajo condiciones reales concretas."
+    },
+    {
+      "id": "r37-es-c1-07",
+      "tab": "argumentos",
+      "kind": "mc",
+      "q": "¿Por qué sería útil una pequeña desviación con muchos años de antelación?",
+      "choices": [
+        "Porque elimina automáticamente la necesidad de observar de nuevo.",
+        "Porque da tiempo a que el cambio de trayectoria produzca un efecto útil.",
+        "Porque impide que el asteroide vuelva a girar alrededor del Sol.",
+        "Porque garantiza conocer con exactitud la estructura interior."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "El tercer párrafo contrasta una modificación temprana y modesta con una acción tardía."
+    },
+    {
+      "id": "r37-es-c1-08",
+      "tab": "decisiones",
+      "kind": "mc",
+      "q": "¿Qué debería hacerse después de intentar desviar un cuerpo peligroso?",
+      "choices": [
+        "Considerar que el éxito está demostrado con la imagen del choque.",
+        "Esperar sin realizar más observaciones.",
+        "Reducir la cooperación internacional por motivos de seguridad.",
+        "Volver a medir su trayectoria y verificar independientemente el resultado."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "El texto exige confirmar la alteración orbital mediante observaciones posteriores."
+    },
+    {
+      "id": "r37-es-c1-09",
+      "tab": "decisiones",
+      "kind": "mc",
+      "q": "¿Qué dos errores opuestos debe evitar la comunicación de riesgos?",
+      "choices": [
+        "Centrarse en los telescopios y olvidar la política.",
+        "Dar prioridad al intercambio de datos y descuidar las misiones.",
+        "Convertir cada acercamiento en crisis o descartar los sucesos raros.",
+        "Explicar la incertidumbre y pedir más observaciones."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "El cuarto párrafo advierte contra la alarma constante y la complacencia."
+    },
+    {
+      "id": "r37-es-c1-10",
+      "tab": "decisiones",
+      "kind": "mc",
+      "q": "¿Qué contribuye especialmente a construir confianza pública?",
+      "choices": [
+        "Explicar con transparencia por qué se revisan los cálculos.",
+        "Prometer que jamás será necesario modificar una estimación.",
+        "Comunicar solo el valor más reciente sin antecedentes.",
+        "Evitar hablar de la incertidumbre mientras no desaparezca."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "La conclusión vincula la confianza con las correcciones abiertas y justificadas."
+    }
+  ]
+}

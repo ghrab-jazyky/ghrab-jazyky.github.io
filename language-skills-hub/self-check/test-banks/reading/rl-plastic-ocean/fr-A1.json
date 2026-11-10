@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "fr",
+  "level": "A1",
+  "sourceTitle": "Un sac près de la plage",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent short-story reading questions; unapproved teacher draft",
+  "tabs": [
+    {
+      "id": "texte",
+      "title": "Comprendre le texte"
+    },
+    {
+      "id": "raisons",
+      "title": "Expliquer les choix"
+    },
+    {
+      "id": "actions",
+      "title": "Appliquer les idées"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-fr-a1-01",
+      "tab": "texte",
+      "kind": "mc",
+      "q": "Que veulent faire les deux amies au début de la journée ?",
+      "choices": [
+        "Acheter une nouvelle bouteille.",
+        "Marcher près de la mer.",
+        "Nettoyer le café.",
+        "Retrouver un jouet perdu."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Le premier paragraphe dit qu'elles veulent marcher près de la mer."
+    },
+    {
+      "id": "r39-fr-a1-02",
+      "tab": "texte",
+      "kind": "mc",
+      "q": "Où voient-elles le sac jaune ?",
+      "choices": [
+        "Dans un bateau.",
+        "À l'intérieur du café.",
+        "À côté d'un banc.",
+        "Dans le sac de Zoé."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Le deuxième paragraphe présente un sac jaune à côté d'un banc."
+    },
+    {
+      "id": "r39-fr-a1-03",
+      "tab": "texte",
+      "kind": "mc",
+      "q": "Pourquoi ramassent-elles un sac qui n'est pas le leur ?",
+      "choices": [
+        "Il est près de l'eau et elles veulent éviter de le laisser là.",
+        "Elles cherchent un sac pour acheter des fruits.",
+        "Le café leur demande de le rapporter.",
+        "Elles veulent y mettre leurs sandwichs."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Le récit souligne qu'elles prennent le sac avec prudence malgré le fait qu'il appartient à quelqu'un d'autre."
+    },
+    {
+      "id": "r39-fr-a1-04",
+      "tab": "raisons",
+      "kind": "mc",
+      "q": "Où se trouve une poubelle dans l'histoire ?",
+      "choices": [
+        "À l'école.",
+        "Au milieu de la mer.",
+        "Sous le banc.",
+        "Devant le petit café."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Le deuxième paragraphe mentionne la poubelle devant le café."
+    },
+    {
+      "id": "r39-fr-a1-05",
+      "tab": "raisons",
+      "kind": "mc",
+      "q": "Qu'apporte la personne qui raconte l'histoire ?",
+      "choices": [
+        "Une nouvelle tasse du café.",
+        "Sa bouteille d'eau de la maison.",
+        "Un sac en plastique jaune.",
+        "Un jouet pour Zoé."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Le narrateur ou la narratrice apporte sa bouteille de la maison."
+    },
+    {
+      "id": "r39-fr-a1-06",
+      "tab": "raisons",
+      "kind": "mc",
+      "q": "Que fait Zoé avec son petit emballage ?",
+      "choices": [
+        "Elle le jette sur le sable.",
+        "Elle le cache sous un banc.",
+        "Elle le garde pour le mettre à la poubelle.",
+        "Elle le laisse au café."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Zoé garde l'emballage jusqu'à pouvoir le jeter correctement."
+    },
+    {
+      "id": "r39-fr-a1-07",
+      "tab": "raisons",
+      "kind": "mc",
+      "q": "Que signifie la dernière phrase sur l'endroit laissé propre ?",
+      "choices": [
+        "Les amies soignent leur place sans prétendre nettoyer toute la plage.",
+        "La plage entière est maintenant sans aucun déchet.",
+        "Le café a fermé pour la journée.",
+        "Toutes les personnes ont arrêté de jeter des sacs."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Le dernier paragraphe distingue leur petite action de la propreté de toute la plage."
+    },
+    {
+      "id": "r39-fr-a1-08",
+      "tab": "actions",
+      "kind": "mc",
+      "q": "Tu trouves un sac laissé par quelqu'un près de l'eau. Que faire selon l'histoire ?",
+      "choices": [
+        "Attendre que le vent l'emporte.",
+        "Le mettre plus près de la mer.",
+        "L'ignorer car il n'est pas à toi.",
+        "Le ramasser avec prudence et utiliser une poubelle."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Les amies ramassent le sac prudemment et disposent d'une poubelle près du café."
+    },
+    {
+      "id": "r39-fr-a1-09",
+      "tab": "actions",
+      "kind": "mc",
+      "q": "Quel comportement de Zoé est responsable ?",
+      "choices": [
+        "Acheter des fruits après la promenade.",
+        "Garder son emballage uniquement pour le montrer.",
+        "Attendre une poubelle plutôt que jeter l'emballage sur la plage.",
+        "Demander à son amie de tout nettoyer."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Zoé ne laisse pas son petit emballage dans le sable."
+    },
+    {
+      "id": "r39-fr-a1-10",
+      "tab": "actions",
+      "kind": "mc",
+      "q": "Quelle est la meilleure leçon de cette journée ?",
+      "choices": [
+        "Chacun peut aider à garder son espace propre sans tout résoudre.",
+        "Il faut toujours nettoyer seul une plage entière.",
+        "Un déchet étranger n'est jamais notre problème.",
+        "Le soleil empêche les déchets de polluer."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "La conclusion montre qu'un geste local reste utile même si toute la plage n'est pas propre."
+    }
+  ]
+}

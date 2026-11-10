@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "C1",
+  "sourceTitle": "The Shot Outside the Frame",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R38-CONTENT-AUDIT-1",
+  "description": "Original film-review and environmental reading assessment, requiring independent linguistic and pedagogical validation",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Interpretation"
+    },
+    {
+      "id": "criticism",
+      "title": "Critical Reading"
+    },
+    {
+      "id": "implications",
+      "title": "Practical Implications"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r38-en-c1-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What tension does the opening shot establish between the film's effects and its argument?",
+      "choices": [
+        "A visual image can explain municipal waste contracts completely.",
+        "Feeling moved by an image is not the same as knowing how to act.",
+        "The choice of wrapper proves that the square is never cleaned.",
+        "The film's solemn style prevents viewers from noticing waste."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "The opening distinguishes the emotional reaction created by an image from practical knowledge."
+    },
+    {
+      "id": "r38-en-c1-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why is the reviewer ambivalent about the beautiful images of night cleaners?",
+      "choices": [
+        "The pictures exaggerate how dirty the public square was.",
+        "The shots hide that the workers separate recoverable waste.",
+        "The workers are shown only during daylight.",
+        "The workers gain admiration without much attention to their conditions."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "The beauty encourages respect for the workers but leaves their circumstances largely unexplained."
+    },
+    {
+      "id": "r38-en-c1-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What is achieved by the detailed recording of the cleaning sounds?",
+      "choices": [
+        "It replaces the visual story with a council report.",
+        "It tells viewers exactly how to operate a recycling lorry.",
+        "It gives the night work a recognisable rhythm and presence.",
+        "It reveals that the cleaner's microphone was faulty."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "The precisely mixed sounds make the cleaners' usually unseen work more perceptible."
+    },
+    {
+      "id": "r38-en-c1-04",
+      "tab": "criticism",
+      "kind": "mc",
+      "q": "Why does the cleaner's remark about five in the morning carry political force?",
+      "choices": [
+        "It exposes the invisibility of work done for people who are absent.",
+        "It proves that the square should be cleaned only at night.",
+        "It shows that the workers prefer not to meet the public.",
+        "It indicates that recycling is less important than sweeping."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "The square is cleanest when no one sees the workers who made it clean."
+    },
+    {
+      "id": "r38-en-c1-05",
+      "tab": "criticism",
+      "kind": "mc",
+      "q": "Which factor complicates the proposed cup-deposit system?",
+      "choices": [
+        "The city has banned all reusable containers.",
+        "The film director will not interview the manager.",
+        "Stallholders require storage space and staff need training.",
+        "The scheme cannot operate without closing the square."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "The manager explains the need for space, training and equipment, not merely enthusiasm."
+    },
+    {
+      "id": "r38-en-c1-06",
+      "tab": "criticism",
+      "kind": "mc",
+      "q": "What is lost when the narrative returns to the teenager dropping a bottle?",
+      "choices": [
+        "Attention shifts from the design of infrastructure to guilt about an individual.",
+        "The film no longer contains any images of rubbish.",
+        "The director abandons visual storytelling in favour of statistics.",
+        "The cleaner becomes the main character of the documentary."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "The repeated slow-motion image moves the question away from systems towards moral blame."
+    },
+    {
+      "id": "r38-en-c1-07",
+      "tab": "criticism",
+      "kind": "mc",
+      "q": "What is the significance of the different ways people appear in the film?",
+      "choices": [
+        "All characters are presented as equally authoritative.",
+        "Names and opportunities to explain are distributed unevenly.",
+        "The manager and cleaners are filmed in identical ways.",
+        "The teenager is the only person permitted to speak."
+      ],
+      "answer": 1,
+      "sourceParagraph": 6,
+      "explanation": "The reviewer contrasts anonymous workers and a nameless teenager with a manager allowed to explain."
+    },
+    {
+      "id": "r38-en-c1-08",
+      "tab": "implications",
+      "kind": "mc",
+      "q": "What does the volunteer's admission about extra washing trips show?",
+      "choices": [
+        "Reusable containers have been disproved as an environmental approach.",
+        "The film should focus more strongly on beautiful scenery.",
+        "Environmental projects are credible only if nothing goes wrong.",
+        "Acknowledging an unexpected cost can make a proposal more credible."
+      ],
+      "answer": 3,
+      "sourceParagraph": 7,
+      "explanation": "The volunteer's uncertainty invites revision rather than either celebration or dismissal."
+    },
+    {
+      "id": "r38-en-c1-09",
+      "tab": "implications",
+      "kind": "mc",
+      "q": "What more would the reviewer have wanted the film to reveal?",
+      "choices": [
+        "A final numerical ranking of all the cleaners.",
+        "A detailed account of every concert that took place.",
+        "The systems and practical decisions surrounding a visible piece of litter.",
+        "An explanation of the director's personal motivation for filming."
+      ],
+      "answer": 2,
+      "sourceParagraph": 7,
+      "explanation": "The conclusion wishes the system around the wrapper had been made as visible as the wrapper."
+    },
+    {
+      "id": "r38-en-c1-10",
+      "tab": "implications",
+      "kind": "mc",
+      "q": "What does the reviewer imply about film-making and public argument?",
+      "choices": [
+        "Choices about representation carry an argument even without explicit commentary.",
+        "A documentary should show spreadsheets after every emotional scene.",
+        "The visual form of a film is unrelated to what it communicates.",
+        "All political documentaries must avoid music and visual surprise."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "The reviewer notes that decisions about who is named and seen are themselves arguments."
+    }
+  ]
+}

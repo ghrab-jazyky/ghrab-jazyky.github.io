@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "B1",
+  "sourceTitle": "The Litter That Travelled Underground",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R38-CONTENT-AUDIT-1",
+  "description": "Independent environmental reading assessment draft with ten newly authored questions and evidence references; content sign-off pending",
+  "tabs": [
+    {
+      "id": "reading",
+      "title": "Understanding the Text"
+    },
+    {
+      "id": "reasons",
+      "title": "Causes and Connections"
+    },
+    {
+      "id": "choices",
+      "title": "Ideas in Practice"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r38-en-b1-01",
+      "tab": "reading",
+      "kind": "mc",
+      "q": "Why would a sign beside the stream alone have been insufficient?",
+      "choices": [
+        "The stream had no visitors.",
+        "Much of the litter arrived through drains from another place.",
+        "All rubbish was already collected by volunteers.",
+        "The signs were impossible to read."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "The engineer shows that wrappers can move from the bus stop through drainage pipes."
+    },
+    {
+      "id": "r38-en-b1-02",
+      "tab": "reading",
+      "kind": "mc",
+      "q": "Where can rainwater carry rubbish dropped near the bus stop?",
+      "choices": [
+        "Into the library building.",
+        "Only into nearby rubbish bins.",
+        "Directly into the school playground.",
+        "Through drains and pipes towards the stream."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Rain can move light litter from the street into a drain connected to the stream."
+    },
+    {
+      "id": "r38-en-b1-03",
+      "tab": "reading",
+      "kind": "mc",
+      "q": "Why did the students make their counts when lessons ended?",
+      "choices": [
+        "They wanted to avoid speaking to the driver.",
+        "The stream was easiest to see then.",
+        "The bus stop was especially busy at that time.",
+        "The council had asked them to leave early."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "The students counted after the last lesson because the bus stop was most crowded."
+    },
+    {
+      "id": "r38-en-b1-04",
+      "tab": "reasons",
+      "kind": "mc",
+      "q": "What can be inferred from the much higher litter count near the bus stop?",
+      "choices": [
+        "The bus stop was an important source worth investigating.",
+        "The library had no visitors at all.",
+        "Every wrapper came from the same person.",
+        "The stream had already been completely cleaned."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "The large contrast in counts suggests the busy stop was a key location to examine."
+    },
+    {
+      "id": "r38-en-b1-05",
+      "tab": "reasons",
+      "kind": "mc",
+      "q": "Why did changing the bin's collection time make sense?",
+      "choices": [
+        "It meant the café could stop serving snacks.",
+        "It ensured that drains never needed cleaning.",
+        "The bin tended to be full before the afternoon rush.",
+        "The students no longer needed to count rubbish."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "The driver explained that a morning collection left the bin full by four o'clock."
+    },
+    {
+      "id": "r38-en-b1-06",
+      "tab": "reasons",
+      "kind": "mc",
+      "q": "Why is asking where rubbish begins its journey a useful question?",
+      "choices": [
+        "It encourages action at the source of the problem.",
+        "It proves the river itself creates the litter.",
+        "It means volunteers should ignore the street.",
+        "It removes the need for future observations."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "The final question directs attention to where discarded items enter the drainage route."
+    },
+    {
+      "id": "r38-en-b1-07",
+      "tab": "reasons",
+      "kind": "mc",
+      "q": "How did speaking to a café owner help the investigation?",
+      "choices": [
+        "It confirmed that no one bought food near the bus stop.",
+        "It linked snack purchases to the busy waiting area.",
+        "It showed that the stream was naturally dirty.",
+        "It proved the council was entirely responsible."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "The café owner explained that customers bought snacks while waiting for buses."
+    },
+    {
+      "id": "r38-en-b1-08",
+      "tab": "choices",
+      "kind": "mc",
+      "q": "Why could the next storm still reveal a problem?",
+      "choices": [
+        "The stream was far away from the street.",
+        "The café had already closed.",
+        "Every rubbish bin had been removed.",
+        "Wind could bring litter from other streets."
+      ],
+      "answer": 3,
+      "sourceParagraph": 5,
+      "explanation": "The students recognise that litter may arrive from further away in different weather."
+    },
+    {
+      "id": "r38-en-b1-09",
+      "tab": "choices",
+      "kind": "mc",
+      "q": "What was gained by inviting neighbours to upload observations?",
+      "choices": [
+        "The council could stop working on drains.",
+        "Everyone was forced to clean the stream.",
+        "The group could collect evidence from more streets.",
+        "The students could identify one person to blame."
+      ],
+      "answer": 2,
+      "sourceParagraph": 5,
+      "explanation": "Fifteen residents supplied photographs from nearby roads, broadening the observations."
+    },
+    {
+      "id": "r38-en-b1-10",
+      "tab": "choices",
+      "kind": "mc",
+      "q": "Which lesson follows most directly from the whole project?",
+      "choices": [
+        "Finding causes leads to more targeted action than assigning blame.",
+        "Warning signs are the only effective way to prevent litter.",
+        "The council should never change a collection schedule.",
+        "Rubbish beside the river must always begin there."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "The students move from blaming people at the stream to examining how litter travels there."
+    }
+  ]
+}

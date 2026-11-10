@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "de",
+  "level": "A2",
+  "sourceTitle": "Das Stadtfest und die vielen Becher",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 18,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent festival waste-reduction comprehension draft, pending second-teacher review",
+  "tabs": [
+    {
+      "id": "verstehen",
+      "title": "Ergebnisse verstehen"
+    },
+    {
+      "id": "gruende",
+      "title": "Ursachen erkennen"
+    },
+    {
+      "id": "loesungen",
+      "title": "Lösungen finden"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-de-a2-01",
+      "tab": "verstehen",
+      "kind": "mc",
+      "q": "Warum wollte die Jugendgruppe ein anderes Getränkesystem ausprobieren?",
+      "choices": [
+        "Die Musikgruppen hatten abgesagt.",
+        "Beim letzten Fest blieben viele Plastikbecher liegen.",
+        "Die Gäste wollten kein kostenloses Wasser.",
+        "Die Stadt hatte alle Essensstände geschlossen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Viele liegen gebliebene Becher und lange Reinigungsarbeiten führten zum neuen Plan."
+    },
+    {
+      "id": "r39-de-a2-02",
+      "tab": "verstehen",
+      "kind": "mc",
+      "q": "Was bekommen Gäste zurück, wenn sie den Mehrwegbecher abgeben?",
+      "choices": [
+        "Eine kostenlose Eintrittskarte.",
+        "Ein zweites Getränk.",
+        "Einen neuen Becher als Geschenk.",
+        "Das vorher gezahlte Pfand."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Das Pfand wird nach der Rückgabe des Bechers ausgezahlt."
+    },
+    {
+      "id": "r39-de-a2-03",
+      "tab": "verstehen",
+      "kind": "mc",
+      "q": "Welche zusätzliche Möglichkeit gab es für durstige Gäste?",
+      "choices": [
+        "Nur Getränke am teuersten Stand.",
+        "Eis am Eingang.",
+        "Zwei kostenlose Trinkwasserstellen.",
+        "Eine neue Getränkemaschine hinter der Bühne."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Zwei Stellen mit kostenlosem Trinkwasser wurden eingerichtet."
+    },
+    {
+      "id": "r39-de-a2-04",
+      "tab": "gruende",
+      "kind": "mc",
+      "q": "Warum gab es zusätzliche Schilder und eine zweite Rückgabestelle?",
+      "choices": [
+        "Damit die Rückgabe verständlicher wird und sich keine langen Schlangen bilden.",
+        "Damit mehr Menschen Eintritt bezahlen.",
+        "Damit weniger Musiker auftraten.",
+        "Damit der Abfalleimer schneller voll wurde."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Die Freiwilligen reagieren auf die Sorge vor langen Wartezeiten."
+    },
+    {
+      "id": "r39-de-a2-05",
+      "tab": "gruende",
+      "kind": "mc",
+      "q": "Welche Abfälle blieben trotz der Mehrwegbecher auf der Wiese?",
+      "choices": [
+        "Nur zerbrochenes Glas.",
+        "Alle zurückgegebenen Becher.",
+        "Verpackungen vom Essen.",
+        "Die Schilder der Wasserstellen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Nach dem Fest lagen weiterhin Verpackungen von Lebensmitteln herum."
+    },
+    {
+      "id": "r39-de-a2-06",
+      "tab": "gruende",
+      "kind": "mc",
+      "q": "Woran lässt sich erkennen, dass der Versuch einen Nutzen hatte?",
+      "choices": [
+        "Die Reinigungskräfte mussten weniger Becher einsammeln.",
+        "Es gab überhaupt keinen Müll mehr.",
+        "Niemand kaufte mehr Essen.",
+        "Der Eintritt wurde kostenlos."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Das Reinigungsteam musste weniger Becher einsammeln als früher."
+    },
+    {
+      "id": "r39-de-a2-07",
+      "tab": "gruende",
+      "kind": "mc",
+      "q": "Warum will die Jugendgruppe mit den Essensständen sprechen?",
+      "choices": [
+        "Um die Eintrittspreise zu erhöhen.",
+        "Um auch Verpackungsabfälle zu verringern.",
+        "Um den Getränkeausschank zu schließen.",
+        "Um die Wasserstellen abzubauen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Die Gruppe will neben Bechern andere Abfälle durch Zusammenarbeit reduzieren."
+    },
+    {
+      "id": "r39-de-a2-08",
+      "tab": "loesungen",
+      "kind": "mc",
+      "q": "Welche Beobachtung zeigt die Grenzen des neuen Systems?",
+      "choices": [
+        "Alle Gäste fanden die Wasserstellen praktisch.",
+        "Die meisten Becher kamen zurück.",
+        "Die Helfer arbeiteten kürzer.",
+        "Einige Becher fehlten und Essensverpackungen lagen noch herum."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Der dritte Absatz beschreibt fehlende Becher und weiteren Verpackungsmüll."
+    },
+    {
+      "id": "r39-de-a2-09",
+      "tab": "loesungen",
+      "kind": "mc",
+      "q": "Was könnte die Gruppe tun, wenn Gäste eine lange Warteschlange befürchten?",
+      "choices": [
+        "Das Pfand für alle erhöhen.",
+        "Jede Rückgabe verbieten.",
+        "Mehr Rückgabemöglichkeiten und klare Hinweise bereitstellen.",
+        "Die Gäste ohne Trinkwasser lassen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Zusätzliche Schilder und eine zweite Rückgabestelle waren die Antwort."
+    },
+    {
+      "id": "r39-de-a2-10",
+      "tab": "loesungen",
+      "kind": "mc",
+      "q": "Welche Schlussfolgerung passt zur Planung für das nächste Fest?",
+      "choices": [
+        "Nach dem ersten Erfolg weitere Abfallarten berücksichtigen.",
+        "Das neue System ohne Prüfung beenden.",
+        "Nur noch Einwegbecher ausgeben.",
+        "Die Verantwortung ganz den Besuchern überlassen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Die Jugendgruppe sieht Mehrweg als guten Anfang und möchte weitere Verpackungen reduzieren."
+    }
+  ]
+}

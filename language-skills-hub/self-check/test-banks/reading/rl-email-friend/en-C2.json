@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "C2",
+  "sourceTitle": "The Distance Between Updates",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R40-CONTENT-AUDIT-1",
+  "description": "Independent friendship-email reading assessment with original questions, pending pedagogical validation",
+  "tabs": [
+    {
+      "id": "understanding",
+      "title": "Understanding the Message"
+    },
+    {
+      "id": "interpretation",
+      "title": "Meaning and Intent"
+    },
+    {
+      "id": "transfer",
+      "title": "Interpreting the Invitation"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r40-en-c2-01",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "What does Elias imply by calling his account of being busy 'conveniently incomplete'?",
+      "choices": [
+        "His work schedule is less demanding than it appears.",
+        "His explanation hides his willingness to send public updates instead of honest letters.",
+        "His travels never actually occurred.",
+        "His friend has asked for too many explanations."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Elias recognises that he had time for polished updates but avoided difficult honesty."
+    },
+    {
+      "id": "r40-en-c2-02",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "What is the central difference Elias sees between information and a person?",
+      "choices": [
+        "Personal details cannot be sent over the internet.",
+        "Photographs are always less accurate than letters.",
+        "Busy travellers have no real friends.",
+        "Being easy to locate online is not the same as being emotionally available."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "The ferry-terminal reflection distinguishes sharing location from being able to discuss feeling lost."
+    },
+    {
+      "id": "r40-en-c2-03",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "Why does the former dockworker's account resist the editor's preferred ending?",
+      "choices": [
+        "It denies that anyone helped their neighbours.",
+        "It describes only events outside the museum's subject.",
+        "It preserves solidarity and resentment together instead of a comforting moral.",
+        "It refuses to mention the history of the dock."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "The dockworker describes mutual support coexisting with resentment, challenging a warm simple conclusion."
+    },
+    {
+      "id": "r40-en-c2-04",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What is the significance of Elias's remark about 'the pleasure of being useful'?",
+      "choices": [
+        "Responding with tidy advice can prevent genuine listening to complexity.",
+        "The archive should avoid recording any difficult experiences.",
+        "Friends have a duty to solve each other's problems quickly.",
+        "The editor should always choose a positive story."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Elias learns that attention may require relinquishing easy solutions."
+    },
+    {
+      "id": "r40-en-c2-05",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why are the father's brief postcards emotionally valuable but insufficient?",
+      "choices": [
+        "They provide detailed accounts of every voyage.",
+        "They reveal that he lived in the same town throughout.",
+        "They prove the family's difficulties have been overcome.",
+        "They mark occasions of thought without compensating for long absences."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "The daughter values the small signals while refusing to romanticise her father's absence."
+    },
+    {
+      "id": "r40-en-c2-06",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "How does Elias contrast the postcards with his own public messages?",
+      "choices": [
+        "The postcards had a more sophisticated style.",
+        "Their limited claims were more honest than his polished appearance of completeness.",
+        "They contained more factual information.",
+        "They were written more frequently than his updates."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "The cards never pretended to convey more than a small greeting."
+    },
+    {
+      "id": "r40-en-c2-07",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What makes Elias's invitation ethically delicate?",
+      "choices": [
+        "The museum might not have enough seats.",
+        "The listening room is intended only for residents.",
+        "Its timing might make his renewed interest appear self-serving.",
+        "Amara has asked never to receive another invitation."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "He recognises that contacting Amara just before his event could look instrumental."
+    },
+    {
+      "id": "r40-en-c2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "Why would asking Amara to reassure him of his sincerity be unfair?",
+      "choices": [
+        "It would shift the emotional burden of his guilt onto her.",
+        "It would remove her opportunity to buy a ticket.",
+        "It would require them to revisit every earlier argument.",
+        "It would contradict the museum's opening schedule."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Elias refuses to make Amara responsible for proving that he is a decent friend."
+    },
+    {
+      "id": "r40-en-c2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "What makes declining the invitation a genuinely acceptable possibility?",
+      "choices": [
+        "Elias expects her to send a substitute attendee.",
+        "He will send further messages until she accepts.",
+        "He treats a refusal as evidence against the friendship.",
+        "He explicitly removes any duty to attend or give an excuse."
+      ],
+      "answer": 3,
+      "sourceParagraph": 5,
+      "explanation": "He says she may decline without justification and that her presence is not owed."
+    },
+    {
+      "id": "r40-en-c2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "What does Elias hope modest correspondence might allow?",
+      "choices": [
+        "A precise restoration of their earlier relationship.",
+        "Two changed people to connect without recreating a reassuring memory.",
+        "An immediate return to daily replies.",
+        "A formal way to test whether Amara still cares."
+      ],
+      "answer": 1,
+      "sourceParagraph": 5,
+      "explanation": "He values correspondence that allows both friends to have changed."
+    }
+  ]
+}

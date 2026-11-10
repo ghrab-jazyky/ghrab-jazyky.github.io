@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "es",
+  "level": "C2",
+  "sourceTitle": "La comodidad del consumidor impecable",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent C2 media-criticism and systems reasoning test; awaiting independent didactic review",
+  "tabs": [
+    {
+      "id": "simbolos",
+      "title": "Símbolos y contradicciones"
+    },
+    {
+      "id": "causas",
+      "title": "Examinar las causas"
+    },
+    {
+      "id": "politica",
+      "title": "Responsabilidad y decisiones"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-es-c2-01",
+      "tab": "simbolos",
+      "kind": "mc",
+      "q": "¿Qué contradicción plantea la escena del aplauso a la estudiante y los vasos de la sala?",
+      "choices": [
+        "Que el público desconoce la edad de la estudiante.",
+        "Que se celebra una conducta individual mientras el recinto mantiene un sistema desechable.",
+        "Que la cantimplora de la estudiante nunca se utiliza.",
+        "Que la película se proyecta en un lugar que no tiene espectadores."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "El contraste entre el ejemplo personal y los residuos del cine muestra una limitación de la narración."
+    },
+    {
+      "id": "r39-es-c2-02",
+      "tab": "simbolos",
+      "kind": "mc",
+      "q": "¿Por qué el autor considera poco instructivo denunciar solo la hipocresía del cine?",
+      "choices": [
+        "Porque el recinto debe ofrecer vasos de un solo uso.",
+        "Porque los espectadores no pueden cambiar ninguna costumbre.",
+        "Porque las películas siempre presentan datos correctos.",
+        "Porque el juicio fácil ignora dificultades materiales y decisiones institucionales."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "El segundo párrafo pide examinar recursos y organización en vez de contentarse con una acusación."
+    },
+    {
+      "id": "r39-es-c2-03",
+      "tab": "simbolos",
+      "kind": "mc",
+      "q": "¿Qué ventaja narrativa ofrece el personaje del consumidor perfecto?",
+      "choices": [
+        "Permite mostrar todos los contratos de recogida.",
+        "Impide que el espectador sienta emociones.",
+        "Presenta acciones visibles y finales moralmente claros.",
+        "Exige filmar la fabricación de todos los recipientes."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "El relato individual produce protagonistas y desenlaces fáciles de comprender."
+    },
+    {
+      "id": "r39-es-c2-04",
+      "tab": "causas",
+      "kind": "mc",
+      "q": "¿Qué se pierde cuando los contratos y las fuentes quedan fuera del relato?",
+      "choices": [
+        "Se ocultan condiciones colectivas que influyen en las decisiones personales.",
+        "Se demuestra que los consumidores no compran bebidas.",
+        "Desaparece toda posibilidad de contar una historia.",
+        "La película se convierte obligatoriamente en un informe."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "El tercer párrafo cuestiona excluir estructuras porque resultan poco fotogénicas."
+    },
+    {
+      "id": "r39-es-c2-05",
+      "tab": "causas",
+      "kind": "mc",
+      "q": "¿Por qué tampoco satisface al autor afirmar que únicamente deben actuar empresas y gobiernos?",
+      "choices": [
+        "Porque todos los consumidores pueden resolver el problema por sí solos.",
+        "Porque la administración nunca debe intervenir.",
+        "Porque ofrece al individuo una excusa cómoda para no participar.",
+        "Porque demuestra que votar es menos importante que comprar."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "El texto relaciona hábitos privados, decisiones públicas y participación ciudadana."
+    },
+    {
+      "id": "r39-es-c2-06",
+      "tab": "causas",
+      "kind": "mc",
+      "q": "¿Por qué una cantimplora metálica no es automáticamente la opción responsable en toda situación?",
+      "choices": [
+        "Importan su fabricación, su duración y el uso real que recibe.",
+        "Solo es útil si tiene el mismo color que un vaso de plástico.",
+        "Toda cantimplora se recicla inmediatamente después de comprarla.",
+        "Su material nunca afecta al resultado."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "El quinto párrafo pide evaluar la vida útil del objeto y su contexto."
+    },
+    {
+      "id": "r39-es-c2-07",
+      "tab": "causas",
+      "kind": "mc",
+      "q": "¿Qué ocurre si el ensayo de vasos retornables se presenta solo como un éxito absoluto?",
+      "choices": [
+        "El público conoce todos los costes del sistema.",
+        "Se ocultan las pérdidas y gastos adicionales que necesitan revisión.",
+        "Las pérdidas desaparecen realmente del festival.",
+        "Los organizadores obtienen automáticamente más fondos."
+      ],
+      "answer": 1,
+      "sourceParagraph": 6,
+      "explanation": "La experiencia contiene menos basura, pero también pérdidas y costes inesperados."
+    },
+    {
+      "id": "r39-es-c2-08",
+      "tab": "politica",
+      "kind": "mc",
+      "q": "¿Por qué sería igualmente pobre presentar el ensayo como un fracaso rotundo?",
+      "choices": [
+        "Porque no existe ningún indicador del resultado.",
+        "Porque los vasos retornables son idénticos a los desechables.",
+        "Porque el número de visitantes nunca influye.",
+        "Porque tampoco permitiría aprender qué cambiar para la siguiente edición."
+      ],
+      "answer": 3,
+      "sourceParagraph": 6,
+      "explanation": "Ambas versiones simplificadas dejarían sin información útil a quienes deben mejorar el sistema."
+    },
+    {
+      "id": "r39-es-c2-09",
+      "tab": "politica",
+      "kind": "mc",
+      "q": "¿Qué objetivo considera insuficiente el autor para el cine ambiental?",
+      "choices": [
+        "Explicar qué instituciones pueden actuar.",
+        "Valorar los efectos de decisiones colectivas.",
+        "Conseguir que el público se sienta moralmente intachable.",
+        "Comparar resultados medidos y promesas."
+      ],
+      "answer": 2,
+      "sourceParagraph": 7,
+      "explanation": "La conclusión rechaza fabricar espectadores impecables como único resultado."
+    },
+    {
+      "id": "r39-es-c2-10",
+      "tab": "politica",
+      "kind": "mc",
+      "q": "¿Qué debería conservar el espectador después de los créditos?",
+      "choices": [
+        "La capacidad de hacer preguntas sobre pruebas, responsabilidades y consecuencias.",
+        "La certeza de que una cantimplora resuelve cualquier problema.",
+        "La obligación de aceptar todo mensaje emotivo.",
+        "La idea de que solo las autoridades influyen en el consumo."
+      ],
+      "answer": 0,
+      "sourceParagraph": 7,
+      "explanation": "El autor prefiere preguntas duraderas a una emoción de inocencia pasajera."
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "B2",
+  "sourceTitle": "Somewhere Between Two Cities",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R40-CONTENT-AUDIT-1",
+  "description": "Independent friendship-email reading assessment with original questions, pending pedagogical validation",
+  "tabs": [
+    {
+      "id": "understanding",
+      "title": "Understanding the Message"
+    },
+    {
+      "id": "interpretation",
+      "title": "Meaning and Intent"
+    },
+    {
+      "id": "transfer",
+      "title": "Interpreting the Invitation"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r40-en-b2-01",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "What was the biggest contrast between Lena's expectations and her first month abroad?",
+      "choices": [
+        "The city looked less attractive than its photos.",
+        "Excitement about the exchange did not prevent loneliness.",
+        "Her host family refused to help her.",
+        "Her language course ended earlier than planned."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Lena expected a holiday-like experience but felt unexpectedly isolated."
+    },
+    {
+      "id": "r40-en-b2-02",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "Why were Lena's cheerful photos not a reliable picture of her life?",
+      "choices": [
+        "They were all taken before she travelled.",
+        "They showed only the community radio station.",
+        "Her host family had edited the images.",
+        "They allowed her to hide the difficulties she was experiencing."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "She admits posting attractive pictures felt easier than confessing she was struggling."
+    },
+    {
+      "id": "r40-en-b2-03",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "How did work at the community radio station change Lena's view of herself?",
+      "choices": [
+        "She began to believe every new arrival was unhappy.",
+        "She decided to stop learning the local language.",
+        "Hearing migrants' stories made her own confusion feel less shameful.",
+        "She no longer needed to make friends outside the station."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Other people's experiences helped her recognise that uncertainty is normal."
+    },
+    {
+      "id": "r40-en-b2-04",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why does Lena value the radio work despite it being unpaid?",
+      "choices": [
+        "The conversations matter more to her than the certificate.",
+        "She expects it to provide a high salary later.",
+        "She avoids working with other people.",
+        "She uses it mainly to collect photos for social media."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "She explicitly values people she meets more than the certificate."
+    },
+    {
+      "id": "r40-en-b2-05",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What does the bakery owner's experience suggest about adapting to a new place?",
+      "choices": [
+        "Learning the language is the only challenge.",
+        "Baking familiar food solves social isolation.",
+        "Unspoken local rules can be more difficult than vocabulary.",
+        "Newcomers usually find new routines within a week."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "The owner says the hardest part was feeling that everyone else already knew the rules."
+    },
+    {
+      "id": "r40-en-b2-06",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What do the listener calls after the interview imply?",
+      "choices": [
+        "The loneliness described by the baker is widely recognisable.",
+        "The station is preparing to close.",
+        "The bakery's recipes are too complicated.",
+        "All listeners have lived in the same neighbourhood."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Several listeners recognise and respond to the experience of adjusting to a new place."
+    },
+    {
+      "id": "r40-en-b2-07",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why does Lena hesitate to send a familiar school photograph?",
+      "choices": [
+        "She has lost the original digital file.",
+        "It would avoid asking how Alex is actually doing.",
+        "Alex has said not to discuss their exams.",
+        "She worries that the photograph is embarrassing."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "She realises that a nostalgic photo would again replace a genuine conversation."
+    },
+    {
+      "id": "r40-en-b2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "How does Lena acknowledge a possible effect of her posts on Alex?",
+      "choices": [
+        "She claims Alex must envy her travel photos.",
+        "She says Alex has misunderstood every message.",
+        "She thinks Alex no longer wants to be friends.",
+        "Her posts may have made Alex feel excluded from her life."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Lena explicitly recognises Alex could have felt left out of her curated updates."
+    },
+    {
+      "id": "r40-en-b2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "What makes Lena's invitation considerate rather than demanding?",
+      "choices": [
+        "She expects Alex to speak at the public event.",
+        "She insists that Alex buy a particular gift.",
+        "She offers a call as an alternative and no public performance is required.",
+        "She promises to pay every expense of Alex's visit."
+      ],
+      "answer": 2,
+      "sourceParagraph": 5,
+      "explanation": "Lena provides options and removes social pressure from the invitation."
+    },
+    {
+      "id": "r40-en-b2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "What change in their communication is Lena really requesting?",
+      "choices": [
+        "More honest conversations instead of only attractive online updates.",
+        "More frequent photographs of Rotterdam's buildings.",
+        "A shared certificate from the radio station.",
+        "A visit every week regardless of distance."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "The final paragraph asks for an actual conversation rather than another smiling photograph."
+    }
+  ]
+}

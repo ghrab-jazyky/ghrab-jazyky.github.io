@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "de",
+  "level": "C2",
+  "sourceTitle": "Das Märchen vom makellosen Verbraucher",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 30,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R39-CONTENT-AUDIT-1",
+  "description": "Independent C2 media-criticism and systems reasoning test; awaiting independent didactic review",
+  "tabs": [
+    {
+      "id": "bilder",
+      "title": "Bilder und Widersprüche"
+    },
+    {
+      "id": "ursachen",
+      "title": "Ursachen hinterfragen"
+    },
+    {
+      "id": "verantwortung",
+      "title": "Verantwortung und Entscheidungen"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r39-de-c2-01",
+      "tab": "bilder",
+      "kind": "mc",
+      "q": "Welchen Widerspruch zeigt der Filmabend mit der gefeierten Schülerin und dem vollen Behälter?",
+      "choices": [
+        "Das Publikum weiß nicht, wie lange die Schülerin ihre Flasche nutzt.",
+        "Ein persönlicher Erfolg wird gefeiert, während das Kino Einwegbecher anbietet.",
+        "Die Trinkflasche wurde noch nie verwendet.",
+        "Die Vorführung fand ohne Zuschauer statt."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Die Eröffnung kontrastiert eine bewunderte Einzelhandlung mit der Organisation des Veranstaltungsortes."
+    },
+    {
+      "id": "r39-de-c2-02",
+      "tab": "bilder",
+      "kind": "mc",
+      "q": "Warum wäre der bloße Vorwurf der Heuchelei dem Autor zu einfach?",
+      "choices": [
+        "Weil kleine Kinos grundsätzlich nie Mehrweg anbieten dürfen.",
+        "Weil jeder Zuschauer die Abfallentsorgung selbst organisieren muss.",
+        "Weil Filme über die Umwelt keine Widersprüche zeigen dürfen.",
+        "Weil er materielle Grenzen und die Erzählung von Verantwortung verdeckt."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Absatz zwei thematisiert Personal, Lagerfläche und Spülanlagen hinter dem sichtbaren Widerspruch."
+    },
+    {
+      "id": "r39-de-c2-03",
+      "tab": "bilder",
+      "kind": "mc",
+      "q": "Warum ist der perfekte Konsument eine attraktive Filmfigur?",
+      "choices": [
+        "Er kann alle kommunalen Verträge vollständig erklären.",
+        "Er verhindert jede emotionale Reaktion.",
+        "Seine klaren Handlungen lassen sich zu einem einfachen Erfolg erzählen.",
+        "Er macht öffentliche Einrichtungen grundsätzlich überflüssig."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Die Erzählung gewinnt leicht erkennbare Helden und eindeutige Schlussbilder."
+    },
+    {
+      "id": "r39-de-c2-04",
+      "tab": "ursachen",
+      "kind": "mc",
+      "q": "Was bleibt im Film häufig unsichtbar, wenn private Entscheidungen im Mittelpunkt stehen?",
+      "choices": [
+        "Vergaberegeln, Infrastruktur und andere Bedingungen des Handelns.",
+        "Die Farbe der verwendeten Flaschen.",
+        "Die Anzahl der Kinobesucher.",
+        "Die persönliche Meinung der Erzählerin."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Der Text verweist auf Verträge, Beschaffung und öffentliche Einrichtungen, die schwer zu filmen sind."
+    },
+    {
+      "id": "r39-de-c2-05",
+      "tab": "ursachen",
+      "kind": "mc",
+      "q": "Warum lehnt der Autor auch die Behauptung ab, allein Politik und Industrie seien zuständig?",
+      "choices": [
+        "Weil jeder Mensch die Infrastruktur sofort selbst ersetzen könnte.",
+        "Weil öffentliche Verantwortung nie eine Rolle spielt.",
+        "Weil sie den Einzelnen zu leicht von seinem möglichen Einfluss entbindet.",
+        "Weil Wahlen und Protest keinen Zusammenhang mit Konsum haben."
+      ],
+      "answer": 2,
+      "sourceParagraph": 4,
+      "explanation": "Die Gegenposition könnte Verbraucher ebenso bequem freisprechen wie der Film sie moralisch belastet."
+    },
+    {
+      "id": "r39-de-c2-06",
+      "tab": "ursachen",
+      "kind": "mc",
+      "q": "Warum ist eine Metallflasche nicht in jedem Fall automatisch nachhaltiger?",
+      "choices": [
+        "Herstellung, Nutzungsdauer und tatsächlicher Gebrauch müssen berücksichtigt werden.",
+        "Der Preis ist unabhängig von ihrer Herstellung immer gleich.",
+        "Jede Metallflasche wird nach einem Tag entsorgt.",
+        "Die Farbe der Flasche entscheidet über ihre Wirkung."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "Absatz fünf fordert eine Beurteilung der tatsächlichen Nutzung über die Zeit."
+    },
+    {
+      "id": "r39-de-c2-07",
+      "tab": "ursachen",
+      "kind": "mc",
+      "q": "Was wäre problematisch daran, den Pfandbecherversuch als uneingeschränkten Erfolg zu schneiden?",
+      "choices": [
+        "Die erste Ausgabe des Films wäre länger.",
+        "Verluste und zusätzliche Reinigungskosten würden verdeckt.",
+        "Der Müll würde in Wirklichkeit sofort zunehmen.",
+        "Alle Besucher müssten danach ihre eigenen Becher kaufen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 6,
+      "explanation": "Der Versuch verringert Abfall, verursacht jedoch unerwartete Verluste und Kosten."
+    },
+    {
+      "id": "r39-de-c2-08",
+      "tab": "verantwortung",
+      "kind": "mc",
+      "q": "Warum wäre die Darstellung als endgültiges Scheitern ebenso wenig hilfreich?",
+      "choices": [
+        "Weil erfolgreiche Rückgaben automatisch ausbleiben.",
+        "Weil jedes Ergebnis bereits perfekt gemessen wurde.",
+        "Weil die Organisatoren keine neuen Daten sammeln dürfen.",
+        "Weil daraus kaum zu lernen wäre, wie das nächste Fest verbessert werden kann."
+      ],
+      "answer": 3,
+      "sourceParagraph": 6,
+      "explanation": "Beide vereinfachenden Erzählungen lassen wichtige Hinweise für die nächste Planung weg."
+    },
+    {
+      "id": "r39-de-c2-09",
+      "tab": "verantwortung",
+      "kind": "mc",
+      "q": "Was sollte ein Umweltfilm nach Meinung des Autors nicht hauptsächlich erzeugen?",
+      "choices": [
+        "Ein besseres Verständnis praktischer Entscheidungen.",
+        "Kritische Fragen nach ausgelassenen Bedingungen.",
+        "Ein Publikum, das sich vor allem moralisch unschuldig fühlt.",
+        "Mehr Aufmerksamkeit für unterschiedliche Akteure."
+      ],
+      "answer": 2,
+      "sourceParagraph": 7,
+      "explanation": "Die Schlussfolgerung lehnt kurzfristige moralische Reinheit als Hauptziel ab."
+    },
+    {
+      "id": "r39-de-c2-10",
+      "tab": "verantwortung",
+      "kind": "mc",
+      "q": "Welche Fähigkeit ist nach dem Abspann besonders wertvoll?",
+      "choices": [
+        "Zu erkennen, wann eine attraktive Erklärung wichtige Akteure und Folgen verschweigt.",
+        "Jede Maßnahme ausschließlich nach ihrem Symbolwert zu beurteilen.",
+        "Filme nur noch als Unterhaltung ohne Argumente anzusehen.",
+        "Sämtliche Verantwortung allein dem Staat zuzuweisen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 7,
+      "explanation": "Die letzten Sätze fordern aufmerksame Fragen zu unvollständigen Erklärungen."
+    }
+  ]
+}
