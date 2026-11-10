@@ -120,10 +120,10 @@
     'Required local assessment modules are unavailable');
    // A fixed 20-minute URL is intentional for this *unapproved* pedagogical pilot.
    // It must not be exposed through the public teacher catalogue.
-   requireCondition(['B1','B2'].includes(level),'Unsupported independent test level');
+   requireCondition(reading.LEVELS.includes(level),'Unsupported independent test level');
    requireCondition(params.get('timer')==='20'&&
     /^[a-z0-9_-]{6,40}$/i.test(params.get('attempt')||''),
-    'This draft preview requires ?level=B1|B2&timer=20&attempt=<local-id>');
+    'This draft preview requires ?level=A1|A2|B1|B2|C1|C2&timer=20&attempt=<local-id>');
    const [manifest,originalHtml,bank]=await Promise.all([
     get('../../../version.json',true),
     get('../../../cteni/can-mistakes/index.html'),
