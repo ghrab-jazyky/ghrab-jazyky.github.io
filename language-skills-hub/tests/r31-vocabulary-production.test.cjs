@@ -17,7 +17,9 @@ test('Production vocabulary page loads local assets and contains no staging/PWA 
  assert.match(html,/<h1>Můj slovníček<\/h1>/);
  assert.match(html,/<link rel="stylesheet" href="\.\.\/assets\/lsh\/v3\/vocab\.css">/);
  assert.match(html,/<script defer src="\.\.\/assets\/lsh\/v3\/vocab\.js"><\/script>/);
- assert.doesNotMatch(html,/zkusebni|TECHNICKÝ PILOT|zkušební E3C|manifest\.webmanifest|pwa\.js|href="\.\.\/vyber\/"/i);
+ assert.doesNotMatch(html,/TECHNICKÝ PILOT|zkušební E3C|manifest\.webmanifest|pwa\.js|href="\.\.\/vyber\/"/i);
+ assert.doesNotMatch(html,/(?:src|href)="[^"]*zkusebni\/(?:assets|data|manifest|sw\.js)/i);
+ assert.equal((html.match(/\.\.\/\.\.\/zkusebni\/slovnicek\//g)||[]).length,1);
  assert.match(get('index.html'),/href="slovnicek\/">Můj slovníček/);
  assert.match(html,/<details class="vocab-recovery">/);
  assert.match(html,/href="\.\.\/\.\.\/zkusebni\/slovnicek\/"/);
