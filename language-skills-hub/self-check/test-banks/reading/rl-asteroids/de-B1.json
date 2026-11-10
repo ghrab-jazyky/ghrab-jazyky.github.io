@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "de",
+  "level": "B1",
+  "sourceTitle": "Wie behalten wir Asteroiden im Blick?",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R37-CONTENT-AUDIT-1",
+  "description": "Original independent B1 astronomy comprehension and interpretation draft; external pedagogy audit pending",
+  "tabs": [
+    {
+      "id": "verstehen",
+      "title": "Text verstehen"
+    },
+    {
+      "id": "begruenden",
+      "title": "Gründe erkennen"
+    },
+    {
+      "id": "anwenden",
+      "title": "Ideen anwenden"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r37-de-b1-01",
+      "tab": "verstehen",
+      "kind": "mc",
+      "q": "Warum erforscht man Asteroiden auch ohne eine unmittelbare Gefahr?",
+      "choices": [
+        "Um ihre Bahnen abzuschaffen.",
+        "Um mehr über die frühe Geschichte des Sonnensystems zu erfahren.",
+        "Um neue Planeten aus ihnen zu bauen.",
+        "Um alle Gesteine der Erde zu ersetzen."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Absatz eins erklärt, dass Asteroiden Hinweise auf die Vergangenheit des Sonnensystems geben."
+    },
+    {
+      "id": "r37-de-b1-02",
+      "tab": "verstehen",
+      "kind": "mc",
+      "q": "Welche Aussage über die Bahnen der Asteroiden passt zum Text?",
+      "choices": [
+        "Alle bewegen sich genau zwischen Mars und Jupiter.",
+        "Ihre Bahnen bleiben ständig gleich lang.",
+        "Viele kreisen zwischen Mars und Jupiter, andere folgen anderen Bahnen.",
+        "Asteroiden können sich nur um die Erde bewegen."
+      ],
+      "answer": 2,
+      "sourceParagraph": 1,
+      "explanation": "Der erste Absatz nennt die häufige Lage zwischen Mars und Jupiter und andere Bahnen."
+    },
+    {
+      "id": "r37-de-b1-03",
+      "tab": "verstehen",
+      "kind": "mc",
+      "q": "Was bedeutet die Bezeichnung „erdnaher Asteroid“?",
+      "choices": [
+        "Seine Bahn führt in die Nachbarschaft der Erde, ohne zwingenden Einschlag.",
+        "Der Körper wird die Erde bestimmt in diesem Jahr treffen.",
+        "Der Asteroid befindet sich bereits in der Erdatmosphäre.",
+        "Seine Größe lässt sich nicht mit Teleskopen messen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Die Kategorie beschreibt eine Bahn in Erdnähe, nicht einen sicheren Einschlag."
+    },
+    {
+      "id": "r37-de-b1-04",
+      "tab": "begruenden",
+      "kind": "mc",
+      "q": "Warum reichen die Daten eines einzelnen Fotos nicht aus?",
+      "choices": [
+        "Weil die Kamera jeden Asteroiden doppelt zeigt.",
+        "Weil alle Asteroiden nur nachts existieren.",
+        "Weil die Geschwindigkeit niemals verändert werden kann.",
+        "Weil mehrere Beobachtungen die Berechnung der Bahn zuverlässiger machen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "Zusätzliche Messungen erlauben eine genauere Vorhersage der zukünftigen Bahn."
+    },
+    {
+      "id": "r37-de-b1-05",
+      "tab": "begruenden",
+      "kind": "mc",
+      "q": "Wozu tauschen Astronomen ihre Messergebnisse aus?",
+      "choices": [
+        "Damit niemand eine zweite Aufnahme machen muss.",
+        "Um Prognosen gemeinsam zu überprüfen und zu verbessern.",
+        "Damit die erste Prognose nie geändert wird.",
+        "Um herauszufinden, welcher Forscher schneller arbeitet."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "Der Text stellt Zusammenarbeit als Mittel zur zuverlässigeren Bahnberechnung dar."
+    },
+    {
+      "id": "r37-de-b1-06",
+      "tab": "begruenden",
+      "kind": "mc",
+      "q": "Was konnte die DART-Mission tatsächlich zeigen?",
+      "choices": [
+        "Unter getesteten Bedingungen kann ein Zusammenstoß die Bewegung verändern.",
+        "Mit einer Sonde lassen sich alle Asteroiden vollständig zerstören.",
+        "Didymos befand sich kurz vor einem Zusammenstoß mit der Erde.",
+        "Dimorphos hörte nach dem Test auf, sich zu bewegen."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Die Sonde verkürzte die Umlaufzeit von Dimorphos, nicht die Existenz des Objekts."
+    },
+    {
+      "id": "r37-de-b1-07",
+      "tab": "begruenden",
+      "kind": "mc",
+      "q": "Warum war DART keine Rettung vor einer aktuellen Bedrohung?",
+      "choices": [
+        "Weil der Versuch nicht absichtlich durchgeführt wurde.",
+        "Weil die Sonde den Asteroiden verfehlte.",
+        "Weil das Ziel für einen kontrollierten Test ausgewählt worden war.",
+        "Weil nach dem Zusammenstoß keine Messung möglich war."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Die Mission war eine geplante Übung an einem nicht gefährlichen Ziel."
+    },
+    {
+      "id": "r37-de-b1-08",
+      "tab": "anwenden",
+      "kind": "mc",
+      "q": "Ein neuer Asteroid könnte gefährlich werden. Was ist zunächst besonders wichtig?",
+      "choices": [
+        "Abwarten, bis er mit bloßem Auge zu sehen ist.",
+        "Meldungen ohne überprüfte Daten veröffentlichen.",
+        "Alle Entscheidungen bis kurz vor dem Einschlag verschieben.",
+        "Schnell verlässliche Beobachtungen und eine frühe Warnung ermöglichen."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Die Schlussfolgerung betont Messungen und frühe Warnungen als Grundlage für Entscheidungen."
+    },
+    {
+      "id": "r37-de-b1-09",
+      "tab": "anwenden",
+      "kind": "mc",
+      "q": "Ein Mitschüler meint, große Einschläge seien alltäglich. Wie reagierst du?",
+      "choices": [
+        "Du bestätigst, dass jedes Jahr eine Katastrophe zu erwarten ist.",
+        "Du erklärst, dass sie selten sind, Vorsorge aber trotzdem sinnvoll ist.",
+        "Du sagst, dass moderne Sonden jedes Problem automatisch lösen.",
+        "Du meinst, Himmelsbeobachtung sei deshalb überflüssig."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "Absatz vier verbindet seltene große Einschläge mit vernünftiger Vorbereitung."
+    },
+    {
+      "id": "r37-de-b1-10",
+      "tab": "anwenden",
+      "kind": "mc",
+      "q": "Welche Aussage fasst eine vernünftige Vorbereitung am besten zusammen?",
+      "choices": [
+        "Daten sammeln, international zusammenarbeiten und Zeit für Entscheidungen gewinnen.",
+        "Nur auf eine möglichst große Sonde setzen.",
+        "Jede Annäherung als sicheren Einschlag behandeln.",
+        "Vorbereitungen aufgeben, solange keine absolute Sicherheit besteht."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "Der Schluss nennt genauere Beobachtungen, Zusammenarbeit und Zeit zum Reagieren."
+    }
+  ]
+}
