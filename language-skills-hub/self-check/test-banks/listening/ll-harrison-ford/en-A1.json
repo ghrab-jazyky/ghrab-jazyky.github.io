@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-harrison-ford",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
+  "durationMinutesSuggested": 15,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "auditRevision": "R36-AUTHOR-DRAFT-1",
+  "notes": "Unapproved audio-dependent test; original clip must be independently checked.",
+  "objective": [
+    {
+      "id": "r36-hf-a1-01",
+      "category": "listening",
+      "q": "What kind of work does Harrison Ford do?",
+      "options": [
+        "He is a teacher.",
+        "He is an actor.",
+        "He is a doctor.",
+        "He is a driver."
+      ],
+      "answer": 1,
+      "explanation": "Ford speaks about his work in acting and films.",
+      "sourceEvidence": "He is an actor receiving a film career award."
+    },
+    {
+      "id": "r36-hf-a1-02",
+      "category": "listening",
+      "q": "Why does he make a joke about the award?",
+      "options": [
+        "He wants to leave the room.",
+        "He has forgotten its name.",
+        "He does not like the audience.",
+        "He thinks it comes a little early."
+      ],
+      "answer": 3,
+      "explanation": "He jokes that he is still working and the honour comes early.",
+      "sourceEvidence": "He calls the lifetime award a little early."
+    },
+    {
+      "id": "r36-hf-a1-03",
+      "category": "listening",
+      "q": "Where did Ford find people who enjoyed plays?",
+      "options": [
+        "At college.",
+        "In a hospital.",
+        "At a sports club.",
+        "On a train."
+      ],
+      "answer": 0,
+      "explanation": "His story describes a group putting on plays at college.",
+      "sourceEvidence": "He met people making plays during his time at college."
+    },
+    {
+      "id": "r36-hf-a1-04",
+      "category": "listening",
+      "q": "How did he feel before finding that group?",
+      "options": [
+        "Proud of his grades.",
+        "Angry with everyone.",
+        "Alone and unsure.",
+        "Ready for a holiday."
+      ],
+      "answer": 2,
+      "explanation": "He describes feeling isolated before finding people like him.",
+      "sourceEvidence": "Ford remembers an isolated period in his college years."
+    },
+    {
+      "id": "r36-hf-a1-05",
+      "category": "listening",
+      "q": "What other job did Ford do before success in films?",
+      "options": [
+        "He drove buses.",
+        "He worked as a carpenter.",
+        "He taught music.",
+        "He sold books."
+      ],
+      "answer": 1,
+      "explanation": "He supported himself through carpentry between acting jobs.",
+      "sourceEvidence": "Ford did carpentry before his big acting breakthrough."
+    },
+    {
+      "id": "r36-hf-a1-06",
+      "category": "listening",
+      "q": "What does Ford tell successful people to do?",
+      "options": [
+        "Only think about their awards.",
+        "Stop making new films.",
+        "Work without other people.",
+        "Give other people a chance."
+      ],
+      "answer": 3,
+      "explanation": "He wants successful artists to help newcomers.",
+      "sourceEvidence": "At the end he appeals to successful actors to support others."
+    }
+  ],
+  "written": [
+    {
+      "id": "r36-hf-a1-w1",
+      "q": "Write one person or group Ford thanks.",
+      "modelAnswer": "He thanks his family or his wife, or a named collaborator.",
+      "teacherCriterion": "One comprehensible name of an appropriately thanked person or group, not an invented name.",
+      "sourceEvidence": "Ford thanks his wife, family and various colleagues."
+    },
+    {
+      "id": "r36-hf-a1-w2",
+      "q": "Write one word for his job before he became famous.",
+      "modelAnswer": "Carpenter.",
+      "teacherCriterion": "Accept 'carpenter' or an understandable equivalent, no longer explanation necessary.",
+      "sourceEvidence": "He worked at carpentry between acting jobs."
+    }
+  ]
+}

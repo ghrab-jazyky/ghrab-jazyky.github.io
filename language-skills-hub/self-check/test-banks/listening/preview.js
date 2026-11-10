@@ -1,4 +1,4 @@
-/* R35 isolated EN/B2 listening teacher QA reference, not part of public catalog.
+/* R35/R36 isolated EN/A1-C2 Listening teacher QA reference, not part of catalog.
  * Original audio/video is played by teacher; original source hash is checked.
  */
 (()=>{
@@ -19,6 +19,7 @@
  const marks=[null,null];
  const originalTopic='ll-harrison-ford';
  const params=new URLSearchParams(location.search);
+ const level=params.get('level')||'B2';
  const valid=(ok,msg)=>{if(!ok)throw new Error(msg)};
  async function get(url,isJson=false){
   const res=await fetch(url,{credentials:'omit',cache:'no-store',redirect:'error'});
@@ -171,7 +172,7 @@
   const state=timed?.status();
   try{
    exportCore.download(exportCore.listening(normalized(result),marks,{
-    topic:originalTopic,language:'en',level:'B2',
+    topic:originalTopic,language:'en',level,
     submittedAt:state?.submittedAt??null,interruptionCount:state?.incidents?.length??0
    }));
   }catch(e){$('exportStatus').textContent='CSV export unavailable: '+String(e.message||e)}
@@ -180,23 +181,35 @@
   try{
    valid(!!sourceCore&&!!draftCore&&!!gradeCore&&!!exportCore&&!!window.LSHSessionUI,
     'Required Listening QA modules are unavailable');
-   valid(params.get('timer')==='18'&&/^r35[a-z0-9_-]{4,36}$/i.test(params.get('attempt')||''),
-    'Required ?timer=18&attempt=r35... for teacher QA');
+   const requestedMinutes=Number(params.get('timer'));
+   valid(sourceCore.LEVELS.includes(level),'Unsupported Listening CEFR level');
+   valid(Number.isInteger(requestedMinutes)&&requestedMinutes>=5&&
+    requestedMinutes<=120&&/^r3[56][a-z0-9_-]{4,36}$/i.test(params.get('attempt')||''),
+    'Required ?level=A1-C2&timer=minutes&attempt=r35... or r36... for teacher QA');
    const [manifest,html,independent]=await Promise.all([
     get('../../../version.json',true),
     get('../../../poslech/harrison-ford/index.html'),
-    get('ll-harrison-ford/en-B2.json',true)
+    get('ll-harrison-ford/en-'+level+'.json',true)
    ]);
    valid(manifest.version==='R31'&&manifest.backendEnabled===false,
     'Unexpected production source baseline');
    const actual=await sha256(html);
    valid(actual===manifest.contentHashes[originalTopic],'Original media source checksum mismatch');
-   const source=sourceCore.variant(sourceCore.extractJson(html,'DATA'),'B2');
+   const source=sourceCore.variant(sourceCore.extractJson(html,'DATA'),level);
+   valid(independent.level===level&&independent.topic===originalTopic,
+    'Listening bank is not the requested level and topic');
    draftCore.validate(independent,source,actual);
+   valid(independent.durationMinutesSuggested===requestedMinutes,
+    'The source-specific time limit does not match the reviewed draft');
    bank=independent;
+   document.title='Independent Listening '+level+' – unapproved teacher QA';
+   document.querySelector('.mode').textContent=(level==='B2'?'R35':'R36')+' DRAFT · EN/'+level;
+   document.querySelector('.hero .subtitle').textContent='English '+level+
+    ' · 6 objective items + 2 teacher-reviewed responses · '+requestedMinutes+' minutes';
+   document.querySelector('.listening-heading .pill').textContent='EN · '+level;
    render();
    timed=window.LSHSessionUI.mount({
-    skill:'listening',topic:originalTopic,lang:'en',level:'B2',
+    skill:'listening',topic:originalTopic,lang:'en',level,
     workspace:$('workspace'),
     getAnswers:()=>({...answers}),
     restoreAnswers:saved=>{
@@ -218,7 +231,7 @@
     },
     onSubmit:({automatic,restored})=>submit(automatic,restored)
    });
-   valid(!!timed,'R35 Listening draft must have local timer');
+   valid(!!timed,'Independent Listening draft must have local timer');
    timed.initialize();
    $('workspace').hidden=timed.status().phase==='ready';
    $('loading').hidden=true;

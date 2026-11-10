@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-harrison-ford",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
+  "durationMinutesSuggested": 20,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "auditRevision": "R36-AUTHOR-DRAFT-1",
+  "notes": "Unapproved audio-dependent independent question bank; factual content requires direct verification from original media.",
+  "objective": [
+    {
+      "id": "r36-hf-c1-01",
+      "category": "interpretation",
+      "q": "How does Ford's self-deprecating opening help frame a personal honour?",
+      "options": [
+        "It casts doubt on the value of all awards.",
+        "It establishes modesty without rejecting recognition.",
+        "It implies that his career has already come to an end.",
+        "It shifts attention to the audience's professional failures."
+      ],
+      "answer": 1,
+      "explanation": "The opening jokes about the timing of a lifetime award while accepting it.",
+      "sourceEvidence": "Ford says the prize comes early because he remains active."
+    },
+    {
+      "id": "r36-hf-c1-02",
+      "category": "interpretation",
+      "q": "What is the underlying movement of his college recollection?",
+      "options": [
+        "From professional success to dissatisfaction with fame.",
+        "From practical work to hostility towards acting.",
+        "From formal education to financial security.",
+        "From isolation to a community that gives him direction."
+      ],
+      "answer": 3,
+      "explanation": "The college story transforms an experience of alienation into belonging.",
+      "sourceEvidence": "The college theatre group provides 'his people'."
+    },
+    {
+      "id": "r36-hf-c1-03",
+      "category": "interpretation",
+      "q": "Why does the speech name people who helped before public fame arrived?",
+      "options": [
+        "To challenge the image of achievement as the work of one person.",
+        "To establish that those supporters had more talent than Ford.",
+        "To argue that success depends entirely on being discovered by directors.",
+        "To suggest that young actors need not develop practical skills."
+      ],
+      "answer": 0,
+      "explanation": "Acknowledging supporters makes the success narrative interdependent.",
+      "sourceEvidence": "The speech thanks specific early supporters and prominent filmmakers."
+    },
+    {
+      "id": "r36-hf-c1-04",
+      "category": "interpretation",
+      "q": "What is implied when acting is described as a way to 'live many lives'?",
+      "options": [
+        "Performers should avoid drawing on their own experiences.",
+        "Fiction allows actors to escape responsibility for other people.",
+        "A role can open perspectives and experiences beyond one's own.",
+        "An actor's work is valuable mainly when based on biography."
+      ],
+      "answer": 2,
+      "explanation": "The phrase suggests imaginative exploration of other experiences.",
+      "sourceEvidence": "Ford connects performing and stories with understanding and empathy."
+    },
+    {
+      "id": "r36-hf-c1-05",
+      "category": "interpretation",
+      "q": "Why might the speaker's comments about art and entertainment resist a simple hierarchy?",
+      "options": [
+        "They suggest that creative work can have several overlapping purposes.",
+        "They insist that entertaining films are generally not art.",
+        "They place commercial success above artistic ambition.",
+        "They treat all stories as equally important to audiences."
+      ],
+      "answer": 0,
+      "explanation": "He reflects on entertainment and art without claiming an absolute division.",
+      "sourceEvidence": "He acknowledges that actors sometimes create entertainment and sometimes art."
+    },
+    {
+      "id": "r36-hf-c1-06",
+      "category": "interpretation",
+      "q": "How does his final appeal change the meaning of success?",
+      "options": [
+        "It proposes that a successful performer should work less often.",
+        "It makes career longevity the only reliable measure of achievement.",
+        "It turns awards into evidence that luck has become irrelevant.",
+        "It links the freedom success affords with duties towards others."
+      ],
+      "answer": 3,
+      "explanation": "The closing argument moves from a private achievement to shared responsibility.",
+      "sourceEvidence": "Ford calls on successful actors to support newcomers."
+    }
+  ],
+  "written": [
+    {
+      "id": "r36-hf-c1-w1",
+      "q": "Explain how Ford uses humour and gratitude to construct a credible public persona.",
+      "modelAnswer": "His jokes about the award make him approachable, while direct thanks to collaborators present success as shared.",
+      "teacherCriterion": "Award 1 point if both devices and a supported rhetorical effect are explained; not enough to name humour and gratitude without analysis.",
+      "sourceEvidence": "Opening joke and thanks to filmmakers/supporters."
+    },
+    {
+      "id": "r36-hf-c1-w2",
+      "q": "How does the college episode prepare the audience for the speaker's final moral appeal?",
+      "modelAnswer": "His experience of isolation and eventual belonging gives personal force to his request that established actors welcome and help others.",
+      "teacherCriterion": "Award 1 point for a coherent link between the college community and the later call to assist newcomers.",
+      "sourceEvidence": "College theatre provides belonging; closing appeal supports those beginning."
+    }
+  ]
+}

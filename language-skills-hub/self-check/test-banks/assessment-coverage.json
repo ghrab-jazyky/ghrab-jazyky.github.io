@@ -12,13 +12,14 @@
     "A1/A2/B1/B2/C1/C2 English can-mistakes are new independent draft question banks with local test-browser preview.",
     "Other 132 Reading/Listening variants do not have independent tasks or keys and must not use practice bank as a fallback.",
     "Claude review and human teacher signoff are required before any student publication.",
-    "One independent Listening EN/B2 Harrison Ford draft is authored with 6 objective and 2 teacher-reviewed written tasks; audio facts not independently rechecked yet."
+    "One independent Listening EN/B2 Harrison Ford draft is authored with 6 objective and 2 teacher-reviewed written tasks; audio facts not independently rechecked yet.",
+    "All six Harrison Ford Listening CEFR test banks have distinct draft questions. No direct media audit or school approval has been completed."
   ],
   "counts": {
     "reading": 120,
     "listening": 18,
-    "drafts": 7,
-    "missing": 131
+    "drafts": 12,
+    "missing": 126
   },
   "records": [
     {
@@ -1412,9 +1413,9 @@
       "topic": "ll-harrison-ford",
       "language": "en",
       "level": "A1",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/harrison-ford/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-harrison-ford/en-A1.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
@@ -1423,9 +1424,9 @@
       "topic": "ll-harrison-ford",
       "language": "en",
       "level": "A2",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/harrison-ford/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-harrison-ford/en-A2.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
@@ -1434,9 +1435,9 @@
       "topic": "ll-harrison-ford",
       "language": "en",
       "level": "B1",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/harrison-ford/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-harrison-ford/en-B1.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
@@ -1456,9 +1457,9 @@
       "topic": "ll-harrison-ford",
       "language": "en",
       "level": "C1",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/harrison-ford/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-harrison-ford/en-C1.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
@@ -1467,9 +1468,9 @@
       "topic": "ll-harrison-ford",
       "language": "en",
       "level": "C2",
-      "state": "content_not_authored",
+      "state": "draft_authored_unapproved",
       "sourcePractice": "poslech/harrison-ford/index.html",
-      "independentBank": null,
+      "independentBank": "self-check/test-banks/listening/ll-harrison-ford/en-C2.json",
       "passedHumanAudit": false,
       "approvedForCatalog": false
     },
