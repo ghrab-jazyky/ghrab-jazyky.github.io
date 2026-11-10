@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-CONTENT-AUDIT-1",
+  "description": "New EN/C1 independent Reading questions; unapproved teacher review draft.",
+  "tabs": [
+    {
+      "id": "interpret",
+      "title": "Interpreting the Argument",
+      "description": "Identify the implications of the author's claims."
+    },
+    {
+      "id": "rhetoric",
+      "title": "Claims and Qualifications",
+      "description": "Examine the structure and limits of reasoning."
+    },
+    {
+      "id": "apply",
+      "title": "Critical Application",
+      "description": "Apply the argument to unfamiliar educational situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-c1-int-01",
+      "tab": "interpret",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "In what sense is the author's position on educational improvement deliberately qualified?",
+      "choices": [
+        "It regards perseverance as ineffective whenever pupils lack resources",
+        "It considers effort valuable but questions expectations that ignore conditions",
+        "It proposes eliminating grades to protect the enjoyment of learning",
+        "It assumes that personal discipline generally determines achievement"
+      ],
+      "answer": 1,
+      "explanation": "The first paragraph recognises the value of growth while questioning improvement as a universal personal duty."
+    },
+    {
+      "id": "r34-en-c1-int-02",
+      "tab": "interpret",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What makes the contrast between the two pupils ethically significant?",
+      "choices": [
+        "Their equally poor scores suggest different levels of natural ability",
+        "The first pupil has been given a less demanding assessment",
+        "The second pupil is necessarily using less effective strategies",
+        "Unequal access to help may be confused with strength of character"
+      ],
+      "answer": 3,
+      "explanation": "The writer warns against treating access to resources as evidence of personal merit."
+    },
+    {
+      "id": "r34-en-c1-int-03",
+      "tab": "interpret",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Which development best illustrates the danger of treating every activity as self-improvement?",
+      "choices": [
+        "A leisure interest begins to feel like another task that must produce results",
+        "Learners refuse to study anything that has no immediate practical use",
+        "School assessment becomes impossible without numerical grades",
+        "Students become unwilling to discuss ideas with other people"
+      ],
+      "answer": 0,
+      "explanation": "The author cautions that turning leisure into optimisation can make curiosity an obligation."
+    },
+    {
+      "id": "r34-en-c1-qual-01",
+      "tab": "qualification",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does the author explicitly allow about the pupils' study habits?",
+      "choices": [
+        "Neither pupil could improve without a change in home circumstances",
+        "Only the pupil with greater support can benefit from practical advice",
+        "Both may benefit from better strategies, although that is not the whole problem",
+        "Both should be given identical guidance to ensure consistency"
+      ],
+      "answer": 2,
+      "explanation": "Better study strategies may help both pupils, but cannot create time or a quiet room."
+    },
+    {
+      "id": "r34-en-c1-qual-02",
+      "tab": "qualification",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does the last paragraph retain the idea of individual responsibility?",
+      "choices": [
+        "The proposed measures are intended to replace teachers' advice",
+        "A learner's choices matter only after all inequality is eliminated",
+        "Institutions should remove all consequences from students' decisions",
+        "Providing support should enable meaningful choices, not eliminate them"
+      ],
+      "answer": 3,
+      "explanation": "The writer argues that institutional action makes personal choice more meaningful."
+    },
+    {
+      "id": "r34-en-c1-qual-03",
+      "tab": "qualification",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "How are the slogans about never giving up used rhetorically?",
+      "choices": [
+        "As examples of advice that is sound even without practical guidance",
+        "As attractive encouragement that may feel like blame without support",
+        "As evidence that students prefer praise to constructive feedback",
+        "As explanations for why schools have stopped measuring progress"
+      ],
+      "answer": 1,
+      "explanation": "The author describes the appeal of slogans but warns that they can shift blame to the learner."
+    },
+    {
+      "id": "r34-en-c1-app-01",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A school wants to help pupils who cannot study quietly at home. Which policy best fits the article?",
+      "choices": [
+        "Give every pupil the same motivational poster",
+        "Replace homework with a single timed examination",
+        "Provide supervised study space alongside specific feedback",
+        "Make each pupil prove they have studied for an extra hour"
+      ],
+      "answer": 2,
+      "explanation": "The conclusion proposes concrete practical support, including supervised study space."
+    },
+    {
+      "id": "r34-en-c1-app-02",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "A pupil enjoys a novel without working towards a measurable target. How might the writer judge this?",
+      "choices": [
+        "The experience can be valuable even without a charted outcome",
+        "It is only valuable if the pupil later achieves a higher grade",
+        "It prevents the pupil from developing a productive study habit",
+        "The novel should be replaced with a more measurable activity"
+      ],
+      "answer": 0,
+      "explanation": "The third paragraph defends learning activities without measurable outcomes."
+    },
+    {
+      "id": "r34-en-c1-app-03",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What is missing when equally poor results lead to identical advice for pupils with different resources?",
+      "choices": [
+        "Evidence that the pupils spent exactly the same time revising",
+        "Attention to circumstances that make effort more or less effective",
+        "A rule requiring pupils to improve scores at the same rate",
+        "A formal distinction between grades and other types of learning"
+      ],
+      "answer": 1,
+      "explanation": "The second paragraph argues that the conditions under which effort occurs matter."
+    },
+    {
+      "id": "r34-en-c1-app-04",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Which school decision combines the writer's principal recommendations?",
+      "choices": [
+        "Use progress charts as the primary measure of every activity",
+        "Reward all perseverance independently of its circumstances",
+        "Leave access to resources entirely to families",
+        "Offer practical support, specific feedback and opportunities to revise"
+      ],
+      "answer": 3,
+      "explanation": "The final paragraph recommends study space, feedback and revision while retaining personal agency."
+    }
+  ]
+}
