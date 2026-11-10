@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-AUTHOR-DRAFT-1",
+  "description": "Original A1 pilot bank for I Can Try Again; independent questions on the original passage; not pedagogically approved.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Understanding the story",
+      "description": "Choose what the story tells us."
+    },
+    {
+      "id": "reasons",
+      "title": "Why things happen",
+      "description": "Think about reasons and changes."
+    },
+    {
+      "id": "new-situations",
+      "title": "Use the ideas",
+      "description": "Think about a new situation."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-a1-01",
+      "tab": "meaning",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "Why does Mia feel worried on Monday?",
+      "choices": [
+        "She has no English book.",
+        "She finds words she does not know.",
+        "Her friend is not at school.",
+        "She cannot find her notebook."
+      ],
+      "answer": 1,
+      "explanation": "The first paragraph says that some words in the story are new to Mia, and she feels worried."
+    },
+    {
+      "id": "r34-en-a1-02",
+      "tab": "meaning",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "What does Mia do when she stops reading?",
+      "choices": [
+        "She goes home.",
+        "She asks to read another book.",
+        "She closes her book for the day.",
+        "She puts a question mark by the sentence."
+      ],
+      "answer": 3,
+      "explanation": "Mia makes a small question mark next to the sentence about a train."
+    },
+    {
+      "id": "r34-en-a1-03",
+      "tab": "meaning",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Who helps Mia understand a word with a picture?",
+      "choices": [
+        "Her younger brother.",
+        "Her English teacher.",
+        "Her friend Leo.",
+        "A student from another class."
+      ],
+      "answer": 2,
+      "explanation": "Leo shows Mia the picture beside the story, and she understands one word."
+    },
+    {
+      "id": "r34-en-a1-04",
+      "tab": "meaning",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "How does Mia feel when she reads on Friday?",
+      "choices": [
+        "Happy because she understands more.",
+        "Angry because she has a new story.",
+        "Worried because Leo is not there.",
+        "Sad because the book is too long."
+      ],
+      "answer": 0,
+      "explanation": "In paragraph three, Mia understands more of the new story and smiles."
+    },
+    {
+      "id": "r34-en-a1-05",
+      "tab": "reasons",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Why does Mia look in her notebook?",
+      "choices": [
+        "To draw a picture of a train.",
+        "To keep the new words for later.",
+        "To write the whole story again.",
+        "To give the notebook to Leo."
+      ],
+      "answer": 1,
+      "explanation": "Mia writes two new words in her notebook after asking about them."
+    },
+    {
+      "id": "r34-en-a1-06",
+      "tab": "reasons",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "What does Leo do instead of telling Mia every answer?",
+      "choices": [
+        "He reads the story for her.",
+        "He asks her to stop reading.",
+        "He shows her something that may help.",
+        "He gives the story to another student."
+      ],
+      "answer": 2,
+      "explanation": "Leo helps Mia work out a word from a picture instead of giving every answer."
+    },
+    {
+      "id": "r34-en-a1-07",
+      "tab": "reasons",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "Why can Mia read lines to her brother now?",
+      "choices": [
+        "She has a different teacher.",
+        "She knows every word in English.",
+        "The teacher gives her a shorter book.",
+        "She has practised and understands more."
+      ],
+      "answer": 3,
+      "explanation": "Mia practises reading during the week and can read five lines at home."
+    },
+    {
+      "id": "r34-en-a1-08",
+      "tab": "new-situations",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "You do not understand one word in a story. What can you do?",
+      "choices": [
+        "Stop reading all English books.",
+        "Look at the picture and ask a question.",
+        "Copy every word from the book.",
+        "Read only the last page."
+      ],
+      "answer": 1,
+      "explanation": "Mia learns by looking at a picture and asking for help with a new word."
+    },
+    {
+      "id": "r34-en-a1-09",
+      "tab": "new-situations",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "Your first reading is difficult. What is a good next step?",
+      "choices": [
+        "Try reading again slowly.",
+        "Say you are bad at English.",
+        "Never read that story again.",
+        "Wait until you know every English word."
+      ],
+      "answer": 0,
+      "explanation": "The story shows that trying again and practising can make reading easier."
+    },
+    {
+      "id": "r34-en-a1-10",
+      "tab": "new-situations",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "What does the end of Mia's story show?",
+      "choices": [
+        "She needs Leo to read at home.",
+        "She is now the best reader in class.",
+        "The first story was very easy.",
+        "Small steps can help her read better."
+      ],
+      "answer": 3,
+      "explanation": "Mia continues practising and understands more, although the new story is still not easy."
+    }
+  ]
+}
