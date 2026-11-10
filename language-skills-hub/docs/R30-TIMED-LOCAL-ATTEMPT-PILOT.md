@@ -12,7 +12,7 @@ R30 je samostatná **DRAFT** etapa nad veřejnou R29. Statický GitHub Pages, ž
 
 - V učitelském panelu se volí čas v celých minutách (5–120); studentské QR/URL obsahuje `timer` a neosobní identifikátor konkrétního učitelského odkazu `attempt`.
 - Nová časovaná studentská stránka má úvodní obrazovku a tlačítko Start; od tohoto okamžiku je deadline `startedAt + timer*60000`. Používá se čas zařízení.
-- Po změně odpovědi se lokální stav ukládá do `localStorage` pod klíčem odděleným pro dovednost/téma/jazyk/CEFR/čas/odkaz. Týká se Reading odpovědí a volitelné reflexe i Listening objektivních a písemných odpovědí.
+- Po změně odpovědi se lokální stav ukládá do `localStorage` pod klíčem odděleným pro dovednost/téma/jazyk/CEFR/čas/odkaz **a náhodnou relaci konkrétního otevření**. Každé nové otevření původního třídního odkazu získá vlastní lokální relaci (`#lsh_session=...`), aby žák na sdíleném počítači automaticky neviděl odpovědi předchozího žáka. Prosté obnovení otevřené stránky relaci zachová. Týká se Reading odpovědí a volitelné reflexe i Listening objektivních a písemných odpovědí.
 - Obnovení stejné URL ve stejném prohlížeči zobrazí uložené odpovědi a pokračující čas, nikoli novou plnou časomíru.
 - Opuštění viditelné stránky nebo ukončení již skutečně zapnutého fullscreen vyvolá překryv přerušení. Čas pokračuje. Gesto **levý horní → pravý horní → levý dolní → pravý dolní** obnoví práci, ale není to autentizace učitele.
 - Při vypršení času se provede automatické lokální odevzdání i při nevyplněných úlohách. Výsledek se načte ze stávajícího hodnoticího jádra R28/R29.
@@ -23,7 +23,7 @@ R30 je samostatná **DRAFT** etapa nad veřejnou R29. Statický GitHub Pages, ž
 
 **R30 není zabezpečená školní zkouška.** Žák může upravit URL, otevřít nový prohlížeč, smazat data, pozměnit systémový čas či najít veřejný klíč v procvičovacích kartách. Gesto čtyř rohů lze napodobit. Události visibility/fullscreen nejsou spolehlivý důkaz podvodu, zejména na iPadOS ve Split View/Slide Over; neschopnost je zaznamenat se nesmí vydávat za nepřítomnost incidentu.
 
-Při zakázaném či zaplněném `localStorage` pokus funguje pouze do obnovení stránky; zobrazí se upozornění. Na sdílených školních zařízeních mohou lokálně přetrvávat **studentské písemné odpovědi**, a proto musí škola určit pravidla mazání dat. Z R30 se nepřenášejí na server, do GitHubu ani do Bakalářů. Nezadávat osobní údaje do odpovědí, pokud to není nezbytné pro pedagogický cíl.
+Při zakázaném či zaplněném `localStorage` pokus funguje pouze do obnovení stránky; zobrazí se upozornění. Na sdílených školních zařízeních mohou lokálně přetrvávat **studentské písemné odpovědi**. Po odevzdání má student/učitel možnost **Smazat místní odpovědi**, která vymaže právě tuto lokální relaci; na společných zařízeních ji doporučujeme provést po převzetí ověřeného výsledku. Vymazání dat není ochranou před manipulací ani vzdáleným uložením. Z R30 se nepřenášejí na server, do GitHubu ani do Bakalářů. Nezadávat osobní údaje do odpovědí, pokud to není nezbytné pro pedagogický cíl.
 
 U Listening se po odevzdání obnovují studentské odpovědi, ale **ruční známky 0/1 udělené učitelem se po reloadu zatím neukládají**. Před uzavřením pracovní klasifikace je nutné provést učitelskou kontrolu a dokumentovat výsledek podle pravidel školy.
 
@@ -35,7 +35,7 @@ U Listening se po odevzdání obnovují studentské odpovědi, ale **ruční zn�
 4. Student: přejít do jiné aplikace/karty a vrátit se; podle dostupného prohlížečového signálu očekávat přerušení, nikoliv falešný důkaz podvodu.
 5. Učitel: použít čtyřrohové gesto ve správném pořadí, ověřit pokračování s původním časem a odpověďmi.
 6. Student: nechat doběhnout čas – odevzdání musí fungovat i s prázdnými položkami, bez POST/odeslání soukromých dat.
-7. Student: po odevzdání obnovit stejnou URL; stav se nevrátí do rozpracovaného testu.
+7. Student: po odevzdání obnovit stejnou URL; stav se nevrátí do rozpracovaného testu. Na sdíleném PC otevřít původní třídní QR ve druhé záložce – musí vzniknout jiná místní relace bez cizích odpovědí. Po převzetí výsledku použít **Smazat místní odpovědi**; stránka už nesmí ukazovat smazané odpovědi.
 8. Mobilní přejímka: skutečný Android Chrome, iPhone Safari, iPadOS Safari včetně rozdělené obrazovky; Windows Chrome/Edge a Firefox. Vždy vizuální kontrola focusu, scrollu a dotykových cílů.
 9. Školní síť: u Listening ověřit příslušný externí videozdroj na zařízení učitele; studentská stránka nemá audio ovladač.
 10. Pedagogika: samostatně rozhodnout o časovém limitu a případné redukci testových úloh; R30 nepředstírá, že celá procvičovací sada je vhodná pro každý test.
