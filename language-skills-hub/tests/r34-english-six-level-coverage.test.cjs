@@ -25,7 +25,7 @@ test('R34 coverage includes all 138 Reading/Listening slots and NO invented appr
  const actual=coverage.slots.map(s=>[s.topic,s.language,s.level].join(':'));
  assert.deepEqual(actual.sort(),expected.sort());
  assert.equal(new Set(actual).size,actual.length);
- assert.deepEqual(coverage.counts,{total:138,reading:120,listening:18,drafted:10,missing:128,teacherApproved:0});
+ assert.deepEqual(coverage.counts,{total:138,reading:120,listening:18,drafted:14,missing:124,teacherApproved:0});
  assert.equal(coverage.productionBaseline,'R31');
  assert.equal(manifest.version,'R31');
  assert.equal(manifest.gradedTestsEnabled,false);
