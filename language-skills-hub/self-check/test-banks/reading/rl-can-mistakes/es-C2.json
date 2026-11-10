@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "es",
+  "level": "C2",
+  "sourceTitle": "Cuando la resiliencia se convierte en una obligación",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Independent C2 Reading critical analysis draft; expert approval pending.",
+  "tabs": [
+    {
+      "id": "matices",
+      "title": "Matices de la tesis"
+    },
+    {
+      "id": "retorica",
+      "title": "Análisis crítico"
+    },
+    {
+      "id": "aplicacion",
+      "title": "Aplicación y evaluación"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-es-c2-01",
+      "tab": "matices",
+      "kind": "mc",
+      "q": "¿Qué distingue la visión del autor de una defensa incondicional de la resiliencia?",
+      "choices": [
+        "La perseverancia resulta valiosa únicamente cuando aumenta una nota.",
+        "Su utilidad depende también de las condiciones en que se exige y del objetivo perseguido.",
+        "La resiliencia debería sustituir todos los sistemas de evaluación.",
+        "Las dificultades personales no influyen en el aprendizaje."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "El primer párrafo distingue una capacidad valiosa de una obligación moral desligada del contexto."
+    },
+    {
+      "id": "r35-es-c2-02",
+      "tab": "matices",
+      "kind": "mc",
+      "q": "¿Qué se corre el riesgo de ocultar cuando «sobreponerse» se vuelve una exigencia moral?",
+      "choices": [
+        "La posibilidad de que el alumnado aprenda de una crítica.",
+        "El hecho de que algunas estrategias de estudio deban revisarse.",
+        "La importancia de decidir cuándo abandonar un objetivo.",
+        "Las condiciones que hicieron especialmente perjudicial el revés."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "El imperativo de recuperarse puede desplazar la atención desde las causas hacia la persona."
+    },
+    {
+      "id": "r35-es-c2-03",
+      "tab": "matices",
+      "kind": "mc",
+      "q": "¿Por qué la comparación entre dos alumnos tenaces es difícil de juzgar desde fuera?",
+      "choices": [
+        "Porque ambos reciben necesariamente el mismo apoyo institucional.",
+        "Porque las notas muestran por sí solas la calidad de su esfuerzo.",
+        "Porque una misma apariencia de determinación puede esconder oportunidades muy distintas.",
+        "Porque la tenacidad elimina las diferencias de sus circunstancias."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "El segundo párrafo contrapone autonomía efectiva con resistencia frente a carencias de apoyo."
+    },
+    {
+      "id": "r35-es-c2-04",
+      "tab": "retorica",
+      "kind": "mc",
+      "q": "¿Qué diferencia esencial existe entre autonomía y mera resistencia en ese ejemplo?",
+      "choices": [
+        "La posibilidad real de transformar un nuevo esfuerzo en una mejora significativa.",
+        "La cantidad de veces que un estudiante repite un ejercicio.",
+        "La capacidad de evitar cualquier comentario del profesorado.",
+        "La necesidad de cambiar siempre de estrategia después de un error."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "El texto considera decisiva la existencia de condiciones que permitan cambios relevantes."
+    },
+    {
+      "id": "r35-es-c2-05",
+      "tab": "retorica",
+      "kind": "mc",
+      "q": "¿Qué implica afirmar que los indicadores se apropian de aquello que debían explicar?",
+      "choices": [
+        "Que medir resultados deja de ser útil en cualquier circunstancia.",
+        "Que toda actividad no cuantificable se vuelve necesariamente sencilla.",
+        "Que la lógica de la medición puede llegar a dominar la propia actividad.",
+        "Que los indicadores se vuelven más exactos al aplicarse a todos los ámbitos."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "La metáfora del tercer párrafo señala el desplazamiento del objetivo por el indicador."
+    },
+    {
+      "id": "r35-es-c2-06",
+      "tab": "retorica",
+      "kind": "mc",
+      "q": "¿Por qué abandonar una meta mal elegida no equivale necesariamente a fracasar?",
+      "choices": [
+        "Porque juzgar cuándo seguir puede ser una forma de madurez intelectual.",
+        "Porque cualquier meta difícil debería reemplazarse por una más cómoda.",
+        "Porque perseverar solo es adecuado cuando existen recompensas externas.",
+        "Porque cambiar de objetivo hace innecesaria toda evaluación personal."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "El tercer párrafo define la madurez como capacidad de decidir cuándo persistir tiene sentido."
+    },
+    {
+      "id": "r35-es-c2-07",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "q": "Un centro elogia a alumnos que compensan continuamente la falta de apoyo. ¿Qué debería examinar?",
+      "choices": [
+        "Cómo aumentar el número de premios a la tenacidad.",
+        "Por qué persisten las carencias y si el esfuerzo puede producir mejoras reales.",
+        "Cómo imponer el mismo ritmo de mejora a todos los alumnos.",
+        "Por qué algunos estudiantes rechazan cualquier crítica."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "El segundo párrafo advierte que admirar la resistencia puede ocultar fallos del entorno educativo."
+    },
+    {
+      "id": "r35-es-c2-08",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "q": "Un sistema premia sobre todo la rapidez con que suben las notas. ¿Qué objeción plantea el artículo?",
+      "choices": [
+        "Los resultados rápidos nunca representan aprendizaje auténtico.",
+        "Los alumnos que exploran ideas difíciles no necesitan evaluación.",
+        "Toda medición del progreso debe considerarse moralmente incorrecta.",
+        "La rapidez del progreso puede dejar fuera formas valiosas de aprendizaje."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "El tercer párrafo critica interpretar como improductivo lo que no aparece en una gráfica."
+    },
+    {
+      "id": "r35-es-c2-09",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "q": "¿Qué propone una cultura educativa defendible según la conclusión?",
+      "choices": [
+        "Exigir que cada alumno demuestre su valía mediante mejoras constantes.",
+        "Ofrecer recursos para continuar y libertad para revisar los objetivos.",
+        "Reemplazar la autonomía por un programa institucional idéntico para todos.",
+        "Evitar por completo los juicios sobre el rendimiento."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "El final combina medios efectivos para continuar con libertad para reconsiderar lo que merece esfuerzo."
+    },
+    {
+      "id": "r35-es-c2-10",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "q": "¿Qué política contradiría más directamente la concepción de éxito del autor?",
+      "choices": [
+        "Permitir que los estudiantes reconsideren metas poco razonables.",
+        "Reconocer las barreras estructurales en las evaluaciones.",
+        "Dar importancia al descanso sin interpretarlo como falta de ambición.",
+        "Considerar toda pausa una falta de esfuerzo y exigir progreso continuo."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "La conclusión rechaza equiparar el descanso con el fracaso de la ambición."
+    }
+  ]
+}
