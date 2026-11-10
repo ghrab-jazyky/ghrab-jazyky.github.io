@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "B2",
+  "sourceVariantTitle": "Asteroids: A Question of Risk, Not Panic",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "auditRevision": "R35-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "New English B2 independent assessment on interpreting risk, scientific estimates, planetary defence and public communication.",
+  "tabs": [
+    {
+      "id": "evaluation",
+      "title": "Reading Scientific Claims",
+      "description": "Consider how estimates, headlines and evidence should be interpreted."
+    },
+    {
+      "id": "reasoning",
+      "title": "Evidence and Limitations",
+      "description": "Distinguish an experiment's result from what it can prove."
+    },
+    {
+      "id": "decisions",
+      "title": "Decisions and Communication",
+      "description": "Transfer the ideas into realistic decisions."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-en-b2-01",
+      "tab": "evaluation",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "A headline announces that a small asteroid will come 'near Earth'. What information should a cautious reader ask for first?",
+      "choices": [
+        "The number of people who have already shared the headline.",
+        "Whether a space agency has named the asteroid after its discoverer.",
+        "The actual estimated distance and whether the predicted path intersects Earth.",
+        "The size of the telescope that first took its picture."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph one separates a close approach from a possible collision and warns against interpreting 'near' without a distance."
+    },
+    {
+      "id": "r35-en-b2-02",
+      "tab": "evaluation",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Two published risk figures for the same asteroid differ after several nights of observation. Which explanation best fits the article?",
+      "choices": [
+        "The asteroid must have suddenly changed direction between observations.",
+        "The later estimate may reflect more precise calculations based on additional evidence.",
+        "The earlier calculation was necessarily dishonest or entirely arbitrary.",
+        "The probability must remain unchanged until the object becomes visible to the naked eye."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph two explains that repeated observations refine an orbit and may change the reported estimate without implying random guessing."
+    },
+    {
+      "id": "r35-en-b2-03",
+      "tab": "evaluation",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What is the most reasonable lesson to draw from the changing estimates for 2024 YR4?",
+      "choices": [
+        "An increasing percentage proves that an asteroid is moving faster towards Earth.",
+        "The first reported risk is usually more reliable than later telescope observations.",
+        "Space agencies should publish only predictions that never need revising.",
+        "An estimate can temporarily increase before new data make a possible impact unlikely."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph three describes the rise and subsequent fall in 2024 YR4's estimated impact chance as more observations became available."
+    },
+    {
+      "id": "r35-en-b2-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why would the article regard a risk figure without its uncertainty as potentially misleading?",
+      "choices": [
+        "The number may sound more definite than the available observations justify.",
+        "The number is useful only if it is presented in kilometres.",
+        "The risk is determined by public concern rather than scientific observations.",
+        "The figure is meaningless until the asteroid has actually approached Earth."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph two explains that repeated observations refine an orbit and may change the reported estimate without implying random guessing."
+    },
+    {
+      "id": "r35-en-b2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A student claims that DART proved any dangerous asteroid could be diverted. What does the article leave unresolved?",
+      "choices": [
+        "Whether the spacecraft really reached the smaller object in the system.",
+        "Whether the impact had any effect on the length of Dimorphos's orbit.",
+        "Whether the method would work for objects of different structures and with different warning times.",
+        "Whether scientists had originally selected an object that was already threatening Earth."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph four explains the limited significance of DART and the importance of an object's structure and the warning time available."
+    },
+    {
+      "id": "r35-en-b2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What would be the greatest difficulty if scientists discovered a real impact risk only shortly before the event?",
+      "choices": [
+        "There might not be sufficient time for a small change in course to prevent the encounter.",
+        "The object's orbit would no longer follow the laws of physics.",
+        "Scientists would be unable to send any observations to other countries.",
+        "An asteroid would automatically become too bright for optical telescopes."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph four explains the limited significance of DART and the importance of an object's structure and the warning time available."
+    },
+    {
+      "id": "r35-en-b2-07",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Which response to the YR4 updates best reflects the author's view of scientific uncertainty?",
+      "choices": [
+        "Treat the decrease in probability as evidence that earlier scientists had failed.",
+        "Explain why the estimates changed and what the new observations show.",
+        "Stop communicating with the public until every possible uncertainty disappears.",
+        "Present the largest recorded percentage as a permanent estimate."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph three describes the rise and subsequent fall in 2024 YR4's estimated impact chance as more observations became available."
+    },
+    {
+      "id": "r35-en-b2-08",
+      "tab": "decisions",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "An observatory has new measurements that contradict a widely shared asteroid headline. What should its public statement emphasise?",
+      "choices": [
+        "A promise that no dangerous asteroid will ever approach Earth.",
+        "The media outlet's motives rather than the orbit itself.",
+        "A guarantee that future calculations will not change.",
+        "The newer evidence, the limits of the estimate and why the previous claim needs updating."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph five presents careful observation, international cooperation and honest communication of uncertainty as central to planetary defence."
+    },
+    {
+      "id": "r35-en-b2-09",
+      "tab": "decisions",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "A government can fund either more observations or a spectacular last-minute deflection demonstration. Which first step is most strongly supported here?",
+      "choices": [
+        "Announce a guaranteed successful deflection before an object is discovered.",
+        "Improve detection and reliable information, so a later intervention could be planned in time.",
+        "Stop international data sharing until every country agrees on a warning.",
+        "Focus entirely on producing dramatic public images of spacecraft."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph five presents careful observation, international cooperation and honest communication of uncertainty as central to planetary defence."
+    },
+    {
+      "id": "r35-en-b2-10",
+      "tab": "decisions",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Which sentence best preserves the article's conclusion without exaggerating either the danger or the solution?",
+      "choices": [
+        "Every close approach should be treated as an immediate emergency.",
+        "Future spacecraft can make any collision physically impossible.",
+        "The rare possibility of an impact means observation is no longer necessary.",
+        "Asteroid hazards call for careful evidence, preparation and cooperation rather than panic or certainty."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph five presents careful observation, international cooperation and honest communication of uncertainty as central to planetary defence."
+    }
+  ]
+}
