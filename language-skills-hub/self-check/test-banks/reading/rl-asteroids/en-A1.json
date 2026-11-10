@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "A1",
+  "sourceTitle": "Space Rocks Around the Sun",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-CONTENT-AUDIT-1",
+  "description": "Independent English A1 asteroid comprehension assessment awaiting external pedagogical validation.",
+  "tabs": [
+    {
+      "id": "understanding",
+      "title": "Understanding the Text"
+    },
+    {
+      "id": "reasoning",
+      "title": "Connecting Information"
+    },
+    {
+      "id": "application",
+      "title": "Applying the Ideas"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-en-a1-01",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "Why is an asteroid different from a star?",
+      "choices": [
+        "It is always bigger than Earth.",
+        "It does not make its own light.",
+        "It can only be seen in the morning.",
+        "It moves without going around the Sun."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph one says stars give light, but asteroids do not produce their own light."
+    },
+    {
+      "id": "r36-en-a1-02",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "What can we understand about the size of asteroids?",
+      "choices": [
+        "They all have the same size.",
+        "They are smaller than every car.",
+        "Each one is as big as a mountain.",
+        "Some are much larger than others."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Paragraph one compares very small asteroids with others bigger than mountains."
+    },
+    {
+      "id": "r36-en-a1-03",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "Why do scientists take pictures of asteroids more than once?",
+      "choices": [
+        "To change the rocks' colours.",
+        "To make asteroids move faster.",
+        "To follow where the rocks travel.",
+        "To measure how many stars there are."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Paragraph two explains that scientists watch the movement of asteroids."
+    },
+    {
+      "id": "r36-en-a1-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "q": "What helps scientists see a distant asteroid?",
+      "choices": [
+        "A large telescope pointed into the sky.",
+        "A small clock near their computer.",
+        "A map of the nearest museum.",
+        "A photograph of a mountain."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "The second paragraph describes telescopes as tools for seeing things far away."
+    },
+    {
+      "id": "r36-en-a1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "q": "Why is the shape of Ceres special compared with most asteroids?",
+      "choices": [
+        "It has no place in the solar system.",
+        "It looks exactly like a car.",
+        "It is round while many are irregular.",
+        "It gives out light like a star."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "The third paragraph says Ceres is round, but most asteroids are not."
+    },
+    {
+      "id": "r36-en-a1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "q": "What makes a museum meteorite interesting?",
+      "choices": [
+        "It is an ancient piece of rock from space.",
+        "It was made by people in a factory.",
+        "It is a small moon around Ceres.",
+        "It is always lighter than water."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "The museum example describes an old piece of space rock called a meteorite."
+    },
+    {
+      "id": "r36-en-a1-07",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Why do scientists keep watching objects in space?",
+      "choices": [
+        "Because all big impacts happen every day.",
+        "Because learning about them can help protect people.",
+        "Because all pieces of rock reach the ground.",
+        "Because the Sun moves around each asteroid."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "The final paragraph connects watching the sky with learning and safety."
+    },
+    {
+      "id": "r36-en-a1-08",
+      "tab": "application",
+      "kind": "mc",
+      "q": "A small space rock enters the air around Earth. What may happen?",
+      "choices": [
+        "It immediately becomes a planet.",
+        "It grows as big as a mountain.",
+        "It starts making its own light forever.",
+        "It burns up before it reaches the ground."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Many small pieces burn up in the atmosphere, according to the last paragraph."
+    },
+    {
+      "id": "r36-en-a1-09",
+      "tab": "application",
+      "kind": "mc",
+      "q": "Your friend thinks an asteroid is a star. What is the best correction?",
+      "choices": [
+        "Every asteroid is the same size as a star.",
+        "An asteroid is a rock that moves around the Sun.",
+        "Asteroids are made only of bright light.",
+        "Asteroids never move through space."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "An asteroid is described as a space rock following an orbit around the Sun."
+    },
+    {
+      "id": "r36-en-a1-10",
+      "tab": "application",
+      "kind": "mc",
+      "q": "What could you do to learn about a new asteroid?",
+      "choices": [
+        "Guess its orbit from a single word.",
+        "Wait for the asteroid to visit your school.",
+        "Use only a map of Earth's oceans.",
+        "Observe where it goes with a telescope."
+      ],
+      "answer": 3,
+      "sourceParagraph": 2,
+      "explanation": "The second paragraph shows how repeated observations help scientists follow an asteroid."
+    }
+  ]
+}
