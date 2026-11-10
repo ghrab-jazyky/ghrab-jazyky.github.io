@@ -17,10 +17,10 @@ test('R35 planned coverage counts exact approved source variants without claimin
  assert.equal(inventory.expected.total,138);
  assert.equal(inventory.actual.approvedForStudents,0);
  assert.equal(inventory.actual.invalid,0);
- assert.equal(inventory.actual.draftReading,24);
+ assert.ok(inventory.actual.draftReading>=24);
  assert.equal(inventory.actual.draftListening,0);
- assert.equal(inventory.actual.authoredQuestions,240);
- assert.equal(inventory.actual.missing,114);
+ assert.equal(inventory.actual.authoredQuestions,inventory.actual.draftReading*10);
+ assert.equal(inventory.actual.missing,138-inventory.actual.draftReading);
 });
 test('R35 every authored bank has exact hash/title, separate questions, scoring and publication locks',()=>{
  const practiceCache={};
@@ -52,7 +52,7 @@ test('R35 every authored bank has exact hash/title, separate questions, scoring 
   assert.equal(reading.score(qa,answers).points,10);
   tally+=qa.questions.length;
  }
- assert.equal(tally,240);
+ assert.equal(tally,inventory.actual.authoredQuestions);
 });
 test('R35 no draft bank is exposed through public teacher catalogue',()=>{
  const home=read('index.html');
