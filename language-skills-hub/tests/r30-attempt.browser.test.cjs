@@ -69,6 +69,10 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#workspace:not([hidden])').waitFor();
    assert.equal(await page.locator('fieldset.question').first().locator('input').first().isChecked(),true);
    assert.equal(await page.locator('.written-response').first().inputValue(),'This is my own answer.');
+   if(await page.locator('#sessionLock').isVisible()){
+    for(const c of ['tl','tr','bl','br'])await page.locator('.lsh-corner-'+c).click();
+    await page.locator('#sessionLock').waitFor({state:'hidden'});
+   }
    await page.locator('#submitButton').click();
    await page.locator('#manualGrade:not([hidden])').waitFor();
    assert.equal(await page.locator('#gradeProposal .grade-number').count(),0);
@@ -98,7 +102,25 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
     localStorage.setItem(key,JSON.stringify(saved));
    });
    await page.reload();
-   await page.locator('#results:not([hidden])').waitFor({timeout:30000});
+   try{
+    await page.locator('#results:not([hidden])').waitFor({timeout:7500});
+   }catch(e){
+    const debug=await page.evaluate(()=>({
+     load:document.getElementById('loading')?.textContent,
+     loadVisible:!document.getElementById('loading')?.hidden,
+     resultVisible:!document.getElementById('results')?.hidden,
+     lockVisible:!document.getElementById('sessionLock')?.hidden,
+     introVisible:!document.getElementById('sessionIntro')?.hidden,
+     workspaceVisible:!document.getElementById('workspace')?.hidden,
+     grade:document.getElementById('gradeProposal')?.textContent?.slice(0,80),
+     saved:Object.keys(localStorage).filter(k=>k.includes('lsh:local-attempt:r30')).map(k=>{
+      let v;try{v=JSON.parse(localStorage.getItem(k));}catch(_){return {k,invalid:true}}
+      return {k,phase:v.phase,startedAt:v.startedAt,deadlineAt:v.deadlineAt,submittedAt:v.submittedAt,
+       diff:v.deadlineAt-Date.now(),keys:Object.keys(v.answers||{})}
+     })
+    }));
+    throw new Error('R30 expiration diagnostic: '+JSON.stringify(debug)+'; '+String(e));
+   }
    assert.equal(await page.locator('#submitButton').isDisabled(),true);
    assert.equal(await page.locator('#sessionIntro').isHidden(),true);
    assert.deepEqual(errors,[]);
