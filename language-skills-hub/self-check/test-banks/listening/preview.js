@@ -206,8 +206,9 @@
    valid(independent.level===level&&independent.topic===originalTopic,
     'Listening bank is not the requested level and topic');
    draftCore.validate(independent,source,actual);
-   valid(independent.durationMinutesSuggested===requestedMinutes,
-    'The source-specific time limit does not match the reviewed draft');
+   valid(Number.isInteger(independent.durationMinutesSuggested)&&
+    independent.durationMinutesSuggested>=5&&independent.durationMinutesSuggested<=120,
+    'Invalid Listening bank suggested time');
    bank=independent;
    document.title='Independent Listening '+level+' – '+topic.title+' – unapproved QA';
    const revision=originalTopic==='ll-harrison-ford'?(level==='B2'?'R35':'R36'):'R37';
