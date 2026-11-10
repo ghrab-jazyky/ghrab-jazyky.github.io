@@ -135,7 +135,7 @@
    const card=catalog.entries?.find(c=>c.id===topic&&c.skill==='cteni');
    requireCondition(!!card&&Array.isArray(card.languages)&&
     card.languages.includes(lang)&&Array.isArray(card.levels)&&card.levels.includes(level)&&
-    /^cteni/[a-z0-9-]+/index.html$/.test(card.relative||''),
+    /^cteni\/[a-z0-9-]+\/index\.html$/.test(card.relative||''),
     'Unsupported or unpublished Reading variant');
    const [originalHtml,bank]=await Promise.all([
     get('../../../'+card.relative),
