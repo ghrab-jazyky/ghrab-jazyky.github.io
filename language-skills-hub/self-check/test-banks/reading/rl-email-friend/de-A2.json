@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "de",
+  "level": "A2",
+  "sourceTitle": "Ein Wochenende zusammen",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e4a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Zehn eigenständige Aufgaben zum Verstehen, Schlussfolgern und Übertragen; noch nicht pädagogisch freigegeben.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Verständnis"
+    },
+    {
+      "id": "reasoning",
+      "title": "Begründungen und Beziehungen"
+    },
+    {
+      "id": "transfer",
+      "title": "Anwendung"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-de-a2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Was zeigt, dass Sofia in Galway inzwischen besser zurechtkommt?",
+      "choices": [
+        "Sie hat Freunde gefunden und kocht oft mit ihnen.",
+        "Sie hat den Sprachkurs sofort beendet.",
+        "Sie lebt wieder in ihrer alten Stadt.",
+        "Das Wetter ist jetzt immer warm."
+      ],
+      "answer": 0,
+      "explanation": "Sofia beschreibt eine schwierige Anfangszeit und anschließend neue Freundschaften."
+    },
+    {
+      "id": "r41-de-a2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Warum könnte die Ausstellung Noah besonders gefallen?",
+      "choices": [
+        "Er arbeitet am alten Bahnhof.",
+        "Er interessiert sich für Fotografie und Alltagsszenen.",
+        "Sofia möchte ihm eine Kamera verkaufen.",
+        "Es gibt dort Fotos seines Basketballteams."
+      ],
+      "answer": 1,
+      "explanation": "Sofia denkt bei der Ausstellung wegen seiner Vorliebe für Fotografie an Noah."
+    },
+    {
+      "id": "r41-de-a2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was ist das Besondere an den Motiven des Fotografen?",
+      "choices": [
+        "Er fotografiert ausschließlich bekannte Sportler.",
+        "Er zeigt nur die Geschichte des Zugverkehrs.",
+        "Er zeigt interessante Momente aus dem normalen Leben.",
+        "Er fotografiert nur Landschaften ohne Menschen."
+      ],
+      "answer": 2,
+      "explanation": "Die Fotos handeln von gewöhnlichen Menschen bei interessanten Tätigkeiten."
+    },
+    {
+      "id": "r41-de-a2-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Warum erwähnt Sofia ihre Einsamkeit am Anfang?",
+      "choices": [
+        "Sie möchte Noah von Galway abraten.",
+        "Sie beweist, dass jeder Sprachkurs schlecht ist.",
+        "Sie bittet um eine neue Unterkunft.",
+        "Sie macht deutlich, wie sich ihre Situation verändert hat."
+      ],
+      "answer": 3,
+      "explanation": "Die schwierigen ersten Wochen stehen im Kontrast zu ihrem heutigen Alltag."
+    },
+    {
+      "id": "r41-de-a2-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Wozu dient der Vorschlag mit dem Wissenschaftsmuseum?",
+      "choices": [
+        "Sofia möchte die Fotoausstellung unbedingt vermeiden.",
+        "Er bietet eine Alternative, wenn die Fotoausstellung voll ist.",
+        "Dort wird der Bus ersetzt.",
+        "Alle Museen in Galway sind geschlossen."
+      ],
+      "answer": 1,
+      "explanation": "Das Museum ist ausdrücklich als Plan für fehlende Eintrittskarten vorgesehen."
+    },
+    {
+      "id": "r41-de-a2-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum braucht Noah keinen perfekten Tag zu organisieren?",
+      "choices": [
+        "Sofia möchte das Haus nicht verlassen.",
+        "Die beiden haben keinen freien Tag.",
+        "Sofia will keinen Bus benutzen.",
+        "Für Sofia ist gemeinsame Zeit wichtiger als viele Programmpunkte."
+      ],
+      "answer": 3,
+      "explanation": "Sie sagt, dass selbst eine Stunde zusammen sie glücklich machen würde."
+    },
+    {
+      "id": "r41-de-a2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Noah möchte lieber reden als ins Museum gehen. Was passt zu Sofias Wünschen?",
+      "choices": [
+        "Sie können einfach eine Stunde miteinander verbringen.",
+        "Noah darf den Plan nicht ändern.",
+        "Sofia muss allein die Ausstellung besuchen.",
+        "Sie sollen überhaupt nicht mehr schreiben."
+      ],
+      "answer": 0,
+      "explanation": "Sofias Nachricht legt den Schwerpunkt auf das Wiedersehen, nicht auf Perfektion."
+    },
+    {
+      "id": "r41-de-a2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was sollte Noah vor dem Besuch der Ausstellung prüfen?",
+      "choices": [
+        "Ob Sofias Sprachkurs im September beginnt.",
+        "Ob sein Basketballteam eine Kamera braucht.",
+        "Ob für den geplanten Sonntag noch Karten erhältlich sind.",
+        "Ob man am Bahnhof einen Fußball kaufen kann."
+      ],
+      "answer": 2,
+      "explanation": "Die Möglichkeit ausverkaufter Karten wird ausdrücklich berücksichtigt."
+    },
+    {
+      "id": "r41-de-a2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Noah kann erst am Nachmittag. Wie hilft er Sofia bei der Planung?",
+      "choices": [
+        "Er antwortet erst nach Sonntag.",
+        "Er teilt ihr rechtzeitig seine verfügbaren Zeiten mit.",
+        "Er sagt zu, obwohl er nicht kommen kann.",
+        "Er bittet Sofia, den ganzen Kurs zu verlängern."
+      ],
+      "answer": 1,
+      "explanation": "Sofia benötigt bis Freitagabend eine Nachricht, bevor sie bucht."
+    },
+    {
+      "id": "r41-de-a2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Woran erkennt man, dass Sofia sich weiter für Noahs Leben interessiert?",
+      "choices": [
+        "Sie nennt den Preis der Ausstellung.",
+        "Sie beschreibt den alten Bahnhof.",
+        "Sie erzählt von kaltem Wetter.",
+        "Sie fragt, wie es seinem Basketballteam geht."
+      ],
+      "answer": 3,
+      "explanation": "Die Frage nach Noahs Team zeigt persönliches Interesse trotz der Entfernung."
+    }
+  ]
+}
