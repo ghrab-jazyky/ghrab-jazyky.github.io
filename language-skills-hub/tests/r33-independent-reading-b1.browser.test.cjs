@@ -106,7 +106,7 @@ for(const [engineName,engine]of [['chromium',chromium],['webkit',webkit]]){
    await context.close();
   }finally{await browser.close()}
  });
- test('R33 '+engineName+' mixed-level bank and unsupported A2 are rejected before test begins',async()=>{
+ test('R33 '+engineName+' mixed-level bank and unsupported B9 are rejected before test begins',async()=>{
   const browser=await engine.launch({headless:true});
   try{
    const context=await browser.newContext(),page=await context.newPage(),errors=[];
@@ -119,7 +119,7 @@ for(const [engineName,engine]of [['chromium',chromium],['webkit',webkit]]){
    assert.match(await page.locator('#loading').textContent(),/does not match this bank level/);
    assert.equal(await page.locator('#sessionStart').count(),0);
    await page.unrouteAll();
-   await page.goto(url('A2','r33unsupportedcase'));
+   await page.goto(url('B9','r33unsupportedcase'));
    await page.locator('#loading.error').waitFor();
    assert.match(await page.locator('#loading').textContent(),/Unsupported independent test level/);
    assert.equal(await page.locator('#workspace').isHidden(),true);
