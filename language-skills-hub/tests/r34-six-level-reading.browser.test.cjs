@@ -25,9 +25,17 @@ for(const [name,browserType]of [['chromium',chromium],['webkit',webkit]]){
     await page.locator('#sessionStart').click();
     await page.locator('#workspace:not([hidden])').waitFor();
     const questions=bank(level).questions;
+    let wrongAnswerIndex;
     for(let i=0;i<10;i++){
-     const answer=i===2?(questions[i].answer+1)%4:questions[i].answer;
-     await page.locator('fieldset.question').nth(i).locator('input').nth(answer).check();
+     // The UI groups tasks by section; source JSON is intentionally allowed
+     // to interleave tabs. Match item by stable ID rather than array position.
+     const field=page.locator('fieldset.question').nth(i);
+     const id=await field.locator('input').first().getAttribute('name');
+     const item=questions.find(q=>q.id===id);
+     assert.ok(item,'Unexpected question ID '+id);
+     const answer=i===2?(item.answer+1)%4:item.answer;
+     if(i===2)wrongAnswerIndex=answer;
+     await field.locator('input').nth(answer).check();
     }
     await page.reload();
     await page.locator('#workspace:not([hidden])').waitFor({timeout:30000});
@@ -35,8 +43,7 @@ for(const [name,browserType]of [['chromium',chromium],['webkit',webkit]]){
      for(const c of ['tl','tr','bl','br'])await page.locator('.lsh-corner-'+c).click();
      await page.locator('#sessionLock').waitFor({state:'hidden'});
     }
-    const wrong=(questions[2].answer+1)%4;
-    assert.equal(await page.locator('fieldset.question').nth(2).locator('input').nth(wrong).isChecked(),true);
+    assert.equal(await page.locator('fieldset.question').nth(2).locator('input').nth(wrongAnswerIndex).isChecked(),true);
     assert.equal(await page.locator('#results').isHidden(),true);
     await page.locator('#submitButton').click();
     await page.locator('#results:not([hidden])').waitFor();
