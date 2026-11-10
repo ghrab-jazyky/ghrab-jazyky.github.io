@@ -56,7 +56,7 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(packet.language,'fr');
    await page.locator('#skill').selectOption('poslech');
    await page.locator('#level').selectOption('A1');
-   assert.match(await page.locator('#selectedStatus').textContent(),/Listening osnova/);
+   assert.match(await page.locator('#selectedStatus').textContent(),/Listening autorský návrh/);
    assert.match(await page.locator('#previewLink').getAttribute('href'),/listening\/preview/);
    assert.deepEqual(errors,[]);assert.deepEqual(writes,[]);
    await ctx.close();
@@ -101,7 +101,7 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
    page.on('request',r=>{if(!['GET','HEAD'].includes(r.method()))writes.push(r.method())});
    await page.goto(url('listening','ll-matthew-oscars','en','B2','listeningb2'));
    await page.locator('#sessionIntro:not([hidden])').waitFor({timeout:30000});
-   assert.match(await page.locator('#notice').textContent(),/NOT independently designed/);
+   assert.match(await page.locator('#notice').textContent(),/not yet been verified against the original recording/);
    assert.match(await page.locator('title').textContent(),/UNAPPROVED Listening QA/);
    await begin(page);
    assert.ok(await page.locator('fieldset.question').count()>=3);
