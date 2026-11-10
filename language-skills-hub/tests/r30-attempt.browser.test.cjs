@@ -100,6 +100,7 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
   try{
    const context=await browser.newContext({viewport:{width:390,height:844}});
    const page=await context.newPage(),errors=[];
+   await page.clock.install();
    page.on('pageerror',e=>errors.push(e.message));
    page.on('dialog',d=>{errors.push('Unexpected dialog: '+d.message());d.accept()});
    const url=new URL('self-check/reading/index.html?topic=rl-asteroids&lang=en&level=B1&timer=5&attempt=class-expired',base);
@@ -108,13 +109,10 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#sessionStart').click();
    await page.locator('#workspace:not([hidden])').waitFor();
    await page.locator('fieldset.question').first().locator('input').first().check();
-   // Advance only the current session clock. Editing localStorage while a live
-   // page unloads is not a valid simulation: visibilitychange can overwrite
-   // that forged snapshot with the legitimate in-memory attempt.
-   await page.evaluate(()=>{
-    const current=Date.now();
-    Date.now=()=>current+6*60000;
-   });
+   // Playwright's clock must be installed before page scripts: the attempt
+   // engine captures Date.now when initialized. Jumping ahead fires the due
+   // timer once and models a suspended device returning after the deadline.
+   await page.clock.fastForward(6*60*1000);
    await page.locator('#results:not([hidden])').waitFor({timeout:9000});
    assert.equal(await page.locator('#sessionLock').isHidden(),true);
    await page.reload();
