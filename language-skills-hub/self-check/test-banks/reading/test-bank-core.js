@@ -31,10 +31,13 @@
   const stems=new Set(practice.questions.map(q=>norm(q.q)));
   const practiceIds=new Set(practice.questions.map(q=>q.id));
   const seen=new Set();
+  const answerPositions=[0,0,0,0];
   for(const q of bank.questions){
    check(q&&text(q.id)&&/^r32-en-b2-[a-z0-9-]+$/.test(q.id)&&
     !seen.has(q.id)&&!practiceIds.has(q.id),'Duplicate or reused question ID');
    seen.add(q.id);
+   check(Number.isInteger(q.sourceParagraph)&&q.sourceParagraph>=1&&
+    q.sourceParagraph<=practice.paragraphs.length,'Missing or invalid evidence paragraph');
    check(ids.has(q.tab)&&q.kind==='mc'&&text(q.q)&&q.q.length>=24&&
     !stems.has(norm(q.q)),'Test question must be distinct from practice');
    stems.add(norm(q.q));
@@ -42,8 +45,13 @@
     q.choices.every(c=>text(c)&&c.length>=10)&&
     new Set(q.choices.map(norm)).size===4,'Invalid or duplicated options');
    check(Number.isInteger(q.answer)&&q.answer>=0&&q.answer<4,'Invalid correct-answer index');
+   answerPositions[q.answer]++;
    check(text(q.explanation)&&q.explanation.length>=30,'Missing evidence-based explanation');
   }
+  check(answerPositions.every(n=>n>=2&&n<=3),
+   'Correct answer locations are unbalanced across four positions');
+  check(bank.auditRevision==='R32-CONTENT-AUDIT-1',
+   'Independent pedagogy audit not completed');
   check(bank.scoreRule.startsWith('1 point per correct MC item'),'Unknown scoring method');
   return true;
  }
