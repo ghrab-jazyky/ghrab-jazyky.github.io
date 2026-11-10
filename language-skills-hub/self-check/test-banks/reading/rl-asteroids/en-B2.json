@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 25,
+  "auditRevision": "R34-AST-B2-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "tabs": [
+    {
+      "id": "uncertainty",
+      "title": "Understanding Risk",
+      "description": "Reason about evidence and changing estimates."
+    },
+    {
+      "id": "methods",
+      "title": "Science and Defence",
+      "description": "Interpret methods and their limitations."
+    },
+    {
+      "id": "evaluation",
+      "title": "Evaluating Claims",
+      "description": "Evaluate realistic media and policy claims."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-ast-b2-01",
+      "tab": "uncertainty",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does a close approach not by itself justify announcing a disaster?",
+      "choices": [
+        "Every asteroid in Earth's neighbourhood is moving away.",
+        "The distance and calculated path must be interpreted in astronomical terms.",
+        "Near-Earth objects never cross Earth's orbit.",
+        "Observations always make an impact physically impossible."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph one distinguishes astronomical proximity from a calculated collision trajectory."
+    },
+    {
+      "id": "r34-ast-b2-02",
+      "tab": "uncertainty",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What can explain two responsible scientific reports giving different impact estimates?",
+      "choices": [
+        "Researchers may have changed the laws of orbital motion.",
+        "The asteroid must have suddenly changed its composition.",
+        "The second report necessarily contradicts all available evidence.",
+        "The later calculation may include better observations and less uncertainty."
+      ],
+      "answer": 3,
+      "explanation": "The article explains that orbit estimates are refined as observations accumulate."
+    },
+    {
+      "id": "r34-ast-b2-03",
+      "tab": "uncertainty",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "How should a reader interpret the rise and later fall of 2024 YR4's estimated risk?",
+      "choices": [
+        "It reflects the refinement of an uncertain orbit, not automatically bad science.",
+        "It proves that the first telescope photograph was fabricated.",
+        "It shows that large asteroids can change their direction at will.",
+        "It means scientists no longer need to observe small objects."
+      ],
+      "answer": 0,
+      "explanation": "The YR4 example illustrates changing probabilities as more data narrow possible trajectories."
+    },
+    {
+      "id": "r34-ast-b2-04",
+      "tab": "methods",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why can infrared observations be important alongside ordinary photographs?",
+      "choices": [
+        "Infrared images show the future positions of every object exactly.",
+        "They allow astronomers to observe without any telescopes.",
+        "Some dark objects reflect too little sunlight to be detected easily.",
+        "They can replace all later orbit calculations."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph two explains the value of infrared observations for dark objects."
+    },
+    {
+      "id": "r34-ast-b2-05",
+      "tab": "methods",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What is a limitation of the conclusion that DART proved asteroid deflection possible?",
+      "choices": [
+        "DART did not reach a target orbiting the Sun.",
+        "The response to a real threat depends on warning time and the object's properties.",
+        "The target actually struck Earth during the experiment.",
+        "A spacecraft cannot change the motion of a small asteroid."
+      ],
+      "answer": 1,
+      "explanation": "DART showed a technique under specific conditions rather than a guarantee for every possible threat."
+    },
+    {
+      "id": "r34-ast-b2-06",
+      "tab": "methods",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why would an early warning matter even if a spacecraft intervention were technically possible?",
+      "choices": [
+        "Early warnings cause all asteroids to move more slowly.",
+        "A spacecraft can be launched only during winter.",
+        "Telescopes stop working after the first impact prediction.",
+        "Changing an orbit requires planning and cannot be done instantly."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph four specifically identifies limited warning time as a constraint on response."
+    },
+    {
+      "id": "r34-ast-b2-07",
+      "tab": "evaluation",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "A website publishes a three-per-cent impact probability without a date. What important context is missing?",
+      "choices": [
+        "Whether the figure is preliminary and what observations support it.",
+        "The name of the journalist who wrote the headline.",
+        "The colour of the asteroid in the original image.",
+        "The number of people who watched the news report."
+      ],
+      "answer": 0,
+      "explanation": "The article argues that risk figures need dates and uncertainty to avoid false certainty."
+    },
+    {
+      "id": "r34-ast-b2-08",
+      "tab": "evaluation",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What should observatories explain when a new orbit prediction differs from yesterday's headline?",
+      "choices": [
+        "That numerical predictions are never useful.",
+        "That all earlier measurements should be deleted.",
+        "How new evidence and uncertainty affect the estimate.",
+        "That the asteroid must have changed speed overnight."
+      ],
+      "answer": 2,
+      "explanation": "The conclusion emphasises explaining revised predictions, evidence and uncertainty."
+    },
+    {
+      "id": "r34-ast-b2-09",
+      "tab": "evaluation",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Which response best represents the article's overall attitude to a newly detected asteroid?",
+      "choices": [
+        "Assume that all potentially hazardous objects will strike Earth.",
+        "Ignore low probabilities until the day of a predicted collision.",
+        "Prepare a spacecraft attack before calculating any orbit.",
+        "Measure and share information before treating it as an emergency."
+      ],
+      "answer": 3,
+      "explanation": "The article rejects both panic and complacency in favour of evidence and preparation."
+    },
+    {
+      "id": "r34-ast-b2-10",
+      "tab": "evaluation",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A policymaker claims that DART gives humanity a complete defence against impacts. What is the strongest objection?",
+      "choices": [
+        "The experiment never involved a real asteroid.",
+        "One demonstration cannot establish effectiveness against every asteroid size or structure.",
+        "The mission was designed to study lunar craters.",
+        "Asteroids are too small to cause any harm."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph four distinguishes a successful controlled demonstration from a universal guarantee."
+    }
+  ],
+  "description": "Original EN/B2 Asteroids assessment draft; human CEFR/content review required."
+}
