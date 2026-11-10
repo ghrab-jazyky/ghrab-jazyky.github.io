@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-harrison-ford",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
+  "durationMinutesSuggested": 16,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "auditRevision": "R36-AUTHOR-DRAFT-1",
+  "notes": "Unapproved audio-dependent test; original clip must be independently checked.",
+  "objective": [
+    {
+      "id": "r36-hf-a2-01",
+      "category": "listening",
+      "q": "What does Ford mainly do in this speech?",
+      "options": [
+        "Talk about a future film.",
+        "Explain how to make a chair.",
+        "Thank people and remember his career.",
+        "Teach students to act on stage."
+      ],
+      "answer": 2,
+      "explanation": "He uses the award to reflect on his career and acknowledge others.",
+      "sourceEvidence": "The speech combines career memories with gratitude."
+    },
+    {
+      "id": "r36-hf-a2-02",
+      "category": "listening",
+      "q": "What does he mean when he jokes that the award is early?",
+      "options": [
+        "He feels his work is not finished.",
+        "He has arrived before the ceremony.",
+        "He wanted an award from his college.",
+        "He thinks the audience is too young."
+      ],
+      "answer": 0,
+      "explanation": "Ford sees his career as continuing, not as something already completed.",
+      "sourceEvidence": "The lifetime award joke is about still being active."
+    },
+    {
+      "id": "r36-hf-a2-03",
+      "category": "listening",
+      "q": "How did the college theatre group help Ford?",
+      "options": [
+        "They found him a job making furniture.",
+        "They taught him a different language.",
+        "They bought him a place to live.",
+        "They made him feel part of a group."
+      ],
+      "answer": 3,
+      "explanation": "He remembers finding a community and belonging at college.",
+      "sourceEvidence": "People putting on plays gave him a sense of belonging."
+    },
+    {
+      "id": "r36-hf-a2-04",
+      "category": "listening",
+      "q": "What helped Ford earn money between acting jobs?",
+      "options": [
+        "Working in a cinema.",
+        "Making things as a carpenter.",
+        "Writing for a newspaper.",
+        "Teaching school classes."
+      ],
+      "answer": 1,
+      "explanation": "Carpentry was his other trade during the early years.",
+      "sourceEvidence": "He moved between acting work and carpentry."
+    },
+    {
+      "id": "r36-hf-a2-05",
+      "category": "listening",
+      "q": "Why does he mention so many people in film?",
+      "options": [
+        "He cannot remember their jobs.",
+        "He wants to make the speech longer.",
+        "He believes their help mattered to him.",
+        "He wants everyone to work in acting."
+      ],
+      "answer": 2,
+      "explanation": "Ford stresses that his achievement depended on collaborators.",
+      "sourceEvidence": "He thanks directors, colleagues and other contributors."
+    },
+    {
+      "id": "r36-hf-a2-06",
+      "category": "listening",
+      "q": "Which message would Ford give to a young actor?",
+      "options": [
+        "People with success should help beginners.",
+        "Only famous actors can tell good stories.",
+        "Never ask other people for support.",
+        "Stop trying when a career is difficult."
+      ],
+      "answer": 0,
+      "explanation": "His final appeal connects success with giving others opportunities.",
+      "sourceEvidence": "Ford encourages successful actors to support new performers."
+    }
+  ],
+  "written": [
+    {
+      "id": "r36-hf-a2-w1",
+      "q": "Why was college an important time for Ford? Write one short sentence.",
+      "modelAnswer": "He found people who were putting on plays and felt he belonged.",
+      "teacherCriterion": "One supported reason about friendship, theatre, belonging or direction.",
+      "sourceEvidence": "The college theatre group gave Ford community and purpose."
+    },
+    {
+      "id": "r36-hf-a2-w2",
+      "q": "Name one kind of person he thanks for helping make films.",
+      "modelAnswer": "He thanks actors, writers, directors or crew members.",
+      "teacherCriterion": "Accept one correct film collaborator profession or a supported proper name.",
+      "sourceEvidence": "The speech acknowledges multiple film-making roles."
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-peaky-no-fighting",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d308736b8478",
+  "durationMinutesSuggested": 16,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "auditRevision": "R37-AUTHOR-DRAFT-1",
+  "notes": "Authentic dialogue includes aggression and profanity. Teacher must check age suitability and source recording.",
+  "objective": [
+    {
+      "id": "r37-pk-a2-01",
+      "category": "interpretation",
+      "q": "Why does the man give so many rules?",
+      "options": [
+        "He wants to organise a football game",
+        "He is explaining a school task",
+        "He wants to plan a business meeting",
+        "He wants the wedding to pass without trouble"
+      ],
+      "answer": 3,
+      "explanation": "The rules are intended to prevent problems during the celebration.",
+      "sourceEvidence": "He wants the wedding day to be peaceful."
+    },
+    {
+      "id": "r37-pk-a2-02",
+      "category": "interpretation",
+      "q": "What makes his speech difficult to finish?",
+      "options": [
+        "Other men keep interrupting him",
+        "The ceremony begins too early",
+        "He has forgotten the rules",
+        "The music becomes too loud"
+      ],
+      "answer": 0,
+      "explanation": "The other men interrupt with objections and questions.",
+      "sourceEvidence": "He is interrupted repeatedly."
+    },
+    {
+      "id": "r37-pk-a2-03",
+      "category": "interpretation",
+      "q": "Why does one man object to the guests' clothes?",
+      "options": [
+        "He thinks they are too expensive",
+        "He wants to wear a different suit",
+        "He dislikes the uniforms he sees",
+        "He thinks they should wear hats"
+      ],
+      "answer": 2,
+      "explanation": "One man protests that there are uniforms.",
+      "sourceEvidence": "A complaint concerns uniforms despite an earlier promise."
+    },
+    {
+      "id": "r37-pk-a2-04",
+      "category": "interpretation",
+      "q": "What does the speaker do after the surprise question?",
+      "options": [
+        "He ends the meeting",
+        "He says no and continues his warnings",
+        "He asks the bride for advice",
+        "He changes the wedding date"
+      ],
+      "answer": 1,
+      "explanation": "He refuses repeatedly and goes on with restrictions.",
+      "sourceEvidence": "A question about snow triggers further rules."
+    },
+    {
+      "id": "r37-pk-a2-05",
+      "category": "interpretation",
+      "q": "What does the speaker especially want to avoid?",
+      "options": [
+        "Having to give another speech",
+        "The guests arriving too early",
+        "Having too much food",
+        "Embarrassing Grace"
+      ],
+      "answer": 3,
+      "explanation": "He invokes Grace as a reason to behave.",
+      "sourceEvidence": "He says not to embarrass Grace."
+    },
+    {
+      "id": "r37-pk-a2-06",
+      "category": "interpretation",
+      "q": "Why does his final instruction sound so strong?",
+      "options": [
+        "He repeats it more and more loudly",
+        "He changes it into a song",
+        "He makes everyone repeat it",
+        "He stops before finishing"
+      ],
+      "answer": 0,
+      "explanation": "Repetition and volume make the order forceful.",
+      "sourceEvidence": "The final order is repeated loudly."
+    }
+  ],
+  "written": [
+    {
+      "id": "r37-pk-a2-w1",
+      "q": "Write one person's first name from the conversation.",
+      "modelAnswer": "Grace, John or Charlie.",
+      "teacherCriterion": "Accept one name clearly heard in the clip.",
+      "sourceEvidence": "Grace, John and Charlie are named."
+    },
+    {
+      "id": "r37-pk-a2-w2",
+      "q": "Give one reason why the event might become difficult.",
+      "modelAnswer": "The different groups dislike one another, or the uniforms could cause trouble.",
+      "teacherCriterion": "One specific source of tension supported by the clip.",
+      "sourceEvidence": "The dialogue includes tensions about uniforms and rival groups."
+    }
+  ]
+}

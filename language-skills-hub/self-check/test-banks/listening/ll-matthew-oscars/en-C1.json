@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-matthew-oscars",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
+  "durationMinutesSuggested": 20,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "auditRevision": "R37-AUTHOR-DRAFT-1",
+  "notes": "Language and factual correspondence to the original speech needs direct media review before publication.",
+  "objective": [
+    {
+      "id": "r37-mm-c1-01",
+      "category": "interpretation",
+      "q": "What is the rhetorical advantage of beginning with praise for fellow nominees?",
+      "options": [
+        "It removes attention from the significance of his own win",
+        "It establishes generosity within an inherently competitive event",
+        "It suggests the award is less important than the film's budget",
+        "It prepares the audience for a complaint about the judges"
+      ],
+      "answer": 1,
+      "explanation": "Praising peers tempers the exclusivity of the award with collegial respect.",
+      "sourceEvidence": "The speech acknowledges other nominees before developing its personal themes."
+    },
+    {
+      "id": "r37-mm-c1-02",
+      "category": "interpretation",
+      "q": "What does the contrast between a public ceremony and intimate family scenes achieve?",
+      "options": [
+        "It weakens the link between his identity and the audience",
+        "It makes the family anecdotes more important than the film's existence",
+        "It implies that the formal event should not be celebrated",
+        "It creates an approachable persona without discarding professional standing"
+      ],
+      "answer": 3,
+      "explanation": "The combination of status and personal disclosure fosters connection.",
+      "sourceEvidence": "The speech moves between public thanks and private memories."
+    },
+    {
+      "id": "r37-mm-c1-03",
+      "category": "interpretation",
+      "q": "How does the imagined account of his late father depart from a conventional solemn tribute?",
+      "options": [
+        "The sensory and humorous details allow affection and grief to coexist",
+        "It makes the father's absence the focus of a complaint about fame",
+        "It challenges the possibility of a spiritual interpretation of the ceremony",
+        "It introduces a factual account of the father's daily routine"
+      ],
+      "answer": 0,
+      "explanation": "The anecdote evokes an entertaining scene rather than exclusively solemn reminiscence.",
+      "sourceEvidence": "The father is pictured vividly enjoying food and company."
+    },
+    {
+      "id": "r37-mm-c1-04",
+      "category": "interpretation",
+      "q": "What argumentative role does the speaker's description of gratitude as reciprocal play?",
+      "options": [
+        "It explains the criteria by which acting awards are chosen",
+        "It reduces the importance of the earlier people he thanked",
+        "It extends personal appreciation into a principle about human relations",
+        "It implies that gratitude can be measured reliably by scientists"
+      ],
+      "answer": 2,
+      "explanation": "He moves from personal thanks to a more general claim about returning appreciation.",
+      "sourceEvidence": "His speech links giving thanks with receiving more to be grateful for."
+    },
+    {
+      "id": "r37-mm-c1-05",
+      "category": "interpretation",
+      "q": "Why is the story of a future personal hero central to his account of motivation?",
+      "options": [
+        "It turns an unattainable ideal into a continuing source of direction",
+        "It suggests ambition should stop once the person wins an award",
+        "It demonstrates that professional success is best judged by age",
+        "It makes the original conversation seem unimportant"
+      ],
+      "answer": 0,
+      "explanation": "The hero remains a future version of himself and drives growth.",
+      "sourceEvidence": "The ideal is continually moved ten years ahead."
+    },
+    {
+      "id": "r37-mm-c1-06",
+      "category": "interpretation",
+      "q": "What does the return to recognisable phrases at the end do to the speaker's ethos?",
+      "options": [
+        "It cancels out the emotional stories that came before",
+        "It indicates that the speech has no overall design",
+        "It makes the audience think the speech is entirely improvised",
+        "It reconnects the formal stage with his informal public identity"
+      ],
+      "answer": 3,
+      "explanation": "The ending combines a ceremonial moment with familiar personal speech.",
+      "sourceEvidence": "The repeated closing expressions return the audience to his known voice."
+    }
+  ],
+  "written": [
+    {
+      "id": "r37-mm-c1-w1",
+      "q": "Analyse one instance of how humour makes an emotionally serious idea more accessible.",
+      "modelAnswer": "A humorous image of his father reduces solemn distance without removing affection; it makes personal loss approachable to listeners.",
+      "teacherCriterion": "Award 1 point for one concrete moment, a precise explanation of tonal contrast and audience effect.",
+      "sourceEvidence": "Family memory combines warmth and a comic scenario."
+    },
+    {
+      "id": "r37-mm-c1-w2",
+      "q": "How does the ideal-self anecdote function as an argument rather than just a personal memory?",
+      "modelAnswer": "It demonstrates a repeatable view of motivation: the target remains ahead, so aspiration is renewed instead of completed.",
+      "teacherCriterion": "Award 1 point for a supported explanation of the narrative's role in the broader claim.",
+      "sourceEvidence": "His hero is a future self at different ages."
+    }
+  ]
+}

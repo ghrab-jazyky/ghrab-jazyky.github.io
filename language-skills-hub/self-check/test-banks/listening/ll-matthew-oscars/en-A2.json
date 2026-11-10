@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-matthew-oscars",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
+  "durationMinutesSuggested": 16,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "auditRevision": "R37-AUTHOR-DRAFT-1",
+  "notes": "Language and factual correspondence to the original speech needs direct media review before publication.",
+  "objective": [
+    {
+      "id": "r37-mm-a2-01",
+      "category": "interpretation",
+      "q": "What is the main reason the speaker is on stage?",
+      "options": [
+        "He is teaching a drama lesson",
+        "He is introducing a new film",
+        "He has received an acting award",
+        "He is celebrating his birthday"
+      ],
+      "answer": 2,
+      "explanation": "He has just received an Academy Award.",
+      "sourceEvidence": "The Oscars acceptance speech is a public thank-you."
+    },
+    {
+      "id": "r37-mm-a2-02",
+      "category": "interpretation",
+      "q": "Why does he sometimes make the listeners laugh?",
+      "options": [
+        "He uses funny details in personal memories",
+        "He reads jokes from another actor",
+        "He forgets the names of the other performers",
+        "He wants to avoid thanking anyone"
+      ],
+      "answer": 0,
+      "explanation": "He adds humorous details to personal stories.",
+      "sourceEvidence": "His father anecdote is affectionate and comic."
+    },
+    {
+      "id": "r37-mm-a2-03",
+      "category": "interpretation",
+      "q": "What does he remember about his father?",
+      "options": [
+        "A film they made together",
+        "A long journey to school",
+        "A difficult test at college",
+        "A funny picture of him enjoying food"
+      ],
+      "answer": 3,
+      "explanation": "He imagines his father enjoying gumbo in a lively memory.",
+      "sourceEvidence": "The father tribute includes a humorous image."
+    },
+    {
+      "id": "r37-mm-a2-04",
+      "category": "interpretation",
+      "q": "What lesson does he connect with his mother?",
+      "options": [
+        "Children should always become actors",
+        "Respect yourself and then respect others",
+        "Good grades are more important than kindness",
+        "Only successful people deserve respect"
+      ],
+      "answer": 1,
+      "explanation": "His mother's teaching connects respect for self and others.",
+      "sourceEvidence": "The speech recalls her lesson about self-respect."
+    },
+    {
+      "id": "r37-mm-a2-05",
+      "category": "interpretation",
+      "q": "How does he describe the person he hopes to become?",
+      "options": [
+        "Someone he has already been",
+        "Someone chosen by the award judges",
+        "A version of himself further in the future",
+        "A famous person from his childhood"
+      ],
+      "answer": 2,
+      "explanation": "His ideal future self remains ahead of his present age.",
+      "sourceEvidence": "He recalls a hero ten years older than himself."
+    },
+    {
+      "id": "r37-mm-a2-06",
+      "category": "interpretation",
+      "q": "Why does he repeat short phrases at the end?",
+      "options": [
+        "To finish with energy and a familiar message",
+        "To invite another actor onto the stage",
+        "To change the topic to the next award",
+        "To ask the audience for a second prize"
+      ],
+      "answer": 0,
+      "explanation": "The closing phrases bring energy and closure.",
+      "sourceEvidence": "He ends with a memorable repeated expression."
+    }
+  ],
+  "written": [
+    {
+      "id": "r37-mm-a2-w1",
+      "q": "Name one person from the film he thanks.",
+      "modelAnswer": "The director Jean-Marc Vallée or a named co-star.",
+      "teacherCriterion": "Award 1 point for one accurate film collaborator.",
+      "sourceEvidence": "He mentions Vallée, Jared Leto and Jennifer Garner."
+    },
+    {
+      "id": "r37-mm-a2-w2",
+      "q": "Describe one way the speech is personal rather than only formal.",
+      "modelAnswer": "He talks about his father, mother, wife, children or his younger self.",
+      "teacherCriterion": "Award 1 point for a specific personal example.",
+      "sourceEvidence": "The speech includes family stories and a remembered conversation."
+    }
+  ]
+}

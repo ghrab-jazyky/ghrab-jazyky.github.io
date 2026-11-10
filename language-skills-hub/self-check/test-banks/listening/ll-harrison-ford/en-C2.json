@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-harrison-ford",
+  "language": "en",
+  "level": "C2",
+  "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
+  "durationMinutesSuggested": 22,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "auditRevision": "R36-AUTHOR-DRAFT-1",
+  "notes": "Unapproved audio-dependent independent question bank; factual content requires direct verification from original media.",
+  "objective": [
+    {
+      "id": "r36-hf-c2-01",
+      "category": "interpretation",
+      "q": "Which interpretation best captures the tension in Ford accepting a lifetime honour while joking about its timing?",
+      "options": [
+        "He distances himself from all public recognition as inherently insincere.",
+        "He presents the award as evidence that commercial success outweighs artistic value.",
+        "He simultaneously accepts distinction and resists the idea of a completed personal narrative.",
+        "He argues that career awards ought to be awarded only after retirement."
+      ],
+      "answer": 2,
+      "explanation": "The joke allows him to acknowledge the honour without treating his identity as settled.",
+      "sourceEvidence": "He calls the lifetime award a little early because he is still working."
+    },
+    {
+      "id": "r36-hf-c2-02",
+      "category": "interpretation",
+      "q": "How might naming absent or deceased supporters change the speech's treatment of professional achievement?",
+      "options": [
+        "It situates public recognition within an irrecoverable network of personal obligations.",
+        "It suggests fame can compensate for missed opportunities to thank colleagues.",
+        "It implies that professional influence ceases after a supporter has died.",
+        "It turns the speech into an argument against individual artistic ambition."
+      ],
+      "answer": 0,
+      "explanation": "Recollection of supporters who cannot share the moment intensifies dependence and gratitude.",
+      "sourceEvidence": "The C2 reference recalls deceased early supporters."
+    },
+    {
+      "id": "r36-hf-c2-03",
+      "category": "interpretation",
+      "q": "What narrative function does the college story perform beyond explaining how Ford entered acting?",
+      "options": [
+        "It demonstrates that acting was more economically secure than carpentry.",
+        "It contrasts formal teaching with independent technical training.",
+        "It establishes that professional achievement is primarily a matter of chance.",
+        "It links an experience of exclusion to the later obligation to create inclusion."
+      ],
+      "answer": 3,
+      "explanation": "The anecdote supplies a personal rationale for helping newcomers find a community.",
+      "sourceEvidence": "At college he discovers people putting on plays and later calls on actors to support others."
+    },
+    {
+      "id": "r36-hf-c2-04",
+      "category": "interpretation",
+      "q": "Why could Ford's self-deprecating comments be interpreted as a deliberate rhetorical strategy?",
+      "options": [
+        "They prevent the audience from hearing any direct expression of gratitude.",
+        "They permit the construction of an approachable persona within a celebratory ceremony.",
+        "They establish that the honour was earned through effort alone.",
+        "They make the professional biography irrelevant to the speech's larger argument."
+      ],
+      "answer": 1,
+      "explanation": "Self-mockery manages the tension between receiving praise and appearing modest.",
+      "sourceEvidence": "Opening jokes about the lifetime award."
+    },
+    {
+      "id": "r36-hf-c2-05",
+      "category": "interpretation",
+      "q": "What is most significant about the movement from a personal 'I' towards a broader professional 'we'?",
+      "options": [
+        "It excludes the audience from responsibility for the creative process.",
+        "It marks the end of autobiographical storytelling and the rejection of artistic judgement.",
+        "It redistributes agency and responsibility from the individual towards a community.",
+        "It suggests that personal histories cannot support ethical conclusions."
+      ],
+      "answer": 2,
+      "explanation": "The rhetorical shift connects an individual's recognition to collective action.",
+      "sourceEvidence": "The speech moves from Ford's memories to colleagues and other artists."
+    },
+    {
+      "id": "r36-hf-c2-06",
+      "category": "interpretation",
+      "q": "Which critique most constructively qualifies Ford's account of responsibility after success?",
+      "options": [
+        "His call to help others is compelling but offers few specific institutional mechanisms.",
+        "The appeal contradicts his account of having received considerable help himself.",
+        "His story proves that everyone beginning a career receives adequate support.",
+        "An ethical obligation to help others is incompatible with artistic freedom."
+      ],
+      "answer": 0,
+      "explanation": "The appeal has moral force from experience but leaves structural solutions largely unspecified.",
+      "sourceEvidence": "Ford urges successful people to support others without detailing a formal policy."
+    }
+  ],
+  "written": [
+    {
+      "id": "r36-hf-c2-w1",
+      "q": "Evaluate whether Ford's apparent modesty could also strengthen his celebrity image. Use two specific moments.",
+      "modelAnswer": "His award joke invites laughter and humility, while carefully selected thanks enhance credibility and maintain the celebratory public persona.",
+      "teacherCriterion": "Award 1 point only for a balanced interpretation supported by two distinct moments, including a limitation or counter-reading.",
+      "sourceEvidence": "Award humour and personal/professional acknowledgements."
+    },
+    {
+      "id": "r36-hf-c2-w2",
+      "q": "Assess the relationship between Ford's autobiographical college memory and his later ethical appeal.",
+      "modelAnswer": "The recollection of isolation and belonging supplies emotional grounds for supporting newcomers, although a personal anecdote cannot prove that opportunities are equally accessible.",
+      "teacherCriterion": "Award 1 point for an argument connecting the story to the appeal and considering at least one reasonable qualification.",
+      "sourceEvidence": "College group creates belonging; the closing message asks established actors to make room for others."
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_TEST_DRAFT_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-matthew-oscars",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
+  "durationMinutesSuggested": 18,
+  "teacherPlayback": "Two complete playbacks controlled by the teacher. No student media controls.",
+  "scoreRule": "6 objectively scored multiple-choice tasks and 2 teacher-reviewed written tasks, 1 point each. Proposed grade only after both written tasks reviewed.",
+  "auditRevision": "R37-AUTHOR-DRAFT-1",
+  "notes": "Language and factual correspondence to the original speech needs direct media review before publication.",
+  "objective": [
+    {
+      "id": "r37-mm-b2-01",
+      "category": "interpretation",
+      "q": "What is achieved by moving from thank-yous to personal memories?",
+      "options": [
+        "The speaker turns the occasion into a broader reflection on values",
+        "The speech becomes mainly a discussion of his acting method",
+        "The speaker avoids recognising other people's contributions",
+        "The audience is invited to compare his roles with those of nominees"
+      ],
+      "answer": 0,
+      "explanation": "The movement lets personal examples support a wider argument.",
+      "sourceEvidence": "The speech progresses from acknowledgements to personal reflection."
+    },
+    {
+      "id": "r37-mm-b2-02",
+      "category": "interpretation",
+      "q": "How does the speaker use humour in his tribute to his father?",
+      "options": [
+        "It makes the memory seem unimportant",
+        "It turns the father into the subject of criticism",
+        "It gives warmth to a potentially solemn moment",
+        "It shifts the main subject to the film industry"
+      ],
+      "answer": 2,
+      "explanation": "A funny imagined scene conveys affection in an emotional tribute.",
+      "sourceEvidence": "He pictures his father enjoying gumbo."
+    },
+    {
+      "id": "r37-mm-b2-03",
+      "category": "interpretation",
+      "q": "What is the deeper function of the age-based hero story?",
+      "options": [
+        "It proves the speaker has achieved every childhood goal",
+        "It treats aspiration as something that keeps moving ahead",
+        "It suggests that success depends on choosing an older role model",
+        "It encourages listeners to compare themselves with other actors"
+      ],
+      "answer": 1,
+      "explanation": "The ideal is a later version of himself, not a completed destination.",
+      "sourceEvidence": "A remembered conversation revisits the future self at successive ages."
+    },
+    {
+      "id": "r37-mm-b2-04",
+      "category": "interpretation",
+      "q": "Why is the mother's lesson relevant beyond the family tribute?",
+      "options": [
+        "It suggests that self-respect is the foundation for recognising others",
+        "It gives instructions for how to respond at an award ceremony",
+        "It shows that professional praise is less important than family approval",
+        "It implies that other people must first respect you"
+      ],
+      "answer": 0,
+      "explanation": "The lesson moves from self-regard to social respect.",
+      "sourceEvidence": "He links self-respect and respecting other people."
+    },
+    {
+      "id": "r37-mm-b2-05",
+      "category": "interpretation",
+      "q": "How does the ending reinforce rather than interrupt the speech's structure?",
+      "options": [
+        "It changes attention to the next Oscar category",
+        "It replaces gratitude with a different political argument",
+        "It ends with a long new family anecdote",
+        "It revisits earlier ideas in a memorable informal style"
+      ],
+      "answer": 3,
+      "explanation": "The closing repetitions echo prior themes and finish energetically.",
+      "sourceEvidence": "Short repeated phrases close the speech."
+    },
+    {
+      "id": "r37-mm-b2-06",
+      "category": "interpretation",
+      "q": "What does acknowledging the other nominees contribute to his public persona?",
+      "options": [
+        "It suggests the judges could have made the wrong choice",
+        "It makes the win part of a larger community of respected work",
+        "It presents his career as dependent on awards alone",
+        "It indicates that he would rather not receive recognition"
+      ],
+      "answer": 1,
+      "explanation": "Recognition of peers makes the celebration generous rather than narrowly self-congratulatory.",
+      "sourceEvidence": "He praises the other nominated performances."
+    }
+  ],
+  "written": [
+    {
+      "id": "r37-mm-b2-w1",
+      "q": "Explain how the father's memory changes the emotional tone of the speech.",
+      "modelAnswer": "The humorous image gives warmth and informality to a moving tribute, helping audiences connect with him.",
+      "teacherCriterion": "Award 1 point for a specific moment and its effect on the audience.",
+      "sourceEvidence": "An imagined scene with his father and food introduces humour amid affection."
+    },
+    {
+      "id": "r37-mm-b2-w2",
+      "q": "How does the future-hero anecdote change the idea of reaching success?",
+      "modelAnswer": "It suggests the goal should keep moving forward; success is part of continuous growth rather than a final destination.",
+      "teacherCriterion": "Award 1 point for a supported explanation of the changing ideal and its significance.",
+      "sourceEvidence": "At two different ages, the ideal version remains ten years ahead."
+    }
+  ]
+}
