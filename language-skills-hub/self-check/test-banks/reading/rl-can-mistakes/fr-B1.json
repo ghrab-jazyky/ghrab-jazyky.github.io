@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "fr",
+  "level": "B1",
+  "sourceTitle": "Le problème de vouloir toujours réussir",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R35-CONTENT-AUDIT-1",
+  "description": "Original B1 test draft; independent pedagogy approval pending.",
+  "tabs": [
+    {
+      "id": "pensee",
+      "title": "La façon de penser"
+    },
+    {
+      "id": "musique",
+      "title": "La leçon de musique"
+    },
+    {
+      "id": "utiliser",
+      "title": "Utiliser l'idée"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-fr-b1-01",
+      "tab": "pensee",
+      "kind": "mc",
+      "q": "Pourquoi Lara évite-t-elle certaines matières au début ?",
+      "choices": [
+        "Elle veut faire seulement de la musique.",
+        "Elle ne se sent pas assez sûre de réussir.",
+        "Ses parents lui interdisent ces matières.",
+        "Elle ne connaît pas les autres élèves."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Au premier paragraphe, Lara évite les matières où elle se sent moins à l'aise."
+    },
+    {
+      "id": "r35-fr-b1-02",
+      "tab": "pensee",
+      "kind": "mc",
+      "q": "Que pense Lara quand elle ne réussit pas immédiatement ?",
+      "choices": [
+        "Le professeur a toujours mal expliqué.",
+        "Tous ses amis ont le même problème.",
+        "Elle doit jouer plus vite que les autres.",
+        "Elle manque peut-être de talent."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "Au début, Lara pense qu'une difficulté immédiate prouve son manque de talent."
+    },
+    {
+      "id": "r35-fr-b1-03",
+      "tab": "pensee",
+      "kind": "mc",
+      "q": "Que fait Lara après le conseil de sa professeure ?",
+      "choices": [
+        "Elle essaie de jouer tout le morceau plus vite.",
+        "Elle arrête la musique pendant une semaine.",
+        "Elle répète lentement le passage difficile.",
+        "Elle demande à une amie de jouer pour elle."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "La professeure lui conseille de travailler seulement quatre mesures difficiles."
+    },
+    {
+      "id": "r35-fr-b1-04",
+      "tab": "musique",
+      "kind": "mc",
+      "q": "Pourquoi la professeure choisit-elle quatre mesures ?",
+      "choices": [
+        "Pour travailler une difficulté précise.",
+        "Parce que le reste du morceau ne compte pas.",
+        "Parce que Lara connaît déjà toutes les autres notes.",
+        "Pour terminer le cours plus tôt."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Se concentrer sur une petite partie aide Lara à progresser de manière ciblée."
+    },
+    {
+      "id": "r35-fr-b1-05",
+      "tab": "musique",
+      "kind": "mc",
+      "q": "Qu'arrive-t-il une semaine plus tard ?",
+      "choices": [
+        "Lara décide de ne plus jouer devant la classe.",
+        "La professeure lui donne un instrument différent.",
+        "Lara joue tout le morceau sans s'arrêter.",
+        "Les autres élèves arrêtent la musique."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Le troisième paragraphe décrit la réussite de Lara après plusieurs essais."
+    },
+    {
+      "id": "r35-fr-b1-06",
+      "tab": "musique",
+      "kind": "mc",
+      "q": "Qu'est-ce qui change surtout chez Lara ?",
+      "choices": [
+        "Sa réaction face aux difficultés et aux erreurs.",
+        "Son envie d'arrêter tous les cours de musique.",
+        "Le nombre d'élèves de sa classe.",
+        "La vitesse de chaque morceau de musique."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Le texte souligne un changement de façon de penser plutôt qu'un talent exceptionnel."
+    },
+    {
+      "id": "r35-fr-b1-07",
+      "tab": "utiliser",
+      "kind": "mc",
+      "q": "Un camarade a peur de poser une question. Que montre l'expérience de Lara ?",
+      "choices": [
+        "Il vaut mieux garder toutes ses difficultés pour soi.",
+        "Demander de l'aide peut faire partie de l'apprentissage.",
+        "Seuls les professeurs doivent réfléchir aux erreurs.",
+        "Une mauvaise note empêche toute amélioration."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Lara découvre qu'il est plus utile de travailler une difficulté que de la cacher."
+    },
+    {
+      "id": "r35-fr-b1-08",
+      "tab": "utiliser",
+      "kind": "mc",
+      "q": "Que signifie progresser pour Lara à la fin ?",
+      "choices": [
+        "Ne plus s'intéresser à ses notes.",
+        "Éviter tout exercice difficile.",
+        "Ne plus jamais avoir besoin de s'entraîner.",
+        "Reconnaître ce qu'il faut encore travailler."
+      ],
+      "answer": 3,
+      "sourceParagraph": 4,
+      "explanation": "Le dernier paragraphe présente la prise de conscience des difficultés comme un progrès."
+    },
+    {
+      "id": "r35-fr-b1-09",
+      "tab": "utiliser",
+      "kind": "mc",
+      "q": "Tu fais une erreur dans un problème. Quelle méthode convient ?",
+      "choices": [
+        "Recommencer toujours sans chercher où est l'erreur.",
+        "Travailler d'abord la partie que tu comprends mal.",
+        "Recopier seulement la réponse du manuel.",
+        "Remplacer le problème par une matière plus facile."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "La méthode des quatre mesures peut aussi aider avec un problème scolaire."
+    },
+    {
+      "id": "r35-fr-b1-10",
+      "tab": "utiliser",
+      "kind": "mc",
+      "q": "Quelle phrase résume une idée importante pour Lara ?",
+      "choices": [
+        "Une bonne note montre un talent permanent.",
+        "Toutes les erreurs doivent disparaître immédiatement.",
+        "Il faut toujours éviter les tâches difficiles.",
+        "Une erreur peut indiquer ce qu'il faut changer."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "Sa nouvelle question porte sur une amélioration possible et non sur son talent."
+    }
+  ]
+}
