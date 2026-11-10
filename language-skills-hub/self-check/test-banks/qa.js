@@ -121,6 +121,64 @@
   }catch(err){$('shareStatus').textContent='Export blokován: '+String(err.message||err)}
   finally{btn.disabled=false}
  }
+ async function exportTopicPacket(){
+  if(!active)return;
+  const button=$('downloadTopicPacket');
+  button.disabled=true;
+  $('shareStatus').textContent='Ověřuji původní zdroj a připravuji všechny úrovně tématu…';
+  try{
+   const {entry}=active;
+   const response=await fetch('../../'+entry.relative,{
+    credentials:'omit',redirect:'error',cache:'no-store'
+   });
+   if(!response.ok)throw new Error('Original source HTTP '+response.status);
+   const sourceHtml=await response.text(),digest=await sha256(sourceHtml);
+   if(digest!==manifest.contentHashes[entry.id])
+    throw new Error('Original source checksum mismatch – topic export blocked');
+   const data=extract(sourceHtml,'DATA');
+   const collection=getCollection(entry);
+   if(!collection||collection.published!==false||
+    collection.sourcePracticeContentHash!==digest)
+    throw new Error('Topic content bank is unavailable or not an unapproved draft');
+   const result=[];
+   const requestedLanguages=entry.skill==='cteni'?entry.languages:['en'];
+   for(const language of requestedLanguages)for(const level of entry.levels){
+    const isManual=entry.id==='rl-can-mistakes'&&language==='en'&&
+     ['B1','B2'].includes(level);
+    const test=isManual?await fetchJson('reading/rl-can-mistakes/en-'+level+'.json'):
+     entry.skill==='cteni'?collection.variants?.[language]?.[level]:
+     collection.variants?.[level];
+    if(!test||test.published!==false)throw new Error('Missing/approved unexpectedly: '+language+'/'+level);
+    const practice=entry.skill==='cteni'?data[language]?.[level]:data[level];
+    if(!practice)throw new Error('Missing practice content: '+language+'/'+level);
+    result.push({language,level,practice,proposedTest:test,
+     status:test.stage||test.status||'UNKNOWN',teacherApproved:false,
+     sourceAudioVerified:entry.skill==='poslech'?false:null});
+   }
+   if(result.length!==(entry.skill==='cteni'?24:6))
+    throw new Error('Incomplete set of level variants for topic');
+   downloadJSON('lsh-claude-topic-'+entry.id+'.json',{
+    kind:'LSH_R34_CLAUDE_TOPIC_AUDIT_PACKET_V1',topic:entry.id,
+    skill:entry.skill,publicSource:entry.relative,sourceHash:digest,
+    sourceVerified:true,studentPublicationApproved:false,
+    purpose:'Content rewrite and independent audit before teacher authorization',
+    productionBaseline:manifest.version,variants:result,
+    requiredChecks:[
+     'Language grammar and CEFR levels A1-C2 across all offered languages',
+     'Independent questions, not a rewording or copy of practice',
+     'Exactly one defensible MC answer plus plausible non-trivial distractors',
+     'Specific source evidence and correction of ambiguous keys',
+     'Appropriate question variety and difficulty progression',
+     'For Listening: check every claim against the actual recording and two-playback feasibility',
+     'Teacher review for open Listening tasks, no unverified final school grade',
+     'Privacy and safe static-hosting disclosure'
+    ]
+   });
+   $('shareStatus').textContent='Všechny varianty tématu byly připraveny v jednom anonymním JSON souboru.';
+  }catch(error){
+   $('shareStatus').textContent='Export celého tématu zablokován: '+String(error.message||error);
+  }finally{button.disabled=false}
+ }
  async function init(){
   try{
    const [catalog,version]=await Promise.all([fetchJson('../../data/cards.json'),fetchJson('../../version.json')]);
@@ -142,6 +200,7 @@
     catch(_){$('shareStatus').textContent='Kopírování nepovoleno. Otevři QA náhled a použij adresu prohlížeče.'}
    });
    $('downloadPacket').addEventListener('click',exportPacket);
+   $('downloadTopicPacket').addEventListener('click',exportTopicPacket);
    onSkill();coverage();
   }catch(err){$('selectedStatus').textContent='QA katalog je zablokovaný: '+String(err.message||err)}
  }
