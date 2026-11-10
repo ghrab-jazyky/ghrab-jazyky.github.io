@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "B1",
+  "sourceVariantTitle": "The Litter That Travelled Underground",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "auditRevision": "R35-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "Original ten-question B1 English Reading assessment draft; teacher content audit is still required.",
+  "tabs": [
+    {
+      "id": "understanding",
+      "title": "Understanding",
+      "description": "Understand the central ideas and the people."
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasons and Evidence",
+      "description": "Explain why important events matter."
+    },
+    {
+      "id": "transfer",
+      "title": "Using What You Read",
+      "description": "Apply the idea in a new situation."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-plastic-ocean-en-b1-01",
+      "tab": "understanding",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What was the problem with the students' first idea of putting up a sign by the stream?",
+      "choices": [
+        "It was planned for the wrong side of their school.",
+        "The engineer said signs were never allowed near streams.",
+        "It did not address rubbish entering the water through street drains.",
+        "The town did not have enough volunteers to paint it."
+      ],
+      "answer": 2,
+      "explanation": "The students' investigation connects rubbish to street drains, timetables, local observations and practical changes rather than blame."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b1-02",
+      "tab": "understanding",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why can wrappers left on the pavement end up in a stream?",
+      "choices": [
+        "A cleaner puts them directly into the river.",
+        "Rainwater carries them into a drain and pipe.",
+        "Wind always pushes them uphill from the bus stop.",
+        "They travel along the street because buses create vibrations."
+      ],
+      "answer": 1,
+      "explanation": "The students' investigation connects rubbish to street drains, timetables, local observations and practical changes rather than blame."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b1-03",
+      "tab": "understanding",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why did the students divide the street into sections before counting litter?",
+      "choices": [
+        "To stop people from using the bus stop during the project.",
+        "To give every volunteer exactly the same number of wrappers.",
+        "To find the fastest route between their school and the library.",
+        "To compare places and see where the problem was greatest."
+      ],
+      "answer": 3,
+      "explanation": "The students' investigation connects rubbish to street drains, timetables, local observations and practical changes rather than blame."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b1-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What does the difference between the bus stop and the library suggest?",
+      "choices": [
+        "The busy bus-stop area needed more attention than the quieter part of the street.",
+        "The library was closed on both afternoons.",
+        "The library staff had already collected every wrapper.",
+        "The students had counted the same wrappers twice near the bus stop."
+      ],
+      "answer": 0,
+      "explanation": "The students' investigation connects rubbish to street drains, timetables, local observations and practical changes rather than blame."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b1-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why did changing the bin's collection time make sense?",
+      "choices": [
+        "There was no rubbish near the stop in the mornings.",
+        "The café owner wanted the bin to be removed permanently.",
+        "The bin was full later in the day when many people were using the stop.",
+        "The bus driver was responsible for collecting all street rubbish."
+      ],
+      "answer": 2,
+      "explanation": "The students' investigation connects rubbish to street drains, timetables, local observations and practical changes rather than blame."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b1-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why did the students avoid saying that the problem had disappeared?",
+      "choices": [
+        "Weather and rubbish from other streets could still cause trouble.",
+        "The engineer had forbidden them to publish a result.",
+        "Their first count had found no rubbish at all.",
+        "All the people who used the street had moved away."
+      ],
+      "answer": 0,
+      "explanation": "The students' investigation connects rubbish to street drains, timetables, local observations and practical changes rather than blame."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b1-07",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What was the purpose of inviting neighbours to share their own photos?",
+      "choices": [
+        "The students wanted a competition for the best camera.",
+        "More observations could help reveal problems beyond the original street.",
+        "Only residents could legally discuss the stream.",
+        "The council had stopped cleaning drains entirely."
+      ],
+      "answer": 1,
+      "explanation": "The students' investigation connects rubbish to street drains, timetables, local observations and practical changes rather than blame."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Your school finds wrappers near a playground. What should it do before choosing a solution?",
+      "choices": [
+        "Put a warning sign at the first place anyone notices litter.",
+        "Blame the youngest pupils before collecting information.",
+        "Assume that all wrappers came from one shop.",
+        "Investigate where the rubbish comes from and how it travels."
+      ],
+      "answer": 3,
+      "explanation": "The students' investigation connects rubbish to street drains, timetables, local observations and practical changes rather than blame."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "A stream looks cleaner after one month. What would be a sensible next step?",
+      "choices": [
+        "Stop collecting any evidence because the project is over.",
+        "Keep checking during different weather conditions.",
+        "Remove every bin from the street.",
+        "Tell neighbours that no other changes are possible."
+      ],
+      "answer": 1,
+      "explanation": "The students' investigation connects rubbish to street drains, timetables, local observations and practical changes rather than blame."
+    },
+    {
+      "id": "r35-plastic-ocean-en-b1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Which question would best continue the students' final lesson?",
+      "choices": [
+        "Which volunteer picked up the most wrappers?",
+        "Can a sign beside the river make everybody feel better?",
+        "Who should be blamed for everything that happened last year?",
+        "Where does the problem begin, and which practical step could prevent it?"
+      ],
+      "answer": 3,
+      "explanation": "The students' investigation connects rubbish to street drains, timetables, local observations and practical changes rather than blame."
+    }
+  ]
+}
