@@ -1,5 +1,5 @@
 /* R32/R33 independent Reading test-bank draft validator. NEVER auto-publish.
- * Passages may be shared with practice but student test prompts must differ.
+ * Drafts across topics/languages share original passages; assessment tasks must differ.
  * No external API, keys or private student data.
  */
 (function(root){
@@ -14,20 +14,16 @@
    'Invalid pilot test-bank format');
   check(bank.status===STATUS&&bank.published===false,
    'R32 content cannot be published without teacher approval');
-  const permittedLevels={
-   A1:{prefix:'r34',audit:'R34-CONTENT-AUDIT-1',title:'I Can Try Again'},
-   A2:{prefix:'r34',audit:'R34-CONTENT-AUDIT-1',title:'A Small Change, a Better Result'},
-   B1:{prefix:'r33',audit:'R33-CONTENT-AUDIT-1',title:'The Problem with Being Good at Everything'},
-   B2:{prefix:'r32',audit:'R32-CONTENT-AUDIT-1',title:'When Feedback Feels Like Failure'},
-   C1:{prefix:'r34',audit:'R34-CONTENT-AUDIT-1',title:'The Hidden Cost of Constant Improvement'},
-   C2:{prefix:'r34',audit:'R34-CONTENT-AUDIT-1',title:'When Resilience Becomes an Obligation'}
-  };
-  const rules=permittedLevels[bank.level];
-  check(bank.topic==='rl-can-mistakes'&&bank.language==='en'&&!!rules,
-   'This draft validator supports only Can Mistakes English A1–C2');
+  const langs=['en','es','de','fr'],levels=['A1','A2','B1','B2','C1','C2'];
+  check(langs.includes(bank.language)&&levels.includes(bank.level),
+   'This draft validator supports only Reading A1–C2 in EN/ES/DE/FR');
+  check(typeof bank.topic==='string'&&/^rl-[a-z0-9-]{3,76}$/.test(bank.topic),
+   'Invalid independent Reading topic');
+  check(text(bank.sourceTitle)&&bank.sourceTitle.length<=200,
+   'Missing exact original title for test bank');
   check(/^[a-f0-9]{64}$/.test(expectedSourceHash)&&
    bank.sourcePracticeContentHash===expectedSourceHash,'The practice source has changed');
-  check(practice&&practice.title===rules.title&&Array.isArray(practice.paragraphs)&&
+  check(practice&&practice.title===bank.sourceTitle&&Array.isArray(practice.paragraphs)&&
    practice.paragraphs.length>=3&&Array.isArray(practice.questions),
    'Practice source does not match this bank level and passage');
   check(Array.isArray(bank.tabs)&&bank.tabs.length===3&&
@@ -36,13 +32,13 @@
   const ids=new Set(bank.tabs.map(t=>t.id));
   check(ids.size===bank.tabs.length,'Duplicate test section');
   check(Array.isArray(bank.questions)&&bank.questions.length===10,
-   'Independent English pilot must have 10 questions');
+   'Independent pilot must have 10 questions');
   const stems=new Set(practice.questions.map(q=>norm(q.q)));
   const practiceIds=new Set(practice.questions.map(q=>q.id));
   const seen=new Set();
   const answerPositions=[0,0,0,0];
   for(const q of bank.questions){
-   check(q&&text(q.id)&&new RegExp('^'+rules.prefix+'-en-'+bank.level.toLowerCase()+'-[a-z0-9-]+$').test(q.id)&&
+   check(q&&text(q.id)&&new RegExp('^r[0-9]{2}-'+bank.language+'-'+bank.level.toLowerCase()+'-[a-z0-9-]+$').test(q.id)&&
     !seen.has(q.id)&&!practiceIds.has(q.id),'Duplicate or reused question ID');
    seen.add(q.id);
    check(Number.isInteger(q.sourceParagraph)&&q.sourceParagraph>=1&&
@@ -59,7 +55,9 @@
   }
   check(answerPositions.every(n=>n>=2&&n<=3),
    'Correct answer locations are unbalanced across four positions');
-  check(bank.auditRevision===rules.audit,
+  const prefix=bank.questions[0].id.split('-')[0].toUpperCase();
+  check(typeof bank.auditRevision==='string'&&
+   bank.auditRevision===prefix+'-CONTENT-AUDIT-1',
    'Independent pedagogy audit not completed');
   check(bank.scoreRule.startsWith('1 point per correct MC item'),'Unknown scoring method');
   return true;
