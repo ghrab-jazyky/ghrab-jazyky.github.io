@@ -52,8 +52,8 @@ test('R36 entire Reading/Listening inventory counts ten authored draft banks and
  const result=JSON.parse(execFileSync(process.execPath,[
   path.join(root,'tools/independent-assessment-worklist.cjs'),'--json'],{encoding:'utf8'}));
  assert.equal(result.overview.total,138);
- assert.equal(result.overview.states.draft,11);
- assert.equal(result.overview.states.missing,127);
+ assert.equal(result.overview.states.draft,13);
+ assert.equal(result.overview.states.missing,125);
  for(const topic of topics){
   assert.ok(result.rows.some(x=>x.topic===topic&&x.language==='en'&&x.level==='B2'&&x.state==='draft'));
  }
