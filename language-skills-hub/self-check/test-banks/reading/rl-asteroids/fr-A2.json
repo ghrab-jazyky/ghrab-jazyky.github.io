@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "fr",
+  "level": "A2",
+  "sourceTitle": "Une soirée au club d’astronomie",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R36-CONTENT-AUDIT-1",
+  "description": "Independent A2 astronomy comprehension draft, not approved for classroom testing.",
+  "tabs": [
+    {
+      "id": "club",
+      "title": "Le club d'astronomie"
+    },
+    {
+      "id": "observation",
+      "title": "Observer les astéroïdes"
+    },
+    {
+      "id": "experience",
+      "title": "Une expérience spatiale"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r36-fr-a2-01",
+      "tab": "club",
+      "kind": "mc",
+      "q": "Pourquoi la ceinture d'astéroïdes n'est-elle pas une route encombrée ?",
+      "choices": [
+        "Les astéroïdes ne peuvent pas bouger.",
+        "Il y a beaucoup d'espace libre entre les roches.",
+        "Seules les sondes peuvent y circuler.",
+        "Toutes les roches se touchent."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "Le premier paragraphe explique que les roches sont très éloignées les unes des autres."
+    },
+    {
+      "id": "r36-fr-a2-02",
+      "tab": "club",
+      "kind": "mc",
+      "q": "Que découvre Nina sur la matière des astéroïdes ?",
+      "choices": [
+        "Ils sont uniquement formés de glace.",
+        "Ils produisent tous de la lumière.",
+        "Ils ont tous la même composition.",
+        "Ils peuvent être constitués de roche ou de métal."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "La professeure décrit des morceaux de roche ou de métal."
+    },
+    {
+      "id": "r36-fr-a2-03",
+      "tab": "club",
+      "kind": "mc",
+      "q": "Pourquoi les astronomes regardent-ils plusieurs fois le même objet ?",
+      "choices": [
+        "Pour rendre l'objet plus rapide.",
+        "Pour changer la couleur des photographies.",
+        "Pour calculer plus précisément sa trajectoire.",
+        "Pour éviter de chercher d'autres astéroïdes."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Les nouvelles observations précisent le parcours possible d'un objet."
+    },
+    {
+      "id": "r36-fr-a2-04",
+      "tab": "observation",
+      "kind": "mc",
+      "q": "Que signifie le passage d'un astéroïde près de la Terre ?",
+      "choices": [
+        "Cela ne veut pas nécessairement dire qu'il va la toucher.",
+        "Cela annonce toujours une collision imminente.",
+        "Cela signifie qu'il a quitté le système solaire.",
+        "Cela empêche toute observation par télescope."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "Le deuxième paragraphe distingue le rapprochement d'une collision."
+    },
+    {
+      "id": "r36-fr-a2-05",
+      "tab": "observation",
+      "kind": "mc",
+      "q": "À quoi servent les ordinateurs dans l'étude des astéroïdes ?",
+      "choices": [
+        "À donner une couleur à chaque roche.",
+        "À fabriquer de nouvelles planètes.",
+        "À mieux étudier les orbites.",
+        "À remplacer toutes les observations."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Les scientifiques étudient les orbites grâce aux ordinateurs."
+    },
+    {
+      "id": "r36-fr-a2-06",
+      "tab": "observation",
+      "kind": "mc",
+      "q": "Qu'a démontré le test DART avec Dimorphos ?",
+      "choices": [
+        "Une sonde peut modifier légèrement son mouvement.",
+        "Tous les astéroïdes peuvent être détruits.",
+        "Dimorphos est devenu une planète.",
+        "Sa trajectoire a totalement disparu."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Le troisième paragraphe indique que l'orbite de Dimorphos a été modifiée."
+    },
+    {
+      "id": "r36-fr-a2-07",
+      "tab": "experience",
+      "kind": "mc",
+      "q": "Pourquoi Nina trouve-t-elle l'idée de DART incroyable ?",
+      "choices": [
+        "Elle a photographié Dimorphos avec son téléphone.",
+        "Une sonde peut donner une petite poussée à une roche spatiale.",
+        "La sonde a changé la taille du Soleil.",
+        "L'expérience a rendu le ciel plus lumineux."
+      ],
+      "answer": 1,
+      "sourceParagraph": 3,
+      "explanation": "Nina est impressionnée par l'effet d'une petite poussée."
+    },
+    {
+      "id": "r36-fr-a2-08",
+      "tab": "experience",
+      "kind": "mc",
+      "q": "Dans quel but la sonde a-t-elle frappé Dimorphos volontairement ?",
+      "choices": [
+        "Pour produire une nouvelle étoile.",
+        "Pour vider toute la ceinture d'astéroïdes.",
+        "Pour arrêter les observations astronomiques.",
+        "Pour tester la possibilité de changer une trajectoire."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "DART a réalisé une expérience visant à mesurer un changement d'orbite."
+    },
+    {
+      "id": "r36-fr-a2-09",
+      "tab": "experience",
+      "kind": "mc",
+      "q": "Un ami a peur d'un astéroïde proche de la Terre. Quelle information est utile ?",
+      "choices": [
+        "Tous les objets proches sont forcément dangereux.",
+        "Être proche ne veut pas dire entrer en collision.",
+        "Les scientifiques ne peuvent rien observer.",
+        "Aucun astéroïde ne s'approche jamais de la Terre."
+      ],
+      "answer": 1,
+      "sourceParagraph": 2,
+      "explanation": "La distinction entre proximité et collision est essentielle."
+    },
+    {
+      "id": "r36-fr-a2-10",
+      "tab": "experience",
+      "kind": "mc",
+      "q": "Que comprend Nina après le film du club ?",
+      "choices": [
+        "Tous les astéroïdes vont finir par tomber.",
+        "Les télescopes sont inutiles pour la protection.",
+        "Les missions spatiales garantissent une sécurité totale.",
+        "Observer le ciel est une première étape pour protéger la Terre."
+      ],
+      "answer": 3,
+      "sourceParagraph": 3,
+      "explanation": "La dernière phrase relie la surveillance du ciel à la préparation."
+    }
+  ]
+}
