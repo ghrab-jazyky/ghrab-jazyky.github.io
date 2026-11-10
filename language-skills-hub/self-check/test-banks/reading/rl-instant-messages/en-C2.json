@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "en",
+  "level": "C2",
+  "sourceTitle": "Writing That Behaves Like Speech",
+  "sourcePracticeContentHash": "d080075175b9560ae67254d4b05612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R41-CONTENT-AUDIT-1",
+  "description": "Ten independent interpretation, argument and critical-transfer questions, pending teacher review.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Interpreting Meaning"
+    },
+    {
+      "id": "argument",
+      "title": "Reasoning and Discourse"
+    },
+    {
+      "id": "transfer",
+      "title": "Critical Transfer"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r41-en-c2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does the author reject the label 'bad writing' for informal messages?",
+      "choices": [
+        "The style is often a deliberate register suited to a relationship.",
+        "Instant messages are always written with complete accuracy.",
+        "Spelling conventions no longer exist for digital communication.",
+        "Messages can never be preserved or quoted after sending."
+      ],
+      "answer": 0,
+      "explanation": "The essay treats informal spelling as social choice, not automatically lack of competence."
+    },
+    {
+      "id": "r41-en-c2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What is the wider purpose of describing messaging conventions as a 'repair kit'?",
+      "choices": [
+        "They guarantee identical interpretations across generations.",
+        "They compensate partly for nonverbal cues absent from written interaction.",
+        "They convert every informal message into a legal document.",
+        "They prevent other users from sharing screenshots."
+      ],
+      "answer": 1,
+      "explanation": "Emojis, repeated letters and lowercase can restore aspects of spoken tone and rhythm."
+    },
+    {
+      "id": "r41-en-c2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What is lost when a screenshot becomes evidence outside its original audience?",
+      "choices": [
+        "The exact letters that were originally typed.",
+        "The ability to reproduce the message's visual appearance.",
+        "The shared history and conversational situation that shaped the words.",
+        "The possibility that a screenshot will be forwarded."
+      ],
+      "answer": 2,
+      "explanation": "Context collapse preserves a phrase while stripping out the surrounding exchange."
+    },
+    {
+      "id": "r41-en-c2-04",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does the writer pose a question about several parties' responsibility?",
+      "choices": [
+        "To prove that the screenshot editor is always innocent.",
+        "To claim that the original writer can never make a mistake.",
+        "To identify the precise school sanction that should follow.",
+        "To show that blame cannot be assigned adequately to only one actor."
+      ],
+      "answer": 3,
+      "explanation": "The hypothetical case exposes responsibility across composing, cropping and sharing."
+    },
+    {
+      "id": "r41-en-c2-05",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What paradox lies in treating messages as speech when writing but documents when reading?",
+      "choices": [
+        "We believe informal messages disappear faster than spoken remarks.",
+        "We expect conversational freedom as senders but documentary certainty as readers.",
+        "We demand that every typed exchange follow a legal format.",
+        "We never consider whether an audience has changed."
+      ],
+      "answer": 1,
+      "explanation": "The essay identifies conflicting assumptions about the same medium."
+    },
+    {
+      "id": "r41-en-c2-06",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why does the author note that deleting a message cannot remove existing copies?",
+      "choices": [
+        "To argue that applications should prevent every screenshot.",
+        "To show that all messages have already become public.",
+        "To imply that deletion has no legitimate purpose.",
+        "To limit expectations of what a technical fix can accomplish."
+      ],
+      "answer": 3,
+      "explanation": "The technological limitation supports the need for a broader ethic of interpretation."
+    },
+    {
+      "id": "r41-en-c2-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A parent receives a screenshot without the emojis that framed a joke. What would responsible interpretation involve?",
+      "choices": [
+        "Requesting the preceding conversation before deciding the writer's intent.",
+        "Judging the excerpt solely from its most literal reading.",
+        "Forwarding the cropped image to more parents.",
+        "Assuming every joke must be harmless regardless of content."
+      ],
+      "answer": 0,
+      "explanation": "The example shows that omitted signals can drastically alter perceived meaning."
+    },
+    {
+      "id": "r41-en-c2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "A new student misreads the group's ironic use of punctuation. What may explain the misunderstanding?",
+      "choices": [
+        "The group has stopped using language altogether.",
+        "Every member consciously means to insult newcomers.",
+        "The student does not yet share the group's communicative code.",
+        "Punctuation carries no social meaning in any context."
+      ],
+      "answer": 2,
+      "explanation": "Messaging cues work quickly among people who share conventions, not always for newcomers."
+    },
+    {
+      "id": "r41-en-c2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "A teacher asks pupils to investigate a screenshot before condemning its author. Which skill is being practised?",
+      "choices": [
+        "Learning to delete all embarrassing messages from phones.",
+        "Reconstructing audience and context instead of relying on an isolated quotation.",
+        "Ensuring that every student uses the same emoji.",
+        "Writing faster messages during group projects."
+      ],
+      "answer": 1,
+      "explanation": "The final paragraph describes a literacy exercise that replaces outrage with inquiry."
+    },
+    {
+      "id": "r41-en-c2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Which combination best reflects the author's proposed ethical approach?",
+      "choices": [
+        "Writers avoid all jokes; readers treat every screenshot as conclusive.",
+        "Writers publish only formal texts; readers ignore possible harm.",
+        "Writers rely on delete functions; readers never ask further questions.",
+        "Writers consider future circulation; readers allow room for missing context."
+      ],
+      "answer": 3,
+      "explanation": "The essay asks both parties to respond to the medium's durability and ambiguity."
+    }
+  ]
+}
