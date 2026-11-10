@@ -1,4 +1,4 @@
-/* R32 unapproved B2 Reading preview. Strictly separate from public R31 student pages.
+/* R32-R34 unapproved EN A1-C2 Reading preview. Strictly separate from public R31 student pages.
  * No telemetry, POST, student identity or client key secrecy guarantees.
  */
 (()=>{
@@ -118,12 +118,12 @@
   try{
    requireCondition(reading&&testBank&&grade&&window.LSHSessionUI,
     'Required local assessment modules are unavailable');
-   // A fixed 20-minute URL is intentional for this *unapproved* pedagogical pilot.
-   // It must not be exposed through the public teacher catalogue.
-   requireCondition(['B1','B2'].includes(level),'Unsupported independent test level');
-   requireCondition(params.get('timer')==='20'&&
-    /^[a-z0-9_-]{6,40}$/i.test(params.get('attempt')||''),
-    'This draft preview requires ?level=B1|B2&timer=20&attempt=<local-id>');
+   // Test duration is set per CEFR bank; never let a URL silently change it.
+   // These student previews remain outside the public teacher catalog.
+   requireCondition(['A1','A2','B1','B2','C1','C2'].includes(level),
+    'Unsupported independent test level');
+   requireCondition(/^[a-z0-9_-]{6,40}$/i.test(params.get('attempt')||''),
+    'This draft preview needs a valid local attempt ID');
    const [manifest,originalHtml,bank]=await Promise.all([
     get('../../../version.json',true),
     get('../../../cteni/can-mistakes/index.html'),
@@ -137,10 +137,12 @@
     'Original source checksum mismatch: draft preview disabled');
    const practice=reading.variantFromData(reading.parseReadingData(originalHtml),'en',level);
    variant=testBank.makeQaVariant(bank,practice,actual);
+   requireCondition(params.get('timer')===String(bank.durationMinutesSuggested),
+    'Timer must match the CEFR-specific approved draft duration');
    reading.validateVariant(variant);
    $('title').textContent=practice.title;
    document.title='Independent Reading '+level+' – unapproved QA preview';
-   document.querySelector('.subtitle').textContent='Can Mistakes Help Us Learn? · English '+level+' · 10 independent questions · 20 minutes';
+   document.querySelector('.subtitle').textContent='Can Mistakes Help Us Learn? · English '+level+' · 10 independent questions · '+bank.durationMinutesSuggested+' minutes';
    document.querySelector('.mode').textContent='UNAPPROVED DRAFT · EN/'+level;
    document.querySelector('.reading-panel .pill').textContent='EN · '+level;
    renderText();renderTasks();

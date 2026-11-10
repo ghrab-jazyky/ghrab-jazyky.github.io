@@ -15,16 +15,20 @@
   check(bank.status===STATUS&&bank.published===false,
    'R32 content cannot be published without teacher approval');
   const permittedLevels={
-   B1:{prefix:'r33',audit:'R33-CONTENT-AUDIT-1',title:'The Problem with Being Good at Everything'},
-   B2:{prefix:'r32',audit:'R32-CONTENT-AUDIT-1',title:'When Feedback Feels Like Failure'}
+   A1:{prefix:'r34',audit:'R34-AUTHOR-DRAFT-1',title:'I Can Try Again',paragraphs:3,minutes:15},
+   A2:{prefix:'r34',audit:'R34-AUTHOR-DRAFT-1',title:'A Small Change, a Better Result',paragraphs:3,minutes:15},
+   B1:{prefix:'r33',audit:'R33-CONTENT-AUDIT-1',title:'The Problem with Being Good at Everything',paragraphs:4,minutes:20},
+   B2:{prefix:'r32',audit:'R32-CONTENT-AUDIT-1',title:'When Feedback Feels Like Failure',paragraphs:4,minutes:20},
+   C1:{prefix:'r34',audit:'R34-AUTHOR-DRAFT-1',title:'The Hidden Cost of Constant Improvement',paragraphs:4,minutes:25},
+   C2:{prefix:'r34',audit:'R34-AUTHOR-DRAFT-1',title:'When Resilience Becomes an Obligation',paragraphs:4,minutes:25}
   };
   const rules=permittedLevels[bank.level];
   check(bank.topic==='rl-can-mistakes'&&bank.language==='en'&&!!rules,
-   'This draft validator supports only Can Mistakes EN/B1 and EN/B2');
+   'This draft validator supports only Can Mistakes EN A1-C2');
   check(/^[a-f0-9]{64}$/.test(expectedSourceHash)&&
    bank.sourcePracticeContentHash===expectedSourceHash,'The practice source has changed');
   check(practice&&practice.title===rules.title&&Array.isArray(practice.paragraphs)&&
-   practice.paragraphs.length>=3&&Array.isArray(practice.questions),
+   practice.paragraphs.length===rules.paragraphs&&Array.isArray(practice.questions),
    'Practice source does not match this bank level and passage');
   check(Array.isArray(bank.tabs)&&bank.tabs.length===3&&
    bank.tabs.every(t=>text(t.id)&&text(t.title)&&/^[a-z][a-z0-9-]+$/.test(t.id)),
@@ -32,7 +36,7 @@
   const ids=new Set(bank.tabs.map(t=>t.id));
   check(ids.size===bank.tabs.length,'Duplicate test section');
   check(Array.isArray(bank.questions)&&bank.questions.length===10,
-   'Independent EN/B1 or EN/B2 pilot must have 10 manually reviewed tasks');
+   'Independent EN A1-C2 pilot must have 10 manually reviewed tasks');
   const stems=new Set(practice.questions.map(q=>norm(q.q)));
   const practiceIds=new Set(practice.questions.map(q=>q.id));
   const seen=new Set();
@@ -55,6 +59,8 @@
   }
   check(answerPositions.every(n=>n>=2&&n<=3),
    'Correct answer locations are unbalanced across four positions');
+  check(bank.durationMinutesSuggested===rules.minutes,
+   'Unexpected CEFR-specific test duration');
   check(bank.auditRevision===rules.audit,
    'Independent pedagogy audit not completed');
   check(bank.scoreRule.startsWith('1 point per correct MC item'),'Unknown scoring method');

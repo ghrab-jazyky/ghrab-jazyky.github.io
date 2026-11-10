@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-AUTHOR-DRAFT-1",
+  "description": "Independent C1 teacher-review bank for The Hidden Cost of Constant Improvement, with inferential and evaluative items, not approved.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Interpretation",
+      "description": "Interpret the writer's argument and its implications."
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasoning and qualifications",
+      "description": "Evaluate how the writer qualifies their claims."
+    },
+    {
+      "id": "application",
+      "title": "Critical transfer",
+      "description": "Apply the argument to a new context."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-c1-01",
+      "tab": "interpretation",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "What is the writer's central concern about exhortations to improve?",
+      "choices": [
+        "They tend to discourage schools from using assessment altogether.",
+        "They treat academic effort as less important than curiosity.",
+        "They are more motivating for high achievers than struggling learners.",
+        "They may transfer responsibility for obstacles onto individual students."
+      ],
+      "answer": 3,
+      "explanation": "The opening acknowledges growth can empower, but warns that improvement language may make every difficulty seem a student's personal failing."
+    },
+    {
+      "id": "r34-en-c1-02",
+      "tab": "interpretation",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "What is implied by the contrast between the two equally unsuccessful students?",
+      "choices": [
+        "The same learning strategy will produce identical results under different conditions.",
+        "An identical outcome need not reflect an equivalent opportunity to succeed.",
+        "Equal grades prove that differences in resources have little effect.",
+        "Having an adult helper makes an assessment inherently unfair."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph two deliberately holds performance equal while contrasting access to a quiet room, adult help and uninterrupted time."
+    },
+    {
+      "id": "r34-en-c1-03",
+      "tab": "interpretation",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "What does the example of a disagreement with a friend help establish?",
+      "choices": [
+        "Learning can be meaningful even when no outcome can readily be quantified.",
+        "Debate is the only activity that develops genuine curiosity.",
+        "Social disagreement is more instructive than reading literature.",
+        "Progress is most valuable when both people change their views."
+      ],
+      "answer": 0,
+      "explanation": "The example demonstrates a gain in perspective that may not produce a measurable result."
+    },
+    {
+      "id": "r34-en-c1-04",
+      "tab": "interpretation",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "Which interpretation best captures 'choice more meaningful' in the conclusion?",
+      "choices": [
+        "Individual responsibility begins only when all students have identical resources.",
+        "Students should choose their own assessment criteria without restrictions.",
+        "Practical support allows personal agency to operate under fairer conditions.",
+        "Schools should decide what choices will benefit students most."
+      ],
+      "answer": 2,
+      "explanation": "The author argues for institutional support that enables rather than replaces individual judgement."
+    },
+    {
+      "id": "r34-en-c1-05",
+      "tab": "reasoning",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "Why does the writer concede that growth-oriented ideas can be empowering?",
+      "choices": [
+        "To establish that schools have largely solved the problem of poor grades.",
+        "To argue that positive posters are effective when used consistently.",
+        "To suggest that such ideas work only with young students.",
+        "To distinguish a useful principle from its potentially harmful application."
+      ],
+      "answer": 3,
+      "explanation": "The concession prevents a blanket rejection of perseverance while setting up a critique of encouragement unsupported by resources."
+    },
+    {
+      "id": "r34-en-c1-06",
+      "tab": "reasoning",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Which assumption is challenged by the claim that advice cannot create a quiet room or an extra hour?",
+      "choices": [
+        "Motivational advice can compensate for material obstacles by itself.",
+        "Students with difficult schedules are unwilling to change their habits.",
+        "Quiet environments do not influence independent study.",
+        "Students with supportive families do not need study strategies."
+      ],
+      "answer": 0,
+      "explanation": "The writer distinguishes advice about strategy from material resources that motivational language cannot supply."
+    },
+    {
+      "id": "r34-en-c1-07",
+      "tab": "reasoning",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "How does paragraph three broaden the argument beyond unequal access to study resources?",
+      "choices": [
+        "It claims that curiosity can be measured more reliably than effort.",
+        "It questions the assumption that valuable experiences must show measurable improvement.",
+        "It recommends reducing compulsory assessment to a single final grade.",
+        "It suggests leisure activities should be planned like formal lessons."
+      ],
+      "answer": 1,
+      "explanation": "The paragraph adds concern that every activity, even leisure, is judged by a measurable-progress standard."
+    },
+    {
+      "id": "r34-en-c1-08",
+      "tab": "application",
+      "sourceParagraph": 4,
+      "kind": "mc",
+      "q": "A school introduces supervised study time but also tells pupils to revise their strategies. How would the writer probably view this?",
+      "choices": [
+        "As useful only if schools stop giving grades for written work.",
+        "As ineffective unless every pupil achieves the same result.",
+        "As inconsistent, because practical support makes personal effort unnecessary.",
+        "As a constructive combination of support and individual responsibility."
+      ],
+      "answer": 3,
+      "explanation": "The concluding model pairs strategies chosen by learners with institutional support."
+    },
+    {
+      "id": "r34-en-c1-09",
+      "tab": "application",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "A student enjoys a complex novel but cannot identify a measurable skill gained. Which response fits the argument?",
+      "choices": [
+        "The novel counts as useful only if it directly improves examination results.",
+        "The experience matters chiefly because it provides leisure between assessments.",
+        "The reading may still have value even without a measurable improvement.",
+        "The student should read an easier text and record their speed."
+      ],
+      "answer": 2,
+      "explanation": "The writer argues that absorbing reading can be intrinsically valuable and resist measurement."
+    },
+    {
+      "id": "r34-en-c1-10",
+      "tab": "application",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Two pupils receive the same advice to work harder, but one lacks a quiet place to study. Which school response most closely follows the author's reasoning?",
+      "choices": [
+        "Reward the first pupil publicly for using the available facilities.",
+        "Provide meaningful study access while retaining advice about effective strategies.",
+        "Give both students identical revision worksheets to ensure consistency.",
+        "Ask the second pupil to increase their motivation before seeking help."
+      ],
+      "answer": 1,
+      "explanation": "The writer proposes institutional resources such as supervised study spaces alongside personal learning strategies."
+    }
+  ]
+}

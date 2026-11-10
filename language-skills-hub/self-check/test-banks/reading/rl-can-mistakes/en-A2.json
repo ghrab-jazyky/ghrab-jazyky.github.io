@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 15,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-AUTHOR-DRAFT-1",
+  "description": "Original A2 pilot bank for A Small Change, a Better Result; independent questions on the original passage; not pedagogically approved.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Understanding the story",
+      "description": "Choose what the story tells us."
+    },
+    {
+      "id": "reasons",
+      "title": "Why things happen",
+      "description": "Think about reasons and changes."
+    },
+    {
+      "id": "new-situations",
+      "title": "Use the ideas",
+      "description": "Think about a new situation."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-a2-01",
+      "tab": "meaning",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "What is Daniel trying to change before Thursday's test?",
+      "choices": [
+        "The time his science lesson starts.",
+        "The subject of the test.",
+        "The way he prepares during the week.",
+        "The teacher who marks his answers."
+      ],
+      "answer": 2,
+      "explanation": "Daniel replaces last-minute study with a plan that spreads practice through the week."
+    },
+    {
+      "id": "r34-en-a2-02",
+      "tab": "meaning",
+      "sourceParagraph": 1,
+      "kind": "mc",
+      "q": "How was Daniel's old plan different from his new plan?",
+      "choices": [
+        "He used to study late on one evening.",
+        "He used to study with his sister every day.",
+        "He used to work for only twenty minutes.",
+        "He used to take many breaks on Wednesday."
+      ],
+      "answer": 0,
+      "explanation": "Daniel usually studied everything on Wednesday night and felt tired the next day."
+    },
+    {
+      "id": "r34-en-a2-03",
+      "tab": "meaning",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "What does Daniel discover when he explains an idea to his sister?",
+      "choices": [
+        "His teacher has given the wrong homework.",
+        "He needs to write his notes again.",
+        "She already knows everything.",
+        "He does not understand every part clearly."
+      ],
+      "answer": 3,
+      "explanation": "Explaining the idea helps Daniel notice what he still needs to check."
+    },
+    {
+      "id": "r34-en-a2-04",
+      "tab": "meaning",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "Which part of Daniel's result pleases him most?",
+      "choices": [
+        "His result was the highest in his class.",
+        "He prepared calmly and slept well.",
+        "He answered every question correctly.",
+        "His sister helped during the test."
+      ],
+      "answer": 1,
+      "explanation": "Daniel is especially pleased with sleeping well and enjoying his Wednesday evening."
+    },
+    {
+      "id": "r34-en-a2-05",
+      "tab": "reasons",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Why does Daniel answer questions without looking at the answers?",
+      "choices": [
+        "To show his sister that the book is easy.",
+        "To make the questions shorter.",
+        "To find out what he can remember.",
+        "To practise writing very quickly."
+      ],
+      "answer": 2,
+      "explanation": "Trying questions without answers lets Daniel check what he can do by himself."
+    },
+    {
+      "id": "r34-en-a2-06",
+      "tab": "reasons",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "Why does Daniel turn off phone notifications?",
+      "choices": [
+        "He is waiting for an important message.",
+        "He wants to save the phone battery.",
+        "He has lost his phone at school.",
+        "He wants fewer interruptions while studying."
+      ],
+      "answer": 3,
+      "explanation": "Switching off notifications is part of Daniel's more focused study plan."
+    },
+    {
+      "id": "r34-en-a2-07",
+      "tab": "reasons",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "Why does Daniel write down things to practise after the test?",
+      "choices": [
+        "He wants to work on the things he missed.",
+        "He wants to copy his friend's answers.",
+        "He thinks the teacher will cancel the test.",
+        "He wants to forget the difficult questions."
+      ],
+      "answer": 0,
+      "explanation": "After making two mistakes, Daniel records what he still needs to practise."
+    },
+    {
+      "id": "r34-en-a2-08",
+      "tab": "new-situations",
+      "sourceParagraph": 2,
+      "kind": "mc",
+      "q": "A friend cannot explain a science idea. What could Daniel suggest?",
+      "choices": [
+        "Read the answer without thinking about it.",
+        "Move on and forget that part.",
+        "Check the notes and look for an example.",
+        "Study for three hours without stopping."
+      ],
+      "answer": 2,
+      "explanation": "Daniel checks his notes and uses a textbook example when he does not understand."
+    },
+    {
+      "id": "r34-en-a2-09",
+      "tab": "new-situations",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "A student gets a good mark but feels very tired. What can they learn from Daniel?",
+      "choices": [
+        "They should not prepare for the next test.",
+        "Rest and a calmer plan are important too.",
+        "Only the mark matters after a test.",
+        "They should study longer next time."
+      ],
+      "answer": 1,
+      "explanation": "Daniel values getting enough sleep as well as improving his mark."
+    },
+    {
+      "id": "r34-en-a2-10",
+      "tab": "new-situations",
+      "sourceParagraph": 3,
+      "kind": "mc",
+      "q": "Daniel wants to study history next week. Which plan fits the story?",
+      "choices": [
+        "Try the useful parts of his plan and make changes if needed.",
+        "Use the same questions as in science.",
+        "Wait until the night before his history test.",
+        "Ask his sister to learn the facts for him."
+      ],
+      "answer": 0,
+      "explanation": "The final paragraph says Daniel plans to use the approach for history and adjust it if necessary."
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+name: LSH R34 all six independent EN Reading bank drafts
+on:
+  pull_request:
+    branches: [feat/lsh-r33-independent-reading-b1-pilot-2026-11-10]
+  workflow_dispatch:
+concurrency:
+  group: lsh-r34-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  r34-unit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Validate syntax and all CEFR bank invariants
+        run: |
+          node --check language-skills-hub/self-check/test-banks/reading/test-bank-core.js
+          node --check language-skills-hub/self-check/test-banks/reading/preview.js
+          node --check language-skills-hub/tests/r34-six-level-reading.test.cjs
+          node --check language-skills-hub/tests/r34-six-level-reading.browser.test.cjs
+          node --test language-skills-hub/tests/r32-independent-reading-pilot.test.cjs language-skills-hub/tests/r33-independent-reading-b1.test.cjs language-skills-hub/tests/r34-six-level-reading.test.cjs
+      - name: Generate exact bank coverage for Reading and Listening
+        run: |
+          node --check language-skills-hub/tests/independent-coverage.cjs
+          node language-skills-hub/tests/independent-coverage.cjs --write
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lsh-independent-content-coverage
+          path: language-skills-hub/coverage-out/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Preserve original public contracts
+        run: |
+          node --test language-skills-hub/tests/r22-static-policy.test.cjs language-skills-hub/tests/r23-reading-selfcheck.test.cjs language-skills-hub/tests/r24-listening-selfcheck.test.cjs language-skills-hub/tests/r25-result-contract.test.cjs language-skills-hub/tests/r27-public-release.test.cjs language-skills-hub/tests/r28-grade-proposal.test.cjs language-skills-hub/tests/r29-feedback.test.cjs language-skills-hub/tests/r30-attempt.test.cjs language-skills-hub/tests/r31-review-export.test.cjs
+  r34-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install headless browsers
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Run all six level preview browser tests
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-r34-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:8765/language-skills-hub/index.html >/dev/null; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/r32-independent-reading.browser.test.cjs
+          node --test language-skills-hub/tests/r33-independent-reading-b1.browser.test.cjs
+          node --test language-skills-hub/tests/r34-six-level-reading.browser.test.cjs
