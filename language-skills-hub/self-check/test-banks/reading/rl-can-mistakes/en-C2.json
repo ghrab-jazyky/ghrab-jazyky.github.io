@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "C2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-CONTENT-AUDIT-1",
+  "description": "Original C2 independent assessment draft with ten new inference, argument or transfer questions. Content requires teacher approval.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Conceptual Distinctions",
+      "description": "Examine the author's concepts and underlying claims."
+    },
+    {
+      "id": "reasoning",
+      "title": "Argument and Qualification",
+      "description": "Evaluate how the essay limits and develops its claims."
+    },
+    {
+      "id": "transfer",
+      "title": "Critical Transfer",
+      "description": "Apply nuanced criteria to unfamiliar institutional decisions."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-c2-interpretation-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What changes when resilience is treated as a moral requirement rather than a resource?",
+      "choices": [
+        "Failure to recover may be blamed on a person rather than their circumstances.",
+        "Perseverance becomes a more accurate measure of intellectual ability.",
+        "Educators can distinguish effective strategies from endurance more easily.",
+        "Learners gain greater freedom to reconsider inherited goals."
+      ],
+      "answer": 0,
+      "explanation": "The opening distinguishes capacity to recover from an obligation imposed without regard to circumstances."
+    },
+    {
+      "id": "r34-en-c2-interpretation-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why is visible determination an unreliable sign that education is working?",
+      "choices": [
+        "It is most evident among pupils whose goals are poorly chosen.",
+        "It may hide endurance under poor conditions rather than meaningful agency.",
+        "It proves that external support matters less than classroom feedback.",
+        "It gives institutions no way to observe progress over time."
+      ],
+      "answer": 1,
+      "explanation": "The second paragraph contrasts productive revision with repeated struggle caused by inadequate support."
+    },
+    {
+      "id": "r34-en-c2-interpretation-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What does the claim about indicators 'colonising' activity chiefly criticise?",
+      "choices": [
+        "The transfer of assessment practices between different subjects.",
+        "The failure to measure small changes in scores accurately.",
+        "The tendency to let measurement redefine what counts as worthwhile.",
+        "The complete absence of educational data about exploration."
+      ],
+      "answer": 2,
+      "explanation": "The metaphor describes a measure expanding beyond its original purpose and shaping judgments of value."
+    },
+    {
+      "id": "r34-en-c2-reasoning-04",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does the writer contrast retrospective inspirational stories with advice given during hardship?",
+      "choices": [
+        "Teachers can only advise students once their challenges are over.",
+        "Retrospective stories generally contain more reliable educational data.",
+        "People facing hardship are less willing to consider alternative goals.",
+        "Hindsight makes perseverance seem simpler than the ongoing constraints permit."
+      ],
+      "answer": 3,
+      "explanation": "The contrast questions how responsibly one can recommend perseverance while constraints remain unresolved."
+    },
+    {
+      "id": "r34-en-c2-reasoning-05",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Which condition determines whether renewed effort has a reasonable educational purpose?",
+      "choices": [
+        "Students must have already demonstrated resilience in an earlier task.",
+        "There must be a plausible prospect that effort can change the outcome.",
+        "An institution must be able to reward every display of persistence.",
+        "The revised strategy must lead to a higher score immediately."
+      ],
+      "answer": 1,
+      "explanation": "The writer explicitly distinguishes agency from endurance by asking if conditions allow meaningful change."
+    },
+    {
+      "id": "r34-en-c2-reasoning-06",
+      "tab": "reasoning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why is a score-improvement measure not simply described as false?",
+      "choices": [
+        "It provides a reliable comparison of students' motivation.",
+        "It can only be valid when it includes a measure of perseverance.",
+        "It makes intellectual wandering impossible to observe.",
+        "It may accurately capture speed while missing the depth of learning."
+      ],
+      "answer": 3,
+      "explanation": "The third paragraph says the indicator answers a narrower question rather than necessarily reporting false data."
+    },
+    {
+      "id": "r34-en-c2-transfer-07",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "A school praises pupils for overcoming repeated shortages but leaves the shortages unchanged. What is the central danger?",
+      "choices": [
+        "Praise becomes a way of avoiding institutional responsibility.",
+        "Pupils will no longer wish to receive constructive criticism.",
+        "Assessment will cease to identify students who work hard.",
+        "Endurance will no longer be visible to teachers."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph two warns that celebrating endurance can spare institutions from questioning persistent obstacles."
+    },
+    {
+      "id": "r34-en-c2-transfer-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "A student abandons a narrow project to explore a more promising question. How might the author regard this?",
+      "choices": [
+        "As proof that perseverance has ceased to matter educationally.",
+        "As a mistake unless the new topic leads to a better grade.",
+        "As potentially sound judgement rather than an automatic failure of grit.",
+        "As evidence that the student requires closer performance monitoring."
+      ],
+      "answer": 2,
+      "explanation": "The text explicitly treats reconsidering a poorly chosen goal as a potentially mature decision."
+    },
+    {
+      "id": "r34-en-c2-transfer-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Which institutional response best fits the conclusion after a learner's disappointing result?",
+      "choices": [
+        "Require the learner to demonstrate greater effort before offering support.",
+        "Review both the support available and whether the assessed target remains worthwhile.",
+        "Remove assessments altogether to avoid any judgement of resilience.",
+        "Praise the learner's endurance without examining the conditions."
+      ],
+      "answer": 1,
+      "explanation": "The conclusion calls for scrutiny of constraints, metrics, choice and the legitimacy of aims."
+    },
+    {
+      "id": "r34-en-c2-transfer-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What would make a resilience programme more defensible by the essay's standards?",
+      "choices": [
+        "Reward students who persevere longer regardless of the task.",
+        "Link every period of rest to measurable academic improvement.",
+        "Judge maturity primarily by how quickly setbacks are overcome.",
+        "Give learners resources to persist and permission to revise their goals."
+      ],
+      "answer": 3,
+      "explanation": "The last paragraph pairs the means to continue with the freedom to reconsider what matters."
+    }
+  ]
+}
