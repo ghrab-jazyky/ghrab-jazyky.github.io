@@ -36,12 +36,12 @@
       "kind": "mc",
       "q": "Why might scientists be interested in an asteroid that is not dangerous to Earth?",
       "choices": [
-        "It may soon become a planet.",
-        "It can provide clues about how the early solar system developed.",
         "It may be visible from every city at night.",
-        "It will certainly pass close to Earth next year."
+        "It will certainly pass close to Earth next year.",
+        "It may soon become a planet.",
+        "It can provide clues about how the early solar system developed."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The first paragraph says asteroid materials and shapes provide evidence about the distant past."
     },
     {
@@ -51,12 +51,12 @@
       "kind": "mc",
       "q": "What does the writer suggest about an early orbit prediction?",
       "choices": [
-        "It should be shared only after it becomes certain.",
-        "It is usually accurate enough after one photograph.",
         "It is likely to be wrong because asteroids have no regular paths.",
-        "It may need adjustment when astronomers obtain more observations."
+        "It may need adjustment when astronomers obtain more observations.",
+        "It should be shared only after it becomes certain.",
+        "It is usually accurate enough after one photograph."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "Recently discovered objects have uncertain orbit estimates that improve with repeated measurements."
     },
     {
@@ -66,12 +66,12 @@
       "kind": "mc",
       "q": "Why is the DART event described as a controlled test rather than a rescue?",
       "choices": [
-        "The spacecraft was unable to reach the small asteroid.",
-        "It was launched after an asteroid had already hit Earth.",
         "The chosen object was not a real threat to our planet.",
-        "Scientists did not measure the effects of the impact."
+        "Scientists did not measure the effects of the impact.",
+        "The spacecraft was unable to reach the small asteroid.",
+        "It was launched after an asteroid had already hit Earth."
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "DART intentionally struck a safe target to prepare for a possible future problem."
     },
     {
@@ -81,12 +81,12 @@
       "kind": "mc",
       "q": "What was the most important danger to people in Chelyabinsk?",
       "choices": [
-        "Broken windows sent pieces of glass flying.",
-        "The impact made a very large crater.",
         "The rock caused a fire throughout the city.",
-        "The asteroid blocked sunlight for several hours."
+        "The asteroid blocked sunlight for several hours.",
+        "Broken windows sent pieces of glass flying.",
+        "The impact made a very large crater."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "The shock wave broke windows and many injuries were caused by flying glass."
     },
     {
@@ -96,12 +96,12 @@
       "kind": "mc",
       "q": "Why is international cooperation useful when tracking a newly found object?",
       "choices": [
-        "Scientists can change its composition by sharing pictures.",
-        "Shared measurements can improve an estimate of where it is going.",
         "Different observatories can make it stop moving.",
-        "Scientists can avoid checking predictions with computers."
+        "Scientists can avoid checking predictions with computers.",
+        "Scientists can change its composition by sharing pictures.",
+        "Shared measurements can improve an estimate of where it is going."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The article explains that researchers cooperate and share observations to refine orbits."
     },
     {
@@ -111,12 +111,12 @@
       "kind": "mc",
       "q": "Why was the Chelyabinsk object especially hard to spot before it arrived?",
       "choices": [
-        "It had no solid parts for telescopes to detect.",
-        "It moved more slowly than a normal asteroid.",
         "It came from a direction hidden by bright sunlight.",
-        "It spent many years hidden behind Jupiter."
+        "It spent many years hidden behind Jupiter.",
+        "It had no solid parts for telescopes to detect.",
+        "It moved more slowly than a normal asteroid."
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "Bright sunlight in the arrival direction made detection difficult."
     },
     {
@@ -126,12 +126,12 @@
       "kind": "mc",
       "q": "Why would an early warning matter even if a spacecraft could change an asteroid's orbit?",
       "choices": [
-        "An early warning is useful only after a collision.",
-        "Spacecraft are unable to alter any asteroid's movement.",
         "Scientists would not need to calculate the orbit.",
-        "A response takes time to plan and observations help people decide."
+        "A response takes time to plan and observations help people decide.",
+        "An early warning is useful only after a collision.",
+        "Spacecraft are unable to alter any asteroid's movement."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The conclusion joins early information with any later technical response."
     },
     {
@@ -141,12 +141,12 @@
       "kind": "mc",
       "q": "A news story says a newly detected object is a 'near-Earth asteroid'. What should a reader conclude?",
       "choices": [
-        "It is confirmed to be on a collision course.",
-        "Its orbit comes into Earth's neighbourhood, but impact is not certain.",
         "The object is already inside Earth's atmosphere.",
-        "A spacecraft must be sent to it at once."
+        "A spacecraft must be sent to it at once.",
+        "It is confirmed to be on a collision course.",
+        "Its orbit comes into Earth's neighbourhood, but impact is not certain."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The writer defines near-Earth as orbital proximity rather than a prediction of impact."
     },
     {
@@ -156,12 +156,12 @@
       "kind": "mc",
       "q": "A classmate becomes frightened by a headline about an asteroid passing near us. Which response fits the writer's advice?",
       "choices": [
-        "Look for accurate measurements and ask what the report really means.",
-        "Assume every close approach can cause a catastrophe.",
         "Ignore all reports because large impacts are rare.",
-        "Believe the headline without reading the details."
+        "Believe the headline without reading the details.",
+        "Look for accurate measurements and ask what the report really means.",
+        "Assume every close approach can cause a catastrophe."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "Good explanations and careful observations prevent unnecessary panic about close approaches."
     },
     {
@@ -171,12 +171,12 @@
       "kind": "mc",
       "q": "What is a fair conclusion from a successful experiment like DART?",
       "choices": [
-        "The next asteroid danger can always be prevented.",
-        "All objects in space behave in exactly the same way.",
         "The experiment proves that the sky no longer needs monitoring.",
-        "A tested technique may help in the future but still needs preparation."
+        "A tested technique may help in the future but still needs preparation.",
+        "The next asteroid danger can always be prevented.",
+        "All objects in space behave in exactly the same way."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The experiment demonstrates a possible intervention, but a future threat would require early detection and decisions."
     }
   ]
