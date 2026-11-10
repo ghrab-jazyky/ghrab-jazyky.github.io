@@ -1,0 +1,183 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_BANK_R35_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "B2",
+  "sourceVariantTitle": "Somewhere Between Two Cities",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "auditRevision": "R35-CONTENT-DRAFT-1",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "One point per correct answer; ten points maximum. Provisional local result only.",
+  "description": "Original English B2 independent Reading draft with ten inference and transfer questions; requires later pedagogical review.",
+  "tabs": [
+    {
+      "id": "meaning",
+      "title": "Understanding Lena",
+      "description": "Interpret her emotional situation and the changing friendship."
+    },
+    {
+      "id": "argument",
+      "title": "Evidence and Purpose",
+      "description": "Identify why Lena chooses particular stories."
+    },
+    {
+      "id": "transfer",
+      "title": "Responding Thoughtfully",
+      "description": "Apply the message to communication across distance."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r35-en-b2-01",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does Lena think her photos have failed to tell Alex the whole story?",
+      "choices": [
+        "They were taken in places Alex has already visited.",
+        "They reveal too much about her host family's working hours.",
+        "They present attractive experiences while leaving her loneliness hidden.",
+        "They show that she has lost interest in her exchange year."
+      ],
+      "answer": 2,
+      "explanation": "Lena connects the incident to her discovery that honest conversation and belonging matter more than attractive public updates."
+    },
+    {
+      "id": "r35-en-b2-02",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What changes when Lena listens to another newcomer's description of bus routes?",
+      "choices": [
+        "She decides that public transport is too complicated to use.",
+        "She begins to see her own confusion as a shared experience rather than personal failure.",
+        "She learns she needs a certificate before joining the radio station.",
+        "She realises that the other volunteers are equally bad at recording."
+      ],
+      "answer": 1,
+      "explanation": "Lena connects the incident to her discovery that honest conversation and belonging matter more than attractive public updates."
+    },
+    {
+      "id": "r35-en-b2-03",
+      "tab": "meaning",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What does the bakery owner's story add to Lena's developing understanding of belonging?",
+      "choices": [
+        "A successful business automatically prevents loneliness.",
+        "The main challenge for every newcomer is finding familiar food.",
+        "People who move abroad generally prefer to live alone.",
+        "Knowing a language may not remove the feeling of being excluded from unspoken rules."
+      ],
+      "answer": 3,
+      "explanation": "Lena connects the incident to her discovery that honest conversation and belonging matter more than attractive public updates."
+    },
+    {
+      "id": "r35-en-b2-04",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does Lena mention that her radio work is unpaid?",
+      "choices": [
+        "To contrast the value of real conversations with a formal reward.",
+        "To suggest the station should stop interviewing immigrants.",
+        "To show that volunteering is required for exchange students.",
+        "To explain why she wants to leave Rotterdam early."
+      ],
+      "answer": 0,
+      "explanation": "Lena connects the incident to her discovery that honest conversation and belonging matter more than attractive public updates."
+    },
+    {
+      "id": "r35-en-b2-05",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "How do the phone calls after the bakery interview support Lena's conclusion?",
+      "choices": [
+        "They confirm that the bakery owner was unhappy with the interview.",
+        "They suggest that the programme became popular because it offered recipes.",
+        "They show that other people recognised feelings they had not openly discussed.",
+        "They prove that loneliness can be measured by the number of listeners."
+      ],
+      "answer": 2,
+      "explanation": "Lena connects the incident to her discovery that honest conversation and belonging matter more than attractive public updates."
+    },
+    {
+      "id": "r35-en-b2-06",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does finding the old school photo lead Lena to rethink her messages?",
+      "choices": [
+        "It reminds her that their friendship once included honest conversations about difficulty.",
+        "It convinces her that Alex has forgotten their friendship.",
+        "It makes her question whether they ever enjoyed school together.",
+        "It prompts her to plan another set of cheerful photographs."
+      ],
+      "answer": 0,
+      "explanation": "Lena connects the incident to her discovery that honest conversation and belonging matter more than attractive public updates."
+    },
+    {
+      "id": "r35-en-b2-07",
+      "tab": "argument",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What is the effect of Lena's admission that Alex may have felt left out?",
+      "choices": [
+        "It implies Alex should have contacted her host family instead.",
+        "It acknowledges a possible consequence of her behaviour without blaming Alex.",
+        "It treats the distance between them as impossible to overcome.",
+        "It asks Alex to apologise for not responding to every photo."
+      ],
+      "answer": 1,
+      "explanation": "Lena connects the incident to her discovery that honest conversation and belonging matter more than attractive public updates."
+    },
+    {
+      "id": "r35-en-b2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Alex cannot afford the train ticket. Which response would best match Lena's invitation?",
+      "choices": [
+        "Cancel the conversation because the visit was the only option.",
+        "Ask Lena to send more photos until money is available.",
+        "Treat the invitation as a promise that Lena would pay all expenses.",
+        "Suggest a regular call instead of assuming the friendship must wait."
+      ],
+      "answer": 3,
+      "explanation": "Lena connects the incident to her discovery that honest conversation and belonging matter more than attractive public updates."
+    },
+    {
+      "id": "r35-en-b2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Someone posts only happy pictures during an exchange year. What would Lena's experience suggest before judging that person's life?",
+      "choices": [
+        "Photos are reliable proof that everyone is having a good time.",
+        "Public updates may omit difficulties that are not easy to share.",
+        "People who study abroad are usually less lonely than friends at home.",
+        "Posts should be understood as an invitation to compare achievements."
+      ],
+      "answer": 1,
+      "explanation": "Lena connects the incident to her discovery that honest conversation and belonging matter more than attractive public updates."
+    },
+    {
+      "id": "r35-en-b2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Which reply from Alex would best support the conversation Lena now wants?",
+      "choices": [
+        "Send a picture without discussing how either of them feels.",
+        "Promise to visit even if travel is impossible.",
+        "Avoid mentioning any problems so the exchange year feels successful.",
+        "Share honestly how college is going and suggest a workable time to talk."
+      ],
+      "answer": 3,
+      "explanation": "Lena connects the incident to her discovery that honest conversation and belonging matter more than attractive public updates."
+    }
+  ]
+}
