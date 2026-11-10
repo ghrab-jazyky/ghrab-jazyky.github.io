@@ -36,7 +36,9 @@ test('R35 every authored bank has exact hash/title, separate questions, scoring 
   assert.equal(actual,manifest.contentHashes[row.topic]);
   const bank=JSON.parse(read(row.file));
   const original=reading.variantFromData(practiceCache[sourcePath],row.language,row.level);
-  const qa=bankCore.makeQaVariant(bank,original,actual);
+  let qa;
+  try{qa=bankCore.makeQaVariant(bank,original,actual)}
+  catch(error){throw new Error(row.file+': '+error.message,{cause:error})}
   reading.validateVariant(qa);
   assert.deepEqual(qa.paragraphs,original.paragraphs);
   assert.equal(bank.published,false);
