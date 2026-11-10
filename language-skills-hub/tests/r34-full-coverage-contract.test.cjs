@@ -63,7 +63,7 @@ test('R34 all 120 Reading variants have exactly one bank, no exact practice stem
  assert.equal(variants,120);assert.equal(manualCount,2);assert.equal(candidateCount,118);
  assert.equal(questions,1002);
 });
-test('R34 all 18 Listening variants have a reduced blueprint, but no fake independent content claim',()=>{
+test('R34 all 18 Listening variants contain independently drafted tasks and remain blocked pending video and Claude audit',()=>{
  let variants=0,tasks=0;
  for(const e of entries.filter(e=>e.skill==='poslech')){
   const d=listening.extractJson(source(e),'DATA');
@@ -75,9 +75,17 @@ test('R34 all 18 Listening variants have a reduced blueprint, but no fake indepe
    const ctx={topic:e.id,level,sourceHash:manifest.contentHashes[e.id]};
    assert.equal(candidate.validateListening(col,v,sourceVariant,ctx),true);
    listening.validate(v);
-   assert.equal(v.stage,'CLAUDE_INDEPENDENT_REWRITE_PENDING');
-   assert.equal(v.provenance.includes('must be independently rewritten'),true);
+   assert.equal(v.stage,'CLAUDE_CONTENT_AUDIT_PENDING');
+   assert.match(v.provenance,/audit|review/i);
    const count=x=>x.gist.length+x.detail.length+x.sequence.length+x.facts.length+x.open.length;
+   const filled={
+    gist:v.gist.map(q=>q.correct),detail:v.detail.map(q=>q.correct),
+    sequence:v.sequence.map((_,i)=>i),facts:v.facts.map(()=>'Unverified student response'),
+    open:v.open.map(()=>'Unverified interpretation')
+   };
+   const assessment=listening.assess(v,filled);
+   assert.equal(assessment.objectiveCorrect,assessment.objectiveMax);
+   assert.equal(assessment.writing.length,2);
    assert.ok(count(v)<count(sourceVariant),'Listening seed should be shorter than practice');
    variants++;tasks+=count(v);
   }
