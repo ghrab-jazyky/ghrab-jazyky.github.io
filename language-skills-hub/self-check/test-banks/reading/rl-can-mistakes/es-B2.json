@@ -1,0 +1,117 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "es",
+  "level": "B2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "auditRevision": "R34-CM-ES-B2-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 6 points maximum; local provisional grade only",
+  "description": "Preguntas originales del nivel B2 sobre el texto español. Borrador pendiente de revisión.",
+  "tabs": [
+    {
+      "id": "interpretacion",
+      "title": "Comprender",
+      "description": "Interpretar hechos y significados."
+    },
+    {
+      "id": "aplicacion",
+      "title": "Pensar y aplicar",
+      "description": "Aplicar las ideas a otras situaciones."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-cm-es-b2-01",
+      "tab": "interpretacion",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Por qué un comentario útil puede sonar como un ataque personal?",
+      "choices": [
+        "El profesor siempre critica su inteligencia.",
+        "La nota describe toda su vida académica.",
+        "El alumno confunde su trabajo puntual con su identidad.",
+        "Ningún estudiante acepta consejos."
+      ],
+      "answer": 2,
+      "explanation": "El texto explica que la crítica al rendimiento puede sentirse como un juicio personal."
+    },
+    {
+      "id": "r34-cm-es-b2-02",
+      "tab": "interpretacion",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué demuestra la alumna al revisar la organización de los datos?",
+      "choices": [
+        "Busca mejorar trabajos futuros sin exigir cambiar la nota actual.",
+        "Admite que todos sus argumentos eran incorrectos.",
+        "Demuestra que ya no necesita comentarios.",
+        "Convierte la redacción en otro examen."
+      ],
+      "answer": 0,
+      "explanation": "La revisión sirve para preparar la siguiente redacción."
+    },
+    {
+      "id": "r34-cm-es-b2-03",
+      "tab": "interpretacion",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Por qué conviene preguntar dónde deja de estar claro un razonamiento?",
+      "choices": [
+        "Obliga a aceptar automáticamente al docente.",
+        "Garantiza una calificación superior.",
+        "Evita hablar sobre el texto original.",
+        "Permite investigar una dificultad concreta con pruebas."
+      ],
+      "answer": 3,
+      "explanation": "El tercer párrafo favorece preguntas precisas frente a aceptar o rechazar sin examen."
+    },
+    {
+      "id": "r34-cm-es-b2-04",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué problema pueden crear ciertos sistemas de evaluación?",
+      "choices": [
+        "Dejan de valorar cualquier prueba.",
+        "Favorecen un estilo demasiado limitado para juzgar algunos argumentos.",
+        "Dan siempre la misma nota a toda la clase.",
+        "Premian únicamente los textos más largos."
+      ],
+      "answer": 1,
+      "explanation": "El autor reconoce que las reglas de corrección pueden tener sesgos."
+    },
+    {
+      "id": "r34-cm-es-b2-05",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "¿Qué diferencia hay entre considerar y obedecer una crítica?",
+      "choices": [
+        "Obedecerla siempre mejora el siguiente examen.",
+        "No hay diferencia entre ambas acciones.",
+        "Considerarla implica comprobar si merece aplicarse.",
+        "Considerarla exige disfrutar del comentario."
+      ],
+      "answer": 2,
+      "explanation": "El cierre distingue analizar sugerencias de seguirlas ciegamente."
+    },
+    {
+      "id": "r34-cm-es-b2-06",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Un entrenador ve solo parte de un entrenamiento. ¿Qué haría un deportista crítico?",
+      "choices": [
+        "Compararía su observación con más pruebas antes de cambiar.",
+        "Rechazaría de inmediato todos sus consejos.",
+        "Lo seguiría sin examinar el contexto.",
+        "Pensaría que cualquier comentario es un ataque."
+      ],
+      "answer": 0,
+      "explanation": "La recomendación puede contener una verdad parcial que conviene evaluar."
+    }
+  ]
+}

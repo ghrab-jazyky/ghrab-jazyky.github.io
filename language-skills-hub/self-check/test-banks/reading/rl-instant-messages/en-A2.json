@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "d080075175b95612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "auditRevision": "R34-MSG-A2-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "description": "Original message-context EN/A2 independent reading assessment draft; human approval pending.",
+  "tabs": [
+    {
+      "id": "problem",
+      "title": "A Last-Minute Problem",
+      "description": "Understand why Tom needs help."
+    },
+    {
+      "id": "choices",
+      "title": "Choosing a Present",
+      "description": "Compare possible gifts and limits."
+    },
+    {
+      "id": "plan",
+      "title": "Making It Work",
+      "description": "Follow the friends' arrangement."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-msg-a2-01",
+      "tab": "problem",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does Tom ask Mia for help instead of buying the gift himself?",
+      "choices": [
+        "The birthday party has already ended.",
+        "He is not allowed to visit the city.",
+        "His work finishes too late for him to shop.",
+        "Eva has asked him to stay at home."
+      ],
+      "answer": 2,
+      "explanation": "Tom works at the bicycle shop until seven in the evening."
+    },
+    {
+      "id": "r34-msg-a2-02",
+      "tab": "problem",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does Mia immediately reject the idea of another book?",
+      "choices": [
+        "Eva did not use the book Tom gave her last year.",
+        "All bookshops in town are closed.",
+        "Eva has already bought every new book.",
+        "Tom does not know how to read."
+      ],
+      "answer": 0,
+      "explanation": "Mia recalls that the previous book remained unopened."
+    },
+    {
+      "id": "r34-msg-a2-03",
+      "tab": "problem",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why are concert tickets not a good choice this time?",
+      "choices": [
+        "Eva no longer likes music.",
+        "There are no tickets left for Eva's favourite band's concert.",
+        "The concert is tonight in another town.",
+        "The tickets are cheaper than the budget."
+      ],
+      "answer": 1,
+      "explanation": "Tom says the tickets for the next month's performance are sold out."
+    },
+    {
+      "id": "r34-msg-a2-04",
+      "tab": "choices",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does Mia think the climbing gift card is better than headphones?",
+      "choices": [
+        "It can only be used by professional climbers.",
+        "It costs more than all the headphones.",
+        "It requires Eva to travel abroad.",
+        "It suits Eva's interests and fits Tom's budget."
+      ],
+      "answer": 3,
+      "explanation": "The centre offers two visits for twenty-eight euros, within Tom's limit."
+    },
+    {
+      "id": "r34-msg-a2-05",
+      "tab": "choices",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What makes the gift card especially suitable for Eva?",
+      "choices": [
+        "She dislikes all outdoor and indoor sports.",
+        "She already has very expensive headphones.",
+        "She finds her school climbing wall too easy.",
+        "She can only use the card at school."
+      ],
+      "answer": 2,
+      "explanation": "Tom says Eva wants a greater climbing challenge."
+    },
+    {
+      "id": "r34-msg-a2-06",
+      "tab": "choices",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What is one advantage of the gift card offering two visits?",
+      "choices": [
+        "Eva can go climbing with someone else.",
+        "It pays for a whole year of sports.",
+        "It can be exchanged for a concert.",
+        "It guarantees a personal instructor."
+      ],
+      "answer": 0,
+      "explanation": "Mia suggests that the two-visit card lets Eva take a friend."
+    },
+    {
+      "id": "r34-msg-a2-07",
+      "tab": "plan",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why can Mia buy the gift despite her time at the library?",
+      "choices": [
+        "The library sells climbing equipment.",
+        "She does not need to leave the library.",
+        "Tom will buy the card during work.",
+        "The climbing centre stays open until late evening."
+      ],
+      "answer": 3,
+      "explanation": "The centre's late opening leaves Mia time after the library closes."
+    },
+    {
+      "id": "r34-msg-a2-08",
+      "tab": "plan",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What does Tom plan to contribute after Mia buys the present?",
+      "choices": [
+        "A new concert ticket.",
+        "A birthday card that they can both write in.",
+        "An expensive set of headphones.",
+        "A second climbing centre membership."
+      ],
+      "answer": 1,
+      "explanation": "Tom offers to get a birthday card and write it together."
+    },
+    {
+      "id": "r34-msg-a2-09",
+      "tab": "plan",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Why does Mia suggest putting Eva's birthday in a phone calendar?",
+      "choices": [
+        "It may help Tom remember the date next year.",
+        "It will reduce the price of gifts.",
+        "It tells Eva about the surprise early.",
+        "It makes the shops stay open later."
+      ],
+      "answer": 0,
+      "explanation": "Mia jokes that Tom should use a reminder next year."
+    },
+    {
+      "id": "r34-msg-a2-10",
+      "tab": "plan",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Which response from Tom best confirms the plan?",
+      "choices": [
+        "Buy the concert tickets even if they are sold out.",
+        "I'll leave work now and go shopping with you.",
+        "Please get the climbing card; I'll bring a birthday card and meet you at the bus stop.",
+        "Give Eva the book I bought last year again."
+      ],
+      "answer": 2,
+      "explanation": "A clear reply confirms the gift and the friends' agreed contributions."
+    }
+  ]
+}

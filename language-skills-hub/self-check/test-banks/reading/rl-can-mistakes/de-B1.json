@@ -1,0 +1,117 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "de",
+  "level": "B1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 17,
+  "auditRevision": "R34-CM-DE-B1-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 6 points maximum; local provisional grade only",
+  "description": "Originale Fragen für Deutsch B1. Entwurf, noch nicht didaktisch freigegeben.",
+  "tabs": [
+    {
+      "id": "verstehen",
+      "title": "Text verstehen",
+      "description": "Gedanken und Aussagen verstehen."
+    },
+    {
+      "id": "anwenden",
+      "title": "Übertragen und prüfen",
+      "description": "Ideen auf andere Situationen beziehen."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-cm-de-b1-01",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Was denkt Lara zunächst über einen Fehler bei einer neuen Aufgabe?",
+      "choices": [
+        "Sie betrachtet ihn als nützliche Lernchance.",
+        "Sie findet gute Noten unwichtig.",
+        "Sie hält ihn für einen Hinweis auf fehlendes Talent.",
+        "Sie bittet sofort alle um Rat."
+      ],
+      "answer": 2,
+      "explanation": "Anfangs deutet sie Schwierigkeiten als mangelnde Begabung."
+    },
+    {
+      "id": "r34-cm-de-b1-02",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Warum konzentriert sich die Lehrerin auf vier schwierige Takte?",
+      "choices": [
+        "Ein überschaubares Problem lässt sich gezielt bearbeiten.",
+        "Alle anderen Takte sind grundsätzlich unwichtig.",
+        "Lara darf nur vier Takte spielen.",
+        "Schnelles Spielen ist dann nicht nötig."
+      ],
+      "answer": 0,
+      "explanation": "Die Lehrerin empfiehlt eine konkrete, kleine Übungseinheit."
+    },
+    {
+      "id": "r34-cm-de-b1-03",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum betont der Text, dass Lara keine großartige Musikerin wurde?",
+      "choices": [
+        "Sie hat beim Üben gar nichts gelernt.",
+        "Sie will nun keinen Musikunterricht mehr.",
+        "Ihr Vortrag wurde immer schlechter.",
+        "Ihre neue Haltung ist bedeutsamer als außergewöhnliches Talent."
+      ],
+      "answer": 3,
+      "explanation": "Der dritte Absatz trennt Fortschritt von einer Wunderverwandlung."
+    },
+    {
+      "id": "r34-cm-de-b1-04",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Was bringt Lara die Frage nach einer anderen Vorgehensweise?",
+      "choices": [
+        "Sie muss keine schwierige Aufgabe mehr lösen.",
+        "Sie kann einen nächsten praktischen Schritt suchen.",
+        "Sie kann ihre Fehler vor anderen verstecken.",
+        "Sie braucht nie wieder Unterricht."
+      ],
+      "answer": 1,
+      "explanation": "Die Frage richtet ihren Blick auf veränderbare Strategien."
+    },
+    {
+      "id": "r34-cm-de-b1-05",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Wie versteht Lara heute einen Fehler?",
+      "choices": [
+        "Als endgültigen Beweis des Scheiterns.",
+        "Als Grund, Noten ganz abzulehnen.",
+        "Als Zeichen dafür, woran sie weiterarbeiten kann.",
+        "Als Beleg, dass Lehrer unfair sind."
+      ],
+      "answer": 2,
+      "explanation": "Der Schluss beschreibt Fehler als Hinweise auf weiteren Übungsbedarf."
+    },
+    {
+      "id": "r34-cm-de-b1-06",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Ein Schüler schafft einen Teil eines Vortrags nicht. Was könnte Lara empfehlen?",
+      "choices": [
+        "Den schwierigen Abschnitt langsam und mehrmals zu üben.",
+        "Den gesamten Vortrag sofort aufzugeben.",
+        "Jeden Tag ein anderes Thema zu wählen.",
+        "Nur schneller zu sprechen."
+      ],
+      "answer": 0,
+      "explanation": "Laras Beispiel zeigt den Nutzen gezielter Übungen."
+    }
+  ]
+}

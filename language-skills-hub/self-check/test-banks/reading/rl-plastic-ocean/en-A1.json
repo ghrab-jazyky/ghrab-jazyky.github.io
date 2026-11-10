@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 15,
+  "auditRevision": "R34-PO-A1-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "tabs": [
+    {
+      "id": "people",
+      "title": "People at the Beach",
+      "description": "Understand the story and who helps."
+    },
+    {
+      "id": "problems",
+      "title": "Rubbish and Reasons",
+      "description": "Think about where rubbish goes."
+    },
+    {
+      "id": "action",
+      "title": "Good Choices",
+      "description": "Use the ideas to make a choice."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-po-a1-01",
+      "tab": "people",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why are the cousins at the beach?",
+      "choices": [
+        "They are working in a café.",
+        "They are on holiday and want to take photos.",
+        "They are looking for a lost dog.",
+        "They are studying for a maths test."
+      ],
+      "answer": 1,
+      "explanation": "The first paragraph says the cousins are on holiday and plan to take pictures."
+    },
+    {
+      "id": "r34-po-a1-02",
+      "tab": "people",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why do the cousins take a bag that is not theirs?",
+      "choices": [
+        "They want to sell the bag.",
+        "They think it belongs to Rosa.",
+        "They need another bag for sandwiches.",
+        "It is litter near the sea and they want to help."
+      ],
+      "answer": 3,
+      "explanation": "The cousins pick up plastic near the water even though it is not their own rubbish."
+    },
+    {
+      "id": "r34-po-a1-03",
+      "tab": "people",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What does Rosa think when she sees the cousins with the bag?",
+      "choices": [
+        "She is pleased that they are helping.",
+        "She thinks they took something from her.",
+        "She asks them to leave at once.",
+        "She wants to stop the beach walk."
+      ],
+      "answer": 0,
+      "explanation": "Rosa smiles and thanks the cousins after seeing the bag."
+    },
+    {
+      "id": "r34-po-a1-04",
+      "tab": "problems",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why is rubbish on the beach also a problem for the sea?",
+      "choices": [
+        "All rubbish turns into food for fish.",
+        "Plastic disappears when it is sunny.",
+        "The wind can blow it into the water.",
+        "The sea makes new cups every day."
+      ],
+      "answer": 2,
+      "explanation": "Rosa explains that evening wind can carry rubbish into the sea."
+    },
+    {
+      "id": "r34-po-a1-05",
+      "tab": "problems",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "How do the cousins feel after helping for an hour?",
+      "choices": [
+        "They are angry because it is raining.",
+        "They are tired but happy with their work.",
+        "They are bored and want to go home.",
+        "They are afraid of the café owner."
+      ],
+      "answer": 1,
+      "explanation": "The fourth paragraph describes them as hot, tired and happy."
+    },
+    {
+      "id": "r34-po-a1-06",
+      "tab": "problems",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What is a good thing about Eva's choice with her drink?",
+      "choices": [
+        "She leaves the cup in the sand.",
+        "She throws the cup in the sea.",
+        "She gives the cup to a fish.",
+        "She keeps the cup for a rubbish bin."
+      ],
+      "answer": 3,
+      "explanation": "Eva buys a plastic cup but keeps it until she can put it in the bin."
+    },
+    {
+      "id": "r34-po-a1-07",
+      "tab": "action",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "You bring your own bottle on a beach trip. Why can it help?",
+      "choices": [
+        "You do not need a new plastic cup each time.",
+        "You can take home more sand.",
+        "You will never feel thirsty.",
+        "You can stop the wind."
+      ],
+      "answer": 0,
+      "explanation": "The narrator uses a personal bottle instead of a new disposable cup."
+    },
+    {
+      "id": "r34-po-a1-08",
+      "tab": "action",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "Why might Rosa put Eva's photos on the café wall?",
+      "choices": [
+        "The photos will make rubbish disappear.",
+        "The café needs more holiday posters.",
+        "The photos can help other people notice the problem.",
+        "Eva wants to sell the pictures."
+      ],
+      "answer": 2,
+      "explanation": "The final paragraph says people will be able to see the photos."
+    },
+    {
+      "id": "r34-po-a1-09",
+      "tab": "action",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What could you do if you see a bottle near a safe rubbish bin?",
+      "choices": [
+        "Leave it beside the water.",
+        "Push it into the sea.",
+        "Wait for the wind to take it.",
+        "Put it in the bin if it is safe to pick up."
+      ],
+      "answer": 3,
+      "explanation": "The cousins collect litter carefully and use a nearby bin."
+    },
+    {
+      "id": "r34-po-a1-10",
+      "tab": "action",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What does the diary show about keeping a place clean?",
+      "choices": [
+        "Only café owners can clean a beach.",
+        "Small good choices can help even when the beach is not perfect.",
+        "One hour makes all rubbish go away forever.",
+        "Only people who drop rubbish should pick it up."
+      ],
+      "answer": 1,
+      "explanation": "The fifth paragraph says the beach is not perfect, but the cousins leave their place clean."
+    }
+  ],
+  "description": "Original A1 Plastic Ocean topic Reading test bank draft, not teacher-approved."
+}

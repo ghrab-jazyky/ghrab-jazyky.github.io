@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "auditRevision": "R34-EMAIL-A2-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "description": "Independent email comprehension EN/A2 draft; human review required.",
+  "tabs": [
+    {
+      "id": "life",
+      "title": "Life in Galway",
+      "description": "Understand Sofia's situation."
+    },
+    {
+      "id": "invitation",
+      "title": "Making Plans",
+      "description": "Follow the suggested day and the reasons behind it."
+    },
+    {
+      "id": "response",
+      "title": "A Helpful Reply",
+      "description": "Choose what Noah should communicate."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-a2-01",
+      "tab": "life",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why was life in Galway difficult for Sofia at first?",
+      "choices": [
+        "She had no language course to attend.",
+        "Her aunt refused to let her go outside.",
+        "She did not know people and found the weather colder than expected.",
+        "She could not find any shops in the town."
+      ],
+      "answer": 2,
+      "explanation": "The first paragraph explains Sofia's loneliness and surprise at the weather."
+    },
+    {
+      "id": "r34-email-a2-02",
+      "tab": "life",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What suggests that Sofia is happier now?",
+      "choices": [
+        "She has made friends and they often cook together.",
+        "Her aunt works fewer hours every week.",
+        "The course has already ended.",
+        "She no longer misses her old school."
+      ],
+      "answer": 0,
+      "explanation": "New friendships and shared dinners show her new social life."
+    },
+    {
+      "id": "r34-email-a2-03",
+      "tab": "life",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does Sofia think the exhibition might interest Noah?",
+      "choices": [
+        "He works at the old railway station.",
+        "She knows he enjoys taking photographs.",
+        "He has seen all the photos before.",
+        "He dislikes ordinary people's stories."
+      ],
+      "answer": 1,
+      "explanation": "Sofia remembers Noah's interest in photography when planning the visit."
+    },
+    {
+      "id": "r34-email-a2-04",
+      "tab": "invitation",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What is special about the photographer's subjects?",
+      "choices": [
+        "Every photograph shows the same famous singer.",
+        "Only buildings and trains appear.",
+        "The exhibition is about wild animals.",
+        "The pictures show everyday people doing interesting work."
+      ],
+      "answer": 3,
+      "explanation": "The exhibition focuses on people such as bakers, drivers and musicians."
+    },
+    {
+      "id": "r34-email-a2-05",
+      "tab": "invitation",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What could Noah learn at the workshop after the exhibition?",
+      "choices": [
+        "How to repair a bicycle.",
+        "How to play basketball professionally.",
+        "Ways to improve photographs taken with his phone.",
+        "How to bake bread for the museum."
+      ],
+      "answer": 2,
+      "explanation": "The free workshop teaches visitors how to take better phone photos."
+    },
+    {
+      "id": "r34-email-a2-06",
+      "tab": "invitation",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does Sofia suggest the science museum as another option?",
+      "choices": [
+        "The photography exhibition might have no places left.",
+        "Noah has never seen any museum.",
+        "The railway station is closed on Sundays.",
+        "The workshop costs too much money."
+      ],
+      "answer": 0,
+      "explanation": "The museum is a backup if the exhibition is full."
+    },
+    {
+      "id": "r34-email-a2-07",
+      "tab": "response",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What matters more to Sofia than planning a perfect day?",
+      "choices": [
+        "Visiting every attraction in town.",
+        "Buying expensive tickets.",
+        "Taking as many photos as possible.",
+        "Getting to spend some time with Noah."
+      ],
+      "answer": 3,
+      "explanation": "Sofia says even an hour together would make her happy."
+    },
+    {
+      "id": "r34-email-a2-08",
+      "tab": "response",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why should Noah answer before Friday evening?",
+      "choices": [
+        "The photography workshop closes on Thursday.",
+        "Sofia needs time to book a ticket.",
+        "The buses stop running after Friday.",
+        "The exhibition will be removed that night."
+      ],
+      "answer": 1,
+      "explanation": "Sofia gives a reply deadline because she must make a booking."
+    },
+    {
+      "id": "r34-email-a2-09",
+      "tab": "response",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Which reply would best help Sofia organise the outing?",
+      "choices": [
+        "Sunday sounds great. I can come, and the museum is fine if the exhibition is full.",
+        "I might like photographs but I will not tell you anything.",
+        "Go to the exhibition alone and stop asking.",
+        "I am sure every ticket will be free."
+      ],
+      "answer": 0,
+      "explanation": "A useful response confirms availability and accepts the proposed alternative."
+    },
+    {
+      "id": "r34-email-a2-10",
+      "tab": "response",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What does Sofia show by asking about Noah's basketball team?",
+      "choices": [
+        "She needs him to buy a new basketball.",
+        "She wants to stop talking about photography.",
+        "She also wants to know what has happened in his life.",
+        "She is planning to join his team in Galway."
+      ],
+      "answer": 2,
+      "explanation": "Sofia invites Noah to share his news, showing a two-way friendship."
+    }
+  ]
+}

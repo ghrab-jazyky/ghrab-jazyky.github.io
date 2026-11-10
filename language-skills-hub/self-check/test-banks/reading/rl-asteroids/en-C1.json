@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 30,
+  "auditRevision": "R34-AST-C1-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "tabs": [
+    {
+      "id": "knowledge",
+      "title": "Uncertainty and Evidence",
+      "description": "Interpret observational limitations and inference."
+    },
+    {
+      "id": "engineering",
+      "title": "Experimental Interpretation",
+      "description": "Evaluate DART and the physical limits of deflection."
+    },
+    {
+      "id": "policy",
+      "title": "Scientific Communication",
+      "description": "Apply the text to policy and public risk."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-ast-c1-01",
+      "tab": "knowledge",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What epistemic distinction underpins the writer's criticism of sensational headlines?",
+      "choices": [
+        "A nearby object's physical speed is determined by the news coverage.",
+        "Asteroid classification depends exclusively on the public perception of risk.",
+        "An uncertain prediction reflects incomplete knowledge rather than random motion.",
+        "Orbital uncertainty makes all astronomical forecasts worthless."
+      ],
+      "answer": 2,
+      "explanation": "The opening distinguishes physical orbital motion from uncertainty in our knowledge of a trajectory."
+    },
+    {
+      "id": "r34-ast-c1-02",
+      "tab": "knowledge",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why can a calculated impact probability initially rise even as research improves?",
+      "choices": [
+        "Several paths fit sparse data, and later observations change their relative plausibility.",
+        "The asteroid's orbit necessarily becomes more dangerous after discovery.",
+        "Infrared observations systematically exaggerate asteroid sizes.",
+        "Astronomers increasingly favour extreme predictions in later reports."
+      ],
+      "answer": 0,
+      "explanation": "The second paragraph explains how a narrowing range of possible trajectories can temporarily yield a higher risk."
+    },
+    {
+      "id": "r34-ast-c1-03",
+      "tab": "knowledge",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Which reporting practice would most directly address the author's objection to an isolated risk percentage?",
+      "choices": [
+        "Omit uncertainty until the object becomes a public concern.",
+        "Replace numerical figures with dramatic photographs.",
+        "Quote only estimates that have already fallen to zero.",
+        "Give the estimate's date and the range of plausible outcomes."
+      ],
+      "answer": 3,
+      "explanation": "The author criticises reporting a compelling number without its date or uncertainty range."
+    },
+    {
+      "id": "r34-ast-c1-04",
+      "tab": "engineering",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why is reliably striking an asteroid not the whole deflection problem?",
+      "choices": [
+        "The spacecraft must also transmit television pictures to the public.",
+        "The resulting motion must be predicted and independently verified.",
+        "The asteroid must be visibly brighter than the target star.",
+        "The experiment's success is determined solely by the launch date."
+      ],
+      "answer": 1,
+      "explanation": "The writer says target properties, expected orbital change and subsequent observation are all essential."
+    },
+    {
+      "id": "r34-ast-c1-05",
+      "tab": "engineering",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "How does ejecta from the Dimorphos impact complicate simple momentum calculations?",
+      "choices": [
+        "It prevented scientists from observing any orbital change.",
+        "It showed that Dimorphos was a completely solid boulder.",
+        "Material thrown off the body added a substantial extra push.",
+        "The debris cancelled the force delivered by the spacecraft."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph four says the debris plume amplified the change beyond the spacecraft's momentum."
+    },
+    {
+      "id": "r34-ast-c1-06",
+      "tab": "engineering",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What is the scientific value of Hera following DART?",
+      "choices": [
+        "It can investigate the structure and response of the asteroid system.",
+        "It will destroy any remaining hazardous fragments.",
+        "It will prove that all asteroid collisions are harmless.",
+        "It will replace surveys of near-Earth objects."
+      ],
+      "answer": 0,
+      "explanation": "The follow-up mission aims to study the system and constrain physical uncertainties."
+    },
+    {
+      "id": "r34-ast-c1-07",
+      "tab": "policy",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why might funding for long-term surveys be harder to attract than support for spectacular missions?",
+      "choices": [
+        "Survey instruments have no role in an eventual emergency.",
+        "Mission footage is always more scientifically reliable.",
+        "International data-sharing is impossible before an impact.",
+        "Their preventive benefits are quieter and less immediately visible."
+      ],
+      "answer": 3,
+      "explanation": "The final paragraph contrasts essential surveys and communication with attention-grabbing mission footage."
+    },
+    {
+      "id": "r34-ast-c1-08",
+      "tab": "policy",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "A news outlet calls every orbit revision a scientific embarrassment. What is the writer's likely objection?",
+      "choices": [
+        "An earlier prediction should always remain the official figure.",
+        "Revisions supported by new data are part of responsible scientific practice.",
+        "Impact probabilities should never be publicly shared.",
+        "Scientists must wait for certainty before calculating trajectories."
+      ],
+      "answer": 1,
+      "explanation": "The author advocates transparent revisions instead of presenting uncertainty as failure."
+    },
+    {
+      "id": "r34-ast-c1-09",
+      "tab": "policy",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What would make a planetary-defence warning system publicly credible according to the text?",
+      "choices": [
+        "Clear responsibility for messages and transparent corrections when evidence changes.",
+        "A promise that no asteroid can ever reach Earth.",
+        "A rule against releasing low-probability estimates.",
+        "A single annual announcement regardless of new observations."
+      ],
+      "answer": 0,
+      "explanation": "The text calls for institutional clarity and the open correction of conflicting claims."
+    },
+    {
+      "id": "r34-ast-c1-10",
+      "tab": "policy",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What general scientific principle does the DART evidence illustrate?",
+      "choices": [
+        "One successful mission demonstrates a permanent solution.",
+        "The material properties of target objects never matter.",
+        "An observed experimental result must be interpreted within its conditions and uncertainties.",
+        "An orbit can be predicted perfectly once the spacecraft arrives."
+      ],
+      "answer": 2,
+      "explanation": "DART demonstrates a real effect, but transfer to other objects requires physical understanding."
+    }
+  ],
+  "description": "Original EN/C1 Asteroids assessment draft; human CEFR/content review required."
+}

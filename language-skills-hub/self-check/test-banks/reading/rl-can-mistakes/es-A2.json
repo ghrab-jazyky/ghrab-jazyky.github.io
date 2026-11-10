@@ -1,0 +1,117 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "es",
+  "level": "A2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 15,
+  "auditRevision": "R34-CM-ES-A2-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 6 points maximum; local provisional grade only",
+  "description": "Preguntas originales del nivel A2 sobre el texto español. Borrador pendiente de revisión.",
+  "tabs": [
+    {
+      "id": "interpretacion",
+      "title": "Comprender",
+      "description": "Interpretar hechos y significados."
+    },
+    {
+      "id": "aplicacion",
+      "title": "Pensar y aplicar",
+      "description": "Aplicar las ideas a otras situaciones."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-cm-es-a2-01",
+      "tab": "interpretacion",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Por qué decide Daniel cambiar su manera de estudiar?",
+      "choices": [
+        "Porque se suspende el examen.",
+        "Porque ha perdido todos sus apuntes.",
+        "Porque acostarse tarde lo deja cansado.",
+        "Porque su hermana no quiere ayudar."
+      ],
+      "answer": 2,
+      "explanation": "Daniel recuerda que su rutina habitual le provoca cansancio."
+    },
+    {
+      "id": "r34-cm-es-a2-02",
+      "tab": "interpretacion",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué ventaja puede tener estudiar un rato y descansar?",
+      "choices": [
+        "Puede prepararse sin agotarse tanto.",
+        "Termina el examen antes de empezar.",
+        "Aprende sin leer nada.",
+        "Ya no necesita dormir."
+      ],
+      "answer": 0,
+      "explanation": "El nuevo plan empieza con una sesión corta y una pausa."
+    },
+    {
+      "id": "r34-cm-es-a2-03",
+      "tab": "interpretacion",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Por qué vuelve Daniel a los apuntes cuando explica algo mal?",
+      "choices": [
+        "Para copiar las respuestas de su hermana.",
+        "Para cambiar la fecha del examen.",
+        "Para no volver a hablar del tema.",
+        "Para comprobar qué parte no entiende."
+      ],
+      "answer": 3,
+      "explanation": "La explicación poco clara le muestra qué debe revisar."
+    },
+    {
+      "id": "r34-cm-es-a2-04",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué consigue al contestar preguntas sin mirar las soluciones?",
+      "choices": [
+        "Se asegura una nota perfecta.",
+        "Comprueba lo que recuerda por sí solo.",
+        "Evita estudiar cualquier tema difícil.",
+        "Hace el trabajo de su profesora."
+      ],
+      "answer": 1,
+      "explanation": "Daniel practica sin mirar las respuestas para probar sus conocimientos."
+    },
+    {
+      "id": "r34-cm-es-a2-05",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Por qué dos errores no significan que el plan haya fracasado?",
+      "choices": [
+        "Daniel no terminó el examen.",
+        "La nota anterior era más alta.",
+        "Daniel está más tranquilo y sabe qué practicar.",
+        "Los errores no se cuentan nunca."
+      ],
+      "answer": 2,
+      "explanation": "El final combina errores, calma y reflexión sobre la mejora."
+    },
+    {
+      "id": "r34-cm-es-a2-06",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué sería razonable hacer con el plan para otra asignatura?",
+      "choices": [
+        "Adaptarlo cuando sea necesario.",
+        "Repetirlo sin cambiar nada jamás.",
+        "Estudiar únicamente la noche anterior.",
+        "Dejar de practicar tras el primer error."
+      ],
+      "answer": 0,
+      "explanation": "Un plan útil puede modificarse según las necesidades."
+    }
+  ]
+}

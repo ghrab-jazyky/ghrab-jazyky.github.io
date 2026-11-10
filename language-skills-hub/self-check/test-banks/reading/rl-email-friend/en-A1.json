@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 15,
+  "auditRevision": "R34-EMAIL-A1-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "description": "Independent email comprehension EN/A1 draft; human review required.",
+  "tabs": [
+    {
+      "id": "friend",
+      "title": "Ben and Maya",
+      "description": "Understand their friendship."
+    },
+    {
+      "id": "plans",
+      "title": "Making a Plan",
+      "description": "Follow the details of the invitation."
+    },
+    {
+      "id": "reply",
+      "title": "Writing Back",
+      "description": "Choose an appropriate response."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-a1-01",
+      "tab": "friend",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does Ben want to tell Maya about Greenhill?",
+      "choices": [
+        "He wants her to move into his house.",
+        "They were friends at his old school and he misses her.",
+        "He needs help with his garden.",
+        "He does not know anybody in town."
+      ],
+      "answer": 1,
+      "explanation": "Ben recalls their school lunches and games, showing that he misses his friend."
+    },
+    {
+      "id": "r34-email-a1-02",
+      "tab": "friend",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What does Ben enjoy doing with his new friend Eva?",
+      "choices": [
+        "Watching boats in the park.",
+        "Travelling to school by train.",
+        "Cooking sandwiches at home.",
+        "Playing football together on Fridays."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph one says Ben and Eva play football on Fridays."
+    },
+    {
+      "id": "r34-email-a1-03",
+      "tab": "friend",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does Ben ask about Maya's new class?",
+      "choices": [
+        "He also wants to hear about Maya's life.",
+        "He wants to change her school timetable.",
+        "He needs to know the name of her teacher.",
+        "He wants her to do his homework."
+      ],
+      "answer": 0,
+      "explanation": "Ben explicitly says he wants to hear her news, not only send his own."
+    },
+    {
+      "id": "r34-email-a1-04",
+      "tab": "plans",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "How can Maya get from the station to the film night?",
+      "choices": [
+        "She must buy a ticket for a taxi.",
+        "She can take a boat to the café.",
+        "Ben's dad can meet her and they can walk.",
+        "She must drive Ben's car."
+      ],
+      "answer": 2,
+      "explanation": "The email offers to meet Maya at the station and walk to the park."
+    },
+    {
+      "id": "r34-email-a1-05",
+      "tab": "plans",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why do families sit on blankets at the film night?",
+      "choices": [
+        "The cinema has no chairs at all.",
+        "The film is shown outside in the park.",
+        "The film is watched on a train.",
+        "The town has no youth centre."
+      ],
+      "answer": 1,
+      "explanation": "People bring blankets and sit on the grass at the outdoor event."
+    },
+    {
+      "id": "r34-email-a1-06",
+      "tab": "plans",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why is a warm jacket a good idea for Maya?",
+      "choices": [
+        "The film is about winter snow.",
+        "Maya must wear it at the station.",
+        "The café does not sell hot chocolate.",
+        "It can be cold near the park in the evening."
+      ],
+      "answer": 3,
+      "explanation": "Ben warns that evenings in Greenhill are cold."
+    },
+    {
+      "id": "r34-email-a1-07",
+      "tab": "reply",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What should Maya tell Ben if she cannot visit?",
+      "choices": [
+        "She can say she is busy and write back kindly.",
+        "She should stop being friends with him.",
+        "She should give no answer until Saturday.",
+        "She must buy a train ticket anyway."
+      ],
+      "answer": 0,
+      "explanation": "Ben says he understands if she is busy and asks her to reply."
+    },
+    {
+      "id": "r34-email-a1-08",
+      "tab": "reply",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does Ben need Maya's answer before the weekend?",
+      "choices": [
+        "He is moving to another town on Friday.",
+        "The park will close forever on Thursday.",
+        "He wants to know whether she can come to the event.",
+        "The film can start only with Maya."
+      ],
+      "answer": 2,
+      "explanation": "The invitation includes a request to write before Thursday."
+    },
+    {
+      "id": "r34-email-a1-09",
+      "tab": "reply",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Which message would be a good answer from Maya?",
+      "choices": [
+        "I do not want to read any more messages.",
+        "You must buy me a new football.",
+        "Your film is always too expensive.",
+        "Thanks! I'll tell you if I can come, and I have some school news too."
+      ],
+      "answer": 3,
+      "explanation": "A friendly reply should answer the invitation and respond to Ben's interest in her news."
+    },
+    {
+      "id": "r34-email-a1-10",
+      "tab": "reply",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What can Maya do if it rains on Saturday?",
+      "choices": [
+        "Wait in the park with no shelter.",
+        "Watch the film indoors at the youth centre.",
+        "Stay on the train until Sunday.",
+        "Play football in Ben's garden instead."
+      ],
+      "answer": 1,
+      "explanation": "Ben explains the alternative indoor venue when it rains."
+    }
+  ]
+}

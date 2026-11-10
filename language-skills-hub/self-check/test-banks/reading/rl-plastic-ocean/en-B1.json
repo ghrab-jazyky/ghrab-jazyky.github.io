@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "B1",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 20,
+  "auditRevision": "R34-PO-B1-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "tabs": [
+    {
+      "id": "investigation",
+      "title": "Investigating the Problem",
+      "description": "Interpret how the students found the source."
+    },
+    {
+      "id": "evidence",
+      "title": "Using Evidence",
+      "description": "Explain what the counts and interviews show."
+    },
+    {
+      "id": "solutions",
+      "title": "From Blame to Action",
+      "description": "Consider practical responses to litter."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-po-b1-01",
+      "tab": "investigation",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does the engineer encourage the students to look beyond the stream itself?",
+      "choices": [
+        "The stream does not contain any real litter.",
+        "The students have no permission to make signs.",
+        "All the rubbish comes from the library.",
+        "The rubbish may have entered the water from drains elsewhere."
+      ],
+      "answer": 3,
+      "explanation": "The engineer traces a possible route from the street through a drain into the stream."
+    },
+    {
+      "id": "r34-po-b1-02",
+      "tab": "investigation",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What makes the students' first observations useful rather than just personal opinions?",
+      "choices": [
+        "They ask only their closest friends.",
+        "They record counts in different street sections at a chosen time.",
+        "They take pictures of the stream once.",
+        "They choose the answer before investigating."
+      ],
+      "answer": 1,
+      "explanation": "The third paragraph describes a planned comparison with counts in five sections."
+    },
+    {
+      "id": "r34-po-b1-03",
+      "tab": "investigation",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What might explain the large difference between the bus stop and library counts?",
+      "choices": [
+        "The library has no pavement.",
+        "The stream flows only past the bus stop.",
+        "The crowded stop and nearby full bin create more litter there.",
+        "The students counted for different months."
+      ],
+      "answer": 2,
+      "explanation": "The text connects high litter counts with the busy stop and overflowing bin."
+    },
+    {
+      "id": "r34-po-b1-04",
+      "tab": "evidence",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "How did talking to a bus driver improve the investigation?",
+      "choices": [
+        "It revealed that the bin was usually full by late afternoon.",
+        "It proved that students never dropped wrappers.",
+        "It showed that the stream contained no rubbish.",
+        "It changed the students' number of street sections."
+      ],
+      "answer": 0,
+      "explanation": "The bus driver provided a time-related explanation missing from the counts alone."
+    },
+    {
+      "id": "r34-po-b1-05",
+      "tab": "evidence",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why is changing the bin's collection time a more focused solution than a warning sign?",
+      "choices": [
+        "It makes customers stop buying snacks.",
+        "It removes every drain from town.",
+        "It prevents wind on other streets.",
+        "It addresses when the rubbish starts to build up."
+      ],
+      "answer": 3,
+      "explanation": "The council's change responds to the bin becoming full before the busy afternoon."
+    },
+    {
+      "id": "r34-po-b1-06",
+      "tab": "evidence",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why do the students avoid claiming the problem has disappeared?",
+      "choices": [
+        "They have not yet spoken to the café owner.",
+        "Wind and future storms could reveal other sources of litter.",
+        "They no longer need to observe the street.",
+        "The bus stop was closed for a month."
+      ],
+      "answer": 1,
+      "explanation": "The fifth paragraph explicitly leaves room for new weak points and changing weather."
+    },
+    {
+      "id": "r34-po-b1-07",
+      "tab": "solutions",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What is a strength of inviting neighbours to add photos to the map?",
+      "choices": [
+        "It increases the amount of evidence beyond the original area.",
+        "It proves the café owner is responsible for everything.",
+        "It allows the students to delete unusual observations.",
+        "It makes rainwater flow in a different direction."
+      ],
+      "answer": 0,
+      "explanation": "More residents can contribute observations from streets the students did not survey."
+    },
+    {
+      "id": "r34-po-b1-08",
+      "tab": "solutions",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "What does the final question shift attention towards?",
+      "choices": [
+        "Designing a larger sign next to the stream.",
+        "Choosing a new name for the school project.",
+        "Finding where the litter enters the system in the first place.",
+        "Counting only rubbish in the water."
+      ],
+      "answer": 2,
+      "explanation": "The concluding question asks where the rubbish begins its journey."
+    },
+    {
+      "id": "r34-po-b1-09",
+      "tab": "solutions",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "A school wants to protect a local stream. What should it investigate first?",
+      "choices": [
+        "How many people enjoy taking photos by the water.",
+        "Where rainwater travels and where litter can enter drains.",
+        "Whether the river has a more attractive name.",
+        "Which students prefer the biggest classroom."
+      ],
+      "answer": 1,
+      "explanation": "The engineer shows how pavement litter can reach a stream through drains."
+    },
+    {
+      "id": "r34-po-b1-10",
+      "tab": "solutions",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What general lesson does the students' project suggest about environmental action?",
+      "choices": [
+        "Simple signs always solve problems without further work.",
+        "People should clean only the part of the stream they can see.",
+        "Measurements are less useful than blaming one group.",
+        "Look for causes and adjust practical systems instead of blaming people immediately."
+      ],
+      "answer": 3,
+      "explanation": "The students use counts, interviews and a map before proposing practical changes."
+    }
+  ],
+  "description": "Original B1 Plastic Ocean topic Reading test bank draft, not teacher-approved."
+}

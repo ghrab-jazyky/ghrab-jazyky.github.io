@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "C2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-EN-C2-AUTHOR-DRAFT-1",
+  "description": "Independent C2 assessment draft requiring human source/CEFR review, not a verified grade.",
+  "tabs": [
+    {
+      "id": "rhetoric",
+      "title": "Argumentative Nuance",
+      "description": "Analyse the author's distinctions and concessions."
+    },
+    {
+      "id": "critique",
+      "title": "Conceptual Critique",
+      "description": "Examine the limits of institutional indicators."
+    },
+    {
+      "id": "judgment",
+      "title": "Evaluative Transfer",
+      "description": "Judge complex cases using evidence from the text."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-c2-01",
+      "tab": "rhetoric",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What is the effect of describing resilience as an ideal 'difficult to oppose'?",
+      "choices": [
+        "It dismisses resilience as fashionable but intellectually empty.",
+        "It suggests that most teachers disagree about the term's meaning.",
+        "It establishes the ideal's appeal before questioning its institutional misuse.",
+        "It implies that criticism of resilience is necessarily contradictory."
+      ],
+      "answer": 2,
+      "explanation": "The opening grants resilience's appeal before distinguishing a useful capacity from an imposed moral expectation."
+    },
+    {
+      "id": "r34-en-c2-02",
+      "tab": "rhetoric",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What conceptual distinction does the example of the two pupils primarily sharpen?",
+      "choices": [
+        "The contrast between agency exercised with prospects of change and endurance demanded despite inadequate support.",
+        "The difference between academic achievement and emotional intelligence.",
+        "The contrast between visible effort and the reliability of standardised assessments.",
+        "The difference between practical assistance and moral encouragement."
+      ],
+      "answer": 0,
+      "explanation": "Both pupils can appear determined, but only one has realistic conditions under which effort can produce change."
+    },
+    {
+      "id": "r34-en-c2-03",
+      "tab": "rhetoric",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does the author reject a return to the idea of fixed talent?",
+      "choices": [
+        "It would remove every incentive to introduce better assessment metrics.",
+        "It would require abandoning all institutional responsibility.",
+        "It would make perseverance an even stronger moral imperative.",
+        "It would mistake criticism of compulsory resilience for a denial of learner agency."
+      ],
+      "answer": 3,
+      "explanation": "The final paragraph explicitly preserves the value of agency while rejecting a simplistic resilience ideal."
+    },
+    {
+      "id": "r34-en-c2-04",
+      "tab": "critique",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why is the assessment indicator described as 'not necessarily false'?",
+      "choices": [
+        "Its numerical precision is presumed to establish its educational value.",
+        "It may accurately capture rate of score improvement while missing other forms of learning.",
+        "It can only be evaluated after all learners reach the same benchmark.",
+        "Its validity depends solely on whether learners know the scoring rules."
+      ],
+      "answer": 1,
+      "explanation": "The indicator answers the narrow question of score improvement, not the full value of difficult inquiry."
+    },
+    {
+      "id": "r34-en-c2-05",
+      "tab": "critique",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What is implied by the claim that performance indicators can 'colonise' activities?",
+      "choices": [
+        "Measures can begin to redefine what participants consider worthwhile.",
+        "School subjects are likely to become increasingly specialised.",
+        "Students will inevitably reject all activities without a score.",
+        "Institutional metrics make informal learning easier to compare."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph three argues that a metric can take over the meaning of activities it was designed to illuminate."
+    },
+    {
+      "id": "r34-en-c2-06",
+      "tab": "critique",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What institutional risk accompanies praise for a pupil's visible endurance?",
+      "choices": [
+        "It prevents teachers from noticing genuine academic progress.",
+        "It makes every pupil less willing to ask for help.",
+        "It may distract from asking why the adverse conditions persist.",
+        "It establishes that continued effort always leads to success."
+      ],
+      "answer": 2,
+      "explanation": "The writer warns that celebrating endurance can spare institutions the obligation to examine ongoing obstacles."
+    },
+    {
+      "id": "r34-en-c2-07",
+      "tab": "judgment",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "A student abandons an unproductive project after carefully reconsidering its aims. What would the author most likely infer?",
+      "choices": [
+        "The decision demonstrates a lack of resilience regardless of context.",
+        "The student has confused motivation with a measurable goal.",
+        "The project should be resumed until its failure can be quantified.",
+        "The choice can reflect mature judgement rather than a deficit in perseverance."
+      ],
+      "answer": 3,
+      "explanation": "The author argues that knowing when persistence ceases to serve a purpose is part of mature learning."
+    },
+    {
+      "id": "r34-en-c2-08",
+      "tab": "judgment",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A college introduces flexible deadlines but still requires students to justify every period of rest. Which criticism best follows from the text?",
+      "choices": [
+        "Flexible deadlines eliminate the need to evaluate students.",
+        "The institution still treats rest as a failure of ambition rather than a legitimate need.",
+        "Students will necessarily use the flexibility to reduce effort.",
+        "Any assessment of progress becomes incompatible with student choice."
+      ],
+      "answer": 1,
+      "explanation": "The final paragraph explicitly calls for treating rest as more than a failure of ambition."
+    },
+    {
+      "id": "r34-en-c2-09",
+      "tab": "judgment",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Two equally determined learners make unequal progress because one lacks support. What would be an unwarranted inference?",
+      "choices": [
+        "The slower learner necessarily lacks the character required for academic success.",
+        "The conditions under which effort is applied should be examined.",
+        "Both students might still benefit from revising their strategies.",
+        "Visible determination does not reveal the entire educational situation."
+      ],
+      "answer": 0,
+      "explanation": "The second paragraph rejects interpreting unequal resources as a difference in moral character."
+    },
+    {
+      "id": "r34-en-c2-10",
+      "tab": "judgment",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Which principle most accurately integrates the author's recommendations?",
+      "choices": [
+        "Reward endurance whenever it can be documented, but permit exceptions.",
+        "Eliminate performance measures so learners can develop freely.",
+        "Provide conditions that make effort meaningful while retaining freedom to reconsider one's goals.",
+        "Replace academic evaluation with individual assessments of motivation."
+      ],
+      "answer": 2,
+      "explanation": "The conclusion advocates enabling conditions and the freedom to reconsider worthwhile aims while preserving discerning evaluation."
+    }
+  ]
+}

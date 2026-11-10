@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "B1",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 20,
+  "auditRevision": "R34-AST-B1-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "tabs": [
+    {
+      "id": "observation",
+      "title": "Observing Asteroids",
+      "description": "Explain how scientists learn about uncertain paths."
+    },
+    {
+      "id": "events",
+      "title": "Lessons from Events",
+      "description": "Evaluate real examples and their limits."
+    },
+    {
+      "id": "decisions",
+      "title": "Evidence and Preparation",
+      "description": "Apply the article's argument to new claims."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-ast-b1-01",
+      "tab": "observation",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why are ancient asteroids useful objects for scientific study?",
+      "choices": [
+        "They contain the first photographs of Earth.",
+        "They prove that all planets are the same age.",
+        "They show exactly when the Sun will disappear.",
+        "They preserve clues to the solar system's distant past."
+      ],
+      "answer": 3,
+      "explanation": "The opening paragraph says asteroids are leftovers from the early solar system."
+    },
+    {
+      "id": "r34-ast-b1-02",
+      "tab": "observation",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What is the risk of predicting an asteroid's route from only one photograph?",
+      "choices": [
+        "The photograph will always show the wrong asteroid.",
+        "There is too little information to know its path confidently.",
+        "Computers cannot calculate orbits from images.",
+        "An asteroid never follows the same orbit twice."
+      ],
+      "answer": 1,
+      "explanation": "The text explains why several observations are required before confident predictions."
+    },
+    {
+      "id": "r34-ast-b1-03",
+      "tab": "observation",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why might astronomers change an earlier prediction?",
+      "choices": [
+        "The object's scientific name is changed.",
+        "The rock has stopped following the Sun.",
+        "New measurements improve the estimated orbit.",
+        "A different news site has reported it."
+      ],
+      "answer": 2,
+      "explanation": "Additional observations can alter estimates, particularly soon after discovery."
+    },
+    {
+      "id": "r34-ast-b1-04",
+      "tab": "events",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why was the DART mission a useful test rather than an emergency rescue?",
+      "choices": [
+        "Its target posed no actual impact threat to Earth.",
+        "It was carried out without scientific observations.",
+        "The spacecraft never reached the target.",
+        "The experiment tried to destroy the asteroid belt."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph three explicitly says the mission was a controlled test with a safe target."
+    },
+    {
+      "id": "r34-ast-b1-05",
+      "tab": "events",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What made the Chelyabinsk explosion dangerous even without a large crater?",
+      "choices": [
+        "The asteroid landed in the city centre.",
+        "It destroyed a large part of the Moon.",
+        "Its light made people unable to breathe.",
+        "The shock wave broke windows and injured people."
+      ],
+      "answer": 3,
+      "explanation": "The blast's shock wave caused injury, mostly through flying glass."
+    },
+    {
+      "id": "r34-ast-b1-06",
+      "tab": "events",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why was this particular space rock hard to spot before it arrived?",
+      "choices": [
+        "It never moved through the atmosphere.",
+        "It came from the Sun's direction.",
+        "It was hidden beneath the ground.",
+        "It flew only at night."
+      ],
+      "answer": 1,
+      "explanation": "Bright sunlight hid the incoming small object from telescopes."
+    },
+    {
+      "id": "r34-ast-b1-07",
+      "tab": "decisions",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "A headline says, 'An asteroid will pass near Earth tomorrow!' What would the writer advise?",
+      "choices": [
+        "Check what 'near' means before becoming afraid.",
+        "Assume a collision is already certain.",
+        "Ignore all information from astronomers.",
+        "Conclude that space surveys are useless."
+      ],
+      "answer": 0,
+      "explanation": "The closing paragraph calls for clear explanations that avoid unnecessary fear."
+    },
+    {
+      "id": "r34-ast-b1-08",
+      "tab": "decisions",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What is the advantage of finding a dangerous object early?",
+      "choices": [
+        "The object will automatically move away.",
+        "The risk can no longer be measured.",
+        "Scientists may have more time to choose a response.",
+        "It makes the asteroid easier to see without equipment."
+      ],
+      "answer": 2,
+      "explanation": "The text identifies early warning as valuable alongside possible spacecraft solutions."
+    },
+    {
+      "id": "r34-ast-b1-09",
+      "tab": "decisions",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Which conclusion about DART would go beyond the evidence described?",
+      "choices": [
+        "A collision can change an orbit in some circumstances.",
+        "It has already proved Earth can be protected from any asteroid.",
+        "Scientists can conduct a controlled planetary-defence experiment.",
+        "The smaller body completed its orbit more quickly afterwards."
+      ],
+      "answer": 1,
+      "explanation": "The text says only a small change was demonstrated in a specific safe experiment."
+    },
+    {
+      "id": "r34-ast-b1-10",
+      "tab": "decisions",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why does the writer favour international cooperation?",
+      "choices": [
+        "Different countries need their own separate asteroid belts.",
+        "Only one country can observe each object.",
+        "It makes space rocks stop following the Sun.",
+        "Shared measurements and warnings make preparation more effective."
+      ],
+      "answer": 3,
+      "explanation": "The final paragraph links international cooperation and accurate information with better decisions."
+    }
+  ],
+  "description": "Original independent B1 asteroid Reading assessment draft; pending content validation"
+}

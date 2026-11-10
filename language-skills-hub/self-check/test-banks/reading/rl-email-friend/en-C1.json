@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 30,
+  "auditRevision": "R34-EMAIL-C1-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "description": "Original independent letter comprehension C1 draft, not approved.",
+  "tabs": [
+    {
+      "id": "disclosure",
+      "title": "Disclosure and Distance",
+      "description": "Analyse how Mara frames silence and personal visibility."
+    },
+    {
+      "id": "attention",
+      "title": "Memory and Attention",
+      "description": "Interpret stories collected for the archive."
+    },
+    {
+      "id": "agency",
+      "title": "Invitation without Obligation",
+      "description": "Evaluate ethical choices in the letter."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-c1-01",
+      "tab": "disclosure",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does Mara reject her usual apology about being busy?",
+      "choices": [
+        "She has already explained her schedule in several messages.",
+        "She believes that being busy never affects friendships.",
+        "It would conceal the deliberate avoidance behind their superficial contact.",
+        "Jules has explicitly forbidden apologies."
+      ],
+      "answer": 2,
+      "explanation": "Mara says the apology would falsely make the silence sound accidental."
+    },
+    {
+      "id": "r34-email-c1-02",
+      "tab": "disclosure",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What is implied by Mara's choice to reply to a question about happiness with a sunset photograph?",
+      "choices": [
+        "The appealing image allowed her to avoid a vulnerable answer.",
+        "The sunset was intended as a direct statement of unhappiness.",
+        "She misunderstood the question as a request for travel photographs.",
+        "Her phone prevented her from writing a message."
+      ],
+      "answer": 0,
+      "explanation": "Mara calls the photo an easy escape from the question."
+    },
+    {
+      "id": "r34-email-c1-03",
+      "tab": "disclosure",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does the archive experience suggest about visibility and mutual trust?",
+      "choices": [
+        "Every personal story should be recorded and made public.",
+        "Disagreements are best excluded from community archives.",
+        "Friends have a right to know everything about one another.",
+        "Sharing frequent details does not necessarily create an honest relationship."
+      ],
+      "answer": 3,
+      "explanation": "Mara questions why she expects friends' details while editing her own life."
+    },
+    {
+      "id": "r34-email-c1-04",
+      "tab": "attention",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does the retired nurse regard old arguments as evidence of caring?",
+      "choices": [
+        "The street had no lasting conflicts.",
+        "Neighbours remained involved enough to disagree rather than withdraw.",
+        "People used to argue only about public transport.",
+        "The arguments were recorded by professional historians."
+      ],
+      "answer": 1,
+      "explanation": "The nurse describes disagreement as a sign of continued involvement."
+    },
+    {
+      "id": "r34-email-c1-05",
+      "tab": "attention",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What is significant about the elderly man's refusal of sympathy?",
+      "choices": [
+        "He thinks the archive should omit the shop altogether.",
+        "He wants the recording to be used as an advertisement.",
+        "He primarily wants the shop's meaning to be acknowledged, not his grief solved.",
+        "He has forgotten why he stopped visiting the street."
+      ],
+      "answer": 2,
+      "explanation": "The interview leads Mara to value attention over immediate advice."
+    },
+    {
+      "id": "r34-email-c1-06",
+      "tab": "attention",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does Mara respect the contributor who rejects an audio recording?",
+      "choices": [
+        "The archive should allow people to control how their experiences are shared.",
+        "A written description is always more historically accurate.",
+        "The contributor's story is less interesting than the nurse's.",
+        "The archive has run out of recording equipment."
+      ],
+      "answer": 0,
+      "explanation": "The paragraph treats refusal and a limited written record as legitimate choices."
+    },
+    {
+      "id": "r34-email-c1-07",
+      "tab": "agency",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What problem does Mara see in turning the listening evening into a test of friendship?",
+      "choices": [
+        "The event would have no audience without Jules.",
+        "Mara would have to pay for every visitor's ticket.",
+        "The recordings would become unsuitable for the archive.",
+        "Jules might feel obliged to prove commitment through attendance."
+      ],
+      "answer": 3,
+      "explanation": "She does not want an invitation to measure whether the friendship is still working."
+    },
+    {
+      "id": "r34-email-c1-08",
+      "tab": "agency",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why would one enjoyable weekend not be enough to repair the relationship?",
+      "choices": [
+        "The archive is too far away for any visit.",
+        "It cannot automatically undo a year of superficial communication.",
+        "Jules would need to prepare a public speech.",
+        "Mara does not expect anyone to enjoy the event."
+      ],
+      "answer": 1,
+      "explanation": "Mara explicitly refuses to present one good evening as a complete repair."
+    },
+    {
+      "id": "r34-email-c1-09",
+      "tab": "agency",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What is the function of allowing Jules to leave the event early?",
+      "choices": [
+        "It makes the invitation genuinely flexible rather than demanding.",
+        "It ensures the group will finish the recordings early.",
+        "It allows Mara to avoid paying for admission.",
+        "It guarantees the event will not be crowded."
+      ],
+      "answer": 0,
+      "explanation": "The option respects Jules's comfort and choice."
+    },
+    {
+      "id": "r34-email-c1-10",
+      "tab": "agency",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What would constitute meaningful progress in the relationship for Mara?",
+      "choices": [
+        "Frequent photographs that make the friendship look active.",
+        "A formal plan for completing shared friendship goals.",
+        "Two people having an uncertain but honest conversation without performing closeness.",
+        "A promise that neither person will ever feel disappointed."
+      ],
+      "answer": 2,
+      "explanation": "The letter values authenticity and conversation over social performance."
+    }
+  ]
+}

@@ -49,7 +49,7 @@ test('R33 unapproved independent B1/B2 content keeps original approved R31 untou
 test('R33 B1 and B2 banks cannot be mixed with another CEFR variant',()=>{
  assert.throws(()=>draft.validate(bankB1,practiceB2,hash),/does not match this bank level/);
  assert.throws(()=>draft.validate(bankB2,practiceB1,hash),/does not match this bank level/);
- assert.throws(()=>draft.validate({...bankB1,level:'A2'},practiceB1,hash),/supports only/);
+ assert.throws(()=>draft.validate({...bankB1,level:'A2'},practiceB1,hash),/does not match this bank level/);
  assert.throws(()=>draft.validate({...bankB1,published:true},practiceB1,hash),/teacher approval/);
  assert.throws(()=>draft.validate({...bankB1,status:'APPROVED'},practiceB1,hash),/teacher approval/);
  assert.throws(()=>draft.validate(bankB1,practiceB1,'0'.repeat(64)),/changed/);

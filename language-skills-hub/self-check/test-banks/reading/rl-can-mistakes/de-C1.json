@@ -1,0 +1,117 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "de",
+  "level": "C1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 25,
+  "auditRevision": "R34-CM-DE-C1-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 6 points maximum; local provisional grade only",
+  "description": "Originale Fragen für Deutsch C1. Entwurf, noch nicht didaktisch freigegeben.",
+  "tabs": [
+    {
+      "id": "verstehen",
+      "title": "Text verstehen",
+      "description": "Gedanken und Aussagen verstehen."
+    },
+    {
+      "id": "anwenden",
+      "title": "Übertragen und prüfen",
+      "description": "Ideen auf andere Situationen beziehen."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-cm-de-c1-01",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Welche problematische Annahme kann hinter ständigen Durchhalteparolen stehen?",
+      "choices": [
+        "Dass Lernfähigkeiten grundsätzlich wachsen können.",
+        "Dass praktische Hilfe für manche Menschen nötig ist.",
+        "Dass alle Schwierigkeiten durch persönliche Anstrengung lösbar seien.",
+        "Dass eine schlechte Note belastend sein kann."
+      ],
+      "answer": 2,
+      "explanation": "Die Einleitung kritisiert den Zwang zur Selbstverbesserung ohne Unterstützung."
+    },
+    {
+      "id": "r34-cm-de-c1-02",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Warum macht das Beispiel zweier Schüler einen pauschalen Rat fragwürdig?",
+      "choices": [
+        "Ihre Lernbedingungen und verfügbaren Ressourcen unterscheiden sich stark.",
+        "Ihre Prüfungsergebnisse sind völlig unvergleichbar.",
+        "Beide lehnen grundsätzlich gute Lernstrategien ab.",
+        "Es gibt keine Möglichkeiten, Lernräume zu verbessern."
+      ],
+      "answer": 0,
+      "explanation": "Der Text zeigt gleiche Ergebnisse unter ungleichen Bedingungen."
+    },
+    {
+      "id": "r34-cm-de-c1-03",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Welche Fehldeutung entsteht, wenn nur ein gut unterstützter Schüler gelobt wird?",
+      "choices": [
+        "Gute Strategien werden sorgfältiger untersucht.",
+        "Die soziale Ungleichheit wird offen benannt.",
+        "Die Prüfungsform wird objektiver.",
+        "Der Zugang zu Ressourcen erscheint als persönliche Charakterstärke."
+      ],
+      "answer": 3,
+      "explanation": "Der zweite Absatz warnt vor der Verwechslung von Privileg und Tugend."
+    },
+    {
+      "id": "r34-cm-de-c1-04",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum kann ein ergebnisoffenes Gespräch bildend sein?",
+      "choices": [
+        "Es führt zwangsläufig zu einer besseren Note.",
+        "Es erweitert Perspektiven, auch ohne messbare Einigung.",
+        "Es ersetzt jede gründliche Lektüre.",
+        "Es beendet dauerhaft alle Meinungsunterschiede."
+      ],
+      "answer": 1,
+      "explanation": "Absatz drei würdigt Bildung, deren Wert sich nicht direkt messen lässt."
+    },
+    {
+      "id": "r34-cm-de-c1-05",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Welche Gefahr birgt Selbstoptimierung in der Freizeit?",
+      "choices": [
+        "Erholung wird automatisch produktiver.",
+        "Jedes Hobby führt zu einer Prüfung.",
+        "Neugier kann zu einer weiteren Leistungspflicht werden.",
+        "Die Unterschiede zwischen Lernenden verschwinden."
+      ],
+      "answer": 2,
+      "explanation": "Der Autor kritisiert die Ausdehnung von Leistungsdruck auf freie Zeit."
+    },
+    {
+      "id": "r34-cm-de-c1-06",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Welcher schulische Ansatz entspricht dem Fazit am ehesten?",
+      "choices": [
+        "Individuelle Lernstrategien mit realer Unterstützung und Erholung verbinden.",
+        "Motivationsplakate als alleinige Hilfe verwenden.",
+        "Jede Freizeitaktivität benoten.",
+        "Hindernisse ausschließlich Schülern zuschreiben."
+      ],
+      "answer": 0,
+      "explanation": "Das Fazit betont persönliche Handlungsmöglichkeiten und Verantwortung der Schule."
+    }
+  ]
+}

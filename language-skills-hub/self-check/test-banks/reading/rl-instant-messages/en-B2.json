@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "d080075175b95612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 25,
+  "auditRevision": "R34-MSG-B2-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "description": "Independent Instant Messages EN/B2 source-based test proposal; pending teacher approval.",
+  "tabs": [
+    {
+      "id": "signals",
+      "title": "Digital Signals",
+      "description": "Analyse how users interpret short messages."
+    },
+    {
+      "id": "misreading",
+      "title": "Interpreting Intent",
+      "description": "Examine the costs of assumptions."
+    },
+    {
+      "id": "repair",
+      "title": "Clearer Communication",
+      "description": "Apply the author's practical solutions."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-msg-b2-01",
+      "tab": "signals",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why can a brief 'OK.' cause an argument even when no offence is intended?",
+      "choices": [
+        "Short messages always express irritation.",
+        "Text does not convey the context and non-verbal signals available in speech.",
+        "Every recipient interprets punctuation in the same way.",
+        "Typing quickly necessarily changes what the sender means."
+      ],
+      "answer": 1,
+      "explanation": "The introduction attributes the misunderstanding to lost vocal and visual context."
+    },
+    {
+      "id": "r34-msg-b2-02",
+      "tab": "signals",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does the full stop example reveal about texting conventions?",
+      "choices": [
+        "Punctuation is never appropriate in personal messages.",
+        "Older relatives intentionally use full stops to signal anger.",
+        "Young users cannot recognise a grammatically correct sentence.",
+        "The same form can carry different social meanings for different generations."
+      ],
+      "answer": 3,
+      "explanation": "The writer contrasts younger and older interpretations of punctuation."
+    },
+    {
+      "id": "r34-msg-b2-03",
+      "tab": "signals",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why might a delayed reply be unfairly interpreted as indifference?",
+      "choices": [
+        "The recipient does not know what prevented the sender from responding earlier.",
+        "Only deliberately rude people reply after several hours.",
+        "A slow message is always more formal than a fast one.",
+        "Messages sent during lessons automatically change their wording."
+      ],
+      "answer": 0,
+      "explanation": "The writer notes that work or lessons can explain response time."
+    },
+    {
+      "id": "r34-msg-b2-04",
+      "tab": "misreading",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What assumption causes Dana to begin looking for another farewell present?",
+      "choices": [
+        "Marek has explicitly rejected every photo book.",
+        "The teacher has requested a different present.",
+        "She mistakes Marek's brief agreement for opposition to her suggestion.",
+        "Dana discovers that all photo books are sold out."
+      ],
+      "answer": 2,
+      "explanation": "Dana reads 'fine' as negative although Marek meant approval."
+    },
+    {
+      "id": "r34-msg-b2-05",
+      "tab": "misreading",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why is the group's lost time important to the author's argument?",
+      "choices": [
+        "Group chats never help people make decisions.",
+        "An ambiguous message can lead to unnecessary actions and delays.",
+        "Farewell presents are difficult to buy online.",
+        "Marek should have ordered the book before receiving a suggestion."
+      ],
+      "answer": 1,
+      "explanation": "The example shows how assumptions create practical consequences."
+    },
+    {
+      "id": "r34-msg-b2-06",
+      "tab": "misreading",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does the writer reject the idea that friends should always send long formal messages?",
+      "choices": [
+        "Long messages cannot be sent in group chats.",
+        "Formal writing is grammatically impossible on phones.",
+        "Friends never need to discuss serious topics.",
+        "Overly formal wording may itself create an unfamiliar and misleading tone."
+      ],
+      "answer": 3,
+      "explanation": "The fourth paragraph says formality may feel strange and cause further misunderstanding."
+    },
+    {
+      "id": "r34-msg-b2-07",
+      "tab": "repair",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "When is adding a few words particularly valuable?",
+      "choices": [
+        "When a reply involves a decision, disagreement or another person's feelings.",
+        "Whenever a friend sends a picture of food.",
+        "Only when messaging an older relative.",
+        "Whenever the sender wants to avoid speaking in person."
+      ],
+      "answer": 0,
+      "explanation": "The author recommends clarification when the stakes of interpretation rise."
+    },
+    {
+      "id": "r34-msg-b2-08",
+      "tab": "repair",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What advantage does asking 'Did you mean...?' have over silent withdrawal?",
+      "choices": [
+        "It guarantees that the other person will agree.",
+        "It proves the initial message was rude.",
+        "It checks intention before the misunderstanding grows.",
+        "It makes a voice call unnecessary in every case."
+      ],
+      "answer": 2,
+      "explanation": "The closing paragraph advises asking rather than assuming."
+    },
+    {
+      "id": "r34-msg-b2-09",
+      "tab": "repair",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why might a friend group agree on the meaning of a thumbs-up reaction?",
+      "choices": [
+        "It makes every difficult conversation unnecessary.",
+        "It prevents people from using punctuation.",
+        "It ensures that everyone is always available.",
+        "A shared convention reduces uncertainty about whether someone will respond later."
+      ],
+      "answer": 3,
+      "explanation": "The author describes explicit shared signals as a way to remove doubt."
+    },
+    {
+      "id": "r34-msg-b2-10",
+      "tab": "repair",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Which conversation would most benefit from moving to a call?",
+      "choices": [
+        "Choosing the colour of a simple emoji.",
+        "A sensitive disagreement in which short replies are being misunderstood.",
+        "Sending a familiar address to a friend.",
+        "Confirming that a photograph has arrived."
+      ],
+      "answer": 1,
+      "explanation": "The ending advocates richer communication when a topic becomes complex or emotional."
+    }
+  ]
+}

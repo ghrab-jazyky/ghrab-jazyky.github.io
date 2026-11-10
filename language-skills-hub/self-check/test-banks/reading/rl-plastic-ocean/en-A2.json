@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "A2",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 20,
+  "auditRevision": "R34-PO-A2-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "tabs": [
+    {
+      "id": "changes",
+      "title": "A Festival Changes",
+      "description": "Compare the new cup system with last year."
+    },
+    {
+      "id": "effects",
+      "title": "How the System Works",
+      "description": "Explain why changes helped."
+    },
+    {
+      "id": "choices",
+      "title": "Planning an Event",
+      "description": "Transfer the ideas to a school activity."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-po-a2-01",
+      "tab": "changes",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why did the festival organisers decide to change their cup system?",
+      "choices": [
+        "Visitors did not want any water.",
+        "The music finished too early.",
+        "Too many plastic cups were left after concerts.",
+        "The town had no grass left."
+      ],
+      "answer": 2,
+      "explanation": "The first paragraph identifies litter after concerts as the problem."
+    },
+    {
+      "id": "r34-po-a2-02",
+      "tab": "changes",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What did the organisers do to help people find water without buying many bottles?",
+      "choices": [
+        "They provided free places where people could get water.",
+        "They closed all food stalls.",
+        "They asked visitors to bring drinks only from home.",
+        "They stopped selling festival tickets."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph two says visitors had access to free water stations and could bring bottles."
+    },
+    {
+      "id": "r34-po-a2-03",
+      "tab": "changes",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why might children collect cups left on the ground?",
+      "choices": [
+        "They wanted to stop the concerts.",
+        "They could get the deposits for returned cups.",
+        "They were paid to wash every cup.",
+        "They were looking for their school bags."
+      ],
+      "answer": 1,
+      "explanation": "Children could collect the return money as pocket money."
+    },
+    {
+      "id": "r34-po-a2-04",
+      "tab": "effects",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "How did clear signs and another return desk address visitors' worries?",
+      "choices": [
+        "They kept the grass dry.",
+        "They made the cups smaller.",
+        "They stopped people bringing bottles.",
+        "They made the new system easier to use and reduced waiting."
+      ],
+      "answer": 3,
+      "explanation": "The organisers responded to concerns about queues with signs and a second desk."
+    },
+    {
+      "id": "r34-po-a2-05",
+      "tab": "effects",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why should the organisers not say they have solved all the rubbish problems?",
+      "choices": [
+        "The festival no longer has any visitors.",
+        "The return system did not allow drinking water.",
+        "They still had food wrappers and other waste to collect.",
+        "Every reusable cup disappeared."
+      ],
+      "answer": 2,
+      "explanation": "The account says the new system was helpful but not perfect."
+    },
+    {
+      "id": "r34-po-a2-06",
+      "tab": "effects",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What does the change in rubbish-bag numbers suggest?",
+      "choices": [
+        "The festival produced less collected litter on Saturday night.",
+        "The cleaning team worked more hours.",
+        "Every item of rubbish was recycled.",
+        "The number of visitors fell by half."
+      ],
+      "answer": 0,
+      "explanation": "The cleaners filled twenty-six bags instead of forty the previous year."
+    },
+    {
+      "id": "r34-po-a2-07",
+      "tab": "choices",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "A school wants to reduce rubbish after lunch. Which next step fits the festival's plan?",
+      "choices": [
+        "Stop students using all bins.",
+        "Make students buy a new cup daily.",
+        "Move all rubbish to the playground.",
+        "Ask food sellers to use less packaging too."
+      ],
+      "answer": 3,
+      "explanation": "The organisers plan to tackle food packaging because many wrappers remain."
+    },
+    {
+      "id": "r34-po-a2-08",
+      "tab": "choices",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why could a refundable deposit encourage people to return an item?",
+      "choices": [
+        "The item becomes free to manufacture.",
+        "People receive their money again when they bring it back.",
+        "Visitors can avoid paying for tickets.",
+        "It makes food packaging disappear."
+      ],
+      "answer": 1,
+      "explanation": "The two-euro deposit is returned when a cup is handed back."
+    },
+    {
+      "id": "r34-po-a2-09",
+      "tab": "choices",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A volunteer says, 'Some cups were lost, so the new system was a failure.' What is a fairer response?",
+      "choices": [
+        "It helped reduce litter although some problems remained.",
+        "The system made the grass much dirtier.",
+        "No visitor managed to find the water stations.",
+        "All the old cups were reused."
+      ],
+      "answer": 0,
+      "explanation": "The article reports improvement alongside missing cups and remaining litter."
+    },
+    {
+      "id": "r34-po-a2-10",
+      "tab": "choices",
+      "kind": "mc",
+      "sourceParagraph": 6,
+      "q": "What is the best reason to count rubbish bags next year as well?",
+      "choices": [
+        "To decide which singer should perform.",
+        "To give children more pocket money.",
+        "To see whether the changes continue to make a difference.",
+        "To make the cups heavier."
+      ],
+      "answer": 2,
+      "explanation": "Counting bags allows the organisers to compare the amount of waste after further changes."
+    }
+  ],
+  "description": "Original A2 Plastic Ocean topic Reading test bank draft, not teacher-approved."
+}

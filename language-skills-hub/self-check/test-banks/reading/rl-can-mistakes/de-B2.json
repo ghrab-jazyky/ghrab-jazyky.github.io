@@ -1,0 +1,117 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "de",
+  "level": "B2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "auditRevision": "R34-CM-DE-B2-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 6 points maximum; local provisional grade only",
+  "description": "Originale Fragen für Deutsch B2. Entwurf, noch nicht didaktisch freigegeben.",
+  "tabs": [
+    {
+      "id": "verstehen",
+      "title": "Text verstehen",
+      "description": "Gedanken und Aussagen verstehen."
+    },
+    {
+      "id": "anwenden",
+      "title": "Übertragen und prüfen",
+      "description": "Ideen auf andere Situationen beziehen."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-cm-de-b2-01",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Warum können gut gemeinte Rückmeldungen persönlich verletzend wirken?",
+      "choices": [
+        "Alle Lehrkräfte beurteilen die Intelligenz.",
+        "Jede schlechte Note beschreibt die Zukunft.",
+        "Lernende verwechseln eine einzelne Leistung mit ihrem eigenen Wert.",
+        "Kritik enthält grundsätzlich keine Hilfe."
+      ],
+      "answer": 2,
+      "explanation": "Der Text erklärt die Verwechslung von Leistung und Identität."
+    },
+    {
+      "id": "r34-cm-de-b2-02",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was gewinnt die Schülerin durch das Überarbeiten eines Absatzes?",
+      "choices": [
+        "Ein besseres Modell für spätere Aufsätze trotz unveränderter Note.",
+        "Den sicheren Anspruch auf eine bessere aktuelle Note.",
+        "Den Beweis, dass die Lehrkraft falsch lag.",
+        "Die Gewissheit, künftig keine Fehler zu machen."
+      ],
+      "answer": 0,
+      "explanation": "Die Überarbeitung soll den nächsten Text verbessern."
+    },
+    {
+      "id": "r34-cm-de-b2-03",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum ist eine gezielte Nachfrage konstruktiver als sofortige Ablehnung?",
+      "choices": [
+        "Sie zwingt die Lehrkraft, die Note zu erhöhen.",
+        "Sie macht den ursprünglichen Text unwichtig.",
+        "Sie beendet jede Diskussion über Belege.",
+        "Sie ermöglicht, die konkrete Unklarheit gemeinsam zu untersuchen."
+      ],
+      "answer": 3,
+      "explanation": "Absatz drei empfiehlt präzise Fragen und gemeinsame Prüfung."
+    },
+    {
+      "id": "r34-cm-de-b2-04",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Welche Grenze eines Bewertungssystems erkennt die Autorin an?",
+      "choices": [
+        "Jeder Aufsatz muss ohne Begründung bewertet werden.",
+        "Ein enger Schreibstil kann zu einseitig bevorzugt werden.",
+        "Sprachliche Qualität spielt nie eine Rolle.",
+        "Lehrkräfte können grundsätzlich keine Argumente lesen."
+      ],
+      "answer": 1,
+      "explanation": "Manche Bewertungsverfahren bevorzugen einen begrenzten Stil."
+    },
+    {
+      "id": "r34-cm-de-b2-05",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Was unterscheidet ernsthaftes Prüfen von blindem Befolgen eines Rates?",
+      "choices": [
+        "Man akzeptiert jede Anweisung ohne Fragen.",
+        "Man muss Kritik stets angenehm finden.",
+        "Man untersucht Belege, bevor man eine Änderung übernimmt.",
+        "Man vermeidet jede spätere Rückmeldung."
+      ],
+      "answer": 2,
+      "explanation": "Der Schluss trennt kritisches Aufgreifen von gehorsamer Übernahme."
+    },
+    {
+      "id": "r34-cm-de-b2-06",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Ein Trainer hat nur einen Teil des Trainings gesehen. Was wäre angemessen?",
+      "choices": [
+        "Seinen Hinweis mit weiteren Beobachtungen zu vergleichen.",
+        "Den Rat sofort als wertlos abzutun.",
+        "Dem Hinweis ohne Prüfung zu folgen.",
+        "Alle Kritik als Angriff zu behandeln."
+      ],
+      "answer": 0,
+      "explanation": "Auch begrenzte Beobachtungen können einen wahren Kern enthalten."
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "es",
+  "level": "A1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 12,
+  "auditRevision": "R34-CM-ES-A1-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 6 points maximum; local provisional grade only",
+  "description": "Preguntas originales del nivel A1 sobre el texto español. Borrador pendiente de revisión.",
+  "tabs": [
+    {
+      "id": "interpretacion",
+      "title": "Comprender",
+      "description": "Interpretar hechos y significados."
+    },
+    {
+      "id": "aplicacion",
+      "title": "Pensar y aplicar",
+      "description": "Aplicar las ideas a otras situaciones."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-cm-es-a1-01",
+      "tab": "interpretacion",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "¿Por qué Mía está nerviosa al leer?",
+      "choices": [
+        "Porque pierde el libro.",
+        "Porque su clase termina tarde.",
+        "Porque encuentra palabras que no conoce.",
+        "Porque Leo está enfermo."
+      ],
+      "answer": 2,
+      "explanation": "El texto indica que algunas palabras son nuevas para Mía."
+    },
+    {
+      "id": "r34-cm-es-a1-02",
+      "tab": "interpretacion",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Qué le aconseja Leo cuando la lectura es difícil?",
+      "choices": [
+        "Que lea la historia otra vez.",
+        "Que compre otro cuaderno.",
+        "Que no vaya a clase.",
+        "Que aprenda música."
+      ],
+      "answer": 0,
+      "explanation": "Leo le pide que vuelva a leer la historia."
+    },
+    {
+      "id": "r34-cm-es-a1-03",
+      "tab": "interpretacion",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "¿Para qué escribe Mía dos palabras en su cuaderno?",
+      "choices": [
+        "Para regalar el cuaderno.",
+        "Para cambiar la historia.",
+        "Para escribir una carta.",
+        "Para recordarlas y aprenderlas."
+      ],
+      "answer": 3,
+      "explanation": "Mía pregunta por dos palabras y las anota después."
+    },
+    {
+      "id": "r34-cm-es-a1-04",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Qué cambia cuando Mía lee el viernes?",
+      "choices": [
+        "Ya no quiere practicar.",
+        "Ahora comprende más que antes.",
+        "Solo lee con Leo.",
+        "Su historia es mucho más corta."
+      ],
+      "answer": 1,
+      "explanation": "El viernes la nueva historia sigue siendo difícil, pero entiende más."
+    },
+    {
+      "id": "r34-cm-es-a1-05",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Una compañera no comprende un texto. ¿Qué idea de Mía puede ayudarla?",
+      "choices": [
+        "Cerrar el libro para siempre.",
+        "Esperar sin hacer nada.",
+        "Leer de nuevo y preguntar por las palabras nuevas.",
+        "Evitar todas las lecturas."
+      ],
+      "answer": 2,
+      "explanation": "Mía mejora al volver a leer y pedir ayuda."
+    },
+    {
+      "id": "r34-cm-es-a1-06",
+      "tab": "aplicacion",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "¿Por qué Mía quiere practicar mañana?",
+      "choices": [
+        "Porque nota que está avanzando.",
+        "Porque el profesor le quita el cuaderno.",
+        "Porque tiene un examen de deporte.",
+        "Porque Leo ya no lee."
+      ],
+      "answer": 0,
+      "explanation": "Al comprender mejor, Mía sonríe y desea continuar practicando."
+    }
+  ]
+}

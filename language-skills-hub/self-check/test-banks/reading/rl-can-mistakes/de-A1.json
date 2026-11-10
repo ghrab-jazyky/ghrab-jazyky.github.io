@@ -1,0 +1,117 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "de",
+  "level": "A1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 12,
+  "auditRevision": "R34-CM-DE-A1-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 6 points maximum; local provisional grade only",
+  "description": "Originale Fragen für Deutsch A1. Entwurf, noch nicht didaktisch freigegeben.",
+  "tabs": [
+    {
+      "id": "verstehen",
+      "title": "Text verstehen",
+      "description": "Gedanken und Aussagen verstehen."
+    },
+    {
+      "id": "anwenden",
+      "title": "Übertragen und prüfen",
+      "description": "Ideen auf andere Situationen beziehen."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-cm-de-a1-01",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Warum ist Mia beim Lesen ein bisschen nervös?",
+      "choices": [
+        "Sie hat das Buch verloren.",
+        "Sie muss heute Fußball spielen.",
+        "Sie kennt einige Wörter noch nicht.",
+        "Leo ist nicht in der Schule."
+      ],
+      "answer": 2,
+      "explanation": "Im ersten Absatz stehen unbekannte Wörter und Mias Unsicherheit."
+    },
+    {
+      "id": "r34-cm-de-a1-02",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Was rät Leo Mia, wenn sie nicht alles versteht?",
+      "choices": [
+        "Sie soll die Geschichte noch einmal lesen.",
+        "Sie soll das Buch wegwerfen.",
+        "Sie soll den Unterricht verlassen.",
+        "Sie soll eine neue Schule suchen."
+      ],
+      "answer": 0,
+      "explanation": "Leo ermutigt Mia ausdrücklich, es erneut zu versuchen."
+    },
+    {
+      "id": "r34-cm-de-a1-03",
+      "tab": "verstehen",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Warum schreibt Mia zwei Wörter in ihr Heft?",
+      "choices": [
+        "Sie möchte eine Einkaufsliste machen.",
+        "Sie möchte die Geschichte verändern.",
+        "Sie möchte Leo eine Einladung schicken.",
+        "Sie möchte ihre Bedeutung lernen und behalten."
+      ],
+      "answer": 3,
+      "explanation": "Mia fragt nach den Wörtern und notiert sie anschließend."
+    },
+    {
+      "id": "r34-cm-de-a1-04",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Was ist am Freitag anders als am Montag?",
+      "choices": [
+        "Mia kann jetzt jedes Wort.",
+        "Mia versteht beim Lesen schon mehr.",
+        "Sie liest überhaupt keine Geschichten mehr.",
+        "Leo macht die Aufgaben für sie."
+      ],
+      "answer": 1,
+      "explanation": "Die neue Geschichte bleibt schwierig, aber Mia versteht mehr."
+    },
+    {
+      "id": "r34-cm-de-a1-05",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Eine Freundin versteht einen Satz nicht. Was passt zu Mias Erfahrung?",
+      "choices": [
+        "Sie muss das Buch sofort schließen.",
+        "Sie sollte nie wieder Englisch lesen.",
+        "Sie kann erneut lesen und nachfragen.",
+        "Sie sollte eine Woche warten."
+      ],
+      "answer": 2,
+      "explanation": "Mias Erfolg beruht auf Wiederholung und Fragen."
+    },
+    {
+      "id": "r34-cm-de-a1-06",
+      "tab": "anwenden",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Warum möchte Mia am nächsten Tag weiter üben?",
+      "choices": [
+        "Sie merkt, dass ihr das Üben hilft.",
+        "Sie hat alle Wörter vergessen.",
+        "Ihr Lehrer verlangt eine neue Prüfung.",
+        "Sie möchte Leo nicht mehr treffen."
+      ],
+      "answer": 0,
+      "explanation": "Mia lächelt und plant nach ihrem Fortschritt weitere Übungen."
+    }
+  ]
+}

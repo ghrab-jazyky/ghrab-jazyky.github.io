@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "en",
+  "level": "B1",
+  "sourcePracticeContentHash": "d080075175b95612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 20,
+  "auditRevision": "R34-MSG-B1-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "description": "Original message-context EN/B1 independent reading assessment draft; human approval pending.",
+  "tabs": [
+    {
+      "id": "change",
+      "title": "A Different Week",
+      "description": "Understand the student's experiment."
+    },
+    {
+      "id": "advantages",
+      "title": "Benefits and Problems",
+      "description": "Evaluate what improved and what did not."
+    },
+    {
+      "id": "balance",
+      "title": "A Better Routine",
+      "description": "Transfer the lessons to new situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-msg-b1-01",
+      "tab": "change",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does the writer agree to the challenge so quickly?",
+      "choices": [
+        "He has lost his mobile phone.",
+        "His class is going on a trip without internet.",
+        "He prefers sending long emails to friends.",
+        "He wants to demonstrate that living without messaging will be easy."
+      ],
+      "answer": 3,
+      "explanation": "The first paragraph identifies his wish to prove the task easy."
+    },
+    {
+      "id": "r34-msg-b1-02",
+      "tab": "change",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does repeatedly checking an inactive phone suggest?",
+      "choices": [
+        "The phone is not working correctly.",
+        "The habit of checking is strong even without new messages.",
+        "The writer has forgotten how to make calls.",
+        "His teacher is sending him messages secretly."
+      ],
+      "answer": 1,
+      "explanation": "He checks dozens of times although there is no new message to find."
+    },
+    {
+      "id": "r34-msg-b1-03",
+      "tab": "change",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why is football training difficult to arrange during the experiment?",
+      "choices": [
+        "The coach has cancelled the training.",
+        "He is not allowed to play sport after school.",
+        "The time is normally shared only in the team chat.",
+        "His parents have taken away his football shoes."
+      ],
+      "answer": 2,
+      "explanation": "The usual source of training information is unavailable."
+    },
+    {
+      "id": "r34-msg-b1-04",
+      "tab": "advantages",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What surprised the writer about calling Karim?",
+      "choices": [
+        "A short call solved the problem more quickly than a long chat.",
+        "Karim was unable to speak on the phone.",
+        "The coach had sent several emails instead.",
+        "They had to discuss the problem for hours."
+      ],
+      "answer": 0,
+      "explanation": "A two-minute call provides an answer without a long group conversation."
+    },
+    {
+      "id": "r34-msg-b1-05",
+      "tab": "advantages",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What does the history-group episode show about a messaging-free week?",
+      "choices": [
+        "The group no longer needs a history presentation.",
+        "The café is always quieter than the library.",
+        "Students never need to arrange meetings.",
+        "Important plans can change without reaching someone who is offline."
+      ],
+      "answer": 3,
+      "explanation": "The group changes the meeting place while the writer remains unaware."
+    },
+    {
+      "id": "r34-msg-b1-06",
+      "tab": "advantages",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does the writer briefly feel like a tourist in his own class?",
+      "choices": [
+        "He has recently moved from another country.",
+        "He misses shared news and jokes that his classmates know about.",
+        "He does not understand the history subject.",
+        "He cannot remember any of his friends' names."
+      ],
+      "answer": 1,
+      "explanation": "The funny video everyone discussed made him feel socially excluded."
+    },
+    {
+      "id": "r34-msg-b1-07",
+      "tab": "balance",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What does turning off notifications in some groups allow him to do?",
+      "choices": [
+        "Choose which conversations need his immediate attention.",
+        "Avoid ever speaking to his classmates again.",
+        "Stop all messages from reaching his phone.",
+        "Replace every group chat with a phone call."
+      ],
+      "answer": 0,
+      "explanation": "The final paragraph shows him controlling when to respond."
+    },
+    {
+      "id": "r34-msg-b1-08",
+      "tab": "balance",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why is calling his grandmother an example of changing his habits?",
+      "choices": [
+        "She cannot receive any telephone calls.",
+        "She has joined his school media class.",
+        "He uses direct conversation where he once sent brief symbols.",
+        "He needs her to organise football practice."
+      ],
+      "answer": 2,
+      "explanation": "He replaces emoji messages with a call."
+    },
+    {
+      "id": "r34-msg-b1-09",
+      "tab": "balance",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A friend says the experiment proves messaging is harmful. What would the author reply?",
+      "choices": [
+        "All chat groups should be closed permanently.",
+        "The main lesson is choosing when and how to communicate.",
+        "Voice notes are safer than phone calls.",
+        "The experiment showed there were no disadvantages."
+      ],
+      "answer": 1,
+      "explanation": "He explicitly rejects the claim that messaging itself is bad."
+    },
+    {
+      "id": "r34-msg-b1-10",
+      "tab": "balance",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "When would a quick phone call be a sensible alternative to a long group chat?",
+      "choices": [
+        "Whenever someone wants to share a long video.",
+        "Only when a friend has no phone.",
+        "When a message does not need an answer.",
+        "When a simple urgent question needs a clear answer."
+      ],
+      "answer": 3,
+      "explanation": "The quick call with Karim demonstrates efficiency for a specific question."
+    }
+  ]
+}

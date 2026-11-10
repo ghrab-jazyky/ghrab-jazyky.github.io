@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "C2",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 30,
+  "auditRevision": "R34-EMAIL-C2-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "description": "Original independent letter comprehension C2 draft, not approved.",
+  "tabs": [
+    {
+      "id": "framing",
+      "title": "Epistolary Self-Critique",
+      "description": "Distinguish explanation from self-exoneration."
+    },
+    {
+      "id": "ethics",
+      "title": "Listening and Representation",
+      "description": "Interpret contradictions, memory and responsibility."
+    },
+    {
+      "id": "invitation",
+      "title": "Consent and Expectations",
+      "description": "Evaluate the letter's ethical argument."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-c2-01",
+      "tab": "framing",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What makes Elias's account of his busy life 'conveniently incomplete'?",
+      "choices": [
+        "It invents jobs in cities where he has never lived.",
+        "It incorrectly suggests that travel consumes time.",
+        "It assumes that writing letters is always quicker than posting.",
+        "It offers plausible circumstances while omitting his active preference for curated updates."
+      ],
+      "answer": 3,
+      "explanation": "He acknowledges that his explanation is not false but conceals choices he made."
+    },
+    {
+      "id": "r34-email-c2-02",
+      "tab": "framing",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What distinction underlies the question about information and the availability of a person?",
+      "choices": [
+        "Frequent online updates eliminate the need for friendship.",
+        "Knowing someone's public whereabouts does not ensure access to their private experience.",
+        "All written information is less accurate than spoken conversation.",
+        "Location information is inherently dishonest."
+      ],
+      "answer": 1,
+      "explanation": "Elias realises he can tell acquaintances where he is but not tell Amara why he is lost."
+    },
+    {
+      "id": "r34-email-c2-03",
+      "tab": "framing",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What is ethically important about retaining the dockworker's contradictory memories?",
+      "choices": [
+        "It refuses to turn lived complexity into a falsely reassuring communal narrative.",
+        "It demonstrates that solidarity cannot exist in a difficult neighbourhood.",
+        "It establishes that the dockworker's account is the only valid history.",
+        "It makes the exhibition intentionally confusing."
+      ],
+      "answer": 0,
+      "explanation": "The account allows solidarity and resentment to coexist without a tidy ending."
+    },
+    {
+      "id": "r34-email-c2-04",
+      "tab": "ethics",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why might listening require abandoning the pleasure of being useful?",
+      "choices": [
+        "Interviewers should never offer practical assistance.",
+        "A museum cannot include stories with unresolved problems.",
+        "Premature solutions can overwrite a person's complicated experience.",
+        "Every difficult experience should be kept private."
+      ],
+      "answer": 2,
+      "explanation": "Elias reflects on offering tidy solutions rather than attending to Amara's complexity."
+    },
+    {
+      "id": "r34-email-c2-05",
+      "tab": "ethics",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why are the fisherman's brief postcards valuable without cancelling his long absence?",
+      "choices": [
+        "Their factual details prove that he was always a good father.",
+        "The family treats them as proof he never travelled.",
+        "They explain why he stopped communicating in person.",
+        "They offer limited but genuine signs of attention without pretending to repair everything."
+      ],
+      "answer": 3,
+      "explanation": "The daughter values honest fragments while refusing to romanticise her absent father."
+    },
+    {
+      "id": "r34-email-c2-06",
+      "tab": "ethics",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What contrast does Elias draw between the postcards and his own polished updates?",
+      "choices": [
+        "His updates were written on paper and the postcards online.",
+        "The postcards acknowledge their modest scope rather than displaying artificial completeness.",
+        "The postcards gave elaborate accounts of every difficult emotion.",
+        "His updates were too short to reach an audience."
+      ],
+      "answer": 1,
+      "explanation": "The postcard messages never claim to be more than a sign of life."
+    },
+    {
+      "id": "r34-email-c2-07",
+      "tab": "invitation",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What makes the timing of Elias's letter ethically uncomfortable?",
+      "choices": [
+        "His museum project has ended before the letter is written.",
+        "Amara has already agreed to attend the event.",
+        "His wish for Amara's company at an upcoming museum event may colour his renewed concern.",
+        "Elias has promised to pay for everyone's travel."
+      ],
+      "answer": 2,
+      "explanation": "He recognises the suspicion that he remembered the friendship only when he wanted an audience."
+    },
+    {
+      "id": "r34-email-c2-08",
+      "tab": "invitation",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why would asking Amara to reassure him about his sincerity worsen matters?",
+      "choices": [
+        "It would make her responsible for managing his guilt rather than freely responding.",
+        "It would prevent Elias from explaining the museum's work.",
+        "It would require the museum to cancel the event.",
+        "It would reveal private information about another interviewee."
+      ],
+      "answer": 0,
+      "explanation": "Elias explicitly rejects transferring emotional labour to Amara."
+    },
+    {
+      "id": "r34-email-c2-09",
+      "tab": "invitation",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What is the value of proposing letters without an expectation of immediate replies?",
+      "choices": [
+        "It ensures that neither person will ever feel disappointed.",
+        "It gives both changed people room to reconnect without demanding an earlier closeness.",
+        "It allows Elias to avoid reading Amara's replies.",
+        "It guarantees they will restore their friendship exactly as before."
+      ],
+      "answer": 1,
+      "explanation": "The final paragraph wants contact without requiring either to become a reassuring memory."
+    },
+    {
+      "id": "r34-email-c2-10",
+      "tab": "invitation",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What does Elias mean by refusing to treat Amara's response as a verdict on his worth?",
+      "choices": [
+        "He no longer considers friendship valuable.",
+        "He believes every refusal would prove the letter succeeded.",
+        "He expects her to justify any decision in detail.",
+        "He intends to respect her independent choice instead of using it to judge himself."
+      ],
+      "answer": 3,
+      "explanation": "The letter rejects turning an invitation into a moral test of either person."
+    }
+  ]
+}

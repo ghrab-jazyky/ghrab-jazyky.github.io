@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-asteroids",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
+  "durationMinutesSuggested": 15,
+  "auditRevision": "R34-AST-A1-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "tabs": [
+    {
+      "id": "understand",
+      "title": "Understanding Space",
+      "description": "Think about the details in the text."
+    },
+    {
+      "id": "reason",
+      "title": "Why Does It Matter?",
+      "description": "Explain what different details mean."
+    },
+    {
+      "id": "apply",
+      "title": "Think Like a Scientist",
+      "description": "Use the ideas in a new situation."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-ast-a1-01",
+      "tab": "understand",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "How is an asteroid different from a star?",
+      "choices": [
+        "It is always bigger than Earth.",
+        "It cannot make its own light.",
+        "It cannot move around the Sun.",
+        "It is made of water."
+      ],
+      "answer": 1,
+      "explanation": "The first paragraph says asteroids are not stars and do not make their own light."
+    },
+    {
+      "id": "r34-ast-a1-02",
+      "tab": "understand",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why is it wrong to say that all asteroids are very small?",
+      "choices": [
+        "All asteroids are the size of cars.",
+        "Asteroids only move at night.",
+        "Every asteroid is a dwarf planet.",
+        "Some asteroids are bigger than mountains."
+      ],
+      "answer": 3,
+      "explanation": "The first paragraph compares some asteroids to cars and others to mountains."
+    },
+    {
+      "id": "r34-ast-a1-03",
+      "tab": "understand",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What can a scientist learn by taking many pictures of a space rock?",
+      "choices": [
+        "How its position changes in the sky.",
+        "What people think about stars.",
+        "How old the Sun is today.",
+        "Why a telescope has glass."
+      ],
+      "answer": 0,
+      "explanation": "The scientist takes pictures to watch where asteroids travel."
+    },
+    {
+      "id": "r34-ast-a1-04",
+      "tab": "reason",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why does Ceres not look like many other asteroids?",
+      "choices": [
+        "It has no path around the Sun.",
+        "It is brighter than every star.",
+        "It is round rather than potato-shaped.",
+        "It comes from Earth's oceans."
+      ],
+      "answer": 2,
+      "explanation": "Ceres is described as round, while many other asteroids look like potatoes."
+    },
+    {
+      "id": "r34-ast-a1-05",
+      "tab": "reason",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why do scientists use very large telescopes?",
+      "choices": [
+        "Asteroids move only inside museums.",
+        "Asteroids can be very far away.",
+        "The Moon has no light at all.",
+        "A telescope makes the Sun smaller."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph two explains that telescopes help scientists see distant objects."
+    },
+    {
+      "id": "r34-ast-a1-06",
+      "tab": "reason",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What can happen to a small piece of rock before it reaches the ground?",
+      "choices": [
+        "It can turn into a new star.",
+        "It can always become a moon.",
+        "It can stop the Earth moving.",
+        "It can burn up in the air."
+      ],
+      "answer": 3,
+      "explanation": "Many small space rocks burn in Earth's atmosphere before reaching the ground."
+    },
+    {
+      "id": "r34-ast-a1-07",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "A child finds a small dark rock at a space museum. What could it be?",
+      "choices": [
+        "A meteorite from space.",
+        "The centre of the Sun.",
+        "A piece of Earth's atmosphere.",
+        "A new planet orbiting Earth."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph three calls a piece of space rock that can be touched in a museum a meteorite."
+    },
+    {
+      "id": "r34-ast-a1-08",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "You want to learn where an asteroid will go next. What should you look at?",
+      "choices": [
+        "The colour of the telescope.",
+        "The names of famous stars.",
+        "Its path around the Sun.",
+        "The weather on Earth yesterday."
+      ],
+      "answer": 2,
+      "explanation": "The orbit is the path asteroids follow around the Sun."
+    },
+    {
+      "id": "r34-ast-a1-09",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why can watching the sky be useful for people on Earth?",
+      "choices": [
+        "It makes big asteroids disappear.",
+        "It keeps all clouds away.",
+        "It stops every rock from moving.",
+        "Scientists can learn about possible space-rock dangers."
+      ],
+      "answer": 3,
+      "explanation": "The last paragraph explains that watching the sky helps scientists learn and keep people safe."
+    },
+    {
+      "id": "r34-ast-a1-10",
+      "tab": "apply",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What is one way a student can begin learning about space?",
+      "choices": [
+        "Try to touch the Sun.",
+        "Look at the night sky and ask questions.",
+        "Go into space without help.",
+        "Wait until an asteroid hits Earth."
+      ],
+      "answer": 1,
+      "explanation": "The last paragraph encourages readers to look at stars on a clear night and ask questions."
+    }
+  ],
+  "description": "Original independent A1 asteroid Reading assessment draft; pending content validation"
+}

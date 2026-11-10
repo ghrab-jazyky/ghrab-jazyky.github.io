@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "en",
+  "level": "C1",
+  "sourcePracticeContentHash": "d080075175b95612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 30,
+  "auditRevision": "R34-MSG-C1-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "description": "Independent Instant Messages EN/C1 source-based test proposal; pending teacher approval.",
+  "tabs": [
+    {
+      "id": "power",
+      "title": "Responsiveness and Pressure",
+      "description": "Interpret how read receipts alter expectations."
+    },
+    {
+      "id": "counterpoint",
+      "title": "Benefits and Limits",
+      "description": "Evaluate arguments for and against read receipts."
+    },
+    {
+      "id": "norms",
+      "title": "Negotiating Norms",
+      "description": "Consider social and institutional responses."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-msg-c1-01",
+      "tab": "power",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does the author describe reading a message as a kind of promise?",
+      "choices": [
+        "It legally binds the recipient to complete a task.",
+        "It guarantees that the sender understands the answer.",
+        "A read receipt can make the recipient feel obliged to answer immediately.",
+        "It proves that the message concerns an emergency."
+      ],
+      "answer": 2,
+      "explanation": "The author connects blue ticks with a clock and expectations after reading."
+    },
+    {
+      "id": "r34-msg-c1-02",
+      "tab": "power",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What is the significance of rewarding the first worker to answer a late-night shift request?",
+      "choices": [
+        "Availability becomes an informal condition of being seen as reliable.",
+        "The manager has formally abolished contracted hours.",
+        "All staff have equal opportunities to answer while asleep.",
+        "The extra shifts are assigned by an independent lottery."
+      ],
+      "answer": 0,
+      "explanation": "The example shows hidden incentives without a written duty to stay online."
+    },
+    {
+      "id": "r34-msg-c1-03",
+      "tab": "power",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What makes unspoken rules about response times particularly difficult?",
+      "choices": [
+        "Every social group follows exactly the same convention.",
+        "The rules are always displayed beside a read receipt.",
+        "A delayed answer necessarily shows deliberate disrespect.",
+        "People can break expectations that they did not know existed."
+      ],
+      "answer": 3,
+      "explanation": "Newcomers learn unwritten rules through mistakes and conflict."
+    },
+    {
+      "id": "r34-msg-c1-04",
+      "tab": "counterpoint",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Which benefit of read receipts does the writer genuinely acknowledge?",
+      "choices": [
+        "They show whether the recipient is emotionally ready to reply.",
+        "They may confirm that an important emergency message has been seen.",
+        "They reveal why a response has not arrived.",
+        "They prevent people from ignoring inconvenient messages entirely."
+      ],
+      "answer": 1,
+      "explanation": "The author concedes that knowledge of reception can matter in emergencies."
+    },
+    {
+      "id": "r34-msg-c1-05",
+      "tab": "counterpoint",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What is the central weakness in equating reading with availability?",
+      "choices": [
+        "All messages need long thoughtful replies.",
+        "Only people at work can understand short messages.",
+        "Seeing words gives no reliable information about the capacity to respond.",
+        "The sender knows exactly what the recipient is doing."
+      ],
+      "answer": 2,
+      "explanation": "The text distinguishes reading from the time, energy or knowledge required to reply."
+    },
+    {
+      "id": "r34-msg-c1-06",
+      "tab": "counterpoint",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why is switching read receipts off not necessarily a free choice?",
+      "choices": [
+        "Other people may interpret the disabled setting as a social statement.",
+        "The setting can never be changed on a phone.",
+        "Switching it off automatically deletes group chats.",
+        "The recipient will no longer be able to read messages."
+      ],
+      "answer": 0,
+      "explanation": "The writer points out that disabling receipts may itself be meaningful to others."
+    },
+    {
+      "id": "r34-msg-c1-07",
+      "tab": "norms",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why do disagreements over response time often emerge indirectly?",
+      "choices": [
+        "The technology blocks users from describing their expectations.",
+        "All conflicts disappear when emojis are used.",
+        "Group members are forbidden from speaking face-to-face.",
+        "Unspoken expectations encourage hints rather than open negotiation."
+      ],
+      "answer": 3,
+      "explanation": "Short replies and deliberate delays can convey resentment about invisible rules."
+    },
+    {
+      "id": "r34-msg-c1-08",
+      "tab": "norms",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What is the value of agreeing that club members need not reply after ten?",
+      "choices": [
+        "It means urgent situations can never arise.",
+        "It removes uncertainty by setting a shared boundary in advance.",
+        "It makes all messaging outside school illegal.",
+        "It guarantees that every person will read messages at ten."
+      ],
+      "answer": 1,
+      "explanation": "The writer suggests making expectations explicit rather than guessing."
+    },
+    {
+      "id": "r34-msg-c1-09",
+      "tab": "norms",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "What double standard does the writer identify in some adults' behaviour?",
+      "choices": [
+        "They criticise young people's phone use while demanding immediate replies from them.",
+        "They expect teenagers to abandon all social media at home.",
+        "They assume school clubs need longer messages than families.",
+        "They prohibit group chats but require students to use emails."
+      ],
+      "answer": 0,
+      "explanation": "The fourth paragraph names this conflict between criticism and expectation."
+    },
+    {
+      "id": "r34-msg-c1-10",
+      "tab": "norms",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Which principle best captures the author's final argument?",
+      "choices": [
+        "People should always disable every read receipt.",
+        "The sender has a right to receive a prompt response.",
+        "A notification should convey technical information without becoming a measure of affection.",
+        "Blue ticks are accurate indicators of social commitment."
+      ],
+      "answer": 2,
+      "explanation": "The closing sentence separates message receipt from how much the reader cares."
+    }
+  ]
+}

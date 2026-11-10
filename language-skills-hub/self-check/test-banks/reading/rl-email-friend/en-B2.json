@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 25,
+  "auditRevision": "R34-EMAIL-B2-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "description": "Original independent letter comprehension B2 draft, not approved.",
+  "tabs": [
+    {
+      "id": "appearance",
+      "title": "Appearance and Reality",
+      "description": "Interpret Lena's experience of life abroad."
+    },
+    {
+      "id": "connections",
+      "title": "Building Connections",
+      "description": "Analyse why encounters change her understanding."
+    },
+    {
+      "id": "intentions",
+      "title": "Rebuilding Friendship",
+      "description": "Evaluate the message's purpose and alternatives."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-email-b2-01",
+      "tab": "appearance",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does Lena describe her social-media updates as an incomplete picture?",
+      "choices": [
+        "They contained inaccurate information about the city.",
+        "They showed attractive moments while concealing her loneliness.",
+        "She had posted photographs of places she never visited.",
+        "Her friends had misunderstood the local language."
+      ],
+      "answer": 1,
+      "explanation": "Lena contrasts cheerful captions with her difficulties settling in."
+    },
+    {
+      "id": "r34-email-b2-02",
+      "tab": "appearance",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What was missing from Lena's early experience despite her knowledge of Rotterdam?",
+      "choices": [
+        "Directions to important city museums.",
+        "A friendly place to buy food in the morning.",
+        "A family willing to let her stay.",
+        "Someone she could contact when she needed emotional support."
+      ],
+      "answer": 3,
+      "explanation": "She could navigate the city but did not know whom to call after a bad day."
+    },
+    {
+      "id": "r34-email-b2-03",
+      "tab": "appearance",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does the old school photograph prompt Lena to rethink her messages?",
+      "choices": [
+        "It reminds her of a friendship based on sharing difficulties, not just achievements.",
+        "It reveals that Alex has moved back to their old school.",
+        "It shows that she forgot the date of their final exam.",
+        "It convinces her that social media is never useful."
+      ],
+      "answer": 0,
+      "explanation": "Lena recalls that they used to share difficult experiences and realises she knows little about Alex's year."
+    },
+    {
+      "id": "r34-email-b2-04",
+      "tab": "connections",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What is the significance of the woman describing bus routes as a secret language?",
+      "choices": [
+        "The woman knows an invented language that Lena wants to study.",
+        "The local buses use a code that only residents can read.",
+        "Her practical confusion helps Lena recognise a shared feeling of being new.",
+        "The interview reveals that the bus system does not operate."
+      ],
+      "answer": 2,
+      "explanation": "Lena connects the interviewee's experience with her own embarrassment and uncertainty."
+    },
+    {
+      "id": "r34-email-b2-05",
+      "tab": "connections",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What do the three listeners' reactions to the bakery interview suggest?",
+      "choices": [
+        "The programme has become the most popular radio show in the city.",
+        "Experiences of not belonging are more common than they first appear.",
+        "The bakery owner has decided to stop teaching newcomers.",
+        "People generally dislike hearing about migration."
+      ],
+      "answer": 1,
+      "explanation": "Other listeners recognise their own stories in the interview."
+    },
+    {
+      "id": "r34-email-b2-06",
+      "tab": "connections",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does Lena value the unpaid radio work more than the certificate?",
+      "choices": [
+        "It allows her to avoid all academic work.",
+        "She believes all certificates are misleading.",
+        "She plans to become a professional bus driver.",
+        "The meaningful conversations help her feel part of a community."
+      ],
+      "answer": 3,
+      "explanation": "Lena explicitly values the relationships and stories over formal recognition."
+    },
+    {
+      "id": "r34-email-b2-07",
+      "tab": "intentions",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does Lena apologise for how her messages may have affected Alex?",
+      "choices": [
+        "Her carefully chosen updates could have made their friendship feel one-sided.",
+        "She sent Alex too many long personal letters.",
+        "She asked Alex to work at the radio station without pay.",
+        "She forgot to book a train ticket for Alex."
+      ],
+      "answer": 0,
+      "explanation": "Lena acknowledges presenting a simplified version of her life and not asking about Alex."
+    },
+    {
+      "id": "r34-email-b2-08",
+      "tab": "intentions",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Why does Lena offer a regular call if Alex cannot travel?",
+      "choices": [
+        "She wants Alex to edit her radio programme remotely.",
+        "She believes travelling by train is always unsafe.",
+        "Maintaining an honest conversation matters more than attending the event.",
+        "She has decided to cancel the storytelling evening."
+      ],
+      "answer": 2,
+      "explanation": "The alternative keeps the main goal of reconnecting achievable."
+    },
+    {
+      "id": "r34-email-b2-09",
+      "tab": "intentions",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "What does Lena mean by not wanting another photograph of them looking happy?",
+      "choices": [
+        "She no longer wants anyone to take photographs in Rotterdam.",
+        "She thinks Alex has become a bad photographer.",
+        "She wants to delete every picture from school.",
+        "She prefers genuine contact over an image that merely suggests closeness."
+      ],
+      "answer": 3,
+      "explanation": "The closing paragraph contrasts real conversation with a staged happy image."
+    },
+    {
+      "id": "r34-email-b2-10",
+      "tab": "intentions",
+      "kind": "mc",
+      "sourceParagraph": 5,
+      "q": "Which reply from Alex would best address Lena's underlying invitation?",
+      "choices": [
+        "A collection of recent selfies without any written message.",
+        "An honest account of how Alex is doing and whether a visit or call is possible.",
+        "A request to forward the radio station's certificate.",
+        "A promise to visit without checking availability."
+      ],
+      "answer": 1,
+      "explanation": "Lena asks for Alex's real news and a practical way to connect."
+    }
+  ]
+}

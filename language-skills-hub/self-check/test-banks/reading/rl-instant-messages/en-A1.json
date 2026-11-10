@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-instant-messages",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "d080075175b95612b87b39bf78b9a727df12f1dda6a4add816",
+  "durationMinutesSuggested": 15,
+  "auditRevision": "R34-MSG-A1-AUTHOR-DRAFT-1",
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "description": "Original message-context EN/A1 independent reading assessment draft; human approval pending.",
+  "tabs": [
+    {
+      "id": "friends",
+      "title": "Friends and Plans",
+      "description": "Understand what the friends want to do."
+    },
+    {
+      "id": "details",
+      "title": "A Good Meeting Place",
+      "description": "Think about time, travel and weather."
+    },
+    {
+      "id": "reply",
+      "title": "Helpful Replies",
+      "description": "Choose a clear friendly response."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-msg-a1-01",
+      "tab": "friends",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does Leo invite his friends to Riverside Park?",
+      "choices": [
+        "He needs help with his maths.",
+        "He wants to enjoy a picnic on a sunny day.",
+        "He is moving to another country.",
+        "He wants to buy a new bicycle."
+      ],
+      "answer": 1,
+      "explanation": "Leo suggests a Saturday picnic because the weather should be sunny."
+    },
+    {
+      "id": "r34-msg-a1-02",
+      "tab": "friends",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does Ana say about Leo's little brother?",
+      "choices": [
+        "She wants him to stay at home.",
+        "She thinks he should bring the drinks.",
+        "She asks him to meet them on Sunday.",
+        "She is happy for him to join them."
+      ],
+      "answer": 3,
+      "explanation": "Ana says Max is very welcome."
+    },
+    {
+      "id": "r34-msg-a1-03",
+      "tab": "friends",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why does Sam need the friends to choose an exact place?",
+      "choices": [
+        "The park is large and they might not find one another.",
+        "He does not know what a café is.",
+        "His bus does not stop near the park.",
+        "He wants to change the date of the picnic."
+      ],
+      "answer": 0,
+      "explanation": "Sam explains that Riverside Park is very big."
+    },
+    {
+      "id": "r34-msg-a1-04",
+      "tab": "details",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does the group meet after Ana's piano lesson?",
+      "choices": [
+        "The park opens only in the evening.",
+        "The bus cannot travel before lunch.",
+        "She is not free earlier in the morning.",
+        "The café sells food only on Sundays."
+      ],
+      "answer": 2,
+      "explanation": "Ana's lesson ends at eleven and she proposes meeting later."
+    },
+    {
+      "id": "r34-msg-a1-05",
+      "tab": "details",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why is a café with a green door a useful place to meet?",
+      "choices": [
+        "It is the only place with a piano.",
+        "It is easy for everyone to recognise.",
+        "It is where Leo's brother lives.",
+        "It has the cheapest bus tickets."
+      ],
+      "answer": 1,
+      "explanation": "Sam suggests the café because the landmark is easy to find."
+    },
+    {
+      "id": "r34-msg-a1-06",
+      "tab": "details",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Why does Leo ask people to arrive on time?",
+      "choices": [
+        "The park closes at twelve.",
+        "The picnic will be on Friday.",
+        "He needs to catch a train at one.",
+        "His mother can stay with them only until three."
+      ],
+      "answer": 3,
+      "explanation": "Leo explains the time limit for his mother's stay."
+    },
+    {
+      "id": "r34-msg-a1-07",
+      "tab": "reply",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "A friend asks, 'Will it be cold?' What is a helpful answer?",
+      "choices": [
+        "Bring a jacket because the park can be windy.",
+        "There is no wind near water.",
+        "You should bring a school uniform.",
+        "The meeting is inside a warm classroom."
+      ],
+      "answer": 0,
+      "explanation": "Leo recommends a jacket for the windy area near the water."
+    },
+    {
+      "id": "r34-msg-a1-08",
+      "tab": "reply",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Sam wants to play music. How does he plan to be kind to others?",
+      "choices": [
+        "He will make every friend sing.",
+        "He will play music until midnight.",
+        "He will keep the volume low.",
+        "He will ask everyone to bring headphones."
+      ],
+      "answer": 2,
+      "explanation": "Sam says he will not play his speaker too loudly."
+    },
+    {
+      "id": "r34-msg-a1-09",
+      "tab": "reply",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What can Ana bring to make sitting in the park easier?",
+      "choices": [
+        "A bicycle repair kit.",
+        "A school football trophy.",
+        "A pair of train tickets.",
+        "A big blanket for the picnic."
+      ],
+      "answer": 3,
+      "explanation": "Ana offers a blanket for the picnic."
+    },
+    {
+      "id": "r34-msg-a1-10",
+      "tab": "reply",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Which message would make the picnic arrangements clear?",
+      "choices": [
+        "I will come to a different park tomorrow.",
+        "See you at twelve by the café near the lake!",
+        "I may be late but will not tell you.",
+        "Let's meet whenever we feel ready."
+      ],
+      "answer": 1,
+      "explanation": "The group's final agreed location and time are given clearly."
+    }
+  ]
+}

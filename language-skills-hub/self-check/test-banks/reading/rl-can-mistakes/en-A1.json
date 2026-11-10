@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-EN-A1-AUTHOR-DRAFT-1",
+  "description": "Original A1 test draft, independently authored with four options per question. Teacher approval pending.",
+  "tabs": [
+    {
+      "id": "people",
+      "title": "People and Feelings",
+      "description": "Read about Mia and how she feels."
+    },
+    {
+      "id": "events",
+      "title": "What Happens Next?",
+      "description": "Follow the story."
+    },
+    {
+      "id": "ideas",
+      "title": "Good Ideas",
+      "description": "Use the story to make a choice."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-a1-01",
+      "tab": "people",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Mia sees a word she does not know. How does she feel?",
+      "choices": [
+        "Happy and ready to sing.",
+        "Worried about the story.",
+        "Angry with her brother.",
+        "Tired after sport."
+      ],
+      "answer": 1,
+      "explanation": "In paragraph one, Mia reads new words and feels worried."
+    },
+    {
+      "id": "r34-en-a1-02",
+      "tab": "people",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What does Leo do when Mia needs help?",
+      "choices": [
+        "He takes her book home.",
+        "He writes every answer.",
+        "He tells her to stop.",
+        "He asks her to try reading again."
+      ],
+      "answer": 3,
+      "explanation": "Leo says to read the story again instead of giving all the answers."
+    },
+    {
+      "id": "r34-en-a1-03",
+      "tab": "people",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why does Mia look at the picture?",
+      "choices": [
+        "It helps her understand a new word.",
+        "She wants to draw a train.",
+        "She wants to find Leo.",
+        "It shows the end of the book."
+      ],
+      "answer": 0,
+      "explanation": "The picture next to the story helps her understand one word."
+    },
+    {
+      "id": "r34-en-a1-04",
+      "tab": "events",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "Why does Mia write a '?' by one sentence?",
+      "choices": [
+        "She wants to write a new story.",
+        "She knows the sentence very well.",
+        "She needs to ask about that sentence.",
+        "She wants to change the train."
+      ],
+      "answer": 2,
+      "explanation": "Mia stops at the sentence about a train and marks it with a question mark."
+    },
+    {
+      "id": "r34-en-a1-05",
+      "tab": "events",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Which two people help Mia in the story?",
+      "choices": [
+        "Her brother and her mother.",
+        "Leo and her teacher.",
+        "Her teacher and the driver.",
+        "Leo and her younger brother."
+      ],
+      "answer": 1,
+      "explanation": "In paragraph two Leo and her teacher help Mia understand the words."
+    },
+    {
+      "id": "r34-en-a1-06",
+      "tab": "events",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What does Mia want to do after Friday?",
+      "choices": [
+        "Give her notebook to Leo.",
+        "Stop reading at home.",
+        "Read only the first page.",
+        "Read and practise again."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph three says Mia wants to practise again tomorrow."
+    },
+    {
+      "id": "r34-en-a1-07",
+      "tab": "ideas",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "A friend does not know a word. What can you do like Leo?",
+      "choices": [
+        "Show a picture and help them think.",
+        "Tell them they cannot read.",
+        "Ask them to close the book.",
+        "Read a different story alone."
+      ],
+      "answer": 0,
+      "explanation": "Leo uses the picture to help Mia work out a word."
+    },
+    {
+      "id": "r34-en-a1-08",
+      "tab": "ideas",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Mia reads a new story on Friday. What is different?",
+      "choices": [
+        "She can read every word.",
+        "She has no time to read.",
+        "She understands more than before.",
+        "She forgets her first story."
+      ],
+      "answer": 2,
+      "explanation": "Mia understands more, even though the new story is not easy."
+    },
+    {
+      "id": "r34-en-a1-09",
+      "tab": "ideas",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why is Mia happy at the end?",
+      "choices": [
+        "She does not need English now.",
+        "She can read better after trying again.",
+        "Her brother gives her a new book.",
+        "She has no homework on Friday."
+      ],
+      "answer": 1,
+      "explanation": "The final paragraph shows Mia understands more and reads to her younger brother."
+    },
+    {
+      "id": "r34-en-a1-10",
+      "tab": "ideas",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What is a good plan when you cannot read a sentence?",
+      "choices": [
+        "Stop reading every story.",
+        "Wait until the next week.",
+        "Never ask anyone for help.",
+        "Try again and ask about new words."
+      ],
+      "answer": 3,
+      "explanation": "Mia rereads and asks for help with new words, which helps her improve."
+    }
+  ]
+}
