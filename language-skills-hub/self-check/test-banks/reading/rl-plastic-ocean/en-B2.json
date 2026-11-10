@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-plastic-ocean",
+  "language": "en",
+  "level": "B2",
+  "sourceTitle": "The Last Cup: A Film That Does Not Let Us Look Away",
+  "sourcePracticeContentHash": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R38-CONTENT-AUDIT-1",
+  "description": "Original film-review and environmental reading assessment, requiring independent linguistic and pedagogical validation",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Interpretation"
+    },
+    {
+      "id": "criticism",
+      "title": "Critical Reading"
+    },
+    {
+      "id": "implications",
+      "title": "Practical Implications"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r38-en-b2-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What is the red plastic cup mainly used to represent in the opening?",
+      "choices": [
+        "A new product the concert hall intends to sell.",
+        "Waste that remains after an event has ended.",
+        "A mistake made by the documentary's director.",
+        "An environmental law introduced by the town."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "The cup remains after the entertainment, symbolising waste that is usually no longer visible to visitors."
+    },
+    {
+      "id": "r38-en-b2-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "How does the contrast between cheerful music and arriving cleaners affect the opening?",
+      "choices": [
+        "It shows that the concert was poorly attended.",
+        "It suggests that cleaners dislike music.",
+        "It makes the scene look like a safety warning.",
+        "It draws attention to work that starts when the celebration finishes."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "The juxtaposition highlights the invisible labour following the enjoyable event."
+    },
+    {
+      "id": "r38-en-b2-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why does the reviewer prefer the cleaner's explanation to an image of a trapped animal?",
+      "choices": [
+        "The cleaner speaks more clearly than the teenagers.",
+        "The animal image would be too expensive to film.",
+        "The conversation reveals schedules, costs and people behind the problem.",
+        "The reviewer thinks wildlife has no connection with plastic pollution."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "The cleaner's account makes the litter problem concrete through logistics and responsibility."
+    },
+    {
+      "id": "r38-en-b2-04",
+      "tab": "criticism",
+      "kind": "mc",
+      "q": "What was the teenagers' main obstacle when planning drinks for their event?",
+      "choices": [
+        "The cheapest supplier used only disposable packaging.",
+        "The beach concert could not have any visitors.",
+        "The school canteen refused to lend equipment.",
+        "Guests could not bring their own containers."
+      ],
+      "answer": 0,
+      "sourceParagraph": 3,
+      "explanation": "Their cheapest supplier provided only single-use bottles, prompting an alternative plan."
+    },
+    {
+      "id": "r38-en-b2-05",
+      "tab": "criticism",
+      "kind": "mc",
+      "q": "What does Kent's treatment of the chaotic first evening suggest?",
+      "choices": [
+        "She doubts young organisers can make useful decisions.",
+        "She refuses to show any mistakes made at the event.",
+        "She presents their imperfect efforts with some sympathy.",
+        "She blames the teenagers for failing to create an ideal system."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "The filmmaker shows the messy first attempt without ridiculing the teenagers."
+    },
+    {
+      "id": "r38-en-b2-06",
+      "tab": "criticism",
+      "kind": "mc",
+      "q": "Which issue makes carrying a reusable cup less straightforward for some people?",
+      "choices": [
+        "Venue security rules and limited opportunities to wash a cup.",
+        "Every reusable cup has to be made of glass.",
+        "All visitors are asked to pay the same high deposit.",
+        "Concerts usually provide free cleaning equipment."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "The review mentions a venue prohibiting containers and a visitor unable to wash a cup conveniently."
+    },
+    {
+      "id": "r38-en-b2-07",
+      "tab": "criticism",
+      "kind": "mc",
+      "q": "What is the reviewer's main objection to the film's treatment of individual responsibility?",
+      "choices": [
+        "It refuses to ask viewers to change their habits.",
+        "It mentions practical constraints but moves past them too quickly.",
+        "It recommends too many different environmental policies.",
+        "It focuses mainly on the physical properties of plastic."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "The difficulties briefly appear, then are displaced by a broad message about personal choice."
+    },
+    {
+      "id": "r38-en-b2-08",
+      "tab": "implications",
+      "kind": "mc",
+      "q": "Why do the reported costs of the deposit system matter?",
+      "choices": [
+        "They prove that all cup deposits are a waste of public money.",
+        "They show that buying single-use cups was never cheaper.",
+        "They demonstrate that the teenagers designed a perfect scheme.",
+        "They allow viewers to assess benefits alongside practical limitations."
+      ],
+      "answer": 3,
+      "sourceParagraph": 5,
+      "explanation": "The documentary is strongest when it publishes costs and acknowledges uncertain long-term savings."
+    },
+    {
+      "id": "r38-en-b2-09",
+      "tab": "implications",
+      "kind": "mc",
+      "q": "What would the reviewer prefer instead of the beautiful closing shot?",
+      "choices": [
+        "A longer concert scene with more cheerful music.",
+        "A summary of the director's earlier films.",
+        "A practical discussion about who will keep the system working.",
+        "A warning that no school should organise beach concerts."
+      ],
+      "answer": 2,
+      "sourceParagraph": 6,
+      "explanation": "A meeting about emptying bins would direct attention to ongoing responsibility."
+    },
+    {
+      "id": "r38-en-b2-10",
+      "tab": "implications",
+      "kind": "mc",
+      "q": "Which description captures the reviewer's final judgement?",
+      "choices": [
+        "The film is useful if viewers question its simplifications.",
+        "Its flaws make it unsuitable for any school event.",
+        "Its only achievement is the quality of the images.",
+        "The reviewer believes the film presents no realistic solutions."
+      ],
+      "answer": 0,
+      "sourceParagraph": 6,
+      "explanation": "The closing recommendation values the film's honesty while urging critical viewing."
+    }
+  ]
+}
