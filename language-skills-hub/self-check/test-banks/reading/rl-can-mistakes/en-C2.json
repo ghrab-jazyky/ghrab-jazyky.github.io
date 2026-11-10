@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "C2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 25,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R34-CONTENT-DRAFT-1",
+  "description": "C2 assessment draft addressing conditional resilience, institutional responsibility and limits of metrics.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Qualified Interpretation",
+      "description": "Distinguish the writer's precise claims and qualifications."
+    },
+    {
+      "id": "analysis",
+      "title": "Argumentative Analysis",
+      "description": "Examine implications, analogies and the limits of evidence."
+    },
+    {
+      "id": "transfer",
+      "title": "Reasoned Judgement",
+      "description": "Evaluate new educational situations using the writer's framework."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r34-en-c2-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "When, according to the author, does resilience cease to be an unambiguously helpful ideal?",
+      "choices": [
+        "When learners are encouraged to reconsider an assumption.",
+        "When effort produces only gradual rather than immediate results.",
+        "When it becomes an unconditional moral demand detached from circumstances.",
+        "When institutions acknowledge that recovering from setbacks can be difficult."
+      ],
+      "answer": 2,
+      "explanation": "The opening paragraph distinguishes resilience as a useful capacity from an unqualified obligation, especially under persistent constraints."
+    },
+    {
+      "id": "r34-en-c2-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "Why might two pupils appear equally determined while having profoundly different educational experiences?",
+      "choices": [
+        "One pupil's determination can be measured while the other's cannot.",
+        "Visible persistence does not show whether renewed effort has a reasonable chance of helping.",
+        "Equally determined pupils are likely to receive substantially different marks.",
+        "Determination necessarily depends on the resources available at home."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph two contrasts visible effort with whether the learner's environment allows effort to produce meaningful change."
+    },
+    {
+      "id": "r34-en-c2-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "What is the force of the author's claim that an indicator may not be 'false'?",
+      "choices": [
+        "It reveals all important dimensions of educational success when interpreted carefully.",
+        "It becomes misleading only when pupils deliberately manipulate their scores.",
+        "It is neutral because every important learning outcome can eventually be quantified.",
+        "It may accurately measure a limited outcome while concealing other forms of learning."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph three recognises that indicators can be technically accurate while missing exploration, judgement and other valuable learning."
+    },
+    {
+      "id": "r34-en-c2-04",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 1,
+      "q": "What is the significance of the contrast between retrospective inspiration and advising someone amid ongoing constraints?",
+      "choices": [
+        "Advice offered during adversity must account for conditions that an uplifting finished story may obscure.",
+        "Stories about adversity are useful only when the protagonist has already succeeded.",
+        "People who face constraints rarely benefit from the examples of others.",
+        "Retelling successful experiences is a more reliable guide than assessing present resources."
+      ],
+      "answer": 0,
+      "explanation": "The opening paragraph distinguishes resilience as a useful capacity from an unqualified obligation, especially under persistent constraints."
+    },
+    {
+      "id": "r34-en-c2-05",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "What conceptual distinction does the author draw between agency and endurance?",
+      "choices": [
+        "Agency refers to innate confidence, while endurance is acquired through instruction.",
+        "Agency is always voluntary, whereas endurance is necessarily forced.",
+        "Agency entails the possibility of purposeful change, whereas endurance may simply mean surviving persistent obstacles.",
+        "Endurance is proof that support was sufficient to overcome institutional barriers."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph two contrasts visible effort with whether the learner's environment allows effort to produce meaningful change."
+    },
+    {
+      "id": "r34-en-c2-06",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "Why does the author introduce a system that tracks how rapidly scores improve?",
+      "choices": [
+        "To illustrate how a valid metric may privilege familiar practice over difficult exploration.",
+        "To demonstrate that quick score improvement usually indicates shallow knowledge.",
+        "To show that all standardised assessments reward memorisation rather than understanding.",
+        "To propose a better way of comparing two equally motivated learners."
+      ],
+      "answer": 0,
+      "explanation": "Paragraph three recognises that indicators can be technically accurate while missing exploration, judgement and other valuable learning."
+    },
+    {
+      "id": "r34-en-c2-07",
+      "tab": "analysis",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Which possible misreading does the final paragraph explicitly resist?",
+      "choices": [
+        "That schools should assess students only after they have rested.",
+        "That criticising resilience rhetoric means treating ability as fixed or denying learner responsibility.",
+        "That revising strategies is less valuable than improving institutional resources.",
+        "That the notion of success should be removed from educational decisions."
+      ],
+      "answer": 1,
+      "explanation": "The conclusion rejects fatalism, retains meaningful evaluation and advocates agency supported by institutions and freedom to reconsider goals."
+    },
+    {
+      "id": "r34-en-c2-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 3,
+      "q": "A school rewards pupils for never abandoning a project, even when its goal has become pointless. What criticism follows from the text?",
+      "choices": [
+        "It is unfair because pupils should be allowed to choose their own grades.",
+        "It prevents pupils from measuring their performance accurately.",
+        "It implies that teachers should never encourage ambitious long-term projects.",
+        "It mistakes perseverance itself for sound judgement about worthwhile aims."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph three recognises that indicators can be technically accurate while missing exploration, judgement and other valuable learning."
+    },
+    {
+      "id": "r34-en-c2-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 2,
+      "q": "An institution celebrates students who overcome inadequate support without changing the support system. What is the author's likely objection?",
+      "choices": [
+        "The celebrated learners should receive higher marks than their peers.",
+        "Praise for endurance may conceal institutional responsibility for the obstacle.",
+        "Endurance is never a genuine quality deserving recognition.",
+        "Students should refuse any achievement that requires sustained effort."
+      ],
+      "answer": 1,
+      "explanation": "Paragraph two contrasts visible effort with whether the learner's environment allows effort to produce meaningful change."
+    },
+    {
+      "id": "r34-en-c2-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "sourceParagraph": 4,
+      "q": "Which approach most closely reflects the author's preferred conception of educational success?",
+      "choices": [
+        "Use persistence as the main measure of success but adjust rewards for disadvantage.",
+        "Replace all assessment with individual expressions of curiosity and well-being.",
+        "Require every learner to demonstrate improvement while exempting leisure activities.",
+        "Combine meaningful student choice, realistic support, critical evaluation of metrics and the freedom to reconsider aims."
+      ],
+      "answer": 3,
+      "explanation": "The conclusion rejects fatalism, retains meaningful evaluation and advocates agency supported by institutions and freedom to reconsider goals."
+    }
+  ]
+}
