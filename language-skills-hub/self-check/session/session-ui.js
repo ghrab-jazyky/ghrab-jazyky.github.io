@@ -14,25 +14,26 @@
    gesture:'Teacher: tap the four marked corners in this order: top left, top right, bottom left, bottom right. This is not a password.',
    resumed:'Teacher gesture completed. You can continue.',pending:'Waiting for the next corner…',
    invalid:'Incorrect order. Start again at the top-left corner.',submitted:'Submitted',
+   forget:'Erase local answers',eraseConfirm:'Erase all locally saved answers for this attempt? This cannot be undone. Keep a verified grade record first.',erased:'Local answers erased. Close this page.',
    saveWarning:'Local storage unavailable: reloading may lose this attempt.'},
   es:{intro:'¿Listo para empezar?',description:'El tiempo comienza al pulsar Iniciar. Las respuestas solo se guardan en este navegador. Si sales de la pestaña, el profesor tendrá que reanudar el ejercicio. No es un examen seguro.',
    start:'Iniciar prueba',remaining:'Tiempo restante',interrupted:'Prueba interrumpida',
    lock:'La página ha dejado de estar visible. Pide al docente que reanude la prueba. El tiempo sigue corriendo.',
    gesture:'Docente: pulsa las cuatro esquinas señaladas: arriba izquierda, arriba derecha, abajo izquierda y abajo derecha. No es una contraseña.',
    resumed:'La prueba continúa.',pending:'Siguiente esquina…',invalid:'Orden incorrecto. Empieza de nuevo.',
-   submitted:'Entregado',saveWarning:'El almacenamiento local no está disponible: podrías perder las respuestas al recargar.'},
+   submitted:'Entregado',forget:'Borrar respuestas locales',eraseConfirm:'¿Borrar las respuestas de este intento? Esta acción no se puede deshacer. Guarda primero la calificación validada.',erased:'Respuestas locales borradas. Cierra esta página.',saveWarning:'El almacenamiento local no está disponible: podrías perder las respuestas al recargar.'},
   de:{intro:'Bereit für den Test?',description:'Die Zeit beginnt mit Start. Antworten werden nur in diesem Browser gespeichert. Nach einem Tabwechsel muss die Lehrkraft die Bearbeitung fortsetzen lassen. Dies ist keine sichere Prüfung.',
    start:'Test beginnen',remaining:'Verbleibende Zeit',interrupted:'Test unterbrochen',
    lock:'Die Seite war nicht sichtbar. Bitte die Lehrkraft um Freigabe. Die Zeit läuft weiter.',
    gesture:'Lehrkraft: Markierungen anklicken – oben links, oben rechts, unten links, unten rechts. Dies ist kein Passwort.',
    resumed:'Der Test wird fortgesetzt.',pending:'Nächste Ecke…',invalid:'Falsche Reihenfolge. Bitte erneut beginnen.',
-   submitted:'Abgegeben',saveWarning:'Lokales Speichern nicht verfügbar: Beim Neuladen können Antworten verloren gehen.'},
+   submitted:'Abgegeben',forget:'Lokale Antworten löschen',eraseConfirm:'Alle lokal gespeicherten Antworten dieses Versuchs unwiderruflich löschen? Bitte zuerst die bestätigte Note dokumentieren.',erased:'Lokale Antworten gelöscht. Bitte die Seite schließen.',saveWarning:'Lokales Speichern nicht verfügbar: Beim Neuladen können Antworten verloren gehen.'},
   fr:{intro:'Prêt à commencer ?',description:'Le chronomètre démarre avec le bouton Commencer. Les réponses restent dans ce navigateur. Après avoir quitté l’onglet, l’enseignant doit autoriser la reprise. Ce dispositif ne sécurise pas un examen.',
    start:'Commencer le test',remaining:'Temps restant',interrupted:'Test interrompu',
    lock:'La page a été masquée. Demande à l’enseignant de reprendre le test. Le temps continue.',
    gesture:'Enseignant : touchez les coins indiqués dans cet ordre : haut gauche, haut droit, bas gauche, bas droit. Ce n’est pas un mot de passe.',
    resumed:'Vous pouvez continuer.',pending:'Coin suivant…',invalid:'Ordre incorrect. Recommencez.',
-   submitted:'Remis',saveWarning:'Le stockage local est indisponible : le rechargement peut effacer les réponses.'}
+   submitted:'Remis',forget:'Effacer les réponses locales',eraseConfirm:'Effacer définitivement les réponses de cette tentative ? Enregistre d’abord la note validée.',erased:'Réponses locales effacées. Ferme cette page.',saveWarning:'Le stockage local est indisponible : le rechargement peut effacer les réponses.'}
  };
  function mount(cfg){
   const params=new URLSearchParams(location.search);
@@ -40,8 +41,22 @@
   const core=root.LSHAttemptCore;
   if(!core)throw new Error('Missing local attempt engine');
   const n=core.minutes(params.get('timer'));
-  const attempt=params.get('attempt')||'legacytest';
-  if(!/^[a-z0-9_-]{6,40}$/i.test(attempt))throw new Error('Invalid attempt URL');
+  const classAttempt=params.get('attempt')||'legacytest';
+  if(!/^[a-z0-9_-]{6,40}$/i.test(classAttempt))throw new Error('Invalid attempt URL');
+  // A shared class QR is not a per-student identity. Give each freshly opened
+  // student URL an isolated local store key; preserve it on reload via the hash.
+  const ownUrl=new URL(location.href);
+  const hash=new URLSearchParams(ownUrl.hash.replace(/^#/,'')); 
+  let localSession=hash.get('lsh_session');
+  if(!/^[a-f0-9]{24}$/.test(localSession||'')){
+   const bytes=new Uint8Array(12);
+   if(!root.crypto?.getRandomValues)throw new Error('Secure local session IDs unavailable');
+   root.crypto.getRandomValues(bytes);
+   localSession=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
+   ownUrl.hash='lsh_session='+localSession;
+   history.replaceState(history.state,'',ownUrl.href);
+  }
+  const attempt=classAttempt+'-'+localSession;
   const ui=MESSAGES[cfg.lang]||MESSAGES.en;
   let store=null;try{store=localStorage}catch(_){}
   const engine=core.open({
@@ -92,14 +107,20 @@
   overlay.append(panel,corners);
   workspace.before(intro,bar);
   workspace.parentElement.appendChild(overlay);
-  let initialized=false,autoSubmitting=false,lastPhase=null;
+  const results=document.getElementById('results');
+  const erase=elt('button','action ghost',ui.forget);
+  erase.id='sessionErase';erase.type='button';erase.hidden=true;
+  if(results)results.appendChild(erase);
+  let initialized=false,autoSubmitting=false,lastPhase=null,purged=false;
   function displayTime(ms){
    const seconds=Math.max(0,Math.ceil(ms/1000));
    return String(Math.floor(seconds/60)).padStart(2,'0')+':'+
     String(seconds%60).padStart(2,'0');
   }
   function render(){
+   if(purged)return;
    const state=engine.status();
+   erase.hidden=state.phase!=='submitted';
    intro.hidden=state.phase!=='ready';
    workspace.hidden=state.phase==='ready';
    bar.hidden=state.phase==='ready';
@@ -141,6 +162,13 @@
    }else if(!document.hidden)tick();
   });
   const interval=setInterval(tick,1000);
+  erase.addEventListener('click',()=>{
+   if(engine.status().phase!=='submitted'||!root.confirm(ui.eraseConfirm))return;
+   engine.clear();purged=true;clearInterval(interval);
+   if(results)results.hidden=true;
+   intro.hidden=true;workspace.hidden=true;overlay.hidden=true;bar.hidden=false;
+   remaining.textContent=ui.erased;warning.textContent='';erase.disabled=true;
+  });
   function initialize(){
    const s=engine.status();
    if(s.phase!=='ready')cfg.restoreAnswers(s.answers);
