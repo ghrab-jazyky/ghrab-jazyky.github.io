@@ -1,0 +1,102 @@
+{
+  "kind": "LSH_INDEPENDENT_LISTENING_DRAFT_R37_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-harrison-ford",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
+  "durationMinutesSuggested": 20,
+  "listeningPasses": 2,
+  "scoreRule": "1 point per objective question or position and 1 point per teacher-reviewed written item; local grade proposal only",
+  "auditRevision": "R37-AUTHOR-DRAFT-1",
+  "description": "Independent teacher-supervised B2 listening assessment about Harrison Ford's reflections on his career, collaboration and responsibility. No student media player.",
+  "variant": {
+    "goal": "Interpret the speaker's message about professional identity, shared success and gratitude, and support brief explanations with details from the speech.",
+    "gist": [
+      {
+        "title": "Which statement best captures the lesson Ford draws from his career?",
+        "type": "single",
+        "options": [
+          "A career should be judged mainly by how many awards it brings.",
+          "Finding one's place and recognising others can matter as much as public success.",
+          "Early uncertainty is a sign that a person has chosen the wrong profession.",
+          "Film actors are more successful when they work independently."
+        ],
+        "correct": 1,
+        "why": "His reflections connect the discovery of a calling to gratitude for the people who helped him."
+      },
+      {
+        "title": "What does the speaker's combination of humour and thanks achieve?",
+        "type": "single",
+        "options": [
+          "It makes his reflections personal without presenting success as a solitary achievement.",
+          "It suggests that the audience should not take the award seriously at all.",
+          "It shows he is uncertain whether he wants to continue working.",
+          "It moves attention away from the colleagues who supported him."
+        ],
+        "correct": 0,
+        "why": "Self-deprecating jokes sit alongside a sincere acknowledgement of collaboration."
+      }
+    ],
+    "detail": [
+      {
+        "title": "Why is the reference to his college experience significant?",
+        "type": "single",
+        "options": [
+          "It shows he had already achieved success in acting before graduation.",
+          "It explains why he decided to avoid theatre productions.",
+          "It illustrates how involvement with performers helped him find direction.",
+          "It proves that formal education was unnecessary for his career."
+        ],
+        "correct": 2,
+        "why": "Participating in theatre helped him find a sense of purpose and belonging."
+      },
+      {
+        "title": "What does Ford's account of his uncertain early career challenge?",
+        "type": "single",
+        "options": [
+          "The assumption that a celebrated career necessarily began with quick success.",
+          "The idea that directors and writers contribute to successful films.",
+          "The belief that professional recognition can come later in life.",
+          "The possibility of having more than one occupation."
+        ],
+        "correct": 0,
+        "why": "His extended period of difficulty counters the impression that famous actors succeeded instantly."
+      },
+      {
+        "title": "What responsibility does he connect with professional success?",
+        "type": "single",
+        "options": [
+          "To avoid accepting help from more experienced colleagues.",
+          "To continue playing the same roles that made one famous.",
+          "To choose only projects that guarantee financial success.",
+          "To create opportunities and support others in the profession."
+        ],
+        "correct": 3,
+        "why": "He presents the freedom gained through success as a reason to lift others up."
+      }
+    ],
+    "sequence": [
+      "He remembers how discovering a place among performers gave him direction.",
+      "He reflects on the many contributors who make stories and films possible.",
+      "He turns his gratitude into an encouragement to support other people."
+    ],
+    "facts": [
+      {
+        "title": "Mention one kind of behind-the-scenes film professional whose contribution Ford values.",
+        "answer": "For example: a writer, director or member of the film crew.",
+        "criteria": "Accept one role explicitly named in the speech; an actor alone does not answer behind-the-scenes.",
+        "kind": "fact"
+      }
+    ],
+    "open": [
+      {
+        "title": "In two short sentences, explain how Ford's account connects personal success with other people's help.",
+        "answer": "He describes finding direction through others and repeatedly acknowledges the people involved in his films. His success is shown as part of collective work rather than an individual achievement.",
+        "criteria": "Credit one supported early influence and one example of collaboration or gratitude. Meaning-based review required.",
+        "kind": "open"
+      }
+    ]
+  }
+}
