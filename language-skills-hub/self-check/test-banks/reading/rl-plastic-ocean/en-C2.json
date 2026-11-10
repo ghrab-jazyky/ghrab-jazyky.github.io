@@ -36,12 +36,12 @@
       "kind": "mc",
       "q": "What does the overflowing bin outside the film screening demonstrate?",
       "choices": [
-        "The audience has misunderstood the teenager's personal achievement.",
-        "Celebrating an individual example can leave institutional practices outside the story.",
         "The documentary secretly opposes reusable containers.",
-        "A festival cannot function without disposable cups."
+        "A festival cannot function without disposable cups.",
+        "The audience has misunderstood the teenager's personal achievement.",
+        "Celebrating an individual example can leave institutional practices outside the story."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The applause directed at a virtuous teenager sits beside an unexamined institutional source of waste."
     },
     {
@@ -51,12 +51,12 @@
       "kind": "mc",
       "q": "Why does the author refuse to dismiss the venue's contradiction simply as hypocrisy?",
       "choices": [
-        "The venue has already solved all of its logistical problems.",
-        "The film-makers cannot be expected to know how waste is collected.",
         "The audience has no responsibility for the setting of a screening.",
-        "A moral accusation would ignore constraints and the documentary's selective treatment of responsibility."
+        "A moral accusation would ignore constraints and the documentary's selective treatment of responsibility.",
+        "The venue has already solved all of its logistical problems.",
+        "The film-makers cannot be expected to know how waste is collected."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The writer prefers understanding systems and narrative framing to the easy satisfaction of moral blame."
     },
     {
@@ -66,12 +66,12 @@
       "kind": "mc",
       "q": "How does a 'perfect-consumer narrative' make a causal claim without stating one explicitly?",
       "choices": [
-        "It identifies all the organisations involved in waste processing.",
-        "It shows that choices are unrelated to larger environmental systems.",
         "It centres visible individual acts while excluding less cinematic institutional arrangements.",
-        "It demonstrates that reusable flasks are always environmentally superior."
+        "It demonstrates that reusable flasks are always environmentally superior.",
+        "It identifies all the organisations involved in waste processing.",
+        "It shows that choices are unrelated to larger environmental systems."
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "The film's selection of protagonists and omissions implies individual moral behaviour is the complete cause of outcomes."
     },
     {
@@ -81,12 +81,12 @@
       "kind": "mc",
       "q": "What is the significance of the school installing water fountains after a student campaign?",
       "choices": [
-        "Personal actions and institutional provision can influence one another.",
-        "Student campaigns succeed only when schools remove individual choices.",
         "Public infrastructure is independent of voting, protest or habits.",
-        "The teenager's flask is environmentally neutral in every context."
+        "The teenager's flask is environmentally neutral in every context.",
+        "Personal actions and institutional provision can influence one another.",
+        "Student campaigns succeed only when schools remove individual choices."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "The example illustrates interaction between personal practice and collective systems."
     },
     {
@@ -96,12 +96,12 @@
       "kind": "mc",
       "q": "Why does the writer complicate the claim that a metal flask is necessarily responsible?",
       "choices": [
-        "Metal is too expensive for most educational institutions.",
-        "Environmental value depends on manufacture, longevity and actual use.",
         "A reusable product is harmful whenever it is lost.",
-        "A disposable cup always has a smaller environmental impact."
+        "A disposable cup always has a smaller environmental impact.",
+        "Metal is too expensive for most educational institutions.",
+        "Environmental value depends on manufacture, longevity and actual use."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The writer rejects simplistic symbols because life-cycle and actual-use conditions matter."
     },
     {
@@ -111,12 +111,12 @@
       "kind": "mc",
       "q": "What does the festival deposit-cup scenario reveal about storytelling?",
       "choices": [
-        "Missing returns always make a scheme unsuccessful.",
-        "A successful documentary must avoid technical details.",
         "The same evidence can be edited into triumph or failure unless its limitations are examined.",
-        "The first summer's costs prove that the scheme should be stopped."
+        "The first summer's costs prove that the scheme should be stopped.",
+        "Missing returns always make a scheme unsuccessful.",
+        "A successful documentary must avoid technical details."
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "An incomplete success can be framed selectively; the author proposes questioning design, measurement and costs."
     },
     {
@@ -126,12 +126,12 @@
       "kind": "mc",
       "q": "Why is the essay's desired audience not simply one that 'feels innocent'?",
       "choices": [
-        "Environmental documentaries should never include inspiring people.",
-        "The most urgent task is to make viewers feel guilty.",
         "A clean coastline is always a misleading image.",
-        "The better outcome is an audience able to interrogate explanations and missing causes."
+        "The better outcome is an audience able to interrogate explanations and missing causes.",
+        "Environmental documentaries should never include inspiring people.",
+        "The most urgent task is to make viewers feel guilty."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The conclusion values analytical capacity more than temporary moral satisfaction."
     },
     {
@@ -141,12 +141,12 @@
       "kind": "mc",
       "q": "A school video shows pupils sorting rubbish but not where collected material goes. Which question would best extend its analysis?",
       "choices": [
-        "How many pupil volunteers should appear smiling on screen?",
-        "What arrangements determine whether the sorted material is processed effectively?",
         "Which colour-coded bins are most attractive in a photograph?",
-        "Should the film include a more uplifting soundtrack?"
+        "Should the film include a more uplifting soundtrack?",
+        "How many pupil volunteers should appear smiling on screen?",
+        "What arrangements determine whether the sorted material is processed effectively?"
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The author criticises the omission of municipal infrastructure in the waste-sorting sequence."
     },
     {
@@ -156,12 +156,12 @@
       "kind": "mc",
       "q": "Someone argues that individual habits are pointless until governments act. How would the author respond?",
       "choices": [
-        "Individual practices can also influence collective arrangements, so the separation is false.",
-        "Individual choices are sufficient to overcome every institutional obstacle.",
         "Only government policy can determine whether a flask is reusable.",
-        "The strongest argument is that consumers should ignore public institutions."
+        "The strongest argument is that consumers should ignore public institutions.",
+        "Individual practices can also influence collective arrangements, so the separation is false.",
+        "Individual choices are sufficient to overcome every institutional obstacle."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "The writer rejects both a purely individualist narrative and an equally convenient absolution of consumers."
     },
     {
@@ -171,12 +171,12 @@
       "kind": "mc",
       "q": "A film reports fewer abandoned cups but unexpectedly high losses from a deposit scheme. What is the most responsible editorial choice?",
       "choices": [
-        "Remove all numbers so that the audience can feel inspired.",
-        "Call the scheme a total failure and abandon the discussion.",
         "Use the results only to praise its organisers.",
-        "Explore design, measurement and who bears the costs before judging its success."
+        "Explore design, measurement and who bears the costs before judging its success.",
+        "Remove all numbers so that the audience can feel inspired.",
+        "Call the scheme a total failure and abandon the discussion."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The essay recommends examining mixed evidence rather than editing it into a simplistic triumph or disaster."
     }
   ]
