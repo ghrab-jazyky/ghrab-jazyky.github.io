@@ -1,0 +1,12 @@
+/* Isolated R39 teacher QA. Never linked from the production catalog. */
+.r39-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;padding:18px}
+.r39-stat{display:flex;flex-direction:column;gap:7px;border:1px solid var(--line);border-radius:12px;padding:15px;background:var(--panel)}
+.r39-stat strong{font-size:clamp(1.6rem,3.2vw,2.1rem);font-variant-numeric:tabular-nums}
+.r39-stat span{font-size:.88rem;line-height:1.4}
+.r39-status{border:1px solid var(--line);border-radius:12px;padding:15px 18px;margin:12px 18px;line-height:1.5}
+.r39-actions{display:flex;flex-wrap:wrap;gap:12px;margin:12px 18px}
+.r39-actions .action{min-height:44px}
+.r39-actions a[aria-disabled=true]{opacity:.45;pointer-events:none}
+#setup{padding:18px}
+#copyStatus{padding:0 18px}
+@media(max-width:450px){.r39-stats{grid-template-columns:repeat(2,minmax(0,1fr));padding:10px}.r39-actions{flex-direction:column}.r39-actions>*{width:100%;text-align:center}}
