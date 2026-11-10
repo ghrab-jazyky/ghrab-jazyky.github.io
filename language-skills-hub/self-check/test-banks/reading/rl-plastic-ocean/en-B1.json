@@ -36,12 +36,12 @@
       "kind": "mc",
       "q": "Why does the engineer ask students to investigate before putting up a sign by the stream?",
       "choices": [
-        "She wants them to stop cleaning the river.",
-        "The place where rubbish is found may not be where it begins its journey.",
         "She thinks only adults should discuss litter problems.",
-        "The school has already paid for too many signs."
+        "The school has already paid for too many signs.",
+        "She wants them to stop cleaning the river.",
+        "The place where rubbish is found may not be where it begins its journey."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The engineer redirects attention from litter at the stream to how it enters drains upstream."
     },
     {
@@ -51,12 +51,12 @@
       "kind": "mc",
       "q": "What does the street drain help the students understand?",
       "choices": [
-        "All street drains carry water to the sea.",
-        "Rubbish cannot travel far once it enters a pipe.",
         "The bus stop produces no rubbish at all.",
-        "Rain can carry street litter through pipes towards the stream."
+        "Rain can carry street litter through pipes towards the stream.",
+        "All street drains carry water to the sea.",
+        "Rubbish cannot travel far once it enters a pipe."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The explanation connects light rubbish on pavements to rainfall and drainage pipes."
     },
     {
@@ -66,12 +66,12 @@
       "kind": "mc",
       "q": "Why is the difference between the bus stop and the library significant?",
       "choices": [
-        "It proves that people never litter near libraries.",
-        "It shows that rain always falls harder at bus stops.",
         "It helps identify where most litter is likely to enter the drainage system.",
-        "It means the library is responsible for every wrapper."
+        "It means the library is responsible for every wrapper.",
+        "It proves that people never litter near libraries.",
+        "It shows that rain always falls harder at bus stops."
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "The large difference in counts points to a local concentration of rubbish by the busy stop."
     },
     {
@@ -81,12 +81,12 @@
       "kind": "mc",
       "q": "What does the conversation with the bus driver add to the students' findings?",
       "choices": [
-        "A practical explanation for why the bin fills before the busiest time.",
-        "Evidence that bus drivers are responsible for all the rubbish.",
         "A reason to move the bus stop away from the town.",
-        "Proof that the café never serves snacks to bus passengers."
+        "Proof that the café never serves snacks to bus passengers.",
+        "A practical explanation for why the bin fills before the busiest time.",
+        "Evidence that bus drivers are responsible for all the rubbish."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "The driver explains that the bin is emptied early and fills by the afternoon."
     },
     {
@@ -96,12 +96,12 @@
       "kind": "mc",
       "q": "Why do students count wrappers after the last lesson?",
       "choices": [
-        "They expect to find fewer visitors at that time.",
-        "They want to observe the street when the bus stop is busy.",
         "They need to finish before the engineer comes.",
-        "They are only allowed to work outside the school at night."
+        "They are only allowed to work outside the school at night.",
+        "They expect to find fewer visitors at that time.",
+        "They want to observe the street when the bus stop is busy."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The group records litter when bus-stop use is high, to understand the pattern."
     },
     {
@@ -111,12 +111,12 @@
       "kind": "mc",
       "q": "Why do both the café and the council change something?",
       "choices": [
-        "The council decides the café must close.",
-        "The children refuse to continue the investigation.",
         "The problem involves both customer behaviour and waste-bin management.",
-        "The engineer learns that the stream is already clean."
+        "The engineer learns that the stream is already clean.",
+        "The council decides the café must close.",
+        "The children refuse to continue the investigation."
       ],
-      "answer": 2,
+      "answer": 0,
       "explanation": "The practical response addresses the café's surroundings and the timing/location of the bin."
     },
     {
@@ -126,12 +126,12 @@
       "kind": "mc",
       "q": "Why do students avoid claiming that their project solved the problem completely?",
       "choices": [
-        "The stream remained full of wrappers after every rainfall.",
-        "Their findings showed no clear pattern at all.",
         "They had not spoken to anybody who used the street.",
-        "Wind and future storms could reveal other sources of litter."
+        "Wind and future storms could reveal other sources of litter.",
+        "The stream remained full of wrappers after every rainfall.",
+        "Their findings showed no clear pattern at all."
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The article notes other roads and new weak points could continue to contribute rubbish."
     },
     {
@@ -141,12 +141,12 @@
       "kind": "mc",
       "q": "Residents begin sending photos of litter from other streets. Why is this useful?",
       "choices": [
-        "It helps identify additional locations that the first survey might have missed.",
-        "It proves the council is responsible for every piece of rubbish.",
         "It means the students no longer need to check the data.",
-        "It lets the town ignore future rainstorms."
+        "It lets the town ignore future rainstorms.",
+        "It helps identify additional locations that the first survey might have missed.",
+        "It proves the council is responsible for every piece of rubbish."
       ],
-      "answer": 1,
+      "answer": 3,
       "explanation": "The community observations extend the evidence beyond the original bus-stop area."
     },
     {
@@ -156,12 +156,12 @@
       "kind": "mc",
       "q": "A school finds rubbish downstream after heavy rain. What should it investigate next?",
       "choices": [
-        "Only the number of signs beside the water.",
-        "Where street rubbish enters drains before reaching the stream.",
         "Whether the school can stop all rainfall.",
-        "The colours of litter seen in the water."
+        "The colours of litter seen in the water.",
+        "Only the number of signs beside the water.",
+        "Where street rubbish enters drains before reaching the stream."
       ],
-      "answer": 0,
+      "answer": 2,
       "explanation": "The engineer's advice is to trace the pathway of litter rather than focus only on where it appears."
     },
     {
@@ -171,12 +171,12 @@
       "kind": "mc",
       "q": "Which question best reflects the students' change in thinking?",
       "choices": [
-        "Which group of people should we blame first?",
-        "How can we hide the litter from visitors?",
         "Who should put more signs beside the stream?",
-        "Where does the rubbish start, and which conditions allow it to travel?"
+        "Where does the rubbish start, and which conditions allow it to travel?",
+        "Which group of people should we blame first?",
+        "How can we hide the litter from visitors?"
       ],
-      "answer": 3,
+      "answer": 1,
       "explanation": "The final question shifts from visible litter to sources and causes."
     }
   ]
