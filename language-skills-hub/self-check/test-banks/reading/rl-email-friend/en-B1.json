@@ -1,0 +1,180 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-email-friend",
+  "language": "en",
+  "level": "B1",
+  "sourceTitle": "Back to Our Old Neighbourhood",
+  "sourcePracticeContentHash": "cf5d1419fc2ba4dc2219640e9e4e04a15b6ea5b1f625dd250aa159a0a21064ff",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "auditRevision": "R40-CONTENT-AUDIT-1",
+  "description": "Independent friendship-email reading assessment with original questions, pending pedagogical validation",
+  "tabs": [
+    {
+      "id": "understanding",
+      "title": "Understanding the Message"
+    },
+    {
+      "id": "interpretation",
+      "title": "Meaning and Intent"
+    },
+    {
+      "id": "transfer",
+      "title": "Interpreting the Invitation"
+    }
+  ],
+  "questions": [
+    {
+      "id": "r40-en-b1-01",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "What makes Tomas decide that he should contact Robin?",
+      "choices": [
+        "A teacher asks him to write a class report.",
+        "Visiting their changed old square reminds him how little they have talked.",
+        "Robin sends him a new football shirt.",
+        "The workshop plans to close permanently."
+      ],
+      "answer": 1,
+      "sourceParagraph": 1,
+      "explanation": "The changed square makes Tomas think of Robin and their long silence."
+    },
+    {
+      "id": "r40-en-b1-02",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "What changed in the square?",
+      "choices": [
+        "The old school has disappeared.",
+        "A new cinema has opened.",
+        "Every building has been painted red.",
+        "An empty shop has become a community workshop."
+      ],
+      "answer": 3,
+      "sourceParagraph": 1,
+      "explanation": "The vacant shop is now a workshop with colourful paintings."
+    },
+    {
+      "id": "r40-en-b1-03",
+      "tab": "understanding",
+      "kind": "mc",
+      "q": "What did Tomas learn from teaching two children to repair a light?",
+      "choices": [
+        "You must have a professional qualification to help.",
+        "Only adults can teach children.",
+        "You can be useful while still learning yourself.",
+        "Carrying boxes is better than helping people directly."
+      ],
+      "answer": 2,
+      "sourceParagraph": 2,
+      "explanation": "Tomas understands that beginners can contribute without already being experts."
+    },
+    {
+      "id": "r40-en-b1-04",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why did Tomas initially choose simple tasks at the workshop?",
+      "choices": [
+        "He felt nervous about meeting new people.",
+        "He had to stay outside the workshop.",
+        "The volunteers refused to let him help.",
+        "He was preparing for a mechanics exam."
+      ],
+      "answer": 0,
+      "sourceParagraph": 2,
+      "explanation": "He made tea and carried boxes because he felt shy around strangers."
+    },
+    {
+      "id": "r40-en-b1-05",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What do old photographs add to the workshop?",
+      "choices": [
+        "They prove the town has never changed.",
+        "They replace the need for people to meet.",
+        "They help neighbours share memories of the area's history.",
+        "They show only recently renovated buildings."
+      ],
+      "answer": 2,
+      "sourceParagraph": 3,
+      "explanation": "Photos of the former fountain and cinema help people discuss the neighbourhood's past."
+    },
+    {
+      "id": "r40-en-b1-06",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why does Tomas mention Robin's old photographs?",
+      "choices": [
+        "He hopes Robin might share some at the open day.",
+        "He wants Robin to become a paid photographer.",
+        "He has lost all the workshop pictures.",
+        "He plans to sell them to a shop."
+      ],
+      "answer": 0,
+      "sourceParagraph": 4,
+      "explanation": "He remembers Robin's pictures of everyday life and invites him to bring a few."
+    },
+    {
+      "id": "r40-en-b1-07",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What does Tomas mean by saying Robin need not prepare a speech?",
+      "choices": [
+        "He wants Robin to stay silent during the event.",
+        "A short informal visit would be welcome.",
+        "Only volunteers are allowed to speak.",
+        "The event will not include any activities."
+      ],
+      "answer": 1,
+      "sourceParagraph": 4,
+      "explanation": "The invitation makes clear that Robin need not perform or prepare."
+    },
+    {
+      "id": "r40-en-b1-08",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "Why does Tomas offer a video call or a visit to Robin's town?",
+      "choices": [
+        "He wants to avoid talking about the old square.",
+        "He does not want Robin to send photographs.",
+        "He needs Robin to help sell workshop tools.",
+        "He understands travelling to the open day may be difficult."
+      ],
+      "answer": 3,
+      "sourceParagraph": 5,
+      "explanation": "The alternative options show respect for Robin's time and travel costs."
+    },
+    {
+      "id": "r40-en-b1-09",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "What bothers Tomas about relying on social-media photos?",
+      "choices": [
+        "They take too long to open.",
+        "They are usually taken in poor weather.",
+        "They cannot replace hearing Robin's real experiences.",
+        "They include too many pictures of school."
+      ],
+      "answer": 2,
+      "sourceParagraph": 5,
+      "explanation": "Tomas wants to know about the new town directly rather than guessing from online images."
+    },
+    {
+      "id": "r40-en-b1-10",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "What is the main message behind Tomas's final question?",
+      "choices": [
+        "Their friendship should not depend on rare special events.",
+        "They should meet only on important holidays.",
+        "The workshop needs more photographers to continue.",
+        "Their former school should organise a reunion."
+      ],
+      "answer": 0,
+      "sourceParagraph": 5,
+      "explanation": "He asks to reconnect in ordinary life rather than wait for a special occasion."
+    }
+  ]
+}
