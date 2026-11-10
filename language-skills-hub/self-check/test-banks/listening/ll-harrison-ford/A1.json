@@ -1,0 +1,38 @@
+{
+  "kind": "LSH_LISTENING_TEST_BLUEPRINT_DRAFT_R34_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "ll-harrison-ford",
+  "language": "en",
+  "level": "A1",
+  "sourcePracticeContentHash": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
+  "durationMinutesSuggested": 15,
+  "listensSuggested": 2,
+  "reviewStatus": "STRUCTURAL_SELECTION_NOT_INDEPENDENT_CONTENT",
+  "editorialStatus": "REQUIRES_NEW_LISTENING_ITEMS_AND_AUDIO_VALIDATION",
+  "note": "QA-only 10-task structural subset of current practice. NOT an independently written Listening test; do not offer to students or issue a grade.",
+  "objectiveScoreRule": "1 point for each correct gist/detail/sequence response",
+  "writtenScoreRule": "Teacher must grade facts and open 0 or 1 each after submission",
+  "selections": {
+    "gist": [
+      0,
+      2
+    ],
+    "detail": [
+      0,
+      1,
+      3
+    ],
+    "sequence": [
+      0,
+      1,
+      2
+    ],
+    "facts": [
+      0
+    ],
+    "open": [
+      0
+    ]
+  }
+}
