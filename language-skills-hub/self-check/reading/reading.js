@@ -118,10 +118,10 @@
  const locale=core.LANGUAGES.includes(selected.lang)?selected.lang:'en';
  const ui=T[locale];
  const exportsCopy={
-  en:{button:'Download anonymous CSV result',note:'Local and unverified. This file contains no student name, answers or reflections.',error:'The file could not be downloaded.'},
-  es:{button:'Descargar resultado CSV sin datos personales',note:'Resultado local no verificado. El archivo no contiene nombres, respuestas ni reflexiones.',error:'No se pudo descargar el archivo.'},
-  de:{button:'Anonymes CSV-Ergebnis herunterladen',note:'Lokales, nicht verifiziertes Ergebnis. Die Datei enthält keine Namen, Antworten oder Reflexionen.',error:'Die Datei konnte nicht heruntergeladen werden.'},
-  fr:{button:'Télécharger le résultat CSV anonyme',note:'Résultat local non vérifié. Le fichier ne contient ni nom, ni réponses, ni réflexions.',error:'Le fichier n’a pas pu être téléchargé.'}
+  en:{"button":"Download detailed result CSV","copy":"Copy result for teacher","code":"Optional anonymous teacher code (never write your name)","note":"CSV and copied summary include question scores, not answer text or names. Use an anonymous teacher code, if supplied; this is not a verified school record.","done":"Local CSV report downloaded. Give it to your teacher.","copied":"Result summary copied. Send it to your teacher.","error":"Could not download or copy result."},
+  es:{"button":"Descargar informe CSV detallado","copy":"Copiar resultado para el docente","code":"Código anónimo opcional del docente (no escribas tu nombre)","note":"El CSV y el resumen contienen puntuaciones por pregunta, sin respuestas ni nombres. Puedes incluir un código anónimo; el registro no está verificado.","done":"Informe CSV descargado. Entrégalo al docente.","copied":"Resumen copiado. Envíalo al docente.","error":"No se pudo descargar o copiar el resultado."},
+  de:{"button":"Detaillierten CSV-Bericht herunterladen","copy":"Ergebnis für Lehrkraft kopieren","code":"Optionaler anonymer Code der Lehrkraft (kein Name)","note":"CSV und Zusammenfassung enthalten Aufgabenpunkte, keine Antworten oder Namen. Ein anonymer Code ist optional; das Ergebnis ist nicht verifiziert.","done":"CSV-Bericht lokal heruntergeladen. Bitte an die Lehrkraft weitergeben.","copied":"Ergebnis kopiert. Bitte an die Lehrkraft weitergeben.","error":"Ergebnis konnte nicht heruntergeladen oder kopiert werden."},
+  fr:{"button":"Télécharger le rapport CSV détaillé","copy":"Copier le résultat pour le professeur","code":"Code anonyme facultatif fourni par le professeur (sans nom)","note":"Le CSV et le résumé indiquent les points par question, sans réponses ni noms. Code anonyme facultatif, résultat non vérifié.","done":"Rapport CSV téléchargé localement. Remets-le au professeur.","copied":"Résumé copié. Transmets-le au professeur.","error":"Impossible de télécharger ou de copier le résultat."}
  }[locale];
  let variant=null;
  const answers=Object.create(null);
@@ -158,6 +158,8 @@
   $('resultKicker').textContent=ui.resultKicker;
   $('footer').textContent=ui.footer;
   $('exportResult').textContent=exportsCopy.button;
+  $('exportCopy').textContent=exportsCopy.copy;
+  $('archiveCode').closest('label').firstChild.textContent=exportsCopy.code+' ';
   $('exportStatus').textContent=exportsCopy.note;
  }
  function renderReading(){
@@ -272,6 +274,7 @@
   }
   $('resultReflection').textContent=ui.reflectionAfter;
   $('exportResult').hidden=!exportCore;
+  $('exportCopy').hidden=!exportCore;
   $('results').hidden=false;
   $('results').focus({preventScroll:true});
   $('results').scrollIntoView({behavior:'smooth',block:'start'});
@@ -300,15 +303,31 @@
   translate();themeInit();
   $('submitButton').addEventListener('click',()=>submit(false,false));
   $('reflection').addEventListener('input',()=>timedUI?.save());
+  const archiveData=()=>{
+   if(!submitted||!lastReport||!exportCore)throw new Error('No submitted result.');
+   const state=timedUI?.status();
+   const receipt=exportCore.reading(lastReport,{
+    topic:selected.topic,language:selected.lang,level:selected.level,
+    submittedAt:state?.submittedAt??null,
+    interruptionCount:state?.incidents?.length??0
+   });
+   return {receipt,rows:exportCore.questionRows(lastReport,'reading'),
+    code:$('archiveCode').value};
+  };
   $('exportResult').addEventListener('click',()=>{
-   if(!submitted||!lastReport||!exportCore)return;
    try{
-    const state=timedUI?.status();
-    exportCore.download(exportCore.reading(lastReport,{
-     topic:selected.topic,language:selected.lang,level:selected.level,
-     submittedAt:state?.submittedAt??null,
-     interruptionCount:state?.incidents?.length??0
-    }));
+    const {receipt,rows,code}=archiveData();
+    exportCore.downloadDetailed(receipt,rows,code);
+    $('exportStatus').textContent=exportsCopy.done;
+   }catch(error){
+    $('exportStatus').textContent=exportsCopy.error+' '+String(error.message||error);
+   }
+  });
+  $('exportCopy').addEventListener('click',async()=>{
+   try{
+    const {receipt,rows,code}=archiveData();
+    await exportCore.copyReport(receipt,rows,code);
+    $('exportStatus').textContent=exportsCopy.copied;
    }catch(error){
     $('exportStatus').textContent=exportsCopy.error+' '+String(error.message||error);
    }
