@@ -8,7 +8,7 @@
  const doc=root.document,$=id=>doc.getElementById(id);
  const LABS={en:'Angličtina',es:'Španělština',de:'Němčina',fr:'Francouzština'};
  const state={words:[],selected:new Set(),initialized:false,mode:null,flash:[],flashIndex:0,
-  flashRevealed:false,repeat:new Set(),matchPool:[],matchCursor:0,matchRound:[],
+  flashRevealed:false,repeat:new Set(),matchPool:[],matchCursor:0,matchRound:[],matchOrder:[],
   matchSolved:new Set(),matchTerm:null,matchMeaning:null,matchWrong:0,
   examDeck:[],examAnswers:[],examIndex:0,editId:null};
  const store=STORE&&STORE.createStore({mode:'production'});
@@ -194,8 +194,8 @@
  }
  function startMatch(){
   if(noSelection(true))return;
-  const pool=ENGINE.shuffle(testable());
-  if(ENGINE.matchingDeck(pool,2).length<2){
+  const pool=ENGINE.matchingDeck(testable(),testable().length);
+  if(pool.length<2){
    showStatus('Pro hru Propoj dvojice vyber alespoň dvě slovíčka s různým českým významem.');return;
   }
   state.mode='match';state.matchPool=pool;state.matchCursor=0;state.matchWrong=0;
@@ -211,7 +211,7 @@
    $('practiceArea').append(make('p','empty','Procvičování dvojic dokončeno. Chybné pokusy: '+state.matchWrong+'.'));
    return;
   }
-  state.matchRound=chosen;state.matchSolved=new Set();
+  state.matchRound=chosen;state.matchOrder=ENGINE.shuffle(chosen);state.matchSolved=new Set();
   state.matchTerm=null;state.matchMeaning=null;
   renderMatch();
  }
@@ -239,7 +239,7 @@
    return b;
   }
   for(const w of state.matchRound)left.append(tile(w,'term',w.term+' · '+w.language.toUpperCase()));
-  for(const w of ENGINE.shuffle(state.matchRound))right.append(tile(w,'meaning',w.translationCs));
+  for(const w of state.matchOrder)right.append(tile(w,'meaning',w.translationCs));
   grid.append(left,right);a.append(grid);
   if(state.matchSolved.size===state.matchRound.length)
    a.append(make('p','exam-good','Všechny dvojice správně!'),
