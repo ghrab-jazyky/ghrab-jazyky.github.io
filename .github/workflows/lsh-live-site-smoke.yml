@@ -38,13 +38,16 @@ jobs:
                   assert data['kind']=='LSH_PUBLIC_PRACTICE_R17'
                   assert data['gradedTestsEnabled'] is False
                   release=json.loads(get('/language-skills-hub/version.json?verify='+str(attempt)))
-                  assert release['version']=='R34'
+                  assert release['version']=='R35'
                   assert release['localGradeProposalsEnabled'] is True
                   assert release['localTeacherReviewPersistenceEnabled'] is True
                   assert release['localAnonymousCsvExportEnabled'] is True
                   assert release['localFullPdfReportEnabled'] is True
                   assert release['readingFullSourcePdfEnabled'] is True
                   assert release['listeningTestAutoClosed'] is True
+                  assert release['listeningTestClosedFactualCloze'] is True
+                  assert release['listeningTestVisibleAnswerBank'] is False
+                  assert release['officialSchoolLogoPdfEnabled'] is True
                   assert release['selfCheckEnabled'] is True
                   assert release['gradedTestsEnabled'] is False
                   assert release['officialGradesEnabled'] is False
@@ -55,6 +58,8 @@ jobs:
                   assert policy['gradedTestsEnabled'] is False and policy['officialGradesEnabled'] is False
                   assert policy['futureSelfCheck']['listeningTestOpenAnswersEnabled'] is False
                   assert policy['futureSelfCheck']['listeningRequiresManualWrittenReviewForGrade'] is False
+                  assert policy['futureSelfCheck']['listeningTestObjectiveFillIn'] is True
+                  assert policy['futureSelfCheck']['listeningTestVisibleAnswerBank'] is False
                   hub=get('/language-skills-hub/assets/hub.js?verify='+str(attempt)).decode('utf-8')
                   assert 'Test – známka 1–5' in hub
                   assert "self-check/reading/teacher.html" in hub
@@ -83,6 +88,7 @@ jobs:
                     'self-check/results/grade-core.js',
                     'self-check/results/export-core.js',
                     'self-check/results/pdf-report.js',
+                    'assets/school-logo.png',
                     'self-check/results/share-tools.js',
                     'self-check/results/share.css',
                     'self-check/session/attempt-core.js',
@@ -95,8 +101,14 @@ jobs:
                       head('/language-skills-hub/'+asset)
                   assert 'id="exportPdf"' in get('/language-skills-hub/self-check/reading/index.html').decode('utf-8')
                   assert 'id="exportPdf"' in get('/language-skills-hub/self-check/listening/student.html').decode('utf-8')
-                  assert 'core.assessAuto(' in get('/language-skills-hub/self-check/listening/listening-student.js').decode('utf-8')
-                  print('PASS LIVE HTTPS R34: 29 practice cards, automatic Listening and complete local PDF report',flush=True)
+                  student_js=get('/language-skills-hub/self-check/listening/listening-student.js').decode('utf-8')
+                  assert 'core.assessAuto(' in student_js
+                  assert 'clozeTask()' in student_js
+                  assert 'matchingTask()' not in student_js
+                  assert 'school-logo.png' in get('/language-skills-hub/self-check/results/pdf-report.js').decode('utf-8')
+                  logo=get('/language-skills-hub/assets/school-logo.png')
+                  assert logo[:8]==b'\\x89PNG\\r\\n\\x1a\\n' and len(logo)>1000
+                  print('PASS LIVE HTTPS R35: 29 practice cards, factual cloze without answer bank and authentic school logo PDF',flush=True)
                   print('PRODUCTION URL:',base+'/language-skills-hub/',flush=True)
                   sys.exit(0)
               except Exception as ex:
