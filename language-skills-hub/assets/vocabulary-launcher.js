@@ -17,8 +17,11 @@ function url(){
  return result.href;
 }
 function openVocabulary(){
- const next=window.open(url(),'_blank','noopener,noreferrer');
- if(next===null)window.location.assign(url());
+ // Never infer a blocked popup from window.open's null return with "noopener":
+ // Chromium may return null even after a successful new-tab open.
+ const a=document.createElement('a');
+ a.href=url();a.target='_blank';a.rel='noopener noreferrer';
+ a.hidden=true;document.body.append(a);a.click();a.remove();
 }
 const old=document.getElementById('rl-vocab-button');
 if(old){
