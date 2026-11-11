@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="cs" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; connect-src 'self'; form-action 'none'">
+<title>VÝSLEDKY procvičování – Reading &amp; Listening | Language Skills Hub</title>
+<link rel="stylesheet" href="teacher-key.css">
+<script defer src="../reading/reading-core.js"></script>
+<script defer src="../listening/listening-core.js"></script>
+<script defer src="../results/pdf-report.js"></script>
+<script defer src="teacher-key.js"></script>
+</head>
+<body>
+<a class="skip" href="#practiceKeyApp">Přejít na obsah</a>
+<header class="topbar">
+ <div><span class="eyebrow">Language Skills Hub · Gymnázium, Ostrava-Hrabůvka</span>
+  <h1>VÝSLEDKY <small>procvičovacích aktivit</small></h1></div>
+ <a class="back" href="../../index.html">← Zpět do katalogu</a>
+</header>
+<main id="practiceKeyApp">
+ <section class="intro" aria-label="Informace pro učitele">
+  <p><strong>Učitelský klíč:</strong> správná řešení původních procvičovacích úloh Reading Lab a Listening Lab, včetně vysvětlení a dostupných vzorových odpovědí.</p>
+  <p>Otevřené diskusní úlohy nemají jediný správný výsledek. Tento klíč není výsledkem žádného studenta ani klíčem k samostatným testům.</p>
+  <p class="warning"><strong>Pozor:</strong> jde o veřejnou statickou aplikaci bez přihlášení. Odkaz s řešeními neposílejte studentům. Tlačítko je jen v učitelském katalogu, nikoli v odkazech na studentské karty.</p>
+ </section>
+ <section class="selection" aria-labelledby="chooseTitle">
+ <h2 id="chooseTitle">Vyber kartu a variantu</h2>
+ <div class="fields">
+  <div><label for="topic">Téma</label><select id="topic" required></select></div>
+  <div><label for="language">Jazyk</label><select id="language" required></select></div>
+  <div><label for="level">Úroveň</label><select id="level" required></select></div>
+ </div>
+ <div class="bar">
+  <button type="button" id="downloadPdf" disabled>Stáhnout výsledky (PDF)</button>
+  <p id="status" aria-live="polite" role="status">Načítám katalog procvičovacích karet…</p>
+ </div>
+ </section>
+ <section id="answerPreview" class="preview" aria-label="Náhled správných řešení"></section>
+</main>
+<footer>Language Skills Hub · pouze učitelský pracovní podklad k procvičování · bez osobních údajů žáků</footer>
+</body>
+</html>
