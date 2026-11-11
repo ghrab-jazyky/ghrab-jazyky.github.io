@@ -266,6 +266,31 @@ function startTest(items){
  }
  showQuestion();
 }
+async function migrateLegacyConversation(){
+ // Older Conversation cards wrote to the staging IDB "lsh-test".
+ // Copy, never delete, those learner words into the shared production bank.
+ // A successful one-time migration is idempotently tracked per browser.
+ try{
+  if(localStorage.getItem('lsh-vocab-migrated-v1')==='1')return;
+  const legacy=ST.createStore({mode:'staging'});
+  await legacy.open();
+  if(legacy.status().mode==='ready'){
+   const words=await legacy.listWords();
+   if(words.length){
+    const backup=await legacy.exportWords();
+    const migrated=await store.importWords(backup,{replace:false});
+    if(!migrated.storedInIndexedDB)
+     throw new Error('Trvalé úložiště není dostupné.');
+    notify('Převedeno '+words.length+' dřívějších slovíček z Conversation Labu do společného slovníčku.');
+   }
+  }
+  localStorage.setItem('lsh-vocab-migrated-v1','1');
+  legacy.close();
+ }catch(error){
+  notify('Starší slovíčka se nepodařilo automaticky převést: '+error.message+
+   '. Původní data nebyla odstraněna.','warn');
+ }
+}
 async function init(){
  const back=new URLSearchParams(location.search).get('zpet');
  if(back&&/^\/language-skills-hub\/(?:konverzace|cteni|poslech)\/[a-z0-9-]+\/index\.html$/.test(back))
@@ -279,7 +304,7 @@ async function init(){
  $('exportBtn').addEventListener('click',download);
  $('importFile').addEventListener('change',importFile);
  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>startMode(b.dataset.mode)));
- try{await store.open();await load();store.subscribe(()=>load())}catch(e){notify('Úložiště nelze otevřít: '+e.message,'error')}
+ try{await store.open();await migrateLegacyConversation();await load();store.subscribe(()=>load())}catch(e){notify('Úložiště nelze otevřít: '+e.message,'error')}
 }
 init();
 })();
