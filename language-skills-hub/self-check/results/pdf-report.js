@@ -41,6 +41,9 @@
    'Navrh znamky: '+report.summary.grade,
    'Vytvoreno: '+new Date(report.generatedAt||Date.now()).toISOString()
   ];
+  if(report.skill==='reading'&&report.readingText){
+   lines.push('','VYCHOZI CTENY TEXT',clean(report.readingText));
+  }
   report.questions.forEach((q,i)=>{
    lines.push('',(i+1)+'. '+clean(q.question),
     'Odpoved studenta: '+clean(q.studentAnswer||'Bez odpovedi'),
@@ -160,6 +163,10 @@
   paragraph('VYTVOŘENO',stamp,{size:9,after:6});
   paragraph(null,'UPOZORNĚNÍ: Výsledek vytvořilo studentské zařízení. Identita studenta a pravost obsahu nejsou technicky ověřené. Učitel rozhoduje o případném zápisu známky.',
    {size:9,leading:13,color:'#8c4b13',after:17});
+  if(report.skill==='reading'&&report.readingText){
+   paragraph(null,'VÝCHOZÍ ČTENÝ TEXT',{size:12,weight:700,color:'#16344e',after:11});
+   paragraph(null,report.readingText,{size:10,leading:15,after:20});
+  }
   paragraph(null,'PŘEHLED VŠECH ÚLOH A ODPOVĚDÍ',
    {size:12,weight:700,color:'#16344e',after:12});
   report.questions.forEach((q,i)=>{
