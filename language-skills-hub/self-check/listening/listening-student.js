@@ -240,10 +240,11 @@
   }
   const proposed=gradeCore.proposal(normalized.points.earned,normalized.points.max);
   gradeBadge($('gradeProposal'),proposed,'Automatically calculated proposed grade (1–5)');
-  $('exportCopy').hidden=!exportCore;
+  $('exportCopy').hidden=!window.LSHPdfReport;
+  $('exportPdf').hidden=!window.LSHPdfReport;
   $('exportResult').hidden=!exportCore;
   $('exportStatus').textContent=
-   'The report includes per-question point values but no answer text or names. Send the downloaded file or copied summary to your teacher from your school email. Neither format is independently verified.';
+   'The PDF and copy contain the complete test, your answers, correct answers and mistakes. They do not contain your name or email. Send the file from your school email; this local report is not independently verified.';
   const archiveData=()=>{
    if(!exportCore)throw new Error('Export module unavailable.');
    const state=timedUI?.status();
@@ -263,11 +264,38 @@
     $('exportStatus').textContent='Download failed: '+String(error.message||error);
    }
   };
+  const completeReport=()=>{
+   if(!window.LSHPdfReport)throw new Error('PDF export module unavailable.');
+   const grade=gradeCore.proposal(normalized.points.earned,normalized.points.max);
+   return {
+    skill:'listening',topicId:selection.topic,
+    topic:$('title').textContent,language:'en',level:selection.level,
+    generatedAt:Date.now(),
+    summary:{earned:grade.earned,max:grade.max,
+     percent:grade.displayedPercent,grade:grade.grade},
+    questions:report.reviewed.map(task=>({
+     question:(task.phase==='gist'?'FIRST LISTENING':task.phase==='detail'?
+      'LISTEN AND INTERPRET':task.phase==='sequence'?'RECONSTRUCTION':'MATCHING')+
+      ' · '+task.question,
+     studentAnswer:task.chosen&&task.chosen.length?task.chosen.join(' | '):'Bez odpovědi',
+     correctAnswer:task.correctAnswers.join(' | '),
+     correct:!!task.correct,awarded:task.correct?1:0,
+     explanation:task.reason||''
+    }))
+   };
+  };
+  $('exportPdf').onclick=()=>{
+   try{
+    window.LSHPdfReport.download(completeReport());
+    $('exportStatus').textContent='Full test PDF downloaded. Send it to your teacher using school email.';
+   }catch(error){
+    $('exportStatus').textContent='PDF export failed: '+String(error.message||error);
+   }
+  };
   $('exportCopy').onclick=async()=>{
    try{
-    const {receipt,rows}=archiveData();
-    await exportCore.copyReport(receipt,rows);
-    $('exportStatus').textContent='Result summary copied. Send it to your teacher.';
+    await window.LSHPdfReport.copy(completeReport());
+    $('exportStatus').textContent='Complete test report copied. Send it to your teacher using school email.';
    }catch(error){
     $('exportStatus').textContent='Copy failed: '+String(error.message||error);
    }
