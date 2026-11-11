@@ -111,7 +111,7 @@ test('R28 UI provides provisional grades after Reading and automatic Listening s
  assert.match(listening,/core\.assessAuto/);
  assert.match(listening,/LSHPdfReport\.download/);
  assert.match(lhtml,/id="exportPdf"/);
- assert.match(catalogJs,/Test – známka 1–5/);
+ assert.match(catalogJs,/one\('a','action test','TEST'\)/);
  assert.doesNotMatch(read('self-check/results/grade-core.js'),/fetch\(|XMLHttpRequest|navigator\.sendBeacon/);
 });
 
