@@ -329,6 +329,7 @@
    return {
     skill:'reading',topicId:selected.topic,topic:variant.title,
     language:selected.lang,level:selected.level,generatedAt:Date.now(),
+    readingText:variant.paragraphs.join('\n\n'),
     summary:{earned:proposal.earned,max:proposal.max,
      percent:proposal.displayedPercent,grade:proposal.grade},
     questions:lastReport.details.map(item=>({
