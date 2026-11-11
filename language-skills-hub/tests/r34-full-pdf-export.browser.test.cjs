@@ -10,6 +10,8 @@ async function checkPdf(page,skill,topic){
  const dl=await pending;
  assert.match(dl.suggestedFilename(),new RegExp('^lsh-'+skill+'-'+topic+'-.*\\.pdf$'));
  const bytes=fs.readFileSync(await dl.path());
+ fs.mkdirSync('qa/r34',{recursive:true});
+ fs.writeFileSync('qa/r34/'+skill+'-'+topic+'.pdf',bytes);
  assert.ok(bytes.length>12000,'PDF should contain rendered pages');
  assert.equal(bytes.subarray(0,8).toString('ascii'),'%PDF-1.4');
  assert.match(bytes.subarray(-140).toString('latin1'),/%%EOF/);
