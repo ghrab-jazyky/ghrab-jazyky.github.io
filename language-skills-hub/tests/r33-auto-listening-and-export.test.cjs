@@ -58,7 +58,7 @@ test('Matching is one-to-one, rejects illegal picks and scores omissions as wron
  const v=variant(listens[0],'B2'),bank=core.matching(v);
  const bad=fullAnswers(v);
  bad.match[1]=bad.match[0];
- assert.throws(()=>core.assessAuto(v,bad),/only once/);
+ assert.throws(()=>core.assessAuto(v,bad),/used once/);
  const out=core.assessAuto(v,{});
  assert.equal(out.answered,0);
  assert.equal(out.objectiveCorrect,0);
