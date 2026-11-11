@@ -11,7 +11,7 @@ async function convoCheck(page,e){
  const errors=[]; const report=err=>errors.push(err.message);
  page.on('pageerror',report);
  await page.goto(url(e),{waitUntil:'load',timeout:45000});
- await page.locator('#lshBridgeSavePopup').waitFor({timeout:10000});
+ await page.locator('#lshBridgeSavePopup').waitFor({state:'attached',timeout:10000});
  const w=page.locator('#vocabGrid .vocab-item b').first();
  await w.waitFor({timeout:10000});
  await w.dblclick();
@@ -46,7 +46,7 @@ async function convoCheck(page,e){
 async function readingCheck(page,e){
  const errors=[];const report=err=>errors.push(err.message);page.on('pageerror',report);
  await page.goto(url(e),{waitUntil:'load',timeout:45000});
- await page.locator('#lookup').waitFor();
+ await page.locator('#lookup').waitFor({state:'attached'});
  await page.locator('#readingBody p').first().waitFor({timeout:10000});
  await page.locator('#readingBody p').first().dblclick({position:{x:32,y:13}});
  await page.locator('#lookup:visible').waitFor({timeout:7000});
@@ -128,7 +128,7 @@ for(const [name,browserType] of [['Chromium',chromium],['WebKit',webkit]]){
    for(const width of [1280,390]){
     await page.setViewportSize({width,height:844});
     await page.goto(new URL('konverzace/ceny-nemovitosti/index.html?practice=1&lang=en&level=B2',base).href,{waitUntil:'load'});
-    await page.locator('#lshBridgeSavePopup').waitFor();
+    await page.locator('#lshBridgeSavePopup').waitFor({state:'attached'});
     assert.equal((await page.locator('#lshBridgeSavePopup').textContent()||'').trim(),'Save to My Vocabulary');
     const point=await page.evaluate(()=>{
      const parent=document.getElementById('mainQuestion');
@@ -157,7 +157,7 @@ for(const [name,browserType] of [['Chromium',chromium],['WebKit',webkit]]){
     fr:'Enregistrer dans mon vocabulaire'
    })){
     await page.goto(new URL('konverzace/ceny-nemovitosti/index.html?practice=1&lang='+language+'&level=B2',base).href);
-    await page.locator('#lshBridgeSavePopup').waitFor();
+    await page.locator('#lshBridgeSavePopup').waitFor({state:'attached'});
     assert.equal((await page.locator('#lshBridgeSavePopup').textContent()||'').trim(),expected,language);
    }
    assert.deepEqual(errors,[]);
