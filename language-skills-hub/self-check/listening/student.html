@@ -56,14 +56,11 @@
    <p id="resultCaution" class="small-note"></p>
    <div id="resultDetails" class="result-details"></div>
    <div class="result-export">
-    <label class="archive-label" for="archiveCode">Volitelný anonymní kód od učitele (nepiš své jméno)
-     <input type="text" id="archiveCode" maxlength="24" pattern="[A-Za-z0-9_-]*" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="např. 3A4-07">
-    </label>
     <div class="archive-actions">
      <button type="button" id="exportCopy" class="action ghost" hidden>Zkopírovat výsledek</button>
      <button type="button" id="exportResult" class="action ghost" hidden>Stáhnout podrobný CSV protokol</button>
     </div>
-    <p class="small-note" id="exportStatus" role="note">CSV lists question-by-question scores, not student answers or names. A code can be added for your teacher; this remains unverified.</p>
+    <p class="small-note" id="exportStatus" role="note">CSV contains question scores, not names or answer text. Send it to your teacher using your school email; the result remains unverified.</p>
    </div>
   </section>
  </main>
