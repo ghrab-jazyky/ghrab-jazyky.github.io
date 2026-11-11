@@ -16,12 +16,13 @@ const sample={
   {question:'Question sans réponse',studentAnswer:'Bez odpovědi',correctAnswer:'Une phrase.',
    correct:false,awarded:0}
  ],
+ readingText:'Původní článek o asteroidech.\n\nDruhá věta.',
  reflection:'Učitelé: příklad otevřené úvahy. Nehodnoceno.'
 };
 test('PDF report contains complete questions, student responses, corrections and teacher warning',()=>{
  const text=pdf.fullText(sample);
  for(const required of ['¿Dónde','En el espacio','En la Tierra','Frage über Sterne?',
-  'Question sans réponse','33.33','Navrh znamky: 5','Učitelé']){
+  'Question sans réponse','Původní článek','33.33','Navrh znamky: 5','Učitelé']){
   assert.ok(text.includes(required),'Missing '+required);
  }
  assert.doesNotMatch(text,/student_name|student_email|anonymous_code|Cod:/);
