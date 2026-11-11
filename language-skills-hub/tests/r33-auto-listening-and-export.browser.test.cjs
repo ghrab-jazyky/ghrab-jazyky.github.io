@@ -58,7 +58,9 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
     assert.match(copied,/LANGUAGE SKILLS HUB/);
     assert.doesNotMatch(copied,/anonymous_code|student_name|student_email|Kod:/);
     assert.match(copied,/Navrh znamky/);
-    assert.match(copied,new RegExp(topic));
+    assert.match(copied,/Tema: /);
+    assert.match(copied,/Odpoved studenta:/);
+    assert.match(copied,/Spravna odpoved:/);
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
     assert.ok(overflow<=3,topic+' '+level+' mobile horizontal overflow '+overflow);
    }
@@ -96,7 +98,7 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
      value:{writeText:async value=>{window.__r33Copied=value}}}));
     await page.locator('#exportCopy').click();
     await page.waitForFunction(()=>typeof window.__r33Copied==='string');
-    assert.match(await page.evaluate(()=>window.__r33Copied),/VYSLEDEK TESTU/);
+    assert.match(await page.evaluate(()=>window.__r33Copied),/KOMPLETNI PROTOKOL TESTU/);
    }
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
@@ -116,6 +118,11 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
    await page.reload();
    await page.locator('#taskList .matching-row select').first().waitFor();
    assert.equal(await page.locator('#match-0').inputValue(),'1');
+   if(await page.locator('#sessionLock').isVisible()){
+    for(const corner of ['tl','tr','bl','br'])
+     await page.locator('.lsh-corner-'+corner).click();
+    await page.locator('#sessionLock').waitFor({state:'hidden'});
+   }
    await page.locator('#submitButton').click();
    await page.locator('#results:not([hidden])').waitFor();
    assert.match((await page.locator('#gradeProposal .grade-number').textContent()).trim(),/^[1-5]$/);
