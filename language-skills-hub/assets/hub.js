@@ -79,6 +79,15 @@ function testSetupUrl(e){
  if(e.levels.includes(level))url.searchParams.set('level',level);
  return url.href;
 }
+function practiceKeyUrl(e){
+ if(!['cteni','poslech'].includes(e.skill))return '';
+ const url=new URL('self-check/practice-answers/teacher.html',document.baseURI);
+ url.searchParams.set('topic',e.id);
+ const language=byId('language').value,level=byId('level').value;
+ if(e.languages.includes(language))url.searchParams.set('lang',language);
+ if(e.levels.includes(level))url.searchParams.set('level',level);
+ return url.href;
+}
 function card(e){
  const filter=byId('language').value;
  const language=filter==='all'?'cs':filter;
@@ -106,6 +115,13 @@ function card(e){
  share.setAttribute('aria-label','Sdílet se studenty: '+translation.title);
  share.addEventListener('click',()=>openShare(e));
  actions.append(open,share);
+ if(['cteni','poslech'].includes(e.skill)){
+  const key=one('a','action','VÝSLEDKY');
+  key.href=practiceKeyUrl(e);key.target='_blank';key.rel='noopener noreferrer';
+  key.setAttribute('aria-label','VÝSLEDKY: učitelský klíč k procvičování – '+translation.title);
+  key.title='Správná řešení procvičovacích úloh, nikoli výsledky žáků. Část úloh se opakuje i v místních testech. Veřejný podklad bez přihlášení.';
+  actions.appendChild(key);
+ }
  if(localSelfCheck&&['cteni','poslech'].includes(e.skill)){
   const check=one('a','action test','Test – známka 1–5');
   check.href=testSetupUrl(e);check.target='_blank';check.rel='noopener noreferrer';
