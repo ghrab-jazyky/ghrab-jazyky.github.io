@@ -40,7 +40,16 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
      .filter(e=>e.getBoundingClientRect().right>innerWidth+3)
      .slice(0,8).map(e=>({tag:e.tagName,cls:e.className,
       right:Math.round(e.getBoundingClientRect().right),text:e.textContent.slice(0,75)}))):[];
-    assert.ok(overflow<=3,variant.topic+' mobile overflow '+overflow+' '+JSON.stringify(offenders));
+    const metrics=overflow>3?await page.evaluate(()=>{
+     const doc=document.documentElement,body=document.body;
+     return {innerWidth,visualWidth:window.visualViewport?.width,documentWidth:doc.clientWidth,
+      docScroll:doc.scrollWidth,bodyClient:body.clientWidth,bodyScroll:body.scrollWidth,
+      rootRect:doc.getBoundingClientRect().width,bodyRect:body.getBoundingClientRect().width,
+      descendants:[...document.querySelectorAll('*')].filter(e=>e.scrollWidth>e.clientWidth+3)
+       .slice(0,12).map(e=>({tag:e.tagName,className:String(e.className).slice(0,60),
+        client:e.clientWidth,scroll:e.scrollWidth}))};
+    }):null;
+    assert.ok(overflow<=3,variant.topic+' mobile overflow '+overflow+' '+JSON.stringify({offenders,metrics}));
    }
    await page.goto(href('index.html',{skill:'cteni'}));
    const cards=page.locator('#cards .card');
