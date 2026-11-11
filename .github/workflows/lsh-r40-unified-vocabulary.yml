@@ -1,0 +1,49 @@
+name: LSH R40 shared My vocabulary QA (NO DEPLOY)
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/**'
+      - '.github/workflows/lsh-r40-unified-vocabulary.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  vocabulary-static:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Derive content integrity hashes for exact published cards
+        run: node language-skills-hub/tests/r40-unified-vocabulary.test.cjs --hashes
+      - name: JS syntax and storage contract
+        run: |
+          node --check language-skills-hub/my-vocabulary/store.js
+          node --check language-skills-hub/my-vocabulary/app.js
+          node --check language-skills-hub/assets/vocabulary-launcher.js
+          node --test language-skills-hub/tests/r40-unified-vocabulary.test.cjs
+  vocabulary-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install Chromium and WebKit
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Verify student vocabulary in all three labs, games, exam and backup
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-r40-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:8765/language-skills-hub/my-vocabulary/index.html >/dev/null; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/r40-unified-vocabulary.browser.test.cjs
