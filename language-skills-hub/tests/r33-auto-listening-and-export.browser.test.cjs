@@ -17,17 +17,17 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
     ['ll-matthew-oscars','A1'],['ll-harrison-ford','B2'],['ll-peaky-no-fighting','C2']
    ]){
     assert.equal((await page.goto(path('self-check/listening/student.html',{topic,level}))).status(),200);
-    await page.locator('#taskList .matching-bank p').first().waitFor();
+    await page.locator('#taskList .cloze-row input').first().waitFor();
     assert.equal(await page.locator('#taskList textarea').count(),0);
     assert.equal(await page.locator('#taskList .written-response').count(),0);
     assert.equal(await page.locator('#manualGrade').count(),0);
-    const matches=await page.locator('.matching-row select').count();
-    assert.ok(matches>=3,topic+' '+level);
-    assert.equal(await page.locator('.matching-bank p').count(),matches);
+    const matches=await page.locator('.cloze-row input').count();
+    assert.ok(matches>=2,topic+' '+level);
+    assert.equal(await page.locator('.matching-bank').count(),0);
     assert.deepEqual(await page.locator('#taskList .stage h3').allTextContents(),
-     ['First Listening','Listen and Interpret','Listen, Match and Reconstruct']);
+     ['First Listening','Listen and Interpret','Listen, Complete and Reconstruct']);
     assert.equal(await page.locator('#gradeProposal .grade-number').count(),0);
-    await page.locator('.matching-row select').first().selectOption('0');
+    await page.locator('.cloze-row input').first().fill(topic==='ll-matthew-oscars'?'3':topic==='ll-harrison-ford'?'George Lucas and Steven Spielberg':'Grace');
     await page.locator('fieldset.question').first().locator('input').first().check();
     await page.locator('#submitButton').click();
     await page.locator('#results:not([hidden])').waitFor();
@@ -103,21 +103,21 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
  });
- test('R33 '+name+' timed Listening matching selections survive reload and grade is automatic',async()=>{
+ test('R33 '+name+' timed Listening factual cloze responses survive reload and grade is automatic',async()=>{
   const browser=await engine.launch({headless:true});
   try{
    const context=await browser.newContext({viewport:{width:390,height:844}});
    const page=await context.newPage();
    page.on('dialog',d=>d.accept());
    const href=path('self-check/listening/student.html',
-    {topic:'ll-harrison-ford',level:'B1',timer:'20',attempt:'r33-match-'+name+'-session'});
+    {topic:'ll-harrison-ford',level:'B1',timer:'20',attempt:'r35-cloze-'+name+'-session'});
    assert.equal((await page.goto(href)).status(),200);
    await page.locator('#sessionStart').click();
-   await page.locator('#taskList .matching-row select').first().waitFor();
-   await page.locator('#match-0').selectOption('1');
+   await page.locator('#taskList .cloze-row input').first().waitFor();
+   await page.locator('#cloze-0').fill('15');
    await page.reload();
    await page.locator('#taskList .matching-row select').first().waitFor();
-   assert.equal(await page.locator('#match-0').inputValue(),'1');
+   assert.equal(await page.locator('#cloze-0').inputValue(),'15');
    if(await page.locator('#sessionLock').isVisible()){
     for(const corner of ['tl','tr','bl','br'])
      await page.locator('.lsh-corner-'+corner).click();

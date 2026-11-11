@@ -75,7 +75,7 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
     const entry=window.LSHListeningCore.catalogEntry(catalog,'ll-matthew-oscars');
     const data=window.LSHListeningCore.extractJson(await (await fetch('../../'+entry.relative)).text(),'DATA');
     const v=window.LSHListeningCore.variant(data,'B1');
-    const bank=window.LSHListeningCore.matching(v);
+    const bank=window.LSHListeningCore.cloze(v,'ll-matthew-oscars','B1');
     return {v,bank};
    });
    for(const [part,offset]of [['gist',0],['detail',answers.v.gist.length]]){
@@ -91,9 +91,8 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
     const found=options.find(o=>o.text.endsWith(' — '+answers.v.sequence[i]));
     assert.ok(found);await select.selectOption(found.value);
    }
-   for(let i=0;i<answers.bank.prompts.length;i++){
-    const expected=answers.bank.options.findIndex(x=>x.sourceIndex===i);
-    await page.locator('#match-'+i).selectOption(String(expected));
+   for(let i=0;i<answers.bank.length;i++){
+    await page.locator('#cloze-'+i).fill(answers.bank[i].accepted[0]);
    }
    await page.locator('#submitButton').click();
    await page.locator('#results:not([hidden])').waitFor();

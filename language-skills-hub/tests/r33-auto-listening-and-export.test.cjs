@@ -14,22 +14,21 @@ function variant(entry,level){
  const html=fs.readFileSync(path.join(root,entry.relative),'utf8');
  return core.variant(core.extractJson(html,'DATA'),level);
 }
-function fullAnswers(v){
- const match=core.matching(v);
+function fullAnswers(v,topic,level){
+ const facts=core.cloze(v,topic,level);
  const objective=part=>v[part].map(q=>Array.isArray(q.correct)?q.correct.slice():q.correct);
  return {gist:objective('gist'),detail:objective('detail'),
-  sequence:v.sequence.map((_,i)=>i),
-  match:match.prompts.map(p=>match.options.findIndex(x=>x.sourceIndex===p.index))};
+  sequence:v.sequence.map((_,i)=>i),cloze:facts.map(x=>x.accepted[0])};
 }
-test('All 18 Listening variants provide nonambiguous fully automatic matching items',()=>{
+test('All 18 Listening levels use exact-key short factual cloze instead of an answer bank',()=>{
  assert.equal(listens.length,3);
  for(const entry of listens)for(const level of core.LEVELS){
-  const v=variant(entry,level),bank=core.matching(v);
-  assert.equal(bank.prompts.length,v.facts.length+v.open.length,entry.id+' '+level);
-  assert.equal(bank.options.length,bank.prompts.length);
-  assert.ok(bank.prompts.length>=3);
-  assert.equal(new Set(bank.options.map(x=>x.text.trim().toLowerCase())).size,bank.options.length);
-  const answers=fullAnswers(v),report=core.assessAuto(v,answers);
+  const v=variant(entry,level),tasks=core.cloze(v,entry.id,level);
+  assert.equal(tasks.length,v.facts.length,entry.id+' '+level);
+  assert.ok(tasks.length>=2&&tasks.length<=3,entry.id+' '+level);
+  assert.ok(tasks.every(t=>t.accepted.length>=1));
+  const answers=fullAnswers(v,entry.id,level);
+  const report=core.assessAuto(v,answers,entry.id,level);
   assert.equal(report.autoClosed,true);
   assert.equal(report.assessmentMode,'AUTO_CLOSED');
   assert.equal(report.writing.length,0);
@@ -50,37 +49,42 @@ test('All 18 Listening variants provide nonambiguous fully automatic matching it
   const csv=exporter.detailedCsv(receipt,rows,1762848000000);
   assert.doesNotMatch(csv,/anonymous_code|student_name|student_email/);
   assert.match(csv,/question_id/);
-  assert.equal(csv.split('\r\n').length,rows.length+2);
+  assert.equal(csv.split('\\r\\n').length,rows.length+2);
   assert.doesNotMatch(csv,/teacher_review_required|PRIVATE_STUDENT_ANSWER/);
  }
 });
-test('Matching is one-to-one, rejects illegal picks and scores omissions as wrong',()=>{
- const v=variant(listens[0],'B2'),bank=core.matching(v);
- const bad=fullAnswers(v);
- bad.match[1]=bad.match[0];
- assert.throws(()=>core.assessAuto(v,bad),/used once/);
- const out=core.assessAuto(v,{});
- assert.equal(out.answered,0);
- assert.equal(out.objectiveCorrect,0);
- assert.equal(out.unanswered,out.allTaskCount);
- assert.equal(grade.proposal(out.objectiveCorrect,out.objectiveMax).grade,5);
- assert.equal(out.writing.length,0);
- assert.ok(bank.options.length>=5);
+test('Auto scorer accepts authored spelling variants, rejects guesses and omitted facts',()=>{
+ const e=listens[0],v=variant(e,'A1'),good=fullAnswers(v,e.id,'A1');
+ assert.equal(core.assessAuto(v,{...good,cloze:['three','ten years']},e.id,'A1').objectiveCorrect,
+  core.assessAuto(v,good,e.id,'A1').objectiveMax);
+ const wrong={...good,cloze:['wrong',good.cloze[1]]};
+ const outcome=core.assessAuto(v,wrong,e.id,'A1');
+ assert.equal(outcome.objectiveCorrect,outcome.objectiveMax-1);
+ assert.throws(()=>core.assessAuto(v,{cloze:['x'.repeat(121)]},e.id,'A1'),/Invalid short/);
+ const empty=core.assessAuto(v,{},e.id,'A1');
+ assert.equal(empty.objectiveCorrect,0);
+ assert.equal(empty.unanswered,empty.allTaskCount);
+ assert.equal(grade.proposal(empty.objectiveCorrect,empty.objectiveMax).grade,5);
+ const multi=variant(listens[1],'B2');
+ const m=core.cloze(multi,listens[1].id,'B2');
+ assert.ok(m.length===3);
+ const names=core.assessAuto(multi,{cloze:['Steven Spielberg & George Lucas',
+  'Pat McQueeney and Fred Roos','Calista and family']},listens[1].id,'B2');
+ assert.equal(names.reviewed.filter(q=>q.phase==='cloze'&&q.correct).length,3);
 });
-test('Practice source retains original free-text prompts; student test has no textarea or teacher scoring form',()=>{
+test('Practice keeps free interpretation; test contains no visible keyed bank or teacher scoring form',()=>{
  for(const e of listens){
-  const s=fs.readFileSync(path.join(root,e.relative),'utf8');
-  assert.match(s,/facts/);
-  assert.match(s,/open/);
-  assert.match(s,/<textarea|document\.createElement\(['"]textarea['"]\)/);
+  const src=fs.readFileSync(path.join(root,e.relative),'utf8');
+  assert.match(src,/facts/);assert.match(src,/open/);
+  assert.match(src,/<textarea|document\\.createElement\\(['"]textarea['"]\\)/);
  }
  const html=fs.readFileSync(path.join(root,'self-check/listening/student.html'),'utf8');
  const js=fs.readFileSync(path.join(root,'self-check/listening/listening-student.js'),'utf8');
  assert.doesNotMatch(html,/id="manualGrade"|id="manualGradeTasks"/);
  assert.doesNotMatch(html,/<textarea/i);
- assert.doesNotMatch(js,/written-response|saveReviewMarks\(|teacherReview\(/);
- assert.match(js,/core\.assessAuto\(/);
- assert.match(js,/matchingTask\(/);
+ assert.doesNotMatch(js,/matchingTask\\(|matching-bank|written-response|saveReviewMarks\\(|teacherReview\\(/);
+ assert.match(js,/core\\.assessAuto\\(/);
+ assert.match(js,/clozeTask\\(/);
 });
 test('Private Reading and Listening archive excludes answers and all student identifiers',async()=>{
  const metadata={topic:'rl-asteroids',language:'es',level:'B1',submittedAt:null,interruptionCount:0};
