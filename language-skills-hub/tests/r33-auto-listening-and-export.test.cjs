@@ -49,7 +49,7 @@ test('All 18 Listening levels use exact-key short factual cloze instead of an an
   const csv=exporter.detailedCsv(receipt,rows,1762848000000);
   assert.doesNotMatch(csv,/anonymous_code|student_name|student_email/);
   assert.match(csv,/question_id/);
-  assert.equal(csv.split('\\r\\n').length,rows.length+2);
+  assert.equal(csv.split('\r\n').length,rows.length+2);
   assert.doesNotMatch(csv,/teacher_review_required|PRIVATE_STUDENT_ANSWER/);
  }
 });
@@ -76,15 +76,15 @@ test('Practice keeps free interpretation; test contains no visible keyed bank or
  for(const e of listens){
   const src=fs.readFileSync(path.join(root,e.relative),'utf8');
   assert.match(src,/facts/);assert.match(src,/open/);
-  assert.match(src,/<textarea|document\\.createElement\\(['"]textarea['"]\\)/);
+  assert.match(src,/<textarea|document\.createElement\(['"]textarea['"]\)/);
  }
  const html=fs.readFileSync(path.join(root,'self-check/listening/student.html'),'utf8');
  const js=fs.readFileSync(path.join(root,'self-check/listening/listening-student.js'),'utf8');
  assert.doesNotMatch(html,/id="manualGrade"|id="manualGradeTasks"/);
  assert.doesNotMatch(html,/<textarea/i);
- assert.doesNotMatch(js,/matchingTask\\(|matching-bank|written-response|saveReviewMarks\\(|teacherReview\\(/);
- assert.match(js,/core\\.assessAuto\\(/);
- assert.match(js,/clozeTask\\(/);
+ assert.doesNotMatch(js,/matchingTask\(|matching-bank|written-response|saveReviewMarks\(|teacherReview\(/);
+ assert.match(js,/core\.assessAuto\(/);
+ assert.match(js,/clozeTask\(/);
 });
 test('Private Reading and Listening archive excludes answers and all student identifiers',async()=>{
  const metadata={topic:'rl-asteroids',language:'es',level:'B1',submittedAt:null,interruptionCount:0};
