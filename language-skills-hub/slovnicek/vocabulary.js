@@ -18,7 +18,7 @@ function notify(message,type=''){
 }
 function status(){
  const s=store.status();
- if(s.mode==='ready')notify('Slovíčka jsou uložená v IndexedDB tohoto prohlížeče. Zálohu si pravidelně stahuj.');
+ if(s.mode==='ready')notify('Slovíčka jsou uložena v IndexedDB tohoto prohlížeče. Nejde o trvalou zálohu; stáhni si JSON.');
  else notify('POZOR: Trvalé úložiště není dostupné. Slovíčka jsou pouze dočasná – nepřecházej pryč bez exportu zálohy!','warn');
 }
 function row(word){
@@ -72,6 +72,7 @@ async function load(){
   chosen=new Set([...chosen].filter(x=>words.some(w=>w.id===x)));
   renderWords();
   status();
+  window.LSH_BACKUP_UI?.refresh();
  }catch(e){notify('Nepodařilo se načíst slovíčka: '+e.message,'error')}
 }
 async function saveManual(event){
@@ -96,8 +97,9 @@ function download(){
   const date=new Date().toISOString().slice(0,10);
   a.href=url;a.download='LSH-My-Vocabulary-'+date+'.json';
   document.body.append(a);
-  try{a.click()}finally{a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200)}
-  notify('Záloha JSON je připravená ke stažení. Ulož ji na bezpečné místo.');
+  try{a.click()}finally{a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000)}
+  window.LSH_BACKUP_UI?.recordPrepared(json).catch(()=>{});
+  notify('Záloha je připravená. Ulož ji mimo prohlížeč a poté potvrď její uložení.');
  }).catch(e=>notify('Záloha se nezdařila: '+e.message,'error'));
 }
 async function importFile(){
