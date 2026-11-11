@@ -19,7 +19,16 @@ for(const [name,engine]of[['Chromium',chromium],['WebKit',webkit]]){
    page.on('request',r=>{if(!['GET','HEAD'].includes(r.method()))writes.push(r.url())});
    await page.goto(pageUrl);
    assert.equal(await page.locator('#backupSafety').count(),1);
-   assert.equal(await page.locator('#shareBackupBtn').isVisible(),true);
+   const diagnostics=await page.evaluate(()=>({
+    share:typeof navigator.share,
+    canShare:typeof navigator.canShare,
+    file:typeof File,
+    buttonHidden:document.getElementById('shareBackupBtn')?.hidden,
+    backupUI:typeof window.LSH_BACKUP_UI,
+    backupSafety:typeof window.LSH_BACKUP_SAFETY,
+    canShareSample:(()=>{try{return navigator.canShare?.({files:[new File(['{}'],'lsh.json',{type:'application/json'})]})}catch(e){return String(e)}})()
+   }));
+   assert.equal(await page.locator('#shareBackupBtn').isVisible(),true,JSON.stringify({diagnostics,errors}));
    await page.locator('#addTerm').fill('apple');
    await page.locator('#addTranslation').fill('jablko');
    await page.locator('#addForm button[type=submit]').click();
