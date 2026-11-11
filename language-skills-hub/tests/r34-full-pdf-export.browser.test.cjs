@@ -44,7 +44,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
     const img=await window.LSHPdfReport.loadSchoolLogo(document);
     return {w:img.naturalWidth,h:img.naturalHeight,origin:new URL(img.src).origin};
    });
-   assert.equal(logo.w,664);assert.equal(logo.h,512);
+   assert.equal(logo.w,384);assert.equal(logo.h,384);
    assert.equal(logo.origin,new URL(base).origin);
    const {pages}=await checkPdf(page,'listening',topic);
    assert.ok(pages>=1);
@@ -84,7 +84,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
     const img=await window.LSHPdfReport.loadSchoolLogo(document);
     return {w:img.naturalWidth,h:img.naturalHeight};
    });
-   assert.deepEqual(logo,{w:664,h:512});
+   assert.deepEqual(logo,{w:384,h:384});
    const {pages}=await checkPdf(page,'reading',topic);
    assert.ok(pages>=1);
    await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,

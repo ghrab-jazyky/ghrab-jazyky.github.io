@@ -88,7 +88,11 @@ test('PDF offered answer labels do not duplicate prelabelled matching choices',(
 test('Official school mark is the original 664 x 512 local PNG, not a network dependency',()=>{
  const logo=fs.readFileSync(path.join(root,'assets/school-logo.png'));
  assert.equal(logo.subarray(0,8).toString('hex'),'89504e470d0a1a0a');
- assert.equal(logo.readUInt32BE(16),664);assert.equal(logo.readUInt32BE(20),512);
+ assert.equal(logo.readUInt32BE(16),384);assert.equal(logo.readUInt32BE(20),384);
+ const gitBlob=Buffer.concat([Buffer.from('blob '+logo.length+'\0'),logo]);
+ const originalSha=require('node:crypto').createHash('sha1').update(gitBlob).digest('hex');
+ assert.equal(originalSha,'0b23733540b01fe70f35feda45037b0cd2c995cb',
+  'Logo must be byte-identical to AI Studio GHRAB src/assets/brand/school-logo.png');
  const pdfSource=fs.readFileSync(path.join(root,'self-check/results/pdf-report.js'),'utf8');
  assert.match(pdfSource,/school-logo\.png/);
  assert.match(pdfSource,/ctx\.drawImage\(schoolLogo/);
