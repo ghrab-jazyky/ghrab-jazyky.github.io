@@ -81,7 +81,7 @@ test('R28 Listening requires all written marks, then sums objective + 1 point pe
  assert.equal(variants,18);assert.equal(objective,251);assert.equal(written,84);
 });
 test('R28 working language scale not falsely presented as officially approved',()=>{
- assert.equal(manifest.version,'R31');
+ assert.equal(manifest.version,'R34');
  assert.equal(manifest.localGradeProposalsEnabled,true);
  assert.equal(manifest.gradedTestsEnabled,false);
  assert.equal(manifest.officialGradesEnabled,false);
@@ -98,20 +98,20 @@ test('R28 working language scale not falsely presented as officially approved',(
  assert.match(read('self-check/results/grade-core.js'),/schoolApproved:false/);
  assert.match(read('self-check/results/grade-core.js'),/schoolRecorded:false/);
 });
-test('R28 UI includes explicit grade only after Reading submission and teacher-marked Listening review',()=>{
+test('R28 UI provides provisional grades after Reading and automatic Listening submission',()=>{
  const reading=read('self-check/reading/reading.js');
  const listening=read('self-check/listening/listening-student.js');
  const rhtml=read('self-check/reading/index.html');
  const lhtml=read('self-check/listening/student.html');
  const catalogJs=read('assets/hub.js');
  assert.match(reading,/gradeCore\.proposal\(report\.points,report\.maxPoints\)/);
- assert.match(reading,/gradeProposal/);
  assert.match(rhtml,/id="gradeProposal"/);
- assert.match(lhtml,/id="manualGrade"/);
  assert.match(lhtml,/id="gradeProposal"/);
- assert.match(listening,/marks\[i\]=select\.value/);
- assert.match(listening,/teacherReview\(normalized\)/);
- assert.match(listening,/gradeCore\.listening/);
+ assert.doesNotMatch(lhtml,/id="manualGrade"/);
+ assert.match(listening,/core\.assessAuto/);
+ assert.match(listening,/LSHPdfReport\.download/);
+ assert.match(lhtml,/id="exportPdf"/);
  assert.match(catalogJs,/Test – známka 1–5/);
  assert.doesNotMatch(read('self-check/results/grade-core.js'),/fetch\(|XMLHttpRequest|navigator\.sendBeacon/);
 });
+

@@ -5,7 +5,7 @@ const fs=require('node:fs');
 const {chromium,webkit}=require('playwright');
 const base='http://127.0.0.1:8765/language-skills-hub/';
 for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
- test('R31 '+name+' Listening teacher 0/1 grades survive reload; anonymous CSV contains no written answers',async()=>{
+ test('R31 '+name+' fully automatic Listening result survives reload; detailed CSV is anonymous',async()=>{
   const browser=await engine.launch({headless:true});
   try{
    const context=await browser.newContext({viewport:{width:390,height:844},acceptDownloads:true});
@@ -18,43 +18,36 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#sessionStart').click();
    await page.locator('#workspace:not([hidden])').waitFor();
    await page.locator('fieldset.question').first().locator('input').first().check();
-   await page.locator('.written-response').first().fill('Private student answer 001@school.invalid');
-   await page.locator('#submitButton').click();
-   await page.locator('#manualGrade:not([hidden])').waitFor();
-   const markControls=page.locator('#manualGradeTasks select'),n=await markControls.count();
-   assert.ok(n>=3,'Writing tasks must exist');
-   assert.equal(await page.locator('#exportResult').isDisabled(),true,'No incomplete overall grade export');
-   await markControls.first().selectOption('1');
+   await page.locator('#match-0').selectOption('1');
    await page.reload();
-   await page.locator('#manualGrade:not([hidden])').waitFor();
-   assert.equal(await markControls.first().inputValue(),'1');
-   assert.equal(await page.locator('#exportResult').isDisabled(),true);
-   for(let i=1;i<n;i++)await markControls.nth(i).selectOption('0');
+   await page.locator('#workspace:not([hidden])').waitFor();
+   assert.equal(await page.locator('#match-0').inputValue(),'1');
+   // An interrupted timed test intentionally locks after reload.
+   // The pupil must unlock four corners before the page can be submitted.
+   if(await page.locator('#sessionLock').isVisible()){
+    for(const corner of ['tl','tr','bl','br'])
+     await page.locator('.lsh-corner-'+corner).click();
+    await page.locator('#sessionLock').waitFor({state:'hidden'});
+   }
+   await page.locator('#submitButton').click();
+   await page.locator('#results:not([hidden])').waitFor();
+   assert.equal(await page.locator('#manualGrade').count(),0);
    const before=(await page.locator('#gradeProposal .grade-number').textContent()).trim();
    assert.match(before,/^[1-5]$/);
-   assert.equal(await page.locator('#exportResult').isDisabled(),false);
+   assert.equal(await page.locator('#exportResult').isEnabled(),true);
    await page.reload();
-   await page.locator('#manualGrade:not([hidden])').waitFor();
-   assert.equal(await markControls.first().inputValue(),'1');
-   for(let i=1;i<n;i++)assert.equal(await markControls.nth(i).inputValue(),'0');
+   await page.locator('#results:not([hidden])').waitFor();
    assert.equal((await page.locator('#gradeProposal .grade-number').textContent()).trim(),before);
    const downloadEvent=page.waitForEvent('download',{timeout:15000});
    await page.locator('#exportResult').click();
    const download=await downloadEvent;
-   assert.match(download.suggestedFilename(),/^lsh-listening-ll-harrison-ford-b2-unverified\.csv$/);
+   assert.match(download.suggestedFilename(),/^lsh-listening-ll-harrison-ford-en-b2-.*\.csv$/);
    const csv=fs.readFileSync(await download.path(),'utf8');
    assert.match(csv,/LOCAL_UNVERIFIED_NOT_SCHOOL_RECORD/);
    assert.match(csv,/ll-harrison-ford/);
-   assert.match(csv,/teacher_marks/);
-   assert.doesNotMatch(csv,/Private student answer|school\.invalid|write-facts|session|email|studentName/);
-   assert.equal(csv.split('\r\n').length,3);
-   await markControls.first().selectOption('');
-   assert.equal(await page.locator('#exportResult').isDisabled(),true);
-   assert.equal(await page.locator('#gradeProposal .grade-number').count(),0);
-   await page.reload();
-   await page.locator('#manualGrade:not([hidden])').waitFor();
-   assert.equal(await markControls.first().inputValue(),'');
-   assert.equal(await page.locator('#exportResult').isDisabled(),true);
+   assert.match(csv,/question_id/);
+   assert.doesNotMatch(csv,/anonymous_code|studentName|studentEmail|school\.invalid/);
+   assert.ok(csv.split('\r\n').length>10);
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=2);
    assert.deepEqual(errors,[]);
    assert.deepEqual(uploads,[]);
@@ -83,7 +76,7 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
    const pending=page.waitForEvent('download',{timeout:15000});
    await page.locator('#exportResult').click();
    const download=await pending;
-   assert.match(download.suggestedFilename(),/^lsh-reading-rl-asteroids-b1-unverified\.csv$/);
+   assert.match(download.suggestedFilename(),/^lsh-reading-rl-asteroids-es-b1-.*\.csv$/);
    const csv=fs.readFileSync(await download.path(),'utf8');
    assert.match(csv,/LOCAL_UNVERIFIED_NOT_SCHOOL_RECORD/);
    assert.match(csv,/rl-asteroids/);

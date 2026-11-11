@@ -10,7 +10,7 @@ const examples=[
  {skill:'reading',file:'reading/index.html',topic:'rl-can-mistakes',lang:'es',level:'A1',
   width:390,height:844,tiles:4},
  {skill:'listening',file:'listening/student.html',topic:'ll-harrison-ford',level:'B1',
-  width:390,height:844,tiles:5}
+  width:390,height:844,tiles:4}
 ];
 for(const [name,browserType] of [['chromium',chromium],['webkit',webkit]]){
  for(const example of examples){
@@ -40,7 +40,7 @@ for(const [name,browserType] of [['chromium',chromium],['webkit',webkit]]){
      await page.locator('fieldset.question').first().locator('input').first().check();
     }else{
      await page.locator('fieldset.question').first().locator('input').first().check();
-     await page.locator('.written-response').first().fill('Needs teacher review');
+     await page.locator('.matching-row select').first().selectOption({index:1});
     }
     await page.locator('#submitButton').click();
     await page.waitForSelector('#results:not([hidden])',{timeout:30000});
@@ -54,8 +54,9 @@ for(const [name,browserType] of [['chromium',chromium],['webkit',webkit]]){
     assert.doesNotMatch(displayed,/NaN|Infinity|undefined/);
     assert.ok((await page.locator('#resultDetails .review').count())>0,'Missing submitted answers review');
     if(example.skill==='listening'){
-     assert.match(await page.locator('#resultCaution').textContent(),/NOT final/);
-     assert.match(displayed,/Written answers requiring teacher review/);
+     assert.match(await page.locator('#resultCaution').textContent(),/NOT a verified school grade/);
+     assert.equal(await page.locator('.written-response').count(),0);
+     assert.match(await page.locator('#gradeProposal .grade-number').textContent(),/^[1-5]$/);
     }else{
      const total=await page.locator('fieldset.question').count();
      const points=/^(\d+)\s*\/\s*(\d+)/.exec(vals[0].trim());

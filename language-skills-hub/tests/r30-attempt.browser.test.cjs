@@ -60,7 +60,7 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    await context.close();
   }finally{await browser.close()}
  });
- test('R30 '+engineName+' Listening teacher link includes timer and written response survives reload',async()=>{
+ test('R30 '+engineName+' Listening teacher link includes timer and matching survives reload',async()=>{
   const browser=await engine.launch({headless:true});
   try{
    const context=await browser.newContext({viewport:{width:390,height:844}});
@@ -79,18 +79,19 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#sessionStart').click();
    await page.locator('#workspace:not([hidden])').waitFor();
    await page.locator('fieldset.question').first().locator('input').first().check();
-   await page.locator('.written-response').first().fill('This is my own answer.');
+   await page.locator('#match-0').selectOption('1');
    await page.reload();
    await page.locator('#workspace:not([hidden])').waitFor();
    assert.equal(await page.locator('fieldset.question').first().locator('input').first().isChecked(),true);
-   assert.equal(await page.locator('.written-response').first().inputValue(),'This is my own answer.');
+   assert.equal(await page.locator('#match-0').inputValue(),'1');
    if(await page.locator('#sessionLock').isVisible()){
     for(const c of ['tl','tr','bl','br'])await page.locator('.lsh-corner-'+c).click();
     await page.locator('#sessionLock').waitFor({state:'hidden'});
    }
    await page.locator('#submitButton').click();
-   await page.locator('#manualGrade:not([hidden])').waitFor();
-   assert.equal(await page.locator('#gradeProposal .grade-number').count(),0);
+   await page.locator('#results:not([hidden])').waitFor();
+   assert.match((await page.locator('#gradeProposal .grade-number').textContent()).trim(),/^[1-5]$/);
+   assert.equal(await page.locator('#manualGrade').count(),0);
    assert.deepEqual(errors,[]);
    await context.close();
   }finally{await browser.close()}

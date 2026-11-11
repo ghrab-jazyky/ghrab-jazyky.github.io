@@ -115,13 +115,13 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#sessionStart').click();
    await page.waitForSelector('#workspace:not([hidden])');
    assert.deepEqual(await page.locator('#taskList .stage h3').allTextContents(),
-    ['First Listening','Listen and Interpret','Listen, Write and Reconstruct']);
+    ['First Listening','Listen and Interpret','Listen, Match and Reconstruct']);
    assert.equal(await page.locator('audio,video,iframe').count(),0);
    await page.locator('fieldset.question').first().locator('input').first().check();
-   await page.locator('.written-response').first().fill('Student test response');
+   await page.locator('.matching-row select').first().selectOption({index:1});
    await page.locator('#submitButton').click();
    await page.waitForSelector('#results:not([hidden])');
-   assert.equal(await page.locator('#scoreSummary .score-value').count(),5);
+   assert.equal(await page.locator('#scoreSummary .score-value').count(),4);
    assert.match(await page.locator('#scoreSummary').textContent(),/Official school grade/);
    assert.match(await page.locator('#scoreSummary').textContent(),/—/);
    assert.equal(writes.length,0);

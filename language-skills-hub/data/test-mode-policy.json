@@ -41,7 +41,15 @@
     ],
     "listeningPasses": 2,
     "showProvisionalGradeOnlyAfterSubmission": true,
-    "listeningRequiresManualWrittenReviewForGrade": true
+    "listeningRequiresManualWrittenReviewForGrade": false,
+    "listeningTestOpenAnswersEnabled": false,
+    "listeningPracticeOpenAnswersEnabled": true,
+    "resultHandoff": "STUDENT_EMAIL_WITH_PDF_OR_COPIED_TEXT",
+    "listeningTestSections": [
+      "first-listening",
+      "listen-and-interpret",
+      "listen-match-and-reconstruct"
+    ]
   },
   "publication": {
     "mode": "VISIBLE_IN_CATALOG_READING_LISTENING_ONLY",
@@ -50,7 +58,9 @@
     "noBackend": true,
     "officialClassificationForbidden": true,
     "localGradeLabel": "Učitelsky ověřitelný návrh známky (1–5); nikoli zabezpečený školní záznam",
-    "teacherMustVerifyResults": true
+    "teacherMustVerifyResults": true,
+    "localReportExport": "COMPLETE_READABLE_PDF_AND_COPY_OPTIONAL_CSV",
+    "studentIdentifierInReport": false
   },
   "localGradeProposalsEnabled": true
 }

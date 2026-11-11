@@ -118,10 +118,10 @@
  const locale=core.LANGUAGES.includes(selected.lang)?selected.lang:'en';
  const ui=T[locale];
  const exportsCopy={
-  en:{button:'Download anonymous CSV result',note:'Local and unverified. This file contains no student name, answers or reflections.',error:'The file could not be downloaded.'},
-  es:{button:'Descargar resultado CSV sin datos personales',note:'Resultado local no verificado. El archivo no contiene nombres, respuestas ni reflexiones.',error:'No se pudo descargar el archivo.'},
-  de:{button:'Anonymes CSV-Ergebnis herunterladen',note:'Lokales, nicht verifiziertes Ergebnis. Die Datei enthält keine Namen, Antworten oder Reflexionen.',error:'Die Datei konnte nicht heruntergeladen werden.'},
-  fr:{button:'Télécharger le résultat CSV anonyme',note:'Résultat local non vérifié. Le fichier ne contient ni nom, ni réponses, ni réflexions.',error:'Le fichier n’a pas pu être téléchargé.'}
+  en:{"button":"Download detailed CSV (spreadsheet)","pdf":"Download complete test PDF","copy":"Copy complete test report","note":"PDF and copy include all questions, your answers, correct answers and mistakes. The document has no name; send it from your school email. Optional reflection, if written, is included but not scored.","done":"CSV downloaded.","pdfDone":"Complete PDF downloaded. Email it to your teacher.","copied":"Complete test copied. Send it to your teacher.","error":"Export failed."},
+  es:{"button":"Descargar CSV para tabla","pdf":"Descargar PDF del examen completo","copy":"Copiar examen y respuestas","note":"El PDF incluye todas las preguntas, tus respuestas, las soluciones y los errores. No contiene tu nombre; envíalo desde el correo escolar. Se incluye la reflexión opcional sin puntuar.","done":"CSV descargado.","pdfDone":"PDF completo descargado. Envíalo al docente.","copied":"Examen completo copiado. Envíalo al docente.","error":"Error de exportación."},
+  de:{"button":"Detaillierte CSV-Tabelle herunterladen","pdf":"Vollständigen PDF-Test herunterladen","copy":"Vollständiges Testergebnis kopieren","note":"Das PDF enthält alle Fragen, Antworten, Lösungen und Fehler. Ohne Namen; bitte vom Schulkonto versenden. Optionale Reflexion wird mitgesendet, aber nicht bewertet.","done":"CSV gespeichert.","pdfDone":"Vollständiges PDF gespeichert. Bitte der Lehrkraft zusenden.","copied":"Vollständiger Test kopiert. Bitte der Lehrkraft zusenden.","error":"Export fehlgeschlagen."},
+  fr:{"button":"Télécharger CSV pour tableau","pdf":"Télécharger PDF complet du test","copy":"Copier le test complet","note":"Le PDF contient toutes les questions, tes réponses, les solutions et tes erreurs. Il ne contient pas de nom ; envoie-le depuis ton courriel scolaire. La réflexion facultative est incluse sans être notée.","done":"CSV téléchargé.","pdfDone":"PDF complet téléchargé. Transmets-le au professeur.","copied":"Test complet copié. Transmets-le au professeur.","error":"Échec de l'exportation."}
  }[locale];
  let variant=null;
  const answers=Object.create(null);
@@ -158,6 +158,8 @@
   $('resultKicker').textContent=ui.resultKicker;
   $('footer').textContent=ui.footer;
   $('exportResult').textContent=exportsCopy.button;
+  $('exportPdf').textContent=exportsCopy.pdf;
+  $('exportCopy').textContent=exportsCopy.copy;
   $('exportStatus').textContent=exportsCopy.note;
  }
  function renderReading(){
@@ -272,6 +274,8 @@
   }
   $('resultReflection').textContent=ui.reflectionAfter;
   $('exportResult').hidden=!exportCore;
+  $('exportCopy').hidden=!window.LSHPdfReport;
+  $('exportPdf').hidden=!window.LSHPdfReport;
   $('results').hidden=false;
   $('results').focus({preventScroll:true});
   $('results').scrollIntoView({behavior:'smooth',block:'start'});
@@ -300,15 +304,55 @@
   translate();themeInit();
   $('submitButton').addEventListener('click',()=>submit(false,false));
   $('reflection').addEventListener('input',()=>timedUI?.save());
+  const archiveData=()=>{
+   if(!submitted||!lastReport||!exportCore)throw new Error('No submitted result.');
+   const state=timedUI?.status();
+   const receipt=exportCore.reading(lastReport,{
+    topic:selected.topic,language:selected.lang,level:selected.level,
+    submittedAt:state?.submittedAt??null,
+    interruptionCount:state?.incidents?.length??0
+   });
+   return {receipt,rows:exportCore.questionRows(lastReport,'reading')};
+  };
   $('exportResult').addEventListener('click',()=>{
-   if(!submitted||!lastReport||!exportCore)return;
    try{
-    const state=timedUI?.status();
-    exportCore.download(exportCore.reading(lastReport,{
-     topic:selected.topic,language:selected.lang,level:selected.level,
-     submittedAt:state?.submittedAt??null,
-     interruptionCount:state?.incidents?.length??0
-    }));
+    const {receipt,rows}=archiveData();
+    exportCore.downloadDetailed(receipt,rows);
+    $('exportStatus').textContent=exportsCopy.done;
+   }catch(error){
+    $('exportStatus').textContent=exportsCopy.error+' '+String(error.message||error);
+   }
+  });
+  const completeReport=()=>{
+   if(!lastReport||!variant||!window.LSHPdfReport)throw new Error('PDF report unavailable.');
+   const proposal=gradeCore.proposal(lastReport.points,lastReport.maxPoints);
+   return {
+    skill:'reading',topicId:selected.topic,topic:variant.title,
+    language:selected.lang,level:selected.level,generatedAt:Date.now(),
+    readingText:variant.paragraphs.join('\n\n'),
+    summary:{earned:proposal.earned,max:proposal.max,
+     percent:proposal.displayedPercent,grade:proposal.grade},
+    questions:lastReport.details.map(item=>({
+     question:item.prompt,options:(variant.questions.find(q=>q.id===item.id)?.choices||[]),
+     studentAnswer:item.answered?item.selectedAnswer:'Bez odpovědi',
+     correctAnswer:item.correctAnswer,correct:item.correct,
+     awarded:item.correct?1:0,explanation:item.explanation||''
+    })),
+    reflection:$('reflection').value.trim()
+   };
+  };
+  $('exportPdf').addEventListener('click',()=>{
+   try{
+    window.LSHPdfReport.download(completeReport());
+    $('exportStatus').textContent=exportsCopy.pdfDone;
+   }catch(error){
+    $('exportStatus').textContent=exportsCopy.error+' '+String(error.message||error);
+   }
+  });
+  $('exportCopy').addEventListener('click',async()=>{
+   try{
+    await window.LSHPdfReport.copy(completeReport());
+    $('exportStatus').textContent=exportsCopy.copied;
    }catch(error){
     $('exportStatus').textContent=exportsCopy.error+' '+String(error.message||error);
    }

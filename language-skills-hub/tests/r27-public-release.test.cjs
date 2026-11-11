@@ -10,7 +10,7 @@ const policy=JSON.parse(read('data/test-mode-policy.json'));
 const grades=JSON.parse(read('data/r25-grading-review.json'));
 
 test('R27 actually enables only explicit public local self-checks, never secure classified exams',()=>{
- assert.equal(manifest.version,'R31');
+ assert.equal(manifest.version,'R34');
  assert.equal(manifest.sourceSnapshot,'R17');
  assert.equal(manifest.selfCheckEnabled,true);
  assert.equal(manifest.backendEnabled,false);

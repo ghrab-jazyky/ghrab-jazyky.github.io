@@ -94,7 +94,126 @@
    setTimeout(()=>URL.revokeObjectURL(url),2000);
   }
  }
- const api=Object.freeze({KIND,FIELDS,reading,listening,csv,download});
+
+ /* R33: finished, completely automatic Listening result. No teacher marking. */
+ function listeningAuto(normalized,meta){
+  const m=metadata('listening',meta);
+  requireValid(normalized&&normalized.skill==='listening'&&
+   normalized.status==='AUTO_CLOSED_COMPLETED'&&
+   normalized.written.total===0&&normalized.written.forTeacherReview===0,
+   'Listening automatic result is not final.');
+  const proposed=grade.proposal(normalized.points.earned,normalized.points.max);
+  return Object.freeze({
+   ...m,objective_points:proposed.earned,objective_max:proposed.max,
+   written_points:0,written_max:0,total_points:proposed.earned,
+   total_max:proposed.max,success_percent:proposed.displayedPercent,
+   proposed_grade:proposed.grade,written_pending:0,teacher_marks:''
+  });
+ }
+ /* Question-level report deliberately exports only the score and internal
+  * question key, NEVER the text of a student's answers or reflection. */
+ function questionRows(report,skill){
+  const source=skill==='reading'?report&&report.details:
+   skill==='listening'?report&&report.review:null;
+  requireValid(Array.isArray(source)&&source.length>0&&source.length<=150,
+   'Invalid question report.');
+  return Object.freeze(source.map((item,i)=>{
+   requireValid(item&&typeof item.correct==='boolean','Invalid question score.');
+   const key=skill==='reading'?item.id:
+    String(item.phase||'objective')+'-'+String(item.number||i+1);
+   requireValid(id(key),'Invalid question identifier.');
+   const kind=skill==='reading'?item.kind:item.phase;
+   requireValid(id(kind),'Invalid question type.');
+   return Object.freeze({
+    question_number:i+1,question_id:key,question_type:kind,
+    awarded_points:item.correct?1:0,maximum_points:1
+   });
+  }));
+ }
+ const REPORT_FIELDS=Object.freeze([
+  ...FIELDS,'exported_utc',
+  'question_number','question_id','question_type','awarded_points','maximum_points'
+ ]);
+ function detailedCsv(receipt,rows,exportedAt){
+  csv(receipt); // Validate the original R31 receipt contract.
+  requireValid(Array.isArray(rows)&&rows.length>0&&rows.length<=150,
+   'No question outcomes to export.');
+  requireValid(int(exportedAt)&&exportedAt<=8640000000000000,
+   'Invalid export timestamp');
+  const stamp=new Date(exportedAt).toISOString();
+  return '\uFEFF'+REPORT_FIELDS.map(csvCell).join(',')+'\r\n'+rows.map(row=>{
+   requireValid(row&&id(row.question_id)&&id(row.question_type)&&
+    int(row.question_number)&&row.question_number>0&&
+    [0,1].includes(row.awarded_points)&&row.maximum_points===1,
+    'Invalid detailed question outcome');
+   const data={...receipt,exported_utc:stamp,...row};
+   return REPORT_FIELDS.map(k=>csvCell(data[k])).join(',');
+  }).join('\r\n')+'\r\n';
+ }
+ function reportText(receipt,rows,exportedAt){
+  // Validate before displaying/copying and avoid copying private free text.
+  detailedCsv(receipt,rows,exportedAt);
+  const detail=rows.map(row=>row.question_number+'. '+row.question_id+
+   ' ('+row.question_type+'): '+row.awarded_points+'/'+row.maximum_points).join('\n');
+  return [
+   'LANGUAGE SKILLS HUB - VYSLEDEK TESTU',
+   'NEOVERENY MISTNI ZAZNAM - pouze navrh znamky',
+   'Laborator: '+receipt.skill,
+   'Tema: '+receipt.topic,
+   'Jazyk a uroven: '+receipt.language.toUpperCase()+' / '+receipt.level,
+   'Body: '+receipt.total_points+'/'+receipt.total_max,
+   'Uspesnost: '+receipt.success_percent+' %',
+   'Navrh znamky: '+receipt.proposed_grade,
+   'Odevzdano (UTC): '+(receipt.submitted_utc||'neuvedeno'),
+   'Exportovano (UTC): '+new Date(exportedAt).toISOString(),
+   'Vysledky jednotlivych uloh:',
+   detail,
+   'Upozorneni: Udaje nejsou technicky overenym skolnim zaznamem.'
+  ].join('\n');
+ }
+ async function copyReport(receipt,rows,doc,clipboard,exportedAt=Date.now()){
+  const documentRef=doc||root.document;
+  const value=reportText(receipt,rows,exportedAt);
+  const board=clipboard||(root.navigator&&root.navigator.clipboard);
+  if(board&&typeof board.writeText==='function'){
+   try{await board.writeText(value);return value;}catch(_){}
+  }
+  requireValid(documentRef&&documentRef.body&&
+   typeof documentRef.execCommand==='function','Clipboard not available.');
+  const area=documentRef.createElement('textarea');
+  area.value=value;area.readOnly=true;area.style.position='fixed';
+  area.style.left='-10000px';area.setAttribute('aria-hidden','true');
+  documentRef.body.appendChild(area);
+  try{
+   area.focus();area.select();
+   requireValid(documentRef.execCommand('copy')===true,
+    'Clipboard copy was not confirmed.');
+  }finally{area.remove();}
+  return value;
+ }
+ function downloadDetailed(receipt,rows,doc,exportedAt=Date.now()){
+  const documentRef=doc||root.document;
+  requireValid(documentRef&&documentRef.body&&typeof Blob!=='undefined'&&
+   typeof URL!=='undefined'&&typeof URL.createObjectURL==='function',
+   'Local browser download unavailable.');
+  const content=detailedCsv(receipt,rows,exportedAt);
+  const blob=new Blob([content],{type:'text/csv;charset=utf-8'});
+  const objectUrl=URL.createObjectURL(blob);
+  const unique=Math.floor(Math.random()*65536).toString(16).padStart(4,'0');
+  const stamp=new Date(exportedAt).toISOString().replace(/[:.]/g,'-');
+  const filename='lsh-'+receipt.skill+'-'+receipt.topic+'-'+
+   receipt.language+'-'+receipt.level.toLowerCase()+
+   '-'+stamp+'-'+unique+'.csv';
+  const a=documentRef.createElement('a');
+  a.href=objectUrl;a.download=filename;a.hidden=true;
+  documentRef.body.appendChild(a);
+  try{a.click();}finally{
+   a.remove();setTimeout(()=>URL.revokeObjectURL(objectUrl),2000);
+  }
+  return filename;
+ }
+ const api=Object.freeze({KIND,FIELDS,REPORT_FIELDS,reading,listening,listeningAuto,
+  csv,download,questionRows,detailedCsv,reportText,copyReport,downloadDetailed});
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  else root.LSHExportCore=api;
 })(typeof window!=='undefined'?window:this);

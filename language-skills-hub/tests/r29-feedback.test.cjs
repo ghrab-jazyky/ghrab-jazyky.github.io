@@ -14,14 +14,15 @@ test('R29 Reading renders review only for incorrect items; success uses a dedica
  for(const lang of ['en','es','de','fr'])assert.match(src,new RegExp(lang+':.*correct|'+lang+':.*richtig|'+lang+':.*correctes'));
 });
 
-test('R29 Listening only shows incorrect objective answers and keeps all written answers for teacher review',()=>{
+test('R29 Listening reviews mistakes in UI and exports all questions to private PDF',()=>{
  const src=read('self-check/listening/listening-student.js');
  assert.match(src,/const mistakes=report\.reviewed\.filter\(task=>!task\.correct\)/);
  assert.match(src,/for\(const task of mistakes\)/);
- assert.match(src,/for\(const task of report\.writing\)/);
- assert.match(src,/teacherReview\(normalized\)/);
- assert.match(src,/gradeCore\.listening\(normalized,marks\)/);
+ assert.match(src,/report\.reviewed\.map\(task=>/);
+ assert.doesNotMatch(src,/teacherReview\(normalized\)/);
+ assert.match(src,/window\.LSHPdfReport\.download/);
 });
+
 
 test('R29 labels reflect grade proposal without claiming a certified school result',()=>{
  const files=['index.html','assets/hub.js','self-check/reading/teacher.html','self-check/listening/teacher.html'];

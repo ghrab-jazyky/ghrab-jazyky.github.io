@@ -61,44 +61,47 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
  });
- test('R29 '+engineName+' Listening result displays only objective mistakes but all teacher-reviewed writing',async()=>{
+ test('R29 '+engineName+' Listening shows only incorrect automatically graded responses',async()=>{
   const browser=await engine.launch({headless:true});
   try{
-   const page=await browser.newPage({viewport:{width:390,height:844}});
-   const errors=[];
+   const page=await browser.newPage({viewport:{width:390,height:844}}),errors=[];
    page.on('pageerror',err=>errors.push(err.message));
    page.on('dialog',dialog=>dialog.accept());
    const u=new URL('self-check/listening/student.html?topic=ll-matthew-oscars&level=B1',base);
    assert.equal((await page.goto(u.href)).status(),200);
    await page.locator('#workspace:not([hidden])').waitFor();
-   const plan=await page.evaluate(async()=>{
+   const answers=await page.evaluate(async()=>{
     const catalog=await (await fetch('../../data/cards.json')).json();
     const entry=window.LSHListeningCore.catalogEntry(catalog,'ll-matthew-oscars');
     const data=window.LSHListeningCore.extractJson(await (await fetch('../../'+entry.relative)).text(),'DATA');
-    return window.LSHListeningCore.variant(data,'B1');
+    const v=window.LSHListeningCore.variant(data,'B1');
+    const bank=window.LSHListeningCore.matching(v);
+    return {v,bank};
    });
-   for(const [part,offset]of [['gist',0],['detail',plan.gist.length]]){
-    for(let i=0;i<plan[part].length;i++){
-     const q=plan[part][i];
-     const field=page.locator('fieldset.question').nth(offset+i);
+   for(const [part,offset]of [['gist',0],['detail',answers.v.gist.length]]){
+    for(let i=0;i<answers.v[part].length;i++){
+     const q=answers.v[part][i],field=page.locator('fieldset.question').nth(offset+i);
      if(q.type==='single')await field.locator('input').nth(q.correct).check();
      else for(const idx of q.correct)await field.locator('input').nth(idx).check();
     }
    }
-   for(let i=0;i<plan.sequence.length;i++){
-    const selects=page.locator('#taskList select.select-response');
-    const opts=await selects.nth(i).locator('option').evaluateAll(els=>els.map(el=>({value:el.value,text:el.textContent})));
-    const expected=plan.sequence[i];
-    const match=opts.find(o=>o.text.endsWith(' — '+expected));
-    assert.ok(match,'Expected sequence statement available');
-    await selects.nth(i).selectOption(match.value);
+   for(let i=0;i<answers.v.sequence.length;i++){
+    const select=page.locator('#seq-'+i);
+    const options=await select.locator('option').evaluateAll(nodes=>nodes.map(node=>({value:node.value,text:node.textContent})));
+    const found=options.find(o=>o.text.endsWith(' — '+answers.v.sequence[i]));
+    assert.ok(found);await select.selectOption(found.value);
+   }
+   for(let i=0;i<answers.bank.prompts.length;i++){
+    const expected=answers.bank.options.findIndex(x=>x.sourceIndex===i);
+    await page.locator('#match-'+i).selectOption(String(expected));
    }
    await page.locator('#submitButton').click();
    await page.locator('#results:not([hidden])').waitFor();
-   assert.equal(await page.locator('#resultDetails article.review:not(.manual)').count(),0);
-   assert.equal(await page.locator('#resultDetails article.review.manual').count(),plan.facts.length+plan.open.length);
+   assert.equal(await page.locator('#resultDetails article.review').count(),0);
    assert.match(await page.locator('#resultDetails').textContent(),/No objective mistakes to review/);
+   assert.equal((await page.locator('#gradeProposal .grade-number').textContent()).trim(),'1');
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
  });
+
 }

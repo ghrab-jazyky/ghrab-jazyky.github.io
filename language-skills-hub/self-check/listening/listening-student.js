@@ -16,14 +16,14 @@
  const selection={topic:params.get('topic')||'ll-matthew-oscars',
   level:params.get('level')||'B2'};
  let chosen=null,submitted=false,timedUI=null;
- const answers={gist:[],detail:[],sequence:[],facts:[],open:[]};
+ const answers={gist:[],detail:[],sequence:[],match:[]};
  const phases=[
   {id:'first-listening',heading:'First Listening',
    caption:'Pass 1 – listen for the main ideas. The teacher starts the recording.'},
   {id:'listen-and-interpret',heading:'Listen and Interpret',
    caption:'Pass 2 – listen for details and interpret what the speaker means.'},
-  {id:'listen-write-and-reconstruct',heading:'Listen, Write and Reconstruct',
-   caption:'Use what you heard in the two playbacks, your notes and your own words. Written answers need teacher review.'}
+  {id:'listen-write-and-reconstruct',heading:'Listen, Match and Reconstruct',
+   caption:'Place the excerpts in order, then match prompts with authored statements. All tasks are scored automatically.'}
  ];
  function theme(light,save){
   document.documentElement.dataset.theme=light?'light':'dark';
@@ -48,7 +48,7 @@
    if(Array.isArray(x)?x.length>0:Number.isInteger(x))n++;
   }
   for(const x of answers.sequence)if(Number.isInteger(x))n++;
-  for(const part of ['facts','open'])for(const x of answers[part])if(typeof x==='string'&&x.trim())n++;
+  for(const x of answers.match)if(Number.isInteger(x))n++;
   return n;
  }
  function progress(){
@@ -136,24 +136,45 @@
    row.append(label,select);list.appendChild(row);
   }
  }
- function writing(part){
-  const list=$('taskList');
-  for(let i=0;i<chosen[part].length;i++){
-   const q=chosen[part][i],block=element('div','question'),
-    id='write-'+part+'-'+i;
-   const title=element('label','written-label',
-    (part==='facts'?'D':'E')+(i+1)+'. '+q.title);
-   title.htmlFor=id;
-   block.appendChild(title);
-   if(part==='open'&&q.criteria)block.appendChild(element('p','quiz-hint',
-     'Explain your reasoning; your teacher will review meaning and evidence.'));
-   const input=element('textarea','written-response');
-   input.id=id;input.rows=part==='facts'?2:4;input.maxLength=5000;
-   input.setAttribute('aria-label',q.title);
-   input.addEventListener('input',()=>{if(!submitted){answers[part][i]=input.value;progress();timedUI?.save()}});
-   block.appendChild(input);
-   list.appendChild(block);
-  }
+ function matchingTask(){
+  const list=$('taskList'),bank=core.matching(chosen);
+  list.appendChild(element('p','quiz-hint',
+   'D. Match each listening prompt to the correct statement. Use each letter only once. No free-text answers are required.'));
+  const choices=element('section','matching-bank');
+  choices.setAttribute('aria-label','Answer statements for matching');
+  bank.options.forEach(option=>{
+   const p=element('p');
+   p.append(element('strong',null,option.letter+'. '),
+    document.createTextNode(option.text));
+   choices.appendChild(p);
+  });
+  list.appendChild(choices);
+  bank.prompts.forEach((prompt,i)=>{
+   const row=element('div','matching-row'),id='match-'+i;
+   const label=element('label',null,(i+1)+'. '+prompt.question);
+   label.htmlFor=id;
+   const select=element('select','matching-select');
+   select.id=id;select.setAttribute('aria-label','Match answer '+(i+1));
+   const empty=element('option',null,'— Select a letter —');
+   empty.value='';select.appendChild(empty);
+   bank.options.forEach((choice,j)=>{
+    const option=element('option',null,choice.letter);
+    option.value=String(j);select.appendChild(option);
+   });
+   select.addEventListener('change',()=>{
+    if(submitted)return;
+    const value=select.value===''?null:Number(select.value);
+    if(Number.isInteger(value)){
+     for(let j=0;j<bank.prompts.length;j++)if(j!==i&&answers.match[j]===value){
+      answers.match[j]=null;
+      $('match-'+j).value='';
+     }
+    }
+    answers.match[i]=value;
+    progress();timedUI?.save();
+   });
+   row.append(label,select);list.appendChild(row);
+  });
  }
  function render(){
   const list=$('taskList');list.replaceChildren();
@@ -161,10 +182,7 @@
   list.appendChild(heading(phases[1]));choices('detail');
   list.appendChild(heading(phases[2]));
   sequence();
-  list.appendChild(element('p','quiz-hint','Write short factual answers. Even plausible alternatives need teacher review.'));
-  writing('facts');
-  list.appendChild(element('p','quiz-hint','Write your interpretations in your own words.'));
-  writing('open');
+  matchingTask();
   $('levelLabel').textContent='EN · '+selection.level;
   $('title').textContent=({
    'll-matthew-oscars':'Matthew McConaughey · Oscars 2014',
@@ -190,77 +208,6 @@
     ' bodů ('+gradeResult.displayedPercent.toFixed(2)+' %). Bez ověření identity a výsledku nejde o platný školní záznam.')
   );
  }
- function teacherReview(normalized){
-  const wrapper=$('manualGrade'),controls=$('manualGradeTasks');
-  wrapper.hidden=false;
-  controls.replaceChildren();
-  const savedMarks=timedUI?.status()?.reviewMarks;
-  const marks=Array.isArray(savedMarks)&&
-   savedMarks.length===normalized.writtenReview.length&&
-   savedMarks.every(x=>x===null||x===0||x===1)?
-   savedMarks.slice():normalized.writtenReview.map(()=>null);
-  const gradeContainer=$('gradeProposal'),status=$('manualGradeStatus');
-  function update(){
-   const reviewed=gradeCore.listening(normalized,marks);
-   $('exportResult').disabled=reviewed.pending>0;
-   status.textContent=reviewed.pending?
-    'Čeká na posouzení '+reviewed.pending+' z '+marks.length+' písemných odpovědí. Zatím nelze vypočítat celkovou známku.':
-    'Učitelské posouzení dokončeno. '+reviewed.earned+' / '+reviewed.max+
-    ' bodů (objektivní: '+reviewed.objectiveEarned+'/'+reviewed.objectiveMax+
-    ', písemné: '+reviewed.writtenEarned+'/'+reviewed.writtenMax+').';
-   if(reviewed.suggested)gradeBadge(gradeContainer,reviewed.suggested,'Návrh známky po učitelské kontrole (1–5)');
-   else {
-    gradeContainer.replaceChildren();
-    gradeContainer.append(
-     element('span','grade-caption','Známka: čeká na učitelskou kontrolu písemných odpovědí'),
-     element('p','small-note','Celkové procento a známku lze vypočítat až po ohodnocení všech písemných úloh. Objektivní procento není celkový výsledek.')
-    );
-   }
-  }
-  for(let i=0;i<normalized.writtenReview.length;i++){
-   const task=normalized.writtenReview[i],part=element('div','manual-grade-question');
-   const select=element('select'),label=element('label',null,
-    (i+1)+'. '+task.question);
-   const id='manual-grade-'+i;label.htmlFor=id;select.id=id;
-   const choices=[
-    ['','— Čeká na učitelské hodnocení —'],
-    ['0','0 bodů – nesprávně / bez odpovědi'],
-    ['1','1 bod – významově správně']
-   ];
-   for(const [value,name]of choices){
-    const o=element('option',null,name);o.value=value;select.appendChild(o);
-   }
-   select.setAttribute('aria-label','Učitelské hodnocení: '+task.question);
-   select.addEventListener('change',()=>{
-    marks[i]=select.value===''?null:Number(select.value);
-    if(timedUI)timedUI.saveReviewMarks(marks);
-    update();
-   });
-   if(marks[i]!==null)select.value=String(marks[i]);
-   part.append(label,element('p','quiz-hint','Odpověď: '+(task.answer||'—')),
-    element('p','quiz-hint','Referenční řešení: '+task.reference),select);
-   controls.appendChild(part);
-  }
-  const exportButton=$('exportResult');
-  exportButton.hidden=!exportCore;
-  $('exportStatus').textContent=timedUI?
-   'Anonymní CSV obsahuje pouze bodové hodnoty a návrh známky. Ruční hodnocení se ukládá v tomto prohlížeči. Soubor lze upravit, není to ověřený školní záznam.':
-   'Anonymní CSV obsahuje pouze body a návrh známky. V tomto starším odkazu se hodnocení po obnovení stránky neuchová.';
-  exportButton.onclick=()=>{
-   if(!exportCore||marks.some(m=>m===null))return;
-   try{
-    const state=timedUI?.status();
-    exportCore.download(exportCore.listening(normalized,marks,{
-     topic:selection.topic,language:'en',level:selection.level,
-     submittedAt:state?.submittedAt??null,
-     interruptionCount:state?.incidents?.length??0
-    }));
-   }catch(error){
-    $('exportStatus').textContent='Export se nezdařil: '+String(error.message||error);
-   }
-  };
-  update();
- }
  function results(report){
   const normalized=resultsCore.reviewListening(report);
   const summary=$('scoreSummary');summary.replaceChildren();
@@ -275,7 +222,7 @@
    summary.appendChild(item);
   }
   $('resultCaution').textContent=
-   'The percentage covers only automatically checked choices and sequencing, not the written answers. The overall result is NOT final and no official school grade is issued. Answers and references are shown only after this page submission. This local result can be changed or restarted.';
+   'All choices, sequencing and matching are scored automatically. The proposed grade appears immediately but is NOT a verified school grade. This public local result can be changed or restarted; your teacher must verify it before recording any school grade.';
   const list=$('resultDetails');list.replaceChildren();
   const segment=(phase)=>phase==='gist'?'First Listening':
    phase==='detail'?'Listen and Interpret':'Listen, Write and Reconstruct';
@@ -291,18 +238,76 @@
    if(task.reason)kv(box,'Explanation',task.reason);
    list.appendChild(box);
   }
-  // Written responses are not automatically incorrect; retain them for teacher review.
-  for(const task of report.writing){
-   const box=element('article','review manual');
-   box.appendChild(element('span','state',
-    (task.state==='teacher_review_required'?'TEACHER REVIEW REQUIRED':'NOT ANSWERED')+' · '+segment(task.phase)));
-   box.appendChild(element('h3',null,task.question));
-   kv(box,'Your answer',task.answer||'Not answered');
-   kv(box,'Reference answer',task.reference);
-   if(task.criteria)kv(box,'Assessment guidance',task.criteria);
-   list.appendChild(box);
-  }
-  teacherReview(normalized);
+  const proposed=gradeCore.proposal(normalized.points.earned,normalized.points.max);
+  gradeBadge($('gradeProposal'),proposed,'Automatically calculated proposed grade (1–5)');
+  $('exportCopy').hidden=!window.LSHPdfReport;
+  $('exportPdf').hidden=!window.LSHPdfReport;
+  $('exportResult').hidden=!exportCore;
+  $('exportStatus').textContent=
+   'The PDF and copy contain the complete test, your answers, correct answers and mistakes. They do not contain your name or email. Send the file from your school email; this local report is not independently verified.';
+  const archiveData=()=>{
+   if(!exportCore)throw new Error('Export module unavailable.');
+   const state=timedUI?.status();
+   const receipt=exportCore.listeningAuto(normalized,{
+    topic:selection.topic,language:'en',level:selection.level,
+    submittedAt:state?.submittedAt??null,
+    interruptionCount:state?.incidents?.length??0
+   });
+   return {receipt,rows:exportCore.questionRows(normalized,'listening')};
+  };
+  $('exportResult').onclick=()=>{
+   try{
+    const {receipt,rows}=archiveData();
+    exportCore.downloadDetailed(receipt,rows);
+    $('exportStatus').textContent='Detailed CSV report downloaded. Give it to your teacher.';
+   }catch(error){
+    $('exportStatus').textContent='Download failed: '+String(error.message||error);
+   }
+  };
+  const completeReport=()=>{
+   if(!window.LSHPdfReport)throw new Error('PDF export module unavailable.');
+   const grade=gradeCore.proposal(normalized.points.earned,normalized.points.max);
+   return {
+    skill:'listening',topicId:selection.topic,
+    topic:$('title').textContent,language:'en',level:selection.level,
+    generatedAt:Date.now(),
+    summary:{earned:grade.earned,max:grade.max,
+     percent:grade.displayedPercent,grade:grade.grade},
+    questions:report.reviewed.map(task=>{
+     const offset=task.number-1;
+     const matching=task.phase==='matching'?core.matching(chosen):null;
+     const options=task.phase==='gist'?chosen.gist[offset]?.options:
+      task.phase==='detail'?chosen.detail[offset]?.options:
+      task.phase==='matching'?matching.options.map(x=>x.letter+'. '+x.text):
+      task.phase==='sequence'?chosen.sequence:undefined;
+     return {
+     options,
+     question:(task.phase==='gist'?'FIRST LISTENING':task.phase==='detail'?
+      'LISTEN AND INTERPRET':task.phase==='sequence'?'RECONSTRUCTION':'MATCHING')+
+      ' · '+task.question,
+     studentAnswer:task.chosen&&task.chosen.length?task.chosen.join(' | '):'Bez odpovědi',
+     correctAnswer:task.correctAnswers.join(' | '),
+     correct:!!task.correct,awarded:task.correct?1:0,
+     explanation:task.reason||''
+    }})
+   };
+  };
+  $('exportPdf').onclick=()=>{
+   try{
+    window.LSHPdfReport.download(completeReport());
+    $('exportStatus').textContent='Full test PDF downloaded. Send it to your teacher using school email.';
+   }catch(error){
+    $('exportStatus').textContent='PDF export failed: '+String(error.message||error);
+   }
+  };
+  $('exportCopy').onclick=async()=>{
+   try{
+    await window.LSHPdfReport.copy(completeReport());
+    $('exportStatus').textContent='Complete test report copied. Send it to your teacher using school email.';
+   }catch(error){
+    $('exportStatus').textContent='Copy failed: '+String(error.message||error);
+   }
+  };
   $('results').hidden=false;
   $('results').focus({preventScroll:true});
   $('results').scrollIntoView({behavior:'smooth',block:'start'});
@@ -313,7 +318,7 @@
   const question='Submit your answers now?'+(pending?' '+pending+' task(s) are still unanswered.':'');
   if(!automatic&&!window.confirm(question))return;
   let report;
-  try{report=core.assess(chosen,answers)}
+  try{report=core.assessAuto(chosen,answers)}
   catch(_){if(!automatic)window.alert('Please review the reconstruction order. Use each statement at most once.');return}
   if(timedUI&&!restored)timedUI.finish();
   submitted=true;
@@ -369,11 +374,13 @@
       answers.sequence[i]=value;
       const sel=$('seq-'+i);if(sel)sel.value=String(value);
      }
-     for(const part of ['facts','open'])for(let i=0;i<chosen[part].length;i++){
-      const value=saved[part]?.[i];
-      if(typeof value!=='string')continue;
-      answers[part][i]=value.slice(0,5000);
-      const field=$('write-'+part+'-'+i);if(field)field.value=answers[part][i];
+     const matchCount=core.matching(chosen).prompts.length;
+     const usedMatch=new Set();
+     for(let i=0;i<matchCount;i++){
+      const value=saved.match?.[i];
+      if(!Number.isInteger(value)||value<0||value>=matchCount||usedMatch.has(value))continue;
+      usedMatch.add(value);answers.match[i]=value;
+      const field=$('match-'+i);if(field)field.value=String(value);
      }
      progress();
     },
