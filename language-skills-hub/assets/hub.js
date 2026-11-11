@@ -119,7 +119,7 @@ function card(e){
   const key=one('a','action','VÝSLEDKY');
   key.href=practiceKeyUrl(e);key.target='_blank';key.rel='noopener noreferrer';
   key.setAttribute('aria-label','VÝSLEDKY: učitelský klíč k procvičování – '+translation.title);
-  key.title='Správná řešení procvičovacích úloh, nikoli výsledky žáků ani testový klíč. Veřejný učitelský podklad bez přihlášení.';
+  key.title='Správná řešení procvičovacích úloh, nikoli výsledky žáků. Část úloh se opakuje i v místních testech. Veřejný podklad bez přihlášení.';
   actions.appendChild(key);
  }
  if(localSelfCheck&&['cteni','poslech'].includes(e.skill)){
