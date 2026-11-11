@@ -219,11 +219,13 @@ function fill(id,opts,preferred){
 function entry(){return entries.find(x=>x.id===$('topic').value)}
 function optionsForTopic(){
  const e=entry();if(!e)return;
- const prevLang=$('language').value||qs.get('lang');
- const prevLevel=$('level').value||qs.get('level');
- fill('language',e.languages.map(l=>[l,
-  ({en:'English',es:'Español',de:'Deutsch',fr:'Français'})[l]||l]),prevLang);
- fill('level',e.levels.map(x=>[x,x]),prevLevel);
+ const prevLang=$('language').options.length?$('language').value:qs.get('lang');
+ const prevLevel=$('level').options.length?$('level').value:qs.get('level');
+ const languages=e.languages.map(l=>[l,
+  ({en:'English',es:'Español',de:'Deutsch',fr:'Français'})[l]||l]);
+ fill('language',e.languages.length===1?languages:[['','Vyber jazyk'],...languages],prevLang);
+ // An unfiltered catalog link must never silently default to A1.
+ fill('level',[['','Vyber úroveň A1–C2'],...e.levels.map(x=>[x,x])],prevLevel);
 }
 function line(label,value,cls){
  const p=el('p',value);if(cls)p.className=cls;
@@ -253,6 +255,14 @@ async function refresh(){
  $('downloadPdf').disabled=true;$('status').textContent='Načítám správná řešení pro vybranou variantu…';
  $('answerPreview').replaceChildren();
  const e=entry();if(!e)return;
+ const lang=$('language').value,level=$('level').value;
+ if(!e.languages.includes(lang)||!e.levels.includes(level)){
+  const missing=[];
+  if(!e.languages.includes(lang))missing.push('jazyk');
+  if(!e.levels.includes(level))missing.push('úroveň A1–C2');
+  $('status').textContent='Pro stažení správných řešení vyber '+missing.join(' a ')+'.';
+  return;
+ }
  try{
   const source=e.lockSource||e.relative;
   need(/^(cteni|poslech|r11\/variant-copies)\/[a-z0-9-]+(?:\/index)?\.html$/.test(source),
@@ -260,7 +270,6 @@ async function refresh(){
   const resp=await fetch('../../'+source,{credentials:'omit',redirect:'error'});
   need(resp.ok,'Nedostupná původní procvičovací karta: HTTP '+resp.status);
   const html=await resp.text();
-  const lang=$('language').value,level=$('level').value;
   let model;
   if(e.skill==='cteni'){
    const v=read.variantFromData(read.parseReadingData(html),lang,level);
