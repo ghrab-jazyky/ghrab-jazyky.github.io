@@ -75,7 +75,13 @@
    <div id="resultDetails" class="result-details"></div>
    <p class="small-note" id="resultReflection"></p>
    <div class="result-export">
-    <button type="button" id="exportResult" class="action ghost" hidden>Download anonymous local result CSV</button>
+    <label class="archive-label" for="archiveCode">Optional anonymous code supplied by your teacher (do not enter your name)
+     <input type="text" id="archiveCode" maxlength="24" pattern="[A-Za-z0-9_-]*" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="e.g. 3A4-07">
+    </label>
+    <div class="archive-actions">
+     <button type="button" id="exportCopy" class="action ghost" hidden>Copy result for teacher</button>
+     <button type="button" id="exportResult" class="action ghost" hidden>Download detailed CSV report</button>
+    </div>
     <p class="small-note" id="exportStatus" role="note"></p>
    </div>
   </section>
