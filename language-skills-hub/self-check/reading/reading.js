@@ -118,10 +118,10 @@
  const locale=core.LANGUAGES.includes(selected.lang)?selected.lang:'en';
  const ui=T[locale];
  const exportsCopy={
-  en:{"button":"Download detailed result CSV","copy":"Copy result for teacher","note":"CSV and copied summary include question scores, not answer text or names. Send the file or copied summary using your school email. This is not a verified school record.","done":"Local CSV report downloaded. Give it to your teacher.","copied":"Result summary copied. Send it to your teacher.","error":"Could not download or copy result."},
-  es:{"button":"Descargar informe CSV detallado","copy":"Copiar resultado para el docente","note":"El CSV y el resumen contienen puntuaciones por pregunta, sin respuestas ni nombres. Envíalo desde tu correo escolar. El registro no está verificado.","done":"Informe CSV descargado. Entrégalo al docente.","copied":"Resumen copiado. Envíalo al docente.","error":"No se pudo descargar o copiar el resultado."},
-  de:{"button":"Detaillierten CSV-Bericht herunterladen","copy":"Ergebnis für Lehrkraft kopieren","note":"CSV und Zusammenfassung enthalten Aufgabenpunkte, keine Antworten oder Namen. Bitte vom Schulkonto senden; das Ergebnis ist nicht verifiziert.","done":"CSV-Bericht lokal heruntergeladen. Bitte an die Lehrkraft weitergeben.","copied":"Ergebnis kopiert. Bitte an die Lehrkraft weitergeben.","error":"Ergebnis konnte nicht heruntergeladen oder kopiert werden."},
-  fr:{"button":"Télécharger le rapport CSV détaillé","copy":"Copier le résultat pour le professeur","note":"Le CSV et le résumé indiquent les points par question, sans réponses ni noms. À envoyer depuis ton adresse scolaire ; résultat non vérifié.","done":"Rapport CSV téléchargé localement. Remets-le au professeur.","copied":"Résumé copié. Transmets-le au professeur.","error":"Impossible de télécharger ou de copier le résultat."}
+  en:{"button":"Download detailed CSV (spreadsheet)","pdf":"Download complete test PDF","copy":"Copy complete test report","note":"PDF and copy include all questions, your answers, correct answers and mistakes. The document has no name; send it from your school email. Optional reflection, if written, is included but not scored.","done":"CSV downloaded.","pdfDone":"Complete PDF downloaded. Email it to your teacher.","copied":"Complete test copied. Send it to your teacher.","error":"Export failed."},
+  es:{"button":"Descargar CSV para tabla","pdf":"Descargar PDF del examen completo","copy":"Copiar examen y respuestas","note":"El PDF incluye todas las preguntas, tus respuestas, las soluciones y los errores. No contiene tu nombre; envíalo desde el correo escolar. Se incluye la reflexión opcional sin puntuar.","done":"CSV descargado.","pdfDone":"PDF completo descargado. Envíalo al docente.","copied":"Examen completo copiado. Envíalo al docente.","error":"Error de exportación."},
+  de:{"button":"Detaillierte CSV-Tabelle herunterladen","pdf":"Vollständigen PDF-Test herunterladen","copy":"Vollständiges Testergebnis kopieren","note":"Das PDF enthält alle Fragen, Antworten, Lösungen und Fehler. Ohne Namen; bitte vom Schulkonto versenden. Optionale Reflexion wird mitgesendet, aber nicht bewertet.","done":"CSV gespeichert.","pdfDone":"Vollständiges PDF gespeichert. Bitte der Lehrkraft zusenden.","copied":"Vollständiger Test kopiert. Bitte der Lehrkraft zusenden.","error":"Export fehlgeschlagen."},
+  fr:{"button":"Télécharger CSV pour tableau","pdf":"Télécharger PDF complet du test","copy":"Copier le test complet","note":"Le PDF contient toutes les questions, tes réponses, les solutions et tes erreurs. Il ne contient pas de nom ; envoie-le depuis ton courriel scolaire. La réflexion facultative est incluse sans être notée.","done":"CSV téléchargé.","pdfDone":"PDF complet téléchargé. Transmets-le au professeur.","copied":"Test complet copié. Transmets-le au professeur.","error":"Échec de l'exportation."}
  }[locale];
  let variant=null;
  const answers=Object.create(null);
@@ -158,6 +158,7 @@
   $('resultKicker').textContent=ui.resultKicker;
   $('footer').textContent=ui.footer;
   $('exportResult').textContent=exportsCopy.button;
+  $('exportPdf').textContent=exportsCopy.pdf;
   $('exportCopy').textContent=exportsCopy.copy;
   $('exportStatus').textContent=exportsCopy.note;
  }
@@ -273,7 +274,8 @@
   }
   $('resultReflection').textContent=ui.reflectionAfter;
   $('exportResult').hidden=!exportCore;
-  $('exportCopy').hidden=!exportCore;
+  $('exportCopy').hidden=!window.LSHPdfReport;
+  $('exportPdf').hidden=!window.LSHPdfReport;
   $('results').hidden=false;
   $('results').focus({preventScroll:true});
   $('results').scrollIntoView({behavior:'smooth',block:'start'});
@@ -321,10 +323,33 @@
     $('exportStatus').textContent=exportsCopy.error+' '+String(error.message||error);
    }
   });
+  const completeReport=()=>{
+   if(!lastReport||!variant||!window.LSHPdfReport)throw new Error('PDF report unavailable.');
+   const proposal=gradeCore.proposal(lastReport.points,lastReport.maxPoints);
+   return {
+    skill:'reading',topicId:selected.topic,topic:variant.title,
+    language:selected.lang,level:selected.level,generatedAt:Date.now(),
+    summary:{earned:proposal.earned,max:proposal.max,
+     percent:proposal.displayedPercent,grade:proposal.grade},
+    questions:lastReport.details.map(item=>({
+     question:item.prompt,studentAnswer:item.answered?item.selectedAnswer:'Bez odpovědi',
+     correctAnswer:item.correctAnswer,correct:item.correct,
+     awarded:item.correct?1:0,explanation:item.explanation||''
+    })),
+    reflection:$('reflection').value.trim()
+   };
+  };
+  $('exportPdf').addEventListener('click',()=>{
+   try{
+    window.LSHPdfReport.download(completeReport());
+    $('exportStatus').textContent=exportsCopy.pdfDone;
+   }catch(error){
+    $('exportStatus').textContent=exportsCopy.error+' '+String(error.message||error);
+   }
+  });
   $('exportCopy').addEventListener('click',async()=>{
    try{
-    const {receipt,rows}=archiveData();
-    await exportCore.copyReport(receipt,rows);
+    await window.LSHPdfReport.copy(completeReport());
     $('exportStatus').textContent=exportsCopy.copied;
    }catch(error){
     $('exportStatus').textContent=exportsCopy.error+' '+String(error.message||error);
