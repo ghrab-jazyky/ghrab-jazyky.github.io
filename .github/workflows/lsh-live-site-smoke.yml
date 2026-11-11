@@ -107,7 +107,7 @@ jobs:
                   assert 'matchingTask()' not in student_js
                   assert 'school-logo.png' in get('/language-skills-hub/self-check/results/pdf-report.js').decode('utf-8')
                   logo=get('/language-skills-hub/assets/school-logo.png')
-                  assert logo[:8]==b'\\x89PNG\\r\\n\\x1a\\n' and len(logo)>1000
+                  assert logo[:8]==b'\x89PNG\r\n\x1a\n' and len(logo)>1000
                   print('PASS LIVE HTTPS R35: 29 practice cards, factual cloze without answer bank and authentic school logo PDF',flush=True)
                   print('PRODUCTION URL:',base+'/language-skills-hub/',flush=True)
                   sys.exit(0)
