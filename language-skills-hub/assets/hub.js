@@ -88,14 +88,36 @@ function practiceKeyUrl(e){
  if(e.levels.includes(level))url.searchParams.set('level',level);
  return url.href;
 }
+/* The catalog identifies a TOPIC, not a particular CEFR variant. A level change
+ * updates this compact indicator while keeping the localized topic title stable. */
+function catalogVariant(e,languageFilter,levelFilter){
+ const chosenLang=e.languages.includes(languageFilter)?languageFilter:null;
+ const chosenLevel=e.levels.includes(levelFilter)?levelFilter:null;
+ const langLabel=chosenLang?chosenLang.toUpperCase():
+  e.languages.length===1?e.languages[0].toUpperCase():e.languages.length+' jazyky';
+ const levelLabel=chosenLevel||(
+  e.levels.length===levels.length&&e.levels.every((level,i)=>level===levels[i])?
+   'A1–C2':e.levels.join(' / '));
+ return {label:langLabel+' · '+levelLabel,
+  aria:'Jazyk: '+(chosenLang?labels[chosenLang]:
+   e.languages.length===1?labels[e.languages[0]]:'všechny dostupné jazyky')+
+   '; úroveň: '+(chosenLevel||'všechny dostupné úrovně')};
+}
 function card(e){
- const filter=byId('language').value;
+ const filter=byId('language').value,levelFilter=byId('level').value;
  const language=filter==='all'?'cs':filter;
  const translation=localized(e,filter),czech=localized(e,'all');
+ const variant=catalogVariant(e,filter,levelFilter);
  const article=one('article','card');
  article.dataset.topicId=e.id;
  article.dataset.catalogLanguage=language;
- const meta=one('div','skill',tags[e.skill]);article.appendChild(meta);
+ article.dataset.catalogLevel=e.levels.includes(levelFilter)?levelFilter:'all';
+ const head=one('div','card-meta');
+ const meta=one('div','skill',tags[e.skill]);
+ const indicator=one('span','catalog-variant',variant.label);
+ indicator.lang='cs';
+ indicator.setAttribute('aria-label',variant.aria);
+ head.append(meta,indicator);article.appendChild(head);
  const title=one('h3',null,translation.title);
  title.lang=language;article.appendChild(title);
  if(filter!=='all'&&translation.title!==czech.title){
@@ -110,7 +132,7 @@ function card(e){
  const actions=one('div','actions');
  const open=one('a','action primary','Otevřít aktivitu');
  open.href=currentUrl(e);open.target='_blank';open.rel='noopener';
- open.setAttribute('aria-label','Otevřít '+translation.title);
+ open.setAttribute('aria-label','Otevřít '+translation.title+' · '+variant.aria);
  const share=one('button','action','Sdílet se studenty');share.type='button';
  share.setAttribute('aria-label','Sdílet se studenty: '+translation.title);
  share.addEventListener('click',()=>openShare(e));
