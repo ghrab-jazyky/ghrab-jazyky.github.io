@@ -48,8 +48,10 @@
     "listeningTestSections": [
       "first-listening",
       "listen-and-interpret",
-      "listen-match-and-reconstruct"
-    ]
+      "listen-complete-and-reconstruct"
+    ],
+    "listeningTestObjectiveFillIn": true,
+    "listeningTestVisibleAnswerBank": false
   },
   "publication": {
     "mode": "VISIBLE_IN_CATALOG_READING_LISTENING_ONLY",
@@ -60,7 +62,8 @@
     "localGradeLabel": "Učitelsky ověřitelný návrh známky (1–5); nikoli zabezpečený školní záznam",
     "teacherMustVerifyResults": true,
     "localReportExport": "COMPLETE_READABLE_PDF_AND_COPY_OPTIONAL_CSV",
-    "studentIdentifierInReport": false
+    "studentIdentifierInReport": false,
+    "officialSchoolLogoInPdf": true
   },
   "localGradeProposalsEnabled": true
 }

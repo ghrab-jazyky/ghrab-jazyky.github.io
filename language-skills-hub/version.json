@@ -1,6 +1,6 @@
 {
   "name": "Language Skills Hub",
-  "version": "R34",
+  "version": "R35",
   "mode": "public_practice_and_unverified_grade_proposals",
   "gradedTestsEnabled": false,
   "topicCount": 29,
@@ -48,5 +48,9 @@
   "listeningPracticeFreeTextEnabled": true,
   "localFullPdfReportEnabled": true,
   "readingFullSourcePdfEnabled": true,
-  "privateResultHandoff": "SCHOOL_EMAIL_STUDENT_GENERATED_FILES"
+  "privateResultHandoff": "SCHOOL_EMAIL_STUDENT_GENERATED_FILES",
+  "listeningTestClosedFactualCloze": true,
+  "listeningTestVisibleAnswerBank": false,
+  "officialSchoolLogoPdfEnabled": true,
+  "officialSchoolLogoSource": "https://www.ghrabuvka.cz/build/images/logo.b31efe12.png"
 }

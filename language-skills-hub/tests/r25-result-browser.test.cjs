@@ -40,7 +40,7 @@ for(const [name,browserType] of [['chromium',chromium],['webkit',webkit]]){
      await page.locator('fieldset.question').first().locator('input').first().check();
     }else{
      await page.locator('fieldset.question').first().locator('input').first().check();
-     await page.locator('.matching-row select').first().selectOption({index:1});
+     await page.locator('.cloze-row input').first().fill('Grace');
     }
     await page.locator('#submitButton').click();
     await page.waitForSelector('#results:not([hidden])',{timeout:30000});

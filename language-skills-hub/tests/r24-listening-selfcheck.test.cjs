@@ -100,7 +100,7 @@ test('R24 teacher controls media; student has no video or audio controls',()=>{
  assert.doesNotMatch(studentJs,/(?:new Audio\(|createElement\(['"](?:audio|video|iframe))|https:\/\/www\.youtube\.com/);
  assert.match(studentJs,/First Listening/);
  assert.match(studentJs,/Listen and Interpret/);
- assert.match(studentJs,/Listen, Write and Reconstruct/);
+ assert.match(studentJs,/Listen, Complete and Reconstruct/);
  assert.match(studentJs,/submitButton/);
  assert.match(teacher,/markPass/);
  assert.match(teacher,/studentUrl/);
