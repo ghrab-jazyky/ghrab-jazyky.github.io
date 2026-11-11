@@ -57,3 +57,17 @@ test('No PDF report network upload or hidden student identifier',()=>{
   assert.doesNotMatch(s,/id="archiveCode"|id="studentName"|id="studentEmail"/);
  }
 });
+
+test('Release R34 metadata reflects automatic Listening tests and complete local PDFs',()=>{
+ const version=JSON.parse(fs.readFileSync(path.join(root,'version.json'),'utf8'));
+ const policy=JSON.parse(fs.readFileSync(path.join(root,'data/test-mode-policy.json'),'utf8'));
+ assert.equal(version.version,'R34');
+ assert.equal(version.listeningTestAutoClosed,true);
+ assert.equal(version.localFullPdfReportEnabled,true);
+ assert.equal(version.readingFullSourcePdfEnabled,true);
+ assert.equal(version.officialGradesEnabled,false);
+ assert.equal(policy.futureSelfCheck.listeningTestOpenAnswersEnabled,false);
+ assert.equal(policy.futureSelfCheck.listeningPracticeOpenAnswersEnabled,true);
+ assert.equal(policy.futureSelfCheck.listeningRequiresManualWrittenReviewForGrade,false);
+ assert.equal(policy.publication.studentIdentifierInReport,false);
+});

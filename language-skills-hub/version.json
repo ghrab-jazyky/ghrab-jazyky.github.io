@@ -1,6 +1,6 @@
 {
   "name": "Language Skills Hub",
-  "version": "R31",
+  "version": "R34",
   "mode": "public_practice_and_unverified_grade_proposals",
   "gradedTestsEnabled": false,
   "topicCount": 29,
@@ -43,5 +43,10 @@
   "backendEnabled": false,
   "localGradeProposalsEnabled": true,
   "localTeacherReviewPersistenceEnabled": true,
-  "localAnonymousCsvExportEnabled": true
+  "localAnonymousCsvExportEnabled": true,
+  "listeningTestAutoClosed": true,
+  "listeningPracticeFreeTextEnabled": true,
+  "localFullPdfReportEnabled": true,
+  "readingFullSourcePdfEnabled": true,
+  "privateResultHandoff": "SCHOOL_EMAIL_STUDENT_GENERATED_FILES"
 }
