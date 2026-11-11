@@ -172,7 +172,7 @@ function renderPages(model,documentRef,logo){
   15,700,'#183a56',22,7);
  paragraph(model.topic,13,700,'#203246',18,5);
  paragraph('Jazyk: '+model.language.toUpperCase()+'   Úroveň: '+model.level,10,700,'#4d6377',15,8);
- paragraph('Obsahuje řešení PROCVIČOVACÍ karty, nikoli výsledky studentů ani testový klíč.',
+ paragraph('Klíč k PROCVIČOVACÍ kartě; část úloh se může překrývat s místní testovou verzí. Neobsahuje výsledky studentů.',
   9,400,'#8e501f',13,14);
  for(const [gi,g] of model.groups.entries()){
   reserve(43);
