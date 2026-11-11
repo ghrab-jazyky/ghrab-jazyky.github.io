@@ -160,6 +160,62 @@
    resultFinal:false,finalPercentage:null,reviewed,writing
   };
  }
+ /* R33 test-only closed matching task: public practice cards remain unchanged. */
+ function matching(v){
+  validate(v);
+  const prompts=[
+   ...v.facts.map(x=>({phase:'facts',question:x.title,answer:x.answer})),
+   ...v.open.map(x=>({phase:'interpretation',question:x.title,answer:x.answer}))
+  ];
+  must(prompts.length>=3&&prompts.length<=26,'Invalid matching bank.');
+  must(new Set(prompts.map(x=>x.answer.trim().toLowerCase())).size===prompts.length,
+   'Ambiguous duplicate matching reference.');
+  const options=prompts.map((p,sourceIndex)=>({sourceIndex,text:p.answer}));
+  options.sort((a,b)=>a.text.localeCompare(b.text,'en')||a.sourceIndex-b.sourceIndex);
+  return {
+   prompts:prompts.map((p,i)=>({...p,index:i})),
+   options:options.map((p,i)=>({...p,letter:'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[i]}))
+  };
+ }
+ function assessAuto(v,responses){
+  validate(v);
+  must(plain(responses),'Invalid automatic test answers.');
+  // The original assessor remains for legacy practice tests; free text is
+  // discarded and never assessed in the new test-only closed mode.
+  const base=assess(v,{...responses,facts:[],open:[]});
+  const bank=matching(v),picks=responses.match===undefined?[]:responses.match;
+  must(Array.isArray(picks)&&picks.length<=bank.prompts.length,
+   'Invalid matching answers.');
+  const used=new Set();let answered=0,correct=0;
+  const matchReview=bank.prompts.map((p,i)=>{
+   const value=picks[i];
+   must(value===undefined||value===null||value===''||
+    (Number.isInteger(value)&&value>=0&&value<bank.options.length),
+    'Invalid matching choice.');
+   const selected=Number.isInteger(value)?value:null;
+   if(selected!==null){
+    must(!used.has(selected),'Each matching answer may be used once.');
+    used.add(selected);answered++;
+   }
+   const correctOption=bank.options.findIndex(x=>x.sourceIndex===i);
+   const right=selected!==null&&selected===correctOption;
+   if(right)correct++;
+   return {phase:'matching',number:i+1,question:p.question,answered:selected!==null,
+    correct:right,chosen:selected===null?[]:[bank.options[selected].text],
+    correctAnswers:[p.answer],reason:''};
+  });
+  const objectiveCorrect=base.objectiveCorrect+correct;
+  const objectiveMax=base.objectiveMax+bank.prompts.length;
+  const totalAnswered=base.answered+answered;
+  return {
+   ...base,assessmentMode:'AUTO_CLOSED',autoClosed:true,
+   objectiveCorrect,objectiveMax,objectivePercent:
+    Math.round(objectiveCorrect/objectiveMax*10000)/100,
+   allTaskCount:objectiveMax,answered:totalAnswered,
+   unanswered:objectiveMax-totalAnswered,writing:[],writingReviewCount:0,
+   reviewed:[...base.reviewed,...matchReview]
+  };
+ }
  function sourceLinks(html){
   const sources=extractJson(html,'SOURCES');
   const urls=[];
@@ -174,7 +230,7 @@
   return urls;
  }
  const api={LEVELS,TOPICS,PHASES,extractJson,catalogEntry,variant,validate,
-   normalizeResponse,assess,sourceLinks};
+   normalizeResponse,assess,matching,assessAuto,sourceLinks};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  else root.LSHListeningCore=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
