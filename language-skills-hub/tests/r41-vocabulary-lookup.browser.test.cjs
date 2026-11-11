@@ -65,6 +65,24 @@ async function readingCheck(page,e){
  page.off('pageerror',report);
 }
 
+async function listeningCheck(page,e){
+ const errors=[]; const report=err=>errors.push(err.message);
+ page.on('pageerror',report);
+ await page.goto(url(e),{waitUntil:'load',timeout:45000});
+ await page.locator('#vocabTasks .vocab-line').first().waitFor({timeout:12000});
+ const save=page.locator('#vocabTasks .lsh-vocab-save').first();
+ await save.waitFor({timeout:10000});
+ assert.equal(await page.locator('a.lsh-vocab-nav').count(),1,'Listening link missing '+e.id);
+ assert.equal((await save.textContent()||'').trim(),'＋ My Vocabulary','Listening save button blank '+e.id);
+ page.once('dialog',dialog=>dialog.accept('testovací význam'));
+ await save.click();
+ await page.waitForFunction(()=>
+  document.querySelector('.lsh-vocab-message')?.textContent?.includes('Slovíčko uloženo do My Vocabulary.'),null,{timeout:10000});
+ assert.deepEqual(errors,[],'Uncaught JS errors '+e.id);
+ page.off('pageerror',report);
+ console.log('PASS LISTENING',e.id);
+}
+
 for(const [name,browserType] of [['Chromium',chromium],['WebKit',webkit]]){
  test('R41 '+name+' all 21 Conversation dictionary popovers show actual data', {timeout:900000}, async()=>{
   const browser=await browserType.launch({headless:true});
@@ -90,4 +108,60 @@ for(const [name,browserType] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.deepEqual(failures,[],'Reading dictionary errors');
   }finally{await browser.close()}
  });
+ test('R41 '+name+' all 3 Listening cards have readable save controls and persistent words',{timeout:200000},async()=>{
+  const browser=await browserType.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1280,height:900}});
+   const failures=[];
+   for(const e of cards.filter(e=>e.skill==='poslech')){
+    try{await listeningCheck(page,e)}
+    catch(err){failures.push(e.id+': '+String(err.message).slice(0,800));console.error('FAIL LISTENING',e.id,err.message.slice(0,1000))}
+   }
+   assert.deepEqual(failures,[],'Listening vocabulary errors');
+  }finally{await browser.close()}
+ });
+ test('R41 '+name+' Housing Prices B2 reproduces original blank button screenshot on desktop and mobile',{timeout:180000},async()=>{
+  const browser=await browserType.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1280,height:900}}),errors=[];
+   page.on('pageerror',e=>errors.push(e.message));
+   for(const width of [1280,390]){
+    await page.setViewportSize({width,height:844});
+    await page.goto(new URL('konverzace/ceny-nemovitosti/index.html?practice=1&lang=en&level=B2',base).href,{waitUntil:'load'});
+    await page.locator('#lshBridgeSavePopup').waitFor();
+    assert.equal((await page.locator('#lshBridgeSavePopup').textContent()||'').trim(),'Save to My Vocabulary');
+    const point=await page.evaluate(()=>{
+     const parent=document.getElementById('mainQuestion');
+     const walker=document.createTreeWalker(parent,NodeFilter.SHOW_TEXT);
+     let node;
+     while((node=walker.nextNode())){
+      const i=node.textContent.toLowerCase().indexOf('affordable');
+      if(i<0)continue;
+      const r=document.createRange();r.setStart(node,i);r.setEnd(node,i+'affordable'.length);
+      const rect=r.getBoundingClientRect();return {x:rect.x+rect.width/2,y:rect.y+rect.height/2};
+     }
+     return null;
+    });
+    assert.ok(point,'Housing Prices B2 question should contain affordable');
+    await page.mouse.dblclick(point.x,point.y);
+    await page.locator('#lookupPopover:visible').waitFor({timeout:7000});
+    assert.equal((await page.locator('#lookupExpression').textContent()||'').trim().toLowerCase(),'affordable');
+    assert.match((await page.locator('#lookupTranslation').textContent()||''),/cenově dostupný/);
+    assert.equal((await page.locator('#lshBridgeSavePopup').textContent()||'').trim(),'Save to My Vocabulary');
+    await page.locator('#lshBridgeSavePopup').click();
+    await page.waitForFunction(()=>document.querySelector('.lsh-bridge-popstatus')?.textContent?.includes('Saved in this browser.'),null,{timeout:10000});
+   }
+   for(const [language,expected] of Object.entries({
+    es:'Guardar en Mi vocabulario',
+    de:'In meinem Wortschatz speichern',
+    fr:'Enregistrer dans mon vocabulaire'
+   })){
+    await page.goto(new URL('konverzace/ceny-nemovitosti/index.html?practice=1&lang='+language+'&level=B2',base).href);
+    await page.locator('#lshBridgeSavePopup').waitFor();
+    assert.equal((await page.locator('#lshBridgeSavePopup').textContent()||'').trim(),expected,language);
+   }
+   assert.deepEqual(errors,[]);
+  }finally{await browser.close()}
+ });
+
 }
