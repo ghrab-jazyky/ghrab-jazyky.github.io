@@ -45,8 +45,9 @@
    report.objectiveCorrect<=report.objectiveMax,'Invalid Listening objective points.');
   expect(Array.isArray(report.reviewed)&&report.reviewed.length===report.objectiveMax,
    'Listening objective answers mismatch.');
-  expect(Array.isArray(report.writing)&&report.writing.length>=1,
-   'Listening writing tasks must be teacher-reviewed.');
+  const autoClosed=report.assessmentMode==='AUTO_CLOSED'&&report.autoClosed===true;
+  expect(Array.isArray(report.writing)&&(autoClosed?report.writing.length===0:report.writing.length>=1),
+   'Unexpected Listening writing tasks for assessment mode.');
   expect(integer(report.allTaskCount,1)&&report.allTaskCount===
    report.objectiveMax+report.writing.length,'Listening task counts mismatch.');
   expect(integer(report.answered,0)&&integer(report.unanswered,0)&&
@@ -55,7 +56,7 @@
   expect(integer(report.writingReviewCount,0)&&report.writingReviewCount<=report.writing.length,
    'Incorrect Listening teacher-review count.');
   const manual=report.writing.filter(x=>x.state==='teacher_review_required');
-  expect(manual.length===report.writingReviewCount,
+  expect(manual.length===report.writingReviewCount&&(!autoClosed||manual.length===0),
    'Listening written states mismatch.');
   const points=ratio(report.objectiveCorrect,report.objectiveMax);
   expect(Math.abs(points.displayedPercent-report.objectivePercent)<0.011,
@@ -67,7 +68,7 @@
     unanswered:report.writing.length-manual.length},
    officialSchoolGrade:null,finalSchoolPercentage:null,
    schoolGradingEnabled:false,officialResult:false,
-   status:'WRITTEN_TEACHER_REVIEW_REQUIRED',
+   status:autoClosed?'AUTO_CLOSED_COMPLETED':'WRITTEN_TEACHER_REVIEW_REQUIRED',
    review:report.reviewed,writtenReview:report.writing
   };
  }
