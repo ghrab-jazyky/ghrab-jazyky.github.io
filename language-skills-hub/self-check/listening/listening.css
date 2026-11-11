@@ -49,3 +49,8 @@
  border-radius:10px;font-size:1rem}
 .cloze-row .cloze-input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 @media(max-width:600px){.cloze-row{grid-template-columns:1fr}.cloze-row .cloze-input{width:100%}}
+
+/* R45: Narrow-screen safety for Listening question groups and reconstruction. */
+.listening-workspace .question-list,.listening-workspace .sequence-row,.listening-workspace .cloze-row{min-inline-size:0;max-inline-size:100%}
+.sequence-bank{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));min-inline-size:0;max-inline-size:100%}
+.sequence-bank p,.sequence-row label,.quiz-hint,.cloze-row label{overflow-wrap:anywhere}
