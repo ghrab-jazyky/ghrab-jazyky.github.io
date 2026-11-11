@@ -30,20 +30,26 @@
     "feedbackBeforeSubmission": false,
     "localOneSubmissionUiRule": true,
     "submissionsCannotBeServerVerified": true,
-    "resultStorage": "STUDENT_DEVICE_ONLY_EMAIL_HANDOFF",
+    "resultStorage": "STUDENT_DEVICE_ONLY",
     "openAnswersRequireTeacherReview": true,
     "showOfficialGradeBeforeApproval": false,
     "teacherControlledListening": true,
     "listeningSections": [
       "first-listening",
       "listen-and-interpret",
-      "listen-match-and-reconstruct"
+      "listen-write-and-reconstruct"
     ],
     "listeningPasses": 2,
     "showProvisionalGradeOnlyAfterSubmission": true,
     "listeningRequiresManualWrittenReviewForGrade": false,
     "listeningTestOpenAnswersEnabled": false,
-    "listeningPracticeOpenAnswersEnabled": true
+    "listeningPracticeOpenAnswersEnabled": true,
+    "resultHandoff": "STUDENT_EMAIL_WITH_PDF_OR_COPIED_TEXT",
+    "listeningTestSections": [
+      "first-listening",
+      "listen-and-interpret",
+      "listen-match-and-reconstruct"
+    ]
   },
   "publication": {
     "mode": "VISIBLE_IN_CATALOG_READING_LISTENING_ONLY",
