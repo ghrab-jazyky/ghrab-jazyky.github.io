@@ -16,6 +16,8 @@ main{max-width:1150px;margin:0 auto;padding:22px 20px 55px}
 .selection h2{margin:0 0 14px;font-size:1.16rem}
 .fields{display:grid;grid-template-columns:minmax(230px,2fr) minmax(130px,1fr) minmax(115px,.7fr);gap:13px}
 label{display:block;font-weight:700;font-size:.87rem;margin:0 0 5px}
+.fields>div{min-width:0;max-width:100%;overflow:hidden}
+.fields select{display:block;min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 select{background:var(--card);color:var(--ink);border:1px solid #b9c7d4;border-radius:8px;min-height:45px;padding:9px;width:100%;max-width:100%;min-width:0;font:inherit}
 select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #d9a64d;outline-offset:3px}
 .bar{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:17px}
