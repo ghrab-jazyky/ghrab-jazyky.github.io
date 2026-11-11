@@ -341,9 +341,9 @@
     reflection:$('reflection').value.trim()
    };
   };
-  $('exportPdf').addEventListener('click',()=>{
+  $('exportPdf').addEventListener('click',async()=>{
    try{
-    window.LSHPdfReport.download(completeReport());
+    await window.LSHPdfReport.download(completeReport());
     $('exportStatus').textContent=exportsCopy.pdfDone;
    }catch(error){
     $('exportStatus').textContent=exportsCopy.error+' '+String(error.message||error);
