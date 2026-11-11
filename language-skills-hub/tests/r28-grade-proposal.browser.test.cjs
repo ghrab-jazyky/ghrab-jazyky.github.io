@@ -37,7 +37,7 @@ for(const [engineName,engine]of [['chromium',chromium],['webkit',webkit]]){
    }finally{await browser.close()}
   });
  }
- test('R28 '+engineName+' Listening waits for all teacher-marked written answers before suggesting a grade',async()=>{
+ test('R28 '+engineName+' Listening computes grade after automatic closed-task submission',async()=>{
   const browser=await engine.launch({headless:true});
   try{
    const ctx=await browser.newContext({viewport:{width:390,height:844}}),page=await ctx.newPage(),errors=[],writes=[];
@@ -49,29 +49,19 @@ for(const [engineName,engine]of [['chromium',chromium],['webkit',webkit]]){
    assert.equal((await page.goto(u.href,{waitUntil:'domcontentloaded'})).status(),200);
    await page.waitForSelector('#workspace:not([hidden])');
    assert.equal(await page.locator('#gradeProposal .grade-number').count(),0);
+   assert.equal(await page.locator('textarea.written-response').count(),0);
+   assert.ok(await page.locator('.matching-row select').count()>=3);
    await page.locator('fieldset.question').first().locator('input').first().check();
-   await page.locator('.written-response').first().fill('Content for teacher assessment');
+   await page.locator('.matching-row select').first().selectOption('0');
    await page.locator('#submitButton').click();
-   await page.waitForSelector('#manualGrade:not([hidden])');
-   assert.equal(await page.locator('#gradeProposal .grade-number').count(),0);
-   const selects=page.locator('#manualGradeTasks select'),n=await selects.count();
-   assert.ok(n>=3);
-   for(let i=0;i<n;i++)await selects.nth(i).selectOption('0');
-   const badge=page.locator('#gradeProposal .grade-number');
-   await badge.waitFor({state:'visible'});
-   assert.match((await badge.textContent()).trim(),/^[1-5]$/);
-   assert.match(await page.locator('#manualGradeStatus').textContent(),/Učitelské posouzení dokončeno/);
-   const before=await page.locator('#manualGradeStatus').textContent();
-   await selects.first().selectOption('1');
-   const after=await page.locator('#manualGradeStatus').textContent();
-   assert.notEqual(before,after,'Teacher scoring an answer must update the total');
-   await selects.last().selectOption('');
-   assert.equal(await page.locator('#gradeProposal .grade-number').count(),0);
-   assert.match(await page.locator('#manualGradeStatus').textContent(),/Čeká na posouzení/);
+   await page.locator('#results:not([hidden])').waitFor();
+   assert.match((await page.locator('#gradeProposal .grade-number').textContent()).trim(),/^[1-5]$/);
+   assert.equal(await page.locator('#manualGrade').count(),0);
+   assert.equal(await page.locator('#exportPdf').isEnabled(),true);
    assert.equal(await page.locator('#submitButton').isDisabled(),true);
-   assert.equal(writes.length,0);
-   assert.deepEqual(errors,[]);
+   assert.deepEqual(writes,[]);assert.deepEqual(errors,[]);
    await ctx.close();
   }finally{await browser.close()}
  });
+
 }
