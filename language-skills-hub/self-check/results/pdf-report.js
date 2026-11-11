@@ -125,15 +125,9 @@
   function startPage(){
    pageNo++;ctx.fillStyle='#ffffff';ctx.fillRect(0,0,W,H);
    ctx.fillStyle='#1b425e';ctx.fillRect(0,0,W,9);
-   // Authentic school logo, local bundled asset, printed on EVERY PDF page.
-   // The official mark uses hairline contours. Multiply slightly offset
-   // ORIGINAL PNG copies only for legibility at 57pt on paper; the asset
-   // itself is unchanged and the exact shape is preserved.
-   ctx.save();ctx.globalCompositeOperation='multiply';
-   for(const [dx,dy] of [[0,0],[-.65,0],[.65,0],[0,-.65],[0,.65]]){
-    ctx.drawImage(schoolLogo,MARGIN+dx,14+dy,57,44);
-   }
-   ctx.restore();
+   // Exact canonical GO-heart school logo from AI Studio GHRAB.
+   // Draw as a square: never stretch or recolor the original school mark.
+   ctx.drawImage(schoolLogo,MARGIN-7,8,60,60);
    font(10,700);ctx.fillStyle='#244965';
    ctx.fillText('Gymnázium, Ostrava-Hrabůvka',MARGIN+72,35);
    font(8,400);ctx.fillStyle='#557083';
@@ -280,7 +274,7 @@
    if(img.complete&&img.naturalWidth){resolve();return}
    img.onload=resolve;img.onerror=()=>reject(new Error('School logo unavailable.'));
   });
-  check(img.naturalWidth===664&&img.naturalHeight===512,
+  check(img.naturalWidth===384&&img.naturalHeight===384,
    'Official school logo size mismatch.');
   return img;
  }
