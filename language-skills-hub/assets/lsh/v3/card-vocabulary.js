@@ -117,6 +117,7 @@ function mount(){
   meaningInput.maxLength=700;meaningInput.autocomplete='off';
   meaningLabel.htmlFor=meaningInput.id;
   const status=make('p','','lsh-vocab-editor-status');
+  status.id='lsh-vocab-editor-status';
   status.setAttribute('role','status');status.setAttribute('aria-live','polite');
   const actions=make('div',undefined,'lsh-vocab-editor-actions');
   const cancel=make('button','Zrušit','lsh-vocab-editor-cancel');cancel.type='button';
