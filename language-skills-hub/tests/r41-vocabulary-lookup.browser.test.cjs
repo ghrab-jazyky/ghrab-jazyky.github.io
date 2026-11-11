@@ -64,7 +64,19 @@ async function readingCheck(page,e){
  const save=page.locator('#lookup .lsh-vocab-save');
  assert.equal(await save.count(),1,'Reading popup shared save button missing '+e.id);
  assert.match((await save.textContent()||'').trim(),/Přidat do My Vocabulary/);
- console.log('READING',e.id,word,meaning.slice(0,60),'legacyManager',duplicate);
+ // Verify that the visible Reading button truly writes into the same bank
+ // opened by the main My Vocabulary hub, not the legacy ReadingLabVocab store.
+ await save.click();
+ await page.waitForFunction(()=>
+  document.querySelector('.lsh-vocab-message')?.textContent?.includes('Slovíčko uloženo do My Vocabulary.'),
+  null,{timeout:10000});
+ const navLabel=(await page.locator('a.lsh-vocab-nav').textContent()||'').trim();
+ assert.match(navLabel,/My Vocabulary \([1-9][0-9]*\)/,'Reading word count failed '+e.id);
+ await page.goto(new URL('slovnicek/index.html',base).href,{waitUntil:'load'});
+ await page.locator('.word-row').first().waitFor({timeout:10000});
+ const saved=await page.locator('.word-row .word').allTextContents();
+ assert.ok(saved.some(text=>text.includes(word)),'Reading word was not persisted in central My Vocabulary: '+e.id+' / '+word);
+ console.log('PASS READING SAVE',e.id,word,'=>',meaning.slice(0,60),'centralWords',saved.length,'legacyManager',duplicate);
  assert.deepEqual(errors,[],'Uncaught JS errors '+e.id);
  page.off('pageerror',report);
 }
