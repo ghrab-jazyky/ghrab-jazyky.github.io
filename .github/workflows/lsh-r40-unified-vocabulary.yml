@@ -1,0 +1,27 @@
+name: LSH R40 shared My vocabulary QA (NO DEPLOY)
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/**'
+      - '.github/workflows/lsh-r40-unified-vocabulary.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  vocabulary-static:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Derive content integrity hashes for exact published cards
+        run: node language-skills-hub/tests/r40-unified-vocabulary.test.cjs --hashes
+      - name: JS syntax and storage contract
+        run: |
+          node --check language-skills-hub/my-vocabulary/store.js
+          node --check language-skills-hub/my-vocabulary/app.js
+          node --check language-skills-hub/assets/vocabulary-launcher.js
+          node --test language-skills-hub/tests/r40-unified-vocabulary.test.cjs
