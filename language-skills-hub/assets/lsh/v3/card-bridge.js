@@ -109,7 +109,7 @@
     document.querySelector('.app').insertBefore(bar,document.querySelector('.topbar'));
     const popStatus=textNode('p','lsh-bridge-popstatus','');
     popStatus.setAttribute('role','status');popStatus.setAttribute('aria-live','polite');
-    const savePopup=textNode('button','lsh-bridge-save','');
+    const savePopup=textNode('button','lsh-bridge-save',labels().save);
     savePopup.type='button';savePopup.id='lshBridgeSavePopup';
     popup.append(savePopup,popStatus);
     const navLink=textNode('a','btn lsh-bridge-link','');
