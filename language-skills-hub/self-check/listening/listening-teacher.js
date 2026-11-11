@@ -33,7 +33,7 @@
    'Otevři zdroj a přehraj jej poprvé. Tento panel video sám neovládá.':
    passes===1?
    'První poslech je označen. Po druhém přehrání potvrď druhý poslech.':
-   'Dva poslechy dokončeny. Žáci mohou dokončit písemné rekonstrukce z poznámek.';
+   'Dva poslechy dokončeny. Žáci mohou dokončit řazení a přiřazování a získat automatický návrh známky.';
  }
  function urlForStudent(){
   const url=new URL('student.html',location.href);
