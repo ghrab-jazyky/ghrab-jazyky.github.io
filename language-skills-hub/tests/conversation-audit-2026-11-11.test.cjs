@@ -74,3 +74,11 @@ test('each card CSP allows exactly its own inline script',()=>{
   assert.ok(c.src.includes(hash),c.id+' CSP hash does not match the inline script');
  }
 });
+test('AI card uses scenario boxes at B2 (4), C1 (6) and C2 (8 stations) in every language',()=>{
+ const ai=loaded.find(c=>c.id==='cl-umela-inteligence');
+ for(const l of LANGS)for(const [lv,n] of [['A1',0],['A2',0],['B1',0],['B2',4],['C1',6],['C2',8]]){
+  const st=ai.content[l].levels[lv].stations;
+  assert.equal(st.filter(s=>(s.scenario||'').trim()).length,n,l+' '+lv);
+  for(const s of st)if(s.scenario){assert.match(s.main.trim(),/\?$/,l+' '+lv);assert.doesNotMatch(s.scenario,/\?/,l+' '+lv);}
+ }
+});
