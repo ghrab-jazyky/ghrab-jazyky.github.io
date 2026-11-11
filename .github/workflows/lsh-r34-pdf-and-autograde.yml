@@ -1,0 +1,53 @@
+name: LSH R34 full PDF result and auto Listening gate (NO DEPLOY)
+on:
+  push:
+    branches:
+      - fix/lsh-conversation-floating-countdown-2026-11-11
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Syntax of assessment and PDF modules
+        run: |
+          node --check language-skills-hub/self-check/results/pdf-report.js
+          node --check language-skills-hub/self-check/results/export-core.js
+          node --check language-skills-hub/self-check/results/result-core.js
+          node --check language-skills-hub/self-check/reading/reading.js
+          node --check language-skills-hub/self-check/listening/listening-core.js
+          node --check language-skills-hub/self-check/listening/listening-student.js
+          node --check language-skills-hub/tests/r34-full-pdf-export.test.cjs
+          node --check language-skills-hub/tests/r34-full-pdf-export.browser.test.cjs
+      - name: All existing static contract regressions
+        run: node --test language-skills-hub/tests/*.test.cjs
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install Chromium and WebKit for local, offline-from-server tests
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Launch local app and regression tests without deployment
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-r34-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:8765/language-skills-hub/index.html >/dev/null; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/r32-conversation-countdown.browser.test.cjs language-skills-hub/tests/r33-auto-listening-and-export.browser.test.cjs language-skills-hub/tests/r34-full-pdf-export.browser.test.cjs
