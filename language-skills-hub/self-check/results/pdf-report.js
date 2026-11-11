@@ -45,8 +45,12 @@
    lines.push('','VYCHOZI CTENY TEXT',clean(report.readingText));
   }
   report.questions.forEach((q,i)=>{
-   lines.push('',(i+1)+'. '+clean(q.question),
-    'Odpoved studenta: '+clean(q.studentAnswer||'Bez odpovedi'),
+   lines.push('',(i+1)+'. '+clean(q.question));
+   if(Array.isArray(q.options)&&q.options.length){
+    lines.push('Nabidka odpovedi:');
+    q.options.forEach((option,j)=>lines.push(String.fromCharCode(65+j)+'. '+clean(option)));
+   }
+   lines.push('Odpoved studenta: '+clean(q.studentAnswer||'Bez odpovedi'),
     'Spravna odpoved: '+clean(q.correctAnswer),
     'Vysledek: '+(q.correct?'SPRAVNE':'CHYBNE')+' | '+q.awarded+'/1 bod');
    if(q.explanation)lines.push('Vysvetleni: '+clean(q.explanation));
@@ -173,6 +177,11 @@
    reserve(99);rule();
    paragraph(null,(i+1)+'. '+clean(q.question),
     {size:10.5,weight:700,leading:15,after:5});
+   if(Array.isArray(q.options)&&q.options.length){
+    paragraph('NABÍZENÉ ODPOVĚDI',
+     q.options.map((option,j)=>String.fromCharCode(65+j)+'. '+clean(option)).join('\n'),
+     {size:9,leading:13,after:6});
+   }
    paragraph('ODPOVĚĎ STUDENTA',q.studentAnswer||'Bez odpovědi',{size:10,leading:14,after:5});
    paragraph('SPRÁVNÁ ODPOVĚĎ',q.correctAnswer,{size:10,leading:14,after:5});
    paragraph(null,(q.correct?'SPRÁVNĚ':'CHYBNĚ')+'    '+q.awarded+' / 1 bod',
