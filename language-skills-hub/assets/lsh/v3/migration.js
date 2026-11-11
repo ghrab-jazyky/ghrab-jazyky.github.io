@@ -11,6 +11,7 @@
  if(!MODEL)throw Error('Vocabulary model not loaded');
  const DB='reading-lab-vocabulary',FALLBACK='reading-lab-vocabulary-fallback-v1';
  const BACKUP='reading-lab-vocabulary-backup';
+ const MIGRATED_KEY='lsh-vocab-legacy-processed-v1';
  const validLanguage=s=>MODEL.LANGUAGES.includes(s);
  const clean=s=>String(s==null?'':s).normalize('NFKC').replace(/[\u0000-\u001f\u007f]/g,' ').replace(/\s+/g,' ').trim();
  function hash(value){
@@ -94,6 +95,15 @@
   if(store.status().mode!=='ready')return {persistent:false,reading:0,conversation:0,skipped:0};
   let reading=0,conversation=0,skipped=0;
   const nowIso=now||new Date().toISOString();
+  // Remember converted IDs. Deleting words or restoring a replacement backup
+  // must NOT resurrect previously migrated words on every next visit.
+  let previous={conversation:[],reading:[]};
+  try{
+   const raw=JSON.parse(localStorage?.getItem(MIGRATED_KEY)||'{}');
+   if(raw&&typeof raw==='object'&&Array.isArray(raw.conversation)&&Array.isArray(raw.reading))
+    previous={conversation:raw.conversation.slice(0,5000),reading:raw.reading.slice(0,5000)};
+  }catch(_){}
+  const migratedConversation=new Set(previous.conversation),migratedReading=new Set(previous.reading);
   // Legacy Conversation cards used staging DB; never erase them.
   if(typeof createStore==='function'){
    const staging=createStore({mode:'staging',indexedDB,BroadcastChannel:null});
@@ -104,9 +114,11 @@
      for(const word of old){
       try{
        const normalized=MODEL.normalizeWord(word,nowIso);
+       if(migratedConversation.has(normalized.id))continue;
        if(!(await store.getWord(normalized.id))){
         await store.saveWord(normalized,nowIso);conversation++;
        }
+       migratedConversation.add(normalized.id);
       }catch(_){skipped++}
      }
     }
@@ -119,12 +131,20 @@
    try{
     const word=convertReading(raw,nowIso);
     if(seen.has(word.id))continue;seen.add(word.id);
+    if(migratedReading.has(word.id))continue;
     if(!(await store.getWord(word.id))){
      await store.saveWord(word,nowIso);reading++;
     }
+    migratedReading.add(word.id);
    }catch(_){skipped++}
   }
-  return {persistent:true,reading,conversation,skipped};
+  let markerSaved=false;
+  try{
+   localStorage?.setItem(MIGRATED_KEY,JSON.stringify({
+    conversation:[...migratedConversation],reading:[...migratedReading]}));
+   markerSaved=!!localStorage;
+  }catch(_){}
+  return {persistent:true,reading,conversation,skipped,markerSaved};
  }
  return Object.freeze({convertReading,convertReadingBackup,legacyDbWords,migrate,hash});
 });
