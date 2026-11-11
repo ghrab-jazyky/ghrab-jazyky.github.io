@@ -1,0 +1,18 @@
+/* LSH R44 mobile-first return to the exact Reading question */
+.lsh-back-to-question{
+ position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));
+ transform:translateX(-50%);z-index:140;max-width:calc(100vw - 28px);
+ min-height:46px;padding:11px 18px;font:800 .95rem/1.25 system-ui,-apple-system,Segoe UI,sans-serif;
+ border:2px solid var(--accent2,#987be5);border-radius:999px;
+ color:var(--accent2,#c8b3ff);background:var(--panel,#14233d);
+ box-shadow:0 6px 24px rgba(0,0,0,.35);
+ white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;
+}
+.lsh-back-to-question[hidden]{display:none!important}
+.lsh-back-to-question:focus-visible{outline:3px solid var(--accent,#60caff);outline-offset:3px}
+.lsh-return-target{outline:2px solid var(--accent2,#987be5);outline-offset:2px;border-radius:3px}
+.qcard.lsh-return-flash{animation:lshReturnFlash 1.2s ease-out 1}
+@keyframes lshReturnFlash{0%{box-shadow:0 0 0 4px var(--accent2,#987be5)}100%{box-shadow:0 0 0 0 transparent}}
+@media(min-width:851px){.lsh-back-to-question{left:26%;bottom:86px}}
+@media(prefers-reduced-motion:reduce){.qcard.lsh-return-flash{animation:none}}
+@media print{.lsh-back-to-question{display:none!important}}
