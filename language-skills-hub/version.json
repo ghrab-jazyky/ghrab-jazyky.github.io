@@ -9,7 +9,7 @@
   "contentHashes": {
     "cl-umela-inteligence": "125a6aca2161e65f2df654630a3eb8f85ca8f0eca76e7d88f9bb33246f3fd6d9",
     "rl-asteroids": "78c38e74de5f02e130eaa631d023ff6abb7022adbe30c2b5a1a4e9dd998db3ef",
-    "ll-matthew-oscars": "2bdc7488b593984c42e22e93cf07564dbf0ae6990cd6e51ebed997d51de4b077",
+    "ll-matthew-oscars": "3ac455b8dfec8c5bdc9ca34d4381bc88219f8e55b3d9d023e2c35028b6ee17b7",
     "cl-socialni-media": "d1f0a13161fde08b9a18b43285725e87efa587b9a0681f32a96e5b218ca4f5a7",
     "cl-hrani-her": "4962d908b35a47f733de01b3969bf8e5cc91583929f166a1174cc2606d043d02",
     "cl-rodina": "66fb30bcb0eb49e092c4723c66db4a72ed00dafc60616c8ed26168b572f0145d",
@@ -29,7 +29,7 @@
     "cl-nemoci-u-lekare": "c25b9b2d9bb6361736f6e135c1d1efdd7f253050fe239e88382c745775d1a547",
     "cl-svetova-politika": "1da1d8c7fca6ede507e376653a4214fca7b9e031d0532873aa635540006b8ac0",
     "cl-ceny-nemovitosti": "1abbf5c809f75a7111dd9b3c1ba7e8c4cb589a3448fc7c993025a663600f8bb2",
-    "ll-harrison-ford": "361f4486d5b2ef386427659da8e538956722400febe378995b42521cf651487b",
+    "ll-harrison-ford": "48a30796f5b0f6ef054183b51ecff1c5be6cf13b4ab0b20e719fce02f63a4d3d",
     "ll-peaky-no-fighting": "3a4048408b1fea851c0441d1f44eeda2aa07c7073f1cdf2822d1b308736b8478",
     "rl-can-mistakes": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
     "rl-plastic-ocean": "211e610a82c1527f5336a16a00743b3c96af8e2644af7caad55f4d62c1cc4f98",
@@ -38,6 +38,7 @@
     "cl-skola": "dd0d83ea18e4672bf9588f9d484807a8969768120d5775218e219f8c1fe71a17"
   },
   "sourceSnapshot": "R17",
+  "listeningContentCorrections": "R38: Matthew McConaughey A2 and Harrison Ford A2 model answers",
   "selfCheckEnabled": true,
   "officialGradesEnabled": false,
   "backendEnabled": false,
