@@ -139,7 +139,7 @@
  function clozeTask(){
   const list=$('taskList'),bank=core.cloze(chosen,selection.topic,selection.level);
   list.appendChild(element('p','quiz-hint',
-   'D. Complete each fact using a name, number or short expression heard in the recording. No answer options are provided. A closed answer key checks spelling and accepted variants automatically; do not write interpretations or full sentences.'));
+   'D. Complete each fact using a name, number or short expression heard in the recording. No answer options are provided. Capitalization, accents, punctuation and extra spaces do not affect your score. The factual detail and spelling still need to match an accepted answer; do not write interpretations or full sentences.'));
   bank.forEach((task,i)=>{
    const row=element('div','cloze-row'),id='cloze-'+i;
    const label=element('label',null,(i+1)+'. '+task.question);
