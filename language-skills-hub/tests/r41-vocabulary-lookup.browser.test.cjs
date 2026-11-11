@@ -30,9 +30,14 @@ async function convoCheck(page,e){
  });
  assert.ok(info.expression,'Empty selected expression: '+JSON.stringify(info));
  assert.ok(info.meaning,'Empty dictionary meaning: '+JSON.stringify(info));
- assert.ok(info.save,'Empty save action: '+JSON.stringify(info));
+ assert.equal(info.save,'Save to My Vocabulary','Initial save button label blank: '+e.id);
  assert.equal(info.popup,false);
  assert.notEqual(info.computedDisplay,'none');
+ await page.locator('#lshBridgeSavePopup').click();
+ await page.waitForFunction(()=>
+  document.querySelector('.lsh-bridge-popstatus')?.textContent?.includes('Saved in this browser.'),null,{timeout:10000});
+ const navLabel=(await page.locator('#lshBridgeVocabularyLink').textContent()||'').trim();
+ assert.match(navLabel,/My Vocabulary \([1-9][0-9]*\)/,'Save not reflected in shared bank '+e.id);
  assert.deepEqual(errors,[],'Uncaught JS errors '+e.id);
  page.off('pageerror',report);
  console.log('PASS CONVERSATION',e.id,info.expression,'=>',info.meaning.slice(0,60));
@@ -52,6 +57,9 @@ async function readingCheck(page,e){
  assert.ok(word,'Reading popup word blank '+e.id);
  assert.ok(meaning,'Reading popup meaning blank '+e.id);
  assert.equal(shared,1,'Unified vocabulary link missing '+e.id);
+ const save=page.locator('#lookup .lsh-vocab-save');
+ assert.equal(await save.count(),1,'Reading popup shared save button missing '+e.id);
+ assert.match((await save.textContent()||'').trim(),/Přidat do My Vocabulary/);
  console.log('READING',e.id,word,meaning.slice(0,60),'legacyManager',duplicate);
  assert.deepEqual(errors,[],'Uncaught JS errors '+e.id);
  page.off('pageerror',report);
