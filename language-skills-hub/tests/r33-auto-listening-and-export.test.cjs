@@ -47,9 +47,9 @@ test('All 18 Listening variants provide nonambiguous fully automatic matching it
   assert.equal(receipt.teacher_marks,'');
   const rows=exporter.questionRows(normalized,'listening');
   assert.equal(rows.length,report.allTaskCount);
-  const csv=exporter.detailedCsv(receipt,rows,'3A4-07',1762848000000);
-  assert.match(csv,/anonymous_code/);
-  assert.match(csv,/3A4-07/);
+  const csv=exporter.detailedCsv(receipt,rows,1762848000000);
+  assert.doesNotMatch(csv,/anonymous_code|student_name|student_email/);
+  assert.match(csv,/question_id/);
   assert.equal(csv.split('\r\n').length,rows.length+2);
   assert.doesNotMatch(csv,/teacher_review_required|PRIVATE_STUDENT_ANSWER/);
  }
@@ -82,7 +82,7 @@ test('Practice source retains original free-text prompts; student test has no te
  assert.match(js,/core\.assessAuto\(/);
  assert.match(js,/matchingTask\(/);
 });
-test('Private Reading and Listening archive excludes answers, accepts only pseudonymous code',async()=>{
+test('Private Reading and Listening archive excludes answers and all student identifiers',async()=>{
  const metadata={topic:'rl-asteroids',language:'es',level:'B1',submittedAt:null,interruptionCount:0};
  const raw={points:1,maxPoints:2,details:[
   {id:'first-test',kind:'mc',correct:true,
@@ -91,16 +91,16 @@ test('Private Reading and Listening archive excludes answers, accepts only pseud
  ]};
  const receipt=exporter.reading(raw,metadata),rows=exporter.questionRows(raw,'reading');
  assert.equal(rows.length,2);
- const csv=exporter.detailedCsv(receipt,rows,'C2-04',1762848000000);
- const text=exporter.reportText(receipt,rows,'C2-04',1762848000000);
- assert.match(csv,/C2-04/);
- assert.match(text,/C2-04/);
+ const csv=exporter.detailedCsv(receipt,rows,1762848000000);
+ const text=exporter.reportText(receipt,rows,1762848000000);
+ assert.doesNotMatch(csv+text,/anonymous_code|student_name|student_email|Kod:/);
+ assert.match(text,/VYSLEDEK TESTU/);
  assert.match(text,/1\/2/);
  assert.doesNotMatch(csv+text,/SECRET_|PRIVATE_EMAIL|school\.invalid/);
- assert.throws(()=>exporter.detailedCsv(receipt,rows,'=IMPORTXML()',1762848000000));
- assert.throws(()=>exporter.detailedCsv(receipt,rows,'name with spaces',1762848000000));
+ assert.throws(()=>exporter.detailedCsv(receipt,rows,-1));
+ assert.throws(()=>exporter.detailedCsv(receipt,[{...rows[0],awarded_points:3}],1762848000000));
  let copied='';
- await exporter.copyReport(receipt,rows,'C2-04',null,
+ await exporter.copyReport(receipt,rows,null,
   {writeText:async s=>{copied=s}},1762848000000);
  assert.equal(copied,text);
 });
