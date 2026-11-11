@@ -333,7 +333,8 @@
     summary:{earned:proposal.earned,max:proposal.max,
      percent:proposal.displayedPercent,grade:proposal.grade},
     questions:lastReport.details.map(item=>({
-     question:item.prompt,studentAnswer:item.answered?item.selectedAnswer:'Bez odpovědi',
+     question:item.prompt,options:(variant.questions.find(q=>q.id===item.id)?.choices||[]),
+     studentAnswer:item.answered?item.selectedAnswer:'Bez odpovědi',
      correctAnswer:item.correctAnswer,correct:item.correct,
      awarded:item.correct?1:0,explanation:item.explanation||''
     })),
