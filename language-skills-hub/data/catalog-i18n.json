@@ -587,23 +587,23 @@
     "cl-skola": {
       "cs": {
         "title": "Škola",
-        "summary": "Školní prostředí, předměty, spolužáci a představy o ideální škole. Ve španělské A1 je evidována opakovaná otázka."
+        "summary": "Školní prostředí, předměty, spolužáci a představy o ideální škole."
       },
       "de": {
         "title": "Meine Schule",
-        "summary": "Schulalltag, Fächer, Mitschüler und die ideale Schule. In Spanisch A1 ist eine doppelte Frage erfasst."
+        "summary": "Schulalltag, Fächer, Mitschüler und die ideale Schule."
       },
       "en": {
         "title": "My School",
-        "summary": "School life, subjects, classmates, and the ideal school. A duplicate question is flagged in Spanish A1."
+        "summary": "School life, subjects, classmates, and the ideal school."
       },
       "es": {
         "title": "Mi escuela",
-        "summary": "El entorno escolar, las asignaturas, los compañeros y la escuela ideal. Hay una pregunta duplicada en español A1."
+        "summary": "El entorno escolar, las asignaturas, los compañeros y la escuela ideal."
       },
       "fr": {
         "title": "Mon école",
-        "summary": "La vie scolaire, les matières, les camarades et l'école idéale. Une question en double est signalée en espagnol A1."
+        "summary": "La vie scolaire, les matières, les camarades et l'école idéale."
       }
     }
   }

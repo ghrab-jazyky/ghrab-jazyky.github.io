@@ -90,6 +90,7 @@
   }
   function status(){return {
    phase:state.phase,startedAt:state.startedAt,deadlineAt:state.deadlineAt,
+   submittedAt:state.submittedAt,
    remainingMs:remainingMs(),expired:expired(),persistent,
    answers:clone(state.answers),
    reviewMarks:Array.isArray(state.reviewMarks)?clone(state.reviewMarks):null,

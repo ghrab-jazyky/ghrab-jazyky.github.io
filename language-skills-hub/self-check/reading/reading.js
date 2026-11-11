@@ -28,6 +28,7 @@
    reflection:'Optional reflection · not scored',
    reflectionNote:'The reflection is not marked automatically and does not affect your result.',
    submitNote:'One submission in this page session. Reloading can start over; this is not an enforced one-attempt test.',
+   submitNoteTimed:'Your answers are saved in this browser. Reloading this page restores your attempt; it does not start a new one. This is not a secure exam.',
    submit:'Submit all answers',confirm:'Submit your answers now?',missing:'questions are unanswered.',
    result:'Self-check finished',resultKicker:'YOUR RESULT',correct:'Correct answers',
    points:'Points',percentage:'Success rate',grade:'No official school grade',
@@ -51,6 +52,7 @@
    reflection:'Reflexión opcional · sin puntuación',
    reflectionNote:'La reflexión no se corrige automáticamente ni afecta al resultado.',
    submitNote:'Una entrega en esta sesión. Al recargar la página puedes empezar de nuevo; no es un examen con intentos controlados.',
+   submitNoteTimed:'Tus respuestas se guardan en este navegador. Al recargar la página se recupera tu intento; no empieza uno nuevo. No es un examen seguro.',
    submit:'Entregar todas las respuestas',confirm:'¿Quieres entregar tus respuestas?',missing:'preguntas sin responder.',
    result:'Autoevaluación terminada',resultKicker:'TU RESULTADO',correct:'Respuestas correctas',
    points:'Puntos',percentage:'Porcentaje',grade:'Sin calificación oficial',
@@ -74,6 +76,7 @@
    reflection:'Freiwillige Reflexion · ohne Punkte',
    reflectionNote:'Die Reflexion wird nicht automatisch bewertet und beeinflusst dein Ergebnis nicht.',
    submitNote:'Eine Abgabe in dieser Sitzung. Nach dem Neuladen ist ein neuer Versuch möglich; dies ist keine Prüfung mit gesperrten Wiederholungen.',
+   submitNoteTimed:'Deine Antworten werden in diesem Browser gespeichert. Nach dem Neuladen wird dein Versuch wiederhergestellt, nicht neu begonnen. Dies ist keine sichere Prüfung.',
    submit:'Alle Antworten abgeben',confirm:'Möchtest du deine Antworten jetzt abgeben?',missing:'Fragen sind unbeantwortet.',
    result:'Selbsttest abgeschlossen',resultKicker:'DEIN ERGEBNIS',correct:'Richtige Antworten',
    points:'Punkte',percentage:'Erfolgsquote',grade:'Keine offizielle Schulnote',
@@ -97,6 +100,7 @@
    reflection:'Réflexion facultative · non notée',
    reflectionNote:'La réflexion n’est pas évaluée automatiquement et ne compte pas dans le résultat.',
    submitNote:'Un seul envoi pour cette session. Recharger la page permet de recommencer : ce n’est pas un examen à tentative unique garantie.',
+   submitNoteTimed:'Tes réponses sont enregistrées dans ce navigateur. Recharger la page restaure ta tentative, sans en commencer une nouvelle. Ce n’est pas un examen sécurisé.',
    submit:'Envoyer toutes les réponses',confirm:'Envoyer tes réponses maintenant ?',missing:'questions sans réponse.',
    result:'Autoévaluation terminée',resultKicker:'TON RÉSULTAT',correct:'Bonnes réponses',
    points:'Points',percentage:'Taux de réussite',grade:'Aucune note scolaire officielle',
@@ -152,7 +156,7 @@
   $('questionsHeading').textContent=ui.questions;
   $('reflectionHeading').textContent=ui.reflection;
   $('reflectionNote').textContent=ui.reflectionNote;
-  $('submitNote').textContent=ui.submitNote;
+  $('submitNote').textContent=search.has('timer')?ui.submitNoteTimed:ui.submitNote;
   $('submitButton').textContent=ui.submit;
   $('resultHeading').textContent=ui.result;
   $('resultKicker').textContent=ui.resultKicker;

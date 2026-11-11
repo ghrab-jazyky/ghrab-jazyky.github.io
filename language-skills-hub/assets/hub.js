@@ -14,7 +14,12 @@ const welcome=byId('welcome'),chooser=byId('skillChooser'),catalog=byId('catalog
 let qrUrl='', qrTitle='', shareEntry=null, toastTimeout=null;
 const qrDialog=byId('qrDialog'),qrMount=byId('qrMount');
 function toast(message){
- const el=byId('toast');el.textContent=message;el.classList.remove('hidden');
+ const el=byId('toast');
+ // A modal <dialog> sits in the browser top layer; a toast outside it is hidden
+ // underneath. While the share dialog is open, show the toast inside it.
+ const host=qrDialog.open?qrDialog:document.body;
+ if(el.parentElement!==host)host.appendChild(el);
+ el.textContent=message;el.classList.remove('hidden');
  if(toastTimeout)clearTimeout(toastTimeout);
  toastTimeout=setTimeout(()=>el.classList.add('hidden'),2600);
 }
@@ -120,8 +125,10 @@ function render(){
   if(locale!=='all'&&!e.languages.includes(locale))return false;
   if(level!=='all'&&!e.levels.includes(level))return false;
   if(!search)return true;
-  const cs=localized(e,'all'),target=localized(e,locale);
-  return normalizeSearch([cs.title,cs.summary,target.title,target.summary,e.title,e.summary,titles[e.skill]].join(' '))
+  // Search Czech and every translated title/summary, so "family" or
+  // "Weihnachten" also work without a language filter.
+  const all=Object.values(translations.get(e.id)||{}).flatMap(t=>[t.title,t.summary]);
+  return normalizeSearch([...all,e.title,e.summary,titles[e.skill]].join(' '))
     .includes(search);
  });
  shown.sort((a,b)=>localized(a,locale).title.localeCompare(
@@ -141,7 +148,16 @@ function setAppInert(blocked){
  for(const el of document.querySelectorAll('body > header, body > main, body > footer'))
   el.inert=blocked;
 }
+function catalogOpen(){return Boolean(skill)&&!catalog.hidden;}
 function closeChooser(){
+ if(catalogOpen()){
+  // Opened via "Změnit laboratoř": go back to the same catalog, not the intro.
+  chooser.hidden=true;welcome.hidden=true;
+  welcome.querySelector('.welcome-content').inert=false;
+  setAppInert(false);
+  byId('changeLab').focus();
+  return;
+ }
  chooser.hidden=true;
  const content=welcome.querySelector('.welcome-content');
  content.inert=false;
@@ -149,6 +165,7 @@ function closeChooser(){
 }
 function showChooser(){
  if(introTimer!==null){clearTimeout(introTimer);introTimer=null;}
+ byId('closeChooser').textContent=catalogOpen()?'Zpět do katalogu':'Zpět na úvod';
  welcome.hidden=false;
  chooser.hidden=false;
  welcome.querySelector('.welcome-content').inert=true;
@@ -195,6 +212,17 @@ function updateFilters(){
 }
 function restoreLocation(){
  const query=new URLSearchParams(location.search),chosen=query.get('skill');
+ // In-page anchors (#howto, #main) also fire popstate. When the lab did not
+ // change, keep the catalog as it is (search text, focus, scroll position).
+ if(allowed.has(chosen)&&chosen===skill&&catalogOpen()&&chooser.hidden){
+  const language=query.get('lang')||'all',level=query.get('level')||'all';
+  const langOk=[...byId('language').options].some(o=>o.value===language);
+  const levelOk=level==='all'||levels.includes(level);
+  if(langOk&&levelOk&&(byId('language').value!==language||byId('level').value!==level)){
+   byId('language').value=language;byId('level').value=level;render();
+  }
+  return;
+ }
  if(allowed.has(chosen)){
   showCatalog(chosen,{recordHistory:false,restoreFilters:true});
  }else{
@@ -392,7 +420,10 @@ byId('shareLanguage').addEventListener('change',updateSharePreview);
 byId('shareLevel').addEventListener('change',updateSharePreview);
 byId('qrUrl').addEventListener('focus',event=>event.target.select());
 byId('qrUrl').addEventListener('click',event=>event.target.select());
-qrDialog.addEventListener('close',()=>{shareEntry=null;qrUrl='';});
+qrDialog.addEventListener('close',()=>{
+ shareEntry=null;qrUrl='';
+ const el=byId('toast');if(el.parentElement!==document.body)document.body.appendChild(el);
+});
 byId('qrCopy').addEventListener('click',copyLink);
 byId('qrSave').addEventListener('click',saveQr);
 
