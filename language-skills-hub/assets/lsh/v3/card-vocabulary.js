@@ -5,7 +5,7 @@
 'use strict';
 const MODEL=root.LSH_MODEL,STORE=root.LSH_STORE;
 if(!MODEL||!STORE||!root.document)return;
-const match=root.location.pathname.match(/\/language-skills-hub\/(cteni|poslech)\/([a-z0-9-]+)\/index\.html$/);
+const match=root.location.pathname.match(/\/language-skills-hub\/(cteni|poslech)\/([a-z0-9-]+)(?:\/index\.html|\/)?$/);
 if(!match)return;
 const [,skill,slug]=match,topicId=(skill==='cteni'?'rl-':'ll-')+slug;
 const language=()=>skill==='poslech'?'en':
@@ -46,12 +46,11 @@ function mount(){
   try{const all=await store.listWords();a.textContent='My Vocabulary ('+all.length+')'}
   catch(_){a.textContent='My Vocabulary';message('Slovníček se nepodařilo načíst.')}
  }
- async function save(term,translation,context,button){
-  if(typeof term!=='string'||!term.trim())return;
-  term=term.trim();translation=String(translation||'').trim();
-  if(!translation||translation.length>700){
-   message('Doplň český význam (max. 700 znaků).');return;
-  }
+ async function save(term,translation,context,button,statusNode){
+  term=String(term||'').trim();translation=String(translation||'').trim();
+  function feedback(value){message(value);if(statusNode)statusNode.textContent=value}
+  if(!term||term.length>160){feedback('Doplň slovíčko nebo výraz (max. 160 znaků).');return false}
+  if(!translation||translation.length>700){feedback('Doplň český význam (max. 700 znaků).');return false}
   button.disabled=true;
   try{
    const lang=language();
@@ -61,10 +60,12 @@ function mount(){
     context:String(context||'').trim().slice(0,1000),
     sources:[{skill,topicId,savedAt:new Date().toISOString()}]
    });
-   message(result.storedInIndexedDB?'Slovíčko uloženo do My Vocabulary.':
-    'POZOR: Slovíčko je jen v dočasné paměti. Zálohuj ihned!');
+   const durable=result.storedInIndexedDB===true;
+   feedback(durable?'Slovíčko uloženo do My Vocabulary.':
+    'POZOR: Slovíčko je jen v dočasné paměti. Na tomto zařízení se nemusí zachovat.');
    await count();
-  }catch(error){message('Uložení selhalo: '+error.message)}
+   return durable;
+  }catch(error){feedback('Uložení selhalo: '+(error?.message||'neznámá chyba'));return false}
   finally{button.disabled=false}
  }
  if(skill==='cteni'){
@@ -87,21 +88,84 @@ function mount(){
    popup.append(saveButton);
   }
  }else{
+  // The top-bar link opens the bank. This separate, visible action ADDS words.
+  // Keep it usable for any expression, not only optional matching exercises.
+  const css=document.createElement('link');
+  css.rel='stylesheet';css.href='../../assets/lsh/v3/card-vocabulary.css';
+  document.head.append(css);
+  const addTop=make('button','＋ Přidat slovíčko','lsh-vocab-add-open');
+  addTop.type='button';
+  addTop.setAttribute('aria-haspopup','dialog');
+  addTop.setAttribute('aria-controls','lsh-vocab-editor');
+  head.insertBefore(addTop,a);
+  const dialog=make('dialog',undefined,'lsh-vocab-editor');
+  dialog.id='lsh-vocab-editor';
+  dialog.setAttribute('aria-labelledby','lsh-vocab-editor-heading');
+  const form=make('form',undefined,'lsh-vocab-editor-form');
+  form.noValidate=true;
+  const title=make('h2','Přidat do My Vocabulary');
+  title.id='lsh-vocab-editor-heading';
+  const hint=make('p','Vyplň slovo nebo frázi a její český význam. Všechna slovíčka najdeš ve společném My Vocabulary.','lsh-vocab-hint');
+  const termLabel=make('label','Anglické slovo nebo fráze');
+  const termInput=make('input',undefined,'lsh-vocab-editor-input');
+  termInput.type='text';termInput.id='lsh-vocab-editor-term';
+  termInput.maxLength=160;termInput.autocomplete='off';
+  termLabel.htmlFor=termInput.id;
+  const meaningLabel=make('label','Český význam');
+  const meaningInput=make('input',undefined,'lsh-vocab-editor-input');
+  meaningInput.type='text';meaningInput.id='lsh-vocab-editor-meaning';
+  meaningInput.maxLength=700;meaningInput.autocomplete='off';
+  meaningLabel.htmlFor=meaningInput.id;
+  const status=make('p','','lsh-vocab-editor-status');
+  status.id='lsh-vocab-editor-status';
+  status.setAttribute('role','status');status.setAttribute('aria-live','polite');
+  const actions=make('div',undefined,'lsh-vocab-editor-actions');
+  const cancel=make('button','Zrušit','lsh-vocab-editor-cancel');cancel.type='button';
+  const submit=make('button','Uložit slovíčko','lsh-vocab-editor-submit');submit.type='submit';
+  actions.append(cancel,submit);
+  form.append(title,hint,termLabel,termInput,meaningLabel,meaningInput,status,actions);
+  dialog.append(form);document.body.append(dialog);
+  let activeButton=null,activeRowStatus=null;
+  function openEditor(term,button,rowStatus){
+   activeButton=button;activeRowStatus=rowStatus||null;
+   const selection=typeof root.getSelection==='function'?root.getSelection().toString().trim():'';
+   termInput.value=String(term||selection||'').slice(0,160);
+   meaningInput.value='';status.textContent='';
+   if(typeof dialog.showModal==='function')dialog.showModal();
+   else dialog.setAttribute('open','');
+   (termInput.value?meaningInput:termInput).focus();
+  }
+  function closeEditor(){
+   if(typeof dialog.close==='function'&&dialog.open)dialog.close();
+   else {dialog.removeAttribute('open');activeButton?.focus();}
+  }
+  dialog.addEventListener('close',()=>activeButton?.focus());
+  cancel.addEventListener('click',closeEditor);
+  addTop.addEventListener('click',()=>openEditor('',addTop,null));
+  form.addEventListener('submit',async event=>{
+   event.preventDefault();
+   const term=termInput.value.trim(),translation=meaningInput.value.trim();
+   if(!term){status.textContent='Napiš anglické slovo nebo frázi.';termInput.focus();return}
+   if(!translation){status.textContent='Napiš český význam.';meaningInput.focus();return}
+   const persisted=await save(term,translation,'',submit,status);
+   if(persisted){
+    if(activeRowStatus)activeRowStatus.textContent='✓ Uloženo do My Vocabulary';
+    closeEditor();
+   }
+  });
   const grid=document.getElementById('vocabTasks');
   if(grid){
    const install=()=>{
-    grid.querySelectorAll('.vocab-line').forEach((row)=>{
+    grid.querySelectorAll('.vocab-line').forEach(row=>{
      if(row.querySelector('.lsh-vocab-save'))return;
      const strong=row.querySelector('strong');if(!strong)return;
-     const btn=make('button','＋ My Vocabulary','lsh-vocab-save');btn.type='button';
-     btn.style.cssText='margin:6px 8px;min-height:35px;padding:6px 10px;border-radius:8px;background:#165c74;color:white;border:1px solid #70bfd4;font:700 12px system-ui;cursor:pointer';
-     btn.addEventListener('click',()=>{
-      const term=strong.textContent?.trim();
-      const translation=root.prompt('Český význam slovíčka „'+term+'“ (uloží se pro pozdější hry a zkoušení):','');
-      if(translation===null)return;
-      save(term,translation,'',btn);
-     });
-     row.append(btn);
+     const controls=make('div',undefined,'lsh-vocab-row-controls');
+     const button=make('button','＋ Uložit do My Vocabulary','lsh-vocab-save');
+     button.type='button';
+     const rowStatus=make('span','','lsh-vocab-row-status');
+     rowStatus.setAttribute('role','status');rowStatus.setAttribute('aria-live','polite');
+     button.addEventListener('click',()=>openEditor(strong.textContent?.trim(),button,rowStatus));
+     controls.append(button,rowStatus);row.append(controls);
     });
    };
    install();
