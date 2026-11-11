@@ -324,4 +324,5 @@ function exportAnswers(){capture();const d=DATA[current],s=state(),report=s.last
 $('exportBtn').addEventListener('click',exportAnswers);
 $('resetBtn').addEventListener('click',()=>{if(!confirm('Clear all answers for the '+current+' level?'))return;delete saved[current];renderLevel(current);persist();$('seqStatus').textContent='Select a card to move it.';window.scrollTo({top:0,behavior:'smooth'});});
 createLevelPills();renderLevel(loadStored()||'B2');measureBars();
-</script></body></html>
+</script><script defer src="../../assets/vocabulary-launcher.js" data-topic="ll-harrison-ford" data-skill="poslech"></script>
+</body></html>
