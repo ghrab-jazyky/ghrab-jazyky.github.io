@@ -21,6 +21,9 @@ jobs:
         run: node --test zkusebni/tests/e3a.test.cjs zkusebni/tests/e3b.static.test.cjs zkusebni/tests/e3c.test.cjs zkusebni/tests/e3d.test.cjs
   browser-regression:
     runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -28,10 +31,11 @@ jobs:
         with:
           node-version: '22'
       - name: Install browser test engines (CI only)
+        timeout-minutes: 8
         run: |
           npm install --no-save --ignore-scripts playwright@1.56.1
-          npx playwright install --with-deps chromium webkit
       - name: Run Chromium and WebKit against an isolated self-hosted HTTP fixture
+        timeout-minutes: 10
         run: node --test zkusebni/tests/e3d.browser.test.cjs
       - name: Preserve browser screenshots
         if: always()
