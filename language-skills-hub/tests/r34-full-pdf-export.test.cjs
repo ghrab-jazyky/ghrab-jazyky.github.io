@@ -90,7 +90,7 @@ test('Official school mark is the original 664 x 512 local PNG, not a network de
  assert.equal(logo.subarray(0,8).toString('hex'),'89504e470d0a1a0a');
  assert.equal(logo.readUInt32BE(16),664);assert.equal(logo.readUInt32BE(20),512);
  const pdfSource=fs.readFileSync(path.join(root,'self-check/results/pdf-report.js'),'utf8');
- assert.match(pdfSource,/school-logo\\.png/);
- assert.match(pdfSource,/ctx\\.drawImage\\(schoolLogo/);
+ assert.match(pdfSource,/school-logo\.png/);
+ assert.match(pdfSource,/ctx\.drawImage\(schoolLogo/);
  assert.match(pdfSource,/async function download/);
 });
