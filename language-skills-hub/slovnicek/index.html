@@ -22,6 +22,18 @@
 <main id="main">
  <p class="intro">Jeden slovníček pro Conversation, Reading a Listening Lab. Slovíčka se ukládají <strong>jen v tomto prohlížeči na tomto zařízení</strong> – nikam se neodesílají. Pro přenos na jiné zařízení použij zálohu JSON.</p>
  <p class="notice" id="storageStatus" role="status" aria-live="polite">Kontroluji místní úložiště…</p>
+<section class="panel backup-panel" aria-labelledby="backupTitle">
+ <h2 id="backupTitle">Ochrana slovíček a přenos mezi zařízeními</h2>
+ <p>Slovíčka se ukládají jen v tomto prohlížeči. Bez serveru a účtů se nepřenášejí automaticky. Pro přenos stačí soubor JSON: ulož ho do aplikace Soubory, iCloud Drive, Google Drive nebo přenes AirDropem. Na dalším zařízení otevři libovolnou studentskou kartu → My Vocabulary → <strong>Nahrát zálohu</strong> → <strong>Sloučit</strong>.</p>
+ <p class="backup-alert" id="backupSafety" role="status" aria-live="polite">Ověřuji stav místní zálohy…</p>
+ <p id="storageDetails" class="privacy">Kontroluji možnosti místního úložiště…</p>
+ <div class="backup-actions">
+  <button type="button" id="shareBackupBtn" hidden>Sdílet zálohu přes telefon (.json)</button>
+  <button type="button" id="confirmBackupBtn" hidden>Potvrdit, že je záloha bezpečně uložená mimo prohlížeč</button>
+  <button type="button" id="requestPersistenceBtn" hidden>Požádat o trvalejší úložiště</button>
+ </div>
+ <p class="privacy">Záložní JSON obsahuje slovíčka a poznámky v čitelné podobě. Nesdílej ho veřejně. LSH soubor nikdy automaticky neodesílá: místo uložení vybíráš ty.</p>
+</section>
  <section class="panel" aria-labelledby="bankTitle">
   <div class="section-heading"><div><h2 id="bankTitle">Moje uložená slovíčka</h2><p id="wordCount" aria-live="polite"></p></div><div class="toolbar">
    <button id="exportBtn" type="button">↓ Stáhnout zálohu (.json)</button>
@@ -59,7 +71,7 @@
   <div id="practiceStatus" aria-live="polite" role="status"></div>
   <div id="game" class="game" aria-live="polite"></div>
  </section>
- <p class="privacy">Záloha je tvůj osobní soubor. Chraň ji před ztrátou a nesdílej ji veřejně. Smazání dat prohlížeče může slovíčka odstranit. Mimo tento prohlížeč se data synchronizují pouze ručním importem zálohy.</p>
+ <p class="privacy">Záloha je tvůj osobní soubor. Chraň ji před ztrátou a nesdílej ji veřejně. Smazání dat prohlížeče může slovíčka odstranit. Přenos mezi zařízeními vyžaduje ruční export a import JSON; bez serveru neexistuje automatická synchronizace.</p>
 </main>
 <footer>Language Skills Hub · Offline-first slovníček · bez účtu, cloudu a sledování</footer>
 </body>
