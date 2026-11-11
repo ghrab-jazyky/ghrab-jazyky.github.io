@@ -34,7 +34,8 @@ test('R43 zero-server contract: no backend, no outbound API or account, no card 
  const page=read('slovnicek/index.html'),ui=read('slovnicek/backup-ui.js'),guard=read('slovnicek/backup-safety.js');
  assert.match(page,/connect-src 'none'/);assert.match(page,/id="shareBackupBtn"/);
  assert.match(page,/id="confirmBackupBtn"/);assert.match(page,/id="importFile"/);
- assert.match(page,/id="exportBtn"/);assert.match(page,/src="backup-ui\.js"/);
+ assert.match(page,/id="exportBtn"/);assert.match(page,/src="backup-ui\.js"/);assert.match(page,/src="backup-safety\.js"/);
+ assert.ok(page.indexOf('src="backup-safety.js"')<page.indexOf('src="backup-ui.js"'),'Shared backup helper must load first');
  assert.doesNotMatch(ui,/\bfetch\s*\(|XMLHttpRequest|WebSocket|EventSource|sendBeacon|https?:\/\//);
  assert.doesNotMatch(guard,/\bfetch\s*\(|XMLHttpRequest|WebSocket|sendBeacon/);
  assert.doesNotMatch(ui,/localStorage\.setItem\s*\(\s*['"]student/i);
