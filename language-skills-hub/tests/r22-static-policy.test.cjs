@@ -78,7 +78,7 @@ test('R22 public catalog offers practice sharing and only explicit ungraded test
  assert.match(html, /Uzamčení je pouze v uživatelském rozhraní/);
  assert.match(js, /Otevřít aktivitu/);
  assert.match(js, /Sdílet se studenty/);
- assert.match(js,/Test – známka 1–5/);
+ assert.match(js,/one\('a','action test','TEST'\)/);
  assert.match(js,/if\(localSelfCheck&&\['cteni','poslech'\]/);
  assert.doesNotMatch(html + js, /LSH_TEST_GRADED_ENABLED|verifiedSchoolGrade/);
 });

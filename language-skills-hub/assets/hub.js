@@ -145,10 +145,10 @@ function card(e){
   actions.appendChild(key);
  }
  if(localSelfCheck&&['cteni','poslech'].includes(e.skill)){
-  const check=one('a','action test','Test – známka 1–5');
+  const check=one('a','action test','TEST');
   check.href=testSetupUrl(e);check.target='_blank';check.rel='noopener noreferrer';
-  check.setAttribute('aria-label','Test s návrhem známky 1–5: '+translation.title);
-  check.title='Návrh známky 1–5 po odevzdání / kontrole učitelem. Bez backendu nelze ověřit identitu a výsledky.';
+  check.setAttribute('aria-label','TEST: '+translation.title);
+  check.title='Otevřít test k tématu. Výsledek je místní a případnou školní známku musí ověřit učitel.';
   actions.appendChild(check);
  }
  article.appendChild(actions);

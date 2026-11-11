@@ -47,13 +47,13 @@ test('R27 preserves 29 original practice cards with exact hashes and 642 variant
 });
 test('R27 catalog exposes an explicitly non-graded action ONLY in Reading and Listening',()=>{
  const src=read('assets/hub.js'),html=read('index.html');
- assert.match(src,/Test – známka 1–5/);
+ assert.match(src,/one\('a','action test','TEST'\)/);
  assert.match(src,/if\(localSelfCheck&&\['cteni','poslech'\]/);
  assert.match(src,/self-check\/reading\/teacher\.html/);
  assert.match(src,/self-check\/listening\/teacher\.html/);
  assert.match(src,/policy\?\.gradedTestsEnabled===false/);
  assert.match(src,/policy\?\.officialGradesEnabled===false/);
- assert.match(html,/Test – známka 1–5/);
+ assert.match(html,/<em>TEST<\/em>/);
  assert.match(html,/návrh známky 1–5/);
  assert.doesNotMatch(src,/self-check\/conversation|konverzace\/teacher\.html/);
  assert.doesNotMatch(src,/studentAuth|teacherAuth|serverSubmit|scoreToGrade/);
@@ -101,6 +101,6 @@ test('R27 pages and results remain public, no secrets, no PII collection or grad
   read('self-check/listening/teacher.html');
  assert.match(teacher,/ZNÁMKA 1–5/);
  const readme=fs.readFileSync(path.resolve(root,'..','README.md'),'utf8');
- assert.match(readme,/Test – známka 1–5/);
+ assert.match(readme,/\*\*TEST\*\*/);
  assert.match(readme,/https:\/\/ghrab-jazyky\.github\.io\/language-skills-hub\//);
 });
