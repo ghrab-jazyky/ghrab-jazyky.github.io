@@ -28,7 +28,7 @@ test('R29 labels reflect grade proposal without claiming a certified school resu
  const files=['index.html','assets/hub.js','self-check/reading/teacher.html','self-check/listening/teacher.html'];
  const text=files.map(read).join('\n');
  assert.doesNotMatch(text,/Test bez známky/);
- assert.match(text,/Test – známka 1–5/);
+ assert.match(text,/one\('a','action test','TEST'\)/);
  assert.match(text,/návrh známky 1–5/i);
  assert.match(text,/Bez backendu/);
  const manifest=JSON.parse(read('version.json'));
