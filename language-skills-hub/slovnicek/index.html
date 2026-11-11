@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'none'">
+<title>My Vocabulary – Language Skills Hub</title>
+<link rel="stylesheet" href="vocabulary.css">
+<script defer src="../assets/lsh/v3/model.js"></script>
+<script defer src="../assets/lsh/v3/store.js"></script>
+<script defer src="../assets/lsh/v3/migration.js"></script>
+<script defer src="practice-engine.js"></script>
+<script defer src="vocabulary.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Přejít na slovníček</a>
+<header class="site-header">
+ <div class="wrap masthead">
+  <div class="brand"><span class="eyebrow">Language Skills Hub · Gymnázium, Ostrava-Hrabůvka</span>
+   <h1>MY VOCABULARY <span>Můj slovníček</span></h1></div>
+  <a class="back" id="backLink" href="../index.html">← Zpět do LSH</a>
+ </div>
+</header>
+<main id="main" class="wrap">
+ <section class="intro" aria-label="Jak slovníček funguje">
+  <p>Ukládej slovíčka z <strong>Conversation, Reading i Listening Labu</strong> do jedné osobní sbírky. Vyber si je pro procvičování a potom se z nich nech vyzkoušet.</p>
+  <p><strong>Všechno zůstává v tomto prohlížeči na tomto zařízení.</strong> Bez účtu, bez odesílání odpovědí a bez školního hodnocení. Při smazání dat prohlížeče nebo změně zařízení můžeš o slovíčka přijít — pravidelně si stáhni zálohu.</p>
+  <p id="storageNotice" class="storage-notice" role="status" aria-live="polite">Kontroluji místní úložiště a převádím dříve uložená slovíčka…</p>
+ </section>
+ <section class="summary" aria-label="Stav slovníčku">
+  <div><strong id="wordCount">0</strong><span>slovíček celkem</span></div>
+  <div><strong id="selectedCount">0</strong><span>vybráno k tréninku</span></div>
+  <div><strong id="dueCount">0</strong><span>k opakování</span></div>
+  <div><strong id="readyCount">0</strong><span>s českým překladem</span></div>
+ </section>
+ <section class="panel" aria-labelledby="wordsHeading">
+  <div class="panel-head">
+   <div><p class="eyebrow">Moje sbírka</p><h2 id="wordsHeading">Vyber slovní zásobu</h2></div>
+   <div class="panel-actions"><button id="selectAll" type="button" class="secondary">Vybrat zobrazená</button><button id="selectNone" type="button" class="secondary">Zrušit výběr</button></div>
+  </div>
+  <div class="filters">
+   <div><label for="filterSearch">Hledat výraz / překlad</label><input id="filterSearch" type="search" placeholder="Např. difficult, familia, rozhodnutí…" autocomplete="off"></div>
+   <div><label for="filterLanguage">Jazyk</label><select id="filterLanguage">
+    <option value="all">Všechny jazyky</option><option value="en">Angličtina</option><option value="es">Španělština</option><option value="de">Němčina</option><option value="fr">Francouzština</option>
+   </select></div>
+   <div><label for="filterScope">Zobrazit</label><select id="filterScope"><option value="all">Všechna slovíčka</option><option value="due">K opakování</option><option value="favorite">Oblíbená</option><option value="missing">Bez českého významu</option></select></div>
+  </div>
+  <p id="listInfo" class="small-note" aria-live="polite">Načítám…</p>
+  <div id="wordList" class="word-list" aria-label="Uložená slovíčka"></div>
+ </section>
+ <section class="panel" aria-labelledby="manualHeading">
+  <h2 id="manualHeading">Přidat vlastní slovíčko</h2>
+  <form id="addForm" class="add-grid">
+   <div><label for="addLanguage">Jazyk</label><select id="addLanguage" required><option value="en">Angličtina</option><option value="es">Španělština</option><option value="de">Němčina</option><option value="fr">Francouzština</option></select></div>
+   <div><label for="addTerm">Slovo nebo fráze</label><input id="addTerm" required maxlength="160" autocomplete="off" placeholder="např. to overcome"></div>
+   <div><label for="addMeaning">Český význam</label><input id="addMeaning" required maxlength="700" autocomplete="off" placeholder="např. překonat"></div>
+   <div><label for="addLevel">Úroveň (nepovinné)</label><select id="addLevel"><option value="">Bez úrovně</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></div>
+   <button type="submit" id="addSave">Uložit slovíčko</button>
+  </form>
+ </section>
+ <section class="panel" aria-labelledby="practiceHeading">
+  <p class="eyebrow">Trénuj a ověř si znalosti</p>
+  <h2 id="practiceHeading">Procvičování a zkoušení</h2>
+  <p>Procvičování může ukazovat správnou odpověď a opakovat obtížná slova. <strong>Zkoušení</strong> odpovědi před odevzdáním neprozrazuje a na konci ukáže skóre a opravy. Není to školní klasifikace.</p>
+  <div class="mode-grid">
+   <button id="startFlash" type="button" class="mode"><span class="mode-icon" aria-hidden="true">▣</span><strong>Kartičky</strong><small>Odhaluj překlady, označuj „umím / opakovat“.</small></button>
+   <button id="startMatch" type="button" class="mode"><span class="mode-icon" aria-hidden="true">⇄</span><strong>Propoj dvojice</strong><small>Spojuj slova s českými významy.</small></button>
+   <button id="startExam" type="button" class="mode exam"><span class="mode-icon" aria-hidden="true">✓</span><strong>Zkoušení</strong><small>Napiš překlady bez nápovědy, vyhodnocení až na konci.</small></button>
+  </div>
+  <div id="practiceArea" class="practice-area" hidden aria-live="polite"></div>
+ </section>
+ <section class="panel backup" aria-labelledby="backupHeading">
+  <p class="eyebrow">Přenášení mezi zařízeními</p>
+  <h2 id="backupHeading">Záloha a obnova slovíček</h2>
+  <p>Stáhni soubor <strong>JSON</strong>. Na jiném zařízení otevři stejné My Vocabulary a nahraj jej tlačítkem „Obnovit ze zálohy“. Přenesou se slovíčka, jejich jazyky, úrovně, poznámky i průběh opakování.</p>
+  <div class="backup-actions">
+   <button id="exportBackup" type="button">↓ Stáhnout zálohu (JSON)</button>
+   <button id="importBackup" type="button" class="secondary">↑ Obnovit ze zálohy (sloučit)</button>
+   <button id="replaceBackup" type="button" class="warning">Nahradit celý slovníček zálohou</button>
+  </div>
+  <input type="file" id="backupFile" accept=".json,application/json" hidden>
+  <p class="small-note">Sloučení ponechá stávající slovíčka a přidá chybějící. Nahrazení odstraní aktuální slovníček, proto vyžaduje potvrzení. Podporujeme také starší zálohy Reading Labu. Soubor obsahuje osobní výběr slovní zásoby — nesdílej ho veřejně.</p>
+ </section>
+ <p id="globalStatus" role="status" aria-live="polite" class="global-status"></p>
+</main>
+<dialog id="editDialog" class="edit-dialog" aria-labelledby="editTitle">
+ <form id="editForm">
+  <h2 id="editTitle">Upravit slovíčko</h2>
+  <p id="editTermLabel"></p>
+  <label for="editMeaning">Český význam</label><input id="editMeaning" required maxlength="700">
+  <label for="editContext">Příklad / kontext</label><textarea id="editContext" rows="3" maxlength="1000"></textarea>
+  <label for="editNote">Poznámka</label><textarea id="editNote" rows="3" maxlength="1200"></textarea>
+  <div class="dialog-actions"><button type="button" id="cancelEdit" class="secondary">Zrušit</button><button type="submit">Uložit změny</button></div>
+ </form>
+</dialog>
+<footer class="wrap"><p>Language Skills Hub · osobní slovní zásoba uložená lokálně v prohlížeči · bez účtu a bez odesílání dat</p></footer>
+</body>
+</html>
