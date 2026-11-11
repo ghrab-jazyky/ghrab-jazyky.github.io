@@ -25,3 +25,13 @@
 .result-export{padding:12px 20px 18px;border-top:1px solid var(--line)}
 .result-export .small-note{margin:9px 0 0}
 #exportResult{min-height:44px}
+
+/* R33 teacher's local result archive: no server writes or student account. */
+.result-export .archive-label{display:block;font-size:.86rem;font-weight:750;margin-bottom:12px}
+.result-export .archive-label input{display:block;width:min(380px,100%);min-height:44px;margin-top:7px;
+ padding:10px 12px;background:var(--field);border:1px solid var(--line);border-radius:10px;color:var(--text)}
+.result-export .archive-actions{display:flex;flex-wrap:wrap;gap:10px}
+.result-export .archive-actions .action{flex:0 1 auto}
+@media(max-width:480px){.result-export .archive-actions{display:grid;grid-template-columns:1fr}
+ .result-export .archive-actions .action{width:100%}}
+@media print{.result-export{display:none!important}}
