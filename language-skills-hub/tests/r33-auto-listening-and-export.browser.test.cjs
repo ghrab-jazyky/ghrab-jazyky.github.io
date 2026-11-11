@@ -116,7 +116,7 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#taskList .cloze-row input').first().waitFor();
    await page.locator('#cloze-0').fill('15');
    await page.reload();
-   await page.locator('#taskList .matching-row select').first().waitFor();
+   await page.locator('#taskList .cloze-row input').first().waitFor();
    assert.equal(await page.locator('#cloze-0').inputValue(),'15');
    if(await page.locator('#sessionLock').isVisible()){
     for(const corner of ['tl','tr','bl','br'])
