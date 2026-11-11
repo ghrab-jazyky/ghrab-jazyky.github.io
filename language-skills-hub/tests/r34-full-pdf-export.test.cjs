@@ -71,3 +71,12 @@ test('Release R34 metadata reflects automatic Listening tests and complete local
  assert.equal(policy.futureSelfCheck.listeningRequiresManualWrittenReviewForGrade,false);
  assert.equal(policy.publication.studentIdentifierInReport,false);
 });
+test('PDF offered answer labels do not duplicate prelabelled matching choices',()=>{
+ const prelabelled={...sample,questions:[{...sample.questions[0],
+  options:['A. Fred Roos','B. George Lucas','C. Steven Spielberg']}]};
+ const copy=pdf.fullText(prelabelled);
+ assert.match(copy,/A\. Fred Roos/);
+ assert.doesNotMatch(copy,/A\. A\. Fred Roos/);
+ assert.ok(copy.indexOf('VYCHOZI CTENY TEXT')<copy.indexOf('1. ¿Dónde'));
+});
+

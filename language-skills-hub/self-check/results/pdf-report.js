@@ -9,6 +9,11 @@
  const clean=s=>String(s===undefined||s===null?'':s)
   .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g,'')
   .slice(0,12000);
+ const labeledOptions=items=>items.map((item,i)=>{
+  const label=String.fromCharCode(65+i)+'. ';
+  const value=clean(item);
+  return value.startsWith(label)?value:label+value;
+ });
  const finite=(n,min,max)=>Number.isFinite(n)&&n>=min&&n<=max;
  function check(ok,msg){if(!ok)throw new Error(msg)}
  function normalize(report){
@@ -48,7 +53,7 @@
    lines.push('',(i+1)+'. '+clean(q.question));
    if(Array.isArray(q.options)&&q.options.length){
     lines.push('Nabidka odpovedi:');
-    q.options.forEach((option,j)=>lines.push(String.fromCharCode(65+j)+'. '+clean(option)));
+    labeledOptions(q.options).forEach(option=>lines.push(option));
    }
    lines.push('Odpoved studenta: '+clean(q.studentAnswer||'Bez odpovedi'),
     'Spravna odpoved: '+clean(q.correctAnswer),
@@ -173,13 +178,25 @@
   }
   paragraph(null,'PŘEHLED VŠECH ÚLOH A ODPOVĚDÍ',
    {size:12,weight:700,color:'#16344e',after:12});
+  const paraHeight=(text,size,leading,after,label=false,weight=400)=>
+   (label?17:0)+lines(text,RIGHT-MARGIN,size,weight).length*leading+after;
+  const questionHeight=q=>{
+   let h=13+paraHeight((q.question||''),10.5,15,5,false,700);
+   if(Array.isArray(q.options)&&q.options.length)
+    h+=paraHeight(labeledOptions(q.options).join('\n'),9,13,6,true);
+   h+=paraHeight(q.studentAnswer||'Bez odpovědi',10,14,5,true);
+   h+=paraHeight(q.correctAnswer,10,14,5,true);
+   h+=paraHeight((q.correct?'SPRÁVNĚ':'CHYBNĚ')+' '+q.awarded+' / 1 bod',10,14,9,false,700);
+   if(q.explanation)h+=paraHeight(q.explanation,9,13,8,true);
+   return h+10;
+  };
   report.questions.forEach((q,i)=>{
-   reserve(99);rule();
+   reserve(Math.min(BOTTOM-55,questionHeight(q)));rule();
    paragraph(null,(i+1)+'. '+clean(q.question),
     {size:10.5,weight:700,leading:15,after:5});
    if(Array.isArray(q.options)&&q.options.length){
     paragraph('NABÍZENÉ ODPOVĚDI',
-     q.options.map((option,j)=>String.fromCharCode(65+j)+'. '+clean(option)).join('\n'),
+     labeledOptions(q.options).join('\n'),
      {size:9,leading:13,after:6});
    }
    paragraph('ODPOVĚĎ STUDENTA',q.studentAnswer||'Bez odpovědi',{size:10,leading:14,after:5});
