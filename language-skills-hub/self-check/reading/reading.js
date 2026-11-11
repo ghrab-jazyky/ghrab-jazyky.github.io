@@ -21,7 +21,6 @@
    topic:'READING LAB · LOCAL SELF-CHECK',loading:'Loading the original reading questions…',
    error:'The Reading self-check could not be loaded.',
    lead:'Read the text and answer every question. Solutions appear only after you submit.',
-   security:'This test calculates a proposed grade 1–5 after submission. It is not a secure school exam: answer keys are public, attempts can be restarted, and no results are sent to a teacher. The teacher must verify the result.',
    reading:'READING TEXT',questions:'COMPREHENSION',remaining:'questions left',answered:'answered',
    gap:'This sentence has been removed. Choose the missing sentence in the tasks.',
    mc:'Choose one answer',match:'Match to the paragraph',gapType:'Choose the missing sentence',
@@ -45,7 +44,6 @@
    topic:'READING LAB · AUTOEVALUACIÓN LOCAL',loading:'Cargando las actividades originales…',
    error:'No se ha podido cargar la actividad de lectura.',
    lead:'Lee el texto y responde a las preguntas. Las soluciones aparecerán solo después de entregar.',
-   security:'Esta actividad calcula una nota propuesta (1–5) tras la entrega. No es un examen escolar seguro: las soluciones son públicas y puedes repetir. Las respuestas no se envían al docente, que debe verificar el resultado.',
    reading:'TEXTO',questions:'COMPRENSIÓN',remaining:'preguntas pendientes',answered:'respondidas',
    gap:'Se ha eliminado una oración. Elige la que falta en las actividades.',
    mc:'Elige una respuesta',match:'Relaciona con el párrafo',gapType:'Elige la oración que falta',
@@ -69,7 +67,6 @@
    topic:'READING LAB · LOKALER SELBSTTEST',loading:'Die ursprünglichen Leseaufgaben werden geladen…',
    error:'Der Lese-Selbsttest konnte nicht geladen werden.',
    lead:'Lies den Text und beantworte die Fragen. Lösungen erscheinen erst nach der Abgabe.',
-   security:'Diese Aufgabe zeigt nach der Abgabe einen Notenvorschlag (1–5). Sie ist keine sichere Schulprüfung: Lösungen sind öffentlich, Versuche wiederholbar und Antworten werden nicht gesendet. Lehrkräfte müssen das Ergebnis prüfen.',
    reading:'LESETEXT',questions:'TEXTVERSTÄNDNIS',remaining:'Fragen offen',answered:'beantwortet',
    gap:'Ein Satz wurde entfernt. Wähle in den Aufgaben den passenden Satz aus.',
    mc:'Wähle eine Antwort',match:'Ordne dem Absatz zu',gapType:'Wähle den fehlenden Satz',
@@ -93,7 +90,6 @@
    topic:'READING LAB · AUTOÉVALUATION LOCALE',loading:'Chargement des exercices de lecture d’origine…',
    error:'Impossible de charger cette autoévaluation de lecture.',
    lead:'Lis le texte et réponds aux questions. Les solutions ne s’affichent qu’après l’envoi.',
-   security:'Cette activité calcule une proposition de note (1–5) après la remise. Ce n’est pas un examen scolaire sécurisé : les corrigés sont publics et on peut recommencer. Les réponses ne sont pas envoyées à l’enseignant, qui doit vérifier le résultat.',
    reading:'TEXTE À LIRE',questions:'COMPRÉHENSION',remaining:'questions restantes',answered:'répondues',
    gap:'Une phrase a été retirée du texte. Choisis la phrase manquante dans les exercices.',
    mc:'Choisis une réponse',match:'Associe au paragraphe',gapType:'Choisis la phrase manquante',
@@ -149,7 +145,6 @@
   $('topicLabel').textContent=ui.topic;
   $('modeTag').textContent=ui.mode;
   $('lead').textContent=ui.lead;
-  $('securityNotice').textContent=ui.security;
   $('loading').textContent=ui.loading;
   $('readingKicker').textContent=ui.reading;
   $('questionKicker').textContent=ui.questions;
