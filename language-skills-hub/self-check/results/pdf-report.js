@@ -81,8 +81,9 @@
   finally{t.remove()}
   return true;
  }
- function renderPages(report,documentRef){
+ function renderPages(report,documentRef,schoolLogo){
   normalize(report);
+  check(schoolLogo&&schoolLogo.naturalWidth>0&&schoolLogo.naturalHeight>0,'Official school logo not loaded.');
   check(documentRef&&typeof documentRef.createElement==='function','No document canvas');
   const canvas=documentRef.createElement('canvas');
   canvas.width=W*SCALE;canvas.height=H*SCALE;
@@ -124,9 +125,13 @@
   function startPage(){
    pageNo++;ctx.fillStyle='#ffffff';ctx.fillRect(0,0,W,H);
    ctx.fillStyle='#1b425e';ctx.fillRect(0,0,W,9);
-   font(9,700);ctx.fillStyle='#31546e';
-   ctx.fillText('GYMNAZIUM OSTRAVA-HRABUVKA  /  LANGUAGE SKILLS HUB',MARGIN,30);
-   y=51;
+   // Authentic school logo, local bundled asset, printed on EVERY PDF page.
+   ctx.drawImage(schoolLogo,MARGIN,18,48,37);
+   font(10,700);ctx.fillStyle='#244965';
+   ctx.fillText('Gymnázium, Ostrava-Hrabůvka',MARGIN+61,35);
+   font(8,400);ctx.fillStyle='#557083';
+   ctx.fillText('LANGUAGE SKILLS HUB  |  VÝSLEDKOVÝ PROTOKOL',MARGIN+61,50);
+   y=76;
   }
   function flush(){
    footer();
@@ -257,12 +262,29 @@
   for(const chunk of chunks){pdf.set(chunk,off);off+=chunk.length}
   return pdf;
  }
- function generate(report,doc){
-  return pdfBytes(renderPages(report,doc||host.document));
+ async function loadSchoolLogo(documentRef){
+  check(documentRef&&documentRef.baseURI&&documentRef.defaultView,'Document required for official school logo.');
+  const ImageCtor=documentRef.defaultView.Image;
+  check(typeof ImageCtor==='function','Image decoder unavailable.');
+  const img=new ImageCtor();
+  img.src=new URL('../../assets/school-logo.png',documentRef.baseURI).href;
+  if(typeof img.decode==='function')await img.decode();
+  else await new Promise((resolve,reject)=>{
+   if(img.complete&&img.naturalWidth){resolve();return}
+   img.onload=resolve;img.onerror=()=>reject(new Error('School logo unavailable.'));
+  });
+  check(img.naturalWidth===664&&img.naturalHeight===512,
+   'Official school logo size mismatch.');
+  return img;
  }
- function download(report,doc){
+ async function generate(report,doc){
+  const d=doc||host.document;
+  const image=await loadSchoolLogo(d);
+  return pdfBytes(renderPages(report,d,image));
+ }
+ async function download(report,doc){
   const documentRef=doc||host.document;
-  const pdf=generate(report,documentRef);
+  const pdf=await generate(report,documentRef);
   const objectUrl=URL.createObjectURL(new Blob([pdf],{type:'application/pdf'}));
   const stamp=new Date(report.generatedAt||Date.now()).toISOString().replace(/[:.]/g,'-');
   const name='lsh-'+report.skill+'-'+clean(report.topicId).replace(/[^a-z0-9_-]/gi,'-')+
@@ -272,7 +294,7 @@
   try{a.click()}finally{a.remove();setTimeout(()=>URL.revokeObjectURL(objectUrl),2000)}
   return name;
  }
- const api=Object.freeze({normalize,fullText,copy,renderPages,pdfBytes,generate,download});
+ const api=Object.freeze({normalize,fullText,copy,renderPages,pdfBytes,loadSchoolLogo,generate,download});
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  else host.LSHPdfReport=api;
 })(typeof window!=='undefined'?window:this);
