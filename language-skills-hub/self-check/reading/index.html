@@ -5,7 +5,7 @@
  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
  <meta name="color-scheme" content="dark light">
  <meta name="description" content="Language Skills Hub – Reading Lab with a proposed 1–5 grade, pending teacher verification. No student data is transmitted.">
- <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'; frame-ancestors 'none'">
+ <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'">
  <title>Reading Lab · Local grading proposal</title>
  <link rel="stylesheet" href="reading.css">
  <link rel="stylesheet" href="../session/session.css">
@@ -45,7 +45,7 @@
      <div><span class="kicker" id="readingKicker">READING TEXT</span><h2 id="readingHeading">Text</h2></div>
      <span id="readingVariant" class="pill">EN · B2</span>
     </div>
-    <div class="reading-body" id="readingParagraphs"></div>
+    <div class="reading-body" id="readingParagraphs" tabindex="0" role="region" aria-labelledby="readingHeading"></div>
     <p id="readingGapNote" class="small-note" hidden></p>
    </article>
    <section class="panel question-panel" aria-labelledby="questionsHeading">

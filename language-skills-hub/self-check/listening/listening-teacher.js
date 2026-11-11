@@ -48,11 +48,13 @@
   const limit=Number($('timerMinutes').value);
   if(!Number.isInteger(limit)||limit<5||limit>120){
    $('studentUrl').value='';$('studentPreview').href='#';
+   $('copyUrl').disabled=true;$('studentPreview').setAttribute('aria-disabled','true');
    shareTools.render('',$('qrMount'),$('downloadQr'));
    $('copyStatus').textContent='Vyber platný časový limit 5–120 minut.';
    return;
   }
   const link=urlForStudent();
+  $('copyUrl').disabled=false;$('studentPreview').setAttribute('aria-disabled','false');
   $('studentUrl').value=link;
   $('studentPreview').href=link;
   shareTools.render(link,$('qrMount'),$('downloadQr'));
@@ -124,6 +126,7 @@
   $('copyUrl').addEventListener('click',copy);
   $('downloadQr').addEventListener('click',()=>shareTools.download($('qrMount'),$('copyStatus'),'listening-test-navrh-znamky-qr.svg'));
   $('studentUrl').addEventListener('focus',e=>e.target.select());
+  $('studentPreview').addEventListener('click',e=>{if(!$('studentUrl').value)e.preventDefault()});
   loadSources();
  }
  start();
