@@ -9,7 +9,7 @@ const sample={
  generatedAt:1762848000000,
  summary:{earned:1,max:3,percent:33.33,grade:5},
  questions:[
-  {question:'¿Dónde está el objeto? A1?',studentAnswer:'En el espacio',correctAnswer:'En la Tierra',
+  {question:'¿Dónde está el objeto? A1?',options:['En el espacio','En la Tierra','En el mar'],studentAnswer:'En el espacio',correctAnswer:'En la Tierra',
    correct:false,awarded:0,explanation:'El texto indica la respuesta correcta.'},
   {question:'Frage über Sterne?',studentAnswer:'Draußen',correctAnswer:'Draußen',
    correct:true,awarded:1},
@@ -22,7 +22,7 @@ const sample={
 test('PDF report contains complete questions, student responses, corrections and teacher warning',()=>{
  const text=pdf.fullText(sample);
  for(const required of ['¿Dónde','En el espacio','En la Tierra','Frage über Sterne?',
-  'Question sans réponse','Původní článek','33.33','Navrh znamky: 5','Učitelé']){
+  'Question sans réponse','Původní článek','En el mar','33.33','Navrh znamky: 5','Učitelé']){
   assert.ok(text.includes(required),'Missing '+required);
  }
  assert.doesNotMatch(text,/student_name|student_email|anonymous_code|Cod:/);
