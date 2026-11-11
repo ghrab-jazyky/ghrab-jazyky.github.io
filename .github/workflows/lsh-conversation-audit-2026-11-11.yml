@@ -48,3 +48,4 @@ jobs:
             sleep 1
           done
           node --test language-skills-hub/tests/conversation-audit-2026-11-11.browser.test.cjs
+          node --test language-skills-hub/tests/lock-note-i18n-2026-11-11.browser.test.cjs
