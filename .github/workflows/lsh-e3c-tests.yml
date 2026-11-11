@@ -12,6 +12,9 @@ permissions:
 jobs:
   source-regression:
     runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -24,16 +27,21 @@ jobs:
       - name: Audit E3C 21 cards, 504 variants, 6048 vocabulary entries and CSP
         run: node --test zkusebni/tests/e3c.test.cjs
       - name: Install Chromium smoke-test tooling (CI only)
+        timeout-minutes: 8
         run: |
           npm install --no-save --ignore-scripts playwright@1.56.1
-          npx playwright install --with-deps chromium
       - name: Run real headless Chromium smoke tests against local staging files
+        timeout-minutes: 10
         run: |
-          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-e3c-http.log 2>&1 &
+          if command -v python3 >/dev/null 2>&1; then
+            python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-e3c-http.log 2>&1 &
+          else
+            npx --yes http-server@14.1.1 . -p 8765 -a 127.0.0.1 -s -c-1 >/tmp/lsh-e3c-http.log 2>&1 &
+          fi
           SERVER_PID=$!
           trap 'kill $SERVER_PID' EXIT
           for i in $(seq 1 30); do
-            if curl --silent --fail http://127.0.0.1:8765/zkusebni/ >/dev/null; then break; fi
+            if node -e 'fetch(process.argv[1]).then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))' http://127.0.0.1:8765/zkusebni/ >/dev/null 2>&1; then break; fi
             sleep 1
           done
           node --test zkusebni/tests/e3c.browser.test.cjs
