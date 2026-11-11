@@ -38,10 +38,13 @@ jobs:
                   assert data['kind']=='LSH_PUBLIC_PRACTICE_R17'
                   assert data['gradedTestsEnabled'] is False
                   release=json.loads(get('/language-skills-hub/version.json?verify='+str(attempt)))
-                  assert release['version']=='R31'
+                  assert release['version']=='R34'
                   assert release['localGradeProposalsEnabled'] is True
                   assert release['localTeacherReviewPersistenceEnabled'] is True
                   assert release['localAnonymousCsvExportEnabled'] is True
+                  assert release['localFullPdfReportEnabled'] is True
+                  assert release['readingFullSourcePdfEnabled'] is True
+                  assert release['listeningTestAutoClosed'] is True
                   assert release['selfCheckEnabled'] is True
                   assert release['gradedTestsEnabled'] is False
                   assert release['officialGradesEnabled'] is False
@@ -50,6 +53,8 @@ jobs:
                   assert policy['localGradeProposalsEnabled'] is True
                   assert policy['selfCheckEnabled'] is True and policy['testUiEnabled'] is True
                   assert policy['gradedTestsEnabled'] is False and policy['officialGradesEnabled'] is False
+                  assert policy['futureSelfCheck']['listeningTestOpenAnswersEnabled'] is False
+                  assert policy['futureSelfCheck']['listeningRequiresManualWrittenReviewForGrade'] is False
                   hub=get('/language-skills-hub/assets/hub.js?verify='+str(attempt)).decode('utf-8')
                   assert 'Test – známka 1–5' in hub
                   assert "self-check/reading/teacher.html" in hub
@@ -77,6 +82,7 @@ jobs:
                     'self-check/results/result-core.js',
                     'self-check/results/grade-core.js',
                     'self-check/results/export-core.js',
+                    'self-check/results/pdf-report.js',
                     'self-check/results/share-tools.js',
                     'self-check/results/share.css',
                     'self-check/session/attempt-core.js',
@@ -87,7 +93,10 @@ jobs:
                     'assets/lsh/v3/card-bridge.js','assets/lsh/v3/card-bridge.css',
                     'assets/lsh/v3/store.js']:
                       head('/language-skills-hub/'+asset)
-                  print('PASS LIVE HTTPS R31: persistent local teacher review and CSV receipts, no secure grades',flush=True)
+                  assert 'id="exportPdf"' in get('/language-skills-hub/self-check/reading/index.html').decode('utf-8')
+                  assert 'id="exportPdf"' in get('/language-skills-hub/self-check/listening/student.html').decode('utf-8')
+                  assert 'core.assessAuto(' in get('/language-skills-hub/self-check/listening/listening-student.js').decode('utf-8')
+                  print('PASS LIVE HTTPS R34: 29 practice cards, automatic Listening and complete local PDF report',flush=True)
                   print('PRODUCTION URL:',base+'/language-skills-hub/',flush=True)
                   sys.exit(0)
               except Exception as ex:
