@@ -1,0 +1,54 @@
+/* LSH Listening Lab: visible, accessible manual word capture. Shared bank stays unchanged. */
+.lsh-vocab-add-open,
+.lsh-vocab-save,
+.lsh-vocab-editor-actions button{
+ display:inline-flex;align-items:center;justify-content:center;
+ min-height:40px;max-width:100%;border-radius:9px;
+ border:1px solid #5e9fab;background:#194b60;color:#fff;
+ padding:8px 12px;font:700 12px/1.35 system-ui,-apple-system,"Segoe UI",sans-serif;
+ text-align:center;cursor:pointer;overflow-wrap:anywhere;
+}
+.lsh-vocab-add-open:hover,.lsh-vocab-save:hover{background:#246880;border-color:#a0e6f2}
+.lsh-vocab-add-open:focus-visible,.lsh-vocab-save:focus-visible,
+.lsh-vocab-editor button:focus-visible,.lsh-vocab-editor input:focus-visible{
+ outline:3px solid #60b6e4;outline-offset:3px
+}
+.lsh-vocab-row-controls{
+ grid-column:2/-1;display:flex;align-items:center;gap:10px;
+ min-width:0;flex-wrap:wrap;padding:0 0 5px
+}
+.lsh-vocab-row-status{font:600 12px/1.4 system-ui;color:var(--green,#147357)}
+.lsh-vocab-editor{
+ position:fixed;inset:0;z-index:9000;
+ width:min(480px,calc(100vw - 24px));max-width:calc(100vw - 24px);
+ max-height:min(90vh,850px);max-height:min(90dvh,850px);
+ overflow-y:auto;margin:auto;padding:0;
+ border:1px solid var(--line,#cbd5e1);border-radius:16px;
+ background:var(--card,#fff);color:var(--ink,#17273b);
+ box-shadow:0 30px 90px rgba(0,0,0,.42)
+}
+.lsh-vocab-editor::backdrop{background:rgba(5,18,30,.7)}
+.lsh-vocab-editor-form{display:grid;gap:11px;padding:clamp(18px,4vw,28px)}
+.lsh-vocab-editor h2{margin:0;font:bold 1.35rem/1.3 system-ui}
+.lsh-vocab-hint{margin:0 0 4px;color:var(--muted,#56657a);font-size:.9rem;line-height:1.5}
+.lsh-vocab-editor label{display:block;font:700 13px/1.4 system-ui}
+.lsh-vocab-editor-input{
+ width:100%;min-height:44px;box-sizing:border-box;
+ border:1px solid var(--line,#9caab8);border-radius:9px;padding:10px 12px;
+ background:var(--paper,#fff);color:var(--ink,#17273b);
+ font:500 16px/1.35 system-ui
+}
+.lsh-vocab-editor-status{margin:0;min-height:1.3em;font-size:.82rem;font-weight:700;color:var(--accent,#916a36)}
+.lsh-vocab-editor-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px;margin-top:3px}
+.lsh-vocab-editor-actions .lsh-vocab-editor-cancel{
+ background:transparent;color:var(--ink,#17273b);border-color:var(--line,#9caab8)
+}
+.lsh-vocab-editor-actions .lsh-vocab-editor-submit{background:#145c74;color:#fff}
+.lsh-vocab-editor-actions button:disabled{opacity:.5;cursor:wait}
+@media(max-width:520px){
+ .lsh-vocab-row-controls{grid-column:2/-1}
+ .lsh-vocab-add-open{min-height:42px}
+ .lsh-vocab-editor-form{padding:17px}
+ .lsh-vocab-editor-actions button{flex:1 1 130px}
+}
+@media print{.lsh-vocab-add-open,.lsh-vocab-row-controls,.lsh-vocab-editor{display:none!important}}
