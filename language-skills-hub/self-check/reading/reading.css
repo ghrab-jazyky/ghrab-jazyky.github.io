@@ -35,3 +35,13 @@
 @media(max-width:480px){.result-export .archive-actions{display:grid;grid-template-columns:1fr}
  .result-export .archive-actions .action{width:100%}}
 @media print{.result-export{display:none!important}}
+
+/* R45: Keep all Reading/Listening question prompts inside their rounded cards.
+ * Retain native fieldset/legend associations for keyboard and screen readers. */
+.question-panel,.question-list,.listening-workspace{min-inline-size:0;max-inline-size:100%}
+fieldset.question{width:100%;max-inline-size:100%;min-inline-size:0;overflow-wrap:anywhere}
+fieldset.question>legend{float:left;width:100%;max-width:100%;min-width:0;box-sizing:border-box;padding:0;margin:0 0 12px;white-space:normal;overflow-wrap:anywhere}
+fieldset.question>.question-kind{clear:both}
+fieldset.question>.choice{max-width:100%;min-width:0}
+fieldset.question .choice>span{min-width:0;overflow-wrap:anywhere}
+.question-list .stage,.question-list .quiz-hint{min-width:0;max-width:100%;overflow-wrap:anywhere}
