@@ -36,7 +36,11 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
     assert.ok((body.match(/\/Subtype \/Image/g)||[]).length>=1);
     assert.match(await page.locator('#status').textContent(),/Staženo/);
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
-    assert.ok(overflow<=3,variant.topic+' mobile overflow '+overflow);
+    const offenders=overflow>3?await page.evaluate(()=>[...document.querySelectorAll('*')]
+     .filter(e=>e.getBoundingClientRect().right>innerWidth+3)
+     .slice(0,8).map(e=>({tag:e.tagName,cls:e.className,
+      right:Math.round(e.getBoundingClientRect().right),text:e.textContent.slice(0,75)}))):[];
+    assert.ok(overflow<=3,variant.topic+' mobile overflow '+overflow+' '+JSON.stringify(offenders));
    }
    await page.goto(href('index.html',{skill:'cteni'}));
    const cards=page.locator('#cards .card');
