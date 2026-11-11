@@ -273,9 +273,9 @@
     }})
    };
   };
-  $('exportPdf').onclick=()=>{
+  $('exportPdf').onclick=async()=>{
    try{
-    window.LSHPdfReport.download(completeReport());
+    await window.LSHPdfReport.download(completeReport());
     $('exportStatus').textContent='Full test PDF downloaded. Send it to your teacher using school email.';
    }catch(error){
     $('exportStatus').textContent='PDF export failed: '+String(error.message||error);
