@@ -73,7 +73,8 @@
    (persisted?'Prohlížeč povolil persistentní režim. Ani ten ale nezaručuje uchování dat.':
     'IndexedDB funguje, ale samotné uložení v prohlížeči není trvalou zálohou.'):
    'Pozor: IndexedDB není dostupná. Slovíčka se mohou ztratit po zavření stránky.';
-  detail.textContent=description+' '+helper.appleWarning(navigator.userAgent,navigator.maxTouchPoints);
+  const standalone=navigator.standalone===true||root.matchMedia?.('(display-mode: standalone)')?.matches===true;
+  detail.textContent=description+' '+helper.appleWarning(navigator.userAgent,navigator.maxTouchPoints,standalone);
   if(ready&&!persisted&&typeof navigator.storage?.persist==='function'){
    button.hidden=false;
    button.addEventListener('click',async()=>{
@@ -81,7 +82,7 @@
     try{granted=await navigator.storage.persist()}catch(_){}
     button.hidden=granted;
     detail.textContent=(granted?'Prohlížeč povolil persistentní režim.':'Prohlížeč persistentní režim nepovolil.')+
-     ' Ani jedno nenahrazuje externí zálohu. '+helper.appleWarning(navigator.userAgent,navigator.maxTouchPoints);
+     ' Ani jedno nenahrazuje externí zálohu. '+helper.appleWarning(navigator.userAgent,navigator.maxTouchPoints,standalone);
    });
   }
  }

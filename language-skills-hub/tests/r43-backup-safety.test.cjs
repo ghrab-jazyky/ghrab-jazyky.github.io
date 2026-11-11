@@ -24,7 +24,9 @@ test('R43 backup status never mistakes a prepared or missing file for an externa
 });
 test('R43 platform warning explains Safari risk and remains honest on Android',()=>{
  assert.match(helper.appleWarning('Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X)'),/Safari/);
- assert.match(helper.appleWarning('Mozilla/5.0 (Macintosh; Intel Mac OS X)',5),/iPhonu/);
+ assert.match(helper.appleWarning('Mozilla/5.0 (Macintosh; Intel Mac OS X)',5),/QR/);
+ assert.match(helper.appleWarning('Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X)',0,true),/nevztahuje/);
+ assert.match(helper.appleWarning('Mozilla/5.0 (Macintosh; Intel Mac OS X) Version/18.0 Safari/605.1.15',0),/Macu/);
  assert.match(helper.appleWarning('Mozilla/5.0 (Linux; Android 15)',0),/Místní úložiště/);
 });
 test('R43 zero-server contract: no backend, no outbound API or account, no card edits',()=>{
