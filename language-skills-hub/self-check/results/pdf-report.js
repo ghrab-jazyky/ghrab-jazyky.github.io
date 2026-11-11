@@ -126,11 +126,18 @@
    pageNo++;ctx.fillStyle='#ffffff';ctx.fillRect(0,0,W,H);
    ctx.fillStyle='#1b425e';ctx.fillRect(0,0,W,9);
    // Authentic school logo, local bundled asset, printed on EVERY PDF page.
-   ctx.drawImage(schoolLogo,MARGIN,18,48,37);
+   // The official mark uses hairline contours. Multiply slightly offset
+   // ORIGINAL PNG copies only for legibility at 57pt on paper; the asset
+   // itself is unchanged and the exact shape is preserved.
+   ctx.save();ctx.globalCompositeOperation='multiply';
+   for(const [dx,dy] of [[0,0],[-.65,0],[.65,0],[0,-.65],[0,.65]]){
+    ctx.drawImage(schoolLogo,MARGIN+dx,14+dy,57,44);
+   }
+   ctx.restore();
    font(10,700);ctx.fillStyle='#244965';
-   ctx.fillText('Gymnázium, Ostrava-Hrabůvka',MARGIN+61,35);
+   ctx.fillText('Gymnázium, Ostrava-Hrabůvka',MARGIN+72,35);
    font(8,400);ctx.fillStyle='#557083';
-   ctx.fillText('LANGUAGE SKILLS HUB  |  VÝSLEDKOVÝ PROTOKOL',MARGIN+61,50);
+   ctx.fillText('LANGUAGE SKILLS HUB  |  VÝSLEDKOVÝ PROTOKOL',MARGIN+72,50);
    y=76;
   }
   function flush(){
