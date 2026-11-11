@@ -90,7 +90,7 @@
       console.error('LSH E3C: card DOM is not compatible');
       return;
     }
-    const store=STORE.createStore({mode:'staging'});
+    const store=STORE.createStore({mode:'production'});
     const textNode=(tag,cls,content)=>{
       const node=document.createElement(tag);
       if(cls)node.className=cls;

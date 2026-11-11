@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'none'; base-uri 'none'; object-src 'none'; form-action 'none'">
+<title>My Vocabulary · Language Skills Hub</title>
+<link rel="stylesheet" href="vocabulary.css">
+<script defer src="../assets/lsh/v3/model.js"></script>
+<script defer src="../assets/lsh/v3/store.js"></script>
+<script defer src="practice.js"></script>
+<script defer src="vocabulary.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Přejít k obsahu</a>
+<header class="topbar">
+ <div><div class="eyebrow">Language Skills Hub · Gymnázium, Ostrava-Hrabůvka</div><h1>My Vocabulary <small>můj slovníček</small></h1></div>
+ <a class="back" id="backLink" href="../index.html">← Zpět na LSH</a>
+</header>
+<main id="main">
+ <p class="intro">Jeden slovníček pro Conversation, Reading a Listening Lab. Slovíčka se ukládají <strong>jen v tomto prohlížeči na tomto zařízení</strong> – nikam se neodesílají. Pro přenos na jiné zařízení použij zálohu JSON.</p>
+ <p class="notice" id="storageStatus" role="status" aria-live="polite">Kontroluji místní úložiště…</p>
+ <section class="panel" aria-labelledby="bankTitle">
+  <div class="section-heading"><div><h2 id="bankTitle">Moje uložená slovíčka</h2><p id="wordCount" aria-live="polite"></p></div><div class="toolbar">
+   <button id="exportBtn" type="button">↓ Stáhnout zálohu (.json)</button>
+   <label class="filelabel" for="importFile">↑ Nahrát zálohu (.json)</label><input type="file" id="importFile" accept=".json,application/json" hidden>
+  </div></div>
+  <div class="options"><label><input id="replaceImport" type="checkbox"> Při importu nahradit existující slovníček (jinak sloučit)</label></div>
+  <div class="filters">
+   <label>Jazyk <select id="languageFilter"><option value="all">Všechny jazyky</option><option value="en">Angličtina</option><option value="es">Španělština</option><option value="de">Němčina</option><option value="fr">Francouzština</option></select></label>
+   <label>Vyhledat <input id="search" type="search" placeholder="Slovo nebo překlad…" autocomplete="off"></label>
+   <label><input type="checkbox" id="favoritesOnly"> Pouze oblíbená</label>
+  </div>
+  <div class="selection"><button type="button" id="selectAll">Vybrat zobrazená</button><button type="button" id="clearSelection">Zrušit výběr</button><span id="selectedCount">Vybráno: 0</span></div>
+  <div id="wordList" class="word-list" aria-label="Uložená slovíčka"></div>
+ </section>
+ <section class="panel" aria-labelledby="addTitle">
+  <h2 id="addTitle">Přidat vlastní slovíčko</h2>
+  <form id="addForm">
+  <div class="add-grid">
+   <label>Jazyk <select id="addLanguage" required><option value="en">Angličtina</option><option value="es">Španělština</option><option value="de">Němčina</option><option value="fr">Francouzština</option></select></label>
+   <label>Slovo či výraz <input id="addTerm" required maxlength="160"></label>
+   <label>Český význam <input id="addTranslation" required maxlength="700"></label>
+  </div>
+  <button type="submit">+ Přidat slovíčko</button>
+  </form>
+ </section>
+ <section class="panel" aria-labelledby="practiceTitle">
+  <h2 id="practiceTitle">Procvičování a zkoušení</h2>
+  <p>Vyber slovíčka výše. Procvičování neznámkuje; v režimu zkoušení dostaneš bodové vyhodnocení a přehled chyb. Test neodesílá žádné údaje učiteli.</p>
+  <div class="mode-bar" role="group" aria-label="Režim">
+   <button type="button" data-mode="flash">Kartičky</button>
+   <button type="button" data-mode="choice">Hra: vyber význam</button>
+   <button type="button" data-mode="match">Hra: spoj dvojice</button>
+   <button type="button" data-mode="test">Zkoušení: napiš překlad</button>
+  </div>
+  <div id="practiceStatus" aria-live="polite" role="status"></div>
+  <div id="game" class="game" aria-live="polite"></div>
+ </section>
+ <p class="privacy">Záloha je tvůj osobní soubor. Chraň ji před ztrátou a nesdílej ji veřejně. Smazání dat prohlížeče může slovíčka odstranit. Mimo tento prohlížeč se data synchronizují pouze ručním importem zálohy.</p>
+</main>
+<footer>Language Skills Hub · Offline-first slovníček · bez účtu, cloudu a sledování</footer>
+</body>
+</html>
