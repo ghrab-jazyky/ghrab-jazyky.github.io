@@ -273,7 +273,15 @@
     generatedAt:Date.now(),
     summary:{earned:grade.earned,max:grade.max,
      percent:grade.displayedPercent,grade:grade.grade},
-    questions:report.reviewed.map(task=>({
+    questions:report.reviewed.map(task=>{
+     const offset=task.number-1;
+     const matching=task.phase==='matching'?core.matching(chosen):null;
+     const options=task.phase==='gist'?chosen.gist[offset]?.options:
+      task.phase==='detail'?chosen.detail[offset]?.options:
+      task.phase==='matching'?matching.options.map(x=>x.letter+'. '+x.text):
+      task.phase==='sequence'?chosen.sequence:undefined;
+     return {
+     options,
      question:(task.phase==='gist'?'FIRST LISTENING':task.phase==='detail'?
       'LISTEN AND INTERPRET':task.phase==='sequence'?'RECONSTRUCTION':'MATCHING')+
       ' · '+task.question,
@@ -281,7 +289,7 @@
      correctAnswer:task.correctAnswers.join(' | '),
      correct:!!task.correct,awarded:task.correct?1:0,
      explanation:task.reason||''
-    }))
+    }})
    };
   };
   $('exportPdf').onclick=()=>{
