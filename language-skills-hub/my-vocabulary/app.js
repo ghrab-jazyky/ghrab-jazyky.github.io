@@ -4,7 +4,7 @@
 const db=window.LSHVocabStore,$=id=>document.getElementById(id);
 if(!db)throw Error('Slovníček nelze načíst.');
 const q=new URLSearchParams(location.search),topic=q.get('topic')||'',lang=q.get('lang')||'';
-let words=[],chosen=new Set(),initialized=false,view='words',deck=[],pos=0,mode='flash',revealed=false,feedback='',matched=new Set(),selectedLeft=null,pairs=[],exam=null,importMode='merge';
+let words=[],chosen=new Set(),initialized=false,view='words',deck=[],pos=0,mode='flash',revealed=false,feedback='',matched=new Set(),selectedLeft=null,pairs=[],pairsOrder=[],choiceOptions=[],exam=null,importMode='merge';
 const langs={en:'EN',es:'ES',de:'DE',fr:'FR'};
 const node=(tag,value,cls)=>{const x=document.createElement(tag);if(cls)x.className=cls;if(value!==undefined)x.textContent=String(value);return x};
 const button=(value,fn,cls)=>{const x=node('button',value,cls);x.type='button';x.addEventListener('click',fn);return x};
@@ -79,22 +79,26 @@ function renderTraining(){
   board.append(button('Další kartička',()=>{pos=(pos+1)%deck.length;revealed=false;renderTraining()},'primary'));return;
  }
  if(mode==='choice'){
-  const w=deck[pos],options=[w];
-  for(const d of shuffle(deck)){
-   if(options.length>=4)break;
-   if(options.some(x=>db.normalizeAnswer(x.meaningCs)===db.normalizeAnswer(d.meaningCs)))continue;
-   options.push(d);
+  const w=deck[pos];
+  if(!choiceOptions.length){
+   const candidates=[w];
+   for(const d of shuffle(deck)){
+    if(candidates.length>=4)break;
+    if(candidates.some(x=>db.normalizeAnswer(x.meaningCs)===db.normalizeAnswer(d.meaningCs)))continue;
+    candidates.push(d);
+   }
+   choiceOptions=shuffle(candidates);
   }
   board.append(node('h3',(pos+1)+' / '+deck.length+' · Vyber význam'),node('p',wordName(w),'flash-word'));
   const grid=node('div',undefined,'answers');
-  for(const opt of shuffle(options)){
+  for(const opt of choiceOptions){
    const b=button(opt.meaningCs,()=>{feedback=opt.id===w.id?'Správně!':'Zatím ne. Správně: '+w.meaningCs;renderTraining()});
    b.disabled=!!feedback;grid.append(b);
   }
   board.append(grid);
   if(feedback){
    board.append(node('p',feedback,'feedback '+(feedback==='Správně!'?'good':'bad')));
-   board.append(button('Další otázka',()=>{pos=(pos+1)%deck.length;feedback='';renderTraining()},'primary'));
+   board.append(button('Další otázka',()=>{pos=(pos+1)%deck.length;feedback='';choiceOptions=[];renderTraining()},'primary'));
   }
   return;
  }
@@ -106,6 +110,7 @@ function renderTraining(){
    usedTerms.add(term);usedMeanings.add(meaning);pairs.push(w);
    if(pairs.length===4)break;
   }
+  pairsOrder=shuffle(pairs);
  }
  board.append(node('h3','Spoj dvojice'),node('p','Vyber výraz vlevo a jeho význam vpravo.'));
  const outer=node('div',undefined,'pairs'),left=node('div',undefined,'column'),right=node('div',undefined,'column');
@@ -115,7 +120,7 @@ function renderTraining(){
   if(selectedLeft===w.id)b.classList.add('selected');
   left.append(b);
  }
- for(const w of shuffle(pairs)){
+ for(const w of pairsOrder){
   const b=button(w.meaningCs,()=>{
    if(selectedLeft===null)feedback='Nejprve vyber výraz vlevo.';
    else if(selectedLeft===w.id){matched.add(w.id);selectedLeft=null;feedback='Správná dvojice!'}
@@ -129,12 +134,12 @@ function renderTraining(){
  if(feedback)board.append(node('p',feedback,'feedback '+(feedback==='Správná dvojice!'?'good':'bad')));
  if(matched.size===pairs.length){
   board.append(node('p','Všechny dvojice správně.','feedback good'));
-  board.append(button('Nové dvojice',()=>{pairs=[];matched=new Set();selectedLeft=null;feedback='';renderTraining()},'primary'));
+  board.append(button('Nové dvojice',()=>{pairs=[];pairsOrder=[];matched=new Set();selectedLeft=null;feedback='';renderTraining()},'primary'));
  }
 }
 function startTraining(next){
  const list=prepare(next==='flash'?1:2);if(!list)return;
- deck=list;mode=next;pos=0;revealed=false;feedback='';matched=new Set();selectedLeft=null;pairs=[];
+ deck=list;mode=next;pos=0;revealed=false;feedback='';matched=new Set();selectedLeft=null;pairs=[];pairsOrder=[];choiceOptions=[];
  renderTraining();
 }
 function question(){
