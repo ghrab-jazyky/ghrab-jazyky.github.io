@@ -130,6 +130,7 @@ for(const [name,browserType] of [['Chromium',chromium],['WebKit',webkit]]){
     await page.goto(new URL('konverzace/ceny-nemovitosti/index.html?practice=1&lang=en&level=B2',base).href,{waitUntil:'load'});
     await page.locator('#lshBridgeSavePopup').waitFor({state:'attached'});
     assert.equal((await page.locator('#lshBridgeSavePopup').textContent()||'').trim(),'Save to My Vocabulary');
+    await page.locator('#mainQuestion').scrollIntoViewIfNeeded();
     const point=await page.evaluate(()=>{
      const parent=document.getElementById('mainQuestion');
      const walker=document.createTreeWalker(parent,NodeFilter.SHOW_TEXT);
