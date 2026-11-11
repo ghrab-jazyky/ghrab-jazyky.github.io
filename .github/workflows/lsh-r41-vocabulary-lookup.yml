@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [main]
   push:
-    branches: [fix/lsh-vocabulary-lookup-audit-2026-11-11]
+    branches: [main, fix/lsh-vocabulary-lookup-audit-2026-11-11]
   workflow_dispatch:
 permissions:
   contents: read
