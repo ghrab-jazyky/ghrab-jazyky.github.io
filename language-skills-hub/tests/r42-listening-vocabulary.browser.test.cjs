@@ -15,7 +15,12 @@ for(const [engine,browserType] of [['Chromium',chromium],['WebKit',webkit]]){
   try{
    const context=await browser.newContext({viewport:{width:390,height:844}});
    const page=await context.newPage(),jsErrors=[],nativeDialogs=[];
-   page.on('pageerror',e=>jsErrors.push(e.message));
+   page.on('pageerror',e=>{
+    // WebKit may emit this benign layout warning during responsive navigation.
+    // Every actual application error still fails the test.
+    if(/^ResizeObserver loop completed with undelivered notifications\.$/.test(e.message))return;
+    jsErrors.push(e.message);
+   });
    page.on('dialog',async dialog=>{nativeDialogs.push(dialog.type());await dialog.dismiss()});
    for(const e of entries){
     const slug=e.id,own='LSH '+slug+' '+engine;
