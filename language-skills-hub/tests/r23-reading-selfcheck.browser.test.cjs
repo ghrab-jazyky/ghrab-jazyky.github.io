@@ -37,12 +37,12 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
      language:document.documentElement.lang,
      version:document.getElementById('readingVariant').textContent,
      theme:document.documentElement.dataset.theme,
-     notice:document.getElementById('securityNotice').textContent
+     notice:document.getElementById('securityNotice')
     }));
     assert.ok(meta.overflow<=2,'Horizontal overflow: '+meta.overflow);
     assert.equal(meta.language,item.lang);
     assert.ok(meta.version.includes(item.level));
-    assert.ok(meta.notice.length>70);
+    assert.equal(meta.notice,null,'No confusing public-answer notice for students');
     const first=page.locator('fieldset.question').first();
     await first.locator('input[type=radio]').first().check();
     assert.match(await page.locator('#counter').textContent(),new RegExp('1\\s*/\\s*'+item.count));
