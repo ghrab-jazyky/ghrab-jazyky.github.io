@@ -9,8 +9,8 @@ Language Skills Hub spojuje Conversation Lab, Reading Lab a Listening Lab. Obsah
 ### Procvičování a hodnocené testy
 
 - **Conversation Lab:** pouze procvičování a sdílení.
-- **Reading Lab:** procvičování a **Test – známka 1–5** pro všech pět čtecích témat, EN/ES/DE/FR, A1–C2. Učitel nastaví variantu a pošle odkaz/QR. Student po odevzdání uvidí objektivní body, procenta, opravy a **návrh známky 1–5**.
-- **Listening Lab:** procvičování a **Test – známka 1–5** pro tři poslechy EN A1–C2. Učitel řídí dvě přehrání původního externího videa. Student odevzdá uzavřené i písemné úlohy. **Celkové procento a návrh známky vzniknou až po učitelském posouzení všech písemných odpovědí** přímo na zařízení, každá písemná úloha za 0 nebo 1 bod.
+- **Reading Lab:** procvičování a **TEST** pro všech pět čtecích témat, EN/ES/DE/FR, A1–C2. Učitel nastaví variantu a pošle odkaz/QR. Student po odevzdání uvidí objektivní body, procenta, opravy a **návrh známky 1–5**.
+- **Listening Lab:** procvičování a **TEST** pro tři poslechy EN A1–C2. Učitel řídí dvě přehrání původního externího videa. Student odevzdá uzavřené i písemné úlohy. **Celkové procento a návrh známky vzniknou až po učitelském posouzení všech písemných odpovědí** přímo na zařízení, každá písemná úloha za 0 nebo 1 bod.
 
 ### Převod na známky
 
