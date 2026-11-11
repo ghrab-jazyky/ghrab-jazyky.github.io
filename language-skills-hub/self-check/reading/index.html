@@ -13,6 +13,7 @@
  <script defer src="../results/result-core.js"></script>
  <script defer src="../results/grade-core.js"></script>
  <script defer src="../results/export-core.js"></script>
+ <script defer src="../results/pdf-report.js"></script>
  <script defer src="../session/attempt-core.js"></script>
  <script defer src="../session/session-ui.js"></script>
  <script defer src="reading.js"></script>
@@ -76,8 +77,9 @@
    <p class="small-note" id="resultReflection"></p>
    <div class="result-export">
     <div class="archive-actions">
+     <button type="button" id="exportPdf" class="action primary" hidden>Stáhnout kompletní PDF protokol</button>
      <button type="button" id="exportCopy" class="action ghost" hidden>Copy result for teacher</button>
-     <button type="button" id="exportResult" class="action ghost" hidden>Download detailed CSV report</button>
+     <button type="button" id="exportResult" class="action ghost" hidden>Download CSV for spreadsheet</button>
     </div>
     <p class="small-note" id="exportStatus" role="note"></p>
    </div>
