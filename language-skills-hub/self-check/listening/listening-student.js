@@ -243,7 +243,7 @@
   $('exportCopy').hidden=!exportCore;
   $('exportResult').hidden=!exportCore;
   $('exportStatus').textContent=
-   'The report includes per-question point values but no answer text or names. Enter only an anonymous code supplied by your teacher, if any. Neither the downloaded file nor the copy is independently verified.';
+   'The report includes per-question point values but no answer text or names. Send the downloaded file or copied summary to your teacher from your school email. Neither format is independently verified.';
   const archiveData=()=>{
    if(!exportCore)throw new Error('Export module unavailable.');
    const state=timedUI?.status();
@@ -252,13 +252,12 @@
     submittedAt:state?.submittedAt??null,
     interruptionCount:state?.incidents?.length??0
    });
-   return {receipt,rows:exportCore.questionRows(normalized,'listening'),
-    code:$('archiveCode').value};
+   return {receipt,rows:exportCore.questionRows(normalized,'listening')};
   };
   $('exportResult').onclick=()=>{
    try{
-    const {receipt,rows,code}=archiveData();
-    exportCore.downloadDetailed(receipt,rows,code);
+    const {receipt,rows}=archiveData();
+    exportCore.downloadDetailed(receipt,rows);
     $('exportStatus').textContent='Detailed CSV report downloaded. Give it to your teacher.';
    }catch(error){
     $('exportStatus').textContent='Download failed: '+String(error.message||error);
@@ -266,8 +265,8 @@
   };
   $('exportCopy').onclick=async()=>{
    try{
-    const {receipt,rows,code}=archiveData();
-    await exportCore.copyReport(receipt,rows,code);
+    const {receipt,rows}=archiveData();
+    await exportCore.copyReport(receipt,rows);
     $('exportStatus').textContent='Result summary copied. Send it to your teacher.';
    }catch(error){
     $('exportStatus').textContent='Copy failed: '+String(error.message||error);
