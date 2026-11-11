@@ -48,6 +48,10 @@ async function readingCheck(page,e){
  await page.goto(url(e),{waitUntil:'load',timeout:45000});
  await page.locator('#lookup').waitFor({state:'attached'});
  await page.locator('#readingBody p').first().waitFor({timeout:10000});
+ // Two Reading cards intentionally start with their optional dictionary OFF.
+ // Exercise the student's explicit toggle before a word lookup.
+ if((await page.locator('#dictionaryToggle').getAttribute('aria-pressed'))!=='true')
+  await page.locator('#dictionaryToggle').click();
  await page.locator('#readingBody p').first().dblclick({position:{x:32,y:13}});
  await page.locator('#lookup:visible').waitFor({timeout:7000});
  const word=(await page.locator('#lookupWord').textContent()||'').trim();
