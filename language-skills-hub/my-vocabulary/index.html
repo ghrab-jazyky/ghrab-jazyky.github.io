@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>My vocabulary · Language Skills Hub</title>
+<link rel="stylesheet" href="vocabulary.css">
+<script defer src="store.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Přejít k obsahu</a>
+<header class="bar">
+ <div><p class="overline">LANGUAGE SKILLS HUB · OSOBNÍ SLOVNÍČEK</p><h1>My vocabulary <small>Slovíčka · hry · zkoušení</small></h1></div>
+ <a class="back" href="../index.html">← Katalog LSH</a>
+</header>
+<main id="main">
+ <section class="intro">
+  <p><strong>Jeden slovníček pro Conversation, Reading i Listening Lab.</strong> Slovíčka se ukládají pouze do tohoto prohlížeče. Žádný účet ani přenos výsledků učiteli.</p>
+  <p class="warning">Před přechodem na jiné zařízení nebo smazáním dat prohlížeče si stáhni JSON zálohu a na novém zařízení ji nahraj.</p>
+  <p id="status" role="status" aria-live="polite">Načítám slovíčka…</p>
+ </section>
+ <nav class="tabs" aria-label="Část slovníčku">
+  <button type="button" data-view="words" aria-pressed="true">Moje slovíčka</button>
+  <button type="button" data-view="training" aria-pressed="false">Hry a procvičování</button>
+  <button type="button" data-view="exam" aria-pressed="false">Nechat se vyzkoušet</button>
+ </nav>
+ <section id="wordsView" class="panel" aria-label="Osobní slovíčka">
+  <div class="panel-title"><h2>Uložená slovíčka</h2><strong id="count">0 slovíček</strong></div>
+  <div class="filters">
+   <label>Hledat<input id="search" type="search" placeholder="Výraz nebo překlad"></label>
+   <label>Jazyk<select id="filterLang"><option value="">Všechny jazyky</option><option value="en">English</option><option value="es">Español</option><option value="de">Deutsch</option><option value="fr">Français</option></select></label>
+   <label>Původ<select id="filterTopic"><option value="">Všechny karty</option><option value="current">Aktuální karta</option></select></label>
+  </div>
+  <div class="selection-bar">
+   <span id="selectionCount">Vybráno: 0</span>
+   <button type="button" id="selectVisible">Vybrat zobrazené</button>
+   <button type="button" id="clearSelection">Zrušit výběr</button>
+  </div>
+  <ul id="wordList" class="word-list" aria-label="Seznam uložených slovíček"></ul>
+  <h3>Přidat slovíčko</h3>
+  <form id="addForm" class="add-form">
+   <label>Výraz v cizím jazyce<input id="newTerm" maxlength="180" required autocomplete="off"></label>
+   <label>Český význam<input id="newMeaning" maxlength="500" required autocomplete="off" placeholder="Další uznávané významy odděl středníkem"></label>
+   <label>Jazyk<select id="newLang"><option value="en">English</option><option value="es">Español</option><option value="de">Deutsch</option><option value="fr">Français</option></select></label>
+   <button type="submit" class="primary">Přidat do slovníčku</button>
+  </form>
+  <div class="backup">
+   <div><h3>Záloha a přenos na jiné zařízení</h3>
+   <p>Soubor JSON lze nahrát do jiné instalace LSH. Stávající zálohy Reading Labu zůstávají kompatibilní. Import umí sloučit slovíčka nebo zcela nahradit obsah.</p></div>
+   <div class="backup-actions">
+    <button type="button" id="exportBackup">Stáhnout zálohu (.json)</button>
+    <button type="button" id="importMerge">Nahrát zálohu – sloučit</button>
+    <button type="button" id="importReplace" class="danger">Nahrát zálohu – nahradit vše</button>
+    <input type="file" id="backupFile" accept=".json,application/json" hidden>
+   </div>
+  </div>
+ </section>
+ <section id="trainingView" class="panel" hidden aria-label="Hry a procvičování">
+  <h2>Hry a procvičování</h2>
+  <p>Hraješ pouze s vybranými slovíčky. Při tréninku můžeš vidět správné řešení hned.</p>
+  <div class="choices" id="trainingModes">
+   <button type="button" data-training="flash">Kartičky</button>
+   <button type="button" data-training="choice">Vyber správný význam</button>
+   <button type="button" data-training="match">Spoj dvojice</button>
+  </div>
+  <div id="trainingBoard" class="board" aria-live="polite"><p>Vyber hru.</p></div>
+ </section>
+ <section id="examView" class="panel" hidden aria-label="Zkoušení slovní zásoby">
+  <h2>Nechat se vyzkoušet</h2>
+  <p>Vyber si směr překladu a délku testu. <strong>Správné odpovědi uvidíš až po dokončení.</strong> Jde o osobní procvičovací test bez oficiální známky.</p>
+  <form id="examSetup" class="exam-setup">
+   <label>Směr překladu<select id="examDirection"><option value="meaning">Cizí výraz → česky</option><option value="term">Česky → cizí výraz</option></select></label>
+   <label>Počet slovíček<select id="examCount"><option value="5">5</option><option value="10">10</option><option value="20">20</option><option value="all">Všechna vybraná</option></select></label>
+   <button class="primary" type="submit">Spustit zkoušení</button>
+  </form>
+  <form id="examQuestion" class="exam-question" hidden autocomplete="off">
+   <p id="examProgress"></p>
+   <div id="examPrompt" class="exam-prompt"></div>
+   <label for="examAnswer">Tvoje odpověď</label>
+   <input id="examAnswer" type="text" maxlength="500" autocomplete="off" spellcheck="false">
+   <button type="submit" class="primary">Potvrdit a pokračovat</button>
+  </form>
+  <div id="examResults" class="exam-results" aria-live="polite"></div>
+ </section>
+</main>
+<footer>Všechna slovíčka a výsledky zkoušení zůstávají lokálně v prohlížeči. Záloha neobsahuje identifikační údaje studenta.</footer>
+</body>
+</html>
