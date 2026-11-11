@@ -130,19 +130,12 @@
    });
   }));
  }
- function safeCode(code){
-  const value=code===null||code===undefined?'':String(code).trim();
-  requireValid(value===''||/^[a-z0-9_-]{1,24}$/i.test(value),
-   'Invalid anonymous student code (1-24 letters, numbers, _ or -).');
-  return value;
- }
  const REPORT_FIELDS=Object.freeze([
-  ...FIELDS,'anonymous_code','exported_utc',
+  ...FIELDS,'exported_utc',
   'question_number','question_id','question_type','awarded_points','maximum_points'
  ]);
- function detailedCsv(receipt,rows,code,exportedAt){
+ function detailedCsv(receipt,rows,exportedAt){
   csv(receipt); // Validate the original R31 receipt contract.
-  const anonymous=safeCode(code);
   requireValid(Array.isArray(rows)&&rows.length>0&&rows.length<=150,
    'No question outcomes to export.');
   requireValid(int(exportedAt)&&exportedAt<=8640000000000000,
@@ -153,20 +146,18 @@
     int(row.question_number)&&row.question_number>0&&
     [0,1].includes(row.awarded_points)&&row.maximum_points===1,
     'Invalid detailed question outcome');
-   const data={...receipt,anonymous_code:anonymous,exported_utc:stamp,...row};
+   const data={...receipt,exported_utc:stamp,...row};
    return REPORT_FIELDS.map(k=>csvCell(data[k])).join(',');
   }).join('\r\n')+'\r\n';
  }
- function reportText(receipt,rows,code,exportedAt){
+ function reportText(receipt,rows,exportedAt){
   // Validate before displaying/copying and avoid copying private free text.
-  detailedCsv(receipt,rows,code,exportedAt);
-  const anonymous=safeCode(code);
+  detailedCsv(receipt,rows,exportedAt);
   const detail=rows.map(row=>row.question_number+'. '+row.question_id+
    ' ('+row.question_type+'): '+row.awarded_points+'/'+row.maximum_points).join('\n');
   return [
    'LANGUAGE SKILLS HUB - VYSLEDEK TESTU',
    'NEOVERENY MISTNI ZAZNAM - pouze navrh znamky',
-   'Kod: '+(anonymous||'neuveden'),
    'Laborator: '+receipt.skill,
    'Tema: '+receipt.topic,
    'Jazyk a uroven: '+receipt.language.toUpperCase()+' / '+receipt.level,
@@ -180,9 +171,9 @@
    'Upozorneni: Udaje nejsou technicky overenym skolnim zaznamem.'
   ].join('\n');
  }
- async function copyReport(receipt,rows,code,doc,clipboard,exportedAt=Date.now()){
+ async function copyReport(receipt,rows,doc,clipboard,exportedAt=Date.now()){
   const documentRef=doc||root.document;
-  const value=reportText(receipt,rows,code,exportedAt);
+  const value=reportText(receipt,rows,exportedAt);
   const board=clipboard||(root.navigator&&root.navigator.clipboard);
   if(board&&typeof board.writeText==='function'){
    try{await board.writeText(value);return value;}catch(_){}
@@ -200,19 +191,19 @@
   }finally{area.remove();}
   return value;
  }
- function downloadDetailed(receipt,rows,code,doc,exportedAt=Date.now()){
-  const documentRef=doc||root.document,anonymous=safeCode(code);
+ function downloadDetailed(receipt,rows,doc,exportedAt=Date.now()){
+  const documentRef=doc||root.document;
   requireValid(documentRef&&documentRef.body&&typeof Blob!=='undefined'&&
    typeof URL!=='undefined'&&typeof URL.createObjectURL==='function',
    'Local browser download unavailable.');
-  const content=detailedCsv(receipt,rows,anonymous,exportedAt);
+  const content=detailedCsv(receipt,rows,exportedAt);
   const blob=new Blob([content],{type:'text/csv;charset=utf-8'});
   const objectUrl=URL.createObjectURL(blob);
   const unique=Math.floor(Math.random()*65536).toString(16).padStart(4,'0');
   const stamp=new Date(exportedAt).toISOString().replace(/[:.]/g,'-');
   const filename='lsh-'+receipt.skill+'-'+receipt.topic+'-'+
    receipt.language+'-'+receipt.level.toLowerCase()+
-   (anonymous?'-'+anonymous:'')+'-'+stamp+'-'+unique+'.csv';
+   '-'+stamp+'-'+unique+'.csv';
   const a=documentRef.createElement('a');
   a.href=objectUrl;a.download=filename;a.hidden=true;
   documentRef.body.appendChild(a);
