@@ -52,5 +52,6 @@
   "listeningTestClosedFactualCloze": true,
   "listeningTestVisibleAnswerBank": false,
   "officialSchoolLogoPdfEnabled": true,
-  "officialSchoolLogoSource": "https://www.ghrabuvka.cz/build/images/logo.b31efe12.png"
+  "officialSchoolLogoSource": "https://github.com/Daniel22-dev/AI-Studio-GHRAB/blob/main/src/assets/brand/school-logo.png",
+  "officialSchoolLogoGitBlobSha": "0b23733540b01fe70f35feda45037b0cd2c995cb"
 }
