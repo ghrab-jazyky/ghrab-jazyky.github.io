@@ -22,6 +22,13 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
    await page.reload();
    await page.locator('#workspace:not([hidden])').waitFor();
    assert.equal(await page.locator('#match-0').inputValue(),'1');
+   // An interrupted timed test intentionally locks after reload.
+   // The pupil must unlock four corners before the page can be submitted.
+   if(await page.locator('#sessionLock').isVisible()){
+    for(const corner of ['tl','tr','bl','br'])
+     await page.locator('.lsh-corner-'+corner).click();
+    await page.locator('#sessionLock').waitFor({state:'hidden'});
+   }
    await page.locator('#submitButton').click();
    await page.locator('#results:not([hidden])').waitFor();
    assert.equal(await page.locator('#manualGrade').count(),0);
