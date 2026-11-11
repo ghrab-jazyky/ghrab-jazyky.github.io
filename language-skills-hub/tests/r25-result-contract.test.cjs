@@ -167,7 +167,7 @@ test('R25 shared result contract fails closed on forged grades, impossible score
 test('R25 repository README points at the real live school catalog, not the archived pilot',()=>{
  const readme=fs.readFileSync(path.resolve(root,'..','README.md'),'utf8');
  assert.match(readme,/https:\/\/ghrab-jazyky\.github\.io\/language-skills-hub\//);
- assert.match(readme,/Test – známka 1–5/);
+ assert.match(readme,/\*\*TEST\*\*/);
  assert.match(readme,/nedokáže zaručit podmínky zabezpečené klasifikované zkoušky/);
  assert.match(readme,/https:\/\/ghrab-jazyky\.github\.io\/language-skills-hub\//);
  assert.match(readme,/\*\*Veřejný katalog:\*\*/);
