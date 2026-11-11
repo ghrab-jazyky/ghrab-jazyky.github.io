@@ -35,19 +35,18 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
     assert.equal(await page.locator('#scoreSummary .score-value').count(),4);
     assert.equal(await page.locator('#exportResult').isEnabled(),true);
     assert.equal(await page.locator('#exportCopy').isEnabled(),true);
-    const code='3A4-07';await page.locator('#archiveCode').fill(code);
     const downloadEvent=page.waitForEvent('download',{timeout:15000});
     await page.locator('#exportResult').click();
     const download=await downloadEvent;
-    assert.match(download.suggestedFilename(),new RegExp('^lsh-listening-'+topic+'-en-'+level.toLowerCase()+'-'+code+'-.*\\.csv$'));
+    assert.match(download.suggestedFilename(),new RegExp('^lsh-listening-'+topic+'-en-'+level.toLowerCase()+'-.*\\.csv$'));
     const csv=fs.readFileSync(await download.path(),'utf8');
     const expected=await page.locator('#taskList fieldset.question').count()+
      await page.locator('#taskList .sequence-row').count()+matches;
     assert.equal(csv.split('\r\n').length,expected+2);
-    assert.match(csv,/anonymous_code/);
+    assert.doesNotMatch(csv,/anonymous_code|student_name|student_email/);
     assert.match(csv,/proposed_grade/);
     assert.match(csv,/awarded_points/);
-    assert.match(csv,/3A4-07/);
+    assert.match(csv,/exported_utc/);
     assert.doesNotMatch(csv,/written-response|email|studentName|teacher_review_required/);
     await page.evaluate(()=>{
      Object.defineProperty(navigator,'clipboard',{configurable:true,
@@ -57,7 +56,7 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
     await page.waitForFunction(()=>typeof window.__r33Copied==='string');
     const copied=await page.evaluate(()=>window.__r33Copied);
     assert.match(copied,/LANGUAGE SKILLS HUB/);
-    assert.match(copied,/3A4-07/);
+    assert.doesNotMatch(copied,/anonymous_code|student_name|student_email|Kod:/);
     assert.match(copied,/Navrh znamky/);
     assert.match(copied,new RegExp(topic));
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
@@ -83,13 +82,12 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
     await page.locator('#results:not([hidden])').waitFor();
     assert.equal(await page.locator('#exportCopy').isVisible(),true);
     assert.equal(await page.locator('#exportResult').isVisible(),true);
-    await page.locator('#archiveCode').fill('TEST-08');
     const downloadEvent=page.waitForEvent('download',{timeout:15000});
     await page.locator('#exportResult').click();
     const download=await downloadEvent;
-    assert.match(download.suggestedFilename(),new RegExp('^lsh-reading-rl-asteroids-'+lang+'-b1-TEST-08-.*\\.csv$'));
+    assert.match(download.suggestedFilename(),new RegExp('^lsh-reading-rl-asteroids-'+lang+'-b1-.*\\.csv$'));
     const csv=fs.readFileSync(await download.path(),'utf8');
-    assert.match(csv,/TEST-08/);
+    assert.doesNotMatch(csv,/anonymous_code|student_name|student_email/);
     assert.match(csv,/question_id/);
     assert.doesNotMatch(csv,/PRIVATE_NOTE|invalid\.school/);
     const total=await page.locator('#questionList fieldset.question').count();
@@ -98,7 +96,7 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
      value:{writeText:async value=>{window.__r33Copied=value}}}));
     await page.locator('#exportCopy').click();
     await page.waitForFunction(()=>typeof window.__r33Copied==='string');
-    assert.match(await page.evaluate(()=>window.__r33Copied),/TEST-08/);
+    assert.match(await page.evaluate(()=>window.__r33Copied),/VYSLEDEK TESTU/);
    }
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
