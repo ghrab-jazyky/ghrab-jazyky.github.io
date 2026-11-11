@@ -50,9 +50,9 @@ for(const [engineName,engine]of [['chromium',chromium],['webkit',webkit]]){
    await page.waitForSelector('#workspace:not([hidden])');
    assert.equal(await page.locator('#gradeProposal .grade-number').count(),0);
    assert.equal(await page.locator('textarea.written-response').count(),0);
-   assert.ok(await page.locator('.matching-row select').count()>=3);
+   assert.ok(await page.locator('.cloze-row input').count()>=3);
    await page.locator('fieldset.question').first().locator('input').first().check();
-   await page.locator('.matching-row select').first().selectOption('0');
+   await page.locator('.cloze-row input').first().fill('George Lucas and Steven Spielberg');
    await page.locator('#submitButton').click();
    await page.locator('#results:not([hidden])').waitFor();
    assert.match((await page.locator('#gradeProposal .grade-number').textContent()).trim(),/^[1-5]$/);

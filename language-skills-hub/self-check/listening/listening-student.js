@@ -16,14 +16,14 @@
  const selection={topic:params.get('topic')||'ll-matthew-oscars',
   level:params.get('level')||'B2'};
  let chosen=null,submitted=false,timedUI=null;
- const answers={gist:[],detail:[],sequence:[],match:[]};
+ const answers={gist:[],detail:[],sequence:[],cloze:[]};
  const phases=[
   {id:'first-listening',heading:'First Listening',
    caption:'Pass 1 – listen for the main ideas. The teacher starts the recording.'},
   {id:'listen-and-interpret',heading:'Listen and Interpret',
    caption:'Pass 2 – listen for details and interpret what the speaker means.'},
-  {id:'listen-write-and-reconstruct',heading:'Listen, Match and Reconstruct',
-   caption:'Place the excerpts in order, then match prompts with authored statements. All tasks are scored automatically.'}
+  {id:'listen-write-and-reconstruct',heading:'Listen, Complete and Reconstruct',
+   caption:'Put excerpts in order and supply a short exact detail from the recording. No answer list is shown. Only objectively keyed details are scored.'}
  ];
  function theme(light,save){
   document.documentElement.dataset.theme=light?'light':'dark';
@@ -39,7 +39,7 @@
   });
  }
  const totalTasks=()=>chosen.gist.length+chosen.detail.length+chosen.sequence.length+
-  chosen.facts.length+chosen.open.length;
+  chosen.facts.length;
  function completed(){
   if(!chosen)return 0;
   let n=0;
@@ -48,7 +48,7 @@
    if(Array.isArray(x)?x.length>0:Number.isInteger(x))n++;
   }
   for(const x of answers.sequence)if(Number.isInteger(x))n++;
-  for(const x of answers.match)if(Number.isInteger(x))n++;
+  for(const x of answers.cloze)if(typeof x==='string'&&x.trim())n++;
   return n;
  }
  function progress(){
@@ -136,44 +136,26 @@
    row.append(label,select);list.appendChild(row);
   }
  }
- function matchingTask(){
-  const list=$('taskList'),bank=core.matching(chosen);
+ function clozeTask(){
+  const list=$('taskList'),bank=core.cloze(chosen,selection.topic,selection.level);
   list.appendChild(element('p','quiz-hint',
-   'D. Match each listening prompt to the correct statement. Use each letter only once. No free-text answers are required.'));
-  const choices=element('section','matching-bank');
-  choices.setAttribute('aria-label','Answer statements for matching');
-  bank.options.forEach(option=>{
-   const p=element('p');
-   p.append(element('strong',null,option.letter+'. '),
-    document.createTextNode(option.text));
-   choices.appendChild(p);
-  });
-  list.appendChild(choices);
-  bank.prompts.forEach((prompt,i)=>{
-   const row=element('div','matching-row'),id='match-'+i;
-   const label=element('label',null,(i+1)+'. '+prompt.question);
+   'D. Complete each fact using a name, number or short expression heard in the recording. No answer options are provided. A closed answer key checks spelling and accepted variants automatically; do not write interpretations or full sentences.'));
+  bank.forEach((task,i)=>{
+   const row=element('div','cloze-row'),id='cloze-'+i;
+   const label=element('label',null,(i+1)+'. '+task.question);
    label.htmlFor=id;
-   const select=element('select','matching-select');
-   select.id=id;select.setAttribute('aria-label','Match answer '+(i+1));
-   const empty=element('option',null,'— Select a letter —');
-   empty.value='';select.appendChild(empty);
-   bank.options.forEach((choice,j)=>{
-    const option=element('option',null,choice.letter);
-    option.value=String(j);select.appendChild(option);
-   });
-   select.addEventListener('change',()=>{
+   const input=element('input','cloze-input');
+   input.type='text';input.id=id;input.maxLength=120;
+   input.autocomplete='off';input.spellcheck=false;
+   input.setAttribute('autocapitalize','off');
+   input.setAttribute('aria-label','Factual listening detail '+(i+1));
+   input.placeholder='Short fact from the audio';
+   input.addEventListener('input',()=>{
     if(submitted)return;
-    const value=select.value===''?null:Number(select.value);
-    if(Number.isInteger(value)){
-     for(let j=0;j<bank.prompts.length;j++)if(j!==i&&answers.match[j]===value){
-      answers.match[j]=null;
-      $('match-'+j).value='';
-     }
-    }
-    answers.match[i]=value;
+    answers.cloze[i]=input.value;
     progress();timedUI?.save();
    });
-   row.append(label,select);list.appendChild(row);
+   row.append(label,input);list.appendChild(row);
   });
  }
  function render(){
@@ -182,7 +164,7 @@
   list.appendChild(heading(phases[1]));choices('detail');
   list.appendChild(heading(phases[2]));
   sequence();
-  matchingTask();
+  clozeTask();
   $('levelLabel').textContent='EN · '+selection.level;
   $('title').textContent=({
    'll-matthew-oscars':'Matthew McConaughey · Oscars 2014',
@@ -222,10 +204,10 @@
    summary.appendChild(item);
   }
   $('resultCaution').textContent=
-   'All choices, sequencing and matching are scored automatically. The proposed grade appears immediately but is NOT a verified school grade. This public local result can be changed or restarted; your teacher must verify it before recording any school grade.';
+   'All choices, sequencing and factual cloze answers are scored automatically. The proposed grade appears immediately but is NOT a verified school grade. This public local result can be changed or restarted; your teacher must verify it before recording any school grade.';
   const list=$('resultDetails');list.replaceChildren();
   const segment=(phase)=>phase==='gist'?'First Listening':
-   phase==='detail'?'Listen and Interpret':'Listen, Write and Reconstruct';
+   phase==='detail'?'Listen and Interpret':'Listen, Complete and Reconstruct';
   const mistakes=report.reviewed.filter(task=>!task.correct);
   if(!mistakes.length)list.appendChild(element('p','small-note',
    'All automatically assessed answers are correct. No objective mistakes to review.'));
@@ -275,15 +257,14 @@
      percent:grade.displayedPercent,grade:grade.grade},
     questions:report.reviewed.map(task=>{
      const offset=task.number-1;
-     const matching=task.phase==='matching'?core.matching(chosen):null;
+     
      const options=task.phase==='gist'?chosen.gist[offset]?.options:
       task.phase==='detail'?chosen.detail[offset]?.options:
-      task.phase==='matching'?matching.options.map(x=>x.letter+'. '+x.text):
       task.phase==='sequence'?chosen.sequence:undefined;
      return {
      options,
      question:(task.phase==='gist'?'FIRST LISTENING':task.phase==='detail'?
-      'LISTEN AND INTERPRET':task.phase==='sequence'?'RECONSTRUCTION':'MATCHING')+
+      'LISTEN AND INTERPRET':task.phase==='sequence'?'RECONSTRUCTION':'FACTUAL CLOZE')+
       ' · '+task.question,
      studentAnswer:task.chosen&&task.chosen.length?task.chosen.join(' | '):'Bez odpovědi',
      correctAnswer:task.correctAnswers.join(' | '),
@@ -292,9 +273,9 @@
     }})
    };
   };
-  $('exportPdf').onclick=()=>{
+  $('exportPdf').onclick=async()=>{
    try{
-    window.LSHPdfReport.download(completeReport());
+    await window.LSHPdfReport.download(completeReport());
     $('exportStatus').textContent='Full test PDF downloaded. Send it to your teacher using school email.';
    }catch(error){
     $('exportStatus').textContent='PDF export failed: '+String(error.message||error);
@@ -318,8 +299,8 @@
   const question='Submit your answers now?'+(pending?' '+pending+' task(s) are still unanswered.':'');
   if(!automatic&&!window.confirm(question))return;
   let report;
-  try{report=core.assessAuto(chosen,answers)}
-  catch(_){if(!automatic)window.alert('Please review the reconstruction order. Use each statement at most once.');return}
+  try{report=core.assessAuto(chosen,answers,selection.topic,selection.level)}
+  catch(_){if(!automatic)window.alert('Please review your responses. A short detail must be no longer than 120 characters.');return}
   if(timedUI&&!restored)timedUI.finish();
   submitted=true;
   for(const el of $('taskList').querySelectorAll('input,textarea,select'))el.disabled=true;
@@ -374,13 +355,12 @@
       answers.sequence[i]=value;
       const sel=$('seq-'+i);if(sel)sel.value=String(value);
      }
-     const matchCount=core.matching(chosen).prompts.length;
-     const usedMatch=new Set();
-     for(let i=0;i<matchCount;i++){
-      const value=saved.match?.[i];
-      if(!Number.isInteger(value)||value<0||value>=matchCount||usedMatch.has(value))continue;
-      usedMatch.add(value);answers.match[i]=value;
-      const field=$('match-'+i);if(field)field.value=String(value);
+     const count=core.cloze(chosen,selection.topic,selection.level).length;
+     for(let i=0;i<count;i++){
+      const value=saved.cloze?.[i];
+      if(typeof value!=='string'||value.length>120)continue;
+      answers.cloze[i]=value;
+      const field=$('cloze-'+i);if(field)field.value=value;
      }
      progress();
     },

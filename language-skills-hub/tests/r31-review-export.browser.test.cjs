@@ -18,10 +18,10 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#sessionStart').click();
    await page.locator('#workspace:not([hidden])').waitFor();
    await page.locator('fieldset.question').first().locator('input').first().check();
-   await page.locator('#match-0').selectOption('1');
+   await page.locator('#cloze-0').fill('George Lucas and Steven Spielberg');
    await page.reload();
    await page.locator('#workspace:not([hidden])').waitFor();
-   assert.equal(await page.locator('#match-0').inputValue(),'1');
+   assert.equal(await page.locator('#cloze-0').inputValue(),'George Lucas and Steven Spielberg');
    // An interrupted timed test intentionally locks after reload.
    // The pupil must unlock four corners before the page can be submitted.
    if(await page.locator('#sessionLock').isVisible()){

@@ -100,7 +100,7 @@ test('R31 Listening receipt with pending written answers cannot masquerade as fi
 });
 test('R31 release manifest acknowledges local-only review and CSV features',()=>{
  const manifest=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../version.json'),'utf8'));
- assert.equal(manifest.version,'R34');
+ assert.equal(manifest.version,'R35');
  assert.equal(manifest.backendEnabled,false);
  assert.equal(manifest.gradedTestsEnabled,false);
  assert.equal(manifest.officialGradesEnabled,false);

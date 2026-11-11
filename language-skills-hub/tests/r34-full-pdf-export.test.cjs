@@ -58,12 +58,16 @@ test('No PDF report network upload or hidden student identifier',()=>{
  }
 });
 
-test('Release R34 metadata reflects automatic Listening tests and complete local PDFs',()=>{
+test('Release R35 metadata reflects automatic Listening tests and complete local PDFs',()=>{
  const version=JSON.parse(fs.readFileSync(path.join(root,'version.json'),'utf8'));
  const policy=JSON.parse(fs.readFileSync(path.join(root,'data/test-mode-policy.json'),'utf8'));
- assert.equal(version.version,'R34');
+ assert.equal(version.version,'R35');
  assert.equal(version.listeningTestAutoClosed,true);
  assert.equal(version.localFullPdfReportEnabled,true);
+ assert.equal(version.officialSchoolLogoPdfEnabled,true);
+ assert.equal(version.listeningTestClosedFactualCloze,true);
+ assert.equal(version.listeningTestVisibleAnswerBank,false);
+ assert.equal(policy.futureSelfCheck.listeningTestVisibleAnswerBank,false);
  assert.equal(version.readingFullSourcePdfEnabled,true);
  assert.equal(version.officialGradesEnabled,false);
  assert.equal(policy.futureSelfCheck.listeningTestOpenAnswersEnabled,false);
@@ -80,3 +84,13 @@ test('PDF offered answer labels do not duplicate prelabelled matching choices',(
  assert.ok(copy.indexOf('VYCHOZI CTENY TEXT')<copy.indexOf('1. ¿Dónde'));
 });
 
+
+test('Official school mark is the original 664 x 512 local PNG, not a network dependency',()=>{
+ const logo=fs.readFileSync(path.join(root,'assets/school-logo.png'));
+ assert.equal(logo.subarray(0,8).toString('hex'),'89504e470d0a1a0a');
+ assert.equal(logo.readUInt32BE(16),664);assert.equal(logo.readUInt32BE(20),512);
+ const pdfSource=fs.readFileSync(path.join(root,'self-check/results/pdf-report.js'),'utf8');
+ assert.match(pdfSource,/school-logo\.png/);
+ assert.match(pdfSource,/ctx\.drawImage\(schoolLogo/);
+ assert.match(pdfSource,/async function download/);
+});

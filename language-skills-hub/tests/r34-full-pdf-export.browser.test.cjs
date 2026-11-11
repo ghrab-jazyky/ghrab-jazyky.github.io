@@ -33,13 +33,19 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    page.on('request',r=>{if(!['GET','HEAD'].includes(r.method()))writes.push(r.url())});
    const topic='ll-harrison-ford';
    assert.equal((await page.goto(url('self-check/listening/student.html',{topic,level:'B2'}))).status(),200);
-   await page.locator('#taskList .matching-row select').first().waitFor();
+   await page.locator('#taskList .cloze-row input').first().waitFor();
    assert.equal(await page.locator('#taskList textarea').count(),0);
-   await page.locator('#taskList .matching-row select').first().selectOption('0');
+   await page.locator('#taskList .cloze-row input').first().fill('George Lucas and Steven Spielberg');
    await page.locator('#taskList fieldset.question').first().locator('input').first().check();
    await page.locator('#submitButton').click();
    await page.locator('#results:not([hidden])').waitFor();
    assert.equal(await page.locator('#exportPdf').isVisible(),true);
+   const logo=await page.evaluate(async()=>{
+    const img=await window.LSHPdfReport.loadSchoolLogo(document);
+    return {w:img.naturalWidth,h:img.naturalHeight,origin:new URL(img.src).origin};
+   });
+   assert.equal(logo.w,664);assert.equal(logo.h,512);
+   assert.equal(logo.origin,new URL(base).origin);
    const {pages}=await checkPdf(page,'listening',topic);
    assert.ok(pages>=1);
    await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,
@@ -53,7 +59,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.doesNotMatch(full,/student_name|anonymous_code|studentEmail/);
    const expected=await page.locator('#taskList fieldset.question').count()+
     await page.locator('#taskList .sequence-row').count()+
-    await page.locator('#taskList .matching-row').count();
+    await page.locator('#taskList .cloze-row').count();
    assert.equal((full.match(/^Odpoved studenta:/gm)||[]).length,expected);
    assert.match(full,/CHYBNE/);
    assert.deepEqual(errors,[]);
@@ -74,6 +80,11 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#questionList fieldset.question').first().locator('input').first().check();
    await page.locator('#submitButton').click();
    await page.locator('#results:not([hidden])').waitFor();
+   const logo=await page.evaluate(async()=>{
+    const img=await window.LSHPdfReport.loadSchoolLogo(document);
+    return {w:img.naturalWidth,h:img.naturalHeight};
+   });
+   assert.deepEqual(logo,{w:664,h:512});
    const {pages}=await checkPdf(page,'reading',topic);
    assert.ok(pages>=1);
    await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,

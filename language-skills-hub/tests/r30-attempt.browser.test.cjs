@@ -60,7 +60,7 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    await context.close();
   }finally{await browser.close()}
  });
- test('R30 '+engineName+' Listening teacher link includes timer and matching survives reload',async()=>{
+ test('R30 '+engineName+' Listening teacher link includes timer and factual cloze survives reload',async()=>{
   const browser=await engine.launch({headless:true});
   try{
    const context=await browser.newContext({viewport:{width:390,height:844}});
@@ -79,11 +79,11 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#sessionStart').click();
    await page.locator('#workspace:not([hidden])').waitFor();
    await page.locator('fieldset.question').first().locator('input').first().check();
-   await page.locator('#match-0').selectOption('1');
+   await page.locator('#cloze-0').fill('fifteen');
    await page.reload();
    await page.locator('#workspace:not([hidden])').waitFor();
    assert.equal(await page.locator('fieldset.question').first().locator('input').first().isChecked(),true);
-   assert.equal(await page.locator('#match-0').inputValue(),'1');
+   assert.equal(await page.locator('#cloze-0').inputValue(),'fifteen');
    if(await page.locator('#sessionLock').isVisible()){
     for(const c of ['tl','tr','bl','br'])await page.locator('.lsh-corner-'+c).click();
     await page.locator('#sessionLock').waitFor({state:'hidden'});

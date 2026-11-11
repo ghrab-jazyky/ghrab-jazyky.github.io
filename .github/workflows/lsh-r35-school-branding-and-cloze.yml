@@ -1,0 +1,58 @@
+name: LSH R35 factual cloze and authentic school-logo PDF gate (NO DEPLOY)
+on:
+  push:
+    branches: [fix/lsh-r35-school-logo-and-closed-cloze]
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/**'
+      - '.github/workflows/lsh-r35-school-branding-and-cloze.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Syntax and complete static regressions
+        run: |
+          set -e
+          node --check language-skills-hub/self-check/results/pdf-report.js
+          node --check language-skills-hub/self-check/listening/listening-core.js
+          node --check language-skills-hub/self-check/listening/listening-student.js
+          node --check language-skills-hub/self-check/reading/reading.js
+          find language-skills-hub/tests -maxdepth 1 -name '*.test.cjs' ! -name '*browser.test.cjs' -print0 | xargs -0 node --test
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install browser engines
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Full legacy and R35 regression suite against local preview
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-r35-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:8765/language-skills-hub/index.html >/dev/null; then break; fi
+            sleep 1
+          done
+          node --test --test-concurrency=2 language-skills-hub/tests/*browser.test.cjs
+      - name: Keep PDF samples for visual review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-r35-logo-pdf-preflight
+          path: qa/r34/*.pdf
+          if-no-files-found: warn

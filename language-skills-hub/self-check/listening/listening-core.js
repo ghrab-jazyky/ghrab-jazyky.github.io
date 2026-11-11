@@ -160,52 +160,57 @@
    resultFinal:false,finalPercentage:null,reviewed,writing
   };
  }
- /* R33 test-only closed matching task: public practice cards remain unchanged. */
- function matching(v){
-  validate(v);
-  const prompts=[
-   ...v.facts.map(x=>({phase:'facts',question:x.title,answer:x.answer})),
-   ...v.open.map(x=>({phase:'interpretation',question:x.title,answer:x.answer}))
-  ];
-  must(prompts.length>=3&&prompts.length<=26,'Invalid matching bank.');
-  must(new Set(prompts.map(x=>x.answer.trim().toLowerCase())).size===prompts.length,
-   'Ambiguous duplicate matching reference.');
-  const options=prompts.map((p,sourceIndex)=>({sourceIndex,text:p.answer}));
-  options.sort((a,b)=>a.text.localeCompare(b.text,'en')||a.sourceIndex-b.sourceIndex);
-  return {
-   prompts:prompts.map((p,i)=>({...p,index:i})),
-   options:options.map((p,i)=>({...p,letter:'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[i]}))
-  };
+ /* R35 TEST-ONLY factual cloze. Every fact has a closed teacher-authored
+  * answer key. Free-response interpretations are excluded from tests.
+  * No answer bank or candidate solutions are exposed in the student UI. */
+ const CLOZE_KEYS=Object.freeze({"ll-matthew-oscars":{"A1":[["3","three","3 children","three children"],["10","ten","10 years","ten years"]],"A2":[["2","two","2 brothers","two brothers"],["camila"]],"B1":[["jared leto","jennifer garner"],["2","two","two brothers"],["15","fifteen","15 years old","fifteen years old"]],"B2":[["vallee","vallée","jean marc vallee","jean-marc vallée"],["jared leto and jennifer garner","jennifer garner and jared leto","jared leto jennifer garner","jennifer garner jared leto"],["gumbo","a pot of gumbo"]],"C1":[["vallee","vallée","jean marc vallee","jean-marc vallée"],["35","thirty-five","thirty five","35 years old"],["miller lite","miller light"]],"C2":[["15 and 25","25 and 15","15 25","25 15","fifteen and twenty five","fifteen and twenty-five","25 and fifteen","15 and twenty-five"],["jared leto"]]},"ll-harrison-ford":{"A1":[["15","fifteen","15 years","fifteen years"],["carpenter","a carpenter"]],"A2":[["15","fifteen","15 years","fifteen years","about 15 years","about fifteen years"],["carpentry","carpenter"]],"B1":[["15","fifteen","15 years","fifteen years","about 15 years","about fifteen years"],["carpentry","carpenter"],["george lucas","steven spielberg","lucas","spielberg"]],"B2":[["george lucas and steven spielberg","steven spielberg and george lucas","george lucas steven spielberg","steven spielberg george lucas"],["fred roos and pat mcqueeney","pat mcqueeney and fred roos","fred roos pat mcqueeney","pat mcqueeney fred roos"],["his wife calista and his family","calista and his family","calista and family","his wife and family","wife and family","calista and the family","his family and calista","family and calista"]],"C1":[["george lucas and steven spielberg","steven spielberg and george lucas","george lucas steven spielberg","steven spielberg george lucas"],["fred roos and pat mcqueeney","pat mcqueeney and fred roos","fred roos pat mcqueeney","pat mcqueeney fred roos"],["third","third year","3rd","3rd year","3","year 3"]],"C2":[["george lucas and steven spielberg","steven spielberg and george lucas","george lucas steven spielberg","steven spielberg george lucas"],["fred roos and pat mcqueeney","pat mcqueeney and fred roos","fred roos pat mcqueeney","pat mcqueeney fred roos"]]},"ll-peaky-no-fighting":{"A1":[["grace"],["john"]],"A2":[["grace"],["uniforms","uniform"]],"B1":[["grace"],["cavalry"],["john"]],"B2":[["cavalry"],["charlie"],["grace"]],"C1":[["grace"],["cavalry"],["charlie"]],"C2":[["grace"],["cavalry"]]}});
+ function normalizeCloze(value){
+  must(typeof value==='string'&&value.length<=120,'Invalid short cloze response.');
+  return value.toLowerCase().normalize('NFKD')
+   .replace(/[\u0300-\u036f]/g,'')
+   .replace(/\bthirty[ -]?five\b/g,'35')
+   .replace(/\btwenty[ -]?five\b/g,'25')
+   .replace(/\bfifteen\b/g,'15')
+   .replace(/\bten\b/g,'10')
+   .replace(/\bthree\b/g,'3')
+   .replace(/\btwo\b/g,'2')
+   .replace(/&/g,' and ')
+   .replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ');
  }
- function assessAuto(v,responses){
+ function cloze(v,topic,level){
+  validate(v);
+  must(TOPICS.includes(topic)&&LEVELS.includes(level),'Unknown cloze topic or level.');
+  const keys=CLOZE_KEYS[topic]?.[level];
+  must(Array.isArray(keys)&&keys.length===v.facts.length,'Incomplete cloze answer key.');
+  return v.facts.map((fact,i)=>{
+   const accepted=keys[i];
+   must(Array.isArray(accepted)&&accepted.length>=1&&
+    accepted.every(a=>typeof a==='string'&&a.length>=1&&a.length<=120),
+    'Invalid cloze answer key.');
+   return {question:fact.title,correctAnswer:accepted[0],accepted};
+  });
+ }
+ function assessAuto(v,responses,topic,level){
   validate(v);
   must(plain(responses),'Invalid automatic test answers.');
-  // The original assessor remains for legacy practice tests; free text is
-  // discarded and never assessed in the new test-only closed mode.
+  // Legacy free-text fields are excluded from auto-graded test totals.
   const base=assess(v,{...responses,facts:[],open:[]});
-  const bank=matching(v),picks=responses.match===undefined?[]:responses.match;
-  must(Array.isArray(picks)&&picks.length<=bank.prompts.length,
-   'Invalid matching answers.');
-  const used=new Set();let answered=0,correct=0;
-  const matchReview=bank.prompts.map((p,i)=>{
-   const value=picks[i];
-   must(value===undefined||value===null||value===''||
-    (Number.isInteger(value)&&value>=0&&value<bank.options.length),
-    'Invalid matching choice.');
-   const selected=Number.isInteger(value)?value:null;
-   if(selected!==null){
-    must(!used.has(selected),'Each matching answer may be used once.');
-    used.add(selected);answered++;
-   }
-   const correctOption=bank.options.findIndex(x=>x.sourceIndex===i);
-   const right=selected!==null&&selected===correctOption;
+  const tasks=cloze(v,topic,level);
+  const picks=responses.cloze===undefined?[]:responses.cloze;
+  must(Array.isArray(picks)&&picks.length<=tasks.length,'Invalid cloze answers.');
+  let answered=0,correct=0;
+  const clozeReview=tasks.map((task,i)=>{
+   const raw=picks[i]===null||picks[i]===undefined?'':picks[i];
+   const selected=normalizeCloze(raw);
+   if(selected)answered++;
+   const right=selected!==''&&task.accepted.some(key=>normalizeCloze(key)===selected);
    if(right)correct++;
-   return {phase:'matching',number:i+1,question:p.question,answered:selected!==null,
-    correct:right,chosen:selected===null?[]:[bank.options[selected].text],
-    correctAnswers:[p.answer],reason:''};
+   return {phase:'cloze',number:i+1,question:task.question,answered:!!selected,
+    correct:right,chosen:selected?[String(raw).trim()]:[],
+    correctAnswers:[task.correctAnswer],reason:''};
   });
   const objectiveCorrect=base.objectiveCorrect+correct;
-  const objectiveMax=base.objectiveMax+bank.prompts.length;
+  const objectiveMax=base.objectiveMax+tasks.length;
   const totalAnswered=base.answered+answered;
   return {
    ...base,assessmentMode:'AUTO_CLOSED',autoClosed:true,
@@ -213,7 +218,7 @@
     Math.round(objectiveCorrect/objectiveMax*10000)/100,
    allTaskCount:objectiveMax,answered:totalAnswered,
    unanswered:objectiveMax-totalAnswered,writing:[],writingReviewCount:0,
-   reviewed:[...base.reviewed,...matchReview]
+   reviewed:[...base.reviewed,...clozeReview]
   };
  }
  function sourceLinks(html){
@@ -230,7 +235,7 @@
   return urls;
  }
  const api={LEVELS,TOPICS,PHASES,extractJson,catalogEntry,variant,validate,
-   normalizeResponse,assess,matching,assessAuto,sourceLinks};
+   normalizeResponse,assess,cloze,assessAuto,sourceLinks};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  else root.LSHListeningCore=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
