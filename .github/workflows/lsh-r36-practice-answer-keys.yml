@@ -1,0 +1,37 @@
+name: LSH R36 teacher practice answer keys QA (NO DEPLOY)
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/**'
+      - '.github/workflows/lsh-r36-practice-answer-keys.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  keys:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Validate 120 Reading and 18 Listening practice answer-key variants
+        run: |
+          node --check language-skills-hub/self-check/practice-answers/teacher-key.js
+          node --test language-skills-hub/tests/r36-practice-answer-keys.test.cjs
+      - name: Install Chromium and WebKit
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Browser PDF download and mobile layout checks
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-r36-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:8765/language-skills-hub/self-check/practice-answers/teacher.html >/dev/null; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/r36-practice-answer-keys.browser.test.cjs
