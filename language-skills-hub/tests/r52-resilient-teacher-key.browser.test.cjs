@@ -2,6 +2,10 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict');
 const {chromium,webkit}=require('playwright');
+const readingCore=require('../self-check/reading/reading-core.js');
+const fs=require('node:fs'),path=require('node:path');
+const asteroidData=readingCore.parseReadingData(fs.readFileSync(path.join(__dirname,'../cteni/asteroids/index.html'),'utf8'));
+const asteroidB2=readingCore.variantFromData(asteroidData,'en','B2');
 const base='http://127.0.0.1:8765/language-skills-hub/';
 const target=(topic,skill,mode='test')=>{
  const url=new URL('self-check/practice-answers/teacher.html',base);
@@ -30,7 +34,7 @@ for(const [name,engine]of[['chromium',chromium],['webkit',webkit]]){
    assert.equal(await page.locator('#level').inputValue(),'B2');
    assert.equal(await page.locator('#answerMode').inputValue(),'test');
    assert.equal(await page.locator('#retryLoad').isVisible(),false);
-   assert.equal(await page.locator('#answerPreview .key-item').count(),15);
+   assert.equal(await page.locator('#answerPreview .key-item').count(),asteroidB2.questions.length);
    assert.ok((await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth))<=3);
   }finally{await browser.close()}
  });
