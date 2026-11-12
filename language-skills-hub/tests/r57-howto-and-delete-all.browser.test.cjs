@@ -1,8 +1,9 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict');
 const {chromium,webkit}=require('playwright');
-const root='http://127.0.0.1:8765/language-skills-hub/';
-for(const [label,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+const root=process.env.LSH_R57_BASE||'http://127.0.0.1:8765/language-skills-hub/';
+const engines=process.env.LSH_R57_LIVE==='1'?[['Chromium',chromium]]:[['Chromium',chromium],['WebKit',webkit]];
+for(const [label,engine] of engines){
  test('R57 '+label+': header how-to native dialog, X/Esc, preserved search and share modal',
  {timeout:120000},async()=>{
   const browser=await engine.launch({headless:true});
