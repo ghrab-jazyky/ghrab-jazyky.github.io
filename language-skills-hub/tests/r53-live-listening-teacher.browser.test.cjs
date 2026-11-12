@@ -19,8 +19,9 @@ const topics=[
     for(let attempt=0;attempt<36;attempt++){
      u.searchParams.set('_release_check',String(Date.now())+'-'+attempt);
      const res=await page.goto(u.href,{waitUntil:'domcontentloaded',timeout:25000});
-     if(res?.status()===200&&await page.locator('meta[name="lsh-listening-teacher-release"]')
-      .getAttribute('content').catch(()=>null)==='R53'){deployed=true;break}
+     const marker=await page.evaluate(()=>
+      document.querySelector('meta[name="lsh-listening-teacher-release"]')?.content||'').catch(()=>'');
+     if(res?.status()===200&&marker==='R53'){deployed=true;break}
      await page.waitForTimeout(5000);
     }
     if(!deployed)throw new Error(name+' '+topic.id+' is not published as R53');
