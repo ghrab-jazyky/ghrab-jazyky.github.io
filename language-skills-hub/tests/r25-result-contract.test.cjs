@@ -22,8 +22,8 @@ test('R25 school bands remain an unapproved reference and can never issue a grad
  assert.equal(grading.enabled,false);
  assert.equal(grading.schoolGradesEnabled,false);
  assert.equal(grading.workingSource.schoolApprovalVerified,false);
- assert.equal(grading.decimalPercentRule,'UNDECIDED');
- assert.equal(grading.roundingRule,'UNDECIDED');
+ assert.equal(grading.decimalPercentRule,'ROUND_TO_NEAREST_WHOLE_PERCENT_BEFORE_GRADE_BANDS');
+ assert.equal(grading.roundingRule,'MATHEMATICAL_HALF_UP_0_5_ROUNDS_UP');
  assert.equal(grading.weightingOfObjectiveAndWrittenTasks,'UNDECIDED');
  assert.equal(grading.exportAsOfficialSchoolGrade,false);
  assert.equal(policy.officialGradesEnabled,false);
