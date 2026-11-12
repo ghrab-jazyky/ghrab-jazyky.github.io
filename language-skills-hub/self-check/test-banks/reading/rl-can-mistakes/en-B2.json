@@ -1,0 +1,182 @@
+{
+  "kind": "LSH_INDEPENDENT_READING_TEST_DRAFT_R32_V1",
+  "status": "DRAFT_PENDING_TEACHER_CONTENT_APPROVAL",
+  "published": false,
+  "topic": "rl-can-mistakes",
+  "language": "en",
+  "level": "B2",
+  "sourcePracticeContentHash": "a9440fc2b18f93afe59f959d624991e05df6cba54dab28f27121351ad50fd3ba",
+  "durationMinutesSuggested": 20,
+  "scoreRule": "1 point per correct MC item; 10 points maximum; local provisional grade only",
+  "description": "Ten newly authored B2 assessment items requiring interpretation, argument analysis and transfer. Teacher content approval pending; no learner-facing publication.",
+  "tabs": [
+    {
+      "id": "interpretation",
+      "title": "Meaning and Implications",
+      "description": "Interpret the message and its assumptions."
+    },
+    {
+      "id": "argument",
+      "title": "Reasoning and Structure",
+      "description": "Evaluate how the writer supports and qualifies claims."
+    },
+    {
+      "id": "transfer",
+      "title": "Applying the Ideas",
+      "description": "Apply the author's reasoning to new realistic situations."
+    }
+  ],
+  "questions": [
+    {
+      "id": "r32-en-b2-int-01",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "Why might a well-meant suggestion be difficult for a student who usually earns high marks?",
+      "choices": [
+        "The suggestion may ignore what the student has achieved in the past.",
+        "The student may hear a criticism of the work as a verdict on their ability.",
+        "High grades may leave the student with few opportunities to ask questions.",
+        "The teacher's advice may focus too heavily on the student's feelings."
+      ],
+      "answer": 1,
+      "explanation": "The first paragraph explains that criticism of a particular performance can be mistaken for a judgement about the student's intelligence.",
+      "sourceParagraph": 1
+    },
+    {
+      "id": "r32-en-b2-int-02",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What could the student achieve by taking one rewritten paragraph to the meeting?",
+      "choices": [
+        "Provide grounds for replacing the original mark with a higher one.",
+        "Show that the teacher's criticism is no longer relevant to the argument.",
+        "Demonstrate that the original essay was well structured after all.",
+        "Turn a general comment into a concrete revision that can be discussed."
+      ],
+      "answer": 3,
+      "explanation": "The student tests a better way of organising evidence while keeping the original grade unchanged.",
+      "sourceParagraph": 2
+    },
+    {
+      "id": "r32-en-b2-int-03",
+      "tab": "interpretation",
+      "kind": "mc",
+      "q": "What wider problem does the writer imply can arise when marking rewards a narrow style of writing?",
+      "choices": [
+        "Students may avoid discussing the quality of their argument in favour of their grades.",
+        "A teacher may find it difficult to compare essays that use different vocabulary.",
+        "A defensible argument may be undervalued because of how it is presented.",
+        "Feedback may become more detailed without becoming easier to understand."
+      ],
+      "answer": 2,
+      "explanation": "Paragraph three observes that a grading system can favour one style, which may not adequately reflect the quality of every argument.",
+      "sourceParagraph": 3
+    },
+    {
+      "id": "r32-en-b2-arg-01",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "Why are the two possible reactions to the essay grade presented side by side?",
+      "choices": [
+        "To show that the mark may stay unchanged while the opportunity to learn differs.",
+        "To suggest that disappointment must disappear before a student can revise.",
+        "To explain why the teacher should reassess the original marking criteria.",
+        "To demonstrate that a full rewrite is necessary before any useful meeting."
+      ],
+      "answer": 0,
+      "explanation": "Both choices leave the original mark unchanged; examining the feedback can nevertheless improve future work.",
+      "sourceParagraph": 2
+    },
+    {
+      "id": "r32-en-b2-arg-02",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "Which description best captures the writer's attitude towards students who feel hurt by criticism?",
+      "choices": [
+        "Impatient: students are responsible for controlling every emotional reaction.",
+        "Detached: feelings have little connection with the way feedback is understood.",
+        "Sceptical: students who take criticism personally rarely benefit from advice.",
+        "Sympathetic: the reaction is understandable, but it need not end reflection."
+      ],
+      "answer": 3,
+      "explanation": "Paragraph one calls the reaction understandable, while paragraph four argues that disappointment should not end the conversation.",
+      "sourceParagraph": 1
+    },
+    {
+      "id": "r32-en-b2-arg-03",
+      "tab": "argument",
+      "kind": "mc",
+      "q": "What is the main reason for extending the discussion to coaches, colleagues and friends?",
+      "choices": [
+        "To compare the reliability of professional advice with that of teachers.",
+        "To show that weighing comments against evidence matters outside school too.",
+        "To identify better sources of advice for people disappointed by their grades.",
+        "To suggest that informal feedback is less upsetting than written comments."
+      ],
+      "answer": 1,
+      "explanation": "The final paragraph applies the need to evaluate criticism to non-school contexts without treating the adviser as infallible.",
+      "sourceParagraph": 4
+    },
+    {
+      "id": "r32-en-b2-app-01",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "A student believes the teacher has missed a link between two claims in an essay. What is the best next step?",
+      "choices": [
+        "Ask whether noticing the link would have changed the original grade.",
+        "Rewrite the entire essay in the teacher's style before discussing the link.",
+        "Show the relevant passages and ask where the reasoning remains unclear.",
+        "Retain the paragraph unchanged because the intended connection is obvious."
+      ],
+      "answer": 2,
+      "explanation": "The writer recommends specific questions and examination of evidence rather than either automatic rejection or blind acceptance.",
+      "sourceParagraph": 3
+    },
+    {
+      "id": "r32-en-b2-app-02",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "A classmate says, 'If criticism makes you upset, it cannot help you learn.' Which reply reflects the article most accurately?",
+      "choices": [
+        "Strong emotions are a sign that the teacher's point is probably correct.",
+        "Criticism should be useful only when it is expressed without disappointment.",
+        "A learner needs to stop feeling disappointed before considering any advice.",
+        "Feeling uncomfortable does not determine whether advice is worth examining."
+      ],
+      "answer": 3,
+      "explanation": "The conclusion distinguishes the discomfort criticism can cause from its potential value when examined critically.",
+      "sourceParagraph": 4
+    },
+    {
+      "id": "r32-en-b2-app-03",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "A student revises an essay solely to have the original mark increased. What useful outcome might this goal overlook?",
+      "choices": [
+        "Discovering which types of comments the teacher is willing to withdraw.",
+        "Developing a clearer way to connect claims and evidence in later essays.",
+        "Learning the exact wording preferred in the school's marking scheme.",
+        "Finding out whether the teacher would accept a different essay topic."
+      ],
+      "answer": 1,
+      "explanation": "The essay example treats the revised paragraph as preparation for stronger future work, not as a way to change the old mark.",
+      "sourceParagraph": 2
+    },
+    {
+      "id": "r32-en-b2-app-04",
+      "tab": "transfer",
+      "kind": "mc",
+      "q": "A coach comments on an athlete's performance after seeing only one training session. What response fits the writer's reasoning?",
+      "choices": [
+        "Compare the observation with further evidence and test a focused change.",
+        "Follow the advice first and ask whether it was accurate afterwards.",
+        "Wait for a second expert before taking any practical step at all.",
+        "Treat the observation as too limited to provide useful information."
+      ],
+      "answer": 0,
+      "explanation": "The final paragraph recognises that a partial observation may identify a genuine weakness while still requiring evaluation.",
+      "sourceParagraph": 4
+    }
+  ],
+  "auditRevision": "R32-CONTENT-AUDIT-1"
+}
