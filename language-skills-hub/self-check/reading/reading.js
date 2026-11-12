@@ -21,7 +21,7 @@
    topic:'READING LAB · LOCAL SELF-CHECK',loading:'Loading the original reading questions…',
    error:'The Reading self-check could not be loaded.',
    lead:'Read the text and answer every question. Solutions appear only after you submit.',
-   reading:'READING TEXT',questions:'COMPREHENSION',remaining:'questions left',answered:'answered',
+   reading:'READING TEXT',questions:'COMPREHENSION',remaining:'questions left',answered:'answered',skills:'Reading skills',
    gap:'This sentence has been removed. Choose the missing sentence in the tasks.',
    mc:'Choose one answer',match:'Match to the paragraph',gapType:'Choose the missing sentence',
    reflection:'Optional reflection · not scored',
@@ -44,7 +44,7 @@
    topic:'READING LAB · AUTOEVALUACIÓN LOCAL',loading:'Cargando las actividades originales…',
    error:'No se ha podido cargar la actividad de lectura.',
    lead:'Lee el texto y responde a las preguntas. Las soluciones aparecerán solo después de entregar.',
-   reading:'TEXTO',questions:'COMPRENSIÓN',remaining:'preguntas pendientes',answered:'respondidas',
+   reading:'TEXTO',questions:'COMPRENSIÓN',remaining:'preguntas pendientes',answered:'respondidas',skills:'Destrezas de lectura',
    gap:'Se ha eliminado una oración. Elige la que falta en las actividades.',
    mc:'Elige una respuesta',match:'Relaciona con el párrafo',gapType:'Elige la oración que falta',
    reflection:'Reflexión opcional · sin puntuación',
@@ -67,7 +67,7 @@
    topic:'READING LAB · LOKALER SELBSTTEST',loading:'Die ursprünglichen Leseaufgaben werden geladen…',
    error:'Der Lese-Selbsttest konnte nicht geladen werden.',
    lead:'Lies den Text und beantworte die Fragen. Lösungen erscheinen erst nach der Abgabe.',
-   reading:'LESETEXT',questions:'TEXTVERSTÄNDNIS',remaining:'Fragen offen',answered:'beantwortet',
+   reading:'LESETEXT',questions:'TEXTVERSTÄNDNIS',remaining:'Fragen offen',answered:'beantwortet',skills:'Lesestrategien',
    gap:'Ein Satz wurde entfernt. Wähle in den Aufgaben den passenden Satz aus.',
    mc:'Wähle eine Antwort',match:'Ordne dem Absatz zu',gapType:'Wähle den fehlenden Satz',
    reflection:'Freiwillige Reflexion · ohne Punkte',
@@ -90,7 +90,7 @@
    topic:'READING LAB · AUTOÉVALUATION LOCALE',loading:'Chargement des exercices de lecture d’origine…',
    error:'Impossible de charger cette autoévaluation de lecture.',
    lead:'Lis le texte et réponds aux questions. Les solutions ne s’affichent qu’après l’envoi.',
-   reading:'TEXTE À LIRE',questions:'COMPRÉHENSION',remaining:'questions restantes',answered:'répondues',
+   reading:'TEXTE À LIRE',questions:'COMPRÉHENSION',remaining:'questions restantes',answered:'répondues',skills:'Compétences de lecture',
    gap:'Une phrase a été retirée du texte. Choisis la phrase manquante dans les exercices.',
    mc:'Choisis une réponse',match:'Associe au paragraphe',gapType:'Choisis la phrase manquante',
    reflection:'Réflexion facultative · non notée',
@@ -149,6 +149,7 @@
   $('readingKicker').textContent=ui.reading;
   $('questionKicker').textContent=ui.questions;
   $('questionsHeading').textContent=ui.questions;
+  $('readingSkillTabs').setAttribute('aria-label',ui.skills);
   $('reflectionHeading').textContent=ui.reflection;
   $('reflectionNote').textContent=ui.reflectionNote;
   $('submitNote').textContent=search.has('timer')?ui.submitNoteTimed:ui.submitNote;
@@ -181,22 +182,75 @@
   return variant.questions.reduce((sum,q)=>sum+
    (Object.prototype.hasOwnProperty.call(answers,q.id)?1:0),0);
  }
+ // R58: same skill labels/order as practice; no Cambridge explanations in TEST.
+ // Input elements stay mounted, so answers, timing and scoring cover every tab.
+ let activeSkillTab=null;
+ function selectSkillTab(skill,focus=false){
+  const buttons=[...$('readingSkillTabs').querySelectorAll('[role="tab"]')];
+  const target=buttons.find(button=>button.dataset.skill===skill);
+  if(!target)return;
+  activeSkillTab=skill;
+  for(const button of buttons){
+   const current=button===target;
+   button.setAttribute('aria-selected',String(current));
+   button.tabIndex=current?0:-1;
+  }
+  for(const panel of $('questionList').querySelectorAll('.reading-skill-panel'))
+   panel.hidden=panel.dataset.skill!==skill;
+  if(focus)target.focus();
+ }
+ function onSkillTabKey(event){
+  const tabs=[...$('readingSkillTabs').querySelectorAll('[role="tab"]')];
+  const current=tabs.indexOf(event.currentTarget);
+  if(current<0)return;
+  let next=current;
+  if(event.key==='ArrowRight')next=(current+1)%tabs.length;
+  else if(event.key==='ArrowLeft')next=(current+tabs.length-1)%tabs.length;
+  else if(event.key==='Home')next=0;
+  else if(event.key==='End')next=tabs.length-1;
+  else return;
+  event.preventDefault();
+  selectSkillTab(tabs[next].dataset.skill,true);
+ }
  function updateProgress(){
   const count=getAnsweredCount(),total=variant.questions.length;
   $('counter').textContent=count+' / '+total;
   $('remaining').textContent=(total-count)+' '+ui.remaining+' · '+count+' '+ui.answered;
   $('progress').setAttribute('aria-valuenow',String(Math.round(count/total*100)));
   $('progressFill').style.width=(count/total*100)+'%';
+  for(const button of $('readingSkillTabs').querySelectorAll('[role="tab"]')){
+   const group=variant.questions.filter(q=>q.tab===button.dataset.skill);
+   const answered=group.filter(q=>Object.prototype.hasOwnProperty.call(answers,q.id)).length;
+   button.querySelector('.reading-tab-count').textContent=answered+' / '+group.length;
+   button.setAttribute('aria-label',button.dataset.title+' · '+answered+' / '+group.length+' '+ui.answered);
+   button.classList.toggle('is-complete',answered===group.length);
+  }
  }
  function renderQuestions(){
-  const list=$('questionList');list.replaceChildren();
+  const list=$('questionList'),navigation=$('readingSkillTabs');
+  list.replaceChildren();navigation.replaceChildren();
   let number=0;
   for(const tab of variant.tabs){
    const questions=variant.questions.filter(q=>q.tab===tab.id);
    if(!questions.length)continue;
-   const stage=add('section','stage');
-   stage.appendChild(add('h3',null,tab.title));
-   if(tab.description)stage.appendChild(add('p',null,tab.description));
+   const button=add('button','reading-skill-tab');
+   button.type='button';button.id='reading-test-tab-'+tab.id;
+   button.dataset.skill=tab.id;button.dataset.title=tab.title;
+   button.setAttribute('role','tab');
+   button.setAttribute('aria-controls','reading-test-panel-'+tab.id);
+   button.setAttribute('aria-selected','false');
+   button.tabIndex=-1;
+   button.append(add('span','reading-tab-title',tab.title),
+    add('span','reading-tab-count','0 / '+questions.length));
+   button.addEventListener('click',()=>selectSkillTab(tab.id));
+   button.addEventListener('keydown',onSkillTabKey);
+   navigation.appendChild(button);
+   const stage=add('section','stage reading-skill-panel');
+   stage.id='reading-test-panel-'+tab.id;
+   stage.dataset.skill=tab.id;
+   stage.setAttribute('role','tabpanel');
+   stage.setAttribute('aria-labelledby',button.id);
+   stage.tabIndex=0;
    list.appendChild(stage);
    for(const q of questions){
     number++;
@@ -219,9 +273,11 @@
      label.append(radio,add('span',null,choice));
      card.appendChild(label);
     });
-    list.appendChild(card);
+    stage.appendChild(card);
    }
   }
+  navigation.hidden=navigation.childElementCount===0;
+  selectSkillTab(navigation.querySelector('[role="tab"]')?.dataset.skill);
   $('reflectionWrap').hidden=!(typeof variant.open==='string'&&variant.open.trim());
   $('reflectionPrompt').textContent=variant.open||'';
   updateProgress();
