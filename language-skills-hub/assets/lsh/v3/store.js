@@ -210,6 +210,32 @@
         } catch(e) {state='error';reject(e);}
       });
     }
+    // R57: remove only the shared vocabulary bank. The tombstone is committed
+    // in the SAME IndexedDB transaction, preventing old migration data from
+    // silently reappearing on the next visit. Answers and backup files remain.
+    const CLEAR_ALL_MARKER='vocabulary-cleared-by-user-r57';
+    async function wasWordsCleared() {
+      return Boolean(await one('meta',CLEAR_ALL_MARKER));
+    }
+    async function clearAllWords() {
+      const marker={key:CLEAR_ALL_MARKER,clearedAt:new Date().toISOString()};
+      const db=await open();
+      if(!db){
+        memory.words.clear();
+        memory.meta.set(CLEAR_ALL_MARKER,marker);
+        notify();
+        return {count:0,storedInIndexedDB:false};
+      }
+      return new Promise((resolve,reject)=>{
+        try{
+          const tx=db.transaction(['words','meta'],'readwrite');
+          tx.oncomplete=()=>{notify();resolve({count:0,storedInIndexedDB:true});};
+          tx.onabort=()=>{state='error';reject(tx.error||new Error('Clearing vocabulary failed'));};
+          tx.objectStore('words').clear();
+          tx.objectStore('meta').put(marker);
+        }catch(e){state='error';reject(e);}
+      });
+    }
     async function exportWords(now) { return MODEL.serializeExport(await all('words'),now); }
     async function saveAnswers(input,now) {
       const item=MODEL.normalizeAnswers(input,now);
@@ -239,7 +265,7 @@
     return Object.freeze({
       database:dbName,open,status,subscribe,close,
       listWords:()=>all('words'),getWord:id=>one('words',id),saveWord,
-      addManualWord,patchWord,deleteWord,rateWord,importWords,exportWords,
+      addManualWord,patchWord,deleteWord,clearAllWords,wasWordsCleared,rateWord,importWords,exportWords,
       saveAnswers,getAnswers,clearAnswers,restoreAnswers
     });
   }
