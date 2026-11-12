@@ -265,7 +265,7 @@ if(typeof module!=='undefined'&&module.exports)module.exports=api;
 host.LSHPracticeAnswers=api;
 if(!host.document||!$('practiceKeyApp'))return;
 const read=host.LSHReadingCore,listen=host.LSHListeningCore,qs=new URLSearchParams(host.location.search);
-let selected=null,serial=0,current=null;
+let selected=null,serial=0,current=null,sourceCache=null;
 const el=(tag,textValue)=>{const node=host.document.createElement(tag);node.textContent=textValue;return node};
 function option(value,label){const node=el('option',label);node.value=value;return node}
 function fill(id,opts,preferred){
@@ -291,6 +291,16 @@ function configure(e){
  back.searchParams.set('skill',e.skill);
  $('backToCatalog').href=back.href;
 }
+function setModeUI(){
+ const isTest=$('answerMode').value==='test';
+ $('modeHelp').textContent=isTest?
+  'TEST: přesně hodnocené testové otázky. Listening obsahuje i faktické doplňování a uznávané varianty; Reading pouze hodnocené otázky.':
+  'PROCVIČOVÁNÍ: úplný klíč do hodiny včetně diskusí, slovní zásoby a vzorových odpovědí.';
+ $('keyIntro').textContent=isTest?
+  'Správná řešení testové varianty vybrané karty včetně dostupných vysvětlení.':
+  'Správná řešení procvičovací varianty vybrané karty včetně vysvětlení a dostupných vzorových odpovědí.';
+ $('downloadPdf').textContent=isTest?'Stáhnout testový klíč (PDF)':'Stáhnout klíč k procvičování (PDF)';
+}
 function line(label,value,cls){
  const p=el('p',value);if(cls)p.className=cls;
  if(label){const strong=el('strong',label+': ');p.prepend(strong)}
@@ -298,8 +308,10 @@ function line(label,value,cls){
 }
 function renderPreview(model){
  const mount=$('answerPreview');mount.replaceChildren();
+ const modeTitle=el('p',model.mode==='test'?'TESTOVÁ VERZE · SPRÁVNÁ ŘEŠENÍ':
+  'PROCVIČOVACÍ VERZE · SPRÁVNÁ ŘEŠENÍ');modeTitle.className='preview-mode';
  const h=el('h2',model.topic+' · '+model.language.toUpperCase()+' '+model.level);
- mount.appendChild(h);
+ mount.append(modeTitle,h);
  for(const g of model.groups){
   const box=el('section','');box.className='key-group';
   box.appendChild(el('h3',g.title));
@@ -319,7 +331,7 @@ async function refresh(){
  $('downloadPdf').disabled=true;$('status').textContent='Načítám správná řešení pro vybranou variantu…';
  $('answerPreview').replaceChildren();
  const e=entry();if(!e)return;
- const lang=$('language').value,level=$('level').value;
+ const lang=$('language').value,level=$('level').value,mode=$('answerMode').value;
  if(!e.languages.includes(lang)||!e.levels.includes(level)){
   const missing=[];
   if(!e.languages.includes(lang))missing.push('jazyk');
@@ -331,24 +343,31 @@ async function refresh(){
   const source=e.lockSource||e.relative;
   need(/^(cteni|poslech|r11\/variant-copies)\/[a-z0-9-]+(?:\/index)?\.html$/.test(source),
    'Nepovolená zdrojová cesta.');
-  const resp=await fetch('../../'+source,{credentials:'omit',redirect:'error'});
-  need(resp.ok,'Nedostupná původní procvičovací karta: HTTP '+resp.status);
-  const html=await resp.text();
+  let html=sourceCache;
+  if(html===null){
+   const resp=await fetch('../../'+source,{credentials:'omit',redirect:'error'});
+   need(resp.ok,'Nedostupná původní karta: HTTP '+resp.status);
+   html=await resp.text();
+   sourceCache=html; // The topic cannot change on this page.
+  }
   let model;
   if(e.skill==='cteni'){
    const v=read.variantFromData(read.parseReadingData(html),lang,level);
-   model=buildReading(v,e,lang,level);
+   model=mode==='test'?buildReadingTest(v,e,lang,level):buildReading(v,e,lang,level);
   }else{
    const v=listen.variant(listen.extractJson(html,'DATA'),level);
-   model=buildListening(v,e,lang,level);
+   model=mode==='test'?buildListeningTest(v,e,lang,level,
+    listen.cloze(v,e.id,level)):buildListening(v,e,lang,level);
   }
   validate(model);
   if(id!==serial)return;
   current=model;renderPreview(model);
   $('downloadPdf').disabled=false;
-  $('status').textContent='Klíč je připraven. Obsahuje pouze procvičování, ne osobní výsledky žáků.';
+  $('status').textContent='Klíč je připraven ('+(mode==='test'?'TEST':'procvičování')+
+   '). Neobsahuje výsledky jednotlivých žáků.';
   const u=new URL(host.location.href);
-  u.searchParams.set('topic',e.id);u.searchParams.set('lang',lang);u.searchParams.set('level',level);
+  u.searchParams.set('topic',e.id);u.searchParams.set('lang',lang);
+  u.searchParams.set('level',level);u.searchParams.set('mode',mode);
   host.history.replaceState(null,'',u.href);
  }catch(error){
   if(id!==serial)return;
@@ -368,7 +387,12 @@ async function init(){
   need(e,'Téma neexistuje. Otevři výsledky z konkrétní karty v katalogu.');
   need(requestedSkill===null||requestedSkill===e.skill,
    'Nesprávná laboratoř v odkazu. Reading a Listening nelze zaměnit.');
+  const requestedMode=qs.get('mode');
+  need(requestedMode===null||['practice','test'].includes(requestedMode),
+   'Neplatná verze klíče v odkazu.');
   selected=e;configure(e);
+  $('answerMode').value=requestedMode||'practice';setModeUI();
+  $('answerMode').addEventListener('change',()=>{setModeUI();refresh()});
   $('language').addEventListener('change',refresh);
   $('level').addEventListener('change',refresh);
   $('downloadPdf').addEventListener('click',async()=>{
