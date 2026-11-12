@@ -47,6 +47,9 @@ for(const [engineName,engine] of engines){
      await teacher.locator('#language').selectOption(lang);
      for(const [levelIndex,level] of levels.entries()){
       const id=entry.id+' '+lang+'/'+level;
+      // WebKit throttles input events in background tabs. A teacher configuring
+      // the QR is actively viewing this panel; keep that real user condition.
+      await teacher.bringToFront();
       await teacher.locator('#level').selectOption(level);
       const timer=[5,30,120][(index+languageIndex+levelIndex)%3];
       await teacher.locator('#timerMinutes').fill(String(timer));
