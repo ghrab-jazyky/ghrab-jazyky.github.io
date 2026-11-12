@@ -181,6 +181,19 @@
   row.append(element('strong',null,key+': '),document.createTextNode(String(value)));
   box.appendChild(row);
  }
+ // Only incorrect objective answers are rendered; all scored tasks remain in the archive.
+ function answerComparison(container,studentAnswer,correctAnswer){
+  const pair=element('dl','feedback-compare');
+  for(const [kind,label,value]of [
+   ['submitted','Your answer',studentAnswer],
+   ['expected','Correct answer',correctAnswer]
+  ]){
+   const cell=element('div','feedback-answer '+kind);
+   cell.append(element('dt',null,label),element('dd',null,String(value)));
+   pair.appendChild(cell);
+  }
+  container.appendChild(pair);
+ }
  function gradeBadge(container,gradeResult,label){
   container.replaceChildren();
   container.append(
@@ -212,12 +225,23 @@
   if(!mistakes.length)list.appendChild(element('p','small-note',
    'All automatically assessed answers are correct. No objective mistakes to review.'));
   for(const task of mistakes){
-   const box=element('article','review '+(task.correct?'correct':'wrong'));
-   box.appendChild(element('span','state',(task.correct?'CORRECT':'NOT CORRECT')+' · '+segment(task.phase)));
+   const box=element('article','review wrong');
+   box.appendChild(element('span','state',(task.answered?'NOT CORRECT':'NOT ANSWERED')+' · '+segment(task.phase)));
    box.appendChild(element('h3',null,task.question));
-   kv(box,'Your answer',task.chosen.length?task.chosen.join(' · '):'Not answered');
-   if(!task.correct)kv(box,'Correct answer',task.correctAnswers.join(' · '));
-   if(task.reason)kv(box,'Explanation',task.reason);
+   answerComparison(box,task.chosen.length?task.chosen.join(' · '):'Not answered',
+    task.correctAnswers.join(' · '));
+   // Authored justifications for choice tasks; only a transparent scoring
+   // note for sequence/cloze, where the source has no individual explanation.
+   const note=task.reason?.trim()?{label:'Explanation',text:task.reason}:
+    task.phase==='sequence'?{label:'How this is checked',
+     text:'Statements are checked against the order in which they appear in the recording.'}:
+    task.phase==='cloze'?{label:'How this is checked',
+     text:'This is an exact factual detail from the recording. Approved equivalent spellings are accepted; capitalization, accents and punctuation do not affect the result.'}:null;
+   if(note){
+    const explanation=element('div','feedback-explanation');
+    kv(explanation,note.label,note.text);
+    box.appendChild(explanation);
+   }
    list.appendChild(box);
   }
   const proposed=gradeCore.proposal(normalized.points.earned,normalized.points.max);

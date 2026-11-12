@@ -45,3 +45,16 @@ fieldset.question>.question-kind{clear:both}
 fieldset.question>.choice{max-width:100%;min-width:0}
 fieldset.question .choice>span{min-width:0;overflow-wrap:anywhere}
 .question-list .stage,.question-list .quiz-hint{min-width:0;max-width:100%;overflow-wrap:anywhere}
+
+/* R48: Only wrong answers appear in the student review.
+ * Use parallel answer cells on wider screens and readable stacked cells on phones.
+ * Shared by Reading and Listening; no effect on the complete PDF teacher archive. */
+.feedback-compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:13px 0 8px;min-width:0}
+.feedback-answer{min-width:0;margin:0;padding:12px 13px;border:1px solid var(--line);border-radius:11px;background:var(--field);overflow-wrap:anywhere}
+.feedback-answer.submitted{border-left:3px solid var(--wrong)}
+.feedback-answer.expected{border-left:3px solid var(--correct)}
+.feedback-answer dt{font-size:.77rem;font-weight:800;letter-spacing:.01em;color:var(--muted)}
+.feedback-answer dd{font-size:.92rem;line-height:1.55;margin:7px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--text)}
+.feedback-explanation{border-left:3px solid var(--accent);padding:8px 12px;margin:12px 0 2px;background:var(--panel);border-radius:0 9px 9px 0;overflow-wrap:anywhere}
+.review .feedback-explanation p{margin:0;line-height:1.6}
+@media(max-width:580px){.feedback-compare{grid-template-columns:minmax(0,1fr);gap:8px}.feedback-answer{padding:10px 12px}}

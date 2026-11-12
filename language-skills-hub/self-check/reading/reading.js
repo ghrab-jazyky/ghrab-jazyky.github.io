@@ -238,6 +238,19 @@
   p.appendChild(document.createTextNode(text));
   container.appendChild(p);
  }
+ // Student review contains only mistakes; the teacher archive uses the full report.
+ function answerComparison(container,studentAnswer,correctAnswer){
+  const pair=add('dl','feedback-compare');
+  for(const [kind,label,value]of [
+   ['submitted',ui.your,studentAnswer],
+   ['expected',ui.expected,correctAnswer]
+  ]){
+   const cell=add('div','feedback-answer '+kind);
+   cell.append(add('dt',null,label),add('dd',null,String(value)));
+   pair.appendChild(cell);
+  }
+  container.appendChild(pair);
+ }
  function renderResult(report){
   $('resultCaution').textContent=ui.after+' '+ui.grade+'.';
   const proposal=gradeCore.proposal(report.points,report.maxPoints);
@@ -263,12 +276,15 @@
    fr:'Toutes les réponses sont correctes. Il n’y a aucune erreur à revoir.'
   }[locale]));
   for(const item of mistakes){
-   const box=add('article','review '+(item.correct?'correct':'wrong'));
-   box.appendChild(add('span','state',item.correct?ui.right:ui.wrong));
+   const box=add('article','review wrong');
+   box.appendChild(add('span','state',item.answered?ui.wrong:ui.notAnswered));
    box.appendChild(add('h3',null,item.prompt));
-   line(box,ui.your,item.answered?item.selectedAnswer:ui.notAnswered);
-   if(!item.correct)line(box,ui.expected,item.correctAnswer);
-   if(item.explanation)line(box,ui.because,item.explanation);
+   answerComparison(box,item.answered?item.selectedAnswer:ui.notAnswered,item.correctAnswer);
+   if(item.explanation){
+    const explanation=add('div','feedback-explanation');
+    line(explanation,ui.because,item.explanation);
+    box.appendChild(explanation);
+   }
    details.appendChild(box);
   }
   $('resultReflection').textContent=ui.reflectionAfter;
