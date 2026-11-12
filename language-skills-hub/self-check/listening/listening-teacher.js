@@ -1,16 +1,47 @@
-/* R24 teacher-facing helper. Public page, NOT authenticated and NOT a remote media controller. */
+/* R53: fixed-topic Listening TEST setup. Only the selected card's media URL and
+ * CEFR/timer/share controls are shown; no playback counter or cross-topic switch.
+ * Public, serverless teacher helper: never claims control over external playback. */
 (()=>{
  'use strict';
  const core=window.LSHListeningCore,shareTools=window.LSHShareTools;
  const $=id=>document.getElementById(id);
  const params=new URLSearchParams(location.search);
  const attemptId='class'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
- let passes=0,sequence=0;
- const names={
-  'll-matthew-oscars':'Matthew McConaughey · Oscars 2014',
-  'll-harrison-ford':'Harrison Ford · Life Achievement Speech',
-  'll-peaky-no-fighting':'Peaky Blinders · No Fighting'
- };
+
+ // Source URLs mirror the original public Listening cards. The R53 static CI
+ // validates every URL and topic against data/cards.json and each card's SOURCES.
+ // Keeping these links local makes the video reachable without a catalog fetch.
+ const topics=Object.freeze({
+  'll-matthew-oscars':{
+   title:'Matthew McConaughey · Oscars 2014',
+   source:'poslech/matthew-oscars/index.html',
+   media:[
+    {key:'speech',url:'https://www.youtube.com/watch?v=wD2cVhC-63I&t=70s',label:'Otevřít projev na YouTube (od 1:10)'},
+    {key:'youtube',url:'https://www.youtube.com/watch?v=wD2cVhC-63I',label:'Celý původní záznam na YouTube'}
+   ],
+   caution:'YouTube může zobrazit reklamu nebo přehrávání omezit. Před hodinou zkontroluj dostupnost.'
+  },
+  'll-harrison-ford':{
+   title:'Harrison Ford · Life Achievement Speech',
+   source:'poslech/harrison-ford/index.html',
+   media:[
+    {key:'facebook',url:'https://www.facebook.com/netflixus/videos/harrison-ford-sag-life-achievement-award/796302026840392/',label:'Otevřít původní video na Facebooku'},
+    {key:'netflix_post',url:'https://x.com/netflix/status/2028305176508170602',label:'Alternativní záznam na X'}
+   ],
+   caution:'Facebook či X může vyžadovat přihlášení nebo omezit přehrávání. Ověř zdroj na školním zařízení.'
+  },
+  'll-peaky-no-fighting':{
+   title:'Peaky Blinders · No Fighting',
+   source:'poslech/peaky-no-fighting/index.html',
+   media:[
+    {key:'youtube',url:'https://www.youtube.com/watch?v=DRLSRX1nF0s',label:'Otevřít původní video na YouTube'},
+    {key:'official_backup',url:'https://www.youtube.com/watch?v=_hzgUPl3YWU',label:'Záložní video na YouTube'}
+   ],
+   caution:'Upozornění: obsahuje vulgarismy, odkazy na drogy a agresivní komunikaci. Před hodinou ověř vhodnost i dostupnost videa.'
+  }
+ });
+ const topicId=params.get('topic');
+ const chosen=Object.hasOwn(topics,topicId)?topics[topicId]:null;
  function appearance(light,save){
   document.documentElement.dataset.theme=light?'light':'dark';
   $('themeButton').textContent=light?'☾ Tmavý režim':'☀ Světlý režim';
@@ -24,110 +55,92 @@
    appearance(document.documentElement.dataset.theme!=='light',true);
   });
  }
- function count(){
-  $('passCount').textContent=passes+' / 2';
-  $('markPass').disabled=passes>=2;
-  $('markPass').textContent=passes===0?'První poslech dokončen':
-   passes===1?'Druhý poslech dokončen':'Dva poslechy dokončeny';
-  $('passNote').textContent=passes===0?
-   'Otevři zdroj a přehraj jej poprvé. Tento panel video sám neovládá.':
-   passes===1?
-   'První poslech je označen. Po druhém přehrání potvrď druhý poslech.':
-   'Dva poslechy dokončeny. Žáci mohou dokončit řazení a přiřazování a získat automatický návrh známky.';
+ function renderMedia(){
+  const mount=$('mediaSources');mount.replaceChildren();
+  if(!chosen)return;
+  for(const [index,media] of chosen.media.entries()){
+   const url=new URL(media.url);
+   if(url.protocol!=='https:'||!['www.youtube.com','youtube.com',
+    'www.facebook.com','facebook.com','x.com'].includes(url.hostname))
+    throw new Error('Nepovolený původní zdroj videa.');
+   const a=document.createElement('a');
+   a.href=url.href;a.target='_blank';a.rel='noopener noreferrer';
+   a.className=index===0?'listening-video-primary':'listening-video-alternative';
+   a.dataset.source=media.key;
+   a.textContent=(index===0?'▶ ':'↗ ')+media.label;
+   a.setAttribute('aria-label',media.label+' – otevře se v nové záložce');
+   mount.appendChild(a);
+  }
+  $('mediaCaution').textContent=chosen.caution;
+  $('loadStatus').textContent='Odkaz na zdrojové video je připraven.';
  }
- function urlForStudent(){
-  const url=new URL('student.html',location.href);
-  url.search='';
-  url.searchParams.set('topic',$('topic').value);
-  url.searchParams.set('level',$('level').value);
-  url.searchParams.set('timer',$('timerMinutes').value);
-  url.searchParams.set('attempt',attemptId);
-  return url.href;
+ function studentUrl(){
+  const u=new URL('student.html',location.href);
+  u.search='';
+  u.searchParams.set('topic',topicId);
+  u.searchParams.set('level',$('level').value);
+  u.searchParams.set('timer',$('timerMinutes').value);
+  u.searchParams.set('attempt',attemptId);
+  return u.href;
+ }
+ function invalidate(reason){
+  $('studentUrl').value='';
+  $('copyUrl').disabled=true;
+  $('studentPreview').href='#';
+  $('studentPreview').setAttribute('aria-disabled','true');
+  shareTools.render('',$('qrMount'),$('downloadQr'));
+  $('setupStatus').textContent=reason;
+  $('copyStatus').textContent='Studentský odkaz není dostupný.';
  }
  function share(){
-  const limit=Number($('timerMinutes').value);
-  if(!Number.isInteger(limit)||limit<5||limit>120){
-   $('studentUrl').value='';$('studentPreview').href='#';
-   $('copyUrl').disabled=true;$('studentPreview').setAttribute('aria-disabled','true');
-   shareTools.render('',$('qrMount'),$('downloadQr'));
-   $('copyStatus').textContent='Vyber platný časový limit 5–120 minut.';
+  if(!chosen){invalidate('Neplatný odkaz: zvolená poslechová karta neexistuje. Vrať se do katalogu.');return}
+  const limit=Number($('timerMinutes').value),level=$('level').value;
+  if(!Number.isInteger(limit)||limit<5||limit>120||!core.LEVELS.includes(level)){
+   invalidate('Nastav platnou úroveň A1–C2 a časový limit 5–120 minut.');
    return;
   }
-  const link=urlForStudent();
-  $('copyUrl').disabled=false;$('studentPreview').setAttribute('aria-disabled','false');
+  const link=studentUrl();
+  $('copyUrl').disabled=false;
+  $('studentPreview').setAttribute('aria-disabled','false');
   $('studentUrl').value=link;
   $('studentPreview').href=link;
   shareTools.render(link,$('qrMount'),$('downloadQr'));
-  const locationUrl=new URL(location.href);
-  locationUrl.searchParams.set('topic',$('topic').value);
-  locationUrl.searchParams.set('level',$('level').value);
-  locationUrl.searchParams.set('timer',String(limit));
-  history.replaceState(null,'',locationUrl);
- }
- async function loadSources(){
-  const serial=++sequence;
-  passes=0;count();
-  $('mediaSources').replaceChildren();
-  $('loadStatus').textContent='Načítám originální médium…';
-  $('copyStatus').textContent='Zkopíruj odkaz a pošli jej studentům. Nepředstavuje zabezpečený test.';
-  share();
-  try{
-   const response=await fetch('../../data/cards.json',{credentials:'omit',redirect:'error'});
-   if(!response.ok)throw new Error('Katalog HTTP '+response.status);
-   const entry=core.catalogEntry(await response.json(),$('topic').value);
-   const source=await fetch('../../'+entry.relative,{credentials:'omit',redirect:'error'});
-   if(!source.ok)throw new Error('Zdroj HTTP '+source.status);
-   const html=await source.text();
-   const data=core.extractJson(html,'DATA');
-   core.variant(data,$('level').value);
-   const links=core.sourceLinks(html);
-   if(serial!==sequence)return;
-   $('loadStatus').textContent='Původní zdroj pro '+names[entry.id]+' ('+$('level').value+')';
-   const namesForSources={youtube:'Původní YouTube',speech:'Projev na YouTube',
-    facebook:'Původní Facebook',netflix_post:'Odkaz na příspěvek X',
-    official_backup:'Záložní YouTube'};
-   for(const link of links){
-    // Netflix landing pages are not guaranteed playable speech sources.
-    if(link.name==='netflix')continue;
-    const a=document.createElement('a');
-    a.href=link.url;
-    a.target='_blank';
-    a.rel='noopener noreferrer';
-    a.textContent=namesForSources[link.name]||'Externí původní zdroj';
-    a.setAttribute('aria-label','Otevřít '+a.textContent+' v novém panelu');
-    $('mediaSources').appendChild(a);
-   }
-   $('mediaCaution').textContent=entry.id==='ll-peaky-no-fighting'?
-    'Upozornění: Peaky Blinders obsahuje vulgarismy, odkazy na drogy a agresivní komunikaci. Posuď vhodnost pro třídu. Dostupnost YouTube je nutné ověřit ve školní síti.':
-    entry.id==='ll-harrison-ford'?
-    'Zdroj na Facebooku či X může vyžadovat přihlášení nebo nemusí přehrávání umožnit. Před hodinou ověř dostupnost na svém zařízení.':
-    'YouTube může zobrazit reklamu nebo omezit přehrávání. Před hodinou ověř zdroj. Nepřenášíme video ani úplný přepis do aplikace.';
-  }catch(err){
-   if(serial!==sequence)return;
-   $('loadStatus').textContent='Nelze načíst původní zdroj: '+String(err.message||err);
-   $('mediaCaution').textContent='Nezahajuj poslech, dokud nebude dostupný původní mediální zdroj.';
-  }
- }
- async function copy(){
-  await shareTools.copy($('studentUrl').value,$('studentUrl'),$('copyStatus'));
+  $('setupStatus').textContent='Připraveno: '+chosen.title+' · '+level+' · '+limit+' minut.';
+  $('copyStatus').textContent='Odkaz a QR kód obsahují pevnou kartu, úroveň a časový limit.';
+  const next=new URL(location.href);
+  next.searchParams.set('topic',topicId);
+  next.searchParams.set('level',level);
+  next.searchParams.set('timer',String(limit));
+  history.replaceState(null,'',next);
  }
  function start(){
   initTheme();
-  $('topic').value=core.TOPICS.includes(params.get('topic'))?params.get('topic'):'ll-matthew-oscars';
+  $('copyUrl').addEventListener('click',()=>
+   shareTools.copy($('studentUrl').value,$('studentUrl'),$('copyStatus')));
+  $('downloadQr').addEventListener('click',()=>
+   shareTools.download($('qrMount'),$('copyStatus'),'listening-test-navrh-znamky-qr.svg'));
+  $('studentUrl').addEventListener('focus',event=>event.target.select());
+  $('studentPreview').addEventListener('click',event=>{
+   if(!$('studentUrl').value)event.preventDefault();
+  });
+  if(!chosen){
+   $('topicTitle').textContent='Kartu nelze otevřít';
+   $('mediaCaution').textContent='Vrať se do Listening Lab a klikni na TEST u konkrétní karty.';
+   $('loadStatus').textContent='Chybí platné téma v odkazu.';
+   invalidate('Neplatný odkaz: chybí konkrétní poslechová karta.');
+   return;
+  }
+  $('topicTitle').textContent=chosen.title;
+  $('topicTitle').dataset.topicId=topicId;
+  document.title='Listening Lab · TEST · '+chosen.title;
   $('level').value=core.LEVELS.includes(params.get('level'))?params.get('level'):'B2';
   const preset=Number(params.get('timer'));
   $('timerMinutes').value=Number.isInteger(preset)&&preset>=5&&preset<=120?String(preset):'30';
-  $('topic').addEventListener('change',loadSources);
-  $('level').addEventListener('change',loadSources);
+  $('level').addEventListener('change',share);
   $('timerMinutes').addEventListener('input',share);
   $('timerMinutes').addEventListener('change',share);
-  $('markPass').addEventListener('click',()=>{if(passes<2){passes++;count()}});
-  $('resetPass').addEventListener('click',()=>{passes=0;count()});
-  $('copyUrl').addEventListener('click',copy);
-  $('downloadQr').addEventListener('click',()=>shareTools.download($('qrMount'),$('copyStatus'),'listening-test-navrh-znamky-qr.svg'));
-  $('studentUrl').addEventListener('focus',e=>e.target.select());
-  $('studentPreview').addEventListener('click',e=>{if(!$('studentUrl').value)e.preventDefault()});
-  loadSources();
+  renderMedia();
+  share();
  }
  start();
 })();
