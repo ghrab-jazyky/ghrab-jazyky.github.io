@@ -1,0 +1,64 @@
+name: LSH R49 ONE Vocabulary across 29 cards, safe Reading migration
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/**'
+      - '.github/workflows/lsh-r49-single-vocabulary.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/**'
+      - '.github/workflows/lsh-r49-single-vocabulary.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unified-static:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify syntax and all 29 SHA-256 integrity hashes
+        run: |
+          node --check language-skills-hub/assets/lsh/v3/card-vocabulary.js
+          node --check language-skills-hub/assets/lsh/v3/legacy-reading-migration.js
+          node --check language-skills-hub/slovnicek/vocabulary.js
+          node --check language-skills-hub/tests/r49-unified-vocabulary.test.cjs
+          node --check language-skills-hub/tests/r49-unified-vocabulary.browser.test.cjs
+      - name: Canonical word bank, content integrity, migrations and backups
+        run: |
+          node --test language-skills-hub/tests/r40-vocabulary-integration.test.cjs language-skills-hub/tests/r43-backup-safety.test.cjs language-skills-hub/tests/r49-unified-vocabulary.test.cjs
+
+  unified-browser:
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install Chromium/WebKit
+        timeout-minutes: 8
+        run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Audit 29 cards, one button each, migrate old words, save and transfer between browsers
+        timeout-minutes: 22
+        run: |
+          if command -v python3 >/dev/null 2>&1; then
+            python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-r49-http.log 2>&1 &
+          else
+            npx --yes http-server@14.1.1 . -p 8765 -a 127.0.0.1 -s -c-1 >/tmp/lsh-r49-http.log 2>&1 &
+          fi
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))' http://127.0.0.1:8765/language-skills-hub/index.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/r40-vocabulary-integration.browser.test.cjs language-skills-hub/tests/r42-listening-vocabulary.browser.test.cjs language-skills-hub/tests/r43-backup-safety.browser.test.cjs language-skills-hub/tests/r49-unified-vocabulary.browser.test.cjs

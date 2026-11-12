@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="vocabulary.css">
 <script defer src="../assets/lsh/v3/model.js"></script>
 <script defer src="../assets/lsh/v3/store.js"></script>
+<script defer src="../assets/lsh/v3/legacy-reading-migration.js"></script>
 <script defer src="practice.js"></script>
 <script defer src="backup-safety.js"></script>
 <script defer src="backup-ui.js"></script>
@@ -23,6 +24,7 @@
 <main id="main">
  <p class="intro">Jeden slovníček pro Conversation, Reading a Listening Lab. Slovíčka se ukládají <strong>jen v tomto prohlížeči na tomto zařízení</strong> – nikam se neodesílají. Pro přenos na jiné zařízení použij zálohu JSON.</p>
  <p class="notice" id="storageStatus" role="status" aria-live="polite">Kontroluji místní úložiště…</p>
+ <p class="notice" id="legacyReadingStatus" role="status" aria-live="polite" hidden></p>
 <section class="panel backup-panel" aria-labelledby="backupTitle">
  <h2 id="backupTitle">Ochrana slovíček a přenos mezi zařízeními</h2>
  <p>Slovíčka se ukládají jen v tomto prohlížeči. Bez serveru a účtů se nepřenášejí automaticky. Pro přenos stačí soubor JSON: ulož ho do aplikace Soubory, iCloud Drive, Google Drive nebo přenes AirDropem. Na dalším zařízení otevři libovolnou studentskou kartu → My Vocabulary → <strong>Nahrát zálohu</strong> → <strong>Sloučit</strong>.</p>
@@ -40,6 +42,7 @@
    <button id="exportBtn" type="button">↓ Stáhnout zálohu (.json)</button>
    <label class="filelabel" for="importFile">↑ Nahrát zálohu (.json)</label><input type="file" id="importFile" accept=".json,application/json" hidden>
   </div></div>
+  <p class="privacy">Podporované zálohy: současný My Vocabulary i starší JSON ze čtecích karet Reading Lab. Při převodu zůstanou původní data nedotčená.</p>
   <div class="options"><label><input id="replaceImport" type="checkbox"> Při importu nahradit existující slovníček (jinak sloučit)</label></div>
   <div class="filters">
    <label>Jazyk <select id="languageFilter"><option value="all">Všechny jazyky</option><option value="en">Angličtina</option><option value="es">Španělština</option><option value="de">Němčina</option><option value="fr">Francouzština</option></select></label>

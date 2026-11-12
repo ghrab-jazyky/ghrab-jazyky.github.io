@@ -21,7 +21,12 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     const context=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
     const page=await context.newPage(),errors=[],nonGets=[];
     const data=sourceData(slug);
-    page.on('pageerror',e=>errors.push(e.message));
+    page.on('pageerror',e=>{
+     // WebKit emits a benign ResizeObserver delivery-loop warning when
+     // a responsive Reading toolbar changes height; it is not an app exception.
+     if(/^ResizeObserver loop completed with undelivered notifications\.$/.test(e.message))return;
+     errors.push(e.message);
+    });
     page.on('request',r=>{if(!['GET','HEAD'].includes(r.method()))nonGets.push(r.method()+' '+r.url())});
     const response=await page.goto(root+slug+'/index.html?practice=1&lang=en&level=A1',{waitUntil:'load',timeout:45000});
     assert.equal(response.status(),200,slug);

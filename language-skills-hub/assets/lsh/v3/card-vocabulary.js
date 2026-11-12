@@ -19,6 +19,11 @@ const level=()=>{
  return MODEL.LEVELS.includes(value)?value:'B1';
 };
 const store=STORE.createStore({mode:'production'});
+const legacyReading=root.LSH_READING_MIGRATION;
+// One shared visual language for both Reading and Listening cards.
+const stylesheet=document.createElement('link');
+stylesheet.rel='stylesheet';stylesheet.href='../../assets/lsh/v3/card-vocabulary.css';
+document.head.append(stylesheet);
 const norm=s=>String(s||'').normalize('NFC').trim().replace(/\s+/g,' ').toLocaleLowerCase()
  .replace(/[’‘]/g,"'").replace(/[‐‑‒–—]/g,'-');
 function senseId(lang,term,translation){
@@ -35,7 +40,6 @@ function mount(){
  if(!head)return;
  const a=make('a','My Vocabulary','lsh-vocab-nav');
  a.href='../../slovnicek/index.html?zpet='+encodeURIComponent(location.pathname);
- a.style.cssText='display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:8px 12px;background:#143f55;border:1px solid #7db3bc;border-radius:9px;color:#f7fbff;font:700 12px/1.3 system-ui;text-decoration:none;white-space:nowrap;cursor:pointer';
  a.setAttribute('aria-label','Otevřít My Vocabulary – společný uložený slovníček');
  head.append(a);
  const announce=make('p','','lsh-vocab-message');announce.setAttribute('role','status');announce.setAttribute('aria-live','polite');
@@ -71,28 +75,52 @@ function mount(){
  if(skill==='cteni'){
   const popup=document.getElementById('lookup');
   if(popup){
-   const saveButton=make('button','＋ Přidat do My Vocabulary','lsh-vocab-save');
-   saveButton.type='button';saveButton.style.cssText='margin-top:8px;min-height:38px;padding:7px 12px;border-radius:8px;background:#165c74;color:white;border:1px solid #70bfd4;font:700 12px system-ui;cursor:pointer';
-   saveButton.addEventListener('click',()=>{
+   // The retired Reading Lab popup is removed at the source. This is the
+   // ONLY save action, and it writes to the canonical "lsh" IndexedDB bank.
+   const form=make('form',undefined,'lsh-vocab-reading-form');
+   form.noValidate=true;
+   const caption=make('label','Český význam','lsh-vocab-reading-label');
+   const input=make('input',undefined,'lsh-vocab-reading-input');
+   input.type='text';input.id='lsh-vocab-reading-meaning';
+   input.maxLength=700;input.autocomplete='off';
+   input.placeholder='Doplň nebo uprav český význam';
+   caption.htmlFor=input.id;
+   const saveButton=make('button','＋ Uložit do My Vocabulary','lsh-vocab-save');
+   saveButton.type='submit';
+   const status=make('p','','lsh-vocab-reading-status');
+   status.setAttribute('role','status');status.setAttribute('aria-live','polite');
+   form.append(caption,input,saveButton,status);
+   popup.append(form);
+   const word=document.getElementById('lookupWord');
+   const meaning=document.getElementById('lookupMeaning');
+   const sync=()=>{
+    const raw=meaning?.textContent?.trim()||'';
+    const missing=/not found|no translation|nenalezen|neznám|unknown|nicht gefunden|introuvable/i.test(raw);
+    input.value=missing?'':raw;
+    saveButton.textContent='＋ Uložit do My Vocabulary';
+    status.textContent='';
+   };
+   if(word&&meaning){
+    new MutationObserver(sync).observe(word,{childList:true,characterData:true,subtree:true});
+    new MutationObserver(sync).observe(meaning,{childList:true,characterData:true,subtree:true});
+   }
+   form.addEventListener('submit',async event=>{
+    event.preventDefault();
     if(popup.hidden){message('Nejprve vyber slovíčko v textu.');return}
-    const term=document.getElementById('lookupWord')?.textContent||'';
-    const raw=document.getElementById('lookupMeaning')?.textContent||'';
-    // The inline dictionary may be missing an exact gloss. Ask the learner
-    // rather than storing “not found” as a fake Czech translation.
-    const looksMissing=/not found|no translation|nenalezen|neznám|unknown|nicht gefunden|introuvable/i.test(raw);
-    const translation=looksMissing||!raw.trim()?
-     root.prompt('Doplň český význam pro '+term+':',''):raw;
-    if(translation===null)return;
-    save(term,translation,document.getElementById('lookupContext')?.textContent,saveButton);
+    const term=word?.textContent?.trim()||'';
+    const translation=input.value.trim();
+    if(!translation){
+     status.textContent='Zadej český význam, aby bylo možné slovíčko uložit.';
+     input.focus();return;
+    }
+    const saved=await save(term,translation,
+     document.getElementById('lookupContext')?.textContent,saveButton,status);
+    if(saved)saveButton.textContent='✓ Uloženo do My Vocabulary';
    });
-   popup.append(saveButton);
   }
  }else{
   // The top-bar link opens the bank. This separate, visible action ADDS words.
   // Keep it usable for any expression, not only optional matching exercises.
-  const css=document.createElement('link');
-  css.rel='stylesheet';css.href='../../assets/lsh/v3/card-vocabulary.css';
-  document.head.append(css);
   const addTop=make('button','＋ Přidat slovíčko','lsh-vocab-add-open');
   addTop.type='button';
   addTop.setAttribute('aria-haspopup','dialog');
@@ -173,8 +201,17 @@ function mount(){
    observer.observe(grid,{childList:true});
   }
  }
- store.open().then(()=>{
+ store.open().then(async()=>{
   if(store.status().mode!=='ready')message('POZOR: Trvalé ukládání není dostupné. Exportuj zálohu ze slovníčku.');
+  if(skill==='cteni'&&legacyReading){
+   try{
+    const migrated=await legacyReading.migrate(store);
+    if(migrated.imported)
+     message('Převedeno '+migrated.imported+' starších slovíček do společného My Vocabulary. Doporučujeme stáhnout zálohu JSON.');
+   }catch(error){
+    message('Starší slovíčka se nepodařilo převést: '+error.message+' Původní data zůstávají zachována.');
+   }
+  }
   return count();
  }).catch(()=>message('Lokální databázi nelze otevřít.'));
  store.subscribe(()=>count());
