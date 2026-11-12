@@ -27,7 +27,8 @@ for(const [browserName,engine] of [['chromium',chromium],['webkit',webkit]]){
      assert.equal((await page.goto(u.href,{waitUntil:'load',timeout:25000})).status(),200);
      await page.locator('#downloadPdf:enabled').waitFor({timeout:25000});
      assert.equal(await page.locator('#level').inputValue(),level);
-     assert.equal(await page.locator('#topic').inputValue(),entry.id);
+     assert.equal(await page.locator('#topicTitle').getAttribute('data-topic-id'),entry.id);
+      assert.equal(await page.locator('select#topic').count(),0);
      const model=teacher.buildListening(core.variant(data,level),entry,'en',level);
      const expected=model.groups.reduce((n,g)=>n+g.items.length,0);
      const actual=await page.locator('#answerPreview .key-item').count();
