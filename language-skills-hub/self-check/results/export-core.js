@@ -11,7 +11,7 @@
  const FIELDS=Object.freeze([
   'record_kind','verification','skill','topic','language','level',
   'objective_points','objective_max','written_points','written_max',
-  'total_points','total_max','success_percent','proposed_grade',
+  'total_points','total_max','success_percent','grading_percent','proposed_grade',
   'written_pending','teacher_marks','submitted_utc','interruption_count'
  ]);
  const id=s=>typeof s==='string'&&/^[a-z0-9_-]{1,90}$/i.test(s);
@@ -43,7 +43,7 @@
    ...m,objective_points:report.points,objective_max:report.maxPoints,
    written_points:0,written_max:0,total_points:proposed.earned,
    total_max:proposed.max,success_percent:proposed.displayedPercent,
-   proposed_grade:proposed.grade,written_pending:0,teacher_marks:''
+   grading_percent:proposed.roundedPercent,proposed_grade:proposed.grade,written_pending:0,teacher_marks:''
   });
  }
  function listening(normalized,marks,meta){
@@ -57,6 +57,7 @@
    total_points:reviewed.pending?'':reviewed.earned,
    total_max:reviewed.max,
    success_percent:reviewed.suggested?reviewed.suggested.displayedPercent:'',
+   grading_percent:reviewed.suggested?reviewed.suggested.roundedPercent:'',
    proposed_grade:reviewed.suggested?reviewed.suggested.grade:'',
    written_pending:reviewed.pending,
    teacher_marks:marks.map(n=>n===null?'?':String(n)).join('|')
@@ -107,7 +108,7 @@
    ...m,objective_points:proposed.earned,objective_max:proposed.max,
    written_points:0,written_max:0,total_points:proposed.earned,
    total_max:proposed.max,success_percent:proposed.displayedPercent,
-   proposed_grade:proposed.grade,written_pending:0,teacher_marks:''
+   grading_percent:proposed.roundedPercent,proposed_grade:proposed.grade,written_pending:0,teacher_marks:''
   });
  }
  /* Question-level report deliberately exports only the score and internal
@@ -163,6 +164,7 @@
    'Jazyk a uroven: '+receipt.language.toUpperCase()+' / '+receipt.level,
    'Body: '+receipt.total_points+'/'+receipt.total_max,
    'Uspesnost: '+receipt.success_percent+' %',
+   'Pro znamku zaokrouhleno na: '+receipt.grading_percent+' %',
    'Navrh znamky: '+receipt.proposed_grade,
    'Odevzdano (UTC): '+(receipt.submitted_utc||'neuvedeno'),
    'Exportovano (UTC): '+new Date(exportedAt).toISOString(),

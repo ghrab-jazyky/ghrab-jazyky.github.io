@@ -199,8 +199,9 @@
   container.append(
    element('span','grade-caption',label),
    element('strong','grade-number',String(gradeResult.grade)),
-   element('p','small-note','Návrh známky podle přesného poměru '+gradeResult.earned+' / '+gradeResult.max+
-    ' bodů ('+gradeResult.displayedPercent.toFixed(2)+' %). Bez ověření identity a výsledku nejde o platný školní záznam.')
+   element('p','small-note','Proposed grade from '+gradeResult.earned+' / '+gradeResult.max+
+    ' points: '+gradeResult.displayedPercent.toFixed(2)+' % → '+gradeResult.roundedPercent+
+    ' % after standard rounding (0.5 rounds up). This is not a verified school record.')
   );
  }
  function results(report){
@@ -278,7 +279,8 @@
     topic:$('title').textContent,language:'en',level:selection.level,
     generatedAt:Date.now(),
     summary:{earned:grade.earned,max:grade.max,
-     percent:grade.displayedPercent,grade:grade.grade},
+     percent:grade.displayedPercent,roundedPercent:grade.roundedPercent,
+      grade:grade.grade},
     questions:report.reviewed.map(task=>{
      const offset=task.number-1;
      

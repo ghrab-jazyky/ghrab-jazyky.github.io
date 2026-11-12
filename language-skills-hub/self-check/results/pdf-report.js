@@ -27,6 +27,9 @@
    Number.isInteger(report.summary.max)&&report.summary.max>0&&
    report.summary.earned<=report.summary.max,'Invalid grade data.');
   check(finite(report.summary.percent,0,100),'Invalid percentage.');
+  if(report.summary.roundedPercent!==undefined)
+   check(Number.isInteger(report.summary.roundedPercent)&&
+    finite(report.summary.roundedPercent,0,100),'Invalid grading percentage.');
   check(report.questions.every(q=>q&&typeof q.correct==='boolean'&&
    Number.isInteger(q.awarded)&&[0,1].includes(q.awarded)&&
    typeof q.question==='string'&&
@@ -43,6 +46,8 @@
    'Jazyk / uroven: '+clean(report.language).toUpperCase()+' / '+clean(report.level),
    'Body: '+report.summary.earned+' / '+report.summary.max,
    'Uspesnost: '+report.summary.percent+' %',
+   ...(Number.isInteger(report.summary.roundedPercent)?
+    ['Pro znamku matematicky zaokrouhleno na: '+report.summary.roundedPercent+' %']:[]),
    'Navrh znamky: '+report.summary.grade,
    'Vytvoreno: '+new Date(report.generatedAt||Date.now()).toISOString()
   ];
@@ -174,6 +179,9 @@
    'BODY '+report.summary.earned+' / '+report.summary.max+
    '     ÚSPĚŠNOST '+report.summary.percent+' %     NÁVRH ZNÁMKY '+report.summary.grade,
    {weight:700,size:11,leading:16,after:5});
+  if(Number.isInteger(report.summary.roundedPercent))
+   paragraph(null,'PRO ZNÁMKU ZAOKROUHLENO NA '+report.summary.roundedPercent+
+    ' % (0,5 NAHORU)',{size:9,leading:14,after:7});
   const stamp=new Date(report.generatedAt||Date.now()).toLocaleString('cs-CZ');
   paragraph('VYTVOŘENO',stamp,{size:9,after:6});
   paragraph(null,'UPOZORNĚNÍ: Výsledek vytvořilo studentské zařízení. Identita studenta a pravost obsahu nejsou technicky ověřené. Učitel rozhoduje o případném zápisu známky.',
