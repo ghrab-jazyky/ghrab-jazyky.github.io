@@ -6,7 +6,28 @@
  const qs=new URLSearchParams(location.search);
  const attemptId='class'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
  const langNames={en:'Angličtina',es:'Španělština',de:'Němčina',fr:'Francouzština'};
- let entries=[],valid=false,studentLink='';
+ let entries=[],valid=false,studentLink='',renderedSignature='',historyTimer=null;
+ function queueTeacherUrl(entry,language,level,limit){
+  if(historyTimer!==null)window.clearTimeout(historyTimer);
+  // Safari rate-limits history.replaceState. Keep the students' QR up-to-date
+  // immediately, but coalesce teacher address changes until the form settles.
+  historyTimer=window.setTimeout(()=>{
+   historyTimer=null;
+   const page=new URL(location.href);
+   for(const [key,value] of Object.entries({
+    topic:entry.id,lang:language,level,timer:String(limit)
+   }))page.searchParams.set(key,value);
+   if(page.href!==location.href){
+    try{history.replaceState(null,'',page.href)}catch(error){
+     console.warn('Reading teacher address not updated',error?.message||error);
+    }
+   }
+  },450);
+ }
+ // R56: WebKit can defer/change-suppress a number-field input event when
+ // switching tabs. Reconcile form state with the published QR as a safeguard.
+ const formSignature=()=>['topic','language','level','timerMinutes']
+  .map(id=>$(id).value).join('|');
  function appearance(light,save){
   document.documentElement.dataset.theme=light?'light':'dark';
   $('themeButton').textContent=light?'☾ Tmavý režim':'☀ Světlý režim';
@@ -38,6 +59,7 @@
   if(entry.languages.includes(old))$('language').value=old;
  }
  function refresh(){
+  if(historyTimer!==null){window.clearTimeout(historyTimer);historyTimer=null;}
   const entry=selectedEntry();
   const language=$('language').value,level=$('level').value;
   const limit=Number($('timerMinutes').value);
@@ -52,12 +74,7 @@
    url.searchParams.set('timer',String(limit));
    url.searchParams.set('attempt',attemptId);
    studentLink=url.href;
-   const page=new URL(location.href);
-   page.searchParams.set('topic',entry.id);
-   page.searchParams.set('lang',language);
-   page.searchParams.set('level',level);
-   page.searchParams.set('timer',String(limit));
-   history.replaceState(null,'',page);
+   queueTeacherUrl(entry,language,level,limit);
   }
   $('studentUrl').value=studentLink;
   $('copyUrl').disabled=!valid;
@@ -69,6 +86,7 @@
    'Zvolená varianta nebo časový limit nejsou platné. Vyber 5–120 minut.';
   $('copyStatus').textContent=valid?'Odkaz a QR odpovídají zvolené variantě.':'Nejprve vyber dostupnou variantu.';
   share.render(studentLink,$('qrMount'),$('downloadQr'));
+  renderedSignature=formSignature();
  }
  async function init(){
   themeInit();
@@ -108,6 +126,11 @@
    const preset=Number(qs.get('timer'));
    $('timerMinutes').value=Number.isInteger(preset)&&preset>=5&&preset<=120?String(preset):'30';
    refresh();
+   // Watchdog only compares four small form values; no network or storage.
+   // The QR is regenerated only if a browser failed to deliver a change event.
+   window.setInterval(()=>{
+    if(formSignature()!==renderedSignature)refresh();
+   },250);
   }catch(error){
    $('loadStatus').textContent='Nelze připravit studentský odkaz: '+String(error.message||error);
    share.render('', $('qrMount'),$('downloadQr'));
