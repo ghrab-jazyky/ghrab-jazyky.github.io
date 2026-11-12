@@ -71,7 +71,8 @@ test('VÝSLEDKY action is for practice cards; student card pages and test scorin
  assert.match(hub,/practiceKeyUrl\(e\)/);
  assert.match(hub,/if\(\['cteni','poslech'\]\.includes\(e.skill\)\)/);
  assert.match(page,/id="downloadPdf"/);
- assert.match(page,/id="topic"/);assert.match(page,/id="language"/);assert.match(page,/id="level"/);
+ assert.match(page,/id="topicTitle"/);assert.match(page,/id="language"/);assert.match(page,/id="level"/);
+ assert.doesNotMatch(page,/<select\s+id="topic"/);
  assert.match(script,/e\.lockSource\|\|e\.relative/);
  assert.match(script,/loadSchoolLogo/);
  assert.match(script,/pdfBytes/);
