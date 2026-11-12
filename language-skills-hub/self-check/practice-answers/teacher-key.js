@@ -188,7 +188,7 @@ function renderPages(model,documentRef,logo){
  function footer(){
   ctx.fillStyle='#dee6ef';ctx.fillRect(M,811,R-M,1);
   font(8);ctx.fillStyle='#5b6a7b';
-  ctx.fillText('Klíč k procvičování · učitelský podklad (veřejný statický obsah)',M,828);
+  ctx.fillText('Klíč k '+(model.mode==='test'?'testu':'procvičování')+' · veřejný učitelský podklad',M,828);
   ctx.fillText(String(page),R-18,828);
  }
  function flush(){
@@ -207,7 +207,7 @@ function renderPages(model,documentRef,logo){
   ctx.drawImage(logo,M-5,13,55,55);
   font(11,700);ctx.fillStyle='#244965';
   ctx.fillText('Gymnázium, Ostrava-Hrabůvka',M+63,34);
-  font(9);ctx.fillText('LANGUAGE SKILLS HUB  |  VÝSLEDKY PROCVIČOVÁNÍ',M+63,50);
+  font(9);ctx.fillText('LANGUAGE SKILLS HUB  |  KLÍČ '+(model.mode==='test'?'TESTU':'PROCVIČOVÁNÍ'),M+63,50);
  }
  function reserve(height){if(y+height>BOTTOM)newPage()}
  function paragraph(value,size=10,weight=400,color='#203246',leading=14,after=5){
@@ -219,11 +219,14 @@ function renderPages(model,documentRef,logo){
   y+=after;
  }
  newPage();
- paragraph('UČITELSKÝ KLÍČ · '+(model.skill==='reading'?'READING LAB':'LISTENING LAB'),
+ paragraph('UČITELSKÝ KLÍČ · '+(model.skill==='reading'?'READING LAB':'LISTENING LAB')+
+  ' · '+(model.mode==='test'?'TEST':'PROCVIČOVÁNÍ'),
   15,700,'#183a56',22,7);
  paragraph(model.topic,13,700,'#203246',18,5);
  paragraph('Jazyk: '+model.language.toUpperCase()+'   Úroveň: '+model.level,10,700,'#4d6377',15,8);
- paragraph('Klíč k PROCVIČOVACÍ kartě; část úloh se může překrývat s místní testovou verzí. Neobsahuje výsledky studentů.',
+ paragraph(model.mode==='test'?
+  'Klíč k přesné TESTOVÉ variantě; neobsahuje žádné výsledky studentů. Správná řešení jsou na veřejném statickém webu dostupná.':
+  'Klíč k PROCVIČOVACÍ kartě; část úloh se může překrývat s místní testovou verzí. Neobsahuje výsledky studentů.',
   9,400,'#8e501f',13,14);
  for(const [gi,g] of model.groups.entries()){
   reserve(43);
@@ -249,7 +252,8 @@ async function download(model,doc){
  const logo=await host.LSHPdfReport.loadSchoolLogo(doc);
  const pdf=host.LSHPdfReport.pdfBytes(renderPages(model,doc,logo));
  const url=URL.createObjectURL(new Blob([pdf],{type:'application/pdf'}));
- const name='lsh-vysledky-procvicovani-'+model.topicId+'-'+model.language+'-'+model.level.toLowerCase()+'.pdf';
+ const name='lsh-vysledky-'+(model.mode==='test'?'test':'procvicovani')+'-'+
+  model.topicId+'-'+model.language+'-'+model.level.toLowerCase()+'.pdf';
  const a=doc.createElement('a');a.href=url;a.download=name;a.hidden=true;
  doc.body.appendChild(a);
  try{a.click()}finally{a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)}
