@@ -411,7 +411,8 @@
      correctAnswer:item.correctAnswer,correct:item.correct,
      awarded:item.correct?1:0,explanation:item.explanation||''
     })),
-    reflection:$('reflection').value.trim()
+    reflection:$('reflection').value.trim(),
+    security:window.LSHPdfReport.securityFromAttempt(timedUI?.status())
    };
   };
   $('exportPdf').addEventListener('click',async()=>{
