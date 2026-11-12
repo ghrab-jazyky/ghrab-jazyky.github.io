@@ -36,7 +36,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.waitForFunction(()=>document.getElementById('toast').parentElement===document.body);
   });
  });
- test('Audit 2026-11-11 '+name+' search finds translated titles and in-page anchors keep the search',async()=>{
+ test('Audit 2026-11-11 '+name+' search finds translated titles and help dialog preserves the search',async()=>{
   await withPage(engine,{viewport:{width:1366,height:800}},async page=>{
    await page.goto(base+'?skill=konverzace');
    await page.locator('#cards article').first().waitFor();
@@ -47,10 +47,16 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    }
    await page.locator('#search').fill('rodina');
    const before=await page.locator('#cards article').count();
-   await page.locator('nav.menu a[href="#howto"]').click();
-   await page.waitForTimeout(300);
+   await page.locator('#howtoOpen').click();
+   await page.locator('#howto[open]').waitFor();
    assert.equal(await page.locator('#search').inputValue(),'rodina');
    assert.equal(await page.locator('#cards article').count(),before);
+   await page.locator('#howtoClose').click();
+   assert.equal(await page.locator('#howto').evaluate(el=>el.open),false);
+   await page.locator('#howtoOpen').click();
+   await page.keyboard.press('Escape');
+   await page.waitForFunction(()=>!document.getElementById('howto').open);
+   assert.equal(await page.locator('#search').inputValue(),'rodina');
   });
  });
  test('Audit 2026-11-11 '+name+' closing the lab chooser from the catalog returns to the catalog',async()=>{
