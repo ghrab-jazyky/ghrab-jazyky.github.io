@@ -32,6 +32,9 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(await other.locator('fieldset.question').first().locator('input').first().isChecked(),false);
    await other.close();
    await page.reload();
+   await page.locator('#sessionLock:not([hidden])').waitFor();
+   for(const c of ['tl','tr','bl','br'])await page.locator('.lsh-corner-'+c).click();
+   await page.locator('#sessionLock').waitFor({state:'hidden'});
    await page.locator('#workspace:not([hidden])').waitFor();
    assert.equal(await page.locator('fieldset.question').first().locator('input').first().isChecked(),true);
    assert.equal(await page.locator('#sessionIntro').isHidden(),true);
@@ -81,6 +84,9 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('fieldset.question').first().locator('input').first().check();
    await page.locator('#cloze-0').fill('fifteen');
    await page.reload();
+   await page.locator('#sessionLock:not([hidden])').waitFor();
+   for(const c of ['tl','tr','bl','br'])await page.locator('.lsh-corner-'+c).click();
+   await page.locator('#sessionLock').waitFor({state:'hidden'});
    await page.locator('#workspace:not([hidden])').waitFor();
    assert.equal(await page.locator('fieldset.question').first().locator('input').first().isChecked(),true);
    assert.equal(await page.locator('#cloze-0').inputValue(),'fifteen');
