@@ -1,0 +1,32 @@
+name: LSH R52 diagnose production teacher key fetch
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/**'
+      - '.github/workflows/lsh-r52-teacher-live.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/**'
+      - '.github/workflows/lsh-r52-teacher-live.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-live:
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Browser runner
+        run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Real production Pages - capture network and CSP failures
+        continue-on-error: true
+        run: node language-skills-hub/tests/r52-live-teacher-key.browser.test.cjs
