@@ -317,3 +317,37 @@ dialog.share-dialog{
 .card .action.test:hover,.card .action.test:focus-visible{filter:brightness(1.13)}
 :root[data-theme="light"] .card .action.test{color:var(--fg);background:#e8f4fb;border-color:#087a92}
 .card .actions .action{white-space:normal;text-align:center}
+
+/* R57: the only how-to entry is the top navigation button. */
+.howto-trigger{min-height:44px;padding:8px 11px;border:1px solid transparent;
+ background:transparent;color:var(--muted);border-radius:10px;
+ font:650 .92rem/1.25 system-ui;cursor:pointer}
+.howto-trigger:hover,.howto-trigger:focus-visible{color:var(--accent);border-color:var(--line)}
+dialog.howto-dialog{
+ width:min(800px,calc(100vw - 22px));max-width:min(800px,calc(100vw - 22px));
+ max-height:calc(100dvh - 28px);padding:0;overflow-y:auto;overflow-x:hidden;
+ border:1px solid var(--line);border-radius:20px;
+ color:var(--fg);background:var(--bg);box-shadow:0 30px 110px #020712c9;
+}
+.howto-dialog::backdrop{background:rgba(2,11,22,.77);backdrop-filter:blur(5px)}
+.howto-dialog-head{position:sticky;top:0;z-index:1;display:flex;align-items:center;
+ justify-content:space-between;gap:15px;padding:18px clamp(16px,3vw,27px);
+ background:var(--panel);border-bottom:1px solid var(--line)}
+.howto-dialog-head h2{font-size:clamp(1.2rem,3vw,1.6rem);margin:2px 0;line-height:1.25}
+.howto-eyebrow{font-size:.7rem;margin:0}
+.howto-dialog-close{display:grid;place-items:center;flex:0 0 44px;
+ width:44px;height:44px;border:1px solid var(--line);border-radius:12px;
+ color:var(--fg);background:var(--panel2);font:700 1.65rem/1 system-ui;cursor:pointer}
+.howto-dialog-close:hover{border-color:var(--accent);color:var(--accent)}
+.howto-lead{margin:17px clamp(16px,3vw,27px) 0;color:var(--muted);font-size:.93rem}
+.howto-dialog-body{display:grid;gap:12px;padding:16px clamp(16px,3vw,27px) 25px}
+.howto-dialog-body p{margin:0;padding:14px 16px;border:1px solid var(--line);
+ border-radius:12px;background:var(--panel);font-size:.91rem;line-height:1.66}
+.howto-dialog-body strong{color:var(--fg)}
+.howto-dialog-body .note{color:var(--muted);font-size:.83rem}
+@media(max-width:420px){
+ dialog.howto-dialog{max-height:calc(100dvh - 12px);width:calc(100vw - 12px);max-width:calc(100vw - 12px);border-radius:14px}
+ .howto-dialog-head{padding:13px 14px}
+ .howto-dialog-body{padding:12px 14px 16px}
+ .howto-dialog-body p{padding:12px 13px;font-size:.87rem}
+}

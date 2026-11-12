@@ -13,6 +13,7 @@ let localSelfCheck=false;
 const welcome=byId('welcome'),chooser=byId('skillChooser'),catalog=byId('catalog');
 let qrUrl='', qrTitle='', shareEntry=null, toastTimeout=null;
 const qrDialog=byId('qrDialog'),qrMount=byId('qrMount');
+const howtoDialog=byId('howto'),howtoOpen=byId('howtoOpen'),howtoClose=byId('howtoClose');
 function toast(message){
  const el=byId('toast');
  // A modal <dialog> sits in the browser top layer; a toast outside it is hidden
@@ -450,6 +451,12 @@ window.addEventListener('popstate',restoreLocation);
 byId('language').addEventListener('change',updateFilters);
 byId('level').addEventListener('change',updateFilters);
 byId('search').addEventListener('input',render);
+// R57: native modal dialog keeps the catalog fixed and closes with Esc.
+howtoOpen.addEventListener('click',()=>{
+ if(!howtoDialog.open)howtoDialog.showModal();
+});
+howtoClose.addEventListener('click',()=>howtoDialog.close());
+howtoDialog.addEventListener('close',()=>howtoOpen.focus());
 byId('qrClose').addEventListener('click',()=>{
  if(typeof qrDialog.close==='function')qrDialog.close();else qrDialog.removeAttribute('open');
 });

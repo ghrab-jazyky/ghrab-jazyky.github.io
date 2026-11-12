@@ -55,6 +55,7 @@ function updateCount(){
  $('wordCount').textContent=words.length+' uložených · '+filtered().length+' zobrazených';
  $('selectedCount').textContent='Vybráno: '+selection().length+' (pro procvičování '+validSelection().length+')';
  $('exportBtn').disabled=words.length===0;
+ $('deleteAllWords').disabled=words.length===0;
 }
 function renderWords(){
  const box=$('wordList');box.replaceChildren();
@@ -123,6 +124,48 @@ async function importFile(){
     (result.storedInIndexedDB?'':' POZOR: pouze dočasná paměť.'),result.storedInIndexedDB?'':'warn');
  }catch(e){notify('Import odmítnut – nic nebylo změněno: '+e.message,'error')}
  finally{input.value=''}
+}
+// R57: one explicit destructive action for the complete shared vocabulary bank.
+const clearDialog=$('clearVocabularyDialog');
+function openClearDialog(){
+ if(!words.length||clearDialog.open)return;
+ $('clearWordsCount').textContent=words.length+' uložených slovíček';
+ $('clearWordsStatus').textContent='';
+ clearDialog.showModal(); // Escape cancels via native dialog semantics.
+}
+async function deleteAllWords(){
+ $('confirmClearWords').disabled=true;
+ $('cancelClearWords').disabled=true;
+ try{
+  const current=await store.listWords();
+  // New words could have been saved by another LSH tab in the meantime.
+  if(current.length!==words.length){
+   await load();
+   $('clearWordsCount').textContent=words.length+' uložených slovíček';
+   $('clearWordsStatus').textContent='Počet slovíček se změnil. Zkontroluj nový počet a znovu potvrď smazání.';
+   return;
+  }
+  if(!current.length){
+   clearDialog.close();await load();return;
+  }
+  const outcome=await store.clearAllWords();
+  if((await store.listWords()).length!==0)throw new Error('Úložiště hlásí zbývající slovíčka.');
+  chosen.clear();mode=null;
+  document.querySelectorAll('[data-mode]').forEach(b=>b.classList.remove('active'));
+  clearGame();
+  $('practiceStatus').textContent='Slovníček je prázdný. Přidej slovíčka nebo obnov zálohu.';
+  clearDialog.close();
+  await load();
+  notify('Smazáno všech '+current.length+' slovíček ze společného My Vocabulary.'+
+   (outcome.storedInIndexedDB?'':' Pozor: úložiště je pouze dočasné.'),
+   outcome.storedInIndexedDB?'':'warn');
+ }catch(e){
+  $('clearWordsStatus').textContent='Smazání se nezdařilo: '+String(e.message||e);
+  notify('Mazání nebylo dokončeno. '+String(e.message||e),'error');
+ }finally{
+  $('confirmClearWords').disabled=false;
+  $('cancelClearWords').disabled=false;
+ }
 }
 function ready(){
  const items=validSelection();
@@ -274,6 +317,8 @@ function startTest(items){
  showQuestion();
 }
 async function migrateLegacyConversation(){
+ // Do not resurrect deleted legacy words after the explicit clear-all action.
+ if(await store.wasWordsCleared())return;
  // Older Conversation cards wrote to the staging IDB "lsh-test".
  // Copy, never delete, those learner words into the shared production bank.
  // A successful one-time migration is idempotently tracked per browser.
@@ -325,6 +370,13 @@ async function init(){
  $('addForm').addEventListener('submit',saveManual);
  $('exportBtn').addEventListener('click',download);
  $('importFile').addEventListener('change',importFile);
+ $('deleteAllWords').addEventListener('click',openClearDialog);
+ $('cancelClearWords').addEventListener('click',()=>clearDialog.close());
+ $('confirmClearWords').addEventListener('click',deleteAllWords);
+ clearDialog.addEventListener('close',()=>{
+  if(!$('deleteAllWords').disabled)$('deleteAllWords').focus();
+  else $('bankTitle').focus();
+ });
  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>startMode(b.dataset.mode)));
  try{
   await store.open();

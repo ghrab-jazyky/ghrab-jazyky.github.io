@@ -38,9 +38,10 @@
  <p class="privacy">Záložní JSON obsahuje slovíčka a poznámky v čitelné podobě. Nesdílej ho veřejně. LSH soubor nikdy automaticky neodesílá: místo uložení vybíráš ty.</p>
 </section>
  <section class="panel" aria-labelledby="bankTitle">
-  <div class="section-heading"><div><h2 id="bankTitle">Moje uložená slovíčka</h2><p id="wordCount" aria-live="polite"></p></div><div class="toolbar">
+  <div class="section-heading"><div><h2 id="bankTitle" tabindex="-1">Moje uložená slovíčka</h2><p id="wordCount" aria-live="polite"></p></div><div class="toolbar">
    <button id="exportBtn" type="button">↓ Stáhnout zálohu (.json)</button>
    <label class="filelabel" for="importFile">↑ Nahrát zálohu (.json)</label><input type="file" id="importFile" accept=".json,application/json" hidden>
+   <button id="deleteAllWords" class="delete-all-words" type="button" disabled aria-haspopup="dialog" aria-controls="clearVocabularyDialog" title="Smazat všechna uložená slovíčka">SMAZAT VŠE</button>
   </div></div>
   <p class="privacy">Podporované zálohy: současný My Vocabulary i starší JSON ze čtecích karet Reading Lab. Při převodu zůstanou původní data nedotčená.</p>
   <div class="options"><label><input id="replaceImport" type="checkbox"> Při importu nahradit existující slovníček (jinak sloučit)</label></div>
@@ -77,6 +78,20 @@
  </section>
  <p class="privacy">Záloha je tvůj osobní soubor. Chraň ji před ztrátou a nesdílej ji veřejně. Smazání dat prohlížeče může slovíčka odstranit. Přenos mezi zařízeními vyžaduje ruční export a import JSON; bez serveru neexistuje automatická synchronizace.</p>
 </main>
+<dialog id="clearVocabularyDialog" class="clear-vocab-dialog" aria-labelledby="clearVocabularyTitle" aria-describedby="clearVocabularyExplanation">
+ <div class="clear-vocab-head">
+  <span class="clear-vocab-icon" aria-hidden="true">!</span>
+  <div><p class="clear-vocab-eyebrow">MY VOCABULARY · SPRÁVA SLOVNÍČKU</p><h2 id="clearVocabularyTitle">Smazat všechna slovíčka?</h2></div>
+ </div>
+ <p id="clearVocabularyExplanation">Odstraníš <strong id="clearWordsCount">všechna uložená slovíčka</strong> ze všech jazyků a laboratoří na tomto zařízení, včetně skrytých filtrem. Tuto akci nelze vrátit. Záložní soubor JSON zůstane zachován, pokud sis ho dříve stáhl.</p>
+ <p class="clear-vocab-backup-tip">Před smazáním doporučujeme použít <strong>Stáhnout zálohu (.json)</strong>.</p>
+ <p class="clear-vocab-status" id="clearWordsStatus" role="status" aria-live="polite"></p>
+ <div class="clear-vocab-actions">
+  <button type="button" id="cancelClearWords" class="clear-vocab-cancel">Zrušit</button>
+  <button type="button" id="confirmClearWords" class="clear-vocab-confirm">Ano, smazat vše</button>
+ </div>
+</dialog>
+
 <footer>Language Skills Hub · Offline-first slovníček · bez účtu, cloudu a sledování</footer>
 </body>
 </html>
