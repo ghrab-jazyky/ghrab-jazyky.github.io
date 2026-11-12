@@ -1,0 +1,80 @@
+name: LSH R61 official school logo beside hub name
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/index.html'
+      - 'language-skills-hub/assets/hub.css'
+      - 'language-skills-hub/assets/school-logo.png'
+      - 'language-skills-hub/tests/r61-school-logo-header.browser.test.cjs'
+      - '.github/workflows/lsh-r61-school-logo-header.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/index.html'
+      - 'language-skills-hub/assets/hub.css'
+      - 'language-skills-hub/assets/school-logo.png'
+      - 'language-skills-hub/tests/r61-school-logo-header.browser.test.cjs'
+      - '.github/workflows/lsh-r61-school-logo-header.yml'
+permissions:
+  contents: read
+jobs:
+  static:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Prove original school logo Git blob and unchanged labels
+        run: |
+          node -e 'const fs=require("fs"),c=require("crypto"),r="language-skills-hub/";const b=fs.readFileSync(r+"assets/school-logo.png");const s=c.createHash("sha1").update("blob "+b.length+"\x00").update(b).digest("hex");if(s!=="0b23733540b01fe70f35feda45037b0cd2c995cb")process.exit(1);const h=fs.readFileSync(r+"index.html","utf8");if(!h.includes("class=\"brand-logo\"")||!h.includes("class=\"welcome-brand-logo\""))process.exit(1);'
+  browser:
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Responsive intro and header with existing menu (Chromium + WebKit)
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-r61-http.log 2>&1 &
+          PID=$!
+          trap 'kill $PID' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/ >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/r61-school-logo-header.browser.test.cjs
+  live:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Await the published logo and title styling
+        run: |
+          READY=0
+          for i in $(seq 1 42); do
+            if node -e 'Promise.all(["index.html","assets/hub.css"].map(p=>fetch("https://ghrab-jazyky.github.io/language-skills-hub/"+p+"?r61="+Date.now(),{cache:"no-store"}).then(r=>r.text()))).then(([h,c])=>process.exit(h.includes("class=\"welcome-brand-logo\"")&&h.includes("class=\"brand-logo\"")&&c.includes(".brand-logo,.welcome-brand-logo")?0:1)).catch(()=>process.exit(1))'; then READY=1; break; fi
+            sleep 10
+          done
+          test "$READY" -eq 1
+      - name: Verify live logo and layouts (Chromium)
+        env:
+          LSH_R61_LIVE: '1'
+          LSH_R61_BASE: https://ghrab-jazyky.github.io/language-skills-hub/
+        run: node --test language-skills-hub/tests/r61-school-logo-header.browser.test.cjs
