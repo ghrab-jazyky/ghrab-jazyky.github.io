@@ -134,7 +134,7 @@ for(const [name,engine]of engines){
    const rows=csv.replace(/^\uFEFF/,'').trim().split(/\r?\n/);
    assert.equal(rows.length,v.questions.length+1,'Every question must be in the teacher CSV archive');
    assert.ok(rows[0].includes('question_id'),'Export must preserve canonical question identities');
-   for(const q of v.questions)assert.ok(csv.includes(','+q.id+','),'Archived test missing question '+q.id);
+   for(const q of v.questions)assert.ok(csv.includes('"'+q.id+'"'),'Archived test missing question '+q.id);
    assert.deepEqual(errors,[]);
    console.log('PASS R58 '+name+': answers survive switching and timed reload; every question archived');
    await context.close();
