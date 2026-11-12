@@ -108,13 +108,18 @@ async function importFile(){
  try{
   if(file.size>model.MAX_IMPORT_BYTES)throw new Error('Soubor přesahuje limit 3 MB.');
   const raw=await file.text();
-  const preview=model.validateImport(raw);
+  let kind=null;
+  try{kind=JSON.parse(raw)?.kind}catch(_){}
+  const oldReading=kind==='reading-lab-vocabulary-backup';
+  const source=oldReading?window.LSH_READING_MIGRATION.convertBackup(raw):raw;
+  const preview=model.validateImport(source);
   const replace=$('replaceImport').checked;
   if(replace&&!confirm('NAHRADIT celý slovníček '+words.length+' slovíček daty ze zálohy ('+preview.length+')? Nejdřív si stáhni současnou zálohu.'))return;
   if(!replace&&!confirm('Sloučit '+preview.length+' slovíček ze zálohy s aktuálním slovníčkem?'))return;
-  const result=await store.importWords(raw,{replace});
+  const result=await store.importWords(source,{replace});
   chosen.clear();await load();
-  notify('Import hotov: '+result.imported+' ze zálohy, nyní '+result.count+' uložených.'+
+  notify((oldReading?'Starší záloha Reading Labu převedena. ':'')+
+   'Import hotov: '+result.imported+' ze zálohy, nyní '+result.count+' uložených.'+
     (result.storedInIndexedDB?'':' POZOR: pouze dočasná paměť.'),result.storedInIndexedDB?'':'warn');
  }catch(e){notify('Import odmítnut – nic nebylo změněno: '+e.message,'error')}
  finally{input.value=''}
@@ -293,6 +298,21 @@ async function migrateLegacyConversation(){
    '. Původní data nebyla odstraněna.','warn');
  }
 }
+async function migrateLegacyReading(){
+ const migration=window.LSH_READING_MIGRATION;
+ if(!migration)return;
+ const banner=$('legacyReadingStatus');
+ try{
+  const result=await migration.migrate(store);
+  if(result.imported>0){
+   banner.hidden=false;banner.textContent='Bezpečně převedeno '+result.imported+
+    ' slovíček ze starého Reading Labu do společného My Vocabulary. Původní záznamy nebyly smazány. Stáhni si aktuální JSON zálohu.';
+  }
+ }catch(e){
+  banner.hidden=false;banner.textContent='Starší slovíčka nebylo možné bezpečně převést: '+
+   String(e.message||e)+'. Původní data zůstávají beze změny. Zkus znovu otevřít slovníček v běžném okně prohlížeče.';
+ }
+}
 async function init(){
  const back=new URLSearchParams(location.search).get('zpet');
  if(back&&/^\/language-skills-hub\/(?:konverzace|cteni|poslech)\/[a-z0-9-]+\/index\.html$/.test(back))
@@ -306,7 +326,13 @@ async function init(){
  $('exportBtn').addEventListener('click',download);
  $('importFile').addEventListener('change',importFile);
  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>startMode(b.dataset.mode)));
- try{await store.open();await migrateLegacyConversation();await load();store.subscribe(()=>load())}catch(e){notify('Úložiště nelze otevřít: '+e.message,'error')}
+ try{
+  await store.open();
+  await migrateLegacyConversation();
+  await migrateLegacyReading();
+  await load();
+  store.subscribe(()=>load());
+ }catch(e){notify('Úložiště nelze otevřít: '+e.message,'error')}
 }
 init();
 })();
