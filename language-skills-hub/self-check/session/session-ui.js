@@ -20,7 +20,9 @@
     clipboard:'Clipboard interaction was detected.',
     'context-menu':'An external context menu was requested.',
     'page-leave':'The test page was left.',
-    reload:'The test page was refreshed while in progress.'},
+    reload:'The test page was refreshed while in progress.',
+    'concurrent-tab':'Another active LSH test was detected in this browser profile.',
+    'print-attempt':'An attempt to print or preview the test was detected.'},
    resumed:'The test has been resumed.',submitted:'Submitted',
    forget:'Erase local answers',eraseConfirm:'Erase all locally saved answers for this attempt? This cannot be undone. Keep a verified grade record first.',erased:'Local answers erased. Close this page.',
    saveWarning:'Local storage unavailable: reloading may lose this attempt.',
@@ -37,7 +39,9 @@
     clipboard:'Se detectó una acción con el portapapeles.',
     'context-menu':'Se intentó abrir el menú contextual.',
     'page-leave':'Se abandonó la página de la prueba.',
-    reload:'Se actualizó la página durante la prueba.'},
+    reload:'Se actualizó la página durante la prueba.',
+    'concurrent-tab':'Se detectó otra prueba LSH activa en este navegador.',
+    'print-attempt':'Se detectó un intento de imprimir o previsualizar la prueba.'},
    resumed:'La prueba continúa.',submitted:'Entregado',forget:'Borrar respuestas locales',
    eraseConfirm:'¿Borrar las respuestas locales? Esta acción es irreversible.',erased:'Respuestas borradas. Cierra la página.',
    saveWarning:'No se pueden guardar las respuestas de forma local.',
@@ -54,7 +58,9 @@
     clipboard:'Zwischenablage-Aktion erkannt.',
     'context-menu':'Ein Kontextmenü wurde angefordert.',
     'page-leave':'Die Testseite wurde verlassen.',
-    reload:'Die Testseite wurde während des Tests neu geladen.'},
+    reload:'Die Testseite wurde während des Tests neu geladen.',
+    'concurrent-tab':'Ein weiterer aktiver LSH-Test wurde in diesem Browser erkannt.',
+    'print-attempt':'Ein Druck- oder Druckvorschauversuch wurde erkannt.'},
    resumed:'Der Test wurde fortgesetzt.',submitted:'Abgegeben',forget:'Lokale Antworten löschen',
    eraseConfirm:'Alle lokal gespeicherten Antworten löschen? Dies kann nicht rückgängig gemacht werden.',erased:'Antworten gelöscht. Bitte die Seite schließen.',
    saveWarning:'Lokale Speicherung nicht verfügbar.',
@@ -71,7 +77,9 @@
     clipboard:'Une opération du presse-papiers a été détectée.',
     'context-menu':'Un menu contextuel a été demandé.',
     'page-leave':'La page du test a été quittée.',
-    reload:'La page a été actualisée pendant le test.'},
+    reload:'La page a été actualisée pendant le test.',
+    'concurrent-tab':'Un autre test LSH actif a été détecté dans ce navigateur.',
+    'print-attempt':'Une tentative d’impression ou d’aperçu a été détectée.'},
    resumed:'Le test a repris.',submitted:'Remis',forget:'Effacer les réponses locales',
    eraseConfirm:'Supprimer définitivement les réponses locales ?',erased:'Réponses supprimées. Ferme la page.',
    saveWarning:'Enregistrement local indisponible.',
@@ -146,9 +154,9 @@
        // Request while the teacher's pointer gesture still carries user activation.
        Promise.resolve(document.documentElement.requestFullscreen()).then(()=>{
         fullscreenArmed=!!document.fullscreenElement;
-        engine.resume();resetBaseline();render();
+        engine.resume();resetBaseline();render();tabMonitor.probe();
        }).catch(()=>{lockReason('fullscreen-denied');});
-      }else{engine.resume();resetBaseline();render();}
+      }else{engine.resume();resetBaseline();render();tabMonitor.probe();}
      }catch(_){lockReason('fullscreen-denied');}
     }
    });
@@ -164,6 +172,8 @@
   let initialized=false,autoSubmitting=false,lastPhase=null,purged=false;
   let baselineWidth=0,baselineHeight=0,fullscreenArmed=false;
   let focusDelay=null,resizeDelay=null,fullscreenPending=false;
+  if(!root.LSHTabGuard)throw new Error('Missing simultaneous-test detector');
+  const tabMonitor=root.LSHTabGuard.mount({onConflict:()=>lock('concurrent-tab')});
   const isTouchDevice=()=>('ontouchstart' in root)||navigator.maxTouchPoints>0;
   const dims=()=>({w:root.innerWidth||document.documentElement.clientWidth,
     h:root.innerHeight||document.documentElement.clientHeight});
@@ -205,7 +215,8 @@
    lastPhase=state.phase;
    remaining.textContent=state.phase==='submitted'?ui.submitted:
     ui.remaining+': '+displayTime(state.remainingMs);
-   warning.textContent=state.persistent?'':ui.saveWarning;
+   warning.textContent=[state.persistent?'':ui.saveWarning,
+    tabMonitor.available?'':'Same-browser tab monitoring unavailable.'].filter(Boolean).join(' ');
   }
   function autoSubmit(){
    if(!initialized||autoSubmitting)return;
@@ -228,7 +239,7 @@
      catch(_){fullscreenArmed=false;}
     }
     fullscreenArmed=!!document.fullscreenElement;
-    engine.start();resetBaseline();render();
+    engine.start();tabMonitor.activate();resetBaseline();render();
     if(restricted())lock('restricted-viewport');
     else if(document.documentElement.requestFullscreen&&!fullscreenArmed&&!isTouchDevice())
      lock('fullscreen-denied');
@@ -281,21 +292,23 @@
    const blocked=(event.ctrlKey||event.metaKey)&&
     ['p','s','u'].includes(event.key.toLowerCase());
    if(blocked||event.key==='F12'){
-    event.preventDefault();lock('context-menu');
+    event.preventDefault();lock(event.key.toLowerCase()==='p'?'print-attempt':'context-menu');
    }
   },true);
+  root.addEventListener('beforeprint',()=>lock('print-attempt'));
   document.addEventListener('contextmenu',event=>{
    if(active()){event.preventDefault();lock('context-menu');}
   },true);
   root.addEventListener('pagehide',()=>{
    if(active())engine.interrupt('page-leave');
+   tabMonitor.dispose();
   });
   // Restored pages (including a refresh) must remain locked until the teacher
   // performs the gesture. Timing and saved answers are preserved.
   const interval=setInterval(tick,1000);
   erase.addEventListener('click',()=>{
    if(engine.status().phase!=='submitted'||!root.confirm(ui.eraseConfirm))return;
-   engine.clear();purged=true;clearInterval(interval);
+   engine.clear();purged=true;clearInterval(interval);tabMonitor.dispose();
    if(results)results.hidden=true;
    intro.hidden=true;workspace.hidden=true;overlay.hidden=true;bar.hidden=false;
    remaining.textContent=ui.erased;warning.textContent='';erase.disabled=true;
@@ -304,6 +317,8 @@
    const s=engine.status();
    if(s.phase!=='ready')cfg.restoreAnswers(s.answers);
    if(s.phase==='running'&&!s.expired)engine.interrupt('reload');
+   if(['running','interrupted'].includes(engine.status().phase)&&!engine.status().expired)
+    tabMonitor.activate();
    resetBaseline();
    initialized=true;render();
    if(s.phase==='submitted')cfg.onSubmit({automatic:true,restored:true});
@@ -322,9 +337,11 @@
    const s=engine.status();
    if(s.phase==='submitted')return s;
    if(s.phase==='running'&&!s.expired)save();
-   const out=engine.finish();render();return out;
+   const out=engine.finish();tabMonitor.deactivate();render();return out;
   }
-  return Object.freeze({initialize,save,saveReviewMarks,finish,status:engine.status,stop:()=>clearInterval(interval)});
+  const status=()=>Object.freeze({...engine.status(),tabMonitoringAvailable:tabMonitor.available});
+  return Object.freeze({initialize,save,saveReviewMarks,finish,status,
+   stop:()=>{clearInterval(interval);tabMonitor.dispose();}});
  }
  const api=Object.freeze({mount});
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
