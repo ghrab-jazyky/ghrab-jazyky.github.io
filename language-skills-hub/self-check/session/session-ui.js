@@ -307,7 +307,17 @@
   },true);
   root.addEventListener('pagehide',()=>{
    if(active())engine.interrupt('page-leave');
-   tabMonitor.dispose();
+   // Keep the channel reusable for Safari's back-forward cache (BFCache).
+   // The document is no longer active until pageshow reactivates monitoring.
+   tabMonitor.deactivate();
+  });
+  root.addEventListener('pageshow',()=>{
+   if(!initialized||purged)return;
+   if(engine.status().phase==='running'&&!engine.status().expired)
+    engine.interrupt('page-leave');
+   if(['running','interrupted'].includes(engine.status().phase)&&!engine.status().expired)
+    tabMonitor.activate();
+   render();
   });
   // Restored pages (including a refresh) must remain locked until the teacher
   // performs the gesture. Timing and saved answers are preserved.
