@@ -134,6 +134,10 @@
   const local=options.localStorage!==undefined?options.localStorage:
    (typeof localStorage!=='undefined'?localStorage:null);
   await store.open();
+  // An explicit "SMAZAT VŠE" is intentional: never restore retired words in
+  // the background after the learner has cleared the shared vocabulary bank.
+  if(typeof store.wasWordsCleared==='function'&&await store.wasWordsCleared())
+   return {found:0,imported:0,skipped:0,storedInIndexedDB:store.status().mode==='ready'};
   const legacy=[...await readLegacyDb(idb),...readFallback(local)];
   if(legacy.length>MODEL.MAX_WORDS*2)throw Error('Starší slovníček je příliš velký.');
   const ids=new Map();
@@ -159,6 +163,8 @@
    throw Error('Společný slovníček překročil limit 5000 slov. Nejprve si stáhni zálohu.');
   let storedInIndexedDB=true;
   if(missing.length){
+   if(typeof store.wasWordsCleared==='function'&&await store.wasWordsCleared())
+    return {found:ids.size,imported:0,skipped:ids.size,storedInIndexedDB:true};
    const report=await store.importWords(MODEL.serializeExport(missing),{replace:false});
    storedInIndexedDB=report.storedInIndexedDB===true;
    if(!storedInIndexedDB)throw Error('Slovíčka by se převedla pouze do dočasné paměti.');
