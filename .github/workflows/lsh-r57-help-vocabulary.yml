@@ -63,3 +63,30 @@ jobs:
           done
           node --test language-skills-hub/tests/r57-howto-and-delete-all.browser.test.cjs
           node --test language-skills-hub/tests/hub-audit-2026-11-11.browser.test.cjs
+
+  live:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Wait until updated help and delete-all code is publicly deployed
+        run: |
+          READY=0
+          for i in $(seq 1 42); do
+            if node -e 'const base="https://ghrab-jazyky.github.io/language-skills-hub/";Promise.all(["assets/hub.js","slovnicek/vocabulary.js"].map(x=>fetch(base+x+"?r57="+Date.now(),{cache:"no-store"}).then(r=>r.text()))).then(([a,b])=>process.exit(a.includes("howtoDialog.showModal()")&&b.includes("store.clearAllWords()")?0:1)).catch(()=>process.exit(1))'; then READY=1; break; fi
+            sleep 10
+          done
+          test "$READY" -eq 1
+      - name: Audit the actual public catalog and shared vocabulary in Chromium
+        env:
+          LSH_R57_BASE: https://ghrab-jazyky.github.io/language-skills-hub/
+          LSH_R57_LIVE: '1'
+        run: node --test language-skills-hub/tests/r57-howto-and-delete-all.browser.test.cjs
