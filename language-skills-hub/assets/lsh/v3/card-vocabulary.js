@@ -3,6 +3,15 @@
  * Uses the same canonical sense identity and production IndexedDB as Conversation Lab. */
 (function(root){
 'use strict';
+// R54: mount the independent, read-only Reading strategy guide on practice cards.
+// Run before vocabulary storage initialization so guide availability does not
+// depend on IndexedDB or the student having saved any words.
+if(root.document&&/\/language-skills-hub\/cteni\/[a-z0-9-]+(?:\/index\.html|\/)?$/.test(root.location?.pathname||'')){
+ const guideScript=root.document.createElement('script');
+ guideScript.src='../../assets/lsh/v3/reading-skill-guides.js';
+ guideScript.async=false;
+ root.document.head.appendChild(guideScript);
+}
 const MODEL=root.LSH_MODEL,STORE=root.LSH_STORE;
 if(!MODEL||!STORE||!root.document)return;
 const match=root.location.pathname.match(/\/language-skills-hub\/(cteni|poslech)\/([a-z0-9-]+)(?:\/index\.html|\/)?$/);
