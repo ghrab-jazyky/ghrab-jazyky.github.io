@@ -29,7 +29,7 @@ jobs:
         run: |
           node --check language-skills-hub/self-check/listening/listening-teacher.js
           node --check language-skills-hub/tests/r53-listening-fixed-topic-video.browser.test.cjs
-          node --check language-skills-hub/tests/r53-live-listening-teacher.browser.test.cjs
+          node --check language-skills-hub/tests/r53-live-listening-teacher.cjs
           node --test language-skills-hub/tests/r24-listening-selfcheck.test.cjs language-skills-hub/tests/r53-listening-fixed-topic-video.test.cjs
       - name: Browser runner
         run: npm install --no-save --ignore-scripts playwright@1.56.1
@@ -59,4 +59,4 @@ jobs:
       - name: Browser runner
         run: npm install --no-save --ignore-scripts playwright@1.56.1
       - name: Production HTTPS after Pages deploy - all three topics on Chromium and WebKit
-        run: node language-skills-hub/tests/r53-live-listening-teacher.browser.test.cjs
+        run: node language-skills-hub/tests/r53-live-listening-teacher.cjs
