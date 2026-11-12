@@ -28,7 +28,7 @@ test('R27 actually enables only explicit public local self-checks, never secure 
  assert.deepEqual(policy.forbiddenSelfCheckSkills,['konverzace']);
  assert.equal(grades.enabled,false);
  assert.equal(grades.schoolGradesEnabled,false);
- assert.equal(grades.roundingRule,'UNDECIDED');
+ assert.equal(grades.roundingRule,'MATHEMATICAL_HALF_UP_0_5_ROUNDS_UP');
  assert.equal(grades.workingSource.schoolApprovalVerified,false);
 });
 test('R27 preserves 29 original practice cards with exact hashes and 642 variants',()=>{
