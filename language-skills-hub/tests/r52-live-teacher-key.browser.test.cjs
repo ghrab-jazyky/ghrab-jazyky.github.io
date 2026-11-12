@@ -6,6 +6,7 @@ const targets=[
  ['Listening Harrison Ford TEST','ll-harrison-ford','poslech','en','B2','test']
 ];
 const root='https://ghrab-jazyky.github.io/language-skills-hub/self-check/practice-answers/teacher.html';
+const requireRelease=process.env.LSH_REQUIRE_R52==='1';
 async function probe(engineName,engine,params){
  const [label,topic,skill,lang,level,mode]=params;
  const url=new URL(root);
@@ -23,13 +24,21 @@ async function probe(engineName,engine,params){
   });
   const start=Date.now();
   let pageResponse;
-  try{pageResponse=await page.goto(url.href,{waitUntil:'domcontentloaded',timeout:30000})}
-  catch(e){events.push(['page.goto',e.message]);}
-  await page.waitForTimeout(1800);
+  for(let attempt=0;attempt<(requireRelease?30:1);attempt++){
+   if(attempt)await page.waitForTimeout(5000);
+   url.searchParams.set('_r52verify',String(Date.now())+'-'+String(attempt));
+   try{pageResponse=await page.goto(url.href,{waitUntil:'domcontentloaded',timeout:30000})}
+   catch(e){events.push(['page.goto',e.message]);}
+   if(!requireRelease)break;
+   const currentRelease=await page.evaluate(()=>document.querySelector('meta[name="lsh-teacher-keys-version"]')?.content).catch(()=>null);
+   if(currentRelease==='R52')break;
+  }
+  await page.waitForTimeout(1400);
   const snapshot=await page.evaluate(()=>({
    pageURL:location.href,
    origin:location.origin,
    title:document.title,
+   release:document.querySelector('meta[name="lsh-teacher-keys-version"]')?.content||null,
    csp:document.querySelector('meta[http-equiv="Content-Security-Policy"]')?.content,
    status:document.getElementById('status')?.textContent,
    topic:document.getElementById('topicTitle')?.textContent,
@@ -49,6 +58,7 @@ async function probe(engineName,engine,params){
    });
   }catch(e){direct={evaluation_error:String(e)}}
   console.log(JSON.stringify({engineName,label,httpStatus:pageResponse?.status(),elapsed:Date.now()-start,snapshot,direct,events}));
+  if(requireRelease&&snapshot.release!=='R52')throw new Error(engineName+' '+label+' did not receive the R52 Pages release');
   if(snapshot.pdfDisabled||snapshot.topic==='Kartu nelze otevřít')throw new Error(engineName+' '+label+' failed to initialize in production');
  }finally{await browser.close()}
 }
