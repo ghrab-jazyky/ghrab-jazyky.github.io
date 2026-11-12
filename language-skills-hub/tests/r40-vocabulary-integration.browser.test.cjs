@@ -74,6 +74,10 @@ for(const [browserName,engine]of[['chromium',chromium],['webkit',webkit]]){
    assert.equal(await dest.locator('.word-row').count(),2);
    // Check that import rejects malformed content and keeps existing words unchanged.
    await dest.locator('#importFile').setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{}')});
+   // FileReader + IndexedDB validation is asynchronous (especially in WebKit).
+   // Assert the actual rejection, not whichever prior status won the race.
+   await dest.waitForFunction(()=>/Import odmítnut/.test(
+    document.getElementById('storageStatus')?.textContent||''),null,{timeout:10000});
    assert.match(await dest.locator('#storageStatus').textContent(),/Import odmítnut/);
    assert.equal(await dest.locator('.word-row').count(),2);
    assert.deepEqual(errors,[]);
