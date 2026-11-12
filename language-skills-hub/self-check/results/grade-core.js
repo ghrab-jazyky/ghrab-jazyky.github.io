@@ -1,6 +1,6 @@
-/* LSH R28 – transparent LOCAL grade proposal (1–5); never an authenticated school record.
- * Source bands: 2026 unapproved school-rules working draft, article 1(24).
- * Exact ratio is compared to thresholds without rounding. NO student tracking.
+/* LSH R60 – transparent LOCAL grade proposal (1–5); never an authenticated school record.
+ * Foreign-language bands: 88/74/59/44. Round percent to a whole number,
+ * with 0.5 upwards, BEFORE applying these bands. NO student tracking.
  */
 (function(host){
  'use strict';
@@ -10,11 +10,14 @@
  function check(ok,message){if(!ok)throw new Error(message)}
  function proposal(earned,max){
   check(valid(earned)&&valid(max)&&max>0&&earned<=max,'Invalid grade points');
-  const grade=BANDS.find(b=>earned*100>=b.min*max).grade;
+  // BigInt preserves exact half-percent boundaries without floating-point drift.
+  const roundedPercent=Number((BigInt(earned)*200n+BigInt(max))/(2n*BigInt(max)));
+  const grade=BANDS.find(b=>roundedPercent>=b.min).grade;
   return {
    kind:'LSH_LOCAL_GRADE_PROPOSAL_R28_V1',
    grade,earned,max,displayedPercent:Math.round(earned*10000/max)/100,
-   exactFraction:[earned,max],thresholdMethod:'EXACT_RATIO_NO_ROUNDING',
+   roundedPercent,exactFraction:[earned,max],
+   thresholdMethod:'ROUND_HALF_UP_WHOLE_PERCENT_BEFORE_BANDS',
    schoolApproved:false,schoolRecorded:false,verifiedIdentity:false,
    warning:'Unverified local proposal; teacher decides whether to record a grade.'
   };
