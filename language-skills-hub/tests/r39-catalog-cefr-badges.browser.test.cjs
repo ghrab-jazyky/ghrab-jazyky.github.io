@@ -92,7 +92,9 @@ for(const [name,engine]of[['chromium',chromium],['webkit',webkit]]){
      // The teacher practice solution page must honor the selected CEFR level.
      assert.equal((await page.goto(key.href,{waitUntil:'load'})).status(),200);
      await page.locator('#downloadPdf:enabled').waitFor({timeout:25000});
-     assert.equal(await page.locator('#topic').inputValue(),first.id);
+     assert.equal(await page.locator('#topicTitle').getAttribute('data-topic-id'),first.id);
+     assert.equal(await page.locator('select#topic').count(),0);
+     assert.equal(key.searchParams.get('skill'),spec.skill);
      assert.equal(await page.locator('#language').inputValue(),spec.lang);
      assert.equal(await page.locator('#level').inputValue(),'B2');
      // Without a CEFR selection the teacher must choose; silent A1 is forbidden.
