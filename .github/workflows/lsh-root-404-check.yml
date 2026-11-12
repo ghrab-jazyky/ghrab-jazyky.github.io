@@ -1,0 +1,20 @@
+name: LSH shared 404 route (no auto-merge)
+on:
+  push:
+    branches: [fix/lsh-root-404-prod-recovery-2026-11-10]
+  pull_request:
+    branches: [main]
+    paths: ['404.html', 'language-skills-hub/tests/root-404.test.cjs', '.github/workflows/lsh-root-404-check.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-404:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node --test language-skills-hub/tests/root-404.test.cjs
