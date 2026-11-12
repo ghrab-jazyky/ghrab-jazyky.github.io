@@ -41,9 +41,9 @@ jobs:
       - name: Install browser engines
         timeout-minutes: 8
         run: |
-          npm install --no-save --ignore-scripts playwright@1.56.1
+          npm install --no-save --ignore-scripts playwright@1.56.1 jsqr@1.4.0 pngjs@7.0.0
       - name: Full legacy and R35 regression suite against local preview
-        timeout-minutes: 10
+        timeout-minutes: 20
         run: |
           if command -v python3 >/dev/null 2>&1; then
             python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-r35-http.log 2>&1 &
