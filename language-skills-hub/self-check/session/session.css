@@ -19,3 +19,10 @@
 @media(max-width:420px){.lsh-session-lock-panel{padding:16px;margin:70px auto}}
 
 #sessionErase{margin:12px 20px;min-height:44px}
+
+/* Student browser printing never exposes questions or answers. The complete
+   teacher dossier is exported through the dedicated PDF generator instead. */
+@media print {
+ body,body * {visibility:hidden!important;}
+ html {background:white!important;}
+}
