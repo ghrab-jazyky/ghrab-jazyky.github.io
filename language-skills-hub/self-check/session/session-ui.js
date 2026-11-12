@@ -141,10 +141,15 @@
     next++;
     if(next===4){
      next=0;gestureAt=0;
-     try{engine.resume();render();resetBaseline();if(!isTouchDevice()&&document.documentElement.requestFullscreen&&!document.fullscreenElement){
-      // A teacher gesture cannot itself guarantee browser fullscreen;
-      // the fullscreen check is deliberately advisory here.
-     }}catch(_){}
+     try{
+      if(!document.fullscreenElement&&document.documentElement.requestFullscreen&&!isTouchDevice()){
+       // Request while the teacher's pointer gesture still carries user activation.
+       Promise.resolve(document.documentElement.requestFullscreen()).then(()=>{
+        fullscreenArmed=!!document.fullscreenElement;
+        engine.resume();resetBaseline();render();
+       }).catch(()=>{lockReason('fullscreen-denied');});
+      }else{engine.resume();resetBaseline();render();}
+     }catch(_){lockReason('fullscreen-denied');}
     }
    });
    corners.appendChild(button);
@@ -168,6 +173,9 @@
    if(!active())return;
    engine.interrupt(kind);
    render();
+  }
+  function lockReason(kind){
+   reason.textContent=ui.reasons[kind]||ui.lock;
   }
   function restricted(){
    // Heuristic only: viewport dimensions cannot reliably prove iPad Split View.
