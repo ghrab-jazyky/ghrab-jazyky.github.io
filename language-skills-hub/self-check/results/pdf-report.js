@@ -14,6 +14,66 @@
   const value=clean(item);
   return value.startsWith(label)?value:label+value;
  });
+ const SECURITY_LABELS=Object.freeze({
+  hidden:'Stránka byla skryta nebo došlo k přepnutí aplikace',
+  'fullscreen-exit':'Opuštění režimu celé obrazovky',
+  'fullscreen-denied':'Režim celé obrazovky nebyl dostupný',
+  'focus-loss':'Ztráta fokusu testového okna',
+  'viewport-change':'Výrazná změna velikosti okna',
+  'restricted-viewport':'Omezené nebo rozdělené okno',
+  clipboard:'Operace se schránkou',
+  'context-menu':'Kontextová nabídka nebo chráněná klávesová zkratka',
+  'page-leave':'Opuštění testové stránky',
+  reload:'Obnovení stránky během testu',
+  'concurrent-tab':'Souběžný aktivní test v jiné záložce',
+  'print-attempt':'Pokus o tisk nebo náhled tisku',
+  'teacher-resume':'Test znovu zpřístupněn učitelem'
+ });
+ const safeTime=t=>Number.isSafeInteger(t)&&t>=0&&t<=8640000000000000;
+ function securityFromAttempt(state){
+  if(!state||!safeTime(state.startedAt))return {
+   monitored:false,tabMonitoringAvailable:false,startedAt:null,events:[]
+  };
+  const startedAt=state.startedAt,events=[];
+  if(Array.isArray(state.incidents))for(const item of state.incidents.slice(0,40)){
+   if(item&&Object.hasOwn(SECURITY_LABELS,item.kind)&&
+    item.kind!=='teacher-resume'&&safeTime(item.at)){
+    events.push({kind:item.kind,at:item.at});
+   }
+  }
+  if(Array.isArray(state.resumptions))for(const at of state.resumptions.slice(0,40)){
+   if(safeTime(at))events.push({kind:'teacher-resume',at});
+  }
+  // Stable ordering for equal timestamps; preserve the local sequence.
+  events.sort((a,b)=>a.at-b.at);
+  return {
+   monitored:true,tabMonitoringAvailable:state.tabMonitoringAvailable===true,
+   startedAt,events
+  };
+ }
+ function securityDetails(report){
+  const s=report.security;
+  if(!s||!s.monitored)return [
+   'Bezpecnostni dohled: pro tento protokol neni dostupny casovany zaznam.',
+   'Absence zaznamu neprokazuje, ze k incidentu nedoslo.'
+  ];
+  const count=s.events.filter(e=>e.kind!=='teacher-resume').length;
+  const out=[
+   'Zdroj: lokalni pamet prohlizece studenta. Zaznam neni nezavisle overeny.',
+   'Detekce soubeznych zalozek: '+(s.tabMonitoringAvailable?'rozhrani dostupne':'nedostupna'),
+   'Zaznamenane zámky: '+count+'; zaznamenana odemceni: '+
+    s.events.filter(e=>e.kind==='teacher-resume').length
+  ];
+  if(s.events.length===0)out.push('Nejsou zaznamenany udalosti; to neni dukaz bezchybneho prubehu.');
+  else for(const item of s.events){
+   const seconds=Math.max(0,Math.floor((item.at-s.startedAt)/1000));
+   const duration=String(Math.floor(seconds/60)).padStart(2,'0')+':'+
+    String(seconds%60).padStart(2,'0');
+   out.push(duration+' | '+new Date(item.at).toLocaleString('cs-CZ')+
+    ' | '+SECURITY_LABELS[item.kind]);
+  }
+  return out;
+ }
  const finite=(n,min,max)=>Number.isFinite(n)&&n>=min&&n<=max;
  function check(ok,msg){if(!ok)throw new Error(msg)}
  function normalize(report){
@@ -34,6 +94,15 @@
    Number.isInteger(q.awarded)&&[0,1].includes(q.awarded)&&
    typeof q.question==='string'&&
    typeof q.correctAnswer==='string'),'Invalid detailed answers.');
+  if(report.security!==undefined){
+   const sec=report.security;
+   check(sec&&typeof sec==='object'&&typeof sec.monitored==='boolean'&&
+    typeof sec.tabMonitoringAvailable==='boolean'&&
+    (sec.startedAt===null||safeTime(sec.startedAt))&&
+    Array.isArray(sec.events)&&sec.events.length<=80&&
+    sec.events.every(e=>e&&Object.hasOwn(SECURITY_LABELS,e.kind)&&safeTime(e.at)),
+    'Invalid local security events.');
+  }
   return report;
  }
  function fullText(report){
@@ -68,6 +137,7 @@
   if(report.reflection){
    lines.push('','VOLITELNA REFLEXE (NEHODNOCENO)',clean(report.reflection));
   }
+  lines.push('','BEZPECNOSTNI PROTOKOL (ORIENTACNI ZAZNAM)',...securityDetails(report));
   lines.push('','Tento soubor muze student upravit; nepotvrzuje identitu ani autentičnost vysledku.');
   return lines.join('\n');
  }
@@ -227,6 +297,14 @@
    paragraph(null,report.reflection,{size:10,leading:14,after:10});
   }
   rule();
+  paragraph(null,'BEZPEČNOSTNÍ PROTOKOL TESTU',
+   {size:12,weight:700,color:'#16344e',after:8});
+  for(const line of securityDetails(report)){
+   paragraph(null,line,{size:9,leading:13,color:light,after:3});
+  }
+  paragraph(null,'POZOR: Záznam vznikl jen v prohlížeči studenta. Nelze jej považovat za nezfalšovatelný důkaz podvádění ani důkaz absence incidentů.',
+   {size:9,leading:13,color:'#8c4b13',after:12});
+  rule();
   paragraph(null,'PODKLAD PRO KONZULTACI S UČITELEM / ZÁKONNÝM ZÁSTUPCEM',
    {size:10,weight:700,after:5});
   paragraph(null,'PDF neobsahuje jméno ani e-mail studenta. Určení odesílatele probíhá mimo tento dokument prostřednictvím školního e-mailu.',
@@ -303,7 +381,7 @@
   try{a.click()}finally{a.remove();setTimeout(()=>URL.revokeObjectURL(objectUrl),2000)}
   return name;
  }
- const api=Object.freeze({normalize,fullText,copy,renderPages,pdfBytes,loadSchoolLogo,generate,download});
+ const api=Object.freeze({normalize,securityFromAttempt,securityDetails,fullText,copy,renderPages,pdfBytes,loadSchoolLogo,generate,download});
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  else host.LSHPdfReport=api;
 })(typeof window!=='undefined'?window:this);
