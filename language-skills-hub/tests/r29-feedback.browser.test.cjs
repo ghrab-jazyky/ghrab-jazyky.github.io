@@ -4,6 +4,20 @@ const test=require('node:test');
 const assert=require('node:assert/strict');
 const {chromium,webkit}=require('playwright');
 const base='http://127.0.0.1:8765/language-skills-hub/';
+
+/* R59: Reading shows only the selected skill panel after R58.
+ * Navigate through the actual tab buttons; never force-click hidden answers. */
+async function activeReadingQuestion(page,index){
+ const field=page.locator('#questionList fieldset.question').nth(index);
+ const skill=await field.evaluate(node=>node.closest('[role="tabpanel"]')?.dataset.skill);
+ assert.ok(skill,'Reading question has no skill tab: '+index);
+ const tab=page.locator('#readingSkillTabs [role="tab"][data-skill="'+skill+'"]');
+ assert.equal(await tab.count(),1,'Reading skill navigation is missing: '+skill);
+ await tab.click();
+ assert.equal(await tab.getAttribute('aria-selected'),'true');
+ assert.equal(await field.isVisible(),true,'Reading question stayed hidden after selecting '+skill);
+ return field;
+}
 for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
  test('R29 '+engineName+' Reading all-correct submission shows no correct answer review cards',async()=>{
   const browser=await engine.launch({headless:true});
@@ -24,7 +38,10 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    });
    const questions=page.locator('fieldset.question');
    assert.equal(await questions.count(),correct.length);
-   for(let i=0;i<correct.length;i++)await questions.nth(i).locator('input[type=radio]').nth(correct[i]).check();
+   for(let i=0;i<correct.length;i++){
+     const field=await activeReadingQuestion(page,i);
+     await field.locator('input[type=radio]').nth(correct[i]).check();
+    }
    assert.equal(await page.locator('#results').isHidden(),true);
    await page.locator('#submitButton').click();
    await page.locator('#results:not([hidden])').waitFor();
@@ -51,8 +68,9 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    });
    const questions=page.locator('fieldset.question');
    for(let i=0;i<correct.length;i++){
-    const total=await questions.nth(i).locator('input[type=radio]').count();
-    await questions.nth(i).locator('input[type=radio]').nth(i===0?(correct[i]+1)%total:correct[i]).check();
+    const field=await activeReadingQuestion(page,i);
+    const total=await field.locator('input[type=radio]').count();
+    await field.locator('input[type=radio]').nth(i===0?(correct[i]+1)%total:correct[i]).check();
    }
    await page.locator('#submitButton').click();
    await page.locator('#results:not([hidden])').waitFor();
