@@ -65,7 +65,8 @@ test('R31 Reading receipt includes only score, grade proposal, topic, CEFR and n
  assert.match(txt,/LOCAL_UNVERIFIED_NOT_SCHOOL_RECORD/);
  assert.doesNotMatch(txt,/Student secret answer|Sensitive personal text|email|studentName/);
  assert.equal(txt.split('\r\n').length,3);
- assert.equal(receipts.FIELDS.length,18);
+ assert.equal(receipts.FIELDS.length,19);
+ assert.equal(r.grading_percent,80);
  assert.throws(()=>receipts.reading(report,{...meta,topic:'=1+1'}));
 });
 test('R31 Listening receipt with pending written answers cannot masquerade as final grade',()=>{
@@ -86,17 +87,29 @@ test('R31 Listening receipt with pending written answers cannot masquerade as fi
  assert.equal(pending.proposed_grade,'');
  assert.equal(pending.total_points,'');
  assert.equal(pending.success_percent,'');
+ assert.equal(pending.grading_percent,'');
  assert.equal(pending.teacher_marks,'1|?|0');
  const final=receipts.listening(normalized,[1,0,1],meta);
  const suggested=grade.proposal(6,9);
  assert.equal(final.total_points,6);
  assert.equal(final.total_max,9);
  assert.equal(final.proposed_grade,suggested.grade);
+ assert.equal(final.grading_percent,suggested.roundedPercent);
  assert.equal(final.written_pending,0);
  const txt=receipts.csv(final);
  assert.doesNotMatch(txt,/PERSONAL DETAIL|secret|private text|What is your name/);
  assert.match(txt,/1\|0\|1/);
  assert.throws(()=>receipts.listening(normalized,[1,2,1],meta));
+});
+test('R60 CSV stores exact 87.5 percent and half-up grading 88 percent separately',()=>{
+ const meta={topic:'rl-asteroids',language:'en',level:'B2',submittedAt:null,interruptionCount:0};
+ const receipt=receipts.reading({points:175,maxPoints:200},meta);
+ assert.equal(receipt.success_percent,87.5);
+ assert.equal(receipt.grading_percent,88);
+ assert.equal(receipt.proposed_grade,1);
+ assert.match(receipts.csv(receipt),/"grading_percent"/);
+ const row={question_number:1,question_id:'q1',question_type:'mc',awarded_points:1,maximum_points:1};
+ assert.match(receipts.reportText(receipt,[row],1762848000000),/Pro znamku zaokrouhleno na: 88 %/);
 });
 test('R31 release manifest acknowledges local-only review and CSV features',()=>{
  const manifest=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../version.json'),'utf8'));
