@@ -65,7 +65,7 @@
 <header><div class="topbar">
 <a class="brand" href="./" aria-label="Language Skills Hub – úvod">LANGUAGE <span>SKILLS</span> HUB</a>
 <nav class="menu" aria-label="Hlavní navigace">
-<a href="#howto">Jak to funguje</a>
+<button type="button" id="howtoOpen" class="howto-trigger" aria-haspopup="dialog" aria-controls="howto">Jak to funguje</button>
 </nav>
 <div class="header-actions" role="group" aria-label="Nastavení zobrazení">
 <button type="button" class="chrome-button" id="themeToggle" aria-label="Zapnout denní režim" aria-pressed="false" title="Zapnout denní režim">
@@ -95,15 +95,22 @@
 <div class="headline"><h2 id="cardsTitle">Dostupné karty</h2><span class="note" id="variantNote">Bez filtrů se otevře volný výběr jazyka a úrovně.</span></div>
 <div id="cards" class="cards" aria-live="polite"><p class="empty">Načítání aktivit…</p></div>
 </section>
-<section id="howto" class="footnote" aria-labelledby="howTitle">
-<h2 id="howTitle">Jak aktivity používat</h2>
+
+</main>
+<footer><p class="note">Language Skills Hub · Gymnázium Ostrava-Hrabůvka · EN / ES / DE / FR · úrovně A1–C2</p></footer>
+<dialog id="howto" class="howto-dialog" aria-labelledby="howTitle" aria-describedby="howtoLead">
+<div class="howto-dialog-head">
+ <div><p class="eyebrow howto-eyebrow">PRŮVODCE LANGUAGE SKILLS HUB</p><h2 id="howTitle">Jak aktivity používat</h2></div>
+ <button type="button" id="howtoClose" class="howto-dialog-close" aria-label="Zavřít nápovědu" title="Zavřít (Esc)"><span aria-hidden="true">×</span></button>
+</div>
+<p class="howto-lead" id="howtoLead">Stručný průvodce procvičováním, výsledky a testy.</p>
+<div class="howto-dialog-body">
 <p><strong>Procvičování:</strong> otevři konkrétní aktivitu nebo klikni na <em>Sdílet se studenty</em>; můžeš přednastavit jazyk a úroveň nebo ponechat volný výběr. Odkaz i QR vedou do původní procvičovací karty.</p>
 <p><strong>VÝSLEDKY u karty Reading a Listening:</strong> otevře učitelský přehled správných řešení PROCVIČOVACÍ verze. Po volbě jazyka a úrovně lze stáhnout PDF s řešeními, vysvětleními a dostupnými vzorovými odpověďmi. Nejde o výsledky konkrétních žáků. Některé otázky se ovšem překrývají s automaticky hodnocenými místními testy. Katalog nevyžaduje přihlášení, klíče nejsou technicky utajené; odkazy neposílej studentům.</p>
 <p><strong>TEST (Reading a Listening):</strong> klikni u tématu na <em>TEST</em>. V učitelském panelu zvol konkrétní jazyk a úroveň a vytvoř studentům odkaz nebo QR kód. Studenti vyplní samostatné úlohy a po odevzdání uvidí vysvětlení. Listening přehrává dvakrát učitel. Testová verze obsahuje jen automaticky vyhodnotitelné úlohy (výběr, řazení a krátké faktické doplňování bez nabídky odpovědí); otevřené interpretační otázky zůstávají v procvičovací kartě. Ihned po odevzdání se vypočítá návrh známky 1–5 podle pracovní jazykové stupnice. Po úplném vyhodnocení může student stáhnout kompletní PDF protokol s oficiálním logem školy, zadáním, svými odpověďmi a správnými řešeními, zkopírovat jej nebo volitelně stáhnout CSV. V časovaném režimu se odpovědi průběžně ukládají pouze v prohlížeči. Jde o místní výsledek bez ověření identity, nikoli o zabezpečenou školní zkoušku; učitel musí každou známku ověřit.</p>
 <p class="note">Tento katalog je určený k procvičování. Obsah průběžně aktualizujeme podle zpětné vazby. Nejde o zabezpečený klasifikovaný test; správné odpovědi jsou u procvičovacích karet součástí klientské aplikace.</p>
-</section>
-</main>
-<footer><p class="note">Language Skills Hub · Gymnázium Ostrava-Hrabůvka · EN / ES / DE / FR · úrovně A1–C2</p></footer>
+</div>
+</dialog>
 <dialog id="qrDialog" aria-labelledby="qrTitle" aria-describedby="shareExplanation" class="share-dialog">
 <div class="dialog-top">
  <div>
