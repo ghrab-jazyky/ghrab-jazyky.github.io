@@ -1,0 +1,31 @@
+name: LSH R22 server-only test security gate (NO deployment)
+on:
+  push:
+    branches:
+      - feat/lsh-r22-private-test-service-contract-2026-11-09
+    paths:
+      - 'server/lsh-test-service/**'
+      - '.github/workflows/lsh-r22-private-contract-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  secure-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Parse code without launching a production backend
+        run: |
+          node --check server/lsh-test-service/src/contract.cjs
+          node --check server/lsh-test-service/src/handler.cjs
+          node --check server/lsh-test-service/tests/contract.test.cjs
+          node --check server/lsh-test-service/tests/http.test.cjs
+      - name: Validate immutable public cards and authenticated R22 HTTP lifecycle
+        run: node --test server/lsh-test-service/tests/contract.test.cjs server/lsh-test-service/tests/http.test.cjs
+      - name: Confirm test-mode flag remains disabled on the public catalog
+        run: |
+          node -e "const fs=require('fs');const c=JSON.parse(fs.readFileSync('language-skills-hub/data/cards.json','utf8'));const v=JSON.parse(fs.readFileSync('language-skills-hub/version.json','utf8'));if(c.gradedTestsEnabled!==false||v.gradedTestsEnabled!==false)process.exit(1);const h=fs.readFileSync('language-skills-hub/index.html','utf8');if(h.includes('/v1/teacher/sessions')||h.includes('LSH_STUDENT_TEST_R22_V1'))process.exit(2);console.log('PASS R22: public practice-only, no service endpoints published')"
