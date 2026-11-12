@@ -88,7 +88,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    await context.close();
   }finally{await browser.close()}
  });
- test('R27 '+name+' Listening teacher provides QR, two playbacks and one student submission',async()=>{
+ test('R53 '+name+' Listening teacher fixes selected topic, links original video and supports one student submission',async()=>{
   const browser=await engine.launch({headless:true});
   try{
    const context=await browser.newContext({viewport:{width:390,height:844}}),page=await context.newPage();
@@ -106,9 +106,11 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.match(student,/level=B2/);
    assert.equal(await page.locator('#studentPreview').getAttribute('href'),student);
    assert.equal(await page.locator('#downloadQr').isEnabled(),true);
-   await page.locator('#markPass').click();
-   await page.locator('#markPass').click();
-   assert.equal(await page.locator('#passCount').textContent(),'2 / 2');
+   assert.equal(await page.locator('#topicTitle').getAttribute('data-topic-id'),'ll-peaky-no-fighting');
+   assert.equal(await page.locator('select#topic').count(),0);
+   assert.equal(await page.locator('#passCount,#markPass,#resetPass').count(),0);
+   assert.equal(await page.locator('#mediaSources a').count(),2);
+   assert.equal(await page.locator('#mediaSources .listening-video-primary').count(),1);
    assert.match(student,/timer=30/);
    await page.goto(student,{waitUntil:'domcontentloaded'});
    await page.waitForSelector('#sessionIntro:not([hidden])',{timeout:30000});
