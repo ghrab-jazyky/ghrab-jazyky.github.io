@@ -1,6 +1,7 @@
 /* R36: Teacher practice answer keys for original Reading and Listening cards.
  * Public static material; neither teacher authentication nor student attempt archive.
- * Keys are generated from the SAME practice DATA variant as the student's shared card. */
+ * R51: fixed-topic teacher keys can show PRACTICE or the actual TEST question bank.
+ * Both remain public static material; no individual student results are available. */
 (function(host){
 'use strict';
 const L='language-skills-hub-practice-key-v1';
@@ -33,7 +34,7 @@ function buildReading(variant,entry,lang,level){
    'Individuální odpověď – původní karta neposkytuje jediný správný výsledek.',
    'Posouzení učitelem podle věcné opory v textu; automaticky nehodnoceno.')],'discussion'));
  return {kind:L,skill:'reading',topicId:entry.id,topic:entry.title,
-  language:lang,level,groups};
+  language:lang,level,groups,mode:'practice'};
 }
 function buildListening(variant,entry,lang,level){
  need(variant&&Array.isArray(variant.gist)&&Array.isArray(variant.detail)&&
@@ -85,10 +86,60 @@ function buildListening(variant,entry,lang,level){
    item(typeof q==='string'?q:q.title||q.prompt,
     'Otevřená výzva – učitelské posouzení, bez automatického klíče.')),'discussion'));
  return {kind:L,skill:'listening',topicId:entry.id,topic:entry.title,
-  language:lang,level,groups};
+  language:lang,level,groups,mode:'practice'};
+}
+
+/* R51: Reading TEST uses exactly the questions graded by ReadingCore.score,
+ * without extra open discussion prompts present only in practice mode. */
+function buildReadingTest(variant,entry,lang,level){
+ need(variant&&Array.isArray(variant.tabs)&&Array.isArray(variant.questions),'Chybný zdroj Reading testu.');
+ need(entry&&entry.skill==='cteni','Téma není Reading Lab.');
+ const groups=variant.tabs.map(tab=>group('TEST · '+tab.title,
+  variant.questions.filter(q=>q.tab===tab.id).map(q=>{
+   need(Array.isArray(q.choices)&&Number.isInteger(q.answer)&&
+    q.answer>=0&&q.answer<q.choices.length,'Chybný testový klíč: '+q.id);
+   return item(q.q,q.choices[q.answer],q.explanation||'');
+  }))).filter(g=>g.items.length);
+ need(groups.reduce((n,g)=>n+g.items.length,0)===variant.questions.length,
+  'Neúplný testový klíč Reading.');
+ return {kind:L,skill:'reading',topicId:entry.id,topic:entry.title,
+  language:lang,level,groups,mode:'test'};
+}
+/* R51: Listening TEST uses the same closed cloze answer bank as
+ * ListeningCore.assessAuto, not the separate open-ended practice facts. */
+function buildListeningTest(variant,entry,lang,level,clozeTasks){
+ need(entry&&entry.skill==='poslech'&&lang==='en','Téma není anglický Listening Lab.');
+ need(variant&&Array.isArray(variant.gist)&&Array.isArray(variant.detail)&&
+  Array.isArray(variant.sequence)&&Array.isArray(variant.facts),'Chybná varianta Listening TEST.');
+ const groups=[];
+ for(const [field,label]of[['gist','A · First Listening – test'],
+   ['detail','B · Listen and Interpret – test']]){
+  const questions=variant[field].map((q,i)=>{
+   const indices=Array.isArray(q.correct)?q.correct:[q.correct];
+   need(Array.isArray(q.options)&&indices.length>0&&indices.every(n=>
+    Number.isInteger(n)&&n>=0&&n<q.options.length),
+    'Chybná klíčová odpověď Listening TEST: '+field+' '+i);
+   return item(q.title,indices.map(n=>q.options[n]).join(' / '),q.why||'');
+  });
+  groups.push(group(label,questions));
+ }
+ groups.push(group('C · Reconstruction – test',variant.sequence.map((sentence,i)=>
+  item('Position '+(i+1),sentence))));
+ need(Array.isArray(clozeTasks)&&clozeTasks.length===variant.facts.length,
+  'Neúplný testový cloze klíč.');
+ groups.push(group('D · Factual cloze – test',clozeTasks.map((task,i)=>{
+  need(task&&task.question===variant.facts[i].title&&
+   typeof task.correctAnswer==='string'&&Array.isArray(task.accepted)&&
+   task.accepted.includes(task.correctAnswer),'Cloze klíč neodpovídá dané kartě.');
+  return item(task.question,task.correctAnswer,task.accepted.length>1?
+   'Uznávané varianty: '+task.accepted.join(' / '):'');
+ })));
+ return {kind:L,skill:'listening',topicId:entry.id,topic:entry.title,
+  language:lang,level,groups,mode:'test'};
 }
 function validate(model){
  need(model&&model.kind===L&&['reading','listening'].includes(model.skill)&&
+  ['practice','test'].includes(model.mode)&&
   /^[a-z]{2}$/.test(model.language)&&/^(A1|A2|B1|B2|C1|C2)$/.test(model.level)&&
   Array.isArray(model.groups)&&model.groups.length>=1&&model.groups.length<40,
   'Neplatný učitelský klíč.');
@@ -204,7 +255,8 @@ async function download(model,doc){
  try{a.click()}finally{a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)}
  return name;
 }
-const api=Object.freeze({buildReading,buildListening,validate,renderPages,download});
+const api=Object.freeze({buildReading,buildListening,buildReadingTest,buildListeningTest,
+ validate,renderPages,download});
 if(typeof module!=='undefined'&&module.exports)module.exports=api;
 host.LSHPracticeAnswers=api;
 if(!host.document||!$('practiceKeyApp'))return;
