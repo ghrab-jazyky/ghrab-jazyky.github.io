@@ -11,7 +11,15 @@ for(const [browserName,engine]of[['chromium',chromium],['webkit',webkit]]){
    const page=await ctx.newPage(),errors=[],networkWrites=[];
    page.on('pageerror',e=>errors.push(e.message));
    page.on('request',r=>{if(!['GET','HEAD'].includes(r.method()))networkWrites.push(r.method()+' '+r.url())});
-   const nav=async url=>{const response=await page.goto(new URL(url,base).href,{waitUntil:'load',timeout:45000});assert.equal(response.status(),200)};
+   // Unique local test query prevents WebKit's legitimate 304 conditional revalidation.
+   // Keep the original path/other parameters intact for the application's routing.
+   let visit=0;
+   const nav=async url=>{
+    const u=new URL(url,base);
+    u.searchParams.set('qa_visit',String(++visit));
+    const response=await page.goto(u.href,{waitUntil:'load',timeout:45000});
+    assert.equal(response.status(),200);
+   };
    await nav('slovnicek/index.html');
    await page.locator('#addTerm').fill('apple');
    await page.locator('#addTranslation').fill('jablko');
