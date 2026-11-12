@@ -85,7 +85,7 @@ test('R24 flags missing, wrong, duplicate sequence and invalid multiple answers'
  assert.throws(()=>core.extractJson('','DATA'));
 });
 
-test('R24 teacher controls media; student has no video or audio controls',()=>{
+test('R53 teacher exposes the original media link without playback counters; students remain media-free',()=>{
  const student=read('self-check/listening/student.html');
  const studentJs=read('self-check/listening/listening-student.js');
  const teacher=read('self-check/listening/teacher.html');
@@ -102,9 +102,12 @@ test('R24 teacher controls media; student has no video or audio controls',()=>{
  assert.match(studentJs,/Listen and Interpret/);
  assert.match(studentJs,/Listen, Complete and Reconstruct/);
  assert.match(studentJs,/submitButton/);
- assert.match(teacher,/markPass/);
- assert.match(teacher,/studentUrl/);
- assert.match(teacherJs,/passes<2/);
+ assert.match(teacher,/id="topicTitle"/);
+ assert.match(teacher,/id="mediaSources"/);
+ assert.match(teacher,/id="studentUrl"/);
+ assert.doesNotMatch(teacher,/<select id="topic"|markPass|resetPass|passCount|Průběh přehrávání/);
+ assert.doesNotMatch(teacherJs,/passes\s*[<>=]|function count\(/);
+ assert.match(teacherJs,/const topicId=params\.get\('topic'\)/);
  assert.match(teacherJs,/target='_blank'|target='_blank'/);
  assert.match(read('assets/hub.js'),/self-check\/listening\/teacher\.html/);
  assert.doesNotMatch(read('assets/hub.js'),/LSH_LISTENING_TEST_GRADED/);
