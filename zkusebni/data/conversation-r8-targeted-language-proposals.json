@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "kind": "R8_1_NARROW_LANGUAGE_CANDIDATES",
+  "state": "CANDIDATES_ONLY",
+  "teacherApproval": false,
+  "published": false,
+  "reviewComplete": false,
+  "sourceOfTruth": "CANONICAL_ORIGINAL_CONTENT",
+  "description": "Five strictly scoped linguistic candidate fixes based on source-aware review of the 38 R6 question differences. Keep all original supports, vocabulary, challenges and all other questions unchanged. No approval or deployment.",
+  "patches": [
+    {
+      "topicId": "cl-hrani-her",
+      "language": "es",
+      "level": "B1",
+      "stationIndex": 1,
+      "field": "questions",
+      "questionIndex": 2,
+      "original": "¿Cómo pueden ayudarse los amigos para desconectarse?",
+      "replacement": "¿Cómo pueden ayudarse los amigos a desconectarse?",
+      "reason": "Spanish ayudar a + infinitive (not ayudar para + infinitive); the question and its thematic focus remain unchanged.",
+      "reviewState": "LINGUISTIC_CANDIDATE_NOT_TEACHER_APPROVED"
+    },
+    {
+      "topicId": "cl-hrani-her",
+      "language": "fr",
+      "level": "A2",
+      "stationIndex": 7,
+      "field": "questions",
+      "questionIndex": 1,
+      "original": "Comment se mettre d’accord pour arrêter avec ses amis ?",
+      "replacement": "Comment décider ensemble quand arrêter de jouer ?",
+      "reason": "A2: remove ambiguous avec ses amis attachment; explicitly ask friends to decide together when to stop playing.",
+      "reviewState": "LINGUISTIC_CANDIDATE_NOT_TEACHER_APPROVED"
+    },
+    {
+      "topicId": "cl-hrani-her",
+      "language": "fr",
+      "level": "B1",
+      "stationIndex": 4,
+      "field": "main",
+      "original": "Que peut apprendre la compétition sur la frustration et la persévérance ?",
+      "replacement": "Que peut nous apprendre la compétition sur la frustration et la persévérance ?",
+      "reason": "French apprendre quelque chose à quelqu’un: add missing recipient nous; leave challenge and station topic intact.",
+      "reviewState": "LINGUISTIC_CANDIDATE_NOT_TEACHER_APPROVED"
+    },
+    {
+      "topicId": "cl-socialni-media",
+      "language": "de",
+      "level": "B1",
+      "stationIndex": 6,
+      "field": "questions",
+      "questionIndex": 0,
+      "original": "Warum fühlen sich manche ständig erreichbar?",
+      "replacement": "Warum glauben manche, dass sie immer erreichbar sein müssen?",
+      "reason": "German B1: clearly express perceived obligation instead of unnatural sich erreichbar fühlen.",
+      "reviewState": "LINGUISTIC_CANDIDATE_NOT_TEACHER_APPROVED"
+    },
+    {
+      "topicId": "cl-socialni-media",
+      "language": "de",
+      "level": "C2",
+      "stationIndex": 4,
+      "field": "questions",
+      "questionIndex": 2,
+      "original": "Wie schützt man Vertrauen ohne kleine unabhängige Stimmen zu verdrängen?",
+      "replacement": "Wie schützt man Vertrauen, ohne kleine unabhängige Stimmen zu verdrängen?",
+      "reason": "German C2: required comma before ohne ... zu infinitive group.",
+      "reviewState": "LINGUISTIC_CANDIDATE_NOT_TEACHER_APPROVED"
+    }
+  ]
+}

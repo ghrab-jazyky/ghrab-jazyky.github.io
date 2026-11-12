@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#081526">
+<meta name="description" content="Language Skills Hub – Conversation Lab, Reading Lab a Listening Lab na jednom místě. 29 témat, interaktivní procvičování A1–C2.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; font-src 'self'; connect-src 'self'; frame-src https:; form-action 'none'">
+<title>Language Skills Hub – jazykové laboratoře</title>
+<link rel="stylesheet" href="assets/hub.css">
+<script defer src="assets/qr.js"></script>
+<script defer src="assets/hub.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Přejít na obsah</a>
+<header><div class="topbar">
+<a class="brand" href="./" aria-label="Language Skills Hub – úvod">LANGUAGE <span>SKILLS</span> HUB</a>
+<nav class="menu" aria-label="Hlavní navigace">
+<a href="#catalog">Katalog aktivit</a>
+<a href="#howto">Jak to funguje</a>
+<a href="../slovnicek/">Můj slovníček</a>
+</nav>
+</div></header>
+<main id="main">
+<section class="hero" aria-labelledby="title">
+<div class="eyebrow">Gymnázium Ostrava-Hrabůvka · jazykové vzdělávání</div>
+<h1>Tři dovednosti.<br><span>Jedno místo.</span></h1>
+<p class="lead">Konverzace, čtení a poslech v jednotném katalogu. Vyber si aktivitu, jazyk a úroveň, nebo otevři odkaz či QR kód od učitele.</p>
+<div class="counts"><div><strong>21</strong>Conversation</div><div><strong>5</strong>Reading</div><div><strong>3</strong>Listening</div></div>
+</section>
+<section id="catalog" aria-labelledby="catalogTitle">
+<div class="headline"><h2 id="catalogTitle">Katalog aktivit</h2><span id="summary" aria-live="polite">Načítání…</span></div>
+<div class="tabs" aria-label="Filtr podle jazykové dovednosti">
+<button class="tab" type="button" data-skill="all" aria-pressed="true">Vše</button>
+<button class="tab" type="button" data-skill="konverzace" aria-pressed="false">Mluvení</button>
+<button class="tab" type="button" data-skill="cteni" aria-pressed="false">Čtení</button>
+<button class="tab" type="button" data-skill="poslech" aria-pressed="false">Poslech</button>
+</div>
+<div class="controls">
+<div><label for="search">Hledat téma</label><input id="search" type="search" placeholder="Např. umělá inteligence, rodina, film…"></div>
+<div><label for="language">Jazyk aktivity</label><select id="language" aria-label="Jazyk aktivity"><option value="en">English</option><option value="es">Español</option><option value="de">Deutsch</option><option value="fr">Français</option></select></div>
+<div><label for="level">Úroveň CEFR</label><select id="level" aria-label="Úroveň CEFR"><option>A1</option><option>A2</option><option>B1</option><option selected>B2</option><option>C1</option><option>C2</option></select></div>
+</div>
+<div class="headline"><h2 id="heading">Všechny jazykové aktivity</h2><span class="note">Odkazy nastaví zvolenou variantu</span></div>
+<div id="cards" class="cards" aria-live="polite"><p class="empty">Načítání aktivit…</p></div>
+</section>
+<section id="howto" class="footnote" aria-labelledby="howTitle">
+<h2 id="howTitle">Jak aktivity používat</h2>
+<p><strong>Učitel:</strong> zvol jazyk a úroveň, klikni na <em>QR a odkaz</em> a sdílej vybranou aktivitu se třídou. <strong>Student:</strong> otevři odkaz a procvičuj vlastním tempem. U poslechů může být potřeba internetové připojení k videu.</p>
+<p class="note">Tento katalog je určený k procvičování. Obsah průběžně aktualizujeme podle zpětné vazby. Nejde o zabezpečený klasifikovaný test; správné odpovědi jsou u procvičovacích karet součástí klientské aplikace.</p>
+</section>
+</main>
+<footer><p class="note">Language Skills Hub · Gymnázium Ostrava-Hrabůvka · EN / ES / DE / FR · úrovně A1–C2</p></footer>
+<dialog id="qrDialog" aria-labelledby="qrTitle">
+<div class="dialog-top"><h2 id="qrTitle">Sdílení karty</h2><button type="button" id="qrClose" class="action" aria-label="Zavřít">Zavřít</button></div>
+<div id="qrMount" aria-label="QR kód vybrané aktivity"></div>
+<p class="note" id="qrUrl"></p>
+<div class="actions"><button class="action primary" id="qrCopy" type="button">Kopírovat odkaz</button><button class="action" id="qrSave" type="button">Stáhnout QR SVG</button></div>
+</dialog>
+<div id="toast" class="hidden" aria-live="polite" role="status"></div>
+<noscript><p>Katalog potřebuje povolený JavaScript.</p></noscript>
+</body></html>

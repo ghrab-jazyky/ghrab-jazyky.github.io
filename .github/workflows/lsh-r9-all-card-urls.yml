@@ -1,0 +1,49 @@
+name: LSH R9 all 29 real fixed/free URL/QR browser smoke (NO deployment)
+on:
+  pull_request:
+    paths:
+      - 'zkusebni/tests/lsh-all-29-fixed-urls.browser.test.cjs'
+      - 'zkusebni/tests/lsh-standalone-offline.browser.test.cjs'
+      - 'zkusebni/data/reference-pilots.json'
+      - 'zkusebni/assets/lsh/v4/reference-pilots.js'
+      - 'zkusebni/reference-karty/**'
+      - 'zkusebni/konverzace/**'
+      - 'zkusebni/integrace/**'
+      - 'zkusebni/nahledy/cteni/**'
+      - 'zkusebni/nahledy/poslech/**'
+      - '.github/workflows/lsh-r9-all-card-urls.yml'
+  push:
+    branches:
+      - 'feat/lsh-*'
+    paths:
+      - 'zkusebni/tests/lsh-all-29-fixed-urls.browser.test.cjs'
+      - 'zkusebni/tests/lsh-standalone-offline.browser.test.cjs'
+      - 'zkusebni/data/reference-pilots.json'
+      - 'zkusebni/assets/lsh/v4/reference-pilots.js'
+      - 'zkusebni/reference-karty/**'
+      - 'zkusebni/konverzace/**'
+      - 'zkusebni/integrace/**'
+      - 'zkusebni/nahledy/cteni/**'
+      - 'zkusebni/nahledy/poslech/**'
+      - '.github/workflows/lsh-r9-all-card-urls.yml'
+permissions:
+  contents: read
+jobs:
+  fixed-url-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install isolated browser engines
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Verify all 29 free/locked student URLs and QR in two engines
+        run: node --test zkusebni/tests/lsh-all-29-fixed-urls.browser.test.cjs
+      - name: Verify real single-file offline HTML downloads from teacher catalog
+        run: node --test zkusebni/tests/lsh-standalone-offline.browser.test.cjs

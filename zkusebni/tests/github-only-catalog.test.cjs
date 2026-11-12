@@ -24,13 +24,15 @@ test('All shell screens link to selector within /zkusebni/ and remain GitHub-onl
  for(const p of pages){
   const h=read(p);
   const href=(p==='index.html'||p==='404.html')?'vyber/':'../vyber/';
-  assert.ok(h.includes('href="'+href+'">Výběr aktivit</a>')||
-   h.includes('href="'+href+'" aria-current="page">Výběr aktivit</a>'),
+  const text=p==='index.html'?'Původní výběr aktivit':'Výběr aktivit';
+  assert.ok(h.includes('href="'+href+'">'+text+'</a>')||
+   h.includes('href="'+href+'" aria-current="page">'+text+'</a>'),
    p+' must link to canonical selector');
   assert.match(h,/name="robots" content="noindex,nofollow"/);
   assert.doesNotMatch(h,/Cloudflare Access/);
  }
- assert.match(read('index.html'),/href="vyber\/">Připravit aktivitu/);
+ assert.match(read('index.html'),/href="reference-karty\/">Otevřít jednotný katalog/);
+ assert.match(read('index.html'),/href="vyber\/">Původní výběr aktivit/);
 });
 test('Catalog remains a truthful pilot with demo hidden in unified selector',()=>{
  core.validateManifest(manifest);

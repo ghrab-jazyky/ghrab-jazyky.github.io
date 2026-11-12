@@ -1,0 +1,130 @@
+# Language Skills Hub – R7: nezávislé QA bez předplatného Clauda
+**Datum:** 8. listopadu 2026 · **Repo:** ghrab-jazyky/ghrab-jazyky.github.io · **DRAFT PR #27**  
+**Publikace:** NO MERGE · žádný přepis main, schválených referencí ani soukromých učitelských klíčů.
+
+## 1. Conversation Lab (R6)
+- 21 ověřených kandidátů, EN/ES/DE/FR × A1–C2 = 504 variant, 4032 stanovišť, 16 128 hlavních/doplňujících otázek.
+- První heuristický screening vytkl 4 španělské A1 otázky se subjunktivem; opravy byly aplikovány **pouze v R6 kandidátech**, s novými SHA-256, Git blobs a CSP hash.
+- Následný screening těchto konkrétních kategorií: 0 otevřených nálezů. Meziúrovňová QA matice otestovala 420 přechodů CEFR a nevykázala hromadně identické otázkové sady nebo přesné duplicity slovní zásoby.
+- Automatická data ukazují rostoucí průměrnou délku otázek A1–C2; **to nedokazuje správnost CEFR, přirozenost DE/FR ani úplné pedagogické schválení**.
+- Skripty `tools/r6-content-audit.cjs`, `tools/r6-pedagogy-matrix.cjs`; CI výstupy `lsh-r6-independent-content-screen`, `lsh-r6-cross-level-content-matrix`.
+- Claude ZIP export zůstává volitelným CLI nástrojem, **neprovádí se automaticky při každém commitu**.
+
+## 2. Reading Lab (R7)
+- Ověřeno všech pět Reading témat: jedna reference Asteroids v2.3 a čtyři další čtecí karty.
+- 5 originálních studentských HTML beze změny; 120 jazykových/CEFR variant, 1800 úloh a 2000 doslovně ověřených evidence úryvků. Chybějící doslovné evidence: **0**. Sémantická správnost odpovědí a externí učitelský klíč z toho neplynou.
+- Automatický audit původních zdrojů: 16 sad Multiple Matching se dvěma otázkami na stejný odstavec, 15 příliš stručných vysvětlení (nutno posoudit podle typu úlohy), 10 EN délek mimo orientační doporučení v3.5.
+- Čtyři původně hlášené duplicitní možnosti byly **falešné pozitivní**: `sure` a `sure!!` nejsou ekvivalentní pro pragmatickou úlohu; audit nyní zachovává význam interpunkce.
+- Opravy 16 matching zadání připraveny **v jedné koordinované dávce pro dvě karty**: `An Email from a Friend` (4 jazykové varianty) a `Instant Messages` (12). Každá cílová otázka nově odkazuje na ověřený třetí odstavec.
+- Generátor `tools/reading-r7-candidates.cjs` a přesný návrh `data/reading-r7-matching-proposals.json`: zdrojový blob předem ověřen, změněno pouze 16 objektů otázek v pracovních kopiích, všechny 24 sad na B2/C1/C2 mají nyní tři různé odpovědní odstavce.
+- Kandidátní HTML vznikají **pouze jako artefakt GitHub Actions**, nejsou commitována do veřejných studentských cest a nejsou vydána. Soukromé učitelské klíče musí být před vydáním synchronizovány.
+- Délky EN *Can Mistakes Help Us Learn?*: 184/214/271/333/342/400 slov na A1/A2/B1/B2/C1/C2. Náročnější úrovně potřebují odborně promyšlenou práci s textem; nezvyšovat délku mechanickým paddingem bez revize klíče.
+- *Plastic in Our World* obsahuje více žánrů; katalog jej nesmí zavádějícím způsobem označovat za filmovou recenzi na všech šesti úrovních.
+- CI výstupy: `lsh-reading-five-content-evidence-qa` a `lsh-reading-r7-16-matching-repairs-candidates`.
+
+## 3. Listening Lab (R7)
+- Tři existující zdrojové karty ověřeny proti Git blobs, EN A1–C2 = **18 variant**.
+- **Matthew McConaughey v3** má tři explicitní fáze, Written Evidence i Reconstruct the Speech.
+- **Harrison Ford v6 a Peaky Blinders v2** mají podobné datové položky (`gist`, `detail`, `facts`, `open`, `sequence`, `vocab`), ale stále nemají sjednocené třífázové studentské UI podle Matthew. Tento rozpor je skutečný, nestačí změnit URL/QR.
+- Harrison obsahuje legitimní `type:multi` otázky se dvěma správnými volbami. Nález `OBJECTIVE_QUESTION_INVALID` byl opraven ve validátoru, **nikoliv** změnou těchto správných úloh. Kontrolují se nyní typy single i multi.
+- Harrison postrádá části lokalizovaných pomůcek `beforeHelp`/`talkHelp`. Je třeba rozhodnout, zda doplnit obsah na všech úrovních, nebo transparentně skrývat nepoužitelné ovladače.
+- Peaky Blinders vyžaduje věkovou přejímku a skutečné ověření klipu; žádná média nebyla stažena ani přehrána v auditu.
+- Dva nově dodané materiály `TED Conlangs` a `How to Choose Your News` stále nejsou součástí 29karetního pilotu; první obsahuje šest úrovní, druhý původně jen B2/C1 a potřebuje nově vytvořené úrovně.
+- Skript `tools/listening-reference-parity.cjs`; CI artefakt `lsh-listening-matthew-v3-parity-audit`.
+
+## 4. Důležité vydávací brány
+1. Všechny položky katalogu jsou nadále technické piloty; `teacherApproval:false`, `Testování:not-ready`, DRAFT.
+2. Nezávisle posoudit významovou správnost otázek, úrovně CEFR, pedagogickou vhodnost a u poslechů shodu s reálně dostupným médiem.
+3. Po validaci Reading kandidátů dořešit bezpečné aktualizace soukromých učitelských klíčů; žádný klíč do veřejného repozitáře.
+4. Sjednotit dvě starší poslechové karty podle Matthew v3 a integrovat dvě další dodané studentské karty podle příslušného kontraktu.
+5. Dokončit samostatnou kratší testovací variantu každé dovednosti a schválit její pravidla.
+6. Fyzická přejímka Android, iPhone/iPad Safari, školní Wi-Fi, studentská QR, offline ZIP a lokální osobní slovníček.
+7. Sloučení do `main` až po výslovném schválení. Nikdy nepřevádět automatický PASS na pedagogické schválení.
+
+## 5. Praktické odkazy
+- PR: https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/pull/27
+- R6 CI matice: https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42446386814
+- Reading + Listening R7 CI: https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42446806240
+
+**Stav této etapy:** reprodukovatelné, bezplatné, zdrojově vázané kontroly všech tří dovedností zavedeny; skutečné opravy konverzačních variant R6 i kandidáti 16 úloh Reading R7 připraveny. Kompletní obsahová přejímka a sjednocení Listening zůstávají nedokončené.
+
+## 6. Pokračování po browser QA – 8. listopadu
+
+- **R7 Reading:** kontrola všech 5 zdrojů opět PASS (120 variant / 1800 otázek / 2000 doslovných důkazových úryvků; chybějících 0). Původních 15 upozornění na krátké vysvětlení bylo ručně prověřeno: **14** šlo o legitimní stručné odpovědi na Scanning a detektor je již neoznačuje. Zbývající **1** slabé vysvětlení (`An Email from a Friend`, DE B2, `de-b2-matching-2`, „Das Sofa.“) bylo v **izolované R7 kopii** doplněno textem odpovídajícím doloženému čtvrtému odstavci. Originál zůstává nedotčen.
+- Reprodukovatelný audit před implementací výhrad do kandidátů eviduje **27 podnětů**: 16 opakovaných cílových odstavců Multiple Matching, 10 orientačních anglických délek a 1 stručné vysvětlení. Z těchto 27 je 17 obsahových oprav zachyceno ve dvou izolovaných R7 kandidátech; doporučené délky nejsou automatické chyby a texty nebyly mechanicky prodlouženy.
+- **R7 Listening UI:** nový generátor `tools/listening-r7-three-phase-candidates.cjs` tvoří **dvě samostatné nezveřejněné HTML kopie** Harrison Ford / Peaky Blinders. Zachovává všech **12 původních EN × A1–C2 datových sad**, odděluje First / Second / Third Listening, Written Evidence a Reconstruction, přidává samostatné vyhodnocení fáze a volitelnou slovní zásobu **mimo** skóre hlavních úloh.
+- Statická CI kontrola v `lsh-reference-integrity.yml` prošla. Samostatný browser regression v `lsh-listening-r7-browser.yml` ověřil **8 kombinací**: dva zdroje × Chromium/WebKit × mobilní/desktopový viewport; kontroly samostatných tlačítek, správného jmenovatele skóre, zachování 3 fází, zneplatnění výsledku po úpravě odpovědi a absence JS výjimek prošly.
+- Browser test probíhal na lokálním HTTP serveru; **nejde o fyzický iPhone/iPad**, neověřuje Facebook/YouTube média ani věkovou vhodnost scény.
+- **Bez Clauda:** žádná fáze již nevyžaduje vyčerpané Claude tokeny; exporty pro Claude jsou pouze volitelné.
+
+### Přímé kontrolní odkazy
+- [R7 Browser QA, Chromium/WebKit – PASS](https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42452435267)
+- [R7 Reading/Listening source + kandidáti – PASS](https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42452516226)
+
+**Stav po pokračování:** opravené a otestované kandidáty jsou připraveny k pedagogické / mediální přejímce, nikoli k automatickému vydání. Původní student HTML, neveřejné klíče, studentská data a `main` se nemění.
+
+
+## 7. R8 – pokračování po obnovení vlákna (8. listopadu 2026)
+
+**Závazný stav:** PR #27 je stále DRAFT, pouze větev `feat/lsh-r5-reference-pilot-catalog-2026-11-07`, bez merge/deploymentu do `main`, bez úprav původních zdrojů a bez učitelského schválení. Počty technicky zařazených témat jsou stále **21 Conversation + 5 Reading + 3 Listening = 29**.
+
+### R7 Listening – doplnění UI regresí
+- Třífázové kandidáty Harrison Ford a Peaky Blinders dostaly v generátoru opravené odkazy boční navigace na Third Listening, Optional Vocabulary, After Listening a Overall Review.
+- Kontrola zahrnuje všech šest úrovní A1–C2, oddělené fáze, hlavní skóre bez slovní zásoby, mobilní přetékání a nulové JS výjimky v Chromium/WebKit.
+- [CI PASS – 42489241409](https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42489241409); originální studentská HTML nebyla přepsána.
+
+### Hromadný import – ochrana před částečným zápisem
+- `tools/card-intake.cjs`: zámek pro souběžné instance, ověření konzistence před změnami, exkluzivní vytváření souborů, dočasné zápisy a přejmenování tří evidenčních JSON, best-effort rollback při zachycené chybě.
+- CI fault-injection simuluje poruchu po prvním HTML a po prvním zapsaném ledgeru, kontroluje byte-identické obnovení všech JSON a absenci částečných HTML; následně úspěšný tříkartový import.
+- [CI PASS – 42489493786](https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42489493786).
+- **Limit:** náhlá ztráta napájení / SIGKILL není databázová transakce; po takové události vždy `--verify` a kontrola pracovního stromu před commitem.
+
+### Reading R7 – skutečné browser testování kandidátů
+- Nový `tests/reading-r7-browser.test.cjs` a `.github/workflows/lsh-reading-r7-browser.yml` sestavují izolovaně dva nezveřejněné HTML kandidáty; žádné nahrávání na Pages.
+- **8 konfigurací** (Email/Instant × Chromium/WebKit × PC/mobil), v každé **24 kombinací EN/ES/DE/FR × A1–C2**, tedy 192 renderovacích průchodů. Kontrola cílových odstavců u opravených Multiple Matching, skutečného zviditelnění supporting passage, invalidace výsledků po změně odpovědi, zapnutí/vypnutí slovníku, funkčních tabů, počtu úloh, absence horizontálního overflow a absence nečekaných síťových požadavků.
+- [CI PASS – 42489814085](https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42489814085).
+- **Neprokazuje:** sémantickou správnost všech úloh, skutečné jazyky/CEFR, učitelské odpovědní klíče ani reálné iOS/Android zařízení.
+
+### Další otevřené kroky (nepřeskakovat)
+1. Samostatná pedagogická přejímka 21 Conversation, 5 Reading, 3 Listening. Claude není povinný: nezávislou revizi lze provádět jinak.
+2. Bezpečně sladit **neveřejné učitelské klíče** se 17 obsahovými opravami obou Reading kandidátů před jejich zpřístupněním.
+3. Obsahově ověřit Harrison Ford / Peaky Blinders proti skutečným médiím, věkovou vhodnost Peaky, a teprve pak rozhodnout o přijetí třífázových kandidátů.
+4. Získat a technicky ověřit původní student HTML dvou dalších poslechů (TED Conlangs a How to Choose Your News); druhý nemá všechny úrovně.
+5. Odlišné krátké testovací sady a jejich hodnoticí pravidla vytvořit až samostatně; `Testování` zůstává vypnuto.
+6. Fyzická UAT Android/iOS/iPad Safari, škola, QR, offline ZIP a osobní slovníček; výslovný souhlas učitele před merge.
+
+
+## 8. R8 – nález pedagogické regrese R6 a obnova původních obsahů (8. listopadu 2026)
+
+**Závěr hloubkového diff auditu:** Předchozí R6 kandidáti úspěšně prošli strukturálními a prohlížečovými testy, ale jejich výukový obsah byl ve velkém rozsahu nahrazen obecnými frázemi. Mezi 21 kanonickými Conversation originály a R6 daty `CONTENT` byly zdrojově potvrzeny tyto změny:
+
+| Porovnání původních HTML vs R6 | Počet změněných |
+|---|---:|
+| Jazykové opory Support – stanoviště | **3 840 z 4 032** |
+| Jednotlivé podpůrné výrazy | **10 899** |
+| Vysvětlení/Explain | **417** |
+| Sady slovní zásoby | **34** |
+| Hlavní a doplňující otázky | **6 + 32 = 38** |
+| Challenge/Stretch | **25 / 31** |
+
+**Důsledek:** automatický PASS R6 pro JavaScript, CSP, strukturu a počty otázek nebyl oprávněním považovat nové podpůrné věty za pedagogicky sjednocené. Nové generické formulace typu `And you?` či `I agree / disagree because…` často vytlačily původní tematicky relevantní opory.
+
+### Bezpečná obnova – R8
+- `tools/conversation-r8-source-recovery.cjs` vezme přesné Git-blob-ově ověřené **kanonické originály** a technický R6 runtime; vygeneruje 21 samostatných kandidátních HTML výhradně do zvolené výstupní složky.
+- Všech **504 kombinací EN/ES/DE/FR × A1–C2** zachovává původní `CONTENT` (Support, Challenge, Stretch, slovní zásobu, čtyři jazykové opory) kromě **sedmi explicitně vymezených oprav A1** v `data/conversation-r8-minimal-content-fixes.json`.
+- Tři původní ES A1 otázky se složitou vazbou byly zjednodušeny. Čtyři prokazatelné duplicity napříč stanovišti byly odstraněny: Škola ES A1, Nemoci ES/DE A1 a Rodina FR A1.
+- Validátor u celé sady ověřuje **nulové přesné duplicity hlavních a doplňujících otázek**, neporušené původní soubory, vstupní a výstupní SHA-256/Git blob, JavaScript syntaxi a správný nový CSP SHA-256.
+- `R8_QUESTION_CHANGE_REVIEW.json` v artefaktu eviduje všech **38 R6 změn v otázkách** s původní, R6 i R8 formulací. Rozhodnutí o dalších návrzích zůstává na nezávislé jazykové revizi; nelze automaticky převzít celý R6 přepis ani každou jeho změnu bez kontroly.
+- Kandidáti R8 nejsou integrováni do studentských cest a **nejsou** označeni za schválené testy nebo pedagogicky vydané materiály. Soukromé učitelské klíče ani data žáků se neukládají do veřejného repozitáře.
+
+**Obsahová obnova 21 karet – CI PASS:** https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42491292379
+
+**R8 prohlížečová regrese:** https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/42491292405 (Chromium + WebKit, 21 karet × 24 variant × 8 stanovišť na engine; výsledek vždy ověřit v CI).
+
+### Co nedělat a co následuje
+1. **Neslučovat** genericky přepsané kandidáty R6 do veřejného katalogu.
+2. Před vydáním R8 prověřit výsledky browser QA, fyzickou UAT iOS/Android a kvalitu 38 změněných otázek; nejde o automatické pedagogické schválení původních ani opravených textů.
+3. Po obsahové přejímce zprovoznit cílenou staged integraci R8 s odkazem/QR a testy, ale publikaci provést až se souhlasem učitele.
+4. U Reading R7 bezpečně synchronizovat neveřejné učitelské klíče; u Listening ověřit média a vhodnost věku; dvě další dodané poslechové karty potřebují původní zdroje.
+5. Zůstává **DRAFT PR #27 / NO MERGE / Testování not-ready / žádný zásah do main**. Claude je volitelný, nikoli blokující.
+

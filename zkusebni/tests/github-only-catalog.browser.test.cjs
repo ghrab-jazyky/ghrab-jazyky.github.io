@@ -404,3 +404,252 @@ test('R4D Matthew v3 reference: 3 independent checks, separate optional vocabula
   }finally{await browser.close();}
  }
 });
+
+
+
+/* R5K batch intake and Claude queue: real browser download tests for static teacher UI. */
+function unzipStored(buffer){
+ const entries={};let offset=0,cap=0;
+ while(offset+30<buffer.length&&buffer.readUInt32LE(offset)===0x04034b50){
+  const method=buffer.readUInt16LE(offset+8),size=buffer.readUInt32LE(offset+18);
+  const nlen=buffer.readUInt16LE(offset+26),elen=buffer.readUInt16LE(offset+28);
+  assert.equal(method,0,'Expected ZIP stored entries (browser portability)');
+  const name=buffer.subarray(offset+30,offset+30+nlen).toString('utf8');
+  offset+=30+nlen+elen;
+  assert.ok(size<7*1024*1024,'ZIP entry size cap');
+  entries[name]=buffer.subarray(offset,offset+size);
+  offset+=size;
+  cap++;
+  assert.ok(cap<=40,'ZIP cannot have unlimited entries');
+ }
+ assert.ok(offset+46<buffer.length&&buffer.readUInt32LE(offset)===0x02014b50,'ZIP central directory missing');
+ return entries;
+}
+test('R5K batch intake: local ZIP with two new HTML files and matching cards.json (Chromium + WebKit)',{timeout:170000},async()=>{
+ for(const [engine,label,width] of [[chromium,'Chromium',390],[webkit,'WebKit',375]]){
+  const browser=await engine.launch({headless:true});
+  try{
+   const context=await browser.newContext({viewport:{width,height:844},acceptDownloads:true,serviceWorkers:'block'});
+   const page=await context.newPage(),errors=[];
+   page.on('pageerror',e=>errors.push(String(e)));
+   const res=await page.goto(STAGE+'pridat-kartu/',{waitUntil:'domcontentloaded'});
+   assert.equal(res.status(),200);
+   const a='<!doctype html><html><head><title>Future Topic</title></head><body><main>Student HTML 1</main></body></html>';
+   const b='<!doctype html><html><head><title>Next Topic</title></head><body><main>Student HTML 2</main></body></html>';
+   await page.locator('#intakeFiles').setInputFiles([
+    {name:'future-topic.html',mimeType:'text/html',buffer:Buffer.from(a)},
+    {name:'next-topic.html',mimeType:'text/html',buffer:Buffer.from(b)}
+   ]);
+   await page.waitForFunction(()=>document.querySelectorAll('#intakeList .intake-row').length===2);
+   for(const row of await page.locator('#intakeList .intake-row').all())
+    await row.locator('textarea').fill('An original student conversation activity about everyday choices and personal responsibility.');
+   assert.equal(await page.locator('#intakeBuild').isEnabled(),true,label+' valid metadata enables ZIP');
+   const dl=page.waitForEvent('download');
+   await page.locator('#intakeBuild').click();
+   const download=await dl,content=fs.readFileSync(await download.path()),z=unzipStored(content);
+   assert.ok(z['cards.json'],label+' card manifest in ZIP');
+   const manifest=JSON.parse(z['cards.json'].toString('utf8'));
+   assert.equal(manifest.cards.length,2);
+   assert.deepEqual(manifest.cards.map(x=>x.id),['cl-future-topic','cl-next-topic']);
+   assert.equal(z['cl-future-topic.html'].toString('utf8'),a);
+   assert.equal(z['cl-next-topic.html'].toString('utf8'),b);
+   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,label+' no page-wide overflow');
+   assert.deepEqual(errors,[],label+' browser errors');
+   await context.close();
+  }finally{await browser.close();}
+ }
+});
+test('R5K Claude audit: three Listening sources + immutable SHA prompts download as one ZIP', {timeout:140000},async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},acceptDownloads:true,serviceWorkers:'block'});
+  const page=await context.newPage(),errors=[];
+  page.on('pageerror',e=>errors.push(String(e)));
+  const res=await page.goto(STAGE+'revize-claude/',{waitUntil:'domcontentloaded'});
+  assert.equal(res.status(),200);
+  await page.locator('#audSkill').selectOption('poslech');
+  await page.waitForFunction(()=>document.querySelectorAll('#audCards .aud-row').length===3);
+  const dl=page.waitForEvent('download');
+  await page.locator('#audBuild').click();
+  const zip=unzipStored(fs.readFileSync(await (await dl).path()));
+  for(const id of ['ll-matthew-oscars','ll-harrison-ford','ll-peaky-no-fighting']){
+   assert.ok(zip['source/'+id+'.html'],'Listening source missing '+id);
+   const md=zip['prompts/'+id+'.md']?.toString('utf8');
+   assert.ok(md&&md.includes('SHA-256')&&md.includes('source/'+id+'.html'),'Claude prompt not source-bound '+id);
+   const checksum=require('node:crypto').createHash('sha256').update(zip['source/'+id+'.html']).digest('hex');
+   assert.ok(md.includes(checksum),'Claude prompt hash mismatch '+id);
+  }
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false);
+  assert.deepEqual(errors,[],'Claude UI runtime errors');
+  await context.close();
+ }finally{await browser.close();}
+});
+test('R5I combined pilot catalog displays all 29, filters and fixed School ES A1 QR metadata', {timeout:140000},async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});
+  const page=await context.newPage(),errors=[];
+  page.on('pageerror',e=>errors.push(String(e)));
+  const res=await page.goto(STAGE+'reference-karty/',{waitUntil:'domcontentloaded'});
+  assert.equal(res.status(),200);
+  await page.waitForFunction(()=>document.querySelectorAll('#refList .ref-card').length===29);
+  await page.locator('#refSkill').selectOption('cteni');
+  assert.equal(await page.locator('#refList .ref-card').count(),5);
+  await page.locator('#refReset').click();
+  await page.locator('#refSearch').fill('skola');
+  assert.equal(await page.locator('#refList .ref-card').count(),1);
+  assert.match(await page.locator('#refList .ref-card').textContent(),/španělštině A1.*¿Es grande o pequeño\?/);
+  await page.locator('#refList button').filter({hasText:'Procvičování'}).click();
+  await page.locator('#refMode').selectOption('fixed');
+  await page.locator('#refShareLang').selectOption('es');
+  await page.locator('#refShareLevel').selectOption('A1');
+  const url=new URL(await page.locator('#refUrl').inputValue());
+  assert.equal(url.pathname,'/zkusebni/konverzace/skola/');
+  assert.equal(url.searchParams.get('lang'),'es');
+  assert.equal(url.searchParams.get('level'),'A1');
+  assert.equal(url.searchParams.get('zamek'),'1');
+  assert.equal(await page.locator('#refQr svg').count(),1);
+  assert.deepEqual(errors,[],'Pilot catalog page errors');
+  await context.close();
+ }finally{await browser.close();}
+});
+
+
+test('R5N complete offline ZIP for legacy Conversation: fixed ES C1, original preserved and CSP verified', {timeout:170000},async()=>{
+ const os=require('node:os'),{pathToFileURL}=require('node:url'),hash=require('node:crypto');
+ for(const [engine,label,width] of [[chromium,'Chromium',390],[webkit,'WebKit',375]]){
+  const browser=await engine.launch({headless:true});
+  const folder=fs.mkdtempSync(path.join(os.tmpdir(),'lsh-r5n-'));
+  try{
+   const context=await browser.newContext({viewport:{width,height:844},acceptDownloads:true,serviceWorkers:'block'});
+   const page=await context.newPage();page.setDefaultTimeout(30000);
+   const errors=[];page.on('pageerror',e=>errors.push(String(e)));
+   const opened=await page.goto(STAGE+'reference-karty/',{waitUntil:'domcontentloaded'});
+   assert.equal(opened.status(),200);
+   await page.waitForFunction(()=>document.querySelectorAll('#refList article').length===29);
+   await page.locator('#refSearch').fill('Hraní počítačových her');
+   assert.equal(await page.locator('#refList article').count(),1);
+   await page.locator('#refList article button').filter({hasText:'Procvičování'}).click();
+   await page.locator('#refMode').selectOption('fixed');
+   await page.locator('#refShareLang').selectOption('es');
+   await page.locator('#refShareLevel').selectOption('C1');
+   assert.equal(await page.locator('#refSaveHtml').isEnabled(),true);
+   assert.match(await page.locator('#refSaveHtml').textContent(),/ZIP/);
+   const dialogUrl=new URL(await page.locator('#refUrl').inputValue());
+   assert.equal(dialogUrl.searchParams.get('zamek'),'1');
+   const ready=page.waitForEvent('download');
+   await page.locator('#refSaveHtml').click();
+   const download=await ready,entries=unzipStored(fs.readFileSync(await download.path()));
+   assert.match(download.suggestedFilename(),/cl-hrani-her.*OFFLINE\.zip/);
+   assert.deepEqual(Object.keys(entries).sort(),[
+     'NAVOD.txt',
+     'assets/lsh/v2/lock.js',
+     'assets/lsh/v3/card-bridge.css',
+     'assets/lsh/v3/card-bridge.js',
+     'assets/lsh/v3/model.js',
+     'assets/lsh/v3/store.js',
+     'konverzace/hrani-her/index.html'
+   ]);
+   const html=entries['konverzace/hrani-her/index.html'].toString('utf8');
+   assert.ok(html.includes('new URLSearchParams("?lang=es&level=C1&zamek=1&practice=1")'),label+' fixed offline preset');
+   assert.ok(entries['assets/lsh/v2/lock.js'].toString('utf8').includes('new URLSearchParams("?lang=es&level=C1&zamek=1&practice=1")'),label+' locked offline controls');
+   const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)],declared=html.match(/sha256-([A-Za-z0-9+/]{43}=)/);
+   assert.equal(scripts.length,1);
+   assert.ok(declared);
+   const sha=hash.createHash('sha256').update(scripts[0][1],'utf8').digest('base64');
+   assert.equal(sha,declared[1],'Modified offline HTML must retain valid CSP SHA-256');
+   assert.ok(!html.includes('const clbPreset = new URLSearchParams(window.location.search);'));
+   for(const [name,data] of Object.entries(entries)){
+     const full=path.resolve(folder,name);assert.ok(full.startsWith(folder+path.sep));
+     fs.mkdirSync(path.dirname(full),{recursive:true});fs.writeFileSync(full,data);
+   }
+   let openTarget;
+   if(label==='WebKit'){
+    // Linux Playwright WebKit cannot reliably navigate file://; exercise the
+    // same ZIP bytes through controlled in-memory local responses with network OFF.
+    // This is NOT a substitute for a real iPhone/iPad Safari file:// UAT.
+    const prefix=STAGE+'offline-package/';
+    await page.route('**/*',route=>route.abort('internetdisconnected'));
+    await page.route(prefix+'**',route=>{
+     const relative=decodeURIComponent(new URL(route.request().url()).pathname.split('/zkusebni/offline-package/')[1]||'');
+     const data=entries[relative];
+     if(!data)return route.fulfill({status:404,body:'Missing bundled dependency'});
+     const mime=relative.endsWith('.js')?'text/javascript':relative.endsWith('.css')?'text/css':relative.endsWith('.html')?'text/html':'text/plain';
+     return route.fulfill({status:200,contentType:mime,body:data});
+    });
+    openTarget=prefix+'konverzace/hrani-her/index.html';
+   }else{
+    await context.setOffline(true);
+    openTarget=pathToFileURL(path.join(folder,'konverzace/hrani-her/index.html')).href;
+   }
+   const offline=await page.goto(openTarget,{waitUntil:'domcontentloaded'});
+   assert.ok(offline&&offline.ok(),label+' offline bundled HTML opens');
+   await page.waitForFunction(()=>document.querySelector('#languageSelect')?.value==='es'&&
+     document.querySelector('#levelSwitch button[data-level="C1"]')?.classList.contains('active'));
+   assert.equal(await page.locator('#languageSelect').isDisabled(),true,label+' offline language locked');
+   assert.equal(await page.locator('#levelSwitch button[data-level="C1"]').isDisabled(),true,label+' offline CEFR locked');
+   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,label+' layout');
+   assert.deepEqual(errors,[],label+' no runtime exceptions');
+   await context.close();
+  }finally{await browser.close();fs.rmSync(folder,{recursive:true,force:true});}
+ }
+});
+
+test('R5P home tiles and skill-prefilter URLs lead to one consistent 29-card pilot directory', {timeout:140000},async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});
+  const page=await context.newPage();page.setDefaultTimeout(20000);
+  const res=await page.goto(STAGE,{waitUntil:'domcontentloaded'});
+  assert.equal(res.status(),200);
+  for(const [skill,count,theme] of [['konverzace',21,'tone-speak'],['cteni',5,'tone-read'],['poslech',3,'tone-listen']]){
+   const href=await page.locator('.lab-card.'+theme).getAttribute('href');
+   assert.equal(href,'reference-karty/?skill='+skill);
+   const ref=await page.goto(STAGE+href,{waitUntil:'domcontentloaded'});
+   assert.equal(ref.status(),200);
+   await page.waitForFunction(n=>document.querySelectorAll('#refList .ref-card').length===n,count);
+   assert.equal(await page.locator('#refSkill').inputValue(),skill);
+   await page.goto(STAGE,{waitUntil:'domcontentloaded'});
+  }
+  await page.goto(STAGE+'reference-karty/?skill=unknown',{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>document.querySelectorAll('#refList .ref-card').length===29);
+  assert.equal(await page.locator('#refSkill').inputValue(),'');
+  await context.close();
+ }finally{await browser.close();}
+});
+
+test('R5S Claude review progress and findings are shown without claiming teacher approval', {timeout:140000},async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});
+  const page=await context.newPage();page.setDefaultTimeout(20000);
+  const queue=JSON.parse(fs.readFileSync(path.join(ROOT,'zkusebni/data/claude-audit-queue.json'),'utf8'));
+  const reading=queue.topics.find(x=>x.id==='rl-asteroids');
+  assert.ok(reading);reading.status='REVIEWED_WITH_FINDINGS';reading.findingsSummary={P0:0,P1:1,P2:2};reading.teacherApproval=false;
+  await page.route('**/zkusebni/data/claude-audit-queue.json',route=>route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(queue)}));
+  await page.goto(STAGE+'reference-karty/?skill=cteni',{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>document.querySelectorAll('#refList .ref-card').length===5);
+  assert.match(await page.locator('#refAuditProgress').textContent(),/1 z 29/);
+  await page.locator('#refReviewStatus').selectOption('REVIEWED_WITH_FINDINGS');
+  assert.equal(await page.locator('#refList .ref-card').count(),1);
+  const content=await page.locator('#refList .ref-card').textContent();
+  assert.match(content,/Asteroids/);assert.match(content,/P1: 1/);assert.match(content,/P2: 2/);
+  assert.match(content,/Učitelské schválení/);assert.match(content,/PILOT · NESCHVÁLENO/);
+  await page.locator('#refReset').click();
+  assert.equal(await page.locator('#refList .ref-card').count(),29);
+  await context.close();
+ }finally{await browser.close();}
+});
+test('R5S audit service failure never hides technical catalogue or claims approval', {timeout:140000},async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});
+  const page=await context.newPage();page.setDefaultTimeout(20000);
+  await page.route('**/zkusebni/data/claude-audit-queue.json',route=>route.fulfill({status:503,body:'unavailable'}));
+  await page.goto(STAGE+'reference-karty/',{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>document.querySelectorAll('#refList .ref-card').length===29);
+  assert.match(await page.locator('#refAuditProgress').textContent(),/nelze ověřit/);
+  assert.match(await page.locator('#refList .ref-card').first().textContent(),/stav auditu momentálně nedostupný/);
+  await context.close();
+ }finally{await browser.close();}
+});

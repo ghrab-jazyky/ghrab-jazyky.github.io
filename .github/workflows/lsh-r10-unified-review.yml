@@ -1,0 +1,131 @@
+name: LSH R16 personal UAT launch (NO deployment)
+on:
+  pull_request:
+    paths:
+      - 'zkusebni/tools/r10-unified-review-bundle.cjs'
+      - 'zkusebni/tools/r11-review-matrix.cjs'
+      - 'zkusebni/tools/r12-content-triage.cjs'
+      - 'zkusebni/tools/r15-release-guard.cjs'
+      - 'zkusebni/tools/r16-personal-uat.cjs'
+      - 'zkusebni/tests/r16-*.test.cjs'
+      - 'zkusebni/assets/lsh/r16/**'
+      - 'zkusebni/docs/LSH_R16_PERSONAL_UAT_HANDOFF.md'
+      - 'zkusebni/tests/r15-*.test.cjs'
+      - 'zkusebni/assets/lsh/r15/**'
+      - 'zkusebni/docs/LSH_R15_RELEASE_READINESS_2026-11-08.md'
+      - 'zkusebni/tests/r12-*.test.cjs'
+      - 'zkusebni/docs/LSH_R12_CONTENT_TRIAGE.md'
+      - 'zkusebni/tests/r11-*.test.cjs'
+      - 'zkusebni/assets/lsh/r11/**'
+      - 'zkusebni/docs/LSH_R11_REVIEW_MATRIX.md'
+      - 'zkusebni/tests/r10-*.test.cjs'
+      - 'zkusebni/docs/LSH_R10_UNIFIED_REVIEW_BUNDLE.md'
+      - 'zkusebni/tools/conversation-r8-source-recovery.cjs'
+      - 'zkusebni/tools/reading-r7-candidates.cjs'
+      - 'zkusebni/tools/listening-r7-three-phase-candidates.cjs'
+      - 'zkusebni/data/reference-pilots.json'
+      - 'zkusebni/data/conversation-r8-*.json'
+      - 'zkusebni/data/reading-r7-matching-proposals.json'
+      - 'zkusebni/konverzace/**'
+      - 'zkusebni/nahledy/**'
+      - 'zkusebni/integrace/**'
+      - 'zkusebni/assets/lsh/v2/lock.js'
+      - 'zkusebni/assets/lsh/v3/**'
+      - '.github/workflows/lsh-r10-unified-review.yml'
+  push:
+    branches: ['feat/lsh-*']
+    paths:
+      - 'zkusebni/tools/r10-unified-review-bundle.cjs'
+      - 'zkusebni/tools/r11-review-matrix.cjs'
+      - 'zkusebni/tools/r12-content-triage.cjs'
+      - 'zkusebni/tools/r15-release-guard.cjs'
+      - 'zkusebni/tools/r16-personal-uat.cjs'
+      - 'zkusebni/tests/r16-*.test.cjs'
+      - 'zkusebni/assets/lsh/r16/**'
+      - 'zkusebni/docs/LSH_R16_PERSONAL_UAT_HANDOFF.md'
+      - 'zkusebni/tests/r15-*.test.cjs'
+      - 'zkusebni/assets/lsh/r15/**'
+      - 'zkusebni/docs/LSH_R15_RELEASE_READINESS_2026-11-08.md'
+      - 'zkusebni/tests/r12-*.test.cjs'
+      - 'zkusebni/docs/LSH_R12_CONTENT_TRIAGE.md'
+      - 'zkusebni/tests/r11-*.test.cjs'
+      - 'zkusebni/assets/lsh/r11/**'
+      - 'zkusebni/docs/LSH_R11_REVIEW_MATRIX.md'
+      - 'zkusebni/tests/r10-*.test.cjs'
+      - 'zkusebni/docs/LSH_R10_UNIFIED_REVIEW_BUNDLE.md'
+      - 'zkusebni/tools/conversation-r8-source-recovery.cjs'
+      - 'zkusebni/tools/reading-r7-candidates.cjs'
+      - 'zkusebni/tools/listening-r7-three-phase-candidates.cjs'
+      - 'zkusebni/data/reference-pilots.json'
+      - 'zkusebni/data/conversation-r8-*.json'
+      - 'zkusebni/data/reading-r7-matching-proposals.json'
+      - 'zkusebni/konverzace/**'
+      - 'zkusebni/nahledy/**'
+      - 'zkusebni/integrace/**'
+      - 'zkusebni/assets/lsh/v2/lock.js'
+      - 'zkusebni/assets/lsh/v3/**'
+      - '.github/workflows/lsh-r10-unified-review.yml'
+permissions:
+  contents: read
+jobs:
+  build-review-29:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify source and privacy invariants
+        run: node --test zkusebni/tests/r10-review-bundle.test.cjs
+      - name: Assemble isolated review bundle
+        run: node zkusebni/tools/r10-unified-review-bundle.cjs "$RUNNER_TEMP/lsh-r10-review"
+      - name: Verify all 642 review rows, protected card data and R7 URL adapters
+        run: node --test zkusebni/tests/r11-review-matrix.test.cjs
+      - name: Add the private offline review worksheet to the existing R10 folder
+        run: node zkusebni/tools/r11-review-matrix.cjs "$RUNNER_TEMP/lsh-r10-review"
+      - name: Independently validate 30 content decisions, 80 hidden gaps and editorial signals
+        run: node --test zkusebni/tests/r12-content-triage.test.cjs
+      - name: Add R12 pedagogical triage to the same portable review package
+        run: node zkusebni/tools/r12-content-triage.cjs "$RUNNER_TEMP/lsh-r10-review"
+      - name: Verify R15 strict NO-GO and all 14 manual readiness gates
+        run: node --test zkusebni/tests/r15-release-guard.test.cjs
+      - name: Append R15 readiness UI to disposable offline review bundle
+        run: node zkusebni/tools/r15-release-guard.cjs "$RUNNER_TEMP/lsh-r10-review"
+      - name: Validate R16 one-click manual UAT with 642 verified variant links
+        run: node --test zkusebni/tests/r16-personal-uat.test.cjs
+      - name: Add personal test launchpad and issue report to disposable review artifact
+        run: node zkusebni/tools/r16-personal-uat.cjs "$RUNNER_TEMP/lsh-r10-review"
+      - name: Attach offline index and 29 cards (NO TEACHER KEYS)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-r16-personal-uat-29-cards-642-variants-NO-KEYS
+          path: ${{ runner.temp }}/lsh-r10-review/
+          retention-days: 7
+          if-no-files-found: error
+  browser-offline-29:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install browser engines
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Verify all 29 HTML offline in Chromium and WebKit
+        run: node --test zkusebni/tests/r10-review-bundle.browser.test.cjs
+      - name: Verify review UX, JSON import/export and locked R7 candidate links
+        run: node --test zkusebni/tests/r11-review-matrix.browser.test.cjs
+      - name: Verify pedagogical triage links on desktop and mobile
+        run: node --test zkusebni/tests/r12-content-triage.browser.test.cjs
+      - name: Verify R15 real UAT controls, JSON import/export and permanent classified NO-GO
+        run: node --test zkusebni/tests/r15-release-guard.browser.test.cjs
+      - name: Verify R16 personal test entry on Chromium desktop and WebKit mobile
+        run: node --test zkusebni/tests/r16-personal-uat.browser.test.cjs

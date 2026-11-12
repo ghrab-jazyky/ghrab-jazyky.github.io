@@ -1,0 +1,63 @@
+name: LSH Conversation R6 candidate QA (NO deployment)
+on:
+  pull_request:
+    paths:
+      - 'zkusebni/konverzace/k/**'
+      - 'zkusebni/data/conversation-r6-candidates.json'
+      - 'zkusebni/tools/r6-content-audit.cjs'
+      - 'zkusebni/tools/r6-pedagogy-matrix.cjs'
+      - 'zkusebni/tools/conversation-r6-claude-packages.py'
+      - 'zkusebni/tests/conversation-r6-candidates.test.cjs'
+      - '.github/workflows/lsh-conversation-r6-review.yml'
+  push:
+    branches:
+      - 'feat/lsh-*'
+    paths:
+      - 'zkusebni/konverzace/k/**'
+      - 'zkusebni/data/conversation-r6-candidates.json'
+      - 'zkusebni/tools/r6-content-audit.cjs'
+      - 'zkusebni/tools/r6-pedagogy-matrix.cjs'
+      - 'zkusebni/tools/conversation-r6-claude-packages.py'
+      - 'zkusebni/tests/conversation-r6-candidates.test.cjs'
+      - '.github/workflows/lsh-conversation-r6-review.yml'
+permissions:
+  contents: read
+jobs:
+  candidate-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Audit candidates without touching canonical sources or catalog
+        run: node zkusebni/tests/conversation-r6-candidates.test.cjs
+      - name: Independently screen all R6 variants without AI API (no source edits)
+        run: |
+          node zkusebni/tools/r6-content-audit.cjs "$RUNNER_TEMP/lsh-r6-content-audit"
+          node -e 'const r=require(process.argv[1]);if(r.totalCards!==21||r.totalVariants!==504||r.totalStations!==4032||r.totalPrompts!==16128||r.releaseApproved!==false)throw Error("Audit coverage or approval gate failure");console.log("PASS audited 21 R6 source files, 504 variants")' "$RUNNER_TEMP/lsh-r6-content-audit/R6_CONTENT_AUDIT.json"
+      - name: Attach independent R6 content findings (not teaching approval)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-r6-independent-content-screen
+          path: |
+            ${{ runner.temp }}/lsh-r6-content-audit/*.json
+            ${{ runner.temp }}/lsh-r6-content-audit/*.md
+          if-no-files-found: error
+          retention-days: 30
+      - name: Cross-level linguistic and pedagogical matrix (heuristic, no API)
+        run: |
+          node zkusebni/tools/r6-pedagogy-matrix.cjs "$RUNNER_TEMP/lsh-r6-pedagogical-matrix"
+          node -e 'const r=require(process.argv[1]);if(r.totalCards!==21||r.variantCount!==504||r.levelTransitions!==420||r.releaseApproved!==false||r.teacherApproval!==false)throw Error("R6 matrix coverage or approval gate failed");console.log("PASS R6 matrix has 504 variants and 420 CEFR transitions")' "$RUNNER_TEMP/lsh-r6-pedagogical-matrix/R6_PEDAGOGICAL_MATRIX.json"
+      - name: Attach R6 cross-level review matrix (not pedagogical approval)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-r6-cross-level-content-matrix
+          path: |
+            ${{ runner.temp }}/lsh-r6-pedagogical-matrix/*.json
+            ${{ runner.temp }}/lsh-r6-pedagogical-matrix/*.md
+          if-no-files-found: error
+          retention-days: 30

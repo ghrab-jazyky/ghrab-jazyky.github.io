@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="cs"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><meta name="color-scheme" content="dark light"><title>Language Skills Hub | Revize 642 variant</title>
+<!--R11_CSS-->
+</head><body>
+<a class="skip" href="#reviewList">Na seznam variant</a>
+<header>
+ <div class="eyebrow">LANGUAGE SKILLS HUB / R11 / OFFLINE</div>
+ <h1>Obsahov&#225; revize 642 variant</h1>
+ <p class="lead">Pracovn&#237; evidence skute&#269;n&#233; jazykov&#233; a pedagogick&#233; kontroly v&#353;ech 29 karet.</p>
+ <p class="warning"><strong>NESCHV&#193;LENO K V&#221;UCE ANI KE KLASIFIKACI.</strong> Ozna&#269;en&#237; &bdquo;Posouzeno bez n&#225;lezu&ldquo; nen&#237; fin&#225;ln&#237; u&#269;itelsk&#253; souhlas ani povolen&#237; k publikaci.</p>
+ <div id="reviewSummary" class="stats" role="status" aria-live="polite"></div>
+</header>
+<main>
+ <section class="toolbar" aria-label="Filtry variant">
+  <label>Dovednost<select id="skillFilter"><option value="">V&#353;echny</option><option value="konverzace">Konverzace</option><option value="cteni">&#268;ten&#237;</option><option value="poslech">Poslech</option></select></label>
+  <label>Jazyk<select id="langFilter"><option value="">V&#353;echny</option><option value="en">EN</option><option value="es">ES</option><option value="de">DE</option><option value="fr">FR</option></select></label>
+  <label>&#218;rove&#328; CEFR<select id="levelFilter"><option value="">V&#353;echny</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></label>
+  <label>Stav<select id="statusFilter"><option value="">V&#353;echny</option><option value="todo">Ke kontrole</option><option value="reviewed">Posouzeno bez n&#225;lezu</option><option value="issue">Vy&#382;aduje opravu</option></select></label>
+  <label class="search">Hledat t&#233;ma<input id="searchFilter" type="search" placeholder="Nap&#345;. Asteroids"></label>
+ </section>
+ <div class="columns">
+  <section class="results" aria-labelledby="resultsTitle">
+   <div class="section-head"><h2 id="resultsTitle">Varianty</h2><output id="resultsCount"></output></div>
+   <div id="reviewList" class="list" aria-label="V&#253;sledky filtrov&#225;n&#237;"></div>
+   <button type="button" id="loadMore" class="outline">Zobrazit dal&#353;&#237;</button>
+  </section>
+  <section class="detail" id="detail" aria-labelledby="detailTitle">
+   <h2 id="detailTitle">Vyberte variantu</h2>
+   <p id="detailInfo">Po zvolen&#237; karty zde m&#367;&#382;ete otev&#345;&#237;t p&#345;esn&#253; jazyk a &#250;rove&#328; a zaznamenat v&#253;sledek kontroly.</p>
+   <p id="detailAlerts"></p>
+   <a id="openStudent" href="#" class="primary disabled" target="_blank" rel="noopener" aria-disabled="true">Otev&#345;&#237;t &#382;&#225;kovskou kartu</a>
+   <label for="reviewStatus" class="review-label">P&#345;edb&#283;&#382;n&#253; stav kontroly</label>
+   <select id="reviewStatus" disabled><option value="todo">Ke kontrole</option><option value="reviewed">Posouzeno bez n&#225;lezu</option><option value="issue">Vy&#382;aduje opravu</option></select>
+   <label for="reviewNote" class="review-label">Konkr&#233;tn&#237; n&#225;lez / pozn&#225;mka (max. 1 000 znak&#367;)</label>
+   <textarea id="reviewNote" rows="6" maxlength="1000" disabled placeholder="Nap&#345;. DE B2, stanovi&#353;t&#283; 3, ot&#225;zka 2: ..."></textarea>
+   <p class="caution">Neuv&#225;d&#283;jte jm&#233;na &#382;&#225;k&#367;, soukrom&#233; kl&#237;&#269;e ani jin&#233; osobn&#237; &#250;daje.</p>
+  </section>
+ </div>
+ <section class="progress" aria-labelledby="progressTitle">
+  <h2 id="progressTitle">P&#345;enesen&#237; stavu kontroly</h2>
+  <p>Data z&#367;st&#225;vaj&#237; na va&#353;em za&#345;&#237;zen&#237;. Pro p&#345;enos do jin&#233;ho prohl&#237;&#382;e&#269;e pou&#382;ijte JSON export/import. Stav je v&#225;z&#225;n na kontroln&#237; otisky soubor&#367;; p&#345;i zm&#283;n&#283; karty se star&#225; kontrola nep&#345;ev&#225;d&#237; automaticky.</p>
+  <div class="actions"><button id="exportReview" type="button">Exportovat stav JSON</button><label class="upload">Importovat stav JSON<input id="importReview" type="file" accept=".json,application/json"></label><button type="button" id="clearReview" class="outline">Vymazat m&#237;stn&#237; evidenci</button></div>
+  <p id="saveNotice" role="status" aria-live="polite"></p>
+ </section>
+</main><footer><p>R11 je pouze offline pom&#367;cka pro revizi. Bez zve&#345;ejn&#283;n&#237;, bez p&#345;ihl&#225;&#353;en&#237;, bez automatick&#233;ho schvalov&#225;n&#237;.</p></footer>
+<!--R11_DATA-->
+<!--R11_SCRIPT-->
+</body></html>

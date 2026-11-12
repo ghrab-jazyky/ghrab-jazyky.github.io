@@ -1,0 +1,66 @@
+name: LSH R5D ALL29 642 unapproved short test drafts (NO deployment)
+on:
+  pull_request:
+    paths:
+      - 'zkusebni/data/reference-pilots.json'
+      - 'zkusebni/data/r5d-all29-source-pins.json'
+      - 'zkusebni/data/r5d-test-draft-plan.json'
+      - 'zkusebni/tools/r5d-all29-test-drafts.cjs'
+      - 'zkusebni/tests/r5d-all29-test-drafts.test.cjs'
+      - 'zkusebni/tests/r5d-all29-test-drafts.browser.test.cjs'
+      - 'zkusebni/integrace/**'
+      - 'zkusebni/konverzace/**'
+      - '.github/workflows/lsh-r5d-all29-test-drafts.yml'
+  push:
+    branches:
+      - 'feat/lsh-*'
+    paths:
+      - 'zkusebni/data/reference-pilots.json'
+      - 'zkusebni/data/r5d-all29-source-pins.json'
+      - 'zkusebni/data/r5d-test-draft-plan.json'
+      - 'zkusebni/tools/r5d-all29-test-drafts.cjs'
+      - 'zkusebni/tests/r5d-all29-test-drafts.test.cjs'
+      - 'zkusebni/tests/r5d-all29-test-drafts.browser.test.cjs'
+      - 'zkusebni/integrace/**'
+      - 'zkusebni/konverzace/**'
+      - '.github/workflows/lsh-r5d-all29-test-drafts.yml'
+permissions:
+  contents: read
+jobs:
+  verify-642:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify full 29-topic unapproved input-source and no-key safety contract
+        run: node --test zkusebni/tests/r5d-all29-test-drafts.test.cjs
+      - name: Produce 642 reviewer-only standalone HTMLs in runner temp
+        run: node zkusebni/tools/r5d-all29-test-drafts.cjs "$RUNNER_TEMP/lsh-all29-r5d-review"
+      - name: Archive draft previews (no answer keys, scores, PII, deployment)
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-r5d-642-unapproved-short-test-drafts-NO-KEYS
+          path: ${{ runner.temp }}/lsh-all29-r5d-review/
+          if-no-files-found: error
+          retention-days: 7
+  browser-174:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install browser engines
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Inspect 174 representative topic-level drafts on desktop/mobile
+        run: node --test zkusebni/tests/r5d-all29-test-drafts.browser.test.cjs
