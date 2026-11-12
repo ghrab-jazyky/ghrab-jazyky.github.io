@@ -9,7 +9,9 @@ for(const [browserName,engine]of[['chromium',chromium],['webkit',webkit]]){
   try{
    const ctx=await browser.newContext({acceptDownloads:true,viewport:{width:390,height:800}});
    const page=await ctx.newPage(),errors=[],networkWrites=[];
-   page.on('pageerror',e=>errors.push(e.message));
+   // Filter only the browser's harmless ResizeObserver scheduling notification.
+   // All other page exceptions remain regression failures.
+   page.on('pageerror',e=>{if(!/^ResizeObserver loop completed with undelivered notifications\.$/.test(e.message))errors.push(e.message)});
    page.on('request',r=>{if(!['GET','HEAD'].includes(r.method()))networkWrites.push(r.method()+' '+r.url())});
    // Unique local test query prevents WebKit's legitimate 304 conditional revalidation.
    // Keep the original path/other parameters intact for the application's routing.
