@@ -59,13 +59,13 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
     assert.equal((await page.goto(makeUrl('self-check/reading/index.html',spec))).status(),200);
     await page.locator('#workspace:not([hidden])').waitFor();
-    const questions=await page.evaluate(async(topic,lang,level)=>{
+    const questions=await page.evaluate(async({topic,lang,level})=>{
      const entries=(await (await fetch('../../data/cards.json')).json()).entries;
      const source=entries.find(x=>x.id===topic).relative;
      const html=await (await fetch('../../'+source)).text();
      return window.LSHReadingCore.variantFromData(
       window.LSHReadingCore.parseReadingData(html),lang,level).questions;
-    },spec.topic,spec.lang,spec.level);
+    },spec);
     assert.equal(await page.locator('#resultDetails article.review').count(),0,
      'No corrections before submission');
     assert.equal(await page.locator('#results').isHidden(),true);
