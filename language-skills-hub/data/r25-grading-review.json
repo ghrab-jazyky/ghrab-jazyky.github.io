@@ -40,15 +40,14 @@
       "maximumInclusive": 43
     }
   ],
-  "decimalPercentRule": "UNDECIDED",
-  "roundingRule": "UNDECIDED",
+  "decimalPercentRule": "ROUND_TO_NEAREST_WHOLE_PERCENT_BEFORE_GRADE_BANDS",
+  "roundingRule": "MATHEMATICAL_HALF_UP_0_5_ROUNDS_UP",
   "weightingOfObjectiveAndWrittenTasks": "UNDECIDED",
   "teacherReviewNeededForOpenAnswers": true,
   "exportAsOfficialSchoolGrade": false,
   "activationBlockers": [
     "Obtain and verify approved school rules and their date of effect.",
     "Clarify that the language scale applies to this activity type.",
-    "Resolve fractional percentages and exact boundary rules, including 87.5, 73.5, 58.5, 43.5.",
     "Approve points/weights and who reviews all meaningful written alternatives.",
     "Choose a trustworthy result collection and identity model before any official grading."
   ]
