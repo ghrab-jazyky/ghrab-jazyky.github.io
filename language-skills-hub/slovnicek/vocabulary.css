@@ -13,3 +13,35 @@ main{max-width:1100px;margin:auto;padding:20px 18px 50px}.intro{margin:5px 0 17p
 .backup-actions button{white-space:normal;text-align:center}
 .backup-actions button[hidden]{display:none}
 @media(max-width:520px){.backup-actions button{flex:1 1 100%}}
+
+/* R57: a deliberate, reversible-until-confirmed action for the entire bank. */
+.toolbar .delete-all-words{
+ color:#fff;background:#8c3043;border:1px solid #cc6b7e;white-space:nowrap;
+ letter-spacing:.035em;font-size:.81rem;min-height:42px;
+}
+.toolbar .delete-all-words:hover:not(:disabled){background:#a83c53;border-color:#f3a1af}
+.toolbar .delete-all-words:disabled{opacity:.4}
+.clear-vocab-dialog{
+ position:fixed;max-width:min(460px,calc(100vw - 24px));width:calc(100vw - 24px);
+ max-height:calc(100dvh - 26px);overflow-y:auto;
+ padding:clamp(17px,4vw,26px);border-radius:18px;
+ border:1px solid var(--line);background:var(--panel);color:var(--ink);
+ box-shadow:0 28px 85px #020c17aa;
+}
+.clear-vocab-dialog::backdrop{background:rgba(2,12,22,.74);backdrop-filter:blur(4px)}
+.clear-vocab-head{display:flex;align-items:center;gap:14px;margin-bottom:15px}
+.clear-vocab-head h2{margin:2px 0 0;font-size:clamp(1.3rem,4vw,1.55rem);line-height:1.25}
+.clear-vocab-icon{display:grid;place-items:center;flex:0 0 44px;
+ width:44px;height:44px;border:1px solid #dd8798;
+ border-radius:12px;background:#8c3043;color:#fff;font-size:1.4rem;font-weight:900}
+.clear-vocab-eyebrow{color:var(--muted);margin:0;font-size:.68rem;font-weight:800;letter-spacing:.065em}
+.clear-vocab-dialog p{line-height:1.55;font-size:.93rem}
+.clear-vocab-backup-tip{padding:12px;border:1px solid var(--line);
+ border-radius:10px;background:var(--bg);color:var(--muted)}
+.clear-vocab-status{min-height:1.1rem;color:var(--bad);font-size:.84rem!important}
+.clear-vocab-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px;margin-top:14px}
+.clear-vocab-actions button{flex:1 1 150px}
+.clear-vocab-cancel{background:#385a74;border-color:#67889d}
+.clear-vocab-confirm{background:#8c3043;border-color:#cc6b7e}
+.clear-vocab-confirm:hover{background:#a83c53}
+@media(max-width:420px){.toolbar .delete-all-words{flex:1 1 130px}}
