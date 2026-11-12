@@ -491,8 +491,33 @@ function renderPreview(model){
   mount.appendChild(box);
  }
 }
+/* R52: network failures must never masquerade as an invalid topic or leave
+ * blank controls. Retry transient fetch failures, but reject unexpected URLs. */
+async function loadSourceWithRetry(source){
+ const expected=new URL('../../'+source,host.location.href);
+ need(expected.origin===host.location.origin,'Nesprávný původ zdroje.');
+ let lastError=null;
+ for(let attempt=0;attempt<3;attempt++){
+  try{
+   const resp=await fetch(expected.href,{credentials:'omit',cache:'no-store',redirect:'follow'});
+   need(resp.ok,'Zdroj karty není dostupný (HTTP '+resp.status+').');
+   const finalURL=new URL(resp.url);
+   need(finalURL.origin===expected.origin&&finalURL.pathname===expected.pathname,
+    'Zdroj karty byl přesměrován mimo povolenou cestu.');
+   return await resp.text();
+  }catch(error){
+   lastError=error;
+   if(error.message&&(/HTTP [0-9]{3}/.test(error.message)||
+     error.message.includes('přesměrován')))break;
+   if(attempt<2)await new Promise(resolve=>host.setTimeout(resolve,250*(attempt+1)));
+  }
+ }
+ throw new Error('Zdroj karty se nepodařilo načíst. Zkontroluj připojení a zkus to znovu. '+
+  (lastError&&lastError.message||'Chyba sítě.'));
+}
 async function refresh(){
  const id=++serial;current=null;
+ $('retryLoad').hidden=true;
  $('downloadPdf').disabled=true;$('status').textContent='Načítám správná řešení pro vybranou variantu…';
  $('answerPreview').replaceChildren();
  const e=entry();if(!e)return;
@@ -510,10 +535,8 @@ async function refresh(){
    'Nepovolená zdrojová cesta.');
   let html=sourceCache;
   if(html===null){
-   const resp=await fetch('../../'+source,{credentials:'omit',redirect:'error'});
-   need(resp.ok,'Nedostupná původní karta: HTTP '+resp.status);
-   html=await resp.text();
-   sourceCache=html; // The topic cannot change on this page.
+   html=await loadSourceWithRetry(source);
+   sourceCache=html; // Topic cannot change, so the source is reusable.
   }
   let model;
   if(e.skill==='cteni'){
@@ -536,7 +559,9 @@ async function refresh(){
   host.history.replaceState(null,'',u.href);
  }catch(error){
   if(id!==serial)return;
-  $('status').textContent='Nepodařilo se vytvořit klíč: '+String(error.message||error);
+  sourceCache=null; // A malformed or incomplete response must never become sticky.
+  $('retryLoad').hidden=false;
+  $('status').textContent=String(error.message||error)+' Klikni na Opakovat načtení.';
  }
 }
 async function init(){
@@ -557,6 +582,7 @@ async function init(){
   $('answerMode').addEventListener('change',()=>{setModeUI();refresh()});
   $('language').addEventListener('change',refresh);
   $('level').addEventListener('change',refresh);
+  $('retryLoad').addEventListener('click',refresh);
   $('downloadPdf').addEventListener('click',async()=>{
    if(!current)return;
    $('downloadPdf').disabled=true;
