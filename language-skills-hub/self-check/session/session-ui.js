@@ -197,10 +197,9 @@
    workspace.hidden=state.phase==='ready';
    bar.hidden=state.phase==='ready';
    overlay.hidden=state.phase!=='interrupted';
-   if(state.phase==='interrupted'&&lastPhase!=='interrupted'){
-    next=0;
-    const first=corners.querySelector('button');if(first)first.focus({preventScroll:true});
-   }
+   if(state.phase==='interrupted'&&lastPhase!=='interrupted'){next=0;gestureAt=0;}
+   reason.textContent=state.phase==='interrupted'?
+    (ui.reasons[state.incidents[state.incidents.length-1]?.kind]||ui.lock):'';
    if(state.phase==='interrupted')workspace.setAttribute('inert','');
    else workspace.removeAttribute('inert');
    lastPhase=state.phase;
