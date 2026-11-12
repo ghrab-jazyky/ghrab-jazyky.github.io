@@ -109,7 +109,7 @@ for(const [engineName,engine]of[['Chromium',chromium],['WebKit',webkit]]){
     }));
     assert.equal(oldCount,1,'Old words must not be deleted from original database');
     // Open dictionary from genuine original text, not injected test buttons.
-    await page.locator('#readingBody p').first().click({position:{x:95,y:18}});
+    await page.locator('#readingBody p').first().dblclick({position:{x:95,y:18}});
     await page.locator('#lookup:not([hidden])').waitFor({timeout:12000});
     const word=(await page.locator('#lookupWord').textContent()).trim();
     assert.ok(word,'Could not select a Reading term');
