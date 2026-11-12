@@ -6,6 +6,9 @@
  'use strict';
  const KIND='LSH_LOCAL_ATTEMPT_R30_V1';
  const STATES=Object.freeze(['ready','running','interrupted','submitted']);
+ const INCIDENT_KINDS=Object.freeze(['hidden','fullscreen-exit','fullscreen-denied',
+  'focus-loss','viewport-change','restricted-viewport','clipboard',
+  'context-menu','page-leave','reload']);
  const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
  const safeText=s=>typeof s==='string'&&/^[a-z0-9_-]{1,90}$/i.test(s);
  function requireValid(ok,msg){if(!ok)throw new Error(msg);}
@@ -47,7 +50,7 @@
   }
   if(!Array.isArray(s.incidents)||s.incidents.length>40||
    !s.incidents.every(i=>i&&typeof i==='object'&&
-    ['hidden','fullscreen-exit'].includes(i.kind)&&time(i.at)))return false;
+    INCIDENT_KINDS.includes(i.kind)&&time(i.at)))return false;
   return JSON.stringify(s).length<=160000;
  }
  function open(input){
@@ -123,7 +126,7 @@
    return status();
   }
   function interrupt(kind){
-   requireValid(['hidden','fullscreen-exit'].includes(kind),'Invalid incident kind');
+   requireValid(INCIDENT_KINDS.includes(kind),'Invalid incident kind');
    if(state.phase==='running'&&!expired()){
     state.phase='interrupted';
     state.incidents.push({kind,at:clock()});
@@ -149,7 +152,7 @@
   }
   return Object.freeze({id,start,saveAnswers,saveReviewMarks,interrupt,resume,finish,clear,status,remainingMs,expired});
  }
- const api=Object.freeze({KIND,STATES,minutes,key,open});
+ const api=Object.freeze({KIND,STATES,INCIDENT_KINDS,minutes,key,open});
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  else root.LSHAttemptCore=api;
 })(typeof window!=='undefined'?window:this);
