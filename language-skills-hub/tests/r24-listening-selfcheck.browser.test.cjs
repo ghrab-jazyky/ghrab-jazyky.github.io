@@ -50,7 +50,7 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
    }finally{await browser.close()}
   });
  }
- test(name+': teacher helper: two manually marked playbacks and correct student link',async()=>{
+ test(name+': teacher helper: fixed topic, external media and correct student link',async()=>{
   const browser=await engine.launch({headless:true});
   try{
    const context=await browser.newContext({viewport:{width:390,height:844}});
@@ -63,14 +63,19 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
    assert.match(await page.locator('#mediaCaution').textContent(),/vulgarismy/i);
    const shared=await page.locator('#studentUrl').inputValue();
    assert.match(shared,/student\.html\?topic=ll-peaky-no-fighting&level=B2/);
-   assert.equal(await page.locator('#passCount').textContent(),'0 / 2');
-   await page.locator('#markPass').click();
-   assert.equal(await page.locator('#passCount').textContent(),'1 / 2');
-   await page.locator('#markPass').click();
-   assert.equal(await page.locator('#passCount').textContent(),'2 / 2');
-   assert.equal(await page.locator('#markPass').isDisabled(),true);
-   await page.locator('#resetPass').click();
-   assert.equal(await page.locator('#passCount').textContent(),'0 / 2');
+   assert.equal(await page.locator('#topicTitle').getAttribute('data-topic-id'),'ll-peaky-no-fighting');
+   assert.equal(await page.locator('select#topic').count(),0);
+   assert.equal(await page.locator('#passCount,#markPass,#resetPass').count(),0);
+   const primary=page.locator('#mediaSources .listening-video-primary');
+   assert.equal(await primary.count(),1);
+   assert.match(await primary.getAttribute('href'),/^https:\/\/www\.youtube\.com\/watch\?/);
+   assert.equal(await primary.getAttribute('target'),'_blank');
+   assert.match(await primary.getAttribute('rel'),/noopener noreferrer/);
+   await page.locator('#level').selectOption('C1');
+   const changed=await page.locator('#studentUrl').inputValue();
+   assert.match(changed,/topic=ll-peaky-no-fighting&level=C1/);
+   assert.equal(await page.locator('#topicTitle').getAttribute('data-topic-id'),'ll-peaky-no-fighting');
+   assert.equal(await page.locator('#mediaSources a').count(),2);
    const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth);
    assert.ok(overflow<=2,'Mobile teacher horizontal overflow: '+overflow);
    assert.deepEqual(posts,[]);
