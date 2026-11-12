@@ -1,0 +1,57 @@
+name: LSH R55 real Reading catalog links - all explanations
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/r11/variant-copies/rl-email-friend.html'
+      - 'language-skills-hub/r11/variant-copies/rl-instant-messages.html'
+      - 'language-skills-hub/tests/r55-reading-real-catalog-sources.test.cjs'
+      - 'language-skills-hub/tests/r55-reading-real-catalog-sources.browser.test.cjs'
+      - '.github/workflows/lsh-r55-reading-real-catalog-sources.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/r11/variant-copies/rl-email-friend.html'
+      - 'language-skills-hub/r11/variant-copies/rl-instant-messages.html'
+      - 'language-skills-hub/tests/r55-reading-real-catalog-sources.test.cjs'
+      - 'language-skills-hub/tests/r55-reading-real-catalog-sources.browser.test.cjs'
+      - '.github/workflows/lsh-r55-reading-real-catalog-sources.yml'
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Validate R55 source and content invariants
+        run: |
+          node --check language-skills-hub/tests/r55-reading-real-catalog-sources.test.cjs
+          node --test language-skills-hub/tests/r55-reading-real-catalog-sources.test.cjs
+  browser:
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install Playwright
+        run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Verify both real LSH catalog URLs - 48 variants in Chromium and WebKit
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-r55-http.log 2>&1 &
+          PID=$!
+          trap 'kill $PID' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/r11/variant-copies/rl-email-friend.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --check language-skills-hub/tests/r55-reading-real-catalog-sources.browser.test.cjs
+          node --test language-skills-hub/tests/r55-reading-real-catalog-sources.browser.test.cjs
