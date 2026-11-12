@@ -209,23 +209,31 @@ if(typeof module!=='undefined'&&module.exports)module.exports=api;
 host.LSHPracticeAnswers=api;
 if(!host.document||!$('practiceKeyApp'))return;
 const read=host.LSHReadingCore,listen=host.LSHListeningCore,qs=new URLSearchParams(host.location.search);
-let entries=[],serial=0,current=null;
+let selected=null,serial=0,current=null;
 const el=(tag,textValue)=>{const node=host.document.createElement(tag);node.textContent=textValue;return node};
 function option(value,label){const node=el('option',label);node.value=value;return node}
 function fill(id,opts,preferred){
  const select=$(id);select.replaceChildren(...opts.map(x=>option(x[0],x[1])));
  if(opts.some(x=>x[0]===preferred))select.value=preferred;
 }
-function entry(){return entries.find(x=>x.id===$('topic').value)}
-function optionsForTopic(){
- const e=entry();if(!e)return;
- const prevLang=$('language').options.length?$('language').value:qs.get('lang');
- const prevLevel=$('level').options.length?$('level').value:qs.get('level');
- const languages=e.languages.map(l=>[l,
-  ({en:'English',es:'Español',de:'Deutsch',fr:'Français'})[l]||l]);
- fill('language',e.languages.length===1?languages:[['','Vyber jazyk'],...languages],prevLang);
- // An unfiltered catalog link must never silently default to A1.
- fill('level',[['','Vyber úroveň A1–C2'],...e.levels.map(x=>[x,x])],prevLevel);
+function entry(){return selected}
+function configure(e){
+ const lab=e.skill==='cteni'?'Reading Lab':'Listening Lab';
+ $('labName').textContent=lab;
+ $('topicTitle').textContent=e.title;
+ $('topicTitle').dataset.topicId=e.id;
+ host.document.title='VÝSLEDKY · '+e.title+' | '+lab;
+ const names={en:'English (EN)',es:'Español (ES)',de:'Deutsch (DE)',fr:'Français (FR)'};
+ const langs=e.languages.map(l=>[l,names[l]||l]);
+ fill('language',e.languages.length===1?langs:[['','Vyber jazyk'],...langs],qs.get('lang'));
+ fill('level',[['','Vyber úroveň A1–C2'],...e.levels.map(x=>[x,x])],qs.get('level'));
+ const single=e.languages.length===1;
+ $('languageSelectWrap').hidden=single;
+ $('languageFixedWrap').hidden=!single;
+ if(single)$('languageFixed').textContent=names[e.languages[0]]||e.languages[0];
+ const back=new URL('../../index.html',host.location.href);
+ back.searchParams.set('skill',e.skill);
+ $('backToCatalog').href=back.href;
 }
 function line(label,value,cls){
  const p=el('p',value);if(cls)p.className=cls;
@@ -296,12 +304,15 @@ async function init(){
   const response=await fetch('../../data/cards.json',{credentials:'omit',redirect:'error'});
   need(response.ok,'Katalog není dostupný.');
   const data=await response.json();
-  entries=data.entries.filter(e=>['cteni','poslech'].includes(e.skill));
+  const entries=data.entries.filter(e=>['cteni','poslech'].includes(e.skill));
   need(entries.length===8,'Neúplný katalog Reading/Listening.');
-  fill('topic',entries.map(e=>[e.id,(e.skill==='cteni'?'Reading: ':'Listening: ')+e.title]),
-   qs.get('topic'));
-  optionsForTopic();
-  $('topic').addEventListener('change',()=>{optionsForTopic();refresh()});
+  const topicId=qs.get('topic'),requestedSkill=qs.get('skill');
+  need(topicId,'Chybí identifikátor karty v odkazu.');
+  const e=entries.find(x=>x.id===topicId);
+  need(e,'Téma neexistuje. Otevři výsledky z konkrétní karty v katalogu.');
+  need(requestedSkill===null||requestedSkill===e.skill,
+   'Nesprávná laboratoř v odkazu. Reading a Listening nelze zaměnit.');
+  selected=e;configure(e);
   $('language').addEventListener('change',refresh);
   $('level').addEventListener('change',refresh);
   $('downloadPdf').addEventListener('click',async()=>{
@@ -313,7 +324,10 @@ async function init(){
    finally{$('downloadPdf').disabled=!current}
   });
   await refresh();
- }catch(error){$('status').textContent='Načtení selhalo: '+String(error.message||error)}
+ }catch(error){
+  $('topicTitle').textContent='Kartu nelze otevřít';
+  $('status').textContent='Neplatný odkaz: '+String(error.message||error);
+ }
 }
 init();
 })(typeof window!=='undefined'?window:globalThis);
