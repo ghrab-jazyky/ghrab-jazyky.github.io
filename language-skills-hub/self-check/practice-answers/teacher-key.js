@@ -259,8 +259,173 @@ async function download(model,doc){
  try{a.click()}finally{a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)}
  return name;
 }
+/* R52: build-time snapshot of the eight public teacher-key cards. Keeping
+ * it here means the page never needs to fetch the full catalog at startup.
+ * CI verifies exact parity with data/cards.json on every change. */
+const KEY_ENTRIES=Object.freeze([
+ {
+  "id": "rl-asteroids",
+  "skill": "cteni",
+  "title": "Asteroids",
+  "languages": [
+   "en",
+   "es",
+   "de",
+   "fr"
+  ],
+  "levels": [
+   "A1",
+   "A2",
+   "B1",
+   "B2",
+   "C1",
+   "C2"
+  ],
+  "relative": "cteni/asteroids/index.html",
+  "lockSource": null
+ },
+ {
+  "id": "ll-matthew-oscars",
+  "skill": "poslech",
+  "title": "Matthew McConaughey — Oscars 2014",
+  "languages": [
+   "en"
+  ],
+  "levels": [
+   "A1",
+   "A2",
+   "B1",
+   "B2",
+   "C1",
+   "C2"
+  ],
+  "relative": "poslech/matthew-oscars/index.html",
+  "lockSource": null
+ },
+ {
+  "id": "ll-harrison-ford",
+  "skill": "poslech",
+  "title": "Harrison Ford — Life Achievement Speech",
+  "languages": [
+   "en"
+  ],
+  "levels": [
+   "A1",
+   "A2",
+   "B1",
+   "B2",
+   "C1",
+   "C2"
+  ],
+  "relative": "poslech/harrison-ford/index.html",
+  "lockSource": "r11/variant-copies/ll-harrison-ford.html"
+ },
+ {
+  "id": "ll-peaky-no-fighting",
+  "skill": "poslech",
+  "title": "Peaky Blinders — No Fighting",
+  "languages": [
+   "en"
+  ],
+  "levels": [
+   "A1",
+   "A2",
+   "B1",
+   "B2",
+   "C1",
+   "C2"
+  ],
+  "relative": "poslech/peaky-no-fighting/index.html",
+  "lockSource": "r11/variant-copies/ll-peaky-no-fighting.html"
+ },
+ {
+  "id": "rl-can-mistakes",
+  "skill": "cteni",
+  "title": "Can Mistakes Help Us Learn?",
+  "languages": [
+   "en",
+   "es",
+   "de",
+   "fr"
+  ],
+  "levels": [
+   "A1",
+   "A2",
+   "B1",
+   "B2",
+   "C1",
+   "C2"
+  ],
+  "relative": "cteni/can-mistakes/index.html",
+  "lockSource": null
+ },
+ {
+  "id": "rl-plastic-ocean",
+  "skill": "cteni",
+  "title": "Plastic in Our World (Plastic Ocean)",
+  "languages": [
+   "en",
+   "es",
+   "de",
+   "fr"
+  ],
+  "levels": [
+   "A1",
+   "A2",
+   "B1",
+   "B2",
+   "C1",
+   "C2"
+  ],
+  "relative": "cteni/plastic-ocean/index.html",
+  "lockSource": null
+ },
+ {
+  "id": "rl-email-friend",
+  "skill": "cteni",
+  "title": "An Email from a Friend",
+  "languages": [
+   "en",
+   "es",
+   "de",
+   "fr"
+  ],
+  "levels": [
+   "A1",
+   "A2",
+   "B1",
+   "B2",
+   "C1",
+   "C2"
+  ],
+  "relative": "cteni/email-friend/index.html",
+  "lockSource": "r11/variant-copies/rl-email-friend.html"
+ },
+ {
+  "id": "rl-instant-messages",
+  "skill": "cteni",
+  "title": "Instant Messages",
+  "languages": [
+   "en",
+   "es",
+   "de",
+   "fr"
+  ],
+  "levels": [
+   "A1",
+   "A2",
+   "B1",
+   "B2",
+   "C1",
+   "C2"
+  ],
+  "relative": "cteni/instant-messages/index.html",
+  "lockSource": "r11/variant-copies/rl-instant-messages.html"
+ }
+].map(e=>Object.freeze({...e,
+ languages:Object.freeze(e.languages),levels:Object.freeze(e.levels)})));
 const api=Object.freeze({buildReading,buildListening,buildReadingTest,buildListeningTest,
- validate,renderPages,download});
+ validate,renderPages,download,keyEntries:KEY_ENTRIES});
 if(typeof module!=='undefined'&&module.exports)module.exports=api;
 host.LSHPracticeAnswers=api;
 if(!host.document||!$('practiceKeyApp'))return;
@@ -376,11 +541,8 @@ async function refresh(){
 }
 async function init(){
  try{
-  const response=await fetch('../../data/cards.json',{credentials:'omit',redirect:'error'});
-  need(response.ok,'Katalog není dostupný.');
-  const data=await response.json();
-  const entries=data.entries.filter(e=>['cteni','poslech'].includes(e.skill));
-  need(entries.length===8,'Neúplný katalog Reading/Listening.');
+  const entries=KEY_ENTRIES;
+  need(entries.length===8,'Neúplná metadata Reading/Listening.');
   const topicId=qs.get('topic'),requestedSkill=qs.get('skill');
   need(topicId,'Chybí identifikátor karty v odkazu.');
   const e=entries.find(x=>x.id===topicId);
