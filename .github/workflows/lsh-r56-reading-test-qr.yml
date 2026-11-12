@@ -1,0 +1,75 @@
+name: LSH R56 Reading TEST QR decode and actual student destinations
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/tests/r56-reading-test-qr.*'
+      - '.github/workflows/lsh-r56-reading-test-qr.yml'
+      - 'language-skills-hub/assets/qr.js'
+      - 'language-skills-hub/self-check/results/share-tools.js'
+      - 'language-skills-hub/self-check/reading/reading-teacher.js'
+  push:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/tests/r56-reading-test-qr.*'
+      - '.github/workflows/lsh-r56-reading-test-qr.yml'
+      - 'language-skills-hub/assets/qr.js'
+      - 'language-skills-hub/self-check/results/share-tools.js'
+      - 'language-skills-hub/self-check/reading/reading-teacher.js'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: |
+          node --check language-skills-hub/tests/r56-reading-test-qr.test.cjs
+          node --check language-skills-hub/tests/r56-reading-test-qr.browser.test.cjs
+          node --test language-skills-hub/tests/r56-reading-test-qr.test.cjs
+  browser:
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install independent QR decoder and browser library
+        run: npm install --no-save --ignore-scripts playwright@1.56.1 jsqr@1.4.0 pngjs@7.0.0
+      - name: Decode all 120 QR codes in Chromium and WebKit and visit every student URL
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-r56-http.log 2>&1 &
+          PID=$!
+          trap 'kill $PID' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/self-check/reading/teacher.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/r56-reading-test-qr.browser.test.cjs
+  live:
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1 jsqr@1.4.0 pngjs@7.0.0
+      - name: Decode 120 real production QR codes, download SVG and open 20 public test links
+        env:
+          LSH_QR_MODE: live
+          LSH_QR_ENGINE: chromium
+          LSH_QR_BASE: https://ghrab-jazyky.github.io/language-skills-hub/
+        run: node --test language-skills-hub/tests/r56-reading-test-qr.browser.test.cjs
