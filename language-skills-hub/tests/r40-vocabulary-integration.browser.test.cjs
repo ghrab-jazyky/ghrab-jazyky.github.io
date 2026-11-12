@@ -41,10 +41,14 @@ for(const [browserName,engine]of[['chromium',chromium],['webkit',webkit]]){
     await nav(card);
     const link=page.locator('a').filter({hasText:'My Vocabulary'}).first();
     await link.waitFor({timeout:20000});
+    await page.waitForFunction(()=>[...document.querySelectorAll('a')].some(a=>
+     /My Vocabulary/.test(a.textContent||'')&&/\(2\)/.test(a.textContent||'')),
+     null,{timeout:20000}); // IndexedDB counts resolve asynchronously on WebKit.
     assert.match(await link.getAttribute('href'),/slovnicek/);
     assert.match(await link.textContent(),/\(2\)/);
    }
    await nav('slovnicek/index.html');
+   await page.locator('.word-row').nth(1).waitFor({timeout:20000});
    assert.equal(await page.locator('.word-row').count(),2);
    await page.locator('#selectAll').click();
    await page.locator('[data-mode=flash]').click();
@@ -69,6 +73,7 @@ for(const [browserName,engine]of[['chromium',chromium],['webkit',webkit]]){
    const dl=await download,bytes=fs.readFileSync(await dl.path()),body=JSON.parse(bytes.toString('utf8'));
    assert.equal(body.kind,'lsh-slovnicek');assert.equal(body.words.length,2);
    await page.reload({waitUntil:'load'});
+   await page.locator('.word-row').nth(1).waitFor({timeout:20000});
    assert.equal(await page.locator('.word-row').count(),2);
    // Import into an independent browser context simulates transfer to a second device.
    const second=await browser.newContext({acceptDownloads:true});
@@ -79,6 +84,7 @@ for(const [browserName,engine]of[['chromium',chromium],['webkit',webkit]]){
    await dest.locator('.word-row').nth(1).waitFor({timeout:15000});
    assert.equal(await dest.locator('.word-row').count(),2);
    await dest.reload({waitUntil:'load'});
+   await dest.locator('.word-row').nth(1).waitFor({timeout:20000});
    assert.equal(await dest.locator('.word-row').count(),2);
    // Check that import rejects malformed content and keeps existing words unchanged.
    await dest.locator('#importFile').setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{}')});
