@@ -3,6 +3,20 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
 const {chromium,webkit}=require('playwright');
 const base='http://127.0.0.1:8765/language-skills-hub/';
+
+/* R59: Reading shows only the selected skill panel after R58.
+ * Navigate through the actual tab buttons; never force-click hidden answers. */
+async function activeReadingQuestion(page,index){
+ const field=page.locator('#questionList fieldset.question').nth(index);
+ const skill=await field.evaluate(node=>node.closest('[role="tabpanel"]')?.dataset.skill);
+ assert.ok(skill,'Reading question has no skill tab: '+index);
+ const tab=page.locator('#readingSkillTabs [role="tab"][data-skill="'+skill+'"]');
+ assert.equal(await tab.count(),1,'Reading skill navigation is missing: '+skill);
+ await tab.click();
+ assert.equal(await tab.getAttribute('aria-selected'),'true');
+ assert.equal(await field.isVisible(),true,'Reading question stayed hidden after selecting '+skill);
+ return field;
+}
 const makeUrl=(relative,params)=>{const u=new URL(relative,base);for(const [k,v]of Object.entries(params))u.searchParams.set(k,v);return u.href;};
 
 async function allowCopy(page){
@@ -72,7 +86,8 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     for(let i=0;i<questions.length;i++){
      if(i===1)continue; // unanswered should be reviewed as a mistake
      const q=questions[i],choice=i===0?(q.answer+1)%q.choices.length:q.answer;
-     await page.locator('fieldset.question').nth(i).locator('input[type=radio]').nth(choice).check();
+     const field=await activeReadingQuestion(page,i);
+      await field.locator('input[type=radio]').nth(choice).check();
     }
     await page.locator('#submitButton').click();
     await page.locator('#results:not([hidden])').waitFor();
