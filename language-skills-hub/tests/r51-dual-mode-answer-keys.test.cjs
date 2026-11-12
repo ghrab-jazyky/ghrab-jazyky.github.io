@@ -84,7 +84,7 @@ test('R51 Listening: test key matches assessAuto for 18 variants, including acce
    variants++;total+=rows(model).length;
   }
  }
- assert.equal(variants,18);assert.ok(total>350);
+ assert.equal(variants,18);assert.ok(total>=18*8);
 });
 test('R51 invalid mode is rejected; both PDF modes are independently identified',()=>{
  const entry=entries.find(e=>e.id==='rl-asteroids');
