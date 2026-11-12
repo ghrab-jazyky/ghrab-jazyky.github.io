@@ -53,6 +53,20 @@ for(const [engineName,engine] of engines){
       await teacher.locator('#level').selectOption(level);
       const timer=[5,30,120][(index+languageIndex+levelIndex)%3];
       await teacher.locator('#timerMinutes').fill(String(timer));
+      const immediate=await teacher.locator('#studentUrl').inputValue();
+      const previousTime=new URL(immediate).searchParams.get('timer');
+      if(previousTime!==String(timer))
+       console.warn('R56 INPUT EVENT RACE '+engineName+' '+id+
+        ' input='+await teacher.locator('#timerMinutes').inputValue()+
+        ' QR='+previousTime+' expected='+timer);
+      // A browser is allowed to deliver synthetic input events in a later task;
+      // verify that the UI settles before taking the QR screenshot.
+      await teacher.waitForFunction(expected=>{
+       const input=document.getElementById('timerMinutes');
+       const text=document.getElementById('studentUrl')?.value;
+       if(!text||input.value!==expected)return false;
+       try{return new URL(text).searchParams.get('timer')===expected}catch(_){return false}
+      },String(timer),{timeout:3500});
       const link=await teacher.locator('#studentUrl').inputValue();
       const parsed=new URL(link);
       assert.equal(parsed.origin,new URL(base).origin,id);
