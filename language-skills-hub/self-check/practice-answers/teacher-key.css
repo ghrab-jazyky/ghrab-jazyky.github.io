@@ -14,7 +14,13 @@ main{max-width:1150px;margin:0 auto;padding:22px 20px 55px}
 .intro p:last-child{margin-bottom:0}
 .warning{background:var(--warn-bg);border-left:4px solid #ba8128;color:var(--warn);padding:10px 13px}
 .selection h2{margin:0 0 14px;font-size:1.16rem}
-.fields{display:grid;grid-template-columns:minmax(230px,2fr) minmax(130px,1fr) minmax(115px,.7fr);gap:13px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.selected-topic{display:flex;flex-direction:column;gap:4px;background:linear-gradient(120deg,#163b5c,#235a7a);color:#fff;border-radius:11px;padding:16px 18px;margin:0 0 18px;box-shadow:0 4px 14px #00000012}
+.topic-label{font-size:.69rem;font-weight:800;letter-spacing:.09em;color:#d6e9f5}
+#topicTitle{font-size:1.18rem;line-height:1.38;overflow-wrap:anywhere}
+.field-label{display:block;font-weight:700;font-size:.87rem;margin:0 0 5px}
+.fixed-value{display:flex;align-items:center;min-height:45px;border:1px solid var(--line);border-radius:8px;padding:9px 13px;background:var(--bg);color:var(--ink);font-weight:650}
+.fields>div[hidden]{display:none}
 label{display:block;font-weight:700;font-size:.87rem;margin:0 0 5px}
 .fields>div{min-width:0;max-width:100%;overflow:hidden}
 .fields select{display:block;min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
