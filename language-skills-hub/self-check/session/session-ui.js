@@ -302,7 +302,9 @@
   });
   function initialize(){
    const s=engine.status();
-   if(s.phase!=='ready')cfg.restoreAnswers(s.answers);\n   if(s.phase==='running'&&!s.expired)engine.interrupt('reload');\n   resetBaseline();
+   if(s.phase!=='ready')cfg.restoreAnswers(s.answers);
+   if(s.phase==='running'&&!s.expired)engine.interrupt('reload');
+   resetBaseline();
    initialized=true;render();
    if(s.phase==='submitted')cfg.onSubmit({automatic:true,restored:true});
    else autoSubmit();
