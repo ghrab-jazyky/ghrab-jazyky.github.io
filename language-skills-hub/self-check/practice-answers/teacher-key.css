@@ -34,6 +34,9 @@ select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #d9a
 button{border:0;border-radius:9px;background:var(--accent);color:#fff;cursor:pointer;font:inherit;font-weight:750;padding:12px 18px}
 button:hover:not(:disabled){background:#255985}
 button:disabled{cursor:not-allowed;opacity:.5}
+#retryLoad{background:transparent;color:var(--accent);border:1.5px solid currentColor}
+#retryLoad:hover:not(:disabled){background:var(--bg)}
+#retryLoad[hidden]{display:none!important}
 #status{color:var(--muted);margin:0;font-size:.91rem;flex:1;min-width:220px}
 .preview>h2{font-size:1.25rem;margin:0 0 17px}
 .key-group{border-top:1px solid var(--line);margin:18px 0 0;padding:15px 0 0}
