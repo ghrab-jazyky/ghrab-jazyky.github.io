@@ -9,10 +9,9 @@
 .lsh-session-lock-panel{width:min(550px,100%);background:#152338;border:1px solid #667a90;border-radius:18px;padding:25px 23px;margin:42px auto}
 .lsh-session-lock-panel h2{margin:0 0 8px}
 .lsh-session-lock-panel p{line-height:1.6}
-.lsh-session-hint{font-size:.87rem;color:#c7d1e6}
-.lsh-session-status{font-weight:700;color:#e1f1f6}
-.lsh-corner{position:fixed;width:54px;height:54px;z-index:10001;border:2px solid #d4e7fc;background:#1b3554;color:white;border-radius:12px;font-weight:900;font-size:1.4rem;cursor:pointer;touch-action:manipulation}
-.lsh-corner:focus-visible{outline:3px solid #fbd38d;outline-offset:2px}
+.lsh-session-reason{font-weight:700;color:#d4e7fc}
+.lsh-corner{position:fixed;width:58px;height:58px;z-index:10001;background:transparent;border:0;border-radius:0;touch-action:manipulation;cursor:default;-webkit-tap-highlight-color:transparent;user-select:none;}
+.lsh-corner:focus-visible{outline:none}
 .lsh-corner-tl{left:max(9px,env(safe-area-inset-left));top:max(9px,env(safe-area-inset-top))}
 .lsh-corner-tr{right:max(9px,env(safe-area-inset-right));top:max(9px,env(safe-area-inset-top))}
 .lsh-corner-bl{left:max(9px,env(safe-area-inset-left));bottom:max(9px,env(safe-area-inset-bottom))}
@@ -20,3 +19,10 @@
 @media(max-width:420px){.lsh-session-lock-panel{padding:16px;margin:70px auto}}
 
 #sessionErase{margin:12px 20px;min-height:44px}
+
+/* Student browser printing never exposes questions or answers. The complete
+   teacher dossier is exported through the dedicated PDF generator instead. */
+@media print {
+ body,body * {visibility:hidden!important;}
+ html {background:white!important;}
+}

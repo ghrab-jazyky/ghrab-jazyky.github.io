@@ -278,6 +278,7 @@
     skill:'listening',topicId:selection.topic,
     topic:$('title').textContent,language:'en',level:selection.level,
     generatedAt:Date.now(),
+    security:window.LSHPdfReport.securityFromAttempt(timedUI?.status()),
     summary:{earned:grade.earned,max:grade.max,
      percent:grade.displayedPercent,roundedPercent:grade.roundedPercent,
       grade:grade.grade},

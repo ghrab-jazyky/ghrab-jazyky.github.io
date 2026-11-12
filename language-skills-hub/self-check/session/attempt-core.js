@@ -6,6 +6,9 @@
  'use strict';
  const KIND='LSH_LOCAL_ATTEMPT_R30_V1';
  const STATES=Object.freeze(['ready','running','interrupted','submitted']);
+ const INCIDENT_KINDS=Object.freeze(['hidden','fullscreen-exit','fullscreen-denied',
+  'focus-loss','viewport-change','restricted-viewport','clipboard',
+  'context-menu','page-leave','reload','concurrent-tab','print-attempt']);
  const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
  const safeText=s=>typeof s==='string'&&/^[a-z0-9_-]{1,90}$/i.test(s);
  function requireValid(ok,msg){if(!ok)throw new Error(msg);}
@@ -47,7 +50,10 @@
   }
   if(!Array.isArray(s.incidents)||s.incidents.length>40||
    !s.incidents.every(i=>i&&typeof i==='object'&&
-    ['hidden','fullscreen-exit'].includes(i.kind)&&time(i.at)))return false;
+    INCIDENT_KINDS.includes(i.kind)&&time(i.at)))return false;
+  // Old R30 sessions had no resume log. Keep those snapshots readable.
+  if(s.resumptions!==undefined&&(!Array.isArray(s.resumptions)||
+   s.resumptions.length>40||!s.resumptions.every(time)))return false;
   return JSON.stringify(s).length<=160000;
  }
  function open(input){
@@ -63,7 +69,7 @@
   }
   const fresh=()=>({
    kind:KIND,limitMinutes:n,phase:'ready',startedAt:null,deadlineAt:null,
-   submittedAt:null,answers:{},reviewMarks:null,incidents:[]
+   submittedAt:null,answers:{},reviewMarks:null,incidents:[],resumptions:[]
   });
   let state=fresh();
   if(storage){
@@ -94,7 +100,7 @@
    remainingMs:remainingMs(),expired:expired(),persistent,
    answers:clone(state.answers),
    reviewMarks:Array.isArray(state.reviewMarks)?clone(state.reviewMarks):null,
-   incidents:clone(state.incidents)
+   incidents:clone(state.incidents),resumptions:clone(state.resumptions||[])
   }}
   function start(){
    requireValid(state.phase==='ready','Attempt already started');
@@ -123,7 +129,7 @@
    return status();
   }
   function interrupt(kind){
-   requireValid(['hidden','fullscreen-exit'].includes(kind),'Invalid incident kind');
+   requireValid(INCIDENT_KINDS.includes(kind),'Invalid incident kind');
    if(state.phase==='running'&&!expired()){
     state.phase='interrupted';
     state.incidents.push({kind,at:clock()});
@@ -134,7 +140,11 @@
   }
   function resume(){
    requireValid(state.phase==='interrupted'&&!expired(),'Attempt cannot resume');
-   state.phase='running';persist();return status();
+   state.phase='running';
+   if(!Array.isArray(state.resumptions))state.resumptions=[];
+   state.resumptions.push(clock());
+   if(state.resumptions.length>40)state.resumptions.shift();
+   persist();return status();
   }
   function finish(){
    requireValid(state.phase==='running'||state.phase==='interrupted',
@@ -149,7 +159,7 @@
   }
   return Object.freeze({id,start,saveAnswers,saveReviewMarks,interrupt,resume,finish,clear,status,remainingMs,expired});
  }
- const api=Object.freeze({KIND,STATES,minutes,key,open});
+ const api=Object.freeze({KIND,STATES,INCIDENT_KINDS,minutes,key,open});
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  else root.LSHAttemptCore=api;
 })(typeof window!=='undefined'?window:this);

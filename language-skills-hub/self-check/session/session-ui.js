@@ -8,32 +8,86 @@
   return el;
  }
  const MESSAGES={
-  en:{intro:'Ready to start?',description:'Your timer begins when you press Start. Answers are saved only in this browser. Leaving the tab may pause editing until your teacher resumes the test. This does not prevent cheating or verify your identity.',
-   start:'Start test',remaining:'Time remaining',interrupted:'Test interrupted',
-   lock:'The page became hidden. Ask your teacher to resume your attempt. The timer continues.',
-   gesture:'Teacher: tap the four marked corners in this order: top left, top right, bottom left, bottom right. This is not a password.',
-   resumed:'Teacher gesture completed. You can continue.',pending:'Waiting for the next corner…',
-   invalid:'Incorrect order. Start again at the top-left corner.',submitted:'Submitted',
+  en:{intro:'Ready to start?',description:'The test is monitored for leaving the page or changing its display. Your answers stay on this device. The timer continues during interruptions.',
+   start:'Start test',remaining:'Time remaining',interrupted:'Test locked',
+   lock:'The test was locked. Please contact your teacher. The timer continues.',
+   reasons:{hidden:'The test page was hidden or another application was opened.',
+    'fullscreen-exit':'Full-screen mode was exited.',
+    'fullscreen-denied':'Full-screen mode could not be activated.',
+    'focus-loss':'The test window lost focus.',
+    'viewport-change':'The test window size changed significantly.',
+    'restricted-viewport':'The test was opened in a restricted or divided window.',
+    clipboard:'Clipboard interaction was detected.',
+    'context-menu':'An external context menu was requested.',
+    'page-leave':'The test page was left.',
+    reload:'The test page was refreshed while in progress.',
+    'concurrent-tab':'Another active LSH test was detected in this browser profile.',
+    'print-attempt':'An attempt to print or preview the test was detected.'},
+   resumed:'The test has been resumed.',submitted:'Submitted',
    forget:'Erase local answers',eraseConfirm:'Erase all locally saved answers for this attempt? This cannot be undone. Keep a verified grade record first.',erased:'Local answers erased. Close this page.',
-   saveWarning:'Local storage unavailable: reloading may lose this attempt.'},
-  es:{intro:'¿Listo para empezar?',description:'El tiempo comienza al pulsar Iniciar. Las respuestas solo se guardan en este navegador. Si sales de la pestaña, el profesor tendrá que reanudar el ejercicio. No es un examen seguro.',
-   start:'Iniciar prueba',remaining:'Tiempo restante',interrupted:'Prueba interrumpida',
-   lock:'La página ha dejado de estar visible. Pide al docente que reanude la prueba. El tiempo sigue corriendo.',
-   gesture:'Docente: pulsa las cuatro esquinas señaladas: arriba izquierda, arriba derecha, abajo izquierda y abajo derecha. No es una contraseña.',
-   resumed:'La prueba continúa.',pending:'Siguiente esquina…',invalid:'Orden incorrecto. Empieza de nuevo.',
-   submitted:'Entregado',forget:'Borrar respuestas locales',eraseConfirm:'¿Borrar las respuestas de este intento? Esta acción no se puede deshacer. Guarda primero la calificación validada.',erased:'Respuestas locales borradas. Cierra esta página.',saveWarning:'El almacenamiento local no está disponible: podrías perder las respuestas al recargar.'},
-  de:{intro:'Bereit für den Test?',description:'Die Zeit beginnt mit Start. Antworten werden nur in diesem Browser gespeichert. Nach einem Tabwechsel muss die Lehrkraft die Bearbeitung fortsetzen lassen. Dies ist keine sichere Prüfung.',
-   start:'Test beginnen',remaining:'Verbleibende Zeit',interrupted:'Test unterbrochen',
-   lock:'Die Seite war nicht sichtbar. Bitte die Lehrkraft um Freigabe. Die Zeit läuft weiter.',
-   gesture:'Lehrkraft: Markierungen anklicken – oben links, oben rechts, unten links, unten rechts. Dies ist kein Passwort.',
-   resumed:'Der Test wird fortgesetzt.',pending:'Nächste Ecke…',invalid:'Falsche Reihenfolge. Bitte erneut beginnen.',
-   submitted:'Abgegeben',forget:'Lokale Antworten löschen',eraseConfirm:'Alle lokal gespeicherten Antworten dieses Versuchs unwiderruflich löschen? Bitte zuerst die bestätigte Note dokumentieren.',erased:'Lokale Antworten gelöscht. Bitte die Seite schließen.',saveWarning:'Lokales Speichern nicht verfügbar: Beim Neuladen können Antworten verloren gehen.'},
-  fr:{intro:'Prêt à commencer ?',description:'Le chronomètre démarre avec le bouton Commencer. Les réponses restent dans ce navigateur. Après avoir quitté l’onglet, l’enseignant doit autoriser la reprise. Ce dispositif ne sécurise pas un examen.',
-   start:'Commencer le test',remaining:'Temps restant',interrupted:'Test interrompu',
-   lock:'La page a été masquée. Demande à l’enseignant de reprendre le test. Le temps continue.',
-   gesture:'Enseignant : touchez les coins indiqués dans cet ordre : haut gauche, haut droit, bas gauche, bas droit. Ce n’est pas un mot de passe.',
-   resumed:'Vous pouvez continuer.',pending:'Coin suivant…',invalid:'Ordre incorrect. Recommencez.',
-   submitted:'Remis',forget:'Effacer les réponses locales',eraseConfirm:'Effacer définitivement les réponses de cette tentative ? Enregistre d’abord la note validée.',erased:'Réponses locales effacées. Ferme cette page.',saveWarning:'Le stockage local est indisponible : le rechargement peut effacer les réponses.'}
+   saveWarning:'Local storage unavailable: reloading may lose this attempt.',
+   tabUnavailable:'Other active browser tabs cannot be monitored on this device.',
+   fullscreenUnavailable:'Full-screen mode is not available on this device. Ask your teacher to check the screen before proceeding.'},
+  es:{intro:'¿Listo para empezar?',description:'Durante la prueba se supervisan los cambios de pantalla. Las respuestas se guardan en este dispositivo y el tiempo sigue corriendo durante las interrupciones.',
+   start:'Iniciar prueba',remaining:'Tiempo restante',interrupted:'Prueba bloqueada',
+   lock:'La prueba se ha bloqueado. Avisa al profesor. El tiempo sigue corriendo.',
+   reasons:{hidden:'La página dejó de estar visible o se abrió otra aplicación.',
+    'fullscreen-exit':'Se salió de la pantalla completa.',
+    'fullscreen-denied':'No se pudo activar la pantalla completa.',
+    'focus-loss':'La ventana de la prueba perdió el foco.',
+    'viewport-change':'El tamaño de la ventana cambió considerablemente.',
+    'restricted-viewport':'La prueba se abrió en una ventana reducida o dividida.',
+    clipboard:'Se detectó una acción con el portapapeles.',
+    'context-menu':'Se intentó abrir el menú contextual.',
+    'page-leave':'Se abandonó la página de la prueba.',
+    reload:'Se actualizó la página durante la prueba.',
+    'concurrent-tab':'Se detectó otra prueba LSH activa en este navegador.',
+    'print-attempt':'Se detectó un intento de imprimir o previsualizar la prueba.'},
+   resumed:'La prueba continúa.',submitted:'Entregado',forget:'Borrar respuestas locales',
+   eraseConfirm:'¿Borrar las respuestas locales? Esta acción es irreversible.',erased:'Respuestas borradas. Cierra la página.',
+   saveWarning:'No se pueden guardar las respuestas de forma local.',
+   tabUnavailable:'No se pueden supervisar otras pestañas activas en este dispositivo.',
+   fullscreenUnavailable:'La pantalla completa no está disponible. Pide al docente que compruebe la pantalla.'},
+  de:{intro:'Bereit für den Test?',description:'Das Verlassen der Seite und Änderungen der Bildschirmdarstellung werden überwacht. Antworten bleiben auf diesem Gerät, die Zeit läuft bei Unterbrechungen weiter.',
+   start:'Test beginnen',remaining:'Verbleibende Zeit',interrupted:'Test gesperrt',
+   lock:'Der Test wurde gesperrt. Bitte informiere die Lehrkraft. Die Zeit läuft weiter.',
+   reasons:{hidden:'Die Seite wurde ausgeblendet oder eine andere App geöffnet.',
+    'fullscreen-exit':'Der Vollbildmodus wurde verlassen.',
+    'fullscreen-denied':'Der Vollbildmodus konnte nicht aktiviert werden.',
+    'focus-loss':'Das Testfenster hat den Fokus verloren.',
+    'viewport-change':'Die Fenstergröße hat sich deutlich verändert.',
+    'restricted-viewport':'Der Test wurde in einem geteilten oder kleinen Fenster geöffnet.',
+    clipboard:'Zwischenablage-Aktion erkannt.',
+    'context-menu':'Ein Kontextmenü wurde angefordert.',
+    'page-leave':'Die Testseite wurde verlassen.',
+    reload:'Die Testseite wurde während des Tests neu geladen.',
+    'concurrent-tab':'Ein weiterer aktiver LSH-Test wurde in diesem Browser erkannt.',
+    'print-attempt':'Ein Druck- oder Druckvorschauversuch wurde erkannt.'},
+   resumed:'Der Test wurde fortgesetzt.',submitted:'Abgegeben',forget:'Lokale Antworten löschen',
+   eraseConfirm:'Alle lokal gespeicherten Antworten löschen? Dies kann nicht rückgängig gemacht werden.',erased:'Antworten gelöscht. Bitte die Seite schließen.',
+   saveWarning:'Lokale Speicherung nicht verfügbar.',
+   tabUnavailable:'Andere aktive Browser-Tabs können auf diesem Gerät nicht überwacht werden.',
+   fullscreenUnavailable:'Vollbildmodus ist nicht verfügbar. Bitte die Lehrkraft um Bildschirmkontrolle.'},
+  fr:{intro:'Prêt à commencer ?',description:'Les changements de fenêtre et la sortie de la page sont surveillés. Les réponses restent sur cet appareil et le temps continue pendant les interruptions.',
+   start:'Commencer le test',remaining:'Temps restant',interrupted:'Test verrouillé',
+   lock:'Le test a été verrouillé. Contacte ton enseignant. Le temps continue.',
+   reasons:{hidden:'La page a été masquée ou une autre application a été ouverte.',
+    'fullscreen-exit':'Le mode plein écran a été quitté.',
+    'fullscreen-denied':'Le plein écran n’a pas pu être activé.',
+    'focus-loss':'La fenêtre du test a perdu le focus.',
+    'viewport-change':'La taille de la fenêtre a changé considérablement.',
+    'restricted-viewport':'Le test a été ouvert dans une fenêtre réduite ou partagée.',
+    clipboard:'Une opération du presse-papiers a été détectée.',
+    'context-menu':'Un menu contextuel a été demandé.',
+    'page-leave':'La page du test a été quittée.',
+    reload:'La page a été actualisée pendant le test.',
+    'concurrent-tab':'Un autre test LSH actif a été détecté dans ce navigateur.',
+    'print-attempt':'Une tentative d’impression ou d’aperçu a été détectée.'},
+   resumed:'Le test a repris.',submitted:'Remis',forget:'Effacer les réponses locales',
+   eraseConfirm:'Supprimer définitivement les réponses locales ?',erased:'Réponses supprimées. Ferme la page.',
+   saveWarning:'Enregistrement local indisponible.',
+   tabUnavailable:'La surveillance des autres onglets actifs n’est pas disponible sur cet appareil.',
+   fullscreenUnavailable:'Le plein écran n’est pas disponible. Demande à l’enseignant de vérifier l’écran.'}
  };
  function mount(cfg){
   const params=new URLSearchParams(location.search);
@@ -78,29 +132,37 @@
   overlay.setAttribute('aria-label',ui.interrupted);
   overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');
   const panel=elt('div','lsh-session-lock-panel');
-  panel.append(elt('h2',null,ui.interrupted),elt('p',null,ui.lock),
-   elt('p','lsh-session-hint',ui.gesture));
-  const status=elt('p','lsh-session-status','');status.id='sessionLockStatus';
-  status.setAttribute('aria-live','polite');panel.appendChild(status);
+  panel.append(elt('h2',null,ui.interrupted),elt('p',null,ui.lock));
+  const reason=elt('p','lsh-session-reason','');reason.id='sessionLockReason';
+  panel.appendChild(reason);
   const corners=elt('div','lsh-session-corners');
+  corners.setAttribute('aria-hidden','true');
   const order=['tl','tr','bl','br'];
-  const markers=['↖','↗','↙','↘'];
-  let next=0;
+  let next=0,gestureAt=0;
+  // These invisible areas are a convenience for a supervising teacher, not
+  // authentication. No labels, instructions, marker glyphs or hints in the DOM.
   for(let i=0;i<order.length;i++){
-   const button=elt('button','lsh-corner lsh-corner-'+order[i],markers[i]);
-   button.type='button';button.setAttribute('aria-label',order[i]);
-   button.addEventListener('click',()=>{
+   const button=elt('div','lsh-corner lsh-corner-'+order[i]);
+   button.addEventListener('pointerdown',event=>{
+    if(event.button!==0&&event.pointerType==='mouse')return;
     if(engine.status().phase!=='interrupted')return;
-    if(order[next]!==order[i]){
-     next=order[i]==='tl'?1:0;status.textContent=ui.invalid;
-     return;
-    }
+    const now=Date.now();
+    if(gestureAt&&now-gestureAt>8000)next=0;
+    gestureAt=now;
+    if(order[next]!==order[i]){next=order[i]==='tl'?1:0;return;}
     next++;
     if(next===4){
-     next=0;
-     try{engine.resume();status.textContent=ui.resumed;render()}
-     catch(_){status.textContent=ui.lock}
-    }else status.textContent=ui.pending;
+     next=0;gestureAt=0;
+     try{
+      if(!document.fullscreenElement&&document.documentElement.requestFullscreen&&!isTouchDevice()){
+       // Request while the teacher's pointer gesture still carries user activation.
+       Promise.resolve(document.documentElement.requestFullscreen()).then(()=>{
+        fullscreenArmed=!!document.fullscreenElement;
+        engine.resume();resetBaseline();render();tabMonitor.probe();
+       }).catch(()=>{lockReason('fullscreen-denied');});
+      }else{engine.resume();resetBaseline();render();tabMonitor.probe();}
+     }catch(_){lockReason('fullscreen-denied');}
+    }
    });
    corners.appendChild(button);
   }
@@ -112,6 +174,30 @@
   erase.id='sessionErase';erase.type='button';erase.hidden=true;
   if(results)results.appendChild(erase);
   let initialized=false,autoSubmitting=false,lastPhase=null,purged=false;
+  let baselineWidth=0,baselineHeight=0,fullscreenArmed=false;
+  let focusDelay=null,resizeDelay=null,fullscreenPending=false;
+  if(!root.LSHTabGuard)throw new Error('Missing simultaneous-test detector');
+  const tabMonitor=root.LSHTabGuard.mount({onConflict:()=>lock('concurrent-tab')});
+  const isTouchDevice=()=>('ontouchstart' in root)||navigator.maxTouchPoints>0;
+  const dims=()=>({w:root.innerWidth||document.documentElement.clientWidth,
+    h:root.innerHeight||document.documentElement.clientHeight});
+  function resetBaseline(){const d=dims();baselineWidth=d.w;baselineHeight=d.h;}
+  function active(){return engine.status().phase==='running'&&!engine.status().expired;}
+  function lock(kind){
+   if(!active())return;
+   engine.interrupt(kind);
+   render();
+  }
+  function lockReason(kind){
+   reason.textContent=ui.reasons[kind]||ui.lock;
+  }
+  function restricted(){
+   // Heuristic only: viewport dimensions cannot reliably prove iPad Split View.
+   // Use a conservative threshold to avoid false positives on normal phones.
+   const d=dims();
+   return d.h>=430&&root.screen&&
+    root.screen.width>=900&&d.w<root.screen.width*0.70;
+  }
   function displayTime(ms){
    const seconds=Math.max(0,Math.ceil(ms/1000));
    return String(Math.floor(seconds/60)).padStart(2,'0')+':'+
@@ -125,16 +211,18 @@
    workspace.hidden=state.phase==='ready';
    bar.hidden=state.phase==='ready';
    overlay.hidden=state.phase!=='interrupted';
-   if(state.phase==='interrupted'&&lastPhase!=='interrupted'){
-    next=0;
-    const first=corners.querySelector('button');if(first)first.focus({preventScroll:true});
-   }
+   if(state.phase==='interrupted'&&lastPhase!=='interrupted'){next=0;gestureAt=0;}
+   reason.textContent=state.phase==='interrupted'?
+    (ui.reasons[state.incidents[state.incidents.length-1]?.kind]||ui.lock):'';
    if(state.phase==='interrupted')workspace.setAttribute('inert','');
    else workspace.removeAttribute('inert');
    lastPhase=state.phase;
    remaining.textContent=state.phase==='submitted'?ui.submitted:
     ui.remaining+': '+displayTime(state.remainingMs);
-   warning.textContent=state.persistent?'':ui.saveWarning;
+   warning.textContent=[state.persistent?'':ui.saveWarning,
+    tabMonitor.available?'':ui.tabUnavailable,
+    !document.documentElement.requestFullscreen&&state.phase!=='ready'?ui.fullscreenUnavailable:'']
+    .filter(Boolean).join(' ');
   }
   function autoSubmit(){
    if(!initialized||autoSubmitting)return;
@@ -146,25 +234,97 @@
    }
   }
   function tick(){render();autoSubmit();}
-  start.addEventListener('click',()=>{
-   if(engine.status().phase==='ready'){engine.start();render()}
+  start.addEventListener('click',async()=>{
+   if(engine.status().phase!=='ready'||fullscreenPending)return;
+   fullscreenPending=true;
+   try{
+    // Fullscreen API is unavailable on some iPads and iPhones.
+    // A failure never silently skips the test on supported desktop devices.
+    if(document.documentElement.requestFullscreen&&!document.fullscreenElement){
+     try{await document.documentElement.requestFullscreen()}
+     catch(_){fullscreenArmed=false;}
+    }
+    fullscreenArmed=!!document.fullscreenElement;
+    engine.start();tabMonitor.activate();resetBaseline();render();
+    if(restricted())lock('restricted-viewport');
+    else if(document.documentElement.requestFullscreen&&!fullscreenArmed&&!isTouchDevice())
+     lock('fullscreen-denied');
+    else if(!document.documentElement.requestFullscreen)
+     warning.textContent=ui.fullscreenUnavailable;
+   }finally{fullscreenPending=false;}
   });
-  let seenFullscreen=!!document.fullscreenElement;
   document.addEventListener('fullscreenchange',()=>{
-   if(seenFullscreen&&!document.fullscreenElement&&engine.status().phase==='running'){
-    engine.interrupt('fullscreen-exit');render();
-   }
-   seenFullscreen=!!document.fullscreenElement;
+   if(fullscreenPending)return;
+   if(document.fullscreenElement){fullscreenArmed=true;resetBaseline();}
+   else if(fullscreenArmed){fullscreenArmed=false;lock('fullscreen-exit');}
   });
   document.addEventListener('visibilitychange',()=>{
-   if(document.hidden&&engine.status().phase==='running'){
-    engine.interrupt('hidden');render();
-   }else if(!document.hidden)tick();
+   if(document.hidden)lock('hidden');
+   else tick();
   });
+  root.addEventListener('blur',()=>{
+   if(!active())return;
+   if(focusDelay!==null)root.clearTimeout(focusDelay);
+   focusDelay=root.setTimeout(()=>{
+    focusDelay=null;
+    if(!document.hidden&&!document.hasFocus())lock('focus-loss');
+   },350);
+  });
+  root.addEventListener('focus',()=>{
+   if(focusDelay!==null){root.clearTimeout(focusDelay);focusDelay=null;}
+   tick();
+  });
+  root.addEventListener('resize',()=>{
+   if(!active()||fullscreenPending)return;
+   if(resizeDelay!==null)root.clearTimeout(resizeDelay);
+   resizeDelay=root.setTimeout(()=>{
+    resizeDelay=null;
+    if(!active()||document.hidden)return;
+    const d=dims();
+    if(restricted())lock('restricted-viewport');
+    else if(baselineWidth&&baselineHeight&&
+      Math.abs(d.w-baselineWidth)>Math.max(160,baselineWidth*0.24)&&
+      Math.abs(d.h-baselineHeight)<Math.max(200,baselineHeight*0.35))
+     lock('viewport-change');
+   },450);
+  });
+  for(const type of ['paste','copy','cut']){
+   document.addEventListener(type,event=>{
+    if(active()){event.preventDefault();lock('clipboard');}
+   },true);
+  }
+  document.addEventListener('keydown',event=>{
+   if(!active())return;
+   const blocked=(event.ctrlKey||event.metaKey)&&
+    ['p','s','u'].includes(event.key.toLowerCase());
+   if(blocked||event.key==='F12'){
+    event.preventDefault();lock(event.key.toLowerCase()==='p'?'print-attempt':'context-menu');
+   }
+  },true);
+  root.addEventListener('beforeprint',()=>lock('print-attempt'));
+  document.addEventListener('contextmenu',event=>{
+   if(active()){event.preventDefault();lock('context-menu');}
+  },true);
+  root.addEventListener('pagehide',()=>{
+   if(active())engine.interrupt('page-leave');
+   // Keep the channel reusable for Safari's back-forward cache (BFCache).
+   // The document is no longer active until pageshow reactivates monitoring.
+   tabMonitor.deactivate();
+  });
+  root.addEventListener('pageshow',()=>{
+   if(!initialized||purged)return;
+   if(engine.status().phase==='running'&&!engine.status().expired)
+    engine.interrupt('page-leave');
+   if(['running','interrupted'].includes(engine.status().phase)&&!engine.status().expired)
+    tabMonitor.activate();
+   render();
+  });
+  // Restored pages (including a refresh) must remain locked until the teacher
+  // performs the gesture. Timing and saved answers are preserved.
   const interval=setInterval(tick,1000);
   erase.addEventListener('click',()=>{
    if(engine.status().phase!=='submitted'||!root.confirm(ui.eraseConfirm))return;
-   engine.clear();purged=true;clearInterval(interval);
+   engine.clear();purged=true;clearInterval(interval);tabMonitor.dispose();
    if(results)results.hidden=true;
    intro.hidden=true;workspace.hidden=true;overlay.hidden=true;bar.hidden=false;
    remaining.textContent=ui.erased;warning.textContent='';erase.disabled=true;
@@ -172,6 +332,10 @@
   function initialize(){
    const s=engine.status();
    if(s.phase!=='ready')cfg.restoreAnswers(s.answers);
+   if(s.phase==='running'&&!s.expired)engine.interrupt('reload');
+   if(['running','interrupted'].includes(engine.status().phase)&&!engine.status().expired)
+    tabMonitor.activate();
+   resetBaseline();
    initialized=true;render();
    if(s.phase==='submitted')cfg.onSubmit({automatic:true,restored:true});
    else autoSubmit();
@@ -189,9 +353,11 @@
    const s=engine.status();
    if(s.phase==='submitted')return s;
    if(s.phase==='running'&&!s.expired)save();
-   const out=engine.finish();render();return out;
+   const out=engine.finish();tabMonitor.deactivate();render();return out;
   }
-  return Object.freeze({initialize,save,saveReviewMarks,finish,status:engine.status,stop:()=>clearInterval(interval)});
+  const status=()=>Object.freeze({...engine.status(),tabMonitoringAvailable:tabMonitor.available});
+  return Object.freeze({initialize,save,saveReviewMarks,finish,status,
+   stop:()=>{clearInterval(interval);tabMonitor.dispose();}});
  }
  const api=Object.freeze({mount});
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
