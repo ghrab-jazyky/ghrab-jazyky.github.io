@@ -109,7 +109,9 @@ test('R23 publicly linked Reading self-check discloses non-graded limitations',(
  assert.equal(policy.gradedTestsEnabled,false);
  assert.equal(policy.officialGradesEnabled,false);
  assert.match(html,/Reading Lab · Local grading proposal/);
- assert.match(html,/not a secure school exam/);
+ assert.doesNotMatch(html,/id="securityNotice"|answer keys are public/i);
+ assert.match(html,/<footer class="footer"[\s\S]*?teacher confirmation required/i);
+ assert.match(js,/gradeWarning:|gradeProposal:/);
  assert.match(js,/teacher|server/i);
  assert.match(read('assets/hub.js'),/self-check\/reading\/teacher\.html/);
  assert.doesNotMatch(read('assets/hub.js'),/LSH_TEST_GRADED_ENABLED/);
