@@ -37,7 +37,7 @@ for(const [browserName,engine]of[['Chromium',chromium],['WebKit',webkit]]){
     assert.equal(await page.locator('#answerMode').inputValue(),'practice');
     assert.equal(await page.locator('#topicTitle').getAttribute('data-topic-id'),e.id);
     assert.equal(await page.locator('select#topic').count(),0);
-    assert.match(await page.locator('#previewMode').count()?'':await page.locator('.preview-mode').textContent(),/PROCVIČOVACÍ/);
+    assert.match(await page.locator('.preview-mode').textContent(),/PROCVIČOVACÍ/);
     assert.match(await page.locator('#downloadPdf').textContent(),/procvičování/);
     const practiceCount=await page.locator('#answerPreview .key-item').count();
     await page.locator('#answerMode').selectOption('test');
