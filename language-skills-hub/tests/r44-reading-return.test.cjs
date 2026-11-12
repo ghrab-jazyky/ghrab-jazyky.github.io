@@ -28,8 +28,9 @@ test('R44: five cards, 120 variants, 1800 unchanged questions and all 391 exact 
   for(const lang of entry.languages)for(const level of entry.levels){
    const v=data[lang][level];
    variants++;
-   assert.equal(v.questions.length,15,entry.id+' '+lang+'/'+level);
+   assert.equal(v.questions.length,{A1:9,A2:9,B1:12,B2:18,C1:21,C2:21}[level],entry.id+' '+lang+'/'+level);
    questions+=v.questions.length;
+   assert.equal(v.questions.length,new Set(v.questions.map(q=>q.id)).size,'Duplicate question ID '+entry.id+' '+lang+'/'+level);
    for(const q of v.questions){
     const list=(Array.isArray(q.target)?[q.target]:[]).concat(Array.isArray(q.targets)?q.targets:[]);
     if(list.length)withLocate++;
