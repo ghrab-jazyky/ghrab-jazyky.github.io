@@ -83,6 +83,7 @@ function practiceKeyUrl(e){
  if(!['cteni','poslech'].includes(e.skill))return '';
  const url=new URL('self-check/practice-answers/teacher.html',document.baseURI);
  url.searchParams.set('topic',e.id);
+ url.searchParams.set('skill',e.skill); // R50: lab-bound practice results
  const language=byId('language').value,level=byId('level').value;
  if(e.languages.includes(language))url.searchParams.set('lang',language);
  if(e.levels.includes(level))url.searchParams.set('level',level);
