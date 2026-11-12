@@ -48,3 +48,10 @@ test('R45: Reading and Listening preserve accessible native fieldsets with conta
  assert.match(common,/fieldset\.question \.choice>span\{[^}]*overflow-wrap:anywhere/);
  assert.match(listening,/\.sequence-bank\{grid-template-columns:repeat\(auto-fit,minmax\(min\(100%,260px\),1fr\)\)/);
 });
+
+test('R47: live HTTPS smoke gate expects the current TEST control, not its former label',()=>{
+ const workflow=fs.readFileSync(path.resolve(root,'..','.github/workflows/lsh-live-site-smoke.yml'),'utf8');
+ assert.match(workflow,/assert "one\('a','action test','TEST'\)" in hub/);
+ assert.match(workflow,/assert 'Test – známka 1–5' not in hub/);
+ assert.doesNotMatch(workflow,/assert 'Test – známka 1–5' in hub/);
+});

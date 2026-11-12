@@ -61,7 +61,8 @@ jobs:
                   assert policy['futureSelfCheck']['listeningTestObjectiveFillIn'] is True
                   assert policy['futureSelfCheck']['listeningTestVisibleAnswerBank'] is False
                   hub=get('/language-skills-hub/assets/hub.js?verify='+str(attempt)).decode('utf-8')
-                  assert 'Test – známka 1–5' in hub
+                  assert "one('a','action test','TEST')" in hub
+                  assert 'Test – známka 1–5' not in hub
                   assert "self-check/reading/teacher.html" in hub
                   assert "self-check/listening/teacher.html" in hub
                   assert "if(localSelfCheck&&['cteni','poslech']" in hub
