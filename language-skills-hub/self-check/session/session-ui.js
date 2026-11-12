@@ -26,6 +26,7 @@
    resumed:'The test has been resumed.',submitted:'Submitted',
    forget:'Erase local answers',eraseConfirm:'Erase all locally saved answers for this attempt? This cannot be undone. Keep a verified grade record first.',erased:'Local answers erased. Close this page.',
    saveWarning:'Local storage unavailable: reloading may lose this attempt.',
+   tabUnavailable:'Other active browser tabs cannot be monitored on this device.',
    fullscreenUnavailable:'Full-screen mode is not available on this device. Ask your teacher to check the screen before proceeding.'},
   es:{intro:'¿Listo para empezar?',description:'Durante la prueba se supervisan los cambios de pantalla. Las respuestas se guardan en este dispositivo y el tiempo sigue corriendo durante las interrupciones.',
    start:'Iniciar prueba',remaining:'Tiempo restante',interrupted:'Prueba bloqueada',
@@ -45,6 +46,7 @@
    resumed:'La prueba continúa.',submitted:'Entregado',forget:'Borrar respuestas locales',
    eraseConfirm:'¿Borrar las respuestas locales? Esta acción es irreversible.',erased:'Respuestas borradas. Cierra la página.',
    saveWarning:'No se pueden guardar las respuestas de forma local.',
+   tabUnavailable:'No se pueden supervisar otras pestañas activas en este dispositivo.',
    fullscreenUnavailable:'La pantalla completa no está disponible. Pide al docente que compruebe la pantalla.'},
   de:{intro:'Bereit für den Test?',description:'Das Verlassen der Seite und Änderungen der Bildschirmdarstellung werden überwacht. Antworten bleiben auf diesem Gerät, die Zeit läuft bei Unterbrechungen weiter.',
    start:'Test beginnen',remaining:'Verbleibende Zeit',interrupted:'Test gesperrt',
@@ -64,6 +66,7 @@
    resumed:'Der Test wurde fortgesetzt.',submitted:'Abgegeben',forget:'Lokale Antworten löschen',
    eraseConfirm:'Alle lokal gespeicherten Antworten löschen? Dies kann nicht rückgängig gemacht werden.',erased:'Antworten gelöscht. Bitte die Seite schließen.',
    saveWarning:'Lokale Speicherung nicht verfügbar.',
+   tabUnavailable:'Andere aktive Browser-Tabs können auf diesem Gerät nicht überwacht werden.',
    fullscreenUnavailable:'Vollbildmodus ist nicht verfügbar. Bitte die Lehrkraft um Bildschirmkontrolle.'},
   fr:{intro:'Prêt à commencer ?',description:'Les changements de fenêtre et la sortie de la page sont surveillés. Les réponses restent sur cet appareil et le temps continue pendant les interruptions.',
    start:'Commencer le test',remaining:'Temps restant',interrupted:'Test verrouillé',
@@ -83,6 +86,7 @@
    resumed:'Le test a repris.',submitted:'Remis',forget:'Effacer les réponses locales',
    eraseConfirm:'Supprimer définitivement les réponses locales ?',erased:'Réponses supprimées. Ferme la page.',
    saveWarning:'Enregistrement local indisponible.',
+   tabUnavailable:'La surveillance des autres onglets actifs n’est pas disponible sur cet appareil.',
    fullscreenUnavailable:'Le plein écran n’est pas disponible. Demande à l’enseignant de vérifier l’écran.'}
  };
  function mount(cfg){
@@ -216,7 +220,9 @@
    remaining.textContent=state.phase==='submitted'?ui.submitted:
     ui.remaining+': '+displayTime(state.remainingMs);
    warning.textContent=[state.persistent?'':ui.saveWarning,
-    tabMonitor.available?'':'Same-browser tab monitoring unavailable.'].filter(Boolean).join(' ');
+    tabMonitor.available?'':ui.tabUnavailable,
+    !document.documentElement.requestFullscreen&&state.phase!=='ready'?ui.fullscreenUnavailable:'']
+    .filter(Boolean).join(' ');
   }
   function autoSubmit(){
    if(!initialized||autoSubmitting)return;
