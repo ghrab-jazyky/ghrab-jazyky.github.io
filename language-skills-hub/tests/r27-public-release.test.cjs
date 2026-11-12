@@ -77,7 +77,10 @@ test('R27 Reading/Listening teacher pages generate QR locally, fixed student URL
  assert.match(rjs,/url\.searchParams\.set\('lang',language\)/);
  assert.match(rjs,/url\.searchParams\.set\('level',level\)/);
  assert.match(ljs,/shareTools\.render/);
- assert.match(ljs,/passes<2/);
+ assert.match(ljs,/const topicId=params\.get\('topic'\)/);
+ assert.match(listening,/id="topicTitle"/);
+ assert.match(listening,/id="mediaSources"/);
+ assert.doesNotMatch(listening,/id="passCount"|id="markPass"|<select id="topic"/);
  assert.match(helper,/CLBQRCode\.svg/);
  assert.match(helper,/URL\.createObjectURL/);
  assert.match(helper,/navigator\.clipboard/);
