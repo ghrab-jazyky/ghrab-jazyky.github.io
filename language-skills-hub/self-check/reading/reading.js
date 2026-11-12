@@ -33,10 +33,10 @@
    points:'Points',percentage:'Success rate',grade:'No official school grade',
    review:'Review incorrect answers',right:'Correct',wrong:'Incorrect',
    notAnswered:'No answer',your:'Your answer',expected:'Correct answer',because:'Explanation',
-   after:'The proposed grade uses exact unrounded percentages and a provisional language scale. It is not a verified school record.',
+   after:'For the proposed grade, the percentage is rounded to a whole number (0.5 rounds up) before applying the language scale. This is not a verified school record.',
    reflectionAfter:'The optional open reflection was not assessed automatically.',
    footer:'Public practice content · no login, no uploaded student results, no official school grade.',
-   gradeProposal:'Suggested grade (1–5)',gradeWarning:'Unverified local proposal. The teacher must confirm any school grade.',
+   roundingLabel:'Rounding for grading',gradeProposal:'Suggested grade (1–5)',gradeWarning:'Unverified local proposal. The teacher must confirm any school grade.',
    loadingFailed:'Loading failed'
   },
   es:{
@@ -56,10 +56,10 @@
    points:'Puntos',percentage:'Porcentaje',grade:'Sin calificación oficial',
    review:'Revisa las respuestas incorrectas',right:'Correcto',wrong:'Incorrecto',
    notAnswered:'Sin responder',your:'Tu respuesta',expected:'Respuesta correcta',because:'Explicación',
-   after:'La propuesta usa el porcentaje exacto sin redondeo y una escala provisional. No es una calificación escolar verificada.',
+   after:'Para proponer la nota, el porcentaje se redondea al entero más cercano (0,5 hacia arriba) antes de aplicar la escala. No es una calificación escolar verificada.',
    reflectionAfter:'La reflexión abierta opcional no se ha evaluado automáticamente.',
    footer:'Contenido público de práctica · sin registro ni envío de resultados · sin nota oficial.',
-   gradeProposal:'Nota propuesta (1–5)',gradeWarning:'Propuesta local sin verificación. El docente debe confirmar la nota escolar.',
+   roundingLabel:'Redondeo para la nota',gradeProposal:'Nota propuesta (1–5)',gradeWarning:'Propuesta local sin verificación. El docente debe confirmar la nota escolar.',
    loadingFailed:'Error de carga'
   },
   de:{
@@ -79,10 +79,10 @@
    points:'Punkte',percentage:'Erfolgsquote',grade:'Keine offizielle Schulnote',
    review:'Falsche Antworten überprüfen',right:'Richtig',wrong:'Falsch',
    notAnswered:'Keine Antwort',your:'Deine Antwort',expected:'Richtige Antwort',because:'Erklärung',
-   after:'Der Vorschlag basiert auf exakten Prozentwerten ohne Rundung und einer vorläufigen Skala. Er ist keine bestätigte Schulnote.',
+   after:'Für den Notenvorschlag wird der Prozentwert zunächst mathematisch auf ganze Prozent gerundet (ab 0,5 aufwärts). Dies ist keine bestätigte Schulnote.',
    reflectionAfter:'Die freiwillige offene Reflexion wurde nicht automatisch bewertet.',
    footer:'Öffentliche Übungsinhalte · keine Anmeldung, keine Übermittlung der Antworten, keine Schulnote.',
-   gradeProposal:'Notenvorschlag (1–5)',gradeWarning:'Unverifizierter Vorschlag. Die Lehrkraft muss jede Schulnote bestätigen.',
+   roundingLabel:'Rundung für die Note',gradeProposal:'Notenvorschlag (1–5)',gradeWarning:'Unverifizierter Vorschlag. Die Lehrkraft muss jede Schulnote bestätigen.',
    loadingFailed:'Ladefehler'
   },
   fr:{
@@ -102,10 +102,10 @@
    points:'Points',percentage:'Taux de réussite',grade:'Aucune note scolaire officielle',
    review:'Vérifie tes réponses incorrectes',right:'Correct',wrong:'Incorrect',
    notAnswered:'Sans réponse',your:'Ta réponse',expected:'Bonne réponse',because:'Explication',
-   after:'La proposition est calculée sur le pourcentage exact, sans arrondi, à partir d’un barème provisoire. Ce n’est pas une note scolaire vérifiée.',
+   after:'Pour proposer la note, le pourcentage est d’abord arrondi à l’entier le plus proche (0,5 vers le haut), puis le barème est appliqué. Ce n’est pas une note scolaire vérifiée.',
    reflectionAfter:'La réflexion ouverte facultative n’a pas été évaluée automatiquement.',
    footer:'Exercices publics · sans connexion ni envoi des résultats · aucune note officielle.',
-   gradeProposal:'Note proposée (1–5)',gradeWarning:'Proposition locale non vérifiée. L’enseignant doit confirmer la note scolaire.',
+   roundingLabel:'Arrondi pour la note',gradeProposal:'Note proposée (1–5)',gradeWarning:'Proposition locale non vérifiée. L’enseignant doit confirmer la note scolaire.',
    loadingFailed:'Échec du chargement'
   }
  };
@@ -314,6 +314,7 @@
   $('gradeProposal').append(
    add('span','grade-caption',ui.gradeProposal),
    add('strong','grade-number',String(proposal.grade)),
+   add('p','small-note',ui.roundingLabel+': '+proposal.displayedPercent+' % → '+proposal.roundedPercent+' %'),
    add('p','small-note',ui.gradeWarning)
   );
   const normalized=resultsCore.reviewReading(report);
@@ -402,7 +403,8 @@
     language:selected.lang,level:selected.level,generatedAt:Date.now(),
     readingText:variant.paragraphs.join('\n\n'),
     summary:{earned:proposal.earned,max:proposal.max,
-     percent:proposal.displayedPercent,grade:proposal.grade},
+     percent:proposal.displayedPercent,roundedPercent:proposal.roundedPercent,
+     grade:proposal.grade},
     questions:lastReport.details.map(item=>({
      question:item.prompt,options:(variant.questions.find(q=>q.id===item.id)?.choices||[]),
      studentAnswer:item.answered?item.selectedAnswer:'Bez odpovědi',
