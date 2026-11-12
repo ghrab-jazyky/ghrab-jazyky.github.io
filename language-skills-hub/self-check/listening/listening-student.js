@@ -230,9 +230,16 @@
    box.appendChild(element('h3',null,task.question));
    answerComparison(box,task.chosen.length?task.chosen.join(' · '):'Not answered',
     task.correctAnswers.join(' · '));
-   if(task.reason){
+   // Authored justifications for choice tasks; only a transparent scoring
+   // note for sequence/cloze, where the source has no individual explanation.
+   const note=task.reason?.trim()?{label:'Explanation',text:task.reason}:
+    task.phase==='sequence'?{label:'How this is checked',
+     text:'Statements are checked against the order in which they appear in the recording.'}:
+    task.phase==='cloze'?{label:'How this is checked',
+     text:'This is an exact factual detail from the recording. Approved equivalent spellings are accepted; capitalization, accents and punctuation do not affect the result.'}:null;
+   if(note){
     const explanation=element('div','feedback-explanation');
-    kv(explanation,'Explanation',task.reason);
+    kv(explanation,note.label,note.text);
     box.appendChild(explanation);
    }
    list.appendChild(box);
