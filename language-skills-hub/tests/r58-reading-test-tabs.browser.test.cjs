@@ -115,8 +115,12 @@ for(const [name,engine]of engines){
    assert.equal(await first.isChecked(),true);
    assert.equal(await second.isChecked(),true);
    assert.equal(await page.locator('#readingSkillTabs [role="tab"]').nth(1).locator('.reading-tab-count').textContent(),'1 / 3');
-   const ticks=await page.locator('#sessionTimer').count();
-   assert.ok(ticks>=0);
+   // Timed tests intentionally lock after interruptions; use the existing
+   // four-corner recovery sequence rather than bypassing the session guard.
+   if(await page.locator('#sessionLock').isVisible()){
+    for(const corner of ['tl','tr','bl','br'])await page.locator('.lsh-corner-'+corner).click();
+    await page.locator('#sessionLock').waitFor({state:'hidden'});
+   }
    // Submitting from the first tab must grade every hidden and visible question.
    await page.locator('#submitButton').click();
    await page.locator('#results:not([hidden])').waitFor({timeout:15000});
