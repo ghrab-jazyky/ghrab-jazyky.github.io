@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark light">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; connect-src 'self'; form-action 'none'">
-<title>VÝSLEDKY procvičování | Language Skills Hub</title>
+<title>VÝSLEDKY · učitelský klíč | Language Skills Hub</title>
 <link rel="stylesheet" href="teacher-key.css">
 <script defer src="../reading/reading-core.js"></script>
 <script defer src="../listening/listening-core.js"></script>
@@ -21,8 +21,8 @@
 </header>
 <main id="practiceKeyApp">
  <section class="intro" aria-label="Informace pro učitele">
-  <p><strong>Učitelský klíč:</strong> správná řešení původní vybrané procvičovací karty, včetně vysvětlení a dostupných vzorových odpovědí.</p>
-  <p>Otevřené diskusní úlohy nemají jediný správný výsledek. Neobsahuje výsledky konkrétních studentů. Některé procvičovací otázky se však shodují s místními automaticky opravovanými testy.</p>
+  <p><strong>Učitelský klíč:</strong> <span id="keyIntro">Správná řešení původní vybrané karty.</span></p>
+  <p>Vyber si klíč k procvičovací nebo testové verzi. <strong>Neobsahuje výsledky konkrétních studentů.</strong> U některých otázek se obě verze překrývají; obsah vychází ze skutečné vybrané karty.</p>
   <p class="warning"><strong>Pozor:</strong> jde o veřejnou statickou aplikaci bez přihlášení. Odkaz s řešeními neposílejte studentům. Tlačítko není součástí studentských karet, ale katalog je veřejný a řešení nejsou tajná.</p>
  </section>
  <section class="selection" aria-labelledby="chooseTitle">
@@ -32,17 +32,22 @@
   <strong id="topicTitle">Načítám kartu…</strong>
  </div>
  <div class="fields">
+  <div><label for="answerMode">Verze aktivity</label><select id="answerMode" required>
+   <option value="practice">Procvičování do hodiny</option>
+   <option value="test">Test</option>
+  </select></div>
   <div id="languageSelectWrap"><label for="language">Jazyk</label><select id="language" required></select></div>
   <div id="languageFixedWrap" hidden><span class="field-label">Jazyk</span><span id="languageFixed" class="fixed-value">English (EN)</span></div>
   <div><label for="level">Úroveň CEFR</label><select id="level" required></select></div>
  </div>
+ <p id="modeHelp" class="mode-help" aria-live="polite"></p>
  <div class="bar">
-  <button type="button" id="downloadPdf" disabled>Stáhnout výsledky (PDF)</button>
-  <p id="status" aria-live="polite" role="status">Načítám katalog procvičovacích karet…</p>
+  <button type="button" id="downloadPdf" disabled>Stáhnout klíč (PDF)</button>
+  <p id="status" aria-live="polite" role="status">Načítám správná řešení vybrané karty…</p>
  </div>
  </section>
  <section id="answerPreview" class="preview" aria-label="Náhled správných řešení"></section>
 </main>
-<footer>Language Skills Hub · pouze učitelský pracovní podklad k procvičování · bez osobních údajů žáků</footer>
+<footer>Language Skills Hub · učitelský klíč k procvičování a testům · bez osobních údajů žáků</footer>
 </body>
 </html>
