@@ -210,3 +210,10 @@ C. Hromadné úpravy
 - 18 zástupných vysvětlení u přiřazování (can-mistakes ES/DE/FR C1 a C2) nahrazeno citací z textu.
 - Typografie: rovné apostrofy uvnitř slov sjednoceny na ’ (EN, FR, DE); ve francouzštině doplněna mezera před ? a !.
 - Zrcadlové kopie r11/variant-copies (rl-email-friend, rl-instant-messages) a otisky ve version.json aktualizovány.
+
+D. Conversation Lab (504 variant) – stav revize
+
+- Automatická kontrola všech 504 variant: struktura, typografie (¿ ¡, francouzské mezery, uvozovky, apostrofy), zdvojená slova, zástupné texty, známé kalky a čechismy.
+- Ručně přečteno 14 celých variant (vzorek napříč tématy, jazyky a úrovněmi). Zbytek ručně přečten NENÍ.
+- Opraveno: ES „Entiendo tu punto“ → „Entiendo lo que dices“ (7 variant, kalk z angličtiny); vanoce EN A1 – tři definice slovíček zjednodušeny na úroveň A1.
+- Neopraveno, k rozhodnutí: v tématech jak-se-ucit-na-testy a umela-inteligence se na úrovních A1–B1 opakují dvě ze tří nápověd ve všech osmi stanovištích a k některým stanovištím se nehodí.
