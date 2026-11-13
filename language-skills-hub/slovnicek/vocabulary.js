@@ -360,7 +360,7 @@ async function migrateLegacyReading(){
 }
 async function init(){
  const back=new URLSearchParams(location.search).get('zpet');
- if(back&&/^\/language-skills-hub\/(?:konverzace|cteni|poslech)\/[a-z0-9-]+\/index\.html$/.test(back))
+ if(back&&/^\/language-skills-hub\/(?:(?:konverzace|cteni|poslech)\/[a-z0-9-]+\/index\.html|r11\/variant-copies\/(?:rl|ll)-[a-z0-9-]+\.html)$/.test(back))
   $('backLink').href=back;
  $('search').addEventListener('input',renderWords);
  $('languageFilter').addEventListener('change',renderWords);

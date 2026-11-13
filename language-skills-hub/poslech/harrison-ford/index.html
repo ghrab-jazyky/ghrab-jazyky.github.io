@@ -325,6 +325,29 @@ $('exportBtn').addEventListener('click',exportAnswers);
 $('resetBtn').addEventListener('click',()=>{if(!confirm('Clear all answers for the '+current+' level?'))return;delete saved[current];renderLevel(current);persist();$('seqStatus').textContent='Select a card to move it.';window.scrollTo({top:0,behavior:'smooth'});});
 createLevelPills();renderLevel(loadStored()||'B2');measureBars();
 </script>
+<!-- R64: variant bridge moved into the canonical card; r11 copy is an identical mirror. -->
+<script>
+/* LSH-R5 variant bridge: URL/QR practice preset for existing EN listening. UI-only lock; pedagogical structure unchanged. */
+(function(){
+'use strict';
+try{
+ const qp=new URLSearchParams(window.LSH_OFFLINE_QS||location.search);
+ const languages=qp.getAll('lang'),levels=qp.getAll('level');
+ const acceptedEnglish=languages.length===0||(languages.length===1&&languages[0]==='en');
+ const acceptedLevel=levels.length===1&&LEVEL_IDS.includes(levels[0]);
+ if(acceptedEnglish&&acceptedLevel&&current!==levels[0]){capture();renderLevel(levels[0]);persist();}
+ const locked=languages.length===1&&languages[0]==='en'&&acceptedLevel&&qp.getAll('zamek').length===1&&qp.get('zamek')==='1';
+ if(locked){
+  const root=$('levelPills');
+  root.querySelectorAll('button[data-level]').forEach(b=>{b.disabled=true;b.setAttribute('aria-disabled','true');b.title='Level selected by your teacher'});
+  const status=document.createElement('span');status.id='lshVariantHint';status.setAttribute('role','status');
+  status.textContent='🔒 Level set by your teacher.';
+  status.style.cssText='display:inline-block;padding:8px;font:600 12px/1.4 system-ui;white-space:normal;color:inherit';
+  root.parentElement.appendChild(status);
+ }
+}catch(error){console.warn('LSH listening preset ignored',error);}
+})();
+</script>
 <script defer src="../../assets/lsh/v3/model.js"></script>
 <script defer src="../../assets/lsh/v3/store.js"></script>
 <script defer src="../../assets/lsh/v3/card-vocabulary.js"></script>

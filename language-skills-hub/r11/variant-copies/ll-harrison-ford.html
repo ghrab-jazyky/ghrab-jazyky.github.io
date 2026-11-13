@@ -324,7 +324,9 @@ function exportAnswers(){capture();const d=DATA[current],s=state(),report=s.last
 $('exportBtn').addEventListener('click',exportAnswers);
 $('resetBtn').addEventListener('click',()=>{if(!confirm('Clear all answers for the '+current+' level?'))return;delete saved[current];renderLevel(current);persist();$('seqStatus').textContent='Select a card to move it.';window.scrollTo({top:0,behavior:'smooth'});});
 createLevelPills();renderLevel(loadStored()||'B2');measureBars();
-</script><script>
+</script>
+<!-- R64: variant bridge moved into the canonical card; r11 copy is an identical mirror. -->
+<script>
 /* LSH-R5 variant bridge: URL/QR practice preset for existing EN listening. UI-only lock; pedagogical structure unchanged. */
 (function(){
 'use strict';
@@ -346,4 +348,7 @@ try{
 }catch(error){console.warn('LSH listening preset ignored',error);}
 })();
 </script>
+<script defer src="../../assets/lsh/v3/model.js"></script>
+<script defer src="../../assets/lsh/v3/store.js"></script>
+<script defer src="../../assets/lsh/v3/card-vocabulary.js"></script>
 </body></html>
