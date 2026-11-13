@@ -16,7 +16,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
     await page.locator('#cards .card').first().waitFor({state:'visible'});
     const buttons=page.locator('#cards .card .action.test');
     assert.equal(await buttons.count(),expected,skill);
-    assert.equal(await page.locator('#cards .card .action.primary').count(),skill==='konverzace'?21:expected);
+    assert.equal(await page.locator('#cards .card .action.primary').count(),skill==='konverzace'?22:expected);
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth);
     assert.ok(overflow<=2,'Catalog overflow '+skill+': '+overflow);
     if(expected){
