@@ -43,7 +43,8 @@
   function glossaryExact(glossary,language,term) {
     if (!glossary||!LANGS.includes(language)) return '';
     const token=norm(term);
-    const terms=[glossary.phrases&&glossary.phrases[language],
+    const terms=[glossary.recommended&&glossary.recommended[language],
+      glossary.phrases&&glossary.phrases[language],
       glossary.words&&glossary.words[language]];
     for(const dict of terms){
       if(!dict||typeof dict!=='object')continue;
