@@ -79,10 +79,10 @@ test('R35-HR2: complete EN/ES/DE/FR content across all CEFR variants',()=>{
     stations++;
    }
    for(const [term] of item.vocab){
-    const key=term.normalize('NFC').trim().replace(/\\s+/g,' ').toLocaleLowerCase().replace(/[’‘]/g,"'").replace(/[‐-‒–—]/g,'-');
+    const key=term.normalize('NFC').trim().replace(/\s+/g,' ').toLocaleLowerCase().replace(/[’‘]/g,"'").replace(/[‐-‒–—]/g,'-');
     const translation=glossary.recommended[lang][key];
     assert.equal(typeof translation,'string',lang+'/'+lv+'/'+term);
-    assert.ok(translation.length>0&&!/[;,\\/|\\r\\n]/.test(translation));
+    assert.ok(translation.length>0&&!/[;,\/|\r\n]/.test(translation));
     terms++;
    }
   }
@@ -92,7 +92,7 @@ test('R35-HR2: complete EN/ES/DE/FR content across all CEFR variants',()=>{
  assert.equal(glossary.phrases.es['da un ejemplo'],'uveď příklad');
 });
 test('R35-HR2: CSP integrity, shared vocabulary bridge and teacher lock',()=>{
- const scripts=[...html.matchAll(/<script>([\\s\\S]*?)<\\/script>/g)];
+ const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
  assert.equal(scripts.length,1);
  const h=crypto.createHash('sha256').update(scripts[0][1]).digest('base64');
  assert.ok(html.includes('sha256-'+h));
@@ -100,12 +100,12 @@ test('R35-HR2: CSP integrity, shared vocabulary bridge and teacher lock',()=>{
  for(const asset of ['../../assets/lsh/v2/lock.js','../../assets/lsh/v3/model.js','../../assets/lsh/v3/store.js','../../assets/lsh/v3/card-bridge.js','../../assets/lsh/v3/card-bridge.css'])
   assert.ok(html.includes(asset),asset);
  const bridge=read('assets/lsh/v3/card-bridge.js');
- assert.match(bridge,/glossary\\.recommended&&glossary\\.recommended\\[language\\]/);
- assert.match(bridge,/glossary\\.phrases&&glossary\\.phrases\\[language\\]/);
- assert.match(bridge,/glossary\\.words&&glossary\\.words\\[language\\]/);
+ assert.match(bridge,/glossary\.recommended&&glossary\.recommended\[language\]/);
+ assert.match(bridge,/glossary\.phrases&&glossary\.phrases\[language\]/);
+ assert.match(bridge,/glossary\.words&&glossary\.words\[language\]/);
  const hubjs=read('assets/hub.js');
- assert.match(hubjs,/body\\.entries\\.length!==30/);
- assert.match(hubjs,/Object\\.keys\\(i18n\\.entries\\)\\.length!==30/);
+ assert.match(hubjs,/body\.entries\.length!==30/);
+ assert.match(hubjs,/Object\.keys\(i18n\.entries\)\.length!==30/);
 });
 test('R35-HR2: old R24 Listening counts migrated',()=>{
  const old=read('tests/r24-listening-selfcheck.test.cjs');
