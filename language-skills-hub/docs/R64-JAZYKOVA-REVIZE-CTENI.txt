@@ -1,0 +1,212 @@
+LSH R64 – jazyková revize Reading Lab (120 variant: 5 témat × 4 jazyky × 6 úrovní)
+
+Rozsah: přečteny všechny texty, otázky, možnosti, klíče a vysvětlení. Klíče odpovědí se nemění.
+
+A. Jednotlivé opravy (téma | jazyk | úroveň | otázka | pole | důvod)
+
+rl-asteroids | EN | A1 | detail-3 | explanation | vysvětlení
+  bylo:  Ceres is round, but most asteroids are not.
+  je:    The text says that many asteroids look like potatoes.
+
+rl-asteroids | EN | B1 | detail-3 | explanation | věcná nepřesnost vysvětlení
+  bylo:  Telescopes cannot look towards the Sun at night.
+  je:    It arrived from the direction of the Sun, where bright sunlight hides small objects from telescopes.
+
+rl-asteroids | EN | B2 | gist-3 | explanation | vysvětlení
+  bylo:  The article is about measuring risk calmly.
+  je:    It opens with a misleading headline, discusses two challenges with the 2024 YR4 example, and ends with a lesson.
+
+rl-asteroids | ES | B2 | gist-3 | explanation | vysvětlení
+  bylo:  Se trata de medir el riesgo con calma.
+  je:    Empieza con un titular engañoso, presenta dos desafíos (descubrir y actuar) y termina con una lección.
+
+rl-asteroids | ES | C2 | critical-2 | explanation | vysvětlení (odkaz na pořadí možností)
+  bylo:  la primera afirmación no está respaldada
+  je:    por eso esa afirmación no está respaldada
+
+rl-asteroids | DE | B2 | gist-3 | explanation | vysvětlení
+  bylo:  Es geht um eine ruhige Einschätzung.
+  je:    Der Artikel beginnt mit einer irreführenden Schlagzeile, behandelt zwei Herausforderungen (Entdecken und Reagieren) und endet mit einer Schlussfolgerung.
+
+rl-asteroids | FR | A1 | detail-2 | explanation | jazyk vysvětlení
+  bylo:  Ils brûlent avant le sol.
+  je:    Ils brûlent avant de toucher le sol.
+
+rl-asteroids | DE | A1 | detail-2 | explanation | jazyk vysvětlení
+  bylo:  Sie verglühen vor dem Boden.
+  je:    Sie verglühen, bevor sie den Boden erreichen.
+
+rl-asteroids | FR | B2 | gist-3 | explanation | vysvětlení
+  bylo:  Mesurer le risque avec calme.
+  je:    L’article part d’un titre trompeur, présente deux défis (découvrir et agir) et se termine par une leçon.
+
+rl-asteroids | DE | C2 | critical-2 | explanation | vysvětlení (odkaz na pořadí možností)
+  bylo:  die erste Aussage wird daher nicht gestützt
+  je:    diese Aussage wird daher nicht gestützt
+
+rl-asteroids | FR | C2 | critical-2 | explanation | vysvětlení (odkaz na pořadí možností)
+  bylo:  la première affirmation n’est donc pas confirmée
+  je:    cette affirmation n’est donc pas confirmée
+
+rl-can-mistakes | ES | C2 | 14 | explanation | vysvětlení neodpovídá distraktorům
+  bylo:  ; no habla de merecerlo, de su cantidad ni de rendimiento.
+  je:    ; las demás ideas no se afirman en ese pasaje.
+
+rl-can-mistakes | DE | C2 | 14 | explanation | vysvětlení neodpovídá distraktorům
+  bylo:  ; von Verdienen, Menge oder Leistungssteigerung ist nicht die Rede.
+  je:    ; die anderen Aussagen stehen so nicht an dieser Stelle.
+
+rl-can-mistakes | FR | C2 | 14 | explanation | vysvětlení neodpovídá distraktorům
+  bylo:   ; il ne parle ni de mérite, ni de durée, ni de performance.
+  je:     ; les autres idées ne sont pas affirmées dans ce passage.
+
+rl-email-friend | ES | A2 | * | text | přirozenost (ES)
+  bylo:  nuestras caminatas después de clase
+  je:    nuestros paseos después de clase
+
+rl-email-friend | ES | C1 | inference-2 | explanation | vysvětlení věcně chybné
+  bylo:  Las cuatro ideas aparecen en el correo, pero solo la primera explica esta frase.
+  je:    Estar a la vista de los demás no es lo mismo que confiar: ver lo que alguien publica no crea por sí solo confianza mutua.
+
+rl-email-friend | ES | C2 | inference-1 | explanation | vysvětlení věcně chybné
+  bylo:  Las cuatro ideas aparecen en la carta, pero solo la primera explica esta frase.
+  je:    Poder informar de dónde está uno no equivale a estar disponible para alguien: la información no sustituye a la cercanía.
+
+rl-email-friend | ES | C2 | scan-2 | explanation | vysvětlení neodpovídá distraktorům
+  bylo:  El ferry retrasado pertenece a otra escena.
+  je:    La carta menciona las mudanzas, el trabajo exigente y una sucesión de ciudades desconocidas; de estudios no dice nada.
+
+rl-email-friend | DE | C1 | inference-3 | explanation | vysvětlení věcně chybné
+  bylo:  Alle vier Gedanken stehen im Text; nur der erste folgt aus diesem Satz.
+  je:    Mara will lieber ehrlich und vielleicht unbequem anfangen, als mit einem perfekten Abend etwas zu überdecken.
+
+rl-email-friend | DE | C2 | scan-2 | explanation | vysvětlení neodpovídá distraktorům
+  bylo:  Die verspätete Fähre gehört zu einer anderen Szene.
+  je:    Genannt werden häufige Umzüge, anspruchsvolle Arbeit und fremde Städte; von einem Studium ist nicht die Rede.
+
+rl-email-friend | DE | C2 | inference-1 | explanation | vysvětlení věcně chybné
+  bylo:  Alle vier Gedanken stehen im Brief; nur der erste erklärt diesen Satz.
+  je:    Informationen über den eigenen Standort ersetzen keine Nähe: Erreichbar ist ein Mensch erst, wenn man wirklich mit ihm sprechen kann.
+
+rl-email-friend | EN | C1 | inference-2 | explanation | vysvětlení věcně chybné
+  bylo:  All four ideas appear in the email, but only the first explains this sentence.
+  je:    Being visible to each other all the time is not the same as trusting each other: seeing someone’s posts does not mean sharing honestly.
+
+rl-email-friend | EN | C1 | inference-3 | explanation | vysvětlení věcně chybné
+  bylo:  All four ideas appear in the email; only the first is drawn from this session.
+  je:    The man wanted someone to know that the shop had mattered, not sympathy or advice, so Mara concludes that attention may matter more than solutions.
+
+rl-email-friend | EN | C2 | inference-1 | explanation | vysvětlení věcně chybné
+  bylo:  All four ideas appear in the letter; only the first explains this sentence.
+  je:    Being able to tell people where you are is different from being available to someone as a friend.
+
+rl-email-friend | FR | C1 | inference-2 | explanation | vysvětlení věcně chybné
+  bylo:  Les quatre idées sont dans le texte, mais seule la première explique cette phrase.
+  je:    Être visible en permanence n’est pas se faire confiance : voir les publications de quelqu’un ne veut pas dire partager sincèrement.
+
+rl-email-friend | FR | C1 | inference-3 | explanation | vysvětlení věcně chybné
+  bylo:  Les quatre idées sont dans le texte ; seule la première découle de cette phrase.
+  je:    Mara préfère un début sincère, même maladroit, à une soirée parfaite qui masquerait le problème.
+
+rl-email-friend | FR | C2 | scan-2 | explanation | vysvětlení neodpovídá distraktorům
+  bylo:  Le ferry retardé appartient à une autre scène.
+  je:    La lettre cite des déménagements successifs, un travail exigeant et plusieurs villes inconnues ; il n’est pas question d’études.
+
+rl-email-friend | FR | C2 | inference-1 | explanation | vysvětlení věcně chybné
+  bylo:  Les quatre idées sont dans la lettre ; seule la première explique cette phrase.
+  je:    Pouvoir dire où l’on se trouve ne veut pas dire être disponible pour quelqu’un : l’information ne remplace pas la proximité.
+
+rl-instant-messages | FR | A1 | detail-3 | explanation | nesoulad s textem (quinze heures)
+  bylo:  La mère de Hugo doit partir à trois heures.
+  je:    La mère de Hugo doit partir à quinze heures.
+
+rl-instant-messages | FR | A1 | detail-3 | choices | nesoulad s textem (quinze heures)
+  bylo:  Le dernier bus pour rentrer chez eux part à trois heures.
+  je:    Le dernier bus pour rentrer chez eux part à quinze heures.
+
+rl-instant-messages | ES | A2 | gist-1 | explanation | nesoulad s textem
+  bylo:  Ha olvidado el cumpleaños de Eva.
+  je:    Ha olvidado el regalo para Eva.
+
+rl-instant-messages | DE | A2 | gist-1 | explanation | nesoulad s textem
+  bylo:  Er hat Evas Geburtstag vergessen.
+  je:    Er hat das Geschenk für Eva vergessen.
+
+rl-instant-messages | FR | A2 | gist-1 | explanation | nesoulad s textem
+  bylo:  Il a oublié l’anniversaire d’Eva.
+  je:    Il a oublié le cadeau pour Eva.
+
+rl-instant-messages | ES | A2 | gist-3 | choices | idiom nad úrovní A2
+  bylo:  Simpática, pero le toma un poco el pelo a Tomás
+  je:    Simpática, pero bromea un poco con Tomás
+
+rl-instant-messages | EN | A2 | gist-1 | explanation | nesoulad s textem
+  bylo:  He forgot Eva’s birthday.
+  je:    He forgot the present for Eva.
+
+rl-plastic-ocean | EN | A1 | detail-1 | q | nepřirozená formulace otázky
+  bylo:  How does rubbish get into the water, says Rosa?
+  je:    How does rubbish get into the water? What does Rosa say?
+
+rl-plastic-ocean | ES | A1 | * | text | nepřirozená odpověď na zápornou větu
+  bylo:  «Sí, pero está muy cerca del agua»
+  je:    «No, pero está muy cerca del agua»
+
+rl-plastic-ocean | ES | B2 | * | text | nepřirozená formulace
+  bylo:  un propietario de un bar
+  je:    el dueño de un bar
+
+rl-plastic-ocean | FR | A1 | * | text | nepřirozená odpověď na zápornou větu
+  bylo:  « Oui, mais il est près de l’eau. »
+  je:    « Non, mais il est près de l’eau. »
+
+rl-plastic-ocean | FR | A2 | * | title | název neodpovídá textu (fête du quartier)
+  bylo:  Un concert avec moins de gobelets
+  je:    Une fête avec moins de gobelets
+
+rl-plastic-ocean | FR | A2 | * | open | otázka neodpovídá textu
+  bylo:  Quelle idée de ce concert pourrait fonctionner dans ton établissement?
+  je:    Quelle idée de cette fête pourrait fonctionner dans ton établissement ?
+
+rl-plastic-ocean | FR | A2 | * | pre | otázka neodpovídá textu
+  bylo:  Pourquoi trouve-t-on beaucoup de gobelets après certains concerts?
+  je:    Pourquoi trouve-t-on beaucoup de gobelets par terre après certaines fêtes ?
+
+rl-plastic-ocean | FR | B2 | * | title | název (film, ne critique)
+  bylo:  L’autre rive : une critique qui ne donne pas toutes les réponses
+  je:    L’autre rive : un film qui ne donne pas toutes les réponses
+
+B. Vysvětlení odkazující na pořadí možností („pouze první…“) – nahrazeno neutrální formulací
+
+rl-plastic-ocean | EN | C2 | critical-1: „only the first is answered“ → „only the correct option is answered“
+rl-plastic-ocean | EN | C2 | critical-3: „only the first concerns“ → „only the correct option concerns“
+rl-plastic-ocean | ES | C2 | critical-1: „solo la primera en el pasaje“ → „solo la opción correcta en el pasaje“
+rl-plastic-ocean | ES | C2 | critical-3: „solo la primera se refiere“ → „solo la opción correcta se refiere“
+rl-plastic-ocean | DE | C2 | critical-1: „nur die erste im Absatz“ → „nur die richtige Antwort im Absatz“
+rl-plastic-ocean | DE | C2 | critical-3: „nur der erste betrifft“ → „nur die richtige Antwort betrifft“
+rl-plastic-ocean | FR | C2 | critical-1: „seule la première dans le passage“ → „seule la bonne réponse dans le passage“
+rl-plastic-ocean | FR | C2 | critical-3: „seul le premier concerne“ → „seule la bonne réponse concerne“
+rl-email-friend | EN | C1 | inference-2: „only the first explains“ → „only the correct option explains“
+rl-email-friend | EN | C1 | inference-3: „only the first is drawn“ → „only the correct option is drawn“
+rl-email-friend | EN | C2 | inference-1: „only the first explains“ → „only the correct option explains“
+rl-email-friend | EN | C2 | critical-2: „only the first concerns“ → „only the correct option concerns“
+rl-email-friend | ES | C1 | inference-2: „solo la primera explica“ → „solo la opción correcta explica“
+rl-email-friend | ES | C2 | inference-1: „solo la primera explica“ → „solo la opción correcta explica“
+rl-email-friend | ES | C2 | critical-2: „solo la primera se refiere“ → „solo la opción correcta se refiere“
+rl-email-friend | ES | C2 | critical-3: „Niega expresamente la primera“ → „Niega expresamente la opción correcta“
+rl-email-friend | DE | C1 | inference-2: „nur der erste erklärt“ → „nur die richtige Antwort erklärt“
+rl-email-friend | DE | C1 | inference-3: „nur der erste folgt“ → „nur die richtige Antwort folgt“
+rl-email-friend | DE | C2 | inference-1: „nur der erste erklärt“ → „nur die richtige Antwort erklärt“
+rl-email-friend | DE | C2 | critical-2: „nur das erste betrifft“ → „nur die richtige Antwort betrifft“
+rl-email-friend | DE | C2 | critical-3: „Die erste verneint er ausdrücklich“ → „Die richtige Aussage verneint er ausdrücklich“
+rl-email-friend | FR | C1 | inference-2: „seule la première explique“ → „seule la bonne réponse explique“
+rl-email-friend | FR | C1 | inference-3: „seule la première découle“ → „seule la bonne réponse découle“
+rl-email-friend | FR | C2 | inference-1: „seule la première explique“ → „seule la bonne réponse explique“
+rl-email-friend | FR | C2 | critical-2: „seul le premier concerne“ → „seule la bonne réponse concerne“
+rl-email-friend | FR | C2 | critical-3: „Il nie expressément la première“ → „Il nie expressément la bonne réponse“
+
+C. Hromadné úpravy
+
+- 18 zástupných vysvětlení u přiřazování (can-mistakes ES/DE/FR C1 a C2) nahrazeno citací z textu.
+- Typografie: rovné apostrofy uvnitř slov sjednoceny na ’ (EN, FR, DE); ve francouzštině doplněna mezera před ? a !.
+- Zrcadlové kopie r11/variant-copies (rl-email-friend, rl-instant-messages) a otisky ve version.json aktualizovány.
