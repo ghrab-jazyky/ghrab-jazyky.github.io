@@ -23,8 +23,8 @@ const loaded=cards.map(e=>{
  const engine=(src.slice(0,a)+src.slice(b,c)+src.slice(d)).replace(/const STORAGE = '[^']+'/,"const STORAGE = '*'");
  return {id:e.id,src,content,engine};
 });
-test('all 21 Conversation Lab cards share one engine',()=>{
- assert.equal(loaded.length,21);
+test('all 22 Conversation Lab cards share one engine',()=>{
+ assert.equal(loaded.length,22);
  const engines=new Set(loaded.map(c=>c.engine.slice(c.engine.indexOf('<script>'))));
  assert.equal(engines.size,1,'engine code differs between cards');
  for(const c of loaded)assert.doesNotMatch(c.src,/mainExplanation|mainExplainValue/,c.id);
