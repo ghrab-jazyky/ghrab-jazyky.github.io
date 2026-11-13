@@ -46,25 +46,37 @@
   }
   // Stable ordering for equal timestamps; preserve the local sequence.
   events.sort((a,b)=>a.at-b.at);
+  // R64: identify the attempt so a changed limit or a different link is visible to the teacher.
+  const code=typeof state.attemptCode==='string'&&/^[a-z0-9_-]{6,40}$/i.test(state.attemptCode)?state.attemptCode:null;
+  const lim=Number.isSafeInteger(state.limitMinutes)&&state.limitMinutes>0&&state.limitMinutes<=600?state.limitMinutes:null;
+  const asked=Number.isSafeInteger(state.requestedMinutes)&&state.requestedMinutes>0&&state.requestedMinutes<=600?state.requestedMinutes:null;
   return {
    monitored:true,tabMonitoringAvailable:state.tabMonitoringAvailable===true,
-   startedAt,events
+   startedAt,events,attemptCode:code,limitMinutes:lim,requestedMinutes:asked,
+   submittedAt:safeTime(state.submittedAt)?state.submittedAt:null
   };
  }
  function securityDetails(report){
   const s=report.security;
   if(!s||!s.monitored)return [
-   'Bezpecnostni dohled: pro tento protokol neni dostupny casovany zaznam.',
-   'Absence zaznamu neprokazuje, ze k incidentu nedoslo.'
+   'Bezpečnostní dohled: TEST BEZ DOHLEDU – odkaz neobsahoval časový limit, zámek nebyl aktivní.',
+   'Absence záznamu neprokazuje, že k incidentu nedošlo.'
   ];
   const count=s.events.filter(e=>e.kind!=='teacher-resume').length;
   const out=[
-   'Zdroj: lokalni pamet prohlizece studenta. Zaznam neni nezavisle overeny.',
-   'Detekce soubeznych zalozek: '+(s.tabMonitoringAvailable?'rozhrani dostupne':'nedostupna'),
-   'Zaznamenane zámky: '+count+'; zaznamenana odemceni: '+
+   'Zdroj: lokální paměť prohlížeče studenta. Záznam není nezávisle ověřený.',
+   'Detekce souběžných záložek: '+(s.tabMonitoringAvailable?'rozhraní dostupné':'nedostupná'),
+   'Zaznamenané zámky: '+count+'; zaznamenaná odemčení: '+
     s.events.filter(e=>e.kind==='teacher-resume').length
   ];
-  if(s.events.length===0)out.push('Nejsou zaznamenany udalosti; to neni dukaz bezchybneho prubehu.');
+  const stamp=t=>new Date(t).toLocaleString('cs-CZ');
+  if(s.attemptCode)out.push('Kód pokusu: '+s.attemptCode+' (jeden pokus na zařízení)');
+  if(s.limitMinutes)out.push('Časový limit: '+s.limitMinutes+' min'+
+   (s.requestedMinutes&&s.requestedMinutes!==s.limitMinutes?
+    ' – POZOR: adresa při tomto otevření žádala '+s.requestedMinutes+' min; platí limit prvního otevření':''));
+  out.push('Zahájeno (hodiny zařízení, neověřeno): '+stamp(s.startedAt)+
+   (s.submittedAt?'; odevzdáno: '+stamp(s.submittedAt):''));
+  if(s.events.length===0)out.push('Nejsou zaznamenány události; to není důkaz bezchybného průběhu.');
   else for(const item of s.events){
    const seconds=Math.max(0,Math.floor((item.at-s.startedAt)/1000));
    const duration=String(Math.floor(seconds/60)).padStart(2,'0')+':'+

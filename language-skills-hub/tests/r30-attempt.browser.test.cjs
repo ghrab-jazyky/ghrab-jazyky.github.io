@@ -24,12 +24,10 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.match(page.url(),/#lsh_session=[a-f0-9]{24}$/);
    const other=await context.newPage();
    await other.goto(url.href);
-   await other.locator('#sessionIntro:not([hidden])').waitFor();
-   assert.match(other.url(),/#lsh_session=[a-f0-9]{24}$/);
-   assert.notEqual(other.url(),page.url(),'Two pupils using one QR on the same browser require separate local attempts');
-   await other.locator('#sessionStart').click();
-   await other.locator('#workspace:not([hidden])').waitFor();
-   assert.equal(await other.locator('fieldset.question').first().locator('input').first().isChecked(),false);
+   // R64: one attempt per device – the same QR opened again returns to the SAME attempt, locked.
+   await other.locator('#sessionLock:not([hidden])').waitFor();
+   assert.equal(other.url(),page.url(),'Reopening the class QR must not create a second attempt on this device');
+   assert.equal(await other.locator('#sessionStart').isVisible(),false);
    await other.close();
    await page.reload();
    await page.locator('#sessionLock:not([hidden])').waitFor();
@@ -58,7 +56,10 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(await page.locator('#results').isHidden(),true);
    assert.match(await page.locator('#timeRemaining').textContent(),/Local answers erased/);
    await page.reload();
-   await page.locator('#sessionIntro:not([hidden])').waitFor();
+   // R64: an erased submitted attempt stays consumed; no second attempt on this device.
+   await page.locator('#sessionBlocked').waitFor();
+   assert.equal(await page.locator('#sessionStart').count(),0);
+   assert.equal(await page.locator('#workspace').isHidden(),true);
    assert.deepEqual(errors,[]);assert.deepEqual(writes,[]);
    await context.close();
   }finally{await browser.close()}
