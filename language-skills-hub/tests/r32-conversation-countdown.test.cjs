@@ -9,8 +9,8 @@ const catalog=JSON.parse(fs.readFileSync(path.join(root,'data/cards.json'),'utf8
 const cards=catalog.entries.filter(e=>e.skill==='konverzace');
 const css=fs.readFileSync(path.join(root,'assets/lsh/v3/card-bridge.css'),'utf8');
 
-test('All 21 conversation cards use the same CSS bridge, mobile timer and UI lock',()=>{
- assert.equal(cards.length,21);
+test('All 22 conversation cards use the same CSS bridge, mobile timer and UI lock',()=>{
+ assert.equal(cards.length,22);
  for(const card of cards){
   const html=fs.readFileSync(path.join(root,card.relative),'utf8');
   assert.match(html,/href="\.\.\/\.\.\/assets\/lsh\/v3\/card-bridge\.css"/,card.relative);
