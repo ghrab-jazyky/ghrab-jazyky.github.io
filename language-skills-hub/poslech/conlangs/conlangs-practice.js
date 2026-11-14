@@ -65,7 +65,8 @@
    block.append(s);article.append(block);
   }else{
    const field=el('fieldset','task-field');
-   const legend=el('legend','note',q.type==='mc'?'Choose one correct answer.':'Choose True, False or Not Stated.');
+   // Section-level instructions are already visible; this legend labels the answer group for assistive technology.
+   const legend=el('legend','sr-only-task-legend',q.id+': '+q.question);
    field.append(legend);const opts=el('div',q.type==='tns'?'options tns':'options');
    const values=q.type==='mc'?'ABCD'.split(''):api.TNS;
    for(let i=0;i<values.length;i++)opts.append(choiceRow(q,values[i],q.type==='mc'?q.options[i]:values[i]));
