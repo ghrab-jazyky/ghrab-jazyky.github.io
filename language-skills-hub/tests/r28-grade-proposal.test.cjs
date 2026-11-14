@@ -98,7 +98,7 @@ test('R28 Listening requires all written marks, then sums objective + 1 point pe
  assert.equal(variants,18);assert.equal(objective,251);assert.equal(written,84);
 });
 test('R28 working language scale not falsely presented as officially approved',()=>{
- assert.equal(manifest.version,'R69-CONLANGS-A1C2-PREPROD');
+ assert.equal(manifest.version,'R69-CONLANGS-A1C2');
  assert.equal(manifest.localGradeProposalsEnabled,true);
  assert.equal(manifest.gradedTestsEnabled,false);
  assert.equal(manifest.officialGradesEnabled,false);

@@ -113,7 +113,7 @@ test('R60 CSV stores exact 87.5 percent and half-up grading 88 percent separatel
 });
 test('R31 release manifest acknowledges local-only review and CSV features',()=>{
  const manifest=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../version.json'),'utf8'));
- assert.equal(manifest.version,'R69-CONLANGS-A1C2-PREPROD');
+ assert.equal(manifest.version,'R69-CONLANGS-A1C2');
  assert.equal(manifest.backendEnabled,false);
  assert.equal(manifest.gradedTestsEnabled,false);
  assert.equal(manifest.officialGradesEnabled,false);

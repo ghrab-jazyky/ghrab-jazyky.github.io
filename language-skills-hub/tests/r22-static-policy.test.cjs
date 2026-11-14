@@ -28,7 +28,7 @@ test('R22 remains a static-only design; neither secure grades nor student accoun
  assert.equal(catalog.gradedTestsEnabled, false);
  assert.equal(release.gradedTestsEnabled, false);
  assert.equal(release.mode, 'public_practice_and_unverified_grade_proposals');
- assert.equal(release.version, 'R69-CONLANGS-A1C2-PREPROD');
+ assert.equal(release.version, 'R69-CONLANGS-A1C2');
 });
 
 test('R22 local self-check is planned for Reading/Listening only and cannot be called anti-cheat', () => {

@@ -34,7 +34,7 @@ function literal(src,label){
 const content=literal(html,'CONTENT');
 const glossary=literal(html,'CZ_GLOSSARY');
 test('R35-HR2: 30 topics, 22 Conversation Lab entries and 666 variants',()=>{
- assert.equal(version.version,'R69-CONLANGS-A1C2-PREPROD');
+ assert.equal(version.version,'R69-CONLANGS-A1C2');
  assert.equal(catalog.entries.length,32);
  assert.equal(version.topicCount,32);
  assert.equal(version.variantCount,678);
