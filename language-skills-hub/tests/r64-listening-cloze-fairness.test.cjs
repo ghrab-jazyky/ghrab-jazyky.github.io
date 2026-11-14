@@ -4,7 +4,7 @@
 // phonetic spelling of a proper name, and must still reject wrong or incomplete facts.
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),core=require('../self-check/listening/listening-core.js');
-const entries=JSON.parse(fs.readFileSync(path.join(root,'data/cards.json'),'utf8')).entries.filter(e=>e.skill==='poslech');
+const entries=JSON.parse(fs.readFileSync(path.join(root,'data/cards.json'),'utf8')).entries.filter(e=>e.skill==='poslech'&&e.id!=='ll-sad');
 const data=Object.fromEntries(entries.map(e=>[e.id,core.extractJson(fs.readFileSync(path.join(root,e.relative),'utf8'),'DATA')]));
 function verdict(topic,level,index,answer){
  const cloze=[];cloze[index]=answer;

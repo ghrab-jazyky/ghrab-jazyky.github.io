@@ -7,10 +7,10 @@ const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const catalog=JSON.parse(read('data/cards.json')).entries;
 test('R39: all 30 topic cards use one localized title and a separate visible CEFR indicator',()=>{
  const src=read('assets/hub.js'),css=read('assets/hub.css'),html=read('index.html');
- assert.equal(catalog.length,30);
+ assert.equal(catalog.length,31);
  assert.deepEqual(Object.fromEntries(['konverzace','cteni','poslech'].map(skill=>[
   skill,catalog.filter(e=>e.skill===skill).length
- ])),{konverzace:22,cteni:5,poslech:3});
+ ])),{konverzace:22,cteni:5,poslech:4});
  assert.match(src,/function catalogVariant\(e,languageFilter,levelFilter\)/);
  assert.match(src,/return \{label:langLabel\+' · '\+levelLabel/);
  assert.match(src,/e\.levels\.includes\(levelFilter\)\?levelFilter:null/);

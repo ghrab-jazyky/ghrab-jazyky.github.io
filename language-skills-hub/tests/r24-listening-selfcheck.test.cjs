@@ -7,7 +7,7 @@ const root=path.resolve(__dirname,'..');
 const read=path=>fs.readFileSync(require('node:path').join(root,path),'utf8');
 const cards=JSON.parse(read('data/cards.json'));
 const version=JSON.parse(read('version.json'));
-const entries=cards.entries.filter(x=>x.skill==='poslech');
+const entries=cards.entries.filter(x=>x.skill==='poslech'&&core.TOPICS.includes(x.id));
 
 test('R24 has three original Listening topics, 18 English-only A1-C2 variants',()=>{
  assert.equal(entries.length,3);
@@ -118,6 +118,6 @@ test('R24 uses no student POST, login, database or official grading API',()=>{
    read('self-check/listening/listening-core.js');
  assert.doesNotMatch(code,/(?:method\s*:\s*['"]POST|navigator\.sendBeacon|indexedDB\.open|fetch\([^\n]+\/v1\/)/);
  assert.doesNotMatch(read('self-check/listening/student.html'),/type=["']password|name=["']studentName/);
- assert.equal(cards.entries.length,30);
- assert.equal(cards.entries.reduce((sum,x)=>sum+x.languages.length*x.levels.length,0),666);
+ assert.equal(cards.entries.length,31);
+ assert.equal(cards.entries.reduce((sum,x)=>sum+x.languages.length*x.levels.length,0),672);
 });

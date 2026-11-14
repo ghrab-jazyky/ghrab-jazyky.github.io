@@ -10,7 +10,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   try{
    const page=await browser.newPage({viewport:{width:390,height:844}}),errors=[];
    page.on('pageerror',e=>errors.push(e.message));
-   for(const [skill,expected]of [['konverzace',0],['cteni',5],['poslech',3]]){
+   for(const [skill,expected]of [['konverzace',0],['cteni',5],['poslech',4]]){
     const res=await page.goto(withParams('index.html',{skill}),{waitUntil:'domcontentloaded'});
     assert.equal(res.status(),200);
     await page.locator('#cards .card').first().waitFor({state:'visible'});

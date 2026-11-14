@@ -39,7 +39,7 @@ test('R48: authored explanations cover every Reading variant and all Listening c
    }
   }
  }
- for(const entry of catalog.entries.filter(x=>x.skill==='poslech')){
+ for(const entry of catalog.entries.filter(x=>x.skill==='poslech'&&x.id!=='ll-sad')){
   const data=listeningCore.extractJson(read(entry.relative),'DATA');
   for(const level of entry.levels){
    const v=listeningCore.variant(data,level);

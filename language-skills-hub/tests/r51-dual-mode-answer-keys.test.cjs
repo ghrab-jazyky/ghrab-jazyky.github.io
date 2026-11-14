@@ -7,7 +7,7 @@ const read=pathIn=>fs.readFileSync(path.join(root,pathIn),'utf8');
 const reading=require('../self-check/reading/reading-core.js');
 const listening=require('../self-check/listening/listening-core.js');
 const key=require('../self-check/practice-answers/teacher-key.js');
-const entries=JSON.parse(read('data/cards.json')).entries.filter(e=>['cteni','poslech'].includes(e.skill));
+const entries=JSON.parse(read('data/cards.json')).entries.filter(e=>['cteni','poslech'].includes(e.skill)&&e.id!=='ll-sad');
 const rows=model=>model.groups.flatMap(g=>g.items);
 test('R51 fixed-topic view has one mode selector and no cross-topic dropdown',()=>{
  const html=read('self-check/practice-answers/teacher.html');

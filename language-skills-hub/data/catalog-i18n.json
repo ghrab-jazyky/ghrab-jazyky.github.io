@@ -627,6 +627,16 @@
         "title": "Droits humains",
         "summary": "Dignité, égalité, liberté d’expression, vie privée, éducation et sécurité dans des situations scolaires fictives."
       }
+    },
+    "ll-sad": {
+      "cs": {
+        "title": "Sezónní afektivní porucha – Winter got you feeling down?",
+        "summary": "TED-Ed: šest odstupňovaných poslechů A1–C2; biologické rytmy, vědecké hypotézy a léčebné možnosti."
+      },
+      "en": {
+        "title": "Seasonal Affective Disorder – Winter got you feeling down?",
+        "summary": "TED-Ed: six distinct CEFR listening versions A1–C2, from key facts to evaluating scientific hypotheses."
+      }
     }
   }
 }

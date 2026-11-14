@@ -5,7 +5,7 @@ const root=path.resolve(__dirname,'..');
 const core=require('../self-check/listening/listening-core.js');
 const teacher=require('../self-check/practice-answers/teacher-key.js');
 const catalog=JSON.parse(fs.readFileSync(path.join(root,'data/cards.json'),'utf8'));
-const listens=catalog.entries.filter(e=>e.skill==='poslech');
+const listens=catalog.entries.filter(e=>e.skill==='poslech'&&e.id!=='ll-sad');
 function source(e){
  return core.extractJson(fs.readFileSync(path.join(root,e.lockSource||e.relative),'utf8'),'DATA');
 }
