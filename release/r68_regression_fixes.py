@@ -26,4 +26,5 @@ region=region[:m.start()]+region[m.end():]
 p.write_text(s[:start]+region+s[stop:],'utf8')
 update('tests/r52-resilient-teacher-key.test.cjs','model.keyEntries.map(x=>x.id)).size,8','model.keyEntries.map(x=>x.id)).size,9')
 update('tests/r68-sad-a1c2.test.cjs',"/phase:'matching'/", "/phase==='matching'/")
+update('tests/r68-sad-a1c2.browser.test.cjs',"page.locator('input[name=\"gist-0\"]').waitFor", "page.locator('input[name=\"gist-0\"]').first().waitFor")
 print('PASS: 4 historic release assertions, exact teacher snapshot parity, R68 matching semantics fixed')
