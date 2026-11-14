@@ -5,7 +5,7 @@ const {chromium,webkit}=require('playwright');
 const entries=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','cards.json'),'utf8')).entries;
 const base='http://127.0.0.1:8765/language-skills-hub/';
 for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
- test('R64 '+engineName+': all 29 real catalog URLs expose the shared My Vocabulary and honour the level preset',{timeout:300000},async()=>{
+ test('R64 '+engineName+': all real catalog URLs expose the shared My Vocabulary and honour the level preset',{timeout:300000},async()=>{
   const browser=await engine.launch({headless:true});
   try{
    for(const e of entries){

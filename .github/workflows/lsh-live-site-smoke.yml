@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 9
     steps:
-      - name: Verify public Pages HTML, JSON and all 29 cards via HTTPS
+      - name: Verify public Pages HTML, JSON and all 30 cards via HTTPS
         shell: bash
         run: |
           python3 - <<'PY'
@@ -38,7 +38,7 @@ jobs:
                   assert data['kind']=='LSH_PUBLIC_PRACTICE_R17'
                   assert data['gradedTestsEnabled'] is False
                   release=json.loads(get('/language-skills-hub/version.json?verify='+str(attempt)))
-                  assert release['version']=='R35'
+                  assert release['version']=='R35-HR2'
                   assert release['localGradeProposalsEnabled'] is True
                   assert release['localTeacherReviewPersistenceEnabled'] is True
                   assert release['localAnonymousCsvExportEnabled'] is True
@@ -67,10 +67,10 @@ jobs:
                   assert "self-check/listening/teacher.html" in hub
                   assert "if(localSelfCheck&&['cteni','poslech']" in hub
                   entries=data['entries']
-                  assert len(entries)==29
+                  assert len(entries)==30
                   skills={}
                   for e in entries:skills[e['skill']]=skills.get(e['skill'],0)+1
-                  assert skills=={'konverzace':21,'cteni':5,'poslech':3}
+                  assert skills=={'konverzace':22,'cteni':5,'poslech':3}
                   root=get('/?verify='+str(attempt)).decode('utf-8')
                   assert 'href="language-skills-hub/"' in root
                   head('/zkusebni/')
@@ -111,7 +111,7 @@ jobs:
                   assert logo[:8]==b'\x89PNG\r\n\x1a\n' and len(logo)>1000
                   assert int.from_bytes(logo[16:20],'big')==384 and int.from_bytes(logo[20:24],'big')==384
                   assert hashlib.sha1(b'blob '+str(len(logo)).encode()+b'\0'+logo).hexdigest()=='0b23733540b01fe70f35feda45037b0cd2c995cb'
-                  print('PASS LIVE HTTPS R35: 29 practice cards, factual cloze without answer bank and authentic school logo PDF',flush=True)
+                  print('PASS LIVE HTTPS R35-HR2: 30 practice cards, factual cloze without answer bank and authentic school logo PDF',flush=True)
                   print('PRODUCTION URL:',base+'/language-skills-hub/',flush=True)
                   sys.exit(0)
               except Exception as ex:

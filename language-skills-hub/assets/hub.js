@@ -397,11 +397,11 @@ async function load(){
    policy?.officialGradesEnabled===false&&policy?.selfCheckEnabled===true&&
    policy?.testUiEnabled===true&&
    policy?.localGradeProposalsEnabled===true;
-  if(body.kind!=='LSH_PUBLIC_PRACTICE_R17'||!Array.isArray(body.entries)||body.entries.length!==29)
+  if(body.kind!=='LSH_PUBLIC_PRACTICE_R17'||!Array.isArray(body.entries)||body.entries.length!==30)
    throw new Error('Katalog nemá očekávanou strukturu');
   if(i18n.kind!=='LSH_CATALOG_I18N_R20'||i18n.schemaVersion!==1||
      i18n.defaultLanguage!=='cs'||!i18n.entries||
-     typeof i18n.entries!=='object'||Object.keys(i18n.entries).length!==29)
+     typeof i18n.entries!=='object'||Object.keys(i18n.entries).length!==30)
    throw new Error('Překladový slovník nemá očekávanou strukturu');
   const seen=new Set();
   for(const e of body.entries){

@@ -1,11 +1,11 @@
 {
   "name": "Language Skills Hub",
-  "version": "R35",
+  "version": "R35-HR2",
   "mode": "public_practice_and_unverified_grade_proposals",
   "gradedTestsEnabled": false,
-  "topicCount": 29,
-  "variantCount": 642,
-  "sourceSha": "5c1675c39827b3efb190d36bc1cb3b97a3712a08",
+  "topicCount": 30,
+  "variantCount": 666,
+  "sourceSha": "2ee9ca748f145d938309d5bf69cda23c1b5ed37b0dc373d69ca92b5355abbb38",
   "contentHashes": {
     "cl-umela-inteligence": "e77b45fb5620e6217c6723e65d63d79e1127dfa28a54309f08352d595ead84cd",
     "rl-asteroids": "2d0a9bc0ff64067092438ebd46c5fa8700e43f89f7cf6e0860cd095175354f4c",
@@ -35,7 +35,8 @@
     "rl-plastic-ocean": "4df16024a49bdc9aa25ac375444b515205339783377c030163bd17579181e28b",
     "rl-email-friend": "dc4cc55b16876d82544de6f29b2aad8db19306ec85ef6f0cb5ed1fb4de82e126",
     "rl-instant-messages": "6a616521f501d338656712b60a5fa84205f2898a1d012dc328988a14f1fc7f55",
-    "cl-skola": "6f2ee6824ac62652f7166dbc12a4d97db01fd32fd15ad7fd9b2e1dc5cda47805"
+    "cl-skola": "6f2ee6824ac62652f7166dbc12a4d97db01fd32fd15ad7fd9b2e1dc5cda47805",
+    "cl-human-rights": "e08b238ba4058b2f6a162daf21d02e93c5045495f6b35cf43bb5953a33ff0be4"
   },
   "sourceSnapshot": "R17",
   "sharedVocabularyModule": "My Vocabulary v1 (IndexedDB lsh, no backend)",

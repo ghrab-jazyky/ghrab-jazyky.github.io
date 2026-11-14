@@ -605,6 +605,28 @@
         "title": "Mon école",
         "summary": "La vie scolaire, les matières, les camarades et l'école idéale."
       }
+    },
+    "cl-human-rights": {
+      "cs": {
+        "title": "Lidská práva",
+        "summary": "Důstojnost, rovnost, svoboda projevu, soukromí, vzdělávání a bezpečí ve fiktivních školních situacích."
+      },
+      "en": {
+        "title": "Human Rights",
+        "summary": "Dignity, equality, freedom of expression, privacy, education and safety in fictional school situations."
+      },
+      "es": {
+        "title": "Derechos humanos",
+        "summary": "Dignidad, igualdad, libertad de expresión, privacidad, educación y seguridad en situaciones escolares ficticias."
+      },
+      "de": {
+        "title": "Menschenrechte",
+        "summary": "Würde, Gleichberechtigung, Meinungsfreiheit, Privatsphäre, Bildung und Sicherheit in fiktiven Schulsituationen."
+      },
+      "fr": {
+        "title": "Droits humains",
+        "summary": "Dignité, égalité, liberté d’expression, vie privée, éducation et sécurité dans des situations scolaires fictives."
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "kind": "LSH_PUBLIC_PRACTICE_R17",
   "schemaVersion": 1,
-  "revision": "5c1675c39827b3efb190d36bc1cb3b97a3712a08",
+  "revision": "2ee9ca748f145d938309d5bf69cda23c1b5ed37b0dc373d69ca92b5355abbb38",
   "mode": "practice",
   "gradedTestsEnabled": false,
   "entries": [
@@ -632,6 +632,28 @@
         "C2"
       ],
       "relative": "konverzace/skola/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "cl-human-rights",
+      "skill": "konverzace",
+      "title": "Lidská práva",
+      "summary": "Důstojnost, rovnost, svoboda projevu, soukromí, vzdělávání a bezpečí ve fiktivních školních situacích.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/human-rights/index.html",
       "lockSource": null
     }
   ]
