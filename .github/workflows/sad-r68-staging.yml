@@ -36,13 +36,14 @@ jobs:
           set -euo pipefail
           python3 /tmp/sad-r68/INSTALL_AND_QA/install_sad_r68.py --repo "$GITHUB_WORKSPACE" --write-diff /tmp/sad-r68.diff
           python3 /tmp/sad-r68/INSTALL_AND_QA/install_sad_r68.py --repo "$GITHUB_WORKSPACE" --apply --backup-dir /tmp/sad-r68-backups
-          git diff --check
-          git diff --stat
+          git -C "$GITHUB_WORKSPACE" diff --check
+          git -C "$GITHUB_WORKSPACE" diff --stat
           test "$(python3 -c 'import json;v=json.load(open("language-skills-hub/data/cards.json"));print(len(v["entries"]))')" = "31"
       - name: All static Node regression tests
         shell: bash
         run: |
           set -euo pipefail
+          cd "$GITHUB_WORKSPACE"
           mapfile -t files < <(find language-skills-hub/tests -maxdepth 1 -name '*.test.cjs' ! -name '*.browser.test.cjs' -print | sort)
           test "${#files[@]}" -gt 65
           node --test --test-concurrency=4 "${files[@]}"
@@ -54,6 +55,7 @@ jobs:
         timeout-minutes: 35
         run: |
           set -euo pipefail
+          cd "$GITHUB_WORKSPACE"
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/sad-r68-http.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" || true' EXIT
@@ -74,6 +76,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          cd "$GITHUB_WORKSPACE"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add language-skills-hub
