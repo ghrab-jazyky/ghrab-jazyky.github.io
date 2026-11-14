@@ -26,6 +26,7 @@ jobs:
         run: |
           node --test language-skills-hub/tests/r64-real-catalog-sources.test.cjs \
             language-skills-hub/tests/r64-listening-cloze-fairness.test.cjs \
+            language-skills-hub/tests/r64-incident-kinds.test.cjs \
             language-skills-hub/tests/conversation-audit-2026-11-11.test.cjs
   browser:
     runs-on: ubuntu-24.04

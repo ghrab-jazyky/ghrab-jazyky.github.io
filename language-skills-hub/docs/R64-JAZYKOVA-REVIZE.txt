@@ -2799,3 +2799,66 @@ problemy-teenageru | ES | C2 | toolkit/0/1 | propagated
 spolecenske-problemy | ES | C2 | toolkit/0/1 | propagated
   bylo:  Esta afirmación parte de un supuesto discutible …
   je:    Esta afirmación parte del supuesto discutible de que …
+
+I. Tři místa, kde úkol nenavazoval na zadání (opraveno ve všech čtyřech jazycích)
+
+rodina | EN | C1 | stations/2/explanations/0 | úkol nenavazoval na zadání
+  bylo:  Today, family members can be reached almost any time. How might this constant availability change the way they relate to each other?
+  je:    Grandparents, parents and children often use technology differently. Could online spaces bring the generations closer, or might they also keep them apart?
+rodina | EN | C1 | stations/2/explanations/1 | úkol nenavazoval na zadání
+  bylo:  Grandparents, parents and children often use technology differently. Could online spaces bring the generations closer, or might they also keep them apart?
+  je:    Families often post their happiest moments online. How might seeing these images shape what people expect from their own family life?
+rodina | ES | C1 | stations/2/explanations/0 | úkol nenavazoval na zadání
+  bylo:  Hoy se puede localizar a los familiares casi en cualquier momento. ¿Cómo podría esta disponibilidad constante cambiar su forma de relacionarse?
+  je:    Abuelos, padres e hijos suelen usar la tecnología de forma distinta. ¿Podrían los espacios digitales acercar a las generaciones o también podrían mantenerlas separadas?
+rodina | ES | C1 | stations/2/explanations/1 | úkol nenavazoval na zadání
+  bylo:  Abuelos, padres e hijos suelen usar la tecnología de forma distinta. ¿Podrían los espacios digitales acercar a las generaciones o también podrían mantenerlas separadas?
+  je:    Las familias suelen publicar sus momentos más felices en internet. ¿Cómo podrían estas imágenes influir en lo que la gente espera de su propia vida familiar?
+rodina | DE | C1 | stations/2/explanations/0 | úkol nenavazoval na zadání
+  bylo:  Heute sind Familienmitglieder fast jederzeit erreichbar. Könnte diese ständige Erreichbarkeit verändern, wie sie miteinander umgehen? Auf welche Weise?
+  je:    Großeltern, Eltern und Kinder nutzen Technik oft unterschiedlich. Könnten digitale Räume die Generationen einander näherbringen, oder könnten sie sie auch trennen?
+rodina | DE | C1 | stations/2/explanations/1 | úkol nenavazoval na zadání
+  bylo:  Großeltern, Eltern und Kinder nutzen Technik oft unterschiedlich. Könnten digitale Räume die Generationen einander näherbringen, oder könnten sie sie auch trennen?
+  je:    Familien zeigen im Netz oft ihre glücklichsten Momente. Wie könnten solche Bilder beeinflussen, was Menschen von ihrem eigenen Familienleben erwarten?
+rodina | FR | C1 | stations/2/explanations/0 | úkol nenavazoval na zadání
+  bylo:  Aujourd’hui, on peut joindre les membres de sa famille presque à tout moment. Comment cette disponibilité permanente pourrait-elle changer leurs relations ?
+  je:    Grands-parents, parents et enfants utilisent souvent la technologie différemment. Les espaces numériques pourraient-ils rapprocher les générations, ou pourraient-ils aussi les éloigner ?
+rodina | FR | C1 | stations/2/explanations/1 | úkol nenavazoval na zadání
+  bylo:  Grands-parents, parents et enfants utilisent souvent la technologie différemment. Les espaces numériques pourraient-ils rapprocher les générations, ou pourraient-ils aussi les éloigner ?
+  je:    Les familles publient souvent en ligne leurs moments les plus heureux. Comment ces images pourraient-elles influencer ce que l’on attend de sa propre vie de famille ?
+umela-inteligence | DE | C2 | stations/7/questions/2 | úkol nenavazoval na zadání
+  bylo:  Wer sollte das letzte Wort haben, wenn Fachleute und Bürger uneinig sind?
+  je:    Wie können Menschen ohne Fachwissen sinnvoll an Entscheidungen über KI mitwirken?
+umela-inteligence | DE | C2 | stations/7/explanations/2 | úkol nenavazoval na zadání
+  bylo:  Fachleute wissen viel darüber, wie KI funktioniert, während Bürger mit ihren Folgen leben. Wenn beide Gruppen uneinig sind, wessen Sicht sollte am meisten zählen, und warum?
+  je:    Fachleute wissen viel darüber, wie KI funktioniert, während Bürgerinnen und Bürger mit den Folgen leben. Was bräuchten Menschen ohne Fachwissen, um an solchen Entscheidungen wirklich mitwirken zu können?
+umela-inteligence | EN | C2 | stations/7/questions/2 | úkol nenavazoval na zadání
+  bylo:  Who should have the final say when experts and citizens disagree?
+  je:    How can people without technical expertise take a meaningful part in decisions about AI?
+umela-inteligence | EN | C2 | stations/7/explanations/2 | úkol nenavazoval na zadání
+  bylo:  Experts know a lot about how AI works, while citizens live with its consequences. When the two groups disagree, whose view should count most, and why?
+  je:    Experts know a lot about how AI works, while citizens live with its consequences. What would people without technical knowledge need in order to take a real part in such decisions?
+umela-inteligence | ES | C2 | stations/7/questions/2 | úkol nenavazoval na zadání
+  bylo:  ¿Quién debe tener la última palabra cuando expertos y ciudadanos discrepan?
+  je:    ¿Cómo pueden participar de verdad en las decisiones sobre la IA quienes no tienen conocimientos técnicos?
+umela-inteligence | ES | C2 | stations/7/explanations/2 | úkol nenavazoval na zadání
+  bylo:  Los expertos saben mucho sobre cómo funciona la IA, mientras que los ciudadanos viven con sus consecuencias. Cuando ambos grupos no están de acuerdo, ¿qué opinión debería contar más y por qué?
+  je:    Los expertos saben mucho sobre cómo funciona la IA, mientras que los ciudadanos viven sus consecuencias. ¿Qué necesitarían las personas sin conocimientos técnicos para participar de verdad en esas decisiones?
+umela-inteligence | FR | C2 | stations/7/questions/2 | úkol nenavazoval na zadání
+  bylo:  Qui devrait avoir le dernier mot quand experts et citoyens sont en désaccord ?
+  je:    Comment des personnes sans expertise technique peuvent-elles réellement participer aux décisions sur l’IA ?
+umela-inteligence | FR | C2 | stations/7/explanations/2 | úkol nenavazoval na zadání
+  bylo:  Les experts savent beaucoup de choses sur le fonctionnement de l’IA, tandis que les citoyens vivent avec ses conséquences. Quand les deux groupes ne sont pas d’accord, quel avis devrait compter le plus, et pourquoi ?
+  je:    Les experts savent beaucoup de choses sur le fonctionnement de l’IA, tandis que les citoyens en vivent les conséquences. De quoi les personnes sans connaissances techniques auraient-elles besoin pour participer réellement à ces décisions ?
+zivot-bez-ai | EN | C1 | stations/4/stretch | úkol nenavazoval na zadání
+  bylo:  Explain where your definition of authenticity becomes unstable.
+  je:    Explain who would lose most under your payment plan, and why it is still fair.
+zivot-bez-ai | ES | C1 | stations/4/stretch | úkol nenavazoval na zadání
+  bylo:  Señalad puntos débiles de vuestra definición de autenticidad.
+  je:    Explicad quién saldría más perjudicado con vuestro plan de pago y por qué sigue siendo justo.
+zivot-bez-ai | DE | C1 | stations/4/stretch | úkol nenavazoval na zadání
+  bylo:  Zeigt die Schwächen eurer Definition von Authentizität.
+  je:    Erklärt, wer bei eurem Bezahlmodell am meisten verliert und warum es trotzdem fair ist.
+zivot-bez-ai | FR | C1 | stations/4/stretch | úkol nenavazoval na zadání
+  bylo:  Montrez les limites de votre définition de l’authenticité.
+  je:    Expliquez qui serait le plus désavantagé par votre système de rémunération et pourquoi il reste équitable.
