@@ -61,7 +61,7 @@ test('No PDF report network upload or hidden student identifier',()=>{
 test('Release R35 metadata reflects automatic Listening tests and complete local PDFs',()=>{
  const version=JSON.parse(fs.readFileSync(path.join(root,'version.json'),'utf8'));
  const policy=JSON.parse(fs.readFileSync(path.join(root,'data/test-mode-policy.json'),'utf8'));
- assert.equal(version.version,'R68-SAD-A1C2');
+ assert.equal(version.version,'R69-CONLANGS-A1C2-PREPROD');
  assert.equal(version.listeningTestAutoClosed,true);
  assert.equal(version.localFullPdfReportEnabled,true);
  assert.equal(version.officialSchoolLogoPdfEnabled,true);

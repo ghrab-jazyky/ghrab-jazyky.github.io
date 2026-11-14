@@ -443,7 +443,25 @@ const KEY_ENTRIES=Object.freeze([
   ],
   "relative": "poslech/sad/index.html",
   "lockSource": null
-}
+},
+ {
+   "id": "ll-conlangs",
+   "skill": "poslech",
+   "title": "Are Elvish, Klingon, Dothraki and Na’vi real languages?",
+   "languages": [
+     "en"
+   ],
+   "levels": [
+     "A1",
+     "A2",
+     "B1",
+     "B2",
+     "C1",
+     "C2"
+   ],
+   "relative": "poslech/conlangs/index.html",
+   "lockSource": null
+ }
 
 ].map(e=>Object.freeze({...e,
  languages:Object.freeze(e.languages),levels:Object.freeze(e.levels)})));

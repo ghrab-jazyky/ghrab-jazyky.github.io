@@ -10,10 +10,10 @@ test('R52: static teacher-key snapshot matches precisely the canonical Reading/L
   .map(e=>({id:e.id,skill:e.skill,title:e.title,languages:e.languages,levels:e.levels,
    relative:e.relative,lockSource:e.lockSource}));
  assert.deepEqual(model.keyEntries,expected);
- assert.equal(model.keyEntries.length,9);
- assert.equal(new Set(model.keyEntries.map(x=>x.id)).size,9);
+ assert.equal(model.keyEntries.length,10);
+ assert.equal(new Set(model.keyEntries.map(x=>x.id)).size,10);
  assert.equal(model.keyEntries.filter(x=>x.skill==='cteni').length,5);
- assert.equal(model.keyEntries.filter(x=>x.skill==='poslech').length,4);
+ assert.equal(model.keyEntries.filter(x=>x.skill==='poslech').length,5);
  for(const e of model.keyEntries){
   const source=e.lockSource||e.relative;
   assert.match(source,/^(cteni|poslech|r11\/variant-copies)\/[a-z0-9-]+(?:\/index)?\.html$/);

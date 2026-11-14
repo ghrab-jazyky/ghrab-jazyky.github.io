@@ -69,7 +69,7 @@ test('R28 all 120 Reading variants yield grade 1 at full accuracy and 5 when all
 });
 test('R28 Listening requires all written marks, then sums objective + 1 point per reviewed answer',()=>{
  let variants=0,objective=0,written=0;
- for(const e of catalog.entries.filter(x=>x.skill==='poslech'&&x.id!=='ll-sad')){
+ for(const e of catalog.entries.filter(x=>x.skill==='poslech'&&!['ll-sad','ll-conlangs'].includes(x.id))){
   const data=lc.extractJson(read(e.relative),'DATA');
   for(const lvl of e.levels){
    const v=lc.variant(data,lvl);
@@ -98,7 +98,7 @@ test('R28 Listening requires all written marks, then sums objective + 1 point pe
  assert.equal(variants,18);assert.equal(objective,251);assert.equal(written,84);
 });
 test('R28 working language scale not falsely presented as officially approved',()=>{
- assert.equal(manifest.version,'R68-SAD-A1C2');
+ assert.equal(manifest.version,'R69-CONLANGS-A1C2-PREPROD');
  assert.equal(manifest.localGradeProposalsEnabled,true);
  assert.equal(manifest.gradedTestsEnabled,false);
  assert.equal(manifest.officialGradesEnabled,false);

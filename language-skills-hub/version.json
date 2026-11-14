@@ -1,11 +1,11 @@
 {
   "name": "Language Skills Hub",
-  "version": "R68-SAD-A1C2",
+  "version": "R69-CONLANGS-A1C2-PREPROD",
   "mode": "public_practice_and_unverified_grade_proposals",
   "gradedTestsEnabled": false,
-  "topicCount": 31,
-  "variantCount": 672,
-  "sourceSha": "2ee9ca748f145d938309d5bf69cda23c1b5ed37b0dc373d69ca92b5355abbb38",
+  "topicCount": 32,
+  "variantCount": 678,
+  "sourceSha": "f153e08074d8c83fefa211ab5ade344fc201aa7c8ca497158e0e2b195f3ce87a",
   "contentHashes": {
     "cl-umela-inteligence": "a995fd2d08680bb5bec436f773c063d23eeaaa99e4001944ecb7aea7f39b7367",
     "rl-asteroids": "e9807f3f19f2a24db65d7a1d692fb4d0fa549099e0c63f2649e4f3280066285b",
@@ -37,7 +37,8 @@
     "rl-instant-messages": "c29ea4555bb1f912b061748a716418464cc5f1000a763a76397c4b63f14e7c67",
     "cl-skola": "017409c25ab617689bdfedb4d58f3132a35699e6bd0fe50dc7da6b2a4c5c8451",
     "cl-human-rights": "e08b238ba4058b2f6a162daf21d02e93c5045495f6b35cf43bb5953a33ff0be4",
-    "ll-sad": "34f499af7dfb0809a27fa17f903843216b1ee04577c06c446f0fd96a5345b7a9"
+    "ll-sad": "34f499af7dfb0809a27fa17f903843216b1ee04577c06c446f0fd96a5345b7a9",
+    "ll-conlangs": "314684b178fcce4dc1da25a20e17878cff502ca475bb729ce9e5087590d8613a"
   },
   "sourceSnapshot": "R17",
   "sharedVocabularyModule": "My Vocabulary v1 (IndexedDB lsh, no backend)",

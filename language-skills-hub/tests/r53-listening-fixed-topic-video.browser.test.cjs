@@ -3,7 +3,7 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const {chromium,webkit}=require('playwright');
 const root='http://127.0.0.1:8765/language-skills-hub/';
-const entries=require('../data/cards.json').entries.filter(e=>e.skill==='poslech'&&e.id!=='ll-sad');
+const entries=require('../data/cards.json').entries.filter(e=>e.skill==='poslech'&&!['ll-sad','ll-conlangs'].includes(e.id));
 const originalLinks={
  'll-matthew-oscars':['https://www.youtube.com/watch?v=wD2cVhC-63I&t=70s','https://www.youtube.com/watch?v=wD2cVhC-63I'],
  'll-harrison-ford':['https://www.facebook.com/netflixus/videos/harrison-ford-sag-life-achievement-award/796302026840392/','https://x.com/netflix/status/2028305176508170602'],

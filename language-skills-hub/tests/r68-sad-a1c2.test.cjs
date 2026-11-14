@@ -12,10 +12,10 @@ const html=read('poslech/sad/index.html'),data=core.extractJson(html,'DATA');
 const keysFor=level=>{const v=data[level];return {gist:v.gist.map(q=>q.correct),detail:v.detail.map(q=>q.correct),
  matching:v.matching.items.map(q=>q.correct),sequence:[],cloze:[]};};
 
-test('R68 catalogue: 31 topics, 4 Listening, 672 variants, all CEFR levels',()=>{
- assert.equal(catalog.entries.length,31);
- assert.equal(catalog.entries.filter(e=>e.skill==='poslech').length,4);
- assert.equal(catalog.entries.reduce((a,e)=>a+e.languages.length*e.levels.length,0),672);
+test('R68 catalogue: 32 topics, 5 Listening, 678 variants, all CEFR levels',()=>{
+ assert.equal(catalog.entries.length,32);
+ assert.equal(catalog.entries.filter(e=>e.skill==='poslech').length,5);
+ assert.equal(catalog.entries.reduce((a,e)=>a+e.languages.length*e.levels.length,0),678);
  assert.deepEqual(entry.languages,['en']);assert.deepEqual(entry.levels,levels);
  assert.equal(core.catalogEntry(catalog,'ll-sad'),entry);
  assert.ok(core.ALL_TOPICS.includes('ll-sad'));
@@ -47,7 +47,7 @@ test('R68 independent B2 provenance: original bank unmodified, matching answer l
  assert.doesNotMatch(src,/src="sad-data\.js"/);
  const version=JSON.parse(read('version.json'));
  assert.equal(version.contentHashes['ll-sad'],crypto.createHash('sha256').update(Buffer.from(src)).digest('hex'));
- assert.equal(version.variantCount,672);assert.equal(version.topicCount,31);
+ assert.equal(version.variantCount,678);assert.equal(version.topicCount,32);
  assert.ok(src.includes('assets/lsh/v3/card-vocabulary.js'));
  assert.equal(core.sourceLinks(src).length,2);
 });
@@ -85,7 +85,7 @@ test('R68 shared automatic engine: 17/17, empty 0/17 and each mutation for every
 });
 
 test('R68 native teacher keys: same topic, six levels, PDF contract and 17 exact solutions',()=>{
- assert.equal(key.keyEntries.length,9);
+ assert.equal(key.keyEntries.length,10);
  assert.deepEqual(key.keyEntries.map(e=>e.id),catalog.entries.filter(e=>['cteni','poslech'].includes(e.skill)).map(e=>e.id));
  for(const level of levels){
   const v=core.variant(data,level);

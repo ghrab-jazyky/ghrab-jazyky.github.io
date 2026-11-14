@@ -3,7 +3,7 @@
  'use strict';
  const LEVELS=Object.freeze(['A1','A2','B1','B2','C1','C2']);
  const TOPICS=Object.freeze(['ll-matthew-oscars','ll-harrison-ford','ll-peaky-no-fighting']);
- const ALL_TOPICS=Object.freeze([...TOPICS,'ll-sad']);
+ const ALL_TOPICS=Object.freeze([...TOPICS,'ll-sad','ll-conlangs']);
  const PHASES=Object.freeze(['first-listening','listen-and-interpret','listen-write-and-reconstruct']);
  const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
  const plain=o=>o!==null&&typeof o==='object'&&!Array.isArray(o)&&
@@ -44,7 +44,7 @@
   must(Array.isArray(e.languages)&&e.languages.length===1&&e.languages[0]==='en','Listening is English-only.');
   must(Array.isArray(e.levels)&&e.levels.length>0&&e.levels.every(l=>LEVELS.includes(l))&&
      new Set(e.levels).size===e.levels.length&&
-     (topic!=='ll-sad'||e.levels.join(',')==='A1,A2,B1,B2,C1,C2'),'Invalid CEFR levels.');
+     (!['ll-sad','ll-conlangs'].includes(topic)||e.levels.join(',')==='A1,A2,B1,B2,C1,C2'),'Invalid CEFR levels.');
   return e;
  }
  function validate(v){

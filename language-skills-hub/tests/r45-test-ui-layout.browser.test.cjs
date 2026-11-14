@@ -4,7 +4,7 @@ const test=require('node:test'),assert=require('node:assert/strict');
 const {chromium,webkit}=require('playwright');
 const root='http://127.0.0.1:8765/language-skills-hub/';
 const reading=['rl-asteroids','rl-can-mistakes','rl-plastic-ocean','rl-email-friend','rl-instant-messages'];
-const listening=['ll-matthew-oscars','ll-harrison-ford','ll-peaky-no-fighting','ll-sad'];
+const listening=['ll-matthew-oscars','ll-harrison-ford','ll-peaky-no-fighting','ll-sad','ll-conlangs'];
 const readingVariants=[['en','A1'],['es','B2'],['de','C2'],['fr','C1']];
 const widths=[320,390,768,1280];
 async function assertQuestionBounds(page,context){

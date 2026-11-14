@@ -55,7 +55,7 @@ for(const [browserName,engine]of[['Chromium',chromium],['WebKit',webkit]]){
     assert.equal(await page.locator('#topicTitle').getAttribute('data-topic-id'),e.id);
     if(e.skill==='poslech'){
      assert.equal(await page.locator('#languageFixedWrap').isVisible(),true);
-     if(e.id==='ll-sad')assert.match(await page.locator('#answerPreview').textContent(),/Matching – test/);
+     if(['ll-sad','ll-conlangs'].includes(e.id))assert.match(await page.locator('#answerPreview').textContent(),/Matching – test/);
       else assert.match(await page.locator('#answerPreview').textContent(),/D · Factual cloze – test/);
      assert.doesNotMatch(await page.locator('#answerPreview').textContent(),/Open questions – vzorové odpovědi/);
     }else{

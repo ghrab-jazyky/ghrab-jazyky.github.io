@@ -1,7 +1,7 @@
 {
   "kind": "LSH_PUBLIC_PRACTICE_R17",
   "schemaVersion": 1,
-  "revision": "2ee9ca748f145d938309d5bf69cda23c1b5ed37b0dc373d69ca92b5355abbb38",
+  "revision": "f153e08074d8c83fefa211ab5ade344fc201aa7c8ca497158e0e2b195f3ce87a",
   "mode": "practice",
   "gradedTestsEnabled": false,
   "entries": [
@@ -673,6 +673,25 @@
         "C2"
       ],
       "relative": "poslech/sad/index.html",
+      "lockSource": null
+    },
+    {
+      "id": "ll-conlangs",
+      "skill": "poslech",
+      "title": "Are Elvish, Klingon, Dothraki and Na’vi real languages?",
+      "summary": "TED-Ed o uměle vytvořených jazycích, gramatice a historickém vývoji; samostatné A1–C2 procvičování a automatický test.",
+      "languages": [
+        "en"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "poslech/conlangs/index.html",
       "lockSource": null
     }
   ]

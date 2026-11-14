@@ -13,10 +13,10 @@ const reading=cards.entries.filter(x=>x.skill==='cteni');
 test('R23 public practice remains immutable: 30 cards, 666 variants, no graded tests',()=>{
  assert.equal(cards.gradedTestsEnabled,false);
  assert.equal(version.gradedTestsEnabled,false);
- assert.equal(cards.entries.length,31);
+ assert.equal(cards.entries.length,32);
  assert.equal(reading.length,5);
  const count=cards.entries.reduce((s,x)=>s+x.languages.length*x.levels.length,0);
- assert.equal(count,672);
+ assert.equal(count,678);
  for(const x of cards.entries){
   const bytes=fs.readFileSync(path.join(root,x.relative));
   assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),

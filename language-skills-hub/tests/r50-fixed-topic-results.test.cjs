@@ -3,7 +3,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
-const entries=JSON.parse(read('data/cards.json')).entries.filter(e=>['cteni','poslech'].includes(e.skill)&&e.id!=='ll-sad');
+const entries=JSON.parse(read('data/cards.json')).entries.filter(e=>['cteni','poslech'].includes(e.skill)&&!['ll-sad','ll-conlangs'].includes(e.id));
 const html=read('self-check/practice-answers/teacher.html');
 const js=read('self-check/practice-answers/teacher-key.js');
 const hub=read('assets/hub.js');
