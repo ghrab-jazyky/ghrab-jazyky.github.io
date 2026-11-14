@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 9
     steps:
-      - name: Verify public R68 Pages, 31 cards, four Listening topics via HTTPS
+      - name: Verify public R69 Pages, 32 cards, five Listening topics via HTTPS
         shell: bash
         run: |
           python3 - <<'PY'
@@ -38,7 +38,7 @@ jobs:
                   assert data['kind']=='LSH_PUBLIC_PRACTICE_R17'
                   assert data['gradedTestsEnabled'] is False
                   release=json.loads(get('/language-skills-hub/version.json?verify='+str(attempt)))
-                  assert release['version']=='R68-SAD-A1C2'
+                  assert release['version']=='R69-CONLANGS-A1C2'
                   assert release['localGradeProposalsEnabled'] is True
                   assert release['localTeacherReviewPersistenceEnabled'] is True
                   assert release['localAnonymousCsvExportEnabled'] is True
@@ -67,12 +67,24 @@ jobs:
                   assert "self-check/listening/teacher.html" in hub
                   assert "if(localSelfCheck&&['cteni','poslech']" in hub
                   entries=data['entries']
-                  assert len(entries)==31
+                  assert len(entries)==32
                   skills={}
                   for e in entries:skills[e['skill']]=skills.get(e['skill'],0)+1
-                  assert skills=={'konverzace':22,'cteni':5,'poslech':4}
+                  assert skills=={'konverzace':22,'cteni':5,'poslech':5}
                   sad=next(e for e in entries if e['id']=='ll-sad')
                   assert sad['levels']==['A1','A2','B1','B2','C1','C2']
+                  assert release['topicCount']==32 and release['variantCount']==678
+                  conlangs=next(e for e in entries if e['id']=='ll-conlangs')
+                  assert conlangs['levels']==['A1','A2','B1','B2','C1','C2']
+                  assert conlangs['languages']==['en']
+                  conlangs_bytes=get('/language-skills-hub/'+conlangs['relative']+'?verify='+str(attempt))
+                  assert hashlib.sha256(conlangs_bytes).hexdigest()==release['contentHashes']['ll-conlangs']
+                  import re
+                  matched=re.search(rb'const DATA=(\{.*?\});\s*const SOURCES=',conlangs_bytes,re.S)
+                  assert matched is not None, 'Conlangs source DATA block missing'
+                  conlangs_data=json.loads(matched.group(1).decode('utf-8'))
+                  assert conlangs_data['levels']==['A1','A2','B1','B2','C1','C2']
+                  assert all(len(conlangs_data['variants'][lv]['questionBank'])==17 and len(conlangs_data['practiceVariants'][lv]['questionBank'])==17 for lv in conlangs_data['levels'])
                   root=get('/?verify='+str(attempt)).decode('utf-8')
                   assert 'href="language-skills-hub/"' in root
                   head('/zkusebni/')
@@ -113,7 +125,7 @@ jobs:
                   assert logo[:8]==b'\x89PNG\r\n\x1a\n' and len(logo)>1000
                   assert int.from_bytes(logo[16:20],'big')==384 and int.from_bytes(logo[20:24],'big')==384
                   assert hashlib.sha1(b'blob '+str(len(logo)).encode()+b'\0'+logo).hexdigest()=='0b23733540b01fe70f35feda45037b0cd2c995cb'
-                  print('PASS LIVE HTTPS R68: 31 practice cards, 4 Listening topics, A1-C2 SAD, matching, original school logo PDF',flush=True)
+                  print('PASS LIVE HTTPS R69: 32 practice cards, 5 Listening topics, 102+102 Conlangs questions, A1-C2, original school logo PDF',flush=True)
                   print('PRODUCTION URL:',base+'/language-skills-hub/',flush=True)
                   sys.exit(0)
               except Exception as ex:
