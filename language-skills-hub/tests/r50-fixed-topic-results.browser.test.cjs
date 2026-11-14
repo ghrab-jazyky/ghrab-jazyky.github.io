@@ -2,7 +2,7 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
 const {chromium,webkit}=require('playwright');
-const entries=require('../data/cards.json').entries.filter(e=>['cteni','poslech'].includes(e.skill));
+const entries=require('../data/cards.json').entries.filter(e=>['cteni','poslech'].includes(e.skill)&&e.id!=='ll-sad');
 const base='http://127.0.0.1:8765/language-skills-hub/';
 function url(topic,skill,lang,level){
  const u=new URL('self-check/practice-answers/teacher.html',base);

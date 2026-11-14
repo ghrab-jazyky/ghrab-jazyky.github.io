@@ -1,0 +1,65 @@
+name: LSH R68 SAD A1-C2 production regression gate
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/**'
+      - '.github/workflows/lsh-r68-sad.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/**'
+      - '.github/workflows/lsh-r68-sad.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: All LSH static regression tests (incl. six SAD variants)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t files < <(find language-skills-hub/tests -maxdepth 1 -name '*.test.cjs' ! -name '*.browser.test.cjs' ! -name 'r25-result-browser.test.cjs' -print | sort)
+          test "${#files[@]}" -ge 38
+          node --test --test-concurrency=4 "${files[@]}"
+  browser-regressions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install Playwright client
+        run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Chromium/WebKit - SAD, catalog, keys, iPad-style viewport, guarded sessions
+        shell: bash
+        timeout-minutes: 28
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-r68-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch("http://127.0.0.1:8765/language-skills-hub/index.html").then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --test --test-concurrency=2 \
+            language-skills-hub/tests/r68-sad-a1c2.browser.test.cjs \
+            language-skills-hub/tests/r25-result-browser.test.cjs \
+            language-skills-hub/tests/r27-public-release.browser.test.cjs \
+            language-skills-hub/tests/r39-catalog-cefr-badges.browser.test.cjs \
+            language-skills-hub/tests/r45-test-ui-layout.browser.test.cjs \
+            language-skills-hub/tests/r51-dual-mode-answer-keys.browser.test.cjs \
+            language-skills-hub/tests/r64-one-attempt-per-device.browser.test.cjs \
+            language-skills-hub/tests/r64-real-catalog-sources.browser.test.cjs

@@ -64,6 +64,8 @@ function buildListening(variant,entry,lang,level){
  }
  groups.push(group('Reconstruction – správné pořadí',variant.sequence.map((sentence,i)=>
    item('Pozice '+(i+1),sentence))));
+ if(variant.matching?.items.length)groups.push(group('Matching – explanations',
+  variant.matching.items.map(q=>item(q.title,variant.matching.options[q.correct],q.why||''))));
  if(Array.isArray(variant.vocab)&&variant.vocab.length)
   groups.push(group('Vocabulary – významy',variant.vocab.map(v=>
    item(v.term,v.meaning))));
@@ -86,7 +88,7 @@ function buildListening(variant,entry,lang,level){
    item(typeof q==='string'?q:q.title||q.prompt,
     'Otevřená výzva – učitelské posouzení, bez automatického klíče.')),'discussion'));
  return {kind:L,skill:'listening',topicId:entry.id,topic:entry.title,
-  language:lang,level,groups,mode:'practice'};
+  language:lang,level,groups:groups.filter(g=>g.items.length>0),mode:'practice'};
 }
 
 /* R51: Reading TEST uses exactly the questions graded by ReadingCore.score,
@@ -125,6 +127,8 @@ function buildListeningTest(variant,entry,lang,level,clozeTasks){
  }
  groups.push(group('C · Reconstruction – test',variant.sequence.map((sentence,i)=>
   item('Position '+(i+1),sentence))));
+ if(variant.matching?.items.length)groups.push(group('C · Matching – test',
+  variant.matching.items.map(q=>item(q.title,variant.matching.options[q.correct],q.why||''))));
  need(Array.isArray(clozeTasks)&&clozeTasks.length===variant.facts.length,
   'Neúplný testový cloze klíč.');
  groups.push(group('D · Factual cloze – test',clozeTasks.map((task,i)=>{
@@ -135,7 +139,7 @@ function buildListeningTest(variant,entry,lang,level,clozeTasks){
    'Uznávané varianty: '+task.accepted.join(' / '):'');
  })));
  return {kind:L,skill:'listening',topicId:entry.id,topic:entry.title,
-  language:lang,level,groups,mode:'test'};
+  language:lang,level,groups:groups.filter(g=>g.items.length>0),mode:'test'};
 }
 function validate(model){
  need(model&&model.kind===L&&['reading','listening'].includes(model.skill)&&
@@ -421,7 +425,26 @@ const KEY_ENTRIES=Object.freeze([
   ],
   "relative": "cteni/instant-messages/index.html",
   "lockSource": "r11/variant-copies/rl-instant-messages.html"
- }
+ },
+ {
+  "id": "ll-sad",
+  "skill": "poslech",
+  "title": "Seasonal Affective Disorder – Winter got you feeling down?",
+  "languages": [
+    "en"
+  ],
+  "levels": [
+    "A1",
+    "A2",
+    "B1",
+    "B2",
+    "C1",
+    "C2"
+  ],
+  "relative": "poslech/sad/index.html",
+  "lockSource": null
+}
+
 ].map(e=>Object.freeze({...e,
  languages:Object.freeze(e.languages),levels:Object.freeze(e.levels)})));
 const api=Object.freeze({buildReading,buildListening,buildReadingTest,buildListeningTest,
@@ -567,7 +590,7 @@ async function refresh(){
 async function init(){
  try{
   const entries=KEY_ENTRIES;
-  need(entries.length===8,'Neúplná metadata Reading/Listening.');
+  need(entries.length===9,'Neúplná metadata Reading/Listening.');
   const topicId=qs.get('topic'),requestedSkill=qs.get('skill');
   need(topicId,'Chybí identifikátor karty v odkazu.');
   const e=entries.find(x=>x.id===topicId);

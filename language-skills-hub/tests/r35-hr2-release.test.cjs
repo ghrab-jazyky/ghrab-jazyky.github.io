@@ -34,13 +34,13 @@ function literal(src,label){
 const content=literal(html,'CONTENT');
 const glossary=literal(html,'CZ_GLOSSARY');
 test('R35-HR2: 30 topics, 22 Conversation Lab entries and 666 variants',()=>{
- assert.equal(version.version,'R35-HR2');
- assert.equal(catalog.entries.length,30);
- assert.equal(version.topicCount,30);
- assert.equal(version.variantCount,666);
+ assert.equal(version.version,'R68-SAD-A1C2');
+ assert.equal(catalog.entries.length,31);
+ assert.equal(version.topicCount,31);
+ assert.equal(version.variantCount,672);
  assert.equal(catalog.entries.filter(x=>x.skill==='konverzace').length,22);
- assert.equal(catalog.entries.reduce((n,x)=>n+x.languages.length*x.levels.length,0),666);
- assert.equal(Object.keys(i18n.entries).length,30);
+ assert.equal(catalog.entries.reduce((n,x)=>n+x.languages.length*x.levels.length,0),672);
+ assert.equal(Object.keys(i18n.entries).length,31);
  assert.equal(version.sourceSha,catalog.revision);
  const item=catalog.entries.find(x=>x.id==='cl-human-rights');
  assert.equal(item?.relative,cardPath);
@@ -51,7 +51,7 @@ test('R35-HR2: 30 topics, 22 Conversation Lab entries and 666 variants',()=>{
 test('R35-HR2: approved card SHA and all original 29 cards are intact',()=>{
  assert.equal(digest(Buffer.from(html)),PIN);
  assert.equal(version.contentHashes['cl-human-rights'],PIN);
- assert.equal(Object.keys(version.contentHashes).length,30);
+ assert.equal(Object.keys(version.contentHashes).length,31);
  for(const item of catalog.entries){
   const p=path.join(hub,item.relative);
   assert.ok(fs.existsSync(p),item.id);
@@ -104,11 +104,11 @@ test('R35-HR2: CSP integrity, shared vocabulary bridge and teacher lock',()=>{
  assert.match(bridge,/glossary\.phrases&&glossary\.phrases\[language\]/);
  assert.match(bridge,/glossary\.words&&glossary\.words\[language\]/);
  const hubjs=read('assets/hub.js');
- assert.match(hubjs,/body\.entries\.length!==30/);
- assert.match(hubjs,/Object\.keys\(i18n\.entries\)\.length!==30/);
+ assert.match(hubjs,/body\.entries\.length>200/);
+ assert.match(hubjs,/Object\.keys\(i18n\.entries\)\.length!==body\.entries\.length/);
 });
 test('R35-HR2: old R24 Listening counts migrated',()=>{
  const old=read('tests/r24-listening-selfcheck.test.cjs');
- assert.ok(old.includes('cards.entries.reduce((sum,x)=>sum+x.languages.length*x.levels.length,0),666'));
+ assert.ok(old.includes('cards.entries.reduce((sum,x)=>sum+x.languages.length*x.levels.length,0),672'));
  assert.ok(!old.includes('cards.entries.reduce((sum,x)=>sum+x.languages.length*x.levels.length,0),642'));
 });

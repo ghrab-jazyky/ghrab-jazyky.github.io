@@ -3,6 +3,7 @@
  'use strict';
  const LEVELS=Object.freeze(['A1','A2','B1','B2','C1','C2']);
  const TOPICS=Object.freeze(['ll-matthew-oscars','ll-harrison-ford','ll-peaky-no-fighting']);
+ const ALL_TOPICS=Object.freeze([...TOPICS,'ll-sad']);
  const PHASES=Object.freeze(['first-listening','listen-and-interpret','listen-write-and-reconstruct']);
  const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
  const plain=o=>o!==null&&typeof o==='object'&&!Array.isArray(o)&&
@@ -37,11 +38,13 @@
   return parsed;
  }
  function catalogEntry(catalog,topic){
-  must(plain(catalog)&&Array.isArray(catalog.entries)&&TOPICS.includes(topic),'Unknown Listening topic.');
+  must(plain(catalog)&&Array.isArray(catalog.entries)&&ALL_TOPICS.includes(topic),'Unknown Listening topic.');
   const e=catalog.entries.find(x=>x.id===topic&&x.skill==='poslech');
   must(e&&/^poslech\/[a-z0-9-]+\/index\.html$/.test(e.relative),'No approved source Listening card.');
   must(Array.isArray(e.languages)&&e.languages.length===1&&e.languages[0]==='en','Listening is English-only.');
-  must(Array.isArray(e.levels)&&LEVELS.every(l=>e.levels.includes(l)),'Incomplete CEFR levels.');
+  must(Array.isArray(e.levels)&&e.levels.length>0&&e.levels.every(l=>LEVELS.includes(l))&&
+     new Set(e.levels).size===e.levels.length&&
+     (topic!=='ll-sad'||e.levels.join(',')==='A1,A2,B1,B2,C1,C2'),'Invalid CEFR levels.');
   return e;
  }
  function validate(v){
@@ -62,23 +65,41 @@
     }
    }
   }
-  must(Array.isArray(v.sequence)&&v.sequence.length>=2&&v.sequence.length<=20&&
-    v.sequence.every(x=>nonempty(x,2500))&&new Set(v.sequence).size===v.sequence.length,
+  must(Array.isArray(v.sequence)&&
+     (v.sequence.length===0&&v.matching||v.sequence.length>=2&&v.sequence.length<=20)&&
+     v.sequence.every(x=>nonempty(x,2500))&&new Set(v.sequence).size===v.sequence.length,
     'Invalid reconstruction sequence.');
   for(const phase of ['facts','open']){
-   must(Array.isArray(v[phase])&&v[phase].length>=1&&v[phase].length<=12,'Invalid writing tasks.');
+   must(Array.isArray(v[phase])&&
+      (v[phase].length>=1&&v[phase].length<=12||phase==='facts'&&v.matching&&v[phase].length===0),
+      'Invalid writing tasks.');
    for(const q of v[phase])must(plain(q)&&nonempty(q.title,2000)&&
      nonempty(q.answer,6000),'Missing writing reference.');
+  }   // R67: common Listening schema now accepts authentic one-to-one matching.
+   // Old sequence/cloze variants retain their unchanged checks and scoring.
+   if(v.matching!==undefined){
+    const m=v.matching;
+    must(plain(m)&&Array.isArray(m.options)&&m.options.length>=3&&m.options.length<=12&&
+     m.options.every(x=>nonempty(x,1000))&&new Set(m.options).size===m.options.length&&
+     Array.isArray(m.items)&&m.items.length>=2&&m.items.length<=12,
+     'Invalid matching bank.');
+    const rights=new Set();
+    for(const q of m.items){
+     must(plain(q)&&nonempty(q.title,2000)&&
+      Number.isInteger(q.correct)&&q.correct>=0&&q.correct<m.options.length&&
+      !rights.has(q.correct),'Invalid matching solution.');
+     rights.add(q.correct);
+    }
+   }
+   return v;
   }
-  return v;
- }
- function variant(data,level){
+  function variant(data,level){
   must(LEVELS.includes(level)&&plain(data)&&own(data,level),'Missing CEFR variant.');
   return validate(data[level]);
  }
  function normalizeResponse(v,a){
   must(plain(a),'Answers must be an object.');
-  const normalized={gist:[],detail:[],sequence:[],facts:[],open:[]};
+  const normalized={gist:[],detail:[],sequence:[],matching:[],facts:[],open:[]};
   for(const part of ['gist','detail']){
    const arr=a[part]===undefined?[]:a[part];
    must(Array.isArray(arr)&&arr.length<=v[part].length,'Invalid '+part+' answers.');
@@ -105,9 +126,18 @@
      'Invalid reconstruction position.');
    if(Number.isInteger(n)){must(!seen.has(n),'A reconstruction item cannot be used twice.');seen.add(n);}
    normalized.sequence[i]=Number.isInteger(n)?n:null;
-  }
-  for(const part of ['facts','open']){
-   const arr=a[part]===undefined?[]:a[part];
+  }   const match=v.matching?.items||[],candidate=a.matching===undefined?[]:a.matching;
+   must(Array.isArray(candidate)&&candidate.length<=match.length,'Invalid matching answers.');
+   const matchUsed=new Set();
+   for(let i=0;i<match.length;i++){
+    const x=candidate[i];
+    must(x===null||x===undefined||(Number.isInteger(x)&&x>=0&&x<v.matching.options.length),
+     'Invalid matching letter.');
+    if(Number.isInteger(x)){must(!matchUsed.has(x),'Matching answer used more than once.');matchUsed.add(x)}
+    normalized.matching[i]=Number.isInteger(x)?x:null;
+   }
+   for(const part of ['facts','open']){
+    const arr=a[part]===undefined?[]:a[part];
    must(Array.isArray(arr)&&arr.length<=v[part].length,'Invalid written answers.');
    for(let i=0;i<v[part].length;i++){
     const value=arr[i]===undefined?'':arr[i];
@@ -140,16 +170,26 @@
    reviewed.push({phase:'sequence',number:i+1,question:'Position '+(i+1),
     answered:filled,correct:ok,chosen:filled?[v.sequence[value]]:[],
     correctAnswers:[v.sequence[i]],reason:''});
-  }
-  const writing=[];
-  for(const part of ['facts','open'])for(let i=0;i<v[part].length;i++){
+  }   const matching=v.matching?.items||[];
+   for(let i=0;i<matching.length;i++){
+    const q=matching[i],value=a.matching[i],filled=value!==null,ok=filled&&value===q.correct;
+    if(ok)correct++;
+    if(filled)answered++;
+    reviewed.push({phase:'matching',number:i+1,question:q.title,
+     answered:filled,correct:!!ok,
+     chosen:filled?[v.matching.options[value]]:[],
+     correctAnswers:[v.matching.options[q.correct]],reason:typeof q.why==='string'?q.why:''});
+   }
+   const writing=[];
+   for(const part of ['facts','open'])for(let i=0;i<v[part].length;i++){
    const q=v[part][i];const answer=a[part][i].trim();
    if(answer)answered++;
    writing.push({phase:part,number:i+1,question:q.title,answer,
     reference:q.answer,criteria:typeof q.criteria==='string'?q.criteria:'',
     state:answer?'teacher_review_required':'not_answered',correct:null});
   }
-  const objectiveMax=v.gist.length+v.detail.length+v.sequence.length;
+  const objectiveMax=v.gist.length+v.detail.length+v.sequence.length+
+    (v.matching?.items.length||0);
   const total=objectiveMax+writing.length;
   return {
    kind:'LSH_LOCAL_LISTENING_REVIEW_R24_V1',localOnly:true,officialGrade:null,
@@ -198,7 +238,8 @@
  }
  function cloze(v,topic,level){
   validate(v);
-  must(TOPICS.includes(topic)&&LEVELS.includes(level),'Unknown cloze topic or level.');
+  must(ALL_TOPICS.includes(topic)&&LEVELS.includes(level),'Unknown cloze topic or level.');
+   if(v.facts.length===0)return [];
   const keys=CLOZE_KEYS[topic]?.[level];
   must(Array.isArray(keys)&&keys.length===v.facts.length,'Incomplete cloze answer key.');
   return v.facts.map((fact,i)=>{
@@ -247,13 +288,13 @@
    if(typeof url!=='string')continue;
    let parsed;try{parsed=new URL(url)}catch(_){continue}
    if(parsed.protocol!=='https:')continue;
-   if(!['www.youtube.com','youtube.com','www.facebook.com','facebook.com','x.com','www.netflix.com'].includes(parsed.hostname))continue;
+   if(!['www.youtube.com','youtube.com','www.facebook.com','facebook.com','x.com','www.netflix.com','ed.ted.com'].includes(parsed.hostname))continue;
    urls.push({name,url:parsed.href});
   }
   must(urls.length>0,'No approved public media source.');
   return urls;
  }
- const api={LEVELS,TOPICS,PHASES,extractJson,catalogEntry,variant,validate,
+ const api={LEVELS,TOPICS,ALL_TOPICS,PHASES,extractJson,catalogEntry,variant,validate,
    normalizeResponse,assess,cloze,assessAuto,sourceLinks};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  else root.LSHListeningCore=api;

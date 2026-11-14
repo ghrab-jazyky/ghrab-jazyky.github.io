@@ -8,7 +8,7 @@ const grade=require('../self-check/results/grade-core.js');
 const exporter=require('../self-check/results/export-core.js');
 const root=path.resolve(__dirname,'..');
 const catalog=JSON.parse(fs.readFileSync(path.join(root,'data/cards.json'),'utf8'));
-const listens=catalog.entries.filter(e=>e.skill==='poslech');
+const listens=catalog.entries.filter(e=>e.skill==='poslech'&&e.id!=='ll-sad');
 
 function variant(entry,level){
  const html=fs.readFileSync(path.join(root,entry.relative),'utf8');

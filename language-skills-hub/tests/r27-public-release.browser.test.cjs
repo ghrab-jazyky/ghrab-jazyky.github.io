@@ -10,7 +10,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   try{
    const page=await browser.newPage({viewport:{width:390,height:844}}),errors=[];
    page.on('pageerror',e=>errors.push(e.message));
-   for(const [skill,expected]of [['konverzace',0],['cteni',5],['poslech',3]]){
+   for(const [skill,expected]of [['konverzace',0],['cteni',5],['poslech',4]]){
     const res=await page.goto(withParams('index.html',{skill}),{waitUntil:'domcontentloaded'});
     assert.equal(res.status(),200);
     await page.locator('#cards .card').first().waitFor({state:'visible'});
@@ -121,6 +121,14 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(await page.locator('audio,video,iframe').count(),0);
    await page.locator('fieldset.question').first().locator('input').first().check();
    await page.locator('.cloze-row input').first().fill('cavalry');
+   // Recover from legitimate R64 focus/viewport locks using the teacher's gesture.
+   await page.locator('#submitButton').scrollIntoViewIfNeeded();
+   for(let n=0;n<3;n++){
+    if(!await page.locator('#sessionLock:not([hidden])').isVisible())break;
+    for(const corner of ['tl','tr','bl','br'])
+     await page.locator('.lsh-corner-'+corner).click();
+    await page.locator('#sessionLock').waitFor({state:'hidden',timeout:12000});
+   }
    await page.locator('#submitButton').click();
    await page.waitForSelector('#results:not([hidden])');
    assert.equal(await page.locator('#scoreSummary .score-value').count(),4);

@@ -16,7 +16,7 @@
  const selection={topic:params.get('topic')||'ll-matthew-oscars',
   level:params.get('level')||'B2'};
  let chosen=null,submitted=false,timedUI=null;
- const answers={gist:[],detail:[],sequence:[],cloze:[]};
+ const answers={gist:[],detail:[],sequence:[],matching:[],cloze:[]};
  const phases=[
   {id:'first-listening',heading:'First Listening',
    caption:'Pass 1 – listen for the main ideas. The teacher starts the recording.'},
@@ -39,7 +39,7 @@
   });
  }
  const totalTasks=()=>chosen.gist.length+chosen.detail.length+chosen.sequence.length+
-  chosen.facts.length;
+   chosen.facts.length+(chosen.matching?.items.length||0);
  function completed(){
   if(!chosen)return 0;
   let n=0;
@@ -48,6 +48,7 @@
    if(Array.isArray(x)?x.length>0:Number.isInteger(x))n++;
   }
   for(const x of answers.sequence)if(Number.isInteger(x))n++;
+   for(const x of answers.matching)if(Number.isInteger(x))n++;
   for(const x of answers.cloze)if(typeof x==='string'&&x.trim())n++;
   return n;
  }
@@ -157,19 +158,56 @@
    });
    row.append(label,input);list.appendChild(row);
   });
- }
- function render(){
-  const list=$('taskList');list.replaceChildren();
+ }  function matching(){
+   const list=$('taskList'),data=chosen.matching;
+   if(!data?.items.length)return;
+   list.appendChild(element('p','quiz-hint',
+    'C. Match each statement with one explanation. Each explanation may be used once; two are extra.'));
+   const bank=element('section','sequence-bank');
+   bank.setAttribute('aria-label','Matching explanation bank');
+   for(const option of data.options)bank.appendChild(element('p',null,option));
+   list.appendChild(bank);
+   for(let i=0;i<data.items.length;i++){
+    const task=data.items[i],row=element('div','sequence-row'),id='matching-'+i;
+    const label=element('label',null,(i+1)+'. '+task.title);label.htmlFor=id;
+    const select=element('select','select-response');select.id=id;
+    select.setAttribute('aria-label','Matching explanation '+(i+1));
+    const empty=element('option',null,'— Select an explanation —');empty.value='';select.appendChild(empty);
+    for(let k=0;k<data.options.length;k++){
+     const option=element('option',null,data.options[k]);option.value=String(k);select.appendChild(option);
+    }
+    select.addEventListener('change',()=>{
+     if(submitted)return;
+     const picked=select.value===''?null:Number(select.value);
+     if(Number.isInteger(picked))for(let j=0;j<data.items.length;j++)if(j!==i&&answers.matching[j]===picked){
+      answers.matching[j]=null;const other=$('matching-'+j);if(other)other.value='';
+     }
+     answers.matching[i]=picked;
+     progress();timedUI?.save();
+    });
+    row.append(label,select);list.appendChild(row);
+   }
+  }
+  function render(){
+   const list=$('taskList');list.replaceChildren();
   list.appendChild(heading(phases[0]));choices('gist');
   list.appendChild(heading(phases[1]));choices('detail');
-  list.appendChild(heading(phases[2]));
-  sequence();
-  clozeTask();
+  if(chosen.sequence.length||chosen.facts.length){
+    list.appendChild(heading(phases[2]));
+    if(chosen.sequence.length)sequence();
+    if(chosen.facts.length)clozeTask();
+   }
+   if(chosen.matching?.items.length){
+    list.appendChild(heading({id:'listen-matching',heading:'Listen, Match and Explain',
+     caption:'Targeted replay – connect each observation to the right scientific explanation.'}));
+    matching();
+   }
   $('levelLabel').textContent='EN · '+selection.level;
   $('title').textContent=({
    'll-matthew-oscars':'Matthew McConaughey · Oscars 2014',
    'll-harrison-ford':'Harrison Ford · Life Achievement Speech',
-   'll-peaky-no-fighting':'Peaky Blinders · No Fighting'
+   'll-peaky-no-fighting':'Peaky Blinders · No Fighting',
+    'll-sad':'Seasonal Affective Disorder · TED-Ed'
   })[selection.topic];
   $('goal').textContent=chosen.goal;
   $('loading').hidden=true;
@@ -218,10 +256,11 @@
    summary.appendChild(item);
   }
   $('resultCaution').textContent=
-   'All choices, sequencing and factual cloze answers are scored automatically. The proposed grade appears immediately but is NOT a verified school grade. This public local result can be changed or restarted; your teacher must verify it before recording any school grade.';
+   'All choices, matching, sequencing and factual cloze answers are scored automatically. The proposed grade appears immediately but is NOT a verified school grade. This public local result can be changed or restarted; your teacher must verify it before recording any school grade.';
   const list=$('resultDetails');list.replaceChildren();
   const segment=(phase)=>phase==='gist'?'First Listening':
-   phase==='detail'?'Listen and Interpret':'Listen, Complete and Reconstruct';
+   phase==='detail'?'Listen and Interpret':
+    phase==='matching'?'Listen, Match and Explain':'Listen, Complete and Reconstruct';
   const mistakes=report.reviewed.filter(task=>!task.correct);
   if(!mistakes.length)list.appendChild(element('p','small-note',
    'All automatically assessed answers are correct. No objective mistakes to review.'));
@@ -287,11 +326,12 @@
      
      const options=task.phase==='gist'?chosen.gist[offset]?.options:
       task.phase==='detail'?chosen.detail[offset]?.options:
-      task.phase==='sequence'?chosen.sequence:undefined;
+      task.phase==='sequence'?chosen.sequence:
+      task.phase==='matching'?chosen.matching?.options:undefined;
      return {
      options,
      question:(task.phase==='gist'?'FIRST LISTENING':task.phase==='detail'?
-      'LISTEN AND INTERPRET':task.phase==='sequence'?'RECONSTRUCTION':'FACTUAL CLOZE')+
+      'LISTEN AND INTERPRET':task.phase==='sequence'?'RECONSTRUCTION':task.phase==='matching'?'MATCHING':'FACTUAL CLOZE')+
       ' · '+task.question,
      studentAnswer:task.chosen&&task.chosen.length?task.chosen.join(' | '):'Bez odpovědi',
      correctAnswer:task.correctAnswers.join(' | '),
@@ -374,7 +414,14 @@
        }
       }
      }
-     const usedSequence=new Set();
+     const usedMatch=new Set();
+      for(let i=0;i<(chosen.matching?.items.length||0);i++){
+       const value=saved.matching?.[i];
+       if(!Number.isInteger(value)||value<0||value>=chosen.matching.options.length||usedMatch.has(value))continue;
+       usedMatch.add(value);answers.matching[i]=value;
+       const sel=$('matching-'+i);if(sel)sel.value=String(value);
+      }
+      const usedSequence=new Set();
      for(let i=0;i<chosen.sequence.length;i++){
       const value=saved.sequence?.[i];
       if(!Number.isInteger(value)||value<0||value>=chosen.sequence.length||usedSequence.has(value))continue;
