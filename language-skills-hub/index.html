@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#081526">
-<meta name="description" content="Language Skills Hub – Conversation Lab, Reading Lab a Listening Lab na jednom místě. 31 témat, interaktivní procvičování A1–C2.">
+<meta name="description" content="Language Skills Hub – Conversation Lab, Reading Lab a Listening Lab na jednom místě. interaktivní procvičování A1–C2.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; font-src 'self'; connect-src 'self'; frame-src https:; form-action 'none'">
 <title>Language Skills Hub – jazykové laboratoře</title>
 <script src="assets/theme-boot.js"></script>
@@ -21,9 +21,9 @@
   <h1 id="welcomeTitle">Tři dovednosti.<br><span>Jedno místo.</span></h1>
   <p class="welcome-lead">Konverzace, čtení a poslech v jednom přehledném prostředí. Vyber si jazykovou dovednost a otevři potřebnou aktivitu.</p>
   <div class="welcome-counts" aria-label="Počty připravených témat">
-   <div><strong>22</strong><span>Conversation</span></div>
-   <div><strong>5</strong><span>Reading</span></div>
-   <div><strong>4</strong><span>Listening</span></div>
+   <div><strong data-count-skill="konverzace">…</strong><span>Conversation</span></div>
+   <div><strong data-count-skill="cteni">…</strong><span>Reading</span></div>
+   <div><strong data-count-skill="poslech">…</strong><span>Listening</span></div>
   </div>
   <button type="button" id="skipIntro" class="welcome-skip">Vybrat laboratoř nyní</button>
   <p class="welcome-timing">Výběr laboratoře se zobrazí automaticky za 3 sekundy.</p>
@@ -44,19 +44,19 @@
      <span class="chooser-symbol" aria-hidden="true">◉</span>
      <span class="chooser-name">Conversation Lab</span>
      <span class="chooser-description">Mluvení, otázky a diskuse</span>
-     <span class="chooser-count">22 témat <span aria-hidden="true">→</span></span>
+     <span class="chooser-count"><span data-count-skill="konverzace">…</span> <span data-count-word="konverzace">témat</span> <span aria-hidden="true">→</span></span>
     </button>
     <button type="button" class="chooser-choice" data-choose-skill="cteni">
      <span class="chooser-symbol" aria-hidden="true">▤</span>
      <span class="chooser-name">Reading Lab</span>
      <span class="chooser-description">Texty a čtení s porozuměním</span>
-     <span class="chooser-count">5 témat <span aria-hidden="true">→</span></span>
+     <span class="chooser-count"><span data-count-skill="cteni">…</span> <span data-count-word="cteni">témat</span> <span aria-hidden="true">→</span></span>
     </button>
     <button type="button" class="chooser-choice" data-choose-skill="poslech">
      <span class="chooser-symbol" aria-hidden="true">♫</span>
      <span class="chooser-name">Listening Lab</span>
      <span class="chooser-description">Autentické nahrávky a poslech</span>
-     <span class="chooser-count">4 témata <span aria-hidden="true">→</span></span>
+     <span class="chooser-count"><span data-count-skill="poslech">…</span> <span data-count-word="poslech">témat</span> <span aria-hidden="true">→</span></span>
     </button>
    </div>
   </div>
