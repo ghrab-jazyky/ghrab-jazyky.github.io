@@ -121,6 +121,14 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(await page.locator('audio,video,iframe').count(),0);
    await page.locator('fieldset.question').first().locator('input').first().check();
    await page.locator('.cloze-row input').first().fill('cavalry');
+   // Recover from legitimate R64 focus/viewport locks using the teacher's gesture.
+   await page.locator('#submitButton').scrollIntoViewIfNeeded();
+   for(let n=0;n<3;n++){
+    if(!await page.locator('#sessionLock:not([hidden])').isVisible())break;
+    for(const corner of ['tl','tr','bl','br'])
+     await page.locator('.lsh-corner-'+corner).click();
+    await page.locator('#sessionLock').waitFor({state:'hidden',timeout:12000});
+   }
    await page.locator('#submitButton').click();
    await page.waitForSelector('#results:not([hidden])');
    assert.equal(await page.locator('#scoreSummary .score-value').count(),4);
