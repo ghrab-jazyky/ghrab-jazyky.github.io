@@ -1,6 +1,6 @@
 /* Shared Listening Studio appearance for SAD and Conlangs.
    Deliberately presentation-only: original assessment DOM IDs and JS remain canonical. */
-:root{
+:root,:root[data-theme="light"]{
  color-scheme:light;--page:#fbfaf6;--panel:#fff;--panel2:#f7f7f3;
  --ink:#172433;--muted:#64717d;--line:#e5e8e9;
  --accent:#b76d3f;--accent-dark:#132c41;--hint:#f8f1e9;
