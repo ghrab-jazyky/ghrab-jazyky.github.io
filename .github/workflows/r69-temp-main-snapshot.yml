@@ -1,0 +1,23 @@
+name: R69 one-time R64 baseline capture
+on:
+  push:
+    branches:
+      - chore/lsh-r69-r64-source-snapshot-20261114
+    paths:
+      - .github/workflows/r69-temp-main-snapshot.yml
+permissions:
+  contents: read
+jobs:
+  baseline:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r69-current-main-baseline
+          path: |
+            language-skills-hub/
+            .github/workflows/
+            README.md
+          retention-days: 1
