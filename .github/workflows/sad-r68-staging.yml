@@ -4,6 +4,7 @@ on:
     branches: [feature/sad-r68-preprod-20261114]
     paths:
       - 'release/sad-r68-source.tar.gz'
+      - '.github/workflows/sad-r68-staging.yml'
 permissions:
   contents: write
 jobs:
@@ -26,6 +27,7 @@ jobs:
           set -euo pipefail
           mkdir -p /tmp/sad-r68
           tar -xzf release/sad-r68-source.tar.gz -C /tmp/sad-r68
+          cp release/qa_r68_node.cjs /tmp/sad-r68/INSTALL_AND_QA/qa_r68_node.cjs
           python3 /tmp/sad-r68/INSTALL_AND_QA/qa_r68.py
       - name: Fail-closed integration and inspect diff
         shell: bash
@@ -74,7 +76,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add language-skills-hub
-          git rm -f release/sad-r68-source.tar.gz .github/workflows/sad-r68-staging.yml
+          git rm -f release/sad-r68-source.tar.gz release/qa_r68_node.cjs .github/workflows/sad-r68-staging.yml
           git diff --cached --check
           git commit -m "feat(lsh): integrate SAD A1-C2 into canonical Listening Lab R68"
           git push origin HEAD:feature/sad-r68-preprod-20261114
