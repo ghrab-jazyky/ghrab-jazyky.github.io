@@ -34,6 +34,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git -C "$GITHUB_WORKSPACE" rev-parse --show-toplevel
           echo "DEBUG_PRE_PWD=$(pwd) GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
           ls -ld "$GITHUB_WORKSPACE" "$GITHUB_WORKSPACE/.git" || true
           git -C "$GITHUB_WORKSPACE" rev-parse --show-toplevel || true
@@ -83,6 +85,7 @@ jobs:
         run: |
           set -euo pipefail
           cd "$GITHUB_WORKSPACE"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add language-skills-hub
