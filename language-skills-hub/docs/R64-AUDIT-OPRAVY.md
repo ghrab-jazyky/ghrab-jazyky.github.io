@@ -41,7 +41,7 @@ Rozhodnutí z 13. 11. 2026: na jednom zařízení (profilu prohlížeče) je pro
 - Odkaz bez `timer` je na obrazovce i v protokolu označen jako test bez dohledu.
 
 Meze se nemění: jiný prohlížeč, anonymní okno, smazání dat webu nebo jiné zařízení statická stránka nepozná.
-Odemykací gesto zůstává beze změny (rozhodnutí: zůstává neveřejnou informací učitelů).
+Učitelský servisní postup pro odemčení zůstává beze změny; popis se v dokumentaci neuvádí.
 
 ## Ověření
 

@@ -12,7 +12,7 @@ Test není serverově zabezpečenou zkouškou, nepoužívá přihlášení a neu
 - **R63:** `beforeprint` nebo zachycená klávesová zkratka `Ctrl/Cmd+P` uzamknou test s důvodem „pokus o tisk“. Styly studentského testu navíc při tisku skrývají celý obsah.
 - **R63:** Na stejném originu a ve stejném profilu prohlížeče se aktivní testy oznamují pomocí `BroadcastChannel`. Při souběžném otevření jiného aktivního testu (může jít o Reading i Listening) se nový pokus zamkne. Zprávy obsahují pouze náhodné ID otevřené stránky, nikoli obsah testu, odpovědi, studentovo jméno ani identifikátor pokusu.
 - Pokud `BroadcastChannel` chybí či je blokován, kontrola souběhu není zaručena; na obrazovce je upozornění. Různé profily, anonymní okna a různá zařízení nelze tímto způsobem spojit.
-- Po zamčení je úprava odpovědí zablokována, ale odpočítávání pokračuje. Učitel odemkne postupným kliknutím do čtyř rohů. Studentský zámek nezobrazuje žádný návod, šipky, indikátory ani tlačítko odemčení.
+- Po zamčení je úprava odpovědí zablokována, ale odpočítávání pokračuje. Odemknout může jen učitel servisním postupem, který se sděluje učitelům zvlášť. Studentský zámek nezobrazuje žádný návod, šipky, indikátory ani tlačítko odemčení.
 - Každý zachycený incident se lokálně uloží s časem; R63 nově uchovává i **časy odemčení** (maximálně 40 událostí každého druhu). Starší uložené pokusy bez této položky zůstávají čitelné.
 
 ## Archivace
@@ -27,7 +27,7 @@ CSV zůstává kompatibilní s původním schématem a nadále vykazuje počet p
 2. Parametry URL, lokální čas, lokální úložiště a výsledky jsou měnitelné uživatelem. Veřejná řešení zůstávají v klientských datech.
 3. Snímky obrazovky, fotografie, použití druhého zařízení, jiného prohlížeče, systémový Slide Over a některé varianty Split View nelze spolehlivě odhalit běžnou webovou stránkou.
 4. Detekce změny okna může chybně vyhodnotit legitimní systémovou událost. Incident není důkazem podvádění; o pedagogickém postupu rozhoduje učitel.
-5. Odemykací gesto **není autentizace** a lze ho zjistit z veřejného JavaScriptu. Pro vysokostakes školní písemky je nutná správní konfigurace zařízení / testový prohlížeč a samostatné řešení autenticity výsledků.
+5. Učitelský servisní postup pro odemčení **není autentizace**. Pro vysokostakes školní písemky je nutná správní konfigurace zařízení / testový prohlížeč a samostatné řešení autenticity výsledků.
 
 ## Přejímací scénáře
 

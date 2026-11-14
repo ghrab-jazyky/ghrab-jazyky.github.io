@@ -21,7 +21,7 @@ R30 navazuje na R29 jako funkčně oddělený pilot pro školní používání p
 
 ## Nepřekročitelné limity
 
-**R30 není zabezpečená školní zkouška.** Žák může upravit URL, otevřít nový prohlížeč, smazat data, pozměnit systémový čas či najít veřejný klíč v procvičovacích kartách. Gesto čtyř rohů lze napodobit. Události visibility/fullscreen nejsou spolehlivý důkaz podvodu, zejména na iPadOS ve Split View/Slide Over; neschopnost je zaznamenat se nesmí vydávat za nepřítomnost incidentu.
+**R30 není zabezpečená školní zkouška.** Žák může upravit URL, otevřít nový prohlížeč, smazat data, pozměnit systémový čas či najít veřejný klíč v procvičovacích kartách. Učitelský servisní postup pro pokračování není autentizace. Události visibility/fullscreen nejsou spolehlivý důkaz podvodu, zejména na iPadOS ve Split View/Slide Over; neschopnost je zaznamenat se nesmí vydávat za nepřítomnost incidentu.
 
 Při zakázaném či zaplněném `localStorage` pokus funguje pouze do obnovení stránky; zobrazí se upozornění. Na sdílených školních zařízeních mohou lokálně přetrvávat **studentské písemné odpovědi**. Po odevzdání má student/učitel možnost **Smazat místní odpovědi**, která vymaže právě tuto lokální relaci; na společných zařízeních ji doporučujeme provést po převzetí ověřeného výsledku. Vymazání dat není ochranou před manipulací ani vzdáleným uložením. Z R30 se nepřenášejí na server, do GitHubu ani do Bakalářů. Nezadávat osobní údaje do odpovědí, pokud to není nezbytné pro pedagogický cíl.
 
@@ -33,7 +33,7 @@ U Listening se po odevzdání obnovují studentské odpovědi, ale **ruční zn�
 2. Student: před Start je test uzamčený v úvodním stavu; Start aktivuje odpočítávání, žádná správná odpověď se průběžně nezobrazuje.
 3. Student: odpovědět na několik uzavřených/písemných úloh, obnovit stránku, zkontrolovat odpovědi a menší zbývající čas.
 4. Student: přejít do jiné aplikace/karty a vrátit se; podle dostupného prohlížečového signálu očekávat přerušení, nikoliv falešný důkaz podvodu.
-5. Učitel: použít čtyřrohové gesto ve správném pořadí, ověřit pokračování s původním časem a odpověďmi.
+5. Učitel: použít servisní postup pro pokračování (sdělený učitelům zvlášť), ověřit pokračování s původním časem a odpověďmi.
 6. Student: nechat doběhnout čas – odevzdání musí fungovat i s prázdnými položkami, bez POST/odeslání soukromých dat.
 7. Student: po odevzdání obnovit stejnou URL; stav se nevrátí do rozpracovaného testu. Na sdíleném PC otevřít původní třídní QR ve druhé záložce – musí vzniknout jiná místní relace bez cizích odpovědí. Po převzetí výsledku použít **Smazat místní odpovědi**; stránka už nesmí ukazovat smazané odpovědi.
 8. Mobilní přejímka: skutečný Android Chrome, iPhone Safari, iPadOS Safari včetně rozdělené obrazovky; Windows Chrome/Edge a Firefox. Vždy vizuální kontrola focusu, scrollu a dotykových cílů.
