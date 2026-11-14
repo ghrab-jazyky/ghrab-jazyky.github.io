@@ -30,6 +30,16 @@
    ],
    caution:'Facebook či X může vyžadovat přihlášení nebo omezit přehrávání. Ověř zdroj na školním zařízení.'
   },
+  'll-sad':{
+   title:'Seasonal Affective Disorder · TED-Ed',
+   source:'poslech/sad/index.html',
+   levels:['A1','A2','B1','B2','C1','C2'],
+   media:[
+    {key:'youtube',url:'https://www.youtube.com/watch?v=0RiDPisQAzM',label:'Přehrát originál TED-Ed na YouTube'},
+    {key:'teded',url:'https://ed.ted.com/lessons/how-to-tell-if-you-have-seasonal-affective-disorder-kelly-rohan',label:'Oficiální lekce TED-Ed (alternativa)'}
+   ],
+   caution:'Obsahové upozornění: video hovoří o depresi a zmiňuje sebevražedné myšlenky. Nevyžadujte osobní zdravotní zkušenosti žáků.'
+  },
   'll-peaky-no-fighting':{
    title:'Peaky Blinders · No Fighting',
    source:'poslech/peaky-no-fighting/index.html',
@@ -61,7 +71,7 @@
   for(const [index,media] of chosen.media.entries()){
    const url=new URL(media.url);
    if(url.protocol!=='https:'||!['www.youtube.com','youtube.com',
-    'www.facebook.com','facebook.com','x.com'].includes(url.hostname))
+    'www.facebook.com','facebook.com','x.com','ed.ted.com'].includes(url.hostname))
     throw new Error('Nepovolený původní zdroj videa.');
    const a=document.createElement('a');
    a.href=url.href;a.target='_blank';a.rel='noopener noreferrer';
@@ -95,7 +105,7 @@
  function share(){
   if(!chosen){invalidate('Neplatný odkaz: zvolená poslechová karta neexistuje. Vrať se do katalogu.');return}
   const limit=Number($('timerMinutes').value),level=$('level').value;
-  if(!Number.isInteger(limit)||limit<5||limit>120||!core.LEVELS.includes(level)){
+  if(!Number.isInteger(limit)||limit<5||limit>120||!core.LEVELS.includes(level)||(chosen.levels&&!chosen.levels.includes(level))){
    invalidate('Nastav platnou úroveň A1–C2 a časový limit 5–120 minut.');
    return;
   }
@@ -133,7 +143,13 @@
   $('topicTitle').textContent=chosen.title;
   $('topicTitle').dataset.topicId=topicId;
   document.title='Listening Lab · TEST · '+chosen.title;
-  $('level').value=core.LEVELS.includes(params.get('level'))?params.get('level'):'B2';
+  const allowed=chosen.levels||core.LEVELS;
+  for(const option of $('level').options){
+   option.disabled=!allowed.includes(option.value);
+   option.hidden=!allowed.includes(option.value);
+  }
+  $('level').value=allowed.includes(params.get('level'))?params.get('level'):
+   (allowed.includes('B2')?'B2':allowed[0]);
   const preset=Number(params.get('timer'));
   $('timerMinutes').value=Number.isInteger(preset)&&preset>=5&&preset<=120?String(preset):'30';
   $('level').addEventListener('change',share);

@@ -4,7 +4,7 @@ const test=require('node:test'),assert=require('node:assert/strict');
 const {chromium,webkit}=require('playwright');
 const root='http://127.0.0.1:8765/language-skills-hub/';
 const reading=['rl-asteroids','rl-can-mistakes','rl-plastic-ocean','rl-email-friend','rl-instant-messages'];
-const listening=['ll-matthew-oscars','ll-harrison-ford','ll-peaky-no-fighting'];
+const listening=['ll-matthew-oscars','ll-harrison-ford','ll-peaky-no-fighting','ll-sad'];
 const readingVariants=[['en','A1'],['es','B2'],['de','C2'],['fr','C1']];
 const widths=[320,390,768,1280];
 async function assertQuestionBounds(page,context){
@@ -46,7 +46,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   const browser=await engine.launch({headless:true});
   try{
    const page=await browser.newPage({viewport:{width:390,height:844}});
-   for(const [skill,count] of [['cteni',5],['poslech',3],['konverzace',0]]){
+   for(const [skill,count] of [['cteni',5],['poslech',4],['konverzace',0]]){
     const url=new URL('index.html',root);
     url.searchParams.set('skill',skill);
     assert.equal((await page.goto(url.href)).status(),200);

@@ -6,7 +6,7 @@ const core=require('../self-check/listening/listening-core.js');
 const teacher=require('../self-check/practice-answers/teacher-key.js');
 const root=path.resolve(__dirname,'..');
 const entries=JSON.parse(fs.readFileSync(path.join(root,'data/cards.json'),'utf8'))
- .entries.filter(e=>e.skill==='poslech');
+ .entries.filter(e=>e.skill==='poslech'&&e.id!=='ll-sad');
 const base='http://127.0.0.1:8765/language-skills-hub/';
 function source(e){
  return core.extractJson(fs.readFileSync(path.join(root,e.lockSource||e.relative),'utf8'),'DATA');

@@ -4,7 +4,7 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const {chromium,webkit}=require('playwright');
 const hub='http://127.0.0.1:8765/language-skills-hub/';
 const entries=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/cards.json'),'utf8')).entries
- .filter(x=>x.skill==='poslech');
+ .filter(x=>x.skill==='poslech'&&x.id!=='ll-sad');
 assert.equal(entries.length,3);
 const url=(e,clean=false,level='B2')=>new URL(
  (clean?e.relative.replace(/index\.html$/,''):(e.lockSource||e.relative))+

@@ -655,6 +655,25 @@
       ],
       "relative": "konverzace/human-rights/index.html",
       "lockSource": null
+    },
+    {
+      "id": "ll-sad",
+      "skill": "poslech",
+      "title": "Seasonal Affective Disorder – Winter got you feeling down?",
+      "summary": "Autentické TED-Ed video: šest úrovní A1–C2 s vlastními otázkami, procvičováním a automaticky hodnoceným TESTEM.",
+      "languages": [
+        "en"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "poslech/sad/index.html",
+      "lockSource": null
     }
   ]
 }

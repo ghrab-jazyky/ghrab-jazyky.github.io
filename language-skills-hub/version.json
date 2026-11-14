@@ -1,10 +1,10 @@
 {
   "name": "Language Skills Hub",
-  "version": "R35-HR2",
+  "version": "R68-SAD-A1C2",
   "mode": "public_practice_and_unverified_grade_proposals",
   "gradedTestsEnabled": false,
-  "topicCount": 30,
-  "variantCount": 666,
+  "topicCount": 31,
+  "variantCount": 672,
   "sourceSha": "2ee9ca748f145d938309d5bf69cda23c1b5ed37b0dc373d69ca92b5355abbb38",
   "contentHashes": {
     "cl-umela-inteligence": "b384815dd7cac18e06ab42ac2b204c3d8abc9601c8a0058a8811b418e4f8252e",
@@ -36,7 +36,8 @@
     "rl-email-friend": "dc4cc55b16876d82544de6f29b2aad8db19306ec85ef6f0cb5ed1fb4de82e126",
     "rl-instant-messages": "6a616521f501d338656712b60a5fa84205f2898a1d012dc328988a14f1fc7f55",
     "cl-skola": "315e4c3c56f9afc0a2ec14da1b95b6b25acf566695ec90e1a0d76763522028d4",
-    "cl-human-rights": "558fb2b2c8c78fbde685cd1b888ca9f72b6a1f0f5a82bd8e44b9a0554f9b9711"
+    "cl-human-rights": "558fb2b2c8c78fbde685cd1b888ca9f72b6a1f0f5a82bd8e44b9a0554f9b9711",
+    "ll-sad": "34f499af7dfb0809a27fa17f903843216b1ee04577c06c446f0fd96a5345b7a9"
   },
   "sourceSnapshot": "R17",
   "sharedVocabularyModule": "My Vocabulary v1 (IndexedDB lsh, no backend)",
@@ -56,5 +57,18 @@
   "listeningTestVisibleAnswerBank": false,
   "officialSchoolLogoPdfEnabled": true,
   "officialSchoolLogoSource": "https://github.com/Daniel22-dev/AI-Studio-GHRAB/blob/main/src/assets/brand/school-logo.png",
-  "officialSchoolLogoGitBlobSha": "0b23733540b01fe70f35feda45037b0cd2c995cb"
+  "officialSchoolLogoGitBlobSha": "0b23733540b01fe70f35feda45037b0cd2c995cb",
+  "sadSource": "Original B2 17-question bank, 5 newly authored level-specific banks, total 102 questions",
+  "sadBankSha256": "71aa9e1bd9045c69d9cef9330d0c2433bb0c0d7c5db780fd4246c52eab7ce7af",
+  "listeningSharedMatchingEnabled": true,
+  "sadArchitecture": "ONE_PUBLIC_HTML_DATA; COMMON_LISTENING_STUDENT; COMMON_TEACHER_KEY; MATCHING_EXT",
+  "sadAssessmentBank": "SAD-R68-A1C2-20261114",
+  "sadCEFRLevels": [
+    "A1",
+    "A2",
+    "B1",
+    "B2",
+    "C1",
+    "C2"
+  ]
 }

@@ -5,7 +5,7 @@ const fs=require('node:fs'),path=require('node:path');
 const core=require('../self-check/listening/listening-core.js');
 const root=path.resolve(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
-const entries=JSON.parse(read('data/cards.json')).entries.filter(e=>e.skill==='poslech');
+const entries=JSON.parse(read('data/cards.json')).entries.filter(e=>e.skill==='poslech'&&core.TOPICS.includes(e.id));
 const page=read('self-check/listening/teacher.html');
 const js=read('self-check/listening/listening-teacher.js');
 const css=read('self-check/listening/listening.css');

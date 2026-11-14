@@ -19,7 +19,7 @@ function expectedCount(e,lang,level){
  const html=fs.readFileSync(path.join(root,e.lockSource||e.relative),'utf8');
  if(e.skill==='cteni')return reading.variantFromData(reading.parseReadingData(html),lang,level).questions.length;
  const v=listening.variant(listening.extractJson(html,'DATA'),level);
- return v.gist.length+v.detail.length+v.sequence.length+listening.cloze(v,e.id,level).length;
+ return v.gist.length+v.detail.length+v.sequence.length+(v.matching?.items.length||0)+listening.cloze(v,e.id,level).length;
 }
 for(const [browserName,engine]of[['Chromium',chromium],['WebKit',webkit]]){
  test('R51 '+browserName+': all 8 cards keep topic fixed while switching practice/test and CEFR',{timeout:230000},async()=>{
@@ -55,7 +55,8 @@ for(const [browserName,engine]of[['Chromium',chromium],['WebKit',webkit]]){
     assert.equal(await page.locator('#topicTitle').getAttribute('data-topic-id'),e.id);
     if(e.skill==='poslech'){
      assert.equal(await page.locator('#languageFixedWrap').isVisible(),true);
-     assert.match(await page.locator('#answerPreview').textContent(),/D · Factual cloze – test/);
+     if(e.id==='ll-sad')assert.match(await page.locator('#answerPreview').textContent(),/Matching – test/);
+      else assert.match(await page.locator('#answerPreview').textContent(),/D · Factual cloze – test/);
      assert.doesNotMatch(await page.locator('#answerPreview').textContent(),/Open questions – vzorové odpovědi/);
     }else{
      assert.equal(await page.locator('#languageSelectWrap').isVisible(),true);
