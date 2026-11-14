@@ -5,12 +5,12 @@ const {chromium,webkit}=require('playwright');
 const base='http://127.0.0.1:8765/language-skills-hub/';
 const withParams=(part,params)=>{const u=new URL(part,base);for(const [k,v]of Object.entries(params))u.searchParams.set(k,v);return u.href};
 for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
- test('R27 '+name+' shows Test only for five Reading and three Listening cards',async()=>{
+ test('R27 '+name+' shows Test only for five Reading and five Listening cards',async()=>{
   const browser=await engine.launch({headless:true});
   try{
    const page=await browser.newPage({viewport:{width:390,height:844}}),errors=[];
    page.on('pageerror',e=>errors.push(e.message));
-   for(const [skill,expected]of [['konverzace',0],['cteni',5],['poslech',4]]){
+   for(const [skill,expected]of [['konverzace',0],['cteni',5],['poslech',5]]){
     const res=await page.goto(withParams('index.html',{skill}),{waitUntil:'domcontentloaded'});
     assert.equal(res.status(),200);
     await page.locator('#cards .card').first().waitFor({state:'visible'});
