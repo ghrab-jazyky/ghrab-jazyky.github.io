@@ -263,7 +263,7 @@ async function download(model,doc){
  try{a.click()}finally{a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)}
  return name;
 }
-/* R52: build-time snapshot of the eight public teacher-key cards. Keeping
+/* R52: build-time snapshot of the ten public teacher-key cards. Keeping
  * it here means the page never needs to fetch the full catalog at startup.
  * CI verifies exact parity with data/cards.json on every change. */
 const KEY_ENTRIES=Object.freeze([
@@ -608,7 +608,7 @@ async function refresh(){
 async function init(){
  try{
   const entries=KEY_ENTRIES;
-  need(entries.length===9,'Neúplná metadata Reading/Listening.');
+  need(entries.length===10,'Neúplná metadata Reading/Listening.');
   const topicId=qs.get('topic'),requestedSkill=qs.get('skill');
   need(topicId,'Chybí identifikátor karty v odkazu.');
   const e=entries.find(x=>x.id===topicId);
