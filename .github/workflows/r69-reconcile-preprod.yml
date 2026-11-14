@@ -28,7 +28,7 @@ jobs:
           git config user.name "LSH R69 Preprod Integration"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git fetch origin main
-          test "$(git rev-parse HEAD)" = "26550d563deab9c379bd0854b61aa86f84a55f4d"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           test "$(git rev-parse origin/main)" = "ee614c3cf337d57324c2b02722008798e0d707b1"
           if git merge --no-commit --no-ff origin/main; then
             echo "No conflicts against R64 main"
