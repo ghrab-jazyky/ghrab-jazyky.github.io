@@ -93,7 +93,7 @@ Pouze tam, kde prohlížeč poskytuje dostupné signály:
 - `fullscreenchange` při skutečné podpoře fullscreen režimu. Reagovat na ukončení fullscreen; nikdy automaticky netvrdit, že fullscreen funguje na všech iPhonech.
 - Výrazné změny viewportu/split-screen/Slide Over považovat nejvýš za **indicie**, nikoli za spolehlivý důkaz. Rozpoznávání může mít falešné pozitivní i negativní výsledky.
 - Po důvěryhodné detekci přerušení uložit stav, při návratu zobrazit překryv „Test byl přerušen, přivolej učitele“; nedovolovat dál upravovat odpovědi, dokud jej učitel neobnoví. Časový limit při přerušení běží dál.
-- Jednoduché servisní gesto učitele v pořadí **levý horní → pravý horní → levý dolní → pravý dolní roh** může obnovit obrazovku a ponechat odpovědi. **Pozor: gesto není tajné heslo ani bezpečná autentizace**, student je může napodobit; může se používat pouze jako pohodlný zásah vyučujícího při osobním dozoru.
+- Jednoduchý servisní postup učitele (sdělovaný učitelům zvlášť) může obnovit obrazovku a ponechat odpovědi. **Pozor: postup není bezpečná autentizace**; může se používat pouze jako pohodlný zásah vyučujícího při osobním dozoru.
 - Incidenty ukládat lokálně jako základní technické události a zobrazit v testovém přehledu. **Nevytvářet bez souhlasu nové vzdálené logování, nahrávání obrazovky, identifikaci studentů nebo přístup ke kameře/mikrofonu.**
 - Pokud API není dostupné, nabídnout provozní alternativu („test pod přímým dohledem“) nebo upozornění. Test nezhroutit; neoznačit nemožné kontroly jako aktivní.
 
@@ -104,7 +104,7 @@ Všechno výše může vzniknout jako *přehledný dohledový režim pro běžn�
 1. GitHub Pages je veřejné statické hostování. Student může otevřít zdroj HTML/JS, upravovat URL parametry, manipulovat s lokálním časem/úložištěm, otevřít jiný prohlížeč nebo zařízení. Předpokládané „uzamčení jazyka, úrovně a času“ je v této architektuře především **UI omezení a kontrola chování běžného uživatele**, ne ověřitelná serverová politika.
 2. Skrýt slovník, nápovědu nebo správné odpovědi v UI lze; **ukrýt správné odpovědi před znalým uživatelem statické stránky nelze**. Pro závěrečný vysoce důležitý hodnoticí test je vhodný školní GIT/backend s ověřováním na serveru.
 3. Při běžném prohlížení lze detekovat události jako změna viditelnosti, nikoli zaručit, že student nevyužívá jiný program, druhý monitor/telefon, screenshot či všechny podoby split-screen. Automatické snímání obsahu celé obrazovky není možné provádět skrytě; `getDisplayMedia` vyžaduje souhlas a není všeobecně dostupné.
-4. Gesture 4 rohů lze použít pro návrat učitele k práci, ale nelze jej nazývat bezpečným heslem. Požadavky na autentické proctoring/fraud prevention **odložit nebo napojit na GIT**, ne předstírat je klientským JS.
+4. Servisní postup učitele lze použít pro návrat k práci, ale nelze jej nazývat bezpečným heslem. Požadavky na autentické proctoring/fraud prevention **odložit nebo napojit na GIT**, ne předstírat je klientským JS.
 5. Bez serveru nelze shromažďovat důvěryhodné studentovy výsledky, jednoznačně identifikovat účastníky ani zaručit běh času vůči manipulaci. Lokální test je pedagogická pomůcka při osobním dozoru.
 6. Pokud by se někdy měly sbírat osobní záznamy o studentově chování, vyžaduje to samostatné školní rozhodnutí o ochraně dat a transparentní informování, nikoli tiché zapnutí.
 
@@ -136,7 +136,7 @@ Zavést společnou konfigurační vrstvu, nikoli třikrát různě zakódovanou 
 | TE-02 | Test QR otevře správný obsah, startovací obrazovku a viditelné odpočítávání; slovník, nápovědy a přepínače jsou mimo dosah běžného UI. |
 | TE-03 | Test nepovolí zobrazení správných odpovědí před odevzdáním přes běžné ovládací prvky. |
 | TE-04 | Při opuštění stránky se zaznamená dostupná událost, aktivuje se obnovovací překryv a čas nepřestane běžet. |
-| TE-05 | Obnovení ve stejném prohlížeči zachová již zadané odpovědi a uplynulý čas; gesto učitele odemkne pokračování, ale není prezentováno jako zabezpečené heslo. |
+| TE-05 | Obnovení ve stejném prohlížeči zachová již zadané odpovědi a uplynulý čas; servisní postup učitele odemkne pokračování, ale není prezentováno jako zabezpečené heslo. |
 | TE-06 | Na iPhone/iPadu/Androidu chybějící fullscreen/split-screen signály nevyvolají falešné tvrzení o zajištěném monitoringu. |
 | SEC-01 | Žádné soukromé klíče, identifikace žáků, screenshoty, videozáznam obrazovky, přístupy k mikrofonu/kameře nebo neodsouhlasené vzdálené logování. |
 | QA-01 | Funkční reálná UAT: desktop Chrome/Firefox/Edge, Android Chrome, iPhone Safari, iPad Safari, včetně výpadku internetu a návratu do testu. |
@@ -146,7 +146,7 @@ Zavést společnou konfigurační vrstvu, nikoli třikrát různě zakódovanou 
 
 **A. Design system a učitelský tok:** prémiová karta, stručná pravdivá anotace, dva hlavní režimy, sdílení volné/pevné varianty, QR a stažení procvičovací HTML. Založit technický kontrakt a testovat jej na první Reading referenci dodané vlastníkem.
 
-**B. Společné jádro testového režimu:** časomíra, stav pokusu, vypnutí nápověd a slovníků, obnova po přerušení, lokální incidenty, jednoduché gesto učitele. Výslovná kompatibilita a omezení na telefonech/tabletech.
+**B. Společné jádro testového režimu:** časomíra, stav pokusu, vypnutí nápověd a slovníků, obnova po přerušení, lokální incidenty, servisní postup učitele. Výslovná kompatibilita a omezení na telefonech/tabletech.
 
 **C. Dvě obsahové verze pro každou referenci:** předem vybrat a ověřit, které úlohy jsou v Procvičování a které v Testu; stanovit jejich rozsah, kontrolu a hodnocení. Specifika testu Listening Lab určit až při úpravě referenční poslechové karty.
 

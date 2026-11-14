@@ -36,6 +36,7 @@ test('R39: preview, test, keys, and share URLs retain the explicit selected leve
  assert.match(teacher,/if\(!e\.languages\.includes\(lang\)\|\|!e\.levels\.includes\(level\)\)/);
  assert.match(teacher,/if\(!e\.levels\.includes\(level\)\)missing\.push\('úroveň A1–C2'\)/);
  assert.match(teacher,/\$\('downloadPdf'\)\.disabled=true/);
- assert.match(teacher,/const v=listen\.variant\(listen\.extractJson\(html,'DATA'\),level\)/);
+ assert.match(teacher,/const data=listen\.extractJson\(html,'DATA'\)/);
+ assert.match(teacher,/const v=listen\.variant\(data,level\)/);
  assert.match(teacher,/const v=read\.variantFromData\(read\.parseReadingData\(html\),lang,level\)/);
 });

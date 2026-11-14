@@ -1,4 +1,4 @@
-/* LSH R69 Conlangs · one source bank for practice, test and teacher key. */
+/* LSH R69 Conlangs · two separately authored practice/test banks with a shared scoring contract. */
 (function(root,factory){
  'use strict';
  const api=factory();
@@ -37,6 +37,33 @@
     }else requireOk(false,'unknown question type at '+level);
    }
    requireOk(REQUIRED.every(id=>seen.has(id))&&matches.size===5,'incomplete question coverage at '+level);
+   const pbank=data.practiceVariants&&data.practiceVariants[level];
+   requireOk(pbank&&Array.isArray(pbank.questionBank)&&pbank.questionBank.length===17&&
+    Array.isArray(pbank.matchingBank)&&pbank.matchingBank.length===7,
+    'missing independent practice bank at '+level);
+   requireOk(pbank.matchingBank.every((x,i)=>Array.isArray(x)&&
+    x[0]===String.fromCharCode(65+i)&&isText(x[1]))&&
+    new Set(pbank.matchingBank.map(x=>x[1])).size===7,
+    'invalid practice matching descriptions at '+level);
+   const pseen=new Set(),pmatches=new Set();
+   for(const q of pbank.questionBank){
+    requireOk(q&&REQUIRED.includes(q.id)&&!pseen.has(q.id),'invalid or duplicated practice question at '+level);
+    pseen.add(q.id);
+    requireOk(isText(q.question)&&isText(q.explanation)&&isText(q.evidence),'incomplete practice question at '+level);
+    requireOk(q.type==='mc'?q.id[0]==='A'&&Array.isArray(q.options)&&
+     q.options.length===4&&q.options.every(isText)&&new Set(q.options).size===4&&/^[A-D]$/.test(q.correct):
+     q.type==='tns'?q.id[0]==='B'&&TNS.includes(q.correct):
+     q.type==='match'?q.id[0]==='C'&&/^[A-G]$/.test(q.correct)&&!pmatches.has(q.correct):false,
+     'invalid practice answer or question type at '+level+' '+q.id);
+    if(q.type==='match')pmatches.add(q.correct);
+   }
+   requireOk(REQUIRED.every(id=>pseen.has(id))&&pmatches.size===5,'invalid practice question coverage at '+level);
+   requireOk(['TRUE','FALSE','NOT STATED'].every(code=>
+    pbank.questionBank.some(q=>q.type==='tns'&&q.correct===code)),
+    'incomplete practice T/F/NS bank at '+level);
+   const testStems=new Set(bank.questionBank.map(q=>q.question.trim().toLowerCase()));
+   requireOk(pbank.questionBank.every(q=>!testStems.has(q.question.trim().toLowerCase())),
+    'practice reveals a verbatim test question at '+level);
    requireOk(['TRUE','FALSE','NOT STATED'].every(code=>bank.questionBank.some(q=>q.type==='tns'&&q.correct===code)),
     'missing T/F/NS distinction at '+level);
    requireOk(practice&&isText(practice.objective)&&Array.isArray(practice.pre)&&practice.pre.length>=1&&
@@ -83,10 +110,11 @@
   }
   return a;
  }
- function gradeAnswers(data,raw,level='B2'){
+ function gradeAnswers(data,raw,level='B2',mode='practice'){
   requireOk(data.levels.includes(level),'invalid level');
+  requireOk(mode==='practice'||mode==='test','invalid assessment mode');
   validate(data);
-  const a=normalizeResponses(raw),out=[],variant=data.variants[level],bank=Object.fromEntries(variant.matchingBank);
+  const a=normalizeResponses(raw),out=[],variant=mode==='practice'?data.practiceVariants[level]:data.variants[level],bank=Object.fromEntries(variant.matchingBank);
   const matchUsed=new Set();
   for(const q of variant.questionBank){
    const value=a[q.id];
@@ -104,7 +132,7 @@
     reason:q.explanation,evidence:q.evidence});
   }
   const correct=out.filter(x=>x.correct).length,answered=out.filter(x=>x.answered).length;
-  return {kind:'LSH_CONLANGS_LOCAL_RESULT_V1',level,items:out,correct,answered,total:17,
+  return {kind:'LSH_CONLANGS_LOCAL_RESULT_V1',mode,level,items:out,correct,answered,total:17,
    allAnswered:answered===17,sections:{
     A:out.filter(x=>x.id[0]==='A').filter(x=>x.correct).length,
     B:out.filter(x=>x.id[0]==='B').filter(x=>x.correct).length,

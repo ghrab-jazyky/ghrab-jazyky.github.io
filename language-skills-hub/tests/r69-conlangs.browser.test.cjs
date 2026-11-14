@@ -104,3 +104,35 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   }finally{await browser.close()}
  });
 }
+
+// R69 post-audit: exercise the independent practice bank through actual UI controls.
+for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+ test(`R69 ${name}: independently authored PRACTICE banks score 17/17 and never leak TEST stems`,{timeout:220000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:820,height:1180}}),errors=[];
+   page.on('pageerror',e=>errors.push(e.message));
+   for(const level of LEVELS){
+    await page.goto(href('poslech/conlangs/index.html',{practice:1,lang:'en',level,zamek:1}),{waitUntil:'load'});
+    await page.locator('.task').first().waitFor({timeout:16000});
+    const bank=await page.evaluate(lv=>({practice:DATA.practiceVariants[lv].questionBank,
+      exam:DATA.variants[lv].questionBank}),level);
+    assert.equal(bank.practice.length,17);
+    const stems=new Set(bank.exam.map(q=>q.question));
+    assert.ok(bank.practice.every(q=>!stems.has(q.question)),'Verbatim test question leaked into practice '+level);
+    for(const q of bank.practice){
+     if(q.type==='match')await page.locator(`#answer-${q.id}`).selectOption(q.correct);
+     else await page.locator(`input[name="conlangs-${q.id}"][value="${q.correct}"]`).check();
+    }
+    for(const [section,max] of [['A',6],['B',6],['C',5]]){
+     await page.locator(`#check${section}`).click();
+     assert.match(await page.locator(`#status${section}`).innerText(),new RegExp(`Correct answers: ${max} \\/ ${max}`));
+     assert.equal(await page.locator(`#review${section} .review.wrong`).count(),0);
+    }
+    assert.ok(!(await page.locator('#reviewA').innerText()).includes('00:00–05:05'));
+    assert.ok((await page.locator('#reviewA').innerText()).includes('Precise audio time not yet independently confirmed'));
+   }
+   assert.deepEqual(errors,[]);
+  }finally{await browser.close()}
+ });
+}

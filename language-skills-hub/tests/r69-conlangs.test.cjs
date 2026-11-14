@@ -54,7 +54,7 @@ test('R69 all 102 item mutations, blank tests and matching uniqueness',()=>{
   }
   assert.throws(()=>core.assessAuto(v,{matching:[0,0]},'ll-conlangs',level),/Matching answer used more than once/);
   const auth=Object.fromEntries(data.variants[level].questionBank.map(q=>[q.id,q.correct]));
-  assert.equal(conlangs.gradeAnswers(data,auth,level).correct,17);
+  assert.equal(conlangs.gradeAnswers(data,auth,level,'test').correct,17);
  }
  assert.equal(mutations,102);
 });
@@ -62,7 +62,7 @@ test('R69 same 17-answer TEST teacher key and PRACTICE explanations',()=>{
  assert.deepEqual(key.keyEntries.map(x=>x.id),catalog.entries.filter(x=>['cteni','poslech'].includes(x.skill)).map(x=>x.id));
  for(const level of levels){
   const v=core.variant(data,level);
-  const train=key.validate(key.buildListening(v,entry,'en',level));const exam=key.validate(key.buildListeningTest(v,entry,'en',level,core.cloze(v,entry.id,level)));
+  const train=key.validate(key.buildListening(key.conlangsPracticeVariant(data,level,v),entry,'en',level));const exam=key.validate(key.buildListeningTest(v,entry,'en',level,core.cloze(v,entry.id,level)));
   assert.equal(train.mode,'practice');assert.ok(train.groups.some(x=>x.title.includes('Vocabulary')));
   assert.equal(exam.mode,'test');assert.equal(exam.groups.flatMap(x=>x.items).length,17);
  }
@@ -86,10 +86,69 @@ test('R69 independent CEFR distractor and transcript-scope quality gate',()=>{
   for(const q of bank.questionBank){
    assert.doesNotMatch(q.question,/\b(?:Quenya|Sindarin)\b/i,'Not in the spoken video: '+level+q.id);
    assert.ok(q.explanation&&q.explanation.length>=20,'Explanations must be meaningful '+level+q.id);
-   // Exact cue evidence cannot be certified before audio verification.
-   assert.match(q.evidence,/pending manual verification/,'No claim of unverified exact timings');
+   assert.ok(q.evidence&&q.evidence.length>35,'Detailed transcript cue required');
+   assert.doesNotMatch(q.evidence,/00:00|05:05|pending manual verification/,'Do not claim fake timestamps');
   }
  }
  assert.equal(data.practice.A1.vocabulary.find(x=>x.term==='a fan').cs,'fanoušek / fanynka');
  assert.equal(data.A1.vocab.find(x=>x.term==='a fan').cs,'fanoušek / fanynka');
+});
+
+// R69 P1 release blockers: no fixed T/F/NS pattern and no public practice-test copies.
+test('R69 six T/F/NS exam orders are independently mixed, all keys and aliases stay aligned',()=>{
+ const patterns=new Set();
+ for(const level of levels){
+  const b=data.variants[level],tns=b.questionBank.filter(q=>q.type==='tns');
+  assert.deepEqual(tns.map(q=>q.id),['B1','B2','B3','B4','B5','B6']);
+  const pattern=tns.map(q=>q.correct);
+  assert.deepEqual(pattern.map(x=>[x,pattern.filter(v=>v===x).length]).filter((x,i,a)=>a.findIndex(z=>z[0]===x[0])===i).map(x=>x[1]).sort(),[2,2,2],level);
+  assert.equal(patterns.has(pattern.join(',')),false,'Predictable answer pattern in '+level);
+  patterns.add(pattern.join(','));
+  for(const [i,q] of tns.entries()){
+   assert.equal(data[level].detail[i].id,q.id);
+   assert.equal(data[level].detail[i].title,q.question);
+   assert.equal(data[level].detail[i].correct,['TRUE','FALSE','NOT STATED'].indexOf(q.correct));
+  }
+ }
+ assert.equal(patterns.size,levels.length);
+});
+test('R69 independent PRACTICE source contains 102 different stems and source-based feedback without false timestamps',()=>{
+ let count=0;
+ for(const level of levels){
+  const practice=data.practiceVariants[level],exam=data.variants[level];
+  assert.equal(practice.questionBank.length,17);
+  assert.equal(practice.matchingBank.length,7);
+  const live=new Set(exam.questionBank.map(q=>q.question.trim().toLowerCase()));
+  for(const q of practice.questionBank){
+   assert.ok(!live.has(q.question.trim().toLowerCase()),'Test question leaked into practice '+level+q.id);
+   assert.doesNotMatch(q.evidence,/00:00|05:05|pending manual verification/);
+   assert.ok(q.explanation.length>=22);
+   count++;
+  }
+  const auth=Object.fromEntries(practice.questionBank.map(q=>[q.id,q.correct]));
+  assert.equal(conlangs.gradeAnswers(data,auth,level,'practice').correct,17,level);
+  assert.equal(conlangs.gradeAnswers(data,{},level,'practice').correct,0,level);
+  assert.equal(conlangs.gradeAnswers(data,auth,level,'practice').mode,'practice');
+  assert.throws(()=>conlangs.gradeAnswers(data,{C1:'A',C2:'A'},level,'practice'),/matching letter used twice/);
+  const v=key.conlangsPracticeVariant(data,level,core.variant(data,level));
+  core.validate(v);
+  const teacher=key.validate(key.buildListening(v,entry,'en',level));
+  const groups=teacher.groups.filter(g=>/First Listening|Listen and Interpret|Matching/.test(g.title));
+  assert.equal(groups.reduce((n,g)=>n+g.items.length,0),17,level);
+  assert.ok(groups.every(g=>g.items.every(q=>!live.has(q.question.trim().toLowerCase()))));
+  assert.equal(teacher.mode,'practice');
+  assert.deepEqual(v.matching.options,practice.matchingBank.map(x=>x[1]));
+ }
+ assert.equal(count,102);
+});
+test('R69 student practice never displays invented exact timestamps and teacher mode cannot mix bank types',()=>{
+ const script=read('poslech/conlangs/conlangs-practice.js');
+ assert.match(script,/data\.practiceVariants\[level\]\.questionBank/);
+ assert.match(script,/data\.practiceVariants\[level\]\.matchingBank/);
+ assert.match(script,/gradeAnswers\(data,responses,level,'practice'\)/);
+ assert.doesNotMatch(script,/Evidence in recording: approximately/);
+ assert.match(script,/Precise audio time not yet independently confirmed/);
+ const teacher=read('self-check/practice-answers/teacher-key.js');
+ assert.match(teacher,/e\.id==='ll-conlangs'\?conlangsPracticeVariant\(data,level,v\):v/);
+ assert.match(teacher,/mode==='test'\?buildListeningTest/);
 });

@@ -8,7 +8,7 @@
  const STATES=Object.freeze(['ready','running','interrupted','submitted']);
  const INCIDENT_KINDS=Object.freeze(['hidden','fullscreen-exit','fullscreen-denied',
   'focus-loss','viewport-change','restricted-viewport','clipboard',
-  'context-menu','page-leave','reload','concurrent-tab','print-attempt']);
+  'context-menu','page-leave','reload','concurrent-tab','print-attempt','blocked-shortcut']);
  const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
  const safeText=s=>typeof s==='string'&&/^[a-z0-9_-]{1,90}$/i.test(s);
  function requireValid(ok,msg){if(!ok)throw new Error(msg);}

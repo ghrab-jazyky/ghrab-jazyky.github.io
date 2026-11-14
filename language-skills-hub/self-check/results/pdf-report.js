@@ -22,13 +22,15 @@
   'viewport-change':'Výrazná změna velikosti okna',
   'restricted-viewport':'Omezené nebo rozdělené okno',
   clipboard:'Operace se schránkou',
-  'context-menu':'Kontextová nabídka nebo chráněná klávesová zkratka',
+  'context-menu':'Pokus o otevření kontextové nabídky (zablokováno)',
+  'blocked-shortcut':'Zablokovaná klávesová zkratka (Ctrl+S, Ctrl+U nebo F12)',
   'page-leave':'Opuštění testové stránky',
   reload:'Obnovení stránky během testu',
   'concurrent-tab':'Souběžný aktivní test v jiné záložce',
   'print-attempt':'Pokus o tisk nebo náhled tisku',
   'teacher-resume':'Test znovu zpřístupněn učitelem'
  });
+const BLOCKED_ACTIONS=Object.freeze(['clipboard','context-menu','blocked-shortcut','print-attempt']);
  const safeTime=t=>Number.isSafeInteger(t)&&t>=0&&t<=8640000000000000;
  function securityFromAttempt(state){
   if(!state||!safeTime(state.startedAt))return {
@@ -63,10 +65,14 @@
    'Absence záznamu neprokazuje, že k incidentu nedošlo.'
   ];
   const count=s.events.filter(e=>e.kind!=='teacher-resume').length;
+  // R64: an attempted shortcut, context menu, clipboard or print is blocked on the spot;
+  // it is reported apart from leaving or resizing the test window.
+  const blockedCount=s.events.filter(e=>BLOCKED_ACTIONS.includes(e.kind)).length;
   const out=[
    'Zdroj: lokální paměť prohlížeče studenta. Záznam není nezávisle ověřený.',
    'Detekce souběžných záložek: '+(s.tabMonitoringAvailable?'rozhraní dostupné':'nedostupná'),
-   'Zaznamenané zámky: '+count+'; zaznamenaná odemčení: '+
+   'Zaznamenané zámky: '+count+' (opuštění nebo změna okna testu: '+(count-blockedCount)+
+    '; zablokované zakázané akce: '+blockedCount+'); zaznamenaná odemčení: '+
     s.events.filter(e=>e.kind==='teacher-resume').length
   ];
   const stamp=t=>new Date(t).toLocaleString('cs-CZ');

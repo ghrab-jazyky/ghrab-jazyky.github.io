@@ -19,6 +19,7 @@
     'restricted-viewport':'The test was opened in a restricted or divided window.',
     clipboard:'Clipboard interaction was detected.',
     'context-menu':'An external context menu was requested.',
+    'blocked-shortcut':'A blocked keyboard shortcut was pressed.',
     'page-leave':'The test page was left.',
     reload:'The test page was refreshed while in progress.',
     'concurrent-tab':'Another active LSH test was detected in this browser profile.',
@@ -39,6 +40,7 @@
     'restricted-viewport':'La prueba se abrió en una ventana reducida o dividida.',
     clipboard:'Se detectó una acción con el portapapeles.',
     'context-menu':'Se intentó abrir el menú contextual.',
+    'blocked-shortcut':'Se pulsó un atajo de teclado bloqueado.',
     'page-leave':'Se abandonó la página de la prueba.',
     reload:'Se actualizó la página durante la prueba.',
     'concurrent-tab':'Se detectó otra prueba LSH activa en este navegador.',
@@ -59,6 +61,7 @@
     'restricted-viewport':'Der Test wurde in einem geteilten oder kleinen Fenster geöffnet.',
     clipboard:'Zwischenablage-Aktion erkannt.',
     'context-menu':'Ein Kontextmenü wurde angefordert.',
+    'blocked-shortcut':'Ein gesperrtes Tastaturkürzel wurde gedrückt.',
     'page-leave':'Die Testseite wurde verlassen.',
     reload:'Die Testseite wurde während des Tests neu geladen.',
     'concurrent-tab':'Ein weiterer aktiver LSH-Test wurde in diesem Browser erkannt.',
@@ -79,6 +82,7 @@
     'restricted-viewport':'Le test a été ouvert dans une fenêtre réduite ou partagée.',
     clipboard:'Une opération du presse-papiers a été détectée.',
     'context-menu':'Un menu contextuel a été demandé.',
+    'blocked-shortcut':'Un raccourci clavier bloqué a été utilisé.',
     'page-leave':'La page du test a été quittée.',
     reload:'La page a été actualisée pendant le test.',
     'concurrent-tab':'Un autre test LSH actif a été détecté dans ce navigateur.',
@@ -357,7 +361,7 @@
    const blocked=(event.ctrlKey||event.metaKey)&&
     ['p','s','u'].includes(event.key.toLowerCase());
    if(blocked||event.key==='F12'){
-    event.preventDefault();lock(event.key.toLowerCase()==='p'?'print-attempt':'context-menu');
+    event.preventDefault();lock(event.key.toLowerCase()==='p'?'print-attempt':'blocked-shortcut');
    }
   },true);
   root.addEventListener('beforeprint',()=>lock('print-attempt'));

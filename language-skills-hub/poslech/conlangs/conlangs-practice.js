@@ -49,7 +49,7 @@
    const block=el('div','match-answer');const s=el('select');
    s.id='answer-'+q.id;s.setAttribute('aria-label','Match explanation for '+q.id);
    const blank=el('option','','Select a letter');blank.value='';s.append(blank);
-   for(const [letter,title] of data.variants[level].matchingBank){
+   for(const [letter,title] of data.practiceVariants[level].matchingBank){
     const option=el('option','',letter+' — '+title);option.value=letter;s.append(option);
    }
    s.value=responses[q.id]||'';
@@ -95,19 +95,19 @@
   }
   for(const sec of 'ABC'){
    const parent=$('questions'+sec);parent.replaceChildren();
-   const part=data.variants[level].questionBank.filter(q=>q.id[0]===sec);
+   const part=data.practiceVariants[level].questionBank.filter(q=>q.id[0]===sec);
    for(const q of part)parent.append(makeQuestion(q));
    $('review'+sec).replaceChildren();$('status'+sec).textContent='Not checked yet.';
   }
   const bank=$('matchingBank');bank.replaceChildren();
   bank.append(el('h3','','Explanation bank A–G'));
-  for(const [letter,meaning] of data.variants[level].matchingBank){
+  for(const [letter,meaning] of data.practiceVariants[level].matchingBank){
    const row=el('div','bank-row');row.append(el('strong','',letter),el('span','',meaning));bank.append(row);
   }
   $('matchWarn').textContent='';refreshProgress();
  }
  function check(section){
-  const results=api.gradeAnswers(data,responses,level);
+  const results=api.gradeAnswers(data,responses,level,'practice');
   const items=results.items.filter(x=>x.id[0]===section);
   const score=items.filter(x=>x.correct).length;
   $('status'+section).textContent='Correct answers: '+score+' / '+items.length+'. Review each explanation below.';
@@ -119,7 +119,7 @@
    for(const [term,value] of [['Your answer',q.selectedLabel],['Correct answer',q.expectedLabel]]){
     dl.append(el('dt','',term),el('dd','',value));
    }
-   p.append(dl,el('p','',q.reason),el('p','note','Evidence in recording: approximately '+q.evidence));area.append(p);
+   p.append(dl,el('p','',q.reason),el('p','note','Transcript-based listening clue: '+q.evidence+'. Precise audio time not yet independently confirmed.'));area.append(p);
   }
  }
  function privacy(allLevels){

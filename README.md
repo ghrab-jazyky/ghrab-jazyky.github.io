@@ -22,13 +22,13 @@ Pracovní jazyková stupnice z dokumentu `Pravidla hodnoceni_pracovní verze 202
 - Známka 4: od 44 %
 - Známka 5: pod 44 %
 
-Výpočet porovnává **přesný poměr získaných/maximálních bodů bez zaokrouhlení**, např. 87,5 % znamená návrh známky 2. **Nebylo ověřeno, že tento pracovní návrh je platnou školní stupnicí** a že zvolený výpočet desetinných procent škola schválila. Proto aplikace výsledek označuje jako **návrh známky**, nikoli automaticky ověřený zápis do Bakalářů.
+Procenta se **zaokrouhlují na celé číslo, polovina nahoru** (R60), např. 87,5 % se počítá jako 88 % a znamená návrh známky 1. **Nebylo ověřeno, že tento pracovní návrh je platnou školní stupnicí** a že zvolený výpočet desetinných procent škola schválila. Proto aplikace výsledek označuje jako **návrh známky**, nikoli automaticky ověřený zápis do Bakalářů.
 
 ### R30 – časované lokální testy a obnova odpovědí
 
-U Reading i Listening může učitel zvolit časový limit **5–120 minut** a vytvořit studentský odkaz či QR kód. Student musí kliknout na **Začít test**; čas běží od zahájení, při opuštění stránky se může aktivovat upozornění a místní přerušení, při vypršení času se test automaticky odevzdá. Přerušenou práci lze v daném prohlížeči obnovit servisním gestem čtyř rohů; toto gesto **není bezpečnostní autentizace**.
+U Reading i Listening může učitel zvolit časový limit **5–120 minut** a vytvořit studentský odkaz či QR kód. Student musí kliknout na **Začít test**; čas běží od zahájení, při opuštění stránky se může aktivovat upozornění a místní přerušení, při vypršení času se test automaticky odevzdá. Přerušenou práci může v daném prohlížeči obnovit jen učitel servisním postupem; ten **není bezpečnostní autentizace**.
 
-Studentovy odpovědi se během pokusu ukládají **pouze lokálně**. Nové otevření třídního odkazu vytváří vlastní místní relaci, aby si žáci na sdíleném zařízení běžně nepřebírali cizí pokusy. Po odevzdání je možné místní odpovědi vymazat. Všechna tato opatření lze ze strany uživatele technicky obejít, nejsou proto zárukou zabezpečeného klasifikovaného testu. Doporučuje se osobní dohled a fyzická přejímka Android/iOS/iPadOS.
+Studentovy odpovědi se během pokusu ukládají **pouze lokálně**. Od R64 platí **jeden pokus na zařízení**: opakované otevření téhož odkazu nebo QR kódu vrátí žáka do stejného pokusu se stejným limitem; po odevzdání a vymazání se test na tomtéž zařízení znovu nespustí. Odkaz bez časovače je označen jako **test bez dohledu**. Po odevzdání je možné místní odpovědi vymazat. Všechna tato opatření lze ze strany uživatele technicky obejít, nejsou proto zárukou zabezpečeného klasifikovaného testu. Doporučuje se osobní dohled a fyzická přejímka Android/iOS/iPadOS.
 
 ### R31 – uložení učitelských bodů a CSV export
 
@@ -49,5 +49,6 @@ Pokud má být známka použita pro oficiální školní klasifikaci, musí uči
 - [Listening R24](language-skills-hub/docs/R24-LISTENING-LOCAL-SELFCHECK-PILOT.md)
 - [Audit R25](language-skills-hub/docs/R25-FINAL-AUDIT-AND-SCHOOL-ACCEPTANCE.md)
 - [Publikace R27](language-skills-hub/docs/R27-PUBLIC-RELEASE-2026-11-09.md)
+- [Opravy po auditu R64](language-skills-hub/docs/R64-AUDIT-OPRAVY.md)
 
 Historická `zkusebni` aplikace a jiné školní aplikace nejsou tímto vydáním měněny.
