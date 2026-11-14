@@ -7,10 +7,10 @@ const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const catalog=JSON.parse(read('data/cards.json')).entries;
 test('R39: all 30 topic cards use one localized title and a separate visible CEFR indicator',()=>{
  const src=read('assets/hub.js'),css=read('assets/hub.css'),html=read('index.html');
- assert.equal(catalog.length,31);
+ assert.equal(catalog.length,32);
  assert.deepEqual(Object.fromEntries(['konverzace','cteni','poslech'].map(skill=>[
   skill,catalog.filter(e=>e.skill===skill).length
- ])),{konverzace:22,cteni:5,poslech:4});
+ ])),{konverzace:22,cteni:5,poslech:5});
  assert.match(src,/function catalogVariant\(e,languageFilter,levelFilter\)/);
  assert.match(src,/return \{label:langLabel\+' · '\+levelLabel/);
  assert.match(src,/e\.levels\.includes\(levelFilter\)\?levelFilter:null/);
@@ -36,6 +36,7 @@ test('R39: preview, test, keys, and share URLs retain the explicit selected leve
  assert.match(teacher,/if\(!e\.languages\.includes\(lang\)\|\|!e\.levels\.includes\(level\)\)/);
  assert.match(teacher,/if\(!e\.levels\.includes\(level\)\)missing\.push\('úroveň A1–C2'\)/);
  assert.match(teacher,/\$\('downloadPdf'\)\.disabled=true/);
- assert.match(teacher,/const v=listen\.variant\(listen\.extractJson\(html,'DATA'\),level\)/);
+ assert.match(teacher,/const data=listen\.extractJson\(html,'DATA'\)/);
+ assert.match(teacher,/const v=listen\.variant\(data,level\)/);
  assert.match(teacher,/const v=read\.variantFromData\(read\.parseReadingData\(html\),lang,level\)/);
 });

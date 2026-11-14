@@ -637,6 +637,16 @@
         "title": "Seasonal Affective Disorder – Winter got you feeling down?",
         "summary": "TED-Ed: six distinct CEFR listening versions A1–C2, from key facts to evaluating scientific hypotheses."
       }
+    },
+    "ll-conlangs": {
+      "cs": {
+        "title": "Uměle vytvořené jazyky – Conlangs",
+        "summary": "Jak fungují elfština, klingonština a další umělé jazyky? Poslech s úlohami A1–C2."
+      },
+      "en": {
+        "title": "Constructed Languages – Conlangs",
+        "summary": "How do Elvish, Klingon and other constructed languages work? Listening tasks A1–C2."
+      }
     }
   }
 }

@@ -12,7 +12,7 @@ const version=JSON.parse(read('version.json'));
 const policy=JSON.parse(read('data/test-mode-policy.json'));
 const grading=JSON.parse(read('data/r25-grading-review.json'));
 const reading=catalog.entries.filter(x=>x.skill==='cteni');
-const listening=catalog.entries.filter(x=>x.skill==='poslech'&&x.id!=='ll-sad');
+const listening=catalog.entries.filter(x=>x.skill==='poslech'&&!['ll-sad','ll-conlangs'].includes(x.id));
 const labels={points:'Points',objectivePercent:'Objective success',completion:'Answered tasks',
  manualReview:'Written answers for teacher review',schoolGrade:'Official school grade',noGrade:'—'};
 
@@ -173,8 +173,8 @@ test('R25 repository README points at the real live school catalog, not the arch
  assert.match(readme,/\*\*Veřejný katalog:\*\*/);
 });
 test('R25 public practice cards remain unchanged and local results keep grading off',()=>{
- assert.equal(catalog.entries.length,31);
- assert.equal(catalog.entries.reduce((n,e)=>n+e.languages.length*e.levels.length,0),672);
+ assert.equal(catalog.entries.length,32);
+ assert.equal(catalog.entries.reduce((n,e)=>n+e.languages.length*e.levels.length,0),678);
  for(const entry of catalog.entries){
   const digest=crypto.createHash('sha256').update(fs.readFileSync(path.join(root,entry.relative))).digest('hex');
   assert.equal(digest,version.contentHashes[entry.id]);

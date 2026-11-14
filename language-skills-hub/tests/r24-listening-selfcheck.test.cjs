@@ -118,6 +118,6 @@ test('R24 uses no student POST, login, database or official grading API',()=>{
    read('self-check/listening/listening-core.js');
  assert.doesNotMatch(code,/(?:method\s*:\s*['"]POST|navigator\.sendBeacon|indexedDB\.open|fetch\([^\n]+\/v1\/)/);
  assert.doesNotMatch(read('self-check/listening/student.html'),/type=["']password|name=["']studentName/);
- assert.equal(cards.entries.length,31);
- assert.equal(cards.entries.reduce((sum,x)=>sum+x.languages.length*x.levels.length,0),672);
+ assert.equal(cards.entries.length,32);
+ assert.equal(cards.entries.reduce((sum,x)=>sum+x.languages.length*x.levels.length,0),678);
 });

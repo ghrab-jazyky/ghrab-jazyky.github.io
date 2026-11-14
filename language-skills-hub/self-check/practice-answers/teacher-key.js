@@ -109,6 +109,31 @@ function buildReadingTest(variant,entry,lang,level){
 }
 /* R51: Listening TEST uses the same closed cloze answer bank as
  * ListeningCore.assessAuto, not the separate open-ended practice facts. */
+/* R69: PRACTICE and TEST are different authored listening banks.
+ * The shared teacher key must display the questions students actually practise.
+ * Never substitute the TEST variant in PRACTICE mode for ll-conlangs. */
+function conlangsPracticeVariant(data,level,testVariant){
+ need(data&&data.id==='ll-conlangs'&&data.practiceVariants,
+  'R69 independent practice data missing.');
+ const bank=data.practiceVariants[level];
+ need(bank&&Array.isArray(bank.questionBank)&&bank.questionBank.length===17&&
+  Array.isArray(bank.matchingBank)&&bank.matchingBank.length===7,
+  'R69 incomplete practice bank.');
+ const coded=['TRUE','FALSE','NOT STATED'];
+ const mc=bank.questionBank.filter(q=>q.type==='mc');
+ const tns=bank.questionBank.filter(q=>q.type==='tns');
+ const mat=bank.questionBank.filter(q=>q.type==='match');
+ need(mc.length===6&&tns.length===6&&mat.length===5,'R69 invalid practice task count.');
+ const options=bank.matchingBank.map(x=>x[1]);
+ const gist=mc.map(q=>({id:q.id,title:q.question,type:'single',options:q.options,
+  correct:q.correct.charCodeAt(0)-65,why:q.explanation,evidence:q.evidence}));
+ const detail=tns.map(q=>({id:q.id,title:q.question,type:'single',options:coded,
+  correct:coded.indexOf(q.correct),why:q.explanation,evidence:q.evidence}));
+ const matching={options,items:mat.map(q=>({id:q.id,title:q.question,
+  correct:q.correct.charCodeAt(0)-65,why:q.explanation,evidence:q.evidence}))};
+ return {...testVariant,gist,detail,matching};
+}
+
 function buildListeningTest(variant,entry,lang,level,clozeTasks){
  need(entry&&entry.skill==='poslech'&&lang==='en','Téma není anglický Listening Lab.');
  need(variant&&Array.isArray(variant.gist)&&Array.isArray(variant.detail)&&
@@ -263,7 +288,7 @@ async function download(model,doc){
  try{a.click()}finally{a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)}
  return name;
 }
-/* R52: build-time snapshot of the eight public teacher-key cards. Keeping
+/* R52: build-time snapshot of the ten public teacher-key cards. Keeping
  * it here means the page never needs to fetch the full catalog at startup.
  * CI verifies exact parity with data/cards.json on every change. */
 const KEY_ENTRIES=Object.freeze([
@@ -443,11 +468,29 @@ const KEY_ENTRIES=Object.freeze([
   ],
   "relative": "poslech/sad/index.html",
   "lockSource": null
-}
+},
+ {
+   "id": "ll-conlangs",
+   "skill": "poslech",
+   "title": "Are Elvish, Klingon, Dothraki and Na’vi real languages?",
+   "languages": [
+     "en"
+   ],
+   "levels": [
+     "A1",
+     "A2",
+     "B1",
+     "B2",
+     "C1",
+     "C2"
+   ],
+   "relative": "poslech/conlangs/index.html",
+   "lockSource": null
+ }
 
 ].map(e=>Object.freeze({...e,
  languages:Object.freeze(e.languages),levels:Object.freeze(e.levels)})));
-const api=Object.freeze({buildReading,buildListening,buildReadingTest,buildListeningTest,
+const api=Object.freeze({buildReading,buildListening,buildReadingTest,buildListeningTest,conlangsPracticeVariant,
  validate,renderPages,download,keyEntries:KEY_ENTRIES});
 if(typeof module!=='undefined'&&module.exports)module.exports=api;
 host.LSHPracticeAnswers=api;
@@ -566,9 +609,12 @@ async function refresh(){
    const v=read.variantFromData(read.parseReadingData(html),lang,level);
    model=mode==='test'?buildReadingTest(v,e,lang,level):buildReading(v,e,lang,level);
   }else{
-   const v=listen.variant(listen.extractJson(html,'DATA'),level);
+   const data=listen.extractJson(html,'DATA');
+   const v=listen.variant(data,level);
    model=mode==='test'?buildListeningTest(v,e,lang,level,
-    listen.cloze(v,e.id,level)):buildListening(v,e,lang,level);
+    listen.cloze(v,e.id,level)):buildListening(
+     e.id==='ll-conlangs'?conlangsPracticeVariant(data,level,v):v,
+     e,lang,level);
   }
   validate(model);
   if(id!==serial)return;
@@ -590,7 +636,7 @@ async function refresh(){
 async function init(){
  try{
   const entries=KEY_ENTRIES;
-  need(entries.length===9,'Neúplná metadata Reading/Listening.');
+  need(entries.length===10,'Neúplná metadata Reading/Listening.');
   const topicId=qs.get('topic'),requestedSkill=qs.get('skill');
   need(topicId,'Chybí identifikátor karty v odkazu.');
   const e=entries.find(x=>x.id===topicId);

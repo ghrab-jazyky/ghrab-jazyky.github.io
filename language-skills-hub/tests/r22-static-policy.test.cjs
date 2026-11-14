@@ -28,7 +28,7 @@ test('R22 remains a static-only design; neither secure grades nor student accoun
  assert.equal(catalog.gradedTestsEnabled, false);
  assert.equal(release.gradedTestsEnabled, false);
  assert.equal(release.mode, 'public_practice_and_unverified_grade_proposals');
- assert.equal(release.version, 'R68-SAD-A1C2');
+ assert.equal(release.version, 'R69-CONLANGS-A1C2');
 });
 
 test('R22 local self-check is planned for Reading/Listening only and cannot be called anti-cheat', () => {
@@ -53,9 +53,9 @@ test('R22 local self-check is planned for Reading/Listening only and cannot be c
 });
 
 test('R22 does not modify 30 live practice cards or the 666 published variants', () => {
- assert.equal(catalog.entries.length, 31);
- assert.equal(release.topicCount, 31);
- assert.equal(release.variantCount, 672);
+ assert.equal(catalog.entries.length, 32);
+ assert.equal(release.topicCount, 32);
+ assert.equal(release.variantCount, 678);
  const counts = {konverzace:0,cteni:0,poslech:0};
  let variants = 0;
  for (const entry of catalog.entries) {
@@ -67,8 +67,8 @@ test('R22 does not modify 30 live practice cards or the 666 published variants',
   assert.equal(digest, release.contentHashes[entry.id], entry.id + ' changed unexpectedly');
   if (entry.skill === 'poslech') assert.deepEqual(entry.languages, ['en']);
  }
- assert.deepEqual(counts, {konverzace:22,cteni:5,poslech:4});
- assert.equal(variants, 672);
+ assert.deepEqual(counts, {konverzace:22,cteni:5,poslech:5});
+ assert.equal(variants, 678);
 });
 
 test('R22 public catalog offers practice sharing and only explicit ungraded tests', () => {

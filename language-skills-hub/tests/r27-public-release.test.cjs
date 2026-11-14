@@ -10,7 +10,7 @@ const policy=JSON.parse(read('data/test-mode-policy.json'));
 const grades=JSON.parse(read('data/r25-grading-review.json'));
 
 test('R27 actually enables only explicit public local self-checks, never secure classified exams',()=>{
- assert.equal(manifest.version,'R68-SAD-A1C2');
+ assert.equal(manifest.version,'R69-CONLANGS-A1C2');
  assert.equal(manifest.sourceSnapshot,'R17');
  assert.equal(manifest.selfCheckEnabled,true);
  assert.equal(manifest.backendEnabled,false);
@@ -32,9 +32,9 @@ test('R27 actually enables only explicit public local self-checks, never secure 
  assert.equal(grades.workingSource.schoolApprovalVerified,false);
 });
 test('R27 preserves 30 practice cards with exact hashes and 666 variants',()=>{
- assert.equal(catalog.entries.length,31);
- assert.equal(manifest.topicCount,31);
- assert.equal(manifest.variantCount,672);
+ assert.equal(catalog.entries.length,32);
+ assert.equal(manifest.topicCount,32);
+ assert.equal(manifest.variantCount,678);
  const types={konverzace:0,cteni:0,poslech:0};
  let variants=0;
  for(const entry of catalog.entries){
@@ -42,8 +42,8 @@ test('R27 preserves 30 practice cards with exact hashes and 666 variants',()=>{
   const sha=crypto.createHash('sha256').update(fs.readFileSync(path.join(root,entry.relative))).digest('hex');
   assert.equal(sha,manifest.contentHashes[entry.id],entry.id);
  }
- assert.deepEqual(types,{konverzace:22,cteni:5,poslech:4});
- assert.equal(variants,672);
+ assert.deepEqual(types,{konverzace:22,cteni:5,poslech:5});
+ assert.equal(variants,678);
 });
 test('R27 catalog exposes an explicitly non-graded action ONLY in Reading and Listening',()=>{
  const src=read('assets/hub.js'),html=read('index.html');

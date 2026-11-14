@@ -58,8 +58,8 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(await cards.locator('a').filter({hasText:'VÝSLEDKY'}).count(),5);
    await page.goto(href('index.html',{skill:'poslech'}));
    await cards.first().waitFor({timeout:20000});
-   assert.equal(await cards.count(),4);
-   assert.equal(await cards.locator('a').filter({hasText:'VÝSLEDKY'}).count(),4);
+   assert.equal(await cards.count(),5,'Five Listening cards are published after R69');
+   assert.equal(await cards.locator('a').filter({hasText:'VÝSLEDKY'}).count(),5,'Every Listening card has a teacher practice key');
    assert.deepEqual(errors,[]);
    assert.deepEqual(uploads,[]);
   }finally{await browser.close()}

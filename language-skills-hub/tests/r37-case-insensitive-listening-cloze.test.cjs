@@ -5,7 +5,7 @@ const fs=require('node:fs'),path=require('node:path');
 const core=require('../self-check/listening/listening-core.js');
 const root=path.resolve(__dirname,'..');
 const catalog=JSON.parse(fs.readFileSync(path.join(root,'data/cards.json'),'utf8'));
-const listening=catalog.entries.filter(e=>e.skill==='poslech'&&e.id!=='ll-sad');
+const listening=catalog.entries.filter(e=>e.skill==='poslech'&&!['ll-sad','ll-conlangs'].includes(e.id));
 const variant=(entry,level)=>{
  const html=fs.readFileSync(path.join(root,entry.relative),'utf8');
  return core.variant(core.extractJson(html,'DATA'),level);

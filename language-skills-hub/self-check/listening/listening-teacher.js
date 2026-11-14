@@ -40,6 +40,16 @@
    ],
    caution:'Obsahové upozornění: video hovoří o depresi a zmiňuje sebevražedné myšlenky. Nevyžadujte osobní zdravotní zkušenosti žáků.'
   },
+  'll-conlangs':{
+   title:'Constructed Languages · TED-Ed',
+   source:'poslech/conlangs/index.html',
+   levels:['A1','A2','B1','B2','C1','C2'],
+   media:[
+    {key:'youtube',url:'https://www.youtube.com/watch?v=a5mZ0R3h8m0',label:'Play the original TED-Ed video'},
+    {key:'teded',url:'https://ed.ted.com/lessons/are-elvish-klingon-dothraki-and-na-vi-real-languages-john-mcwhorter',label:'Official TED-Ed lesson'}
+   ],
+   caution:'Check external playback on your school network before class. No student logins are required.'
+  },
   'll-peaky-no-fighting':{
    title:'Peaky Blinders · No Fighting',
    source:'poslech/peaky-no-fighting/index.html',
