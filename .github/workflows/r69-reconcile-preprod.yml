@@ -34,14 +34,14 @@ jobs:
             echo "No conflicts against R64 main"
           else
             conflicts="$(git diff --name-only --diff-filter=U)"
-            expected="$(printf '%s\n' 'language-skills-hub/tests/r35-hr2-release.test.cjs' 'language-skills-hub/version.json')"
+            expected="language-skills-hub/version.json"
             if [ "$conflicts" != "$expected" ]; then
               echo "Unexpected merge conflicts. Refusing to modify branch."
               printf '%s\n' "$conflicts"
               exit 1
             fi
-            git checkout --ours -- language-skills-hub/tests/r35-hr2-release.test.cjs language-skills-hub/version.json
-            git add -- language-skills-hub/tests/r35-hr2-release.test.cjs language-skills-hub/version.json
+            git checkout --ours -- language-skills-hub/version.json
+            git add -- language-skills-hub/version.json
           fi
           python3 - <<'PY'
           import zipfile,hashlib,json
