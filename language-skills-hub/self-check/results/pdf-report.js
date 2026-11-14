@@ -361,12 +361,18 @@
   for(const chunk of chunks){pdf.set(chunk,off);off+=chunk.length}
   return pdf;
  }
- async function loadSchoolLogo(documentRef){
-  check(documentRef&&documentRef.baseURI&&documentRef.defaultView,'Document required for official school logo.');
+ // R64: the PDF never leaves without the official school logo. The logo is fetched as soon
+ // as the test page opens (while the device is certainly online), kept in memory, and the
+ // download retries the fetch before giving up with a clear message.
+ const LOGO_MESSAGE='Logo školy se nepodařilo načíst, proto PDF nevzniklo. Zkontrolujte připojení k internetu a klikněte znovu. / The school logo could not be loaded, so no PDF was created. Check the internet connection and try again.';
+ let logoCache=null;
+ async function fetchSchoolLogo(documentRef,attempt){
   const ImageCtor=documentRef.defaultView.Image;
   check(typeof ImageCtor==='function','Image decoder unavailable.');
   const img=new ImageCtor();
-  img.src=new URL('../../assets/school-logo.png',documentRef.baseURI).href;
+  const url=new URL('../../assets/school-logo.png',documentRef.baseURI);
+  if(attempt>0)url.searchParams.set('retry',String(attempt));
+  img.src=url.href;
   if(typeof img.decode==='function')await img.decode();
   else await new Promise((resolve,reject)=>{
    if(img.complete&&img.naturalWidth){resolve();return}
@@ -375,6 +381,34 @@
   check(img.naturalWidth===384&&img.naturalHeight===384,
    'Official school logo size mismatch.');
   return img;
+ }
+ async function loadSchoolLogo(documentRef){
+  check(documentRef&&documentRef.baseURI&&documentRef.defaultView,'Document required for official school logo.');
+  if(logoCache&&logoCache.doc===documentRef){
+   try{return await logoCache.promise}catch(_){logoCache=null}
+  }
+  let lastError=null;
+  for(let attempt=0;attempt<3;attempt++){
+   try{
+    const img=await fetchSchoolLogo(documentRef,attempt);
+    logoCache={doc:documentRef,promise:Promise.resolve(img)};
+    return img;
+   }catch(error){
+    lastError=error;
+    if(/size mismatch|decoder unavailable/i.test(String(error&&error.message)))throw error;
+    await new Promise(resolve=>setTimeout(resolve,400*(attempt+1)));
+   }
+  }
+  const failure=new Error(LOGO_MESSAGE);failure.cause=lastError;throw failure;
+ }
+ function preloadSchoolLogo(documentRef){
+  const d=documentRef||host.document;
+  if(!d||!d.defaultView||!d.baseURI)return null;
+  if(logoCache&&logoCache.doc===d)return logoCache.promise;
+  const promise=fetchSchoolLogo(d,0);
+  promise.catch(()=>{});
+  logoCache={doc:d,promise};
+  return promise;
  }
  async function generate(report,doc){
   const d=doc||host.document;
@@ -393,7 +427,12 @@
   try{a.click()}finally{a.remove();setTimeout(()=>URL.revokeObjectURL(objectUrl),2000)}
   return name;
  }
- const api=Object.freeze({normalize,securityFromAttempt,securityDetails,fullText,copy,renderPages,pdfBytes,loadSchoolLogo,generate,download});
+ const api=Object.freeze({normalize,securityFromAttempt,securityDetails,fullText,copy,renderPages,pdfBytes,loadSchoolLogo,preloadSchoolLogo,generate,download});
+ if(host.document&&typeof host.document.addEventListener==='function'){
+  const startPreload=()=>{try{preloadSchoolLogo(host.document)}catch(_){}};
+  if(host.document.readyState==='loading')host.document.addEventListener('DOMContentLoaded',startPreload,{once:true});
+  else startPreload();
+ }
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  else host.LSHPdfReport=api;
 })(typeof window!=='undefined'?window:this);
