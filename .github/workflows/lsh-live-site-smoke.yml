@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 9
     steps:
-      - name: Verify public R69 Pages, 32 cards, five Listening topics via HTTPS
+      - name: Verify public R70 Pages, 32 cards, five Listening topics via HTTPS
         shell: bash
         run: |
           python3 - <<'PY'
@@ -38,7 +38,7 @@ jobs:
                   assert data['kind']=='LSH_PUBLIC_PRACTICE_R17'
                   assert data['gradedTestsEnabled'] is False
                   release=json.loads(get('/language-skills-hub/version.json?verify='+str(attempt)))
-                  assert release['version']=='R69-CONLANGS-A1C2'
+                  assert release['version']=='R70-LISTENING-STUDIO-UNIFICATION'
                   assert release['localGradeProposalsEnabled'] is True
                   assert release['localTeacherReviewPersistenceEnabled'] is True
                   assert release['localAnonymousCsvExportEnabled'] is True
@@ -77,8 +77,17 @@ jobs:
                   conlangs=next(e for e in entries if e['id']=='ll-conlangs')
                   assert conlangs['levels']==['A1','A2','B1','B2','C1','C2']
                   assert conlangs['languages']==['en']
+                  # R70: verify both updated listening cards and their shared student UI assets.
+                  sad_bytes=get('/language-skills-hub/'+sad['relative']+'?verify='+str(attempt))
+                  assert hashlib.sha256(sad_bytes).hexdigest()==release['contentHashes']['ll-sad']
+                  assert b'class="studio-levelbar"' in sad_bytes and b'class="hero-aside"' in sad_bytes
+                  assert b'href="#finish"' in sad_bytes
+                  for asset in ['assets/lsh/listening-studio.css','assets/lsh/listening-studio.js']:
+                      head('/language-skills-hub/'+asset)
                   conlangs_bytes=get('/language-skills-hub/'+conlangs['relative']+'?verify='+str(attempt))
                   assert hashlib.sha256(conlangs_bytes).hexdigest()==release['contentHashes']['ll-conlangs']
+                  assert b'class="studio-levelbar"' in conlangs_bytes and b'class="hero-aside"' in conlangs_bytes
+                  assert b'href="#finish"' in conlangs_bytes
                   import re
                   matched=re.search(rb'const DATA=(\{.*?\});\s*const SOURCES=',conlangs_bytes,re.S)
                   assert matched is not None, 'Conlangs source DATA block missing'
@@ -125,7 +134,7 @@ jobs:
                   assert logo[:8]==b'\x89PNG\r\n\x1a\n' and len(logo)>1000
                   assert int.from_bytes(logo[16:20],'big')==384 and int.from_bytes(logo[20:24],'big')==384
                   assert hashlib.sha1(b'blob '+str(len(logo)).encode()+b'\0'+logo).hexdigest()=='0b23733540b01fe70f35feda45037b0cd2c995cb'
-                  print('PASS LIVE HTTPS R69: 32 practice cards, 5 Listening topics, 102+102 Conlangs questions, A1-C2, original school logo PDF',flush=True)
+                  print('PASS LIVE HTTPS R70: 32 practice cards, 5 Listening topics, 102+102 Conlangs questions, A1-C2, original school logo PDF',flush=True)
                   print('PRODUCTION URL:',base+'/language-skills-hub/',flush=True)
                   sys.exit(0)
               except Exception as ex:

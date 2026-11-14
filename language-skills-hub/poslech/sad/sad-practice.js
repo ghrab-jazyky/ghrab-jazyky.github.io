@@ -131,7 +131,7 @@
  }
  function setup(){
   const savedTheme=(()=>{try{return localStorage.getItem('lsh-listening-theme')}catch(_){return null}})();
-  if(savedTheme==='light')document.documentElement.dataset.theme='light';
+  if(savedTheme==='light'||savedTheme==='dark')document.documentElement.dataset.theme=savedTheme;
   const syncTheme=()=>{$('themeBtn').textContent=document.documentElement.dataset.theme==='light'?'☾ Dark mode':'☀ Light mode';};syncTheme();
   $('themeBtn').addEventListener('click',()=>{
    const value=document.documentElement.dataset.theme==='light'?'dark':'light';
