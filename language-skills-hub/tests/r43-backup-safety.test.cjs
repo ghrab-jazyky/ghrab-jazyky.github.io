@@ -41,5 +41,5 @@ test('R43 zero-server contract: no backend, no outbound API or account, no card 
  assert.doesNotMatch(ui,/localStorage\.setItem\s*\(\s*['"]student/i);
  assert.match(ui,/navigator\.share\(\{files:/);
  assert.match(read('slovnicek/vocabulary.js'),/createStore\(\{mode:'production'\}\)/);
- const v=JSON.parse(read('version.json'));assert.equal(v.topicCount,29);assert.equal(v.variantCount,642);
+ const v=JSON.parse(read('version.json'));assert.equal(v.topicCount,30);assert.equal(v.variantCount,666);
 });
