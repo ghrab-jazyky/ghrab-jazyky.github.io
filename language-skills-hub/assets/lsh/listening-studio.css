@@ -120,3 +120,17 @@ a{color:var(--accent)}
 :root[data-theme="dark"] .studio-levelbar .levels button[aria-pressed="true"]{background:#efb373;border-color:#efb373;color:#132c41}
 @media(max-width:520px){.task>.match-answer{grid-column:1 / -1}}
 @media print{.studio-side-progress{display:none!important}}
+
+/* Final R70 parity: reuse the Harrison/Matthew hero's two-column visual hierarchy. */
+.hero .hero-grid{position:relative;z-index:1;max-width:1160px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 285px;align-items:center;gap:40px}
+.hero .hero-main{min-width:0}
+.hero .hero-main h1{font-size:clamp(40px,5vw,68px);max-width:810px}
+.hero .hero-aside{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.19);padding:24px;border-radius:14px}
+.hero .hero-aside .mini{color:#aebfcc;text-transform:uppercase;letter-spacing:.14em;font-size:11px}
+.hero .hero-aside .big{font:43px/1 Georgia,serif;color:#efc58e;margin:16px 0}
+.hero .hero-aside hr{border:0;border-top:1px solid rgba(255,255,255,.15);margin:19px 0}
+.hero .hero-aside p{font-size:13px;color:#e1ebf0;margin:0}
+.hero .hero-aside .mini-gap{margin-top:16px}
+.hero>.notice,.hero>#fixedNote{max-width:1160px;margin-left:auto;margin-right:auto}
+@media(max-width:850px){.hero .hero-grid{display:block}.hero .hero-aside{display:none}}
+@media print{.hero .hero-aside{display:none}}

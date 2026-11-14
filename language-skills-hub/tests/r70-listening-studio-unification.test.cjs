@@ -24,6 +24,9 @@ for(const topic of ['sad','conlangs']){
   assert.match(html,/href="\.\.\/\.\.\/assets\/lsh\/listening-studio\.css"/);
   assert.match(html,/src="\.\.\/\.\.\/assets\/lsh\/listening-studio\.js"/);
   assert.match(html,/<nav class="studio-levelbar" aria-label="Choose a listening level">/);
+  assert.match(html,/class="hero-grid"/);
+  assert.match(html,/class="hero-aside"/);
+  assert.match(html,/href="#finish"/);
   for(const id of ['levelPills','topLevelText','videoFrame','videoCover','loadVideo',
    'questionsA','questionsB','questionsC','checkA','checkB','checkC',
    'progressBar','progressStatus','studioProgressBar','studioProgressText'])

@@ -41,6 +41,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     assert.equal(await page.locator('.task').count(),17);
     assert.equal(await page.locator('.studio-levelbar').count(),1);
     assert.equal(await page.locator('.side').count(),1);
+    assert.equal(await page.locator('.hero-aside').count(),1);
     const style=await page.evaluate(()=>{
      const level=getComputedStyle(document.querySelector('.studio-levelbar'));
      const bg=getComputedStyle(document.body).backgroundColor;
@@ -55,6 +56,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      await page.waitForTimeout(85);
      const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
      assert.ok(overflow<=3,topic+' '+width+'px overflow: '+overflow);
+     if(width===1280)assert.equal(await page.locator('.hero-aside').isVisible(),true);
     }
     await page.locator('#themeBtn').click();
     assert.equal(await page.locator('html').getAttribute('data-theme'),'dark');
