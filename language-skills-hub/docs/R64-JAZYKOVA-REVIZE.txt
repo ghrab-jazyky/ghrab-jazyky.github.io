@@ -2215,3 +2215,587 @@ zivot-bez-ai | FR | C2 | stations/3/stretch | chybné zájmeno (-la místo -les,
 zivot-bez-ai | FR | C2 | stations/4/questions/0 | neúplná/nesmyslná otázka
   bylo:  Où se situent inspiration, imitation et délégation ?
   je:    Où se situent les frontières entre inspiration, imitation et délégation ?
+
+H. Druhé kolo (14. 11. 2026)
+
+Každou opravu z prvního kola znovu posoudil nezávislý druhý čtenář (všech 1 096 úprav včetně nových nápověd): 1 048 potvrzeno, 48 přepracováno, žádná vrácena.
+Skupiny EN 3 a EN 4 byly přečteny znovu celé; karta Human Rights byla přečtena ve všech čtyřech jazycích. Věcná kontrola Human Rights: texty neuvádějí konkrétní dokumenty, data ani instituce; obecná tvrzení jsou správná.
+Použito: přepracované opravy 48, nové opravy (EN 3, EN 4, Human Rights) 99, rozhodnutí u poznámek 37, stejná oprava u shodného řetězce na téže úrovni 8.
+Neřešeno (vyžaduje nový obsah, ne opravu): opakované obecné nápovědy na B2–C2 (nemoci-u-lekare, pratele, socialni-site C1/5), rodina EN C1 stanoviště 2 (vysvětlení neodpovídají otázkám), umela-inteligence DE C2 7 (otázka opakuje hlavní otázku), zivot-bez-ai DE C1 4 (úkol navíc nenavazuje), podtitulky A2 převzaté z vyšších úrovní (spolecenske-problemy EN aj.).
+
+jak-se-ucit-na-testy | DE | C1 | vocab/11/1 | revise
+  bylo:  sich über längere Zeit an Wissen erinnern
+  je:    Wissen über längere Zeit im Gedächtnis bewahren
+pratele | DE | C2 | stations/2/questions/1 | revise
+  bylo:  Wie geht man mit dauerhaft asymmetrischen Möglichkeiten, einander zu helfen, um?
+  je:    Wie geht man mit dauerhaft asymmetrischen Möglichkeiten um, einander zu helfen?
+prazdniny | DE | A1 | vocab/5/1 | revise
+  bylo:  sehr hohes Land, zum Beispiel die Alpen
+  je:    sehr hohe Orte in der Natur, zum Beispiel die Alpen
+rodina | DE | C1 | stations/4/support/1 | revise
+  bylo:  In der Rolle der neutralen Moderation würde ich zunächst …
+  je:    Als neutraler Moderator oder neutrale Moderatorin würde ich zunächst …
+svetova-politika | DE | C1 | stations/1/mainExplain | revise
+  bylo:  Die Art, wie Politiker und Medien Ereignisse in anderen Ländern beschreiben, kann verändern, wie wir sie sehen. Wie können diese Geschichten beeinflussen, was ihr Land nach Ansicht der Menschen tun sollte?
+  je:    Die Art, wie Politiker und Medien Ereignisse in anderen Ländern beschreiben, kann verändern, wie wir sie sehen. Wie können diese Geschichten die Meinung der Menschen darüber beeinflussen, was ihr Land tun sollte?
+vanoce | DE | B2 | stations/4/explanations/1 | revise
+  bylo:  Manche Schüler glauben nicht an Gott oder gehören einer anderen Religion an. Wie könnten sie an Weihnachtsaktivitäten teilnehmen, ohne das Gefühl zu haben, gegen ihren Willen vereinnahmt zu werden?
+  je:    Manche Schüler glauben nicht an Gott oder gehören einer anderen Religion an. Wie könnten sie an Weihnachtsaktivitäten teilnehmen, ohne das Gefühl zu haben, gegen ihren Willen zu etwas gedrängt zu werden?
+hrani-her | EN | A1 | vocab/3/1 | revise
+  bylo:  the time when you rest at night with your eyes closed
+  je:    rest at night with your eyes closed
+jak-se-ucit-na-testy | EN | B1 | warm | revise
+  bylo:  In 30 seconds, say what makes a good study day. Then compare.
+  je:    In 30 seconds, say what makes a good study day for you. Then compare with your partner.
+jidlo-piti-restaurace | EN | A1 | stations/6/support/2 | revise
+  bylo:  I’m sorry! I’ll bring you a hot one.
+  je:    I’m sorry! I’ll bring you some hot soup.
+nemoci-u-lekare | EN | A1 | vocab/7/1 | revise
+  bylo:  person who helps ill people
+  je:    person who checks ill people and helps them get better
+nemoci-u-lekare | EN | C2 | stations/6/stretch | revise
+  bylo:  Reject both extremes: that health is entirely an individual’s fault, or entirely outside their control.
+  je:    Reject both extremes: that ill health is entirely an individual’s fault, or that it is entirely outside their control.
+rodina | EN | B2 | stations/4/scenario | revise
+  bylo:  Two relatives disagree about having friends round at home.
+  je:    Two relatives disagree about how often friends can visit them at home.
+rodina | EN | C1 | stations/3/challenge | revise
+  bylo:  Negotiate a model for an imaginary home that shares money, time and care fairly.
+  je:    Negotiate a model for sharing money, time and care fairly in an imaginary household.
+socialni-site-a-dusevni-zdravi | EN | A1 | vocab/9/1 | revise
+  bylo:  a click that says you like a post
+  je:    a click on a heart or thumbs-up under a post
+volny-cas-a-konicky | EN | A2 | vocab/8/1 | revise
+  bylo:  meet someone, usually as planned
+  je:    to meet someone at a time and place you have agreed
+jak-se-ucit-na-testy | ES | A2 | vocab/5/1 | revise
+  bylo:  hacer cosas para estar listo
+  je:    hacer lo necesario para estar listo
+jidlo-piti-restaurace | ES | A1 | vocab/5/1 | revise
+  bylo:  bebida transparente, sin color
+  je:    bebida sin color ni sabor
+pratele | ES | A2 | vocab/3/1 | revise
+  bylo:  lugar donde se queda con alguien
+  je:    lugar donde quedas con alguien
+problemy-teenageru | ES | C2 | stations/1/questions/0 | revise
+  bylo:  ¿Qué distingue consentimiento de obediencia resignada en una relación desigual?
+  je:    ¿Qué distingue el consentimiento de la obediencia resignada en una relación desigual?
+socialni-media | ES | A2 | vocab/7/1 | revise
+  bylo:  algo o alguien en quien puedes confiar
+  je:    que merece confianza
+socialni-media | ES | B1 | vocab/4/1 | revise
+  bylo:  lo que muestra hasta dónde aceptas lo que hacen los demás
+  je:    lo que aceptas y lo que no aceptas en el trato con los demás
+socialni-media | ES | B2 | vocab/1/1 | revise
+  bylo:  cuánto reaccionan, comentan o comparten los usuarios un contenido
+  je:    cuánto reaccionan los usuarios a un contenido, lo comentan o lo comparten
+tlak-na-vykon | ES | A1 | stations/1/stretch | revise
+  bylo:  Di tres cosas que hace un buen alumno, aparte de «saca buenas notas».
+  je:    Di tres cosas que hace un buen alumno, aparte de sacar buenas notas.
+umela-inteligence | ES | C1 | stations/2/challenge | revise
+  bylo:  Representad una reunión entre un estudiante que trabajaba allí, el dueño de una tienda y un familiar tras la sustitución de empleos por IA. Negociad una solución y sus costes.
+  je:    Representad una reunión entre el dueño de una tienda, un estudiante que trabajaba en ella y un familiar tras la sustitución de empleos por IA. Negociad una solución y sus costes.
+vanoce | ES | A1 | vocab/2/1 | revise
+  bylo:  los días del mes; en Adviento, con ventanitas
+  je:    hoja con los días y los meses del año; en Adviento, con ventanitas
+hrani-her | FR | B2 | vocab/7/1 | revise
+  bylo:  un point qu’on ne veut pas dépasser ; ce qui est acceptable pour toi
+  je:    un point que tu ne veux pas dépasser ; ce que tu acceptes ou non
+jidlo-piti-restaurace | FR | B2 | vocab/10/1 | revise
+  bylo:  un aliment produit naturellement à cette période de l’année
+  je:    un aliment qu’on récolte naturellement à la période de l’année où on le mange
+majetkove-nerovnosti | FR | A2 | stations/2/support/1 | revise
+  bylo:  Les livres d’occasion peuvent / Le matériel partagé peut aider parce que …
+  je:    Les livres d’occasion peuvent aider / Le matériel partagé peut aider parce que …
+problemy-teenageru | FR | B1 | vocab/8/1 | revise
+  bylo:  ce qu’on accepte ou refuse que les autres fassent avec nous
+  je:    ce que l’on accepte ou refuse de la part des autres
+rodina | FR | B1 | stations/6/main | revise
+  bylo:  Que devrait dire une affiche de bienvenue sur les familles ?
+  je:    Que devrait dire une affiche de l’école sur la diversité des familles ?
+socialni-site-a-dusevni-zdravi | FR | B1 | vocab/9/1 | revise
+  bylo:  origine d’une information à laquelle on peut se fier
+  je:    site, média ou personne digne de confiance d’où vient une information
+jak-se-ucit-na-testy | EN | A1 | stations/0/support/0 | revise
+  bylo:  It is a … test.
+  je:    The subject is …
+jak-se-ucit-na-testy | ES | A2 | stations/2/support/1 | revise
+  bylo:  La semana pasada, me hice un test con …
+  je:    La semana pasada, me puse a prueba con …
+jak-se-ucit-na-testy | ES | B1 | stations/4/support/1 | revise
+  bylo:  Los amigos se distraen más cuando …
+  je:    Los amigos se distraen más unos a otros cuando …
+jak-se-ucit-na-testy | DE | B1 | stations/1/support/0 | revise
+  bylo:  Etwas ohne Heft zu erklären bringt mehr als Wiederlesen, weil …
+  je:    Etwas ohne Heft zu erklären bringt mehr als erneutes Lesen, weil …
+jak-se-ucit-na-testy | DE | B1 | stations/4/support/1 | revise
+  bylo:  Freunde lenken sich eher ab, wenn …
+  je:    Freunde lenken sich gegenseitig eher ab, wenn …
+jak-se-ucit-na-testy | DE | B1 | stations/7/support/1 | revise
+  bylo:  Mühe ist nicht dasselbe wie Erfolg, weil …
+  je:    Mühe ist nicht dasselbe wie Fortschritt, weil …
+jak-se-ucit-na-testy | FR | A2 | stations/5/support/1 | revise
+  bylo:  Je vais interroger mon professeur sur …
+  je:    Je vais poser des questions à mon professeur sur …
+jak-se-ucit-na-testy | FR | B1 | stations/4/support/1 | revise
+  bylo:  Les amis se distraient davantage quand …
+  je:    Les amis deviennent une distraction quand …
+umela-inteligence | EN | A1 | stations/1/support/1 | revise
+  bylo:  Copying AI is OK / not OK because …
+  je:    Copying an AI answer is OK / not OK because …
+umela-inteligence | DE | A1 | stations/1/support/1 | revise
+  bylo:  Von KI kopieren ist okay / nicht okay, denn …
+  je:    KI-Texte zu kopieren ist okay / nicht okay, denn …
+umela-inteligence | FR | A1 | stations/1/support/1 | revise
+  bylo:  Copier l’IA, c’est bien / pas bien parce que …
+  je:    Copier une réponse de l’IA, c’est bien / pas bien parce que …
+umela-inteligence | DE | A1 | stations/3/support/1 | revise
+  bylo:  Ich male / fotografiere / mache gern Musik.
+  je:    Ich male gern / fotografiere gern / mache gern Musik.
+umela-inteligence | DE | A2 | stations/1/support/1 | revise
+  bylo:  Einen KI-Aufsatz kopieren ist eine gute / schlechte Idee, weil …
+  je:    Einen KI-Aufsatz zu kopieren ist eine gute / schlechte Idee, weil …
+umela-inteligence | FR | B1 | stations/0/support/2 | revise
+  bylo:  Choisirais-tu autrement si tu savais que l’IA intervient ?
+  je:    Choisirais-tu autrement si tu savais que l’IA intervenait ?
+umela-inteligence | DE | B1 | stations/1/support/0 | revise
+  bylo:  Meiner Meinung nach wird es Betrug, wenn …
+  je:    Meiner Meinung nach ist es Schummeln, wenn …
+umela-inteligence | DE | B1 | stations/1/support/1 | revise
+  bylo:  Sich etwas erklären lassen ist anders als Kopieren, weil …
+  je:    Sich etwas erklären zu lassen ist etwas anderes als Abschreiben, weil …
+umela-inteligence | DE | B1 | stations/7/support/1 | revise
+  bylo:  KI im Bereich … braucht strengere Kontrollen als bei …
+  je:    KI im Bereich … braucht strengere Kontrollen als im Bereich …
+prazdniny | EN | A2 | stations/0/questions/1 | pass2
+  bylo:  How are winter holidays different from summer?
+  je:    How are winter holidays different from summer holidays?
+prazdniny | EN | B2 | stations/0/support/1 | pass2
+  bylo:  Holidays are restful above all when …
+  je:    Holidays are most restful when …
+prazdniny | EN | C1 | stations/3/explanations/0 | pass2
+  bylo:  Spending the summer apart can affect friendships in different ways. Could it make some friendships stronger and show which ones really matter? Or could both happen at the same time?
+  je:    Spending the summer apart can affect friendships in different ways. Could it make some friendships stronger, or show which ones really matter? Or could both happen at the same time?
+prazdniny | EN | C1 | stations/5/explanations/2 | pass2
+  bylo:  Some people take part in challenges to stay offline for a few days or weeks. Can such challenges change anything in the long run, or is their effect only short?
+  je:    Some people take part in challenges to stay offline for a few days or weeks. Can such challenges change anything in the long run, or is their effect only short-lived?
+prazdniny | EN | C1 | stations/7/support/1 | pass2
+  bylo:  If school graded this, … would be lost.
+  je:    If the school graded this, … would be lost.
+problemy-teenageru | EN | B2 | stations/4/challenge | pass2
+  bylo:  Dilemma: An app suggests appearance-related content to many young users and gives no control over the feed. Defend one solution against a reasonable objection.
+  je:    Dilemma: An app suggests appearance-related content to many young users and gives them no control over the feed. Defend one solution against a reasonable objection.
+problemy-teenageru | EN | C1 | stations/1/questions/2 | pass2
+  bylo:  How might family expectations differ across circumstances without one model being ideal?
+  je:    How can we accept that family expectations differ across circumstances without treating one model as ideal?
+problemy-teenageru | EN | C2 | vocab/0/1 | pass2
+  bylo:  limiting someone’s choices for their supposed own good
+  je:    limiting someone’s choices supposedly for their own good
+problemy-teenageru | EN | C2 | toolkit/0/1 | pass2
+  bylo:  This rests on a contested assumption …
+  je:    This rests on the contested assumption that …
+rodina | EN | B1 | warm | pass2
+  bylo:  Choose three ideas: trust, time, respect, freedom and support. Explain what each means in a family.
+  je:    Choose three of these ideas: trust, time, respect, freedom and support. Explain what each means in a family.
+rodina | EN | B1 | stations/1/stretch | pass2
+  bylo:  Find a rule you initially disagree about.
+  je:    Find a rule you disagree about at first, then agree on it.
+rodina | EN | C1 | vocab/11/1 | pass2
+  bylo:  society’s expectation of behaviour by gender
+  je:    society’s expectations of how people should behave according to their gender
+skola | EN | A1 | vocab/9/1 | pass2
+  bylo:  paper for writing notes
+  je:    a small book for writing notes
+skola | EN | C1 | stations/4/challenge | pass2
+  bylo:  Discuss how to support a class with sharply varied learning needs.
+  je:    Discuss how to support a class with widely varying learning needs.
+skola | EN | C2 | stations/4/explanations/2 | pass2
+  bylo:  Equal opportunities for everyone is often presented as a goal. Can it ever be fully achieved, or is it more of an ideal that guides us without ever being reached?
+  je:    Equal opportunity for everyone is often presented as a goal. Can it ever be fully achieved, or is it more of an ideal that guides us without ever being reached?
+socialni-media | EN | C1 | stations/7/challenge | pass2
+  bylo:  Design challenge: A student campaign gains many views but few changes at school. Compare two options: (A) focus on viral posts and (B) combine online discussion with a meeting and clear requests. Suggest one safeguard and explain how you would know it works.
+  je:    Design challenge: A student campaign gains many views but brings few changes at school. Compare two options: (A) focus on viral posts and (B) combine online discussion with a meeting and clear requests. Suggest one safeguard and explain how you would know it works.
+socialni-site-a-dusevni-zdravi | EN | A2 | vocab/9/1 | pass2
+  bylo:  to look for differences
+  je:    to look at how things are the same or different
+socialni-site-a-dusevni-zdravi | EN | B1 | vocab/6/1 | pass2
+  bylo:  a set of rules making decisions
+  je:    a set of rules a computer uses to make decisions
+spolecenske-problemy | EN | A2 | vocab/10/1 | pass2
+  bylo:  help without getting paid
+  je:    a person who helps without getting paid
+spolecenske-problemy | EN | C1 | stations/6/questions/1 | pass2
+  bylo:  When may public demands for integration become discriminatory?
+  je:    When might public demands for integration become discriminatory?
+spolecenske-problemy | EN | C1 | stations/3/stretch | pass2
+  bylo:  Name one pupil who might find your plan intrusive and adjust it for them.
+  je:    Describe one kind of pupil who might find your plan intrusive and adjust it for them.
+spolecenske-problemy | EN | C2 | toolkit/0/1 | pass2
+  bylo:  This rests on a contested assumption …
+  je:    This rests on the contested assumption that …
+svetova-politika | EN | A2 | stations/1/challenge | pass2
+  bylo:  Situation: A friend shows you an exciting screenshot with world news, but there is no source. Should you (A) check two reliable sources first, or (B) ask others how to check it? Say one good and one bad thing about each option.
+  je:    Situation: A friend shows you a shocking screenshot of a world news story, but there is no source. Should you (A) check two reliable sources first, or (B) ask others how to check it? Say one good and one bad thing about each option.
+svetova-politika | EN | A2 | stations/4/questions/0 | pass2
+  bylo:  Do all countries have the same money to spend?
+  je:    Do all countries have the same amount of money to spend?
+human-rights | DE | A1 | stations/0/support/1 | pass2
+  bylo:  Wir können helfen, indem wir … (sie zum Spielen einladen / zusammen sitzen).
+  je:    Wir können helfen, indem wir … (die Person zum Spielen einladen / uns zu ihr setzen).
+human-rights | DE | A1 | stations/1/stretch | pass2
+  bylo:  Sag eine freundliche Art, deinem Partner zu widersprechen.
+  je:    Widersprich deinem Partner auf freundliche Art.
+human-rights | DE | A1 | stations/2/questions/0 | pass2
+  bylo:  Fragst du vor einem Foto?
+  je:    Fragst du, bevor du ein Foto machst?
+human-rights | DE | A1 | stations/2/stretch | pass2
+  bylo:  Frag deinen Partner höflich vor einem erfundenen Foto.
+  je:    Frag deinen Partner höflich, ob du ein Foto von ihm machen darfst (nur zum Spiel).
+human-rights | DE | A1 | vocab/10/1 | pass2
+  bylo:  von gleichem Wert
+  je:    genauso viel wert
+human-rights | DE | A2 | stations/4/stretch | pass2
+  bylo:  Finde einen Weg zu helfen, ohne dass sich der neue Schüler anders fühlt.
+  je:    Finde einen Weg zu helfen, ohne dass sich der neue Schüler als Außenseiter fühlt.
+human-rights | DE | B1 | stations/2/questions/2 | pass2
+  bylo:  Wie könnten Mitschüler die Situation wieder gutmachen?
+  je:    Wie könnten Mitschüler die Situation wiedergutmachen?
+human-rights | DE | B1 | vocab/5/1 | pass2
+  bylo:  ungerechte Behandlung wegen Identität
+  je:    ungerechte Behandlung, z. B. wegen Herkunft oder Geschlecht
+human-rights | DE | B2 | stations/1/stretch | pass2
+  bylo:  Schreib einen Satz einer fairen Regel für Kommentare in einer Schuldebatte.
+  je:    Formuliere in einem Satz eine faire Regel für Kommentare in einer Schuldebatte.
+human-rights | DE | B2 | stations/2/stretch | pass2
+  bylo:  Erkläre deine Entscheidung einem Schüler, der sich in seiner Privatsphäre übergangen fühlt.
+  je:    Erkläre deine Entscheidung einem Schüler, der sich in seiner Privatsphäre verletzt fühlt.
+human-rights | DE | B2 | stations/3/stretch | pass2
+  bylo:  Verteidige deinen Plan gegen einen Schüler, der sagt, er senke das Niveau.
+  je:    Verteidige deinen Plan gegen einen Schüler, der sagt, dieser senke das Niveau.
+human-rights | DE | B2 | stations/4/mainExplain | pass2
+  bylo:  Ein Witz kann jemanden wegen dessen, wer er ist, verletzen. Wann passiert das, und wer sollte das entscheiden?
+  je:    Ein Witz kann jemanden wegen seiner Herkunft oder Identität verletzen. Wann passiert das, und wer sollte das entscheiden?
+human-rights | DE | B2 | vocab/4/1 | pass2
+  bylo:  zu tief ins Privatleben eingreifend
+  je:    zu stark in das Privatleben eindringend
+human-rights | DE | B2 | vocab/7/1 | pass2
+  bylo:  etwas, das dich an etwas hindert
+  je:    etwas, das dir im Weg steht
+human-rights | DE | C1 | stations/7/questions/2 | pass2
+  bylo:  Woran zeigt sich verantwortlicher Erfolg nach der Aufmerksamkeit?
+  je:    Woran zeigt sich echter Erfolg, wenn die öffentliche Aufmerksamkeit nachgelassen hat?
+human-rights | DE | C1 | stations/7/support/2 | pass2
+  bylo:  Verantwortlicher Erfolg hieße, dass Monate später …
+  je:    Echter Erfolg hieße, dass Monate später …
+human-rights | DE | C2 | stations/3/questions/0 | pass2
+  bylo:  Worin liegt der Unterschied, ein Recht auf dem Papier zu haben und wirklich teilnehmen zu können?
+  je:    Worin liegt der Unterschied zwischen einem Recht auf dem Papier und der Möglichkeit, wirklich teilzunehmen?
+human-rights | DE | C2 | stations/5/main | pass2
+  bylo:  Ist mehr Überwachung durch Sicherheit zu rechtfertigen, wenn sie Vertrauen zerstört?
+  je:    Lässt sich mehr Überwachung aus Sicherheitsgründen rechtfertigen, wenn sie Vertrauen zerstört?
+human-rights | FR | A1 | stations/1/stretch | pass2
+  bylo:  Dis une façon gentille de ne pas être d’accord avec ton partenaire.
+  je:    Trouve une façon gentille de dire à ton partenaire que tu n’es pas d’accord.
+human-rights | FR | A1 | stations/2/stretch | pass2
+  bylo:  Demande poliment à ton partenaire avant une photo imaginaire.
+  je:    Demande poliment à ton partenaire si tu peux le prendre en photo (pour jouer).
+human-rights | FR | A1 | stations/4/questions/1 | pass2
+  bylo:  Est-ce gentil de rire d’un autre accent ?
+  je:    Est-ce gentil de rire de l’accent de quelqu’un ?
+human-rights | FR | A1 | stations/4/challenge | pass2
+  bylo:  Imaginez ceci : Un nouvel élève n’entre pas dans une équipe à cause de son accent. Que pouvez-vous dire pour aider ? Entraînez-vous ensemble.
+  je:    Imaginez ceci : Un nouvel élève n’est pas accepté dans une équipe à cause de son accent. Que pouvez-vous dire pour aider ? Entraînez-vous ensemble.
+human-rights | FR | A1 | stations/5/questions/0 | pass2
+  bylo:  Où est un endroit sûr à l’école ?
+  je:    Où trouves-tu un endroit sûr à l’école ?
+human-rights | FR | A1 | stations/7/support/1 | pass2
+  bylo:  Je peux aider un camarade avec …
+  je:    Je peux aider un camarade à …
+human-rights | FR | A2 | stations/0/questions/1 | pass2
+  bylo:  Les élèves doivent-ils participer aux règles de classe ?
+  je:    Les élèves doivent-ils participer à la création des règles de classe ?
+human-rights | FR | A2 | stations/0/stretch | pass2
+  bylo:  Dis un problème de ta nouvelle règle de classe.
+  je:    Dis quel problème pourrait poser ta nouvelle règle de classe.
+human-rights | FR | A2 | stations/4/challenge | pass2
+  bylo:  Imaginez ceci : Un nouvel élève n’entre pas dans une équipe à cause de son accent. Proposez une solution et dites ce qui pourrait mal se passer.
+  je:    Imaginez ceci : Un nouvel élève n’est pas accepté dans une équipe à cause de son accent. Proposez une solution et dites ce qui pourrait mal se passer.
+human-rights | FR | A2 | stations/5/support/0 | pass2
+  bylo:  Un ami peut … (écouter / rester avec lui).
+  je:    Un ami peut … (écouter / rester avec elle).
+human-rights | FR | B1 | stations/4/challenge | pass2
+  bylo:  Jeu de rôles : Un élève dit que des blagues répétées sur ses origines le font se sentir exclu. Jouez la conversation et trouvez une solution que vous acceptez tous les deux.
+  je:    Jeu de rôles : Un élève dit que des blagues répétées sur ses origines le mettent à l’écart. Jouez la conversation et trouvez une solution que vous acceptez tous les deux.
+human-rights | FR | B1 | stations/5/questions/0 | pass2
+  bylo:  Pourquoi est-il difficile d’intervenir parfois ?
+  je:    Pourquoi est-il parfois difficile d’intervenir ?
+human-rights | FR | B1 | stations/7/support/2 | pass2
+  bylo:  J’essaierais de le convaincre en …
+  je:    J’essaierais de la convaincre en …
+human-rights | FR | B2 | stations/1/explanations/1 | pass2
+  bylo:  Quelqu’un doit décider quand un commentaire va trop loin. Qui devrait-ce être ?
+  je:    Quelqu’un doit décider quand un commentaire va trop loin. Qui devrait s’en charger ?
+human-rights | FR | B2 | stations/1/stretch | pass2
+  bylo:  Écris une phrase d’une règle juste pour les commentaires lors d’un débat scolaire.
+  je:    Rédige en une phrase une règle juste pour les commentaires lors d’un débat scolaire.
+human-rights | FR | B2 | stations/3/mainExplain | pass2
+  bylo:  Avoir une place à l’école, c’est une chose. Que comprend d’autre un vrai droit à l’éducation ?
+  je:    Avoir une place à l’école, c’est une chose. Qu’est-ce qu’un vrai droit à l’éducation comprend d’autre ?
+human-rights | FR | B2 | stations/3/stretch | pass2
+  bylo:  Défends ton plan face à un élève qui dit qu’il baisse le niveau.
+  je:    Défends ton plan face à un élève qui dit que ce plan fait baisser le niveau.
+human-rights | FR | B2 | stations/4/challenge | pass2
+  bylo:  Étude de cas : Un élève dit que des blagues répétées sur ses origines le font se sentir exclu. Choisissez une réaction et défendez-la face à l’objection la plus forte.
+  je:    Étude de cas : Un élève dit que des blagues répétées sur ses origines le mettent à l’écart. Choisissez une réaction et défendez-la face à l’objection la plus forte.
+human-rights | FR | C1 | stations/1/stretch | pass2
+  bylo:  Rédige une phrase d’une procédure juste pour contester un commentaire supprimé.
+  je:    Rédige en une phrase une procédure juste pour contester un commentaire supprimé.
+human-rights | FR | C1 | stations/4/challenge | pass2
+  bylo:  Conseil scolaire : Un élève dit que des blagues répétées sur ses origines le font se sentir exclu. Proposez une réaction et dites comment vous sauriez, à la fin du trimestre, si elle a fonctionné.
+  je:    Conseil scolaire : Un élève dit que des blagues répétées sur ses origines le mettent à l’écart. Proposez une réaction et dites comment vous sauriez, à la fin du trimestre, si elle a fonctionné.
+human-rights | FR | C1 | stations/7/questions/2 | pass2
+  bylo:  Quel serait un succès responsable après la médiatisation ?
+  je:    À quoi verrait-on un succès durable, une fois l’attention médiatique retombée ?
+human-rights | FR | C1 | stations/7/support/2 | pass2
+  bylo:  Un succès responsable voudrait dire que, des mois plus tard, …
+  je:    Un succès durable voudrait dire que, des mois plus tard, …
+human-rights | FR | C2 | stations/0/mainExplain | pass2
+  bylo:  Une règle peut traiter tout le monde de la même façon et pourtant, en pratique, atteindre l’égale dignité de certaines personnes. Cela peut-il vraiment arriver ?
+  je:    Une règle peut traiter tout le monde de la même façon et pourtant, en pratique, porter atteinte à l’égale dignité de certaines personnes. Cela peut-il vraiment arriver ?
+human-rights | FR | C2 | stations/1/mainExplain | pass2
+  bylo:  Quelqu’un doit décider où s’arrête la liberté d’expression et où commence le préjudice. Qui devrait-ce être ?
+  je:    Quelqu’un doit décider où s’arrête la liberté d’expression et où commence le préjudice. Qui devrait s’en charger ?
+human-rights | FR | C2 | stations/3/main | pass2
+  bylo:  Un système éducatif réalise-t-il un droit lorsque l’accès est universel mais pas les possibilités réelles ?
+  je:    Un système éducatif réalise-t-il un droit lorsque l’accès est universel mais que les chances réelles restent inégales ?
+human-rights | FR | C2 | stations/3/support/1 | pass2
+  bylo:  Une aide ciblée pourrait atteindre la dignité si …
+  je:    Une aide ciblée pourrait porter atteinte à la dignité si …
+human-rights | FR | C2 | stations/4/challenge | pass2
+  bylo:  Comité d’éthique : Un élève dit que des blagues répétées sur ses origines le font se sentir exclu. Défendez un principe, puis testez-le avec le cas le plus difficile que vous puissiez imaginer.
+  je:    Comité d’éthique : Un élève dit que des blagues répétées sur ses origines le mettent à l’écart. Défendez un principe, puis testez-le avec le cas le plus difficile que vous puissiez imaginer.
+human-rights | FR | C2 | stations/7/mainExplain | pass2
+  bylo:  Les mots sur les droits humains peuvent pousser les gens à agir, mais aussi devenir des formules vides. Quand se passe l’un, quand se passe l’autre ?
+  je:    Les mots sur les droits humains peuvent pousser les gens à agir, mais aussi devenir des formules vides. Dans quels cas est-ce l’un, dans quels cas l’autre ?
+human-rights | FR | C2 | vocab/6/1 | pass2
+  bylo:  quelque chose auquel on a droit
+  je:    un avantage garanti qu’on ne peut pas retirer facilement
+human-rights | EN | A1 | stations/2/stretch | pass2
+  bylo:  Ask your partner politely before an imaginary photo.
+  je:    Ask your partner politely before taking an imaginary photo.
+human-rights | EN | A1 | vocab/1/1 | pass2
+  bylo:  treating people justly
+  je:    treating everyone equally and honestly
+human-rights | EN | A1 | vocab/6/1 | pass2
+  bylo:  keeping personal things private
+  je:    keeping personal things to yourself
+human-rights | EN | B1 | vocab/1/1 | pass2
+  bylo:  having equal dignity and rights
+  je:    the same dignity and rights for everyone
+human-rights | EN | B1 | vocab/2/1 | pass2
+  bylo:  the freedom to express ideas
+  je:    the right to say what you think
+human-rights | EN | C2 | toolkit/0/1 | pass2
+  bylo:  This rests on a contested assumption …
+  je:    This rests on the contested assumption that …
+human-rights | ES | A1 | stations/2/stretch | pass2
+  bylo:  Pregunta con educación a tu compañero antes de una foto imaginaria.
+  je:    Pregunta con educación a tu compañero antes de hacer una foto imaginaria.
+human-rights | ES | A1 | stations/4/questions/1 | pass2
+  bylo:  ¿Está bien reírse de otro acento?
+  je:    ¿Es amable reírse de un acento diferente?
+human-rights | ES | A1 | vocab/1/1 | pass2
+  bylo:  que trata bien a los demás
+  je:    que trata a todos por igual
+human-rights | ES | A1 | vocab/2/1 | pass2
+  bylo:  consideración hacia otros
+  je:    tratar bien a los demás
+human-rights | ES | A1 | vocab/7/1 | pass2
+  bylo:  autorización de otra persona
+  je:    cuando otra persona te dice que sí
+human-rights | ES | A1 | vocab/11/1 | pass2
+  bylo:  atento y cordial
+  je:    simpático y bueno con los demás
+human-rights | ES | A2 | toolkit/1/1 | pass2
+  bylo:  Lo creo porque …
+  je:    Pienso así porque …
+human-rights | ES | B1 | toolkit/3/1 | pass2
+  bylo:  Entiendo tu punto, pero …
+  je:    Entiendo lo que dices, pero …
+human-rights | ES | B1 | vocab/1/1 | pass2
+  bylo:  igual dignidad y derechos
+  je:    la misma dignidad y los mismos derechos para todos
+human-rights | ES | B1 | vocab/2/1 | pass2
+  bylo:  poder expresar ideas
+  je:    poder decir lo que piensas
+human-rights | ES | B2 | vocab/0/1 | pass2
+  bylo:  tratar injustamente mejor a unas personas que a otras
+  je:    tratar mejor a unas personas que a otras sin motivo justo
+human-rights | ES | C1 | stations/1/stretch | pass2
+  bylo:  Redacta una frase de un procedimiento justo para reclamar un comentario borrado.
+  je:    Redacta una frase de un procedimiento justo para recurrir el borrado de un comentario.
+human-rights | ES | C1 | stations/2/explanations/2 | pass2
+  bylo:  Si los alumnos saben que pueden revisar sus mensajes, ¿podrían dejar de hablar con libertad? ¿Por qué?
+  je:    Si los alumnos saben que sus mensajes pueden ser revisados, ¿podrían dejar de hablar con libertad? ¿Por qué?
+human-rights | ES | C1 | stations/3/questions/1 | pass2
+  bylo:  ¿Cómo mejorarían las políticas con la participación estudiantil?
+  je:    ¿Cómo puede la participación estudiantil mejorar las políticas educativas?
+human-rights | ES | C1 | stations/3/explanations/1 | pass2
+  bylo:  ¿Cómo podría escuchar a los alumnos mejorar las decisiones sobre la educación?
+  je:    ¿Cómo podrían mejorar las decisiones sobre la educación si se escucha a los alumnos?
+human-rights | ES | C1 | stations/7/questions/1 | pass2
+  bylo:  ¿Cómo puede simplificar demasiado un problema una campaña?
+  je:    ¿Cómo puede una campaña simplificar demasiado un problema?
+human-rights | ES | C1 | stations/7/questions/2 | pass2
+  bylo:  ¿Qué sería un éxito responsable después de la publicidad?
+  je:    ¿Qué sería un éxito responsable cuando se acabe la atención mediática?
+human-rights | ES | C1 | stations/7/support/0 | pass2
+  bylo:  Una consulta tiene sentido cuando …
+  je:    Una consulta es auténtica cuando …
+human-rights | ES | C1 | toolkit/3/0 | pass2
+  bylo:  Concede
+  je:    Haz una concesión
+human-rights | ES | C2 | stations/0/main | pass2
+  bylo:  ¿Puede una política aparentemente neutral perjudicar la igualdad de dignidad en la práctica?
+  je:    ¿Puede una política aparentemente neutral perjudicar la igual dignidad en la práctica?
+human-rights | ES | C2 | stations/6/questions/0 | pass2
+  bylo:  ¿Cómo separar decisiones locales legítimas de vulneraciones básicas?
+  je:    ¿Cómo separar decisiones locales legítimas de vulneraciones de derechos básicos?
+human-rights | ES | C2 | toolkit/0/1 | pass2
+  bylo:  Esta afirmación parte de un supuesto discutible …
+  je:    Esta afirmación parte del supuesto discutible de que …
+hrani-her | DE | B1 | stations/4/challenge | decision
+  bylo:  Fallbeispiel: Ein Teammitglied ärgert sich nach mehreren Niederlagen. Vergleiche zwei Möglichkeiten: (A) pausieren und respektvoll über Fehler reden und (B) vor der nächsten Runde eine kurze Pause machen. Was ist der größte Vorteil jeder Möglichkeit?
+  je:    Fallbeispiel: Ein Teammitglied ärgert sich nach mehreren Niederlagen. Vergleiche zwei Möglichkeiten: (A) respektvoll über Fehler reden und (B) vor der nächsten Runde eine kurze Pause machen. Was ist der größte Vorteil jeder Möglichkeit?
+hrani-her | DE | B2 | stations/4/challenge | decision
+  bylo:  Dilemma: Ein Teammitglied ärgert sich nach mehreren Niederlagen. Wähle eine Möglichkeit: (A) pausieren und respektvoll über Fehler reden oder (B) vor der nächsten Runde eine kurze Pause machen. Antworte dann auf den stärksten Einwand gegen deine Wahl.
+  je:    Dilemma: Ein Teammitglied ärgert sich nach mehreren Niederlagen. Wähle eine Möglichkeit: (A) respektvoll über Fehler reden oder (B) vor der nächsten Runde eine kurze Pause machen. Antworte dann auf den stärksten Einwand gegen deine Wahl.
+hrani-her | DE | B2 | vocab/3/0 | decision
+  bylo:  das sitzende Verhalten
+  je:    die sitzende Lebensweise
+majetkove-nerovnosti | DE | C2 | vocab/2/0 | decision
+  bylo:  die moralische Verdienstlichkeit
+  je:    das moralische Verdienst
+majetkove-nerovnosti | DE | C2 | vocab/4/0 | decision
+  bylo:  die Chancenabschottung
+  je:    das Horten von Chancen
+majetkove-nerovnosti | DE | C2 | vocab/9/0 | decision
+  bylo:  die Rentensuche
+  je:    das Rent-Seeking
+svetova-politika | DE | C1 | vocab/10/0 | decision
+  bylo:  die globale Ordnungspolitik
+  je:    die Global Governance
+zivot-bez-ai | DE | A2 | vocab/10/0 | decision
+  bylo:  das Sprachbuch
+  je:    der Sprachführer
+jak-se-ucit-na-testy | EN | A2 | vocab/9/0 | decision
+  bylo:  cover up
+  je:    cover
+nemoci-u-lekare | EN | B2 | vocab/5/0 | decision
+  bylo:  professional secrecy
+  je:    medical confidentiality
+rodina | EN | A2 | vocab/0/0 | decision
+  bylo:  a caregiver
+  je:    a carer
+rodina | EN | B2 | vocab/3/0 | decision
+  bylo:  role distribution
+  je:    division of roles
+skola | EN | A2 | vocab/2/0 | decision
+  bylo:  schoolyard
+  je:    playground
+svetova-politika | EN | C2 | vocab/0/0 | decision
+  bylo:  a rule-based order
+  je:    a rules-based order
+svetova-politika | EN | A1 | stations/5/subtitle | decision
+  bylo:  Welcoming people without assumptions
+  je:    Welcoming new people
+svetova-politika | EN | A2 | stations/5/subtitle | decision
+  bylo:  Welcoming people without assumptions
+  je:    Welcoming new people
+socialni-site-a-dusevni-zdravi | EN | A1 | stations/2/challenge | decision
+  bylo:  Talk about a fictional person you follow.
+  je:    Invent a person you could follow online. Talk about them.
+problemy-teenageru | EN | A2 | stations/5/questions/2 | decision
+  bylo:  Who is a safe adult to talk to in a fictional situation?
+  je:    Who is a safe adult to talk to?
+ceny-nemovitosti | ES | B2 | vocab/0/0 | decision
+  bylo:  la accesibilidad
+  je:    la asequibilidad
+jidlo-piti-restaurace | ES | A1 | stations/3/questions/2 | decision
+  bylo:  ¿Prefieres pan o panecillos?
+  je:    ¿Prefieres pan o galletas?
+problemy-teenageru | ES | B2 | vocab/11/0 | decision
+  bylo:  la compensación entre objetivos
+  je:    el equilibrio entre objetivos
+socialni-media | ES | B2 | vocab/9/0 | decision
+  bylo:  la compensación entre objetivos
+  je:    el equilibrio entre objetivos
+socialni-site-a-dusevni-zdravi | ES | B2 | vocab/2/0 | decision
+  bylo:  la compensación
+  je:    la disyuntiva
+socialni-site-a-dusevni-zdravi | ES | B2 | vocab/2/1 | decision
+  bylo:  aceptar una desventaja para ganar otra cosa
+  je:    tener que aceptar una desventaja para ganar otra cosa
+zivot-bez-ai | ES | A2 | vocab/10/0 | decision
+  bylo:  el libro de frases
+  je:    la guía de conversación
+zivot-bez-ai | ES | A2 | vocab/10/1 | decision
+  bylo:  guía con expresiones para viajar
+  je:    libro con expresiones para viajar
+muzi-a-zeny | FR | A2 | vocab/3/0 | decision
+  bylo:  en confiance
+  je:    sûr de soi
+vanoce | FR | A1 | vocab/2/0 | decision
+  bylo:  le calendrier
+  je:    le calendrier de l’Avent
+vanoce | FR | A2 | vocab/5/0 | decision
+  bylo:  le Christkind
+  je:    le petit Jésus
+prazdniny | DE | B1 | stations/7/support/2 | decision
+  bylo:  Wie würdest du dich dabei fühlen?
+  je:    Was würdest du an den Ferien ändern?
+prazdniny | EN | B1 | stations/7/support/2 | decision
+  bylo:  How would you feel about that?
+  je:    What would you change about the holidays?
+ceny-nemovitosti | ES | B2 | stations/7/challenge | decision
+  bylo:  Diseñad un barrio inicial ficticio con casas, una escuela y transporte. Defended las prioridades.
+  je:    Diseñad un barrio ficticio para primeras viviendas con casas, una escuela y transporte. Defended las prioridades.
+vanoce | FR | A2 | stations/5/questions/1 | decision
+  bylo:  Connais-tu le Christkind et le père Noël ?
+  je:    Connais-tu le petit Jésus et le père Noël ?
+majetkove-nerovnosti | EN | A2 | stations/1/challenge | decision
+  bylo:  Situation: Two students want an extra course, but only one can pay for it. Choose the best idea and give two reasons.
+  je:    Situation: Two students want an extra course, but only one can pay for it. Suggest one idea and give two reasons.
+majetkove-nerovnosti | EN | A2 | stations/4/challenge | decision
+  bylo:  Situation: Shop workers ask for higher pay, while the owner worries about costs. Choose the best idea and give two reasons.
+  je:    Situation: Shop workers ask for higher pay, while the owner worries about costs. Suggest one idea and give two reasons.
+muzi-a-zeny | EN | A2 | stations/1/challenge | decision
+  bylo:  Situation: Two adults share one home but do not agree about who should cook and clean. Choose the best idea and give two reasons.
+  je:    Situation: Two adults share one home but do not agree about who should cook and clean. Suggest one idea and give two reasons.
+muzi-a-zeny | EN | A2 | stations/7/challenge | decision
+  bylo:  Situation: Your school wants one practical idea to make all students feel welcome. Choose the best idea and give two reasons.
+  je:    Situation: Your school wants one practical idea to make all students feel welcome. Suggest one idea and give two reasons.
+ceny-nemovitosti | EN | C2 | toolkit/0/1 | propagated
+  bylo:  This rests on a contested assumption …
+  je:    This rests on the contested assumption that …
+ceny-nemovitosti | ES | C2 | toolkit/0/1 | propagated
+  bylo:  Esta afirmación parte de un supuesto discutible …
+  je:    Esta afirmación parte del supuesto discutible de que …
+majetkove-nerovnosti | EN | C2 | toolkit/0/1 | propagated
+  bylo:  This rests on a contested assumption …
+  je:    This rests on the contested assumption that …
+majetkove-nerovnosti | ES | C2 | toolkit/0/1 | propagated
+  bylo:  Esta afirmación parte de un supuesto discutible …
+  je:    Esta afirmación parte del supuesto discutible de que …
+muzi-a-zeny | EN | C2 | toolkit/0/1 | propagated
+  bylo:  This rests on a contested assumption …
+  je:    This rests on the contested assumption that …
+muzi-a-zeny | ES | C2 | toolkit/0/1 | propagated
+  bylo:  Esta afirmación parte de un supuesto discutible …
+  je:    Esta afirmación parte del supuesto discutible de que …
+problemy-teenageru | ES | C2 | toolkit/0/1 | propagated
+  bylo:  Esta afirmación parte de un supuesto discutible …
+  je:    Esta afirmación parte del supuesto discutible de que …
+spolecenske-problemy | ES | C2 | toolkit/0/1 | propagated
+  bylo:  Esta afirmación parte de un supuesto discutible …
+  je:    Esta afirmación parte del supuesto discutible de que …

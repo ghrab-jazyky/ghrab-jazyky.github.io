@@ -49,4 +49,5 @@ jobs:
             sleep 1
           done
           node --test language-skills-hub/tests/r64-real-catalog-sources.browser.test.cjs \
-            language-skills-hub/tests/r64-one-attempt-per-device.browser.test.cjs
+            language-skills-hub/tests/r64-one-attempt-per-device.browser.test.cjs \
+            language-skills-hub/tests/r64-pdf-logo-required.browser.test.cjs

@@ -15,7 +15,7 @@ const cardPath='konverzace/human-rights/index.html';
 const html=read(cardPath);
 const langs=['en','es','de','fr'];
 const levels=['A1','A2','B1','B2','C1','C2'];
-const PIN='e08b238ba4058b2f6a162daf21d02e93c5045495f6b35cf43bb5953a33ff0be4';
+const PIN='558fb2b2c8c78fbde685cd1b888ca9f72b6a1f0f5a82bd8e44b9a0554f9b9711';
 function literal(src,label){
  const marker='const '+label+' = ';
  const start=src.indexOf(marker);
