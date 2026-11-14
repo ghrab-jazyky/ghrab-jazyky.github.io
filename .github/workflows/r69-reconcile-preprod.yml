@@ -1,0 +1,82 @@
+name: LSH R69 one-time safe preproduction reconciliation
+on:
+  push:
+    branches:
+      - feature/lsh-r69-conlangs-preprod-20261114
+    paths:
+      - .github/workflows/r69-reconcile-preprod.yml
+permissions:
+  contents: write
+jobs:
+  preproduction-reconcile:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify base, merge, apply audited patch, test, commit to PREPROD
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "R69 controlled reconciliation: target is PREPRODUCTION only."
+          git config user.name "LSH R69 Preprod Integration"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          test "$(git rev-parse HEAD)" = "26550d563deab9c379bd0854b61aa86f84a55f4d"
+          test "$(git rev-parse origin/main)" = "ee614c3cf337d57324c2b02722008798e0d707b1"
+          if git merge --no-commit --no-ff origin/main; then
+            echo "No conflicts against R64 main"
+          else
+            conflicts="$(git diff --name-only --diff-filter=U)"
+            expected="$(printf '%s\n' 'language-skills-hub/tests/r35-hr2-release.test.cjs' 'language-skills-hub/version.json')"
+            if [ "$conflicts" != "$expected" ]; then
+              echo "Unexpected merge conflicts. Refusing to modify branch."
+              printf '%s\n' "$conflicts"
+              exit 1
+            fi
+            git checkout --ours -- language-skills-hub/tests/r35-hr2-release.test.cjs language-skills-hub/version.json
+            git add -- language-skills-hub/tests/r35-hr2-release.test.cjs language-skills-hub/version.json
+          fi
+          python3 - <<'PY'
+          import zipfile,hashlib,json
+          from pathlib import Path
+          bundle=Path('.r69-candidate-fixpack.zip')
+          with zipfile.ZipFile(bundle) as archive:
+              manifest=json.loads(archive.read('R69-BUNDLE-MANIFEST.json'))
+              assert manifest['old_branch']=='26550d563deab9c379bd0854b61aa86f84a55f4d', 'Unreviewed source branch'
+              assert manifest['new_main']=='ee614c3cf337d57324c2b02722008798e0d707b1', 'Unreviewed main base'
+              for filename,want in manifest['paths'].items():
+                  assert filename.startswith('language-skills-hub/') and not ('..' in Path(filename).parts)
+                  content=archive.read(filename)
+                  assert hashlib.sha256(content).hexdigest()==want,'Corrupted file '+filename
+                  output=Path(filename)
+                  assert output.is_file(),'Expected existing R69 file absent: '+filename
+                  output.write_bytes(content)
+          catalog=json.loads(Path('language-skills-hub/data/cards.json').read_text())
+          version=json.loads(Path('language-skills-hub/version.json').read_text())
+          assert len(catalog['entries'])==version['topicCount']==32
+          assert version['variantCount']==678
+          for entry in catalog['entries']:
+              p=Path('language-skills-hub')/entry['relative']
+              assert hashlib.sha256(p.read_bytes()).hexdigest()==version['contentHashes'][entry['id']], entry['id']
+          assert version['contentHashes']['cl-human-rights']=='558fb2b2c8c78fbde685cd1b888ca9f72b6a1f0f5a82bd8e44b9a0554f9b9711'
+          assert version['contentHashes']['ll-sad']=='461667480f5031bb99db25bd14ef060c2dbe0e04453561494c2aff3f5508ed5f'
+          print('R69 manifest, 9 source files, 32 content hashes and R64 main data verified.')
+          PY
+          node --check language-skills-hub/poslech/conlangs/conlangs-core.js
+          node --check language-skills-hub/poslech/conlangs/conlangs-practice.js
+          node --check language-skills-hub/self-check/practice-answers/teacher-key.js
+          test "$(find language-skills-hub/tests -maxdepth 1 -name '*.test.cjs' ! -name '*.browser.test.cjs' | wc -l)" -ge 40
+          find language-skills-hub/tests -maxdepth 1 -name '*.test.cjs' ! -name '*.browser.test.cjs' -print0 | xargs -0 node --test --test-concurrency=4
+          git rm -- .r69-candidate-fixpack.zip .github/workflows/r69-reconcile-preprod.yml
+          git add -A
+          git diff --cached --check
+          git commit -m "fix(lsh R69): merge R64 baseline and separate practice/test banks"
+          git push origin HEAD:refs/heads/feature/lsh-r69-conlangs-preprod-20261114
+          echo "R69 preproduction branch updated; no production deployment."
