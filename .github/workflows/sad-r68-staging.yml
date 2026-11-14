@@ -34,8 +34,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          echo "DEBUG_PRE_PWD=$(pwd) GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
+          ls -ld "$GITHUB_WORKSPACE" "$GITHUB_WORKSPACE/.git" || true
+          git -C "$GITHUB_WORKSPACE" rev-parse --show-toplevel || true
           python3 /tmp/sad-r68/INSTALL_AND_QA/install_sad_r68.py --repo "$GITHUB_WORKSPACE" --write-diff /tmp/sad-r68.diff
           python3 /tmp/sad-r68/INSTALL_AND_QA/install_sad_r68.py --repo "$GITHUB_WORKSPACE" --apply --backup-dir /tmp/sad-r68-backups
+          echo "DEBUG_POST_PWD=$(pwd)"
+          ls -ld "$GITHUB_WORKSPACE" "$GITHUB_WORKSPACE/.git" || true
+          git -C "$GITHUB_WORKSPACE" rev-parse --show-toplevel || true
           git -C "$GITHUB_WORKSPACE" diff --check
           git -C "$GITHUB_WORKSPACE" diff --stat
           test "$(python3 -c 'import json;v=json.load(open("language-skills-hub/data/cards.json"));print(len(v["entries"]))')" = "31"
