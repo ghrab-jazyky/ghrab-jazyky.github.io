@@ -72,8 +72,8 @@ jobs:
           node --check language-skills-hub/poslech/conlangs/conlangs-core.js
           node --check language-skills-hub/poslech/conlangs/conlangs-practice.js
           node --check language-skills-hub/self-check/practice-answers/teacher-key.js
-          test "$(find language-skills-hub/tests -maxdepth 1 -name '*.test.cjs' ! -name '*.browser.test.cjs' | wc -l)" -ge 40
-          find language-skills-hub/tests -maxdepth 1 -name '*.test.cjs' ! -name '*.browser.test.cjs' -print0 | xargs -0 node --test --test-concurrency=4
+          test "$(find language-skills-hub/tests -maxdepth 1 -name '*.test.cjs' ! -name '*browser.test.cjs' | wc -l)" -ge 40
+          find language-skills-hub/tests -maxdepth 1 -name '*.test.cjs' ! -name '*browser.test.cjs' -print0 | xargs -0 node --test --test-concurrency=4
           git rm -- .r69-candidate-fixpack.zip .github/workflows/r69-reconcile-preprod.yml
           git add -A
           git diff --cached --check
