@@ -110,3 +110,13 @@ a{color:var(--accent)}
  .layout{display:block;padding:0}.content>.panel{padding-top:12px}
  .panel h2{font-size:21pt}.source-box{box-shadow:none}
 }
+
+/* Sidebar progress mirrors the original per-level progress state. */
+.studio-side-progress{margin:24px 0 12px}
+.studio-side-progress-label{display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:11px}
+.studio-side-progress-track{height:6px;border-radius:20px;overflow:hidden;background:var(--line);margin-top:9px}
+.studio-side-progress-track>span{display:block;width:0;height:100%;background:linear-gradient(90deg,#b46c4b,#eaba6f);transition:width .2s}
+.task>.match-answer{grid-column:2}
+:root[data-theme="dark"] .studio-levelbar .levels button[aria-pressed="true"]{background:#efb373;border-color:#efb373;color:#132c41}
+@media(max-width:520px){.task>.match-answer{grid-column:1 / -1}}
+@media print{.studio-side-progress{display:none!important}}
