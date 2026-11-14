@@ -12,6 +12,15 @@ test('R69 catalog and unchanged historical approved 4 Listening HTML checksums',
  assert.equal(version.contentHashes[entry.id],crypto.createHash('sha256').update(html).digest('hex'));
  for(const x of catalog.entries.filter(x=>x.skill==='poslech'&&x.id!==entry.id))assert.equal(version.contentHashes[x.id],crypto.createHash('sha256').update(read(x.relative)).digest('hex'),x.id);
 });
+test('R69 catalog translations exactly match published teaching languages',()=>{
+ const i18n=JSON.parse(read('data/catalog-i18n.json'));
+ assert.equal(Object.keys(i18n.entries).length,catalog.entries.length);
+ for(const e of catalog.entries){
+  assert.ok(i18n.entries[e.id],'Missing catalog localization for '+e.id);
+  assert.deepEqual(Object.keys(i18n.entries[e.id]).sort(),['cs',...e.languages].sort(),e.id);
+ }
+ assert.deepEqual(Object.keys(i18n.entries['ll-conlangs']).sort(),['cs','en']);
+});
 test('R69 six unique 17-item banks and pedagogical practice with keys and evidence disclaimers',()=>{
  conlangs.validate(data);assert.deepEqual(data.levels,levels);
  const signatures=[];
