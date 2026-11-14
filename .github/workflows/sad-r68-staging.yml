@@ -54,7 +54,7 @@ jobs:
           set -euo pipefail
           cd "$GITHUB_WORKSPACE"
           mapfile -t files < <(find language-skills-hub/tests -maxdepth 1 -name '*.test.cjs' ! -name '*.browser.test.cjs' ! -name 'r25-result-browser.test.cjs' -print | sort)
-          echo "STATIC_TEST_FILE_COUNT=${#files[@]} - R68 includes nine unique teacher keys"
+          echo "STATIC_TEST_FILE_COUNT=${#files[@]} - R68 nine keys; browser selectors fixed"
           test "${#files[@]}" -gt 25
           node --test --test-concurrency=4 "${files[@]}"
       - name: Install tested browser runtime
