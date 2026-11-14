@@ -22,7 +22,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     const nums=await page.locator('[data-count-skill="'+skill+'"]').allTextContents();
     assert.deepEqual(nums,[String(count),String(count)]);
    }
-   await page.locator('#skipIntro').click();
+   await page.locator('#skillChooser:not([hidden])').waitFor({timeout:8000});
    await page.locator('[data-choose-skill="poslech"]').click();
    await page.locator('#cards .card').first().waitFor();
    assert.equal(await page.locator('#cards .card').count(),5);
@@ -61,9 +61,12 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     await page.locator('#themeBtn').click();
     assert.equal(await page.locator('html').getAttribute('data-theme'),'light');
     await page.locator('#questionsA input[type="radio"]').first().check();
-    await page.waitForFunction(()=>
-     document.getElementById('studioProgressText').textContent===
-     document.getElementById('progressStatus').textContent);
+    await page.waitForFunction(()=>{
+     const mirror=document.getElementById('studioProgressBar');
+     return mirror.style.width!=='' && mirror.style.width!=='0%' &&
+      document.getElementById('studioProgressText').textContent===
+      document.getElementById('progressStatus').textContent;
+    });
     const width=await page.locator('#studioProgressBar').evaluate(el=>el.style.width);
     assert.notEqual(width,'0%',topic+' progress was not mirrored');
     assert.deepEqual(errors,[],topic+' must emit no browser errors');
