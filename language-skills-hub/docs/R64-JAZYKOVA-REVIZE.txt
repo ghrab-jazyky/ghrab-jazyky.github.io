@@ -2862,3 +2862,12 @@ zivot-bez-ai | DE | C1 | stations/4/stretch | úkol nenavazoval na zadání
 zivot-bez-ai | FR | C1 | stations/4/stretch | úkol nenavazoval na zadání
   bylo:  Montrez les limites de votre définition de l’authenticité.
   je:    Expliquez qui serait le plus désavantagé par votre système de rémunération et pourquoi il reste équitable.
+
+J. Karta SAD (Listening Lab, R68) – jazyková revize
+
+Přečteno vše: 6 úrovní × 17 otázek, možnosti, vysvětlení, přiřazování, slovníček, úkoly před a po poslechu, vzorové odpovědi, texty katalogu a rozhraní cvičení.
+Jazyk je v pořádku; klíče jsou vnitřně konzistentní. Shodu klíčů a časových údajů s nahrávkou nelze bez poslechu ověřit.
+Opraveno:
+- C2: americký pravopis „etiology / etiological“ → britský „aetiology / aetiological“ (8 řetězců), v souladu s ostatními texty karty.
+- B2: dvě vzorové odpovědi pro učitele neodpovídaly zadání (u první chyběl rozdíl mezi SAD a běžnou nechutí k zimě, třetí byla jen „Answers should be supported by the video.“).
+Schválená banka otázek B2 se nemění.
