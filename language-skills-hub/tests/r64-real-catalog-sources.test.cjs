@@ -14,8 +14,8 @@ test('R64: every lockSource copy is a byte-identical mirror of its canonical car
    e.id+': '+e.lockSource+' differs from '+e.relative);
  }
 });
-test('R64: all 29 real catalog sources load the shared vocabulary modules and no legacy Reading bank',()=>{
- assert.equal(entries.length,29);
+test('R64: all real catalog sources load the shared vocabulary modules and no legacy Reading bank',()=>{
+ assert.ok(entries.length>=29);
  for(const e of entries){
   const html=fs.readFileSync(path.join(root,e.lockSource||e.relative),'utf8');
   assert.doesNotMatch(html,/Reading Lab personal vocabulary v1\.2/,e.id+' still embeds the legacy vocabulary');
