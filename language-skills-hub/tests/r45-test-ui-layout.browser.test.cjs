@@ -46,7 +46,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   const browser=await engine.launch({headless:true});
   try{
    const page=await browser.newPage({viewport:{width:390,height:844}});
-   for(const [skill,count] of [['cteni',5],['poslech',4],['konverzace',0]]){
+   for(const [skill,count] of [['cteni',5],['poslech',5],['konverzace',0]]){
     const url=new URL('index.html',root);
     url.searchParams.set('skill',skill);
     assert.equal((await page.goto(url.href)).status(),200);
