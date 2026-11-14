@@ -48,7 +48,7 @@ for(const [engineName,engine]of[['Chromium',chromium],['WebKit',webkit]]){
     const page=await context.newPage(),errors=[];
     page.on('pageerror',e=>{if(!/^ResizeObserver loop completed/.test(e.message))errors.push(e.message)});
     for(const e of entries){
-     const dest=e.relative+'?practice=1&lang=en&level=B2';
+     const dest=(e.lockSource||e.relative)+'?practice=1&lang=en&level=B2';
      const response=await page.goto(url(dest),{waitUntil:'load',timeout:45000});
      assert.equal(response.status(),200,'Cannot open '+e.id);
      const selector=e.skill==='konverzace'?'#lshBridgeVocabularyLink':'a.lsh-vocab-nav';

@@ -46,25 +46,37 @@
   }
   // Stable ordering for equal timestamps; preserve the local sequence.
   events.sort((a,b)=>a.at-b.at);
+  // R64: identify the attempt so a changed limit or a different link is visible to the teacher.
+  const code=typeof state.attemptCode==='string'&&/^[a-z0-9_-]{6,40}$/i.test(state.attemptCode)?state.attemptCode:null;
+  const lim=Number.isSafeInteger(state.limitMinutes)&&state.limitMinutes>0&&state.limitMinutes<=600?state.limitMinutes:null;
+  const asked=Number.isSafeInteger(state.requestedMinutes)&&state.requestedMinutes>0&&state.requestedMinutes<=600?state.requestedMinutes:null;
   return {
    monitored:true,tabMonitoringAvailable:state.tabMonitoringAvailable===true,
-   startedAt,events
+   startedAt,events,attemptCode:code,limitMinutes:lim,requestedMinutes:asked,
+   submittedAt:safeTime(state.submittedAt)?state.submittedAt:null
   };
  }
  function securityDetails(report){
   const s=report.security;
   if(!s||!s.monitored)return [
-   'Bezpecnostni dohled: pro tento protokol neni dostupny casovany zaznam.',
-   'Absence zaznamu neprokazuje, ze k incidentu nedoslo.'
+   'Bezpečnostní dohled: TEST BEZ DOHLEDU – odkaz neobsahoval časový limit, zámek nebyl aktivní.',
+   'Absence záznamu neprokazuje, že k incidentu nedošlo.'
   ];
   const count=s.events.filter(e=>e.kind!=='teacher-resume').length;
   const out=[
-   'Zdroj: lokalni pamet prohlizece studenta. Zaznam neni nezavisle overeny.',
-   'Detekce soubeznych zalozek: '+(s.tabMonitoringAvailable?'rozhrani dostupne':'nedostupna'),
-   'Zaznamenane zámky: '+count+'; zaznamenana odemceni: '+
+   'Zdroj: lokální paměť prohlížeče studenta. Záznam není nezávisle ověřený.',
+   'Detekce souběžných záložek: '+(s.tabMonitoringAvailable?'rozhraní dostupné':'nedostupná'),
+   'Zaznamenané zámky: '+count+'; zaznamenaná odemčení: '+
     s.events.filter(e=>e.kind==='teacher-resume').length
   ];
-  if(s.events.length===0)out.push('Nejsou zaznamenany udalosti; to neni dukaz bezchybneho prubehu.');
+  const stamp=t=>new Date(t).toLocaleString('cs-CZ');
+  if(s.attemptCode)out.push('Kód pokusu: '+s.attemptCode+' (jeden pokus na zařízení)');
+  if(s.limitMinutes)out.push('Časový limit: '+s.limitMinutes+' min'+
+   (s.requestedMinutes&&s.requestedMinutes!==s.limitMinutes?
+    ' – POZOR: adresa při tomto otevření žádala '+s.requestedMinutes+' min; platí limit prvního otevření':''));
+  out.push('Zahájeno (hodiny zařízení, neověřeno): '+stamp(s.startedAt)+
+   (s.submittedAt?'; odevzdáno: '+stamp(s.submittedAt):''));
+  if(s.events.length===0)out.push('Nejsou zaznamenány události; to není důkaz bezchybného průběhu.');
   else for(const item of s.events){
    const seconds=Math.max(0,Math.floor((item.at-s.startedAt)/1000));
    const duration=String(Math.floor(seconds/60)).padStart(2,'0')+':'+
@@ -349,12 +361,18 @@
   for(const chunk of chunks){pdf.set(chunk,off);off+=chunk.length}
   return pdf;
  }
- async function loadSchoolLogo(documentRef){
-  check(documentRef&&documentRef.baseURI&&documentRef.defaultView,'Document required for official school logo.');
+ // R64: the PDF never leaves without the official school logo. The logo is fetched as soon
+ // as the test page opens (while the device is certainly online), kept in memory, and the
+ // download retries the fetch before giving up with a clear message.
+ const LOGO_MESSAGE='Logo školy se nepodařilo načíst, proto PDF nevzniklo. Zkontrolujte připojení k internetu a klikněte znovu. / The school logo could not be loaded, so no PDF was created. Check the internet connection and try again.';
+ let logoCache=null;
+ async function fetchSchoolLogo(documentRef,attempt){
   const ImageCtor=documentRef.defaultView.Image;
   check(typeof ImageCtor==='function','Image decoder unavailable.');
   const img=new ImageCtor();
-  img.src=new URL('../../assets/school-logo.png',documentRef.baseURI).href;
+  const url=new URL('../../assets/school-logo.png',documentRef.baseURI);
+  if(attempt>0)url.searchParams.set('retry',String(attempt));
+  img.src=url.href;
   if(typeof img.decode==='function')await img.decode();
   else await new Promise((resolve,reject)=>{
    if(img.complete&&img.naturalWidth){resolve();return}
@@ -363,6 +381,34 @@
   check(img.naturalWidth===384&&img.naturalHeight===384,
    'Official school logo size mismatch.');
   return img;
+ }
+ async function loadSchoolLogo(documentRef){
+  check(documentRef&&documentRef.baseURI&&documentRef.defaultView,'Document required for official school logo.');
+  if(logoCache&&logoCache.doc===documentRef){
+   try{return await logoCache.promise}catch(_){logoCache=null}
+  }
+  let lastError=null;
+  for(let attempt=0;attempt<3;attempt++){
+   try{
+    const img=await fetchSchoolLogo(documentRef,attempt);
+    logoCache={doc:documentRef,promise:Promise.resolve(img)};
+    return img;
+   }catch(error){
+    lastError=error;
+    if(/size mismatch|decoder unavailable/i.test(String(error&&error.message)))throw error;
+    await new Promise(resolve=>setTimeout(resolve,400*(attempt+1)));
+   }
+  }
+  const failure=new Error(LOGO_MESSAGE);failure.cause=lastError;throw failure;
+ }
+ function preloadSchoolLogo(documentRef){
+  const d=documentRef||host.document;
+  if(!d||!d.defaultView||!d.baseURI)return null;
+  if(logoCache&&logoCache.doc===d)return logoCache.promise;
+  const promise=fetchSchoolLogo(d,0);
+  promise.catch(()=>{});
+  logoCache={doc:d,promise};
+  return promise;
  }
  async function generate(report,doc){
   const d=doc||host.document;
@@ -381,7 +427,12 @@
   try{a.click()}finally{a.remove();setTimeout(()=>URL.revokeObjectURL(objectUrl),2000)}
   return name;
  }
- const api=Object.freeze({normalize,securityFromAttempt,securityDetails,fullText,copy,renderPages,pdfBytes,loadSchoolLogo,generate,download});
+ const api=Object.freeze({normalize,securityFromAttempt,securityDetails,fullText,copy,renderPages,pdfBytes,loadSchoolLogo,preloadSchoolLogo,generate,download});
+ if(host.document&&typeof host.document.addEventListener==='function'){
+  const startPreload=()=>{try{preloadSchoolLogo(host.document)}catch(_){}};
+  if(host.document.readyState==='loading')host.document.addEventListener('DOMContentLoaded',startPreload,{once:true});
+  else startPreload();
+ }
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  else host.LSHPdfReport=api;
 })(typeof window!=='undefined'?window:this);

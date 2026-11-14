@@ -7,7 +7,7 @@ const entries=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/cards.json
  .filter(x=>x.skill==='poslech');
 assert.equal(entries.length,3);
 const url=(e,clean=false,level='B2')=>new URL(
- (clean?e.relative.replace(/index\.html$/,''):e.relative)+
+ (clean?e.relative.replace(/index\.html$/,''):(e.lockSource||e.relative))+
  '?practice=1&lang=en&level='+level,hub).href;
 for(const [engine,browserType] of [['Chromium',chromium],['WebKit',webkit]]){
  test('R42 '+engine+' all 3 Listening cards: add arbitrary and suggested words to shared IndexedDB, clean URL and navigation',{timeout:250000},async()=>{

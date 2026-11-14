@@ -325,6 +325,32 @@ load();try{const qp=new URLSearchParams(location.search),ql=qp.get('lang'),qv=qp
 
 </script>
 <!-- R49: previous local Reading vocabulary retired; existing words migrate to shared LSH bank. -->
+<!-- R64: variant bridge moved into the canonical card; r11 copy is an identical mirror. -->
+<script>
+/* LSH-R5 variant bridge: preserve original default; optional teacher practice preset. */
+(function(){
+'use strict';
+try{
+ const p=new URLSearchParams(window.LSH_OFFLINE_QS||location.search),langs=p.getAll('lang'),levels=p.getAll('level');
+ const langOK=langs.length===1&&Object.prototype.hasOwnProperty.call(DATA,langs[0]);
+ const levelOK=levels.length===1&&LEVELS.includes(levels[0]);
+ if(langOK)state.language=langs[0];
+ if(levelOK)state.level=levels[0];
+ const practice=p.getAll('practice').length===1&&p.get('practice')==='1';
+ if(practice)state.dictionary=true;
+ if(langOK||levelOK||practice){render();save();}
+ const locked=langOK&&levelOK&&p.getAll('zamek').length===1&&p.get('zamek')==='1';
+ if(locked){
+  $('language').disabled=true;
+  $('levels').querySelectorAll('button[data-level]').forEach(b=>{b.disabled=true;b.setAttribute('aria-disabled','true')});
+  const messages={en:'Teacher-selected language and CEFR level.',es:'Idioma y nivel MCER seleccionados por el profesor.',de:'Sprache und GER-Niveau wurden von der Lehrkraft gewählt.',fr:'Langue et niveau CECR définis par l’enseignant.'};
+  const note=document.createElement('span');note.id='lshVariantHint';note.setAttribute('role','status');note.textContent='🔒 '+messages[state.language];
+  note.style.cssText='display:block;font:600 12px/1.35 system-ui;max-width:220px;color:inherit';
+  $('levels').parentElement.appendChild(note);
+ }
+}catch(error){console.warn('LSH practice variant ignored',error);}
+})();
+</script>
 <script defer src="../../assets/lsh/reading-return.js"></script>
 <script defer src="../../assets/lsh/v3/model.js"></script>
 <script defer src="../../assets/lsh/v3/store.js"></script>

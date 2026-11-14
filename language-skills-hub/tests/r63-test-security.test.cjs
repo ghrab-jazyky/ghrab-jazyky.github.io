@@ -82,12 +82,12 @@ test('Reading and Listening complete local PDF text contains incident timeline a
   assert.match(text,/Pokus o tisk nebo náhled tisku/);
   assert.match(text,/Test znovu zpřístupněn učitelem/);
   assert.match(text,/00:05/);
-  assert.match(text,/lokalni pamet prohlizece/);
+  assert.match(text,/lokální paměť prohlížeče/);
   assert.match(text,/Spravna odpoved/);
  }
  const without=pdf.fullText({skill:'reading',topic:'Legacy',language:'en',level:'B2',
   summary,questions});
- assert.match(without,/neni dostupny casovany zaznam/);
+ assert.match(without,/TEST BEZ DOHLEDU/);
  assert.throws(()=>pdf.normalize({skill:'reading',topic:'Invalid',language:'en',
   level:'B2',summary,questions,security:{...security,
    events:[{kind:'private-secret',at:1763000001000}]}}),/Invalid local security/);

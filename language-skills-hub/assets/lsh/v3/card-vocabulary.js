@@ -6,7 +6,9 @@
 // R54: mount the independent, read-only Reading strategy guide on practice cards.
 // Run before vocabulary storage initialization so guide availability does not
 // depend on IndexedDB or the student having saved any words.
-if(root.document&&/\/language-skills-hub\/cteni\/[a-z0-9-]+(?:\/index\.html|\/)?$/.test(root.location?.pathname||'')){
+// R64: r11/variant-copies/<rl|ll>-<slug>.html are byte-identical mirrors of the canonical cards
+// that the catalog really opens; they must behave exactly like cteni/<slug>/ and poslech/<slug>/.
+if(root.document&&/\/language-skills-hub\/(?:cteni\/[a-z0-9-]+(?:\/index\.html|\/)?|r11\/variant-copies\/rl-[a-z0-9-]+\.html)$/.test(root.location?.pathname||'')){
  const guideScript=root.document.createElement('script');
  guideScript.src='../../assets/lsh/v3/reading-skill-guides.js';
  guideScript.async=false;
@@ -14,7 +16,9 @@ if(root.document&&/\/language-skills-hub\/cteni\/[a-z0-9-]+(?:\/index\.html|\/)?
 }
 const MODEL=root.LSH_MODEL,STORE=root.LSH_STORE;
 if(!MODEL||!STORE||!root.document)return;
-const match=root.location.pathname.match(/\/language-skills-hub\/(cteni|poslech)\/([a-z0-9-]+)(?:\/index\.html|\/)?$/);
+const canonicalMatch=root.location.pathname.match(/\/language-skills-hub\/(cteni|poslech)\/([a-z0-9-]+)(?:\/index\.html|\/)?$/);
+const mirrorMatch=root.location.pathname.match(/\/language-skills-hub\/r11\/variant-copies\/(rl|ll)-([a-z0-9-]+)\.html$/);
+const match=canonicalMatch||(mirrorMatch&&[mirrorMatch[0],mirrorMatch[1]==='rl'?'cteni':'poslech',mirrorMatch[2]]);
 if(!match)return;
 const [,skill,slug]=match,topicId=(skill==='cteni'?'rl-':'ll-')+slug;
 const language=()=>skill==='poslech'?'en':

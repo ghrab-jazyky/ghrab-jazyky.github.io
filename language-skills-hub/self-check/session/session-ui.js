@@ -89,24 +89,83 @@
    tabUnavailable:'La surveillance des autres onglets actifs n’est pas disponible sur cet appareil.',
    fullscreenUnavailable:'Le plein écran n’est pas disponible. Demande à l’enseignant de vérifier l’écran.'}
  };
+ const UNSUPERVISED=Object.freeze({
+  en:'Practice test without supervision: no time limit and no screen lock. Not suitable for grading.',
+  es:'Prueba de práctica sin supervisión: sin límite de tiempo ni bloqueo de pantalla. No sirve para calificar.',
+  de:'Übungstest ohne Aufsicht: kein Zeitlimit und keine Bildschirmsperre. Nicht für die Benotung geeignet.',
+  fr:'Test d’entraînement sans surveillance : pas de limite de temps ni de verrouillage de l’écran. Ne convient pas à la notation.'
+ });
+ const BLOCKED=Object.freeze({
+  en:{used:['This test has already been taken on this device','One attempt per device is allowed for this test link. Ask your teacher if you need a new test.']},
+  es:{used:['Esta prueba ya se ha realizado en este dispositivo','Solo se permite un intento por dispositivo con este enlace. Pide una prueba nueva a tu profesor.']},
+  de:{used:['Dieser Test wurde auf diesem Gerät bereits durchgeführt','Mit diesem Link ist pro Gerät nur ein Versuch möglich. Bitte deine Lehrkraft um einen neuen Test.']},
+  fr:{used:['Ce test a déjà été passé sur cet appareil','Un seul essai par appareil est autorisé avec ce lien. Demande un nouveau test à ton enseignant.']}
+ });
  function mount(cfg){
   const params=new URLSearchParams(location.search);
-  if(!params.has('timer'))return null; // Legacy links stay fully compatible.
+  if(!params.has('timer')){
+   // Legacy links stay fully compatible, but R64 labels them honestly: no timer, no lock.
+   try{
+    const note=elt('div','lsh-session-bar');note.id='sessionUnsupervised';note.setAttribute('role','note');
+    note.appendChild(elt('strong',null,(UNSUPERVISED[cfg.lang]||UNSUPERVISED.en)));
+    cfg.workspace.parentElement.insertBefore(note,cfg.workspace);
+   }catch(_){}
+   return null;
+  }
   const core=root.LSHAttemptCore;
   if(!core)throw new Error('Missing local attempt engine');
-  const n=core.minutes(params.get('timer'));
+  const requestedMinutes=core.minutes(params.get('timer'));
   const classAttempt=params.get('attempt')||'legacytest';
   if(!/^[a-z0-9_-]{6,40}$/i.test(classAttempt))throw new Error('Invalid attempt URL');
-  // A shared class QR is not a per-student identity. Give each freshly opened
-  // student URL an isolated local store key; preserve it on reload via the hash.
+  // R64: ONE timed attempt per device (browser profile) and class attempt code.
+  // The first opening registers a local session; every later opening of the same QR / link
+  // in this profile returns to that same attempt (locked, running or submitted) with the
+  // originally registered time limit. Changing the timer in the URL or erasing
+  // a submitted attempt never yields a second attempt. This is a local convenience for a
+  // supervising teacher, not authentication: another browser, a private window or cleared
+  // site data are outside what a static page can detect.
   const ownUrl=new URL(location.href);
-  const hash=new URLSearchParams(ownUrl.hash.replace(/^#/,'')); 
-  let localSession=hash.get('lsh_session');
-  if(!/^[a-f0-9]{24}$/.test(localSession||'')){
-   const bytes=new Uint8Array(12);
-   if(!root.crypto?.getRandomValues)throw new Error('Secure local session IDs unavailable');
-   root.crypto.getRandomValues(bytes);
-   localSession=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
+  const hash=new URLSearchParams(ownUrl.hash.replace(/^#/,''));
+  const variant=[cfg.topic,cfg.lang,cfg.level].join('|');
+  // The teacher panel reuses one attempt code for every language/level it offers, so the
+  // registry is kept per code AND variant: one attempt per device for each concrete test.
+  const registryKey='lsh:device-attempt:r64:'+cfg.skill+':'+classAttempt.toLowerCase()+':'+variant;
+  let registryStore=null;try{registryStore=localStorage}catch(_){}
+  let registry=null;
+  try{
+   const parsed=JSON.parse(registryStore?.getItem(registryKey)||'null');
+   if(parsed&&typeof parsed==='object'&&/^[a-f0-9]{24}$/.test(parsed.session||'')&&
+    typeof parsed.variant==='string'&&typeof parsed.consumed==='boolean')registry=parsed;
+  }catch(_){registry=null}
+  const writeRegistry=value=>{try{registryStore?.setItem(registryKey,JSON.stringify(value))}catch(_){}};
+  let n=requestedMinutes,localSession=null,blocked=null;
+  if(registry){
+   if(registry.consumed||registry.variant!==variant)blocked='used';
+   else{localSession=registry.session;try{n=core.minutes(String(registry.limitMinutes))}catch(_){n=requestedMinutes}}
+  }else{
+   localSession=hash.get('lsh_session');
+   if(!/^[a-f0-9]{24}$/.test(localSession||'')){
+    const bytes=new Uint8Array(12);
+    if(!root.crypto?.getRandomValues)throw new Error('Secure local session IDs unavailable');
+    root.crypto.getRandomValues(bytes);
+    localSession=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
+   }
+   registry={session:localSession,limitMinutes:n,variant,createdAt:Date.now(),consumed:false};
+   writeRegistry(registry);
+  }
+  if(blocked){
+   const text=(BLOCKED[cfg.lang]||BLOCKED.en)[blocked];
+   const notice=elt('section','lsh-session-intro');notice.id='sessionBlocked';notice.setAttribute('role','alert');
+   notice.append(elt('h2',null,text[0]),elt('p',null,text[1]));
+   cfg.workspace.hidden=true;cfg.workspace.parentElement.insertBefore(notice,cfg.workspace);
+   if(cfg.results)cfg.results.hidden=true;
+   const idle=Object.freeze({phase:'ready',startedAt:null,deadlineAt:null,submittedAt:null,remainingMs:0,
+    expired:false,persistent:false,answers:{},reviewMarks:null,incidents:[],resumptions:[],
+    tabMonitoringAvailable:false,blocked});
+   return Object.freeze({initialize:()=>idle,save(){},saveReviewMarks(){throw new Error('Attempt unavailable')},
+    finish:()=>idle,status:()=>idle,stop(){}});
+  }
+  if(hash.get('lsh_session')!==localSession){
    ownUrl.hash='lsh_session='+localSession;
    history.replaceState(history.state,'',ownUrl.href);
   }
@@ -324,7 +383,7 @@
   const interval=setInterval(tick,1000);
   erase.addEventListener('click',()=>{
    if(engine.status().phase!=='submitted'||!root.confirm(ui.eraseConfirm))return;
-   engine.clear();purged=true;clearInterval(interval);tabMonitor.dispose();
+   engine.clear();purged=true;writeRegistry({...registry,consumed:true});clearInterval(interval);tabMonitor.dispose();
    if(results)results.hidden=true;
    intro.hidden=true;workspace.hidden=true;overlay.hidden=true;bar.hidden=false;
    remaining.textContent=ui.erased;warning.textContent='';erase.disabled=true;
@@ -355,7 +414,8 @@
    if(s.phase==='running'&&!s.expired)save();
    const out=engine.finish();tabMonitor.deactivate();render();return out;
   }
-  const status=()=>Object.freeze({...engine.status(),tabMonitoringAvailable:tabMonitor.available});
+  const status=()=>Object.freeze({...engine.status(),tabMonitoringAvailable:tabMonitor.available,
+   attemptCode:classAttempt,limitMinutes:n,requestedMinutes});
   return Object.freeze({initialize,save,saveReviewMarks,finish,status,
    stop:()=>{clearInterval(interval);tabMonitor.dispose();}});
  }

@@ -19,11 +19,10 @@ test('R55: all five actual catalog links carry reading strategy guides',()=>{
   if(copyIds.includes(entry.id)){
    copyVariants+=24;
    assert.ok(entry.lockSource?.startsWith('r11/variant-copies/'),entry.id);
-   assert.match(actual,/<script defer src="\.\.\/\.\.\/assets\/lsh\/v3\/reading-skill-guides\.js\?v=R55"><\/script>/,entry.id);
-   assert.equal((actual.match(/reading-skill-guides\.js/g)||[]).length,1);
-   assert.equal(new URL('../../assets/lsh/v3/reading-skill-guides.js?v=R55',
-      'https://ghrab-jazyky.github.io/language-skills-hub/'+entry.lockSource).pathname,
-    '/language-skills-hub/assets/lsh/v3/reading-skill-guides.js');
+   // R64: the copy is a byte-identical mirror; the guide is mounted by card-vocabulary.js on both paths.
+   assert.equal(actual,original,entry.id+' mirror drift');
+   assert.match(actual,/src="\.\.\/\.\.\/assets\/lsh\/v3\/card-vocabulary\.js"/,entry.id);
+   assert.match(read('assets/lsh/v3/card-vocabulary.js'),/r11\\\/variant-copies\\\/rl-\[a-z0-9-\]\+\\\.html/);
   }else{
    assert.equal(entry.lockSource,null,entry.id);
    assert.match(actual,/src="\.\.\/\.\.\/assets\/lsh\/v3\/card-vocabulary\.js"/,entry.id);
