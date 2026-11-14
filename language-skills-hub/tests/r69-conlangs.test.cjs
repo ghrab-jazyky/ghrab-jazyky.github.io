@@ -76,3 +76,20 @@ test('R69 uses only the shared test route and the shared vocabulary bridge',()=>
  const inline=/<script>([\s\S]*?)<\/script>/.exec(html)?.[1];assert.ok(inline);
  const digest=crypto.createHash('sha256').update(inline).digest('base64');assert.match(html,new RegExp('sha256-'+digest.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
 });
+test('R69 independent CEFR distractor and transcript-scope quality gate',()=>{
+ for(const level of levels){
+  const bank=data.variants[level];
+  const mc=bank.questionBank.filter(q=>q.type==='mc');
+  assert.equal(mc.length,6);
+  const options=mc.flatMap(q=>q.options);
+  assert.equal(new Set(options).size,options.length,'Repeated/generic multiple-choice distractor in '+level);
+  for(const q of bank.questionBank){
+   assert.doesNotMatch(q.question,/\b(?:Quenya|Sindarin)\b/i,'Not in the spoken video: '+level+q.id);
+   assert.ok(q.explanation&&q.explanation.length>=20,'Explanations must be meaningful '+level+q.id);
+   // Exact cue evidence cannot be certified before audio verification.
+   assert.match(q.evidence,/pending manual verification/,'No claim of unverified exact timings');
+  }
+ }
+ assert.equal(data.practice.A1.vocabulary.find(x=>x.term==='a fan').cs,'fanoušek / fanynka');
+ assert.equal(data.A1.vocab.find(x=>x.term==='a fan').cs,'fanoušek / fanynka');
+});
