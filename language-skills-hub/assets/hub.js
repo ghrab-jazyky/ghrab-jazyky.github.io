@@ -31,6 +31,14 @@ function opt(select,items,previous){
  }
  if(items.some(([value])=>value===previous))select.value=previous;
 }
+function countWord(n){return n===1?'téma':n>=2&&n<=4?'témata':'témat';}
+function syncCatalogCounts(){
+ for(const name of Object.keys(titles)){
+  const count=entries.filter(e=>e.skill===name).length;
+  document.querySelectorAll('[data-count-skill="'+name+'"]').forEach(node=>{node.textContent=String(count)});
+  document.querySelectorAll('[data-count-word="'+name+'"]').forEach(node=>{node.textContent=countWord(count)});
+ }
+}
 function langChoices(){
  const active=entries.filter(e=>e.skill===skill);
  const langs=['en','es','de','fr'].filter(l=>active.some(e=>e.languages.includes(l)));
@@ -421,6 +429,7 @@ async function load(){
   }
   translations=new Map(Object.entries(i18n.entries));
   entries=body.entries;
+  syncCatalogCounts();
   if(skill){
    langChoices();
    const query=new URLSearchParams(location.search);
