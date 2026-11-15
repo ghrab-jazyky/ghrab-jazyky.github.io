@@ -11,6 +11,9 @@ on:
       - 'language-skills-hub/**'
       - '.github/workflows/lsh-human-rights-r35-hr2.yml'
   workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

@@ -15,6 +15,9 @@ on:
       - 'README.md'
       - '.github/workflows/lsh-r27-release-gate.yml'
   workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
