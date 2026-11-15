@@ -216,6 +216,8 @@
     next++;
     if(next===4){
      next=0;gestureAt=0;
+     // R73 fail-closed: teacher must first restore an unrestricted viewport.
+     if(restricted()){lockReason('restricted-viewport');return;}
      try{
       if(!document.fullscreenElement&&document.documentElement.requestFullscreen&&!isTouchDevice()){
        // Request while the teacher's pointer gesture still carries user activation.
@@ -276,7 +278,8 @@
    overlay.hidden=state.phase!=='interrupted';
    if(state.phase==='interrupted'&&lastPhase!=='interrupted'){next=0;gestureAt=0;}
    reason.textContent=state.phase==='interrupted'?
-    (ui.reasons[state.incidents[state.incidents.length-1]?.kind]||ui.lock):'';
+    (restricted()?ui.reasons['restricted-viewport']:
+     ui.reasons[state.incidents[state.incidents.length-1]?.kind]||ui.lock):'';
    if(state.phase==='interrupted')workspace.setAttribute('inert','');
    else workspace.removeAttribute('inert');
    lastPhase=state.phase;

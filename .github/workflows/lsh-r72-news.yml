@@ -30,6 +30,8 @@ jobs:
           node --check language-skills-hub/poslech/how-to-choose-your-news/news-practice.js
           node --check language-skills-hub/tests/r72-news.test.cjs
           node --check language-skills-hub/tests/r72-news.browser.test.cjs
+          node --check language-skills-hub/tests/r73-news-security.test.cjs
+          node --check language-skills-hub/tests/r73-news-security.browser.test.cjs
   browser:
     runs-on: ubuntu-24.04
     timeout-minutes: 35
@@ -57,6 +59,7 @@ jobs:
           done
           node --test --test-concurrency=2 \
             language-skills-hub/tests/r72-news.browser.test.cjs \
+            language-skills-hub/tests/r73-news-security.browser.test.cjs \
             language-skills-hub/tests/r69-conlangs.browser.test.cjs \
             language-skills-hub/tests/r68-sad-a1c2.browser.test.cjs \
             language-skills-hub/tests/r70-live-listening-studio.browser.test.cjs \
