@@ -1,0 +1,26 @@
+/* E8: How to Choose Your News PRACTICE additions only. No shared Listening TEST selectors. */
+.news-scaffold{
+ border-left:3px solid var(--accent);background:var(--hint);color:var(--ink);
+ padding:12px 15px;border-radius:9px;margin:15px 0;line-height:1.55;font-size:14px
+}
+.news-writing-group{margin:16px 0}
+.news-writing-label{display:block;font-size:13px;font-weight:750;color:var(--ink);margin:9px 0 6px}
+.news-writing{
+ display:block;width:100%;max-width:100%;min-height:80px;resize:vertical;
+ padding:11px 12px;border:1px solid var(--line);background:var(--panel);
+ color:var(--ink);border-radius:9px;line-height:1.5;font:inherit
+}
+.news-writing:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#afterQuestions>li{margin-bottom:21px}
+.news-prompt{display:block;margin-bottom:8px}
+.news-replay-link{display:inline-flex;margin:10px 0 16px;font-size:13px}
+.news-writing-status{color:var(--muted);font-size:13px;margin:8px 0}
+#closeVideoBtn{margin-top:10px}
+@media(max-width:480px){
+ .news-writing{min-height:92px}
+ #finish .source-actions .action{max-width:100%;white-space:normal}
+}
+@media print{
+ .news-writing{break-inside:avoid;border-color:#aaa;min-height:80px}
+ .news-replay-link,#closeVideoBtn,#checkAllBtn,#exportBtn{display:none!important}
+}
