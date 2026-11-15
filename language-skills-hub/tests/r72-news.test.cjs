@@ -120,6 +120,8 @@ test('E3 shared teacher keys cannot confuse TEST and PRACTICE',()=>{
   assert.deepEqual(fromTeacher.before,shown.pre);
   assert.deepEqual(fromTeacher.talk,shown.after);
   assert.deepEqual(fromTeacher.vocab,shown.vocabulary);
+  assert.deepEqual(fromTeacher.sequence,shown.sequence);
+  assert.deepEqual(fromTeacher.challenge,shown.challenge);
   assert.equal(fromTeacher.prediction,'');
   assert.deepEqual(fromTeacher.beforeHelp,[]);
   assert.deepEqual(fromTeacher.talkHelp,[]);
@@ -132,6 +134,14 @@ test('E3 shared teacher keys cannot confuse TEST and PRACTICE',()=>{
   }
   for(const v of shown.vocabulary)
    assert.ok(questionItems.includes(v.term),lv+' missing visible vocabulary '+v.term);
+  assert.equal(shown.sequence.length,lv==='A1'?4:lv==='A2'?5:lv==='B1'?6:7);
+  assert.equal(new Set(shown.sequence).size,shown.sequence.length,lv+' duplicate reconstruction idea');
+  const reconstruction=practise.groups.find(g=>g.title==='Reconstruction – správné pořadí');
+  assert.equal(reconstruction?.items.length,shown.sequence.length);
+  assert.deepEqual(reconstruction.items.map(x=>x.answer),shown.sequence);
+  const advanced=practise.groups.find(g=>g.title==='Challenge – otevřené úkoly');
+  assert.equal(advanced?.items.length||0,['C1','C2'].includes(lv)?2:0);
+  if(advanced)assert.deepEqual(advanced.items.map(x=>x.question),shown.challenge);
   assert.equal(practise.groups.find(g=>g.title==='Před poslechem – diskuse')?.items.length,shown.pre.length);
   assert.equal(practise.groups.find(g=>g.title==='Speaking follow-up – diskuse')?.items.length,shown.after.length);
   assert.ok(!practise.groups.some(g=>g.title==='Open questions – vzorové odpovědi'));
@@ -177,6 +187,9 @@ test('E8 NEWS optional writing/replay stays scoped to practice, keeps official T
  assert.match(practice,/function exportAnswers\(\)/);
  assert.match(practice,/function renderVocabPractice\(\)/);
  assert.match(practice,/function checkVocabPractice\(\)/);
+ assert.match(practice,/function renderSequence\(\)/);
+ assert.match(practice,/function checkSequence\(\)/);
+ assert.match(practice,/function renderChallenge\(\)/);
  assert.match(practice,/function installPracticeExtras\(\)/);
  assert.match(practice,/for\(const section of 'ABC'\)check\(section\)/);
  assert.match(practice,/news-practice-extras\.css/);
@@ -185,6 +198,8 @@ test('E8 NEWS optional writing/replay stays scoped to practice, keeps official T
  assert.match(extraCss,/#afterQuestions>li/);
  assert.match(extraCss,/\.news-writing:focus-visible/);
  assert.match(extraCss,/\.news-vocab-select:focus-visible/);
+ assert.match(extraCss,/\.news-sequence-item/);
+ assert.match(extraCss,/\.news-challenge/);
  assert.doesNotMatch(read('self-check/listening/listening-student.js'),/news-practice-extras\.css/);
  const student=read('self-check/listening/listening-student.js');
  assert.match(student,/selection\.topic==='ll-sad'\?/);
