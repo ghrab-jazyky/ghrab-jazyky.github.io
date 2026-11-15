@@ -193,6 +193,10 @@ test('E8 NEWS optional writing/replay stays scoped to practice, keeps official T
  assert.match(practice,/function installPracticeExtras\(\)/);
  assert.match(practice,/for\(const section of 'ABC'\)check\(section\)/);
  assert.match(practice,/news-practice-extras\.css/);
+ // E10 P0: the dot-prefixed CSS selector must be resolved by querySelector,
+ // not by the getElementById helper. The latter crashes setup before rendering.
+ assert.match(practice,/const nav=document\.querySelector\('\.side nav'\)/);
+ assert.doesNotMatch(practice,/\$\('\.side nav'\)/);
  assert.match(practice,/draft\.after\.filter/);
  assert.match(practice,/answerSaveFailed/);
  assert.match(practice,/Deletion could not be verified/);
