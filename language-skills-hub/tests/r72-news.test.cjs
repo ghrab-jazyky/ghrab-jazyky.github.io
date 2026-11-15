@@ -194,7 +194,9 @@ test('E8 NEWS optional writing/replay stays scoped to practice, keeps official T
  assert.match(practice,/for\(const section of 'ABC'\)check\(section\)/);
  assert.match(practice,/news-practice-extras\.css/);
  assert.match(practice,/draft\.after\.filter/);
- assert.match(practice,/localStorage\.removeItem\(draftKey\(lv\)\)/);
+ assert.match(practice,/answerSaveFailed/);
+ assert.match(practice,/Deletion could not be verified/);
+ assert.match(practice,/localStorage\.getItem\(storageKey\)!==null/);
  assert.match(extraCss,/#afterQuestions>li/);
  assert.match(extraCss,/\.news-writing:focus-visible/);
  assert.match(extraCss,/\.news-vocab-select:focus-visible/);
