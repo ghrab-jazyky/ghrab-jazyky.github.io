@@ -194,49 +194,19 @@
    area.append(result);
   }
  }
+
+ let reconstruction=null;
  function renderSequence(){
-  const steps=data.practice[level].sequence,list=$('newsSequenceItems');
-  list.replaceChildren();
-  for(let i=0;i<draft.sequence.length;i++){
-   const index=draft.sequence[i],li=el('li','news-sequence-item');
-   li.id='newsSeqRow'+i;
-   li.append(el('span','news-sequence-position','Position '+(i+1)),
-    el('p','news-sequence-text',steps[index]));
-   const actions=el('div','news-sequence-actions');
-   for(const [delta,action] of [[-1,'up'],[1,'down']]){
-    const button=el('button','action news-sequence-move',
-     delta<0?'↑ Up':'↓ Down');
-    button.type='button';button.disabled=i+delta<0||i+delta>=steps.length;
-    button.setAttribute('aria-label','Move statement in position '+(i+1)+' '+action);
-    button.addEventListener('click',()=>{
-     const j=i+delta;
-     [draft.sequence[i],draft.sequence[j]]=[draft.sequence[j],draft.sequence[i]];
-     storeDraft();renderSequence();
-     const next=$('newsSeqRow'+j);
-     (next?.querySelector('button:not(:disabled)')||next)?.focus();
-    });
-    actions.append(button);
-   }
-   li.append(actions);list.append(li);
-  }
-  $('newsSequenceStatus').textContent='Reorder the statements to match the original video. '+
-   'Optional; not included in the 17-question listening score.';
-  $('newsSequenceReview').replaceChildren();
+  const sequence=window.LSHListeningSequence;
+  if(!sequence)throw Error('Shared Harrison-style reconstruction is unavailable');
+  reconstruction?.destroy();
+  reconstruction=sequence.mount({
+   list:$('newsSequenceItems'),status:$('newsSequenceStatus'),review:$('newsSequenceReview'),
+   steps:data.practice[level].sequence,order:draft.sequence,
+   onChange(order){draft.sequence=order;storeDraft()}
+  });
  }
- function checkSequence(){
-  const source=data.practice[level].sequence;
-  const correct=draft.sequence.filter((index,i)=>index===i).length;
-  $('newsSequenceStatus').textContent='Reconstruction: '+correct+' / '+source.length+
-   ' in the correct position. Separate from the listening score.';
-  const review=$('newsSequenceReview');review.replaceChildren();
-  for(let i=0;i<source.length;i++)if(draft.sequence[i]!==i){
-   const row=el('div','review wrong');
-   row.append(el('strong','', 'Position '+(i+1)+' · Check the order'),
-    el('p','', 'Your statement: '+source[draft.sequence[i]]),
-    el('p','', 'Correct statement: '+source[i]));
-   review.append(row);
-  }
- }
+ function checkSequence(){return reconstruction?.check()}
  function renderChallenge(){
   const prompts=data.practice[level].challenge,section=$('newsChallengeSection');
   section.hidden=prompts.length===0;
@@ -390,14 +360,18 @@
   vocabPractice.after(writingBox('newsSentence',
    'Use a new vocabulary word in your own sentence (optional)',
    draft.sentence,value=>{draft.sentence=value;storeDraft()},2));
-  const sequenceSection=el('section','panel');sequenceSection.id='newsSequenceSection';
+  const sequenceSection=el('section','panel lsq');sequenceSection.id='newsSequenceSection';
   const sequenceHead=el('div','stage-heading'),sequenceTitle=el('div');
   sequenceTitle.append(el('div','kicker','05 · Reconstruction'),
    el('h2','','Listen, order and explain'));
   sequenceHead.append(sequenceTitle,el('span','chip','Optional · not test-scored'));
   sequenceSection.append(sequenceHead,
-   el('p','section-description','Put these ideas in the order they appear in the original recording. Use the up/down controls; you can check and retry.'));
-  const seqList=el('ol','news-sequence-list');seqList.id='newsSequenceItems';
+   el('p','section-description','Put these ideas in the order they appear in the original recording. Tap a card then its target position, or drag the dotted handle.'));
+  const guide=el('div','seq-guide');
+  guide.append(el('span','','① Tap a card, then the target position'),
+   el('span','seq-guide-drag','⋮⋮ Drag the dotted handle'));
+  sequenceSection.append(guide);
+  const seqList=el('ol','seq-list');seqList.id='newsSequenceItems';
   const seqButton=el('button','btn primary','✓ Check reconstruction');
   seqButton.id='checkSequenceBtn';seqButton.type='button';
   seqButton.addEventListener('click',checkSequence);

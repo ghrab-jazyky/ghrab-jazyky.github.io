@@ -66,7 +66,7 @@ for(const [browserName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     assert.deepEqual(byTitle('Před poslechem – diskuse'),visiblePre,level+' student PRE parity');
     assert.deepEqual(byTitle('Speaking follow-up – diskuse'),visibleAfter,level+' student AFTER parity');
     assert.deepEqual(byTitle('Vocabulary – významy'),visibleVocab,level+' student vocabulary parity');
-    const studentSequence=await page.locator('#newsSequenceItems .news-sequence-text').allTextContents();
+    const studentSequence=await page.locator('#newsSequenceItems .seq-text').allTextContents();
     const referenceSequence=data.practice[level].sequence;
     assert.deepEqual([...studentSequence].sort(),[...referenceSequence].sort(),
       level+' student reconstruction statements parity');
