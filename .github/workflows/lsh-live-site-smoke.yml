@@ -11,9 +11,9 @@ permissions:
 jobs:
   verify-live-github-pages:
     runs-on: ubuntu-24.04
-    timeout-minutes: 9
+    timeout-minutes: 14
     steps:
-      - name: Verify public R70 Pages, 32 cards, five Listening topics via HTTPS
+      - name: Verify public R70 Pages, 33 cards, six Listening topics via HTTPS
         shell: bash
         run: |
           python3 - <<'PY'
@@ -30,7 +30,7 @@ jobs:
                 'User-Agent':'LSH-live-deployment-healthcheck/1.0'})
               with urllib.request.urlopen(req,timeout=18) as r:
                   assert r.status==200,(path,r.status)
-          for attempt in range(1,36):
+          for attempt in range(1,51):
               try:
                   home=get('/language-skills-hub/?verify='+str(attempt)).decode('utf-8')
                   assert 'Tři dovednosti.' in home and 'id="catalog"' in home and 'id="skillChooser"' in home
@@ -67,13 +67,13 @@ jobs:
                   assert "self-check/listening/teacher.html" in hub
                   assert "if(localSelfCheck&&['cteni','poslech']" in hub
                   entries=data['entries']
-                  assert len(entries)==32
+                  assert len(entries)==33
                   skills={}
                   for e in entries:skills[e['skill']]=skills.get(e['skill'],0)+1
-                  assert skills=={'konverzace':22,'cteni':5,'poslech':5}
+                  assert skills=={'konverzace':22,'cteni':5,'poslech':6}
                   sad=next(e for e in entries if e['id']=='ll-sad')
                   assert sad['levels']==['A1','A2','B1','B2','C1','C2']
-                  assert release['topicCount']==32 and release['variantCount']==678
+                  assert release['topicCount']==33 and release['variantCount']==684
                   conlangs=next(e for e in entries if e['id']=='ll-conlangs')
                   assert conlangs['levels']==['A1','A2','B1','B2','C1','C2']
                   assert conlangs['languages']==['en']
@@ -94,6 +94,22 @@ jobs:
                   conlangs_data=json.loads(matched.group(1).decode('utf-8'))
                   assert conlangs_data['levels']==['A1','A2','B1','B2','C1','C2']
                   assert all(len(conlangs_data['variants'][lv]['questionBank'])==17 and len(conlangs_data['practiceVariants'][lv]['questionBank'])==17 for lv in conlangs_data['levels'])
+                  news=next(e for e in entries if e['id']=='ll-how-to-choose-your-news')
+                  assert news['levels']==['A1','A2','B1','B2','C1','C2']
+                  assert news['languages']==['en']
+                  assert news['relative']=='poslech/how-to-choose-your-news/index.html'
+                  news_bytes=get('/language-skills-hub/'+news['relative']+'?verify='+str(attempt))
+                  assert hashlib.sha256(news_bytes).hexdigest()==release['contentHashes']['ll-how-to-choose-your-news']
+                  assert b'class="studio-levelbar"' in news_bytes and b'class="hero-aside"' in news_bytes
+                  assert b'href="#finish"' in news_bytes
+                  news_match=re.search(rb'const DATA=(\{.*?\});\s*const SOURCES=',news_bytes,re.S)
+                  assert news_match is not None, 'NEWS source DATA block missing'
+                  news_data=json.loads(news_match.group(1).decode('utf-8'))
+                  assert news_data['id']=='ll-how-to-choose-your-news'
+                  assert news_data['levels']==['A1','A2','B1','B2','C1','C2']
+                  assert all(len(news_data['variants'][lv]['questionBank'])==17 and len(news_data['practiceVariants'][lv]['questionBank'])==17 for lv in news_data['levels'])
+                  for asset in ['news-core.js','news-practice.js','news-practice-extras.css']:
+                      head('/language-skills-hub/poslech/how-to-choose-your-news/'+asset)
                   root=get('/?verify='+str(attempt)).decode('utf-8')
                   assert 'href="language-skills-hub/"' in root
                   head('/zkusebni/')
@@ -134,11 +150,11 @@ jobs:
                   assert logo[:8]==b'\x89PNG\r\n\x1a\n' and len(logo)>1000
                   assert int.from_bytes(logo[16:20],'big')==384 and int.from_bytes(logo[20:24],'big')==384
                   assert hashlib.sha1(b'blob '+str(len(logo)).encode()+b'\0'+logo).hexdigest()=='0b23733540b01fe70f35feda45037b0cd2c995cb'
-                  print('PASS LIVE HTTPS R70: 32 practice cards, 5 Listening topics, 102+102 Conlangs questions, A1-C2, original school logo PDF',flush=True)
+                  print('PASS LIVE HTTPS R70: 33 practice cards, 6 Listening topics including NEWS A1-C2, original school logo PDF',flush=True)
                   print('PRODUCTION URL:',base+'/language-skills-hub/',flush=True)
                   sys.exit(0)
               except Exception as ex:
                   print(f'Attempt {attempt}/35: {type(ex).__name__}: {ex}',flush=True)
-                  if attempt==35:raise
+                  if attempt==50:raise
                   time.sleep(12)
           PY
