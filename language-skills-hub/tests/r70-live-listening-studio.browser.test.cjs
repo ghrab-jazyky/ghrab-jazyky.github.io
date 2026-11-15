@@ -17,15 +17,15 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.equal(res.status(),200);
    await page.waitForFunction(()=>[...document.querySelectorAll('[data-count-skill="poslech"]')]
     .length===2&&[...document.querySelectorAll('[data-count-skill="poslech"]')]
-    .every(el=>el.textContent.trim()==='5'));
-   for(const [skill,count] of [['konverzace',22],['cteni',5],['poslech',5]]){
+    .every(el=>el.textContent.trim()==='6'));
+   for(const [skill,count] of [['konverzace',22],['cteni',5],['poslech',6]]){
     const nums=await page.locator('[data-count-skill="'+skill+'"]').allTextContents();
     assert.deepEqual(nums,[String(count),String(count)]);
    }
    await page.locator('#skillChooser:not([hidden])').waitFor({timeout:8000});
    await page.locator('[data-choose-skill="poslech"]').click();
    await page.locator('#cards .card').first().waitFor();
-   assert.equal(await page.locator('#cards .card').count(),5);
+   assert.equal(await page.locator('#cards .card').count(),6);
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
  });

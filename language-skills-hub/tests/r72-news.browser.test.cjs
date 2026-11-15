@@ -48,7 +48,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    const studentLink=await page.locator('#studentUrl').inputValue();
    assert.match(studentLink,/topic=ll-how-to-choose-your-news/);
    assert.match(studentLink,/timer=/);
-   const student=await ctx.newPage();student.on('pageerror',e=>errors.push(e.message));
+   const student=await ctx.newPage();student.on('pageerror',e=>errors.push(e.message));student.on('dialog',d=>d.accept());
    await student.goto(url('self-check/listening/student.html',{topic:'ll-how-to-choose-your-news',level:'B2'}));
    await student.locator('#workspace:not([hidden])').waitFor();
    assert.equal(await student.locator('fieldset.question').count(),12);
