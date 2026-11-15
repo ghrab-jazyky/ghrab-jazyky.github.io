@@ -24,6 +24,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     assert.equal(await page.locator('.lsh-vocab-save').count()>=5,true);
     assert.equal(await page.locator('#afterQuestions .news-prompt').count(),3);
     assert.equal(await page.locator('#afterQuestions textarea.news-writing').count(),3);
+    assert.equal(await page.locator('#newsVocabQuiz select').count(),7);
     assert.match(await page.locator('#newsScaffold').innerText(),new RegExp('Level '+level));
     assert.equal(await page.locator('link[href="news-practice-extras.css"]').count(),1);
     await page.locator('#questionsA .task').first().locator('input[type=radio]').first().check();
@@ -90,6 +91,10 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.locator('#newsNotes').fill('Compare primary sources with editorial reports.');
    await page.locator('#newsAfter0').fill('Check original material and compare different sources.');
    await page.locator('#newsSentence').fill('The headline may be misleading.');
+   await page.locator('#newsVocabPractice summary').click();
+   await page.locator('#newsVocabSelect0').selectOption('0');
+   await page.locator('#checkVocabBtn').click();
+   assert.match(await page.locator('#newsVocabStatus').innerText(),/Optional vocabulary: 1 \/ 7 correct/);
    await page.locator('#questionsA .task').first().locator('input[type=radio]').first().check();
    assert.match(await page.locator('#writingStatus').innerText(),/1 \/ 3 after-listening responses drafted/);
    assert.match(await page.locator('#progressStatus').innerText(),/^1 of 17/);
@@ -114,13 +119,16 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.equal(await page.locator('#newsAfter0').inputValue(),
     'Check original material and compare different sources.');
    assert.equal(await page.locator('#newsSentence').inputValue(),'The headline may be misleading.');
+   assert.equal(await page.locator('#newsVocabSelect0').inputValue(),'0');
    assert.match(await page.locator('#progressStatus').innerText(),/^1 of 17/);
    await page.locator('#levelPills button[data-level="A1"]').click();
    assert.equal(await page.locator('#newsNotes').inputValue(),'');
+   assert.equal(await page.locator('#newsVocabSelect0').inputValue(),'');
    await page.locator('#newsAfter0').fill('A1 has its own notes.');
    await page.locator('#levelPills button[data-level="B2"]').click();
    assert.equal(await page.locator('#newsAfter0').inputValue(),
     'Check original material and compare different sources.');
+   assert.equal(await page.locator('#newsVocabSelect0').inputValue(),'0');
    await page.locator('#loadVideo').click();
    assert.equal(await page.locator('#videoFrame iframe').count(),1);
    assert.equal(await page.locator('#closeVideoBtn').isHidden(),false);
@@ -136,6 +144,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.equal(await page.locator('#newsNotes').inputValue(),'');
    assert.equal(await page.locator('#newsAfter0').inputValue(),'');
    assert.equal(await page.locator('#newsSentence').inputValue(),'');
+   assert.equal(await page.locator('#newsVocabSelect0').inputValue(),'');
    assert.match(await page.locator('#progressStatus').innerText(),/^0 of 17/);
    assert.deepEqual(errors,[]);
    await ctx.close();
