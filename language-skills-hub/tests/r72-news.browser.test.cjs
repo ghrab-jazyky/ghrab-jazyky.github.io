@@ -26,6 +26,13 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     assert.equal(await page.locator('#afterQuestions textarea.news-writing').count(),3);
     assert.equal(await page.locator('#newsAfter0').getAttribute('aria-describedby'),'newsAfterPrompt0');
     assert.equal(await page.locator('#newsVocabQuiz select').count(),7);
+    assert.equal(await page.locator('#newsSequenceItems>li').count(),
+     level==='A1'?4:level==='A2'?5:level==='B1'?6:7);
+    assert.equal(await page.locator('#newsChallengePrompts .news-prompt').count(),
+     (level==='C1'||level==='C2')?2:0);
+    assert.equal(await page.locator('#newsChallengeSection').isHidden(),
+     level!=='C1'&&level!=='C2');
+    assert.equal(await page.locator('.side nav a[href="#newsSequenceSection"]').count(),1);
     assert.match(await page.locator('#newsScaffold').innerText(),new RegExp('Level '+level));
     assert.equal(await page.locator('link[href="news-practice-extras.css"]').count(),1);
     await page.locator('#questionsA .task').first().locator('input[type=radio]').first().check();
@@ -147,6 +154,59 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.equal(await page.locator('#newsSentence').inputValue(),'');
    assert.equal(await page.locator('#newsVocabSelect0').inputValue(),'');
    assert.match(await page.locator('#progressStatus').innerText(),/^0 of 17/);
+   assert.deepEqual(errors,[]);
+   await ctx.close();
+  }finally{await browser.close()}
+ });
+
+
+ test('R72 '+engineName+' E9 optional reconstruction and C1-C2 writing persist independently of TEST', {timeout:150000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const ctx=await browser.newContext({acceptDownloads:true,viewport:{width:390,height:844}});
+   const page=await ctx.newPage(),errors=[];
+   page.on('pageerror',e=>errors.push(e.message));
+   page.on('dialog',d=>d.accept());
+   assert.equal((await page.goto(url('poslech/how-to-choose-your-news/index.html',{level:'C2'}))).status(),200);
+   await page.locator('#newsSequenceItems>li').first().waitFor();
+   assert.equal(await page.locator('#newsSequenceItems>li').count(),7);
+   assert.equal(await page.locator('#newsChallengePrompts textarea').count(),2);
+   const initial=await page.locator('#newsSequenceItems .news-sequence-text').allTextContents();
+   await page.locator('#newsSeqRow0 .news-sequence-move').last().click();
+   await page.locator('#checkSequenceBtn').click();
+   assert.match(await page.locator('#newsSequenceStatus').innerText(),/Reconstruction: 3 \/ 7/);
+   assert.equal(await page.locator('#newsSequenceReview .review').count(),4);
+   assert.equal(await page.locator('#newsSeqRow0 .news-sequence-text').innerText(),initial[1]);
+   await page.locator('#newsSeqRow2 .news-sequence-move').last().click();
+   await page.locator('#newsSeqRow4 .news-sequence-move').last().click();
+   await page.locator('#checkSequenceBtn').click();
+   assert.match(await page.locator('#newsSequenceStatus').innerText(),/Reconstruction: 7 \/ 7/);
+   assert.equal(await page.locator('#newsSequenceReview .review').count(),0);
+   await page.locator('#newsChallenge0').fill(
+    'More sources may amplify the same error without independent verification.');
+   await page.locator('#newsChallenge1').fill(
+    'I would verify original evidence and wait for independent confirmation.');
+   const downloadEvent=page.waitForEvent('download',{timeout:20000});
+   await page.locator('#exportBtn').click();
+   const dl=await downloadEvent,content=fs.readFileSync(await dl.path(),'utf8');
+   for(const key of ['RECONSTRUCTION OF IDEAS',
+    'ADVANCED EXTENSION','More sources may amplify the same error',
+    'I would verify original evidence','Position 7:'])
+    assert.ok(content.includes(key),'E9 TXT missing '+key);
+   await page.reload();await page.locator('#newsSequenceItems>li').first().waitFor();
+   assert.equal(await page.locator('#newsSeqRow0 .news-sequence-text').innerText(),initial[1]);
+   assert.match(await page.locator('#newsChallenge0').inputValue(),/More sources may amplify/);
+   await page.locator('#levelPills button[data-level="A1"]').click();
+   assert.equal(await page.locator('#newsSequenceItems>li').count(),4);
+   assert.equal(await page.locator('#newsChallengeSection').isHidden(),true);
+   await page.locator('#levelPills button[data-level="C2"]').click();
+   assert.equal(await page.locator('#newsSequenceItems>li').count(),7);
+   assert.equal(await page.locator('#newsChallengeSection').isHidden(),false);
+   assert.match(await page.locator('#newsChallenge0').inputValue(),/More sources may amplify/);
+   await page.locator('#clearBtn').click();
+   await page.reload();await page.locator('#newsSequenceItems>li').first().waitFor();
+   assert.equal(await page.locator('#newsSeqRow0 .news-sequence-text').innerText(),initial[0]);
+   assert.equal(await page.locator('#newsChallenge0').inputValue(),'');
    assert.deepEqual(errors,[]);
    await ctx.close();
   }finally{await browser.close()}
