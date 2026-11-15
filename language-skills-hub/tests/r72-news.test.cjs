@@ -108,8 +108,33 @@ test('E3 shared teacher keys cannot confuse TEST and PRACTICE',()=>{
  for(const lv of levels){
   const variant=listen.variant(data,lv),practice=card.practiceVariant(data,lv,variant);
   const fromTeacher=keys.newsPracticeVariant(data,lv,variant);
-  assert.deepEqual(fromTeacher,practice);
+  // The independent 17-item scored practice bank is unchanged.
+  assert.deepEqual(fromTeacher.gist,practice.gist);
+  assert.deepEqual(fromTeacher.detail,practice.detail);
+  assert.deepEqual(fromTeacher.matching,practice.matching);
+  // The teacher key must use the PRE/AFTER prompts the student actually sees,
+  // not the TEST-only discussion/prediction/open questions.
+  const shown=data.practice[lv];
+  assert.deepEqual(fromTeacher.before,shown.pre);
+  assert.deepEqual(fromTeacher.talk,shown.after);
+  assert.deepEqual(fromTeacher.vocab,shown.vocabulary);
+  assert.equal(fromTeacher.prediction,'');
+  assert.deepEqual(fromTeacher.beforeHelp,[]);
+  assert.deepEqual(fromTeacher.talkHelp,[]);
   const practise=keys.validate(keys.buildListening(fromTeacher,entry,'en',lv));
+  const questionItems=practise.groups.flatMap(g=>g.items.map(i=>i.question));
+  for(const q of [...shown.pre,...shown.after])assert.ok(questionItems.includes(q),lv+' missing student prompt: '+q);
+  for(const q of [...variant.before,variant.prediction,...variant.open.map(x=>x.title)]){
+   if(q&&!shown.pre.includes(q)&&!shown.after.includes(q))
+    assert.ok(!questionItems.includes(q),lv+' leaked TEST-only prompt: '+q);
+  }
+  for(const v of shown.vocabulary)
+   assert.ok(questionItems.includes(v.term),lv+' missing visible vocabulary '+v.term);
+  assert.equal(practise.groups.find(g=>g.title==='Před poslechem – diskuse')?.items.length,shown.pre.length);
+  assert.equal(practise.groups.find(g=>g.title==='Speaking follow-up – diskuse')?.items.length,shown.after.length);
+  assert.ok(!practise.groups.some(g=>g.title==='Open questions – vzorové odpovědi'));
+  const reviewLabels=practise.groups.flatMap(g=>g.items).map(x=>x.question);
+  assert.equal(new Set(reviewLabels).size,reviewLabels.length,lv+' duplicate teacher key question');
   const exam=keys.validate(keys.buildListeningTest(variant,entry,'en',lv,listen.cloze(variant,id,lv)));
   assert.equal(practise.mode,'practice');assert.equal(exam.mode,'test');
   const parts=m=>m.groups.flatMap(g=>g.items);
