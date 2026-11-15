@@ -167,3 +167,21 @@ test('E3 equal Listening Studio R70 UI, consistent CSP and source URLs',()=>{
  assert.match(practice,/el\('fieldset','task-field'\)/);
  assert.match(practice,/el\('legend','sr-only-task-legend'/);
 });
+
+test('E8 NEWS optional writing/replay stays scoped to practice, keeps official TEST grade separate',()=>{
+ const practice=read('poslech/how-to-choose-your-news/news-practice.js');
+ const extraCss=read('poslech/how-to-choose-your-news/news-practice-extras.css');
+ assert.match(practice,/function loadDraft\(lv\)/);
+ assert.match(practice,/function exportAnswers\(\)/);
+ assert.match(practice,/function installPracticeExtras\(\)/);
+ assert.match(practice,/for\(const section of 'ABC'\)check\(section\)/);
+ assert.match(practice,/news-practice-extras\.css/);
+ assert.match(practice,/draft\.after\.filter/);
+ assert.match(practice,/localStorage\.removeItem\(draftKey\(lv\)\)/);
+ assert.match(extraCss,/#afterQuestions>li/);
+ assert.match(extraCss,/\.news-writing:focus-visible/);
+ assert.doesNotMatch(read('self-check/listening/listening-student.js'),/news-practice-extras\.css/);
+ const student=read('self-check/listening/listening-student.js');
+ assert.match(student,/selection\.topic==='ll-sad'\?/);
+ assert.match(student,/Replay the source and match each statement/);
+});
