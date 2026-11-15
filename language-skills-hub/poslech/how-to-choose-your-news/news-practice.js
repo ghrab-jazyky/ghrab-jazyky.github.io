@@ -197,9 +197,13 @@
   $('afterQuestions').replaceChildren();
   for(let i=0;i<practice.after.length;i++){
    const li=el('li');
-   li.append(el('span','news-prompt',practice.after[i]),
-    writingBox('newsAfter'+i,'Your response (optional · teacher reviewed)',
-     draft.after[i],value=>{draft.after[i]=value;storeDraft()},level==='A1'?2:4));
+   const prompt=el('span','news-prompt',practice.after[i]);
+   prompt.id='newsAfterPrompt'+i;
+   const response=writingBox('newsAfter'+i,
+    'Your response to question '+(i+1)+' (optional · teacher reviewed)',
+    draft.after[i],value=>{draft.after[i]=value;storeDraft()},level==='A1'?2:4);
+   response.querySelector('textarea').setAttribute('aria-describedby',prompt.id);
+   li.append(prompt,response);
    $('afterQuestions').append(li);
   }
   $('vocabTasks').replaceChildren();
