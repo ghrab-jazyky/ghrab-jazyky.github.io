@@ -67,7 +67,7 @@ test('R22 does not modify 30 live practice cards or the 666 published variants',
   assert.equal(digest, release.contentHashes[entry.id], entry.id + ' changed unexpectedly');
   if (entry.skill === 'poslech') assert.deepEqual(entry.languages, ['en']);
  }
- assert.deepEqual(counts, {konverzace:22,cteni:5,poslech:5});
+ assert.deepEqual(counts, {konverzace:22,cteni:5,poslech:6});
  assert.equal(variants, 684);
 });
 

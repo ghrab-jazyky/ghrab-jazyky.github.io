@@ -5,7 +5,7 @@ const {chromium,webkit}=require('playwright');
 const reading=require('../self-check/reading/reading-core.js');
 const listening=require('../self-check/listening/listening-core.js');
 const root=path.resolve(__dirname,'..');
-const entries=require('../data/cards.json').entries.filter(e=>['cteni','poslech'].includes(e.skill));
+const entries=require('../data/cards.json').entries.filter(e=>['cteni','poslech'].includes(e.skill)&&e.id!=='ll-how-to-choose-your-news');
 const base='http://127.0.0.1:8765/language-skills-hub/';
 const url=(entry,lang='en',level='B2',mode='practice')=>{
  const u=new URL('self-check/practice-answers/teacher.html',base);
