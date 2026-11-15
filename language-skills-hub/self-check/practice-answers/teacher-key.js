@@ -134,6 +134,28 @@ function conlangsPracticeVariant(data,level,testVariant){
  return {...testVariant,gist,detail,matching};
 }
 
+function newsPracticeVariant(data,level,testVariant){
+ need(data&&data.id==='ll-how-to-choose-your-news'&&data.practiceVariants,
+  'E3 News independent practice data missing.');
+ const bank=data.practiceVariants[level];
+ need(bank&&Array.isArray(bank.questionBank)&&bank.questionBank.length===17&&
+  Array.isArray(bank.matchingBank)&&bank.matchingBank.length===7,
+  'E3 News incomplete practice bank.');
+ const coded=['TRUE','FALSE','NOT STATED'];
+ const mc=bank.questionBank.filter(q=>q.type==='mc');
+ const tns=bank.questionBank.filter(q=>q.type==='tns');
+ const mat=bank.questionBank.filter(q=>q.type==='match');
+ need(mc.length===6&&tns.length===6&&mat.length===5,'E3 News invalid practice task count.');
+ const options=bank.matchingBank.map(x=>x[1]);
+ const gist=mc.map(q=>({id:q.id,title:q.question,type:'single',options:q.options,
+  correct:q.correct.charCodeAt(0)-65,why:q.explanation,evidence:q.evidence}));
+ const detail=tns.map(q=>({id:q.id,title:q.question,type:'single',options:coded,
+  correct:coded.indexOf(q.correct),why:q.explanation,evidence:q.evidence}));
+ const matching={options,items:mat.map(q=>({id:q.id,title:q.question,
+  correct:q.correct.charCodeAt(0)-65,why:q.explanation,evidence:q.evidence}))};
+ return {...testVariant,gist,detail,matching};
+}
+
 function buildListeningTest(variant,entry,lang,level,clozeTasks){
  need(entry&&entry.skill==='poslech'&&lang==='en','Téma není anglický Listening Lab.');
  need(variant&&Array.isArray(variant.gist)&&Array.isArray(variant.detail)&&
@@ -486,11 +508,29 @@ const KEY_ENTRIES=Object.freeze([
    ],
    "relative": "poslech/conlangs/index.html",
    "lockSource": null
+ },
+ {
+   "id": "ll-how-to-choose-your-news",
+   "skill": "poslech",
+   "title": "How to Choose Your News",
+   "languages": [
+     "en"
+   ],
+   "levels": [
+     "A1",
+     "A2",
+     "B1",
+     "B2",
+     "C1",
+     "C2"
+   ],
+   "relative": "poslech/how-to-choose-your-news/index.html",
+   "lockSource": null
  }
 
 ].map(e=>Object.freeze({...e,
  languages:Object.freeze(e.languages),levels:Object.freeze(e.levels)})));
-const api=Object.freeze({buildReading,buildListening,buildReadingTest,buildListeningTest,conlangsPracticeVariant,
+const api=Object.freeze({buildReading,buildListening,buildReadingTest,buildListeningTest,conlangsPracticeVariant,newsPracticeVariant,
  validate,renderPages,download,keyEntries:KEY_ENTRIES});
 if(typeof module!=='undefined'&&module.exports)module.exports=api;
 host.LSHPracticeAnswers=api;
@@ -613,6 +653,7 @@ async function refresh(){
    const v=listen.variant(data,level);
    model=mode==='test'?buildListeningTest(v,e,lang,level,
     listen.cloze(v,e.id,level)):buildListening(
+     e.id==='ll-how-to-choose-your-news'?newsPracticeVariant(data,level,v):
      e.id==='ll-conlangs'?conlangsPracticeVariant(data,level,v):v,
      e,lang,level);
   }
@@ -636,7 +677,7 @@ async function refresh(){
 async function init(){
  try{
   const entries=KEY_ENTRIES;
-  need(entries.length===10,'Neúplná metadata Reading/Listening.');
+  need(entries.length===11,'Neúplná metadata Reading/Listening.');
   const topicId=qs.get('topic'),requestedSkill=qs.get('skill');
   need(topicId,'Chybí identifikátor karty v odkazu.');
   const e=entries.find(x=>x.id===topicId);

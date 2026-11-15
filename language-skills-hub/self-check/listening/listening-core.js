@@ -3,7 +3,7 @@
  'use strict';
  const LEVELS=Object.freeze(['A1','A2','B1','B2','C1','C2']);
  const TOPICS=Object.freeze(['ll-matthew-oscars','ll-harrison-ford','ll-peaky-no-fighting']);
- const ALL_TOPICS=Object.freeze([...TOPICS,'ll-sad','ll-conlangs']);
+ const ALL_TOPICS=Object.freeze([...TOPICS,'ll-sad','ll-conlangs','ll-how-to-choose-your-news']);
  const PHASES=Object.freeze(['first-listening','listen-and-interpret','listen-write-and-reconstruct']);
  const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
  const plain=o=>o!==null&&typeof o==='object'&&!Array.isArray(o)&&

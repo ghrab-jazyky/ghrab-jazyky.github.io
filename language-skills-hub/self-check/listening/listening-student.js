@@ -208,7 +208,8 @@
    'll-harrison-ford':'Harrison Ford · Life Achievement Speech',
    'll-peaky-no-fighting':'Peaky Blinders · No Fighting',
     'll-sad':'Seasonal Affective Disorder · TED-Ed',
-    'll-conlangs':'Constructed Languages · TED-Ed'
+    'll-conlangs':'Constructed Languages · TED-Ed',
+    'll-how-to-choose-your-news':'How to Choose Your News · TED-Ed'
   })[selection.topic];
   $('goal').textContent=chosen.goal;
   $('loading').hidden=true;

@@ -693,6 +693,25 @@
       ],
       "relative": "poslech/conlangs/index.html",
       "lockSource": null
+    },
+    {
+      "id": "ll-how-to-choose-your-news",
+      "skill": "poslech",
+      "title": "How to Choose Your News",
+      "summary": "TED-Ed o výběru a ověřování zpráv: samostatné procvičování a automaticky hodnocený test pro A1–C2.",
+      "languages": [
+        "en"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "poslech/how-to-choose-your-news/index.html",
+      "lockSource": null
     }
   ]
 }
