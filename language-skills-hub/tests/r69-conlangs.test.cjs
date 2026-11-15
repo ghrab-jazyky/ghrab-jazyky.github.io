@@ -149,6 +149,10 @@ test('R69 student practice never displays invented exact timestamps and teacher 
  assert.doesNotMatch(script,/Evidence in recording: approximately/);
  assert.match(script,/Precise audio time not yet independently confirmed/);
  const teacher=read('self-check/practice-answers/teacher-key.js');
- assert.match(teacher,/e\.id==='ll-conlangs'\?conlangsPracticeVariant\(data,level,v\):v/);
+ // R75 still adapts the independent Conlangs PRACTICE bank, now also passing
+ // a level-specific sequence. It must never substitute that bank in TEST mode.
+ assert.match(teacher,/e\.id==='ll-conlangs'\?conlangsPracticeVariant\(data,level,practiceVariant\):practiceVariant/);
+ assert.match(teacher,/host\.LSHListeningSequence\?\.bankFor\(e\.id,level\)/);
+ assert.match(teacher,/mode==='test'\?buildListeningTest\(v,e,lang,level,/);
  assert.match(teacher,/mode==='test'\?buildListeningTest/);
 });

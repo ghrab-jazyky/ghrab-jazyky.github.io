@@ -667,10 +667,14 @@ async function refresh(){
   }else{
    const data=listen.extractJson(html,'DATA');
    const v=listen.variant(data,level);
+   // R75: the optional sequencing bank is shared with the actual practice UI.
+   // No sequence is added to the separately scored 17-item TEST.
+   const practiceVariant=['ll-sad','ll-conlangs'].includes(e.id)?
+    {...v,sequence:host.LSHListeningSequence?.bankFor(e.id,level)||v.sequence}:v;
    model=mode==='test'?buildListeningTest(v,e,lang,level,
     listen.cloze(v,e.id,level)):buildListening(
      e.id==='ll-how-to-choose-your-news'?newsPracticeVariant(data,level,v):
-     e.id==='ll-conlangs'?conlangsPracticeVariant(data,level,v):v,
+     e.id==='ll-conlangs'?conlangsPracticeVariant(data,level,practiceVariant):practiceVariant,
      e,lang,level);
   }
   validate(model);

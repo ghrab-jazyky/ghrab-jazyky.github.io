@@ -12,6 +12,8 @@
  if(locked&&!data.levels.includes(selected))throw Error('This CEFR variant is not available.');
  let level=data.levels.includes(selected)?selected:'B2';
  let responses={};
+ let reconstruction=null;
+ const sequenceKey=lv=>'lsh:reconstruction:practice:r75:'+data.id+':'+lv;
  const key=lv=>'lsh:sad:practice:r68:'+lv;
  const saved=lv=>{
   let values={};
@@ -105,7 +107,7 @@
   for(const [letter,meaning] of data.variants[level].matchingBank){
    const row=el('div','bank-row');row.append(el('strong','',letter),el('span','',meaning));bank.append(row);
   }
-  $('matchWarn').textContent='';refreshProgress();
+  $('matchWarn').textContent='';refreshProgress();renderSequence();
  }
  function check(section){
   const results=api.gradeAnswers(data,responses,level);
@@ -123,10 +125,66 @@
    p.append(dl,el('p','',q.reason),el('p','note','Evidence in recording: approximately '+q.evidence));area.append(p);
   }
  }
+
+ function installSequence(){
+  const block=el('section','panel lsq');block.id='listeningReconstruction';
+  const heading=el('div','stage-heading'),title=el('div');
+  title.append(el('div','kicker','05 · Reconstruction'),el('h2','','Listen, order and explain'));
+  heading.append(title,el('span','chip','Optional · separate from 17 questions'));
+  block.append(heading,el('p','section-description',
+   'Put the statements in the order in which they appear in the recording, not in historical or causal order. Tap a card, then its target position; with a mouse you can drag the card, or use the dotted handle on touchscreens.'));
+  const guide=el('div','seq-guide');
+  guide.append(el('span','', '① Tap one card, then its target position'),
+   el('span','seq-guide-drag','⋮⋮ Drag the dotted handle'));
+  block.append(guide);
+  const list=el('ol','seq-list');list.id='sequenceList';
+  const check=el('button','btn primary','✓ Check reconstruction');
+  check.id='checkSequenceBtn';check.type='button';
+  check.addEventListener('click',()=>reconstruction?.check());
+  const status=el('p','seq-status');status.id='seqStatus';
+  status.setAttribute('role','status');status.setAttribute('aria-live','polite');
+  const review=el('div','seq-review');review.id='sequenceReview';
+  block.append(list,check,status,review);
+  $('third').after(block);
+  const nav=document.querySelector('.side nav');
+  const vocabLink=nav?.querySelector('a[href="#vocab"]');
+  if(vocabLink){
+   const link=el('a','','05 · Reconstruction');
+   link.href='#listeningReconstruction';vocabLink.before(link);
+   vocabLink.textContent='06 · Vocabulary';
+   const after=nav.querySelector('a[href="#after"]');
+   const finish=nav.querySelector('a[href="#finish"]');
+   if(after)after.textContent='07 · After listening';
+   if(finish)finish.textContent='08 · Practice review';
+  }
+  const vocabKicker=$('vocab').querySelector('.kicker');
+  const afterKicker=$('after').querySelector('.kicker');
+  if(vocabKicker)vocabKicker.textContent='06 · Optional vocabulary';
+  if(afterKicker)afterKicker.textContent='07 · After listening';
+ }
+ function renderSequence(){
+  const sequence=window.LSHListeningSequence;
+  if(!sequence)throw Error('Shared Listening Studio reconstruction unavailable');
+  const steps=sequence.bankFor(data.id,level);
+  if(!steps)throw Error('Reconstruction missing for '+data.id+' '+level);
+  let order=null;
+  try{order=JSON.parse(localStorage.getItem(sequenceKey(level))||'null')}catch(_){}
+  reconstruction?.destroy();
+  reconstruction=sequence.mount({
+   list:$('sequenceList'),status:$('seqStatus'),review:$('sequenceReview'),
+   steps,order,onChange(value){
+    try{localStorage.setItem(sequenceKey(level),JSON.stringify(value))}
+    catch(_){return 'Reconstruction is not saved locally. Keep the page open.'}
+   }
+  });
+ }
+
  function privacy(allLevels){
   const prompt=allLevels?'Delete all locally saved answers for all six SAD levels? This does not delete My Vocabulary.':'Clear saved answers for this level?';
   if(!window.confirm(prompt))return;
-  try{if(allLevels)for(const lv of data.levels)localStorage.removeItem(key(lv));else localStorage.removeItem(key(level));}catch(_){}
+  try{for(const lv of allLevels?data.levels:[level]){
+   localStorage.removeItem(key(lv));localStorage.removeItem(sequenceKey(lv));
+  }}catch(_){}
   responses=api.normalizeResponses({});paintStatic();
   if(allLevels)location.href='../../index.html?skill=poslech';
  }
@@ -160,7 +218,7 @@
    level=button.dataset.level;responses=saved(level);paintStatic();
    const next=new URL(location.href);next.searchParams.set('level',level);history.replaceState(null,'',next.href);
   });
-  responses=saved(level);paintStatic();
+  installSequence();responses=saved(level);paintStatic();
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup,{once:true});
  else setup();

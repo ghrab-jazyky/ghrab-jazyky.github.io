@@ -138,3 +138,37 @@ a{color:var(--accent)}
 .hero>.notice,.hero>#fixedNote{max-width:1160px;margin-left:auto;margin-right:auto}
 @media(max-width:850px){.hero .hero-grid{display:block}.hero .hero-aside{display:none}}
 @media print{.hero .hero-aside{display:none}}
+
+
+/* R75 — Harrison Ford-style sequencing UI; only new optional PRACTICE sections. */
+.lsq .seq-guide{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:15px 0;color:var(--muted);font-size:12px}
+.lsq .seq-guide>span{display:inline-flex;gap:7px;align-items:center}
+.lsq .seq-guide-number{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font-weight:850}
+.lsq .seq-guide-drag{border-left:1px solid var(--line);padding-left:12px}
+.lsq .seq-list{display:grid;gap:10px;list-style:none;margin:12px 0 17px;padding:0}
+.lsq .seq-item{min-width:0;list-style:none;margin:0}
+.lsq .seq-card{display:flex;align-items:center;gap:12px;text-align:left;width:100%;min-height:65px;padding:11px 14px;border-radius:11px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:inherit;cursor:grab;touch-action:pan-y;-webkit-user-select:none;user-select:none;transition:border-color .12s,box-shadow .12s,background .12s}
+.lsq .seq-card:hover{border-color:var(--accent);box-shadow:0 4px 14px rgba(15,30,50,.06)}
+.lsq .seq-card:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.lsq .seq-card:active{cursor:grabbing}
+.lsq .seq-grip{width:22px;flex:none;text-align:center;color:var(--muted);font-size:23px;font-weight:800;line-height:1;touch-action:none}
+.lsq .seq-no{width:30px;height:30px;flex:none;border-radius:8px;background:#14344b;color:white;display:grid;place-items:center;font-size:12px;font-weight:800}
+.lsq .seq-text{flex:1;min-width:0;overflow-wrap:anywhere;font-size:14px;line-height:1.42}
+.lsq .seq-action{flex:none;color:var(--muted);font-size:11px;font-weight:800;letter-spacing:.02em}
+.lsq .seq-item.selected .seq-card{border:2px solid var(--accent);background:var(--hint);padding:10px 13px;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 13%,transparent)}
+.lsq .seq-item.selected .seq-no{background:var(--accent-dark)}
+.lsq .seq-item.drag-active .seq-card{opacity:.57}
+.lsq .seq-item.drop-target .seq-card{border:2px dashed var(--accent);padding:10px 13px;background:var(--hint)}
+.lsq .seq-item.right .seq-card{border-color:#67a88e;background:color-mix(in srgb,#3ca37c 13%,var(--panel))}
+.lsq .seq-item.wrong .seq-card{border-color:#db917d;background:color-mix(in srgb,#db917d 11%,var(--panel))}
+.lsq .seq-status{color:var(--muted);font-size:13px;min-height:22px;margin:13px 0}
+.lsq .seq-review .review{padding:11px 13px;margin:8px 0;overflow-wrap:anywhere}
+@media(max-width:560px){
+ .lsq .seq-card{gap:8px;padding:11px 10px}
+ .lsq .seq-item.selected .seq-card,.lsq .seq-item.drop-target .seq-card{padding:10px 9px}
+ .lsq .seq-grip{width:17px;font-size:19px}
+ .lsq .seq-text{font-size:12px}
+ .lsq .seq-action{font-size:10px;max-width:62px;white-space:normal;text-align:right}
+ .lsq .seq-guide-drag{border:0;padding-left:0}
+}
+@media print{.lsq .seq-card{cursor:default;break-inside:avoid}.lsq .seq-action,.lsq #checkSequenceBtn{display:none!important}}

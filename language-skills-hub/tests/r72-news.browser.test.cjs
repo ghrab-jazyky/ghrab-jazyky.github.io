@@ -172,14 +172,19 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.locator('#newsSequenceItems>li').first().waitFor();
    assert.equal(await page.locator('#newsSequenceItems>li').count(),7);
    assert.equal(await page.locator('#newsChallengePrompts textarea').count(),2);
-   const initial=await page.locator('#newsSequenceItems .news-sequence-text').allTextContents();
-   await page.locator('#newsSeqRow0 .news-sequence-move').last().click();
+   const initial=await page.locator('#newsSequenceItems .seq-text').allTextContents();
+   assert.equal(await page.locator('#newsSequenceItems .seq-grip').count(),7);
+   // Harrison-style: tap a card, then tap its target position.
+   await page.locator('#newsSequenceItems .seq-card').nth(0).click();
+   await page.locator('#newsSequenceItems .seq-card').nth(1).click();
    await page.locator('#checkSequenceBtn').click();
    assert.match(await page.locator('#newsSequenceStatus').innerText(),/Reconstruction: 3 \/ 7/);
    assert.equal(await page.locator('#newsSequenceReview .review').count(),4);
-   assert.equal(await page.locator('#newsSeqRow0 .news-sequence-text').innerText(),initial[1]);
-   await page.locator('#newsSeqRow2 .news-sequence-move').last().click();
-   await page.locator('#newsSeqRow4 .news-sequence-move').last().click();
+   assert.equal(await page.locator('#newsSequenceItems .seq-text').first().innerText(),initial[1]);
+   await page.locator('#newsSequenceItems .seq-card').nth(2).click();
+   await page.locator('#newsSequenceItems .seq-card').nth(3).click();
+   await page.locator('#newsSequenceItems .seq-card').nth(4).click();
+   await page.locator('#newsSequenceItems .seq-card').nth(5).click();
    await page.locator('#checkSequenceBtn').click();
    assert.match(await page.locator('#newsSequenceStatus').innerText(),/Reconstruction: 7 \/ 7/);
    assert.equal(await page.locator('#newsSequenceReview .review').count(),0);
@@ -195,7 +200,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     'I would verify original evidence','Position 7:'])
     assert.ok(content.includes(key),'E9 TXT missing '+key);
    await page.reload();await page.locator('#newsSequenceItems>li').first().waitFor();
-   assert.equal(await page.locator('#newsSeqRow0 .news-sequence-text').innerText(),initial[1]);
+   assert.equal(await page.locator('#newsSequenceItems .seq-text').first().innerText(),initial[1]);
    assert.match(await page.locator('#newsChallenge0').inputValue(),/More sources may amplify/);
    await page.locator('#levelPills button[data-level="A1"]').click();
    assert.equal(await page.locator('#newsSequenceItems>li').count(),4);
@@ -206,7 +211,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.match(await page.locator('#newsChallenge0').inputValue(),/More sources may amplify/);
    await page.locator('#clearBtn').click();
    await page.reload();await page.locator('#newsSequenceItems>li').first().waitFor();
-   assert.equal(await page.locator('#newsSeqRow0 .news-sequence-text').innerText(),initial[0]);
+   assert.equal(await page.locator('#newsSequenceItems .seq-text').first().innerText(),initial[0]);
    assert.equal(await page.locator('#newsChallenge0').inputValue(),'');
    assert.deepEqual(errors,[]);
    await ctx.close();
