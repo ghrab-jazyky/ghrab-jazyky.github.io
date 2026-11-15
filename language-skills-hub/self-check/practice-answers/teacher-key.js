@@ -41,6 +41,9 @@ function buildListening(variant,entry,lang,level){
   Array.isArray(variant.sequence)&&Array.isArray(variant.facts)&&
   Array.isArray(variant.open),'Chybná varianta Listening.');
  need(entry&&entry.skill==='poslech'&&lang==='en','Téma není anglický Listening Lab.');
+ // NEWS practice displays its own pre-/post-listening prompts, not test-only
+ // reference writing questions. Keep older cards' teacher keys unchanged.
+ const newsStudentPractice=entry.id==='ll-how-to-choose-your-news';
  const groups=[];
  if(Array.isArray(variant.before)&&variant.before.length){
   groups.push(group('Před poslechem – diskuse',variant.before.map((q,i)=>{
@@ -71,7 +74,7 @@ function buildListening(variant,entry,lang,level){
    item(v.term,v.meaning))));
  groups.push(group('Factual questions – referenční řešení',variant.facts.map(v=>
   item(v.title,v.answer,v.criteria||''))));
- groups.push(group('Open questions – vzorové odpovědi',variant.open.map(v=>
+ if(!newsStudentPractice)groups.push(group('Open questions – vzorové odpovědi',variant.open.map(v=>
   item(v.title,v.answer,v.criteria?
    'Orientační kritérium původní karty: '+v.criteria+
    ' Alternativní věcně doložená odpověď může být správná.':
@@ -146,6 +149,11 @@ function newsPracticeVariant(data,level,testVariant){
  const tns=bank.questionBank.filter(q=>q.type==='tns');
  const mat=bank.questionBank.filter(q=>q.type==='match');
  need(mc.length===6&&tns.length===6&&mat.length===5,'E3 News invalid practice task count.');
+ const scaffold=data.practice&&data.practice[level];
+ need(scaffold&&Array.isArray(scaffold.pre)&&scaffold.pre.length>0&&
+  Array.isArray(scaffold.after)&&scaffold.after.length>0&&
+  Array.isArray(scaffold.vocabulary)&&scaffold.vocabulary.length>0,
+  'E7 News actual student practice scaffolding missing at '+level);
  const options=bank.matchingBank.map(x=>x[1]);
  const gist=mc.map(q=>({id:q.id,title:q.question,type:'single',options:q.options,
   correct:q.correct.charCodeAt(0)-65,why:q.explanation,evidence:q.evidence}));
@@ -153,7 +161,11 @@ function newsPracticeVariant(data,level,testVariant){
   correct:coded.indexOf(q.correct),why:q.explanation,evidence:q.evidence}));
  const matching={options,items:mat.map(q=>({id:q.id,title:q.question,
   correct:q.correct.charCodeAt(0)-65,why:q.explanation,evidence:q.evidence}))};
- return {...testVariant,gist,detail,matching};
+ // Use exactly the prompts shown in NEWS student practice. The TEST source's
+ // separate prediction/open items must not leak into this practice key.
+ return {...testVariant,gist,detail,matching,
+  before:[...scaffold.pre],prediction:'',talk:[...scaffold.after],
+  vocab:scaffold.vocabulary.map(v=>({...v})),beforeHelp:[],talkHelp:[]};
 }
 
 function buildListeningTest(variant,entry,lang,level,clozeTasks){
