@@ -21,7 +21,12 @@
   let saved={};
   try{saved=JSON.parse(localStorage.getItem(draftKey(lv))||'{}')}catch(_){}
   if(!saved||typeof saved!=='object'||Array.isArray(saved))saved={};
-  return {notes:clean(saved.notes),sentence:clean(saved.sentence),
+  const wordCount=data.practice[lv].vocabulary.length;
+  const vocab=Array.from({length:wordCount},(_,i)=>{
+   const value=Array.isArray(saved.vocab)?saved.vocab[i]:null;
+   return Number.isInteger(value)&&value>=0&&value<wordCount?value:null;
+  });
+  return {notes:clean(saved.notes),sentence:clean(saved.sentence),vocab,
    after:data.practice[lv].after.map((_,i)=>clean(Array.isArray(saved.after)?saved.after[i]:''))};
  }
  let draft=loadDraft(level);
@@ -56,6 +61,12 @@
   let values={};
   try{values=api.normalizeResponses(JSON.parse(localStorage.getItem(key(lv))||'{}'))}
   catch(_){values=api.normalizeResponses({})}
+  // Stale or manually altered local storage must not crash grading or export.
+  for(const q of data.practiceVariants[lv].questionBank){
+   const allowed=q.type==='mc'?['A','B','C','D']:
+    q.type==='tns'?api.TNS:data.practiceVariants[lv].matchingBank.map(x=>x[0]);
+   if(values[q.id]&&!allowed.includes(values[q.id]))values[q.id]='';
+  }
   const used=new Set();
   for(const id of api.REQUIRED.filter(x=>x[0]==='C')){
    if(values[id]&&used.has(values[id]))values[id]='';
@@ -122,6 +133,52 @@
   }
   return article;
  }
+ function renderVocabPractice(){
+  const words=data.practice[level].vocabulary,order=[3,6,1,5,0,4,2];
+  const quiz=$('newsVocabQuiz');quiz.replaceChildren();
+  if(words.length!==7)throw Error('NEWS vocabulary practice requires seven distinct words.');
+  for(let i=0;i<words.length;i++){
+   const row=el('div','news-vocab-question');
+   const label=el('label','news-writing-label',words[i].term+' · choose its meaning');
+   const select=el('select','news-vocab-select');
+   select.id='newsVocabSelect'+i;label.htmlFor=select.id;
+   const blank=el('option','','— Choose a meaning —');blank.value='';select.append(blank);
+   for(let j=0;j<order.length;j++){
+    const index=order[j],option=el('option','',
+     String.fromCharCode(65+j)+' — '+words[index].meaning);
+    option.value=String(index);select.append(option);
+   }
+   select.value=Number.isInteger(draft.vocab[i])?String(draft.vocab[i]):'';
+   select.addEventListener('change',()=>{
+    const picked=select.value===''?null:Number(select.value);
+    if(picked!==null&&draft.vocab.some((x,j)=>j!==i&&x===picked)){
+     select.value=Number.isInteger(draft.vocab[i])?String(draft.vocab[i]):'';
+     $('newsVocabStatus').textContent='Use each meaning only once.';
+     return;
+    }
+    draft.vocab[i]=picked;storeDraft();
+    $('newsVocabStatus').textContent='Vocabulary answers changed. Check again when ready.';
+    $('newsVocabReview').replaceChildren();
+   });
+   row.append(label,select);quiz.append(row);
+  }
+  $('newsVocabStatus').textContent='Optional vocabulary practice · 7 matches; not part of 17 listening questions.';
+  $('newsVocabReview').replaceChildren();
+ }
+ function checkVocabPractice(){
+  const words=data.practice[level].vocabulary;
+  const answered=draft.vocab.filter(x=>x!==null).length;
+  const correct=draft.vocab.filter((x,i)=>x===i).length;
+  $('newsVocabStatus').textContent='Optional vocabulary: '+correct+' / '+words.length+
+   ' correct · '+answered+' answered. Separate from the listening score.';
+  const area=$('newsVocabReview');area.replaceChildren();
+  for(let i=0;i<words.length;i++)if(draft.vocab[i]!==i){
+   const result=el('div','review wrong');
+   result.append(el('strong','',words[i].term),
+    el('p','', 'Correct meaning: '+words[i].meaning));
+   area.append(result);
+  }
+ }
  function render(){
   $('topLevelText').textContent=level;
   for(const button of $('levelPills').querySelectorAll('button[data-level]')){
@@ -151,6 +208,7 @@
    row.append(el('strong','',item.term),el('span','',item.cs+' · '+item.meaning));
    $('vocabTasks').append(row);
   }
+  renderVocabPractice();
   for(const section of 'ABC'){
    $('questions'+section).replaceChildren();
    for(const q of data.practiceVariants[level].questionBank.filter(x=>x.id[0]===section))
@@ -202,6 +260,11 @@
   for(let i=0;i<data.practice[level].after.length;i++)
    lines.push('',(i+1)+'. '+data.practice[level].after[i],
     draft.after[i]||'(not written)');
+  lines.push('','VOCABULARY MATCHING · optional; separate from the listening score');
+  const words=data.practice[level].vocabulary;
+  for(let i=0;i<words.length;i++)
+   lines.push(words[i].term+' — '+(draft.vocab[i]===null?'Not answered':
+    words[draft.vocab[i]].meaning));
   lines.push('','MY VOCABULARY SENTENCE · optional',draft.sentence||'(not written)',
    '','Open writing is not automatically scored. Teacher review may be needed.');
   const blob=new Blob([lines.join('\n')+'\n'],{type:'text/plain;charset=utf-8'});
@@ -220,7 +283,21 @@
    value=>{draft.notes=value;storeDraft()},level==='A1'?2:4));
   const beforeHint=$('before').querySelector('p.note');
   if(beforeHint)beforeHint.textContent='Before listening: share your ideas. In the scored tasks, use evidence from the narrator.';
-  $('vocabTasks').after(writingBox('newsSentence',
+  const vocabPractice=el('details','news-vocab-practice');
+  vocabPractice.id='newsVocabPractice';
+  vocabPractice.append(el('summary','','Practise 7 vocabulary items · optional matching'));
+  vocabPractice.append(el('p','note',
+   'Study the words above, then match each word to its meaning. This does not affect your listening score.'));
+  const quiz=el('div');quiz.id='newsVocabQuiz';vocabPractice.append(quiz);
+  const checkVocab=el('button','action','✓ Check vocabulary');
+  checkVocab.id='checkVocabBtn';checkVocab.type='button';
+  checkVocab.addEventListener('click',checkVocabPractice);
+  const vocabStatus=el('p','status');vocabStatus.id='newsVocabStatus';
+  vocabStatus.setAttribute('role','status');vocabStatus.setAttribute('aria-live','polite');
+  const vocabReview=el('div','news-vocab-review');vocabReview.id='newsVocabReview';
+  vocabPractice.append(checkVocab,vocabStatus,vocabReview);
+  $('vocabTasks').after(vocabPractice);
+  vocabPractice.after(writingBox('newsSentence',
    'Use a new vocabulary word in your own sentence (optional)',
    draft.sentence,value=>{draft.sentence=value;storeDraft()},2));
   const summary=$('finish').querySelector('.source-actions');
