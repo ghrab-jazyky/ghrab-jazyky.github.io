@@ -66,6 +66,18 @@ for(const [browserName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     assert.deepEqual(byTitle('Před poslechem – diskuse'),visiblePre,level+' student PRE parity');
     assert.deepEqual(byTitle('Speaking follow-up – diskuse'),visibleAfter,level+' student AFTER parity');
     assert.deepEqual(byTitle('Vocabulary – významy'),visibleVocab,level+' student vocabulary parity');
+    const studentSequence=await page.locator('#newsSequenceItems .news-sequence-text').allTextContents();
+    const referenceSequence=data.practice[level].sequence;
+    assert.deepEqual([...studentSequence].sort(),[...referenceSequence].sort(),
+      level+' student reconstruction statements parity');
+    assert.deepEqual(byTitle('Reconstruction – správné pořadí')?.map((_,i)=>
+      teacherModel.groups.find(g=>g.title==='Reconstruction – správné pořadí').items[i].answer),
+      referenceSequence,level+' teacher reconstruction answers');
+    const studentChallenge=await page.locator('#newsChallengePrompts .news-prompt').allTextContents();
+    const keyChallenge=byTitle('Challenge – otevřené úkoly')||[];
+    assert.deepEqual(keyChallenge,studentChallenge,level+' C1-C2 extension parity');
+    assert.equal(await page.locator('#newsChallengeSection').isHidden(),studentChallenge.length===0,
+      level+' advanced-only visibility');
     assert.equal((await page.locator('#questionsA .task').count())+
       (await page.locator('#questionsB .task').count())+
       (await page.locator('#questionsC .task').count()),17,level+' scored student task count');
