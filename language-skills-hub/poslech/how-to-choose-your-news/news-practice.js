@@ -413,7 +413,10 @@
   const challengePrompts=el('ol','questions-list');challengePrompts.id='newsChallengePrompts';
   challenge.append(challengePrompts);
   $('afterQuestions').after(challenge);
-  const nav=$('.side nav'),vocabNav=nav.querySelector('a[href="#vocab"]');
+  const nav=document.querySelector('.side nav');
+  if(!nav)throw Error('NEWS lesson navigation unavailable');
+  const vocabNav=nav.querySelector('a[href="#vocab"]');
+  if(!vocabNav)throw Error('NEWS vocabulary navigation unavailable');
   const seqLink=el('a','','05 · Reconstruction');seqLink.href='#newsSequenceSection';
   vocabNav.before(seqLink);
   vocabNav.textContent='06 · Vocabulary';
