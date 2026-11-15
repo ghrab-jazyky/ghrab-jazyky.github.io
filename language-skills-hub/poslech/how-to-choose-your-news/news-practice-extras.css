@@ -41,3 +41,32 @@
 .news-vocab-select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .news-vocab-review .review{padding:9px 0}
 @media print{#checkVocabBtn{display:none!important}}
+
+/* E9: touch/keyboard accessible optional ordering and advanced writing. */
+.news-sequence-list{list-style:none;margin:20px 0;padding:0;display:grid;gap:9px}
+.news-sequence-item{
+ display:flex;gap:12px;align-items:center;flex-wrap:wrap;min-width:0;
+ padding:13px 14px;background:var(--panel2);border:1px solid var(--line);border-radius:10px
+}
+.news-sequence-position{
+ flex:0 0 82px;font-size:12px;font-weight:800;letter-spacing:.02em;color:var(--accent)
+}
+.news-sequence-text{margin:0;flex:1 1 220px;min-width:0;overflow-wrap:anywhere}
+.news-sequence-actions{display:flex;gap:7px;flex-wrap:wrap;margin-left:auto}
+.news-sequence-move{min-width:74px;min-height:44px;touch-action:manipulation}
+.news-sequence-move:disabled{opacity:.35}
+.news-sequence-review .review{padding:11px 0;overflow-wrap:anywhere}
+.news-challenge{margin-top:26px;padding:16px;border-left:3px solid var(--accent);
+ background:var(--panel2);border-radius:10px}
+.news-challenge h3{margin:0 0 8px}
+.news-challenge li{margin:0 0 19px}
+@media(max-width:540px){
+ .news-sequence-position{flex-basis:auto;width:100%}
+ .news-sequence-actions{width:100%;justify-content:flex-start;margin-left:0}
+ .news-sequence-text{flex-basis:100%}
+}
+@media print{
+ .news-sequence-move,#checkSequenceBtn{display:none!important}
+ .news-sequence-item{break-inside:avoid}
+ .news-challenge{break-inside:avoid}
+}
