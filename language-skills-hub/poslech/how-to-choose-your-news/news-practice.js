@@ -58,6 +58,10 @@
   textarea.addEventListener('input',()=>onInput(textarea.value));
   wrap.append(lab,textarea);return wrap;
  }
+ const DURATION=Object.freeze({
+  A1:'30–40 min',A2:'35–45 min',B1:'40–50 min',
+  B2:'45–55 min',C1:'50–65 min',C2:'55–70 min'
+ });
  const COACHING=Object.freeze({
   A1:'Try one short sentence. Start with: “I check a story by ...”',
   A2:'Use simple connectors: “First ... Then ...” Give one example from the video.',
@@ -256,6 +260,7 @@
   const practice=data.practice[level];
   $('goal').textContent=practice.objective;
   $('newsScaffold').textContent='Level '+level+' · '+COACHING[level];
+  $('newsDuration').textContent='Suggested '+DURATION[level]+' · incl. optional tasks';
   $('newsNotes').value=draft.notes;
   $('newsSentence').value=draft.sentence;
   $('preQuestions').replaceChildren();
@@ -357,6 +362,9 @@
   // Separate scoped stylesheet: do not change shared Listening Studio or TEST.
   const style=el('link');style.rel='stylesheet';style.href='news-practice-extras.css';
   document.head.append(style);
+  const duration=document.querySelector('.hero .meta .chip:nth-child(2)');
+  if(!duration)throw Error('NEWS lesson duration label missing');
+  duration.id='newsDuration';
   const scaffold=el('p','news-scaffold');scaffold.id='newsScaffold';
   $('preQuestions').after(scaffold);
   scaffold.after(writingBox('newsNotes','My listening notes (optional)',draft.notes,
