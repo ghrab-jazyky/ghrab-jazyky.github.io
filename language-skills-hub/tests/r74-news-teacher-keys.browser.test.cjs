@@ -51,6 +51,23 @@ for(const [browserName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    const page=await ctx.newPage(),errors=[];
    page.on('pageerror',error=>errors.push(error.message));
    for(const level of LEVELS){
+    // Compare teacher keys against real student-rendered PRACTICE prompts,
+    // not solely against a teacher-side transformation of the same data.
+    const studentUrl=new URL('poslech/how-to-choose-your-news/index.html',origin);
+    studentUrl.searchParams.set('level',level);
+    assert.equal((await page.goto(studentUrl.href,{waitUntil:'load',timeout:25000})).status(),200);
+    await page.locator('#afterQuestions li').first().waitFor({timeout:25000});
+    const visiblePre=await page.locator('#preQuestions li').allTextContents();
+    const visibleAfter=await page.locator('#afterQuestions li').allTextContents();
+    const visibleVocab=await page.locator('#vocabTasks .vocab-line strong').allTextContents();
+    const teacherModel=expected(level,'practice');
+    const byTitle=title=>teacherModel.groups.find(g=>g.title===title)?.items.map(i=>i.question);
+    assert.deepEqual(byTitle('Před poslechem – diskuse'),visiblePre,level+' student PRE parity');
+    assert.deepEqual(byTitle('Speaking follow-up – diskuse'),visibleAfter,level+' student AFTER parity');
+    assert.deepEqual(byTitle('Vocabulary – významy'),visibleVocab,level+' student vocabulary parity');
+    assert.equal((await page.locator('#questionsA .task').count())+
+      (await page.locator('#questionsB .task').count())+
+      (await page.locator('#questionsC .task').count()),17,level+' scored student task count');
     assert.equal((await page.goto(link(level,'test'),{waitUntil:'load',timeout:25000})).status(),200);
     await page.locator('#downloadPdf:enabled').waitFor({timeout:25000});
     const testModel=expected(level,'test'),practiceModel=expected(level,'practice');
