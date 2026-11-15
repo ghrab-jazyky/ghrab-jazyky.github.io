@@ -12,6 +12,7 @@
  const data=api.validate(DATA);
  if(locked&&!data.levels.includes(selected))throw Error('Teacher-selected level unavailable');
  let level=data.levels.includes(selected)?selected:'B2',responses={};
+ let answerSaveFailed=false;
  const key=lv=>'lsh:how-to-choose-your-news:practice:e3:'+lv;
  // E8: optional writing is independent of the 17 automatically scored answers.
  const MAX_DRAFT_CHARS=2000;
@@ -88,13 +89,14 @@
   return values;
  }
  function store(){
-  try{localStorage.setItem(key(level),JSON.stringify(responses))}
-  catch(_){$('progressStatus').textContent='Local saving unavailable. Your work remains in this tab.'}
+  try{localStorage.setItem(key(level),JSON.stringify(responses));answerSaveFailed=false}
+  catch(_){answerSaveFailed=true}
  }
  function progress(){
   const done=api.REQUIRED.filter(id=>!!responses[id]).length;
   $('progressBar').style.width=(done/17*100)+'%';
-  $('progressStatus').textContent=done+' of 17 questions answered.';
+  $('progressStatus').textContent=done+' of 17 questions answered.'+
+   (answerSaveFailed?' Local saving unavailable: export your answers before closing this tab.':'');
  }
  function clearReview(section){
   $('review'+section).replaceChildren();
@@ -449,10 +451,19 @@
  function removeSaved(all){
   if(!confirm(all?'Delete practice answers and writing for all six levels? My Vocabulary is kept.':
    'Clear this level’s practice answers and optional writing?'))return;
-  try{
-   if(all){for(const lv of api.LEVELS){localStorage.removeItem(key(lv));localStorage.removeItem(draftKey(lv))}}
-   else{localStorage.removeItem(key(level));localStorage.removeItem(draftKey(level))}
-  }catch(_){}
+  const levelsToErase=all?api.LEVELS:[level];
+  let verified=true;
+  for(const lv of levelsToErase)for(const storageKey of [key(lv),draftKey(lv)]){
+   try{
+    localStorage.removeItem(storageKey);
+    if(localStorage.getItem(storageKey)!==null)verified=false;
+   }catch(_){verified=false}
+  }
+  if(!verified){
+   alert('Deletion could not be verified. Your previous work may still be stored in this browser. Check site data in browser settings.');
+   return;
+  }
+  answerSaveFailed=false;
   responses=api.normalizeResponses({});draft=loadDraft(level);render();
   if(all)location.href='../../index.html?skill=poslech';
  }
