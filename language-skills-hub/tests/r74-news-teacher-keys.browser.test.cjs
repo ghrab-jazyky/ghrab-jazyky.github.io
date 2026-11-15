@@ -58,7 +58,8 @@ for(const [browserName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     assert.equal((await page.goto(studentUrl.href,{waitUntil:'load',timeout:25000})).status(),200);
     await page.locator('#afterQuestions li').first().waitFor({timeout:25000});
     const visiblePre=await page.locator('#preQuestions li').allTextContents();
-    const visibleAfter=await page.locator('#afterQuestions li').allTextContents();
+    const visibleAfter=await page.locator('#afterQuestions li .news-prompt').allTextContents();
+    assert.equal(await page.locator('#afterQuestions .news-writing').count(),visibleAfter.length);
     const visibleVocab=await page.locator('#vocabTasks .vocab-line strong').allTextContents();
     const teacherModel=expected(level,'practice');
     const byTitle=title=>teacherModel.groups.find(g=>g.title===title)?.items.map(i=>i.question);
