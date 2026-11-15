@@ -199,7 +199,7 @@
    }
    if(chosen.matching?.items.length){
     list.appendChild(heading({id:'listen-matching',heading:'Listen, Match and Explain',
-     caption:'Targeted replay – connect each observation to the right scientific explanation.'}));
+     caption:selection.topic==='ll-sad'? 'Targeted replay – connect each observation to the right scientific explanation.' : 'Replay the source and match each statement to its supporting explanation.'}));
     matching();
    }
   $('levelLabel').textContent='EN · '+selection.level;
