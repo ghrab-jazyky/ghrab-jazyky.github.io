@@ -53,9 +53,9 @@ test('R22 local self-check is planned for Reading/Listening only and cannot be c
 });
 
 test('R22 does not modify 30 live practice cards or the 666 published variants', () => {
- assert.equal(catalog.entries.length, 32);
- assert.equal(release.topicCount, 32);
- assert.equal(release.variantCount, 678);
+ assert.equal(catalog.entries.length, 33);
+ assert.equal(release.topicCount, 33);
+ assert.equal(release.variantCount, 684);
  const counts = {konverzace:0,cteni:0,poslech:0};
  let variants = 0;
  for (const entry of catalog.entries) {
@@ -68,7 +68,7 @@ test('R22 does not modify 30 live practice cards or the 666 published variants',
   if (entry.skill === 'poslech') assert.deepEqual(entry.languages, ['en']);
  }
  assert.deepEqual(counts, {konverzace:22,cteni:5,poslech:5});
- assert.equal(variants, 678);
+ assert.equal(variants, 684);
 });
 
 test('R22 public catalog offers practice sharing and only explicit ungraded tests', () => {
