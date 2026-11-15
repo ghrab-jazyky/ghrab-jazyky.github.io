@@ -108,6 +108,8 @@ test('E3 shared teacher keys cannot confuse TEST and PRACTICE',()=>{
  for(const lv of levels){
   const variant=listen.variant(data,lv),practice=card.practiceVariant(data,lv,variant);
   const fromTeacher=keys.newsPracticeVariant(data,lv,variant);
+  assert.equal(data.practice[lv].vocabulary.length,7,'E8b quiz requires seven authentic entries');
+  assert.equal(new Set(data.practice[lv].vocabulary.map(x=>x.meaning)).size,7);
   // The independent 17-item scored practice bank is unchanged.
   assert.deepEqual(fromTeacher.gist,practice.gist);
   assert.deepEqual(fromTeacher.detail,practice.detail);
@@ -173,6 +175,8 @@ test('E8 NEWS optional writing/replay stays scoped to practice, keeps official T
  const extraCss=read('poslech/how-to-choose-your-news/news-practice-extras.css');
  assert.match(practice,/function loadDraft\(lv\)/);
  assert.match(practice,/function exportAnswers\(\)/);
+ assert.match(practice,/function renderVocabPractice\(\)/);
+ assert.match(practice,/function checkVocabPractice\(\)/);
  assert.match(practice,/function installPracticeExtras\(\)/);
  assert.match(practice,/for\(const section of 'ABC'\)check\(section\)/);
  assert.match(practice,/news-practice-extras\.css/);
@@ -180,6 +184,7 @@ test('E8 NEWS optional writing/replay stays scoped to practice, keeps official T
  assert.match(practice,/localStorage\.removeItem\(draftKey\(lv\)\)/);
  assert.match(extraCss,/#afterQuestions>li/);
  assert.match(extraCss,/\.news-writing:focus-visible/);
+ assert.match(extraCss,/\.news-vocab-select:focus-visible/);
  assert.doesNotMatch(read('self-check/listening/listening-student.js'),/news-practice-extras\.css/);
  const student=read('self-check/listening/listening-student.js');
  assert.match(student,/selection\.topic==='ll-sad'\?/);
