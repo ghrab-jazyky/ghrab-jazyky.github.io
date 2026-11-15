@@ -22,6 +22,9 @@ on:
       - 'language-skills-hub/tests/r63-test-security*'
       - '.github/workflows/lsh-r62-test-screen-guard.yml'
   workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

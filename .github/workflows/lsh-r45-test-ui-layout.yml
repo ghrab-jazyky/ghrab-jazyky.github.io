@@ -13,6 +13,9 @@ on:
       - 'README.md'
       - '.github/workflows/lsh-r45-test-ui-layout.yml'
   workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

@@ -6,6 +6,9 @@ on:
       - 'language-skills-hub/**'
       - '.github/workflows/lsh-r36-practice-answer-keys.yml'
   workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

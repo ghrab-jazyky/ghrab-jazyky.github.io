@@ -21,6 +21,9 @@ on:
       - 'language-skills-hub/data/r25-grading-review.json'
       - 'language-skills-hub/tests/r60-*'
       - '.github/workflows/lsh-r60-school-rounding.yml'
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

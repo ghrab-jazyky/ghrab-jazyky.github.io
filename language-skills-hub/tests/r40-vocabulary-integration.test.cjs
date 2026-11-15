@@ -9,9 +9,9 @@ const practice=require('../slovnicek/practice.js');
 const catalog=JSON.parse(read('data/cards.json')).entries;
 const manifest=JSON.parse(read('version.json'));
 test('R40: all 30 cards are connected to a shared production vocabulary store',()=>{
- assert.equal(catalog.length,32);
+ assert.equal(catalog.length,33);
  const conv=catalog.filter(x=>x.skill==='konverzace'),readers=catalog.filter(x=>x.skill==='cteni'),listeners=catalog.filter(x=>x.skill==='poslech');
- assert.deepEqual([conv.length,readers.length,listeners.length],[22,5,5]);
+ assert.deepEqual([conv.length,readers.length,listeners.length],[22,5,6]);
  const convBridge=read('assets/lsh/v3/card-bridge.js'),shared=read('assets/lsh/v3/card-vocabulary.js');
  assert.match(convBridge,/createStore\(\{mode:'production'\}\)/);
  assert.doesNotMatch(convBridge,/createStore\(\{mode:'staging'\}\)/);

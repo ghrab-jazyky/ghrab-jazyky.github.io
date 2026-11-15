@@ -69,7 +69,7 @@ test('R28 all 120 Reading variants yield grade 1 at full accuracy and 5 when all
 });
 test('R28 Listening requires all written marks, then sums objective + 1 point per reviewed answer',()=>{
  let variants=0,objective=0,written=0;
- for(const e of catalog.entries.filter(x=>x.skill==='poslech'&&!['ll-sad','ll-conlangs'].includes(x.id))){
+ for(const e of catalog.entries.filter(x=>x.skill==='poslech'&&!['ll-sad','ll-conlangs','ll-how-to-choose-your-news'].includes(x.id))){
   const data=lc.extractJson(read(e.relative),'DATA');
   for(const lvl of e.levels){
    const v=lc.variant(data,lvl);

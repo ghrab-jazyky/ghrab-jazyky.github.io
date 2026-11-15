@@ -50,6 +50,16 @@
    ],
    caution:'Check external playback on your school network before class. No student logins are required.'
   },
+  'll-how-to-choose-your-news':{
+   title:'How to Choose Your News · TED-Ed',
+   source:'poslech/how-to-choose-your-news/index.html',
+   levels:['A1','A2','B1','B2','C1','C2'],
+   media:[
+    {key:'youtube',url:'https://www.youtube.com/watch?v=q-Y-z6HmRgI',label:'Play original TED-Ed video'},
+    {key:'teded',url:'https://ed.ted.com/lessons/how-to-choose-your-news-damon-brown',label:'Official TED-Ed lesson'}
+   ],
+   caution:'Check the video and audio on the school network before class. Students do not need to sign in.'
+  },
   'll-peaky-no-fighting':{
    title:'Peaky Blinders · No Fighting',
    source:'poslech/peaky-no-fighting/index.html',

@@ -647,6 +647,16 @@
         "title": "Constructed Languages – Conlangs",
         "summary": "How do Elvish, Klingon and other constructed languages work? Listening tasks A1–C2."
       }
+    },
+    "ll-how-to-choose-your-news": {
+      "cs": {
+        "title": "Jak si vybírat zprávy – How to Choose Your News",
+        "summary": "TED-Ed o důvěryhodnosti zpráv, zdrojích a ověřování informací; poslechové aktivity A1–C2."
+      },
+      "en": {
+        "title": "How to Choose Your News",
+        "summary": "TED-Ed on news sources, claims and verification, with separate practice and test tasks A1–C2."
+      }
     }
   }
 }

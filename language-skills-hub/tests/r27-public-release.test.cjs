@@ -32,9 +32,9 @@ test('R27 actually enables only explicit public local self-checks, never secure 
  assert.equal(grades.workingSource.schoolApprovalVerified,false);
 });
 test('R27 preserves 30 practice cards with exact hashes and 666 variants',()=>{
- assert.equal(catalog.entries.length,32);
- assert.equal(manifest.topicCount,32);
- assert.equal(manifest.variantCount,678);
+ assert.equal(catalog.entries.length,33);
+ assert.equal(manifest.topicCount,33);
+ assert.equal(manifest.variantCount,684);
  const types={konverzace:0,cteni:0,poslech:0};
  let variants=0;
  for(const entry of catalog.entries){
@@ -42,8 +42,8 @@ test('R27 preserves 30 practice cards with exact hashes and 666 variants',()=>{
   const sha=crypto.createHash('sha256').update(fs.readFileSync(path.join(root,entry.relative))).digest('hex');
   assert.equal(sha,manifest.contentHashes[entry.id],entry.id);
  }
- assert.deepEqual(types,{konverzace:22,cteni:5,poslech:5});
- assert.equal(variants,678);
+ assert.deepEqual(types,{konverzace:22,cteni:5,poslech:6});
+ assert.equal(variants,684);
 });
 test('R27 catalog exposes an explicitly non-graded action ONLY in Reading and Listening',()=>{
  const src=read('assets/hub.js'),html=read('index.html');

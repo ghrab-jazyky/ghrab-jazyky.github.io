@@ -16,6 +16,9 @@ on:
       - 'language-skills-hub/self-check/reading/reading.css'
       - 'language-skills-hub/tests/r58-*'
       - '.github/workflows/lsh-r58-reading-test-skill-tabs.yml'
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

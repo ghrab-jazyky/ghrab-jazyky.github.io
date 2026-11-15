@@ -3,8 +3,8 @@
   "version": "R70-LISTENING-STUDIO-UNIFICATION",
   "mode": "public_practice_and_unverified_grade_proposals",
   "gradedTestsEnabled": false,
-  "topicCount": 32,
-  "variantCount": 678,
+  "topicCount": 33,
+  "variantCount": 684,
   "sourceSha": "f153e08074d8c83fefa211ab5ade344fc201aa7c8ca497158e0e2b195f3ce87a",
   "contentHashes": {
     "cl-umela-inteligence": "1ec2cb87253e6ea32b32c7aa6bd31f9f0a97dc6021f08d650c8ff411faa78b65",
@@ -38,7 +38,8 @@
     "cl-skola": "315e4c3c56f9afc0a2ec14da1b95b6b25acf566695ec90e1a0d76763522028d4",
     "cl-human-rights": "558fb2b2c8c78fbde685cd1b888ca9f72b6a1f0f5a82bd8e44b9a0554f9b9711",
     "ll-sad": "859dfcfc6ef15fb6ef3993a20d1a61c40e79453ce8c68712fbf3a94593fdfde0",
-    "ll-conlangs": "aa53db6ff2d4652a01d20c7a6d6f56a994338cd0beacb8e4ff2c6d85444541be"
+    "ll-conlangs": "aa53db6ff2d4652a01d20c7a6d6f56a994338cd0beacb8e4ff2c6d85444541be",
+    "ll-how-to-choose-your-news": "5bfb92d91ccdf1ba4e7903ee5e1e3e5096235397b06f60c022a7ac87ca5dffd9"
   },
   "sourceSnapshot": "R17",
   "sharedVocabularyModule": "My Vocabulary v1 (IndexedDB lsh, no backend)",
@@ -72,5 +73,5 @@
     "C1",
     "C2"
   ],
-  "listeningVisualSystem": "R70 Shared Listening Studio (Harrison/Matthew-inspired), SAD and Conlangs, practice only"
+  "listeningVisualSystem": "R70 Shared Listening Studio (Harrison/Matthew-inspired), SAD, Conlangs and How to Choose Your News, practice only"
 }

@@ -216,6 +216,8 @@
     next++;
     if(next===4){
      next=0;gestureAt=0;
+     // R73 fail-closed: teacher must first restore an unrestricted viewport.
+     if(restricted()){lockReason('restricted-viewport');return;}
      try{
       if(!document.fullscreenElement&&document.documentElement.requestFullscreen&&!isTouchDevice()){
        // Request while the teacher's pointer gesture still carries user activation.
@@ -256,10 +258,10 @@
   }
   function restricted(){
    // Heuristic only: viewport dimensions cannot reliably prove iPad Split View.
-   // Use a conservative threshold to avoid false positives on normal phones.
+   // Include common iPad portrait sizes while excluding normal phone widths (heuristic only).
    const d=dims();
    return d.h>=430&&root.screen&&
-    root.screen.width>=900&&d.w<root.screen.width*0.70;
+    root.screen.width>=720&&d.w<root.screen.width*0.70;
   }
   function displayTime(ms){
    const seconds=Math.max(0,Math.ceil(ms/1000));
@@ -276,7 +278,8 @@
    overlay.hidden=state.phase!=='interrupted';
    if(state.phase==='interrupted'&&lastPhase!=='interrupted'){next=0;gestureAt=0;}
    reason.textContent=state.phase==='interrupted'?
-    (ui.reasons[state.incidents[state.incidents.length-1]?.kind]||ui.lock):'';
+    (restricted()?ui.reasons['restricted-viewport']:
+     ui.reasons[state.incidents[state.incidents.length-1]?.kind]||ui.lock):'';
    if(state.phase==='interrupted')workspace.setAttribute('inert','');
    else workspace.removeAttribute('inert');
    lastPhase=state.phase;
