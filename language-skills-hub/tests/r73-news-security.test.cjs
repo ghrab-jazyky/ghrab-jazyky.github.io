@@ -33,6 +33,7 @@ test('E4 security contract uses the same LSH runtime, with no security fork',()=
  assert.match(session,/if\(restricted\(\)\)\{lockReason\('restricted-viewport'\);return;\}/);
  assert.match(session,/addEventListener\('beforeprint'/);
  assert.match(session,/lock\('concurrent-tab'\)/);
+ assert.match(session,/root\.screen\.width>=720&&d\.w<root\.screen\.width\*0\.70/);
  assert.match(student,/const mistakes=report\.reviewed\.filter\(task=>!task\.correct\)/);
  assert.match(student,/window\.LSHPdfReport\.download/);
  assert.match(student,/exportCore\.downloadDetailed/);

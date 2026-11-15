@@ -91,7 +91,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   {timeout:110000},async()=>{
   const browser=await engine.launch({headless:true});
   try{
-   const context=await browser.newContext({viewport:{width:1280,height:800},screen:{width:1280,height:800}});
+   const context=await browser.newContext({viewport:{width:834,height:1050},screen:{width:834,height:1194}});
    const page=await context.newPage(),errors=[];
    page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
    await page.goto(url('C1','r73-news-viewport',5));
@@ -99,15 +99,15 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.locator('#sessionStart').click();
    await page.locator('#workspace:not([hidden])').waitFor();
    assert.equal(await page.locator('#sessionLock').isHidden(),true);
-   await page.setViewportSize({width:600,height:800});
+   await page.setViewportSize({width:390,height:1050});
    const dimensions=await page.evaluate(()=>({screen:screen.width,width:innerWidth,height:innerHeight}));
-   assert.ok(dimensions.screen>=900&&dimensions.width<dimensions.screen*0.70);
+   assert.ok(dimensions.screen>=720&&dimensions.width<dimensions.screen*0.70);
    await page.locator('#sessionLock:not([hidden])').waitFor({timeout:12000});
    await unlock(page);
    assert.equal(await page.locator('#sessionLock').isVisible(),true);
    assert.equal(await page.locator('#workspace').getAttribute('inert'),'');
    assert.match(await page.locator('#sessionLockReason').innerText(),/restricted|divided/i);
-   await page.setViewportSize({width:1280,height:800});
+   await page.setViewportSize({width:834,height:1050});
    await unlock(page);
    await page.locator('#sessionLock').waitFor({state:'hidden'});
    await page.evaluate(()=>document.dispatchEvent(new Event('paste',{bubbles:true,cancelable:true})));

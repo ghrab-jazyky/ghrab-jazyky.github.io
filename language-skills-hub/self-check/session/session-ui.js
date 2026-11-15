@@ -258,10 +258,10 @@
   }
   function restricted(){
    // Heuristic only: viewport dimensions cannot reliably prove iPad Split View.
-   // Use a conservative threshold to avoid false positives on normal phones.
+   // Include common iPad portrait sizes while excluding normal phone widths (heuristic only).
    const d=dims();
    return d.h>=430&&root.screen&&
-    root.screen.width>=900&&d.w<root.screen.width*0.70;
+    root.screen.width>=720&&d.w<root.screen.width*0.70;
   }
   function displayTime(ms){
    const seconds=Math.max(0,Math.ceil(ms/1000));
