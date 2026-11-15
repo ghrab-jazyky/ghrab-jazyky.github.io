@@ -24,6 +24,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     assert.equal(await page.locator('.lsh-vocab-save').count()>=5,true);
     assert.equal(await page.locator('#afterQuestions .news-prompt').count(),3);
     assert.equal(await page.locator('#afterQuestions textarea.news-writing').count(),3);
+    assert.equal(await page.locator('#newsAfter0').getAttribute('aria-describedby'),'newsAfterPrompt0');
     assert.equal(await page.locator('#newsVocabQuiz select').count(),7);
     assert.match(await page.locator('#newsScaffold').innerText(),new RegExp('Level '+level));
     assert.equal(await page.locator('link[href="news-practice-extras.css"]').count(),1);
