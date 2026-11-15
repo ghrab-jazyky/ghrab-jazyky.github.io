@@ -99,6 +99,10 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.locator('#sessionStart').click();
    await page.locator('#workspace:not([hidden])').waitFor();
    assert.equal(await page.locator('#sessionLock').isHidden(),true);
+   // Headless engines may report the resized pane as screen.width. Pin a simulated
+   // 834px physical tablet width to test our policy, not actual iPad Safari behavior.
+   await page.evaluate(()=>Object.defineProperty(window.screen,'width',
+    {configurable:true,value:834}));
    await page.setViewportSize({width:390,height:1050});
    const dimensions=await page.evaluate(()=>({screen:screen.width,width:innerWidth,height:innerHeight}));
    assert.ok(dimensions.screen>=720&&dimensions.width<dimensions.screen*0.70);
