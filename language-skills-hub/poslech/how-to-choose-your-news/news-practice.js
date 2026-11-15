@@ -26,7 +26,16 @@
    const value=Array.isArray(saved.vocab)?saved.vocab[i]:null;
    return Number.isInteger(value)&&value>=0&&value<wordCount?value:null;
   });
-  return {notes:clean(saved.notes),sentence:clean(saved.sentence),vocab,
+  const steps=data.practice[lv].sequence;
+  const defaultSequence=Array.from({length:steps.length},(_,i)=>i^1)
+   .map((v,i)=>v<steps.length?v:i);
+  const previous=saved.sequence;
+  const valid=Array.isArray(previous)&&previous.length===steps.length&&
+   previous.every(v=>Number.isInteger(v)&&v>=0&&v<steps.length)&&
+   new Set(previous).size===steps.length;
+  const sequence=valid?[...previous]:defaultSequence;
+  return {notes:clean(saved.notes),sentence:clean(saved.sentence),vocab,sequence,
+   challenge:data.practice[lv].challenge.map((_,i)=>clean(Array.isArray(saved.challenge)?saved.challenge[i]:'')),
    after:data.practice[lv].after.map((_,i)=>clean(Array.isArray(saved.after)?saved.after[i]:''))};
  }
  let draft=loadDraft(level);
@@ -179,6 +188,63 @@
    area.append(result);
   }
  }
+ function renderSequence(){
+  const steps=data.practice[level].sequence,list=$('newsSequenceItems');
+  list.replaceChildren();
+  for(let i=0;i<draft.sequence.length;i++){
+   const index=draft.sequence[i],li=el('li','news-sequence-item');
+   li.id='newsSeqRow'+i;
+   li.append(el('span','news-sequence-position','Position '+(i+1)),
+    el('p','news-sequence-text',steps[index]));
+   const actions=el('div','news-sequence-actions');
+   for(const [delta,action] of [[-1,'up'],[1,'down']]){
+    const button=el('button','action news-sequence-move',
+     delta<0?'↑ Up':'↓ Down');
+    button.type='button';button.disabled=i+delta<0||i+delta>=steps.length;
+    button.setAttribute('aria-label','Move statement in position '+(i+1)+' '+action);
+    button.addEventListener('click',()=>{
+     const j=i+delta;
+     [draft.sequence[i],draft.sequence[j]]=[draft.sequence[j],draft.sequence[i]];
+     storeDraft();renderSequence();
+     const next=$('newsSeqRow'+j);
+     (next?.querySelector('button:not(:disabled)')||next)?.focus();
+    });
+    actions.append(button);
+   }
+   li.append(actions);list.append(li);
+  }
+  $('newsSequenceStatus').textContent='Reorder the statements to match the original video. '+
+   'Optional; not included in the 17-question listening score.';
+  $('newsSequenceReview').replaceChildren();
+ }
+ function checkSequence(){
+  const source=data.practice[level].sequence;
+  const correct=draft.sequence.filter((index,i)=>index===i).length;
+  $('newsSequenceStatus').textContent='Reconstruction: '+correct+' / '+source.length+
+   ' in the correct position. Separate from the listening score.';
+  const review=$('newsSequenceReview');review.replaceChildren();
+  for(let i=0;i<source.length;i++)if(draft.sequence[i]!==i){
+   const row=el('div','review wrong');
+   row.append(el('strong','', 'Position '+(i+1)+' · Check the order'),
+    el('p','', 'Your statement: '+source[draft.sequence[i]]),
+    el('p','', 'Correct statement: '+source[i]));
+   review.append(row);
+  }
+ }
+ function renderChallenge(){
+  const prompts=data.practice[level].challenge,section=$('newsChallengeSection');
+  section.hidden=prompts.length===0;
+  const list=$('newsChallengePrompts');list.replaceChildren();
+  for(let i=0;i<prompts.length;i++){
+   const li=el('li');
+   const prompt=el('span','news-prompt',prompts[i]);prompt.id='newsChallengePrompt'+i;
+   const field=writingBox('newsChallenge'+i,
+    'Your critical response to question '+(i+1)+' (teacher-reviewed)',
+    draft.challenge[i],v=>{draft.challenge[i]=v;storeDraft()},5);
+   field.querySelector('textarea').setAttribute('aria-describedby',prompt.id);
+   li.append(prompt,field);list.append(li);
+  }
+ }
  function render(){
   $('topLevelText').textContent=level;
   for(const button of $('levelPills').querySelectorAll('button[data-level]')){
@@ -212,7 +278,7 @@
    row.append(el('strong','',item.term),el('span','',item.cs+' · '+item.meaning));
    $('vocabTasks').append(row);
   }
-  renderVocabPractice();
+  renderVocabPractice();renderSequence();renderChallenge();
   for(const section of 'ABC'){
    $('questions'+section).replaceChildren();
    for(const q of data.practiceVariants[level].questionBank.filter(x=>x.id[0]===section))
@@ -259,11 +325,21 @@
     q.type==='match'?value+' — '+(matches[value]||''):value;
    lines.push('',q.id+' · '+q.question,'My answer: '+shown);
   }
+  lines.push('','RECONSTRUCTION OF IDEAS · optional; separate from the listening score');
+  const steps=data.practice[level].sequence;
+  for(let i=0;i<draft.sequence.length;i++)
+   lines.push('Position '+(i+1)+': '+steps[draft.sequence[i]]);
   lines.push('','PERSONAL LISTENING NOTES · optional',draft.notes||'(not written)',
    '','AFTER LISTENING · optional, teacher-reviewed');
   for(let i=0;i<data.practice[level].after.length;i++)
    lines.push('',(i+1)+'. '+data.practice[level].after[i],
     draft.after[i]||'(not written)');
+  if(data.practice[level].challenge.length){
+   lines.push('','ADVANCED EXTENSION · C1-C2; teacher-reviewed');
+   for(let i=0;i<data.practice[level].challenge.length;i++)
+    lines.push('',(i+1)+'. '+data.practice[level].challenge[i],
+     draft.challenge[i]||'(not written)');
+  }
   lines.push('','VOCABULARY MATCHING · optional; separate from the listening score');
   const words=data.practice[level].vocabulary;
   for(let i=0;i<words.length;i++)
@@ -304,6 +380,37 @@
   vocabPractice.after(writingBox('newsSentence',
    'Use a new vocabulary word in your own sentence (optional)',
    draft.sentence,value=>{draft.sentence=value;storeDraft()},2));
+  const sequenceSection=el('section','panel');sequenceSection.id='newsSequenceSection';
+  const sequenceHead=el('div','stage-heading'),sequenceTitle=el('div');
+  sequenceTitle.append(el('div','kicker','05 · Reconstruction'),
+   el('h2','','Listen, order and explain'));
+  sequenceHead.append(sequenceTitle,el('span','chip','Optional · not test-scored'));
+  sequenceSection.append(sequenceHead,
+   el('p','section-description','Put these ideas in the order they appear in the original recording. Use the up/down controls; you can check and retry.'));
+  const seqList=el('ol','news-sequence-list');seqList.id='newsSequenceItems';
+  const seqButton=el('button','btn primary','✓ Check reconstruction');
+  seqButton.id='checkSequenceBtn';seqButton.type='button';
+  seqButton.addEventListener('click',checkSequence);
+  const seqStatus=el('p','status');seqStatus.id='newsSequenceStatus';
+  seqStatus.setAttribute('role','status');seqStatus.setAttribute('aria-live','polite');
+  const seqReview=el('div','news-sequence-review');seqReview.id='newsSequenceReview';
+  sequenceSection.append(seqList,seqButton,seqStatus,seqReview);
+  $('third').after(sequenceSection);
+  const challenge=el('div','news-challenge');challenge.id='newsChallengeSection';
+  challenge.hidden=true;
+  challenge.append(el('h3','','Advanced extension · critical evaluation (C1–C2)'),
+   el('p','note','Support your response with evidence from the video. This open writing requires teacher review.'));
+  const challengePrompts=el('ol','questions-list');challengePrompts.id='newsChallengePrompts';
+  challenge.append(challengePrompts);
+  $('afterQuestions').after(challenge);
+  const nav=$('.side nav'),vocabNav=nav.querySelector('a[href="#vocab"]');
+  const seqLink=el('a','','05 · Reconstruction');seqLink.href='#newsSequenceSection';
+  vocabNav.before(seqLink);
+  vocabNav.textContent='06 · Vocabulary';
+  nav.querySelector('a[href="#after"]').textContent='07 · After listening';
+  nav.querySelector('a[href="#finish"]').textContent='08 · Practice review';
+  $('vocab').querySelector('.kicker').textContent='06 · Optional vocabulary';
+  $('after').querySelector('.kicker').textContent='07 · After listening';
   const summary=$('finish').querySelector('.source-actions');
   const written=el('p','news-writing-status');written.id='writingStatus';
   summary.before(written);
@@ -325,7 +432,7 @@
    frame.replaceChildren(cover);close.hidden=true;
    $('videoStatus').textContent='Embedded playback closed. Load the video again or open the official source.';
   });
-  for(const section of ['first','second','third']){
+  for(const section of ['first','second','third','newsSequenceSection']){
    const replay=el('a','action news-replay-link','▶ Open / replay original TED-Ed video');
    replay.href=data.video;replay.target='_blank';replay.rel='noopener noreferrer';
    $(section).querySelector('.section-description').after(replay);
