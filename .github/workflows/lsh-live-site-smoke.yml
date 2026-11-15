@@ -110,6 +110,24 @@ jobs:
                   assert all(len(news_data['variants'][lv]['questionBank'])==17 and len(news_data['practiceVariants'][lv]['questionBank'])==17 for lv in news_data['levels'])
                   for asset in ['news-core.js','news-practice.js','news-practice-extras.css']:
                       head('/language-skills-hub/poslech/how-to-choose-your-news/'+asset)
+                  # R75 live sequencing: do not accept an old Pages asset after squash merge.
+                  studio=get('/language-skills-hub/assets/lsh/listening-studio.js?verify='+str(attempt)).decode('utf-8')
+                  assert 'window.LSHListeningSequence=Object.freeze' in studio, 'R75 shared sequencing runtime not published'
+                  assert "'ll-sad'" in studio and "'ll-conlangs'" in studio
+                  assert 'function defaultOrder(n)' in studio and 'function mount({' in studio
+                  studio_css=get('/language-skills-hub/assets/lsh/listening-studio.css?verify='+str(attempt)).decode('utf-8')
+                  assert '.lsq .seq-card' in studio_css and '.lsq .seq-grip' in studio_css
+                  for topic in ['sad','conlangs']:
+                      practice=get('/language-skills-hub/poslech/'+topic+'/'+topic+'-practice.js?verify='+str(attempt)).decode('utf-8')
+                      assert 'function installSequence()' in practice and 'window.LSHListeningSequence' in practice, topic+' R75 missing'
+                      assert 'sequence.mount({' in practice and 'sequenceKey=lv' in practice
+                  news_practice=get('/language-skills-hub/poslech/how-to-choose-your-news/news-practice.js?verify='+str(attempt)).decode('utf-8')
+                  assert 'window.LSHListeningSequence' in news_practice and 'sequence.mount({' in news_practice
+                  assert 'news-sequence-move' not in news_practice, 'NEWS still uses old up/down controls'
+                  key_html=get('/language-skills-hub/self-check/practice-answers/teacher.html?verify='+str(attempt)).decode('utf-8')
+                  key_js=get('/language-skills-hub/self-check/practice-answers/teacher-key.js?verify='+str(attempt)).decode('utf-8')
+                  assert 'assets/lsh/listening-studio.js' in key_html
+                  assert 'host.LSHListeningSequence?.bankFor(e.id,level)' in key_js, 'R75 teacher key parity missing'
                   root=get('/?verify='+str(attempt)).decode('utf-8')
                   assert 'href="language-skills-hub/"' in root
                   head('/zkusebni/')
@@ -150,11 +168,11 @@ jobs:
                   assert logo[:8]==b'\x89PNG\r\n\x1a\n' and len(logo)>1000
                   assert int.from_bytes(logo[16:20],'big')==384 and int.from_bytes(logo[20:24],'big')==384
                   assert hashlib.sha1(b'blob '+str(len(logo)).encode()+b'\0'+logo).hexdigest()=='0b23733540b01fe70f35feda45037b0cd2c995cb'
-                  print('PASS LIVE HTTPS R70: 33 practice cards, 6 Listening topics including NEWS A1-C2, original school logo PDF',flush=True)
+                  print('PASS LIVE HTTPS R75: 33 cards, 6 Listening topics, shared Harrison-style reconstruction assets, teacher key parity and school logo PDF',flush=True)
                   print('PRODUCTION URL:',base+'/language-skills-hub/',flush=True)
                   sys.exit(0)
               except Exception as ex:
-                  print(f'Attempt {attempt}/35: {type(ex).__name__}: {ex}',flush=True)
+                  print(f'Attempt {attempt}/50: {type(ex).__name__}: {ex}',flush=True)
                   if attempt==50:raise
                   time.sleep(12)
           PY
