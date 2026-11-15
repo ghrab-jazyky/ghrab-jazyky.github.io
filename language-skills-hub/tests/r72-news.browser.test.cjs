@@ -22,6 +22,10 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     assert.equal(await page.locator('#questionsA fieldset .sr-only-task-legend').count(),6);
     assert.equal(await page.locator('#questionsB fieldset .sr-only-task-legend').count(),6);
     assert.equal(await page.locator('.lsh-vocab-save').count()>=5,true);
+    assert.equal(await page.locator('#afterQuestions .news-prompt').count(),3);
+    assert.equal(await page.locator('#afterQuestions textarea.news-writing').count(),3);
+    assert.match(await page.locator('#newsScaffold').innerText(),new RegExp('Level '+level));
+    assert.equal(await page.locator('link[href="news-practice-extras.css"]').count(),1);
     await page.locator('#questionsA .task').first().locator('input[type=radio]').first().check();
     assert.match((await page.locator('#progressStatus').innerText()),/^1 of 17/);
     await page.locator('#checkA').click();
@@ -72,4 +76,70 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
  });
+
+ test('R72 '+engineName+' E8 practice writing persistence, check-all, TXT export and embedded replay', {timeout:150000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const ctx=await browser.newContext({acceptDownloads:true,viewport:{width:390,height:844}});
+   const page=await ctx.newPage(),errors=[];
+   page.on('pageerror',e=>errors.push(e.message));
+   page.on('dialog',dialog=>dialog.accept());
+   await page.route('**/youtube-nocookie.com/**',route=>route.abort());
+   assert.equal((await page.goto(url('poslech/how-to-choose-your-news/index.html',{level:'B2'}))).status(),200);
+   await page.locator('#newsAfter0').waitFor();
+   await page.locator('#newsNotes').fill('Compare primary sources with editorial reports.');
+   await page.locator('#newsAfter0').fill('Check original material and compare different sources.');
+   await page.locator('#newsSentence').fill('The headline may be misleading.');
+   await page.locator('#questionsA .task').first().locator('input[type=radio]').first().check();
+   assert.match(await page.locator('#writingStatus').innerText(),/1 \/ 3 after-listening responses drafted/);
+   assert.match(await page.locator('#progressStatus').innerText(),/^1 of 17/);
+   await page.locator('#checkAllBtn').click();
+   assert.equal(await page.locator('#reviewA .review').count(),6);
+   assert.equal(await page.locator('#reviewB .review').count(),6);
+   assert.equal(await page.locator('#reviewC .review').count(),5);
+   for(const section of 'ABC')assert.match(await page.locator('#status'+section).innerText(),/Correct answers:/);
+   const event=page.waitForEvent('download',{timeout:20000});
+   await page.locator('#exportBtn').click();
+   const download=await event;
+   assert.equal(download.suggestedFilename(),'LSH_News_Practice_B2_Answers.txt');
+   const saved=fs.readFileSync(await download.path(),'utf8');
+   for(const phrase of ['Compare primary sources with editorial reports.',
+    'Check original material and compare different sources.',
+    'The headline may be misleading.','AUTOMATICALLY CHECKABLE PRACTICE','AFTER LISTENING']){
+    assert.ok(saved.includes(phrase),'Missing exported item: '+phrase);
+   }
+   await page.reload();
+   await page.locator('#newsAfter0').waitFor();
+   assert.equal(await page.locator('#newsNotes').inputValue(),'Compare primary sources with editorial reports.');
+   assert.equal(await page.locator('#newsAfter0').inputValue(),
+    'Check original material and compare different sources.');
+   assert.equal(await page.locator('#newsSentence').inputValue(),'The headline may be misleading.');
+   assert.match(await page.locator('#progressStatus').innerText(),/^1 of 17/);
+   await page.locator('#levelPills button[data-level="A1"]').click();
+   assert.equal(await page.locator('#newsNotes').inputValue(),'');
+   await page.locator('#newsAfter0').fill('A1 has its own notes.');
+   await page.locator('#levelPills button[data-level="B2"]').click();
+   assert.equal(await page.locator('#newsAfter0').inputValue(),
+    'Check original material and compare different sources.');
+   await page.locator('#loadVideo').click();
+   assert.equal(await page.locator('#videoFrame iframe').count(),1);
+   assert.equal(await page.locator('#closeVideoBtn').isHidden(),false);
+   await page.locator('#closeVideoBtn').click();
+   assert.equal(await page.locator('#videoFrame iframe').count(),0);
+   assert.equal(await page.locator('#videoFrame #videoCover').count(),1);
+   await page.locator('#loadVideo').click();
+   assert.equal(await page.locator('#videoFrame iframe').count(),1);
+   await page.locator('#closeVideoBtn').click();
+   await page.locator('#clearBtn').click();
+   await page.reload();
+   await page.locator('#newsAfter0').waitFor();
+   assert.equal(await page.locator('#newsNotes').inputValue(),'');
+   assert.equal(await page.locator('#newsAfter0').inputValue(),'');
+   assert.equal(await page.locator('#newsSentence').inputValue(),'');
+   assert.match(await page.locator('#progressStatus').innerText(),/^0 of 17/);
+   assert.deepEqual(errors,[]);
+   await ctx.close();
+  }finally{await browser.close()}
+ });
+
 }
