@@ -63,7 +63,12 @@
     scaffold.pre.length>=1&&scaffold.pre.every(text)&&Array.isArray(scaffold.after)&&
     scaffold.after.length>=1&&scaffold.after.every(text)&&
     Array.isArray(scaffold.vocabulary)&&scaffold.vocabulary.length>=5&&
-    scaffold.vocabulary.every(x=>text(x.term)&&text(x.meaning)&&text(x.cs)),
+    scaffold.vocabulary.every(x=>text(x.term)&&text(x.meaning)&&text(x.cs))&&
+    Array.isArray(scaffold.sequence)&&scaffold.sequence.length>=4&&
+    scaffold.sequence.length<=7&&scaffold.sequence.every(text)&&
+    new Set(scaffold.sequence).size===scaffold.sequence.length&&
+    Array.isArray(scaffold.challenge)&&scaffold.challenge.every(text)&&
+    scaffold.challenge.length===((level==='C1'||level==='C2')?2:0),
     'Incomplete teaching scaffolding at '+level);
    const variant=data[level];
    check(variant&&variant.goal&&variant.gist?.length===6&&variant.detail?.length===6&&
