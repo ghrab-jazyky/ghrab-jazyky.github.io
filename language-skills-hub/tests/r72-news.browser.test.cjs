@@ -34,6 +34,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      level!=='C1'&&level!=='C2');
     assert.equal(await page.locator('.side nav a[href="#newsSequenceSection"]').count(),1);
     assert.match(await page.locator('#newsScaffold').innerText(),new RegExp('Level '+level));
+    assert.match(await page.locator('#newsDuration').innerText(),/Suggested .*min/);
     assert.equal(await page.locator('link[href="news-practice-extras.css"]').count(),1);
     await page.locator('#questionsA .task').first().locator('input[type=radio]').first().check();
     assert.match((await page.locator('#progressStatus').innerText()),/^1 of 17/);
