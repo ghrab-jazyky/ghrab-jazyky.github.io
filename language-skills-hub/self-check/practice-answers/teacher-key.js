@@ -152,8 +152,10 @@ function newsPracticeVariant(data,level,testVariant){
  const scaffold=data.practice&&data.practice[level];
  need(scaffold&&Array.isArray(scaffold.pre)&&scaffold.pre.length>0&&
   Array.isArray(scaffold.after)&&scaffold.after.length>0&&
-  Array.isArray(scaffold.vocabulary)&&scaffold.vocabulary.length>0,
-  'E7 News actual student practice scaffolding missing at '+level);
+  Array.isArray(scaffold.vocabulary)&&scaffold.vocabulary.length>0&&
+  Array.isArray(scaffold.sequence)&&scaffold.sequence.length>=4&&scaffold.sequence.length<=7&&
+  Array.isArray(scaffold.challenge)&&scaffold.challenge.length===(level==='C1'||level==='C2'?2:0),
+  'E9 News practice sequence/challenge scaffolding missing at '+level);
  const options=bank.matchingBank.map(x=>x[1]);
  const gist=mc.map(q=>({id:q.id,title:q.question,type:'single',options:q.options,
   correct:q.correct.charCodeAt(0)-65,why:q.explanation,evidence:q.evidence}));
@@ -165,7 +167,9 @@ function newsPracticeVariant(data,level,testVariant){
  // separate prediction/open items must not leak into this practice key.
  return {...testVariant,gist,detail,matching,
   before:[...scaffold.pre],prediction:'',talk:[...scaffold.after],
-  vocab:scaffold.vocabulary.map(v=>({...v})),beforeHelp:[],talkHelp:[]};
+  vocab:scaffold.vocabulary.map(v=>({...v})),
+  sequence:[...scaffold.sequence],challenge:[...scaffold.challenge],
+  beforeHelp:[],talkHelp:[]};
 }
 
 function buildListeningTest(variant,entry,lang,level,clozeTasks){
