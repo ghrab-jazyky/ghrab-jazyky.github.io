@@ -213,4 +213,51 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   }finally{await browser.close()}
  });
 
+
+ test('E10 '+engineName+' safe storage failure: visible save warning, failed erase not falsely confirmed',
+  {timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const ctx=await browser.newContext({viewport:{width:390,height:844}});
+   const page=await ctx.newPage(),errors=[],alerts=[];
+   page.on('pageerror',e=>errors.push(e.message));
+   page.on('dialog',async d=>{if(d.type()==='alert')alerts.push(d.message());await d.accept()});
+   await page.goto(url('poslech/how-to-choose-your-news/index.html',{level:'B1'}));
+   await page.locator('#questionsA .task').first().waitFor();
+   await page.evaluate(()=>{
+    window.__originalSetItem=Storage.prototype.setItem;
+    Storage.prototype.setItem=function(key,value){
+     if(key.startsWith('lsh:how-to-choose-your-news:practice:e3:'))
+      throw Error('E10 simulated storage write failure');
+     return window.__originalSetItem.call(this,key,value);
+    };
+   });
+   await page.locator('#questionsA .task').first().locator('input[type=radio]').first().check();
+   assert.match(await page.locator('#progressStatus').innerText(),/1 of 17 questions answered/);
+   assert.match(await page.locator('#progressStatus').innerText(),/Local saving unavailable/);
+   await page.evaluate(()=>{Storage.prototype.setItem=window.__originalSetItem});
+   await page.locator('#newsNotes').fill('My independent written explanation.');
+   const saved=await page.evaluate(()=>localStorage.getItem('lsh:how-to-choose-your-news:writing:e8:B1'));
+   assert.ok(saved&&saved.includes('My independent written explanation.'));
+   await page.evaluate(()=>{
+    window.__originalRemoveItem=Storage.prototype.removeItem;
+    Storage.prototype.removeItem=function(key){
+     if(key.startsWith('lsh:how-to-choose-your-news:writing:e8:'))
+      throw Error('E10 simulated deletion failure');
+     return window.__originalRemoveItem.call(this,key);
+    };
+   });
+   await page.locator('#clearBtn').click();
+   assert.ok(alerts.some(m=>m.includes('Deletion could not be verified')));
+   assert.equal(await page.locator('#newsNotes').inputValue(),'My independent written explanation.');
+   assert.ok((await page.evaluate(()=>localStorage.getItem(
+    'lsh:how-to-choose-your-news:writing:e8:B1'))).includes('My independent written explanation.'));
+   await page.evaluate(()=>{Storage.prototype.removeItem=window.__originalRemoveItem});
+   await page.locator('#clearBtn').click();
+   assert.equal(await page.locator('#newsNotes').inputValue(),'');
+   assert.deepEqual(errors,[]);
+   await ctx.close();
+  }finally{await browser.close()}
+ });
+
 }
