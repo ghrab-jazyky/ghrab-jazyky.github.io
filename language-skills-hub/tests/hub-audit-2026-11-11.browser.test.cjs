@@ -78,6 +78,10 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  test('Audit 2026-11-11 '+name+' first visit still offers "Zpět na úvod" from the intro chooser',async()=>{
   await withPage(engine,{viewport:{width:1366,height:800},reducedMotion:'reduce'},async page=>{
    await page.goto(base);
+   // Stage F: initial teacher release notes now precede the chooser when new
+   // published user-facing changes exist. NO must preserve the old back behavior.
+   await page.locator('#whatsNewPrompt[open]').waitFor();
+   await page.locator('#wnPromptNo').click();
    await page.locator('#skillChooser:not([hidden])').waitFor();
    assert.equal(await page.locator('#closeChooser').textContent(),'Zpět na úvod');
    await page.keyboard.press('Escape');
