@@ -9,7 +9,11 @@
 <title>Language Skills Hub – jazykové laboratoře</title>
 <script src="assets/theme-boot.js"></script>
 <link rel="stylesheet" href="assets/hub.css">
+<link rel="stylesheet" href="assets/whats-new.css">
 <script defer src="assets/qr.js"></script>
+<script defer src="assets/whats-new-data.js"></script>
+<script defer src="assets/whats-new-view.js"></script>
+<script defer src="assets/whats-new-app.js"></script>
 <script defer src="assets/hub.js"></script>
 </head>
 <body>
@@ -66,6 +70,7 @@
 <a class="brand" href="./" aria-label="Language Skills Hub – úvod"><img class="brand-logo" src="assets/school-logo.png" width="38" height="38" alt="" aria-hidden="true" decoding="async"><span class="brand-name">LANGUAGE <em>SKILLS</em> HUB</span></a>
 <nav class="menu" aria-label="Hlavní navigace">
 <button type="button" id="howtoOpen" class="howto-trigger" aria-haspopup="dialog" aria-controls="howto">Jak to funguje</button>
+<button type="button" id="whatsNewOpen" class="howto-trigger" aria-haspopup="dialog" aria-controls="whatsNewCatalog">Co je nového</button>
 </nav>
 <div class="header-actions" role="group" aria-label="Nastavení zobrazení">
 <button type="button" class="chrome-button" id="themeToggle" aria-label="Zapnout denní režim" aria-pressed="false" title="Zapnout denní režim">
@@ -159,6 +164,48 @@
  </div>
 </div>
 </dialog>
+<dialog id="whatsNewPrompt" class="wn-dialog wn-dialog--prompt" aria-labelledby="wnPromptTitle" aria-describedby="wnPromptLead">
+    <div class="wn-prompt-inner">
+      <div class="wn-prompt-top">
+        <p class="wn-kicker">Novinky v Language Skills Hub</p>
+        <button type="button" class="wn-icon-close" id="wnPromptClose" aria-label="Přeskočit novinky a přejít do laboratoří" title="Přeskočit novinky">×</button>
+      </div>
+      <div class="wn-prompt-visual" aria-hidden="true">
+        <span class="wn-prompt-mark"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18V5a2 2 0 0 1 2-2h3a4 4 0 0 1 4 4v14a4 4 0 0 0-4-4H5a2 2 0 0 0-2 1Z"/><path d="M21 18V5a2 2 0 0 0-2-2h-3a4 4 0 0 0-4 4v14a4 4 0 0 1 4-4h3a2 2 0 0 1 2 1Z"/></svg></span>
+      </div>
+      <h2 id="wnPromptTitle" class="wn-prompt-title">Chceš se seznámit s nejnovějšími změnami?</h2>
+      <p id="wnPromptLead" class="wn-prompt-lead">Připravil jsem krátký přehled toho, co je v LSH nového a jak ti to může usnadnit výuku.</p>
+      <div class="wn-info-line"><span class="wn-info-spark" aria-hidden="true">✦</span><span>Jen důležité změny v obsahu, funkcích, jazykové správnosti a ovládání — bez technických podrobností.</span></div>
+      <div class="wn-prompt-actions">
+        <button type="button" id="wnPromptYes" class="wn-btn wn-btn--primary">Ano, zobrazit změny <span aria-hidden="true">→</span></button>
+        <button type="button" id="wnPromptNo" class="wn-btn wn-btn--secondary">Ne, pokračovat do laboratoří</button>
+      </div>
+      <p class="wn-footnote">Další nabídka se objeví až při zveřejnění nových důležitých změn.</p>
+    </div>
+  </dialog>
+<dialog id="whatsNewCatalog" class="wn-dialog wn-dialog--catalog" aria-labelledby="wnCatalogTitle" aria-describedby="wnCatalogLead">
+    <div class="wn-history-head">
+      <div class="wn-history-actions">
+        <div>
+          <p class="wn-eyebrow">Historie vydání</p>
+          <h2 id="wnCatalogTitle" class="wn-history-title">Katalog změn</h2>
+          <p id="wnCatalogLead" class="wn-history-lead">Co se změnilo v Language Skills Hub a proč je to pro výuku užitečné.</p>
+        </div>
+        <button type="button" id="wnCatalogClose" class="wn-history-dismiss" aria-label="Zavřít katalog změn">Zavřít katalog <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="wn-history-stats">
+        <p class="wn-history-count" data-wn-count aria-live="polite">Načítání…</p>
+        <p class="wn-history-order">Od nejnovějšího po nejstarší</p>
+      </div>
+    </div>
+    <div class="wn-history-scroller" tabindex="0" role="region" aria-label="Seznam vydání a změn">
+      <div class="wn-release-list" data-wn-release-list></div>
+    </div>
+    <div class="wn-history-footer">
+      <p>Technické a interní změny nejsou součástí tohoto katalogu.</p>
+      <button type="button" id="wnCatalogContinue" class="wn-btn wn-btn--primary">Pokračovat do laboratoří</button>
+    </div>
+  </dialog>
 <div id="toast" class="hidden" aria-live="polite" role="status"></div>
 <noscript><p>Katalog potřebuje povolený JavaScript.</p></noscript>
 </body></html>
