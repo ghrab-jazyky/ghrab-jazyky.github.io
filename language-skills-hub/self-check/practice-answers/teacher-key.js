@@ -622,7 +622,7 @@ async function refresh(){
   if(id!==serial)return;
   current=model;renderPreview(model);
   $('downloadPdf').disabled=false;
-  $('status').textContent='Klíč k procvičování je připraven. Neobsahuje výsledky jednotlivých žáků.';
+  $('status').textContent='Klíč je připraven (procvičování). Neobsahuje výsledky jednotlivých žáků.';
   const u=new URL(host.location.href);
   u.searchParams.set('topic',e.id);u.searchParams.set('lang',lang);
   u.searchParams.set('level',level);u.searchParams.set('mode','practice');
