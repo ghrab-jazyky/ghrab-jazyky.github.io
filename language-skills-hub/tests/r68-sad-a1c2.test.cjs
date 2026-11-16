@@ -84,16 +84,16 @@ test('R68 shared automatic engine: 17/17, empty 0/17 and each mutation for every
  }
 });
 
-test('R68 native teacher keys: same topic, six levels, PDF contract and 17 exact solutions',()=>{
+test('R68 public practice key has six levels; independent TEST scoring still covers 17 items',()=>{
  assert.equal(key.keyEntries.length,11);
  assert.deepEqual(key.keyEntries.map(e=>e.id),catalog.entries.filter(e=>['cteni','poslech'].includes(e.skill)).map(e=>e.id));
  for(const level of levels){
   const v=core.variant(data,level);
   const practice=key.validate(key.buildListening(v,entry,'en',level));
-  const exam=key.validate(key.buildListeningTest(v,entry,'en',level,core.cloze(v,'ll-sad',level)));
-  assert.equal(practice.mode,'practice');assert.equal(exam.mode,'test');
-  assert.equal(exam.groups.flatMap(g=>g.items).length,17);
-  assert.ok(exam.groups.some(g=>g.title.includes('Matching')&&g.items.length===5));
+  assert.equal(practice.mode,'practice');
+  assert.equal(typeof key.buildListeningTest,'undefined');
+  assert.equal(core.assessAuto(v,{},'ll-sad',level).objectiveMax,17);
+  assert.ok(practice.groups.some(g=>g.title.includes('Matching')&&g.items.length===5));
   assert.ok(practice.groups.some(g=>g.title.includes('Vocabulary')));
   assert.ok(practice.groups.some(g=>g.title.includes('Open questions')));
  }

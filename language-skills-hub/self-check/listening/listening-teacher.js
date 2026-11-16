@@ -178,19 +178,16 @@
   renderMedia();
   share();
   const overlapNotice=$('testOverlapNotice');
-  if(overlapNotice){
-   fetch('../../data/cards.json',{credentials:'omit',cache:'no-store'})
-    .then(r=>{if(!r.ok)throw new Error('Katalog není dostupný');return r.json()})
-    .then(data=>{
-     const entry=data.entries?.find(e=>e.id===topicId);
-     if(entry?.testExactOverlap===true){
-      overlapNotice.textContent='Pozor: Test obsahuje otázky shodné s procvičováním. Výsledek proto sám neprokazuje samostatnou práci.';
-      overlapNotice.hidden=false;
-     }
-    }).catch(()=>{
-     overlapNotice.textContent='Rozsah překryvu otázek s procvičováním nyní nelze ověřit.';
-     overlapNotice.hidden=false;
-    });
+  // Generated from data/cards.json; the Stage A parity test must match
+  // these values to the canonical catalog on every change.
+  const exactOverlap=Object.freeze({
+   'll-matthew-oscars':true,'ll-harrison-ford':true,
+   'll-peaky-no-fighting':true,'ll-sad':true,
+   'll-conlangs':false,'ll-how-to-choose-your-news':false
+  });
+  if(overlapNotice&&exactOverlap[topicId]===true){
+   overlapNotice.textContent='Pozor: Test obsahuje otázky shodné s procvičováním. Výsledek proto sám neprokazuje samostatnou práci.';
+   overlapNotice.hidden=false;
   }
  }
  start();

@@ -40,6 +40,12 @@ test('Stage A: all 156 variants have a machine-readable overlap baseline and tru
   for(const row of rows.filter(r=>r.topic===e.id))assert.equal(row.exactMatches,row.scored,e.id+' should match all original Reading questions');
  }
 });
+test('Stage A: duplicated Listening teacher flags remain in sync with canonical catalog',()=>{
+ const source=read('self-check/listening/listening-teacher.js');
+ for(const e of catalog.entries.filter(e=>e.skill==='poslech')){
+  assert.ok(source.includes("'"+e.id+"':"+e.testExactOverlap),e.id+' metadata out of sync');
+ }
+});
 test('Stage A: public key is practice-only even when URL requests TEST',()=>{
  const source=read('self-check/practice-answers/teacher-key.js');
  const html=read('self-check/practice-answers/teacher.html');
