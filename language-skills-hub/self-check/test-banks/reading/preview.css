@@ -1,0 +1,7 @@
+/* R32 teacher QA preview only. No modifications to production styling. */
+.r32-warning{border-left:4px solid var(--warn);margin-top:16px}
+.stage-phase{margin:22px 0 4px;font-size:1.14rem;color:var(--accent)}
+.reading-body p{margin:0 0 1.15em}
+#loading.error{color:var(--wrong);border:1px solid var(--wrong);border-radius:12px;padding:14px}
+.results .result-details{margin-top:14px}
+@media(max-width:540px){.r32-warning{padding:12px}.stage-phase{margin-top:16px}}
