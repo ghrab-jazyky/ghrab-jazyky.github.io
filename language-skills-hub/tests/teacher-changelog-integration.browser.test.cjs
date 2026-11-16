@@ -64,7 +64,7 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]) {
    assert.equal(await page.locator('#whatsNewPrompt').evaluate(el=>el.open),false);
    await page.locator('[data-choose-skill="konverzace"]').click();
    await page.locator('#whatsNewOpen').click();await page.locator('#whatsNewCatalog[open]').waitFor();
-   await page.locator('.wn-empty').waitFor();
+   await page.getByText('Přehled se nyní nepodařilo načíst').waitFor();
    assert.match(await page.locator('.wn-empty').innerText(),/nepodařilo načíst/);
   });
  });
