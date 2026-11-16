@@ -9,6 +9,7 @@ const levels=['A1','A2','B1','B2','C1','C2'];
 const allowed=new Set(['konverzace','cteni','poslech']);
 let entries=[],translations=new Map(),skill=allowed.has(params.get('skill'))?params.get('skill'):null;
 let introTimer=null;
+let introTransitionStarted=false;
 let localSelfCheck=false;
 const welcome=byId('welcome'),chooser=byId('skillChooser'),catalog=byId('catalog');
 let qrUrl='', qrTitle='', shareEntry=null, toastTimeout=null;
@@ -279,6 +280,18 @@ function restoreLocation(){
   setAppInert(true);showChooser();
  }
 }
+function finishIntro(){
+ if(introTransitionStarted)return;
+ introTransitionStarted=true;
+ if(introTimer!==null){clearTimeout(introTimer);introTimer=null;}
+ const goToChooser=()=>{
+  const requested=new URLSearchParams(location.search).get('skill');
+  if(!allowed.has(requested))showChooser();
+ };
+ if(window.LSHWhatsNew&&typeof window.LSHWhatsNew.offerInitial==='function'){
+  Promise.resolve(window.LSHWhatsNew.offerInitial(goToChooser)).catch(goToChooser);
+ }else goToChooser();
+}
 function initEntry(){
  const query=new URLSearchParams(location.search),chosen=query.get('skill');
  if(allowed.has(chosen)){
@@ -287,7 +300,7 @@ function initEntry(){
   catalog.hidden=true;
   setAppInert(true);
   const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  introTimer=setTimeout(showChooser,reduced?0:3000);
+  introTimer=setTimeout(finishIntro,reduced?0:3000);
  }
 }
 /* R21: sharing settings are independent of optional catalog preview filters.
@@ -446,7 +459,7 @@ async function load(){
 }
 for(const b of chooser.querySelectorAll('[data-choose-skill]'))
  b.addEventListener('click',()=>showCatalog(b.dataset.chooseSkill));
-byId('skipIntro').addEventListener('click',showChooser);
+byId('skipIntro').addEventListener('click',finishIntro);
 byId('closeChooser').addEventListener('click',closeChooser);
 byId('changeLab').addEventListener('click',showChooser);
 chooser.addEventListener('keydown',event=>{
@@ -540,6 +553,7 @@ document.addEventListener('fullscreenchange',syncFullscreen);
 document.addEventListener('fullscreenerror',()=>toast('Prohlížeč nepovolil režim celé obrazovky.'));
 syncTheme();
 syncFullscreen();
+if(window.LSHWhatsNew&&typeof window.LSHWhatsNew.init==='function')window.LSHWhatsNew.init();
 initEntry();
 load();
 })();

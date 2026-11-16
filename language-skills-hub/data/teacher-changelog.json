@@ -1,0 +1,72 @@
+{
+  "kind": "LSH_TEACHER_CHANGELOG_V1",
+  "schemaVersion": 1,
+  "latestAnnouncementSequence": 3,
+  "contentRevision": 1,
+  "releases": [
+    {
+      "id": "lsh-2026-11-16-restaurant-dialogues",
+      "sequence": 3,
+      "publishedAt": "2026-11-16",
+      "title": "Přirozenější konverzace v restauraci",
+      "changes": [
+        {
+          "id": "restaurant-scenarios-four-languages",
+          "area": "conversation",
+          "category": "methodology",
+          "title": "Lepší otázky a situace při návštěvě restaurace",
+          "description": "V konverzační kartě Jídlo, pití a restaurace jsem upravil situace a otázky k rezervaci stolu, objednávání a komunikaci v restauraci. Změny najdeš v angličtině, španělštině, němčině i francouzštině.",
+          "teacherBenefit": "Kartu můžeš snáze využít pro rozhovory ve dvojicích a krátké scénky z běžného života."
+        }
+      ]
+    },
+    {
+      "id": "lsh-2026-11-15-new-listening-and-ordering",
+      "sequence": 2,
+      "publishedAt": "2026-11-15",
+      "title": "Nový poslech a přehlednější práce s pořadím",
+      "changes": [
+        {
+          "id": "news-listening-a1-c2",
+          "area": "listening",
+          "category": "content",
+          "title": "Nový poslech: How to Choose Your News",
+          "description": "Do Listening Lab jsem přidal poslech How to Choose Your News. Najdeš ho v nabídce témat a můžeš s ním pracovat na úrovních A1 až C2.",
+          "teacherBenefit": "Poslech se hodí k propojení angličtiny s mediální gramotností a diskusi o důvěryhodnosti zpráv."
+        },
+        {
+          "id": "listening-sequence-unification",
+          "area": "listening",
+          "category": "interface",
+          "title": "Jednotnější skládání výroků do správného pořadí",
+          "description": "V procvičovacích posleších jsem sjednotil ovládání úloh, ve kterých žáci řadí jednotlivé výroky nebo části obsahu do správného pořadí.",
+          "teacherBenefit": "Žáci se mohou více soustředit na obsah poslechu a méně na to, jak se konkrétní úloha ovládá."
+        }
+      ]
+    },
+    {
+      "id": "lsh-2026-11-14-listening-studio",
+      "sequence": 1,
+      "publishedAt": "2026-11-14",
+      "title": "Sjednocení prostředí poslechových karet",
+      "changes": [
+        {
+          "id": "shared-listening-practice-ui",
+          "area": "listening",
+          "category": "interface",
+          "title": "Přehlednější prostředí poslechů SAD a Conlangs",
+          "description": "Procvičovací karty Seasonal Affective Disorder a Conlangs nyní používají sjednocené prostředí Listening Lab podle již existujících referenčních poslechů, včetně přehlednějšího výběru úrovně a zobrazení postupu.",
+          "teacherBenefit": "Při střídání poslechových témat se žáci lépe orientují a nemusíš jim opakovaně vysvětlovat odlišné ovládání."
+        },
+        {
+          "id": "conlangs-a1-c2",
+          "area": "listening",
+          "category": "content",
+          "title": "Poslech o umělých jazycích na úrovních A1–C2",
+          "description": "V Listening Lab je dostupné téma Are Elvish, Klingon, Dothraki and Na’vi real languages? s úlohami pro všech šest úrovní CEFR od A1 po C2.",
+          "teacherBenefit": "Můžeš stejným tématem pracovat s různě pokročilými skupinami studentů."
+        }
+      ]
+    }
+  ]
+}
