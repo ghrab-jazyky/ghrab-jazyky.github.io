@@ -22,6 +22,9 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     const nums=await page.locator('[data-count-skill="'+skill+'"]').allTextContents();
     assert.deepEqual(nums,[String(count),String(count)]);
    }
+   // Stage F: show teacher-facing release notes before the unchanged chooser.
+   await page.locator('#whatsNewPrompt[open]').waitFor({timeout:8000});
+   await page.locator('#wnPromptNo').click();
    await page.locator('#skillChooser:not([hidden])').waitFor({timeout:8000});
    await page.locator('[data-choose-skill="poslech"]').click();
    await page.locator('#cards .card').first().waitFor();
