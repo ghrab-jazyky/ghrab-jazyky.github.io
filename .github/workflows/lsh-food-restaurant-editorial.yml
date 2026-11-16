@@ -1,0 +1,22 @@
+name: LSH restaurant dialogue editorial regression
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/konverzace/jidlo-piti-restaurace/index.html'
+      - 'language-skills-hub/tests/food-restaurant-dialogue-editorial-2026-11-16.test.cjs'
+      - '.github/workflows/lsh-food-restaurant-editorial.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  editorial-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify food and restaurant editorial integrity
+        run: node --test language-skills-hub/tests/food-restaurant-dialogue-editorial-2026-11-16.test.cjs
