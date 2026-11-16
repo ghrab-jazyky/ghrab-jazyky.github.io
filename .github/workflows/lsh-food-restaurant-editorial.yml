@@ -6,6 +6,7 @@ on:
       - 'language-skills-hub/konverzace/jidlo-piti-restaurace/index.html'
       - 'language-skills-hub/tests/food-restaurant-dialogue-editorial-2026-11-16.test.cjs'
       - '.github/workflows/lsh-food-restaurant-editorial.yml'
+      - 'language-skills-hub/tests/food-restaurant-dialogue-editorial-2026-11-16.browser.test.cjs'
   workflow_dispatch:
 permissions:
   contents: read
@@ -20,3 +21,26 @@ jobs:
           node-version: '24'
       - name: Verify food and restaurant editorial integrity
         run: node --test language-skills-hub/tests/food-restaurant-dialogue-editorial-2026-11-16.test.cjs
+  editorial-browser:
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install Playwright (Chromium and WebKit)
+        run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Verify rendered prompts and clickable supports in four languages
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-food-dialogue-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/index.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/food-restaurant-dialogue-editorial-2026-11-16.browser.test.cjs
