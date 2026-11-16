@@ -13,7 +13,8 @@ function url(e,level='B2',mode='test'){
 }
 for(const [name,engine] of [['Chromium',chromium],['Firefox',firefox],['WebKit',webkit]]){
  test('Stage A '+name+': public key ignores mode=test and keeps practice PDF',{timeout:180000},async()=>{
-  const browser=await engine.launch({headless:true});
+  const firefoxHome=name==='Firefox'?fs.mkdtempSync(path.join(require('node:os').tmpdir(),'lsh-firefox-')):null;
+  const browser=await engine.launch({headless:true,...(firefoxHome?{env:{...process.env,HOME:firefoxHome}}:{})});
   try{
    const context=await browser.newContext({viewport:{width:390,height:844},acceptDownloads:true});
    const page=await context.newPage(),errors=[];
@@ -41,6 +42,6 @@ for(const [name,engine] of [['Chromium',chromium],['Firefox',firefox],['WebKit',
    assert.equal(pdf.subarray(0,8).toString('ascii'),'%PDF-1.4');
    assert.ok(pdf.length>12000);
    assert.deepEqual(errors,[]);
-  }finally{await browser.close()}
+  }finally{await browser.close();if(firefoxHome)fs.rmSync(firefoxHome,{recursive:true,force:true})}
  });
 }

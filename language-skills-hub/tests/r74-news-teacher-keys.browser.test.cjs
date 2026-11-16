@@ -24,7 +24,8 @@ function expected(level){
 for(const [browserName,engine] of [['Chromium',chromium],['Firefox',firefox],['WebKit',webkit]]){
  test('Stage A '+browserName+': NEWS practice key stays faithful and TEST URL cannot expose test key',
   {timeout:240000},async()=>{
-  const browser=await engine.launch({headless:true});
+  const firefoxHome=browserName==='Firefox'?fs.mkdtempSync(path.join(require('node:os').tmpdir(),'lsh-firefox-')):null;
+  const browser=await engine.launch({headless:true,...(firefoxHome?{env:{...process.env,HOME:firefoxHome}}:{})});
   try{
    const ctx=await browser.newContext({acceptDownloads:true,viewport:{width:490,height:860}});
    const page=await ctx.newPage(),errors=[];
@@ -63,6 +64,6 @@ for(const [browserName,engine] of [['Chromium',chromium],['Firefox',firefox],['W
     assert.ok(buf.length>12000);
    }
    assert.deepEqual(errors,[]);
-  }finally{await browser.close()}
+  }finally{await browser.close();if(firefoxHome)fs.rmSync(firefoxHome,{recursive:true,force:true})}
  });
 }

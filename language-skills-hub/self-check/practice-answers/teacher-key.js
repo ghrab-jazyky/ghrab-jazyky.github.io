@@ -645,6 +645,9 @@ async function init(){
   need(requestedSkill===null||requestedSkill===e.skill,
    'Nesprávná laboratoř v odkazu. Reading a Listening nelze zaměnit.');
   selected=e;configure(e);
+  const currentUrl=new URL(host.location.href);
+  currentUrl.searchParams.set('mode','practice');
+  host.history.replaceState(null,'',currentUrl.href);
   setModeUI();
   $('language').addEventListener('change',refresh);
   $('level').addEventListener('change',refresh);
