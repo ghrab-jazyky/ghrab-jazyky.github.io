@@ -54,7 +54,7 @@ test('E4 all NEWS TEST variants score 17 objectives, never exposing correct answ
   const oneWrong=core.assessAuto(v,inputs,topic,level);
   assert.equal(oneWrong.objectiveCorrect,16);
   assert.equal(oneWrong.reviewed.filter(q=>!q.correct).length,1);
-  assert.ok(keys.validate(keys.buildListeningTest(v,entry,'en',level,core.cloze(v,topic,level))));
+  assert.equal(typeof keys.buildListeningTest,'undefined');
   assert.ok(keys.validate(keys.buildListening(keys.newsPracticeVariant(data,level,v),entry,'en',level)));
  }
 });

@@ -58,13 +58,13 @@ test('R69 all 102 item mutations, blank tests and matching uniqueness',()=>{
  }
  assert.equal(mutations,102);
 });
-test('R69 same 17-answer TEST teacher key and PRACTICE explanations',()=>{
+test('R69 public key exposes only independent PRACTICE explanations',()=>{
  assert.deepEqual(key.keyEntries.map(x=>x.id),catalog.entries.filter(x=>['cteni','poslech'].includes(x.skill)).map(x=>x.id));
  for(const level of levels){
   const v=core.variant(data,level);
-  const train=key.validate(key.buildListening(key.conlangsPracticeVariant(data,level,v),entry,'en',level));const exam=key.validate(key.buildListeningTest(v,entry,'en',level,core.cloze(v,entry.id,level)));
+  const train=key.validate(key.buildListening(key.conlangsPracticeVariant(data,level,v),entry,'en',level));
   assert.equal(train.mode,'practice');assert.ok(train.groups.some(x=>x.title.includes('Vocabulary')));
-  assert.equal(exam.mode,'test');assert.equal(exam.groups.flatMap(x=>x.items).length,17);
+  assert.equal(typeof key.buildListeningTest,'undefined');
  }
 });
 test('R69 uses only the shared test route and the shared vocabulary bridge',()=>{
@@ -149,10 +149,8 @@ test('R69 student practice never displays invented exact timestamps and teacher 
  assert.doesNotMatch(script,/Evidence in recording: approximately/);
  assert.match(script,/Precise audio time not yet independently confirmed/);
  const teacher=read('self-check/practice-answers/teacher-key.js');
- // R75 still adapts the independent Conlangs PRACTICE bank, now also passing
- // a level-specific sequence. It must never substitute that bank in TEST mode.
+ // Public key must adapt the independent PRACTICE bank and keep the shared sequence.
  assert.match(teacher,/e\.id==='ll-conlangs'\?conlangsPracticeVariant\(data,level,practiceVariant\):practiceVariant/);
  assert.match(teacher,/host\.LSHListeningSequence\?\.bankFor\(e\.id,level\)/);
- assert.match(teacher,/mode==='test'\?buildListeningTest\(v,e,lang,level,/);
- assert.match(teacher,/mode==='test'\?buildListeningTest/);
+ assert.doesNotMatch(teacher,/buildListeningTest|buildReadingTest|mode==='test'/);
 });

@@ -177,6 +177,21 @@
   $('timerMinutes').addEventListener('change',share);
   renderMedia();
   share();
+  const overlapNotice=$('testOverlapNotice');
+  if(overlapNotice){
+   fetch('../../data/cards.json',{credentials:'omit',cache:'no-store'})
+    .then(r=>{if(!r.ok)throw new Error('Katalog není dostupný');return r.json()})
+    .then(data=>{
+     const entry=data.entries?.find(e=>e.id===topicId);
+     if(entry?.testExactOverlap===true){
+      overlapNotice.textContent='Pozor: Test obsahuje otázky shodné s procvičováním. Výsledek proto sám neprokazuje samostatnou práci.';
+      overlapNotice.hidden=false;
+     }
+    }).catch(()=>{
+     overlapNotice.textContent='Rozsah překryvu otázek s procvičováním nyní nelze ověřit.';
+     overlapNotice.hidden=false;
+    });
+  }
  }
  start();
 })();

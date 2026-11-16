@@ -51,7 +51,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await context.close();
   }finally{await browser.close()}
  });
- test('R72 '+engineName+' native teacher TEST setup, student 17 objectives, mistake-only review and keys',{timeout:160000},async()=>{
+ test('R72 '+engineName+' native teacher TEST setup, student 17 objectives, mistake-only review and public PRACTICE key',{timeout:160000},async()=>{
   const browser=await engine.launch({headless:true});
   try{
    const ctx=await browser.newContext({acceptDownloads:true,viewport:{width:390,height:844}});
@@ -77,12 +77,11 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     topic:'ll-how-to-choose-your-news',skill:'poslech',lang:'en',level:'B2',mode:'test'
    }));
    await key.locator('#downloadPdf:not([disabled])').waitFor();
-   const examText=await key.locator('#answerPreview').innerText();
-   assert.ok(examText.includes('How to Choose Your News'));
-   await key.locator('#answerMode').selectOption('practice');
-   await key.locator('#downloadPdf:not([disabled])').waitFor();
    const practiceText=await key.locator('#answerPreview').innerText();
-   assert.notEqual(examText,practiceText);
+   assert.ok(practiceText.includes('How to Choose Your News'));
+   assert.equal(await key.locator('#answerMode').count(),0);
+   assert.equal(new URL(key.url()).searchParams.get('mode'),'practice');
+   assert.match(practiceText,/PROCVIČOVACÍ VERZE/);
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
  });

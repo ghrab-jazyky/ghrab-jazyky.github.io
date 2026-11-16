@@ -152,17 +152,23 @@ function card(e){
   const key=one('a','action','VÝSLEDKY');
   key.href=practiceKeyUrl(e);key.target='_blank';key.rel='noopener noreferrer';
   key.setAttribute('aria-label','VÝSLEDKY: učitelský klíč k procvičování – '+translation.title);
-  key.title='Správná řešení procvičovacích úloh, nikoli výsledky žáků. Část úloh se opakuje i v místních testech. Veřejný podklad bez přihlášení.';
+  key.title='Správná řešení procvičovacích úloh, nikoli výsledky žáků. Veřejný podklad bez přihlášení.';
   actions.appendChild(key);
  }
  if(localSelfCheck&&['cteni','poslech'].includes(e.skill)){
   const check=one('a','action test','TEST');
   check.href=testSetupUrl(e);check.target='_blank';check.rel='noopener noreferrer';
-  check.setAttribute('aria-label','TEST: '+translation.title);
-  check.title='Otevřít test k tématu. Výsledek je místní a případnou školní známku musí ověřit učitel.';
+  const overlap=e.testExactOverlap===true;
+  check.setAttribute('aria-label','TEST: '+translation.title+(overlap?' · Pozor: testové otázky se překrývají s procvičováním.':''));
+  check.title='Otevřít test k tématu. Výsledek je místní a případnou školní známku musí ověřit učitel.'+
+   (overlap?' Pozor: testové otázky se překrývají s procvičováním.':'');
   actions.appendChild(check);
  }
  article.appendChild(actions);
+ if(localSelfCheck&&e.testExactOverlap===true){
+  const notice=one('p','test-overlap-note','Pozor: Test obsahuje otázky známé z procvičování; samotný výsledek neprokazuje samostatnou práci.');
+  notice.lang='cs';article.appendChild(notice);
+ }
  return article;
 }
 function render(){

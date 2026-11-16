@@ -110,6 +110,17 @@
    if(!cardsResult.ok||!namesResult.ok)throw new Error('Katalog není dostupný');
    const cards=await cardsResult.json(),translated=await namesResult.json();
    entries=cards.entries.filter(e=>e.skill==='cteni');
+   const overlapNotice=$('testOverlapNotice');
+   if(overlapNotice){
+    const selected=()=>entries.find(e=>e.id===$('topic').value);
+    const updateNotice=()=>{
+     const e=selected(),known=e?.testExactOverlap===true;
+     overlapNotice.hidden=!known;
+     overlapNotice.textContent=known?'Pozor: Test obsahuje otázky shodné s procvičováním. Výsledek proto sám neprokazuje samostatnou práci.':'';
+    };
+    $('topic').addEventListener('change',updateNotice);
+    queueMicrotask(updateNotice);
+   }
    if(entries.length!==5)throw new Error('Neočekávaný počet čtecích témat');
    $('topic').replaceChildren();
    for(const entry of entries){
