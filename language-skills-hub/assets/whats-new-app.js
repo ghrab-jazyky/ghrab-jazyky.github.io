@@ -75,6 +75,7 @@
  function showCatalog(fromIntro){
   if(catalog.open)return;
   if(!fromIntro)manualFocus=document.activeElement;
+  byId('wnCatalogContinue').textContent=fromIntro?'Pokračovat do laboratoří':'Zavřít katalog';
   render();
   try{catalog.showModal();}
   catch(_){if(fromIntro)continueFromIntro();return;}
