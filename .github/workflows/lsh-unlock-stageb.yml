@@ -51,6 +51,8 @@ jobs:
           done
           cat /tmp/lsh-unlock-http.log
           exit 1
+      - name: Diagnose legacy mouse completion after reload (B2)
+        run: node --test language-skills-hub/tests/lsh-unlock-b2-legacy-diagnostic.browser.test.cjs
       - name: T4 forced-denial decision matrix and one-shot controls
         run: node --test language-skills-hub/tests/lsh-unlock-stageb-t4.browser.test.cjs
       - name: R64 URL/registry and R30 counter lifecycle
