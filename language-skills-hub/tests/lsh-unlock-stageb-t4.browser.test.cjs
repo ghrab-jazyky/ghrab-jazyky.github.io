@@ -191,3 +191,80 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   }finally{await browser.close()}
  });
 }
+
+for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+ test('T4 '+engineName+' fallback succeeds via keyboard but never without a preceding gesture',
+ {timeout:60000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   for(const lab of labs){
+    const s=await setup(browser,lab,'n4');
+    try{
+     await deny(s.page,'reject');
+     await gesture(s.page,'triangle3');
+     await visible(s.page).waitFor({timeout:5000});
+     await s.page.evaluate(()=>{window.__mode='success';});
+     await s.page.waitForFunction(()=>document.activeElement?.id==='sessionUnlockContinue',null,{timeout:2500});
+     await s.page.keyboard.press('Space');
+     await s.page.locator('#sessionLock').waitFor({state:'hidden',timeout:5000});
+     assert.equal(await visible(s.page).count(),0);
+    }finally{await s.context.close()}
+   }
+  }finally{await browser.close()}
+ });
+ test('T4 '+engineName+' pointer activity invalidates the one-use retry token',
+ {timeout:65000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   for(const [variant,id] of [['n4','triangle3'],['n1','corners4']]){
+    const s=await setup(browser,labs[0],variant);
+    try{
+     await deny(s.page,'reject');await gesture(s.page,id);
+     await visible(s.page).waitFor({timeout:5000});
+     if(id==='corners4')await s.page.mouse.click(38,38,{delay:65});
+     else await s.page.mouse.click(410,590,{delay:65});
+     await s.page.locator('#sessionUnlockContinue').waitFor({state:'hidden'});
+     assert.equal(await locked(s.page),true);
+     await s.page.evaluate(()=>document.getElementById('sessionUnlockContinue').click());
+     assert.equal(await locked(s.page),true);
+    }finally{await s.context.close()}
+   }
+  }finally{await browser.close()}
+ });
+ test('T4 '+engineName+' pending request expires with test, no late resume or false denial reason',
+ {timeout:45000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const s=await setup(browser,labs[0],'n1',{clock:true});
+   try{
+    await deny(s.page,'pending');await gesture(s.page,'corners4');
+    assert.equal(await locked(s.page),true);
+    await s.page.clock.fastForward(301000);
+    await s.page.locator('#results:not([hidden])').waitFor({timeout:7000});
+    assert.equal(await visible(s.page).count(),0);
+    await s.page.evaluate(()=>window.__pendingResolve&&window.__pendingResolve());
+    await s.page.waitForTimeout(100);
+    assert.equal(await s.page.locator('#sessionLock').isVisible(),false);
+    assert.equal(await visible(s.page).count(),0);
+    assert.doesNotMatch((await s.page.locator('#sessionLockReason').textContent())||'',/could not be activated/);
+   }finally{await s.context.close()}
+  }finally{await browser.close()}
+ });
+ test('T4 '+engineName+' re-checks restricted viewport after pending request resolves',
+ {timeout:45000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const s=await setup(browser,labs[0],'n4');
+   try{
+    await deny(s.page,'pending');await gesture(s.page,'triangle3');
+    await s.page.evaluate(()=>{
+     Object.defineProperty(window.screen,'width',{configurable:true,get:()=>2000});
+     window.__pendingResolve();
+    });
+    await s.page.waitForFunction(()=>document.getElementById('sessionLockReason').textContent.includes('restricted or divided window'),null,{timeout:2000});
+    assert.equal(await locked(s.page),true);
+    assert.equal(await visible(s.page).count(),0);
+   }finally{await s.context.close()}
+  }finally{await browser.close()}
+ });
+}
