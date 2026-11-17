@@ -271,7 +271,7 @@
     engine.resume();resetBaseline();render();tabMonitor.probe();
    };
    if(document.fullscreenElement){finishResume();return;}
-   if(!document.documentElement.requestFullscreen()){
+   if(!document.documentElement.requestFullscreen){
     fullscreenArmed=false;finishResume();return;
    }
    const touch=isTouchDevice(); // B2 includes touch-capable hybrids.
