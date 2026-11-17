@@ -9,20 +9,20 @@
 - Existing language card JavaScript and shared LSH modules are unchanged; only scoped catalog/manifest metadata, new Plural HTML, tests, and non-production docs have been added or updated.
 
 ## Verified in real GitHub Actions
-Final code commit after merge: `b7489a349d0d0fa7b4d56dcfdb44e2ad95c92905`.  
-GitHub Actions run: https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/44165890108
+Baseline merge-from-main commit: `b7489a349d0d0fa7b4d56dcfdb44e2ad95c92905`; latest tested browser-test commit: `615d92b1d60f55ca686af63bcafcbcd6aba27b45`.  
+Latest GitHub Actions run: https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/44166766786 (commit `615d92b1d60f55ca686af63bcafcbcd6aba27b45`, all checks passed)
 
 | Suite | Pass | Fail |
 |---|---:|---:|
 | Legacy Node regression (all non-browser Node tests) | 291 | 0 |
 | Plural-specific Node contract | 5 | 0 |
-| Plural HTTP browser tests in Chromium and WebKit | 6 | 0 |
+| Plural HTTP browser tests in Chromium and WebKit (including keyboard focus and controls) | 8 | 0 |
 | Catalog and CEFR badges browser regression | 2 | 0 |
 | Shared vocabulary across original/new cards and IndexedDB | 4 | 0 |
 | Non-graded public Reading/Listening actions | 6 | 0 |
 | Legacy Reading/Listening results browser regression (historically misnamed Node-style file) | 6 | 0 |
 | Listening Studio responsive regression | 4 | 0 |
-| **TOTAL** | **324** | **0** |
+| **TOTAL** | **326** | **0** |
 
 The CI uses an actual local HTTP server in GitHub Actions and real Playwright Chromium/WebKit browsers. This is NOT a check of the public GitHub Pages domain. This browser suite is *targeted*, not every browser test in the repository.
 
@@ -31,7 +31,7 @@ The CI uses an actual local HTTP server in GitHub Actions and real Playwright Ch
 - All supported languages render 10+3 cards and B1–C2 grammar challenges; desktop/mobile layout and card flips/EXTRA work.
 - Existing `card-bridge.js` saves an individual singular lemma from `#vocabGrid .vocab-item b`; plural is a separate visual line.
 - Canonical browser IndexedDB `lsh` persists the saved word after reload; My Vocabulary displays it in both Chromium and WebKit.
-- No browser page errors or CSP errors in tested paths.
+- No browser page errors or CSP errors in tested paths. Keyboard regression also validates Enter/Space card flips, arrow focus navigation, EXTRA keyboard operation and Escape on the timer editor in Chromium and WebKit.
 - Stage commit graph is ahead of latest `main` and not behind it. No PR, merge **into** main, or deployment.
 
 ## Non-negotiable blockers
