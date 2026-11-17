@@ -81,6 +81,13 @@ test('V5 authored editorial patches match all 168 EXTRA notes and 67 grammar cha
    return [line.slice(0,i),line.slice(i+1)];
   });
  }
+ // Three originally templated entries were subsequently replaced with new lexical items.
+ // Keep their final content under an exact regression check rather than ignoring them.
+ const finalOverrides={
+  'ES-B1-S04-EXTRA-02':'«Convoy» termina en -y precedida de vocal. Su plural es «convoyes», no *convoys; compáralo con «la ley → las leyes».',
+  'ES-C2-S01-EXTRA-02':'En «las crisis sucesorias», «crisis» no cambia de forma; «sucesorias» sí lleva -s. El artículo señala que hay varias crisis.',
+  'ES-C2-S01-EXTRA-03':'«Carácter» pasa a «caracteres»: desaparece la tilde y cambia la posición de la sílaba tónica. «Hereditario» concuerda: «hereditarios».'
+ };
  let notes=0;
  for(const file of ['notes_es_v5.tsv','notes_fr_v5.tsv']){
   const keys=new Set();
@@ -88,7 +95,8 @@ test('V5 authored editorial patches match all 168 EXTRA notes and 67 grammar cha
    assert.ok(!keys.has(id),'Duplicate editorial item '+id);keys.add(id);
    const m=id.match(/^(ES|FR)-(A1|A2|B1|B2|C1|C2)-S(0[1-8])-EXTRA-(0[1-3])$/);
    assert.ok(m,'Invalid EXTRA item id '+id);
-   assert.equal(content[m[1].toLowerCase()].levels[m[2]].stations[+m[3]-1].extra[+m[4]-1][4],note,id);
+   const finalNote=Object.prototype.hasOwnProperty.call(finalOverrides,id)?finalOverrides[id]:note;
+   assert.equal(content[m[1].toLowerCase()].levels[m[2]].stations[+m[3]-1].extra[+m[4]-1][4],finalNote,id);
    assert.ok(note.length>45,id+' is still too short');
    notes++;
   }
