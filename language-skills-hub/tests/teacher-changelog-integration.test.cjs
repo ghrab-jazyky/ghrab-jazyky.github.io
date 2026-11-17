@@ -45,6 +45,7 @@ test('Stage D: deep-link, initial timer and changelog handler remain separate',(
  const hub=fs.readFileSync(path.join(root,'assets/hub.js'),'utf8');
  assert.match(hub,/if\(allowed\.has\(chosen\)\)/);
  assert.match(hub,/introTimer=setTimeout\(finishIntro,reduced\?0:3000\)/);
- assert.match(hub,/addEventListener\('click',finishIntro\)/);
+ assert.match(hub,/function openChooserFromWelcome\(\)/);
+ assert.match(hub,/byId\('skipIntro'\)\.addEventListener\('click',openChooserFromWelcome\)/);
  assert.match(hub,/function showChooser\(\)/);
 });
