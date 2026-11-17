@@ -59,7 +59,9 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    page.on('pageerror',e=>errors.push(e.message));
    await page.goto(url('self-check/listening/teacher.html',{topic:'ll-how-to-choose-your-news',level:'B2'}));
    assert.equal(await page.locator('#topicTitle').getAttribute('data-topic-id'),'ll-how-to-choose-your-news');
-   const studentLink=await page.locator('#studentUrl').inputValue();
+   assert.equal(await page.locator('#studentUrl').inputValue(),'','Unconfirmed draft must have no link');
+    await page.locator('#confirmTest:enabled').click();
+    const studentLink=await page.locator('#studentUrl').inputValue();
    assert.match(studentLink,/topic=ll-how-to-choose-your-news/);
    assert.match(studentLink,/timer=/);
    const student=await ctx.newPage();student.on('pageerror',e=>errors.push(e.message));student.on('dialog',d=>d.accept());
