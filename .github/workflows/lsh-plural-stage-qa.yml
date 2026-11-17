@@ -23,7 +23,7 @@ jobs:
       - name: Check new Plural Node contract
         run: node --test language-skills-hub/tests/plural-grammar-contract.test.cjs
       - name: Run every existing static Node test
-        run: find language-skills-hub/tests -maxdepth 1 -type f -name '*.test.cjs' ! -name '*.browser.test.cjs' -print0 | xargs -0 node --test
+        run: find language-skills-hub/tests -maxdepth 1 -type f -name '*.test.cjs' ! -name '*.browser.test.cjs' ! -name 'r25-result-browser.test.cjs' -print0 | xargs -0 node --test
   real-browser-integration:
     runs-on: ubuntu-24.04
     timeout-minutes: 32
@@ -52,4 +52,5 @@ jobs:
           node --test language-skills-hub/tests/r39-catalog-cefr-badges.browser.test.cjs
           node --test language-skills-hub/tests/r49-unified-vocabulary.browser.test.cjs
           node --test language-skills-hub/tests/r27-public-release.browser.test.cjs
+          node --test language-skills-hub/tests/r25-result-browser.test.cjs
           node --test language-skills-hub/tests/r70-live-listening-studio.browser.test.cjs
