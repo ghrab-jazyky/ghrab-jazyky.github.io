@@ -732,7 +732,8 @@
         "C2"
       ],
       "relative": "konverzace/plural/index.html",
-      "lockSource": null
+      "lockSource": null,
+      "cardType": "grammar-flashcards"
     }
   ]
 }
