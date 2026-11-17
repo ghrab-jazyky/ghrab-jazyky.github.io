@@ -7,7 +7,9 @@
  const $=id=>document.getElementById(id);
  const params=new URLSearchParams(location.search);
  const newAttempt=()=>'class'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
- let attemptId=null,confirmed=false,everConfirmed=false,gestureControls=null;
+ let attemptId=null,confirmed=false,everConfirmed=false,gestureControls=null,renderedSignature='';
+ const formSignature=()=>[$('level').value,$('timerMinutes').value,
+  gestureControls?.getId()||'corners4'].join('|');
 
  // Source URLs mirror the original public Listening cards. The R53 static CI
  // validates every URL and topic against data/cards.json and each card's SOURCES.
@@ -131,6 +133,7 @@
   const limit=Number($('timerMinutes').value),level=$('level').value;
   const allowed=!!chosen&&Number.isInteger(limit)&&limit>=5&&limit<=120&&
    core.LEVELS.includes(level)&&(!chosen.levels||chosen.levels.includes(level));
+  renderedSignature=formSignature();
   $('studentUrl').value='';
   $('studentPreview').href='#';$('studentPreview').setAttribute('aria-disabled','true');
   $('copyUrl').disabled=true;$('downloadQr').disabled=true;
@@ -152,7 +155,13 @@
   history.replaceState(null,'',next);
  }
  function confirm(){
-  if(confirmed||!chosen||$('confirmTest').disabled)return;
+  // Keep a suppressed input/change event from publishing stale/invalid values.
+  if(formSignature()!==renderedSignature){share();return;}
+  const limit=Number($('timerMinutes').value),level=$('level').value;
+  const allowed=!!chosen&&Number.isInteger(limit)&&limit>=5&&limit<=120&&
+   core.LEVELS.includes(level)&&(!chosen.levels||chosen.levels.includes(level));
+  if(!allowed){share();return;}
+  if(confirmed||$('confirmTest').disabled)return;
   attemptId=newAttempt();const link=studentUrl();
   confirmed=true;everConfirmed=true;
   $('studentUrl').value=link;$('studentPreview').href=link;
@@ -165,18 +174,30 @@
    '. Kód pokusu a variantu najdete i v protokolu studenta; slouží k ručnímu porovnání, nejsou důkazem pravosti.';
   $('copyStatus').textContent='Odkaz a QR odpovídají potvrzené konfiguraci.';
  }
+ function currentPublication(){
+  if(formSignature()!==renderedSignature){share();return false;}
+  if(!confirmed||!$('studentUrl').value)return false;
+  const limit=Number($('timerMinutes').value),level=$('level').value;
+  if(!chosen||!Number.isInteger(limit)||limit<5||limit>120||
+   !core.LEVELS.includes(level)||(chosen.levels&&!chosen.levels.includes(level))){
+   share();return false;
+  }
+  return true;
+ }
  function start(){
   initTheme();
   gestureControls=window.LSHUnlockGestures.mountTeacher($('unlockTeacherControls'),
    window.LSHUnlockGestures.byCode(params.get('p'))?.id||'corners4',share);
   $('confirmTest').addEventListener('click',confirm);
-  $('copyUrl').addEventListener('click',()=>
-   shareTools.copy($('studentUrl').value,$('studentUrl'),$('copyStatus')));
-  $('downloadQr').addEventListener('click',()=>
-   shareTools.download($('qrMount'),$('copyStatus'),'listening-test-navrh-znamky-qr.svg'));
+  $('copyUrl').addEventListener('click',()=>{
+   if(currentPublication())shareTools.copy($('studentUrl').value,$('studentUrl'),$('copyStatus'));
+  });
+  $('downloadQr').addEventListener('click',()=>{
+   if(currentPublication())shareTools.download($('qrMount'),$('copyStatus'),'listening-test-navrh-znamky-qr.svg');
+  });
   $('studentUrl').addEventListener('focus',event=>event.target.select());
   $('studentPreview').addEventListener('click',event=>{
-   if(!$('studentUrl').value)event.preventDefault();
+   if(!currentPublication())event.preventDefault();
   });
   if(!chosen){
    $('topicTitle').textContent='Kartu nelze otevřít';
@@ -202,6 +223,8 @@
   $('timerMinutes').addEventListener('change',share);
   renderMedia();
   share();
+  // Mirror Reading's R56 watchdog: form changes may lack input/change in WebKit.
+  window.setInterval(()=>{if(formSignature()!==renderedSignature)share();},250);
  }
  start();
 })();
