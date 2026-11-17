@@ -116,6 +116,8 @@
   return u.href;
  }
  function invalidate(reason){
+  $('confirmTest').disabled=true;
+  $('publishStatus').textContent='Nastavení není potvrzené.';
   $('studentUrl').value='';
   $('copyUrl').disabled=true;
   $('studentPreview').href='#';
