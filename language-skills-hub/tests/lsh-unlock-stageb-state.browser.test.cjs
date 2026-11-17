@@ -48,6 +48,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
         lab==='reading'?languages[lang]:languages.en,{timeout:15000});
        const text=await page.locator('#loading').textContent();
        assert.ok(text.includes(lab==='reading'?languages[lang]:languages.en),lab+' '+lang+' '+p+' '+text);
+       assert.equal(await page.locator('#loading').isVisible(),true,lab+' '+lang+' invalid p error must be visible');
        assert.equal(await page.locator('#workspace').isHidden(),true);
        assert.equal(await page.locator('#sessionStart').count(),0);
        assert.equal(new URL(page.url()).hash,'');
@@ -56,7 +57,10 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
       const dup=link(lab,attempt,'n4',lang);
       dup.searchParams.append('p','n4');
       await page.goto(dup.href,{waitUntil:'domcontentloaded'});
-      await page.waitForTimeout(80);
+      await page.waitForFunction(expected=>
+       (document.getElementById('loading')?.textContent||'').includes(expected),
+       lab==='reading'?languages[lang]:languages.en,{timeout:15000});
+      assert.equal(await page.locator('#loading').isVisible(),true,lab+' '+lang+' duplicate p error must be visible');
       assert.equal(await page.locator('#workspace').isHidden(),true);
       assert.deepEqual(await page.evaluate(keys),before);
       assert.equal(new URL(page.url()).hash,'');
@@ -110,21 +114,25 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     assert.equal(Object.prototype.hasOwnProperty.call(changed,'unlock'),false,
      'Old registry retains historical corners4 semantics');
    }finally{await legacy.close()}
+   for(const lab of ['reading','listening']){
    const corrupted=await browser.newContext(),q=await corrupted.newPage();
-   const badAttempt=fresh(),badKey=r64Key('reading',badAttempt);
-   const broken={...old,unlock:'unsupported-id',unlockCode:'n4',configurationMismatchSeen:false};
+   const badAttempt=fresh(),badKey=r64Key(lab,badAttempt);
+   const broken={...old,variant:(lab==='reading'?'rl-asteroids':'ll-sad')+'|en|B2',
+    unlock:'unsupported-id',unlockCode:'n4',configurationMismatchSeen:false};
    try{
     await q.goto(prelude());
     await q.evaluate(({k,v})=>localStorage.setItem(k,JSON.stringify(v)),{k:badKey,v:broken});
     const before=await q.evaluate(keys);
-    await q.goto(link('reading',badAttempt,'n4').href,{waitUntil:'domcontentloaded'});
+    await q.goto(link(lab,badAttempt,'n4').href,{waitUntil:'domcontentloaded'});
     await q.waitForFunction(()=>document.getElementById('loading')?.textContent.includes('saved test on this device cannot be read'),null,{timeout:15000});
     assert.match(await q.locator('#loading').textContent(),/saved test on this device cannot be read/);
+    assert.equal(await q.locator('#loading').isVisible(),true,lab+' corrupted registry error must be visible');
     assert.equal(await q.locator('#workspace').isHidden(),true);
     assert.equal(new URL(q.url()).hash,'');
     assert.deepEqual(await q.evaluate(keys),before);
     assert.deepEqual(await q.evaluate(k=>JSON.parse(localStorage.getItem(k)),badKey),broken);
    }finally{await corrupted.close()}
+   }
    console.log('R64 REGISTRY '+engineName+' pinning, sticky mismatch, rollback, and invalid state: PASS');
   }finally{await browser.close()}
  });
