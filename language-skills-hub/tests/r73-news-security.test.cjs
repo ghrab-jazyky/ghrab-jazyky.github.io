@@ -12,6 +12,7 @@ const session=read('self-check/session/session-ui.js'),student=read('self-check/
 // keep exact blob pins for this approved candidate instead of disabling integrity checks.
 test('E4 security contract uses the same LSH runtime, with no security fork',()=>{
  const pinned={
+  'self-check/listening/listening-student.js':'ec8e1a7b6ee1cdbcbd8d07f1f7ffa06aaaed5de6',
   'self-check/session/attempt-core.js':'500620698d4421c59da07f5b3de30cfb42e89b04',
   'self-check/session/tab-guard.js':'cb753d0e440eafa06d077fecbbb627afd3f600bf',
    'self-check/session/session-ui.js':'69ca9b2df4217dcda3f27f4fad15a7b9a0d150b4',
