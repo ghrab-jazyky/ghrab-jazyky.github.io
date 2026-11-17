@@ -77,7 +77,7 @@ async function touchDriver(page,engineName){
    await cdp.send('Input.dispatchTouchEvent',{type:kind,touchPoints});
   }else{
    await page.evaluate(({kind,p,selector,pointerId})=>{
-    const surface=document.querySelector(selector||'.lsh-unlock-surface');
+    const surface=selector==='document'?document:document.querySelector(selector||'.lsh-unlock-surface');
     if(!surface)throw new Error('Missing B2 gesture surface');
     const type={touchStart:'pointerdown',touchMove:'pointermove',
      touchEnd:'pointerup',touchCancel:'pointercancel'}[kind];
