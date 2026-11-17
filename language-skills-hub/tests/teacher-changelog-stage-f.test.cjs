@@ -9,10 +9,14 @@ const cards=load('data/cards.json');
 const validate=require('../assets/whats-new-data.js').valid;
 test('Stage F: curated release history is valid and chronological',()=>{
  assert.equal(validate(data),true);
- assert.deepEqual(data.releases.map(r=>r.sequence),[3,2,1]);
- assert.deepEqual(data.releases.map(r=>r.publishedAt),['2026-11-16','2026-11-15','2026-11-14']);
- assert.equal(data.latestAnnouncementSequence,3);
- assert.equal(data.releases.reduce((n,r)=>n+r.changes.length,0),5);
+ assert.deepEqual(data.releases.map(r=>r.sequence),[4,3,2,1]);
+ assert.deepEqual(data.releases.map(r=>r.publishedAt),['2026-11-17','2026-11-16','2026-11-15','2026-11-14']);
+ assert.equal(data.latestAnnouncementSequence,4);
+ assert.equal(data.releases.reduce((n,r)=>n+r.changes.length,0),8);
+ assert.equal(data.releases[0].changes.length,3);
+ assert.match(data.releases[0].title,/časovan/);
+ assert.ok(data.releases[0].changes.some(c=>c.description.includes('Reading Lab i Listening Lab')));
+ assert.ok(data.releases[0].changes.some(c=>c.description.includes('Vytvořit test a QR kód')));
 });
 test('Stage F: published history only describes deployed baseline topics',()=>{
  assert.equal(version.version,'R70-LISTENING-STUDIO-UNIFICATION');

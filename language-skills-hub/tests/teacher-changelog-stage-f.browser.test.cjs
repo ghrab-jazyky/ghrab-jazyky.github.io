@@ -24,17 +24,29 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(chooserShown,false,'Chooser must not flash before the announcement');
    await page.locator('#wnPromptYes').click();
    await page.locator('#whatsNewCatalog[open]').waitFor();
-   assert.deepEqual(await page.locator('.wn-release').evaluateAll(els=>els.map(el=>Number(el.dataset.wnSequence))),[3,2,1]);
-   assert.equal(await page.locator('.wn-change').count(),5);
-   assert.match(await page.locator('.wn-release').first().innerText(),/konverzace v restauraci/i);
-   assert.match(await page.locator('.wn-release').nth(1).innerText(),/How to Choose Your News/);
-   assert.equal(await page.locator('.wn-benefit').count(),5);
+   assert.deepEqual(await page.locator('.wn-release').evaluateAll(els=>els.map(el=>Number(el.dataset.wnSequence))),[4,3,2,1]);
+   assert.equal(await page.locator('.wn-change').count(),8);
+   assert.match(await page.locator('.wn-release').first().innerText(),/časovaných testů/i);
+   assert.match(await page.locator('.wn-release').nth(1).innerText(),/konverzace v restauraci/i);
+   assert.match(await page.locator('.wn-release').nth(2).innerText(),/How to Choose Your News/);
+   assert.equal(await page.locator('.wn-benefit').count(),8);
    assert.doesNotMatch(await page.locator('#whatsNewCatalog').innerText(),/DEMO|PREPROD|CI\/CD|commit SHA/i);
    await page.locator('#wnCatalogContinue').click();
    await page.locator('#skillChooser:not([hidden])').waitFor();
-   assert.equal(await page.evaluate(key=>localStorage.getItem(key),STORAGE_KEY),'3');
+   assert.equal(await page.evaluate(key=>localStorage.getItem(key),STORAGE_KEY),'4');
    await page.reload();
    await page.locator('#skillChooser:not([hidden])').waitFor();
+   assert.equal(await page.locator('#whatsNewPrompt').evaluate(el=>el.open),false);
+  });
+ });
+ test('Stage F '+engineName+' previously seen release 3 is offered release 4 once',{timeout:100000},async()=>{
+  await withPage(engine,async page=>{
+   await page.addInitScript(key=>localStorage.setItem(key,'3'),STORAGE_KEY);
+   await page.goto(base);await page.locator('#whatsNewPrompt[open]').waitFor();
+   await page.locator('#wnPromptNo').click();
+   await page.locator('#skillChooser:not([hidden])').waitFor();
+   assert.equal(await page.evaluate(key=>localStorage.getItem(key),STORAGE_KEY),'4');
+   await page.reload();await page.locator('#skillChooser:not([hidden])').waitFor();
    assert.equal(await page.locator('#whatsNewPrompt').evaluate(el=>el.open),false);
   });
  });
@@ -80,7 +92,7 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.goto(base);await page.locator('#whatsNewPrompt[open]').waitFor();
    await page.keyboard.press('Escape');
    await page.locator('#skillChooser:not([hidden])').waitFor();
-   assert.equal(await page.evaluate(key=>localStorage.getItem(key),STORAGE_KEY),'3');
+   assert.equal(await page.evaluate(key=>localStorage.getItem(key),STORAGE_KEY),'4');
    await page.reload();await page.locator('#skillChooser:not([hidden])').waitFor();
    assert.equal(await page.locator('#whatsNewPrompt').evaluate(el=>el.open),false);
   });

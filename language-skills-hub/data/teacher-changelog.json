@@ -1,9 +1,41 @@
 {
   "kind": "LSH_TEACHER_CHANGELOG_V1",
   "schemaVersion": 1,
-  "latestAnnouncementSequence": 3,
+  "latestAnnouncementSequence": 4,
   "contentRevision": 1,
   "releases": [
+    {
+      "id": "lsh-2026-11-17-timed-tests",
+      "sequence": 4,
+      "publishedAt": "2026-11-17",
+      "title": "Přehlednější příprava časovaných testů",
+      "changes": [
+        {
+          "id": "teacher-timed-test-resume-options",
+          "area": "hub",
+          "category": "functionality",
+          "title": "Snazší pokračování po přerušení testu",
+          "description": "Při vytváření časovaného testu v Reading Lab i Listening Lab si nově můžeš vybrat z pěti způsobů, jak žákovi po přerušení umožnit pokračovat. V učitelském panelu najdeš názorné návody a ukázku, kterou si vyzkoušíš bez spuštění skutečného testu.",
+          "teacherBenefit": "Postup si před hodinou vyzkoušíš a při přerušení testu dokážeš rychleji pomoci žákovi pokračovat."
+        },
+        {
+          "id": "teacher-confirm-test-before-sharing",
+          "area": "hub",
+          "category": "interface",
+          "title": "Odkaz a QR kód až po potvrzení nastavení",
+          "description": "V Reading Lab i Listening Lab se studentský odkaz a QR kód vytvoří až po kliknutí na Vytvořit test a QR kód. Pokud nastavení upravíš, nový odkaz získáš dalším potvrzením. Dříve sdílený odkaz zůstává platný s původním nastavením.",
+          "teacherBenefit": "Před sdílením snadno zkontroluješ zadání a máš jasně oddělené rozpracované a potvrzené nastavení."
+        },
+        {
+          "id": "listening-invalid-link-visible-message",
+          "area": "listening",
+          "category": "functionality",
+          "title": "Jasnější upozornění při neplatném odkazu",
+          "description": "Když žák otevře neplatný testový odkaz v Listening Lab, zobrazí se mu srozumitelná zpráva s pokynem požádat učitele o nový odkaz. Neplatný test se nespustí.",
+          "teacherBenefit": "Žák ví, co se stalo a na koho se obrátit, takže problém ve třídě vyřešíš rychleji."
+        }
+      ]
+    },
     {
       "id": "lsh-2026-11-16-restaurant-dialogues",
       "sequence": 3,
