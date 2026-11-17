@@ -155,15 +155,19 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      assert.equal(await a.page.evaluate(()=>window.__calls),before);
      assert.equal(await visible(a.page).count(),0);
     }finally{await a.context.close()}
-    // Cases b/e in Stage B: touch-capable hybrid resumes without a fullscreen request.
+    // Cases b/e in B2: touch/hybrid requests fullscreen; rejection is tolerated.
     const h=await setup(browser,lab,'n4',{hasTouch:true});
     try{
      await deny(h.page,'reject');
      const before=await h.page.evaluate(()=>window.__calls);
      await gesture(h.page,'triangle3');
      await h.page.locator('#sessionLock').waitFor({state:'hidden'});
-     assert.equal(await h.page.evaluate(()=>window.__calls),before);
+     assert.equal(await h.page.evaluate(()=>window.__calls),before+1,
+      'B2 must request fullscreen on a touch-capable hybrid');
      assert.equal(await visible(h.page).count(),0);
+     await h.page.evaluate(()=>document.dispatchEvent(new Event('fullscreenchange')));
+     assert.equal(await h.page.locator('#sessionLock').isVisible(),false,
+      'Tolerated denial must leave fullscreen monitoring disarmed');
     }finally{await h.context.close()}
     // Case f: desktop with no API resumes without showing Continue.
     const n=await setup(browser,lab);
