@@ -114,4 +114,40 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     assert.deepEqual(errors,[]);
    }finally{await browser.close()}
  });
+ test('Plural '+name+': keyboard-only flashcards, focus, navigation and Escape',
+  {timeout:120000},async()=>{
+   const browser=await engine.launch({headless:true});
+   try{
+    const page=await browser.newPage({viewport:{width:1280,height:850}});
+    const errors=[];page.on('pageerror',e=>errors.push(e.message));
+    const url=link('konverzace/plural/index.html','?practice=1&lang=fr&level=B1');
+    assert.equal((await page.goto(url,{waitUntil:'load'})).status(),200);
+    const first=page.locator('#cardsGrid .flip').first();
+    const second=page.locator('#cardsGrid .flip').nth(1);
+    await first.waitFor({state:'visible'});
+    // Native buttons must support Enter/Space without mouse events.
+    await first.focus();
+    assert.equal(await first.evaluate(el=>el===document.activeElement),true);
+    await page.keyboard.press('Enter');
+    assert.equal(await first.getAttribute('aria-pressed'),'true');
+    await page.keyboard.press('ArrowRight');
+    assert.equal(await second.evaluate(el=>el===document.activeElement),true);
+    await page.keyboard.press('Space');
+    assert.equal(await second.getAttribute('aria-pressed'),'true');
+    const front=await second.getAttribute('aria-label');
+    assert.ok(front&&front.length>10);
+    await page.locator('#extraBtn').focus();
+    await page.keyboard.press('Enter');
+    assert.equal(await page.locator('#extraReveal').isVisible(),true);
+    assert.equal(await page.locator('#extraList .flip').count(),3);
+    await page.locator('#clock').focus();
+    await page.keyboard.press('Enter');
+    assert.equal(await page.locator('#timerEditor').isVisible(),true);
+    await page.keyboard.press('Escape');
+    assert.equal(await page.locator('#timerEditor').isVisible(),false);
+    assert.equal(await page.locator('#clock').evaluate(el=>el===document.activeElement),true);
+    assert.deepEqual(errors,[],'No keyboard-triggered page errors');
+   }finally{await browser.close()}
+ });
+
 }
