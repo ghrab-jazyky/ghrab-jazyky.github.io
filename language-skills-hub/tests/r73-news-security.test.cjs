@@ -14,7 +14,7 @@ test('E4 security contract uses the same LSH runtime, with no security fork',()=
  const pinned={
   'self-check/session/attempt-core.js':'500620698d4421c59da07f5b3de30cfb42e89b04',
   'self-check/session/tab-guard.js':'cb753d0e440eafa06d077fecbbb627afd3f600bf',
-   'self-check/session/session-ui.js':'64c1966b33299c36ca7f10b0875c318955cc6388',
+   'self-check/session/session-ui.js':'72f1118f76587fa73b01f7bfc1e39214d0fed13f',
   'self-check/results/pdf-report.js':'460908927f4e23b4eeb1c653cb2aa4990bbbff19',
    'self-check/session/unlock-gestures.js':'6bd80dd79dc3fcf1dcdddfade43efa0710e758eb',
   'self-check/results/export-core.js':'ed51c90758aa2ca3036f54fa96e7fae6c02b585e',
