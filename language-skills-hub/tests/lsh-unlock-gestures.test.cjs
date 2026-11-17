@@ -60,10 +60,16 @@ test('gesture hold and total-time bounds',()=>{
  assert.equal(run('draw_z',[down(300,240,0),move(700,240,80),move(300,560,150),move(700,560,200),up(700,560,250)]).successes,0);
 });
 test('cancel, lostpointercapture and dimension changes reset',()=>{
- for(const kind of ['cancel','lostcapture','blur','hidden','orientation']){
+ for(const kind of ['cancel','blur','hidden','orientation']){
   const sequence=[down(500,240,0),up(500,240,80),down(300,560,200),up(300,560,280),{type:kind,time:300,pointerId:1},down(700,560,420),up(700,560,510)];
   assert.equal(run('triangle3',sequence).successes,0,kind);
  }
+ // A normal lostpointercapture after pointerup must not cancel the sequence.
+ const released=[down(500,240,0),up(500,240,80),
+  {type:'lostcapture',time:81,pointerId:1},
+  down(300,560,200),up(300,560,280),
+  down(700,560,400),up(700,560,490)];
+ assert.equal(run('triangle3',released).successes,1);
  const resized=[...valid.tap_hold_tap.slice(0,2),
   {...down(500,560,200),width:1100},up(500,560,2300),down(500,560,2400),up(500,560,2500)];
  assert.equal(run('tap_hold_tap',resized).successes,0);
