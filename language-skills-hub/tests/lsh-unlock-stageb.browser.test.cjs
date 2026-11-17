@@ -101,7 +101,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
        assert.equal(await page.locator('#sessionLock').isVisible(),true,'Old triangle must stay locked');
       }
       await perform(page,ids[i]);
-      await page.locator('#sessionLock[hidden]').waitFor({timeout:10000});
+      await page.locator('#sessionLock[hidden]').waitFor({timeout:10000,state:'attached'});
       assert.ok(await page.evaluate(()=>window.__stageBTrusted>0),'Expected trusted pointer events');
       assert.equal(await page.locator('#sessionUnlockContinue').isVisible(),false);
      }finally{await session.context.close();}
@@ -124,7 +124,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      await perform(page,'triangle3');
      await page.locator('#sessionUnlockContinue:not([hidden])').waitFor({timeout:7000});
      await page.locator('#sessionUnlockContinue').click();
-     await page.locator('#sessionUnlockContinue[hidden]').waitFor();
+     await page.locator('#sessionUnlockContinue[hidden]').waitFor({state:'attached'});
      assert.equal(await page.locator('#sessionLock').isVisible(),true,'Denial must not resume');
      await page.waitForTimeout(200);
      assert.equal(await page.locator('#sessionUnlockContinue').isVisible(),false,'No second offer');
