@@ -215,7 +215,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
        await page.waitForFunction(()=>{
         const btn=document.getElementById('sessionUnlockContinue');
         return !!document.fullscreenElement||(btn&&!btn.hidden);
-       },{timeout:4500});
+       },null,{timeout:4500});
       }catch(_){}
       const outcome=await page.evaluate(()=>({
        fullscreen:!!document.fullscreenElement,
