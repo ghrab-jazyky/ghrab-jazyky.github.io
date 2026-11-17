@@ -36,8 +36,17 @@ for(const [engineName,engine] of engines){
    setup.searchParams.set('topic',entries[0].id);
    setup.searchParams.set('lang','en');setup.searchParams.set('level','A1');
    assert.equal((await teacher.goto(setup.href,{waitUntil:'domcontentloaded',timeout:45000})).status(),200);
-   assert.equal(await teacher.locator('#qrMount svg').count(),0);
-   assert.equal(await teacher.locator('#copyUrl').isDisabled(),true);
+   // During a staged rollout, production may still have the legacy auto-QR UI.
+   // Retain live verification without confusing its old contract with the candidate.
+   const legacyLive=live&&(await teacher.locator('#confirmTest').count())===0;
+   let legacyAttempt=null;
+   if(legacyLive){
+    await teacher.locator('#qrMount svg').waitFor({timeout:30000});
+    legacyAttempt=new URL(await teacher.locator('#studentUrl').inputValue()).searchParams.get('attempt');
+   }else{
+    assert.equal(await teacher.locator('#qrMount svg').count(),0);
+    assert.equal(await teacher.locator('#copyUrl').isDisabled(),true);
+   }
    let checked=0,opened=0,downloads=0;
    for(const [index,entry] of entries.entries()){
     await teacher.locator('#topic').selectOption(entry.id);
@@ -52,13 +61,23 @@ for(const [engineName,engine] of engines){
       await teacher.locator('#level').selectOption(level);
       const timer=[5,30,120][(index+languageIndex+levelIndex)%3];
       await teacher.locator('#timerMinutes').fill(String(timer));
-      await teacher.waitForFunction(expected=>
-       document.getElementById('timerMinutes').value===expected&&
-       document.getElementById('confirmTest')?.disabled===false,
-       String(timer),{timeout:3500});
-      assert.equal(await teacher.locator('#qrMount svg').count(),0,'Dirty form must not expose QR '+id);
-      await teacher.locator('#confirmTest').click();
-      await teacher.locator('#qrMount svg').waitFor({timeout:30000});
+      if(legacyLive){
+       await teacher.waitForFunction(expected=>{
+        const input=document.getElementById('timerMinutes');
+        const value=document.getElementById('studentUrl')?.value;
+        if(!value||input.value!==expected)return false;
+        try{return new URL(value).searchParams.get('timer')===expected}catch(_){return false}
+       },String(timer),{timeout:3500});
+       await teacher.locator('#qrMount svg').waitFor({timeout:30000});
+      }else{
+       await teacher.waitForFunction(expected=>
+        document.getElementById('timerMinutes').value===expected&&
+        document.getElementById('confirmTest')?.disabled===false,
+        String(timer),{timeout:3500});
+       assert.equal(await teacher.locator('#qrMount svg').count(),0,'Dirty form must not expose QR '+id);
+       await teacher.locator('#confirmTest').click();
+       await teacher.locator('#qrMount svg').waitFor({timeout:30000});
+      }
       const link=await teacher.locator('#studentUrl').inputValue();
       const parsed=new URL(link);
       assert.equal(parsed.origin,new URL(base).origin,id);
@@ -68,8 +87,14 @@ for(const [engineName,engine] of engines){
       assert.equal(parsed.searchParams.get('level'),level,id);
       assert.equal(parsed.searchParams.get('timer'),String(timer),id);
       assert.match(parsed.searchParams.get('attempt'),/^class[a-z0-9]{12,30}$/,id);
-      assert.equal(parsed.searchParams.get('p'),'n1',id);
-      assert.deepEqual([...parsed.searchParams.keys()].sort(),['attempt','lang','level','p','timer','topic']);
+      if(legacyLive){
+       assert.equal(parsed.searchParams.get('attempt'),legacyAttempt,id);
+       assert.equal(parsed.searchParams.has('p'),false,id);
+       assert.deepEqual([...parsed.searchParams.keys()].sort(),['attempt','lang','level','timer','topic']);
+      }else{
+       assert.equal(parsed.searchParams.get('p'),'n1',id);
+       assert.deepEqual([...parsed.searchParams.keys()].sort(),['attempt','lang','level','p','timer','topic']);
+      }
       assert.equal(await teacher.locator('#studentPreview').getAttribute('href'),link,id);
       assert.equal(await teacher.locator('#copyUrl').isEnabled(),true,id);
       assert.equal(await teacher.locator('#downloadQr').isEnabled(),true,id);
@@ -120,8 +145,10 @@ for(const [engineName,engine] of engines){
    await teacher.locator('#timerMinutes').fill('121');
    assert.equal(await teacher.locator('#qrMount svg').count(),0,'Invalid 121 minute QR exposed');
    await teacher.locator('#timerMinutes').fill('30');
-   assert.equal(await teacher.locator('#qrMount svg').count(),0);
-   await teacher.locator('#confirmTest').click();
+   if(!legacyLive){
+    assert.equal(await teacher.locator('#qrMount svg').count(),0);
+    await teacher.locator('#confirmTest:enabled').click();
+   }
    await teacher.locator('#qrMount svg').waitFor();
    assert.equal(checked,120,'120 QR images independently decoded');
    assert.equal(downloads,5,'Downloaded SVG of every topic independently decoded');
