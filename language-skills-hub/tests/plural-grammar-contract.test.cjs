@@ -107,5 +107,12 @@ test('V5 authored editorial patches match all 168 EXTRA notes and 67 grammar cha
  assert.match(es.A2.stations[4].extra[1][4],/pasa de aguda/);
  assert.equal(es.A1.stations[2].extra[2][1],'los arroces');
  assert.doesNotMatch(fr.C1.stations[0].extra[2][4],/bonus/);
- assert.doesNotMatch(html,/sigue recayendo en la penúltima|le bonus sert|Debatid[^]*?Usa al menos/);
+ assert.doesNotMatch(html,/sigue recayendo en la penúltima|le bonus sert/);
+ for(const lang of ['es','fr'])for(const lev of levels)
+  for(const st of content[lang].levels[lev].stations){
+   if(lang==='es'&&st.main.includes('Debatid'))
+    assert.doesNotMatch(st.main,/Usa al menos/);
+   if(lang==='fr'&&st.main.includes('Débattez'))
+    assert.doesNotMatch(st.main,/Utilise au moins/);
+  }
 });
