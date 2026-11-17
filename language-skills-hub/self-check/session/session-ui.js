@@ -153,7 +153,8 @@
   if(registry){
    const hasUnlock=Object.prototype.hasOwnProperty.call(registry,'unlock');
    const hasCode=Object.prototype.hasOwnProperty.call(registry,'unlockCode');
-   if((hasUnlock&&!unlockApi.byId(registry.unlock))||
+   if(hasUnlock!==hasCode||
+     (hasUnlock&&!unlockApi.byId(registry.unlock))||
      (hasCode&&registry.unlockCode!==null&&!unlockApi.byCode(registry.unlockCode))||
      (hasUnlock&&hasCode&&registry.unlockCode!==null&&unlockApi.byCode(registry.unlockCode).id!==registry.unlock)){
     const error=new Error('Corrupted saved lock variant');error.code='corrupted-registry';throw error;
@@ -227,6 +228,7 @@
   const reason=elt('p','lsh-session-reason','');reason.id='sessionLockReason';
   panel.appendChild(reason);
   let gestureAdapter=null,unlockPending=false,unlockRequestToken=0,continueToken=null,continueTimer=null;
+  let overrideLockReason=null;
   const continueButton=elt('button','action primary','');
   continueButton.type='button';continueButton.id='sessionUnlockContinue';continueButton.hidden=true;
   continueButton.textContent=({en:'Continue',es:'Continuar',de:'Weiter',fr:'Continuer'})[cfg.lang]||'Continue';
@@ -255,6 +257,7 @@
     const current=engine.status();
     if(current.phase!=='interrupted'||current.expired)return;
     if(restricted()){lockReason('restricted-viewport');return;}
+    overrideLockReason=null;
     engine.resume();resetBaseline();render();tabMonitor.probe();
    };
    if(document.fullscreenElement||!document.documentElement.requestFullscreen||isTouchDevice()){
@@ -302,10 +305,12 @@
   function active(){return engine.status().phase==='running'&&!engine.status().expired;}
   function lock(kind){
    if(!active())return;
+   overrideLockReason=null;
    engine.interrupt(kind);
    render();
   }
   function lockReason(kind){
+   overrideLockReason=kind;
    reason.textContent=ui.reasons[kind]||ui.lock;
   }
   function restricted(){
@@ -329,10 +334,10 @@
    bar.hidden=state.phase==='ready';
    overlay.hidden=state.phase!=='interrupted';
    if(state.phase!=='interrupted'){hideContinue();gestureAdapter?.reset();}
-   if(state.phase==='interrupted'&&lastPhase!=='interrupted')gestureAdapter?.reset();
+   if(state.phase==='interrupted'&&lastPhase!=='interrupted'){overrideLockReason=null;gestureAdapter?.reset();}
    reason.textContent=state.phase==='interrupted'?
     (restricted()?ui.reasons['restricted-viewport']:
-     ui.reasons[state.incidents[state.incidents.length-1]?.kind]||ui.lock):'';
+     ui.reasons[overrideLockReason||state.incidents[state.incidents.length-1]?.kind]||ui.lock):'';
    if(state.phase==='interrupted')workspace.setAttribute('inert','');
    else workspace.removeAttribute('inert');
    lastPhase=state.phase;
