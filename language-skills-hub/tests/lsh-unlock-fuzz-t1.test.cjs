@@ -88,7 +88,7 @@ test('T1 positive: 1,000 legitimate jittered gestures x five',()=>{
   }
   const durations=id==='tap_hold_tap'?[80+rand()*200,2100+rand()*900,80+rand()*200]:
    id==='hold_double_tap'?[2700+rand()*800,80+rand()*150,80+rand()*150]:
-    [80+rand()*220,80+rand()*220,80+rand()*220];
+    [80+rand()*220,80+rand()*220,650+rand()*250];
   let t=0;const events=[];
   for(let i=0;i<3;i++){
    events.push(event('down',points[i],t),event('up',points[i],t+durations[i]));
