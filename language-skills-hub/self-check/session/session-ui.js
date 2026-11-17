@@ -229,19 +229,21 @@
   panel.append(elt('h2',null,ui.interrupted),elt('p',null,ui.lock));
   const reason=elt('p','lsh-session-reason','');reason.id='sessionLockReason';
   panel.appendChild(reason);
-  let gestureAdapter=null,unlockPending=false,unlockRequestToken=0,continueToken=null,continueTimer=null;
+  let gestureAdapter=null,unlockPending=false,unlockRequestToken=0,continueToken=null,continueTimer=null,continueExpiresAt=0;
   let overrideLockReason=null;
   const continueButton=elt('button','action primary','');
   continueButton.type='button';continueButton.id='sessionUnlockContinue';continueButton.hidden=true;
   continueButton.textContent=({en:'Continue',es:'Continuar',de:'Weiter',fr:'Continuer'})[cfg.lang]||'Continue';
+  const monotonicNow=()=>typeof root.performance?.now==='function'?root.performance.now():Date.now();
   function hideContinue(){
-   continueButton.hidden=true;continueToken=null;
+   continueButton.hidden=true;continueToken=null;continueExpiresAt=0;
    if(continueTimer!==null){clearTimeout(continueTimer);continueTimer=null;}
   }
   function offerContinue(){
    hideContinue();
    if(isTouchDevice()||!document.documentElement.requestFullscreen||engine.status().phase!=='interrupted')return;
    continueToken=Symbol('completed-gesture');
+   continueExpiresAt=monotonicNow()+10000;
    const token=continueToken;
    continueButton.hidden=false;continueButton.focus({preventScroll:true});
    // The completing mouse click can steal focus after a rejected Fullscreen promise.
@@ -257,7 +259,8 @@
   function requestUnlock(fromButton){
    if(unlockPending)return;
    if(fromButton){
-    if(!continueToken)return;
+    // Delayed timers must never extend a completed gesture's one-shot window.
+    if(!continueToken||monotonicNow()>=continueExpiresAt){hideContinue();return;}
     hideContinue();
    }else hideContinue();
    const state=engine.status();
