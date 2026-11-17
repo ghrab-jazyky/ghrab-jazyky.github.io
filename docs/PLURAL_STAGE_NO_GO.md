@@ -34,6 +34,13 @@ The CI uses an actual local HTTP server in GitHub Actions and real Playwright Ch
 - No browser page errors or CSP errors in tested paths. Keyboard regression also validates Enter/Space card flips, arrow focus navigation, EXTRA keyboard operation and Escape on the timer editor in Chromium and WebKit.
 - Stage commit graph is ahead of latest `main` and not behind it. No PR, merge **into** main, or deployment.
 
+## Follow-up after Claude V4 audit (17 Nov 2026)
+- Claude's independent report records **3 P1, 9 P2, 9 P3** findings and confirms **NO-GO** for language/didactics. The 235 machine-readable repair entries contain repeated IDs (220 unique item IDs); **168** are ES/FR templated EXTRA explanations (84 ES, 84 FR).
+- Confirmed source examples: ES `turrón → turrones` incorrectly says stress *still falls on the penultimate syllable*; FR `l’adolescent` contains editorial meta text; ES `la muestra` and FR `le sommet` present an ordinary -s plural as an EXTRA exception.
+- Accessibility/UX follow-up: eliminate axe label-content-name-mismatch on flip cards; avoid revealing all plural answers below unflipped practice cards.
+- **New source recovery**: `language-skills-hub/authoring/plural/content.json`, `glossary.json`, `template.html`, `build.cjs`. These are recovered from current generated HTML, not the original author's work tree. The staged CI now runs `node language-skills-hub/authoring/plural/build.cjs --check` and must reproduce the existing HTML byte-for-byte before any editorial edits.
+- Do not change main, unlock editorial approvals, or claim language review completion. Separate native-language editorial signoff still required.
+
 ## Non-negotiable blockers
 1. Independent native-language/editorial review of ES/FR EXTRA notes (212 rewritten generic explanations), questionable countability and Czech glosses, and B1–C2 CEFR grammar progression. The review queue contains 961 prompts for manual inspection, NOT 961 confirmed errors.
 2. `authoring/editorial_approval.json` in the source handoff keeps **all four approval booleans false**. Do not switch them without expert evidence.
