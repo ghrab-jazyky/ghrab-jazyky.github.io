@@ -49,14 +49,14 @@ jobs:
           done
           cat /tmp/lsh-unlock-http.log
           exit 1
-      - name: T2 trusted mouse events and T4 forced fullscreen in both browsers
-        run: node --test language-skills-hub/tests/lsh-unlock-stageb.browser.test.cjs
-      - name: T2 viewport and touch matrix, T5 WebKit synth, T3 genuine Fullscreen API
-        run: node --test language-skills-hub/tests/lsh-unlock-stageb-matrix.browser.test.cjs
       - name: T4 forced-denial decision matrix and one-shot controls
         run: node --test language-skills-hub/tests/lsh-unlock-stageb-t4.browser.test.cjs
       - name: R64 URL/registry and R30 counter lifecycle
         run: node --test language-skills-hub/tests/lsh-unlock-stageb-state.browser.test.cjs
+      - name: T2 trusted mouse events and T4 forced fullscreen in both browsers
+        run: node --test language-skills-hub/tests/lsh-unlock-stageb.browser.test.cjs
+      - name: T2 viewport and touch matrix, T5 WebKit synth, T3 genuine Fullscreen API
+        run: node --test language-skills-hub/tests/lsh-unlock-stageb-matrix.browser.test.cjs
       - name: R56 Reading test and 120 decoded QR variants
         run: node --test language-skills-hub/tests/r56-reading-test-qr.browser.test.cjs
       - name: Report on failure
