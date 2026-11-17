@@ -89,6 +89,47 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(await page.locator('#catalog').isHidden(),true);
   });
  });
+ test('Audit 2026-11-17 '+name+' automatic chooser can reopen from welcome without page reload',async()=>{
+  await withPage(engine,{viewport:{width:1366,height:800},reducedMotion:'no-preference'},async page=>{
+   // Simulate a colleague who has already seen the current release notes.
+   await page.addInitScript(()=>localStorage.setItem('lsh:teacher-whats-new:last-offered-sequence:v1','2147483647'));
+   await page.goto(base);
+   const chooser=page.locator('#skillChooser');
+   await chooser.waitFor({state:'visible',timeout:12000});
+   assert.equal(await page.locator('#closeChooser').textContent(),'Zpět na úvod');
+   await page.locator('#closeChooser').click();
+   assert.equal(await chooser.isHidden(),true);
+   assert.equal(await page.locator('#welcome').isVisible(),true);
+   const enter=page.locator('#skipIntro');
+   assert.equal(await enter.isVisible(),true);
+   await enter.click();
+   await chooser.waitFor({state:'visible',timeout:3000});
+   assert.equal(await chooser.locator('[data-choose-skill]').count(),3);
+   await chooser.locator('[data-choose-skill="cteni"]').click();
+   await page.locator('#catalog:not([hidden])').waitFor();
+   assert.equal(await page.locator('#heading').innerText(),'Reading Lab');
+   await page.locator('#changeLab').click();
+   await page.locator('#closeChooser').click();
+   assert.equal(await page.locator('#catalog').isVisible(),true);
+   assert.equal(await page.locator('#welcome').isHidden(),true);
+  });
+ });
+ test('Audit 2026-11-17 '+name+' early entry and Escape still allow reopening chooser',async()=>{
+  await withPage(engine,{viewport:{width:390,height:844},reducedMotion:'no-preference'},async page=>{
+   await page.addInitScript(()=>localStorage.setItem('lsh:teacher-whats-new:last-offered-sequence:v1','2147483647'));
+   await page.goto(base);
+   const chooser=page.locator('#skillChooser');
+   await page.locator('#skipIntro').click();
+   await chooser.waitFor({state:'visible',timeout:4000});
+   await page.keyboard.press('Escape');
+   assert.equal(await chooser.isHidden(),true);
+   await page.locator('#skipIntro').click();
+   await chooser.waitFor({state:'visible',timeout:3000});
+   await chooser.locator('[data-choose-skill="poslech"]').click();
+   await page.locator('#catalog:not([hidden])').waitFor();
+   assert.equal(await page.locator('#heading').innerText(),'Listening Lab');
+  });
+ });
  test('Audit 2026-11-11 '+name+' Listening teacher disables copying while the timer is invalid',async()=>{
   await withPage(engine,{viewport:{width:1366,height:850}},async page=>{
    await page.goto(base+'self-check/listening/teacher.html?topic=ll-matthew-oscars');

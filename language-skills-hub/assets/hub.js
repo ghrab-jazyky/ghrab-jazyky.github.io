@@ -10,6 +10,7 @@ const allowed=new Set(['konverzace','cteni','poslech']);
 let entries=[],translations=new Map(),skill=allowed.has(params.get('skill'))?params.get('skill'):null;
 let introTimer=null;
 let introTransitionStarted=false;
+let chooserWasShown=false;
 let localSelfCheck=false;
 const welcome=byId('welcome'),chooser=byId('skillChooser'),catalog=byId('catalog');
 let qrUrl='', qrTitle='', shareEntry=null, toastTimeout=null;
@@ -214,6 +215,7 @@ function closeChooser(){
  byId('skipIntro').focus();
 }
 function showChooser(){
+ chooserWasShown=true;
  if(introTimer!==null){clearTimeout(introTimer);introTimer=null;}
  byId('closeChooser').textContent=catalogOpen()?'Zpět do katalogu':'Zpět na úvod';
  welcome.hidden=false;
@@ -279,6 +281,13 @@ function restoreLocation(){
   skill=null;catalog.hidden=true;
   setAppInert(true);showChooser();
  }
+}
+// The first entry goes through the release-notes flow only once. A user who
+// returns from the chooser must be able to reopen it without reloading or
+// launching the initial announcement a second time.
+function openChooserFromWelcome(){
+ if(chooserWasShown){showChooser();return;}
+ finishIntro();
 }
 function finishIntro(){
  if(introTransitionStarted)return;
@@ -459,7 +468,7 @@ async function load(){
 }
 for(const b of chooser.querySelectorAll('[data-choose-skill]'))
  b.addEventListener('click',()=>showCatalog(b.dataset.chooseSkill));
-byId('skipIntro').addEventListener('click',finishIntro);
+byId('skipIntro').addEventListener('click',openChooserFromWelcome);
 byId('closeChooser').addEventListener('click',closeChooser);
 byId('changeLab').addEventListener('click',showChooser);
 chooser.addEventListener('keydown',event=>{
