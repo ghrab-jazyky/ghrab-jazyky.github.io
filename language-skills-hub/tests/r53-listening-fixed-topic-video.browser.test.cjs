@@ -25,7 +25,10 @@ for(const [name,engine]of[['chromium',chromium],['webkit',webkit]]){
    for(const entry of entries){
     for(const level of entry.levels){
      assert.equal((await page.goto(url(entry.id,level),{waitUntil:'load'})).status(),200);
-     await page.locator('#qrMount svg').waitFor({timeout:20000});
+     await page.locator('#confirmTest:enabled').waitFor({timeout:20000});
+      assert.equal(await page.locator('#qrMount svg').count(),0,'No QR before confirmation');
+      await page.locator('#confirmTest').click();
+      await page.locator('#qrMount svg').waitFor({timeout:20000});
      assert.equal(await page.locator('#topicTitle').getAttribute('data-topic-id'),entry.id);
      assert.equal(await page.locator('#level').inputValue(),level);
      assert.equal(await page.locator('select#topic').count(),0);
@@ -54,7 +57,9 @@ for(const [name,engine]of[['chromium',chromium],['webkit',webkit]]){
     await page.locator('#level').selectOption('A1');
     await page.locator('#timerMinutes').fill('45');
     assert.equal(await page.locator('#topicTitle').getAttribute('data-topic-id'),entry.id);
-    assert.equal(new URL(await page.locator('#studentUrl').inputValue()).searchParams.get('timer'),'45');
+    assert.equal(await page.locator('#studentUrl').inputValue(),'','Changed settings invalidate old link');
+     await page.locator('#confirmTest:enabled').click();
+     assert.equal(new URL(await page.locator('#studentUrl').inputValue()).searchParams.get('timer'),'45');
     assert.equal(new URL(await page.locator('#studentUrl').inputValue()).searchParams.get('level'),'A1');
     assert.deepEqual(await page.locator('#mediaSources a').evaluateAll(nodes=>nodes.map(x=>x.href)),originalLinks[entry.id]);
     // Invalid timer disables share link; valid input restores it.
@@ -62,6 +67,7 @@ for(const [name,engine]of[['chromium',chromium],['webkit',webkit]]){
     assert.equal(await page.locator('#copyUrl').isDisabled(),true);
     assert.equal(await page.locator('#studentUrl').inputValue(),'');
     await page.locator('#timerMinutes').fill('30');
+     await page.locator('#confirmTest:enabled').click();
     await page.locator('#qrMount svg').waitFor({timeout:20000});
     assert.equal(await page.locator('#copyUrl').isEnabled(),true);
    }
