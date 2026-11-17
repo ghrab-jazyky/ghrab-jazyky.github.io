@@ -201,7 +201,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    let cases=0;
    try{
     for(const lab of LABS){
-     for(const variant of ['cancel','timeout','extra','blur','hidden','wrong-up']){
+     for(const variant of ['cancel','lostcapture','timeout','extra','blur','hidden','wrong-up']){
       const {context,page}=await openMock(browser,lab,'n1');
       try{
        const driver=await touchDriver(page,engineName);
@@ -216,6 +216,13 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
        assert.equal(await page.evaluate(()=>window.__B2.calls),0,
         'F-17: fourth pointerdown alone must not call Fullscreen');
        if(variant==='cancel')await driver.finishFinalCorner('touchCancel');
+       if(variant==='lostcapture'){
+        await page.evaluate((synthetic)=>{
+         document.dispatchEvent(new PointerEvent('lostpointercapture',{bubbles:true,
+          pointerId:synthetic?42:window.__B2LastPointerId,pointerType:'touch'}));
+        },engineName==='WebKit');
+        await driver.finishFinalCorner('touchCancel');
+       }
        if(variant==='timeout'){await page.waitForTimeout(1700);await driver.finishFinalCorner('touchEnd');}
        if(variant==='extra'){
         if(driver.cdp)await driver.cdp.send('Input.dispatchTouchEvent',{type:'touchStart',
@@ -253,9 +260,31 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      }
     }
     console.log('B2 F17 '+engineName+' '+cases+' cancelled sequences followed by clean retry PASS');
-    assert.equal(cases,12);
+    assert.equal(cases,14);
    }finally{await browser.close();}
  });
+ test('B2 F-17 '+engineName+' matching fourth pointerup outside corner completes once (T5 release)',
+  {timeout:55000},async()=>{
+   const browser=await engine.launch({headless:true});
+   try{
+    for(const lab of LABS){
+     const {context,page}=await openMock(browser,lab,'n1');
+     try{
+      const driver=await touchDriver(page,engineName);
+      if(engineName==='Chromium')await page.evaluate(()=>document.addEventListener('pointerdown',e=>{
+       if(e.target?.classList?.contains('lsh-corner-br'))window.__B2LastPointerId=e.pointerId;
+      },true));
+      await driver.beginFinalCorner();
+      assert.equal(await page.evaluate(()=>window.__B2.calls),0);
+      await driver.finishFinalCorner('touchEnd',true);
+      await waitUnblocked(page);
+      assert.equal(await page.evaluate(()=>window.__B2.calls),1);
+      assert.equal((await snapshot(page)).resumptions,1);
+      await noFallback(page);
+     }finally{await context.close();}
+    }
+   }finally{await browser.close();}
+  });
  test('B2 T3 '+engineName+' real (unmocked) touch fourth release: report observed engine behavior',
   {timeout:110000},async()=>{
    const browser=await engine.launch({headless:true}),results=[];
