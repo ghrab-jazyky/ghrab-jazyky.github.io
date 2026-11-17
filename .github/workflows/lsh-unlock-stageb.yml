@@ -38,6 +38,8 @@ jobs:
         run: npx playwright install --with-deps chromium webkit
       - name: T1 deterministic unit tests and 250k random sequences
         run: node --test language-skills-hub/tests/lsh-unlock-gestures.test.cjs language-skills-hub/tests/lsh-unlock-fuzz-t1.test.cjs
+      - name: B2 deterministic F-17 unit tests
+        run: node --test language-skills-hub/tests/lsh-unlock-b2.test.cjs
       - name: Start local static web server
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-unlock-http.log 2>&1 &
@@ -57,6 +59,8 @@ jobs:
         run: node --test language-skills-hub/tests/lsh-unlock-stageb.browser.test.cjs
       - name: T2 viewport and touch matrix, T5 WebKit synth, T3 genuine Fullscreen API
         run: node --test language-skills-hub/tests/lsh-unlock-stageb-matrix.browser.test.cjs
+      - name: B2 fullscreen rearming and F-17 browser matrix
+        run: node --test language-skills-hub/tests/lsh-unlock-b2.browser.test.cjs
       - name: R56 Reading test and 120 decoded QR variants
         run: node --test language-skills-hub/tests/r56-reading-test-qr.browser.test.cjs
       - name: Report on failure
