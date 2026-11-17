@@ -68,12 +68,12 @@
  function createRecognizer(id,options){
   const def=byId(id);if(!def)throw new Error('Unknown gesture');
   options=options||{};
-  let steps=0,firstAt=null,releasedAt=null,active=null,geometryAt=null,previous=null;
+  let steps=0,firstAt=null,releasedAt=null,active=null,geometryAt=null,baseSize=null,previous=null;
   const signalSuccess=()=>{if(options.onSuccess)options.onSuccess()};
   const fail=()=>{if(steps>=2&&options.onFailure)options.onFailure()};
   function reset(count){
    if(count)fail();
-   steps=0;firstAt=null;releasedAt=null;active=null;geometryAt=null;previous=null;
+   steps=0;firstAt=null;releasedAt=null;active=null;geometryAt=null;baseSize=null;previous=null;
   }
   function state(){return {steps,active:!!active,firstAt,releasedAt};}
   function nextDeadline(){
@@ -95,7 +95,7 @@
    const g=geometry(id,e.width,e.height);
    if(id==='draw_z'){
     if(!Number.isFinite(e.x)||!Number.isFinite(e.y)||dist({x:e.x,y:e.y},g.points[0])>g.r)return;
-    firstAt=e.time;steps=1;geometryAt=g;
+    firstAt=e.time;steps=1;geometryAt=g;baseSize={width:e.width,height:e.height};
     active={pointerId:e.pointerId,at:e.time,x:e.x,y:e.y};previous={x:e.x,y:e.y};
     return;
    }
@@ -109,6 +109,7 @@
     return;
    }
    if(firstAt===null)firstAt=e.time;
+   if(!baseSize)baseSize={width:e.width,height:e.height};
    geometryAt=g;active={pointerId:e.pointerId,at:e.time,x:e.x,y:e.y};
   }
   function sampleZ(p){
@@ -136,8 +137,8 @@
   function feed(e){
    if(e?.type==='reset'){reset(false);return state();}
    if(!validShape(e))return state();
-   if(geometryAt&&(Math.abs(e.width-geometryAt.width)>geometryAt.width*.05||
-      Math.abs(e.height-geometryAt.height)>geometryAt.height*.05)){reset(true);}
+   if(baseSize&&(Math.abs(e.width-baseSize.width)>baseSize.width*.05||
+      Math.abs(e.height-baseSize.height)>baseSize.height*.05)){reset(true);}
    if(e.type==='timeout'){
     const deadline=nextDeadline();
     if(deadline!==null&&e.time>=deadline)reset(true);
@@ -240,7 +241,11 @@
     try{scope.setPointerCapture(e.pointerId);}catch(_){}
     emit('down',e);
    });
-   on(scope,'pointermove',e=>emit('move',e));
+   on(scope,'pointermove',e=>{
+    let events=[];try{if(typeof e.getCoalescedEvents==='function')events=e.getCoalescedEvents();}catch(_){}
+    if(!events.length)events=[e];
+    for(const sample of events)emit('move',sample);
+   });
    on(scope,'pointerup',e=>{emit('up',e);try{if(scope.hasPointerCapture(e.pointerId))scope.releasePointerCapture(e.pointerId);}catch(_){}});
    on(scope,'pointercancel',e=>emit('cancel',e));
    on(scope,'lostpointercapture',e=>emit('lostcapture',e));
