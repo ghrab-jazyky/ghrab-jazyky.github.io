@@ -20,6 +20,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Verify Plural authoring reproduces tracked HTML byte-for-byte
+        run: node language-skills-hub/authoring/plural/build.cjs --check
       - name: Check new Plural Node contract
         run: node --test language-skills-hub/tests/plural-grammar-contract.test.cjs
       - name: Run every existing static Node test
