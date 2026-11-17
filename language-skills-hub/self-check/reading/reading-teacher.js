@@ -8,15 +8,16 @@
  let attemptId=null,confirmed=false,everConfirmed=false,gestureControls=null;
  const langNames={en:'Angličtina',es:'Španělština',de:'Němčina',fr:'Francouzština'};
  let entries=[],valid=false,studentLink='',renderedSignature='',historyTimer=null;
- function queueTeacherUrl(entry,language,level,limit){
+ function queueTeacherUrl(entry,language,level,limit,gestureId){
   if(historyTimer!==null)window.clearTimeout(historyTimer);
   // Safari rate-limits history.replaceState. Keep the students' QR up-to-date
   // immediately, but coalesce teacher address changes until the form settles.
   historyTimer=window.setTimeout(()=>{
    historyTimer=null;
+   if(formSignature()!==renderedSignature){refresh();return;}
    const page=new URL(location.href);
    for(const [key,value] of Object.entries({
-    topic:entry.id,lang:language,level,timer:String(limit),p:window.LSHUnlockGestures.codeFor(gestureControls?.getId()||'corners4')
+    topic:entry.id,lang:language,level,timer:String(limit),p:window.LSHUnlockGestures.codeFor(gestureId)
    }))page.searchParams.set(key,value);
    if(page.href!==location.href){
     try{history.replaceState(null,'',page.href)}catch(error){
@@ -28,8 +29,9 @@
  // R56: WebKit can defer/change-suppress a number-field input event when
  // switching tabs. Reconcile form state with the published QR as a safeguard.
  const formSignature=()=>['topic','language','level','timerMinutes']
-  .map(id=>$(id).value).join('|')+'|'+(gestureControls?.getId()||'corners4');
- const validConfig=(entry,language,level,limit)=>!!entry&&
+  .map(id=>$(id).value).join('|')+'|'+(gestureControls?.getId()??'');
+ const validConfig=(entry,language,level,limit,gestureId=gestureControls?.getId())=>!!entry&&
+  !!window.LSHUnlockGestures.byId(gestureId)&&
   entry.languages.includes(language)&&entry.levels.includes(level)&&
   Number.isInteger(limit)&&limit>=5&&limit<=120;
  function appearance(light,save){
@@ -67,7 +69,8 @@
   const entry=selectedEntry();
   const language=$('language').value,level=$('level').value;
   const limit=Number($('timerMinutes').value);
-  valid=validConfig(entry,language,level,limit);
+  const gestureId=gestureControls?.getId();
+  valid=validConfig(entry,language,level,limit,gestureId);
   if(confirmed){confirmed=false;everConfirmed=true;}
   studentLink='';
   $('studentUrl').value='';
@@ -79,10 +82,11 @@
   $('previousLinkNotice').hidden=!everConfirmed;
   $('loadStatus').textContent=valid?
    'Připraveno: '+entry.title+' · '+langNames[language]+' · '+level+' · '+limit+' minut.':
+   !gestureId?'Vyber platný způsob odemčení přerušeného testu.':
    'Zvolená varianta nebo časový limit nejsou platné. Vyber 5–120 minut.';
   $('copyStatus').textContent='Nejprve potvrď nastavení testu.';
   share.render('',$('qrMount'),$('downloadQr'));
-  if(valid)queueTeacherUrl(entry,language,level,limit);
+  if(valid)queueTeacherUrl(entry,language,level,limit,gestureId);
   renderedSignature=formSignature();
  }
  function confirm(){
@@ -91,7 +95,8 @@
   const entry=selectedEntry();
   const language=$('language').value,level=$('level').value;
   const limit=Number($('timerMinutes').value);
-  if(!validConfig(entry,language,level,limit)){refresh();return;}
+  const gestureId=gestureControls?.getId();
+  if(!validConfig(entry,language,level,limit,gestureId)){refresh();return;}
   if(!valid||confirmed)return;
   attemptId=newAttempt();
   const url=new URL('index.html',document.baseURI);url.search='';
@@ -99,7 +104,7 @@
   url.searchParams.set('lang',language);
   url.searchParams.set('level',level);
   url.searchParams.set('timer',String(limit));
-  url.searchParams.set('p',window.LSHUnlockGestures.codeFor(gestureControls.getId()));
+  url.searchParams.set('p',window.LSHUnlockGestures.codeFor(gestureId));
   url.searchParams.set('attempt',attemptId);
   studentLink=url.href;confirmed=true;everConfirmed=true;
   $('studentUrl').value=studentLink;
@@ -108,8 +113,8 @@
   $('studentPreview').setAttribute('aria-disabled','false');
   $('confirmTest').disabled=true;
   $('publishStatus').textContent='POTVRZENO: '+entry.title+' · '+langNames[language]+' · '+
-   level+' · '+limit+' minut · '+window.LSHUnlockGestures.byId(gestureControls.getId()).name+
-   ' · kód pokusu '+attemptId+' · varianta '+window.LSHUnlockGestures.codeFor(gestureControls.getId())+
+   level+' · '+limit+' minut · '+window.LSHUnlockGestures.byId(gestureId).name+
+   ' · kód pokusu '+attemptId+' · varianta '+window.LSHUnlockGestures.codeFor(gestureId)+
    '. Kód pokusu a variantu najdete i v protokolu studenta; slouží k ručnímu porovnání, nejsou důkazem pravosti.';
   $('copyStatus').textContent='Odkaz a QR odpovídají potvrzené konfiguraci.';
   share.render(studentLink,$('qrMount'),$('downloadQr'));
@@ -164,7 +169,7 @@
    const preset=Number(qs.get('timer'));
    $('timerMinutes').value=Number.isInteger(preset)&&preset>=5&&preset<=120?String(preset):'30';
    refresh();
-   // Watchdog only compares four small form values; no network or storage.
+   // Watchdog only compares small form values; no network or storage.
    // Reconcile unreported form changes; publication still requires confirmation.
    window.setInterval(()=>{
     if(formSignature()!==renderedSignature)refresh();

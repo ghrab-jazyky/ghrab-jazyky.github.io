@@ -168,12 +168,9 @@
      return state();
     }
    }
-   if(e.type==='cancel'||e.type==='lostcapture'||e.type==='blur'||e.type==='hidden'||e.type==='orientation'){
-    if(e.type==='lostcapture'&&(!active||active.pointerId!==e.pointerId))return state();
-    if(e.type==='cancel'&&active&&active.pointerId!==e.pointerId)return state();
-    reset(true);return state();
-   }
    if(id==='corners4'){
+    // Legacy corner steps only reset on the original order/time rules. B2's
+    // fourth touch/pen press is handled separately by waitingRelease above.
     if(e.type!=='down'||!e.corner||(e.pointerType==='mouse'&&e.button!==0))return state();
     if(releasedAt!==null&&e.time-releasedAt>8000)reset(true);
     const order=['tl','tr','bl','br'];
@@ -191,6 +188,20 @@
    }
     return state();
    }
+   if(e.type==='cancel'||e.type==='lostcapture'||e.type==='blur'||e.type==='hidden'||e.type==='orientation'){
+    if(e.type==='lostcapture'&&(!active||active.pointerId!==e.pointerId))return state();
+    if(e.type==='cancel'&&active&&active.pointerId!==e.pointerId)return state();
+    reset(true);return state();
+   }
+   // A second mouse button produces pointermove, not another pointerdown.
+   // Check the pressed-button mask as well as button; ordinary pointerup has 0.
+   if(e.pointerType==='mouse'&&Number.isInteger(e.buttons)&&
+      ['down','move','up','buttons'].includes(e.type)){
+    const invalidButtons=(e.buttons&~1)!==0||
+     (e.type==='up'?e.buttons!==0:(active||e.type==='down')&&e.buttons!==1);
+    if(invalidButtons){reset(true);return state();}
+   }
+   if(e.type==='buttons')return state();
    if(e.type==='down'){
     if(active){reset(true);return state();} // Multitouch / second mouse button.
     if(e.pointerType==='mouse'&&e.button!==0)return state();
@@ -242,7 +253,7 @@
    const q=rect();
    return {type,time:monotonic(),width:q.width,height:q.height,
     x:e?.clientX-q.left,y:e?.clientY-q.top,pointerId:e?.pointerId,
-    button:e?.button,pointerType:e?.pointerType,corner};
+    button:e?.button,buttons:e?.buttons,pointerType:e?.pointerType,corner};
   }
   function arm(){
    if(timer!==null)clearTimeout(timer);
@@ -294,6 +305,9 @@
     emit('down',e);
    });
    on(scope,'pointermove',e=>{
+    // Coalesced coordinates may precede the wrapper's current button state.
+    // Validate that state without consuming its final coordinate out of order.
+    emit('buttons',e);
     let events=[];try{if(typeof e.getCoalescedEvents==='function')events=e.getCoalescedEvents();}catch(_){}
     if(!events.length)events=[e];
     for(const sample of events)emit('move',sample);
@@ -371,11 +385,20 @@
    text.append(title,short);
    const thumb=document.createElement('span');thumb.className='lsh-unlock-thumb';thumb.innerHTML=svg(def.id,1024,768);
    label.append(input,thumb,text);chooser.appendChild(label);
-   input.addEventListener('change',()=>{if(input.checked){value=def.id;update();if(onChange)onChange(value);}});
+   input.addEventListener('change',()=>{reconcile();if(onChange)onChange(value);});
+  }
+  function reconcile(){
+   // Native radio state is authoritative, including changes without an event.
+   const selected=Array.from(chooser.querySelectorAll('input[type="radio"]')).filter(input=>input.checked);
+   const next=selected.length===1&&byId(selected[0].value)?selected[0].value:null;
+   if(next!==value){value=next;update();}
+   return value;
   }
   function update(){
    const def=byId(value);
-   guide.textContent=def.guide;figures.replaceChildren();
+   figures.replaceChildren();tryButton.disabled=!def;
+   if(!def){guide.textContent='Vyberte platný způsob odemčení přerušeného testu.';return;}
+   guide.textContent=def.guide;
    for(const [w,h,caption] of [[1024,768,'Na šířku'],[768,1024,'Na výšku']]){
     const figure=document.createElement('figure');const title=document.createElement('figcaption');title.textContent=caption;
     const drawing=document.createElement('div');drawing.innerHTML=svg(def.id,w,h);
@@ -395,6 +418,8 @@
   }
   function esc(e){if(e.key==='Escape'){e.preventDefault();close();}}
   tryButton.addEventListener('click',()=>{
+   const selected=reconcile();
+   if(!selected)return;
    close();
    const demo=document.createElement('section');demo.id='lshTeacherDemo';
    demo.className='lsh-session-overlay lsh-unlock-teacher-demo';demo.setAttribute('role','dialog');
@@ -408,14 +433,14 @@
    const feedback=document.createElement('p');feedback.className='lsh-unlock-demo-feedback';feedback.setAttribute('role','status');
    closeButton.addEventListener('click',close);
    demo.append(panel,banner,closeButton,feedback);document.body.appendChild(demo);
-   binding=bindDOM(demo,value,{
+   binding=bindDOM(demo,selected,{
     onSuccess:()=>{feedback.textContent='Gesto bylo úspěšně rozpoznáno.';binding?.reset();},
     onFailure:()=>{feedback.textContent='Sekvence nebyla dokončena. Zkuste to znovu.';}
    });
    document.addEventListener('keydown',esc);closeButton.focus();
   });
-  return Object.freeze({getId:()=>value,setId:id=>{if(!byId(id))return;value=id;
-   for(const x of chooser.querySelectorAll('input'))x.checked=x.value===id;update();},
+  return Object.freeze({getId:reconcile,setId:id=>{if(!byId(id))return;
+   for(const x of chooser.querySelectorAll('input'))x.checked=x.value===id;reconcile();},
    closeDemo:close});
  }
  const api=Object.freeze({DEFINITIONS,IDS,byId,byCode,codeFor,parseUrl,geometry,createRecognizer,bindDOM,svg,mountTeacher});

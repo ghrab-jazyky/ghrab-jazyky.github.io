@@ -138,15 +138,26 @@
   // registry is kept per code AND variant: one attempt per device for each concrete test.
   const registryKey='lsh:device-attempt:r64:'+cfg.skill+':'+classAttempt.toLowerCase()+':'+variant;
   let registryStore=null;try{registryStore=localStorage}catch(_){}
-  let registry=null;
-  try{
-   const parsed=JSON.parse(registryStore?.getItem(registryKey)||'null');
-   if(parsed&&typeof parsed==='object'&&/^[a-f0-9]{24}$/.test(parsed.session||'')&&
-    typeof parsed.variant==='string'&&typeof parsed.consumed==='boolean')registry=parsed;
-  }catch(_){registry=null}
+  let registry=null,registryReadState='unavailable';
+  if(registryStore){
+   let raw=null;
+   try{
+    raw=registryStore.getItem(registryKey);
+    registryReadState=raw===null?'missing':'unreadable';
+   }catch(_){}
+   if(registryReadState==='unreadable'){
+    try{
+     const parsed=JSON.parse(raw);
+     if(parsed&&typeof parsed==='object'&&!Array.isArray(parsed)&&/^[a-f0-9]{24}$/.test(parsed.session||'')&&
+      typeof parsed.variant==='string'&&typeof parsed.consumed==='boolean'){
+      registry=parsed;registryReadState='readable';
+     }
+    }catch(_){}
+   }
+  }
   const writeRegistry=value=>{if(!registryStore)return false;
    try{registryStore.setItem(registryKey,JSON.stringify(value));return true;}catch(_){return false;}};
-  let registryWriteAvailable=!!registryStore;
+  let registryWriteAvailable=!!registryStore&&registryReadState!=='unavailable';
   let n=requestedMinutes,localSession=null,blocked=null;
   let selectedUnlock=requestedUnlock.id,storedUnlockCode=requestedUnlock.code;
   let legacyLink=requestedUnlock.legacyLink,configurationMismatchSeen=null;
@@ -183,9 +194,11 @@
     root.crypto.getRandomValues(bytes);
     localSession=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
    }
+   // A recovered unreadable record has unknown history even if this write succeeds.
    registry={session:localSession,limitMinutes:n,variant,createdAt:Date.now(),consumed:false,
-    unlock:selectedUnlock,unlockCode:storedUnlockCode,configurationMismatchSeen:false};
-   if(writeRegistry(registry))configurationMismatchSeen=false;
+    unlock:selectedUnlock,unlockCode:storedUnlockCode,
+    configurationMismatchSeen:registryReadState==='missing'?false:null};
+   if(writeRegistry(registry))configurationMismatchSeen=registry.configurationMismatchSeen;
    else{configurationMismatchSeen=null;registryWriteAvailable=false;}
   }
   if(blocked){
@@ -229,7 +242,8 @@
   panel.append(elt('h2',null,ui.interrupted),elt('p',null,ui.lock));
   const reason=elt('p','lsh-session-reason','');reason.id='sessionLockReason';
   panel.appendChild(reason);
-  let gestureAdapter=null,unlockPending=false,unlockRequestToken=0,continueToken=null,continueTimer=null,continueExpiresAt=0;
+  let gestureAdapter=null,unlockPending=false,unlockRequestToken=0,unlockTimer=null,pageInactive=false;
+  let continueToken=null,continueTimer=null,continueExpiresAt=0;
   let overrideLockReason=null;
   const continueButton=elt('button','action primary','');
   continueButton.type='button';continueButton.id='sessionUnlockContinue';continueButton.hidden=true;
@@ -239,9 +253,17 @@
    continueButton.hidden=true;continueToken=null;continueExpiresAt=0;
    if(continueTimer!==null){clearTimeout(continueTimer);continueTimer=null;}
   }
+  const unlockEnvironmentAvailable=()=>!document.hidden&&!pageInactive;
+  function cancelUnlockRequest(){
+   unlockRequestToken++;unlockPending=false;
+   if(unlockTimer!==null){clearTimeout(unlockTimer);unlockTimer=null;}
+   hideContinue();
+  }
   function offerContinue(){
    hideContinue();
-   if(isTouchDevice()||!document.documentElement.requestFullscreen||engine.status().phase!=='interrupted')return;
+   const state=engine.status();
+   if(!unlockEnvironmentAvailable()||isTouchDevice()||!document.documentElement.requestFullscreen||
+    state.phase!=='interrupted'||state.expired)return;
    continueToken=Symbol('completed-gesture');
    continueExpiresAt=monotonicNow()+10000;
    const token=continueToken;
@@ -249,7 +271,7 @@
    // The completing mouse click can steal focus after a rejected Fullscreen promise.
    // Refocus only while the one-shot gesture token is still valid.
    const restoreFocus=()=>{
-    if(continueToken===token&&!continueButton.hidden)
+    if(continueToken===token&&!continueButton.hidden&&unlockEnvironmentAvailable()&&monotonicNow()<continueExpiresAt)
      continueButton.focus({preventScroll:true});
    };
    if(typeof root.requestAnimationFrame==='function')root.requestAnimationFrame(restoreFocus);
@@ -257,6 +279,7 @@
    continueTimer=setTimeout(()=>{if(continueToken===token)hideContinue();},10000);
   }
   function requestUnlock(fromButton){
+   if(!unlockEnvironmentAvailable()){cancelUnlockRequest();return;}
    if(unlockPending)return;
    if(fromButton){
     // Delayed timers must never extend a completed gesture's one-shot window.
@@ -268,7 +291,7 @@
    if(restricted()){lockReason('restricted-viewport');return;}
    const finishResume=()=>{
     const current=engine.status();
-    if(current.phase!=='interrupted'||current.expired)return;
+    if(!unlockEnvironmentAvailable()||current.phase!=='interrupted'||current.expired)return;
     if(restricted()){lockReason('restricted-viewport');return;}
     overrideLockReason=null;
     engine.resume();resetBaseline();render();tabMonitor.probe();
@@ -283,8 +306,9 @@
    let completed=false;
    const done=(ok)=>{
     if(completed||unlockRequestToken!==token)return;
-    completed=true;unlockPending=false;clearTimeout(timeout);
-    if(engine.status().phase!=='interrupted'||engine.status().expired)return;
+    completed=true;unlockPending=false;
+    if(unlockTimer!==null){clearTimeout(unlockTimer);unlockTimer=null;}
+    if(!unlockEnvironmentAvailable()||engine.status().phase!=='interrupted'||engine.status().expired)return;
     if(restricted()){lockReason('restricted-viewport');return;}
     if(ok&&document.fullscreenElement){fullscreenArmed=true;finishResume();}
     else if(touch){
@@ -293,10 +317,10 @@
     }else{lockReason('fullscreen-denied');if(!fromButton)offerContinue();else hideContinue();}
    };
    // Request synchronously in the completion event, before scheduling any timer.
-   let timeout=null,promise=null;
+   let promise=null;
    try{promise=document.documentElement.requestFullscreen();}
    catch(_){done(false);return;}
-   if(!completed)timeout=setTimeout(()=>done(false),3000);
+   if(!completed&&unlockRequestToken===token)unlockTimer=setTimeout(()=>done(false),3000);
    Promise.resolve(promise).then(()=>done(true),()=>done(false));
   }
   continueButton.addEventListener('click',()=>requestUnlock(true));
@@ -353,7 +377,10 @@
    workspace.hidden=state.phase==='ready';
    bar.hidden=state.phase==='ready';
    overlay.hidden=state.phase!=='interrupted';
-   if(state.phase!=='interrupted'){hideContinue();gestureAdapter?.reset();}
+   if(state.phase!=='interrupted'){
+    if(lastPhase!==state.phase)cancelUnlockRequest();
+    hideContinue();gestureAdapter?.reset();
+   }
    if(state.phase==='interrupted'&&lastPhase!=='interrupted'){overrideLockReason=null;gestureAdapter?.reset();}
    reason.textContent=state.phase==='interrupted'?
     (restricted()?ui.reasons['restricted-viewport']:
@@ -372,7 +399,7 @@
    if(!initialized||autoSubmitting)return;
    const s=engine.status();
    if(s.expired&&s.phase!=='submitted'&&s.phase!=='ready'){
-    hideContinue();gestureAdapter?.reset();unlockRequestToken++;unlockPending=false;
+    cancelUnlockRequest();gestureAdapter?.reset();
     autoSubmitting=true;
     try{cfg.onSubmit({automatic:true,restored:false})}
     finally{autoSubmitting=false;}
@@ -404,7 +431,7 @@
    else if(fullscreenArmed){fullscreenArmed=false;lock('fullscreen-exit');}
   });
   document.addEventListener('visibilitychange',()=>{
-   if(document.hidden){hideContinue();lock('hidden');}
+   if(document.hidden){cancelUnlockRequest();lock('hidden');}
    else tick();
   });
   root.addEventListener('blur',()=>{
@@ -451,12 +478,14 @@
    if(active()){event.preventDefault();lock('context-menu');}
   },true);
   root.addEventListener('pagehide',()=>{
+   pageInactive=true;cancelUnlockRequest();
    if(active())engine.interrupt('page-leave');
    // Keep the channel reusable for Safari's back-forward cache (BFCache).
    // The document is no longer active until pageshow reactivates monitoring.
    tabMonitor.deactivate();
   });
   root.addEventListener('pageshow',()=>{
+   pageInactive=false;
    if(!initialized||purged)return;
    if(engine.status().phase==='running'&&!engine.status().expired)
     engine.interrupt('page-leave');
@@ -506,7 +535,7 @@
    requestedUnlockCode:requestedUnlock.code,pinnedUnlockCode:unlockApi.codeFor(selectedUnlock),
    legacyLink,configurationMismatchSeen,mismatchAtLastOpen,mismatchPersistFailed});
   return Object.freeze({initialize,save,saveReviewMarks,finish,status,
-   stop:()=>{clearInterval(interval);hideContinue();gestureAdapter?.destroy();tabMonitor.dispose();}});
+   stop:()=>{clearInterval(interval);cancelUnlockRequest();gestureAdapter?.destroy();tabMonitor.dispose();}});
  }
  const api=Object.freeze({mount});
  if(typeof module!=='undefined'&&module.exports)module.exports=api;

@@ -42,6 +42,8 @@ jobs:
         run: node --test language-skills-hub/tests/lsh-unlock-stagec-boundaries.test.cjs
       - name: B2 deterministic F-17 unit tests
         run: node --test language-skills-hub/tests/lsh-unlock-b2.test.cjs
+      - name: Independent audit lifecycle, persistence and input regressions
+        run: node --test language-skills-hub/tests/lsh-unlock-audit-runtime.test.cjs language-skills-hub/tests/lsh-unlock-audit-input.test.cjs
       - name: Start local static web server
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-unlock-http.log 2>&1 &
@@ -69,6 +71,8 @@ jobs:
         run: node --test language-skills-hub/tests/lsh-unlock-stagec-visual.browser.test.cjs
       - name: D independent review regression - teacher QR confirmation
         run: node --test language-skills-hub/tests/lsh-unlock-staged-teacher-confirmation.browser.test.cjs
+      - name: Independent audit browser regressions in both labs and engines
+        run: node --test language-skills-hub/tests/lsh-unlock-audit-regressions.browser.test.cjs
       - name: R56 Reading test and 120 decoded QR variants
         run: node --test language-skills-hub/tests/r56-reading-test-qr.browser.test.cjs
       - name: Report on failure
