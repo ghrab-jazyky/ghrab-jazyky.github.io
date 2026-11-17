@@ -41,7 +41,10 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
  });
  test('Stage F '+engineName+' previously seen release 3 is offered release 4 once',{timeout:100000},async()=>{
   await withPage(engine,async page=>{
-   await page.addInitScript(key=>localStorage.setItem(key,'3'),STORAGE_KEY);
+   // Seed once in the existing origin. An init script would reset the saved
+   // release to 3 on every reload, masking that the prompt was acknowledged.
+   await page.goto(base+'?skill=cteni');
+   await page.evaluate(key=>localStorage.setItem(key,'3'),STORAGE_KEY);
    await page.goto(base);await page.locator('#whatsNewPrompt[open]').waitFor();
    await page.locator('#wnPromptNo').click();
    await page.locator('#skillChooser:not([hidden])').waitFor();
