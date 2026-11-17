@@ -1,0 +1,16 @@
+# PLURAL – WIP / NO-GO (2026-11-17)
+
+This branch contains a **development-only** plural flashcard candidate at `language-skills-hub/konverzace/plural/index.html` (DE/ES/FR; A1–C2).
+
+**Not in catalog. Do not merge or deploy.** The HTML is generated from editable sources distributed in the standalone handoff archive (not committed here).
+
+Independent local QA: **25/25** static checks and **104/104** isolated Chromium `page.set_content` interaction checks. These tests do **not** verify hosted routing or the external LSH modules.
+
+Outstanding **release blockers**:
+- 212 ES/FR EXTRA cards with generic explanations
+- Independent editorial and syllabus review for ES/FR B1–C2
+- Review of remaining mass/abstract nouns, Czech glosses, and disputed forms
+- Staged LSH catalog metadata and regression tests
+- Real hosted integration, vocabulary persistence, teacher UI lock, cross-browser/mobile accessibility QA
+
+A strict build gate intentionally refuses release until the editorial blockers are closed. All production files and shared modules remain unchanged.
