@@ -206,11 +206,12 @@
   surface.className=isCorners?'lsh-session-corners':'lsh-unlock-surface';
   surface.setAttribute('aria-hidden','true');
   const listeners=[];
+  const monotonic=()=>typeof performance==='object'&&typeof performance.now==='function'?performance.now():Date.now();
   function on(target,type,fn,opts){target.addEventListener(type,fn,opts);listeners.push([target,type,fn,opts]);}
   const rect=()=>overlay.getBoundingClientRect();
   function pack(type,e,corner){
    const q=rect();
-   return {type,time:Date.now(),width:q.width,height:q.height,
+   return {type,time:monotonic(),width:q.width,height:q.height,
     x:e?.clientX-q.left,y:e?.clientY-q.top,pointerId:e?.pointerId,
     button:e?.button,pointerType:e?.pointerType,corner};
   }
@@ -218,8 +219,8 @@
    if(timer!==null)clearTimeout(timer);
    const deadline=recognizer.nextDeadline();
    if(deadline!==null&&!disposed)timer=setTimeout(()=>{timer=null;
-    const q=rect();recognizer.feed({type:'timeout',time:Date.now(),width:q.width,height:q.height});arm();
-   },Math.max(0,deadline-Date.now()));
+    const q=rect();recognizer.feed({type:'timeout',time:monotonic(),width:q.width,height:q.height});arm();
+   },Math.max(0,deadline-monotonic()));
   }
   function emit(type,e,corner){
    if(disposed)return;
@@ -254,7 +255,7 @@
    on(window,'blur',()=>emit('blur'));
    on(document,'visibilitychange',()=>{if(document.hidden)emit('hidden');});
    on(window,'resize',()=>{const q=rect();
-    recognizer.feed({type:'timeout',time:Date.now(),width:q.width,height:q.height});arm();
+    recognizer.feed({type:'timeout',time:monotonic(),width:q.width,height:q.height});arm();
    });
    on(window,'orientationchange',()=>emit('orientation'));
   }
