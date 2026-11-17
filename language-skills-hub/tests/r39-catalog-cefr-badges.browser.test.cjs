@@ -4,7 +4,7 @@ const test=require('node:test'),assert=require('node:assert/strict');
 const {chromium,webkit}=require('playwright');
 const base='http://127.0.0.1:8765/language-skills-hub/';
 const config=[
- {skill:'konverzace',lang:'es',alternative:'en',count:22},
+ {skill:'konverzace',lang:'es',alternative:'de',count:23},
  {skill:'cteni',lang:'fr',alternative:'en',count:5},
  {skill:'poslech',lang:'en',alternative:null,count:6}
 ];
@@ -64,11 +64,11 @@ for(const [name,engine]of[['chromium',chromium],['webkit',webkit]]){
     }
     await page.locator('#language').selectOption('all');
     const noLanguage=await data(page);
-    const languageIndicator=spec.skill==='poslech'?'EN':'4 jazyky';
-    assert.ok(noLanguage.every(c=>c.badge===languageIndicator+' · C1'));
+    const languageIndicator=card=>card.id==='cl-plural'?'3 jazyky':(spec.skill==='poslech'?'EN':'4 jazyky');
+    assert.ok(noLanguage.every(c=>c.badge===languageIndicator(c)+' · C1'));
     await page.locator('#level').selectOption('all');
     const unfiltered=await data(page);
-    assert.ok(unfiltered.every(c=>c.badge===languageIndicator+' · A1–C2'&&c.level==='all'));
+    assert.ok(unfiltered.every(c=>c.badge===languageIndicator(c)+' · A1–C2'&&c.level==='all'));
     // Restore an explicit variant, and verify every action resolves to that variant.
     await page.locator('#language').selectOption(spec.lang);
     await page.locator('#level').selectOption('B2');
