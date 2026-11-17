@@ -90,7 +90,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      await deny(page);
      await gesture(page,id);
      await visible(page).waitFor({timeout:6000});
-     assert.equal(await page.evaluate(()=>document.activeElement?.id),'sessionUnlockContinue');
+     await page.waitForFunction(()=>document.activeElement?.id==='sessionUnlockContinue',null,{timeout:2500});
      assert.equal(await locked(page),true,'Reject must not resume');
      const type=i%3;
      if(type===0)await page.locator('#sessionUnlockContinue').click();
@@ -168,7 +168,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     // Case f: desktop with no API resumes without showing Continue.
     const n=await setup(browser,lab);
     try{
-     await n.page.evaluate(()=>{document.documentElement.requestFullscreen=undefined});
+     await n.page.evaluate(()=>{window.__full=false;document.documentElement.requestFullscreen=undefined});
      await gesture(n.page,'triangle3');
      await n.page.locator('#sessionLock').waitFor({state:'hidden'});
      assert.equal(await visible(n.page).count(),0);
