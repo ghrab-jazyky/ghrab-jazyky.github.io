@@ -51,7 +51,7 @@ test('CSP and existing LSH bridge/lock contract',()=>{
  assert.match(html,/data-lsh-topic-id="cl-plural"/);
  for(const id of ['languageSelect','levelSwitch','lookupPopover','vocabGrid'])
   assert.match(html,new RegExp('id="'+id+'"'));
- const inline=[...html.matchAll(/<script>([\\s\\S]*?)<\\/script>/g)];
+ const inline=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
  assert.equal(inline.length,1);
  const hash=crypto.createHash('sha256').update(inline[0][1]).digest('base64');
  assert.ok(html.includes("'sha256-"+hash+"'"));assert.match(html,/connect-src 'none'/);
@@ -59,8 +59,8 @@ test('CSP and existing LSH bridge/lock contract',()=>{
   assert.ok(html.includes('../../assets/lsh/'+src),src);
 });
 test('shared vocabulary saves a singular term and leaves plural visually separate',()=>{
- assert.match(html,/make\\('b','',singular\\)/);
- assert.match(html,/make\\('div','plural-form',`→ \$\\{plural\\}`\\)/);
+ assert.match(html,/make\('b','',singular\)/);
+ assert.match(html,/make\('div','plural-form',`→ \$\{plural\}`\)/);
  const g=literal('CZ_GLOSSARY');
  for(const lang of langs){
   assert.ok(Object.keys(g.recommended[lang]).length>=400);
