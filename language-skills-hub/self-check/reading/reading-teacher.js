@@ -29,6 +29,9 @@
  // switching tabs. Reconcile form state with the published QR as a safeguard.
  const formSignature=()=>['topic','language','level','timerMinutes']
   .map(id=>$(id).value).join('|')+'|'+(gestureControls?.getId()||'corners4');
+ const validConfig=(entry,language,level,limit)=>!!entry&&
+  entry.languages.includes(language)&&entry.levels.includes(level)&&
+  Number.isInteger(limit)&&limit>=5&&limit<=120;
  function appearance(light,save){
   document.documentElement.dataset.theme=light?'light':'dark';
   $('themeButton').textContent=light?'☾ Tmavý režim':'☀ Světlý režim';
@@ -64,8 +67,7 @@
   const entry=selectedEntry();
   const language=$('language').value,level=$('level').value;
   const limit=Number($('timerMinutes').value);
-  valid=!!entry&&entry.languages.includes(language)&&entry.levels.includes(level)&&
-   Number.isInteger(limit)&&limit>=5&&limit<=120;
+  valid=validConfig(entry,language,level,limit);
   if(confirmed){confirmed=false;everConfirmed=true;}
   studentLink='';
   $('studentUrl').value='';
@@ -84,11 +86,13 @@
   renderedSignature=formSignature();
  }
  function confirm(){
-  if(!valid||confirmed)return;
+  // Never publish from a prior valid state when input/change was suppressed.
+  if(formSignature()!==renderedSignature){refresh();return;}
   const entry=selectedEntry();
-  if(!entry)return;
   const language=$('language').value,level=$('level').value;
   const limit=Number($('timerMinutes').value);
+  if(!validConfig(entry,language,level,limit)){refresh();return;}
+  if(!valid||confirmed)return;
   attemptId=newAttempt();
   const url=new URL('index.html',document.baseURI);url.search='';
   url.searchParams.set('topic',entry.id);
@@ -111,13 +115,21 @@
   share.render(studentLink,$('qrMount'),$('downloadQr'));
   renderedSignature=formSignature();
  }
+ function currentPublication(){
+  if(formSignature()!==renderedSignature){refresh();return false;}
+  if(!confirmed||!studentLink)return false;
+  if(!validConfig(selectedEntry(),$('language').value,$('level').value,Number($('timerMinutes').value))){
+   refresh();return false;
+  }
+  return true;
+ }
  async function init(){
   themeInit();
   gestureControls=window.LSHUnlockGestures.mountTeacher($('unlockTeacherControls'),
    window.LSHUnlockGestures.byCode(qs.get('p'))?.id||'corners4',refresh);
   $('confirmTest').addEventListener('click',confirm);
-  $('copyUrl').addEventListener('click',()=>share.copy(studentLink,$('studentUrl'),$('copyStatus')));
-  $('downloadQr').addEventListener('click',()=>share.download($('qrMount'),$('copyStatus'),'reading-test-navrh-znamky-qr.svg'));
+  $('copyUrl').addEventListener('click',()=>{if(currentPublication())share.copy(studentLink,$('studentUrl'),$('copyStatus'));});
+  $('downloadQr').addEventListener('click',()=>{if(currentPublication())share.download($('qrMount'),$('copyStatus'),'reading-test-navrh-znamky-qr.svg');});
   $('studentUrl').addEventListener('focus',e=>e.target.select());
   $('studentUrl').addEventListener('click',e=>e.target.select());
   $('topic').addEventListener('change',()=>{updateLanguage();refresh()});
@@ -125,7 +137,7 @@
   $('level').addEventListener('change',refresh);
   $('timerMinutes').addEventListener('change',refresh);
   $('timerMinutes').addEventListener('input',refresh);
-  $('studentPreview').addEventListener('click',e=>{if(!confirmed)e.preventDefault()});
+  $('studentPreview').addEventListener('click',e=>{if(!currentPublication())e.preventDefault()});
   $('copyUrl').disabled=true;
   $('downloadQr').disabled=true;
   try{
