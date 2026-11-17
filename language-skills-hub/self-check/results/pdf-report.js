@@ -61,7 +61,7 @@ const BLOCKED_ACTIONS=Object.freeze(['clipboard','context-menu','blocked-shortcu
    configurationMismatchSeen:typeof state.configurationMismatchSeen==='boolean'?state.configurationMismatchSeen:null,
    mismatchAtLastOpen:typeof state.mismatchAtLastOpen==='boolean'?state.mismatchAtLastOpen:null,
    mismatchPersistFailed:state.mismatchPersistFailed===true,
-   unlockFailures:state.unlockFailures===null?null:
+   unlockFailures:state.unlockFailures===undefined||state.unlockFailures===null?null:
     Number.isInteger(state.unlockFailures)&&state.unlockFailures>=0&&state.unlockFailures<=9999?state.unlockFailures:'unreadable'
   };
  }
