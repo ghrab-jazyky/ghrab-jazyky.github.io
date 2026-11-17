@@ -99,7 +99,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      assert.equal(await locked(page),true,'Second forced rejection still locked');
      assert.equal(await visible(page).count(),0,'One-shot token cannot reappear automatically');
      const calls=await page.evaluate(()=>window.__calls);
-     assert.ok(calls>=3,'Start + gesture + retry each invoke Fullscreen API');
+     assert.equal(calls,2,'Mock starts already fullscreen; only the completed gesture and one-shot retry call the API');
      cases++;
     }finally{await s.context.close()}
    }
