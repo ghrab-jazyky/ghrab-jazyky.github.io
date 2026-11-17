@@ -268,7 +268,8 @@
   const dots=g.points.map((p,i)=>({x:p.x,y:p.y,i}));
   let details='';
   if(id==='corners4'){
-   details=g.rects.map((q,i)=>'<rect x="'+q.x+'" y="'+q.y+'" width="58" height="58" fill="none" stroke="currentColor" stroke-width="2" data-corner="'+i+'"/>'+
+   details='<polyline points="'+dots.map(d=>d.x+','+d.y).join(' ')+'" fill="none" stroke="currentColor" stroke-opacity=".6" stroke-dasharray="9 11" stroke-width="3" marker-end="url(#tip)"/>';
+   details+=g.rects.map((q,i)=>'<rect x="'+q.x+'" y="'+q.y+'" width="58" height="58" fill="none" stroke="currentColor" stroke-width="2" data-corner="'+i+'"/>'+
     '<text x="'+(q.x+29)+'" y="'+(q.y+38)+'" text-anchor="middle" fill="currentColor" font-size="28">'+(i+1)+'</text>').join('');
   }else{
    const unique=dots.filter((d,i)=>dots.findIndex(x=>x.x===d.x&&x.y===d.y)===i);
@@ -281,6 +282,8 @@
      '<text x="'+d.x+'" y="'+(d.y+7)+'" text-anchor="middle" fill="currentColor" font-size="23">'+indexes.join(' / ')+'</text>';
    }).join('');
   }
+  if(id==='tap_hold_tap')details+='<text x="'+(width*.5)+'" y="'+(height*.82)+'" text-anchor="middle" fill="currentColor" font-size="24">2: podržet 2–3 s</text>';
+  if(id==='hold_double_tap')details+='<text x="'+(width*.5)+'" y="'+(height*.75)+'" text-anchor="middle" fill="currentColor" font-size="24">1: podržet asi 3 s · vpravo 2×</text>';
   return '<svg class="lsh-unlock-diagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+width+' '+height+'" role="img" aria-label="'+xml(def.name)+'">'+
    '<title>'+xml(def.name)+' ('+(width>height?'na šířku':'na výšku')+')</title><desc>'+xml(def.guide)+'</desc>'+
    '<defs><marker id="tip" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="currentColor"/></marker></defs>'+
