@@ -273,3 +273,35 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   }finally{await browser.close()}
  });
 }
+
+for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+ test('D '+engineName+' fallback token is expired even when scheduled timer is delayed',
+  {timeout:65000},async()=>{
+   const browser=await engine.launch({headless:true});
+   try{
+    for(const lab of labs){
+     const opened=await setup(browser,lab,'n1');
+     const {page}=opened;
+     try{
+      await deny(page,'reject');
+      await gesture(page,'corners4');
+      await visible(page).waitFor({timeout:5000});
+      const before=await page.evaluate(()=>window.__calls);
+      // Simulate stalled event loop: monotonic clock moves beyond 10s while
+      // timeout callback remains queued. A click must still reject the token.
+      const out=await page.evaluate(()=>{
+       const p=window.performance,old=p.now.bind(p);
+       Object.defineProperty(p,'now',{configurable:true,value:()=>old()+10001});
+       const button=document.getElementById('sessionUnlockContinue');
+       button.click();button.click();
+       return {calls:window.__calls,hidden:button.hidden};
+      });
+      assert.equal(out.calls,before,'Expired token cannot re-request Fullscreen API');
+      assert.equal(out.hidden,true,'Expired token must be hidden synchronously');
+      assert.equal(await locked(page),true,'Expired token cannot resume the attempt');
+     }finally{await opened.context.close()}
+    }
+    console.log('STAGE D FALLBACK '+engineName+': monotonic clock expiry despite delayed timer PASS');
+   }finally{await browser.close()}
+  });
+}
