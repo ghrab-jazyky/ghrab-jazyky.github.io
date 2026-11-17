@@ -131,8 +131,17 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      else await page.locator(`input[name="conlangs-${q.id}"][value="${q.correct}"]`).check();
     }
     for(const [section,max] of [['A',6],['B',6],['C',5]]){
-     await page.locator(`#check${section}`).click();
-     assert.match(await page.locator(`#status${section}`).innerText(),new RegExp(`Correct answers: ${max} \\/ ${max}`));
+     // WebKit can deliver a delayed input event while score evaluation starts.
+     // Retry ONLY the UI's explicit temporary status, never an incorrect score.
+     let message='';
+     for(let retry=0;retry<3;retry++){
+      await page.locator(`#check${section}`).click();
+      message=await page.locator(`#status${section}`).innerText();
+      if(new RegExp(`Correct answers: ${max} \\/ ${max}`).test(message))break;
+      if(!/Answers changed\. Check again when ready\./.test(message))break;
+      await page.waitForTimeout(100);
+     }
+     assert.match(message,new RegExp(`Correct answers: ${max} \\/ ${max}`));
      assert.equal(await page.locator(`#review${section} .review.wrong`).count(),0);
     }
     assert.ok(!(await page.locator('#reviewA').innerText()).includes('00:00–05:05'));
