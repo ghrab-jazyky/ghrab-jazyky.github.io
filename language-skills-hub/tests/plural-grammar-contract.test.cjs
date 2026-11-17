@@ -71,3 +71,41 @@ test('shared vocabulary saves a singular term and leaves plural visually separat
  assert.equal(g.recommended.fr['le père'],'otec');
  assert.equal(g.words.fr['mères'],'matky');
 });
+
+test('V5 authored editorial patches match all 168 EXTRA notes and 67 grammar challenges',()=>{
+ const content=literal('CONTENT');
+ const authoring='authoring/plural/';
+ function rows(filename){
+  return read(authoring+filename).trimEnd().split('\n').map(line=>{
+   const i=line.indexOf('\t');assert.ok(i>0,filename+' malformed row');
+   return [line.slice(0,i),line.slice(i+1)];
+  });
+ }
+ let notes=0;
+ for(const file of ['notes_es_v5.tsv','notes_fr_v5.tsv']){
+  const keys=new Set();
+  for(const [id,note] of rows(file)){
+   assert.ok(!keys.has(id),'Duplicate editorial item '+id);keys.add(id);
+   const m=id.match(/^(ES|FR)-(A1|A2|B1|B2|C1|C2)-S(0[1-8])-EXTRA-(0[1-3])$/);
+   assert.ok(m,'Invalid EXTRA item id '+id);
+   assert.equal(content[m[1].toLowerCase()].levels[m[2]].stations[+m[3]-1].extra[+m[4]-1][4],note,id);
+   assert.ok(note.length>45,id+' is still too short');
+   notes++;
+  }
+  assert.equal(keys.size,84);
+ }
+ assert.equal(notes,168);
+ const taskIds=new Set();
+ for(const [id,task] of rows('tasks_v5.tsv')){
+  assert.ok(!taskIds.has(id),'Duplicate grammar task '+id);taskIds.add(id);
+  const m=id.match(/^(ES|FR|DE)-(B1|B2|C1|C2)-S(0[1-8])$/);
+  assert.ok(m,'Invalid task id '+id);
+  assert.equal(content[m[1].toLowerCase()].levels[m[2]].stations[+m[3]-1].grammarTask,task,id);
+ }
+ assert.equal(taskIds.size,67);
+ const es=content.es.levels,fr=content.fr.levels;
+ assert.match(es.A2.stations[4].extra[1][4],/pasa de aguda/);
+ assert.equal(es.A1.stations[2].extra[2][1],'los arroces');
+ assert.doesNotMatch(fr.C1.stations[0].extra[2][4],/bonus/);
+ assert.doesNotMatch(html,/sigue recayendo en la penúltima|le bonus sert|Debatid[^]*?Usa al menos/);
+});
