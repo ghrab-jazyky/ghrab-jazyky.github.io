@@ -35,13 +35,19 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    const page=await browser.newPage({viewport:{width:390,height:844}}),errors=[];
    page.on('pageerror',e=>errors.push(e.message));
    await page.goto(href('self-check/listening/teacher.html',{topic:'ll-conlangs',level:'A1'}));
-   await page.locator('#qrMount svg').waitFor({timeout:15000});
+   assert.equal(await page.locator('#qrMount svg').count(),0,'No unconfirmed QR');
+    await page.locator('#confirmTest:enabled').click();
+    await page.locator('#qrMount svg').waitFor({timeout:15000});
    assert.equal(await page.locator('#topicTitle').getAttribute('data-topic-id'),'ll-conlangs');
    assert.equal(await page.locator('#level option:enabled').count(),6);
    assert.equal(await page.locator('#mediaSources a').count(),2);
    for(const level of LEVELS){
     await page.locator('#level').selectOption(level);
-    const u=new URL(await page.locator('#studentUrl').inputValue());
+    if(await page.locator('#confirmTest').isEnabled()){
+      assert.equal(await page.locator('#studentUrl').inputValue(),'','No stale link after change');
+      await page.locator('#confirmTest').click();
+     }
+     const u=new URL(await page.locator('#studentUrl').inputValue());
     assert.ok(u.pathname.endsWith('/self-check/listening/student.html'));
     assert.equal(u.searchParams.get('level'),level);
     assert.equal(u.searchParams.get('topic'),'ll-conlangs');
@@ -125,8 +131,17 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      else await page.locator(`input[name="conlangs-${q.id}"][value="${q.correct}"]`).check();
     }
     for(const [section,max] of [['A',6],['B',6],['C',5]]){
-     await page.locator(`#check${section}`).click();
-     assert.match(await page.locator(`#status${section}`).innerText(),new RegExp(`Correct answers: ${max} \\/ ${max}`));
+     // WebKit can deliver a delayed input event while score evaluation starts.
+     // Retry ONLY the UI's explicit temporary status, never an incorrect score.
+     let message='';
+     for(let retry=0;retry<3;retry++){
+      await page.locator(`#check${section}`).click();
+      message=await page.locator(`#status${section}`).innerText();
+      if(new RegExp(`Correct answers: ${max} \\/ ${max}`).test(message))break;
+      if(!/Answers changed\. Check again when ready\./.test(message))break;
+      await page.waitForTimeout(100);
+     }
+     assert.match(message,new RegExp(`Correct answers: ${max} \\/ ${max}`));
      assert.equal(await page.locator(`#review${section} .review.wrong`).count(),0);
     }
     assert.ok(!(await page.locator('#reviewA').innerText()).includes('00:00–05:05'));

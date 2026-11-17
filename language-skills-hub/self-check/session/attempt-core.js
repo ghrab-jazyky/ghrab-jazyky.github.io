@@ -69,7 +69,7 @@
   }
   const fresh=()=>({
    kind:KIND,limitMinutes:n,phase:'ready',startedAt:null,deadlineAt:null,
-   submittedAt:null,answers:{},reviewMarks:null,incidents:[],resumptions:[]
+   submittedAt:null,answers:{},reviewMarks:null,incidents:[],resumptions:[],unlockFailures:0
   });
   let state=fresh();
   if(storage){
@@ -100,7 +100,9 @@
    remainingMs:remainingMs(),expired:expired(),persistent,
    answers:clone(state.answers),
    reviewMarks:Array.isArray(state.reviewMarks)?clone(state.reviewMarks):null,
-   incidents:clone(state.incidents),resumptions:clone(state.resumptions||[])
+   incidents:clone(state.incidents),resumptions:clone(state.resumptions||[]),
+    unlockFailures:!Object.prototype.hasOwnProperty.call(state,'unlockFailures')?null:
+     (Number.isInteger(state.unlockFailures)&&state.unlockFailures>=0&&state.unlockFailures<=9999?state.unlockFailures:'unreadable')
   }}
   function start(){
    requireValid(state.phase==='ready','Attempt already started');
@@ -138,6 +140,13 @@
    }
    return status();
   }
+  function noteUnlockFailure(){
+   if(state.phase!=='interrupted'||expired())return status();
+   if(!Object.prototype.hasOwnProperty.call(state,'unlockFailures'))state.unlockFailures=1;
+   else if(Number.isInteger(state.unlockFailures)&&state.unlockFailures>=0&&state.unlockFailures<=9999)
+    state.unlockFailures=Math.min(9999,state.unlockFailures+1);
+   persist();return status();
+  }
   function resume(){
    requireValid(state.phase==='interrupted'&&!expired(),'Attempt cannot resume');
    state.phase='running';
@@ -157,7 +166,7 @@
    if(storage){try{storage.removeItem(id)}catch(_){persistent=false;}}
    return status();
   }
-  return Object.freeze({id,start,saveAnswers,saveReviewMarks,interrupt,resume,finish,clear,status,remainingMs,expired});
+  return Object.freeze({id,start,saveAnswers,saveReviewMarks,interrupt,resume,noteUnlockFailure,finish,clear,status,remainingMs,expired});
  }
  const api=Object.freeze({KIND,STATES,INCIDENT_KINDS,minutes,key,open});
  if(typeof module!=='undefined'&&module.exports)module.exports=api;

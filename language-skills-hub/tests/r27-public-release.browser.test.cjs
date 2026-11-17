@@ -50,7 +50,10 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    const r=await page.goto(withParams('self-check/reading/teacher.html',
     {topic:'rl-asteroids',lang:'es',level:'B1'}),{waitUntil:'domcontentloaded'});
    assert.equal(r.status(),200);
-   await page.waitForSelector('#qrMount svg',{timeout:30000});
+   await page.locator('#confirmTest:enabled').waitFor({timeout:30000});
+    assert.equal(await page.locator('#qrMount svg').count(),0,'No QR before confirmation');
+    await page.locator('#confirmTest').click();
+    await page.waitForSelector('#qrMount svg',{timeout:30000});
    assert.equal(await page.locator('#topic').inputValue(),'rl-asteroids');
    assert.equal(await page.locator('#language').inputValue(),'es');
    assert.equal(await page.locator('#level').inputValue(),'B1');
@@ -65,7 +68,9 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.ok(overflow<=2,'Reading teacher overflows '+overflow);
    await page.locator('#language').selectOption('fr');
    await page.locator('#level').selectOption('C2');
-   const changed=await page.locator('#studentUrl').inputValue();
+   assert.equal(await page.locator('#studentUrl').inputValue(),'','Changed settings invalidate old student URL');
+    await page.locator('#confirmTest:enabled').click();
+    const changed=await page.locator('#studentUrl').inputValue();
    assert.match(changed,/lang=fr/);
    assert.match(changed,/level=C2/);
    assert.notEqual(student,changed);
@@ -99,7 +104,10 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    const r=await page.goto(withParams('self-check/listening/teacher.html',
     {topic:'ll-peaky-no-fighting',level:'B2'}),{waitUntil:'domcontentloaded'});
    assert.equal(r.status(),200);
-   await page.waitForSelector('#qrMount svg',{timeout:30000});
+   await page.locator('#confirmTest:enabled').waitFor({timeout:30000});
+    assert.equal(await page.locator('#qrMount svg').count(),0,'No QR before confirmation');
+    await page.locator('#confirmTest').click();
+    await page.waitForSelector('#qrMount svg',{timeout:30000});
    const student=await page.locator('#studentUrl').inputValue();
    assert.match(student,/self-check\/listening\/student\.html/);
    assert.match(student,/topic=ll-peaky-no-fighting/);

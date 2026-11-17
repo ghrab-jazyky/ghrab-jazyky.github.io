@@ -55,7 +55,14 @@ const BLOCKED_ACTIONS=Object.freeze(['clipboard','context-menu','blocked-shortcu
   return {
    monitored:true,tabMonitoringAvailable:state.tabMonitoringAvailable===true,
    startedAt,events,attemptCode:code,limitMinutes:lim,requestedMinutes:asked,
-   submittedAt:safeTime(state.submittedAt)?state.submittedAt:null
+   submittedAt:safeTime(state.submittedAt)?state.submittedAt:null,
+   pinnedUnlockCode:typeof state.pinnedUnlockCode==='string'&&/^n[1-5]$/.test(state.pinnedUnlockCode)?state.pinnedUnlockCode:null,
+   legacyLink:state.legacyLink===true,
+   configurationMismatchSeen:typeof state.configurationMismatchSeen==='boolean'?state.configurationMismatchSeen:null,
+   mismatchAtLastOpen:typeof state.mismatchAtLastOpen==='boolean'?state.mismatchAtLastOpen:null,
+   mismatchPersistFailed:state.mismatchPersistFailed===true,
+   unlockFailures:state.unlockFailures===undefined||state.unlockFailures===null?null:
+    Number.isInteger(state.unlockFailures)&&state.unlockFailures>=0&&state.unlockFailures<=9999?state.unlockFailures:'unreadable'
   };
  }
  function securityDetails(report){
@@ -77,6 +84,18 @@ const BLOCKED_ACTIONS=Object.freeze(['clipboard','context-menu','blocked-shortcu
   ];
   const stamp=t=>new Date(t).toLocaleString('cs-CZ');
   if(s.attemptCode)out.push('Kód pokusu: '+s.attemptCode+' (jeden pokus na zařízení)');
+  if(s.pinnedUnlockCode)out.push('Varianta zámku: '+s.pinnedUnlockCode+
+   (s.legacyLink?' (odkaz bez varianty – starší formát nebo upravený odkaz)':''));
+  if(s.configurationMismatchSeen===true)out.push('POZOR: adresa při některém otevření žádala jinou variantu zámku; platí varianta prvního otevření.'+
+   (s.mismatchAtLastOpen===true?' (i při posledním otevření)':''));
+  else if(s.mismatchPersistFailed===true)out.push('POZOR: adresa při posledním otevření žádala jinou variantu zámku; trvalý záznam se nepodařilo uložit.');
+  else if(s.configurationMismatchSeen===false)out.push('V průběhu dostupné lokální evidence nebyl zjištěn nesoulad adresy.');
+  else out.push('Historie změn adresy není úplně evidovaná (starší pokus nebo nedostupné úložiště).');
+  if(s.unlockFailures===null)out.push('Nedokončené pokusy o odemčení: neevidováno (starší pokus)');
+  else if(s.unlockFailures==='unreadable')out.push('Nedokončené pokusy o odemčení: údaj nečitelný');
+  else if(s.unlockFailures===9999)out.push('Nedokončené pokusy o odemčení: 9 999 nebo více');
+  else out.push('Nedokončené pokusy o odemčení: '+s.unlockFailures);
+  out.push('Kód pokusu a varianta slouží jen k ručnímu porovnání s nastavením učitele; nejsou důkazem pravosti.');
   if(s.limitMinutes)out.push('Časový limit: '+s.limitMinutes+' min'+
    (s.requestedMinutes&&s.requestedMinutes!==s.limitMinutes?
     ' – POZOR: adresa při tomto otevření žádala '+s.requestedMinutes+' min; platí limit prvního otevření':''));

@@ -470,6 +470,12 @@
    $('loading').hidden=true;
   }catch(error){
    $('loading').classList.add('error');
+   if(error&&(error.code==='invalid-link'||error.code==='corrupted-registry')){
+    $('workspace').hidden=true;
+    $('loading').textContent=(({"en":{"invalid-link":"This test link is not valid. Please ask your teacher for a new link.","corrupted-registry":"The saved test on this device cannot be read. Please ask your teacher."},"es":{"invalid-link":"Este enlace de la prueba no es válido. Pide a tu profesor un enlace nuevo.","corrupted-registry":"No se puede leer la prueba guardada en este dispositivo. Avisa a tu profesor."},"de":{"invalid-link":"Dieser Testlink ist ungültig. Bitte deine Lehrkraft um einen neuen Link.","corrupted-registry":"Der gespeicherte Test auf diesem Gerät kann nicht gelesen werden. Bitte wende dich an deine Lehrkraft."},"fr":{"invalid-link":"Ce lien de test n’est pas valide. Demande un nouveau lien à ton enseignant.","corrupted-registry":"Le test enregistré sur cet appareil est illisible. Préviens ton enseignant."}})[locale]||({"en":{"invalid-link":"This test link is not valid. Please ask your teacher for a new link.","corrupted-registry":"The saved test on this device cannot be read. Please ask your teacher."},"es":{"invalid-link":"Este enlace de la prueba no es válido. Pide a tu profesor un enlace nuevo.","corrupted-registry":"No se puede leer la prueba guardada en este dispositivo. Avisa a tu profesor."},"de":{"invalid-link":"Dieser Testlink ist ungültig. Bitte deine Lehrkraft um einen neuen Link.","corrupted-registry":"Der gespeicherte Test auf diesem Gerät kann nicht gelesen werden. Bitte wende dich an deine Lehrkraft."},"fr":{"invalid-link":"Ce lien de test n’est pas valide. Demande un nouveau lien à ton enseignant.","corrupted-registry":"Le test enregistré sur cet appareil est illisible. Préviens ton enseignant."}}).en)[error.code];
+    $('title').textContent=ui?.error||'Test unavailable';
+    return;
+   }
    $('loading').textContent=ui.error+' ('+ui.loadingFailed+': '+String(error.message||error)+')';
    $('title').textContent=ui.error;
   }

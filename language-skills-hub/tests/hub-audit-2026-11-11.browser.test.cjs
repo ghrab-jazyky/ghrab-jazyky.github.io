@@ -92,11 +92,13 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  test('Audit 2026-11-11 '+name+' Listening teacher disables copying while the timer is invalid',async()=>{
   await withPage(engine,{viewport:{width:1366,height:850}},async page=>{
    await page.goto(base+'self-check/listening/teacher.html?topic=ll-matthew-oscars');
-   await page.waitForFunction(()=>document.getElementById('studentUrl').value.length>0);
+   await page.locator('#confirmTest:enabled').waitFor();
+    assert.equal(await page.locator('#studentUrl').inputValue(),'','Draft URL must be blank');
    await page.locator('#timerMinutes').fill('2');
    assert.equal(await page.locator('#copyUrl').isDisabled(),true);
    assert.equal(await page.locator('#studentPreview').getAttribute('aria-disabled'),'true');
    await page.locator('#timerMinutes').fill('25');
+    await page.locator('#confirmTest:enabled').click();
    assert.equal(await page.locator('#copyUrl').isEnabled(),true);
   });
  });

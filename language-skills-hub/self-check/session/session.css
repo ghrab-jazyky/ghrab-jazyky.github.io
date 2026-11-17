@@ -26,3 +26,26 @@
  body,body * {visibility:hidden!important;}
  html {background:white!important;}
 }
+
+/* The overlay, not the underlying test, owns gesture pointer input. */
+.lsh-unlock-surface{position:fixed;inset:0;z-index:10001;background:transparent;touch-action:pinch-zoom;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;}
+#sessionUnlockContinue{position:fixed;z-index:10003;left:50%;transform:translateX(-50%);bottom:max(24px,calc(env(safe-area-inset-bottom) + 16px));min-width:124px;}
+#sessionUnlockContinue[hidden]{display:none}
+.lsh-unlock-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px;margin:14px 0;}
+.lsh-unlock-option{display:flex;flex-direction:column;align-items:stretch;gap:8px;border:1px solid var(--line);border-radius:13px;padding:10px;cursor:pointer;background:var(--panel);}
+.lsh-unlock-option:has(input:checked){outline:2px solid var(--accent,var(--link,#2f8ed3));outline-offset:1px;}
+.lsh-unlock-option input{align-self:flex-start;}
+.lsh-unlock-option-copy{display:grid;gap:4px;}
+.lsh-unlock-option-copy small{font-size:.75rem;color:var(--muted,var(--text));}
+.lsh-unlock-thumb svg{width:100%;height:auto;max-height:110px;}
+.lsh-unlock-figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:10px 0;}
+.lsh-unlock-figures figure{min-width:0;margin:0;}
+.lsh-unlock-figures figcaption{font-weight:700;margin-bottom:5px;}
+.lsh-unlock-diagram{width:100%;height:auto;color:var(--text,#d8e9fa);}
+.lsh-unlock-details{margin:12px 0;max-width:100%;}
+.lsh-unlock-teacher-demo{z-index:20000;}
+.lsh-unlock-demo-banner{position:fixed;top:max(14px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:20003;font-weight:700;background:#152338;padding:8px 15px;border-radius:8px;}
+.lsh-unlock-demo-close{position:fixed;top:max(58px,calc(env(safe-area-inset-top) + 45px));left:50%;transform:translateX(-50%);z-index:20003;}
+.lsh-unlock-demo-feedback{position:fixed;bottom:40px;left:50%;transform:translateX(-50%);z-index:20003;background:#152338;padding:8px;border-radius:8px;}
+.lsh-unlock-teacher-demo .lsh-corner{z-index:20002}
+.lsh-unlock-teacher-demo .lsh-unlock-surface{z-index:20001}

@@ -73,8 +73,10 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    page.on('dialog',d=>d.accept());
    const url=new URL('self-check/listening/teacher.html?topic=ll-harrison-ford&level=B1',base);
    assert.equal((await page.goto(url.href)).status(),200);
-   await page.locator('#qrMount svg').waitFor();
+   assert.equal(await page.locator('#qrMount svg').count(),0,'No QR before publication');
    await page.locator('#timerMinutes').fill('5');
+    await page.locator('#confirmTest:enabled').click();
+    await page.locator('#qrMount svg').waitFor();
    const student=await page.locator('#studentUrl').inputValue();
    assert.match(student,/timer=5/);
    assert.match(student,/attempt=class/);

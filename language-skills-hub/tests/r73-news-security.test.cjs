@@ -8,11 +8,15 @@ const policy=JSON.parse(read('data/test-mode-policy.json'));
 const version=JSON.parse(read('version.json'));
 const data=core.extractJson(read('poslech/how-to-choose-your-news/index.html'),'DATA');
 const session=read('self-check/session/session-ui.js'),student=read('self-check/listening/listening-student.js');
+// Stages B/B2 update attempt-core, PDF and the one shared gesture/student engine;
+// keep exact blob pins for this approved candidate instead of disabling integrity checks.
 test('E4 security contract uses the same LSH runtime, with no security fork',()=>{
  const pinned={
-  'self-check/session/attempt-core.js':'fb04ac83b7565b5c43bedaaae595c7b0cc7e26d1',
+  'self-check/session/attempt-core.js':'500620698d4421c59da07f5b3de30cfb42e89b04',
   'self-check/session/tab-guard.js':'cb753d0e440eafa06d077fecbbb627afd3f600bf',
-  'self-check/results/pdf-report.js':'372931ac7895d4b6da39a7f1d43dc5bb073d4050',
+   'self-check/session/session-ui.js':'69ca9b2df4217dcda3f27f4fad15a7b9a0d150b4',
+  'self-check/results/pdf-report.js':'460908927f4e23b4eeb1c653cb2aa4990bbbff19',
+   'self-check/session/unlock-gestures.js':'7a49373c836529a70fab36fb45fd0dc414420994',
   'self-check/results/export-core.js':'ed51c90758aa2ca3036f54fa96e7fae6c02b585e',
   'data/test-mode-policy.json':'cfd8ce76d8314bcdedc1397dc95ab4fbc7759871'
  };
@@ -29,7 +33,8 @@ test('E4 security contract uses the same LSH runtime, with no security fork',()=
  for(const f of ['attempt-core.js','tab-guard.js','session-ui.js'])
   assert.ok(html.includes(f),f);
  assert.doesNotMatch(html,/<iframe\b|<video\b|<audio\b|type=["']password/i);
- assert.match(session,/const order=\['tl','tr','bl','br'\]/);
+ assert.match(read('self-check/session/unlock-gestures.js'),/const order=\['tl','tr','bl','br'\]/);
+  assert.ok(html.includes('unlock-gestures.js'),'Listening student must load the shared unlock engine');
  assert.match(session,/if\(restricted\(\)\)\{lockReason\('restricted-viewport'\);return;\}/);
  assert.match(session,/addEventListener\('beforeprint'/);
  assert.match(session,/lock\('concurrent-tab'\)/);

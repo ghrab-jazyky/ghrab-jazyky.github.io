@@ -61,7 +61,9 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(response.status(),200);
    await page.waitForFunction(()=>document.getElementById('mediaSources').querySelectorAll('a').length>0,{timeout:30000});
    assert.match(await page.locator('#mediaCaution').textContent(),/vulgarismy/i);
-   const shared=await page.locator('#studentUrl').inputValue();
+   assert.equal(await page.locator('#studentUrl').inputValue(),'','Unconfirmed draft must not be shareable');
+    await page.locator('#confirmTest:enabled').click();
+    const shared=await page.locator('#studentUrl').inputValue();
    assert.match(shared,/student\.html\?topic=ll-peaky-no-fighting&level=B2/);
    assert.equal(await page.locator('#topicTitle').getAttribute('data-topic-id'),'ll-peaky-no-fighting');
    assert.equal(await page.locator('select#topic').count(),0);
@@ -72,7 +74,9 @@ for(const [name,engine]of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(await primary.getAttribute('target'),'_blank');
    assert.match(await primary.getAttribute('rel'),/noopener noreferrer/);
    await page.locator('#level').selectOption('C1');
-   const changed=await page.locator('#studentUrl').inputValue();
+   assert.equal(await page.locator('#studentUrl').inputValue(),'','Changed configuration must invalidate link');
+    await page.locator('#confirmTest:enabled').click();
+    const changed=await page.locator('#studentUrl').inputValue();
    assert.match(changed,/topic=ll-peaky-no-fighting&level=C1/);
    assert.equal(await page.locator('#topicTitle').getAttribute('data-topic-id'),'ll-peaky-no-fighting');
    assert.equal(await page.locator('#mediaSources a').count(),2);

@@ -446,6 +446,12 @@
    $('workspace').hidden=timedUI?timedUI.status().phase==='ready':false;
   }catch(error){
    $('workspace').hidden=true;
+   if(error&&(error.code==='invalid-link'||error.code==='corrupted-registry')){
+    $('workspace').hidden=true;
+    $('loading').textContent=({"invalid-link":"This test link is not valid. Please ask your teacher for a new link.","corrupted-registry":"The saved test on this device cannot be read. Please ask your teacher."})[error.code];
+    $('title').textContent='Unable to load Listening Lab';
+    return;
+   }
    $('loading').classList.add('error');
    $('loading').textContent='Listening activity unavailable: '+String(error.message||error);
    $('title').textContent='Unable to load Listening Lab';

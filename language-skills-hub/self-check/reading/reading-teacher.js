@@ -4,18 +4,20 @@
  const core=window.LSHReadingCore,share=window.LSHShareTools;
  const $=id=>document.getElementById(id);
  const qs=new URLSearchParams(location.search);
- const attemptId='class'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+ const newAttempt=()=>'class'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+ let attemptId=null,confirmed=false,everConfirmed=false,gestureControls=null;
  const langNames={en:'Angličtina',es:'Španělština',de:'Němčina',fr:'Francouzština'};
  let entries=[],valid=false,studentLink='',renderedSignature='',historyTimer=null;
- function queueTeacherUrl(entry,language,level,limit){
+ function queueTeacherUrl(entry,language,level,limit,gestureId){
   if(historyTimer!==null)window.clearTimeout(historyTimer);
   // Safari rate-limits history.replaceState. Keep the students' QR up-to-date
   // immediately, but coalesce teacher address changes until the form settles.
   historyTimer=window.setTimeout(()=>{
    historyTimer=null;
+   if(formSignature()!==renderedSignature){refresh();return;}
    const page=new URL(location.href);
    for(const [key,value] of Object.entries({
-    topic:entry.id,lang:language,level,timer:String(limit)
+    topic:entry.id,lang:language,level,timer:String(limit),p:window.LSHUnlockGestures.codeFor(gestureId)
    }))page.searchParams.set(key,value);
    if(page.href!==location.href){
     try{history.replaceState(null,'',page.href)}catch(error){
@@ -27,7 +29,11 @@
  // R56: WebKit can defer/change-suppress a number-field input event when
  // switching tabs. Reconcile form state with the published QR as a safeguard.
  const formSignature=()=>['topic','language','level','timerMinutes']
-  .map(id=>$(id).value).join('|');
+  .map(id=>$(id).value).join('|')+'|'+(gestureControls?.getId()??'');
+ const validConfig=(entry,language,level,limit,gestureId=gestureControls?.getId())=>!!entry&&
+  !!window.LSHUnlockGestures.byId(gestureId)&&
+  entry.languages.includes(language)&&entry.levels.includes(level)&&
+  Number.isInteger(limit)&&limit>=5&&limit<=120;
  function appearance(light,save){
   document.documentElement.dataset.theme=light?'light':'dark';
   $('themeButton').textContent=light?'☾ Tmavý režim':'☀ Světlý režim';
@@ -63,35 +69,72 @@
   const entry=selectedEntry();
   const language=$('language').value,level=$('level').value;
   const limit=Number($('timerMinutes').value);
-  valid=!!entry&&entry.languages.includes(language)&&entry.levels.includes(level)&&
-   Number.isInteger(limit)&&limit>=5&&limit<=120;
+  const gestureId=gestureControls?.getId();
+  valid=validConfig(entry,language,level,limit,gestureId);
+  if(confirmed){confirmed=false;everConfirmed=true;}
   studentLink='';
-  if(valid){
-   const url=new URL('index.html',document.baseURI);url.search='';
-   url.searchParams.set('topic',entry.id);
-   url.searchParams.set('lang',language);
-   url.searchParams.set('level',level);
-   url.searchParams.set('timer',String(limit));
-   url.searchParams.set('attempt',attemptId);
-   studentLink=url.href;
-   queueTeacherUrl(entry,language,level,limit);
-  }
-  $('studentUrl').value=studentLink;
-  $('copyUrl').disabled=!valid;
-  $('studentPreview').setAttribute('aria-disabled',String(!valid));
-  $('studentPreview').href=valid?studentLink:'#';
+  $('studentUrl').value='';
+  $('studentPreview').href='#';
+  $('studentPreview').setAttribute('aria-disabled','true');
+  $('copyUrl').disabled=true;$('downloadQr').disabled=true;
+  $('confirmTest').disabled=!valid;
+  $('publishStatus').textContent='Nastavení není potvrzené.';
+  $('previousLinkNotice').hidden=!everConfirmed;
   $('loadStatus').textContent=valid?
-   'Připraveno: '+entry.title+' · '+langNames[language]+' · '+level+' · '+limit+' minut'+ 
-   '. Student na stránce nemá přepínač jazyka ani úrovně.':
+   'Připraveno: '+entry.title+' · '+langNames[language]+' · '+level+' · '+limit+' minut.':
+   !gestureId?'Vyber platný způsob odemčení přerušeného testu.':
    'Zvolená varianta nebo časový limit nejsou platné. Vyber 5–120 minut.';
-  $('copyStatus').textContent=valid?'Odkaz a QR odpovídají zvolené variantě.':'Nejprve vyber dostupnou variantu.';
+  $('copyStatus').textContent='Nejprve potvrď nastavení testu.';
+  share.render('',$('qrMount'),$('downloadQr'));
+  if(valid)queueTeacherUrl(entry,language,level,limit,gestureId);
+  renderedSignature=formSignature();
+ }
+ function confirm(){
+  // Never publish from a prior valid state when input/change was suppressed.
+  if(formSignature()!==renderedSignature){refresh();return;}
+  const entry=selectedEntry();
+  const language=$('language').value,level=$('level').value;
+  const limit=Number($('timerMinutes').value);
+  const gestureId=gestureControls?.getId();
+  if(!validConfig(entry,language,level,limit,gestureId)){refresh();return;}
+  if(!valid||confirmed)return;
+  attemptId=newAttempt();
+  const url=new URL('index.html',document.baseURI);url.search='';
+  url.searchParams.set('topic',entry.id);
+  url.searchParams.set('lang',language);
+  url.searchParams.set('level',level);
+  url.searchParams.set('timer',String(limit));
+  url.searchParams.set('p',window.LSHUnlockGestures.codeFor(gestureId));
+  url.searchParams.set('attempt',attemptId);
+  studentLink=url.href;confirmed=true;everConfirmed=true;
+  $('studentUrl').value=studentLink;
+  $('copyUrl').disabled=false;
+  $('studentPreview').href=studentLink;
+  $('studentPreview').setAttribute('aria-disabled','false');
+  $('confirmTest').disabled=true;
+  $('publishStatus').textContent='POTVRZENO: '+entry.title+' · '+langNames[language]+' · '+
+   level+' · '+limit+' minut · '+window.LSHUnlockGestures.byId(gestureId).name+
+   ' · kód pokusu '+attemptId+' · varianta '+window.LSHUnlockGestures.codeFor(gestureId)+
+   '. Kód pokusu a variantu najdete i v protokolu studenta; slouží k ručnímu porovnání, nejsou důkazem pravosti.';
+  $('copyStatus').textContent='Odkaz a QR odpovídají potvrzené konfiguraci.';
   share.render(studentLink,$('qrMount'),$('downloadQr'));
   renderedSignature=formSignature();
  }
+ function currentPublication(){
+  if(formSignature()!==renderedSignature){refresh();return false;}
+  if(!confirmed||!studentLink)return false;
+  if(!validConfig(selectedEntry(),$('language').value,$('level').value,Number($('timerMinutes').value))){
+   refresh();return false;
+  }
+  return true;
+ }
  async function init(){
   themeInit();
-  $('copyUrl').addEventListener('click',()=>share.copy(studentLink,$('studentUrl'),$('copyStatus')));
-  $('downloadQr').addEventListener('click',()=>share.download($('qrMount'),$('copyStatus'),'reading-test-navrh-znamky-qr.svg'));
+  gestureControls=window.LSHUnlockGestures.mountTeacher($('unlockTeacherControls'),
+   window.LSHUnlockGestures.byCode(qs.get('p'))?.id||'corners4',refresh);
+  $('confirmTest').addEventListener('click',confirm);
+  $('copyUrl').addEventListener('click',()=>{if(currentPublication())share.copy(studentLink,$('studentUrl'),$('copyStatus'));});
+  $('downloadQr').addEventListener('click',()=>{if(currentPublication())share.download($('qrMount'),$('copyStatus'),'reading-test-navrh-znamky-qr.svg');});
   $('studentUrl').addEventListener('focus',e=>e.target.select());
   $('studentUrl').addEventListener('click',e=>e.target.select());
   $('topic').addEventListener('change',()=>{updateLanguage();refresh()});
@@ -99,7 +142,7 @@
   $('level').addEventListener('change',refresh);
   $('timerMinutes').addEventListener('change',refresh);
   $('timerMinutes').addEventListener('input',refresh);
-  $('studentPreview').addEventListener('click',e=>{if(!valid)e.preventDefault()});
+  $('studentPreview').addEventListener('click',e=>{if(!currentPublication())e.preventDefault()});
   $('copyUrl').disabled=true;
   $('downloadQr').disabled=true;
   try{
@@ -126,8 +169,8 @@
    const preset=Number(qs.get('timer'));
    $('timerMinutes').value=Number.isInteger(preset)&&preset>=5&&preset<=120?String(preset):'30';
    refresh();
-   // Watchdog only compares four small form values; no network or storage.
-   // The QR is regenerated only if a browser failed to deliver a change event.
+   // Watchdog only compares small form values; no network or storage.
+   // Reconcile unreported form changes; publication still requires confirmation.
    window.setInterval(()=>{
     if(formSignature()!==renderedSignature)refresh();
    },250);
