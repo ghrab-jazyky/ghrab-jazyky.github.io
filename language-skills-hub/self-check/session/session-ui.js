@@ -119,6 +119,9 @@
   const core=root.LSHAttemptCore;
   if(!core)throw new Error('Missing local attempt engine');
   const requestedMinutes=core.minutes(params.get('timer'));
+  const unlockApi=root.LSHUnlockGestures;
+  if(!unlockApi)throw new Error('Timed test engine is unavailable');
+  const requestedUnlock=unlockApi.parseUrl(params,true);
   const classAttempt=params.get('attempt')||'legacytest';
   if(!/^[a-z0-9_-]{6,40}$/i.test(classAttempt))throw new Error('Invalid attempt URL');
   // R64: ONE timed attempt per device (browser profile) and class attempt code.
@@ -141,8 +144,31 @@
    if(parsed&&typeof parsed==='object'&&/^[a-f0-9]{24}$/.test(parsed.session||'')&&
     typeof parsed.variant==='string'&&typeof parsed.consumed==='boolean')registry=parsed;
   }catch(_){registry=null}
-  const writeRegistry=value=>{try{registryStore?.setItem(registryKey,JSON.stringify(value))}catch(_){}};
+  const writeRegistry=value=>{if(!registryStore)return false;
+   try{registryStore.setItem(registryKey,JSON.stringify(value));return true;}catch(_){return false;}};
   let n=requestedMinutes,localSession=null,blocked=null;
+  let selectedUnlock=requestedUnlock.id,storedUnlockCode=requestedUnlock.code;
+  let legacyLink=requestedUnlock.legacyLink,configurationMismatchSeen=null;
+  let mismatchAtLastOpen=null,mismatchPersistFailed=false;
+  if(registry){
+   const hasUnlock=Object.prototype.hasOwnProperty.call(registry,'unlock');
+   const hasCode=Object.prototype.hasOwnProperty.call(registry,'unlockCode');
+   if((hasUnlock&&!unlockApi.byId(registry.unlock))||
+     (hasCode&&registry.unlockCode!==null&&!unlockApi.byCode(registry.unlockCode))||
+     (hasUnlock&&hasCode&&registry.unlockCode!==null&&unlockApi.byCode(registry.unlockCode).id!==registry.unlock)){
+    const error=new Error('Corrupted saved lock variant');error.code='corrupted-registry';throw error;
+   }
+   selectedUnlock=hasUnlock?registry.unlock:'corners4';
+   storedUnlockCode=hasCode?registry.unlockCode:null;
+   legacyLink=storedUnlockCode===null;
+   configurationMismatchSeen=typeof registry.configurationMismatchSeen==='boolean'?registry.configurationMismatchSeen:null;
+   mismatchAtLastOpen=requestedUnlock.code!==storedUnlockCode;
+   if(mismatchAtLastOpen&&configurationMismatchSeen!==true){
+    const proposed={...registry,configurationMismatchSeen:true};
+    if(writeRegistry(proposed)){registry=proposed;configurationMismatchSeen=true;}
+    else mismatchPersistFailed=true;
+   }
+  }
   if(registry){
    if(registry.consumed||registry.variant!==variant)blocked='used';
    else{localSession=registry.session;try{n=core.minutes(String(registry.limitMinutes))}catch(_){n=requestedMinutes}}
@@ -154,8 +180,10 @@
     root.crypto.getRandomValues(bytes);
     localSession=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
    }
-   registry={session:localSession,limitMinutes:n,variant,createdAt:Date.now(),consumed:false};
-   writeRegistry(registry);
+   registry={session:localSession,limitMinutes:n,variant,createdAt:Date.now(),consumed:false,
+    unlock:selectedUnlock,unlockCode:storedUnlockCode,configurationMismatchSeen:false};
+   if(writeRegistry(registry))configurationMismatchSeen=false;
+   else configurationMismatchSeen=null;
   }
   if(blocked){
    const text=(BLOCKED[cfg.lang]||BLOCKED.en)[blocked];
@@ -198,40 +226,64 @@
   panel.append(elt('h2',null,ui.interrupted),elt('p',null,ui.lock));
   const reason=elt('p','lsh-session-reason','');reason.id='sessionLockReason';
   panel.appendChild(reason);
-  const corners=elt('div','lsh-session-corners');
-  corners.setAttribute('aria-hidden','true');
-  const order=['tl','tr','bl','br'];
-  let next=0,gestureAt=0;
-  // These invisible areas are a convenience for a supervising teacher, not
-  // authentication. No labels, instructions, marker glyphs or hints in the DOM.
-  for(let i=0;i<order.length;i++){
-   const button=elt('div','lsh-corner lsh-corner-'+order[i]);
-   button.addEventListener('pointerdown',event=>{
-    if(event.button!==0&&event.pointerType==='mouse')return;
-    if(engine.status().phase!=='interrupted')return;
-    const now=Date.now();
-    if(gestureAt&&now-gestureAt>8000)next=0;
-    gestureAt=now;
-    if(order[next]!==order[i]){next=order[i]==='tl'?1:0;return;}
-    next++;
-    if(next===4){
-     next=0;gestureAt=0;
-     // R73 fail-closed: teacher must first restore an unrestricted viewport.
-     if(restricted()){lockReason('restricted-viewport');return;}
-     try{
-      if(!document.fullscreenElement&&document.documentElement.requestFullscreen&&!isTouchDevice()){
-       // Request while the teacher's pointer gesture still carries user activation.
-       Promise.resolve(document.documentElement.requestFullscreen()).then(()=>{
-        fullscreenArmed=!!document.fullscreenElement;
-        engine.resume();resetBaseline();render();tabMonitor.probe();
-       }).catch(()=>{lockReason('fullscreen-denied');});
-      }else{engine.resume();resetBaseline();render();tabMonitor.probe();}
-     }catch(_){lockReason('fullscreen-denied');}
-    }
-   });
-   corners.appendChild(button);
+  let gestureAdapter=null,unlockPending=false,unlockRequestToken=0,continueToken=null,continueTimer=null;
+  const continueButton=elt('button','action primary','');
+  continueButton.type='button';continueButton.id='sessionUnlockContinue';continueButton.hidden=true;
+  continueButton.textContent=({en:'Continue',es:'Continuar',de:'Weiter',fr:'Continuer'})[cfg.lang]||'Continue';
+  function hideContinue(){
+   continueButton.hidden=true;continueToken=null;
+   if(continueTimer!==null){clearTimeout(continueTimer);continueTimer=null;}
   }
-  overlay.append(panel,corners);
+  function offerContinue(){
+   hideContinue();
+   if(isTouchDevice()||!document.documentElement.requestFullscreen||engine.status().phase!=='interrupted')return;
+   continueToken=Symbol('completed-gesture');
+   const token=continueToken;
+   continueButton.hidden=false;continueButton.focus();
+   continueTimer=setTimeout(()=>{if(continueToken===token)hideContinue();},10000);
+  }
+  function requestUnlock(fromButton){
+   if(unlockPending)return;
+   if(fromButton){
+    if(!continueToken)return;
+    hideContinue();
+   }else hideContinue();
+   const state=engine.status();
+   if(state.phase!=='interrupted'||state.expired)return;
+   if(restricted()){lockReason('restricted-viewport');return;}
+   const finishResume=()=>{
+    const current=engine.status();
+    if(current.phase!=='interrupted'||current.expired)return;
+    if(restricted()){lockReason('restricted-viewport');return;}
+    engine.resume();resetBaseline();render();tabMonitor.probe();
+   };
+   if(document.fullscreenElement||!document.documentElement.requestFullscreen||isTouchDevice()){
+    finishResume();return;
+   }
+   unlockPending=true;
+   const token=++unlockRequestToken;
+   let completed=false;
+   const done=(ok)=>{
+    if(completed||unlockRequestToken!==token)return;
+    completed=true;unlockPending=false;clearTimeout(timeout);
+    if(engine.status().phase!=='interrupted'||engine.status().expired)return;
+    if(restricted()){lockReason('restricted-viewport');return;}
+    if(ok&&document.fullscreenElement){fullscreenArmed=true;finishResume();}
+    else{lockReason('fullscreen-denied');offerContinue();}
+   };
+   const timeout=setTimeout(()=>done(false),3000);
+   // No await or timer before requestFullscreen: preserve user activation.
+   try{Promise.resolve(document.documentElement.requestFullscreen()).then(()=>done(true),()=>done(false));}
+   catch(_){done(false);}
+  }
+  continueButton.addEventListener('click',()=>requestUnlock(true));
+  overlay.append(panel);
+  gestureAdapter=unlockApi.bindDOM(overlay,selectedUnlock,{
+   onSuccess:()=>requestUnlock(false),
+   onFailure:()=>engine.noteUnlockFailure(),
+   onPointerStart:()=>hideContinue()
+  });
+  overlay.appendChild(continueButton);
   workspace.before(intro,bar);
   workspace.parentElement.appendChild(overlay);
   const results=document.getElementById('results');
@@ -276,7 +328,8 @@
    workspace.hidden=state.phase==='ready';
    bar.hidden=state.phase==='ready';
    overlay.hidden=state.phase!=='interrupted';
-   if(state.phase==='interrupted'&&lastPhase!=='interrupted'){next=0;gestureAt=0;}
+   if(state.phase!=='interrupted'){hideContinue();gestureAdapter?.reset();}
+   if(state.phase==='interrupted'&&lastPhase!=='interrupted')gestureAdapter?.reset();
    reason.textContent=state.phase==='interrupted'?
     (restricted()?ui.reasons['restricted-viewport']:
      ui.reasons[state.incidents[state.incidents.length-1]?.kind]||ui.lock):'';
@@ -294,6 +347,7 @@
    if(!initialized||autoSubmitting)return;
    const s=engine.status();
    if(s.expired&&s.phase!=='submitted'&&s.phase!=='ready'){
+    hideContinue();gestureAdapter?.reset();unlockRequestToken++;unlockPending=false;
     autoSubmitting=true;
     try{cfg.onSubmit({automatic:true,restored:false})}
     finally{autoSubmitting=false;}
@@ -325,7 +379,7 @@
    else if(fullscreenArmed){fullscreenArmed=false;lock('fullscreen-exit');}
   });
   document.addEventListener('visibilitychange',()=>{
-   if(document.hidden)lock('hidden');
+   if(document.hidden){hideContinue();lock('hidden');}
    else tick();
   });
   root.addEventListener('blur',()=>{
@@ -422,9 +476,11 @@
    const out=engine.finish();tabMonitor.deactivate();render();return out;
   }
   const status=()=>Object.freeze({...engine.status(),tabMonitoringAvailable:tabMonitor.available,
-   attemptCode:classAttempt,limitMinutes:n,requestedMinutes});
+   attemptCode:classAttempt,limitMinutes:n,requestedMinutes,
+   requestedUnlockCode:requestedUnlock.code,pinnedUnlockCode:storedUnlockCode,
+   legacyLink,configurationMismatchSeen,mismatchAtLastOpen,mismatchPersistFailed});
   return Object.freeze({initialize,save,saveReviewMarks,finish,status,
-   stop:()=>{clearInterval(interval);tabMonitor.dispose();}});
+   stop:()=>{clearInterval(interval);hideContinue();gestureAdapter?.destroy();tabMonitor.dispose();}});
  }
  const api=Object.freeze({mount});
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
