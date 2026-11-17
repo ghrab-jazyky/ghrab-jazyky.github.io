@@ -6,7 +6,8 @@
  const core=window.LSHListeningCore,shareTools=window.LSHShareTools;
  const $=id=>document.getElementById(id);
  const params=new URLSearchParams(location.search);
- const attemptId='class'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+ const newAttempt=()=>'class'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+ let attemptId=null,confirmed=false,everConfirmed=false,gestureControls=null;
 
  // Source URLs mirror the original public Listening cards. The R53 static CI
  // validates every URL and topic against data/cards.json and each card's SOURCES.
@@ -111,6 +112,7 @@
   u.searchParams.set('level',$('level').value);
   u.searchParams.set('timer',$('timerMinutes').value);
   u.searchParams.set('attempt',attemptId);
+  u.searchParams.set('p',window.LSHUnlockGestures.codeFor(gestureControls.getId()));
   return u.href;
  }
  function invalidate(reason){
@@ -123,28 +125,49 @@
   $('copyStatus').textContent='Studentský odkaz není dostupný.';
  }
  function share(){
-  if(!chosen){invalidate('Neplatný odkaz: zvolená poslechová karta neexistuje. Vrať se do katalogu.');return}
+  if(confirmed){confirmed=false;everConfirmed=true;}
   const limit=Number($('timerMinutes').value),level=$('level').value;
-  if(!Number.isInteger(limit)||limit<5||limit>120||!core.LEVELS.includes(level)||(chosen.levels&&!chosen.levels.includes(level))){
-   invalidate('Nastav platnou úroveň A1–C2 a časový limit 5–120 minut.');
+  const allowed=!!chosen&&Number.isInteger(limit)&&limit>=5&&limit<=120&&
+   core.LEVELS.includes(level)&&(!chosen.levels||chosen.levels.includes(level));
+  $('studentUrl').value='';
+  $('studentPreview').href='#';$('studentPreview').setAttribute('aria-disabled','true');
+  $('copyUrl').disabled=true;$('downloadQr').disabled=true;
+  $('confirmTest').disabled=!allowed;
+  $('publishStatus').textContent='Nastavení není potvrzené.';
+  $('previousLinkNotice').hidden=!everConfirmed;
+  shareTools.render('',$('qrMount'),$('downloadQr'));
+  $('copyStatus').textContent='Nejprve potvrď nastavení testu.';
+  if(!allowed){
+   $('setupStatus').textContent=chosen?'Nastav platnou úroveň A1–C2 a časový limit 5–120 minut.':
+    'Neplatný odkaz: zvolená poslechová karta neexistuje. Vrať se do katalogu.';
    return;
   }
-  const link=studentUrl();
-  $('copyUrl').disabled=false;
-  $('studentPreview').setAttribute('aria-disabled','false');
-  $('studentUrl').value=link;
-  $('studentPreview').href=link;
-  shareTools.render(link,$('qrMount'),$('downloadQr'));
   $('setupStatus').textContent='Připraveno: '+chosen.title+' · '+level+' · '+limit+' minut.';
-  $('copyStatus').textContent='Odkaz a QR kód obsahují pevnou kartu, úroveň a časový limit.';
   const next=new URL(location.href);
-  next.searchParams.set('topic',topicId);
-  next.searchParams.set('level',level);
+  next.searchParams.set('topic',topicId);next.searchParams.set('level',level);
   next.searchParams.set('timer',String(limit));
+  next.searchParams.set('p',window.LSHUnlockGestures.codeFor(gestureControls.getId()));
   history.replaceState(null,'',next);
+ }
+ function confirm(){
+  if(confirmed||!chosen||$('confirmTest').disabled)return;
+  attemptId=newAttempt();const link=studentUrl();
+  confirmed=true;everConfirmed=true;
+  $('studentUrl').value=link;$('studentPreview').href=link;
+  $('studentPreview').setAttribute('aria-disabled','false');
+  $('copyUrl').disabled=false;$('confirmTest').disabled=true;
+  shareTools.render(link,$('qrMount'),$('downloadQr'));
+  $('publishStatus').textContent='POTVRZENO: '+chosen.title+' · '+$('level').value+
+   ' · '+$('timerMinutes').value+' minut · '+window.LSHUnlockGestures.byId(gestureControls.getId()).name+
+   ' · kód pokusu '+attemptId+' · varianta '+window.LSHUnlockGestures.codeFor(gestureControls.getId())+
+   '. Kód pokusu a variantu najdete i v protokolu studenta; slouží k ručnímu porovnání, nejsou důkazem pravosti.';
+  $('copyStatus').textContent='Odkaz a QR odpovídají potvrzené konfiguraci.';
  }
  function start(){
   initTheme();
+  gestureControls=window.LSHUnlockGestures.mountTeacher($('unlockTeacherControls'),
+   window.LSHUnlockGestures.byCode(params.get('p'))?.id||'corners4',share);
+  $('confirmTest').addEventListener('click',confirm);
   $('copyUrl').addEventListener('click',()=>
    shareTools.copy($('studentUrl').value,$('studentUrl'),$('copyStatus')));
   $('downloadQr').addEventListener('click',()=>
