@@ -40,7 +40,7 @@ Rozhodnutí z 13. 11. 2026: na jednom zařízení (profilu prohlížeče) je pro
   jiný limit, je to v protokolu výslovně uvedeno.
 - Odkaz bez `timer` je na obrazovce i v protokolu označen jako test bez dohledu.
 
-Meze se nemění: jiný prohlížeč, anonymní okno, smazání dat webu nebo jiné zařízení statická stránka nepozná.
+Meze se nemění: evidence pokusů je jen lokální v prohlížeči a není nezávislým ověřením.
 Učitelský servisní postup pro odemčení zůstává beze změny; popis se v dokumentaci neuvádí.
 
 ## Ověření
