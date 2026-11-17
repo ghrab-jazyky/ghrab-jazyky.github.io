@@ -39,13 +39,14 @@ async function setup(browser,lab,variant='n4',opts={}){
  const page=await context.newPage();
  if(opts.clock)await page.clock.install();
  await page.addInitScript(()=>{
-  window.__full=true;window.__calls=0;window.__mode='success';
+  window.__full=true;window.__calls=0;window.__callDetails=[];window.__mode='success';
   window.__pendingResolve=null;window.__forcedHidden=false;
   Object.defineProperty(document,'hidden',{configurable:true,get:()=>window.__forcedHidden});
   Object.defineProperty(Document.prototype,'fullscreenElement',{configurable:true,
    get:()=>window.__full?document.documentElement:null});
   Element.prototype.requestFullscreen=function(){
    window.__calls++;
+   window.__callDetails.push({n:window.__calls,mode:window.__mode,stack:(new Error()).stack.split('\n').slice(1,5)});
    if(window.__mode==='reject')return Promise.reject(new Error('T4 injected rejection'));
    if(window.__mode==='pending')return new Promise(resolve=>{window.__pendingResolve=()=>{
     window.__full=true;resolve();
@@ -99,7 +100,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      assert.equal(await locked(page),true,'Second forced rejection still locked');
      assert.equal(await visible(page).count(),0,'One-shot token cannot reappear automatically');
      const calls=await page.evaluate(()=>window.__calls);
-     assert.equal(calls,2,'Mock starts already fullscreen; only the completed gesture and one-shot retry call the API');
+     assert.equal(calls,2,'Unexpected fullscreen calls: '+JSON.stringify(await page.evaluate(()=>window.__callDetails)));
      cases++;
     }finally{await s.context.close()}
    }
@@ -163,7 +164,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      await gesture(h.page,'triangle3');
      await h.page.locator('#sessionLock').waitFor({state:'hidden'});
      assert.equal(await h.page.evaluate(()=>window.__calls),before+1,
-      'B2 must request fullscreen on a touch-capable hybrid');
+      'Unexpected hybrid calls: '+JSON.stringify(await h.page.evaluate(()=>window.__callDetails)));
      assert.equal(await visible(h.page).count(),0);
      await h.page.evaluate(()=>document.dispatchEvent(new Event('fullscreenchange')));
      assert.equal(await h.page.locator('#sessionLock').isVisible(),false,
