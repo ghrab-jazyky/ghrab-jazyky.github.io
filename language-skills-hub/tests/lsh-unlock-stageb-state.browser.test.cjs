@@ -43,7 +43,9 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
        if(p===null)continue; // Legacy missing parameter is valid, tested separately.
        const u=link(lab,attempt,p,lang);
        await page.goto(u.href,{waitUntil:'domcontentloaded'});
-       await page.locator('#loading').waitFor({timeout:15000});
+       await page.waitForFunction(expected=>
+        (document.getElementById('loading')?.textContent||'').includes(expected),
+        lab==='reading'?languages[lang]:languages.en,{timeout:15000});
        const text=await page.locator('#loading').textContent();
        assert.ok(text.includes(lab==='reading'?languages[lang]:languages.en),lab+' '+lang+' '+p+' '+text);
        assert.equal(await page.locator('#workspace').isHidden(),true);
@@ -116,7 +118,7 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     await q.evaluate(({k,v})=>localStorage.setItem(k,JSON.stringify(v)),{k:badKey,v:broken});
     const before=await q.evaluate(keys);
     await q.goto(link('reading',badAttempt,'n4').href,{waitUntil:'domcontentloaded'});
-    await q.locator('#loading').waitFor();
+    await q.waitForFunction(()=>document.getElementById('loading')?.textContent.includes('saved test on this device cannot be read'),null,{timeout:15000});
     assert.match(await q.locator('#loading').textContent(),/saved test on this device cannot be read/);
     assert.equal(await q.locator('#workspace').isHidden(),true);
     assert.equal(new URL(q.url()).hash,'');
