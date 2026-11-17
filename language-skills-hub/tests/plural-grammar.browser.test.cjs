@@ -102,9 +102,11 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      assert.equal(await page.locator('#levelSwitch button[data-level="'+level+'"].active').count(),1);
      assert.equal(await page.locator('#languageSelect').isDisabled(),false);
      assert.equal(await page.locator('#cardsGrid .flip').count(),10);
-     assert.equal(await page.locator('#extraList .flip').count(),0);
+     assert.equal(await page.locator('#extraList .flip').count(),3);
+     assert.equal(await page.locator('#extraReveal').isVisible(),false);
     }
     // English is unsupported here; a malformed teacher preset must NOT get a misleading lock.
+    await page.evaluate(()=>localStorage.clear());
     const invalid=link('konverzace/plural/index.html','?practice=1&lang=en&level=B2&zamek=1');
     assert.equal((await page.goto(invalid,{waitUntil:'load'})).status(),200);
     assert.equal(await page.locator('#languageSelect').isDisabled(),false);
