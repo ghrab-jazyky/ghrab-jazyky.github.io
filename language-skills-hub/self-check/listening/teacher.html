@@ -3,6 +3,7 @@
 <head>
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
  <meta name="color-scheme" content="dark light">
  <meta name="lsh-listening-teacher-release" content="R53">
  <meta name="description" content="Listening Lab – test ke konkrétní poslechové kartě, zdrojové video, úroveň CEFR a QR kód pro studenty.">
@@ -11,9 +12,11 @@
  <link rel="stylesheet" href="../reading/reading.css">
  <link rel="stylesheet" href="listening.css">
  <link rel="stylesheet" href="../results/share.css">
+  <link rel="stylesheet" href="../session/session.css">
  <script defer src="../../assets/qr.js"></script>
  <script defer src="listening-core.js"></script>
  <script defer src="../results/share-tools.js"></script>
+  <script defer src="../session/unlock-gestures.js"></script>
  <script defer src="listening-teacher.js"></script>
 </head>
 <body>
@@ -51,7 +54,11 @@
     <p id="setupStatus" class="small-note" role="status" aria-live="polite">Připravuji nastavení testu…</p>
    </div>
   </section>
-  <section class="panel teacher-panel" aria-labelledby="mediaHeading">
+  <section class="panel teacher-panel" aria-labelledby="unlockHeading">
+    <div class="panel-head"><div><span class="kicker">PŘERUŠENÝ TEST</span><h2 id="unlockHeading">ODEMKNUTÍ PŘERUŠENÉHO TESTU</h2></div></div>
+    <div class="teacher-form"><div id="unlockTeacherControls"></div></div>
+   </section>
+   <section class="panel teacher-panel" aria-labelledby="mediaHeading">
    <div class="panel-head"><div><span class="kicker">AUTENTICKÝ POSLECH · EXTERNÍ ZDROJ</span><h2 id="mediaHeading">Zdrojové video</h2></div></div>
    <div class="teacher-form listening-source-panel">
     <p class="listening-source-lead">Otevři původní záznam v nové záložce. Video se přehrává přímo na stránce poskytovatele, nikoli v tomto panelu.</p>
@@ -63,6 +70,9 @@
   <section class="panel teacher-panel" aria-labelledby="shareHeading">
    <div class="panel-head"><div><span class="kicker">STUDENTSKÝ TEST · BEZ PŘEHRÁVAČE</span><h2 id="shareHeading">Odkaz pro studenty</h2></div></div>
    <div class="teacher-form">
+     <button type="button" class="action primary" id="confirmTest">Vytvořit test a QR kód</button>
+     <p class="small-note" id="publishStatus" role="status" aria-live="polite">Nastavení není potvrzené.</p>
+     <p class="notice" id="previousLinkNotice" hidden>Dříve vytvořený odkaz a QR kód zůstávají funkční s původním nastavením. Statická aplikace jejich platnost nemůže zrušit. Pro nové nastavení klikněte na Vytvořit test a QR kód.</p>
     <div id="qrMount" class="share-result-qr" aria-label="QR kód pro studenty"></div>
     <label for="studentUrl">Sdílitelný odkaz
      <textarea id="studentUrl" rows="3" readonly spellcheck="false"></textarea>
