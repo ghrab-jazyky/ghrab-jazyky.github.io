@@ -270,9 +270,11 @@
     overrideLockReason=null;
     engine.resume();resetBaseline();render();tabMonitor.probe();
    };
-   if(document.fullscreenElement||!document.documentElement.requestFullscreen||isTouchDevice()){
-    finishResume();return;
+   if(document.fullscreenElement){finishResume();return;}
+   if(!document.documentElement.requestFullscreen()){
+    fullscreenArmed=false;finishResume();return;
    }
+   const touch=isTouchDevice(); // B2 includes touch-capable hybrids.
    unlockPending=true;
    const token=++unlockRequestToken;
    let completed=false;
@@ -282,7 +284,10 @@
     if(engine.status().phase!=='interrupted'||engine.status().expired)return;
     if(restricted()){lockReason('restricted-viewport');return;}
     if(ok&&document.fullscreenElement){fullscreenArmed=true;finishResume();}
-    else{lockReason('fullscreen-denied');if(!fromButton)offerContinue();else hideContinue();}
+    else if(touch){
+     // R5: a genuinely rejected or timed-out request is tolerated on touch.
+     fullscreenArmed=false;finishResume();
+    }else{lockReason('fullscreen-denied');if(!fromButton)offerContinue();else hideContinue();}
    };
    // Request synchronously in the completion event, before scheduling any timer.
    let timeout=null,promise=null;
