@@ -68,19 +68,20 @@
  function createRecognizer(id,options){
   const def=byId(id);if(!def)throw new Error('Unknown gesture');
   options=options||{};
-  let steps=0,firstAt=null,releasedAt=null,active=null,geometryAt=null,baseSize=null,previous=null;
+  let steps=0,firstAt=null,releasedAt=null,active=null,geometryAt=null,baseSize=null,previous=null,waitingRelease=null;
   const signalSuccess=()=>{if(options.onSuccess)options.onSuccess()};
   const fail=()=>{if(steps>=2&&options.onFailure)options.onFailure()};
   function reset(count){
    if(count)fail();
-   steps=0;firstAt=null;releasedAt=null;active=null;geometryAt=null;baseSize=null;previous=null;
+   steps=0;firstAt=null;releasedAt=null;active=null;geometryAt=null;baseSize=null;previous=null;waitingRelease=null;
   }
-  function state(){return {steps,active:!!active,firstAt,releasedAt};}
+  function state(){return {steps,active:!!active,firstAt,releasedAt,awaitingRelease:!!waitingRelease,releasePointerId:waitingRelease?.pointerId??null};}
   function nextDeadline(){
    if(!steps&&!active)return null;
    let deadline=Infinity;
    if(firstAt!==null&&def.total)deadline=Math.min(deadline,firstAt+def.total+1);
-   if(active){
+   if(waitingRelease)deadline=Math.min(deadline,waitingRelease.at+1501);
+   else if(active){
     const max=id==='draw_z'?4000:(def.durations?.[steps]?.[1]);
     if(max!==undefined)deadline=Math.min(deadline,active.at+max+1);
    }else if(id==='corners4'&&releasedAt!==null)deadline=releasedAt+8001;
@@ -144,6 +145,29 @@
     if(deadline!==null&&e.time>=deadline)reset(true);
     return state();
    }
+   // F-17: a fourth touch/pen corner press is incomplete until matching release.
+   if(waitingRelease){
+    if(e.time<waitingRelease.at||e.time>waitingRelease.at+1500){
+     reset(true);
+     if(e.type!=='down')return state();
+    }else if(e.type==='up'){
+     if(e.pointerId===waitingRelease.pointerId){reset(false);signalSuccess();}
+     else reset(true);
+     return state();
+    }else if(e.type==='lostcapture'||e.type==='cancel'){
+     if(e.pointerId===waitingRelease.pointerId)reset(true);
+     return state();
+    }else if(e.type==='cancel-wait'||e.type==='blur'||e.type==='hidden'||e.type==='orientation'){
+     reset(true);return state();
+    }else if(e.type==='down'){
+     reset(true);
+     // A top-left press may begin a new sequence after cancelling the old one.
+     if(e.corner==='tl'&&(e.pointerType!=='mouse'||e.button===0)){
+      steps=1;firstAt=e.time;releasedAt=e.time;
+     }
+     return state();
+    }
+   }
    if(e.type==='cancel'||e.type==='lostcapture'||e.type==='blur'||e.type==='hidden'||e.type==='orientation'){
     if(e.type==='lostcapture'&&(!active||active.pointerId!==e.pointerId))return state();
     if(e.type==='cancel'&&active&&active.pointerId!==e.pointerId)return state();
@@ -159,7 +183,12 @@
      return state();
     }
     steps++;releasedAt=e.time;
-    if(steps===4){reset(false);signalSuccess();}
+    if(steps===4){
+    if(e.pointerType==='touch'||e.pointerType==='pen'){
+     if(!Number.isInteger(e.pointerId))reset(true);
+     else waitingRelease={pointerId:e.pointerId,at:e.time};
+    }else{reset(false);signalSuccess();}
+   }
     return state();
    }
    if(e.type==='down'){
@@ -228,9 +257,30 @@
   }
   function first(e){if(callbacks.onPointerStart)callbacks.onPointerStart(e);}
   if(isCorners){
+   // Capture release on document even if the pointer leaves the fourth corner.
+   on(document,'pointerdown',e=>{
+    if(recognizer.state().awaitingRelease)emit('cancel-wait',e);
+   },true);
+   on(document,'pointerup',e=>{
+    if(recognizer.state().awaitingRelease)emit('up',e);
+   },true);
+   on(document,'pointercancel',e=>{
+    if(recognizer.state().awaitingRelease)emit('cancel',e);
+   },true);
+   on(document,'lostpointercapture',e=>{
+    if(recognizer.state().awaitingRelease)emit('lostcapture',e);
+   },true);
+   on(window,'blur',()=>emit('blur'));
+   on(document,'visibilitychange',()=>{if(document.hidden)emit('hidden')});
+   on(window,'orientationchange',()=>emit('orientation'));
    for(const corner of ['tl','tr','bl','br']){
     const div=document.createElement('div');div.className='lsh-corner lsh-corner-'+corner;
-    on(div,'pointerdown',e=>{first(e);emit('down',e,corner);});
+    on(div,'pointerdown',e=>{
+     first(e);emit('down',e,corner);
+     if(recognizer.state().awaitingRelease){
+      try{div.setPointerCapture(e.pointerId)}catch(_){}
+     }
+    });
     surface.appendChild(div);
    }
   }else{
