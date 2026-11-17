@@ -146,6 +146,7 @@
   }catch(_){registry=null}
   const writeRegistry=value=>{if(!registryStore)return false;
    try{registryStore.setItem(registryKey,JSON.stringify(value));return true;}catch(_){return false;}};
+  let registryWriteAvailable=!!registryStore;
   let n=requestedMinutes,localSession=null,blocked=null;
   let selectedUnlock=requestedUnlock.id,storedUnlockCode=requestedUnlock.code;
   let legacyLink=requestedUnlock.legacyLink,configurationMismatchSeen=null;
@@ -167,7 +168,7 @@
    if(mismatchAtLastOpen&&configurationMismatchSeen!==true){
     const proposed={...registry,configurationMismatchSeen:true};
     if(writeRegistry(proposed)){registry=proposed;configurationMismatchSeen=true;}
-    else mismatchPersistFailed=true;
+    else{mismatchPersistFailed=true;registryWriteAvailable=false;}
    }
   }
   if(registry){
@@ -184,7 +185,7 @@
    registry={session:localSession,limitMinutes:n,variant,createdAt:Date.now(),consumed:false,
     unlock:selectedUnlock,unlockCode:storedUnlockCode,configurationMismatchSeen:false};
    if(writeRegistry(registry))configurationMismatchSeen=false;
-   else configurationMismatchSeen=null;
+   else{configurationMismatchSeen=null;registryWriteAvailable=false;}
   }
   if(blocked){
    const text=(BLOCKED[cfg.lang]||BLOCKED.en)[blocked];
@@ -343,7 +344,7 @@
    lastPhase=state.phase;
    remaining.textContent=state.phase==='submitted'?ui.submitted:
     ui.remaining+': '+displayTime(state.remainingMs);
-   warning.textContent=[state.persistent?'':ui.saveWarning,
+   warning.textContent=[state.persistent&&registryWriteAvailable?'':ui.saveWarning,
     tabMonitor.available?'':ui.tabUnavailable,
     !document.documentElement.requestFullscreen&&state.phase!=='ready'?ui.fullscreenUnavailable:'']
     .filter(Boolean).join(' ');
@@ -480,7 +481,8 @@
    if(s.phase==='running'&&!s.expired)save();
    const out=engine.finish();tabMonitor.deactivate();render();return out;
   }
-  const status=()=>Object.freeze({...engine.status(),tabMonitoringAvailable:tabMonitor.available,
+  const status=()=>Object.freeze({...engine.status(),persistent:engine.status().persistent&&registryWriteAvailable,
+   tabMonitoringAvailable:tabMonitor.available,
    attemptCode:classAttempt,limitMinutes:n,requestedMinutes,
    requestedUnlockCode:requestedUnlock.code,pinnedUnlockCode:storedUnlockCode,
    legacyLink,configurationMismatchSeen,mismatchAtLastOpen,mismatchPersistFailed});
