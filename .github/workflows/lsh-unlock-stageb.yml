@@ -63,6 +63,8 @@ jobs:
         run: node --test language-skills-hub/tests/lsh-unlock-stageb-matrix.browser.test.cjs
       - name: B2 fullscreen rearming and F-17 browser matrix
         run: node --test language-skills-hub/tests/lsh-unlock-b2.browser.test.cjs
+      - name: C teacher UI geometry, accessibility, themes and runner-local screenshots
+        run: node --test language-skills-hub/tests/lsh-unlock-stagec-visual.browser.test.cjs
       - name: R56 Reading test and 120 decoded QR variants
         run: node --test language-skills-hub/tests/r56-reading-test-qr.browser.test.cjs
       - name: Report on failure
