@@ -243,7 +243,15 @@
    if(isTouchDevice()||!document.documentElement.requestFullscreen||engine.status().phase!=='interrupted')return;
    continueToken=Symbol('completed-gesture');
    const token=continueToken;
-   continueButton.hidden=false;continueButton.focus();
+   continueButton.hidden=false;continueButton.focus({preventScroll:true});
+   // The completing mouse click can steal focus after a rejected Fullscreen promise.
+   // Refocus only while the one-shot gesture token is still valid.
+   const restoreFocus=()=>{
+    if(continueToken===token&&!continueButton.hidden)
+     continueButton.focus({preventScroll:true});
+   };
+   if(typeof root.requestAnimationFrame==='function')root.requestAnimationFrame(restoreFocus);
+   root.setTimeout(restoreFocus,140);
    continueTimer=setTimeout(()=>{if(continueToken===token)hideContinue();},10000);
   }
   function requestUnlock(fromButton){
