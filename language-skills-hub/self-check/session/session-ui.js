@@ -484,7 +484,7 @@
   const status=()=>Object.freeze({...engine.status(),persistent:engine.status().persistent&&registryWriteAvailable,
    tabMonitoringAvailable:tabMonitor.available,
    attemptCode:classAttempt,limitMinutes:n,requestedMinutes,
-   requestedUnlockCode:requestedUnlock.code,pinnedUnlockCode:storedUnlockCode,
+   requestedUnlockCode:requestedUnlock.code,pinnedUnlockCode:unlockApi.codeFor(selectedUnlock),
    legacyLink,configurationMismatchSeen,mismatchAtLastOpen,mismatchPersistFailed});
   return Object.freeze({initialize,save,saveReviewMarks,finish,status,
    stop:()=>{clearInterval(interval);hideContinue();gestureAdapter?.destroy();tabMonitor.dispose();}});
