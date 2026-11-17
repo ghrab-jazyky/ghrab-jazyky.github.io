@@ -1,16 +1,26 @@
-# PLURAL – WIP / NO-GO (2026-11-17)
+PLURAL – Development only / NO-GO (2026-11-17)
 
-This branch contains a **development-only** plural flashcard candidate at `language-skills-hub/konverzace/plural/index.html` (DE/ES/FR; A1–C2).
+Branch: feat/lsh-plural-cards
+HTML: language-skills-hub/konverzace/plural/index.html
+Card identity: cl-plural. No catalog entry or production publication.
 
-**Not in catalog. Do not merge or deploy.** The HTML is generated from editable sources distributed in the standalone handoff archive (not committed here).
+Variant A: 624 DE + 624 ES + 624 FR entries, CEFR A1–C2, 8 stations/level, 10 cards + 3 EXTRA/station.
 
-Independent local QA: **25/25** static checks and **104/104** isolated Chromium `page.set_content` interaction checks. These tests do **not** verify hosted routing or the external LSH modules.
+Since WIP v1:
+- Replaced 212 generic ES/FR EXTRA explanations with targeted drafts.
+- Replaced 54 suspect countability/gloss entries; reviewed two additional glosses; 11 specific extra explanations revised.
+- Added 28 advanced ES/FR examples and 96 B1–C2 station-specific grammar challenges (across DE/ES/FR).
+- Added 159 curated Czech meanings for plural forms. Other plural lookups explicitly point back to the singular instead of claiming an incorrect Czech plural translation.
+- Preserved original DE cards, UI, timer, fullscreen, offline lookup, keyboard navigation, accessibility updates.
+- Deterministic CSP inline script hash, lsh/v2/lock.js and v3 vocabulary bridge included; NOT tested in hosted LSH.
 
-Outstanding **release blockers**:
-- 212 ES/FR EXTRA cards with generic explanations
-- Independent editorial and syllabus review for ES/FR B1–C2
-- Review of remaining mass/abstract nouns, Czech glosses, and disputed forms
-- Staged LSH catalog metadata and regression tests
-- Real hosted integration, vocabulary persistence, teacher UI lock, cross-browser/mobile accessibility QA
+Independent local checks: static 25/25, editorial regression 35/35, Chromium interaction 104/104, Chromium all-station DOM 1441/1441 across 144 stations. Chromium testing uses page.set_content, not actual hosted route. Node syntax and CSP SHA verified. Editorial work has NOT had independent native-speaker signoff.
 
-A strict build gate intentionally refuses release until the editorial blockers are closed. All production files and shared modules remain unchanged.
+RELEASE BLOCKERS:
+1) Native-speaker/teacher review of rewritten notes, vocabulary and advanced CEFR syllabus.
+2) Review of suspect countability and Czech plural glosses; 961 editorial queue entries are REVIEW ITEMS, not verified errors.
+3) Hosted LSH integration verification: actual catalog + localized metadata, real bridge persistence in IndexedDB, UI-only teacher lock, CSP, browser/mobile accessibility and full regression.
+4) Owner approval and all editorial_approval.json gates true. --strict build intentionally fails now.
+
+Do not merge, add catalog entry, approve, or deploy before all blockers are closed.
+Production main remains unchanged.
