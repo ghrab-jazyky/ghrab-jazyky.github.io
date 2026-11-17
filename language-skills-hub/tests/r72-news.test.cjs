@@ -100,7 +100,7 @@ test('E3 practice scoring: another 102 mutations, no mistaken TEST bank exposure
  assert.equal(mutations,102);
 });
 
-test('E3 shared teacher keys cannot confuse TEST and PRACTICE',()=>{
+test('E3 public practice key never substitutes TEST questions',()=>{
  const entry=listen.catalogEntry(catalog,id);
  assert.deepEqual(keys.keyEntries.map(x=>x.id),catalog.entries.filter(e=>
   ['cteni','poslech'].includes(e.skill)).map(x=>x.id));
@@ -147,12 +147,12 @@ test('E3 shared teacher keys cannot confuse TEST and PRACTICE',()=>{
   assert.ok(!practise.groups.some(g=>g.title==='Open questions – vzorové odpovědi'));
   const reviewLabels=practise.groups.flatMap(g=>g.items).map(x=>x.question);
   assert.equal(new Set(reviewLabels).size,reviewLabels.length,lv+' duplicate teacher key question');
-  const exam=keys.validate(keys.buildListeningTest(variant,entry,'en',lv,listen.cloze(variant,id,lv)));
-  assert.equal(practise.mode,'practice');assert.equal(exam.mode,'test');
-  const parts=m=>m.groups.flatMap(g=>g.items);
-  assert.equal(exam.groups.flatMap(g=>g.items).length,17);
-  assert.notDeepEqual(parts(practise).slice(0,17).map(x=>x.question),
-   parts(exam).slice(0,17).map(x=>x.question));
+  assert.equal(practise.mode,'practice');
+  assert.equal(typeof keys.buildListeningTest,'undefined');
+  const scored=listen.assessAuto(variant,{},id,lv);
+  assert.equal(scored.objectiveMax,17);
+  assert.notDeepEqual(practise.groups.flatMap(g=>g.items).slice(0,17).map(x=>x.question),
+   scored.reviewed.slice(0,17).map(x=>x.question));
  }
 });
 

@@ -32,9 +32,10 @@ for(const [name,engine]of[['chromium',chromium],['webkit',webkit]]){
    assert.equal(await page.locator('#topicTitle').textContent(),'Asteroids');
    assert.equal(await page.locator('#language').inputValue(),'en');
    assert.equal(await page.locator('#level').inputValue(),'B2');
-   assert.equal(await page.locator('#answerMode').inputValue(),'test');
+   assert.equal(await page.locator('#answerMode').count(),0);
+   assert.equal(new URL(page.url()).searchParams.get('mode'),'practice');
    assert.equal(await page.locator('#retryLoad').isVisible(),false);
-   assert.equal(await page.locator('#answerPreview .key-item').count(),asteroidB2.questions.length);
+   assert.ok(await page.locator('#answerPreview .key-item').count()>=asteroidB2.questions.length);
    assert.ok((await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth))<=3);
   }finally{await browser.close()}
  });
@@ -51,7 +52,8 @@ for(const [name,engine]of[['chromium',chromium],['webkit',webkit]]){
    assert.equal(await page.locator('#topicTitle').textContent(),'Harrison Ford — Life Achievement Speech');
    assert.equal(await page.locator('#language').inputValue(),'en');
    assert.equal(await page.locator('#level').inputValue(),'B2');
-   assert.equal(await page.locator('#answerMode').inputValue(),'test');
+   assert.equal(await page.locator('#answerMode').count(),0);
+   assert.equal(new URL(page.url()).searchParams.get('mode'),'practice');
    assert.equal(await page.locator('#downloadPdf').isDisabled(),true);
    assert.match(await page.locator('#status').textContent(),/Opakovat načtení/);
    assert.doesNotMatch(await page.locator('#status').textContent(),/Neplatný odkaz/);
@@ -62,9 +64,7 @@ for(const [name,engine]of[['chromium',chromium],['webkit',webkit]]){
    assert.equal(await page.locator('#retryLoad').isVisible(),false);
    assert.match(await page.locator('#status').textContent(),/Klíč je připraven/);
    assert.ok(await page.locator('#answerPreview .key-item').count()>15);
-   // Switching modes and levels still uses the same immutable card.
-   await page.locator('#answerMode').selectOption('practice');
-   await page.locator('#downloadPdf:enabled').waitFor({timeout:20000});
+   // Switching levels still uses the same immutable practice card.
    await page.locator('#level').selectOption('A1');
    await page.locator('#answerPreview h2').filter({hasText:/A1$/}).waitFor({timeout:20000});
    assert.equal(await page.locator('#topicTitle').getAttribute('data-topic-id'),'ll-harrison-ford');

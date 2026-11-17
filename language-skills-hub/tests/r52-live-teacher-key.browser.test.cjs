@@ -31,7 +31,7 @@ async function probe(engineName,engine,params){
    catch(e){events.push(['page.goto',e.message]);}
    if(!requireRelease)break;
    const currentRelease=await page.evaluate(()=>document.querySelector('meta[name="lsh-teacher-keys-version"]')?.content).catch(()=>null);
-   if(currentRelease==='R52')break;
+   if(currentRelease==='R76A')break;
   }
   await page.waitForTimeout(1400);
   const snapshot=await page.evaluate(()=>({
@@ -45,7 +45,9 @@ async function probe(engineName,engine,params){
    level:document.getElementById('level')?.value,
    language:document.getElementById('language')?.value,
    pdfDisabled:document.getElementById('downloadPdf')?.disabled,
-   selection:document.getElementById('answerMode')?.value
+   modeControlPresent:Boolean(document.getElementById('answerMode')),
+   fixedMode:document.getElementById('modeFixed')?.textContent||null,
+   queryMode:new URL(location.href).searchParams.get('mode')
   }));
   let direct;
   try{
@@ -58,7 +60,9 @@ async function probe(engineName,engine,params){
    });
   }catch(e){direct={evaluation_error:String(e)}}
   console.log(JSON.stringify({engineName,label,httpStatus:pageResponse?.status(),elapsed:Date.now()-start,snapshot,direct,events}));
-  if(requireRelease&&snapshot.release!=='R52')throw new Error(engineName+' '+label+' did not receive the R52 Pages release');
+  if(requireRelease&&snapshot.release!=='R76A')throw new Error(engineName+' '+label+' did not receive the R76A Pages release');
+  if(requireRelease&&(snapshot.modeControlPresent||snapshot.queryMode!=='practice'||!/procvičování/i.test(snapshot.fixedMode||'')))
+   throw new Error(engineName+' '+label+' public TEST mode was not removed');
   if(snapshot.pdfDisabled||snapshot.topic==='Kartu nelze otevřít')throw new Error(engineName+' '+label+' failed to initialize in production');
  }finally{await browser.close()}
 }

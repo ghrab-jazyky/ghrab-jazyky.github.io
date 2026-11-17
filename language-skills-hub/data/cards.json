@@ -29,6 +29,7 @@
     },
     {
       "id": "rl-asteroids",
+      "testExactOverlap": true,
       "skill": "cteni",
       "title": "Asteroids",
       "summary": "Čtení o asteroidech s úkoly na vyhledávání informací, detailní porozumění a doložení odpovědí v textu.",
@@ -51,6 +52,7 @@
     },
     {
       "id": "ll-matthew-oscars",
+      "testExactOverlap": true,
       "skill": "poslech",
       "title": "Matthew McConaughey — Oscars 2014",
       "summary": "Autentický děkovný projev: první poslech pro hlavní sdělení, druhý pro interpretaci a třetí pro písemné důkazy a rekonstrukci řeči.",
@@ -488,6 +490,7 @@
     },
     {
       "id": "ll-harrison-ford",
+      "testExactOverlap": true,
       "skill": "poslech",
       "title": "Harrison Ford — Life Achievement Speech",
       "summary": "Poslech autentického projevu při ocenění za celoživotní přínos; soustředění na hlavní myšlenky, detaily a způsob vyjadřování.",
@@ -507,6 +510,7 @@
     },
     {
       "id": "ll-peaky-no-fighting",
+      "testExactOverlap": true,
       "skill": "poslech",
       "title": "Peaky Blinders — No Fighting",
       "summary": "Anglickojazyčná dramatická scéna s napětím a příkazy; práce s porozuměním dialogu a jeho tónu.",
@@ -526,6 +530,7 @@
     },
     {
       "id": "rl-can-mistakes",
+      "testExactOverlap": true,
       "skill": "cteni",
       "title": "Can Mistakes Help Us Learn?",
       "summary": "Příběhy a úvahy o učení z chyb, zpětné vazbě a strategiích pro další pokrok.",
@@ -548,6 +553,7 @@
     },
     {
       "id": "rl-plastic-ocean",
+      "testExactOverlap": true,
       "skill": "cteni",
       "title": "Plastic in Our World (Plastic Ocean)",
       "summary": "Plastový odpad a ochrana prostředí; některé úrovně pracují také s recenzí fiktivního dokumentárního filmu.",
@@ -570,6 +576,7 @@
     },
     {
       "id": "rl-email-friend",
+      "testExactOverlap": true,
       "skill": "cteni",
       "title": "An Email from a Friend",
       "summary": "Osobní e-maily a komunikace s přáteli v autenticky působících situacích.",
@@ -592,6 +599,7 @@
     },
     {
       "id": "rl-instant-messages",
+      "testExactOverlap": true,
       "skill": "cteni",
       "title": "Instant Messages",
       "summary": "Krátké zprávy, digitální komunikace a možné příčiny nedorozumění.",
@@ -658,6 +666,7 @@
     },
     {
       "id": "ll-sad",
+      "testExactOverlap": true,
       "skill": "poslech",
       "title": "Seasonal Affective Disorder – Winter got you feeling down?",
       "summary": "Autentické TED-Ed video: šest úrovní A1–C2 s vlastními otázkami, procvičováním a automaticky hodnoceným TESTEM.",
@@ -677,6 +686,7 @@
     },
     {
       "id": "ll-conlangs",
+      "testExactOverlap": false,
       "skill": "poslech",
       "title": "Are Elvish, Klingon, Dothraki and Na’vi real languages?",
       "summary": "TED-Ed o uměle vytvořených jazycích, gramatice a historickém vývoji; samostatné A1–C2 procvičování a automatický test.",
@@ -696,6 +706,7 @@
     },
     {
       "id": "ll-how-to-choose-your-news",
+      "testExactOverlap": false,
       "skill": "poslech",
       "title": "How to Choose Your News",
       "summary": "TED-Ed o výběru a ověřování zpráv: samostatné procvičování a automaticky hodnocený test pro A1–C2.",

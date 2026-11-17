@@ -177,6 +177,18 @@
   $('timerMinutes').addEventListener('change',share);
   renderMedia();
   share();
+  const overlapNotice=$('testOverlapNotice');
+  // Generated from data/cards.json; the Stage A parity test must match
+  // these values to the canonical catalog on every change.
+  const exactOverlap=Object.freeze({
+   'll-matthew-oscars':true,'ll-harrison-ford':true,
+   'll-peaky-no-fighting':true,'ll-sad':true,
+   'll-conlangs':false,'ll-how-to-choose-your-news':false
+  });
+  if(overlapNotice&&exactOverlap[topicId]===true){
+   overlapNotice.textContent='Pozor: Test obsahuje otázky shodné s procvičováním. Výsledek proto sám neprokazuje samostatnou práci.';
+   overlapNotice.hidden=false;
+  }
  }
  start();
 })();

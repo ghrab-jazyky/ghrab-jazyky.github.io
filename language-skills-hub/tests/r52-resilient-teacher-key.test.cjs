@@ -35,8 +35,9 @@ test('R52: result UI initializes without catalog fetch, preserves topic isolatio
  assert.match(js,/requestedSkill===null\|\|requestedSkill===e\.skill/);
  assert.match(js,/retryLoad.*addEventListener\('click',refresh\)/);
  assert.match(html,/id="retryLoad" hidden/);
- assert.match(html,/name="lsh-teacher-keys-version" content="R52"/);
- assert.match(html,/id="answerMode"/);
+ assert.match(html,/name="lsh-teacher-keys-version" content="R76A"/);
+ assert.match(html,/id="modeFixed"/);
+ assert.doesNotMatch(html,/id="answerMode"|value="test"/);
  assert.match(html,/id="topicTitle"/);
  assert.match(html,/id="language"/);
  assert.match(html,/id="level"/);

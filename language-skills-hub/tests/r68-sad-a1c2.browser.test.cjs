@@ -82,7 +82,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await context.close();
   }finally{await browser.close()}
  });
- test(`R68 ${name}: one teacher key with practice/test modes, all six levels and branded PDF`,{timeout:220000},async()=>{
+ test(`R68 ${name}: public practice key only, all six levels and branded PDF`,{timeout:220000},async()=>{
   const browser=await engine.launch({headless:true});
   try{
    const context=await browser.newContext({acceptDownloads:true});
@@ -92,12 +92,12 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      {topic:'ll-sad',skill:'poslech',lang:'en',level,mode:'test'}));
     await page.locator('#downloadPdf:enabled').waitFor({timeout:18000});
     assert.equal(await page.locator('#topicTitle').getAttribute('data-topic-id'),'ll-sad');
-    assert.equal(await page.locator('.key-item').count(),17);
+    assert.ok(await page.locator('.key-item').count()>17);
+    assert.equal(await page.locator('#answerMode').count(),0);
+    assert.equal(new URL(page.url()).searchParams.get('mode'),'practice');
     const download=page.waitForEvent('download');await page.locator('#downloadPdf').click();
     const pdf=await download;assert.ok(fs.readFileSync(await pdf.path()).subarray(0,8).toString()==='%PDF-1.4');
-    await page.locator('#answerMode').selectOption('practice');
-    await page.locator('#downloadPdf:enabled').waitFor({timeout:14000});
-    assert.ok((await page.locator('.key-item').count())>17);
+    assert.match(await page.locator('.preview-mode').innerText(),/PROCVIČOVACÍ/);
    }
    assert.deepEqual(errors,[]);
    await context.close();

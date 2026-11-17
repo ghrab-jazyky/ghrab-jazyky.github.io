@@ -3,93 +3,46 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..');
-const read=pathIn=>fs.readFileSync(path.join(root,pathIn),'utf8');
+const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const reading=require('../self-check/reading/reading-core.js');
 const listening=require('../self-check/listening/listening-core.js');
 const key=require('../self-check/practice-answers/teacher-key.js');
-const entries=JSON.parse(read('data/cards.json')).entries.filter(e=>['cteni','poslech'].includes(e.skill)&&!['ll-sad','ll-conlangs','ll-how-to-choose-your-news'].includes(e.id));
-const rows=model=>model.groups.flatMap(g=>g.items);
-test('R51 fixed-topic view has one mode selector and no cross-topic dropdown',()=>{
+const entries=JSON.parse(read('data/cards.json')).entries.filter(e=>['cteni','poslech'].includes(e.skill));
+test('Stage A: public answer key has a fixed PRACTICE mode and no test model builder',()=>{
  const html=read('self-check/practice-answers/teacher.html');
  const js=read('self-check/practice-answers/teacher-key.js');
- assert.match(html,/<select id="answerMode" required>/);
- assert.match(html,/<option value="practice">/);
- assert.match(html,/<option value="test">/);
- assert.match(html,/id="language"/);
- assert.match(html,/id="level"/);
+ assert.match(html,/id="modeFixed"/);assert.doesNotMatch(html,/id="answerMode"|value="test"/);
+ assert.doesNotMatch(js,/buildReadingTest|buildListeningTest|mode==='test'/);
+ assert.equal(typeof key.buildReadingTest,'undefined');
+ assert.equal(typeof key.buildListeningTest,'undefined');
+ assert.match(js,/searchParams.set\('mode','practice'\)/);
+ assert.match(js,/lsh-vysledky-procvicovani-/);
  assert.match(html,/id="topicTitle"/);
  assert.doesNotMatch(html,/<select id="topic"/);
- assert.match(js,/mode==='test'\?buildReadingTest/);
- assert.match(js,/mode==='test'\?buildListeningTest/);
- assert.match(js,/listen\.cloze\(v,e\.id,level\)/);
- assert.match(js,/searchParams\.set\('mode',mode\)/);
- assert.match(js,/requestedMode===null\|\|\['practice','test'\]\.includes\(requestedMode\)/);
- assert.match(js,/mode==='test'\?'test':'procvicovani'/);
 });
-test('R51 Reading: test key matches all scored questions, no non-graded practice tasks (120 variants)',()=>{
- let variants=0,questions=0;
- for(const entry of entries.filter(x=>x.skill==='cteni')){
-  const data=reading.parseReadingData(read(entry.lockSource||entry.relative));
-  for(const lang of entry.languages)for(const level of entry.levels){
-   const v=reading.variantFromData(data,lang,level);
-   const practice=key.buildReading(v,entry,lang,level);
-   const model=key.buildReadingTest(v,entry,lang,level);
-   key.validate(practice);key.validate(model);
-   assert.equal(practice.mode,'practice');assert.equal(model.mode,'test');
-   assert.equal(model.topicId,entry.id);assert.equal(model.language,lang);assert.equal(model.level,level);
-   assert.equal(rows(model).length,v.questions.length);
-   assert.ok(model.groups.every(g=>g.type==='answers'&&g.title.startsWith('TEST')));
-   for(const q of v.questions){
-    const solutions=rows(model).filter(a=>a.question===q.q&&a.answer===q.choices[q.answer]);
-    assert.equal(solutions.length,1,entry.id+' '+lang+' '+level+' '+q.id+' missing');
-    assert.equal(solutions[0].note,q.explanation||'');
+test('Stage A: practice models are complete on all 156 variants, test mode is rejected',()=>{
+ let count=0,readingQuestions=0;
+ for(const e of entries){
+  const html=read(e.lockSource||e.relative);
+  const data=e.skill==='cteni'?reading.parseReadingData(html):listening.extractJson(html,'DATA');
+  for(const language of e.languages)for(const level of e.levels){
+   const source=e.skill==='cteni'?reading.variantFromData(data,language,level):listening.variant(data,level);
+   const practice=e.skill==='cteni'?key.buildReading(source,e,language,level):
+    key.buildListening(e.id==='ll-conlangs'?key.conlangsPracticeVariant(data,level,source):
+     e.id==='ll-how-to-choose-your-news'?key.newsPracticeVariant(data,level,source):source,e,language,level);
+   key.validate(practice);
+   assert.equal(practice.mode,'practice');
+   assert.equal(practice.topicId,e.id);
+   assert.ok(practice.groups.flatMap(g=>g.items).length>0,e.id+' '+level);
+   assert.throws(()=>key.validate({...practice,mode:'test'}),/Neplatný učitelský klíč/);
+   if(e.skill==='cteni'){
+    const rows=practice.groups.flatMap(g=>g.items);
+    for(const q of source.questions)assert.ok(rows.some(r=>r.question===q.q&&r.answer===q.choices[q.answer]),e.id+' '+language+' '+level+' '+q.id);
+    readingQuestions+=source.questions.length;
    }
-   assert.equal(reading.score(v,{}).total,rows(model).length);
-   variants++;questions+=v.questions.length;
+   count++;
   }
  }
- assert.equal(variants,120);assert.equal(questions,1800);
-});
-test('R51 Listening: test key matches assessAuto for 18 variants, including accepted factual cloze',()=>{
- let variants=0,total=0;
- for(const entry of entries.filter(x=>x.skill==='poslech')){
-  const data=listening.extractJson(read(entry.lockSource||entry.relative),'DATA');
-  for(const level of entry.levels){
-   const v=listening.variant(data,level);
-   const cloze=listening.cloze(v,entry.id,level);
-   const practice=key.buildListening(v,entry,'en',level);
-   const model=key.buildListeningTest(v,entry,'en',level,cloze);
-   const score=listening.assessAuto(v,{},entry.id,level);
-   key.validate(practice);key.validate(model);
-   assert.equal(practice.mode,'practice');assert.equal(model.mode,'test');
-   assert.equal(model.topicId,entry.id);assert.equal(model.level,level);
-   assert.equal(model.groups.length,4);
-   assert.ok(model.groups.every(g=>g.type==='answers'));
-   assert.equal(rows(model).length,score.objectiveMax);
-   const answers=rows(model);
-   for(let i=0;i<score.reviewed.length;i++){
-    const reviewed=score.reviewed[i],answer=answers[i];
-    assert.equal(answer.question,reviewed.question,entry.id+' '+level+' question '+i);
-    assert.equal(answer.answer,reviewed.correctAnswers.join(' / '),entry.id+' '+level+' answer '+i);
-   }
-   assert.equal(model.groups[3].items.length,cloze.length);
-   for(const [i,task]of cloze.entries()){
-    const answer=model.groups[3].items[i];
-    assert.equal(answer.answer,task.correctAnswer);
-    for(const accepted of task.accepted)if(task.accepted.length>1)
-     assert.ok(answer.note.includes(accepted),entry.id+' '+level+' missing accepted form');
-   }
-   // The test excludes the ungraded pre-listening, vocabulary and open discussion content.
-   assert.equal(model.groups.some(g=>/Vocabulary|Open questions|Before|Speaking follow-up/i.test(g.title)),false);
-   variants++;total+=rows(model).length;
-  }
- }
- assert.equal(variants,18);assert.ok(total>=18*8);
-});
-test('R51 invalid mode is rejected; both PDF modes are independently identified',()=>{
- const entry=entries.find(e=>e.id==='rl-asteroids');
- const v=reading.variantFromData(reading.parseReadingData(read(entry.relative)),'en','B2');
- const model=key.buildReadingTest(v,entry,'en','B2');
- assert.throws(()=>key.validate({...model,mode:'arbitrary'}),/Neplatný učitelský klíč/);
- assert.equal(key.validate(model).mode,'test');
+ assert.equal(count,156);
+ assert.equal(readingQuestions,1800);
 });
