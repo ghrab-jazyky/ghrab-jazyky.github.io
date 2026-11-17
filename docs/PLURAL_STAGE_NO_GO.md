@@ -1,53 +1,51 @@
-# Plural – staging V4 / NO-GO for production
+# PLURAL – staging V5 / NO-GO pro produkci (17. 11. 2026)
 
-## Scope and isolation
-- Branch: `feat/lsh-plural-cards-r70-stage`; production `main` unchanged.
-- Branch was merged **from** latest `main` at commit `b7489a349d0d0fa7b4d56dcfdb44e2ad95c92905`; no main commits missing.
-- `cl-plural`: `grammar-flashcards`, DE/ES/FR, A1–C2, 144 stations, 1,872 items.
-- Stage-only catalog contains **34 topics / 702 variants**; main remains **33 / 684**.
-- The original 22 standard Conversation Lab cards keep their common engine and own regression assertions.
-- Existing language card JavaScript and shared LSH modules are unchanged; only scoped catalog/manifest metadata, new Plural HTML, tests, and non-production docs have been added or updated.
+## Bezpečný rozsah změn
 
-## Verified in real GitHub Actions
-Baseline merge-from-main commit: `b7489a349d0d0fa7b4d56dcfdb44e2ad95c92905`; latest tested browser-test commit: `615d92b1d60f55ca686af63bcafcbcd6aba27b45`.  
-Latest GitHub Actions run: https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/44166766786 (commit `615d92b1d60f55ca686af63bcafcbcd6aba27b45`, all checks passed)
+- **Zdroj pravdy:** větev `feat/lsh-plural-cards-r70-stage` v repozitáři `ghrab-jazyky/ghrab-jazyky.github.io`.
+- **Produkční `main` beze změny.** Stav větví je nutno znovu porovnat před integrací; při poslední kontrole měl staging 5 commitů k doplnění z `main`.
+- Staging katalog: **34 témat / 702 jazykových variant**. Produkční katalog: **33 / 684**.
+- `cl-plural`, typ `grammar-flashcards`: DE/ES/FR, A1–C2, 8 stanic/úroveň, 10 MAIN + 3 EXTRA/stanici = **1 872 kartiček**.
+- Původních 22 Conversation Lab karet používá dál původní engine. Žádné změny sdílených `assets/lsh/`.
+- Stávající obsahové schvalovací příznaky jsou **FALSE**; nic nebylo sloučeno do main, publikováno ani označeno za schválený release.
 
-| Suite | Pass | Fail |
-|---|---:|---:|
-| Legacy Node regression (all non-browser Node tests) | 291 | 0 |
-| Plural-specific Node contract | 5 | 0 |
-| Plural HTTP browser tests in Chromium and WebKit (including keyboard focus and controls) | 8 | 0 |
-| Catalog and CEFR badges browser regression | 2 | 0 |
-| Shared vocabulary across original/new cards and IndexedDB | 4 | 0 |
-| Non-graded public Reading/Listening actions | 6 | 0 |
-| Legacy Reading/Listening results browser regression (historically misnamed Node-style file) | 6 | 0 |
-| Listening Studio responsive regression | 4 | 0 |
-| **TOTAL** | **326** | **0** |
+## Opravy V5 podle nezávislého auditu Clauda V4
 
-The CI uses an actual local HTTP server in GitHub Actions and real Playwright Chromium/WebKit browsers. This is NOT a check of the public GitHub Pages domain. This browser suite is *targeted*, not every browser test in the repository.
+- **P1-L01:** nově napsáno 168 vysvětlení EXTRA (84 ES + 84 FR); konkrétní slovní nebo gramatický jev místo původní univerzální šablony. Autorské přepisy v `authoring/plural/notes_es_v5.tsv` a `notes_fr_v5.tsv`.
+- **P1-L03:** nově napsáno 67 gramatických výzev (32 ES, 32 FR, 3 DE C2). Zbývajících 29 DE B1–C2 výzev je původních a čeká na nezávislou kontrolu; soubor `authoring/plural/tasks_v5.tsv`.
+- **P2/P3:** doložené opravy španělských akcentů (`turrón/turrones`, `belén/belenes`), `arroz/arroces`, části duplicit, shody a českých významů, znění pravidel a oslovení v ES/FR.
+- **P2-D03:** seznam doporučených slov zobrazuje singulár a českou glosu, ale **skryje plurál**, dokud není příslušná MAIN kartička otočena; otočení zpět plurál opět skryje. `Otočit všechny`/vrátit všechny mění všech 10 řádků konzistentně. Sdílený slovníček stále ukládá pouze singulárové heslo.
+- **P2-T01:** neaktivní strana flip karty je skrytá přes CSS `visibility`. Lokální DOM test tuto skutečnost ověřil; **nezávislý axe-core WCAG 2.2 AA audit zůstává otevřený**.
+- **Build:** `authoring/plural/{content.json,glossary.json,template.html,build.cjs}` je reprodukovatelný a CI porovnává bajtovou shodu. Staging `version.json` obsahuje aktualizovaný obsahový hash.
+- Evidence 328 cílených datových změn: archiv `PLURAL_LSH_WIP_V5_HANDOFF_2026-11-17.zip` předaný vlastníku projektu. **328 změn není totéž jako 328 ověřených jazykových chyb.**
 
-## Specific verified behaviors
-- Teacher-selected `?practice=1&lang=es&level=B2&zamek=1` has UI-only lock and correct language/level; unsupported `lang=en` does not force an invalid lock.
-- All supported languages render 10+3 cards and B1–C2 grammar challenges; desktop/mobile layout and card flips/EXTRA work.
-- Existing `card-bridge.js` saves an individual singular lemma from `#vocabGrid .vocab-item b`; plural is a separate visual line.
-- Canonical browser IndexedDB `lsh` persists the saved word after reload; My Vocabulary displays it in both Chromium and WebKit.
-- No browser page errors or CSP errors in tested paths. Keyboard regression also validates Enter/Space card flips, arrow focus navigation, EXTRA keyboard operation and Escape on the timer editor in Chromium and WebKit.
-- Stage commit graph is ahead of latest `main` and not behind it. No PR, merge **into** main, or deployment.
+## Ověřené testy
 
-## Follow-up after Claude V4 audit (17 Nov 2026)
-- Claude's independent report records **3 P1, 9 P2, 9 P3** findings and confirms **NO-GO** for language/didactics. The 235 machine-readable repair entries contain repeated IDs (220 unique item IDs); **168** are ES/FR templated EXTRA explanations (84 ES, 84 FR).
-- Confirmed source examples: ES `turrón → turrones` incorrectly says stress *still falls on the penultimate syllable*; FR `l’adolescent` contains editorial meta text; ES `la muestra` and FR `le sommet` present an ordinary -s plural as an EXTRA exception.
-- Accessibility/UX follow-up: eliminate axe label-content-name-mismatch on flip cards; avoid revealing all plural answers below unflipped practice cards.
-- **New source recovery**: `language-skills-hub/authoring/plural/content.json`, `glossary.json`, `template.html`, `build.cjs`. These are recovered from current generated HTML, not the original author's work tree. The staged CI now runs `node language-skills-hub/authoring/plural/build.cjs --check` and must reproduce the existing HTML byte-for-byte before any editorial edits.
-- Do not change main, unlock editorial approvals, or claim language review completion. Separate native-language editorial signoff still required.
+Staging HTML SHA-256: `ded6d2d62e441cddab8b33a87533ccf6bad02892defb727ec9efa974444a2b75`.
 
-## Non-negotiable blockers
-1. Independent native-language/editorial review of ES/FR EXTRA notes (212 rewritten generic explanations), questionable countability and Czech glosses, and B1–C2 CEFR grammar progression. The review queue contains 961 prompts for manual inspection, NOT 961 confirmed errors.
-2. `authoring/editorial_approval.json` in the source handoff keeps **all four approval booleans false**. Do not switch them without expert evidence.
-3. Browser evidence does not include the public GitHub Pages deployment origin, every desktop/mobile OS, keyboard/screen-reader audit, or all 60+ historical browser test files.
-4. An official release version and content integrity regeneration, publisher approval, and merge to main have NOT been authorized.
+**GitHub Actions, commit `c1a6b340b211ce77fdf76cf9e6917a2070b470d6`:**  
+https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/44176813222
 
-## Claud(e) independent review handoff
-See `docs/PLURAL_CLAUDE_STAGE_V4_REVIEW.md` in this branch. Reviewer must provide separately justified language and integration verdicts.
+| Kontrolní sada | Výsledek |
+|---|---:|
+| Plural Node kontrakt včetně individuálních přepisů | 6/6 PASS |
+| Všechny Node statické regrese repozitáře | 292/292 PASS |
+| Plural HTTP browser testy Chromium/WebKit, včetně skrytých plurálů | 10/10 PASS |
+| Katalog a CEFR browser testy včetně EN původních 22 karet | 2/2 PASS |
+| Společný slovníček / IndexedDB | 4/4 PASS |
+| Public Reading/Listening links | 6/6 PASS |
+| Historická výsledková browser sada | 6/6 PASS |
+| Listening studio responsive regrese | 4/4 PASS |
+| **Celkem** | **330/330 PASS** |
 
-**Overall release decision: NO-GO (pending independent editorial approval).**
+Doplňkové izolované lokální testy: 9/9 statických a 969/969 Chromium DOM kontrol na 144 stanicích. Reálné browser CI běží proti lokálnímu HTTP serveru v GitHub Actions, **nikoliv na publikované doméně GitHub Pages**. Nejde o všechny historické browser testy repozitáře.
+
+## Neuzavřené blokery – důvod NO-GO
+
+1. **P1-L02 – obsahová gradace B1–C2 ES/FR:** většina MAIN slov má stále základní plurálové štítky. Orientační heuristika počítá v 80 MAIN kartách/úroveň: ES B1 78, B2 80, C1 77, C2 70; FR B1 76, B2 78, C1 75, C2 76. Tyto počty vycházejí jen z klasifikace štítku, nikoli z normativního CEFR hodnocení; potřebují důkladný lidský jazykový audit a přepracování hlavních karet.
+2. Native-speaker / pedagogická kontrola všech nových ES/FR EXTRA vysvětlení, pokročilých úloh, sporných substantiv a českých glos – **neprovedeno**.
+3. Axe-core WCAG 2.2 AA, skutečný iPhone Safari a Android, všechny historické browser testy – **neprovedeno**.
+4. Synchronizace stagingu s nejnovějším `main`, oficiální nové release označení, učitelský changelog a vlastníkovo finální schválení – **neprovedeno**.
+5. Všechna čtyři schvalovací pole v `editorial_approval.json` zůstávají `false`; neměnit bez důkazů.
+
+**Celkový verdikt: NO-GO pro produkční nasazení.** Technická regrese stagingové verze je úspěšná; jazykové schválení a didaktická gradace dosud nejsou uzavřené.
