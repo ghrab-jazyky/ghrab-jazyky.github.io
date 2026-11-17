@@ -157,6 +157,7 @@
    if(hasUnlock!==hasCode||
      (hasUnlock&&!unlockApi.byId(registry.unlock))||
      (hasCode&&registry.unlockCode!==null&&!unlockApi.byCode(registry.unlockCode))||
+     (hasUnlock&&registry.unlockCode===null&&registry.unlock!=='corners4')||
      (hasUnlock&&hasCode&&registry.unlockCode!==null&&unlockApi.byCode(registry.unlockCode).id!==registry.unlock)){
     const error=new Error('Corrupted saved lock variant');error.code='corrupted-registry';throw error;
    }
@@ -273,7 +274,7 @@
     if(engine.status().phase!=='interrupted'||engine.status().expired)return;
     if(restricted()){lockReason('restricted-viewport');return;}
     if(ok&&document.fullscreenElement){fullscreenArmed=true;finishResume();}
-    else{lockReason('fullscreen-denied');offerContinue();}
+    else{lockReason('fullscreen-denied');if(!fromButton)offerContinue();else hideContinue();}
    };
    // Request synchronously in the completion event, before scheduling any timer.
    let timeout=null,promise=null;
