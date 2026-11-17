@@ -314,19 +314,22 @@
    destroy:()=>{disposed=true;if(timer!==null)clearTimeout(timer);for(const [t,k,f,o] of listeners)t.removeEventListener(k,f,o);surface.remove();}});
  }
  const xml=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+ let markerSerial=0;
  function svg(id,width,height){
   const def=byId(id),g=geometry(id,width,height);
+  // Every teacher thumbnail and full-size SVG must have an independent marker ID.
+  const markerId='lsh-unlock-tip-'+(++markerSerial);
   const dots=g.points.map((p,i)=>({x:p.x,y:p.y,i}));
   let details='';
   if(id==='corners4'){
-   details='<polyline points="'+dots.map(d=>d.x+','+d.y).join(' ')+'" fill="none" stroke="currentColor" stroke-opacity=".6" stroke-dasharray="9 11" stroke-width="3" marker-end="url(#tip)"/>';
+   details='<polyline points="'+dots.map(d=>d.x+','+d.y).join(' ')+'" fill="none" stroke="currentColor" stroke-opacity=".6" stroke-dasharray="9 11" stroke-width="3" marker-end="url(#'+markerId+')"/>';
    details+=g.rects.map((q,i)=>'<rect x="'+q.x+'" y="'+q.y+'" width="58" height="58" fill="none" stroke="currentColor" stroke-width="2" data-corner="'+i+'"/>'+
     '<text x="'+(q.x+29)+'" y="'+(q.y+38)+'" text-anchor="middle" fill="currentColor" font-size="28">'+(i+1)+'</text>').join('');
   }else{
    const unique=dots.filter((d,i)=>dots.findIndex(x=>x.x===d.x&&x.y===d.y)===i);
    const path=dots.map(d=>d.x+','+d.y).join(' ');
-   if(id==='draw_z')details+='<polyline points="'+path+'" fill="none" stroke="currentColor" stroke-width="4" marker-end="url(#tip)"/>';
-   else if(unique.length>1)details+='<polyline points="'+path+'" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="7 8" marker-end="url(#tip)"/>';
+   if(id==='draw_z')details+='<polyline points="'+path+'" fill="none" stroke="currentColor" stroke-width="4" marker-end="url(#'+markerId+')"/>';
+   else if(unique.length>1)details+='<polyline points="'+path+'" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="7 8" marker-end="url(#'+markerId+')"/>';
    details+=unique.map(d=>{
     const indexes=dots.filter(x=>x.x===d.x&&x.y===d.y).map(x=>x.i+1);
     return '<circle data-point="'+d.i+'" cx="'+d.x+'" cy="'+d.y+'" r="'+g.r+'" fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-width="2"/>'+
@@ -338,7 +341,7 @@
   if(id==='hold_double_tap')details+='<text x="'+(width*.5)+'" y="'+(height*.75)+'" text-anchor="middle" fill="currentColor" font-size="24">1: podržet asi 3 s · vpravo 2×</text>';
   return '<svg class="lsh-unlock-diagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+width+' '+height+'" role="img" aria-label="'+xml(def.name)+'">'+
    '<title>'+xml(def.name)+' ('+(width>height?'na šířku':'na výšku')+')</title><desc>'+xml(def.guide)+'</desc>'+
-   '<defs><marker id="tip" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="currentColor"/></marker></defs>'+
+   '<defs><marker id="'+markerId+'" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="currentColor"/></marker></defs>'+
    '<rect x="2" y="2" width="'+(width-4)+'" height="'+(height-4)+'" fill="none" stroke="currentColor" stroke-opacity=".6" stroke-width="4"/>'+
    '<rect x="'+(width*.22)+'" y="'+(height*.43)+'" width="'+(width*.56)+'" height="'+(height*.14)+'" rx="15" fill="currentColor" fill-opacity=".04" stroke="currentColor" stroke-opacity=".35"/>'+
    details+'</svg>';
