@@ -1,0 +1,60 @@
+name: LSH unlock Stage B checks
+
+on:
+  push:
+    branches:
+      - feat/lsh-unlock-gestures-v124
+    paths:
+      - "language-skills-hub/**"
+      - ".github/workflows/lsh-unlock-stageb.yml"
+  pull_request:
+    paths:
+      - "language-skills-hub/**"
+      - ".github/workflows/lsh-unlock-stageb.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lsh-stageb-candidate
+  cancel-in-progress: true
+
+jobs:
+  stageb:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.ref == 'feat/lsh-unlock-gestures-v124'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+      - name: Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install browser test dependencies
+        run: npm install --no-save --no-package-lock playwright@1.56.1 jsqr@1.4.0 pngjs@7.0.0
+      - name: Install Chromium and WebKit
+        run: npx playwright install --with-deps chromium webkit
+      - name: T1 deterministic unit tests and 250k random sequences
+        run: node --test language-skills-hub/tests/lsh-unlock-gestures.test.cjs language-skills-hub/tests/lsh-unlock-fuzz-t1.test.cjs
+      - name: Start local static web server
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-unlock-http.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8765/language-skills-hub/self-check/reading/teacher.html >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/lsh-unlock-http.log
+          exit 1
+      - name: T2 trusted mouse events and T4 forced fullscreen in both browsers
+        run: node --test language-skills-hub/tests/lsh-unlock-stageb.browser.test.cjs
+      - name: R56 Reading test and 120 decoded QR variants
+        run: node --test language-skills-hub/tests/r56-reading-test-qr.browser.test.cjs
+      - name: Report on failure
+        if: failure()
+        run: |
+          echo 'One or more checks failed. Do NOT merge or deploy PR #113.'
+          test -f /tmp/lsh-unlock-http.log && tail -n 60 /tmp/lsh-unlock-http.log || true
