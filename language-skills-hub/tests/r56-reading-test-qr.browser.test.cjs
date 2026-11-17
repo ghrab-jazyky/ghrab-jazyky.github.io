@@ -36,9 +36,8 @@ for(const [engineName,engine] of engines){
    setup.searchParams.set('topic',entries[0].id);
    setup.searchParams.set('lang','en');setup.searchParams.set('level','A1');
    assert.equal((await teacher.goto(setup.href,{waitUntil:'domcontentloaded',timeout:45000})).status(),200);
-   await teacher.locator('#qrMount svg').waitFor({timeout:30000});
-   const sessionAttempt=new URL(await teacher.locator('#studentUrl').inputValue()).searchParams.get('attempt');
-   assert.match(sessionAttempt,/^class[a-z0-9]{12,30}$/);
+   assert.equal(await teacher.locator('#qrMount svg').count(),0);
+   assert.equal(await teacher.locator('#copyUrl').isDisabled(),true);
    let checked=0,opened=0,downloads=0;
    for(const [index,entry] of entries.entries()){
     await teacher.locator('#topic').selectOption(entry.id);
@@ -53,20 +52,13 @@ for(const [engineName,engine] of engines){
       await teacher.locator('#level').selectOption(level);
       const timer=[5,30,120][(index+languageIndex+levelIndex)%3];
       await teacher.locator('#timerMinutes').fill(String(timer));
-      const immediate=await teacher.locator('#studentUrl').inputValue();
-      const previousTime=new URL(immediate).searchParams.get('timer');
-      if(previousTime!==String(timer))
-       console.warn('R56 INPUT EVENT RACE '+engineName+' '+id+
-        ' input='+await teacher.locator('#timerMinutes').inputValue()+
-        ' QR='+previousTime+' expected='+timer);
-      // A browser is allowed to deliver synthetic input events in a later task;
-      // verify that the UI settles before taking the QR screenshot.
-      await teacher.waitForFunction(expected=>{
-       const input=document.getElementById('timerMinutes');
-       const text=document.getElementById('studentUrl')?.value;
-       if(!text||input.value!==expected)return false;
-       try{return new URL(text).searchParams.get('timer')===expected}catch(_){return false}
-      },String(timer),{timeout:3500});
+      await teacher.waitForFunction(expected=>
+       document.getElementById('timerMinutes').value===expected&&
+       document.getElementById('confirmTest')?.disabled===false,
+       String(timer),{timeout:3500});
+      assert.equal(await teacher.locator('#qrMount svg').count(),0,'Dirty form must not expose QR '+id);
+      await teacher.locator('#confirmTest').click();
+      await teacher.locator('#qrMount svg').waitFor({timeout:30000});
       const link=await teacher.locator('#studentUrl').inputValue();
       const parsed=new URL(link);
       assert.equal(parsed.origin,new URL(base).origin,id);
@@ -75,8 +67,9 @@ for(const [engineName,engine] of engines){
       assert.equal(parsed.searchParams.get('lang'),lang,id);
       assert.equal(parsed.searchParams.get('level'),level,id);
       assert.equal(parsed.searchParams.get('timer'),String(timer),id);
-      assert.equal(parsed.searchParams.get('attempt'),sessionAttempt,id);
-      assert.deepEqual([...parsed.searchParams.keys()].sort(),['attempt','lang','level','timer','topic']);
+      assert.match(parsed.searchParams.get('attempt'),/^class[a-z0-9]{12,30}$/,id);
+      assert.equal(parsed.searchParams.get('p'),'n1',id);
+      assert.deepEqual([...parsed.searchParams.keys()].sort(),['attempt','lang','level','p','timer','topic']);
       assert.equal(await teacher.locator('#studentPreview').getAttribute('href'),link,id);
       assert.equal(await teacher.locator('#copyUrl').isEnabled(),true,id);
       assert.equal(await teacher.locator('#downloadQr').isEnabled(),true,id);
@@ -127,6 +120,8 @@ for(const [engineName,engine] of engines){
    await teacher.locator('#timerMinutes').fill('121');
    assert.equal(await teacher.locator('#qrMount svg').count(),0,'Invalid 121 minute QR exposed');
    await teacher.locator('#timerMinutes').fill('30');
+   assert.equal(await teacher.locator('#qrMount svg').count(),0);
+   await teacher.locator('#confirmTest').click();
    await teacher.locator('#qrMount svg').waitFor();
    assert.equal(checked,120,'120 QR images independently decoded');
    assert.equal(downloads,5,'Downloaded SVG of every topic independently decoded');
