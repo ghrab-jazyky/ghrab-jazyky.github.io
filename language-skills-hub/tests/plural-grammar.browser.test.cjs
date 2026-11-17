@@ -150,4 +150,33 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    }finally{await browser.close()}
  });
 
+ test('Plural '+name+': plural answers remain hidden until an intentional flip',
+  {timeout:120000},async()=>{
+   const browser=await engine.launch({headless:true});
+   try{
+    const page=await browser.newPage({viewport:{width:390,height:844}}),errors=[];
+    page.on('pageerror',e=>errors.push(e.message));
+    const url=link('konverzace/plural/index.html','?practice=1&lang=es&level=B2');
+    assert.equal((await page.goto(url,{waitUntil:'load'})).status(),200);
+    const first=page.locator('#cardsGrid .flip').first();
+    const hidden=page.locator('#vocabGrid .plural-form');
+    await first.waitFor({state:'visible'});
+    assert.equal(await hidden.count(),10);
+    assert.equal(await hidden.evaluateAll(a=>a.every(x=>x.hidden)),true);
+    assert.equal(await first.locator('.flip-back').evaluate(x=>getComputedStyle(x).visibility),'hidden');
+    await first.click();
+    assert.equal(await hidden.nth(0).isVisible(),true);
+    assert.equal(await hidden.nth(1).isVisible(),false,'Unflipped answers must remain concealed');
+    assert.equal(await first.locator('.flip-front').evaluate(x=>getComputedStyle(x).visibility),'hidden');
+    assert.equal(await first.locator('.flip-back').evaluate(x=>getComputedStyle(x).visibility),'visible');
+    await first.click();
+    assert.equal(await hidden.nth(0).isVisible(),false,'Answer must hide on the second flip');
+    await page.locator('#revealAllBtn').click();
+    assert.equal(await hidden.evaluateAll(a=>a.every(x=>!x.hidden)),true);
+    await page.locator('#revealAllBtn').click();
+    assert.equal(await hidden.evaluateAll(a=>a.every(x=>x.hidden)),true);
+    assert.deepEqual(errors,[]);
+   }finally{await browser.close()}
+ });
+
 }
