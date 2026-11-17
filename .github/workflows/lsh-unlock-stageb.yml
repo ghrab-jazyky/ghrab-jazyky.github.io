@@ -38,6 +38,8 @@ jobs:
         run: npx playwright install --with-deps chromium webkit
       - name: T1 deterministic unit tests and 250k random sequences
         run: node --test language-skills-hub/tests/lsh-unlock-gestures.test.cjs language-skills-hub/tests/lsh-unlock-fuzz-t1.test.cjs
+      - name: C deterministic timing, geometry and pointer-capture boundary tests
+        run: node --test language-skills-hub/tests/lsh-unlock-stagec-boundaries.test.cjs
       - name: B2 deterministic F-17 unit tests
         run: node --test language-skills-hub/tests/lsh-unlock-b2.test.cjs
       - name: Start local static web server
