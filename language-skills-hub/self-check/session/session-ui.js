@@ -275,10 +275,12 @@
     if(ok&&document.fullscreenElement){fullscreenArmed=true;finishResume();}
     else{lockReason('fullscreen-denied');offerContinue();}
    };
-   const timeout=setTimeout(()=>done(false),3000);
-   // No await or timer before requestFullscreen: preserve user activation.
-   try{Promise.resolve(document.documentElement.requestFullscreen()).then(()=>done(true),()=>done(false));}
-   catch(_){done(false);}
+   // Request synchronously in the completion event, before scheduling any timer.
+   let timeout=null,promise=null;
+   try{promise=document.documentElement.requestFullscreen();}
+   catch(_){done(false);return;}
+   if(!completed)timeout=setTimeout(()=>done(false),3000);
+   Promise.resolve(promise).then(()=>done(true),()=>done(false));
   }
   continueButton.addEventListener('click',()=>requestUnlock(true));
   overlay.append(panel);
