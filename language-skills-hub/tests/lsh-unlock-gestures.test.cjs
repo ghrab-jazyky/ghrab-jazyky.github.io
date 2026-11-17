@@ -20,7 +20,7 @@ const valid={
  corners4:['tl','tr','bl','br'].map((corner,i)=>({type:'down',corner,time:i*2000})),
  tap_hold_tap:[down(500,560,0),up(500,560,100),down(500,560,200),up(500,560,2300),down(500,560,2400),up(500,560,2500)],
  hold_double_tap:[down(300,480,0),up(300,480,2800),down(700,480,2900),up(700,480,3000),down(700,480,3200),up(700,480,3300)],
- triangle3:[down(500,240,0),up(500,240,90),down(300,560,300),up(300,560,390),down(700,560,500),up(700,560,590)],
+ triangle3:[down(500,240,0),up(500,240,90),down(300,560,300),up(300,560,390),down(700,560,500),up(700,560,1250)],
  draw_z:[down(300,240,0),move(700,240,400),move(300,560,900),move(700,560,1300),up(700,560,1400)]
 };
 test('same stable gesture IDs and URL codes',()=>{
@@ -49,6 +49,16 @@ for(const [id,events] of Object.entries(valid)){
  test('successful gesture '+id,()=>assert.equal(run(id,events).successes,1));
  test('incomplete gesture '+id,()=>assert.equal(run(id,events.slice(0,-1)).successes,0));
 }
+test('approved triangle3 uses two taps plus a 600–1000 ms final hold',()=>{
+ const prefix=[down(500,240,0),up(500,240,90),down(300,560,300),up(300,560,390)];
+ const last=duration=>[...prefix,down(700,560,500),up(700,560,500+duration)];
+ assert.equal(gestures.byId('triangle3').kinds[2],'hold');
+ assert.deepEqual(gestures.byId('triangle3').durations[2],[600,1000]);
+ for(const time of [600,750,1000])assert.equal(run('triangle3',last(time)).successes,1,time);
+ for(const time of [0,250,350,599,1001,1250])assert.equal(run('triangle3',last(time)).successes,0,time);
+ const wrongOrder=[down(500,240,0),up(500,240,90),down(300,560,300),up(300,560,390),down(700,560,500),up(700,560,750)];
+ assert.equal(run('triangle3',wrongOrder).successes,0);
+});
 test('mixed wrong order fails without unlocking',()=>{
  assert.equal(run('corners4',['tl','bl','tr','br'].map((corner,i)=>({type:'down',corner,time:i*1000}))).successes,0);
  assert.equal(run('triangle3',[down(500,240,0),up(500,240,90),down(700,560,300),up(700,560,390)]).successes,0);
@@ -68,7 +78,7 @@ test('cancel, lostpointercapture and dimension changes reset',()=>{
  const released=[down(500,240,0),up(500,240,80),
   {type:'lostcapture',time:81,pointerId:1},
   down(300,560,200),up(300,560,280),
-  down(700,560,400),up(700,560,490)];
+  down(700,560,400),up(700,560,1150)];
  assert.equal(run('triangle3',released).successes,1);
  const resized=[...valid.tap_hold_tap.slice(0,2),
   {...down(500,560,200),width:1100},up(500,560,2300),down(500,560,2400),up(500,560,2500)];
