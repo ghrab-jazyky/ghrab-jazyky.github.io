@@ -78,6 +78,21 @@ async function baseline(page){
  assert.equal(await page.locator('#copyUrl').isDisabled(),true);
  assert.equal(await page.locator('#downloadQr').isDisabled(),true);
  assert.equal(await page.locator('#studentPreview').getAttribute('aria-disabled'),'true');
+ const markers=await page.evaluate(()=>{
+  const svgs=[...document.querySelectorAll('#unlockTeacherControls svg')];
+  return svgs.map(svg=>({
+   id:svg.querySelector('marker[id]')?.id,
+   arrow:svg.querySelector('[marker-end]')?.getAttribute('marker-end')
+  }));
+ });
+ assert.equal(markers.length,7,'Five thumbnails and two large diagrams');
+ assert.equal(new Set(markers.map(x=>x.id)).size,markers.length,
+  'Every SVG marker ID must be unique across the document');
+ for(const marker of markers){
+  assert.ok(marker.id?.startsWith('lsh-unlock-tip-'));
+  if(marker.arrow)assert.equal(marker.arrow,'url(#'+marker.id+')',
+   'Arrow must reference a marker inside the same SVG');
+ }
 }
 function storeShot(page,lab,orientation,theme){
  return page.screenshot({fullPage:true,animations:'disabled'}).then(buf=>{
