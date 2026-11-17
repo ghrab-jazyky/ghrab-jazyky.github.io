@@ -145,7 +145,8 @@
     return state();
    }
    if(e.type==='cancel'||e.type==='lostcapture'||e.type==='blur'||e.type==='hidden'||e.type==='orientation'){
-    if((e.type==='cancel'||e.type==='lostcapture')&&(!active||active.pointerId!==e.pointerId))return state();
+    if(e.type==='lostcapture'&&(!active||active.pointerId!==e.pointerId))return state();
+    if(e.type==='cancel'&&active&&active.pointerId!==e.pointerId)return state();
     reset(true);return state();
    }
    if(id==='corners4'){
