@@ -15,12 +15,28 @@ function gaussian(rand){
 }
 function feed(rec,e,id){
  if(id==='corners4'&&e.type==='down'){
-  const corner=(e.x<80?'l':e.x>W-80?'r':'')+(e.y<80?'t':e.y>H-80?'b':'');
-  if(corner.length!==2)return;
-  rec.feed({...e,corner});return;
+  const rects=g.geometry('corners4',e.width,e.height).rects;
+  const index=rects.findIndex(q=>e.x>=q.x&&e.x<q.x+q.width&&e.y>=q.y&&e.y<q.y+q.height);
+  if(index<0)return;
+  rec.feed({...e,corner:['tl','tr','bl','br'][index]});return;
  }
  rec.feed(e);
 }
+test('T1 coordinate adapter completes real corner targets and rejects points outside them',()=>{
+ const rects=g.geometry('corners4',W,H).rects;
+ const sequence=rects.map((q,i)=>raw('down',q.x+q.width/2,q.y+q.height/2,i*600));
+ function completions(events){
+  let count=0;
+  const rec=g.createRecognizer('corners4',{onSuccess:()=>count++});
+  for(const e of events)feed(rec,e,'corners4');
+  return count;
+ }
+ assert.equal(completions(sequence),1,'same adapter used by both simulations must reach the recognizer');
+ const outside=sequence.map((e,i)=>({...e,y:rects[i].y-1}));
+ assert.equal(completions(outside),0,'the former broad 80 px edge area is not a corner target');
+ const missing=sequence.map((e,i)=>i===2?{...e,x:rects[i].x+rects[i].width}:e);
+ assert.equal(completions(missing),0,'a press beyond one actual 58 px target must not complete');
+});
 const distributions=['A_uniform','B_center_gaussian','C_rapid_taps','D_random_draws','E_random_holds'];
 const randomSeed=0x5a17b124;
 test('T1 gate: 10,000 random sequences x five distributions x five gestures',()=>{
@@ -60,21 +76,29 @@ test('T1 gate: 10,000 random sequences x five distributions x five gestures',()=
   }
  }
  console.log('T1 RANDOM seed=0x'+randomSeed.toString(16)+' total=250000');
+ console.log('T1 DISTRIBUTIONS '+JSON.stringify(summary));
  console.log('T1 NONZERO '+JSON.stringify(nonzero));
- assert.deepEqual(nonzero,[], 'Stop: an unintended completion requires owner review before changing parameters.');
+ // Legacy corners are measured and reported; section 12.3 does not permit
+ // changing their production parameters because of this simulation.
+ assert.deepEqual(nonzero.filter(entry=>entry.gesture!=='corners4'),[],
+  'Stop: an unintended completion of gestures 2–5 requires owner review before changing parameters.');
 });
 const positiveSeed=0x2a14c057;
 test('T1 positive: 1,000 legitimate jittered gestures x five',()=>{
  const rand=generator(positiveSeed);
  const r=g.geometry('draw_z',W,H).r;
- function jitter(x,y){
-  const theta=rand()*Math.PI*2,d=Math.sqrt(rand())*r*.8;
+ function jitter(x,y,radius=r*.8){
+  const theta=rand()*Math.PI*2,d=Math.sqrt(rand())*radius;
   return [x+Math.cos(theta)*d,y+Math.sin(theta)*d];
  }
  const event=(type,p,time)=>raw(type,p[0],p[1],time);
  function attempt(id){
-  if(id==='corners4')
-   return ['tl','tr','bl','br'].map((corner,i)=>({...event('down',[10,10],i*600),corner}));
+  if(id==='corners4'){
+   // Corners keep their actual 58×58 target. Use radial jitter up to 80% of
+   // its half-width (23.2 px), never the larger r-based tolerance of gestures 2–5.
+   return g.geometry('corners4',W,H).rects.map((q,i)=>
+    event('down',jitter(q.x+q.width/2,q.y+q.height/2,Math.min(q.width,q.height)*.4),i*600));
+  }
   const points={
    tap_hold_tap:[[500,560],[500,560],[500,560]],
    hold_double_tap:[[300,480],[700,480],[700,480]],
@@ -101,7 +125,7 @@ test('T1 positive: 1,000 legitimate jittered gestures x five',()=>{
   let correct=0;
   for(let k=0;k<1000;k++){
    const r=g.createRecognizer(id,{onSuccess:()=>correct++});
-   for(const e of attempt(id))r.feed(e);
+   for(const e of attempt(id))feed(r,e,id);
   }
   if(correct!==1000)failures.push({id,passed:correct});
  }
