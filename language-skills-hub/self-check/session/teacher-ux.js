@@ -43,7 +43,16 @@
   function paint(){
    if(closed)return;
    const box=demo.getBoundingClientRect(),g=api.geometry(id,box.width,box.height),groups=[];
-   g.points.forEach((p,index)=>{
+   // iPhone/iPad safe-area insets can move the real corner hit targets.
+   // Match the ACTUAL CSS hit boxes, not an imaginary 38px viewport corner.
+   const cornerIds=['tl','tr','bl','br'];
+   const targets=id==='corners4'?g.points.map((p,index)=>{
+    const el=demo.querySelector('.lsh-corner-'+cornerIds[index]);
+    if(!el)return p; // First paint runs before bindDOM creates targets.
+    const r=el.getBoundingClientRect();
+    return {x:r.left+r.width/2-box.left,y:r.top+r.height/2-box.top};
+   }):g.points;
+   targets.forEach((p,index)=>{
     const found=groups.find(x=>Math.abs(x.x-p.x)<1&&Math.abs(x.y-p.y)<1);
     if(found)found.indexes.push(index);else groups.push({x:p.x,y:p.y,indexes:[index]});
    });
@@ -139,6 +148,7 @@
   for(const type of ['pointerdown','pointermove','pointerup','pointercancel','lostpointercapture'])
    demo.addEventListener(type,observe);
   monitor=setInterval(()=>observe(null),180);
+  paint(); // Reposition corner hints to the real hit targets after binding.
   state({steps:0});closeButton.focus({preventScroll:true});
   active={close};return active;
  }
