@@ -337,6 +337,7 @@ const CONTENT = __PLURAL_CONTENT_JSON__;
 const ORDER = ['A1','A2','B1','B2','C1','C2'];
 const STORAGE = 'conversation-lab-plural-de-es-fr-a-v1';
 const $ = id => document.getElementById(id);
+let flipAccessibleId=0;
 let lang='de', level='A2', theme='dark', current=0;
 let duration=0,left=0,endAt=0,ticker=null,toastHandle=null;
 let floatingTimerDragged=false, timerDrag=null;
@@ -378,6 +379,7 @@ function syncVocabularyReveal(){
 }
 function setFlip(b,on){
  b.classList.toggle('flipped',on);b.setAttribute('aria-pressed',String(on));b.setAttribute('aria-label',on?b.dataset.back:b.dataset.front);
+ b.setAttribute('aria-labelledby',b.querySelector(on?'.flip-back':'.flip-front').id);
  const note=b.parentElement?.querySelector('.extra-note');if(note)note.hidden=!on;
  if(!b.classList.contains('flip-extra')){updateCardCount();syncVocabularyReveal();}
 }
@@ -387,12 +389,14 @@ function makeFlip(item,isExtra){
  // WCAG 2.5.3: accessible name starts with the printed card text.
   b.dataset.front=`${s} – ${cz}. ${u.cardFrontAria.replace('{s}',s)}`;
   b.dataset.back=`${p}${tag?' · '+tag:''}. ${u.cardBackAria.replace('{s}',s).replace('{p}',p)}`;
- const inner=make('span','flip-inner');inner.setAttribute('aria-hidden','true');
+ const inner=make('span','flip-inner');
  const front=make('span','flip-face flip-front'),czs=make('span','flip-cz',cz);czs.lang='cs';
+ const flipId=++flipAccessibleId;front.id='plural-flip-face-'+flipId+'-front';
  front.append(nounNode(s,false),czs,make('span','flip-turn','↻'));
- const back=make('span','flip-face flip-back');back.append(nounNode(p,true));if(tag)back.append(make('span','flip-tag',tag));
+ const back=make('span','flip-face flip-back');back.id='plural-flip-face-'+flipId+'-back';back.append(nounNode(p,true));if(tag)back.append(make('span','flip-tag',tag));
  inner.append(front,back);b.append(inner);
  b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',b.dataset.front);
+ b.setAttribute('aria-labelledby',front.id);
  b.addEventListener('click',e=>{if(e.detail>1)return;hideLookup();setFlip(b,!b.classList.contains('flipped'));});
  return b;
 }
