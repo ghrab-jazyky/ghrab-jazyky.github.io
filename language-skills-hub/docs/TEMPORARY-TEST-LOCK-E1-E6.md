@@ -24,13 +24,14 @@ Výjimka pro lokální regresní testy: http://localhost a http://127.0.0.1.
 
 ## E6 – úplné odstranění uzamčení
 Z aktuální hlavní větve vytvořit novou pracovní větev a:
-1. Odebrat importy temporary-test-lock.js/css z index.html a obou teacher.html a practice-answers/teacher.html.
+1. Odebrat importy temporary-test-lock.js/css z index.html, obou teacher.html a practice-answers/teacher.html; zároveň odstranit data-lsh-temporary-test-page="teacher" z obou učitelských HTML.
 2. Odstranit dočasný posluchač kliknutí u TEST v assets/hub.js.
 3. Odstranit úvodní podmínky guardTeacherPage z reading-teacher.js a listening-teacher.js.
 4. Odstranit dočasné omezení testového klíče z practice-answers/teacher-key.js.
-5. Smazat oba soubory assets/temporary-test-lock.*, dočasné testy a tuto dokumentaci.
+5. Smazat oba soubory assets/temporary-test-lock.*, testy temporary-test-lock.test.cjs a temporary-test-lock.browser.test.cjs, workflow .github/workflows/lsh-temporary-test-lock.yml a tuto dokumentaci.
 6. Spustit statickou regresi, prohlížečové testy Chromium/WebKit a live smoke po vydání.
-7. Ověřit z anonymního profilu, že TEST funguje bez příznaku localStorage.
+7. Ověřit z anonymního profilu, že TEST funguje bez příznaku localStorage; ověřit přímé učitelské odkazy i běžné klíče VÝSLEDKY.
+8. Na vývojářově zařízení případně odstranit nepotřebný příznak z localStorage; klientská kontrola už nebude součástí kódu.
 
 **NIKDY nevracet celou main na starý commit**: tím by se ztratily mezitím dokončené nové funkce Reading/Listening.
 
