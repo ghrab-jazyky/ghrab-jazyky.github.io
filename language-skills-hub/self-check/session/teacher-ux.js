@@ -20,7 +20,7 @@
   active?.close();
   const oldFocus=document.activeElement;
   const demo=make('section','lsh-session-overlay lsh-unlock-teacher-demo');
-  demo.id='lshTeacherTrainer';demo.setAttribute('role','dialog');demo.setAttribute('aria-modal','true');
+  demo.id='lshTeacherDemo';demo.setAttribute('role','dialog');demo.setAttribute('aria-modal','true');
   demo.setAttribute('aria-label','Nácvik gesta: '+def.name);
   const heading=make('div','lsh-trainer-heading');
   const title=make('h2',null,'Nácvik: '+def.name);
