@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - feat/lsh-plural-cards-r70-stage
+      - feat/lsh-plural-v6-editorial
     paths:
       - 'language-skills-hub/**'
       - '.github/workflows/lsh-plural-stage-qa.yml'
@@ -38,7 +39,7 @@ jobs:
         with:
           node-version: '24'
       - name: Install matching Playwright CI package
-        run: npm install --no-save --ignore-scripts playwright@1.56.1
+        run: npm install --no-save --ignore-scripts playwright@1.56.1 @axe-core/playwright@4.14.0
         timeout-minutes: 8
       - name: Start local HTTP server and test real browser routes, lock and vocabulary
         timeout-minutes: 20
@@ -56,3 +57,4 @@ jobs:
           node --test language-skills-hub/tests/r27-public-release.browser.test.cjs
           node --test language-skills-hub/tests/r25-result-browser.test.cjs
           node --test language-skills-hub/tests/r70-live-listening-studio.browser.test.cjs
+          node --test language-skills-hub/tests/plural-v6-a11y.browser.test.cjs
