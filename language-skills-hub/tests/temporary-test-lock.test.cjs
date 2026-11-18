@@ -5,18 +5,55 @@ const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..');
 const read=x=>fs.readFileSync(path.join(root,x),'utf8');
 const asset=read('assets/temporary-test-lock.js');
-function sandbox(hostname,stored=''){
+function sandbox(hostname,stored='',hash=''){
  const data=new Map(stored?[['lsh:temporary-test-lock:developer:v1',stored]]:[]);
- const document={documentElement:{dataset:{}},body:{},getElementById:()=>null};
- const window={location:{hostname,protocol:hostname==='ghrab-jazyky.github.io'?'https:':'http:'},localStorage:{getItem:k=>data.get(k)||null,setItem:(k,v)=>data.set(k,v)},document};
+ const document={
+  documentElement:{dataset:{}},body:{},getElementById:()=>null,
+  readyState:'loading',addEventListener:()=>{}
+ };
+ const location={hostname,protocol:hostname==='ghrab-jazyky.github.io'?'https:':'http:',
+  hash,pathname:'/language-skills-hub/index.html',search:'?skill=cteni'};
+ let cleanedUrl=null,hashListener=null;
+ const window={
+  location,document,history:{state:null,replaceState:(_state,_title,url)=>{
+   cleanedUrl=url;location.hash='';
+  }},
+  addEventListener:(event,listener)=>{
+   if(event==='hashchange')hashListener=listener;
+  },
+  localStorage:{getItem:k=>data.get(k)||null,setItem:(k,v)=>data.set(k,v),removeItem:k=>data.delete(k)}
+ };
  vm.runInNewContext(asset,{window},{timeout:1000});
- return {api:window.LSHTemporaryTestLock,document};
+ return {api:window.LSHTemporaryTestLock,document,data,location,
+  triggerHashChange:hash=>{location.hash=hash;hashListener?.()},
+  get cleanedUrl(){return cleanedUrl}};
 }
 test('public production defaults locked; local developer exception is convenience only',()=>{
  assert.equal(sandbox('ghrab-jazyky.github.io').api.isLocked(),true);
  assert.equal(sandbox('ghrab-jazyky.github.io','enabled').api.isLocked(),false);
  assert.equal(sandbox('ghrab-jazyky.github.io','disabled').api.isLocked(),true);
  assert.equal(sandbox('ghrab-jazyky.github.io','true').api.isLocked(),true);
+});
+test('one-click preview link enables only this browser and cleans the address',()=>{
+ const enabled=sandbox('ghrab-jazyky.github.io','','#lsh-test-preview=on');
+ assert.equal(enabled.api.isLocked(),false);
+ assert.equal(enabled.data.get('lsh:temporary-test-lock:developer:v1'),'enabled');
+ assert.equal(enabled.location.hash,'');
+ assert.equal(enabled.cleanedUrl,'/language-skills-hub/index.html?skill=cteni');
+ const disabled=sandbox('ghrab-jazyky.github.io','enabled','#lsh-test-preview=off');
+ assert.equal(disabled.api.isLocked(),true);
+ assert.equal(disabled.data.has('lsh:temporary-test-lock:developer:v1'),false);
+ assert.equal(disabled.location.hash,'');
+});
+test('a pasted preview link also works on an already-open catalog',()=>{
+ const s=sandbox('ghrab-jazyky.github.io');
+ assert.equal(s.api.isLocked(),true);
+ s.triggerHashChange('#lsh-test-preview=on');
+ assert.equal(s.api.isLocked(),false);
+ assert.equal(s.location.hash,'');
+ s.triggerHashChange('#lsh-test-preview=off');
+ assert.equal(s.api.isLocked(),true);
+ assert.equal(s.location.hash,'');
 });
 test('loopback development remains open for legacy browser regressions',()=>{
  assert.equal(sandbox('127.0.0.1').api.isLocked(),false);

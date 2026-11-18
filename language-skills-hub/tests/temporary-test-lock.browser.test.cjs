@@ -43,6 +43,62 @@ for(const [name,engine]of[['Chromium',chromium],['WebKit',webkit]]){
    await context.close();
   }finally{await browser.close()}
  });
+ test(name+' simulated GitHub Pages: one-click preview link, confirmation, both labs, and opt-out',{timeout:80000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const context=await browser.newContext();
+   const page=await context.newPage();await fakeGithubPages(page);
+   await page.goto(url('index.html?skill=cteni#lsh-test-preview=on'),{waitUntil:'load'});
+   const banner=page.locator('#lshTemporaryTestPreviewStatus');
+   await banner.waitFor({state:'visible'});
+   assert.match(await banner.innerText(),/přístup k testům.*aktivní/i);
+   assert.equal(await page.evaluate(()=>location.hash),'');
+   assert.equal(await page.evaluate(()=>localStorage.getItem('lsh:temporary-test-lock:developer:v1')),'enabled');
+   await page.goto(url('self-check/reading/teacher.html?topic=rl-asteroids&level=B2'),{waitUntil:'load'});
+   await page.locator('#confirmTest:enabled').waitFor();
+   assert.equal(await page.locator('#lshTemporaryTestNotice').count(),0);
+   await page.goto(url('self-check/listening/teacher.html?topic=ll-sad&level=B2'),{waitUntil:'load'});
+   await page.locator('#confirmTest:enabled').waitFor();
+   assert.equal(await page.locator('#lshTemporaryTestNotice').count(),0);
+   await page.goto(url('index.html?skill=poslech#lsh-test-preview=off'),{waitUntil:'load'});
+   await page.locator('#lshTemporaryTestPreviewStatus').waitFor({state:'visible'});
+   assert.match(await page.locator('#lshTemporaryTestPreviewStatus').innerText(),/vypnut/);
+   assert.equal(await page.evaluate(()=>window.LSHTemporaryTestLock.isLocked()),true);
+   assert.equal(await page.evaluate(()=>localStorage.getItem('lsh:temporary-test-lock:developer:v1')),null);
+   await page.goto(url('self-check/reading/teacher.html?topic=rl-asteroids&level=B2'),{waitUntil:'load'});
+   await page.locator('#lshTemporaryTestNotice').waitFor({state:'visible'});
+   await context.close();
+  }finally{await browser.close()}
+ });
+ test(name+' simulated GitHub Pages: pasted link changes TEST behavior without reload',{timeout:70000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const context=await browser.newContext();
+   const page=await context.newPage();await fakeGithubPages(page);
+   await page.goto(url('index.html?skill=cteni'),{waitUntil:'load'});
+   await page.locator('#cards .card').first().waitFor();
+   const btn=page.locator('.card .action.test').first();
+   // Disable native navigation but keep the original event handler intact.
+   await btn.evaluate(el=>el.removeAttribute('href'));
+   await page.evaluate(()=>{location.hash='#lsh-test-preview=on'});
+   await page.locator('#lshTemporaryTestPreviewStatus').waitFor({state:'visible'});
+   assert.equal(await page.evaluate(()=>window.LSHTemporaryTestLock.isLocked()),false);
+   const preventedOpen=await btn.evaluate(el=>{
+    const evt=new MouseEvent('click',{bubbles:true,cancelable:true});
+    el.dispatchEvent(evt);return evt.defaultPrevented;
+   });
+   assert.equal(preventedOpen,false,'A newly enabled developer must not be blocked by stale catalog handlers');
+   await page.evaluate(()=>{location.hash='#lsh-test-preview=off'});
+   assert.equal(await page.evaluate(()=>window.LSHTemporaryTestLock.isLocked()),true);
+   const preventedGuest=await btn.evaluate(el=>{
+    const evt=new MouseEvent('click',{bubbles:true,cancelable:true});
+    el.dispatchEvent(evt);return evt.defaultPrevented;
+   });
+   assert.equal(preventedGuest,true,'Guest activation must be intercepted without reloading');
+   await page.locator('#lshTemporaryTestNotice').waitFor({state:'visible'});
+   await context.close();
+  }finally{await browser.close()}
+ });
  test(name+' simulated GitHub Pages: both direct teacher pages locked, local flag permits entry',{timeout:80000},async()=>{
   const browser=await engine.launch({headless:true});
   try{
