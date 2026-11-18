@@ -1,0 +1,83 @@
+/* E1-E6: temporary Reading/Listening TEST maintenance notice.
+ * UI-only on public GitHub Pages. This is NOT authentication or access control.
+ * Remove this module and its call sites after development is completed.
+ */
+(function(root){
+ 'use strict';
+ const KEY='lsh:temporary-test-lock:developer:v1';
+ const DIALOG_ID='lshTemporaryTestNotice';
+ function isLocalPreview(){
+  return root.location.protocol==='http:' &&
+   (root.location.hostname==='127.0.0.1'||root.location.hostname==='localhost');
+ }
+ function hasPreviewAccess(){
+  // Local automated regressions run on loopback. Public GitHub Pages never does.
+  if(isLocalPreview())return true;
+  try{return root.localStorage.getItem(KEY)==='enabled'}catch(_){return false}
+ }
+ function isLocked(){return !hasPreviewAccess()}
+ function el(tag,cls,value){
+  const node=root.document.createElement(tag);
+  if(cls)node.className=cls;
+  if(value!==undefined)node.textContent=value;
+  return node;
+ }
+ function showNotice(options={}){
+  if(!isLocked())return;
+  const back=options.returnToCatalog||null;
+  if(!root.document.body){
+   root.document.addEventListener('DOMContentLoaded',()=>showNotice(options),{once:true});
+   return;
+  }
+  let dialog=root.document.getElementById(DIALOG_ID);
+  if(dialog){
+   if(!dialog.open&&typeof dialog.showModal==='function')dialog.showModal();
+   return;
+  }
+  const oldFocus=root.document.activeElement;
+  dialog=el('dialog','lsh-temporary-test-dialog');
+  dialog.id=DIALOG_ID;
+  dialog.setAttribute('aria-labelledby','lshTemporaryTestTitle');
+  dialog.setAttribute('aria-describedby','lshTemporaryTestDescription');
+  const heading=el('h2','lsh-temporary-test-title','Testovací část se právě upravuje');
+  heading.id='lshTemporaryTestTitle';
+  const copy=el('div','lsh-temporary-test-description');
+  copy.id='lshTemporaryTestDescription';
+  copy.append(
+   el('p',null,'Milá kolegyně, milý kolego,'),
+   el('p',null,'vážím si toho, že chceš vyzkoušet testy v Reading a Listening Labs. Právě na nich provádím větší úpravy, a proto jsou dočasně nedostupné.'),
+   el('p',null,'Ostatní části LSH můžeš dál používat. Prosím tě o trpělivost a zkus to později.'),
+   el('p','lsh-temporary-test-signature','Děkuji za pochopení! Daniel')
+  );
+  const actions=el('div','lsh-temporary-test-actions');
+  const closeButton=el('button','lsh-temporary-test-close',
+   back?'Rozumím – zpět do katalogu':'Rozumím');
+  closeButton.type='button';
+  actions.append(closeButton);
+  dialog.append(heading,copy,actions);
+  function close(){
+   if(dialog.open&&typeof dialog.close==='function')dialog.close();
+   dialog.remove();
+   if(back){
+    root.location.replace(new URL(back,root.document.baseURI).href);
+   }else if(oldFocus&&oldFocus.isConnected&&typeof oldFocus.focus==='function'){
+    oldFocus.focus();
+   }
+  }
+  closeButton.addEventListener('click',close);
+  dialog.addEventListener('cancel',event=>{event.preventDefault();close()});
+  root.document.body.appendChild(dialog);
+  if(typeof dialog.showModal==='function')dialog.showModal();
+  else dialog.setAttribute('open','');
+  closeButton.focus();
+ }
+ function guardTeacherPage(returnToCatalog){
+  const permitted=hasPreviewAccess();
+  root.document.documentElement.dataset.lshTemporaryTestAccess=permitted?'developer':'locked';
+  if(!permitted)showNotice({returnToCatalog});
+  return permitted;
+ }
+ root.LSHTemporaryTestLock=Object.freeze({
+  hasPreviewAccess,isLocked,showNotice,guardTeacherPage
+ });
+})(window);
