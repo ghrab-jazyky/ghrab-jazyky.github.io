@@ -51,6 +51,7 @@ html.reading-focus,html.reading-focus body{height:100%;overflow:hidden}html.read
 .reading-body p[data-num]{position:relative;padding-left:2.3em}.reading-body p[data-num]::before{content:attr(data-num);position:absolute;left:0;top:.3em;min-width:1.6em;height:1.6em;line-height:1.6em;font-size:.72rem;font-weight:800;text-align:center;border-radius:6px;background:var(--panel2);border:1px solid var(--border);color:var(--muted);font-variant-numeric:tabular-nums;font-style:normal;letter-spacing:0}.return-target{cursor:pointer}.back-to-question{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:60;font:inherit;font-size:.9rem;font-weight:800;padding:10px 18px;border-radius:999px;border:2px solid var(--accent2);background:var(--panel);color:var(--accent2);box-shadow:0 6px 22px rgba(0,0,0,.35);cursor:pointer;max-width:calc(100vw - 32px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.back-to-question:focus-visible{outline:3px solid var(--accent);outline-offset:2px}.back-to-question[hidden]{display:none}@media (min-width:851px){.back-to-question{left:26%;bottom:86px}}.qcard.flash-q{animation:rlqflash 1.2s ease-out 1}@keyframes rlqflash{0%{box-shadow:0 0 0 3px var(--accent2)}100%{box-shadow:0 0 0 0 transparent}}@media (prefers-reduced-motion:reduce){.qcard.flash-q{animation:none}}@media print{.back-to-question{display:none!important}}
 /* v2.3: tisk vždy ve světlých barvách, i když je zapnutý tmavý motiv */
 @media print{:root,:root[data-theme="dark"],:root[data-theme="light"]{color-scheme:light;--bg:#fff;--panel:#fff;--panel2:#f4f6f8;--field:#fff;--text:#000;--muted:#333;--accent:#06769c;--accent2:#6c51ac;--border:#aaa;--good:#137553;--bad:#a92e47;--warn:#96610b;--shadow:none}.reading-target{background:#ece6ff!important;color:#000!important}}</style>
+<link rel="stylesheet" href="../../self-check/reading/reading-annotations.css">
 </head>
 <body>
 <div class="shell" id="shell">
@@ -423,6 +424,9 @@ try{
 })();
 </script>
 
+<!-- RL-02: independent text annotation layer; no changes to original card data. -->
+<script defer src="../../self-check/reading/reading-annotations.js"></script>
+<script defer src="../../self-check/reading/reading-practice-annotations.js"></script>
 <script defer src="../../assets/lsh/v3/model.js"></script>
 <script defer src="../../assets/lsh/v3/store.js"></script>
 <script defer src="../../assets/lsh/v3/legacy-reading-migration.js"></script>
