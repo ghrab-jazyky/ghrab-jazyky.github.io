@@ -657,6 +657,24 @@
         "title": "How to Choose Your News",
         "summary": "TED-Ed on news sources, claims and verification, with separate practice and test tasks A1–C2."
       }
+    },
+    "cl-plural": {
+      "cs": {
+        "title": "Plural",
+        "summary": "Procvičování množného čísla v němčině, španělštině a francouzštině od A1 do C2 pomocí otočných kartiček a mluvních úkolů."
+      },
+      "de": {
+        "title": "Plural",
+        "summary": "Deutsche Pluralformen von A1 bis C2 mit Lernkarten, Grammatikregeln, Besonderheiten und Gesprächsübungen."
+      },
+      "es": {
+        "title": "El plural",
+        "summary": "Formación del plural en español, de A1 a C2, con tarjetas interactivas, reglas, excepciones y actividades orales."
+      },
+      "fr": {
+        "title": "Le pluriel",
+        "summary": "Formation du pluriel en français, du niveau A1 au C2, avec cartes interactives, règles, exceptions et activités orales."
+      }
     }
   }
 }
