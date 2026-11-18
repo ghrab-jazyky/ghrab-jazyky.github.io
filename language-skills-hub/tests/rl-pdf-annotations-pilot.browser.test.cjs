@@ -22,6 +22,17 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.equal(await page.locator('.exercise-question').count()>0,true);
    assert.equal(await page.locator('#materialMeta').textContent().then(s=>s.includes('TEST')),true);
    assert.equal(await page.locator('#paper').isVisible(),true);
+   const typography=await page.locator('#readingParagraphs').evaluate(el=>({
+    alignment:getComputedStyle(el).textAlign,
+    hyphens:getComputedStyle(el).hyphens
+   }));
+   assert.equal(typography.alignment,'justify');
+   assert.equal(typography.hyphens,'auto');
+   if(name==='Chromium'){
+    const pdf=await page.pdf({printBackground:true,preferCSSPageSize:true});
+    assert.ok(pdf.length>15000,'Printed PDF must contain content and school logo');
+    assert.match(pdf.toString('latin1',0,8),/^%PDF/);
+   }
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
  });
@@ -81,6 +92,8 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.waitForTimeout(100);
    await page.locator('#readingAnnotationTools [data-anno-color="yellow"]').click();
    assert.equal(await page.locator('#readingAnnotationTools .lsh-annotation-item').count(),1);
+   await page.locator('#readingAnnotationTools .lsh-annotation-actions button').first().click();
+   assert.equal(await page.locator('#readingAnnotationTools .lsh-annotation-item').count(),1);
    const tabs=page.locator('#skillTabs button[data-skill]');
    assert.ok(await tabs.count()>1);
    await tabs.nth(1).click();
@@ -95,6 +108,40 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.equal(await page.locator('#readingAnnotationTools .lsh-annotation-item').count(),1);
    assert.deepEqual(errors,[]);
    await context.close();
+  }finally{await browser.close()}
+ });
+
+ test('RL-02 '+name+': timed Reading keeps ungraded notes through a locked reload',
+ {timeout:120000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await (await browser.newContext({viewport:{width:1024,height:850}})).newPage(),errors=[];
+   page.on('pageerror',e=>errors.push(e.message));
+   await page.goto(base+'index.html?topic=rl-asteroids&lang=en&level=B2&timer=5&attempt=rlannotationlock123');
+   await page.locator('#sessionStart').click();
+   await page.locator('#workspace:not([hidden])').waitFor({timeout:30000});
+   await page.locator('[data-anno-toggle]').click();
+   await page.evaluate(()=>{
+    const p=document.querySelector('#readingParagraphs p'),t=p.firstChild;
+    if(!t||t.nodeType!==Node.TEXT_NODE)throw new Error('Expected first text node');
+    const r=document.createRange();r.setStart(t,0);r.setEnd(t,8);
+    const s=getSelection();s.removeAllRanges();s.addRange(r);
+    p.dispatchEvent(new PointerEvent('pointerup',{bubbles:true}));
+   });
+   await page.waitForTimeout(120);
+   await page.locator('[data-anno-color="yellow"]').click();
+   assert.equal(await page.locator('.lsh-annotation-item').count(),1);
+   const before=await page.locator('#counter').textContent();
+   await page.reload();
+   await page.locator('#sessionLock').waitFor({state:'visible',timeout:30000});
+   assert.equal(await page.locator('.lsh-annotation-item').count(),1);
+   assert.equal(await page.locator('#counter').textContent(),before);
+   for(const corner of ['tl','tr','bl','br'])
+    await page.locator('.lsh-corner-'+corner).click();
+   await page.locator('#sessionLock').waitFor({state:'hidden',timeout:10000});
+   await page.locator('[data-anno-toggle]').click();
+   assert.equal(await page.locator('[data-anno-controls]').isVisible(),true);
+   assert.deepEqual(errors,[]);
   }finally{await browser.close()}
  });
 
