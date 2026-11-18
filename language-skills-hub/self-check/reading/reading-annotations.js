@@ -5,7 +5,7 @@
  'use strict';
  const COLORS=Object.freeze(['yellow','green','pink']);
  const TYPES=Object.freeze(['highlight','underline','note']);
- const MAX_ITEMS=100,MAX_NOTE=700,MAX_LENGTH=2500;
+ const MAX_ITEMS=80,MAX_NOTE=500,MAX_LENGTH=600;
  const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
  function normalized(items){
   if(!Array.isArray(items))return [];
@@ -63,7 +63,7 @@
   };
   const clearSelection=()=>{selected=null};
   const setStatus=message=>{if(status)status.textContent=message};
-  const save=()=>{try{config.onChange?.(snapshot())}catch(_){}};
+  const save=()=>{try{return config.onChange?.(snapshot())!==false}catch(_){return false}};
   const highlightKeys=['yellow','green','pink','underline','note'];
   const getAnchor=id=>{
    for(const container of containers){
@@ -101,7 +101,7 @@
     remove.setAttribute('aria-label','Smazat anotaci '+(index+1));
     remove.addEventListener('click',()=>{
      if(hasLocked())return;
-     items.splice(index,1);paint();save();setStatus('Anotace odstraněna.');
+     items.splice(index,1);paint();setStatus(save()?'Anotace odstraněna.':'Anotaci nelze trvale uložit.');
     });
     row.append(description,remove);list.appendChild(row);
    });
@@ -126,11 +126,11 @@
   function add(kind,note=''){
    if(!enabled||hasLocked()){setStatus('Anotace jsou teď nedostupné.');return;}
    if(!selected){setStatus('Nejdříve označte text nebo část otázky.');return;}
-   if(items.length>=MAX_ITEMS){setStatus('Limit 100 anotací v této kartě.');return;}
+   if(items.length>=MAX_ITEMS){setStatus('Limit 80 anotací v této kartě.');return;}
    if(kind==='note'&&!note.trim()){setStatus('Napište poznámku.');return;}
    const item={...selected,kind,color,note:note.slice(0,MAX_NOTE)};
    items.push(item);clearSelection();root.getSelection?.()?.removeAllRanges();
-   paint();save();setStatus('Anotace uložena.');
+   paint();setStatus(save()?'Anotace uložena.':'Anotaci nelze trvale uložit.');
   }
   host.querySelector('[data-anno-toggle]')?.addEventListener('click',()=>{
    if(hasLocked())return;
@@ -173,6 +173,7 @@
   }
   function refresh(){
    if(hasLocked()){clearSelection();if(noteBox)noteBox.hidden=true}
+   if(enabled)paint();
   }
   setStatus('Anotační režim je vypnutý.');
   renderList();
