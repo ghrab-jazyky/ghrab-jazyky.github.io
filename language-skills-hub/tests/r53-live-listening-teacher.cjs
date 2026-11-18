@@ -30,6 +30,26 @@ const topics=[
      await page.waitForTimeout(5000);
     }
     if(!deployed)throw new Error(targetLabel+' '+name+' '+topic.id+' is not published as R53');
+    // E5: GitHub Pages intentionally hides teacher setup for ordinary visitors
+    // during Reading/Listening TEST maintenance. Test both roles without claiming
+    // this browser-local opt-in is authentication or a real access boundary.
+    const maintenanceLocked=await page.evaluate(()=>
+     window.LSHTemporaryTestLock?.isLocked()===true);
+    if(maintenanceLocked){
+     const notice=page.locator('#lshTemporaryTestNotice');
+     await notice.waitFor({state:'visible',timeout:10000});
+     assert.match(await notice.innerText(),/Testovací část se právě upravuje/);
+     assert.match(await notice.innerText(),/Daniel/);
+     assert.equal(await page.locator('#confirmTest').isVisible(),false,
+      'Public visitor must not see teacher setup during maintenance');
+     await page.evaluate(()=>
+      localStorage.setItem('lsh:temporary-test-lock:developer:v1','enabled'));
+     await page.reload({waitUntil:'domcontentloaded',timeout:25000});
+     assert.equal(await page.evaluate(()=>
+      window.LSHTemporaryTestLock?.isLocked()),false,
+      'Opted-in browser must access teacher setup');
+     assert.equal(await page.locator('#lshTemporaryTestNotice').count(),0);
+    }
     await page.locator('#confirmTest:enabled').waitFor({timeout:20000});
     assert.equal(await page.locator('#studentUrl').inputValue(),'','Draft settings have no student URL');
     assert.equal(await page.locator('#qrMount svg').count(),0,'Draft settings have no QR code');
