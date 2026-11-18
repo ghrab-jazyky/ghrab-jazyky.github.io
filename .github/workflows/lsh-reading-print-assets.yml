@@ -4,6 +4,11 @@ on:
     branches: ['feature/rl-pdf-annotations-pilot-20261118']
     paths:
       - 'language-skills-hub/scripts/build-reading-print-pdfs.cjs'
+      - 'language-skills-hub/self-check/reading/print-core.js'
+      - 'language-skills-hub/self-check/reading/print-page.html'
+      - 'language-skills-hub/self-check/reading/print-page.js'
+      - 'language-skills-hub/self-check/reading/print-page.css'
+      - 'language-skills-hub/cteni/asteroids/index.html'
       - '.github/workflows/lsh-reading-print-assets.yml'
 permissions:
   contents: write
@@ -45,5 +50,17 @@ jobs:
             echo "No PDF changes"
           else
             git commit -m "build(reading): generated Asteroids teacher PDFs [skip ci]"
-            git push origin HEAD:feature/rl-pdf-annotations-pilot-20261118
+            # Another reviewer may have updated the feature branch while PDFs were built.
+            # Rebase onto its current tip; never force-push or overwrite source changes.
+            for attempt in 1 2 3; do
+              git pull --rebase origin feature/rl-pdf-annotations-pilot-20261118
+              if git push origin HEAD:feature/rl-pdf-annotations-pilot-20261118; then
+                echo "PDF assets saved after sync"
+                exit 0
+              fi
+              if [ "$attempt" -eq 3 ]; then
+                echo "Cannot safely publish generated PDFs after 3 attempts"
+                exit 1
+              fi
+            done
           fi
