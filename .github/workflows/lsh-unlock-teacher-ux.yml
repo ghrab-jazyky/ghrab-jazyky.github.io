@@ -1,0 +1,55 @@
+name: LSH teacher gesture UX candidate
+
+on:
+  pull_request:
+    paths:
+      - "language-skills-hub/self-check/**"
+      - "language-skills-hub/tests/lsh-unlock-*.cjs"
+      - ".github/workflows/lsh-unlock-teacher-ux.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gesture-teacher-ux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install test dependencies
+        run: npm install --no-save --no-package-lock playwright@1.56.1 jsqr@1.4.0 pngjs@7.0.0
+      - name: Install browser engines
+        run: npx playwright install --with-deps chromium webkit
+      - name: Validate JavaScript syntax
+        run: |
+          node --check language-skills-hub/self-check/session/unlock-gestures.js
+          node --check language-skills-hub/self-check/session/teacher-ux.js
+          node --check language-skills-hub/self-check/session/gesture-trainer-page.js
+      - name: Deterministic gesture and timing tests
+        run: |
+          node --test language-skills-hub/tests/lsh-unlock-gestures.test.cjs
+          node --test language-skills-hub/tests/lsh-unlock-stagec-boundaries.test.cjs
+      - name: Start local site
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-teacher-ux-http.log 2>&1 &
+          for i in $(seq 1 25); do
+            if curl -fsS http://127.0.0.1:8765/language-skills-hub/self-check/reading/teacher.html >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/lsh-teacher-ux-http.log
+          exit 1
+      - name: Teacher trainer in both labs and mobile QR page
+        run: node --test language-skills-hub/tests/lsh-unlock-teacher-ux.browser.test.cjs
+      - name: Existing teacher link and gesture regression
+        run: |
+          node --test language-skills-hub/tests/lsh-unlock-stageb.browser.test.cjs
+          node --test language-skills-hub/tests/lsh-unlock-staged-teacher-confirmation.browser.test.cjs
+      - name: Report failure
+        if: failure()
+        run: |
+          echo "NO-GO: teacher gesture candidate failed; main must remain unchanged."
+          cat /tmp/lsh-teacher-ux-http.log || true
