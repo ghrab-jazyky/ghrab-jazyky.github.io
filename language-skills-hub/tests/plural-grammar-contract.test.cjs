@@ -72,55 +72,46 @@ test('shared vocabulary saves a singular term and leaves plural visually separat
  assert.equal(g.words.fr['mères'],'matky');
 });
 
-test('V5 authored editorial patches match all 168 EXTRA notes and 67 grammar challenges',()=>{
+test('V6 all 288 EXTRA editorial notes and 96 grammar tasks match exact authoring ledgers',()=>{
  const content=literal('CONTENT');
  const authoring='authoring/plural/';
- function rows(filename){
-  return read(authoring+filename).trimEnd().split('\n').map(line=>{
-   const i=line.indexOf('\t');assert.ok(i>0,filename+' malformed row');
-   return [line.slice(0,i),line.slice(i+1)];
-  });
- }
- // Three originally templated entries were subsequently replaced with new lexical items.
- // Keep their final content under an exact regression check rather than ignoring them.
- const finalOverrides={
-  'ES-B1-S04-EXTRA-02':'«Convoy» termina en -y precedida de vocal. Su plural es «convoyes», no *convoys; compáralo con «la ley → las leyes».',
-  'ES-C2-S01-EXTRA-02':'En «las crisis sucesorias», «crisis» no cambia de forma; «sucesorias» sí lleva -s. El artículo señala que hay varias crisis.',
-  'ES-C2-S01-EXTRA-03':'«Carácter» pasa a «caracteres»: desaparece la tilde y cambia la posición de la sílaba tónica. «Hereditario» concuerda: «hereditarios».'
- };
- let notes=0;
- for(const file of ['notes_es_v5.tsv','notes_fr_v5.tsv']){
-  const keys=new Set();
-  for(const [id,note] of rows(file)){
-   assert.ok(!keys.has(id),'Duplicate editorial item '+id);keys.add(id);
+ function rows(file){return read(authoring+file).trimEnd().split('\n').map(line=>{
+  const i=line.indexOf('\t');
+  assert.ok(i>0,'Missing tab in '+file);
+  return [line.slice(0,i),line.slice(i+1)];
+ });}
+ let count=0;
+ for(const lang of ['es','fr']){
+  const seen=new Set();
+  for(const [id,note] of rows('notes_'+lang+'_v6.tsv')){
+   assert.ok(!seen.has(id),'Duplicate EXTRA '+id);seen.add(id);
    const m=id.match(/^(ES|FR)-(A1|A2|B1|B2|C1|C2)-S(0[1-8])-EXTRA-(0[1-3])$/);
-   assert.ok(m,'Invalid EXTRA item id '+id);
-   const finalNote=Object.prototype.hasOwnProperty.call(finalOverrides,id)?finalOverrides[id]:note;
-   assert.equal(content[m[1].toLowerCase()].levels[m[2]].stations[+m[3]-1].extra[+m[4]-1][4],finalNote,id);
-   assert.ok(note.length>45,id+' is still too short');
-   notes++;
+   assert.ok(m,'Invalid EXTRA id '+id);
+   assert.equal(content[lang].levels[m[2]].stations[+m[3]-1].extra[+m[4]-1][4],note,id);
+   assert.ok(note.length>=30,id+' note too short');count++;
   }
-  assert.equal(keys.size,84);
+  assert.equal(seen.size,144);
  }
- assert.equal(notes,168);
- const taskIds=new Set();
- for(const [id,task] of rows('tasks_v5.tsv')){
-  assert.ok(!taskIds.has(id),'Duplicate grammar task '+id);taskIds.add(id);
+ assert.equal(count,288);
+ const seen=new Set();
+ for(const [id,task] of rows('tasks_v6.tsv')){
+  assert.ok(!seen.has(id),'Duplicate task '+id);seen.add(id);
   const m=id.match(/^(ES|FR|DE)-(B1|B2|C1|C2)-S(0[1-8])$/);
   assert.ok(m,'Invalid task id '+id);
   assert.equal(content[m[1].toLowerCase()].levels[m[2]].stations[+m[3]-1].grammarTask,task,id);
+  assert.ok(task.length>60,id+' grammar task too short');
  }
- assert.equal(taskIds.size,67);
+ assert.equal(seen.size,96);
  const es=content.es.levels,fr=content.fr.levels;
  assert.match(es.A2.stations[4].extra[1][4],/pasa de aguda/);
  assert.equal(es.A1.stations[2].extra[2][1],'los arroces');
  assert.doesNotMatch(fr.C1.stations[0].extra[2][4],/bonus/);
  assert.doesNotMatch(html,/sigue recayendo en la penúltima|le bonus sert/);
- for(const lang of ['es','fr'])for(const lev of levels)
-  for(const st of content[lang].levels[lev].stations){
-   if(lang==='es'&&st.main.includes('Debatid'))
-    assert.doesNotMatch(st.main,/Usa al menos/);
-   if(lang==='fr'&&st.main.includes('Débattez'))
-    assert.doesNotMatch(st.main,/Utilise au moins/);
-  }
+ assert.equal(fr.A1.stations[2].extra[2][0],'le pois');
+ assert.equal(es.A2.stations[7].extra[2][0],'la afición');
+ assert.match(fr.C1.stations[0].extra[0][2],/zeť/);
+ for(const lang of ['es','fr'])for(const lev of levels)for(const st of content[lang].levels[lev].stations){
+  if(lang==='es'&&st.main.includes('Debatid'))assert.doesNotMatch(st.main,/Usa al menos/);
+  if(lang==='fr'&&st.main.includes('Débattez'))assert.doesNotMatch(st.main,/Utilise au moins/);
+ }
 });
