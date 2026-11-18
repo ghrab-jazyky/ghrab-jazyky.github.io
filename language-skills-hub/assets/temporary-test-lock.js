@@ -22,7 +22,16 @@
   }catch(_){}
   return hash===PREVIEW_ON?'on':'off';
  }
- const previewLinkAction=applyPreviewLink();
+ let previewLinkAction=applyPreviewLink();
+ // Also support a preview link pasted into the address bar of an already-open
+ // catalog page. That navigation changes only the fragment (no page reload).
+ root.addEventListener('hashchange',()=>{
+  const action=applyPreviewLink();
+  if(action){
+   previewLinkAction=action;
+   announcePreviewLink();
+  }
+ });
  function isLocalPreview(){
   return root.location.protocol==='http:' &&
    (root.location.hostname==='127.0.0.1'||root.location.hostname==='localhost');
@@ -42,6 +51,7 @@
  function announcePreviewLink(){
   if(!previewLinkAction)return;
   const show=()=>{
+   root.document.getElementById('lshTemporaryTestPreviewStatus')?.remove();
    const note=el('div','lsh-temporary-test-preview-status');
    note.id='lshTemporaryTestPreviewStatus';
    note.setAttribute('role','status');
