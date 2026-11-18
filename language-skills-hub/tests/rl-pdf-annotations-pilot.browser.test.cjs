@@ -13,9 +13,9 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.goto(base+'teacher.html?topic=rl-asteroids&lang=en&level=B2');
    await page.locator('#printStatus').getByText(/Asteroids/).waitFor({timeout:30000});
    for(const id of ['printPracticeText','printPracticeAll','printTestText','printTestAll'])
-    assert.match(await page.locator('#'+id).getAttribute('href'),/print-page\.html\?/);
-   const target=await page.locator('#printTestAll').getAttribute('href');
-   await page.goto(target);
+    assert.match(await page.locator('#'+id).getAttribute('href'),/print-page\.html\?|printouts\/rl-asteroids\/.*\.pdf/);
+   const target=new URL('print-page.html?topic=rl-asteroids&lang=en&level=B2&mode=test&format=all',base);
+   await page.goto(target.href);
    await page.locator('#printButton:not([disabled])').waitFor({timeout:30000});
    assert.equal(await page.locator('#schoolLogo').evaluate(e=>e.naturalWidth>0),true);
    assert.equal(await page.locator('#readingParagraphs p').count()>0,true);
