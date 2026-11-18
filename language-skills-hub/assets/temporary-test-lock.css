@@ -61,3 +61,37 @@ html[data-lsh-temporary-test-page="teacher"]:not([data-lsh-temporary-test-access
  .lsh-temporary-test-dialog { padding: 20px; }
  .lsh-temporary-test-close { width: 100%; }
 }
+
+/* Confirmation shown once after the optional preview link has been opened. */
+.lsh-temporary-test-preview-status {
+ position: fixed;
+ z-index: 100000;
+ top: 16px;
+ right: 16px;
+ box-sizing: border-box;
+ width: min(450px, calc(100vw - 32px));
+ padding: 14px 16px;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 14px;
+ border: 1px solid #5f84a5;
+ border-radius: 12px;
+ background: #142c43;
+ color: #fff;
+ box-shadow: 0 10px 28px rgba(0,0,0,.35);
+ font: 500 14px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+.lsh-temporary-test-preview-dismiss {
+ border: 1px solid #9acaf0;
+ border-radius: 6px;
+ background: transparent;
+ color: #e4f3ff;
+ padding: 7px 10px;
+ font: inherit;
+ cursor: pointer;
+}
+.lsh-temporary-test-preview-dismiss:focus-visible{
+ outline: 3px solid #94d8ff;
+ outline-offset: 2px;
+}
