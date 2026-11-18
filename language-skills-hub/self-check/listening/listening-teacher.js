@@ -3,6 +3,7 @@
  * Public, serverless teacher helper: never claims control over external playback. */
 (()=>{
  'use strict';
+ if(!window.LSHTemporaryTestLock?.guardTeacherPage('../../index.html?skill=poslech'))return;
  const core=window.LSHListeningCore,shareTools=window.LSHShareTools;
  const $=id=>document.getElementById(id);
  const params=new URLSearchParams(location.search);
