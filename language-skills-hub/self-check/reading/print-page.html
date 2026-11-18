@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="cs" data-theme="light">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="robots" content="noindex,nofollow">
+ <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'">
+ <title>Reading Lab – materiál k tisku</title>
+ <link rel="stylesheet" href="print-page.css">
+ <script defer src="reading-core.js"></script>
+ <script defer src="print-core.js"></script>
+ <script defer src="print-page.js"></script>
+</head>
+<body>
+ <div class="print-controls">
+  <div><strong>Reading Lab · Materiály pro tisk</strong>
+   <p>Po otevření tiskového dialogu vyberte tiskárnu nebo možnost „Uložit jako PDF“. Tento pilot netvoří PDF automaticky na pozadí.</p>
+   <p id="status" role="status" aria-live="polite">Načítám zvolený materiál…</p></div>
+  <button type="button" id="printButton" disabled>Tisk / Uložit jako PDF</button>
+ </div>
+ <main class="paper" id="paper" hidden>
+  <header class="paper-header">
+   <img id="schoolLogo" src="../../assets/school-logo.png" width="72" height="72" alt="Logo Gymnázia Ostrava-Hrabůvka">
+   <div class="school-heading">
+    <p class="school">Gymnázium Ostrava-Hrabůvka · Reading Lab</p>
+    <h1 id="materialTitle"></h1>
+    <p class="material-meta" id="materialMeta"></p>
+   </div>
+  </header>
+  <section class="reading-material" aria-labelledby="readingTitle">
+   <h2 id="readingTitle">Reading text</h2>
+   <div id="readingParagraphs" class="reading-paragraphs"></div>
+  </section>
+  <section id="exercisesSection" class="exercises" hidden aria-labelledby="exercisesTitle">
+   <h2 id="exercisesTitle">Exercises</h2>
+   <div id="exercises"></div>
+  </section>
+  <section id="reflectionSection" class="reflection" hidden>
+   <h2>Additional reflection · Not scored</h2>
+   <p id="reflectionPrompt"></p><div class="writing-lines" aria-hidden="true"></div>
+  </section>
+  <footer class="paper-footer">
+   Zdroj inspirace: British Council – LearnEnglish, Asteroids. Materiál připravený pro Reading Lab.
+   Zachovejte označení původního zdroje a respektujte podmínky jeho využití.
+  </footer>
+ </main>
+</body>
+</html>
