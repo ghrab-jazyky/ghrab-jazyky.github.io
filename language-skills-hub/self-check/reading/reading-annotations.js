@@ -49,7 +49,7 @@
    throw new Error('Invalid Reading annotation mount');
   if(!root.CSS?.highlights||typeof root.Highlight!=='function')
    throw new Error('CSS text highlight API unavailable');
-  let items=[],selected=null,enabled=false,noteDraft=null,color='yellow';
+  let items=[],selected=null,enabled=false,noteDraft=null,editingIndex=null,color='yellow';
   const status=host.querySelector('[data-anno-status]');
   const list=host.querySelector('[data-anno-list]');
   const noteBox=host.querySelector('[data-anno-note-box]');
@@ -103,7 +103,23 @@
      if(hasLocked())return;
      items.splice(index,1);paint();setStatus(save()?'Anotace odstraněna.':'Anotaci nelze trvale uložit.');
     });
-    row.append(description,remove);list.appendChild(row);
+    const actions=document.createElement('span');actions.className='lsh-annotation-actions';
+    const edit=document.createElement('button');edit.type='button';edit.className='action ghost';
+    edit.textContent=item.kind==='note'?'Upravit poznámku':item.kind==='underline'?'Zvýraznit':'Změnit barvu';
+    edit.setAttribute('aria-label','Upravit anotaci '+(index+1));
+    edit.addEventListener('click',()=>{
+     if(hasLocked())return;
+     if(item.kind==='note'){
+      editingIndex=index;noteDraft=null;
+      if(noteBox)noteBox.hidden=false;
+      if(noteInput){noteInput.value=item.note;noteInput.focus({preventScroll:true})}
+      return;
+     }
+     if(item.kind==='underline'){item.kind='highlight';item.color=color;}
+     else item.color=COLORS[(COLORS.indexOf(item.color)+1)%COLORS.length];
+     paint();setStatus(save()?'Anotace upravena.':'Anotaci nelze trvale uložit.');
+    });
+    actions.append(edit,remove);row.append(description,actions);list.appendChild(row);
    });
   }
   function capture(){
@@ -119,7 +135,8 @@
     end=offset(range.endContainer,range.endOffset,startTarget);
    }catch(_){return;}
    const text=range.toString();
-   if(start>=end||!text.trim()||text.length>MAX_LENGTH)return;
+   if(start>=end||!text.trim())return;
+   if(text.length>MAX_LENGTH){setStatus('Vyberte kratší úsek textu (nejvýše 600 znaků).');return;}
    selected={anchor:startTarget.dataset.annotationAnchor,start,end,text};
    setStatus('Označený text připraven: '+text.slice(0,55)+(text.length>55?'…':''));
   }
@@ -140,6 +157,7 @@
    host.querySelector('[data-anno-toggle]').textContent=enabled?'Vypnout poznámky':'Zapnout poznámky';
    host.querySelector('[data-anno-controls]').hidden=!enabled;
    if(noteBox)noteBox.hidden=true;
+   noteDraft=null;editingIndex=null;
    clearSelection();
    if(!enabled){for(const key of highlightKeys)root.CSS.highlights.delete('lsh-anno-'+key);}
    else paint();
@@ -153,14 +171,22 @@
   host.querySelector('[data-anno-underline]')?.addEventListener('click',()=>add('underline'));
   host.querySelector('[data-anno-start-note]')?.addEventListener('click',()=>{
    if(!selected){setStatus('Nejdříve označte část textu nebo otázky.');return;}
-   noteDraft=selected;
+   noteDraft=selected;editingIndex=null;
    if(noteBox)noteBox.hidden=false;
    if(noteInput){noteInput.value='';noteInput.focus({preventScroll:true})}
   });
   host.querySelector('[data-anno-save-note]')?.addEventListener('click',()=>{
-   selected=noteDraft;if(!selected)return;
-   add('note',noteInput?.value||'');
-   if(noteBox)noteBox.hidden=true;noteDraft=null;
+   if(hasLocked())return;
+   const content=(noteInput?.value||'').trim();
+   if(!content){setStatus('Napište poznámku.');return;}
+   if(editingIndex!==null&&items[editingIndex]?.kind==='note'){
+    items[editingIndex].note=content.slice(0,MAX_NOTE);
+    paint();setStatus(save()?'Poznámka upravena.':'Poznámku nelze trvale uložit.');
+   }else{
+    selected=noteDraft;if(!selected)return;
+    add('note',content);
+   }
+   if(noteBox)noteBox.hidden=true;noteDraft=null;editingIndex=null;
   });
   for(const container of containers){
    container.addEventListener('pointerup',()=>root.setTimeout(capture,0));
@@ -169,7 +195,9 @@
   }
   function snapshot(){return normalized(items)}
   function restore(value){
-   items=normalized(value);clearSelection();if(enabled)paint();else renderList();
+   items=normalized(value);clearSelection();noteDraft=null;editingIndex=null;
+   if(noteBox)noteBox.hidden=true;
+   if(enabled)paint();else renderList();
   }
   function refresh(){
    if(hasLocked()){clearSelection();if(noteBox)noteBox.hidden=true}
