@@ -122,8 +122,9 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.locator('#workspace:not([hidden])').waitFor({timeout:30000});
    await page.locator('[data-anno-toggle]').click();
    await page.evaluate(()=>{
-    const p=document.querySelector('#readingParagraphs p'),t=p.firstChild;
-    if(!t||t.nodeType!==Node.TEXT_NODE)throw new Error('Expected first text node');
+    const p=document.querySelector('#readingParagraphs p');
+    const t=[...p.childNodes].find(n=>n.nodeType===Node.TEXT_NODE&&n.textContent.length>12);
+    if(!t)throw new Error('Expected paragraph text node');
     const r=document.createRange();r.setStart(t,0);r.setEnd(t,8);
     const s=getSelection();s.removeAllRanges();s.addRange(r);
     p.dispatchEvent(new PointerEvent('pointerup',{bubbles:true}));
