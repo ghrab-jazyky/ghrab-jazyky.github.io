@@ -132,6 +132,10 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.waitForTimeout(120);
    await page.locator('[data-anno-color="yellow"]').click();
    assert.equal(await page.locator('.lsh-annotation-item').count(),1);
+   await page.locator('#readingParagraphs p').first().evaluate(el=>
+    el.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true})));
+   assert.equal(await page.locator('#sessionLock').isVisible(),false,
+    'Native annotation long-press must not be treated as leaving the test');
    const before=await page.locator('#counter').textContent();
    await page.reload();
    await page.locator('#sessionLock').waitFor({state:'visible',timeout:30000});
@@ -142,6 +146,9 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.locator('#sessionLock').waitFor({state:'hidden',timeout:10000});
    await page.locator('[data-anno-toggle]').click();
    assert.equal(await page.locator('[data-anno-controls]').isVisible(),true);
+   await page.locator('body').evaluate(el=>
+    el.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true})));
+   await page.locator('#sessionLock').waitFor({state:'visible',timeout:10000});
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
  });
