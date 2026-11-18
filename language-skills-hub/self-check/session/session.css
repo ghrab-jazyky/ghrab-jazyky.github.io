@@ -109,3 +109,14 @@
 .lsh-unlock-teacher-demo .lsh-unlock-surface{touch-action:none}
 
 .lsh-trainer-route{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+
+
+.lsh-unlock-step-list{display:grid;gap:7px;list-style-position:inside;padding:10px 16px;border:1px solid var(--line);border-radius:12px;background:var(--panel2)}
+.lsh-unlock-step-list li{padding:5px 2px;line-height:1.45}
+@media(max-height:500px){
+ .lsh-unlock-teacher-demo .lsh-trainer-heading{top:49px;padding:5px 10px}
+ .lsh-unlock-teacher-demo .lsh-trainer-heading p:not(.lsh-trainer-progress){display:none}
+ .lsh-unlock-teacher-demo .lsh-trainer-feedback{bottom:58px;padding:5px 8px;min-height:0}
+ .lsh-unlock-teacher-demo .lsh-trainer-retry{bottom:7px;min-height:40px}
+ .lsh-unlock-teacher-demo .lsh-trainer-close{top:3px;min-height:38px}
+}
