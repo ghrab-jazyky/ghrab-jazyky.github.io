@@ -29,7 +29,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1 hyphen@1.14.1
       - name: Generate branded A4 PDFs for all Asteroids variants
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/rl-pdf-http.log 2>&1 &
