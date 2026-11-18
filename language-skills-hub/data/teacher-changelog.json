@@ -1,9 +1,25 @@
 {
   "kind": "LSH_TEACHER_CHANGELOG_V1",
   "schemaVersion": 1,
-  "latestAnnouncementSequence": 5,
+  "latestAnnouncementSequence": 6,
   "contentRevision": 1,
   "releases": [
+    {
+      "id": "lsh-2026-11-18-reading-cefr-guidance",
+      "sequence": 6,
+      "publishedAt": "2026-11-18",
+      "title": "Samostatnější práce s textem v Reading Lab",
+      "changes": [
+        {
+          "id": "reading-level-appropriate-text-navigation",
+          "area": "reading",
+          "category": "methodology",
+          "title": "Nápověda při čtení podle úrovně CEFR",
+          "description": "V pěti čtecích kartách zůstává na úrovních A1–B1 tlačítko Show in text u úloh, které tuto podporu nabízejí. Na úrovních B2–C2 se před vyhodnocením nezobrazují navigační nápovědy ani automaticky zvýrazněné cílové pasáže. Po vyhodnocení je na všech úrovních dostupné Show exact evidence, které ukáže přesný důkaz v textu a umožní návrat k otázce.",
+          "teacherBenefit": "Začátečníci získají oporu při vyhledávání informací, pokročilí pracují samostatněji. Při společné kontrole odpovědí snadno ukážeš konkrétní pasáž."
+        }
+      ]
+    },
     {
       "id": "lsh-2026-11-18-plural-v6",
       "sequence": 5,

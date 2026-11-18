@@ -38,6 +38,13 @@ jobs:
                   assert data['kind']=='LSH_PUBLIC_PRACTICE_R17'
                   assert data['gradedTestsEnabled'] is False
                   release=json.loads(get('/language-skills-hub/version.json?verify='+str(attempt)))
+                  # R76: verify public teacher notes only after the new Reading release is published.
+                  teacher_notes=json.loads(get('/language-skills-hub/data/teacher-changelog.json?verify='+str(attempt)))
+                  assert teacher_notes['latestAnnouncementSequence']>=6, 'Reading changelog not yet published'
+                  reading_note=next((r for r in teacher_notes['releases'] if r['id']=='lsh-2026-11-18-reading-cefr-guidance'),None)
+                  assert reading_note and reading_note['sequence']==6 and reading_note['publishedAt']=='2026-11-18'
+                  assert any(c.get('area')=='reading' and 'B2–C2' in c.get('description','') for c in reading_note['changes']), 'Reading CEFR teacher note missing'
+
                   assert release['version']=='R70-LISTENING-STUDIO-UNIFICATION'
                   assert release['localGradeProposalsEnabled'] is True
                   assert release['localTeacherReviewPersistenceEnabled'] is True
