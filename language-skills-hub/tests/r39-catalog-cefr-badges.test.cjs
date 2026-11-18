@@ -40,3 +40,14 @@ test('R39: preview, test, keys, and share URLs retain the explicit selected leve
  assert.match(teacher,/const v=listen\.variant\(data,level\)/);
  assert.match(teacher,/const v=read\.variantFromData\(read\.parseReadingData\(html\),lang,level\)/);
 });
+
+test('R39: Plurál is Czech for all languages; individual language names remain localized',()=>{
+ const entry=catalog.find(e=>e.id==='cl-plural');
+ const names=JSON.parse(read('data/catalog-i18n.json')).entries['cl-plural'];
+ assert.equal(entry.title,'Plurál','canonical Czech fallback');
+ assert.equal(names.cs.title,'Plurál');
+ assert.equal(names.de.title,'Plural');
+ assert.equal(names.es.title,'El plural');
+ assert.equal(names.fr.title,'Le pluriel');
+ assert.match(read('assets/hub.js'),/const language=filter==='all'\?'cs':filter/);
+});

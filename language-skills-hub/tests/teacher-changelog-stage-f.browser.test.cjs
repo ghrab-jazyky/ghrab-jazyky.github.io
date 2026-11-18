@@ -26,7 +26,7 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#whatsNewCatalog[open]').waitFor();
    assert.deepEqual(await page.locator('.wn-release').evaluateAll(els=>els.map(el=>Number(el.dataset.wnSequence))),[5,4,3,2,1]);
    assert.equal(await page.locator('.wn-change').count(),9);
-   assert.match(await page.locator('.wn-release').first().innerText(),/Plural/i);
+   assert.match(await page.locator('.wn-release').first().innerText(),/Plurál/i);
    assert.match(await page.locator('.wn-release').nth(1).innerText(),/časovaných testů/i);
    assert.match(await page.locator('.wn-release').nth(2).innerText(),/konverzace v restauraci/i);
    assert.match(await page.locator('.wn-release').nth(3).innerText(),/How to Choose Your News/);

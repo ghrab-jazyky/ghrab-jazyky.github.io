@@ -14,7 +14,7 @@ test('Stage F: curated release history is valid and chronological',()=>{
  assert.equal(data.latestAnnouncementSequence,5);
  assert.equal(data.releases.reduce((n,r)=>n+r.changes.length,0),9);
  assert.equal(data.releases[0].changes.length,1);
- assert.match(data.releases[0].title,/Plural/);
+ assert.match(data.releases[0].title,/Plurál/);
  assert.ok(data.releases[0].changes.some(c=>c.description.includes('Conversation Lab')));
  assert.ok(data.releases[0].changes.some(c=>c.description.includes('A1 až C2')));
  assert.equal(data.releases[1].changes.length,3);
