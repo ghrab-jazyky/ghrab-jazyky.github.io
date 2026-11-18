@@ -120,3 +120,13 @@
  .lsh-unlock-teacher-demo .lsh-trainer-retry{bottom:7px;min-height:40px}
  .lsh-unlock-teacher-demo .lsh-trainer-close{top:3px;min-height:38px}
 }
+
+
+/* Standalone QR rehearsal has no inline styles (the page uses strict CSP). */
+.lsh-unlock-trainer-page{max-width:760px}
+.lsh-unlock-teacher-v2 .lsh-unlock-option{transition:border-color .15s ease,background-color .15s ease}
+:root[data-theme="dark"] .lsh-unlock-teacher-v2 .lsh-unlock-option{background:#242930}
+:root[data-theme="dark"] .lsh-unlock-teacher-v2 .lsh-unlock-option:has(input:checked){background:#303841}
+:root[data-theme="light"] .lsh-unlock-teacher-v2 .lsh-unlock-option{background:#f9fafb}
+:root[data-theme="light"] .lsh-unlock-teacher-v2 .lsh-unlock-option:has(input:checked){background:#eff5f7}
+@media(prefers-reduced-motion:reduce){.lsh-unlock-teacher-v2 .lsh-unlock-option{transition:none}}
