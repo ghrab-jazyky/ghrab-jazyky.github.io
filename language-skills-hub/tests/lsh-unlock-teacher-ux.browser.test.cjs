@@ -144,7 +144,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.ok(hit.every(x=>typeof x==='string'&&x.includes('lsh-corner')),JSON.stringify(hit));
    for(const [x,y] of [[38,38],[352,38],[38,806],[352,806]])
     await page.touchscreen.tap(x,y);
-   await page.locator('.lsh-trainer-progress').getByText(/Gesto bylo úspěšně rozpoznáno/).waitFor({timeout:4000});
+   await page.locator('.lsh-trainer-progress').filter({hasText:/Gesto bylo úspěšně rozpoznáno/}).waitFor({timeout:4000});
    await context.close();
   }finally{await browser.close();}
  });
