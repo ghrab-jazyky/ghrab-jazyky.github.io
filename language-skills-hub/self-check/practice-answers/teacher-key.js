@@ -644,6 +644,10 @@ async function refresh(){
  $('answerPreview').replaceChildren();
  const e=entry();if(!e)return;
  const lang=$('language').value,level=$('level').value,mode=$('answerMode').value;
+ if(mode==='test'&&host.LSHTemporaryTestLock?.isLocked()){
+  $('answerMode').value='practice';setModeUI();
+  host.LSHTemporaryTestLock.showNotice();return;
+ }
  if(!e.languages.includes(lang)||!e.levels.includes(level)){
   const missing=[];
   if(!e.languages.includes(lang))missing.push('jazyk');
@@ -704,11 +708,17 @@ async function init(){
   need(e,'Téma neexistuje. Otevři výsledky z konkrétní karty v katalogu.');
   need(requestedSkill===null||requestedSkill===e.skill,
    'Nesprávná laboratoř v odkazu. Reading a Listening nelze zaměnit.');
+  const locked=host.LSHTemporaryTestLock?.isLocked()===true;
+  if(locked){
+   const testOption=$('answerMode').querySelector('option[value="test"]');
+   if(testOption)testOption.disabled=true;
+  }
   const requestedMode=qs.get('mode');
   need(requestedMode===null||['practice','test'].includes(requestedMode),
    'Neplatná verze klíče v odkazu.');
   selected=e;configure(e);
-  $('answerMode').value=requestedMode||'practice';setModeUI();
+  $('answerMode').value=locked?'practice':(requestedMode||'practice');setModeUI();
+  if(locked&&requestedMode==='test')host.LSHTemporaryTestLock.showNotice();
   $('answerMode').addEventListener('change',()=>{setModeUI();refresh()});
   $('language').addEventListener('change',refresh);
   $('level').addEventListener('change',refresh);
