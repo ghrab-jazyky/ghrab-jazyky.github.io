@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - feat/lsh-plural-cards-r70-stage
+      - feat/lsh-plural-v6-editorial
     paths:
       - 'language-skills-hub/**'
       - '.github/workflows/lsh-plural-stage-qa.yml'
