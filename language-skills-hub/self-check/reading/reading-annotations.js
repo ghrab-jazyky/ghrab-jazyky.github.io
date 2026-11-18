@@ -188,6 +188,8 @@
    }
    if(noteBox)noteBox.hidden=true;noteDraft=null;editingIndex=null;
   });
+  // Touch selection may settle before pointerup/touchend; track native selection changes as well.
+  root.document?.addEventListener('selectionchange',()=>{if(enabled)capture()});
   for(const container of containers){
    container.addEventListener('pointerup',()=>root.setTimeout(capture,0));
    container.addEventListener('keyup',capture);
