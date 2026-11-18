@@ -19,6 +19,15 @@ if(!process.argv.includes('--sample')&&!process.argv.includes('--all'))throw Err
 const base=process.env.LSH_PRINT_BASE_URL||'http://127.0.0.1:8765/language-skills-hub/';
 const filePath=path.join(root,'printouts','rl-asteroids');
 (async()=>{
+ // Chromium on Linux may not have system hyphenation dictionaries.
+ // Apply explicit language patterns to the print DOM before creating each PDF.
+ const languages={en:'en-gb',es:'es',de:'de-1996',fr:'fr'};
+ const hyphenators={};
+ for(const [lang,language] of Object.entries(languages)){
+  const module=await import('hyphen/'+language);
+  if(typeof module.hyphenateSync!=='function')throw Error('Hyphenator missing: '+language);
+  hyphenators[lang]=module.hyphenateSync;
+ }
  const browser=await chromium.launch({headless:true});
  const manifest={schema:'RL_PDF_PRINT_ASSET_V1',topic:'rl-asteroids',files:[]};
  try{
@@ -33,6 +42,22 @@ const filePath=path.join(root,'printouts','rl-asteroids');
     if(response?.status()!==200)throw Error('HTTP failure: '+url);
     await page.locator('#printButton:not([disabled])').waitFor({timeout:30000});
     await page.evaluate(()=>document.fonts.ready);
+    const selectors=['#readingParagraphs p','.exercise-question .prompt',
+     '.exercise-options li','#reflectionPrompt'];
+    const selector=selectors.join(',');
+    const originals=await page.locator(selector).allTextContents();
+    const hyphenate=hyphenators[lang];
+    const withSoftHyphens=originals.map(text=>hyphenate(text,{
+     html:false,minWordLength:8
+    }));
+    await page.evaluate(({selector,values})=>{
+     [...document.querySelectorAll(selector)].forEach((el,index)=>{
+      el.textContent=values[index];
+     });
+    },{selector,values:withSoftHyphens});
+    if(level==='B2'&&format==='text'&&!withSoftHyphens.some(t=>t.includes('\u00ad')))
+     throw Error('No language-aware soft hyphens created for '+lang);
+
     const state=await page.evaluate(()=>({
      logo:document.getElementById('schoolLogo')?.naturalWidth,
      visible:!document.getElementById('paper')?.hidden,
