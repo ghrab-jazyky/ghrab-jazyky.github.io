@@ -16,7 +16,7 @@ jobs:
         run: |
           set -eu
           python3 - <<'PY'
-          import json,pathlib
+          import json,pathlib,hashlib
           folder=pathlib.Path("language-skills-hub/printouts/rl-asteroids")
           manifest=json.loads((folder/"manifest-all.json").read_text())
           assert len(manifest["files"])==96
@@ -24,6 +24,7 @@ jobs:
               data=(pathlib.Path("language-skills-hub")/item["path"]).read_bytes()
               assert data.startswith(b"%PDF"),item["path"]
               assert len(data)==item["bytes"],item["path"]
+              assert hashlib.sha256(data).hexdigest()==item["sha256"],item["path"]
           print("PASS: 96 PDFs match manifest and have valid PDF headers")
           PY
       - uses: actions/upload-artifact@v4
