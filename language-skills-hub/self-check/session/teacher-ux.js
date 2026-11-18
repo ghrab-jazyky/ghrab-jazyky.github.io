@@ -80,7 +80,7 @@
    step=Math.min(steps[id].length-1,Math.max(0,s.steps));
    if(s.awaitingRelease)progress.textContent='Uvolněte prst pro dokončení.';
    else if(id==='draw_z'&&s.steps>=4)progress.textContent='Uvolněte prst nebo tlačítko myši.';
-   else progress.textContent='Krok '+(step+1)+' z '+steps[id].length+': '+steps[id][step];
+   else progress.textContent='Krok '+(step+1)+' ze '+steps[id].length+': '+steps[id][step];
    showDots();
   }
   // The student recognizer is integrity-pinned. Observe its PUBLIC state only,
