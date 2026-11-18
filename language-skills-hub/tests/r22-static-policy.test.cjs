@@ -52,10 +52,10 @@ test('R22 local self-check is planned for Reading/Listening only and cannot be c
  ]);
 });
 
-test('R22 does not modify 30 live practice cards or the 666 published variants', () => {
- assert.equal(catalog.entries.length, 33);
- assert.equal(release.topicCount, 33);
- assert.equal(release.variantCount, 684);
+test('R22 staged catalog includes 23 conversation topics without enabling graded tests', () => {
+ assert.equal(catalog.entries.length, 34);
+ assert.equal(release.topicCount, 34);
+ assert.equal(release.variantCount, 702);
  const counts = {konverzace:0,cteni:0,poslech:0};
  let variants = 0;
  for (const entry of catalog.entries) {
@@ -67,8 +67,8 @@ test('R22 does not modify 30 live practice cards or the 666 published variants',
   assert.equal(digest, release.contentHashes[entry.id], entry.id + ' changed unexpectedly');
   if (entry.skill === 'poslech') assert.deepEqual(entry.languages, ['en']);
  }
- assert.deepEqual(counts, {konverzace:22,cteni:5,poslech:6});
- assert.equal(variants, 684);
+ assert.deepEqual(counts, {konverzace:23,cteni:5,poslech:6});
+ assert.equal(variants, 702);
 });
 
 test('R22 public catalog offers practice sharing and only explicit ungraded tests', () => {

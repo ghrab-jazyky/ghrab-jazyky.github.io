@@ -712,6 +712,28 @@
       ],
       "relative": "poslech/how-to-choose-your-news/index.html",
       "lockSource": null
+    },
+    {
+      "id": "cl-plural",
+      "skill": "konverzace",
+      "title": "Plural",
+      "summary": "Procvičování množného čísla v němčině, španělštině a francouzštině: otočné kartičky, pravidla, výjimky a mluvní úkoly.",
+      "languages": [
+        "de",
+        "es",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/plural/index.html",
+      "lockSource": null,
+      "cardType": "grammar-flashcards"
     }
   ]
 }

@@ -1,0 +1,13 @@
+{
+  "release": "PLURAL_V6",
+  "branch": "feat/lsh-plural-v6-editorial",
+  "status": "NO_GO",
+  "reviewed_by": "AI language editorial remediation; independent native speaker/pedagogical signoff not documented",
+  "gates": {
+    "extra_es_fr": false,
+    "cefr_b1_c2": false,
+    "problematic_lexemes_and_czech_glosses": false,
+    "technical_integration_and_browser_qa": false
+  },
+  "release_authorized": false
+}

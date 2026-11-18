@@ -1,9 +1,25 @@
 {
   "kind": "LSH_TEACHER_CHANGELOG_V1",
   "schemaVersion": 1,
-  "latestAnnouncementSequence": 4,
+  "latestAnnouncementSequence": 5,
   "contentRevision": 1,
   "releases": [
+    {
+      "id": "lsh-2026-11-18-plural-v6",
+      "sequence": 5,
+      "publishedAt": "2026-11-18",
+      "title": "Nová gramatická karta Plural v Conversation Lab",
+      "changes": [
+        {
+          "id": "conversation-plural-de-es-fr-a1-c2",
+          "area": "conversation",
+          "category": "content",
+          "title": "Procvičování množného čísla v němčině, španělštině a francouzštině",
+          "description": "V Conversation Lab přibyla samostatná karta Plural pro němčinu, španělštinu a francouzštinu na úrovních A1 až C2. Každá úroveň nabízí osm tematických stanic, otočné kartičky, stručná pravidla a úkoly pro mluvení.",
+          "teacherBenefit": "Kartu můžeš využít k procvičování pravidelných a nepravidelných tvarů, významových rozdílů a krátké komunikaci ve dvojicích."
+        }
+      ]
+    },
     {
       "id": "lsh-2026-11-17-timed-tests",
       "sequence": 4,
