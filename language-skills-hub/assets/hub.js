@@ -160,6 +160,10 @@ function card(e){
  if(localSelfCheck&&['cteni','poslech'].includes(e.skill)){
   const check=one('a','action test','TEST');
   check.href=testSetupUrl(e);check.target='_blank';check.rel='noopener noreferrer';
+  // Temporary maintenance: keep the TEST control visible but prevent usual entry.
+  if(window.LSHTemporaryTestLock?.isLocked())check.addEventListener('click',event=>{
+   event.preventDefault();window.LSHTemporaryTestLock.showNotice();
+  });
   check.setAttribute('aria-label','TEST: '+translation.title);
   check.title='Otevřít test k tématu. Výsledek je místní a případnou školní známku musí ověřit učitel.';
   actions.appendChild(check);
