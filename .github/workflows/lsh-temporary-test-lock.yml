@@ -1,0 +1,31 @@
+name: LSH temporary TEST lock regression
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/**'
+      - '.github/workflows/lsh-temporary-test-lock.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  maintenance-contract:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Syntax checks
+        run: |
+          node --check language-skills-hub/assets/temporary-test-lock.js
+          node --check language-skills-hub/assets/hub.js
+          node --check language-skills-hub/self-check/reading/reading-teacher.js
+          node --check language-skills-hub/self-check/listening/listening-teacher.js
+          node --check language-skills-hub/self-check/practice-answers/teacher-key.js
+          node --check language-skills-hub/tests/temporary-test-lock.test.cjs
+      - name: Maintenance unit regressions
+        run: node --test language-skills-hub/tests/temporary-test-lock.test.cjs
+      - name: Public policy and release contract regressions
+        run: node --test language-skills-hub/tests/r22-static-policy.test.cjs language-skills-hub/tests/r27-public-release.test.cjs
+  # Existing repository workflows cover the wider Chromium/WebKit classroom flows.
