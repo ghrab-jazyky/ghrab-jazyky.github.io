@@ -65,8 +65,39 @@
   }
   if(entry.languages.includes(old))$('language').value=old;
  }
+ function refreshPrintLinks(){
+  const entry=selectedEntry(),lang=$('language').value,level=$('level').value;
+  const ready=!!entry&&entry.id==='rl-asteroids'&&entry.languages.includes(lang)&&
+   entry.levels.includes(level);
+  for(const [id,mode,format] of [
+   ['printPracticeText','practice','text'],['printPracticeAll','practice','all'],
+   ['printTestText','test','text'],['printTestAll','test','all']
+  ]){
+   const link=$(id);
+   if(!link)continue;
+   if(ready){
+    const url=new URL('print-page.html',document.baseURI);
+    url.searchParams.set('topic',entry.id);
+    url.searchParams.set('lang',lang);
+    url.searchParams.set('level',level);
+    url.searchParams.set('mode',mode);
+    url.searchParams.set('format',format);
+    link.href=url.href;
+    link.removeAttribute('aria-disabled');
+    link.removeAttribute('tabindex');
+   }else{
+    link.removeAttribute('href');
+    link.setAttribute('aria-disabled','true');
+    link.setAttribute('tabindex','-1');
+   }
+  }
+  if($('printStatus'))$('printStatus').textContent=ready?
+   'Připravené tiskové náhledy pro Asteroids · '+lang.toUpperCase()+' · '+level+'.':
+   'Tiskový pilot je zatím dostupný pouze pro téma Asteroids.';
+ }
  function refresh(){
   if(historyTimer!==null){window.clearTimeout(historyTimer);historyTimer=null;}
+  refreshPrintLinks();
   const entry=selectedEntry();
   const language=$('language').value,level=$('level').value;
   const limit=Number($('timerMinutes').value);
