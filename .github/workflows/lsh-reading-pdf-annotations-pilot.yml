@@ -1,0 +1,29 @@
+name: LSH RL-PDF-01 RL-02 Asteroids pilot (NO DEPLOY)
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/self-check/reading/**'
+      - 'language-skills-hub/tests/rl-pdf-annotations-pilot*'
+      - '.github/workflows/lsh-reading-pdf-annotations-pilot.yml'
+  push:
+    branches: ['feature/rl-pdf-annotations-pilot-20261118']
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Syntax and unit contracts
+        run: |
+          node --check language-skills-hub/self-check/reading/print-core.js
+          node --check language-skills-hub/self-check/reading/print-page.js
+          node --check language-skills-hub/self-check/reading/reading-annotations.js
+          node --check language-skills-hub/self-check/reading/reading.js
+          node --check language-skills-hub/self-check/reading/reading-teacher.js
+          node --test language-skills-hub/tests/rl-pdf-annotations-pilot.test.cjs
