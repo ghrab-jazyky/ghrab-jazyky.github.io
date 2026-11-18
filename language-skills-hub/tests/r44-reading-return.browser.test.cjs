@@ -44,8 +44,16 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
       assert.equal(await page.locator('#levels button[data-level="'+level+'"]').getAttribute('aria-pressed'),'true');
       assert.equal(await back.isHidden(),true,'Stale return button on variant change');
       const withTargets=variant.questions.filter(hasLocate);
-      expectedTrips+=withTargets.length;
-      for(const tab of [...new Set(withTargets.map(q=>q.tab))]){
+      const locatorAllowed=['A1','A2','B1'].includes(level);
+      if(!locatorAllowed){
+       assert.equal(await page.locator('#questions button[data-locate]').count(),0,
+        'B2-C2 must not expose Show in text '+slug+' '+lang+'/'+level);
+       assert.equal(await page.locator('#readingBody [data-target-for]').count(),0,
+        'B2-C2 must not expose hidden target markers '+slug+' '+lang+'/'+level);
+       assert.equal(await back.isHidden(),true);
+      }
+      expectedTrips+=locatorAllowed?withTargets.length:0;
+      for(const tab of (locatorAllowed?[...new Set(withTargets.map(q=>q.tab))]:[])){
        await page.locator('#skillTabs button[data-skill="'+tab+'"]').click();
        for(const q of withTargets.filter(item=>item.tab===tab)){
         const button=page.locator('#questions button[data-locate="'+q.id+'"]');

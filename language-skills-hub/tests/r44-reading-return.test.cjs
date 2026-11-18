@@ -60,7 +60,11 @@ test('R44: all five practice cards have exactly one return route with language l
  const css=read('assets/lsh/reading-return.css');
  const ast=read('cteni/asteroids/index.html');
  assert.match(ast,/id="backToQuestion"/);
- assert.match(ast,/Reading Lab navigation v2\.2/);
+ assert.match(ast,/Reading Lab navigation v2\.3/);
+ assert.match(ast,/returnMode==='locate'/);
+ assert.match(ast,/returnMode==='evidence'/);
+ assert.match(script,/const allowLocate=/);
+ assert.match(script,/checkedEvidence/);
  assert.doesNotMatch(ast,/reading-return\.js/);
  for(const entry of cards.filter(x=>x.id!=='rl-asteroids')){
   const s=read(entry.relative);
