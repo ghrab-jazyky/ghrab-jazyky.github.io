@@ -49,3 +49,46 @@
 .lsh-unlock-demo-feedback{position:fixed;bottom:40px;left:50%;transform:translateX(-50%);z-index:20003;background:#152338;padding:8px;border-radius:8px;}
 .lsh-unlock-teacher-demo .lsh-corner{z-index:20002}
 .lsh-unlock-teacher-demo .lsh-unlock-surface{z-index:20001}
+
+
+/* Teacher UX v2: selection is readable without tiny, overloaded SVG thumbnails. */
+.lsh-unlock-teacher-v2 .lsh-unlock-teacher-intro{font-size:1rem;line-height:1.6;margin:0 0 14px}
+.lsh-unlock-teacher-v2 .lsh-unlock-options{display:grid;grid-template-columns:1fr;gap:9px}
+.lsh-unlock-teacher-v2 .lsh-unlock-option{display:flex;flex-direction:row;align-items:center;gap:12px;min-height:68px;padding:13px 16px;background:var(--panel)}
+.lsh-unlock-teacher-v2 .lsh-unlock-option input{align-self:center;flex:none;width:19px;height:19px;accent-color:var(--accent)}
+.lsh-unlock-teacher-v2 .lsh-unlock-thumb{display:none}
+.lsh-unlock-teacher-v2 .lsh-unlock-option-copy{gap:1px}
+.lsh-unlock-teacher-v2 .lsh-unlock-option-copy strong{font-size:1rem}
+.lsh-unlock-teacher-v2 .lsh-unlock-option-copy small{font-size:.86rem;line-height:1.45}
+.lsh-unlock-recommended{display:inline-block;width:max-content;font-size:.72rem;font-style:normal;font-weight:750;letter-spacing:.02em;margin-top:5px;padding:2px 9px;border-radius:20px;background:var(--panel2);border:1px solid var(--accent)}
+.lsh-unlock-teacher-v2 .lsh-unlock-details{padding:4px 0}
+.lsh-unlock-teacher-v2 summary{cursor:pointer;font-weight:700;line-height:1.5}
+.lsh-unlock-mobile{margin-top:18px;padding:16px;border:1px solid var(--line);border-radius:13px;background:var(--panel)}
+.lsh-unlock-mobile-qr{margin:12px 0}
+.lsh-unlock-mobile-qr svg{width:220px;max-width:100%;height:auto;display:block;background:white;padding:10px;border-radius:10px}
+.lsh-unlock-mobile a{overflow-wrap:anywhere}
+.lsh-unlock-teacher-demo{background:#f3f6fb!important;color:#15283c!important;overflow:hidden!important;padding:0!important;display:block!important;isolation:isolate}
+.lsh-unlock-teacher-demo .lsh-session-lock-panel{display:none}
+.lsh-unlock-teacher-demo .lsh-trainer-heading{position:fixed;z-index:20003;top:max(10px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:min(560px,calc(100% - 132px));padding:14px 20px;border:1px solid #cedae5;border-radius:14px;background:#fff;box-shadow:0 6px 20px #142c3d16;pointer-events:none;text-align:center}
+.lsh-unlock-teacher-demo .lsh-trainer-heading h2{font-size:clamp(1rem,2vw,1.35rem);margin:0 0 3px;line-height:1.25}
+.lsh-unlock-teacher-demo .lsh-trainer-heading p{font-size:clamp(.78rem,1.4vw,.9rem);margin:2px 0;line-height:1.35}
+.lsh-trainer-progress{font-weight:750;color:#00638c}
+.lsh-trainer-markers{position:fixed;inset:0;pointer-events:none;z-index:20002}
+.lsh-trainer-dot{position:absolute;display:grid;place-items:center;transform:translate(-50%,-50%);min-width:48px;height:48px;padding:5px;border-radius:50%;border:2px solid #7e97ae;background:#fff;color:#1b3b52;font-weight:800;font-size:.85rem;box-shadow:0 4px 12px #142c3d18}
+.lsh-trainer-dot.is-next{background:#007bad;color:#fff;border-color:#005780;box-shadow:0 0 0 8px #007bad22}
+.lsh-trainer-dot.is-done{background:#e0f5e9;color:#175c39;border-color:#348f63}
+.lsh-unlock-teacher-demo .lsh-trainer-close,.lsh-unlock-teacher-demo .lsh-trainer-retry{position:fixed;z-index:20004;background:#fff;color:#15283c;border:1px solid #95afc2;box-shadow:0 3px 12px #18354d12;min-height:44px}
+.lsh-unlock-teacher-demo .lsh-trainer-close{top:max(14px,env(safe-area-inset-top));right:12px}
+.lsh-unlock-teacher-demo .lsh-trainer-retry{bottom:max(16px,env(safe-area-inset-bottom));right:12px}
+.lsh-unlock-teacher-demo .lsh-trainer-feedback{position:fixed;z-index:20003;pointer-events:none;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);max-width:min(580px,calc(100% - 230px));margin:0;background:#fff;color:#16384e;font-size:.87rem;font-weight:650;padding:10px 13px;border:1px solid #cedae5;border-radius:9px;text-align:center;min-height:44px}
+.lsh-unlock-teacher-demo .lsh-unlock-surface{z-index:20001}
+.lsh-unlock-teacher-demo .lsh-corner{z-index:20001}
+.lsh-unlock-teacher-demo :focus-visible{outline:3px solid #006b9e;outline-offset:3px}
+@media(max-width:680px){
+ .lsh-unlock-teacher-demo .lsh-trainer-heading{top:62px;width:calc(100% - 24px);padding:10px 12px}
+ .lsh-unlock-teacher-demo .lsh-trainer-heading p{font-size:.78rem}
+ .lsh-unlock-teacher-demo .lsh-trainer-feedback{bottom:76px;max-width:calc(100% - 24px);width:calc(100% - 24px);min-height:0}
+ .lsh-unlock-teacher-demo .lsh-trainer-close{top:max(8px,env(safe-area-inset-top))}
+ .lsh-unlock-teacher-demo .lsh-trainer-retry{right:12px;bottom:14px}
+ .lsh-trainer-dot{min-width:42px;height:42px;font-size:.78rem}
+}
