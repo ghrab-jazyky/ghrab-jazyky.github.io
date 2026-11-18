@@ -80,10 +80,12 @@
  sync();
  // Prevent dictionary quick-tap / double-click handling from interrupting text
  // selection while annotation tools are enabled. Answer widgets are unaffected.
- reader.addEventListener('pointerup',event=>{
-  if(host.classList.contains('lsh-anno-enabled'))event.stopPropagation();
- });
- reader.addEventListener('dblclick',event=>{
-  if(host.classList.contains('lsh-anno-enabled'))event.stopPropagation();
- });
+ for(const surface of [reader,tasks]){
+  surface.addEventListener('pointerup',event=>{
+   if(host.classList.contains('lsh-anno-enabled'))event.stopPropagation();
+  });
+  surface.addEventListener('dblclick',event=>{
+   if(host.classList.contains('lsh-anno-enabled'))event.stopPropagation();
+  });
+ }
 })();
