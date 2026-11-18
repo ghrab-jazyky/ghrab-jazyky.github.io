@@ -24,7 +24,7 @@ const filePath=path.join(root,'printouts','rl-asteroids');
  const languages={en:'en-gb',es:'es',de:'de-1996',fr:'fr'};
  const hyphenators={};
  for(const [lang,language] of Object.entries(languages)){
-  const module=await import('hyphen/'+language);
+  const module=await import('hyphen/'+language+'/index.js');
   if(typeof module.hyphenateSync!=='function')throw Error('Hyphenator missing: '+language);
   hyphenators[lang]=module.hyphenateSync;
  }
