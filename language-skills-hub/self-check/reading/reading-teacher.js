@@ -1,6 +1,7 @@
 /* R27 Reading teacher setup. Public no-auth page, no exam results collected. */
 (()=>{
  'use strict';
+ if(!window.LSHTemporaryTestLock?.guardTeacherPage('../../index.html?skill=cteni'))return;
  const core=window.LSHReadingCore,share=window.LSHShareTools;
  const $=id=>document.getElementById(id);
  const qs=new URLSearchParams(location.search);
