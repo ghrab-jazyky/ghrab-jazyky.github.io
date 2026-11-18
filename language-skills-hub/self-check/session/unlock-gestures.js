@@ -70,7 +70,11 @@
   options=options||{};
   let steps=0,firstAt=null,releasedAt=null,active=null,geometryAt=null,baseSize=null,previous=null,waitingRelease=null;
   const signalSuccess=()=>{if(options.onSuccess)options.onSuccess()};
-  const fail=()=>{if(steps>=2&&options.onFailure)options.onFailure()};
+  // Trainer-only diagnostics preserve the historic incident counter threshold.
+ const fail=()=>{
+  if((steps>0||active||waitingRelease)&&options.onFeedback)options.onFeedback('invalid');
+  if(steps>=2&&options.onFailure)options.onFailure();
+ };
   function reset(count){
    if(count)fail();
    steps=0;firstAt=null;releasedAt=null;active=null;geometryAt=null;baseSize=null;previous=null;waitingRelease=null;
@@ -95,7 +99,10 @@
   function consumeDown(e,restart){
    const g=geometry(id,e.width,e.height);
    if(id==='draw_z'){
-    if(!Number.isFinite(e.x)||!Number.isFinite(e.y)||dist({x:e.x,y:e.y},g.points[0])>g.r)return;
+    if(!Number.isFinite(e.x)||!Number.isFinite(e.y)||dist({x:e.x,y:e.y},g.points[0])>g.r){
+     if(options.onFeedback)options.onFeedback('wrong-start');
+     return;
+    }
     firstAt=e.time;steps=1;geometryAt=g;baseSize={width:e.width,height:e.height};
     active={pointerId:e.pointerId,at:e.time,x:e.x,y:e.y};previous={x:e.x,y:e.y};
     return;
@@ -103,8 +110,10 @@
    const target=g.points[steps];
    const hit=Number.isFinite(e.x)&&Number.isFinite(e.y)&&dist({x:e.x,y:e.y},target)<=g.r;
    if(!hit){
+    const firstMiss=steps===0&&!active;
     const counted=steps>=2;
     reset(true);
+    if(firstMiss&&options.onFeedback)options.onFeedback('wrong-start');
     if(!restart&&counted){} // Failure was counted once.
     if(!restart)consumeDown(e,true); // Offending press may begin a new sequence.
     return;
@@ -175,7 +184,9 @@
     if(releasedAt!==null&&e.time-releasedAt>8000)reset(true);
     const order=['tl','tr','bl','br'];
     if(order[steps]!==e.corner){
+     const firstMiss=steps===0;
      reset(true);
+     if(firstMiss&&options.onFeedback)options.onFeedback('wrong-start');
      if(e.corner==='tl'){steps=1;firstAt=e.time;releasedAt=e.time;}
      return state();
     }
@@ -240,7 +251,9 @@
  }
  function bindDOM(overlay,id,callbacks){
   callbacks=callbacks||{};
-  const recognizer=createRecognizer(id,{onSuccess:callbacks.onSuccess,onFailure:callbacks.onFailure});
+  const recognizer=createRecognizer(id,{
+   onSuccess:callbacks.onSuccess,onFailure:callbacks.onFailure,onFeedback:callbacks.onFeedback
+  });
   const isCorners=id==='corners4',surface=document.createElement('div'),scope=isCorners?null:surface;
   let timer=null,disposed=false;
   surface.className=isCorners?'lsh-session-corners':'lsh-unlock-surface';
@@ -259,12 +272,16 @@
    if(timer!==null)clearTimeout(timer);
    const deadline=recognizer.nextDeadline();
    if(deadline!==null&&!disposed)timer=setTimeout(()=>{timer=null;
-    const q=rect();recognizer.feed({type:'timeout',time:monotonic(),width:q.width,height:q.height});arm();
+    const q=rect(),state=recognizer.feed({type:'timeout',time:monotonic(),width:q.width,height:q.height});
+    if(callbacks.onState)callbacks.onState(state,'timeout');
+    arm();
    },Math.max(0,deadline-monotonic()));
   }
   function emit(type,e,corner){
    if(disposed)return;
-   recognizer.feed(pack(type,e,corner));arm();
+   const state=recognizer.feed(pack(type,e,corner));
+   if(callbacks.onState)callbacks.onState(state,type);
+   arm();
   }
   function first(e){if(callbacks.onPointerStart)callbacks.onPointerStart(e);}
   if(isCorners){
