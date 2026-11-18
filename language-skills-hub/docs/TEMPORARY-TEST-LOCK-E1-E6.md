@@ -10,7 +10,13 @@ Stav: dočasná blokace uživatelského rozhraní, nikoli autentizace či bezpe�
 - Hodnota testUiEnabled v data/test-mode-policy.json se NEMĚNÍ.
 
 ## Jednorázová aktivace pro vývojáře
-Ve vlastním prohlížeči na produkční doméně otevři F12 > Console a proveď:
+Pro běžné používání otevři **v normálním profilu svého prohlížeče**:
+- Zapnutí výjimky: https://ghrab-jazyky.github.io/language-skills-hub/#lsh-test-preview=on
+- Vypnutí výjimky: https://ghrab-jazyky.github.io/language-skills-hub/#lsh-test-preview=off
+
+Stránka vypíše potvrzení, že přístup byl aktivován/vypnut, a odstraní aktivační fragment z URL. Není nutné používat F12, konzoli, instalovat software ani přidávat trvalý administrátorský panel. Jedná se o veřejně dostupný klientský přepínač v konkrétním prohlížeči, **nikoli přihlašování**. Nikdy jej nevydávat za skutečné zabezpečení. Pokud je odkaz otevřen v anonymním okně, výjimka platí pouze pro tento anonymní profil.
+
+Alternativní servisní postup: ve vlastním prohlížeči na produkční doméně otevři F12 > Console a proveď:
 
     localStorage.setItem('lsh:temporary-test-lock:developer:v1','enabled');location.reload();
 
