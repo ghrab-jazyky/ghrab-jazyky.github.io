@@ -149,6 +149,8 @@ const MORE={
  de:{typeMatch:'Zuordnung',findInText:'Im Text zeigen',backToQ:'Zurück zur Frage',backToTitle:'Klicken, um zur Frage zurückzukehren',firstTry:'Erster Versuch',nowScore:'Jetzt',evidenceMissing:'Der Beleg steht im fehlenden Satz – prüfe zuerst den Bereich Textzusammenhang.',vocabHint:'Markiert: ein Ausdruck, nach dem eine Aufgabe fragt (nicht die Lösung).',checkAll:'Alle Bereiche prüfen',tabNote:'Drei Aufgaben für diese Lesestrategie.',score:'Geprüfte Bereiche',explain:'Warum?',allDone:'Alle Bereiche geprüft',evidence:'Genauen Textbeleg zeigen',keep:'Weiter zum nächsten Bereich',unavailable:'Antworten können in diesem Browser-Tab nicht gespeichert werden.',privacyVocab:'Vokabeln werden auf diesem Gerät gespeichert. Sicherung und Wiederherstellung findest du unter Meine Vokabeln.',typeMC:'Multiple Choice',typeGap:'Fehlender Satz',typeTF:'Richtig / Falsch'},
  fr:{typeMatch:'Association',findInText:'Voir dans le texte',backToQ:'Retour à la question',backToTitle:'Cliquer pour revenir à la question',firstTry:'Premier essai',nowScore:'Maintenant',evidenceMissing:'La preuve se trouve dans la phrase manquante : corrige d’abord l’onglet Cohésion.',vocabHint:'Surligné : une expression sur laquelle porte une question (ce n’est pas la réponse).',checkAll:'Tout vérifier',tabNote:'Trois questions pour cette compétence.',score:'Compétences corrigées',explain:'Pourquoi ?',allDone:'Toutes corrigées',evidence:'Montrer la preuve précise',keep:'Passe à une autre compétence',unavailable:'Les réponses ne peuvent pas être enregistrées dans cet onglet.',privacyVocab:'Le vocabulaire est enregistré sur cet appareil. La sauvegarde est disponible dans Mon vocabulaire.',typeMC:'Choix multiple',typeGap:'Phrase manquante',typeTF:'Vrai / Faux'}};
 const more=()=>MORE[state.language];
+// CEFR policy: pre-check location help only for A1-B1; post-check evidence stays available at every level.
+const allowPreCheckLocate=()=>['A1','A2','B1'].includes(state.level);
 function tabs(){if(Array.isArray(curr().tabs)&&curr().tabs.length)return curr().tabs;const groups=[...new Set(questions().map(q=>q.tab))];return groups.map(id=>{const pair=STRATEGY[state.language][id]||[id,id];return {id,title:pair[0],description:pair[1]}})}
 function active(){const list=tabs();const id=activeByVariant[key()];return list.find(x=>x.id===id)||list[0]}
 function activeQuestions(){const id=active().id;return questions().filter(q=>q.tab===id)}
@@ -163,13 +165,13 @@ window.addEventListener('resize',syncViewport,{passive:true});
 function renderReading(){const c=curr(),reader=$('readingBody'),answer=entry(),revealed=checked('structure');let frag=document.createDocumentFragment();
  const activeTabId=active().id,targetItems=[];for(const q of questions()){const list=(Array.isArray(q.target)?[q.target]:[]).concat(Array.isArray(q.targets)?q.targets:[]);for(const t of list)targetItems.push({p:t[0],text:t[1],occ:t[2]||1,qid:q.id,activeTab:q.tab===activeTabId})}
  const isW=ch=>!!ch&&/[\p{L}\p{M}\p{N}]/u.test(ch),nth=(hay,needle,occ)=>{let from=0,i=0;for(;;){const at=hay.indexOf(needle,from);if(at<0)return -1;if(!isW(hay[at-1])&&!isW(hay[at+needle.length])&&++i===occ)return at;from=at+1}};
- const qSelected=questions().find(q=>q.id===activeEvidence);
+ const qSelected=questions().find(q=>q.id===activeEvidence&&checked(q.tab));
  c.paragraphs.forEach((original,pidx)=>{
   const missing=!!(c.gap&&c.gap.p===pidx&&!revealed&&original.startsWith(c.gap.sentence));
   const visible=missing?'[…] '+original.slice(c.gap.sentence.length).replace(/^\s+/, ''):original;
   const ranges=[];
   if(missing)ranges.push({start:0,end:3,cls:'text-gap'});
-  for(const target of targetItems){if(target.p!==pidx)continue;const pos=nth(visible,target.text,target.occ);if(pos>=0)ranges.push({start:pos,end:pos+target.text.length,cls:'reading-target',qid:target.qid,activeTab:target.activeTab})}
+  if(allowPreCheckLocate())for(const target of targetItems){if(target.p!==pidx)continue;const pos=nth(visible,target.text,target.occ);if(pos>=0)ranges.push({start:pos,end:pos+target.text.length,cls:'reading-target',qid:target.qid,activeTab:target.activeTab})}
   if(qSelected?.evidence)for(const item of qSelected.evidence){if(item.p!==pidx)continue;const from=visible.indexOf(item.text);if(from>=0)ranges.push({start:from,end:from+item.text.length,cls:'evidence-hit'})}
   const boundaries=[...new Set([0,visible.length,...ranges.flatMap(r=>[r.start,r.end])])].sort((a,b)=>a-b);
   const paragraph=el('p');paragraph.id='paragraph-'+pidx;paragraph.dataset.num=String(pidx+1);
@@ -181,17 +183,17 @@ function renderReading(){const c=curr(),reader=$('readingBody'),answer=entry(),r
   frag.append(paragraph);
  });reader.replaceChildren(frag);if(typeof markReturnTarget==='function')markReturnTarget();
 }
-function showEvidence(id){const q=questions().find(x=>x.id===id);if(!q||!checked(q.tab))return;activeEvidence=id;renderReading();const c=$('readingBody');let mark=c.querySelector('.evidence-hit');if(!mark){const btn=document.querySelector('[data-evidence="'+id+'"]');if(btn&&!btn.nextElementSibling?.classList.contains('evidence-note'))btn.after(el('small','evidence-note',more().evidenceMissing));return}const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches,behavior=reduced?'instant':'smooth';
+function showEvidence(id){const q=questions().find(x=>x.id===id);if(!q||!checked(q.tab))return;if(typeof clearReturn==='function')clearReturn();activeEvidence=id;renderReading();const c=$('readingBody');let mark=c.querySelector('.evidence-hit');if(!mark){const btn=document.querySelector('[data-evidence="'+id+'"]');if(btn&&!btn.nextElementSibling?.classList.contains('evidence-note'))btn.after(el('small','evidence-note',more().evidenceMissing));return}const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches,behavior=reduced?'instant':'smooth';
  if(window.matchMedia?.('(max-width: 850px)').matches||getComputedStyle(c).overflowY==='visible')mark.scrollIntoView({behavior,block:'center'});
  else{const y=mark.getBoundingClientRect().top-c.getBoundingClientRect().top+c.scrollTop;c.scrollTo({top:Math.max(0,y-75),behavior})}
- armReturn(id);
+ armReturn(id,'evidence');
 }
 function renderTabs(){const host=$('skillTabs'),frag=document.createDocumentFragment(),v=entry();for(const tab of tabs()){
  const qs=questions().filter(q=>q.tab===tab.id);const done=qs.filter(q=>v.values[q.id]!=null).length;
  const btn=el('button','skill-tab'+(tab.id===active().id?' current':'')+(checked(tab.id)?' inspected':''),tab.title);btn.id='tab-'+tab.id;btn.type='button';btn.dataset.skill=tab.id;btn.setAttribute('role','tab');btn.setAttribute('aria-selected',String(tab.id===active().id));btn.setAttribute('aria-controls','questions');btn.tabIndex=tab.id===active().id?0:-1;btn.append(el('span','skill-count',done+'/'+qs.length));frag.append(btn)}host.replaceChildren(frag);
  const head=active();set('tabHeading',head.title);set('tabDescription',head.description+' · '+more().tabNote);$('questions').setAttribute('aria-labelledby','tab-'+head.id);
 }
-function renderTasks(){const host=$('questions'),list=activeQuestions(),v=entry(),view=el('div');for(const q of list){const wrap=el('section','qcard');wrap.dataset.question=q.id;const head=el('div','qtop');head.append(el('span','qnum',(list.indexOf(q)+1)+' / '+list.length),el('span','qtag',q.kind==='gap'?more().typeGap:q.kind==='tf'?more().typeTF:q.kind==='match'?more().typeMatch:more().typeMC));if(Array.isArray(q.target)||Array.isArray(q.targets)){const loc=el('button','locate-button','📍 '+more().findInText);loc.type='button';loc.dataset.locate=q.id;head.append(loc)}wrap.append(head);
+function renderTasks(){const host=$('questions'),list=activeQuestions(),v=entry(),view=el('div');for(const q of list){const wrap=el('section','qcard');wrap.dataset.question=q.id;const head=el('div','qtop');head.append(el('span','qnum',(list.indexOf(q)+1)+' / '+list.length),el('span','qtag',q.kind==='gap'?more().typeGap:q.kind==='tf'?more().typeTF:q.kind==='match'?more().typeMatch:more().typeMC));if(allowPreCheckLocate()&&(Array.isArray(q.target)||Array.isArray(q.targets))){const loc=el('button','locate-button','📍 '+more().findInText);loc.type='button';loc.dataset.locate=q.id;head.append(loc)}wrap.append(head);
  const h=el('h3','',q.q);h.id='question-'+q.id;wrap.append(h);const choices=el('div','choices');choices.setAttribute('role','group');choices.setAttribute('aria-label',q.q);
  for(const opt of optionItems(q)){const label=el('label','choice');const radio=el('input');radio.type='radio';radio.name='answer-'+q.id;radio.value=opt.value;radio.checked=v.values[q.id]===opt.value;const span=el('span','',opt.label);label.append(radio,span);choices.append(label)}wrap.append(choices);
  const feedback=el('div','verdict');feedback.hidden=!checked(q.tab);if(checked(q.tab)){
@@ -203,7 +205,7 @@ function renderTasks(){const host=$('questions'),list=activeQuestions(),v=entry(
 function updateProgress(){const qs=questions(),v=entry(),answered=qs.filter(q=>v.values[q.id]!=null).length;set('progressText',answered+' / '+qs.length+' '+i18n().answered);$('progressFill').style.width=(100*answered/qs.length)+'%';
  for(const b of $('skillTabs').querySelectorAll('button')){const group=qs.filter(q=>q.tab===b.dataset.skill),done=group.filter(q=>v.values[q.id]!=null).length;const counter=b.querySelector('.skill-count');if(counter)counter.textContent=done+'/'+group.length;b.classList.toggle('inspected',checked(b.dataset.skill))}}
 function renderResult(){const v=entry(),correct=questions().filter(q=>checked(q.tab)&&v.values[q.id]===correctValue(q)).length,graded=questions().filter(q=>checked(q.tab)).length,all=tabs().every(t=>checked(t.id));const node=$('result'),firstQs=questions().filter(q=>Object.prototype.hasOwnProperty.call(v.first,q.id)),firstOk=firstQs.filter(q=>v.first[q.id]===correctValue(q)).length;node.hidden=graded===0&&firstQs.length===0;if(graded||firstQs.length){node.className='status';node.replaceChildren(el('strong','',more().nowScore+': '+correct+' / '+graded+(graded?' · '+Math.round(correct/graded*100)+' %':'')),el('span','first-try',more().firstTry+': '+firstOk+' / '+firstQs.length+(firstQs.length?' · '+Math.round(firstOk/firstQs.length*100)+' %':'')),el('small','',more().score+': '+v.checkedTabs.length+' / '+tabs().length+' · '+(all?more().allDone:more().keep)));}}
-function switchTab(id,focus=false){if(!tabs().some(t=>t.id===id))return;activeByVariant[key()]=id;activeEvidence=null;renderTabs();renderReading();renderTasks();if(focus)$('tab-'+id)?.focus();$('tasks').scrollTop=0;}
+function switchTab(id,focus=false){if(!tabs().some(t=>t.id===id))return;activeByVariant[key()]=id;if(typeof clearReturn==='function')clearReturn();activeEvidence=null;renderTabs();renderReading();renderTasks();if(focus)$('tab-'+id)?.focus();$('tasks').scrollTop=0;}
 function timeFor(level){return (state.language==='en'?{A1:22,A2:26,B1:35,B2:50,C1:62,C2:68}:{A1:20,A2:24,B1:34,B2:48,C1:60,C2:66})[level]}
 function render(){const c=curr(),u=i18n();document.documentElement.lang=state.language;document.documentElement.dataset.theme=state.theme;$('language').value=state.language;
  document.querySelectorAll('#levels button').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.level===state.level)));
@@ -215,18 +217,18 @@ function render(){const c=curr(),u=i18n();document.documentElement.lang=state.la
  set('jumpTasks',u.jump);set('taskLabel',u.questions);set('tasksHead',u.tasks);set('taskIntro',stageLabels().source);
  set('check',u.check);set('clear',u.clear);set('backToText',u.back);set('openHead',u.open);set('openQuestion',c.open);set('openNote',u.openNote);$('openAnswer').placeholder=u.placeholder;
  set('privacy',u.privacy+' '+more().privacyVocab);set('reset',u.reset);
- $('openAnswer').value=entry().open||'';$('theme').textContent=state.theme==='dark'?u.dark:u.light;updateFullButton();updateDictionaryToggle();hideLookup();activeEvidence=null;if(window.returnQ&&!questions().some(q=>q.id===window.returnQ))clearReturn();
+ $('openAnswer').value=entry().open||'';$('theme').textContent=state.theme==='dark'?u.dark:u.light;updateFullButton();updateDictionaryToggle();hideLookup();activeEvidence=null;if(typeof clearReturn==='function')clearReturn();
  renderReading();renderTabs();renderTasks();syncViewport();
 }
 $('skillTabs').addEventListener('click',event=>{const btn=event.target.closest('button[data-skill]');if(btn)switchTab(btn.dataset.skill)});
 $('skillTabs').addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;const ids=tabs().map(t=>t.id),current=ids.indexOf(active().id);let idx=e.key==='Home'?0:e.key==='End'?ids.length-1:(current+(e.key==='ArrowRight'?1:-1)+ids.length)%ids.length;e.preventDefault();switchTab(ids[idx],true)});
-$('questions').addEventListener('change',ev=>{if(ev.target.type!=='radio')return;const id=ev.target.name.slice(7);if(!questions().some(q=>q.id===id))return;const wasStructure=checked('structure'),hadEvidence=!!activeEvidence;entry().values[id]=ev.target.value;entry().checkedTabs=entry().checkedTabs.filter(tab=>tab!==active().id);save();activeEvidence=null;if(wasStructure||hadEvidence)renderReading();renderTabs();$('questions').querySelectorAll('.verdict').forEach(v=>v.hidden=true);updateProgress();renderResult()});
+$('questions').addEventListener('change',ev=>{if(ev.target.type!=='radio')return;const id=ev.target.name.slice(7);if(!questions().some(q=>q.id===id))return;const wasStructure=checked('structure'),hadEvidence=!!activeEvidence;if(typeof clearReturn==='function')clearReturn();entry().values[id]=ev.target.value;entry().checkedTabs=entry().checkedTabs.filter(tab=>tab!==active().id);save();activeEvidence=null;if(wasStructure||hadEvidence)renderReading();renderTabs();$('questions').querySelectorAll('.verdict').forEach(v=>v.hidden=true);updateProgress();renderResult()});
 $('questions').addEventListener('click',ev=>{const btn=ev.target.closest('button[data-evidence]');if(btn)showEvidence(btn.dataset.evidence);const loc=ev.target.closest('button[data-locate]');if(loc)locateTarget(loc.dataset.locate)});
-function locateTarget(id){const c=$('readingBody'),mark=[...c.querySelectorAll('[data-target-for]')].find(m=>m.dataset.targetFor.split(' ').includes(id));if(!mark)return;const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches,behavior=reduced?'instant':'smooth';if(window.matchMedia?.('(max-width: 850px)').matches||getComputedStyle(c).overflowY==='visible')mark.scrollIntoView({behavior,block:'center'});else{const y=mark.getBoundingClientRect().top-c.getBoundingClientRect().top+c.scrollTop;c.scrollTo({top:Math.max(0,y-75),behavior})}mark.classList.remove('flash');void mark.offsetWidth;mark.classList.add('flash');armReturn(id)}
+function locateTarget(id){if(typeof clearReturn==='function')clearReturn();if(!allowPreCheckLocate())return;const c=$('readingBody'),mark=[...c.querySelectorAll('[data-target-for]')].find(m=>m.dataset.targetFor.split(' ').includes(id));if(!mark)return;const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches,behavior=reduced?'instant':'smooth';if(window.matchMedia?.('(max-width: 850px)').matches||getComputedStyle(c).overflowY==='visible')mark.scrollIntoView({behavior,block:'center'});else{const y=mark.getBoundingClientRect().top-c.getBoundingClientRect().top+c.scrollTop;c.scrollTo({top:Math.max(0,y-75),behavior})}mark.classList.remove('flash');void mark.offsetWidth;mark.classList.add('flash');armReturn(id,'locate')}
 $('openAnswer').addEventListener('input',event=>{entry().open=event.target.value;save()});
 function recordFirst(list){const v=entry();for(const q of list)if(!Object.prototype.hasOwnProperty.call(v.first,q.id))v.first[q.id]=v.values[q.id]??null}
-$('check').addEventListener('click',()=>{const v=entry();recordFirst(activeQuestions());if(!checked(active().id))v.checkedTabs.push(active().id);save();renderReading();renderTabs();renderTasks();$('result').scrollIntoView({behavior:'smooth',block:'nearest'})});
-$('checkAll').addEventListener('click',()=>{recordFirst(questions());entry().checkedTabs=tabs().map(t=>t.id);save();renderReading();renderTabs();renderTasks()});
+$('check').addEventListener('click',()=>{if(typeof clearReturn==='function')clearReturn();activeEvidence=null;const v=entry();recordFirst(activeQuestions());if(!checked(active().id))v.checkedTabs.push(active().id);save();renderReading();renderTabs();renderTasks();$('result').scrollIntoView({behavior:'smooth',block:'nearest'})});
+$('checkAll').addEventListener('click',()=>{if(typeof clearReturn==='function')clearReturn();activeEvidence=null;recordFirst(questions());entry().checkedTabs=tabs().map(t=>t.id);save();renderReading();renderTabs();renderTasks()});
 $('clear').addEventListener('click',()=>{const v=entry();for(const q of activeQuestions())delete v.values[q.id];v.checkedTabs=v.checkedTabs.filter(t=>t!==active().id);activeEvidence=null;save();render()});
 $('reset').addEventListener('click',()=>{if(!confirm(i18n().confirm))return;delete answerBook[key()];state.dictionary=false;activeEvidence=null;save();render();$('readingBody').scrollTop=0;$('tasks').scrollTop=0});
 function switchVariant(){activeEvidence=null;render();$('readingBody').scrollTop=0;$('tasks').scrollTop=0;save()}
@@ -330,27 +332,70 @@ load();try{const qp=new URLSearchParams(location.search),ql=qp.get('lang'),qv=qp
 <button type="button" class="back-to-question" id="backToQuestion" hidden></button>
 
 <script>
-/* Reading Lab navigation v2.2 – return from the text to the question */
-var returnQ=null;
-function returnMark(){const r=$('readingBody');if(!r||!returnQ)return null;return [...r.querySelectorAll('[data-target-for]')].find(m=>m.dataset.targetFor.split(' ').includes(returnQ))||(activeEvidence===returnQ?r.querySelector('.evidence-hit'):null)}
-function markReturnTarget(){const r=$('readingBody');if(!r)return;r.querySelectorAll('.return-target').forEach(m=>{m.classList.remove('return-target');if(m.dataset.oldTitle!==undefined){m.title=m.dataset.oldTitle;delete m.dataset.oldTitle}});if(!returnQ)return;
- const marks=activeEvidence===returnQ?[...r.querySelectorAll('.evidence-hit')]:[];const t=[...r.querySelectorAll('[data-target-for]')].filter(m=>m.dataset.targetFor.split(' ').includes(returnQ));
- for(const m of marks.concat(t)){m.classList.add('return-target');m.dataset.oldTitle=m.title||'';m.title=more().backToTitle}}
-function armReturn(id){const q=questions().find(x=>x.id===id);if(!q)return;returnQ=id;const list=questions().filter(x=>x.tab===q.tab);const b=$('backToQuestion');
- const label=more().backToQ+' '+(list.indexOf(q)+1)+' / '+list.length;b.textContent='↩ '+label;b.setAttribute('aria-label',label);b.hidden=false;markReturnTarget()}
-function clearReturn(){returnQ=null;const b=$('backToQuestion');if(b)b.hidden=true;markReturnTarget()}
-function backToQuestion(){const id=returnQ;if(!id)return;const q=questions().find(x=>x.id===id);clearReturn();if(!q)return;
+/* Reading Lab navigation v2.3 – isolate pre-check locator from post-check evidence. */
+var returnQ=null,returnMode=null;
+function canReturn(){
+ const q=questions().find(x=>x.id===returnQ);
+ if(!q)return false;
+ if(returnMode==='locate')return allowPreCheckLocate();
+ return returnMode==='evidence'&&checked(q.tab)&&activeEvidence===q.id;
+}
+function returnMark(){
+ const r=$('readingBody');if(!r||!canReturn())return null;
+ if(returnMode==='evidence')return r.querySelector('.evidence-hit');
+ return [...r.querySelectorAll('[data-target-for]')].find(m=>m.dataset.targetFor.split(' ').includes(returnQ))||null;
+}
+function markReturnTarget(){
+ const r=$('readingBody');if(!r)return;
+ r.querySelectorAll('.return-target').forEach(m=>{
+  m.classList.remove('return-target');
+  if(m.dataset.oldTitle!==undefined){m.title=m.dataset.oldTitle;delete m.dataset.oldTitle}
+ });
+ if(!canReturn())return;
+ const marks=returnMode==='evidence'?[...r.querySelectorAll('.evidence-hit')]:
+  [...r.querySelectorAll('[data-target-for]')].filter(m=>m.dataset.targetFor.split(' ').includes(returnQ));
+ for(const m of marks){m.classList.add('return-target');m.dataset.oldTitle=m.title||'';m.title=more().backToTitle}
+}
+function armReturn(id,kind){
+ const q=questions().find(x=>x.id===id);
+ if(!q||!['locate','evidence'].includes(kind))return clearReturn();
+ returnQ=id;returnMode=kind;
+ if(!canReturn()||!returnMark())return clearReturn();
+ const list=questions().filter(x=>x.tab===q.tab),b=$('backToQuestion');
+ const label=more().backToQ+' '+(list.indexOf(q)+1)+' / '+list.length;
+ b.textContent='↩ '+label;b.setAttribute('aria-label',label);b.hidden=false;markReturnTarget();
+}
+function clearReturn(){
+ returnQ=null;returnMode=null;
+ const b=$('backToQuestion');if(b)b.hidden=true;
+ markReturnTarget();
+}
+function backToQuestion(){
+ const id=returnQ,kind=returnMode;
+ if(!canReturn())return clearReturn();
+ const q=questions().find(x=>x.id===id);
+ clearReturn();if(!q)return;
  if(q.tab!==active().id)switchTab(q.tab);
  const card=document.querySelector('#questions [data-question="'+id+'"]');if(!card)return;
  const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches,behavior=reduced?'instant':'smooth',t=$('tasks');
  if(window.matchMedia?.('(max-width: 850px)').matches||getComputedStyle(t).overflowY==='visible')card.scrollIntoView({behavior,block:'center'});
  else{const y=card.getBoundingClientRect().top-t.getBoundingClientRect().top+t.scrollTop;t.scrollTo({top:Math.max(0,y-16),behavior})}
  card.classList.remove('flash-q');void card.offsetWidth;card.classList.add('flash-q');
- const f=card.querySelector('button[data-locate]')||card.querySelector('button[data-evidence]')||card.querySelector('input');if(f)f.focus({preventScroll:true})}
+ const selector=kind==='evidence'?'button[data-evidence],input':'button[data-locate],input';
+ const f=card.querySelector(selector);if(f)f.focus({preventScroll:true});
+}
 $('backToQuestion').addEventListener('click',backToQuestion);
-$('readingBody').addEventListener('click',e=>{if(state.dictionary||!returnQ)return;const m=e.target instanceof Element?e.target.closest('.return-target'):null;if(m){e.preventDefault();backToQuestion()}});
-$('readingBody').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&returnQ&&!state.dictionary&&e.target===$('readingBody')){e.preventDefault();backToQuestion()}});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&returnQ){const lk=$('lookup');if(!lk||lk.hidden)clearReturn()}});
+$('readingBody').addEventListener('click',e=>{
+ if(state.dictionary||!canReturn())return;
+ const m=e.target instanceof Element?e.target.closest('.return-target'):null;
+ if(m){e.preventDefault();backToQuestion()}
+});
+$('readingBody').addEventListener('keydown',e=>{
+ if((e.key==='Enter'||e.key===' ')&&canReturn()&&!state.dictionary&&e.target===$('readingBody')){e.preventDefault();backToQuestion()}
+});
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape'&&returnQ){const lk=$('lookup');if(!lk||lk.hidden)clearReturn()}
+});
 </script>
 <script>
 /* LSH-R5 variant bridge: preserve original default; optional teacher practice preset. */

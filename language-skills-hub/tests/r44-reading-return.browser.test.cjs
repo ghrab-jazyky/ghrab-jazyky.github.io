@@ -44,8 +44,16 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
       assert.equal(await page.locator('#levels button[data-level="'+level+'"]').getAttribute('aria-pressed'),'true');
       assert.equal(await back.isHidden(),true,'Stale return button on variant change');
       const withTargets=variant.questions.filter(hasLocate);
-      expectedTrips+=withTargets.length;
-      for(const tab of [...new Set(withTargets.map(q=>q.tab))]){
+      const locatorAllowed=['A1','A2','B1'].includes(level);
+      if(!locatorAllowed){
+       assert.equal(await page.locator('#questions button[data-locate]').count(),0,
+        'B2-C2 must not expose Show in text '+slug+' '+lang+'/'+level);
+       assert.equal(await page.locator('#readingBody [data-target-for]').count(),0,
+        'B2-C2 must not expose hidden target markers '+slug+' '+lang+'/'+level);
+       assert.equal(await back.isHidden(),true);
+      }
+      expectedTrips+=locatorAllowed?withTargets.length:0;
+      for(const tab of (locatorAllowed?[...new Set(withTargets.map(q=>q.tab))]:[])){
        await page.locator('#skillTabs button[data-skill="'+tab+'"]').click();
        for(const q of withTargets.filter(item=>item.tab===tab)){
         const button=page.locator('#questions button[data-locate="'+q.id+'"]');
@@ -69,7 +77,10 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
         roundTrips++;
        }
       }
-      if(level==='B2'){
+      // Post-check evidence is a teaching aid at EVERY CEFR level, not just B2.
+      if(variant.questions.some(q=>Array.isArray(q.evidence)&&q.evidence.length)){
+       assert.equal(await page.locator('#questions button[data-evidence]:visible').count(),0,
+        'Evidence must remain hidden before checking '+slug+' '+lang+'/'+level);
        await page.locator('#checkAll').click();
        let evidenceReturned=false;
        for(const tab of [...new Set(variant.questions.map(q=>q.tab))]){
@@ -91,14 +102,32 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
         }
         if(evidenceReturned)break;
        }
-       assert.ok(evidenceReturned,'No functional Show exact evidence return '+slug+' '+lang+'/'+level);
+       assert.ok(evidenceReturned,'No functional post-check evidence return '+slug+' '+lang+'/'+level);
+       if(!locatorAllowed){
+        assert.equal(await page.locator('#readingBody [data-target-for]').count(),0,
+         'Post-check evidence must not re-enable source-location hints at '+slug+' '+lang+'/'+level);
+       }
       }
      }
     }
     assert.equal(variants,24);
     assert.equal(roundTrips,expectedTrips,'Every existing Show in text must return '+slug);
     assert.ok(roundTrips>0,'No source targets tested in '+slug);
-    assert.equal(evidenceTrips,4,'Each language needs one evidence return');
+    assert.equal(evidenceTrips,24,'Every CEFR/language variant needs an evidence return');
+    // A return initiated in B1 cannot persist after switching to a restricted B2 variant.
+    await page.locator('#language').selectOption('en');
+    await page.locator('#levels button[data-level="B1"]').click();
+    const lowQ=data.en.B1.questions.find(hasLocate);
+    assert.ok(lowQ,'Missing B1 source target for return-state regression');
+    await page.locator('#skillTabs button[data-skill="'+lowQ.tab+'"]').click();
+    await page.locator('#questions button[data-locate="'+lowQ.id+'"]').click();
+    await back.waitFor({state:'visible',timeout:7000});
+    await page.locator('#levels button[data-level="B2"]').click();
+    assert.equal(await back.isHidden(),true,'B1 route persists after switching to B2 '+slug);
+    assert.equal(await page.locator('#readingBody [data-target-for]').count(),0,
+     'Target markers return after switching to B2 '+slug);
+    assert.equal(await page.locator('#questions button[data-locate]').count(),0,
+     'Locator returned after switching to B2 '+slug);
     assert.deepEqual(errors,[],'Unexpected browser errors: '+errors.join('; '));
     assert.deepEqual(nonGets,[],'No network writes allowed');
     await context.close();
