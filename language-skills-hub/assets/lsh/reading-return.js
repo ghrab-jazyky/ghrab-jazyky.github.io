@@ -21,12 +21,14 @@ const mobile=()=>window.matchMedia('(max-width: 850px)').matches;
 const language=()=>document.getElementById('language')?.value||'en';
 const level=()=>document.querySelector('#levels button[data-level][aria-pressed="true"]')?.dataset.level||'';
 const identity=()=>language()+'|'+level();
+const allowLocate=()=>['A1','A2','B1'].includes(level());
+const checkedEvidence=current=>!!current?.querySelector('.verdict:not([hidden]) button[data-evidence]');
 const card=id=>[...questions.querySelectorAll('.qcard[data-question]')].find(el=>el.dataset.question===id);
 const matchFor=(mark,id)=>mark.dataset.targetFor?.split(/\s+/).includes(id);
 function passage(id,kind){
- if(kind==='locate')
+ if(kind==='locate'&&allowLocate())
   return [...reader.querySelectorAll('[data-target-for]')].find(el=>matchFor(el,id))||null;
- if(kind==='evidence')
+ if(kind==='evidence'&&checkedEvidence(card(id)))
   return reader.querySelector('.evidence-hit')||null;
  return null;
 }
@@ -43,7 +45,7 @@ function arm(id,kind,variant){
  const num=cards.indexOf(current)+1;
  if(num<1)return;
  marked=target;marked.classList.add('lsh-return-target');
- selected={id,variant};
+ selected={id,kind,variant};
  const label=(lexicon[language()]||lexicon.en)+' '+num+' / '+cards.length;
  btn.textContent='↩ '+label;
  btn.setAttribute('aria-label',label);
@@ -52,7 +54,7 @@ function arm(id,kind,variant){
 function returnToQuestion(){
  const original=selected;
  if(!original)return;
- const target=original.variant===identity()?card(original.id):null;
+ const target=original.variant===identity()&&passage(original.id,original.kind)?card(original.id):null;
  clear();
  if(!target)return;
  const behavior=reduced()?'auto':'smooth';
@@ -89,5 +91,8 @@ document.getElementById('language')?.addEventListener('change',clear,{capture:tr
 document.addEventListener('keydown',event=>{
  if(event.key==='Escape'&&!btn.hidden&&document.getElementById('lookup')?.hidden!==false)clear();
 });
-window.addEventListener('pageshow',()=>{if(selected?.variant!==identity())clear()});
+window.addEventListener('pageshow',()=>{if(selected&&(selected.variant!==identity()||!marked?.isConnected))clear()});
+// A programmatic re-render must not leave a return button bound to detached text.
+new MutationObserver(()=>{if(selected&&(!marked?.isConnected||selected.variant!==identity()))clear()})
+ .observe(reader,{childList:true});
 })();
