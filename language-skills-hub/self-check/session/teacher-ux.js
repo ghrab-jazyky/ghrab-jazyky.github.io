@@ -131,6 +131,17 @@
   root.prepend(lead);
   const option=root.querySelector('input[name="unlockMethod"][value="corners4"]')?.closest('label');
   if(option)option.querySelector('.lsh-unlock-option-copy')?.append(make('em','lsh-unlock-recommended','Doporučeno'));
+  const detail=root.querySelector('.lsh-unlock-details');
+  const sequence=make('ol','lsh-unlock-step-list');
+  const figures=root.querySelector('.lsh-unlock-figures');
+  if(detail&&figures)detail.insertBefore(sequence,figures);
+  function updateSteps(){
+   const id=root.querySelector('input[name="unlockMethod"]:checked')?.value;
+   sequence.replaceChildren();
+   for(const line of (steps[id]||[]))sequence.append(make('li',null,line));
+  }
+  root.addEventListener('change',updateSteps);
+  updateSteps();
   const button=[...root.querySelectorAll('button')].find(x=>/VYZKOUŠET GESTO/i.test(x.textContent));
   if(button){
    // Capture the click so the old modal is never created. Selection remains
