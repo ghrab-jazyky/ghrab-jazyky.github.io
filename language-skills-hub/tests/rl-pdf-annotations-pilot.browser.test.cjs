@@ -56,4 +56,46 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
  });
+ test('RL-02 '+name+': original Asteroids practice retains notes across skill and CEFR changes',
+ {timeout:110000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const context=await browser.newContext({viewport:{width:1024,height:850}});
+   const page=await context.newPage(),errors=[];
+   page.on('pageerror',e=>errors.push(e.message));
+   await page.goto('http://127.0.0.1:8765/language-skills-hub/cteni/asteroids/index.html?lang=en&level=B2');
+   await page.locator('#readingAnnotationTools [data-anno-toggle]').waitFor({timeout:30000});
+   assert.equal(await page.locator('#readingBody p[data-annotation-anchor]').count()>0,true);
+   await page.locator('#readingAnnotationTools [data-anno-toggle]').click();
+   const selection=await page.evaluate(()=>{
+    const p=document.querySelector('#readingBody p');
+    const walker=document.createTreeWalker(p,NodeFilter.SHOW_TEXT);
+    let text=null,n;while((n=walker.nextNode()))if(n.textContent.length>12){text=n;break}
+    if(!text)return '';
+    const range=document.createRange();range.setStart(text,0);range.setEnd(text,8);
+    const sel=getSelection();sel.removeAllRanges();sel.addRange(range);
+    p.dispatchEvent(new PointerEvent('pointerup',{bubbles:true}));
+    return range.toString();
+   });
+   assert.ok(selection.length>0);
+   await page.waitForTimeout(100);
+   await page.locator('#readingAnnotationTools [data-anno-color="yellow"]').click();
+   assert.equal(await page.locator('#readingAnnotationTools .lsh-annotation-item').count(),1);
+   const tabs=page.locator('#skillTabs button[data-skill]');
+   assert.ok(await tabs.count()>1);
+   await tabs.nth(1).click();
+   assert.equal(await page.locator('#readingAnnotationTools .lsh-annotation-item').count(),1);
+   await page.locator('#levels [data-level="A1"]').click();
+   assert.equal(await page.locator('#readingAnnotationTools .lsh-annotation-item').count(),0);
+   await page.locator('#levels [data-level="B2"]').click();
+   assert.equal(await page.locator('#readingAnnotationTools .lsh-annotation-item').count(),1);
+   await page.reload();
+   await page.locator('#readingAnnotationTools [data-anno-toggle]').waitFor();
+   await page.locator('#readingAnnotationTools [data-anno-toggle]').click();
+   assert.equal(await page.locator('#readingAnnotationTools .lsh-annotation-item').count(),1);
+   assert.deepEqual(errors,[]);
+   await context.close();
+  }finally{await browser.close()}
+ });
+
 }
