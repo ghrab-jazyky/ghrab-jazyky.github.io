@@ -104,3 +104,6 @@
  .lsh-unlock-teacher-demo .lsh-trainer-feedback{bottom:max(75px,calc(env(safe-area-inset-bottom) + 65px));max-width:calc(100% - 24px)}
  .lsh-unlock-teacher-demo .lsh-trainer-retry{left:50%;right:auto;bottom:max(12px,env(safe-area-inset-bottom))}
 }
+
+/* In training only, suppress browser panning/zoom during holds, double taps and strokes. */
+.lsh-unlock-teacher-demo .lsh-unlock-surface{touch-action:none}
