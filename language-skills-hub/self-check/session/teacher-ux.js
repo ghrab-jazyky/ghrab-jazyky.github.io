@@ -38,7 +38,8 @@
   const inertBefore=[...document.body.children].filter(el=>el!==demo).map(el=>[el,el.inert]);
   inertBefore.forEach(([el])=>{el.inert=true});
   const oldOverflow=document.body.style.overflow;document.body.style.overflow='hidden';
-  let binding=null,closed=false,completed=false,step=0,dots=[];
+  let binding=null,closed=false,completed=false,step=0,dots=[],monitor=null;
+  let lastState={steps:0,active:false,awaitingRelease:false};
   function paint(){
    if(closed)return;
    const box=demo.getBoundingClientRect(),g=api.geometry(id,box.width,box.height),groups=[];
@@ -82,13 +83,31 @@
    else progress.textContent='Krok '+(step+1)+' z '+steps[id].length+': '+steps[id][step];
    showDots();
   }
+  // The student recognizer is integrity-pinned. Observe its PUBLIC state only,
+  // after pointer events bubble, without modifying recognition or incident logs.
+  function observe(event){
+   if(closed||completed||!binding)return;
+   if(event?.target?.closest?.('button'))return;
+   const next=binding.recognizer.state();
+   const reset=(lastState.steps>0&&next.steps===0)||
+    (lastState.active&&!next.active&&next.steps<=lastState.steps)||
+    (lastState.awaitingRelease&&!next.awaitingRelease);
+   if(reset)feedback.textContent='Sekvence se nezdařila nebo vypršel čas. Začněte znovu od prvního kroku.';
+   else if(event?.type==='pointerdown'&&!next.steps&&!next.active)
+    feedback.textContent='Začněte na zvýrazněném bodu.';
+   else if(next.steps>lastState.steps)feedback.textContent='';
+   state(next);
+   lastState={...next};
+  }
   function restart(){
    completed=false;step=0;feedback.textContent='';
-   binding?.reset();state({steps:0});
+   binding?.reset();lastState={steps:0,active:false,awaitingRelease:false};
+   state(lastState);
   }
   function close(){
    if(closed)return;closed=true;
    binding?.destroy();binding=null;
+   if(monitor!==null){clearInterval(monitor);monitor=null;}
    window.removeEventListener('resize',paint);
    document.removeEventListener('keydown',keys,true);
    demo.remove();inertBefore.forEach(([el,was])=>{el.inert=was});
@@ -109,8 +128,7 @@
   window.addEventListener('resize',paint);
   paint();
   binding=api.bindDOM(demo,id,{
-   onState:state,
-   onFeedback:()=>{if(!completed)feedback.textContent='Pokus se nezdařil. Začněte znovu od kroku 1.';},
+   onFailure:()=>{if(!completed)feedback.textContent='Sekvence nebyla rozpoznána. Začněte od kroku 1.';},
    onSuccess:()=>{
     completed=true;step=steps[id].length;
     progress.textContent='Gesto bylo úspěšně rozpoznáno.';
@@ -118,6 +136,9 @@
     showDots();
    }
   });
+  for(const type of ['pointerdown','pointermove','pointerup','pointercancel','lostpointercapture'])
+   demo.addEventListener(type,observe);
+  monitor=setInterval(()=>observe(null),180);
   state({steps:0});closeButton.focus({preventScroll:true});
   active={close};return active;
  }
@@ -159,7 +180,10 @@
   const qr=make('div','lsh-unlock-mobile-qr');
   const link=make('a',null,'Otevřít trenažér v nové záložce');
   link.target='_blank';link.rel='noopener noreferrer';
-  mobile.append(summary,note,qr,link);root.appendChild(mobile);
+  mobile.append(summary,note,qr,link);
+  // Keep the historical #unlockTeacherControls single-details contract (E4/R35).
+  // The QR rehearsal is a sibling, not another details nested inside controls.
+  root.after(mobile);
   function refresh(){
    const selected=root.querySelector('input[name="unlockMethod"]:checked')?.value;
    const def=api.byId(selected);qr.replaceChildren();link.removeAttribute('href');
