@@ -45,12 +45,13 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
  .paper{margin:0 auto;box-shadow:none}
 }
 @page{size:A4 portrait;margin:18mm 18mm 20mm}
-@page{@bottom-right{content:"Reading Lab · " counter(page);color:#536577;font:9pt Arial,Helvetica,sans-serif}}
+@page{@bottom-left{content:"Zdroj: British Council LearnEnglish – Asteroids";color:#536577;font:7pt Arial,Helvetica,sans-serif}\n @bottom-right{content:"Reading Lab · " counter(page);color:#536577;font:9pt Arial,Helvetica,sans-serif}}
 @media print{
  body{background:#fff}
  .print-controls{display:none!important}
  .paper{width:auto;min-height:0;margin:0;padding:0;box-shadow:none}
  .paper-header{margin-top:0}
+ .paper-footer{display:none!important} /* Source is repeated in the @page margin instead of making an orphan page. */
  .reading-material,.exercises,.reflection{break-inside:auto}
  .paper h2,.exercise-group h3{break-after:avoid-page}
  .reading-paragraphs,.reading-paragraphs p,.exercise-options li{hyphens:auto;-webkit-hyphens:auto}
