@@ -18,6 +18,10 @@ const topics=[
   try{
    const page=await browser.newPage({viewport:{width:390,height:844}});
    for(const topic of topics){
+    // Reset the temporary browser opt-in between topics: every topic must first
+    // prove ordinary public access is locked before teacher-mode QA resumes.
+    if(page.url().startsWith(target.origin))await page.evaluate(()=>
+     localStorage.removeItem('lsh:temporary-test-lock:developer:v1'));
     const u=new URL(base);
     u.searchParams.set('topic',topic.id);u.searchParams.set('level','B2');
     let deployed=false;
