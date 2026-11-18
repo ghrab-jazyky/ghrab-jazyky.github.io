@@ -1,0 +1,58 @@
+/* RL-PDF-01 – A4 school worksheet layout. Browser print engine handles
+ * language-aware hyphenation and pagination; never print the test UI itself.
+ */
+:root{color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-serif}
+.print-controls{max-width:990px;margin:18px auto;padding:14px 18px;background:#fff;
+ border:1px solid #c3cdd5;border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.print-controls strong{font-size:1.06rem}
+.print-controls p{font-size:.88rem;line-height:1.45;margin:.45em 0 0;max-width:68ch}
+#printButton{font:700 .96rem Arial,sans-serif;padding:12px 18px;min-height:44px;border-radius:8px;
+ border:0;background:#075c85;color:#fff;cursor:pointer;white-space:nowrap}
+#printButton:disabled{opacity:.45;cursor:not-allowed}
+#printButton:focus-visible{outline:3px solid #3a7fac;outline-offset:3px}
+#status{color:#26556b}
+.paper{width:210mm;min-height:297mm;margin:18px auto;background:#fff;
+ box-shadow:0 4px 22px #254b6329;padding:18mm 18mm 20mm;color:#171d22}
+.paper-header{display:flex;align-items:center;gap:14px;margin-bottom:22px;padding-bottom:13px;
+ border-bottom:1.3px solid #416174;break-after:avoid}
+.paper-header img{display:block;object-fit:contain;width:18mm;height:18mm;flex:none}
+.school{font-size:9pt;letter-spacing:.06em;color:#426075;margin:0 0 5px}
+.paper h1{font-size:19pt;margin:0;line-height:1.17;color:#142e42}
+.material-meta{font:400 9pt Arial,Helvetica,sans-serif;color:#3b5566;margin:7px 0 0}
+.paper h2{font:700 12.5pt Arial,Helvetica,sans-serif;color:#17384b;
+ border-bottom:.5px solid #c7d2d9;padding:0 0 6px;margin:20px 0 12px;break-after:avoid-page}
+.reading-paragraphs{font:11pt/1.46 Georgia,"Times New Roman",serif;text-align:justify;
+ hyphens:auto;-webkit-hyphens:auto;word-break:normal;overflow-wrap:normal}
+.reading-paragraphs p{margin:0 0 11pt;orphans:3;widows:3;hyphens:auto;-webkit-hyphens:auto}
+.exercises{font:10.5pt/1.43 Georgia,"Times New Roman",serif;text-align:left}
+.exercise-group{margin:0 0 18px}
+.exercise-group h3{font:700 11pt Arial,Helvetica,sans-serif;margin:12pt 0 7pt;break-after:avoid-page}
+.exercise-question{margin:0 0 12pt;break-inside:avoid-page}
+.exercise-question .prompt{margin:0 0 5pt;font-weight:700;orphans:3;widows:3;
+ text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.exercise-options{margin:5pt 0 6pt;padding-left:2em}
+.exercise-options li{padding-left:3pt;margin:3pt 0;orphans:2;widows:2;
+ text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.answer-line{height:20pt;border-bottom:.6px dotted #748593;max-width:125mm;margin:5pt 0 0}
+.reflection p{text-align:justify;font:11pt/1.5 Georgia,"Times New Roman",serif}
+.writing-lines{height:70pt;background:repeating-linear-gradient(to bottom,transparent 0,transparent 20pt,#9caeba 20.5pt)}
+.paper-footer{font:8pt/1.35 Arial,Helvetica,sans-serif;color:#516371;
+ border-top:.6px solid #b4c4ce;padding-top:7pt;margin-top:18pt;break-inside:avoid}
+@media(max-width:850px){
+ .print-controls{margin:0;border:0;border-radius:0;flex-direction:column;align-items:stretch}
+ .paper{margin:0 auto;box-shadow:none}
+}
+@page{size:A4 portrait;margin:18mm 18mm 20mm}
+@page{@bottom-right{content:"Reading Lab · " counter(page);color:#536577;font:9pt Arial,Helvetica,sans-serif}}
+@media print{
+ body{background:#fff}
+ .print-controls{display:none!important}
+ .paper{width:auto;min-height:0;margin:0;padding:0;box-shadow:none}
+ .paper-header{margin-top:0}
+ .reading-material,.exercises,.reflection{break-inside:auto}
+ .paper h2,.exercise-group h3{break-after:avoid-page}
+ .reading-paragraphs,.reading-paragraphs p,.exercise-options li{hyphens:auto;-webkit-hyphens:auto}
+ a{text-decoration:none;color:inherit}
+}
