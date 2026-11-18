@@ -6,6 +6,23 @@
  'use strict';
  const KEY='lsh:temporary-test-lock:developer:v1';
  const DIALOG_ID='lshTemporaryTestNotice';
+ const PREVIEW_ON='#lsh-test-preview=on';
+ const PREVIEW_OFF='#lsh-test-preview=off';
+ // Optional direct link avoids F12/console. This remains a publicly inspectable
+ // client-side convenience flag, never authentication or authorization.
+ function applyPreviewLink(){
+  const hash=root.location.hash;
+  if(hash!==PREVIEW_ON&&hash!==PREVIEW_OFF)return null;
+  try{
+   if(hash===PREVIEW_ON)root.localStorage.setItem(KEY,'enabled');
+   else root.localStorage.removeItem(KEY);
+  }catch(_){return null}
+  try{
+   root.history?.replaceState(root.history.state,'',root.location.pathname+root.location.search);
+  }catch(_){}
+  return hash===PREVIEW_ON?'on':'off';
+ }
+ const previewLinkAction=applyPreviewLink();
  function isLocalPreview(){
   return root.location.protocol==='http:' &&
    (root.location.hostname==='127.0.0.1'||root.location.hostname==='localhost');
@@ -22,6 +39,26 @@
   if(value!==undefined)node.textContent=value;
   return node;
  }
+ function announcePreviewLink(){
+  if(!previewLinkAction)return;
+  const show=()=>{
+   const note=el('div','lsh-temporary-test-preview-status');
+   note.id='lshTemporaryTestPreviewStatus';
+   note.setAttribute('role','status');
+   note.appendChild(el('span',null,previewLinkAction==='on'
+    ?'Vývojářský přístup k testům je na tomto zařízení aktivní.'
+    :'Vývojářský přístup k testům byl na tomto zařízení vypnut.'));
+   const close=el('button','lsh-temporary-test-preview-dismiss','Zavřít');
+   close.type='button';
+   close.addEventListener('click',()=>note.remove());
+   note.appendChild(close);
+   root.document.body.appendChild(note);
+  };
+  if(root.document.readyState==='loading')
+   root.document.addEventListener('DOMContentLoaded',show,{once:true});
+  else if(root.document.body)show();
+ }
+ announcePreviewLink();
  function showNotice(options={}){
   if(!isLocked())return;
   const back=options.returnToCatalog||null;
