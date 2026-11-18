@@ -137,3 +137,22 @@ for(const [name,engine]of[['chromium',chromium],['webkit',webkit]]){
   }finally{await browser.close()}
  });
 }
+
+
+for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
+ test('R39 '+name+': PLURAL follows language filter, Czech title for all languages',async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:390,height:844}});
+   for(const [lang,expected] of [['all','Plurál'],['de','Plural'],['es','El plural'],['fr','Le pluriel']]){
+    const url=new URL(base);
+    url.searchParams.set('skill','konverzace');
+    url.searchParams.set('lang',lang);
+    url.searchParams.set('level','B2');
+    assert.equal((await page.goto(url.href,{waitUntil:'load'})).status(),200);
+    await page.locator('#cards .card[data-topic-id="cl-plural"] h3').waitFor({state:'visible',timeout:25000});
+    assert.equal(await page.locator('#cards .card[data-topic-id="cl-plural"] h3').textContent(),expected,lang);
+   }
+  }finally{await browser.close()}
+ });
+}
