@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="cs" data-theme="light">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="robots" content="noindex,nofollow">
+ <meta http-equiv="Content-Security-Policy" content="default-src 'none';base-uri 'none';object-src 'none';script-src 'self';style-src 'self';img-src 'self';connect-src 'none';form-action 'none'">
+ <title>LSH – nácvik odemykacího gesta</title>
+ <link rel="stylesheet" href="../reading/reading.css">
+ <link rel="stylesheet" href="session.css">
+ <script defer src="unlock-gestures.js"></script>
+ <script defer src="teacher-ux.js"></script>
+ <script defer src="gesture-trainer-page.js"></script>
+</head>
+<body>
+ <main class="container lsh-unlock-trainer-page">
+  <section class="hero">
+   <p class="eyebrow">LANGUAGE SKILLS HUB · UČITELSKÝ NÁCVIK</p>
+   <h1>Nácvik odemykacího gesta</h1>
+   <p class="subtitle">Tato stránka není studentský test. Nepotřebuje přihlášení, neukládá odpovědi a nespouští časovač.</p>
+  </section>
+  <section class="panel teacher-panel">
+   <div class="teacher-form">
+    <h2 id="gestureTitle">Načítání gesta…</h2>
+    <p id="gestureGuide" class="small-note"></p>
+    <button id="launchTrainer" type="button" class="action primary" disabled>Vyzkoušet gesto prstem</button>
+    <p class="small-note">Na telefonu či tabletu použijte prst. Na počítači můžete použít myš nebo touchpad.</p>
+    <p id="error" role="alert"></p>
+   </div>
+  </section>
+ </main>
+</body>
+</html>
