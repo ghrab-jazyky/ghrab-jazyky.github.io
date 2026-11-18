@@ -65,26 +65,31 @@
   }
   if(entry.languages.includes(old))$('language').value=old;
  }
+ let printManifestPromise=null,printLinkRevision=0;
+ const getPrintManifest=()=>printManifestPromise||(printManifestPromise=fetch(
+  '../../printouts/rl-asteroids/manifest-all.json',
+  {credentials:'omit',cache:'no-store',redirect:'error'}
+ ).then(r=>r.ok?r.json():null).catch(()=>null));
  function refreshPrintLinks(){
+  const revision=++printLinkRevision;
   const entry=selectedEntry(),lang=$('language').value,level=$('level').value;
   const ready=!!entry&&entry.id==='rl-asteroids'&&entry.languages.includes(lang)&&
    entry.levels.includes(level);
-  for(const [id,mode,format] of [
+  const links=[
    ['printPracticeText','practice','text'],['printPracticeAll','practice','all'],
    ['printTestText','test','text'],['printTestAll','test','all']
-  ]){
+  ];
+  for(const [id,mode,format] of links){
    const link=$(id);
    if(!link)continue;
+   link.removeAttribute('download');
+   link.setAttribute('target','_blank');
    if(ready){
-    const url=new URL('print-page.html',document.baseURI);
-    url.searchParams.set('topic',entry.id);
-    url.searchParams.set('lang',lang);
-    url.searchParams.set('level',level);
-    url.searchParams.set('mode',mode);
-    url.searchParams.set('format',format);
-    link.href=url.href;
-    link.removeAttribute('aria-disabled');
-    link.removeAttribute('tabindex');
+    const preview=new URL('print-page.html',document.baseURI);
+    for(const [key,value] of Object.entries({topic:entry.id,lang,level,mode,format}))
+     preview.searchParams.set(key,value);
+    link.href=preview.href;
+    link.removeAttribute('aria-disabled');link.removeAttribute('tabindex');
    }else{
     link.removeAttribute('href');
     link.setAttribute('aria-disabled','true');
@@ -92,8 +97,31 @@
    }
   }
   if($('printStatus'))$('printStatus').textContent=ready?
-   'Připravené tiskové náhledy pro Asteroids · '+lang.toUpperCase()+' · '+level+'.':
+   'Kontroluji hotová PDF pro Asteroids · '+lang.toUpperCase()+' · '+level+'.':
    'Tiskový pilot je zatím dostupný pouze pro téma Asteroids.';
+  if(!ready)return;
+  getPrintManifest().then(manifest=>{
+   if(revision!==printLinkRevision||!manifest||
+      manifest.schema!=='RL_PDF_PRINT_ASSET_V1'||!Array.isArray(manifest.files)){
+    if(revision===printLinkRevision&&$('printStatus'))
+     $('printStatus').textContent='Zatím je dostupný tiskový náhled. V něm zvolte „Uložit jako PDF“.';
+    return;
+   }
+   let count=0;
+   for(const [id,mode,format] of links){
+    const relative='printouts/rl-asteroids/'+lang+'/'+level+'/'+mode+'-'+format+'.pdf';
+    if(!manifest.files.some(item=>item.path===relative&&item.bytes>15000))continue;
+    const link=$(id);
+    const url=new URL('../../'+relative,document.baseURI);
+    link.href=url.href;
+    link.download='Reading-Lab-Asteroids-'+lang+'-'+level+'-'+mode+'-'+format+'.pdf';
+    link.removeAttribute('target');
+    count++;
+   }
+   if($('printStatus'))$('printStatus').textContent=count===4?
+    'Čtyři hotová PDF jsou připravena k přímému stažení.':
+    'Část PDF ještě není dostupná; zbývající odkazy otevřou tiskový náhled.';
+  });
  }
  function refresh(){
   if(historyTimer!==null){window.clearTimeout(historyTimer);historyTimer=null;}
