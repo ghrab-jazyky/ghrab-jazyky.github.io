@@ -92,3 +92,15 @@
  .lsh-unlock-teacher-demo .lsh-trainer-retry{right:12px;bottom:14px}
  .lsh-trainer-dot{min-width:42px;height:42px;font-size:.78rem}
 }
+
+
+/* Keep ALL four corner gesture targets unobstructed on phones and desktops. */
+.lsh-unlock-teacher-demo .lsh-trainer-close{left:50%;right:auto;top:max(8px,env(safe-area-inset-top));transform:translateX(-50%)}
+.lsh-unlock-teacher-demo .lsh-trainer-heading{top:max(72px,calc(env(safe-area-inset-top) + 60px))}
+.lsh-unlock-teacher-demo .lsh-trainer-retry{left:50%;right:auto;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%)}
+.lsh-unlock-teacher-demo .lsh-trainer-feedback{bottom:max(75px,calc(env(safe-area-inset-bottom) + 65px));max-width:min(580px,calc(100% - 20px))}
+@media(max-width:680px){
+ .lsh-unlock-teacher-demo .lsh-trainer-heading{top:max(65px,calc(env(safe-area-inset-top) + 55px));width:calc(100% - 24px)}
+ .lsh-unlock-teacher-demo .lsh-trainer-feedback{bottom:max(75px,calc(env(safe-area-inset-bottom) + 65px));max-width:calc(100% - 24px)}
+ .lsh-unlock-teacher-demo .lsh-trainer-retry{left:50%;right:auto;bottom:max(12px,env(safe-area-inset-bottom))}
+}
