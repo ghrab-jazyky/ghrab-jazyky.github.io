@@ -4,6 +4,7 @@ on:
     branches: ['feature/rl-pdf-annotations-pilot-20261118']
     paths:
       - '.github/workflows/lsh-reading-pdf-sample-qa.yml'
+      - 'language-skills-hub/printouts/rl-asteroids/**'
 permissions:
   contents: read
 jobs:
