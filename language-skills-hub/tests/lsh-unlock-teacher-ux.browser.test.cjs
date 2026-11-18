@@ -75,3 +75,77 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   }finally{await browser.close()}
  });
 }
+
+const gestureIds=['corners4','tap_hold_tap','hold_double_tap','triangle3','draw_z'];
+async function performMouseGesture(page,id){
+ const {width:w,height:h}=page.viewportSize();
+ const p=(x,y)=>({x:Math.round(w*x),y:Math.round(h*y)});
+ const tap=async point=>page.mouse.click(point.x,point.y,{delay:80});
+ const hold=async(point,ms)=>{
+  await page.mouse.move(point.x,point.y);await page.mouse.down();
+  await page.waitForTimeout(ms);await page.mouse.up();
+ };
+ if(id==='corners4'){
+  for(const x of [{x:38,y:38},{x:w-38,y:38},{x:38,y:h-38},{x:w-38,y:h-38}])await tap(x);
+ }else if(id==='tap_hold_tap'){
+  await tap(p(.5,.7));await hold(p(.5,.7),2200);await tap(p(.5,.7));
+ }else if(id==='hold_double_tap'){
+  await hold(p(.3,.6),2800);await tap(p(.7,.6));await tap(p(.7,.6));
+ }else if(id==='triangle3'){
+  await tap(p(.5,.3));await tap(p(.3,.7));await hold(p(.7,.7),750);
+ }else if(id==='draw_z'){
+  await page.mouse.move(p(.3,.3).x,p(.3,.3).y);await page.mouse.down();
+  for(const xy of [p(.7,.3),p(.3,.7),p(.7,.7)])
+   await page.mouse.move(xy.x,xy.y,{steps:9});
+  await page.waitForTimeout(720);await page.mouse.up();
+ }
+}
+for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+ test(name+' – five teacher gestures in both LABs with real pointer input',{timeout:180000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   for(const lab of labs){
+    const context=await browser.newContext({viewport:{width:1024,height:768}});
+    const page=await context.newPage(),errors=[];
+    page.on('pageerror',error=>errors.push(String(error)));
+    try{
+     await page.goto(new URL(lab,base).href);await ready(page);
+     for(const id of gestureIds){
+      await page.locator('input[name="unlockMethod"][value="'+id+'"]').check();
+      await page.getByRole('button',{name:'VYZKOUŠET GESTO'}).click();
+      const demo=page.locator('#lshTeacherDemo');
+      await demo.waitFor();
+      assert.equal(await demo.locator('.lsh-session-lock-panel').count(),0);
+      assert.equal(await demo.getAttribute('aria-modal'),'true');
+      assert.equal(await page.locator('#unlockTeacherControls details').count(),1);
+      await performMouseGesture(page,id);
+      await demo.getByText(/Gesto bylo úspěšně rozpoznáno/).waitFor({timeout:4000});
+      await page.keyboard.press('Escape');
+      assert.equal(await demo.count(),0,id+' trainer close');
+      const locked=await page.evaluate(()=>[...document.body.children].some(x=>x.inert));
+      assert.equal(locked,false,id+' underlying page must not remain inert');
+     }
+     assert.deepEqual(errors,[],lab);
+    }finally{await context.close();}
+   }
+  }finally{await browser.close();}
+ });
+ test(name+' – four corners on portrait touch device, no obstructed targets',{timeout:45000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const context=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true});
+   const page=await context.newPage();
+   await page.goto(new URL('self-check/session/gesture-trainer.html?p=n1',base).href);
+   await page.getByRole('button',{name:'Vyzkoušet gesto prstem'}).click();
+   const hit=await page.evaluate(()=>{
+    const els=[[38,38],[window.innerWidth-38,38],[38,window.innerHeight-38],[window.innerWidth-38,window.innerHeight-38]];
+    return els.map(([x,y])=>document.elementFromPoint(x,y)?.className);
+   });
+   assert.ok(hit.every(x=>typeof x==='string'&&x.includes('lsh-corner')),JSON.stringify(hit));
+   for(const [x,y] of [[38,38],[352,38],[38,806],[352,806]])
+    await page.touchscreen.tap(x,y);
+   await page.locator('.lsh-trainer-progress').getByText(/Gesto bylo úspěšně rozpoznáno/).waitFor({timeout:4000});
+   await context.close();
+  }finally{await browser.close();}
+ });
+}
