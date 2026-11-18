@@ -25,8 +25,13 @@ const filePath=path.join(root,'printouts','rl-asteroids');
  const hyphenators={};
  for(const [lang,language] of Object.entries(languages)){
   const module=await import('hyphen/'+language+'/index.js');
-  if(typeof module.hyphenateSync!=='function')throw Error('Hyphenator missing: '+language);
-  hyphenators[lang]=module.hyphenateSync;
+  // The language entrypoints are CommonJS in hyphen@1.14.1.
+  // Node's dynamic import may expose their exports only on "default".
+  const contract=module.default||module;
+  const sync=module.hyphenateSync||contract.hyphenateSync;
+  if(typeof sync!=='function')throw Error('Hyphenator missing: '+language+
+    ' (exports: '+Object.keys(module).join(',')+' / '+Object.keys(contract).join(',')+')');
+  hyphenators[lang]=sync;
  }
  const browser=await chromium.launch({headless:true});
  const manifest={schema:'RL_PDF_PRINT_ASSET_V1',topic:'rl-asteroids',files:[]};
