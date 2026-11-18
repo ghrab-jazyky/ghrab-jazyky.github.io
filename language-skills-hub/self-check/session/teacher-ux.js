@@ -47,6 +47,20 @@
     if(found)found.indexes.push(index);else groups.push({x:p.x,y:p.y,indexes:[index]});
    });
    markers.replaceChildren();
+   if(id==='draw_z'||id==='triangle3'){
+    const ns='http://www.w3.org/2000/svg';
+    const svg=document.createElementNS(ns,'svg');
+    svg.setAttribute('class','lsh-trainer-route');
+    svg.setAttribute('viewBox','0 0 '+box.width+' '+box.height);
+    svg.setAttribute('aria-hidden','true');
+    const route=document.createElementNS(ns,'polyline');
+    route.setAttribute('points',g.points.map(p=>p.x+','+p.y).join(' '));
+    route.setAttribute('fill','none');
+    route.setAttribute('stroke',id==='draw_z'?'#006e9d':'#92a7b8');
+    route.setAttribute('stroke-width','4');
+    route.setAttribute('stroke-dasharray',id==='draw_z'?'10 8':'5 9');
+    svg.appendChild(route);markers.appendChild(svg);
+   }
    dots=groups.map(p=>{
     const el=make('span','lsh-trainer-dot',p.indexes.map(i=>i+1).join(' / '));
     el.style.left=p.x+'px';el.style.top=p.y+'px';
