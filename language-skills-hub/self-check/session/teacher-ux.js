@@ -126,7 +126,7 @@
     const selected=root.querySelector('input[name="unlockMethod"]:checked')?.value;
     openTrainer(selected);
    },true);
-   button.textContent='Vyzkoušet gesto na počítači';
+   button.textContent='VYZKOUŠET GESTO';
   }
   const mobile=make('details','lsh-unlock-mobile');
   const summary=make('summary',null,'Vyzkoušet prstem na telefonu nebo iPadu');
