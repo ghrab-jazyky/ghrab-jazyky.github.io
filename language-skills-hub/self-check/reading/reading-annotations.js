@@ -339,7 +339,12 @@
    if(index<0){hideNote();return}
    showNote(index,event.clientX,event.clientY);
   });
-  root.document.addEventListener('pointerleave',()=>{if(!popupPinned)hideNote()},true);
+  // Pointerleave does not bubble; capturing it on the document catches every
+  // child exit (including leaving a question heading), closing the popup
+  // immediately. Only dismiss when the pointer actually leaves the viewport.
+  root.document.addEventListener('pointerout',event=>{
+   if(!event.relatedTarget&&!popupPinned)hideNote();
+  });
   for(const container of containers){
    container.addEventListener('click',event=>{
     if(!enabled||hasLocked()||!root.getSelection?.()?.isCollapsed)return;
