@@ -13,8 +13,13 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.goto(base+'teacher.html?topic=rl-asteroids&lang=en&level=B2');
    await page.locator('#confirmTest').waitFor({timeout:30000});
    assert.equal(await page.locator('#readingPrintSection').count(),0);
-   for(const id of ['printPracticeText','printPracticeAll','printTestText','printTestAll'])
-    assert.match(await page.locator('#'+id).getAttribute('href'),/print-page\.html\?|printouts\/rl-asteroids\/.*\.pdf/);
+   await page.goto('http://127.0.0.1:8765/language-skills-hub/index.html?skill=cteni');
+   const materials=page.locator('[data-topic-id="rl-asteroids"] button').filter({hasText:'Materiály PDF'});
+   await materials.waitFor({timeout:30000});
+   await materials.click();
+   await page.locator('#materialsDialog[open]').waitFor();
+   for(const id of ['materialsPracticeText','materialsPracticeAll','materialsTestText','materialsTestAll'])
+    assert.ok((await page.locator('#'+id).getAttribute('href'))?.includes('rl-asteroids'));
    const target=new URL('print-page.html?topic=rl-asteroids&lang=en&level=B2&mode=test&format=all',base);
    await page.goto(target.href);
    await page.locator('#printButton:not([disabled])').waitFor({timeout:30000});
@@ -61,9 +66,9 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.locator('[data-anno-color="yellow"]').click();
    assert.equal(await page.locator('.lsh-annotation-item').count(),1);
    assert.equal(await page.locator('#counter').textContent().then(t=>t.trim().startsWith('0 /')),true);
-   await page.locator('[data-anno-toggle]').click();
+   await page.locator('#readingAnnotationToggle').click();
    assert.equal(await page.locator('[data-anno-controls]').isVisible(),false);
-   await page.locator('[data-anno-toggle]').click();
+   await page.locator('#readingAnnotationToggle').click();
    assert.equal(await page.locator('.lsh-annotation-item').count(),1);
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
@@ -83,7 +88,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     errors.push(e.message);
    });
    await page.goto('http://127.0.0.1:8765/language-skills-hub/cteni/asteroids/index.html?lang=en&level=B2');
-   await page.locator('#readingAnnotationTools [data-anno-toggle]').waitFor({timeout:30000});
+   await page.locator('.lsh-anno-header-toggle').waitFor({timeout:30000});
    assert.equal(await page.locator('#readingBody p[data-annotation-anchor]').count()>0,true);
    await page.locator('.lsh-anno-header-toggle').click();
    const selection=await page.evaluate(()=>{
@@ -130,7 +135,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.goto(base+'index.html?topic=rl-asteroids&lang=en&level=B2&timer=5&attempt=rlannotationlock123');
    await page.locator('#sessionStart').click();
    await page.locator('#workspace:not([hidden])').waitFor({timeout:30000});
-   await page.locator('[data-anno-toggle]').click();
+   await page.locator('#readingAnnotationToggle').click();
    await page.evaluate(()=>{
     const p=document.querySelector('#readingParagraphs p');
     const t=[...p.childNodes].find(n=>n.nodeType===Node.TEXT_NODE&&n.textContent.length>12);
@@ -154,7 +159,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    for(const corner of ['tl','tr','bl','br'])
     await page.locator('.lsh-corner-'+corner).click();
    await page.locator('#sessionLock').waitFor({state:'hidden',timeout:10000});
-   await page.locator('[data-anno-toggle]').click();
+   await page.locator('#readingAnnotationToggle').click();
    assert.equal(await page.locator('[data-anno-controls]').isVisible(),true);
    await page.locator('body').evaluate(el=>
     el.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true})));
