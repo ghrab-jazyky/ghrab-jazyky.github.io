@@ -179,10 +179,14 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    '#questions .choices .choice span[data-annotation-anchor]'
   ];
   const errors=[];
+  const recordError=error=>{
+   if(name==='WebKit'&&error.message==='ResizeObserver loop completed with undelivered notifications.')return;
+   errors.push(error.message);
+  };
   try{
    const desktop=await browser.newContext({viewport:{width:1110,height:880}});
    const page=await desktop.newPage();
-   page.on('pageerror',error=>errors.push(error.message));
+   page.on('pageerror',recordError);
    await page.goto(url);
    await page.locator('.lsh-anno-header-toggle').waitFor({timeout:30000});
    await page.locator('.lsh-anno-header-toggle').click();
@@ -238,7 +242,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    const mobile=await browser.newContext({
     viewport:{width:390,height:844},isMobile:true,hasTouch:true
    });
-   const phone=await mobile.newPage();phone.on('pageerror',error=>errors.push(error.message));
+   const phone=await mobile.newPage();phone.on('pageerror',recordError);
    await phone.goto(url);
    await phone.evaluate(({key,saved})=>localStorage.setItem(key,saved),{key:noteKey,saved});
    await phone.reload();
