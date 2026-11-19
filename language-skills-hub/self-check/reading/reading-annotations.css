@@ -53,3 +53,26 @@
 .lsh-annotation-toolbar [data-anno-controls][hidden],.lsh-annotation-toolbar [data-anno-note-box][hidden]{display:none!important}
 .lsh-annotation-toolbar .lsh-annotation-buttons{display:flex;flex-wrap:wrap;gap:8px}
 @media(max-width:650px){.lsh-anno-header-toggle{flex:0 1 auto;max-width:100%;font-size:.84rem}.lsh-annotation-toolbar .lsh-annotation-buttons button{flex:1 1 100px;min-width:0}}
+
+/* Saved note preview: CSS Highlight ranges cannot own DOM event handlers.
+   The JS hit-tests the underlying text and places this popover in the viewport. */
+.lsh-annotation-popover{
+ position:fixed;z-index:1200;box-sizing:border-box;
+ width:min(340px,calc(100vw - 20px));max-height:min(42vh,320px);
+ overflow:auto;padding:12px 14px;border-radius:12px;
+ border:1px solid var(--accent,#7ac7df);
+ box-shadow:0 12px 32px rgba(0,0,0,.38);
+ background:var(--panel,#12263c);
+ color:var(--text,var(--fg,#eef6ff));
+ font:inherit;line-height:1.4;pointer-events:none;
+}
+.lsh-annotation-popover[hidden],.lsh-annotation-popover-close[hidden]{display:none!important}
+.lsh-annotation-popover-pinned{pointer-events:auto}
+.lsh-annotation-popover-label{display:block;font-size:.86rem;margin-bottom:5px}
+.lsh-annotation-popover-quote{font-size:.78rem;opacity:.88;margin-bottom:8px;overflow-wrap:anywhere}
+.lsh-annotation-popover-text{font-size:.95rem;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.lsh-annotation-popover-close{display:block;margin-top:12px;border:1px solid currentColor;
+ border-radius:8px;background:transparent;color:inherit;padding:8px 12px;
+ min-height:42px;cursor:pointer;font:inherit}
+.lsh-annotation-popover-close:focus-visible{outline:3px solid var(--accent,#78e6f4);outline-offset:2px}
+@media print{.lsh-annotation-popover{display:none!important}}
