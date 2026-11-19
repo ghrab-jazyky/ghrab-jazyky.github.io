@@ -5,11 +5,12 @@ const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p
 const core=require('../self-check/reading/reading-core.js');
 const entries=JSON.parse(read('data/cards.json')).entries.filter(e=>e.skill==='cteni');
 const version=JSON.parse(read('version.json'));
+const {integrityContent}=require('./reading-content-integrity.cjs');
 test('R58: Reading TEST tabs mirror the immutable practice taxonomy in 120 variants',()=>{
  assert.equal(entries.length,5);
  let variants=0,questions=0,groups=0;
  for(const entry of entries){
-  const html=read(entry.relative),hash=crypto.createHash('sha256').update(html).digest('hex');
+  const html=read(entry.relative),hash=crypto.createHash('sha256').update(integrityContent(entry.id,html)).digest('hex');
   assert.equal(hash,version.contentHashes[entry.id],entry.id+' original source changed');
   const parsed=core.parseReadingData(html);
   for(const lang of entry.languages)for(const level of entry.levels){
