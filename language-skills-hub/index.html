@@ -113,10 +113,20 @@
 <p class="howto-lead" id="howtoLead">Stručný průvodce procvičováním, výsledky a testy.</p>
 <div class="howto-dialog-body">
 <p><strong>Procvičování:</strong> otevři konkrétní aktivitu nebo klikni na <em>Sdílet se studenty</em>; můžeš přednastavit jazyk a úroveň nebo ponechat volný výběr. Odkaz i QR vedou do původní procvičovací karty.</p>
-<p><strong>VÝSLEDKY u karty Reading a Listening:</strong> otevře učitelský přehled správných řešení PROCVIČOVACÍ verze. Po volbě jazyka a úrovně lze stáhnout PDF s řešeními, vysvětleními a dostupnými vzorovými odpověďmi. Nejde o výsledky konkrétních žáků. Některé otázky se ovšem překrývají s automaticky hodnocenými místními testy. Katalog nevyžaduje přihlášení, klíče nejsou technicky utajené; odkazy neposílej studentům.</p>
+<p><strong>Materiály k tisku (Asteroids):</strong> v katalogu otevři Materiály PDF a vyber jazyk, úroveň a tiskovou variantu pro procvičování nebo test. Materiály jsou určeny učiteli; studentům se tlačítko v kartě nezobrazuje.</p>
+<p><strong>ŘEŠENÍ u karty Reading a Listening:</strong> otevře učitelský přehled správných řešení PROCVIČOVACÍ verze. Po volbě jazyka a úrovně lze stáhnout PDF s řešeními, vysvětleními a dostupnými vzorovými odpověďmi. Nejde o výsledky konkrétních žáků. Některé otázky se ovšem překrývají s automaticky hodnocenými místními testy. Katalog nevyžaduje přihlášení, klíče nejsou technicky utajené; odkazy neposílej studentům.</p>
 <p><strong>TEST (Reading a Listening):</strong> klikni u tématu na <em>TEST</em>. V učitelském panelu zvol konkrétní jazyk a úroveň a vytvoř studentům odkaz nebo QR kód. Studenti vyplní samostatné úlohy a po odevzdání uvidí vysvětlení. Listening přehrává dvakrát učitel. Testová verze obsahuje jen automaticky vyhodnotitelné úlohy (výběr, řazení a krátké faktické doplňování bez nabídky odpovědí); otevřené interpretační otázky zůstávají v procvičovací kartě. Ihned po odevzdání se vypočítá návrh známky 1–5 podle pracovní jazykové stupnice. Po úplném vyhodnocení může student stáhnout kompletní PDF protokol s oficiálním logem školy, zadáním, svými odpověďmi a správnými řešeními, zkopírovat jej nebo volitelně stáhnout CSV. V časovaném režimu se odpovědi průběžně ukládají pouze v prohlížeči. Jde o místní výsledek bez ověření identity, nikoli o zabezpečenou školní zkoušku; učitel musí každou známku ověřit.</p>
 <p class="note">Tento katalog je určený k procvičování. Obsah průběžně aktualizujeme podle zpětné vazby. Nejde o zabezpečený klasifikovaný test; správné odpovědi jsou u procvičovacích karet součástí klientské aplikace.</p>
 </div>
+</dialog>
+<dialog id="materialsDialog" class="materials-dialog" aria-labelledby="materialsTitle" aria-describedby="materialsIntro">
+ <div class="dialog-top"><div><p class="eyebrow">READING LAB · MATERIÁLY PRO UČITELE</p><h2 id="materialsTitle">Materiály k tisku</h2></div><button type="button" id="materialsClose" class="action">Zavřít</button></div>
+ <p id="materialsIntro">Vyberte jazyk a úroveň. Procvičování a test mají samostatné tiskové podklady.</p>
+ <div class="materials-selectors"><label>Jazyk<select id="materialsLanguage"></select></label><label>Úroveň CEFR<select id="materialsLevel"></select></label></div>
+ <section aria-labelledby="materialsPracticeHeading"><h3 id="materialsPracticeHeading">Procvičování</h3><p>Interaktivní cvičení můžete kombinovat s vytištěným textem nebo vytisknout celé zadání.</p><div class="materials-links"><a id="materialsPracticeText" class="action" href="#">PDF · pouze text</a><a id="materialsPracticeAll" class="action" href="#">PDF · text a cvičení</a></div></section>
+ <section aria-labelledby="materialsTestHeading"><h3 id="materialsTestHeading">Testování</h3><p>Testová verze bez řešení pro práci na zařízení nebo na papíře.</p><div class="materials-links"><a id="materialsTestText" class="action" href="#">PDF · pouze testový text</a><a id="materialsTestAll" class="action" href="#">PDF · kompletní test</a></div></section>
+ <p id="materialsStatus" role="status" aria-live="polite"></p>
+ <p class="note">Bez přihlášení nelze soubory na veřejném hostingu technicky utajit. Odkazy na učitelské podklady neposílejte studentům.</p>
 </dialog>
 <dialog id="qrDialog" aria-labelledby="qrTitle" aria-describedby="shareExplanation" class="share-dialog">
 <div class="dialog-top">
