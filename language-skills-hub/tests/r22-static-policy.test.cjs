@@ -12,6 +12,7 @@ const json = relative => JSON.parse(read(relative));
 const policy = json('data/test-mode-policy.json');
 const catalog = json('data/cards.json');
 const release = json('version.json');
+const {integrityContent}=require('./reading-content-integrity.cjs');
 
 test('R22 remains a static-only design; neither secure grades nor student accounts can be activated', () => {
  assert.equal(policy.kind, 'LSH_STATIC_ASSESSMENT_POLICY_R22_V1');
@@ -63,7 +64,7 @@ test('R22 staged catalog includes 23 conversation topics without enabling graded
   counts[entry.skill]++;
   variants += entry.languages.length * entry.levels.length;
   const content = fs.readFileSync(path.join(root, entry.relative));
-  const digest = createHash('sha256').update(content).digest('hex');
+  const digest = createHash('sha256').update(integrityContent(entry.id,content)).digest('hex');
   assert.equal(digest, release.contentHashes[entry.id], entry.id + ' changed unexpectedly');
   if (entry.skill === 'poslech') assert.deepEqual(entry.languages, ['en']);
  }
