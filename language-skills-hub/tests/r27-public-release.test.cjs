@@ -6,6 +6,7 @@ const root=path.resolve(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const catalog=JSON.parse(read('data/cards.json'));
 const manifest=JSON.parse(read('version.json'));
+const {integrityContent}=require('./reading-content-integrity.cjs');
 const policy=JSON.parse(read('data/test-mode-policy.json'));
 const grades=JSON.parse(read('data/r25-grading-review.json'));
 
@@ -39,7 +40,7 @@ test('R27 preserves exact hashes of all 34 staged cards and 702 variants',()=>{
  let variants=0;
  for(const entry of catalog.entries){
   types[entry.skill]++;variants+=entry.languages.length*entry.levels.length;
-  const sha=crypto.createHash('sha256').update(fs.readFileSync(path.join(root,entry.relative))).digest('hex');
+  const sha=crypto.createHash('sha256').update(integrityContent(entry.id,fs.readFileSync(path.join(root,entry.relative)))).digest('hex');
   assert.equal(sha,manifest.contentHashes[entry.id],entry.id);
  }
  assert.deepEqual(types,{konverzace:23,cteni:5,poslech:6});
