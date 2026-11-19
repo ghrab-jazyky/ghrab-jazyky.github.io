@@ -11,7 +11,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    const page=await browser.newPage({viewport:{width:1200,height:900}});
    const errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.goto(base+'teacher.html?topic=rl-asteroids&lang=en&level=B2');
-   await page.locator('#printStatus').getByText(/Asteroids/).waitFor({timeout:30000});
+   await page.locator('#printTestAll[href*="rl-asteroids"]').waitFor({timeout:30000});
    for(const id of ['printPracticeText','printPracticeAll','printTestText','printTestAll'])
     assert.match(await page.locator('#'+id).getAttribute('href'),/print-page\.html\?|printouts\/rl-asteroids\/.*\.pdf/);
    const target=new URL('print-page.html?topic=rl-asteroids&lang=en&level=B2&mode=test&format=all',base);
