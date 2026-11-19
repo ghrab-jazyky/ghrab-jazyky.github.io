@@ -339,12 +339,10 @@
    if(index<0){hideNote();return}
    showNote(index,event.clientX,event.clientY);
   });
-  // Pointerleave does not bubble; capturing it on the document catches every
-  // child exit (including leaving a question heading), closing the popup
-  // immediately. Only dismiss when the pointer actually leaves the viewport.
-  root.document.addEventListener('pointerout',event=>{
-   if(!event.relatedTarget&&!popupPinned)hideNote();
-  });
+  // Hover remains live until the pointer moves off annotated text. Removing
+  // a hovered question during a repaint can emit pointerout with a null
+  // relatedTarget, so that event is not a reliable viewport-exit signal.
+  root.addEventListener('blur',()=>{if(!popupPinned)hideNote()});
   for(const container of containers){
    container.addEventListener('click',event=>{
     if(!enabled||hasLocked()||!root.getSelection?.()?.isCollapsed)return;
@@ -369,7 +367,11 @@
   root.document.addEventListener('keydown',event=>{
    if(event.key==='Escape'&&!popup.hidden)hideNote(true);
   });
-  root.addEventListener('scroll',event=>{if(event.target!==popup&&!popup.contains(event.target))hideNote()},true);
+  // Automatic browser scrolls (e.g. restoring focus or revealing an answer)
+  // must not dismiss an open note. Intentional wheel/touch scrolling can
+  // dismiss a transient hover preview; a pinned note has an explicit close.
+  root.document.addEventListener('wheel',()=>{if(!popupPinned)hideNote()},{passive:true});
+  root.document.addEventListener('touchmove',()=>{if(!popupPinned)hideNote()},{passive:true});
   root.addEventListener('resize',()=>hideNote());
   function snapshot(){return normalized(items)}
   function restore(value){
