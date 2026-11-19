@@ -75,7 +75,74 @@
    }
    return null;
   };
+  // CSS Highlights preserve the original question and answer DOM, but do not
+  // receive pointer events. Hit-test only stored note ranges on the source text.
+  const popup=root.document.createElement('aside');
+  popup.className='lsh-annotation-popover';popup.hidden=true;
+  popup.setAttribute('aria-label','Uložená poznámka');
+  const popupLabel=root.document.createElement('strong');
+  popupLabel.className='lsh-annotation-popover-label';popupLabel.textContent='Poznámka';
+  const popupQuote=root.document.createElement('div');
+  popupQuote.className='lsh-annotation-popover-quote';
+  const popupText=root.document.createElement('p');
+  popupText.className='lsh-annotation-popover-text';
+  const popupClose=root.document.createElement('button');
+  popupClose.type='button';popupClose.className='lsh-annotation-popover-close';
+  popupClose.textContent='Zavřít';popupClose.setAttribute('aria-label','Zavřít poznámku');
+  popup.append(popupLabel,popupQuote,popupText,popupClose);
+  root.document.body.appendChild(popup);
+  let popupIndex=-1,popupPinned=false,popupReturnFocus=null;
+  function hideNote(restoreFocus=false){
+   if(popup.hidden)return;
+   popup.hidden=true;popupIndex=-1;popupPinned=false;
+   popup.classList.remove('lsh-annotation-popover-pinned');
+   if(restoreFocus&&popupReturnFocus?.isConnected)popupReturnFocus.focus({preventScroll:true});
+   popupReturnFocus=null;
+  }
+  popupClose.addEventListener('click',()=>hideNote(true));
+  function noteAtPoint(x,y,origin){
+   const anchor=targetFor(origin);
+   if(!anchor)return -1;
+   for(let i=items.length-1;i>=0;i--){
+    const item=items[i];
+    if(item.kind!=='note'||!item.note.trim()||item.anchor!==anchor.dataset.annotationAnchor)continue;
+    const range=bounds(anchor,item.start,item.end);
+    if(!range||range.toString()!==item.text)continue;
+    for(const rect of range.getClientRects()){
+     if(x>=rect.left-1&&x<=rect.right+1&&y>=rect.top-1&&y<=rect.bottom+1)return i;
+    }
+   }
+   return -1;
+  }
+  function showNote(index,x,y,pinned=false,returnFocus=null){
+   if(!enabled||hasLocked()||items[index]?.kind!=='note'){hideNote();return}
+   const item=items[index];
+   if(popupIndex!==index||popupPinned!==pinned){
+    popupQuote.textContent='„'+item.text+'“';
+    popupText.textContent=item.note;
+   }
+   popupIndex=index;popupPinned=pinned;popupReturnFocus=returnFocus;
+   popup.hidden=false;popup.setAttribute('role',pinned?'dialog':'tooltip');
+   popup.classList.toggle('lsh-annotation-popover-pinned',pinned);
+   popupClose.hidden=!pinned;
+   popup.style.left='0px';popup.style.top='0px';
+   const size=popup.getBoundingClientRect();
+   const left=Math.min(Math.max(10,x+10),Math.max(10,root.innerWidth-size.width-10));
+   const below=y+16;
+   const top=below+size.height<=root.innerHeight-10?below:Math.max(10,y-size.height-16);
+   popup.style.left=left+'px';popup.style.top=top+'px';
+  }
+  function openNoteFromList(index,button){
+   if(!enabled||hasLocked())return;
+   const item=items[index],anchor=getAnchor(item.anchor);
+   const range=anchor&&bounds(anchor,item.start,item.end);
+   const noteRect=range?.getBoundingClientRect();
+   const buttonRect=button.getBoundingClientRect();
+   const rect=noteRect&&noteRect.bottom>0&&noteRect.top<root.innerHeight?noteRect:buttonRect;
+   showNote(index,rect.left,rect.bottom,true,button);
+  }
   function paint(){
+   hideNote();
    const groups=Object.fromEntries(highlightKeys.map(key=>[key,[]]));
    for(const item of items){
     const target=getAnchor(item.anchor);
@@ -107,6 +174,13 @@
      items.splice(index,1);paint();setStatus(save()?'Anotace odstraněna.':'Anotaci nelze trvale uložit.');
     });
     const actions=document.createElement('span');actions.className='lsh-annotation-actions';
+    if(item.kind==='note'){
+     const show=document.createElement('button');show.type='button';
+     show.className='action ghost lsh-annotation-view-note';show.textContent='Zobrazit';
+     show.setAttribute('aria-label','Zobrazit poznámku '+(index+1));
+     show.addEventListener('click',()=>openNoteFromList(index,show));
+     actions.appendChild(show);
+    }
     const edit=document.createElement('button');edit.type='button';edit.className='action ghost';
     edit.textContent=item.kind==='note'?'Upravit poznámku':item.kind==='underline'?'Zvýraznit':'Změnit barvu';
     edit.setAttribute('aria-label','Upravit anotaci '+(index+1));
@@ -172,6 +246,7 @@
   toggle?.addEventListener('click',()=>{
    if(hasLocked())return;
    enabled=!enabled;
+   hideNote();
    host.classList.toggle('lsh-anno-enabled',enabled);
    toggle.setAttribute('aria-pressed',String(enabled));
    toggle.textContent=enabled?'Vypnout poznámky':'Zapnout poznámky';
@@ -236,14 +311,43 @@
    container.addEventListener('keyup',capture);
    container.addEventListener('touchend',()=>root.setTimeout(applyAfterTouch,220),{passive:true});
   }
+  // Desktop: passive hover preview. Touch/mouse click: pinned, dismissible note.
+  // Never intercept answer controls or interfere with native text selection.
+  for(const container of containers){
+   container.addEventListener('pointermove',event=>{
+    if(!enabled||hasLocked()||popupPinned||event.pointerType!=='mouse'||event.buttons)return;
+    if(root.getSelection?.()&&!root.getSelection().isCollapsed){hideNote();return}
+    const index=noteAtPoint(event.clientX,event.clientY,event.target);
+    if(index<0){hideNote();return}
+    showNote(index,event.clientX,event.clientY);
+   });
+   container.addEventListener('pointerleave',()=>{if(!popupPinned)hideNote()});
+   container.addEventListener('click',event=>{
+    if(!enabled||hasLocked()||!root.getSelection?.()?.isCollapsed)return;
+    const index=noteAtPoint(event.clientX,event.clientY,event.target);
+    if(index<0)return;
+    showNote(index,event.clientX,event.clientY,true);
+    // Non-answer source text also has dictionary quick-tap handlers.
+    // Leave question/answer events untouched so responding still works.
+    if(!event.target.closest?.('label,button,input,select'))event.stopPropagation();
+   });
+  }
+  root.document.addEventListener('pointerdown',event=>{
+   if(popupPinned&&!popup.contains(event.target))hideNote();
+  },true);
+  root.document.addEventListener('keydown',event=>{
+   if(event.key==='Escape'&&!popup.hidden)hideNote(true);
+  });
+  root.addEventListener('scroll',()=>hideNote(),true);
+  root.addEventListener('resize',()=>hideNote());
   function snapshot(){return normalized(items)}
   function restore(value){
-   items=normalized(value);clearSelection();noteDraft=null;editingIndex=null;
+   hideNote();items=normalized(value);clearSelection();noteDraft=null;editingIndex=null;
    if(noteBox)noteBox.hidden=true;
    if(enabled)paint();else renderList();
   }
   function refresh(){
-   if(hasLocked()){clearSelection();if(noteBox)noteBox.hidden=true}
+   if(hasLocked()){hideNote();clearSelection();if(noteBox)noteBox.hidden=true}
    if(enabled)paint();
   }
   config.onToggle?.(false);
