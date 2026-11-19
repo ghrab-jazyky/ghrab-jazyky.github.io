@@ -50,5 +50,6 @@
 .lsh-anno-header-toggle{font:inherit;min-height:44px;padding:8px 12px;border-radius:10px;border:1px solid var(--border,var(--line,#708ca3));background:var(--panel2,#214365);color:var(--text,var(--fg,#fff));font-weight:700;cursor:pointer;white-space:normal}
 .lsh-anno-header-toggle[aria-pressed="true"]{outline:2px solid var(--accent,#70e6ec);outline-offset:1px}
 .lsh-annotation-toolbar:not(.lsh-anno-enabled){display:none!important}
+.lsh-annotation-toolbar [data-anno-controls][hidden],.lsh-annotation-toolbar [data-anno-note-box][hidden]{display:none!important}
 .lsh-annotation-toolbar .lsh-annotation-buttons{display:flex;flex-wrap:wrap;gap:8px}
 @media(max-width:650px){.lsh-anno-header-toggle{flex:0 1 auto;max-width:100%;font-size:.84rem}.lsh-annotation-toolbar .lsh-annotation-buttons button{flex:1 1 100px;min-width:0}}
