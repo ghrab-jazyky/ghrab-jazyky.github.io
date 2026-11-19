@@ -11,6 +11,7 @@ const digest=b=>crypto.createHash('sha256').update(b).digest('hex');
 const catalog=JSON.parse(read('data/cards.json'));
 const i18n=JSON.parse(read('data/catalog-i18n.json'));
 const version=JSON.parse(read('version.json'));
+const {integrityContent}=require('./reading-content-integrity.cjs');
 const cardPath='konverzace/human-rights/index.html';
 const html=read(cardPath);
 const langs=['en','es','de','fr'];
@@ -56,7 +57,7 @@ test('R35-HR2: approved card SHA and all original 29 cards are intact',()=>{
  for(const item of catalog.entries){
   const p=path.join(hub,item.relative);
   assert.ok(fs.existsSync(p),item.id);
-  assert.equal(digest(fs.readFileSync(p)),version.contentHashes[item.id],item.id);
+  assert.equal(digest(integrityContent(item.id,fs.readFileSync(p))),version.contentHashes[item.id],item.id);
  }
 });
 test('R35-HR2: complete EN/ES/DE/FR content across all CEFR variants',()=>{
