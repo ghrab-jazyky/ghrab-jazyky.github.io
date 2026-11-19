@@ -326,10 +326,17 @@
     if(!enabled||hasLocked()||!root.getSelection?.()?.isCollapsed)return;
     const index=noteAtPoint(event.clientX,event.clientY,event.target);
     if(index<0)return;
-    showNote(index,event.clientX,event.clientY,true);
-    // Non-answer source text also has dictionary quick-tap handlers.
-    // Leave question/answer events untouched so responding still works.
-    if(!event.target.closest?.('label,button,input,select'))event.stopPropagation();
+    const answerControl=event.target.closest?.('label,button,input,select');
+    if(answerControl){
+     // Native answer clicks can repaint their question. Show after that paint.
+     const x=event.clientX,y=event.clientY;
+     root.setTimeout(()=>{if(enabled&&!hasLocked()&&items[index]?.kind==='note')
+      showNote(index,x,y,true)},0);
+    }else{
+     showNote(index,event.clientX,event.clientY,true);
+     // The dictionary's quick-tap must not replace an open note preview.
+     event.stopPropagation();
+    }
    });
   }
   root.document.addEventListener('pointerdown',event=>{
@@ -338,7 +345,7 @@
   root.document.addEventListener('keydown',event=>{
    if(event.key==='Escape'&&!popup.hidden)hideNote(true);
   });
-  root.addEventListener('scroll',()=>hideNote(),true);
+  root.addEventListener('scroll',event=>{if(event.target!==popup&&!popup.contains(event.target))hideNote()},true);
   root.addEventListener('resize',()=>hideNote());
   function snapshot(){return normalized(items)}
   function restore(value){
