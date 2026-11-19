@@ -8,6 +8,7 @@ const store=require('../assets/lsh/v3/store.js');
 const practice=require('../slovnicek/practice.js');
 const catalog=JSON.parse(read('data/cards.json')).entries;
 const manifest=JSON.parse(read('version.json'));
+const {integrityContent}=require('./reading-content-integrity.cjs');
 test('R40: all 34 staged cards use the shared local vocabulary store',()=>{
  assert.equal(catalog.length,34);
  const conv=catalog.filter(x=>x.skill==='konverzace'),readers=catalog.filter(x=>x.skill==='cteni'),listeners=catalog.filter(x=>x.skill==='poslech');
@@ -18,7 +19,7 @@ test('R40: all 34 staged cards use the shared local vocabulary store',()=>{
  assert.match(shared,/createStore\(\{mode:'production'\}\)/);
  for(const e of catalog){
   const source=read(e.relative);
-  assert.equal(crypto.createHash('sha256').update(source).digest('hex'),manifest.contentHashes[e.id],e.id);
+  assert.equal(crypto.createHash('sha256').update(integrityContent(e.id,source)).digest('hex'),manifest.contentHashes[e.id],e.id);
   if(e.skill==='konverzace'){
    assert.match(source,/assets\/lsh\/v3\/card-bridge\.js/);
    assert.match(source,/assets\/lsh\/v3\/store\.js/);
