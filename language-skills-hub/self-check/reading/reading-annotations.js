@@ -3,7 +3,7 @@
  */
 (function(root){
  'use strict';
- const COLORS=Object.freeze(['yellow','green','pink']);
+ const COLORS=Object.freeze(['yellow','green','pink','blue']);
  const TYPES=Object.freeze(['highlight','underline','note']);
  const MAX_ITEMS=80,MAX_NOTE=500,MAX_LENGTH=600;
  const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
@@ -50,6 +50,8 @@
   if(!root.CSS?.highlights||typeof root.Highlight!=='function')
    throw new Error('CSS text highlight API unavailable');
   let items=[],selected=null,enabled=false,noteDraft=null,editingIndex=null,color='yellow';
+   let armed='highlight'; // Tool-first touch workflow; desktop select-then-tool remains supported.
+   const toggle=config.toggle||host.querySelector('[data-anno-toggle]');
   const status=host.querySelector('[data-anno-status]');
   const list=host.querySelector('[data-anno-list]');
   const noteBox=host.querySelector('[data-anno-note-box]');
@@ -64,7 +66,7 @@
   const clearSelection=()=>{selected=null};
   const setStatus=message=>{if(status)status.textContent=message};
   const save=()=>{try{return config.onChange?.(snapshot())!==false}catch(_){return false}};
-  const highlightKeys=['yellow','green','pink','underline','note'];
+  const highlightKeys=[...COLORS,'underline','note'];
   const getAnchor=id=>{
    for(const container of containers){
     for(const el of container.querySelectorAll('[data-annotation-anchor]'))
@@ -149,31 +151,53 @@
    items.push(item);clearSelection();root.getSelection?.()?.removeAllRanges();
    paint();setStatus(save()?'Anotace uložena.':'Anotaci nelze trvale uložit.');
   }
-  host.querySelector('[data-anno-toggle]')?.addEventListener('click',()=>{
+  function setModeButton(button,kind){
+   armed=kind;
+   if(kind==='highlight')color=button.dataset.annoColor;
+   host.querySelectorAll('[data-anno-color],[data-anno-underline],[data-anno-start-note]')
+    .forEach(el=>el.setAttribute('aria-pressed',String(el===button)));
+  }
+  function startNote(){
+   if(!selected){setStatus('Vyberte slovo nebo úsek textu pro poznámku.');return;}
+   noteDraft=selected;editingIndex=null;clearSelection();
+   if(noteBox)noteBox.hidden=false;
+   if(noteInput){noteInput.value='';noteInput.focus({preventScroll:true})}
+  }
+  function applyArmedSelection(){
+   if(!enabled||hasLocked()||!selected||!armed)return;
+   if(armed==='note')startNote();
+   else add(armed);
+  }
+  toggle?.addEventListener('click',()=>{
    if(hasLocked())return;
    enabled=!enabled;
    host.classList.toggle('lsh-anno-enabled',enabled);
-   host.querySelector('[data-anno-toggle]').setAttribute('aria-pressed',String(enabled));
-   host.querySelector('[data-anno-toggle]').textContent=enabled?'Vypnout poznámky':'Zapnout poznámky';
+   toggle.setAttribute('aria-pressed',String(enabled));
+   toggle.textContent=enabled?'Vypnout poznámky':'Zapnout poznámky';
    host.querySelector('[data-anno-controls]').hidden=!enabled;
    if(noteBox)noteBox.hidden=true;
    noteDraft=null;editingIndex=null;
    clearSelection();
    if(!enabled){for(const key of highlightKeys)root.CSS.highlights.delete('lsh-anno-'+key);}
    else paint();
-   setStatus(enabled?'Označte libovolnou část textu nebo otázky.':'Poznámky skryty, nikoli smazány.');
+   config.onToggle?.(enabled);
+   setStatus(enabled?
+    'Vyberte barvu nebo podtržení a označte prstem text. Na počítači lze také nejprve označit a pak kliknout na nástroj.':
+    'Poznámky jsou skryté, nikoli smazané.');
   });
   host.querySelectorAll('[data-anno-color]').forEach(button=>button.addEventListener('click',()=>{
-   color=button.dataset.annoColor;host.querySelectorAll('[data-anno-color]').forEach(x=>
-    x.setAttribute('aria-pressed',String(x===button)));
-   add('highlight');
+   setModeButton(button,'highlight');
+   if(selected)add('highlight');
+   else setStatus('Barva vybrána. Na telefonu dlouze podržte slovo nebo označte pasáž.');
   }));
-  host.querySelector('[data-anno-underline]')?.addEventListener('click',()=>add('underline'));
-  host.querySelector('[data-anno-start-note]')?.addEventListener('click',()=>{
-   if(!selected){setStatus('Nejdříve označte část textu nebo otázky.');return;}
-   noteDraft=selected;editingIndex=null;
-   if(noteBox)noteBox.hidden=false;
-   if(noteInput){noteInput.value='';noteInput.focus({preventScroll:true})}
+  host.querySelector('[data-anno-underline]')?.addEventListener('click',event=>{
+   setModeButton(event.currentTarget,'underline');
+   if(selected)add('underline');
+   else setStatus('Podtržení vybráno. Označte slovo nebo pasáž.');
+  });
+  host.querySelector('[data-anno-start-note]')?.addEventListener('click',event=>{
+   setModeButton(event.currentTarget,'note');
+   startNote();
   });
   host.querySelector('[data-anno-save-note]')?.addEventListener('click',()=>{
    if(hasLocked())return;
@@ -188,12 +212,28 @@
    }
    if(noteBox)noteBox.hidden=true;noteDraft=null;editingIndex=null;
   });
+  // Native touch text selection finishes after long press / dragging handles.
+  // Wait for the browser selection to settle before applying the chosen tool.
+  let lastTouchSignature='',lastTouchAt=0;
+  function applyAfterTouch(){
+   if(!enabled||hasLocked()||!armed)return;
+   capture();
+   if(!selected)return;
+   const signature=[selected.anchor,selected.start,selected.end,armed,color].join('|');
+   const now=Date.now();
+   if(signature===lastTouchSignature&&now-lastTouchAt<650)return;
+   lastTouchSignature=signature;lastTouchAt=now;
+   applyArmedSelection();
+  }
   // Touch selection may settle before pointerup/touchend; track native selection changes as well.
   root.document?.addEventListener('selectionchange',()=>{if(enabled)capture()});
   for(const container of containers){
-   container.addEventListener('pointerup',()=>root.setTimeout(capture,0));
+   container.addEventListener('pointerup',event=>{
+    root.setTimeout(capture,0);
+    if(event.pointerType==='touch')root.setTimeout(applyAfterTouch,260);
+   });
    container.addEventListener('keyup',capture);
-   container.addEventListener('touchend',()=>root.setTimeout(capture,200),{passive:true});
+   container.addEventListener('touchend',()=>root.setTimeout(applyAfterTouch,220),{passive:true});
   }
   function snapshot(){return normalized(items)}
   function restore(value){
@@ -205,6 +245,7 @@
    if(hasLocked()){clearSelection();if(noteBox)noteBox.hidden=true}
    if(enabled)paint();
   }
+  config.onToggle?.(false);
   setStatus('Anotační režim je vypnutý.');
   renderList();
   return Object.freeze({snapshot,restore,refresh});
