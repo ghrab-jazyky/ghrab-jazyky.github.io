@@ -31,7 +31,7 @@ for(const [label,engine] of engines){
    assert.equal(await page.locator('#howtoOpen').evaluate(el=>el===document.activeElement),true);
    assert.equal(await page.locator('#qrDialog').count(),1);
    await page.locator('#search').fill('');
-   await page.locator('#cards article').first().locator('button.action').click();
+   await page.locator('#cards article').first().locator('button[aria-label^="Sdílet se studenty:"]').click();
    await page.locator('#qrDialog[open]').waitFor();
    await page.keyboard.press('Escape');
    await page.waitForFunction(()=>!document.getElementById('qrDialog').open);
