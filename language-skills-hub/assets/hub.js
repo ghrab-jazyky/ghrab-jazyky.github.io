@@ -15,6 +15,7 @@ let localSelfCheck=false;
 const welcome=byId('welcome'),chooser=byId('skillChooser'),catalog=byId('catalog');
 let qrUrl='', qrTitle='', shareEntry=null, toastTimeout=null;
 const qrDialog=byId('qrDialog'),qrMount=byId('qrMount');
+const materialsDialog=byId('materialsDialog');let materialsEntry=null,materialsManifest=null;
 const howtoDialog=byId('howto'),howtoOpen=byId('howtoOpen'),howtoClose=byId('howtoClose');
 function toast(message){
  const el=byId('toast');
@@ -151,11 +152,17 @@ function card(e){
  share.addEventListener('click',()=>openShare(e));
  actions.append(open,share);
  if(['cteni','poslech'].includes(e.skill)){
-  const key=one('a','action','VÝSLEDKY');
+  const key=one('a','action','ŘEŠENÍ');
   key.href=practiceKeyUrl(e);key.target='_blank';key.rel='noopener noreferrer';
-  key.setAttribute('aria-label','VÝSLEDKY: učitelský klíč k procvičování – '+translation.title);
+  key.setAttribute('aria-label','ŘEŠENÍ: učitelský klíč k procvičování – '+translation.title);
   key.title='Správná řešení procvičovacích úloh, nikoli výsledky žáků. Část úloh se opakuje i v místních testech. Veřejný podklad bez přihlášení.';
   actions.appendChild(key);
+  if(e.id==='rl-asteroids'){
+   const materials=one('button','action','Materiály PDF');materials.type='button';
+   materials.setAttribute('aria-label','Materiály PDF pro učitele: '+translation.title);
+   materials.addEventListener('click',()=>openMaterials(e));
+   actions.appendChild(materials);
+  }
  }
  if(localSelfCheck&&['cteni','poslech'].includes(e.skill)){
   const check=one('a','action test','TEST');
@@ -174,6 +181,63 @@ function card(e){
  article.appendChild(actions);
  return article;
 }
+/* Teacher printouts are separate from student cards and test setup. */
+function printPreview(e,lang,level,mode,format){
+ const url=new URL('self-check/reading/print-page.html',document.baseURI);
+ for(const [key,value] of Object.entries({topic:e.id,lang,level,mode,format}))
+  url.searchParams.set(key,value);
+ return url.href;
+}
+function updateMaterials(){
+ if(!materialsEntry)return;
+ const e=materialsEntry,lang=byId('materialsLanguage').value,level=byId('materialsLevel').value;
+ const valid=e.languages.includes(lang)&&e.levels.includes(level);
+ let found=0;
+ for(const [id,mode,format] of [
+  ['materialsPracticeText','practice','text'],['materialsPracticeAll','practice','all'],
+  ['materialsTestText','test','text'],['materialsTestAll','test','all']]){
+  const a=byId(id);a.removeAttribute('download');a.target='_blank';a.rel='noopener noreferrer';
+  if(!valid){a.removeAttribute('href');a.setAttribute('aria-disabled','true');continue}
+  a.removeAttribute('aria-disabled');
+  a.href=printPreview(e,lang,level,mode,format);
+  const relative='printouts/rl-asteroids/'+lang+'/'+level+'/'+mode+'-'+format+'.pdf';
+  if(materialsManifest?.files?.some(item=>item.path===relative&&item.bytes>15000)){
+   a.href=new URL(relative,document.baseURI).href;
+   a.download='Reading-Lab-Asteroids-'+lang+'-'+level+'-'+mode+'-'+format+'.pdf';
+   a.removeAttribute('target');found++;
+  }
+ }
+ byId('materialsStatus').textContent=!valid?'Zvolte dostupný jazyk a úroveň.':
+  found===4?'Všechny čtyři soubory PDF jsou připravené ke stažení.':
+  'Dostupné soubory se stahují přímo; ostatní otevřou tiskový náhled s možností Uložit jako PDF.';
+}
+async function openMaterials(e){
+ materialsEntry=e;
+ const filter=byId('language').value,level=byId('level').value;
+ opt(byId('materialsLanguage'),e.languages.map(lang=>[lang,labels[lang]]),
+  e.languages.includes(filter)?filter:e.languages[0]);
+ opt(byId('materialsLevel'),e.levels.map(level=>[level,level]),
+  e.levels.includes(level)?level:e.levels.includes('B2')?'B2':e.levels[0]);
+ byId('materialsTitle').textContent='Materiály PDF · '+localized(e,'all').title;
+ updateMaterials();materialsDialog.showModal();
+ if(!materialsManifest){
+  try{
+   const response=await fetch('printouts/rl-asteroids/manifest-all.json',
+    {credentials:'omit',cache:'no-store',redirect:'error'});
+   if(response.ok){
+    const manifest=await response.json();
+    if(manifest.schema==='RL_PDF_PRINT_ASSET_V1'&&manifest.topic===e.id&&Array.isArray(manifest.files))
+     materialsManifest=manifest;
+   }
+  }catch(_){}
+ }
+ if(materialsEntry===e)updateMaterials();
+}
+byId('materialsLanguage').addEventListener('change',updateMaterials);
+byId('materialsLevel').addEventListener('change',updateMaterials);
+byId('materialsClose').addEventListener('click',()=>materialsDialog.close());
+materialsDialog.addEventListener('close',()=>{materialsEntry=null});
+
 function render(){
  if(!skill)return;
  const search=normalizeSearch(byId('search').value);
