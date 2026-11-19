@@ -117,7 +117,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.equal(await page.locator('#readingAnnotationTools .lsh-annotation-item').count(),1);
    await page.reload();
    await page.locator('.lsh-anno-header-toggle').waitFor();
-   await page.locator('#readingAnnotationTools [data-anno-toggle]').click();
+   await page.locator('.lsh-anno-header-toggle').click();
    assert.equal(await page.locator('#readingAnnotationTools .lsh-annotation-item').count(),1);
    assert.ok(resizeObserverWarnings.length<=1,
     'Repeated ResizeObserver warnings may indicate a genuine layout loop');
