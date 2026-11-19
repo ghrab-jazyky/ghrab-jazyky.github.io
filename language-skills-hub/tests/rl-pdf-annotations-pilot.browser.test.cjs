@@ -168,4 +168,110 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   }finally{await browser.close()}
  });
 
+ test('RL-02 '+name+': Asteroids note previews on desktop hover and mobile tap, text and questions',
+ {timeout:120000},async()=>{
+  const browser=await engine.launch({headless:true});
+  const noteKey='lsh-reading-practice-annotations-v1:rl-asteroids:en:B2';
+  const url='http://127.0.0.1:8765/language-skills-hub/cteni/asteroids/index.html?lang=en&level=B2';
+  const selectors=[
+   '#readingBody p[data-annotation-anchor]',
+   '#questions .qcard h3[data-annotation-anchor]',
+   '#questions .choices .choice span[data-annotation-anchor]'
+  ];
+  const errors=[];
+  try{
+   const desktop=await browser.newContext({viewport:{width:1110,height:880}});
+   const page=await desktop.newPage();
+   page.on('pageerror',error=>errors.push(error.message));
+   await page.goto(url);
+   await page.locator('.lsh-anno-header-toggle').waitFor({timeout:30000});
+   await page.locator('.lsh-anno-header-toggle').click();
+   assert.equal(await page.locator('[data-anno-color="blue"]').count(),1);
+   for(let i=0;i<selectors.length;i++){
+    const selector=selectors[i];
+    const target=page.locator(selector).first();
+    await target.scrollIntoViewIfNeeded();
+    const chosen=await page.evaluate(selector=>{
+     const el=document.querySelector(selector);
+     const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
+     let node;
+     while((node=walker.nextNode())&&!node.textContent.trim()){}
+     if(!node||node.textContent.trim().length<3)throw new Error('No selectable note text: '+selector);
+     const start=node.textContent.search(/\S/),end=Math.min(node.textContent.length,start+8);
+     const range=document.createRange();range.setStart(node,start);range.setEnd(node,end);
+     const selection=getSelection();selection.removeAllRanges();selection.addRange(range);
+     el.dispatchEvent(new PointerEvent('pointerup',{bubbles:true}));
+     return range.toString();
+    },selector);
+    await page.waitForTimeout(90);
+    await page.locator('[data-anno-start-note]').click();
+    await page.locator('[data-anno-note]').fill('Pilot note '+i+' <script>alert(1)</script>');
+    await page.locator('[data-anno-save-note]').click();
+    assert.equal(await page.locator('.lsh-annotation-item').count(),i+1);
+    await target.scrollIntoViewIfNeeded();
+    const point=await page.evaluate(({selector,length})=>{
+     const el=document.querySelector(selector),walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
+     let node;while((node=walker.nextNode())&&!node.textContent.trim()){}
+     const start=node.textContent.search(/\S/);
+     const range=document.createRange();range.setStart(node,start);range.setEnd(node,start+length);
+     const r=range.getClientRects()[0];
+     return {x:r.left+Math.min(4,r.width/2),y:r.top+r.height/2};
+    },{selector,length:chosen.length});
+    await page.mouse.move(point.x,point.y);
+    await page.locator('.lsh-annotation-popover:not([hidden])').waitFor({timeout:5000});
+    assert.ok((await page.locator('.lsh-annotation-popover-text').textContent()).includes('Pilot note '+i));
+    assert.equal(await page.locator('.lsh-annotation-popover-text script').count(),0);
+    await page.mouse.move(3,3);
+    await page.locator('.lsh-annotation-popover[hidden]').waitFor();
+    await page.mouse.click(point.x,point.y);
+    await page.locator('.lsh-annotation-popover-pinned:not([hidden])').waitFor();
+    await page.keyboard.press('Escape');
+    await page.locator('.lsh-annotation-popover[hidden]').waitFor();
+   }
+   const saved=await page.evaluate(key=>localStorage.getItem(key),noteKey);
+   assert.ok(saved&&JSON.parse(saved).filter(x=>x.kind==='note').length===3);
+   await page.locator('.lsh-annotation-view-note').first().click();
+   await page.locator('.lsh-annotation-popover-pinned:not([hidden])').waitFor();
+   await page.locator('.lsh-annotation-popover-close').click();
+   await page.locator('.lsh-annotation-popover[hidden]').waitFor();
+   await desktop.close();
+   const mobile=await browser.newContext({
+    viewport:{width:390,height:844},isMobile:true,hasTouch:true
+   });
+   const phone=await mobile.newPage();phone.on('pageerror',error=>errors.push(error.message));
+   await phone.goto(url);
+   await phone.evaluate(({key,saved})=>localStorage.setItem(key,saved),{key:noteKey,saved});
+   await phone.reload();
+   await phone.locator('.lsh-anno-header-toggle').click();
+   assert.equal(await phone.locator('.lsh-annotation-item').count(),3);
+   for(let i=0;i<selectors.length;i++){
+    const target=phone.locator(selectors[i]).first();
+    await target.scrollIntoViewIfNeeded();
+    const point=await phone.evaluate(({selector,i})=>{
+     const anchor=document.querySelector(selector);
+     const note=JSON.parse(localStorage.getItem('lsh-reading-practice-annotations-v1:rl-asteroids:en:B2'))
+      .filter(x=>x.kind==='note')[i];
+     const walker=document.createTreeWalker(anchor,NodeFilter.SHOW_TEXT);
+     let node,position=0,start=null,end=null;
+     while((node=walker.nextNode())){
+      const next=position+node.textContent.length;
+      if(!start&&note.start>=position&&note.start<=next)start={node,at:note.start-position};
+      if(start&&note.end>=position&&note.end<=next){end={node,at:note.end-position};break;}
+      position=next;
+     }
+     if(!start||!end)throw new Error('Missing note range');
+     const range=document.createRange();range.setStart(start.node,start.at);range.setEnd(end.node,end.at);
+     const rect=range.getClientRects()[0];
+     return {x:rect.left+Math.min(3,rect.width/2),y:rect.top+rect.height/2};
+    },{selector:selectors[i],i});
+    await phone.touchscreen.tap(point.x,point.y);
+    await phone.locator('.lsh-annotation-popover-pinned:not([hidden])').waitFor();
+    assert.ok((await phone.locator('.lsh-annotation-popover-text').textContent()).includes('Pilot note '+i));
+    await phone.locator('.lsh-annotation-popover-close').click();
+   }
+   await mobile.close();
+   assert.deepEqual(errors,[]);
+  }finally{await browser.close()}
+ });
+
 }
