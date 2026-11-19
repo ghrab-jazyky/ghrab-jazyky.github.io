@@ -17,7 +17,7 @@
   <button type="button" class="action" data-anno-toggle aria-pressed="false">Zapnout poznámky</button>
  </div>
  <div data-anno-controls hidden>
-  <p class="lsh-annotation-help">Označte část textu nebo otázky myší či prstem. Poznámky neovlivňují vyhodnocení.</p>
+  <p class="lsh-annotation-help">Vyberte nástroj a prstem označte slovo či pasáž. Na počítači můžete nejprve označit text. Anotace se nehodnotí.</p>
   <div class="lsh-annotation-buttons">
    <button type="button" class="action lsh-anno-yellow-btn" data-anno-color="yellow" aria-pressed="true">Žlutě</button>
    <button type="button" class="action lsh-anno-green-btn" data-anno-color="green" aria-pressed="false">Zeleně</button>
