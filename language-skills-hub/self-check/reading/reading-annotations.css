@@ -16,7 +16,7 @@
 .lsh-anno-yellow-btn{border-bottom:5px solid #f5dc64}
 .lsh-anno-green-btn{border-bottom:5px solid #8addab}
 .lsh-anno-pink-btn{border-bottom:5px solid #f5a1bd}
-.lsh-anno-blue-btn{border-bottom:5px solid #8bbaf8}
+.lsh-anno-blue-btn{border-bottom:5px solid #78e6f4}
 .lsh-annotation-buttons button[aria-pressed="true"]{outline:2px solid var(--accent);outline-offset:1px}
 [data-anno-note-box]{display:grid;grid-template-columns:1fr auto;gap:8px;margin:12px 0;align-items:end}
 [data-anno-note-box] label{grid-column:1/-1;font-size:.86rem;font-weight:700}
@@ -30,7 +30,9 @@
 ::highlight(lsh-anno-yellow){background-color:#f4d45b;color:#222}
 ::highlight(lsh-anno-green){background-color:#93e0af;color:#222}
 ::highlight(lsh-anno-pink){background-color:#f5a5be;color:#222}
-::highlight(lsh-anno-blue){background-color:#9cc8ff;color:#14283f}
+/* Cyan-blue contrasts with the dark navy Reading surface; foreground stays ink-dark. */
+::highlight(lsh-anno-blue){background-color:#78e6f4;color:#102a38}
+:root[data-theme="light"] ::highlight(lsh-anno-blue){background-color:#b1eaf5;color:#102a38}
 ::highlight(lsh-anno-underline){text-decoration:underline;text-decoration-thickness:2px;
  text-decoration-color:#e9ad24}
 ::highlight(lsh-anno-note){background-color:#b7bdf3;color:#202040;
