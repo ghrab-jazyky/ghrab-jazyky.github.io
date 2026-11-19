@@ -14,7 +14,6 @@
  host.innerHTML=`
  <div class="lsh-annotation-head">
   <strong>Poznámky k textu a otázkám</strong>
-  <button type="button" class="action" data-anno-toggle aria-pressed="false">Zapnout poznámky</button>
  </div>
  <div data-anno-controls hidden>
   <p class="lsh-annotation-help">Vyberte nástroj a prstem označte slovo či pasáž. Na počítači můžete nejprve označit text. Anotace se nehodnotí.</p>
@@ -22,6 +21,7 @@
    <button type="button" class="action lsh-anno-yellow-btn" data-anno-color="yellow" aria-pressed="true">Žlutě</button>
    <button type="button" class="action lsh-anno-green-btn" data-anno-color="green" aria-pressed="false">Zeleně</button>
    <button type="button" class="action lsh-anno-pink-btn" data-anno-color="pink" aria-pressed="false">Růžově</button>
+   <button type="button" class="action lsh-anno-blue-btn" data-anno-color="blue" aria-pressed="false">Modře</button>
    <button type="button" class="action" data-anno-underline>Podtrhnout</button>
    <button type="button" class="action" data-anno-start-note>Přidat poznámku</button>
   </div>
@@ -55,7 +55,7 @@
   catch(_){return []}
  }
  const api=engine.mount({
-  host,containers:[reader,tasks],
+  host,toggle:modeButton,containers:[reader,tasks],
   onChange:records=>{
    try{
     localStorage.setItem(storageKey(identity()),JSON.stringify(records));
