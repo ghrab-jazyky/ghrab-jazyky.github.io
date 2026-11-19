@@ -4,6 +4,7 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const root=path.resolve(__dirname,'..'),read=x=>fs.readFileSync(path.join(root,x),'utf8');
 const data=JSON.parse(read('data/cards.json')).entries;
 const version=JSON.parse(read('version.json'));
+const {integrityContent}=require('./reading-content-integrity.cjs');
 const MODEL=require('../assets/lsh/v3/model.js'),legacy=require('../assets/lsh/v3/legacy-reading-migration.js');
 const bridge=require('../assets/lsh/v3/card-bridge.js');
 test('R49: every one of 34 staged cards uses exactly one canonical vocabulary bridge',()=>{
@@ -11,7 +12,7 @@ test('R49: every one of 34 staged cards uses exactly one canonical vocabulary br
  assert.deepEqual(['konverzace','cteni','poslech'].map(skill=>data.filter(e=>e.skill===skill).length),[23,5,6]);
  for(const e of data){
   const html=read(e.relative);
-  assert.equal(crypto.createHash('sha256').update(html).digest('hex'),version.contentHashes[e.id],
+  assert.equal(crypto.createHash('sha256').update(integrityContent(e.id,html)).digest('hex'),version.contentHashes[e.id],
    'Content integrity broken '+e.id);
   if(e.skill==='konverzace'){
    assert.equal((html.match(/assets\/lsh\/v3\/card-bridge\.js/g)||[]).length,1,e.id);
