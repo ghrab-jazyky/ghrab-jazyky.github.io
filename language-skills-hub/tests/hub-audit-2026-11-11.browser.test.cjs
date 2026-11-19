@@ -21,7 +21,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   await withPage(engine,phone,async page=>{
    await page.goto(base+'?skill=cteni');
    await page.locator('#cards article').first().waitFor();
-   await page.locator('#cards article').first().locator('button.action').click();
+   await page.locator('#cards article').first().locator('button[aria-label^="Sdílet se studenty:"]').click();
    await page.locator('#qrCopy').click();
    await page.locator('#toast:not(.hidden)').waitFor();
    const onTop=await page.evaluate(()=>{
