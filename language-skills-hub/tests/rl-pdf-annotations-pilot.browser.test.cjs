@@ -222,13 +222,41 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      return {x:r.left+Math.min(4,r.width/2),y:r.top+r.height/2};
     },{selector,length:chosen.length});
     await page.mouse.move(point.x,point.y);
-    await page.locator('.lsh-annotation-popover:not([hidden])').waitFor({timeout:5000});
+    try{await page.locator('.lsh-annotation-popover:not([hidden])').waitFor({timeout:5000})}
+    catch(error){
+     const info=await page.evaluate(({x,y,selector})=>{
+     const hit=document.elementFromPoint(x,y),anchor=document.querySelector(selector);
+     const raw=localStorage.getItem('lsh-reading-practice-annotations-v1:rl-asteroids:en:B2');
+     return {hit:hit?.tagName+'#'+hit?.id+'.'+hit?.className,insideAnchor:anchor?.contains(hit),
+      anchor:anchor?.dataset.annotationAnchor,selected:window.getSelection()?.toString(),
+      collapsed:window.getSelection()?.isCollapsed,
+      mode:document.querySelector('.lsh-anno-header-toggle')?.getAttribute('aria-pressed'),
+      popup:document.querySelector('.lsh-annotation-popover')?.outerHTML.slice(0,400),
+      saved:raw?JSON.parse(raw).map(i=>({anchor:i.anchor,kind:i.kind,start:i.start,end:i.end,text:i.text,note:i.note.slice(0,25)})):[]
+     };
+    },{x:point.x,y:point.y,selector});
+     throw new Error('Hover note '+i+' did not open: '+JSON.stringify(info)+' / '+error.message);
+    }
     assert.ok((await page.locator('.lsh-annotation-popover-text').textContent()).includes('Pilot note '+i));
     assert.equal(await page.locator('.lsh-annotation-popover-text script').count(),0);
     await page.mouse.move(3,3);
     await page.locator('.lsh-annotation-popover').waitFor({state:'hidden'});
     await page.mouse.click(point.x,point.y);
-    await page.locator('.lsh-annotation-popover-pinned:not([hidden])').waitFor();
+    try{await page.locator('.lsh-annotation-popover-pinned:not([hidden])').waitFor({timeout:5000})}
+    catch(error){
+     const info=await page.evaluate(({x,y,selector})=>{
+     const hit=document.elementFromPoint(x,y),anchor=document.querySelector(selector);
+     const raw=localStorage.getItem('lsh-reading-practice-annotations-v1:rl-asteroids:en:B2');
+     return {hit:hit?.tagName+'#'+hit?.id+'.'+hit?.className,insideAnchor:anchor?.contains(hit),
+      anchor:anchor?.dataset.annotationAnchor,selected:window.getSelection()?.toString(),
+      collapsed:window.getSelection()?.isCollapsed,
+      mode:document.querySelector('.lsh-anno-header-toggle')?.getAttribute('aria-pressed'),
+      popup:document.querySelector('.lsh-annotation-popover')?.outerHTML.slice(0,400),
+      saved:raw?JSON.parse(raw).map(i=>({anchor:i.anchor,kind:i.kind,start:i.start,end:i.end,text:i.text,note:i.note.slice(0,25)})):[]
+     };
+    },{x:point.x,y:point.y,selector});
+     throw new Error('Click note '+i+' did not pin: '+JSON.stringify(info)+' / '+error.message);
+    }
     await page.keyboard.press('Escape');
     await page.locator('.lsh-annotation-popover').waitFor({state:'hidden'});
    }
