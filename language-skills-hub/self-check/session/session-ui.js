@@ -475,18 +475,7 @@
   },true);
   root.addEventListener('beforeprint',()=>lock('print-attempt'));
   document.addEventListener('contextmenu',event=>{
-   if(!active())return;
-   event.preventDefault();
-   // RL-02: an iPad long-press selects text and can emit contextmenu.
-   // Suppress the native menu, but do not lock while the user is annotating
-   // an actual Reading passage/question. Clipboard, print, leaving the page,
-   // fullscreen and all other incident guards remain unchanged.
-   const target=typeof event.target?.closest==='function'?event.target:event.target?.parentElement;
-   const annotationActive=!!document.querySelector?.('#readingAnnotationTools.lsh-anno-enabled');
-   const onReadingText=!!target?.closest?.(
-    '#readingParagraphs [data-annotation-anchor],#questionList [data-annotation-anchor]');
-   if(annotationActive&&onReadingText)return;
-   lock('context-menu');
+   if(active()){event.preventDefault();lock('context-menu');}
   },true);
   root.addEventListener('pagehide',()=>{
    pageInactive=true;cancelUnlockRequest();
