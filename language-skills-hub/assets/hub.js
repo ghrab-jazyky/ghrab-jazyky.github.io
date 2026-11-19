@@ -152,9 +152,9 @@ function card(e){
  share.addEventListener('click',()=>openShare(e));
  actions.append(open,share);
  if(['cteni','poslech'].includes(e.skill)){
-  const key=one('a','action','ŘEŠENÍ');
+  const key=one('a','action','VÝSLEDKY');
   key.href=practiceKeyUrl(e);key.target='_blank';key.rel='noopener noreferrer';
-  key.setAttribute('aria-label','ŘEŠENÍ: učitelský klíč k procvičování – '+translation.title);
+  key.setAttribute('aria-label','VÝSLEDKY: učitelský klíč k procvičování – '+translation.title);
   key.title='Správná řešení procvičovacích úloh, nikoli výsledky žáků. Část úloh se opakuje i v místních testech. Veřejný podklad bez přihlášení.';
   actions.appendChild(key);
   if(e.id==='rl-asteroids'){
