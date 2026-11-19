@@ -11,7 +11,8 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    const page=await browser.newPage({viewport:{width:1200,height:900}});
    const errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.goto(base+'teacher.html?topic=rl-asteroids&lang=en&level=B2');
-   await page.locator('#printTestAll[href*="rl-asteroids"]').waitFor({timeout:30000});
+   await page.locator('#confirmTest').waitFor({timeout:30000});
+   assert.equal(await page.locator('#readingPrintSection').count(),0);
    for(const id of ['printPracticeText','printPracticeAll','printTestText','printTestAll'])
     assert.match(await page.locator('#'+id).getAttribute('href'),/print-page\.html\?|printouts\/rl-asteroids\/.*\.pdf/);
    const target=new URL('print-page.html?topic=rl-asteroids&lang=en&level=B2&mode=test&format=all',base);
@@ -44,7 +45,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    const errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.goto(base+'index.html?topic=rl-asteroids&lang=en&level=B2');
    await page.locator('#readingParagraphs p').first().waitFor({timeout:30000});
-   await page.locator('[data-anno-toggle]').click();
+   await page.locator('#readingAnnotationToggle').click();
    assert.equal(await page.locator('[data-anno-controls]').isVisible(),true);
    const result=await page.evaluate(()=>{
     const para=document.querySelector('#readingParagraphs p');
@@ -84,7 +85,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.goto('http://127.0.0.1:8765/language-skills-hub/cteni/asteroids/index.html?lang=en&level=B2');
    await page.locator('#readingAnnotationTools [data-anno-toggle]').waitFor({timeout:30000});
    assert.equal(await page.locator('#readingBody p[data-annotation-anchor]').count()>0,true);
-   await page.locator('#readingAnnotationTools [data-anno-toggle]').click();
+   await page.locator('.lsh-anno-header-toggle').click();
    const selection=await page.evaluate(()=>{
     const p=document.querySelector('#readingBody p');
     const walker=document.createTreeWalker(p,NodeFilter.SHOW_TEXT);
@@ -110,7 +111,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.locator('#levels [data-level="B2"]').click();
    assert.equal(await page.locator('#readingAnnotationTools .lsh-annotation-item').count(),1);
    await page.reload();
-   await page.locator('#readingAnnotationTools [data-anno-toggle]').waitFor();
+   await page.locator('.lsh-anno-header-toggle').waitFor();
    await page.locator('#readingAnnotationTools [data-anno-toggle]').click();
    assert.equal(await page.locator('#readingAnnotationTools .lsh-annotation-item').count(),1);
    assert.ok(resizeObserverWarnings.length<=1,
