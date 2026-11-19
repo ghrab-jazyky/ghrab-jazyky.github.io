@@ -226,18 +226,18 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     assert.ok((await page.locator('.lsh-annotation-popover-text').textContent()).includes('Pilot note '+i));
     assert.equal(await page.locator('.lsh-annotation-popover-text script').count(),0);
     await page.mouse.move(3,3);
-    await page.locator('.lsh-annotation-popover[hidden]').waitFor();
+    await page.locator('.lsh-annotation-popover').waitFor({state:'hidden'});
     await page.mouse.click(point.x,point.y);
     await page.locator('.lsh-annotation-popover-pinned:not([hidden])').waitFor();
     await page.keyboard.press('Escape');
-    await page.locator('.lsh-annotation-popover[hidden]').waitFor();
+    await page.locator('.lsh-annotation-popover').waitFor({state:'hidden'});
    }
    const saved=await page.evaluate(key=>localStorage.getItem(key),noteKey);
    assert.ok(saved&&JSON.parse(saved).filter(x=>x.kind==='note').length===3);
    await page.locator('.lsh-annotation-view-note').first().click();
    await page.locator('.lsh-annotation-popover-pinned:not([hidden])').waitFor();
    await page.locator('.lsh-annotation-popover-close').click();
-   await page.locator('.lsh-annotation-popover[hidden]').waitFor();
+   await page.locator('.lsh-annotation-popover').waitFor({state:'hidden'});
    await desktop.close();
    const mobile=await browser.newContext({
     viewport:{width:390,height:844},isMobile:true,hasTouch:true
