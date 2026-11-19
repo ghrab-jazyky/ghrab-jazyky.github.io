@@ -472,6 +472,25 @@
    }
    if(new URLSearchParams(location.search).has('timer')&&!window.LSHSessionUI)
     throw new Error('Timed test engine is unavailable.');
+   // RL-02: scope the iPad long-press exception to Reading's annotation tools.
+   // Register BEFORE LSHSessionUI.mount() so the shared guard remains immutable.
+   // Native menus are suppressed only for actively annotated text / note input;
+   // right-click elsewhere, clipboard, leaving the page, etc. remain guarded.
+   if(search.has('timer')){
+    document.addEventListener('contextmenu',event=>{
+     const toolbar=$('readingAnnotationTools');
+     if(!annotationAPI||!toolbar?.classList.contains('lsh-anno-enabled')||
+        submitted||timedUI?.status().phase!=='running')return;
+     const target=typeof event.target?.closest==='function'?
+      event.target:event.target?.parentElement;
+     if(target?.closest?.('#readingParagraphs [data-annotation-anchor],'+
+        '#questionList [data-annotation-anchor],'+
+        '#readingAnnotationTools [data-anno-note]')){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+     }
+    },true);
+   }
    timedUI=window.LSHSessionUI?.mount({
     skill:'reading',topic:selected.topic,lang:selected.lang,level:selected.level,
     workspace:$('workspace'),
