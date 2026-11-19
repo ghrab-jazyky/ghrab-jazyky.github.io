@@ -4,6 +4,7 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const catalog=JSON.parse(read('data/cards.json')),version=JSON.parse(read('version.json'));
 const reading=require('../self-check/reading/reading-core.js');
+const {integrityContent}=require('./reading-content-integrity.cjs');
 const entries=catalog.entries.filter(x=>x.skill==='cteni');
 test('R56: all 120 source variants exist and contain objective tasks',()=>{
  assert.equal(entries.length,5);
@@ -13,7 +14,7 @@ test('R56: all 120 source variants exist and contain objective tasks',()=>{
   assert.equal(entry.languages.length,4);
   assert.equal(entry.levels.length,6);
   const html=read(entry.relative);
-  assert.equal(crypto.createHash('sha256').update(html).digest('hex'),version.contentHashes[entry.id],entry.id+' source drift');
+  assert.equal(crypto.createHash('sha256').update(integrityContent(entry.id,html)).digest('hex'),version.contentHashes[entry.id],entry.id+' source drift');
   const data=reading.parseReadingData(html);
   for(const lang of entry.languages)for(const level of entry.levels){
    const variant=reading.variantFromData(data,lang,level);
