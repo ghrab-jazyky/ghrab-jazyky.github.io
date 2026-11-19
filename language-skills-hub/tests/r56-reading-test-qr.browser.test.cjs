@@ -35,6 +35,10 @@ for(const [engineName,engine] of engines){
    const setup=new URL('self-check/reading/teacher.html',base);
    setup.searchParams.set('topic',entries[0].id);
    setup.searchParams.set('lang','en');setup.searchParams.set('level','A1');
+   // Production teacher TEST panels remain intentionally hidden from colleagues.
+   // Use the existing local, UI-only preview switch in this isolated QA browser
+   // context; this does not unlock tests for any real users.
+   if(live)setup.hash='lsh-test-preview=on';
    assert.equal((await teacher.goto(setup.href,{waitUntil:'domcontentloaded',timeout:45000})).status(),200);
    // During a staged rollout, production may still have the legacy auto-QR UI.
    // Retain live verification without confusing its old contract with the candidate.
