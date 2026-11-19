@@ -14,14 +14,14 @@
  host.innerHTML=`
  <div class="lsh-annotation-head">
   <strong>Poznámky k textu a otázkám</strong>
-  <button type="button" class="action" data-anno-toggle aria-pressed="false">Zapnout poznámky</button>
  </div>
  <div data-anno-controls hidden>
-  <p class="lsh-annotation-help">Označte část textu nebo otázky myší či prstem. Poznámky neovlivňují vyhodnocení.</p>
+  <p class="lsh-annotation-help">Vyberte nástroj a prstem označte slovo či pasáž. Uložené poznámky otevřete klepnutím nebo najetím myší. Na počítači lze nejprve označit text. Anotace se nehodnotí.</p>
   <div class="lsh-annotation-buttons">
    <button type="button" class="action lsh-anno-yellow-btn" data-anno-color="yellow" aria-pressed="true">Žlutě</button>
    <button type="button" class="action lsh-anno-green-btn" data-anno-color="green" aria-pressed="false">Zeleně</button>
    <button type="button" class="action lsh-anno-pink-btn" data-anno-color="pink" aria-pressed="false">Růžově</button>
+   <button type="button" class="action lsh-anno-blue-btn" data-anno-color="blue" aria-pressed="false">Modře</button>
    <button type="button" class="action" data-anno-underline>Podtrhnout</button>
    <button type="button" class="action" data-anno-start-note>Přidat poznámku</button>
   </div>
@@ -34,6 +34,16 @@
  </div>
  <p class="lsh-annotation-status" data-anno-status role="status" aria-live="polite"></p>`;
  prep.insertAdjacentElement('afterend',host);
+ // Prefer the same header row as the existing dictionary and theme controls.
+ const modeButton=root.createElement('button');
+ modeButton.type='button';modeButton.className='lsh-anno-header-toggle';
+ modeButton.textContent='Zapnout poznámky';modeButton.setAttribute('aria-pressed','false');
+ modeButton.setAttribute('aria-controls','readingAnnotationTools');
+ const controls=[...root.querySelectorAll('button')];
+ const neighbor=controls.find(button=>/dictionary|slovník|night mode|day mode|dark mode|light mode/i.test(
+  [button.textContent,button.getAttribute('aria-label')].join(' ')));
+ const target=neighbor?.parentElement||root.querySelector('.topbar')||prep;
+ target.appendChild(modeButton);
  const storageKey=identity=>'lsh-reading-practice-annotations-v1:rl-asteroids:'+identity;
  const slug=value=>String(value).replace(/[^a-z0-9:_-]/gi,'_').slice(0,100);
  let currentIdentity=null;
@@ -45,7 +55,7 @@
   catch(_){return []}
  }
  const api=engine.mount({
-  host,containers:[reader,tasks],
+  host,toggle:modeButton,containers:[reader,tasks],
   onChange:records=>{
    try{
     localStorage.setItem(storageKey(identity()),JSON.stringify(records));

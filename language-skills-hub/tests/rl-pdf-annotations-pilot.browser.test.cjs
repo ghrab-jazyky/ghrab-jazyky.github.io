@@ -11,9 +11,15 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    const page=await browser.newPage({viewport:{width:1200,height:900}});
    const errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.goto(base+'teacher.html?topic=rl-asteroids&lang=en&level=B2');
-   await page.locator('#printTestAll[href*="rl-asteroids"]').waitFor({timeout:30000});
-   for(const id of ['printPracticeText','printPracticeAll','printTestText','printTestAll'])
-    assert.match(await page.locator('#'+id).getAttribute('href'),/print-page\.html\?|printouts\/rl-asteroids\/.*\.pdf/);
+   await page.locator('#confirmTest').waitFor({timeout:30000});
+   assert.equal(await page.locator('#readingPrintSection').count(),0);
+   await page.goto('http://127.0.0.1:8765/language-skills-hub/index.html?skill=cteni');
+   const materials=page.locator('[data-topic-id="rl-asteroids"] button').filter({hasText:'Materiály PDF'});
+   await materials.waitFor({timeout:30000});
+   await materials.click();
+   await page.locator('#materialsDialog[open]').waitFor();
+   for(const id of ['materialsPracticeText','materialsPracticeAll','materialsTestText','materialsTestAll'])
+    assert.ok((await page.locator('#'+id).getAttribute('href'))?.includes('rl-asteroids'));
    const target=new URL('print-page.html?topic=rl-asteroids&lang=en&level=B2&mode=test&format=all',base);
    await page.goto(target.href);
    await page.locator('#printButton:not([disabled])').waitFor({timeout:30000});
@@ -44,7 +50,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    const errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.goto(base+'index.html?topic=rl-asteroids&lang=en&level=B2');
    await page.locator('#readingParagraphs p').first().waitFor({timeout:30000});
-   await page.locator('[data-anno-toggle]').click();
+   await page.locator('#readingAnnotationToggle').click();
    assert.equal(await page.locator('[data-anno-controls]').isVisible(),true);
    const result=await page.evaluate(()=>{
     const para=document.querySelector('#readingParagraphs p');
@@ -60,9 +66,9 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.locator('[data-anno-color="yellow"]').click();
    assert.equal(await page.locator('.lsh-annotation-item').count(),1);
    assert.equal(await page.locator('#counter').textContent().then(t=>t.trim().startsWith('0 /')),true);
-   await page.locator('[data-anno-toggle]').click();
+   await page.locator('#readingAnnotationToggle').click();
    assert.equal(await page.locator('[data-anno-controls]').isVisible(),false);
-   await page.locator('[data-anno-toggle]').click();
+   await page.locator('#readingAnnotationToggle').click();
    assert.equal(await page.locator('.lsh-annotation-item').count(),1);
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
@@ -82,9 +88,9 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     errors.push(e.message);
    });
    await page.goto('http://127.0.0.1:8765/language-skills-hub/cteni/asteroids/index.html?lang=en&level=B2');
-   await page.locator('#readingAnnotationTools [data-anno-toggle]').waitFor({timeout:30000});
+   await page.locator('.lsh-anno-header-toggle').waitFor({timeout:30000});
    assert.equal(await page.locator('#readingBody p[data-annotation-anchor]').count()>0,true);
-   await page.locator('#readingAnnotationTools [data-anno-toggle]').click();
+   await page.locator('.lsh-anno-header-toggle').click();
    const selection=await page.evaluate(()=>{
     const p=document.querySelector('#readingBody p');
     const walker=document.createTreeWalker(p,NodeFilter.SHOW_TEXT);
@@ -110,8 +116,8 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.locator('#levels [data-level="B2"]').click();
    assert.equal(await page.locator('#readingAnnotationTools .lsh-annotation-item').count(),1);
    await page.reload();
-   await page.locator('#readingAnnotationTools [data-anno-toggle]').waitFor();
-   await page.locator('#readingAnnotationTools [data-anno-toggle]').click();
+   await page.locator('.lsh-anno-header-toggle').waitFor();
+   await page.locator('.lsh-anno-header-toggle').click();
    assert.equal(await page.locator('#readingAnnotationTools .lsh-annotation-item').count(),1);
    assert.ok(resizeObserverWarnings.length<=1,
     'Repeated ResizeObserver warnings may indicate a genuine layout loop');
@@ -129,7 +135,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.goto(base+'index.html?topic=rl-asteroids&lang=en&level=B2&timer=5&attempt=rlannotationlock123');
    await page.locator('#sessionStart').click();
    await page.locator('#workspace:not([hidden])').waitFor({timeout:30000});
-   await page.locator('[data-anno-toggle]').click();
+   await page.locator('#readingAnnotationToggle').click();
    await page.evaluate(()=>{
     const p=document.querySelector('#readingParagraphs p');
     const t=[...p.childNodes].find(n=>n.nodeType===Node.TEXT_NODE&&n.textContent.length>12);
@@ -153,11 +159,159 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    for(const corner of ['tl','tr','bl','br'])
     await page.locator('.lsh-corner-'+corner).click();
    await page.locator('#sessionLock').waitFor({state:'hidden',timeout:10000});
-   await page.locator('[data-anno-toggle]').click();
+   await page.locator('#readingAnnotationToggle').click();
    assert.equal(await page.locator('[data-anno-controls]').isVisible(),true);
    await page.locator('body').evaluate(el=>
     el.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true})));
    await page.locator('#sessionLock').waitFor({state:'visible',timeout:10000});
+   assert.deepEqual(errors,[]);
+  }finally{await browser.close()}
+ });
+
+ test('RL-02 '+name+': Asteroids note previews on desktop hover and mobile tap, text and questions',
+ {timeout:120000},async()=>{
+  const browser=await engine.launch({headless:true});
+  const noteKey='lsh-reading-practice-annotations-v1:rl-asteroids:en:B2';
+  const url='http://127.0.0.1:8765/language-skills-hub/cteni/asteroids/index.html?lang=en&level=B2';
+  const selectors=[
+   '#readingBody p[data-annotation-anchor]',
+   '#questions .qcard h3[data-annotation-anchor]',
+   '#questions .choices .choice span[data-annotation-anchor]'
+  ];
+  const errors=[];
+  const recordError=error=>{
+   if(name==='WebKit'&&error.message==='ResizeObserver loop completed with undelivered notifications.')return;
+   errors.push(error.message);
+  };
+  try{
+   const desktop=await browser.newContext({viewport:{width:1110,height:880}});
+   const page=await desktop.newPage();
+   page.on('pageerror',recordError);
+   await page.goto(url);
+   await page.locator('.lsh-anno-header-toggle').waitFor({timeout:30000});
+   await page.locator('.lsh-anno-header-toggle').click();
+   assert.equal(await page.locator('[data-anno-color="blue"]').count(),1);
+   for(let i=0;i<selectors.length;i++){
+    const selector=selectors[i];
+    const target=page.locator(selector).first();
+    await target.scrollIntoViewIfNeeded();
+    const chosen=await page.evaluate(selector=>{
+     const el=document.querySelector(selector);
+     const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
+     let node;
+     while((node=walker.nextNode())&&!node.textContent.trim()){}
+     if(!node||node.textContent.trim().length<3)throw new Error('No selectable note text: '+selector);
+     const start=node.textContent.search(/\S/),end=Math.min(node.textContent.length,start+8);
+     const range=document.createRange();range.setStart(node,start);range.setEnd(node,end);
+     const selection=getSelection();selection.removeAllRanges();selection.addRange(range);
+     el.dispatchEvent(new PointerEvent('pointerup',{bubbles:true}));
+     return range.toString();
+    },selector);
+    await page.waitForTimeout(90);
+    await page.locator('[data-anno-start-note]').click();
+    await page.locator('[data-anno-note]').fill('Pilot note '+i+' <script>alert(1)</script>');
+    await page.locator('[data-anno-save-note]').click();
+    assert.equal(await page.locator('.lsh-annotation-item').count(),i+1);
+    await target.scrollIntoViewIfNeeded();
+    const point=await page.evaluate(({selector,length})=>{
+     const el=document.querySelector(selector),walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
+     let node;while((node=walker.nextNode())&&!node.textContent.trim()){}
+     const start=node.textContent.search(/\S/);
+     const range=document.createRange();range.setStart(node,start);range.setEnd(node,start+length);
+     const r=range.getClientRects()[0];
+     return {x:r.left+Math.min(4,r.width/2),y:r.top+r.height/2};
+    },{selector,length:chosen.length});
+    await page.mouse.move(point.x,point.y);
+    try{await page.locator('.lsh-annotation-popover:not([hidden])').waitFor({timeout:5000})}
+    catch(error){
+     const info=await page.evaluate(({x,y,selector})=>{
+     const hit=document.elementFromPoint(x,y),anchor=document.querySelector(selector);
+     const raw=localStorage.getItem('lsh-reading-practice-annotations-v1:rl-asteroids:en:B2');
+     return {hit:hit?.tagName+'#'+hit?.id+'.'+hit?.className,insideAnchor:anchor?.contains(hit),
+      anchor:anchor?.dataset.annotationAnchor,selected:window.getSelection()?.toString(),
+      collapsed:window.getSelection()?.isCollapsed,
+      mode:document.querySelector('.lsh-anno-header-toggle')?.getAttribute('aria-pressed'),
+      popup:document.querySelector('.lsh-annotation-popover')?.outerHTML.slice(0,400),
+      saved:raw?JSON.parse(raw).map(i=>({anchor:i.anchor,kind:i.kind,start:i.start,end:i.end,text:i.text,note:i.note.slice(0,25)})):[]
+     };
+    },{x:point.x,y:point.y,selector});
+     throw new Error('Hover note '+i+' did not open: '+JSON.stringify(info)+' / '+error.message);
+    }
+    assert.ok((await page.locator('.lsh-annotation-popover-text').textContent()).includes('Pilot note '+i));
+    assert.equal(await page.locator('.lsh-annotation-popover-text script').count(),0);
+    await page.mouse.move(3,3);
+    await page.locator('.lsh-annotation-popover').waitFor({state:'hidden'});
+    await page.mouse.click(point.x,point.y);
+    try{await page.locator('.lsh-annotation-popover-pinned:not([hidden])').waitFor({timeout:5000})}
+    catch(error){
+     const info=await page.evaluate(({x,y,selector})=>{
+     const hit=document.elementFromPoint(x,y),anchor=document.querySelector(selector);
+     const raw=localStorage.getItem('lsh-reading-practice-annotations-v1:rl-asteroids:en:B2');
+     return {hit:hit?.tagName+'#'+hit?.id+'.'+hit?.className,insideAnchor:anchor?.contains(hit),
+      anchor:anchor?.dataset.annotationAnchor,selected:window.getSelection()?.toString(),
+      collapsed:window.getSelection()?.isCollapsed,
+      mode:document.querySelector('.lsh-anno-header-toggle')?.getAttribute('aria-pressed'),
+      popup:document.querySelector('.lsh-annotation-popover')?.outerHTML.slice(0,400),
+      saved:raw?JSON.parse(raw).map(i=>({anchor:i.anchor,kind:i.kind,start:i.start,end:i.end,text:i.text,note:i.note.slice(0,25)})):[]
+     };
+    },{x:point.x,y:point.y,selector});
+     throw new Error('Click note '+i+' did not pin: '+JSON.stringify(info)+' / '+error.message);
+    }
+    await page.keyboard.press('Escape');
+    await page.locator('.lsh-annotation-popover').waitFor({state:'hidden'});
+   }
+   const saved=await page.evaluate(key=>localStorage.getItem(key),noteKey);
+   assert.ok(saved&&JSON.parse(saved).filter(x=>x.kind==='note').length===3);
+   await page.locator('.lsh-annotation-view-note').first().click();
+   await page.locator('.lsh-annotation-popover-pinned:not([hidden])').waitFor();
+   await page.locator('.lsh-annotation-popover-close').click();
+   await page.locator('.lsh-annotation-popover').waitFor({state:'hidden'});
+   await desktop.close();
+   const mobile=await browser.newContext({
+    viewport:{width:390,height:844},isMobile:true,hasTouch:true
+   });
+   const phone=await mobile.newPage();phone.on('pageerror',recordError);
+   await phone.goto(url);
+   await phone.evaluate(({key,saved})=>localStorage.setItem(key,saved),{key:noteKey,saved});
+   await phone.reload();
+   await phone.locator('.lsh-anno-header-toggle').click();
+   assert.equal(await phone.locator('.lsh-annotation-item').count(),3);
+   for(let i=0;i<selectors.length;i++){
+    const target=phone.locator(selectors[i]).first();
+    await target.scrollIntoViewIfNeeded();
+    const point=await phone.evaluate(({selector,i})=>{
+     const anchor=document.querySelector(selector);
+     const note=JSON.parse(localStorage.getItem('lsh-reading-practice-annotations-v1:rl-asteroids:en:B2'))
+      .filter(x=>x.kind==='note')[i];
+     const walker=document.createTreeWalker(anchor,NodeFilter.SHOW_TEXT);
+     let node,position=0,start=null,end=null;
+     while((node=walker.nextNode())){
+      const next=position+node.textContent.length;
+      if(!start&&note.start>=position&&note.start<=next)start={node,at:note.start-position};
+      if(start&&note.end>=position&&note.end<=next){end={node,at:note.end-position};break;}
+      position=next;
+     }
+     if(!start||!end)throw new Error('Missing note range');
+     const range=document.createRange();range.setStart(start.node,start.at);range.setEnd(end.node,end.at);
+     const rect=range.getClientRects()[0];
+     return {x:rect.left+Math.min(3,rect.width/2),y:rect.top+rect.height/2};
+    },{selector:selectors[i],i});
+    await phone.touchscreen.tap(point.x,point.y);
+    try{await phone.locator('.lsh-annotation-popover-pinned:not([hidden])').waitFor({timeout:5000})}
+    catch(error){
+     const info=await phone.evaluate(({selector,point})=>{
+      const hit=document.elementFromPoint(point.x,point.y),sel=getSelection();
+      return {hit:hit?.tagName+'.'+hit?.className,anchor:document.querySelector(selector)?.dataset.annotationAnchor,
+       isInside:document.querySelector(selector)?.contains(hit),selection:sel?.toString(),collapsed:sel?.isCollapsed,
+       mode:document.querySelector('.lsh-anno-header-toggle')?.getAttribute('aria-pressed'),
+       popup:document.querySelector('.lsh-annotation-popover')?.outerHTML.slice(0,550)};
+     },{selector:selectors[i],point});
+     throw new Error('Mobile note '+i+' did not open: '+JSON.stringify(info)+' / '+error.message);
+    }
+    assert.ok((await phone.locator('.lsh-annotation-popover-text').textContent()).includes('Pilot note '+i));
+    await phone.locator('.lsh-annotation-popover-close').click();
+   }
+   await mobile.close();
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
  });

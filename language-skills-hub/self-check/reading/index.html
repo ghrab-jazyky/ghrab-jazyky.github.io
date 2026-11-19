@@ -31,6 +31,7 @@
   <div class="topactions">
    <span id="modeTag" class="mode">LOCAL GRADE 1–5 · TEACHER REVIEW</span>
    <button id="themeButton" type="button" class="action ghost" aria-pressed="false">☀ Light mode</button>
+   <button type="button" class="action ghost lsh-anno-header-toggle" id="readingAnnotationToggle" aria-controls="readingAnnotationTools" aria-pressed="false">Zapnout poznámky</button>
   </div>
  </header>
  <main class="container" id="app">
@@ -45,14 +46,15 @@
    <section class="lsh-annotation-toolbar" id="readingAnnotationTools" aria-label="Reading annotation tools">
     <div class="lsh-annotation-head">
      <strong>Poznámky k textu a otázkám</strong>
-     <button type="button" class="action" data-anno-toggle aria-pressed="false">Zapnout poznámky</button>
+
     </div>
     <div data-anno-controls hidden>
-     <p class="lsh-annotation-help">Označte část textu myší nebo prstem, pak zvolte zvýraznění, podtržení či poznámku. Nejde o hodnocené odpovědi.</p>
+     <p class="lsh-annotation-help">Vyberte nástroj a prstem označte slovo nebo pasáž. Poznámku zobrazíte klepnutím, na počítači i najetím myší. Nejde o hodnocené odpovědi.</p>
      <div class="lsh-annotation-buttons">
       <button type="button" class="action lsh-anno-yellow-btn" data-anno-color="yellow" aria-pressed="true">Žlutě</button>
       <button type="button" class="action lsh-anno-green-btn" data-anno-color="green" aria-pressed="false">Zeleně</button>
       <button type="button" class="action lsh-anno-pink-btn" data-anno-color="pink" aria-pressed="false">Růžově</button>
+      <button type="button" class="action lsh-anno-blue-btn" data-anno-color="blue" aria-pressed="false">Modře</button>
       <button type="button" class="action" data-anno-underline>Podtrhnout</button>
       <button type="button" class="action" data-anno-start-note>Přidat poznámku</button>
      </div>

@@ -57,7 +57,25 @@ test('RL-02: does not change reading score implementation',()=>{
 test('RL-PDF: teacher buttons are absent from student test UI',()=>{
  const teacher=fs.readFileSync(path.join(root,'self-check/reading/teacher.html'),'utf8');
  const student=fs.readFileSync(path.join(root,'self-check/reading/index.html'),'utf8');
- assert.match(teacher,/id="printPracticeText"/);
- assert.match(teacher,/id="printTestAll"/);
+ const catalog=fs.readFileSync(path.join(root,'index.html'),'utf8');
+ assert.match(catalog,/id="materialsPracticeText"/);
+ assert.match(catalog,/id="materialsTestAll"/);
+ assert.doesNotMatch(teacher,/id="readingPrintSection"/);
+ assert.deepEqual(annotations.COLORS,['yellow','green','pink','blue']);
  assert.doesNotMatch(student,/id="printPracticeText"|id="printTestAll"/);
+});
+
+test('RL-02: saved note popovers are read-only and stay outside scoring logic',()=>{
+ const engine=fs.readFileSync(path.join(root,'self-check/reading/reading-annotations.js'),'utf8');
+ const css=fs.readFileSync(path.join(root,'self-check/reading/reading-annotations.css'),'utf8');
+ const practice=fs.readFileSync(path.join(root,'self-check/reading/reading-practice-annotations.js'),'utf8');
+ assert.match(engine,/function noteAtPoint\(/);
+ assert.match(engine,/pointermove/);
+ assert.match(engine,/lsh-annotation-view-note/);
+ assert.match(engine,/popupText\.textContent=item\.note/);
+ assert.match(engine,/addEventListener\('click',event=>/);
+ assert.match(css,/\.lsh-annotation-popover-pinned/);
+ assert.match(practice,/toggle:modeButton/);
+ assert.match(practice,/data-anno-color="blue"/);
+ assert.doesNotMatch(practice,/data-anno-toggle/);
 });

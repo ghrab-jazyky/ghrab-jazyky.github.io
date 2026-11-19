@@ -454,7 +454,7 @@
    if(window.LSHReadingAnnotations){
     try{
      annotationAPI=window.LSHReadingAnnotations.mount({
-      host:$('readingAnnotationTools'),
+      host:$('readingAnnotationTools'),toggle:$('readingAnnotationToggle'),
       containers:[$('readingParagraphs'),$('questionList')],
       canEdit:()=>!submitted&&(!timedUI||timedUI.status().phase==='running'),
       onChange:annotations=>{

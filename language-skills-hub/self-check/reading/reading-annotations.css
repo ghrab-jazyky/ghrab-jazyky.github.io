@@ -16,6 +16,7 @@
 .lsh-anno-yellow-btn{border-bottom:5px solid #f5dc64}
 .lsh-anno-green-btn{border-bottom:5px solid #8addab}
 .lsh-anno-pink-btn{border-bottom:5px solid #f5a1bd}
+.lsh-anno-blue-btn{border-bottom:5px solid #78e6f4}
 .lsh-annotation-buttons button[aria-pressed="true"]{outline:2px solid var(--accent);outline-offset:1px}
 [data-anno-note-box]{display:grid;grid-template-columns:1fr auto;gap:8px;margin:12px 0;align-items:end}
 [data-anno-note-box] label{grid-column:1/-1;font-size:.86rem;font-weight:700}
@@ -29,6 +30,9 @@
 ::highlight(lsh-anno-yellow){background-color:#f4d45b;color:#222}
 ::highlight(lsh-anno-green){background-color:#93e0af;color:#222}
 ::highlight(lsh-anno-pink){background-color:#f5a5be;color:#222}
+/* Cyan-blue contrasts with the dark navy Reading surface; foreground stays ink-dark. */
+::highlight(lsh-anno-blue){background-color:#78e6f4;color:#102a38}
+:root[data-theme="light"] ::highlight(lsh-anno-blue){background-color:#b1eaf5;color:#102a38}
 ::highlight(lsh-anno-underline){text-decoration:underline;text-decoration-thickness:2px;
  text-decoration-color:#e9ad24}
 ::highlight(lsh-anno-note){background-color:#b7bdf3;color:#202040;
@@ -41,3 +45,34 @@
 
 .lsh-annotation-actions{display:inline-flex;flex:none;gap:6px;flex-wrap:wrap;justify-content:flex-end}
 @media(max-width:650px){.lsh-annotation-actions{justify-content:flex-start}}
+
+/* RL-UX: header switch stays in the existing responsive toolbar. */
+.lsh-anno-header-toggle{font:inherit;min-height:44px;padding:8px 12px;border-radius:10px;border:1px solid var(--border,var(--line,#708ca3));background:var(--panel2,#214365);color:var(--text,var(--fg,#fff));font-weight:700;cursor:pointer;white-space:normal}
+.lsh-anno-header-toggle[aria-pressed="true"]{outline:2px solid var(--accent,#70e6ec);outline-offset:1px}
+.lsh-annotation-toolbar:not(.lsh-anno-enabled){display:none!important}
+.lsh-annotation-toolbar [data-anno-controls][hidden],.lsh-annotation-toolbar [data-anno-note-box][hidden]{display:none!important}
+.lsh-annotation-toolbar .lsh-annotation-buttons{display:flex;flex-wrap:wrap;gap:8px}
+@media(max-width:650px){.lsh-anno-header-toggle{flex:0 1 auto;max-width:100%;font-size:.84rem}.lsh-annotation-toolbar .lsh-annotation-buttons button{flex:1 1 100px;min-width:0}}
+
+/* Saved note preview: CSS Highlight ranges cannot own DOM event handlers.
+   The JS hit-tests the underlying text and places this popover in the viewport. */
+.lsh-annotation-popover{
+ position:fixed;z-index:1200;box-sizing:border-box;
+ width:min(340px,calc(100vw - 20px));max-height:min(42vh,320px);
+ overflow:auto;padding:12px 14px;border-radius:12px;
+ border:1px solid var(--accent,#7ac7df);
+ box-shadow:0 12px 32px rgba(0,0,0,.38);
+ background:var(--panel,#12263c);
+ color:var(--text,var(--fg,#eef6ff));
+ font:inherit;line-height:1.4;pointer-events:none;
+}
+.lsh-annotation-popover[hidden],.lsh-annotation-popover-close[hidden]{display:none!important}
+.lsh-annotation-popover-pinned{pointer-events:auto}
+.lsh-annotation-popover-label{display:block;font-size:.86rem;margin-bottom:5px}
+.lsh-annotation-popover-quote{font-size:.78rem;opacity:.88;margin-bottom:8px;overflow-wrap:anywhere}
+.lsh-annotation-popover-text{font-size:.95rem;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.lsh-annotation-popover-close{display:block;margin-top:12px;border:1px solid currentColor;
+ border-radius:8px;background:transparent;color:inherit;padding:8px 12px;
+ min-height:42px;cursor:pointer;font:inherit}
+.lsh-annotation-popover-close:focus-visible{outline:3px solid var(--accent,#78e6f4);outline-offset:2px}
+@media print{.lsh-annotation-popover{display:none!important}}

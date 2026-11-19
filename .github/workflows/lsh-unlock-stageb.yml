@@ -22,8 +22,11 @@ concurrency:
 
 jobs:
   stageb:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.ref == 'feat/lsh-unlock-gestures-v124'
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.ref == 'feat/lsh-unlock-gestures-v124' || github.event.pull_request.number == 128
     runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
     timeout-minutes: 45
     steps:
       - name: Checkout exact candidate
@@ -32,10 +35,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: Install browser test dependencies
-        run: npm install --no-save --no-package-lock playwright@1.56.1 jsqr@1.4.0 pngjs@7.0.0
-      - name: Install Chromium and WebKit
-        run: npx playwright install --with-deps chromium webkit
+      # Match the already-certified teacher gesture workflow: browsers and
+      # OS libraries ship inside Playwright's pinned official runner image.
+      - name: Install matching Playwright JS bindings
+        timeout-minutes: 8
+        run: npm install --no-save --no-package-lock --ignore-scripts playwright@1.56.1 jsqr@1.4.0 pngjs@7.0.0
       - name: T1 deterministic unit tests and 250k random sequences
         run: node --test language-skills-hub/tests/lsh-unlock-gestures.test.cjs language-skills-hub/tests/lsh-unlock-fuzz-t1.test.cjs
       - name: C deterministic timing, geometry and pointer-capture boundary tests
