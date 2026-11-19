@@ -142,7 +142,14 @@
    showNote(index,rect.left,rect.bottom,true,button);
   }
   function paint(){
-   hideNote();
+   // The card may repaint while the cursor is over the note. Preserve a
+   // preview when its original anchored text still exists after the repaint.
+   if(popupIndex>=0){
+    const active=items[popupIndex],anchor=active&&getAnchor(active.anchor);
+    const range=active&&anchor&&bounds(anchor,active.start,active.end);
+    if(!enabled||!active||active.kind!=='note'||!range||
+       range.toString()!==active.text)hideNote();
+   }
    const groups=Object.fromEntries(highlightKeys.map(key=>[key,[]]));
    for(const item of items){
     const target=getAnchor(item.anchor);
@@ -171,7 +178,8 @@
     remove.setAttribute('aria-label','Smazat anotaci '+(index+1));
     remove.addEventListener('click',()=>{
      if(hasLocked())return;
-     items.splice(index,1);paint();setStatus(save()?'Anotace odstraněna.':'Anotaci nelze trvale uložit.');
+     hideNote();items.splice(index,1);paint();
+     setStatus(save()?'Anotace odstraněna.':'Anotaci nelze trvale uložit.');
     });
     const actions=document.createElement('span');actions.className='lsh-annotation-actions';
     if(item.kind==='note'){
@@ -194,7 +202,7 @@
      }
      if(item.kind==='underline'){item.kind='highlight';item.color=color;}
      else item.color=COLORS[(COLORS.indexOf(item.color)+1)%COLORS.length];
-     paint();setStatus(save()?'Anotace upravena.':'Anotaci nelze trvale uložit.');
+     hideNote();paint();setStatus(save()?'Anotace upravena.':'Anotaci nelze trvale uložit.');
     });
     actions.append(edit,remove);row.append(description,actions);list.appendChild(row);
    });
@@ -224,7 +232,7 @@
    if(kind==='note'&&!note.trim()){setStatus('Napište poznámku.');return;}
    const item={...selected,kind,color,note:note.slice(0,MAX_NOTE)};
    items.push(item);clearSelection();root.getSelection?.()?.removeAllRanges();
-   paint();setStatus(save()?'Anotace uložena.':'Anotaci nelze trvale uložit.');
+   hideNote();paint();setStatus(save()?'Anotace uložena.':'Anotaci nelze trvale uložit.');
   }
   function setModeButton(button,kind){
    armed=kind;
@@ -281,7 +289,7 @@
    if(!content){setStatus('Napište poznámku.');return;}
    if(editingIndex!==null&&items[editingIndex]?.kind==='note'){
     items[editingIndex].note=content.slice(0,MAX_NOTE);
-    paint();setStatus(save()?'Poznámka upravena.':'Poznámku nelze trvale uložit.');
+    hideNote();paint();setStatus(save()?'Poznámka upravena.':'Poznámku nelze trvale uložit.');
    }else{
     selected=noteDraft;if(!selected)return;
     add('note',content);
@@ -307,21 +315,32 @@
    container.addEventListener('pointerup',event=>{
     root.setTimeout(capture,0);
     if(event.pointerType==='touch')root.setTimeout(applyAfterTouch,260);
+    // Some mobile browsers suppress a click following touch. Use pointer
+    // release too, but never take over the native answer controls.
+    if(event.pointerType==='touch'||event.pointerType==='pen'){
+     const index=noteAtPoint(event.clientX,event.clientY,event.target);
+     if(index>=0&&root.getSelection?.()?.isCollapsed){
+      const x=event.clientX,y=event.clientY;
+      root.setTimeout(()=>{
+       if(enabled&&!hasLocked()&&root.getSelection?.()?.isCollapsed)showNote(index,x,y,true);
+      },0);
+     }
+    }
    });
    container.addEventListener('keyup',capture);
    container.addEventListener('touchend',()=>root.setTimeout(applyAfterTouch,220),{passive:true});
   }
   // Desktop: passive hover preview. Touch/mouse click: pinned, dismissible note.
   // Never intercept answer controls or interfere with native text selection.
+  root.document.addEventListener('pointermove',event=>{
+   if(!enabled||hasLocked()||popupPinned||event.pointerType!=='mouse'||event.buttons)return;
+   if(root.getSelection?.()&&!root.getSelection().isCollapsed){hideNote();return}
+   const index=noteAtPoint(event.clientX,event.clientY,event.target);
+   if(index<0){hideNote();return}
+   showNote(index,event.clientX,event.clientY);
+  });
+  root.document.addEventListener('pointerleave',()=>{if(!popupPinned)hideNote()},true);
   for(const container of containers){
-   container.addEventListener('pointermove',event=>{
-    if(!enabled||hasLocked()||popupPinned||event.pointerType!=='mouse'||event.buttons)return;
-    if(root.getSelection?.()&&!root.getSelection().isCollapsed){hideNote();return}
-    const index=noteAtPoint(event.clientX,event.clientY,event.target);
-    if(index<0){hideNote();return}
-    showNote(index,event.clientX,event.clientY);
-   });
-   container.addEventListener('pointerleave',()=>{if(!popupPinned)hideNote()});
    container.addEventListener('click',event=>{
     if(!enabled||hasLocked()||!root.getSelection?.()?.isCollapsed)return;
     const index=noteAtPoint(event.clientX,event.clientY,event.target);
