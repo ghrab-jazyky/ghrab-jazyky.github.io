@@ -5,11 +5,12 @@ const guide=require('../assets/lsh/v3/reading-skill-guides.js');
 const core=require('../self-check/reading/reading-core.js');
 const entries=require('../data/cards.json').entries.filter(x=>x.skill==='cteni');
 const version=JSON.parse(read('version.json'));
+const {integrityContent}=require('./reading-content-integrity.cjs');
 test('R54: source integrity and 120 unchanged Reading variants with 1800 questions',()=>{
  assert.equal(entries.length,5);let variants=0,questions=0;
  for(const entry of entries){
   const html=read(entry.relative);
-  assert.equal(crypto.createHash('sha256').update(html).digest('hex'),version.contentHashes[entry.id]);
+  assert.equal(crypto.createHash('sha256').update(integrityContent(entry.id,html)).digest('hex'),version.contentHashes[entry.id]);
   const data=core.parseReadingData(html);
   for(const lang of entry.languages)for(const level of entry.levels){
    const v=data[lang][level];variants++;questions+=v.questions.length;

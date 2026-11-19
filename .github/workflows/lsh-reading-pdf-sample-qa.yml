@@ -1,0 +1,40 @@
+name: LSH Reading printable PDF sample QA (NO DEPLOY)
+on:
+  push:
+    branches: ['feature/rl-pdf-annotations-pilot-20261118']
+    paths:
+      - '.github/workflows/lsh-reading-pdf-sample-qa.yml'
+      - 'language-skills-hub/printouts/rl-asteroids/**'
+permissions:
+  contents: read
+jobs:
+  sample:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preflight branded PDF sample files
+        run: |
+          set -eu
+          python3 - <<'PY'
+          import json,pathlib,hashlib
+          folder=pathlib.Path("language-skills-hub/printouts/rl-asteroids")
+          manifest=json.loads((folder/"manifest-all.json").read_text())
+          assert len(manifest["files"])==96
+          for item in manifest["files"]:
+              data=(pathlib.Path("language-skills-hub")/item["path"]).read_bytes()
+              assert data.startswith(b"%PDF"),item["path"]
+              assert len(data)==item["bytes"],item["path"]
+              assert hashlib.sha256(data).hexdigest()==item["sha256"],item["path"]
+          print("PASS: 96 PDFs match manifest and have valid PDF headers")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reading-asteroids-print-qa-samples
+          path: |
+            language-skills-hub/printouts/rl-asteroids/en/B2/practice-text.pdf
+            language-skills-hub/printouts/rl-asteroids/en/B2/practice-all.pdf
+            language-skills-hub/printouts/rl-asteroids/en/B2/test-text.pdf
+            language-skills-hub/printouts/rl-asteroids/en/B2/test-all.pdf
+            language-skills-hub/printouts/rl-asteroids/es/B2/practice-all.pdf
+          retention-days: 7

@@ -8,6 +8,7 @@ const core=require('../self-check/reading/reading-core.js');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const cards=JSON.parse(read('data/cards.json'));
 const version=JSON.parse(read('version.json'));
+const {integrityContent}=require('./reading-content-integrity.cjs');
 const reading=cards.entries.filter(x=>x.skill==='cteni');
 
 test('R23 public practice remains immutable: 30 cards, 666 variants, no graded tests',()=>{
@@ -19,7 +20,7 @@ test('R23 public practice remains immutable: 30 cards, 666 variants, no graded t
  assert.equal(count,702);
  for(const x of cards.entries){
   const bytes=fs.readFileSync(path.join(root,x.relative));
-  assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),
+  assert.equal(crypto.createHash('sha256').update(integrityContent(x.id,bytes)).digest('hex'),
    version.contentHashes[x.id],x.id+' mutated');
  }
 });

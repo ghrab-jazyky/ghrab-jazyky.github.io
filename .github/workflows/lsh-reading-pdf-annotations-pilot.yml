@@ -1,0 +1,51 @@
+name: LSH RL-PDF-01 RL-02 Asteroids pilot (NO DEPLOY)
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/self-check/reading/**'
+      - 'language-skills-hub/tests/rl-pdf-annotations-pilot*'
+      - '.github/workflows/lsh-reading-pdf-annotations-pilot.yml'
+  push:
+    branches: ['feature/rl-pdf-annotations-pilot-20261118']
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Syntax and unit contracts
+        run: |
+          node --check language-skills-hub/self-check/reading/print-core.js
+          node --check language-skills-hub/self-check/reading/print-page.js
+          node --check language-skills-hub/self-check/reading/reading-annotations.js
+          node --check language-skills-hub/self-check/reading/reading.js
+          node --check language-skills-hub/self-check/reading/reading-teacher.js
+          node --test language-skills-hub/tests/rl-pdf-annotations-pilot.test.cjs
+  browser:
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Verify print layouts and annotation behavior in Chromium and WebKit
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-rl-pilot-http.log 2>&1 &
+          PID=$!
+          trap 'kill $PID' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/self-check/reading/index.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/rl-pdf-annotations-pilot.browser.test.cjs

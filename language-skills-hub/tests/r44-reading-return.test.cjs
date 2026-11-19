@@ -5,6 +5,7 @@ const root=path.resolve(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const catalog=JSON.parse(read('data/cards.json'));
 const manifest=JSON.parse(read('version.json'));
+const {integrityContent}=require('./reading-content-integrity.cjs');
 const parse=require('../self-check/reading/reading-core.js').parseReadingData;
 const cards=catalog.entries.filter(e=>e.skill==='cteni');
 const hasWord=ch=>!!ch&&/[\p{L}\p{M}\p{N}]/u.test(ch);
@@ -22,7 +23,7 @@ test('R44: five cards, 120 variants, 1800 unchanged questions and all 391 exact 
  let variants=0,questions=0,targetMatches=0,evidenceMatches=0,withLocate=0;
  for(const entry of cards){
   const source=read(entry.relative);
-  assert.equal(crypto.createHash('sha256').update(source).digest('hex'),manifest.contentHashes[entry.id],entry.id);
+  assert.equal(crypto.createHash('sha256').update(integrityContent(entry.id,source)).digest('hex'),manifest.contentHashes[entry.id],entry.id);
   const data=parse(source);
   assert.equal(Object.keys(data).length,4,entry.id);
   for(const lang of entry.languages)for(const level of entry.levels){

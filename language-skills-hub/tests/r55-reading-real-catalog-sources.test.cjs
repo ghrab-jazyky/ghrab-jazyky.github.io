@@ -4,6 +4,7 @@ const root=path.resolve(__dirname,'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const catalog=JSON.parse(read('data/cards.json'));
 const version=JSON.parse(read('version.json'));
+const {integrityContent}=require('./reading-content-integrity.cjs');
 const parse=require('../self-check/reading/reading-core.js').parseReadingData;
 const guides=require('../assets/lsh/v3/reading-skill-guides.js');
 const reading=catalog.entries.filter(e=>e.skill==='cteni');
@@ -14,7 +15,7 @@ test('R55: all five actual catalog links carry reading strategy guides',()=>{
  let variants=0,questions=0,copyVariants=0;
  for(const entry of reading){
   const original=read(entry.relative),actual=read(entry.lockSource||entry.relative);
-  const originalHash=crypto.createHash('sha256').update(original).digest('hex');
+  const originalHash=crypto.createHash('sha256').update(integrityContent(entry.id,original)).digest('hex');
   assert.equal(originalHash,version.contentHashes[entry.id],entry.id+' original modified');
   if(copyIds.includes(entry.id)){
    copyVariants+=24;

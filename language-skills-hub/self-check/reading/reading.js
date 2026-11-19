@@ -125,7 +125,8 @@
  }[locale];
  let variant=null;
  const answers=Object.create(null);
- let submitted=false,timedUI=null,lastReport=null;
+ let submitted=false,timedUI=null,lastReport=null,annotationAPI=null;
+ const annotationKey=['lsh-reading-annotations-v1',selected.topic,selected.lang,selected.level].join(':');
  function themeSet(light,save){
   document.documentElement.dataset.theme=light?'light':'dark';
   $('themeButton').textContent=light?ui.themeDark:ui.themeLight;
@@ -168,6 +169,7 @@
   $('readingParagraphs').replaceChildren();
   variant.paragraphs.forEach((_,i)=>{
    const p=add('p');
+   p.dataset.annotationAnchor='p:'+i;
    for(const part of core.readingParagraphParts(variant,i)){
     if(part.kind==='gap')p.appendChild(add('span','gap-marker',part.text));
     else p.appendChild(document.createTextNode(part.text));
@@ -256,6 +258,7 @@
     number++;
     const card=add('fieldset','question');
     const legend=add('legend',null,number+'. '+q.q);
+    legend.dataset.annotationAnchor='q:'+q.id;
     card.appendChild(legend);
     const kind=q.kind==='gap'?ui.gapType:q.kind==='match'?ui.match:ui.mc;
     card.appendChild(add('p','question-kind',kind));
@@ -270,7 +273,9 @@
       updateProgress();
       timedUI?.save();
      });
-     label.append(radio,add('span',null,choice));
+     const choiceText=add('span',null,choice);
+     choiceText.dataset.annotationAnchor='c:'+q.id+':'+i;
+     label.append(radio,choiceText);
      card.appendChild(label);
     });
     stage.appendChild(card);
@@ -361,6 +366,7 @@
   if(timedUI&&!restored)timedUI.finish();
   lastReport=report;
   submitted=true;
+  annotationAPI?.refresh();
   $('submitButton').disabled=true;
   $('submitButton').textContent=ui.result;
   for(const input of $('questionList').querySelectorAll('input'))input.disabled=true;
@@ -445,12 +451,51 @@
    $('title').textContent=variant.title;
    $('lead').textContent=ui.lead;
    renderReading();renderQuestions();
+   if(window.LSHReadingAnnotations){
+    try{
+     annotationAPI=window.LSHReadingAnnotations.mount({
+      host:$('readingAnnotationTools'),
+      containers:[$('readingParagraphs'),$('questionList')],
+      canEdit:()=>!submitted&&(!timedUI||timedUI.status().phase==='running'),
+      onChange:annotations=>{
+       if(timedUI){timedUI.save();return;}
+       try{localStorage.setItem(annotationKey,JSON.stringify(annotations))}catch(_){}
+      }
+     });
+     if(!search.has('timer')){
+      try{annotationAPI.restore(JSON.parse(localStorage.getItem(annotationKey)||'[]'))}catch(_){}
+     }
+    }catch(error){
+     $('readingAnnotationTools').hidden=true;
+     console.warn('Reading annotations unavailable',error?.message||error);
+    }
+   }
    if(new URLSearchParams(location.search).has('timer')&&!window.LSHSessionUI)
     throw new Error('Timed test engine is unavailable.');
+   // RL-02: scope the iPad long-press exception to Reading's annotation tools.
+   // Register BEFORE LSHSessionUI.mount() so the shared guard remains immutable.
+   // Native menus are suppressed only for actively annotated text / note input;
+   // right-click elsewhere, clipboard, leaving the page, etc. remain guarded.
+   if(search.has('timer')){
+    document.addEventListener('contextmenu',event=>{
+     const toolbar=$('readingAnnotationTools');
+     if(!annotationAPI||!toolbar?.classList.contains('lsh-anno-enabled')||
+        submitted||timedUI?.status().phase!=='running')return;
+     const target=typeof event.target?.closest==='function'?
+      event.target:event.target?.parentElement;
+     if(target?.closest?.('#readingParagraphs [data-annotation-anchor],'+
+        '#questionList [data-annotation-anchor],'+
+        '#readingAnnotationTools [data-anno-note]')){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+     }
+    },true);
+   }
    timedUI=window.LSHSessionUI?.mount({
     skill:'reading',topic:selected.topic,lang:selected.lang,level:selected.level,
     workspace:$('workspace'),
-    getAnswers:()=>({answers:{...answers},reflection:$('reflection').value}),
+    getAnswers:()=>({answers:{...answers},reflection:$('reflection').value,
+     annotations:annotationAPI?.snapshot()||[]}),
     restoreAnswers:saved=>{
      if(!saved||typeof saved!=='object')return;
      for(const q of variant.questions){
@@ -461,6 +506,7 @@
       if(input){input.checked=true;answers[q.id]=index;}
      }
      if(typeof saved.reflection==='string')$('reflection').value=saved.reflection.slice(0,5000);
+     annotationAPI?.restore(saved.annotations);
      updateProgress();
     },
     onSubmit:({automatic,restored})=>submit(automatic,restored)

@@ -56,6 +56,9 @@ jobs:
           done
           node --test language-skills-hub/tests/r56-reading-test-qr.browser.test.cjs
   live:
+    # Production is deliberately not the PR branch. Only probe it after a main release.
+    # The teacher TEST interface may also be temporarily closed for colleagues.
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     container:
       image: mcr.microsoft.com/playwright:v1.56.1-noble

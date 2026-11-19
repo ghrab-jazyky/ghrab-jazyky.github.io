@@ -8,8 +8,10 @@
  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'">
  <title>Reading Lab · Local grading proposal</title>
  <link rel="stylesheet" href="reading.css">
+ <link rel="stylesheet" href="reading-annotations.css">
  <link rel="stylesheet" href="../session/session.css">
  <script defer src="reading-core.js"></script>
+ <script defer src="reading-annotations.js"></script>
  <script defer src="../results/result-core.js"></script>
  <script defer src="../results/grade-core.js"></script>
  <script defer src="../results/export-core.js"></script>
@@ -40,6 +42,29 @@
   </section>
   <div id="loading" class="loading" role="status" aria-live="polite">Loading…</div>
   <section class="workspace" id="workspace" hidden aria-label="Reading self-check">
+   <section class="lsh-annotation-toolbar" id="readingAnnotationTools" aria-label="Reading annotation tools">
+    <div class="lsh-annotation-head">
+     <strong>Poznámky k textu a otázkám</strong>
+     <button type="button" class="action" data-anno-toggle aria-pressed="false">Zapnout poznámky</button>
+    </div>
+    <div data-anno-controls hidden>
+     <p class="lsh-annotation-help">Označte část textu myší nebo prstem, pak zvolte zvýraznění, podtržení či poznámku. Nejde o hodnocené odpovědi.</p>
+     <div class="lsh-annotation-buttons">
+      <button type="button" class="action lsh-anno-yellow-btn" data-anno-color="yellow" aria-pressed="true">Žlutě</button>
+      <button type="button" class="action lsh-anno-green-btn" data-anno-color="green" aria-pressed="false">Zeleně</button>
+      <button type="button" class="action lsh-anno-pink-btn" data-anno-color="pink" aria-pressed="false">Růžově</button>
+      <button type="button" class="action" data-anno-underline>Podtrhnout</button>
+      <button type="button" class="action" data-anno-start-note>Přidat poznámku</button>
+     </div>
+     <div data-anno-note-box hidden>
+      <label for="readingAnnotationNote">Text poznámky</label>
+      <textarea id="readingAnnotationNote" data-anno-note rows="2" maxlength="500" placeholder="Zapište vlastní poznámku…"></textarea>
+      <button type="button" class="action" data-anno-save-note>Uložit poznámku</button>
+     </div>
+     <div class="lsh-annotation-list" data-anno-list aria-label="Seznam vašich anotací"></div>
+    </div>
+    <p class="small-note lsh-annotation-status" data-anno-status role="status" aria-live="polite"></p>
+   </section>
    <article class="panel reading-panel" aria-labelledby="readingHeading">
     <div class="panel-head">
      <div><span class="kicker" id="readingKicker">READING TEXT</span><h2 id="readingHeading">Text</h2></div>

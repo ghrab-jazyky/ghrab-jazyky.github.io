@@ -1,0 +1,66 @@
+name: LSH RL-PDF branded assets – development branch only
+on:
+  push:
+    branches: ['feature/rl-pdf-annotations-pilot-20261118']
+    paths:
+      - 'language-skills-hub/scripts/build-reading-print-pdfs.cjs'
+      - 'language-skills-hub/self-check/reading/print-core.js'
+      - 'language-skills-hub/self-check/reading/print-page.html'
+      - 'language-skills-hub/self-check/reading/print-page.js'
+      - 'language-skills-hub/self-check/reading/print-page.css'
+      - 'language-skills-hub/cteni/asteroids/index.html'
+      - '.github/workflows/lsh-reading-print-assets.yml'
+permissions:
+  contents: write
+concurrency:
+  group: lsh-print-assets-development
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1 hyphen@1.14.1
+      - name: Generate branded A4 PDFs for all Asteroids variants
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/rl-pdf-http.log 2>&1 &
+          PID=$!
+          trap 'kill $PID' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/self-check/reading/print-page.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node language-skills-hub/scripts/build-reading-print-pdfs.cjs --all
+      - name: Save PDF assets to this development branch only
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add language-skills-hub/printouts/rl-asteroids
+          if git diff --cached --quiet; then
+            echo "No PDF changes"
+          else
+            git commit -m "build(reading): generated Asteroids teacher PDFs [skip ci]"
+            # Another reviewer may have updated the feature branch while PDFs were built.
+            # Rebase onto its current tip; never force-push or overwrite source changes.
+            for attempt in 1 2 3; do
+              git pull --rebase origin feature/rl-pdf-annotations-pilot-20261118
+              if git push origin HEAD:feature/rl-pdf-annotations-pilot-20261118; then
+                echo "PDF assets saved after sync"
+                exit 0
+              fi
+              if [ "$attempt" -eq 3 ]; then
+                echo "Cannot safely publish generated PDFs after 3 attempts"
+                exit 1
+              fi
+            done
+          fi

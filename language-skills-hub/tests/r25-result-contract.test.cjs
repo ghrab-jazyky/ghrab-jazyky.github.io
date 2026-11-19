@@ -9,6 +9,7 @@ const listeningCore=require('../self-check/listening/listening-core.js');
 const resultCore=require('../self-check/results/result-core.js');
 const catalog=JSON.parse(read('data/cards.json'));
 const version=JSON.parse(read('version.json'));
+const {integrityContent}=require('./reading-content-integrity.cjs');
 const policy=JSON.parse(read('data/test-mode-policy.json'));
 const grading=JSON.parse(read('data/r25-grading-review.json'));
 const reading=catalog.entries.filter(x=>x.skill==='cteni');
@@ -48,7 +49,7 @@ test('R25 shared Reading results preserve 120 real language/CEFR variants and ob
  let count=0,items=0;
  for(const entry of reading){
   const raw=read(entry.relative);
-  assert.equal(crypto.createHash('sha256').update(raw).digest('hex'),version.contentHashes[entry.id]);
+  assert.equal(crypto.createHash('sha256').update(integrityContent(entry.id,raw)).digest('hex'),version.contentHashes[entry.id]);
   const data=readingCore.parseReadingData(raw);
   for(const language of entry.languages)for(const level of entry.levels){
    const v=readingCore.variantFromData(data,language,level);
@@ -176,7 +177,7 @@ test('R25 public practice cards remain unchanged and local results keep grading 
  assert.equal(catalog.entries.length,34);
  assert.equal(catalog.entries.reduce((n,e)=>n+e.languages.length*e.levels.length,0),702);
  for(const entry of catalog.entries){
-  const digest=crypto.createHash('sha256').update(fs.readFileSync(path.join(root,entry.relative))).digest('hex');
+  const digest=crypto.createHash('sha256').update(integrityContent(entry.id,fs.readFileSync(path.join(root,entry.relative)))).digest('hex');
   assert.equal(digest,version.contentHashes[entry.id]);
  }
  const readHtml=read('self-check/reading/index.html');
