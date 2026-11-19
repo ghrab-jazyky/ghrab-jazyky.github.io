@@ -57,7 +57,10 @@ test('RL-02: does not change reading score implementation',()=>{
 test('RL-PDF: teacher buttons are absent from student test UI',()=>{
  const teacher=fs.readFileSync(path.join(root,'self-check/reading/teacher.html'),'utf8');
  const student=fs.readFileSync(path.join(root,'self-check/reading/index.html'),'utf8');
- assert.match(teacher,/id="printPracticeText"/);
- assert.match(teacher,/id="printTestAll"/);
+ const catalog=fs.readFileSync(path.join(root,'index.html'),'utf8');
+ assert.match(catalog,/id="materialsPracticeText"/);
+ assert.match(catalog,/id="materialsTestAll"/);
+ assert.doesNotMatch(teacher,/id="readingPrintSection"/);
+ assert.deepEqual(annotations.COLORS,['yellow','green','pink','blue']);
  assert.doesNotMatch(student,/id="printPracticeText"|id="printTestAll"/);
 });
