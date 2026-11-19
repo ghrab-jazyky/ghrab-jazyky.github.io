@@ -72,8 +72,15 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   const browser=await engine.launch({headless:true});
   try{
    const context=await browser.newContext({viewport:{width:1024,height:850}});
-   const page=await context.newPage(),errors=[];
-   page.on('pageerror',e=>errors.push(e.message));
+   const page=await context.newPage(),errors=[],resizeObserverWarnings=[];
+   page.on('pageerror',e=>{
+    // WebKit may report one benign ResizeObserver delivery warning while the
+    // original Asteroids card rerenders. Keep all other page errors fatal.
+    if(name==='WebKit'&&e.message==='ResizeObserver loop completed with undelivered notifications.'){
+     resizeObserverWarnings.push(e.message);return;
+    }
+    errors.push(e.message);
+   });
    await page.goto('http://127.0.0.1:8765/language-skills-hub/cteni/asteroids/index.html?lang=en&level=B2');
    await page.locator('#readingAnnotationTools [data-anno-toggle]').waitFor({timeout:30000});
    assert.equal(await page.locator('#readingBody p[data-annotation-anchor]').count()>0,true);
@@ -106,6 +113,8 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.locator('#readingAnnotationTools [data-anno-toggle]').waitFor();
    await page.locator('#readingAnnotationTools [data-anno-toggle]').click();
    assert.equal(await page.locator('#readingAnnotationTools .lsh-annotation-item').count(),1);
+   assert.ok(resizeObserverWarnings.length<=1,
+    'Repeated ResizeObserver warnings may indicate a genuine layout loop');
    assert.deepEqual(errors,[]);
    await context.close();
   }finally{await browser.close()}
