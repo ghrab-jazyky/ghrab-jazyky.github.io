@@ -52,6 +52,7 @@
   let items=[],selected=null,enabled=false,noteDraft=null,editingIndex=null,color='yellow';
    let armed='highlight'; // Tool-first touch workflow; desktop select-then-tool remains supported.
    const toggle=config.toggle||host.querySelector('[data-anno-toggle]');
+   if(!toggle)throw new Error('Missing Reading annotation toggle');
   const status=host.querySelector('[data-anno-status]');
   const list=host.querySelector('[data-anno-list]');
   const noteBox=host.querySelector('[data-anno-note-box]');
