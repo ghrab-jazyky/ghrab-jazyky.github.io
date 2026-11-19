@@ -481,9 +481,9 @@
    // Suppress the native menu, but do not lock while the user is annotating
    // an actual Reading passage/question. Clipboard, print, leaving the page,
    // fullscreen and all other incident guards remain unchanged.
-   const target=event.target instanceof Element?event.target:event.target?.parentElement;
-   const annotationActive=!!document.querySelector('#readingAnnotationTools.lsh-anno-enabled');
-   const onReadingText=!!target?.closest(
+   const target=typeof event.target?.closest==='function'?event.target:event.target?.parentElement;
+   const annotationActive=!!document.querySelector?.('#readingAnnotationTools.lsh-anno-enabled');
+   const onReadingText=!!target?.closest?.(
     '#readingParagraphs [data-annotation-anchor],#questionList [data-annotation-anchor]');
    if(annotationActive&&onReadingText)return;
    lock('context-menu');
