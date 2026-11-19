@@ -34,6 +34,16 @@
  </div>
  <p class="lsh-annotation-status" data-anno-status role="status" aria-live="polite"></p>`;
  prep.insertAdjacentElement('afterend',host);
+ // Prefer the same header row as the existing dictionary and theme controls.
+ const modeButton=root.createElement('button');
+ modeButton.type='button';modeButton.className='lsh-anno-header-toggle';
+ modeButton.textContent='Zapnout poznámky';modeButton.setAttribute('aria-pressed','false');
+ modeButton.setAttribute('aria-controls','readingAnnotationTools');
+ const controls=[...root.querySelectorAll('button')];
+ const neighbor=controls.find(button=>/dictionary|slovník|night mode|day mode|dark mode|light mode/i.test(
+  [button.textContent,button.getAttribute('aria-label')].join(' ')));
+ const target=neighbor?.parentElement||root.querySelector('.topbar')||prep;
+ target.appendChild(modeButton);
  const storageKey=identity=>'lsh-reading-practice-annotations-v1:rl-asteroids:'+identity;
  const slug=value=>String(value).replace(/[^a-z0-9:_-]/gi,'_').slice(0,100);
  let currentIdentity=null;
