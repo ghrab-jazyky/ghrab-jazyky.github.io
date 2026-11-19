@@ -297,7 +297,17 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      return {x:rect.left+Math.min(3,rect.width/2),y:rect.top+rect.height/2};
     },{selector:selectors[i],i});
     await phone.touchscreen.tap(point.x,point.y);
-    await phone.locator('.lsh-annotation-popover-pinned:not([hidden])').waitFor();
+    try{await phone.locator('.lsh-annotation-popover-pinned:not([hidden])').waitFor({timeout:5000})}
+    catch(error){
+     const info=await phone.evaluate(({selector,point})=>{
+      const hit=document.elementFromPoint(point.x,point.y),sel=getSelection();
+      return {hit:hit?.tagName+'.'+hit?.className,anchor:document.querySelector(selector)?.dataset.annotationAnchor,
+       isInside:document.querySelector(selector)?.contains(hit),selection:sel?.toString(),collapsed:sel?.isCollapsed,
+       mode:document.querySelector('.lsh-anno-header-toggle')?.getAttribute('aria-pressed'),
+       popup:document.querySelector('.lsh-annotation-popover')?.outerHTML.slice(0,550)};
+     },{selector:selectors[i],point});
+     throw new Error('Mobile note '+i+' did not open: '+JSON.stringify(info)+' / '+error.message);
+    }
     assert.ok((await phone.locator('.lsh-annotation-popover-text').textContent()).includes('Pilot note '+i));
     await phone.locator('.lsh-annotation-popover-close').click();
    }
