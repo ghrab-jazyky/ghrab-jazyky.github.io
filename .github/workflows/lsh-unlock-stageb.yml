@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   stageb:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.ref == 'feat/lsh-unlock-gestures-v124'
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.ref == 'feat/lsh-unlock-gestures-v124' || github.event.pull_request.number == 128
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     steps:
