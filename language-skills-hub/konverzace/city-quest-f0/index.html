@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070f20">
-<meta name="description" content="City Quest F0: offline interactive route-finding and dialogue prototype for English B1.">
+<meta name="description" content="City Quest F0.1: offline interactive route-finding and dialogue prototype for English B1.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; base-uri 'self'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <title>City Quest F0 · Conversation Lab · English B1</title>
 <link rel="stylesheet" href="style.css">
 <script defer src="../../authoring/city-quest-f0/engine.js"></script>
+<script defer src="city-art.js"></script>
 <script defer src="app.js"></script>
 </head>
 <body>
@@ -18,7 +19,7 @@
   <div class="header-actions">
     <button class="btn" id="themeBtn" type="button" aria-label="Switch colour theme">☀ Light mode</button>
     <button class="btn" id="resetBtn" type="button">↺ Reset mission</button>
-    <span class="tag">F0 · PRIVATE PREVIEW</span>
+    <span class="tag">F0.1 · PRIVATE PREVIEW</span>
   </div>
 </header>
 <section class="hero">
@@ -40,25 +41,30 @@
     <div><span class="section-label">THE CITY OF RIVERTON</span><h2>Explore the neighbourhood</h2></div>
     <div class="map-controls">
       <button type="button" class="btn" id="mapReset" title="Reset your route">↺ Route</button>
-      <button type="button" class="btn" id="mapZoom" aria-pressed="false">⌕ Zoom</button>
+      <button type="button" class="btn" id="mapZoom" aria-pressed="false">＋ Map detail</button>
     </div>
    </div>
-   <div class="map-viewport" id="mapViewport" role="region" aria-label="Illustrated city map with accessible selectable crossroads" tabindex="0">
+   <div class="map-viewport" id="mapViewport" role="region" aria-label="Illustrated city map with accessible selectable crossroads. Pan sideways on touch screens or use direction buttons." tabindex="0">
       <svg id="cityMap" viewBox="0 0 1196 756" role="group" aria-label="Illustrated street map of Riverton with city landmarks, Central Station at bottom left and City Museum near the upper centre">
       </svg>
    </div>
-   <div class="map-footer"><div class="legend"><em><span class="dot"></span> Your route</em><em>🚉 Start</em><em>🏛️ Destination</em></div><span>Tap crossroads or use the direction buttons</span></div>
+   <div class="map-location-bar" aria-live="off">
+      <span class="map-location-icon" aria-hidden="true">📍</span>
+      <span class="map-location-copy"><strong id="mapLocation">Central Station</strong><small id="mapProgress">0 / 5 blocks · Museum mission</small></span>
+      <span class="map-touch-tip" id="mapTouchTip">↔ Swipe the city to explore · Tap a crossroads</span>
+   </div>
+   <div class="map-footer"><div class="legend"><em><span class="dot"></span> Your route</em><em>🚉 Start</em><em>🏛️ Destination</em></div><span>Use the compass pad or tap crossroads</span></div>
  </article>
  <div class="sidebar">
    <section class="side-card view" id="routeView" role="tabpanel" aria-labelledby="routeTab">
      <span class="step-label">MISSION 01 / ENGLISH B1</span><h2>Find the Route</h2>
      <div class="objective"><strong>🎯 Your mission</strong><p>Start at Central Station. Find a walking route to the City Museum, then explain it in English.</p></div>
      <p>Tap the nearby crossroads to build your route, or use the directional controls. Each click moves exactly one city block.</p>
-     <div class="direction-tools" aria-label="Move between crossroads">
-       <button class="btn" id="north" type="button" aria-label="Move north">↑ North</button>
-       <button class="btn" id="south" type="button" aria-label="Move south">↓ South</button>
-       <button class="btn" id="west" type="button" aria-label="Move west">← West</button>
-       <button class="btn" id="east" type="button" aria-label="Move east">→ East</button>
+     <div class="direction-tools" role="group" aria-label="Compass controls. Choose a direction to move one block.">
+       <button class="btn" id="north" type="button" aria-label="Move north one block"><span aria-hidden="true">↑</span> North</button>
+       <button class="btn" id="south" type="button" aria-label="Move south one block"><span aria-hidden="true">↓</span> South</button>
+       <button class="btn" id="west" type="button" aria-label="Move west one block"><span aria-hidden="true">←</span> West</button>
+       <button class="btn" id="east" type="button" aria-label="Move east one block"><span aria-hidden="true">→</span> East</button>
      </div>
      <div class="status" id="routeStatus" role="status" aria-live="polite">You are at Central Station. Choose the next crossroads.</div>
      <div class="route-tools"><button class="btn" id="undoBtn" type="button">↶ Undo step</button><button class="btn" id="routeGuideBtn" type="button" aria-expanded="false">🗣 Speaking support</button></div>
@@ -84,7 +90,7 @@
  </div>
 </section>
 <section class="guide-card">
-<h2>About this prototype</h2><p>F0 validates the map-first user experience and two game mechanics. The map is an original fictional illustration built with local SVG shapes, not a static third-party map or external image. Only English B1 is authored at this stage. This page is not listed in the public LSH catalog and does not submit or store student data.</p>
+<h2>About this prototype</h2><p>F0.1 validates the map-first user experience and two game mechanics. The map is an original fictional illustration built with local SVG shapes, not a static third-party map or external image. Only English B1 is authored at this stage. This page is not listed in the public LSH catalog and does not submit or store student data.</p>
 </section>
 </main>
 </body>
