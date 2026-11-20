@@ -218,3 +218,7 @@ V aktuální F2 jsou úrovně, lokalizace a osm stanic již založeny; metro **d
 - \`language-skills-hub/authoring/city-quest-f2/TEACHER_GUIDE_CZ.md\`
 
 **Rozhodnutí k realizaci:** bezprostředně začít F2.1A (blokující mobilní UX), pak vytvořit samostatný vizuálně hratelný EN/B1 prototyp metra F2.1B/C a nechat jej schválit před rozšířením na ostatní varianty.  
+
+
+### 14. Strojově čitelná referenční síť
+Návrh doplňuje [F2_1_METRO_NETWORK_REFERENCE.json](./F2_1_METRO_NETWORK_REFERENCE.json): 14 unikátních stanic, 3 linky, 3 přestupní uzly, povrchové vstupy, fiktivní nástupiště a čtyři testované B1 trasy pro mise 05–08. Tento JSON představuje **ověřený návrhový fixture**, nikoliv hotový runtime modul či finální lokalizaci. Během přípravy bylo kontrolováno, že všechny scénářové trasy používají sousední stanice na existujících linkách, mají návazné přestupy, nezahrnují průjezd uzavřenou hranou a vedou z definovaného startu do cíle.
