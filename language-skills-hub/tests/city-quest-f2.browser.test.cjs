@@ -43,7 +43,7 @@ test("all 24 language-CEFR variants render eight localized stations and visible 
     await setVariant(page,lang,level);
     assert.equal(await page.locator("#f1Stations button").count(),8);
     assert.equal(await progress(page),0);
-    assert.equal(await page.locator('[data-landmark-label="CITY MUSEUM"] text').innerText(),C.pack(lang).mapLabels["CITY MUSEUM"]);
+    assert.equal(await page.locator('[data-landmark-label="CITY MUSEUM"] text').textContent(),C.pack(lang).mapLabels["CITY MUSEUM"]);
     for(let i=1;i<=8;i++){
       await station(page,i);
       const text=await page.locator("#f1Panel h2").first().innerText();
