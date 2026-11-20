@@ -104,9 +104,9 @@ async function performMouseGesture(page,id){
   });
   for(const x of corners)await tap(x);
  }else if(id==='tap_hold_tap'){
-  await tap(p(.5,.7));await hold(p(.5,.7),2200);await tap(p(.5,.7));
+  await page.mouse.click(p(.5,.7).x,p(.5,.7).y,{delay:500});await hold(p(.5,.7),2200);await page.mouse.click(p(.5,.7).x,p(.5,.7).y,{delay:500});
  }else if(id==='hold_double_tap'){
-  await hold(p(.3,.6),2800);await tap(p(.7,.6));await tap(p(.7,.6));
+  await hold(p(.3,.6),2800);await page.mouse.click(p(.7,.6).x,p(.7,.6).y,{delay:450});await page.mouse.click(p(.7,.6).x,p(.7,.6).y,{delay:450});
  }else if(id==='triangle3'){
   await tap(p(.5,.3));await tap(p(.3,.7));await hold(p(.7,.7),750);
  }else if(id==='draw_z'){

@@ -87,7 +87,7 @@ function testSetupUrl(e){
  const url=new URL(target,document.baseURI);
  url.searchParams.set('topic',e.id);
  // Asteroids teacher UI can change between releases while test URLs remain stable.
- if(e.id==='rl-asteroids')url.searchParams.set('rehearsalVersion','rl-lock-rehearsal-20261120-8');
+ if(e.id==='rl-asteroids')url.searchParams.set('rehearsalVersion','rl-lock-rehearsal-20261120-9');
  const filter=byId('language').value,level=byId('level').value;
  if(e.languages.includes(filter))url.searchParams.set('lang',filter);
  if(e.levels.includes(level))url.searchParams.set('level',level);

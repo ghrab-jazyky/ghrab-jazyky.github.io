@@ -6,17 +6,17 @@
  const DEFINITIONS=Object.freeze([
   {id:'corners4',code:'n1',name:'Čtyři rohy',
    short:'Postupně čtyři okraje obrazovky.',
-   guide:'Klepněte postupně do čtyř rohů zamčené obrazovky: levý horní, pravý horní, levý dolní, pravý dolní. Mezi klepnutími nečekejte déle než 8 sekund.'},
+   guide:'Klepněte postupně přímo do čtyř rohů zamčené obrazovky (dotyková oblast sahá až k okraji): levý horní, pravý horní, levý dolní, pravý dolní. Mezi klepnutími nečekejte déle než 8 sekund.'},
   {id:'tap_hold_tap',code:'n2',name:'Klepnutí – podržení – klepnutí',
    short:'Tři kroky na jednom místě.',
-   guide:'Uprostřed dolní poloviny zamčené obrazovky (asi ve dvou třetinách výšky) jednou krátce klepněte, na stejném místě podržte prst asi 2–3 sekundy a hned poté ještě jednou krátce klepněte. Mezi kroky nečekejte déle než sekundu.',
+   guide:'Uprostřed dolní poloviny zamčené obrazovky (asi ve dvou třetinách výšky) jednou klepněte (maximálně 0,6 sekundy), na stejném místě podržte prst asi 2–3 sekundy a hned poté znovu klepněte (maximálně 0,6 sekundy). Mezi kroky nečekejte déle než sekundu.',
    points:[[.5,.7],[.5,.7],[.5,.7]],kinds:['tap','hold','tap'],
-   durations:[[0,350],[1800,3500],[0,350]],gaps:[1500,1500],total:8000},
+   durations:[[0,600],[1800,3500],[0,600]],gaps:[1500,1500],total:8000},
   {id:'hold_double_tap',code:'n3',name:'Dlouhý stisk a dvojklep',
    short:'Podržení vlevo a dvojklep vpravo.',
-   guide:'Vlevo pod středem obrazovky podržte prst asi 3 sekundy, pusťte a do 3 sekund dvakrát rychle za sebou klepněte na stejné výšce vpravo.',
+   guide:'Vlevo pod středem obrazovky podržte prst asi 3 sekundy, pusťte a do 3 sekund dvakrát rychle za sebou klepněte na stejné výšce vpravo (každé klepnutí do 0,5 sekundy, mezi nimi maximálně 0,4 sekundy).',
    points:[[.3,.6],[.7,.6],[.7,.6]],kinds:['hold','tap','tap'],
-   durations:[[2300,4000],[0,350],[0,350]],gaps:[3000,400],total:9000},
+   durations:[[2300,4000],[0,500],[0,500]],gaps:[3000,400],total:9000},
   {id:'triangle3',code:'n4',name:'Skrytý trojúhelník',
    short:'Dvě klepnutí a krátké podržení.',
    guide:'Klepněte postupně na horní prostřední bod a levý dolní bod; po každém klepnutí prst ihned uvolněte. Třetí bod vpravo dole podržte přibližně 1–2 sekundy a pak uvolněte. Body nepropojujte tahem. Celé gesto dokončete do 14 sekund.',
@@ -24,8 +24,8 @@
    durations:[[0,700],[0,700],[400,3500]],gaps:[5000,5000],total:14000},
   {id:'draw_z',code:'n5',name:'Nakreslení Z',
    short:'Jediný tah přes čtyři body.',
-   guide:'Uvnitř zamčené obrazovky stiskněte nahoře vlevo a držte tlačítko nebo prst po celý tah: doprava, šikmo dolů doleva a znovu doprava. Uvolněte až na konci vpravo dole. Z může být přirozeně větší či menší; obvykle trvá 1–4 sekundy.',
-   points:[[.3,.3],[.7,.3],[.3,.7],[.7,.7]],kinds:['drag'],durations:[[400,6000]],total:6000}
+   guide:'Uvnitř zamčené obrazovky stiskněte nahoře vlevo a držte tlačítko nebo prst po celý tah: doprava, šikmo dolů doleva a znovu doprava. Uvolněte až na konci vpravo dole. Z může být přirozeně větší či menší. Kreslete plynule, můžete i svižně: celý tah má trvat 0,2–6 sekund.',
+   points:[[.3,.3],[.7,.3],[.3,.7],[.7,.7]],kinds:['drag'],durations:[[200,6000]],total:6000}
  ]);
  const IDS=Object.freeze(DEFINITIONS.map(d=>d.id));
  const byId=id=>DEFINITIONS.find(d=>d.id===id)||null;
@@ -45,13 +45,15 @@
    throw new Error('Invalid gesture geometry');
   const r=Math.max(44,Math.min(width,height)*.09);
   if(id==='corners4'){
+   // Match the four real CSS touch boxes: 80 px flush to every screen edge.
+   const side=80;
    const rects=[
-    {x:9,y:9,width:58,height:58},
-    {x:width-67,y:9,width:58,height:58},
-    {x:9,y:height-67,width:58,height:58},
-    {x:width-67,y:height-67,width:58,height:58}
+    {x:0,y:0,width:side,height:side},
+    {x:width-side,y:0,width:side,height:side},
+    {x:0,y:height-side,width:side,height:side},
+    {x:width-side,y:height-side,width:side,height:side}
    ];
-   return {width,height,r,points:rects.map(q=>({x:q.x+29,y:q.y+29})),rects};
+   return {width,height,r,points:rects.map(q=>({x:q.x+side/2,y:q.y+side/2})),rects};
   }
   return {width,height,r,points:byId(id).points.map(([x,y])=>({x:x*width,y:y*height})),rects:[]};
  }
@@ -278,7 +280,7 @@
      if(e.time-active.at>6000){reset(true);return state();}
      if(e.type==='up'){
       const duration=e.time-active.at;
-      const done=duration>=400&&duration<=6000&&(
+      const done=duration>=200&&duration<=6000&&(
        matchesFixedZ(zTrace,geometryAt)||
        (zTrace.length>=6&&matchesFreehandZ(zTrace,geometryAt)));
       if(!done)reset(true);
@@ -399,8 +401,8 @@
   let details='';
   if(id==='corners4'){
    details='<polyline points="'+dots.map(d=>d.x+','+d.y).join(' ')+'" fill="none" stroke="currentColor" stroke-opacity=".6" stroke-dasharray="9 11" stroke-width="3" marker-end="url(#'+markerId+')"/>';
-   details+=g.rects.map((q,i)=>'<rect x="'+q.x+'" y="'+q.y+'" width="58" height="58" fill="none" stroke="currentColor" stroke-width="2" data-corner="'+i+'"/>'+
-    '<text x="'+(q.x+29)+'" y="'+(q.y+38)+'" text-anchor="middle" fill="currentColor" font-size="28">'+(i+1)+'</text>').join('');
+   details+=g.rects.map((q,i)=>'<rect x="'+q.x+'" y="'+q.y+'" width="'+q.width+'" height="'+q.height+'" fill="none" stroke="currentColor" stroke-width="2" data-corner="'+i+'"/>'+
+    '<text x="'+(q.x+q.width/2)+'" y="'+(q.y+q.height/2+9)+'" text-anchor="middle" fill="currentColor" font-size="28">'+(i+1)+'</text>').join('');
   }else{
    const unique=dots.filter((d,i)=>dots.findIndex(x=>x.x===d.x&&x.y===d.y)===i);
    const path=dots.map(d=>d.x+','+d.y).join(' ');
@@ -469,7 +471,7 @@
   }
   const tryButton=document.createElement('button');tryButton.type='button';tryButton.className='action ghost';tryButton.textContent='VYZKOUŠET GESTO';
   const note=document.createElement('p');note.className='small-note';
-  note.textContent='Gesto proveďte plynule a svižně, bez dlouhých pauz. Na počítači se po gestu může objevit tlačítko Pokračovat – klikněte na ně, test se vrátí do celé obrazovky.';
+  note.textContent='Dodržte návod vybraného gesta: krátká klepnutí jsou oddělená, dlouhé stisky držte požadovaný čas a Z nakreslete jediným souvislým tahem. Po úspěchu může počítač zobrazit Pokračovat pro návrat do celé obrazovky.';
   root.append(chooser,details,note,tryButton);
   update();
   function close(){
