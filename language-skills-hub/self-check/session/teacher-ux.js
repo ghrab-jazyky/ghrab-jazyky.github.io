@@ -95,6 +95,7 @@
   inertBefore.forEach(([el])=>{el.inert=true});
   const oldOverflow=document.body.style.overflow;document.body.style.overflow='hidden';
   let binding=null,closed=false,completed=false,step=0,dots=[],monitor=null;
+  let completionTimer=null;
   let lastState={steps:0,active:false,awaitingRelease:false};
   function paint(){
    if(closed)return;
@@ -173,6 +174,7 @@
   }
   function close(){
    if(closed)return;closed=true;
+   if(completionTimer!==null){clearTimeout(completionTimer);completionTimer=null;}
    binding?.destroy();binding=null;
    if(monitor!==null){clearInterval(monitor);monitor=null;}
    window.removeEventListener('resize',paint);
@@ -200,8 +202,16 @@
    onSuccess:()=>{
     completed=true;step=steps[id].length;
     if(realistic&&!guided){
-     close();
-     options?.onComplete?.();
+     // Pointerup is followed by a synthetic click (and sometimes dblclick).
+     // Closing synchronously exposes the launch button underneath; an n3
+     // double-tap can immediately REOPEN the lock. Keep the overlay in place
+     // until the entire click sequence has been consumed.
+     completionTimer=setTimeout(()=>{
+      completionTimer=null;
+      if(closed)return;
+      close();
+      options?.onComplete?.();
+     },320);
      return;
     }
     if(realistic)demo.classList.add('lsh-rehearsal-succeeded');
