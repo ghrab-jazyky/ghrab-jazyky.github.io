@@ -295,7 +295,16 @@
 
 /* Guided rehearsal on a real phone: a narrow two-line status strip, never
  * a floating paragraph over the actual Test locked panel. Gesture hit areas
- * remain fixed to the full screen; no student lock styles are changed. */
+ * remain fixed to the full screen; no student lock styles are changed.
+ * IMPORTANT: bindDOM(corners4) adds a .lsh-session-corners container. Without
+ * absolute/fixed positioning it becomes a SECOND CSS-grid item and pushes
+ * the live lock dialog upward under the teaching instructions. */
+.lsh-lock-rehearsal:not(.lsh-rehearsal-phone-mode) > .lsh-session-corners{
+ position:fixed;inset:0;pointer-events:none;
+}
+.lsh-lock-rehearsal:not(.lsh-rehearsal-phone-mode) > .lsh-session-corners .lsh-corner{
+ pointer-events:auto;
+}
 @media (max-width:680px) and (pointer:coarse){
  .lsh-lock-rehearsal:not(.lsh-rehearsal-phone-mode){
   overflow:hidden!important;padding:0!important;place-items:center!important;
