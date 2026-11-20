@@ -144,7 +144,10 @@
 }
 .lsh-lock-rehearsal .lsh-session-reason{font-weight:700;color:#d4e7fc}
 .lsh-lock-rehearsal .lsh-trainer-heading{
- top:max(10px,env(safe-area-inset-top));width:min(550px,calc(100% - 150px));
+ /* Reserve an independent top row for "Ukončit nácvik".
+  * The old 10px override put this heading directly behind the close button. */
+ top:max(76px,calc(env(safe-area-inset-top) + 68px));
+ width:min(550px,calc(100% - 150px));
  background:#152338;color:#f4f8ff;border-color:#667a90;
 }
 .lsh-lock-rehearsal .lsh-trainer-heading p{color:#f4f8ff}
@@ -152,6 +155,8 @@
 .lsh-lock-rehearsal .lsh-trainer-feedback{
  background:#152338;color:#f4f8ff;border-color:#667a90;
 }
+/* No empty status chip before the teacher makes the first attempt. */
+.lsh-lock-rehearsal .lsh-trainer-feedback:empty{display:none}
 .lsh-lock-rehearsal .lsh-trainer-close,.lsh-lock-rehearsal .lsh-trainer-retry{
  background:#152338;color:#f4f8ff;border-color:#667a90;
 }
@@ -179,6 +184,6 @@
 @media(max-width:680px){
  .lsh-lock-rehearsal .lsh-session-lock-panel{padding:16px;margin:70px auto}
  .lsh-lock-rehearsal:not(.lsh-rehearsal-exact) .lsh-trainer-heading{
-  top:max(65px,calc(env(safe-area-inset-top) + 55px));width:calc(100% - 24px)
+  top:max(76px,calc(env(safe-area-inset-top) + 68px));width:calc(100% - 24px)
  }
 }
