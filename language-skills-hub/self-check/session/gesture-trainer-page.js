@@ -21,8 +21,14 @@
   const realistic=params.get('source')==='rl-asteroids';
    const lang=['en','es','de','fr'].includes(params.get('lang'))?params.get('lang'):'en';
    if(realistic){
-    document.getElementById('gestureGuide').textContent='Nácvik přesně na zamčené obrazovce testu. Dotýkejte se stejných míst jako při ostrém testu; výukové body se nezobrazují.';
-    launch.textContent='Zobrazit zamčenou obrazovku';
+    // The lock panel is informational; the shared gesture engine measures the
+    // ENTIRE lock viewport, so its targets may be outside the panel on desktop.
+    guide.textContent=def.guide+' Dotýkejte se celé zamčené obrazovky, nikoli jen rámečku „Test locked“. Body mají na telefonu jinou polohu než na monitoru.';
+    launch.textContent='Zobrazit zamčenou obrazovku bez nápovědy';
+    const guided=document.getElementById('launchGuidedTrainer');
+    guided.hidden=false;
+    guided.addEventListener('click',()=>trainer.openTrainer(def.id,
+     {realistic:true,guided:true,language:lang}));
    }
    launch.addEventListener('click',()=>{
     if(!realistic){trainer.openTrainer(def.id);return;}
