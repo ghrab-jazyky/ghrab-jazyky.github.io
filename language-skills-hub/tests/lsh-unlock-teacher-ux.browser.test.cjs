@@ -28,7 +28,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      await page.getByRole('button',{name:'VYZKOUŠET GESTO'}).click();
      const demo=page.locator('#lshTeacherDemo');
      await demo.waitFor();
-     assert.match(await demo.getByRole('heading').textContent(),/Nácvik:/);
+     assert.match(await demo.getByRole('heading',{name:/^Nácvik:/}).textContent(),/Nácvik:/);
      assert.equal(await demo.locator('.lsh-session-lock-panel').count(),lab.includes('reading/')?1:0,'Asteroids uses real lock panel; Listening keeps legacy trainer');
      assert.equal(await demo.locator('.lsh-trainer-dot').count(),4);
      const corners=await page.evaluate(()=>{
