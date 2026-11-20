@@ -111,7 +111,6 @@ test("F2.1A touch geometry: 320x568, 375x812, 390x844, iPad 768x1024",async()=>{
   // The HUD's buttons must keep their DOM identities after each move; no focus loss.
   await page.setViewportSize({width:390,height:844});
   await page.locator("#f2Quick .f2-quick-east").focus();
-  const first=await page.locator("#f2Quick .f2-quick-east").evaluate(el=>el);
   await page.keyboard.press("Enter");
   assert.match(await page.locator("#f1Panel").innerText(),/2\/5/);
   assert.equal(await page.locator("#f2Quick .f2-quick-east").evaluate(el=>el===document.activeElement),true,
@@ -164,11 +163,11 @@ test("F2.1A mobile WebKit: full HUD, keyboard accessibility and French labels",a
   await page.locator(".f2-quick-north").focus();
   const label=await page.locator(".f2-quick-north").getAttribute("aria-label");
   assert.ok(label.startsWith(C.pack("fr").ui.north));
-  await page.screenshot({path:path.join(SHOTS,"F21A-fr-C2-WebKit.png"),fullPage:true});
-  // Screenshot tooling can inject inline style blocked by CSP, so app errors
-  // are examined before screenshot to avoid mistaking tooling for app errors.
+  // Screenshot tooling can inject inline styles that strict CSP rejects.
+  // Inspect application errors before the screenshot, not tooling internals.
   assert.deepEqual(failures.errors,[]);
   assert.deepEqual(failures.requests,[]);
+  await page.screenshot({path:path.join(SHOTS,"F21A-fr-C2-WebKit.png"),fullPage:true});
  }finally{await browser.close();}
 });
 test("F2.1A portable offline file://: map HUD and localization without fetch or API",async()=>{
