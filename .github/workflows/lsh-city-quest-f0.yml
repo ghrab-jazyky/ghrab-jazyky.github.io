@@ -18,6 +18,9 @@ on:
       - ".github/workflows/lsh-city-quest-f0.yml"
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
 jobs:
   f0-gate:
     runs-on: ubuntu-latest
