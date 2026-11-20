@@ -27,7 +27,7 @@ async function station(page,n){
  assert.equal(await page.locator("#f1Stations button").nth(n-1).getAttribute("aria-current"),"step");
 }
 async function directions(page,steps){
- for(const dir of steps)await page.locator("#f1Panel .f2-controls ."+dir).click();
+ for(const dir of steps)await page.locator("#f2Quick .f2-quick-"+dir).click();
 }
 async function progress(page){return Number(await page.locator("#f1ProgressTrack").getAttribute("aria-valuenow"));}
 test("all 24 language-CEFR variants render eight localized stations and visible profile",async()=>{
@@ -133,7 +133,7 @@ test("CEFR differences: A1 fewer tasks, German C1 via Library, French C2 blocked
   await setVariant(page,"fr","C2");
   await station(page,2);
   await directions(page,["east","east"]);
-  await page.locator("#f1Panel .f2-controls .east").click();
+  await page.locator("#f2Quick .f2-quick-east").click();
   assert.match(await page.locator("#f1Panel .f2-status").innerText(),/rue est barrée/i);
   assert.equal(await progress(page),0);
   assert.deepEqual(v.errors,[]);
