@@ -273,7 +273,7 @@
       }
     }
   };
-  return Object.freeze({languages:Object.freeze(languages),levels:Object.freeze(levels),packs:Object.freeze(packs),
+  return Object.freeze({languages:Object.freeze(languages),levels:Object.freeze(levels),packs:packs,
     pack:function(code){const p=packs[code];if(!p)throw new RangeError("Unsupported language: "+code);return p;},
     profile:function(code,level){const p=this.pack(code);if(!levels.includes(level))throw new RangeError("Unsupported CEFR level: "+level);return p.profiles[level];}
   });
