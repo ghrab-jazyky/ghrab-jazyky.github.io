@@ -284,7 +284,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.getByRole('button',{name:'Zkusit znovu'}).click();
    for(const p of points.slice(0,2))await page.mouse.click(p.x,p.y,{delay:130});
    await page.mouse.click(points[2].x,points[2].y,{delay:100});
-   await demo.locator('.lsh-trainer-feedback').getByText(/Bod 3: stisk byl příliš krátký/).waitFor({timeout:3000});
+   await demo.locator('.lsh-trainer-feedback').filter({hasText:/Bod 3: stisk byl příliš krátký/}).waitFor({timeout:3000});
    await page.getByRole('button',{name:'Ukončit nácvik'}).click();
    await ctx.close();
   }finally{await browser.close();}
