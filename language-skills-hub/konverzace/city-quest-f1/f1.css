@@ -100,3 +100,21 @@
 }
 @media(max-width:350px){.f1-station-caption strong{font-size:.7rem}.f1-station-icon{width:25px;height:25px}.f1-choices .btn{padding:10px}}
 @media(prefers-reduced-motion:reduce){#f1ProgressFill{transition:none}}
+
+
+/* Phone-first contextual compass keeps map, instructions and movement together. */
+.f1-map-quick{display:none}
+@media(max-width:700px){
+ .f1-map-quick:not([hidden]){display:grid;grid-template-columns:minmax(0,1fr);gap:9px;padding:12px 13px;background:linear-gradient(115deg,#14374c,#133d43);border-top:1px solid #84e9d34f}
+ .f1-map-quick-text{display:grid;gap:4px}
+ .f1-map-quick-text strong{font-size:.85rem;line-height:1.32;color:#f2fffb}
+ .f1-map-quick-text small{font-size:.76rem;color:#abdad6;line-height:1.32}
+ .f1-map-quick-pad{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+ .f1-map-quick-pad .btn{display:grid;place-items:center;min-width:0;min-height:47px;padding:7px 4px;border-radius:12px;font-size:1.35rem;font-weight:900;color:#f6fffc;background:#26475b;border-color:#9aded465}
+ .f1-map-quick-pad .btn:disabled{opacity:.27}
+ .f1-map-quick-pad .btn:not(:disabled):hover{border-color:#b4fff1;background:#287678}
+ :root[data-theme=light] .f1-map-quick:not([hidden]){background:linear-gradient(110deg,#dcf3f0,#e1f0f7)}
+ :root[data-theme=light] .f1-map-quick-text strong{color:#153c51}
+ :root[data-theme=light] .f1-map-quick-text small{color:#376b73}
+ :root[data-theme=light] .f1-map-quick-pad .btn{background:#f3fbfd;color:#1e5673;border-color:#85bdbb}
+}
