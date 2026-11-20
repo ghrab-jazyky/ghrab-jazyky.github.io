@@ -369,17 +369,18 @@
   // One HUD, two responsive placements. Desktop uses the right mission sidebar;
   // phones keep the overlay inside the map frame. Never clone the button nodes.
   const hudDock=panel.parentElement;
-  const phoneQuery=window.matchMedia("(max-width:700px)");
+  // Match the actual layout breakpoint: the sidebar sits beside the map only above 1050px.
+  const phoneQuery=window.matchMedia("(max-width:1050px)");
   function placeHud(){
-    const phone=phoneQuery.matches;
-    const destination=phone?mapStage:hudDock;
+    const overlay=phoneQuery.matches;
+    const destination=overlay?mapStage:hudDock;
     if(quick.parentElement!==destination){
       const focused=quick.contains(document.activeElement)?document.activeElement:null;
-      if(phone)mapStage.appendChild(quick);
+      if(overlay)mapStage.appendChild(quick);
       else hudDock.insertBefore(quick,panel);
       if(focused)focused.focus({preventScroll:true});
     }
-    quick.dataset.placement=phone?"map-overlay":"sidebar";
+    quick.dataset.placement=overlay?"map-overlay":"sidebar";
   }
   placeHud();
   if(phoneQuery.addEventListener)phoneQuery.addEventListener("change",placeHud);
