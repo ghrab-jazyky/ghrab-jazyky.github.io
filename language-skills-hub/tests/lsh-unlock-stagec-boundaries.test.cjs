@@ -100,8 +100,8 @@ test('T1 draw_z minimum/maximum durations, sparse samples, reversed or skipped c
   }
   return success;
  }
- for(const duration of [400,1500,3800,4000])assert.equal(draw(duration),1,'duration '+duration);
- for(const duration of [399,4001])assert.equal(draw(duration),0,'invalid duration '+duration);
+ for(const duration of [400,1500,3800,4000,5500,6000])assert.equal(draw(duration),1,'duration '+duration);
+ for(const duration of [399,6001])assert.equal(draw(duration),0,'invalid duration '+duration);
  assert.equal(draw(1500,[3,2,1,0]),0,'reversed direction');
  assert.equal(draw(1500,[0,2,2,3]),0,'skipping P2');
  let success=0;const rec=api.createRecognizer(id,{onSuccess:()=>success++});
@@ -113,6 +113,57 @@ test('T1 draw_z minimum/maximum durations, sparse samples, reversed or skipped c
  add('up',points[3].x,points[3].y,1300);
  assert.equal(success,0,'Large departure from stroke path must cancel');
 });
+test('T1 freehand Z accepts natural size, placement, and rounded corners, not scribbles',()=>{
+ const W=390,H=844;
+ const cases={
+  ideal:[[.3,.3],[.7,.3],[.3,.7],[.7,.7]],
+  larger:[[.15,.17],[.87,.20],[.18,.82],[.84,.81]],
+  smaller:[[.32,.37],[.64,.39],[.31,.64],[.63,.63]],
+  curved:[[.21,.2],[.4,.18],[.65,.21],[.79,.25],[.74,.33],
+   [.6,.47],[.39,.65],[.20,.78],[.3,.81],[.59,.79],[.78,.82]],
+  rounded:[[.18,.19],[.3,.2],[.49,.18],[.72,.19],[.8,.24],
+   [.68,.38],[.49,.55],[.25,.73],[.2,.78],[.35,.79],[.62,.81],[.82,.79]],
+  skip:[[.3,.3],[.3,.7],[.3,.7],[.7,.7]],
+  reverse:[[.7,.7],[.3,.7],[.7,.3],[.3,.3]],
+  excursion:[[.3,.3],[.7,.3],[.9,.9],[.3,.7],[.7,.7]],
+  straight:[[.3,.3],[.7,.7]],
+  incomplete:[[.3,.3],[.7,.3],[.3,.7],[.34,.7]],
+  tiny:[[.45,.45],[.52,.45],[.45,.52],[.52,.52]]
+ };
+ function stroke(coords,duration=1850,pointerType='mouse'){
+  let successes=0,failures=0;
+  const r=api.createRecognizer('draw_z',{onSuccess:()=>successes++,onFailure:()=>failures++});
+  const sampled=[coords[0]];
+  // Real pointing devices deliver many positions; interpolate each segment.
+  for(let i=1;i<coords.length;i++){
+   const [ax,ay]=coords[i-1],[bx,by]=coords[i];
+   for(let step=1;step<=4;step++)
+    sampled.push([ax+(bx-ax)*step/4,ay+(by-ay)*step/4]);
+  }
+  sampled.forEach(([x,y],i)=>{
+   const type=i===0?'down':i===sampled.length-1?'up':'move';
+   r.feed({type,x:x*W,y:y*H,time:Math.round(duration*i/(sampled.length-1)),
+    width:W,height:H,pointerType,pointerId:1,button:0,
+    buttons:type==='up'?0:1});
+  });
+  return {successes,failures};
+ }
+ for(const id of ['ideal','larger','smaller','curved','rounded']){
+  assert.equal(stroke(cases[id],1850).successes,1,id+' mouse');
+  assert.equal(stroke(cases[id],2800,'touch').successes,1,id+' touch');
+ }
+ for(const id of ['skip','reverse','excursion','straight','incomplete','tiny'])
+  assert.equal(stroke(cases[id]).successes,0,id+' must not unlock');
+ // A disconnected Z is not one continuous gesture, even if dots align.
+ const r=api.createRecognizer('draw_z',{onSuccess:()=>assert.fail('Disconnected Z unlocked')});
+ const points=cases.ideal.map(([x,y])=>({x:x*W,y:y*H}));
+ const e=(type,p,time)=>({type,...p,time,width:W,height:H,pointerType:'mouse',
+  pointerId:1,button:0,buttons:type==='up'?0:1});
+ r.feed(e('down',points[0],0));r.feed(e('move',points[1],500));
+ r.feed(e('up',points[1],700));r.feed(e('down',points[2],950));
+ r.feed(e('up',points[3],1500));
+});
+
 test('T1 legacy corners4 mouse exact 8-second gap boundary',()=>{
  function corners(gap){let success=0;const rec=api.createRecognizer('corners4',{onSuccess:()=>success++});
   for(const [i,corner] of ['tl','tr','bl','br'].entries())

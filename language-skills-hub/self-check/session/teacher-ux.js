@@ -8,7 +8,7 @@
   tap_hold_tap:['Krátce klepněte','Podržte 2 až 3 sekundy','Znovu krátce klepněte'],
   hold_double_tap:['Vlevo podržte přibližně 3 sekundy','Vpravo krátce klepněte','Vpravo ihned klepněte znovu'],
   triangle3:['Klepněte nahoře','Klepněte vlevo dole','Vpravo dole podržte přibližně 1–2 sekundy; pak uvolněte'],
-  draw_z:['Začněte nahoře vlevo','Táhněte doprava','Pokračujte šikmo dolů doleva','Dokončete tahem doprava']
+  draw_z:['Stiskněte a držte nahoře vlevo','Táhněte doprava','Pokračujte šikmo dolů doleva','Dokončete vpravo dole a uvolněte']
  };
  const make=(tag,cls,text)=>{
   const el=document.createElement(tag);if(cls)el.className=cls;
@@ -74,6 +74,7 @@
     'Zadávejte gesto výhradně UVNITŘ simulovaného displeje vlevo. Všechny body mají stejné poměrné polohy jako na studentském telefonu; nápověda je mimo displej.':
     'Body označují místa na celé zamčené obrazovce, nikoli uvnitř rámečku „Test locked“. Na telefonu se jejich poloha přizpůsobí rozměrům displeje.':
    'Na počítači použijte myš nebo touchpad. Na telefonu či iPadu použijte prst.');
+  if(id==='draw_z'&&guided)intro.textContent+=' Při nácviku svůj tah uvidíte zeleně. Můžete kreslit větší nebo menší Z, ale prst či tlačítko držte až do konce.';
   const progress=make('p','lsh-trainer-progress','');
   progress.setAttribute('role','status');progress.setAttribute('aria-live','polite');
   heading.append(title,intro,progress);
@@ -99,10 +100,10 @@
   let lastState={steps:0,active:false,awaitingRelease:false};
   // Local, volatile teacher-trainer diagnostics only: never persist gesture traces
   // or expose these details inside student exam sessions.
-  let press=null,lastReleaseAt=null;
+  let press=null,lastReleaseAt=null,zTraceVisual=[],zLine=null;
   function paint(){
    if(closed)return;
-   if(realistic&&!guided){markers.replaceChildren();dots=[];return;}
+   if(realistic&&!guided){markers.replaceChildren();dots=[];zLine=null;return;}
    const box=stage.getBoundingClientRect(),g=api.geometry(id,box.width,box.height),groups=[];
    // iPhone/iPad safe-area insets can move the real corner hit targets.
    // Match the ACTUAL CSS hit boxes, not an imaginary 38px viewport corner.
@@ -130,7 +131,18 @@
     route.setAttribute('stroke',id==='draw_z'?'#006e9d':'#92a7b8');
     route.setAttribute('stroke-width','4');
     route.setAttribute('stroke-dasharray',id==='draw_z'?'10 8':'5 9');
-    svg.appendChild(route);markers.appendChild(svg);
+    svg.appendChild(route);
+    if(id==='draw_z'){
+     zLine=document.createElementNS(ns,'polyline');
+     zLine.setAttribute('fill','none');
+     zLine.setAttribute('stroke','#37efd0');
+     zLine.setAttribute('stroke-width','5');
+     zLine.setAttribute('stroke-linecap','round');
+     zLine.setAttribute('stroke-linejoin','round');
+     zLine.setAttribute('aria-hidden','true');
+     zTraceVisual=[];svg.appendChild(zLine);
+    }
+    markers.appendChild(svg);
    }
    dots=groups.map(p=>{
     const el=make('span','lsh-trainer-dot',p.indexes.map(i=>i+1).join(' / '));
@@ -156,7 +168,9 @@
      'Bod 3 ze 3: držíte '+elapsed.toFixed(1)+' s. Nyní uvolněte (nejpozději do 3,5 s).';
    }else if(id==='triangle3'&&s.active){
     progress.textContent='Bod '+(s.steps+1)+' ze 3: krátce klepněte a uvolněte.';
-   }else if(id==='draw_z'&&s.steps>=4)progress.textContent='Uvolněte prst nebo tlačítko myši.';
+   }else if(id==='draw_z'&&s.active)progress.textContent=
+    'Držte tlačítko myši nebo prst a kreslete jedním tahem: → ↙ →. Uvolněte až na konci.';
+   else if(id==='draw_z'&&s.steps>=4)progress.textContent='Uvolněte prst nebo tlačítko myši.';
    else progress.textContent='Krok '+(step+1)+' ze '+steps[id].length+': '+steps[id][step];
    showDots();
   }
@@ -200,14 +214,29 @@
    if(closed||completed||!binding)return;
    if(event?.target?.closest?.('button'))return;
    const next=binding.recognizer.state();
+   if(id==='draw_z'&&zLine&&event&&
+     ['pointerdown','pointermove','pointerup'].includes(event.type)){
+    const b=stage.getBoundingClientRect();
+    const x=event.clientX-b.left,y=event.clientY-b.top;
+    if(next.active&&event.type==='pointerdown')zTraceVisual=[];
+    if((next.active||lastState.active)&&
+       Number.isFinite(x)&&Number.isFinite(y)){
+     zTraceVisual.push({x,y});
+     if(zTraceVisual.length>400)zTraceVisual=zTraceVisual.filter((_,i)=>i%2===0);
+     zLine.setAttribute('points',zTraceVisual.map(p=>p.x+','+p.y).join(' '));
+    }
+   }
    const reset=(lastState.steps>0&&next.steps===0)||
     (lastState.active&&!next.active&&next.steps<=lastState.steps)||
     (lastState.awaitingRelease&&!next.awaitingRelease);
-   if(reset)feedback.textContent=id==='triangle3'?
-    triangleError(event):'Sekvence se nezdařila nebo vypršel čas. Začněte znovu od prvního kroku.';
+   if(reset)feedback.textContent=id==='triangle3'?triangleError(event):
+    id==='draw_z'?'Z se nepodařilo rozpoznat. V nápovědném režimu porovnejte zelenou stopu s přerušovanou trasou. Držte celou dobu a kreslete → ↙ →; uvolněte až vpravo dole.':
+    'Sekvence se nezdařila nebo vypršel čas. Začněte znovu od prvního kroku.';
    else if(event?.type==='pointerdown'&&!next.steps&&!next.active)
     feedback.textContent=id==='triangle3'?
-     'Začněte přímo na bodu 1 nahoře uprostřed.':'Začněte na zvýrazněném bodu.';
+     'Začněte přímo na bodu 1 nahoře uprostřed.':
+     id==='draw_z'?'Začněte v horní levé části displeje, stiskněte a držte tlačítko myši nebo prst.':
+     'Začněte na zvýrazněném bodu.';
    else if(next.steps>lastState.steps)feedback.textContent='';
    if(id==='triangle3'&&event?.type==='pointerup'){
     if(!reset&&next.steps>lastState.steps)lastReleaseAt=performance.now();
@@ -222,6 +251,7 @@
    demo.classList.remove('lsh-rehearsal-succeeded');
    binding?.reset();lastState={steps:0,active:false,awaitingRelease:false};
    press=null;lastReleaseAt=null;
+   zTraceVisual=[];if(zLine)zLine.setAttribute('points','');
    state(lastState);
   }
   function close(){
@@ -337,7 +367,7 @@
    if(isAsteroidsTeacher()){
     target.searchParams.set('source','rl-asteroids');
     target.searchParams.set('lang',currentLanguage());
-    target.searchParams.set('rehearsalVersion','rl-lock-rehearsal-20261120-7');
+    target.searchParams.set('rehearsalVersion','rl-lock-rehearsal-20261120-8');
     note.textContent='Mobilní nácvik používá stejné poměrné body jako simulovaný telefon na PC. Můžete cvičit s viditelnými body nebo zkusit reálnou zamčenou obrazovku bez nápovědy. Zavírací tlačítko slouží pouze k nácviku.';
    }else note.textContent='Naskenujte QR kód vlastním zařízením. Otevřete pouze trenažér, nikoli studentský test.';
    link.href=target.href;

@@ -24,8 +24,8 @@
    durations:[[0,700],[0,700],[400,3500]],gaps:[5000,5000],total:14000},
   {id:'draw_z',code:'n5',name:'Nakreslení Z',
    short:'Jediný tah přes čtyři body.',
-   guide:'Jedním tahem bez zvednutí prstu nakreslete přes střed obrazovky velké písmeno Z: nahoře zleva doprava, šikmo dolů doleva a dole zleva doprava. Kreslete svižně, tah má trvat asi 1–2 sekundy.',
-   points:[[.3,.3],[.7,.3],[.3,.7],[.7,.7]],kinds:['drag'],durations:[[400,4000]],total:4000}
+   guide:'Uvnitř zamčené obrazovky stiskněte nahoře vlevo a držte tlačítko nebo prst po celý tah: doprava, šikmo dolů doleva a znovu doprava. Uvolněte až na konci vpravo dole. Z může být přirozeně větší či menší; obvykle trvá 1–4 sekundy.',
+   points:[[.3,.3],[.7,.3],[.3,.7],[.7,.7]],kinds:['drag'],durations:[[400,6000]],total:6000}
  ]);
  const IDS=Object.freeze(DEFINITIONS.map(d=>d.id));
  const byId=id=>DEFINITIONS.find(d=>d.id===id)||null;
@@ -68,12 +68,12 @@
  function createRecognizer(id,options){
   const def=byId(id);if(!def)throw new Error('Unknown gesture');
   options=options||{};
-  let steps=0,firstAt=null,releasedAt=null,active=null,geometryAt=null,baseSize=null,previous=null,waitingRelease=null;
+  let steps=0,firstAt=null,releasedAt=null,active=null,geometryAt=null,baseSize=null,previous=null,waitingRelease=null,zTrace=[];
   const signalSuccess=()=>{if(options.onSuccess)options.onSuccess()};
   const fail=()=>{if(steps>=2&&options.onFailure)options.onFailure()};
   function reset(count){
    if(count)fail();
-   steps=0;firstAt=null;releasedAt=null;active=null;geometryAt=null;baseSize=null;previous=null;waitingRelease=null;
+   steps=0;firstAt=null;releasedAt=null;active=null;geometryAt=null;baseSize=null;previous=null;waitingRelease=null;zTrace=[];
   }
   function state(){return {steps,active:!!active,firstAt,releasedAt,awaitingRelease:!!waitingRelease,releasePointerId:waitingRelease?.pointerId??null};}
   function nextDeadline(){
@@ -82,7 +82,7 @@
    if(firstAt!==null&&def.total)deadline=Math.min(deadline,firstAt+def.total+1);
    if(waitingRelease)deadline=Math.min(deadline,waitingRelease.at+1501);
    else if(active){
-    const max=id==='draw_z'?4000:(def.durations?.[steps]?.[1]);
+    const max=id==='draw_z'?6000:(def.durations?.[steps]?.[1]);
     if(max!==undefined)deadline=Math.min(deadline,active.at+max+1);
    }else if(id==='corners4'&&releasedAt!==null)deadline=releasedAt+8001;
    else if(releasedAt!==null&&def.gaps?.[steps-1]!==undefined)
@@ -95,9 +95,13 @@
   function consumeDown(e,restart){
    const g=geometry(id,e.width,e.height);
    if(id==='draw_z'){
-    if(!Number.isFinite(e.x)||!Number.isFinite(e.y)||dist({x:e.x,y:e.y},g.points[0])>g.r)return;
+    // The four schematic dots are hints, not hidden pixel-perfect targets.
+    // A recognizable Z can start anywhere in the upper-left portion.
+    if(!Number.isFinite(e.x)||!Number.isFinite(e.y)||
+       e.x<g.width*.08||e.x>g.width*.58||e.y<g.height*.08||e.y>g.height*.55)return;
     firstAt=e.time;steps=1;geometryAt=g;baseSize={width:e.width,height:e.height};
-    active={pointerId:e.pointerId,at:e.time,x:e.x,y:e.y};previous={x:e.x,y:e.y};
+    active={pointerId:e.pointerId,at:e.time,x:e.x,y:e.y};
+    previous={x:e.x,y:e.y};zTrace=[previous];
     return;
    }
    const target=g.points[steps];
@@ -113,26 +117,82 @@
    if(!baseSize)baseSize={width:e.width,height:e.height};
    geometryAt=g;active={pointerId:e.pointerId,at:e.time,x:e.x,y:e.y};
   }
+  // Position- and size-tolerant single-stroke recognizer.
+  // Normalize the entire trace and compare its direction/order to the letter Z.
+  function matchesFreehandZ(trace,g){
+   if(trace.length<3)return false;
+   const xs=trace.map(p=>p.x),ys=trace.map(p=>p.y);
+   const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+   const spanX=maxX-minX,spanY=maxY-minY;
+   if(spanX<Math.max(74,g.width*.20)||spanY<Math.max(85,g.height*.13))return false;
+   const first=trace[0],last=trace[trace.length-1];
+   if(first.x>g.width*.62||first.y>g.height*.58||
+      last.x<g.width*.38||last.y<g.height*.42)return false;
+   const points=trace.map(p=>({x:(p.x-minX)/spanX,y:(p.y-minY)/spanY}));
+   const ideal=[{x:0,y:0},{x:1,y:0},{x:0,y:1},{x:1,y:1}];
+   if(dist(points[0],ideal[0])>.34||dist(points[points.length-1],ideal[3])>.34)return false;
+   let progress=0,totalError=0,count=0,bend1=false,bend2=false;
+   // Resample even sparse events, independent of pointer event frequency.
+   for(let i=1;i<points.length;i++){
+    const a=points[i-1],b=points[i],n=Math.max(1,Math.ceil(dist(a,b)/.025));
+    for(let j=1;j<=n;j++){
+     const p={x:a.x+(b.x-a.x)*j/n,y:a.y+(b.y-a.y)*j/n};
+     let bestDistance=Infinity,bestProgress=0;
+     for(let part=0;part<3;part++){
+      const projection=distSegment(p,ideal[part],ideal[part+1]);
+      if(projection.distance<bestDistance){
+       bestDistance=projection.distance;bestProgress=(part+projection.t)/3;
+      }
+     }
+     // Accept rounded corners and natural jitter, but not loops or reversal.
+     if(bestDistance>.32||bestProgress<progress-.13)return false;
+     progress=Math.max(progress,bestProgress);
+     totalError+=bestDistance;count++;
+     if(dist(p,ideal[1])<.22)bend1=true;
+     if(dist(p,ideal[2])<.22)bend2=true;
+    }
+   }
+   return bend1&&bend2&&progress>.94&&count>0&&totalError/count<.145;
+  }
+  // Sparse input (e.g. a handful of synthesized points) must retain the
+  // originally certified precise-path gate. Freehand acceptance needs enough
+  // independently observed movement events to establish a genuine stroke.
+  function matchesFixedZ(trace,g){
+   if(trace.length<3||dist(trace[0],g.points[0])>g.r||
+      dist(trace[trace.length-1],g.points[3])>g.r)return false;
+   let expected=1;
+   for(let i=1;i<trace.length;i++){
+    const a=trace[i-1],b=trace[i];
+    const n=Math.max(1,Math.ceil(dist(a,b)/Math.max(5,g.r/3)));
+    for(let j=0;j<=n;j++){
+     const q={x:a.x+(b.x-a.x)*j/n,y:a.y+(b.y-a.y)*j/n};
+     if(pointPathDistance(q,g.points)>1.5*g.r)return false;
+    }
+    const reached=[];
+    for(let index=1;index<4;index++){
+     const hit=distSegment(g.points[index],a,b);
+     if(hit.distance<=g.r)reached.push({index,t:hit.t});
+    }
+    reached.sort((x,y)=>x.t-y.t||x.index-y.index);
+    for(const hit of reached){
+     if(hit.index<expected)continue;
+     if(hit.index!==expected)return false;
+     expected++;
+    }
+   }
+   return expected===4;
+  }
   function sampleZ(p){
    const g=geometryAt;
-   const a=previous,b=p;
-   const seglen=dist(a,b),samples=Math.max(1,Math.ceil(seglen/Math.max(5,g.r/3)));
-   for(let i=0;i<=samples;i++){
-    const t=i/samples,q={x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t};
-    if(pointPathDistance(q,g.points)>1.5*g.r)return false;
+   if(p.x<0||p.y<0||p.x>g.width||p.y>g.height)return false;
+   const a=previous,b=p,n=Math.max(1,Math.ceil(dist(a,b)/Math.max(8,g.r/2)));
+   // Fixed guide dots are optional progress hints, not acceptance criteria.
+   for(let i=1;i<=n;i++){
+    const q={x:a.x+(b.x-a.x)*i/n,y:a.y+(b.y-a.y)*i/n};
+    if(steps<4&&dist(q,g.points[steps])<=1.6*g.r)steps++;
    }
-   const reached=[];
-   for(let index=1;index<4;index++){
-    const hit=distSegment(g.points[index],a,b);
-    if(hit.distance<=g.r)reached.push({index,t:hit.t});
-   }
-   reached.sort((x,y)=>x.t-y.t||x.index-y.index);
-   for(const hit of reached){
-    if(hit.index<steps)continue;
-    if(hit.index!==steps)return false;
-    steps++;
-   }
-   previous=b;
+   previous=b;zTrace.push(b);
+   if(zTrace.length>512)zTrace=zTrace.filter((_,index)=>index%2===0);
    return true;
   }
   function feed(e){
@@ -215,10 +275,12 @@
    if(id==='draw_z'){
     if(e.type==='move'||e.type==='up'){
      if(!sampleZ(point)){reset(true);return state();}
-     if(e.time-active.at>4000){reset(true);return state();}
+     if(e.time-active.at>6000){reset(true);return state();}
      if(e.type==='up'){
       const duration=e.time-active.at;
-      const done=steps===4&&duration>=400&&duration<=4000&&dist(point,geometryAt.points[3])<=geometryAt.r;
+      const done=duration>=400&&duration<=6000&&(
+       matchesFixedZ(zTrace,geometryAt)||
+       (zTrace.length>=6&&matchesFreehandZ(zTrace,geometryAt)));
       if(!done)reset(true);
       else{reset(false);signalSuccess();}
      }
