@@ -7,7 +7,7 @@
   const panel=$("f1Panel"),map=$("cityMap"),viewport=$("mapViewport");
   const svgNS="http://www.w3.org/2000/svg";
   const session={
-    station:1,mode:"solo",done:new Set(),
+    station:1,mode:"solo",done:new Set(),quickFeedback:"",
     explore:{round:0,misses:0,feedback:null},
     guided:F.createGuided(),transit:{done:false,attempts:0,feedback:null},
     repair:{phase:"identify",done:false,attempts:0,feedback:null},
@@ -152,6 +152,14 @@
     });
     legacyPairHints();renderPanel();
   }
+  const quick=node("div","f1-map-quick");
+  quick.id="f1MapQuick";quick.hidden=true;
+  quick.setAttribute("aria-label","Quick navigation controls beside the map");
+  const quickText=append(quick,"div","f1-map-quick-text");
+  const quickTitle=append(quickText,"strong","","");
+  const quickFeedback=append(quickText,"small","","");
+  const quickPad=append(quick,"div","f1-map-quick-pad");
+  viewport.insertAdjacentElement("afterend",quick);
   const layer=svgEl("g",{id:"f1GameLayer","aria-hidden":"true","pointer-events":"none"});
   const trail=svgEl("polyline",{id:"f1Path",fill:"none",stroke:"#06bdd7","stroke-width":10,"stroke-linecap":"round","stroke-linejoin":"round",opacity:.96});
   const marker=svgEl("circle",{id:"f1Marker",cx:E.position(E.start).x,cy:E.position(E.start).y,r:15,fill:"#ffc978",stroke:"#fff","stroke-width":5});
@@ -190,6 +198,45 @@
       left,top,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth"
     }));
   }
+  function renderQuick(){
+    const station=session.station;
+    const active=[4,7,8].includes(station);
+    quick.hidden=!active;
+    if(!active)return;
+    let message="",locked=false;
+    if(station===4){
+      message=session.guided.done?"Museum reached — mission complete!":
+        "Step "+(session.guided.step+1)+"/5: "+F.guided[session.guided.step].instruction;
+      locked=session.guided.done;
+    }else if(station===7){
+      message=session.detour.done?"Detour completed!":"Avoid the red road closure. Reach City Museum.";
+      locked=session.detour.done;
+    }else{
+      const q=session.quest;
+      message=q.done?"Final City Quest completed!":q.awaitingSpeech?
+        "Checkpoint reached — finish the speaking task below.":
+        "Checkpoint "+(q.stage+1)+"/3: Find "+F.checkpoints[q.stage].name+".";
+      locked=q.done||q.awaitingSpeech;
+    }
+    quickTitle.textContent=message;
+    quickFeedback.textContent=session.quickFeedback||"Follow the map without scrolling to the mission card.";
+    quickPad.replaceChildren();
+    [
+      {dir:"north",arrow:"↑"},
+      {dir:"west",arrow:"←"},
+      {dir:"south",arrow:"↓"},
+      {dir:"east",arrow:"→"}
+    ].forEach(item=>{
+      const b=button(quickPad,item.arrow,()=>{
+        const point=visiblePoint();
+        if(point)onMove(F.nextFromDirection(point,item.dir));
+      });
+      b.classList.add("f1-quick-"+item.dir);
+      b.setAttribute("aria-label","Quick move "+item.dir+" one block");
+      const point=visiblePoint();
+      b.disabled=locked||!point||!E.isNode(F.nextFromDirection(point,item.dir));
+    });
+  }
   function renderMap(){
     const active=session.station>=4&&session.station<=8&&[4,7,8].includes(session.station);
     const legacy=session.station===2;
@@ -218,9 +265,11 @@
       $("mapLocation").textContent=parts.length>1?"Route in progress":"Central Station";
       $("mapProgress").textContent=Math.max(0,parts.length-1)+" blocks walked · City Museum";
     }
+    renderQuick();
   }
   function selectStation(n){
     if(!Number.isInteger(n)||n<1||n>8)return;
+    if(session.station!==n)session.quickFeedback="";
     session.station=n;
     if(n===2){
       $("routeTab").click();
@@ -442,6 +491,7 @@
     if(n===7)session.detour=outcome.state;
     if(n===8)session.quest=outcome.state;
     if(outcome.state.done)completed(n);
+    session.quickFeedback=outcome.message;
     renderPanel();renderMap();
     const live=panel.querySelector(".f1-feedback");
     if(live&&outcome.kind==="incorrect"){live.textContent=outcome.message;live.dataset.tone="warn";}
@@ -457,6 +507,7 @@
     if(n===6)session.repair={phase:"identify",done:false,attempts:0,feedback:null};
     if(n===7)session.detour=F.createDetour();
     if(n===8)session.quest=F.createQuest();
+    session.quickFeedback="";
     if(n===2)$("mapReset").click();
     if(n===3)$("dialogueReset").click();
     session.done.delete(n);updateProgress();
