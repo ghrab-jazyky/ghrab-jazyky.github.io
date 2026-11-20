@@ -23,7 +23,7 @@
    if(realistic){
     // The lock panel is informational; the shared gesture engine measures the
     // ENTIRE lock viewport, so its targets may be outside the panel on desktop.
-    guide.textContent=def.guide+' Dotýkejte se celé zamčené obrazovky, nikoli jen rámečku „Test locked“. Body mají na telefonu jinou polohu než na monitoru.';
+    guide.textContent=def.guide+' Gesto zadávejte vůči celému displeji telefonu, nikoli pouze do rámečku „Test locked“. Při nácviku na PC se používá stejný svislý poměr displeje a stejná poměrná poloha bodů.';
     launch.textContent='Zobrazit zamčenou obrazovku bez nápovědy';
     const guided=document.getElementById('launchGuidedTrainer');
     guided.hidden=false;
