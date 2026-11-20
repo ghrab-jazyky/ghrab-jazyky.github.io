@@ -74,6 +74,7 @@
     'Zadávejte gesto výhradně UVNITŘ simulovaného displeje vlevo. Všechny body mají stejné poměrné polohy jako na studentském telefonu; nápověda je mimo displej.':
     'Body označují místa na celé zamčené obrazovce, nikoli uvnitř rámečku „Test locked“. Na telefonu se jejich poloha přizpůsobí rozměrům displeje.':
    'Na počítači použijte myš nebo touchpad. Na telefonu či iPadu použijte prst.');
+  if(id==='draw_z'&&guided)intro.textContent+=' Při nácviku svůj tah uvidíte zeleně. Můžete kreslit větší nebo menší Z, ale prst či tlačítko držte až do konce.';
   const progress=make('p','lsh-trainer-progress','');
   progress.setAttribute('role','status');progress.setAttribute('aria-live','polite');
   heading.append(title,intro,progress);
@@ -366,7 +367,7 @@
    if(isAsteroidsTeacher()){
     target.searchParams.set('source','rl-asteroids');
     target.searchParams.set('lang',currentLanguage());
-    target.searchParams.set('rehearsalVersion','rl-lock-rehearsal-20261120-7');
+    target.searchParams.set('rehearsalVersion','rl-lock-rehearsal-20261120-8');
     note.textContent='Mobilní nácvik používá stejné poměrné body jako simulovaný telefon na PC. Můžete cvičit s viditelnými body nebo zkusit reálnou zamčenou obrazovku bez nápovědy. Zavírací tlačítko slouží pouze k nácviku.';
    }else note.textContent='Naskenujte QR kód vlastním zařízením. Otevřete pouze trenažér, nikoli studentský test.';
    link.href=target.href;
