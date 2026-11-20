@@ -1,0 +1,374 @@
+{
+  "$comment": "DESIGN REFERENCE ONLY – not a production/importable F2 metro engine or approved localization. All stops, times, lines and platform data are fictional.",
+  "schemaVersion": "city-quest-f2.1-design.1",
+  "status": "proposed",
+  "fictional": true,
+  "coordinateSystem": {
+    "width": 1196,
+    "height": 756,
+    "unit": "svg-viewBox",
+    "designOnly": true
+  },
+  "defaults": {
+    "minutesPerStop": 3,
+    "transferMinutes": 4,
+    "metric": "simulated",
+    "liveData": false
+  },
+  "lines": [
+    {
+      "id": "M1",
+      "name": "Azure Line",
+      "color": "#22B7D6",
+      "marker": "solid-circle",
+      "stops": [
+        "west_end",
+        "central_station",
+        "old_town",
+        "museum_quarter",
+        "riverside",
+        "east_gardens"
+      ]
+    },
+    {
+      "id": "M2",
+      "name": "Emerald Line",
+      "color": "#31BA8C",
+      "marker": "square",
+      "stops": [
+        "north_park",
+        "university",
+        "central_station",
+        "market_square",
+        "south_gate"
+      ]
+    },
+    {
+      "id": "M3",
+      "name": "Coral Line",
+      "color": "#F28B72",
+      "marker": "diamond",
+      "stops": [
+        "hilltop",
+        "university",
+        "science_centre",
+        "museum_quarter",
+        "stadium",
+        "harbour"
+      ]
+    }
+  ],
+  "stations": [
+    {
+      "id": "west_end",
+      "labelKey": "metro.station.west_end",
+      "labelEn": "West End",
+      "x": 140,
+      "y": 320
+    },
+    {
+      "id": "central_station",
+      "labelKey": "metro.station.central_station",
+      "labelEn": "Central Station",
+      "x": 320,
+      "y": 320
+    },
+    {
+      "id": "old_town",
+      "labelKey": "metro.station.old_town",
+      "labelEn": "Old Town",
+      "x": 510,
+      "y": 320
+    },
+    {
+      "id": "museum_quarter",
+      "labelKey": "metro.station.museum_quarter",
+      "labelEn": "Museum Quarter",
+      "x": 700,
+      "y": 320
+    },
+    {
+      "id": "riverside",
+      "labelKey": "metro.station.riverside",
+      "labelEn": "Riverside",
+      "x": 875,
+      "y": 320
+    },
+    {
+      "id": "east_gardens",
+      "labelKey": "metro.station.east_gardens",
+      "labelEn": "East Gardens",
+      "x": 1050,
+      "y": 320
+    },
+    {
+      "id": "north_park",
+      "labelKey": "metro.station.north_park",
+      "labelEn": "North Park",
+      "x": 320,
+      "y": 80
+    },
+    {
+      "id": "university",
+      "labelKey": "metro.station.university",
+      "labelEn": "University",
+      "x": 320,
+      "y": 180
+    },
+    {
+      "id": "market_square",
+      "labelKey": "metro.station.market_square",
+      "labelEn": "Market Square",
+      "x": 320,
+      "y": 500
+    },
+    {
+      "id": "south_gate",
+      "labelKey": "metro.station.south_gate",
+      "labelEn": "South Gate",
+      "x": 320,
+      "y": 650
+    },
+    {
+      "id": "hilltop",
+      "labelKey": "metro.station.hilltop",
+      "labelEn": "Hilltop",
+      "x": 100,
+      "y": 140
+    },
+    {
+      "id": "science_centre",
+      "labelKey": "metro.station.science_centre",
+      "labelEn": "Science Centre",
+      "x": 500,
+      "y": 205
+    },
+    {
+      "id": "stadium",
+      "labelKey": "metro.station.stadium",
+      "labelEn": "Stadium",
+      "x": 860,
+      "y": 490
+    },
+    {
+      "id": "harbour",
+      "labelKey": "metro.station.harbour",
+      "labelEn": "Harbour",
+      "x": 1040,
+      "y": 625
+    }
+  ],
+  "interchanges": [
+    {
+      "station": "central_station",
+      "lines": [
+        "M1",
+        "M2"
+      ]
+    },
+    {
+      "station": "university",
+      "lines": [
+        "M2",
+        "M3"
+      ]
+    },
+    {
+      "station": "museum_quarter",
+      "lines": [
+        "M1",
+        "M3"
+      ]
+    }
+  ],
+  "surfacePortals": [
+    {
+      "metroStation": "central_station",
+      "cityNode": {
+        "c": 0,
+        "r": 3
+      },
+      "description": "Central railway station"
+    },
+    {
+      "metroStation": "market_square",
+      "cityNode": {
+        "c": 2,
+        "r": 2
+      },
+      "description": "Market Square"
+    },
+    {
+      "metroStation": "museum_quarter",
+      "cityNode": {
+        "c": 3,
+        "r": 2
+      },
+      "description": "Museum station entrance: one city block south of museum"
+    },
+    {
+      "metroStation": "riverside",
+      "cityNode": {
+        "c": 4,
+        "r": 2
+      },
+      "description": "Riverside Park vicinity"
+    }
+  ],
+  "platformFixtures": [
+    {
+      "station": "central_station",
+      "line": "M1",
+      "directionTerminus": "east_gardens",
+      "platform": "2"
+    },
+    {
+      "station": "central_station",
+      "line": "M2",
+      "directionTerminus": "north_park",
+      "platform": "3"
+    },
+    {
+      "station": "market_square",
+      "line": "M2",
+      "directionTerminus": "north_park",
+      "platform": "1"
+    },
+    {
+      "station": "university",
+      "line": "M3",
+      "directionTerminus": "harbour",
+      "platform": "3"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "metro_05_b1",
+      "stationNumber": 5,
+      "minLevel": "B1",
+      "start": "central_station",
+      "goal": "museum_quarter",
+      "requiredPlatforms": [
+        "central_station:M1:east_gardens:2"
+      ],
+      "legs": [
+        {
+          "line": "M1",
+          "stops": [
+            "central_station",
+            "old_town",
+            "museum_quarter"
+          ]
+        }
+      ],
+      "closedEdges": []
+    },
+    {
+      "id": "metro_06_b1",
+      "stationNumber": 6,
+      "minLevel": "B1",
+      "start": "market_square",
+      "goal": "stadium",
+      "requiredInterchanges": [
+        "university"
+      ],
+      "legs": [
+        {
+          "line": "M2",
+          "stops": [
+            "market_square",
+            "central_station",
+            "university"
+          ]
+        },
+        {
+          "line": "M3",
+          "stops": [
+            "university",
+            "science_centre",
+            "museum_quarter",
+            "stadium"
+          ]
+        }
+      ],
+      "closedEdges": []
+    },
+    {
+      "id": "metro_07_b1",
+      "stationNumber": 7,
+      "minLevel": "B1",
+      "start": "central_station",
+      "goal": "museum_quarter",
+      "requiredInterchanges": [
+        "university"
+      ],
+      "legs": [
+        {
+          "line": "M2",
+          "stops": [
+            "central_station",
+            "university"
+          ]
+        },
+        {
+          "line": "M3",
+          "stops": [
+            "university",
+            "science_centre",
+            "museum_quarter"
+          ]
+        }
+      ],
+      "closedEdges": [
+        {
+          "line": "M1",
+          "from": "old_town",
+          "to": "museum_quarter"
+        }
+      ]
+    },
+    {
+      "id": "metro_08_b1",
+      "stationNumber": 8,
+      "minLevel": "B1",
+      "start": "market_square",
+      "goal": "museum_quarter",
+      "surfaceStart": {
+        "c": 0,
+        "r": 3
+      },
+      "surfacePortalStart": {
+        "c": 2,
+        "r": 2
+      },
+      "surfacePortalEnd": {
+        "c": 3,
+        "r": 2
+      },
+      "surfaceFinish": {
+        "c": 3,
+        "r": 1
+      },
+      "legs": [
+        {
+          "line": "M2",
+          "stops": [
+            "market_square",
+            "central_station",
+            "university"
+          ]
+        },
+        {
+          "line": "M3",
+          "stops": [
+            "university",
+            "science_centre",
+            "museum_quarter"
+          ]
+        }
+      ],
+      "closedEdges": [],
+      "speakingCheckpoints": 3
+    }
+  ]
+}
