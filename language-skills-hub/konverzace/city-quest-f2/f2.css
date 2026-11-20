@@ -89,3 +89,6 @@
 @media(min-width:701px){.f2-quick:not([hidden]){display:none}}
 @media(max-width:360px){.f2-field{min-width:110px}.f2-quick-pad button{min-height:43px}}
 @media(prefers-reduced-motion:reduce){.f2-map-route{transition:none!important}}
+
+/* Do not show the inherited F0 route halo in the F2 locale-specific route view. */
+#activePath,#activePathFront,#routeHalo{display:none!important}
