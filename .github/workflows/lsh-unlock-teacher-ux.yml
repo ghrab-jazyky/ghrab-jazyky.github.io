@@ -39,10 +39,11 @@ jobs:
           node --check language-skills-hub/self-check/session/unlock-gestures.js
           node --check language-skills-hub/self-check/session/teacher-ux.js
           node --check language-skills-hub/self-check/session/gesture-trainer-page.js
-      - name: Deterministic gesture, caching, and timing tests
+      - name: Deterministic gesture, security fuzz T1, caching, and timing tests
         run: |
           node --test language-skills-hub/tests/lsh-asteroids-lock-cache.test.cjs
           node --test language-skills-hub/tests/lsh-unlock-gestures.test.cjs
+          node --test language-skills-hub/tests/lsh-unlock-fuzz-t1.test.cjs
           node --test language-skills-hub/tests/lsh-unlock-stagec-boundaries.test.cjs
       - name: Start local site
         run: |
