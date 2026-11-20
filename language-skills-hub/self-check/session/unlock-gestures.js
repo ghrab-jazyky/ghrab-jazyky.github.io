@@ -154,6 +154,34 @@
    }
    return bend1&&bend2&&progress>.94&&count>0&&totalError/count<.145;
   }
+  // Sparse input (e.g. a handful of synthesized points) must retain the
+  // originally certified precise-path gate. Freehand acceptance needs enough
+  // independently observed movement events to establish a genuine stroke.
+  function matchesFixedZ(trace,g){
+   if(trace.length<3||dist(trace[0],g.points[0])>g.r||
+      dist(trace[trace.length-1],g.points[3])>g.r)return false;
+   let expected=1;
+   for(let i=1;i<trace.length;i++){
+    const a=trace[i-1],b=trace[i];
+    const n=Math.max(1,Math.ceil(dist(a,b)/Math.max(5,g.r/3)));
+    for(let j=0;j<=n;j++){
+     const q={x:a.x+(b.x-a.x)*j/n,y:a.y+(b.y-a.y)*j/n};
+     if(pointPathDistance(q,g.points)>1.5*g.r)return false;
+    }
+    const reached=[];
+    for(let index=1;index<4;index++){
+     const hit=distSegment(g.points[index],a,b);
+     if(hit.distance<=g.r)reached.push({index,t:hit.t});
+    }
+    reached.sort((x,y)=>x.t-y.t||x.index-y.index);
+    for(const hit of reached){
+     if(hit.index<expected)continue;
+     if(hit.index!==expected)return false;
+     expected++;
+    }
+   }
+   return expected===4;
+  }
   function sampleZ(p){
    const g=geometryAt;
    if(p.x<0||p.y<0||p.x>g.width||p.y>g.height)return false;
@@ -250,7 +278,9 @@
      if(e.time-active.at>6000){reset(true);return state();}
      if(e.type==='up'){
       const duration=e.time-active.at;
-      const done=duration>=400&&duration<=6000&&matchesFreehandZ(zTrace,geometryAt);
+      const done=duration>=400&&duration<=6000&&(
+       matchesFixedZ(zTrace,geometryAt)||
+       (zTrace.length>=6&&matchesFreehandZ(zTrace,geometryAt)));
       if(!done)reset(true);
       else{reset(false);signalSuccess();}
      }
