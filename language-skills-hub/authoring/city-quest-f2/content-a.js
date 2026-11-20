@@ -123,9 +123,9 @@
       },
       directions:{
         north:"north",east:"east",south:"south",west:"west",
-        first:(dir,blocks)=>"Walk "+blocks+" "+(blocks===1?"block":"blocks")+" "+dir+".",
-        turn:(side,dir,blocks)=>"Turn "+side+" and walk "+blocks+" "+(blocks===1?"block":"blocks")+" "+dir+".",
-        continue:(dir,blocks)=>"Continue "+blocks+" "+(blocks===1?"block":"blocks")+" "+dir+".",
+        first:(dir,blocks)=>"Walk "+(blocks===1?"one":String(blocks))+" "+(blocks===1?"block":"blocks")+" "+dir+".",
+        turn:(side,dir,blocks)=>"Turn "+side+" and walk "+(blocks===1?"one":String(blocks))+" "+(blocks===1?"block":"blocks")+" "+dir+".",
+        continue:(dir,blocks)=>"Continue "+(blocks===1?"one":String(blocks))+" "+(blocks===1?"block":"blocks")+" "+dir+".",
         left:"left",right:"right",back:"around"
       },
       pair:{
@@ -251,9 +251,9 @@
       },
       directions:{
         north:"norte",east:"este",south:"sur",west:"oeste",
-        first:(dir,blocks)=>"Camina "+blocks+" "+(blocks===1?"manzana":"manzanas")+" hacia el "+dir+".",
-        turn:(side,dir,blocks)=>"Gira a la "+side+" y camina "+blocks+" "+(blocks===1?"manzana":"manzanas")+" hacia el "+dir+".",
-        continue:(dir,blocks)=>"Sigue "+blocks+" "+(blocks===1?"manzana":"manzanas")+" hacia el "+dir+".",
+        first:(dir,blocks)=>"Camina "+(blocks===1?"una":String(blocks))+" "+(blocks===1?"manzana":"manzanas")+" hacia el "+dir+".",
+        turn:(side,dir,blocks)=>"Gira a la "+side+" y camina "+(blocks===1?"una":String(blocks))+" "+(blocks===1?"manzana":"manzanas")+" hacia el "+dir+".",
+        continue:(dir,blocks)=>"Sigue "+(blocks===1?"una":String(blocks))+" "+(blocks===1?"manzana":"manzanas")+" hacia el "+dir+".",
         left:"izquierda",right:"derecha",back:"vuelve atrás"
       },
       pair:{
