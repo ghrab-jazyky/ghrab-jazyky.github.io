@@ -100,3 +100,11 @@ button{font:inherit;cursor:pointer}button:focus-visible,select:focus-visible,a:f
  .map-viewport svg .route-halo{animation:none}
  #routeResult:not([hidden]){animation:none}
 }
+
+/* Keep the map and the navigation pad usable within a single phone viewport.
+   Detailed mode pans in both directions; Whole city mode returns to a compact overview. */
+@media(max-width:700px){
+ .map-viewport.detail{height:clamp(310px,44dvh,430px);max-height:430px;overflow:auto}
+ .map-viewport:not(.detail){height:auto;max-height:none}
+ .map-viewport.detail svg{min-width:1120px}
+}
