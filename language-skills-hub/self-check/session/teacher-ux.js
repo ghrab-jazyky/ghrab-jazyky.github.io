@@ -252,6 +252,7 @@
   root.addEventListener('change',refresh);
   for(const id of ['topic','language'])
    document.getElementById(id)?.addEventListener('change',refresh);
+  summary.addEventListener('click',refresh);
   mobile.addEventListener('toggle',()=>{if(mobile.open)refresh()});
   refresh();
  }
