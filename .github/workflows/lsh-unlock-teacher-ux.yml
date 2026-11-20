@@ -6,6 +6,9 @@ on:
       - "language-skills-hub/self-check/**"
       - "language-skills-hub/tests/lsh-unlock-*.cjs"
       - "language-skills-hub/tests/lsh-asteroids-lock-rehearsal.browser.test.cjs"
+      - "language-skills-hub/tests/lsh-asteroids-lock-cache.test.cjs"
+      - "language-skills-hub/assets/hub.js"
+      - "language-skills-hub/index.html"
       - ".github/workflows/lsh-unlock-teacher-ux.yml"
   workflow_dispatch:
 
@@ -34,8 +37,9 @@ jobs:
           node --check language-skills-hub/self-check/session/unlock-gestures.js
           node --check language-skills-hub/self-check/session/teacher-ux.js
           node --check language-skills-hub/self-check/session/gesture-trainer-page.js
-      - name: Deterministic gesture and timing tests
+      - name: Deterministic gesture, caching, and timing tests
         run: |
+          node --test language-skills-hub/tests/lsh-asteroids-lock-cache.test.cjs
           node --test language-skills-hub/tests/lsh-unlock-gestures.test.cjs
           node --test language-skills-hub/tests/lsh-unlock-stagec-boundaries.test.cjs
       - name: Start local site
