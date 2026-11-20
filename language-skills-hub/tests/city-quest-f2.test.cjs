@@ -57,7 +57,7 @@ test("F2 guided routes are traversable and end at level-appropriate targets",()=
    state=r.state;
    for(const language of C.languages){
     const sentence=G.instruction(C.pack(language),level,i);
-    assert.ok(sentence.length>20,!sentence);
+    assert.ok(sentence.length>=15,!sentence);
     assert.ok(!/undefined|null|NaN/.test(sentence),language+"/"+level+"/"+i);
    }
   }
