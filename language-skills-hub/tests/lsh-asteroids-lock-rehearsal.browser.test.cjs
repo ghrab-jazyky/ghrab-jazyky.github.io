@@ -26,12 +26,28 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.equal(await demo.locator('.lsh-session-lock-panel').count(),1);
    assert.equal(await demo.locator('.lsh-session-lock-panel').isVisible(),true);
    assert.equal(await demo.evaluate(el=>el.classList.contains('lsh-lock-rehearsal')),true);
-   assert.match(await demo.evaluate(el=>getComputedStyle(el).backgroundColor),
-    /^rgba?\(2,\s*7,\s*16[,)]/,'Desktop teacher must see the real dark lock background');
+   assert.equal(await demo.locator('.lsh-rehearsal-phone-screen').count(),1,
+    'Desktop teacher must see a portrait phone viewport, not desktop-wide targets');
+   assert.match(await demo.locator('.lsh-rehearsal-phone-screen').evaluate(el=>
+    getComputedStyle(el).backgroundColor),
+    /^rgba?\(2,\s*7,\s*16[,)]/,'The simulated phone screen must use the actual dark lock background');
    assert.equal(await demo.locator('.lsh-session-lock-panel h2').textContent(),'Test locked');
    assert.equal(await demo.locator('.lsh-session-lock-panel p').first().textContent(),
     'The test was locked. Please contact your teacher. The timer continues.');
    assert.equal(await demo.locator('.lsh-trainer-dot').count(),4);
+   const phoneDisplay=await demo.locator('.lsh-rehearsal-phone-screen').boundingBox();
+   assert.ok(phoneDisplay.height>phoneDisplay.width*1.8,'Desktop preview must be portrait');
+   assert.ok(phoneDisplay.width<=390,'Preview cannot exceed phone width');
+   const positions=await demo.evaluate(root=>{
+    const stage=root.querySelector('.lsh-rehearsal-phone-screen').getBoundingClientRect();
+    return ['tl','tr','bl','br'].map(k=>{
+     const r=root.querySelector('.lsh-corner-'+k).getBoundingClientRect();
+     return [(r.x+r.width/2-stage.x)/stage.width,
+      (r.y+r.height/2-stage.y)/stage.height];
+    });
+   });
+   assert.ok(positions[0][0]<.2&&positions[0][1]<.15);
+   assert.ok(positions[3][0]>.8&&positions[3][1]>.85);
    const actual=await page.evaluate(()=>{
     const d=document.getElementById('lshTeacherDemo');
     return ['tl','tr','bl','br'].map(k=>{
