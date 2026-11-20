@@ -350,7 +350,7 @@
      '<text x="'+d.x+'" y="'+(d.y+7)+'" text-anchor="middle" fill="currentColor" font-size="23">'+indexes.join(' / ')+'</text>';
    }).join('');
   }
-  if(id==='triangle3')details+='<text x="'+(width*.5)+'" y="'+(height*.84)+'" text-anchor="middle" fill="currentColor" font-size="24">3: podržet 600–1 000 ms</text>';
+  if(id==='triangle3')details+='<text x="'+(width*.5)+'" y="'+(height*.84)+'" text-anchor="middle" fill="currentColor" font-size="24">3: podržet přibližně 1–2 s</text>';
   if(id==='tap_hold_tap')details+='<text x="'+(width*.5)+'" y="'+(height*.82)+'" text-anchor="middle" fill="currentColor" font-size="24">2: podržet 2–3 s</text>';
   if(id==='hold_double_tap')details+='<text x="'+(width*.5)+'" y="'+(height*.75)+'" text-anchor="middle" fill="currentColor" font-size="24">1: podržet asi 3 s · vpravo 2×</text>';
   return '<svg class="lsh-unlock-diagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+width+' '+height+'" role="img" aria-label="'+xml(def.name)+'">'+
