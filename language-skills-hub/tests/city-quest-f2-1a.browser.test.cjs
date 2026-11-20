@@ -106,6 +106,10 @@ test("F2.1A touch geometry: 320x568, 375x812, 390x844, iPad 768x1024",async()=>{
      "HUD must overlay map without forcing a vertical scroll "+JSON.stringify(g));
    assert.ok(g.map.h>=285,"Keep a meaningful playable city map visible "+JSON.stringify(g));
    assert.ok(g.hud.h<g.map.h*.70,"The HUD must not cover most of the map "+JSON.stringify(g));
+   if(w>=700){
+     const p=await page.locator("#f1Panel").boundingBox();
+     assert.ok(p&&p.width>=g.map.w*.90,"Tablet task panel should use the available width, not half a column: "+JSON.stringify({p,map:g.map}));
+   }
    await page.screenshot({path:path.join(SHOTS,"F21A-es-B1-"+w+"x"+h+".png"),fullPage:false});
   }
   // The HUD's buttons must keep their DOM identities after each move; no focus loss.
