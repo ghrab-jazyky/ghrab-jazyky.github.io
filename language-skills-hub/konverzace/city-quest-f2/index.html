@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-lsh-topic-id="cl-city-quest-f2">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#070f20">
+<meta name="description" content="City Quest F2: eight city navigation missions in English, Spanish, German and French at CEFR A1–C2.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; base-uri 'self'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<title>City Quest F2 · Eight Interactive Missions · EN ES DE FR · A1–C2</title>
+<link rel="stylesheet" href="../city-quest-f0/style.css">
+<link rel="stylesheet" href="../city-quest-f1/f1.css">
+<link rel="stylesheet" href="f2.css">
+<script defer src="../../authoring/city-quest-f0/engine.js"></script>
+<script defer src="../city-quest-f0/city-art.js"></script>
+<script defer src="../city-quest-f0/app.js"></script>
+<script defer src="../../authoring/city-quest-f1/engine.js"></script>
+<script defer src="../../authoring/city-quest-f2/content-a.js"></script>
+<script defer src="../../authoring/city-quest-f2/content-b.js"></script>
+<script defer src="../../authoring/city-quest-f2/engine.js"></script>
+<script defer src="f2.js"></script>
+</head>
+<body>
+<main class="app">
+<header class="topbar">
+  <div class="brand"><div class="brand-mark" aria-hidden="true">CQ</div><div><strong>CITY QUEST</strong><small>Language Skills Hub · Conversation Lab</small></div></div>
+  <div class="header-actions">
+    <button class="btn" id="themeBtn" type="button" aria-label="Switch colour theme">☀ Light mode</button>
+    <button class="btn" id="resetBtn" type="button">↺ Reset mission</button>
+    <span class="tag">F2 · DEVELOPMENT PREVIEW</span>
+  </div>
+</header>
+<section class="hero">
+ <div>
+   <span class="kicker">EXPLORE · NAVIGATE · COMMUNICATE</span>
+   <h1>Find your way.<br>Own the city.</h1>
+   <p id="f2HeroText">Explore Riverton through eight playable language missions in four languages, with CEFR-level challenges.</p>
+   <div class="tags"><span class="tag" id="f2HeroLanguage">🇬🇧 English</span><span class="tag" id="f2HeroLevel">B1</span><span class="tag">8 × 4 × 6</span><span class="tag">Offline · No API</span></div>
+ </div>
+ <div class="hero-icon" aria-hidden="true">🧭 🏙️</div>
+</section>
+<section class="f2-settings" aria-label="Language and CEFR level">
+  <div class="f2-field"><label for="f2Language" id="f2LanguageLabel">Language</label>
+    <select id="f2Language"><option value="en">🇬🇧 English</option><option value="es">🇪🇸 Español</option><option value="de">🇩🇪 Deutsch</option><option value="fr">🇫🇷 Français</option></select>
+  </div>
+  <div class="f2-field"><label for="f2Level" id="f2LevelLabel">CEFR level</label>
+    <select id="f2Level"><option>A1</option><option>A2</option><option selected>B1</option><option>B2</option><option>C1</option><option>C2</option></select>
+  </div>
+  <div class="f2-profile" id="f2Profile" aria-live="polite">Independent directions and communication repair</div>
+</section>
+<section class="f1-dashboard" aria-label="City Quest session">
+ <div class="f1-progress"><strong id="f1ProgressText">0 of 8 missions completed</strong><div class="f1-progress-track" role="progressbar" aria-label="Mission progress" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="f1ProgressTrack"><span id="f1ProgressFill"></span></div><small>Results stay in this browser tab; speaking is not automatically graded.</small></div>
+ <div class="f1-mode" role="group" aria-label="Practice mode">
+  <span>Practice mode</span>
+  <button class="btn active" type="button" id="f1Solo" aria-pressed="true">👤 Solo</button>
+  <button class="btn" type="button" id="f1Pair" aria-pressed="false">👥 Pair</button>
+ </div>
+</section>
+<nav class="f1-stations" id="f1Stations" aria-label="Eight City Quest missions"></nav>
+<div class="tabs f1-legacy-tabs" role="tablist" aria-label="Legacy F0 mission controls" hidden>
+ <button class="btn tab" type="button" id="routeTab" role="tab" aria-selected="true" aria-controls="routeView">01 · Find the Route</button>
+ <button class="btn tab" type="button" id="dialogueTab" role="tab" aria-selected="false" aria-controls="dialogueView">02 · Ask for Directions</button>
+</div>
+<section class="layout">
+ <article class="map-card">
+   <div class="map-head">
+    <div><span class="section-label">THE CITY OF RIVERTON</span><h2>Explore the neighbourhood</h2></div>
+    <div class="map-controls">
+      <button type="button" class="btn" id="mapReset" title="Reset your route">↺ Route</button>
+      <button type="button" class="btn" id="mapZoom" aria-pressed="false">＋ Map detail</button>
+    </div>
+   </div>
+   <div class="map-viewport" id="mapViewport" role="region" aria-label="Illustrated city map with accessible selectable crossroads. Pan sideways on touch screens or use direction buttons." tabindex="0">
+      <svg id="cityMap" viewBox="0 0 1196 756" role="group" aria-label="Illustrated street map of Riverton with city landmarks, Central Station at bottom left and City Museum near the upper centre">
+      </svg>
+   </div>
+   <div class="map-location-bar" id="mapLocationBar" aria-live="off">
+      <span class="map-location-icon" aria-hidden="true">📍</span>
+      <span class="map-location-copy"><strong id="mapLocation">Central Station</strong><small id="mapProgress">0 / 5 blocks · Museum mission</small></span>
+      <span class="map-touch-tip" id="mapTouchTip">↔ Swipe the city to explore · Tap a crossroads</span>
+   </div>
+   <div class="map-footer"><div class="legend"><em><span class="dot"></span> Your route</em><em>🚉 Start</em><em>🏛️ Destination</em></div><span>Use the compass pad or tap crossroads</span></div>
+ </article>
+ <div class="sidebar">
+   <section class="side-card view" id="routeView" role="tabpanel" aria-labelledby="routeTab">
+     <span class="step-label">MISSION 01 / ENGLISH B1</span><h2>Find the Route</h2>
+     <div class="objective"><strong>🎯 Your mission</strong><p>Start at Central Station. Find a walking route to the City Museum, then explain it in English.</p></div>
+     <p>Tap the nearby crossroads to build your route, or use the directional controls. Each click moves exactly one city block.</p>
+     <div class="direction-tools" role="group" aria-label="Compass controls. Choose a direction to move one block.">
+       <button class="btn" id="north" type="button" aria-label="Move north one block"><span aria-hidden="true">↑</span> North</button>
+       <button class="btn" id="south" type="button" aria-label="Move south one block"><span aria-hidden="true">↓</span> South</button>
+       <button class="btn" id="west" type="button" aria-label="Move west one block"><span aria-hidden="true">←</span> West</button>
+       <button class="btn" id="east" type="button" aria-label="Move east one block"><span aria-hidden="true">→</span> East</button>
+     </div>
+     <div class="status" id="routeStatus" role="status" aria-live="polite">You are at Central Station. Choose the next crossroads.</div>
+     <div class="route-tools"><button class="btn" id="undoBtn" type="button">↶ Undo step</button><button class="btn" id="routeGuideBtn" type="button" aria-expanded="false">🗣 Speaking support</button></div>
+     <div id="routeGuide" class="note" hidden><strong>Speaking support</strong><p>Excuse me. Go straight ahead. Turn left/right at the next crossroads. Walk past the park. The museum is on your left.</p></div>
+     <div id="routeResult" hidden>
+       <h3>🗣 Explain the route aloud</h3>
+       <p>First explain it to a tourist in your own words. Then compare your directions with the model.</p>
+       <button class="btn primary" id="modelBtn" type="button" aria-expanded="false">Reveal model directions</button>
+       <p id="modelText" class="route-list" hidden></p>
+       <p class="note"><strong>Self-check:</strong> Did you use sequence markers, correct directions, a landmark and a polite closing?</p>
+     </div>
+   </section>
+   <section class="side-card view" id="dialogueView" role="tabpanel" aria-labelledby="dialogueTab" hidden>
+      <span class="step-label">MISSION 02 / ENGLISH B1</span><h2>Ask for Directions</h2>
+      <div class="objective"><strong>🎯 Your mission</strong><p>Help a lost tourist reach the museum. Make your instructions polite, accurate and easy to follow.</p></div>
+      <div class="feedback-title"><div class="avatar" aria-hidden="true">🧳</div><div><strong id="actorName">Tourist</strong><div class="muted">Riverton City Centre</div></div></div>
+      <div class="dialogue-actor" id="actorLine"></div><p id="dialoguePrompt"></p>
+      <div class="dialogue-options" id="dialogueOptions"></div>
+      <div class="status" id="dialogueStatus" role="status" aria-live="polite">Choose a response. Your words shape the conversation.</div>
+      <div class="route-tools"><button type="button" class="btn" id="dialogueBack">↶ Previous turn</button><button type="button" class="btn" id="dialogueReset">↺ Restart conversation</button></div>
+      <p class="note">Solo mode: read the options aloud before selecting. Pair mode: Student A plays the tourist; Student B gives directions using the same map.</p>
+   </section>
+   <section class="side-card f1-mission-panel" id="f1Panel" hidden aria-live="off" aria-label="Interactive City Quest mission"></section>
+ </div>
+</section>
+<section class="guide-card">
+<h2 id="f2GuideTitle">About City Quest F2</h2><p id="f2GuideText">All four languages and all six levels use the same illustrated city and eight interactive stations. The CEFR level changes routes, constraints, task complexity and speaking support. No server, student data collection or speech grading.</p>
+</section>
+</main>
+</body>
+</html>
