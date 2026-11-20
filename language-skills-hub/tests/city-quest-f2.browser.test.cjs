@@ -148,7 +148,7 @@ test("mobile Chromium: directions beside map and no horizontal overflow at 390 a
   await setVariant(page,"es","A2");
   await station(page,4);
   assert.equal(await page.locator("#f2Quick").isVisible(),true);
-  assert.equal(await page.locator("#f2Quick button").count(),4);
+  assert.equal(await page.locator("#f2Quick .f2-quick-pad button").count(),4);
   await page.locator("#f2Quick .f2-quick-east").tap();
   assert.match(await page.locator("#f2Quick strong").innerText(),/este|izquierda|derecha|Sigue/i);
   await page.screenshot({path:path.join(OUTPUT,"f2-es-A2-mobile.png"),fullPage:true});
