@@ -81,6 +81,8 @@ test("mobile Chromium: touch control, narrow viewport, dialogue reset",async()=>
   await page.locator("#cityMap [data-node]").first().waitFor();
   const overflow=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,inner:window.innerWidth,map:document.querySelector("#mapViewport").clientWidth}));
   assert.ok(overflow.scroll<=overflow.inner+2,"page horizontal overflow: "+JSON.stringify(overflow));
+  const mobileMapThumbnail=await page.locator("#mapViewport").screenshot({type:"jpeg",quality:46});
+  console.log("CITY_QUEST_MOBILE_MAP_BEGIN"+mobileMapThumbnail.toString("base64")+"CITY_QUEST_MOBILE_MAP_END");
   await page.locator("#east").tap();
   await page.locator("#east").tap();
   await page.locator("#east").tap();
