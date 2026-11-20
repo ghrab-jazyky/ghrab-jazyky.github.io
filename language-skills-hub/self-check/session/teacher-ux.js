@@ -70,7 +70,9 @@
   const heading=make('div','lsh-trainer-heading');
   const title=make('h2',null,'Nácvik: '+def.name);
   const intro=make('p',null,realistic?
-   'Body označují místa na celé zamčené obrazovce, nikoli uvnitř rámečku „Test locked“. Na telefonu mají místa odpovídající jeho rozměrům.':
+   phonePreview?
+    'Zadávejte gesto výhradně UVNITŘ simulovaného displeje vlevo. Všechny body mají stejné poměrné polohy jako na studentském telefonu; nápověda je mimo displej.':
+    'Body označují místa na celé zamčené obrazovce, nikoli uvnitř rámečku „Test locked“. Na telefonu se jejich poloha přizpůsobí rozměrům displeje.':
    'Na počítači použijte myš nebo touchpad. Na telefonu či iPadu použijte prst.');
   const progress=make('p','lsh-trainer-progress','');
   progress.setAttribute('role','status');progress.setAttribute('aria-live','polite');
@@ -84,7 +86,7 @@
   if(phonePreview){
    const aside=make('aside','lsh-rehearsal-phone-controls');
    aside.append(make('p','lsh-rehearsal-device-label',
-    'Simulovaný displej telefonu · 390 × 844'),closeButton,heading,feedback,retry);
+    'Simulovaný telefon · poměr 390 × 844 (zmenšený náhled)'),closeButton,heading,feedback,retry);
    stage.appendChild(markers);
    demo.append(stage,aside);
   }else demo.append(heading,markers,feedback,closeButton,retry);
