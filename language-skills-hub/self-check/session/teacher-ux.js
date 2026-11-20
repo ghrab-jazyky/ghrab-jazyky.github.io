@@ -26,7 +26,7 @@
  const lockExamples=Object.freeze({
   en:['Test locked','The test was locked. Please contact your teacher. The timer continues.','Full-screen mode was exited.'],
   es:['Prueba bloqueada','La prueba se ha bloqueado. Avisa al profesor. El tiempo sigue corriendo.','Se salió de la pantalla completa.'],
-  de:['Test gesperrt','Der Test wurde gesperrt. Bitte informieren Sie die Lehrkraft. Die Zeit läuft weiter.','Der Vollbildmodus wurde verlassen.'],
+  de:['Test gesperrt','Der Test wurde gesperrt. Bitte informiere die Lehrkraft. Die Zeit läuft weiter.','Der Vollbildmodus wurde verlassen.'],
   fr:['Test verrouillé','Le test a été verrouillé. Contacte ton enseignant. Le temps continue.','Le mode plein écran a été quitté.']
  });
  function openTrainer(id,options){
