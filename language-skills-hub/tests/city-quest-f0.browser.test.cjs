@@ -43,6 +43,17 @@ test("desktop Chromium: render, route validation, model directions and dialogue"
     return out;
   });
   assert.deepEqual(collisions,[],"map labels must not overlap other landmark labels");
+  const streetCollisions=await page.locator("[data-street-label]").evaluateAll(streets=>{
+    const landmarks=Array.from(document.querySelectorAll("[data-landmark-label]"));
+    const overlap=(a,b)=>Math.min(a.x+a.width,b.x+b.width)-Math.max(a.x,b.x)>3 &&
+      Math.min(a.y+a.height,b.y+b.height)-Math.max(a.y,b.y)>3;
+    const problems=[];
+    for(const street of streets)for(const place of landmarks)
+      if(overlap(street.getBBox(),place.getBBox()))
+        problems.push(street.dataset.streetLabel+" overlaps "+place.dataset.landmarkLabel);
+    return problems;
+  });
+  assert.deepEqual(streetCollisions,[],"road names must not obscure landmark labels");
   assert.equal(await page.getByRole("button",{name:"Crossroads column 2, row 4"}).count(),1,"a map crossroads must be exposed as an accessible button");
   assert.equal(await page.locator("#routeView").isVisible(),true);
   assert.equal(await page.locator("#dialogueView").isVisible(),false);
