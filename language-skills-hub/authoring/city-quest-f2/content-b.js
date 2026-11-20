@@ -118,9 +118,9 @@
       },
       directions:{
         north:"Norden",east:"Osten",south:"Süden",west:"Westen",
-        first:(dir,blocks)=>"Gehe "+blocks+" "+(blocks===1?"Häuserblock":"Häuserblöcke")+" nach "+dir+".",
-        turn:(side,dir,blocks)=>"Biege "+side+" ab und gehe "+blocks+" "+(blocks===1?"Häuserblock":"Häuserblöcke")+" nach "+dir+".",
-        continue:(dir,blocks)=>"Gehe noch "+blocks+" "+(blocks===1?"Häuserblock":"Häuserblöcke")+" nach "+dir+".",
+        first:(dir,blocks)=>"Gehe "+(blocks===1?"einen":String(blocks))+" "+(blocks===1?"Häuserblock":"Häuserblöcke")+" nach "+dir+".",
+        turn:(side,dir,blocks)=>"Biege "+side+" ab und gehe "+(blocks===1?"einen":String(blocks))+" "+(blocks===1?"Häuserblock":"Häuserblöcke")+" nach "+dir+".",
+        continue:(dir,blocks)=>"Gehe noch "+(blocks===1?"einen":String(blocks))+" "+(blocks===1?"Häuserblock":"Häuserblöcke")+" nach "+dir+".",
         left:"links",right:"rechts",back:"um"
       },
       pair:{
@@ -252,9 +252,9 @@
       },
       directions:{
         north:"nord",east:"est",south:"sud",west:"ouest",
-        first:(dir,blocks)=>"Avancez de "+blocks+" "+(blocks===1?"pâté":"pâtés")+" de maisons vers "+(/^(est|ouest)$/.test(dir)?"l'":"le ")+dir+".",
-        turn:(side,dir,blocks)=>"Tournez à "+side+" et avancez de "+blocks+" "+(blocks===1?"pâté":"pâtés")+" de maisons vers "+(/^(est|ouest)$/.test(dir)?"l'":"le ")+dir+".",
-        continue:(dir,blocks)=>"Continuez sur "+blocks+" "+(blocks===1?"pâté":"pâtés")+" de maisons vers "+(/^(est|ouest)$/.test(dir)?"l'":"le ")+dir+".",
+        first:(dir,blocks)=>"Avancez "+(blocks===1?"d’un":"de "+blocks)+" "+(blocks===1?"pâté":"pâtés")+" de maisons vers "+(/^(est|ouest)$/.test(dir)?"l'":"le ")+dir+".",
+        turn:(side,dir,blocks)=>"Tournez à "+side+" et avancez "+(blocks===1?"d’un":"de "+blocks)+" "+(blocks===1?"pâté":"pâtés")+" de maisons vers "+(/^(est|ouest)$/.test(dir)?"l'":"le ")+dir+".",
+        continue:(dir,blocks)=>"Continuez sur "+(blocks===1?"un":String(blocks))+" "+(blocks===1?"pâté":"pâtés")+" de maisons vers "+(/^(est|ouest)$/.test(dir)?"l'":"le ")+dir+".",
         left:"gauche",right:"droite",back:"demi-tour"
       },
       pair:{
