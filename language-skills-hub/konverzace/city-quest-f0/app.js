@@ -10,6 +10,7 @@
   let history = [];
   let active = "route";
   let showingModel = false;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const el = (type, attributes = {}, text = null) => {
     const node = document.createElementNS(SVG, type);
     Object.entries(attributes).forEach(([key, val]) => node.setAttribute(key, String(val)));
@@ -56,7 +57,22 @@
   function renderRoute(){
     const points=route.map(n=>{const p=E.position(n);return p.x+","+p.y;}).join(" ");
     $("activePath").setAttribute("points",points);
-    $("activePathFront").setAttribute("points",points);
+    const front=$("activePathFront");
+    front.setAttribute("points",points);
+    const length=front.getTotalLength();
+    if(length>0 && !reduceMotion && front.dataset.length!==String(length)){
+      front.style.transition="none";
+      front.style.strokeDasharray=String(length);
+      front.style.strokeDashoffset=String(length);
+      window.requestAnimationFrame(()=>{
+        front.style.transition="stroke-dashoffset .56s cubic-bezier(.12,.75,.20,1)";
+        front.style.strokeDashoffset="0";
+      });
+    }else if(reduceMotion){
+      front.style.strokeDasharray="none";
+      front.style.strokeDashoffset="0";
+    }
+    front.dataset.length=String(length);
     const last=route[route.length-1];
     map.querySelectorAll("[data-node]").forEach(node=>{
       const [c,r]=node.getAttribute("data-node").split("-").map(Number);
@@ -71,6 +87,14 @@
       node.setAttribute("aria-current",isHere?"location":"false");
     });
     const arrived=E.same(last,E.goal);
+    const current=E.position(last);
+    $("routeHalo").setAttribute("cx",current.x);
+    $("routeHalo").setAttribute("cy",current.y);
+    $("mapViewport").classList.toggle("reached",arrived);
+    $("mapLocationBar").classList.toggle("reached",arrived);
+    $("mapLocation").textContent=arrived?"City Museum":route.length===1?"Central Station":
+      "Crossroads "+(route.length-1)+" · "+(last.c+1)+"/"+(last.r+1);
+    $("mapProgress").textContent=(route.length-1)+" blocks walked · "+E.distance(last,E.goal)+" blocks remaining";
     $("routeResult").hidden=!arrived;
     $("undoBtn").disabled=route.length<2;
     ["north","east","south","west"].forEach(id=>{
@@ -84,6 +108,23 @@
     const status=$("routeStatus");
     if(arrived){status.textContent="Destination reached! "+(route.length-1)+" blocks travelled. Explain your route aloud before revealing the model.";status.dataset.tone="good";}
   }
+  function keepWaypointVisible(){
+    const viewport=$("mapViewport");
+    if(!viewport.classList.contains("detail"))return;
+    const last=E.position(route[route.length-1]);
+    const zoom=map.getBoundingClientRect().width/1196;
+    const left=Math.max(0,last.x*zoom-viewport.clientWidth*.38);
+    viewport.scrollTo({left:left,behavior:reduceMotion?"auto":"smooth"});
+  }
+  function setMapDetail(detail){
+    const viewport=$("mapViewport");
+    viewport.classList.toggle("detail",detail);
+    $("mapZoom").setAttribute("aria-pressed",String(detail));
+    $("mapZoom").textContent=detail?"− Whole city":"＋ Map detail";
+    $("mapTouchTip").textContent=detail?"↔ Swipe sideways to explore · Tap a crossroads":"Select Map detail to zoom in on street names";
+    if(detail)window.requestAnimationFrame(keepWaypointVisible);
+    else viewport.scrollTo({left:0,behavior:"auto"});
+  }
   function applyMove(result){
     route=result.route;
     const status=$("routeStatus");
@@ -91,6 +132,7 @@
     status.dataset.tone=["success","moved","undo"].includes(result.outcome)?"good":"warn";
     showingModel=false;
     renderRoute();
+    window.requestAnimationFrame(keepWaypointVisible);
   }
   function setTab(tab){
     active=tab;
@@ -173,10 +215,15 @@
     root.dataset.theme=next;$("themeBtn").textContent=next==="dark"?"☀ Light mode":"☾ Dark mode";
   });
   $("mapZoom").addEventListener("click",()=>{
-    const zoomed=$("mapViewport").classList.toggle("zoomed");
-    $("mapZoom").setAttribute("aria-pressed",String(zoomed));
-    $("mapZoom").textContent=zoomed?"− Normal size":"⌕ Zoom";
+    setMapDetail(!$("mapViewport").classList.contains("detail"));
+  });
+  $("mapViewport").addEventListener("keydown",event=>{
+    if(event.target!==$("mapViewport")||active!=="route")return;
+    const keyMap={ArrowUp:"north",ArrowDown:"south",ArrowLeft:"west",ArrowRight:"east"};
+    if(keyMap[event.key]){event.preventDefault();applyMove(E.step(route,keyMap[event.key]));}
   });
   setTab("route");
-  drawCity();showScene();
+  drawCity();
+  setMapDetail(window.matchMedia("(max-width: 700px)").matches);
+  showScene();
 })();
