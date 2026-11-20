@@ -89,7 +89,7 @@ test("F1 desktop Chromium: all eight stations, independent gameplay, and progres
   await control(page,"east");await control(page,"east");
   await control(page,"east");
   assert.match(await page.locator("#f1Panel .f1-feedback").innerText(),/closed/i);
-  assert.match(await page.locator("#f1Closure").innerText(),/ROAD CLOSED/);
+  assert.match(await page.locator("#f1Closure").textContent(),/ROAD CLOSED/);
   await page.locator("#f1Panel .f1-actions").last().getByRole("button",{name:/Restart/}).click();
   await directRoute(page,["north","east","east","east","north"]);
   assert.match(await page.locator("#f1Panel").innerText(),/Detour found/);
@@ -147,7 +147,7 @@ test("F1 mobile WebKit: navigation and all station tabs render",async()=>{
   await station(page,5);
   assert.equal(await page.locator("#f1Panel select").count(),3);
   await station(page,7);
-  assert.match(await page.locator("#f1Closure").innerText(),/ROAD CLOSED/);
+  assert.match(await page.locator("#f1Closure").textContent(),/ROAD CLOSED/);
   await station(page,3);
   assert.equal(await page.locator("#dialogueView").isVisible(),true);
   await page.screenshot({path:path.join(OUTPUT,"f1-webkit-mobile.png"),fullPage:true});
