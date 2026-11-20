@@ -18,7 +18,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     css:document.querySelector('link[href*="session.css"]')?.getAttribute('href')
    }));
    for(const url of [teacherAssets.js,teacherAssets.css])
-    assert.match(url,/v=rl-lock-rehearsal-20261120-3/,'Asteroids teacher assets must be version-pinned');
+    assert.match(url,/v=rl-lock-rehearsal-20261120-4/,'Asteroids teacher assets must be version-pinned');
    const before=await page.evaluate(()=>Object.keys(localStorage).filter(x=>x.includes('attempt')));
    await page.getByRole('button',{name:'VYZKOUŠET GESTO'}).click();
    const demo=page.locator('#lshTeacherDemo');
@@ -63,7 +63,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await mobile.locator('summary').click();
    const url=new URL(await mobile.locator('a').getAttribute('href'));
    assert.equal(url.searchParams.get('source'),'rl-asteroids');
-   assert.equal(url.searchParams.get('rehearsalVersion'),'rl-lock-rehearsal-20261120-3');
+   assert.equal(url.searchParams.get('rehearsalVersion'),'rl-lock-rehearsal-20261120-4');
    assert.equal(url.searchParams.get('lang'),'en');
    await page.locator('#language').selectOption('es');
    const updated=new URL(await mobile.locator('a').getAttribute('href'));
