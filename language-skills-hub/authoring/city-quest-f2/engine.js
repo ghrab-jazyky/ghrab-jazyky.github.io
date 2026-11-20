@@ -46,10 +46,13 @@
   function visited(route,via){return via.every(n=>route.some(p=>E.same(p,n)));}
   function moveRoute(state,next,level,detour){
     const c=config(level),blocked=detour?F.closure:c.blocked;
+    // Detour must genuinely require navigating around the closed road at A1,
+    // not finish early at Market Square before the roadworks matter.
+    const target=detour?E.goal:c.target;
     if(state.done)return {accepted:false,state,kind:"finished"};
     const r=F.routeResult(state.route,next,blocked);
     if(!r.valid)return {accepted:false,kind:r.kind,state:{...state,attempts:state.attempts+1}};
-    const progress=r.route,arrived=E.same(progress[progress.length-1],c.target);
+    const progress=r.route,arrived=E.same(progress[progress.length-1],target);
     const completeVia=visited(progress,c.via);
     const done=arrived&&completeVia;
     return {accepted:true,kind:done?"success":arrived&&!completeVia?"missing-via":r.kind,
