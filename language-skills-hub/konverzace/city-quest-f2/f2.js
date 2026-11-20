@@ -438,7 +438,8 @@
     const p=E.position(point),scale=map.getBoundingClientRect().width/1196;
     const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     viewport.scrollTo({left:Math.max(0,p.x*scale-viewport.clientWidth*.4),
-      top:Math.max(0,p.y*scale-viewport.clientHeight*.55),behavior:reduce?"auto":"smooth"});
+      // Keep the marker ABOVE the floating HUD, rather than under the arrow pad.
+      top:Math.max(0,p.y*scale-viewport.clientHeight*.30),behavior:reduce?"auto":"smooth"});
   }
   function renderMap(){
     const path=activePath();
