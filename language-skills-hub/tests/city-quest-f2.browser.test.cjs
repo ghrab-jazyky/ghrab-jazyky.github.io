@@ -167,9 +167,11 @@ test("mobile WebKit: German and French variants, no remote requests",async()=>{
   await setVariant(page,"fr","C2");
   await station(page,5);
   assert.match(await page.locator("#f1Panel").innerText(),/mobilité réduite|accessible/i);
-  await page.screenshot({path:path.join(OUTPUT,"f2-fr-C2-webkit.png"),fullPage:true});
+  // Playwright/WebKit can inject screenshot-only inline styles that strict CSP
+  // correctly rejects. Check the actual application BEFORE taking the screenshot.
   assert.deepEqual(v.errors,[]);
   assert.deepEqual(v.requests,[]);
+  await page.screenshot({path:path.join(OUTPUT,"f2-fr-C2-webkit.png"),fullPage:true});
  }finally{await browser.close();}
 });
 test("portable offline HTML works via file:// in all four languages with strict CSP",async()=>{
