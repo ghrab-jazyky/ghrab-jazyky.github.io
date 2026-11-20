@@ -7,7 +7,7 @@
   corners4:['Levý horní roh','Pravý horní roh','Levý dolní roh','Pravý dolní roh'],
   tap_hold_tap:['Krátce klepněte','Podržte 2 až 3 sekundy','Znovu krátce klepněte'],
   hold_double_tap:['Vlevo podržte přibližně 3 sekundy','Vpravo krátce klepněte','Vpravo ihned klepněte znovu'],
-  triangle3:['Klepněte nahoře','Klepněte vlevo dole','Vpravo dole podržte 0,6 až 1 sekundu'],
+  triangle3:['Klepněte nahoře','Klepněte vlevo dole','Vpravo dole podržte přibližně 1–2 sekundy; pak uvolněte'],
   draw_z:['Začněte nahoře vlevo','Táhněte doprava','Pokračujte šikmo dolů doleva','Dokončete tahem doprava']
  };
  const make=(tag,cls,text)=>{
@@ -279,7 +279,7 @@
    if(isAsteroidsTeacher()){
     target.searchParams.set('source','rl-asteroids');
     target.searchParams.set('lang',currentLanguage());
-    target.searchParams.set('rehearsalVersion','rl-lock-rehearsal-20261120-5');
+    target.searchParams.set('rehearsalVersion','rl-lock-rehearsal-20261120-6');
     note.textContent='Mobilní nácvik používá stejné poměrné body jako simulovaný telefon na PC. Můžete cvičit s viditelnými body nebo zkusit reálnou zamčenou obrazovku bez nápovědy. Zavírací tlačítko slouží pouze k nácviku.';
    }else note.textContent='Naskenujte QR kód vlastním zařízením. Otevřete pouze trenažér, nikoli studentský test.';
    link.href=target.href;
