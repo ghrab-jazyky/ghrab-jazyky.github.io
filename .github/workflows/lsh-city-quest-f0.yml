@@ -1,0 +1,35 @@
+name: LSH City Quest F0 prototype
+on:
+  pull_request:
+    paths:
+      - "language-skills-hub/authoring/city-quest-f0/**"
+      - "language-skills-hub/konverzace/city-quest-f0/**"
+      - "language-skills-hub/tests/city-quest-f0.test.cjs"
+      - ".github/workflows/lsh-city-quest-f0.yml"
+  push:
+    branches:
+      - "feature/lsh-city-quest-f0"
+    paths:
+      - "language-skills-hub/authoring/city-quest-f0/**"
+      - "language-skills-hub/konverzace/city-quest-f0/**"
+      - "language-skills-hub/tests/city-quest-f0.test.cjs"
+      - ".github/workflows/lsh-city-quest-f0.yml"
+permissions:
+  contents: read
+jobs:
+  f0-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Syntax checks
+        run: |
+          node --check language-skills-hub/authoring/city-quest-f0/engine.js
+          node --check language-skills-hub/konverzace/city-quest-f0/app.js
+      - name: Game and dialogue regression
+        run: node --test language-skills-hub/tests/city-quest-f0.test.cjs
+      - name: Static packaging checks
+        run: |
+          node -e "const fs=require('fs'),p='language-skills-hub/konverzace/city-quest-f0/'; const h=fs.readFileSync(p+'index.html','utf8'); for(const x of ['style.css','app.js','../../authoring/city-quest-f0/engine.js'])if(!h.includes(x))throw Error('Missing resource '+x);if(!h.includes(\"connect-src 'none'\"))throw Error('CSP must prevent calls');if(h.includes('https://')||h.includes('http://'))throw Error('Unexpected external URL in prototype');"
