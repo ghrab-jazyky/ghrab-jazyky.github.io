@@ -58,7 +58,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    const phone=await touch.newPage(),phoneErrors=[];
    phone.on('pageerror',e=>phoneErrors.push(String(e)));
    await phone.goto(new URL('self-check/session/gesture-trainer.html?source=rl-asteroids&p=n1&lang=es',base).href);
-   await phone.getByRole('button',{name:'Zobrazit zamčenou obrazovku'}).click();
+   await phone.getByRole('button',{name:/^Zobrazit zamčenou obrazovku/}).click();
    const lock=phone.locator('#lshTeacherDemo');
    await lock.waitFor();
    assert.equal(await lock.locator('.lsh-session-lock-panel h2').textContent(),'Prueba bloqueada');
@@ -76,6 +76,87 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.equal(await phone.evaluate(()=>Object.keys(localStorage).filter(x=>x.includes('attempt')).length),0);
    assert.deepEqual(phoneErrors,[]);
    await touch.close();
+  }finally{await browser.close();}
+ });
+}
+
+
+// Catch the desktop screenshot regression: the exit control must be above,
+// never inside, the guided instructions at all supported viewport sizes.
+for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+ test(name+' Asteroids exit button does not overlap the guided heading',{timeout:80000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const context=await browser.newContext({viewport:{width:1649,height:718}});
+   const page=await context.newPage();
+   await page.goto(new URL(teacher,base).href);
+   await page.locator('#confirmTest:enabled').waitFor();
+   await page.locator('input[name="unlockMethod"][value="hold_double_tap"]').check();
+   await page.getByRole('button',{name:'VYZKOUŠET GESTO'}).click();
+   const demo=page.locator('#lshTeacherDemo');
+   for(const [w,h] of [[1649,718],[1024,768],[390,844],[320,568],[768,550]]){
+    await page.setViewportSize({width:w,height:h});
+    const metrics=await demo.evaluate(el=>{
+     const c=el.querySelector('.lsh-trainer-close').getBoundingClientRect();
+     const g=el.querySelector('.lsh-trainer-heading').getBoundingClientRect();
+     return {closeBottom:c.bottom,headingTop:g.top};
+    });
+    assert.ok(metrics.headingTop-metrics.closeBottom>=12,
+     'Close overlaps heading at '+w+'x'+h+': '+JSON.stringify(metrics));
+   }
+   await page.keyboard.press('Escape');
+   await context.close();
+  }finally{await browser.close();}
+ });
+ test(name+' mobile n3 long hold and double tap work with same touch targets',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const context=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true});
+   const page=await context.newPage(),errors=[];
+   page.on('pageerror',e=>errors.push(String(e)));
+   await page.goto(new URL('self-check/session/gesture-trainer.html?source=rl-asteroids&p=n3&lang=en',base).href);
+   assert.match(await page.locator('#gestureGuide').textContent(),/Vlevo pod středem/);
+   const guided=page.getByRole('button',{name:'Ukázat dotyková místa při nácviku'});
+   assert.equal(await guided.isVisible(),true,'Mobile trainer must offer visible target guidance');
+   await guided.click();
+   const demo=page.locator('#lshTeacherDemo');
+   await demo.waitFor();
+   assert.equal(await demo.locator('.lsh-trainer-dot').count(),2);
+   const geometry=await page.evaluate(()=>{
+    const overlay=document.getElementById('lshTeacherDemo'),r=overlay.getBoundingClientRect();
+    return [[.3,.6],[.7,.6]].map(([x,y])=>{
+     const px=Math.round(r.x+r.width*x),py=Math.round(r.y+r.height*y);
+     return {x:px,y:py,hit:!!document.elementFromPoint(px,py)?.closest('.lsh-unlock-surface')};
+    });
+   });
+   assert.ok(geometry.every(p=>p.hit),'Gesture targets blocked: '+JSON.stringify(geometry));
+   const [left,right]=geometry;
+   if(name==='Chromium'){
+    const cdp=await context.newCDPSession(page);
+    await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:left.x,y:left.y,id:1}]});
+    await page.waitForTimeout(2800);
+    await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+   }else{
+    await page.evaluate(p=>{
+     const el=document.querySelector('#lshTeacherDemo .lsh-unlock-surface');
+     el.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true,pointerId:42,pointerType:'touch',
+      isPrimary:true,button:0,buttons:1,clientX:p.x,clientY:p.y}));
+    },left);
+    await page.waitForTimeout(2800);
+    await page.evaluate(p=>{
+     const el=document.querySelector('#lshTeacherDemo .lsh-unlock-surface');
+     el.dispatchEvent(new PointerEvent('pointerup',{bubbles:true,pointerId:42,pointerType:'touch',
+      isPrimary:true,button:0,buttons:0,clientX:p.x,clientY:p.y}));
+    },left);
+   }
+   await page.touchscreen.tap(right.x,right.y);
+   await page.touchscreen.tap(right.x,right.y);
+   await demo.locator('.lsh-trainer-progress').filter({hasText:/Gesto bylo úspěšně rozpoznáno/}).waitFor({timeout:5000});
+   await page.getByRole('button',{name:'Ukončit nácvik'}).click();
+   assert.equal(await demo.count(),0);
+   assert.equal(await page.evaluate(()=>Object.keys(localStorage).filter(k=>k.includes('attempt')).length),0);
+   assert.deepEqual(errors,[]);
+   await context.close();
   }finally{await browser.close();}
  });
 }
