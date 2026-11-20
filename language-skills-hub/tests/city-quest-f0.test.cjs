@@ -30,8 +30,9 @@ test("F0 route instructions correctly describe turns",()=>{
  const path=[{c:0,r:3},{c:1,r:3},{c:1,r:2},{c:1,r:1},{c:2,r:1},{c:3,r:1}];
  assert.deepEqual(E.turns(path),[{direction:"east",blocks:1},{direction:"north",blocks:2},{direction:"east",blocks:2}]);
  const text=E.instructions(path);
- assert.match(text,/Turn right/); // initial orientation north -> east
+ assert.match(text,/Turn right/); // north -> east, after the first segment
  assert.match(text,/Turn left/);  // east -> north
+ assert.match(text,/Start at Central Station\\. Walk 1 block east/); // no invented initial facing
  assert.match(text,/City Museum/);
 });
 test("F0 dialogue advances, repairs mistakes and terminates",()=>{
@@ -56,4 +57,14 @@ test("F0 all crossroads are valid and reachable",()=>{
  for(let c=0;c<E.columns.length;c++){
   for(let r=0;r<E.rows.length;r++)assert.equal(E.isNode({c,r}),true);
  }
+});
+
+test("F0 finished route can be revised with Undo",()=>{
+ let route=[E.start];
+ for(const direction of ["east","east","east","north","north"])route=E.step(route,direction).route;
+ assert.equal(E.same(route[route.length-1],E.goal),true);
+ const back=E.move(route,route[route.length-2]);
+ assert.equal(back.outcome,"undo");
+ assert.equal(back.route.length,route.length-1);
+ assert.equal(E.same(back.route[back.route.length-1],E.goal),false);
 });
