@@ -37,7 +37,7 @@ jobs:
           const css=fs.readFileSync('language-skills-hub/konverzace/city-quest-f2/f2.css','utf8');
           const html=fs.readFileSync('language-skills-hub/konverzace/city-quest-f2/index.html','utf8');
           if(js.includes('f2-controls')||js.includes('controls(panel'))throw Error('Duplicate panel direction component');
-          for(const key of ['data.testid="navigation-hud"','function dispatchDirection(direction)','f2MapStage','function undoMapStep()'])
+          for(const key of ['dataset.testid="navigation-hud"','function dispatchDirection(direction)','f2MapStage','function undoMapStep()'])
             if(!js.includes(key))throw Error('Missing single HUD invariant '+key);
           if(!css.includes('#f2MapStage>#f2Quick:not([hidden])'))throw Error('Map HUD not anchored inside stage');
           if(!html.includes("connect-src 'none'"))throw Error('CSP must forbid remote requests');
