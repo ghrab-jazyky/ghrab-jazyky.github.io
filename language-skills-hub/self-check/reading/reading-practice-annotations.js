@@ -16,14 +16,21 @@
   <strong>Poznámky k textu a otázkám</strong>
  </div>
  <div data-anno-controls hidden>
-  <p class="lsh-annotation-help">Vyberte nástroj a prstem označte slovo či pasáž. Uložené poznámky otevřete klepnutím nebo najetím myší. Na počítači lze nejprve označit text. Anotace se nehodnotí.</p>
+  <p class="lsh-annotation-help">Na PC klikněte na barvu, podtržení nebo poznámku a myší označujte další úseky. Nástroj zůstane aktivní až do změny nebo opětovného kliknutí. Na mobilu označujte prstem. Uložené poznámky otevřete klepnutím nebo najetím myší. Anotace se nehodnotí.</p>
   <div class="lsh-annotation-buttons">
-   <button type="button" class="action lsh-anno-yellow-btn" data-anno-color="yellow" aria-pressed="true">Žlutě</button>
+   <button type="button" class="action lsh-anno-yellow-btn" data-anno-color="yellow" aria-pressed="false">Žlutě</button>
    <button type="button" class="action lsh-anno-green-btn" data-anno-color="green" aria-pressed="false">Zeleně</button>
    <button type="button" class="action lsh-anno-pink-btn" data-anno-color="pink" aria-pressed="false">Růžově</button>
    <button type="button" class="action lsh-anno-blue-btn" data-anno-color="blue" aria-pressed="false">Modře</button>
-   <button type="button" class="action" data-anno-underline>Podtrhnout</button>
-   <button type="button" class="action" data-anno-start-note>Přidat poznámku</button>
+   <button type="button" class="action" data-anno-underline aria-pressed="false">Podtrhnout</button>
+   <button type="button" class="action" data-anno-start-note aria-pressed="false">Přidat poznámku</button>
+   <button type="button" class="action lsh-annotation-clear-all" data-anno-clear-all disabled
+    aria-label="Smazat všechna zvýraznění, podtržení a poznámky v této variantě">Smazat všechny poznámky</button>
+  </div>
+  <div class="lsh-annotation-clear-confirm" data-anno-clear-confirm hidden role="group" aria-label="Potvrzení smazání anotací">
+   <span>Opravdu smazat všechna zvýraznění, podtržení a poznámky v aktuální jazykové a úrovňové variantě? Akci nelze vrátit zpět.</span>
+   <button type="button" class="action" data-anno-clear-confirm-action>Ano, smazat vše</button>
+   <button type="button" class="action" data-anno-clear-cancel>Zrušit</button>
   </div>
   <div data-anno-note-box hidden>
    <label for="practiceAnnotationNote">Text poznámky</label>
