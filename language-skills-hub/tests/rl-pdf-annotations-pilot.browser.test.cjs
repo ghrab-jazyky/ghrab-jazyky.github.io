@@ -317,3 +317,65 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
  });
 
 }
+
+for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+ test('RL-02 '+name+': desktop sticky tools and clear-all, reference Asteroids practice',
+ {timeout:110000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1200,height:900}});
+   await page.goto('http://127.0.0.1:8765/language-skills-hub/cteni/asteroids/index.html?lang=en&level=B2');
+   await page.locator('.lsh-anno-header-toggle').click();
+   const count=()=>page.locator('#readingAnnotationTools .lsh-annotation-item').count();
+   const select=(start,end)=>page.evaluate(({start,end})=>{
+    const para=document.querySelector('#readingBody p[data-annotation-anchor]');
+    const walker=document.createTreeWalker(para,NodeFilter.SHOW_TEXT);
+    let node;while((node=walker.nextNode())&&node.textContent.length<end){}
+    if(!node)throw new Error('Missing text node for sticky tool test');
+    const r=document.createRange();r.setStart(node,start);r.setEnd(node,end);
+    getSelection().removeAllRanges();getSelection().addRange(r);
+    para.dispatchEvent(new PointerEvent('pointerup',{bubbles:true,pointerType:'mouse',button:0}));
+   },{start,end});
+   const yellow=page.locator('[data-anno-color="yellow"]');
+   await yellow.click();
+   assert.equal(await yellow.getAttribute('aria-pressed'),'true');
+   await select(0,5);
+   await page.waitForTimeout(100);
+   assert.equal(await count(),1);
+   await select(6,11);
+   await page.waitForTimeout(100);
+   assert.equal(await count(),2,'Second drag uses same active colour');
+   const underline=page.locator('[data-anno-underline]');
+   await underline.click();
+   assert.equal(await yellow.getAttribute('aria-pressed'),'false');
+   await select(12,17);
+   await page.waitForTimeout(100);
+   assert.equal(await count(),3);
+   await underline.click();
+   assert.equal(await underline.getAttribute('aria-pressed'),'false');
+   await select(18,23);
+   await page.waitForTimeout(100);
+   assert.equal(await count(),3,'Toggled-off tool must not annotate');
+   const note=page.locator('[data-anno-start-note]');
+   await note.click();
+   await select(24,29);
+   await page.locator('[data-anno-note-box]:not([hidden])').waitFor();
+   await page.locator('[data-anno-note]').fill('This is a note');
+   await page.locator('[data-anno-save-note]').click();
+   assert.equal(await count(),4);
+   assert.equal(await note.getAttribute('aria-pressed'),'true');
+   const clear=page.locator('[data-anno-clear-all]');
+   await clear.click();
+   await page.locator('[data-anno-clear-confirm]:not([hidden])').waitFor();
+   await page.locator('[data-anno-clear-cancel]').click();
+   assert.equal(await count(),4,'Cancel preserves annotations');
+   await clear.click();
+   await page.locator('[data-anno-clear-confirm-action]').click();
+   assert.equal(await count(),0);
+   assert.equal(await clear.isDisabled(),true);
+   await page.reload();
+   await page.locator('.lsh-anno-header-toggle').click();
+   assert.equal(await count(),0,'Clear-all persists for current language/level');
+  }finally{await browser.close()}
+ });
+}

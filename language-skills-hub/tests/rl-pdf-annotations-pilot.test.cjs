@@ -79,3 +79,22 @@ test('RL-02: saved note popovers are read-only and stay outside scoring logic',(
  assert.match(practice,/data-anno-color="blue"/);
  assert.doesNotMatch(practice,/data-anno-toggle/);
 });
+
+test('RL-02: desktop auto-apply, explicit toggle-off and scoped clear-all confirmation are wired',()=>{
+ const engine=fs.readFileSync(path.join(root,'self-check/reading/reading-annotations.js'),'utf8');
+ const testUI=fs.readFileSync(path.join(root,'self-check/reading/index.html'),'utf8');
+ const practice=fs.readFileSync(path.join(root,'self-check/reading/reading-practice-annotations.js'),'utf8');
+ assert.match(engine,/let armed=null/);
+ assert.match(engine,/event\.pointerType==='mouse'&&event\.button===0/);
+ assert.match(engine,/clearSelection\(\);capture\(\);applyArmedSelection\(\)/);
+ assert.match(engine,/const same=armed===kind/);
+ assert.match(engine,/armed=same&&!selected\?null:kind/);
+ assert.match(engine,/data-anno-clear-confirm-action/);
+ assert.match(engine,/if\(!save\(\)\)/);
+ for(const markup of [testUI,practice]){
+  assert.match(markup,/data-anno-clear-all disabled/);
+  assert.match(markup,/data-anno-clear-confirm hidden/);
+  assert.match(markup,/data-anno-clear-cancel/);
+  assert.match(markup,/data-anno-color="yellow" aria-pressed="false"/);
+ }
+});

@@ -18,6 +18,19 @@
 .lsh-anno-pink-btn{border-bottom:5px solid #f5a1bd}
 .lsh-anno-blue-btn{border-bottom:5px solid #78e6f4}
 .lsh-annotation-buttons button[aria-pressed="true"]{outline:2px solid var(--accent);outline-offset:1px}
+/* The destructive action shares the tool row but stays at its right edge. */
+.lsh-annotation-toolbar .lsh-annotation-clear-all{margin-left:auto;border-color:var(--line,var(--border));font-weight:700}
+.lsh-annotation-toolbar .lsh-annotation-clear-confirm{display:flex;align-items:center;flex-wrap:wrap;gap:10px;
+ margin:8px 0 12px;padding:12px;border:1px solid var(--line,var(--border));
+ border-radius:10px;background:var(--panel2)}
+.lsh-annotation-clear-confirm span{flex:1 1 260px;font-size:.87rem}
+.lsh-annotation-toolbar [data-anno-clear-confirm][hidden]{display:none!important}
+.lsh-annotation-clear-confirm [data-anno-clear-confirm-action]{border-color:#dc8b85}
+@media(max-width:650px){
+ .lsh-annotation-toolbar .lsh-annotation-clear-all{flex:1 1 100%;margin-left:0}
+ .lsh-annotation-clear-confirm .action{flex:1 1 140px}
+}
+
 [data-anno-note-box]{display:grid;grid-template-columns:1fr auto;gap:8px;margin:12px 0;align-items:end}
 [data-anno-note-box] label{grid-column:1/-1;font-size:.86rem;font-weight:700}
 [data-anno-note-box] textarea{width:100%;min-height:68px;padding:10px;border-radius:8px;

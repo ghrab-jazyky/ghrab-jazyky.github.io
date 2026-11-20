@@ -50,13 +50,20 @@
   if(!root.CSS?.highlights||typeof root.Highlight!=='function')
    throw new Error('CSS text highlight API unavailable');
   let items=[],selected=null,enabled=false,noteDraft=null,editingIndex=null,color='yellow';
-   let armed='highlight'; // Tool-first touch workflow; desktop select-then-tool remains supported.
+  let armed=null; // Explicit tool activation; a selected tool remains armed for repeated ranges.
    const toggle=config.toggle||host.querySelector('[data-anno-toggle]');
    if(!toggle)throw new Error('Missing Reading annotation toggle');
   const status=host.querySelector('[data-anno-status]');
   const list=host.querySelector('[data-anno-list]');
   const noteBox=host.querySelector('[data-anno-note-box]');
   const noteInput=host.querySelector('[data-anno-note]');
+  const clearAll=host.querySelector('[data-anno-clear-all]');
+  const clearConfirm=host.querySelector('[data-anno-clear-confirm]');
+  const clearConfirmAction=host.querySelector('[data-anno-clear-confirm-action]');
+  const clearCancel=host.querySelector('[data-anno-clear-cancel]');
+  // The first click chooses a tool; no colour is implicitly active.
+  host.querySelectorAll('[data-anno-color],[data-anno-underline],[data-anno-start-note]')
+   .forEach(button=>button.setAttribute('aria-pressed','false'));
   const hasLocked=()=>typeof config.canEdit==='function'&&!config.canEdit();
   const isTarget=node=>containers.some(parent=>parent.contains(node));
   const targetFor=node=>{
@@ -165,6 +172,7 @@
    renderList();
   }
   function renderList(){
+   if(clearAll)clearAll.disabled=!items.length||hasLocked();
    if(!list)return;
    list.replaceChildren();
    items.forEach((item,index)=>{
@@ -235,14 +243,19 @@
    hideNote();paint();setStatus(save()?'Anotace uložena.':'Anotaci nelze trvale uložit.');
   }
   function setModeButton(button,kind){
-   armed=kind;
-   if(kind==='highlight')color=button.dataset.annoColor;
+   const same=armed===kind&&(kind!=='highlight'||color===button.dataset.annoColor);
+   armed=same&&!selected?null:kind;
+   if(kind==='highlight'&&armed)color=button.dataset.annoColor;
    host.querySelectorAll('[data-anno-color],[data-anno-underline],[data-anno-start-note]')
-    .forEach(el=>el.setAttribute('aria-pressed',String(el===button)));
+    .forEach(el=>el.setAttribute('aria-pressed',String(Boolean(armed)&&el===button)));
+   if(noteBox&&!noteBox.hidden&&editingIndex===null){
+    noteBox.hidden=true;noteDraft=null;
+   }
   }
   function startNote(){
    if(!selected){setStatus('Vyberte slovo nebo úsek textu pro poznámku.');return;}
    noteDraft=selected;editingIndex=null;clearSelection();
+   root.getSelection?.()?.removeAllRanges();
    if(noteBox)noteBox.hidden=false;
    if(noteInput){noteInput.value='';noteInput.focus({preventScroll:true})}
   }
@@ -260,28 +273,55 @@
    toggle.textContent=enabled?'Vypnout poznámky':'Zapnout poznámky';
    host.querySelector('[data-anno-controls]').hidden=!enabled;
    if(noteBox)noteBox.hidden=true;
+   if(clearConfirm)clearConfirm.hidden=true;
    noteDraft=null;editingIndex=null;
    clearSelection();
    if(!enabled){for(const key of highlightKeys)root.CSS.highlights.delete('lsh-anno-'+key);}
    else paint();
    config.onToggle?.(enabled);
    setStatus(enabled?
-    'Vyberte barvu nebo podtržení a označte prstem text. Na počítači lze také nejprve označit a pak kliknout na nástroj.':
+    'Klikněte na nástroj a pak označujte text myší opakovaně. Dalším kliknutím nástroj vypnete. Na dotykové obrazovce text označte prstem.':
     'Poznámky jsou skryté, nikoli smazané.');
   });
   host.querySelectorAll('[data-anno-color]').forEach(button=>button.addEventListener('click',()=>{
    setModeButton(button,'highlight');
    if(selected)add('highlight');
-   else setStatus('Barva vybrána. Na telefonu dlouze podržte slovo nebo označte pasáž.');
+   else setStatus(armed?'Barva je aktivní. Označujte další pasáže.':'Zvýrazňování vypnuto.');
   }));
   host.querySelector('[data-anno-underline]')?.addEventListener('click',event=>{
    setModeButton(event.currentTarget,'underline');
    if(selected)add('underline');
-   else setStatus('Podtržení vybráno. Označte slovo nebo pasáž.');
+   else setStatus(armed?'Podtržení je aktivní. Označujte další pasáže.':'Podtržení vypnuto.');
   });
   host.querySelector('[data-anno-start-note]')?.addEventListener('click',event=>{
    setModeButton(event.currentTarget,'note');
-   startNote();
+   if(selected)startNote();
+   else setStatus(armed?'Poznámky jsou aktivní. Označte text pro vložení poznámky.':'Vkládání poznámek vypnuto.');
+  });
+  clearAll?.addEventListener('click',()=>{
+   if(!enabled||hasLocked()||!items.length)return;
+   if(!clearConfirm)return;
+   clearConfirm.hidden=false;
+   clearConfirmAction?.focus({preventScroll:true});
+   setStatus('Smazání všech anotací vyžaduje potvrzení.');
+  });
+  clearCancel?.addEventListener('click',()=>{
+   if(clearConfirm)clearConfirm.hidden=true;
+   clearAll?.focus({preventScroll:true});
+   setStatus('Smazání zrušeno. Anotace zůstaly zachované.');
+  });
+  clearConfirmAction?.addEventListener('click',()=>{
+   if(!enabled||hasLocked()||!items.length)return;
+   const previous=items;
+   items=[];
+   hideNote();paint();
+   if(!save()){
+    items=previous;paint();
+    setStatus('Smazání se nepodařilo uložit. Anotace zůstaly zachované.');
+   }else setStatus('Všechna zvýraznění, podtržení i poznámky této varianty byly smazány.');
+   if(clearConfirm)clearConfirm.hidden=true;
+   if(noteBox)noteBox.hidden=true;
+   noteDraft=null;editingIndex=null;clearSelection();
   });
   host.querySelector('[data-anno-save-note]')?.addEventListener('click',()=>{
    if(hasLocked())return;
@@ -301,7 +341,8 @@
   let lastTouchSignature='',lastTouchAt=0;
   function applyAfterTouch(){
    if(!enabled||hasLocked()||!armed)return;
-   capture();
+   if(!root.getSelection?.()||root.getSelection().isCollapsed)return;
+   clearSelection();capture();
    if(!selected)return;
    const signature=[selected.anchor,selected.start,selected.end,armed,color].join('|');
    const now=Date.now();
@@ -313,7 +354,15 @@
   root.document?.addEventListener('selectionchange',()=>{if(enabled)capture()});
   for(const container of containers){
    container.addEventListener('pointerup',event=>{
-    root.setTimeout(capture,0);
+    if(event.pointerType==='mouse'&&event.button===0){
+     // The completed drag, not selectionchange, commits exactly one annotation.
+     // Clear stale selections first so a plain click cannot reapply an old range.
+     root.setTimeout(()=>{
+      if(!enabled||hasLocked()||!armed)return;
+      if(!root.getSelection?.()||root.getSelection().isCollapsed)return;
+      clearSelection();capture();applyArmedSelection();
+     },0);
+    }else root.setTimeout(capture,0);
     if(event.pointerType==='touch')root.setTimeout(applyAfterTouch,260);
     // Some mobile browsers suppress a click following touch. Use pointer
     // release too, but never take over the native answer controls.
@@ -377,10 +426,15 @@
   function restore(value){
    hideNote();items=normalized(value);clearSelection();noteDraft=null;editingIndex=null;
    if(noteBox)noteBox.hidden=true;
+   if(clearConfirm)clearConfirm.hidden=true;
    if(enabled)paint();else renderList();
   }
   function refresh(){
-   if(hasLocked()){hideNote();clearSelection();if(noteBox)noteBox.hidden=true}
+   if(hasLocked()){
+    hideNote();clearSelection();
+    if(noteBox)noteBox.hidden=true;
+    if(clearConfirm)clearConfirm.hidden=true;
+   }
    if(enabled)paint();
   }
   config.onToggle?.(false);
