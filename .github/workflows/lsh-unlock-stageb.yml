@@ -9,7 +9,17 @@ on:
       - ".github/workflows/lsh-unlock-stageb.yml"
   pull_request:
     paths:
-      - "language-skills-hub/**"
+      - "language-skills-hub/self-check/session/**"
+      - "language-skills-hub/self-check/reading/index.html"
+      - "language-skills-hub/self-check/reading/teacher.html"
+      - "language-skills-hub/self-check/listening/student.html"
+      - "language-skills-hub/self-check/listening/teacher.html"
+      - "language-skills-hub/tests/lsh-unlock-*.cjs"
+      - "language-skills-hub/tests/lsh-asteroids-lock-*.cjs"
+      - "language-skills-hub/tests/lsh-asteroids-mobile-layout.browser.test.cjs"
+      - "language-skills-hub/tests/lsh-asteroids-all-gestures-mobile-layout.browser.test.cjs"
+      - "language-skills-hub/assets/hub.js"
+      - "language-skills-hub/index.html"
       - ".github/workflows/lsh-unlock-stageb.yml"
   workflow_dispatch:
 
@@ -17,12 +27,11 @@ permissions:
   contents: read
 
 concurrency:
-  group: lsh-stageb-candidate
+  group: lsh-stageb-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
   stageb:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.ref == 'feat/lsh-unlock-gestures-v124' || github.event.pull_request.number == 128
     runs-on: ubuntu-24.04
     container:
       image: mcr.microsoft.com/playwright:v1.56.1-noble
@@ -82,5 +91,5 @@ jobs:
       - name: Report on failure
         if: failure()
         run: |
-          echo 'One or more checks failed. Do NOT merge or deploy PR #113.'
+          echo 'NO-GO: LSH unlock Stage B failed. Do not merge or deploy the affected gesture changes.'
           test -f /tmp/lsh-unlock-http.log && tail -n 60 /tmp/lsh-unlock-http.log || true
