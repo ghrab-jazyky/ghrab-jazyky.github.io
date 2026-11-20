@@ -53,7 +53,7 @@
     put(parent,"path",{d:"M"+(x+5)+" "+(y+11)+"v4m13 -4v4",stroke:"#6c796a","stroke-width":2});
   }
   function label(parent,x,y,name,variant) {
-    var size=name.length>16?10.4:11.8;
+    var size=name.length>15?12:13.4;
     var width=Math.max(65,Math.round(name.length*size*.66+22));
     var g=put(parent,"g",{"data-landmark-label":name,"aria-hidden":"true"});
     rect(g,x-width/2+2,y-12+3,width,25,"#244c58",10,{opacity:.15});
@@ -195,8 +195,8 @@
     river(map);
     roads(map,E);
     // Road names sit on pale road surfaces, separate from building labels.
-    text(map,248,104,"STATION ROAD",12.5,"#58777e",850,{"letter-spacing":2.9,"text-anchor":"middle"});
-    text(map,760,419,"MARKET AVENUE",11.8,"#59767b",850,{"letter-spacing":2.3,"text-anchor":"middle"});
+    text(map,248,104,"STATION ROAD",12.5,"#58777e",850,{"letter-spacing":2.9,"text-anchor":"middle","data-street-label":"STATION ROAD"});
+    text(map,760,447,"MARKET AVENUE",11.8,"#59767b",850,{"letter-spacing":2.3,"text-anchor":"middle","data-street-label":"MARKET AVENUE"});
     text(map,1047,652,"RIVERSIDE",12,"#59767b",850,{transform:"rotate(-90 1047 652)","letter-spacing":2});
     // Decorative crossroads: lamps and traffic furniture never obscure the clickable overlay.
     [[202,126],[374,274],[548,126],[886,274],[718,421],[374,569],[892,570],[1038,422]].forEach(function(p){lamp(map,p[0],p[1]);});
