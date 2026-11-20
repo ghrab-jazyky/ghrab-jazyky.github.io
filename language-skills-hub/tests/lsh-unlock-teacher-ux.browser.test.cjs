@@ -32,8 +32,11 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      assert.equal(await demo.locator('.lsh-session-lock-panel').count(),lab.includes('reading/')?1:0,'Asteroids uses real lock panel; Listening keeps legacy trainer');
      assert.equal(await demo.locator('.lsh-trainer-dot').count(),4);
      const corners=await page.evaluate(()=>{
-      const d=document.getElementById('lshTeacherDemo').getBoundingClientRect();
-      return [[38,38],[d.width-38,38],[38,d.height-38],[d.width-38,d.height-38]];
+      const root=document.getElementById('lshTeacherDemo');
+      return ['tl','tr','bl','br'].map(k=>{
+       const r=root.querySelector('.lsh-corner-'+k).getBoundingClientRect();
+       return [r.x+r.width/2,r.y+r.height/2];
+      });
      });
      for(const p of corners)await page.mouse.click(p[0],p[1],{delay:80});
      await demo.getByText(/Gesto bylo úspěšně rozpoznáno/).waitFor();
@@ -78,15 +81,28 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
 
 const gestureIds=['corners4','tap_hold_tap','hold_double_tap','triangle3','draw_z'];
 async function performMouseGesture(page,id){
- const {width:w,height:h}=page.viewportSize();
- const p=(x,y)=>({x:Math.round(w*x),y:Math.round(h*y)});
+ const bounds=await page.evaluate(()=>{
+  const root=document.getElementById('lshTeacherDemo');
+  const display=root.querySelector('.lsh-rehearsal-phone-screen')||root;
+  const r=display.getBoundingClientRect();
+  return {x:r.x,y:r.y,width:r.width,height:r.height};
+ });
+ const {width:w,height:h}=bounds;
+ const p=(x,y)=>({x:Math.round(bounds.x+w*x),y:Math.round(bounds.y+h*y)});
  const tap=async point=>page.mouse.click(point.x,point.y,{delay:80});
  const hold=async(point,ms)=>{
   await page.mouse.move(point.x,point.y);await page.mouse.down();
   await page.waitForTimeout(ms);await page.mouse.up();
  };
  if(id==='corners4'){
-  for(const x of [{x:38,y:38},{x:w-38,y:38},{x:38,y:h-38},{x:w-38,y:h-38}])await tap(x);
+  const corners=await page.evaluate(()=>{
+   const root=document.getElementById('lshTeacherDemo');
+   return ['tl','tr','bl','br'].map(k=>{
+    const r=root.querySelector('.lsh-corner-'+k).getBoundingClientRect();
+    return {x:r.x+r.width/2,y:r.y+r.height/2};
+   });
+  });
+  for(const x of corners)await tap(x);
  }else if(id==='tap_hold_tap'){
   await tap(p(.5,.7));await hold(p(.5,.7),2200);await tap(p(.5,.7));
  }else if(id==='hold_double_tap'){

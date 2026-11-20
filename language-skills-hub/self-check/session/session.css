@@ -144,7 +144,10 @@
 }
 .lsh-lock-rehearsal .lsh-session-reason{font-weight:700;color:#d4e7fc}
 .lsh-lock-rehearsal .lsh-trainer-heading{
- top:max(10px,env(safe-area-inset-top));width:min(550px,calc(100% - 150px));
+ /* Reserve an independent top row for "Ukončit nácvik".
+  * The old 10px override put this heading directly behind the close button. */
+ top:max(76px,calc(env(safe-area-inset-top) + 68px));
+ width:min(550px,calc(100% - 150px));
  background:#152338;color:#f4f8ff;border-color:#667a90;
 }
 .lsh-lock-rehearsal .lsh-trainer-heading p{color:#f4f8ff}
@@ -152,6 +155,8 @@
 .lsh-lock-rehearsal .lsh-trainer-feedback{
  background:#152338;color:#f4f8ff;border-color:#667a90;
 }
+/* No empty status chip before the teacher makes the first attempt. */
+.lsh-lock-rehearsal .lsh-trainer-feedback:empty{display:none}
 .lsh-lock-rehearsal .lsh-trainer-close,.lsh-lock-rehearsal .lsh-trainer-retry{
  background:#152338;color:#f4f8ff;border-color:#667a90;
 }
@@ -179,6 +184,97 @@
 @media(max-width:680px){
  .lsh-lock-rehearsal .lsh-session-lock-panel{padding:16px;margin:70px auto}
  .lsh-lock-rehearsal:not(.lsh-rehearsal-exact) .lsh-trainer-heading{
-  top:max(65px,calc(env(safe-area-inset-top) + 55px));width:calc(100% - 24px)
+  top:max(76px,calc(env(safe-area-inset-top) + 68px));width:calc(100% - 24px)
+ }
+}
+
+
+/* Reading Asteroids: PC emulates the same portrait viewport as the student's
+ * phone. The genuine student gesture recognizer receives only this viewport,
+ * not the full browser window. No production/student selectors are modified. */
+.lsh-lock-rehearsal.lsh-rehearsal-phone-mode{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ flex-wrap:nowrap!important;gap:28px!important;padding:16px!important;
+ overflow:auto!important;background:#090f1a!important;
+}
+.lsh-rehearsal-phone-screen{
+ position:relative;isolation:isolate;flex:none;
+ width:min(390px,calc(46.2dvh - 16px),calc(100vw - 32px));
+ aspect-ratio:390 / 844;
+ display:grid;place-items:center;box-sizing:border-box;
+ border:3px solid #7c91ac;border-radius:26px;overflow:hidden;
+ background:rgba(2,7,16,.96);color:#f4f8ff;
+ box-shadow:0 24px 65px #0009,0 0 0 7px #33465b;
+}
+.lsh-rehearsal-phone-screen .lsh-session-lock-panel{
+ display:block;width:calc(100% - 24px);max-width:550px;
+ margin:0;padding:clamp(12px,2vw,20px);font-size:clamp(.69rem,1.5vw,.9rem);
+}
+.lsh-rehearsal-phone-screen .lsh-session-lock-panel h2{font-size:clamp(1rem,1.8vw,1.25rem)}
+.lsh-rehearsal-phone-screen .lsh-session-corners{
+ position:absolute;inset:0;pointer-events:none;
+}
+.lsh-rehearsal-phone-screen .lsh-corner{
+ position:absolute;pointer-events:auto;
+ /* Exact normalized copy of the student's 390 × 844 portrait targets.
+  * Each 58 × 58px target and 9px inset scales with the phone preview. */
+ width:14.871795%;height:6.872038%;
+}
+.lsh-rehearsal-phone-screen .lsh-corner-tl{
+ left:2.307692%;top:1.066351%;right:auto;bottom:auto;
+}
+.lsh-rehearsal-phone-screen .lsh-corner-tr{
+ right:2.307692%;top:1.066351%;left:auto;bottom:auto;
+}
+.lsh-rehearsal-phone-screen .lsh-corner-bl{
+ left:2.307692%;bottom:1.066351%;right:auto;top:auto;
+}
+.lsh-rehearsal-phone-screen .lsh-corner-br{
+ right:2.307692%;bottom:1.066351%;left:auto;top:auto;
+}
+.lsh-rehearsal-phone-screen .lsh-unlock-surface{
+ position:absolute!important;inset:0!important;touch-action:none;
+}
+.lsh-rehearsal-phone-screen .lsh-trainer-markers{
+ /* The preview has a 3px cosmetic frame. Align gesture markers to the
+  * overlay's bounding box, which is the recognizer's coordinate origin. */
+ position:absolute;inset:-3px;pointer-events:none;
+}
+.lsh-rehearsal-phone-controls{
+ position:relative;display:flex;flex-direction:column;
+ gap:16px;flex:none;width:min(410px,calc(100vw - 32px));
+ max-height:calc(100dvh - 36px);overflow-y:auto;
+ padding:24px;color:#f4f8ff;border-radius:20px;
+ background:#152338;border:1px solid #667a90;
+}
+.lsh-rehearsal-phone-controls .lsh-rehearsal-device-label{
+ margin:0;color:#bcd3ec;font-size:.82rem;font-weight:700;
+}
+.lsh-lock-rehearsal.lsh-rehearsal-phone-mode .lsh-rehearsal-phone-controls .lsh-trainer-heading{
+ position:static!important;inset:auto!important;width:100%!important;
+ transform:none!important;margin:0;padding:0;border:0;background:transparent;
+ box-shadow:none;text-align:left;pointer-events:none;
+}
+.lsh-lock-rehearsal.lsh-rehearsal-phone-mode .lsh-rehearsal-phone-controls .lsh-trainer-heading p{
+ color:#d4e7fc;
+}
+.lsh-lock-rehearsal.lsh-rehearsal-phone-mode .lsh-rehearsal-phone-controls .lsh-trainer-close,
+.lsh-lock-rehearsal.lsh-rehearsal-phone-mode .lsh-rehearsal-phone-controls .lsh-trainer-retry{
+ position:static!important;inset:auto!important;transform:none!important;
+ width:100%;margin:0;min-height:44px;
+}
+.lsh-lock-rehearsal.lsh-rehearsal-phone-mode .lsh-rehearsal-phone-controls .lsh-trainer-feedback{
+ position:static!important;inset:auto!important;transform:none!important;
+ width:100%;max-width:100%;min-height:0;margin:0;
+}
+/* Responsive fallback if the browser is resized after the PC trainer opens. */
+@media(max-width:720px){
+ .lsh-lock-rehearsal.lsh-rehearsal-phone-mode{
+  flex-direction:column!important;justify-content:flex-start!important;
+  padding:14px!important;gap:15px!important;
+ }
+ .lsh-rehearsal-phone-controls{
+  flex:none;width:min(390px,calc(100vw - 28px));
+  max-height:none;overflow:visible;
  }
 }
