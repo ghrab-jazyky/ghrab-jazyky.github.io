@@ -28,10 +28,15 @@ test("desktop Chromium: render, route validation, model directions and dialogue"
   await page.locator("#cityMap [data-node]").first().waitFor();
   assert.equal(await page.locator("#cityMap [data-node]").count(),24);
   assert.ok(await page.locator("#cityMap").evaluate(el=>el.children.length>100),"illustrated SVG should be populated");
+  assert.equal(await page.getByRole("button",{name:"Crossroads column 2, row 4"}).count(),1,"a map crossroads must be exposed as an accessible button");
   assert.equal(await page.locator("#routeView").isVisible(),true);
   assert.equal(await page.locator("#dialogueView").isVisible(),false);
   assert.match(await page.locator("#routeStatus").innerText(),/Central Station/);
   await page.screenshot({path:path.join(SHOTS,"desktop-initial.png"),fullPage:true});
+  // Map crossroads must respond to pointer selection, not only to direction buttons.
+  await page.locator('[data-node="1-3"]').click();
+  assert.equal(await page.locator("#activePathFront").getAttribute("points"),"168,580 340,580");
+  await page.locator("#mapReset").click();
   // A long-distance map tap must not teleport.
   await page.locator('[data-node="3-1"]').click();
   assert.match(await page.locator("#routeStatus").innerText(),/next intersection/);
@@ -80,6 +85,10 @@ test("mobile Chromium: touch control, narrow viewport, dialogue reset",async()=>
   await page.locator("#north").tap();
   assert.equal(await page.locator("#routeResult").isVisible(),true);
   await page.screenshot({path:path.join(SHOTS,"mobile-success.png"),fullPage:true});
+  await page.setViewportSize({width:320,height:640});
+  const tiny=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,inner:window.innerWidth}));
+  assert.ok(tiny.scroll<=tiny.inner+2,"320px viewport overflow: "+JSON.stringify(tiny));
+  await page.screenshot({path:path.join(SHOTS,"mobile-320px.png"),fullPage:true});
   await page.locator("#dialogueTab").tap();
   assert.equal(await page.locator("#dialogueView").isVisible(),true);
   await page.locator("#dialogueOptions button").first().tap();
@@ -99,7 +108,10 @@ test("mobile WebKit: responsive render and map interactions",async()=>{
   assert.equal(await page.locator("#cityMap [data-node]").count(),24);
   await page.locator("#east").tap();
   assert.match(await page.locator("#routeStatus").innerText(),/Continue/);
-  await page.screenshot({path:path.join(SHOTS,"webkit-mobile.png"),fullPage:true});
+  assert.equal(await page.locator("body").evaluate(e=>getComputedStyle(e).backgroundColor==="rgba(0, 0, 0, 0)"),false,"external stylesheet should be applied in WebKit");
+  // Playwright may inject inline screenshot styles, which strict CSP correctly blocks.
+  // Check application errors before the screenshot, not screenshot-tool internals.
   assert.deepEqual(errors,[]);
+  await page.screenshot({path:path.join(SHOTS,"webkit-mobile.png"),fullPage:true});
  }finally{await browser.close();}
 });
