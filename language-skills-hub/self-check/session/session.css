@@ -10,12 +10,12 @@
 .lsh-session-lock-panel h2{margin:0 0 8px}
 .lsh-session-lock-panel p{line-height:1.6}
 .lsh-session-reason{font-weight:700;color:#d4e7fc}
-.lsh-corner{position:fixed;width:58px;height:58px;z-index:10001;background:transparent;border:0;border-radius:0;touch-action:manipulation;cursor:default;-webkit-tap-highlight-color:transparent;user-select:none;}
+.lsh-corner{position:fixed;width:80px;height:80px;z-index:10001;background:transparent;border:0;border-radius:0;touch-action:manipulation;cursor:default;-webkit-tap-highlight-color:transparent;user-select:none;}
 .lsh-corner:focus-visible{outline:none}
-.lsh-corner-tl{left:max(9px,env(safe-area-inset-left));top:max(9px,env(safe-area-inset-top))}
-.lsh-corner-tr{right:max(9px,env(safe-area-inset-right));top:max(9px,env(safe-area-inset-top))}
-.lsh-corner-bl{left:max(9px,env(safe-area-inset-left));bottom:max(9px,env(safe-area-inset-bottom))}
-.lsh-corner-br{right:max(9px,env(safe-area-inset-right));bottom:max(9px,env(safe-area-inset-bottom))}
+.lsh-corner-tl{left:0;top:0}
+.lsh-corner-tr{right:0;top:0}
+.lsh-corner-bl{left:0;bottom:0}
+.lsh-corner-br{right:0;bottom:0}
 @media(max-width:420px){.lsh-session-lock-panel{padding:16px;margin:70px auto}}
 
 #sessionErase{margin:12px 20px;min-height:44px}
@@ -217,20 +217,20 @@
 .lsh-rehearsal-phone-screen .lsh-corner{
  position:absolute;pointer-events:auto;
  /* Exact normalized copy of the student's 390 × 844 portrait targets.
-  * Each 58 × 58px target and 9px inset scales with the phone preview. */
- width:14.871795%;height:6.872038%;
+  * Each flush-edge 80 × 80px target scales from the 390 × 844 phone viewport. */
+ width:20.512821%;height:9.478673%;
 }
 .lsh-rehearsal-phone-screen .lsh-corner-tl{
- left:2.307692%;top:1.066351%;right:auto;bottom:auto;
+ left:0%;top:0%;right:auto;bottom:auto;
 }
 .lsh-rehearsal-phone-screen .lsh-corner-tr{
- right:2.307692%;top:1.066351%;left:auto;bottom:auto;
+ right:0%;top:0%;left:auto;bottom:auto;
 }
 .lsh-rehearsal-phone-screen .lsh-corner-bl{
- left:2.307692%;bottom:1.066351%;right:auto;top:auto;
+ left:0%;bottom:0%;right:auto;top:auto;
 }
 .lsh-rehearsal-phone-screen .lsh-corner-br{
- right:2.307692%;bottom:1.066351%;left:auto;top:auto;
+ right:0%;bottom:0%;left:auto;top:auto;
 }
 .lsh-rehearsal-phone-screen .lsh-unlock-surface{
  position:absolute!important;inset:0!important;touch-action:none;

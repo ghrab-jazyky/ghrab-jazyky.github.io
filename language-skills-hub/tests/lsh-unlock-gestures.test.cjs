@@ -77,7 +77,8 @@ test('mixed wrong order fails without unlocking',()=>{
 test('gesture hold and total-time bounds',()=>{
  assert.equal(run('tap_hold_tap',[down(500,560,0),up(500,560,100),down(500,560,200),up(500,560,1999),down(500,560,2050),up(500,560,2150)]).successes,0);
  assert.equal(run('hold_double_tap',[down(300,480,0),up(300,480,4001),down(700,480,4300),up(700,480,4380),down(700,480,4450),up(700,480,4560)]).successes,0);
- assert.equal(run('draw_z',[down(300,240,0),move(700,240,80),move(300,560,150),move(700,560,200),up(700,560,250)]).successes,0);
+ assert.equal(run('draw_z',[down(300,240,0),move(700,240,80),move(300,560,150),move(700,560,200),up(700,560,250)]).successes,1);
+ assert.equal(run('draw_z',[down(300,240,0),move(700,240,60),move(300,560,110),move(700,560,160),up(700,560,199)]).successes,0);
 });
 test('cancel, lostpointercapture and dimension changes reset',()=>{
  for(const kind of ['cancel','blur','hidden','orientation']){

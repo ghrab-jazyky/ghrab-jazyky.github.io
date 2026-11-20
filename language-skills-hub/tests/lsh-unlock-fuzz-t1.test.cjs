@@ -32,10 +32,13 @@ test('T1 coordinate adapter completes real corner targets and rejects points out
   return count;
  }
  assert.equal(completions(sequence),1,'same adapter used by both simulations must reach the recognizer');
+ const threePx=[raw('down',3,3,0),raw('down',W-3,3,600),
+  raw('down',3,H-3,1200),raw('down',W-3,H-3,1800)];
+ assert.equal(completions(threePx),1,'Each corner 3px from both edges must count');
  const outside=sequence.map((e,i)=>({...e,y:rects[i].y-1}));
- assert.equal(completions(outside),0,'the former broad 80 px edge area is not a corner target');
+ assert.equal(completions(outside),0,'A press just outside the updated corner rectangle must not count');
  const missing=sequence.map((e,i)=>i===2?{...e,x:rects[i].x+rects[i].width}:e);
- assert.equal(completions(missing),0,'a press beyond one actual 58 px target must not complete');
+ assert.equal(completions(missing),0,'A press beyond one actual 80 px target must not complete');
 });
 const distributions=['A_uniform','B_center_gaussian','C_rapid_taps','D_random_draws','E_random_holds'];
 const randomSeed=0x5a17b124;
@@ -78,8 +81,8 @@ test('T1 gate: 10,000 random sequences x five distributions x five gestures',()=
  console.log('T1 RANDOM seed=0x'+randomSeed.toString(16)+' total=250000');
  console.log('T1 DISTRIBUTIONS '+JSON.stringify(summary));
  console.log('T1 NONZERO '+JSON.stringify(nonzero));
- // Legacy corners are measured and reported; section 12.3 does not permit
- // changing their production parameters because of this simulation.
+ // The corner hit-area enlargement is explicitly owner-authorized and regression
+ // tested; continue to report random corner completions and block any for n2–n5.
  assert.deepEqual(nonzero.filter(entry=>entry.gesture!=='corners4'),[],
   'Stop: an unintended completion of gestures 2–5 requires owner review before changing parameters.');
 });

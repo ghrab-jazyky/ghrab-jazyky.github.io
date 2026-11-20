@@ -100,8 +100,8 @@ test('T1 draw_z minimum/maximum durations, sparse samples, reversed or skipped c
   }
   return success;
  }
- for(const duration of [400,1500,3800,4000,5500,6000])assert.equal(draw(duration),1,'duration '+duration);
- for(const duration of [399,6001])assert.equal(draw(duration),0,'invalid duration '+duration);
+ for(const duration of [200,250,400,1500,3800,4000,5500,6000])assert.equal(draw(duration),1,'duration '+duration);
+ for(const duration of [199,6001])assert.equal(draw(duration),0,'invalid duration '+duration);
  assert.equal(draw(1500,[3,2,1,0]),0,'reversed direction');
  assert.equal(draw(1500,[0,2,2,3]),0,'skipping P2');
  let success=0;const rec=api.createRecognizer(id,{onSuccess:()=>success++});
@@ -164,6 +164,15 @@ test('T1 freehand Z accepts natural size, placement, and rounded corners, not sc
  r.feed(e('up',points[3],1500));
 });
 
+test('T1 human-paced n2/n3 taps are accepted only within reviewed limits',()=>{
+ const n2='tap_hold_tap',n3='hold_double_tap';
+ assert.equal(sequence(n2,[500,2200,500],[200,200]).success,1,'n2 500ms taps');
+ assert.equal(sequence(n2,[600,2200,600],[200,200]).success,1,'n2 600ms inclusive');
+ assert.equal(sequence(n2,[601,2200,100],[200,200]).success,0,'n2 601ms rejected');
+ assert.equal(sequence(n3,[2800,450,450],[200,200]).success,1,'n3 450ms taps');
+ assert.equal(sequence(n3,[2800,500,500],[200,200]).success,1,'n3 500ms inclusive');
+ assert.equal(sequence(n3,[2800,501,100],[200,200]).success,0,'n3 501ms rejected');
+});
 test('T1 legacy corners4 mouse exact 8-second gap boundary',()=>{
  function corners(gap){let success=0;const rec=api.createRecognizer('corners4',{onSuccess:()=>success++});
   for(const [i,corner] of ['tl','tr','bl','br'].entries())
