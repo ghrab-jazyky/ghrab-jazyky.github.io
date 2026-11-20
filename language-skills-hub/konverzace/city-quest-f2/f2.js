@@ -11,12 +11,18 @@
   const icons=["🗺️","🧭","💬","👣","🚌","↩️","🚧","🏆"];
   const flags={en:"🇬🇧",es:"🇪🇸",de:"🇩🇪",fr:"🇫🇷"};
   const stationKeys=["explore","route","dialogue","guided","transit","repair","detour","quest"];
+  const chromeCopy={
+    en:{theme:"Toggle light/dark theme",detail:"Map detail",whole:"Whole city",tip:"Select Map detail to zoom in on street names",tipZoom:"Swipe across the city map to explore",kicker:"EXPLORE · NAVIGATE · COMMUNICATE",caption:"CITY ADVENTURE · WALKING MAP"},
+    es:{theme:"Cambiar tema claro u oscuro",detail:"Ampliar mapa",whole:"Toda la ciudad",tip:"Amplía el mapa para leer las calles",tipZoom:"Desliza el mapa para explorar la ciudad",kicker:"EXPLORA · ORIÉNTATE · COMUNICA",caption:"AVENTURA URBANA · MAPA A PIE"},
+    de:{theme:"Hell- oder Dunkelmodus wechseln",detail:"Kartendetails",whole:"Gesamte Stadt",tip:"Vergrößere die Karte, um Straßennamen zu lesen",tipZoom:"Wische über die Karte, um die Stadt zu erkunden",kicker:"ERKUNDEN · ORIENTIEREN · SPRECHEN",caption:"STADTABENTEUER · FUSSGÄNGERKARTE"},
+    fr:{theme:"Changer de thème clair ou sombre",detail:"Détail du plan",whole:"Vue générale",tip:"Agrandissez le plan pour lire les noms de rues",tipZoom:"Faites glisser le plan pour explorer la ville",kicker:"EXPLORER · S'ORIENTER · ÉCHANGER",caption:"AVENTURE URBAINE · PLAN PIÉTON"}
+  };
   let state=makeSession("en","B1","solo");
   let flash=null;
   function makeSession(language,level,mode){
     return {language,level,mode:mode||"solo",station:1,done:new Set(),
       explore:{round:0,misses:0},route:G.routeStart(),dialogue:G.dialogueStart(),
-      guided:G.guidedStart(),transit:{done:false,tries:0},
+      guided:G.guidedStart(),transit:{done:false,tries:0,selection:{}},
       repair:{phase:0,done:false,tries:0},detour:G.routeStart(),quest:G.questStart()};
   }
   const pack=()=>C.pack(state.language),profile=()=>C.profile(state.language,state.level),ui=()=>pack().ui;
@@ -234,6 +240,8 @@
       const select=el("select",field);select.setAttribute("aria-label",item.label);
       const placeholder=el("option",select,"",ui().select);placeholder.value="";
       item.choices.forEach(c=>{const option=el("option",select,"",c.label);option.value=c.value;});
+      select.value=game.selection[item.key]||"";
+      select.addEventListener("change",()=>{game.selection[item.key]=select.value;});
       selected[item.key]=select;
     });
     status(panel,flash?.text||ui().choose,flash?.tone);
@@ -377,9 +385,13 @@
     if(!need)return;
     const p=E.position(F.closure.a),q=E.position(F.closure.b);
     blocked.appendChild(svg("line",{x1:p.x,y1:p.y,x2:q.x,y2:q.y,class:"f2-road-close"}));
-    const t=svg("text",{x:(p.x+q.x)/2,y:p.y-20,"font-family":"system-ui,sans-serif","font-size":12,"font-weight":900,"text-anchor":"middle",fill:"#993039"});
-    t.textContent=ui().closed;
-    blocked.appendChild(t);
+    // The closure callout stays inside the road corridor, avoiding house labels.
+    const mid=(p.x+q.x)/2,label=ui().closed;
+    const width=Math.max(100,Math.min(142,label.length*7+18));
+    blocked.appendChild(svg("rect",{x:mid-width/2,y:p.y-15,width,height:27,rx:9,
+      fill:"#a82e3c",stroke:"#fff5ee","stroke-width":1.7}));
+    const t=svg("text",{x:mid,y:p.y+3,"font-family":"system-ui,sans-serif","font-size":11.4,"font-weight":900,"text-anchor":"middle",fill:"#ffffff"});
+    t.textContent=label;blocked.appendChild(t);
   }
   function followMap(){
     if(!viewport.classList.contains("detail"))return;
@@ -429,7 +441,16 @@
       const initial=t.dataset.f2Original||t.textContent;
       if(!t.dataset.f2Original)t.dataset.f2Original=initial;
       if(roads[state.language][initial])t.textContent=roads[state.language][initial];
+      if(initial==="CITY ADVENTURE · WALKING MAP")t.textContent=chromeCopy[state.language].caption;
     });
+  }
+  function applyChromeLabels(){
+    const l=chromeCopy[state.language],detail=viewport.classList.contains("detail");
+    $("themeBtn").textContent=document.documentElement.dataset.theme==="dark"?"☀":"☾";
+    $("themeBtn").setAttribute("aria-label",l.theme);
+    $("mapZoom").textContent=detail?"− "+l.whole:"＋ "+l.detail;
+    $("mapTouchTip").textContent=detail?l.tipZoom:l.tip;
+    document.querySelector(".hero .kicker").textContent=l.kicker;
   }
   function applyLanguageUI(){
     const u=ui(),p=pack(),prof=profile();
@@ -447,7 +468,7 @@
     $("f1Pair").textContent="👥 "+u.pair;
     $("resetBtn").textContent="↺ "+u.restartStation;
     $("mapReset").textContent="↺ "+u.restart;
-    $("themeBtn").setAttribute("aria-label",u.mode+" / "+u.review);
+    applyChromeLabels();
     document.querySelector(".map-head .section-label").textContent=u.city.toUpperCase();
     document.querySelector(".map-head h2").textContent=u.map;
     const mapFooter=document.querySelector(".map-footer");
@@ -486,7 +507,7 @@
     if(n===2)state.route=G.routeStart();
     if(n===3)state.dialogue=G.dialogueStart();
     if(n===4)state.guided=G.guidedStart();
-    if(n===5)state.transit={done:false,tries:0};
+    if(n===5)state.transit={done:false,tries:0,selection:{}};
     if(n===6)state.repair={phase:0,done:false,tries:0};
     if(n===7)state.detour=G.routeStart();
     if(n===8)state.quest=G.questStart();
@@ -520,6 +541,8 @@
   $("f2Level").addEventListener("change",e=>resetSession(state.language,e.target.value));
   $("f1Solo").addEventListener("click",()=>setMode("solo"));
   $("f1Pair").addEventListener("click",()=>setMode("pair"));
+  $("themeBtn").addEventListener("click",applyChromeLabels);
+  $("mapZoom").addEventListener("click",applyChromeLabels);
   map.querySelectorAll("[data-node]").forEach(node=>{
     const [c,r]=node.dataset.node.split("-").map(Number);
     node.addEventListener("click",()=>{if(activePath())onMove({c,r});});
