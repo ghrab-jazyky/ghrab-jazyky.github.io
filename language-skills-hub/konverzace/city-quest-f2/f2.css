@@ -177,3 +177,42 @@
   .sidebar #f1Panel:not([hidden]){grid-column:1 / -1}
 }
 
+/* F2.1A responsive placement: desktops/tablets show the one navigation HUD
+   as a distinct card in the mission sidebar, preserving the FULL city map.
+   Only phone layouts use the map overlay already defined above. */
+@media(min-width:701px){
+  .sidebar>#f2Quick:not([hidden]){
+    position:static;grid-column:1 / -1;
+    display:grid;grid-template-columns:minmax(0,1fr) 148px;
+    grid-template-areas:"head pad" "caption pad" "tools pad";
+    gap:7px 12px;align-items:start;
+    width:100%;max-width:none;min-width:0;
+    padding:15px 16px;border:1px solid #9cead57d;
+    border-radius:16px;
+    background:linear-gradient(130deg,#103749,#173c48);
+    box-shadow:0 8px 26px #071b2b70;
+  }
+  .sidebar #f1Panel:not([hidden]){grid-column:1 / -1}
+  .sidebar>#f2Quick .f2-hud-instruction{
+    font-size:.89rem;line-height:1.38;
+    display:block;overflow:visible;-webkit-line-clamp:unset;
+  }
+  .sidebar>#f2Quick .f2-quick-caption{
+    display:block;overflow:visible;-webkit-line-clamp:unset;
+    font-size:.75rem;
+  }
+  .sidebar>#f2Quick .f2-hud-location{font-size:.7rem}
+  .sidebar>#f2Quick .f2-quick-pad{max-width:148px;gap:4px}
+  .sidebar>#f2Quick .f2-quick-pad button{height:48px;min-height:48px;min-width:44px}
+  :root[data-theme=light] .sidebar>#f2Quick:not([hidden]){
+    background:linear-gradient(130deg,#e6f8f6,#dfeef7);
+    border-color:#72b2b6;
+    box-shadow:0 6px 22px #285c6850;
+  }
+  /* The metro/game content can be long: task and navigation are independent cards. */
+  .sidebar>#f2Quick[hidden]{display:none}
+}
+@media(min-width:701px) and (max-width:1050px){
+  .sidebar>#f2Quick:not([hidden]){grid-template-columns:minmax(0,1fr) 158px}
+  .sidebar>#f2Quick .f2-quick-pad{max-width:158px}
+}
