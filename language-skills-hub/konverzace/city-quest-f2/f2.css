@@ -91,4 +91,4 @@
 @media(prefers-reduced-motion:reduce){.f2-map-route{transition:none!important}}
 
 /* Do not show the inherited F0 route halo in the F2 locale-specific route view. */
-#activePath,#activePathFront,#routeHalo{display:none!important}
+#activePath,#activePathFront,#routeHalo{opacity:0!important;pointer-events:none!important}
