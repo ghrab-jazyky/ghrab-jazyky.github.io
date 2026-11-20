@@ -124,67 +124,112 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await context.close();
   }finally{await browser.close();}
  });
- test(name+' mobile n3 long hold and double tap work with same touch targets',{timeout:90000},async()=>{
+ test(name+' mobile: all five gestures work in guided and EXACT lock modes',{timeout:225000},async()=>{
   const browser=await engine.launch({headless:true});
+  const cases=[
+   ['corners4','n1',4],['tap_hold_tap','n2',1],['hold_double_tap','n3',2],
+   ['triangle3','n4',3],['draw_z','n5',4]
+  ];
   try{
-   const context=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true});
-   const page=await context.newPage(),errors=[];
-   page.on('pageerror',e=>errors.push(String(e)));
-   await page.goto(new URL('self-check/session/gesture-trainer.html?source=rl-asteroids&p=n3&lang=en',base).href);
-   assert.match(await page.locator('#gestureGuide').textContent(),/Vlevo pod středem/);
-   const guided=page.getByRole('button',{name:'Ukázat dotyková místa při nácviku'});
-   assert.equal(await guided.isVisible(),true,'Mobile trainer must offer visible target guidance');
-   await guided.click();
-   const demo=page.locator('#lshTeacherDemo');
-   await demo.waitFor();
-   assert.equal(await demo.locator('.lsh-trainer-dot').count(),2);
-   const geometry=await page.evaluate(()=>{
-    const overlay=document.getElementById('lshTeacherDemo'),r=overlay.getBoundingClientRect();
-    return [[.3,.6],[.7,.6]].map(([x,y])=>{
-     const px=Math.round(r.x+r.width*x),py=Math.round(r.y+r.height*y);
-     return {x:px,y:py,hit:!!document.elementFromPoint(px,py)?.closest('.lsh-unlock-surface')};
-    });
-   });
-   assert.ok(geometry.every(p=>p.hit),'Gesture targets blocked: '+JSON.stringify(geometry));
-   const [left,right]=geometry;
-   const performGesture=async()=>{
-   if(name==='Chromium'){
-    const cdp=await context.newCDPSession(page);
-    await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:left.x,y:left.y,id:1}]});
-    await page.waitForTimeout(2800);
-    await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
-   }else{
-    await page.evaluate(p=>{
-     const el=document.querySelector('#lshTeacherDemo .lsh-unlock-surface');
-     el.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true,pointerId:42,pointerType:'touch',
-      isPrimary:true,button:0,buttons:1,clientX:p.x,clientY:p.y}));
-    },left);
-    await page.waitForTimeout(2800);
-    await page.evaluate(p=>{
-     const el=document.querySelector('#lshTeacherDemo .lsh-unlock-surface');
-     el.dispatchEvent(new PointerEvent('pointerup',{bubbles:true,pointerId:42,pointerType:'touch',
-      isPrimary:true,button:0,buttons:0,clientX:p.x,clientY:p.y}));
-    },left);
+   const ctx=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true});
+   for(const [id,code,dotCount] of cases){
+    for(const guided of [true,false]){
+     const page=await ctx.newPage(),errors=[];
+     page.on('pageerror',e=>errors.push(String(e)));
+     try{
+      await page.goto(new URL('self-check/session/gesture-trainer.html?source=rl-asteroids&p='+code+'&lang=en',base).href);
+      const button=guided?
+       page.getByRole('button',{name:'Ukázat dotyková místa při nácviku'}):
+       page.getByRole('button',{name:/^Zobrazit zamčenou obrazovku/});
+      await button.click();
+      const lock=page.locator('#lshTeacherDemo');
+      await lock.waitFor();
+      assert.equal(await lock.locator('.lsh-session-lock-panel').isVisible(),true);
+      assert.equal(await lock.locator('.lsh-trainer-dot').count(),guided?dotCount:0,
+       'Teaching hints must never leak into exact test mode ('+id+')');
+      const coords=await page.evaluate(id=>{
+       const root=document.getElementById('lshTeacherDemo');
+       const r=root.getBoundingClientRect(),rel=(x,y)=>({
+        x:Math.round(r.left+r.width*x),y:Math.round(r.top+r.height*y)
+       });
+       const corners=['tl','tr','bl','br'].map(k=>{
+        const b=root.querySelector('.lsh-corner-'+k)?.getBoundingClientRect();
+        return b?{x:Math.round(b.x+b.width/2),y:Math.round(b.y+b.height/2)}:null;
+       });
+       const p=id==='corners4'?corners:
+        id==='tap_hold_tap'?[rel(.5,.7)]:
+        id==='hold_double_tap'?[rel(.3,.6),rel(.7,.6)]:
+        id==='triangle3'?[rel(.5,.3),rel(.3,.7),rel(.7,.7)]:
+        [rel(.3,.3),rel(.7,.3),rel(.3,.7),rel(.7,.7)];
+       const hits=p.map(({x,y})=>{
+        const el=document.elementFromPoint(x,y);
+        return !!el?.closest(id==='corners4'?'.lsh-corner':'.lsh-unlock-surface');
+       });
+       return {p,hits,dimensions:{width:r.width,height:r.height}};
+      },id);
+      assert.ok(coords.hits.every(Boolean),
+       name+' '+id+' '+(guided?'guided':'exact')+' hit targets obstructed '+JSON.stringify(coords));
+      const send=async(type,p)=>{
+       if(name==='Chromium'){
+        // Native trusted touchscreen input on Chromium.
+        if(!page.__lshCdp)page.__lshCdp=await ctx.newCDPSession(page);
+        await page.__lshCdp.send('Input.dispatchTouchEvent',{
+         type:type==='down'?'touchStart':type==='move'?'touchMove':'touchEnd',
+         touchPoints:type==='up'?[]:[{x:p.x,y:p.y,id:1}]
+        });
+       }else{
+        // Safari WebKit: match real pointer type and timing for holds/strokes.
+        await page.evaluate(({type,p})=>{
+         const el=document.querySelector('#lshTeacherDemo .lsh-unlock-surface');
+         const ev=new PointerEvent(type==='down'?'pointerdown':type==='move'?'pointermove':'pointerup',{
+          bubbles:true,cancelable:true,pointerId:42,pointerType:'touch',isPrimary:true,
+          button:0,buttons:type==='up'?0:1,clientX:p.x,clientY:p.y
+         });
+         el.dispatchEvent(ev);
+        },{type,p});
+       }
+      };
+      const tap=async p=>page.touchscreen.tap(p.x,p.y);
+      const hold=async(p,ms)=>{await send('down',p);await page.waitForTimeout(ms);await send('up',p)};
+      const drag=async points=>{
+       await send('down',points[0]);
+       for(let segment=0;segment<points.length-1;segment++){
+        const a=points[segment],b=points[segment+1];
+        for(let n=1;n<=9;n++){
+         const p={x:Math.round(a.x+(b.x-a.x)*n/9),y:Math.round(a.y+(b.y-a.y)*n/9)};
+         await send('move',p);
+         await page.waitForTimeout(17);
+        }
+       }
+       await page.waitForTimeout(610);await send('up',points[points.length-1]);
+      };
+      const p=coords.p;
+      if(id==='corners4'){for(const point of p)await tap(point)}
+      else if(id==='tap_hold_tap'){await tap(p[0]);await hold(p[0],2200);await tap(p[0])}
+      else if(id==='hold_double_tap'){await hold(p[0],2800);await tap(p[1]);await tap(p[1])}
+      else if(id==='triangle3'){await tap(p[0]);await tap(p[1]);await hold(p[2],750)}
+      else await drag(p);
+      if(guided){
+       await lock.locator('.lsh-trainer-progress')
+        .filter({hasText:/Gesto bylo úspěšně rozpoznáno/}).waitFor({timeout:5500});
+       await page.getByRole('button',{name:'Ukončit nácvik'}).click();
+      }else{
+       try{await lock.waitFor({state:'detached',timeout:5500});}
+       catch(error){
+        const d=await lock.evaluate(el=>({
+         progress:el.querySelector('.lsh-trainer-progress')?.textContent,
+         feedback:el.querySelector('.lsh-trainer-feedback')?.textContent
+        })).catch(()=>({detached:true}));
+        throw new Error(name+' '+id+' EXACT did not unlock: '+JSON.stringify(d)+'; '+error);
+       }
+       assert.equal(await page.locator('#gestureSuccess').isVisible(),true);
+      }
+      assert.equal(await page.evaluate(()=>Object.keys(localStorage).filter(k=>k.includes('attempt')).length),0);
+      assert.deepEqual(errors,[],name+' '+id+' '+(guided?'guided':'exact'));
+     }finally{await page.close();}
+    }
    }
-   await page.touchscreen.tap(right.x,right.y);
-   await page.touchscreen.tap(right.x,right.y);
-   };
-   await performGesture();
-   await demo.locator('.lsh-trainer-progress').filter({hasText:/Gesto bylo úspěšně rozpoznáno/}).waitFor({timeout:5000});
-   await page.getByRole('button',{name:'Ukončit nácvik'}).click();
-   assert.equal(await demo.count(),0);
-   // Repeat the very same touch gesture in the exact student-style lock screen.
-   // Hints must disappear without affecting any of the real hit targets.
-   await page.getByRole('button',{name:/^Zobrazit zamčenou obrazovku/}).click();
-   const exact=page.locator('#lshTeacherDemo');
-   await exact.waitFor();
-   assert.equal(await exact.locator('.lsh-trainer-dot').count(),0);
-   await performGesture();
-   await exact.waitFor({state:'detached',timeout:5000});
-   assert.equal(await page.locator('#gestureSuccess').isVisible(),true);
-   assert.equal(await page.evaluate(()=>Object.keys(localStorage).filter(k=>k.includes('attempt')).length),0);
-   assert.deepEqual(errors,[]);
-   await context.close();
+   await ctx.close();
   }finally{await browser.close();}
  });
 }
