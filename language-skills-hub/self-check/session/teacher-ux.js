@@ -59,7 +59,9 @@
   }
   const heading=make('div','lsh-trainer-heading');
   const title=make('h2',null,'Nácvik: '+def.name);
-  const intro=make('p',null,'Na počítači použijte myš nebo touchpad. Na telefonu či iPadu použijte prst.');
+  const intro=make('p',null,realistic?
+   'Body označují místa na celé zamčené obrazovce, nikoli uvnitř rámečku „Test locked“. Na telefonu mají místa odpovídající jeho rozměrům.':
+   'Na počítači použijte myš nebo touchpad. Na telefonu či iPadu použijte prst.');
   const progress=make('p','lsh-trainer-progress','');
   progress.setAttribute('role','status');progress.setAttribute('aria-live','polite');
   heading.append(title,intro,progress);
