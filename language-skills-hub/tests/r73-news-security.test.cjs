@@ -9,7 +9,9 @@ const version=JSON.parse(read('version.json'));
 const data=core.extractJson(read('poslech/how-to-choose-your-news/index.html'),'DATA');
 const session=read('self-check/session/session-ui.js'),student=read('self-check/listening/listening-student.js');
 // Stages B/B2 update attempt-core, PDF and the one shared gesture/student engine;
-// keep exact blob pins for this approved candidate instead of disabling integrity checks.
+// PR #135 deliberately changes ONLY triangle3 timing and its diagram in the
+// shared engine, after deterministic + browser regression review. Keep its
+// exact reviewed blob pin; never disable integrity checks.
 test('E4 security contract uses the same LSH runtime, with no security fork',()=>{
  const pinned={
   'self-check/listening/listening-student.js':'ec8e1a7b6ee1cdbcbd8d07f1f7ffa06aaaed5de6',
@@ -17,7 +19,7 @@ test('E4 security contract uses the same LSH runtime, with no security fork',()=
   'self-check/session/tab-guard.js':'cb753d0e440eafa06d077fecbbb627afd3f600bf',
    'self-check/session/session-ui.js':'69ca9b2df4217dcda3f27f4fad15a7b9a0d150b4',
   'self-check/results/pdf-report.js':'460908927f4e23b4eeb1c653cb2aa4990bbbff19',
-   'self-check/session/unlock-gestures.js':'7a49373c836529a70fab36fb45fd0dc414420994',
+   'self-check/session/unlock-gestures.js':'3a89ae7c4e401b4f62ece97c78142a6f653b9beb',
   'self-check/results/export-core.js':'ed51c90758aa2ca3036f54fa96e7fae6c02b585e',
   'data/test-mode-policy.json':'cfd8ce76d8314bcdedc1397dc95ab4fbc7759871'
  };

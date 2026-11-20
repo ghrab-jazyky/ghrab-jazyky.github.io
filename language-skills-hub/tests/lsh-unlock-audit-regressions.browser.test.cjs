@@ -72,7 +72,7 @@ async function triangle(page,chord=false){
  for(const [x,y] of [[.5,.3],[.3,.7]])await page.mouse.click(w*x,h*y,{delay:25});
  await page.mouse.move(w*.7,h*.7);await page.mouse.down();
  if(chord){await page.mouse.down({button:'right'});await page.mouse.up({button:'right'});}
- await page.waitForTimeout(750);await page.mouse.up();
+ await page.waitForTimeout(1800);await page.mouse.up(); // realistic teacher hold in both student labs
 }
 async function setHidden(page,hidden){
  await page.evaluate(value=>{

@@ -48,8 +48,8 @@ test('T1 every gap inclusive and +1ms; total duration limit is independent',()=>
    assert.equal(sequence(id,mid,valid).success,0,id+' gap '+idx+' upper+1');
   }
  }
- assert.equal(sequence('triangle3',[350,350,1000],[1500,1500]).success,0,
-  'Within per-step bounds but beyond overall 4.5-second limit must fail');
+ assert.equal(sequence('triangle3',[500,500,2500],[2000,2000]).success,0,
+  'Within per-step bounds but beyond overall 7-second limit must fail');
 });
 test('T1 point tolerance radius r inclusive / just outside and motion r/2',()=>{
  for(const id of ['tap_hold_tap','hold_double_tap','triangle3']){

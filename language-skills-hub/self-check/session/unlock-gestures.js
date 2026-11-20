@@ -19,9 +19,9 @@
    durations:[[2300,4000],[0,350],[0,350]],gaps:[3000,400],total:9000},
   {id:'triangle3',code:'n4',name:'Skrytý trojúhelník',
    short:'Dvě klepnutí a krátké podržení.',
-   guide:'Klepněte krátce na horní prostřední bod, potom na levý dolní bod. Třetí bod vpravo dole podržte po dobu 600–1 000 ms a teprve potom prst uvolněte. Celé gesto dokončete do 4,5 sekundy.',
+   guide:'Klepněte postupně na horní prostřední bod a levý dolní bod; po každém klepnutí prst ihned uvolněte. Třetí bod vpravo dole podržte přibližně 1–2 sekundy a pak uvolněte. Body nepropojujte tahem. Celé gesto dokončete do 7 sekund.',
    points:[[.5,.3],[.3,.7],[.7,.7]],kinds:['tap','tap','hold'],
-   durations:[[0,350],[0,350],[600,1000]],gaps:[1500,1500],total:4500},
+   durations:[[0,500],[0,500],[500,2500]],gaps:[2000,2000],total:7000},
   {id:'draw_z',code:'n5',name:'Nakreslení Z',
    short:'Jediný tah přes čtyři body.',
    guide:'Jedním tahem bez zvednutí prstu nakreslete přes střed obrazovky velké písmeno Z: nahoře zleva doprava, šikmo dolů doleva a dole zleva doprava. Kreslete svižně, tah má trvat asi 1–2 sekundy.',
@@ -350,7 +350,7 @@
      '<text x="'+d.x+'" y="'+(d.y+7)+'" text-anchor="middle" fill="currentColor" font-size="23">'+indexes.join(' / ')+'</text>';
    }).join('');
   }
-  if(id==='triangle3')details+='<text x="'+(width*.5)+'" y="'+(height*.84)+'" text-anchor="middle" fill="currentColor" font-size="24">3: podržet 600–1 000 ms</text>';
+  if(id==='triangle3')details+='<text x="'+(width*.5)+'" y="'+(height*.84)+'" text-anchor="middle" fill="currentColor" font-size="24">3: podržet přibližně 1–2 s</text>';
   if(id==='tap_hold_tap')details+='<text x="'+(width*.5)+'" y="'+(height*.82)+'" text-anchor="middle" fill="currentColor" font-size="24">2: podržet 2–3 s</text>';
   if(id==='hold_double_tap')details+='<text x="'+(width*.5)+'" y="'+(height*.75)+'" text-anchor="middle" fill="currentColor" font-size="24">1: podržet asi 3 s · vpravo 2×</text>';
   return '<svg class="lsh-unlock-diagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+width+' '+height+'" role="img" aria-label="'+xml(def.name)+'">'+
