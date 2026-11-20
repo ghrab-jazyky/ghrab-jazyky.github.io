@@ -147,6 +147,21 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
       assert.equal(await lock.locator('.lsh-session-lock-panel').isVisible(),true);
       assert.equal(await lock.locator('.lsh-trainer-dot').count(),guided?dotCount:0,
        'Teaching hints must never leak into exact test mode ('+id+')');
+      if(guided){
+       const normalized=await lock.evaluate(el=>{
+        const r=el.getBoundingClientRect();
+        return [...el.querySelectorAll('.lsh-trainer-dot')].map(dot=>{
+         const d=dot.getBoundingClientRect();
+         return [(d.left+d.width/2-r.left)/r.width,(d.top+d.height/2-r.top)/r.height];
+        });
+       });
+       const expected=expectedTargets[id];
+       assert.equal(normalized.length,expected.length);
+       for(let t=0;t<expected.length;t++)
+        assert.ok(Math.abs(normalized[t][0]-expected[t][0])<.018 &&
+         Math.abs(normalized[t][1]-expected[t][1])<.018,
+         id+' guided PHONE target '+t+' moved: '+JSON.stringify(normalized));
+      }
       const coords=await page.evaluate(id=>{
        const root=document.getElementById('lshTeacherDemo');
        const r=root.getBoundingClientRect(),rel=(x,y)=>({
@@ -235,44 +250,57 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
 }
 
 
+const expectedTargets=Object.freeze({
+ corners4:[[.0974,.045],[.9026,.045],[.0974,.955],[.9026,.955]],
+ tap_hold_tap:[[.5,.7]],
+ hold_double_tap:[[.3,.6],[.7,.6]],
+ triangle3:[[.5,.3],[.3,.7],[.7,.7]],
+ draw_z:[[.3,.3],[.7,.3],[.3,.7],[.7,.7]]
+});
+// Every gesture must have the same normalized target points in the desktop
+// phone preview and on a real 390×844 student phone, not just n3.
 for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
- test(name+' n3 desktop targets match phone normalized positions, not browser viewport',{timeout:30000},async()=>{
+ test(name+' desktop phone preview: ALL five gesture geometries match mobile',{timeout:45000},async()=>{
   const browser=await engine.launch({headless:true});
   try{
    const context=await browser.newContext({viewport:{width:1649,height:718}});
    const page=await context.newPage();
    await page.goto(new URL(teacher,base).href);
    await page.locator('#confirmTest:enabled').waitFor();
-   await page.locator('input[name="unlockMethod"][value="hold_double_tap"]').check();
-   await page.getByRole('button',{name:'VYZKOUŠET GESTO'}).click();
-   const root=page.locator('#lshTeacherDemo');
-   const geometry=await root.evaluate(demo=>{
-    const phone=demo.querySelector('.lsh-rehearsal-phone-screen').getBoundingClientRect();
-    const dots=[...demo.querySelectorAll('.lsh-trainer-dot')].map(node=>{
-     const r=node.getBoundingClientRect();
-     return {x:(r.x+r.width/2-phone.x)/phone.width,
-      y:(r.y+r.height/2-phone.y)/phone.height};
+   for(const [id,expectedPoints] of Object.entries(expectedTargets)){
+    await page.locator('input[name="unlockMethod"][value="'+id+'"]').check();
+    await page.getByRole('button',{name:'VYZKOUŠET GESTO'}).click();
+    const demo=page.locator('#lshTeacherDemo');
+    const geom=await demo.evaluate(el=>{
+     const phone=el.querySelector('.lsh-rehearsal-phone-screen');
+     if(!phone)return null;
+     const r=phone.getBoundingClientRect();
+     const dots=[...phone.querySelectorAll('.lsh-trainer-dot')].map(n=>{
+      const q=n.getBoundingClientRect();
+      return {x:(q.x+q.width/2-r.x)/r.width,y:(q.y+q.height/2-r.y)/r.height};
+     });
+     const close=el.querySelector('.lsh-trainer-close').getBoundingClientRect();
+     const instructions=el.querySelector('.lsh-trainer-heading').getBoundingClientRect();
+     const hit=el.querySelector('.lsh-unlock-surface,.lsh-session-corners');
+     return {phone:{x:r.x,y:r.y,width:r.width,height:r.height},dots,
+      closeOutside:close.left>=r.right,headingOutside:instructions.left>=r.right,
+      gestureSurfaceInside:!!hit&&phone.contains(hit)};
     });
-    return {phone:{width:phone.width,height:phone.height,x:phone.x,y:phone.y},dots};
-   });
-   assert.equal(geometry.dots.length,2,'n3 needs exactly two physical spots');
-   assert.ok(geometry.phone.width<450,'n3 must use phone width, not PC width');
-   for(const [i,x] of [.3,.7].entries()){
-    assert.ok(Math.abs(geometry.dots[i].x-x)<.015,JSON.stringify(geometry));
-    assert.ok(Math.abs(geometry.dots[i].y-.6)<.015,JSON.stringify(geometry));
+    assert.ok(geom,'Desktop '+id+' must render a portrait phone screen');
+    assert.ok(geom.phone.height>1.9*geom.phone.width);
+    assert.ok(geom.phone.width<390,'Narrow desktop preview cannot be monitor-wide');
+    assert.equal(geom.gestureSurfaceInside,true,id+' recognizer must bind to the phone');
+    assert.ok(geom.closeOutside&&geom.headingOutside,
+     id+' teaching controls must remain outside the student phone screen');
+    assert.equal(geom.dots.length,expectedPoints.length,id+' unique target count');
+    for(let i=0;i<expectedPoints.length;i++){
+     const [x,y]=expectedPoints[i],actual=geom.dots[i];
+     assert.ok(Math.abs(x-actual.x)<.018&&Math.abs(y-actual.y)<.018,
+      id+' target '+(i+1)+' changed between PC and phone: '+JSON.stringify({actual,expected:[x,y]}));
+    }
+    await page.keyboard.press('Escape');
+    assert.equal(await demo.count(),0,id+' must close cleanly');
    }
-   const p=(x,y)=>({
-    x:geometry.phone.x+geometry.phone.width*x,
-    y:geometry.phone.y+geometry.phone.height*y
-   });
-   const left=p(.3,.6),right=p(.7,.6);
-   await page.mouse.move(left.x,left.y);
-   await page.mouse.down();await page.waitForTimeout(2800);await page.mouse.up();
-   await page.mouse.click(right.x,right.y,{delay:80});
-   await page.mouse.click(right.x,right.y,{delay:80});
-   await root.locator('.lsh-trainer-progress').filter({hasText:/Gesto bylo úspěšně rozpoznáno/})
-    .waitFor({timeout:4000});
-   await page.keyboard.press('Escape');
    await context.close();
   }finally{await browser.close();}
  });
