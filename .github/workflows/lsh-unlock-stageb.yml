@@ -3,24 +3,27 @@ name: LSH unlock Stage B checks
 on:
   push:
     branches:
+      - main
       - feat/lsh-unlock-gestures-v124
     paths:
-      - "language-skills-hub/**"
-      - ".github/workflows/lsh-unlock-stageb.yml"
-  pull_request:
-    paths:
-      - "language-skills-hub/self-check/session/**"
-      - "language-skills-hub/self-check/reading/index.html"
-      - "language-skills-hub/self-check/reading/teacher.html"
-      - "language-skills-hub/self-check/listening/student.html"
-      - "language-skills-hub/self-check/listening/teacher.html"
+      - "language-skills-hub/self-check/**"
       - "language-skills-hub/tests/lsh-unlock-*.cjs"
-      - "language-skills-hub/tests/lsh-asteroids-lock-*.cjs"
-      - "language-skills-hub/tests/lsh-asteroids-mobile-layout.browser.test.cjs"
-      - "language-skills-hub/tests/lsh-asteroids-all-gestures-mobile-layout.browser.test.cjs"
+      - "language-skills-hub/tests/lsh-asteroids-*.cjs"
+      - "language-skills-hub/tests/r56-reading-test-qr.browser.test.cjs"
       - "language-skills-hub/assets/hub.js"
       - "language-skills-hub/index.html"
       - ".github/workflows/lsh-unlock-stageb.yml"
+      - ".github/workflows/lsh-unlock-teacher-ux.yml"
+  pull_request:
+    paths:
+      - "language-skills-hub/self-check/**"
+      - "language-skills-hub/tests/lsh-unlock-*.cjs"
+      - "language-skills-hub/tests/lsh-asteroids-*.cjs"
+      - "language-skills-hub/tests/r56-reading-test-qr.browser.test.cjs"
+      - "language-skills-hub/assets/hub.js"
+      - "language-skills-hub/index.html"
+      - ".github/workflows/lsh-unlock-stageb.yml"
+      - ".github/workflows/lsh-unlock-teacher-ux.yml"
   workflow_dispatch:
 
 permissions:
