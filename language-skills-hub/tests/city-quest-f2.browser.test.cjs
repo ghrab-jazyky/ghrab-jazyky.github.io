@@ -27,7 +27,7 @@ async function station(page,n){
  assert.equal(await page.locator("#f1Stations button").nth(n-1).getAttribute("aria-current"),"step");
 }
 async function directions(page,steps){
- for(const dir of steps)await page.locator("#f1Panel .f2-controls ."+dir).click();
+ for(const dir of steps)await page.locator("#f2Quick .f2-quick-"+dir).click();
 }
 async function progress(page){return Number(await page.locator("#f1ProgressTrack").getAttribute("aria-valuenow"));}
 test("all 24 language-CEFR variants render eight localized stations and visible profile",async()=>{
@@ -133,7 +133,7 @@ test("CEFR differences: A1 fewer tasks, German C1 via Library, French C2 blocked
   await setVariant(page,"fr","C2");
   await station(page,2);
   await directions(page,["east","east"]);
-  await page.locator("#f1Panel .f2-controls .east").click();
+  await page.locator("#f2Quick .f2-quick-east").click();
   assert.match(await page.locator("#f1Panel .f2-status").innerText(),/rue est barrée/i);
   assert.equal(await progress(page),0);
   assert.deepEqual(v.errors,[]);
@@ -148,7 +148,7 @@ test("mobile Chromium: directions beside map and no horizontal overflow at 390 a
   await setVariant(page,"es","A2");
   await station(page,4);
   assert.equal(await page.locator("#f2Quick").isVisible(),true);
-  assert.equal(await page.locator("#f2Quick button").count(),4);
+  assert.equal(await page.locator("#f2Quick .f2-quick-pad button").count(),4);
   await page.locator("#f2Quick .f2-quick-east").tap();
   assert.match(await page.locator("#f2Quick strong").innerText(),/este|izquierda|derecha|Sigue/i);
   await page.screenshot({path:path.join(OUTPUT,"f2-es-A2-mobile.png"),fullPage:true});

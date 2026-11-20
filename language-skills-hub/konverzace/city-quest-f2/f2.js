@@ -146,17 +146,6 @@
     ];
     return names.find(x=>E.same(x.node,p))?.name||ui().city;
   }
-  function controls(parent,move){
-    const pad=el("div",parent,"f2-controls");
-    pad.setAttribute("role","group");pad.setAttribute("aria-label",ui().compass);
-    const labels=[["north","↑"],["west","←"],["south","↓"],["east","→"]];
-    for(const [direction,arrow] of labels){
-      const b=btn(pad,arrow+" "+ui()[direction],()=>move(direction),direction);
-      const n=activePoint();
-      b.disabled=!n||!E.isNode(F.nextFromDirection(n,direction))||isMovementLocked();
-      b.setAttribute("aria-label",ui()[direction]+" · "+ui().compass);
-    }
-  }
   function renderRoute(){
     const game=state.route,c=G.config(state.level);
     if(game.done)return complete(2,ui().routeCompleted,G.routeModel(pack(),game.route));
@@ -167,11 +156,7 @@
     if(c.blocked)note(panel,"🚧 "+ui().closed,ui().wrongRoad);
     para(panel,ui().step+": "+(game.route.length-1)+" · "+ui().remaining+": "+E.distance(game.route.at(-1),c.target),"f2-small");
     status(panel,flash?.text||ui().guide,flash?.tone);
-    controls(panel,dir=>onMove(F.nextFromDirection(activePoint(),dir)));
     const row=actions(panel);
-    btn(row,"↶ "+ui().undo,()=>{
-      const prev=game.route.at(-2);if(prev)onMove(prev);
-    });
     btn(row,"↺ "+ui().restartStation,resetStation);
     help(panel);
   }
@@ -206,7 +191,6 @@
     el("h3",panel,"",ui().step+" "+(game.step+1)+"/"+plan.length);
     para(panel,G.instruction(pack(),state.level,game.step),"f2-prompt");
     status(panel,flash?.text||ui().guide,flash?.tone);
-    controls(panel,dir=>onMove(F.nextFromDirection(activePoint(),dir)));
     const row=actions(panel);
     btn(row,ui().showHint,()=>{flash={text:profile().support,tone:"warning"};screen();});
     btn(row,"↺ "+ui().restartStation,resetStation);
@@ -283,9 +267,7 @@
     para(panel,ui().from+" "+ui().start+" → "+ui().museum,"f2-prompt");
     para(panel,ui().step+": "+(game.route.length-1),"f2-small");
     status(panel,flash?.text||ui().guide,flash?.tone);
-    controls(panel,dir=>onMove(F.nextFromDirection(activePoint(),dir)));
     const row=actions(panel);
-    btn(row,"↶ "+ui().undo,()=>{const prev=game.route.at(-2);if(prev)onMove(prev);});
     btn(row,"↺ "+ui().restartStation,resetStation);
     help(panel);
   }
@@ -309,9 +291,7 @@
     }
     para(panel,ui().from+" "+pointName(game.leg[0])+" → "+name,"f2-prompt");
     status(panel,flash?.text||ui().guide,flash?.tone);
-    controls(panel,dir=>onMove(F.nextFromDirection(activePoint(),dir)));
     const row=actions(panel);
-    btn(row,"↶ "+ui().undo,()=>{const prev=game.leg.at(-2);if(prev)onMove(prev);});
     btn(row,"↺ "+ui().restartStation,resetStation);
     help(panel);
   }
@@ -355,27 +335,102 @@
     marker=svg("circle",{id:"f2MapMarker","class":"f2-map-marker",r:16,cx:168,cy:580}),
     blocked=svg("g",{id:"f2ClosedRoad"});
   layer.append(trail,marker,blocked);map.appendChild(layer);
-  const quick=el("div",null,"f2-quick");quick.id="f2Quick";quick.hidden=true;
-  quick.setAttribute("aria-label","Quick map movement controls");
-  const quickTitle=el("strong",quick),quickCaption=el("span",quick,"f2-quick-caption"),
-    quickPad=el("div",quick,"f2-quick-pad");
-  viewport.insertAdjacentElement("afterend",quick);
+  // One stable, accessible navigation component for ALL map missions.
+  // The entire HUD belongs to the map viewport frame, not the lower task panel.
+  const mapStage=el("div",null,"f2-map-stage");
+  mapStage.id="f2MapStage";
+  viewport.parentNode.insertBefore(mapStage,viewport);
+  mapStage.appendChild(viewport);
+  const quick=el("div",mapStage,"f2-quick");
+  quick.id="f2Quick";quick.hidden=true;
+  quick.dataset.testid="navigation-hud";
+  quick.setAttribute("role","group");
+  quick.setAttribute("aria-label",ui().compass);
+  const hudTop=el("div",quick,"f2-hud-top");
+  const hudLoc=el("span",hudTop,"f2-hud-location");
+  const quickTitle=el("strong",hudTop,"f2-hud-instruction");
+  const quickCaption=el("span",quick,"f2-quick-caption");
+  quickCaption.setAttribute("role","status");
+  quickCaption.setAttribute("aria-live","polite");
+  quickCaption.setAttribute("aria-atomic","true");
+  const quickPad=el("div",quick,"f2-quick-pad");
+  quickPad.dataset.testid="hud-dpad";
+  quickPad.setAttribute("role","group");
+  const hudButtons=Object.create(null);
+  for(const [dir,arrow] of [["north","↑"],["west","←"],["south","↓"],["east","→"]]){
+    const button=el("button",quickPad,"f2-quick-"+dir,arrow);
+    button.type="button";
+    button.dataset.direction=dir;
+    button.addEventListener("click",()=>dispatchDirection(dir));
+    hudButtons[dir]=button;
+  }
+  const hudTools=el("div",quick,"f2-hud-tools");
+  const hudUndo=btn(hudTools,"↶",()=>undoMapStep(),"f2-hud-undo");
+  // One HUD, two responsive placements. Desktop uses the right mission sidebar;
+  // phones keep the overlay inside the map frame. Never clone the button nodes.
+  const hudDock=panel.parentElement;
+  // Match the actual layout breakpoint: the sidebar sits beside the map only above 1050px.
+  const phoneQuery=window.matchMedia("(max-width:1050px)");
+  function placeHud(){
+    const overlay=phoneQuery.matches;
+    const destination=overlay?mapStage:hudDock;
+    if(quick.parentElement!==destination){
+      const focused=quick.contains(document.activeElement)?document.activeElement:null;
+      if(overlay)mapStage.appendChild(quick);
+      else hudDock.insertBefore(quick,panel);
+      if(focused)focused.focus({preventScroll:true});
+    }
+    quick.dataset.placement=overlay?"map-overlay":"sidebar";
+  }
+  placeHud();
+  if(phoneQuery.addEventListener)phoneQuery.addEventListener("change",placeHud);
+  else phoneQuery.addListener(placeHud);
+
+  function dispatchDirection(direction){
+    if(isMovementLocked())return;
+    const current=activePoint();
+    if(!current)return;
+    const next=F.nextFromDirection(current,direction);
+    if(!E.isNode(next))return;
+    onMove(next);
+  }
+  function canUndo(){
+    if(isMovementLocked())return false;
+    if(state.station===8)return state.quest.leg.length>1;
+    if(state.station===2)return state.route.route.length>1;
+    if(state.station===7)return state.detour.route.length>1;
+    return false;
+  }
+  function undoMapStep(){
+    if(!canUndo())return;
+    const path=state.station===8?state.quest.leg:activePath();
+    onMove(path[path.length-2]);
+  }
   function updateQuick(){
-    const path=activePath(),current=activePoint(),isMobileAction=!!path;
-    quick.hidden=!isMobileAction;
-    if(!isMobileAction)return;
-    const cp=state.station===8?G.questCheckpoints(state.level)[state.quest.stage]:null;
+    const path=activePath(),current=activePoint(),active=!!path;
+    quick.hidden=!active;
+    if(!active)return;
+    const p=pack(),u=ui();
+    quick.setAttribute("aria-label",u.compass);
+    quickPad.setAttribute("aria-label",u.compass);
+    hudUndo.textContent="↶ "+u.undo;
+    hudUndo.setAttribute("aria-label",u.undo);
+    hudUndo.disabled=!canUndo();
+    const cp=state.station===8&&!state.quest.done?
+      G.questCheckpoints(state.level)[state.quest.stage]:null;
+    const done=isMovementLocked();
+    hudLoc.textContent=u.station+" "+String(state.station).padStart(2,"0")+
+      " · "+state.level+(state.station===4?" · "+(done?G.guidedPaths[state.level].length:state.guided.step+1)+"/"+G.guidedPaths[state.level].length:"");
     quickTitle.textContent=state.station===4&&!state.guided.done?
-      G.instruction(pack(),state.level,state.guided.step):cp?pack().places[cp.id]:
-      state.station===2?profile().route:state.station===7?ui().wrongRoad:ui().arrived;
-    quickCaption.textContent=flash?.text||ui().compass;
-    quickPad.replaceChildren();
-    for(const [dir,arrow] of [["north","↑"],["west","←"],["south","↓"],["east","→"]]){
-      const button=el("button",quickPad,"f2-quick-"+dir,arrow);
-      button.type="button";
-      button.setAttribute("aria-label",ui()[dir]+" · "+ui().compass);
-      button.disabled=isMovementLocked()||!current||!E.isNode(F.nextFromDirection(current,dir));
-      button.addEventListener("click",()=>onMove(F.nextFromDirection(activePoint(),dir)));
+      G.instruction(p,state.level,state.guided.step):
+      cp?p.places[cp.id]:
+      state.station===2?profile().route:
+      state.station===7?u.wrongRoad:u.arrived;
+    quickCaption.textContent=flash?.text||u.compass;
+    quickCaption.dataset.tone=flash?.tone||"";
+    for(const [dir,button] of Object.entries(hudButtons)){
+      button.setAttribute("aria-label",u[dir]+" · "+u.compass);
+      button.disabled=done||!current||!E.isNode(F.nextFromDirection(current,dir));
     }
   }
   function showClosure(){
@@ -398,7 +453,8 @@
     const p=E.position(point),scale=map.getBoundingClientRect().width/1196;
     const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     viewport.scrollTo({left:Math.max(0,p.x*scale-viewport.clientWidth*.4),
-      top:Math.max(0,p.y*scale-viewport.clientHeight*.55),behavior:reduce?"auto":"smooth"});
+      // Keep the marker ABOVE the floating HUD, rather than under the arrow pad.
+      top:Math.max(0,p.y*scale-viewport.clientHeight*.30),behavior:reduce?"auto":"smooth"});
   }
   function renderMap(){
     const path=activePath();
@@ -541,7 +597,7 @@
   $("f1Solo").addEventListener("click",()=>setMode("solo"));
   $("f1Pair").addEventListener("click",()=>setMode("pair"));
   $("themeBtn").addEventListener("click",applyChromeLabels);
-  $("mapZoom").addEventListener("click",applyChromeLabels);
+  $("mapZoom").addEventListener("click",()=>{applyChromeLabels();window.requestAnimationFrame(followMap);});
   map.querySelectorAll("[data-node]").forEach(node=>{
     const [c,r]=node.dataset.node.split("-").map(Number);
     node.addEventListener("click",()=>{if(activePath())onMove({c,r});});

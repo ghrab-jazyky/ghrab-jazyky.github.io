@@ -1,0 +1,105 @@
+name: LSH City Quest F2.1A Single Map HUD
+on:
+  push:
+    branches:
+      - feature/lsh-city-quest-f2-1a-mobile-hud
+    paths:
+      - "language-skills-hub/konverzace/city-quest-f2/**"
+      - "language-skills-hub/tests/city-quest-f2*"
+      - "language-skills-hub/authoring/city-quest-f2/**"
+      - ".github/workflows/lsh-city-quest-f2-1a.yml"
+  pull_request:
+    paths:
+      - "language-skills-hub/konverzace/city-quest-f2/**"
+      - "language-skills-hub/tests/city-quest-f2*"
+      - ".github/workflows/lsh-city-quest-f2-1a.yml"
+permissions:
+  contents: read
+concurrency:
+  group: city-quest-f2-1a-hud
+  cancel-in-progress: true
+jobs:
+  f21a-static:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Verify JS, HUD architecture and CSP
+        run: |
+          node --check language-skills-hub/konverzace/city-quest-f2/f2.js
+          node --check language-skills-hub/tests/city-quest-f2-1a.browser.test.cjs
+          node - <<'NODE'
+          const fs=require('fs');
+          const js=fs.readFileSync('language-skills-hub/konverzace/city-quest-f2/f2.js','utf8');
+          const css=fs.readFileSync('language-skills-hub/konverzace/city-quest-f2/f2.css','utf8');
+          const html=fs.readFileSync('language-skills-hub/konverzace/city-quest-f2/index.html','utf8');
+          if(js.includes('f2-controls')||js.includes('controls(panel'))throw Error('Duplicate panel direction component');
+          for(const key of ['dataset.testid="navigation-hud"','function dispatchDirection(direction)','f2MapStage','function undoMapStep()'])
+            if(!js.includes(key))throw Error('Missing single HUD invariant '+key);
+          if(!css.includes('#f2MapStage>#f2Quick:not([hidden])'))throw Error('Map HUD not anchored inside stage');
+          if(!html.includes("connect-src 'none'"))throw Error('CSP must forbid remote requests');
+          NODE
+      - name: Run F0, F1 and F2 CEFR regression suites
+        run: |
+          node --test language-skills-hub/tests/city-quest-f0.test.cjs
+          node --test language-skills-hub/tests/city-quest-f1.test.cjs
+          node --test language-skills-hub/tests/city-quest-f2.test.cjs
+  f21a-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 28
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install matching Playwright library
+        run: npm install --no-save --ignore-scripts playwright@1.56.1
+        timeout-minutes: 8
+      - name: Build portable F2.1A offline preview with exact CSP hashes
+        run: node language-skills-hub/authoring/city-quest-f2/build-preview.cjs --write
+      - name: Test old F2 behavior after removing duplicate controls
+        timeout-minutes: 12
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/cq-f21a-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill $server_pid' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/city-quest-f2.browser.test.cjs
+      - name: F2.1A mobile HUD browser acceptance
+        timeout-minutes: 14
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/cq-f21a-http2.log 2>&1 &
+          server_pid=$!
+          trap 'kill $server_pid' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/city-quest-f2-1a.browser.test.cjs
+      - name: Preserve responsive screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: city-quest-f2-1a-mobile-hud-screenshots
+          path: |
+            city-quest-f2-artifacts/
+            city-quest-f2-1a-artifacts/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Upload single-file F2.1A offline HTML preview
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: city-quest-f2-1a-offline-html
+          path: .review-city-quest-f2/CITY_QUEST_F2_OFFLINE_PREVIEW.html
+          if-no-files-found: warn
+          retention-days: 14
