@@ -49,19 +49,23 @@ for(const [id,events] of Object.entries(valid)){
  test('successful gesture '+id,()=>assert.equal(run(id,events).successes,1));
  test('incomplete gesture '+id,()=>assert.equal(run(id,events.slice(0,-1)).successes,0));
 }
-test('manual-friendly triangle3 preserves order with a 500–2500 ms hold',()=>{
+test('human-paced triangle3 preserves point order with a 400–3500 ms hold',()=>{
  const prefix=[down(500,240,0),up(500,240,90),down(300,560,300),up(300,560,390)];
  const last=duration=>[...prefix,down(700,560,500),up(700,560,500+duration)];
  assert.equal(gestures.byId('triangle3').kinds[2],'hold');
- assert.deepEqual(gestures.byId('triangle3').durations,[[0,500],[0,500],[500,2500]]);
- assert.deepEqual(gestures.byId('triangle3').gaps,[2000,2000]);
- assert.equal(gestures.byId('triangle3').total,7000);
- for(const time of [500,750,1000,1600,2000,2500])assert.equal(run('triangle3',last(time)).successes,1,time);
- for(const time of [0,250,350,499,2501,3000])assert.equal(run('triangle3',last(time)).successes,0,time);
- const human=[down(500,240,0),up(500,240,250),down(300,560,1550),up(300,560,1780),down(700,560,2950),up(700,560,4850)];
- assert.equal(run('triangle3',human).successes,1,'Realistic delays and a 1.9-second hold must unlock');
- const tooLate=[...human.slice(0,5),up(700,560,5650)];
- assert.equal(run('triangle3',tooLate).successes,0,'A 2.7-second hold remains invalid');
+ assert.deepEqual(gestures.byId('triangle3').durations,[[0,700],[0,700],[400,3500]]);
+ assert.deepEqual(gestures.byId('triangle3').gaps,[5000,5000]);
+ assert.equal(gestures.byId('triangle3').total,14000);
+ for(const time of [400,500,750,1000,1600,2000,2500,3500])assert.equal(run('triangle3',last(time)).successes,1,time);
+ for(const time of [0,250,350,399,3501,4000])assert.equal(run('triangle3',last(time)).successes,0,time);
+ const human=[down(500,240,0),up(500,240,250),down(300,560,2950),up(300,560,3180),down(700,560,6200),up(700,560,8200)];
+ assert.equal(run('triangle3',human).successes,1,'Normal 2.7/3-second mouse movements plus a 2-second hold must unlock');
+ const tooLate=[...human.slice(0,5),up(700,560,9701)];
+ assert.equal(run('triangle3',tooLate).successes,0,'A 3.501-second hold remains invalid');
+ const lateSecond=[...human];lateSecond[2]=down(300,560,5251);lateSecond[3]=up(300,560,5450);
+ assert.equal(run('triangle3',lateSecond).successes,0,'More than 5 seconds between taps must reset');
+ const lateTotal=[down(500,240,0),up(500,240,700),down(300,560,5700),up(300,560,6400),down(700,560,11400),up(700,560,14900)];
+ assert.equal(run('triangle3',lateTotal).successes,0,'Overall time budget still enforced');
  const wrongOrder=[down(500,240,0),up(500,240,90),down(300,560,300),up(300,560,390),down(700,560,500),up(700,560,750)];
  assert.equal(run('triangle3',wrongOrder).successes,0);
 });

@@ -97,6 +97,9 @@
   let binding=null,closed=false,completed=false,step=0,dots=[],monitor=null;
   let completionTimer=null;
   let lastState={steps:0,active:false,awaitingRelease:false};
+  // Local, volatile teacher-trainer diagnostics only: never persist gesture traces
+  // or expose these details inside student exam sessions.
+  let press=null,lastReleaseAt=null;
   function paint(){
    if(closed)return;
    if(realistic&&!guided){markers.replaceChildren();dots=[];return;}
@@ -146,12 +149,53 @@
    if(completed||closed)return;
    step=Math.min(steps[id].length-1,Math.max(0,s.steps));
    if(s.awaitingRelease)progress.textContent='Uvolněte prst pro dokončení.';
-   else if(id==='draw_z'&&s.steps>=4)progress.textContent='Uvolněte prst nebo tlačítko myši.';
+   else if(id==='triangle3'&&s.active&&press?.step===2){
+    const elapsed=Math.max(0,(performance.now()-press.at)/1000);
+    progress.textContent=elapsed<.4?
+     'Bod 3 ze 3: stále držte levé tlačítko myši nebo prst.':
+     'Bod 3 ze 3: držíte '+elapsed.toFixed(1)+' s. Nyní uvolněte (nejpozději do 3,5 s).';
+   }else if(id==='triangle3'&&s.active){
+    progress.textContent='Bod '+(s.steps+1)+' ze 3: krátce klepněte a uvolněte.';
+   }else if(id==='draw_z'&&s.steps>=4)progress.textContent='Uvolněte prst nebo tlačítko myši.';
    else progress.textContent='Krok '+(step+1)+' ze '+steps[id].length+': '+steps[id][step];
    showDots();
   }
   // The student recognizer is integrity-pinned. Observe its PUBLIC state only,
   // after pointer events bubble, without modifying recognition or incident logs.
+  function triangleError(event){
+   // An advisory explanation from the same public state and pointer events;
+   // the shared student recognizer remains the sole authority for success.
+   const def=api.byId('triangle3'),b=stage.getBoundingClientRect();
+   const g=api.geometry('triangle3',b.width,b.height);
+   const n=Math.min(2,Math.max(0,press?.step??lastState.steps));
+   if(!event){
+    return lastState.active?'Bod '+(n+1)+': podržení překročilo povolený čas. Zkuste znovu.':
+     'Vypršel čas mezi body (max. 5 s) nebo celkový limit 14 s. Začněte znovu.';
+   }
+   if(event.type==='pointerdown'){
+    const target=g.points[n],dx=event.clientX-b.left-target.x,dy=event.clientY-b.top-target.y;
+    if(Math.hypot(dx,dy)>g.r)return 'Bod '+(n+1)+': kliknutí bylo mimo označený bod. Začněte znovu.';
+    if(lastReleaseAt!==null&&performance.now()-lastReleaseAt>5000)
+     return 'Mezi body uplynulo více než 5 s. Začněte znovu.';
+    return 'Nový stisk přerušil předchozí krok. Před dalším bodem vždy uvolněte tlačítko.';
+   }
+   if(event.type==='pointerup'&&press){
+    const duration=performance.now()-press.at,[min,max]=def.durations[n];
+    if(duration<min)return 'Bod '+(n+1)+': stisk byl příliš krátký ('+
+     (duration/1000).toFixed(1)+' s; minimum '+(min/1000).toFixed(1)+' s). Zkuste znovu.';
+    if(duration>max)return 'Bod '+(n+1)+': stisk byl příliš dlouhý ('+
+     (duration/1000).toFixed(1)+' s; maximum '+(max/1000).toFixed(1)+' s). Zkuste znovu.';
+    return 'Gesto nebylo dokončeno ve správném pořadí nebo celkovém limitu. Zkuste znovu.';
+   }
+   if(event.type==='pointermove'&&press){
+    const x=event.clientX-b.left,y=event.clientY-b.top;
+    if(Math.hypot(x-press.x,y-press.y)>g.r/2)
+     return 'Bod '+(n+1)+': při držení se kurzor posunul mimo toleranci. Při stisku nehýbejte myší.';
+   }
+   if(event.type==='pointercancel'||event.type==='lostpointercapture')
+    return 'Prohlížeč přerušil stisk. Zkuste kliknout znovu a nepřepínejte okno.';
+   return 'Gesto se přerušilo v kroku '+(n+1)+'. Zkuste označené body postupně.';
+  }
   function observe(event){
    if(closed||completed||!binding)return;
    if(event?.target?.closest?.('button'))return;
@@ -159,10 +203,17 @@
    const reset=(lastState.steps>0&&next.steps===0)||
     (lastState.active&&!next.active&&next.steps<=lastState.steps)||
     (lastState.awaitingRelease&&!next.awaitingRelease);
-   if(reset)feedback.textContent='Sekvence se nezdařila nebo vypršel čas. Začněte znovu od prvního kroku.';
+   if(reset)feedback.textContent=id==='triangle3'?
+    triangleError(event):'Sekvence se nezdařila nebo vypršel čas. Začněte znovu od prvního kroku.';
    else if(event?.type==='pointerdown'&&!next.steps&&!next.active)
-    feedback.textContent='Začněte na zvýrazněném bodu.';
+    feedback.textContent=id==='triangle3'?
+     'Začněte přímo na bodu 1 nahoře uprostřed.':'Začněte na zvýrazněném bodu.';
    else if(next.steps>lastState.steps)feedback.textContent='';
+   if(id==='triangle3'&&event?.type==='pointerup'){
+    if(!reset&&next.steps>lastState.steps)lastReleaseAt=performance.now();
+    press=null;
+   }
+   if(id==='triangle3'&&reset)lastReleaseAt=null;
    state(next);
    lastState={...next};
   }
@@ -170,6 +221,7 @@
    completed=false;step=0;feedback.textContent='';
    demo.classList.remove('lsh-rehearsal-succeeded');
    binding?.reset();lastState={steps:0,active:false,awaitingRelease:false};
+   press=null;lastReleaseAt=null;
    state(lastState);
   }
   function close(){
@@ -198,6 +250,12 @@
   window.addEventListener('resize',paint);
   paint();
   binding=api.bindDOM(stage,id,{
+   onPointerStart:event=>{
+    if(id!=='triangle3')return;
+    const b=stage.getBoundingClientRect();
+    press={at:performance.now(),step:binding?.recognizer.state().steps??lastState.steps,
+     x:event.clientX-b.left,y:event.clientY-b.top};
+   },
    onFailure:()=>{if(!completed)feedback.textContent='Sekvence nebyla rozpoznána. Začněte od kroku 1.';},
    onSuccess:()=>{
     completed=true;step=steps[id].length;
@@ -279,7 +337,7 @@
    if(isAsteroidsTeacher()){
     target.searchParams.set('source','rl-asteroids');
     target.searchParams.set('lang',currentLanguage());
-    target.searchParams.set('rehearsalVersion','rl-lock-rehearsal-20261120-6');
+    target.searchParams.set('rehearsalVersion','rl-lock-rehearsal-20261120-7');
     note.textContent='Mobilní nácvik používá stejné poměrné body jako simulovaný telefon na PC. Můžete cvičit s viditelnými body nebo zkusit reálnou zamčenou obrazovku bez nápovědy. Zavírací tlačítko slouží pouze k nácviku.';
    }else note.textContent='Naskenujte QR kód vlastním zařízením. Otevřete pouze trenažér, nikoli studentský test.';
    link.href=target.href;

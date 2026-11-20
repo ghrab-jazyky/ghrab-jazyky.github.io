@@ -18,7 +18,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     css:document.querySelector('link[href*="session.css"]')?.getAttribute('href')
    }));
    for(const url of [teacherAssets.js,teacherAssets.css])
-    assert.match(url,/v=rl-lock-rehearsal-20261120-6/,'Asteroids teacher assets must be version-pinned');
+    assert.match(url,/v=rl-lock-rehearsal-20261120-7/,'Asteroids teacher assets must be version-pinned');
    const before=await page.evaluate(()=>Object.keys(localStorage).filter(x=>x.includes('attempt')));
    await page.getByRole('button',{name:'VYZKOUŠET GESTO'}).click();
    const demo=page.locator('#lshTeacherDemo');
@@ -63,7 +63,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await mobile.locator('summary').click();
    const url=new URL(await mobile.locator('a').getAttribute('href'));
    assert.equal(url.searchParams.get('source'),'rl-asteroids');
-   assert.equal(url.searchParams.get('rehearsalVersion'),'rl-lock-rehearsal-20261120-6');
+   assert.equal(url.searchParams.get('rehearsalVersion'),'rl-lock-rehearsal-20261120-7');
    assert.equal(url.searchParams.get('lang'),'en');
    await page.locator('#language').selectOption('es');
    const updated=new URL(await mobile.locator('a').getAttribute('href'));
@@ -222,7 +222,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
       if(id==='corners4'){for(const point of p)await tap(point)}
       else if(id==='tap_hold_tap'){await tap(p[0]);await hold(p[0],2200);await tap(p[0])}
       else if(id==='hold_double_tap'){await hold(p[0],2800);await tap(p[1]);await tap(p[1])}
-      else if(id==='triangle3'){await tap(p[0]);await tap(p[1]);await hold(p[2],1800)}
+      else if(id==='triangle3'){await tap(p[0]);await page.waitForTimeout(2400);await tap(p[1]);await page.waitForTimeout(2400);await hold(p[2],1800)}
       else await drag(p);
       if(guided){
        await lock.locator('.lsh-trainer-progress')
@@ -253,7 +253,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
 // Real manual mouse pacing: the triangle must not demand a 600–1000 ms
 // laboratory-perfect release. Guided trainer uses the student recognizer.
 for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
- test(name+' desktop Asteroids triangle accepts a natural 1.8-second final hold',{timeout:70000},async()=>{
+ test(name+' desktop Asteroids triangle accepts slow mouse movement and identifies too-short holds',{timeout:110000},async()=>{
   const browser=await engine.launch({headless:true});
   try{
    const ctx=await browser.newContext({viewport:{width:1280,height:800}});
@@ -273,7 +273,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.equal(points.length,3,'Exactly three triangular targets must render');
    for(const p of points.slice(0,2)){
     await page.mouse.click(p.x,p.y,{delay:180});
-    await page.waitForTimeout(350);
+    await page.waitForTimeout(2650); // Deliberately exceeds the former 2-second gap.
    }
    await page.mouse.move(points[2].x,points[2].y);
    await page.mouse.down();
@@ -281,6 +281,10 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.mouse.up();
    await demo.getByText('Gesto bylo úspěšně rozpoznáno.').first().waitFor({timeout:3500});
    assert.deepEqual(errors,[],'No browser errors after a natural hold');
+   await page.getByRole('button',{name:'Zkusit znovu'}).click();
+   for(const p of points.slice(0,2))await page.mouse.click(p.x,p.y,{delay:130});
+   await page.mouse.click(points[2].x,points[2].y,{delay:100});
+   await demo.locator('.lsh-trainer-feedback').filter({hasText:/Bod 3: stisk byl příliš krátký/}).waitFor({timeout:3000});
    await page.getByRole('button',{name:'Ukončit nácvik'}).click();
    await ctx.close();
   }finally{await browser.close();}
