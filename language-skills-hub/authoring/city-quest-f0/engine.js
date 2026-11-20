@@ -41,11 +41,12 @@
       return { route: route.slice(), outcome: "invalid", message: "Choose a crossroads on the map." };
     }
     const current = route[route.length - 1];
-    if (same(current, goal)) return { route: route.slice(), outcome: "finished", message: "Destination already reached." };
     if (same(current, next)) return { route: route.slice(), outcome: "same", message: "Choose a neighbouring crossroads." };
+    // Undo is allowed even after reaching the museum, so learners can revise their route.
     if (route.length > 1 && same(route[route.length - 2], next)) {
       return { route: route.slice(0, -1), outcome: "undo", message: "Last step removed." };
     }
+    if (same(current, goal)) return { route: route.slice(), outcome: "finished", message: "Destination already reached. Use Undo to revise your route." };
     if (distance(current, next) !== 1) {
       return { route: route.slice(), outcome: "nonadjacent", message: "Move to the next intersection, one block at a time." };
     }
@@ -96,14 +97,16 @@
   function instructions(route) {
     const segments = turns(route);
     if (!segments.length) return "Choose a neighbouring crossroads to begin.";
-    let previous = "north";
+    let previous = null;
     const lines = ["Start at Central Station."];
     segments.forEach((segment, index) => {
-      const from = order.indexOf(previous);
+      // Do not assume that the visitor starts facing north. The first movement
+      // must use a cardinal direction; left/right only apply after a movement.
+      const from = previous === null ? -1 : order.indexOf(previous);
       const to = order.indexOf(segment.direction);
-      const delta = (to - from + 4) % 4;
-      const action = delta === 0
-        ? (index === 0 ? "Walk" : "Keep walking")
+      const delta = previous === null ? 0 : (to - from + 4) % 4;
+      const action = index === 0 ? "Walk"
+        : delta === 0 ? "Keep walking"
         : delta === 1 ? "Turn right and walk"
         : delta === 3 ? "Turn left and walk"
         : "Turn around and walk";
@@ -131,7 +134,7 @@
       actor: "Tourist", line: "Excuse me! I'm trying to find the City Museum. Could you help me?",
       prompt: "Choose how to start the conversation.",
       options: [
-        { id: "help", label: "Of course! Walk east along Station Road for two blocks, then turn left towards Market Square.", next: "distance", feedback: "Good! You gave a clear direction and used a polite opening.", tone: "good" },
+        { id: "help", label: "Of course! Head east for three blocks, then turn left and go north for two blocks to reach the City Museum.", next: "distance", feedback: "Good! You gave a clear direction and used a polite opening.", tone: "good" },
         { id: "vague", label: "It's over there, somewhere near the centre.", next: "clarify", feedback: "Polite, but not clear enough. The tourist still needs specific directions.", tone: "warn" },
         { id: "wrong", label: "Go west towards the river. You'll see it on your left.", next: "wrongway", feedback: "That is the wrong direction. The museum is northeast of the station.", tone: "warn" }
       ]
@@ -140,7 +143,7 @@
       actor: "Tourist", line: "Sorry, I don't know this city. Could you tell me which street to take?",
       prompt: "Repair the misunderstanding.",
       options: [
-        { id: "clarify-help", label: "Sorry, let me be more specific: go east for two blocks, then north to Market Square.", next: "distance", feedback: "Well repaired. You've checked that your directions are clear.", tone: "good" },
+        { id: "clarify-help", label: "Sorry, let me be more specific: go east for three blocks, then turn left and go north for two blocks.", next: "distance", feedback: "Well repaired. You've checked that your directions are clear.", tone: "good" },
         { id: "clarify-bad", label: "Just keep walking. You'll find it.", next: "clarify", feedback: "This does not help. Try giving a street direction and a landmark.", tone: "warn" }
       ]
     },
@@ -148,7 +151,7 @@
       actor: "Tourist", line: "Wait, is that the river? My map says the museum is in the other direction.",
       prompt: "Acknowledge the mistake and correct it.",
       options: [
-        { id: "fix", label: "You're right, I'm sorry. Head east along Station Road, then turn left at Market Square.", next: "distance", feedback: "Excellent repair strategy: acknowledge and correct the mistake.", tone: "good" },
+        { id: "fix", label: "You're right, I'm sorry. Head east for three blocks, then turn left and go north for two blocks to the museum.", next: "distance", feedback: "Excellent repair strategy: acknowledge and correct the mistake.", tone: "good" },
         { id: "insist", label: "Ignore your map. I'm sure it's west.", next: "wrongway", feedback: "That advice could leave someone lost. Check the map and try again.", tone: "warn" }
       ]
     },
