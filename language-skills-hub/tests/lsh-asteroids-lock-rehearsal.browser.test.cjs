@@ -188,3 +188,47 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   }finally{await browser.close();}
  });
 }
+
+
+for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+ test(name+' n3 desktop targets match phone normalized positions, not browser viewport',{timeout:30000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const context=await browser.newContext({viewport:{width:1649,height:718}});
+   const page=await context.newPage();
+   await page.goto(new URL(teacher,base).href);
+   await page.locator('#confirmTest:enabled').waitFor();
+   await page.locator('input[name="unlockMethod"][value="hold_double_tap"]').check();
+   await page.getByRole('button',{name:'VYZKOUŠET GESTO'}).click();
+   const root=page.locator('#lshTeacherDemo');
+   const geometry=await root.evaluate(demo=>{
+    const phone=demo.querySelector('.lsh-rehearsal-phone-screen').getBoundingClientRect();
+    const dots=[...demo.querySelectorAll('.lsh-trainer-dot')].map(node=>{
+     const r=node.getBoundingClientRect();
+     return {x:(r.x+r.width/2-phone.x)/phone.width,
+      y:(r.y+r.height/2-phone.y)/phone.height};
+    });
+    return {phone:{width:phone.width,height:phone.height,x:phone.x,y:phone.y},dots};
+   });
+   assert.equal(geometry.dots.length,2,'n3 needs exactly two physical spots');
+   assert.ok(geometry.phone.width<450,'n3 must use phone width, not PC width');
+   for(const [i,x] of [.3,.7].entries()){
+    assert.ok(Math.abs(geometry.dots[i].x-x)<.015,JSON.stringify(geometry));
+    assert.ok(Math.abs(geometry.dots[i].y-.6)<.015,JSON.stringify(geometry));
+   }
+   const p=(x,y)=>({
+    x:geometry.phone.x+geometry.phone.width*x,
+    y:geometry.phone.y+geometry.phone.height*y
+   });
+   const left=p(.3,.6),right=p(.7,.6);
+   await page.mouse.move(left.x,left.y);
+   await page.mouse.down();await page.waitForTimeout(2800);await page.mouse.up();
+   await page.mouse.click(right.x,right.y,{delay:80});
+   await page.mouse.click(right.x,right.y,{delay:80});
+   await root.locator('.lsh-trainer-progress').filter({hasText:/Gesto bylo úspěšně rozpoznáno/})
+    .waitFor({timeout:4000});
+   await page.keyboard.press('Escape');
+   await context.close();
+  }finally{await browser.close();}
+ });
+}
