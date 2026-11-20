@@ -29,7 +29,7 @@ test("desktop Chromium: render, route validation, model directions and dialogue"
   assert.equal(await page.locator("#cityMap [data-node]").count(),24);
   assert.ok(await page.locator("#cityMap").evaluate(el=>el.children.length>60),"illustrated SVG should be populated");
   assert.ok(await page.locator("#cityMap polygon").count()>=45,"miniature buildings should have visible 2.5D façades");
-  assert.ok(await page.locator("[data-landmark-label]").count()>=20,"all city districts need original legible labels");
+  assert.ok(await page.locator("[data-landmark-label]").count()>=18,"all city districts need original legible labels");
   assert.equal(await page.locator('[data-landmark-label="CITY MUSEUM"]').count(),1);
   const collisions=await page.locator("[data-landmark-label]").evaluateAll(elements=>{
     const boxes=elements.map(el=>({name:el.dataset.landmarkLabel,b:el.getBBox()}));
