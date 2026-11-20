@@ -133,9 +133,16 @@ test('T1 freehand Z accepts natural size, placement, and rounded corners, not sc
  function stroke(coords,duration=1850,pointerType='mouse'){
   let successes=0,failures=0;
   const r=api.createRecognizer('draw_z',{onSuccess:()=>successes++,onFailure:()=>failures++});
-  coords.forEach(([x,y],i)=>{
-   const type=i===0?'down':i===coords.length-1?'up':'move';
-   r.feed({type,x:x*W,y:y*H,time:Math.round(duration*i/(coords.length-1)),
+  const sampled=[coords[0]];
+  // Real pointing devices deliver many positions; interpolate each segment.
+  for(let i=1;i<coords.length;i++){
+   const [ax,ay]=coords[i-1],[bx,by]=coords[i];
+   for(let step=1;step<=4;step++)
+    sampled.push([ax+(bx-ax)*step/4,ay+(by-ay)*step/4]);
+  }
+  sampled.forEach(([x,y],i)=>{
+   const type=i===0?'down':i===sampled.length-1?'up':'move';
+   r.feed({type,x:x*W,y:y*H,time:Math.round(duration*i/(sampled.length-1)),
     width:W,height:H,pointerType,pointerId:1,button:0,
     buttons:type==='up'?0:1});
   });
