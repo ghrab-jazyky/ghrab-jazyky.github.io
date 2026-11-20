@@ -1,0 +1,88 @@
+name: LSH City Quest F2 multilingual CEFR certification
+on:
+  push:
+    branches:
+      - feature/lsh-city-quest-f2
+    paths:
+      - "language-skills-hub/authoring/city-quest-f2/**"
+      - "language-skills-hub/konverzace/city-quest-f2/**"
+      - "language-skills-hub/tests/city-quest-f2*"
+      - ".github/workflows/lsh-city-quest-f2.yml"
+  pull_request:
+    paths:
+      - "language-skills-hub/authoring/city-quest-f2/**"
+      - "language-skills-hub/konverzace/city-quest-f2/**"
+      - "language-skills-hub/tests/city-quest-f2*"
+      - ".github/workflows/lsh-city-quest-f2.yml"
+permissions:
+  contents: read
+concurrency:
+  group: city-quest-f2
+  cancel-in-progress: true
+jobs:
+  f2-content-and-engine:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Check multilingual JS syntax and static dependencies
+        run: |
+          node --check language-skills-hub/authoring/city-quest-f2/content-a.js
+          node --check language-skills-hub/authoring/city-quest-f2/content-b.js
+          node --check language-skills-hub/authoring/city-quest-f2/engine.js
+          node --check language-skills-hub/authoring/city-quest-f2/build-preview.cjs
+          node --check language-skills-hub/konverzace/city-quest-f2/f2.js
+      - name: All 24 language-level profiles, game engines and safety invariants
+        run: |
+          node --test language-skills-hub/tests/city-quest-f0.test.cjs
+          node --test language-skills-hub/tests/city-quest-f1.test.cjs
+          node --test language-skills-hub/tests/city-quest-f2.test.cjs
+      - name: Guard for no API requests in F2 HTML
+        run: |
+          grep -Fq "connect-src 'none'" language-skills-hub/konverzace/city-quest-f2/index.html
+          node -e "const fs=require('fs');const s=fs.readFileSync('language-skills-hub/konverzace/city-quest-f2/index.html','utf8');for(const str of ['content-a.js','content-b.js','f2.js','city-quest-f1/engine.js'])if(!s.includes(str))throw Error('Missing: '+str)"
+  f2-real-browsers:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install matching browser library
+        run: npm install --no-save --ignore-scripts playwright@1.56.1
+        timeout-minutes: 7
+      - name: Build one-file F2 offline review with CSP hashes
+        run: node language-skills-hub/authoring/city-quest-f2/build-preview.cjs --write
+      - name: Exercise all 24 variants, eight stations and responsive browsers
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/lsh-city-quest-f2-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill $server_pid' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/city-quest-f2.browser.test.cjs
+      - name: Upload F2 screenshot QA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: city-quest-f2-screenshots
+          path: city-quest-f2-artifacts/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Upload self-contained F2 HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: city-quest-f2-offline-review
+          path: .review-city-quest-f2/CITY_QUEST_F2_OFFLINE_PREVIEW.html
+          if-no-files-found: warn
+          retention-days: 14
