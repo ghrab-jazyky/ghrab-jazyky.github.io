@@ -157,9 +157,6 @@
     para(panel,ui().step+": "+(game.route.length-1)+" · "+ui().remaining+": "+E.distance(game.route.at(-1),c.target),"f2-small");
     status(panel,flash?.text||ui().guide,flash?.tone);
     const row=actions(panel);
-    btn(row,"↶ "+ui().undo,()=>{
-      const prev=game.route.at(-2);if(prev)onMove(prev);
-    });
     btn(row,"↺ "+ui().restartStation,resetStation);
     help(panel);
   }
@@ -271,7 +268,6 @@
     para(panel,ui().step+": "+(game.route.length-1),"f2-small");
     status(panel,flash?.text||ui().guide,flash?.tone);
     const row=actions(panel);
-    btn(row,"↶ "+ui().undo,()=>{const prev=game.route.at(-2);if(prev)onMove(prev);});
     btn(row,"↺ "+ui().restartStation,resetStation);
     help(panel);
   }
@@ -296,7 +292,6 @@
     para(panel,ui().from+" "+pointName(game.leg[0])+" → "+name,"f2-prompt");
     status(panel,flash?.text||ui().guide,flash?.tone);
     const row=actions(panel);
-    btn(row,"↶ "+ui().undo,()=>{const prev=game.leg.at(-2);if(prev)onMove(prev);});
     btn(row,"↺ "+ui().restartStation,resetStation);
     help(panel);
   }
@@ -371,6 +366,25 @@
   }
   const hudTools=el("div",quick,"f2-hud-tools");
   const hudUndo=btn(hudTools,"↶",()=>undoMapStep(),"f2-hud-undo");
+  // One HUD, two responsive placements. Desktop uses the right mission sidebar;
+  // phones keep the overlay inside the map frame. Never clone the button nodes.
+  const hudDock=panel.parentElement;
+  const phoneQuery=window.matchMedia("(max-width:700px)");
+  function placeHud(){
+    const phone=phoneQuery.matches;
+    const destination=phone?mapStage:hudDock;
+    if(quick.parentElement!==destination){
+      const focused=quick.contains(document.activeElement)?document.activeElement:null;
+      if(phone)mapStage.appendChild(quick);
+      else hudDock.insertBefore(quick,panel);
+      if(focused)focused.focus({preventScroll:true});
+    }
+    quick.dataset.placement=phone?"map-overlay":"sidebar";
+  }
+  placeHud();
+  if(phoneQuery.addEventListener)phoneQuery.addEventListener("change",placeHud);
+  else phoneQuery.addListener(placeHud);
+
   function dispatchDirection(direction){
     if(isMovementLocked())return;
     const current=activePoint();
