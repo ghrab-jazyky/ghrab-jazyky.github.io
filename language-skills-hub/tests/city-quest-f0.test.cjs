@@ -32,7 +32,7 @@ test("F0 route instructions correctly describe turns",()=>{
  const text=E.instructions(path);
  assert.match(text,/Turn right/); // north -> east, after the first segment
  assert.match(text,/Turn left/);  // east -> north
- assert.match(text,/Start at Central Station\\. Walk 1 block east/); // no invented initial facing
+ assert.ok(text.startsWith("Start at Central Station. Walk 1 block east.")); // no invented initial facing
  assert.match(text,/City Museum/);
 });
 test("F0 dialogue advances, repairs mistakes and terminates",()=>{
