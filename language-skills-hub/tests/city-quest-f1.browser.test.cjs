@@ -123,11 +123,16 @@ test("F1 mobile Chromium: pair mode, map taps, compass and responsive layout",as
   assert.equal(await page.locator("#f1Panel .f1-pair-tip").count(),1);
   await station(page,4);
   assert.equal(await page.locator("#mapViewport").evaluate(el=>el.classList.contains("detail")),true);
+  assert.equal(await page.locator("#f1MapQuick").isVisible(),true,"mobile route controls must sit beside the map");
+  assert.match(await page.locator("#f1MapQuick").innerText(),/Step 1\/5/);
   const map=page.locator("#mapViewport");
   assert.ok(await map.evaluate(el=>el.scrollWidth>el.clientWidth*1.5));
   // The actual map node, not only the compass, must advance the instructions.
   await page.locator('[data-node="1-3"]').tap();
   assert.match(await page.locator("#f1Panel").innerText(),/DIRECTION 2/);
+  assert.match(await page.locator("#f1MapQuick").innerText(),/Step 2\/5/);
+  await page.locator("#f1MapQuick .f1-quick-east").tap();
+  assert.match(await page.locator("#f1Panel").innerText(),/DIRECTION 3/);
   await page.screenshot({path:path.join(OUTPUT,"f1-mobile-map-guided.png"),fullPage:true});
   await page.setViewportSize({width:320,height:640});
   const tiny=await page.evaluate(()=>({body:document.documentElement.scrollWidth,screen:window.innerWidth}));
