@@ -5,6 +5,7 @@ on:
     paths:
       - "language-skills-hub/self-check/**"
       - "language-skills-hub/tests/lsh-unlock-*.cjs"
+      - "language-skills-hub/tests/lsh-asteroids-lock-rehearsal.browser.test.cjs"
       - ".github/workflows/lsh-unlock-teacher-ux.yml"
   workflow_dispatch:
 
@@ -51,7 +52,7 @@ jobs:
           cat /tmp/lsh-teacher-ux-http.log
           exit 1
       - name: Teacher trainer in both labs and mobile QR page
-        run: node --test language-skills-hub/tests/lsh-unlock-teacher-ux.browser.test.cjs
+        run: node --test language-skills-hub/tests/lsh-unlock-teacher-ux.browser.test.cjs language-skills-hub/tests/lsh-asteroids-lock-rehearsal.browser.test.cjs
       - name: Existing teacher, URL and gesture regression
         run: |
           node --test --test-concurrency=2 \
