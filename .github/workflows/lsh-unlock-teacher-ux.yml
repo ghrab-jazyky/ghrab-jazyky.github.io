@@ -6,6 +6,7 @@ on:
       - "language-skills-hub/self-check/**"
       - "language-skills-hub/tests/lsh-unlock-*.cjs"
       - "language-skills-hub/tests/lsh-asteroids-lock-rehearsal.browser.test.cjs"
+      - "language-skills-hub/tests/lsh-asteroids-mobile-layout.browser.test.cjs"
       - "language-skills-hub/tests/lsh-asteroids-lock-cache.test.cjs"
       - "language-skills-hub/assets/hub.js"
       - "language-skills-hub/index.html"
@@ -56,7 +57,7 @@ jobs:
           cat /tmp/lsh-teacher-ux-http.log
           exit 1
       - name: Teacher trainer in both labs and mobile QR page
-        run: node --test language-skills-hub/tests/lsh-unlock-teacher-ux.browser.test.cjs language-skills-hub/tests/lsh-asteroids-lock-rehearsal.browser.test.cjs
+        run: node --test language-skills-hub/tests/lsh-unlock-teacher-ux.browser.test.cjs language-skills-hub/tests/lsh-asteroids-lock-rehearsal.browser.test.cjs language-skills-hub/tests/lsh-asteroids-mobile-layout.browser.test.cjs
       - name: Existing teacher, URL and gesture regression
         run: |
           node --test --test-concurrency=2 \

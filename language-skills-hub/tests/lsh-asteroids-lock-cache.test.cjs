@@ -6,7 +6,8 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
 const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
-const release='rl-lock-rehearsal-20261120-4';
+const release='rl-lock-rehearsal-20261120-5';
+const catalogRelease='rl-lock-rehearsal-20261120-4';
 test('Asteroids teacher and standalone mobile trainer pin fresh JS and CSS',()=>{
  const reading=read('self-check/reading/teacher.html');
  const mobile=read('self-check/session/gesture-trainer.html');
@@ -15,7 +16,9 @@ test('Asteroids teacher and standalone mobile trainer pin fresh JS and CSS',()=>
   assert.ok(reading.includes(asset+'?v='+release),'Reading teacher misses '+asset);
  for(const asset of ['teacher-ux.js','session.css','gesture-trainer-page.js'])
   assert.ok(mobile.includes(asset+'?v='+release),'Mobile trainer misses '+asset);
- assert.ok(index.includes('assets/hub.js?v='+release),'Catalog JS may be stale');
+ assert.ok(index.includes('assets/hub.js?v='+catalogRelease),'Catalog JS may be stale');
+ const teacherUX=read('self-check/session/teacher-ux.js');
+ assert.ok(teacherUX.includes("target.searchParams.set('rehearsalVersion','"+release+"')"),'Teacher QR must use current rehearsal version');
 });
 test('only Reading Asteroids TEST navigation pins the new teacher page',()=>{
  const hub=read('assets/hub.js');
