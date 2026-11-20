@@ -9,7 +9,6 @@
   const panel=$("f1Panel"),map=$("cityMap"),viewport=$("mapViewport");
   const NS="http://www.w3.org/2000/svg";
   const icons=["🗺️","🧭","💬","👣","🚌","↩️","🚧","🏆"];
-  const flags={en:"🇬🇧",es:"🇪🇸",de:"🇩🇪",fr:"🇫🇷"};
   const stationKeys=["explore","route","dialogue","guided","transit","repair","detour","quest"];
   const chromeCopy={
     en:{theme:"Toggle light/dark theme",detail:"Map detail",whole:"Whole city",tip:"Select Map detail to zoom in on street names",tipZoom:"Swipe across the city map to explore",kicker:"EXPLORE · NAVIGATE · COMMUNICATE",caption:"CITY ADVENTURE · WALKING MAP"},
@@ -459,7 +458,7 @@
     $("f2LanguageLabel").textContent=u.language;
     $("f2LevelLabel").textContent=u.level+" CEFR";
     $("f2Profile").textContent=state.level+" · "+prof.focus;
-    $("f2HeroLanguage").textContent=flags[state.language]+" "+p.native;
+    $("f2HeroLanguage").textContent=p.native;
     $("f2HeroLevel").textContent=state.level;
     $("f2HeroText").textContent=p.stations[0][1]+" "+u.objective;
     document.querySelector(".hero h1").textContent=p.stations[7][0];
