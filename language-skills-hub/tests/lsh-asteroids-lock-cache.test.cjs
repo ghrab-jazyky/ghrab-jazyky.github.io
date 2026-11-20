@@ -22,5 +22,5 @@ test('only Reading Asteroids TEST navigation pins the new teacher page',()=>{
  assert.match(hub,/if\(e\.id==='rl-asteroids'\)url\.searchParams\.set\('rehearsalVersion','rl-lock-rehearsal-20261120-2'\)/);
  const teacher=read('self-check/session/teacher-ux.js');
  assert.match(teacher,/new URLSearchParams\(location\.search\)\.get\('topic'\)/);
- assert.match(teacher,/if\(!\/\\\/reading\\\/teacher\\\.html\$\/\.test\(location\.pathname\)\)return false/);
+ assert.match(teacher,/return topic==='rl-asteroids'/);
 });
