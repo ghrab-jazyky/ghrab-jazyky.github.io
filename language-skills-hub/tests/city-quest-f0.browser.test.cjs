@@ -59,8 +59,6 @@ test("desktop Chromium: render, route validation, model directions and dialogue"
   assert.equal(await page.locator("#dialogueView").isVisible(),false);
   assert.match(await page.locator("#routeStatus").innerText(),/Central Station/);
   await page.screenshot({path:path.join(SHOTS,"desktop-initial.png"),fullPage:true});
-  const visualMap=await page.locator("#cityMap").screenshot({type:"jpeg",quality:38});
-  console.log("CITY_QUEST_F01_MAP_BEGIN"+visualMap.toString("base64")+"CITY_QUEST_F01_MAP_END");
   // Map crossroads must respond to pointer selection, not only to direction buttons.
   await page.locator('[data-node="1-3"]').click();
   assert.equal(await page.locator("#activePathFront").getAttribute("points"),"168,580 340,580");
@@ -123,8 +121,6 @@ test("mobile Chromium: touch control, narrow viewport, dialogue reset",async()=>
   await page.locator("#north").tap();
   assert.equal(await page.locator("#routeResult").isVisible(),true);
   await page.screenshot({path:path.join(SHOTS,"mobile-success.png"),fullPage:true});
-  const visualMobile=await page.locator("#mapViewport").screenshot({type:"jpeg",quality:45});
-  console.log("CITY_QUEST_F01_MOBILE_BEGIN"+visualMobile.toString("base64")+"CITY_QUEST_F01_MOBILE_END");
   await page.setViewportSize({width:320,height:640});
   const tiny=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,inner:window.innerWidth}));
   assert.ok(tiny.scroll<=tiny.inner+2,"320px viewport overflow: "+JSON.stringify(tiny));
