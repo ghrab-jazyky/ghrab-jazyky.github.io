@@ -5,6 +5,7 @@ on:
       - "language-skills-hub/authoring/city-quest-f0/**"
       - "language-skills-hub/konverzace/city-quest-f0/**"
       - "language-skills-hub/tests/city-quest-f0.test.cjs"
+      - "language-skills-hub/tests/city-quest-f0.browser.test.cjs"
       - ".github/workflows/lsh-city-quest-f0.yml"
   push:
     branches:
@@ -13,6 +14,7 @@ on:
       - "language-skills-hub/authoring/city-quest-f0/**"
       - "language-skills-hub/konverzace/city-quest-f0/**"
       - "language-skills-hub/tests/city-quest-f0.test.cjs"
+      - "language-skills-hub/tests/city-quest-f0.browser.test.cjs"
       - ".github/workflows/lsh-city-quest-f0.yml"
 permissions:
   contents: read
@@ -33,3 +35,35 @@ jobs:
       - name: Static packaging checks
         run: |
           node -e "const fs=require('fs'),p='language-skills-hub/konverzace/city-quest-f0/'; const h=fs.readFileSync(p+'index.html','utf8'); for(const x of ['style.css','app.js','../../authoring/city-quest-f0/engine.js'])if(!h.includes(x))throw Error('Missing resource '+x);if(!h.includes(\"connect-src 'none'\"))throw Error('CSP must prevent calls');if(h.includes('https://')||h.includes('http://'))throw Error('Unexpected external URL in prototype');"
+  f0-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install matching Playwright library
+        run: npm install --no-save --ignore-scripts playwright@1.56.1
+        timeout-minutes: 8
+      - name: Browser QA for desktop, mobile and WebKit
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-cityquest-f0-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill $server_pid' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f0/index.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/city-quest-f0.browser.test.cjs
+      - name: Save F0 desktop and mobile screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: city-quest-f0-desktop-mobile-screenshots
+          path: city-quest-f0-artifacts/
+          if-no-files-found: warn
+          retention-days: 14
