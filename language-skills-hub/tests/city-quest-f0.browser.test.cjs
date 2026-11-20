@@ -111,6 +111,11 @@ test("mobile Chromium: touch control, narrow viewport, dialogue reset",async()=>
   const buttons=await page.locator(".direction-tools .btn").evaluateAll(nodes=>
     nodes.map(n=>({id:n.id,r:n.getBoundingClientRect().toJSON()})));
   assert.equal(buttons.length,4);
+  // Actual touch interaction on the SVG, in addition to the compass controls.
+  await page.locator('[data-node="1-3"]').tap();
+  assert.equal(await page.locator("#activePathFront").getAttribute("points"),"168,580 340,580");
+  await page.locator("#mapReset").tap();
+  await page.locator("#mapViewport").screenshot({path:path.join(SHOTS,"mobile-initial-detailed-map.png")});
   await page.locator("#east").tap();
   await page.locator("#east").tap();
   await page.locator("#east").tap();
