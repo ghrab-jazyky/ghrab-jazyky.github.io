@@ -171,3 +171,9 @@
   #f2Quick .f2-quick-pad button{transition:none}
   #f2Quick .f2-quick-pad button:active:not(:disabled){transform:none}
 }
+/* Tablet/compact desktop: only one F2 task panel is actually rendered.
+   Legacy hidden F0 panels must not reserve an empty second sidebar column. */
+@media(min-width:701px) and (max-width:1050px){
+  .sidebar #f1Panel:not([hidden]){grid-column:1 / -1}
+}
+
