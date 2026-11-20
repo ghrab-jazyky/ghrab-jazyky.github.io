@@ -28,8 +28,8 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      await page.getByRole('button',{name:'VYZKOUŠET GESTO'}).click();
      const demo=page.locator('#lshTeacherDemo');
      await demo.waitFor();
-     assert.match(await demo.getByRole('heading').textContent(),/Nácvik:/);
-     assert.equal(await demo.locator('.lsh-session-lock-panel').count(),0,'No English lock dialog');
+     assert.match(await demo.getByRole('heading',{name:/^Nácvik:/}).textContent(),/Nácvik:/);
+     assert.equal(await demo.locator('.lsh-session-lock-panel').count(),lab.includes('reading/')?1:0,'Asteroids uses real lock panel; Listening keeps legacy trainer');
      assert.equal(await demo.locator('.lsh-trainer-dot').count(),4);
      const corners=await page.evaluate(()=>{
       const d=document.getElementById('lshTeacherDemo').getBoundingClientRect();
@@ -115,7 +115,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
       await page.getByRole('button',{name:'VYZKOUŠET GESTO'}).click();
       const demo=page.locator('#lshTeacherDemo');
       await demo.waitFor();
-      assert.equal(await demo.locator('.lsh-session-lock-panel').count(),0);
+      assert.equal(await demo.locator('.lsh-session-lock-panel').count(),lab.includes('reading/')?1:0);
       assert.equal(await demo.getAttribute('aria-modal'),'true');
       assert.equal(await page.locator('#unlockTeacherControls details').count(),1);
       await performMouseGesture(page,id);

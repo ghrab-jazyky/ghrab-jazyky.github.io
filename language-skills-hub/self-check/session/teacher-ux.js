@@ -15,13 +15,39 @@
   if(text!==undefined)el.textContent=text;return el;
  };
  let active=null;
- function openTrainer(id){
+ // Only the Reading Asteroids pilot receives the realistic lock rehearsal.
+ const isAsteroidsTeacher=()=>/\/reading\/teacher\.html$/.test(location.pathname)&&
+  document.getElementById('topic')?.value==='rl-asteroids';
+ const currentLanguage=()=>{
+  const lang=document.getElementById('language')?.value;
+  return ['en','es','de','fr'].includes(lang)?lang:'en';
+ };
+ // Mirror the live session-ui lock text; browser tests assert copy and layout parity.
+ const lockExamples=Object.freeze({
+  en:['Test locked','The test was locked. Please contact your teacher. The timer continues.','Full-screen mode was exited.'],
+  es:['Prueba bloqueada','La prueba se ha bloqueado. Avisa al profesor. El tiempo sigue corriendo.','Se salió de la pantalla completa.'],
+  de:['Test gesperrt','Der Test wurde gesperrt. Bitte informiere die Lehrkraft. Die Zeit läuft weiter.','Der Vollbildmodus wurde verlassen.'],
+  fr:['Test verrouillé','Le test a été verrouillé. Contacte ton enseignant. Le temps continue.','Le mode plein écran a été quitté.']
+ });
+ function openTrainer(id,options){
   const def=api.byId(id);if(!def)return;
+  const realistic=options?.realistic===true;
+  const guided=options?.guided!==false;
+  const language=['en','es','de','fr'].includes(options?.language)?options.language:'en';
   active?.close();
   const oldFocus=document.activeElement;
   const demo=make('section','lsh-session-overlay lsh-unlock-teacher-demo');
   demo.id='lshTeacherDemo';demo.setAttribute('role','dialog');demo.setAttribute('aria-modal','true');
   demo.setAttribute('aria-label','Nácvik gesta: '+def.name);
+  if(realistic){
+   demo.classList.add('lsh-lock-rehearsal');
+   if(!guided)demo.classList.add('lsh-rehearsal-exact');
+   const copy=lockExamples[language];
+   const panel=make('div','lsh-session-lock-panel');
+   panel.append(make('h2',null,copy[0]),make('p',null,copy[1]),
+    make('p','lsh-session-reason',copy[2]));
+   demo.appendChild(panel);
+  }
   const heading=make('div','lsh-trainer-heading');
   const title=make('h2',null,'Nácvik: '+def.name);
   const intro=make('p',null,'Na počítači použijte myš nebo touchpad. Na telefonu či iPadu použijte prst.');
@@ -42,6 +68,7 @@
   let lastState={steps:0,active:false,awaitingRelease:false};
   function paint(){
    if(closed)return;
+   if(realistic&&!guided){markers.replaceChildren();dots=[];return;}
    const box=demo.getBoundingClientRect(),g=api.geometry(id,box.width,box.height),groups=[];
    // iPhone/iPad safe-area insets can move the real corner hit targets.
    // Match the ACTUAL CSS hit boxes, not an imaginary 38px viewport corner.
@@ -110,6 +137,7 @@
   }
   function restart(){
    completed=false;step=0;feedback.textContent='';
+   demo.classList.remove('lsh-rehearsal-succeeded');
    binding?.reset();lastState={steps:0,active:false,awaitingRelease:false};
    state(lastState);
   }
@@ -127,7 +155,8 @@
   function keys(e){
    if(e.key==='Escape'){e.preventDefault();e.stopPropagation();close();}
    else if(e.key==='Tab'){
-    const order=[closeButton,retry],at=order.indexOf(document.activeElement);
+    const order=realistic&&!guided?[closeButton]:[closeButton,retry];
+    const at=order.indexOf(document.activeElement);
     e.preventDefault();order[(at+(e.shiftKey?-1:1)+order.length)%order.length].focus();
    }
   }
@@ -140,6 +169,12 @@
    onFailure:()=>{if(!completed)feedback.textContent='Sekvence nebyla rozpoznána. Začněte od kroku 1.';},
    onSuccess:()=>{
     completed=true;step=steps[id].length;
+    if(realistic&&!guided){
+     close();
+     options?.onComplete?.();
+     return;
+    }
+    if(realistic)demo.classList.add('lsh-rehearsal-succeeded');
     progress.textContent='Gesto bylo úspěšně rozpoznáno.';
     feedback.textContent='Úspěch! Stejný rozpoznávač je použit ve studentském testu.';
     showDots();
@@ -180,7 +215,8 @@
    button.addEventListener('click',e=>{
     e.stopImmediatePropagation();e.preventDefault();
     const selected=root.querySelector('input[name="unlockMethod"]:checked')?.value;
-    openTrainer(selected);
+    openTrainer(selected,isAsteroidsTeacher()?
+     {realistic:true,guided:true,language:currentLanguage()}:undefined);
    },true);
    button.textContent='VYZKOUŠET GESTO';
   }
@@ -199,7 +235,13 @@
    const def=api.byId(selected);qr.replaceChildren();link.removeAttribute('href');
    if(!def)return;
    const target=new URL('../session/gesture-trainer.html',document.baseURI);
-   target.searchParams.set('p',def.code);link.href=target.href;
+   target.searchParams.set('p',def.code);
+   if(isAsteroidsTeacher()){
+    target.searchParams.set('source','rl-asteroids');
+    target.searchParams.set('lang',currentLanguage());
+    note.textContent='Realistický nácvik: zamčená obrazovka i dotykové oblasti jsou stejné jako u ostrého testu, bez výukových značek. Zavírací tlačítko patří pouze k nácviku.';
+   }else note.textContent='Naskenujte QR kód vlastním zařízením. Otevřete pouze trenažér, nikoli studentský test.';
+   link.href=target.href;
    try{
     if(!window.CLBQRCode?.svg)throw Error('QR generator unavailable');
     const image=window.CLBQRCode.svg(target.href);
@@ -208,6 +250,9 @@
    }catch(_){qr.append(make('p',null,'QR není dostupný. Použijte přímý odkaz.'));}
   }
   root.addEventListener('change',refresh);
+  for(const id of ['topic','language'])
+   document.getElementById(id)?.addEventListener('change',refresh);
+  summary.addEventListener('click',refresh);
   mobile.addEventListener('toggle',()=>{if(mobile.open)refresh()});
   refresh();
  }

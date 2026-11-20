@@ -18,7 +18,20 @@
   title.textContent=def.name;
   guide.textContent=def.guide;
   launch.disabled=false;
-  launch.addEventListener('click',()=>trainer.openTrainer(def.id));
+  const realistic=params.get('source')==='rl-asteroids';
+   const lang=['en','es','de','fr'].includes(params.get('lang'))?params.get('lang'):'en';
+   if(realistic){
+    document.getElementById('gestureGuide').textContent='Nácvik přesně na zamčené obrazovce testu. Dotýkejte se stejných míst jako při ostrém testu; výukové body se nezobrazují.';
+    launch.textContent='Zobrazit zamčenou obrazovku';
+   }
+   launch.addEventListener('click',()=>{
+    if(!realistic){trainer.openTrainer(def.id);return;}
+    trainer.openTrainer(def.id,{realistic:true,guided:false,language:lang,onComplete:()=>{
+     const message=document.getElementById('gestureSuccess');
+     if(message)message.hidden=false;
+     launch.textContent='Vyzkoušet znovu';
+    }});
+   });
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});
  else mount();

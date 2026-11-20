@@ -130,3 +130,55 @@
 :root[data-theme="light"] .lsh-unlock-teacher-v2 .lsh-unlock-option{background:#f9fafb}
 :root[data-theme="light"] .lsh-unlock-teacher-v2 .lsh-unlock-option:has(input:checked){background:#eff5f7}
 @media(prefers-reduced-motion:reduce){.lsh-unlock-teacher-v2 .lsh-unlock-option{transition:none}}
+
+/* RL Asteroids: rehearsal uses the live lock panel and hit targets, not a mock screen.
+ * The teacher-only controls never exist in the real student sessionLock. */
+.lsh-unlock-teacher-demo.lsh-lock-rehearsal{
+ display:grid!important;place-items:center!important;overflow:auto!important;
+ padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom)!important;
+ background:rgba(2,7,16,.96)!important;color:#f4f8ff!important;
+}
+.lsh-lock-rehearsal .lsh-session-lock-panel{
+ display:block;width:min(550px,100%);background:#152338;color:#f4f8ff;
+ border:1px solid #667a90;border-radius:18px;padding:25px 23px;margin:42px auto;
+}
+.lsh-lock-rehearsal .lsh-session-reason{font-weight:700;color:#d4e7fc}
+.lsh-lock-rehearsal .lsh-trainer-heading{
+ top:max(10px,env(safe-area-inset-top));width:min(550px,calc(100% - 150px));
+ background:#152338;color:#f4f8ff;border-color:#667a90;
+}
+.lsh-lock-rehearsal .lsh-trainer-heading p{color:#f4f8ff}
+.lsh-lock-rehearsal .lsh-trainer-progress{color:#9bdcff}
+.lsh-lock-rehearsal .lsh-trainer-feedback{
+ background:#152338;color:#f4f8ff;border-color:#667a90;
+}
+.lsh-lock-rehearsal .lsh-trainer-close,.lsh-lock-rehearsal .lsh-trainer-retry{
+ background:#152338;color:#f4f8ff;border-color:#667a90;
+}
+.lsh-lock-rehearsal .lsh-trainer-dot{background:#fff;color:#152338}
+.lsh-lock-rehearsal .lsh-trainer-dot.is-next{background:#007bad;color:#fff}
+.lsh-lock-rehearsal .lsh-trainer-dot.is-done{background:#e0f5e9;color:#175c39}
+.lsh-lock-rehearsal .lsh-trainer-heading,.lsh-lock-rehearsal .lsh-trainer-feedback,
+.lsh-lock-rehearsal .lsh-trainer-close,.lsh-lock-rehearsal .lsh-trainer-retry{
+ z-index:20004;
+}
+.lsh-lock-rehearsal .lsh-corner,.lsh-lock-rehearsal .lsh-unlock-surface{z-index:20001}
+.lsh-lock-rehearsal .lsh-trainer-markers{z-index:20002}
+.lsh-lock-rehearsal.lsh-rehearsal-exact .lsh-trainer-heading,
+.lsh-lock-rehearsal.lsh-rehearsal-exact .lsh-trainer-markers,
+.lsh-lock-rehearsal.lsh-rehearsal-exact .lsh-trainer-feedback,
+.lsh-lock-rehearsal.lsh-rehearsal-exact .lsh-trainer-retry{display:none}
+.lsh-lock-rehearsal.lsh-rehearsal-exact .lsh-trainer-close{
+ top:max(78px,calc(env(safe-area-inset-top) + 66px));left:50%;
+ transform:translateX(-50%);right:auto;min-height:44px;
+ padding:8px 16px;opacity:.85;
+}
+.lsh-lock-rehearsal.lsh-rehearsal-exact .lsh-trainer-close::after{
+ content:' · pouze nácvik';font-size:.75em;
+}
+@media(max-width:680px){
+ .lsh-lock-rehearsal .lsh-session-lock-panel{padding:16px;margin:70px auto}
+ .lsh-lock-rehearsal:not(.lsh-rehearsal-exact) .lsh-trainer-heading{
+  top:max(65px,calc(env(safe-area-inset-top) + 55px));width:calc(100% - 24px)
+ }
+}
