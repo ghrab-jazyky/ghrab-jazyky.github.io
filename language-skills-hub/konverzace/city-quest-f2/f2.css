@@ -88,7 +88,7 @@
 #activePath,#activePathFront,#routeHalo{opacity:0!important;pointer-events:none!important}
 
 /* F2.1A Single authoritative map-bound NavigationHUD.
- * The panel has no directional controls. HUD is attached to the non-scrolling
+ * The panel has no directional controls. The floating HUD is attached to the non-scrolling
  * stage, while the SVG viewport pans independently underneath it.
  */
 #f2MapStage{position:relative;isolation:isolate;min-width:0}
@@ -177,10 +177,10 @@
   .sidebar #f1Panel:not([hidden]){grid-column:1 / -1}
 }
 
-/* F2.1A responsive placement: desktops/tablets show the one navigation HUD
+/* F2.1A responsive placement: only two-column desktop layouts dock the HUD
    as a distinct card in the mission sidebar, preserving the FULL city map.
    Only phone layouts use the map overlay already defined above. */
-@media(min-width:701px){
+@media(min-width:1051px){
   .sidebar>#f2Quick:not([hidden]){
     position:static;grid-column:1 / -1;
     display:grid;grid-template-columns:minmax(0,1fr) 148px;
@@ -211,8 +211,4 @@
   }
   /* The metro/game content can be long: task and navigation are independent cards. */
   .sidebar>#f2Quick[hidden]{display:none}
-}
-@media(min-width:701px) and (max-width:1050px){
-  .sidebar>#f2Quick:not([hidden]){grid-template-columns:minmax(0,1fr) 158px}
-  .sidebar>#f2Quick .f2-quick-pad{max-width:158px}
 }
