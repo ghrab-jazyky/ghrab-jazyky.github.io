@@ -216,6 +216,21 @@
 }
 .lsh-rehearsal-phone-screen .lsh-corner{
  position:absolute;pointer-events:auto;
+ /* Exact normalized copy of the student's 390 × 844 portrait targets.
+  * Each 58 × 58px target and 9px inset scales with the phone preview. */
+ width:14.871795%;height:6.872038%;
+}
+.lsh-rehearsal-phone-screen .lsh-corner-tl{
+ left:2.307692%;top:1.066351%;right:auto;bottom:auto;
+}
+.lsh-rehearsal-phone-screen .lsh-corner-tr{
+ right:2.307692%;top:1.066351%;left:auto;bottom:auto;
+}
+.lsh-rehearsal-phone-screen .lsh-corner-bl{
+ left:2.307692%;bottom:1.066351%;right:auto;top:auto;
+}
+.lsh-rehearsal-phone-screen .lsh-corner-br{
+ right:2.307692%;bottom:1.066351%;left:auto;top:auto;
 }
 .lsh-rehearsal-phone-screen .lsh-unlock-surface{
  position:absolute!important;inset:0!important;touch-action:none;
