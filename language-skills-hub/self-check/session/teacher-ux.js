@@ -270,7 +270,7 @@
     target.searchParams.set('source','rl-asteroids');
     target.searchParams.set('lang',currentLanguage());
     target.searchParams.set('rehearsalVersion','rl-lock-rehearsal-20261120-3');
-    note.textContent='Realistický nácvik: zamčená obrazovka i dotykové oblasti jsou stejné jako u ostrého testu, bez výukových značek. Zavírací tlačítko patří pouze k nácviku.';
+    note.textContent='Mobilní nácvik používá stejné poměrné body jako simulovaný telefon na PC. Můžete cvičit s viditelnými body nebo zkusit reálnou zamčenou obrazovku bez nápovědy. Zavírací tlačítko slouží pouze k nácviku.';
    }else note.textContent='Naskenujte QR kód vlastním zařízením. Otevřete pouze trenažér, nikoli studentský test.';
    link.href=target.href;
    try{
