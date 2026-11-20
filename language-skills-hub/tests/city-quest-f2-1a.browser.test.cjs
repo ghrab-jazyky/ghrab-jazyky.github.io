@@ -32,7 +32,10 @@ async function verifyHud(page,lang){
  const hud=page.locator('[data-testid="navigation-hud"]');
  assert.equal(await hud.count(),1);
  assert.equal(await hud.isVisible(),true);
- assert.equal(await page.locator("#f2MapStage > #f2Quick").count(),1);
+ const desktop=(page.viewportSize()?.width||0)>1050;
+ assert.equal(await page.locator("#f2MapStage > #f2Quick").count(),desktop?0:1);
+ assert.equal(await page.locator(".sidebar > #f2Quick").count(),desktop?1:0);
+ assert.equal(await hud.getAttribute("data-placement"),desktop?"sidebar":"map-overlay");
  assert.equal(await page.locator("#f2MapStage > #mapViewport").count(),1);
  assert.equal(await page.locator(".f2-controls").count(),0,"there must be no second direction pad in the mission panel");
  assert.equal(await page.locator("#f2Quick .f2-quick-pad button").count(),4);
@@ -82,6 +85,43 @@ test("F2.1A all 24 variants: one localized HUD for 4 navigation missions, absent
     }
    }
   }
+  assert.deepEqual(failures.errors,[]);
+  assert.deepEqual(failures.requests,[]);
+ }finally{await browser.close();}
+});
+test("F2.1A wide desktop: map stays unobstructed, arrows move to mission sidebar, resize keeps one HUD",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:1440,height:900}});
+  const failures=monitor(page);
+  await page.goto(URL,{waitUntil:"load"});
+  await variant(page,"en","C1");
+  await station(page,7);
+  await verifyHud(page,"en");
+  const desktop=await checkMapHudOverlay(page);
+  const intersects=(a,b)=>Math.min(a.x+a.w,b.x+b.w)-Math.max(a.x,b.x)>1 &&
+    Math.min(a.y+a.h,b.y+b.h)-Math.max(a.y,b.y)>1;
+  assert.equal(intersects(desktop.map,desktop.hud),false,
+    "Desktop must NOT obscure the illustrated city "+JSON.stringify(desktop));
+  const sidebar=await page.locator(".sidebar").boundingBox();
+  assert.ok(sidebar&&desktop.hud.x>=sidebar.x-1&&desktop.hud.x+desktop.hud.w<=sidebar.x+sidebar.width+1,
+    "Desktop HUD must be inside the mission sidebar");
+  await page.screenshot({path:path.join(SHOTS,"F21A-desktop-C1-sidebar-dock.png"),fullPage:false});
+  await page.evaluate(()=>{window.__stableHudButton=document.querySelector(".f2-quick-east");});
+  await page.locator("#f2Quick .f2-quick-north").click();
+  assert.equal((await page.locator("#f2MapRoute").getAttribute("points")).trim().split(/\s+/).length,2,
+    "Desktop sidebar direction must move traveller exactly one block");
+  await page.setViewportSize({width:390,height:844});
+  await verifyHud(page,"en");
+  assert.equal(await page.evaluate(()=>window.__stableHudButton===document.querySelector(".f2-quick-east")),true,
+    "Resize must reparent, never clone or replace directional buttons");
+  const mobile=await checkMapHudOverlay(page);
+  assert.equal(intersects(mobile.map,mobile.hud),true,"Phone controls must overlay map");
+  await page.screenshot({path:path.join(SHOTS,"F21A-responsive-phone-overlay.png"),fullPage:false});
+  await page.setViewportSize({width:1440,height:900});
+  await verifyHud(page,"en");
+  assert.equal(await page.evaluate(()=>window.__stableHudButton===document.querySelector(".f2-quick-east")),true);
+  assert.equal(intersects((await checkMapHudOverlay(page)).map,(await checkMapHudOverlay(page)).hud),false);
   assert.deepEqual(failures.errors,[]);
   assert.deepEqual(failures.requests,[]);
  }finally{await browser.close();}
