@@ -38,9 +38,16 @@ test("all 24 language-CEFR variants render eight localized stations and visible 
   const resp=await page.goto(URL,{waitUntil:"load"});
   assert.equal(resp.status(),200);
   await page.locator("#f1Stations button").first().waitFor();
+  const cleanLabels=await page.locator("#f2Language option").allTextContents();
+  assert.deepEqual(cleanLabels,["English","Español","Deutsch","Français"],
+    "Language options should show native names without country flags or abbreviations.");
   for(const lang of C.languages){
    for(const level of C.levels){
     await setVariant(page,lang,level);
+    assert.equal(await page.locator("#f2HeroLanguage").innerText(),C.pack(lang).native,
+      "Header language badge must show only the native name.");
+    assert.equal(await page.locator("#f2Language option:checked").innerText(),C.pack(lang).native,
+      "Selected language label must omit flags and abbreviations.");
     assert.equal(await page.locator("#f1Stations button").count(),8);
     assert.equal(await progress(page),0);
     assert.equal(await page.locator('[data-landmark-label="CITY MUSEUM"] text').textContent(),C.pack(lang).mapLabels["CITY MUSEUM"]);
