@@ -16,11 +16,20 @@
  };
  let active=null;
  // Only the Reading Asteroids pilot receives the realistic lock rehearsal.
- const isAsteroidsTeacher=()=>/\/reading\/teacher\.html$/.test(location.pathname)&&
-  document.getElementById('topic')?.value==='rl-asteroids';
+ const isAsteroidsTeacher=()=>{
+  if(!/\/reading\/teacher\.html$/.test(location.pathname))return false;
+  const select=document.getElementById('topic');
+  // The teacher controls mount before asynchronous catalog data finishes.
+  // Do not fall back to the old trainer while the topic select is still empty.
+  const topic=select?.value||(!select?.options.length?
+   new URLSearchParams(location.search).get('topic'):null);
+  return topic==='rl-asteroids';
+ };
  const currentLanguage=()=>{
   const lang=document.getElementById('language')?.value;
-  return ['en','es','de','fr'].includes(lang)?lang:'en';
+  const preset=new URLSearchParams(location.search).get('lang');
+  return ['en','es','de','fr'].includes(lang)?lang:
+   ['en','es','de','fr'].includes(preset)?preset:'en';
  };
  // Mirror the live session-ui lock text; browser tests assert copy and layout parity.
  const lockExamples=Object.freeze({
@@ -239,6 +248,7 @@
    if(isAsteroidsTeacher()){
     target.searchParams.set('source','rl-asteroids');
     target.searchParams.set('lang',currentLanguage());
+    target.searchParams.set('rehearsalVersion','rl-lock-rehearsal-20261120-2');
     note.textContent='Realistický nácvik: zamčená obrazovka i dotykové oblasti jsou stejné jako u ostrého testu, bez výukových značek. Zavírací tlačítko patří pouze k nácviku.';
    }else note.textContent='Naskenujte QR kód vlastním zařízením. Otevřete pouze trenažér, nikoli studentský test.';
    link.href=target.href;
