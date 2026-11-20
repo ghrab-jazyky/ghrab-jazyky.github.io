@@ -33,9 +33,6 @@ test("desktop Chromium: render, route validation, model directions and dialogue"
   assert.equal(await page.locator("#dialogueView").isVisible(),false);
   assert.match(await page.locator("#routeStatus").innerText(),/Central Station/);
   await page.screenshot({path:path.join(SHOTS,"desktop-initial.png"),fullPage:true});
-  // Diagnostic preview of the rendered map. Only synthetic / fictional city pixels.
-  const mapThumbnail=await page.locator("#cityMap").screenshot({type:"jpeg",quality:42});
-  console.log("CITY_QUEST_MAP_THUMBNAIL_BEGIN"+mapThumbnail.toString("base64")+"CITY_QUEST_MAP_THUMBNAIL_END");
   // Map crossroads must respond to pointer selection, not only to direction buttons.
   await page.locator('[data-node="1-3"]').click();
   assert.equal(await page.locator("#activePathFront").getAttribute("points"),"168,580 340,580");
@@ -81,8 +78,6 @@ test("mobile Chromium: touch control, narrow viewport, dialogue reset",async()=>
   await page.locator("#cityMap [data-node]").first().waitFor();
   const overflow=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,inner:window.innerWidth,map:document.querySelector("#mapViewport").clientWidth}));
   assert.ok(overflow.scroll<=overflow.inner+2,"page horizontal overflow: "+JSON.stringify(overflow));
-  const mobileMapThumbnail=await page.locator("#mapViewport").screenshot({type:"jpeg",quality:46});
-  console.log("CITY_QUEST_MOBILE_MAP_BEGIN"+mobileMapThumbnail.toString("base64")+"CITY_QUEST_MOBILE_MAP_END");
   await page.locator("#east").tap();
   await page.locator("#east").tap();
   await page.locator("#east").tap();
@@ -90,8 +85,6 @@ test("mobile Chromium: touch control, narrow viewport, dialogue reset",async()=>
   await page.locator("#north").tap();
   assert.equal(await page.locator("#routeResult").isVisible(),true);
   await page.screenshot({path:path.join(SHOTS,"mobile-success.png"),fullPage:true});
-  const mobileThumbnail=await page.screenshot({type:"jpeg",quality:42,fullPage:false});
-  console.log("CITY_QUEST_MOBILE_THUMBNAIL_BEGIN"+mobileThumbnail.toString("base64")+"CITY_QUEST_MOBILE_THUMBNAIL_END");
   await page.setViewportSize({width:320,height:640});
   const tiny=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,inner:window.innerWidth}));
   assert.ok(tiny.scroll<=tiny.inner+2,"320px viewport overflow: "+JSON.stringify(tiny));
