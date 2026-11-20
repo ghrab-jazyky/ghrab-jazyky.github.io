@@ -114,7 +114,8 @@
     const last=E.position(route[route.length-1]);
     const zoom=map.getBoundingClientRect().width/1196;
     const left=Math.max(0,last.x*zoom-viewport.clientWidth*.38);
-    viewport.scrollTo({left:left,behavior:reduceMotion?"auto":"smooth"});
+    const top=Math.max(0,last.y*zoom-viewport.clientHeight*.56);
+    viewport.scrollTo({left:left,top:top,behavior:reduceMotion?"auto":"smooth"});
   }
   function setMapDetail(detail){
     const viewport=$("mapViewport");
@@ -123,7 +124,7 @@
     $("mapZoom").textContent=detail?"− Whole city":"＋ Map detail";
     $("mapTouchTip").textContent=detail?"↔ Swipe sideways to explore · Tap a crossroads":"Select Map detail to zoom in on street names";
     if(detail)window.requestAnimationFrame(keepWaypointVisible);
-    else viewport.scrollTo({left:0,behavior:"auto"});
+    else viewport.scrollTo({left:0,top:0,behavior:"auto"});
   }
   function applyMove(result){
     route=result.route;
