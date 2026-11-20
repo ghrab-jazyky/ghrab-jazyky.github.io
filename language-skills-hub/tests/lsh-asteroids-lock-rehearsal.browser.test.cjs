@@ -13,11 +13,21 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    page.on('pageerror',e=>errors.push(String(e)));
    await page.goto(new URL(teacher,base).href);
    await page.locator('#confirmTest:enabled').waitFor();
+   const teacherAssets=await page.evaluate(()=>({
+    js:document.querySelector('script[src*="teacher-ux.js"]')?.getAttribute('src'),
+    css:document.querySelector('link[href*="session.css"]')?.getAttribute('href')
+   }));
+   for(const url of [teacherAssets.js,teacherAssets.css])
+    assert.match(url,/v=rl-lock-rehearsal-20261120-2/,'Asteroids teacher assets must be version-pinned');
    const before=await page.evaluate(()=>Object.keys(localStorage).filter(x=>x.includes('attempt')));
    await page.getByRole('button',{name:'VYZKOUŠET GESTO'}).click();
    const demo=page.locator('#lshTeacherDemo');
    await demo.waitFor();
    assert.equal(await demo.locator('.lsh-session-lock-panel').count(),1);
+   assert.equal(await demo.locator('.lsh-session-lock-panel').isVisible(),true);
+   assert.equal(await demo.evaluate(el=>el.classList.contains('lsh-lock-rehearsal')),true);
+   assert.match(await demo.evaluate(el=>getComputedStyle(el).backgroundColor),
+    /^rgba?\(2,\s*7,\s*16[,)]/,'Desktop teacher must see the real dark lock background');
    assert.equal(await demo.locator('.lsh-session-lock-panel h2').textContent(),'Test locked');
    assert.equal(await demo.locator('.lsh-session-lock-panel p').first().textContent(),
     'The test was locked. Please contact your teacher. The timer continues.');
@@ -37,6 +47,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await mobile.locator('summary').click();
    const url=new URL(await mobile.locator('a').getAttribute('href'));
    assert.equal(url.searchParams.get('source'),'rl-asteroids');
+   assert.equal(url.searchParams.get('rehearsalVersion'),'rl-lock-rehearsal-20261120-2');
    assert.equal(url.searchParams.get('lang'),'en');
    await page.locator('#language').selectOption('es');
    const updated=new URL(await mobile.locator('a').getAttribute('href'));
@@ -51,6 +62,8 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    const lock=phone.locator('#lshTeacherDemo');
    await lock.waitFor();
    assert.equal(await lock.locator('.lsh-session-lock-panel h2').textContent(),'Prueba bloqueada');
+   assert.match(await lock.evaluate(el=>getComputedStyle(el).backgroundColor),
+    /^rgba?\(2,\s*7,\s*16[,)]/,'Mobile trainer must use the real lock background');
    assert.equal(await lock.locator('.lsh-trainer-dot').count(),0);
    assert.equal(await lock.locator('.lsh-trainer-heading').isVisible(),false);
    const points=await phone.evaluate(()=>['tl','tr','bl','br'].map(k=>{
