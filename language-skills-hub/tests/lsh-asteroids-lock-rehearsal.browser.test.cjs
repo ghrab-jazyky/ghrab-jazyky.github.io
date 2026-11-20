@@ -131,6 +131,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    });
    assert.ok(geometry.every(p=>p.hit),'Gesture targets blocked: '+JSON.stringify(geometry));
    const [left,right]=geometry;
+   const performGesture=async()=>{
    if(name==='Chromium'){
     const cdp=await context.newCDPSession(page);
     await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:left.x,y:left.y,id:1}]});
@@ -151,9 +152,20 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    }
    await page.touchscreen.tap(right.x,right.y);
    await page.touchscreen.tap(right.x,right.y);
+   };
+   await performGesture();
    await demo.locator('.lsh-trainer-progress').filter({hasText:/Gesto bylo úspěšně rozpoznáno/}).waitFor({timeout:5000});
    await page.getByRole('button',{name:'Ukončit nácvik'}).click();
    assert.equal(await demo.count(),0);
+   // Repeat the very same touch gesture in the exact student-style lock screen.
+   // Hints must disappear without affecting any of the real hit targets.
+   await page.getByRole('button',{name:/^Zobrazit zamčenou obrazovku/}).click();
+   const exact=page.locator('#lshTeacherDemo');
+   await exact.waitFor();
+   assert.equal(await exact.locator('.lsh-trainer-dot').count(),0);
+   await performGesture();
+   await exact.waitFor({state:'detached',timeout:5000});
+   assert.equal(await page.locator('#gestureSuccess').isVisible(),true);
    assert.equal(await page.evaluate(()=>Object.keys(localStorage).filter(k=>k.includes('attempt')).length),0);
    assert.deepEqual(errors,[]);
    await context.close();
