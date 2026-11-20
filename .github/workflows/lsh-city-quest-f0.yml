@@ -30,11 +30,13 @@ jobs:
         run: |
           node --check language-skills-hub/authoring/city-quest-f0/engine.js
           node --check language-skills-hub/konverzace/city-quest-f0/app.js
+          node --check language-skills-hub/konverzace/city-quest-f0/city-art.js
+          node --check language-skills-hub/authoring/city-quest-f0/build-preview.cjs
       - name: Game and dialogue regression
         run: node --test language-skills-hub/tests/city-quest-f0.test.cjs
       - name: Static packaging checks
         run: |
-          node -e "const fs=require('fs'),p='language-skills-hub/konverzace/city-quest-f0/'; const h=fs.readFileSync(p+'index.html','utf8'); for(const x of ['style.css','app.js','../../authoring/city-quest-f0/engine.js'])if(!h.includes(x))throw Error('Missing resource '+x);if(!h.includes(\"connect-src 'none'\"))throw Error('CSP must prevent calls');if(h.includes('https://')||h.includes('http://'))throw Error('Unexpected external URL in prototype');"
+          node -e "const fs=require('fs'),p='language-skills-hub/konverzace/city-quest-f0/'; const h=fs.readFileSync(p+'index.html','utf8'); for(const x of ['style.css','app.js','city-art.js','../../authoring/city-quest-f0/engine.js'])if(!h.includes(x))throw Error('Missing resource '+x);if(!h.includes(\"connect-src 'none'\"))throw Error('CSP must prevent calls');if(h.includes('https://')||h.includes('http://'))throw Error('Unexpected external URL in prototype');"
   f0-browser:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
@@ -49,6 +51,8 @@ jobs:
       - name: Install matching Playwright library
         run: npm install --no-save --ignore-scripts playwright@1.56.1
         timeout-minutes: 8
+      - name: Build sealed offline F0.1 preview
+        run: node language-skills-hub/authoring/city-quest-f0/build-preview.cjs --write
       - name: Browser QA for desktop, mobile and WebKit
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-cityquest-f0-http.log 2>&1 &
@@ -65,5 +69,13 @@ jobs:
         with:
           name: city-quest-f0-desktop-mobile-screenshots
           path: city-quest-f0-artifacts/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Export portable F0.1 review HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: city-quest-f01-standalone-review
+          path: .review-city-quest-f01/CITY_QUEST_F01_OFFLINE_PREVIEW.html
           if-no-files-found: warn
           retention-days: 14
