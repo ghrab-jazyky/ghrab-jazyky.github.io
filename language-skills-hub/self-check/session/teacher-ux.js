@@ -43,11 +43,21 @@
   const realistic=options?.realistic===true;
   const guided=options?.guided!==false;
   const language=['en','es','de','fr'].includes(options?.language)?options.language:'en';
+  // Desktop rehearsal emulates the PORTRAIT STUDENT SCREEN; a wide desktop
+  // browser must never define the geometry of the student's phone gesture.
+  const phonePreview=realistic&&guided&&
+   window.matchMedia('(pointer: fine)').matches&&innerWidth>=700;
   active?.close();
   const oldFocus=document.activeElement;
   const demo=make('section','lsh-session-overlay lsh-unlock-teacher-demo');
   demo.id='lshTeacherDemo';demo.setAttribute('role','dialog');demo.setAttribute('aria-modal','true');
   demo.setAttribute('aria-label','Nácvik gesta: '+def.name);
+  if(phonePreview)demo.classList.add('lsh-rehearsal-phone-mode');
+  const stage=phonePreview?make('div','lsh-rehearsal-phone-screen'):demo;
+  if(phonePreview){
+   stage.setAttribute('role','group');
+   stage.setAttribute('aria-label','Simulovaný displej telefonu – zamčený test');
+  }
   if(realistic){
    demo.classList.add('lsh-lock-rehearsal');
    if(!guided)demo.classList.add('lsh-rehearsal-exact');
@@ -55,7 +65,7 @@
    const panel=make('div','lsh-session-lock-panel');
    panel.append(make('h2',null,copy[0]),make('p',null,copy[1]),
     make('p','lsh-session-reason',copy[2]));
-   demo.appendChild(panel);
+   stage.appendChild(panel);
   }
   const heading=make('div','lsh-trainer-heading');
   const title=make('h2',null,'Nácvik: '+def.name);
@@ -71,7 +81,14 @@
   feedback.setAttribute('role','status');feedback.setAttribute('aria-live','polite');
   const closeButton=make('button','action lsh-trainer-close','Ukončit nácvik');closeButton.type='button';
   const retry=make('button','action lsh-trainer-retry','Zkusit znovu');retry.type='button';
-  demo.append(heading,markers,feedback,closeButton,retry);document.body.appendChild(demo);
+  if(phonePreview){
+   const aside=make('aside','lsh-rehearsal-phone-controls');
+   aside.append(make('p','lsh-rehearsal-device-label',
+    'Simulovaný displej telefonu · 390 × 844'),closeButton,heading,feedback,retry);
+   stage.appendChild(markers);
+   demo.append(stage,aside);
+  }else demo.append(heading,markers,feedback,closeButton,retry);
+  document.body.appendChild(demo);
   const inertBefore=[...document.body.children].filter(el=>el!==demo).map(el=>[el,el.inert]);
   inertBefore.forEach(([el])=>{el.inert=true});
   const oldOverflow=document.body.style.overflow;document.body.style.overflow='hidden';
@@ -80,12 +97,12 @@
   function paint(){
    if(closed)return;
    if(realistic&&!guided){markers.replaceChildren();dots=[];return;}
-   const box=demo.getBoundingClientRect(),g=api.geometry(id,box.width,box.height),groups=[];
+   const box=stage.getBoundingClientRect(),g=api.geometry(id,box.width,box.height),groups=[];
    // iPhone/iPad safe-area insets can move the real corner hit targets.
    // Match the ACTUAL CSS hit boxes, not an imaginary 38px viewport corner.
    const cornerIds=['tl','tr','bl','br'];
    const targets=id==='corners4'?g.points.map((p,index)=>{
-    const el=demo.querySelector('.lsh-corner-'+cornerIds[index]);
+    const el=stage.querySelector('.lsh-corner-'+cornerIds[index]);
     if(!el)return p; // First paint runs before bindDOM creates targets.
     const r=el.getBoundingClientRect();
     return {x:r.left+r.width/2-box.left,y:r.top+r.height/2-box.top};
@@ -176,7 +193,7 @@
   document.addEventListener('keydown',keys,true);
   window.addEventListener('resize',paint);
   paint();
-  binding=api.bindDOM(demo,id,{
+  binding=api.bindDOM(stage,id,{
    onFailure:()=>{if(!completed)feedback.textContent='Sekvence nebyla rozpoznána. Začněte od kroku 1.';},
    onSuccess:()=>{
     completed=true;step=steps[id].length;
