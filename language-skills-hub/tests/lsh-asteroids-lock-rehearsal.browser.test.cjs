@@ -223,7 +223,19 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
       else if(id==='tap_hold_tap'){await tap(p[0]);await hold(p[0],2200);await tap(p[0])}
       else if(id==='hold_double_tap'){await hold(p[0],2800);await tap(p[1]);await tap(p[1])}
       else if(id==='triangle3'){await tap(p[0]);await page.waitForTimeout(2400);await tap(p[1]);await page.waitForTimeout(2400);await hold(p[2],1800)}
-      else await drag(p);
+      else {
+       // Human freehand: broader Z with rounded corners, unlike the old
+       // pixel-perfect four-waypoint synthetic gesture.
+       const natural=await lock.evaluate(root=>{
+        const r=root.getBoundingClientRect();
+        return [[.18,.19],[.3,.20],[.49,.18],[.72,.19],[.8,.24],
+         [.68,.38],[.49,.55],[.25,.73],[.20,.78],[.35,.79],
+         [.62,.81],[.82,.79]].map(([x,y])=>({
+         x:Math.round(r.left+r.width*x),y:Math.round(r.top+r.height*y)
+        }));
+       });
+       await drag(natural);
+      }
       if(guided){
        await lock.locator('.lsh-trainer-progress')
         .filter({hasText:/Gesto bylo úspěšně rozpoznáno/}).waitFor({timeout:5500});
@@ -287,6 +299,46 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await demo.locator('.lsh-trainer-feedback').filter({hasText:/Bod 3: stisk byl příliš krátký/}).waitFor({timeout:3000});
    await page.getByRole('button',{name:'Ukončit nácvik'}).click();
    await ctx.close();
+  }finally{await browser.close();}
+ });
+}
+
+// Human mouse input must work even when Z is not exactly on the hint dots.
+// In guided mode display the actual stroke, so the teacher can see mistakes.
+for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+ test(name+' Asteroids human freehand Z succeeds with visible teacher trace',{timeout:70000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const context=await browser.newContext({viewport:{width:1280,height:800}});
+   const page=await context.newPage(),errors=[];
+   page.on('pageerror',e=>errors.push(String(e)));
+   await page.goto(new URL(teacher,base).href);
+   await page.locator('#confirmTest:enabled').waitFor();
+   await page.locator('input[name="unlockMethod"][value="draw_z"]').check();
+   await page.getByRole('button',{name:'VYZKOUŠET GESTO'}).click();
+   const demo=page.locator('#lshTeacherDemo');await demo.waitFor();
+   const stage=await demo.evaluate(root=>{
+    const r=(root.querySelector('.lsh-rehearsal-phone-screen')||root).getBoundingClientRect();
+    return {x:r.x,y:r.y,width:r.width,height:r.height};
+   });
+   const points=[[.18,.19],[.34,.20],[.52,.18],[.76,.20],
+    [.79,.25],[.68,.38],[.48,.56],[.20,.78],[.34,.81],[.62,.80],[.82,.79]];
+   const xy=([x,y])=>({x:stage.x+x*stage.width,y:stage.y+y*stage.height});
+   const first=xy(points[0]);
+   await page.mouse.move(first.x,first.y);await page.mouse.down();
+   for(const norm of points.slice(1)){
+    const p=xy(norm);
+    await page.mouse.move(p.x,p.y,{steps:5});
+    await page.waitForTimeout(45);
+   }
+   await page.mouse.up();
+   await demo.locator('.lsh-trainer-progress').filter({hasText:'Gesto bylo úspěšně rozpoznáno.'})
+    .waitFor({timeout:5000});
+   const actual=await demo.locator('polyline[stroke="#37efd0"]').getAttribute('points');
+   assert.ok(actual&&actual.trim().split(/\s+/).length>=10,'Freehand trail should be visible');
+   assert.deepEqual(errors,[],'No JavaScript errors while tracing human Z');
+   await page.getByRole('button',{name:'Ukončit nácvik'}).click();
+   await context.close();
   }finally{await browser.close();}
  });
 }
