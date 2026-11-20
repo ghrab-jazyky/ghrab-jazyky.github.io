@@ -18,7 +18,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     css:document.querySelector('link[href*="session.css"]')?.getAttribute('href')
    }));
    for(const url of [teacherAssets.js,teacherAssets.css])
-    assert.match(url,/v=rl-lock-rehearsal-20261120-8/,'Asteroids teacher assets must be version-pinned');
+    assert.match(url,/v=rl-lock-rehearsal-20261120-9/,'Asteroids teacher assets must be version-pinned');
    const before=await page.evaluate(()=>Object.keys(localStorage).filter(x=>x.includes('attempt')));
    await page.getByRole('button',{name:'VYZKOUŠET GESTO'}).click();
    const demo=page.locator('#lshTeacherDemo');
@@ -63,7 +63,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await mobile.locator('summary').click();
    const url=new URL(await mobile.locator('a').getAttribute('href'));
    assert.equal(url.searchParams.get('source'),'rl-asteroids');
-   assert.equal(url.searchParams.get('rehearsalVersion'),'rl-lock-rehearsal-20261120-8');
+   assert.equal(url.searchParams.get('rehearsalVersion'),'rl-lock-rehearsal-20261120-9');
    assert.equal(url.searchParams.get('lang'),'en');
    await page.locator('#language').selectOption('es');
    const updated=new URL(await mobile.locator('a').getAttribute('href'));
@@ -344,7 +344,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
 }
 
 const expectedTargets=Object.freeze({
- corners4:[[.0974,.045],[.9026,.045],[.0974,.955],[.9026,.955]],
+ corners4:[[.102564,.047393],[.897436,.047393],[.102564,.952607],[.897436,.952607]],
  tap_hold_tap:[[.5,.7]],
  hold_double_tap:[[.3,.6],[.7,.6]],
  triangle3:[[.5,.3],[.3,.7],[.7,.7]],
@@ -397,4 +397,52 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await context.close();
   }finally{await browser.close();}
  });
+}
+
+
+// Audit 2026-11-20: the hidden n1 corners must accept a real touch 3 CSS px
+// from every display edge. Verify same recognizer and CSS hit areas in both
+// engines without introducing false positives outside the four rectangles.
+for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+ test(name+' corner gesture: 3px edge touches unlock in EXACT mode',
+  {timeout:95000},async()=>{
+   const browser=await engine.launch({headless:true});
+   try{
+    for(const [width,height] of [[390,844],[375,667],[820,1180],[844,390]]){
+     const ctx=await browser.newContext({viewport:{width,height},isMobile:true,hasTouch:true});
+     const page=await ctx.newPage();
+     const errors=[];page.on('pageerror',error=>errors.push(String(error)));
+     try{
+      await page.goto(new URL('self-check/session/gesture-trainer.html?source=rl-asteroids&p=n1&lang=en',base).href);
+      await page.getByRole('button',{name:/^Zobrazit zamčenou obrazovku/}).click();
+      const lock=page.locator('#lshTeacherDemo');
+      await lock.waitFor();
+      const state=await lock.evaluate(root=>{
+       const r=root.getBoundingClientRect();
+       const cornerRects=window.LSHUnlockGestures.geometry('corners4',r.width,r.height).rects;
+       const ids=['tl','tr','bl','br'],touches=[
+        [r.left+3,r.top+3],[r.right-3,r.top+3],
+        [r.left+3,r.bottom-3],[r.right-3,r.bottom-3]
+       ];
+       const errors=[];
+       ids.forEach((id,i)=>{
+        const b=root.querySelector('.lsh-corner-'+id).getBoundingClientRect();
+        const expected=cornerRects[i];
+        if(Math.abs(b.left-r.left-expected.x)>1||Math.abs(b.top-r.top-expected.y)>1||
+           Math.abs(b.width-expected.width)>1||Math.abs(b.height-expected.height)>1)
+         errors.push(id+' geometry mismatch '+JSON.stringify({actual:{left:b.left,top:b.top,width:b.width,height:b.height},expected}));
+       });
+       return {touches,hit:touches.map(([x,y])=>
+        !!document.elementFromPoint(x,y)?.closest('.lsh-corner')),errors};
+      });
+      assert.deepEqual(state.errors,[],name+' '+width+'x'+height+' corner rectangles');
+      assert.ok(state.hit.every(Boolean),name+' '+width+'x'+height+' edge touches must hit four corners');
+      for(const [x,y] of state.touches)await page.touchscreen.tap(x,y);
+      await lock.waitFor({state:'detached',timeout:6500});
+      assert.equal(await page.locator('#gestureSuccess').isVisible(),true);
+      assert.deepEqual(errors,[],name+' '+width+'x'+height+' console errors');
+     }finally{await page.close();await ctx.close();}
+    }
+   }finally{await browser.close();}
+  });
 }

@@ -5,8 +5,8 @@
  if(!api)return;
  const steps={
   corners4:['Levý horní roh','Pravý horní roh','Levý dolní roh','Pravý dolní roh'],
-  tap_hold_tap:['Krátce klepněte','Podržte 2 až 3 sekundy','Znovu krátce klepněte'],
-  hold_double_tap:['Vlevo podržte přibližně 3 sekundy','Vpravo krátce klepněte','Vpravo ihned klepněte znovu'],
+  tap_hold_tap:['Klepněte (do 0,6 s)','Podržte 2 až 3 sekundy','Znovu klepněte (do 0,6 s)'],
+  hold_double_tap:['Vlevo podržte přibližně 3 sekundy','Vpravo klepněte (do 0,5 s)','Vpravo hned znovu (do 0,5 s)'],
   triangle3:['Klepněte nahoře','Klepněte vlevo dole','Vpravo dole podržte přibližně 1–2 sekundy; pak uvolněte'],
   draw_z:['Stiskněte a držte nahoře vlevo','Táhněte doprava','Pokračujte šikmo dolů doleva','Dokončete vpravo dole a uvolněte']
  };
@@ -105,8 +105,8 @@
    if(closed)return;
    if(realistic&&!guided){markers.replaceChildren();dots=[];zLine=null;return;}
    const box=stage.getBoundingClientRect(),g=api.geometry(id,box.width,box.height),groups=[];
-   // iPhone/iPad safe-area insets can move the real corner hit targets.
-   // Match the ACTUAL CSS hit boxes, not an imaginary 38px viewport corner.
+   // The true edge-aligned touch rectangles determine all teacher markers.
+   // Read actual CSS hit boxes rather than assuming a fixed screen centre.
    const cornerIds=['tl','tr','bl','br'];
    const targets=id==='corners4'?g.points.map((p,index)=>{
     const el=stage.querySelector('.lsh-corner-'+cornerIds[index]);
@@ -367,7 +367,7 @@
    if(isAsteroidsTeacher()){
     target.searchParams.set('source','rl-asteroids');
     target.searchParams.set('lang',currentLanguage());
-    target.searchParams.set('rehearsalVersion','rl-lock-rehearsal-20261120-8');
+    target.searchParams.set('rehearsalVersion','rl-lock-rehearsal-20261120-9');
     note.textContent='Mobilní nácvik používá stejné poměrné body jako simulovaný telefon na PC. Můžete cvičit s viditelnými body nebo zkusit reálnou zamčenou obrazovku bez nápovědy. Zavírací tlačítko slouží pouze k nácviku.';
    }else note.textContent='Naskenujte QR kód vlastním zařízením. Otevřete pouze trenažér, nikoli studentský test.';
    link.href=target.href;

@@ -471,7 +471,7 @@
   }
   const tryButton=document.createElement('button');tryButton.type='button';tryButton.className='action ghost';tryButton.textContent='VYZKOUŠET GESTO';
   const note=document.createElement('p');note.className='small-note';
-  note.textContent='Gesto proveďte plynule a svižně, bez dlouhých pauz. Na počítači se po gestu může objevit tlačítko Pokračovat – klikněte na ně, test se vrátí do celé obrazovky.';
+  note.textContent='Dodržte návod vybraného gesta: krátká klepnutí jsou oddělená, dlouhé stisky držte požadovaný čas a Z nakreslete jediným souvislým tahem. Po úspěchu může počítač zobrazit Pokračovat pro návrat do celé obrazovky.';
   root.append(chooser,details,note,tryButton);
   update();
   function close(){
