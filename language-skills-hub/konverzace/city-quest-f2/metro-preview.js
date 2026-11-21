@@ -149,6 +149,7 @@
   const interchangeIds=new Set(M.source.interchanges.map(x=>x.station));
   for(const st of M.stations){
    const group=append(nodes,"g",{"data-metro-station":st.id,role:"button",tabindex:0,
+    "aria-pressed":String(inspected===st.id),
     "aria-label":st.labelEn+"; "+M.joined(st.id).join(" and ")});
    append(group,"circle",{class:"metro-node-halo",cx:st.x,cy:st.y,r:31,fill:"#8afcf7",
     opacity:inspected===st.id?.24:0,stroke:"none"});
@@ -193,7 +194,16 @@
   viewport.scrollTo({left,top,behavior:reduced?"auto":"smooth"});
  }
  function selectStation(id){
-  inspected=id;renderNetwork();renderInspector();
+  // Do not rebuild the SVG on inspection: preserve Tab focus, viewport pan and
+  // the user's current route. The selection is informational, not movement.
+  inspected=id;
+  network.querySelectorAll("[data-metro-station]").forEach(group=>{
+   const match=group.dataset.metroStation===id;
+   group.setAttribute("aria-pressed",String(match));
+   const halo=group.querySelector(".metro-node-halo");
+   if(halo)halo.setAttribute("opacity",match?".24":"0");
+  });
+  renderInspector();
   $("metroFeedback").textContent="Station selected: "+stationName(id)+". This is a network inspection, not a game move.";
   $("metroFeedback").dataset.state="info";
  }
