@@ -182,7 +182,14 @@
       el("summary",ext,"",c.labels.stretch);
       para(ext,c.cefr.stretch);
     }
-    status(panel,flash?.text||c.labels.position+": "+place+" · "+(game.lineId||c.labels.noLine),flash?.tone);
+    // The mixed City–Metro mission has two physical layers. While the player
+    // walks, report their ACTUAL surface position rather than the underground
+    // start/goal stored separately in the metro engine.
+    const outdoors=n===8&&metroCityPhase()&&!!game.surface;
+    const positionText=outdoors?
+      ui().city+": "+pointName(game.surface):
+      c.labels.position+": "+place+" · "+(game.lineId||c.labels.noLine);
+    status(panel,flash?.text||positionText,flash?.tone);
     if(stage==="walk-to-entrance"||stage==="walk-to-museum"){
       para(panel,c.hints.walk,"f2-small");
     }else if(["select-line","select-direction","select-platform"].includes(stage)){
