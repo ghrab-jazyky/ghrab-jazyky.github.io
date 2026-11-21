@@ -1,0 +1,86 @@
+name: LSH Asteroids PDF release gate (NO DEPLOY)
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/cteni/asteroids/index.html'
+      - 'language-skills-hub/data/cards.json'
+      - 'language-skills-hub/assets/school-logo.png'
+      - 'language-skills-hub/assets/hub.js'
+      - 'language-skills-hub/index.html'
+      - 'language-skills-hub/self-check/reading/reading-core.js'
+      - 'language-skills-hub/self-check/reading/print-**'
+      - 'language-skills-hub/printouts/rl-asteroids/**'
+      - 'language-skills-hub/scripts/build-reading-print-pdfs.cjs'
+      - 'language-skills-hub/scripts/verify-reading-print-assets.cjs'
+      - 'language-skills-hub/tests/rl-pdf-**'
+      - '.github/workflows/lsh-reading-pdf-release-gate.yml'
+  push:
+    branches: ['feature/lsh-asteroids-pdf-hardening-20261120']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: lsh-asteroids-pdf-gate-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  unit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Validate source projections and existing annotation contracts
+        run: |
+          node --check language-skills-hub/self-check/reading/print-core.js
+          node --check language-skills-hub/self-check/reading/print-page.js
+          node --check language-skills-hub/scripts/build-reading-print-pdfs.cjs
+          node --check language-skills-hub/scripts/verify-reading-print-assets.cjs
+          node --test language-skills-hub/tests/rl-pdf-all-variants.test.cjs language-skills-hub/tests/rl-pdf-annotations-pilot.test.cjs
+  browser:
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Browser checks in Chromium and WebKit
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-pdf-qa-browser.log 2>&1 &
+          PID=$!
+          trap 'kill $PID' EXIT
+          node --test language-skills-hub/tests/rl-pdf-hardening.browser.test.cjs language-skills-hub/tests/rl-pdf-annotations-pilot.browser.test.cjs
+  corpus:
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install PDF inspection tools and pinned Chromium renderer
+        run: |
+          apt-get update -qq
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends qpdf poppler-utils
+          npm install --no-save --ignore-scripts playwright@1.56.1 hyphen@1.14.1
+      - name: Verify committed PDF corpus and manifest provenance
+        run: |
+          node language-skills-hub/scripts/verify-reading-print-assets.cjs
+      - name: Rebuild from checked-out source and compare semantic content
+        run: |
+          cp -a language-skills-hub/printouts/rl-asteroids /tmp/lsh-asteroids-pdfs-before
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-pdf-qa-corpus.log 2>&1 &
+          PID=$!
+          trap 'kill $PID' EXIT
+          node language-skills-hub/scripts/build-reading-print-pdfs.cjs --all
+          node language-skills-hub/scripts/verify-reading-print-assets.cjs --compare /tmp/lsh-asteroids-pdfs-before
