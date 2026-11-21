@@ -19,7 +19,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: city-quest-f2-1b-visual
+  group: city-quest-f2-1b-${{ github.sha }}
   cancel-in-progress: true
 jobs:
   metro-graph:
