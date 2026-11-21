@@ -18,6 +18,9 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await materials.waitFor({timeout:30000});
    await materials.click();
    await page.locator('#materialsDialog[open]').waitFor();
+   await page.waitForFunction(()=>['materialsPracticeText','materialsPracticeAll',
+    'materialsTestText','materialsTestAll'].every(id=>
+    document.getElementById(id)?.getAttribute('href')?.endsWith('.pdf')));
    for(const id of ['materialsPracticeText','materialsPracticeAll','materialsTestText','materialsTestAll'])
     assert.ok((await page.locator('#'+id).getAttribute('href'))?.includes('rl-asteroids'));
    const target=new URL('print-page.html?topic=rl-asteroids&lang=en&level=B2&mode=test&format=all',base);
