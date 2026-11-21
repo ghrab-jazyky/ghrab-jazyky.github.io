@@ -159,6 +159,8 @@ test("F3B OS reduced-motion disables window scenery and transfer motion even in 
   assert.equal(await page.locator("html").getAttribute("data-motion"),"off");
   assert.equal(await page.locator(".metro-train-door-left").first().evaluate(
    el=>getComputedStyle(el).animationName),"none");
+  assert.equal(await page.locator(".metro-train-door-left").first().getAttribute("x"),"275",
+   "Reduced-motion mode must still show the doors OPEN after valid platform selection.");
   await choose(page,"Board the train");
   assert.equal(await page.locator("#metroSceneSvg").getAttribute("data-phase"),"ride");
   assert.equal(await page.locator(".metro-window-world").evaluate(el=>getComputedStyle(el).animationName),"none");
