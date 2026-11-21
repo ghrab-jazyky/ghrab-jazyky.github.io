@@ -27,8 +27,13 @@
     <p class="material-meta" id="materialMeta"></p>
    </div>
   </header>
+  <p class="student-identification" id="studentIdentification" hidden></p>
+  <p class="worksheet-instructions" id="worksheetInstructions" hidden></p>
+  <section class="warmup" id="warmupSection" hidden aria-labelledby="warmupTitle">
+   <h2 id="warmupTitle">Before reading</h2><p id="warmupPrompt"></p>
+  </section>
   <section class="reading-material" aria-labelledby="readingTitle">
-   <h2 id="readingTitle">Reading text</h2>
+   <h2><span id="readingTitle">Reading text</span><span class="gap-note" id="gapNote" hidden></span></h2>
    <div id="readingParagraphs" class="reading-paragraphs"></div>
   </section>
   <section id="exercisesSection" class="exercises" hidden aria-labelledby="exercisesTitle">
@@ -36,12 +41,11 @@
    <div id="exercises"></div>
   </section>
   <section id="reflectionSection" class="reflection" hidden>
-   <h2>Additional reflection · Not scored</h2>
+   <h2 id="reflectionTitle">Additional reflection · Not scored</h2>
    <p id="reflectionPrompt"></p><div class="writing-lines" aria-hidden="true"></div>
   </section>
   <footer class="paper-footer">
-   Zdroj inspirace: British Council – LearnEnglish, Asteroids. Materiál připravený pro Reading Lab.
-   Zachovejte označení původního zdroje a respektujte podmínky jeho využití.
+   Téma inspirováno: British Council LearnEnglish – Asteroids. Tento pracovní list Reading Lab není oficiálním materiálem British Council.
   </footer>
  </main>
 </body>

@@ -26,6 +26,23 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
 .reading-paragraphs{font:11pt/1.46 Georgia,"Times New Roman",serif;text-align:justify;
  hyphens:auto;-webkit-hyphens:auto;word-break:normal;overflow-wrap:normal}
 .reading-paragraphs p{margin:0 0 11pt;orphans:3;widows:3;hyphens:auto;-webkit-hyphens:auto}
+@media print{
+ .paper[data-format="text"] .paper-header{margin-bottom:15px}
+ .paper[data-format="text"] .reading-paragraphs{line-height:1.41}
+ .paper[data-format="text"] .reading-paragraphs p{margin-bottom:8pt}
+}
+.paper[data-format="all"] .reading-paragraphs{padding-left:13pt}
+.paper[data-format="all"] .reading-paragraphs p{position:relative}
+.paper[data-format="all"] .reading-paragraphs p::before{
+ content:attr(data-num) ".";position:absolute;left:-13pt;top:2pt;
+ font:8.5pt Arial,Helvetica,sans-serif;color:#526879
+}
+.student-identification{margin:0 0 10pt;font:9.5pt/1.5 Arial,Helvetica,sans-serif;color:#203847}
+.worksheet-instructions{margin:0 0 10pt;font:9pt/1.4 Arial,Helvetica,sans-serif;color:#334b59}
+.warmup{margin:0 0 12pt;padding:7pt 10pt;border-left:2pt solid #8ba5b5;background:#f5f8fa}
+.warmup h2{display:inline;font:700 9.5pt Arial,Helvetica,sans-serif;border:0;padding:0;margin:0 7pt 0 0}
+.warmup p{display:inline;font:9.5pt/1.45 Georgia,"Times New Roman",serif}
+.paper h2 .gap-note{margin-left:8pt;font:400 8.5pt/1.25 Arial,Helvetica,sans-serif;color:#3b5566}
 .exercises{font:10.5pt/1.43 Georgia,"Times New Roman",serif;text-align:left}
 .exercise-group{margin:0 0 18px}
 .exercise-group h3{font:700 11pt Arial,Helvetica,sans-serif;margin:12pt 0 7pt;break-after:avoid-page}
@@ -40,12 +57,13 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
 .writing-lines{height:70pt;background:repeating-linear-gradient(to bottom,transparent 0,transparent 20pt,#9caeba 20.5pt)}
 .paper-footer{font:8pt/1.35 Arial,Helvetica,sans-serif;color:#516371;
  border-top:.6px solid #b4c4ce;padding-top:7pt;margin-top:18pt;break-inside:avoid}
-@media(max-width:850px){
+@media screen and (max-width:850px){
  .print-controls{margin:0;border:0;border-radius:0;flex-direction:column;align-items:stretch}
- .paper{margin:0 auto;box-shadow:none}
+ .paper{width:100%;min-height:0;margin:0;padding:18px;box-shadow:none}
+ .paper-header{flex-wrap:wrap}
 }
 @page{size:A4 portrait;margin:18mm 18mm 20mm}
-@page{@bottom-left{content:"Zdroj: British Council LearnEnglish – Asteroids";color:#536577;font:7pt Arial,Helvetica,sans-serif}
+@page{@bottom-left{content:"Téma inspirováno: British Council LearnEnglish – Asteroids";color:#536577;font:7pt Arial,Helvetica,sans-serif}
  @bottom-right{content:"Reading Lab · " counter(page);color:#536577;font:9pt Arial,Helvetica,sans-serif}}
 @media print{
  body{background:#fff}
@@ -56,5 +74,17 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
  .reading-material,.exercises,.reflection{break-inside:auto}
  .paper h2,.exercise-group h3{break-after:avoid-page}
  .reading-paragraphs,.reading-paragraphs p,.exercise-options li{hyphens:auto;-webkit-hyphens:auto}
+ /* Keep an independent reflection on EN B1 on the same sheet as its exercises.
+    Keep the 11pt reading font and sufficient room for written answers. */
+ .paper[data-level="B1"][data-format="all"] .exercise-question{margin-bottom:7pt}
+ .paper[data-level="B1"][data-format="all"] .answer-line{height:14pt}
+ .paper[data-level="B1"][data-format="all"] .exercise-options li{margin:2pt 0}
+ /* Two ruled lines remain, without spilling a phantom footer-only page. */
+ .paper[data-level="B1"][data-format="all"] .reflection p{margin-bottom:4pt}
+ .paper[data-level="B1"][data-format="all"] .writing-lines{height:44pt}
+ /* Long C2 text-only pages: retain font size, optimize leading and blank space. */
+ .paper[data-level="C2"][data-format="text"] .paper-header{margin-bottom:10px}
+ .paper[data-level="C2"][data-format="text"] .reading-paragraphs{line-height:1.35}
+ .paper[data-level="C2"][data-format="text"] .reading-paragraphs p{margin-bottom:5pt}
  a{text-decoration:none;color:inherit}
 }

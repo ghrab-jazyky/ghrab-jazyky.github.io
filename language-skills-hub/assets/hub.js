@@ -15,7 +15,8 @@ let localSelfCheck=false;
 const welcome=byId('welcome'),chooser=byId('skillChooser'),catalog=byId('catalog');
 let qrUrl='', qrTitle='', shareEntry=null, toastTimeout=null;
 const qrDialog=byId('qrDialog'),qrMount=byId('qrMount');
-const materialsDialog=byId('materialsDialog');let materialsEntry=null,materialsManifest=null;
+const materialsDialog=byId('materialsDialog');
+let materialsEntry=null,materialsManifest=null,materialsManifestState='idle';
 const howtoDialog=byId('howto'),howtoOpen=byId('howtoOpen'),howtoClose=byId('howtoClose');
 function toast(message){
  const el=byId('toast');
@@ -195,11 +196,14 @@ function updateMaterials(){
  const e=materialsEntry,lang=byId('materialsLanguage').value,level=byId('materialsLevel').value;
  const valid=e.languages.includes(lang)&&e.levels.includes(level);
  let found=0;
+ const loading=materialsManifestState==='loading';
  for(const [id,mode,format] of [
   ['materialsPracticeText','practice','text'],['materialsPracticeAll','practice','all'],
   ['materialsTestText','test','text'],['materialsTestAll','test','all']]){
   const a=byId(id);a.removeAttribute('download');a.target='_blank';a.rel='noopener noreferrer';
-  if(!valid){a.removeAttribute('href');a.setAttribute('aria-disabled','true');continue}
+  if(!valid||loading){
+   a.removeAttribute('href');a.setAttribute('aria-disabled','true');continue;
+  }
   a.removeAttribute('aria-disabled');
   a.href=printPreview(e,lang,level,mode,format);
   const relative='printouts/rl-asteroids/'+lang+'/'+level+'/'+mode+'-'+format+'.pdf';
@@ -210,8 +214,11 @@ function updateMaterials(){
   }
  }
  byId('materialsStatus').textContent=!valid?'Zvolte dostupný jazyk a úroveň.':
+  loading?'Načítám seznam souborů PDF…':
+  materialsManifestState==='error'?
+   'Předgenerovaná PDF nejsou dostupná. Odkazy otevřou tiskový náhled s možností Uložit jako PDF.':
   found===4?'Všechny čtyři soubory PDF jsou připravené ke stažení.':
-  'Dostupné soubory se stahují přímo; ostatní otevřou tiskový náhled s možností Uložit jako PDF.';
+  'Některé soubory PDF nejsou v seznamu. Dostupné soubory se stahují; ostatní otevřou tiskový náhled.';
 }
 async function openMaterials(e){
  materialsEntry=e;
@@ -221,17 +228,20 @@ async function openMaterials(e){
  opt(byId('materialsLevel'),e.levels.map(level=>[level,level]),
   e.levels.includes(level)?level:e.levels.includes('B2')?'B2':e.levels[0]);
  byId('materialsTitle').textContent='Materiály PDF · '+localized(e,'all').title;
+ const needManifest=!materialsManifest;
+ if(needManifest)materialsManifestState='loading';
  updateMaterials();materialsDialog.showModal();
- if(!materialsManifest){
+ if(needManifest){
   try{
    const response=await fetch('printouts/rl-asteroids/manifest-all.json',
     {credentials:'omit',cache:'no-store',redirect:'error'});
-   if(response.ok){
-    const manifest=await response.json();
-    if(manifest.schema==='RL_PDF_PRINT_ASSET_V1'&&manifest.topic===e.id&&Array.isArray(manifest.files))
-     materialsManifest=manifest;
-   }
-  }catch(_){}
+   if(!response.ok)throw new Error('Manifest HTTP '+response.status);
+   const manifest=await response.json();
+   if(manifest.schema!=='RL_PDF_PRINT_ASSET_V1'||manifest.topic!==e.id||
+      !Array.isArray(manifest.files))throw new Error('Invalid PDF manifest');
+   materialsManifest=manifest;
+   materialsManifestState='ready';
+  }catch(_){materialsManifestState='error'}
  }
  if(materialsEntry===e)updateMaterials();
 }
