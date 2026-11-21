@@ -70,6 +70,16 @@ function inspect(filename){
  const size=info.match(/^Page size:\s*([\d.]+)\s+x\s+([\d.]+)/m);
  if(!pages||pages>12||!size||Math.abs(Number(size[1])-595)>2||
     Math.abs(Number(size[2])-842)>2)throw Error('Invalid A4 page count/size: '+filename);
+ // Reject visually blank pages that contain only the browser-generated
+ // page number and attribution. Whole-document text parity cannot catch these.
+ for(let page=1;page<=pages;page++){
+  const pageText=run('pdftotext',['-raw','-f',String(page),'-l',String(page),
+   '-nopgbrk',filename,'-']);
+  const material=normalized(cleanPageFurniture(pageText));
+  if(material.length<30)
+   throw Error('Blank or near-empty PDF page '+page+'/'+pages+': '+filename+
+    ' ('+material.length+' content characters after removing page furniture)');
+ }
  const text=run('pdftotext',['-raw','-nopgbrk',filename,'-']);
  const actual=normalized(cleanPageFurniture(text));
  if(actual.length<100)throw Error('Empty PDF text: '+filename);
