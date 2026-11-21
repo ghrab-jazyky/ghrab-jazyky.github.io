@@ -35,21 +35,27 @@ function normalized(s){
   .replace(/([\p{L}])[-‐]\s*\n(?=[\p{L}])/gu,'$1')
   .toLocaleLowerCase('und').replace(/[^\p{L}\p{N}]/gu,'');
 }
-function wordChunks(s){
- const words=String(s).split(/\s+/).filter(Boolean),pieces=[];
- for(let i=0;i<words.length;i+=6)pieces.push(words.slice(i,i+6).join(' '));
- return pieces;
-}
-function includedText(label,value,actual){
+function includedText(label,value,actual,after=0){
  const expected=normalized(value);
- if(expected.length<2)return;
- if(actual.includes(expected))return;
- // Printed paragraphs can cross a PDF page boundary and have a footer
- // inserted in extracted text. Require virtually every six-word chunk.
- const pieces=wordChunks(value).filter(s=>normalized(s).length>4);
- const misses=pieces.filter(piece=>!actual.includes(normalized(piece)));
- if(misses.length>Math.max(1,Math.floor(pieces.length*0.08)))
-  throw Error('PDF text mismatch: '+label+' ('+misses.length+'/'+pieces.length+' parts missing)');
+ if(expected.length<2)return after;
+ const direct=actual.indexOf(expected,after);
+ if(direct>=0)return direct+expected.length;
+ // A page break can interrupt a text element with margin text. In that case
+ // require EVERY word in source order; tolerate no missing chunks.
+ const words=String(value).split(/\s+/).filter(Boolean).map(normalized).filter(Boolean);
+ let cursor=after;
+ for(const word of words){
+  const found=actual.indexOf(word,cursor);
+  if(found<0)throw Error('PDF ordered text mismatch: '+label+' missing '+word+
+   ' after offset '+cursor);
+  cursor=found+word.length;
+ }
+ return cursor;
+}
+function cleanPageFurniture(raw){
+ return raw.split(/\r?\n/).filter(line=>
+  !/^\s*(?:Zdroj:\s*British Council LearnEnglish|Reading Lab\s*·\s*\d+\s*$)/u.test(line)
+ ).join('\n');
 }
 function inspect(filename){
  const bytes=fs.readFileSync(filename);
@@ -63,8 +69,9 @@ function inspect(filename){
  if(!pages||pages>12||!size||Math.abs(Number(size[1])-595)>2||
     Math.abs(Number(size[2])-842)>2)throw Error('Invalid A4 page count/size: '+filename);
  const text=run('pdftotext',['-raw','-nopgbrk',filename,'-']);
- if(normalized(text).length<100)throw Error('Empty PDF text: '+filename);
- return {bytes,actual:normalized(text),pages,raw:text};
+ const actual=normalized(cleanPageFurniture(text));
+ if(actual.length<100)throw Error('Empty PDF text: '+filename);
+ return {bytes,actual,pages,raw:text};
 }
 if(manifest.schema!=='RL_PDF_PRINT_ASSET_V1'||manifest.topic!=='rl-asteroids')
  throw Error('Invalid manifest schema');
@@ -88,27 +95,40 @@ for(const lang of ['en','es','de','fr'])for(const level of ['A1','A2','B1','B2',
   if(!record)throw Error('Missing manifest entry '+key);
   const filename=path.join(root,key);
   const {bytes,actual,pages}=inspect(filename);
+  if(['A1','A2','B1','B2'].includes(level)&&format==='text'&&pages!==1)
+   throw Error('Unexpected extra page in lower-level text-only PDF: '+key);
   if(record.bytes!==bytes.length||
      record.sha256!==crypto.createHash('sha256').update(bytes).digest('hex'))
    throw Error('PDF does not match manifest '+key);
   const model=project.printable(variant,mode,format);
-  includedText(key+' title',model.title,actual);
+  let cursor=includedText(key+' title',model.title,actual);
+  if(model.warmup)cursor=includedText(key+' warmup',model.warmup,actual,cursor);
   for(const [index,para] of model.paragraphs.entries()){
-   // The gap marker is typographically represented in PDF, not ordinary text.
    const parts=para.split(' […] ');
-   for(const part of parts)includedText(key+' paragraph '+(index+1),part,actual);
+   for(const part of parts)
+    cursor=includedText(key+' paragraph '+(index+1),part,actual,cursor);
   }
   if(format==='all'){
    for(const section of model.sections){
-    includedText(key+' section',section.title,actual);
+    cursor=includedText(key+' section',section.title,actual,cursor);
     for(const q of section.questions){
-     includedText(key+' question '+q.number,q.prompt,actual);
-     for(const option of q.choices)includedText(key+' option '+q.number,option,actual);
+     cursor=includedText(key+' question '+q.number,q.number+'. '+q.prompt,actual,cursor);
+     for(const option of q.choices)
+      cursor=includedText(key+' option '+q.number,option,actual,cursor);
     }
    }
-   if(model.reflection)includedText(key+' reflection',model.reflection,actual);
-   if(model.warmup)includedText(key+' warmup',model.warmup,actual);
+   if(model.reflection)cursor=includedText(key+' reflection',model.reflection,actual,cursor);
+  }else{
+   for(const q of variant.questions){
+    if(normalized(q.q).length>12&&actual.includes(normalized(q.q)))
+     throw Error('Exercise question appears in text-only PDF: '+key+' / '+q.id);
+   }
+   if(/_{10,}/.test(run('pdftotext',['-raw','-nopgbrk',filename,'-'])))
+    throw Error('Student identification line in text-only PDF: '+key);
   }
+  if(variant.pre&&!(mode==='practice'&&format==='all')&&
+     actual.includes(normalized(variant.pre)))
+   throw Error('Warm-up question leaked into wrong PDF variant: '+key);
   if(variant.gap){
    gapCount++;
    const sentence=normalized(variant.gap.sentence),observed=actual.split(sentence).length-1;
@@ -129,7 +149,19 @@ for(const lang of ['en','es','de','fr'])for(const level of ['A1','A2','B1','B2',
   count++;pageTotal+=pages;
  }
 }
-const disk=fs.readdirSync(pdfRoot,{withFileTypes:true});
+const diskFiles=[];
+function walkPDFs(dir,rel=''){
+ for(const entry of fs.readdirSync(dir,{withFileTypes:true})){
+  const name=path.posix.join(rel,entry.name);
+  if(entry.isDirectory())walkPDFs(path.join(dir,entry.name),name);
+  else if(entry.isFile()&&entry.name.endsWith('.pdf'))
+   diskFiles.push('printouts/rl-asteroids/'+name);
+ }
+}
+walkPDFs(pdfRoot);
+const expectedFiles=[...byPath.keys()].sort();
+if(JSON.stringify(diskFiles.sort())!==JSON.stringify(expectedFiles))
+ throw Error('Unexpected or missing PDF on disk (must match manifest exactly)');
 console.log('PASS: '+count+' PDF variants; '+pageTotal+' A4 pages; '+gapCount+
  ' gap variants; manifest SHA256, text, source provenance'+
  (compareRoot?' and regeneration parity':''));
