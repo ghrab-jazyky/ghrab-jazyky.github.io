@@ -15,7 +15,8 @@
    'Invalid reading variant');
   const paragraphs=variant.paragraphs.map((original,index)=>{
    requireValid(typeof original==='string','Invalid reading paragraph');
-   if(mode!=='test'||!variant.gap||variant.gap.p!==index)return original;
+   // Preserve the full practice-only text; a worksheet with the gap exercise must hide it.
+    if((mode!=='test'&&format!=='all')||!variant.gap||variant.gap.p!==index)return original;
    const sentence=variant.gap.sentence;
    requireValid(typeof sentence==='string'&&sentence.length>0,'Invalid missing sentence');
    const at=original.indexOf(sentence);
@@ -38,7 +39,8 @@
   return {
    title:variant.title,paragraphs,sections,
    reflection:format==='all'&&typeof variant.open==='string'?variant.open:'',
-   mode,format
+   warmup:mode==='practice'&&format==='all'&&typeof variant.pre==='string'?variant.pre:'',
+   hasGap:Boolean(variant.gap),mode,format
   };
  }
  const api=Object.freeze({printable,MODES,FORMATS});

@@ -18,6 +18,20 @@ const levels=process.argv.includes('--sample')?['B2']:entry.levels;
 if(!process.argv.includes('--sample')&&!process.argv.includes('--all'))throw Error('Choose --sample or --all');
 const base=process.env.LSH_PRINT_BASE_URL||'http://127.0.0.1:8765/language-skills-hub/';
 const filePath=path.join(root,'printouts','rl-asteroids');
+// Fingerprint every source input that affects the generated PDF corpus.
+const INPUTS=[
+ 'data/cards.json','cteni/asteroids/index.html','assets/school-logo.png',
+ 'self-check/reading/reading-core.js','self-check/reading/print-core.js',
+ 'self-check/reading/print-page.html','self-check/reading/print-page.js',
+ 'self-check/reading/print-page.css','scripts/build-reading-print-pdfs.cjs'
+];
+const sourceDigest=crypto.createHash('sha256');
+for(const filename of INPUTS){
+ const bytes=fs.readFileSync(path.join(root,filename));
+ sourceDigest.update(filename+'\0'+bytes.length+'\0');
+ sourceDigest.update(bytes);
+}
+const sourceSha256=sourceDigest.digest('hex');
 (async()=>{
  // Chromium on Linux may not have system hyphenation dictionaries.
  // Apply explicit language patterns to the print DOM before creating each PDF.
@@ -34,7 +48,11 @@ const filePath=path.join(root,'printouts','rl-asteroids');
   hyphenators[lang]=sync;
  }
  const browser=await chromium.launch({headless:true});
- const manifest={schema:'RL_PDF_PRINT_ASSET_V1',topic:'rl-asteroids',files:[]};
+ const playwrightVersion=require('playwright/package.json').version;
+ const generator='playwright@'+playwrightVersion+'/chromium@'+browser.version()+
+  '/hyphen@1.14.1';
+ const manifest={schema:'RL_PDF_PRINT_ASSET_V1',topic:'rl-asteroids',
+  sourceSha256,generator,files:[]};
  try{
   const page=await browser.newPage({viewport:{width:1280,height:900}});
   page.on('pageerror',error=>{console.error('Print-page error:',error.message)});
@@ -48,7 +66,7 @@ const filePath=path.join(root,'printouts','rl-asteroids');
     await page.locator('#printButton:not([disabled])').waitFor({timeout:30000});
     await page.evaluate(()=>document.fonts.ready);
     const selectors=['#readingParagraphs p','.exercise-question .prompt',
-     '.exercise-options li','#reflectionPrompt'];
+     '.exercise-options li','#reflectionPrompt','#warmupPrompt'];
     const selector=selectors.join(',');
     const originals=await page.locator(selector).allTextContents();
     const hyphenate=hyphenators[lang];
