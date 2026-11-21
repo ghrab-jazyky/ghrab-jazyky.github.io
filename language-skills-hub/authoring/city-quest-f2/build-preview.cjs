@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 /*
- * City Quest F2.1B: existing F2 stations plus experimental Riverton Metro preview in ONE offline HTML file.
+ * City Quest F2.1C: F2 stations, metro visual review and opt-in EN/B1 metro gameplay in ONE offline HTML file.
  * No network requests or CDNs. Exact SHA-256 CSP hashes allow only generated
  * local CSS and JS. The GitHub Actions artifact is the independent review copy.
  */
@@ -24,8 +24,9 @@ const scripts=[
  "authoring/city-quest-f2/content-a.js",
  "authoring/city-quest-f2/content-b.js",
  "authoring/city-quest-f2/engine.js",
- "konverzace/city-quest-f2/f2.js",
  "authoring/city-quest-f2-1b/metro-network.js",
+ "authoring/city-quest-f2-1c/metro-game.js",
+ "konverzace/city-quest-f2/f2.js",
  "konverzace/city-quest-f2/metro-preview.js"
 ];
 const css=styles.map(read).join("\n\n"),js=scripts.map(read).join("\n;\n");
@@ -45,8 +46,9 @@ const scriptTokens=[
  '<script defer src="../../authoring/city-quest-f2/content-a.js"></script>',
  '<script defer src="../../authoring/city-quest-f2/content-b.js"></script>',
  '<script defer src="../../authoring/city-quest-f2/engine.js"></script>',
- '<script defer src="f2.js"></script>',
  '<script defer src="../../authoring/city-quest-f2-1b/metro-network.js"></script>',
+ '<script defer src="../../authoring/city-quest-f2-1c/metro-game.js"></script>',
+ '<script defer src="f2.js"></script>',
  '<script defer src="metro-preview.js"></script>'
 ];
 for(const tok of styleTokens.concat(scriptTokens)){
