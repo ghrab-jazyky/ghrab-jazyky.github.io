@@ -56,7 +56,7 @@ function includedText(label,value,actual,after=0){
 }
 function cleanPageFurniture(raw){
  return raw.split(/\r?\n/).filter(line=>
-  !/^\s*(?:Zdroj:\s*British Council LearnEnglish|Reading Lab\s*·\s*\d+\s*$)/u.test(line)
+  !/^\s*(?:(?:Zdroj:|Téma inspirováno:)\s*British Council|Reading Lab\s*·\s*\d+\s*$)/u.test(line)
  ).join('\n');
 }
 function inspect(filename){
