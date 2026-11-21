@@ -484,7 +484,12 @@
  function updateVisibility(){
   const level=$("f2Level").value,bridge=window.CityQuestF2MetroBridge;
   const pilot=!!bridge?.pilotActive(),sceneVisible=!!bridge?.metroVisible();
-  const shown=pilot?sceneVisible:!["A1","A2"].includes(level),copy=pilot?gameCopy():null;
+  // During mission 08 surface walking, gameMode is intentionally null while
+  // the metro pilot remains active. Resolve language content from the bridge
+  // state rather than only from an active underground illustration.
+  const surfaceState=pilot?bridge.current():null;
+  const shown=pilot?sceneVisible:!["A1","A2"].includes(level),
+    copy=pilot&&surfaceState?LC.pack($("f2Language").value,level,surfaceState.stationNumber):null;
   lab.hidden=!shown;jump.hidden=pilot||!shown;
   lab.querySelector(".metro-scenario-toolbar").hidden=pilot;
   lab.querySelector(".metro-action-card").hidden=pilot;
