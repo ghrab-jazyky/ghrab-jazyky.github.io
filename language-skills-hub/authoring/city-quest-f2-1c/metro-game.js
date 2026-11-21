@@ -12,9 +12,9 @@
  "use strict";
  if(!M)throw Error("Riverton Metro graph is required");
  const definitions={
-  5:{id:"metro_05_b1",title:"Find the Right Line",goal:"Travel from Central Station to Museum Quarter. Choose M1, the correct direction and platform."},
-  6:{id:"metro_06_b1",title:"Change Lines",goal:"Travel from Market Square to Stadium. Change from M2 to M3 at University."},
-  7:{id:"metro_07_b1",title:"Metro Disruption",goal:"The M1 Old Town–Museum Quarter segment is closed. Find a safe alternative via University."},
+  5:{id:"metro_05_b1",title:"Find the Right Line",goal:"Find a route from Central Station to Museum Quarter. Choose the line, direction and platform using the network map."},
+  6:{id:"metro_06_b1",title:"Change Lines",goal:"Travel from Market Square to Stadium. Work out where to change lines and which direction to take."},
+  7:{id:"metro_07_b1",title:"Metro Disruption",goal:"The M1 Old Town–Museum Quarter segment is closed. Find a safe route from Central Station to Museum Quarter."},
   8:{id:"metro_08_b1",title:"City + Metro Quest",goal:"Walk to Market Square, take the metro with a transfer, then walk to City Museum."}
  };
  const portalStart={c:2,r:2},surfaceStart={c:0,r:3},portalEnd={c:3,r:2},museum={c:3,r:1};
