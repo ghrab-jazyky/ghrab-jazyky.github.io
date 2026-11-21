@@ -269,3 +269,22 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
  .f3-experience>summary{padding:8px 10px}
  .f3-presentation-exit{font-size:.74rem}
 }
+
+/* Keyboard skip: invisible until focus, usable on projector and phone. */
+.f3-skip{
+ position:fixed;z-index:200;left:12px;top:-120px;
+ border:2px solid #f1dda0;background:#0d3945;color:#fff;
+ padding:11px 16px;border-radius:10px;font-weight:900;
+ box-shadow:0 8px 22px #010814a0;transition:top .12s;
+}
+.f3-skip:focus{top:12px}
+.f3-screen-reader-only{
+ position:absolute!important;width:1px!important;height:1px!important;
+ margin:-1px!important;overflow:hidden!important;
+ clip:rect(0,0,0,0)!important;white-space:nowrap!important;
+ border:0!important;padding:0!important;
+}
+/* Avoid large animated card movements when focused elements are inside. */
+@media(prefers-reduced-motion:reduce){
+ .f3-skip{transition:none}
+}
