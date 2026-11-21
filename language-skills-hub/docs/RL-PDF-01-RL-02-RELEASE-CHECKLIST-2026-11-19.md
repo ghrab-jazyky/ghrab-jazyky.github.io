@@ -40,3 +40,14 @@ Aktuální nápravná větev: `feature/lsh-asteroids-pdf-hardening-20261120` (be
 
 ## Rozhodnutí
 Původní PR #126 byl sloučen 19. 11. 2026; předchozí závěrečná formulace byla zastaralá. Nápravná sada je ve vývojové větvi a nesmí být automaticky sloučena. Automatický PASS **nenahrazuje** ruční přejímku na iPadu/Androidu a školní tiskárně ani doložené rozhodnutí o původu a redistribuci inspirativního materiálu British Council. Přímé adresy PDF jsou veřejné; vlastník toto riziko pro serverless LSH výslovně přijal. Rozšíření na ostatní karty až po schválení vlastníka.
+
+## Doplněk po oponentuře Clauda – 21. 11. 2026
+
+- N-01: PDF release workflow spouštět u **každého** PR do `main`, lehký job `pdf-scope` rozhoduje o relevantních změnách. Jediný agregovaný job `pdf-release-gate` je určen jako povinný status; mimo PDF změny končí úspěšně bez spuštění nákladných prohlížečových/PDF úloh.
+- **Administrativní podmínka:** nastavit v GitHub Settings → Branches / Rulesets pro větev `main` povinnou kontrolu `pdf-release-gate`, vyžadovat průchod PR a zakázat obcházení. Samotné YAML toto nastavení nezavádí. Ke dni této úpravy ochrana `main` není aktivní (`protected=false`, žádná pravidla Rulesets).
+- N-02: anglické `B2/test-text.pdf` musí mít jednu stranu A4; kontrola je přímo ve verifikátoru pro textové exporty A1–B2. Neměnit čitelnost pod 11 pt.
+- N-03: ve francouzských polích jméno / třída / datum musí být před dvojtečkou úzká nezalomitelná mezera.
+- N-04: verifikátor hlídá postupný výskyt celého obsahu v pořadí, absenci úloh a zahřívací otázky v nevhodných exportech, soubory mimo manifest a správné stránky; při regresi musí skončit FAIL.
+- N-06: automatický commit PDF pomocí `GITHUB_TOKEN` sám nevyvolá nový průchod Actions. Po přegenerování potvrdit **úspěšný `pdf-release-gate` na skutečné poslední revizi PR**; v případě potřeby výslovně spustit `workflow_dispatch` nebo vytvořit následný kontrolní commit. Netvrdit PASS jen podle starší revize.
+- Zbývá doložit fyzický černobílý tisk, Edge/Windows, Safari/iPad, Chrome/Android a rozhodnutí vlastníka o původnosti textů / licenci / formulaci zdroje.
+- Zde uvedené technické změny jsou zatím **jen ve vývojové větvi**. Ruční přejímka a právní rozhodnutí nebyly automaticky uzavřeny.
