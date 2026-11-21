@@ -28,6 +28,14 @@
 
 **Symptom:** V misi 08, kdy žák teprve šel pěšky od Central Station, informační panel uváděl aktuální polohu v metru (Market Square). Šlo o směšování `surface` a `metroStation` stavu. **Oprava:** při chůzi se vždy vykresluje aktuální poloha z městského grafu; po přesunu se aktuální poloha neztratí ani při zobrazování zpětné vazby. Regresní test kontroluje počátek, mezikrok i příchod ke vstupu do metra.
 
+### Nález PED-02 — opraveno ve F2.1E
+
+**Symptom:** Původní zadání typu „Find the Right Line“ studentovi přímo prozrazovalo linku M1; mise 06 a 07 předem odhalovaly správný přestup či objížďku. Četba mapy se tím stávala mechanickým klikáním. **Oprava:** ve všech čtyřech jazycích nyní zadání stanovuje **cíl a omezení**, nikoliv správnou trasu. U mluvní sebereflexe zůstávají názorné modelové odpovědi přístupné až po rozbalení vzoru; samotná diagnostika výluky je veřejnou součástí zadání. Jednotkový test kontroluje zamezení spoilerům v původním herním enginu, čtyřech jazykových verzích a zadáních pro dvojice.
+
+### Riziko PED-03 — otevřené pro pedagogickou revizi
+
+Pokročilejší modelové odpovědi B2–C2 vycházejí z kratšího popisu trasy s obecně přidanou úrovňovou argumentací. Automatická kontrola potvrzuje odlišné texty, ale **nedokazuje dostatečnou autentickou jazykovou náročnost a registr**. Před finálním schválením je potřebná odborná revize každého jazyka, zejména C1/C2.
+
 ## 3. Otevřené neautomatizovatelné brány
 
 1. **Vlastník produktu:** reálné přijetí vzhledu mapy města i metra, velkých/smalých obrazovek, vizuálních přechodů, zvukové a animační koncepce.
