@@ -3,6 +3,8 @@
 const {test}=require("node:test"),assert=require("node:assert/strict");
 const path=require("node:path"),fs=require("node:fs"),{chromium,webkit}=require("playwright");
 const L=require("../authoring/city-quest-f2-1d/metro-language.js");
+const CityContent=require("../authoring/city-quest-f2/content-a.js");
+require("../authoring/city-quest-f2/content-b.js");
 const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html";
 const SHOTS=path.join(process.cwd(),"city-quest-f2-1d-artifacts");
 fs.mkdirSync(SHOTS,{recursive:true});
@@ -123,7 +125,7 @@ test("FR/C2 mobile WebKit: City–Metro–City with 3 oral checkpoints and final
   await north.click();
   assert.equal(await panel(page).locator(".metro-selfcheck-criteria li").count(),3);
   await pass(page,c,8);
-  assert.equal(await page.locator("#mapLocation").innerText(),"City Museum");
+  assert.equal(await page.locator("#mapLocation").innerText(),CityContent.pack("fr").ui.museum);
   await page.screenshot({path:path.join(SHOTS,"french-c2-mobile-metro08.png"),fullPage:true});
   assert.deepEqual(errors,[]);
  }finally{await browser.close();}
