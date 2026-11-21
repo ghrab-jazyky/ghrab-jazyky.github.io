@@ -186,8 +186,15 @@
     // walks, report their ACTUAL surface position rather than the underground
     // start/goal stored separately in the metro engine.
     const outdoors=n===8&&metroCityPhase()&&!!game.surface;
-    const positionText=outdoors?
-      ui().city+": "+pointName(game.surface):
+    const surfaceName=outdoors&&MG.same(game.surface,MG.portalEnd)?
+      window.RivertonMetro.station("museum_quarter").labelEn:
+      outdoors?pointName(game.surface):"";
+    // Unnamed crossroads remain a numbered step in the player's own route;
+    // avoid displaying the confusing duplicate label "Riverton: Riverton".
+    const surfacePosition=surfaceName===ui().city?
+      ui().city+" · "+ui().step+" "+Math.max(0,game.cityPath.length-1):
+      ui().city+": "+surfaceName;
+    const positionText=outdoors?surfacePosition:
       c.labels.position+": "+place+" · "+(game.lineId||c.labels.noLine);
     status(panel,outdoors?positionText:(flash?.text||positionText),outdoors?null:flash?.tone);
     if(outdoors&&flash?.text)para(panel,flash.text,"f2-small");
