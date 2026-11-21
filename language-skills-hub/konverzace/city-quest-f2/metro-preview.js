@@ -289,12 +289,16 @@
   drawnText(scene,214,119,displayLineId(),{"text-anchor":"middle","font-weight":950,"font-size":44,fill:"#092738"});
   drawnText(scene,295,98,name.toUpperCase(),{"font-size":28,"font-weight":900,
     "letter-spacing":1,fill:"#eafffa"});
-  const platform=fixture?"PLATFORM "+fixture.platform:gameMode?"PLATFORM TO BE SELECTED":"WAYFINDING PREVIEW";
+  const arrived=!!gameMode&&["exit","walk-to-museum","speech","complete"].includes(gameMode.phase);
+  const platform=arrived?"DESTINATION REACHED":
+    fixture?"PLATFORM "+fixture.platform:gameMode?"CHECK PLATFORM":"WAYFINDING PREVIEW";
   const next=route()[Math.min(current.index+1,route().length-1)];
   const dest=fixture?stationName(fixture.directionTerminus):
     (gameMode&&gameMode.direction?stationName(gameMode.direction):gameMode?"CHECK TERMINUS":
       next?.line?stationName(M.line(next.line).stops.at(-1)):"CHECK LINE");
-  drawnText(scene,296,133,platform+"   •   TOWARDS "+dest.toUpperCase(),{
+  const sign=arrived?"DESTINATION REACHED  •  FOLLOW EXIT SIGNS":
+    platform+"   •   TOWARDS "+dest.toUpperCase();
+  drawnText(scene,296,133,sign,{
     "font-size":14,"font-weight":780,"letter-spacing":1.2,fill:"#a8d5dc"});
   append(scene,"path",{d:"M195 159V177 M705 159V177",stroke:"#7dbfcb","stroke-width":5});
   // Platform edge / tunnel with perspective train; all vector artwork.
