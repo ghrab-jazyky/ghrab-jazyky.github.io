@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="../city-quest-f1/f1.css">
 <link rel="stylesheet" href="f2.css">
 <link rel="stylesheet" href="metro-preview.css">
+<link rel="stylesheet" href="f3-premium.css">
 <script defer src="../../authoring/city-quest-f0/engine.js"></script>
 <script defer src="../city-quest-f0/city-art.js"></script>
 <script defer src="../city-quest-f0/app.js"></script>
@@ -23,14 +24,26 @@
 <script defer src="../../authoring/city-quest-f2-1d/metro-language.js"></script>
 <script defer src="f2.js"></script>
 <script defer src="metro-preview.js"></script>
+<script defer src="f3-premium.js"></script>
 </head>
 <body>
+<a href="#f1Stations" class="f3-skip" id="f3Skip">Skip to missions</a>
 <main class="app">
 <header class="topbar">
   <div class="brand"><div class="brand-mark" aria-hidden="true">CQ</div><div><strong>CITY QUEST</strong><small>Language Skills Hub · Conversation Lab</small></div></div>
   <div class="header-actions">
     <button class="btn" id="themeBtn" type="button" aria-label="Switch colour theme">☀ Light mode</button>
     <button class="btn" id="resetBtn" type="button">↺ Reset mission</button>
+    <details class="f3-experience" id="f3Experience">
+      <summary id="f3ExperienceSummary">⚙ Experience</summary>
+      <div class="f3-experience-panel" role="group" aria-label="Offline experience preferences">
+        <button class="f3-control" id="f3PresentationButton" type="button" aria-pressed="false">◩ Presentation mode</button>
+        <button class="f3-control" id="f3SoundButton" type="button" aria-pressed="false">♪ Sound cues off</button>
+        <button class="f3-control" id="f3MotionButton" type="button" aria-pressed="true">◌ Motion on</button>
+        <button class="f3-control" id="f3ContrastButton" type="button" aria-pressed="false">◈ High contrast off</button>
+        <p id="f3ExperienceNote">Optional sounds play locally. No microphone or network.</p>
+      </div>
+    </details>
     <span class="tag">F2.1B · METRO DESIGN</span>
   </div>
 </header>
@@ -194,5 +207,7 @@
 <h2 id="f2GuideTitle">About City Quest F2</h2><p id="f2GuideText">All four languages and all six levels use the same illustrated city and eight interactive stations. The CEFR level changes routes, constraints, task complexity and speaking support. No server, student data collection or speech grading.</p>
 </section>
 </main>
+<button type="button" id="f3PresentationExit" class="f3-presentation-exit" hidden>✕ Exit presentation</button>
+<div id="f3Status" class="f3-screen-reader-only" role="status" aria-live="polite" aria-atomic="true"></div>
 </body>
 </html>

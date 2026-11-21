@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 /*
- * City Quest F2.1D: F2 stations, metro visual review and 4-language B1-C2 gameplay in ONE offline HTML file.
+ * City Quest F3A: F2/F2.1E gameplay plus premium visuals, presenter mode and optional LOCAL sound in ONE offline HTML file.
  * No network requests or CDNs. Exact SHA-256 CSP hashes allow only generated
  * local CSS and JS. The GitHub Actions artifact is the independent review copy.
  */
@@ -14,7 +14,8 @@ const styles=[
  "konverzace/city-quest-f0/style.css",
  "konverzace/city-quest-f1/f1.css",
  "konverzace/city-quest-f2/f2.css",
- "konverzace/city-quest-f2/metro-preview.css"
+ "konverzace/city-quest-f2/metro-preview.css",
+ "konverzace/city-quest-f2/f3-premium.css"
 ];
 const scripts=[
  "authoring/city-quest-f0/engine.js",
@@ -28,7 +29,8 @@ const scripts=[
  "authoring/city-quest-f2-1c/metro-game.js",
  "authoring/city-quest-f2-1d/metro-language.js",
  "konverzace/city-quest-f2/f2.js",
- "konverzace/city-quest-f2/metro-preview.js"
+ "konverzace/city-quest-f2/metro-preview.js",
+ "konverzace/city-quest-f2/f3-premium.js"
 ];
 const css=styles.map(read).join("\n\n"),js=scripts.map(read).join("\n;\n");
 const sha=data=>crypto.createHash("sha256").update(data,"utf8").digest("base64");
@@ -37,7 +39,8 @@ const styleTokens=[
  '<link rel="stylesheet" href="../city-quest-f0/style.css">',
  '<link rel="stylesheet" href="../city-quest-f1/f1.css">',
  '<link rel="stylesheet" href="f2.css">',
- '<link rel="stylesheet" href="metro-preview.css">'
+ '<link rel="stylesheet" href="metro-preview.css">',
+ '<link rel="stylesheet" href="f3-premium.css">'
 ];
 const scriptTokens=[
  '<script defer src="../../authoring/city-quest-f0/engine.js"></script>',
@@ -51,7 +54,8 @@ const scriptTokens=[
  '<script defer src="../../authoring/city-quest-f2-1c/metro-game.js"></script>',
  '<script defer src="../../authoring/city-quest-f2-1d/metro-language.js"></script>',
  '<script defer src="f2.js"></script>',
- '<script defer src="metro-preview.js"></script>'
+ '<script defer src="metro-preview.js"></script>',
+ '<script defer src="f3-premium.js"></script>'
 ];
 for(const tok of styleTokens.concat(scriptTokens)){
  if(html.split(tok).length!==2)throw Error("Missing/duplicated resource: "+tok);
