@@ -38,7 +38,7 @@ jobs:
           node --check language-skills-hub/tests/city-quest-f2-1b.metro.test.cjs
           node --check language-skills-hub/tests/city-quest-f2-1b.metro.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-f2-1b.metro.test.cjs
-      - name: Regression: route, 8 F1 stations and existing F2 CEFR content
+      - name: "Regression: route, 8 F1 stations and existing F2 CEFR content"
         run: |
           node --test language-skills-hub/tests/city-quest-f0.test.cjs
           node --test language-skills-hub/tests/city-quest-f1.test.cjs
@@ -71,7 +71,7 @@ jobs:
         timeout-minutes: 8
       - name: Build single-file offline metro HTML preview
         run: node language-skills-hub/authoring/city-quest-f2/build-preview.cjs --write
-      - name: Browser acceptance: metro + existing city UX + offline
+      - name: "Browser acceptance: metro + existing city UX + offline"
         timeout-minutes: 20
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/cq-f21b-http.log 2>&1 &
