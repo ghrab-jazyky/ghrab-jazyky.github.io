@@ -134,3 +134,21 @@
  .metro-scenario-button,#metroSceneSvg .metro-animated-train,
  #metroNetworkSvg .metro-map-player{animation:none!important;transition:none!important}
 }
+
+/* Premium route diagram visibility: choose the whole network before zooming to
+   readable street/stop detail on phones; no JS zoom library or external tiles. */
+.metro-network-head-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.metro-zoom{padding:8px 10px;min-height:38px;border:1px solid #93e7d47b;border-radius:10px;color:#d9fff8;background:#4caea825;font-size:.76rem;font-weight:850;cursor:pointer}
+.metro-zoom:hover{border-color:#e6ffe9;background:#56d7b132}
+.metro-network-scroll.overview{scroll-behavior:auto}
+@media(min-width:741px){.metro-zoom{display:none}}
+@media(max-width:740px){
+ .metro-network-head{gap:8px}
+ .metro-network-head-actions{flex-direction:column;align-items:flex-end;gap:7px}
+ .metro-network-head h3{font-size:1.1rem}
+ .metro-zoom{min-height:44px;padding:10px 11px}
+ .metro-network-scroll{max-height:500px}
+ .metro-network-scroll.overview{overflow-x:hidden;max-height:none}
+ .metro-network-scroll.overview svg{min-width:0;width:100%;height:auto}
+}
+@media(max-width:350px){.metro-network-head-actions{gap:5px}.metro-live-pulse{font-size:.56rem}}
