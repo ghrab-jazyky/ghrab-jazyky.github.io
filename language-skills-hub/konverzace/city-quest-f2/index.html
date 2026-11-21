@@ -137,7 +137,10 @@
     <div class="metro-network-card">
       <div class="metro-network-head">
         <div><small>NETWORK CONTROL</small><h3>Riverton Underground</h3></div>
-        <div class="metro-live-pulse"><i></i> LOCAL SIMULATION</div>
+        <div class="metro-network-head-actions">
+          <button id="metroMapZoom" class="metro-zoom" type="button" aria-pressed="false">⊞ Whole network</button>
+          <div class="metro-live-pulse"><i></i> LOCAL SIMULATION</div>
+        </div>
       </div>
       <div class="metro-network-scroll" id="metroNetworkViewport" tabindex="0" role="region" aria-label="Scrollable interactive map of three fictional metro lines">
         <svg id="metroNetworkSvg" viewBox="0 0 1196 756" role="group" aria-label="Original interactive Riverton metro diagram"></svg>
