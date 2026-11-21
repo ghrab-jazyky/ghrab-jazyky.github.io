@@ -157,7 +157,17 @@
     const number=state.station,previousScene=metroScene(),previous=state.metro[number];
     const result=MG.act(previous,action);
     state.metro[number]=result.state;
-    if(window.CityQuestF3)window.CityQuestF3.feedback(result.complete?"complete":result.accepted?"advance":"error");
+    // F3B: sound is optional and generated locally only AFTER a real,
+    // deterministic engine decision. It never advances the journey.
+    const cue=!result.accepted?"error":result.complete?"complete":
+      action.type==="READ_NOTICE"?"warning":
+      action.type==="BOARD"?"board":
+      action.type==="CHANGE_LINE"?"transfer":
+      action.type==="NEXT_STOP"&&["transfer","checkpoint"].includes(result.state.phase)?"transfer":
+      action.type==="NEXT_STOP"&&result.state.phase==="exit"?"arrival":
+      action.type==="NEXT_STOP"?"ride":
+      action.type==="EXIT"?"arrival":"advance";
+    window.CityQuestF3?.feedback(cue);
     flash={text:LC.feedback(state.language,result,action),tone:result.accepted?"success":"warning"};
     if(result.complete)state.done.add(number);
     screen();renderMap();
