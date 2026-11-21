@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 /*
- * City Quest F3A: F2/F2.1E gameplay plus premium visuals, presenter mode and optional LOCAL sound in ONE offline HTML file.
+ * City Quest F3B: certified City Quest, premium scenes, localized text-only PA and original offline cues in ONE SHA-CSP HTML file.
  * No network requests or CDNs. Exact SHA-256 CSP hashes allow only generated
  * local CSS and JS. The GitHub Actions artifact is the independent review copy.
  */
@@ -15,7 +15,8 @@ const styles=[
  "konverzace/city-quest-f1/f1.css",
  "konverzace/city-quest-f2/f2.css",
  "konverzace/city-quest-f2/metro-preview.css",
- "konverzace/city-quest-f2/f3-premium.css"
+ "konverzace/city-quest-f2/f3-premium.css",
+ "konverzace/city-quest-f2/f3b-scenes.css"
 ];
 const scripts=[
  "authoring/city-quest-f0/engine.js",
@@ -28,6 +29,7 @@ const scripts=[
  "authoring/city-quest-f2-1b/metro-network.js",
  "authoring/city-quest-f2-1c/metro-game.js",
  "authoring/city-quest-f2-1d/metro-language.js",
+ "authoring/city-quest-f3b/metro-public-address.js",
  "konverzace/city-quest-f2/f2.js",
  "konverzace/city-quest-f2/metro-preview.js",
  "konverzace/city-quest-f2/f3-premium.js"
@@ -40,7 +42,8 @@ const styleTokens=[
  '<link rel="stylesheet" href="../city-quest-f1/f1.css">',
  '<link rel="stylesheet" href="f2.css">',
  '<link rel="stylesheet" href="metro-preview.css">',
- '<link rel="stylesheet" href="f3-premium.css">'
+ '<link rel="stylesheet" href="f3-premium.css">',
+ '<link rel="stylesheet" href="f3b-scenes.css">'
 ];
 const scriptTokens=[
  '<script defer src="../../authoring/city-quest-f0/engine.js"></script>',
@@ -53,6 +56,7 @@ const scriptTokens=[
  '<script defer src="../../authoring/city-quest-f2-1b/metro-network.js"></script>',
  '<script defer src="../../authoring/city-quest-f2-1c/metro-game.js"></script>',
  '<script defer src="../../authoring/city-quest-f2-1d/metro-language.js"></script>',
+ '<script defer src="../../authoring/city-quest-f3b/metro-public-address.js"></script>',
  '<script defer src="f2.js"></script>',
  '<script defer src="metro-preview.js"></script>',
  '<script defer src="f3-premium.js"></script>'
