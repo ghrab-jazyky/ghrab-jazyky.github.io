@@ -54,8 +54,9 @@
   $('warmupSection').hidden=!model.warmup;
   $('warmupPrompt').textContent=model.warmup;
   $('studentIdentification').hidden=!all;
-  $('studentIdentification').textContent=t.name+': ____________________   '+
-   t.studentClass+': ________   '+t.date+': ____________';
+  const colon=lang==='fr'?'\u202f: ':': ';
+  $('studentIdentification').textContent=t.name+colon+'____________________   '+
+   t.studentClass+colon+'________   '+t.date+colon+'____________';
   $('worksheetInstructions').hidden=!all;
   $('worksheetInstructions').textContent=t.instructions;
   $('gapNote').hidden=!(model.hasGap&&mode==='test'&&format==='text');

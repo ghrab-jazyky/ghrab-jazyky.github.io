@@ -26,6 +26,11 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
 .reading-paragraphs{font:11pt/1.46 Georgia,"Times New Roman",serif;text-align:justify;
  hyphens:auto;-webkit-hyphens:auto;word-break:normal;overflow-wrap:normal}
 .reading-paragraphs p{margin:0 0 11pt;orphans:3;widows:3;hyphens:auto;-webkit-hyphens:auto}
+@media print{
+ .paper[data-format="text"] .paper-header{margin-bottom:15px}
+ .paper[data-format="text"] .reading-paragraphs{line-height:1.41}
+ .paper[data-format="text"] .reading-paragraphs p{margin-bottom:8pt}
+}
 .paper[data-format="all"] .reading-paragraphs{padding-left:13pt}
 .paper[data-format="all"] .reading-paragraphs p{position:relative}
 .paper[data-format="all"] .reading-paragraphs p::before{
@@ -37,7 +42,7 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
 .warmup{margin:0 0 12pt;padding:7pt 10pt;border-left:2pt solid #8ba5b5;background:#f5f8fa}
 .warmup h2{display:inline;font:700 9.5pt Arial,Helvetica,sans-serif;border:0;padding:0;margin:0 7pt 0 0}
 .warmup p{display:inline;font:9.5pt/1.45 Georgia,"Times New Roman",serif}
-.gap-note{margin:0 0 9pt;font:italic 9pt/1.4 Arial,Helvetica,sans-serif;color:#3b5566}
+.paper h2 .gap-note{margin-left:8pt;font:400 8.5pt/1.25 Arial,Helvetica,sans-serif;color:#3b5566}
 .exercises{font:10.5pt/1.43 Georgia,"Times New Roman",serif;text-align:left}
 .exercise-group{margin:0 0 18px}
 .exercise-group h3{font:700 11pt Arial,Helvetica,sans-serif;margin:12pt 0 7pt;break-after:avoid-page}

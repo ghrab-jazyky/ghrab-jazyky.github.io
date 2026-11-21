@@ -15,6 +15,8 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     await page.locator('#printButton:not([disabled])').waitFor();
     assert.equal(await page.locator('#warmupSection').isVisible(),true);
     assert.equal(await page.locator('#studentIdentification').isVisible(),true);
+    if(lang==='fr')assert.ok((await page.locator('#studentIdentification').innerText())
+     .includes('Nom\u202f:'),'French narrow non-breaking space before colon');
     assert.equal(await page.locator('#gapNote').isVisible(),false);
     assert.ok((await page.locator('#readingParagraphs').innerText()).includes('[…]'));
     assert.ok((await page.locator('.exercise-question').count())>0);
