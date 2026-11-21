@@ -64,6 +64,15 @@
   if(!state||!config(state.stationNumber)||!action||typeof action.type!=="string")throw TypeError("Invalid metro action");
   if(state.phase==="complete")return fail(state,"This mission has already been completed.");
   const s=scenario(state),l=leg(state),type=action.type;
+  if(type==="UNDO_WALK"){
+   if(!["walk-to-entrance","walk-to-museum"].includes(state.phase))
+    return fail(state,"You can undo walking steps only while exploring the city.");
+   if(state.cityPath.length<2)
+    return fail(state,"There is no previous walking step to undo.");
+   const previous=state.cityPath.slice(0,-1);
+   return success(state,{cityPath:previous,surface:clone(previous[previous.length-1])},
+    "Previous walking step undone. Continue from this crossroads.",type);
+  }
   if(type==="WALK"){
    if(!["walk-to-entrance","walk-to-museum"].includes(state.phase))return fail(state,"Walking is unavailable at this stage.");
    if(!adjacent(state.surface,action.node))return fail(state,"Move one adjacent city block at a time.");
