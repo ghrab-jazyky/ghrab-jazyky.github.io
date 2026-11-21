@@ -119,6 +119,15 @@ test("F2.1C mission 08: real city→metro→city portal and three oral checkpoin
   await click(page,"I have practised aloud");
   await completed(page,8);
   assert.equal(await page.locator("#mapLocation").innerText(),"City Museum");
+  // The location strip alone is insufficient: after camera-follow settles,
+  // the actual SVG player marker must be inside the visible city viewport.
+  await page.waitForFunction(()=>{
+   const marker=document.querySelector("#f2MapMarker"),viewport=document.querySelector("#mapViewport");
+   if(!marker||!viewport)return false;
+   const m=marker.getBoundingClientRect(),v=viewport.getBoundingClientRect();
+   return m.width>0&&m.height>0&&m.left>=v.left-8&&m.right<=v.right+8&&
+     m.top>=v.top-8&&m.bottom<=v.bottom+8;
+  },null,{timeout:5000});
   assert.equal(await page.locator("#f2Quick").isVisible(),false,"Completed city leg keeps its route but hides inactive movement controls");
   assert.ok((await page.locator("#f2MapRoute").getAttribute("points")).trim().split(/\s+/).length>=2,
     "Final surface route should remain visible after the oral self-check");
