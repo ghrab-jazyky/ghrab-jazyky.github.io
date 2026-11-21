@@ -44,7 +44,7 @@
    stationNumber:number,scenarioId:d.id,phase:number===8?"walk-to-entrance":number===7?"notice":"select-line",
    metroStation:s.start,legIndex:0,stopIndex:0,lineId:null,direction:null,platform:null,
    surface:number===8?clone(surfaceStart):null,cityPath:number===8?[clone(surfaceStart)]:[],
-   noticeRead:false,attempts:0,completed:false,history:[]
+   noticeRead:false,attempts:0,completed:false,speakingDone:0,resumePhase:null,history:[]
   });
  }
  function fail(state,message){
@@ -73,8 +73,9 @@
    const arrived=same(action.node,destination);
    return success(state,{
     surface:clone(action.node),cityPath:path,
-    phase:arrived?(state.phase==="walk-to-entrance"?"enter":"speech"):state.phase
-   },arrived?(state.phase==="walk-to-entrance"?"You have reached Market Square station. Enter the metro.":"You have reached City Museum. Explain your complete journey aloud."):"One city block completed.","WALK");
+    phase:arrived?(state.phase==="walk-to-entrance"?"checkpoint":"speech"):state.phase,
+    resumePhase:arrived&&state.phase==="walk-to-entrance"?"enter":state.resumePhase
+   },arrived?(state.phase==="walk-to-entrance"?"You have reached Market Square station. Explain how you walked here before entering.":"You have reached City Museum. Explain your complete journey aloud."):"One city block completed.","WALK");
   }
   if(type==="ENTER"){
    if(state.phase!=="enter"||!same(state.surface,portalStart))return fail(state,"Find the Market Square metro entrance first.");
@@ -115,8 +116,9 @@
    if(!to||state.metroStation!==from||!M.adjacent(from,to,l.line)||M.closed(from,to,l.line,s.closedEdges))
     return fail(state,"Movement is blocked or the next station is not connected.");
    const nextStop=state.stopIndex+1,last=nextStop===l.stops.length-1;
-   const nextPhase=last?(state.legIndex<s.legs.length-1?"transfer":"exit"):"ride";
-   return success(state,{metroStation:to,stopIndex:nextStop,phase:nextPhase},
+   const nextPhase=last?(state.legIndex<s.legs.length-1?(state.stationNumber===8?"checkpoint":"transfer"):"exit"):"ride";
+   return success(state,{metroStation:to,stopIndex:nextStop,phase:nextPhase,
+    resumePhase:nextPhase==="checkpoint"?"transfer":state.resumePhase},
     last?(nextPhase==="transfer"?"Transfer at "+M.station(to).labelEn+".":"Arrived at "+M.station(to).labelEn+". Exit the train."):
      "Next stop: "+M.station(to).labelEn+".",type);
   }
@@ -136,8 +138,10 @@
    return success(state,{phase:"speech"},"You have arrived. Say your directions aloud, then confirm self-check.",type);
   }
   if(type==="SELF_CHECK"){
-   if(state.phase!=="speech")return fail(state,"Finish the route before the speaking checkpoint.");
-   return success(state,{phase:"complete"},"Mission completed. Speaking was self-assessed, not automatically graded.",type);
+   if(state.phase!=="speech"&&state.phase!=="checkpoint")return fail(state,"Finish this route section before the speaking checkpoint.");
+   const finished=state.phase==="speech";
+   return success(state,{phase:finished?"complete":state.resumePhase,speakingDone:state.speakingDone+1,
+    resumePhase:null},finished?"Mission completed. Speaking was self-assessed, not automatically graded.":"Speaking checkpoint confirmed. Continue your journey.",type);
   }
   return fail(state,"Unknown action.");
  }
