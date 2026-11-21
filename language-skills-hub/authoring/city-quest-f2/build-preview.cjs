@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 /*
- * City Quest F2: 8-station multilingual review in ONE offline HTML file.
+ * City Quest F2.1B: existing F2 stations plus experimental Riverton Metro preview in ONE offline HTML file.
  * No network requests or CDNs. Exact SHA-256 CSP hashes allow only generated
  * local CSS and JS. The GitHub Actions artifact is the independent review copy.
  */
@@ -13,7 +13,8 @@ const output=path.join(root,".review-city-quest-f2/CITY_QUEST_F2_OFFLINE_PREVIEW
 const styles=[
  "konverzace/city-quest-f0/style.css",
  "konverzace/city-quest-f1/f1.css",
- "konverzace/city-quest-f2/f2.css"
+ "konverzace/city-quest-f2/f2.css",
+ "konverzace/city-quest-f2/metro-preview.css"
 ];
 const scripts=[
  "authoring/city-quest-f0/engine.js",
@@ -23,7 +24,9 @@ const scripts=[
  "authoring/city-quest-f2/content-a.js",
  "authoring/city-quest-f2/content-b.js",
  "authoring/city-quest-f2/engine.js",
- "konverzace/city-quest-f2/f2.js"
+ "konverzace/city-quest-f2/f2.js",
+ "authoring/city-quest-f2-1b/metro-network.js",
+ "konverzace/city-quest-f2/metro-preview.js"
 ];
 const css=styles.map(read).join("\n\n"),js=scripts.map(read).join("\n;\n");
 const sha=data=>crypto.createHash("sha256").update(data,"utf8").digest("base64");
@@ -31,7 +34,8 @@ let html=read("konverzace/city-quest-f2/index.html");
 const styleTokens=[
  '<link rel="stylesheet" href="../city-quest-f0/style.css">',
  '<link rel="stylesheet" href="../city-quest-f1/f1.css">',
- '<link rel="stylesheet" href="f2.css">'
+ '<link rel="stylesheet" href="f2.css">',
+ '<link rel="stylesheet" href="metro-preview.css">'
 ];
 const scriptTokens=[
  '<script defer src="../../authoring/city-quest-f0/engine.js"></script>',
@@ -41,7 +45,9 @@ const scriptTokens=[
  '<script defer src="../../authoring/city-quest-f2/content-a.js"></script>',
  '<script defer src="../../authoring/city-quest-f2/content-b.js"></script>',
  '<script defer src="../../authoring/city-quest-f2/engine.js"></script>',
- '<script defer src="f2.js"></script>'
+ '<script defer src="f2.js"></script>',
+ '<script defer src="../../authoring/city-quest-f2-1b/metro-network.js"></script>',
+ '<script defer src="metro-preview.js"></script>'
 ];
 for(const tok of styleTokens.concat(scriptTokens)){
  if(html.split(tok).length!==2)throw Error("Missing/duplicated resource: "+tok);
