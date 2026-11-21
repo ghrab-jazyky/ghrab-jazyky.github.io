@@ -490,6 +490,8 @@
   placeHud();
   if(phoneQuery.addEventListener)phoneQuery.addEventListener("change",placeHud);
   else phoneQuery.addListener(placeHud);
+  // Reconcile HUD placement immediately on viewport resize (not only media-query changes).
+  window.addEventListener("resize",placeHud,{passive:true});
 
   function dispatchDirection(direction){
     if(isMovementLocked())return;
