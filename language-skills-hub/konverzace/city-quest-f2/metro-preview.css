@@ -182,3 +182,18 @@
  color:#f1fffb;background:#174d6b;border:1px solid #66cddd;font-weight:850;cursor:pointer}
 .metro-pilot-toggle[aria-pressed="true"]{background:#156f60;border-color:#a1f4d5}
 .metro-pilot-toggle:focus-visible{outline:3px solid #edcf70;outline-offset:3px}
+
+/* F2.1C phone: move the SAME live mission panel into the metro map card,
+ * immediately above the scrollable network. No cloned or off-screen controls. */
+.metro-lab[data-mode="game"] .metro-network-card>#f1Panel{margin:10px 10px 12px;padding:13px;
+ color:#f0fffc;background:linear-gradient(145deg,#164156,#0d2b41);
+ border:1px solid #73dcc2a1;border-radius:13px;box-shadow:0 9px 23px #0004}
+.metro-network-card>#f1Panel .f2-objective{background:#09283b;color:#f1fffc;border-color:#6bcdc59c}
+.metro-network-card>#f1Panel .f2-small,.metro-network-card>#f1Panel .f2-status{color:#d6f0ed}
+.metro-network-card>#f1Panel button{min-height:44px;white-space:normal}
+.metro-network-card>#f1Panel .f2-choice-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.metro-network-card>#f1Panel .f2-actions{display:flex;flex-wrap:wrap;gap:8px}
+.metro-network-card>#f1Panel .f2-card-head h2{font-size:1.2rem}
+@media(max-width:350px){
+ .metro-network-card>#f1Panel .f2-choice-list{grid-template-columns:1fr}
+}
