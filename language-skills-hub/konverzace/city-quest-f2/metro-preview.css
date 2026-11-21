@@ -175,3 +175,10 @@
  .metro-lab[data-mode="game"] .metro-banner h2{font-size:1.35rem}
  .metro-side>#f1Panel{margin-bottom:2px}
 }
+
+/* Review-only F2.1C activation stays separate from the F2.1B visual gallery. */
+.metro-pilot-toggle[hidden]{display:none!important}
+.metro-pilot-toggle{min-height:46px;border-radius:12px;padding:10px 14px;white-space:normal;
+ color:#f1fffb;background:#174d6b;border:1px solid #66cddd;font-weight:850;cursor:pointer}
+.metro-pilot-toggle[aria-pressed="true"]{background:#156f60;border-color:#a1f4d5}
+.metro-pilot-toggle:focus-visible{outline:3px solid #edcf70;outline-offset:3px}
