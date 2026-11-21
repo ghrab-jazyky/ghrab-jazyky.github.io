@@ -33,8 +33,8 @@ test("F3B inactive preview retains F2.1B gallery, while active 05 gets accessibl
   assert.match(await page.locator("#metroPALabel").innerText(),/TEXT SIMULATION/);
   assert.doesNotMatch(await page.locator("#metroPAMessage").innerText(),/\bM1\b|\bEast Gardens\b/);
   assert.equal(await page.locator("#metroSceneSvg").getAttribute("data-phase"),"select-line");
-  assert.match(await page.locator("#metroSceneSvg").innerText(),/STATION CONCOURSE/);
-  assert.doesNotMatch(await page.locator("#metroSceneSvg").innerText(),/PLATFORM 2/);
+  assert.match(await page.locator("#metroSceneSvg").textContent(),/STATION CONCOURSE/);
+  assert.doesNotMatch(await page.locator("#metroSceneSvg").textContent(),/PLATFORM 2/);
   assert.deepEqual(errors,[]);
  }finally{await browser.close();}
 });
@@ -46,11 +46,11 @@ test("F3B station 05: line, terminus and platform remain unknown until chosen; d
   assert.equal(await page.locator(".metro-train-door-left").count(),2);
   await choose(page,"M1 ·");
   assert.equal(await pa(page).getAttribute("data-kind"),"direction");
-  assert.match(await page.locator("#metroSceneSvg").innerText(),/CHECK THE TRAIN TERMINUS/);
+  assert.match(await page.locator("#metroSceneSvg").textContent(),/CHECK THE TRAIN TERMINUS/);
   assert.doesNotMatch(await page.locator("#metroPAMessage").innerText(),/East Gardens/i);
   await choose(page,"East Gardens");
   assert.equal(await pa(page).getAttribute("data-kind"),"platform");
-  assert.match(await page.locator("#metroSceneSvg").innerText(),/PLATFORM CHECK/);
+  assert.match(await page.locator("#metroSceneSvg").textContent(),/PLATFORM CHECK/);
   assert.doesNotMatch(await page.locator("#metroPAMessage").innerText(),/Platform 2/i);
   await choose(page,"Platform 2");
   assert.equal(await page.locator("#metroSceneSvg").getAttribute("data-phase"),"board");
@@ -102,8 +102,8 @@ test("F3B disruption notice uses authored local language and never gives the Uni
   assert.match(msg,/\bM1\b/);assert.doesNotMatch(msg,/University|\bM2\b|\bM3\b/);
   assert.equal(await page.locator("#metroSceneSvg").getAttribute("data-phase"),"notice");
   assert.equal(await page.locator(".metro-alert-sign").count(),1);
-  assert.match(await page.locator("#metroSceneSvg").innerText(),/SERVICE DISRUPTION/);
-  assert.doesNotMatch(await page.locator("#metroSceneSvg").innerText(),/CHECK PLATFORM/);
+  assert.match(await page.locator("#metroSceneSvg").textContent(),/SERVICE DISRUPTION/);
+  assert.doesNotMatch(await page.locator("#metroSceneSvg").textContent(),/CHECK PLATFORM/);
   await page.locator("#metroSceneSvg").screenshot({path:path.join(OUT,"french-c1-disruption-390.png")});
   await choose(page,L.pack("fr","C1",7).actions.READ_NOTICE);
   assert.equal(await pa(page).getAttribute("data-kind"),"wayfinding");
@@ -121,8 +121,8 @@ test("F3B station 06 transfer scene is visually distinct but does not reveal the
   await choose(page,c.actions.NEXT_STOP);await choose(page,c.actions.NEXT_STOP);
   assert.equal(await pa(page).getAttribute("data-kind"),"transfer");
   assert.equal(await page.locator(".metro-transfer-arrow").count(),1);
-  assert.match(await page.locator("#metroSceneSvg").innerText(),/CHANGE TRAINS/);
-  assert.doesNotMatch(await page.locator("#metroSceneSvg").innerText(),/TOWARDS NORTH PARK|PLATFORM 1/);
+  assert.match(await page.locator("#metroSceneSvg").textContent(),/CHANGE TRAINS/);
+  assert.doesNotMatch(await page.locator("#metroSceneSvg").textContent(),/TOWARDS NORTH PARK|PLATFORM 1/);
   assert.ok((await page.locator("#metroPAMessage").innerText()).includes("University"));
   assert.doesNotMatch(await page.locator("#metroPAMessage").innerText(),/\bM3\b/);
   await page.locator("#metroSceneSvg").screenshot({path:path.join(OUT,"transfer-university-1366.png")});
