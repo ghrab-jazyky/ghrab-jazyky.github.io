@@ -119,6 +119,7 @@ test("F2.1C mission 08: real city→metro→city portal and three oral checkpoin
   await click(page,"I have practised aloud");
   await completed(page,8);
   assert.equal(await page.locator("#mapLocation").innerText(),"City Museum");
+  assert.equal(await page.locator("#f2Quick").isVisible(),false,"Completed city leg keeps its route but hides inactive movement controls");
   assert.ok((await page.locator("#f2MapRoute").getAttribute("points")).trim().split(/\s+/).length>=2,
     "Final surface route should remain visible after the oral self-check");
   await page.screenshot({path:path.join(SHOTS,"f21c-mobile-mission08.png"),fullPage:true});
