@@ -197,3 +197,20 @@
 @media(max-width:350px){
  .metro-network-card>#f1Panel .f2-choice-list{grid-template-columns:1fr}
 }
+
+/* F2.1D authored CEFR speaking support and embedded vocabulary (all local). */
+.metro-selfcheck-criteria{display:grid;gap:7px;margin:10px 0 12px;padding:0;list-style:none}
+.metro-selfcheck-criteria li{padding:9px 11px 9px 34px;position:relative;border-radius:10px;
+ background:#113d4e;color:#e9fff7;border:1px solid #6bd5c766;font-size:.88rem;line-height:1.4}
+.metro-selfcheck-criteria li:before{content:"✓";position:absolute;left:12px;top:8px;color:#7debce;font-weight:900}
+.metro-language-details{margin:11px 0;border:1px solid #7ccdc885;border-radius:12px;
+ background:#0e3346;padding:10px;color:#dcf8f5}
+.metro-language-details summary{cursor:pointer;min-height:34px;font-weight:800;line-height:1.5}
+.metro-language-details p{margin:9px 2px;font-size:.88rem;line-height:1.5}
+.metro-glossary{display:grid;grid-template-columns:minmax(90px,.36fr) minmax(0,1fr);
+ row-gap:9px;column-gap:10px;margin:12px 0 2px;font-size:.85rem;line-height:1.4}
+.metro-glossary dt{font-weight:900;color:#a6f6e3}
+.metro-glossary dd{margin:0;color:#e1f4f3}
+:root[data-theme=light] .metro-lab[data-mode=game] .metro-language-details{color:#e6fff7}
+@media(max-width:360px){.metro-glossary{grid-template-columns:1fr;row-gap:3px}
+ .metro-glossary dd{margin-bottom:9px}}
