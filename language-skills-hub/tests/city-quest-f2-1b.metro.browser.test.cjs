@@ -47,7 +47,7 @@ test("F2.1B desktop Chromium: premium network, interactive stations and accurate
   assert.ok(await page.locator("#metroSceneSvg rect").count()>20,"Platform must have layered illustrated architecture");
   assert.equal(await page.locator("#metroNetworkSvg").getAttribute("role"),"group");
   await page.locator("#metroJump").click();
-  await page.screenshot({path:path.join(SHOTS,"metro-desktop-station-map.png"),fullPage:false});
+  await page.locator(".metro-workspace").screenshot({path:path.join(SHOTS,"metro-desktop-station-map.png")});
   // Network map is real interactive SVG; inspecting a station is not a move.
   await page.locator('[data-metro-station="east_gardens"]').focus();
   await page.keyboard.press("Enter");
@@ -73,7 +73,7 @@ test("F2.1B desktop Chromium: premium network, interactive stations and accurate
   await page.locator("#metroViewTrain").click();
   assert.equal(await page.locator("#metroViewTrain").getAttribute("aria-pressed"),"true");
   assert.ok(await page.locator("#metroSceneSvg rect").count()>15);
-  await page.screenshot({path:path.join(SHOTS,"metro-desktop-train-interior.png"),fullPage:false});
+  await page.locator(".metro-workspace").screenshot({path:path.join(SHOTS,"metro-desktop-train-interior.png")});
   assert.deepEqual(events.external,[],"No remote requests or image tiles");
   assert.deepEqual(events.errors,[],"No JavaScript or CSP violations");
  }finally{await browser.close();}
@@ -95,7 +95,7 @@ test("F2.1B metro disruption: real closed M1 edge, routed M2→M3 detour",async(
   await advance(page,2);
   assert.equal(await page.locator("#metroSceneStation").innerText(),"Museum Quarter");
   assert.match(await page.locator("#metroFeedback").innerText(),/Journey completed/);
-  await page.screenshot({path:path.join(SHOTS,"metro-disruption-desktop.png"),fullPage:false});
+  await page.locator(".metro-workspace").screenshot({path:path.join(SHOTS,"metro-disruption-desktop.png")});
   await scenario(page,"metro_08_b1");
   assert.equal(await page.locator("#metroJourneyBadge").innerText(),"08");
   assert.match(await page.locator("#metroDestination").innerText(),/Museum Quarter/);
@@ -124,8 +124,19 @@ test("F2.1B phones: original metro SVG is pannable, gameplay controls accessible
    assert.ok(geometry.sw>geometry.cw*1.6,"Schematic must stay legible and swipe horizontally on phone");
    assert.equal(await page.locator("#metroScenarios button").count(),4);
    await page.locator("#metroLab").scrollIntoViewIfNeeded();
-   await page.screenshot({path:path.join(SHOTS,"metro-phone-"+w+"x"+h+".png"),fullPage:false});
+   await page.locator(".metro-workspace").screenshot({
+    path:path.join(SHOTS,"metro-phone-"+w+"x"+h+".png")
+   });
   }
+  // Overview is a compact schematic, detail is independently pannable.
+  await page.locator("#metroMapZoom").tap();
+  assert.equal(await page.locator("#metroMapZoom").getAttribute("aria-pressed"),"true");
+  assert.equal(await page.locator("#metroNetworkViewport").evaluate(el=>el.classList.contains("overview")),true);
+  const wide=await page.locator("#metroNetworkViewport").evaluate(el=>({sw:el.scrollWidth,cw:el.clientWidth}));
+  assert.ok(wide.sw<=wide.cw+3,"Whole network should fit inside phone viewport "+JSON.stringify(wide));
+  await page.locator(".metro-network-card").screenshot({path:path.join(SHOTS,"metro-phone-overview.png")});
+  await page.locator("#metroMapZoom").tap();
+  assert.equal(await page.locator("#metroNetworkViewport").evaluate(el=>el.classList.contains("overview")),false);
   await scenario(page,"metro_05_b1");
   await page.locator("#metroAdvance").tap();
   assert.match(await page.locator("#metroSceneStation").innerText(),/Old Town/);
@@ -153,7 +164,7 @@ test("F2.1B mobile WebKit: platform and train original scenes render without API
   assert.equal(await page.locator("#metroSceneStation").innerText(),"Central Station");
   assert.deepEqual(events.external,[]);
   assert.deepEqual(events.errors,[]);
-  await page.screenshot({path:path.join(SHOTS,"metro-mobile-webkit.png"),fullPage:false});
+  await page.locator(".metro-workspace").screenshot({path:path.join(SHOTS,"metro-mobile-webkit.png")});
  }finally{await browser.close();}
 });
 test("F2.1B visibility gating: A1/A2 city-only and B1–C2 metro preview for four languages",async()=>{
@@ -195,6 +206,6 @@ test("F2.1B one-file offline HTML: all 14 metro stops, scene and route with no e
   assert.equal(await page.locator("#metroSceneStation").innerText(),"Museum Quarter");
   assert.deepEqual(events.external,[]);
   assert.deepEqual(events.errors,[]);
-  await page.screenshot({path:path.join(SHOTS,"metro-offline-full.png"),fullPage:false});
+  await page.locator(".metro-workspace").screenshot({path:path.join(SHOTS,"metro-offline-full.png")});
  }finally{await browser.close();}
 });
