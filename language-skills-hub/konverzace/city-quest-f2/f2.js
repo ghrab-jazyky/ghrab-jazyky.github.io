@@ -402,7 +402,9 @@
     help(panel);
   }
   function activePath(){
-    if(metroPilot())return metroCityWalk()?metroState().cityPath:null;
+    // Keep the final walking leg and the player's museum location visible
+    // through the self-check and the completed-state presentation.
+    if(metroPilot())return state.station===8&&metroCityPhase()?metroState().cityPath:null;
     switch(state.station){
       case 2:return state.route.route;
       case 4:return state.guided.route;
@@ -698,6 +700,23 @@
     b.hidden=state.language!=="en"||state.level!=="B1"||!MG;
     b.textContent=metroEnabled?"↶ Return to classic city missions":"🚇 Play interactive metro missions (EN/B1 pilot)";
     b.setAttribute("aria-pressed",String(metroEnabled));
+    const pilot=metroEnabled&&state.language==="en"&&state.level==="B1";
+    // The header belongs to the active teaching experience, not the stale
+    // F2.1B visual gallery. Switching back restores the classic F2 text.
+    const hero=document.querySelector(".hero h1"),heroText=$("f2HeroText");
+    const headerTag=document.querySelector(".topbar .header-actions .tag");
+    const variantTag=document.querySelector(".hero .tags .tag:nth-child(3)");
+    if(pilot){
+      hero.textContent="Riverton City + Metro Quest";
+      heroText.textContent="Find your way above and below Riverton: four city missions and four interactive metro challenges in English at B1.";
+    }else{
+      hero.textContent=pack().stations[7][0];
+      heroText.textContent=pack().stations[0][1]+" "+ui().objective;
+    }
+    if(headerTag)headerTag.textContent=pilot?"F2.1C · METRO PILOT":"F2.1B · METRO DESIGN";
+    if(variantTag)variantTag.textContent=pilot?"EN · B1 METRO":"8 × 4 × 6";
+    document.title=pilot?"Riverton City + Metro Quest · English B1 · LSH":
+      "City Quest F2 · "+pack().native+" "+state.level+" · Language Skills Hub";
   }
   function toggleMetroPilot(){
     if(state.language!=="en"||state.level!=="B1"||!MG)return;
