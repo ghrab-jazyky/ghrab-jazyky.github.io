@@ -44,6 +44,7 @@
   document.querySelector('.print-controls').lang='cs';
   document.querySelector('.school').lang='cs';
   $('paper').dataset.format=format;
+  $('paper').dataset.level=level;
   $('materialTitle').textContent=model.title;
   $('materialMeta').textContent=t[mode]+' · '+(names[lang]||lang)+' · '+level+
    ' · '+t[format];

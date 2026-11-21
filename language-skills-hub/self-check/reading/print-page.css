@@ -63,7 +63,7 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
  .paper-header{flex-wrap:wrap}
 }
 @page{size:A4 portrait;margin:18mm 18mm 20mm}
-@page{@bottom-left{content:"Zdroj: British Council LearnEnglish – Asteroids";color:#536577;font:7pt Arial,Helvetica,sans-serif}
+@page{@bottom-left{content:"Téma inspirováno: British Council LearnEnglish – Asteroids";color:#536577;font:7pt Arial,Helvetica,sans-serif}
  @bottom-right{content:"Reading Lab · " counter(page);color:#536577;font:9pt Arial,Helvetica,sans-serif}}
 @media print{
  body{background:#fff}
@@ -74,5 +74,15 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
  .reading-material,.exercises,.reflection{break-inside:auto}
  .paper h2,.exercise-group h3{break-after:avoid-page}
  .reading-paragraphs,.reading-paragraphs p,.exercise-options li{hyphens:auto;-webkit-hyphens:auto}
+ /* Keep an independent reflection on EN B1 on the same sheet as its exercises.
+    Keep the 11pt reading font and sufficient room for written answers. */
+ .paper[data-level="B1"][data-format="all"] .exercise-question{margin-bottom:7pt}
+ .paper[data-level="B1"][data-format="all"] .answer-line{height:14pt}
+ .paper[data-level="B1"][data-format="all"] .exercise-options li{margin:2pt 0}
+ .paper[data-level="B1"][data-format="all"] .writing-lines{height:55pt}
+ /* Long C2 text-only pages: retain font size, optimize leading and blank space. */
+ .paper[data-level="C2"][data-format="text"] .paper-header{margin-bottom:10px}
+ .paper[data-level="C2"][data-format="text"] .reading-paragraphs{line-height:1.35}
+ .paper[data-level="C2"][data-format="text"] .reading-paragraphs p{margin-bottom:5pt}
  a{text-decoration:none;color:inherit}
 }

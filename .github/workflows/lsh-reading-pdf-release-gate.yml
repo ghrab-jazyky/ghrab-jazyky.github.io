@@ -134,7 +134,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: lsh-asteroids-pdf-visual-qa
-          path: /tmp/lsh-pdf-visual-qa/*.png
+          path: |
+            /tmp/lsh-pdf-visual-qa/*.png
+            language-skills-hub/printouts/rl-asteroids/en/A1/practice-text.pdf
+            language-skills-hub/printouts/rl-asteroids/en/B1/practice-all.pdf
+            language-skills-hub/printouts/rl-asteroids/en/B2/test-text.pdf
+            language-skills-hub/printouts/rl-asteroids/en/B2/test-all.pdf
+            language-skills-hub/printouts/rl-asteroids/de/C2/test-text.pdf
+            language-skills-hub/printouts/rl-asteroids/fr/C1/practice-all.pdf
           if-no-files-found: warn
           retention-days: 14
 

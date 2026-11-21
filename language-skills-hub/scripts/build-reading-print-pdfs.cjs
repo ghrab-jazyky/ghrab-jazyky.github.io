@@ -48,7 +48,11 @@ const sourceSha256=sourceDigest.digest('hex');
   hyphenators[lang]=sync;
  }
  const browser=await chromium.launch({headless:true});
- const manifest={schema:'RL_PDF_PRINT_ASSET_V1',topic:'rl-asteroids',sourceSha256,generator:'playwright-chromium-1.56.1-hyphen-1.14.1',files:[]};
+ const playwrightVersion=require('playwright/package.json').version;
+ const generator='playwright@'+playwrightVersion+'/chromium@'+browser.version()+
+  '/hyphen@1.14.1';
+ const manifest={schema:'RL_PDF_PRINT_ASSET_V1',topic:'rl-asteroids',
+  sourceSha256,generator,files:[]};
  try{
   const page=await browser.newPage({viewport:{width:1280,height:900}});
   page.on('pageerror',error=>{console.error('Print-page error:',error.message)});
