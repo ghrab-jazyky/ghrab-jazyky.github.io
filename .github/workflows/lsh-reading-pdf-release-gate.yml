@@ -16,7 +16,7 @@ on:
       - 'language-skills-hub/tests/rl-pdf-**'
       - '.github/workflows/lsh-reading-pdf-release-gate.yml'
   push:
-    branches: ['feature/lsh-asteroids-pdf-hardening-20261120']
+    branches: ['feature/lsh-asteroids-pdf-*']
   workflow_dispatch:
 permissions:
   contents: read
