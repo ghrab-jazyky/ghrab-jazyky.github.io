@@ -496,7 +496,7 @@
     "Discover the metro network, explore an illustrated platform and follow a train through Riverton. Fictional network and timetables. This preview does not grade speaking.";
   lab.querySelector(".metro-disclaimer").textContent=pilot?
     "F2.1D · "+copy.native+" "+level+" · "+copy.offline+" · No server, speech recording or requests.":
-    "F2.1B visual review · English signage uses fictional official place names. Metro teaching content now supports four languages B1–C2.";
+    "EN/B1 route reference · F2.1B visual review · Official fictional station names remain in English. Teaching missions support four languages B1–C2.";
   jump.textContent="🚇 Riverton Metro · EN visual preview (B1+)";
   if(shown)renderAll();
  }
