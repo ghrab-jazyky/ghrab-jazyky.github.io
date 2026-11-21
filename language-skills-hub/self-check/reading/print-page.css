@@ -26,6 +26,18 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
 .reading-paragraphs{font:11pt/1.46 Georgia,"Times New Roman",serif;text-align:justify;
  hyphens:auto;-webkit-hyphens:auto;word-break:normal;overflow-wrap:normal}
 .reading-paragraphs p{margin:0 0 11pt;orphans:3;widows:3;hyphens:auto;-webkit-hyphens:auto}
+.paper[data-format="all"] .reading-paragraphs{padding-left:13pt}
+.paper[data-format="all"] .reading-paragraphs p{position:relative}
+.paper[data-format="all"] .reading-paragraphs p::before{
+ content:attr(data-num) ".";position:absolute;left:-13pt;top:2pt;
+ font:8.5pt Arial,Helvetica,sans-serif;color:#526879
+}
+.student-identification{margin:0 0 10pt;font:9.5pt/1.5 Arial,Helvetica,sans-serif;color:#203847}
+.worksheet-instructions{margin:0 0 10pt;font:9pt/1.4 Arial,Helvetica,sans-serif;color:#334b59}
+.warmup{margin:0 0 12pt;padding:7pt 10pt;border-left:2pt solid #8ba5b5;background:#f5f8fa}
+.warmup h2{display:inline;font:700 9.5pt Arial,Helvetica,sans-serif;border:0;padding:0;margin:0 7pt 0 0}
+.warmup p{display:inline;font:9.5pt/1.45 Georgia,"Times New Roman",serif}
+.gap-note{margin:0 0 9pt;font:italic 9pt/1.4 Arial,Helvetica,sans-serif;color:#3b5566}
 .exercises{font:10.5pt/1.43 Georgia,"Times New Roman",serif;text-align:left}
 .exercise-group{margin:0 0 18px}
 .exercise-group h3{font:700 11pt Arial,Helvetica,sans-serif;margin:12pt 0 7pt;break-after:avoid-page}
@@ -40,9 +52,10 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
 .writing-lines{height:70pt;background:repeating-linear-gradient(to bottom,transparent 0,transparent 20pt,#9caeba 20.5pt)}
 .paper-footer{font:8pt/1.35 Arial,Helvetica,sans-serif;color:#516371;
  border-top:.6px solid #b4c4ce;padding-top:7pt;margin-top:18pt;break-inside:avoid}
-@media(max-width:850px){
+@media screen and (max-width:850px){
  .print-controls{margin:0;border:0;border-radius:0;flex-direction:column;align-items:stretch}
- .paper{margin:0 auto;box-shadow:none}
+ .paper{width:100%;min-height:0;margin:0;padding:18px;box-shadow:none}
+ .paper-header{flex-wrap:wrap}
 }
 @page{size:A4 portrait;margin:18mm 18mm 20mm}
 @page{@bottom-left{content:"Zdroj: British Council LearnEnglish – Asteroids";color:#536577;font:7pt Arial,Helvetica,sans-serif}
