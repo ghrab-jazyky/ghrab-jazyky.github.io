@@ -18,6 +18,7 @@ const protectedPaths = [
   'language-skills-hub/data/cards.json',
   'language-skills-hub/assets/school-logo.png',
   'language-skills-hub/assets/hub.js',
+  'language-skills-hub/assets/hub.css',
   'language-skills-hub/index.html',
   'language-skills-hub/self-check/reading/reading-core.js',
   'language-skills-hub/self-check/reading/print-core.js',
