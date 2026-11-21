@@ -96,41 +96,57 @@ for(const lang of ['en','es','de','fr'])for(const level of ['A1','A2','B1','B2',
   const record=byPath.get(key);
   if(!record)throw Error('Missing manifest entry '+key);
   const filename=path.join(root,key);
-  const {bytes,actual,pages}=inspect(filename);
+  const inspected=inspect(filename),{bytes,pages}=inspected;
   if(['A1','A2','B1','B2'].includes(level)&&format==='text'&&pages!==1)
    throw Error('Unexpected extra page in lower-level text-only PDF: '+key);
   if(record.bytes!==bytes.length||
      record.sha256!==crypto.createHash('sha256').update(bytes).digest('hex'))
    throw Error('PDF does not match manifest '+key);
   const model=project.printable(variant,mode,format);
-  let cursor=includedText(key+' title',model.title,actual);
-  if(model.warmup)cursor=includedText(key+' warmup',model.warmup,actual,cursor);
-  for(const [index,para] of model.paragraphs.entries()){
-   const parts=para.split(' […] ');
-   for(const part of parts)
-    cursor=includedText(key+' paragraph '+(index+1),part,actual,cursor);
-  }
-  if(format==='all'){
-   for(const section of model.sections){
-    cursor=includedText(key+' section',section.title,actual,cursor);
-    for(const q of section.questions){
-     cursor=includedText(key+' question '+q.number,q.number+'. '+q.prompt,actual,cursor);
-     for(const option of q.choices)
-      cursor=includedText(key+' option '+q.number,option,actual,cursor);
+  // Poppler -raw sometimes outputs positioned headings before the end of a
+  // paragraph on the preceding page. The layout extractor orders text by
+  // page coordinates. Both paths still require every expected word in order.
+  const verifyProjection=(actual)=>{
+   let cursor=includedText(key+' title',model.title,actual);
+   if(model.warmup)cursor=includedText(key+' warmup',model.warmup,actual,cursor);
+   for(const [index,para] of model.paragraphs.entries()){
+    const parts=para.split(' […] ');
+    for(const part of parts)
+     cursor=includedText(key+' paragraph '+(index+1),part,actual,cursor);
+   }
+   if(format==='all'){
+    for(const section of model.sections){
+     cursor=includedText(key+' section',section.title,actual,cursor);
+     for(const q of section.questions){
+      cursor=includedText(key+' question '+q.number,q.number+'. '+q.prompt,actual,cursor);
+      for(const option of q.choices)
+       cursor=includedText(key+' option '+q.number,option,actual,cursor);
+     }
     }
+    if(model.reflection)cursor=includedText(key+' reflection',model.reflection,actual,cursor);
+   }else{
+    for(const q of variant.questions){
+     if(normalized(q.q).length>12&&actual.includes(normalized(q.q)))
+      throw Error('Exercise question appears in text-only PDF: '+key+' / '+q.id);
+    }
+    if(/_{10,}/.test(inspected.raw))
+     throw Error('Student identification line in text-only PDF: '+key);
    }
-   if(model.reflection)cursor=includedText(key+' reflection',model.reflection,actual,cursor);
-  }else{
-   for(const q of variant.questions){
-    if(normalized(q.q).length>12&&actual.includes(normalized(q.q)))
-     throw Error('Exercise question appears in text-only PDF: '+key+' / '+q.id);
+   if(variant.pre&&!(mode==='practice'&&format==='all')&&
+      actual.includes(normalized(variant.pre)))
+    throw Error('Warm-up question leaked into wrong PDF variant: '+key);
+  };
+  let actual=inspected.actual,extractor='raw';
+  try{verifyProjection(actual)}
+  catch(rawError){
+   const layoutText=run('pdftotext',['-layout','-nopgbrk',filename,'-']);
+   const layout=normalized(cleanPageFurniture(layoutText));
+   try{verifyProjection(layout);actual=layout;extractor='layout'}
+   catch(layoutError){
+    throw Error('No extractor could verify complete ordered PDF content: '+key+
+     '\\nRAW: '+rawError.message+'\\nLAYOUT: '+layoutError.message);
    }
-   if(/_{10,}/.test(run('pdftotext',['-raw','-nopgbrk',filename,'-'])))
-    throw Error('Student identification line in text-only PDF: '+key);
   }
-  if(variant.pre&&!(mode==='practice'&&format==='all')&&
-     actual.includes(normalized(variant.pre)))
-   throw Error('Warm-up question leaked into wrong PDF variant: '+key);
   if(variant.gap){
    gapCount++;
    const sentence=normalized(variant.gap.sentence),observed=actual.split(sentence).length-1;
@@ -144,8 +160,11 @@ for(const lang of ['en','es','de','fr'])for(const level of ['A1','A2','B1','B2',
    }
   }
   if(compareRoot){
-   const old=inspect(path.join(compareRoot,lang,level,mode+'-'+format+'.pdf'));
-   if(old.actual!==actual||old.pages!==pages)
+   const oldFile=path.join(compareRoot,lang,level,mode+'-'+format+'.pdf');
+   const old=inspect(oldFile);
+   const oldText=extractor==='raw'?old.actual:normalized(cleanPageFurniture(
+    run('pdftotext',['-layout','-nopgbrk',oldFile,'-'])));
+   if(oldText!==actual||old.pages!==pages)
     throw Error('Regenerated content/page count differs from committed PDF '+key);
   }
   count++;pageTotal+=pages;
