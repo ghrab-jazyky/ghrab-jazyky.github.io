@@ -290,14 +290,22 @@
   drawnText(scene,214,119,displayLineId(),{"text-anchor":"middle","font-weight":950,"font-size":44,fill:"#092738"});
   drawnText(scene,295,98,name.toUpperCase(),{"font-size":28,"font-weight":900,
     "letter-spacing":1,fill:"#eafffa"});
-  const arrived=!!gameMode&&["exit","walk-to-museum","speech","complete"].includes(gameMode.phase);
-  const platform=arrived?"DESTINATION REACHED":
-    fixture?"PLATFORM "+fixture.platform:gameMode?"CHECK PLATFORM":"WAYFINDING PREVIEW";
+  const phase=gameMode?.phase,
+    arrived=!!gameMode&&["exit","walk-to-museum","speech","complete"].includes(phase);
   const next=route()[Math.min(current.index+1,route().length-1)];
   const dest=fixture?stationName(fixture.directionTerminus):
     (gameMode&&gameMode.direction?stationName(gameMode.direction):gameMode?"CHECK TERMINUS":
       next?.line?stationName(M.line(next.line).stops.at(-1)):"CHECK LINE");
-  const sign=arrived?"DESTINATION REACHED  •  FOLLOW EXIT SIGNS":
+  const platform=arrived?"DESTINATION REACHED":
+    fixture?"PLATFORM "+fixture.platform:gameMode?"CHECK PLATFORM":"WAYFINDING PREVIEW";
+  // The departure board must describe the ACTUAL player phase, not a former
+  // platform, and never reveal a future line/direction during route choices.
+  const sign=phase==="transfer"?"⇄ CHANGE TRAINS  •  FOLLOW INTERCHANGE SIGNS":
+    phase==="notice"?"SERVICE DISRUPTION  •  CHECK THE NETWORK":
+    phase==="select-line"?"STATION CONCOURSE  •  FIND YOUR LINE":
+    phase==="select-direction"?"DEPARTURES  •  CHECK THE TRAIN TERMINUS":
+    phase==="select-platform"?"PLATFORM CHECK  •  MATCH LINE AND TERMINUS":
+    arrived?"DESTINATION REACHED  •  FOLLOW EXIT SIGNS":
     platform+"   •   TOWARDS "+dest.toUpperCase();
   drawnText(scene,296,133,sign,{
     "font-size":14,"font-weight":780,"letter-spacing":1.2,fill:"#a8d5dc"});
