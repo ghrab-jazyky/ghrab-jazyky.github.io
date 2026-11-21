@@ -273,11 +273,12 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
 /* Keyboard skip: invisible until focus, usable on projector and phone. */
 .f3-skip{
  position:fixed;z-index:200;left:12px;top:-120px;
+ opacity:0;pointer-events:none;
  border:2px solid #f1dda0;background:#0d3945;color:#fff;
  padding:11px 16px;border-radius:10px;font-weight:900;
  box-shadow:0 8px 22px #010814a0;transition:top .12s;
 }
-.f3-skip:focus{top:12px}
+.f3-skip:focus{top:12px;opacity:1;pointer-events:auto}
 .f3-screen-reader-only{
  position:absolute!important;width:1px!important;height:1px!important;
  margin:-1px!important;overflow:hidden!important;
