@@ -107,7 +107,13 @@
     if(state.mode==="pair"){
       const div=el("div",panel,"f2-pair");
       el("strong",div,"","👥 "+ui().roleMode);
-      para(div,pack().pair[stationKeys[index-1]]||pack().pair.general);
+      const metroPair={
+        5:"Navigator: explain the line, terminus and platform without pointing. Traveller: check the signs and repeat the instructions.",
+        6:"Traveller: ask how to reach Stadium. Navigator: explain the transfer at University. Exchange roles after completing the route.",
+        7:"Dispatcher: read the service disruption. Navigator: recommend an alternative and explain why the closed segment must be avoided.",
+        8:"Traveller and Navigator: alternate between explaining the street route, the metro transfer and the final walk to City Museum."
+      };
+      para(div,alt?metroPair[index]:pack().pair[stationKeys[index-1]]||pack().pair.general);
     }
   }
   function speaking(parent,model){
@@ -163,7 +169,6 @@
   }
   function renderMetroMission(){
     const game=metroState(),stage=game.phase,n=state.station;
-    const stationName=MG.scenario(game).goal;
     if(game.completed)return complete(n,"Route verified locally. Speaking confirmed by self-assessment; no recording or AI grading.",
       n===5?"Take M1 towards East Gardens. Get off at Museum Quarter.":n===6?"Change at University and take M3 towards Harbour.":
         n===7?"Because M1 is closed, change to M3 at University.":"Walk to Market Square, change at University, and finish at City Museum.");
@@ -503,6 +508,7 @@
   }
   function canUndo(){
     if(isMovementLocked())return false;
+    if(metroCityWalk())return metroState().cityPath.length>1;
     if(state.station===8)return state.quest.leg.length>1;
     if(state.station===2)return state.route.route.length>1;
     if(state.station===7)return state.detour.route.length>1;
@@ -510,6 +516,7 @@
   }
   function undoMapStep(){
     if(!canUndo())return;
+    if(metroCityWalk())return metroAction({type:"UNDO_WALK"});
     const path=state.station===8?state.quest.leg:activePath();
     onMove(path[path.length-2]);
   }
