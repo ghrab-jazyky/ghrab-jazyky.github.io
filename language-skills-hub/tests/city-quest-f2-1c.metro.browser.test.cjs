@@ -50,7 +50,7 @@ test("F2.1C desktop: mission 05 rejects wrong line, requires directions/platform
   assert.match(await panel(page).innerText(),/speaking/i);
   await click(page,"I have practised aloud");
   await completed(page,5);
-  assert.match(await page.locator("#metroSceneSvg").innerText(),/DESTINATION REACHED/);
+  assert.match(await page.locator("#metroSceneSvg").textContent(),/DESTINATION REACHED/);
   await page.locator("#metroLab").screenshot({path:path.join(SHOTS,"f21c-desktop-mission05.png")});
   assert.deepEqual(errors,[]);
  }finally{await browser.close();}
