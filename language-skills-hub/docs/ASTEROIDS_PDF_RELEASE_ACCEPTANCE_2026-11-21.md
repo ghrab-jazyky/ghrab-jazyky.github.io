@@ -13,6 +13,15 @@
 - [ ] EN B2 `test-text.pdf` má jednu stránku; DE C2 `practice-text.pdf` a `test-text.pdf` ideálně jednu stránku (ověřit v QA).
 - [ ] V `practice-all` B1–C2 je skutečně vynechaná věta; `practice-text` ji obsahuje úplnou.
 
+## Dodatečná regrese stránkování (při převzetí auditu)
+
+- [x] Nález: v původní verzi EN/B1 `practice-all.pdf` i `test-all.pdf` měly 4 stránky; poslední obsahovala jen automatické zápatí bez úloh.
+- [x] Ve vývojové větvi upravena sazba reflexe EN/B1 bez snížení velikosti písma textu.
+- [x] Po automatickém přegenerování 96 PDF: ze skutečných binárních PDF na commitu `0f8df6b35c15` ověřeno `en/B1/practice-all.pdf` = 3 stránky a `en/B1/test-all.pdf` = 3 stránky (původně 4).
+- [x] Do `verify-reading-print-assets.cjs` přidán test obsahu **každé stránky**, který po odečtení zápatí odmítne prázdnou / téměř prázdnou stránku.
+- [ ] Nový `pdf-release-gate` PASS na skutečném posledním HEAD včetně přegenerovaného korpusu a nové kontroly prázdných stran.
+- [ ] Ručně prohlédnout finální první, prostřední a poslední stránky (automatický test nenahrazuje kontrolu tisku).
+
 ## Povinné kroky administrátora repozitáře
 
 - [ ] GitHub → Settings → Branches / Rulesets → pravidlo pro `main`.
