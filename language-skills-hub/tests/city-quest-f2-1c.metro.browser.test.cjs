@@ -91,6 +91,11 @@ test("F2.1C mission 08: real city→metro→city portal and three oral checkpoin
   assert.equal(await page.locator(".layout").isVisible(),true);
   assert.equal(await page.locator("#metroLab").isVisible(),false);
   const north=page.locator('#f2Quick [data-direction="north"]'),east=page.locator('#f2Quick [data-direction="east"]');
+  await east.click();
+  assert.equal(await page.locator("#f2Quick .f2-hud-undo").isDisabled(),false);
+  await page.locator("#f2Quick .f2-hud-undo").click();
+  assert.equal(await page.locator("#f2Quick .f2-hud-undo").isDisabled(),true);
+  assert.equal((await page.locator("#f2MapRoute").getAttribute("points")).trim().split(/\s+/).length,1);
   await east.click();await east.click();await north.click();
   await click(page,"I have practised aloud");
   await click(page,"Enter the metro");
@@ -132,6 +137,19 @@ test("F2.1C preserves classic F2 by default, requires opt-in and does not enable
    assert.equal(await page.locator("#metroPilotToggle").isVisible(),false);
    assert.equal(await page.locator("#metroLab").isVisible(),false);
   }
+ }finally{await browser.close();}
+});
+test("F2.1C Pair mode adds metro-specific speaking roles rather than legacy bus exercises",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:1280,height:800}});
+  await page.goto(URL,{waitUntil:"load"});
+  await page.locator("#f1Pair").click();
+  await page.locator("#metroPilotToggle").click();
+  await page.locator("#f1Stations .f1-station").nth(4).click();
+  const text=await panel(page).innerText();
+  assert.match(text,/Navigator: explain the line, terminus and platform/);
+  assert.doesNotMatch(text,/bus timetable/i);
  }finally{await browser.close();}
 });
 test("F2.1C responsive live mission controls dock next to mobile map and back in desktop sidebar",async()=>{
