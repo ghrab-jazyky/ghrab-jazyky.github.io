@@ -108,6 +108,10 @@ test("F3A high contrast and reduced motion: accessibility override suppresses de
   await page.locator("#f3ContrastButton").click();
   assert.equal(await page.locator("html").getAttribute("data-contrast"),"normal");
   await page.emulateMedia({reducedMotion:"reduce"});
+  // matchMedia('change') is asynchronous: wait for the actual browser event
+  // before asserting the control state. CSS already enforces reduced motion.
+  await page.waitForFunction(()=>window.matchMedia("(prefers-reduced-motion: reduce)").matches&&
+   document.getElementById("f3MotionButton")?.disabled===true,null,{timeout:5000});
   assert.equal(await page.locator("html").getAttribute("data-motion"),"off");
   assert.equal(await page.locator("#f3MotionButton").isDisabled(),true);
   assert.deepEqual(errors,[]);

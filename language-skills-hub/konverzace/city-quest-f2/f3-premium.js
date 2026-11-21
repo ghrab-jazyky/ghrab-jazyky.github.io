@@ -104,8 +104,19 @@
    if(audio.state==="suspended")audio.resume().catch(()=>{});
    const start=audio.currentTime+.008;
    // Original minimalist two-note sound signature, deliberately very quiet.
-   const pattern=kind==="complete"?[[523.25,0,.13],[783.99,.13,.18]]:
-    kind==="error"?[[220,0,.15]]:[[392,0,.075]];
+   // Original local transit chime palette. These are NOT spoken or streamed.
+   // Each event is a short, quiet signature; gameplay never waits for sound.
+   const signatures={
+    advance:[[392,0,.075]],
+    error:[[220,0,.15]],
+    warning:[[329.63,0,.11],[261.63,.13,.16]],
+    board:[[440,0,.095],[659.25,.11,.16]],
+    ride:[[523.25,0,.10]],
+    transfer:[[392,0,.095],[493.88,.11,.095],[587.33,.24,.17]],
+    arrival:[[523.25,0,.12],[783.99,.14,.18]],
+    complete:[[523.25,0,.13],[659.25,.15,.13],[783.99,.3,.23]]
+   };
+   const pattern=signatures[kind]||signatures.advance;
    for(const [frequency,offset,duration] of pattern){
     const oscillator=audio.createOscillator(),volume=audio.createGain();
     oscillator.type=kind==="error"?"sine":"triangle";
