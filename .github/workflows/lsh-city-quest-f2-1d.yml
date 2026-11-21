@@ -1,0 +1,123 @@
+name: LSH City Quest F2.1D Multilingual B1-C2 Metro
+on:
+  push:
+    branches:
+      - feature/lsh-city-quest-f2-1d-multilingual-cefr-metro
+    paths:
+      - "language-skills-hub/authoring/city-quest-f2-1b/**"
+      - "language-skills-hub/authoring/city-quest-f2-1c/**"
+      - "language-skills-hub/authoring/city-quest-f2-1d/**"
+      - "language-skills-hub/konverzace/city-quest-f2/**"
+      - "language-skills-hub/authoring/city-quest-f2/build-preview.cjs"
+      - "language-skills-hub/tests/city-quest-f2-1b*"
+      - "language-skills-hub/tests/city-quest-f2-1c*"
+      - "language-skills-hub/tests/city-quest-f2-1d*"
+      - ".github/workflows/lsh-city-quest-f2-1d.yml"
+  pull_request:
+    paths:
+      - "language-skills-hub/authoring/city-quest-f2-1b/**"
+      - "language-skills-hub/authoring/city-quest-f2-1c/**"
+      - "language-skills-hub/authoring/city-quest-f2-1d/**"
+      - "language-skills-hub/konverzace/city-quest-f2/**"
+      - "language-skills-hub/authoring/city-quest-f2/build-preview.cjs"
+      - "language-skills-hub/tests/city-quest-f2-1b*"
+      - "language-skills-hub/tests/city-quest-f2-1c*"
+      - "language-skills-hub/tests/city-quest-f2-1d*"
+      - ".github/workflows/lsh-city-quest-f2-1d.yml"
+permissions:
+  contents: read
+concurrency:
+  group: city-quest-f2-1d-${{ github.sha }}
+  cancel-in-progress: true
+jobs:
+  multilingual-metro-and-graph:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Syntax and graph validation
+        run: |
+          node --check language-skills-hub/authoring/city-quest-f2-1b/metro-network.js
+          node --check language-skills-hub/authoring/city-quest-f2-1c/metro-game.js
+          node --check language-skills-hub/authoring/city-quest-f2-1d/metro-language.js
+          node --check language-skills-hub/konverzace/city-quest-f2/f2.js
+          node --check language-skills-hub/konverzace/city-quest-f2/metro-preview.js
+          node --check language-skills-hub/authoring/city-quest-f2/build-preview.cjs
+          node --check language-skills-hub/tests/city-quest-f2-1b.metro.test.cjs
+          node --check language-skills-hub/tests/city-quest-f2-1b.metro.browser.test.cjs
+          node --check language-skills-hub/tests/city-quest-f2-1c.metro-game.test.cjs
+          node --check language-skills-hub/tests/city-quest-f2-1c.metro.browser.test.cjs
+          node --check language-skills-hub/tests/city-quest-f2-1d.metro-language.test.cjs
+          node --check language-skills-hub/tests/city-quest-f2-1d.metro.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-f2-1b.metro.test.cjs
+          node --test language-skills-hub/tests/city-quest-f2-1c.metro-game.test.cjs
+          node --test language-skills-hub/tests/city-quest-f2-1d.metro-language.test.cjs
+      - name: "Regression: route, 8 F1 stations and existing F2 CEFR content"
+        run: |
+          node --test language-skills-hub/tests/city-quest-f0.test.cjs
+          node --test language-skills-hub/tests/city-quest-f1.test.cjs
+          node --test language-skills-hub/tests/city-quest-f2.test.cjs
+      - name: Verify offline architecture and mark preview ungraded
+        run: |
+          grep -Fq "connect-src 'none'" language-skills-hub/konverzace/city-quest-f2/index.html
+          grep -Fq "F2.1B VISUAL PROTOTYPE" language-skills-hub/konverzace/city-quest-f2/index.html
+          grep -Fq "EN/B1 route reference" language-skills-hub/konverzace/city-quest-f2/index.html
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const a=fs.readFileSync('language-skills-hub/konverzace/city-quest-f2/metro-preview.js','utf8');
+          const b=fs.readFileSync('language-skills-hub/authoring/city-quest-f2-1b/metro-network.js','utf8');
+          const c=fs.readFileSync('language-skills-hub/authoring/city-quest-f2-1c/metro-game.js','utf8');
+          const d=fs.readFileSync('language-skills-hub/authoring/city-quest-f2-1d/metro-language.js','utf8');
+          for(const x of ['fetch(', 'XMLHttpRequest(', 'navigator.geolocation', 'getCurrentPosition(', 'watchPosition(', 'new WebSocket('])
+            if(a.includes(x)||b.includes(x)||c.includes(x)||d.includes(x))throw Error('Forbidden remote or location dependency '+x);
+          NODE
+  multilingual-metro-browsers:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install matching Playwright
+        run: npm install --no-save --ignore-scripts playwright@1.56.1
+        timeout-minutes: 8
+      - name: Build single-file offline metro HTML preview
+        run: node language-skills-hub/authoring/city-quest-f2/build-preview.cjs --write
+      - name: "Browser acceptance: metro + existing city UX + offline"
+        timeout-minutes: 20
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/cq-f21c-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill $server_pid' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/city-quest-f2.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-f2-1a.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-f2-1b.metro.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-f2-1c.metro.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-f2-1d.metro.browser.test.cjs
+      - name: Export interactive metro mission screenshots and phone reviews
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: city-quest-f21d-multilingual-visual-review
+          path: city-quest-f2-1d-artifacts/
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Export portable F2 + interactive metro pilot HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: city-quest-f21d-standalone-offline-preview
+          path: .review-city-quest-f2/CITY_QUEST_F2_OFFLINE_PREVIEW.html
+          if-no-files-found: warn
+          retention-days: 14
