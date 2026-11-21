@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="../city-quest-f0/style.css">
 <link rel="stylesheet" href="../city-quest-f1/f1.css">
 <link rel="stylesheet" href="f2.css">
+<link rel="stylesheet" href="metro-preview.css">
 <script defer src="../../authoring/city-quest-f0/engine.js"></script>
 <script defer src="../city-quest-f0/city-art.js"></script>
 <script defer src="../city-quest-f0/app.js"></script>
@@ -18,6 +19,8 @@
 <script defer src="../../authoring/city-quest-f2/content-b.js"></script>
 <script defer src="../../authoring/city-quest-f2/engine.js"></script>
 <script defer src="f2.js"></script>
+<script defer src="../../authoring/city-quest-f2-1b/metro-network.js"></script>
+<script defer src="metro-preview.js"></script>
 </head>
 <body>
 <main class="app">
@@ -26,7 +29,7 @@
   <div class="header-actions">
     <button class="btn" id="themeBtn" type="button" aria-label="Switch colour theme">☀ Light mode</button>
     <button class="btn" id="resetBtn" type="button">↺ Reset mission</button>
-    <span class="tag">F2 · DEVELOPMENT PREVIEW</span>
+    <span class="tag">F2.1B · METRO DESIGN</span>
   </div>
 </header>
 <section class="hero">
@@ -46,6 +49,7 @@
     <select id="f2Level"><option>A1</option><option>A2</option><option selected>B1</option><option>B2</option><option>C1</option><option>C2</option></select>
   </div>
   <div class="f2-profile" id="f2Profile" aria-live="polite">Independent directions and communication repair</div>
+  <button class="btn metro-jump" id="metroJump" type="button" hidden aria-controls="metroLab">🚇 Riverton Metro · Preview</button>
 </section>
 <section class="f1-dashboard" aria-label="City Quest session">
  <div class="f1-progress"><strong id="f1ProgressText">0 of 8 missions completed</strong><div class="f1-progress-track" role="progressbar" aria-label="Mission progress" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="f1ProgressTrack"><span id="f1ProgressFill"></span></div><small>Results stay in this browser tab; speaking is not automatically graded.</small></div>
@@ -114,6 +118,71 @@
    </section>
    <section class="side-card f1-mission-panel" id="f1Panel" hidden aria-live="off" aria-label="Interactive City Quest mission"></section>
  </div>
+</section>
+<section class="metro-lab" id="metroLab" aria-labelledby="metroHeading" hidden>
+  <header class="metro-banner">
+    <div class="metro-banner-copy">
+      <div class="metro-overline"><span class="metro-spark"></span> RIVERTON TRANSIT SYSTEM <span class="metro-divider">/</span> F2.1B VISUAL PROTOTYPE</div>
+      <h2 id="metroHeading">The city has another layer.</h2>
+      <p>Discover the metro network, explore an illustrated platform and follow a train through Riverton. Fictional network and timetables. This preview does not grade speaking.</p>
+      <div class="metro-banner-badges"><span>3 colour-coded lines</span><span>14 stations</span><span>3 interchanges</span><span>Offline SVG world</span></div>
+    </div>
+    <div class="metro-monogram" aria-hidden="true"><span>R</span><small>METRO</small></div>
+  </header>
+  <div class="metro-scenario-toolbar">
+    <div class="metro-scenario-head"><strong>CHOOSE YOUR DEMO MISSION</strong><small>Explore the future stations 05–08 before F2.1C gameplay integration.</small></div>
+    <div id="metroScenarios" class="metro-scenario-list" role="group" aria-label="Select a fictional metro journey"></div>
+  </div>
+  <div class="metro-workspace">
+    <div class="metro-network-card">
+      <div class="metro-network-head">
+        <div><small>NETWORK CONTROL</small><h3>Riverton Underground</h3></div>
+        <div class="metro-live-pulse"><i></i> LOCAL SIMULATION</div>
+      </div>
+      <div class="metro-network-scroll" id="metroNetworkViewport" tabindex="0" role="region" aria-label="Scrollable interactive map of three fictional metro lines">
+        <svg id="metroNetworkSvg" viewBox="0 0 1196 756" role="group" aria-label="Original interactive Riverton metro diagram"></svg>
+      </div>
+      <div class="metro-network-footer">
+        <div id="metroLegend" class="metro-legend" aria-label="Metro line legend"></div>
+        <div class="metro-map-instructions">↔ Swipe map to explore · Select a station</div>
+      </div>
+    </div>
+    <aside class="metro-side" aria-label="Metro journey and platform preview">
+      <div class="metro-journey-card">
+        <div class="metro-journey-header"><span>JOURNEY DISPLAY</span><span id="metroJourneyBadge" class="metro-journey-number">05</span></div>
+        <div class="metro-journey-path"><div><small>FROM</small><strong id="metroOrigin">Central Station</strong></div><span class="metro-route-arrow">→</span><div><small>TO</small><strong id="metroDestination">Museum Quarter</strong></div></div>
+        <div id="metroNetworkAlert" class="metro-network-alert" hidden>⚠ Service disruption</div>
+        <div id="metroJourneyProgress" class="metro-journey-progress" role="progressbar" aria-label="Journey progress" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0"><span></span></div>
+      </div>
+      <div class="metro-scene-card">
+        <div class="metro-scene-toolbar">
+          <div><span class="metro-eyebrow">IMMERSIVE SCENE</span><h3 id="metroSceneHeading">Platform view</h3></div>
+          <div class="metro-scene-toggle" role="group" aria-label="Switch metro environment">
+            <button type="button" id="metroViewPlatform" class="metro-scene-tab active" aria-pressed="true">Platform</button>
+            <button type="button" id="metroViewTrain" class="metro-scene-tab" aria-pressed="false">On board</button>
+          </div>
+        </div>
+        <div class="metro-scene-viewport"><svg id="metroSceneSvg" viewBox="0 0 900 460" role="img" aria-label="Illustrated metro station scene"></svg></div>
+        <div class="metro-stop-strip"><span class="metro-stop-indicator" id="metroStopIndicator">●</span><strong id="metroSceneStation">Central Station</strong><small id="metroSceneLine">M1 · Azure Line</small></div>
+      </div>
+      <div class="metro-action-card">
+        <span class="metro-eyebrow">YOUR NEXT MOVE</span>
+        <p id="metroInstruction" class="metro-instruction">Select a mission to explore the network.</p>
+        <p id="metroNextInfo" class="metro-next-info"></p>
+        <div class="metro-actions">
+          <button type="button" class="metro-primary" id="metroAdvance">Board · Next stop <span aria-hidden="true">→</span></button>
+          <button type="button" class="metro-secondary" id="metroReplay">↺ Replay</button>
+        </div>
+        <div id="metroFeedback" role="status" aria-live="polite" aria-atomic="true" class="metro-feedback">Choose a mission to begin.</div>
+      </div>
+      <div class="metro-inspector" id="metroInspector">
+        <div class="metro-inspector-top"><strong>SELECTED STATION</strong><span id="metroInspectorLine">M1</span></div>
+        <h4 id="metroInspectorName">Central Station</h4>
+        <p id="metroInspectorDetail">Select any station on the network to inspect connections.</p>
+      </div>
+    </aside>
+  </div>
+  <footer class="metro-disclaimer"><span>EN/B1 route reference · Visual and graph design review only</span><span>Full graded metro mission mechanics and EN/ES/DE/FR localization follow in F2.1C–D.</span></footer>
 </section>
 <section class="guide-card">
 <h2 id="f2GuideTitle">About City Quest F2</h2><p id="f2GuideText">All four languages and all six levels use the same illustrated city and eight interactive stations. The CEFR level changes routes, constraints, task complexity and speaking support. No server, student data collection or speech grading.</p>
