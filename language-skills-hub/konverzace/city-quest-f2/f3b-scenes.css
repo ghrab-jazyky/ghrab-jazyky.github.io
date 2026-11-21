@@ -1,0 +1,115 @@
+/* City Quest F3B — immersive metro scenes / localized offline PA.
+ * No external sound/image assets; SVG graphics and CSS authored in repository.
+ */
+.metro-pa{
+ display:grid;gap:8px;padding:12px 15px 13px;
+ background:linear-gradient(135deg,#092c3a,#143d4a 65%,#102b42);
+ border-top:1px solid #87ddda5f;
+ border-bottom:1px solid #9cded745;color:#e9fffa;
+ position:relative;overflow:hidden;
+}
+.metro-pa[hidden]{display:none!important}
+.metro-pa::before{
+ content:"";position:absolute;inset:0 auto 0 0;width:4px;
+ background:linear-gradient(#69f1e0,#5eabdd);
+}
+.metro-pa[data-kind="notice"]{
+ background:linear-gradient(130deg,#4d2732,#2a3440);border-color:#ffbeab81;
+}
+.metro-pa[data-kind="notice"]::before{background:#ffad83}
+.metro-pa[data-kind="arrival"],.metro-pa[data-kind="complete"]{
+ background:linear-gradient(125deg,#124536,#134248);
+}
+.metro-pa-header{display:flex;align-items:center;justify-content:space-between;gap:8px 14px;flex-wrap:wrap}
+.metro-pa-label{display:flex;align-items:center;gap:7px;font-size:.59rem;
+ letter-spacing:.16em;font-weight:900;line-height:1.35;color:#a2eee1}
+.metro-pa-marker{width:8px;height:8px;background:#86fbe7;border-radius:50%;
+ box-shadow:0 0 0 4px #5be2d721;flex:none}
+.metro-pa[data-kind="notice"] .metro-pa-marker{background:#ffbb85;box-shadow:0 0 0 4px #fc8a4d21}
+.metro-pa-state{font-size:.7rem;font-weight:900;letter-spacing:.05em;
+ color:#d6f9f2;background:#4fa59724;border:1px solid #8bdec84a;
+ padding:4px 8px;border-radius:7px}
+.metro-pa-title{margin:0;color:#fffdfa;font-size:clamp(.9rem,1.2vw,1.04rem);
+ line-height:1.23;letter-spacing:-.018em;font-weight:950}
+.metro-pa-message{color:#f1fffb;line-height:1.48;font-size:.84rem;
+ font-weight:650;margin:0;text-wrap:pretty}
+.metro-pa[data-kind="notice"] .metro-pa-title{color:#ffcfbc}
+.metro-pa-prompt{padding-top:9px;margin-top:2px;border-top:1px solid #a8e6e038;
+ font-size:.78rem;line-height:1.42;color:#c3eae2}
+.metro-pa-legend{font-size:.67rem;color:#b6d9dc;line-height:1.35}
+.metro-pa-chip{display:inline-flex;align-items:center;gap:5px;
+ border-radius:999px;padding:3px 9px;background:#4acdb921;border:1px solid #91e9d45c;
+ color:#d5ffef;font-size:.67rem;font-weight:900}
+.metro-scene-viewport{position:relative;overflow:hidden}
+.metro-scene-viewport::after{
+ content:"";position:absolute;inset:0;pointer-events:none;
+ background:linear-gradient(113deg,transparent 30%,#ffffff08 46%,transparent 59%);
+ opacity:.5;
+}
+#metroSceneSvg{transform-origin:center center}
+#metroSceneSvg .metro-window-world{transform-box:fill-box;transform-origin:center}
+#metroSceneSvg[data-phase="ride"] .metro-window-world{
+ animation:f3b-train-landscape 4.5s linear infinite alternate;
+}
+@keyframes f3b-train-landscape{
+ from{transform:translateX(0)}
+ to{transform:translateX(-52px)}
+}
+#metroSceneSvg .metro-train-door-left,
+#metroSceneSvg .metro-train-door-right{
+ transform-box:fill-box;transform-origin:center;
+ transition:transform 560ms cubic-bezier(.16,.72,.21,1);
+}
+#metroSceneSvg[data-phase="board"] .metro-train-door-left{transform:translateX(-13px)}
+#metroSceneSvg[data-phase="board"] .metro-train-door-right{transform:translateX(13px)}
+#metroSceneSvg[data-phase="transfer"] .metro-transfer-arrow{
+ animation:f3b-transfer-glow 1.8s ease-in-out infinite alternate}
+@keyframes f3b-transfer-glow{
+ from{opacity:.52;filter:drop-shadow(0 0 1px #5ff8de)}
+ to{opacity:1;filter:drop-shadow(0 0 13px #67fbd1)}
+}
+#metroSceneSvg[data-phase="notice"] .metro-alert-sign{
+ animation:f3b-alert-glow 2s ease-in-out infinite alternate}
+@keyframes f3b-alert-glow{
+ from{opacity:.72}to{opacity:1}
+}
+.metro-lab[data-mode="game"] .metro-scene-toolbar{
+ background:linear-gradient(112deg,#153c4b,#123b50);
+ border-bottom:1px solid #7cdacf32;
+}
+.metro-lab[data-mode="game"] .metro-stop-strip{
+ background:linear-gradient(120deg,#0b3040,#0b2a44);
+}
+.metro-lab[data-mode="game"] .metro-scene-card{
+ box-shadow:0 10px 26px #04121c5a;
+ border-color:#7de6d176;
+}
+.metro-lab[data-mode="game"] .metro-stop-indicator{
+ animation:f3b-arrival-marker 2.3s ease-in-out infinite alternate;
+}
+@keyframes f3b-arrival-marker{
+ from{text-shadow:0 0 3px #67f7de;opacity:.8}
+ to{text-shadow:0 0 16px #67f7de;opacity:1}
+}
+@media(max-width:740px){
+ .metro-pa{padding:12px;gap:7px}
+ .metro-pa-label{font-size:.57rem;letter-spacing:.09em}
+ .metro-pa-message{font-size:.86rem}
+ .metro-pa-prompt{font-size:.79rem}
+}
+@media(prefers-reduced-motion:reduce){
+ #metroSceneSvg .metro-window-world,
+ #metroSceneSvg .metro-transfer-arrow,
+ #metroSceneSvg .metro-alert-sign,
+ .metro-lab[data-mode="game"] .metro-stop-indicator{
+  animation:none!important;transition:none!important;
+ }
+}
+:root[data-motion="off"] #metroSceneSvg .metro-window-world,
+:root[data-motion="off"] #metroSceneSvg .metro-transfer-arrow,
+:root[data-motion="off"] #metroSceneSvg .metro-alert-sign,
+:root[data-motion="off"] .metro-lab[data-mode="game"] .metro-stop-indicator,
+:root[data-motion="off"] #metroSceneSvg .metro-train-door-left,
+:root[data-motion="off"] #metroSceneSvg .metro-train-door-right{
+ animation:none!important;transition:none!important;transform:none!important;
+}
