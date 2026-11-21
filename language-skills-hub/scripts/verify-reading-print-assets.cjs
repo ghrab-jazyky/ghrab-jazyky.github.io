@@ -25,18 +25,18 @@ function digest(){
  const h=crypto.createHash('sha256');
  for(const filename of INPUTS){
   const bytes=fs.readFileSync(path.join(root,filename));
-  h.update(filename+'\\0'+bytes.length+'\\0');h.update(bytes);
+  h.update(filename+'\0'+bytes.length+'\0');h.update(bytes);
  }
  return h.digest('hex');
 }
 function run(command,args){return execFileSync(command,args,{encoding:'utf8',maxBuffer:12*1024*1024})}
 function normalized(s){
- return String(s).normalize('NFKC').replace(/\\u00ad/g,'')
-  .replace(/([\\p{L}])[-‐]\\s*\\n(?=[\\p{L}])/gu,'$1')
-  .toLocaleLowerCase('und').replace(/[^\\p{L}\\p{N}]/gu,'');
+ return String(s).normalize('NFKC').replace(/\u00ad/g,'')
+  .replace(/([\p{L}])[-‐]\s*\n(?=[\p{L}])/gu,'$1')
+  .toLocaleLowerCase('und').replace(/[^\p{L}\p{N}]/gu,'');
 }
 function wordChunks(s){
- const words=String(s).split(/\\s+/).filter(Boolean),pieces=[];
+ const words=String(s).split(/\s+/).filter(Boolean),pieces=[];
  for(let i=0;i<words.length;i+=6)pieces.push(words.slice(i,i+6).join(' '));
  return pieces;
 }
@@ -58,8 +58,8 @@ function inspect(filename){
   throw Error('Invalid PDF wrapper: '+filename);
  run('qpdf',['--check',filename]);
  const info=run('pdfinfo',[filename]);
- const pages=Number(info.match(/^Pages:\\s*(\\d+)/m)?.[1]);
- const size=info.match(/^Page size:\\s*([\\d.]+)\\s+x\\s+([\\d.]+)/m);
+ const pages=Number(info.match(/^Pages:\s*(\d+)/m)?.[1]);
+ const size=info.match(/^Page size:\s*([\d.]+)\s+x\s+([\d.]+)/m);
  if(!pages||pages>12||!size||Math.abs(Number(size[1])-595)>2||
     Math.abs(Number(size[2])-842)>2)throw Error('Invalid A4 page count/size: '+filename);
  const text=run('pdftotext',['-raw','-nopgbrk',filename,'-']);
@@ -115,10 +115,9 @@ for(const lang of ['en','es','de','fr'])for(const level of ['A1','A2','B1','B2',
    const expected=mode==='practice'&&format==='text'?1:format==='all'?1:0;
    if(observed!==expected)throw Error('Missing sentence leaked/missing: '+key+
     ' expected '+expected+' occurrences, saw '+observed);
-   if((mode==='test'||format==='all')&&!actual.includes(normalized('[...]'))){
-    // Unicode ellipsis survives normalized() only as punctuation; inspect raw text.
-    const raw=run('pdftotext',['-raw','-nopgbrk',filename,'-']);
-    if(!/\\[\\s*(?:\\u2026|\\.{3})\\s*\\]/u.test(raw))
+   if(mode==='test'||format==='all'){
+    if(!/\[\s*(?:\u2026|\.{3})\s*\]/u.test(run('pdftotext',
+     ['-raw','-nopgbrk',filename,'-'])))
      throw Error('Gap marker missing: '+key);
    }
   }
