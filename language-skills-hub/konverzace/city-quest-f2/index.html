@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="f2.css">
 <link rel="stylesheet" href="metro-preview.css">
 <link rel="stylesheet" href="f3-premium.css">
+<link rel="stylesheet" href="f3b-scenes.css">
 <script defer src="../../authoring/city-quest-f0/engine.js"></script>
 <script defer src="../city-quest-f0/city-art.js"></script>
 <script defer src="../city-quest-f0/app.js"></script>
@@ -22,6 +23,7 @@
 <script defer src="../../authoring/city-quest-f2-1b/metro-network.js"></script>
 <script defer src="../../authoring/city-quest-f2-1c/metro-game.js"></script>
 <script defer src="../../authoring/city-quest-f2-1d/metro-language.js"></script>
+<script defer src="../../authoring/city-quest-f3b/metro-public-address.js"></script>
 <script defer src="f2.js"></script>
 <script defer src="metro-preview.js"></script>
 <script defer src="f3-premium.js"></script>
@@ -182,6 +184,16 @@
           </div>
         </div>
         <div class="metro-scene-viewport"><svg id="metroSceneSvg" viewBox="0 0 900 460" role="img" aria-label="Illustrated metro station scene"></svg></div>
+        <section class="metro-pa" id="metroPublicAddress" aria-label="Contextual metro public-address text" aria-live="polite" aria-atomic="true" hidden>
+          <div class="metro-pa-header">
+            <span class="metro-pa-label"><span class="metro-pa-marker" aria-hidden="true"></span><span id="metroPALabel">PUBLIC ADDRESS · TEXT SIMULATION</span></span>
+            <span id="metroPAState" class="metro-pa-chip">WAYFINDING</span>
+          </div>
+          <h4 id="metroPATitle" class="metro-pa-title">Service information</h4>
+          <p id="metroPAMessage" class="metro-pa-message"></p>
+          <div id="metroPAPrompt" class="metro-pa-prompt"></div>
+          <small id="metroPAStatus" class="metro-pa-legend">This is written practice; it does not play recorded announcements.</small>
+        </section>
         <div class="metro-stop-strip"><span class="metro-stop-indicator" id="metroStopIndicator">●</span><strong id="metroSceneStation">Central Station</strong><small id="metroSceneLine">M1 · Azure Line</small></div>
       </div>
       <div class="metro-action-card">
