@@ -2,7 +2,7 @@
 const {test}=require("node:test"),assert=require("node:assert/strict");
 const M=require("../authoring/city-quest-f2-1b/metro-network.js");
 const G=require("../authoring/city-quest-f2-1c/metro-game.js");
-const act=(s,type,value)=>G.act(s,{type,value});
+const act=(s,type,value)=>G.act(s,type==="WALK"?{type,node:value}:{type,value});
 function accepted(s,type,value){
  const o=act(s,type,value);
  assert.equal(o.accepted,true,type+": "+o.message);
