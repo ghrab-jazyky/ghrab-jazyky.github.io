@@ -157,9 +157,11 @@
     const number=state.station,previousScene=metroScene(),previous=state.metro[number];
     const result=MG.act(previous,action);
     state.metro[number]=result.state;
+    if(window.CityQuestF3)window.CityQuestF3.feedback(result.complete?"complete":result.accepted?"advance":"error");
     flash={text:LC.feedback(state.language,result,action),tone:result.accepted?"success":"warning"};
     if(result.complete)state.done.add(number);
     screen();renderMap();
+    window.CityQuestF3?.sceneUpdated();
     if(previousScene!==metroScene()){
       const target=metroScene()?metroLab:cityLayout;
       window.requestAnimationFrame(()=>target.scrollIntoView({behavior:"auto",block:"start"}));
@@ -685,6 +687,7 @@
     if(!Number.isInteger(n)||n<1||n>8)return;
     state.station=n;flash=null;
     updateProgress();screen();renderMap();
+    window.CityQuestF3?.sceneUpdated();
   }
   function resetStation(){
     const n=state.station;
@@ -733,6 +736,7 @@
     state.detour=G.routeStart();state.quest=G.questStart();
     flash=null;
     updateMetroToggle();updateProgress();screen();renderMap();
+    window.CityQuestF3?.sceneUpdated();
   }
   function setMode(mode){
     if(!["solo","pair"].includes(mode))return;
