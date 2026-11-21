@@ -9,6 +9,7 @@
   const panel=$("f1Panel"),map=$("cityMap"),viewport=$("mapViewport");
   const cityLayout=document.querySelector(".layout"),citySidebar=panel.parentElement;
   const metroLab=$("metroLab"),metroSidebar=metroLab.querySelector(".metro-side");
+  const metroNetworkCard=metroLab.querySelector(".metro-network-card"),metroPhoneQuery=window.matchMedia("(max-width:740px)");
   const NS="http://www.w3.org/2000/svg";
   const icons=["🗺️","🧭","💬","👣","🚌","↩️","🚧","🏆"];
   const stationKeys=["explore","route","dialogue","guided","transit","repair","detour","quest"];
@@ -31,7 +32,10 @@
   const pack=()=>C.pack(state.language),profile=()=>C.profile(state.language,state.level),ui=()=>pack().ui;
   const metroPilot=()=>metroEnabled&&!!MG&&state.language==="en"&&state.level==="B1"&&state.station>=5&&state.station<=8;
   const metroState=()=>metroPilot()?state.metro[state.station]:null;
-  const metroCityPhase=()=>metroPilot()&&state.station===8&&["walk-to-entrance","enter","walk-to-museum"].includes(metroState().phase);
+  const metroCityPhase=()=>metroPilot()&&state.station===8&&(
+    ["walk-to-entrance","enter","walk-to-museum"].includes(metroState().phase)||
+    metroState().phase==="checkpoint"&&metroState().resumePhase==="enter"||
+    ["speech","complete"].includes(metroState().phase)&&MG.same(metroState().surface,MG.museum));
   const metroCityWalk=()=>metroPilot()&&state.station===8&&["walk-to-entrance","walk-to-museum"].includes(metroState().phase);
   const metroScene=()=>metroPilot()&&!metroCityPhase();
   // Public read-only bridge for the existing F2.1B metro illustration.
@@ -41,7 +45,11 @@
     cityLayout.hidden=visible;
     metroLab.dataset.mode=visible?"game":"preview";
     if(visible){
-      if(panel.parentElement!==metroSidebar)metroSidebar.insertBefore(panel,metroSidebar.firstChild);
+      const target=metroPhoneQuery.matches?metroNetworkCard:metroSidebar;
+      if(panel.parentElement!==target){
+        if(target===metroNetworkCard)target.insertBefore(panel,$("metroNetworkViewport"));
+        else target.insertBefore(panel,target.firstChild);
+      }
       metroLab.hidden=false;
     }else{
       if(panel.parentElement!==citySidebar)citySidebar.appendChild(panel);
@@ -713,6 +721,8 @@
   }
   $("f2Language").addEventListener("change",e=>resetSession(e.target.value,state.level));
   $("f2Level").addEventListener("change",e=>resetSession(state.language,e.target.value));
+  if(metroPhoneQuery.addEventListener)metroPhoneQuery.addEventListener("change",()=>{if(metroScene())updateMetroPresentation();});
+  else metroPhoneQuery.addListener(()=>{if(metroScene())updateMetroPresentation();});
   $("metroPilotToggle").addEventListener("click",toggleMetroPilot);
   $("f1Solo").addEventListener("click",()=>setMode("solo"));
   $("f1Pair").addEventListener("click",()=>setMode("pair"));
