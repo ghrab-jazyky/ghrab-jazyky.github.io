@@ -21,6 +21,20 @@ test('RL-PDF: practice text remains complete and excludes questions',()=>{
  assert.equal(doc.sections.length,0);
  assert.equal(doc.reflection,'');
 });
+test('RL-PDF: a practice worksheet with the gap exercise conceals the sentence',()=>{
+ const v={...sample,pre:'What do you already know?'};
+ const reading=projection.printable(v,'practice','text');
+ const worksheet=projection.printable(v,'practice','all');
+ const testText=projection.printable(v,'test','text');
+ assert.equal(reading.paragraphs[0],sample.paragraphs[0]);
+ assert.equal(reading.sections.length,0);
+ assert.equal(worksheet.paragraphs[0],'First sentence. […] Last sentence.');
+ assert.equal(worksheet.sections.length,2);
+ assert.equal(worksheet.warmup,v.pre);
+ assert.equal(worksheet.hasGap,true);
+ assert.equal(testText.paragraphs[0],'First sentence. […] Last sentence.');
+ assert.equal(testText.sections.length,0);
+});
 test('RL-PDF: test print hides the deliberately removed passage',()=>{
  const doc=projection.printable(sample,'test','all');
  assert.equal(doc.paragraphs[0],'First sentence. […] Last sentence.');
