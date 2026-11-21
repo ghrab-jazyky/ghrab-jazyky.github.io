@@ -49,11 +49,12 @@ jobs:
             echo "relevant=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          if [ "$(bash language-skills-hub/scripts/pdf-scope.sh < "$RUNNER_TEMP/pdf-changed.txt")" = "true" ]; then
-            echo "relevant=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "relevant=false" >> "$GITHUB_OUTPUT"
-          fi
+          # Assignment propagates a classifier error under set -e (fail closed).
+          scope="$(bash language-skills-hub/scripts/pdf-scope.sh < "$RUNNER_TEMP/pdf-changed.txt")"
+          case "$scope" in
+            true|false) echo "relevant=$scope" >> "$GITHUB_OUTPUT" ;;
+            *) echo "::error::Invalid PDF scope classifier result: '$scope'"; exit 1 ;;
+          esac
   unit:
     needs: detect
     if: needs.detect.outputs.relevant == 'true'
