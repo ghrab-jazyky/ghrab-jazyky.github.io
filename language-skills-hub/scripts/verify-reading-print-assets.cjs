@@ -72,6 +72,9 @@ function inspect(filename){
     Math.abs(Number(size[2])-842)>2)throw Error('Invalid A4 page count/size: '+filename);
  // Reject visually blank pages that contain only the browser-generated
  // page number and attribution. Whole-document text parity cannot catch these.
+ // A minimum of 30 alphanumeric content characters is intentionally lower
+ // than a real exercise prompt, to flag empty sheets without penalizing a
+ // legitimate short final paragraph or an ungraded reflection.
  for(let page=1;page<=pages;page++){
   const pageText=run('pdftotext',['-raw','-f',String(page),'-l',String(page),
    '-nopgbrk',filename,'-']);
