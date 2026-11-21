@@ -67,10 +67,10 @@
  animation:f3b-door-slide-right 650ms cubic-bezier(.19,.81,.24,1) both;
 }
 @keyframes f3b-door-slide-left{
- from{transform:translateX(0)}to{transform:translateX(-13px)}
+ from{transform:translateX(13px)}to{transform:translateX(0)}
 }
 @keyframes f3b-door-slide-right{
- from{transform:translateX(0)}to{transform:translateX(13px)}
+ from{transform:translateX(-13px)}to{transform:translateX(0)}
 }
 #metroSceneSvg[data-phase="transfer"] .metro-transfer-arrow{
  animation:f3b-transfer-glow 1.8s ease-in-out infinite alternate}
