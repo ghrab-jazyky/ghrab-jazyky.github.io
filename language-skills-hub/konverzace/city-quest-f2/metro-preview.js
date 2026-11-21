@@ -321,12 +321,14 @@
    rounded(train,x,207,84,51,"url(#metroWindow)",11,{stroke:"#6ebfd1","stroke-width":3});
    rounded(train,x+8,216,28,3,"#8ce5df",2,{opacity:.3});
   }
+  const doorsOpen=gameMode?.phase==="board";
   for(const x of [305,567]){
-   // Paired sliding doors open only after correct route selections.
-   rounded(train,x-17,202,32,91,"#28596e",3,{opacity:.95,class:"metro-train-door-left",
-    stroke:"#acd9e0","stroke-width":2});
-   rounded(train,x+17,202,32,91,"#28596e",3,{opacity:.95,class:"metro-train-door-right",
-    stroke:"#acd9e0","stroke-width":2});
+   // Coordinates encode the FINAL state even with motion disabled.
+   // CSS only interpolates the movement; it never controls mission logic.
+   rounded(train,x-17-(doorsOpen?13:0),202,32,91,"#28596e",3,
+    {opacity:.95,class:"metro-train-door-left",stroke:"#acd9e0","stroke-width":2});
+   rounded(train,x+17+(doorsOpen?13:0),202,32,91,"#28596e",3,
+    {opacity:.95,class:"metro-train-door-right",stroke:"#acd9e0","stroke-width":2});
   }
   rounded(train,72,272,190,26,"#0a3550",9,{opacity:.92});
   drawnText(train,167,290,"RIVERTON METRO",{"text-anchor":"middle","font-size":15,
