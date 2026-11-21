@@ -11,6 +11,7 @@ while IFS= read -r file || [[ -n "$file" ]]; do
     language-skills-hub/data/cards.json) relevant=true ;;
     language-skills-hub/assets/school-logo.png) relevant=true ;;
     language-skills-hub/assets/hub.js) relevant=true ;;
+    language-skills-hub/assets/hub.css) relevant=true ;;
     language-skills-hub/index.html) relevant=true ;;
     language-skills-hub/self-check/reading/reading-core.js) relevant=true ;;
     language-skills-hub/self-check/reading/print-*) relevant=true ;;
