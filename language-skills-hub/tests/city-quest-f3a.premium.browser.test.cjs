@@ -20,6 +20,13 @@ test("F3A initial experience: silent, no presentation, motion respects browser, 
   await page.goto(URL,{waitUntil:"load"});
   assert.equal(await page.locator("#f3ExperienceSummary").count(),1);
   assert.equal(await page.locator("#f3Skip").getAttribute("href"),"#f1Stations");
+  assert.equal(await page.locator("#f3Skip").evaluate(el=>getComputedStyle(el).opacity),"0");
+  await page.keyboard.press("Tab");
+  assert.equal(await page.locator("#f3Skip").evaluate(el=>document.activeElement===el),true,
+    "Skip-to-missions must be the first keyboard focus target");
+  assert.equal(await page.locator("#f3Skip").evaluate(el=>getComputedStyle(el).opacity),"1");
+  await page.keyboard.press("Tab");
+  assert.equal(await page.locator("#f3Skip").evaluate(el=>getComputedStyle(el).opacity),"0");
   assert.equal(await page.locator("#f3PresentationExit").isVisible(),false);
   assert.equal(await page.locator("body").getAttribute("data-presentation"),"off");
   await experience(page);
