@@ -18,6 +18,7 @@
     de:{theme:"Hell- oder Dunkelmodus wechseln",detail:"Kartendetails",whole:"Gesamte Stadt",tip:"Vergrößere die Karte, um Straßennamen zu lesen",tipZoom:"Wische über die Karte, um die Stadt zu erkunden",kicker:"ERKUNDEN · ORIENTIEREN · SPRECHEN",caption:"STADTABENTEUER · FUSSGÄNGERKARTE"},
     fr:{theme:"Changer de thème clair ou sombre",detail:"Détail du plan",whole:"Vue générale",tip:"Agrandissez le plan pour lire les noms de rues",tipZoom:"Faites glisser le plan pour explorer la ville",kicker:"EXPLORER · S'ORIENTER · ÉCHANGER",caption:"AVENTURE URBAINE · PLAN PIÉTON"}
   };
+  let metroEnabled=false;
   let state=makeSession("en","B1","solo");
   let flash=null;
   function makeSession(language,level,mode){
@@ -28,7 +29,7 @@
       repair:{phase:0,done:false,tries:0},detour:G.routeStart(),quest:G.questStart()};
   }
   const pack=()=>C.pack(state.language),profile=()=>C.profile(state.language,state.level),ui=()=>pack().ui;
-  const metroPilot=()=>!!MG&&state.language==="en"&&state.level==="B1"&&state.station>=5&&state.station<=8;
+  const metroPilot=()=>metroEnabled&&!!MG&&state.language==="en"&&state.level==="B1"&&state.station>=5&&state.station<=8;
   const metroState=()=>metroPilot()?state.metro[state.station]:null;
   const metroCityPhase=()=>metroPilot()&&state.station===8&&["walk-to-entrance","enter","walk-to-museum"].includes(metroState().phase);
   const metroCityWalk=()=>metroPilot()&&state.station===8&&["walk-to-entrance","walk-to-museum"].includes(metroState().phase);
@@ -627,7 +628,7 @@
     document.querySelector(".f1-progress small").textContent=u.offline+" "+u.noSpeechGrade;
     $("f2GuideTitle").textContent=u.training+" · "+state.level;
     $("f2GuideText").textContent=prof.focus+". "+prof.stretch+" "+u.offline+" "+u.noSpeechGrade;
-    translateCity();
+    translateCity();updateMetroToggle();
   }
   function updateProgress(){
     const u=ui(),nav=$("f1Stations");nav.replaceChildren();
@@ -637,7 +638,7 @@
     F.stations.forEach((st,i)=>{
       const button=el("button",nav,"f1-station");
       button.type="button";
-      const missionTitle=state.language==="en"&&state.level==="B1"&&st.id>=5&&MG?
+      const missionTitle=metroEnabled&&state.language==="en"&&state.level==="B1"&&st.id>=5&&MG?
         MG.definitions[st.id].title:pack().stations[i][0];
       button.setAttribute("aria-label",u.station+" "+st.id+": "+missionTitle);
       if(state.station===st.id)button.setAttribute("aria-current","step");
@@ -669,9 +670,28 @@
     updateProgress();screen();renderMap();
   }
   function resetSession(lang,level){
+    metroEnabled=false;
     const mode=state.mode;
     state=makeSession(lang,level,mode);flash=null;
     applyLanguageUI();updateProgress();screen();renderMap();
+  }
+  function updateMetroToggle(){
+    const b=$("metroPilotToggle");if(!b)return;
+    b.hidden=state.language!=="en"||state.level!=="B1"||!MG;
+    b.textContent=metroEnabled?"↶ Return to classic city missions":"🚇 Play interactive metro missions (EN/B1 pilot)";
+    b.setAttribute("aria-pressed",String(metroEnabled));
+  }
+  function toggleMetroPilot(){
+    if(state.language!=="en"||state.level!=="B1"||!MG)return;
+    metroEnabled=!metroEnabled;
+    // Switching gameplay modes resets only missions 05-08, preserving 01-04.
+    state.done=new Set([...state.done].filter(n=>n<=4));
+    state.metro=Object.fromEntries([5,6,7,8].map(n=>[n,MG.start(n)]));
+    state.transit={done:false,tries:0,selection:{}};
+    state.repair={phase:0,done:false,tries:0};
+    state.detour=G.routeStart();state.quest=G.questStart();
+    flash=null;
+    updateMetroToggle();updateProgress();screen();renderMap();
   }
   function setMode(mode){
     if(!["solo","pair"].includes(mode))return;
@@ -693,6 +713,7 @@
   }
   $("f2Language").addEventListener("change",e=>resetSession(e.target.value,state.level));
   $("f2Level").addEventListener("change",e=>resetSession(state.language,e.target.value));
+  $("metroPilotToggle").addEventListener("click",toggleMetroPilot);
   $("f1Solo").addEventListener("click",()=>setMode("solo"));
   $("f1Pair").addEventListener("click",()=>setMode("pair"));
   $("themeBtn").addEventListener("click",applyChromeLabels);
