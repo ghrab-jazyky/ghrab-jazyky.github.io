@@ -524,8 +524,10 @@
   }
   function updateQuick(){
     const path=activePath(),current=activePoint(),active=!!path;
-    quick.hidden=!active;
-    if(!active)return;
+    // Keep the travelled route visible during checkpoint/completion, but
+    // remove inactive directional buttons so they do not obscure the map.
+    quick.hidden=!active||(metroPilot()&&!metroCityWalk());
+    if(quick.hidden)return;
     const p=pack(),u=ui();
     quick.setAttribute("aria-label",u.compass);
     quickPad.setAttribute("aria-label",u.compass);
