@@ -5,7 +5,7 @@
  */
 (() => {
  "use strict";
- const M=window.RivertonMetro;
+ const M=window.RivertonMetro,LC=window.RivertonMetroLanguage;
  if(!M)throw Error("Riverton Metro network module is missing.");
  const $=id=>document.getElementById(id);
  const lab=$("metroLab"),jump=$("metroJump"),network=$("metroNetworkSvg"),scene=$("metroSceneSvg");
@@ -45,9 +45,10 @@
  const route=()=>M.itinerary(current.scenarioId);
  const step=()=>route()[current.index];
  const stationName=id=>M.station(id)?.labelEn||id;
+ const gameCopy=()=>gameMode&&LC?LC.pack($("f2Language").value,$("f2Level").value,gameMode.stationNumber):null;
  const lineColour=id=>M.line(id)?.color||"#63e5c8";
  const displayLineId=()=>gameMode?(gameMode.lineId||"—"):step().line;
- const currentLine=()=>M.line(displayLineId())||{id:"—",name:"Station concourse",color:"#6597ae"};
+ const currentLine=()=>M.line(displayLineId())||{id:"—",name:gameCopy()?.labels.concourse||"Station concourse",color:"#6597ae"};
  const atStation=()=>step().station;
  function drawnText(parent,x,y,txt,props){
   const attrs=Object.assign({x:x,y:y,fill:"#e9ffff","font-family":"system-ui,sans-serif"},props||{});
@@ -374,7 +375,8 @@
  }
  function drawScene(){
   if(view==="platform")platformScene();else trainScene();
-  $("metroSceneHeading").textContent=view==="platform"?"Platform view":"On-board experience";
+  const localized=gameCopy()?.labels;
+  $("metroSceneHeading").textContent=view==="platform"?(localized?.scenePlatform||"Platform view"):(localized?.sceneTrain||"On-board experience");
   $("metroViewPlatform").setAttribute("aria-pressed",String(view==="platform"));
   $("metroViewTrain").setAttribute("aria-pressed",String(view==="train"));
   $("metroViewPlatform").classList.toggle("active",view==="platform");
@@ -417,13 +419,16 @@
     Math.round(current.index/total*100)+"%";
   const alert=$("metroNetworkAlert");
   alert.hidden=!(s.closedEdges?.length);
-  if(!alert.hidden)alert.textContent=gameMode?"⚠ M1 Old Town – Museum Quarter CLOSED · find a valid alternative":"⚠ M1 Old Town – Museum Quarter CLOSED · follow the alternative via University";
+  if(!alert.hidden)alert.textContent=gameMode?"⚠ "+gameCopy().phases.notice:
+    "⚠ M1 Old Town – Museum Quarter CLOSED · follow the alternative via University";
   if(gameMode){
-    $("metroInstruction").textContent="Interactive mission · "+gameMode.phase.replaceAll("-"," ")+". Use the mission panel to choose your next action.";
-    $("metroNextInfo").textContent="CHECKPOINT "+(current.index+1)+"/"+steps.length+
-      " · "+stationName(gameMode.metroStation)+" · "+(gameMode.lineId||"line not yet selected");
+    const lang=$("f2Language").value,level=$("f2Level").value,copy=gameCopy();
+    $("metroInstruction").textContent=LC.stage(lang,level,gameMode.stationNumber,gameMode.phase,
+      {station:stationName(gameMode.metroStation)});
+    $("metroNextInfo").textContent=copy.labels.step+" "+(current.index+1)+"/"+steps.length+
+      " · "+stationName(gameMode.metroStation)+" · "+(gameMode.lineId||copy.labels.noLine);
     $("metroAdvance").disabled=true;
-    $("metroFeedback").textContent="Your journey advances only after a valid line, direction, platform, ride or transfer decision.";
+    $("metroFeedback").textContent=copy.labels.choice;
     $("metroFeedback").dataset.state="info";
     return;
   }
@@ -479,20 +484,24 @@
  function updateVisibility(){
   const level=$("f2Level").value,bridge=window.CityQuestF2MetroBridge;
   const pilot=!!bridge?.pilotActive(),sceneVisible=!!bridge?.metroVisible();
-  const shown=pilot?sceneVisible:!["A1","A2"].includes(level);
+  // During mission 08 surface walking, gameMode is intentionally null while
+  // the metro pilot remains active. Resolve language content from the bridge
+  // state rather than only from an active underground illustration.
+  const surfaceState=pilot?bridge.current():null;
+  const shown=pilot?sceneVisible:!["A1","A2"].includes(level),
+    copy=pilot&&surfaceState?LC.pack($("f2Language").value,level,surfaceState.stationNumber):null;
   lab.hidden=!shown;jump.hidden=pilot||!shown;
   lab.querySelector(".metro-scenario-toolbar").hidden=pilot;
   lab.querySelector(".metro-action-card").hidden=pilot;
   lab.querySelector(".metro-scene-toggle").hidden=pilot;
   lab.querySelector(".metro-banner .metro-overline").textContent=pilot?
-    "RIVERTON TRANSIT SYSTEM / F2.1C EN/B1 GAME":"RIVERTON TRANSIT SYSTEM / F2.1B VISUAL PROTOTYPE";
-  $("metroHeading").textContent=pilot?"Your metro mission is live.":"The city has another layer.";
-  lab.querySelector(".metro-banner-copy > p").textContent=pilot?
-    "Choose a line, direction and platform; travel stop by stop and confirm speaking checkpoints. Your route is checked locally.":
+    copy.kicker+" / F2.1D "+level:"RIVERTON TRANSIT SYSTEM / F2.1B VISUAL PROTOTYPE";
+  $("metroHeading").textContent=pilot?copy.title:"The city has another layer.";
+  lab.querySelector(".metro-banner-copy > p").textContent=pilot?copy.overview:
     "Discover the metro network, explore an illustrated platform and follow a train through Riverton. Fictional network and timetables. This preview does not grade speaking.";
   lab.querySelector(".metro-disclaimer").textContent=pilot?
-    "F2.1C English B1 pilot · Only deterministic route choices are validated · Speaking is self-assessed · No server or requests.":
-    "EN/B1 route reference · Visual and graph design review only · Multilingual metro gameplay is planned for F2.1D.";
+    "F2.1D · "+copy.native+" "+level+" · "+copy.offline+" · No server, speech recording or requests.":
+    "EN/B1 route reference · F2.1B visual review · Official fictional station names remain in English. Teaching missions support four languages B1–C2.";
   jump.textContent="🚇 Riverton Metro · EN visual preview (B1+)";
   if(shown)renderAll();
  }

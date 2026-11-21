@@ -35,7 +35,7 @@ test("F2.1C desktop: mission 05 rejects wrong line, requires directions/platform
   const errors=[];page.on("pageerror",e=>errors.push(e.stack||String(e)));
   await launch(browser,page,5);
   assert.equal(await page.locator(".hero h1").innerText(),"Riverton City + Metro Quest");
-  assert.match(await page.locator(".topbar .header-actions .tag").innerText(),/F2.1C/);
+  assert.match(await page.locator(".topbar .header-actions .tag").innerText(),/F2\.1[CD]/);
   assert.equal(await page.locator("#metroLab").getAttribute("data-mode"),"game");
   assert.equal(await page.locator("#metroLab").isVisible(),true);
   assert.equal(await page.locator(".layout").isVisible(),false);
@@ -80,7 +80,7 @@ test("F2.1C mission 07: closure notice and alternative via University",async()=>
   await launch(browser,page,7);
   assert.match(await panel(page).innerText(),/Old Town/);
   await click(page,"Read service notice");
-  assert.match(await page.locator("#metroNetworkAlert").innerText(),/CLOSED/);
+  assert.match(await page.locator("#metroNetworkAlert").innerText(),/closed/i);
   await travel(page,"M2","North Park","3",1);
   await click(page,"Follow transfer signs");
   await travel(page,"M3","Harbour","3",2);
@@ -135,7 +135,7 @@ test("F2.1C mission 08: real city→metro→city portal and three oral checkpoin
   assert.deepEqual(errors,[]);
  }finally{await browser.close();}
 });
-test("F2.1C preserves classic F2 by default, requires opt-in and does not enable pilot in ES/DE/FR or A1/A2",async()=>{
+test("F2.1D preserves classic F2 by default, enables EN/ES/DE/FR B1 and excludes A1/A2",async()=>{
  const browser=await webkit.launch({headless:true});
  try{
   const page=await browser.newPage({viewport:{width:375,height:812},isMobile:true,hasTouch:true});
@@ -147,10 +147,10 @@ test("F2.1C preserves classic F2 by default, requires opt-in and does not enable
   assert.match(await panel(page).innerText(),/Metro/i);
   await page.locator("#metroPilotToggle").click();
   assert.match(await panel(page).innerText(),/bus|departure|transport/i);
-  assert.doesNotMatch(await page.locator(".topbar .header-actions .tag").innerText(),/F2.1C/);
+  assert.doesNotMatch(await page.locator(".topbar .header-actions .tag").innerText(),/F2\.1[CD]/);
   for(const lang of ["es","de","fr"]){
    await page.locator("#f2Language").selectOption(lang);
-   assert.equal(await page.locator("#metroPilotToggle").isVisible(),false);
+   assert.equal(await page.locator("#metroPilotToggle").isVisible(),true);
   }
   await page.locator("#f2Language").selectOption("en");
   for(const level of ["A1","A2"]){
