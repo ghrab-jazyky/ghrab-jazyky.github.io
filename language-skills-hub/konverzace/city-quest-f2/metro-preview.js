@@ -21,11 +21,11 @@
  const labels={
   west_end:[105,371],central_station:[350,375],old_town:[500,367],
   museum_quarter:[678,375],riverside:[868,370],east_gardens:[1035,375],
-  north_park:[320,51],university:[370,155],market_square:[370,516],
-  south_gate:[351,684],hilltop:[100,108],science_centre:[502,169],
-  stadium:[913,495],harbour:[1031,670]
+  north_park:[320,51],university:[402,145],market_square:[425,506],
+  south_gate:[395,686],hilltop:[100,108],science_centre:[502,169],
+  stadium:[947,496],harbour:[1031,670]
  };
- let current=M.startPreview(review[0].id),inspected="central_station",view="platform";
+ let current=M.startPreview(review[0].id),inspected="central_station",view="platform",overview=false;
  const svg=(tag,attrs,content)=>{
   const n=document.createElementNS(svgNS,tag);
   for(const [k,v] of Object.entries(attrs||{}))n.setAttribute(k,String(v));
@@ -172,26 +172,37 @@
   }
   const active=M.station(atStation());
   if(active){
-   append(network,"circle",{class:"metro-map-player",cx:active.x,cy:active.y,r:27,
-    fill:"none",stroke:"#ffe99a","stroke-width":6,"pointer-events":"none"});
+   append(network,"circle",{class:"metro-map-player",cx:active.x,cy:active.y,r:25,
+    fill:"none",stroke:"#ffe99a","stroke-width":5,"pointer-events":"none"});
    append(network,"circle",{cx:active.x,cy:active.y,r:6.5,fill:"#fff7c0",stroke:"#0b2c40",
     "stroke-width":2,"pointer-events":"none"});
-   const x=Math.min(1020,Math.max(35,active.x+35)),y=Math.max(101,active.y-37);
-   rounded(network,x,y-19,130,27,"#e6fef3",12,{stroke:"#66eac6","stroke-width":2,
+   // Keep the route location in a fixed map HUD, never over station labels.
+   const badge="● AT "+active.labelEn.toUpperCase();
+   const w=Math.min(286,Math.max(178,badge.length*9.5));
+   const x=1151-w;
+   rounded(network,x,91,w,32,"#e6fef3",13,{stroke:"#66eac6","stroke-width":2,
      "pointer-events":"none"});
-   drawnText(network,x+65,y-1,"YOU ARE HERE",{"text-anchor":"middle","font-size":12.5,
-     "font-weight":950,fill:"#104256","pointer-events":"none"});
+   drawnText(network,x+w/2,112,badge,{"text-anchor":"middle","font-size":14,
+     "font-weight":900,fill:"#104256","pointer-events":"none"});
   }
   window.requestAnimationFrame(centerOnCurrent);
  }
  function centerOnCurrent(){
   const viewport=$("metroNetworkViewport");
-  if(!viewport||viewport.scrollWidth<=viewport.clientWidth+10)return;
+  if(!viewport||overview||viewport.scrollWidth<=viewport.clientWidth+10)return;
   const currentStation=M.station(atStation());if(!currentStation)return;
   const ratio=network.getBoundingClientRect().width/1196;
   const left=Math.max(0,currentStation.x*ratio-viewport.clientWidth*.46);
   const top=Math.max(0,currentStation.y*ratio-viewport.clientHeight*.40);
   viewport.scrollTo({left,top,behavior:reduced?"auto":"smooth"});
+ }
+ function syncNetworkZoom(){
+  const viewport=$("metroNetworkViewport"),control=$("metroMapZoom");
+  viewport.classList.toggle("overview",overview);
+  control.setAttribute("aria-pressed",String(overview));
+  control.textContent=overview?"⊕ Readable detail":"⊞ Whole network";
+  if(overview)viewport.scrollTo({left:0,top:0,behavior:"auto"});
+  else window.requestAnimationFrame(centerOnCurrent);
  }
  function selectStation(id){
   // Do not rebuild the SVG on inspection: preserve Tab focus, viewport pan and
@@ -444,6 +455,7 @@
   jump.textContent="🚇 Riverton Metro · EN visual preview (B1+)";
   if(shown)renderAll();
  }
+ $("metroMapZoom").addEventListener("click",()=>{overview=!overview;syncNetworkZoom();});
  $("metroAdvance").addEventListener("click",advance);
  $("metroReplay").addEventListener("click",()=>chooseScenario(current.scenarioId));
  $("metroViewPlatform").addEventListener("click",()=>{view="platform";drawScene();});
@@ -455,5 +467,5 @@
  });
  $("f2Level").addEventListener("change",updateVisibility);
  $("f2Language").addEventListener("change",updateVisibility);
- drawLegend();updateVisibility();
+ drawLegend();updateVisibility();syncNetworkZoom();
 })();
