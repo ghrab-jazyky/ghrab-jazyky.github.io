@@ -154,7 +154,7 @@
 @media(max-width:350px){.metro-network-head-actions{gap:5px}.metro-live-pulse{font-size:.56rem}}
 
 /* F2.1C: one shared mission panel beside the real metro illustration. */
-.layout[hidden],.metro-scenario-toolbar[hidden],.metro-action-card[hidden]{display:none!important}
+.layout[hidden],.metro-scenario-toolbar[hidden],.metro-action-card[hidden],.metro-scene-toggle[hidden]{display:none!important}
 .metro-lab[data-mode="game"]{margin-top:12px}
 .metro-lab[data-mode="game"] .metro-banner{min-height:128px;padding:17px 23px}
 .metro-lab[data-mode="game"] .metro-banner h2{font-size:clamp(1.3rem,2.1vw,2rem);margin:6px 0}
