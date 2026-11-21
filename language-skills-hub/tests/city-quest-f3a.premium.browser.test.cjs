@@ -96,6 +96,8 @@ test("F3A high contrast and reduced motion: accessibility override suppresses de
   assert.equal(await page.locator("#f3MotionButton").getAttribute("aria-pressed"),"false");
   await page.locator("#f1Stations .f1-station").nth(2).click();
   assert.equal(await page.locator("#f1Panel").evaluate(el=>getComputedStyle(el).animationName),"none");
+  // The Experience popover closes on outside clicks; reopen it before toggling contrast.
+  await experience(page);
   await page.locator("#f3ContrastButton").click();
   assert.equal(await page.locator("html").getAttribute("data-contrast"),"normal");
   await page.emulateMedia({reducedMotion:"reduce"});
