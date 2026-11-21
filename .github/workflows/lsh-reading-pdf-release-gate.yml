@@ -2,21 +2,8 @@ name: LSH Asteroids PDF release gate (NO DEPLOY)
 on:
   pull_request:
     branches: [main]
-    paths:
-      - 'language-skills-hub/cteni/asteroids/index.html'
-      - 'language-skills-hub/data/cards.json'
-      - 'language-skills-hub/assets/school-logo.png'
-      - 'language-skills-hub/assets/hub.js'
-      - 'language-skills-hub/index.html'
-      - 'language-skills-hub/self-check/reading/reading-core.js'
-      - 'language-skills-hub/self-check/reading/print-**'
-      - 'language-skills-hub/printouts/rl-asteroids/**'
-      - 'language-skills-hub/scripts/build-reading-print-pdfs.cjs'
-      - 'language-skills-hub/scripts/verify-reading-print-assets.cjs'
-      - 'language-skills-hub/tests/rl-pdf-**'
-      - '.github/workflows/lsh-reading-pdf-release-gate.yml'
   push:
-    branches: ['feature/lsh-asteroids-pdf-*']
+    branches: [main, 'feature/lsh-asteroids-pdf-*']
   workflow_dispatch:
 permissions:
   contents: read
@@ -24,7 +11,47 @@ concurrency:
   group: lsh-asteroids-pdf-gate-${{ github.ref }}
   cancel-in-progress: true
 jobs:
+  detect:
+    name: pdf-scope
+    runs-on: ubuntu-24.04
+    outputs:
+      relevant: ${{ steps.check.outputs.relevant }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Determine whether PDF inputs changed
+        id: check
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            echo "relevant=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            git diff --name-only "$BASE_SHA" "$HEAD_SHA" > "$RUNNER_TEMP/pdf-changed.txt"
+          elif [ "$EVENT_NAME" = "push" ] && [ "$GITHUB_REF_NAME" = "main" ] &&
+               [ -n "$BEFORE_SHA" ] && [ "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ]; then
+            git diff --name-only "$BEFORE_SHA" "$CURRENT_SHA" > "$RUNNER_TEMP/pdf-changed.txt"
+          else
+            echo "relevant=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if grep -Eq '^(language-skills-hub/(cteni/asteroids/index\\.html|data/cards\\.json|assets/(school-logo\\.png|hub\\.js)|index\\.html|self-check/reading/(reading-core\\.js|print-[^/]+)|printouts/rl-asteroids/|scripts/(build-reading-print-pdfs|verify-reading-print-assets)\\.cjs|tests/rl-pdf-[^/]+)|\\.github/workflows/lsh-reading-pdf-release-gate\\.yml)' "$RUNNER_TEMP/pdf-changed.txt"; then
+            echo "relevant=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "relevant=false" >> "$GITHUB_OUTPUT"
+          fi
   unit:
+    needs: detect
+    if: needs.detect.outputs.relevant == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
@@ -40,6 +67,8 @@ jobs:
           node --check language-skills-hub/scripts/verify-reading-print-assets.cjs
           node --test language-skills-hub/tests/rl-pdf-all-variants.test.cjs language-skills-hub/tests/rl-pdf-annotations-pilot.test.cjs
   browser:
+    needs: detect
+    if: needs.detect.outputs.relevant == 'true'
     runs-on: ubuntu-24.04
     container:
       image: mcr.microsoft.com/playwright:v1.56.1-noble
@@ -58,6 +87,8 @@ jobs:
           trap 'kill $PID' EXIT
           node --test language-skills-hub/tests/rl-pdf-hardening.browser.test.cjs language-skills-hub/tests/rl-pdf-annotations-pilot.browser.test.cjs
   corpus:
+    needs: detect
+    if: needs.detect.outputs.relevant == 'true'
     runs-on: ubuntu-24.04
     container:
       image: mcr.microsoft.com/playwright:v1.56.1-noble
@@ -106,3 +137,41 @@ jobs:
           path: /tmp/lsh-pdf-visual-qa/*.png
           if-no-files-found: warn
           retention-days: 14
+
+  gate:
+    name: pdf-release-gate
+    if: always()
+    needs: [detect, unit, browser, corpus]
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Enforce success for PDF changes, pass unrelated PRs
+        env:
+          DETECT: ${{ needs.detect.result }}
+          RELEVANT: ${{ needs.detect.outputs.relevant }}
+          UNIT: ${{ needs.unit.result }}
+          BROWSER: ${{ needs.browser.result }}
+          CORPUS: ${{ needs.corpus.result }}
+        run: |
+          set -eu
+          if [ "$DETECT" != "success" ]; then
+            echo "PDF change detection failed."
+            exit 1
+          fi
+          if [ "$RELEVANT" = "false" ]; then
+            if [ "$UNIT" = "skipped" ] && [ "$BROWSER" = "skipped" ] && [ "$CORPUS" = "skipped" ]; then
+              echo "PASS: PR does not affect Asteroids PDFs."
+              exit 0
+            fi
+            echo "Unexpected PDF jobs ran for unrelated changes."
+            exit 1
+          fi
+          if [ "$RELEVANT" != "true" ]; then
+            echo "Missing PDF change decision."
+            exit 1
+          fi
+          if [ "$UNIT" = "success" ] && [ "$BROWSER" = "success" ] && [ "$CORPUS" = "success" ]; then
+            echo "PASS: all Asteroids PDF release gates succeeded."
+          else
+            echo "FAIL: unit=$UNIT browser=$BROWSER corpus=$CORPUS"
+            exit 1
+          fi
