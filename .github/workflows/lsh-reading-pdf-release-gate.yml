@@ -84,3 +84,25 @@ jobs:
           trap 'kill $PID' EXIT
           node language-skills-hub/scripts/build-reading-print-pdfs.cjs --all
           node language-skills-hub/scripts/verify-reading-print-assets.cjs --compare /tmp/lsh-asteroids-pdfs-before
+      - name: Render representative PDF pages for visual review
+        if: always()
+        run: |
+          mkdir -p /tmp/lsh-pdf-visual-qa
+          for item in en/A1/practice-text en/B1/practice-all en/B2/test-all es/B2/practice-all de/C2/test-all fr/C1/practice-all; do
+            pdf="language-skills-hub/printouts/rl-asteroids/${item}.pdf"
+            if [ ! -f "$pdf" ]; then continue; fi
+            name=$(echo "$item" | tr '/' '-')
+            last=$(pdfinfo "$pdf" | awk '/^Pages:/{print $2}')
+            pdftoppm -f 1 -l 1 -scale-to 1500 -png -singlefile "$pdf" "/tmp/lsh-pdf-visual-qa/${name}-first"
+            if [ "$last" -gt 1 ]; then
+              pdftoppm -f "$last" -l "$last" -scale-to 1500 -png -singlefile "$pdf" "/tmp/lsh-pdf-visual-qa/${name}-last"
+            fi
+          done
+      - name: Upload visual-review samples (not publication)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lsh-asteroids-pdf-visual-qa
+          path: /tmp/lsh-pdf-visual-qa/*.png
+          if-no-files-found: warn
+          retention-days: 14
