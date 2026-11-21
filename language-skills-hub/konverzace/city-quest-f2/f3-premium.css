@@ -1,0 +1,271 @@
+/* CITY QUEST F3A — PREMIUM EXPERIENCE FOUNDATION
+ * Single coherent visual language for City + Metro, offline by design.
+ * All animations are nonessential; OS/user reduced-motion wins.
+ */
+:root{
+ --f3-aqua:#7aeedc;--f3-deep:#081a2b;--f3-soft:#adced8;
+ --f3-ring:#fff09c;--f3-edge:#7edbd15d;--f3-corner:18px;
+ --f3-sheen:0 1px 0 #e8ffff16 inset;
+ --f3-elevated:0 18px 48px #020d1c5e,0 1px 0 #ffffff18 inset;
+ --f3-transition:240ms cubic-bezier(.2,.75,.2,1);
+}
+:root[data-theme=light]{
+ --f3-aqua:#0c8178;--f3-deep:#f3f9fa;--f3-soft:#34596b;
+ --f3-ring:#946100;--f3-edge:#3b938c5a;
+ --f3-sheen:0 1px 0 #ffffffdb inset;
+ --f3-elevated:0 16px 42px #204e5a22,0 1px 0 #fff inset;
+}
+html{scroll-padding-top:16px}
+body{
+ background-image:radial-gradient(ellipse 80% 60% at 14% 0%,#258c9670,transparent 68%),
+  radial-gradient(ellipse 70% 60% at 105% 80%,#214c8066,transparent 76%),
+  linear-gradient(165deg,var(--bg),var(--bg));
+ background-attachment:fixed;
+}
+:root[data-theme=light] body{
+ background-image:radial-gradient(ellipse 78% 63% at 10% 0%,#c4f3ed,transparent 65%),
+  radial-gradient(ellipse 70% 72% at 98% 90%,#deefff,transparent 75%),
+  linear-gradient(155deg,var(--bg),var(--bg));
+}
+.topbar,.f2-settings,.f1-dashboard,.map-card,.f1-mission-panel,.f1-station,.metro-lab{
+ box-shadow:var(--f3-elevated);
+}
+.topbar{
+ border:1px solid var(--f3-edge);border-radius:19px;
+ background:linear-gradient(125deg,#0b2736f7,#0b2037f5);
+}
+:root[data-theme=light] .topbar{
+ background:linear-gradient(125deg,#f8fffd,#e8f2fa);
+}
+.brand-mark{
+ background:linear-gradient(138deg,#8ff4d8,#81ddf1 72%,#b6bdff);
+ box-shadow:0 0 0 4px #4ae3ba10,0 10px 30px #29c1ae43;
+}
+.brand strong{font-size:.96rem;letter-spacing:.095em}
+.brand small{font-size:.7rem}
+.hero{
+ margin-top:15px;border-radius:24px;border:1px solid #91f1d455;
+ background:linear-gradient(115deg,#133e4d,#0e233a 60%,#123b47);
+ box-shadow:0 24px 60px #030c1c4f;min-height:178px;
+}
+:root[data-theme=light] .hero{
+ background:linear-gradient(115deg,#d7f9f0,#edfaff 62%,#dcedf9);
+ border-color:#248b8138;box-shadow:0 18px 45px #35707123;
+}
+.hero h1{letter-spacing:-.058em;text-wrap:balance}
+.hero .kicker{color:#a7fae4}
+:root[data-theme=light] .hero .kicker{color:#126a63}
+.hero-icon{filter:drop-shadow(0 13px 18px #3dd4ad52)}
+.f2-settings,.f1-dashboard{
+ border:1px solid var(--f3-edge);
+ background:linear-gradient(140deg,#0c2536ec,#102a3ee9);
+}
+:root[data-theme=light] .f2-settings,
+:root[data-theme=light] .f1-dashboard{
+ background:linear-gradient(140deg,#fcffff,#edf7f8);
+}
+.f2-profile{
+ background:linear-gradient(135deg,#1f63564a,#24557a55);
+ border-color:#7fefd44e;color:var(--text);
+}
+:root[data-theme=light] .f2-profile{
+ background:linear-gradient(135deg,#dbf8ed,#ebf6ff);border-color:#18867d4d;
+}
+.f1-stations{gap:10px}
+.f1-station{
+ position:relative;overflow:hidden;min-height:76px;
+ border-color:#74c5d341;background:linear-gradient(134deg,#132f42,#11263a);
+ transition:transform var(--f3-transition),border-color var(--f3-transition),box-shadow var(--f3-transition);
+}
+.f1-station::before{
+ content:"";position:absolute;inset:0 auto 0 0;width:3px;
+ background:linear-gradient(#73efd0,#7cbdf5);opacity:0;
+ transition:opacity var(--f3-transition);
+}
+.f1-station[aria-current="step"]{
+ border:1px solid #91f3df;background:linear-gradient(125deg,#1d5a60,#143d56);
+ box-shadow:0 0 0 2px #70e6d523,0 12px 26px #05111d5a;
+}
+.f1-station[aria-current="step"]::before{opacity:1}
+.f1-station:hover:not(:disabled){transform:translateY(-2px);border-color:#91f3dca3}
+.f1-station:focus-visible{outline:3px solid var(--f3-ring);outline-offset:3px}
+.f1-station-complete{font-weight:1000;border:1px solid #82edd86b;border-radius:50%;height:22px;width:22px;
+ display:grid;place-items:center;background:#59f6c81b}
+:root[data-theme=light] .f1-station{background:linear-gradient(130deg,#f6fefe,#e8f4f9);border-color:#91b9c3}
+:root[data-theme=light] .f1-station[aria-current="step"]{
+ background:linear-gradient(130deg,#ccf4e9,#dceff8);border-color:#167970;box-shadow:0 0 0 2px #157c6e20}
+.f1-mission-panel{border-color:var(--f3-edge)}
+.f2-objective,.f2-help,.f2-finish{
+ transition:border-color var(--f3-transition),box-shadow var(--f3-transition);
+}
+.f2-objective{border-left:4px solid #83eccb}
+:root[data-theme=light] .f2-objective{border-left-color:#118277}
+.f2-choice-list .btn,.f2-actions .btn{
+ transition:transform var(--f3-transition),background var(--f3-transition),border-color var(--f3-transition);
+}
+.f2-choice-list .btn:hover:not(:disabled),.f2-actions .btn:hover:not(:disabled){
+ transform:translateY(-1px);border-color:#7eeed6;
+}
+.f2-choice-list .btn:active:not(:disabled),.f2-actions .btn:active:not(:disabled){transform:translateY(1px)}
+.f2-finish{animation:f3-arrival 420ms cubic-bezier(.19,.8,.28,1) both}
+.f2-status[data-tone="success"],.f2-status[data-tone="warning"]{
+ animation:f3-feedback 270ms ease-out both}
+.f3-reveal{animation:f3-soft-enter 280ms cubic-bezier(.18,.75,.24,1) both}
+@keyframes f3-soft-enter{from{opacity:.64;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes f3-feedback{from{opacity:.72}to{opacity:1}}
+@keyframes f3-arrival{from{opacity:.4;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+/* The same material and focus treatment in both map worlds. */
+.map-card,.metro-network-card{
+ border-color:var(--f3-edge);
+}
+.map-head,.metro-network-head{
+ border-bottom:1px solid #72cfc458;
+}
+.map-head h2,.metro-network-head h3{letter-spacing:-.045em}
+.map-location-bar,.metro-network-footer{border-top:1px solid #6ac5c54c}
+.metro-lab{border-color:#8bead45c;box-shadow:0 30px 80px #0310207d}
+.metro-lab[data-mode="game"] .metro-workspace{background:linear-gradient(140deg,#0a1c30,#0b2635)}
+.metro-side>#f1Panel,.metro-network-card>#f1Panel{
+ border-color:#7eeed175;
+ box-shadow:var(--f3-elevated);
+}
+.metro-network-card>#f1Panel .f2-choice-list button:hover,
+.metro-side>#f1Panel .f2-choice-list button:hover{border-color:#9ff5e4}
+#metroNetworkSvg .metro-map-player{animation-duration:2.4s}
+#metroSceneSvg .metro-animated-train{animation-duration:.82s}
+/* Direct, offline experience controls: no framework, external fonts or remote UI. */
+.f3-controls{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.f3-control{
+ min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:7px;
+ border:1px solid #8be6cf83;border-radius:12px;background:#1e5465;
+ padding:8px 12px;color:#f5fffe;font-size:.81rem;font-weight:820;letter-spacing:.008em;
+ white-space:normal;touch-action:manipulation;
+}
+.f3-control:hover:not(:disabled){background:#246d76;border-color:#b6f9e8}
+.f3-control[aria-pressed="true"]{
+ background:linear-gradient(130deg,#237469,#166775);border-color:#bafbe3;
+ box-shadow:inset 0 0 0 1px #c5ffef2b;
+}
+.f3-control:focus-visible,.f3-experience summary:focus-visible{
+ outline:3px solid var(--f3-ring);outline-offset:3px}
+:root[data-theme=light] .f3-control{
+ color:#184855;border-color:#78b9b0;background:#edfdf7}
+:root[data-theme=light] .f3-control[aria-pressed="true"]{background:#cef2e8;border-color:#158576}
+:root[data-theme=light] .f3-control:hover:not(:disabled){background:#dbf8f1}
+.f3-experience{
+ position:relative;align-self:center;
+}
+.f3-experience>summary{
+ display:flex;align-items:center;gap:6px;min-height:44px;list-style:none;
+ border:1px solid var(--line);border-radius:12px;background:var(--panel2);
+ padding:9px 13px;font-size:.81rem;font-weight:820;cursor:pointer;
+}
+.f3-experience>summary::-webkit-details-marker{display:none}
+.f3-experience>summary::after{content:"⌄";font-size:1.1rem;margin-left:3px}
+.f3-experience[open]>summary{border-color:var(--f3-aqua)}
+.f3-experience-panel{
+ position:absolute;z-index:90;right:0;top:calc(100% + 8px);
+ width:min(310px,calc(100vw - 24px));
+ padding:12px;border:1px solid #78daca85;border-radius:17px;
+ background:linear-gradient(150deg,#102e3e,#102439);box-shadow:0 22px 54px #031021e0;
+ display:grid;gap:9px;color:#f0fffc;
+}
+.f3-experience-panel .f3-control{justify-content:flex-start;text-align:left;width:100%}
+.f3-experience-panel p{font-size:.72rem;line-height:1.45;color:#cce7e2;margin:2px 3px}
+:root[data-theme=light] .f3-experience-panel{
+ color:#163b4b;background:linear-gradient(140deg,#fafffe,#e7f2f7);border-color:#6cb9b1;
+ box-shadow:0 18px 42px #173e5166}
+:root[data-theme=light] .f3-experience-panel p{color:#355965}
+.f3-presentation-exit{
+ position:fixed;z-index:99;right:calc(12px + env(safe-area-inset-right));top:calc(12px + env(safe-area-inset-top));
+ padding:9px 13px;max-width:min(230px,60vw);font-size:.82rem;font-weight:900;
+ border-radius:13px;border:2px solid #acf8dd;background:#104e5c;color:#ecfff8;
+ box-shadow:0 12px 30px #041624b8;cursor:pointer;
+}
+.f3-presentation-exit:focus-visible{outline:3px solid #fff4a3;outline-offset:3px}
+/* Presentation mode: readable from a projector; no fullscreen API or install
+ * required. It is a reversible CSS layout, so file:// works.
+ */
+body[data-presentation="on"] .app{
+ max-width:1920px;padding:clamp(8px,1.6vw,28px);
+}
+body[data-presentation="on"] .hero,
+body[data-presentation="on"] .guide-card{display:none}
+body[data-presentation="on"] .topbar{padding-right:clamp(160px,13vw,240px)}
+body[data-presentation="on"] .f2-settings{
+ margin:12px 0;padding:11px 14px;
+}
+body[data-presentation="on"] .f1-dashboard{padding:9px 14px;margin:10px 0}
+body[data-presentation="on"] .f1-stations{gap:7px;margin-bottom:10px}
+body[data-presentation="on"] .f1-station{min-height:55px;padding:7px 11px}
+body[data-presentation="on"] .f1-station-icon{width:30px;height:30px;font-size:1.1rem}
+body[data-presentation="on"] .f1-station-caption strong{font-size:.85rem}
+body[data-presentation="on"] .map-card,
+body[data-presentation="on"] .metro-lab{box-shadow:0 25px 75px #030a1688}
+body[data-presentation="on"] .map-viewport:not(.detail){max-height:calc(100dvh - 280px);overflow:auto}
+body[data-presentation="on"] #f1Panel h2{font-size:clamp(1.4rem,2.1vw,2.2rem)}
+body[data-presentation="on"] .f2-prompt{font-size:1.1rem}
+body[data-presentation="on"] .metro-banner{min-height:95px;padding:12px 18px}
+body[data-presentation="on"] .metro-lab{margin:10px 0}
+@media(min-width:1051px){
+ body[data-presentation="on"] .layout{
+  grid-template-columns:minmax(0,1.65fr) minmax(370px,.75fr);
+ }
+ body[data-presentation="on"] .metro-workspace{
+  grid-template-columns:minmax(0,1.6fr) minmax(370px,.7fr);
+ }
+}
+@media(max-width:740px){
+ body[data-presentation="on"] .topbar{padding-right:10px;padding-top:66px}
+ body[data-presentation="on"] .f1-station{min-height:60px}
+ body[data-presentation="on"] .map-viewport:not(.detail){max-height:none}
+ .f3-experience-panel{right:0}
+ .f3-control{min-height:44px}
+ .topbar .header-actions{width:100%}
+}
+/* User-controlled increased contrast, across classic city and metro. */
+:root[data-contrast="high"]{
+ --line:#b5ecdc9c;--muted:#ebf5ff;--f3-edge:#b6fbe2;
+}
+:root[data-theme=light][data-contrast="high"]{
+ --line:#24556a98;--muted:#233b50;--f3-edge:#0b625a;
+}
+:root[data-contrast="high"] .f2-small,
+:root[data-contrast="high"] .f2-status,
+:root[data-contrast="high"] .f1-station-caption small{opacity:1}
+:root[data-contrast="high"] .metro-lab{--metro-muted:#e5fcfa;--metro-border:#b4f8df}
+:root[data-contrast="high"] .metro-lab .metro-network-head small,
+:root[data-contrast="high"] .metro-lab .metro-overline,
+:root[data-contrast="high"] .metro-lab .metro-eyebrow{color:#ddfff9}
+:root[data-contrast="high"] .f1-station[aria-current="step"]{
+ outline:2px solid #fff2a7;outline-offset:-2px;
+}
+:root[data-contrast="high"] button:focus-visible,
+:root[data-contrast="high"] a:focus-visible,
+:root[data-contrast="high"] summary:focus-visible{
+ outline:4px solid var(--f3-ring);outline-offset:3px;
+}
+@media(forced-colors:active){
+ .f3-control[aria-pressed="true"]{outline:2px solid Highlight}
+ .f1-station[aria-current="step"]{outline:3px solid Highlight}
+ .f3-experience-panel{border:2px solid ButtonText}
+}
+/* Inclusive interaction: reduced-motion OS setting and direct override must
+ * remove every decorative animation, including existing F0 / metro effects. */
+:root[data-motion="off"] *,
+:root[data-motion="off"] *::before,
+:root[data-motion="off"] *::after{
+ animation:none!important;transition:none!important;
+ scroll-behavior:auto!important;transform:none!important;
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{
+  animation:none!important;transition:none!important;
+  scroll-behavior:auto!important;
+ }
+}
+@media(max-width:360px){
+ .brand small{font-size:.62rem}
+ .f3-experience>summary{padding:8px 10px}
+ .f3-presentation-exit{font-size:.74rem}
+}
