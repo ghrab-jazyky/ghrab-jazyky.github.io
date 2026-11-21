@@ -49,8 +49,14 @@ test("F2.1B desktop Chromium: premium network, interactive stations and accurate
   await page.locator("#metroJump").click();
   await page.screenshot({path:path.join(SHOTS,"metro-desktop-station-map.png"),fullPage:false});
   // Network map is real interactive SVG; inspecting a station is not a move.
-  await page.locator('[data-metro-station="east_gardens"]').click();
+  await page.locator('[data-metro-station="east_gardens"]').focus();
+  await page.keyboard.press("Enter");
   assert.match(await page.locator("#metroInspectorName").innerText(),/East Gardens/);
+  assert.equal(await page.evaluate(()=>document.activeElement?.getAttribute("data-metro-station")),"east_gardens",
+    "Keyboard inspector must preserve its SVG node focus after selection");
+  assert.equal(await page.locator('[data-metro-station="east_gardens"]').getAttribute("aria-pressed"),"true");
+  assert.equal(await page.locator("#metroSceneStation").innerText(),"Central Station",
+    "Inspecting a station must not teleport the active train");
   assert.match(await page.locator("#metroFeedback").innerText(),/network inspection/i);
   await scenario(page,"metro_05_b1");
   assert.equal(await page.locator("#metroJourneyBadge").innerText(),"05");
