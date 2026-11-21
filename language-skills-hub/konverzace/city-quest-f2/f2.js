@@ -189,7 +189,8 @@
     const positionText=outdoors?
       ui().city+": "+pointName(game.surface):
       c.labels.position+": "+place+" · "+(game.lineId||c.labels.noLine);
-    status(panel,flash?.text||positionText,flash?.tone);
+    status(panel,outdoors?positionText:(flash?.text||positionText),outdoors?null:flash?.tone);
+    if(outdoors&&flash?.text)para(panel,flash.text,"f2-small");
     if(stage==="walk-to-entrance"||stage==="walk-to-museum"){
       para(panel,c.hints.walk,"f2-small");
     }else if(["select-line","select-direction","select-platform"].includes(stage)){
