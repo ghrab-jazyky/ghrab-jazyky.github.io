@@ -481,7 +481,8 @@
     if(quick.parentElement!==destination){
       const focused=quick.contains(document.activeElement)?document.activeElement:null;
       if(overlay)mapStage.appendChild(quick);
-      else hudDock.insertBefore(quick,panel);
+      else if(panel.parentElement===hudDock)hudDock.insertBefore(quick,panel);
+      else hudDock.appendChild(quick);
       if(focused)focused.focus({preventScroll:true});
     }
     quick.dataset.placement=overlay?"map-overlay":"sidebar";
