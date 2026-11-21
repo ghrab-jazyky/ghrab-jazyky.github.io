@@ -117,6 +117,21 @@ test("Mission 08 EN/B1 has city entrance, metro transfer, city exit and three sp
  assert.equal(end.speakingDone,3);
  assert.ok(end.history.filter(x=>x==="WALK").length>=4);
 });
+test("City portion of mission 08 supports safe Undo without losing the current mission",()=>{
+ let state=G.start(8);
+ assert.equal(act(state,"UNDO_WALK").accepted,false,"Cannot undo before first step");
+ state=accepted(state,"WALK",{c:1,r:3});
+ state=accepted(state,"WALK",{c:2,r:3});
+ assert.equal(state.cityPath.length,3);
+ state=accepted(state,"UNDO_WALK");
+ assert.deepEqual(state.surface,{c:1,r:3});
+ assert.equal(state.cityPath.length,2);
+ assert.equal(state.phase,"walk-to-entrance");
+ state=accepted(state,"WALK",{c:2,r:3});
+ state=accepted(state,"WALK",{c:2,r:2});
+ assert.equal(state.phase,"checkpoint");
+ assert.equal(act(state,"UNDO_WALK").accepted,false,"Checkpoint cannot be bypassed with undo");
+});
 test("Mission start rejects nonexistent station and unconnected actions",()=>{
  assert.throws(()=>G.start(9),RangeError);
  assert.throws(()=>G.act(null,{type:"ENTER"}),TypeError);
