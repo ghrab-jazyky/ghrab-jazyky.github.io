@@ -3,10 +3,12 @@
  */
 (() => {
   "use strict";
-  const C=window.CityQuestF2Content,G=window.CityQuestF2Engine,F=window.CityQuestF1Engine,E=window.CityQuestEngine;
+  const C=window.CityQuestF2Content,G=window.CityQuestF2Engine,F=window.CityQuestF1Engine,E=window.CityQuestEngine,MG=window.RivertonMetroGame;
   if(!C||!G||!F||!E)throw Error("City Quest F2 modules did not load in dependency order.");
   const $=id=>document.getElementById(id);
   const panel=$("f1Panel"),map=$("cityMap"),viewport=$("mapViewport");
+  const cityLayout=document.querySelector(".layout"),citySidebar=panel.parentElement;
+  const metroLab=$("metroLab"),metroSidebar=metroLab.querySelector(".metro-side");
   const NS="http://www.w3.org/2000/svg";
   const icons=["🗺️","🧭","💬","👣","🚌","↩️","🚧","🏆"];
   const stationKeys=["explore","route","dialogue","guided","transit","repair","detour","quest"];
@@ -21,10 +23,31 @@
   function makeSession(language,level,mode){
     return {language,level,mode:mode||"solo",station:1,done:new Set(),
       explore:{round:0,misses:0},route:G.routeStart(),dialogue:G.dialogueStart(),
-      guided:G.guidedStart(),transit:{done:false,tries:0,selection:{}},
+      guided:G.guidedStart(),metro:MG?Object.fromEntries([5,6,7,8].map(n=>[n,MG.start(n)])):null,
+      transit:{done:false,tries:0,selection:{}},
       repair:{phase:0,done:false,tries:0},detour:G.routeStart(),quest:G.questStart()};
   }
   const pack=()=>C.pack(state.language),profile=()=>C.profile(state.language,state.level),ui=()=>pack().ui;
+  const metroPilot=()=>!!MG&&state.language==="en"&&state.level==="B1"&&state.station>=5&&state.station<=8;
+  const metroState=()=>metroPilot()?state.metro[state.station]:null;
+  const metroCityPhase=()=>metroPilot()&&state.station===8&&["walk-to-entrance","enter","walk-to-museum"].includes(metroState().phase);
+  const metroCityWalk=()=>metroPilot()&&state.station===8&&["walk-to-entrance","walk-to-museum"].includes(metroState().phase);
+  const metroScene=()=>metroPilot()&&!metroCityPhase();
+  // Public read-only bridge for the existing F2.1B metro illustration.
+  window.CityQuestF2MetroBridge=Object.freeze({pilotActive:metroPilot,metroVisible:metroScene,current:metroState});
+  function updateMetroPresentation(){
+    const visible=metroScene();
+    cityLayout.hidden=visible;
+    metroLab.dataset.mode=visible?"game":"preview";
+    if(visible){
+      if(panel.parentElement!==metroSidebar)metroSidebar.insertBefore(panel,metroSidebar.firstChild);
+      metroLab.hidden=false;
+    }else{
+      if(panel.parentElement!==citySidebar)citySidebar.appendChild(panel);
+      metroLab.hidden=metroPilot()||["A1","A2"].includes(state.level);
+    }
+    if(window.RivertonMetroVisual)window.RivertonMetroVisual.sync(visible?metroState():null);
+  }
   function el(tag,parent,cls,content){
     const n=document.createElement(tag);if(cls)n.className=cls;
     if(content!==undefined&&content!==null)n.textContent=String(content);
@@ -65,7 +88,8 @@
     return details;
   }
   function objective(index){
-    const title=pack().stations[index-1][0],desc=pack().stations[index-1][1],goal=profile()[stationKeys[index-1]];
+    const alt=metroPilot()?MG.definitions[index]:null;
+    const title=alt?alt.title:pack().stations[index-1][0],desc=alt?"Riverton Metro · English B1 interactive mission":pack().stations[index-1][1],goal=alt?alt.goal:profile()[stationKeys[index-1]];
     const head=el("div",panel,"f2-card-head");
     el("span",head,"f2-kicker",ui().station+" "+String(index).padStart(2,"0")+" / 08 · "+pack().native+" "+state.level);
     el("h2",head,"",icons[index-1]+" "+title);
@@ -99,7 +123,9 @@
   }
   function screen(){
     panel.hidden=false;panel.replaceChildren();
+    updateMetroPresentation();
     objective(state.station);
+    if(metroPilot())return renderMetroMission();
     switch(state.station){
       case 1:return renderExplore();
       case 2:return renderRoute();
@@ -111,6 +137,72 @@
       case 8:return renderQuest();
       default:throw Error("Unknown station");
     }
+  }
+  // B1 pilot: all metro choices go through the pure deterministic game engine.
+  // The live scene stays inside the F2.1B map card, not a second independent controller.
+  function metroAction(action){
+    const number=state.station,previousScene=metroScene(),previous=state.metro[number];
+    const result=MG.act(previous,action);
+    state.metro[number]=result.state;
+    flash={text:result.message,tone:result.accepted?"success":"warning"};
+    if(result.complete)state.done.add(number);
+    screen();renderMap();
+    if(previousScene!==metroScene()){
+      const target=metroScene()?metroLab:cityLayout;
+      window.requestAnimationFrame(()=>target.scrollIntoView({behavior:"auto",block:"start"}));
+    }
+  }
+  function renderMetroMission(){
+    const game=metroState(),stage=game.phase,n=state.station;
+    const stationName=MG.scenario(game).goal;
+    if(game.completed)return complete(n,"Route verified locally. Speaking confirmed by self-assessment; no recording or AI grading.",
+      n===5?"Take M1 towards East Gardens. Get off at Museum Quarter.":n===6?"Change at University and take M3 towards Harbour.":
+        n===7?"Because M1 is closed, change to M3 at University.":"Walk to Market Square, change at University, and finish at City Museum.");
+    el("p",panel,"f2-small","EN · B1 PILOT · Offline · "+game.speakingDone+" speaking checkpoints confirmed");
+    const stageText={
+      "walk-to-entrance":"Walk from Central Station to Market Square on the city map. Use the single compass pad or select adjacent crossroads.",
+      "enter":"You have reached the Market Square entrance. Enter the metro.",
+      "notice":"Read the service notice before choosing a line. The Old Town–Museum Quarter segment on M1 is unavailable.",
+      "select-line":"Inspect the Riverton Metro map. Select the line you need to take from "+MG.scenario(game).start.replaceAll("_"," ")+".",
+      "select-direction":"Choose the correct terminus shown on the train's direction board.",
+      "select-platform":"Choose the platform matching your line and direction. Look at the station signs.",
+      "board":"You have selected a line, direction and platform. Board the train.",
+      "ride":"You are on the train. Advance exactly one stop at a time.",
+      "transfer":"You have arrived at an interchange. Follow the transfer signs to your connecting line.",
+      "exit":"You have arrived at your destination metro station. Leave the train.",
+      "walk-to-museum":"You exited at Museum Quarter. Walk one block north on the city map to City Museum.",
+      "checkpoint":"Explain this part of your journey aloud before continuing.",
+      "speech":"Explain the complete journey aloud and confirm your own speaking check."
+    };
+    note(panel,"🚇 "+(stage==="walk-to-entrance"||stage==="walk-to-museum"?"City navigation":"Metro navigation"),stageText[stage]||"Continue the journey.");
+    const railStatus=game.metroStation.replaceAll("_"," ");
+    status(panel,flash?.text||"Current metro position: "+railStatus+" · "+(game.lineId||"no line selected"),flash?.tone);
+    if(stage==="walk-to-entrance"||stage==="walk-to-museum"){
+      para(panel,"The route is checked one adjacent city block at a time. You can use the compass, map nodes or keyboard.","f2-small");
+    }else if(stage==="select-line"||stage==="select-direction"||stage==="select-platform"){
+      const type=stage==="select-line"?"SELECT_LINE":stage==="select-direction"?"SELECT_DIRECTION":"SELECT_PLATFORM";
+      choices(panel,MG.options(game),value=>metroAction({type,value}));
+    }else if(stage==="checkpoint"||stage==="speech"){
+      speaking(panel,n===8?"Go to Market Square. Take M2 to University, transfer to M3 towards Harbour, then walk north to City Museum.":
+        n===7?"Because M1 is closed, take M2 to University, then M3 to Museum Quarter.":
+        n===6?"Take M2 to University and change to M3 towards Harbour. Get off at Stadium.":
+        "Take M1 towards East Gardens. Get off at Museum Quarter.");
+      const row=actions(panel);
+      btn(row,"✓ I have practised aloud · continue",()=>metroAction({type:"SELF_CHECK"}),"primary");
+    }else{
+      const actionMap={
+        enter:["Enter the metro","ENTER"],notice:["Read service notice","READ_NOTICE"],
+        board:["Board the train","BOARD"],ride:["Travel to next stop","NEXT_STOP"],
+        transfer:["Follow transfer signs","CHANGE_LINE"],exit:["Exit at destination","EXIT"]
+      };
+      if(actionMap[stage]){
+        const row=actions(panel),[label,type]=actionMap[stage];
+        btn(row,label,()=>metroAction({type}),"primary");
+      }
+    }
+    const row=actions(panel);
+    btn(row,"↺ Restart this metro mission",resetStation);
+    if(metroScene())para(panel,"The metro network and illustrated platform are part of this mission. Only the controls in this panel advance the game.","f2-small");
   }
   function renderExplore(){
     const game=state.explore,total=G.answerCount(state.level);
@@ -296,6 +388,7 @@
     help(panel);
   }
   function activePath(){
+    if(metroPilot())return metroCityWalk()?metroState().cityPath:null;
     switch(state.station){
       case 2:return state.route.route;
       case 4:return state.guided.route;
@@ -308,6 +401,7 @@
     const path=activePath();return path?.[path.length-1]||null;
   }
   function isMovementLocked(){
+    if(metroPilot())return !metroCityWalk();
     if(state.station===2)return state.route.done;
     if(state.station===4)return state.guided.done;
     if(state.station===7)return state.detour.done;
@@ -315,6 +409,7 @@
     return true;
   }
   function onMove(next){
+    if(metroCityWalk())return metroAction({type:"WALK",node:next});
     let outcome;
     switch(state.station){
       case 2:outcome=G.moveRoute(state.route,next,state.level,false);state.route=outcome.state;break;
@@ -416,12 +511,13 @@
     hudUndo.textContent="↶ "+u.undo;
     hudUndo.setAttribute("aria-label",u.undo);
     hudUndo.disabled=!canUndo();
-    const cp=state.station===8&&!state.quest.done?
+    const cp=state.station===8&&!metroPilot()&&!state.quest.done?
       G.questCheckpoints(state.level)[state.quest.stage]:null;
     const done=isMovementLocked();
     hudLoc.textContent=u.station+" "+String(state.station).padStart(2,"0")+
       " · "+state.level+(state.station===4?" · "+(done?G.guidedPaths[state.level].length:state.guided.step+1)+"/"+G.guidedPaths[state.level].length:"");
-    quickTitle.textContent=state.station===4&&!state.guided.done?
+    quickTitle.textContent=metroCityWalk()?(metroState().phase==="walk-to-entrance"?"Walk to Market Square metro entrance":"Walk north to City Museum"):
+      state.station===4&&!state.guided.done?
       G.instruction(p,state.level,state.guided.step):
       cp?p.places[cp.id]:
       state.station===2?profile().route:
@@ -435,7 +531,7 @@
   }
   function showClosure(){
     blocked.replaceChildren();
-    const need=state.station===7||state.level==="C2"&&[2,8].includes(state.station);
+    const need=!metroPilot()&&(state.station===7||state.level==="C2"&&[2,8].includes(state.station));
     if(!need)return;
     const p=E.position(F.closure.a),q=E.position(F.closure.b);
     blocked.appendChild(svg("line",{x1:p.x,y1:p.y,x2:q.x,y2:q.y,class:"f2-road-close"}));
@@ -541,12 +637,14 @@
     F.stations.forEach((st,i)=>{
       const button=el("button",nav,"f1-station");
       button.type="button";
-      button.setAttribute("aria-label",u.station+" "+st.id+": "+pack().stations[i][0]);
+      const missionTitle=state.language==="en"&&state.level==="B1"&&st.id>=5&&MG?
+        MG.definitions[st.id].title:pack().stations[i][0];
+      button.setAttribute("aria-label",u.station+" "+st.id+": "+missionTitle);
       if(state.station===st.id)button.setAttribute("aria-current","step");
       const ic=el("span",button,"f1-station-icon",icons[i]);ic.setAttribute("aria-hidden","true");
       const cap=el("span",button,"f1-station-caption");
       el("small",cap,"",u.station+" "+String(st.id).padStart(2,"0"));
-      el("strong",cap,"",pack().stations[i][0]);
+      el("strong",cap,"",missionTitle);
       if(state.done.has(st.id))el("span",button,"f1-station-complete","✓");
       button.addEventListener("click",()=>selectStation(st.id));
     });
@@ -562,6 +660,7 @@
     if(n===2)state.route=G.routeStart();
     if(n===3)state.dialogue=G.dialogueStart();
     if(n===4)state.guided=G.guidedStart();
+    if(n>=5&&state.metro)state.metro[n]=MG.start(n);
     if(n===5)state.transit={done:false,tries:0,selection:{}};
     if(n===6)state.repair={phase:0,done:false,tries:0};
     if(n===7)state.detour=G.routeStart();
