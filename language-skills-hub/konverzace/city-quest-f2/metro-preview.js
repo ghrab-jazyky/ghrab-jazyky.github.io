@@ -25,7 +25,7 @@
   south_gate:[395,686],hilltop:[100,108],science_centre:[502,169],
   stadium:[947,496],harbour:[1031,670]
  };
- let current=M.startPreview(review[0].id),inspected="central_station",view="platform",overview=false;
+ let current=M.startPreview(review[0].id),inspected="central_station",view="platform",overview=false,gameMode=null;
  const svg=(tag,attrs,content)=>{
   const n=document.createElementNS(svgNS,tag);
   for(const [k,v] of Object.entries(attrs||{}))n.setAttribute(k,String(v));
@@ -46,7 +46,8 @@
  const step=()=>route()[current.index];
  const stationName=id=>M.station(id)?.labelEn||id;
  const lineColour=id=>M.line(id)?.color||"#63e5c8";
- const currentLine=()=>M.line(step().line);
+ const displayLineId=()=>gameMode?(gameMode.lineId||"—"):step().line;
+ const currentLine=()=>M.line(displayLineId())||{id:"—",name:"Station concourse",color:"#6597ae"};
  const atStation=()=>step().station;
  function drawnText(parent,x,y,txt,props){
   const attrs=Object.assign({x:x,y:y,fill:"#e9ffff","font-family":"system-ui,sans-serif"},props||{});
@@ -104,7 +105,7 @@
   drawnText(network,51,79,"UNDERGROUND NETWORK  /  3 LINES",{"font-size":12,"font-weight":750,"letter-spacing":2.6,fill:"#88c7d2"});
   drawnText(network,1051,55,"NOT TO SCALE",{"font-size":11,"font-weight":800,"letter-spacing":1.4,
     "text-anchor":"end",fill:"#9bced8"});
-  drawnText(network,51,727,"F2.1B VISUAL PREVIEW  •  RIDE THE NETWORK",{"font-size":12,"font-weight":800,
+  drawnText(network,51,727,gameMode?"F2.1C EN/B1 MISSION  •  OFFLINE TRAINING":"F2.1B VISUAL PREVIEW  •  RIDE THE NETWORK",{"font-size":12,"font-weight":800,
     "letter-spacing":1.4,fill:"#77acb8"});
   append(network,"path",{d:"M49 703H1145",fill:"none",stroke:"#8adcd3","stroke-width":1,opacity:.2});
  }
@@ -112,7 +113,18 @@
   return line.stops.map(id=>M.station(id).x+","+M.station(id).y).join(" ");
  }
  function routeSegments(){
-  return scenario().legs.map(leg=>leg.stops.map(id=>M.station(id).x+","+M.station(id).y).join(" "));
+  if(!gameMode)return scenario().legs.map(leg=>leg.stops.map(id=>M.station(id).x+","+M.station(id).y).join(" "));
+  // Never expose future steps of the correct route during a mission.
+  const traveled=route().slice(0,current.index+1),segments=[];
+  let active=null;
+  for(let i=1;i<traveled.length;i++){
+   const now=traveled[i],previous=traveled[i-1];
+   if(now.kind!=="ride"){active=null;continue;}
+   if(!active||active.line!==now.line){
+    active={line:now.line,ids:[previous.station,now.station]};segments.push(active);
+   }else active.ids.push(now.station);
+  }
+  return segments.map(part=>part.ids.map(id=>M.station(id).x+","+M.station(id).y).join(" "));
  }
  function renderNetwork(){
   network.replaceChildren();defs(network);mapDecor();
@@ -233,6 +245,7 @@
  function lineFixture(){
   const currentStep=step();
   const next=route()[Math.min(current.index+1,route().length-1)];
+  if(gameMode&&!gameMode.platform)return null;
   const candidates=M.source.platformFixtures.filter(p=>p.station===currentStep.station&&p.line===currentStep.line);
   if(!candidates.length)return null;
   if(next?.kind==="ride"){
@@ -273,13 +286,14 @@
   // Central hanging direction board.
   rounded(scene,145,57,610,102,"#082437",14,{stroke:"#69cbd0","stroke-width":2});
   rounded(scene,157,70,115,75,color,12);
-  drawnText(scene,214,119,step().line,{"text-anchor":"middle","font-weight":950,"font-size":44,fill:"#092738"});
+  drawnText(scene,214,119,displayLineId(),{"text-anchor":"middle","font-weight":950,"font-size":44,fill:"#092738"});
   drawnText(scene,295,98,name.toUpperCase(),{"font-size":28,"font-weight":900,
     "letter-spacing":1,fill:"#eafffa"});
-  const platform=fixture?"PLATFORM "+fixture.platform:"WAYFINDING PREVIEW";
+  const platform=fixture?"PLATFORM "+fixture.platform:gameMode?"PLATFORM TO BE SELECTED":"WAYFINDING PREVIEW";
   const next=route()[Math.min(current.index+1,route().length-1)];
   const dest=fixture?stationName(fixture.directionTerminus):
-    (next?.line?stationName(M.line(next.line).stops.at(-1)):"CHECK LINE");
+    (gameMode&&gameMode.direction?stationName(gameMode.direction):gameMode?"CHECK TERMINUS":
+      next?.line?stationName(M.line(next.line).stops.at(-1)):"CHECK LINE");
   drawnText(scene,296,133,platform+"   •   TOWARDS "+dest.toUpperCase(),{
     "font-size":14,"font-weight":780,"letter-spacing":1.2,fill:"#a8d5dc"});
   append(scene,"path",{d:"M195 159V177 M705 159V177",stroke:"#7dbfcb","stroke-width":5});
@@ -302,7 +316,7 @@
   drawnText(train,167,290,"RIVERTON METRO",{"text-anchor":"middle","font-size":15,
     "font-weight":950,"letter-spacing":1.2});
   rounded(train,746,211,60,24,"#0a2c43",8,{fill:"#103c4d"});
-  drawnText(train,776,228,step().line,{"text-anchor":"middle","font-size":18,"font-weight":900,
+  drawnText(train,776,228,displayLineId(),{"text-anchor":"middle","font-size":18,"font-weight":900,
     fill:"#abfff0"});
   // Track perspective.
   append(scene,"path",{d:"M0 348 L900 388 L900 424 L0 381Z",fill:"#071b29"});
@@ -314,7 +328,7 @@
   rounded(scene,35,389,200,54,"#102e41",12,{stroke:"#66d1d08b","stroke-width":2});
   drawnText(scene,50,409,"NEXT SERVICE",{"font-size":13,"letter-spacing":1.5,
     "font-weight":900,fill:"#a2e2de"});
-  drawnText(scene,50,428,next?.kind==="ride"?stationName(next.station):"Awaiting departure",{
+  drawnText(scene,50,428,gameMode&&gameMode.phase!=="ride"?"Follow the signs":next?.kind==="ride"?stationName(next.station):"Awaiting departure",{
     "font-size":17,"font-weight":780,fill:"#fff7df"});
   $("metroSceneSvg").setAttribute("aria-label","Illustrated platform at "+name+" on "+step().line);
  }
@@ -335,7 +349,7 @@
   // Route tracker over the metro window.
   rounded(scene,110,14,680,70,"#09273d",14,{stroke:"#8edee1","stroke-width":2});
   rounded(scene,126,26,105,44,color,10);
-  drawnText(scene,178,56,step().line,{"text-anchor":"middle","font-size":30,"font-weight":950,
+  drawnText(scene,178,56,displayLineId(),{"text-anchor":"middle","font-size":30,"font-weight":950,
     fill:"#082b3f"});
   drawnText(scene,251,39,"NEXT STOP / CURRENT LOCATION",{"font-size":12,"letter-spacing":1.5,
     "font-weight":900,fill:"#a8d8d9"});
@@ -352,7 +366,7 @@
   rounded(scene,364,404,170,30,"#0a2b42",10,{opacity:.8});
   drawnText(scene,449,425,"RIVERTON METRO",{"text-anchor":"middle","font-size":16,"font-weight":950,
     "letter-spacing":1.5,fill:"#d8f9ef"});
-  $("metroSceneSvg").setAttribute("aria-label","Illustrated interior of a "+step().line+" metro train at "+name);
+  $("metroSceneSvg").setAttribute("aria-label","Illustrated interior of a "+displayLineId()+" metro train at "+name);
  }
  function drawScene(){
   if(view==="platform")platformScene();else trainScene();
@@ -362,7 +376,7 @@
   $("metroViewPlatform").classList.toggle("active",view==="platform");
   $("metroViewTrain").classList.toggle("active",view==="train");
   $("metroSceneStation").textContent=stationName(atStation());
-  $("metroSceneLine").textContent=step().line+" · "+currentLine().name;
+  $("metroSceneLine").textContent=displayLineId()+" · "+currentLine().name;
   $("metroStopIndicator").style.color=lineColour(step().line);
  }
  function drawLegend(){
@@ -399,7 +413,16 @@
     Math.round(current.index/total*100)+"%";
   const alert=$("metroNetworkAlert");
   alert.hidden=!(s.closedEdges?.length);
-  if(!alert.hidden)alert.textContent="⚠ M1 Old Town – Museum Quarter CLOSED · follow the alternative via University";
+  if(!alert.hidden)alert.textContent=gameMode?"⚠ M1 Old Town – Museum Quarter CLOSED · find a valid alternative":"⚠ M1 Old Town – Museum Quarter CLOSED · follow the alternative via University";
+  if(gameMode){
+    $("metroInstruction").textContent="Interactive mission · "+gameMode.phase.replaceAll("-"," ")+". Use the mission panel to choose your next action.";
+    $("metroNextInfo").textContent="CHECKPOINT "+(current.index+1)+"/"+steps.length+
+      " · "+stationName(gameMode.metroStation)+" · "+(gameMode.lineId||"line not yet selected");
+    $("metroAdvance").disabled=true;
+    $("metroFeedback").textContent="Your journey advances only after a valid line, direction, platform, ride or transfer decision.";
+    $("metroFeedback").dataset.state="info";
+    return;
+  }
   $("metroInstruction").textContent=current.finished?
     "You have reached "+stationName(s.goal)+". Explain your route to your partner.":
     next.kind==="transfer"?
@@ -427,10 +450,11 @@
   drawScenarios();renderNetwork();drawScene();drawJourney();renderInspector();
  }
  function chooseScenario(id){
+  if(gameMode)return;
   current=M.startPreview(id);inspected=scenario().start;view="platform";renderAll();
  }
  function advance(){
-  if(current.finished)return;
+  if(gameMode||current.finished)return;
   const from=step();
   current=M.advancePreview(current);
   inspected=atStation();
@@ -449,12 +473,40 @@
   }
  }
  function updateVisibility(){
-  const level=$("f2Level").value;
-  const shown=!["A1","A2"].includes(level);
-  lab.hidden=!shown;jump.hidden=!shown;
+  const level=$("f2Level").value,bridge=window.CityQuestF2MetroBridge;
+  const pilot=!!bridge?.pilotActive(),sceneVisible=!!bridge?.metroVisible();
+  const shown=pilot?sceneVisible:!["A1","A2"].includes(level);
+  lab.hidden=!shown;jump.hidden=pilot||!shown;
+  lab.querySelector(".metro-scenario-toolbar").hidden=pilot;
+  lab.querySelector(".metro-action-card").hidden=pilot;
+  lab.querySelector(".metro-banner .metro-overline").textContent=pilot?
+    "RIVERTON TRANSIT SYSTEM / F2.1C EN/B1 GAME":"RIVERTON TRANSIT SYSTEM / F2.1B VISUAL PROTOTYPE";
+  $("metroHeading").textContent=pilot?"Your metro mission is live.":"The city has another layer.";
+  lab.querySelector(".metro-banner-copy > p").textContent=pilot?
+    "Choose a line, direction and platform; travel stop by stop and confirm speaking checkpoints. Your route is checked locally.":
+    "Discover the metro network, explore an illustrated platform and follow a train through Riverton. Fictional network and timetables. This preview does not grade speaking.";
+  lab.querySelector(".metro-disclaimer").textContent=pilot?
+    "F2.1C English B1 pilot · Only deterministic route choices are validated · Speaking is self-assessed · No server or requests.":
+    "EN/B1 route reference · Visual and graph design review only · Multilingual metro gameplay is planned for F2.1D.";
   jump.textContent="🚇 Riverton Metro · EN visual preview (B1+)";
   if(shown)renderAll();
  }
+ window.RivertonMetroVisual=Object.freeze({
+  sync(state){
+    gameMode=state||null;
+    if(state){
+      current={scenarioId:state.scenarioId,index:window.RivertonMetroGame.routeIndex(state),
+        finished:state.completed};
+      inspected=state.metroStation;
+      view=state.phase==="ride"?"train":"platform";
+    }else{
+      current=M.startPreview(review[0].id);
+      inspected=M.scenario(current.scenarioId).start;
+      view="platform";
+    }
+    updateVisibility();
+  }
+ });
  $("metroMapZoom").addEventListener("click",()=>{overview=!overview;syncNetworkZoom();});
  $("metroAdvance").addEventListener("click",advance);
  $("metroReplay").addEventListener("click",()=>chooseScenario(current.scenarioId));
