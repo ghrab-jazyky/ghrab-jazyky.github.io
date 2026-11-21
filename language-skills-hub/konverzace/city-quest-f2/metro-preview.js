@@ -5,7 +5,7 @@
  */
 (() => {
  "use strict";
- const M=window.RivertonMetro,LC=window.RivertonMetroLanguage;
+ const M=window.RivertonMetro,LC=window.RivertonMetroLanguage,PA=window.RivertonMetroPublicAddress;
  if(!M)throw Error("Riverton Metro network module is missing.");
  const $=id=>document.getElementById(id);
  const lab=$("metroLab"),jump=$("metroJump"),network=$("metroNetworkSvg"),scene=$("metroSceneSvg");
@@ -314,8 +314,11 @@
    rounded(train,x+8,216,28,3,"#8ce5df",2,{opacity:.3});
   }
   for(const x of [305,567]){
-   rounded(train,x,202,12,90,"#28596e",3,{opacity:.9});
-   rounded(train,x+16,202,12,90,"#28596e",3,{opacity:.9});
+   // Paired sliding doors open only after correct route selections.
+   rounded(train,x-17,202,32,91,"#28596e",3,{opacity:.95,class:"metro-train-door-left",
+    stroke:"#acd9e0","stroke-width":2});
+   rounded(train,x+17,202,32,91,"#28596e",3,{opacity:.95,class:"metro-train-door-right",
+    stroke:"#acd9e0","stroke-width":2});
   }
   rounded(train,72,272,190,26,"#0a3550",9,{opacity:.92});
   drawnText(train,167,290,"RIVERTON METRO",{"text-anchor":"middle","font-size":15,
@@ -335,6 +338,18 @@
     "font-weight":900,fill:"#a2e2de"});
   drawnText(scene,50,428,gameMode&&gameMode.phase!=="ride"?"Follow the signs":next?.kind==="ride"?stationName(next.station):"Awaiting departure",{
     "font-size":17,"font-weight":780,fill:"#fff7df"});
+  if(gameMode?.phase==="notice"){
+   const board=append(scene,"g",{class:"metro-alert-sign"});
+   rounded(board,600,385,265,60,"#622b3c",11,{stroke:"#ffb98d","stroke-width":3});
+   drawnText(board,732,423,"⚠ SERVICE DISRUPTION",{
+    "text-anchor":"middle","font-size":18,"font-weight":950,fill:"#ffe5c8"});
+  }
+  if(gameMode?.phase==="transfer"){
+   const marker=append(scene,"g",{class:"metro-transfer-arrow"});
+   rounded(marker,565,386,302,61,"#095a57",12,{stroke:"#a4f2da","stroke-width":3});
+   drawnText(marker,716,425,"⇄ INTERCHANGE",{"text-anchor":"middle",
+    "font-size":19,"font-weight":950,fill:"#e3fff6"});
+  }
   $("metroSceneSvg").setAttribute("aria-label","Illustrated platform at "+name+" on "+displayLineId());
  }
  function trainScene(){
@@ -344,10 +359,11 @@
   // Dark glazed windows, city silhouettes moving symbolically behind glass.
   rounded(scene,42,55,816,244,"#d5e8ed",25,{stroke:"#84adb8","stroke-width":6});
   rounded(scene,57,69,786,215,"#0c3552",19);
+  const landscape=append(scene,"g",{class:"metro-window-world","aria-hidden":"true"});
   for(let i=0;i<14;i++){
    const x=74+i*58;
-   rounded(scene,x,195-(i%4)*12,39,76+(i%4)*12,"#174966",3,{opacity:.9});
-   for(let j=0;j<3;j++)rounded(scene,x+6+j*10,214-(i%4)*12,5,7,"#5ed7cb",1,{opacity:.18});
+   rounded(landscape,x,195-(i%4)*12,39,76+(i%4)*12,"#174966",3,{opacity:.9});
+   for(let j=0;j<3;j++)rounded(landscape,x+6+j*10,214-(i%4)*12,5,7,"#5ed7cb",1,{opacity:.18});
   }
   append(scene,"path",{d:"M58 237 C240 217 370 254 520 230 S748 250 844 224",
     fill:"none",stroke:"#5bd7d3","stroke-width":3,opacity:.22});
@@ -371,10 +387,37 @@
   rounded(scene,364,404,170,30,"#0a2b42",10,{opacity:.8});
   drawnText(scene,449,425,"RIVERTON METRO",{"text-anchor":"middle","font-size":16,"font-weight":950,
     "letter-spacing":1.5,fill:"#d8f9ef"});
+  // Reveal the next stop only after the learner has actually boarded.
+  if(gameMode?.phase==="ride"&&PA){
+   const info=PA.pack($("f2Language").value,$("f2Level").value,gameMode);
+   if(info.next){
+    rounded(scene,565,353,287,45,"#09283b",11,{stroke:"#74d8da","stroke-width":2});
+    drawnText(scene,709,382,info.next.toUpperCase(),{"text-anchor":"middle",
+     "font-size":18,"font-weight":900,fill:"#e5fff8"});
+   }
+  }
   $("metroSceneSvg").setAttribute("aria-label","Illustrated interior of a "+displayLineId()+" metro train at "+name);
+ }
+ function drawPublicAddress(){
+  const box=$("metroPublicAddress");
+  if(!box)return;
+  const visible=!!gameMode&&!!PA;
+  box.hidden=!visible;
+  if(!visible)return;
+  const announcement=PA.pack($("f2Language").value,$("f2Level").value,gameMode);
+  box.dataset.kind=announcement.kind;
+  $("metroPALabel").textContent=announcement.marker;
+  $("metroPAState").textContent=announcement.display;
+  $("metroPATitle").textContent=announcement.headline;
+  $("metroPAMessage").textContent=announcement.body;
+  $("metroPAPrompt").textContent="🗣️ "+announcement.focus;
+  $("metroPAStatus").textContent=announcement.status+" · "+
+   (gameMode.lineId||gameCopy()?.labels.noLine||"—")+" · "+announcement.station;
  }
  function drawScene(){
   if(view==="platform")platformScene();else trainScene();
+  scene.dataset.phase=gameMode?.phase||"preview";
+  drawPublicAddress();
   const localized=gameCopy()?.labels;
   $("metroSceneHeading").textContent=view==="platform"?(localized?.scenePlatform||"Platform view"):(localized?.sceneTrain||"On-board experience");
   $("metroViewPlatform").setAttribute("aria-pressed",String(view==="platform"));
