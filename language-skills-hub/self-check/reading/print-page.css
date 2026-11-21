@@ -79,7 +79,9 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
  .paper[data-level="B1"][data-format="all"] .exercise-question{margin-bottom:7pt}
  .paper[data-level="B1"][data-format="all"] .answer-line{height:14pt}
  .paper[data-level="B1"][data-format="all"] .exercise-options li{margin:2pt 0}
- .paper[data-level="B1"][data-format="all"] .writing-lines{height:55pt}
+ /* Two ruled lines remain, without spilling a phantom footer-only page. */
+ .paper[data-level="B1"][data-format="all"] .reflection p{margin-bottom:4pt}
+ .paper[data-level="B1"][data-format="all"] .writing-lines{height:44pt}
  /* Long C2 text-only pages: retain font size, optimize leading and blank space. */
  .paper[data-level="C2"][data-format="text"] .paper-header{margin-bottom:10px}
  .paper[data-level="C2"][data-format="text"] .reading-paragraphs{line-height:1.35}
