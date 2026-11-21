@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070f20">
-<meta name="description" content="City Quest F2: eight city navigation missions in English, Spanish, German and French at CEFR A1–C2.">
+<meta name="description" content="City Quest F2: offline city navigation in four languages at A1–C2 and an interactive EN/B1 Riverton Metro pilot.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; base-uri 'self'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <title>City Quest F2 · Eight Interactive Missions · EN ES DE FR · A1–C2</title>
 <link rel="stylesheet" href="../city-quest-f0/style.css">
@@ -18,8 +18,9 @@
 <script defer src="../../authoring/city-quest-f2/content-a.js"></script>
 <script defer src="../../authoring/city-quest-f2/content-b.js"></script>
 <script defer src="../../authoring/city-quest-f2/engine.js"></script>
-<script defer src="f2.js"></script>
 <script defer src="../../authoring/city-quest-f2-1b/metro-network.js"></script>
+<script defer src="../../authoring/city-quest-f2-1c/metro-game.js"></script>
+<script defer src="f2.js"></script>
 <script defer src="metro-preview.js"></script>
 </head>
 <body>
@@ -50,6 +51,7 @@
   </div>
   <div class="f2-profile" id="f2Profile" aria-live="polite">Independent directions and communication repair</div>
   <button class="btn metro-jump" id="metroJump" type="button" hidden aria-controls="metroLab">🚇 Riverton Metro · Preview</button>
+   <button class="btn metro-pilot-toggle" id="metroPilotToggle" type="button" hidden aria-pressed="false" title="Switching modes resets progress in missions 05–08">🚇 Play interactive metro missions (EN/B1 pilot)</button>
 </section>
 <section class="f1-dashboard" aria-label="City Quest session">
  <div class="f1-progress"><strong id="f1ProgressText">0 of 8 missions completed</strong><div class="f1-progress-track" role="progressbar" aria-label="Mission progress" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="f1ProgressTrack"><span id="f1ProgressFill"></span></div><small>Results stay in this browser tab; speaking is not automatically graded.</small></div>

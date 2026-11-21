@@ -29,6 +29,15 @@ async function variant(page,lang,level){
  assert.equal(await page.locator("html").getAttribute("lang"),lang);
 }
 async function verifyHud(page,lang){
+ // Browser resize events and media-query changes are dispatched asynchronously.
+ // Wait for the actual single DOM HUD to reach its correct host, then verify all
+ // strong layout, keyboard and touch assertions below (without relaxing them).
+ await page.waitForFunction(()=>{
+  const desktop=window.matchMedia("(min-width:1051px)").matches;
+  const hud=document.querySelector('[data-testid="navigation-hud"]');
+  const host=document.querySelector(desktop?".sidebar":"#f2MapStage");
+  return !!hud&&hud.parentElement===host&&hud.dataset.placement===(desktop?"sidebar":"map-overlay");
+ },null,{timeout:2500});
  const hud=page.locator('[data-testid="navigation-hud"]');
  assert.equal(await hud.count(),1);
  assert.equal(await hud.isVisible(),true);
