@@ -42,6 +42,9 @@ test("F2.1C desktop: mission 05 rejects wrong line, requires directions/platform
   assert.equal(await page.locator("#f1Panel").evaluate(el=>el.parentElement.classList.contains("metro-side")),true);
   assert.equal(await page.locator(".metro-scenario-toolbar").isVisible(),false);
   assert.equal(await page.locator(".metro-action-card").isVisible(),false);
+  assert.equal(await page.locator("#metroViewTrain").isVisible(),false,"Game must control train view, not a decorative switch");
+  assert.match(await page.locator("#metroSceneLine").innerText(),/Station concourse/);
+  assert.match(await page.locator("#metroSceneSvg").getAttribute("aria-label"),/on —$/);
   assert.equal(await page.locator("#metroPreferredRoute polyline").count(),0,"Future route must not be pre-highlighted");
   await click(page,"M2 ·");
   assert.match(await panel(page).innerText(),/does not take you/);
@@ -62,6 +65,7 @@ test("F2.1C mission 06: real transfer, two line choices, seven route decisions",
   await launch(browser,page,6);
   await travel(page,"M2","North Park","1",2);
   assert.match(await panel(page).innerText(),/interchange/i);
+  assert.match(await page.locator("#metroSceneHeading").innerText(),/Platform view/);
   await click(page,"Follow transfer signs");
   await travel(page,"M3","Harbour","3",3);
   await click(page,"Exit at destination");
