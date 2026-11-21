@@ -1,7 +1,7 @@
 name: LSH RL-PDF branded assets – Asteroids hardening branch
 on:
   push:
-    branches: ['feature/lsh-asteroids-pdf-hardening-20261120']
+    branches: ['feature/lsh-asteroids-pdf-*']
     paths:
       - 'language-skills-hub/scripts/build-reading-print-pdfs.cjs'
       - 'language-skills-hub/self-check/reading/print-core.js'
@@ -12,11 +12,10 @@ on:
       - 'language-skills-hub/data/cards.json'
       - 'language-skills-hub/assets/school-logo.png'
       - 'language-skills-hub/self-check/reading/reading-core.js'
-      - '.github/workflows/lsh-reading-print-assets.yml'
 permissions:
   contents: write
 concurrency:
-  group: lsh-print-assets-hardening
+  group: lsh-print-assets-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   build:
@@ -56,8 +55,8 @@ jobs:
             # Another reviewer may have updated the feature branch while PDFs were built.
             # Rebase onto its current tip; never force-push or overwrite source changes.
             for attempt in 1 2 3; do
-              git pull --rebase origin feature/lsh-asteroids-pdf-hardening-20261120
-              if git push origin HEAD:feature/lsh-asteroids-pdf-hardening-20261120; then
+              git pull --rebase origin $GITHUB_REF_NAME
+              if git push origin HEAD:$GITHUB_REF_NAME; then
                 echo "PDF assets saved after sync"
                 exit 0
               fi
