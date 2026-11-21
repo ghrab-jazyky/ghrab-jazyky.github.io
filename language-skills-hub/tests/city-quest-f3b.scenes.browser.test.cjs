@@ -50,8 +50,11 @@ test("F3B station 05: line, terminus and platform remain unknown until chosen; d
   assert.doesNotMatch(await page.locator("#metroPAMessage").innerText(),/Platform 2/i);
   await choose(page,"Platform 2");
   assert.equal(await page.locator("#metroSceneSvg").getAttribute("data-phase"),"board");
+  assert.match(await page.locator(".metro-train-door-left").first().evaluate(
+   el=>getComputedStyle(el).animationName),/f3b-door-slide-left/);
   assert.ok((await page.locator("#metroPAMessage").innerText()).includes("East Gardens"));
   assert.equal(await pa(page).getAttribute("data-kind"),"boarding");
+  await page.waitForTimeout(720);
   await page.locator("#metroSceneSvg").screenshot({path:path.join(OUT,"boarding-open-doors-1366.png")});
   await choose(page,"Board the train");
   assert.equal(await page.locator("#metroSceneSvg").getAttribute("data-phase"),"ride");
@@ -146,6 +149,8 @@ test("F3B OS reduced-motion disables window scenery and transfer motion even in 
   await page.goto(URL);await mission(page,5);
   await choose(page,"M1 ·");await choose(page,"East Gardens");await choose(page,"Platform 2");
   assert.equal(await page.locator("html").getAttribute("data-motion"),"off");
+  assert.equal(await page.locator(".metro-train-door-left").first().evaluate(
+   el=>getComputedStyle(el).animationName),"none");
   await choose(page,"Board the train");
   assert.equal(await page.locator("#metroSceneSvg").getAttribute("data-phase"),"ride");
   assert.equal(await page.locator(".metro-window-world").evaluate(el=>getComputedStyle(el).animationName),"none");
