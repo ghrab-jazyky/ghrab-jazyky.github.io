@@ -32,7 +32,7 @@ test("F2.1C desktop: mission 05 rejects wrong line, requires directions/platform
  const browser=await chromium.launch({headless:true});
  try{
   const page=await browser.newPage({viewport:{width:1400,height:900}});
-  const errors=[];page.on("pageerror",e=>errors.push(String(e)));
+  const errors=[];page.on("pageerror",e=>errors.push(e.stack||String(e)));
   await launch(browser,page,5);
   assert.equal(await page.locator("#metroLab").getAttribute("data-mode"),"game");
   assert.equal(await page.locator("#metroLab").isVisible(),true);
@@ -86,7 +86,7 @@ test("F2.1C mission 08: real city→metro→city portal and three oral checkpoin
  const browser=await chromium.launch({headless:true});
  try{
   const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
-  const errors=[];page.on("pageerror",e=>errors.push(String(e)));
+  const errors=[];page.on("pageerror",e=>errors.push(e.stack||String(e)));
   await launch(browser,page,8);
   assert.equal(await page.locator(".layout").isVisible(),true);
   assert.equal(await page.locator("#metroLab").isVisible(),false);
@@ -134,6 +134,28 @@ test("F2.1C preserves classic F2 by default, requires opt-in and does not enable
   }
  }finally{await browser.close();}
 });
+test("F2.1C responsive live mission controls dock next to mobile map and back in desktop sidebar",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:320,height:568},isMobile:true,hasTouch:true});
+  const errors=[];page.on("pageerror",e=>errors.push(e.stack||String(e)));
+  await launch(browser,page,5);
+  assert.equal(await panel(page).evaluate(el=>el.parentElement.classList.contains("metro-network-card")),true);
+  assert.equal(await page.locator("#f1Panel").count(),1);
+  const map=page.locator("#metroNetworkViewport"),control=page.locator("#f1Panel");
+  const bounds=await Promise.all([map.boundingBox(),control.boundingBox()]);
+  assert.ok(bounds[0]&&bounds[1]);
+  assert.ok(bounds[1].y<bounds[0].y,"Action panel must dock immediately above the network on phone");
+  await page.setViewportSize({width:1400,height:900});
+  await page.waitForTimeout(70);
+  assert.equal(await panel(page).evaluate(el=>el.parentElement.classList.contains("metro-side")),true);
+  await page.setViewportSize({width:320,height:568});
+  await page.waitForTimeout(70);
+  assert.equal(await panel(page).evaluate(el=>el.parentElement.classList.contains("metro-network-card")),true);
+  await click(page,"M1 ·");
+  assert.deepEqual(errors,[]);
+ }finally{await browser.close();}
+});
 test("F2.1C strict-CSP one-file offline preview works with full metro mission",async()=>{
  const file=path.resolve(process.cwd(),".review-city-quest-f2/CITY_QUEST_F2_OFFLINE_PREVIEW.html");
  assert.ok(fs.existsSync(file),"Build offline one-file preview first");
@@ -142,7 +164,7 @@ test("F2.1C strict-CSP one-file offline preview works with full metro mission",a
   const page=await browser.newPage({viewport:{width:1280,height:800}});
   const external=[],errors=[];
   page.on("request",r=>{if(!r.url().startsWith("file:"))external.push(r.url());});
-  page.on("pageerror",e=>errors.push(String(e)));
+  page.on("pageerror",e=>errors.push(e.stack||String(e)));
   await page.goto("file://"+file,{waitUntil:"load"});
   await page.locator("#metroPilotToggle").click();
   await page.locator("#f1Stations .f1-station").nth(4).click();
