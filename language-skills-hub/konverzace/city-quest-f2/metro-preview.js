@@ -334,7 +334,7 @@
     "font-weight":900,fill:"#a2e2de"});
   drawnText(scene,50,428,gameMode&&gameMode.phase!=="ride"?"Follow the signs":next?.kind==="ride"?stationName(next.station):"Awaiting departure",{
     "font-size":17,"font-weight":780,fill:"#fff7df"});
-  $("metroSceneSvg").setAttribute("aria-label","Illustrated platform at "+name+" on "+step().line);
+  $("metroSceneSvg").setAttribute("aria-label","Illustrated platform at "+name+" on "+displayLineId());
  }
  function trainScene(){
   scene.replaceChildren();sceneDefs();
@@ -381,7 +381,7 @@
   $("metroViewTrain").classList.toggle("active",view==="train");
   $("metroSceneStation").textContent=stationName(atStation());
   $("metroSceneLine").textContent=displayLineId()+" · "+currentLine().name;
-  $("metroStopIndicator").style.color=lineColour(step().line);
+  $("metroStopIndicator").style.color=lineColour(displayLineId());
  }
  function drawLegend(){
   const dest=$("metroLegend");dest.replaceChildren();
@@ -483,6 +483,7 @@
   lab.hidden=!shown;jump.hidden=pilot||!shown;
   lab.querySelector(".metro-scenario-toolbar").hidden=pilot;
   lab.querySelector(".metro-action-card").hidden=pilot;
+  lab.querySelector(".metro-scene-toggle").hidden=pilot;
   lab.querySelector(".metro-banner .metro-overline").textContent=pilot?
     "RIVERTON TRANSIT SYSTEM / F2.1C EN/B1 GAME":"RIVERTON TRANSIT SYSTEM / F2.1B VISUAL PROTOTYPE";
   $("metroHeading").textContent=pilot?"Your metro mission is live.":"The city has another layer.";
