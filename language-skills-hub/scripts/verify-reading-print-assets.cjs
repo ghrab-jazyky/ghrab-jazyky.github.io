@@ -47,7 +47,9 @@ function includedText(label,value,actual,after=0){
  for(const word of words){
   const found=actual.indexOf(word,cursor);
   if(found<0)throw Error('PDF ordered text mismatch: '+label+' missing '+word+
-   ' after offset '+cursor);
+   ' after offset '+cursor+'; context='+actual.slice(Math.max(0,cursor-90),cursor+200)+
+   '; first occurrence='+actual.indexOf(word,after)+
+   '; expected snippet='+expected.slice(0,220));
   cursor=found+word.length;
  }
  return cursor;
