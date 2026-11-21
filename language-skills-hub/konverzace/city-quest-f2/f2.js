@@ -3,7 +3,7 @@
  */
 (() => {
   "use strict";
-  const C=window.CityQuestF2Content,G=window.CityQuestF2Engine,F=window.CityQuestF1Engine,E=window.CityQuestEngine,MG=window.RivertonMetroGame;
+  const C=window.CityQuestF2Content,G=window.CityQuestF2Engine,F=window.CityQuestF1Engine,E=window.CityQuestEngine,MG=window.RivertonMetroGame,LC=window.RivertonMetroLanguage;
   if(!C||!G||!F||!E)throw Error("City Quest F2 modules did not load in dependency order.");
   const $=id=>document.getElementById(id);
   const panel=$("f1Panel"),map=$("cityMap"),viewport=$("mapViewport");
@@ -30,7 +30,9 @@
       repair:{phase:0,done:false,tries:0},detour:G.routeStart(),quest:G.questStart()};
   }
   const pack=()=>C.pack(state.language),profile=()=>C.profile(state.language,state.level),ui=()=>pack().ui;
-  const metroPilot=()=>metroEnabled&&!!MG&&state.language==="en"&&state.level==="B1"&&state.station>=5&&state.station<=8;
+  const metroAvailable=()=>!!MG&&!!LC&&LC.languages.includes(state.language)&&LC.levels.includes(state.level);
+  const metroPilot=()=>metroEnabled&&metroAvailable()&&state.station>=5&&state.station<=8;
+  const metroCopy=()=>LC.pack(state.language,state.level,state.station);
   const metroState=()=>metroPilot()?state.metro[state.station]:null;
   const metroCityPhase=()=>metroPilot()&&state.station===8&&(
     ["walk-to-entrance","enter","walk-to-museum"].includes(metroState().phase)||
@@ -97,8 +99,10 @@
     return details;
   }
   function objective(index){
-    const alt=metroPilot()?MG.definitions[index]:null;
-    const title=alt?alt.title:pack().stations[index-1][0],desc=alt?"Riverton Metro · English B1 interactive mission":pack().stations[index-1][1],goal=alt?alt.goal:profile()[stationKeys[index-1]];
+    const alt=metroPilot()?metroCopy():null;
+    const title=alt?alt.titleMission:pack().stations[index-1][0],
+      desc=alt?alt.kicker+" · "+alt.native+" "+state.level:pack().stations[index-1][1],
+      goal=alt?alt.goal:profile()[stationKeys[index-1]];
     const head=el("div",panel,"f2-card-head");
     el("span",head,"f2-kicker",ui().station+" "+String(index).padStart(2,"0")+" / 08 · "+pack().native+" "+state.level);
     el("h2",head,"",icons[index-1]+" "+title);
@@ -107,13 +111,7 @@
     if(state.mode==="pair"){
       const div=el("div",panel,"f2-pair");
       el("strong",div,"","👥 "+ui().roleMode);
-      const metroPair={
-        5:"Navigator: explain the line, terminus and platform without pointing. Traveller: check the signs and repeat the instructions.",
-        6:"Traveller: ask how to reach Stadium. Navigator: explain the transfer at University. Exchange roles after completing the route.",
-        7:"Dispatcher: read the service disruption. Navigator: recommend an alternative and explain why the closed segment must be avoided.",
-        8:"Traveller and Navigator: alternate between explaining the street route, the metro transfer and the final walk to City Museum."
-      };
-      para(div,alt?metroPair[index]:pack().pair[stationKeys[index-1]]||pack().pair.general);
+      para(div,alt?alt.pair[index]:pack().pair[stationKeys[index-1]]||pack().pair.general);
     }
   }
   function speaking(parent,model){
@@ -159,7 +157,7 @@
     const number=state.station,previousScene=metroScene(),previous=state.metro[number];
     const result=MG.act(previous,action);
     state.metro[number]=result.state;
-    flash={text:result.message,tone:result.accepted?"success":"warning"};
+    flash={text:LC.feedback(state.language,result,action),tone:result.accepted?"success":"warning"};
     if(result.complete)state.done.add(number);
     screen();renderMap();
     if(previousScene!==metroScene()){
@@ -168,55 +166,51 @@
     }
   }
   function renderMetroMission(){
-    const game=metroState(),stage=game.phase,n=state.station;
-    if(game.completed)return complete(n,"Route verified locally. Speaking confirmed by self-assessment; no recording or AI grading.",
-      n===5?"Take M1 towards East Gardens. Get off at Museum Quarter.":n===6?"Change at University and take M3 towards Harbour.":
-        n===7?"Because M1 is closed, change to M3 at University.":"Walk to Market Square, change at University, and finish at City Museum.");
-    el("p",panel,"f2-small","EN · B1 PILOT · Offline · "+game.speakingDone+" speaking checkpoints confirmed");
-    const stageText={
-      "walk-to-entrance":"Walk from Central Station to Market Square on the city map. Use the single compass pad or select adjacent crossroads.",
-      "enter":"You have reached the Market Square entrance. Enter the metro.",
-      "notice":"Read the service notice before choosing a line. The Old Town–Museum Quarter segment on M1 is unavailable.",
-      "select-line":"Inspect the Riverton Metro map. Select the line you need to take from "+MG.scenario(game).start.replaceAll("_"," ")+".",
-      "select-direction":"Choose the correct terminus shown on the train's direction board.",
-      "select-platform":"Choose the platform matching your line and direction. Look at the station signs.",
-      "board":"You have selected a line, direction and platform. Board the train.",
-      "ride":"You are on the train. Advance exactly one stop at a time.",
-      "transfer":"You have arrived at an interchange. Follow the transfer signs to your connecting line.",
-      "exit":"You have arrived at your destination metro station. Leave the train.",
-      "walk-to-museum":"You exited at Museum Quarter. Walk one block north on the city map to City Museum.",
-      "checkpoint":"Explain this part of your journey aloud before continuing.",
-      "speech":"Explain the complete journey aloud and confirm your own speaking check."
-    };
-    note(panel,"🚇 "+(stage==="walk-to-entrance"||stage==="walk-to-museum"?"City navigation":"Metro navigation"),stageText[stage]||"Continue the journey.");
-    const railStatus=game.metroStation.replaceAll("_"," ");
-    status(panel,flash?.text||"Current metro position: "+railStatus+" · "+(game.lineId||"no line selected"),flash?.tone);
+    const game=metroState(),stage=game.phase,n=state.station,c=metroCopy(),
+      place=window.RivertonMetro?.station(game.metroStation)?.labelEn||game.metroStation;
+    if(game.completed)return complete(n,c.labels.verified,LC.model(state.language,state.level,n));
+    el("p",panel,"f2-small",c.native+" · "+state.level+" · "+c.offline+
+      " · "+game.speakingDone+" "+c.labels.checkpoint);
+    note(panel,"🚇 "+(["walk-to-entrance","walk-to-museum"].includes(stage)?c.enterTitle:c.metroTitle),
+      LC.stage(state.language,state.level,n,stage,{station:place}));
+    if(stage==="speech"||stage==="checkpoint"){
+      note(panel,"🎯 "+c.labels.criteria,c.cefr.task);
+      const checklist=el("ul",panel,"metro-selfcheck-criteria");
+      c.cefr.criteria.forEach(criterion=>el("li",checklist,"",criterion));
+      note(panel,"💡 "+c.labels.support,c.cefr.support);
+      const ext=el("details",panel,"metro-language-details");
+      el("summary",ext,"",c.labels.stretch);
+      para(ext,c.cefr.stretch);
+    }
+    status(panel,flash?.text||c.labels.position+": "+place+" · "+(game.lineId||c.labels.noLine),flash?.tone);
     if(stage==="walk-to-entrance"||stage==="walk-to-museum"){
-      para(panel,"The route is checked one adjacent city block at a time. You can use the compass, map nodes or keyboard.","f2-small");
-    }else if(stage==="select-line"||stage==="select-direction"||stage==="select-platform"){
+      para(panel,c.hints.walk,"f2-small");
+    }else if(["select-line","select-direction","select-platform"].includes(stage)){
       const type=stage==="select-line"?"SELECT_LINE":stage==="select-direction"?"SELECT_DIRECTION":"SELECT_PLATFORM";
-      choices(panel,MG.options(game),value=>metroAction({type,value}));
+      const opts=MG.options(game).map(opt=>stage==="select-platform"?
+        {value:opt.value,label:c.labels.platform+" "+opt.value}:opt);
+      choices(panel,opts,value=>metroAction({type,value}));
     }else if(stage==="checkpoint"||stage==="speech"){
-      speaking(panel,n===8?"Go to Market Square. Take M2 to University, transfer to M3 towards Harbour, then walk north to City Museum.":
-        n===7?"Because M1 is closed, take M2 to University, then M3 to Museum Quarter.":
-        n===6?"Take M2 to University and change to M3 towards Harbour. Get off at Stadium.":
-        "Take M1 towards East Gardens. Get off at Museum Quarter.");
+      const tip=el("div",panel,"f2-help");
+      el("strong",tip,"","🗣️ "+c.labels.prompt);
+      const example=el("p",tip,"f2-small");example.hidden=true;
+      btn(tip,c.labels.model,()=>{example.textContent=LC.model(state.language,state.level,n);example.hidden=false;});
       const row=actions(panel);
-      btn(row,"✓ I have practised aloud · continue",()=>metroAction({type:"SELF_CHECK"}),"primary");
+      btn(row,c.actions.SELF_CHECK,()=>metroAction({type:"SELF_CHECK"}),"primary");
     }else{
-      const actionMap={
-        enter:["Enter the metro","ENTER"],notice:["Read service notice","READ_NOTICE"],
-        board:["Board the train","BOARD"],ride:["Travel to next stop","NEXT_STOP"],
-        transfer:["Follow transfer signs","CHANGE_LINE"],exit:["Exit at destination","EXIT"]
-      };
+      const actionMap={enter:"ENTER",notice:"READ_NOTICE",board:"BOARD",ride:"NEXT_STOP",transfer:"CHANGE_LINE",exit:"EXIT"};
       if(actionMap[stage]){
-        const row=actions(panel),[label,type]=actionMap[stage];
-        btn(row,label,()=>metroAction({type}),"primary");
+        const row=actions(panel),type=actionMap[stage];
+        btn(row,c.actions[type],()=>metroAction({type}),"primary");
       }
     }
-    const row=actions(panel);
-    btn(row,"↺ Restart this metro mission",resetStation);
-    if(metroScene())para(panel,"The metro network and illustrated platform are part of this mission. Only the controls in this panel advance the game.","f2-small");
+    const vocab=el("details",panel,"metro-language-details");
+    el("summary",vocab,"","📖 "+c.labels.glossary);
+    const dl=el("dl",vocab,"metro-glossary");
+    c.glossary.forEach(([term,definition])=>{el("dt",dl,"",term);el("dd",dl,"",definition);});
+    const controls=actions(panel);
+    btn(controls,"↺ "+c.labels.restart,resetStation);
+    if(metroScene())para(panel,c.hints.map,"f2-small");
   }
   function renderExplore(){
     const game=state.explore,total=G.answerCount(state.level);
@@ -660,8 +654,8 @@
     F.stations.forEach((st,i)=>{
       const button=el("button",nav,"f1-station");
       button.type="button";
-      const missionTitle=metroEnabled&&state.language==="en"&&state.level==="B1"&&st.id>=5&&MG?
-        MG.definitions[st.id].title:pack().stations[i][0];
+      const missionTitle=metroEnabled&&metroAvailable()&&st.id>=5?
+        LC.pack(state.language,state.level,st.id).titleMission:pack().stations[i][0];
       button.setAttribute("aria-label",u.station+" "+st.id+": "+missionTitle);
       if(state.station===st.id)button.setAttribute("aria-current","step");
       const ic=el("span",button,"f1-station-icon",icons[i]);ic.setAttribute("aria-hidden","true");
@@ -699,29 +693,22 @@
   }
   function updateMetroToggle(){
     const b=$("metroPilotToggle");if(!b)return;
-    b.hidden=state.language!=="en"||state.level!=="B1"||!MG;
-    b.textContent=metroEnabled?"↶ Return to classic city missions":"🚇 Play interactive metro missions (EN/B1 pilot)";
-    b.setAttribute("aria-pressed",String(metroEnabled));
-    const pilot=metroEnabled&&state.language==="en"&&state.level==="B1";
-    // The header belongs to the active teaching experience, not the stale
-    // F2.1B visual gallery. Switching back restores the classic F2 text.
-    const hero=document.querySelector(".hero h1"),heroText=$("f2HeroText");
-    const headerTag=document.querySelector(".topbar .header-actions .tag");
-    const variantTag=document.querySelector(".hero .tags .tag:nth-child(3)");
-    if(pilot){
-      hero.textContent="Riverton City + Metro Quest";
-      heroText.textContent="Find your way above and below Riverton: four city missions and four interactive metro challenges in English at B1.";
-    }else{
-      hero.textContent=pack().stations[7][0];
-      heroText.textContent=pack().stations[0][1]+" "+ui().objective;
-    }
-    if(headerTag)headerTag.textContent=pilot?"F2.1C · METRO PILOT":"F2.1B · METRO DESIGN";
-    if(variantTag)variantTag.textContent=pilot?"EN · B1 METRO":"8 × 4 × 6";
-    document.title=pilot?"Riverton City + Metro Quest · English B1 · LSH":
+    const available=metroAvailable(),content=available?LC.pack(state.language,state.level,5):null;
+    b.hidden=!available;
+    b.textContent=metroEnabled&&available?"↶ "+content.back:content?"🚇 "+content.pilot:"";
+    b.setAttribute("aria-pressed",String(metroEnabled&&available));
+    const pilot=metroEnabled&&available,hero=document.querySelector(".hero h1"),
+      heroText=$("f2HeroText"),headerTag=document.querySelector(".topbar .header-actions .tag"),
+      variantTag=document.querySelector(".hero .tags .tag:nth-child(3)");
+    if(pilot){hero.textContent=content.title;heroText.textContent=content.header;}
+    else{hero.textContent=pack().stations[7][0];heroText.textContent=pack().stations[0][1]+" "+ui().objective;}
+    if(headerTag)headerTag.textContent=pilot?"F2.1D · "+state.level+" METRO":"F2.1B · METRO DESIGN";
+    if(variantTag)variantTag.textContent=pilot?state.language.toUpperCase()+" · "+state.level+" METRO":"8 × 4 × 6";
+    document.title=pilot?content.title+" · "+content.native+" "+state.level+" · LSH":
       "City Quest F2 · "+pack().native+" "+state.level+" · Language Skills Hub";
   }
   function toggleMetroPilot(){
-    if(state.language!=="en"||state.level!=="B1"||!MG)return;
+    if(!metroAvailable())return;
     metroEnabled=!metroEnabled;
     // Switching gameplay modes resets only missions 05-08, preserving 01-04.
     state.done=new Set([...state.done].filter(n=>n<=4));
