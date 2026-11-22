@@ -106,3 +106,26 @@ test("F5C CQ-F5-009: Metro08 detour has a mandatory University meeting and expli
   assert.notEqual(other,prompt,"University checkpoint should be different from the entry checkpoint");
  }
 });
+
+
+test("F5C CQ-F5-007: B2-C2 metro has 48 mission-authored tasks and contextual models, never a shared B1 suffix",()=>{
+ let count=0;
+ for(const lang of L.languages)for(const level of ["B2","C1","C2"]){
+  const tasks=new Set(),models=new Set();
+  for(const mission of L.missions){
+   const p=L.pack(lang,level,mission),model=L.model(lang,level,mission);
+   assert.ok(p.cefr.task.length>70,lang+"/"+level+"/"+mission+" task too thin");
+   assert.ok(model.length>150,lang+"/"+level+"/"+mission+" model too short");
+   assert.equal(model.startsWith(p.models[mission]),false,
+    lang+"/"+level+"/"+mission+" cannot simply append to B1 model");
+   assert.ok(model.includes(p.models[mission]),
+    lang+"/"+level+"/"+mission+" must remain consistent with the graph-verified itinerary");
+   assert.equal(model.endsWith(p.cefr.extension),false,
+    lang+"/"+level+"/"+mission+" generic extension must not be treated as authored answer");
+   tasks.add(p.cefr.task);models.add(model);count++;
+  }
+  assert.equal(tasks.size,4,lang+"/"+level+" must have four different mission learning tasks");
+  assert.equal(models.size,4,lang+"/"+level+" must have four different contextual models");
+ }
+ assert.equal(count,48);
+});
