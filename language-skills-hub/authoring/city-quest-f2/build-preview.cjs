@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 /*
- * City Quest F3C: certified City Quest gameplay and premium city/metro mobile accessibility in ONE SHA-CSP HTML file.
+ * City Quest F3D: integrated city/metro learning design and pedagogical readiness in ONE SHA-CSP HTML file.
  * No network requests or CDNs. Exact SHA-256 CSP hashes allow only generated
  * local CSS and JS. The GitHub Actions artifact is the independent review copy.
  */
@@ -17,7 +17,8 @@ const styles=[
  "konverzace/city-quest-f2/metro-preview.css",
  "konverzace/city-quest-f2/f3-premium.css",
  "konverzace/city-quest-f2/f3b-scenes.css",
- "konverzace/city-quest-f2/f3c-mobile.css"
+ "konverzace/city-quest-f2/f3c-mobile.css",
+ "konverzace/city-quest-f2/f3d-consistency.css"
 ];
 const scripts=[
  "authoring/city-quest-f0/engine.js",
@@ -45,7 +46,8 @@ const styleTokens=[
  '<link rel="stylesheet" href="metro-preview.css">',
  '<link rel="stylesheet" href="f3-premium.css">',
  '<link rel="stylesheet" href="f3b-scenes.css">',
- '<link rel="stylesheet" href="f3c-mobile.css">'
+ '<link rel="stylesheet" href="f3c-mobile.css">',
+ '<link rel="stylesheet" href="f3d-consistency.css">'
 ];
 const scriptTokens=[
  '<script defer src="../../authoring/city-quest-f0/engine.js"></script>',

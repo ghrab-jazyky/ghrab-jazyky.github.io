@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="f3-premium.css">
 <link rel="stylesheet" href="f3b-scenes.css">
 <link rel="stylesheet" href="f3c-mobile.css">
+<link rel="stylesheet" href="f3d-consistency.css">
 <script defer src="../../authoring/city-quest-f0/engine.js"></script>
 <script defer src="../city-quest-f0/city-art.js"></script>
 <script defer src="../city-quest-f0/app.js"></script>
@@ -69,6 +70,7 @@
   <div class="f2-profile" id="f2Profile" aria-live="polite">Independent directions and communication repair</div>
   <button class="btn metro-jump" id="metroJump" type="button" hidden aria-controls="metroLab">🚇 Riverton Metro · Preview</button>
    <button class="btn metro-pilot-toggle" id="metroPilotToggle" type="button" hidden aria-pressed="false" title="Changing between classic and metro missions resets progress in stations 05–08">🚇 Play interactive metro missions (EN/B1 pilot)</button>
+  <p class="f3d-session-advice" id="f3dSessionAdvice">Changing the language or CEFR level starts a new session. Switching city/metro restarts missions 05–08.</p>
 </section>
 <section class="f1-dashboard" aria-label="City Quest session">
  <div class="f1-progress"><strong id="f1ProgressText">0 of 8 missions completed</strong><div class="f1-progress-track" role="progressbar" aria-label="Mission progress" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="f1ProgressTrack"><span id="f1ProgressFill"></span></div><small>Results stay in this browser tab; speaking is not automatically graded.</small></div>
@@ -79,6 +81,19 @@
  </div>
 </section>
 <nav class="f1-stations" id="f1Stations" aria-label="Eight City Quest missions"></nav>
+<section class="f3d-learning-rail" id="f3dLearningRail" aria-labelledby="f3dRailTitle">
+  <div class="f3d-learning-intro">
+    <span class="f3d-learning-world" id="f3dWorld">CITY · RIVERTON</span>
+    <strong id="f3dRailTitle">Mission 01</strong>
+    <span id="f3dRailMode" class="f3d-learning-mode">Solo · English B1</span>
+  </div>
+  <ol class="f3d-learning-steps" id="f3dLearningSteps" aria-label="Three learning phases">
+    <li id="f3dRead" aria-current="step"><span aria-hidden="true">1</span><strong>Read</strong></li>
+    <li id="f3dPractise"><span aria-hidden="true">2</span><strong>Practise</strong></li>
+    <li id="f3dReflect"><span aria-hidden="true">3</span><strong>Reflect</strong></li>
+  </ol>
+  <p id="f3dRailNote">Explain your choices aloud. Speaking is never automatically graded.</p>
+</section>
 <div class="tabs f1-legacy-tabs" role="tablist" aria-label="Legacy F0 mission controls" hidden>
  <button class="btn tab" type="button" id="routeTab" role="tab" aria-selected="true" aria-controls="routeView">01 · Find the Route</button>
  <button class="btn tab" type="button" id="dialogueTab" role="tab" aria-selected="false" aria-controls="dialogueView">02 · Ask for Directions</button>
