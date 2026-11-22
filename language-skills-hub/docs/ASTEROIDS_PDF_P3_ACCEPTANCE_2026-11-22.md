@@ -25,7 +25,7 @@ Baseline `main`: `47d33af5de74e258c6047295456c1d8678e90042` (P2 released). This 
 6. A test failure is NO-GO until diagnosed and remedied; do not weaken checks to force success.
 
 ## P3 GO conditions
-- [ ] Bot has regenerated and committed exactly 96 PDFs with up-to-date manifest and source fingerprint.
+- [x] Bot regenerated and committed exactly 96 PDFs with an updated manifest (branch robot commit `4a1fd8696ad41f28cc01de8dd93cf36f9c37b713`; confirm that the final PR head still contains it).
 - [ ] Exact current PR HEAD passes `pdf-scope`, `unit`, `browser`, `corpus`, `pdf-release-gate`.
 - [ ] EN C1 practice-text/test-text and EN C2 test-text: no nearly empty final page; readable 11pt font, no clipping, correct paragraphs.
 - [ ] EN, ES, DE, FR B1 `practice-all` and `test-all`: writing room ~3 ruled lines, 20pt answer lines; no extra/orphan page; print grayscale contrast satisfactory.
@@ -37,3 +37,8 @@ Baseline `main`: `47d33af5de74e258c6047295456c1d8678e90042` (P2 released). This 
 
 ## External limits
 Physical school grayscale printer, actual Edge/Windows, Safari/iPad, Chrome/Android, and full legal provenance attestation remain unverified by automated checks. Record those independently; an emulator cannot certify actual equipment.
+
+## Early binary geometry check (pre-CI approval)
+- On the regenerated branch at robot commit `4a1fd8696ad41f28cc01de8dd93cf36f9c37b713`: EN C1 practice-text and test-text = **1 page** each (was 2). EN C2 practice-text and test-text = **2 pages** each, so the last-page content-density assertion requires independent CI review; no claim of final R-05 PASS yet.
+- EN/ES/DE/FR B1 `practice-all` = **3 pages** each; EN B1 `test-all` = **3 pages**. Writing-space geometry still requires PDF visual inspection.
+- Run the exact-HEAD gate after this meaningful acceptance-document update. If bot-origin workflow is awaiting GitHub authorization, approve the run explicitly; do not bypass rulesets.
