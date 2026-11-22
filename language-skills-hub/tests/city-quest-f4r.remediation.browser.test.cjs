@@ -144,10 +144,10 @@ test("F4 learner-language metro chrome, station inspector and ARIA labels stay t
   const page=await browser.newPage({viewport:{width:390,height:844}});
   await page.goto(URL);
   const expected={
-   en:{network:"NETWORK CONTROL",inspector:"Served by",journey:"JOURNEY DISPLAY",region:"Scrollable diagram"},
-   es:{network:"CONTROL DE LA RED",inspector:"Línea disponible",journey:"RECORRIDO",region:"Plano desplazable"},
-   de:{network:"LINIENNETZ",inspector:"Bedient von",journey:"FAHRTVERLAUF",region:"Verschiebbarer Netzplan"},
-   fr:{network:"PLAN DU RÉSEAU",inspector:"Desservie par",journey:"PARCOURS",region:"Plan défilant"}
+   en:{network:"NETWORK CONTROL",inspector:"Interchange between",journey:"JOURNEY DISPLAY",region:"Scrollable diagram"},
+   es:{network:"CONTROL DE LA RED",inspector:"Correspondencia entre",journey:"RECORRIDO",region:"Plano desplazable"},
+   de:{network:"LINIENNETZ",inspector:"Umstieg zwischen",journey:"FAHRTVERLAUF",region:"Verschiebbarer Netzplan"},
+   fr:{network:"PLAN DU RÉSEAU",inspector:"Correspondance entre",journey:"PARCOURS",region:"Plan défilant"}
   };
   for(const [lang,copy] of Object.entries(expected)){
    await page.locator("#f2Language").selectOption(lang);
