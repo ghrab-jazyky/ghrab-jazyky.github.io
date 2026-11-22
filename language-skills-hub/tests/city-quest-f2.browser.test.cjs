@@ -75,15 +75,15 @@ test("English B1: all eight stations playable and locally completed",async()=>{
   await page.locator("#f1Stations button").first().waitFor();
   // Station 1: six correct landmarks.
   for(const round of G.F.explore){
-    await page.locator("#f1Panel .f2-choice-list button").nth(round.choices.indexOf(round.correct)).click();
+    await page.locator("#f1Panel .f2-choice-list button").filter({hasText:C.pack("en").places[round.correct]}).click();
   }
   assert.equal(await progress(page),1);
   await station(page,2);
   await directions(page,["east","east","east","north","north"]);
   assert.equal(await progress(page),2);
   await station(page,3);
-  await page.locator("#f1Panel .f2-choice-list button").first().click();
-  await page.locator("#f1Panel .f2-choice-list button").first().click();
+  await page.locator("#f1Panel .f2-choice-list button").filter({hasText:C.profile("en","B1").dialogueAnswer}).click();
+  await page.locator("#f1Panel .f2-choice-list button").filter({hasText:C.pack("en").dialogue.distance}).click();
   assert.equal(await progress(page),3);
   await station(page,4);
   await directions(page,["east","east","north","north","east"]);
@@ -95,8 +95,8 @@ test("English B1: all eight stations playable and locally completed",async()=>{
   await page.locator("#f1Panel .f2-actions .btn").first().click();
   assert.equal(await progress(page),5);
   await station(page,6);
-  await page.locator("#f1Panel .f2-choice-list button").nth(1).click();
-  await page.locator("#f1Panel .f2-choice-list button").first().click();
+  await page.locator("#f1Panel .f2-choice-list button").filter({hasText:C.pack("en").repair.identify[1]}).click();
+  await page.locator("#f1Panel .f2-choice-list button").filter({hasText:C.pack("en").repair.fixes[0]}).click();
   assert.equal(await progress(page),6);
   await station(page,7);
   await directions(page,["north","east","east","east","north"]);
