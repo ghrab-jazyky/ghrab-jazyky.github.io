@@ -81,12 +81,14 @@
         opening:"Ich muss ins Krankenhaus. Welche Buslinie soll ich nehmen?",
         before:"Es ist 08:35 Uhr. Du musst bis 09:10 Uhr am Krankenhaus sein.",
         access:"Der Fahrgast braucht ein barrierefreies Fahrzeug und muss bis 09:10 Uhr am Krankenhaus sein.",
-        complex:"Eine Person mit eingeschränkter Mobilität muss pünktlich ankommen. Empfiehl eine direkte, barrierefreie Verbindung, begründe die Wahl und vergleiche Alternativen.",
+        complex:"Es ist 08:35 Uhr. Eine Person mit eingeschränkter Mobilität muss bis 09:10 Uhr am Krankenhaus sein. Empfiehl eine direkte, barrierefreie Verbindung und erläutere, weshalb die anderen Krankenhausbusse nicht geeignet sind.",
         line7:"Uferpark",line12:"Stadtmuseum",line24:"Krankenhaus",
         why:"Die Linie 24 fährt um 08:47 Uhr ab und kommt um 09:05 Uhr am Krankenhaus an. Sie ist direkt und barrierefrei.",
         lineWrong:"Diese Linie fährt zu einem anderen Ziel.",
         timeWrong:"Überprüfe die Abfahrtszeit der richtigen Linie.",
         stopWrong:"Die Zielhaltestelle muss das Krankenhaus sein.",
+        late:"Dieser Bus kommt nach 09:10 Uhr an. Vergleiche die Ankunftszeiten, nicht nur das Ziel.",
+        notAccessible:"Dieser Bus ist nicht barrierefrei. Wähle eine Verbindung ohne Stufen.",
         missing:"Wähle alle erforderlichen Angaben aus."
       },
       repair:{
@@ -215,12 +217,14 @@
         opening:"Je dois aller à l'hôpital. Quelle ligne dois-je prendre ?",
         before:"Il est 8 h 35. Vous devez être à l'hôpital avant 9 h 10.",
         access:"La personne a besoin d'un véhicule accessible sans marches et doit arriver avant 9 h 10.",
-        complex:"Une personne à mobilité réduite doit arriver à l'heure. Recommandez un trajet direct et accessible, justifiez votre choix et écartez les solutions moins adaptées.",
+        complex:"Il est 8 h 35. Une personne à mobilité réduite doit arriver à l'hôpital avant 9 h 10. Recommandez un trajet direct et accessible et justifiez pourquoi les autres bus vers l'hôpital ne conviennent pas.",
         line7:"Parc des Berges",line12:"Musée municipal",line24:"Hôpital",
         why:"La ligne 24 part à 8 h 47 et arrive à l'hôpital à 9 h 05. C'est un service direct et accessible.",
         lineWrong:"Cette ligne dessert une autre destination.",
         timeWrong:"Vérifiez l'heure de départ de la bonne ligne.",
         stopWrong:"Votre destination doit être l'hôpital.",
+        late:"Ce bus arrive après 9 h 10. Comparez les heures d'arrivée, pas seulement la destination.",
+        notAccessible:"Ce bus n'est pas accessible sans marches. Choisissez un service adapté aux besoins du voyageur.",
         missing:"Sélectionnez toutes les informations demandées."
       },
       repair:{
