@@ -266,6 +266,27 @@
     if(stage==="walk-to-entrance"||stage==="walk-to-museum"){
       para(panel,c.hints.walk,"f2-small");
     }else if(["select-line","select-direction","select-platform"].includes(stage)){
+      if(stage==="select-platform"){
+        // CQ-F5-004: genuine readable station information BEFORE selecting a
+        // platform. Entries come from validated graph fixtures, not from the
+        // currently correct answer. One sign is not itself a forced solution.
+        const metro=window.RivertonMetro,signs=metro.platformSigns(game.metroStation);
+        const board=el("section",panel,"metro-platform-board");
+        board.setAttribute("role","group");
+        board.setAttribute("aria-label",c.labels.platformBoard+" · "+place);
+        el("h3",board,"metro-platform-board-heading","🚉 "+c.labels.platformBoard);
+        const signList=el("ol",board,"metro-platform-board-list");
+        for(const number of ["1","2","3"]){
+          const sign=signs.find(item=>item.platform===number);
+          const item=el("li",signList,"metro-platform-board-item");
+          el("strong",item,"metro-platform-board-number",c.labels.platform+" "+number);
+          const description=sign?
+            sign.line+" · "+c.labels.towards+" "+metro.station(sign.directionTerminus).labelEn:
+            c.labels.noService;
+          el("span",item,"metro-platform-board-sign"+(sign?"":" metro-platform-board-empty"),description);
+          if(sign)item.style.setProperty("--platform-line-colour",metro.line(sign.line).color);
+        }
+      }
       const type=stage==="select-line"?"SELECT_LINE":stage==="select-direction"?"SELECT_DIRECTION":"SELECT_PLATFORM";
       const opts=MG.options(game).map(opt=>stage==="select-platform"?
         {value:opt.value,label:c.labels.platform+" "+opt.value}:opt);
