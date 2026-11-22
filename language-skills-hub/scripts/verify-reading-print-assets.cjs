@@ -3,10 +3,12 @@
 /* Release gate for pre-generated Asteroids PDF assets.
  * Requires pdftotext/pdfinfo (poppler-utils) and qpdf for structural validation.
  * --compare <directory> additionally checks that rebuilding the corpus produces
- * the same semantic text and page counts as the committed PDF corpus.
+ * the same canonical PDF bytes (excluding only metadata timestamps),
+ * semantic text and page counts as the committed PDF corpus.
  */
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {execFileSync}=require('node:child_process');
+const {pdfContentSha256}=require('./pdf-content-sha256.cjs');
 const root=path.resolve(__dirname,'..');
 const pdfRoot=path.join(root,'printouts','rl-asteroids');
 const manifest=JSON.parse(fs.readFileSync(path.join(pdfRoot,'manifest-all.json'),'utf8'));
@@ -179,6 +181,9 @@ for(const lang of ['en','es','de','fr'])for(const level of ['A1','A2','B1','B2',
     run('pdftotext',['-layout','-nopgbrk',oldFile,'-'])));
    if(oldText!==actual||old.pages!==pages)
     throw Error('Regenerated content/page count differs from committed PDF '+key);
+   // Also compare every font, drawing, image stream and PDF byte except timestamps.
+   if(pdfContentSha256(old.bytes)!==pdfContentSha256(bytes))
+    throw Error('Regenerated full PDF bytes differ from committed PDF '+key);
   }
   count++;pageTotal+=pages;
  }
@@ -190,6 +195,8 @@ function walkPDFs(dir,rel=''){
   if(entry.isDirectory())walkPDFs(path.join(dir,entry.name),name);
   else if(entry.isFile()&&entry.name.endsWith('.pdf'))
    diskFiles.push('printouts/rl-asteroids/'+name);
+  else if(!(rel===''&&entry.name==='manifest-all.json'))
+   throw Error('Unexpected non-PDF file or symlink inside Asteroids PDF corpus: '+name);
  }
 }
 walkPDFs(pdfRoot);
@@ -198,4 +205,4 @@ if(JSON.stringify(diskFiles.sort())!==JSON.stringify(expectedFiles))
  throw Error('Unexpected or missing PDF on disk (must match manifest exactly)');
 console.log('PASS: '+count+' PDF variants; '+pageTotal+' A4 pages; '+gapCount+
  ' gap variants; manifest SHA256, text, source provenance'+
- (compareRoot?' and regeneration parity':''));
+ (compareRoot?' and full-byte regeneration parity':''));
