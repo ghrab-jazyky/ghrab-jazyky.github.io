@@ -230,3 +230,8 @@
 @media(max-width:700px){
  .f2-landmarks{grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr))}
 }
+
+
+/* F5C CQ-F5-022: accessible help and restart controls on small screens. */
+.f2-actions .btn{min-height:44px}
+.f2-help summary,.metro-language-details summary{display:flex;align-items:center;min-height:44px}
