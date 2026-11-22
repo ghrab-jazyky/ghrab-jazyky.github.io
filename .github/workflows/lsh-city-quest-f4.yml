@@ -85,6 +85,8 @@ jobs:
           node --check language-skills-hub/tests/city-quest-f3d.acceptance-matrix.test.cjs
           node --check language-skills-hub/tests/city-quest-f4.independent.static.test.cjs
           node --check language-skills-hub/tests/city-quest-f4.independent.browser.test.cjs
+          node --check language-skills-hub/tests/city-quest-f4r.remediation.browser.test.cjs
+          node --check language-skills-hub/tests/city-quest-f4r.linguistic.test.cjs
           node --test language-skills-hub/tests/city-quest-f2-1b.metro.test.cjs
           node --test language-skills-hub/tests/city-quest-f2-1c.metro-game.test.cjs
           node --test language-skills-hub/tests/city-quest-f2-1d.metro-language.test.cjs
@@ -95,6 +97,7 @@ jobs:
         run: |
           node language-skills-hub/authoring/city-quest-f2/build-preview.cjs --write
           node --test language-skills-hub/tests/city-quest-f4.independent.static.test.cjs
+          node --test language-skills-hub/tests/city-quest-f4r.linguistic.test.cjs
       - name: "Regression: route, 8 F1 stations and existing F2 CEFR content"
         run: |
           node --test language-skills-hub/tests/city-quest-f0.test.cjs
@@ -155,6 +158,7 @@ jobs:
             sleep 1
           done
           # F4 adversarial and independent checks are first, not F3D helpers.
+          node --test language-skills-hub/tests/city-quest-f4r.remediation.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-f4.independent.browser.test.cjs
           # F3D must pass full 192-variant + focus/lesson acceptance.
           node --test language-skills-hub/tests/city-quest-f3d.pedagogy.browser.test.cjs
@@ -181,6 +185,7 @@ jobs:
             city-quest-f3c-artifacts/
             city-quest-f3d-artifacts/
             city-quest-f4-artifacts/
+            city-quest-f4r-artifacts/
           if-no-files-found: warn
           retention-days: 14
       - name: Export portable F2 + interactive metro pilot HTML

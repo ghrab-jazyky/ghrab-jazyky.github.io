@@ -244,10 +244,10 @@
         badDistance:"No tengo ni idea. Siga andando.",
         goodbye:"¡De nada! Disfrute de la visita.",
         good:"Indicaciones claras y adecuadas.",
-        repairGood:"Bien: ha reconocido el error y lo ha corregido.",
+        repairGood:"Bien: has reconocido el error y lo has corregido.",
         unclear:"El turista necesita indicaciones más concretas.",
         wrongFeedback:"Esa dirección alejaría al turista del museo.",
-        final:"Ha ayudado al turista. Compare su respuesta con el modelo."
+        final:"Has ayudado al turista. Compara tu respuesta con el modelo."
       },
       directions:{
         north:"norte",east:"este",south:"sur",west:"oeste",

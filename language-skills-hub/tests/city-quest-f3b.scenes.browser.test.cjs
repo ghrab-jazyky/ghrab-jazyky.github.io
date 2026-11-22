@@ -102,7 +102,9 @@ test("F3B disruption notice uses authored local language and never gives the Uni
   assert.match(msg,/\bM1\b/);assert.doesNotMatch(msg,/University|\bM2\b|\bM3\b/);
   assert.equal(await page.locator("#metroSceneSvg").getAttribute("data-phase"),"notice");
   assert.equal(await page.locator(".metro-alert-sign").count(),1);
-  assert.match(await page.locator("#metroSceneSvg").textContent(),/SERVICE DISRUPTION/);
+  // This C1 mission is French: verify the localized board, never English fallback.
+  assert.match(await page.locator("#metroSceneSvg").textContent(),/SERVICE PERTURBÉ/);
+  assert.doesNotMatch(await page.locator("#metroSceneSvg").textContent(),/SERVICE DISRUPTION/);
   assert.doesNotMatch(await page.locator("#metroSceneSvg").textContent(),/CHECK PLATFORM/);
   await page.locator("#metroSceneSvg").screenshot({path:path.join(OUT,"french-c1-disruption-390.png")});
   await choose(page,L.pack("fr","C1",7).actions.READ_NOTICE);

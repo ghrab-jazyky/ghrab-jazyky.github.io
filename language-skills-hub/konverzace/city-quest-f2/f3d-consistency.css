@@ -228,3 +228,36 @@
 :root[data-motion="off"] .f3d-learning-rail *{
  transition:none!important;animation:none!important;
 }
+
+
+/* F4R accessibility remediation: density must respond to the actual root
+ * text size, not merely screen pixels. A rem-based grid min track yields
+ * 2 columns at normal 320/390px, but ONE readable column at 200% text zoom.
+ * Never hide longer native titles or rely on clipping them.
+ */
+@media(max-width:820px){
+ .f1-stations{
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,9rem),1fr));
+ }
+ .f3d-learning-steps{
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,5.5rem),1fr));
+ }
+ .f3d-learning-intro{
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,8rem),1fr));
+ }
+ .f3d-learning-mode{max-width:none;text-align:left}
+ .f1-station-caption strong{overflow-wrap:anywhere}
+}
+
+/* F4: four-language metro headings and status badges must reflow at 200%
+ * browser text size. Flex wraps naturally, without hiding text or script
+ * controlled media queries. The compact desktop arrangement is preserved.
+ */
+.metro-network-head{flex-wrap:wrap}
+.metro-network-head>div:first-child{flex:1 1 8rem;min-width:0}
+.metro-network-head h3{overflow-wrap:anywhere}
+.metro-network-head-actions{min-width:0;flex:0 1 auto}
+.metro-live-pulse{white-space:normal;overflow-wrap:anywhere}
+.metro-scenario-head strong,
+.metro-inspector-top strong,
+.metro-journey-header span:first-child{min-width:0;overflow-wrap:anywhere}

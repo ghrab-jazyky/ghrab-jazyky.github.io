@@ -40,7 +40,7 @@
     fr:{city:"VILLE · RIVERTON",metro:"MÉTRO · RIVERTON",
       read:"Lire",practise:"S'entraîner",reflect:"Faire le bilan",
       phases:"Trois étapes d'apprentissage",mission:"Mission",mode:"Mode",
-      note:"Explique tes choix à l'oral. L'expression orale s'autoévalue et n'est jamais notée automatiquement.",
+      note:"Expliquez vos choix à l'oral. Votre prise de parole fait l'objet d'une autoévaluation, jamais d'une note automatique.",
       metroReset:"Passer de la ville au métro réinitialise les missions 05–08 ; les missions 01–04 sont conservées."}
   };
   const lesson=()=>lessonCopy[state.language]||lessonCopy.en;
@@ -130,7 +130,7 @@
       goal=alt?alt.goal:profile()[stationKeys[index-1]];
     const head=el("div",panel,"f2-card-head");
     el("span",head,"f2-kicker",ui().station+" "+String(index).padStart(2,"0")+" / 08 · "+pack().native+" "+state.level);
-    el("h2",head,"",icons[index-1]+" "+title);
+    el("h2",head,"",(alt&&index===5?"🚇":icons[index-1])+" "+title);
     para(head,desc);
     note(panel,"🎯 "+ui().mission,goal);
     if(state.mode==="pair"){
@@ -803,7 +803,8 @@
         LC.pack(state.language,state.level,st.id).titleMission:pack().stations[i][0];
       button.setAttribute("aria-label",u.station+" "+st.id+": "+missionTitle);
       if(state.station===st.id)button.setAttribute("aria-current","step");
-      const ic=el("span",button,"f1-station-icon",icons[i]);ic.setAttribute("aria-hidden","true");
+      const icon=metroEnabled&&metroAvailable()&&st.id===5?"🚇":icons[i];
+      const ic=el("span",button,"f1-station-icon",icon);ic.setAttribute("aria-hidden","true");
       const cap=el("span",button,"f1-station-caption");
       el("small",cap,"",u.station+" "+String(st.id).padStart(2,"0"));
       el("strong",cap,"",missionTitle);
@@ -844,6 +845,7 @@
     const b=$("metroPilotToggle");if(!b)return;
     const available=metroAvailable(),content=available?LC.pack(state.language,state.level,5):null;
     b.hidden=!available;
+    b.title=lesson().metroReset;
     b.textContent=metroEnabled&&available?"↶ "+content.back:content?"🚇 "+content.pilot:"";
     b.setAttribute("aria-pressed",String(metroEnabled&&available));
     const pilot=metroEnabled&&available,hero=document.querySelector(".hero h1"),
@@ -851,7 +853,7 @@
       variantTag=document.querySelector(".hero .tags .tag:nth-child(3)");
     if(pilot){hero.textContent=content.title;heroText.textContent=content.header;}
     else{hero.textContent=pack().stations[7][0];heroText.textContent=pack().stations[0][1]+" "+ui().objective;}
-    if(headerTag)headerTag.textContent=pilot?"F2.1D · "+state.level+" METRO":"F2.1B · METRO DESIGN";
+    if(headerTag)headerTag.textContent=pilot?"F2.1D · "+state.level+" METRO":"CITY QUEST · PREMIUM";
     if(variantTag)variantTag.textContent=pilot?state.language.toUpperCase()+" · "+state.level+" METRO":"8 × 4 × 6";
     document.title=pilot?content.title+" · "+content.native+" "+state.level+" · LSH":
       "City Quest F2 · "+pack().native+" "+state.level+" · Language Skills Hub";

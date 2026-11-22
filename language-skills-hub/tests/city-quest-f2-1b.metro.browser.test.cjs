@@ -183,7 +183,16 @@ test("F2.1B visibility gating: A1/A2 city-only and B1–C2 metro preview for fou
     await select(page,lang,level);
     assert.equal(await page.locator("#metroLab").isVisible(),true,lang+level);
     assert.equal(await page.locator("#metroJump").isVisible(),true,lang+level);
-    assert.match(await page.locator("#metroLab .metro-disclaimer").innerText(),/EN\/B1 route reference/);
+    // The gallery remains a genuine EN reference, but its explanations are
+    // translated into the selected UI language. Do not require English text
+    // to leak into the ES/DE/FR interface.
+    const galleryLanguage={
+     en:/EN\/B1 route reference/,
+     es:/Referencia visual en inglés/,
+     de:/Unbenotetes englisches Anschauungsbeispiel/,
+     fr:/Exemple visuel en anglais/
+    };
+    assert.match(await page.locator("#metroLab .metro-disclaimer").innerText(),galleryLanguage[lang]);
    }
   }
   assert.deepEqual(events.external,[]);

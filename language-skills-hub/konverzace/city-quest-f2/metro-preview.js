@@ -35,12 +35,60 @@
    inspect:name=>"Ausgewählte Station: "+name+". Die Fahrt wurde nicht fortgesetzt.",
    stop:name=>"Deine aktuelle Station: "+name+".",map:"Bedienung des Linienplans"},
   fr:{picker:"Explorer les stations",locate:"◎ Mon arrêt",task:"↑ Mission",
-   hint:"Consulte les stations sans déplacer le voyageur. Seules les commandes de la mission font avancer le trajet.",
+   hint:"Consultez les stations sans déplacer le voyageur. Seules les commandes de la mission font avancer le trajet.",
    overview:"⊞ Réseau entier",detail:"⊕ Détail lisible",
    inspect:name=>"Station sélectionnée : "+name+". Le trajet n'a pas avancé.",
    stop:name=>"Arrêt actuel : "+name+".",map:"Commandes du plan du métro"}
  };
  const ux=()=>f3cText[$("f2Language").value]||f3cText.en;
+ // Game-mode maps and scenes are localized; the separate EN reference gallery
+ // deliberately keeps its original English visual examples.
+ const sceneText={
+  en:{network:"UNDERGROUND NETWORK / 3 LINES",scale:"NOT TO SCALE",mapCaption:"MULTILINGUAL METRO MISSION · OFFLINE",closed:"SERVICE CLOSED",nextService:"NEXT SERVICE",signs:"Follow the signs",awaiting:"Awaiting departure",disruption:"SERVICE DISRUPTION",interchange:"INTERCHANGE",nextStop:"NEXT STOP / CURRENT LOCATION",platformAt:"Illustrated platform at ",trainAt:"Illustrated metro train on ",lineAt:" on ",terminus:"CHECK TERMINUS",platform:"CHECK PLATFORM",reached:"DESTINATION REACHED",preview:"WAYFINDING PREVIEW",platformWord:"PLATFORM",follow:"FOLLOW EXIT SIGNS",notice:"SERVICE DISRUPTION · CHECK THE NETWORK",transfer:"CHANGE TRAINS · FOLLOW INTERCHANGE SIGNS",chooseLine:"STATION CONCOURSE · FIND YOUR LINE",chooseDirection:"DEPARTURES · CHECK THE TRAIN TERMINUS",choosePlatform:"PLATFORM CHECK · MATCH LINE AND TERMINUS",towards:"TOWARDS",inspector:"Station connections"},
+  es:{network:"RED DE METRO / 3 LÍNEAS",scale:"NO ESTÁ A ESCALA",mapCaption:"MISIÓN MULTILINGÜE · SIN CONEXIÓN",closed:"TRAMO CERRADO",nextService:"PRÓXIMO SERVICIO",signs:"Sigue las señales",awaiting:"Esperando la salida",disruption:"SERVICIO INTERRUMPIDO",interchange:"TRANSBORDO",nextStop:"PRÓXIMA PARADA / UBICACIÓN ACTUAL",platformAt:"Andén ilustrado en ",trainAt:"Interior ilustrado del metro en ",lineAt:" · línea ",terminus:"COMPRUEBA EL DESTINO",platform:"COMPRUEBA EL ANDÉN",reached:"DESTINO ALCANZADO",preview:"VISTA PREVIA",platformWord:"ANDÉN",follow:"SIGUE LAS SEÑALES DE SALIDA",notice:"INCIDENCIA · CONSULTA EL PLANO",transfer:"TRANSBORDO · SIGUE LAS SEÑALES",chooseLine:"VESTÍBULO · ELIGE UNA LÍNEA",chooseDirection:"SALIDAS · COMPRUEBA EL DESTINO",choosePlatform:"ANDÉN · COMPRUEBA LÍNEA Y DESTINO",towards:"DIRECCIÓN",inspector:"Conexiones de la estación"},
+  de:{network:"U-BAHN-NETZ / 3 LINIEN",scale:"NICHT MASSSTABSGETREU",mapCaption:"MEHRSPRACHIGE U-BAHN-AUFGABE · OFFLINE",closed:"STRECKE GESPERRT",nextService:"NÄCHSTE VERBINDUNG",signs:"Folge den Schildern",awaiting:"Abfahrt steht bevor",disruption:"BETRIEBSSTÖRUNG",interchange:"UMSTEIGEN",nextStop:"NÄCHSTER HALT / AKTUELLER STANDORT",platformAt:"Illustrierter Bahnsteig an ",trainAt:"Illustrierter U-Bahn-Wagen bei ",lineAt:" · Linie ",terminus:"ENDSTATION PRÜFEN",platform:"BAHNSTEIG PRÜFEN",reached:"ZIEL ERREICHT",preview:"ORIENTIERUNGSVORSCHAU",platformWord:"BAHNSTEIG",follow:"ZUM AUSGANG",notice:"STÖRUNG · NETZPLAN PRÜFEN",transfer:"UMSTEIGEN · SCHILDER BEACHTEN",chooseLine:"BAHNHOF · LINIE SUCHEN",chooseDirection:"ABFAHRTEN · ENDSTATION PRÜFEN",choosePlatform:"BAHNSTEIG · LINIE UND ZIEL PRÜFEN",towards:"RICHTUNG",inspector:"Stationsverbindungen"},
+  fr:{network:"RÉSEAU DE MÉTRO / 3 LIGNES",scale:"PLAN SCHÉMATIQUE",mapCaption:"MISSION MULTILINGUE · HORS LIGNE",closed:"TRONÇON FERMÉ",nextService:"PROCHAIN SERVICE",signs:"Suivez les panneaux",awaiting:"En attente de départ",disruption:"SERVICE PERTURBÉ",interchange:"CORRESPONDANCE",nextStop:"PROCHAIN ARRÊT / POSITION ACTUELLE",platformAt:"Quai illustré à ",trainAt:"Intérieur illustré du métro à ",lineAt:" · ligne ",terminus:"VÉRIFIEZ LE TERMINUS",platform:"VÉRIFIEZ LE QUAI",reached:"DESTINATION ATTEINTE",preview:"APERÇU DE L'ORIENTATION",platformWord:"QUAI",follow:"SUIVEZ LES SORTIES",notice:"PERTURBATION · CONSULTEZ LE PLAN",transfer:"CORRESPONDANCE · SUIVEZ LES PANNEAUX",chooseLine:"HALL · TROUVEZ LA LIGNE",chooseDirection:"DÉPARTS · VÉRIFIEZ LE TERMINUS",choosePlatform:"QUAI · VÉRIFIEZ LA LIGNE ET LE TERMINUS",towards:"DIRECTION",inspector:"Correspondances de la station"}
+ };
+ const tr=()=>gameMode?(sceneText[$("f2Language").value]||sceneText.en):sceneText.en;
+
+ // Only fictional station proper names and the EN-only reference gallery's
+ // illustrative tasks remain in English. All surrounding controls, captions
+ // and accessibility labels are learner-language specific.
+ const chromeText={
+  en:{networkControl:"NETWORK CONTROL",networkName:"Riverton Underground",simulation:"LOCAL SIMULATION",mapRegion:"Scrollable diagram of three fictional metro lines",svgMap:"Interactive schematic map of Riverton Metro",mapLegend:"Metro line legend",mapSwipe:"↔ Swipe map to explore · Select a station",sidebar:"Metro journey and platform",journey:"JOURNEY DISPLAY",from:"FROM",to:"TO",journeyProgress:"Journey progress",immersive:"IMMERSIVE SCENE",sceneToggle:"Switch metro environment",platformTab:"Platform",trainTab:"On board",paAria:"Contextual metro public-address text",inspector:"SELECTED STATION",served:line=>"Served by "+line+".",transfer:lines=>"Interchange between "+lines+".",surface:"Surface connection:",inspectorHelp:"Inspect a station or follow the mission to practise navigation.",portals:{central_station:"Central railway station",market_square:"Market Square",museum_quarter:"Museum entrance, one block south of City Museum",riverside:"Near Riverside Park"},badges:["3 colour-coded lines","14 stations","3 interchanges","Offline SVG world"],demoTitle:"CHOOSE AN ENGLISH REFERENCE SCENARIO",demoHint:"Explore the four English-only reference journeys. The interactive missions are available separately in four languages.",scenarioAria:"Choose an English example metro journey"},
+  es:{networkControl:"CONTROL DE LA RED",networkName:"Metro de Riverton",simulation:"SIMULACIÓN LOCAL",mapRegion:"Plano desplazable de tres líneas de metro ficticias",svgMap:"Plano esquemático interactivo del Metro de Riverton",mapLegend:"Leyenda de líneas de metro",mapSwipe:"↔ Desliza el plano · Selecciona una estación",sidebar:"Trayecto y andén del metro",journey:"RECORRIDO",from:"DESDE",to:"HASTA",journeyProgress:"Progreso del trayecto",immersive:"ESCENA INMERSIVA",sceneToggle:"Cambiar de vista del metro",platformTab:"Andén",trainTab:"A bordo",paAria:"Avisos de megafonía simulados por escrito",inspector:"ESTACIÓN SELECCIONADA",served:line=>"Línea disponible: "+line+".",transfer:lines=>"Correspondencia entre "+lines+".",surface:"Acceso desde la calle:",inspectorHelp:"Consulta una estación o sigue la misión para practicar.",portals:{central_station:"Estación de tren Central",market_square:"Market Square",museum_quarter:"Entrada del metro, una manzana al sur de City Museum",riverside:"Cerca de Riverside Park"},badges:["3 líneas diferenciadas","14 estaciones","3 correspondencias","Mundo SVG sin conexión"],demoTitle:"ELIGE UN EJEMPLO EN INGLÉS",demoHint:"Explora cuatro recorridos de referencia en inglés. Las misiones interactivas se ofrecen por separado en cuatro idiomas.",scenarioAria:"Elegir un recorrido de ejemplo en inglés"},
+  de:{networkControl:"LINIENNETZ",networkName:"U-Bahn Riverton",simulation:"LOKALE SIMULATION",mapRegion:"Verschiebbarer Netzplan mit drei fiktiven U-Bahn-Linien",svgMap:"Interaktiver schematischer U-Bahn-Plan von Riverton",mapLegend:"Legende der U-Bahn-Linien",mapSwipe:"↔ Netzplan verschieben · Station auswählen",sidebar:"U-Bahn-Strecke und Bahnsteig",journey:"FAHRTVERLAUF",from:"VON",to:"NACH",journeyProgress:"Fortschritt der Fahrt",immersive:"ILLUSTRIERTE SZENE",sceneToggle:"U-Bahn-Ansicht wechseln",platformTab:"Bahnsteig",trainTab:"Im Zug",paAria:"Schriftliche Simulation von U-Bahn-Durchsagen",inspector:"AUSGEWÄHLTE STATION",served:line=>"Bedient von "+line+".",transfer:lines=>"Umstieg zwischen "+lines+".",surface:"Zugang von der Straße:",inspectorHelp:"Sieh dir eine Station an oder folge der Aufgabe, um das Navigieren zu üben.",portals:{central_station:"Hauptbahnhof",market_square:"Market Square",museum_quarter:"U-Bahn-Eingang, einen Häuserblock südlich von City Museum",riverside:"In der Nähe des Riverside Park"},badges:["3 farbige Linien","14 Stationen","3 Umstiege","Offline-SVG-Welt"],demoTitle:"ENGLISCHES BEISPIEL WÄHLEN",demoHint:"Erkunde vier englischsprachige Beispielrouten. Die interaktiven Aufgaben sind separat in vier Sprachen verfügbar.",scenarioAria:"Englische Beispielstrecke wählen"},
+  fr:{networkControl:"PLAN DU RÉSEAU",networkName:"Métro de Riverton",simulation:"SIMULATION LOCALE",mapRegion:"Plan défilant de trois lignes de métro fictives",svgMap:"Plan schématique interactif du métro de Riverton",mapLegend:"Légende des lignes de métro",mapSwipe:"↔ Faites défiler le plan · Choisissez une station",sidebar:"Trajet et quai du métro",journey:"PARCOURS",from:"DE",to:"À",journeyProgress:"Progression du trajet",immersive:"SCÈNE ILLUSTRÉE",sceneToggle:"Changer la vue du métro",platformTab:"Quai",trainTab:"À bord",paAria:"Simulation écrite des annonces du métro",inspector:"STATION SÉLECTIONNÉE",served:line=>"Desservie par "+line+".",transfer:lines=>"Correspondance entre "+lines+".",surface:"Accès depuis la rue :",inspectorHelp:"Consultez une station ou suivez la mission pour vous entraîner.",portals:{central_station:"Gare centrale",market_square:"Market Square",museum_quarter:"Entrée du métro, un pâté de maisons au sud de City Museum",riverside:"Près du Riverside Park"},badges:["3 lignes différenciées","14 stations","3 correspondances","Univers SVG hors ligne"],demoTitle:"CHOISISSEZ UN EXEMPLE EN ANGLAIS",demoHint:"Explorez quatre trajets de référence en anglais. Les missions interactives sont disponibles séparément en quatre langues.",scenarioAria:"Choisir un trajet d'exemple en anglais"}
+ };
+ const cx=()=>chromeText[$("f2Language").value]||chromeText.en;
+ function localizeMetroChrome(){
+  const c=cx(),set=(selector,t)=>{const node=lab.querySelector(selector);if(node)node.textContent=t;};
+  set(".metro-network-head small",c.networkControl);
+  set(".metro-network-head h3",c.networkName);
+  const pulse=lab.querySelector(".metro-live-pulse");
+  if(pulse&&pulse.lastChild&&pulse.lastChild.nodeType===3)pulse.lastChild.textContent=" "+c.simulation;
+  set(".metro-map-instructions",c.mapSwipe);
+  set(".metro-journey-header span",c.journey);
+  const ends=lab.querySelectorAll(".metro-journey-path small");
+  if(ends.length===2){ends[0].textContent=c.from;ends[1].textContent=c.to;}
+  set(".metro-scene-card .metro-eyebrow",c.immersive);
+  set("#metroViewPlatform",c.platformTab);
+  set("#metroViewTrain",c.trainTab);
+  set(".metro-inspector-top strong",c.inspector);
+  set(".metro-scenario-head strong",c.demoTitle);
+  set(".metro-scenario-head small",c.demoHint);
+  const badges=lab.querySelectorAll(".metro-banner-badges span");
+  badges.forEach((node,i)=>{if(c.badges[i])node.textContent=c.badges[i];});
+  $("metroNetworkViewport").setAttribute("aria-label",c.mapRegion);
+  network.setAttribute("aria-label",c.svgMap);
+  $("metroLegend").setAttribute("aria-label",c.mapLegend);
+  lab.querySelector(".metro-side").setAttribute("aria-label",c.sidebar);
+  $("metroJourneyProgress").setAttribute("aria-label",c.journeyProgress);
+  lab.querySelector(".metro-scene-toggle").setAttribute("aria-label",c.sceneToggle);
+  $("metroPublicAddress").setAttribute("aria-label",c.paAria);
+  $("metroScenarios").setAttribute("aria-label",c.scenarioAria);
+ }
+
  const motionOff=()=>window.matchMedia("(prefers-reduced-motion: reduce)").matches||
   document.documentElement.dataset.motion==="off";
  const labels={
@@ -128,10 +176,10 @@
    rounded(network,x+8,y+8,w-16,h-16,"none",5,{stroke:"#9bdfe1",opacity:.09});
   }
   drawnText(network,50,55,"RIVERTON",{"font-size":28,"font-weight":950,"letter-spacing":5.5,fill:"#eafdfa"});
-  drawnText(network,51,79,"UNDERGROUND NETWORK  /  3 LINES",{"font-size":12,"font-weight":750,"letter-spacing":2.6,fill:"#88c7d2"});
-  drawnText(network,1051,55,"NOT TO SCALE",{"font-size":11,"font-weight":800,"letter-spacing":1.4,
+  drawnText(network,51,79,gameMode?tr().network:"UNDERGROUND NETWORK  /  3 LINES",{"font-size":12,"font-weight":750,"letter-spacing":2.6,fill:"#88c7d2"});
+  drawnText(network,1051,55,gameMode?tr().scale:"NOT TO SCALE",{"font-size":11,"font-weight":800,"letter-spacing":1.4,
     "text-anchor":"end",fill:"#9bced8"});
-  drawnText(network,51,727,gameMode?"F2.1C EN/B1 MISSION  •  OFFLINE TRAINING":"F2.1B VISUAL PREVIEW  •  RIDE THE NETWORK",{"font-size":12,"font-weight":800,
+  drawnText(network,51,727,gameMode?tr().mapCaption:"F2.1B VISUAL PREVIEW  •  RIDE THE NETWORK",{"font-size":12,"font-weight":800,
     "letter-spacing":1.4,fill:"#77acb8"});
   append(network,"path",{d:"M49 703H1145",fill:"none",stroke:"#8adcd3","stroke-width":1,opacity:.2});
  }
@@ -175,7 +223,7 @@
      "stroke-dasharray":"15 11","stroke-linecap":"round"});
    const mx=(a.x+b.x)/2,my=(a.y+b.y)/2;
    rounded(geometry,mx-70,my-49,140,30,"#922f42",9,{stroke:"#ffc8b6","stroke-width":2});
-   drawnText(geometry,mx,my-29,"SERVICE CLOSED",{"font-size":12.5,"font-weight":900,
+   drawnText(geometry,mx,my-29,gameMode?tr().closed:"SERVICE CLOSED",{"font-size":12.5,"font-weight":900,
      "text-anchor":"middle",fill:"#fff8ed"});
   }
   const preferred=append(network,"g",{id:"metroPreferredRoute","aria-hidden":"true"});
@@ -290,12 +338,11 @@
   if(!station)return;
   $("metroInspectorName").textContent=station.labelEn;
   $("metroInspectorLine").textContent=lines.join(" · ");
-  const transfers=lines.length>1?"Interchange between "+lines.join(" and ")+". ":
-    "Served by "+lines[0]+". ";
+  const copy=cx();
+  const transfers=lines.length>1?copy.transfer(lines.join(" / ")):copy.served(lines[0]);
   const portals=M.source.surfacePortals.filter(p=>p.metroStation===inspected);
-  $("metroInspectorDetail").textContent=transfers+
-    (portals.length?"Surface connection: "+portals[0].description+". ":"")+
-    "Select a mission and follow the route to practise navigating.";
+  const surface=portals.length?copy.surface+" "+(copy.portals[inspected]||station.labelEn)+". ":"";
+  $("metroInspectorDetail").textContent=transfers+" "+surface+copy.inspectorHelp;
  }
  function lineFixture(){
   const currentStep=step();
@@ -348,19 +395,19 @@
     arrived=!!gameMode&&["exit","walk-to-museum","speech","complete"].includes(phase);
   const next=route()[Math.min(current.index+1,route().length-1)];
   const dest=fixture?stationName(fixture.directionTerminus):
-    (gameMode&&gameMode.direction?stationName(gameMode.direction):gameMode?"CHECK TERMINUS":
+    (gameMode&&gameMode.direction?stationName(gameMode.direction):gameMode?tr().terminus:
       next?.line?stationName(M.line(next.line).stops.at(-1)):"CHECK LINE");
-  const platform=arrived?"DESTINATION REACHED":
-    fixture?"PLATFORM "+fixture.platform:gameMode?"CHECK PLATFORM":"WAYFINDING PREVIEW";
+  const platform=arrived?tr().reached:
+    fixture?tr().platformWord+" "+fixture.platform:gameMode?tr().platform:tr().preview;
   // The departure board must describe the ACTUAL player phase, not a former
   // platform, and never reveal a future line/direction during route choices.
-  const sign=phase==="transfer"?"⇄ CHANGE TRAINS  •  FOLLOW INTERCHANGE SIGNS":
-    phase==="notice"?"SERVICE DISRUPTION  •  CHECK THE NETWORK":
-    phase==="select-line"?"STATION CONCOURSE  •  FIND YOUR LINE":
-    phase==="select-direction"?"DEPARTURES  •  CHECK THE TRAIN TERMINUS":
-    phase==="select-platform"?"PLATFORM CHECK  •  MATCH LINE AND TERMINUS":
-    arrived?"DESTINATION REACHED  •  FOLLOW EXIT SIGNS":
-    platform+"   •   TOWARDS "+dest.toUpperCase();
+  const sign=phase==="transfer"?"⇄ "+tr().transfer:
+    phase==="notice"?tr().notice:
+    phase==="select-line"?tr().chooseLine:
+    phase==="select-direction"?tr().chooseDirection:
+    phase==="select-platform"?tr().choosePlatform:
+    arrived?tr().reached+"  •  "+tr().follow:
+    platform+"  •  "+tr().towards+" "+dest.toUpperCase();
   drawnText(scene,296,133,sign,{
     "font-size":14,"font-weight":780,"letter-spacing":1.2,fill:"#a8d5dc"});
   append(scene,"path",{d:"M195 159V177 M705 159V177",stroke:"#7dbfcb","stroke-width":5});
@@ -398,23 +445,23 @@
     stroke:"#718e96","stroke-width":5,opacity:.45});
   }
   rounded(scene,35,389,200,54,"#102e41",12,{stroke:"#66d1d08b","stroke-width":2});
-  drawnText(scene,50,409,"NEXT SERVICE",{"font-size":13,"letter-spacing":1.5,
+  drawnText(scene,50,409,gameMode?tr().nextService:"NEXT SERVICE",{"font-size":13,"letter-spacing":1.5,
     "font-weight":900,fill:"#a2e2de"});
-  drawnText(scene,50,428,gameMode&&gameMode.phase!=="ride"?"Follow the signs":next?.kind==="ride"?stationName(next.station):"Awaiting departure",{
+  drawnText(scene,50,428,gameMode&&gameMode.phase!=="ride"?tr().signs:next?.kind==="ride"?stationName(next.station):gameMode?tr().awaiting:"Awaiting departure",{
     "font-size":17,"font-weight":780,fill:"#fff7df"});
   if(gameMode?.phase==="notice"){
    const board=append(scene,"g",{class:"metro-alert-sign"});
    rounded(board,600,385,265,60,"#622b3c",11,{stroke:"#ffb98d","stroke-width":3});
-   drawnText(board,732,423,"⚠ SERVICE DISRUPTION",{
+   drawnText(board,732,423,"⚠ "+tr().disruption,{
     "text-anchor":"middle","font-size":18,"font-weight":950,fill:"#ffe5c8"});
   }
   if(gameMode?.phase==="transfer"){
    const marker=append(scene,"g",{class:"metro-transfer-arrow"});
    rounded(marker,565,386,302,61,"#095a57",12,{stroke:"#a4f2da","stroke-width":3});
-   drawnText(marker,716,425,"⇄ INTERCHANGE",{"text-anchor":"middle",
+   drawnText(marker,716,425,"⇄ "+tr().interchange,{"text-anchor":"middle",
     "font-size":19,"font-weight":950,fill:"#e3fff6"});
   }
-  $("metroSceneSvg").setAttribute("aria-label","Illustrated platform at "+name+" on "+displayLineId());
+  $("metroSceneSvg").setAttribute("aria-label",tr().platformAt+name+tr().lineAt+displayLineId());
  }
  function trainScene(){
   scene.replaceChildren();sceneDefs();
@@ -436,7 +483,7 @@
   rounded(scene,126,26,105,44,color,10);
   drawnText(scene,178,56,displayLineId(),{"text-anchor":"middle","font-size":30,"font-weight":950,
     fill:"#082b3f"});
-  drawnText(scene,251,39,"NEXT STOP / CURRENT LOCATION",{"font-size":12,"letter-spacing":1.5,
+  drawnText(scene,251,39,gameMode?tr().nextStop:"NEXT STOP / CURRENT LOCATION",{"font-size":12,"letter-spacing":1.5,
     "font-weight":900,fill:"#a8d8d9"});
   drawnText(scene,252,63,name.toUpperCase(),{"font-size":23,"font-weight":920,fill:"#f3fffb"});
   for(const x of [272,625])append(scene,"path",{d:"M"+x+" 83V350",
@@ -460,7 +507,7 @@
      "font-size":18,"font-weight":900,fill:"#e5fff8"});
    }
   }
-  $("metroSceneSvg").setAttribute("aria-label","Illustrated interior of a "+displayLineId()+" metro train at "+name);
+  $("metroSceneSvg").setAttribute("aria-label",tr().trainAt+name+tr().lineAt+displayLineId());
  }
  function drawPublicAddress(){
   const box=$("metroPublicAddress");
@@ -591,6 +638,38 @@
  }
  function updateVisibility(){
   const level=$("f2Level").value,bridge=window.CityQuestF2MetroBridge;
+  // F4R: the reference gallery is intentionally EN-only, but the surrounding
+  // instructions must be localized for students learning ES/DE/FR.
+  const gallery={
+    en:{
+      jump:"🚇 Riverton Metro · EN visual preview (B1+)",
+      overline:"RIVERTON TRANSIT SYSTEM / F2.1B VISUAL PROTOTYPE",
+      heading:"The city has another layer.",
+      intro:"Discover the metro network, explore an illustrated platform and follow a train through Riverton. Fictional network and timetables. This preview does not grade speaking.",
+      disclaimer:"EN/B1 route reference · F2.1B visual review · Official fictional station names remain in English. Teaching missions support four languages B1–C2."
+    },
+    es:{
+      jump:"🚇 Metro de Riverton · ejemplo visual en inglés (B1+)",
+      overline:"METRO DE RIVERTON / EJEMPLO VISUAL EN INGLÉS",
+      heading:"Descubre otra manera de recorrer la ciudad.",
+      intro:"Explora el metro ficticio y observa un viaje de ejemplo en inglés. Esta galería no evalúa la expresión oral. Las misiones interactivas están disponibles en cuatro idiomas.",
+      disclaimer:"Referencia visual en inglés sin calificación · Los nombres de las estaciones son nombres propios · Las misiones están disponibles de B1 a C2."
+    },
+    de:{
+      jump:"🚇 Riverton U-Bahn · englisches Anschauungsbeispiel (B1+)",
+      overline:"RIVERTON U-BAHN / VISUELLES BEISPIEL AUF ENGLISCH",
+      heading:"Entdecke die Stadt aus einer neuen Perspektive.",
+      intro:"Erkunde das fiktive U-Bahn-Netz und verfolge eine englische Beispielreise. Diese Vorschau bewertet das Sprechen nicht. Die spielbaren Aufgaben gibt es in vier Sprachen.",
+      disclaimer:"Unbenotetes englisches Anschauungsbeispiel · Stationsnamen bleiben englische Eigennamen · Spielbare Aufgaben auf B1 bis C2."
+    },
+    fr:{
+      jump:"🚇 Métro de Riverton · exemple visuel en anglais (B1+)",
+      overline:"MÉTRO DE RIVERTON / EXEMPLE VISUEL EN ANGLAIS",
+      heading:"Découvrez une autre façon de parcourir la ville.",
+      intro:"Explorez le réseau fictif et suivez un exemple de trajet en anglais. Cette galerie n'évalue pas l'oral. Les missions interactives sont disponibles dans quatre langues.",
+      disclaimer:"Exemple visuel en anglais sans note · Les noms des stations sont des noms propres · Missions interactives de B1 à C2."
+    }
+  }[$("f2Language").value]||null;
   const pilot=!!bridge?.pilotActive(),sceneVisible=!!bridge?.metroVisible();
   // During mission 08 surface walking, gameMode is intentionally null while
   // the metro pilot remains active. Resolve language content from the bridge
@@ -598,19 +677,18 @@
   const surfaceState=pilot?bridge.current():null;
   const shown=pilot?sceneVisible:!["A1","A2"].includes(level),
     copy=pilot&&surfaceState?LC.pack($("f2Language").value,level,surfaceState.stationNumber):null;
+  localizeMetroChrome();
   lab.hidden=!shown;jump.hidden=pilot||!shown;
   lab.querySelector(".metro-scenario-toolbar").hidden=pilot;
   lab.querySelector(".metro-action-card").hidden=pilot;
   lab.querySelector(".metro-scene-toggle").hidden=pilot;
   lab.querySelector(".metro-banner .metro-overline").textContent=pilot?
-    copy.kicker+" / F2.1D "+level:"RIVERTON TRANSIT SYSTEM / F2.1B VISUAL PROTOTYPE";
-  $("metroHeading").textContent=pilot?copy.title:"The city has another layer.";
-  lab.querySelector(".metro-banner-copy > p").textContent=pilot?copy.overview:
-    "Discover the metro network, explore an illustrated platform and follow a train through Riverton. Fictional network and timetables. This preview does not grade speaking.";
+    copy.kicker+" / F2.1D "+level:gallery.overline;
+  $("metroHeading").textContent=pilot?copy.title:gallery.heading;
+  lab.querySelector(".metro-banner-copy > p").textContent=pilot?copy.overview:gallery.intro;
   lab.querySelector(".metro-disclaimer").textContent=pilot?
-    "F2.1D · "+copy.native+" "+level+" · "+copy.offline+" · No server, speech recording or requests.":
-    "EN/B1 route reference · F2.1B visual review · Official fictional station names remain in English. Teaching missions support four languages B1–C2.";
-  jump.textContent="🚇 Riverton Metro · EN visual preview (B1+)";
+    "F2.1D · "+copy.native+" "+level+" · "+copy.offline:gallery.disclaimer;
+  jump.textContent=gallery.jump;
   if(shown)renderAll();
   else updateMapTools();
  }

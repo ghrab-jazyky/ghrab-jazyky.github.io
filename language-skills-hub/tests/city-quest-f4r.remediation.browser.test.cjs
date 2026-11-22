@@ -1,0 +1,194 @@
+"use strict";
+/* F4R remediation proof for F4-P1-01 and F4-P2-02.
+ * The 200%-size accessibility issue is NOT a document overflow problem:
+ * inspect actual layout, readable row count, scroll geometry, and labels.
+ */
+const {test}=require("node:test"),assert=require("node:assert/strict");
+const fs=require("node:fs"),path=require("node:path"),{chromium,webkit}=require("playwright");
+const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html";
+const OUT=path.resolve("city-quest-f4r-artifacts");fs.mkdirSync(OUT,{recursive:true});
+async function germanMetro07(page){
+ await page.goto(URL,{waitUntil:"load"});
+ await page.locator("#f2Language").selectOption("de");
+ await page.locator("#f2Level").selectOption("C2");
+ await page.locator("#metroPilotToggle").click();
+ await page.locator("#f1Stations button").nth(6).click();
+}
+test("F4R text at 100% stays 2 columns, at 200% becomes accessible single column with intact DE/C2 titles",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  for(const width of [320,390]){
+   const page=await browser.newPage({viewport:{width,height:844},isMobile:true,hasTouch:true});
+   await germanMetro07(page);
+   const probe=()=>page.evaluate(()=>{
+    const nav=document.getElementById("f1Stations"),
+      phases=document.getElementById("f3dLearningSteps"),
+      title=document.getElementById("f3dRailTitle"),
+      target=nav.querySelectorAll("button")[6],
+      stageNames=[...phases.querySelectorAll("li strong")];
+    const tracks=el=>getComputedStyle(el).gridTemplateColumns.trim().split(/\s+/).length;
+    return{
+      tracks:tracks(nav),stages:tracks(phases),
+      globalOverflow:document.documentElement.scrollWidth-document.documentElement.clientWidth,
+      stationOverflow:target.scrollWidth-target.clientWidth,
+      titleOverflow:title.scrollWidth-title.clientWidth,
+      phaseLines:stageNames.map(el=>{
+       const h=el.getBoundingClientRect().height,lh=parseFloat(getComputedStyle(el).lineHeight);
+       return h/lh;
+      }),
+      fullLabel:target.textContent.trim()
+    };
+   });
+   let state=await probe();
+   assert.equal(state.tracks,2,"100% text should preserve premium 2-column phone nav at "+width);
+   assert.equal(state.stages,3,"100% text should preserve 3 adjacent learning stages");
+   await page.evaluate('document.documentElement.style.fontSize="200%"');
+   state=await probe();
+   assert.equal(state.tracks,1,"200% text should use single-column mission navigation");
+   assert.equal(state.stages,1,"200% text should use full-width learning-stage rows");
+   assert.ok(state.globalOverflow<=2&&state.stationOverflow<=2&&state.titleOverflow<=2,
+    "No content loss at "+width+": "+JSON.stringify(state));
+   assert.ok(state.phaseLines.every(x=>x<=2),"Learning stages must remain legible");
+   assert.match(state.fullLabel,/Störung im Metroverkehr/);
+   await page.locator("#f3dLearningRail").scrollIntoViewIfNeeded();
+   await page.screenshot({path:path.join(OUT,"de-c2-200pct-"+width+".png"),fullPage:false});
+   await page.close();
+  }
+ }finally{await browser.close();}
+});
+test("F4R localized reference gallery and tooltips explicitly identify English-only preview across all 4 languages",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844}});
+  await page.goto(URL);
+  const expected={
+   en:{jump:/EN visual preview/,tooltip:/Switching City\/Metro/},
+   es:{jump:/visual en inglés/,tooltip:/Cambiar entre ciudad y metro/},
+   de:{jump:/englisches Anschauungsbeispiel/,tooltip:/Beim Wechsel zwischen Stadt und U-Bahn/},
+   fr:{jump:/visuel en anglais/,tooltip:/Passer de la ville au métro/}
+  };
+  for(const [lang,x] of Object.entries(expected)){
+   await page.locator("#f2Language").selectOption(lang);
+   assert.match(await page.locator("#metroJump").innerText(),x.jump);
+   assert.match(await page.locator("#metroPilotToggle").getAttribute("title"),x.tooltip);
+   assert.equal(await page.locator("#metroPilotToggle").getAttribute("aria-describedby"),"f3dSessionAdvice");
+  }
+ }finally{await browser.close();}
+});
+test("F4R standalone strict SHA-CSP offline has responsive zoom fix and localized preview labels",async()=>{
+ const source=path.resolve(".review-city-quest-f2/CITY_QUEST_F2_OFFLINE_PREVIEW.html");
+ assert.ok(fs.existsSync(source));const h=fs.readFileSync(source,"utf8");
+ assert.match(h,/connect-src 'none'/);
+ assert.match(h,/f3dLearningRail/);
+ assert.match(h,/englisches Anschauungsbeispiel/);
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:320,height:568},isMobile:true,hasTouch:true});
+  const errors=[],remote=[];page.on("pageerror",e=>errors.push(String(e)));
+  page.on("request",r=>{if(!r.url().startsWith("file:"))remote.push(r.url());});
+  await page.goto("file://"+source,{waitUntil:"load"});
+  await page.locator("#f2Language").selectOption("de");
+  await page.locator("#f2Level").selectOption("C2");
+  await page.locator("#metroPilotToggle").click();
+  await page.locator("#f1Stations button").nth(6).click();
+  await page.evaluate('document.documentElement.style.fontSize="200%"');
+  const nav=await page.locator("#f1Stations").evaluate(el=>getComputedStyle(el).gridTemplateColumns);
+  assert.equal(nav.split(/\s+/).length,1);
+  assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
+ }finally{await browser.close();}
+});
+
+test("F4R semantic world icon: metro station 05 uses train, City fallback retains bus",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844}});
+  await page.goto(URL);
+  await page.locator("#f1Stations button").nth(4).click();
+  assert.match(await page.locator("#f1Panel .f2-card-head h2").innerText(),/^🚌/u);
+  await page.locator("#metroPilotToggle").click();
+  await page.locator("#f1Stations button").nth(4).click();
+  assert.match(await page.locator("#f1Panel .f2-card-head h2").innerText(),/^🚇/u);
+  assert.equal(await page.locator("#f1Stations button").nth(4).locator(".f1-station-icon").innerText(),"🚇");
+  await page.locator("#metroPilotToggle").click();
+  assert.match(await page.locator("#f1Panel .f2-card-head h2").innerText(),/^🚌/u);
+ }finally{await browser.close();}
+});
+
+test("F4R interactive metro SVG captions and scene accessibility labels follow the selected language",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844}});
+  await page.goto(URL);
+  const translations={
+   en:{map:"UNDERGROUND NETWORK",scene:"Illustrated platform at"},
+   es:{map:"RED DE METRO",scene:"Andén ilustrado en"},
+   de:{map:"U-BAHN-NETZ",scene:"Illustrierter Bahnsteig an"},
+   fr:{map:"RÉSEAU DE MÉTRO",scene:"Quai illustré à"}
+  };
+  for(const [lang,want] of Object.entries(translations)){
+   await page.locator("#f2Language").selectOption(lang);
+   await page.locator("#metroPilotToggle").click();
+   await page.locator("#f1Stations button").nth(4).click();
+   const labels=await page.locator("#metroNetworkSvg text").allTextContents();
+   assert.ok(labels.some(x=>x.includes(want.map)),lang+": SVG network heading not localized");
+   assert.match(await page.locator("#metroSceneSvg").getAttribute("aria-label"),new RegExp(want.scene));
+   assert.ok(!labels.some(x=>x.includes("F2.1C EN/B1 MISSION")),lang+": obsolete EN/B1 mission marker");
+   await page.locator("#metroPilotToggle").click();
+  }
+ }finally{await browser.close();}
+});
+
+test("F4 learner-language metro chrome, station inspector and ARIA labels stay translated in preview and gameplay",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844}});
+  await page.goto(URL);
+  const expected={
+   en:{network:"NETWORK CONTROL",inspector:"Interchange between",journey:"JOURNEY DISPLAY",region:"Scrollable diagram"},
+   es:{network:"CONTROL DE LA RED",inspector:"Correspondencia entre",journey:"RECORRIDO",region:"Plano desplazable"},
+   de:{network:"LINIENNETZ",inspector:"Umstieg zwischen",journey:"FAHRTVERLAUF",region:"Verschiebbarer Netzplan"},
+   fr:{network:"PLAN DU RÉSEAU",inspector:"Correspondance entre",journey:"PARCOURS",region:"Plan défilant"}
+  };
+  for(const [lang,copy] of Object.entries(expected)){
+   await page.locator("#f2Language").selectOption(lang);
+   assert.equal((await page.locator(".metro-network-head small").innerText()).trim(),copy.network);
+   assert.equal((await page.locator(".metro-journey-header span").first().innerText()).trim(),copy.journey);
+   assert.match(await page.locator("#metroInspectorDetail").innerText(),new RegExp(copy.inspector));
+   assert.match(await page.locator("#metroNetworkViewport").getAttribute("aria-label"),new RegExp(copy.region));
+   await page.locator("#metroPilotToggle").click();
+   await page.locator("#f1Stations button").nth(4).click();
+   assert.equal((await page.locator(".metro-network-head small").innerText()).trim(),copy.network);
+   assert.match(await page.locator("#metroInspectorDetail").innerText(),new RegExp(copy.inspector));
+   await page.locator("#metroPilotToggle").click();
+  }
+ }finally{await browser.close();}
+});
+
+test("F4 translated metro chrome reflows without hidden text at 200% font size on narrow phones",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  for(const width of [320,390]){
+   const page=await browser.newPage({viewport:{width,height:844}});
+   await germanMetro07(page);
+   await page.evaluate('document.documentElement.style.fontSize="200%"');
+   const result=await page.evaluate(()=>{
+    const nodes=[
+     document.querySelector(".metro-network-head"),
+     document.querySelector(".metro-network-head h3"),
+     document.querySelector(".metro-live-pulse"),
+     document.querySelector(".metro-inspector-top strong"),
+     document.querySelector(".metro-journey-header span:first-child")
+    ];
+    return{
+     width:document.documentElement.scrollWidth-document.documentElement.clientWidth,
+     elements:nodes.map(el=>({label:el.textContent.trim(),overflowX:el.scrollWidth-el.clientWidth,overflowY:el.scrollHeight-el.clientHeight}))
+    };
+   });
+   assert.ok(result.width<=2,width+"px: horizontal document overflow "+JSON.stringify(result));
+   for(const item of result.elements)
+    assert.ok(item.overflowX<=2&&item.overflowY<=2,
+     width+"px clipped metro chrome: "+JSON.stringify(item));
+   await page.close();
+  }
+ }finally{await browser.close();}
+});
