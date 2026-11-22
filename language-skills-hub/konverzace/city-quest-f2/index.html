@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="metro-preview.css">
 <link rel="stylesheet" href="f3-premium.css">
 <link rel="stylesheet" href="f3b-scenes.css">
+<link rel="stylesheet" href="f3c-mobile.css">
 <script defer src="../../authoring/city-quest-f0/engine.js"></script>
 <script defer src="../city-quest-f0/city-art.js"></script>
 <script defer src="../city-quest-f0/app.js"></script>
@@ -160,8 +161,18 @@
           <div class="metro-live-pulse"><i></i> LOCAL SIMULATION</div>
         </div>
       </div>
-      <div class="metro-network-scroll" id="metroNetworkViewport" tabindex="0" role="region" aria-label="Scrollable interactive map of three fictional metro lines">
+      <div class="metro-network-scroll" id="metroNetworkViewport" tabindex="0" role="region" aria-label="Scrollable interactive map of three fictional metro lines" aria-describedby="f3cMapHint">
         <svg id="metroNetworkSvg" viewBox="0 0 1196 756" role="group" aria-label="Original interactive Riverton metro diagram"></svg>
+      </div>
+      <div class="f3c-metro-tools" role="group" id="f3cMetroTools" aria-label="Metro map accessibility tools">
+        <div class="f3c-picker-field">
+          <label id="f3cPickerLabel" for="f3cMetroPicker">Inspect any station</label>
+          <select id="f3cMetroPicker" aria-describedby="f3cMapHint"></select>
+        </div>
+        <button type="button" id="f3cLocate" aria-controls="metroNetworkViewport">◎ My stop</button>
+        <button type="button" id="f3cToTask" aria-controls="f1Panel">↑ Mission</button>
+        <p class="f3c-map-hint" id="f3cMapHint">These map controls inspect locations. Only the mission panel advances the journey.</p>
+        <span class="f3c-screen-reader" id="f3cMapLive" role="status" aria-live="polite" aria-atomic="true"></span>
       </div>
       <div class="metro-network-footer">
         <div id="metroLegend" class="metro-legend" aria-label="Metro line legend"></div>
