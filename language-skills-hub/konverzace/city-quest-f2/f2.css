@@ -235,3 +235,26 @@
 /* F5C CQ-F5-022: accessible help and restart controls on small screens. */
 .f2-actions .btn{min-height:44px}
 .f2-help summary,.metro-language-details summary{display:flex;align-items:center;min-height:44px}
+
+
+/* CQ-F5-004: premium but genuinely informative offline departure signage.
+ * The board never reveals an answer marker: students match line + terminus
+ * with the sign, then select a platform themselves. Reflows at 200% text. */
+.metro-platform-board{min-width:0;margin:12px 0 16px;padding:12px;
+ border:1px solid #64d9cf65;border-radius:15px;
+ background:linear-gradient(135deg,#103d53aa,#123a4660)}
+.metro-platform-board-heading{font-size:clamp(.83rem,1.5vw,1.06rem);
+ margin:0 0 10px;line-height:1.4;overflow-wrap:anywhere}
+.metro-platform-board-list{list-style:none;padding:0;margin:0;display:grid;gap:7px}
+.metro-platform-board-item{display:grid;grid-template-columns:minmax(5.5rem,auto) minmax(0,1fr);
+ align-items:center;gap:9px;padding:9px 11px;min-width:0;
+ border:1px solid #91d8d02b;border-left:4px solid var(--platform-line-colour,#7aa3af);
+ border-radius:10px;background:#17394995}
+.metro-platform-board-number{min-width:0;font-size:.84rem;overflow-wrap:anywhere}
+.metro-platform-board-sign{min-width:0;font-size:.82rem;line-height:1.45;overflow-wrap:anywhere}
+.metro-platform-board-empty{opacity:.85}
+:root[data-theme=light] .metro-platform-board{background:#e9f4f7;border-color:#72a0ac;color:#133647}
+:root[data-theme=light] .metro-platform-board-item{background:#fff;border-color:#b4cdd4;
+ border-left-color:var(--platform-line-colour,#7aa3af);color:#14384b}
+@media(max-width:370px){.metro-platform-board-item{grid-template-columns:1fr;gap:3px;padding:9px}}
+@media(prefers-reduced-motion:reduce){.metro-platform-board *{transition:none!important}}
