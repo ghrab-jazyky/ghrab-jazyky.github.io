@@ -434,17 +434,19 @@
     para(panel,swipeText[state.language]||swipeText.en,"f2-transit-scroll-hint");
     [ui().line,ui().departure,ui().stop,ui().arrival,ui().accessible].forEach(label=>el("th",theadRow,"",label));
     const body=el("tbody",table);
-    F.transport.lines.forEach(line=>{
+    const services=G.servicesForLevel(state.level),options=G.transportOptions(state.level);
+    services.forEach(line=>{
       const row=el("tr",body);
-      [line.line,line.depart,travel["line"+line.line],line.arrival,line.line==="24"?"✓":"—"].forEach(val=>el("td",row,"",val));
+      const destination=line.to==="Hospital"?travel.line24:line.to==="City Museum"?travel.line12:travel.line7;
+      [line.line,line.depart,destination,line.arrival,line.accessible?"✓":"—"].forEach(val=>el("td",row,"",val));
     });
     const required=G.requiredFields(state.level),wrap=el("div",panel,"f2-select-group");
     const selected={};
     const items=[
-      {key:"line",choices:F.transport.options.lines.map(x=>({value:x,label:x})),label:ui().line},
-      {key:"depart",choices:F.transport.options.departures.map(x=>({value:x,label:x})),label:ui().departure},
-      {key:"stop",choices:F.transport.options.stops.map((x,i)=>({
-        value:x,label:[travel.line7,travel.line12,travel.line24][i]
+      {key:"line",choices:options.lines.map(x=>({value:x,label:x})),label:ui().line},
+      {key:"depart",choices:options.departures.map(x=>({value:x,label:x})),label:ui().departure},
+      {key:"stop",choices:options.stops.map(value=>({
+        value,label:value==="Hospital"?travel.line24:value==="City Museum"?travel.line12:travel.line7
       })),label:ui().stop}
     ];
     items.filter(x=>required.includes(x.key)).forEach(item=>{
@@ -464,7 +466,7 @@
       game.tries++;
       if(verdict.correct){game.done=true;flash={text:ui().correct,tone:"success"};}
       else{
-        const map={missing:travel.missing,line:travel.lineWrong,depart:travel.timeWrong,stop:travel.stopWrong};
+        const map={missing:travel.missing,line:travel.lineWrong,depart:travel.timeWrong,stop:travel.stopWrong,late:travel.late,access:travel.notAccessible};
         flash={text:map[verdict.kind]||ui().feedbackRetry,tone:"warning"};
       }
       screen();
