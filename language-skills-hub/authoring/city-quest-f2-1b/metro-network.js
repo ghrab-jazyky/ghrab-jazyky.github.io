@@ -247,6 +247,56 @@
    "platform": "3"
   }
  ],
+ "platformSigns": [
+   {
+     "station": "central_station",
+     "platform": "1",
+     "line": "M1",
+     "directionTerminus": "west_end"
+   },
+   {
+     "station": "central_station",
+     "platform": "2",
+     "line": "M1",
+     "directionTerminus": "east_gardens"
+   },
+   {
+     "station": "central_station",
+     "platform": "3",
+     "line": "M2",
+     "directionTerminus": "north_park"
+   },
+   {
+     "station": "market_square",
+     "platform": "1",
+     "line": "M2",
+     "directionTerminus": "north_park"
+   },
+   {
+     "station": "market_square",
+     "platform": "2",
+     "line": "M2",
+     "directionTerminus": "south_gate"
+   },
+   {
+     "station": "university",
+     "platform": "1",
+     "line": "M3",
+     "directionTerminus": "hilltop"
+   },
+   {
+     "station": "university",
+     "platform": "2",
+     "line": "M2",
+     "directionTerminus": "south_gate"
+   },
+   {
+     "station": "university",
+     "platform": "3",
+     "line": "M3",
+     "directionTerminus": "harbour"
+   }
+ ],
  "scenarios": [
   {
    "id": "metro_05_b1",
@@ -410,6 +460,24 @@
       if(!x.lines.every(l=>joined(x.station).includes(l))||
         joined(x.station).length!==x.lines.length)throw Error("Invalid interchange "+x.station);
     }
+    // Signboards are static facts about the fictional network, not generated
+    // from the current correct answer. A learner must read the signs and
+    // match line + terminus to the chosen route to select a platform.
+    const signLocations=new Set();
+    for(const sign of source.platformSigns){
+      const l=line(sign.line),key=sign.station+":"+sign.platform;
+      if(!station(sign.station)||!l||!l.stops.includes(sign.station)||
+         ![l.stops[0],l.stops.at(-1)].includes(sign.directionTerminus)||
+         sign.directionTerminus===sign.station||!["1","2","3"].includes(sign.platform)||
+         signLocations.has(key))throw Error("Invalid station departure sign "+key);
+      signLocations.add(key);
+    }
+    for(const fixture of source.platformFixtures){
+      if(!source.platformSigns.some(x=>x.station===fixture.station&&
+        x.platform===fixture.platform&&x.line===fixture.line&&
+        x.directionTerminus===fixture.directionTerminus))
+        throw Error("Platform fixture missing from departure board "+fixture.station);
+    }
     for(const s of scenarios){
       if(!station(s.start)||!station(s.goal)||!s.legs.length)throw Error("Invalid scenario endpoints");
       let last=null;
@@ -428,6 +496,12 @@
         throw Error("Broken scenario destination "+s.id);
     }
     return true;
+  }
+  function platformSigns(stationId){
+    if(!station(stationId))throw RangeError("Unknown metro station");
+    return source.platformSigns.filter(x=>x.station===stationId)
+      .slice().sort((a,b)=>Number(a.platform)-Number(b.platform))
+      .map(x=>Object.freeze({...x}));
   }
   function itinerary(scenarioId){
     const s=scenario(scenarioId);
@@ -497,7 +571,7 @@
   return Object.freeze({
     meta:Object.freeze({name:"Riverton Metro",fictional:true,phase:"F2.1B VISUAL REVIEW",
       languages:"EN visual reference only",level:"B1 route fixtures"}),
-    source,lines,stations,scenarios,station,line,scenario,joined,adjacent,closed,
+    source,lines,stations,scenarios,station,line,scenario,joined,adjacent,closed,platformSigns,
     validate,itinerary,shortestPath,nextStopOptions,startPreview,advancePreview,
     byId:Object.freeze(Object.fromEntries(stations.map(s=>[s.id,s])))
   });
