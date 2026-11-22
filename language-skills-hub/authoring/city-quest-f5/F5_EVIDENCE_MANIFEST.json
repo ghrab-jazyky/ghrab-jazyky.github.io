@@ -84,5 +84,15 @@
     "language-skills-hub/tests/city-quest-*",
     ".github/workflows/lsh-city-quest-*"
   ],
-  "note": "SHA and CI represent frozen F4 code only. F5 documentation commits must be compared to this source commit before claiming code identity. Human gates cannot be closed by AI or CI."
+  "note": "SHA and CI represent frozen F4 code only. F5 documentation commits must be compared to this source commit before claiming code identity. Human gates cannot be closed by AI or CI.",
+  "f5_review_addendum": {
+    "version": "F5A/Q1",
+    "specification": "language-skills-hub/authoring/city-quest-f5/F5_PREMIOVY_PRODUKT_A_DIDAKTIKA_CZ.md",
+    "manual_qa_cases_total": 32,
+    "required_new_claude_output": "CLAUDE_F5_PREMIUM_DIDACTIC_QA.md",
+    "mobile_first": "mandatory human device acceptance",
+    "catalog_badge": "🎮 Interaktivní jazyková hra",
+    "catalog_in_main": false,
+    "implementation_release_gate": "separate approved future main integration; no production change"
+  }
 }
