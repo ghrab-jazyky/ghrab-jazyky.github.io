@@ -54,7 +54,10 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      const s=getComputedStyle(el);return {font:parseFloat(s.fontSize),line:parseFloat(s.lineHeight)}
     });
     assert.ok(geometry.font>=14.6,'EN C1/C2 remains 11 pt in print');
-    assert.ok(geometry.line<=19,'EN C1/C2 uses compact but readable leading');
+    // C1 intentionally uses 1.27 leading; C2 uses a more comfortable 1.35
+    // because its two pages are balanced at paragraph boundaries.
+    assert.ok(geometry.line/geometry.font<=(level==='C1'?1.30:1.37),
+     'EN '+level+' uses its approved readable line-height ratio');
     await page.emulateMedia({media:'screen'});
    }
    await page.setViewportSize({width:375,height:812});
