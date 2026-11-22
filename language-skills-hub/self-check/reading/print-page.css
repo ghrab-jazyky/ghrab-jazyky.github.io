@@ -78,7 +78,9 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
     standard 20pt answer spaces. Recover vertical space between tasks instead
     of sacrificing the size of the writing areas or the 11pt reading font. */
  .paper[data-level="B1"][data-format="all"] .paper-header{margin-bottom:15px}
- .paper[data-level="B1"][data-format="all"] h2{margin:14px 0 8px}
+ .paper[data-level="B1"][data-format="all"] .reading-material > h2,
+ .paper[data-level="B1"][data-format="all"] .exercises > h2,
+ .paper[data-level="B1"][data-format="all"] .reflection > h2{margin:14px 0 8px}
  .paper[data-level="B1"][data-format="all"] .reading-paragraphs{line-height:1.40}
  .paper[data-level="B1"][data-format="all"] .reading-paragraphs p{margin-bottom:8pt}
  .paper[data-level="B1"][data-format="all"] .warmup{margin-bottom:8pt;padding:5pt 9pt}
