@@ -60,3 +60,33 @@ test("F5C localized metro NEXT_STOP feedback includes the actual title-cased sta
   assert.doesNotMatch(str,/old town|old_town/);
  }
 });
+
+test("F5C accessibility: map location and labels reflect actual F2 route in French and Spanish",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844},hasTouch:true,isMobile:true});
+  await page.goto(URL);
+  await page.locator("#f2Language").selectOption("fr");
+  await page.locator("#f1Stations button").nth(1).click(); // City route mission 02
+  let current=page.locator('[data-node][aria-current="location"]');
+  assert.equal(await current.count(),1);
+  const before=await current.getAttribute("data-node");
+  assert.match(await current.getAttribute("aria-label"),/Carrefour.*Position actuelle/);
+  assert.doesNotMatch(await current.getAttribute("aria-label"),/Crossroads/);
+  await page.locator("#f2Quick .f2-quick-east").click();
+  current=page.locator('[data-node][aria-current="location"]');
+  assert.equal(await current.count(),1);
+  assert.notEqual(await current.getAttribute("data-node"),before);
+  const label=await current.getAttribute("aria-label");
+  assert.match(label,/Position actuelle/);
+  assert.match(await page.locator('[data-node="'+before+'"]').getAttribute("aria-pressed"),/true/);
+  // Changing the language resets the mission and recalculates ARIA in that locale.
+  await page.locator("#f2Language").selectOption("es");
+  await page.locator("#f1Stations button").nth(1).click();
+  assert.equal(await page.locator('[data-node][aria-current="location"]').count(),1);
+  assert.match(await page.locator('[data-node][aria-current="location"]').getAttribute("aria-label"),/Cruce.*Posición actual/);
+  // Selecting a mission without walking must not leave a false current location.
+  await page.locator("#f1Stations button").first().click();
+  assert.equal(await page.locator('[data-node][aria-current="location"]').count(),0);
+ }finally{await browser.close();}
+});
