@@ -106,6 +106,8 @@ test("F3C metro preview picker: exactly 14 native options, station inspection do
   assert.equal(await picker.inputValue(),"east_gardens");
   assert.equal(await page.locator("#metroSceneStation").innerText(),player);
   assert.equal(await page.locator("[data-metro-station='east_gardens']").getAttribute("aria-pressed"),"true");
+  await page.waitForFunction(()=>document.querySelector("#metroNetworkViewport")?.scrollLeft>0,
+   null,{timeout:2500});
   const afterSelect=await page.locator("#metroNetworkViewport").evaluate(el=>el.scrollLeft);
   assert.ok(afterSelect>0,"Station finder pans a detailed network to East Gardens");
   await page.locator("#f3cLocate").tap();
@@ -125,8 +127,11 @@ test("F3C metro 05–08: user can inspect any stop and refocus real task without
    if(n===8)continue; // Mission 08 legitimately begins above-ground.
    assert.equal(await page.locator("#f3cToTask").isVisible(),true);
    const before=await page.locator("#metroJourneyProgress").getAttribute("aria-valuenow");
+   const history=await page.evaluate(()=>window.CityQuestF2MetroBridge.current()?.history.length);
    await page.locator("#f3cMetroPicker").selectOption("harbour");
    assert.equal(await page.locator("#metroJourneyProgress").getAttribute("aria-valuenow"),before);
+   assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current()?.history.length),history,
+    "Station inspection must not append any action to the real game engine");
    await page.locator("#f3cToTask").tap();
    assert.equal(await page.locator("#f1Panel h2").evaluate(el=>document.activeElement===el),true);
    assert.equal(await page.locator("#f1Panel").count(),1);
