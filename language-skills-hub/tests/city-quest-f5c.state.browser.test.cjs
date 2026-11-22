@@ -281,3 +281,68 @@ test("F5C CQ-F5-027: City01 final speaking model describes places, not a route, 
   }
  }finally{await browser.close();}
 });
+
+
+test("F5C CQ-F5-008: City04 B2-C2 route completion requires map reasoning in all four languages",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+  const G=require("../authoring/city-quest-f2/engine.js");
+  const answerIds={B2:["right","left","straight"],C1:["south","library","straight"],C2:["ignore","shortcut","closure"]};
+  const correctIds={B2:"left",C1:"library",C2:"closure"};
+  await page.goto(URL);
+  for(const lang of ["en","es","de","fr"])for(const level of ["B2","C1","C2"]){
+   await page.locator("#f2Language").selectOption(lang);
+   await page.locator("#f2Level").selectOption(level);
+   await page.locator("#f1Stations button").nth(3).click();
+   if(level==="C2")assert.equal(await page.locator("#f2ClosedRoad line").count(),1,
+     "C2 guided route should display the roadworks it avoids");
+   for(const dir of G.guidedPaths[level])
+    await page.locator("#f2Quick .f2-quick-"+dir).click();
+   assert.equal(await page.locator("#f1Panel .f2-finish").count(),0,
+    lang+"/"+level+" route may not bypass its reasoning phase");
+   const ids=G.orderChoices(answerIds[level],lang,level,4,"explain");
+   const correct=ids.indexOf(correctIds[level]);
+   assert.equal(await page.locator("#f1Panel .f2-choice-list button").count(),3);
+   await page.locator("#f1Panel .f2-choice-list button").nth((correct+1)%3).click();
+   assert.equal(await page.locator("#f1Panel .f2-finish").count(),0,
+    "An incorrect explanation cannot complete this station");
+   await page.locator("#f1Panel .f2-choice-list button").nth(correct).click();
+   assert.equal(await page.locator("#f1Panel .f2-finish").count(),1,
+    lang+"/"+level+" successful route and reasoning");
+  }
+ }finally{await browser.close();}
+});
+test("F5C CQ-F5-008: City06 correction grows from two to four meaningful decisions",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+  const G=require("../authoring/city-quest-f2/engine.js");
+  const ids=[
+    ["straight","turn","distance"],["left","keep-south","west"],
+    ["distance","south","north"]];
+  await page.goto(URL);
+  for(const lang of ["en","es","de","fr"])for(const level of G.levels){
+   await page.locator("#f2Language").selectOption(lang);
+   await page.locator("#f2Level").selectOption(level);
+   await page.locator("#f1Stations button").nth(5).click();
+   const stages=G.repairStages(level);
+   for(let phase=0;phase<stages;phase++){
+    const selected=phase===3?
+      level==="C2"?["dismiss","blame","apology"]:["blame","apology","dismiss"]:ids[phase];
+    const right=["turn","left","south","apology"][phase];
+    const order=G.orderChoices(selected,lang,level,6,phase);
+    const correct=order.indexOf(right),choices=page.locator("#f1Panel .f2-choice-list button");
+    assert.equal(await choices.count(),3,lang+"/"+level+"/stage "+phase);
+    if(phase>=2){
+     await choices.nth((correct+1)%3).click();
+     assert.equal(await page.locator("#f1Panel .f2-finish").count(),0,
+      lang+"/"+level+" wrong reasoning cannot give credit");
+    }
+    await choices.nth(correct).click();
+   }
+   assert.equal(await page.locator("#f1Panel .f2-finish").count(),1,
+    lang+"/"+level+" must finish after "+stages+" decisions");
+  }
+ }finally{await browser.close();}
+});
