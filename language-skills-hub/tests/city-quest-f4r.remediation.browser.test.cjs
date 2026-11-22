@@ -137,3 +137,29 @@ test("F4R interactive metro SVG captions and scene accessibility labels follow t
   }
  }finally{await browser.close();}
 });
+
+test("F4 learner-language metro chrome, station inspector and ARIA labels stay translated in preview and gameplay",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844}});
+  await page.goto(URL);
+  const expected={
+   en:{network:"NETWORK CONTROL",inspector:"Served by",journey:"JOURNEY DISPLAY",region:"Scrollable diagram"},
+   es:{network:"CONTROL DE LA RED",inspector:"Línea disponible",journey:"RECORRIDO",region:"Plano desplazable"},
+   de:{network:"LINIENNETZ",inspector:"Bedient von",journey:"FAHRTVERLAUF",region:"Verschiebbarer Netzplan"},
+   fr:{network:"PLAN DU RÉSEAU",inspector:"Desservie par",journey:"PARCOURS",region:"Plan défilant"}
+  };
+  for(const [lang,copy] of Object.entries(expected)){
+   await page.locator("#f2Language").selectOption(lang);
+   assert.equal((await page.locator(".metro-network-head small").innerText()).trim(),copy.network);
+   assert.equal((await page.locator(".metro-journey-header span").first().innerText()).trim(),copy.journey);
+   assert.match(await page.locator("#metroInspectorDetail").innerText(),new RegExp(copy.inspector));
+   assert.match(await page.locator("#metroNetworkViewport").getAttribute("aria-label"),new RegExp(copy.region));
+   await page.locator("#metroPilotToggle").click();
+   await page.locator("#f1Stations button").nth(4).click();
+   assert.equal((await page.locator(".metro-network-head small").innerText()).trim(),copy.network);
+   assert.match(await page.locator("#metroInspectorDetail").innerText(),new RegExp(copy.inspector));
+   await page.locator("#metroPilotToggle").click();
+  }
+ }finally{await browser.close();}
+});
