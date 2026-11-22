@@ -25,12 +25,13 @@ jobs:
       options: --ipc=host
     timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           persist-credentials: true
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: '24'
+          package-manager-cache: false
       - run: npm install --no-save --ignore-scripts playwright@1.56.1 hyphen@1.14.1
       - name: Generate branded A4 PDFs for all Asteroids variants
         run: |
