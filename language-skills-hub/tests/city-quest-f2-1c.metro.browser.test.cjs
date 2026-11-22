@@ -2,7 +2,9 @@
 /* F2.1C opt-in metro pilot acceptance: no server or API and no default F2 regressions. */
 const {test}=require("node:test"),assert=require("node:assert/strict");
 const path=require("node:path"),fs=require("node:fs"),{chromium,webkit}=require("playwright");
-const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html";
+// This is an AUTHORING/QA visual-preview suite. Normal student URLs do
+// not expose guided reference routes (CQ-F5-006).
+const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html?cq-review=1";
 const SHOTS=path.join(process.cwd(),"city-quest-f2-1c-artifacts");fs.mkdirSync(SHOTS,{recursive:true});
 async function launch(browser,page,station){
  await page.goto(URL,{waitUntil:"load"});
@@ -204,7 +206,7 @@ test("F2.1C strict-CSP one-file offline preview works with full metro mission",a
   const external=[],errors=[];
   page.on("request",r=>{if(!r.url().startsWith("file:"))external.push(r.url());});
   page.on("pageerror",e=>errors.push(e.stack||String(e)));
-  await page.goto("file://"+file,{waitUntil:"load"});
+  await page.goto("file://"+file+"?cq-review=1",{waitUntil:"load"});
   await page.locator("#metroPilotToggle").click();
   await page.locator("#f1Stations .f1-station").nth(4).click();
   await travel(page,"M1","East Gardens","2",2);
