@@ -2,7 +2,9 @@
 /* F3A: premium presentation must not change engine/geography or offline policy. */
 const {test}=require("node:test"),assert=require("node:assert/strict");
 const path=require("node:path"),fs=require("node:fs"),{chromium,webkit}=require("playwright");
-const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html";
+// This is an AUTHORING/QA visual-preview suite. Normal student URLs do
+// not expose guided reference routes (CQ-F5-006).
+const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html?cq-review=1";
 const ART=path.join(process.cwd(),"city-quest-f3a-artifacts");fs.mkdirSync(ART,{recursive:true});
 const errorsOf=page=>{const e=[];page.on("pageerror",x=>e.push(x.stack||String(x)));return e;};
 async function experience(page){
@@ -183,7 +185,7 @@ test("F3A SHA256-CSP portable file: premium presentation works offline with zero
  try{
   const page=await browser.newPage({viewport:{width:390,height:844}}),errors=errorsOf(page),external=[];
   page.on("request",r=>{if(!r.url().startsWith("file:"))external.push(r.url());});
-  await page.goto("file://"+preview,{waitUntil:"load"});
+  await page.goto("file://"+preview+"?cq-review=1",{waitUntil:"load"});
   await experience(page);await page.locator("#f3PresentationButton").click();
   assert.equal(await page.locator("body").getAttribute("data-presentation"),"on");
   await page.locator("#f3PresentationExit").click();
