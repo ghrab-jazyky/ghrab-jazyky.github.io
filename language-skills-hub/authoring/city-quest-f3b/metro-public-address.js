@@ -40,10 +40,10 @@
    C2:"Gib eine knappe formelle Durchsage und eine beruhigende informelle Erklärung."
   },
   fr:{
-   B1:"Reformule l'information essentielle en une phrase claire.",
-   B2:"Explique pourquoi cette information compte pour ton trajet.",
-   C1:"Reformule l'avis pour une personne qui l'a mal compris.",
-   C2:"Propose une annonce formelle concise et une explication informelle rassurante."
+   B1:"Reformulez l'information essentielle en une phrase claire.",
+   B2:"Expliquez pourquoi cette information compte pour votre trajet.",
+   C1:"Reformulez l'avis pour une personne qui l'a mal compris.",
+   C2:"Proposez une annonce formelle concise et une explication informelle rassurante."
   }
  };
  const dict={
@@ -94,17 +94,17 @@
   },
   fr:{
    marker:"SONORISATION DE RIVERTON · SIMULATION ÉCRITE",
-   status:"Information voyageurs",city:["ORIENTATION","Suis le plan de la ville jusqu'à l'entrée du métro. À toi de choisir la ligne."],
-   notice:["AVIS DE PERTURBATION","Le tronçon M1 entre Old Town et Museum Quarter est fermé. Consulte le plan avant de choisir ton itinéraire."],
-   wayfinding:["HALL DE STATION","Tu es à {station}. Consulte le plan et choisis toi-même la ligne à emprunter."],
-   direction:["TABLEAU DES DÉPARTS","Vérifie le terminus indiqué sur le train. Le terminus n'est pas forcément le prochain arrêt."],
-   platform:["INFORMATION QUAI","Vérifie la ligne et la destination finale sur les panneaux avant de monter."],
+   status:"Information voyageurs",city:["ORIENTATION","Suivez le plan de la ville jusqu'à l'entrée du métro. Choisissez vous-même la ligne."],
+   notice:["AVIS DE PERTURBATION","Le tronçon M1 entre Old Town et Museum Quarter est fermé. Consultez le plan avant de choisir votre itinéraire."],
+   wayfinding:["HALL DE STATION","Vous êtes à {station}. Consultez le plan et choisissez vous-même la ligne à emprunter."],
+   direction:["TABLEAU DES DÉPARTS","Vérifiez le terminus indiqué sur le train. Le terminus n'est pas forcément le prochain arrêt."],
+   platform:["INFORMATION QUAI","Vérifiez la ligne et la destination finale sur les panneaux avant de monter."],
    boarding:["EMBARQUEMENT","Ligne {line}, direction {terminus}, quai {platform}. Éloignez-vous des portes, s'il vous plaît."],
-   onboard:["À BORD DU MÉTRO","Tu voyages sur la ligne {line}. Prochaine station : {next}."],
-   transfer:["CORRESPONDANCE","Tu es à {station}. Suis les panneaux de correspondance avant de choisir la ligne suivante."],
-   arrival:["ARRIVÉE","Tu es arrivé à {station}. Suis les panneaux de sortie et explique ton trajet."],
-   speaking:["EXPRESSION ORALE","Explique ton trajet à voix haute. L'application n'enregistre ni ne note ta parole."],
-   complete:["TRAJET TERMINÉ","Ton trajet a été vérifié. L'expression orale a été autoévaluée."],
+   onboard:["À BORD DU MÉTRO","Vous voyagez sur la ligne {line}. Prochaine station : {next}."],
+   transfer:["CORRESPONDANCE","Vous êtes à {station}. Suivez les panneaux de correspondance avant de choisir la ligne suivante."],
+   arrival:["ARRIVÉE","Vous avez atteint {station}. Suivez les panneaux de sortie et expliquez votre trajet."],
+   speaking:["EXPRESSION ORALE","Expliquez votre trajet à voix haute. L'application n'enregistre ni ne note votre parole."],
+   complete:["TRAJET TERMINÉ","Votre trajet a été vérifié. L'expression orale a été autoévaluée."],
    noNext:"destination",open:"PORTES OUVERTES",ride:"PROCHAINE STATION"
   }
  };
