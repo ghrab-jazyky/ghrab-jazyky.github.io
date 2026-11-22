@@ -18,6 +18,31 @@
   {id:"metro_07_b1",number:"07",title:"Service disruption",subtitle:"Find an alternative route"},
   {id:"metro_08_b1",number:"08",title:"City + Metro",subtitle:"Experience a cross-city journey"}
  ];
+ const f3cText={
+  en:{picker:"Inspect any station",locate:"◎ My stop",task:"↑ Mission",
+   hint:"Inspect stations without moving your traveller. Only the mission panel advances the journey.",
+   overview:"⊞ Whole network",detail:"⊕ Readable detail",
+   inspect:name=>"Inspect "+name+", no journey step taken.",
+   stop:name=>"Your current stop: "+name+".",map:"Metro map controls"},
+  es:{picker:"Explorar estaciones",locate:"◎ Mi parada",task:"↑ Misión",
+   hint:"Consulta las estaciones sin mover al viajero. Solo los controles de la misión avanzan el trayecto.",
+   overview:"⊞ Red completa",detail:"⊕ Detalle legible",
+   inspect:name=>"Estación seleccionada: "+name+". No has avanzado.",
+   stop:name=>"Tu parada actual: "+name+".",map:"Controles del plano del metro"},
+  de:{picker:"Station ansehen",locate:"◎ Mein Halt",task:"↑ Aufgabe",
+   hint:"Stationen ansehen, ohne die Spielfigur zu bewegen. Nur die Aufgabenknöpfe setzen die Fahrt fort.",
+   overview:"⊞ Gesamtnetz",detail:"⊕ Gut lesbar",
+   inspect:name=>"Ausgewählte Station: "+name+". Die Fahrt wurde nicht fortgesetzt.",
+   stop:name=>"Deine aktuelle Station: "+name+".",map:"Bedienung des Linienplans"},
+  fr:{picker:"Explorer les stations",locate:"◎ Mon arrêt",task:"↑ Mission",
+   hint:"Consulte les stations sans déplacer le voyageur. Seules les commandes de la mission font avancer le trajet.",
+   overview:"⊞ Réseau entier",detail:"⊕ Détail lisible",
+   inspect:name=>"Station sélectionnée : "+name+". Le trajet n'a pas avancé.",
+   stop:name=>"Arrêt actuel : "+name+".",map:"Commandes du plan du métro"}
+ };
+ const ux=()=>f3cText[$("f2Language").value]||f3cText.en;
+ const motionOff=()=>window.matchMedia("(prefers-reduced-motion: reduce)").matches||
+  document.documentElement.dataset.motion==="off";
  const labels={
   west_end:[105,371],central_station:[350,375],old_town:[500,367],
   museum_quarter:[678,375],riverside:[868,370],east_gardens:[1035,375],
@@ -163,7 +188,7 @@
   for(const st of M.stations){
    const group=append(nodes,"g",{"data-metro-station":st.id,role:"button",tabindex:0,
     "aria-pressed":String(inspected===st.id),
-    "aria-label":st.labelEn+"; "+M.joined(st.id).join(" and ")});
+    "aria-label":ux().inspect(st.labelEn)+" "+M.joined(st.id).join(" · ")});
    append(group,"circle",{class:"metro-node-halo",cx:st.x,cy:st.y,r:31,fill:"#8afcf7",
     opacity:inspected===st.id?.24:0,stroke:"none"});
    append(group,"circle",{class:"metro-node-hit",cx:st.x,cy:st.y,r:28,fill:"transparent",
@@ -200,35 +225,64 @@
   }
   window.requestAnimationFrame(centerOnCurrent);
  }
- function centerOnCurrent(){
-  const viewport=$("metroNetworkViewport");
-  if(!viewport||overview||viewport.scrollWidth<=viewport.clientWidth+10)return;
-  const currentStation=M.station(atStation());if(!currentStation)return;
+ function panToStation(id){
+  const viewport=$("metroNetworkViewport"),station=M.station(id);
+  if(!station||overview||viewport.scrollWidth<=viewport.clientWidth+10)return;
   const ratio=network.getBoundingClientRect().width/1196;
-  const left=Math.max(0,currentStation.x*ratio-viewport.clientWidth*.46);
-  const top=Math.max(0,currentStation.y*ratio-viewport.clientHeight*.40);
-  viewport.scrollTo({left,top,behavior:reduced?"auto":"smooth"});
+  viewport.scrollTo({
+   left:Math.max(0,station.x*ratio-viewport.clientWidth*.46),
+   top:Math.max(0,station.y*ratio-viewport.clientHeight*.40),
+   behavior:"auto"
+  });
  }
- function syncNetworkZoom(){
+ function centerOnCurrent(){
+  const viewport=$("metroNetworkViewport"),station=M.station(atStation());
+  if(!station||overview||viewport.scrollWidth<=viewport.clientWidth+10)return;
+  const ratio=network.getBoundingClientRect().width/1196;
+  viewport.scrollTo({
+   left:Math.max(0,station.x*ratio-viewport.clientWidth*.46),
+   top:Math.max(0,station.y*ratio-viewport.clientHeight*.40),
+   behavior:motionOff()?"auto":"smooth"
+  });
+ }
+ function syncNetworkZoom(follow=true){
   const viewport=$("metroNetworkViewport"),control=$("metroMapZoom");
   viewport.classList.toggle("overview",overview);
   control.setAttribute("aria-pressed",String(overview));
-  control.textContent=overview?"⊕ Readable detail":"⊞ Whole network";
+  control.textContent=overview?ux().detail:ux().overview;
+  control.setAttribute("aria-label",overview?ux().detail:ux().overview);
+  control.setAttribute("aria-controls","metroNetworkViewport");
   if(overview)viewport.scrollTo({left:0,top:0,behavior:"auto"});
-  else window.requestAnimationFrame(centerOnCurrent);
+  else if(follow)window.requestAnimationFrame(centerOnCurrent);
  }
- function selectStation(id){
-  // Do not rebuild the SVG on inspection: preserve Tab focus, viewport pan and
-  // the user's current route. The selection is informational, not movement.
+ function updateMapTools(){
+  $("f3cPickerLabel").textContent=ux().picker;
+  $("f3cLocate").textContent=ux().locate;
+  $("f3cToTask").textContent=ux().task;
+  $("f3cToTask").hidden=!gameMode;
+  $("f3cMapHint").textContent=ux().hint;
+  $("f3cMetroTools").setAttribute("aria-label",ux().map);
+  $("f3cMetroPicker").value=inspected;
+  syncNetworkZoom(false);
+ }
+ function selectStation(id,announce=true){
+  if(!M.station(id))return;
+  // Inspection is information only; no route engine action is dispatched.
+  // Do not rebuild SVG nodes: keyboard focus remains where the user placed it.
   inspected=id;
   network.querySelectorAll("[data-metro-station]").forEach(group=>{
    const match=group.dataset.metroStation===id;
    group.setAttribute("aria-pressed",String(match));
+   group.setAttribute("aria-label",ux().inspect(stationName(group.dataset.metroStation))+
+    " "+M.joined(group.dataset.metroStation).join(" · "));
    const halo=group.querySelector(".metro-node-halo");
    if(halo)halo.setAttribute("opacity",match?".24":"0");
   });
+  $("f3cMetroPicker").value=id;
   renderInspector();
-  $("metroFeedback").textContent="Station selected: "+stationName(id)+". This is a network inspection, not a game move.";
+  const message=ux().inspect(stationName(id));
+  if(announce)$("f3cMapLive").textContent=message;
+  $("metroFeedback").textContent=message;
   $("metroFeedback").dataset.state="info";
  }
  function renderInspector(){
@@ -510,6 +564,7 @@
  }
  function renderAll(){
   drawScenarios();renderNetwork();drawScene();drawJourney();renderInspector();
+  updateMapTools();
  }
  function chooseScenario(id){
   if(gameMode)return;
@@ -557,6 +612,7 @@
     "EN/B1 route reference · F2.1B visual review · Official fictional station names remain in English. Teaching missions support four languages B1–C2.";
   jump.textContent="🚇 Riverton Metro · EN visual preview (B1+)";
   if(shown)renderAll();
+  else updateMapTools();
  }
  window.RivertonMetroVisual=Object.freeze({
   sync(state){
@@ -574,7 +630,48 @@
     updateVisibility();
   }
  });
- $("metroMapZoom").addEventListener("click",()=>{overview=!overview;syncNetworkZoom();});
+ // Native station finder remains usable when SVG nodes are too small in
+ // whole-network overview. It must NEVER advance the player's actual route.
+ const picker=$("f3cMetroPicker");
+ for(const station of M.stations){
+  const option=document.createElement("option");
+  option.value=station.id;
+  option.textContent=station.labelEn+" · "+M.joined(station.id).join(" / ");
+  picker.appendChild(option);
+ }
+ picker.addEventListener("change",event=>{
+  const id=event.target.value;if(!M.station(id))return;
+  if(overview){overview=false;syncNetworkZoom(false);}
+  selectStation(id);
+  window.requestAnimationFrame(()=>panToStation(id));
+ });
+ $("f3cLocate").addEventListener("click",()=>{
+  if(overview){overview=false;syncNetworkZoom(false);}
+  selectStation(atStation(),false);
+  $("f3cMapLive").textContent=ux().stop(stationName(atStation()));
+  window.requestAnimationFrame(()=>panToStation(atStation()));
+ });
+ $("f3cToTask").addEventListener("click",()=>{
+  if(!gameMode)return;
+  const panel=$("f1Panel"),head=panel.querySelector(".f2-card-head h2");
+  if(!head)return;
+  head.tabIndex=-1;
+  panel.scrollIntoView({block:"start",behavior:"auto"});
+  head.focus({preventScroll:true});
+ });
+ const metroViewport=$("metroNetworkViewport");
+ metroViewport.addEventListener("keydown",event=>{
+  if(event.target!==metroViewport)return;
+  const dx=event.key==="ArrowRight"?1:event.key==="ArrowLeft"?-1:0,
+    dy=event.key==="ArrowDown"?1:event.key==="ArrowUp"?-1:0;
+  if(!dx&&!dy)return;
+  event.preventDefault();
+  metroViewport.scrollBy({left:dx*metroViewport.clientWidth*.45,
+   top:dy*metroViewport.clientHeight*.45,behavior:"auto"});
+ });
+ $("metroMapZoom").addEventListener("click",()=>{
+  overview=!overview;syncNetworkZoom();
+ });
  $("metroAdvance").addEventListener("click",advance);
  $("metroReplay").addEventListener("click",()=>chooseScenario(current.scenarioId));
  $("metroViewPlatform").addEventListener("click",()=>{view="platform";drawScene();});
@@ -586,5 +683,6 @@
  });
  $("f2Level").addEventListener("change",updateVisibility);
  $("f2Language").addEventListener("change",updateVisibility);
+ window.addEventListener("resize",()=>{if(!overview)centerOnCurrent();},{passive:true});
  drawLegend();updateVisibility();syncNetworkZoom();
 })();
