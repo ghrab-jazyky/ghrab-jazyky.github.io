@@ -14,10 +14,10 @@
   const icons=["🗺️","🧭","💬","👣","🚌","↩️","🚧","🏆"];
   const stationKeys=["explore","route","dialogue","guided","transit","repair","detour","quest"];
   const chromeCopy={
-    en:{theme:"Toggle light/dark theme",detail:"Map detail",whole:"Whole city",tip:"Select Map detail to zoom in on street names",tipZoom:"Swipe across the city map to explore",kicker:"EXPLORE · NAVIGATE · COMMUNICATE",caption:"CITY ADVENTURE · WALKING MAP"},
-    es:{theme:"Cambiar tema claro u oscuro",detail:"Ampliar mapa",whole:"Toda la ciudad",tip:"Amplía el mapa para leer las calles",tipZoom:"Desliza el mapa para explorar la ciudad",kicker:"EXPLORA · ORIÉNTATE · COMUNICA",caption:"AVENTURA URBANA · MAPA A PIE"},
-    de:{theme:"Hell- oder Dunkelmodus wechseln",detail:"Kartendetails",whole:"Gesamte Stadt",tip:"Vergrößere die Karte, um Straßennamen zu lesen",tipZoom:"Wische über die Karte, um die Stadt zu erkunden",kicker:"ERKUNDEN · ORIENTIEREN · SPRECHEN",caption:"STADTABENTEUER · FUSSGÄNGERKARTE"},
-    fr:{theme:"Changer de thème clair ou sombre",detail:"Détail du plan",whole:"Vue générale",tip:"Agrandissez le plan pour lire les noms de rues",tipZoom:"Faites glisser le plan pour explorer la ville",kicker:"EXPLORER · S'ORIENTER · ÉCHANGER",caption:"AVENTURE URBAINE · PLAN PIÉTON"}
+    en:{theme:"Toggle light/dark theme",detail:"Map detail",whole:"Whole city",tip:"Select Map detail to zoom in on street names",tipZoom:"Swipe across the city map to explore",kicker:"EXPLORE · NAVIGATE · COMMUNICATE",caption:"CITY ADVENTURE · WALKING MAP",compact:"Make direction pad smaller",expand:"Show full directions"},
+    es:{theme:"Cambiar tema claro u oscuro",detail:"Ampliar mapa",whole:"Toda la ciudad",tip:"Amplía el mapa para leer las calles",tipZoom:"Desliza el mapa para explorar la ciudad",kicker:"EXPLORA · ORIÉNTATE · COMUNICA",caption:"AVENTURA URBANA · MAPA A PIE",compact:"Reducir controles",expand:"Mostrar indicaciones completas"},
+    de:{theme:"Hell- oder Dunkelmodus wechseln",detail:"Kartendetails",whole:"Gesamte Stadt",tip:"Vergrößere die Karte, um Straßennamen zu lesen",tipZoom:"Wische über die Karte, um die Stadt zu erkunden",kicker:"ERKUNDEN · ORIENTIEREN · SPRECHEN",caption:"STADTABENTEUER · FUSSGÄNGERKARTE",compact:"Steuerfeld verkleinern",expand:"Alle Richtungen anzeigen"},
+    fr:{theme:"Changer de thème clair ou sombre",detail:"Détail du plan",whole:"Vue générale",tip:"Agrandissez le plan pour lire les noms de rues",tipZoom:"Faites glisser le plan pour explorer la ville",kicker:"EXPLORER · S'ORIENTER · ÉCHANGER",caption:"AVENTURE URBAINE · PLAN PIÉTON",compact:"Réduire les commandes",expand:"Afficher toutes les directions"}
   };
   let metroEnabled=false;
   let state=makeSession("en","B1","solo");
@@ -155,6 +155,7 @@
   // The live scene stays inside the F2.1B map card, not a second independent controller.
   function metroAction(action){
     const number=state.station,previousScene=metroScene(),previous=state.metro[number];
+    const hadTaskFocus=panel.contains(document.activeElement);
     const result=MG.act(previous,action);
     state.metro[number]=result.state;
     // F3B: sound is optional and generated locally only AFTER a real,
@@ -169,8 +170,17 @@
       action.type==="EXIT"?"arrival":"advance";
     window.CityQuestF3?.feedback(cue);
     flash={text:LC.feedback(state.language,result,action),tone:result.accepted?"success":"warning"};
+    // Persistent polite status survives rebuilding the mission panel and is
+    // announced by assistive technology without an audio or network request.
+    $("f3Status").textContent=flash.text;
     if(result.complete)state.done.add(number);
     screen();renderMap();
+    // Mission action buttons are recreated with new phases. Return keyboard
+    // focus to the NEW valid action; never steal focus from map inspection.
+    if(hadTaskFocus)window.requestAnimationFrame(()=>{
+      const next=panel.querySelector(".f2-choice-list button:not(:disabled), .f2-actions button:not(:disabled)");
+      if(next)next.focus({preventScroll:true});
+    });
     window.CityQuestF3?.sceneUpdated();
     if(previousScene!==metroScene()){
       const target=metroScene()?metroLab:cityLayout;
@@ -498,11 +508,30 @@
   }
   const hudTools=el("div",quick,"f2-hud-tools");
   const hudUndo=btn(hudTools,"↶",()=>undoMapStep(),"f2-hud-undo");
+  let hudCompact=false;
+  const hudSize=btn(hudTools,"▣",()=>{
+    hudCompact=!hudCompact;updateHudDensity();
+  },"f3c-hud-toggle");
+  hudSize.id="f3cHudSize";
+  hudSize.dataset.testid="hud-size-toggle";
   // One HUD, two responsive placements. Desktop uses the right mission sidebar;
   // phones keep the overlay inside the map frame. Never clone the button nodes.
   const hudDock=panel.parentElement;
   // Match the actual layout breakpoint: the sidebar sits beside the map only above 1050px.
   const phoneQuery=window.matchMedia("(max-width:1050px)");
+  function updateHudDensity(){
+    const overlay=phoneQuery.matches,compact=overlay&&hudCompact;
+    const t=chromeCopy[state.language]||chromeCopy.en;
+    quick.dataset.compact=String(compact);
+    hudSize.hidden=!overlay;
+    hudSize.setAttribute("aria-pressed",String(compact));
+    hudSize.setAttribute("aria-label",compact?t.expand:t.compact);
+    hudSize.title=compact?t.expand:t.compact;
+    hudSize.textContent=compact?"⤢":"▣";
+    // Icon-only Undo retains its full translated accessible name and a real
+    // 44px touch target beside the compact toggle on small screens.
+    hudUndo.textContent=overlay?"↶":"↶ "+ui().undo;
+  }
   function placeHud(){
     const overlay=phoneQuery.matches;
     const destination=overlay?mapStage:hudDock;
@@ -514,6 +543,7 @@
       if(focused)focused.focus({preventScroll:true});
     }
     quick.dataset.placement=overlay?"map-overlay":"sidebar";
+    updateHudDensity();
   }
   placeHud();
   if(phoneQuery.addEventListener)phoneQuery.addEventListener("change",placeHud);
@@ -552,9 +582,9 @@
     const p=pack(),u=ui();
     quick.setAttribute("aria-label",u.compass);
     quickPad.setAttribute("aria-label",u.compass);
-    hudUndo.textContent="↶ "+u.undo;
     hudUndo.setAttribute("aria-label",u.undo);
     hudUndo.disabled=!canUndo();
+    updateHudDensity();
     const cp=state.station===8&&!metroPilot()&&!state.quest.done?
       G.questCheckpoints(state.level)[state.quest.stage]:null;
     const done=isMovementLocked();
