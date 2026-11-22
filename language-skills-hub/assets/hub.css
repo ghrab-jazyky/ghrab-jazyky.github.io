@@ -376,4 +376,9 @@ dialog.howto-dialog{
 .materials-links .action[aria-disabled="true"]{opacity:.5;pointer-events:none}
 .materials-reuse-warning{border-left:3px solid #bf985a;background:rgba(191,152,90,.10);padding:11px 13px;border-radius:3px 9px 9px 3px;color:var(--fg);line-height:1.48}
 .materials-reuse-warning strong{font-weight:700}
+.materials-fallback{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin:8px 0}
+.materials-fallback summary{cursor:pointer;font-size:.91rem;font-weight:650;line-height:1.4;color:var(--fg);min-height:32px}
+.materials-fallback summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.materials-fallback .materials-links{margin:10px 0 5px}
+.materials-fallback a[aria-disabled="true"]{pointer-events:none;opacity:.5}
 @media(max-width:480px){.materials-dialog{padding:15px}.materials-selectors,.materials-links{grid-template-columns:1fr}}
