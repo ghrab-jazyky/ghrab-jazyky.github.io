@@ -52,9 +52,9 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
 .exercise-options{margin:5pt 0 6pt;padding-left:2em}
 .exercise-options li{padding-left:3pt;margin:3pt 0;orphans:2;widows:2;
  text-align:justify;hyphens:auto;-webkit-hyphens:auto}
-.answer-line{height:20pt;border-bottom:.6px dotted #748593;max-width:125mm;margin:5pt 0 0}
+.answer-line{height:20pt;border-bottom:.7px dotted #5f7687;max-width:125mm;margin:5pt 0 0}
 .reflection p{text-align:justify;font:11pt/1.5 Georgia,"Times New Roman",serif}
-.writing-lines{height:70pt;background:repeating-linear-gradient(to bottom,transparent 0,transparent 20pt,#9caeba 20.5pt)}
+.writing-lines{height:70pt;background:repeating-linear-gradient(to bottom,transparent 0,transparent 20pt,#6f8796 20.5pt)}
 .paper-footer{font:8pt/1.35 Arial,Helvetica,sans-serif;color:#516371;
  border-top:.6px solid #b4c4ce;padding-top:7pt;margin-top:18pt;break-inside:avoid}
 @media screen and (max-width:850px){
@@ -74,17 +74,45 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
  .reading-material,.exercises,.reflection{break-inside:auto}
  .paper h2,.exercise-group h3{break-after:avoid-page}
  .reading-paragraphs,.reading-paragraphs p,.exercise-options li{hyphens:auto;-webkit-hyphens:auto}
- /* Keep an independent reflection on EN B1 on the same sheet as its exercises.
-    Keep the 11pt reading font and sufficient room for written answers. */
- .paper[data-level="B1"][data-format="all"] .exercise-question{margin-bottom:7pt}
- .paper[data-level="B1"][data-format="all"] .answer-line{height:14pt}
- .paper[data-level="B1"][data-format="all"] .exercise-options li{margin:2pt 0}
- /* Two ruled lines remain, without spilling a phantom footer-only page. */
+ /* All four B1 languages: give students three ruled reflection lines and
+    standard 20pt answer spaces. Recover vertical space between tasks instead
+    of sacrificing the size of the writing areas or the 11pt reading font. */
+ .paper[data-level="B1"][data-format="all"] .paper-header{margin-bottom:15px}
+ .paper[data-level="B1"][data-format="all"] .paper h2{margin:14px 0 8px}
+ .paper[data-level="B1"][data-format="all"] .reading-paragraphs{line-height:1.40}
+ .paper[data-level="B1"][data-format="all"] .reading-paragraphs p{margin-bottom:8pt}
+ .paper[data-level="B1"][data-format="all"] .warmup{margin-bottom:8pt;padding:5pt 9pt}
+ .paper[data-level="B1"][data-format="all"] .exercise-group{margin-bottom:7px}
+ .paper[data-level="B1"][data-format="all"] .exercise-group h3{margin:8pt 0 5pt}
+ .paper[data-level="B1"][data-format="all"] .exercise-question{margin-bottom:4pt}
+ .paper[data-level="B1"][data-format="all"] .exercise-options{margin:3pt 0}
+ .paper[data-level="B1"][data-format="all"] .exercise-options li{margin:1pt 0;line-height:1.36}
+ .paper[data-level="B1"][data-format="all"] .answer-line{height:20pt;margin-top:3pt}
  .paper[data-level="B1"][data-format="all"] .reflection p{margin-bottom:4pt}
- .paper[data-level="B1"][data-format="all"] .writing-lines{height:44pt}
- /* Long C2 text-only pages: retain font size, optimize leading and blank space. */
+ .paper[data-level="B1"][data-format="all"] .writing-lines{height:70pt}
+ /* Dense but readable EN C1/C2 text-only sheets. Retain 11pt Georgia and
+    avoid a nearly empty second page; other languages/levels remain untouched. */
+ html[lang="en"] .paper[data-format="text"][data-level="C1"] .paper-header,
+ html[lang="en"] .paper[data-format="text"][data-level="C2"] .paper-header{
+  margin-bottom:8px;padding-bottom:7px
+ }
+ html[lang="en"] .paper[data-format="text"][data-level="C1"] .paper h2,
+ html[lang="en"] .paper[data-format="text"][data-level="C2"] .paper h2{
+  margin:10pt 0 7pt;padding-bottom:4pt
+ }
+ html[lang="en"] .paper[data-format="text"][data-level="C1"] .reading-paragraphs,
+ html[lang="en"] .paper[data-format="text"][data-level="C2"] .reading-paragraphs{
+  font-size:11pt;line-height:1.27
+ }
+ html[lang="en"] .paper[data-format="text"][data-level="C1"] .reading-paragraphs p,
+ html[lang="en"] .paper[data-format="text"][data-level="C2"] .reading-paragraphs p{
+  margin-bottom:3pt
+ }
+ /* Preserve the existing compact C2 baseline outside the EN text-only case. */
  .paper[data-level="C2"][data-format="text"] .paper-header{margin-bottom:10px}
  .paper[data-level="C2"][data-format="text"] .reading-paragraphs{line-height:1.35}
  .paper[data-level="C2"][data-format="text"] .reading-paragraphs p{margin-bottom:5pt}
+ html[lang="en"] .paper[data-level="C2"][data-format="text"] .reading-paragraphs{line-height:1.27}
+ html[lang="en"] .paper[data-level="C2"][data-format="text"] .reading-paragraphs p{margin-bottom:3pt}
  a{text-decoration:none;color:inherit}
 }
