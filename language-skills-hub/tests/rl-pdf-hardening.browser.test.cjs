@@ -133,8 +133,8 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     assert.equal(Object.hasOwn(saved[affected].first,scan),false);
     assert.equal(Object.hasOwn(saved[affected].first,vocab),false);
     assert.equal(saved[affected].values[gist],'2','Untouched gist answer survives');
-    assert.deepEqual(saved[affected].checkedTabs,['gist'],
-     'Previously checked revised scan and vocab items need new attempts');
+    assert.deepEqual(saved[affected].checkedTabs,[],
+     'R12 scan/vocab and R13 gist revisions invalidate only affected checked sections');
     assert.equal(saved[affected].open,'unchanged text');
     assert.equal(saved['en:C1'].values['en-c1-gist-1'],'2',
      'Other languages must not be reset');
@@ -142,6 +142,54 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     const savedAgain=await page.evaluate(key=>JSON.parse(sessionStorage.getItem(key)),key);
     assert.equal(savedAgain[affected].itemRevision,'es-fr-c1-r12-20261122');
     assert.equal(savedAgain[affected].values[gist],'2');
+    await page.close();
+   }
+  }finally{await browser.close()}
+ });
+
+ test('R-13 '+name+': ES/FR C1 migration clears revised items once and keeps unrelated answers',
+ {timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const storageKey='reading-lab-answers:asteroids-planetary-defence:v2.3';
+   const changed={
+    es:['gist-3','inference-1','inference-2','inference-3','vocab-2','vocab-3','matching-1','matching-2','structure-1'],
+    fr:['gist-2','gist-3','detail-3','inference-1','inference-2','vocab-2','vocab-3','matching-1','matching-2','matching-3','structure-1']
+   };
+   for(const lang of ['es','fr']){
+    const page=await browser.newPage({viewport:{width:1100,height:900}});
+    await page.goto(base+'cteni/asteroids/index.html?lang=en&level=A1');
+    const variant=lang+':C1',items=changed[lang].map(id=>lang+'-c1-'+id);
+    const values=Object.fromEntries(items.map((id,i)=>[id,String(i%4)]));
+    values[lang+'-c1-scan-1']='1';
+    values[lang+'-c1-gist-1']='2';
+    const original={
+     [variant]:{values,first:{...values},checkedTabs:['scan','gist','detail','inference','vocab','matching','structure'],
+      open:'Keep this student reflection',
+      itemRevision:'es-fr-c1-r12-20261122'},
+     'en:C1':{values:{'en-c1-gist-1':'2'},first:{},checkedTabs:['gist'],open:'English'}
+    };
+    await page.evaluate(({storageKey,original})=>
+     sessionStorage.setItem(storageKey,JSON.stringify(original)),{storageKey,original});
+    await page.goto(base+'cteni/asteroids/index.html?lang='+lang+'&level=C1');
+    await page.locator('#levels [data-level="C1"]').waitFor();
+    const saved=await page.evaluate(key=>JSON.parse(sessionStorage.getItem(key)),storageKey);
+    assert.equal(saved[variant].itemRevisionR13,'es-fr-c1-r13-20261122');
+    assert.equal(saved[variant].itemRevision,'es-fr-c1-r12-20261122');
+    for(const id of items){
+     assert.equal(Object.hasOwn(saved[variant].values,id),false,id+' value cleared');
+     assert.equal(Object.hasOwn(saved[variant].first,id),false,id+' first attempt cleared');
+    }
+    assert.equal(saved[variant].values[lang+'-c1-scan-1'],'1');
+    assert.equal(saved[variant].values[lang+'-c1-gist-1'],'2');
+    assert.deepEqual(saved[variant].checkedTabs,lang==='es'?['scan','detail']:['scan']);
+    assert.equal(saved[variant].open,'Keep this student reflection');
+    assert.equal(saved['en:C1'].values['en-c1-gist-1'],'2');
+    await page.reload();
+    const again=await page.evaluate(key=>JSON.parse(sessionStorage.getItem(key)),storageKey);
+    assert.equal(again[variant].itemRevisionR13,'es-fr-c1-r13-20261122');
+    assert.equal(again[variant].values[lang+'-c1-scan-1'],'1');
+    assert.equal(again[variant].open,'Keep this student reflection');
     await page.close();
    }
   }finally{await browser.close()}
