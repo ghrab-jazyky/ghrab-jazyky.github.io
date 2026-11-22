@@ -512,6 +512,7 @@
   const hudSize=btn(hudTools,"▣",()=>{
     hudCompact=!hudCompact;updateHudDensity();
   },"f3c-hud-toggle");
+  hudSize.id="f3cHudSize";
   hudSize.dataset.testid="hud-size-toggle";
   // One HUD, two responsive placements. Desktop uses the right mission sidebar;
   // phones keep the overlay inside the map frame. Never clone the button nodes.
