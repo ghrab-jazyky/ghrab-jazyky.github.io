@@ -76,3 +76,19 @@ test("F5C CQ-F5-023/025: grammatical U-turns and non-gendered French success/cor
  assert.equal(fr.ui.arrived,"Vous êtes à destination !");
  assert.doesNotMatch(fr.repair.polite,/je me suis trompé\b/i);
 });
+
+
+test("F5C CQ-F5-024/030/032: localised checkpoint headings, German U-Bahn terms and metro map warning",()=>{
+ const Metro=require("../authoring/city-quest-f2-1d/metro-language.js");
+ const Network=require("../authoring/city-quest-f2-1b/metro-network.js");
+ assert.equal(Network.scenario("metro_08_b1").speakingCheckpoints,3);
+ const words={en:/schematic/i,es:/esquemático/i,de:/schematisch/i,fr:/schématique/i};
+ for(const lang of Metro.languages){
+  const p=Metro.pack(lang,"C2",8);
+  assert.ok(p.labels.checkpointProgress.length>5);
+  assert.match(p.hints.map,words[lang],lang+" needs a true metro schematic warning");
+ }
+ const german=Metro.pack("de","B1",8);
+ for(const key of ["pilot","title","header","kicker","pilotTag","metroTitle"])
+  assert.doesNotMatch(german[key],/Metro/i,"German should call the system U-Bahn: "+key);
+});
