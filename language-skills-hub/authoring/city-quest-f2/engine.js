@@ -65,11 +65,23 @@
     return {accepted:true,kind:done?"success":arrived&&!completeVia?"missing-via":r.kind,
       state:{...state,route:progress,done,visitedVia:completeVia,message:done?"done":""}};
   }
-  function guidedStart(){return {route:[copy(E.start)],step:0,done:false,attempts:0};}
+  function guidedStart(){return {route:[copy(E.start)],step:0,done:false,attempts:0,reviewed:false,reviewAttempts:0};}
+  // CQ-F5-008: an advanced learner must interpret a map-based reason for
+  // their route, not merely follow more compass taps. Language is independent
+  // of correctness: localized options use the same stable semantic IDs.
+  const guidedReviewAnswers=Object.freeze({B2:"left",C1:"library",C2:"closure"});
+  function guidedReview(state,level,choice){
+    const answer=guidedReviewAnswers[level];
+    if(!answer||!state.done||state.reviewed)return {accepted:false,kind:"unavailable",state};
+    if(choice!==answer)return {accepted:false,kind:"incorrect",state:{
+      ...state,reviewAttempts:state.reviewAttempts+1}};
+    return {accepted:true,kind:"reason",state:{...state,reviewed:true}};
+  }
+
   function guidedMove(state,next,level){
     const plan=guidedPaths[level];if(!plan)throw new RangeError("Invalid level");
     if(state.done)return {accepted:false,kind:"finished",state};
-    const r=F.routeResult(state.route,next,null);
+    const r=F.routeResult(state.route,next,level==="C2"?F.closure:null);
     if(!r.valid||r.kind==="undo")return {accepted:false,kind:r.kind,state:{...state,attempts:state.attempts+1}};
     if(E.heading(state.route[state.route.length-1],next)!==plan[state.step])
       return {accepted:false,kind:"wrong-way",state:{...state,attempts:state.attempts+1}};
@@ -195,6 +207,19 @@
     const stage=state.stage+1,done=stage===questCheckpoints(level).length;
     return {accepted:true,state:{...state,stage,leg:[copy(state.route[state.route.length-1])],awaitingSpeech:false,done}};
   }
+  // CQ-F5-008: clear finite-state misconception repair. A1–B1 retain the
+  // familiar two decisions; B2 requires spatial reasoning and C1/C2 also
+  // assess a tactful, unambiguous corrective response.
+  function repairStart(){return {phase:0,done:false,tries:0};}
+  function repairStages(level){return lvlIndex(level)>=4?4:lvlIndex(level)>=3?3:2;}
+  function repairChoice(state,level,choice){
+    const stages=repairStages(level),expected=["turn","left","south","apology"];
+    if(state.done||state.phase>=stages)return {accepted:false,kind:"finished",state};
+    const correct=choice===expected[state.phase],tries=state.tries+1;
+    const phase=state.phase+(correct?1:0);
+    return {accepted:correct,kind:correct?(phase>=stages?"success":"correct"):"incorrect",
+      state:{phase,done:phase===stages,tries}};
+  }
   const dialogueStates=["start","clarify","wrong","distance","complete"];
   function dialogueStart(){return {stage:"start",tries:0,done:false,correct:false};}
   function dialogueChoose(state,id){
@@ -214,6 +239,7 @@
       state:{...state,stage:next,tries:state.tries+1,done:next==="complete",correct}};
   }
   return Object.freeze({F,E,levels,goals,guidedPaths,lvlIndex,config,pathFromDirections,routeStart,
-    moveRoute,guidedStart,guidedMove,instruction,answerCount,optionsCount,orderChoices,requiredFields,servicesForLevel,transportOptions,checkTransport,
+    moveRoute,guidedStart,guidedMove,guidedReview,instruction,answerCount,optionsCount,orderChoices,requiredFields,servicesForLevel,transportOptions,checkTransport,
+    repairStart,repairStages,repairChoice,
     routeModel,detourCheckpoints,questCheckpoints,questStart,questMove,questSpeak,dialogueStart,dialogueChoose});
 });
