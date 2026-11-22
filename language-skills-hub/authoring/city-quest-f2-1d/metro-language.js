@@ -370,7 +370,7 @@
   const p=pack(lang,level,mission);
   return p.models[mission]+(level==="B1"?"":" "+p.cefr.extension);
  }
- function feedback(lang,result,action){
+ function feedback(lang,result,action,stationLabel){
   if(lang==="en")return result.message;
   const p=content[lang];
   if(!p)throw RangeError("Unsupported language");
@@ -387,7 +387,11 @@
   if(type==="SELF_CHECK"&&state.phase==="enter")return p.phases.enter;
   if(type==="SELF_CHECK"&&state.phase==="transfer")return p.phases.transfer;
   return replace(p.success[type]||p.errors.invalid,
-    {station:state.metroStation.replaceAll("_"," ")});
+    // The UI supplies the authoritative labelEn from the Riverton network.
+    // The fallback remains a properly capitalized fictional station name
+    // for pure Node unit tests that do not include a DOM or metro renderer.
+    {station:stationLabel||state.metroStation.split("_").map(part=>
+      part.charAt(0).toUpperCase()+part.slice(1)).join(" ")});
  }
  function validate(){
   for(const lang of languages){
