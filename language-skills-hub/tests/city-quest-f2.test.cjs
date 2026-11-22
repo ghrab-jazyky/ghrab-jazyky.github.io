@@ -108,7 +108,7 @@ test("A1 detour still reaches museum instead of ending before the roadworks",()=
   state=G.moveRoute(state,n,"A1",true).state;
  }
  assert.equal(state.done,false,"A1 detour must not finish at the Square");
- for(const dir of ["east","north"]){
+ for(const dir of ["east","south","east","north","north","west"]){
   const n=F.nextFromDirection(state.route.at(-1),dir);
   state=G.moveRoute(state,n,"A1",true).state;
  }
