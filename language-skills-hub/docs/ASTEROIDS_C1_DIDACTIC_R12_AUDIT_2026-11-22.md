@@ -48,7 +48,7 @@
 
 ## Release acceptance – povinné podmínky
 
-- [x] Bot úspěšně vygeneroval **96 PDF** a manifest z aktualizovaného zdroje. Bot commit `573e657f59abc6b48f290c646c80c1a23e58f1ac`; manifest `sourceSha256=0a977c09c37b43df84983d5707013c69ad664c6da8eab3510664bb44f31af188`.
+- [x] Bot úspěšně vygeneroval všech **96 PDF** i po poslední úpravě zdrojové karty; poslední commit `28f03f4697d9b19b41ce105d12aa1bfb7c6d5df8`, fingerprint `dcea88b7baa02af560d522645181fb477c909b0c4053468937f47e6e3fa19a3e`.
 - [ ] Regresní test R-12 je zařazen do povinné unit CI a všechny nové i staré unit testy procházejí.
 - [ ] Závěrečný `pdf-scope`, `unit`, `browser`, `corpus` a `pdf-release-gate` mají **SUCCESS na posledním HEAD**.
 - [ ] Kontrola skutečně regenerovaných PDF ES/C1 a FR/C1 potvrzuje všech 8 nových znění, vyvážené možnosti, žádnou starou chybně formulovanou možnost a žádný tiskový overflow.
@@ -61,3 +61,12 @@
 - Robot `LSH RL-PDF branded assets` doběhl se stavem **SUCCESS** pro zdrojovou revizi `0050c018c020d2a3f54e4cefb486a4f081ff2773`, následně commitnul změny 96 PDF a manifestu.
 - Nová ES C1 `practice-all` má v manifestu 201 456 B; `test-all` 199 887 B. FR C1 `practice-all` 200 347 B; `test-all` 198 371 B.
 - Tento aktualizovaný dokument spouští nový `pull_request` CI nad aktuálním HEAD. Při kontroverzi bot commitu je nutné explicitně ověřit, že všech pět podúloh patří ke stejné HEAD revizi.
+
+## R-12: ochrana rozpracovaných odpovědí při změně obsahu
+V původní kartě se ukládají volby do `sessionStorage`. Proto při prvním načtení aktualizované ES/FR C1 verze jednorázově odstraňujeme **pouze osm revidovaných odpovědí a prvotních voleb** a rušíme stav již zkontrolovaných sekcí `scan` a `vocab`. Ostatní odpovědi a již zkontrolované sekce, jiná jazyková/úrovňová varianta i otevřená reflexe zůstávají zachované. Verze migrace: `es-fr-c1-r12-20261122`. Po opakovaném načtení se migrace znovu neprovádí. Pro Chromium i WebKit je připraven browser regresní test.
+
+## Finální regenerace PDF – aktualizace
+- Robot úspěšně dokončil regeneraci **96 PDF a manifestu** z kódu obsahujícího i bezpečné vyčištění starých odpovědí, přesný bot commit `28f03f4697d9b19b41ce105d12aa1bfb7c6d5df8`.
+- ES/C1 `practice-all` 201 456 B, `test-all` 199 887 B; FR/C1 `practice-all` 200 347 B, `test-all` 198 371 B (manifest). Tyto velikosti nejsou náhradou vizuální kontroly.
+- CI obrazové vzorky byly rozšířeny o obě varianty v obou jazycích; vyžaduje se jejich skutečné vykreslení.
+- Následný dokumentační commit vyvolává nový `pull_request` běh. Staré zrušené běhy ani `action_required` na robotím commitu nesmějí být použity jako důkaz PASS.
