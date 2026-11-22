@@ -130,7 +130,7 @@ jobs:
         if: always()
         run: |
           mkdir -p /tmp/lsh-pdf-visual-qa
-          for item in en/A1/practice-text en/B1/practice-all en/B1/test-all en/B2/test-all en/C1/practice-text en/C1/test-text en/C2/test-text es/B2/practice-all de/C2/test-all fr/C1/practice-all; do
+          for item in en/A1/practice-text en/B1/practice-all en/B1/test-all en/B2/test-all en/C1/practice-text en/C1/test-text en/C2/practice-text en/C2/test-text es/B1/practice-all es/B2/practice-all de/B1/practice-all de/C2/test-all fr/B1/practice-all fr/C1/practice-all; do
             pdf="language-skills-hub/printouts/rl-asteroids/${item}.pdf"
             if [ ! -f "$pdf" ]; then continue; fi
             name=$(echo "$item" | tr '/' '-')
@@ -152,7 +152,11 @@ jobs:
             language-skills-hub/printouts/rl-asteroids/en/B1/test-all.pdf
             language-skills-hub/printouts/rl-asteroids/en/C1/practice-text.pdf
             language-skills-hub/printouts/rl-asteroids/en/C1/test-text.pdf
+            language-skills-hub/printouts/rl-asteroids/en/C2/practice-text.pdf
             language-skills-hub/printouts/rl-asteroids/en/C2/test-text.pdf
+            language-skills-hub/printouts/rl-asteroids/es/B1/practice-all.pdf
+            language-skills-hub/printouts/rl-asteroids/de/B1/practice-all.pdf
+            language-skills-hub/printouts/rl-asteroids/fr/B1/practice-all.pdf
             language-skills-hub/printouts/rl-asteroids/en/B2/test-text.pdf
             language-skills-hub/printouts/rl-asteroids/en/B2/test-all.pdf
             language-skills-hub/printouts/rl-asteroids/de/C2/test-text.pdf
