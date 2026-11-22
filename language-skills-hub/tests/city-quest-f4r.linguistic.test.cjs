@@ -87,3 +87,12 @@ test("F4R French gallery and map inspection remain formally addressed; audio is 
  assert.doesNotMatch(PA.dict.fr.marker,/AUDIO|ENREGISTREMENT/);
  assert.match(PA.dict.fr.marker,/SIMULATION ÉCRITE/);
 });
+
+test("F4R ES learner-facing repair feedback remains tú while tourist dialogue uses usted",()=>{
+ const es=City.packs.es;
+ assert.match(es.ui.yourTurn,/Tu turno/);
+ assert.match(es.dialogue.repairGood,/has reconocido.*has corregido/);
+ assert.match(es.dialogue.final,/Has ayudado.*Compara tu respuesta/);
+ assert.match(es.dialogue.opening,/Disculpe.*podría indicarme/);
+ assert.match(es.dialogue.goodbye,/Disfrute de la visita/);
+});
