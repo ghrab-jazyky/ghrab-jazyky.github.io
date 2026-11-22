@@ -335,6 +335,9 @@
    }
   }
  };
+ // CQ-F5-007: mission-specific language tasks/models. Unlike generic CEFR
+ // suffixes, these force explanations of each actual trip constraint.
+ const advanced={en:{},es:{},de:{},fr:{}};
  const codeByMessage={
   "This mission has already been completed.":"completed",
   "You can undo walking steps only while exploring the city.":"undoPhase",
@@ -367,8 +370,10 @@
  function pack(lang,level,mission){
   if(!languages.includes(lang)||!levels.includes(level)||!missions.includes(mission))
    throw RangeError("Unsupported metro content configuration "+[lang,level,mission].join("/"));
-  const p=content[lang];return Object.freeze({...p,mission,level,cefr:p.levels[level],
-    titleMission:p.titles[mission],goal:p.goals[mission]+" "+p.levels[level].task});
+  const p=content[lang],authored=advanced[lang]?.[level]?.[mission],
+    cefr=authored?Object.freeze({...p.levels[level],task:authored.task}):p.levels[level];
+  return Object.freeze({...p,mission,level,cefr,
+    titleMission:p.titles[mission],goal:p.goals[mission]+" "+cefr.task});
  }
  function stage(lang,level,mission,phase,vars){
   const p=pack(lang,level,mission);
@@ -380,7 +385,9 @@
  }
  function model(lang,level,mission){
   const p=pack(lang,level,mission);
-  return p.models[mission]+(level==="B1"?"":" "+p.cefr.extension);
+  const authored=advanced[lang]?.[level]?.[mission];
+  return authored?authored.lead+" "+p.models[mission]+" "+authored.reason:
+    p.models[mission];
  }
  function feedback(lang,result,action,stationLabel){
   if(lang==="en")return result.message;
