@@ -90,3 +90,72 @@ test("F5C accessibility: map location and labels reflect actual F2 route in Fren
   assert.equal(await page.locator('[data-node][aria-current="location"]').count(),0);
  }finally{await browser.close();}
 });
+
+
+test("F5C CQ-F5-004: station signs are readable, not an answer key, in four languages",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+  await page.goto(URL);
+  for(const lang of ["en","es","de","fr"]){
+   await page.locator("#f2Language").selectOption(lang);
+   await page.locator("#f2Level").selectOption("B1");
+   await page.locator("#metroPilotToggle").click();
+   await page.locator("#f1Stations button").nth(4).click();
+   await page.locator("#f1Panel .f2-choice-list button").filter({hasText:"M1 ·"}).click();
+   await page.locator("#f1Panel .f2-choice-list button").filter({hasText:"East Gardens"}).click();
+   const copy=LC.pack(lang,"B1",5);
+   const board=page.locator("#f1Panel .metro-platform-board");
+   assert.equal(await board.count(),1);
+   assert.ok((await board.getAttribute("aria-label")).includes(copy.labels.platformBoard));
+   assert.equal(await board.locator("li").count(),3);
+   const signs=await board.locator("li").allInnerTexts();
+   assert.ok(signs.some(s=>s.includes(copy.labels.platform+" 2")&&s.includes("M1")&&s.includes("East Gardens")),
+    lang+": missing correct station signage "+JSON.stringify(signs));
+   assert.ok(signs.some(s=>s.includes(copy.labels.platform+" 1")&&s.includes("West End")),
+    lang+": missing plausible alternative direction");
+   await page.locator("#f1Panel .f2-choice-list button").filter({hasText:copy.labels.platform+" 1"}).click();
+   assert.equal(await board.count(),1,"Wrong platform must not advance");
+   await page.locator("#f1Panel .f2-choice-list button").filter({hasText:copy.labels.platform+" 2"}).click();
+   assert.equal(await board.count(),0,"Correct platform must allow boarding");
+   assert.ok((await page.locator("#f1Panel").innerText()).includes(copy.actions.BOARD));
+   await page.locator("#metroPilotToggle").click();
+  }
+ }finally{await browser.close();}
+});
+test("F5C CQ-F5-005: learner chooses transfer and exit; wrong choice never advances",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+  await page.goto(URL);
+  await page.locator("#f2Language").selectOption("es");
+  await page.locator("#f2Level").selectOption("B1");
+  await page.locator("#metroPilotToggle").click();
+  await page.locator("#f1Stations button").nth(5).click();
+  const c=LC.pack("es","B1",6),choose=async(label)=>{
+   await page.locator("#f1Panel .f2-choice-list button").filter({hasText:label}).click();
+  };
+  await choose("M2 ·");
+  await choose("North Park");
+  await choose(c.labels.platform+" 1");
+  await page.locator("#f1Panel .f2-actions button").filter({hasText:c.actions.BOARD}).click();
+  for(let i=0;i<2;i++)await page.locator("#f1Panel .f2-actions button").filter({hasText:c.actions.NEXT_STOP}).click();
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().phase),"transfer");
+  await choose(c.actions.STAY_ON_LINE+" · M2");
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().phase),"transfer");
+  assert.ok((await page.locator("#f3Status").innerText()).includes(c.errors.stayOnLine));
+  await choose(c.actions.CHANGE_LINE+" · M3");
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().phase),"select-line");
+  await choose("M3 ·");
+  await choose("Harbour");
+  await choose(c.labels.platform+" 3");
+  await page.locator("#f1Panel .f2-actions button").filter({hasText:c.actions.BOARD}).click();
+  for(let i=0;i<3;i++)await page.locator("#f1Panel .f2-actions button").filter({hasText:c.actions.NEXT_STOP}).click();
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().phase),"exit");
+  await choose(c.actions.CONTINUE_PAST_EXIT);
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().phase),"exit");
+  assert.ok((await page.locator("#f3Status").innerText()).includes(c.errors.continuePastExit));
+  await choose(c.actions.EXIT);
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().phase),"speech");
+ }finally{await browser.close();}
+});
