@@ -224,3 +224,52 @@ test("F5C CQ-F5-011: real timetable progressively adds late and inaccessible hos
  assert.ok(!G.transportOptions("B1").lines.includes("18"));
  assert.ok(!G.transportOptions("B2").lines.includes("31"));
 });
+
+
+test("F5C CQ-F5-008: advanced guided mission requires route and contextual reasoning, not only map taps",()=>{
+ const semantic={B2:"left",C1:"library",C2:"closure"};
+ for(const level of C.levels){
+  let state=G.guidedStart(),out;
+  assert.equal(G.guidedReview(state,level,"left").accepted,false,"review cannot precede route");
+  for(const dir of G.guidedPaths[level]){
+   const next=F.nextFromDirection(state.route.at(-1),dir);
+   out=G.guidedMove(state,next,level);
+   assert.equal(out.accepted,true,level+" must remain navigable");
+   state=out.state;
+  }
+  assert.equal(state.done,true,level);
+  if(["A1","A2","B1"].includes(level)){
+   assert.equal(G.guidedReview(state,level,"left").kind,"unavailable");
+   continue;
+  }
+  assert.equal(state.reviewed,false,"Navigation alone must not complete advanced reasoning");
+  const incorrect=G.guidedReview(state,level,"wrong");
+  assert.equal(incorrect.accepted,false);assert.equal(incorrect.kind,"incorrect");
+  assert.equal(incorrect.state.reviewed,false);
+  assert.equal(incorrect.state.reviewAttempts,1);
+  const correct=G.guidedReview(incorrect.state,level,semantic[level]);
+  assert.equal(correct.accepted,true);assert.equal(correct.state.reviewed,true);
+  assert.equal(G.guidedReview(correct.state,level,semantic[level]).accepted,false);
+ }
+});
+test("F5C CQ-F5-008: staged correction is 2 decisions A1-B1, 3 at B2 and 4 at C1/C2",()=>{
+ const answers=["turn","left","south","apology"],expected={A1:2,A2:2,B1:2,B2:3,C1:4,C2:4};
+ for(const level of C.levels){
+  let state=G.repairStart();const stages=G.repairStages(level);
+  assert.equal(stages,expected[level]);
+  for(let i=0;i<stages;i++){
+   assert.equal(state.phase,i);
+   const wrong=G.repairChoice(state,level,"incorrect-value");
+   assert.equal(wrong.accepted,false,level+" wrong response must not advance");
+   assert.equal(wrong.state.phase,i);
+   assert.equal(wrong.state.tries,state.tries+1);
+   const correct=G.repairChoice(wrong.state,level,answers[i]);
+   assert.equal(correct.accepted,true,level+" stage "+i);
+   assert.equal(correct.state.phase,i+1);
+   state=correct.state;
+  }
+  assert.equal(state.done,true,level);
+  assert.equal(G.repairChoice(state,level,"apology").kind,"finished");
+ }
+ assert.throws(()=>G.repairStages("ZZ"),RangeError);
+});
