@@ -163,3 +163,30 @@ test("F5C CQ-F5-005: learner chooses transfer and exit; wrong choice never advan
   assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().phase),"speech");
  }finally{await browser.close();}
 });
+
+
+test("F5C CQ-F5-006: normal learner cannot see guided answers before attempting metro; separate authoring route is explicit",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+  await page.goto(URL);
+  await page.locator("#f2Level").selectOption("B1");
+  assert.equal(await page.locator("#metroLab").isVisible(),false,"Student must not see unguided solution gallery");
+  assert.equal(await page.locator("#metroJump").isVisible(),false,"Gallery jump hidden for learners");
+  assert.equal(await page.locator("#metroScenarios button:visible").count(),0);
+  assert.equal(await page.locator("#metroAdvance:visible").count(),0);
+  await page.locator("#metroPilotToggle").click();
+  await page.locator("#f1Stations button").nth(4).click();
+  assert.equal(await page.locator("#metroLab").getAttribute("data-mode"),"game");
+  assert.equal(await page.locator("#metroLab").isVisible(),true);
+  assert.equal(await page.locator("#metroScenarios button:visible").count(),0);
+  assert.equal(await page.locator("#metroAdvance:visible").count(),0);
+  assert.equal(await page.locator("#metroPreferredRoute polyline").count(),0,
+   "Do not overlay future correct route before student moves");
+  await page.goto(URL+"?cq-review=1");
+  assert.equal(await page.locator("#metroLab").isVisible(),true,"Authoring review should retain visual regression reference");
+  assert.equal(await page.locator("#metroScenarios button:visible").count(),4);
+  assert.equal(await page.locator("#metroJump").isVisible(),true);
+  assert.equal(await page.locator("#metroAdvance").isVisible(),true);
+ }finally{await browser.close();}
+});
