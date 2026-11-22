@@ -346,3 +346,24 @@ test("F5C CQ-F5-008: City06 correction grows from two to four meaningful decisio
   }
  }finally{await browser.close();}
 });
+
+
+test("F5C CQ-F5-032: real Metro05/08 visible speaking progress is a localized fraction, not a sentence beginning with zero",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844}});
+  await page.goto(URL);
+  for(const lang of ["en","es","de","fr"]){
+   await page.locator("#f2Language").selectOption(lang);
+   await page.locator("#f2Level").selectOption("B1");
+   await page.locator("#metroPilotToggle").click();
+   for(const [station,total] of [[5,1],[8,3]]){
+    await page.locator("#f1Stations button").nth(station-1).click();
+    const progress=await page.locator("#f1Panel p.f2-small").first().innerText();
+    assert.match(progress,new RegExp("0/"+total+"$"),lang+"/Metro"+station);
+    assert.doesNotMatch(progress,/0 Speaking checkpoints confirmed|0 Puntos orales confirmados|0 Bestätigte Sprechaufgaben|0 Étapes orales confirmées/);
+   }
+   await page.locator("#metroPilotToggle").click();
+  }
+ }finally{await browser.close();}
+});
