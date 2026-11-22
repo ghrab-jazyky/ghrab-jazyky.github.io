@@ -270,7 +270,7 @@
     6:"Rejoignez Stadium en métro depuis Market Square. Déterminez où changer de ligne et quelle direction prendre.",
     7:"Le tronçon M1 entre Old Town et Museum Quarter est fermé. Rejoignez Museum Quarter depuis Central Station sans emprunter ce tronçon.",
     8:"Rejoignez Market Square à pied, prenez le métro avec une correspondance et terminez à pied jusqu'à City Museum."},
-   pair:{5:"Guide : expliquez la ligne, le terminus et le quai sans montrer. Voyageur : vérifiez les panneaux et reformulez.",
+   pair:{5:"Guide : expliquez la ligne, le terminus et le quai sans montrer le plan. Voyageur : vérifiez les panneaux et reformulez.",
     6:"Voyageur : demandez comment rejoindre Stadium. Guide : déterminez la correspondance avec le plan et expliquez-la. Échangez les rôles.",
     7:"Agent : annoncez la perturbation. Guide : proposez une solution de remplacement et justifiez votre choix.",
     8:"Voyageur et guide : expliquez à tour de rôle la marche, la correspondance et le dernier trajet vers le musée."},
@@ -324,7 +324,7 @@
       criteria:["J'ai clarifié un risque de malentendu.","J'ai expliqué une contrainte et ses conséquences.","Mes instructions sont précises et structurées."],
       support:"Utilisez : À condition que…, en cas de…, afin d'éviter toute confusion…",stretch:"Adaptez vos conseils à une personne à mobilité réduite.",
       extension:"À condition que la correspondance fonctionne normalement, cet itinéraire reste simple ; si le service est perturbé, il faut revoir le changement de ligne."},
-    C2:{focus:"Conseiller avec nuance et adapter le registre.",task:"Évaluez les compromis du trajet, reste précis et adaptez votre discours au voyageur.",
+    C2:{focus:"Conseiller avec nuance et adapter le registre.",task:"Évaluez les compromis du trajet, restez précis et adaptez votre discours au voyageur.",
       criteria:["J'ai évalué les avantages et les inconvénients.","J'ai évité toute ambiguïté.","J'ai adapté mon registre au voyageur."],
       support:"Utilisez : Tout bien considéré…, néanmoins…, l'option la plus fiable…",stretch:"Formulez une annonce officielle puis des conseils rassurants et informels.",
       extension:"Tout bien considéré, la fiabilité d'une correspondance prime sur un gain de temps marginal ; si la situation évolue, on peut préciser l'alternative sans créer d'ambiguïté."}
