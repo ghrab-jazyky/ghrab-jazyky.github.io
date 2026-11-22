@@ -81,6 +81,21 @@
     if(delta===3)return d.turn(d.left,d[dir],1);
     return d.turn(d.back,d[dir],1);
   }
+  // F5C CQ-F5-003: deterministically rotate presentation choices, keeping
+  // semantic values intact. No random API is used: repeated renders of the
+  // same question keep the same order, while language/CEFR/stage variations
+  // move the correct answer away from a fixed visual button position.
+  function orderChoices(items,language,level,mission,stage){
+    if(!Array.isArray(items))throw new TypeError("Expected choice array");
+    const languages=["en","es","de","fr"],li=languages.indexOf(language);
+    if(li<0)throw new RangeError("Unknown choice language");
+    const difficulty=lvlIndex(level),n=items.length;
+    if(n<2)return items.slice();
+    const step=typeof stage==="number"?stage:Array.from(String(stage||"")).reduce(
+      (sum,ch)=>sum+ch.codePointAt(0),0);
+    const rotation=((li*7+difficulty*5+mission*11+step*13)%n+n)%n;
+    return items.slice(rotation).concat(items.slice(0,rotation));
+  }
   function answerCount(level){return lvlIndex(level)===0?3:lvlIndex(level)===1?4:6;}
   function optionsCount(level){return lvlIndex(level)===0?2:3;}
   function requiredFields(level){
@@ -153,6 +168,6 @@
       state:{...state,stage:next,tries:state.tries+1,done:next==="complete",correct}};
   }
   return Object.freeze({F,E,levels,goals,guidedPaths,lvlIndex,config,pathFromDirections,routeStart,
-    moveRoute,guidedStart,guidedMove,instruction,answerCount,optionsCount,requiredFields,checkTransport,
+    moveRoute,guidedStart,guidedMove,instruction,answerCount,optionsCount,orderChoices,requiredFields,checkTransport,
     routeModel,questCheckpoints,questStart,questMove,questSpeak,dialogueStart,dialogueChoose});
 });
