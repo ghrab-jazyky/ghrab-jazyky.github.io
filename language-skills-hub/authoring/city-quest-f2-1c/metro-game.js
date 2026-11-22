@@ -131,13 +131,25 @@
     last?(nextPhase==="transfer"?"Transfer at "+M.station(to).labelEn+".":"Arrived at "+M.station(to).labelEn+". Exit the train."):
      "Next stop: "+M.station(to).labelEn+".",type);
   }
+  if(type==="STAY_ON_LINE"){
+   if(state.phase!=="transfer")return fail(state,"You can change lines only at a valid interchange.");
+   return fail(state,"Remaining on this line will not reach the required destination. Check the interchange map.");
+  }
   if(type==="CHANGE_LINE"){
    if(state.phase!=="transfer"||state.legIndex>=s.legs.length-1)return fail(state,"You can change lines only at a valid interchange.");
    const next=s.legs[state.legIndex+1];
    if(next.stops[0]!==state.metroStation||!M.joined(state.metroStation).includes(next.line))
     return fail(state,"This station has no valid connection to the next line.");
+   // Explicitly validate the learner's chosen connecting line. Old pure-engine
+   // test fixtures may omit action.value, but the real UI always provides it.
+   if(action.value!==undefined&&action.value!==next.line)
+    return fail(state,"That is not the connecting line for this route. Check the transfer signs.");
    return success(state,{legIndex:state.legIndex+1,stopIndex:0,lineId:null,direction:null,platform:null,phase:"select-line"},
      "Follow the transfer signs and choose the connecting line.",type);
+  }
+  if(type==="CONTINUE_PAST_EXIT"){
+   if(state.phase!=="exit")return fail(state,"Exit only after arriving at your destination.");
+   return fail(state,"You have reached your destination. Continuing would take you past the required exit.");
   }
   if(type==="EXIT"){
    if(state.phase!=="exit"||state.metroStation!==s.goal)return fail(state,"Exit only after arriving at your destination.");
