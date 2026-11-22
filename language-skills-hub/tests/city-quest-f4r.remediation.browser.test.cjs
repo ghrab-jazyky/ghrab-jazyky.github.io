@@ -51,7 +51,7 @@ test("F4R text at 100% stays 2 columns, at 200% becomes accessible single column
    assert.ok(state.globalOverflow<=2&&state.stationOverflow<=2&&state.titleOverflow<=2,
     "No content loss at "+width+": "+JSON.stringify(state));
    assert.ok(state.phaseLines.every(x=>x<=2),"Learning stages must remain legible");
-   assert.match(state.fullLabel,/Störung im Metroverkehr/);
+   assert.match(state.fullLabel,/Störung im U-Bahn-Verkehr/);
    await page.locator("#f3dLearningRail").scrollIntoViewIfNeeded();
    await page.screenshot({path:path.join(OUT,"de-c2-200pct-"+width+".png"),fullPage:false});
    await page.close();

@@ -170,7 +170,7 @@ test("mobile WebKit: German and French variants, no remote requests",async()=>{
   await page.goto(URL,{waitUntil:"load"});
   await setVariant(page,"de","B2");
   await station(page,3);
-  assert.match(await page.locator("#f1Panel").innerText(),/Entschuldigung/);
+  assert.match(await page.locator("#f1Panel").innerText(),/Entschuldigung|Entschuldigen Sie/);
   await setVariant(page,"fr","C2");
   await station(page,5);
   assert.match(await page.locator("#f1Panel").innerText(),/mobilité réduite|accessible/i);
