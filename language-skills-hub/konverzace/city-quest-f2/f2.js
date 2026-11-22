@@ -40,7 +40,7 @@
     fr:{city:"VILLE · RIVERTON",metro:"MÉTRO · RIVERTON",
       read:"Lire",practise:"S'entraîner",reflect:"Faire le bilan",
       phases:"Trois étapes d'apprentissage",mission:"Mission",mode:"Mode",
-      note:"Explique tes choix à l'oral. L'expression orale s'autoévalue et n'est jamais notée automatiquement.",
+      note:"Expliquez vos choix à l'oral. Votre prise de parole fait l'objet d'une autoévaluation, jamais d'une note automatique.",
       metroReset:"Passer de la ville au métro réinitialise les missions 05–08 ; les missions 01–04 sont conservées."}
   };
   const lesson=()=>lessonCopy[state.language]||lessonCopy.en;
