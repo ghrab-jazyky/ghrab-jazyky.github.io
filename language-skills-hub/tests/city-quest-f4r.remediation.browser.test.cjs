@@ -97,3 +97,19 @@ test("F4R standalone strict SHA-CSP offline has responsive zoom fix and localize
   assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
  }finally{await browser.close();}
 });
+
+test("F4R semantic world icon: metro station 05 uses train, City fallback retains bus",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844}});
+  await page.goto(URL);
+  await page.locator("#f1Stations button").nth(4).click();
+  assert.match(await page.locator("#f1Panel .f2-card-head h2").innerText(),/^🚌/u);
+  await page.locator("#metroPilotToggle").click();
+  await page.locator("#f1Stations button").nth(4).click();
+  assert.match(await page.locator("#f1Panel .f2-card-head h2").innerText(),/^🚇/u);
+  assert.equal(await page.locator("#f1Stations button").nth(4).locator(".f1-station-icon").innerText(),"🚇");
+  await page.locator("#metroPilotToggle").click();
+  assert.match(await page.locator("#f1Panel .f2-card-head h2").innerText(),/^🚌/u);
+ }finally{await browser.close();}
+});
