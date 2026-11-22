@@ -44,6 +44,16 @@
       metroReset:"Passer de la ville au métro réinitialise les missions 05–08 ; les missions 01–04 sont conservées."}
   };
   const lesson=()=>lessonCopy[state.language]||lessonCopy.en;
+  // Explicit, four-language mission 07 roadworks learning objective.
+  // This checkpoint is an actual map node, not an invented second closure.
+  const roadworksCopy={
+    en:{junction:"Roadworks junction",task:"First reach the junction by the roadworks on Station Road. Then reach City Museum using OPEN streets; do not cross the red closed segment.",reached:"Roadworks junction reached. Now choose another open street and explain your detour.",missing:"Visit the roadworks junction before travelling to the museum."},
+    es:{junction:"Cruce de las obras",task:"Primero llega al cruce junto a las obras de la calle de la Estación. Después ve al Museo por calles ABIERTAS sin cruzar el tramo rojo cortado.",reached:"Has llegado a las obras. Busca otra calle abierta y explica el desvío.",missing:"Primero visita el cruce de las obras antes de ir al museo."},
+    de:{junction:"Kreuzung an der Baustelle",task:"Gehe zuerst zur Kreuzung an der Baustelle auf der Bahnhofstraße. Finde dann einen Weg zum Stadtmuseum, ohne den ROT GESPERRTEN Abschnitt zu überqueren.",reached:"Du bist an der Baustelle. Wähle jetzt eine offene Straße und erkläre die Umleitung.",missing:"Gehe vor dem Museum zuerst zur Kreuzung an der Baustelle."},
+    fr:{junction:"Carrefour des travaux",task:"Rejoignez d'abord le carrefour près des travaux de la rue de la Gare. Allez ensuite au musée par des rues OUVERTES sans traverser le tronçon rouge fermé.",reached:"Vous êtes arrivé au carrefour des travaux. Cherchez une autre rue ouverte et expliquez le détour.",missing:"Rejoignez d'abord le carrefour des travaux avant d'aller au musée."}
+  };
+  const roadworks=()=>roadworksCopy[state.language]||roadworksCopy.en;
+
   let metroEnabled=false;
   let state=makeSession("en","B1","solo");
   let flash=null;
@@ -365,6 +375,7 @@
       {node:E.start,name:ui().start},{node:E.goal,name:ui().museum},
       {node:{c:2,r:2},name:ui().square},{node:{c:4,r:2},name:ui().library}
     ];
+    if(state.station===7&&E.same(p,F.closure.a))return roadworks().junction;
     return names.find(x=>E.same(x.node,p))?.name||ui().city;
   }
   function renderRoute(){
@@ -493,8 +504,11 @@
   function renderDetour(){
     const game=state.detour,c=G.config(state.level);
     if(game.done)return complete(7,profile().detour,G.routeModel(pack(),game.route));
-    note(panel,"🚧 "+ui().closed,ui().wrongRoad);
+    note(panel,"🚧 "+ui().closed,roadworks().task);
     if(c.via.length)note(panel,ui().via,c.via.map(pointName).join(", "));
+    const approachVisited=game.route.some(p=>E.same(p,F.closure.a));
+    note(panel,"📍 "+roadworks().junction,
+      approachVisited?roadworks().reached:roadworks().missing);
     para(panel,ui().from+" "+ui().start+" → "+ui().museum,"f2-prompt");
     para(panel,ui().step+": "+(game.route.length-1),"f2-small");
     status(panel,flash?.text||ui().guide,flash?.tone);
@@ -564,7 +578,8 @@
     }
     if(outcome.kind==="closed")flash={text:ui().wrongRoad,tone:"warning"};
     else if(outcome.kind==="speak")flash={text:ui().selfcheck,tone:"warning"};
-    else if(outcome.kind==="missing-via")flash={text:ui().via+" · "+ui().feedbackRetry,tone:"warning"};
+    else if(outcome.kind==="missing-via")flash={text:state.station===7?
+      roadworks().missing:ui().via+" · "+ui().feedbackRetry,tone:"warning"};
     else if(!outcome.accepted)flash={text:ui().feedbackRetry,tone:"warning"};
     else flash={text:ui().correct,tone:"success"};
     screen();renderMap();
