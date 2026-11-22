@@ -178,3 +178,49 @@ test("F5C CQ-F5-003: stable semantic answers but varied positions in CITY 01, 03
   assert.ok(positions.size>=2,"Fixed correct button across all 24 variants in mission "+c.mission+" "+c.stage);
  }
 });
+
+
+test("F5C CQ-F5-010: city detour cannot finish without encountering real roadworks and bypassing its closed segment",()=>{
+ const walk=(level,points)=>{
+  let state=G.routeStart(),out;
+  for(const next of points){out=G.moveRoute(state,next,level,true);state=out.state;}
+  return {state,out};
+ };
+ const short=[{c:0,r:2},{c:1,r:2},{c:2,r:2},{c:3,r:2},E.goal];
+ const invalid=walk("B1",short);
+ assert.equal(invalid.state.done,false,"No credit for a route that never reaches the roadworks");
+ assert.equal(invalid.out.kind,"missing-via");
+ assert.equal(invalid.out.accepted,false,"Don't trap a learner at goal without its checkpoint");
+ assert.equal(invalid.state.route.length,short.length,"Missing-via must not advance to goal");
+ const approach=[{c:1,r:3},{c:2,r:3}];
+ assert.deepEqual(G.detourCheckpoints("B1"),[F.closure.a]);
+ assert.deepEqual(G.detourCheckpoints("C2"),[F.closure.a,{c:4,r:2}]);
+ const before=walk("B1",approach);
+ const closed=G.moveRoute(before.state,{c:3,r:3},"B1",true);
+ assert.equal(closed.accepted,false);assert.equal(closed.kind,"closed");
+ assert.deepEqual(closed.state.route,before.state.route);
+ const open=walk("B1",[...approach,{c:2,r:2},{c:3,r:2},E.goal]);
+ assert.equal(open.out.accepted,true);assert.equal(open.state.done,true);
+ const c2=walk("C2",[...approach,{c:2,r:2},{c:3,r:2},{c:4,r:2},{c:4,r:1},E.goal]);
+ assert.equal(c2.out.accepted,true);assert.equal(c2.state.done,true);
+});
+test("F5C CQ-F5-011: real timetable progressively adds late and inaccessible hospital-bound alternatives",()=>{
+ assert.deepEqual(["A1","B1","B2","C1","C2"].map(l=>G.servicesForLevel(l).length),[3,3,4,5,5]);
+ for(const level of G.levels){
+  const rows=G.servicesForLevel(level);
+  const options=G.transportOptions(level);
+  assert.equal(options.lines.length,rows.length);
+  assert.ok(options.lines.includes("24"));
+  const valid=G.checkTransport({line:"24",depart:"08:47",stop:"Hospital"},level);
+  assert.equal(valid.correct,true,level);
+  assert.equal(valid.service.arrival,"09:05");
+  assert.equal(G.checkTransport({line:"7",depart:"08:39",stop:"Riverside Park"},level).kind,"line");
+ }
+ assert.equal(G.checkTransport({line:"18",depart:"08:41",stop:"Hospital"},"B2").kind,"late");
+ assert.equal(G.checkTransport({line:"18",depart:"08:41",stop:"Hospital"},"C1").kind,"late");
+ assert.equal(G.checkTransport({line:"31",depart:"08:38",stop:"Hospital"},"C1").kind,"access");
+ assert.equal(G.checkTransport({line:"31",depart:"08:38",stop:"Hospital"},"C2").kind,"access");
+ assert.equal(G.checkTransport({line:"24",depart:"08:41",stop:"Hospital"},"C2").kind,"depart");
+ assert.ok(!G.transportOptions("B1").lines.includes("18"));
+ assert.ok(!G.transportOptions("B2").lines.includes("31"));
+});
