@@ -86,9 +86,9 @@ test("F5C light-mode metro neutral text has non-pale contrast and scene tabs mee
    return {contrast,statusText:status.textContent};
   });
   assert.ok(result.contrast>=4.5,"Light-mode neutral text contrast <4.5: "+JSON.stringify(result));
-  // The two view tabs are only student-accessible in the EN-only reference
-  // gallery; test their actual touch boxes in that visible state.
-  await page.locator("#metroPilotToggle").click();
+  // Guided gallery is authoring/QA only after CQ-F5-006: it must not
+  // appear when a student simply leaves the game. Test in explicit review.
+  await page.goto(URL+"?cq-review=1");
   const tabs=await page.locator(".metro-scene-tab:visible").evaluateAll(nodes=>
    nodes.map(el=>{const r=el.getBoundingClientRect();return {w:r.width,h:r.height}}));
   assert.equal(tabs.length,2,"Reference gallery must expose two view tabs");
