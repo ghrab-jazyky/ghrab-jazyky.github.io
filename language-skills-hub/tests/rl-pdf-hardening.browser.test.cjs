@@ -47,7 +47,19 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await materials.waitFor();
    await materials.click();
    await page.locator('#materialsDialog[open]').waitFor();
-   await page.waitForFunction(()=>document.querySelector('#materialsPracticeAll')?.getAttribute('href')?.endsWith('.pdf'));
+   await page.waitForFunction(()=>{
+    const href=document.querySelector('#materialsPracticeAll')?.getAttribute('href');
+    return href&&new URL(href).pathname.endsWith('.pdf');
+   });
+   assert.match(await page.locator('#materialsReuseWarning').innerText(),
+    /stejné otázky/, 'Teacher must see that practice and test share questions');
+   const realPdf=new URL(await page.locator('#materialsPracticeAll').getAttribute('href'));
+   assert.match(realPdf.searchParams.get('v')||'',/^[a-f0-9]{16}$/,
+    'Content-addressed URLs invalidate a stale CDN cache');
+   await page.locator('.materials-fallback summary').click();
+   const preview=await page.locator('#materialsPracticeAllPreview').getAttribute('href');
+   assert.match(preview,/print-page\.html\?topic=rl-asteroids.*mode=practice.*format=all/,
+    'Teacher needs a backup even when manifest claims an asset exists');
    const link=page.locator('#materialsPracticeAll');
    const [download]=await Promise.all([page.waitForEvent('download'),link.click()]);
    assert.match(download.suggestedFilename(),/Reading-Lab-Asteroids.*practice-all\.pdf/);
@@ -62,6 +74,8 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.locator('#materialsStatus').getByText('Předgenerovaná PDF nejsou dostupná',{exact:false}).waitFor();
    const fallback=await page.locator('#materialsPracticeAll').getAttribute('href');
    assert.match(fallback,/print-page\.html/);
+   assert.match(await page.locator('#materialsTestAllPreview').getAttribute('href'),
+    /print-page\.html/, 'Backup remains available when manifest is missing');
   }finally{await browser.close()}
  });
 }
