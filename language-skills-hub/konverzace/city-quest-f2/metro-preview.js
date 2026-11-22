@@ -50,6 +50,45 @@
   fr:{network:"RÉSEAU DE MÉTRO / 3 LIGNES",scale:"PLAN SCHÉMATIQUE",mapCaption:"MISSION MULTILINGUE · HORS LIGNE",closed:"TRONÇON FERMÉ",nextService:"PROCHAIN SERVICE",signs:"Suivez les panneaux",awaiting:"En attente de départ",disruption:"SERVICE PERTURBÉ",interchange:"CORRESPONDANCE",nextStop:"PROCHAIN ARRÊT / POSITION ACTUELLE",platformAt:"Quai illustré à ",trainAt:"Intérieur illustré du métro à ",lineAt:" · ligne ",terminus:"VÉRIFIEZ LE TERMINUS",platform:"VÉRIFIEZ LE QUAI",reached:"DESTINATION ATTEINTE",preview:"APERÇU DE L'ORIENTATION",platformWord:"QUAI",follow:"SUIVEZ LES SORTIES",notice:"PERTURBATION · CONSULTEZ LE PLAN",transfer:"CORRESPONDANCE · SUIVEZ LES PANNEAUX",chooseLine:"HALL · TROUVEZ LA LIGNE",chooseDirection:"DÉPARTS · VÉRIFIEZ LE TERMINUS",choosePlatform:"QUAI · VÉRIFIEZ LA LIGNE ET LE TERMINUS",towards:"DIRECTION",inspector:"Correspondances de la station"}
  };
  const tr=()=>gameMode?(sceneText[$("f2Language").value]||sceneText.en):sceneText.en;
+
+ // Only fictional station proper names and the EN-only reference gallery's
+ // illustrative tasks remain in English. All surrounding controls, captions
+ // and accessibility labels are learner-language specific.
+ const chromeText={
+  en:{networkControl:"NETWORK CONTROL",networkName:"Riverton Underground",simulation:"LOCAL SIMULATION",mapRegion:"Scrollable diagram of three fictional metro lines",svgMap:"Interactive schematic map of Riverton Metro",mapLegend:"Metro line legend",mapSwipe:"↔ Swipe map to explore · Select a station",sidebar:"Metro journey and platform",journey:"JOURNEY DISPLAY",from:"FROM",to:"TO",journeyProgress:"Journey progress",immersive:"IMMERSIVE SCENE",sceneToggle:"Switch metro environment",platformTab:"Platform",trainTab:"On board",paAria:"Contextual metro public-address text",inspector:"SELECTED STATION",served:line=>"Served by "+line+".",transfer:lines=>"Interchange between "+lines+".",surface:"Surface connection:",inspectorHelp:"Inspect a station or follow the mission to practise navigation.",portals:{central_station:"Central railway station",market_square:"Market Square",museum_quarter:"Museum entrance, one block south of City Museum",riverside:"Near Riverside Park"},badges:["3 colour-coded lines","14 stations","3 interchanges","Offline SVG world"],demoTitle:"CHOOSE AN ENGLISH REFERENCE SCENARIO",demoHint:"Explore the four English-only reference journeys. The interactive missions are available separately in four languages.",scenarioAria:"Choose an English example metro journey"},
+  es:{networkControl:"CONTROL DE LA RED",networkName:"Metro de Riverton",simulation:"SIMULACIÓN LOCAL",mapRegion:"Plano desplazable de tres líneas de metro ficticias",svgMap:"Plano esquemático interactivo del Metro de Riverton",mapLegend:"Leyenda de líneas de metro",mapSwipe:"↔ Desliza el plano · Selecciona una estación",sidebar:"Trayecto y andén del metro",journey:"RECORRIDO",from:"DESDE",to:"HASTA",journeyProgress:"Progreso del trayecto",immersive:"ESCENA INMERSIVA",sceneToggle:"Cambiar de vista del metro",platformTab:"Andén",trainTab:"A bordo",paAria:"Avisos de megafonía simulados por escrito",inspector:"ESTACIÓN SELECCIONADA",served:line=>"Línea disponible: "+line+".",transfer:lines=>"Correspondencia entre "+lines+".",surface:"Acceso desde la calle:",inspectorHelp:"Consulta una estación o sigue la misión para practicar.",portals:{central_station:"Estación de tren Central",market_square:"Market Square",museum_quarter:"Entrada del metro, una manzana al sur de City Museum",riverside:"Cerca de Riverside Park"},badges:["3 líneas diferenciadas","14 estaciones","3 correspondencias","Mundo SVG sin conexión"],demoTitle:"ELIGE UN EJEMPLO EN INGLÉS",demoHint:"Explora cuatro recorridos de referencia en inglés. Las misiones interactivas se ofrecen por separado en cuatro idiomas.",scenarioAria:"Elegir un recorrido de ejemplo en inglés"},
+  de:{networkControl:"LINIENNETZ",networkName:"U-Bahn Riverton",simulation:"LOKALE SIMULATION",mapRegion:"Verschiebbarer Netzplan mit drei fiktiven U-Bahn-Linien",svgMap:"Interaktiver schematischer U-Bahn-Plan von Riverton",mapLegend:"Legende der U-Bahn-Linien",mapSwipe:"↔ Netzplan verschieben · Station auswählen",sidebar:"U-Bahn-Strecke und Bahnsteig",journey:"FAHRTVERLAUF",from:"VON",to:"NACH",journeyProgress:"Fortschritt der Fahrt",immersive:"ILLUSTRIERTE SZENE",sceneToggle:"U-Bahn-Ansicht wechseln",platformTab:"Bahnsteig",trainTab:"Im Zug",paAria:"Schriftliche Simulation von U-Bahn-Durchsagen",inspector:"AUSGEWÄHLTE STATION",served:line=>"Bedient von "+line+".",transfer:lines=>"Umstieg zwischen "+lines+".",surface:"Zugang von der Straße:",inspectorHelp:"Sieh dir eine Station an oder folge der Aufgabe, um das Navigieren zu üben.",portals:{central_station:"Hauptbahnhof",market_square:"Market Square",museum_quarter:"U-Bahn-Eingang, einen Häuserblock südlich von City Museum",riverside:"In der Nähe des Riverside Park"},badges:["3 farbige Linien","14 Stationen","3 Umstiege","Offline-SVG-Welt"],demoTitle:"ENGLISCHES BEISPIEL WÄHLEN",demoHint:"Erkunde vier englischsprachige Beispielrouten. Die interaktiven Aufgaben sind separat in vier Sprachen verfügbar.",scenarioAria:"Englische Beispielstrecke wählen"},
+  fr:{networkControl:"PLAN DU RÉSEAU",networkName:"Métro de Riverton",simulation:"SIMULATION LOCALE",mapRegion:"Plan défilant de trois lignes de métro fictives",svgMap:"Plan schématique interactif du métro de Riverton",mapLegend:"Légende des lignes de métro",mapSwipe:"↔ Faites défiler le plan · Choisissez une station",sidebar:"Trajet et quai du métro",journey:"PARCOURS",from:"DE",to:"À",journeyProgress:"Progression du trajet",immersive:"SCÈNE ILLUSTRÉE",sceneToggle:"Changer la vue du métro",platformTab:"Quai",trainTab:"À bord",paAria:"Simulation écrite des annonces du métro",inspector:"STATION SÉLECTIONNÉE",served:line=>"Desservie par "+line+".",transfer:lines=>"Correspondance entre "+lines+".",surface:"Accès depuis la rue :",inspectorHelp:"Consultez une station ou suivez la mission pour vous entraîner.",portals:{central_station:"Gare centrale",market_square:"Market Square",museum_quarter:"Entrée du métro, un pâté de maisons au sud de City Museum",riverside:"Près du Riverside Park"},badges:["3 lignes différenciées","14 stations","3 correspondances","Univers SVG hors ligne"],demoTitle:"CHOISISSEZ UN EXEMPLE EN ANGLAIS",demoHint:"Explorez quatre trajets de référence en anglais. Les missions interactives sont disponibles séparément en quatre langues.",scenarioAria:"Choisir un trajet d'exemple en anglais"}
+ };
+ const cx=()=>chromeText[$("f2Language").value]||chromeText.en;
+ function localizeMetroChrome(){
+  const c=cx(),set=(selector,t)=>{const node=lab.querySelector(selector);if(node)node.textContent=t;};
+  set(".metro-network-head small",c.networkControl);
+  set(".metro-network-head h3",c.networkName);
+  const pulse=lab.querySelector(".metro-live-pulse");
+  if(pulse&&pulse.lastChild&&pulse.lastChild.nodeType===3)pulse.lastChild.textContent=" "+c.simulation;
+  set(".metro-map-instructions",c.mapSwipe);
+  set(".metro-journey-header span",c.journey);
+  const ends=lab.querySelectorAll(".metro-journey-path small");
+  if(ends.length===2){ends[0].textContent=c.from;ends[1].textContent=c.to;}
+  set(".metro-scene-card .metro-eyebrow",c.immersive);
+  set("#metroViewPlatform",c.platformTab);
+  set("#metroViewTrain",c.trainTab);
+  set(".metro-inspector-top strong",c.inspector);
+  set(".metro-scenario-head strong",c.demoTitle);
+  set(".metro-scenario-head small",c.demoHint);
+  const badges=lab.querySelectorAll(".metro-banner-badges span");
+  badges.forEach((node,i)=>{if(c.badges[i])node.textContent=c.badges[i];});
+  $("metroNetworkViewport").setAttribute("aria-label",c.mapRegion);
+  network.setAttribute("aria-label",c.svgMap);
+  $("metroLegend").setAttribute("aria-label",c.mapLegend);
+  lab.querySelector(".metro-side").setAttribute("aria-label",c.sidebar);
+  $("metroJourneyProgress").setAttribute("aria-label",c.journeyProgress);
+  lab.querySelector(".metro-scene-toggle").setAttribute("aria-label",c.sceneToggle);
+  $("metroPublicAddress").setAttribute("aria-label",c.paAria);
+  $("metroScenarios").setAttribute("aria-label",c.scenarioAria);
+ }
+
  const motionOff=()=>window.matchMedia("(prefers-reduced-motion: reduce)").matches||
   document.documentElement.dataset.motion==="off";
  const labels={
@@ -299,12 +338,11 @@
   if(!station)return;
   $("metroInspectorName").textContent=station.labelEn;
   $("metroInspectorLine").textContent=lines.join(" · ");
-  const transfers=lines.length>1?"Interchange between "+lines.join(" and ")+". ":
-    "Served by "+lines[0]+". ";
+  const copy=cx();
+  const transfers=lines.length>1?copy.transfer(lines.join(" / ")):copy.served(lines[0]);
   const portals=M.source.surfacePortals.filter(p=>p.metroStation===inspected);
-  $("metroInspectorDetail").textContent=transfers+
-    (portals.length?"Surface connection: "+portals[0].description+". ":"")+
-    "Select a mission and follow the route to practise navigating.";
+  const surface=portals.length?copy.surface+" "+(copy.portals[inspected]||station.labelEn)+". ":"";
+  $("metroInspectorDetail").textContent=transfers+" "+surface+copy.inspectorHelp;
  }
  function lineFixture(){
   const currentStep=step();
@@ -639,6 +677,7 @@
   const surfaceState=pilot?bridge.current():null;
   const shown=pilot?sceneVisible:!["A1","A2"].includes(level),
     copy=pilot&&surfaceState?LC.pack($("f2Language").value,level,surfaceState.stationNumber):null;
+  localizeMetroChrome();
   lab.hidden=!shown;jump.hidden=pilot||!shown;
   lab.querySelector(".metro-scenario-toolbar").hidden=pilot;
   lab.querySelector(".metro-action-card").hidden=pilot;
