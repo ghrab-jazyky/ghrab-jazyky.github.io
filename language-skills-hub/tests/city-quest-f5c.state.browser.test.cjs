@@ -254,3 +254,30 @@ test("F5C CQ-F5-008: advanced C1-C2 visitor dialogue requires real clarification
   assert.equal(checked,16);
  }finally{await browser.close();}
 });
+
+
+test("F5C CQ-F5-027: City01 final speaking model describes places, not a route, in all four languages",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+  await page.goto(URL);
+  const C=require("../authoring/city-quest-f2/content-a.js");
+  require("../authoring/city-quest-f2/content-b.js");
+  const F=require("../authoring/city-quest-f1/engine.js");
+  for(const lang of C.languages){
+   await page.locator("#f2Language").selectOption(lang);
+   await page.locator("#f2Level").selectOption("C2");
+   await page.locator("#f1Stations button").first().click();
+   const p=C.pack(lang);
+   for(const question of F.explore)
+    await page.locator("#f1Panel .f2-choice-list button")
+     .filter({hasText:p.places[question.correct]}).click();
+   assert.equal(await page.locator("#f1Panel .f2-finish").count(),1);
+   await page.locator("#f1Panel .f2-help button").click();
+   const model=await page.locator("#f1Panel .f2-help p.f2-small").last().innerText();
+   assert.ok(model.length>200,lang+": place-reflection is too short");
+   assert.notEqual(model,C.profile(lang,"C2").model,"Must not recycle generic route model");
+   assert.doesNotMatch(model,/Walk east along Station Road|tournez à gauche puis marchez|Gehe die Bahnhofstraße entlang/);
+  }
+ }finally{await browser.close();}
+});
