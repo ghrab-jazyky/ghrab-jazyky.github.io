@@ -306,7 +306,7 @@
     ridePhase:"Montez d'abord dans le bon train.",blocked:"Le tronçon suivant est fermé ou non relié.",
     transferPhase:"Le changement de ligne n'est possible qu'à une correspondance.",transferInvalid:"Aucune liaison n'est disponible ici.",
     exit:"Descendez uniquement à la station de destination.",speech:"Terminez cette étape avant de prendre la parole.",invalid:"Cette action n'est pas possible maintenant."},
-   models:{5:"À Central Station, prenez la M1 en direction de East Gardens, au quai 2. Descendez à Museum Quarter.",
+   models:{5:"À Central Station, prenez la M1 en direction d'East Gardens depuis le quai 2. Descendez à Museum Quarter.",
     6:"À Market Square, prenez la M2 en direction de North Park. Changez à University pour la M3 en direction de Harbour, puis descendez à Stadium.",
     7:"Le tronçon M1 entre Old Town et Museum Quarter étant fermé, prenez la M2 jusqu'à University, puis la M3 en direction de Harbour.",
     8:"Marchez de Central Station à Market Square. Prenez la M2 jusqu'à University, puis la M3 en direction de Harbour. Descendez à Museum Quarter et marchez vers le nord jusqu'à City Museum."},
