@@ -3,7 +3,7 @@
  * movement controllers; no network, storage, font downloads or libraries.
  */
 :root{--f3c-target:44px}
-#f2MapStage,#metroNetworkViewport,#metroNetworkViewport svg{min-width:0}
+#f2MapStage,#metroNetworkViewport{min-width:0}
 #f2MapStage>.map-viewport{overscroll-behavior:contain}
 #f2Quick .f3c-hud-toggle{
  display:grid;place-items:center;min-height:44px;min-width:44px;
