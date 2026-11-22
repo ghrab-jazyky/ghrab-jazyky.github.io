@@ -113,3 +113,27 @@ test("F4R semantic world icon: metro station 05 uses train, City fallback retain
   assert.match(await page.locator("#f1Panel .f2-card-head h2").innerText(),/^🚌/u);
  }finally{await browser.close();}
 });
+
+test("F4R interactive metro SVG captions and scene accessibility labels follow the selected language",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844}});
+  await page.goto(URL);
+  const translations={
+   en:{map:"UNDERGROUND NETWORK",scene:"Illustrated platform at"},
+   es:{map:"RED DE METRO",scene:"Andén ilustrado en"},
+   de:{map:"U-BAHN-NETZ",scene:"Illustrierter Bahnsteig an"},
+   fr:{map:"RÉSEAU DE MÉTRO",scene:"Quai illustré à"}
+  };
+  for(const [lang,want] of Object.entries(translations)){
+   await page.locator("#f2Language").selectOption(lang);
+   await page.locator("#metroPilotToggle").click();
+   await page.locator("#f1Stations button").nth(4).click();
+   const labels=await page.locator("#metroNetworkSvg text").allTextContents();
+   assert.ok(labels.some(x=>x.includes(want.map)),lang+": SVG network heading not localized");
+   assert.match(await page.locator("#metroSceneSvg").getAttribute("aria-label"),new RegExp(want.scene));
+   assert.ok(!labels.some(x=>/F2\\.1C EN\\/B1 MISSION/.test(x)),lang+": obsolete EN/B1 mission marker");
+   await page.locator("#metroPilotToggle").click();
+  }
+ }finally{await browser.close();}
+});
