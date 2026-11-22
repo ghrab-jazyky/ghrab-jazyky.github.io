@@ -424,7 +424,8 @@
     }
    ],
    "closedEdges": [],
-   "speakingCheckpoints": 3
+   "speakingCheckpoints": 3,
+   "requiredMeeting": "university"
   }
  ]
 };
@@ -494,6 +495,10 @@
       }
       if(s.legs[0].stops[0]!==s.start||last!==s.goal)
         throw Error("Broken scenario destination "+s.id);
+      if(s.requiredMeeting&&(!station(s.requiredMeeting)||
+        !s.legs.some(leg=>leg.stops.includes(s.requiredMeeting))||
+        s.requiredMeeting===s.start||s.requiredMeeting===s.goal))
+        throw Error("Required meeting is not actually on the itinerary "+s.id);
     }
     return true;
   }
