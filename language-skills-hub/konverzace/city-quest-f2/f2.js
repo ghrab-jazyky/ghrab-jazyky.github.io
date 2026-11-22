@@ -311,7 +311,8 @@
       const wrong=ids.find(x=>x!==question.correct);
       ids.splice(0,ids.length,question.correct,wrong);
     }
-    choices(panel,ids.map(id=>({value:id,label:(F.findPlace(id)?.icon||"📍")+" "+pack().places[id]})),id=>{
+    const ordered=G.orderChoices(ids,state.language,state.level,1,game.round);
+    choices(panel,ordered.map(id=>({value:id,label:(F.findPlace(id)?.icon||"📍")+" "+pack().places[id]})),id=>{
       const verdict=F.answerExplore(game.round,id);
       if(verdict.correct){game.round++;flash={text:ui().correct,tone:"success"};screen();}
       else{game.misses++;flash={text:ui().notQuite,tone:"warning"};screen();}
@@ -352,7 +353,7 @@
       wrong:[{value:"repair",label:d.fix+" "+p.dialogueAnswer},{value:"insist",label:d.badFix}],
       distance:[{value:"distance",label:d.distance},{value:"nohelp",label:d.badDistance}]
     };
-    choices(panel,options[game.stage],id=>{
+    choices(panel,G.orderChoices(options[game.stage],state.language,state.level,3,game.stage),id=>{
       const r=G.dialogueChoose(game,id);
       if(!r.accepted)return;
       state.dialogue=r.state;
@@ -437,7 +438,7 @@
     el("h3",panel,"",ui().step+" "+(game.phase+1)+" / 2");
     para(panel,game.phase===0?profile().repair:ui().feedbackRetry,"f2-prompt");
     const list=game.phase===0?r.identify:r.fixes;
-    choices(panel,list.map((label,i)=>({label,value:i})),index=>{
+    choices(panel,G.orderChoices(list.map((label,i)=>({label,value:i})),state.language,state.level,6,game.phase),index=>{
       game.tries++;
       const ok=index===(game.phase===0?1:0);
       if(ok){game.phase++;if(game.phase===2)game.done=true;}
