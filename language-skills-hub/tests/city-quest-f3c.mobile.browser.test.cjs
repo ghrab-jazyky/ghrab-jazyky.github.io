@@ -56,6 +56,9 @@ test("F3C 320–1024px: one HUD, compact option exposes more city map while all 
    assert.equal(await page.locator("#f2Quick").getAttribute("data-compact"),"false");
   }
   await page.setViewportSize({width:390,height:844});
+  // Station 04 uses a guided path and intentionally disables Undo. Test the
+  // route+Undo invariant in Station 02, which actually supports backtracking.
+  await page.locator("#f1Stations button").nth(1).click();
   await page.locator("#f3cHudSize").click();
   const prior=await page.locator("#f2MapRoute").getAttribute("points");
   await page.locator(".f2-quick-east").tap();
