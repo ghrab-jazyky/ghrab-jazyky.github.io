@@ -20,6 +20,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Test PDF scope classifier (always)
+        run: node --test language-skills-hub/tests/rl-pdf-scope.test.cjs
       - name: Determine whether PDF inputs changed
         id: check
         shell: bash
@@ -44,11 +49,12 @@ jobs:
             echo "relevant=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          if grep -Eq '^(language-skills-hub/(cteni/asteroids/index\\.html|data/cards\\.json|assets/(school-logo\\.png|hub\\.js)|index\\.html|self-check/reading/(reading-core\\.js|print-[^/]+)|printouts/rl-asteroids/|scripts/(build-reading-print-pdfs|verify-reading-print-assets)\\.cjs|tests/rl-pdf-[^/]+)|\\.github/workflows/lsh-reading-pdf-release-gate\\.yml)' "$RUNNER_TEMP/pdf-changed.txt"; then
-            echo "relevant=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "relevant=false" >> "$GITHUB_OUTPUT"
-          fi
+          # Assignment propagates a classifier error under set -e (fail closed).
+          scope="$(bash language-skills-hub/scripts/pdf-scope.sh < "$RUNNER_TEMP/pdf-changed.txt")"
+          case "$scope" in
+            true|false) echo "relevant=$scope" >> "$GITHUB_OUTPUT" ;;
+            *) echo "::error::Invalid PDF scope classifier result: '$scope'"; exit 1 ;;
+          esac
   unit:
     needs: detect
     if: needs.detect.outputs.relevant == 'true'
