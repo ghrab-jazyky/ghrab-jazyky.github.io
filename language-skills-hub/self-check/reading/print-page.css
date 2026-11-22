@@ -114,7 +114,11 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
  .paper[data-level="C2"][data-format="text"] .paper-header{margin-bottom:10px}
  .paper[data-level="C2"][data-format="text"] .reading-paragraphs{line-height:1.35}
  .paper[data-level="C2"][data-format="text"] .reading-paragraphs p{margin-bottom:5pt}
- html[lang="en"] .paper[data-level="C2"][data-format="text"] .reading-paragraphs{line-height:1.27}
- html[lang="en"] .paper[data-level="C2"][data-format="text"] .reading-paragraphs p{margin-bottom:3pt}
+ /* C2 carries substantially more text. Prefer two balanced A4 pages at a
+    readable 11pt/1.35 rather than squeezing it onto an overly dense sheet.
+    Start the second page at a paragraph boundary, not with 3-6 orphan lines. */
+ html[lang="en"] .paper[data-level="C2"][data-format="text"] .reading-paragraphs{line-height:1.35}
+ html[lang="en"] .paper[data-level="C2"][data-format="text"] .reading-paragraphs p{margin-bottom:5pt}
+ html[lang="en"] .paper[data-level="C2"][data-format="text"] .reading-paragraphs p:nth-last-child(2):nth-child(n+3){break-before:page}
  a{text-decoration:none;color:inherit}
 }
