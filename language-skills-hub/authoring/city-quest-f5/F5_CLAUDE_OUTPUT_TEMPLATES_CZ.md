@@ -47,4 +47,18 @@ Každý reálně provedený test: přesný příkaz, verze runtime/OS, počet PA
 - Cross-app regresní plán GIT/LSH, rollback, jasný soupis „před podpisem vlastníka“.
 - Přesný stav F5 bran G1–G7.
 
+## Soubor 6 — CLAUDE_F5_PREMIUM_DIDACTIC_QA.md
+
+**Povinný**, protože jde o zásadní vlastnické požadavky doplněné v `F5_PREMIOVY_PRODUKT_A_DIDAKTIKA_CZ.md`.
+
+A. **Didaktika:** tabulka **8 městských + 4 metro** typů stanic: `stanice | jazykový cíl | reálná činnost studenta | zpětná vazba | rozdíl A1–C2 či B1–C2 | slabší/silnější | ověřovací důkaz | nález | verdikt`. Výslovně označit mechaniky, které se vydávají za jazykový nácvik bez reálného výkonu.
+
+B. **Mobile-first QA:** samostatně výsledky fyzického iPhone/Safari, Android/Chrome, iPad/Split View, desktopu a screenreaderů; rozliš `PASS`, `FAIL`, `NOT TESTED`. Zvlášť 320px, 390px a 200% text, šipky blízko mapy, žádné překryté/duplicitní ovládání a zachování stavu.
+
+C. **Prémiová vizuální kvalita a animace:** vizuální hierarchie, mapa města, schéma metra, vůz/nástupiště, stavy výluky a přestupu, délka a srozumitelnost animací, výkon na telefonu, `prefers-reduced-motion`, přístupnost a případné problematické stroboskopické efekty. K návrhům přidej konkrétní UI variantu s prioritou.
+
+D. **Katalogový typový štítek:** City Quest organizačně v Conversation Lab, ale přímo na kartě vysvětleno, že jde o **interaktivní jazykovou hru**. Návrh má obsahovat český text **„🎮 Interaktivní jazyková hra“** a vysvětlení **„Nejde o klasickou konverzační kartu. Procvičuješ orientaci, rozhodování a komunikaci v interaktivních misích.“**. Doporučit realistickou implementaci až v izolované integrační větvi na základě aktuálního `main`: `data/cards.json`, `assets/hub.js`, `assets/hub.css`, případně katalogové překlady. Navrhni pozitivní odlišení v UI, ne agresivní výstrahu či zmatečný štítek „NOT CONVERSATION“.
+
+E. **Rozhodnutí:** řekni zvlášť `GO / NO-GO` pro `didaktiku`, `jazyky`, `mobile`, `desktop`, `premiový UI`, `animace` a `katalog`. Co nelze osobně prověřit, zůstává `NOT TESTED`.
+
 **Finální ochrana:** souborová revize a testy jsou vhodné pro nezávislou technickou kontrolu, ale nenahrazují nativní jazykový podpis, fyzické zařízení ani finální souhlas vlastníka.
