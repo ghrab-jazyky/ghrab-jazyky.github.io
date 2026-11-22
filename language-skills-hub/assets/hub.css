@@ -374,4 +374,6 @@ dialog.howto-dialog{
 .materials-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:10px 0 20px}
 .materials-links .action{min-width:0;text-align:center;white-space:normal}
 .materials-links .action[aria-disabled="true"]{opacity:.5;pointer-events:none}
+.materials-reuse-warning{border-left:3px solid #bf985a;background:rgba(191,152,90,.10);padding:11px 13px;border-radius:3px 9px 9px 3px;color:var(--fg);line-height:1.48}
+.materials-reuse-warning strong{font-weight:700}
 @media(max-width:480px){.materials-dialog{padding:15px}.materials-selectors,.materials-links{grid-template-columns:1fr}}
