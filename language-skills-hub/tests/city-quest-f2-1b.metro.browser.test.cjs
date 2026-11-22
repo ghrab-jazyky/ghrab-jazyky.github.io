@@ -7,7 +7,9 @@ const assert=require("node:assert/strict");
 const fs=require("node:fs");
 const path=require("node:path");
 const {chromium,webkit}=require("playwright");
-const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html";
+// This is an AUTHORING/QA visual-preview suite. Normal student URLs do
+// not expose guided reference routes (CQ-F5-006).
+const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html?cq-review=1";
 const SHOTS=path.join(process.cwd(),"city-quest-f2-1b-artifacts");
 fs.mkdirSync(SHOTS,{recursive:true});
 function errorsFrom(page){
@@ -206,7 +208,7 @@ test("F2.1B one-file offline HTML: all 14 metro stops, scene and route with no e
  try{
   const page=await browser.newPage({viewport:{width:1280,height:850}});
   const events=errorsFrom(page);
-  await page.goto("file://"+file,{waitUntil:"load"});
+  await page.goto("file://"+file+"?cq-review=1",{waitUntil:"load"});
   await page.locator("#metroLab:not([hidden])").waitFor();
   assert.equal(await page.locator("#metroNetworkSvg [data-metro-station]").count(),14);
   await scenario(page,"metro_07_b1");
