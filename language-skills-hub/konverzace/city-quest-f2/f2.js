@@ -853,7 +853,7 @@
       variantTag=document.querySelector(".hero .tags .tag:nth-child(3)");
     if(pilot){hero.textContent=content.title;heroText.textContent=content.header;}
     else{hero.textContent=pack().stations[7][0];heroText.textContent=pack().stations[0][1]+" "+ui().objective;}
-    if(headerTag)headerTag.textContent=pilot?"CITY QUEST · "+state.level+" METRO":"CITY QUEST · PREMIUM";
+    if(headerTag)headerTag.textContent=pilot?"F2.1D · "+state.level+" METRO":"CITY QUEST · PREMIUM";
     if(variantTag)variantTag.textContent=pilot?state.language.toUpperCase()+" · "+state.level+" METRO":"8 × 4 × 6";
     document.title=pilot?content.title+" · "+content.native+" "+state.level+" · LSH":
       "City Quest F2 · "+pack().native+" "+state.level+" · Language Skills Hub";
