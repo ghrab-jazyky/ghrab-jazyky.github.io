@@ -85,3 +85,24 @@ test("Never activate multilingual metro at A1/A2; invalid content throws, all pr
   assert.ok(L.pack(lang,"B1",5).models[5].includes("Central Station"));
  }
 });
+
+
+test("F5C CQ-F5-009: Metro08 detour has a mandatory University meeting and explicit four-language rationale",()=>{
+ const route=M.scenario("metro_08_b1");
+ assert.equal(route.requiredMeeting,"university");
+ assert.ok(M.itinerary(route.id).some(x=>x.station==="university"&&x.kind==="transfer"));
+ assert.equal(route.closedEdges.length,0,"Do not invent a Metro08 M1 closure as an excuse for the route");
+ const label={en:/colleague|University/i,es:/compañera|University/i,
+  de:/Kollegen|University/i,fr:/collègue|University/i};
+ for(const lang of L.languages)for(const level of L.levels){
+  const pack=L.pack(lang,level,8);
+  const prompt=L.stage(lang,level,8,"checkpoint",{station:"University"});
+  const model=L.model(lang,level,8);
+  assert.match(pack.goal,label[lang],lang+"/"+level+" must disclose required meeting");
+  assert.match(prompt,label[lang],lang+"/"+level+" must have meaningful University speaking checkpoint");
+  assert.match(model,/M1.*M2.*University.*M3/s,
+    lang+"/"+level+" must contrast the direct M1 with the actual M2/M3 University itinerary");
+  const other=L.stage(lang,level,8,"checkpoint",{station:"Market Square"});
+  assert.notEqual(other,prompt,"University checkpoint should be different from the entry checkpoint");
+ }
+});
