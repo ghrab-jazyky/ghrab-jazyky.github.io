@@ -248,3 +248,16 @@
  .f3d-learning-mode{max-width:none;text-align:left}
  .f1-station-caption strong{overflow-wrap:anywhere}
 }
+
+/* F4: four-language metro headings and status badges must reflow at 200%
+ * browser text size. Flex wraps naturally, without hiding text or script
+ * controlled media queries. The compact desktop arrangement is preserved.
+ */
+.metro-network-head{flex-wrap:wrap}
+.metro-network-head>div:first-child{flex:1 1 8rem;min-width:0}
+.metro-network-head h3{overflow-wrap:anywhere}
+.metro-network-head-actions{min-width:0;flex:0 1 auto}
+.metro-live-pulse{white-space:normal;overflow-wrap:anywhere}
+.metro-scenario-head strong,
+.metro-inspector-top strong,
+.metro-journey-header span:first-child{min-width:0;overflow-wrap:anywhere}
