@@ -89,6 +89,8 @@ jobs:
           node --check language-skills-hub/tests/city-quest-f4r.linguistic.test.cjs
           node --check language-skills-hub/tests/city-quest-f5c.mobile.browser.test.cjs
           node --check language-skills-hub/tests/city-quest-f5c.state.browser.test.cjs
+          node --check language-skills-hub/tests/city-quest-f5c.language.test.cjs
+          node --test language-skills-hub/tests/city-quest-f5c.language.test.cjs
           node --test language-skills-hub/tests/city-quest-f2-1b.metro.test.cjs
           node --test language-skills-hub/tests/city-quest-f2-1c.metro-game.test.cjs
           node --test language-skills-hub/tests/city-quest-f2-1d.metro-language.test.cjs
