@@ -1,0 +1,98 @@
+{
+  "schema": "city-quest-f5-evidence-v1",
+  "prepared_on": "2026-11-22",
+  "repository": "ghrab-jazyky/ghrab-jazyky.github.io",
+  "reference_code_commit": "73d2781ab51feaa95b2c5b014e24570b4d1f5d93",
+  "f5_documentation_branch": "feature/lsh-city-quest-f5-claude-review",
+  "pr_f4r": 161,
+  "github_issue_f5": 163,
+  "f4_workflow_run": {
+    "id": 45025682912,
+    "conclusion": "success",
+    "jobs": [
+      "f4-static-independent-and-matrix",
+      "f4-browser-independent-and-regression"
+    ]
+  },
+  "city_quest_workflows": {
+    "relevant_total": 11,
+    "success": 11,
+    "failed": 0,
+    "unrelated_skipped": [
+      "LSH unlock Stage B checks"
+    ]
+  },
+  "artifacts": {
+    "offline_html": {
+      "name": "CITY_QUEST_F2_OFFLINE_PREVIEW.html",
+      "bytes": 421002,
+      "sha256": "10e3037c7e37e86e5a5307033c9d9e22d1aa27723e48e96802ca0fe84ac2b062"
+    },
+    "offline_zip": {
+      "artifact_id": 14755871228,
+      "sha256": "4d8272632406b2de7368946630afcf219023d9085cdad668768bbead695ba766",
+      "expires": "2026-12-06"
+    },
+    "screenshot_zip": {
+      "artifact_id": 14755698403,
+      "sha256": "2d02289a8e976697083a250d7586447ff1b5de9e293198afee0622a91cb111a8",
+      "png_count": 26,
+      "expires": "2026-12-06"
+    }
+  },
+  "privacy": {
+    "offline": true,
+    "server": false,
+    "network_requests": false,
+    "connect_src": "none",
+    "student_data_collection": false,
+    "microphone": false,
+    "automated_speech_grading": false
+  },
+  "scenarios": {
+    "city": 192,
+    "metro": 64,
+    "total": 256,
+    "language_count": 4,
+    "cefr_levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2",
+      "C1",
+      "C2"
+    ]
+  },
+  "human_approval_status": {
+    "linguistic_review": "256 PENDING",
+    "pedagogical_review": "256 PENDING",
+    "accessibility_review": "256 PENDING",
+    "owner_approval": "256 PENDING",
+    "physical_ios_android_screenreaders": "NOT TESTED",
+    "release": "NO-GO"
+  },
+  "main_divergence_at_prepare": {
+    "main_sha": "88b8a7c212faef3178ecc44539477c2f2d757f2b",
+    "feature_ahead": 270,
+    "feature_behind": 100,
+    "status": "diverged",
+    "revalidate_before_merge": true
+  },
+  "file_scope": [
+    "language-skills-hub/authoring/city-quest-*",
+    "language-skills-hub/konverzace/city-quest-*",
+    "language-skills-hub/tests/city-quest-*",
+    ".github/workflows/lsh-city-quest-*"
+  ],
+  "note": "SHA and CI represent frozen F4 code only. F5 documentation commits must be compared to this source commit before claiming code identity. Human gates cannot be closed by AI or CI.",
+  "f5_review_addendum": {
+    "version": "F5A/Q1",
+    "specification": "language-skills-hub/authoring/city-quest-f5/F5_PREMIOVY_PRODUKT_A_DIDAKTIKA_CZ.md",
+    "manual_qa_cases_total": 32,
+    "required_new_claude_output": "CLAUDE_F5_PREMIUM_DIDACTIC_QA.md",
+    "mobile_first": "mandatory human device acceptance",
+    "catalog_badge": "🎮 Interaktivní jazyková hra",
+    "catalog_in_main": false,
+    "implementation_release_gate": "separate approved future main integration; no production change"
+  }
+}
