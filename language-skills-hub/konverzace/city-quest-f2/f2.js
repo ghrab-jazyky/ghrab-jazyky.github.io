@@ -74,7 +74,7 @@
       explore:{round:0,misses:0},route:G.routeStart(),dialogue:G.dialogueStart(),
       guided:G.guidedStart(),metro:MG?Object.fromEntries([5,6,7,8].map(n=>[n,MG.start(n)])):null,
       transit:{done:false,tries:0,selection:{}},
-      repair:{phase:0,done:false,tries:0},detour:G.routeStart(),quest:G.questStart()};
+      repair:G.repairStart(),detour:G.routeStart(),quest:G.questStart()};
   }
   const pack=()=>C.pack(state.language),profile=()=>C.profile(state.language,state.level),ui=()=>pack().ui;
   const metroAvailable=()=>!!MG&&!!LC&&LC.languages.includes(state.language)&&LC.levels.includes(state.level);
@@ -433,7 +433,22 @@
   }
   function renderGuided(){
     const game=state.guided,plan=G.guidedPaths[state.level];
-    if(game.done)return complete(4,ui().arrived,G.routeModel(pack(),game.route));
+    const reason=advancedPractice[state.language]?.guided?.[state.level];
+    if(game.done&&reason&&!game.reviewed){
+      note(panel,"🧭 "+ui().mission,reason.question);
+      choices(panel,G.orderChoices(reason.options.map(([value,label])=>({value,label})),
+        state.language,state.level,4,"explain"),choice=>{
+        const verdict=G.guidedReview(state.guided,state.level,choice);
+        state.guided=verdict.state;
+        flash={text:verdict.accepted?reason.explanation:ui().feedbackRetry,
+          tone:verdict.accepted?"success":"warning"};
+        screen();renderMap();
+      });
+      status(panel,flash?.text||ui().choose,flash?.tone);
+      return;
+    }
+    if(game.done)return complete(4,
+      reason?.explanation||ui().arrived,G.routeModel(pack(),game.route));
     const dots=el("div",panel,"f2-progress-dots");
     plan.forEach((dir,i)=>el("span",dots,"f2-dot"+(game.step>i?" done":game.step===i?" current":""),String(i+1)));
     el("h3",panel,"",ui().step+" "+(game.step+1)+"/"+plan.length);
@@ -501,17 +516,30 @@
     help(panel);
   }
   function renderRepair(){
-    const game=state.repair,r=pack().repair;
-    if(game.done)return complete(6,r.repairWhy,r.polite);
+    const game=state.repair,r=pack().repair,
+      practice=advancedPractice[state.language].repair,
+      stages=G.repairStages(state.level);
+    if(game.done){
+      const advancedModel=practice.apology[state.level]?.options.find(x=>x[0]==="apology")?.[1];
+      return complete(6,r.repairWhy,advancedModel||r.polite);
+    }
     note(panel,"⚠️ "+ui().directions,r.incorrect);
-    el("h3",panel,"",ui().step+" "+(game.phase+1)+" / 2");
-    para(panel,game.phase===0?profile().repair:ui().feedbackRetry,"f2-prompt");
-    const list=game.phase===0?r.identify:r.fixes;
-    choices(panel,G.orderChoices(list.map((label,i)=>({label,value:i})),state.language,state.level,6,game.phase),index=>{
-      game.tries++;
-      const ok=index===(game.phase===0?1:0);
-      if(ok){game.phase++;if(game.phase===2)game.done=true;}
-      flash={text:ok?ui().correct:r.notYet,tone:ok?"success":"warning"};
+    el("h3",panel,"",ui().step+" "+(game.phase+1)+" / "+stages);
+    const phase=game.phase;
+    const scenario=phase===2?practice.reason:phase===3?practice.apology[state.level]:null;
+    para(panel,scenario?.question|| (phase===0?profile().repair:ui().yourTurn),"f2-prompt");
+    const choicesForStage=phase===0?
+      r.identify.map((label,i)=>({label,value:["straight","turn","distance"][i]})):
+      phase===1?
+      r.fixes.map((label,i)=>({label,value:["left","keep-south","west"][i]})):
+      scenario.options.map(([value,label])=>({value,label}));
+    choices(panel,G.orderChoices(choicesForStage,state.language,state.level,6,phase),value=>{
+      const result=G.repairChoice(state.repair,state.level,value);
+      state.repair=result.state;
+      flash={text:result.accepted?
+        (phase>=2?r.repairWhy:ui().correct):
+        (scenario?.retry||r.notYet),
+        tone:result.accepted?"success":"warning"};
       screen();
     });
     status(panel,flash?.text||ui().choose,flash?.tone);
@@ -739,7 +767,7 @@
   }
   function showClosure(){
     blocked.replaceChildren();
-    const need=!metroPilot()&&(state.station===7||state.level==="C2"&&[2,8].includes(state.station));
+    const need=!metroPilot()&&(state.station===7||state.level==="C2"&&[2,4,8].includes(state.station));
     if(!need)return;
     const p=E.position(F.closure.a),q=E.position(F.closure.b);
     blocked.appendChild(svg("line",{x1:p.x,y1:p.y,x2:q.x,y2:q.y,class:"f2-road-close"}));
@@ -944,7 +972,7 @@
     if(n===4)state.guided=G.guidedStart();
     if(n>=5&&state.metro)state.metro[n]=MG.start(n);
     if(n===5)state.transit={done:false,tries:0,selection:{}};
-    if(n===6)state.repair={phase:0,done:false,tries:0};
+    if(n===6)state.repair=G.repairStart();
     if(n===7)state.detour=G.routeStart();
     if(n===8)state.quest=G.questStart();
     state.done.delete(n);flash=null;
