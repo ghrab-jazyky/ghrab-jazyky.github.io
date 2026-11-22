@@ -10,6 +10,8 @@ Základ tvoří **tři samostatné důkazové přílohy**. Je-li k dispozici jed
 2. `F4_CityQuest_offline_certified.zip` – certifikovaný jediný offline HTML soubor z F4 Actions run #45025682912; nespoléhej na název `F2`, obsahuje aktuální F4R kód.
 3. `F4_CityQuest_screenshots_certified.zip` – 26 screenshotů z prohlížečových regresí, důkazní materiál, ne náhrada za fyzickou přejímku.
 
+**Aktualizace F5A/Q1 podle vlastníka:** Nový závazný dokument `F5_PREMIOVY_PRODUKT_A_DIDAKTIKA_CZ.md` specifikuje **mobile-first kvalitu, bezchybnou dohratelnost, jednotný prémiový UI/UX, animace, didaktický cíl všech 12 typů stanic a viditelné označení „🎮 Interaktivní jazyková hra“** pro budoucí katalog Conversation Lab. Claude MUSÍ dodat také `CLAUDE_F5_PREMIUM_DIDACTIC_QA.md`. Pokud je balíček starší než F5A/Q1, použij aktualizovanou verzi, případně přilož nový dokument a aktuální master prompt zvlášť. **Původní listopadový ZIP bez této aktualizace již není úplný pro závěrečnou revizi.**
+
 **První soubor, který má Claude přečíst:** `language-skills-hub/authoring/city-quest-f5/F5_CLAUDE_MASTER_PROMPT_CZ.md`. Následuje `F5_EVIDENCE_MANIFEST.json`, `F5_BASELINE_A_PROVEREVANI_CZ.md`, `F5_GATE_PLAN_AKCEPTACE_CZ.md` a `F5_INTEGRACNI_PLAN_CZ.md`. Originální všech 256 profilů je v `language-skills-hub/authoring/city-quest-f4/F4_256_variant_release_review_matrix.csv`; pro fyzické a jazykové kontroly je navíc `F5_MANUAL_DEVICE_AND_CONTENT_QA.csv`.
 
 ## Co se smí považovat za prokázané
