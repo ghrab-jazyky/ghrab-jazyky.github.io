@@ -132,7 +132,7 @@ test("F4R interactive metro SVG captions and scene accessibility labels follow t
    const labels=await page.locator("#metroNetworkSvg text").allTextContents();
    assert.ok(labels.some(x=>x.includes(want.map)),lang+": SVG network heading not localized");
    assert.match(await page.locator("#metroSceneSvg").getAttribute("aria-label"),new RegExp(want.scene));
-   assert.ok(!labels.some(x=>/F2\\.1C EN\\/B1 MISSION/.test(x)),lang+": obsolete EN/B1 mission marker");
+   assert.ok(!labels.some(x=>x.includes("F2.1C EN/B1 MISSION")),lang+": obsolete EN/B1 mission marker");
    await page.locator("#metroPilotToggle").click();
   }
  }finally{await browser.close();}
