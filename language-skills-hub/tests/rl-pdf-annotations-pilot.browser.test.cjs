@@ -18,9 +18,15 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await materials.waitFor({timeout:30000});
    await materials.click();
    await page.locator('#materialsDialog[open]').waitFor();
+   // PDF URLs use content-addressed ?v=SHA to avoid stale GitHub Pages caches.
+   // Verify their pathname and version instead of requiring the URL to end in .pdf.
    await page.waitForFunction(()=>['materialsPracticeText','materialsPracticeAll',
-    'materialsTestText','materialsTestAll'].every(id=>
-    document.getElementById(id)?.getAttribute('href')?.endsWith('.pdf')));
+    'materialsTestText','materialsTestAll'].every(id=>{
+    const href=document.getElementById(id)?.getAttribute('href');
+    if(!href)return false;
+    const url=new URL(href,document.baseURI);
+    return url.pathname.endsWith('.pdf')&&/^[a-f0-9]{16}$/.test(url.searchParams.get('v')||'');
+   }));
    for(const id of ['materialsPracticeText','materialsPracticeAll','materialsTestText','materialsTestAll'])
     assert.ok((await page.locator('#'+id).getAttribute('href'))?.includes('rl-asteroids'));
    const target=new URL('print-page.html?topic=rl-asteroids&lang=en&level=B2&mode=test&format=all',base);
