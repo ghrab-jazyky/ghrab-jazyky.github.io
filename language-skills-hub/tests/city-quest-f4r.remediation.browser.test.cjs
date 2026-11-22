@@ -163,3 +163,32 @@ test("F4 learner-language metro chrome, station inspector and ARIA labels stay t
   }
  }finally{await browser.close();}
 });
+
+test("F4 translated metro chrome reflows without hidden text at 200% font size on narrow phones",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  for(const width of [320,390]){
+   const page=await browser.newPage({viewport:{width,height:844}});
+   await germanMetro07(page);
+   await page.evaluate('document.documentElement.style.fontSize="200%"');
+   const result=await page.evaluate(()=>{
+    const nodes=[
+     document.querySelector(".metro-network-head"),
+     document.querySelector(".metro-network-head h3"),
+     document.querySelector(".metro-live-pulse"),
+     document.querySelector(".metro-inspector-top strong"),
+     document.querySelector(".metro-journey-header span:first-child")
+    ];
+    return{
+     width:document.documentElement.scrollWidth-document.documentElement.clientWidth,
+     elements:nodes.map(el=>({label:el.textContent.trim(),overflowX:el.scrollWidth-el.clientWidth,overflowY:el.scrollHeight-el.clientHeight}))
+    };
+   });
+   assert.ok(result.width<=2,width+"px: horizontal document overflow "+JSON.stringify(result));
+   for(const item of result.elements)
+    assert.ok(item.overflowX<=2&&item.overflowY<=2,
+     width+"px clipped metro chrome: "+JSON.stringify(item));
+   await page.close();
+  }
+ }finally{await browser.close();}
+});
