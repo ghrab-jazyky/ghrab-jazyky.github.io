@@ -193,15 +193,15 @@ test("F5C CQ-F5-010: city detour cannot finish without encountering real roadwor
  assert.equal(invalid.out.accepted,false,"Don't trap a learner at goal without its checkpoint");
  assert.equal(invalid.state.route.length,short.length,"Missing-via must not advance to goal");
  const approach=[{c:1,r:3},{c:2,r:3}];
- assert.deepEqual(G.detourCheckpoints("B1"),[F.closure.a]);
- assert.deepEqual(G.detourCheckpoints("C2"),[F.closure.a,{c:4,r:2}]);
+ assert.deepEqual(G.detourCheckpoints("B1"),[F.closure.b]);
+ assert.deepEqual(G.detourCheckpoints("C2"),[F.closure.b,{c:4,r:2}]);
  const before=walk("B1",approach);
  const closed=G.moveRoute(before.state,{c:3,r:3},"B1",true);
  assert.equal(closed.accepted,false);assert.equal(closed.kind,"closed");
  assert.deepEqual(closed.state.route,before.state.route);
- const open=walk("B1",[...approach,{c:2,r:2},{c:3,r:2},E.goal]);
+ const open=walk("B1",[...approach,{c:2,r:2},{c:3,r:2},{c:3,r:3},{c:4,r:3},{c:4,r:2},{c:4,r:1},E.goal]);
  assert.equal(open.out.accepted,true);assert.equal(open.state.done,true);
- const c2=walk("C2",[...approach,{c:2,r:2},{c:3,r:2},{c:4,r:2},{c:4,r:1},E.goal]);
+ const c2=walk("C2",[...approach,{c:2,r:2},{c:3,r:2},{c:3,r:3},{c:4,r:3},{c:4,r:2},{c:4,r:1},E.goal]);
  assert.equal(c2.out.accepted,true);assert.equal(c2.state.done,true);
 });
 test("F5C CQ-F5-011: real timetable progressively adds late and inaccessible hospital-bound alternatives",()=>{
