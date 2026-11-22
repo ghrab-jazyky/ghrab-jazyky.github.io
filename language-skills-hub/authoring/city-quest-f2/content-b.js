@@ -211,7 +211,7 @@
         ["Demandez votre chemin","Participez à un échange avec un visiteur."],
         ["Suivez mes indications","Avancez en suivant les consignes successives."],
         ["Prenez le bon bus","Lisez les horaires et choisissez le trajet adapté."],
-        ["Oups ! Mauvais tournant","Repérez et corrigez une indication inexacte."],
+        ["Oups ! Mauvaise direction","Repérez et corrigez une indication inexacte."],
         ["Un détour inattendu","Adaptez votre itinéraire lorsqu'une rue est barrée."],
         ["Le grand défi urbain","Rejoignez plusieurs lieux et expliquez vos choix."]
       ],
