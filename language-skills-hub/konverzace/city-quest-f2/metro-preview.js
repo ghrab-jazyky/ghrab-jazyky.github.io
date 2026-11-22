@@ -35,7 +35,7 @@
    inspect:name=>"Ausgewählte Station: "+name+". Die Fahrt wurde nicht fortgesetzt.",
    stop:name=>"Deine aktuelle Station: "+name+".",map:"Bedienung des Linienplans"},
   fr:{picker:"Explorer les stations",locate:"◎ Mon arrêt",task:"↑ Mission",
-   hint:"Consulte les stations sans déplacer le voyageur. Seules les commandes de la mission font avancer le trajet.",
+   hint:"Consultez les stations sans déplacer le voyageur. Seules les commandes de la mission font avancer le trajet.",
    overview:"⊞ Réseau entier",detail:"⊕ Détail lisible",
    inspect:name=>"Station sélectionnée : "+name+". Le trajet n'a pas avancé.",
    stop:name=>"Arrêt actuel : "+name+".",map:"Commandes du plan du métro"}
@@ -618,8 +618,8 @@
     fr:{
       jump:"🚇 Métro de Riverton · exemple visuel en anglais (B1+)",
       overline:"MÉTRO DE RIVERTON / EXEMPLE VISUEL EN ANGLAIS",
-      heading:"Découvre une autre façon de parcourir la ville.",
-      intro:"Explore le réseau fictif et suis un trajet d'exemple en anglais. Cette galerie n'évalue pas l'oral. Les missions interactives existent dans quatre langues.",
+      heading:"Découvrez une autre façon de parcourir la ville.",
+      intro:"Explorez le réseau fictif et suivez un exemple de trajet en anglais. Cette galerie n'évalue pas l'oral. Les missions interactives sont disponibles dans quatre langues.",
       disclaimer:"Exemple visuel en anglais sans note · Les noms des stations sont des noms propres · Missions interactives de B1 à C2."
     }
   }[$("f2Language").value]||null;
