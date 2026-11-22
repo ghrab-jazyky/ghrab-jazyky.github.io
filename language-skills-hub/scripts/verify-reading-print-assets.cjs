@@ -58,7 +58,7 @@ function includedText(label,value,actual,after=0){
 }
 function cleanPageFurniture(raw){
  return raw.split(/\r?\n/).filter(line=>
-  !/^\s*(?:(?:Zdroj:|Téma inspirováno:)\s*British Council|Reading Lab\s*·\s*\d+\s*$)/u.test(line)
+  !/^\s*(?:(?:Zdroj:|Téma inspirováno:)\s*British Council|PDF Reading Lab\s*·\s*Gymnázium Ostrava-Hrabůvka|Reading Lab\s*·\s*\d+\s*$)/u.test(line)
  ).join('\n');
 }
 function inspect(filename){
@@ -80,6 +80,11 @@ function inspect(filename){
  for(let page=1;page<=pages;page++){
   const pageText=run('pdftotext',['-raw','-f',String(page),'-l',String(page),
    '-nopgbrk',filename,'-']);
+  // Printed @page footer must retain school processing credit and BC disclaimer.
+  const pageNormalized=normalized(pageText);
+  if(!pageNormalized.includes(normalized('PDF Reading Lab'))||
+     !pageNormalized.includes(normalized('Není oficiálním materiálem British Council')))
+   throw Error('Missing print attribution/non-affiliation on page '+page+'/'+pages+': '+filename);
   const material=normalized(cleanPageFurniture(pageText));
   if(material.length<30)
    throw Error('Blank or near-empty PDF page '+page+'/'+pages+': '+filename+
