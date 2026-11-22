@@ -38,6 +38,12 @@ Baseline `main`: `47d33af5de74e258c6047295456c1d8678e90042` (P2 released). This 
 ## External limits
 Physical school grayscale printer, actual Edge/Windows, Safari/iPad, Chrome/Android, and full legal provenance attestation remain unverified by automated checks. Record those independently; an emulator cannot certify actual equipment.
 
+## Final P3 pagination decision (after automated asset regeneration)
+- Robot regenerated the 96-variant corpus on `01605013b9a37099deeb01d5841d044f47f34e6e`. This bot-origin commit triggered a PR run requiring approval. The current human-reviewed acceptance update will request **a fresh exact-HEAD PR release gate**; no approval bypass or direct main push is permitted.
+- Verified directly from committed PDF page-tree objects: **EN C1 practice-text 1, test-text 1; EN C2 practice-text 2, test-text 2**. EN C2 intentionally uses a paragraph-boundary page break for a balanced, readable continuation rather than a cramped one-page sheet.
+- **B1 practice-all** remains exactly three pages in EN/ES/DE/FR; EN B1 test-all remains three pages, with full 20pt answer space and 70pt reflection lines in the new CSS.
+- Reproducible PDF binary parity, last-page content density and actual raster QA on the new artifact remain mandatory. Do not declare release GO solely from the page counts.
+
 ## Early binary geometry check (pre-CI approval)
 - On the regenerated branch at robot commit `4a1fd8696ad41f28cc01de8dd93cf36f9c37b713`: EN C1 practice-text and test-text = **1 page** each (was 2). EN C2 practice-text and test-text = **2 pages** each, so the last-page content-density assertion requires independent CI review; no claim of final R-05 PASS yet.
 - EN/ES/DE/FR B1 `practice-all` = **3 pages** each; EN B1 `test-all` = **3 pages**. Writing-space geometry still requires PDF visual inspection.
