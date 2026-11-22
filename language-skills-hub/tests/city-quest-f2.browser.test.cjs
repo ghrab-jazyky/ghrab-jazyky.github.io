@@ -99,7 +99,7 @@ test("English B1: all eight stations playable and locally completed",async()=>{
   await page.locator("#f1Panel .f2-choice-list button").filter({hasText:C.pack("en").repair.fixes[0]}).click();
   assert.equal(await progress(page),6);
   await station(page,7);
-  await directions(page,["north","east","east","east","north"]);
+  await directions(page,["east","east","north","east","south","east","north","north","west"]);
   assert.equal(await progress(page),7);
   await station(page,8);
   for(const steps of [["east","east","north"],["east","east"],["west","north"]]){
