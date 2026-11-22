@@ -154,3 +154,27 @@ test("F2 branching dialogue allows clarification and repair in each level",()=>{
   assert.equal(vague.state.stage,"clarify");
  }
 });
+
+
+test("F5C CQ-F5-003: stable semantic answers but varied positions in CITY 01, 03 and 06",()=>{
+ const cases=[
+  {mission:1,stage:0,options:[F.explore[0].correct,F.explore[0].choices.find(x=>x!==F.explore[0].correct)],correct:F.explore[0].correct},
+  {mission:3,stage:"start",options:["help","vague","wrong"],correct:"help"},
+  {mission:3,stage:"distance",options:["distance","nohelp"],correct:"distance"},
+  {mission:6,stage:0,options:[0,1,2],correct:1},
+  {mission:6,stage:1,options:[0,1,2],correct:0}
+ ];
+ for(const c of cases){
+  const positions=new Set();
+  for(const lang of C.languages)for(const level of C.levels){
+   const original=c.options;
+   const ordered=G.orderChoices(original,lang,level,c.mission,c.stage);
+   assert.deepEqual([...ordered].sort(),[...original].sort(),lang+"/"+level+" altered answer values");
+   assert.deepEqual(ordered,G.orderChoices(original,lang,level,c.mission,c.stage),
+    lang+"/"+level+" options changed during a re-render");
+   assert.deepEqual(c.options,original);
+   positions.add(ordered.indexOf(c.correct));
+  }
+  assert.ok(positions.size>=2,"Fixed correct button across all 24 variants in mission "+c.mission+" "+c.stage);
+ }
+});
