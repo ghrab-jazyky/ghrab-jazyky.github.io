@@ -192,13 +192,13 @@ test("F5C CQ-F5-006: normal learner cannot see guided answers before attempting 
 });
 
 
-test("F5C CQ-F5-008: all 48 C1/C2 landmark prompts are authored and playable in four languages",async()=>{
+test("F5C CQ-F5-008: all 72 B2-C2 landmark prompts are authored and playable in four languages",async()=>{
  const browser=await chromium.launch({headless:true});
  try{
   const page=await browser.newPage({viewport:{width:390,height:844},hasTouch:true,isMobile:true});
   await page.goto(URL);
   let count=0;
-  for(const lang of ["en","es","de","fr"])for(const level of ["C1","C2"]){
+  for(const lang of ["en","es","de","fr"])for(const level of ["B2","C1","C2"]){
    await page.locator("#f2Language").selectOption(lang);
    await page.locator("#f2Level").selectOption(level);
    await page.locator("#f1Stations button").first().click();
@@ -213,7 +213,7 @@ test("F5C CQ-F5-008: all 48 C1/C2 landmark prompts are authored and playable in 
    }
    assert.match(await page.locator("#f1Panel").innerText(),/✓|Mission|misión|Mission|Aufgabe|Terminé/i);
   }
-  assert.equal(count,48);
+  assert.equal(count,72);
  }finally{await browser.close();}
  function windowContent(lang){
   // Read only authored question/answer data from the same checked-in source.
@@ -228,7 +228,7 @@ test("F5C CQ-F5-008: all 48 C1/C2 landmark prompts are authored and playable in 
 });
 
 
-test("F5C CQ-F5-008: advanced C1-C2 visitor dialogue requires real clarification in four languages",async()=>{
+test("F5C CQ-F5-008: advanced B2-C2 visitor dialogue requires real clarification in four languages",async()=>{
  const browser=await chromium.launch({headless:true});
  try{
   const page=await browser.newPage({viewport:{width:390,height:844}});
@@ -236,7 +236,7 @@ test("F5C CQ-F5-008: advanced C1-C2 visitor dialogue requires real clarification
   const C=require("../authoring/city-quest-f2/content-a.js");
   require("../authoring/city-quest-f2/content-b.js");
   let checked=0;
-  for(const lang of C.languages)for(const level of ["C1","C2"]){
+  for(const lang of C.languages)for(const level of ["B2","C1","C2"]){
    await page.locator("#f2Language").selectOption(lang);
    await page.locator("#f2Level").selectOption(level);
    await page.locator("#f1Stations button").nth(2).click();
@@ -251,7 +251,7 @@ test("F5C CQ-F5-008: advanced C1-C2 visitor dialogue requires real clarification
    assert.ok(clarify.length>105,lang+"/"+level+" lacks a meaningful request for precision");
    checked+=2;
   }
-  assert.equal(checked,16);
+  assert.equal(checked,24);
  }finally{await browser.close();}
 });
 
