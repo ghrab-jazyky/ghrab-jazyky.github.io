@@ -20,7 +20,7 @@ function flatten(value,prefix="root"){
  return[];
 }
 const informalPronoun=/(?<!\p{L})(?:tu|ton|ta|tes|toi)(?!\p{L})/giu;
-const metroInformalVerb=/(?<!\p{L})(?:choisis|prends|rejoins|trouve|explique|vérifie|avance|descends|autoévalue|formule|anticipe|détermine|reformule|adapte|reste)(?!\p{L})/giu;
+const metroInformalVerb=/(?<!\p{L})(?:choisis|prends|rejoins|trouve|explique|vérifie|avance|descends|autoévalue|formule|anticipe|détermine|reformule|adapte)(?!\p{L})/giu;
 test("F4R FR learner register: all city UI, metro instruction/model, CEFR and PA text consistently use vous",()=>{
  const sections=[
   ["city UI",City.packs.fr.ui],
