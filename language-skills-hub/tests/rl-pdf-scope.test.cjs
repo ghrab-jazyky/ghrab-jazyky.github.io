@@ -29,6 +29,7 @@ const protectedPaths = [
   'language-skills-hub/printouts/rl-asteroids/manifest-all.json',
   'language-skills-hub/scripts/build-reading-print-pdfs.cjs',
   'language-skills-hub/scripts/verify-reading-print-assets.cjs',
+  'language-skills-hub/scripts/pdf-content-sha256.cjs',
   'language-skills-hub/scripts/pdf-scope.sh',
   'language-skills-hub/tests/rl-pdf-all-variants.test.cjs',
   'language-skills-hub/tests/rl-pdf-scope.test.cjs',
