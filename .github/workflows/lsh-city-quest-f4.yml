@@ -88,6 +88,7 @@ jobs:
           node --check language-skills-hub/tests/city-quest-f4r.remediation.browser.test.cjs
           node --check language-skills-hub/tests/city-quest-f4r.linguistic.test.cjs
           node --check language-skills-hub/tests/city-quest-f5c.mobile.browser.test.cjs
+          node --check language-skills-hub/tests/city-quest-f5c.state.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-f2-1b.metro.test.cjs
           node --test language-skills-hub/tests/city-quest-f2-1c.metro-game.test.cjs
           node --test language-skills-hub/tests/city-quest-f2-1d.metro-language.test.cjs
@@ -162,6 +163,7 @@ jobs:
           node --test language-skills-hub/tests/city-quest-f4r.remediation.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-f4.independent.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-f5c.mobile.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-f5c.state.browser.test.cjs
           # F3D must pass full 192-variant + focus/lesson acceptance.
           node --test language-skills-hub/tests/city-quest-f3d.pedagogy.browser.test.cjs
           # Follow with F3C and the earlier fully certified browser matrix.
