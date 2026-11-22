@@ -261,3 +261,22 @@
 .metro-scenario-head strong,
 .metro-inspector-top strong,
 .metro-journey-header span:first-child{min-width:0;overflow-wrap:anywhere}
+
+
+/* CQ-F5-001 follow-up: exact HEAD 200% mobile acceptance.
+   Prevent localized hero content, mode controls, and long dialogue text
+   from enlarging the viewport. Preserve readable text; never hide it. */
+@media (max-width:700px) {
+  .hero { grid-template-columns:minmax(0,1fr); }
+  .hero > * { min-width:0; max-width:100%; }
+  .hero .kicker { overflow-wrap:anywhere; hyphens:auto; }
+  .f1-dashboard,.f1-mode { min-width:0; max-width:100%; }
+  .f1-mode .btn {
+    min-width:0; max-width:100%;
+    overflow-wrap:anywhere; white-space:normal;
+  }
+  .f2-dialogue-bubble,.f2-dialogue-bubble * {
+    min-width:0; max-width:100%;
+    overflow-wrap:anywhere; hyphens:auto;
+  }
+}
