@@ -113,3 +113,29 @@ test("F4 metro 07/08 answer keys state correct M2 terminus and final stop in all
   }
  }
 });
+
+test("F4 Metro 06-08 model platform numbers match the actual route graph fixtures in all 4 languages",()=>{
+ const Network=require("../authoring/city-quest-f2-1b/metro-network.js");
+ const fixtures=Network.source.platformFixtures;
+ const legs={
+  6:[["market_square","M2","north_park","1"],["university","M3","harbour","3"]],
+  7:[["central_station","M2","north_park","3"],["university","M3","harbour","3"]],
+  8:[["market_square","M2","north_park","1"],["university","M3","harbour","3"]]
+ };
+ const word={en:"platform",es:"andén",de:"Bahnsteig",fr:"quai"};
+ for(const [mission,steps] of Object.entries(legs)){
+  for(const [station,line,terminus,platform] of steps){
+   assert.ok(fixtures.some(f=>f.station===station&&f.line===line&&
+    f.directionTerminus===terminus&&f.platform===platform),
+    "Metro "+mission+": missing graph fixture "+station+" "+line+" "+terminus+" "+platform);
+  }
+  for(const language of Metro.languages){
+   const model=Metro.model(language,"B1",Number(mission));
+   for(const [, , , platform] of steps){
+    const token=new RegExp(word[language]+"\\s+"+platform,"giu");
+    assert.ok((model.match(token)||[]).length>=steps.filter(s=>s[3]===platform).length,
+     language+" Metro "+mission+": platform "+platform+" not accurately named in model");
+   }
+  }
+ }
+});
