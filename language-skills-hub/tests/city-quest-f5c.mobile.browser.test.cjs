@@ -73,7 +73,8 @@ test("F5C light-mode metro neutral text has non-pale contrast and scene tabs mee
   await page.evaluate('document.documentElement.setAttribute("data-theme","light")');
   const result=await page.evaluate(()=>{
    const status=document.querySelector("#f1Panel .f2-status");
-   const tabs=[...document.querySelectorAll(".metro-scene-tab")].filter(x=>x.getBoundingClientRect().height);
+   // In active gameplay the gallery scene toggle is intentionally hidden:
+   // it must NOT enable a second way of changing the player's state.
    const color=window.getComputedStyle(status);
    function luminance(value){
     const arr=value.match(/[\d.]+/g).slice(0,3).map(Number).map(v=>{
@@ -82,10 +83,15 @@ test("F5C light-mode metro neutral text has non-pale contrast and scene tabs mee
     return arr[0]*.2126+arr[1]*.7152+arr[2]*.0722;
    }
    const a=luminance(color.color),b=luminance(color.backgroundColor),contrast=(Math.max(a,b)+.05)/(Math.min(a,b)+.05);
-   return {contrast,statusText:status.textContent,tabs:tabs.map(el=>{const r=el.getBoundingClientRect();return {w:r.width,h:r.height}})};
+   return {contrast,statusText:status.textContent};
   });
   assert.ok(result.contrast>=4.5,"Light-mode neutral text contrast <4.5: "+JSON.stringify(result));
-  assert.ok(result.tabs.length===2);
-  for(const t of result.tabs)assert.ok(t.w>=44&&t.h>=44,"Scene tab under-sized "+JSON.stringify(t));
+  // The two view tabs are only student-accessible in the EN-only reference
+  // gallery; test their actual touch boxes in that visible state.
+  await page.locator("#metroPilotToggle").click();
+  const tabs=await page.locator(".metro-scene-tab:visible").evaluateAll(nodes=>
+   nodes.map(el=>{const r=el.getBoundingClientRect();return {w:r.width,h:r.height}}));
+  assert.equal(tabs.length,2,"Reference gallery must expose two view tabs");
+  for(const t of tabs)assert.ok(t.w>=44&&t.h>=44,"Scene tab under-sized "+JSON.stringify(t));
  }finally{await browser.close();}
 });
