@@ -41,6 +41,15 @@
    stop:name=>"Arrêt actuel : "+name+".",map:"Commandes du plan du métro"}
  };
  const ux=()=>f3cText[$("f2Language").value]||f3cText.en;
+ // Game-mode maps and scenes are localized; the separate EN reference gallery
+ // deliberately keeps its original English visual examples.
+ const sceneText={
+  en:{network:"UNDERGROUND NETWORK / 3 LINES",scale:"NOT TO SCALE",mapCaption:"MULTILINGUAL METRO MISSION · OFFLINE",closed:"SERVICE CLOSED",nextService:"NEXT SERVICE",signs:"Follow the signs",awaiting:"Awaiting departure",disruption:"SERVICE DISRUPTION",interchange:"INTERCHANGE",nextStop:"NEXT STOP / CURRENT LOCATION",platformAt:"Illustrated platform at ",trainAt:"Illustrated metro train on ",lineAt:" on ",terminus:"CHECK TERMINUS",platform:"CHECK PLATFORM",reached:"DESTINATION REACHED",preview:"WAYFINDING PREVIEW",platformWord:"PLATFORM",follow:"FOLLOW EXIT SIGNS",notice:"SERVICE DISRUPTION · CHECK THE NETWORK",transfer:"CHANGE TRAINS · FOLLOW INTERCHANGE SIGNS",chooseLine:"STATION CONCOURSE · FIND YOUR LINE",chooseDirection:"DEPARTURES · CHECK THE TRAIN TERMINUS",choosePlatform:"PLATFORM CHECK · MATCH LINE AND TERMINUS",towards:"TOWARDS",inspector:"Station connections"},
+  es:{network:"RED DE METRO / 3 LÍNEAS",scale:"NO ESTÁ A ESCALA",mapCaption:"MISIÓN MULTILINGÜE · SIN CONEXIÓN",closed:"TRAMO CERRADO",nextService:"PRÓXIMO SERVICIO",signs:"Sigue las señales",awaiting:"Esperando la salida",disruption:"SERVICIO INTERRUMPIDO",interchange:"TRANSBORDO",nextStop:"PRÓXIMA PARADA / UBICACIÓN ACTUAL",platformAt:"Andén ilustrado en ",trainAt:"Interior ilustrado del metro en ",lineAt:" · línea ",terminus:"COMPRUEBA EL DESTINO",platform:"COMPRUEBA EL ANDÉN",reached:"DESTINO ALCANZADO",preview:"VISTA PREVIA",platformWord:"ANDÉN",follow:"SIGUE LAS SEÑALES DE SALIDA",notice:"INCIDENCIA · CONSULTA EL PLANO",transfer:"TRANSBORDO · SIGUE LAS SEÑALES",chooseLine:"VESTÍBULO · ELIGE UNA LÍNEA",chooseDirection:"SALIDAS · COMPRUEBA EL DESTINO",choosePlatform:"ANDÉN · COMPRUEBA LÍNEA Y DESTINO",towards:"DIRECCIÓN",inspector:"Conexiones de la estación"},
+  de:{network:"U-BAHN-NETZ / 3 LINIEN",scale:"NICHT MASSSTABSGETREU",mapCaption:"MEHRSPRACHIGE U-BAHN-AUFGABE · OFFLINE",closed:"STRECKE GESPERRT",nextService:"NÄCHSTE VERBINDUNG",signs:"Folge den Schildern",awaiting:"Abfahrt steht bevor",disruption:"BETRIEBSSTÖRUNG",interchange:"UMSTEIGEN",nextStop:"NÄCHSTER HALT / AKTUELLER STANDORT",platformAt:"Illustrierter Bahnsteig an ",trainAt:"Illustrierter U-Bahn-Wagen bei ",lineAt:" · Linie ",terminus:"ENDSTATION PRÜFEN",platform:"BAHNSTEIG PRÜFEN",reached:"ZIEL ERREICHT",preview:"ORIENTIERUNGSVORSCHAU",platformWord:"BAHNSTEIG",follow:"ZUM AUSGANG",notice:"STÖRUNG · NETZPLAN PRÜFEN",transfer:"UMSTEIGEN · SCHILDER BEACHTEN",chooseLine:"BAHNHOF · LINIE SUCHEN",chooseDirection:"ABFAHRTEN · ENDSTATION PRÜFEN",choosePlatform:"BAHNSTEIG · LINIE UND ZIEL PRÜFEN",towards:"RICHTUNG",inspector:"Stationsverbindungen"},
+  fr:{network:"RÉSEAU DE MÉTRO / 3 LIGNES",scale:"PLAN SCHÉMATIQUE",mapCaption:"MISSION MULTILINGUE · HORS LIGNE",closed:"TRONÇON FERMÉ",nextService:"PROCHAIN SERVICE",signs:"Suivez les panneaux",awaiting:"En attente de départ",disruption:"SERVICE PERTURBÉ",interchange:"CORRESPONDANCE",nextStop:"PROCHAIN ARRÊT / POSITION ACTUELLE",platformAt:"Quai illustré à ",trainAt:"Intérieur illustré du métro à ",lineAt:" · ligne ",terminus:"VÉRIFIEZ LE TERMINUS",platform:"VÉRIFIEZ LE QUAI",reached:"DESTINATION ATTEINTE",preview:"APERÇU DE L'ORIENTATION",platformWord:"QUAI",follow:"SUIVEZ LES SORTIES",notice:"PERTURBATION · CONSULTEZ LE PLAN",transfer:"CORRESPONDANCE · SUIVEZ LES PANNEAUX",chooseLine:"HALL · TROUVEZ LA LIGNE",chooseDirection:"DÉPARTS · VÉRIFIEZ LE TERMINUS",choosePlatform:"QUAI · VÉRIFIEZ LA LIGNE ET LE TERMINUS",towards:"DIRECTION",inspector:"Correspondances de la station"}
+ };
+ const tr=()=>gameMode?(sceneText[$("f2Language").value]||sceneText.en):sceneText.en;
  const motionOff=()=>window.matchMedia("(prefers-reduced-motion: reduce)").matches||
   document.documentElement.dataset.motion==="off";
  const labels={
@@ -128,10 +137,10 @@
    rounded(network,x+8,y+8,w-16,h-16,"none",5,{stroke:"#9bdfe1",opacity:.09});
   }
   drawnText(network,50,55,"RIVERTON",{"font-size":28,"font-weight":950,"letter-spacing":5.5,fill:"#eafdfa"});
-  drawnText(network,51,79,"UNDERGROUND NETWORK  /  3 LINES",{"font-size":12,"font-weight":750,"letter-spacing":2.6,fill:"#88c7d2"});
-  drawnText(network,1051,55,"NOT TO SCALE",{"font-size":11,"font-weight":800,"letter-spacing":1.4,
+  drawnText(network,51,79,gameMode?tr().network:"UNDERGROUND NETWORK  /  3 LINES",{"font-size":12,"font-weight":750,"letter-spacing":2.6,fill:"#88c7d2"});
+  drawnText(network,1051,55,gameMode?tr().scale:"NOT TO SCALE",{"font-size":11,"font-weight":800,"letter-spacing":1.4,
     "text-anchor":"end",fill:"#9bced8"});
-  drawnText(network,51,727,gameMode?"F2.1C EN/B1 MISSION  •  OFFLINE TRAINING":"F2.1B VISUAL PREVIEW  •  RIDE THE NETWORK",{"font-size":12,"font-weight":800,
+  drawnText(network,51,727,gameMode?tr().mapCaption:"F2.1B VISUAL PREVIEW  •  RIDE THE NETWORK",{"font-size":12,"font-weight":800,
     "letter-spacing":1.4,fill:"#77acb8"});
   append(network,"path",{d:"M49 703H1145",fill:"none",stroke:"#8adcd3","stroke-width":1,opacity:.2});
  }
@@ -175,7 +184,7 @@
      "stroke-dasharray":"15 11","stroke-linecap":"round"});
    const mx=(a.x+b.x)/2,my=(a.y+b.y)/2;
    rounded(geometry,mx-70,my-49,140,30,"#922f42",9,{stroke:"#ffc8b6","stroke-width":2});
-   drawnText(geometry,mx,my-29,"SERVICE CLOSED",{"font-size":12.5,"font-weight":900,
+   drawnText(geometry,mx,my-29,gameMode?tr().closed:"SERVICE CLOSED",{"font-size":12.5,"font-weight":900,
      "text-anchor":"middle",fill:"#fff8ed"});
   }
   const preferred=append(network,"g",{id:"metroPreferredRoute","aria-hidden":"true"});
@@ -348,19 +357,19 @@
     arrived=!!gameMode&&["exit","walk-to-museum","speech","complete"].includes(phase);
   const next=route()[Math.min(current.index+1,route().length-1)];
   const dest=fixture?stationName(fixture.directionTerminus):
-    (gameMode&&gameMode.direction?stationName(gameMode.direction):gameMode?"CHECK TERMINUS":
+    (gameMode&&gameMode.direction?stationName(gameMode.direction):gameMode?tr().terminus:
       next?.line?stationName(M.line(next.line).stops.at(-1)):"CHECK LINE");
-  const platform=arrived?"DESTINATION REACHED":
-    fixture?"PLATFORM "+fixture.platform:gameMode?"CHECK PLATFORM":"WAYFINDING PREVIEW";
+  const platform=arrived?tr().reached:
+    fixture?tr().platformWord+" "+fixture.platform:gameMode?tr().platform:tr().preview;
   // The departure board must describe the ACTUAL player phase, not a former
   // platform, and never reveal a future line/direction during route choices.
-  const sign=phase==="transfer"?"⇄ CHANGE TRAINS  •  FOLLOW INTERCHANGE SIGNS":
-    phase==="notice"?"SERVICE DISRUPTION  •  CHECK THE NETWORK":
-    phase==="select-line"?"STATION CONCOURSE  •  FIND YOUR LINE":
-    phase==="select-direction"?"DEPARTURES  •  CHECK THE TRAIN TERMINUS":
-    phase==="select-platform"?"PLATFORM CHECK  •  MATCH LINE AND TERMINUS":
-    arrived?"DESTINATION REACHED  •  FOLLOW EXIT SIGNS":
-    platform+"   •   TOWARDS "+dest.toUpperCase();
+  const sign=phase==="transfer"?"⇄ "+tr().transfer:
+    phase==="notice"?tr().notice:
+    phase==="select-line"?tr().chooseLine:
+    phase==="select-direction"?tr().chooseDirection:
+    phase==="select-platform"?tr().choosePlatform:
+    arrived?tr().reached+"  •  "+tr().follow:
+    platform+"  •  "+tr().towards+" "+dest.toUpperCase();
   drawnText(scene,296,133,sign,{
     "font-size":14,"font-weight":780,"letter-spacing":1.2,fill:"#a8d5dc"});
   append(scene,"path",{d:"M195 159V177 M705 159V177",stroke:"#7dbfcb","stroke-width":5});
@@ -398,23 +407,23 @@
     stroke:"#718e96","stroke-width":5,opacity:.45});
   }
   rounded(scene,35,389,200,54,"#102e41",12,{stroke:"#66d1d08b","stroke-width":2});
-  drawnText(scene,50,409,"NEXT SERVICE",{"font-size":13,"letter-spacing":1.5,
+  drawnText(scene,50,409,gameMode?tr().nextService:"NEXT SERVICE",{"font-size":13,"letter-spacing":1.5,
     "font-weight":900,fill:"#a2e2de"});
-  drawnText(scene,50,428,gameMode&&gameMode.phase!=="ride"?"Follow the signs":next?.kind==="ride"?stationName(next.station):"Awaiting departure",{
+  drawnText(scene,50,428,gameMode&&gameMode.phase!=="ride"?tr().signs:next?.kind==="ride"?stationName(next.station):gameMode?tr().awaiting:"Awaiting departure",{
     "font-size":17,"font-weight":780,fill:"#fff7df"});
   if(gameMode?.phase==="notice"){
    const board=append(scene,"g",{class:"metro-alert-sign"});
    rounded(board,600,385,265,60,"#622b3c",11,{stroke:"#ffb98d","stroke-width":3});
-   drawnText(board,732,423,"⚠ SERVICE DISRUPTION",{
+   drawnText(board,732,423,"⚠ "+tr().disruption,{
     "text-anchor":"middle","font-size":18,"font-weight":950,fill:"#ffe5c8"});
   }
   if(gameMode?.phase==="transfer"){
    const marker=append(scene,"g",{class:"metro-transfer-arrow"});
    rounded(marker,565,386,302,61,"#095a57",12,{stroke:"#a4f2da","stroke-width":3});
-   drawnText(marker,716,425,"⇄ INTERCHANGE",{"text-anchor":"middle",
+   drawnText(marker,716,425,"⇄ "+tr().interchange,{"text-anchor":"middle",
     "font-size":19,"font-weight":950,fill:"#e3fff6"});
   }
-  $("metroSceneSvg").setAttribute("aria-label","Illustrated platform at "+name+" on "+displayLineId());
+  $("metroSceneSvg").setAttribute("aria-label",tr().platformAt+name+tr().lineAt+displayLineId());
  }
  function trainScene(){
   scene.replaceChildren();sceneDefs();
@@ -436,7 +445,7 @@
   rounded(scene,126,26,105,44,color,10);
   drawnText(scene,178,56,displayLineId(),{"text-anchor":"middle","font-size":30,"font-weight":950,
     fill:"#082b3f"});
-  drawnText(scene,251,39,"NEXT STOP / CURRENT LOCATION",{"font-size":12,"letter-spacing":1.5,
+  drawnText(scene,251,39,gameMode?tr().nextStop:"NEXT STOP / CURRENT LOCATION",{"font-size":12,"letter-spacing":1.5,
     "font-weight":900,fill:"#a8d8d9"});
   drawnText(scene,252,63,name.toUpperCase(),{"font-size":23,"font-weight":920,fill:"#f3fffb"});
   for(const x of [272,625])append(scene,"path",{d:"M"+x+" 83V350",
@@ -460,7 +469,7 @@
      "font-size":18,"font-weight":900,fill:"#e5fff8"});
    }
   }
-  $("metroSceneSvg").setAttribute("aria-label","Illustrated interior of a "+displayLineId()+" metro train at "+name);
+  $("metroSceneSvg").setAttribute("aria-label",tr().trainAt+name+tr().lineAt+displayLineId());
  }
  function drawPublicAddress(){
   const box=$("metroPublicAddress");
