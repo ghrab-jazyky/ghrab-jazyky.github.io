@@ -105,4 +105,46 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     /print-page\.html/, 'Backup remains available when manifest is missing');
   }finally{await browser.close()}
  });
+ test('R-12 '+name+': revised ES/FR C1 clears only stale answers and checked tabs',
+ {timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const key='reading-lab-answers:asteroids-planetary-defence:v2.3';
+   for(const lang of ['es','fr']){
+    const page=await browser.newPage({viewport:{width:1100,height:900}});
+    await page.goto(base+'cteni/asteroids/index.html?lang=en&level=A1');
+    const affected=lang+':C1',scan=lang+'-c1-scan-1',
+     vocab=lang+'-c1-vocab-1',gist=lang+'-c1-gist-1';
+    const oldBook={
+     [affected]:{values:{[scan]:'0',[vocab]:'1',[gist]:'2'},
+      first:{[scan]:'0',[vocab]:'1',[gist]:'2'},
+      checkedTabs:['scan','vocab','gist'],open:'unchanged text'},
+     'en:C1':{values:{'en-c1-gist-1':'2'},first:{},
+      checkedTabs:['gist'],open:'unchanged English response'}
+    };
+    await page.evaluate(({key,oldBook})=>
+     sessionStorage.setItem(key,JSON.stringify(oldBook)),{key,oldBook});
+    await page.goto(base+'cteni/asteroids/index.html?lang='+lang+'&level=C1');
+    await page.locator('#levels [data-level="C1"]').waitFor();
+    const saved=await page.evaluate(key=>JSON.parse(sessionStorage.getItem(key)),key);
+    assert.equal(saved[affected].itemRevision,'es-fr-c1-r12-20261122');
+    assert.equal(Object.hasOwn(saved[affected].values,scan),false);
+    assert.equal(Object.hasOwn(saved[affected].values,vocab),false);
+    assert.equal(Object.hasOwn(saved[affected].first,scan),false);
+    assert.equal(Object.hasOwn(saved[affected].first,vocab),false);
+    assert.equal(saved[affected].values[gist],'2','Untouched gist answer survives');
+    assert.deepEqual(saved[affected].checkedTabs,['gist'],
+     'Previously checked revised scan and vocab items need new attempts');
+    assert.equal(saved[affected].open,'unchanged text');
+    assert.equal(saved['en:C1'].values['en-c1-gist-1'],'2',
+     'Other languages must not be reset');
+    await page.reload();
+    const savedAgain=await page.evaluate(key=>JSON.parse(sessionStorage.getItem(key)),key);
+    assert.equal(savedAgain[affected].itemRevision,'es-fr-c1-r12-20261122');
+    assert.equal(savedAgain[affected].values[gist],'2');
+    await page.close();
+   }
+  }finally{await browser.close()}
+ });
+
 }

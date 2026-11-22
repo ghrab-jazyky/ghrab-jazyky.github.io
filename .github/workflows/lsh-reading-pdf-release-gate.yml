@@ -74,7 +74,7 @@ jobs:
           node --check language-skills-hub/scripts/build-reading-print-pdfs.cjs
           node --check language-skills-hub/scripts/verify-reading-print-assets.cjs
           node --check language-skills-hub/scripts/pdf-content-sha256.cjs
-          node --test language-skills-hub/tests/rl-pdf-all-variants.test.cjs language-skills-hub/tests/rl-pdf-annotations-pilot.test.cjs language-skills-hub/tests/rl-pdf-content-sha256.test.cjs
+          node --test language-skills-hub/tests/rl-pdf-all-variants.test.cjs language-skills-hub/tests/rl-pdf-annotations-pilot.test.cjs language-skills-hub/tests/rl-pdf-content-sha256.test.cjs language-skills-hub/tests/rl-pdf-asteroids-c1-didactic.test.cjs
   browser:
     needs: detect
     if: needs.detect.outputs.relevant == 'true'
@@ -130,7 +130,7 @@ jobs:
         if: always()
         run: |
           mkdir -p /tmp/lsh-pdf-visual-qa
-          for item in en/A1/practice-text en/B1/practice-all en/B1/test-all en/B2/test-all en/C1/practice-text en/C1/test-text en/C2/practice-text en/C2/test-text es/B1/practice-all es/B2/practice-all de/B1/practice-all de/C2/test-all fr/B1/practice-all fr/C1/practice-all; do
+          for item in en/A1/practice-text en/B1/practice-all en/B1/test-all en/B2/test-all en/C1/practice-text en/C1/test-text en/C2/practice-text en/C2/test-text es/B1/practice-all es/B2/practice-all es/C1/practice-all es/C1/test-all de/B1/practice-all de/C2/test-all fr/B1/practice-all fr/C1/practice-all fr/C1/test-all; do
             pdf="language-skills-hub/printouts/rl-asteroids/${item}.pdf"
             if [ ! -f "$pdf" ]; then continue; fi
             name=$(echo "$item" | tr '/' '-')
@@ -160,7 +160,10 @@ jobs:
             language-skills-hub/printouts/rl-asteroids/en/B2/test-text.pdf
             language-skills-hub/printouts/rl-asteroids/en/B2/test-all.pdf
             language-skills-hub/printouts/rl-asteroids/de/C2/test-text.pdf
+            language-skills-hub/printouts/rl-asteroids/es/C1/practice-all.pdf
+            language-skills-hub/printouts/rl-asteroids/es/C1/test-all.pdf
             language-skills-hub/printouts/rl-asteroids/fr/C1/practice-all.pdf
+            language-skills-hub/printouts/rl-asteroids/fr/C1/test-all.pdf
           if-no-files-found: warn
           retention-days: 14
 
