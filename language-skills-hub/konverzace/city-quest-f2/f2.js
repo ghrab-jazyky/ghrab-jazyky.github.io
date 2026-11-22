@@ -381,7 +381,15 @@
     const ask=state.level==="A1"?travel.opening:state.level==="A2"?travel.before:
       ["B1","B2"].includes(state.level)?travel.before:state.level==="C1"?travel.access:travel.complex;
     note(panel,"🚌 "+ui().plan,ask);
-    const table=el("table",panel,"f2-transit-table"),thead=el("thead",table),theadRow=el("tr",thead);
+    // A labelled local scroll region keeps all five timetable columns readable
+    // at 200% text size without overflowing the whole page on 320px phones.
+    const timetable=el("div",panel,"f2-transit-scroll");
+    timetable.setAttribute("role","region");
+    timetable.setAttribute("tabindex","0");
+    timetable.setAttribute("aria-label","🚌 "+ui().plan);
+    const table=el("table",timetable,"f2-transit-table"),thead=el("thead",table),theadRow=el("tr",thead);
+    const swipeText={en:"Swipe the timetable sideways to view all columns.",es:"Desliza la tabla hacia los lados para ver todas las columnas.",de:"Wische die Tabelle seitlich, um alle Spalten zu sehen.",fr:"Faites défiler le tableau horizontalement pour voir toutes les colonnes."};
+    para(panel,swipeText[state.language]||swipeText.en,"f2-transit-scroll-hint");
     [ui().line,ui().departure,ui().stop,ui().arrival,ui().accessible].forEach(label=>el("th",theadRow,"",label));
     const body=el("tbody",table);
     F.transport.lines.forEach(line=>{
