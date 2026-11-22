@@ -95,3 +95,29 @@ test("F5C light-mode metro neutral text has non-pale contrast and scene tabs mee
   for(const t of tabs)assert.ok(t.w>=44&&t.h>=44,"Scene tab under-sized "+JSON.stringify(t));
  }finally{await browser.close();}
 });
+
+
+test("F5C touch accessibility: visible header, map and learning disclosure controls are at least 44px",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  for(const width of [320,390]){
+   const page=await browser.newPage({viewport:{width,height:844},isMobile:true,hasTouch:true});
+   await page.goto(URL);
+   await page.locator("#f1Stations button").nth(1).click();
+   const targets=await page.evaluate(()=>{
+    const selectors=["#themeBtn","#resetBtn","#mapZoom","#f1Panel .f2-help summary"];
+    return selectors.map(selector=>{
+     const el=document.querySelector(selector);
+     if(!el)return {selector,missing:true};
+     const r=el.getBoundingClientRect();
+     return {selector,w:r.width,h:r.height,visible:r.width>0&&r.height>0};
+    });
+   });
+   for(const t of targets){
+    assert.ok(!t.missing,"Missing touch target "+t.selector);
+    if(t.visible)assert.ok(t.w>=44&&t.h>=44,JSON.stringify({width,...t}));
+   }
+   await page.close();
+  }
+ }finally{await browser.close();}
+});
