@@ -18,7 +18,7 @@
  outline:3px solid #fff19c;outline-offset:3px;
 }
 #f2Quick .f2-hud-tools{gap:6px;flex-wrap:wrap}
-#f2Quick .f2-hud-undo{min-height:44px}
+#f2Quick .f2-hud-undo{min-height:44px;min-width:44px}
 :root[data-theme=light] #f2Quick .f3c-hud-toggle{
  background:#e3f8f2;color:#11495b;border-color:#70aba5;
 }
