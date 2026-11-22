@@ -78,7 +78,7 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
     standard 20pt answer spaces. Recover vertical space between tasks instead
     of sacrificing the size of the writing areas or the 11pt reading font. */
  .paper[data-level="B1"][data-format="all"] .paper-header{margin-bottom:15px}
- .paper[data-level="B1"][data-format="all"] .paper h2{margin:14px 0 8px}
+ .paper[data-level="B1"][data-format="all"] h2{margin:14px 0 8px}
  .paper[data-level="B1"][data-format="all"] .reading-paragraphs{line-height:1.40}
  .paper[data-level="B1"][data-format="all"] .reading-paragraphs p{margin-bottom:8pt}
  .paper[data-level="B1"][data-format="all"] .warmup{margin-bottom:8pt;padding:5pt 9pt}
@@ -96,8 +96,8 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
  html[lang="en"] .paper[data-format="text"][data-level="C2"] .paper-header{
   margin-bottom:8px;padding-bottom:7px
  }
- html[lang="en"] .paper[data-format="text"][data-level="C1"] .paper h2,
- html[lang="en"] .paper[data-format="text"][data-level="C2"] .paper h2{
+ html[lang="en"] .paper[data-format="text"][data-level="C1"] h2,
+ html[lang="en"] .paper[data-format="text"][data-level="C2"] h2{
   margin:10pt 0 7pt;padding-bottom:4pt
  }
  html[lang="en"] .paper[data-format="text"][data-level="C1"] .reading-paragraphs,
