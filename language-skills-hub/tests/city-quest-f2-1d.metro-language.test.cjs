@@ -129,3 +129,15 @@ test("F5C CQ-F5-007: B2-C2 metro has 48 mission-authored tasks and contextual mo
  }
  assert.equal(count,48);
 });
+
+
+test("F5C CQ-F5-007: disruption reading input is substantively tiered from B1 to C2 in all four languages",()=>{
+ for(const lang of L.languages){
+  const texts=L.levels.map(level=>L.stage(lang,level,7,"notice",{station:"Central Station"}));
+  assert.equal(new Set(texts).size,4,lang+" needs 4 distinct disruption notices");
+  assert.ok(texts.every(text=>text.includes("Old Town")&&text.includes("Museum Quarter")),
+   lang+" closure geography must be present at every level");
+  assert.ok(texts[2].length>texts[0].length+30,lang+" C1 notice should add contextual information");
+  assert.ok(texts[3].length>texts[0].length+50,lang+" C2 notice should require interpretation of a limited closure");
+ }
+});
