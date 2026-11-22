@@ -21,6 +21,16 @@
 - Před převodem do prod zavést dostupný rollback bod: původní SHA `main`, připravený revert příslušného integračního PR a instrukce pro obnovení případné katalogové registrace.
 - Pokud vznikne byť jediný nežádoucí diff nebo chybí důkaz kompatibility, držet `NO-GO`.
 
+## Povinná katalogová integrace City Quest – odlišení od konverzačních karet
+
+**Až po Claude review a schválení UI** vytvořit v čisté nové integrační větvi od aktuálního `main` registraci City Quest v Conversation Lab (`skill:"konverzace"`, ID `cl-city-quest-f2`), s existujícím rozsahem EN/ES/DE/FR a A1–C2, při zachování metra jen od B1 v samotné aplikaci. Nezapisovat nyní nic do produkčního katalogu.
+
+V aktuálním `main` se obsah galerijní karty generuje z `language-skills-hub/data/cards.json` prostřednictvím `language-skills-hub/assets/hub.js` a styluje přes `language-skills-hub/assets/hub.css`. Render používá `article.card > .card-meta`, viditelný štítek laboratoře `.skill` a štítek aktuálně filtrovaného jazyka/CEFR `.catalog-variant`; **v `main` dosud není City Quest v `cards.json`**.
+
+Implementovat **samostatný** přístupný typový štítek `🎮 Interaktivní jazyková hra` + viditelný kontextový popis `Nejde o klasickou konverzační kartu. Procvičuješ orientaci, rozhodování a komunikaci v interaktivních misích.`. Nesmí překrýt název, tlačítko `Otevřít aktivitu`, QR, jazyk/CEFR ani ostatní karty; ověřit v dark/light, s filtry, 320–390px, klávesnicí, screenreadery a 200% textem. Zajistit, aby nový typ nebyl aplikován globálně na ostatní témata Conversation Lab.
+
+Konkrétní UX, vizuální hierarchii, pozici a copy před realizací zreviduje Claude podle `F5_PREMIOVY_PRODUKT_A_DIDAKTIKA_CZ.md`. Teprve poté izolovaný integrační PR a nové katalogové + cross-app CI; žádná změna produkční větve před samostatným souhlasem vlastníka.
+
 ## Zakázané zkratky
 
 - Nepřesměrovávat PR #161 přímo na `main` jen proto, že v něm už vše funguje.
