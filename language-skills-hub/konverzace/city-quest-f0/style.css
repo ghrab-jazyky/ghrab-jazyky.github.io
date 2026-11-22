@@ -108,3 +108,8 @@ button{font:inherit;cursor:pointer}button:focus-visible,select:focus-visible,a:f
  .map-viewport:not(.detail){height:auto;max-height:none}
  .map-viewport.detail svg{min-width:1120px}
 }
+
+
+/* F5C CQ-F5-022: minimum 44x44 CSS pixel touch targets (also at 320px).
+ * Keep the public F0 layout otherwise unchanged. */
+.btn,.map-controls .btn{min-width:44px;min-height:44px}
