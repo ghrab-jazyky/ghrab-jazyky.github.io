@@ -591,6 +591,38 @@
  }
  function updateVisibility(){
   const level=$("f2Level").value,bridge=window.CityQuestF2MetroBridge;
+  // F4R: the reference gallery is intentionally EN-only, but the surrounding
+  // instructions must be localized for students learning ES/DE/FR.
+  const gallery={
+    en:{
+      jump:"🚇 Riverton Metro · EN visual preview (B1+)",
+      overline:"RIVERTON TRANSIT SYSTEM / F2.1B VISUAL PROTOTYPE",
+      heading:"The city has another layer.",
+      intro:"Discover the metro network, explore an illustrated platform and follow a train through Riverton. Fictional network and timetables. This preview does not grade speaking.",
+      disclaimer:"EN/B1 route reference · F2.1B visual review · Official fictional station names remain in English. Teaching missions support four languages B1–C2."
+    },
+    es:{
+      jump:"🚇 Metro de Riverton · ejemplo visual en inglés (B1+)",
+      overline:"METRO DE RIVERTON / EJEMPLO VISUAL EN INGLÉS",
+      heading:"Descubre otra manera de recorrer la ciudad.",
+      intro:"Explora el metro ficticio y observa un viaje de ejemplo en inglés. Esta galería no evalúa la expresión oral. Las misiones interactivas están disponibles en cuatro idiomas.",
+      disclaimer:"Referencia visual en inglés sin calificación · Los nombres de las estaciones son nombres propios · Las misiones están disponibles de B1 a C2."
+    },
+    de:{
+      jump:"🚇 Riverton U-Bahn · englisches Anschauungsbeispiel (B1+)",
+      overline:"RIVERTON U-BAHN / VISUELLES BEISPIEL AUF ENGLISCH",
+      heading:"Entdecke die Stadt aus einer neuen Perspektive.",
+      intro:"Erkunde das fiktive U-Bahn-Netz und verfolge eine englische Beispielreise. Diese Vorschau bewertet das Sprechen nicht. Die spielbaren Aufgaben gibt es in vier Sprachen.",
+      disclaimer:"Unbenotetes englisches Anschauungsbeispiel · Stationsnamen bleiben englische Eigennamen · Spielbare Aufgaben auf B1 bis C2."
+    },
+    fr:{
+      jump:"🚇 Métro de Riverton · exemple visuel en anglais (B1+)",
+      overline:"MÉTRO DE RIVERTON / EXEMPLE VISUEL EN ANGLAIS",
+      heading:"Découvre une autre façon de parcourir la ville.",
+      intro:"Explore le réseau fictif et suis un trajet d'exemple en anglais. Cette galerie n'évalue pas l'oral. Les missions interactives existent dans quatre langues.",
+      disclaimer:"Exemple visuel en anglais sans note · Les noms des stations sont des noms propres · Missions interactives de B1 à C2."
+    }
+  }[$("f2Language").value]||null;
   const pilot=!!bridge?.pilotActive(),sceneVisible=!!bridge?.metroVisible();
   // During mission 08 surface walking, gameMode is intentionally null while
   // the metro pilot remains active. Resolve language content from the bridge
@@ -603,14 +635,12 @@
   lab.querySelector(".metro-action-card").hidden=pilot;
   lab.querySelector(".metro-scene-toggle").hidden=pilot;
   lab.querySelector(".metro-banner .metro-overline").textContent=pilot?
-    copy.kicker+" / F2.1D "+level:"RIVERTON TRANSIT SYSTEM / F2.1B VISUAL PROTOTYPE";
-  $("metroHeading").textContent=pilot?copy.title:"The city has another layer.";
-  lab.querySelector(".metro-banner-copy > p").textContent=pilot?copy.overview:
-    "Discover the metro network, explore an illustrated platform and follow a train through Riverton. Fictional network and timetables. This preview does not grade speaking.";
+    copy.kicker+" / F2.1D "+level:gallery.overline;
+  $("metroHeading").textContent=pilot?copy.title:gallery.heading;
+  lab.querySelector(".metro-banner-copy > p").textContent=pilot?copy.overview:gallery.intro;
   lab.querySelector(".metro-disclaimer").textContent=pilot?
-    "F2.1D · "+copy.native+" "+level+" · "+copy.offline+" · No server, speech recording or requests.":
-    "EN/B1 route reference · F2.1B visual review · Official fictional station names remain in English. Teaching missions support four languages B1–C2.";
-  jump.textContent="🚇 Riverton Metro · EN visual preview (B1+)";
+    "F2.1D · "+copy.native+" "+level+" · "+copy.offline:gallery.disclaimer;
+  jump.textContent=gallery.jump;
   if(shown)renderAll();
   else updateMapTools();
  }
