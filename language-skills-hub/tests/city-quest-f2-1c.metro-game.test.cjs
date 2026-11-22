@@ -62,11 +62,17 @@ function pilot(n){
     assert.equal(s.speakingDone,2);
    }
    assert.equal(s.phase,"transfer");
-   s=accepted(s,"CHANGE_LINE");
+   // A learner must identify a connecting line rather than pressing an
+   // automatic "transfer" button; a wrong line is a safe non-advancing error.
+   const nextLine=sc.legs[legNo+1].line;
+   s=rejected(s,"STAY_ON_LINE",leg.line);
+   s=rejected(s,"CHANGE_LINE",leg.line);
+   s=accepted(s,"CHANGE_LINE",nextLine);
   }
  }
  assert.equal(s.phase,"exit");
  s=rejected(s,"NEXT_STOP");
+ s=rejected(s,"CONTINUE_PAST_EXIT");
  s=accepted(s,"EXIT");
  if(n===8){
   assert.equal(s.phase,"walk-to-museum");
