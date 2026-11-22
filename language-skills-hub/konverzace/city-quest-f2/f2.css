@@ -212,3 +212,21 @@
   /* The metro/game content can be long: task and navigation are independent cards. */
   .sidebar>#f2Quick[hidden]{display:none}
 }
+
+/* F5C CQ-F5-001: never let a 5-column timetable or localized place labels
+ * make the document wider than a 320px phone at 200% root text scaling. */
+.f2-transit-scroll{display:block;width:100%;max-width:100%;min-width:0;
+ overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-inline:contain;
+ border:1px solid var(--line);border-radius:11px}
+.f2-transit-scroll:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+.f2-transit-scroll .f2-transit-table{width:max-content;min-width:100%;max-width:none;
+ margin:0;table-layout:auto;border-collapse:collapse}
+.f2-transit-scroll .f2-transit-table th,.f2-transit-scroll .f2-transit-table td{
+ white-space:normal;min-width:4.5rem;overflow-wrap:anywhere}
+.f2-transit-scroll-hint{font-size:.76rem;color:var(--muted);margin:5px 0 13px;
+ overflow-wrap:anywhere}
+.f2-landmarks{grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr))}
+.f2-landmark,.f2-landmark span{min-width:0;overflow-wrap:anywhere}
+@media(max-width:700px){
+ .f2-landmarks{grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr))}
+}
