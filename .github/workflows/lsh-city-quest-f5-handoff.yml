@@ -1,0 +1,95 @@
+name: LSH City Quest F5 Claude Review Handoff
+
+on:
+  pull_request:
+    paths:
+      - 'language-skills-hub/authoring/city-quest-f5/**'
+      - 'language-skills-hub/tests/city-quest-f5.preflight.test.cjs'
+      - '.github/workflows/lsh-city-quest-f5-handoff.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  f5-handoff-source-bundle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout complete PR history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify F5 is documentation and independent preflight only
+        shell: bash
+        run: |
+          set -euo pipefail
+          F4_SHA=73d2781ab51feaa95b2c5b014e24570b4d1f5d93
+          git cat-file -e "$F4_SHA^{commit}"
+          git merge-base --is-ancestor "$F4_SHA" HEAD
+          while IFS= read -r file; do
+            case "$file" in
+              language-skills-hub/authoring/city-quest-f5/*|language-skills-hub/tests/city-quest-f5.preflight.test.cjs|.github/workflows/lsh-city-quest-f5-handoff.yml)
+                ;;
+              *) echo "ERROR: F5 source/handoff changes unexpected file: $file"; exit 1;;
+            esac
+          done < <(git diff --name-only "$F4_SHA" HEAD)
+          echo "F5 does not modify F4 certified application sources"
+
+      - name: Run F5 evidence and manual-acceptance preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check language-skills-hub/tests/city-quest-f5.preflight.test.cjs
+          node --test language-skills-hub/tests/city-quest-f5.preflight.test.cjs
+
+      - name: Build source-code and test evidence archive for Claude
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p f5-release-attachments
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,zipfile
+          root=pathlib.Path('.')
+          scopes=[
+           'language-skills-hub/authoring/city-quest-*/**/*',
+           'language-skills-hub/konverzace/city-quest-*/**/*',
+           'language-skills-hub/tests/city-quest-*.cjs',
+           '.github/workflows/lsh-city-quest-*.yml',
+          ]
+          matches={}
+          for pattern in scopes:
+           for p in root.glob(pattern):
+            if p.is_file() and not p.is_symlink():
+             matches[p.as_posix()]=p
+          if len(matches)<70:
+           raise SystemExit('Unexpectedly incomplete City Quest source archive: '+str(len(matches)))
+          files={p:hashlib.sha256(file.read_bytes()).hexdigest() for p,file in sorted(matches.items())}
+          info={
+           'source_f4_sha':'73d2781ab51feaa95b2c5b014e24570b4d1f5d93',
+           'github_pr_checkout_sha':os.environ.get('GITHUB_SHA'),
+           'archive_purpose':'offline independent Claude F5 review; not a production release',
+           'file_count':len(files),
+           'files_sha256':files,
+           'exclude':'unrelated GIT / other LSH apps; separate F4 offline HTML and screenshot artifacts supplied alongside archive',
+          }
+          out=root/'f5-release-attachments'/'CITY_QUEST_F5_CLAUDE_SOURCE_REVIEW.zip'
+          with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
+           for relative,p in sorted(matches.items()):
+            zi=zipfile.ZipInfo(relative,date_time=(2026,11,22,0,0,0))
+            zi.compress_type=zipfile.ZIP_DEFLATED
+            zi.external_attr=0o644<<16
+            z.writestr(zi,p.read_bytes(),compress_type=zipfile.ZIP_DEFLATED,compresslevel=9)
+           zi=zipfile.ZipInfo('F5_SOURCE_BUNDLE_SHA256_MANIFEST.json',date_time=(2026,11,22,0,0,0))
+           zi.compress_type=zipfile.ZIP_DEFLATED
+           z.writestr(zi,json.dumps(info,indent=2,ensure_ascii=False).encode('utf8'))
+          print('Archive:',out,'files:',len(files),'bytes:',out.stat().st_size)
+          PY
+
+      - name: Upload Claude review source package
+        uses: actions/upload-artifact@v4
+        with:
+          name: city-quest-f5-claude-source-review
+          path: f5-release-attachments/CITY_QUEST_F5_CLAUDE_SOURCE_REVIEW.zip
+          if-no-files-found: error
+          retention-days: 14
