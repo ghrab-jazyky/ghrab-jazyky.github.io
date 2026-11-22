@@ -22,7 +22,7 @@
   en:{picker:"Inspect any station",locate:"◎ My stop",task:"↑ Mission",
    hint:"Inspect stations without moving your traveller. Only the mission panel advances the journey.",
    overview:"⊞ Whole network",detail:"⊕ Readable detail",
-   inspect:name=>"Inspect "+name+", no journey step taken.",
+   inspect:name=>"Station selected: "+name+". This is a network inspection, not a game move.",
    stop:name=>"Your current stop: "+name+".",map:"Metro map controls"},
   es:{picker:"Explorar estaciones",locate:"◎ Mi parada",task:"↑ Misión",
    hint:"Consulta las estaciones sin mover al viajero. Solo los controles de la misión avanzan el trayecto.",
