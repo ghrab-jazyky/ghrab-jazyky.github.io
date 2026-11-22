@@ -12,6 +12,11 @@
  if(!lab||!jump||!network||!scene)throw Error("F2.1B metro markup missing");
  const svgNS="http://www.w3.org/2000/svg";
  const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ // CQ-F5-006: guided EN references contain answers to live missions.
+ // They remain usable only in explicit authoring/QA visual preview mode.
+ // This is a pedagogical UI spoiler guard, NOT protection against someone
+ // inspecting route data in this offline public JavaScript.
+ const authoringReview=new URLSearchParams(window.location.search).get("cq-review")==="1";
  const review=[
   {id:"metro_05_b1",number:"05",title:"Find your line",subtitle:"Central Station → Museum Quarter"},
   {id:"metro_06_b1",number:"06",title:"Change trains",subtitle:"Market Square → Stadium"},
@@ -675,7 +680,7 @@
   // the metro pilot remains active. Resolve language content from the bridge
   // state rather than only from an active underground illustration.
   const surfaceState=pilot?bridge.current():null;
-  const shown=pilot?sceneVisible:!["A1","A2"].includes(level),
+  const shown=pilot?sceneVisible:authoringReview&&!["A1","A2"].includes(level),
     copy=pilot&&surfaceState?LC.pack($("f2Language").value,level,surfaceState.stationNumber):null;
   localizeMetroChrome();
   lab.hidden=!shown;jump.hidden=pilot||!shown;
