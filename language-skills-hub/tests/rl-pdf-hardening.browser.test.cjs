@@ -23,6 +23,18 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     assert.equal(await page.locator('#readingParagraphs p[data-num]').count()>0,true);
     const heading=await page.locator('#readingTitle').innerText();
     assert.equal(heading,{en:'Reading text',es:'Texto de lectura',de:'Lesetext',fr:'Texte à lire'}[lang]);
+    if(lang==='en'&&level==='B1'){
+     await page.emulateMedia({media:'print'});
+     const space=await page.evaluate(()=>({
+      reflection:parseFloat(getComputedStyle(document.querySelector('.writing-lines')).height),
+      answer:parseFloat(getComputedStyle(document.querySelector('.answer-line')).height),
+      font:parseFloat(getComputedStyle(document.querySelector('.reading-paragraphs')).fontSize)
+     }));
+     assert.ok(space.reflection>=90,'B1 must have three full ruled reflection lines');
+     assert.ok(space.answer>=25,'B1 answer line must not be cramped');
+     assert.ok(space.font>=14,'B1 reading font must not be made smaller');
+     await page.emulateMedia({media:'screen'});
+    }
    }
    await page.goto(base+'self-check/reading/print-page.html?topic=rl-asteroids&lang=en&level=B2&mode=practice&format=text');
    await page.locator('#printButton:not([disabled])').waitFor();
@@ -33,6 +45,18 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.locator('#printButton:not([disabled])').waitFor();
    assert.equal(await page.locator('#gapNote').isVisible(),true);
    assert.equal((await page.locator('#readingParagraphs').innerText()).includes('[…]'),true);
+   for(const level of ['C1','C2']){
+    await page.goto(base+'self-check/reading/print-page.html?topic=rl-asteroids&lang=en&level='+
+     level+'&mode=practice&format=text');
+    await page.locator('#printButton:not([disabled])').waitFor();
+    await page.emulateMedia({media:'print'});
+    const geometry=await page.locator('#readingParagraphs').evaluate(el=>{
+     const s=getComputedStyle(el);return {font:parseFloat(s.fontSize),line:parseFloat(s.lineHeight)}
+    });
+    assert.ok(geometry.font>=14.6,'EN C1/C2 remains 11 pt in print');
+    assert.ok(geometry.line<=19,'EN C1/C2 uses compact but readable leading');
+    await page.emulateMedia({media:'screen'});
+   }
    await page.setViewportSize({width:375,height:812});
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+5),
     'Mobile print preview must not overflow horizontally');
