@@ -844,6 +844,7 @@
     const b=$("metroPilotToggle");if(!b)return;
     const available=metroAvailable(),content=available?LC.pack(state.language,state.level,5):null;
     b.hidden=!available;
+    b.title=lesson().metroReset;
     b.textContent=metroEnabled&&available?"↶ "+content.back:content?"🚇 "+content.pilot:"";
     b.setAttribute("aria-pressed",String(metroEnabled&&available));
     const pilot=metroEnabled&&available,hero=document.querySelector(".hero h1"),
@@ -851,7 +852,7 @@
       variantTag=document.querySelector(".hero .tags .tag:nth-child(3)");
     if(pilot){hero.textContent=content.title;heroText.textContent=content.header;}
     else{hero.textContent=pack().stations[7][0];heroText.textContent=pack().stations[0][1]+" "+ui().objective;}
-    if(headerTag)headerTag.textContent=pilot?"F2.1D · "+state.level+" METRO":"F2.1B · METRO DESIGN";
+    if(headerTag)headerTag.textContent=pilot?"CITY QUEST · "+state.level+" METRO":"CITY QUEST · PREMIUM";
     if(variantTag)variantTag.textContent=pilot?state.language.toUpperCase()+" · "+state.level+" METRO":"8 × 4 × 6";
     document.title=pilot?content.title+" · "+content.native+" "+state.level+" · LSH":
       "City Quest F2 · "+pack().native+" "+state.level+" · Language Skills Hub";
