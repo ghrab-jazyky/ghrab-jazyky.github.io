@@ -5,7 +5,9 @@
  */
 const {test}=require("node:test"),assert=require("node:assert/strict");
 const fs=require("node:fs"),path=require("node:path"),{chromium,webkit}=require("playwright");
-const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html";
+// This is an AUTHORING/QA visual-preview suite. Normal student URLs do
+// not expose guided reference routes (CQ-F5-006).
+const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html?cq-review=1";
 const OUT=path.resolve("city-quest-f4r-artifacts");fs.mkdirSync(OUT,{recursive:true});
 async function germanMetro07(page){
  await page.goto(URL,{waitUntil:"load"});
@@ -86,7 +88,7 @@ test("F4R standalone strict SHA-CSP offline has responsive zoom fix and localize
   const page=await browser.newPage({viewport:{width:320,height:568},isMobile:true,hasTouch:true});
   const errors=[],remote=[];page.on("pageerror",e=>errors.push(String(e)));
   page.on("request",r=>{if(!r.url().startsWith("file:"))remote.push(r.url());});
-  await page.goto("file://"+source,{waitUntil:"load"});
+  await page.goto("file://"+source+"?cq-review=1",{waitUntil:"load"});
   await page.locator("#f2Language").selectOption("de");
   await page.locator("#f2Level").selectOption("C2");
   await page.locator("#metroPilotToggle").click();
