@@ -98,7 +98,7 @@
     if(delta===0)return d.continue(d[dir],1);
     if(delta===1)return d.turn(d.right,d[dir],1);
     if(delta===3)return d.turn(d.left,d[dir],1);
-    return d.turn(d.back,d[dir],1);
+    return typeof d.uturn==="function"?d.uturn(d[dir],1):d.turn(d.back,d[dir],1);
   }
   // F5C CQ-F5-003: deterministically rotate presentation choices, keeping
   // semantic values intact. No random API is used: repeated renders of the
@@ -183,6 +183,7 @@
       if(i===0)return d.first(current,seg.count);
       const prev=segments[i-1].dir,delta=(dirs.indexOf(seg.dir)-dirs.indexOf(prev)+4)%4;
       if(delta===0)return d.continue(current,seg.count);
+      if(delta===2&&typeof d.uturn==="function")return d.uturn(current,seg.count);
       return d.turn(delta===1?d.right:delta===3?d.left:d.back,current,seg.count);
     }).join(" ");
   }
