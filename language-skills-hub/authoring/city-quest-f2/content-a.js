@@ -86,12 +86,14 @@
         opening:"I need to reach the hospital. Which service should I take?",
         before:"It is 08:35. You must reach the hospital by 09:10.",
         access:"The passenger needs a step-free vehicle and must reach the hospital by 09:10.",
-        complex:"A passenger with reduced mobility cannot risk a late arrival. Recommend a suitable direct service, justify it and reject the less appropriate alternatives.",
+        complex:"It is 08:35. A passenger with reduced mobility must reach the hospital by 09:10. Recommend a direct, step-free service, justify its reliability and explain why the other hospital-bound buses are unsuitable.",
         line7:"Riverside Park",line12:"City Museum",line24:"Hospital",
         why:"Line 24 leaves at 08:47 and arrives at the hospital at 09:05. It is a direct, step-free service.",
         lineWrong:"That bus goes to a different destination.",
         timeWrong:"Check the departure time for the correct line.",
         stopWrong:"The destination stop must be the hospital.",
+        late:"This bus arrives after 09:10. Compare the arrival times, not just the destination.",
+        notAccessible:"This service is not step-free. Choose a bus that meets the passenger's accessibility needs.",
         missing:"Complete all the required choices."
       },
       repair:{
@@ -214,12 +216,14 @@
         opening:"Necesito ir al hospital. ¿Qué línea debo coger?",
         before:"Son las 08:35 y necesitas llegar al hospital antes de las 09:10.",
         access:"La persona necesita un vehículo accesible, sin escalones, y debe llegar antes de las 09:10.",
-        complex:"Una persona con movilidad reducida debe llegar puntual. Recomienda un servicio directo y accesible, justifica tu elección y descarta las alternativas menos adecuadas.",
+        complex:"Son las 08:35. Una persona con movilidad reducida debe llegar al hospital antes de las 09:10. Recomienda un servicio directo y accesible, justifica su fiabilidad y explica por qué las otras líneas al hospital no son adecuadas.",
         line7:"Parque de la Ribera",line12:"Museo de la Ciudad",line24:"Hospital",
         why:"La línea 24 sale a las 08:47 y llega al hospital a las 09:05. Es un servicio directo y accesible.",
         lineWrong:"Esa línea tiene otro destino.",
         timeWrong:"Comprueba la hora de salida de la línea correcta.",
         stopWrong:"La parada de destino debe ser el hospital.",
+        late:"Este autobús llega después de las 09:10. Compara las horas de llegada, no solo el destino.",
+        notAccessible:"Este servicio no es accesible sin escalones. Elige uno adecuado para la persona.",
         missing:"Completa todas las opciones necesarias."
       },
       repair:{
