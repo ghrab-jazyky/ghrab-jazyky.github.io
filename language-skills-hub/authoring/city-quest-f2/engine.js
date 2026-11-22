@@ -179,7 +179,7 @@
       else segments.push({dir:move,count:1});
     }
     return segments.map((seg,i)=>{
-      const d=pack.directions,current=d[seg.dir];
+      const d=pack.touristDirections||pack.directions,current=d[seg.dir];
       if(i===0)return d.first(current,seg.count);
       const prev=segments[i-1].dir,delta=(dirs.indexOf(seg.dir)-dirs.indexOf(prev)+4)%4;
       if(delta===0)return d.continue(current,seg.count);
