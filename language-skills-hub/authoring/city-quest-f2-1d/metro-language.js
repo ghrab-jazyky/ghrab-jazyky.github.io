@@ -69,8 +69,8 @@
     exit:"Exit only at the designated destination.",speech:"Finish the route leg before the oral checkpoint.",invalid:"That action is not available in this state."},
    models:{5:"Take M1 at Central Station, towards East Gardens, from platform 2. Get off at Museum Quarter.",
     6:"At Market Square, take M2 towards North Park. Change at University to M3 towards Harbour and get off at Stadium.",
-    7:"Because the M1 link between Old Town and Museum Quarter is closed, take M2 to University and change to M3 towards Harbour.",
-    8:"Walk from Central Station to Market Square. Enter M2 towards University, transfer to M3 towards Harbour, exit at Museum Quarter, and walk north to City Museum."},
+    7:"Because the M1 link between Old Town and Museum Quarter is closed, take M2 towards North Park, change at University to M3 towards Harbour, and get off at Museum Quarter.",
+    8:"Walk from Central Station to Market Square. Take M2 towards North Park, change at University to M3 towards Harbour, get off at Museum Quarter, and walk north to City Museum."},
    glossary:[["terminus","the final station shown as a train's direction"],["platform","where passengers wait to board"],["interchange","station where two lines connect"],["disruption","service problem affecting a route"],["diversion","alternative way around a closure"],["exit","way back to street level"]],
    levels:{
     B1:{focus:"Give a clear, sequential set of directions.",task:"Use short, accurate directions: line, terminus, platform, transfer and exit.",
@@ -148,8 +148,8 @@
     exit:"Sal únicamente en la estación de destino.",speech:"Termina este tramo antes de la actividad oral.",invalid:"Esta acción no está disponible ahora."},
    models:{5:"Toma la línea M1 en Central Station, en dirección East Gardens, desde el andén 2. Baja en Museum Quarter.",
     6:"En Market Square, toma la M2 hacia North Park. Haz transbordo en University a la M3 hacia Harbour y baja en Stadium.",
-    7:"Como el tramo de la M1 entre Old Town y Museum Quarter está cerrado, toma la M2 hasta University y cambia a la M3 hacia Harbour.",
-    8:"Camina desde Central Station hasta Market Square. Toma la M2 hacia University, cambia a la M3 hacia Harbour, sal en Museum Quarter y camina hacia el norte hasta City Museum."},
+    7:"Como el tramo de la M1 entre Old Town y Museum Quarter está cerrado, toma la M2 hacia North Park, cambia en University a la M3 hacia Harbour y baja en Museum Quarter.",
+    8:"Camina desde Central Station hasta Market Square. Toma la M2 hacia North Park, cambia en University a la M3 hacia Harbour, baja en Museum Quarter y camina hacia el norte hasta City Museum."},
    glossary:[["cabecera","estación final que indica el sentido del tren"],["andén","zona donde se espera para subir al tren"],["transbordo","cambio de una línea a otra"],["incidencia","problema que afecta al servicio"],["desvío","trayecto alternativo ante un corte"],["salida","acceso de la estación a la calle"]],
    levels:{
     B1:{focus:"Dar indicaciones claras y ordenadas.",task:"Explica la línea, el destino final, el andén y los transbordos con frases sencillas.",
@@ -228,8 +228,8 @@
     exit:"Steige erst an deiner Zielstation aus.",speech:"Beende den Abschnitt vor der Sprechaufgabe.",invalid:"Diese Aktion ist jetzt nicht möglich."},
    models:{5:"Nimm an Central Station die M1 in Richtung East Gardens von Bahnsteig 2. Steige an Museum Quarter aus.",
     6:"Fahre ab Market Square mit der M2 Richtung North Park. Steige in University in die M3 Richtung Harbour um und steige am Stadium aus.",
-    7:"Da der M1-Abschnitt zwischen Old Town und Museum Quarter gesperrt ist, nimm die M2 bis University und steige dort in die M3 Richtung Harbour um.",
-    8:"Gehe von Central Station nach Market Square. Fahre mit der M2 Richtung University, steige in die M3 Richtung Harbour um, verlasse die Metro an Museum Quarter und gehe nach Norden zum City Museum."},
+    7:"Da der M1-Abschnitt zwischen Old Town und Museum Quarter gesperrt ist, fahre mit der M2 Richtung North Park bis University, steige dort in die M3 Richtung Harbour um und steige an Museum Quarter aus.",
+    8:"Gehe von Central Station nach Market Square. Fahre mit der M2 Richtung North Park bis University, steige dort in die M3 Richtung Harbour um, steige an Museum Quarter aus und gehe nach Norden zum City Museum."},
    glossary:[["Endstation","letzte Station, die die Fahrtrichtung angibt"],["Bahnsteig","Bereich zum Warten und Einsteigen"],["umsteigen","von einer Linie in eine andere wechseln"],["Störung","Problem im regulären Betrieb"],["Umleitung","Ersatzweg bei einer Sperrung"],["Ausgang","Weg vom Bahnhof auf die Straße"]],
    levels:{
     B1:{focus:"Klare und geordnete Wegbeschreibungen geben.",task:"Erkläre mit einfachen Sätzen Linie, Endstation, Bahnsteig und Umsteigen.",
@@ -308,8 +308,8 @@
     exit:"Descendez uniquement à la station de destination.",speech:"Terminez cette étape avant de prendre la parole.",invalid:"Cette action n'est pas possible maintenant."},
    models:{5:"À Central Station, prenez la M1 en direction d'East Gardens depuis le quai 2. Descendez à Museum Quarter.",
     6:"À Market Square, prenez la M2 en direction de North Park. Changez à University pour la M3 en direction de Harbour, puis descendez à Stadium.",
-    7:"Le tronçon M1 entre Old Town et Museum Quarter étant fermé, prenez la M2 jusqu'à University, puis la M3 en direction de Harbour.",
-    8:"Marchez de Central Station à Market Square. Prenez la M2 jusqu'à University, puis la M3 en direction de Harbour. Descendez à Museum Quarter et marchez vers le nord jusqu'à City Museum."},
+    7:"Le tronçon M1 entre Old Town et Museum Quarter étant fermé, prenez la M2 en direction de North Park jusqu'à University, puis la M3 en direction de Harbour et descendez à Museum Quarter.",
+    8:"Marchez de Central Station à Market Square. Prenez la M2 en direction de North Park jusqu'à University, puis la M3 en direction de Harbour. Descendez à Museum Quarter et marchez vers le nord jusqu'à City Museum."},
    glossary:[["terminus","dernière station indiquant la direction"],["quai","espace où l'on attend le train"],["correspondance","changement d'une ligne à une autre"],["perturbation","incident qui modifie le service"],["déviation","autre itinéraire en cas de fermeture"],["sortie","accès du métro vers la rue"]],
    levels:{
     B1:{focus:"Donner des indications simples et ordonnées.",task:"Indiquez la ligne, le terminus, le quai et les correspondances avec des phrases claires.",
