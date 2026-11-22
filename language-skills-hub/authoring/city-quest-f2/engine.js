@@ -138,10 +138,9 @@
     const fields=requiredFields(level);
     if(!input||fields.some(key=>!input[key]))return {correct:false,kind:"missing"};
     const selected=servicesForLevel(level).find(x=>x.line===input.line);
-    if(!selected)return {correct:false,kind:"line"};
+    if(!selected||selected.to!=="Hospital")return {correct:false,kind:"line"};
     if(fields.includes("depart")&&input.depart!==selected.depart)return {correct:false,kind:"depart"};
     if(fields.includes("stop")&&input.stop!==selected.to)return {correct:false,kind:"stop"};
-    if(selected.to!=="Hospital")return {correct:false,kind:"line"};
     if(minutes(selected.depart)<minutes("08:35")||minutes(selected.arrival)>minutes("09:10"))
       return {correct:false,kind:"late"};
     if(lvlIndex(level)>=4&&!selected.accessible)return {correct:false,kind:"access"};
