@@ -30,7 +30,7 @@ Další zdrojová oprava: v prvním francouzském odstavci byl zpřesněn odkaz 
 
 ## Podmínky vydání (neoznačovat před provedením)
 
-- [ ] Automaticky přegenerovat **96 PDF**, manifest a SHA256 ze stejného zdrojového commitu.
+- [x] Automaticky přegenerováno **96 PDF**, manifest a SHA256 z opraveného zdroje (asset bot commit `2fb3483dd3f4d0d2fe1629aeff97822ee8fb4452`, manifest `sourceSha256=aae83086f8e1078ccfb3777cfaa50d5531f706129f65876b11ff7049fccff47b`).
 - [ ] Vizuální kontrola skutečných ES/FR C1 PDF, zvlášť delších možností, a zkouška overflow.
 - [ ] `pdf-scope`, `unit`, `browser`, `corpus`, `pdf-release-gate` SUCCESS na přesném posledním SHA.
 - [ ] Související starší LSH CI (R27/R44/R49/R35 apod.) bez regresí.
@@ -43,4 +43,4 @@ Cílová úroveň: **B2+ → C1**, vyšší ročníky gymnázia (17–19 let); �
 
 Nejde o standardizovaný certifikační test C1; bez studentského pilotu nebyla empiricky prokázána obtížnost ani diskriminační schopnost. Podle zadavatele jsou všechny čtecí texty původní; v rámci této opravné etapy se neotevírá agenda přejatých textů ani autorských práv. Praktická přejímka na zařízení a školní tiskárně je zvláštní provozní krok.
 
-**Stav dokumentu:** implementace zdroje a testů dokončena na vývojové větvi, finální vydávací podmínky čekají na CI a PDF kontrolu.
+**Stav dokumentu:** implementace, testy a regenerace všech PDF dokončeny na vývojové větvi. Ostatní kritéria vydání čekají na poslední přesné SHA, CI a vizuální kontrolu. Následný lidský commit je záměrný: GitHub může blokovat PR checky spouštěné přímo botím commitem (`action_required`).
