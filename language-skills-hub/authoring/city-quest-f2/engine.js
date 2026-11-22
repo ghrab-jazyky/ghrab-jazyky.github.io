@@ -56,7 +56,7 @@
     // CQ-F5-010: the closure must affect the real task, not merely draw an
     // ignored red line. Students must first reach the roadworks approach,
     // then find an open way to the museum (and any level-specific landmark).
-    const requiredVia=detour?[F.closure.a,...c.via]:c.via;
+    const requiredVia=detour?[F.closure.b,...c.via]:c.via;
     const completeVia=visited(progress,requiredVia);
     if(detour&&arrived&&!completeVia)
       return {accepted:false,kind:"missing-via",
@@ -154,7 +154,7 @@
     return {correct:true,kind:"correct",service:selected};
   }
   function detourCheckpoints(level){
-    return [F.closure.a,...config(level).via].map(copy);
+    return [F.closure.b,...config(level).via].map(copy);
   }
   function routeModel(pack,route){
     if(route.length<2)return "";
