@@ -190,3 +190,39 @@ test("F5C CQ-F5-006: normal learner cannot see guided answers before attempting 
   assert.equal(await page.locator("#metroAdvance").isVisible(),true);
  }finally{await browser.close();}
 });
+
+
+test("F5C CQ-F5-008: all 48 C1/C2 landmark prompts are authored and playable in four languages",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844},hasTouch:true,isMobile:true});
+  await page.goto(URL);
+  let count=0;
+  for(const lang of ["en","es","de","fr"])for(const level of ["C1","C2"]){
+   await page.locator("#f2Language").selectOption(lang);
+   await page.locator("#f2Level").selectOption(level);
+   await page.locator("#f1Stations button").first().click();
+   const content=windowContent(lang);
+   for(const round of content.rounds){
+    const prompt=(await page.locator("#f1Panel .f2-prompt").innerText()).trim();
+    assert.ok(prompt.length>75,lang+"/"+level+"/"+round.index+" advanced clue too short");
+    assert.notEqual(prompt,round.b1,lang+"/"+level+"/"+round.index+" must have new text");
+    await page.locator("#f1Panel .f2-choice-list button")
+      .filter({hasText:round.answer}).click();
+    count++;
+   }
+   assert.match(await page.locator("#f1Panel").innerText(),/✓|Mission|misión|Mission|Aufgabe|Terminé/i);
+  }
+  assert.equal(count,48);
+ }finally{await browser.close();}
+ function windowContent(lang){
+  // Read only authored question/answer data from the same checked-in source.
+  const C=require("../authoring/city-quest-f2/content-a.js");
+  require("../authoring/city-quest-f2/content-b.js");
+  const F=require("../authoring/city-quest-f1/engine.js");
+  const p=C.pack(lang);
+  return {rounds:F.explore.map((r,index)=>({
+   index,answer:p.places[r.correct],b1:p.clues[index]
+  }))};
+ }
+});
