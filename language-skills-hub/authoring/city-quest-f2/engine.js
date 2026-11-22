@@ -53,7 +53,14 @@
     const r=F.routeResult(state.route,next,blocked);
     if(!r.valid)return {accepted:false,kind:r.kind,state:{...state,attempts:state.attempts+1}};
     const progress=r.route,arrived=E.same(progress[progress.length-1],target);
-    const completeVia=visited(progress,c.via);
+    // CQ-F5-010: the closure must affect the real task, not merely draw an
+    // ignored red line. Students must first reach the roadworks approach,
+    // then find an open way to the museum (and any level-specific landmark).
+    const requiredVia=detour?[F.closure.a,...c.via]:c.via;
+    const completeVia=visited(progress,requiredVia);
+    if(detour&&arrived&&!completeVia)
+      return {accepted:false,kind:"missing-via",
+        state:{...state,attempts:state.attempts+1}};
     const done=arrived&&completeVia;
     return {accepted:true,kind:done?"success":arrived&&!completeVia?"missing-via":r.kind,
       state:{...state,route:progress,done,visitedVia:completeVia,message:done?"done":""}};
@@ -146,6 +153,9 @@
     if(lvlIndex(level)>=4&&!selected.accessible)return {correct:false,kind:"access"};
     return {correct:true,kind:"correct",service:selected};
   }
+  function detourCheckpoints(level){
+    return [F.closure.a,...config(level).via].map(copy);
+  }
   function routeModel(pack,route){
     if(route.length<2)return "";
     const moves=[];
@@ -205,5 +215,5 @@
   }
   return Object.freeze({F,E,levels,goals,guidedPaths,lvlIndex,config,pathFromDirections,routeStart,
     moveRoute,guidedStart,guidedMove,instruction,answerCount,optionsCount,orderChoices,requiredFields,servicesForLevel,transportOptions,checkTransport,
-    routeModel,questCheckpoints,questStart,questMove,questSpeak,dialogueStart,dialogueChoose});
+    routeModel,detourCheckpoints,questCheckpoints,questStart,questMove,questSpeak,dialogueStart,dialogueChoose});
 });
