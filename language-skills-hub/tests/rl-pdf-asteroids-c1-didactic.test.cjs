@@ -21,7 +21,7 @@ const specs={
   ['es-c1-vocab-1','vocab',1,'Que captan la atención sin aportar necesariamente información útil.',0]
  ],
  fr:[
-  ['fr-c1-scan-1','scan',0,'La structure de l’objet, la direction de la déviation et le temps restant avant l’impact.',2],
+  ['fr-c1-scan-1','scan',0,'La structure de l’objet, la direction de la déviation et le délai disponible avant un impact éventuel.',2],
   ['fr-c1-scan-2','scan',2,'La date des observations et la marge d’erreur associée.',1],
   ['fr-c1-scan-3','scan',1,'Ils peuvent donner une impression de certitude supérieure à celle que justifient les observations.',0],
   ['fr-c1-vocab-1','vocab',1,'Qui capte l’attention sans nécessairement aider à comprendre le risque.',0]
