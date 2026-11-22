@@ -154,7 +154,9 @@ test("F3C action keyboard focus and live feedback survive mission-step DOM repla
   await page.locator("#f1Panel .f2-choice-list button").filter({hasText:"East Gardens"}).first().focus();
   await page.keyboard.press("Enter");
   await page.waitForFunction(()=>document.activeElement?.matches("#f1Panel .f2-choice-list button"));
-  assert.match(await page.locator("#f3Status").innerText(),/terminus/i);
+  // The established EN engine says "Correct destination ... Find the platform".
+  // Verify semantic acknowledgement without rewriting its pedagogical copy.
+  assert.match(await page.locator("#f3Status").innerText(),/destination.*platform/i);
   assert.deepEqual(events.errors,[]);assert.deepEqual(events.external,[]);
  }finally{await browser.close();}
 });
