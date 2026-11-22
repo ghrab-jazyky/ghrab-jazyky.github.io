@@ -109,6 +109,10 @@ test("F5C CQ-F5-004: station signs are readable, not an answer key, in four lang
    assert.equal(await board.count(),1);
    assert.ok((await board.getAttribute("aria-label")).includes(copy.labels.platformBoard));
    assert.equal(await board.locator("li").count(),3);
+   await page.evaluate('document.documentElement.style.fontSize="200%"');
+   const docOverflow=await page.evaluate(()=>
+    document.documentElement.scrollWidth-document.documentElement.clientWidth);
+   assert.ok(docOverflow<=2,lang+": station board clips horizontally at 200% text: "+docOverflow);
    const signs=await board.locator("li").allInnerTexts();
    assert.ok(signs.some(s=>s.includes(copy.labels.platform+" 2")&&s.includes("M1")&&s.includes("East Gardens")),
     lang+": missing correct station signage "+JSON.stringify(signs));
