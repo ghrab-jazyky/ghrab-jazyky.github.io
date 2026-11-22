@@ -130,7 +130,7 @@
     checkpoint:"Explica esta parte del trayecto en voz alta antes de continuar.",
     meetUniversity:"Has llegado a University. Reúnete con tu compañera antes de cambiar a la M3. Explica por qué la M1 directa desde Central Station no serviría para recogerla.",
     speech:"Explica el recorrido completo en voz alta y autoevalúa tu respuesta."},
-   hints:{walk:"Avanza de un cruce al siguiente, sin saltar manzanas.",map:"El plano y la escena reflejan tus decisiones, sin mostrarte la ruta futura. El esquema del metro no tiene la misma orientación que el mapa de las calles."},
+   hints:{walk:"Avanza de un cruce al siguiente, sin saltar manzanas.",map:"El plano y la escena reflejan tus decisiones, sin mostrarte la ruta futura. El plano del metro es esquemático y no tiene la misma orientación que el mapa de las calles."},
    success:{UNDO_WALK:"Has deshecho el último paso a pie.",WALK:"Has avanzado una manzana.",ENTER:"Has entrado en Market Square. Elige una línea.",
     READ_NOTICE:"Aviso leído: busca una alternativa al corte de la M1.",SELECT_LINE:"Línea correcta. Elige ahora el sentido.",
     SELECT_DIRECTION:"Destino final correcto. Busca el andén.",SELECT_PLATFORM:"Andén correcto. Puedes subir.",
