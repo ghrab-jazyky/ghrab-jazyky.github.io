@@ -19,8 +19,8 @@ function flatten(value,prefix="root"){
  if(value&&typeof value==="object")return Object.entries(value).flatMap(([k,v])=>flatten(v,prefix+"."+k));
  return[];
 }
-const informalPronoun=/(?<!\p{L})(?:tu|ton|ta|tes|toi)(?!\p{L})/giu;
-const metroInformalVerb=/(?<!\p{L})(?:choisis|prends|rejoins|trouve|explique|vérifie|avance|descends|autoévalue|formule|anticipe|détermine|reformule|adapte)(?!\p{L})/giu;
+const informalPronoun=/(?<!\p{L})(?:tu|ton|ta|tes|toi)(?!\p{L})/iu;
+const metroInformalVerb=/(?<!\p{L})(?:choisis|prends|rejoins|trouve|explique|vérifie|avance|descends|autoévalue|formule|anticipe|détermine|reformule|adapte)(?!\p{L})/iu;
 test("F4R FR learner register: all city UI, metro instruction/model, CEFR and PA text consistently use vous",()=>{
  const sections=[
   ["city UI",City.packs.fr.ui],
