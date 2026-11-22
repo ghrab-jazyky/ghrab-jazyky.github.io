@@ -51,7 +51,12 @@ test("16 multilingual B1–C2 profiles display all four missions and localized w
      await panel(page).locator("details").last().locator("summary").click();
      assert.ok((await panel(page).innerText()).includes(c.glossary[0][0]));
     }
-    if(n===7)assert.ok(text.includes(c.phases.notice.slice(0,17)));
+    if(n===7){
+     // The authored service notice is CEFR-specific from B2 onwards. Assert
+     // the actual localized notice for this exact language and level.
+     const notice=L.stage(lang,level,7,"notice",{station:"Central Station"});
+     assert.ok(text.includes(notice.slice(0,17)),lang+"/"+level+": wrong metro service notice");
+    }
    }
    await page.locator("#metroPilotToggle").click();
    assert.equal(await page.locator("#metroPilotToggle").getAttribute("aria-pressed"),"false");
