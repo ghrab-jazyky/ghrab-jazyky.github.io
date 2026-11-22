@@ -214,3 +214,20 @@
 :root[data-theme=light] .metro-lab[data-mode=game] .metro-language-details{color:#e6fff7}
 @media(max-width:360px){.metro-glossary{grid-template-columns:1fr;row-gap:3px}
  .metro-glossary dd{margin-bottom:9px}}
+
+/* F5C CQ-F5-001/002/022: phone text zoom, readable neutral status in light
+ * mode and minimum 44 CSS px controls. Never affect route-game state. */
+.metro-jump{max-width:100%;min-width:0;flex-shrink:1;overflow-wrap:anywhere;word-break:normal}
+:root[data-theme=light] .metro-side>#f1Panel .f2-status,
+:root[data-theme=light] .metro-network-card>#f1Panel .f2-status{
+ color:#174153;background:#edf7fa;border-color:#6596a5;
+}
+:root[data-theme=light] .metro-side>#f1Panel .f2-status[data-tone=success],
+:root[data-theme=light] .metro-network-card>#f1Panel .f2-status[data-tone=success]{
+ color:#165c40;background:#e3f6ec;
+}
+:root[data-theme=light] .metro-side>#f1Panel .f2-status[data-tone=warning],
+:root[data-theme=light] .metro-network-card>#f1Panel .f2-status[data-tone=warning]{
+ color:#81410a;background:#fff2dc;
+}
+.metro-scene-tab{min-height:44px;min-width:44px}
