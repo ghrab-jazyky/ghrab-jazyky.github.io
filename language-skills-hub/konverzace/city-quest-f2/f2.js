@@ -130,7 +130,7 @@
       goal=alt?alt.goal:profile()[stationKeys[index-1]];
     const head=el("div",panel,"f2-card-head");
     el("span",head,"f2-kicker",ui().station+" "+String(index).padStart(2,"0")+" / 08 · "+pack().native+" "+state.level);
-    el("h2",head,"",icons[index-1]+" "+title);
+    el("h2",head,"",(alt&&index===5?"🚇":icons[index-1])+" "+title);
     para(head,desc);
     note(panel,"🎯 "+ui().mission,goal);
     if(state.mode==="pair"){
@@ -803,7 +803,8 @@
         LC.pack(state.language,state.level,st.id).titleMission:pack().stations[i][0];
       button.setAttribute("aria-label",u.station+" "+st.id+": "+missionTitle);
       if(state.station===st.id)button.setAttribute("aria-current","step");
-      const ic=el("span",button,"f1-station-icon",icons[i]);ic.setAttribute("aria-hidden","true");
+      const icon=metroEnabled&&metroAvailable()&&st.id===5?"🚇":icons[i];
+      const ic=el("span",button,"f1-station-icon",icon);ic.setAttribute("aria-hidden","true");
       const cap=el("span",button,"f1-station-caption");
       el("small",cap,"",u.station+" "+String(st.id).padStart(2,"0"));
       el("strong",cap,"",missionTitle);
