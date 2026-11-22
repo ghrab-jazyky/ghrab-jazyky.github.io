@@ -256,8 +256,12 @@
     const game=metroState(),stage=game.phase,n=state.station,c=metroCopy(),
       place=window.RivertonMetro?.station(game.metroStation)?.labelEn||game.metroStation;
     if(game.completed)return complete(n,c.labels.verified,LC.model(state.language,state.level,n));
+    // CQ-F5-032: a compact localized progress fraction, never the
+    // unnatural '0 Speaking checkpoints confirmed'. Only mission 08 has
+    // three distinct spoken checkpoints; 05-07 end with one self-check.
+    const speakingTotal=window.RivertonMetro?.scenario(game.scenarioId)?.speakingCheckpoints||1;
     el("p",panel,"f2-small",c.native+" · "+state.level+" · "+c.offline+
-      " · "+game.speakingDone+" "+c.labels.checkpoint);
+      " · "+c.labels.checkpointProgress+": "+game.speakingDone+"/"+speakingTotal);
     note(panel,"🚇 "+(["walk-to-entrance","walk-to-museum"].includes(stage)?c.enterTitle:c.metroTitle),
       LC.stage(state.language,state.level,n,stage,{station:place}));
     if(stage==="speech"||stage==="checkpoint"){
