@@ -19,6 +19,31 @@
     de:{theme:"Hell- oder Dunkelmodus wechseln",detail:"Kartendetails",whole:"Gesamte Stadt",tip:"Vergrößere die Karte, um Straßennamen zu lesen",tipZoom:"Wische über die Karte, um die Stadt zu erkunden",kicker:"ERKUNDEN · ORIENTIEREN · SPRECHEN",caption:"STADTABENTEUER · FUSSGÄNGERKARTE",compact:"Steuerfeld verkleinern",expand:"Alle Richtungen anzeigen"},
     fr:{theme:"Changer de thème clair ou sombre",detail:"Détail du plan",whole:"Vue générale",tip:"Agrandissez le plan pour lire les noms de rues",tipZoom:"Faites glisser le plan pour explorer la ville",kicker:"EXPLORER · S'ORIENTER · ÉCHANGER",caption:"AVENTURE URBAINE · PLAN PIÉTON",compact:"Réduire les commandes",expand:"Afficher toutes les directions"}
   };
+  // F3D: identical, authored pedagogical headings for the city and metro
+  // modes. These only describe the lesson flow; they never modify scoring.
+  const lessonCopy={
+    en:{city:"CITY · RIVERTON",metro:"METRO · RIVERTON",
+      read:"Read",practise:"Practise",reflect:"Reflect",
+      phases:"Three learning phases",mission:"Mission",mode:"Mode",
+      note:"Explain your choices aloud. Speaking is self-checked, never automatically graded.",
+      metroReset:"Switching City/Metro restarts missions 05–08; missions 01–04 stay."},
+    es:{city:"CIUDAD · RIVERTON",metro:"METRO · RIVERTON",
+      read:"Lee",practise:"Practica",reflect:"Reflexiona",
+      phases:"Tres fases de aprendizaje",mission:"Misión",mode:"Modalidad",
+      note:"Explica tus decisiones en voz alta. La expresión oral se autoevalúa, no recibe una nota automática.",
+      metroReset:"Cambiar entre ciudad y metro reinicia las misiones 05–08; se conservan las misiones 01–04."},
+    de:{city:"STADT · RIVERTON",metro:"U-BAHN · RIVERTON",
+      read:"Lesen",practise:"Üben",reflect:"Reflektieren",
+      phases:"Drei Lernphasen",mission:"Aufgabe",mode:"Modus",
+      note:"Begründe deine Entscheidungen mündlich. Das Sprechen wird selbst eingeschätzt und nicht automatisch bewertet.",
+      metroReset:"Beim Wechsel zwischen Stadt und U-Bahn starten die Aufgaben 05–08 neu; 01–04 bleiben erhalten."},
+    fr:{city:"VILLE · RIVERTON",metro:"MÉTRO · RIVERTON",
+      read:"Lire",practise:"S'entraîner",reflect:"Faire le bilan",
+      phases:"Trois étapes d'apprentissage",mission:"Mission",mode:"Mode",
+      note:"Explique tes choix à l'oral. L'expression orale s'autoévalue et n'est jamais notée automatiquement.",
+      metroReset:"Passer de la ville au métro réinitialise les missions 05–08 ; les missions 01–04 sont conservées."}
+  };
+  const lesson=()=>lessonCopy[state.language]||lessonCopy.en;
   let metroEnabled=false;
   let state=makeSession("en","B1","solo");
   let flash=null;
@@ -135,21 +160,38 @@
     btn(row,"↺ "+ui().restartStation,resetStation);
   }
   function screen(){
+    const taskHadFocus=panel.contains(document.activeElement),isMetro=metroPilot();
     panel.hidden=false;panel.replaceChildren();
     updateMetroPresentation();
     objective(state.station);
-    if(metroPilot())return renderMetroMission();
-    switch(state.station){
-      case 1:return renderExplore();
-      case 2:return renderRoute();
-      case 3:return renderDialogue();
-      case 4:return renderGuided();
-      case 5:return renderTransport();
-      case 6:return renderRepair();
-      case 7:return renderDetour();
-      case 8:return renderQuest();
+    if(isMetro)renderMetroMission();
+    else switch(state.station){
+      case 1:renderExplore();break;
+      case 2:renderRoute();break;
+      case 3:renderDialogue();break;
+      case 4:renderGuided();break;
+      case 5:renderTransport();break;
+      case 6:renderRepair();break;
+      case 7:renderDetour();break;
+      case 8:renderQuest();break;
       default:throw Error("Unknown station");
     }
+    // Persist feedback outside a dynamically replaced panel. No recording,
+    // network, telemetry, artificial grades or automatic model validation.
+    if(flash?.text)$("f3Status").textContent=flash.text;
+    updateLessonRail();
+    if(taskHadFocus&&!isMetro)window.requestAnimationFrame(()=>{
+      if(panel.hidden)return;
+      const next=panel.querySelector(
+        ".f2-choice-list button:not(:disabled), .f2-actions button:not(:disabled), "+
+        ".f2-select-group select:not(:disabled), .f2-help button:not(:disabled)"
+      );
+      if(next)next.focus({preventScroll:true});
+      else{
+        const title=panel.querySelector(".f2-card-head h2");
+        if(title){title.tabIndex=-1;title.focus({preventScroll:true});}
+      }
+    });
   }
   // B1 pilot: all metro choices go through the pure deterministic game engine.
   // The live scene stays inside the F2.1B map card, not a second independent controller.
@@ -702,9 +744,55 @@
     $("f2GuideTitle").textContent=u.training+" · "+state.level;
     $("f2GuideText").textContent=prof.focus+". "+prof.stretch+" "+u.offline+" "+u.noSpeechGrade;
     translateCity();updateMetroToggle();
+    for(const id of ["f2Language","f2Level","metroPilotToggle"])
+      $(id).setAttribute("aria-describedby","f3dSessionAdvice");
+    updateLessonRail();
+  }
+  function lessonPhase(){
+    if(state.done.has(state.station))return 2;
+    if(metroPilot()){
+      const game=metroState();
+      if(["checkpoint","speech","complete"].includes(game.phase))return 2;
+      return game.history.length>0||game.attempts>0||game.cityPath.length>1?1:0;
+    }
+    const m=state.station;
+    if(m===8&&state.quest.awaitingSpeech)return 2;
+    const worked=m===1?(state.explore.round>0||state.explore.misses>0):
+      m===2?state.route.route.length>1:
+      m===3?state.dialogue.stage!=="start":
+      m===4?state.guided.step>0:
+      m===5?(state.transit.tries>0||Object.keys(state.transit.selection).length>0):
+      m===6?(state.repair.phase>0||state.repair.tries>0):
+      m===7?state.detour.route.length>1:
+      m===8?(state.quest.stage>0||state.quest.leg.length>1):false;
+    return worked?1:0;
+  }
+  function updateLessonRail(){
+    const x=lesson(),phase=lessonPhase(),metro=metroPilot(),
+      title=metro?metroCopy().titleMission:pack().stations[state.station-1][0];
+    $("f3dWorld").textContent=metro?x.metro:x.city;
+    $("f3dRailTitle").textContent=x.mission+" "+String(state.station).padStart(2,"0")+" · "+title;
+    $("f3dRailMode").textContent=(state.mode==="pair"?ui().pair:ui().solo)+
+      " · "+pack().native+" "+state.level;
+    $("f3dLearningSteps").setAttribute("aria-label",x.phases);
+    for(const [i,id,label]of [[0,"f3dRead",x.read],[1,"f3dPractise",x.practise],[2,"f3dReflect",x.reflect]]){
+      const node=$(id);
+      node.querySelector("strong").textContent=label;
+      node.dataset.state=i<phase?"done":i===phase?"current":"upcoming";
+      if(i===phase)node.setAttribute("aria-current","step");
+      else node.removeAttribute("aria-current");
+    }
+    $("f3dRailNote").textContent=x.note;
+    $("f3dSessionAdvice").textContent=ui().changeSession+
+      (metroAvailable()?" "+x.metroReset:"");
   }
   function updateProgress(){
-    const u=ui(),nav=$("f1Stations");nav.replaceChildren();
+    const u=ui(),nav=$("f1Stations");
+    // Preserve the selected mission button on keyboard navigation: rebuilding
+    // the nav must not dump focus to the document body.
+    const focusIndex=nav.contains(document.activeElement)?
+      Array.from(nav.children).indexOf(document.activeElement):-1;
+    nav.replaceChildren();
     $("f1ProgressText").textContent=state.done.size+" / 8 · "+u.completed;
     $("f1ProgressTrack").setAttribute("aria-valuenow",String(state.done.size));
     $("f1ProgressFill").style.width=state.done.size*12.5+"%";
@@ -722,6 +810,9 @@
       if(state.done.has(st.id))el("span",button,"f1-station-complete","✓");
       button.addEventListener("click",()=>selectStation(st.id));
     });
+    if(focusIndex>=0&&nav.children[focusIndex])
+      nav.children[focusIndex].focus({preventScroll:true});
+    updateLessonRail();
   }
   function selectStation(n){
     if(!Number.isInteger(n)||n<1||n>8)return;
