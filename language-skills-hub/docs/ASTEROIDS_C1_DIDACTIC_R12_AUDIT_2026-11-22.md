@@ -48,7 +48,7 @@
 
 ## Release acceptance – povinné podmínky
 
-- [ ] Bot vygeneroval z posledního zdroje všech **96 PDF** a manifest se správným fingerprintem.
+- [x] Bot úspěšně vygeneroval **96 PDF** a manifest z aktualizovaného zdroje. Bot commit `573e657f59abc6b48f290c646c80c1a23e58f1ac`; manifest `sourceSha256=0a977c09c37b43df84983d5707013c69ad664c6da8eab3510664bb44f31af188`.
 - [ ] Regresní test R-12 je zařazen do povinné unit CI a všechny nové i staré unit testy procházejí.
 - [ ] Závěrečný `pdf-scope`, `unit`, `browser`, `corpus` a `pdf-release-gate` mají **SUCCESS na posledním HEAD**.
 - [ ] Kontrola skutečně regenerovaných PDF ES/C1 a FR/C1 potvrzuje všech 8 nových znění, vyvážené možnosti, žádnou starou chybně formulovanou možnost a žádný tiskový overflow.
@@ -56,3 +56,8 @@
 - [ ] Standardní PR merge přes chráněný `main`; po merge GitHub Pages a PDF CI SUCCESS na merge SHA.
 
 **Stav tohoto dokumentu:** analytická přejímka dokončena; technická a produkční certifikace čeká na výsledky CI. Žádné automatické nasazení bez zelené brány.
+
+## Etapa regenerace zdrojových variant
+- Robot `LSH RL-PDF branded assets` doběhl se stavem **SUCCESS** pro zdrojovou revizi `0050c018c020d2a3f54e4cefb486a4f081ff2773`, následně commitnul změny 96 PDF a manifestu.
+- Nová ES C1 `practice-all` má v manifestu 201 456 B; `test-all` 199 887 B. FR C1 `practice-all` 200 347 B; `test-all` 198 371 B.
+- Tento aktualizovaný dokument spouští nový `pull_request` CI nad aktuálním HEAD. Při kontroverzi bot commitu je nutné explicitně ověřit, že všech pět podúloh patří ke stejné HEAD revizi.
