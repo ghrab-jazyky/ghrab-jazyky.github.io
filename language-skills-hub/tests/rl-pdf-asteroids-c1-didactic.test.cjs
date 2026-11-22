@@ -97,7 +97,7 @@ for(const lang of ['es','fr']){
 // lexical nuance and cohesion, while preserving every stable question ID/key.
 const r13={
  es:[
-  ['gist-3','gist',3,'Riesgo, pruebas e incertidumbre: informar sin alarmar',1],
+  ['gist-3','gist',3,'Riesgo, pruebas e incertidumbre: informar sin alarmar',3],
   ['inference-1','inference',2,'Porque la probabilidad calculada puede variar mientras se reduce la incertidumbre orbital.',1],
   ['inference-2','inference',1,'Que el contacto visible no basta: hacen falta observaciones posteriores del cambio orbital.',2],
   ['inference-3','inference',1,'Que probablemente perdería la confianza del público.',3],
@@ -109,7 +109,7 @@ const r13={
  ],
  fr:[
   ['gist-2','gist',2,'Distinguer la proximité orbitale du danger réel et montrer comment certains médias brouillent cette distinction.',0],
-  ['gist-3','gist',3,'Risque, preuves et incertitude : informer sans alarmer',1],
+  ['gist-3','gist',3,'Risque, preuves et incertitude : informer sans alarmer',3],
   ['detail-3','detail',3,'Qu’un transfert de quantité de mouvement peut modifier une orbite en conditions réelles.',2],
   ['inference-1','inference',0,'Parce que la probabilité calculée peut évoluer pendant que les nouvelles observations réduisent l’incertitude orbitale.',1],
   ['inference-2','inference',3,'Le contact visible ne suffit pas : il faut mesurer ensuite l’effet réel sur l’orbite.',2],
