@@ -18,6 +18,7 @@ while IFS= read -r file || [[ -n "$file" ]]; do
     language-skills-hub/printouts/rl-asteroids/*) relevant=true ;;
     language-skills-hub/scripts/build-reading-print-pdfs.cjs) relevant=true ;;
     language-skills-hub/scripts/verify-reading-print-assets.cjs) relevant=true ;;
+    language-skills-hub/scripts/pdf-content-sha256.cjs) relevant=true ;;
     language-skills-hub/scripts/pdf-scope.sh) relevant=true ;;
     language-skills-hub/tests/rl-pdf-*) relevant=true ;;
     .github/workflows/lsh-reading-pdf-release-gate.yml) relevant=true ;;
