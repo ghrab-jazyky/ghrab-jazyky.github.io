@@ -33,3 +33,46 @@ test("F5C CQ-F5-009: University meeting is the explicit constraint in every Metr
   assert.notEqual(checkpoint,L.stage(lang,level,8,"checkpoint",{station:"Market Square"}));
  }
 });
+
+
+test("F5C CQ-F5-013: Spanish/German model routes address tourists formally while learner guidance stays informal",()=>{
+ const route=G.pathFromDirections(G.guidedPaths.B1);
+ for(const [lang,formal,informal] of [["es",/^Camine/,/^Camina/],["de",/^Gehen Sie/,/^Gehe /]]){
+  const p=C.pack(lang),model=G.routeModel(p,route),instruction=G.instruction(p,"B1",0);
+  assert.match(model,formal,lang+" tourist register");
+  assert.match(instruction,informal,lang+" student-facing register");
+  assert.doesNotMatch(model,lang==="es"?/\b(?:Camina|Gira|Sigue)\b/:/\b(?:Gehe|Biege)\b/);
+  for(const level of ["A1","A2","B1"]){
+   assert.doesNotMatch(C.profile(lang,level).model,
+    lang==="es"?/\b(?:Camina|Gira|Sigue)\b/:/\b(?:Gehe|Biege)\b/,
+    lang+" "+level+" tourist model must not slip into informal imperative");
+  }
+ }
+});
+test("F5C CQ-F5-018/019: translated landmark labels and rose garden names are consistent with place names",()=>{
+ assert.equal(C.pack("es").mapLabels["ROSE GARDEN"],"ROSALEDA");
+ assert.equal(C.pack("fr").mapLabels["ROSE GARDEN"],"ROSERAIE");
+ const targets={station:"CENTRAL STATION",museum:"CITY MUSEUM",hospital:"HOSPITAL",
+  library:"LIBRARY",square:"MARKET SQUARE",park:"RIVERSIDE PARK",
+  cafe:"SUNRISE CAFÉ",post:"POST OFFICE"};
+ for(const lang of ["es","fr"]){
+  const p=C.pack(lang);
+  for(const [place,label] of Object.entries(targets))
+   assert.equal(p.mapLabels[label],p.places[place].toLocaleUpperCase(lang),
+    lang+" map and option should use the same landmark name: "+place);
+ }
+});
+test("F5C CQ-F5-023/025: grammatical U-turns and non-gendered French success/correction",()=>{
+ const route=[{c:0,r:3},{c:1,r:3},{c:0,r:3}];
+ const expected={es:/Dé la vuelta y camine/,de:/Drehen Sie sich um und gehen Sie/,
+  fr:/Faites demi-tour et avancez/};
+ for(const lang of Object.keys(expected)){
+  const p=C.pack(lang),model=G.routeModel(p,route);
+  assert.match(model,expected[lang]);
+  assert.ok(typeof p.directions.uturn==="function");
+  assert.ok(!/Gira a la vuelve atrás|Biege um ab|Tournez à demi-tour/.test(model));
+ }
+ const fr=C.pack("fr");
+ assert.equal(fr.ui.arrived,"Vous êtes à destination !");
+ assert.doesNotMatch(fr.repair.polite,/je me suis trompé\b/i);
+});
