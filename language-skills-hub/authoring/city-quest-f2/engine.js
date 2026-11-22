@@ -137,7 +137,7 @@
     });
   }
   const minutes=time=>{
-    if(!/^\\d\\d:\\d\\d$/.test(time))return NaN;
+    if(typeof time!=="string"||!/^[0-9]{2}:[0-9]{2}$/.test(time))return NaN;
     const [hour,minute]=time.split(":").map(Number);
     return hour*60+minute;
   };
