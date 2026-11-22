@@ -52,7 +52,7 @@ test("F5 preserves 256 disjoint variants and all original human gates PENDING",(
 
 test("F5 manual device cases are expressly unreviewed",()=>{
  const lines=read("authoring/city-quest-f5/F5_MANUAL_DEVICE_AND_CONTENT_QA.csv").trim().split(/\r?\n/);
- assert.equal(lines.length,27,"26 independent QA cases + 1 header");
+ assert.equal(lines.length,33,"32 manual QA cases + 1 header");
  assert.match(lines[0],/review_status/);
  for(const line of lines.slice(1)){
   assert.match(line,/"NOT TESTED","",""$/);
@@ -64,13 +64,19 @@ test("F5 handoff explicitly contains review, integration and no-release instruct
  const prompt=read("authoring/city-quest-f5/F5_CLAUDE_MASTER_PROMPT_CZ.md");
  const plan=read("authoring/city-quest-f5/F5_INTEGRACNI_PLAN_CZ.md");
  const gates=read("authoring/city-quest-f5/F5_GATE_PLAN_AKCEPTACE_CZ.md");
+ const quality=read("authoring/city-quest-f5/F5_PREMIOVY_PRODUKT_A_DIDAKTIKA_CZ.md");
  for(const token of ["CLAUDE_F5_VERDICT.md","CLAUDE_F5_FINDINGS.csv","CLAUDE_F5_LANGUAGE_REVIEW.csv",
-  "CLAUDE_F5_TEST_EVIDENCE.md","CLAUDE_F5_RELEASE_PLAN.md","256","VoiceOver","TalkBack","\`main\`"]){
+  "CLAUDE_F5_TEST_EVIDENCE.md","CLAUDE_F5_RELEASE_PLAN.md","CLAUDE_F5_PREMIUM_DIDACTIC_QA.md","256","VoiceOver","TalkBack","\`main\`"]){
   assert.ok(prompt.includes(token),"Master prompt missing "+token);
  }
  assert.match(plan,/270 ahead/);
  assert.match(plan,/100 behind/);
  assert.match(gates,/NO-GO/);
  assert.match(prompt,/NEPROVÁDĚJ žádný merge/);
+ assert.match(prompt,/F5_PREMIOVY_PRODUKT_A_DIDAKTIKA_CZ\.md/);
+ assert.match(quality,/Interaktivní jazyková hra/);
+ assert.match(quality,/CITY 01/);
+ assert.match(quality,/METRO 08/);
+ assert.match(quality,/Mobile|mobile|MOBIL/);
  assert.ok(fs.existsSync(path.join(root,"konverzace/city-quest-f2/index.html")));
 });
