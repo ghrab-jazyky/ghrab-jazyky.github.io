@@ -63,7 +63,7 @@ body{margin:0;background:#e9eef2;color:#1c2b36;font-family:Arial,Helvetica,sans-
  .paper-header{flex-wrap:wrap}
 }
 @page{size:A4 portrait;margin:18mm 18mm 20mm}
-@page{@bottom-left{content:"Téma inspirováno: British Council LearnEnglish – Asteroids";color:#536577;font:7pt Arial,Helvetica,sans-serif}
+@page{@bottom-left{content:"Téma inspirováno: British Council LearnEnglish – Asteroids\A PDF Reading Lab · Gymnázium Ostrava-Hrabůvka · Není oficiálním materiálem British Council";white-space:pre;color:#536577;font:7pt/1.15 Arial,Helvetica,sans-serif}
  @bottom-right{content:"Reading Lab · " counter(page);color:#536577;font:9pt Arial,Helvetica,sans-serif}}
 @media print{
  body{background:#fff}
