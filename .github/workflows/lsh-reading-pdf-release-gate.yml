@@ -74,7 +74,7 @@ jobs:
           node --check language-skills-hub/scripts/build-reading-print-pdfs.cjs
           node --check language-skills-hub/scripts/verify-reading-print-assets.cjs
           node --check language-skills-hub/scripts/pdf-content-sha256.cjs
-          node --test language-skills-hub/tests/rl-pdf-all-variants.test.cjs language-skills-hub/tests/rl-pdf-annotations-pilot.test.cjs language-skills-hub/tests/rl-pdf-content-sha256.test.cjs
+          node --test language-skills-hub/tests/rl-pdf-all-variants.test.cjs language-skills-hub/tests/rl-pdf-annotations-pilot.test.cjs language-skills-hub/tests/rl-pdf-content-sha256.test.cjs language-skills-hub/tests/rl-pdf-asteroids-c1-didactic.test.cjs
   browser:
     needs: detect
     if: needs.detect.outputs.relevant == 'true'
