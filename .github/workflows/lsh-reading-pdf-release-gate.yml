@@ -17,12 +17,13 @@ jobs:
     outputs:
       relevant: ${{ steps.check.outputs.relevant }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: '24'
+          package-manager-cache: false
       - name: Test PDF scope classifier (always)
         run: node --test language-skills-hub/tests/rl-pdf-scope.test.cjs
       - name: Determine whether PDF inputs changed
@@ -61,10 +62,11 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: '24'
+          package-manager-cache: false
       - name: Validate source projections and existing annotation contracts
         run: |
           node --check language-skills-hub/self-check/reading/print-core.js
@@ -82,10 +84,11 @@ jobs:
       options: --ipc=host
     timeout-minutes: 22
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: '24'
+          package-manager-cache: false
       - run: npm install --no-save --ignore-scripts playwright@1.56.1
       - name: Browser checks in Chromium and WebKit
         run: |
@@ -102,10 +105,11 @@ jobs:
       options: --ipc=host
     timeout-minutes: 35
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: '24'
+          package-manager-cache: false
       - name: Install PDF inspection tools and pinned Chromium renderer
         run: |
           apt-get update -qq
@@ -126,7 +130,7 @@ jobs:
         if: always()
         run: |
           mkdir -p /tmp/lsh-pdf-visual-qa
-          for item in en/A1/practice-text en/B1/practice-all en/B2/test-all es/B2/practice-all de/C2/test-all fr/C1/practice-all; do
+          for item in en/A1/practice-text en/B1/practice-all en/B1/test-all en/B2/test-all en/C1/practice-text en/C1/test-text en/C2/practice-text en/C2/test-text es/B1/practice-all es/B2/practice-all de/B1/practice-all de/C2/test-all fr/B1/practice-all fr/C1/practice-all; do
             pdf="language-skills-hub/printouts/rl-asteroids/${item}.pdf"
             if [ ! -f "$pdf" ]; then continue; fi
             name=$(echo "$item" | tr '/' '-')
@@ -138,13 +142,21 @@ jobs:
           done
       - name: Upload visual-review samples (not publication)
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: lsh-asteroids-pdf-visual-qa
           path: |
             /tmp/lsh-pdf-visual-qa/*.png
             language-skills-hub/printouts/rl-asteroids/en/A1/practice-text.pdf
             language-skills-hub/printouts/rl-asteroids/en/B1/practice-all.pdf
+            language-skills-hub/printouts/rl-asteroids/en/B1/test-all.pdf
+            language-skills-hub/printouts/rl-asteroids/en/C1/practice-text.pdf
+            language-skills-hub/printouts/rl-asteroids/en/C1/test-text.pdf
+            language-skills-hub/printouts/rl-asteroids/en/C2/practice-text.pdf
+            language-skills-hub/printouts/rl-asteroids/en/C2/test-text.pdf
+            language-skills-hub/printouts/rl-asteroids/es/B1/practice-all.pdf
+            language-skills-hub/printouts/rl-asteroids/de/B1/practice-all.pdf
+            language-skills-hub/printouts/rl-asteroids/fr/B1/practice-all.pdf
             language-skills-hub/printouts/rl-asteroids/en/B2/test-text.pdf
             language-skills-hub/printouts/rl-asteroids/en/B2/test-all.pdf
             language-skills-hub/printouts/rl-asteroids/de/C2/test-text.pdf

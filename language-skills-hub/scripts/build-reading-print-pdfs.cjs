@@ -49,8 +49,14 @@ const sourceSha256=sourceDigest.digest('hex');
  }
  const browser=await chromium.launch({headless:true});
  const playwrightVersion=require('playwright/package.json').version;
+ // Read the installed hyphen package rather than claiming a hard-coded version.
+ // CI and local generation install dependencies at the repository root.
+ const hyphenMetadata=JSON.parse(fs.readFileSync(path.join(root,'..','node_modules',
+  'hyphen','package.json'),'utf8'));
+ if(hyphenMetadata.name!=='hyphen'||!/^\d+\.\d+\.\d+$/.test(hyphenMetadata.version))
+  throw Error('Cannot establish installed hyphen generator version');
  const generator='playwright@'+playwrightVersion+'/chromium@'+browser.version()+
-  '/hyphen@1.14.1';
+  '/hyphen@'+hyphenMetadata.version;
  const manifest={schema:'RL_PDF_PRINT_ASSET_V1',topic:'rl-asteroids',
   sourceSha256,generator,files:[]};
  try{

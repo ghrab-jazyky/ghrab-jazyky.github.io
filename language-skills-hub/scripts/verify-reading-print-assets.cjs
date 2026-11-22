@@ -119,6 +119,23 @@ for(const lang of ['en','es','de','fr'])for(const level of ['A1','A2','B1','B2',
   const inspected=inspect(filename),{bytes,pages}=inspected;
   if(['A1','A2','B1','B2'].includes(level)&&format==='text'&&pages!==1)
    throw Error('Unexpected extra page in lower-level text-only PDF: '+key);
+  if(level==='B1'&&format==='all'&&pages>3)
+   throw Error('B1 answer room introduced an extra sheet: '+key);
+  // R-05: prevent an almost empty final page for long English C1/C2
+  // text-only sheets. The footer is below y=770pt and excluded here.
+  if(lang==='en'&&['C1','C2'].includes(level)&&format==='text'&&pages>1){
+   const bbox=run('pdftotext',['-f',String(pages),'-l',String(pages),
+    '-bbox',filename,'-']);
+   const ys=[...bbox.matchAll(/<word[^>]*yMin="([\d.]+)"[^>]*yMax="([\d.]+)"[^>]*>/g)]
+    .map(match=>[Number(match[1]),Number(match[2])])
+    .filter(([top,bottom])=>Number.isFinite(top)&&Number.isFinite(bottom)&&
+     top>=30&&bottom<770);
+   if(!ys.length)throw Error('No readable words on last EN C1/C2 page: '+key);
+   const span=Math.max(...ys.map(x=>x[1]))-Math.min(...ys.map(x=>x[0]));
+   if(span/842<.15)
+    throw Error('EN C1/C2 nearly empty last text page ('+
+     (100*span/842).toFixed(1)+'% height): '+key);
+  }
   if(record.bytes!==bytes.length||
      record.sha256!==crypto.createHash('sha256').update(bytes).digest('hex'))
    throw Error('PDF does not match manifest '+key);

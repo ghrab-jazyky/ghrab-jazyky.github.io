@@ -200,6 +200,14 @@ function updateMaterials(){
  for(const [id,mode,format] of [
   ['materialsPracticeText','practice','text'],['materialsPracticeAll','practice','all'],
   ['materialsTestText','test','text'],['materialsTestAll','test','all']]){
+  const preview=byId(id+'Preview');
+  preview.target='_blank';preview.rel='noopener noreferrer';
+  if(valid){
+   preview.href=printPreview(e,lang,level,mode,format);
+   preview.removeAttribute('aria-disabled');
+  }else{
+   preview.removeAttribute('href');preview.setAttribute('aria-disabled','true');
+  }
   const a=byId(id);a.removeAttribute('download');a.target='_blank';a.rel='noopener noreferrer';
   if(!valid||loading){
    a.removeAttribute('href');a.setAttribute('aria-disabled','true');continue;
@@ -207,8 +215,13 @@ function updateMaterials(){
   a.removeAttribute('aria-disabled');
   a.href=printPreview(e,lang,level,mode,format);
   const relative='printouts/rl-asteroids/'+lang+'/'+level+'/'+mode+'-'+format+'.pdf';
-  if(materialsManifest?.files?.some(item=>item.path===relative&&item.bytes>15000)){
-   a.href=new URL(relative,document.baseURI).href;
+  const file=materialsManifest?.files?.find(item=>item.path===relative&&
+   item.bytes>15000&&/^[a-f0-9]{64}$/.test(item.sha256));
+  if(file){
+   // Use a content-derived URL version to avoid a stale PDF after deployment.
+   const pdfUrl=new URL(relative,document.baseURI);
+   pdfUrl.searchParams.set('v',file.sha256.slice(0,16));
+   a.href=pdfUrl.href;
    a.download='Reading-Lab-Asteroids-'+lang+'-'+level+'-'+mode+'-'+format+'.pdf';
    a.removeAttribute('target');found++;
   }
@@ -217,7 +230,7 @@ function updateMaterials(){
   loading?'Načítám seznam souborů PDF…':
   materialsManifestState==='error'?
    'Předgenerovaná PDF nejsou dostupná. Odkazy otevřou tiskový náhled s možností Uložit jako PDF.':
-  found===4?'Všechny čtyři soubory PDF jsou připravené ke stažení.':
+  found===4?'Manifest uvádí všechny čtyři PDF. Pokud některé stažení selže, otevřete záložní tiskový náhled níže.':
   'Některé soubory PDF nejsou v seznamu. Dostupné soubory se stahují; ostatní otevřou tiskový náhled.';
 }
 async function openMaterials(e){
