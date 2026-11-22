@@ -30,7 +30,7 @@
    goals:{5:"Find a metro route from Central Station to Museum Quarter. Use the network map to choose a line, direction and platform.",
     6:"Get from Market Square to Stadium by metro. Work out where to change trains and which direction to take.",
     7:"The M1 section between Old Town and Museum Quarter is closed. Get from Central Station to Museum Quarter without using that section.",
-    8:"Walk to Market Square, take the metro with a transfer, then walk to City Museum."},
+    8:"Walk to Market Square and collect a colleague waiting at University metro station before visiting City Museum together. The direct M1 service from Central Station does not stop at University. Choose and justify a route that meets both obligations."},
    pair:{5:"Navigator: explain the line, terminus and platform without pointing. Traveller: check the signs and repeat the instructions.",
     6:"Traveller: ask how to reach Stadium. Navigator: use the network to work out the transfer and explain it. Exchange roles.",
     7:"Dispatcher: announce the closure. Navigator: recommend an alternative and justify the decision.",
@@ -47,6 +47,7 @@
     exit:"You have reached the correct metro destination. Leave the train.",
     "walk-to-museum":"Leave Museum Quarter. Walk one city block north to City Museum.",
     checkpoint:"Explain this leg of your journey aloud before continuing.",
+    meetUniversity:"You have reached University. Meet your colleague before changing to M3. Explain why the direct M1 from Central Station would not meet this requirement.",
     speech:"Explain the entire route aloud and complete a speaking self-check."},
    hints:{walk:"Move exactly one adjacent street block using the map, compass or keyboard.",
     map:"The animated network and platform reflect your choices. No future steps are revealed."},
@@ -70,7 +71,7 @@
    models:{5:"Take M1 at Central Station, towards East Gardens, from platform 2. Get off at Museum Quarter.",
     6:"At Market Square, take M2 towards North Park from platform 1. Change at University to M3 towards Harbour from platform 3 and get off at Stadium.",
     7:"Because the M1 link between Old Town and Museum Quarter is closed, take M2 towards North Park from platform 3, change at University to M3 towards Harbour from platform 3, and get off at Museum Quarter.",
-    8:"Walk from Central Station to Market Square. Take M2 towards North Park from platform 1, change at University to M3 towards Harbour from platform 3, get off at Museum Quarter, and walk north to City Museum."},
+    8:"Although M1 runs directly from Central Station to Museum Quarter, it would miss our required meeting at University. Walk from Central Station to Market Square. Take M2 towards North Park from platform 1 and meet the colleague at University. Then change to M3 towards Harbour from platform 3, get off at Museum Quarter, and walk north to City Museum together."},
    glossary:[["terminus","the final station shown as a train's direction"],["platform","where passengers wait to board"],["interchange","station where two lines connect"],["disruption","service problem affecting a route"],["diversion","alternative way around a closure"],["exit","way back to street level"]],
    levels:{
     B1:{focus:"Give a clear, sequential set of directions.",task:"Use short, accurate directions: line, terminus, platform, transfer and exit.",
@@ -110,7 +111,7 @@
    goals:{5:"Encuentra un trayecto en metro de Central Station a Museum Quarter. Usa el plano para elegir la línea, el sentido y el andén.",
     6:"Ve de Market Square a Stadium en metro. Averigua dónde hacer transbordo y qué dirección tomar.",
     7:"Está cortado el tramo de la M1 entre Old Town y Museum Quarter. Llega de Central Station a Museum Quarter sin pasar por el tramo cerrado.",
-    8:"Camina hasta Market Square, viaja en metro con un transbordo y llega a City Museum a pie."},
+    8:"Camina hasta Market Square y recoge a una compañera que te espera en la estación de metro University antes de visitar juntos City Museum. La M1 directa desde Central Station no pasa por University. Elige y justifica una ruta que permita cumplir ambos objetivos."},
    pair:{5:"Guía: explica la línea, el destino final y el andén sin señalar. Viajero: comprueba los carteles y repite las instrucciones.",
     6:"Viajero: pregunta cómo llegar a Stadium. Guía: consulta el plano, deduce el transbordo y explícalo. Intercambiad los papeles.",
     7:"Personal de estación: anuncia la incidencia. Guía: recomienda una ruta alternativa y justifica su elección.",
@@ -127,6 +128,7 @@
     exit:"Has llegado a la estación de destino. Sal del tren.",
     "walk-to-museum":"Sal en Museum Quarter. Camina una manzana hacia el norte hasta City Museum.",
     checkpoint:"Explica esta parte del trayecto en voz alta antes de continuar.",
+    meetUniversity:"Has llegado a University. Reúnete con tu compañera antes de cambiar a la M3. Explica por qué la M1 directa desde Central Station no serviría para recogerla.",
     speech:"Explica el recorrido completo en voz alta y autoevalúa tu respuesta."},
    hints:{walk:"Avanza de un cruce al siguiente, sin saltar manzanas.",map:"El plano y la escena reflejan tus decisiones, sin mostrarte la ruta futura."},
    success:{UNDO_WALK:"Has deshecho el último paso a pie.",WALK:"Has avanzado una manzana.",ENTER:"Has entrado en Market Square. Elige una línea.",
@@ -149,7 +151,7 @@
    models:{5:"Toma la línea M1 en Central Station, en dirección East Gardens, desde el andén 2. Baja en Museum Quarter.",
     6:"En Market Square, toma la M2 hacia North Park desde el andén 1. Cambia en University a la M3 hacia Harbour desde el andén 3 y baja en Stadium.",
     7:"Como el tramo de la M1 entre Old Town y Museum Quarter está cerrado, toma la M2 hacia North Park desde el andén 3, cambia en University a la M3 hacia Harbour desde el andén 3 y baja en Museum Quarter.",
-    8:"Camina desde Central Station hasta Market Square. Toma la M2 hacia North Park desde el andén 1, cambia en University a la M3 hacia Harbour desde el andén 3, baja en Museum Quarter y camina hacia el norte hasta City Museum."},
+    8:"Aunque la M1 conecta directamente Central Station con Museum Quarter, no permite recoger a la compañera en University. Camina desde Central Station hasta Market Square. Toma la M2 hacia North Park desde el andén 1, reúnete con ella en University y cambia a la M3 hacia Harbour desde el andén 3. Baja en Museum Quarter y camina hacia el norte hasta City Museum."},
    glossary:[["cabecera","estación final que indica el sentido del tren"],["andén","zona donde se espera para subir al tren"],["transbordo","cambio de una línea a otra"],["incidencia","problema que afecta al servicio"],["desvío","trayecto alternativo ante un corte"],["salida","acceso de la estación a la calle"]],
    levels:{
     B1:{focus:"Dar indicaciones claras y ordenadas.",task:"Explica la línea, el destino final, el andén y los transbordos con frases sencillas.",
@@ -189,7 +191,7 @@
    goals:{5:"Finde eine Metroverbindung von Central Station nach Museum Quarter. Bestimme anhand des Netzplans die Linie, die Richtung und den Bahnsteig.",
     6:"Fahre mit der Metro von Market Square zum Stadium. Finde heraus, wo du umsteigen musst und welche Fahrtrichtung richtig ist.",
     7:"Der M1-Abschnitt zwischen Old Town und Museum Quarter ist gesperrt. Finde eine Verbindung von Central Station nach Museum Quarter ohne diesen Abschnitt.",
-    8:"Gehe zu Fuß nach Market Square, fahre mit Umsteigen und erreiche City Museum zu Fuß."},
+    8:"Gehe zunächst zu Fuß zum Market Square. Du musst einen Kollegen an der U-Bahn-Station University abholen, bevor ihr gemeinsam das City Museum besucht. Die direkte M1 von Central Station hält dort nicht. Wähle und begründe eine Route, die beide Ziele erfüllt."},
    pair:{5:"Lotse: Erkläre Linie, Endstation und Bahnsteig ohne zu zeigen. Fahrgast: Prüfe die Schilder und wiederhole die Angaben.",
     6:"Fahrgast: Frage nach dem Weg zum Stadium. Lotse: Ermittle den nötigen Umstieg anhand des Netzplans und erkläre ihn. Tauscht die Rollen.",
     7:"Servicepersonal: Melde die Sperrung. Lotse: Empfiehl eine Alternative und begründe deine Entscheidung.",
@@ -206,6 +208,7 @@
     exit:"Du hast die Zielstation erreicht. Steige aus.",
     "walk-to-museum":"Verlasse Museum Quarter und gehe einen Häuserblock nach Norden zum City Museum.",
     checkpoint:"Erkläre diesen Teil deiner Route laut, bevor du weitermachst.",
+    meetUniversity:"Du bist an der Station University angekommen. Triff deinen Kollegen vor dem Umstieg in die M3 und erkläre, warum die direkte M1 ab Central Station das Treffen nicht ermöglichen würde.",
     speech:"Beschreibe die gesamte Strecke laut und schätze dein Sprechen selbst ein."},
    hints:{walk:"Gehe jeweils nur zur nächsten Kreuzung. Nutze Karte, Tasten oder Tastatur.",
     map:"Netzplan und Zugansicht zeigen deine Entscheidungen, aber nicht die zukünftige Route."},
@@ -229,7 +232,7 @@
    models:{5:"Nimm an Central Station die M1 in Richtung East Gardens von Bahnsteig 2. Steige an Museum Quarter aus.",
     6:"Fahre ab Market Square mit der M2 Richtung North Park von Bahnsteig 1 bis University. Steige dort an Bahnsteig 3 in die M3 Richtung Harbour um und steige am Stadium aus.",
     7:"Da der M1-Abschnitt zwischen Old Town und Museum Quarter gesperrt ist, fahre von Bahnsteig 3 mit der M2 Richtung North Park bis University, steige dort an Bahnsteig 3 in die M3 Richtung Harbour um und steige an Museum Quarter aus.",
-    8:"Gehe von Central Station nach Market Square. Fahre von Bahnsteig 1 mit der M2 Richtung North Park bis University, steige dort an Bahnsteig 3 in die M3 Richtung Harbour um, steige an Museum Quarter aus und gehe nach Norden zum City Museum."},
+    8:"Die direkte M1 von Central Station nach Museum Quarter wäre zwar kürzer, aber wir müssen zuerst einen Kollegen an der Station University abholen. Gehe von Central Station nach Market Square. Fahre von Bahnsteig 1 mit der M2 Richtung North Park bis University, triff dort den Kollegen und steige an Bahnsteig 3 in die M3 Richtung Harbour um. Steige an Museum Quarter aus und gehe mit ihm nach Norden zum City Museum."},
    glossary:[["Endstation","letzte Station, die die Fahrtrichtung angibt"],["Bahnsteig","Bereich zum Warten und Einsteigen"],["umsteigen","von einer Linie in eine andere wechseln"],["Störung","Problem im regulären Betrieb"],["Umleitung","Ersatzweg bei einer Sperrung"],["Ausgang","Weg vom Bahnhof auf die Straße"]],
    levels:{
     B1:{focus:"Klare und geordnete Wegbeschreibungen geben.",task:"Erkläre mit einfachen Sätzen Linie, Endstation, Bahnsteig und Umsteigen.",
@@ -269,7 +272,7 @@
    goals:{5:"Trouvez un itinéraire en métro de Central Station à Museum Quarter. Utilisez le plan pour choisir la ligne, la direction et le quai.",
     6:"Rejoignez Stadium en métro depuis Market Square. Déterminez où changer de ligne et quelle direction prendre.",
     7:"Le tronçon M1 entre Old Town et Museum Quarter est fermé. Rejoignez Museum Quarter depuis Central Station sans emprunter ce tronçon.",
-    8:"Rejoignez Market Square à pied, prenez le métro avec une correspondance et terminez à pied jusqu'à City Museum."},
+    8:"Rejoignez Market Square à pied. Vous devez retrouver une collègue à la station University avant de visiter City Museum ensemble. La ligne directe M1 depuis Central Station ne dessert pas University. Choisissez et justifiez un itinéraire qui respecte ces deux objectifs."},
    pair:{5:"Guide : expliquez la ligne, le terminus et le quai sans montrer le plan. Voyageur : vérifiez les panneaux et reformulez.",
     6:"Voyageur : demandez comment rejoindre Stadium. Guide : déterminez la correspondance avec le plan et expliquez-la. Échangez les rôles.",
     7:"Agent : annoncez la perturbation. Guide : proposez une solution de remplacement et justifiez votre choix.",
@@ -286,6 +289,7 @@
     exit:"Vous avez atteint la bonne station. Descendez du train.",
     "walk-to-museum":"Sortez à Museum Quarter. Marchez un pâté de maisons vers le nord jusqu'à City Museum.",
     checkpoint:"Expliquez cette partie du trajet à voix haute avant de continuer.",
+    meetUniversity:"Vous êtes arrivé à University. Retrouvez votre collègue avant de prendre la M3. Expliquez pourquoi la M1 directe depuis Central Station ne permettrait pas ce rendez-vous.",
     speech:"Expliquez tout l'itinéraire à voix haute et autoévaluez votre réponse."},
    hints:{walk:"Avancez d'un carrefour voisin à l'autre, sans sauter de rue.",
     map:"Le plan et la scène suivent vos décisions sans révéler le reste de l'itinéraire."},
@@ -309,7 +313,7 @@
    models:{5:"À Central Station, prenez la M1 en direction d'East Gardens depuis le quai 2. Descendez à Museum Quarter.",
     6:"À Market Square, prenez la M2 en direction de North Park depuis le quai 1. Changez à University pour la M3 en direction de Harbour depuis le quai 3, puis descendez à Stadium.",
     7:"Le tronçon M1 entre Old Town et Museum Quarter étant fermé, prenez la M2 en direction de North Park depuis le quai 3 jusqu'à University, puis la M3 en direction de Harbour depuis le quai 3 et descendez à Museum Quarter.",
-    8:"Marchez de Central Station à Market Square. Prenez la M2 en direction de North Park depuis le quai 1 jusqu'à University, puis la M3 en direction de Harbour depuis le quai 3. Descendez à Museum Quarter et marchez vers le nord jusqu'à City Museum."},
+    8:"Bien que la M1 relie directement Central Station à Museum Quarter, elle ne permet pas de retrouver la collègue à University. Marchez de Central Station à Market Square. Prenez la M2 en direction de North Park depuis le quai 1 jusqu'à University et retrouvez-y votre collègue. Puis prenez la M3 en direction de Harbour depuis le quai 3, descendez à Museum Quarter et marchez vers le nord jusqu'à City Museum."},
    glossary:[["terminus","dernière station indiquant la direction"],["quai","espace où l'on attend le train"],["correspondance","changement d'une ligne à une autre"],["perturbation","incident qui modifie le service"],["déviation","autre itinéraire en cas de fermeture"],["sortie","accès du métro vers la rue"]],
    levels:{
     B1:{focus:"Donner des indications simples et ordonnées.",task:"Indiquez la ligne, le terminus, le quai et les correspondances avec des phrases claires.",
@@ -367,7 +371,12 @@
     titleMission:p.titles[mission],goal:p.goals[mission]+" "+p.levels[level].task});
  }
  function stage(lang,level,mission,phase,vars){
-  const p=pack(lang,level,mission);return replace(p.phases[phase]||p.errors.invalid,vars);
+  const p=pack(lang,level,mission);
+  // Metro08's University meeting is the actual reason for taking M2/M3
+  // instead of the direct M1 route. The checkpoint must mention it explicitly.
+  const key=mission===8&&phase==="checkpoint"&&vars?.station==="University"?
+    "meetUniversity":phase;
+  return replace(p.phases[key]||p.errors.invalid,vars);
  }
  function model(lang,level,mission){
   const p=pack(lang,level,mission);
