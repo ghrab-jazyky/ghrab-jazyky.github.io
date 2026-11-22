@@ -134,6 +134,8 @@ jobs:
             if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html >/dev/null 2>&1; then break; fi
             sleep 1
           done
+          # Fast-fail F3C checks before the long prior-stage browser matrix.
+          node --test language-skills-hub/tests/city-quest-f3c.mobile.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-f2.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-f2-1a.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-f2-1b.metro.browser.test.cjs
@@ -142,7 +144,6 @@ jobs:
           node --test language-skills-hub/tests/city-quest-f2-1e.integration.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-f3a.premium.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-f3b.scenes.browser.test.cjs
-          node --test language-skills-hub/tests/city-quest-f3c.mobile.browser.test.cjs
       - name: Export interactive metro mission screenshots and phone reviews
         if: always()
         uses: actions/upload-artifact@v4
