@@ -6,7 +6,9 @@ const {test}=require("node:test"),assert=require("node:assert/strict");
 const fs=require("node:fs"),path=require("node:path");
 const {chromium,webkit}=require("playwright");
 const L=require("../authoring/city-quest-f2-1d/metro-language.js");
-const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html";
+// This is an AUTHORING/QA visual-preview suite. Normal student URLs do
+// not expose guided reference routes (CQ-F5-006).
+const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html?cq-review=1";
 const OUT=path.join(process.cwd(),"city-quest-f3b-artifacts");
 fs.mkdirSync(OUT,{recursive:true});
 const p=page=>page.locator("#f1Panel"),pa=page=>page.locator("#metroPublicAddress");
@@ -177,7 +179,7 @@ test("F3B standalone strict SHA-CSP HTML supports text announcements offline wit
  try{
   const page=await browser.newPage({viewport:{width:390,height:844}}),errors=errorsOf(page),requests=[];
   page.on("request",r=>{if(!r.url().startsWith("file:"))requests.push(r.url());});
-  await page.goto("file://"+file,{waitUntil:"load"});
+  await page.goto("file://"+file+"?cq-review=1",{waitUntil:"load"});
   await mission(page,7,"de","B2");
   assert.equal(await pa(page).getAttribute("data-kind"),"notice");
   assert.ok((await page.locator("#metroPAMessage").innerText()).length>35);
