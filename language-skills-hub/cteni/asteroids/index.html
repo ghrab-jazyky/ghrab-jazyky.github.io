@@ -138,7 +138,31 @@ function set(id,text){$(id).textContent=text}
 const key=()=>state.language+':'+state.level;
 function load(){try{const p=JSON.parse(LOCAL?.getItem(prefsKey)||'{}');if(LEVELS.includes(p.level))state.level=p.level;if(['dark','light'].includes(p.theme))state.theme=p.theme;}catch(_){ }try{const book=JSON.parse(SESSION?.getItem(memoryKey)||'{}');if(book&&typeof book==='object'&&!Array.isArray(book))answerBook=book;}catch(_){}}
 function save(){try{LOCAL?.setItem(prefsKey,JSON.stringify({language:state.language,level:state.level,theme:state.theme}))}catch(_){}try{SESSION?.setItem(memoryKey,JSON.stringify(answerBook))}catch(_){}}
-function entry(){const k=key();if(!answerBook[k]||typeof answerBook[k]!=='object'||Array.isArray(answerBook[k])||!answerBook[k].values||Array.isArray(answerBook[k].values))answerBook[k]={values:{},open:'',checkedTabs:[],first:{}};if(!answerBook[k].first||typeof answerBook[k].first!=='object')answerBook[k].first={};return answerBook[k]}
+// R12: old C1 answers cannot be silently reused against revised stems.
+const R12_ITEM_REVISION='es-fr-c1-r12-20261122';
+const R12_REVISED_IDS={
+ 'es:C1':['es-c1-scan-1','es-c1-scan-2','es-c1-scan-3','es-c1-vocab-1'],
+ 'fr:C1':['fr-c1-scan-1','fr-c1-scan-2','fr-c1-scan-3','fr-c1-vocab-1']
+};
+function entry(){
+ const k=key();
+ if(!answerBook[k]||typeof answerBook[k]!=='object'||Array.isArray(answerBook[k])||
+   !answerBook[k].values||Array.isArray(answerBook[k].values))
+  answerBook[k]={values:{},open:'',checkedTabs:[],first:{}};
+ if(!answerBook[k].first||typeof answerBook[k].first!=='object')answerBook[k].first={};
+ const affected=R12_REVISED_IDS[k];
+ if(affected&&answerBook[k].itemRevision!==R12_ITEM_REVISION){
+  for(const id of affected){
+   delete answerBook[k].values[id];
+   delete answerBook[k].first[id];
+  }
+  if(Array.isArray(answerBook[k].checkedTabs))
+   answerBook[k].checkedTabs=answerBook[k].checkedTabs.filter(tab=>tab!=='scan'&&tab!=='vocab');
+  else answerBook[k].checkedTabs=[];
+  answerBook[k].itemRevision=R12_ITEM_REVISION;
+ }
+ return answerBook[k];
+}
 function questions(){return curr().questions.map((q,i)=>q.id?q:{...q,id:key()+'-old-'+i,tab:q.strategy||'detail',legacy:true,evidence:[]})}
 const STRATEGY={
  en:{gist:['Gist & skimming','Read for the message, title and purpose.'],scan:['Scanning','Find precise information in the text.'],detail:['Close reading','Interpret facts, reasons and connections.'],inference:['Inference','Draw conclusions supported by the passage.'],vocab:['Vocabulary in context','Interpret highlighted expressions in context.'],tone:['Tone & purpose','Notice writer attitude and rhetorical choices.'],critical:['Critical reading','Evaluate claims and their limits.'],structure:['Text cohesion','Follow reference words, transitions and sentence gaps.']},
