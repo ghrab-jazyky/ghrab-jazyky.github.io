@@ -688,6 +688,29 @@
   }
   function renderMap(){
     const path=activePath();
+    // Claude CQ-F5-017: F0 keeps its own legacy route state, whereas F2 owns
+    // the visible game. Keep SVG accessibility state tied to the F2 route,
+    // including when changing language, mission, or City/Metro mode.
+    const accessibleNodes={
+      en:["Crossroads","column","row","Current position","Visited"],
+      es:["Cruce","columna","fila","Posición actual","Recorrido"],
+      de:["Kreuzung","Spalte","Reihe","Aktueller Standort","Besucht"],
+      fr:["Carrefour","colonne","rangée","Position actuelle","Parcouru"]
+    };
+    const words=accessibleNodes[state.language]||accessibleNodes.en;
+    const current=path?.at(-1)||null;
+    for(const node of map.querySelectorAll("[data-node]")){
+      const [c,r]=node.dataset.node.split("-").map(Number),point={c,r};
+      const isCurrent=!!current&&E.same(current,point);
+      const visited=!!path&&path.some(p=>E.same(p,point));
+      const location=pointName(point),named=location!==ui().city?location:"";
+      const label=words[0]+" "+words[1]+" "+(c+1)+", "+words[2]+" "+(r+1)+
+        (named?", "+named:"")+(isCurrent?", "+words[3]:visited?", "+words[4]:"");
+      node.setAttribute("aria-label",label);
+      node.setAttribute("aria-pressed",String(visited));
+      if(isCurrent)node.setAttribute("aria-current","location");
+      else node.removeAttribute("aria-current");
+    }
     layer.style.display=path?"":"none";
     if(path){
       trail.setAttribute("points",path.map(p=>{const q=E.position(p);return q.x+","+q.y;}).join(" "));
