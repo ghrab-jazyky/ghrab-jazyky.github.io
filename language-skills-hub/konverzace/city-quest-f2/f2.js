@@ -298,8 +298,27 @@
       btn(tip,c.labels.model,()=>{example.textContent=LC.model(state.language,state.level,n);example.hidden=false;});
       const row=actions(panel);
       btn(row,c.actions.SELF_CHECK,()=>metroAction({type:"SELF_CHECK"}),"primary");
+    }else if(stage==="transfer"){
+      // CQ-F5-005: no more unconditional automatic transfer button. The
+      // learner reads the network and decides whether to remain on the
+      // arriving line or follow the connecting service.
+      const lines=window.RivertonMetro.joined(game.metroStation);
+      const decisions=lines.map(value=>({
+        value,label:(value===game.lineId?c.actions.STAY_ON_LINE:c.actions.CHANGE_LINE)+" · "+value
+      }));
+      choices(panel,G.orderChoices(decisions,state.language,state.level,n,"transfer"),value=>
+        metroAction({type:value===game.lineId?"STAY_ON_LINE":"CHANGE_LINE",value}));
+    }else if(stage==="exit"){
+      // A student chooses when to get off. Staying aboard is a safe, locally
+      // explained wrong answer; it never moves or completes the mission.
+      const decisions=[
+        {value:"exit",label:c.actions.EXIT},
+        {value:"continue",label:c.actions.CONTINUE_PAST_EXIT}
+      ];
+      choices(panel,G.orderChoices(decisions,state.language,state.level,n,"exit"),value=>
+        metroAction({type:value==="exit"?"EXIT":"CONTINUE_PAST_EXIT"}));
     }else{
-      const actionMap={enter:"ENTER",notice:"READ_NOTICE",board:"BOARD",ride:"NEXT_STOP",transfer:"CHANGE_LINE",exit:"EXIT"};
+      const actionMap={enter:"ENTER",notice:"READ_NOTICE",board:"BOARD",ride:"NEXT_STOP"};
       if(actionMap[stage]){
         const row=actions(panel),type=actionMap[stage];
         btn(row,c.actions[type],()=>metroAction({type}),"primary");
