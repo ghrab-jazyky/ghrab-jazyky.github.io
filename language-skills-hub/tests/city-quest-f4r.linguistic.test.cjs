@@ -96,3 +96,20 @@ test("F4R ES learner-facing repair feedback remains tú while tourist dialogue u
  assert.match(es.dialogue.opening,/Disculpe.*podría indicarme/);
  assert.match(es.dialogue.goodbye,/Disfrute de la visita/);
 });
+
+test("F4 metro 07/08 answer keys state correct M2 terminus and final stop in all four languages",()=>{
+ const expectedExit={
+  en:/get off at Museum Quarter/i,
+  es:/baja en Museum Quarter/i,
+  de:/steige an Museum Quarter aus/i,
+  fr:/descendez à Museum Quarter/i
+ };
+ for(const lang of Metro.languages){
+  for(const mission of [7,8]){
+   const model=Metro.model(lang,"C2",mission);
+   assert.match(model,/M2.*North Park.*University.*M3.*Harbour/s,lang+" mission "+mission+": M2 direction must be the North Park terminus");
+   assert.match(model,expectedExit[lang],lang+" mission "+mission+": the learner must be told where to get off");
+   if(mission===8)assert.match(model,/City Museum/,lang+": mission 08 should end at City Museum");
+  }
+ }
+});
