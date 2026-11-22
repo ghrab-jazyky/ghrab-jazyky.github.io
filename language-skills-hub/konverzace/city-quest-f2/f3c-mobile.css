@@ -1,0 +1,171 @@
+/* CITY QUEST F3C — mobile usability and accessible map discovery.
+ * Deliberately additive to F2.1A's ONE authoritative HUD. No duplicate
+ * movement controllers; no network, storage, font downloads or libraries.
+ */
+:root{--f3c-target:44px}
+#f2MapStage,#metroNetworkViewport,#metroNetworkViewport svg{min-width:0}
+#f2MapStage>.map-viewport{overscroll-behavior:contain}
+#f2Quick .f3c-hud-toggle{
+ display:grid;place-items:center;min-height:44px;min-width:44px;
+ border:1px solid #94f0dd90;border-radius:10px;
+ background:#377789;color:#f4fffd;font-size:1.28rem;
+ cursor:pointer;touch-action:manipulation;
+}
+#f2Quick .f3c-hud-toggle[aria-pressed="true"]{
+ background:#6dedd147;color:#f6ffef;border-color:#b5f9df;
+}
+#f2Quick .f3c-hud-toggle:focus-visible{
+ outline:3px solid #fff19c;outline-offset:3px;
+}
+#f2Quick .f2-hud-tools{gap:6px;flex-wrap:wrap}
+#f2Quick .f2-hud-undo{min-height:44px}
+:root[data-theme=light] #f2Quick .f3c-hud-toggle{
+ background:#e3f8f2;color:#11495b;border-color:#70aba5;
+}
+:root[data-theme=light] #f2Quick .f3c-hud-toggle[aria-pressed="true"]{
+ background:#c1eee3;border-color:#0b8475;
+}
+@media(max-width:1050px){
+ /* The compact option keeps all FOUR existing arrows on the map, but exposes
+  * much more map artwork on the smallest phones when the user requests it.
+  */
+ #f2MapStage>#f2Quick[data-compact="true"]:not([hidden]){
+  width:176px;max-width:calc(100% - 12px);
+  right:6px;bottom:6px;
+  padding:9px;gap:7px;
+  grid-template-columns:1fr;
+  grid-template-areas:"tools" "pad";
+  background:linear-gradient(144deg,#0b2b3ef5,#163e48fa);
+ }
+ #f2MapStage>#f2Quick[data-compact="true"] .f2-hud-top,
+ #f2MapStage>#f2Quick[data-compact="true"] .f2-quick-caption{
+  display:none;
+ }
+ #f2MapStage>#f2Quick[data-compact="true"] .f2-hud-tools{
+  justify-content:space-between;flex-wrap:nowrap;
+ }
+ #f2MapStage>#f2Quick[data-compact="true"] .f2-hud-undo{
+  min-width:44px;padding:7px 10px;font-size:1.15rem;
+ }
+ #f2MapStage>#f2Quick[data-compact="true"] .f2-quick-pad{
+  width:100%;max-width:none;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:4px;
+ }
+ #f2MapStage>#f2Quick[data-compact="true"] .f2-quick-pad button{
+  height:47px;min-height:47px;min-width:44px;
+ }
+ :root[data-theme=light] #f2MapStage>#f2Quick[data-compact="true"]:not([hidden]){
+  background:linear-gradient(145deg,#edfdf9f7,#e2f5fafb);
+ }
+}
+@media(min-width:1051px){
+ /* Desktop retains the full sidebar directions and the complete city map. */
+ #f2Quick .f3c-hud-toggle{display:none}
+}
+@media(max-width:350px){
+ #f2MapStage>#f2Quick[data-compact="true"]:not([hidden]){width:171px}
+ #f2Quick .f3c-hud-toggle{min-width:44px;min-height:44px}
+}
+/* Metro map station finder: available even if an SVG station is too small to
+ * tap in the whole-network overview. This selects INFORMATION, not a route.
+ */
+.f3c-metro-tools{
+ display:grid;grid-template-columns:minmax(175px,1fr) auto auto;
+ align-items:end;gap:8px 10px;
+ padding:11px 14px;
+ background:linear-gradient(110deg,#0c293b,#123744);
+ border-top:1px solid #79dfca44;border-bottom:1px solid #79dfca44;
+ color:#e5fdf8;
+}
+.f3c-picker-field{min-width:0;display:grid;gap:4px}
+.f3c-picker-field label{
+ color:#b9eee2;font-size:.71rem;font-weight:900;
+ letter-spacing:.04em;
+}
+.f3c-picker-field select{
+ appearance:auto;min-width:0;width:100%;max-width:100%;
+ font:750 .83rem/1.3 system-ui,sans-serif;
+ min-height:44px;padding:8px 9px;
+ border:1px solid #8dddc87b;border-radius:10px;
+ background:#113c4e;color:#effff9;
+}
+.f3c-metro-tools button{
+ display:inline-flex;justify-content:center;align-items:center;
+ gap:6px;min-height:44px;min-width:44px;padding:8px 12px;
+ border:1px solid #89dfc77c;border-radius:10px;
+ background:#1c5a64;color:#f3fffb;
+ font-size:.78rem;font-weight:850;line-height:1.23;
+ white-space:normal;cursor:pointer;touch-action:manipulation;
+}
+.f3c-metro-tools button:hover:not(:disabled){
+ border-color:#c0ffea;background:#26717b
+}
+.f3c-metro-tools button:active:not(:disabled){background:#194c5e}
+.f3c-metro-tools button:focus-visible,
+.f3c-picker-field select:focus-visible{
+ outline:3px solid #fff19c;outline-offset:3px;
+}
+.f3c-map-hint{
+ grid-column:1/-1;color:#b1d8d9;
+ font-size:.74rem;line-height:1.45;
+}
+.f3c-screen-reader{
+ border:0!important;clip:rect(0 0 0 0)!important;
+ clip-path:inset(50%)!important;
+ height:1px!important;width:1px!important;
+ margin:-1px!important;overflow:hidden!important;
+ padding:0!important;position:absolute!important;
+ white-space:nowrap!important;
+}
+.metro-network-scroll{
+ scroll-padding:22px;overscroll-behavior:contain;
+ -webkit-overflow-scrolling:touch;
+}
+#metroNetworkSvg [data-metro-station]{
+ touch-action:manipulation
+}
+.metro-lab #f1Panel .f2-choice-list button,
+.metro-lab #f1Panel .f2-actions button{
+ min-height:var(--f3c-target);
+}
+.metro-lab #f1Panel .f2-card-head h2{
+ scroll-margin-top:14px;
+}
+.metro-lab .metro-network-head h3{text-wrap:balance}
+@media(max-width:880px){
+ .f3c-metro-tools{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:8px;padding:10px;
+ }
+ .f3c-picker-field{grid-column:1/-1}
+ .f3c-metro-tools button{width:100%;font-size:.8rem}
+ .f3c-map-hint{margin:0}
+}
+@media(max-width:370px){
+ .f3c-metro-tools{gap:7px;padding:9px}
+ .f3c-metro-tools button{padding:7px 8px;font-size:.76rem}
+ .f3c-picker-field select{font-size:.82rem}
+}
+/* Never allow mobile keyboard focus to be hidden behind the native safe area. */
+@supports(padding:env(safe-area-inset-bottom)){
+ @media(max-width:740px){
+  .metro-lab .metro-disclaimer{padding-bottom:max(12px,env(safe-area-inset-bottom))}
+  #f2MapStage>#f2Quick:not([hidden]){bottom:max(9px,env(safe-area-inset-bottom))}
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ .f3c-metro-tools *,
+ #f2Quick .f3c-hud-toggle{transition:none!important;animation:none!important}
+}
+:root[data-motion="off"] .f3c-metro-tools *,
+:root[data-motion="off"] #f2Quick .f3c-hud-toggle{
+ transition:none!important;animation:none!important;
+}
+:root[data-contrast="high"] .f3c-metro-tools{
+ border-color:#c1fff2;color:#fff;
+}
+:root[data-contrast="high"] .f3c-metro-tools button,
+:root[data-contrast="high"] .f3c-picker-field select{
+ border:2px solid #c8fff3;
+}
