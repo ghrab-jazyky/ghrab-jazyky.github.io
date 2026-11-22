@@ -226,3 +226,31 @@ test("F5C CQ-F5-008: all 48 C1/C2 landmark prompts are authored and playable in 
   }))};
  }
 });
+
+
+test("F5C CQ-F5-008: advanced C1-C2 visitor dialogue requires real clarification in four languages",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844}});
+  await page.goto(URL);
+  const C=require("../authoring/city-quest-f2/content-a.js");
+  require("../authoring/city-quest-f2/content-b.js");
+  let checked=0;
+  for(const lang of C.languages)for(const level of ["C1","C2"]){
+   await page.locator("#f2Language").selectOption(lang);
+   await page.locator("#f2Level").selectOption(level);
+   await page.locator("#f1Stations button").nth(2).click();
+   const opening=await page.locator("#f1Panel .f2-dialogue-bubble").innerText();
+   assert.ok(opening.length>120,lang+"/"+level+" opening is too elementary");
+   assert.notEqual(opening,C.pack(lang).dialogue.opening);
+   await page.locator("#f1Panel .f2-choice-list button")
+    .filter({hasText:C.pack(lang).dialogue.vague}).click();
+   const clarify=await page.locator("#f1Panel .f2-dialogue-bubble").innerText();
+   assert.notEqual(clarify,C.pack(lang).dialogue.clarify);
+   assert.notEqual(clarify,opening);
+   assert.ok(clarify.length>105,lang+"/"+level+" lacks a meaningful request for precision");
+   checked+=2;
+  }
+  assert.equal(checked,16);
+ }finally{await browser.close();}
+});
