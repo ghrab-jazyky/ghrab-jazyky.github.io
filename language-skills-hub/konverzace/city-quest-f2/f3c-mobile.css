@@ -98,6 +98,7 @@
  font-size:.78rem;font-weight:850;line-height:1.23;
  white-space:normal;cursor:pointer;touch-action:manipulation;
 }
+.f3c-metro-tools button[hidden]{display:none!important}
 .f3c-metro-tools button:hover:not(:disabled){
  border-color:#c0ffea;background:#26717b
 }
