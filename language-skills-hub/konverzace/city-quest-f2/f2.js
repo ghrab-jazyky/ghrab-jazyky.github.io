@@ -211,7 +211,8 @@
       action.type==="NEXT_STOP"?"ride":
       action.type==="EXIT"?"arrival":"advance";
     window.CityQuestF3?.feedback(cue);
-    flash={text:LC.feedback(state.language,result,action),tone:result.accepted?"success":"warning"};
+    flash={text:LC.feedback(state.language,result,action,
+      window.RivertonMetro?.station(result.state.metroStation)?.labelEn),tone:result.accepted?"success":"warning"};
     // Persistent polite status survives rebuilding the mission panel and is
     // announced by assistive technology without an audio or network request.
     $("f3Status").textContent=flash.text;
@@ -506,6 +507,9 @@
     return true;
   }
   function onMove(next){
+    // Claude F5-016: a visible surface path during a metro checkpoint is NOT
+    // permission to run the independent city quest engine behind the scene.
+    if(isMovementLocked())return;
     if(metroCityWalk())return metroAction({type:"WALK",node:next});
     let outcome;
     switch(state.station){
@@ -640,7 +644,13 @@
     const done=isMovementLocked();
     hudLoc.textContent=u.station+" "+String(state.station).padStart(2,"0")+
       " · "+state.level+(state.station===4?" · "+(done?G.guidedPaths[state.level].length:state.guided.step+1)+"/"+G.guidedPaths[state.level].length:"");
-    quickTitle.textContent=metroCityWalk()?(metroState().phase==="walk-to-entrance"?"Walk to Market Square metro entrance":"Walk north to City Museum"):
+    const metroWalkHud={
+      en:{"walk-to-entrance":"Walk to Market Square metro entrance","walk-to-museum":"Walk north to City Museum"},
+      es:{"walk-to-entrance":"Ve a la entrada del metro en Market Square","walk-to-museum":"Camina hacia el norte hasta City Museum"},
+      de:{"walk-to-entrance":"Gehe zum U-Bahn-Eingang am Market Square","walk-to-museum":"Gehe nach Norden zum City Museum"},
+      fr:{"walk-to-entrance":"Allez à l'entrée du métro de Market Square","walk-to-museum":"Marchez vers le nord jusqu'à City Museum"}
+    };
+    quickTitle.textContent=metroCityWalk()?metroWalkHud[state.language][metroState().phase]:
       state.station===4&&!state.guided.done?
       G.instruction(p,state.level,state.guided.step):
       cp?p.places[cp.id]:
@@ -908,13 +918,13 @@
   $("mapZoom").addEventListener("click",()=>{applyChromeLabels();window.requestAnimationFrame(followMap);});
   map.querySelectorAll("[data-node]").forEach(node=>{
     const [c,r]=node.dataset.node.split("-").map(Number);
-    node.addEventListener("click",()=>{if(activePath())onMove({c,r});});
+    node.addEventListener("click",()=>{if(activePath()&&!isMovementLocked())onMove({c,r});});
     node.addEventListener("keydown",e=>{
-      if((e.key==="Enter"||e.key===" ")&&activePath()){e.preventDefault();onMove({c,r});}
+      if((e.key==="Enter"||e.key===" ")&&activePath()&&!isMovementLocked()){e.preventDefault();onMove({c,r});}
     });
   });
   viewport.addEventListener("keydown",e=>{
-    if(e.target!==viewport||!activePath())return;
+    if(e.target!==viewport||!activePath()||isMovementLocked())return;
     const direction={ArrowUp:"north",ArrowDown:"south",ArrowLeft:"west",ArrowRight:"east"}[e.key];
     if(direction){e.preventDefault();onMove(F.nextFromDirection(activePoint(),direction));}
   });
