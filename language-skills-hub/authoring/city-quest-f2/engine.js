@@ -103,12 +103,49 @@
     if(level==="A2")return ["line","depart"];
     return ["line","depart","stop"];
   }
+  // CQ-F5-011: genuine multi-constraint timetable. Early CEFR levels keep
+  // the original three services; advanced learners compare an on-destination
+  // but late service, plus a faster but not step-free option at C1/C2.
+  // Student input is checked against the visible record, not a hard-coded
+  // selection index or an unrelated fixed answer string.
+  const extraServices=Object.freeze([
+    Object.freeze({line:"18",from:"Central Station",depart:"08:41",to:"Hospital",arrival:"09:18",accessible:true}),
+    Object.freeze({line:"31",from:"Central Station",depart:"08:38",to:"Hospital",arrival:"08:57",accessible:false})
+  ]);
+  function servicesForLevel(level){
+    const index=lvlIndex(level);
+    const ordinary=F.transport.lines.map(line=>({
+      ...line,accessible:line.line==="24"
+    }));
+    if(index>=3)ordinary.push(extraServices[0]);
+    if(index>=4)ordinary.push(extraServices[1]);
+    return ordinary;
+  }
+  function transportOptions(level){
+    const rows=servicesForLevel(level);
+    return Object.freeze({
+      lines:rows.map(x=>x.line),
+      departures:rows.map(x=>x.depart),
+      stops:[...new Set(rows.map(x=>x.to))]
+    });
+  }
+  const minutes=time=>{
+    if(!/^\\d\\d:\\d\\d$/.test(time))return NaN;
+    const [hour,minute]=time.split(":").map(Number);
+    return hour*60+minute;
+  };
   function checkTransport(input,level){
     const fields=requiredFields(level);
     if(!input||fields.some(key=>!input[key]))return {correct:false,kind:"missing"};
-    const answer=F.transport.answer;
-    const wrong=fields.find(key=>input[key]!==answer[key]);
-    return {correct:!wrong,kind:wrong||"correct"};
+    const selected=servicesForLevel(level).find(x=>x.line===input.line);
+    if(!selected)return {correct:false,kind:"line"};
+    if(fields.includes("depart")&&input.depart!==selected.depart)return {correct:false,kind:"depart"};
+    if(fields.includes("stop")&&input.stop!==selected.to)return {correct:false,kind:"stop"};
+    if(selected.to!=="Hospital")return {correct:false,kind:"line"};
+    if(minutes(selected.depart)<minutes("08:35")||minutes(selected.arrival)>minutes("09:10"))
+      return {correct:false,kind:"late"};
+    if(lvlIndex(level)>=4&&!selected.accessible)return {correct:false,kind:"access"};
+    return {correct:true,kind:"correct",service:selected};
   }
   function routeModel(pack,route){
     if(route.length<2)return "";
@@ -168,6 +205,6 @@
       state:{...state,stage:next,tries:state.tries+1,done:next==="complete",correct}};
   }
   return Object.freeze({F,E,levels,goals,guidedPaths,lvlIndex,config,pathFromDirections,routeStart,
-    moveRoute,guidedStart,guidedMove,instruction,answerCount,optionsCount,orderChoices,requiredFields,checkTransport,
+    moveRoute,guidedStart,guidedMove,instruction,answerCount,optionsCount,orderChoices,requiredFields,servicesForLevel,transportOptions,checkTransport,
     routeModel,questCheckpoints,questStart,questMove,questSpeak,dialogueStart,dialogueChoose});
 });
