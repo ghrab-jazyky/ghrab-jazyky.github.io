@@ -68,6 +68,19 @@ City Quest je **neznámkovaná interaktivní jazyková hra** v Rivertonu.
 - Posuď skutečný **rozchod historických větví vůči `main`**; zvlášť, zda jsou projekty GIT, Reading/Listening Lab, PDF exporty a ostatní UI bezpečně odděleny. Neprováděj slepý hromadný merge.
 - Doporuč **bezpečnou integrační strategii** pro samostatný následný PR založený na aktuálním `main`, včetně dry-run, kontroly diffu a cross-app regresí. Žádné nasazení bez explicitního schválení.
 
+### F. Závazná produktová kvalita — MOBILE FIRST, PREMIUM DESIGN, DIDAKTIKA A TYP KARTY
+
+**NOVÁ POVINNÁ PŘÍLOHA ZADÁNÍ:** nejprve přečti `language-skills-hub/authoring/city-quest-f5/F5_PREMIOVY_PRODUKT_A_DIDAKTIKA_CZ.md`. Obsahuje přejímkovou tabulku **všech 12 typů stanic**, mapu didaktických kompetencí, požadavky na mobilní UX/UI, animace, vizuální kvalitu a konkrétní katalogový štítek. Tento dokument je závazný; nestačí odkázat na předchozí 11/11 CI PASS.
+
+**Pět samostatně vyhodnocovaných kvalit:**
+1. **Dohrajemnost a spolehlivost na PC a zejména telefonu:** ověř skutečnou klikatelnost, navigaci, správné rozhodnutí a dokončení, překrytí mapy/ovladačů, čitelnost, focus, reset, orientaci, reálný 200% zoom a iPhone/iPad/Android. Simulátor není fyzický test. Mobilní P1 se nesmí prohlásit za kosmetický defekt.
+2. **Jazyková přesnost a autentická CEFR náročnost:** vždy propojit text s konkrétní aktivitou; rozliš, zda žák musí porozumět a použít jazyk nebo jen opakovat předlohu. Zvlášť B2/C1/C2, formální registr, reálné zadání a kvalita zpětné vazby.
+3. **Didaktická nutnost KAŽDÉ stanice:** u 8 City + 4 Metro dolož jazykový cíl, očekávanou aktivitu, pozorovatelný výsledek, přiměřenou nápovědu a vyšší úrovně. Pokud stanice není více než dekorativní klikání, označ příslušný nález a návrh opravy.
+4. **Prémiový vizuál a animace:** audituj hierarchii, mapu, scénické detaily, konzistenci komponent, plynulost ověřenou na zařízení, návaznost animace na hru, `prefers-reduced-motion`, citlivost na výkon telefonu a srozumitelnost i bez animací. Silná grafika nesmí být na úkor použitelnosti.
+5. **Správné produktové označení v katalogu:** City Quest zůstane v **Conversation Lab**, ale není klasickou kartou konverzačních otázek. Budoucí katalogová karta musí viditelně nést typový štítek **`🎮 Interaktivní jazyková hra`** a vysvětlení **„Nejde o klasickou konverzační kartu. Procvičuješ orientaci, rozhodování a komunikaci v interaktivních misích.“**. Štítek musí fungovat na mobilu a se screenreaderem, nesmí spoléhat pouze na hover. V aktuálním `main` není City Quest v `language-skills-hub/data/cards.json`; navrhni přesnou implementaci až do oddělené budoucí integrační větve z aktuálního `main`, neprováděj ji nyní v produkci.
+
+Požadované důkazy: reálný scénář, správné/nesprávné chování, vybrané soubory a řádky, konkrétní screenshot či video (pokud testováno), vážnost a regresní test. Za nesplnění těchto podmínek nedávej produktové `GO` ani při plně zelených technických workflow.
+
 ## 4. Výstupy, které MUSÍŠ vrátit
 
 1. **`CLAUDE_F5_VERDICT.md`**: Executive summary, `GO / CONDITIONAL GO / NO-GO` pro **technické pokračování** a odděleně pro **produkční nasazení**, s jasnou hranicí toho, co bylo opravdu testováno.
@@ -75,6 +88,7 @@ City Quest je **neznámkovaná interaktivní jazyková hra** v Rivertonu.
 3. **`CLAUDE_F5_LANGUAGE_REVIEW.csv`**: 256 řádků podle úplné F4 matice, přidané **samostatné** sloupce pro AI audit jazyk/pedagogika, evidenci, reviewer a nejistotu. Vše, co jsi fakticky neviděl, nech `NOT TESTED`. V původní F4 lidské matici **neměň** `PENDING`.
 4. **`CLAUDE_F5_TEST_EVIDENCE.md`**: přesné příkazy, verze prostředí, názvy testů, počty úspěchů/neúspěchů a digesty. Nepřipisuj si testy, které ses nespustil.
 5. **`CLAUDE_F5_RELEASE_PLAN.md`**: definice zbývajících oprav, potřebných fyzických a vlastnických podpisů, bezpečná integrace do aktuálního `main`, rollback a explicitní požadavek druhého GO.
+6. **`CLAUDE_F5_PREMIUM_DIDACTIC_QA.md`**: ověřitelná kontrola všech 12 typů stanic (jazykový cíl/užitek/diferenciace), mobile-first kvality na skutečných zařízeních, animací, vizuálního systému, a samostatné implementační zadání pro katalogový štítek `🎮 Interaktivní jazyková hra`.
 
 Preferuj důkladnost a důkazní stopu před příliš rychlým závěrem `vše je hotovo`. Na konci vyslov jednoznačně, **co přesně brání vydání a co může být uzavřeno bez člověka**. Nevytvářej falešné důkazy.
 
