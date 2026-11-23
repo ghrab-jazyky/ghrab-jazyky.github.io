@@ -4,6 +4,28 @@
   "defaultLanguage": "cs",
   "scope": "Teacher catalog display only; student card HTML untouched.",
   "entries": {
+    "cl-city-quest-f2": {
+      "cs": {
+        "title": "City Quest – městská jazyková hra",
+        "summary": "Interaktivní jazyková hra: osm městských misí, mapa a od B1 i metro. EN/ES/DE/FR, A1–C2. Mluvení je hodnoceno samotným žákem."
+      },
+      "en": {
+        "title": "City Quest – Interactive Language Game",
+        "summary": "Explore a fictional city in eight interactive missions, including metro navigation from B1 upwards. A1–C2; speaking is self-assessed."
+      },
+      "es": {
+        "title": "City Quest – Aventura lingüística urbana",
+        "summary": "Explora una ciudad ficticia en ocho misiones interactivas, con orientación en el metro desde B1. A1–C2; la expresión oral se autoevalúa."
+      },
+      "de": {
+        "title": "City Quest – Interaktives Sprachabenteuer",
+        "summary": "Erkunde eine fiktive Stadt in acht interaktiven Missionen, ab B1 auch mit U-Bahn. A1–C2; die mündliche Leistung wird selbst eingeschätzt."
+      },
+      "fr": {
+        "title": "City Quest – Aventure linguistique urbaine",
+        "summary": "Explorez une ville fictive en huit missions interactives, avec le métro à partir du niveau B1. A1–C2 ; la production orale est autoévaluée."
+      }
+    },
     "cl-umela-inteligence": {
       "cs": {
         "title": "Umělá inteligence",

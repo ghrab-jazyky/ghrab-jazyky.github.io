@@ -13,6 +13,7 @@
   const NS="http://www.w3.org/2000/svg";
   const icons=["🗺️","🧭","💬","👣","🚌","↩️","🚧","🏆"];
   const stationKeys=["explore","route","dialogue","guided","transit","repair","detour","quest"];
+  const gameType={en:"Interactive language game · city quest",es:"Juego interactivo de idiomas · aventura urbana",de:"Interaktives Sprachspiel · Stadtquest",fr:"Jeu de langue interactif · aventure urbaine"};
   const chromeCopy={
     en:{theme:"Toggle light/dark theme",detail:"Map detail",whole:"Whole city",tip:"Select Map detail to zoom in on street names",tipZoom:"Swipe across the city map to explore",kicker:"EXPLORE · NAVIGATE · COMMUNICATE",caption:"CITY ADVENTURE · WALKING MAP",compact:"Make direction pad smaller",expand:"Show full directions"},
     es:{theme:"Cambiar tema claro u oscuro",detail:"Ampliar mapa",whole:"Toda la ciudad",tip:"Amplía el mapa para leer las calles",tipZoom:"Desliza el mapa para explorar la ciudad",kicker:"EXPLORA · ORIÉNTATE · COMUNICA",caption:"AVENTURA URBANA · MAPA A PIE",compact:"Reducir controles",expand:"Mostrar indicaciones completas"},
@@ -869,12 +870,13 @@
   function applyLanguageUI(){
     const u=ui(),p=pack(),prof=profile();
     document.documentElement.lang=p.locale;
-    document.title="City Quest F2 · "+p.native+" "+state.level+" · Language Skills Hub";
+    document.title="City Quest · "+p.native+" "+state.level+" · Language Skills Hub";
     $("f2LanguageLabel").textContent=u.language;
     $("f2LevelLabel").textContent=u.level+" CEFR";
     $("f2Profile").textContent=state.level+" · "+prof.focus;
     $("f2HeroLanguage").textContent=p.native;
     $("f2HeroLevel").textContent=state.level;
+    $("cityQuestGameType").textContent=gameType[state.language];
     $("f2HeroText").textContent=p.stations[0][1]+" "+u.objective;
     document.querySelector(".hero h1").textContent=p.stations[7][0];
     document.querySelector(".f1-mode>span").textContent=u.mode;
@@ -1000,10 +1002,10 @@
       variantTag=document.querySelector(".hero .tags .tag:nth-child(3)");
     if(pilot){hero.textContent=content.title;heroText.textContent=content.header;}
     else{hero.textContent=pack().stations[7][0];heroText.textContent=pack().stations[0][1]+" "+ui().objective;}
-    if(headerTag)headerTag.textContent=pilot?"F2.1D · "+state.level+" METRO":"CITY QUEST · PREMIUM";
+    if(headerTag)headerTag.textContent=pilot?"CITY QUEST · "+state.level+" METRO":"CITY QUEST · PREMIUM";
     if(variantTag)variantTag.textContent=pilot?state.language.toUpperCase()+" · "+state.level+" METRO":"8 × 4 × 6";
     document.title=pilot?content.title+" · "+content.native+" "+state.level+" · LSH":
-      "City Quest F2 · "+pack().native+" "+state.level+" · Language Skills Hub";
+      "City Quest · "+pack().native+" "+state.level+" · Language Skills Hub";
   }
   function toggleMetroPilot(){
     if(!metroAvailable())return;

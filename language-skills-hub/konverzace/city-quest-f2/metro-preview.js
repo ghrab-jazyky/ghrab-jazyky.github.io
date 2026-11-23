@@ -688,11 +688,11 @@
   lab.querySelector(".metro-action-card").hidden=pilot;
   lab.querySelector(".metro-scene-toggle").hidden=pilot;
   lab.querySelector(".metro-banner .metro-overline").textContent=pilot?
-    copy.kicker+" / F2.1D "+level:gallery.overline;
+    copy.kicker+" · "+level:gallery.overline;
   $("metroHeading").textContent=pilot?copy.title:gallery.heading;
   lab.querySelector(".metro-banner-copy > p").textContent=pilot?copy.overview:gallery.intro;
   lab.querySelector(".metro-disclaimer").textContent=pilot?
-    "F2.1D · "+copy.native+" "+level+" · "+copy.offline:gallery.disclaimer;
+    copy.native+" · "+level+" · "+copy.offline:gallery.disclaimer;
   jump.textContent=gallery.jump;
   if(shown)renderAll();
   else updateMapTools();
