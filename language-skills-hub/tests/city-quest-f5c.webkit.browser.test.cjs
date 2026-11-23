@@ -39,7 +39,10 @@ test("F5C WebKit touch layouts: 4 languages, CEFR, City/Metro and 200% text",asy
      await page.locator("#metroPilotToggle").click();
      for(const mission of [5,6,8]){
       await page.locator("#f1Stations button").nth(mission-1).click();
-      assert.equal(await page.locator("#metroLab").isVisible(),true);
+      // Metro 08 deliberately opens on the city map: the learner first
+      // collects tickets and reaches the metro entrance on foot.
+      assert.equal(await page.locator("#metroLab").isVisible(),mission!==8);
+      assert.equal(await page.locator(".layout").isVisible(),mission===8);
       assert.equal(await page.locator("#f1Panel").isVisible(),true);
       const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
       if(overflow>2){
