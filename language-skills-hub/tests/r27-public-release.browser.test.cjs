@@ -16,7 +16,7 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
     await page.locator('#cards .card').first().waitFor({state:'visible'});
     const buttons=page.locator('#cards .card .action.test');
     assert.equal(await buttons.count(),expected,skill);
-    assert.equal(await page.locator('#cards .card .action.primary').count(),skill==='konverzace'?23:expected);
+    assert.equal(await page.locator('#cards .card .action.primary').count(),skill==='konverzace'?24:expected);
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth);
     assert.ok(overflow<=2,'Catalog overflow '+skill+': '+overflow);
     if(expected){
@@ -84,6 +84,15 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(await page.locator('#readingParagraphs .gap-marker').count(),1);
    assert.equal(await page.locator('#results').isHidden(),true);
    await page.locator('fieldset.question').first().locator('input').first().check();
+   // The existing strict-screen guard may legitimately lock after focus/scroll
+   // in CI; exercise the real teacher gesture rather than bypass its overlay.
+   await page.locator('#submitButton').scrollIntoViewIfNeeded();
+   for(let n=0;n<3;n++){
+    if(!await page.locator('#sessionLock:not([hidden])').isVisible())break;
+    for(const corner of ['tl','tr','bl','br'])
+     await page.locator('.lsh-corner-'+corner).click();
+    await page.locator('#sessionLock').waitFor({state:'hidden',timeout:12000});
+   }
    await page.locator('#submitButton').click();
    await page.waitForSelector('#results:not([hidden])');
    assert.equal(await page.locator('#scoreSummary .score-value').count(),4);

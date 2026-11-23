@@ -9,9 +9,11 @@ const practice=require('../slovnicek/practice.js');
 const catalog=JSON.parse(read('data/cards.json')).entries;
 const manifest=JSON.parse(read('version.json'));
 const {integrityContent}=require('./reading-content-integrity.cjs');
-test('R40: all 34 staged cards use the shared local vocabulary store',()=>{
- assert.equal(catalog.length,34);
- const conv=catalog.filter(x=>x.skill==='konverzace'),readers=catalog.filter(x=>x.skill==='cteni'),listeners=catalog.filter(x=>x.skill==='poslech');
+test('R40: original 34 cards retain their shared vocabulary; City Quest stays standalone',()=>{
+ assert.equal(catalog.length,35);
+ const regular=catalog.filter(e=>e.cardType!=='interactive-language-game');
+ assert.equal(regular.length,34);
+ const conv=regular.filter(x=>x.skill==='konverzace'),readers=regular.filter(x=>x.skill==='cteni'),listeners=regular.filter(x=>x.skill==='poslech');
  assert.deepEqual([conv.length,readers.length,listeners.length],[23,5,6]);
  const convBridge=read('assets/lsh/v3/card-bridge.js'),shared=read('assets/lsh/v3/card-vocabulary.js');
  assert.match(convBridge,/createStore\(\{mode:'production'\}\)/);
@@ -20,6 +22,12 @@ test('R40: all 34 staged cards use the shared local vocabulary store',()=>{
  for(const e of catalog){
   const source=read(e.relative);
   assert.equal(crypto.createHash('sha256').update(integrityContent(e.id,source)).digest('hex'),manifest.contentHashes[e.id],e.id);
+  if(e.cardType==='interactive-language-game'){
+   assert.equal(e.id,'cl-city-quest-f2');
+   assert.match(source,/connect-src 'none'/);
+   assert.doesNotMatch(source,/assets\/lsh\/v3\/card-bridge\.js|card-vocabulary\.js|indexedDB|localStorage/);
+   continue;
+  }
   if(e.skill==='konverzace'){
    assert.match(source,/assets\/lsh\/v3\/card-bridge\.js/);
    assert.match(source,/assets\/lsh\/v3\/store\.js/);
