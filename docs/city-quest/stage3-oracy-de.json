@@ -1,0 +1,92 @@
+{
+  "language": "de",
+  "schema": "city-quest-stage3-oracy-v1",
+  "ui": {
+    "title": "Sprechaufgabe für den Alltag",
+    "doFirst": "Sprich zuerst frei, bevor du die Musterantwort öffnest. Erkläre deinem Partner den Weg, ohne auf den Stadtplan zu zeigen.",
+    "criteria": "Daran erkennt man eine gelungene Antwort",
+    "reflection": "Vergleiche deine eigene mündliche Antwort mit diesen Kriterien. Deine Lehrkraft oder dein Partner beurteilt das Sprechen; das Spiel nimmt nichts auf und benotet nichts.",
+    "teacher": "Dies ist eine zusätzliche Sprechübung und keine automatisch bewertete Spielaufgabe."
+  },
+  "rubric": {
+    "B2": [
+      "Gib klare, sachlich richtige Weganweisungen oder eine passende Empfehlung.",
+      "Vergleiche zwei plausible Möglichkeiten und begründe deine Wahl.",
+      "Erkläre deine Überlegungen zusammenhängend und verständlich."
+    ],
+    "C1": [
+      "Klär ungenaue Angaben, statt ungeprüfte Annahmen zu treffen.",
+      "Erläutere Bedingungen, ihre Folgen und einen möglichen Alternativplan.",
+      "Formuliere präzise Anweisungen, denen andere problemlos folgen können."
+    ],
+    "C2": [
+      "Klär widersprüchliche Informationen, ohne Fakten zu erfinden.",
+      "Wäge relevante Vor- und Nachteile ab und sprich eine eindeutige Empfehlung aus.",
+      "Passe Sprache, Ton und Detailgrad an dein Gegenüber an."
+    ]
+  },
+  "city": {
+    "1": {
+      "B2": "Zwei Besucher haben unterschiedliche Wünsche: Einer möchte ein Buch ausleihen, der andere historische Ausstellungsstücke sehen. Empfiehl die passenden Orte in Riverton und begründe beide Entscheidungen.",
+      "C1": "Ein Besucher fragt nach dem „Haus mit Büchern“, erwähnt aber auch, dass er ein Paket verschicken möchte. Frage höflich nach und erkläre anhand hilfreicher Orientierungspunkte den Unterschied zwischen Bibliothek und Post.",
+      "C2": "Zwei Besucher verwechseln Central Station und Market Square und streiten darüber, wo sie sich treffen sollen. Vermittle zwischen ihnen, unterscheide beide Orte präzise und bestätige den beabsichtigten Treffpunkt."
+    },
+    "2": {
+      "B2": "Erkläre deinen Fußweg zum Stadtmuseum über den Market Square. Vergleiche ihn mit einer anderen auf dem Plan erkennbaren Route und begründe, warum der Platz zum Auftrag gehört.",
+      "C1": "Eine Gruppe muss vor dem Museumsbesuch die Bibliothek aufsuchen. Erkläre die Route in klaren Etappen und weise auf eine Kreuzung hin, an der man leicht falsch abbiegen könnte.",
+      "C2": "Du musst über die Bibliothek zum Stadtmuseum gelangen und die markierte Straßensperrung umgehen. Vergleiche einen scheinbar kürzeren, aber gesperrten Weg mit einer gültigen Route und erläutere die Vorgaben taktvoll."
+    },
+    "3": {
+      "B2": "Ein Besucher fragt nach dem Weg zum Stadtmuseum und möchte wissen, ob er kompliziert ist. Gib verständliche Anweisungen und ergänze einen Orientierungspunkt, der Missverständnisse verhindert.",
+      "C1": "Der Besucher erinnert sich an einen Brunnen, kann ihn aber auf dem Plan nicht finden. Stelle eine gezielte Rückfrage und formuliere die Route mit nachprüfbaren Orientierungspunkten neu.",
+      "C2": "Zwei Personen geben widersprüchliche Wegbeschreibungen zum Stadtmuseum, weil sie in entgegengesetzte Richtungen schauen. Kläre den Widerspruch und gib dem verwirrten Touristen eine eindeutige, passende Erklärung."
+    },
+    "4": {
+      "B2": "Ein Reisender geht auf der Marktallee nach Osten und muss danach nach Norden zum Museum. Erkläre, warum er links statt rechts abbiegen muss, und formuliere eine leicht verständliche Anweisung.",
+      "C1": "Ein Reisender befolgt die einzelnen Befehle, verwechselt aber Himmelsrichtungen mit „links“ und „rechts“. Formuliere die entscheidenden Schritte aus seiner Perspektive neu.",
+      "C2": "Ein Stadtführer sagt „links“, ein anderer „nach Norden“. Erkläre, warum beides auf einem Weg nach Osten stimmen kann, kläre den scheinbaren Widerspruch und gib eine kurze, verlässliche Anweisung."
+    },
+    "5": {
+      "B2": "Der Fahrgast muss vor 09:10 Uhr am Krankenhaus sein. Empfiehl anhand des Fahrplans den passenden Bus und erkläre, warum eine andere angezeigte Verbindung weniger geeignet ist.",
+      "C1": "Ein Fahrgast braucht einen stufenlos zugänglichen Bus und muss vor 09:10 Uhr ankommen. Erkläre, wie beide Bedingungen deine Wahl beeinflussen und welche Fahrplanangaben du geprüft hast.",
+      "C2": "Vergleiche als Auskunftsperson die zum Krankenhaus fahrenden Busse hinsichtlich Ankunft und Barrierefreiheit. Gib eine kurze, beruhigende Empfehlung, ohne eine im Fahrplan nicht belegte Pünktlichkeit zu versprechen."
+    },
+    "6": {
+      "B2": "Jemand ging nach Osten und erhielt die Anweisung, rechts abzubiegen, um nach Norden zu gelangen. Erkenne den Widerspruch und korrigiere die Wegbeschreibung mit einer verständlichen Begründung.",
+      "C1": "Ein Tourist weist darauf hin, dass deine vorige Anweisung falsch war. Gib den Fehler höflich zu, kläre seine aktuelle Blickrichtung und formuliere die restliche Route neu.",
+      "C2": "Ein verunsicherter Besucher hat widersprüchliche Angaben erhalten und traut der nächsten Abbiegung nicht. Vermittle ruhig, unterscheide relative Richtungen von Himmelsrichtungen und prüfe, ob er alles verstanden hat."
+    },
+    "7": {
+      "B2": "Die gewohnte Straße zum Museum ist gesperrt. Erkläre eine auf dem Stadtplan erkennbare, passierbare Ausweichroute und vergleiche sie mit dem gesperrten direkten Weg.",
+      "C1": "Dein Besucher fürchtet, sich an der nächsten Kreuzung zu verlaufen. Erläutere die Umleitung präzise und sage, wie er vorgehen sollte, falls die Beschilderung unklar ist.",
+      "C2": "Zwei Begleiter sind uneinig: Einer möchte trotz Sperrung die vertraute Straße nehmen, der andere den nachweislich offenen Weg. Gleiche ihre Interessen ab, ohne die gesperrte Straße als begehbar darzustellen."
+    },
+    "8": {
+      "B2": "Deine Gruppe muss auf dem Weg zum Museum mehrere Stationen in der Stadt besuchen. Fasse die Reihenfolge zusammen, begründe eine Routenentscheidung und vergleiche sie mit einer verlockenden Abkürzung.",
+      "C1": "Führe deinen Partner durch sämtliche vorgeschriebenen Zwischenstopps. Weise auf einen möglichen Orientierungsfehler hin und erkläre, wie du ihn ohne vollständigen Neustart korrigieren würdest.",
+      "C2": "Zwei Besucher haben für den Stadtrundgang widersprüchliche Prioritäten. Handle eine machbare Reihenfolge aller Pflichtstopps aus und stelle einen klaren, gemeinsam tragbaren Plan mit Begründung vor."
+    }
+  },
+  "metro": {
+    "5": {
+      "B2": "Erkläre die U-Bahn-Verbindung von Central Station nach Museum Quarter: Linie, Fahrtziel, Bahnsteig und Ausstieg. Vergleiche deine Wahl mit einer plausiblen, aber falschen Fahrtrichtung.",
+      "C1": "Ein Fahrgast hält den auf dem Zug angezeigten Endbahnhof für die nächste Station. Kläre den Irrtum, erkläre die Kontrolle der Bahnsteiganzeigen und gib präzise Hinweise zum Einsteigen.",
+      "C2": "Formuliere eine knappe Bahnsteigdurchsage für die Fahrt nach Museum Quarter und erkläre dieselbe Strecke anschließend ruhig einer Person, die U-Bahn-Begriffe nicht kennt. Passe den Stil an, nicht die Fakten."
+    },
+    "6": {
+      "B2": "Ein Besucher möchte von Market Square nach Stadium fahren. Erkläre das Umsteigen an University mit Linien, Fahrtrichtungen und Hinweisen zum richtigen Anschlussbahnsteig.",
+      "C1": "Ein Reisender mit schwerem Koffer macht sich Sorgen um den Umstieg an University. Gib eine schrittweise Erklärung und erläutere, welche Schilder er bei unklarer Bahnsteigzuordnung prüfen sollte.",
+      "C2": "Zwei Fahrgäste widersprechen einander bei der Frage, welcher Linie sie an University folgen sollen. Vermittle mithilfe des Netzplans und der Bahnsteigschilder und gib einen eindeutigen Weg nach Stadium an."
+    },
+    "7": {
+      "B2": "Der M1-Abschnitt zwischen Old Town und Museum Quarter ist gesperrt. Vergleiche die unterbrochene Verbindung mit der Ausweichroute über M2 und M3 und erkläre den Umstieg.",
+      "C1": "Ein Fahrgast kennt nur den üblichen M1-Weg und bezweifelt die Störungsmeldung. Erkläre die Sperrung, führe ihn durch die Alternative und sage, was bei einer geänderten Meldung erneut geprüft werden müsste.",
+      "C2": "Gib als Stationspersonal zuerst eine kurze öffentliche Störungsdurchsage und danach eine beruhigende persönliche Erklärung. Trenne dabei die bestätigte Sperrung von nicht überprüften Angaben zum weiteren Betrieb."
+    },
+    "8": {
+      "B2": "Erkläre, warum die Abholung der Museumstickets am Market Square und das Treffen mit einer Mitschülerin samt Audioguides an University diese Route erfordern. Gib die Schritte in der richtigen Reihenfolge an.",
+      "C1": "Deine Gruppe muss Tickets abholen, sich an University treffen und zum Stadtmuseum gelangen. Entwickle einen stimmigen Plan und erläutere, wie du eine Verspätung mitteilen würdest, ohne eine Aufgabe auszulassen.",
+      "C2": "Ein Begleiter betont, dass man vom Market Square zum Museum laufen könnte; ein anderer erinnert an das Treffen an University. Vereine beide berechtigten Aussagen und Verpflichtungen in einem präzisen, taktvollen Routenplan."
+    }
+  }
+}
