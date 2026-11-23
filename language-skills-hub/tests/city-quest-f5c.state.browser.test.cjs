@@ -441,3 +441,26 @@ test("F5C pair mode requires two explicit self-reported speaking turns, then res
   }
  }finally{await browser.close();}
 });
+
+test("F5C student surfaces never show internal F version labels or prototype markers",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  for(const language of ["en","es","de","fr"]){
+   const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+   await page.goto(URL);
+   await page.locator("#f2Language").selectOption(language);
+   await page.locator("#f2Level").selectOption("B1");
+   for(const mode of ["CITY","METRO"]){
+    if(mode==="METRO")await page.locator("#metroPilotToggle").click();
+    for(const mission of [1,5,6,7,8]){
+     await page.locator("#f1Stations button").nth(mission-1).click();
+     const text=await page.locator("body").innerText();
+     assert.doesNotMatch(text,/\\bF[0-9]+(?:\\.[0-9]+[A-Z]?)?\\b|No API|visual prototype/i,
+       language+"/"+mode+"/"+mission+": visible internal build marker");
+     assert.doesNotMatch(await page.title(),/City Quest F[0-9]/i);
+    }
+   }
+   await page.close();
+  }
+ }finally{await browser.close();}
+});
