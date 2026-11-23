@@ -421,16 +421,17 @@
     help(panel);
   }
   function renderDialogue(){
-    const game=state.dialogue,d=pack().dialogue,p=profile();
+    const game=state.dialogue,d=pack().dialogue,p=profile(),
+      distractors=G.dialogueDistractors(p.dialogueAnswer,state.language);
     if(game.done)return complete(3,d.final,p.dialogueAnswer+" "+d.distance+" "+d.goodbye);
     const scenes={start:d.opening,clarify:d.clarify,wrong:d.mistake,distance:d.followup,
       ...advancedDialogueScenes[state.language]?.[state.level]};
     el("h3",panel,"","💬 "+ui().narrator);
     para(el("div",panel,"f2-dialogue-bubble"),scenes[game.stage]);
     const options={
-      start:[{value:"help",label:p.dialogueAnswer},{value:"vague",label:d.vague},{value:"wrong",label:d.wrong}],
-      clarify:[{value:"help",label:p.dialogueAnswer},{value:"vague",label:d.vague}],
-      wrong:[{value:"repair",label:d.fix+" "+p.dialogueAnswer},{value:"insist",label:d.badFix}],
+      start:[{value:"help",label:p.dialogueAnswer},{value:"vague",label:distractors.vague},{value:"wrong",label:distractors.wrong}],
+      clarify:[{value:"help",label:p.dialogueAnswer},{value:"vague",label:distractors.vague}],
+      wrong:[{value:"repair",label:d.fix+" "+p.dialogueAnswer},{value:"insist",label:distractors.insist}],
       distance:[{value:"distance",label:d.distance},{value:"nohelp",label:d.badDistance}]
     };
     choices(panel,G.orderChoices(options[game.stage],state.language,state.level,3,game.stage),id=>{

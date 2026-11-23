@@ -136,7 +136,7 @@ test("F5C N01 metro mission text remains readable in light theme across EN/ES/DE
    const result=await page.evaluate(()=>{
     const css=(selector,prop)=>getComputedStyle(document.querySelector(selector))[prop];
     const parse=(s)=>{
-     const m=s.match(/rgba?\\(([^)]+)\\)/);if(!m)throw Error("Expected opaque RGB: "+s);
+     const m=s.match(/rgba?\(([^)]+)\)/);if(!m)throw Error("Expected opaque RGB: "+s);
      return m[1].split(",").slice(0,3).map(Number);
     };
     const light=(rgb)=>rgb.map(v=>{

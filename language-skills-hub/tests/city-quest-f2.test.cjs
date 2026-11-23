@@ -273,3 +273,18 @@ test("F5C CQ-F5-008: staged correction is 2 decisions A1-B1, 3 at B2 and 4 at C1
  }
  assert.throws(()=>G.repairStages("ZZ"),RangeError);
 });
+
+test("F5C N04: CEFR dialogue distractors cannot be identified by length alone",()=>{
+ for(const lang of C.languages)for(const level of C.levels){
+  const answer=C.profile(lang,level).dialogueAnswer,
+   d=G.dialogueDistractors(answer,lang),
+   choices=[answer,d.vague,d.wrong];
+  assert.equal(new Set(choices).size,3,lang+"/"+level);
+  assert.ok(d.vague.length>=answer.length*0.75&&d.wrong.length>=answer.length*0.75,
+   lang+"/"+level+" distractors too short");
+  assert.ok(Math.max(...choices.map(s=>s.length))<=Math.min(...choices.map(s=>s.length))*1.3,
+   lang+"/"+level+" length leaks the answer");
+  assert.ok(d.vague!==answer&&d.wrong!==answer);
+  assert.ok(d.insist.length>answer.length*0.8);
+ }
+});

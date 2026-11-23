@@ -247,7 +247,7 @@ test("F5C CQ-F5-008: advanced B2-C2 visitor dialogue requires real clarification
    assert.ok(opening.length>120,lang+"/"+level+" opening is too elementary");
    assert.notEqual(opening,C.pack(lang).dialogue.opening);
    await page.locator("#f1Panel .f2-choice-list button")
-    .filter({hasText:C.pack(lang).dialogue.vague}).click();
+    .filter({hasText:G.dialogueDistractors(C.profile(lang,level).dialogueAnswer,lang).vague}).click();
    const clarify=await page.locator("#f1Panel .f2-dialogue-bubble").innerText();
    assert.notEqual(clarify,C.pack(lang).dialogue.clarify);
    assert.notEqual(clarify,opening);

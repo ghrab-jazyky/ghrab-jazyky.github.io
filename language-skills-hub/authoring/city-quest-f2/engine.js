@@ -115,6 +115,56 @@
     const rotation=((li*7+difficulty*5+mission*11+step*13)%n+n)%n;
     return items.slice(rotation).concat(items.slice(0,rotation));
   }
+  // F5C N04: each wrong answer is a fully formed, plausible instruction of
+  // approximately the same length as the correct route. Semantic direction
+  // mutations are local and deterministic. No AI/API or student information.
+  function dialogueDistractors(answer,lang){
+    if(typeof answer!=="string"||answer.length<25)throw TypeError("Missing dialogue model");
+    let vague,wrong;
+    const change=(pattern,replacement)=>answer.replace(pattern,replacement);
+    if(lang==="en"){
+      if(/turn left/i.test(answer)){
+        vague=change(/turn left/i,"turn at some point");
+        wrong=change(/\\bleft\\b/i,"right");
+      }else{
+        vague=change(/the northbound street/i,"a street somewhere nearby");
+        wrong=change(/northbound/i,"southbound");
+      }
+    }else if(lang==="es"){
+      if(/a la izquierda/i.test(answer)){
+        vague=change(/a la izquierda/i,"en algún cruce cercano");
+        wrong=change(/izquierda/i,"derecha");
+      }else{
+        vague=change(/por la calle que va hacia el norte/i,"por alguna calle de la zona");
+        wrong=change(/hacia el norte/i,"hacia el sur");
+      }
+    }else if(lang==="de"){
+      if(/links/i.test(answer)){
+        vague=change(/links/i,"irgendwo");
+        wrong=change(/links/i,"rechts");
+      }else{
+        vague=change(/nach Norden/i,"in irgendeine Richtung");
+        wrong=change(/nach Norden/i,"nach Süden");
+      }
+    }else if(lang==="fr"){
+      if(/à gauche/i.test(answer)){
+        vague=change(/à gauche/i,"sans préciser où");
+        wrong=change(/à gauche/i,"à droite");
+      }else{
+        vague=change(/vers le nord/i,"sans direction précise");
+        wrong=change(/vers le nord/i,"vers le sud");
+      }
+    }else throw RangeError("Invalid dialogue language");
+    if(!vague||!wrong||vague===answer||wrong===answer)
+      throw Error("Incomplete authored dialogue distractor for "+lang);
+    const insist={
+      en:"No, those instructions are correct: ",
+      es:"No, esas indicaciones son correctas: ",
+      de:"Nein, diese Wegbeschreibung stimmt: ",
+      fr:"Non, ces indications sont exactes : "
+    }[lang]+wrong;
+    return Object.freeze({vague,wrong,insist});
+  }
   function answerCount(level){return lvlIndex(level)===0?3:lvlIndex(level)===1?4:6;}
   function optionsCount(level){return lvlIndex(level)===0?2:3;}
   function requiredFields(level){
@@ -240,7 +290,7 @@
       state:{...state,stage:next,tries:state.tries+1,done:next==="complete",correct}};
   }
   return Object.freeze({F,E,levels,goals,guidedPaths,lvlIndex,config,pathFromDirections,routeStart,
-    moveRoute,guidedStart,guidedMove,guidedReview,instruction,answerCount,optionsCount,orderChoices,requiredFields,servicesForLevel,transportOptions,checkTransport,
+    moveRoute,guidedStart,guidedMove,guidedReview,instruction,answerCount,optionsCount,orderChoices,dialogueDistractors,requiredFields,servicesForLevel,transportOptions,checkTransport,
     repairStart,repairStages,repairChoice,
     routeModel,detourCheckpoints,questCheckpoints,questStart,questMove,questSpeak,dialogueStart,dialogueChoose});
 });
