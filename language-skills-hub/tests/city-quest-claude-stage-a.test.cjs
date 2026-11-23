@@ -10,9 +10,9 @@ const html=fs.readFileSync(path.join(root,'konverzace/city-quest-f2/index.html')
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'version.json'),'utf8'));
 const authoring=path.resolve(root,'../docs/city-quest');
 const lineData=name=>{
- const line=html.split('\n').find(x=>x.startsWith('  const '+name+'='));
+ const line=html.split('\n').find(x=>x.trimStart().startsWith('const '+name+'='));
  assert.ok(line,'Missing authored matrix '+name);
- return JSON.parse(line.slice(('  const '+name+'=').length,-1));
+ return JSON.parse(line.slice(line.indexOf('const '+name+'=')+('const '+name+'=').length,-1));
 };
 const sha=body=>crypto.createHash('sha256').update(body,'utf8').digest('hex');
 test('Claude stage A: offline source CSP and manifest integrity remain intact',()=>{
