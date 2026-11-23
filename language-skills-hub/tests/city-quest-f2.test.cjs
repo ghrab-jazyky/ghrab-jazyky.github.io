@@ -180,29 +180,50 @@ test("F5C CQ-F5-003: stable semantic answers but varied positions in CITY 01, 03
 });
 
 
-test("F5C CQ-F5-010: city detour cannot finish without encountering real roadworks and bypassing its closed segment",()=>{
- const walk=(level,points)=>{
-  let state=G.routeStart(),out;
-  for(const next of points){out=G.moveRoute(state,next,level,true);state=out.state;}
-  return {state,out};
+test("F5C CQ-F5-010: level-specific closures make the natural shortest city route unavailable",()=>{
+ const search=(level,closures)=>{
+  const required=G.detourCheckpoints(level),goal=E.goal,
+   queue=[{p:E.start,mask:0,d:0}],seen=new Set();
+  for(let i=0;i<queue.length;i++){
+   const {p,mask,d}=queue[i],visited=required.reduce((bits,v,j)=>
+      bits|(E.same(p,v)?1<<j:0),mask);
+   const key=p.c+","+p.r+","+visited;if(seen.has(key))continue;seen.add(key);
+   if(E.same(p,goal)&&visited===(1<<required.length)-1)return d;
+   for(const direction of ["north","east","south","west"]){
+    const next=F.nextFromDirection(p,direction);
+    if(!E.isNode(next))continue;
+    if(closures.some(e=>(E.same(p,e.a)&&E.same(next,e.b))||
+      (E.same(p,e.b)&&E.same(next,e.a))))continue;
+    queue.push({p:next,mask:visited,d:d+1});
+   }
+  }
+  throw Error("Unreachable detour for "+level);
  };
- const short=[{c:0,r:2},{c:1,r:2},{c:2,r:2},{c:3,r:2},E.goal];
- const invalid=walk("B1",short);
- assert.equal(invalid.state.done,false,"No credit for a route that never reaches the roadworks");
- assert.equal(invalid.out.kind,"missing-via");
- assert.equal(invalid.out.accepted,false,"Don't trap a learner at goal without its checkpoint");
- assert.equal(invalid.state.route.length,short.length,"Missing-via must not advance to goal");
- const approach=[{c:1,r:3},{c:2,r:3}];
- assert.deepEqual(G.detourCheckpoints("B1"),[F.closure.b]);
- assert.deepEqual(G.detourCheckpoints("C2"),[F.closure.b,{c:4,r:2}]);
- const before=walk("B1",approach);
- const closed=G.moveRoute(before.state,{c:3,r:3},"B1",true);
- assert.equal(closed.accepted,false);assert.equal(closed.kind,"closed");
- assert.deepEqual(closed.state.route,before.state.route);
- const open=walk("B1",[...approach,{c:2,r:2},{c:3,r:2},{c:3,r:3},{c:4,r:3},{c:4,r:2},{c:4,r:1},E.goal]);
- assert.equal(open.out.accepted,true);assert.equal(open.state.done,true);
- const c2=walk("C2",[...approach,{c:2,r:2},{c:3,r:2},{c:3,r:3},{c:4,r:3},{c:4,r:2},{c:4,r:1},E.goal]);
- assert.equal(c2.out.accepted,true);assert.equal(c2.state.done,true);
+ for(const level of G.levels){
+  const before=search(level,[]),after=search(level,G.detourClosures(level));
+  assert.ok(after>before,level+": roadworks must lengthen a genuinely natural route");
+  assert.equal(G.detourClosures(level).length,["C1","C2"].includes(level)?3:2);
+ }
+ let state=G.routeStart(),out;
+ for(const node of [{c:0,r:2},{c:1,r:2},{c:2,r:2},{c:3,r:2}]){
+  out=G.moveRoute(state,node,"B1",true);assert.equal(out.accepted,true);state=out.state;
+ }
+ out=G.moveRoute(state,E.goal,"B1",true);
+ assert.equal(out.accepted,false);assert.equal(out.kind,"closed");
+ assert.deepEqual(out.state.route,state.route,"Roadworks must not move the player");
+ assert.deepEqual(G.detourCheckpoints("B1"),[]);
+ assert.deepEqual(G.detourCheckpoints("C2"),[{c:4,r:2}]);
+ const walk=(level,points)=>{
+  let s=G.routeStart(),r;for(const p of points){r=G.moveRoute(s,p,level,true);
+   assert.equal(r.accepted,true,level+" rejected valid detour at "+JSON.stringify(p));s=r.state;}
+  assert.equal(s.done,true);return s;
+ };
+ const open=[{c:1,r:3},{c:2,r:3},{c:2,r:2},{c:3,r:2},{c:3,r:3},
+  {c:4,r:3},{c:4,r:2},{c:4,r:1},E.goal];
+ walk("B1",open);
+ const advanced=[{c:1,r:3},{c:2,r:3},{c:2,r:2},{c:3,r:2},{c:3,r:3},
+  {c:4,r:3},{c:4,r:2},{c:4,r:1},{c:4,r:0},{c:3,r:0},E.goal];
+ walk("C2",advanced);
 });
 test("F5C CQ-F5-011: real timetable progressively adds late and inaccessible hospital-bound alternatives",()=>{
  assert.deepEqual(["A1","B1","B2","C1","C2"].map(l=>G.servicesForLevel(l).length),[3,3,4,5,5]);

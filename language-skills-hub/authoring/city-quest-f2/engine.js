@@ -42,21 +42,34 @@
     return route;
   }
   function config(level){lvlIndex(level);return goals[level];}
+  // F5C-010: city detour closures block BOTH normal shortest approaches to
+  // City Museum. C1/C2 add a third approach. F1/classic routes remain untouched.
+  const detourWest=Object.freeze({a:{c:2,r:1},b:{c:3,r:1}}),
+    detourSouth=Object.freeze({a:{c:3,r:2},b:{c:3,r:1}}),
+    detourEast=Object.freeze({a:{c:4,r:1},b:{c:3,r:1}});
+  function detourClosures(level){
+    const advanced=lvlIndex(level)>=4;
+    return advanced?[detourWest,detourSouth,detourEast]:
+      [detourWest,detourSouth];
+  }
+  function isClosedEdge(a,b,edge){
+    return (E.same(a,edge.a)&&E.same(b,edge.b))||
+      (E.same(a,edge.b)&&E.same(b,edge.a));
+  }
   function routeStart(){return {route:[copy(E.start)],done:false,attempts:0,message:"",visitedVia:false};}
   function visited(route,via){return via.every(n=>route.some(p=>E.same(p,n)));}
   function moveRoute(state,next,level,detour){
-    const c=config(level),blocked=detour?F.closure:c.blocked;
-    // Detour must genuinely require navigating around the closed road at A1,
-    // not finish early at Market Square before the roadworks matter.
+    const c=config(level),blocked=detour?null:c.blocked;
     const target=detour?E.goal:c.target;
     if(state.done)return {accepted:false,state,kind:"finished"};
+    if(detour&&detourClosures(level).some(edge=>isClosedEdge(state.route.at(-1),next,edge)))
+      return {accepted:false,kind:"closed",state:{...state,attempts:state.attempts+1}};
     const r=F.routeResult(state.route,next,blocked);
     if(!r.valid)return {accepted:false,kind:r.kind,state:{...state,attempts:state.attempts+1}};
     const progress=r.route,arrived=E.same(progress[progress.length-1],target);
-    // CQ-F5-010: the closure must affect the real task, not merely draw an
-    // ignored red line. Students must first reach the roadworks approach,
-    // then find an open way to the museum (and any level-specific landmark).
-    const requiredVia=detour?[F.closure.b,...c.via]:c.via;
+    // Students avoid closed streets; they never have to visit the roadworks.
+    // B2+ retain their real level-specific landmarks.
+    const requiredVia=c.via;
     const completeVia=visited(progress,requiredVia);
     if(detour&&arrived&&!completeVia)
       return {accepted:false,kind:"missing-via",
@@ -216,7 +229,7 @@
     return {correct:true,kind:"correct",service:selected};
   }
   function detourCheckpoints(level){
-    return [F.closure.b,...config(level).via].map(copy);
+    return config(level).via.map(copy);
   }
   function routeModel(pack,route){
     if(route.length<2)return "";
@@ -292,5 +305,5 @@
   return Object.freeze({F,E,levels,goals,guidedPaths,lvlIndex,config,pathFromDirections,routeStart,
     moveRoute,guidedStart,guidedMove,guidedReview,instruction,answerCount,optionsCount,orderChoices,dialogueDistractors,requiredFields,servicesForLevel,transportOptions,checkTransport,
     repairStart,repairStages,repairChoice,
-    routeModel,detourCheckpoints,questCheckpoints,questStart,questMove,questSpeak,dialogueStart,dialogueChoose});
+    routeModel,detourCheckpoints,detourClosures,questCheckpoints,questStart,questMove,questSpeak,dialogueStart,dialogueChoose});
 });

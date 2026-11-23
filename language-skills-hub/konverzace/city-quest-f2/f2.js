@@ -64,10 +64,10 @@
   // Explicit, four-language mission 07 roadworks learning objective.
   // This checkpoint is an actual map node, not an invented second closure.
   const roadworksCopy={
-    en:{junction:"Meeting point beyond roadworks",task:"Your friend is waiting at the junction on the FAR SIDE of the closed part of Station Road. Reach your friend using open streets, then lead them to City Museum.",reached:"You met your friend beyond the roadworks. Now find an open route to the museum and explain the detour.",missing:"First reach your friend at the junction beyond the roadworks."},
-    es:{junction:"Punto de encuentro tras las obras",task:"Un amigo te espera en el cruce al OTRO LADO del tramo cortado de la calle de la Estación. Llega por calles abiertas y después acompáñalo al museo.",reached:"Te has reunido con tu amigo al otro lado de las obras. Ahora busca una ruta abierta hasta el museo y explica el desvío.",missing:"Primero llega al punto de encuentro al otro lado de las obras."},
-    de:{junction:"Treffpunkt hinter der Baustelle",task:"Ein Freund wartet an der Kreuzung auf der ANDEREN SEITE der Sperrung in der Bahnhofstraße. Erreiche ihn über offene Straßen und begleite ihn danach zum Stadtmuseum.",reached:"Du hast deinen Freund hinter der Baustelle getroffen. Suche nun einen offenen Weg zum Museum und erkläre die Umleitung.",missing:"Erreiche zuerst den Treffpunkt auf der anderen Seite der Baustelle."},
-    fr:{junction:"Rendez-vous au-delà des travaux",task:"Un ami vous attend au carrefour de l'AUTRE CÔTÉ du tronçon fermé de la rue de la Gare. Rejoignez-le par des rues ouvertes, puis accompagnez-le au musée.",reached:"Vous avez retrouvé votre ami au-delà des travaux. Cherchez maintenant un itinéraire ouvert vers le musée et expliquez le détour.",missing:"Rejoignez d'abord le point de rendez-vous de l'autre côté des travaux."}
+    en:{task:"Roadworks block the normal direct approaches to City Museum. Find another route using only open streets. Check the red markings on the map.",missing:"Complete the required waypoint before entering City Museum."},
+    es:{task:"Las obras cortan los accesos directos habituales al museo. Busca otra ruta utilizando únicamente calles abiertas. Consulta los tramos marcados en rojo.",missing:"Pasa primero por el lugar obligatorio antes de llegar al museo."},
+    de:{task:"Die üblichen direkten Zugänge zum Stadtmuseum sind wegen Bauarbeiten gesperrt. Finde einen anderen Weg über offene Straßen und beachte die roten Markierungen.",missing:"Besuche zuerst den vorgeschriebenen Zwischenstopp, bevor du das Museum erreichst."},
+    fr:{task:"Les travaux bloquent les accès directs habituels au musée. Trouvez un autre itinéraire par les rues ouvertes et tenez compte des tronçons indiqués en rouge.",missing:"Passez d'abord par l'étape obligatoire avant de rejoindre le musée."}
   };
   const roadworks=()=>roadworksCopy[state.language]||roadworksCopy.en;
 
@@ -403,8 +403,7 @@
       {node:E.start,name:ui().start},{node:E.goal,name:ui().museum},
       {node:{c:2,r:2},name:ui().square},{node:{c:4,r:2},name:ui().library}
     ];
-    if(state.station===7&&E.same(p,F.closure.b))return roadworks().junction;
-    return names.find(x=>E.same(x.node,p))?.name||ui().city;
+     return names.find(x=>E.same(x.node,p))?.name||ui().city;
   }
   function renderRoute(){
     const game=state.route,c=G.config(state.level);
@@ -564,9 +563,7 @@
     if(game.done)return complete(7,profile().detour,G.routeModel(pack(),game.route));
     note(panel,"🚧 "+ui().closed,roadworks().task);
     if(c.via.length)note(panel,ui().via,c.via.map(pointName).join(", "));
-    const approachVisited=game.route.some(p=>E.same(p,F.closure.b));
-    note(panel,"📍 "+roadworks().junction,
-      approachVisited?roadworks().reached:roadworks().missing);
+    if(c.via.length)note(panel,ui().via,c.via.map(pointName).join(", "));
     para(panel,ui().from+" "+ui().start+" → "+ui().museum,"f2-prompt");
     para(panel,ui().step+": "+(game.route.length-1),"f2-small");
     status(panel,flash?.text||ui().guide,flash?.tone);
@@ -783,15 +780,14 @@
     blocked.replaceChildren();
     const need=!metroPilot()&&(state.station===7||state.level==="C2"&&[2,4,8].includes(state.station));
     if(!need)return;
-    const p=E.position(F.closure.a),q=E.position(F.closure.b);
-    blocked.appendChild(svg("line",{x1:p.x,y1:p.y,x2:q.x,y2:q.y,class:"f2-road-close"}));
-    // The closure callout stays inside the road corridor, avoiding house labels.
-    const mid=(p.x+q.x)/2,label=ui().closed;
-    const width=Math.max(100,Math.min(142,label.length*7+18));
-    blocked.appendChild(svg("rect",{x:mid-width/2,y:p.y-15,width,height:27,rx:9,
-      fill:"#a82e3c",stroke:"#fff5ee","stroke-width":1.7}));
-    const t=svg("text",{x:mid,y:p.y+3,"font-family":"system-ui,sans-serif","font-size":11.4,"font-weight":900,"text-anchor":"middle",fill:"#ffffff"});
-    t.textContent=label;blocked.appendChild(t);
+    const edges=state.station===7?G.detourClosures(state.level):[F.closure];
+    for(const edge of edges){
+      const p=E.position(edge.a),q=E.position(edge.b),x=(p.x+q.x)/2,y=(p.y+q.y)/2;
+      blocked.appendChild(svg("line",{x1:p.x,y1:p.y,x2:q.x,y2:q.y,class:"f2-road-close"}));
+      blocked.appendChild(svg("circle",{cx:x,cy:y,r:14,fill:"#a82e3c",stroke:"#fff5ee","stroke-width":2}));
+      const mark=svg("text",{x,y:y+7,"font-family":"system-ui,sans-serif","font-size":23,"font-weight":900,"text-anchor":"middle",fill:"#ffffff"});
+      mark.textContent="×";blocked.appendChild(mark);
+    }
   }
   function followMap(){
     if(!viewport.classList.contains("detail"))return;
