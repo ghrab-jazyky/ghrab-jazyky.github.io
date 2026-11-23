@@ -24,7 +24,7 @@
     choice:"Only the buttons in the mission panel advance the journey.",preview:"Metro visual preview",
     verified:"Route verified locally. Spoken language was self-assessed, not recorded or automatically graded.",
     complete:"Destination reached",boarded:"Train boarded",line:"Line"},
-   actions:{ENTER:"Enter the metro",READ_NOTICE:"Read service notice",BOARD:"Board the train",NEXT_STOP:"Travel to next stop",TRANSFER_HERE:"Change lines here",EXIT_HERE:"Get off here",
+   actions:{ENTER:"Enter the metro",READ_NOTICE:"Read service notice",BOARD:"Board the train",NEXT_STOP:"Travel to next stop",TURN_BACK:"Change to opposite-direction train",TRANSFER_HERE:"Change lines here",EXIT_HERE:"Get off here",
     CHANGE_LINE:"Follow transfer signs",STAY_ON_LINE:"Stay on this line",EXIT:"Exit at destination",CONTINUE_PAST_EXIT:"Continue on the train",SELF_CHECK:"✓ I have practised aloud · continue"},
    titles:{5:"Find the Right Line",6:"Change Lines",7:"Metro Disruption",8:"City + Metro Quest"},
    goals:{5:"Find a metro route from Central Station to Museum Quarter. Use the network map to choose a line, direction and platform.",
@@ -105,7 +105,7 @@
     choice:"Solo los controles de la misión hacen avanzar el recorrido.",preview:"Vista previa del metro",
     verified:"Recorrido comprobado localmente. La expresión oral se autoevaluó; no se grabó ni calificó automáticamente.",
     complete:"Destino alcanzado",boarded:"Has subido al tren",line:"Línea"},
-   actions:{ENTER:"Entrar en el metro",READ_NOTICE:"Leer el aviso de servicio",BOARD:"Subir al tren",NEXT_STOP:"Avanzar a la siguiente estación",TRANSFER_HERE:"Hacer transbordo aquí",EXIT_HERE:"Bajar aquí",
+   actions:{ENTER:"Entrar en el metro",READ_NOTICE:"Leer el aviso de servicio",BOARD:"Subir al tren",NEXT_STOP:"Avanzar a la siguiente estación",TURN_BACK:"Cambiar a un tren en sentido contrario",TRANSFER_HERE:"Hacer transbordo aquí",EXIT_HERE:"Bajar aquí",
     CHANGE_LINE:"Seguir las señales de transbordo",STAY_ON_LINE:"Seguir en esta línea",EXIT:"Salir en el destino",CONTINUE_PAST_EXIT:"Continuar en el tren",SELF_CHECK:"✓ He practicado en voz alta · continuar"},
    titles:{5:"Encuentra la línea correcta",6:"Haz un transbordo",7:"Incidencia en el metro",8:"A pie y en metro"},
    goals:{5:"Encuentra un trayecto en metro de Central Station a Museum Quarter. Usa el plano para elegir la línea, el sentido y el andén.",
@@ -185,7 +185,7 @@
     choice:"Nur die Schaltflächen im Missionsfeld steuern die Fahrt.",preview:"U-Bahn-Vorschau",
     verified:"Die Route wurde lokal geprüft. Die Sprechleistung wurde nur selbst eingeschätzt – ohne Aufnahme oder automatische Bewertung.",
     complete:"Ziel erreicht",boarded:"Eingestiegen",line:"Linie"},
-   actions:{ENTER:"Die U-Bahn betreten",READ_NOTICE:"Störungsmeldung lesen",BOARD:"In den Zug einsteigen",NEXT_STOP:"Zur nächsten Station fahren",TRANSFER_HERE:"Hier umsteigen",EXIT_HERE:"Hier aussteigen",
+   actions:{ENTER:"Die U-Bahn betreten",READ_NOTICE:"Störungsmeldung lesen",BOARD:"In den Zug einsteigen",NEXT_STOP:"Zur nächsten Station fahren",TURN_BACK:"In den Zug der Gegenrichtung wechseln",TRANSFER_HERE:"Hier umsteigen",EXIT_HERE:"Hier aussteigen",
     CHANGE_LINE:"Den Umsteigeschildern folgen",STAY_ON_LINE:"Auf dieser Linie bleiben",EXIT:"Am Ziel aussteigen",CONTINUE_PAST_EXIT:"Im Zug weiterfahren",SELF_CHECK:"✓ Ich habe laut geübt · weiter"},
    titles:{5:"Die richtige Linie finden",6:"Richtig umsteigen",7:"Störung im U-Bahn-Verkehr",8:"Zu Fuß und mit der U-Bahn"},
    goals:{5:"Finde eine U-Bahn-Verbindung von Central Station nach Museum Quarter. Bestimme anhand des Netzplans die Linie, die Richtung und den Bahnsteig.",
@@ -266,7 +266,7 @@
     choice:"Seuls les boutons de la mission font avancer le trajet.",preview:"Aperçu du métro",
     verified:"Itinéraire vérifié localement. L'expression orale est autoévaluée, sans enregistrement ni note automatique.",
     complete:"Destination atteinte",boarded:"À bord du train",line:"Ligne"},
-   actions:{ENTER:"Entrer dans le métro",READ_NOTICE:"Lire l'avis de perturbation",BOARD:"Monter dans le train",NEXT_STOP:"Aller à la station suivante",TRANSFER_HERE:"Changer de ligne ici",EXIT_HERE:"Descendre ici",
+   actions:{ENTER:"Entrer dans le métro",READ_NOTICE:"Lire l'avis de perturbation",BOARD:"Monter dans le train",NEXT_STOP:"Aller à la station suivante",TURN_BACK:"Prendre un train en sens inverse",TRANSFER_HERE:"Changer de ligne ici",EXIT_HERE:"Descendre ici",
     CHANGE_LINE:"Suivre les panneaux de correspondance",STAY_ON_LINE:"Rester sur cette ligne",EXIT:"Sortir à destination",CONTINUE_PAST_EXIT:"Rester à bord du train",SELF_CHECK:"✓ J'ai parlé à voix haute · continuer"},
    titles:{5:"Trouver la bonne ligne",6:"Changer de ligne",7:"Perturbation du métro",8:"De la ville au métro"},
    goals:{5:"Trouvez un itinéraire en métro de Central Station à Museum Quarter. Utilisez le plan pour choisir la ligne, la direction et le quai.",
@@ -395,7 +395,50 @@
   return authored?authored.lead+" "+p.models[mission]+" "+authored.reason:
     p.models[mission];
  }
+ // Feedback for real off-route journeys and TRUE interchange information.
+ // Semantic result codes prevent generic translations from falsely claiming
+ // that a legitimate interchange is invalid or that a train cannot proceed.
+ const newMessages={
+  en:{
+   offRoute:"You reached {station} after passing your planned stop. Compare the map, then choose a return train.",
+   recovered:"You are back at {station}. Reconsider the transfer or exit before continuing.",
+   turnBack:"You changed to an opposite-direction train at {station}. Travel back one stop at a time.",
+   terminus:"The train terminates here. Use an opposite-direction service to return.",
+   closedSegment:"The next rail segment is closed. Choose an open route.",
+   otherInterchange:"This is a real interchange, but it does not match the remaining route in this task. Check the map.",
+   notInterchange:"This station is not a transfer between metro lines."
+  },
+  es:{
+   offRoute:"Has llegado a {station} después de pasar tu parada prevista. Consulta el plano y toma un tren de vuelta.",
+   recovered:"Has regresado a {station}. Comprueba dónde debes hacer transbordo o bajar.",
+   turnBack:"Has cambiado a un tren en sentido contrario en {station}. Regresa estación por estación.",
+   terminus:"Este tren termina aquí. Toma un servicio en sentido contrario para regresar.",
+   closedSegment:"El siguiente tramo está cortado. Busca una conexión abierta.",
+   otherInterchange:"Esta sí es una estación de transbordo, pero ese enlace no corresponde al resto de tu ruta. Consulta el plano.",
+   notInterchange:"En esta estación no se puede cambiar entre líneas de metro."
+  },
+  de:{
+   offRoute:"Du bist nach dem geplanten Ausstieg an {station} angekommen. Prüfe den Plan und nimm einen Zug zurück.",
+   recovered:"Du bist wieder an {station}. Überlege, ob du jetzt umsteigen oder aussteigen musst.",
+   turnBack:"Du bist an {station} in einen Zug der Gegenrichtung umgestiegen. Fahre Station für Station zurück.",
+   terminus:"Dieser Zug endet hier. Nimm für die Rückfahrt einen Zug der Gegenrichtung.",
+   closedSegment:"Der nächste Streckenabschnitt ist gesperrt. Suche eine offene Verbindung.",
+   otherInterchange:"Hier kann man tatsächlich umsteigen, aber die Verbindung passt nicht zur verbleibenden Route. Prüfe den Plan.",
+   notInterchange:"An dieser Station gibt es keine Umsteigemöglichkeit zwischen den Linien."
+  },
+  fr:{
+   offRoute:"Vous êtes arrivé à {station} après l'arrêt prévu. Consultez le plan et prenez un train en sens inverse.",
+   recovered:"Vous êtes de retour à {station}. Vérifiez où changer de ligne ou descendre.",
+   turnBack:"Vous avez pris un train en sens inverse à {station}. Revenez station par station.",
+   terminus:"Ce train est au terminus. Prenez une rame en sens inverse pour revenir.",
+   closedSegment:"Le tronçon suivant est fermé. Choisissez une autre liaison ouverte.",
+   otherInterchange:"Cette station permet bien une correspondance, mais elle ne convient pas à la suite de cet itinéraire. Vérifiez le plan.",
+   notInterchange:"Cette station ne permet pas de changer de ligne."
+  }
+ };
  function feedback(lang,result,action,stationLabel){
+  if(result.code&&newMessages[lang]?.[result.code])
+   return replace(newMessages[lang][result.code],{station:stationLabel||"this station"});
   if(lang==="en")return result.message;
   const p=content[lang];
   if(!p)throw RangeError("Unsupported language");

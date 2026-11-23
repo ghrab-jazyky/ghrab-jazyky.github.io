@@ -127,8 +127,15 @@
  function pack(lang,level,state){
   if(!languages.includes(lang)||!levels.includes(level))throw RangeError("Unsupported language or CEFR.");
   const {scenario,station}=validateState(state),copy=dict[lang],kind=phaseMap[state.phase];
-  const activeLeg=scenario.legs[state.legIndex],
-   nextId=activeLeg?.stops[state.stopIndex+1]||null;
+  // Announcements follow the physical line and current train direction,
+  // even when a learner misses an exit. The approved itinerary is NOT
+  // a fictional service terminus.
+  const service=state.lineId?M.line(state.lineId):null;
+  const position=service?service.stops.indexOf(state.metroStation):-1;
+  const step=service&&state.direction===service.stops.at(-1)?1:-1;
+  const candidate=service&&position>=0&&state.direction?
+    service.stops[position+step]||null:null;
+  const nextId=candidate&&!M.closed(state.metroStation,candidate,state.lineId,scenario.closedEdges)?candidate:null;
   const vars={
    station:station.labelEn,
    // Do not reveal a future answer before it has been selected by the player.

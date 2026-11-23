@@ -119,8 +119,9 @@ test("F3B next-station display is based on actual route and only available on bo
   g=go(g,"NEXT_STOP");
   p=PA.pack(lang,"B1",g);
   assert.equal(p.kind,"onboard","Arrival alone must not announce the right exit.");
-  assert.equal(p.next,null,"At the final stop there is no fictional next station.");
-  assert.ok(p.body.includes("Museum Quarter"),"The current stop must remain visible.");
+  assert.equal(p.next,"Riverside","M1 physically continues after Museum Quarter.");
+  assert.equal(p.station,"Museum Quarter","PA must report the current station separately.");
+  assert.ok(p.body.includes("Riverside"),"The next physical station is Riverside.");
   g=go(g,"EXIT_HERE");
   p=PA.pack(lang,"B1",g);
   assert.equal(p.kind,"arrival");

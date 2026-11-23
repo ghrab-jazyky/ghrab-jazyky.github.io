@@ -364,10 +364,14 @@
       choices(panel,stage==="select-platform"?opts:
         G.orderChoices(opts,state.language,state.level,n,stage),value=>metroAction({type,value}));
     }else if(stage==="ride"){
-      // One real decision at every metro stop: carry on, change here or get off.
+      // The train follows the full physical line. An overrun remains playable
+      // and can be corrected by choosing an opposite-direction service.
       const row=actions(panel);
-      for(const type of ["NEXT_STOP","TRANSFER_HERE","EXIT_HERE"])
+      for(const type of ["NEXT_STOP","TURN_BACK","TRANSFER_HERE","EXIT_HERE"])
         btn(row,c.actions[type],()=>metroAction({type}),type==="NEXT_STOP"?"primary":"");
+      if(game.offRoute)note(panel,"⚠ "+c.labels.status||"Route",LC.feedback(state.language,{
+        accepted:true,code:"offRoute",state:game,message:""
+      },{type:"NEXT_STOP"},place));
     }else if(stage==="checkpoint"||stage==="speech"){
       const tip=el("div",panel,"f2-help");
       el("strong",tip,"","🗣️ "+c.labels.prompt);

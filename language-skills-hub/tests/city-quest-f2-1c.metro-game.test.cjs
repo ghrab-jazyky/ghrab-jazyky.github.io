@@ -135,6 +135,37 @@ test("Mission 08 EN/B1 has city entrance, metro transfer, city exit and three sp
  assert.equal(end.speakingDone,3);
  assert.ok(end.history.filter(x=>x==="WALK").length>=4);
 });
+test("F5C NEW-02: physical M2 overshoot has a consequence, recovery, and truthful Central Station transfer feedback",()=>{
+ let state=G.start(6);
+ state=accepted(state,"SELECT_LINE","M2");
+ state=accepted(state,"SELECT_DIRECTION","north_park");
+ state=accepted(state,"SELECT_PLATFORM","1");
+ state=accepted(state,"BOARD");
+ state=accepted(state,"NEXT_STOP"); // Central Station is a REAL M1/M2 interchange.
+ assert.equal(state.metroStation,"central_station");
+ const wrongTransfer=act(state,"TRANSFER_HERE");
+ assert.equal(wrongTransfer.accepted,false);
+ assert.equal(wrongTransfer.code,"otherInterchange");
+ assert.match(wrongTransfer.message,/is an interchange/i);
+ assert.equal(wrongTransfer.state.metroStation,"central_station");
+ state=accepted(state,"NEXT_STOP"); // University
+ assert.equal(state.metroStation,"university");
+ state=accepted(state,"NEXT_STOP"); // train continues to North Park
+ assert.equal(state.metroStation,"north_park");
+ assert.equal(state.offRoute,true);
+ assert.equal(state.completed,false);
+ const terminus=act(state,"NEXT_STOP");
+ assert.equal(terminus.accepted,false);
+ assert.equal(terminus.code,"terminus");
+ state=accepted(state,"TURN_BACK");
+ assert.equal(state.direction,"south_gate");
+ state=accepted(state,"NEXT_STOP");
+ assert.equal(state.metroStation,"university");
+ assert.equal(state.offRoute,false);
+ assert.ok(state.extraStops>=2);
+ state=accepted(state,"TRANSFER_HERE");
+ assert.equal(state.phase,"transfer");
+});
 test("City portion of mission 08 supports safe Undo without losing the current mission",()=>{
  let state=G.start(8);
  assert.equal(act(state,"UNDO_WALK").accepted,false,"Cannot undo before first step");
