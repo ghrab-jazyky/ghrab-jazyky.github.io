@@ -392,3 +392,28 @@
     hyphens:auto;
   }
 }
+
+/* F5C 029: avoid pictogram and learning-step marker collisions at 200%
+   root text size on narrow phones (DE C2 has the longest mission titles).
+   Fixed 25px tokens must not host 34px emoji or wrap into adjacent copy. */
+@media(max-width:820px){
+ .f1-station{gap:max(8px,.4rem)}
+ .f1-station-icon{
+  box-sizing:border-box;
+  width:clamp(29px,1.4rem,38px);
+  height:clamp(29px,1.4rem,38px);
+  flex:0 0 auto;
+  font-size:clamp(16px,.86rem,20px);
+  line-height:1;
+  overflow:hidden;
+ }
+ .f1-station-caption{min-width:0;flex:1 1 auto}
+ .f3d-learning-steps li{gap:max(8px,.4rem)}
+ .f3d-learning-steps li span{
+  box-sizing:border-box;flex:0 0 auto;
+  width:clamp(29px,1.35rem,40px);
+  height:clamp(29px,1.35rem,40px);
+  font-size:clamp(12px,.72rem,17px);
+  line-height:1;
+ }
+}

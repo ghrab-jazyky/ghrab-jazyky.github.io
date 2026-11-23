@@ -239,3 +239,37 @@ test("F5C N03/NEW-03/NEW-06: game identity and catalog language survive metro to
   await invalid.close();
  }finally{await browser.close();}
 });
+
+test("F5C 029: DE C2 enlarged phone labels never collide with station icons or learning steps",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  for(const width of [320,390]){
+   const page=await browser.newPage({viewport:{width,height:844},isMobile:true,hasTouch:true});
+   await page.goto(URL);
+   await page.evaluate(()=>document.documentElement.style.fontSize="200%");
+   await page.locator("#f2Language").selectOption("de");
+   await page.locator("#f2Level").selectOption("C2");
+   await page.locator("#metroPilotToggle").click();
+   await page.locator("#f1Stations button").nth(6).click();
+   const bounds=await page.evaluate(()=>{
+    const station=document.querySelectorAll("#f1Stations button")[7],
+      icon=station.querySelector(".f1-station-icon"),
+      caption=station.querySelector(".f1-station-caption"),
+      steps=[...document.querySelectorAll(".f3d-learning-steps li")].map(n=>({
+       marker:n.querySelector("span").getBoundingClientRect().toJSON(),
+       title:n.querySelector("strong").getBoundingClientRect().toJSON()
+      }));
+    return {icon:icon.getBoundingClientRect().toJSON(),
+      caption:caption.getBoundingClientRect().toJSON(),
+      iconFont:parseFloat(getComputedStyle(icon).fontSize),steps,
+      screen:document.documentElement.clientWidth};
+   });
+   assert.ok(bounds.icon.right+4<=bounds.caption.left,JSON.stringify({width,bounds}));
+   assert.ok(bounds.iconFont<=bounds.icon.width,JSON.stringify({width,bounds}));
+   for(const step of bounds.steps){
+    assert.ok(step.marker.right+4<=step.title.left,JSON.stringify({width,step}));
+   }
+   await page.close();
+  }
+ }finally{await browser.close();}
+});
