@@ -149,3 +149,15 @@ test("Independent didactic review: CITY08 model is based on the actual visited c
   assert.ok(route.length>100&&route.split(".").length>=4);
  }
 });
+
+test("Independent editorial review: Metro08 B2-C2 models are coherent, concise and waypoint-correct",()=>{
+ const L=require("../authoring/city-quest-f2-1d/metro-language.js");
+ const ticket={en:/tickets/,es:/entradas/,de:/Eintrittskarten/,fr:/billets/};
+ for(const lang of L.languages)for(const level of ["B2","C1","C2"]){
+  const model=L.model(lang,level,8);
+  assert.match(model,ticket[lang]);
+  assert.match(model,/Market Square[\s\S]*M2[\s\S]*University[\s\S]*M3[\s\S]*Museum Quarter[\s\S]*City Museum/);
+  assert.ok(model.length>270&&model.length<1000,lang+"/"+level+" model must be practical and not padded with repetitions");
+  assert.doesNotMatch(model,/Museumskarten|widerstandsfähige Alternative/i);
+ }
+});
