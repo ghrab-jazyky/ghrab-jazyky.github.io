@@ -23,14 +23,21 @@ test("F5C CQ-F5-012: the City03 model's map route actually reaches City Museum",
    lang+" C2 should not describe a wrong approach or misleading route");
  }
 });
-test("F5C CQ-F5-009: University meeting is the explicit constraint in every Metro08 CEFR goal",()=>{
+test("F5C CQ-F5-009: Metro08 requires ticket pickup at Market Square before University",()=>{
  const L=require("../authoring/city-quest-f2-1d/metro-language.js");
+ const ticketWords={en:/tickets/,es:/entradas/,de:/Museumskarten/,fr:/billets/};
  for(const lang of L.languages)for(const level of L.levels){
-  const c=L.pack(lang,level,8),model=L.model(lang,level,8),checkpoint=L.stage(lang,level,8,"checkpoint",{station:"University"});
+  const c=L.pack(lang,level,8),model=L.model(lang,level,8),
+   meeting=L.stage(lang,level,8,"checkpoint",{station:"University"}),
+   pickup=L.stage(lang,level,8,"checkpoint",{station:"Market Square"});
   assert.match(c.goal,/University/);
-  assert.match(model,/M1/);assert.match(model,/M2/);assert.match(model,/M3/);
-  assert.match(checkpoint,/University/);
-  assert.notEqual(checkpoint,L.stage(lang,level,8,"checkpoint",{station:"Market Square"}));
+  assert.match(c.goal,/Market Square/);
+  assert.match(c.goal,ticketWords[lang],lang+"/"+level+" must explain why walking comes first");
+  assert.match(model,ticketWords[lang],lang+"/"+level+" must explain ticket pickup");
+  assert.match(model,/Market Square.*M2.*University.*M3/s);
+  assert.match(meeting,/University/);
+  assert.match(pickup,ticketWords[lang]);
+  assert.notEqual(meeting,pickup);
  }
 });
 
