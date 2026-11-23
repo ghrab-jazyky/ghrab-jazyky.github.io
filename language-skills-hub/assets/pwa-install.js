@@ -32,7 +32,7 @@
  const title=make('h3','pwa-offer-title','LSH jako aplikace');
  title.id='pwaOfferTitle';heading.append(title);
  const close=make('button','pwa-offer-close','×');close.type='button';
- close.id='pwaOfferClose';close.setAttribute('aria-label','Připomenout instalaci za 7 dní');
+ close.id='pwaOfferClose';close.setAttribute('aria-label','Zavřít instalační nabídku do dalšího načtení stránky');
  head.append(mark,heading,close);
  const lead=make('p','pwa-offer-copy','Otevři všechny tři laboratoře z plochy počítače nebo telefonu.');
  const actions=make('div','pwa-offer-actions');
@@ -152,7 +152,13 @@
   // Position immediately before paint: the popup must never flash over the chooser.
   positionOffer();
  }
- close.addEventListener('click',()=>savePreference('later'));
+ // Closing with X is session-only. Only the explicitly labeled snooze button
+ // stores the seven-day delay; refreshing must restore a merely closed offer.
+ close.addEventListener('click',()=>{
+  dismissedThisSession=true;
+  panel.hidden=true;
+  scheduleLayout();
+ });
  later.addEventListener('click',()=>savePreference('later'));
  never.addEventListener('click',()=>savePreference('never'));
  install.addEventListener('click',async()=>{
