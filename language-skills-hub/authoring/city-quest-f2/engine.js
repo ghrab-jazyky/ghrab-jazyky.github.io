@@ -137,7 +137,7 @@
     const change=(pattern,replacement)=>answer.replace(pattern,replacement);
     if(lang==="en"){
       if(/turn left/i.test(answer)){
-        vague=change(/turn left/i,"turn at some point");
+        vague=change(/turn left/i,match=>match.startsWith("T")?"Turn at some point":"turn at some point");
         wrong=change(/\bleft\b/i,"right");
       }else{
         vague=change(/the northbound street/i,"a street somewhere nearby");
@@ -145,7 +145,9 @@
       }
     }else if(lang==="es"){
       if(/a la izquierda/i.test(answer)){
-        vague=change(/a la izquierda/i,"en algún cruce cercano");
+        vague=/gire a la izquierda cerca de la plaza/i.test(answer)?
+          change(/gire a la izquierda cerca de la plaza/i,"gire en algún cruce cerca de la plaza"):
+          change(/a la izquierda/i,"en algún cruce cercano");
         wrong=change(/izquierda/i,"derecha");
       }else{
         vague=change(/por la calle que va hacia el norte/i,"por alguna calle de la zona");
@@ -161,10 +163,10 @@
       }
     }else if(lang==="fr"){
       if(/à gauche/i.test(answer)){
-        vague=change(/à gauche/i,"sans préciser où");
+        vague=change(/tournez à gauche/i,"tournez à un carrefour plus loin");
         wrong=change(/à gauche/i,"à droite");
       }else{
-        vague=change(/vers le nord/i,"sans direction précise");
+        vague=change(/suivre la rue vers le nord/i,"suivre une rue du quartier");
         wrong=change(/vers le nord/i,"vers le sud");
       }
     }else throw RangeError("Invalid dialogue language");
