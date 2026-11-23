@@ -3,7 +3,7 @@
   "schema": "city-quest-stage3-oracy-v1",
   "ui": {
     "title": "Sprechaufgabe für den Alltag",
-    "doFirst": "Sprich zuerst frei, bevor du die Musterantwort öffnest. Erkläre deinem Partner den Weg, ohne auf den Stadtplan zu zeigen.",
+    "doFirst": "Sprich zuerst frei, bevor du am Ende der Aufgabe die Musterantwort liest. Erkläre deinem Partner den Weg, ohne auf den Stadtplan zu zeigen.",
     "criteria": "Daran erkennt man eine gelungene Antwort",
     "reflection": "Vergleiche deine eigene mündliche Antwort mit diesen Kriterien. Deine Lehrkraft oder dein Partner beurteilt das Sprechen; das Spiel nimmt nichts auf und benotet nichts.",
     "teacher": "Dies ist eine zusätzliche Sprechübung und keine automatisch bewertete Spielaufgabe."
@@ -15,7 +15,7 @@
       "Erkläre deine Überlegungen zusammenhängend und verständlich."
     ],
     "C1": [
-      "Klär ungenaue Angaben, statt ungeprüfte Annahmen zu treffen.",
+      "Kläre ungenaue Angaben, statt ungeprüfte Annahmen zu treffen.",
       "Erläutere Bedingungen, ihre Folgen und einen möglichen Alternativplan.",
       "Formuliere präzise Anweisungen, denen andere problemlos folgen können."
     ],
