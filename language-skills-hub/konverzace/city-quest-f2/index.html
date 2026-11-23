@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070f20">
 <meta name="description" content="City Quest: offline city and metro navigation in English, Spanish, German and French at A1–C2, with interactive metro missions at B1–C2.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-iXw0kEjYqCYEYAcyQXat368b1fc03yjdY280TM45aSg='; style-src 'sha256-0sLCp0Gho9Iwuvl5j6JzeEcMfPPZxBs2hUur1a5U7Ow='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YR/FYVjWmeaJxtrFWTScRBVpTqeHNhxJh8CAJa2A4tM='; style-src 'sha256-kruPPgwrm8jQftL29tQjSmNmYS6hXbvHSs3s2tPLVnE='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <title>City Quest · Interactive Language Game · EN ES DE FR · A1–C2</title>
 
 
@@ -1822,6 +1822,18 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
  .cq-mode-picker{flex:1 1 100%}
  .cq-confirm-actions button{flex:1 1 100%}
 }
+/* Stage 2: teacher-only explanations stay collapsed during learner play. */
+.cq-teacher-guide{margin:0 0 14px;border:1px solid #6bb4b65e;border-radius:13px;background:var(--panel2);color:var(--text)}
+.cq-teacher-guide summary{cursor:pointer;min-height:44px;padding:11px 14px;font-weight:800}
+.cq-teacher-guide summary:focus-visible{outline:3px solid #85eede;outline-offset:3px}
+.cq-teacher-content{padding:4px 14px 15px}
+.cq-teacher-content>p:first-child{font-size:.85rem;font-weight:700;color:var(--muted)}
+.cq-teacher-content dl{display:grid;gap:8px;margin:8px 0}
+.cq-teacher-content dl>div{display:grid;grid-template-columns:minmax(110px,170px) minmax(0,1fr);gap:7px 12px}
+.cq-teacher-content dt{font-weight:850;color:var(--mint)}
+.cq-teacher-content dd{margin:0;line-height:1.4;overflow-wrap:break-word}
+.cq-teacher-note{margin:14px 0 0;font-size:.82rem;line-height:1.45;color:var(--muted)}
+@media(max-width:480px){.cq-teacher-content dl>div{grid-template-columns:1fr;gap:2px}}
 </style>
 </head>
 <body>
@@ -1896,6 +1908,20 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   </ol>
   <p id="f3dRailNote">Explain your choices aloud. Speaking is never automatically graded.</p>
 </section>
+<details class="cq-teacher-guide" id="cqTeacherGuide">
+ <summary>🎓 Pro učitele · cíl a využití mise</summary>
+ <div class="cq-teacher-content">
+  <p id="cqTeacherMeta"></p>
+  <dl>
+   <div><dt>Didaktický cíl</dt><dd id="cqTeacherGoal"></dd></div>
+   <div><dt>Slovní zásoba</dt><dd id="cqTeacherVocab"></dd></div>
+   <div><dt>Co má žák říci</dt><dd id="cqTeacherSpeak"></dd></div>
+   <div><dt>Slabší žáci</dt><dd id="cqTeacherWeak"></dd></div>
+   <div><dt>Silnější žáci</dt><dd id="cqTeacherStrong"></dd></div>
+  </dl>
+  <p class="cq-teacher-note">Mluvení hra nehodnotí automaticky. Doplňte partnerskou kontrolu nebo skutečný poslech učitele.</p>
+ </div>
+</details>
 <div class="tabs f1-legacy-tabs" role="tablist" aria-label="Legacy F0 mission controls" hidden>
  <button class="btn tab" type="button" id="routeTab" role="tab" aria-selected="true" aria-controls="routeView">01 · Find the Route</button>
  <button class="btn tab" type="button" id="dialogueTab" role="tab" aria-selected="false" aria-controls="dialogueView">02 · Ask for Directions</button>
@@ -5448,6 +5474,19 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   };
   const metroNarrative={"en":{"5":"New chapter · The next morning, you return to Central Station. A friend has just arrived by train with a heavy suitcase. After exploring Riverton on foot, help your friend reach Museum Quarter by metro.","6":"Later that day, you start another journey at Market Square. Your friend wants to see a match at Stadium. Choose a connection and explain where to change trains.","7":"The following day, you are back at Central Station. A closure disrupts the M1 route to Museum Quarter. Read the notice and find a safe alternative.","8":"Final journey · Collect your museum tickets on foot at Market Square. A classmate is waiting at University with your group's audio guides. The museum is close enough to walk to from Market Square, but you must meet your classmate before visiting it."},"es":{"5":"Nueva etapa · A la mañana siguiente, vuelves a la Estación Central. Una amiga acaba de llegar en tren con una maleta pesada. Después de recorrer Riverton a pie, ayúdala a llegar en metro a Museum Quarter.","6":"Más tarde, empiezas otro recorrido en Market Square. Tu amiga quiere asistir a un partido en Stadium. Elige una conexión y explícale dónde hacer transbordo.","7":"Al día siguiente, vuelves a Central Station. Un corte afecta a la línea M1 hacia Museum Quarter. Lee el aviso y busca una ruta alternativa segura.","8":"Reto final · Ve a pie a Market Square a recoger las entradas del museo. Una compañera te espera en University con las audioguías del grupo. Aunque el museo queda cerca de Market Square, tienes que reunirte con ella antes de visitarlo."},"de":{"5":"Neues Kapitel · Am nächsten Morgen kehrst du zum Hauptbahnhof zurück. Eine Freundin ist gerade mit einem schweren Koffer angekommen. Nachdem du Riverton zu Fuß erkundet hast, hilf ihr, mit der U-Bahn zur Station Museum Quarter zu kommen.","6":"Später beginnst du am Market Square eine neue Fahrt. Deine Freundin möchte ein Spiel im Stadium sehen. Wähle die Verbindung und erkläre, wo sie umsteigen muss.","7":"Am folgenden Tag bist du wieder an der Station Central Station. Eine Sperrung unterbricht die M1-Verbindung nach Museum Quarter. Lies die Meldung und finde eine sichere Alternative.","8":"Abschlussmission · Hole die Museumstickets zu Fuß am Market Square ab. Eine Mitschülerin wartet an der Station University mit den Audioguides für eure Gruppe. Obwohl das Museum vom Market Square nicht weit entfernt ist, musst du sie vor dem Museumsbesuch treffen."},"fr":{"5":"Nouvelle étape · Le lendemain matin, vous retournez à la gare centrale. Une amie vient d'arriver en train avec une lourde valise. Après avoir exploré Riverton à pied, aidez-la à rejoindre Museum Quarter en métro.","6":"Plus tard, vous partez de Market Square pour un nouveau trajet. Votre amie souhaite assister à un match à Stadium. Choisissez une correspondance et expliquez où changer de ligne.","7":"Le jour suivant, vous êtes de retour à Central Station. Une fermeture perturbe la ligne M1 vers Museum Quarter. Lisez l'avis et trouvez un autre itinéraire sûr.","8":"Défi final · Récupérez à pied les billets du musée à Market Square. Une camarade vous attend à University avec les audioguides du groupe. Même si le musée est tout près de Market Square, vous devez la retrouver avant la visite."}};
   const cqModeText={"en":["Journey mode","City only","City + metro","Switch journey mode?","Missions 05–08 already contain progress. Switching modes restarts them; completed missions 01–04 stay.","Keep mode","Switch mode"],"es":["Modalidad","Solo ciudad","Ciudad + metro","¿Cambiar de modalidad?","Ya hay progreso en las misiones 05–08. Al cambiar se reinician; las misiones 01–04 se conservan.","Mantener","Cambiar"],"de":["Spielmodus","Nur Stadt","Stadt + U-Bahn","Spielmodus wechseln?","In den Aufgaben 05–08 gibt es Fortschritte. Der Wechsel setzt sie zurück; Aufgaben 01–04 bleiben erhalten.","Beibehalten","Wechseln"],"fr":["Mode de parcours","Ville uniquement","Ville + métro","Changer de mode ?","Vous avez déjà avancé dans les missions 05–08. Le changement les réinitialise ; les missions 01–04 restent terminées.","Garder","Changer"]};
+  const cqTeacherCity=[["5 min","Rozpoznat místo podle jeho funkce a slovní indicie.","nádraží, muzeum, nemocnice, knihovna, náměstí, park","Pojmenovat místo a vysvětlit volbu.","Nejprve slovníček a ukázání místa na mapě.","Popsat místo bez názvu, partner hádá."],["8 min","Najít pěší trasu a zformulovat pokyny.","křižovatka, blok, vpravo, vlevo, rovně","Popsat celou trasu od startu do cíle.","Nejprve trasu projít prstem, potom klikat.","Vysvětlit volbu průchozích bodů a alternativ."],["8 min","Požádat o cestu, upřesnit informaci a zdvořile reagovat.","dotaz, orientační bod, upřesnění, omluva","Vlastními slovy odpovědět turistovi ještě před výběrem možnosti.","Zahrát turistu s předem připravenými frázemi.","Zvládnout improvizované upřesnění bez čtení možností."],["6 min","Porozumět postupným pokynům a převést je na pohyb.","směr, křižovatka, zatočení, pokračování","Nahlas zopakovat, co znamená další pokyn.","Použít kompas a kontrolovat každý krok.","Následovat pokyny partnera jen podle vlevo/vpravo/rovně."],["6 min","Číst jízdní řád autobusu a vybrat vhodný spoj.","linka, odjezd, příjezd, cíl, přístupnost","Zdůvodnit číslo linky, čas a zastávku.","Začít pouze linkou a cílem.","Porovnat i nevhodné spoje s ohledem na čas."],["6 min","Najít chybu v pokynech a opravit ji.","chybná odbočka, správný směr, omluva","Vysvětlit omyl a podat jednoznačnou opravu.","Znázornit otočku šipkami.","Taktně formulovat omluvu a novou instrukci."],["7 min","Reagovat na uzavřenou ulici a najít objížďku.","uzávěra, objížďka, alternativa, přístup","Vysvětlit, kudy cesta vede a proč je bezpečná.","Nejdříve označit uzavřený úsek.","Porovnat dvě přípustné trasy."],["10–12 min","Spojit navigaci přes několik cílů do jednoho příběhu.","opakování směrových frází a městských míst","Souvisle vysvětlit jednotlivé části cesty.","Dát jen dvě krátké instrukce na každý bod.","Navádět turistu bez ukazování mapy."]];
+  const cqTeacherMetro=[["8 min","Vybrat linku, směr, nástupiště a místo výstupu.","linka, konečná, nástupiště, výstup","Srozumitelně vysvětlit celou jízdu.","Přečíst společně nástupištní tabule.","Zdůvodnit, proč opačný směr nevyhovuje."],["8 min","Najít a vysvětlit správný přestup.","přestup, linka, konečná, nástupiště","Popsat výchozí linku, stanici přestupu a pokračování.","Prstem ukázat přestupní uzel.","Porovnat alternativu, kterou hra případně odmítá."],["8 min","Pochopit výluku a vybrat alternativní spojení.","výluka, uzávěra, náhradní cesta","Zformulovat stručné vysvětlení změny trasy.","Podtrhnout klíčovou informaci ve výluce.","Vysvětlit výluku turistovi vhodným registrem."],["12–15 min","Propojit pěší navigaci, metro, přestup a pěší dokončení.","vchod, jízdenka, přestup, výstup, orientace","Popsat cestu a zdůvodnit setkání na University.","Mluvit samostatně o každé etapě.","Zdůvodnit volbu metra místo kratší pěší cesty."]];
+  const cqPlacePurpose={"en":{"station":"Trains arrive and depart here.","museum":"Historical objects are displayed here.","hospital":"Doctors treat patients here.","library":"You can borrow books here.","square":"An open public meeting place.","park":"A green area by the river.","cafe":"Drinks and snacks are served here.","post":"Letters and parcels are sent here."},"es":{"station":"Aquí llegan y salen los trenes.","museum":"Aquí se exponen objetos históricos.","hospital":"Aquí se atiende a los pacientes.","library":"Aquí se prestan libros.","square":"Un espacio público para encontrarse.","park":"Una zona verde junto al río.","cafe":"Aquí sirven bebidas y comida ligera.","post":"Aquí se envían cartas y paquetes."},"de":{"station":"Hier kommen Züge an und fahren ab.","museum":"Hier werden historische Gegenstände ausgestellt.","hospital":"Hier behandelt man Patientinnen und Patienten.","library":"Hier kann man Bücher ausleihen.","square":"Ein öffentlicher Treffpunkt im Freien.","park":"Eine Grünanlage am Fluss.","cafe":"Hier gibt es Getränke und kleine Speisen.","post":"Hier verschickt man Briefe und Pakete."},"fr":{"station":"Les trains arrivent et partent d'ici.","museum":"On y expose des objets historiques.","hospital":"On y soigne les patients.","library":"On y emprunte des livres.","square":"Un lieu public où l'on se retrouve.","park":"Un espace vert près de la rivière.","cafe":"On y sert des boissons et des en-cas.","post":"On y envoie des lettres et des colis."}};
+  const cqFeedback={"en":{"notMatch":"This place does not match the clue.","right":"Correct place.","repairTurn":"You found the incorrect turn. Now decide which turn leads north when travelling east.","bounds":"This step leaves the city map.","distance":"Move one adjacent crossroads at a time.","loop":"You have already visited that crossroads. Choose another street.","closed":"That street is closed. Find an open route.","wrongWay":"Your move does not match the current instruction. Check it again."},"es":{"notMatch":"Este lugar no corresponde a la pista.","right":"Lugar correcto.","repairTurn":"Has encontrado el giro erróneo. Ahora decide qué giro te lleva al norte cuando avanzas hacia el este.","bounds":"Ese paso sale del plano de la ciudad.","distance":"Avanza hasta un cruce vecino cada vez.","loop":"Ya has pasado por ese cruce. Busca otra calle.","closed":"Esta calle está cortada. Busca una ruta abierta.","wrongWay":"Este movimiento no sigue la indicación actual. Revísala."},"de":{"notMatch":"Dieser Ort passt nicht zum Hinweis.","right":"Richtiger Ort.","repairTurn":"Du hast den falschen Abzweig gefunden. Welche Abbiegung führt beim Gehen nach Osten nach Norden?","bounds":"Dieser Schritt führt über den Kartenrand hinaus.","distance":"Gehe nur bis zur nächsten Kreuzung.","loop":"Diese Kreuzung hast du schon besucht. Wähle eine andere Straße.","closed":"Die Straße ist gesperrt. Finde einen offenen Weg.","wrongWay":"Dieser Schritt passt nicht zur aktuellen Anweisung. Lies sie noch einmal."},"fr":{"notMatch":"Ce lieu ne correspond pas à l'indice.","right":"Bon lieu.","repairTurn":"Vous avez repéré le mauvais virage. Quel virage mène au nord lorsque vous marchez vers l'est ?","bounds":"Ce déplacement sort du plan de la ville.","distance":"Avancez vers un carrefour voisin à la fois.","loop":"Vous êtes déjà passé par ce carrefour. Essayez une autre rue.","closed":"Cette rue est fermée. Trouvez un itinéraire ouvert.","wrongWay":"Ce déplacement ne correspond pas à la consigne actuelle. Relisez-la."}};
+  function updateTeacherGuide(){
+    const info=metroPilot()?cqTeacherMetro[state.station-5]:cqTeacherCity[state.station-1];
+    if(!info)return;
+    $("cqTeacherMeta").textContent=(metroPilot()?"METRO · B1–C2":"MĚSTO · A1–C2")+
+      " · vybraná úroveň "+state.level+" · přibližně 12–19 let · "+info[0];
+    for(const [id,n]of [["cqTeacherGoal",1],["cqTeacherVocab",2],
+      ["cqTeacherSpeak",3],["cqTeacherWeak",4],["cqTeacherStrong",5]])
+      $(id).textContent=info[n];
+  }
   const lesson=()=>lessonCopy[state.language]||lessonCopy.en;
   // Explicit, four-language mission 07 roadworks learning objective.
   // This checkpoint is an actual map node, not an invented second closure.
@@ -5814,8 +5853,17 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     const ordered=G.orderChoices(ids,state.language,state.level,1,game.round);
     choices(panel,ordered.map(id=>({value:id,label:(F.findPlace(id)?.icon||"📍")+" "+pack().places[id]})),id=>{
       const verdict=F.answerExplore(game.round,id);
-      if(verdict.correct){game.round++;flash={text:ui().correct,tone:"success"};screen();}
-      else{game.misses++;flash={text:ui().notQuite,tone:"warning"};screen();}
+      if(verdict.correct){
+         game.round++;
+         flash={text:cqFeedback[state.language].right+" "+cqPlacePurpose[state.language][id],tone:"success"};
+         screen();
+       }
+      else{
+         game.misses++;
+         flash={text:cqFeedback[state.language].notMatch+" "+pack().places[id]+": "+
+           cqPlacePurpose[state.language][id],tone:"warning"};
+         screen();
+       }
     });
     status(panel,flash?.text||ui().choose,flash?.tone);
     help(panel);
@@ -5866,7 +5914,8 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       const r=G.dialogueChoose(game,id);
       if(!r.accepted)return;
       state.dialogue=r.state;
-      flash={text:r.kind==="retry"?d.unclear:d.good,tone:r.kind==="retry"?"warning":"success"};
+      flash={text:r.kind==="retry"&&["wrong","insist"].includes(id)?d.wrongFeedback:
+         r.kind==="retry"?d.unclear:d.good,tone:r.kind==="retry"?"warning":"success"};
       screen();
     });
     status(panel,flash?.text||ui().yourTurn,flash?.tone);
@@ -5980,7 +6029,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       state.repair=result.state;
       flash={text:result.accepted?
         (phase>=2?r.repairWhy:ui().correct):
-        (scenario?.retry||r.notYet),
+        (scenario?.retry||(phase===1?cqFeedback[state.language].repairTurn:r.notYet)),
         tone:result.accepted?"success":"warning"};
       screen();
     });
@@ -6065,11 +6114,12 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       case 8:outcome=G.questMove(state.quest,next,state.level);state.quest=outcome.state;break;
       default:return;
     }
-    if(outcome.kind==="closed")flash={text:ui().wrongRoad,tone:"warning"};
+    if(outcome.kind==="closed")flash={text:cqFeedback[state.language].closed,tone:"warning"};
     else if(outcome.kind==="speak")flash={text:ui().selfcheck,tone:"warning"};
     else if(outcome.kind==="missing-via")flash={text:state.station===7?
       roadworks().missing:ui().via+" · "+ui().feedbackRetry,tone:"warning"};
-    else if(!outcome.accepted)flash={text:ui().feedbackRetry,tone:"warning"};
+    else if(!outcome.accepted)flash={text:cqFeedback[state.language][
+      outcome.kind==="wrong-way"?"wrongWay":outcome.kind]||ui().feedbackRetry,tone:"warning"};
     else flash={text:ui().correct,tone:"success"};
     screen();renderMap();
   }
@@ -6394,6 +6444,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     $("f3dRailNote").textContent=x.note;
     $("f3dSessionAdvice").textContent=ui().changeSession+
       (metroAvailable()?" "+x.metroReset:"");
+    updateTeacherGuide();
   }
   function updateProgress(){
     const u=ui(),nav=$("f1Stations");
