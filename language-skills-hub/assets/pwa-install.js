@@ -90,8 +90,8 @@
   const scrolled=dock&&chooser.scrollTop>4;
   panel.classList.toggle('pwa-offer--scrolled',scrolled);
   panel.setAttribute('aria-hidden',scrolled?'true':'false');
-  for(const button of [install,later,never,close])button.disabled=scrolled||installBusy||
-   (button===install&&!canPrompt()&&!manualOnly);
+  for(const button of [install,later,never,close])
+   button.disabled=scrolled||installBusy||panel.hidden;
   chooser.classList.toggle('pwa-install-docked',dock);
   panel.classList.toggle('pwa-offer--docked',dock);
   if(dock){
