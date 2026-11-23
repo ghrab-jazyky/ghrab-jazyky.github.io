@@ -46,6 +46,7 @@ jobs:
           node --test language-skills-hub/tests/city-quest-f5c.mobile.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-f3c.mobile.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-f2-1d.metro.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-f5c.webkit.browser.test.cjs
         timeout-minutes: 19
       - name: Publish compatibility screenshots and environment details
         if: always()
@@ -55,6 +56,7 @@ jobs:
           path: |
             city-quest-f2-1d-artifacts/
             city-quest-f3c-artifacts/
+            city-quest-f5c-webkit-artifacts/
             /tmp/city-quest-current-browser-http.log
           if-no-files-found: ignore
           retention-days: 14
