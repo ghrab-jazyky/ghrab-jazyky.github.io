@@ -133,6 +133,11 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
     await page.setViewportSize({width:w,height:h});
     await page.waitForTimeout(100);
     const m=await geometry(page,name+' '+w+'x'+h);
+    if(w<=430||h<=430){
+     await page.locator('#skillChooser').evaluate(el=>{el.scrollTop=el.scrollHeight;});
+     await page.waitForTimeout(100);
+     await geometry(page,name+' scrolled '+w+'x'+h);
+    }
     assert.ok(m.a.width>=150, 'Notification must remain readable');
     const button=page.locator('#closeChooser');
     await button.click({timeout:5000});
