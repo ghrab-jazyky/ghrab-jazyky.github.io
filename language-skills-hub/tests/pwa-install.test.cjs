@@ -4,6 +4,37 @@ const {test}=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const read=name=>fs.readFileSync(path.join(root,name),'utf8');
+
+const zlib=require('node:zlib');
+function verifyPng(bytes,expectedSize){
+ assert.deepEqual(bytes.subarray(0,8),Buffer.from([137,80,78,71,13,10,26,10]));
+ assert.equal(bytes.readUInt32BE(16),expectedSize);
+ assert.equal(bytes.readUInt32BE(20),expectedSize);
+ assert.equal(bytes[24],8,'8-bit PNG required');
+ assert.equal(bytes[25],2,'RGB PNG required');
+ let position=8,ended=false;
+ const data=[];
+ while(position+12<=bytes.length){
+  const length=bytes.readUInt32BE(position);
+  const end=position+8+length;
+  assert.ok(end+4<=bytes.length,'PNG chunk must not be truncated');
+  const type=bytes.toString('ascii',position+4,position+8);
+  let crc=0xffffffff;
+  for(let i=position+4;i<end;i++){
+   crc^=bytes[i];
+   for(let bit=0;bit<8;bit++)crc=(crc>>>1)^((crc&1)?0xedb88320:0);
+  }
+  assert.equal((crc^0xffffffff)>>>0,bytes.readUInt32BE(end),'PNG CRC invalid: '+type);
+  if(type==='IDAT')data.push(bytes.subarray(position+8,end));
+  position=end+4;
+  if(type==='IEND'){ended=true;break;}
+ }
+ assert.ok(ended,'PNG must contain IEND');
+ assert.equal(position,bytes.length,'PNG must not include trailing incomplete data');
+ const pixels=zlib.inflateSync(Buffer.concat(data));
+ assert.equal(pixels.length,expectedSize*(1+expectedSize*3),'PNG raster must decompress fully');
+}
+
 test('Scoped installable PWA manifest and image files',()=>{
  const manifest=JSON.parse(read('manifest.webmanifest'));
  assert.equal(manifest.id,'/language-skills-hub/');
@@ -15,9 +46,7 @@ test('Scoped installable PWA manifest and image files',()=>{
   assert.ok(icon,'missing icon '+n);
   assert.equal(icon.type,'image/png');
   const image=fs.readFileSync(path.join(root,icon.src));
-  assert.equal(image.subarray(1,4).toString('ascii'),'PNG');
-  assert.equal(image.readUInt32BE(16),n);
-  assert.equal(image.readUInt32BE(20),n);
+  verifyPng(image,n);
  }
  assert.deepEqual(manifest.shortcuts.map(x=>x.url),[
   '/language-skills-hub/?skill=konverzace',
