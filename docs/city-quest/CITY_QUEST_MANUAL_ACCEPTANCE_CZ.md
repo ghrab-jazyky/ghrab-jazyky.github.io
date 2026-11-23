@@ -7,7 +7,7 @@
 
 ## 1. Co je a není ověřeno
 
-- Automatizované cesty pro všech **40 konfigurací** (4 jazyky × A1/A2 město; B1–C2 město nebo město+metro) dokončily **320 misí** v Chromiu v běhu [GitHub Actions 45242364384](https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/45242364384). To je evidence pro tehdejší SHA `c829d1529512f1f3b9cb26391045dc45d1767e1a`.
+- Automatizované cesty pro všech **40 konfigurací** (4 jazyky × A1/A2 město; B1–C2 město nebo město+metro) dokončily **320 misí** v Chromiu v běhu [GitHub Actions 45249477816](https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/45249477816). To je evidence pro tehdejší SHA `cd41b908d7b1c14b10757a0efb8fed32a5ede917`.
 - V následné jazykové revizi byly opraveny místní názvy městských míst a zadání CITY 08/C2: povinné pořadí **Market Square → Library → City Museum** nelze vyjednáváním změnit. Nová verze musí projít vlastními CI testy na **svém přesném SHA**. Starší PASS není automatickým důkazem pro novější soubor.
 - Test automaticky **neověřuje kvalitu mluveného projevu**, volbu správného registru, přirozenost všech jazyků, fyzická zařízení, publikaci Pages ani skutečné lidské schválení.
 - Čtyři jazykové autorské soubory obsahují **144 doplňkových zadání B2–C2**. Celý herní katalog má **256 jazykově-úrovňových variant**: 192 CITY + 64 METRO. Jedná se o dvě různé matice.
@@ -77,3 +77,7 @@ Při nahrávání obrazovky, fotografií či žákovských výkonů **anonymizuj
 | Finální vizuální a funkční rozhodnutí vlastníka | PENDING |
 
 **Rozhodnutí:** `NO-GO` do úplného doložení výše uvedeného. Nikdy nevydávat jen na základě zelené CI.
+
+## Dodatek – opravy Claude stupně A (po kontrole 23. 11. 2026)
+
+Po opravách textů, ovládání a přístupnosti na PR #175 je nutné znovu spustit 40/40 na NOVÉM SHA; historický PASS #45249477816 platí pouze pro cd41b908. Dosud neověřené ruční brány zůstávají PENDING. Vlastník musí výslovně rozhodnout o publikaci docs/city-quest/* v kořeni GitHub Pages; automaticky neslučovat PR.
