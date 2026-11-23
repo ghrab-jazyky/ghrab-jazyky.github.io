@@ -31,6 +31,7 @@ on:
       - "language-skills-hub/authoring/city-quest-f5c/**"
       - "language-skills-hub/tests/city-quest-f5c.release-gate.test.cjs"
       - "language-skills-hub/authoring/city-quest-f3d/**"
+      - ".gitignore"
       - ".github/workflows/lsh-city-quest-f4.yml"
   pull_request:
     paths:
@@ -61,6 +62,7 @@ on:
       - "language-skills-hub/authoring/city-quest-f5c/**"
       - "language-skills-hub/tests/city-quest-f5c.release-gate.test.cjs"
       - "language-skills-hub/authoring/city-quest-f3d/**"
+      - ".gitignore"
       - ".github/workflows/lsh-city-quest-f4.yml"
 permissions:
   contents: read

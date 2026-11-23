@@ -28,3 +28,9 @@ test("F5C N07 release candidate is only one self-contained City Quest HTML file"
  assert.match(html,/style-src 'sha256-/);
  assert.doesNotMatch(html,/<script\b[^>]*\bsrc\s*=|<link\b[^>]*\bhref\s*=|<iframe\b|<object\b|<form\b|<img\b[^>]*\bsrc\s*=/i);
 });
+
+test("F5C generated review and publication outputs are untracked by default",()=>{
+ const ignore=fs.readFileSync(path.join(root,".gitignore"),"utf8");
+ assert.match(ignore,/^\/\.review-city-quest-f2\/$/m);
+ assert.match(ignore,/^\/\.release-city-quest-f5c\/$/m);
+});
