@@ -186,6 +186,10 @@ test("F5C NEW-01: Experience panel and all controls stay on-screen at phone and 
    const page=await browser.newPage({viewport:{width,height:844},isMobile:width<=525,hasTouch:width<=525});
    await page.goto(URL);
    await page.locator("#f3ExperienceSummary").click();
+   await page.waitForFunction(()=>{
+    const r=document.querySelector(".f3-experience-panel").getBoundingClientRect();
+    return r.width>0&&r.left>=-1&&r.right<=document.documentElement.clientWidth+1;
+   });
    const bounds=await page.evaluate(()=>{
     const nodes=[document.querySelector(".f3-experience-panel"),
       ...document.querySelectorAll(".f3-experience-panel .f3-control")];
@@ -216,7 +220,7 @@ test("F5C N03/NEW-03/NEW-06: game identity and catalog language survive metro to
    assert.ok((await page.locator("#cityQuestGameType").innerText()).includes(labels[lang]));
    assert.ok((await page.locator("#cityQuestHeaderType").innerText()).includes(labels[lang]));
    assert.doesNotMatch(await page.locator("#cityQuestHeaderType").innerText(),/Conversation Lab/);
-   if(lang!=="en")assert.ok((await page.locator("#f3Skip").innerText()).includes(skips[lang]));
+   if(lang!=="en")assert.ok((await page.locator("#f3Skip").textContent()).includes(skips[lang]));
    await page.locator("#metroPilotToggle").click();
    await page.locator("#f1Stations button").nth(5).click();
    assert.ok((await page.locator("#cityQuestGameType").innerText()).includes(labels[lang]));

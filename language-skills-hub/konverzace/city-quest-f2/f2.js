@@ -1145,6 +1145,25 @@
     const direction={ArrowUp:"north",ArrowDown:"south",ArrowLeft:"west",ArrowRight:"east"}[e.key];
     if(direction){e.preventDefault();onMove(F.nextFromDirection(activePoint(),direction));}
   });
+  // NEW-01: CSS alone cannot infer a narrow visual viewport when browsers
+  // expand the layout viewport for large intrinsic elements or text zoom.
+  // Position the Experience menu relative to the *actual* document viewport.
+  function keepExperienceOnscreen(){
+    const details=$("f3Experience"),popup=details.querySelector(".f3-experience-panel");
+    if(!details.open){
+      popup.style.removeProperty("left");popup.style.removeProperty("right");
+      popup.style.removeProperty("width");return;
+    }
+    const width=document.documentElement.clientWidth;
+    popup.style.right="auto";popup.style.left="0px";
+    popup.style.width=Math.max(180,Math.min(310,width-24))+"px";
+    const rect=popup.getBoundingClientRect();
+    const shift=Math.max(12-rect.left,Math.min(0,width-12-rect.right));
+    popup.style.left=shift+"px";
+  }
+  $("f3Experience").addEventListener("toggle",keepExperienceOnscreen);
+  window.addEventListener("resize",keepExperienceOnscreen);
+  window.visualViewport?.addEventListener("resize",keepExperienceOnscreen);
   $("f2Language").value=state.language;
   $("f2Level").value=state.level;
   applyLanguageUI();updateProgress();screen();renderMap();
