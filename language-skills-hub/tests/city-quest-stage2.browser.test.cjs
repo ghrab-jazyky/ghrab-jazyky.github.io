@@ -62,6 +62,7 @@ test('Changing modes after City 05 completion warns and preserves or resets prog
   assert.match(await page.locator('#f1ProgressText').innerText(),/1\s*\/\s*8/);
   await page.locator('#metroPilotToggle').click();
   await page.locator('#cqModeApply').click();
+  await page.waitForFunction(()=>document.getElementById('metroPilotToggle')?.getAttribute('aria-pressed')==='true');
   assert.equal(await page.locator('#metroPilotToggle').getAttribute('aria-pressed'),'true');
   assert.match(await page.locator('#f1ProgressText').innerText(),/0\s*\/\s*8/);
   assert.match(await page.locator('#f1Panel .f2-card-head h2').innerText(),/Find the Right Line/);
@@ -73,7 +74,7 @@ test('Teacher guide is collapsed but follows city/metro mission and gives concre
  try{
   await go(page,'de','B2');
   assert.equal(await page.locator('#cqTeacherGuide').evaluate(e=>e.open),false);
-  assert.match(await page.locator('#cqTeacherMeta').innerText(),/MĚSTO.*B2.*12–19/);
+  assert.match(await page.locator('#cqTeacherMeta').textContent(),/MĚSTO.*B2.*12–19/);
   await page.locator('#cqTeacherGuide summary').click();
   assert.equal(await page.locator('#cqTeacherGuide').evaluate(e=>e.open),true);
   assert.ok((await page.locator('#cqTeacherGoal').innerText()).length>20);
@@ -108,7 +109,8 @@ test('Localized actionable feedback replaces generic wrong-choice messages',asyn
   assert.match(await page.locator('#f1Panel .f2-status').innerText(),/alejaría al turista del museo/);
   await go(page,'en','B1');
   await page.locator('#f1Stations button').nth(1).click();
-  await page.locator('.f2-quick-west').click();
+  assert.equal(await page.locator('.f2-quick-west').isDisabled(),true);
+  await page.locator('#mapViewport').press('ArrowLeft');
   assert.match(await page.locator('#f1Panel .f2-status').innerText(),/leaves the city map/);
   assert.deepEqual(errors,[]);
  }finally{await browser.close();}
