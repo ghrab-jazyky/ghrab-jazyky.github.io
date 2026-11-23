@@ -135,7 +135,9 @@ test("F3B station 06 transfer scene is visually distinct but does not reveal the
   assert.doesNotMatch(await page.locator("#metroPAMessage").innerText(),/\bM3\b/);
   await page.locator("#metroSceneSvg").screenshot({path:path.join(OUT,"transfer-university-1366.png")});
   await choose(page,c.actions.CHANGE_LINE);
-  assert.equal(await pa(page).getAttribute("data-kind"),"wayfinding");
+  // After choosing the connecting line, the learner must select its terminus.
+  assert.equal(await pa(page).getAttribute("data-kind"),"direction");
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().phase),"select-direction");
   assert.deepEqual(errors,[]);
  }finally{await browser.close();}
 });
