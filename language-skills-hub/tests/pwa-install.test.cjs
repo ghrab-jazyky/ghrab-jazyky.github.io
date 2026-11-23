@@ -51,3 +51,26 @@ test('No offline caches and no test traffic interception',()=>{
  assert.match(js,/event\.respondWith\(fetch\(event\.request\)\)/);
  assert.doesNotMatch(js,/\.\/self-check\/|\.\/cteni\/|\.\/poslech\/|\.\/konverzace\//);
 });
+
+test('Teacher announcement describes the PWA and the already-listed City Quest without deleting history',()=>{
+ const api=require('../assets/whats-new-data.js');
+ const news=JSON.parse(read('data/teacher-changelog.json'));
+ const cards=JSON.parse(read('data/cards.json'));
+ assert.equal(api.valid(news),true,'changelog must satisfy the reader-side contract');
+ assert.equal(news.latestAnnouncementSequence,8);
+ assert.deepEqual(news.releases.slice(0,2).map(r=>r.id),[
+  'lsh-2026-11-23-pwa-installation','lsh-2026-11-23-city-quest'
+ ]);
+ assert.deepEqual(news.releases.slice(2).map(r=>r.sequence),[6,5,4,3,2,1]);
+ const pwa=news.releases[0].changes[0];
+ assert.match(pwa.description,/sedm dní/);
+ assert.match(pwa.description,/iPhonu/);
+ const city=news.releases[1].changes[0];
+ assert.match(city.title,/City Quest/);
+ const entry=cards.entries.find(x=>x.id==='cl-city-quest-f2');
+ assert.ok(entry,'City Quest must exist in the public catalog');
+ assert.equal(entry.skill,'konverzace');
+ assert.deepEqual(entry.languages,['en','es','de','fr']);
+ assert.deepEqual(entry.levels,['A1','A2','B1','B2','C1','C2']);
+ assert.ok(fs.existsSync(path.join(root,entry.relative)));
+});
