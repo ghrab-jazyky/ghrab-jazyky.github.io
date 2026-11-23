@@ -5,8 +5,9 @@ const assert=require('node:assert/strict');
 const {chromium}=require('playwright');
 const axe=require('axe-core');
 const URL='http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html';
-async function open(browser,language='en',level='B1',width=1280,height=900){
- const page=await browser.newPage({viewport:{width,height}});
+async function open(browser,language='en',level='B1',width=1280,height=900,bypassCSP=false){
+ // DevTools-only exception for injecting axe-core; production CSP is unchanged.
+ const page=await browser.newPage({viewport:{width,height},bypassCSP});
  const errors=[];
  page.on('pageerror',e=>errors.push(e.message));
  page.on('console',m=>{if(m.type()==='error')errors.push('console.error '+m.text());});
@@ -53,7 +54,7 @@ test('A3/A4: mobile translated controls keep entire words and station names matc
 test('A4: axe-core reports no violations for city, metro and reset confirmation',{timeout:120000},async()=>{
  const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
  try{
-  const {page,errors}=await open(browser,'de','B2',390,844);
+  const {page,errors}=await open(browser,'de','B2',390,844,true);
   try{
    await page.addScriptTag({content:axe.source});
    const inspect=async label=>{
