@@ -131,7 +131,8 @@ test("FR/C2 mobile WebKit: City–Metro–City with 3 oral checkpoints and final
   await north.click();
   assert.equal(await panel(page).locator(".metro-selfcheck-criteria li").count(),3);
   await pass(page,c,8);
-  assert.equal(await page.locator("#mapLocation").innerText(),CityContent.pack("fr").ui.museum);
+  assert.equal(await page.locator("#mapLocation").innerText(),"City Museum",
+   "Shared City/Metro proper names stay canonical; other city-only missions remain localized");
   await page.screenshot({path:path.join(SHOTS,"french-c2-mobile-metro08.png"),fullPage:true});
   assert.deepEqual(errors,[]);
  }finally{await browser.close();}

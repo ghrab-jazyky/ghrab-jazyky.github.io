@@ -5,6 +5,7 @@
 const {test}=require("node:test"),assert=require("node:assert/strict");
 const {chromium}=require("playwright");
 const LC=require("../authoring/city-quest-f2-1d/metro-language.js");
+const G=require("../authoring/city-quest-f2/engine.js");
 const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html";
 test("F5C Metro08 walk HUD uses learner language, never English fallback",async()=>{
  const b=await chromium.launch({headless:true});
