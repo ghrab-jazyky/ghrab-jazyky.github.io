@@ -129,7 +129,7 @@ jobs:
             sleep 1
           done
           node --check language-skills-hub/tests/city-quest-release-40.browser.test.cjs
-          CQ_40_ONLY=en/A1/city,de/C2/mixed,fr/B1/mixed node --test language-skills-hub/tests/city-quest-release-40.browser.test.cjs
+          CQ_40_ONLY=en/A1/city,de/C2/city,fr/B1/mixed node --test language-skills-hub/tests/city-quest-release-40.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-release-40.browser.test.cjs
       - name: Archive all 40 per-journey results, even when a case fails
         if: always()
