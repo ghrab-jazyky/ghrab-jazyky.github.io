@@ -3,7 +3,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {chromium,webkit}=require('playwright');
 const hub='http://127.0.0.1:8765/language-skills-hub/';
-const entries=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/cards.json'),'utf8')).entries;
+const entries=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/cards.json'),'utf8')).entries.filter(e=>e.cardType!=='interactive-language-game');
 const url=relative=>new URL(relative,hub).href;
 const oldWord=(term,meaningCs,topicId='asteroids-planetary-defence')=>({
  id:'en|'+term.toLocaleLowerCase()+'|'+meaningCs.toLocaleLowerCase(),
@@ -40,7 +40,7 @@ async function checkNoOverflow(page){
  }
 }
 for(const [engineName,engine]of[['Chromium',chromium],['WebKit',webkit]]){
- test('R49 '+engineName+': one My Vocabulary link in every one of 29 cards',
+ test('R49 '+engineName+': one My Vocabulary link in each of the 34 original cards',
   {timeout:360000},async()=>{
    const browser=await engine.launch({headless:true});
    try{

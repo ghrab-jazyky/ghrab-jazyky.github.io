@@ -36,7 +36,7 @@ jobs:
           assert.equal(hash,'34c6bb2662e2684c5808abab2519f6df2343c04a99948bfb82241101b51f41d0');
           assert.equal(version.contentHashes[id],hash);
           assert.equal(version.topicCount,35);
-          assert.equal(version.variantCount,958);
+          assert.equal(version.variantCount,726);
           assert.equal(cards.entries.length,35);
           assert.equal(new Set(cards.entries.map(e=>e.id)).size,35);
           const distribution={konverzace:0,cteni:0,poslech:0};

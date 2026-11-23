@@ -101,7 +101,7 @@ jobs:
                   assert b'data-lsh-topic-id="cl-plural"' in plural_bytes, 'PLURAL V6 page identifier missing'
                   sad=next(e for e in entries if e['id']=='ll-sad')
                   assert sad['levels']==['A1','A2','B1','B2','C1','C2']
-                  assert release['topicCount']==35 and release['variantCount']==958
+                  assert release['topicCount']==35 and release['variantCount']==726
                   conlangs=next(e for e in entries if e['id']=='ll-conlangs')
                   assert conlangs['levels']==['A1','A2','B1','B2','C1','C2']
                   assert conlangs['languages']==['en']

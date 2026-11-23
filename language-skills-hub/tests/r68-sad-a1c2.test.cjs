@@ -13,9 +13,9 @@ const keysFor=level=>{const v=data[level];return {gist:v.gist.map(q=>q.correct),
  matching:v.matching.items.map(q=>q.correct),sequence:[],cloze:[]};};
 
 test('R68 catalogue: 32 topics, 5 Listening, 678 variants, all CEFR levels',()=>{
- assert.equal(catalog.entries.length,34);
+ assert.equal(catalog.entries.length,35);
  assert.equal(catalog.entries.filter(e=>e.skill==='poslech').length,6);
- assert.equal(catalog.entries.reduce((a,e)=>a+e.languages.length*e.levels.length,0),702);
+ assert.equal(catalog.entries.reduce((a,e)=>a+e.languages.length*e.levels.length,0),726);
  assert.deepEqual(entry.languages,['en']);assert.deepEqual(entry.levels,levels);
  assert.equal(core.catalogEntry(catalog,'ll-sad'),entry);
  assert.ok(core.ALL_TOPICS.includes('ll-sad'));
@@ -47,7 +47,7 @@ test('R68 independent B2 provenance: original bank unmodified, matching answer l
  assert.doesNotMatch(src,/src="sad-data\.js"/);
  const version=JSON.parse(read('version.json'));
  assert.equal(version.contentHashes['ll-sad'],crypto.createHash('sha256').update(Buffer.from(src)).digest('hex'));
- assert.equal(version.variantCount,702);assert.equal(version.topicCount,34);
+ assert.equal(version.variantCount,726);assert.equal(version.topicCount,35);
  assert.ok(src.includes('assets/lsh/v3/card-vocabulary.js'));
  assert.equal(core.sourceLinks(src).length,2);
 });
