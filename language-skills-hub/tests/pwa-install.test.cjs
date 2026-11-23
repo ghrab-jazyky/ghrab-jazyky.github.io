@@ -65,14 +65,19 @@ test('Installation code linked only into the catalog',()=>{
 test('Consent, timing, and browser install event',()=>{
  const js=read('assets/pwa-install.js');
  for(const value of ['Připomenout za 7 dní','Příště nezobrazovat','beforeinstallprompt','appinstalled',
- 'display-mode: standalone','MutationObserver','localStorage',"chooser.querySelector('.chooser-header').append(panel)"])
+ 'display-mode: standalone','MutationObserver','localStorage',"chooser.append(panel)"])
   assert.ok(js.includes(value),value);
  assert.match(js,/panel\.hidden=!visible/);
- assert.match(js,/button\.disabled=panel\.hidden/);
+ assert.match(js,/install\.disabled=panel\.hidden/);
+ assert.match(js,/const dock=available<192/);
+ assert.match(js,/navigator\.install\(\)/);
+ assert.match(js,/const outcome=await event\.prompt\(\)/);
  const css=read('assets/pwa-install.css');
- assert.match(css,/position:relative/);
- assert.doesNotMatch(css,/position:fixed/);
- assert.match(css,/grid-template-areas/);
+ assert.match(css,/position:fixed/);
+ assert.match(css,/\.skill-chooser\.pwa-install-docked/);
+ assert.match(css,/\.pwa-offer--docked/);
+ assert.doesNotMatch(css,/grid-template-areas/);
+ assert.match(js,/chooser\.append\(panel\)/);
  assert.match(js,/location\.protocol==='https:'/,'Worker must remain disabled on local HTTP browser-QA origin');
  assert.match(js,/savePreference\('never'\)/);
  assert.match(js,/savePreference\('later'\)/);
