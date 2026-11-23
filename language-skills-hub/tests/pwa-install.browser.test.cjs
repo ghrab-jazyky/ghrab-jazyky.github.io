@@ -47,6 +47,35 @@ async function geometry(page,tag){
  assert.ok(m.scroll<=3,tag+': horizontal viewport overflow '+JSON.stringify(m));
  return m;
 }
+
+test('Real Chromium parses LSH PWA manifest and evaluates installability without simulated events',{timeout:90000},async()=>{
+ const browser=await chromium.launch({headless:true});
+ const context=await browser.newContext({viewport:{width:1366,height:768},serviceWorkers:'allow'});
+ const page=await context.newPage();
+ try{
+  const cdp=await context.newCDPSession(page);
+  await cdp.send('Page.enable');
+  await page.goto(base);
+  await page.evaluate(async()=>{
+   await navigator.serviceWorker.register('./sw.js',{scope:'./'});
+   await navigator.serviceWorker.ready;
+  });
+  await page.reload();
+  const report=await cdp.send('Page.getAppManifest');
+  assert.equal(report.errors?.length||0,0,JSON.stringify(report.errors));
+  assert.ok(report.data,'Chromium did not discover a web app manifest');
+  const manifest=JSON.parse(report.data);
+  assert.equal(manifest.name,'Language Skills Hub');
+  assert.equal(manifest.start_url,'/language-skills-hub/');
+  assert.equal(manifest.display,'standalone');
+  assert.ok(manifest.icons.some(x=>x.sizes==='192x192'));
+  assert.ok(manifest.icons.some(x=>x.sizes==='512x512'));
+  const eligibility=await cdp.send('Page.getInstallabilityErrors');
+  assert.deepEqual(eligibility.installabilityErrors,[],
+   'Real Chromium installability errors: '+JSON.stringify(eligibility.installabilityErrors));
+ }finally{await browser.close()}
+});
+
 for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
  test('PWA '+name+' Ctrl+R keeps the install panel visible when user has not dismissed it',{timeout:90000},async()=>{
   const {page,browser}=await open(engine,{viewport:{width:1366,height:768}});
@@ -127,7 +156,8 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   const {page,browser}=await open(engine,{userAgent:firefox});
   try{
    await enter(page);
-   assert.equal(await page.locator('#pwaOfferInstall').isDisabled(),true);
+   assert.equal(await page.locator('#pwaOfferInstall').isEnabled(),true);
+   await page.locator('#pwaOfferInstall').click();
    assert.match(await page.locator('#pwaOfferHelp').innerText(),/Chrome nebo Edge/);
   }finally{await browser.close()}
  });
@@ -139,9 +169,11 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(m.docked,false,'Large desktop must have independent right rail');
    assert.ok(m.a.x>m.b.right,'Popup should be completely to the RIGHT of chooser card');
    assert.equal(await page.locator('[data-choose-skill]').count(),3);
-   assert.equal(await page.locator('#pwaOfferInstall').isDisabled(),true,
-    'No fake native install button until browser offers an API');
-   assert.match(await page.locator('#pwaOfferInstall').innerText(),/nedostupná/);
+   assert.equal(await page.locator('#pwaOfferInstall').isEnabled(),true,
+    'Fallback action must remain clickable before the install event arrives');
+   assert.match(await page.locator('#pwaOfferInstall').innerText(),/Instalovat přes nabídku prohlížeče/);
+   await page.locator('#pwaOfferInstall').click();
+   assert.match(await page.locator('#pwaOfferHelp').innerText(),/Nainstalovat stránku jako aplikaci/);
    await page.locator('#pwaOfferLater').click();
    assert.equal(await page.locator('#pwaInstallOffer').isHidden(),true);
    const preference=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),key);
