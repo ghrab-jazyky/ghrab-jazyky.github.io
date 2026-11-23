@@ -40,7 +40,7 @@ test("Canonical routing remains strict after copy changes; notices reveal closur
 // CQ-F5-009: the obligatory information-desk visit must not be justified
 // only by the University appointment (M2 is already available at Central).
 test("Metro 08 explicitly requires the Market Square ticket pickup before University",()=>{
- const required={en:/ticket/i,es:/entradas/i,de:/Museumskarten/i,fr:/billets/i};
+ const required={en:/ticket/i,es:/entradas/i,de:/Eintrittskarten/i,fr:/billets/i};
  for(const lang of L.languages)for(const level of L.levels){
   const content=L.pack(lang,level,8),goal=content.goal;
   assert.match(goal,required[lang],lang+"/"+level+" omits the mandatory first errand");

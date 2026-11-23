@@ -25,7 +25,7 @@ test("F5C CQ-F5-012: the City03 model's map route actually reaches City Museum",
 });
 test("F5C CQ-F5-009: Metro08 requires ticket pickup at Market Square before University",()=>{
  const L=require("../authoring/city-quest-f2-1d/metro-language.js");
- const ticketWords={en:/tickets/,es:/entradas/,de:/Museumskarten/,fr:/billets/};
+ const ticketWords={en:/tickets/,es:/entradas/,de:/Eintrittskarten/,fr:/billets/};
  for(const lang of L.languages)for(const level of L.levels){
   const c=L.pack(lang,level,8),model=L.model(lang,level,8),
    meeting=L.stage(lang,level,8,"checkpoint",{station:"University"}),

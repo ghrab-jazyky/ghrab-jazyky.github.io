@@ -94,7 +94,7 @@ test("F5C CQ-F5-009: Metro08 detour has a mandatory University meeting and expli
  assert.equal(route.closedEdges.length,0,"Do not invent a Metro08 M1 closure as an excuse for the route");
  const label={en:/colleague|University/i,es:/compañera|University/i,
   de:/Kollegin|University/i,fr:/collègue|University/i};
- const tickets={en:/tickets/i,es:/entradas/i,de:/Museumskarten/i,fr:/billets/i};
+ const tickets={en:/tickets/i,es:/entradas/i,de:/Eintrittskarten/i,fr:/billets/i};
  for(const lang of L.languages)for(const level of L.levels){
   const pack=L.pack(lang,level,8);
   const prompt=L.stage(lang,level,8,"checkpoint",{station:"University"});
