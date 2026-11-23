@@ -121,3 +121,45 @@ test("F5C touch accessibility: visible header, map and learning disclosure contr
   }
  }finally{await browser.close();}
 });
+
+test("F5C N01 metro mission text remains readable in light theme across EN/ES/DE/FR",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  for(const language of langs){
+   const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+   await page.goto(URL);
+   await page.locator("#f2Language").selectOption(language);
+   await page.locator("#f2Level").selectOption("B1");
+   await page.locator("#metroPilotToggle").click();
+   await page.locator("#f1Stations button").nth(5).click();
+   await page.locator("#themeBtn").click();
+   const result=await page.evaluate(()=>{
+    const css=(selector,prop)=>getComputedStyle(document.querySelector(selector))[prop];
+    const parse=(s)=>{
+     const m=s.match(/rgba?\\(([^)]+)\\)/);if(!m)throw Error("Expected opaque RGB: "+s);
+     return m[1].split(",").slice(0,3).map(Number);
+    };
+    const light=(rgb)=>rgb.map(v=>{
+     const x=v/255;return x<=.04045?x/12.92:Math.pow((x+.055)/1.055,2.4);
+    }).reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);
+    const contrast=(foreground,background)=>{
+     const a=light(parse(foreground)),b=light(parse(background));
+     return (Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+    };
+    const panel=".metro-lab[data-mode=game] #f1Panel";
+    const background=css(panel,"backgroundColor");
+    const objective=css(panel+" .f2-objective","backgroundColor");
+    return {
+     panelBackground:background,
+     heading:contrast(css(panel+" .f2-card-head h2","color"),background),
+     description:contrast(css(panel+" .f2-card-head p","color"),background),
+     objective:contrast(css(panel+" .f2-objective p","color"),objective)
+    };
+   });
+   for(const field of ["heading","description","objective"]){
+    assert.ok(result[field]>=4.5,language+": "+field+" contrast below WCAG AA: "+JSON.stringify(result));
+   }
+   await page.close();
+  }
+ }finally{await browser.close();}
+});
