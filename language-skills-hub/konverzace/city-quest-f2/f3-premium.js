@@ -24,7 +24,7 @@
    motionYes:"Motion enabled.",motionNo:"Motion disabled."},
   es:{experience:"Experiencia",presentation:"Modo presentación",exit:"Salir de presentación",
    soundOn:"Sonidos activados",soundOff:"Sonidos desactivados",motionOn:"Animaciones activadas",motionOff:"Animaciones desactivadas",
-   contrastOn:"Alto contraste activado",contrastOff:"Alto contraste desactivado",skip:"Ir a la actividad actual",
+   contrastOn:"Alto contraste activado",contrastOff:"Alto contraste desactivado",skip:"Ir a las misiones",skipTask:"Ir a la actividad actual",
    note:"Solo en esta pestaña. Los sonidos se generan sin conexión, sin micrófono ni servicios externos.",
    on:"Modo presentación activado. Pulsa Escape para salir.",
    off:"Modo presentación cerrado.",audible:"Sonidos activados.",silent:"Sonidos desactivados.",
