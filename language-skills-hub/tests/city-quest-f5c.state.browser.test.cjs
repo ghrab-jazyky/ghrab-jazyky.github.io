@@ -412,3 +412,32 @@ test("F5C N05/N17: canonical metro city signs, one map Tab stop and task skip li
   }
  }finally{await browser.close();}
 });
+
+test("F5C pair mode requires two explicit self-reported speaking turns, then resets locally",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  for(const language of ["en","es","de","fr"]){
+   const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+   await page.goto(URL);
+   await page.locator("#f2Language").selectOption(language);
+   await page.locator("#f1Pair").click();
+   const progress=page.locator("#f1Panel .f2-pair-progress");
+   const button=page.locator("#f1Panel .f2-pair-turn");
+   assert.match(await progress.innerText(),/0\/2/);
+   assert.equal(await button.isDisabled(),false);
+   await button.click();
+   assert.match(await progress.innerText(),/1\/2/);
+   await button.click();
+   assert.match(await progress.innerText(),/2\/2/);
+   assert.equal(await button.isDisabled(),true);
+   await page.locator("#f1Stations button").nth(1).click();
+   assert.match(await progress.innerText(),/0\/2/);
+   await page.locator("#f1Stations button").nth(0).click();
+   assert.match(await progress.innerText(),/2\/2/);
+   await page.locator("#resetBtn").click();
+   assert.match(await progress.innerText(),/0\/2/);
+   assert.equal(await button.isDisabled(),false);
+   await page.close();
+  }
+ }finally{await browser.close();}
+});

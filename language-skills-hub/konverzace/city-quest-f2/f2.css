@@ -258,3 +258,8 @@
  border-left-color:var(--platform-line-colour,#7aa3af);color:#14384b}
 @media(max-width:370px){.metro-platform-board-item{grid-template-columns:1fr;gap:3px;padding:9px}}
 @media(prefers-reduced-motion:reduce){.metro-platform-board *{transition:none!important}}
+
+/* CQ-F5-028: optional two-speaker interaction, never a speech grade. */
+.f2-pair .f2-pair-progress{font-size:.82rem;font-weight:740;line-height:1.45;margin:9px 0!important;overflow-wrap:anywhere}
+.f2-pair .f2-pair-turn{min-width:44px;min-height:44px;width:100%;white-space:normal;text-align:center;line-height:1.35;border-color:#9a92e6}
+.f2-pair .f2-pair-turn:disabled{opacity:.8;cursor:default;background:var(--panel2);color:var(--text)}

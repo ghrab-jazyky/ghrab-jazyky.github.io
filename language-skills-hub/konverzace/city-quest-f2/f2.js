@@ -17,6 +17,17 @@
   const NS="http://www.w3.org/2000/svg";
   const icons=["🗺️","🧭","💬","👣","🚌","↩️","🚧","🏆"];
   const stationKeys=["explore","route","dialogue","guided","transit","repair","detour","quest"];
+  // Optional participation tracker. It verifies confirmations, never oral quality.
+  const pairCopy={
+    en:{title:"Pair speaking turns",first:"Person A speaks next",second:"Person B speaks next",
+      action:"I have spoken · swap roles",complete:"Both turns confirmed · self-reported, not graded"},
+    es:{title:"Turnos de conversación en pareja",first:"Ahora habla la persona A",second:"Ahora habla la persona B",
+      action:"He hablado · cambiar los papeles",complete:"Dos turnos confirmados · autoevaluación, sin nota"},
+    de:{title:"Sprechwechsel zu zweit",first:"Person A spricht jetzt",second:"Person B spricht jetzt",
+      action:"Ich habe gesprochen · Rollen wechseln",complete:"Beide Beiträge bestätigt · Selbstauskunft, keine Benotung"},
+    fr:{title:"Tours de parole en binôme",first:"À la personne A de parler",second:"À la personne B de parler",
+      action:"J’ai parlé · échanger les rôles",complete:"Deux tours confirmés · autoévaluation, sans note"}
+  };
   const gameType={en:"Interactive language game · city quest",es:"Juego interactivo de idiomas · aventura urbana",de:"Interaktives Sprachspiel · Stadtquest",fr:"Jeu de langue interactif · aventure urbaine"};
   const chromeCopy={
     en:{theme:"Toggle light/dark theme",detail:"Map detail",whole:"Whole city",tip:"Select Map detail to zoom in on street names",tipZoom:"Swipe across the city map to explore",kicker:"EXPLORE · NAVIGATE · COMMUNICATE",caption:"CITY ADVENTURE · WALKING MAP",compact:"Make direction pad smaller",expand:"Show full directions"},
@@ -76,7 +87,7 @@
   let flash=null;
   function makeSession(language,level,mode){
     return {language,level,mode:mode||"solo",station:1,done:new Set(),
-      explore:{round:0,misses:0},route:G.routeStart(),dialogue:G.dialogueStart(),
+      pairTurns:Object.create(null),explore:{round:0,misses:0},route:G.routeStart(),dialogue:G.dialogueStart(),
       guided:G.guidedStart(),metro:MG?Object.fromEntries([5,6,7,8].map(n=>[n,MG.start(n)])):null,
       transit:{done:false,tries:0,selection:{}},
       repair:G.repairStart(),detour:G.routeStart(),quest:G.questStart()};
@@ -164,6 +175,24 @@
       const div=el("div",panel,"f2-pair");
       el("strong",div,"","👥 "+ui().roleMode);
       para(div,alt?alt.pair[index]:pack().pair[stationKeys[index-1]]||pack().pair.general);
+      // CQ-F5-028: two explicit local speaking turns, without speech capture
+      // or automatic grading. Station instructions define the actual roles.
+      const copy=pairCopy[state.language],progress=el("p",div,"f2-pair-progress");
+      progress.setAttribute("role","status");
+      progress.setAttribute("aria-live","polite");
+      const action=btn(div,copy.action,()=>{
+        if(state.mode!=="pair"||state.station!==index)return;
+        state.pairTurns[index]=Math.min(2,(state.pairTurns[index]||0)+1);
+        sync();
+      },"f2-pair-turn");
+      function sync(){
+        const turns=state.pairTurns[index]||0;
+        progress.textContent=copy.title+" · "+turns+"/2 · "+
+          (turns===0?copy.first:turns===1?copy.second:copy.complete);
+        action.disabled=turns>=2;
+        action.setAttribute("aria-disabled",String(turns>=2));
+      }
+      sync();
     }
   }
   function speaking(parent,model){
@@ -1009,7 +1038,7 @@
     if(n===6)state.repair=G.repairStart();
     if(n===7)state.detour=G.routeStart();
     if(n===8)state.quest=G.questStart();
-    state.done.delete(n);flash=null;
+    delete state.pairTurns[n];state.done.delete(n);flash=null;
     updateProgress();screen();renderMap();
   }
   function resetSession(lang,level){
@@ -1041,6 +1070,7 @@
     // Switching gameplay modes resets only missions 05-08, preserving 01-04.
     state.done=new Set([...state.done].filter(n=>n<=4));
     state.metro=Object.fromEntries([5,6,7,8].map(n=>[n,MG.start(n)]));
+    for(const n of [5,6,7,8])delete state.pairTurns[n];
     state.transit={done:false,tries:0,selection:{}};
     state.repair={phase:0,done:false,tries:0};
     state.detour=G.routeStart();state.quest=G.questStart();
