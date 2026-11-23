@@ -39,6 +39,7 @@ test('Consent, timing, and browser install event',()=>{
  'display-mode: standalone','MutationObserver','localStorage','chooser.append(panel)'])
   assert.ok(js.includes(value),value);
  assert.match(js,/panel\.hidden=!visible/);
+ assert.match(js,/location\.protocol==='https:'/,'Worker must remain disabled on local HTTP browser-QA origin');
  assert.match(js,/savePreference\('never'\)/);
  assert.match(js,/savePreference\('later'\)/);
  assert.doesNotMatch(js,/XMLHttpRequest|sendBeacon|postMessage\(/);
