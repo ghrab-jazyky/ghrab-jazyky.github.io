@@ -2,7 +2,7 @@
   "kind": "LSH_TEACHER_CHANGELOG_V1",
   "schemaVersion": 1,
   "latestAnnouncementSequence": 8,
-  "contentRevision": 2,
+  "contentRevision": 3,
   "releases": [
     {
       "id": "lsh-2026-11-23-pwa-installation",
@@ -15,7 +15,7 @@
           "area": "hub",
           "category": "functionality",
           "title": "LSH si můžeš přidat na plochu počítače nebo telefonu",
-          "description": "Language Skills Hub lze na podporovaných zařízeních používat jako samostatně spouštěnou aplikaci. Při výběru jedné ze tří laboratoří se vpravo nahoře zobrazí nenápadná nabídka instalace. Pokud instalaci právě nechceš, můžeš si ji připomenout za sedm dní nebo nabídku trvale skrýt. Na iPhonu a iPadu aplikace ukáže postup pro přidání na plochu. LSH nadále vyžaduje připojení k internetu; nejde o offline testovací aplikaci.",
+          "description": "Language Skills Hub můžeš používat jako samostatně spouštěnou aplikaci. Při výběru laboratoří se instalační nabídka zobrazí samostatně v pravém horním rohu, mimo hlavní panel. Tam, kde prohlížeč podporuje přímou instalaci, tlačítko Nainstalovat rovnou otevře systémové potvrzení. Pokud přímá instalace není dostupná, tlačítko ji nepředstírá. Na iPhonu a iPadu se zobrazí postup přidání na plochu. Nabídku lze odložit o sedm dní nebo trvale skrýt. LSH stále vyžaduje internet; testy nefungují offline.",
           "teacherBenefit": "K laboratořím se dostaneš přímo z plochy nebo nabídky aplikací bez hledání odkazu. Nabídka respektuje tvoje rozhodnutí a při práci se studenty nepřekáží."
         }
       ]
