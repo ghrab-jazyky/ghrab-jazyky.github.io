@@ -66,8 +66,12 @@
    panel.classList.remove('pwa-offer--docked');
    chooser.style.removeProperty('--pwa-offer-space');
    panel.style.removeProperty('width');
+   panel.style.removeProperty('--pwa-overlay-scroll');
    return;
   }
+  // Backdrop-filter on the scrolling chooser changes fixed-position containing blocks.
+  // Compensate for the chooser's scroll offset to keep the banner in the viewport corner.
+  panel.style.setProperty('--pwa-overlay-scroll',chooser.scrollTop+'px');
   const bounds=chooserPanel.getBoundingClientRect();
   const available=Math.max(0,document.documentElement.clientWidth-bounds.right-24);
   const dock=available<192;
@@ -167,6 +171,7 @@
  });
  new MutationObserver(update).observe(chooser,{attributes:true,attributeFilter:['hidden']});
  window.addEventListener('resize',scheduleLayout,{passive:true});
+ chooser.addEventListener('scroll',scheduleLayout,{passive:true});
  if(typeof ResizeObserver==='function'){
   const observer=new ResizeObserver(scheduleLayout);
   observer.observe(chooserPanel);observer.observe(panel);
