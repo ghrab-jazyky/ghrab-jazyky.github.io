@@ -1,9 +1,41 @@
 {
   "kind": "LSH_TEACHER_CHANGELOG_V1",
   "schemaVersion": 1,
-  "latestAnnouncementSequence": 6,
-  "contentRevision": 1,
+  "latestAnnouncementSequence": 8,
+  "contentRevision": 2,
   "releases": [
+    {
+      "id": "lsh-2026-11-23-pwa-installation",
+      "sequence": 8,
+      "publishedAt": "2026-11-23",
+      "title": "Language Skills Hub nyní také jako aplikace",
+      "changes": [
+        {
+          "id": "hub-installable-pwa-catalog",
+          "area": "hub",
+          "category": "functionality",
+          "title": "LSH si můžeš přidat na plochu počítače nebo telefonu",
+          "description": "Language Skills Hub lze na podporovaných zařízeních používat jako samostatně spouštěnou aplikaci. Při výběru jedné ze tří laboratoří se vpravo nahoře zobrazí nenápadná nabídka instalace. Pokud instalaci právě nechceš, můžeš si ji připomenout za sedm dní nebo nabídku trvale skrýt. Na iPhonu a iPadu aplikace ukáže postup pro přidání na plochu. LSH nadále vyžaduje připojení k internetu; nejde o offline testovací aplikaci.",
+          "teacherBenefit": "K laboratořím se dostaneš přímo z plochy nebo nabídky aplikací bez hledání odkazu. Nabídka respektuje tvoje rozhodnutí a při práci se studenty nepřekáží."
+        }
+      ]
+    },
+    {
+      "id": "lsh-2026-11-23-city-quest",
+      "sequence": 7,
+      "publishedAt": "2026-11-23",
+      "title": "City Quest: interaktivní městská jazyková hra",
+      "changes": [
+        {
+          "id": "conversation-city-quest-introduction",
+          "area": "conversation",
+          "category": "content",
+          "title": "City Quest v Conversation Lab – město, mapa a jazykové mise",
+          "description": "V katalogu Conversation Lab najdeš samostatnou kartu City Quest. Žáci procházejí interaktivní město, hledají cesty a řeší jazykové úkoly v kontextu reálných komunikačních situací. Hra podporuje samostatnou práci i dvojice (Solo / Pair), angličtinu, španělštinu, němčinu a francouzštinu od A1 do C2. Na úrovních B1–C2 obsahuje také interaktivní úkoly v metru. Jde o jazykovou hru, nikoli klasický konverzační pracovní list.",
+          "teacherBenefit": "Použij City Quest pro procvičení orientace ve městě, žádostí o informace a praktické komunikace. Stanice nabízí konkrétní dílčí úkoly pro samostatnou práci nebo práci ve dvojicích."
+        }
+      ]
+    },
     {
       "id": "lsh-2026-11-18-reading-cefr-guidance",
       "sequence": 6,
