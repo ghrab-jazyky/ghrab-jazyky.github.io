@@ -16,6 +16,9 @@ const LANG=['en','es','de','fr'], LEVEL=['A1','A2','B1','B2','C1','C2'];
 const TARGETS=[...LANG.flatMap(language=>LEVEL.flatMap(level=>
   (['A1','A2'].includes(level)?['city']:['city','mixed']).map(mode=>({language,level,mode}))))];
 assert.equal(TARGETS.length,40);
+const FILTER=process.env.CQ_40_ONLY||'';
+const SELECTED=FILTER?TARGETS.filter(t=>FILTER.split(',').includes(t.language+'/'+t.level+'/'+t.mode)):TARGETS;
+assert.ok(SELECTED.length>0,'No journeys selected by filter');
 const REPORT=process.env.CQ_40_REPORT||path.resolve(process.cwd(),'city-quest-e2e-40.json');
 const cases=[];
 
@@ -250,9 +253,12 @@ async function metroMission(page,language,level,n){
 test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey', {timeout:900000}, async t=>{
  const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
  try{
-  for(const c of TARGETS){
+  for(const c of SELECTED){
    await t.test('E2E '+caption(c),{timeout:180000},async()=>{
     const page=await browser.newPage({viewport:{width:1280,height:900}});
+    page.setDefaultTimeout(4500);
+    let attemptedMission=0;
+    console.log('BEGIN '+caption(c));
     const errors=[],requests=[],start=Date.now(),metroCounts={};
     page.on('pageerror',e=>errors.push(e.message));
     page.on('request',r=>{if(!r.url().startsWith('http://127.0.0.1:8765/')&&!r.url().startsWith('data:'))requests.push(r.url());});
@@ -266,6 +272,7 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
       assert.equal(await page.locator('#metroPilotToggle').getAttribute('aria-pressed'),'true');
      }else assert.equal(await page.locator('#cityOnlyToggle').getAttribute('aria-pressed'),'true');
      for(let n=1;n<=8;n++){
+      attemptedMission=n;
       if(c.mode==='mixed'&&n>=5)
        metroCounts[n]=await metroMission(page,c.language,c.level,n);
       else await cityMission(page,c.language,c.level,n);
@@ -276,7 +283,7 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
      cases.push({...c,pass:true,missions:8,elapsedMs:Date.now()-start,metroPhases:metroCounts});
      console.log('PASS '+caption(c)+' / 8 missions');
     }catch(error){
-     cases.push({...c,pass:false,missionsCompleted:(await page.locator('#f1ProgressTrack').getAttribute('aria-valuenow').catch(()=>'?')),
+     cases.push({...c,pass:false,failedAtMission:attemptedMission,missionsCompleted:(await page.locator('#f1ProgressTrack').getAttribute('aria-valuenow').catch(()=>'?')),
        elapsedMs:Date.now()-start,error:String(error),browserErrors:errors,externalRequests:requests});
      console.error('FAIL '+caption(c)+' '+String(error));
      throw error;
@@ -288,6 +295,8 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
   fs.writeFileSync(REPORT,JSON.stringify({
    schema:'city-quest-40-journey-e2e-v1',
    variantCount:TARGETS.length,
+   runCount:SELECTED.length,
+   filter:FILTER||null,
    passed:cases.filter(x=>x.pass).length,
    failed:cases.filter(x=>!x.pass).length,
    totalCompletedMissions:cases.filter(x=>x.pass).reduce((n,x)=>n+x.missions,0),
@@ -295,6 +304,6 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
    cases
   },null,2)+'\n','utf8');
  }
- assert.equal(cases.length,40,'All journey configurations must run');
- assert.equal(cases.filter(x=>x.pass).length,40,'Every journey must pass');
+ assert.equal(cases.length,SELECTED.length,'All selected journeys must run');
+ assert.equal(cases.filter(x=>x.pass).length,SELECTED.length,'Every selected journey must pass');
 });
