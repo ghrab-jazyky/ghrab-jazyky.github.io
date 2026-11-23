@@ -9,13 +9,13 @@
  const group=$("f3Experience"),summary=$("f3ExperienceSummary"),
   presentation=$("f3PresentationButton"),exit=$("f3PresentationExit"),
   sound=$("f3SoundButton"),motion=$("f3MotionButton"),contrast=$("f3ContrastButton"),
-  note=$("f3ExperienceNote"),status=$("f3Status"),skip=$("f3Skip");
- if(!group||!presentation||!exit||!sound||!motion||!contrast||!note||!status||!skip)
+  note=$("f3ExperienceNote"),status=$("f3Status"),skip=$("f3Skip"),skipTask=$("f3SkipTask");
+ if(!group||!presentation||!exit||!sound||!motion||!contrast||!note||!status||!skip||!skipTask)
   throw Error("F3 experience controls are missing.");
  const labels={
   en:{experience:"Experience",presentation:"Presentation mode",exit:"Exit presentation",
    soundOn:"Sound cues on",soundOff:"Sound cues off",motionOn:"Motion on",motionOff:"Motion off",
-   contrastOn:"High contrast on",contrastOff:"High contrast off",skip:"Skip to missions",
+   contrastOn:"High contrast on",contrastOff:"High contrast off",skip:"Skip to missions",skipTask:"Skip to active task",
    note:"Private to this tab. Optional sounds are synthesised locally; no microphone or network.",
    on:"Presentation mode active. Press Escape to exit.",
    off:"Presentation mode closed.",audible:"Sound cues enabled.",silent:"Sound cues disabled.",
@@ -24,7 +24,7 @@
    motionYes:"Motion enabled.",motionNo:"Motion disabled."},
   es:{experience:"Experiencia",presentation:"Modo presentación",exit:"Salir de presentación",
    soundOn:"Sonidos activados",soundOff:"Sonidos desactivados",motionOn:"Animaciones activadas",motionOff:"Animaciones desactivadas",
-   contrastOn:"Alto contraste activado",contrastOff:"Alto contraste desactivado",skip:"Ir a las misiones",
+   contrastOn:"Alto contraste activado",contrastOff:"Alto contraste desactivado",skip:"Ir a la actividad actual",
    note:"Solo en esta pestaña. Los sonidos se generan sin conexión, sin micrófono ni servicios externos.",
    on:"Modo presentación activado. Pulsa Escape para salir.",
    off:"Modo presentación cerrado.",audible:"Sonidos activados.",silent:"Sonidos desactivados.",
@@ -33,7 +33,7 @@
    motionYes:"Animaciones activadas.",motionNo:"Animaciones desactivadas."},
   de:{experience:"Darstellung",presentation:"Präsentationsmodus",exit:"Präsentation verlassen",
    soundOn:"Töne an",soundOff:"Töne aus",motionOn:"Animationen an",motionOff:"Animationen aus",
-   contrastOn:"Hoher Kontrast an",contrastOff:"Hoher Kontrast aus",skip:"Zu den Missionen springen",
+   contrastOn:"Hoher Kontrast an",contrastOff:"Hoher Kontrast aus",skip:"Zu den Missionen springen",skipTask:"Zur aktuellen Aufgabe springen",
    note:"Nur in diesem Tab. Töne entstehen lokal, ohne Mikrofon oder Netzwerk.",
    on:"Präsentationsmodus aktiv. Mit Escape beenden.",
    off:"Präsentationsmodus beendet.",audible:"Töne eingeschaltet.",silent:"Töne ausgeschaltet.",
@@ -42,7 +42,7 @@
    motionYes:"Animationen aktiviert.",motionNo:"Animationen deaktiviert."},
   fr:{experience:"Affichage",presentation:"Mode présentation",exit:"Quitter la présentation",
    soundOn:"Sons activés",soundOff:"Sons désactivés",motionOn:"Animations activées",motionOff:"Animations désactivées",
-   contrastOn:"Contraste élevé activé",contrastOff:"Contraste élevé désactivé",skip:"Aller aux missions",
+   contrastOn:"Contraste élevé activé",contrastOff:"Contraste élevé désactivé",skip:"Aller aux missions",skipTask:"Aller à l'activité en cours",
    note:"Uniquement dans cet onglet. Sons créés localement, sans micro ni connexion.",
    on:"Mode présentation actif. Appuyez sur Échap pour quitter.",
    off:"Mode présentation fermé.",audible:"Sons activés.",silent:"Sons désactivés.",
@@ -65,6 +65,7 @@
   contrast.textContent="◈ "+(highContrast?c.contrastOn:c.contrastOff);
   note.textContent=c.note;
   skip.textContent=c.skip;
+  skipTask.textContent=c.skipTask;
   setPressed(presentation,showPresentation);
   setPressed(sound,allowSound);
   setPressed(motion,allowMotion&&!systemReduced.matches);

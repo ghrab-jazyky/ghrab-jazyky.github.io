@@ -211,7 +211,7 @@ test("F5C N03/NEW-03/NEW-06: game identity and catalog language survive metro to
  try{
   const labels={en:"Interactive language game",es:"Juego interactivo de idiomas",
     de:"Interaktives Sprachspiel",fr:"Jeu de langue interactif"};
-  const skips={es:"Saltar",de:"springen",fr:"Aller"};
+  const skips={es:"Ir a",de:"springen",fr:"Aller"};
   for(const lang of ["en","es","de","fr"]){
    const page=await browser.newPage();
    await page.goto(URL+"?practice=1&lang="+lang+"&level=C1");
@@ -220,7 +220,10 @@ test("F5C N03/NEW-03/NEW-06: game identity and catalog language survive metro to
    assert.ok((await page.locator("#cityQuestGameType").innerText()).includes(labels[lang]));
    assert.ok((await page.locator("#cityQuestHeaderType").innerText()).includes(labels[lang]));
    assert.doesNotMatch(await page.locator("#cityQuestHeaderType").innerText(),/Conversation Lab/);
-   if(lang!=="en")assert.ok((await page.locator("#f3Skip").textContent()).includes(skips[lang]));
+   if(lang!=="en"){
+    assert.ok((await page.locator("#f3Skip").textContent()).includes(skips[lang]));
+    assert.ok((await page.locator("#f3SkipTask").textContent()).includes(skips[lang]==="springen"?"springen":skips[lang]));
+   }
    await page.locator("#metroPilotToggle").click();
    await page.locator("#f1Stations button").nth(5).click();
    assert.ok((await page.locator("#cityQuestGameType").innerText()).includes(labels[lang]));

@@ -88,12 +88,6 @@
   const launchLanguage=launchParams.get("lang"),launchLevel=launchParams.get("level");
   const initialLanguage=C.languages.includes(launchLanguage)?launchLanguage:"en";
   const initialLevel=C.levels.includes(launchLevel)?launchLevel:"B1";
-  const skipLabels={
-    en:["Skip to missions","Skip to active task"],
-    es:["Saltar a las misiones","Saltar a la actividad actual"],
-    de:["Zu den Missionen springen","Zur aktuellen Aufgabe springen"],
-    fr:["Aller aux missions","Aller à l'activité en cours"]
-  };
   let metroEnabled=false;
   let state=makeSession(initialLanguage,initialLevel,"solo");
   let flash=null;
@@ -957,8 +951,6 @@
     $("f2HeroLevel").textContent=state.level;
     $("cityQuestGameType").textContent=gameType[state.language];
     $("cityQuestHeaderType").textContent="Language Skills Hub · "+gameType[state.language];
-    $("f3Skip").textContent=skipLabels[state.language][0];
-    $("f3SkipTask").textContent=skipLabels[state.language][1];
     $("f2HeroText").textContent=p.stations[0][1]+" "+u.objective;
     document.querySelector(".hero h1").textContent=p.stations[7][0];
     document.querySelector(".f1-mode>span").textContent=u.mode;
