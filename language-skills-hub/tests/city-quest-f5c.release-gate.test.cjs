@@ -10,14 +10,29 @@ const approvals=JSON.parse(fs.readFileSync(
  "language-skills-hub/authoring/city-quest-f5c/F5C_RELEASE_APPROVALS.json","utf8"));
 const manifest=JSON.parse(fs.readFileSync(".release-city-quest-f5c/REVIEW_MANIFEST.json","utf8"));
 const fakeEvidence="Review Specialist | 2026-11-23 | synthetic-fixture-ONLY";
-test("F5C release must remain NO-GO until every human and site gate is evidenced",()=>{
- const r=gate.evaluate({matrix,approvals,manifest});
+test("F5C unsigned synthetic fixture is NO-GO while real human reviews remain editable",()=>{
+ const unsignedMatrix=structuredClone(matrix);
+ for(const row of unsignedMatrix.rows)for(let i=0;i<4;i++){
+  row[4+i]="PENDING";row[9+i]="";
+ }
+ const unsignedApprovals=structuredClone(approvals);
+ unsignedApprovals.releaseDecision="NO_GO";
+ unsignedApprovals.approvedArtifactSha256="";
+ for(const name of gate.manualNames)unsignedApprovals.manualGates[name]={
+  status:"PENDING",reviewer:"",date:"",evidence:""
+ };
+ const r=gate.evaluate({matrix:unsignedMatrix,approvals:unsignedApprovals,manifest});
  assert.equal(r.status,"NO_GO");
  assert.equal(r.deployPerformed,false);
  assert.equal(r.counts.rows,256);
  assert.equal(r.counts.pending,1024);
  assert.equal(r.counts.manualPending,gate.manualNames.length);
  assert.equal(r.eligible,false);
+ // Never expect the REAL matrix to stay permanently unsigned.
+ const actual=gate.evaluate({matrix,approvals,manifest});
+ assert.equal(actual.deployPerformed,false);
+ assert.equal(actual.counts.rows,256);
+ assert.equal(actual.counts.invalid,0,"Real review evidence must be correctly formed");
 });
 test("F5C cannot accept incomplete, unsigned or stale manual approvals",()=>{
  const signed=structuredClone(matrix);

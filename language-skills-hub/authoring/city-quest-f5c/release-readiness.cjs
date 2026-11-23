@@ -67,8 +67,12 @@ function evaluate({matrix,approvals,manifest}){
  for(const name of manualNames){
   const entry=approvals?.manualGates?.[name];
   if(!entry||!validStates.has(entry.status)){counts.invalid++;note("Invalid manual gate "+name);continue;}
-  if(entry.status==="PENDING")counts.manualPending++;
-  else{
+  if(entry.status==="PENDING"){
+   counts.manualPending++;
+   if(entry.reviewer||entry.date||entry.evidence){
+    counts.invalid++;note("Unreviewed manual gate has nonempty evidence "+name);
+   }
+  }else{
    if(entry.status==="PASS")counts.manualPass++;else counts.manualFail++;
    if(!hasManualEvidence(entry)){counts.invalid++;note("Missing reviewer/date/evidence for "+name);}
   }
