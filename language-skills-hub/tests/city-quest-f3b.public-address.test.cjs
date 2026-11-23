@@ -35,8 +35,17 @@ function stepsForMission(n){
    case "select-direction":g=go(g,"SELECT_DIRECTION",{value:G.desiredDirection(g)});break;
    case "select-platform":g=go(g,"SELECT_PLATFORM",{value:String(G.platform(g))});break;
    case "board":g=go(g,"BOARD");break;
-   case "ride":g=go(g,"NEXT_STOP");break;
-   case "transfer":g=go(g,"CHANGE_LINE");break;
+   case "ride":{
+    const sc=M.scenario(g.scenarioId),active=sc.legs[g.legIndex];
+    if(g.stopIndex<active.stops.length-1)g=go(g,"NEXT_STOP");
+    else if(g.legIndex<sc.legs.length-1)g=go(g,"TRANSFER_HERE");
+    else g=go(g,"EXIT_HERE");
+    break;
+   }
+   case "transfer":{
+    const next=M.scenario(g.scenarioId).legs[g.legIndex+1].line;
+    g=go(g,"CHANGE_LINE",{value:next});break;
+   }
    case "exit":g=go(g,"EXIT");break;
    default:throw Error("Unrecognized stage "+g.phase);
   }
@@ -108,6 +117,11 @@ test("F3B next-station display is based on actual route and only available on bo
   g=go(g,"NEXT_STOP");p=PA.pack(lang,"B1",g);
   assert.equal(p.next,"Museum Quarter");
   g=go(g,"NEXT_STOP");
+  p=PA.pack(lang,"B1",g);
+  assert.equal(p.kind,"onboard","Arrival alone must not announce the right exit.");
+  assert.equal(p.next,null,"At the final stop there is no fictional next station.");
+  assert.ok(p.body.includes("Museum Quarter"),"The current stop must remain visible.");
+  g=go(g,"EXIT_HERE");
   p=PA.pack(lang,"B1",g);
   assert.equal(p.kind,"arrival");
   assert.equal(p.cue,"arrival");

@@ -68,7 +68,8 @@ test("F2.1C mission 06: real transfer, two line choices, seven route decisions",
   await launch(browser,page,6);
   await travel(page,"M2","North Park","1",2);
   assert.match(await panel(page).innerText(),/University/i);
-  assert.match(await page.locator("#metroSceneHeading").innerText(),/Platform view/);
+  assert.match(await page.locator("#metroSceneHeading").innerText(),/On-board experience/);
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().phase),"ride");
   await click(page,"Change lines here");
   await click(page,"Follow transfer signs");
   await travel(page,"M3","Harbour","3",3);
@@ -116,8 +117,9 @@ test("F2.1C mission 08: real city→metro→city portal and three oral checkpoin
   assert.equal(await page.locator(".layout").isVisible(),false);
   assert.equal(await page.locator("#metroLab").isVisible(),true);
   await travel(page,"M2","North Park","1",2);
-  await click(page,"I have practised aloud");
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().phase),"ride");
   await click(page,"Change lines here");
+  await click(page,"I have practised aloud");
   await click(page,"Follow transfer signs");
   await travel(page,"M3","Harbour","3",2);
   await click(page,"Get off here");

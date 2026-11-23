@@ -56,6 +56,7 @@
    platform:["PLATFORM INFORMATION","Match the line and final destination to the platform signs before boarding."],
    boarding:["READY TO BOARD","Line {line}, towards {terminus}, platform {platform}. Please stand clear of the doors."],
    onboard:["ON BOARD","You are travelling on {line}. Next station: {next}."],
+   atStop:["AT THE STATION","You are now at {station}. Check the network and decide what to do next."],
    transfer:["INTERCHANGE","You are at {station}. Follow the interchange signs, then choose the connecting line."],
    arrival:["DESTINATION","You have reached {station}. Follow the exit signs and explain your route."],
    speaking:["SPEAKING CHECKPOINT","Explain your journey aloud. The application does not record or grade your speech."],
@@ -71,6 +72,7 @@
    platform:["INFORMACIÓN DEL ANDÉN","Comprueba la línea y el destino final en los carteles antes de subir."],
    boarding:["EMBARQUE","Línea {line}, dirección {terminus}, andén {platform}. Mantente alejado de las puertas."],
    onboard:["A BORDO","Viajas en la línea {line}. Próxima estación: {next}."],
+   atStop:["EN LA ESTACIÓN","Ahora estás en {station}. Consulta el plano y decide qué hacer después."],
    transfer:["TRANSBORDO","Estás en {station}. Sigue las señales de correspondencia y elige la línea de conexión."],
    arrival:["DESTINO","Has llegado a {station}. Sigue las señales de salida y explica el trayecto."],
    speaking:["PRÁCTICA ORAL","Explica el trayecto en voz alta. La aplicación no graba ni califica tu intervención."],
@@ -86,6 +88,7 @@
    platform:["BAHNSTEIGINFORMATION","Gleiche Linie und Endstation mit der Beschilderung ab, bevor du einsteigst."],
    boarding:["EINSTIEG","Linie {line}, Richtung {terminus}, Bahnsteig {platform}. Bitte von den Türen zurückbleiben."],
    onboard:["IM METROZUG","Du fährst mit Linie {line}. Nächste Station: {next}."],
+   atStop:["AN DER STATION","Du bist jetzt an der Station {station}. Prüfe den Netzplan und entscheide, wie es weitergeht."],
    transfer:["UMSTEIGEN","Du bist an der Station {station}. Folge den Umsteigeschildern und wähle dann die Anschlusslinie."],
    arrival:["ZIELSTATION","Du hast {station} erreicht. Folge den Ausgängen und erkläre die Strecke."],
    speaking:["SPRECHAUFGABE","Erkläre deinen Weg laut. Die Anwendung zeichnet Sprache nicht auf und bewertet sie nicht."],
@@ -101,6 +104,7 @@
    platform:["INFORMATION QUAI","Vérifiez la ligne et la destination finale sur les panneaux avant de monter."],
    boarding:["EMBARQUEMENT","Ligne {line}, direction {terminus}, quai {platform}. Éloignez-vous des portes, s'il vous plaît."],
    onboard:["À BORD DU MÉTRO","Vous voyagez sur la ligne {line}. Prochaine station : {next}."],
+   atStop:["À LA STATION","Vous êtes maintenant à {station}. Consultez le plan et décidez de la suite."],
    transfer:["CORRESPONDANCE","Vous êtes à {station}. Suivez les panneaux de correspondance avant de choisir la ligne suivante."],
    arrival:["ARRIVÉE","Vous avez atteint {station}. Suivez les panneaux de sortie et expliquez votre trajet."],
    speaking:["EXPRESSION ORALE","Expliquez votre trajet à voix haute. L'application n'enregistre ni ne note votre parole."],
@@ -133,7 +137,7 @@
    terminus:state.direction?M.station(state.direction).labelEn:"",
    next:nextId?M.station(nextId).labelEn:copy.noNext
   };
-  const [headline,body]=copy[kind];
+  const [headline,body]=kind==="onboard"&&!nextId?copy.atStop:copy[kind];
   const cue=kind==="notice"?"warning":kind==="boarding"?"board":
    kind==="transfer"?"transfer":kind==="arrival"?"arrival":
    kind==="complete"?"complete":kind==="onboard"?"ride":null;
@@ -141,7 +145,7 @@
    kind,headline:replace(headline,vars),body:replace(body,vars),
    marker:copy.marker,focus:levelPrompt[lang][level],status:copy.status,
    cue,station:station.labelEn,phase:state.phase,terminus:vars.terminus,
-   line:vars.line,platform:vars.platform,next:kind==="onboard"?vars.next:null,
+   line:vars.line,platform:vars.platform,next:kind==="onboard"&&nextId?vars.next:null,
    display:kind==="onboard"?copy.ride:kind==="boarding"?copy.open:headline,
    locale:lang,level,mission:state.stationNumber,warning:kind==="notice"
   });
@@ -150,7 +154,7 @@
  function validate(){
   for(const lang of languages){
    const c=dict[lang];if(!c||!c.marker||!c.status)throw Error("Missing PA locale "+lang);
-   for(const kind of new Set(Object.values(phaseMap))){
+   for(const kind of new Set([...Object.values(phaseMap),"atStop"])){
     if(!Array.isArray(c[kind])||c[kind].some(s=>typeof s!=="string"||s.length<7))
      throw Error("Missing or too short "+lang+"/"+kind+" PA copy");
    }
