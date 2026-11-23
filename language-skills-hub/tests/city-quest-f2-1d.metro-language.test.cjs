@@ -136,6 +136,15 @@ test("F5C CQ-F5-007: B2-C2 metro has 48 mission-authored tasks and contextual mo
      de:/Eintrittskarten/i,fr:/\bbillets\b/i};
     assert.match(model,ticketTerms[lang],
      lang+"/"+level+"/8 must explain the mandatory ticket collection");
+    // At C2 the meeting must happen in the actual narrated itinerary,
+    // not merely be described as an obligation in the introduction.
+    if(level==="C2"){
+     const afterUniversity=model.slice(model.indexOf("University"));
+     const meeting={en:/meet your colleague/i,es:/reúnete con tu compañera/i,
+      de:/triff dort deine Kollegin/i,fr:/retrouvez votre collègue/i};
+     assert.match(afterUniversity,meeting[lang],
+      lang+"/C2/8 must explicitly meet the colleague at University");
+    }
    }else{
     assert.ok(model.includes(p.models[mission]),
      lang+"/"+level+"/"+mission+" must remain consistent with the graph-verified itinerary");
