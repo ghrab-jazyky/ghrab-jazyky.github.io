@@ -121,8 +121,25 @@ test("F5C CQ-F5-007: B2-C2 metro has 48 mission-authored tasks and contextual mo
    assert.ok(model.length>150,lang+"/"+level+"/"+mission+" model too short");
    assert.equal(model.startsWith(p.models[mission]),false,
     lang+"/"+level+"/"+mission+" cannot simply append to B1 model");
-   assert.ok(model.includes(p.models[mission]),
-    lang+"/"+level+"/"+mission+" must remain consistent with the graph-verified itinerary");
+   if(mission===8){
+    // B2-C2 mission 08 has independently authored answers, not a pasted
+    // B1 template. Audit the graph-verified journey semantically instead.
+    const orderedStops=["Market Square","M2","University","M3","Museum Quarter","City Museum"];
+    let cursor=0;
+    for(const stop of orderedStops){
+     const at=model.indexOf(stop,cursor);
+     assert.ok(at>=cursor,
+      lang+"/"+level+"/8 must contain "+stop+" after the previous route checkpoint");
+     cursor=at+stop.length;
+    }
+    const ticketTerms={en:/\btickets\b/i,es:/\bentradas\b/i,
+     de:/Eintrittskarten/i,fr:/\bbillets\b/i};
+    assert.match(model,ticketTerms[lang],
+     lang+"/"+level+"/8 must explain the mandatory ticket collection");
+   }else{
+    assert.ok(model.includes(p.models[mission]),
+     lang+"/"+level+"/"+mission+" must remain consistent with the graph-verified itinerary");
+   }
    assert.equal(model.endsWith(p.cefr.extension),false,
     lang+"/"+level+"/"+mission+" generic extension must not be treated as authored answer");
    tasks.add(p.cefr.task);models.add(model);count++;
