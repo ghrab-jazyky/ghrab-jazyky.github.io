@@ -70,6 +70,27 @@ test('Real Chromium parses LSH PWA manifest and evaluates installability without
   assert.equal(manifest.display,'standalone');
   assert.ok(manifest.icons.some(x=>x.sizes==='192x192'));
   assert.ok(manifest.icons.some(x=>x.sizes==='512x512'));
+  assert.ok(manifest.icons.some(x=>x.purpose==='maskable'&&x.sizes==='512x512'));
+  const iconResults=await page.evaluate(async()=>{
+   const manifestUrl=new URL('./manifest.webmanifest',location.href);
+   const parsed=await (await fetch(manifestUrl)).json();
+   const out=[];
+   for(const icon of parsed.icons){
+    const resp=await fetch(new URL(icon.src,manifestUrl),{cache:'no-store'});
+    if(!resp.ok)throw new Error('Icon HTTP '+resp.status+': '+icon.src);
+    if(!resp.headers.get('content-type')?.includes('image/png'))
+     throw new Error('Unexpected content-type: '+icon.src);
+    const bitmap=await createImageBitmap(await resp.blob());
+    out.push({size:bitmap.width,height:bitmap.height,purpose:icon.purpose});
+    bitmap.close();
+   }
+   return out;
+  });
+  assert.deepEqual(iconResults,[
+   {size:192,height:192,purpose:'any'},
+   {size:512,height:512,purpose:'any'},
+   {size:512,height:512,purpose:'maskable'}
+  ]);
   const eligibility=await cdp.send('Page.getInstallabilityErrors');
   assert.deepEqual(eligibility.installabilityErrors,[],
    'Real Chromium installability errors: '+JSON.stringify(eligibility.installabilityErrors));
