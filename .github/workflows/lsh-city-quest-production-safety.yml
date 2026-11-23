@@ -1,12 +1,12 @@
 name: LSH City Quest isolated production safety
 on:
   pull_request:
-    branches: [main]
+    branches: [main, fix/city-quest-phase1-2026-11-23]
     paths:
       - 'language-skills-hub/**'
       - '.github/workflows/lsh-city-quest-production-safety.yml'
   push:
-    branches: [main]
+    branches: [main, feature/city-quest-cefr-b2-c2-stage3-20261123]
     paths:
       - 'language-skills-hub/**'
       - '.github/workflows/lsh-city-quest-production-safety.yml'
@@ -73,6 +73,10 @@ jobs:
         run: |
           node --check language-skills-hub/tests/city-quest-phase1-regression.test.cjs
           node --test language-skills-hub/tests/city-quest-phase1-regression.test.cjs
+      - name: Verify authored CEFR B2-C2 tasks and snapshot consistency
+        run: |
+          node --check language-skills-hub/tests/city-quest-stage3-oracy.test.cjs
+          node --test language-skills-hub/tests/city-quest-stage3-oracy.test.cjs
   city-quest-stage-two-browser:
     runs-on: ubuntu-24.04
     container:
@@ -97,3 +101,5 @@ jobs:
           done
           node --check language-skills-hub/tests/city-quest-stage2.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-stage2.browser.test.cjs
+          node --check language-skills-hub/tests/city-quest-stage3-oracy.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-stage3-oracy.browser.test.cjs
