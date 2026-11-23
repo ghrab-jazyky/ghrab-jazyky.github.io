@@ -24,8 +24,8 @@
 .metro-scenario-head strong{font-size:.73rem;letter-spacing:.15em;color:#b5e9e8}
 .metro-scenario-head small{font-size:.75rem;color:var(--metro-muted)}
 .metro-scenario-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
-.metro-scenario-button{display:flex;align-items:center;gap:10px;text-align:left;padding:12px 13px;min-height:65px;border:1px solid #76bccc47;border-radius:13px;background:#16354a;color:#effffc;cursor:pointer;transition:border-color .18s,background .18s,transform .18s}
-.metro-scenario-button:hover{border-color:#7eede4;background:#19475a;transform:translateY(-1px)}
+.metro-scenario-button{display:flex;align-items:center;gap:10px;text-align:left;padding:12px 13px;min-height:65px;border:1px solid #76bccc47;border-radius:13px;background:#16354a;color:#effffc;cursor:pointer;transition:border-color .18s,background .18s,box-shadow .18s}
+.metro-scenario-button:hover{border-color:#7eede4;background:#19475a;box-shadow:0 0 0 2px #7eede435}
 .metro-scenario-button[aria-pressed="true"]{border:2px solid #7ff9d2;background:linear-gradient(125deg,#1d6a63,#194257);box-shadow:inset 0 0 0 1px #a2f7d033,0 7px 19px #49dab71a}
 .metro-scenario-number{display:grid;place-items:center;flex:none;width:35px;height:35px;background:#3ce9c91e;color:#b8fbe9;border-radius:10px;font-weight:950;font-size:1rem}
 .metro-scenario-content{display:grid;gap:3px;min-width:0}

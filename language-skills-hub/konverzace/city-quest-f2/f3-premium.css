@@ -87,7 +87,7 @@ body{
  box-shadow:0 0 0 2px #70e6d523,0 12px 26px #05111d5a;
 }
 .f1-station[aria-current="step"]::before{opacity:1}
-.f1-station:hover:not(:disabled){transform:translateY(-2px);border-color:#91f3dca3}
+.f1-station:hover:not(:disabled){transform:none;border-color:#91f3dca3;box-shadow:0 0 0 2px #91f3dc35,0 8px 18px #05111d40}
 .f1-station:focus-visible{outline:3px solid var(--f3-ring);outline-offset:3px}
 .f1-station-complete{font-weight:1000;border:1px solid #82edd86b;border-radius:50%;height:22px;width:22px;
  display:grid;place-items:center;background:#59f6c81b}

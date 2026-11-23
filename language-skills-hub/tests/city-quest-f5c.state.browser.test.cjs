@@ -464,3 +464,22 @@ test("F5C student surfaces never show internal F version labels or prototype mar
   }
  }finally{await browser.close();}
 });
+
+test("F5C mission navigation hover remains stationary at button edges without force",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:1366,height:900}});
+  await page.goto(URL);
+  const nav=page.locator("#f1Stations button").nth(2);
+  await nav.scrollIntoViewIfNeeded();
+  const before=await nav.boundingBox();
+  assert.ok(before&&before.width>80&&before.height>=44);
+  // A hover translation of -2px causes pointer-boundary oscillation.
+  await page.mouse.move(before.x+before.width/2,before.y+before.height-0.5);
+  await page.waitForTimeout(450);
+  const after=await nav.boundingBox();
+  assert.ok(Math.abs(before.y-after.y)<0.25,"Mission navigation moved while hovered");
+  await nav.click();
+  assert.equal(await page.evaluate(()=>document.querySelector("#f1Stations [aria-current=step]")?.textContent?.includes("03")),true);
+ }finally{await browser.close();}
+});
