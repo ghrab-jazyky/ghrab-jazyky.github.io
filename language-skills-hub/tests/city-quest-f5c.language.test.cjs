@@ -99,3 +99,53 @@ test("F5C CQ-F5-024/030/032: localised checkpoint headings, German U-Bahn terms 
  for(const key of ["pilot","title","header","kicker","pilotTag","metroTitle"])
   assert.doesNotMatch(german[key],/Metro/i,"German should call the system U-Bahn: "+key);
 });
+
+test("Independent editorial review: all B2 City03 dialogue models include the eastward square-to-museum turn",()=>{
+ const pattern={
+  en:/two blocks east[\s\S]*one block north to Market Square[\s\S]*one block east[\s\S]*northbound street/i,
+  es:/dos manzanas hacia el este[\s\S]*una manzana hacia el norte hasta la Plaza del Mercado[\s\S]*una manzana hacia el este[\s\S]*calle que va hacia el norte/i,
+  de:/zwei Häuserblöcke nach Osten[\s\S]*einen Block nach Norden zum Marktplatz[\s\S]*einen Block nach Osten[\s\S]*Straße nach Norden/i,
+  fr:/de deux pâtés de maisons vers l'est[\s\S]*un pâté de maisons vers le nord jusqu'à la place du Marché[\s\S]*d'un pâté de maisons vers l'est[\s\S]*rue vers le nord/i
+ };
+ const target=G.pathFromDirections(["east","east","north","east","north"]);
+ assert.ok(E.same(target.at(-1),E.goal));
+ for(const lang of C.languages){
+  const sample=C.profile(lang,"B2").dialogueAnswer;
+  assert.match(sample,pattern[lang],lang+": the authored model must describe all five map steps");
+  assert.ok(sample.includes(C.pack(lang).places.museum),
+   lang+": final destination name must match the city map");
+ }
+});
+test("Independent editorial review: City-only models do not use Metro-only English place names",()=>{
+ for(const lang of ["es","de","fr"]){
+  const p=C.pack(lang);
+  for(const level of ["A2","B2","C1","C2"]){
+   const answer=C.profile(lang,level).dialogueAnswer;
+   assert.doesNotMatch(answer,/Central Station|Market Square|City Museum/);
+   assert.match(answer,new RegExp(p.places.station,"i"));
+   assert.match(answer,new RegExp(p.places.museum,"i"));
+  }
+ }
+});
+test("Independent editorial review: local dialogue distractors are grammatical and informative",()=>{
+ for(const lang of C.languages)for(const level of C.levels){
+  const answer=C.profile(lang,level).dialogueAnswer,d=G.dialogueDistractors(answer,lang);
+  assert.ok(d.vague!==answer&&d.wrong!==answer);
+  assert.doesNotMatch(d.vague,/[.!?]\\s+[a-z]/);
+  assert.doesNotMatch(d.vague,/cercano cerca|tournez sans préciser où/i);
+ }
+ assert.match(C.pack("fr").dialogue.vague,/Vous le trouverez/);
+ assert.match(C.pack("fr").stations[1][1],/comment y arriver/);
+});
+test("Independent didactic review: CITY08 model is based on the actual visited checkpoints",()=>{
+ const fs=require("node:fs"),path=require("node:path");
+ const client=fs.readFileSync(path.join(__dirname,"../konverzace/city-quest-f2/f2.js"),"utf8");
+ assert.match(client,/const realized=G\\.routeModel\\(pack\\(\\),game\\.route\\)/,
+  "The final quest must not use a generic, unrelated route model.");
+ const sample=G.pathFromDirections(["east","east","north","east","east","north","west"]);
+ assert.ok(E.same(sample.at(-1),E.goal));
+ for(const lang of C.languages){
+  const route=G.routeModel(C.pack(lang),sample);
+  assert.ok(route.length>100&&route.split(".").length>=4);
+ }
+});
