@@ -57,9 +57,17 @@ test('Scoped installable PWA manifest and image files',()=>{
 test('Installation code linked only into the catalog',()=>{
  const html=read('index.html');
  assert.match(html,/<link rel="manifest" href="\.\/manifest\.webmanifest">/);
+ const csp=html.match(/<meta http-equiv="Content-Security-Policy" content="([^"]+)">/);
+ assert.ok(csp,'CSP declaration missing');
+ assert.match(csp[1],/default-src 'none'/,'strict default policy must remain intact');
+ assert.match(csp[1],/manifest-src 'self'/,'same-origin PWA manifest must be allowed');
+ assert.ok(html.indexOf('<meta http-equiv="Content-Security-Policy"')<
+  html.indexOf('<link rel="manifest"'),
+  'CSP must be active before any manifest fetch');
+
  assert.match(html,/<link rel="apple-touch-icon"/);
- assert.match(html,/<script defer src="assets\/pwa-install\.js\?v=pwa-recovery-20261123"/);
- assert.match(html,/pwa-install\.js\?v=pwa-recovery-20261123/);
+ assert.match(html,/<script defer src="assets\/pwa-install\.js\?v=pwa-installability-20261123"/);
+ assert.match(html,/pwa-install\.js\?v=pwa-installability-20261123/);
  assert.match(html,/pwa-install\.css\?v=pwa-recovery-20261123/);
  assert.match(html,/<link rel="stylesheet" href="assets\/pwa-install\.css\?v=pwa-recovery-20261123"/);
  assert.match(html,/id="skillChooser"/);
@@ -76,6 +84,9 @@ test('Consent, timing, and browser install event',()=>{
  assert.match(js,/chooser\.addEventListener\('scroll',scheduleLayout/);
  assert.match(js,/--pwa-overlay-scroll/);
  assert.match(css,/--pwa-overlay-scroll/);
+ assert.doesNotMatch(js,/Přímá instalace nedostupná/);
+ assert.match(js,/Instalovat přes nabídku prohlížeče/);
+ assert.match(js,/helpOpen=!helpOpen/);
  assert.match(js,/navigator\.install\(\)/);
  assert.match(js,/const outcome=await event\.prompt\(\)/);
  assert.match(css,/position:fixed/);

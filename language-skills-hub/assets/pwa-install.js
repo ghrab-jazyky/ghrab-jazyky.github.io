@@ -90,8 +90,8 @@
   const scrolled=dock&&chooser.scrollTop>4;
   panel.classList.toggle('pwa-offer--scrolled',scrolled);
   panel.setAttribute('aria-hidden',scrolled?'true':'false');
-  for(const button of [install,later,never,close])button.disabled=scrolled||installBusy||
-   (button===install&&!canPrompt()&&!manualOnly);
+  for(const button of [install,later,never,close])
+   button.disabled=scrolled||installBusy||panel.hidden;
   chooser.classList.toggle('pwa-install-docked',dock);
   panel.classList.toggle('pwa-offer--docked',dock);
   if(dock){
@@ -120,8 +120,9 @@
  function manualInstructions(){
   if(ios)return 'V prohlížeči otevři Sdílet → Přidat na plochu. Povol Otevřít jako webovou aplikaci a potvrď Přidat.';
   if(safariMac)return 'V Safari otevři Soubor → Přidat do Docku a potvrď.';
-  if(android)return 'Otevři nabídku prohlížeče a zvol Nainstalovat aplikaci nebo Přidat na plochu.';
-  return 'Instalace je dostupná pouze přes nabídku prohlížeče.';
+  if(android)return 'V Chrome otevři nabídku ⋮ → Přidat na plochu → Nainstalovat aplikaci. Pokud vidíš přímo Nainstalovat aplikaci, použij tuto volbu.';
+  if(chromium)return 'V Chrome otevři nabídku ⋮ → Přenášet, ukládat a sdílet → Nainstalovat stránku jako aplikaci. V Edge: ⋯ → Aplikace → Nainstalovat tento web jako aplikaci.';
+  return 'Přímé instalační tlačítko tento prohlížeč neposkytuje. Otevři LSH v Chrome nebo Edge a použij jejich nabídku pro instalaci stránky jako aplikace.';
  }
  function update(){
   const visible=!chooser.hidden&&!welcome.hidden;
@@ -136,18 +137,16 @@
   // rather than making the entire invitation silently disappear.
   panel.hidden=!visible||isInstalled()||dismissedThisSession||Boolean(readPreference());
   const direct=canPrompt();
+  // A native install CTA appears only when the browser has actually granted it.
+  // Until then, offer an actionable browser-menu alternative, never a dead button.
   install.textContent=direct?'Nainstalovat LSH':
    manualOnly?(ios?'Přidat na plochu':safariMac?'Přidat do Docku':'Přidat na plochu'):
-   'Přímá instalace nedostupná';
-  install.disabled=panel.hidden||installBusy||(!direct&&!manualOnly);
+   chromium?'Instalovat přes nabídku prohlížeče':'Jak nainstalovat LSH';
+  install.disabled=panel.hidden||installBusy;
   for(const button of [later,never,close])button.disabled=panel.hidden||installBusy;
-  if(helpOpen&&manualOnly){
-   help.hidden=false;help.textContent=manualInstructions();
-  }else if(!direct&&!manualOnly){
+  if(helpOpen&&!direct){
    help.hidden=panel.hidden;
-   help.textContent=chromium?
-    'Prohlížeč zatím nenabídl přímou instalaci. Pokud se tato možnost zpřístupní, tlačítko se aktivuje.':
-    'Tento prohlížeč nepodporuje přímou instalaci LSH. Otevři LSH v Chrome nebo Edge.';
+   help.textContent=manualInstructions();
   }else help.hidden=true;
   // Position immediately before paint: the popup must never flash over the chooser.
   positionOffer();
@@ -164,7 +163,9 @@
  install.addEventListener('click',async()=>{
   if(installBusy)return;
   if(!canPrompt()){
-   if(manualOnly){helpOpen=!helpOpen;update();}
+   // No browser API can force the OS dialog. Show the real menu route instead.
+   helpOpen=!helpOpen;
+   update();
    return;
   }
   installBusy=true;
@@ -198,6 +199,7 @@
  window.addEventListener('beforeinstallprompt',event=>{
   if(typeof event.prompt!=='function')return;
   event.preventDefault();deferredPrompt=event;
+  helpOpen=false;
   update();
  });
  window.addEventListener('appinstalled',()=>{
