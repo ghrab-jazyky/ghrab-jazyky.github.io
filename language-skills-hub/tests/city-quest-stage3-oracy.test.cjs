@@ -99,3 +99,11 @@ test('Inline speech activities are explicitly non-assessing and CSP is intact',(
  assert.match(html,/const cqTeacherOracyCz=/);
  assert.doesNotMatch(html,/\bid="cqAudioRecorder"/);
 });
+
+test('The manual acceptance checklist exists without claiming physical or human sign-off',()=>{
+ const file=fs.readFileSync(path.join(docs,'CITY_QUEST_MANUAL_ACCEPTANCE_CZ.md'),'utf8');
+ for(const term of ['NO-GO','256','144','iPhone','iPad','Android','VoiceOver','TalkBack'])
+  assert.ok(file.includes(term),'Missing human-gate documentation: '+term);
+ assert.match(file,/PENDING/);
+ assert.match(file,/Market Square.*Library.*City Museum/);
+});
