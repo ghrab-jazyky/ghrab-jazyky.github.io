@@ -271,7 +271,7 @@
     state.metro[number]=result.state;
     // F3B: sound is optional and generated locally only AFTER a real,
     // deterministic engine decision. It never advances the journey.
-    const cue=!result.accepted?"error":result.complete?"complete":
+    const cue=!result.accepted?"error":result.code==="offRoute"?"warning":result.complete?"complete":
       action.type==="READ_NOTICE"?"warning":
       action.type==="BOARD"?"board":
       action.type==="CHANGE_LINE"||action.type==="TRANSFER_HERE"?"transfer":
@@ -279,7 +279,8 @@
       action.type==="NEXT_STOP"?"ride":"advance";
     window.CityQuestF3?.feedback(cue);
     flash={text:LC.feedback(state.language,result,action,
-      window.RivertonMetro?.station(result.state.metroStation)?.labelEn),tone:result.accepted?"success":"warning"};
+      window.RivertonMetro?.station(result.state.metroStation)?.labelEn),
+      tone:!result.accepted||result.code==="offRoute"?"warning":"success"};
     // Persistent polite status survives rebuilding the mission panel and is
     // announced by assistive technology without an audio or network request.
     $("f3Status").textContent=flash.text;
@@ -368,8 +369,13 @@
       // and can be corrected by choosing an opposite-direction service.
       const row=actions(panel);
       for(const type of ["NEXT_STOP","TURN_BACK","TRANSFER_HERE","EXIT_HERE"])
-        btn(row,c.actions[type],()=>metroAction({type}),type==="NEXT_STOP"?"primary":"");
-      if(game.offRoute)note(panel,"⚠ "+c.labels.status||"Route",LC.feedback(state.language,{
+        btn(row,c.actions[type],event=>{
+          // Ignore the second native click of a double-click/double-tap;
+          // ordinary deliberate next-stop clicks still work in sequence.
+          if(type==="NEXT_STOP"&&event.detail>1)return;
+          metroAction({type});
+        },type==="NEXT_STOP"?"primary":"");
+      if(game.offRoute)note(panel,"⚠ "+c.labels.position,LC.feedback(state.language,{
         accepted:true,code:"offRoute",state:game,message:""
       },{type:"NEXT_STOP"},place));
     }else if(stage==="checkpoint"||stage==="speech"){

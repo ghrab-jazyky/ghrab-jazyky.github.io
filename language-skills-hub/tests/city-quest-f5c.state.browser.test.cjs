@@ -483,3 +483,53 @@ test("F5C mission navigation hover remains stationary at button edges without fo
   assert.equal(await page.evaluate(()=>document.querySelector("#f1Stations [aria-current=step]")?.textContent?.includes("03")),true);
  }finally{await browser.close();}
 });
+
+test("F5C NEW-02: wrong transfer is true to the real network and overshoot can be repaired via UI",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:390,height:844},hasTouch:true,isMobile:true});
+  await page.goto(URL);
+  await page.locator("#metroPilotToggle").click();
+  await page.locator("#f1Stations button").nth(5).click();
+  const c=LC.pack("en","B1",6),panel=page.locator("#f1Panel");
+  const click=async text=>panel.getByRole("button",{name:text,exact:false}).first().click();
+  await click("M2");
+  await click("North Park");
+  await click(c.labels.platform+" 1");
+  await click(c.actions.BOARD);
+  await click(c.actions.NEXT_STOP);
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().metroStation),"central_station");
+  await click(c.actions.TRANSFER_HERE);
+  assert.match(await page.locator("#f3Status").innerText(),/is a real interchange/i);
+  await click(c.actions.NEXT_STOP);
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().metroStation),"university");
+  await click(c.actions.NEXT_STOP);
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().metroStation),"north_park");
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().offRoute),true);
+  await click(c.actions.TURN_BACK);
+  await click(c.actions.NEXT_STOP);
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().metroStation),"university");
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().offRoute),false);
+  await click(c.actions.TRANSFER_HERE);
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().phase),"transfer");
+ }finally{await browser.close();}
+});
+test("F5C NEW-04: a double click does not move the metro two stops",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage();
+  await page.goto(URL);
+  await page.locator("#metroPilotToggle").click();
+  await page.locator("#f1Stations button").nth(4).click();
+  const c=LC.pack("en","B1",5),panel=page.locator("#f1Panel");
+  const click=async text=>panel.getByRole("button",{name:text,exact:false}).first().click();
+  await click("M1");
+  await click("East Gardens");
+  await click(c.labels.platform+" 2");
+  await click(c.actions.BOARD);
+  await panel.getByRole("button",{name:c.actions.NEXT_STOP}).dblclick();
+  const state=await page.evaluate(()=>window.CityQuestF2MetroBridge.current());
+  assert.equal(state.metroStation,"old_town","A double click must advance only one stop");
+  assert.equal(state.stopIndex,1);
+ }finally{await browser.close();}
+});
