@@ -113,7 +113,7 @@ test("F3D metro 05: phases Read → Practise → Reflect, no self-check score or
   assert.equal(await phase(page).getAttribute("id"),"f3dPractise");
   await click("East Gardens");await click("Platform 2");await click("Board the train");
   await click("Travel to next stop");await click("Travel to next stop");
-  await click("Exit at destination");
+  await click("Get off here");await click("Exit at destination");
   assert.equal(await phase(page).getAttribute("id"),"f3dReflect");
   await click("I have practised aloud");
   assert.equal(await phase(page).getAttribute("id"),"f3dReflect");

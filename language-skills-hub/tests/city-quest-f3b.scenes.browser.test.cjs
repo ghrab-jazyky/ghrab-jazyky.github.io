@@ -70,6 +70,8 @@ test("F3B station 05: line, terminus and platform remain unknown until chosen; d
   await choose(page,"Travel to next stop");
   assert.ok((await page.locator("#metroPAMessage").innerText()).includes("Museum Quarter"));
   await choose(page,"Travel to next stop");
+  assert.equal(await page.locator("#metroSceneSvg").getAttribute("data-phase"),"ride");
+  await choose(page,"Get off here");
   assert.equal(await pa(page).getAttribute("data-kind"),"arrival");
   assert.equal(await page.locator("#metroSceneSvg").getAttribute("data-phase"),"exit");
   assert.deepEqual(errors,[]);
@@ -123,6 +125,8 @@ test("F3B station 06 transfer scene is visually distinct but does not reveal the
   await choose(page,"M2 ·");await choose(page,"North Park");await choose(page,"Platform 1");
   await choose(page,c.actions.BOARD);
   await choose(page,c.actions.NEXT_STOP);await choose(page,c.actions.NEXT_STOP);
+  assert.equal(await pa(page).getAttribute("data-kind"),"onboard");
+  await choose(page,c.actions.TRANSFER_HERE);
   assert.equal(await pa(page).getAttribute("data-kind"),"transfer");
   assert.equal(await page.locator(".metro-transfer-arrow").count(),1);
   assert.match(await page.locator("#metroSceneSvg").textContent(),/CHANGE TRAINS/);

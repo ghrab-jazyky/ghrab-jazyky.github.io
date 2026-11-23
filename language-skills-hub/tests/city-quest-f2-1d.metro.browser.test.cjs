@@ -20,7 +20,8 @@ async function enable(p,lang,level){
 }
 async function mission(p,n){await p.locator("#f1Stations .f1-station").nth(n-1).click();}
 async function leg(p,c,line,direction,platform,stops){
- await click(p,line+" ·");await click(p,direction);
+ if(await panel(p).getByRole("button",{name:line+" ·",exact:false}).count())await click(p,line+" ·");
+ await click(p,direction);
  await click(p,c.labels.platform+" "+platform);await click(p,c.actions.BOARD);
  for(let i=0;i<stops;i++)await click(p,c.actions.NEXT_STOP);
 }
@@ -73,7 +74,7 @@ test("ES/B1 complete mission 05 using localized controls, oral criteria and samp
   await page.goto(URL);await enable(page,"es","B1");await mission(page,5);
   const c=L.pack("es","B1",5);
   await leg(page,c,"M1","East Gardens","2",2);
-  await click(page,c.actions.EXIT);
+  await click(page,c.actions.EXIT_HERE);await click(page,c.actions.EXIT);
   assert.deepEqual(await panel(page).locator(".metro-selfcheck-criteria li").allInnerTexts(),c.cefr.criteria);
   await click(page,c.labels.model);
   assert.ok((await panel(page).innerText()).includes(c.models[5]));
@@ -89,9 +90,9 @@ test("DE/B2 complete mission 06 with University transfer and level-based justifi
   const c=L.pack("de","B2",6);
   assert.ok((await panel(page).innerText()).includes(c.cefr.task));
   await leg(page,c,"M2","North Park","1",2);
-  await click(page,c.actions.CHANGE_LINE);
+  await click(page,c.actions.TRANSFER_HERE);await click(page,c.actions.CHANGE_LINE);
   await leg(page,c,"M3","Harbour","3",3);
-  await click(page,c.actions.EXIT);
+  await click(page,c.actions.EXIT_HERE);await click(page,c.actions.EXIT);
   assert.ok((await panel(page).innerText()).includes(c.cefr.criteria[1]));
   await pass(page,c,6);
  }finally{await browser.close();}
@@ -104,9 +105,9 @@ test("FR/C1 complete metro disruption mission 07 without traversing closed M1 ed
   const c=L.pack("fr","C1",7);
   await click(page,c.actions.READ_NOTICE);
   await leg(page,c,"M2","North Park","3",1);
-  await click(page,c.actions.CHANGE_LINE);
+  await click(page,c.actions.TRANSFER_HERE);await click(page,c.actions.CHANGE_LINE);
   await leg(page,c,"M3","Harbour","3",2);
-  await click(page,c.actions.EXIT);
+  await click(page,c.actions.EXIT_HERE);await click(page,c.actions.EXIT);
   assert.ok((await panel(page).innerText()).includes(c.cefr.criteria[0]));
   await pass(page,c,7);
  }finally{await browser.close();}
@@ -123,9 +124,9 @@ test("FR/C2 mobile WebKit: City–Metro–City with 3 oral checkpoints and final
   await click(page,c.actions.SELF_CHECK);await click(page,c.actions.ENTER);
   assert.equal(await page.locator(".layout").isVisible(),false);
   await leg(page,c,"M2","North Park","1",2);
-  await click(page,c.actions.SELF_CHECK);await click(page,c.actions.CHANGE_LINE);
+  await click(page,c.actions.TRANSFER_HERE);await click(page,c.actions.SELF_CHECK);await click(page,c.actions.CHANGE_LINE);
   await leg(page,c,"M3","Harbour","3",2);
-  await click(page,c.actions.EXIT);
+  await click(page,c.actions.EXIT_HERE);await click(page,c.actions.EXIT);
   assert.equal(await page.locator(".layout").isVisible(),true);
   await north.click();
   assert.equal(await panel(page).locator(".metro-selfcheck-criteria li").count(),3);

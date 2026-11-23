@@ -19,7 +19,7 @@ async function click(p,label){
  await panel(p).getByRole("button",{name:label,exact:false}).first().click();
 }
 async function travel(p,line,direction,platform,stops){
- await click(p,line+" ·");
+ if(await panel(p).getByRole("button",{name:line+" ·",exact:false}).count())await click(p,line+" ·");
  await click(p,direction);
  await click(p,"Platform "+platform);
  await click(p,"Board the train");
@@ -51,6 +51,7 @@ test("F2.1C desktop: mission 05 rejects wrong line, requires directions/platform
   await click(page,"M2 ·");
   assert.match(await panel(page).innerText(),/does not take you/);
   await travel(page,"M1","East Gardens","2",2);
+  await click(page,"Get off here");
   await click(page,"Exit at destination");
   assert.match(await panel(page).innerText(),/speaking/i);
   await click(page,"I have practised aloud");
@@ -66,10 +67,12 @@ test("F2.1C mission 06: real transfer, two line choices, seven route decisions",
   const page=await browser.newPage({viewport:{width:1280,height:850}});
   await launch(browser,page,6);
   await travel(page,"M2","North Park","1",2);
-  assert.match(await panel(page).innerText(),/interchange/i);
+  assert.match(await panel(page).innerText(),/University/i);
   assert.match(await page.locator("#metroSceneHeading").innerText(),/Platform view/);
+  await click(page,"Change lines here");
   await click(page,"Follow transfer signs");
   await travel(page,"M3","Harbour","3",3);
+  await click(page,"Get off here");
   await click(page,"Exit at destination");
   await click(page,"I have practised aloud");
   await completed(page,6);
@@ -84,8 +87,10 @@ test("F2.1C mission 07: closure notice and alternative via University",async()=>
   await click(page,"Read service notice");
   assert.match(await page.locator("#metroNetworkAlert").innerText(),/closed/i);
   await travel(page,"M2","North Park","3",1);
+  await click(page,"Change lines here");
   await click(page,"Follow transfer signs");
   await travel(page,"M3","Harbour","3",2);
+  await click(page,"Get off here");
   await click(page,"Exit at destination");
   await click(page,"I have practised aloud");
   await completed(page,7);
@@ -112,8 +117,10 @@ test("F2.1C mission 08: real city→metro→city portal and three oral checkpoin
   assert.equal(await page.locator("#metroLab").isVisible(),true);
   await travel(page,"M2","North Park","1",2);
   await click(page,"I have practised aloud");
+  await click(page,"Change lines here");
   await click(page,"Follow transfer signs");
   await travel(page,"M3","Harbour","3",2);
+  await click(page,"Get off here");
   await click(page,"Exit at destination");
   assert.equal(await page.locator(".layout").isVisible(),true);
   assert.equal(await page.locator("#metroLab").isVisible(),false);
@@ -210,6 +217,7 @@ test("F2.1C strict-CSP one-file offline preview works with full metro mission",a
   await page.locator("#metroPilotToggle").click();
   await page.locator("#f1Stations .f1-station").nth(4).click();
   await travel(page,"M1","East Gardens","2",2);
+  await click(page,"Get off here");
   await click(page,"Exit at destination");
   await click(page,"I have practised aloud");
   await completed(page,5);

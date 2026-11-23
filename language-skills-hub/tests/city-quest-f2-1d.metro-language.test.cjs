@@ -34,7 +34,7 @@ test("B1–C2 oral tasks, examples and stretch instructions are not duplicates",
 test("All UI action labels and phases exist in each language; no response-shaped HTML or requests",()=>{
  const phases=["walk-to-entrance","enter","notice","select-line","select-direction",
   "select-platform","board","ride","transfer","exit","walk-to-museum","checkpoint","speech"];
- const actions=["ENTER","READ_NOTICE","BOARD","NEXT_STOP","CHANGE_LINE","EXIT","SELF_CHECK"];
+ const actions=["ENTER","READ_NOTICE","BOARD","NEXT_STOP","TRANSFER_HERE","CHANGE_LINE","EXIT_HERE","EXIT","SELF_CHECK"];
  for(const lang of L.languages){
   const p=L.pack(lang,"B1",5);
   for(const phase of phases){
