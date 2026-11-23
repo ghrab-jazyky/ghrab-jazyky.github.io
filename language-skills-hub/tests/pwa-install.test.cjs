@@ -11,7 +11,7 @@ function verifyPng(bytes,expectedSize){
  assert.equal(bytes.readUInt32BE(16),expectedSize);
  assert.equal(bytes.readUInt32BE(20),expectedSize);
  assert.equal(bytes[24],8,'8-bit PNG required');
- assert.equal(bytes[25],2,'RGB PNG required');
+ assert.ok([2,3].includes(bytes[25]),'RGB or indexed-color PNG required');
  let position=8,ended=false;
  const data=[];
  while(position+12<=bytes.length){
@@ -32,7 +32,7 @@ function verifyPng(bytes,expectedSize){
  assert.ok(ended,'PNG must contain IEND');
  assert.equal(position,bytes.length,'PNG must not include trailing incomplete data');
  const pixels=zlib.inflateSync(Buffer.concat(data));
- assert.equal(pixels.length,expectedSize*(1+expectedSize*3),'PNG raster must decompress fully');
+ assert.equal(pixels.length,expectedSize*(1+expectedSize*(bytes[25]===2?3:1)),'PNG raster must decompress fully');
 }
 
 test('Scoped installable PWA manifest and image files',()=>{
@@ -134,4 +134,26 @@ test('Teacher announcement describes the PWA and the already-listed City Quest w
  assert.deepEqual(entry.languages,['en','es','de','fr']);
  assert.deepEqual(entry.levels,['A1','A2','B1','B2','C1','C2']);
  assert.ok(fs.existsSync(path.join(root,entry.relative)));
+});
+
+
+test('Premium LSH PWA icons are freshly versioned, sharp, platform-safe and editable',()=>{
+ const manifest=JSON.parse(read('manifest.webmanifest'));
+ assert.deepEqual(manifest.icons,[
+  {src:'assets/icons/icon-192-v2.png',sizes:'192x192',type:'image/png',purpose:'any'},
+  {src:'assets/icons/icon-512-v2.png',sizes:'512x512',type:'image/png',purpose:'any'},
+  {src:'assets/icons/icon-maskable-512-v2.png',sizes:'512x512',type:'image/png',purpose:'maskable'}
+ ]);
+ verifyPng(fs.readFileSync(path.join(root,'assets/icons/icon-maskable-512-v2.png')),512);
+ verifyPng(fs.readFileSync(path.join(root,'assets/icons/apple-touch-icon-180-v2.png')),180);
+ const source=read('assets/icons/lsh-logo.svg');
+ const maskSource=read('assets/icons/lsh-logo-maskable.svg');
+ assert.match(source,/<svg[^>]+viewBox="0 0 1000 1000"/);
+ assert.match(source,/<path d="/,'letterforms must be vector paths, not browser-rendered fonts');
+ assert.doesNotMatch(source,/<text|<image|<script/);
+ assert.match(maskSource,/scale\(\.75\)/,'maskable artwork must stay inside safe area');
+ const html=read('index.html');
+ assert.match(html,/apple-touch-icon-180-v2\.png/);
+ assert.match(html,/icon-192-v2\.png/);
+ assert.doesNotMatch(html,/href="assets\/icons\/icon-192\.png"/);
 });
