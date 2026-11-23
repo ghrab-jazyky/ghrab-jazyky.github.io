@@ -1,0 +1,60 @@
+/* Install offer lives inside the existing three-lab chooser and never becomes a modal. */
+/* Reserve actual layout space for the offer: never cover Back or lab choice buttons. */
+.skill-chooser .chooser-header:has(>.pwa-offer:not([hidden])){
+ display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,354px);
+ grid-template-areas:"intro offer" "back offer";
+ align-items:start;gap:10px 18px;
+}
+.skill-chooser .chooser-header:has(>.pwa-offer:not([hidden]))>div:first-child{grid-area:intro;min-width:0}
+.skill-chooser .chooser-header:has(>.pwa-offer:not([hidden]))>.chooser-back{
+ grid-area:back;justify-self:start;
+}
+.skill-chooser .chooser-header:has(>.pwa-offer:not([hidden]))>.pwa-offer{
+ grid-area:offer;justify-self:end;
+}
+.pwa-offer{
+ position:relative;z-index:1;width:100%;max-width:354px;max-height:calc(100dvh - 24px);
+ margin-left:auto;overflow:auto;overscroll-behavior:contain;padding:16px 17px 13px;
+ border:1px solid #64bbc5;border-radius:18px;
+ background:linear-gradient(150deg,#143b4e,#0e2538 83%);color:#effbff;
+ box-shadow:0 20px 60px #020914bb,0 0 0 1px #7bdad01a;
+ animation:pwa-offer-enter .22s ease-out both;
+}
+.pwa-offer[hidden]{display:none!important}
+.pwa-offer-head{display:flex;align-items:center;gap:11px;min-width:0}
+.pwa-offer-mark{display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;
+ background:#204f61;border:1px solid #76c9cc;border-radius:12px;color:#aff9f0;font-size:1.4rem;font-weight:800}
+.pwa-offer-heading{min-width:0;flex:1}
+.pwa-offer-eyebrow{margin:0 0 3px;font-size:.62rem;letter-spacing:.15em;
+ color:#9ce8e5;font-weight:800}
+.pwa-offer-title{margin:0;font-size:1.01rem;line-height:1.25;letter-spacing:-.01em;color:#fff}
+.pwa-offer-close{flex:0 0 36px;width:36px;height:36px;border:1px solid #4c8393;
+ background:transparent;color:#eafaff;border-radius:9px;font-size:1.45rem;line-height:1;cursor:pointer}
+.pwa-offer-close:hover{background:#265061}
+.pwa-offer-copy{margin:12px 0 13px;font-size:.84rem;line-height:1.5;color:#d9eaf2}
+.pwa-offer-actions{display:grid;grid-template-columns:1fr;gap:7px}
+.pwa-offer-actions button{min-height:42px;border-radius:10px;padding:8px 12px;
+ font:700 .82rem/1.2 system-ui,sans-serif;cursor:pointer}
+.pwa-offer-primary{background:#8ff4e8;color:#0d3340;border:1px solid #8ff4e8}
+.pwa-offer-primary:hover{background:#c0fff5}
+.pwa-offer-secondary{background:#1f4254;color:#f2faff;border:1px solid #669bab}
+.pwa-offer-secondary:hover{background:#2e5970}
+.pwa-offer-quiet{background:transparent;color:#c3e8e9;border:1px solid transparent;text-decoration:underline;text-underline-offset:3px}
+.pwa-offer-quiet:hover{color:#fff}
+.pwa-offer button:focus-visible{outline:3px solid #ffda91;outline-offset:2px}
+.pwa-offer-help{padding:11px;margin:10px 0 0;border:1px solid #4f91a3;
+ background:#092b3a;border-radius:10px;font-size:.8rem;line-height:1.5;color:#edfaff}
+.pwa-offer-foot{margin:11px 0 0;font-size:.7rem;line-height:1.4;color:#adcbd5}
+@keyframes pwa-offer-enter{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:700px){
+ .skill-chooser .chooser-header:has(>.pwa-offer:not([hidden])){
+  grid-template-columns:minmax(0,1fr);
+  grid-template-areas:"offer" "intro" "back";
+  gap:9px;
+ }
+ .pwa-offer{width:min(330px,100%);padding:13px 14px 11px;border-radius:15px}
+ .pwa-offer-copy{font-size:.8rem;margin:9px 0}
+ .pwa-offer-actions{gap:5px}
+ .pwa-offer-actions button{min-height:40px}
+}
+@media(prefers-reduced-motion:reduce){.pwa-offer{animation:none}}

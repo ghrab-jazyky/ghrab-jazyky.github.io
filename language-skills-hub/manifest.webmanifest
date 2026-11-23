@@ -1,0 +1,40 @@
+{
+  "id": "/language-skills-hub/",
+  "name": "Language Skills Hub",
+  "short_name": "LSH",
+  "description": "Conversation Lab, Reading Lab a Listening Lab Gymnázia Ostrava-Hrabůvka.",
+  "lang": "cs",
+  "start_url": "/language-skills-hub/",
+  "scope": "/language-skills-hub/",
+  "display": "standalone",
+  "background_color": "#081526",
+  "theme_color": "#081526",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Conversation Lab",
+      "url": "/language-skills-hub/?skill=konverzace"
+    },
+    {
+      "name": "Reading Lab",
+      "url": "/language-skills-hub/?skill=cteni"
+    },
+    {
+      "name": "Listening Lab",
+      "url": "/language-skills-hub/?skill=poslech"
+    }
+  ]
+}
