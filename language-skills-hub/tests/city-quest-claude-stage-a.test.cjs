@@ -86,3 +86,33 @@ test('Manual release gates reference the most recent prior certified full E2E re
  assert.match(manual,/NO-GO/);
  assert.match(manual,/PENDING/);
 });
+
+test('French narrow no-break punctuation in authored CEFR and contextual feedback',()=>{
+ const refs=['advancedExploreClues','advancedDialogueScenes','advancedPractice','disruptionNotices','cqAdvancedOracy'];
+ for(const name of refs){
+  const d=lineData(name);
+  const serialized=JSON.stringify(d.fr);
+  assert.doesNotMatch(serialized,/ [!?;:]/,'French string punctuation '+name);
+ }
+ const authored=JSON.parse(fs.readFileSync(path.join(authoring,'stage3-oracy-fr.json'),'utf8'));
+ assert.deepEqual(lineData('cqAdvancedOracy').fr,authored);
+ const segment=html.slice(html.indexOf('    fr:{\n      name:"French"'),
+   html.indexOf('\n  };\n  for(const [lang,data]',html.indexOf('    fr:{\n      name:"French"')));
+ assert.doesNotMatch(segment.match(/"(?:\\.|[^"\\])*"/g).join('\n'),/ [!?;:]/,
+  'French city labels must not have breakable spaces before punctuation');
+ assert.match(segment,/Avancez jusqu'au prochain carrefour/);
+ assert.match(segment,/troisième carrefour/);
+});
+test('German task language does not confuse missions with real metro stations',()=>{
+ assert.match(html,/station:"Aufgabe",completed:"Aufgaben abgeschlossen"/);
+ assert.match(html,/next:"Nächste Aufgabe"/);
+ assert.match(html,/finish:"Aufgabe abgeschlossen"/);
+ assert.match(html,/platformAt:"Illustrierter Bahnsteig an der Station "/);
+ assert.match(html,/trainAt:"Illustrierter U-Bahn-Zug an der Station "/);
+ assert.match(html,/st\.id===6\?"🔀"/);
+});
+test('Map M is the City Museum goal, not the Museum Quarter metro portal',()=>{
+ assert.match(html,/text\(map,684,291,"M"/);
+ assert.match(html,/portalEnd=\{c:3,r:2\},museum=\{c:3,r:1\}/);
+ // Do not move the original City Museum marker to the south metro exit (Claude N-05).
+});
