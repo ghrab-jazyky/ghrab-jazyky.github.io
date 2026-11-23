@@ -149,7 +149,8 @@
     'Prohlížeč zatím nenabídl přímou instalaci. Pokud se tato možnost zpřístupní, tlačítko se aktivuje.':
     'Tento prohlížeč nepodporuje přímou instalaci LSH. Otevři LSH v Chrome nebo Edge.';
   }else help.hidden=true;
-  scheduleLayout();
+  // Position immediately before paint: the popup must never flash over the chooser.
+  positionOffer();
  }
  close.addEventListener('click',()=>savePreference('later'));
  later.addEventListener('click',()=>savePreference('later'));
