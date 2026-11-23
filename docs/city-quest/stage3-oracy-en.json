@@ -64,7 +64,7 @@
     "8": {
       "B2": "Your group has several city checkpoints to visit before the museum. Summarize the order, explain one route choice and contrast it with a tempting shortcut.",
       "C1": "Guide a partner through all required checkpoints. Highlight one possible navigation error and explain how you would correct it without restarting the entire journey.",
-      "C2": "Two visitors have conflicting priorities for the multi-stop city quest. Negotiate a viable order that satisfies the required checkpoints, then give a clear shared plan and justify it."
+      "C2": "One visitor wants to start at the Library, but the quest requires Market Square → Library → City Museum. Explain this fixed checkpoint order tactfully, reconcile the group's priorities and give a viable route."
     }
   },
   "metro": {
