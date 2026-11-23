@@ -2,7 +2,9 @@
 /* F2.1C opt-in metro pilot acceptance: no server or API and no default F2 regressions. */
 const {test}=require("node:test"),assert=require("node:assert/strict");
 const path=require("node:path"),fs=require("node:fs"),{chromium,webkit}=require("playwright");
-const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html";
+// This is an AUTHORING/QA visual-preview suite. Normal student URLs do
+// not expose guided reference routes (CQ-F5-006).
+const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html?cq-review=1";
 const SHOTS=path.join(process.cwd(),"city-quest-f2-1c-artifacts");fs.mkdirSync(SHOTS,{recursive:true});
 async function launch(browser,page,station){
  await page.goto(URL,{waitUntil:"load"});
@@ -17,7 +19,7 @@ async function click(p,label){
  await panel(p).getByRole("button",{name:label,exact:false}).first().click();
 }
 async function travel(p,line,direction,platform,stops){
- await click(p,line+" ·");
+ if(await panel(p).getByRole("button",{name:line+" ·",exact:false}).count())await click(p,line+" ·");
  await click(p,direction);
  await click(p,"Platform "+platform);
  await click(p,"Board the train");
@@ -35,7 +37,7 @@ test("F2.1C desktop: mission 05 rejects wrong line, requires directions/platform
   const errors=[];page.on("pageerror",e=>errors.push(e.stack||String(e)));
   await launch(browser,page,5);
   assert.equal(await page.locator(".hero h1").innerText(),"Riverton City + Metro Quest");
-  assert.match(await page.locator(".topbar .header-actions .tag").innerText(),/F2\.1[CD]/);
+  assert.match(await page.locator(".topbar .header-actions .tag").innerText(),/CITY QUEST/);
   assert.equal(await page.locator("#metroLab").getAttribute("data-mode"),"game");
   assert.equal(await page.locator("#metroLab").isVisible(),true);
   assert.equal(await page.locator(".layout").isVisible(),false);
@@ -49,6 +51,7 @@ test("F2.1C desktop: mission 05 rejects wrong line, requires directions/platform
   await click(page,"M2 ·");
   assert.match(await panel(page).innerText(),/does not take you/);
   await travel(page,"M1","East Gardens","2",2);
+  await click(page,"Get off here");
   await click(page,"Exit at destination");
   assert.match(await panel(page).innerText(),/speaking/i);
   await click(page,"I have practised aloud");
@@ -64,10 +67,13 @@ test("F2.1C mission 06: real transfer, two line choices, seven route decisions",
   const page=await browser.newPage({viewport:{width:1280,height:850}});
   await launch(browser,page,6);
   await travel(page,"M2","North Park","1",2);
-  assert.match(await panel(page).innerText(),/interchange/i);
-  assert.match(await page.locator("#metroSceneHeading").innerText(),/Platform view/);
+  assert.match(await panel(page).innerText(),/University/i);
+  assert.match(await page.locator("#metroSceneHeading").innerText(),/On-board experience/);
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().phase),"ride");
+  await click(page,"Change lines here");
   await click(page,"Follow transfer signs");
   await travel(page,"M3","Harbour","3",3);
+  await click(page,"Get off here");
   await click(page,"Exit at destination");
   await click(page,"I have practised aloud");
   await completed(page,6);
@@ -82,8 +88,10 @@ test("F2.1C mission 07: closure notice and alternative via University",async()=>
   await click(page,"Read service notice");
   assert.match(await page.locator("#metroNetworkAlert").innerText(),/closed/i);
   await travel(page,"M2","North Park","3",1);
+  await click(page,"Change lines here");
   await click(page,"Follow transfer signs");
   await travel(page,"M3","Harbour","3",2);
+  await click(page,"Get off here");
   await click(page,"Exit at destination");
   await click(page,"I have practised aloud");
   await completed(page,7);
@@ -109,9 +117,12 @@ test("F2.1C mission 08: real city→metro→city portal and three oral checkpoin
   assert.equal(await page.locator(".layout").isVisible(),false);
   assert.equal(await page.locator("#metroLab").isVisible(),true);
   await travel(page,"M2","North Park","1",2);
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().phase),"ride");
+  await click(page,"Change lines here");
   await click(page,"I have practised aloud");
   await click(page,"Follow transfer signs");
   await travel(page,"M3","Harbour","3",2);
+  await click(page,"Get off here");
   await click(page,"Exit at destination");
   assert.equal(await page.locator(".layout").isVisible(),true);
   assert.equal(await page.locator("#metroLab").isVisible(),false);
@@ -204,10 +215,11 @@ test("F2.1C strict-CSP one-file offline preview works with full metro mission",a
   const external=[],errors=[];
   page.on("request",r=>{if(!r.url().startsWith("file:"))external.push(r.url());});
   page.on("pageerror",e=>errors.push(e.stack||String(e)));
-  await page.goto("file://"+file,{waitUntil:"load"});
+  await page.goto("file://"+file+"?cq-review=1",{waitUntil:"load"});
   await page.locator("#metroPilotToggle").click();
   await page.locator("#f1Stations .f1-station").nth(4).click();
   await travel(page,"M1","East Gardens","2",2);
+  await click(page,"Get off here");
   await click(page,"Exit at destination");
   await click(page,"I have practised aloud");
   await completed(page,5);

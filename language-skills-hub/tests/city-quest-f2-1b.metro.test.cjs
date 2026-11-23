@@ -112,3 +112,34 @@ test("Network content is explicitly fictional, with offline original art inputs"
  assert.equal(M.lines.every(x=>/^#[0-9A-F]{6}$/i.test(x.color)),true);
  assert.equal(M.source.surfacePortals.every(x=>Number.isInteger(x.cityNode.c)&&Number.isInteger(x.cityNode.r)),true);
 });
+
+
+test("F5C CQ-F5-004: offline departure signs are grounded in actual route and platform fixtures",()=>{
+ const expected={
+  central_station:{M1:"2",M2:"3"},
+  market_square:{M2:"1"},
+  university:{M3:"3"}
+ };
+ for(const [station,lines] of Object.entries(expected)){
+  const board=M.platformSigns(station);
+  assert.ok(board.length>=2&&board.length<=3,station+" needs realistic choices");
+  assert.equal(new Set(board.map(s=>s.platform)).size,board.length,station+" duplicate platform");
+  for(const [line,number] of Object.entries(lines)){
+   const required=M.source.platformFixtures.find(x=>x.station===station&&x.line===line);
+   assert.ok(required,"Expected route fixture missing "+station+"/"+line);
+   const sign=board.find(x=>x.platform===number);
+   assert.ok(sign,"Sign not visible at platform "+number);
+   assert.equal(sign.line,line);
+   assert.equal(sign.directionTerminus,required.directionTerminus);
+  }
+  for(const sign of board){
+   const networkLine=M.line(sign.line);
+   assert.ok(M.joined(station).includes(sign.line));
+   assert.ok([networkLine.stops[0],networkLine.stops.at(-1)].includes(sign.directionTerminus));
+   assert.notEqual(sign.directionTerminus,station);
+  }
+ }
+ assert.throws(()=>M.platformSigns("nonexistent_station"),RangeError);
+ assert.ok(M.platformSigns("market_square").every(x=>x.platform!=="3"));
+ assert.equal(M.validate(),true);
+});

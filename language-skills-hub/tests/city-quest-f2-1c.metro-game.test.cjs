@@ -23,9 +23,11 @@ function pilot(n){
   s=rejected(s,"WALK",{c:2,r:2}); // no jumping over city blocks
   for(const p of [{c:1,r:3},{c:2,r:3},{c:2,r:2}])s=accepted(s,"WALK",p);
   assert.equal(s.phase,"checkpoint","Market Square requires explicit oral checkpoint");
+  assert.equal(s.ticketsCollected,false,"Reserved tickets must not be marked collected before checkpoint");
   s=rejected(s,"ENTER");
   s=accepted(s,"SELF_CHECK");
   assert.equal(s.speakingDone,1);
+  assert.equal(s.ticketsCollected,true,"Market Square checkpoint acknowledges collection of tickets");
   s=accepted(s,"ENTER");
  }
  if(n===7){
@@ -37,11 +39,13 @@ function pilot(n){
  assert.equal(s.phase,"select-line");
  for(let legNo=0;legNo<sc.legs.length;legNo++){
   const leg=sc.legs[legNo],destination=G.desiredDirection(s),platform=G.platform(s);
-  assert.equal(s.phase,"select-line");
+  assert.equal(s.phase,legNo===0?"select-line":"select-direction");
   s=rejected(s,"NEXT_STOP");
-  const other=M.joined(s.metroStation).find(id=>id!==leg.line);
-  if(other)s=rejected(s,"SELECT_LINE",other);
-  s=accepted(s,"SELECT_LINE",leg.line);
+  if(legNo===0){
+   const other=M.joined(s.metroStation).find(id=>id!==leg.line);
+   if(other)s=rejected(s,"SELECT_LINE",other);
+   s=accepted(s,"SELECT_LINE",leg.line);
+  }
   const wrong=M.line(leg.line).stops.find(x=>x!==destination&&
    [M.line(leg.line).stops[0],M.line(leg.line).stops.at(-1)].includes(x));
   s=rejected(s,"SELECT_DIRECTION",wrong);
@@ -50,11 +54,15 @@ function pilot(n){
   s=accepted(s,"SELECT_PLATFORM",platform);
   s=accepted(s,"BOARD");
   for(let i=1;i<leg.stops.length;i++){
+   s=rejected(s,"EXIT_HERE");
    s=accepted(s,"NEXT_STOP");
    assert.equal(s.metroStation,leg.stops[i]);
    assert.ok(G.routeIndex(s)>0,"Metro step progress must advance");
   }
+  assert.equal(s.phase,"ride","Stop arrival must not tell the learner to change or get off");
   if(legNo<sc.legs.length-1){
+   s=rejected(s,"EXIT_HERE");
+   s=accepted(s,"TRANSFER_HERE");
    if(n===8){
     assert.equal(s.phase,"checkpoint");
     s=rejected(s,"CHANGE_LINE");
@@ -62,11 +70,21 @@ function pilot(n){
     assert.equal(s.speakingDone,2);
    }
    assert.equal(s.phase,"transfer");
-   s=accepted(s,"CHANGE_LINE");
+   // A learner must identify a connecting line rather than pressing an
+   // automatic "transfer" button; a wrong line is a safe non-advancing error.
+   const nextLine=sc.legs[legNo+1].line;
+   s=rejected(s,"STAY_ON_LINE",leg.line);
+   s=rejected(s,"CHANGE_LINE",leg.line);
+   s=accepted(s,"CHANGE_LINE",nextLine);
+   assert.equal(s.phase,"select-direction");
   }
  }
+ assert.equal(s.phase,"ride");
+ s=rejected(s,"TRANSFER_HERE");
+ s=accepted(s,"EXIT_HERE");
  assert.equal(s.phase,"exit");
  s=rejected(s,"NEXT_STOP");
+ s=rejected(s,"CONTINUE_PAST_EXIT");
  s=accepted(s,"EXIT");
  if(n===8){
   assert.equal(s.phase,"walk-to-museum");
@@ -116,6 +134,37 @@ test("Mission 08 EN/B1 has city entrance, metro transfer, city exit and three sp
  assert.equal(end.cityPath.length,2,"Last walking leg contains portal and museum");
  assert.equal(end.speakingDone,3);
  assert.ok(end.history.filter(x=>x==="WALK").length>=4);
+});
+test("F5C NEW-02: physical M2 overshoot has a consequence, recovery, and truthful Central Station transfer feedback",()=>{
+ let state=G.start(6);
+ state=accepted(state,"SELECT_LINE","M2");
+ state=accepted(state,"SELECT_DIRECTION","north_park");
+ state=accepted(state,"SELECT_PLATFORM","1");
+ state=accepted(state,"BOARD");
+ state=accepted(state,"NEXT_STOP"); // Central Station is a REAL M1/M2 interchange.
+ assert.equal(state.metroStation,"central_station");
+ const wrongTransfer=act(state,"TRANSFER_HERE");
+ assert.equal(wrongTransfer.accepted,false);
+ assert.equal(wrongTransfer.code,"otherInterchange");
+ assert.match(wrongTransfer.message,/is an interchange/i);
+ assert.equal(wrongTransfer.state.metroStation,"central_station");
+ state=accepted(state,"NEXT_STOP"); // University
+ assert.equal(state.metroStation,"university");
+ state=accepted(state,"NEXT_STOP"); // train continues to North Park
+ assert.equal(state.metroStation,"north_park");
+ assert.equal(state.offRoute,true);
+ assert.equal(state.completed,false);
+ const terminus=act(state,"NEXT_STOP");
+ assert.equal(terminus.accepted,false);
+ assert.equal(terminus.code,"terminus");
+ state=accepted(state,"TURN_BACK");
+ assert.equal(state.direction,"south_gate");
+ state=accepted(state,"NEXT_STOP");
+ assert.equal(state.metroStation,"university");
+ assert.equal(state.offRoute,false);
+ assert.ok(state.extraStops>=2);
+ state=accepted(state,"TRANSFER_HERE");
+ assert.equal(state.phase,"transfer");
 });
 test("City portion of mission 08 supports safe Undo without losing the current mission",()=>{
  let state=G.start(8);

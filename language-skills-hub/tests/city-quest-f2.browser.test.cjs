@@ -75,15 +75,15 @@ test("English B1: all eight stations playable and locally completed",async()=>{
   await page.locator("#f1Stations button").first().waitFor();
   // Station 1: six correct landmarks.
   for(const round of G.F.explore){
-    await page.locator("#f1Panel .f2-choice-list button").nth(round.choices.indexOf(round.correct)).click();
+    await page.locator("#f1Panel .f2-choice-list button").filter({hasText:C.pack("en").places[round.correct]}).click();
   }
   assert.equal(await progress(page),1);
   await station(page,2);
   await directions(page,["east","east","east","north","north"]);
   assert.equal(await progress(page),2);
   await station(page,3);
-  await page.locator("#f1Panel .f2-choice-list button").first().click();
-  await page.locator("#f1Panel .f2-choice-list button").first().click();
+  await page.locator("#f1Panel .f2-choice-list button").filter({hasText:C.profile("en","B1").dialogueAnswer}).click();
+  await page.locator("#f1Panel .f2-choice-list button").filter({hasText:C.pack("en").dialogue.distance}).click();
   assert.equal(await progress(page),3);
   await station(page,4);
   await directions(page,["east","east","north","north","east"]);
@@ -95,11 +95,11 @@ test("English B1: all eight stations playable and locally completed",async()=>{
   await page.locator("#f1Panel .f2-actions .btn").first().click();
   assert.equal(await progress(page),5);
   await station(page,6);
-  await page.locator("#f1Panel .f2-choice-list button").nth(1).click();
-  await page.locator("#f1Panel .f2-choice-list button").first().click();
+  await page.locator("#f1Panel .f2-choice-list button").filter({hasText:C.pack("en").repair.identify[1]}).click();
+  await page.locator("#f1Panel .f2-choice-list button").filter({hasText:C.pack("en").repair.fixes[0]}).click();
   assert.equal(await progress(page),6);
   await station(page,7);
-  await directions(page,["north","east","east","east","north"]);
+  await directions(page,["east","east","north","east","south","east","north","north","west"]);
   assert.equal(await progress(page),7);
   await station(page,8);
   for(const steps of [["east","east","north"],["east","east"],["west","north"]]){
@@ -170,7 +170,7 @@ test("mobile WebKit: German and French variants, no remote requests",async()=>{
   await page.goto(URL,{waitUntil:"load"});
   await setVariant(page,"de","B2");
   await station(page,3);
-  assert.match(await page.locator("#f1Panel").innerText(),/Entschuldigung/);
+  assert.match(await page.locator("#f1Panel").innerText(),/Entschuldigung|Entschuldigen Sie/);
   await setVariant(page,"fr","C2");
   await station(page,5);
   assert.match(await page.locator("#f1Panel").innerText(),/mobilité réduite|accessible/i);

@@ -49,7 +49,7 @@ test("F4R FR C1/C2 editorial spot-check: precise register, grammar, route and se
  assert.match(fr.models[5],/M1.*East Gardens.*quai 2.*Museum Quarter/);
  assert.match(fr.models[6],/Market Square.*Changez à University.*Harbour.*Stadium/);
  assert.match(fr.models[7],/M1.*Old Town.*Museum Quarter.*M2.*University.*M3/);
- assert.match(fr.models[8],/Marchez.*Market Square.*University.*Museum Quarter.*marchez vers le nord.*City Museum/);
+ assert.match(fr.models[8],/Allez.*Market Square.*University.*Museum Quarter.*marchez ensemble vers le nord.*City Museum/);
  assert.equal(fr.levels.C1.criteria.length,3);
  assert.equal(fr.levels.C2.criteria.length,3);
  assert.match(fr.labels.verified,/sans enregistrement ni note automatique/);

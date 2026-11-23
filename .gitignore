@@ -1,3 +1,7 @@
 
 # Generated QA evidence (CI uploads these as workflow artifacts)
 /qa/
+
+# City Quest generated preview and isolated REVIEW-only publication (never commit)
+/.review-city-quest-f2/
+/.release-city-quest-f5c/

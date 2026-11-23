@@ -87,7 +87,7 @@ body{
  box-shadow:0 0 0 2px #70e6d523,0 12px 26px #05111d5a;
 }
 .f1-station[aria-current="step"]::before{opacity:1}
-.f1-station:hover:not(:disabled){transform:translateY(-2px);border-color:#91f3dca3}
+.f1-station:hover:not(:disabled){transform:none;border-color:#91f3dca3;box-shadow:0 0 0 2px #91f3dc35,0 8px 18px #05111d40}
 .f1-station:focus-visible{outline:3px solid var(--f3-ring);outline-offset:3px}
 .f1-station-complete{font-weight:1000;border:1px solid #82edd86b;border-radius:50%;height:22px;width:22px;
  display:grid;place-items:center;background:#59f6c81b}
@@ -101,12 +101,12 @@ body{
 .f2-objective{border-left:4px solid #83eccb}
 :root[data-theme=light] .f2-objective{border-left-color:#118277}
 .f2-choice-list .btn,.f2-actions .btn{
- transition:transform var(--f3-transition),background var(--f3-transition),border-color var(--f3-transition);
+ transition:background var(--f3-transition),border-color var(--f3-transition),box-shadow var(--f3-transition);
 }
 .f2-choice-list .btn:hover:not(:disabled),.f2-actions .btn:hover:not(:disabled){
- transform:translateY(-1px);border-color:#7eeed6;
+ border-color:#7eeed6;box-shadow:inset 0 0 0 1px #7eeed6,0 0 0 2px #7eeed630;
 }
-.f2-choice-list .btn:active:not(:disabled),.f2-actions .btn:active:not(:disabled){transform:translateY(1px)}
+.f2-choice-list .btn:active:not(:disabled),.f2-actions .btn:active:not(:disabled){box-shadow:inset 0 0 0 2px #7eeed6}
 .f2-finish{animation:f3-arrival 420ms cubic-bezier(.19,.8,.28,1) both}
 .f2-status[data-tone="success"],.f2-status[data-tone="warning"]{
  animation:f3-feedback 270ms ease-out both}
@@ -219,10 +219,16 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
  body[data-presentation="on"] .topbar{padding-right:10px;padding-top:66px}
  body[data-presentation="on"] .f1-station{min-height:60px}
  body[data-presentation="on"] .map-viewport:not(.detail){max-height:none}
+ /* With the Experience summary at the LEFT of a wrapped mobile topbar,
+    right-aligned absolute positioning clips the panel off-screen. */
  .f3-experience-panel{right:0}
  .f3-control{min-height:44px}
  .topbar .header-actions{width:100%}
 }
+/* The visual viewport can be narrower than CSS media-query width on phone
+   emulation and text zoom. f2.js clamps popup coordinates to the ACTUAL
+   document viewport after the native <details> opens. */
+.f3-experience-panel{max-height:calc(100dvh - 24px);overflow-y:auto}
 /* User-controlled increased contrast, across classic city and metro. */
 :root[data-contrast="high"]{
  --line:#b5ecdc9c;--muted:#ebf5ff;--f3-edge:#b6fbe2;

@@ -34,7 +34,7 @@ test("B1–C2 oral tasks, examples and stretch instructions are not duplicates",
 test("All UI action labels and phases exist in each language; no response-shaped HTML or requests",()=>{
  const phases=["walk-to-entrance","enter","notice","select-line","select-direction",
   "select-platform","board","ride","transfer","exit","walk-to-museum","checkpoint","speech"];
- const actions=["ENTER","READ_NOTICE","BOARD","NEXT_STOP","CHANGE_LINE","EXIT","SELF_CHECK"];
+ const actions=["ENTER","READ_NOTICE","BOARD","NEXT_STOP","TRANSFER_HERE","CHANGE_LINE","EXIT_HERE","EXIT","SELF_CHECK"];
  for(const lang of L.languages){
   const p=L.pack(lang,"B1",5);
   for(const phase of phases){
@@ -83,5 +83,90 @@ test("Never activate multilingual metro at A1/A2; invalid content throws, all pr
   for(const level of ["A1","A2"])assert.throws(()=>L.pack(lang,level,5),RangeError);
   assert.throws(()=>L.pack(lang,"B1",4),RangeError);
   assert.ok(L.pack(lang,"B1",5).models[5].includes("Central Station"));
+ }
+});
+
+
+test("F5C CQ-F5-009: Metro08 detour has a mandatory University meeting and explicit four-language rationale",()=>{
+ const route=M.scenario("metro_08_b1");
+ assert.equal(route.requiredMeeting,"university");
+ assert.ok(M.itinerary(route.id).some(x=>x.station==="university"&&x.kind==="transfer"));
+ assert.equal(route.closedEdges.length,0,"Do not invent a Metro08 M1 closure as an excuse for the route");
+ const label={en:/colleague|University/i,es:/compañera|University/i,
+  de:/Kollegin|University/i,fr:/collègue|University/i};
+ const tickets={en:/tickets/i,es:/entradas/i,de:/Eintrittskarten/i,fr:/billets/i};
+ for(const lang of L.languages)for(const level of L.levels){
+  const pack=L.pack(lang,level,8);
+  const prompt=L.stage(lang,level,8,"checkpoint",{station:"University"});
+  const model=L.model(lang,level,8);
+  assert.match(pack.goal,label[lang],lang+"/"+level+" must disclose required meeting");
+  assert.match(prompt,label[lang],lang+"/"+level+" must have meaningful University speaking checkpoint");
+  assert.match(model,/Market Square.*M2.*University.*M3/s,
+    lang+"/"+level+" must follow ticket collection at Market Square and the required University meeting");
+  assert.match(pack.goal,tickets[lang],lang+"/"+level+" must disclose ticket pickup");
+  assert.match(model,tickets[lang],lang+"/"+level+" must explain why metro entry at Central is not allowed");
+  const other=L.stage(lang,level,8,"checkpoint",{station:"Market Square"});
+  assert.notEqual(other,prompt,"University checkpoint should be different from the entry checkpoint");
+ }
+});
+
+
+test("F5C CQ-F5-007: B2-C2 metro has 48 mission-authored tasks and contextual models, never a shared B1 suffix",()=>{
+ let count=0;
+ for(const lang of L.languages)for(const level of ["B2","C1","C2"]){
+  const tasks=new Set(),models=new Set();
+  for(const mission of L.missions){
+   const p=L.pack(lang,level,mission),model=L.model(lang,level,mission);
+   assert.ok(p.cefr.task.length>70,lang+"/"+level+"/"+mission+" task too thin");
+   assert.ok(model.length>150,lang+"/"+level+"/"+mission+" model too short");
+   assert.equal(model.startsWith(p.models[mission]),false,
+    lang+"/"+level+"/"+mission+" cannot simply append to B1 model");
+   if(mission===8){
+    // B2-C2 mission 08 has independently authored answers, not a pasted
+    // B1 template. Audit the graph-verified journey semantically instead.
+    const orderedStops=["Market Square","M2","University","M3","Museum Quarter","City Museum"];
+    let cursor=0;
+    for(const stop of orderedStops){
+     const at=model.indexOf(stop,cursor);
+     assert.ok(at>=cursor,
+      lang+"/"+level+"/8 must contain "+stop+" after the previous route checkpoint");
+     cursor=at+stop.length;
+    }
+    const ticketTerms={en:/\btickets\b/i,es:/\bentradas\b/i,
+     de:/Eintrittskarten/i,fr:/\bbillets\b/i};
+    assert.match(model,ticketTerms[lang],
+     lang+"/"+level+"/8 must explain the mandatory ticket collection");
+    // At C2 the meeting must happen in the actual narrated itinerary,
+    // not merely be described as an obligation in the introduction.
+    if(level==="C2"){
+     const afterUniversity=model.slice(model.indexOf("University"));
+     const meeting={en:/meet your colleague/i,es:/reúnete con tu compañera/i,
+      de:/triff dort deine Kollegin/i,fr:/retrouvez votre collègue/i};
+     assert.match(afterUniversity,meeting[lang],
+      lang+"/C2/8 must explicitly meet the colleague at University");
+    }
+   }else{
+    assert.ok(model.includes(p.models[mission]),
+     lang+"/"+level+"/"+mission+" must remain consistent with the graph-verified itinerary");
+   }
+   assert.equal(model.endsWith(p.cefr.extension),false,
+    lang+"/"+level+"/"+mission+" generic extension must not be treated as authored answer");
+   tasks.add(p.cefr.task);models.add(model);count++;
+  }
+  assert.equal(tasks.size,4,lang+"/"+level+" must have four different mission learning tasks");
+  assert.equal(models.size,4,lang+"/"+level+" must have four different contextual models");
+ }
+ assert.equal(count,48);
+});
+
+
+test("F5C CQ-F5-007: disruption reading input is substantively tiered from B1 to C2 in all four languages",()=>{
+ for(const lang of L.languages){
+  const texts=L.levels.map(level=>L.stage(lang,level,7,"notice",{station:"Central Station"}));
+  assert.equal(new Set(texts).size,4,lang+" needs 4 distinct disruption notices");
+  assert.ok(texts.every(text=>text.includes("Old Town")&&text.includes("Museum Quarter")),
+   lang+" closure geography must be present at every level");
+  assert.ok(texts[2].length>texts[0].length+30,lang+" C1 notice should add contextual information");
+  assert.ok(texts[3].length>texts[0].length+50,lang+" C2 notice should require interpretation of a limited closure");
  }
 });

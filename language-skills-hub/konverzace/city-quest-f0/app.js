@@ -32,7 +32,7 @@
         "aria-label":"Crossroads column "+(c+1)+", row "+(r+1),
         "aria-pressed":"false",class:"map-node"
       }));
-      add(group,el("circle",{cx:pos.x,cy:pos.y,r:23,fill:"#ffffff","fill-opacity":.01,stroke:"none"}));
+      add(group,el("circle",{cx:pos.x,cy:pos.y,r:26,fill:"#ffffff","fill-opacity":.01,stroke:"none"}));
       add(group,el("circle",{cx:pos.x,cy:pos.y,r:8.5,fill:"#ffffff",stroke:"#588791","stroke-width":3}));
       if(E.same(point,E.start)||E.same(point,E.goal)){
         add(group,el("text",{x:pos.x,y:pos.y+4.5,

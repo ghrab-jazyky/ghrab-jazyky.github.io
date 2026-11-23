@@ -24,8 +24,8 @@
 .metro-scenario-head strong{font-size:.73rem;letter-spacing:.15em;color:#b5e9e8}
 .metro-scenario-head small{font-size:.75rem;color:var(--metro-muted)}
 .metro-scenario-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
-.metro-scenario-button{display:flex;align-items:center;gap:10px;text-align:left;padding:12px 13px;min-height:65px;border:1px solid #76bccc47;border-radius:13px;background:#16354a;color:#effffc;cursor:pointer;transition:border-color .18s,background .18s,transform .18s}
-.metro-scenario-button:hover{border-color:#7eede4;background:#19475a;transform:translateY(-1px)}
+.metro-scenario-button{display:flex;align-items:center;gap:10px;text-align:left;padding:12px 13px;min-height:65px;border:1px solid #76bccc47;border-radius:13px;background:#16354a;color:#effffc;cursor:pointer;transition:border-color .18s,background .18s,box-shadow .18s}
+.metro-scenario-button:hover{border-color:#7eede4;background:#19475a;box-shadow:0 0 0 2px #7eede435}
 .metro-scenario-button[aria-pressed="true"]{border:2px solid #7ff9d2;background:linear-gradient(125deg,#1d6a63,#194257);box-shadow:inset 0 0 0 1px #a2f7d033,0 7px 19px #49dab71a}
 .metro-scenario-number{display:grid;place-items:center;flex:none;width:35px;height:35px;background:#3ce9c91e;color:#b8fbe9;border-radius:10px;font-weight:950;font-size:1rem}
 .metro-scenario-content{display:grid;gap:3px;min-width:0}
@@ -214,3 +214,20 @@
 :root[data-theme=light] .metro-lab[data-mode=game] .metro-language-details{color:#e6fff7}
 @media(max-width:360px){.metro-glossary{grid-template-columns:1fr;row-gap:3px}
  .metro-glossary dd{margin-bottom:9px}}
+
+/* F5C CQ-F5-001/002/022: phone text zoom, readable neutral status in light
+ * mode and minimum 44 CSS px controls. Never affect route-game state. */
+.metro-jump{max-width:100%;min-width:0;flex-shrink:1;overflow-wrap:anywhere;word-break:normal}
+:root[data-theme=light] .metro-side>#f1Panel .f2-status,
+:root[data-theme=light] .metro-network-card>#f1Panel .f2-status{
+ color:#174153;background:#edf7fa;border-color:#6596a5;
+}
+:root[data-theme=light] .metro-side>#f1Panel .f2-status[data-tone=success],
+:root[data-theme=light] .metro-network-card>#f1Panel .f2-status[data-tone=success]{
+ color:#165c40;background:#e3f6ec;
+}
+:root[data-theme=light] .metro-side>#f1Panel .f2-status[data-tone=warning],
+:root[data-theme=light] .metro-network-card>#f1Panel .f2-status[data-tone=warning]{
+ color:#81410a;background:#fff2dc;
+}
+.metro-scene-tab{min-height:44px;min-width:44px}

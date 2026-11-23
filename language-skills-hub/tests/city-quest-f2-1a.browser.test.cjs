@@ -193,10 +193,13 @@ test("F2.1A route undo, blocked edge, map tap and dark/light themes",async()=>{
   await page.locator('[data-node="1-3"]').tap();
   assert.equal((await path.getAttribute("points")).split(/\s+/).length,2);
   await station(page,7);
-  await page.locator(".f2-quick-east").tap();
-  await page.locator(".f2-quick-east").tap();
-  await page.locator(".f2-quick-east").tap();
+  // F5C: the artificial eastward F1 closure was replaced with genuine
+  // blocked approaches to the museum in the independent detour mission.
+  for(const dir of ["east","east","north","east","north"])
+    await page.locator(".f2-quick-"+dir).tap();
   assert.match(await page.locator("#f2Quick .f2-quick-caption").innerText(),/closed|closed road|Road|uzav|gesperrt|barrée/i);
+  assert.equal(await page.locator("#f2MapRoute").evaluate(el=>el.getAttribute("points").trim().split(/\s+/).length),5,
+    "Failed attempt at the closed museum approach must not move the player");
   await page.locator("#themeBtn").tap();
   assert.equal(await page.locator("html").getAttribute("data-theme"),"light");
   assert.equal(await page.locator("#f2Quick").isVisible(),true);

@@ -5,7 +5,9 @@
 const {test}=require("node:test"),assert=require("node:assert/strict");
 const {chromium,webkit}=require("playwright");
 const fs=require("node:fs"),path=require("node:path");
-const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html";
+// This is an AUTHORING/QA visual-preview suite. Normal student URLs do
+// not expose guided reference routes (CQ-F5-006).
+const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html?cq-review=1";
 const OUT=path.join(process.cwd(),"city-quest-f3d-artifacts");fs.mkdirSync(OUT,{recursive:true});
 const LANGS=["en","es","de","fr"],LEVELS=["A1","A2","B1","B2","C1","C2"];
 function monitor(page){
@@ -111,7 +113,7 @@ test("F3D metro 05: phases Read → Practise → Reflect, no self-check score or
   assert.equal(await phase(page).getAttribute("id"),"f3dPractise");
   await click("East Gardens");await click("Platform 2");await click("Board the train");
   await click("Travel to next stop");await click("Travel to next stop");
-  await click("Exit at destination");
+  await click("Get off here");await click("Exit at destination");
   assert.equal(await phase(page).getAttribute("id"),"f3dReflect");
   await click("I have practised aloud");
   assert.equal(await phase(page).getAttribute("id"),"f3dReflect");
@@ -158,6 +160,10 @@ test("F3D design geometry: readable unified cards on 320/390/768/1366, in city, 
    await page.locator("#f3ExperienceSummary").click();
    await page.locator("#f3ContrastButton").click();
    assert.equal(await page.locator("html").getAttribute("data-contrast"),"high");
+   // The fixed mobile Experience menu now opens ON SCREEN and legitimately
+   // covers part of the page. Close it before selecting the underlying mode.
+   await page.locator("#f3ExperienceSummary").click();
+   assert.equal(await page.locator("#f3Experience").evaluate(el=>el.open),false);
    await page.locator("#metroPilotToggle").click();await station(page,7);
    await validRail(page);
    const geometry=await page.evaluate(()=>({
@@ -200,7 +206,7 @@ test("F3D strict-CSP portable HTML has unified learning rail and keeps all learn
  const browser=await chromium.launch({headless:true});
  try{
   const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true}),events=monitor(page);
-  await page.goto("file://"+file,{waitUntil:"load"});
+  await page.goto("file://"+file+"?cq-review=1",{waitUntil:"load"});
   await station(page,4);await validRail(page);
   await page.locator("#f2Language").selectOption("es");
   await page.locator("#f2Level").selectOption("C1");

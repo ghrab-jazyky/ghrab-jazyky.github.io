@@ -44,16 +44,26 @@
    stationNumber:number,scenarioId:d.id,phase:number===8?"walk-to-entrance":number===7?"notice":"select-line",
    metroStation:s.start,legIndex:0,stopIndex:0,lineId:null,direction:null,platform:null,
    surface:number===8?clone(surfaceStart):null,cityPath:number===8?[clone(surfaceStart)]:[],
-   noticeRead:false,attempts:0,completed:false,speakingDone:0,resumePhase:null,history:[]
+   noticeRead:false,ticketsCollected:false,attempts:0,completed:false,speakingDone:0,
+   offRoute:false,extraStops:0,resumePhase:null,history:[]
   });
  }
- function fail(state,message){
-  return {accepted:false,state:Object.freeze({...state,attempts:state.attempts+1}),message,complete:false};
+ function fail(state,message,code){
+  return {accepted:false,state:Object.freeze({...state,attempts:state.attempts+1}),message,code:code||null,complete:false};
  }
- function success(state,next,message,event){
+ function success(state,next,message,event,code){
   const out={...state,...next,history:state.history.concat(event||"")};
   out.completed=out.phase==="complete";
-  return {accepted:true,state:Object.freeze(out),message,complete:out.completed};
+  return {accepted:true,state:Object.freeze(out),message,code:code||null,complete:out.completed};
+ }
+ function physicalNext(state){
+  const service=M.line(state.lineId);
+  if(!service||!state.direction)return null;
+  const last=service.stops[0],first=service.stops.at(-1);
+  if(state.direction!==last&&state.direction!==first)return null;
+  const position=service.stops.indexOf(state.metroStation);
+  if(position<0)return null;
+  return service.stops[position+(state.direction===first?1:-1)]||null;
  }
  function routeIndex(state){
   const legs=scenario(state).legs;let count=0;
@@ -84,10 +94,10 @@
     surface:clone(action.node),cityPath:path,
     phase:arrived?(state.phase==="walk-to-entrance"?"checkpoint":"speech"):state.phase,
     resumePhase:arrived&&state.phase==="walk-to-entrance"?"enter":state.resumePhase
-   },arrived?(state.phase==="walk-to-entrance"?"You have reached Market Square station. Explain how you walked here before entering.":"You have reached City Museum. Explain your complete journey aloud."):"One city block completed.","WALK");
+   },arrived?(state.phase==="walk-to-entrance"?"You have reached Market Square. Collect your reserved museum tickets at the information desk and explain how you got here.":"You have reached City Museum. Explain your complete journey aloud."):"One city block completed.","WALK");
   }
   if(type==="ENTER"){
-   if(state.phase!=="enter"||!same(state.surface,portalStart))return fail(state,"Find the Market Square metro entrance first.");
+   if(state.phase!=="enter"||!same(state.surface,portalStart)||!state.ticketsCollected)return fail(state,"Find the Market Square metro entrance first.");
    return success(state,{phase:"select-line"},"You have entered Market Square station. Read the network and choose a line.","ENTER");
   }
   if(type==="READ_NOTICE"){
@@ -117,27 +127,72 @@
    if(state.phase!=="board"||!state.lineId||!state.direction||!state.platform)return fail(state,"Confirm your line, direction and platform first.");
    if(state.lineId!==l.line||state.direction!==desiredDirection(state)||state.platform!==String(platform(state)))
     return fail(state,"The departure details no longer match the approved route.");
-   return success(state,{phase:"ride"},"Boarded "+state.lineId+". Advance one stop at a time.",type);
+   return success(state,{phase:"ride",offRoute:false},"Boarded "+state.lineId+". Advance one stop at a time.",type);
   }
   if(type==="NEXT_STOP"){
    if(state.phase!=="ride")return fail(state,"Board the correct train before travelling.");
-   const from=l.stops[state.stopIndex],to=l.stops[state.stopIndex+1];
-   if(!to||state.metroStation!==from||!M.adjacent(from,to,l.line)||M.closed(from,to,l.line,s.closedEdges))
-    return fail(state,"Movement is blocked or the next station is not connected.");
-   const nextStop=state.stopIndex+1,last=nextStop===l.stops.length-1;
-   const nextPhase=last?(state.legIndex<s.legs.length-1?(state.stationNumber===8?"checkpoint":"transfer"):"exit"):"ride";
-   return success(state,{metroStation:to,stopIndex:nextStop,phase:nextPhase,
-    resumePhase:nextPhase==="checkpoint"?"transfer":state.resumePhase},
-    last?(nextPhase==="transfer"?"Transfer at "+M.station(to).labelEn+".":"Arrived at "+M.station(to).labelEn+". Exit the train."):
-     "Next stop: "+M.station(to).labelEn+".",type);
+   const from=state.metroStation,to=physicalNext(state);
+   if(!to)return fail(state,"This service terminates here. Choose the opposite direction to return.","terminus");
+   if(M.closed(from,to,state.lineId,s.closedEdges))
+    return fail(state,"The next segment is closed. Find an open connection.","closedSegment");
+   const nextIndex=l.stops.indexOf(to),wasOffRoute=state.offRoute;
+   const offRoute=nextIndex<0;
+   const excess=offRoute||nextIndex!==state.stopIndex+1?1:0;
+   // Continuing beyond a planned stop is a real journey on the line, not
+   // a blocked button that tells students where to interchange or exit.
+   return success(state,{
+     metroStation:to,stopIndex:nextIndex>=0?nextIndex:state.stopIndex,
+     offRoute,extraStops:state.extraStops+excess,phase:"ride"
+   },"Next stop: "+M.station(to).labelEn+".",type,
+     offRoute?"offRoute":wasOffRoute?"recovered":null);
+  }
+  if(type==="TURN_BACK"){
+   if(state.phase!=="ride")return fail(state,"Board the correct train before travelling.");
+   const service=M.line(state.lineId);
+   if(!service||!state.direction)return fail(state,"Board the correct train before travelling.");
+   const opposite=state.direction===service.stops[0]?service.stops.at(-1):service.stops[0];
+   return success(state,{direction:opposite,phase:"ride"},
+     "You changed to an opposite-direction train at "+M.station(state.metroStation).labelEn+".",type,"turnBack");
+  }
+  if(type==="TRANSFER_HERE"){
+   if(state.phase!=="ride")
+    return fail(state,"You can change lines only at a valid interchange.");
+   const connections=M.joined(state.metroStation);
+   if(connections.length<2)
+    return fail(state,"This station is not an interchange.","notInterchange");
+   const next=s.legs[state.legIndex+1];
+   if(!next||next.stops[0]!==state.metroStation||!connections.includes(next.line))
+    return fail(state,"This station is an interchange, but this connection does not match your remaining route.","otherInterchange");
+   const speechCheckpoint=state.stationNumber===8;
+   return success(state,{phase:speechCheckpoint?"checkpoint":"transfer",
+     resumePhase:speechCheckpoint?"transfer":null},
+     "You chose to change trains at "+M.station(state.metroStation).labelEn+".",type);
+  }
+  if(type==="EXIT_HERE"){
+   if(state.phase!=="ride"||state.legIndex!==s.legs.length-1||state.metroStation!==s.goal)
+    return fail(state,"Exit only after arriving at your destination.");
+   return success(state,{phase:"exit"},
+     "You chose to get off at "+M.station(state.metroStation).labelEn+".",type);
+  }
+  if(type==="STAY_ON_LINE"){
+   if(state.phase!=="transfer")return fail(state,"You can change lines only at a valid interchange.");
+   return fail(state,"Remaining on this line will not reach the required destination. Check the interchange map.");
   }
   if(type==="CHANGE_LINE"){
    if(state.phase!=="transfer"||state.legIndex>=s.legs.length-1)return fail(state,"You can change lines only at a valid interchange.");
    const next=s.legs[state.legIndex+1];
    if(next.stops[0]!==state.metroStation||!M.joined(state.metroStation).includes(next.line))
     return fail(state,"This station has no valid connection to the next line.");
-   return success(state,{legIndex:state.legIndex+1,stopIndex:0,lineId:null,direction:null,platform:null,phase:"select-line"},
-     "Follow the transfer signs and choose the connecting line.",type);
+   // Explicitly validate the learner's chosen connecting line. Old pure-engine
+   // test fixtures may omit action.value, but the real UI always provides it.
+   if(action.value!==undefined&&action.value!==next.line)
+    return fail(state,"That is not the connecting line for this route. Check the transfer signs.");
+   return success(state,{legIndex:state.legIndex+1,stopIndex:0,lineId:next.line,direction:null,platform:null,offRoute:false,phase:"select-direction"},
+     "Connecting line selected. Choose its direction.",type);
+  }
+  if(type==="CONTINUE_PAST_EXIT"){
+   if(state.phase!=="exit")return fail(state,"Exit only after arriving at your destination.");
+   return fail(state,"You have reached your destination. Continuing would take you past the required exit.");
   }
   if(type==="EXIT"){
    if(state.phase!=="exit"||state.metroStation!==s.goal)return fail(state,"Exit only after arriving at your destination.");
@@ -150,6 +205,7 @@
    if(state.phase!=="speech"&&state.phase!=="checkpoint")return fail(state,"Finish this route section before the speaking checkpoint.");
    const finished=state.phase==="speech";
    return success(state,{phase:finished?"complete":state.resumePhase,speakingDone:state.speakingDone+1,
+    ticketsCollected:state.ticketsCollected||(state.phase==="checkpoint"&&state.resumePhase==="enter"),
     resumePhase:null},finished?"Mission completed. Speaking was self-assessed, not automatically graded.":"Speaking checkpoint confirmed. Continue your journey.",type);
   }
   return fail(state,"Unknown action.");

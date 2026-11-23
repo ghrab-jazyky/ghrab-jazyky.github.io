@@ -42,27 +42,59 @@
     return route;
   }
   function config(level){lvlIndex(level);return goals[level];}
+  // F5C-010: city detour closures block BOTH normal shortest approaches to
+  // City Museum. C1/C2 add a third approach. F1/classic routes remain untouched.
+  const detourWest=Object.freeze({a:{c:2,r:1},b:{c:3,r:1}}),
+    detourSouth=Object.freeze({a:{c:3,r:2},b:{c:3,r:1}}),
+    detourEast=Object.freeze({a:{c:4,r:1},b:{c:3,r:1}});
+  function detourClosures(level){
+    const advanced=lvlIndex(level)>=4;
+    return advanced?[detourWest,detourSouth,detourEast]:
+      [detourWest,detourSouth];
+  }
+  function isClosedEdge(a,b,edge){
+    return (E.same(a,edge.a)&&E.same(b,edge.b))||
+      (E.same(a,edge.b)&&E.same(b,edge.a));
+  }
   function routeStart(){return {route:[copy(E.start)],done:false,attempts:0,message:"",visitedVia:false};}
   function visited(route,via){return via.every(n=>route.some(p=>E.same(p,n)));}
   function moveRoute(state,next,level,detour){
-    const c=config(level),blocked=detour?F.closure:c.blocked;
-    // Detour must genuinely require navigating around the closed road at A1,
-    // not finish early at Market Square before the roadworks matter.
+    const c=config(level),blocked=detour?null:c.blocked;
     const target=detour?E.goal:c.target;
     if(state.done)return {accepted:false,state,kind:"finished"};
+    if(detour&&detourClosures(level).some(edge=>isClosedEdge(state.route.at(-1),next,edge)))
+      return {accepted:false,kind:"closed",state:{...state,attempts:state.attempts+1}};
     const r=F.routeResult(state.route,next,blocked);
     if(!r.valid)return {accepted:false,kind:r.kind,state:{...state,attempts:state.attempts+1}};
     const progress=r.route,arrived=E.same(progress[progress.length-1],target);
-    const completeVia=visited(progress,c.via);
+    // Students avoid closed streets; they never have to visit the roadworks.
+    // B2+ retain their real level-specific landmarks.
+    const requiredVia=c.via;
+    const completeVia=visited(progress,requiredVia);
+    if(detour&&arrived&&!completeVia)
+      return {accepted:false,kind:"missing-via",
+        state:{...state,attempts:state.attempts+1}};
     const done=arrived&&completeVia;
     return {accepted:true,kind:done?"success":arrived&&!completeVia?"missing-via":r.kind,
       state:{...state,route:progress,done,visitedVia:completeVia,message:done?"done":""}};
   }
-  function guidedStart(){return {route:[copy(E.start)],step:0,done:false,attempts:0};}
+  function guidedStart(){return {route:[copy(E.start)],step:0,done:false,attempts:0,reviewed:false,reviewAttempts:0};}
+  // CQ-F5-008: an advanced learner must interpret a map-based reason for
+  // their route, not merely follow more compass taps. Language is independent
+  // of correctness: localized options use the same stable semantic IDs.
+  const guidedReviewAnswers=Object.freeze({B2:"left",C1:"library",C2:"closure"});
+  function guidedReview(state,level,choice){
+    const answer=guidedReviewAnswers[level];
+    if(!answer||!state.done||state.reviewed)return {accepted:false,kind:"unavailable",state};
+    if(choice!==answer)return {accepted:false,kind:"incorrect",state:{
+      ...state,reviewAttempts:state.reviewAttempts+1}};
+    return {accepted:true,kind:"reason",state:{...state,reviewed:true}};
+  }
+
   function guidedMove(state,next,level){
     const plan=guidedPaths[level];if(!plan)throw new RangeError("Invalid level");
     if(state.done)return {accepted:false,kind:"finished",state};
-    const r=F.routeResult(state.route,next,null);
+    const r=F.routeResult(state.route,next,level==="C2"?F.closure:null);
     if(!r.valid||r.kind==="undo")return {accepted:false,kind:r.kind,state:{...state,attempts:state.attempts+1}};
     if(E.heading(state.route[state.route.length-1],next)!==plan[state.step])
       return {accepted:false,kind:"wrong-way",state:{...state,attempts:state.attempts+1}};
@@ -79,21 +111,156 @@
     if(delta===0)return d.continue(d[dir],1);
     if(delta===1)return d.turn(d.right,d[dir],1);
     if(delta===3)return d.turn(d.left,d[dir],1);
-    return d.turn(d.back,d[dir],1);
+    return typeof d.uturn==="function"?d.uturn(d[dir],1):d.turn(d.back,d[dir],1);
+  }
+  // F5C CQ-F5-003: deterministically rotate presentation choices, keeping
+  // semantic values intact. No random API is used: repeated renders of the
+  // same question keep the same order, while language/CEFR/stage variations
+  // move the correct answer away from a fixed visual button position.
+  function orderChoices(items,language,level,mission,stage){
+    if(!Array.isArray(items))throw new TypeError("Expected choice array");
+    const languages=["en","es","de","fr"],li=languages.indexOf(language);
+    if(li<0)throw new RangeError("Unknown choice language");
+    const difficulty=lvlIndex(level),n=items.length;
+    if(n<2)return items.slice();
+    const step=typeof stage==="number"?stage:Array.from(String(stage||"")).reduce(
+      (sum,ch)=>sum+ch.codePointAt(0),0);
+    const rotation=((li*7+difficulty*5+mission*11+step*13)%n+n)%n;
+    return items.slice(rotation).concat(items.slice(0,rotation));
+  }
+  // F5C N04: each wrong answer is a fully formed, plausible instruction of
+  // approximately the same length as the correct route. Semantic direction
+  // mutations are local and deterministic. No AI/API or student information.
+  function dialogueDistractors(answer,lang){
+    if(typeof answer!=="string"||answer.length<25)throw TypeError("Missing dialogue model");
+    let vague,wrong;
+    const change=(pattern,replacement)=>answer.replace(pattern,replacement);
+    if(lang==="en"){
+      if(/turn left/i.test(answer)){
+        vague=change(/turn left/i,match=>match.startsWith("T")?"Turn at some point":"turn at some point");
+        wrong=change(/\bleft\b/i,"right");
+      }else{
+        vague=change(/the northbound street/i,"a street somewhere nearby");
+        wrong=change(/northbound/i,"southbound");
+      }
+    }else if(lang==="es"){
+      if(/a la izquierda/i.test(answer)){
+        vague=/gire a la izquierda cerca de la plaza/i.test(answer)?
+          change(/gire a la izquierda cerca de la plaza/i,"gire en algún cruce cerca de la plaza"):
+          change(/a la izquierda/i,"en algún cruce cercano");
+        wrong=change(/izquierda/i,"derecha");
+      }else{
+        vague=change(/por la calle que va hacia el norte/i,"por alguna calle de la zona");
+        wrong=change(/hacia el norte/i,"hacia el sur");
+      }
+    }else if(lang==="de"){
+      if(/links/i.test(answer)){
+        vague=change(/links/i,"irgendwo");
+        wrong=change(/links/i,"rechts");
+      }else{
+        vague=change(/nach Norden/i,"in irgendeine Richtung");
+        wrong=change(/nach Norden/i,"nach Süden");
+      }
+    }else if(lang==="fr"){
+      if(/à gauche/i.test(answer)){
+        vague=change(/tournez à gauche/i,"tournez à un carrefour plus loin");
+        wrong=change(/à gauche/i,"à droite");
+      }else{
+        vague=change(/suivre la rue vers le nord/i,"suivre une rue du quartier");
+        wrong=change(/vers le nord/i,"vers le sud");
+      }
+    }else throw RangeError("Invalid dialogue language");
+    if(!vague||!wrong||vague===answer||wrong===answer)
+      throw Error("Incomplete authored dialogue distractor for "+lang);
+    const insist={
+      en:"No, those instructions are correct: ",
+      es:"No, esas indicaciones son correctas: ",
+      de:"Nein, diese Wegbeschreibung stimmt: ",
+      fr:"Non, ces indications sont exactes : "
+    }[lang]+wrong;
+    return Object.freeze({vague,wrong,insist});
   }
   function answerCount(level){return lvlIndex(level)===0?3:lvlIndex(level)===1?4:6;}
-  function optionsCount(level){return lvlIndex(level)===0?2:3;}
+  function optionsCount(level){
+    const index=lvlIndex(level);return index===0?2:index===4?4:index===5?5:3;
+  }
+  // C1/C2 interpretation must require comparison of several plausible
+  // candidates instead of A1's binary lexical matching. Semantic IDs and
+  // the original answer engine remain stable across languages and levels.
+  const exploreExtras=Object.freeze([
+    Object.freeze(["post","cafe"]),
+    Object.freeze(["post","station"]),
+    Object.freeze(["station","cafe"]),
+    Object.freeze(["museum","station"]),
+    Object.freeze(["park","cafe"]),
+    Object.freeze(["square","library"])
+  ]);
+  function exploreChoices(question,level,round){
+    if(!question||!question.correct||!Array.isArray(question.choices)||
+       !Number.isInteger(round)||round<0||round>=exploreExtras.length)
+      throw TypeError("Invalid exploration question");
+    const count=optionsCount(level),ids=question.choices.slice();
+    if(count===2){
+      const wrong=ids.find(id=>id!==question.correct);
+      if(!wrong)throw Error("Missing A1 distractor");
+      return [question.correct,wrong];
+    }
+    for(const id of exploreExtras[round])
+      if(ids.length<count&&!ids.includes(id))ids.push(id);
+    if(ids.length!==count||!ids.includes(question.correct)||new Set(ids).size!==ids.length)
+      throw Error("Incomplete higher-level landmark candidates");
+    return ids;
+  }
   function requiredFields(level){
     if(level==="A1")return ["line"];
     if(level==="A2")return ["line","depart"];
     return ["line","depart","stop"];
   }
+  // CQ-F5-011: A1/A2 start with three services; from B1 students must
+  // distinguish two hospital-bound buses using arrival constraints.
+  // C1/C2 additionally reject a quicker but inaccessible option.
+  // Student input is checked against the visible record, not a hard-coded
+  // selection index or an unrelated fixed answer string.
+  const extraServices=Object.freeze([
+    Object.freeze({line:"18",from:"Central Station",depart:"08:41",to:"Hospital",arrival:"09:18",accessible:true}),
+    Object.freeze({line:"31",from:"Central Station",depart:"08:38",to:"Hospital",arrival:"08:57",accessible:false})
+  ]);
+  function servicesForLevel(level){
+    const index=lvlIndex(level);
+    const ordinary=F.transport.lines.map(line=>({
+      ...line,accessible:line.line==="24"
+    }));
+    if(index>=2)ordinary.push(extraServices[0]);
+    if(index>=4)ordinary.push(extraServices[1]);
+    return ordinary;
+  }
+  function transportOptions(level){
+    const rows=servicesForLevel(level);
+    return Object.freeze({
+      lines:rows.map(x=>x.line),
+      departures:rows.map(x=>x.depart),
+      stops:[...new Set(rows.map(x=>x.to))]
+    });
+  }
+  const minutes=time=>{
+    if(typeof time!=="string"||!/^[0-9]{2}:[0-9]{2}$/.test(time))return NaN;
+    const [hour,minute]=time.split(":").map(Number);
+    return hour*60+minute;
+  };
   function checkTransport(input,level){
     const fields=requiredFields(level);
     if(!input||fields.some(key=>!input[key]))return {correct:false,kind:"missing"};
-    const answer=F.transport.answer;
-    const wrong=fields.find(key=>input[key]!==answer[key]);
-    return {correct:!wrong,kind:wrong||"correct"};
+    const selected=servicesForLevel(level).find(x=>x.line===input.line);
+    if(!selected||selected.to!=="Hospital")return {correct:false,kind:"line"};
+    if(fields.includes("depart")&&input.depart!==selected.depart)return {correct:false,kind:"depart"};
+    if(fields.includes("stop")&&input.stop!==selected.to)return {correct:false,kind:"stop"};
+    if(minutes(selected.depart)<minutes("08:35")||minutes(selected.arrival)>minutes("09:10"))
+      return {correct:false,kind:"late"};
+    if(lvlIndex(level)>=4&&!selected.accessible)return {correct:false,kind:"access"};
+    return {correct:true,kind:"correct",service:selected};
+  }
+  function detourCheckpoints(level){
+    return config(level).via.map(copy);
   }
   function routeModel(pack,route){
     if(route.length<2)return "";
@@ -106,10 +273,11 @@
       else segments.push({dir:move,count:1});
     }
     return segments.map((seg,i)=>{
-      const d=pack.directions,current=d[seg.dir];
+      const d=pack.touristDirections||pack.directions,current=d[seg.dir];
       if(i===0)return d.first(current,seg.count);
       const prev=segments[i-1].dir,delta=(dirs.indexOf(seg.dir)-dirs.indexOf(prev)+4)%4;
       if(delta===0)return d.continue(current,seg.count);
+      if(delta===2&&typeof d.uturn==="function")return d.uturn(current,seg.count);
       return d.turn(delta===1?d.right:delta===3?d.left:d.back,current,seg.count);
     }).join(" ");
   }
@@ -134,6 +302,19 @@
     const stage=state.stage+1,done=stage===questCheckpoints(level).length;
     return {accepted:true,state:{...state,stage,leg:[copy(state.route[state.route.length-1])],awaitingSpeech:false,done}};
   }
+  // CQ-F5-008: clear finite-state misconception repair. A1–B1 retain the
+  // familiar two decisions; B2 requires spatial reasoning and C1/C2 also
+  // assess a tactful, unambiguous corrective response.
+  function repairStart(){return {phase:0,done:false,tries:0};}
+  function repairStages(level){return lvlIndex(level)>=4?4:lvlIndex(level)>=3?3:2;}
+  function repairChoice(state,level,choice){
+    const stages=repairStages(level),expected=["turn","left","south","apology"];
+    if(state.done||state.phase>=stages)return {accepted:false,kind:"finished",state};
+    const correct=choice===expected[state.phase],tries=state.tries+1;
+    const phase=state.phase+(correct?1:0);
+    return {accepted:correct,kind:correct?(phase>=stages?"success":"correct"):"incorrect",
+      state:{phase,done:phase===stages,tries}};
+  }
   const dialogueStates=["start","clarify","wrong","distance","complete"];
   function dialogueStart(){return {stage:"start",tries:0,done:false,correct:false};}
   function dialogueChoose(state,id){
@@ -153,6 +334,7 @@
       state:{...state,stage:next,tries:state.tries+1,done:next==="complete",correct}};
   }
   return Object.freeze({F,E,levels,goals,guidedPaths,lvlIndex,config,pathFromDirections,routeStart,
-    moveRoute,guidedStart,guidedMove,instruction,answerCount,optionsCount,requiredFields,checkTransport,
-    routeModel,questCheckpoints,questStart,questMove,questSpeak,dialogueStart,dialogueChoose});
+    moveRoute,guidedStart,guidedMove,guidedReview,instruction,answerCount,optionsCount,orderChoices,exploreChoices,dialogueDistractors,requiredFields,servicesForLevel,transportOptions,checkTransport,
+    repairStart,repairStages,repairChoice,
+    routeModel,detourCheckpoints,detourClosures,questCheckpoints,questStart,questMove,questSpeak,dialogueStart,dialogueChoose});
 });

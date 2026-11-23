@@ -375,3 +375,7 @@ dialog.howto-dialog{
 .materials-links .action{min-width:0;text-align:center;white-space:normal}
 .materials-links .action[aria-disabled="true"]{opacity:.5;pointer-events:none}
 @media(max-width:480px){.materials-dialog{padding:15px}.materials-selectors,.materials-links{grid-template-columns:1fr}}
+
+/* Dedicated City Quest classification, independent of Conversation Lab. */
+.card .catalog-game-label{align-self:flex-start;max-width:100%;margin:2px 0 0;padding:6px 10px;border:1px solid #74d9c0;border-radius:999px;background:#0d493f;color:#e7fff7;font-weight:760;font-size:.76rem;line-height:1.4;overflow-wrap:anywhere}
+:root[data-theme="light"] .card .catalog-game-label{background:#ddf8ef;color:#175847;border-color:#488f7e}

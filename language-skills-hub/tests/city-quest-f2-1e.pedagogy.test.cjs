@@ -36,3 +36,70 @@ test("Canonical routing remains strict after copy changes; notices reveal closur
    "Service notice should not reveal the successful detour");
  }
 });
+
+// CQ-F5-009: the obligatory information-desk visit must not be justified
+// only by the University appointment (M2 is already available at Central).
+test("Metro 08 explicitly requires the Market Square ticket pickup before University",()=>{
+ const required={en:/ticket/i,es:/entradas/i,de:/Eintrittskarten/i,fr:/billets/i};
+ for(const lang of L.languages)for(const level of L.levels){
+  const content=L.pack(lang,level,8),goal=content.goal;
+  assert.match(goal,required[lang],lang+"/"+level+" omits the mandatory first errand");
+  assert.match(goal,/Market Square/);
+  assert.match(goal,/University/);
+  const spoken=L.stage(lang,level,8,"checkpoint",{station:"Market Square"});
+  assert.match(spoken,required[lang],lang+"/"+level+" omits ticket pickup at first checkpoint");
+ }
+ const s=G.start(8),scenario=M.scenario(s.scenarioId);
+ assert.equal(scenario.start,"market_square","Metro begins only after the Market Square errand");
+ assert.equal(s.ticketsCollected,false);
+});
+
+test("Metro 08 constrained shortest journey: ticket pickup and University meeting are nonoptional",()=>{
+ // Independent breadth-first graph search. Every legal ride or transfer costs
+ // one action; a valid arrival MUST pass the University meeting checkpoint.
+ const s=M.scenario("metro_08_b1"),from=s.start,to=s.goal,meeting=s.requiredMeeting;
+ assert.equal(from,"market_square");
+ assert.equal(meeting,"university");
+ const queue=M.joined(from).map(line=>({stop:from,line,met:false,steps:0}));
+ const seen=new Set(queue.map(x=>[x.stop,x.line,x.met].join("|")));
+ let optimum=Infinity;
+ for(let i=0;i<queue.length;i++){
+  const state=queue[i];
+  if(state.stop===to&&state.met){optimum=state.steps;break;}
+  const transitions=[
+   ...M.nextStopOptions(state.stop,state.line,s.closedEdges).map(stop=>({
+    stop,line:state.line,met:state.met||stop===meeting
+   })),
+   ...M.joined(state.stop).filter(line=>line!==state.line).map(line=>({
+    stop:state.stop,line,met:state.met||state.stop===meeting
+   }))
+  ];
+  for(const t of transitions){
+   const key=[t.stop,t.line,t.met].join("|");
+   if(seen.has(key))continue;
+   seen.add(key);queue.push({...t,steps:state.steps+1});
+  }
+ }
+ const route=s.legs.reduce((count,leg)=>count+leg.stops.length-1,0)+(s.legs.length-1);
+ assert.equal(route,5,"Actual mission itinerary: four rides and one line change");
+ assert.equal(optimum,route,"No shorter metro journey may satisfy the University meeting");
+ const walk=(a,b)=>Math.abs(a.c-b.c)+Math.abs(a.r-b.r);
+ const approach=walk(G.surfaceStart,G.portalStart),finish=walk(G.portalEnd,G.museum);
+ assert.equal(approach,3);
+ assert.equal(finish,1);
+ assert.equal(route+approach+finish,optimum+3+1);
+ // The information-desk pickup is a real mandatory gate, not just story copy.
+ let state=G.start(8);
+ for(const node of [{c:1,r:3},{c:2,r:3},{c:2,r:2}]){
+  const next=G.act(state,{type:"WALK",node});
+  assert.equal(next.accepted,true);state=next.state;
+ }
+ assert.equal(state.phase,"checkpoint");
+ assert.equal(state.ticketsCollected,false);
+ assert.equal(G.act(state,{type:"ENTER"}).accepted,false);
+ const confirmed=G.act(state,{type:"SELF_CHECK"});
+ assert.equal(confirmed.accepted,true);
+ assert.equal(confirmed.state.phase,"enter");
+ assert.equal(confirmed.state.ticketsCollected,true);
+ assert.equal(G.act(confirmed.state,{type:"ENTER"}).accepted,true);
+});

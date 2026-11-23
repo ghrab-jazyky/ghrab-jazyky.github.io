@@ -212,3 +212,54 @@
   /* The metro/game content can be long: task and navigation are independent cards. */
   .sidebar>#f2Quick[hidden]{display:none}
 }
+
+/* F5C CQ-F5-001: never let a 5-column timetable or localized place labels
+ * make the document wider than a 320px phone at 200% root text scaling. */
+.f2-transit-scroll{display:block;width:100%;max-width:100%;min-width:0;
+ overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-inline:contain;
+ border:1px solid var(--line);border-radius:11px}
+.f2-transit-scroll:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+.f2-transit-scroll .f2-transit-table{width:max-content;min-width:100%;max-width:none;
+ margin:0;table-layout:auto;border-collapse:collapse}
+.f2-transit-scroll .f2-transit-table th,.f2-transit-scroll .f2-transit-table td{
+ white-space:normal;min-width:4.5rem;overflow-wrap:anywhere}
+.f2-transit-scroll-hint{font-size:.76rem;color:var(--muted);margin:5px 0 13px;
+ overflow-wrap:anywhere}
+.f2-landmarks{grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr))}
+.f2-landmark,.f2-landmark span{min-width:0;overflow-wrap:anywhere}
+@media(max-width:700px){
+ .f2-landmarks{grid-template-columns:repeat(auto-fit,minmax(min(100%,10rem),1fr))}
+}
+
+
+/* F5C CQ-F5-022: accessible help and restart controls on small screens. */
+.f2-actions .btn{min-height:44px}
+.f2-help summary,.metro-language-details summary{display:flex;align-items:center;min-height:44px}
+
+
+/* CQ-F5-004: premium but genuinely informative offline departure signage.
+ * The board never reveals an answer marker: students match line + terminus
+ * with the sign, then select a platform themselves. Reflows at 200% text. */
+.metro-platform-board{min-width:0;margin:12px 0 16px;padding:12px;
+ border:1px solid #64d9cf65;border-radius:15px;
+ background:linear-gradient(135deg,#103d53aa,#123a4660)}
+.metro-platform-board-heading{font-size:clamp(.83rem,1.5vw,1.06rem);
+ margin:0 0 10px;line-height:1.4;overflow-wrap:anywhere}
+.metro-platform-board-list{list-style:none;padding:0;margin:0;display:grid;gap:7px}
+.metro-platform-board-item{display:grid;grid-template-columns:minmax(5.5rem,auto) minmax(0,1fr);
+ align-items:center;gap:9px;padding:9px 11px;min-width:0;
+ border:1px solid #91d8d02b;border-left:4px solid var(--platform-line-colour,#7aa3af);
+ border-radius:10px;background:#17394995}
+.metro-platform-board-number{min-width:0;font-size:.84rem;overflow-wrap:anywhere}
+.metro-platform-board-sign{min-width:0;font-size:.82rem;line-height:1.45;overflow-wrap:anywhere}
+.metro-platform-board-empty{opacity:.85}
+:root[data-theme=light] .metro-platform-board{background:#e9f4f7;border-color:#72a0ac;color:#133647}
+:root[data-theme=light] .metro-platform-board-item{background:#fff;border-color:#b4cdd4;
+ border-left-color:var(--platform-line-colour,#7aa3af);color:#14384b}
+@media(max-width:370px){.metro-platform-board-item{grid-template-columns:1fr;gap:3px;padding:9px}}
+@media(prefers-reduced-motion:reduce){.metro-platform-board *{transition:none!important}}
+
+/* CQ-F5-028: optional two-speaker interaction, never a speech grade. */
+.f2-pair .f2-pair-progress{font-size:.82rem;font-weight:740;line-height:1.45;margin:9px 0!important;overflow-wrap:anywhere}
+.f2-pair .f2-pair-turn{min-width:44px;min-height:44px;width:100%;white-space:normal;text-align:center;line-height:1.35;border-color:#9a92e6}
+.f2-pair .f2-pair-turn:disabled{opacity:.8;cursor:default;background:var(--panel2);color:var(--text)}

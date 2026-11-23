@@ -6,7 +6,9 @@
 const {test}=require("node:test"),assert=require("node:assert/strict");
 const fs=require("node:fs"),path=require("node:path");
 const {chromium,webkit}=require("playwright");
-const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html";
+// This is an AUTHORING/QA visual-preview suite. Normal student URLs do
+// not expose guided reference routes (CQ-F5-006).
+const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html?cq-review=1";
 const OUT=path.join(process.cwd(),"city-quest-f3c-artifacts");fs.mkdirSync(OUT,{recursive:true});
 const monitor=page=>{const errors=[],external=[];
  page.on("pageerror",e=>errors.push(String(e)));
@@ -43,8 +45,18 @@ test("F3C 320–1024px: one HUD, compact option exposes more city map while all 
    assert.equal(await toggle.getAttribute("aria-pressed"),"true");
    assert.ok((await toggle.getAttribute("aria-label")).includes("Mostrar"),"Localized accessible toggle should expand the HUD");
    const compact=await page.locator("#f2Quick").boundingBox();
-   assert.ok(compact&&expanded&&compact.width<expanded.width*.75,
-    "Compact pad should occupy substantially less map width at "+width);
+   if(width===568&&height===320){
+    const geometry=await page.evaluate(()=>{
+     const map=document.querySelector("#mapViewport").getBoundingClientRect();
+     const hud=document.querySelector("#f2Quick").getBoundingClientRect();
+     return {mapRight:map.right,hudLeft:hud.left};
+    });
+    assert.ok(compact&&expanded&&geometry.hudLeft>=geometry.mapRight-2,
+     "Landscape HUD should be outside the city map, not covering it");
+   }else{
+    assert.ok(compact&&expanded&&compact.width<expanded.width*.75,
+     "Compact pad should occupy substantially less map width at "+width);
+   }
    const coords=await page.locator("#f2Quick .f2-quick-pad button").evaluateAll(nodes=>nodes.map(el=>{
     const b=el.getBoundingClientRect();return {w:b.width,h:b.height};
    }));
@@ -237,7 +249,7 @@ test("F3C offline SHA256-CSP one-file: city compact control and metro picker nee
  const browser=await chromium.launch({headless:true});
  try{
   const page=await browser.newPage({viewport:{width:320,height:568},isMobile:true,hasTouch:true}),events=monitor(page);
-  await page.goto("file://"+file,{waitUntil:"load"});
+  await page.goto("file://"+file+"?cq-review=1",{waitUntil:"load"});
   await openCity(page,4,"fr","B2");
   await page.locator("#f3cHudSize").tap();
   assert.equal(await page.locator("#f2Quick").getAttribute("data-compact"),"true");

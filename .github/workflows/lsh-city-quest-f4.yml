@@ -11,6 +11,8 @@ on:
       - "language-skills-hub/authoring/city-quest-f3b/**"
       - "language-skills-hub/konverzace/city-quest-f2/**"
       - "language-skills-hub/authoring/city-quest-f2/build-preview.cjs"
+      - "language-skills-hub/authoring/city-quest-f2/stage-public.cjs"
+      - "language-skills-hub/tests/city-quest-f5c.publication.test.cjs"
       - "language-skills-hub/tests/city-quest-f2-1b*"
       - "language-skills-hub/tests/city-quest-f2-1c*"
       - "language-skills-hub/tests/city-quest-f2-1d*"
@@ -20,8 +22,16 @@ on:
       - "language-skills-hub/tests/city-quest-f3c*"
       - "language-skills-hub/tests/city-quest-f3d*"
       - "language-skills-hub/tests/city-quest-f4*"
+      - "language-skills-hub/data/cards.json"
+      - "language-skills-hub/data/catalog-i18n.json"
+      - "language-skills-hub/assets/hub.js"
+      - "language-skills-hub/assets/hub.css"
+      - "language-skills-hub/tests/city-quest-f5c.catalog.test.cjs"
       - "language-skills-hub/authoring/city-quest-f4/**"
+      - "language-skills-hub/authoring/city-quest-f5c/**"
+      - "language-skills-hub/tests/city-quest-f5c.release-gate.test.cjs"
       - "language-skills-hub/authoring/city-quest-f3d/**"
+      - ".gitignore"
       - ".github/workflows/lsh-city-quest-f4.yml"
   pull_request:
     paths:
@@ -32,6 +42,8 @@ on:
       - "language-skills-hub/authoring/city-quest-f3b/**"
       - "language-skills-hub/konverzace/city-quest-f2/**"
       - "language-skills-hub/authoring/city-quest-f2/build-preview.cjs"
+      - "language-skills-hub/authoring/city-quest-f2/stage-public.cjs"
+      - "language-skills-hub/tests/city-quest-f5c.publication.test.cjs"
       - "language-skills-hub/tests/city-quest-f2-1b*"
       - "language-skills-hub/tests/city-quest-f2-1c*"
       - "language-skills-hub/tests/city-quest-f2-1d*"
@@ -41,8 +53,16 @@ on:
       - "language-skills-hub/tests/city-quest-f3c*"
       - "language-skills-hub/tests/city-quest-f3d*"
       - "language-skills-hub/tests/city-quest-f4*"
+      - "language-skills-hub/data/cards.json"
+      - "language-skills-hub/data/catalog-i18n.json"
+      - "language-skills-hub/assets/hub.js"
+      - "language-skills-hub/assets/hub.css"
+      - "language-skills-hub/tests/city-quest-f5c.catalog.test.cjs"
       - "language-skills-hub/authoring/city-quest-f4/**"
+      - "language-skills-hub/authoring/city-quest-f5c/**"
+      - "language-skills-hub/tests/city-quest-f5c.release-gate.test.cjs"
       - "language-skills-hub/authoring/city-quest-f3d/**"
+      - ".gitignore"
       - ".github/workflows/lsh-city-quest-f4.yml"
 permissions:
   contents: read
@@ -84,9 +104,16 @@ jobs:
           node --check language-skills-hub/tests/city-quest-f3d.pedagogy.browser.test.cjs
           node --check language-skills-hub/tests/city-quest-f3d.acceptance-matrix.test.cjs
           node --check language-skills-hub/tests/city-quest-f4.independent.static.test.cjs
+          node --check language-skills-hub/authoring/city-quest-f5c/release-readiness.cjs
+          node --check language-skills-hub/tests/city-quest-f5c.release-gate.test.cjs
           node --check language-skills-hub/tests/city-quest-f4.independent.browser.test.cjs
           node --check language-skills-hub/tests/city-quest-f4r.remediation.browser.test.cjs
           node --check language-skills-hub/tests/city-quest-f4r.linguistic.test.cjs
+          node --check language-skills-hub/tests/city-quest-f5c.mobile.browser.test.cjs
+          node --check language-skills-hub/tests/city-quest-f5c.state.browser.test.cjs
+          node --check language-skills-hub/tests/city-quest-f5c.language.test.cjs
+          node --test language-skills-hub/tests/city-quest-f5c.language.test.cjs
+          node --test language-skills-hub/tests/city-quest-f5c.catalog.test.cjs
           node --test language-skills-hub/tests/city-quest-f2-1b.metro.test.cjs
           node --test language-skills-hub/tests/city-quest-f2-1c.metro-game.test.cjs
           node --test language-skills-hub/tests/city-quest-f2-1d.metro-language.test.cjs
@@ -96,7 +123,11 @@ jobs:
       - name: Independent F4 distribution integrity and 256-case manual-review matrix
         run: |
           node language-skills-hub/authoring/city-quest-f2/build-preview.cjs --write
+          node language-skills-hub/authoring/city-quest-f2/stage-public.cjs --write
+          node --test language-skills-hub/tests/city-quest-f5c.publication.test.cjs
           node --test language-skills-hub/tests/city-quest-f4.independent.static.test.cjs
+          node --test language-skills-hub/tests/city-quest-f5c.release-gate.test.cjs
+          node language-skills-hub/authoring/city-quest-f5c/release-readiness.cjs --report | tee .release-city-quest-f5c/READINESS_REPORT.json
           node --test language-skills-hub/tests/city-quest-f4r.linguistic.test.cjs
       - name: "Regression: route, 8 F1 stations and existing F2 CEFR content"
         run: |
@@ -117,8 +148,8 @@ jobs:
           grep -Fq 'id="f3dSessionAdvice"' language-skills-hub/konverzace/city-quest-f2/index.html
           grep -Fq 'id="f3cMetroPicker"' language-skills-hub/konverzace/city-quest-f2/index.html
           grep -Fq 'id="f3cLocate"' language-skills-hub/konverzace/city-quest-f2/index.html
-          grep -Fq "F2.1B VISUAL PROTOTYPE" language-skills-hub/konverzace/city-quest-f2/index.html
-          grep -Fq "EN/B1 route reference" language-skills-hub/konverzace/city-quest-f2/index.html
+          grep -Fq "INTERACTIVE CITY NETWORK" language-skills-hub/konverzace/city-quest-f2/index.html
+          grep -Fq "Guided review only" language-skills-hub/konverzace/city-quest-f2/index.html
           node - <<'NODE'
           const fs=require('node:fs');
           const a=fs.readFileSync('language-skills-hub/konverzace/city-quest-f2/metro-preview.js','utf8');
@@ -131,6 +162,24 @@ jobs:
           for(const x of ['fetch(', 'XMLHttpRequest(', 'navigator.geolocation', 'getCurrentPosition(', 'watchPosition(', 'new WebSocket('])
             if(a.includes(x)||b.includes(x)||c.includes(x)||d.includes(x)||e.includes(x)||f.includes(x)||g.includes(x))throw Error('Forbidden remote or location dependency '+x);
           NODE
+      - name: Upload isolated City Quest review-only publication candidate
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: city-quest-f5c-isolated-publication-review
+          path: .release-city-quest-f5c/public/language-skills-hub/konverzace/city-quest-f2/index.html
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload release-readiness NO-GO evidence and distribution hash
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: city-quest-f5c-human-gates-evidence
+          path: |
+            .release-city-quest-f5c/REVIEW_MANIFEST.json
+            .release-city-quest-f5c/READINESS_REPORT.json
+          if-no-files-found: warn
+          retention-days: 14
   f4-browser-independent-and-regression:
     runs-on: ubuntu-24.04
     timeout-minutes: 50
@@ -160,6 +209,8 @@ jobs:
           # F4 adversarial and independent checks are first, not F3D helpers.
           node --test language-skills-hub/tests/city-quest-f4r.remediation.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-f4.independent.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-f5c.mobile.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-f5c.state.browser.test.cjs
           # F3D must pass full 192-variant + focus/lesson acceptance.
           node --test language-skills-hub/tests/city-quest-f3d.pedagogy.browser.test.cjs
           # Follow with F3C and the earlier fully certified browser matrix.

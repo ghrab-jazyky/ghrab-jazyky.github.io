@@ -1,0 +1,36 @@
+"use strict";
+const {test}=require("node:test"),assert=require("node:assert/strict");
+const fs=require("node:fs"),path=require("node:path"),crypto=require("node:crypto");
+const root=path.resolve(__dirname,"../../");
+const base=path.join(root,".release-city-quest-f5c");
+const pub=path.join(base,"public");
+const sha=s=>crypto.createHash("sha256").update(s).digest("hex");
+test("F5C N07 release candidate is only one self-contained City Quest HTML file",()=>{
+ const manifest=JSON.parse(fs.readFileSync(path.join(base,"REVIEW_MANIFEST.json"),"utf8"));
+ assert.equal(manifest.status,"REVIEW_ONLY_NOT_DEPLOYED");
+ const catalog=JSON.parse(fs.readFileSync(path.join(root,"language-skills-hub/data/cards.json"),"utf8"));
+ const entry=catalog.entries.find(x=>x.id==="cl-city-quest-f2");
+ assert.ok(entry,"Catalog City Quest link missing");
+ const expected="language-skills-hub/"+entry.relative;
+ assert.equal(expected,"language-skills-hub/konverzace/city-quest-f2/index.html");
+ assert.equal(manifest.relativeOutput,expected);
+ assert.deepEqual(manifest.files,[expected]);
+ const walk=(dir,prefix="")=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(ent=>{
+  const n=prefix?prefix+"/"+ent.name:ent.name;
+  return ent.isDirectory()?walk(path.join(dir,ent.name),n):[n];
+ });
+ assert.deepEqual(walk(pub),[expected],"No authoring, scripts, prototypes or unrelated pages in candidate overlay");
+ const html=fs.readFileSync(path.join(pub,...expected.split("/")),"utf8");
+ assert.equal(sha(html),manifest.sha256);
+ assert.equal(Buffer.byteLength(html,"utf8"),manifest.bytes);
+ assert.match(html,/connect-src 'none'/);
+ assert.match(html,/script-src 'sha256-/);
+ assert.match(html,/style-src 'sha256-/);
+ assert.doesNotMatch(html,/<script\b[^>]*\bsrc\s*=|<link\b[^>]*\bhref\s*=|<iframe\b|<object\b|<form\b|<img\b[^>]*\bsrc\s*=/i);
+});
+
+test("F5C generated review and publication outputs are untracked by default",()=>{
+ const ignore=fs.readFileSync(path.join(root,".gitignore"),"utf8");
+ assert.match(ignore,/^\/\.review-city-quest-f2\/$/m);
+ assert.match(ignore,/^\/\.release-city-quest-f5c\/$/m);
+});

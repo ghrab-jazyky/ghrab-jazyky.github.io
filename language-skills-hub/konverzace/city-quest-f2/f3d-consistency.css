@@ -261,3 +261,159 @@
 .metro-scenario-head strong,
 .metro-inspector-top strong,
 .metro-journey-header span:first-child{min-width:0;overflow-wrap:anywhere}
+
+
+/* CQ-F5-001 follow-up: exact HEAD 200% mobile acceptance.
+   Prevent localized hero content, mode controls, and long dialogue text
+   from enlarging the viewport. Preserve readable text; never hide it. */
+@media (max-width:700px) {
+  .hero { grid-template-columns:minmax(0,1fr); }
+  .hero > * { min-width:0; max-width:100%; }
+  .hero .kicker { overflow-wrap:anywhere; hyphens:auto; }
+  .f1-dashboard,.f1-mode { min-width:0; max-width:100%; }
+  .f1-mode .btn {
+    min-width:0; max-width:100%;
+    overflow-wrap:anywhere; white-space:normal;
+  }
+  .f2-dialogue-bubble,.f2-dialogue-bubble * {
+    min-width:0; max-width:100%;
+    overflow-wrap:anywhere; hyphens:auto;
+  }
+}
+
+
+/* F5C Claude remediation: explicit light-theme metro surfaces (N01).
+ * Pixel-safe fixed backgrounds, not gradient-estimated axe contrast. */
+:root[data-theme="light"] .metro-lab[data-mode="game"] #f1Panel{
+ --text:#173144;--muted:#35556c;--mint:#126b52;--cyan:#075d81;
+ color:#173144;background:#f4fbfe;border-color:#6899a5;
+}
+:root[data-theme="light"] .metro-lab[data-mode="game"] #f1Panel .f2-card-head h2,
+:root[data-theme="light"] .metro-lab[data-mode="game"] #f1Panel .f2-card-head p,
+:root[data-theme="light"] .metro-lab[data-mode="game"] #f1Panel .f2-small,
+:root[data-theme="light"] .metro-lab[data-mode="game"] #f1Panel .f2-kicker,
+:root[data-theme="light"] .metro-lab[data-mode="game"] #f1Panel .f2-status{
+ color:#173144;
+}
+:root[data-theme="light"] .metro-lab[data-mode="game"] #f1Panel .f2-objective{
+ background:#e4f5fa;border-color:#73a1ac;border-left-color:#167f78;color:#173144;
+}
+:root[data-theme="light"] .metro-lab[data-mode="game"] #f1Panel .f2-objective p{
+ color:#173144!important;
+}
+:root[data-theme="light"] .metro-lab[data-mode="game"] #f1Panel .f2-objective strong{color:#13664d}
+:root[data-theme="light"] .metro-lab[data-mode="game"] #f1Panel .f2-help,
+:root[data-theme="light"] .metro-lab[data-mode="game"] #f1Panel .metro-language-details{
+ background:#e8f5f9;color:#173144;border-color:#8eb6c1;
+}
+:root[data-theme="light"] .metro-lab[data-mode="game"] #f1Panel .f2-status[data-tone="success"]{color:#125d40}
+:root[data-theme="light"] .metro-lab[data-mode="game"] #f1Panel .f2-status[data-tone="warning"]{color:#884407}
+/* Prevent hover-induced layout instability: hover never moves a click target. */
+#f1Panel .f2-choice-list .btn:hover:not(:disabled),
+#f1Panel .f2-actions .btn:hover:not(:disabled),
+#f1Panel .f2-choice-list .btn:active:not(:disabled),
+#f1Panel .f2-actions .btn:active:not(:disabled){transform:none}
+/* At 200% text zoom the metro scene tabs must reflow, never clip. */
+.metro-scene-card,.metro-scene-toolbar{max-width:100%;min-width:0}
+.metro-scene-toolbar{flex-wrap:wrap}
+.metro-scene-toolbar button,.metro-scene-toolbar select{min-height:44px;min-width:44px}
+#f1Panel select{min-height:44px}
+/* Landscape phone: the D-pad is beside the map, not over the crossroads (N06). */
+@media(max-width:920px) and (orientation:landscape) and (max-height:480px){
+ #f2MapStage{display:grid;grid-template-columns:minmax(0,1fr) minmax(185px,40%);gap:7px;align-items:stretch}
+ #f2MapStage>.map-viewport{grid-row:1;grid-column:1;min-width:0;min-height:220px}
+ #f2MapStage>#f2Quick:not([hidden]),
+ #f2MapStage>#f2Quick[data-compact="true"]:not([hidden]){
+  position:static;grid-row:1;grid-column:2;width:100%;max-width:100%;min-width:0;
+  max-height:100%;right:auto;bottom:auto;overflow-y:auto;
+  display:grid;grid-template-columns:minmax(0,1fr);
+  grid-template-areas:"head" "pad" "caption" "tools";
+  padding:8px;gap:4px;align-self:stretch;backdrop-filter:none
+ }
+ #f2MapStage>#f2Quick .f2-quick-pad{width:100%;max-width:100%;margin:0 auto}
+ #f2MapStage>#f2Quick .f2-hud-instruction{font-size:.74rem}
+ #f2MapStage>#f2Quick .f2-hud-tools{justify-content:center}
+}
+
+
+/* F5C modern-Chromium German A1 City06 at 320px / 200% text: allow
+ * all instructional text to wrap inside the intrinsic-width task panel.
+ * Never crop text or mask overflow on the document root. */
+@media(max-width:700px){
+  #f1Panel, #f1Panel .f2-card-head, #f1Panel .f2-objective,
+  #f1Panel .f2-help, #f1Panel .f2-dialogue-bubble,
+  #f1Panel .f2-choice-list, #f1Panel .f2-actions,
+  #f1Panel .f2-finish, #f1Panel .f2-status {
+    min-width:0;
+    max-width:100%;
+    box-sizing:border-box;
+  }
+  #f1Panel .f2-prompt, #f1Panel .f2-objective strong,
+  #f1Panel .f2-card-head h2, #f1Panel .f2-card-head p,
+  #f1Panel .f2-choice-list button, #f1Panel .f2-actions button,
+  #f1Panel .f2-status, #f1Panel .f2-help summary,
+  #f1Panel .f2-help p, #f1Panel h3 {
+    min-width:0;
+    max-width:100%;
+    overflow-wrap:anywhere;
+    hyphens:auto;
+    box-sizing:border-box;
+  }
+}
+
+
+/* F5C modern Playwright/Chromium: DE 200% labels must never force a flex
+ * item's min-content width past 320px. Experience popover uses border-box
+ * viewport bounds, not an unbounded content box with added padding. */
+@media(max-width:700px){
+  .topbar, .topbar .header-actions, .f2-settings, .f2-profile{
+    min-width:0;
+    max-width:100%;
+    box-sizing:border-box;
+  }
+  .f2-profile{
+    flex:1 1 100%;
+    width:100%;
+    overflow-wrap:anywhere;
+    hyphens:auto;
+  }
+  .f3-experience-panel{
+    box-sizing:border-box;
+    width:min(310px,calc(100vw - 28px));
+    max-width:calc(100vw - 28px);
+    min-width:0;
+  }
+  .f3-experience-panel .f3-control,
+  .f3-experience-panel p{
+    box-sizing:border-box;
+    min-width:0;
+    max-width:100%;
+    overflow-wrap:anywhere;
+    hyphens:auto;
+  }
+}
+
+/* F5C 029: avoid pictogram and learning-step marker collisions at 200%
+   root text size on narrow phones (DE C2 has the longest mission titles).
+   Fixed 25px tokens must not host 34px emoji or wrap into adjacent copy. */
+@media(max-width:820px){
+ .f1-station{gap:max(8px,.4rem)}
+ .f1-station-icon{
+  box-sizing:border-box;
+  width:clamp(29px,1.4rem,38px);
+  height:clamp(29px,1.4rem,38px);
+  flex:0 0 auto;
+  font-size:clamp(16px,.86rem,20px);
+  line-height:1;
+  overflow:hidden;
+ }
+ .f1-station-caption{min-width:0;flex:1 1 auto}
+ .f3d-learning-steps li{gap:max(8px,.4rem)}
+ .f3d-learning-steps li span{
+  box-sizing:border-box;flex:0 0 auto;
+  width:clamp(29px,1.35rem,40px);
+  height:clamp(29px,1.35rem,40px);
+  font-size:clamp(12px,.72rem,17px);
+  line-height:1;
+ }
+}

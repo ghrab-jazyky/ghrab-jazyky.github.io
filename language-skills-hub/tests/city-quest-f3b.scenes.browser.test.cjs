@@ -6,7 +6,9 @@ const {test}=require("node:test"),assert=require("node:assert/strict");
 const fs=require("node:fs"),path=require("node:path");
 const {chromium,webkit}=require("playwright");
 const L=require("../authoring/city-quest-f2-1d/metro-language.js");
-const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html";
+// This is an AUTHORING/QA visual-preview suite. Normal student URLs do
+// not expose guided reference routes (CQ-F5-006).
+const URL="http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html?cq-review=1";
 const OUT=path.join(process.cwd(),"city-quest-f3b-artifacts");
 fs.mkdirSync(OUT,{recursive:true});
 const p=page=>page.locator("#f1Panel"),pa=page=>page.locator("#metroPublicAddress");
@@ -68,6 +70,8 @@ test("F3B station 05: line, terminus and platform remain unknown until chosen; d
   await choose(page,"Travel to next stop");
   assert.ok((await page.locator("#metroPAMessage").innerText()).includes("Museum Quarter"));
   await choose(page,"Travel to next stop");
+  assert.equal(await page.locator("#metroSceneSvg").getAttribute("data-phase"),"ride");
+  await choose(page,"Get off here");
   assert.equal(await pa(page).getAttribute("data-kind"),"arrival");
   assert.equal(await page.locator("#metroSceneSvg").getAttribute("data-phase"),"exit");
   assert.deepEqual(errors,[]);
@@ -121,6 +125,8 @@ test("F3B station 06 transfer scene is visually distinct but does not reveal the
   await choose(page,"M2 ·");await choose(page,"North Park");await choose(page,"Platform 1");
   await choose(page,c.actions.BOARD);
   await choose(page,c.actions.NEXT_STOP);await choose(page,c.actions.NEXT_STOP);
+  assert.equal(await pa(page).getAttribute("data-kind"),"onboard");
+  await choose(page,c.actions.TRANSFER_HERE);
   assert.equal(await pa(page).getAttribute("data-kind"),"transfer");
   assert.equal(await page.locator(".metro-transfer-arrow").count(),1);
   assert.match(await page.locator("#metroSceneSvg").textContent(),/CHANGE TRAINS/);
@@ -129,7 +135,9 @@ test("F3B station 06 transfer scene is visually distinct but does not reveal the
   assert.doesNotMatch(await page.locator("#metroPAMessage").innerText(),/\bM3\b/);
   await page.locator("#metroSceneSvg").screenshot({path:path.join(OUT,"transfer-university-1366.png")});
   await choose(page,c.actions.CHANGE_LINE);
-  assert.equal(await pa(page).getAttribute("data-kind"),"wayfinding");
+  // After choosing the connecting line, the learner must select its terminus.
+  assert.equal(await pa(page).getAttribute("data-kind"),"direction");
+  assert.equal(await page.evaluate(()=>window.CityQuestF2MetroBridge.current().phase),"select-direction");
   assert.deepEqual(errors,[]);
  }finally{await browser.close();}
 });
@@ -177,7 +185,7 @@ test("F3B standalone strict SHA-CSP HTML supports text announcements offline wit
  try{
   const page=await browser.newPage({viewport:{width:390,height:844}}),errors=errorsOf(page),requests=[];
   page.on("request",r=>{if(!r.url().startsWith("file:"))requests.push(r.url());});
-  await page.goto("file://"+file,{waitUntil:"load"});
+  await page.goto("file://"+file+"?cq-review=1",{waitUntil:"load"});
   await mission(page,7,"de","B2");
   assert.equal(await pa(page).getAttribute("data-kind"),"notice");
   assert.ok((await page.locator("#metroPAMessage").innerText()).length>35);
