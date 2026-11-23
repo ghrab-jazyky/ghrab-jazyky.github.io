@@ -58,10 +58,10 @@ test('Installation code linked only into the catalog',()=>{
  const html=read('index.html');
  assert.match(html,/<link rel="manifest" href="\.\/manifest\.webmanifest">/);
  assert.match(html,/<link rel="apple-touch-icon"/);
- assert.match(html,/<script defer src="assets\/pwa-install\.js"/);
+ assert.match(html,/<script defer src="assets\/pwa-install\.js\?v=pwa-recovery-20261123"/);
  assert.match(html,/pwa-install\.js\?v=pwa-recovery-20261123/);
  assert.match(html,/pwa-install\.css\?v=pwa-recovery-20261123/);
- assert.match(html,/<link rel="stylesheet" href="assets\/pwa-install\.css"/);
+ assert.match(html,/<link rel="stylesheet" href="assets\/pwa-install\.css\?v=pwa-recovery-20261123"/);
  assert.match(html,/id="skillChooser"/);
 });
 test('Consent, timing, and browser install event',()=>{
