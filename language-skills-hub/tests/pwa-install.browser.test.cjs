@@ -60,6 +60,20 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(await page.evaluate(key=>localStorage.getItem(key),key),null);
   }finally{await browser.close()}
  });
+ test('PWA '+name+' closing X is temporary and Ctrl+R reopens the offer',{timeout:90000},async()=>{
+  const {page,browser}=await open(engine,{viewport:{width:1366,height:768}});
+  try{
+   await enter(page);
+   await page.locator('#pwaOfferClose').click();
+   assert.equal(await page.locator('#pwaInstallOffer').isHidden(),true);
+   assert.equal(await page.evaluate(key=>localStorage.getItem(key),key),null,
+    'Close X must not persist a seven-day snooze');
+   await page.reload();
+   await page.locator('#skillChooser:not([hidden])').waitFor();
+   await page.locator('#pwaInstallOffer:visible').waitFor();
+   await geometry(page,name+' after closing X and Ctrl+R');
+  }finally{await browser.close()}
+ });
  test('PWA '+name+' reload from scrolled 320px chooser returns banner to top',{timeout:90000},async()=>{
   const {page,browser}=await open(engine,{viewport:{width:320,height:568}});
   try{
