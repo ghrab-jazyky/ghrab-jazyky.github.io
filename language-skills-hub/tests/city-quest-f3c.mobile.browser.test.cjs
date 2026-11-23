@@ -45,8 +45,18 @@ test("F3C 320–1024px: one HUD, compact option exposes more city map while all 
    assert.equal(await toggle.getAttribute("aria-pressed"),"true");
    assert.ok((await toggle.getAttribute("aria-label")).includes("Mostrar"),"Localized accessible toggle should expand the HUD");
    const compact=await page.locator("#f2Quick").boundingBox();
-   assert.ok(compact&&expanded&&compact.width<expanded.width*.75,
-    "Compact pad should occupy substantially less map width at "+width);
+   if(width===568&&height===320){
+    const geometry=await page.evaluate(()=>{
+     const map=document.querySelector("#mapViewport").getBoundingClientRect();
+     const hud=document.querySelector("#f2Quick").getBoundingClientRect();
+     return {mapRight:map.right,hudLeft:hud.left};
+    });
+    assert.ok(compact&&expanded&&geometry.hudLeft>=geometry.mapRight-2,
+     "Landscape HUD should be outside the city map, not covering it");
+   }else{
+    assert.ok(compact&&expanded&&compact.width<expanded.width*.75,
+     "Compact pad should occupy substantially less map width at "+width);
+   }
    const coords=await page.locator("#f2Quick .f2-quick-pad button").evaluateAll(nodes=>nodes.map(el=>{
     const b=el.getBoundingClientRect();return {w:b.width,h:b.height};
    }));

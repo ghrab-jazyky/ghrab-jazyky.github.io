@@ -37,7 +37,7 @@ test("F2.1C desktop: mission 05 rejects wrong line, requires directions/platform
   const errors=[];page.on("pageerror",e=>errors.push(e.stack||String(e)));
   await launch(browser,page,5);
   assert.equal(await page.locator(".hero h1").innerText(),"Riverton City + Metro Quest");
-  assert.match(await page.locator(".topbar .header-actions .tag").innerText(),/F2\.1[CD]/);
+  assert.match(await page.locator(".topbar .header-actions .tag").innerText(),/CITY QUEST/);
   assert.equal(await page.locator("#metroLab").getAttribute("data-mode"),"game");
   assert.equal(await page.locator("#metroLab").isVisible(),true);
   assert.equal(await page.locator(".layout").isVisible(),false);

@@ -6,6 +6,10 @@
   const C=window.CityQuestF2Content,G=window.CityQuestF2Engine,F=window.CityQuestF1Engine,E=window.CityQuestEngine,MG=window.RivertonMetroGame,LC=window.RivertonMetroLanguage;
   if(!C||!G||!F||!E)throw Error("City Quest F2 modules did not load in dependency order.");
   const $=id=>document.getElementById(id);
+  // Data favicon: no network request and no external resource in offline export.
+  const icon=document.createElement("link");icon.rel="icon";icon.type="image/svg+xml";
+  icon.href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230d3a51%27/%3E%3Ctext x=%2732%27 y=%2742%27 text-anchor=%27middle%27 font-size=%2727%27 fill=%27white%27 font-family=%27sans-serif%27 font-weight=%27800%27%3ECQ%3C/text%3E%3C/svg%3E";
+  document.head.appendChild(icon);
   const panel=$("f1Panel"),map=$("cityMap"),viewport=$("mapViewport");
   const cityLayout=document.querySelector(".layout"),citySidebar=panel.parentElement;
   const metroLab=$("metroLab"),metroSidebar=metroLab.querySelector(".metro-side");
