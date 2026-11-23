@@ -94,7 +94,7 @@ test('A B2 student can finish a real city mission and review oral criteria witho
   assert.equal(await page.locator('.cq-advanced-reflection-list li').count(),3);
   assert.match(await page.locator('.cq-advanced-oracy-disclaimer').last().innerText(),/does not record or grade/);
   assert.match(await page.locator('#f1ProgressText').innerText(),/1\s*\/\s*8/);
-  const sample=page.locator('#f1Panel .f2-help p[hidden]').first();
+  const sample=page.locator('#f1Panel .f2-help p.f2-small').last();
   assert.equal(await sample.count(),1);
   await page.locator('#f1Panel .f2-help button').first().click();
   assert.equal(await sample.evaluate(e=>e.hidden),false);
