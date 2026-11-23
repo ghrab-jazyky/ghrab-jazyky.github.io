@@ -1,0 +1,21 @@
+"use strict";
+const {test}=require("node:test"),assert=require("node:assert/strict");
+const fs=require("node:fs"),path=require("node:path"),crypto=require("node:crypto");
+const root=path.resolve(__dirname,"../../");
+const base=path.join(root,".release-city-quest-f5c");
+const pub=path.join(base,"public");
+const sha=s=>crypto.createHash("sha256").update(s).digest("hex");
+test("F5C N07 release candidate is only one self-contained City Quest HTML file",()=>{
+ const manifest=JSON.parse(fs.readFileSync(path.join(base,"REVIEW_MANIFEST.json"),"utf8"));
+ assert.equal(manifest.status,"REVIEW_ONLY_NOT_DEPLOYED");
+ assert.deepEqual(manifest.files,["city-quest/index.html"]);
+ assert.deepEqual(fs.readdirSync(pub),["city-quest"]);
+ assert.deepEqual(fs.readdirSync(path.join(pub,"city-quest")),["index.html"]);
+ const html=fs.readFileSync(path.join(pub,"city-quest","index.html"),"utf8");
+ assert.equal(sha(html),manifest.sha256);
+ assert.equal(Buffer.byteLength(html,"utf8"),manifest.bytes);
+ assert.match(html,/connect-src 'none'/);
+ assert.match(html,/script-src 'sha256-/);
+ assert.match(html,/style-src 'sha256-/);
+ assert.doesNotMatch(html,/<script\b[^>]*\bsrc\s*=|<link\b[^>]*\bhref\s*=|<iframe\b|<object\b|<form\b|<img\b[^>]*\bsrc\s*=/i);
+});

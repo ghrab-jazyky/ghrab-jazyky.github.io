@@ -11,6 +11,8 @@ on:
       - "language-skills-hub/authoring/city-quest-f3b/**"
       - "language-skills-hub/konverzace/city-quest-f2/**"
       - "language-skills-hub/authoring/city-quest-f2/build-preview.cjs"
+      - "language-skills-hub/authoring/city-quest-f2/stage-public.cjs"
+      - "language-skills-hub/tests/city-quest-f5c.publication.test.cjs"
       - "language-skills-hub/tests/city-quest-f2-1b*"
       - "language-skills-hub/tests/city-quest-f2-1c*"
       - "language-skills-hub/tests/city-quest-f2-1d*"
@@ -32,6 +34,8 @@ on:
       - "language-skills-hub/authoring/city-quest-f3b/**"
       - "language-skills-hub/konverzace/city-quest-f2/**"
       - "language-skills-hub/authoring/city-quest-f2/build-preview.cjs"
+      - "language-skills-hub/authoring/city-quest-f2/stage-public.cjs"
+      - "language-skills-hub/tests/city-quest-f5c.publication.test.cjs"
       - "language-skills-hub/tests/city-quest-f2-1b*"
       - "language-skills-hub/tests/city-quest-f2-1c*"
       - "language-skills-hub/tests/city-quest-f2-1d*"
@@ -100,6 +104,8 @@ jobs:
       - name: Independent F4 distribution integrity and 256-case manual-review matrix
         run: |
           node language-skills-hub/authoring/city-quest-f2/build-preview.cjs --write
+          node language-skills-hub/authoring/city-quest-f2/stage-public.cjs --write
+          node --test language-skills-hub/tests/city-quest-f5c.publication.test.cjs
           node --test language-skills-hub/tests/city-quest-f4.independent.static.test.cjs
           node --test language-skills-hub/tests/city-quest-f4r.linguistic.test.cjs
       - name: "Regression: route, 8 F1 stations and existing F2 CEFR content"
@@ -135,6 +141,14 @@ jobs:
           for(const x of ['fetch(', 'XMLHttpRequest(', 'navigator.geolocation', 'getCurrentPosition(', 'watchPosition(', 'new WebSocket('])
             if(a.includes(x)||b.includes(x)||c.includes(x)||d.includes(x)||e.includes(x)||f.includes(x)||g.includes(x))throw Error('Forbidden remote or location dependency '+x);
           NODE
+      - name: Upload isolated City Quest review-only publication candidate
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: city-quest-f5c-isolated-publication-review
+          path: .release-city-quest-f5c/public/city-quest/index.html
+          if-no-files-found: error
+          retention-days: 14
   f4-browser-independent-and-regression:
     runs-on: ubuntu-24.04
     timeout-minutes: 50
