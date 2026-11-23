@@ -3,7 +3,7 @@
   "schema": "city-quest-stage3-oracy-v1",
   "ui": {
     "title": "Défi oral en situation réelle",
-    "doFirst": "Formulez votre réponse à voix haute avant d'ouvrir le modèle. À deux, expliquez l'itinéraire sans montrer le plan.",
+    "doFirst": "Formulez votre réponse à voix haute avant de consulter l'exemple à la fin de la mission. À deux, expliquez l'itinéraire sans montrer le plan.",
     "criteria": "Les critères d'une réponse réussie",
     "reflection": "Comparez votre prise de parole à ces critères. Seul un partenaire ou un enseignant peut l'évaluer : le jeu n'enregistre ni ne note la voix.",
     "teacher": "Ce défi est un entraînement oral complémentaire, non une étape évaluée automatiquement par le jeu."
@@ -29,10 +29,10 @@
     "1": {
       "B2": "Deux visiteurs ont des besoins différents : l'un veut emprunter un livre et l'autre voir des objets historiques. Recommandez-leur les lieux adaptés à Riverton et justifiez chaque choix.",
       "C1": "Un visiteur cherche « l'endroit où il y a des livres », mais il dit aussi vouloir envoyer un colis. Posez une question pour clarifier sa demande, puis distinguez la bibliothèque du bureau de poste à l'aide de repères.",
-      "C2": "Deux visiteurs confondent Gare centrale et Place du Marché et se disputent sur leur lieu de rendez-vous. Dissipez le malentendu, distinguez précisément les deux lieux et confirmez où ils souhaitent se retrouver."
+      "C2": "Deux visiteurs confondent la gare centrale et la place du Marché et se disputent sur leur lieu de rendez-vous. Dissipez le malentendu, distinguez précisément les deux lieux et confirmez où ils souhaitent se retrouver."
     },
     "2": {
-      "B2": "Expliquez votre itinéraire à pied vers le musée municipal en passant par Place du Marché. Comparez-le à un autre trajet visible sur le plan et justifiez le passage obligatoire par la place.",
+      "B2": "Expliquez votre itinéraire à pied vers le musée municipal en passant par la place du Marché. Comparez-le à un autre trajet visible sur le plan et justifiez le passage obligatoire par la place.",
       "C1": "Un groupe doit passer par la Bibliothèque avant de rejoindre le musée municipal. Donnez un itinéraire structuré et signalez un carrefour où il risque de se tromper.",
       "C2": "Vous devez rejoindre le musée municipal en passant par la Bibliothèque sans emprunter la rue barrée pour travaux. Comparez un raccourci apparent, mais fermé, à une route valable et expliquez les contraintes avec tact."
     },
