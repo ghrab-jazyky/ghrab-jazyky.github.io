@@ -125,7 +125,7 @@ jobs:
           node --test language-skills-hub/tests/city-quest-f5c.publication.test.cjs
           node --test language-skills-hub/tests/city-quest-f4.independent.static.test.cjs
           node --test language-skills-hub/tests/city-quest-f5c.release-gate.test.cjs
-          node language-skills-hub/authoring/city-quest-f5c/release-readiness.cjs --report
+          node language-skills-hub/authoring/city-quest-f5c/release-readiness.cjs --report | tee .release-city-quest-f5c/READINESS_REPORT.json
           node --test language-skills-hub/tests/city-quest-f4r.linguistic.test.cjs
       - name: "Regression: route, 8 F1 stations and existing F2 CEFR content"
         run: |
@@ -167,6 +167,16 @@ jobs:
           name: city-quest-f5c-isolated-publication-review
           path: .release-city-quest-f5c/public/language-skills-hub/konverzace/city-quest-f2/index.html
           if-no-files-found: error
+          retention-days: 14
+      - name: Upload release-readiness NO-GO evidence and distribution hash
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: city-quest-f5c-human-gates-evidence
+          path: |
+            .release-city-quest-f5c/REVIEW_MANIFEST.json
+            .release-city-quest-f5c/READINESS_REPORT.json
+          if-no-files-found: warn
           retention-days: 14
   f4-browser-independent-and-regression:
     runs-on: ubuntu-24.04
