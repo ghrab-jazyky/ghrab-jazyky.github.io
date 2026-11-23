@@ -39,8 +39,8 @@ test('R35-HR2: stage preserves original content plus one Plural grammar card',()
  assert.equal(catalog.entries.length,35);
  assert.equal(version.topicCount,35);
  assert.equal(version.variantCount,726);
- assert.equal(catalog.entries.filter(x=>x.skill==='konverzace').length,23);
- assert.equal(catalog.entries.filter(x=>x.skill==='konverzace'&&x.cardType!=='grammar-flashcards').length,22);
+ assert.equal(catalog.entries.filter(x=>x.skill==='konverzace').length,24);
+ assert.equal(catalog.entries.filter(x=>x.skill==='konverzace'&&x.cardType!=='grammar-flashcards'&&x.cardType!=='interactive-language-game').length,22);
  assert.equal(catalog.entries.reduce((n,x)=>n+x.languages.length*x.levels.length,0),726);
  assert.equal(Object.keys(i18n.entries).length,35);
  assert.equal(version.sourceSha,catalog.revision);

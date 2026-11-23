@@ -5,7 +5,7 @@ const {test}=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path');
 const hub=path.resolve(__dirname,'..');
 const LANGS=['en','es','de','fr'],LEVELS=['A1','A2','B1','B2','C1','C2'];
-const cards=JSON.parse(fs.readFileSync(path.join(hub,'data/cards.json'),'utf8')).entries.filter(e=>e.skill==='konverzace'&&e.cardType!=='grammar-flashcards');
+const cards=JSON.parse(fs.readFileSync(path.join(hub,'data/cards.json'),'utf8')).entries.filter(e=>e.skill==='konverzace'&&e.cardType!=='grammar-flashcards'&&e.cardType!=='interactive-language-game');
 function literal(src,name){
  const start=src.indexOf('const '+name+' = ')+('const '+name+' = ').length;
  let depth=0,inStr=false,esc=false;

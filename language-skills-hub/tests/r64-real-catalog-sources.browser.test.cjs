@@ -21,7 +21,8 @@ for(const [engineName,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      hint:!!document.getElementById('lshVariantHint'),
      back:document.querySelectorAll('#backToQuestion').length
     }));
-    assert.equal(state.vocab,true,e.id+' has no shared vocabulary entry on '+src);
+    assert.equal(state.vocab,e.cardType!=='interactive-language-game',
+      e.id+' must honour the original shared vocabulary contract; standalone City Quest stays local');
     assert.equal(state.legacy,false,e.id+' opened the legacy Reading vocabulary database');
     if(e.lockSource)assert.equal(state.hint,true,e.id+' ignored the teacher preset');
     if(e.lockSource&&e.skill==='cteni')assert.equal(state.back,1,e.id+' has no Back to question control');
