@@ -58,8 +58,10 @@ test('Installation code linked only into the catalog',()=>{
  const html=read('index.html');
  assert.match(html,/<link rel="manifest" href="\.\/manifest\.webmanifest">/);
  assert.match(html,/<link rel="apple-touch-icon"/);
- assert.match(html,/<script defer src="assets\/pwa-install\.js"/);
- assert.match(html,/<link rel="stylesheet" href="assets\/pwa-install\.css"/);
+ assert.match(html,/<script defer src="assets\/pwa-install\.js\?v=pwa-recovery-20261123"/);
+ assert.match(html,/pwa-install\.js\?v=pwa-recovery-20261123/);
+ assert.match(html,/pwa-install\.css\?v=pwa-recovery-20261123/);
+ assert.match(html,/<link rel="stylesheet" href="assets\/pwa-install\.css\?v=pwa-recovery-20261123"/);
  assert.match(html,/id="skillChooser"/);
 });
 test('Consent, timing, and browser install event',()=>{
@@ -81,6 +83,11 @@ test('Consent, timing, and browser install event',()=>{
  assert.match(css,/\.pwa-offer--docked/);
  assert.doesNotMatch(css,/grid-template-areas/);
  assert.match(js,/chooser\.append\(panel\)/);
+ assert.match(js,/url\.searchParams\.get\('pwa'\)!=='reset'/);
+ assert.match(js,/localStorage\.removeItem\(STORAGE_KEY\)/);
+ assert.match(js,/history\.replaceState\(history\.state/);
+ assert.match(js,/chooser\.scrollTop=0/);
+ assert.match(js,/panel\.hidden=!visible\|\|isInstalled\(\)/);
  assert.match(js,/location\.protocol==='https:'/,'Worker must remain disabled on local HTTP browser-QA origin');
  assert.match(js,/savePreference\('never'\)/);
  assert.match(js,/savePreference\('later'\)/);

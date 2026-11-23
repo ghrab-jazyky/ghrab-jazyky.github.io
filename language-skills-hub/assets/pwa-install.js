@@ -14,7 +14,7 @@
  const manualOnly=ios||safariMac||(android&&!chromium);
  const compatible=ios||android||chromium||safariMac;
  let deferredPrompt=null,installedThisSession=false,dismissedThisSession=false,helpOpen=false;
- let installBusy=false,layoutFrame=0;
+ let installBusy=false,layoutFrame=0,wasChooserVisible=false;
  const make=(tag,cls,copy)=>{
   const el=document.createElement(tag);
   if(cls)el.className=cls;
@@ -32,7 +32,7 @@
  const title=make('h3','pwa-offer-title','LSH jako aplikace');
  title.id='pwaOfferTitle';heading.append(title);
  const close=make('button','pwa-offer-close','×');close.type='button';
- close.id='pwaOfferClose';close.setAttribute('aria-label','Připomenout instalaci za 7 dní');
+ close.id='pwaOfferClose';close.setAttribute('aria-label','Zavřít instalační nabídku do dalšího načtení stránky');
  head.append(mark,heading,close);
  const lead=make('p','pwa-offer-copy','Otevři všechny tři laboratoře z plochy počítače nebo telefonu.');
  const actions=make('div','pwa-offer-actions');
@@ -51,6 +51,16 @@
  chooser.append(panel);
  const hasWebInstall=()=>typeof navigator.install==='function';
  const canPrompt=()=>hasWebInstall()||Boolean(deferredPrompt);
+ // Explicit recovery link for users who previously snoozed/hidden the invitation.
+ // Remove only the PWA preference, never teacher/student data or other storage.
+ function consumeInstallRecovery(){
+  const url=new URL(location.href);
+  if(url.searchParams.get('pwa')!=='reset')return;
+  try{localStorage.removeItem(STORAGE_KEY)}catch(_){}
+  url.searchParams.delete('pwa');
+  history.replaceState(history.state,'',url);
+ }
+ consumeInstallRecovery();
  function readPreference(){
   try{
    const data=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');
@@ -115,8 +125,16 @@
  }
  function update(){
   const visible=!chooser.hidden&&!welcome.hidden;
-  const eligible=compatible||canPrompt();
-  panel.hidden=!visible||!eligible||isInstalled()||dismissedThisSession||Boolean(readPreference());
+  // The chooser can be restored at an old scroll offset on refresh or history
+  // navigation. Always start a newly opened chooser at the top.
+  if(visible&&!wasChooserVisible){
+   chooser.scrollTop=0;
+   panel.classList.remove('pwa-offer--scrolled');
+  }
+  wasChooserVisible=visible;
+  // Also show an honest non-installable state on browsers such as Firefox,
+  // rather than making the entire invitation silently disappear.
+  panel.hidden=!visible||isInstalled()||dismissedThisSession||Boolean(readPreference());
   const direct=canPrompt();
   install.textContent=direct?'Nainstalovat LSH':
    manualOnly?(ios?'Přidat na plochu':safariMac?'Přidat do Docku':'Přidat na plochu'):
@@ -127,11 +145,20 @@
    help.hidden=false;help.textContent=manualInstructions();
   }else if(!direct&&!manualOnly){
    help.hidden=panel.hidden;
-   help.textContent='Prohlížeč zatím nenabídl přímou instalaci. Jakmile ji umožní, tlačítko se aktivuje.';
+   help.textContent=chromium?
+    'Prohlížeč zatím nenabídl přímou instalaci. Pokud se tato možnost zpřístupní, tlačítko se aktivuje.':
+    'Tento prohlížeč nepodporuje přímou instalaci LSH. Otevři LSH v Chrome nebo Edge.';
   }else help.hidden=true;
-  scheduleLayout();
+  // Position immediately before paint: the popup must never flash over the chooser.
+  positionOffer();
  }
- close.addEventListener('click',()=>savePreference('later'));
+ // Closing with X is session-only. Only the explicitly labeled snooze button
+ // stores the seven-day delay; refreshing must restore a merely closed offer.
+ close.addEventListener('click',()=>{
+  dismissedThisSession=true;
+  panel.hidden=true;
+  scheduleLayout();
+ });
  later.addEventListener('click',()=>savePreference('later'));
  never.addEventListener('click',()=>savePreference('never'));
  install.addEventListener('click',async()=>{
