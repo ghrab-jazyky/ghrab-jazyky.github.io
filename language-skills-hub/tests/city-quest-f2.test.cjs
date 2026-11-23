@@ -226,7 +226,7 @@ test("F5C CQ-F5-010: level-specific closures make the natural shortest city rout
  walk("C2",advanced);
 });
 test("F5C CQ-F5-011: real timetable progressively adds late and inaccessible hospital-bound alternatives",()=>{
- assert.deepEqual(["A1","B1","B2","C1","C2"].map(l=>G.servicesForLevel(l).length),[3,3,4,5,5]);
+ assert.deepEqual(["A1","B1","B2","C1","C2"].map(l=>G.servicesForLevel(l).length),[3,4,4,5,5]);
  for(const level of G.levels){
   const rows=G.servicesForLevel(level);
   const options=G.transportOptions(level);
@@ -237,12 +237,13 @@ test("F5C CQ-F5-011: real timetable progressively adds late and inaccessible hos
   assert.equal(valid.service.arrival,"09:05");
   assert.equal(G.checkTransport({line:"7",depart:"08:39",stop:"Riverside Park"},level).kind,"line");
  }
+ assert.equal(G.checkTransport({line:"18",depart:"08:41",stop:"Hospital"},"B1").kind,"late");
  assert.equal(G.checkTransport({line:"18",depart:"08:41",stop:"Hospital"},"B2").kind,"late");
  assert.equal(G.checkTransport({line:"18",depart:"08:41",stop:"Hospital"},"C1").kind,"late");
  assert.equal(G.checkTransport({line:"31",depart:"08:38",stop:"Hospital"},"C1").kind,"access");
  assert.equal(G.checkTransport({line:"31",depart:"08:38",stop:"Hospital"},"C2").kind,"access");
  assert.equal(G.checkTransport({line:"24",depart:"08:41",stop:"Hospital"},"C2").kind,"depart");
- assert.ok(!G.transportOptions("B1").lines.includes("18"));
+ assert.ok(G.transportOptions("B1").lines.includes("18"));
  assert.ok(!G.transportOptions("B2").lines.includes("31"));
 });
 

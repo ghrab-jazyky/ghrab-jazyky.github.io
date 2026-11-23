@@ -214,9 +214,9 @@
     if(level==="A2")return ["line","depart"];
     return ["line","depart","stop"];
   }
-  // CQ-F5-011: genuine multi-constraint timetable. Early CEFR levels keep
-  // the original three services; advanced learners compare an on-destination
-  // but late service, plus a faster but not step-free option at C1/C2.
+  // CQ-F5-011: A1/A2 start with three services; from B1 students must
+  // distinguish two hospital-bound buses using arrival constraints.
+  // C1/C2 additionally reject a quicker but inaccessible option.
   // Student input is checked against the visible record, not a hard-coded
   // selection index or an unrelated fixed answer string.
   const extraServices=Object.freeze([
@@ -228,7 +228,7 @@
     const ordinary=F.transport.lines.map(line=>({
       ...line,accessible:line.line==="24"
     }));
-    if(index>=3)ordinary.push(extraServices[0]);
+    if(index>=2)ordinary.push(extraServices[0]);
     if(index>=4)ordinary.push(extraServices[1]);
     return ordinary;
   }
