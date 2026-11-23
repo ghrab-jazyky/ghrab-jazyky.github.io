@@ -179,7 +179,36 @@
     return Object.freeze({vague,wrong,insist});
   }
   function answerCount(level){return lvlIndex(level)===0?3:lvlIndex(level)===1?4:6;}
-  function optionsCount(level){return lvlIndex(level)===0?2:3;}
+  function optionsCount(level){
+    const index=lvlIndex(level);return index===0?2:index===4?4:index===5?5:3;
+  }
+  // C1/C2 interpretation must require comparison of several plausible
+  // candidates instead of A1's binary lexical matching. Semantic IDs and
+  // the original answer engine remain stable across languages and levels.
+  const exploreExtras=Object.freeze([
+    Object.freeze(["post","cafe"]),
+    Object.freeze(["post","station"]),
+    Object.freeze(["station","cafe"]),
+    Object.freeze(["museum","station"]),
+    Object.freeze(["park","cafe"]),
+    Object.freeze(["square","library"])
+  ]);
+  function exploreChoices(question,level,round){
+    if(!question||!question.correct||!Array.isArray(question.choices)||
+       !Number.isInteger(round)||round<0||round>=exploreExtras.length)
+      throw TypeError("Invalid exploration question");
+    const count=optionsCount(level),ids=question.choices.slice();
+    if(count===2){
+      const wrong=ids.find(id=>id!==question.correct);
+      if(!wrong)throw Error("Missing A1 distractor");
+      return [question.correct,wrong];
+    }
+    for(const id of exploreExtras[round])
+      if(ids.length<count&&!ids.includes(id))ids.push(id);
+    if(ids.length!==count||!ids.includes(question.correct)||new Set(ids).size!==ids.length)
+      throw Error("Incomplete higher-level landmark candidates");
+    return ids;
+  }
   function requiredFields(level){
     if(level==="A1")return ["line"];
     if(level==="A2")return ["line","depart"];
@@ -303,7 +332,7 @@
       state:{...state,stage:next,tries:state.tries+1,done:next==="complete",correct}};
   }
   return Object.freeze({F,E,levels,goals,guidedPaths,lvlIndex,config,pathFromDirections,routeStart,
-    moveRoute,guidedStart,guidedMove,guidedReview,instruction,answerCount,optionsCount,orderChoices,dialogueDistractors,requiredFields,servicesForLevel,transportOptions,checkTransport,
+    moveRoute,guidedStart,guidedMove,guidedReview,instruction,answerCount,optionsCount,orderChoices,exploreChoices,dialogueDistractors,requiredFields,servicesForLevel,transportOptions,checkTransport,
     repairStart,repairStages,repairChoice,
     routeModel,detourCheckpoints,detourClosures,questCheckpoints,questStart,questMove,questSpeak,dialogueStart,dialogueChoose});
 });

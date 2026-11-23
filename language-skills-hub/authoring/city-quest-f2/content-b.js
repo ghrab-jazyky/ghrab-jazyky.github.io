@@ -9,7 +9,7 @@
     de:{
       name:"German",native:"Deutsch",locale:"de",short:"DE",
       ui:{
-        language:"Sprache",level:"Niveau",mode:"Übungsmodus",solo:"Allein",pair:"Zu zweit",
+        language:"Sprache",level:"Niveau",mode:"Übungsmodus",solo:"Allein",pair:"Zu zweit · Aufgaben",
         station:"Station",completed:"Missionen abgeschlossen",choose:"Wähle eine Antwort",
         next:"Nächste Station",restart:"Neu beginnen",undo:"Rückgängig",check:"Antwort prüfen",
         retry:"Versuche es erneut",correct:"Richtig!",notQuite:"Noch nicht ganz. Versuche es erneut.",
@@ -154,7 +154,7 @@
     fr:{
       name:"French",native:"Français",locale:"fr",short:"FR",
       ui:{
-        language:"Langue",level:"Niveau",mode:"Mode d'entraînement",solo:"Individuel",pair:"En binôme",
+        language:"Langue",level:"Niveau",mode:"Mode d'entraînement",solo:"Individuel",pair:"Binôme · consignes",
         station:"Étape",completed:"missions terminées",choose:"Choisissez une réponse",
         next:"Étape suivante",restart:"Recommencer",undo:"Annuler",check:"Vérifier",
         retry:"Réessayez",correct:"Bonne réponse !",notQuite:"Pas tout à fait. Essayez encore.",

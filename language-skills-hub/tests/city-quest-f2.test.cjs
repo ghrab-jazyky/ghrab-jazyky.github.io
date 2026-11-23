@@ -309,3 +309,21 @@ test("F5C N04: CEFR dialogue distractors cannot be identified by length alone",(
   assert.ok(d.insist.length>answer.length*0.8);
  }
 });
+
+test("F5C-008: advanced city exploration increases decision space without answer leakage",()=>{
+ const sizes={A1:2,A2:3,B1:3,B2:3,C1:4,C2:5};
+ for(const level of G.levels){
+  assert.equal(G.optionsCount(level),sizes[level]);
+  for(let round=0;round<F.explore.length;round++){
+   const question=F.explore[round],ids=G.exploreChoices(question,level,round);
+   assert.equal(ids.length,sizes[level],level+" round "+round);
+   assert.equal(new Set(ids).size,ids.length,"Duplicate candidates");
+   assert.ok(ids.includes(question.correct));
+   assert.ok(ids.every(id=>F.findPlace(id)),"Unknown landmark");
+   for(const language of C.languages){
+    const ordered=G.orderChoices(ids,language,level,1,round);
+    assert.deepEqual(new Set(ordered),new Set(ids));
+   }
+  }
+ }
+});

@@ -15,7 +15,7 @@
     en:{
       name:"English",native:"English",locale:"en",short:"EN",
       ui:{
-        language:"Language",level:"Level",mode:"Practice mode",solo:"Solo",pair:"Pair",
+        language:"Language",level:"Level",mode:"Practice mode",solo:"Solo",pair:"Pair · prompts",
         station:"Station",completed:"missions completed",choose:"Choose an answer",
         next:"Next station",restart:"Start again",undo:"Undo",check:"Check answer",
         retry:"Try again",correct:"Correct!",notQuite:"Not quite. Try another answer.",
@@ -149,7 +149,7 @@
     es:{
       name:"Spanish",native:"Español",locale:"es",short:"ES",
       ui:{
-        language:"Idioma",level:"Nivel",mode:"Modalidad",solo:"Individual",pair:"En parejas",
+        language:"Idioma",level:"Nivel",mode:"Modalidad",solo:"Individual",pair:"Pareja · pautas",
         station:"Estación",completed:"misiones completadas",choose:"Elige una respuesta",
         next:"Siguiente estación",restart:"Empezar de nuevo",undo:"Deshacer",check:"Comprobar",
         retry:"Inténtalo otra vez",correct:"¡Correcto!",notQuite:"No exactamente. Prueba otra respuesta.",
