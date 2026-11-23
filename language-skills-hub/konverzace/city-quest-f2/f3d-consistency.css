@@ -360,3 +360,35 @@
     box-sizing:border-box;
   }
 }
+
+
+/* F5C modern Playwright/Chromium: DE 200% labels must never force a flex
+ * item's min-content width past 320px. Experience popover uses border-box
+ * viewport bounds, not an unbounded content box with added padding. */
+@media(max-width:700px){
+  .topbar, .topbar .header-actions, .f2-settings, .f2-profile{
+    min-width:0;
+    max-width:100%;
+    box-sizing:border-box;
+  }
+  .f2-profile{
+    flex:1 1 100%;
+    width:100%;
+    overflow-wrap:anywhere;
+    hyphens:auto;
+  }
+  .f3-experience-panel{
+    box-sizing:border-box;
+    width:min(310px,calc(100vw - 28px));
+    max-width:calc(100vw - 28px);
+    min-width:0;
+  }
+  .f3-experience-panel .f3-control,
+  .f3-experience-panel p{
+    box-sizing:border-box;
+    min-width:0;
+    max-width:100%;
+    overflow-wrap:anywhere;
+    hyphens:auto;
+  }
+}
