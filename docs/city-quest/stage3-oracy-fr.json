@@ -29,10 +29,10 @@
     "1": {
       "B2": "Deux visiteurs ont des besoins différents : l'un veut emprunter un livre et l'autre voir des objets historiques. Recommandez-leur les lieux adaptés à Riverton et justifiez chaque choix.",
       "C1": "Un visiteur cherche « l'endroit où il y a des livres », mais il dit aussi vouloir envoyer un colis. Posez une question pour clarifier sa demande, puis distinguez la bibliothèque du bureau de poste à l'aide de repères.",
-      "C2": "Deux visiteurs confondent Central Station et Market Square et se disputent sur leur lieu de rendez-vous. Dissipez le malentendu, distinguez précisément les deux lieux et confirmez où ils souhaitent se retrouver."
+      "C2": "Deux visiteurs confondent Gare centrale et Place du Marché et se disputent sur leur lieu de rendez-vous. Dissipez le malentendu, distinguez précisément les deux lieux et confirmez où ils souhaitent se retrouver."
     },
     "2": {
-      "B2": "Expliquez votre itinéraire à pied vers le musée municipal en passant par Market Square. Comparez-le à un autre trajet visible sur le plan et justifiez le passage obligatoire par la place.",
+      "B2": "Expliquez votre itinéraire à pied vers le musée municipal en passant par Place du Marché. Comparez-le à un autre trajet visible sur le plan et justifiez le passage obligatoire par la place.",
       "C1": "Un groupe doit passer par la Bibliothèque avant de rejoindre le musée municipal. Donnez un itinéraire structuré et signalez un carrefour où il risque de se tromper.",
       "C2": "Vous devez rejoindre le musée municipal en passant par la Bibliothèque sans emprunter la rue barrée pour travaux. Comparez un raccourci apparent, mais fermé, à une route valable et expliquez les contraintes avec tact."
     },
@@ -64,7 +64,7 @@
     "8": {
       "B2": "Votre groupe doit rejoindre plusieurs étapes dans Riverton avant le musée. Résumez l'ordre des visites, justifiez un choix d'itinéraire et comparez-le à un raccourci tentant.",
       "C1": "Guidez votre partenaire à travers tous les points de passage obligatoires. Signalez une erreur d'orientation possible et expliquez comment la corriger sans recommencer tout le parcours.",
-      "C2": "Deux visiteurs ont des priorités opposées pendant le parcours urbain. Négociez un ordre réalisable qui respecte toutes les étapes obligatoires, puis proposez un plan commun clair et motivé."
+      "C2": "Un visiteur souhaite commencer par la Bibliothèque, mais la mission impose l'ordre Place du Marché → Bibliothèque → Musée municipal. Expliquez cette contrainte avec tact, conciliez les priorités du groupe et proposez un itinéraire réalisable."
     }
   },
   "metro": {
