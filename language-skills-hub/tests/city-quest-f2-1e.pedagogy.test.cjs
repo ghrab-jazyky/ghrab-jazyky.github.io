@@ -36,3 +36,20 @@ test("Canonical routing remains strict after copy changes; notices reveal closur
    "Service notice should not reveal the successful detour");
  }
 });
+
+// CQ-F5-009: the obligatory information-desk visit must not be justified
+// only by the University appointment (M2 is already available at Central).
+test("Metro 08 explicitly requires the Market Square ticket pickup before University",()=>{
+ const required={en:/ticket/i,es:/entradas/i,de:/Museumskarten/i,fr:/billets/i};
+ for(const lang of L.languages)for(const level of L.levels){
+  const content=L.pack(lang,level,8),goal=content.goal;
+  assert.match(goal,required[lang],lang+"/"+level+" omits the mandatory first errand");
+  assert.match(goal,/Market Square/);
+  assert.match(goal,/University/);
+  const spoken=L.stage(lang,level,8,"checkpoint",{station:"Market Square"});
+  assert.match(spoken,required[lang],lang+"/"+level+" omits ticket pickup at first checkpoint");
+ }
+ const s=G.start(8),scenario=M.scenario(s.scenarioId);
+ assert.equal(scenario.start,"market_square","Metro begins only after the Market Square errand");
+ assert.equal(s.ticketsCollected,false);
+});
