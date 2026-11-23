@@ -370,3 +370,44 @@ test("F5C CQ-F5-032: real Metro05/08 visible speaking progress is a localized fr
   }
  }finally{await browser.close();}
 });
+
+test("F5C N05/N17: canonical metro city signs, one map Tab stop and task skip link",async()=>{
+ const {chromium}=require("playwright"),C=require("../authoring/city-quest-f2/content-a.js");
+ require("../authoring/city-quest-f2/content-b.js");
+ const browser=await chromium.launch({headless:true});
+ try{
+  for(const lang of ["en","es","de","fr"]){
+   const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+   await page.goto(URL);
+   await page.locator("#f2Language").selectOption(lang);
+   await page.locator("#f2Level").selectOption("B1");
+   await page.locator("#metroPilotToggle").click();
+   await page.locator("#f1Stations button").nth(7).click();
+   for(const name of ["CENTRAL STATION","MARKET SQUARE","CITY MUSEUM"]){
+    const sign=page.locator('[data-landmark-label="'+name+'"] text').first();
+    assert.equal((await sign.textContent()).trim(),name);
+   }
+   const nodes=page.locator("#cityMap [data-node]");
+   assert.equal(await nodes.count(),24);
+   const keyboard=await nodes.evaluateAll(all=>all.filter(n=>n.getAttribute("tabindex")==="0").length);
+   assert.equal(keyboard,0,"Only the containing viewport must be a Tab stop");
+   assert.equal(await page.locator("#mapViewport").getAttribute("tabindex"),"0");
+   const labels=await nodes.evaluateAll(all=>all.map(n=>n.getAttribute("aria-label")||""));
+   assert.ok(labels.every(s=>s.length>24),"Each intersection needs contextual spoken label");
+   await page.locator("#mapViewport").focus();
+   const start=await page.locator('[data-node][aria-current="location"]').getAttribute("data-node");
+   await page.keyboard.press("ArrowRight");
+   const after=await page.locator('[data-node][aria-current="location"]').getAttribute("data-node");
+   assert.notEqual(after,start,"Keyboard arrow movement must still work");
+   await page.locator("#f3SkipTask").focus();
+   await page.keyboard.press("Enter");
+   assert.equal(await page.evaluate(()=>document.activeElement.id),"f1Panel");
+   await page.locator("#metroPilotToggle").click();
+   for(const name of ["CENTRAL STATION","MARKET SQUARE","CITY MUSEUM"]){
+    const sign=page.locator('[data-landmark-label="'+name+'"] text').first();
+    assert.equal((await sign.textContent()).trim(),C.pack(lang).mapLabels[name]);
+   }
+   await page.close();
+  }
+ }finally{await browser.close();}
+});

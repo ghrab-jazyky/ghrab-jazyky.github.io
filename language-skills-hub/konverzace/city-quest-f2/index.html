@@ -32,6 +32,7 @@
 </head>
 <body>
 <a href="#f1Stations" class="f3-skip" id="f3Skip">Skip to missions</a>
+<a href="#f1Panel" class="f3-skip" id="f3SkipTask">Skip to active task</a>
 <main class="app">
 <header class="topbar">
   <div class="brand"><div class="brand-mark" aria-hidden="true">CQ</div><div><strong>CITY QUEST</strong><small>Language Skills Hub · Conversation Lab</small></div></div>
@@ -107,13 +108,13 @@
       <button type="button" class="btn" id="mapZoom" aria-pressed="false">＋ Map detail</button>
     </div>
    </div>
-   <div class="map-viewport" id="mapViewport" role="region" aria-label="Illustrated city map with accessible selectable crossroads. Pan sideways on touch screens or use direction buttons." tabindex="0">
+   <div class="map-viewport" id="mapViewport" role="region" aria-label="Illustrated city map with accessible selectable crossroads. Pan sideways on touch screens or use arrow keys and direction buttons." aria-describedby="mapLocation" tabindex="0">
       <svg id="cityMap" viewBox="0 0 1196 756" role="group" aria-label="Illustrated street map of Riverton with city landmarks, Central Station at bottom left and City Museum near the upper centre">
       </svg>
    </div>
    <div class="map-location-bar" id="mapLocationBar" aria-live="off">
       <span class="map-location-icon" aria-hidden="true">📍</span>
-      <span class="map-location-copy"><strong id="mapLocation">Central Station</strong><small id="mapProgress">0 / 5 blocks · Museum mission</small></span>
+      <span class="map-location-copy"><strong id="mapLocation" aria-live="polite" aria-atomic="true">Central Station</strong><small id="mapProgress">0 / 5 blocks · Museum mission</small></span>
       <span class="map-touch-tip" id="mapTouchTip">↔ Swipe the city to explore · Tap a crossroads</span>
    </div>
    <div class="map-footer"><div class="legend"><em><span class="dot"></span> Your route</em><em>🚉 Start</em><em>🏛️ Destination</em></div><span>Use the compass pad or tap crossroads</span></div>
@@ -150,7 +151,7 @@
       <div class="route-tools"><button type="button" class="btn" id="dialogueBack">↶ Previous turn</button><button type="button" class="btn" id="dialogueReset">↺ Restart conversation</button></div>
       <p class="note">Solo mode: read the options aloud before selecting. Pair mode: Student A plays the tourist; Student B gives directions using the same map.</p>
    </section>
-   <section class="side-card f1-mission-panel" id="f1Panel" hidden aria-live="off" aria-label="Interactive City Quest mission"></section>
+   <section class="side-card f1-mission-panel" id="f1Panel" hidden tabindex="-1" aria-live="off" aria-label="Interactive City Quest mission"></section>
  </div>
 </section>
 <section class="metro-lab" id="metroLab" aria-labelledby="metroHeading" hidden>

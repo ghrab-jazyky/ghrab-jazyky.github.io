@@ -190,6 +190,7 @@
     const taskHadFocus=panel.contains(document.activeElement),isMetro=metroPilot();
     panel.hidden=false;panel.replaceChildren();
     updateMetroPresentation();
+    translateCity();
     objective(state.station);
     if(isMetro)renderMetroMission();
     else switch(state.station){
@@ -403,7 +404,14 @@
       {node:E.start,name:ui().start},{node:E.goal,name:ui().museum},
       {node:{c:2,r:2},name:ui().square},{node:{c:4,r:2},name:ui().library}
     ];
-     return names.find(x=>E.same(x.node,p))?.name||ui().city;
+    if(metroPilot()&&state.station===8){
+      const alias=[
+        {node:E.start,name:"Central Station"},{node:E.goal,name:"City Museum"},
+        {node:{c:2,r:2},name:"Market Square"}
+      ].find(x=>E.same(x.node,p));
+      if(alias)return alias.name;
+    }
+    return names.find(x=>E.same(x.node,p))?.name||ui().city;
   }
   function renderRoute(){
     const game=state.route,c=G.config(state.level);
@@ -562,7 +570,6 @@
     const game=state.detour,c=G.config(state.level);
     if(game.done)return complete(7,profile().detour,G.routeModel(pack(),game.route));
     note(panel,"🚧 "+ui().closed,roadworks().task);
-    if(c.via.length)note(panel,ui().via,c.via.map(pointName).join(", "));
     if(c.via.length)note(panel,ui().via,c.via.map(pointName).join(", "));
     para(panel,ui().from+" "+ui().start+" → "+ui().museum,"f2-prompt");
     para(panel,ui().step+": "+(game.route.length-1),"f2-small");
@@ -810,15 +817,25 @@
       fr:["Carrefour","colonne","rangée","Position actuelle","Parcouru"]
     };
     const words=accessibleNodes[state.language]||accessibleNodes.en;
+    const near={en:"near",es:"cerca de",de:"bei",fr:"près de"}[state.language]||"near";
+    const referencePlaces=[E.start,E.goal,{c:2,r:2},{c:4,r:2}];
     const current=path?.at(-1)||null;
     for(const node of map.querySelectorAll("[data-node]")){
       const [c,r]=node.dataset.node.split("-").map(Number),point={c,r};
       const isCurrent=!!current&&E.same(current,point);
       const visited=!!path&&path.some(p=>E.same(p,point));
       const location=pointName(point),named=location!==ui().city?location:"";
+      const reference=referencePlaces.reduce((best,anchor)=>{
+        const distance=Math.abs(anchor.c-c)+Math.abs(anchor.r-r);
+        return !best||distance<best.distance?{anchor,distance}:best;
+      },null);
+      const context=named||near+" "+pointName(reference.anchor);
       const label=words[0]+" "+words[1]+" "+(c+1)+", "+words[2]+" "+(r+1)+
-        (named?", "+named:"")+(isCurrent?", "+words[3]:visited?", "+words[4]:"");
+        ", "+context+(isCurrent?", "+words[3]:visited?", "+words[4]:"");
       node.setAttribute("aria-label",label);
+      // City map is one keyboard Tab stop (viewport); all 24 crossroads
+      // remain mouse/touch selectable and available to screen reader browse.
+      node.setAttribute("tabindex","-1");
       node.setAttribute("aria-pressed",String(visited));
       if(isCurrent)node.setAttribute("aria-current","location");
       else node.removeAttribute("aria-current");
@@ -836,11 +853,19 @@
     }
     showClosure();updateQuick();
   }
+  let translatedMapVersion="";
   function translateCity(){
+    const metroCanonical=metroPilot()&&state.station===8,
+      signature=state.language+"|"+String(metroCanonical);
+    if(signature===translatedMapVersion)return;
     const p=pack();
     map.querySelectorAll("[data-landmark-label]").forEach(group=>{
       const original=group.dataset.landmarkLabel;
-      const translated=p.mapLabels[original]||original;
+      // Metro navigation signs carry canonical proper names. In mission 08
+      // the walking map uses the same names, while city-only tasks preserve
+      // their existing localized labels.
+      const sameStop=metroCanonical&&["CENTRAL STATION","MARKET SQUARE","CITY MUSEUM"].includes(original);
+      const translated=sameStop?original:(p.mapLabels[original]||original);
       const label=group.querySelector("text");
       if(!label)return;
       label.textContent=translated;
@@ -849,7 +874,8 @@
       const rects=group.querySelectorAll("rect");
       rects.forEach((r,i)=>{r.setAttribute("width",width);
         r.setAttribute("x",cx-width/2+(i===0?2:0));});
-      group.setAttribute("aria-label",translated);
+      const alias=p.mapLabels[original]||original;
+      group.setAttribute("aria-label",sameStop&&alias!==original?original+" · "+alias:translated);
     });
     const roads={
       en:{"STATION ROAD":"STATION ROAD","MARKET AVENUE":"MARKET AVENUE","RIVERSIDE":"RIVERSIDE"},
@@ -863,6 +889,7 @@
       if(roads[state.language][initial])t.textContent=roads[state.language][initial];
       if(initial==="CITY ADVENTURE · WALKING MAP")t.textContent=chromeCopy[state.language].caption;
     });
+    translatedMapVersion=signature;
   }
   function applyChromeLabels(){
     const l=chromeCopy[state.language],detail=viewport.classList.contains("detail");
