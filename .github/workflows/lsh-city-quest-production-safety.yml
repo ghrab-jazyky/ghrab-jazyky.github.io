@@ -69,3 +69,7 @@ jobs:
           assert.ok(!fs.existsSync(dir+'konverzace/city-quest-f0'),'Unapproved City Quest prototype must not be published');
           console.log('PASS: one certified offline City Quest HTML + 34 preserved existing catalog topics');
           NODE
+      - name: City Quest phase-one focused regressions
+        run: |
+          node --check language-skills-hub/tests/city-quest-phase1-regression.test.cjs
+          node --test language-skills-hub/tests/city-quest-phase1-regression.test.cjs
