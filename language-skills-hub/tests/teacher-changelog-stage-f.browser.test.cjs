@@ -24,36 +24,38 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(chooserShown,false,'Chooser must not flash before the announcement');
    await page.locator('#wnPromptYes').click();
    await page.locator('#whatsNewCatalog[open]').waitFor();
-   assert.deepEqual(await page.locator('.wn-release').evaluateAll(els=>els.map(el=>Number(el.dataset.wnSequence))),[6,5,4,3,2,1]);
-   assert.equal(await page.locator('.wn-change').count(),10);
-   assert.match(await page.locator('.wn-release').first().innerText(),/Reading Lab/i);
-   assert.match(await page.locator('.wn-release').first().innerText(),/A1–B1/);
-   assert.match(await page.locator('.wn-release').first().innerText(),/B2–C2/);
-   assert.match(await page.locator('.wn-release').first().innerText(),/Show exact evidence/);
-   assert.match(await page.locator('.wn-release').nth(1).innerText(),/Plurál/i);
-   assert.match(await page.locator('.wn-release').nth(2).innerText(),/časovaných testů/i);
-   assert.match(await page.locator('.wn-release').nth(3).innerText(),/konverzace v restauraci/i);
-   assert.match(await page.locator('.wn-release').nth(4).innerText(),/How to Choose Your News/);
-   assert.equal(await page.locator('.wn-benefit').count(),10);
+   assert.deepEqual(await page.locator('.wn-release').evaluateAll(els=>els.map(el=>Number(el.dataset.wnSequence))),[8,7,6,5,4,3,2,1]);
+   assert.equal(await page.locator('.wn-change').count(),12);
+   assert.match(await page.locator('.wn-release').first().innerText(),/Language Skills Hub nyní také jako aplikace/);
+   assert.match(await page.locator('.wn-release').nth(1).innerText(),/City Quest/);
+   assert.match(await page.locator('.wn-release').nth(2).innerText(),/Reading Lab/i);
+   assert.match(await page.locator('.wn-release').nth(2).innerText(),/A1–B1/);
+   assert.match(await page.locator('.wn-release').nth(2).innerText(),/B2–C2/);
+   assert.match(await page.locator('.wn-release').nth(2).innerText(),/Show exact evidence/);
+   assert.match(await page.locator('.wn-release').nth(3).innerText(),/Plurál/i);
+   assert.match(await page.locator('.wn-release').nth(4).innerText(),/časovaných testů/i);
+   assert.match(await page.locator('.wn-release').nth(5).innerText(),/konverzace v restauraci/i);
+   assert.match(await page.locator('.wn-release').nth(6).innerText(),/How to Choose Your News/);
+   assert.equal(await page.locator('.wn-benefit').count(),12);
    assert.doesNotMatch(await page.locator('#whatsNewCatalog').innerText(),/DEMO|PREPROD|CI\/CD|commit SHA/i);
    await page.locator('#wnCatalogContinue').click();
    await page.locator('#skillChooser:not([hidden])').waitFor();
-   assert.equal(await page.evaluate(key=>localStorage.getItem(key),STORAGE_KEY),'6');
+   assert.equal(await page.evaluate(key=>localStorage.getItem(key),STORAGE_KEY),'8');
    await page.reload();
    await page.locator('#skillChooser:not([hidden])').waitFor();
    assert.equal(await page.locator('#whatsNewPrompt').evaluate(el=>el.open),false);
   });
  });
- test('Stage F '+engineName+' previously seen release 5 is offered release 6 once',{timeout:100000},async()=>{
+ test('Stage F '+engineName+' previously seen release 6 is offered release 8 once',{timeout:100000},async()=>{
   await withPage(engine,async page=>{
    // Seed once in the existing origin. An init script would reset the saved
-   // release to 4 on every reload, masking that the prompt was acknowledged.
+   // release to 6 on every reload, masking that the prompt was acknowledged.
    await page.goto(base+'?skill=cteni');
-   await page.evaluate(key=>localStorage.setItem(key,'5'),STORAGE_KEY);
+   await page.evaluate(key=>localStorage.setItem(key,'6'),STORAGE_KEY);
    await page.goto(base);await page.locator('#whatsNewPrompt[open]').waitFor();
    await page.locator('#wnPromptNo').click();
    await page.locator('#skillChooser:not([hidden])').waitFor();
-   assert.equal(await page.evaluate(key=>localStorage.getItem(key),STORAGE_KEY),'6');
+   assert.equal(await page.evaluate(key=>localStorage.getItem(key),STORAGE_KEY),'8');
    await page.reload();await page.locator('#skillChooser:not([hidden])').waitFor();
    assert.equal(await page.locator('#whatsNewPrompt').evaluate(el=>el.open),false);
   });
@@ -100,7 +102,7 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.goto(base);await page.locator('#whatsNewPrompt[open]').waitFor();
    await page.keyboard.press('Escape');
    await page.locator('#skillChooser:not([hidden])').waitFor();
-   assert.equal(await page.evaluate(key=>localStorage.getItem(key),STORAGE_KEY),'6');
+   assert.equal(await page.evaluate(key=>localStorage.getItem(key),STORAGE_KEY),'8');
    await page.reload();await page.locator('#skillChooser:not([hidden])').waitFor();
    assert.equal(await page.locator('#whatsNewPrompt').evaluate(el=>el.open),false);
   });
