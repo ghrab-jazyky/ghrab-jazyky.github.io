@@ -74,6 +74,29 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.match(await page.locator('#pwaOfferHelp').innerText(),/Přidat na plochu/);
   }finally{await browser.close()}
  });
+ test('PWA '+name+' chooser navigation stays clickable while install offer is visible',{timeout:90000},async()=>{
+  const {page,browser}=await open(engine);
+  try{
+   await page.goto(base);
+   await page.locator('#skillChooser:not([hidden])').waitFor();
+   await page.locator('#pwaInstallOffer:visible').waitFor();
+   const overlap=await page.evaluate(()=>{
+    const offer=document.getElementById('pwaInstallOffer').getBoundingClientRect();
+    const back=document.getElementById('closeChooser').getBoundingClientRect();
+    return Math.max(0,Math.min(offer.right,back.right)-Math.max(offer.left,back.left))*
+     Math.max(0,Math.min(offer.bottom,back.bottom)-Math.max(offer.top,back.top));
+   });
+   assert.equal(overlap,0,'Install panel must not overlap Back');
+   await page.locator('#closeChooser').click({timeout:5000});
+   await page.locator('#skipIntro').click({timeout:5000});
+   await page.locator('#skillChooser:not([hidden])').waitFor();
+   await page.locator('[data-choose-skill="cteni"]').click({timeout:5000});
+   await page.locator('#catalog:not([hidden])').waitFor();
+   await page.locator('#changeLab').click({timeout:5000});
+   await page.locator('#closeChooser').click({timeout:5000});
+   await page.locator('#catalog:not([hidden])').waitFor();
+  }finally{await browser.close()}
+ });
  test('PWA '+name+' skips offer in already-installed context',{timeout:90000},async()=>{
   const {page,browser}=await open(engine,{},async page=>{
    await page.addInitScript(()=>Object.defineProperty(navigator,'standalone',{configurable:true,value:true}));
