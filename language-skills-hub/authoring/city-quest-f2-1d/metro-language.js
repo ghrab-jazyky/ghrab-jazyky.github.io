@@ -24,7 +24,7 @@
     choice:"Only the buttons in the mission panel advance the journey.",preview:"Metro visual preview",
     verified:"Route verified locally. Spoken language was self-assessed, not recorded or automatically graded.",
     complete:"Destination reached",boarded:"Train boarded",line:"Line"},
-   actions:{ENTER:"Enter the metro",READ_NOTICE:"Read service notice",BOARD:"Board the train",NEXT_STOP:"Travel to next stop",
+   actions:{ENTER:"Enter the metro",READ_NOTICE:"Read service notice",BOARD:"Board the train",NEXT_STOP:"Travel to next stop",TRANSFER_HERE:"Change lines here",EXIT_HERE:"Get off here",
     CHANGE_LINE:"Follow transfer signs",STAY_ON_LINE:"Stay on this line",EXIT:"Exit at destination",CONTINUE_PAST_EXIT:"Continue on the train",SELF_CHECK:"✓ I have practised aloud · continue"},
    titles:{5:"Find the Right Line",6:"Change Lines",7:"Metro Disruption",8:"City + Metro Quest"},
    goals:{5:"Find a metro route from Central Station to Museum Quarter. Use the network map to choose a line, direction and platform.",
@@ -42,7 +42,7 @@
     "select-direction":"Choose the train's destination terminus, not simply the next station.",
     "select-platform":"Match the correct line and terminus to the platform sign.",
     board:"Your line, terminus and platform are selected. Board the train.",
-    ride:"Travel exactly one stop at a time and track your location.",
+    ride:"At each stop, check the network and decide whether to continue, change lines here or get off.",
     transfer:"You are at an interchange. Follow the signs to the connecting line.",
     exit:"You have reached the correct metro destination. Leave the train.",
     "walk-to-museum":"Leave Museum Quarter. Walk one city block north to City Museum.",
@@ -55,7 +55,7 @@
     ENTER:"You entered Market Square metro station. Choose a line.",READ_NOTICE:"The M1 closure is acknowledged. Find another connection.",
     SELECT_LINE:"Correct line. Now choose the train's direction.",SELECT_DIRECTION:"Correct terminus. Find the platform.",
     SELECT_PLATFORM:"Correct platform. You can board.",BOARD:"Train boarded. Advance one stop at a time.",
-    NEXT_STOP:"Next stop: {station}.",CHANGE_LINE:"Transfer signs followed. Select the connecting line.",
+    NEXT_STOP:"Next stop: {station}.",TRANSFER_HERE:"Change confirmed. Follow the transfer signs.",EXIT_HERE:"You got off the train. Follow the exit signs.",CHANGE_LINE:"Transfer signs followed. Select the connecting line.",
     EXIT:"You have exited at the destination.",SELF_CHECK:"Speaking self-check confirmed."},
    errors:{completed:"This mission has already been completed.",undoPhase:"Undo is available only while walking in the city.",
     undoStart:"There is no previous walking step to undo.",walkPhase:"City walking is not available now.",
@@ -105,7 +105,7 @@
     choice:"Solo los controles de la misión hacen avanzar el recorrido.",preview:"Vista previa del metro",
     verified:"Recorrido comprobado localmente. La expresión oral se autoevaluó; no se grabó ni calificó automáticamente.",
     complete:"Destino alcanzado",boarded:"Has subido al tren",line:"Línea"},
-   actions:{ENTER:"Entrar en el metro",READ_NOTICE:"Leer el aviso de servicio",BOARD:"Subir al tren",NEXT_STOP:"Avanzar a la siguiente estación",
+   actions:{ENTER:"Entrar en el metro",READ_NOTICE:"Leer el aviso de servicio",BOARD:"Subir al tren",NEXT_STOP:"Avanzar a la siguiente estación",TRANSFER_HERE:"Hacer transbordo aquí",EXIT_HERE:"Bajar aquí",
     CHANGE_LINE:"Seguir las señales de transbordo",STAY_ON_LINE:"Seguir en esta línea",EXIT:"Salir en el destino",CONTINUE_PAST_EXIT:"Continuar en el tren",SELF_CHECK:"✓ He practicado en voz alta · continuar"},
    titles:{5:"Encuentra la línea correcta",6:"Haz un transbordo",7:"Incidencia en el metro",8:"A pie y en metro"},
    goals:{5:"Encuentra un trayecto en metro de Central Station a Museum Quarter. Usa el plano para elegir la línea, el sentido y el andén.",
@@ -123,7 +123,7 @@
     "select-direction":"Elige la estación terminal indicada en el tren, no la siguiente parada.",
     "select-platform":"Relaciona la línea y el destino con el andén indicado.",
     board:"Has elegido línea, destino y andén. Sube al tren.",
-    ride:"Avanza una sola parada cada vez y comprueba dónde estás.",
+    ride:"En cada parada, consulta el plano y decide si continúas, haces transbordo aquí o bajas del tren.",
     transfer:"Has llegado a una estación de correspondencia. Sigue las señales para cambiar de línea.",
     exit:"Has llegado a la estación de destino. Sal del tren.",
     "walk-to-museum":"Sal en Museum Quarter. Camina una manzana hacia el norte hasta City Museum.",
@@ -134,7 +134,7 @@
    success:{UNDO_WALK:"Has deshecho el último paso a pie.",WALK:"Has avanzado una manzana.",ENTER:"Has entrado en Market Square. Elige una línea.",
     READ_NOTICE:"Aviso leído: busca una alternativa al corte de la M1.",SELECT_LINE:"Línea correcta. Elige ahora el sentido.",
     SELECT_DIRECTION:"Destino final correcto. Busca el andén.",SELECT_PLATFORM:"Andén correcto. Puedes subir.",
-    BOARD:"Has subido al tren. Avanza parada a parada.",NEXT_STOP:"Siguiente estación: {station}.",
+    BOARD:"Has subido al tren. Avanza parada a parada.",NEXT_STOP:"Siguiente estación: {station}.",TRANSFER_HERE:"Has elegido hacer transbordo aquí. Sigue las indicaciones.",EXIT_HERE:"Has bajado del tren. Sigue las señales de salida.",
     CHANGE_LINE:"Has seguido las señales. Elige la línea de enlace.",EXIT:"Has salido en el destino.",
     SELF_CHECK:"Autoevaluación oral confirmada."},
    errors:{completed:"Esta misión ya está completada.",undoPhase:"Solo puedes retroceder mientras caminas por la ciudad.",
@@ -185,7 +185,7 @@
     choice:"Nur die Schaltflächen im Missionsfeld steuern die Fahrt.",preview:"U-Bahn-Vorschau",
     verified:"Die Route wurde lokal geprüft. Die Sprechleistung wurde nur selbst eingeschätzt – ohne Aufnahme oder automatische Bewertung.",
     complete:"Ziel erreicht",boarded:"Eingestiegen",line:"Linie"},
-   actions:{ENTER:"Die U-Bahn betreten",READ_NOTICE:"Störungsmeldung lesen",BOARD:"In den Zug einsteigen",NEXT_STOP:"Zur nächsten Station fahren",
+   actions:{ENTER:"Die U-Bahn betreten",READ_NOTICE:"Störungsmeldung lesen",BOARD:"In den Zug einsteigen",NEXT_STOP:"Zur nächsten Station fahren",TRANSFER_HERE:"Hier umsteigen",EXIT_HERE:"Hier aussteigen",
     CHANGE_LINE:"Den Umsteigeschildern folgen",STAY_ON_LINE:"Auf dieser Linie bleiben",EXIT:"Am Ziel aussteigen",CONTINUE_PAST_EXIT:"Im Zug weiterfahren",SELF_CHECK:"✓ Ich habe laut geübt · weiter"},
    titles:{5:"Die richtige Linie finden",6:"Richtig umsteigen",7:"Störung im U-Bahn-Verkehr",8:"Zu Fuß und mit der U-Bahn"},
    goals:{5:"Finde eine U-Bahn-Verbindung von Central Station nach Museum Quarter. Bestimme anhand des Netzplans die Linie, die Richtung und den Bahnsteig.",
@@ -203,7 +203,7 @@
     "select-direction":"Wähle die angezeigte Endstation des Zuges, nicht die nächste Haltestelle.",
     "select-platform":"Vergleiche Linie und Endstation mit den Bahnsteigschildern.",
     board:"Linie, Richtung und Bahnsteig sind gewählt. Steige ein.",
-    ride:"Fahre jeweils genau eine Station weiter und prüfe deinen Standort.",
+    ride:"Prüfe an jeder Station den Netzplan und entscheide: weiterfahren, hier umsteigen oder aussteigen.",
     transfer:"Du bist an einem Umsteigebahnhof. Folge den Schildern zur Anschlusslinie.",
     exit:"Du hast die Zielstation erreicht. Steige aus.",
     "walk-to-museum":"Verlasse Museum Quarter und gehe einen Häuserblock nach Norden zum City Museum.",
@@ -216,7 +216,7 @@
     ENTER:"Du bist in Market Square. Wähle eine Linie.",READ_NOTICE:"Sperrung zur Kenntnis genommen. Suche eine andere Verbindung.",
     SELECT_LINE:"Richtige Linie. Wähle jetzt die Richtung.",SELECT_DIRECTION:"Richtige Endstation. Suche den Bahnsteig.",
     SELECT_PLATFORM:"Richtiger Bahnsteig. Du kannst einsteigen.",BOARD:"Eingestiegen. Fahre Station für Station.",
-    NEXT_STOP:"Nächste Station: {station}.",CHANGE_LINE:"Umsteigeschilder beachtet. Wähle die Anschlusslinie.",
+    NEXT_STOP:"Nächste Station: {station}.",TRANSFER_HERE:"Umstieg hier bestätigt. Folge den Schildern.",EXIT_HERE:"Du bist ausgestiegen. Folge den Ausgangsschildern.",CHANGE_LINE:"Umsteigeschilder beachtet. Wähle die Anschlusslinie.",
     EXIT:"Du bist am Ziel ausgestiegen.",SELF_CHECK:"Sprechaufgabe selbst bestätigt."},
    errors:{completed:"Diese Mission ist bereits abgeschlossen.",undoPhase:"Rückgängig geht nur beim Fußweg.",
     undoStart:"Es gibt noch keinen Schritt zum Zurückgehen.",walkPhase:"Jetzt kannst du nicht zu Fuß gehen.",
@@ -266,7 +266,7 @@
     choice:"Seuls les boutons de la mission font avancer le trajet.",preview:"Aperçu du métro",
     verified:"Itinéraire vérifié localement. L'expression orale est autoévaluée, sans enregistrement ni note automatique.",
     complete:"Destination atteinte",boarded:"À bord du train",line:"Ligne"},
-   actions:{ENTER:"Entrer dans le métro",READ_NOTICE:"Lire l'avis de perturbation",BOARD:"Monter dans le train",NEXT_STOP:"Aller à la station suivante",
+   actions:{ENTER:"Entrer dans le métro",READ_NOTICE:"Lire l'avis de perturbation",BOARD:"Monter dans le train",NEXT_STOP:"Aller à la station suivante",TRANSFER_HERE:"Changer de ligne ici",EXIT_HERE:"Descendre ici",
     CHANGE_LINE:"Suivre les panneaux de correspondance",STAY_ON_LINE:"Rester sur cette ligne",EXIT:"Sortir à destination",CONTINUE_PAST_EXIT:"Rester à bord du train",SELF_CHECK:"✓ J'ai parlé à voix haute · continuer"},
    titles:{5:"Trouver la bonne ligne",6:"Changer de ligne",7:"Perturbation du métro",8:"De la ville au métro"},
    goals:{5:"Trouvez un itinéraire en métro de Central Station à Museum Quarter. Utilisez le plan pour choisir la ligne, la direction et le quai.",
@@ -284,7 +284,7 @@
     "select-direction":"Choisissez le terminus affiché sur le train, et non la station suivante.",
     "select-platform":"Vérifiez la ligne et le terminus sur le panneau du quai.",
     board:"Vous avez choisi la ligne, la direction et le quai. Montez dans le train.",
-    ride:"Avancez d'une seule station à la fois et suivez votre position.",
+    ride:"À chaque arrêt, consultez le plan et décidez : continuer, changer de ligne ici ou descendre.",
     transfer:"Vous êtes à une station de correspondance. Suivez les panneaux vers l'autre ligne.",
     exit:"Vous avez atteint la bonne station. Descendez du train.",
     "walk-to-museum":"Sortez à Museum Quarter. Marchez un pâté de maisons vers le nord jusqu'à City Museum.",
@@ -297,7 +297,7 @@
     ENTER:"Vous avez rejoint le métro à Market Square. Choisissez une ligne.",READ_NOTICE:"Avis compris. Cherchez une autre correspondance.",
     SELECT_LINE:"Bonne ligne. Choisissez maintenant la direction.",SELECT_DIRECTION:"Bon terminus. Cherchez le quai.",
     SELECT_PLATFORM:"Bon quai. Vous pouvez monter.",BOARD:"Vous êtes à bord. Avancez station par station.",
-    NEXT_STOP:"Station suivante : {station}.",CHANGE_LINE:"Vous avez suivi les panneaux. Choisissez la ligne de correspondance.",
+    NEXT_STOP:"Station suivante : {station}.",TRANSFER_HERE:"Vous avez choisi de changer de ligne ici. Suivez les panneaux.",EXIT_HERE:"Vous êtes descendu du train. Suivez les panneaux de sortie.",CHANGE_LINE:"Vous avez suivi les panneaux. Choisissez la ligne de correspondance.",
     EXIT:"Vous avez quitté le métro à destination.",SELF_CHECK:"Autoévaluation orale confirmée."},
    errors:{completed:"Cette mission est déjà terminée.",undoPhase:"Annuler n'est possible que pendant la marche.",
     undoStart:"Aucun déplacement précédent à annuler.",walkPhase:"La marche n'est pas disponible à ce stade.",
@@ -402,10 +402,8 @@
   const type=action.type,state=result.state;
   if(type==="WALK"&&state.phase==="checkpoint")return p.phases.checkpoint;
   if(type==="WALK"&&state.phase==="speech")return p.phases.speech;
-  if(type==="NEXT_STOP"){
-   if(state.phase==="transfer"||state.phase==="checkpoint")return p.phases.transfer;
-   if(state.phase==="exit")return p.phases.exit;
-  }
+  if(type==="TRANSFER_HERE"&&state.phase==="checkpoint")return p.phases.meetUniversity;
+  // NEXT_STOP only names the current stop; destination is a learner decision.
   if(type==="EXIT"&&state.phase==="walk-to-museum")return p.phases["walk-to-museum"];
   if(type==="SELF_CHECK"&&state.phase==="complete")return p.labels.verified;
   if(type==="SELF_CHECK"&&state.phase==="enter")return p.phases.enter;

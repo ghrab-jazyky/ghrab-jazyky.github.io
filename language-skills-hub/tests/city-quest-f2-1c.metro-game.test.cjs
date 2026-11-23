@@ -37,11 +37,13 @@ function pilot(n){
  assert.equal(s.phase,"select-line");
  for(let legNo=0;legNo<sc.legs.length;legNo++){
   const leg=sc.legs[legNo],destination=G.desiredDirection(s),platform=G.platform(s);
-  assert.equal(s.phase,"select-line");
+  assert.equal(s.phase,legNo===0?"select-line":"select-direction");
   s=rejected(s,"NEXT_STOP");
-  const other=M.joined(s.metroStation).find(id=>id!==leg.line);
-  if(other)s=rejected(s,"SELECT_LINE",other);
-  s=accepted(s,"SELECT_LINE",leg.line);
+  if(legNo===0){
+   const other=M.joined(s.metroStation).find(id=>id!==leg.line);
+   if(other)s=rejected(s,"SELECT_LINE",other);
+   s=accepted(s,"SELECT_LINE",leg.line);
+  }
   const wrong=M.line(leg.line).stops.find(x=>x!==destination&&
    [M.line(leg.line).stops[0],M.line(leg.line).stops.at(-1)].includes(x));
   s=rejected(s,"SELECT_DIRECTION",wrong);
@@ -50,11 +52,15 @@ function pilot(n){
   s=accepted(s,"SELECT_PLATFORM",platform);
   s=accepted(s,"BOARD");
   for(let i=1;i<leg.stops.length;i++){
+   s=rejected(s,"EXIT_HERE");
    s=accepted(s,"NEXT_STOP");
    assert.equal(s.metroStation,leg.stops[i]);
    assert.ok(G.routeIndex(s)>0,"Metro step progress must advance");
   }
+  assert.equal(s.phase,"ride","Stop arrival must not tell the learner to change or get off");
   if(legNo<sc.legs.length-1){
+   s=rejected(s,"EXIT_HERE");
+   s=accepted(s,"TRANSFER_HERE");
    if(n===8){
     assert.equal(s.phase,"checkpoint");
     s=rejected(s,"CHANGE_LINE");
@@ -68,8 +74,12 @@ function pilot(n){
    s=rejected(s,"STAY_ON_LINE",leg.line);
    s=rejected(s,"CHANGE_LINE",leg.line);
    s=accepted(s,"CHANGE_LINE",nextLine);
+   assert.equal(s.phase,"select-direction");
   }
  }
+ assert.equal(s.phase,"ride");
+ s=rejected(s,"TRANSFER_HERE");
+ s=accepted(s,"EXIT_HERE");
  assert.equal(s.phase,"exit");
  s=rejected(s,"NEXT_STOP");
  s=rejected(s,"CONTINUE_PAST_EXIT");

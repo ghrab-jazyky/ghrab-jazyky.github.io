@@ -124,12 +124,26 @@
    const from=l.stops[state.stopIndex],to=l.stops[state.stopIndex+1];
    if(!to||state.metroStation!==from||!M.adjacent(from,to,l.line)||M.closed(from,to,l.line,s.closedEdges))
     return fail(state,"Movement is blocked or the next station is not connected.");
-   const nextStop=state.stopIndex+1,last=nextStop===l.stops.length-1;
-   const nextPhase=last?(state.legIndex<s.legs.length-1?(state.stationNumber===8?"checkpoint":"transfer"):"exit"):"ride";
-   return success(state,{metroStation:to,stopIndex:nextStop,phase:nextPhase,
-    resumePhase:nextPhase==="checkpoint"?"transfer":state.resumePhase},
-    last?(nextPhase==="transfer"?"Transfer at "+M.station(to).labelEn+".":"Arrived at "+M.station(to).labelEn+". Exit the train."):
+   // Decision is the learner's: no automatic interchange or exit announcement.
+   return success(state,{metroStation:to,stopIndex:state.stopIndex+1,phase:"ride"},
      "Next stop: "+M.station(to).labelEn+".",type);
+  }
+  if(type==="TRANSFER_HERE"){
+   if(state.phase!=="ride"||state.legIndex>=s.legs.length-1)
+    return fail(state,"You can change lines only at a valid interchange.");
+   const next=s.legs[state.legIndex+1];
+   if(next.stops[0]!==state.metroStation||!M.joined(state.metroStation).includes(next.line))
+    return fail(state,"You can change lines only at a valid interchange.");
+   const speechCheckpoint=state.stationNumber===8;
+   return success(state,{phase:speechCheckpoint?"checkpoint":"transfer",
+     resumePhase:speechCheckpoint?"transfer":null},
+     "You chose to change trains at "+M.station(state.metroStation).labelEn+".",type);
+  }
+  if(type==="EXIT_HERE"){
+   if(state.phase!=="ride"||state.legIndex!==s.legs.length-1||state.metroStation!==s.goal)
+    return fail(state,"Exit only after arriving at your destination.");
+   return success(state,{phase:"exit"},
+     "You chose to get off at "+M.station(state.metroStation).labelEn+".",type);
   }
   if(type==="STAY_ON_LINE"){
    if(state.phase!=="transfer")return fail(state,"You can change lines only at a valid interchange.");
@@ -144,8 +158,8 @@
    // test fixtures may omit action.value, but the real UI always provides it.
    if(action.value!==undefined&&action.value!==next.line)
     return fail(state,"That is not the connecting line for this route. Check the transfer signs.");
-   return success(state,{legIndex:state.legIndex+1,stopIndex:0,lineId:null,direction:null,platform:null,phase:"select-line"},
-     "Follow the transfer signs and choose the connecting line.",type);
+   return success(state,{legIndex:state.legIndex+1,stopIndex:0,lineId:next.line,direction:null,platform:null,phase:"select-direction"},
+     "Connecting line selected. Choose its direction.",type);
   }
   if(type==="CONTINUE_PAST_EXIT"){
    if(state.phase!=="exit")return fail(state,"Exit only after arriving at your destination.");

@@ -232,11 +232,9 @@
     const cue=!result.accepted?"error":result.complete?"complete":
       action.type==="READ_NOTICE"?"warning":
       action.type==="BOARD"?"board":
-      action.type==="CHANGE_LINE"?"transfer":
-      action.type==="NEXT_STOP"&&["transfer","checkpoint"].includes(result.state.phase)?"transfer":
-      action.type==="NEXT_STOP"&&result.state.phase==="exit"?"arrival":
-      action.type==="NEXT_STOP"?"ride":
-      action.type==="EXIT"?"arrival":"advance";
+      action.type==="CHANGE_LINE"||action.type==="TRANSFER_HERE"?"transfer":
+      action.type==="EXIT_HERE"||action.type==="EXIT"?"arrival":
+      action.type==="NEXT_STOP"?"ride":"advance";
     window.CityQuestF3?.feedback(cue);
     flash={text:LC.feedback(state.language,result,action,
       window.RivertonMetro?.station(result.state.metroStation)?.labelEn),tone:result.accepted?"success":"warning"};
@@ -321,7 +319,13 @@
       const type=stage==="select-line"?"SELECT_LINE":stage==="select-direction"?"SELECT_DIRECTION":"SELECT_PLATFORM";
       const opts=MG.options(game).map(opt=>stage==="select-platform"?
         {value:opt.value,label:c.labels.platform+" "+opt.value}:opt);
-      choices(panel,opts,value=>metroAction({type,value}));
+      choices(panel,stage==="select-platform"?opts:
+        G.orderChoices(opts,state.language,state.level,n,stage),value=>metroAction({type,value}));
+    }else if(stage==="ride"){
+      // One real decision at every metro stop: carry on, change here or get off.
+      const row=actions(panel);
+      for(const type of ["NEXT_STOP","TRANSFER_HERE","EXIT_HERE"])
+        btn(row,c.actions[type],()=>metroAction({type}),type==="NEXT_STOP"?"primary":"");
     }else if(stage==="checkpoint"||stage==="speech"){
       const tip=el("div",panel,"f2-help");
       el("strong",tip,"","🗣️ "+c.labels.prompt);
@@ -349,7 +353,7 @@
       choices(panel,G.orderChoices(decisions,state.language,state.level,n,"exit"),value=>
         metroAction({type:value==="exit"?"EXIT":"CONTINUE_PAST_EXIT"}));
     }else{
-      const actionMap={enter:"ENTER",notice:"READ_NOTICE",board:"BOARD",ride:"NEXT_STOP"};
+      const actionMap={enter:"ENTER",notice:"READ_NOTICE",board:"BOARD"};
       if(actionMap[stage]){
         const row=actions(panel),type=actionMap[stage];
         btn(row,c.actions[type],()=>metroAction({type}),"primary");
