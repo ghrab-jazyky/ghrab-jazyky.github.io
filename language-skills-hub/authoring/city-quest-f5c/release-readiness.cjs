@@ -76,7 +76,8 @@ function evaluate({matrix,approvals,manifest}){
  if(Object.keys(approvals?.manualGates||{}).sort().join("|")!==manualNames.slice().sort().join("|"))
   note("Manual gate keys must match the release contract exactly");
  if(manifest?.status!=="REVIEW_ONLY_NOT_DEPLOYED"||
-   JSON.stringify(manifest.files)!==JSON.stringify(["city-quest/index.html"])||
+   JSON.stringify(manifest.files)!==JSON.stringify(["language-skills-hub/konverzace/city-quest-f2/index.html"])||
+   manifest.relativeOutput!=="language-skills-hub/konverzace/city-quest-f2/index.html"||
    manifest.externalResources!==0||!/^[a-f0-9]{64}$/.test(manifest.sha256||""))
   note("Publication manifest must be an isolated one-file review artifact");
  const hashMatches=manifest?.sha256&&approvals?.approvedArtifactSha256===manifest.sha256;

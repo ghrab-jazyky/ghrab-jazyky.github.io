@@ -8,10 +8,19 @@ const sha=s=>crypto.createHash("sha256").update(s).digest("hex");
 test("F5C N07 release candidate is only one self-contained City Quest HTML file",()=>{
  const manifest=JSON.parse(fs.readFileSync(path.join(base,"REVIEW_MANIFEST.json"),"utf8"));
  assert.equal(manifest.status,"REVIEW_ONLY_NOT_DEPLOYED");
- assert.deepEqual(manifest.files,["city-quest/index.html"]);
- assert.deepEqual(fs.readdirSync(pub),["city-quest"]);
- assert.deepEqual(fs.readdirSync(path.join(pub,"city-quest")),["index.html"]);
- const html=fs.readFileSync(path.join(pub,"city-quest","index.html"),"utf8");
+ const catalog=JSON.parse(fs.readFileSync(path.join(root,"language-skills-hub/data/cards.json"),"utf8"));
+ const entry=catalog.entries.find(x=>x.id==="cl-city-quest-f2");
+ assert.ok(entry,"Catalog City Quest link missing");
+ const expected="language-skills-hub/"+entry.relative;
+ assert.equal(expected,"language-skills-hub/konverzace/city-quest-f2/index.html");
+ assert.equal(manifest.relativeOutput,expected);
+ assert.deepEqual(manifest.files,[expected]);
+ const walk=(dir,prefix="")=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(ent=>{
+  const n=prefix?prefix+"/"+ent.name:ent.name;
+  return ent.isDirectory()?walk(path.join(dir,ent.name),n):[n];
+ });
+ assert.deepEqual(walk(pub),[expected],"No authoring, scripts, prototypes or unrelated pages in candidate overlay");
+ const html=fs.readFileSync(path.join(pub,...expected.split("/")),"utf8");
  assert.equal(sha(html),manifest.sha256);
  assert.equal(Buffer.byteLength(html,"utf8"),manifest.bytes);
  assert.match(html,/connect-src 'none'/);

@@ -12,7 +12,10 @@ const crypto=require("node:crypto");
 const root=path.resolve(__dirname,"../../../");
 const input=path.join(root,".review-city-quest-f2","CITY_QUEST_F2_OFFLINE_PREVIEW.html");
 const publish=path.join(root,".release-city-quest-f5c","public");
-const output=path.join(publish,"city-quest","index.html");
+// The on-site catalog links to /language-skills-hub/konverzace/city-quest-f2/index.html.
+// This is an additive ONE-FILE overlay candidate, never a full Pages site root.
+const relativeOutput="language-skills-hub/konverzace/city-quest-f2/index.html";
+const output=path.join(publish,...relativeOutput.split("/"));
 const manifest=path.join(root,".release-city-quest-f5c","REVIEW_MANIFEST.json");
 function check(condition,message){if(!condition)throw Error("City Quest publication gate: "+message);}
 function sha(text,encoding){return crypto.createHash("sha256").update(text,"utf8").digest(encoding);}
@@ -34,13 +37,22 @@ function run(){
  fs.rmSync(publish,{recursive:true,force:true});
  fs.mkdirSync(path.dirname(output),{recursive:true});
  fs.writeFileSync(output,html,"utf8");
- const publicItems=fs.readdirSync(publish);
- const leafItems=fs.readdirSync(path.dirname(output));
- check(publicItems.length===1&&publicItems[0]==="city-quest"&&leafItems.length===1&&leafItems[0]==="index.html",
-  "staged publication must contain exactly city-quest/index.html");
- const evidence={status:"REVIEW_ONLY_NOT_DEPLOYED",relativeOutput:"city-quest/index.html",
+ const findFiles=(dir,prefix="")=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(entry=>{
+  const name=prefix?prefix+"/"+entry.name:entry.name;
+  if(entry.isDirectory())return findFiles(path.join(dir,entry.name),name);
+  check(entry.isFile(),"unexpected non-file publication item "+name);
+  return [name];
+ });
+ const publishedFiles=findFiles(publish);
+ check(publishedFiles.length===1&&publishedFiles[0]===relativeOutput,
+  "staged publication must contain ONLY the exact catalog-linked HTML file");
+ const catalog=JSON.parse(fs.readFileSync(path.join(root,"language-skills-hub/data/cards.json"),"utf8"));
+ const card=catalog.entries.filter(x=>x.id==="cl-city-quest-f2");
+ check(card.length===1&&"language-skills-hub/"+card[0].relative===relativeOutput,
+  "publication path must exactly match the live catalog card");
+ const evidence={status:"REVIEW_ONLY_NOT_DEPLOYED",relativeOutput,
   source:"CITY_QUEST_F2_OFFLINE_PREVIEW.html",sha256:sha(html,"hex"),
-  bytes:Buffer.byteLength(html,"utf8"),files:["city-quest/index.html"],externalResources:0};
+  bytes:Buffer.byteLength(html,"utf8"),files:publishedFiles,externalResources:0};
  fs.writeFileSync(manifest,JSON.stringify(evidence,null,2)+"\n");
  console.log(JSON.stringify(evidence));
 }

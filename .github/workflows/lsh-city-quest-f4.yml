@@ -165,7 +165,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: city-quest-f5c-isolated-publication-review
-          path: .release-city-quest-f5c/public/city-quest/index.html
+          path: .release-city-quest-f5c/public/language-skills-hub/konverzace/city-quest-f2/index.html
           if-no-files-found: error
           retention-days: 14
   f4-browser-independent-and-regression:
