@@ -8,6 +8,8 @@
  box-shadow:0 16px 46px #02091499;animation:pwa-offer-enter .2s ease-out both;
 }
 .pwa-offer[hidden]{display:none!important}
+/* In narrow scrollable choosers, scrolling the cards temporarily hides the offer. */
+.pwa-offer--docked.pwa-offer--scrolled{visibility:hidden;pointer-events:none;}
 .pwa-offer-head{display:flex;align-items:center;gap:9px;min-width:0}
 .pwa-offer-mark{display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;
  border:1px solid #76c9cc;border-radius:10px;background:#204f61;
