@@ -1,0 +1,92 @@
+{
+  "language": "fr",
+  "schema": "city-quest-stage3-oracy-v1",
+  "ui": {
+    "title": "Défi oral en situation réelle",
+    "doFirst": "Formulez votre réponse à voix haute avant d'ouvrir le modèle. À deux, expliquez l'itinéraire sans montrer le plan.",
+    "criteria": "Les critères d'une réponse réussie",
+    "reflection": "Comparez votre prise de parole à ces critères. Seul un partenaire ou un enseignant peut l'évaluer : le jeu n'enregistre ni ne note la voix.",
+    "teacher": "Ce défi est un entraînement oral complémentaire, non une étape évaluée automatiquement par le jeu."
+  },
+  "rubric": {
+    "B2": [
+      "Donnez des indications exactes et utiles, ou une recommandation pertinente.",
+      "Comparez deux possibilités plausibles et justifiez votre préférence.",
+      "Présentez votre raisonnement de manière claire et structurée."
+    ],
+    "C1": [
+      "Clarifiez les informations ambiguës au lieu de faire des suppositions.",
+      "Expliquez les contraintes, leurs conséquences et une solution de rechange.",
+      "Reformulez des indications précises que l'autre personne pourra suivre."
+    ],
+    "C2": [
+      "Conciliez des informations contradictoires sans inventer de faits.",
+      "Évaluez les compromis et proposez une solution sans ambiguïté.",
+      "Adaptez le registre, le ton et les détails à votre interlocuteur."
+    ]
+  },
+  "city": {
+    "1": {
+      "B2": "Deux visiteurs ont des besoins différents : l'un veut emprunter un livre et l'autre voir des objets historiques. Recommandez-leur les lieux adaptés à Riverton et justifiez chaque choix.",
+      "C1": "Un visiteur cherche « l'endroit où il y a des livres », mais il dit aussi vouloir envoyer un colis. Posez une question pour clarifier sa demande, puis distinguez la bibliothèque du bureau de poste à l'aide de repères.",
+      "C2": "Deux visiteurs confondent Central Station et Market Square et se disputent sur leur lieu de rendez-vous. Dissipez le malentendu, distinguez précisément les deux lieux et confirmez où ils souhaitent se retrouver."
+    },
+    "2": {
+      "B2": "Expliquez votre itinéraire à pied vers le musée municipal en passant par Market Square. Comparez-le à un autre trajet visible sur le plan et justifiez le passage obligatoire par la place.",
+      "C1": "Un groupe doit passer par la Bibliothèque avant de rejoindre le musée municipal. Donnez un itinéraire structuré et signalez un carrefour où il risque de se tromper.",
+      "C2": "Vous devez rejoindre le musée municipal en passant par la Bibliothèque sans emprunter la rue barrée pour travaux. Comparez un raccourci apparent, mais fermé, à une route valable et expliquez les contraintes avec tact."
+    },
+    "3": {
+      "B2": "Un visiteur vous demande comment rejoindre le musée municipal et si le trajet est compliqué. Donnez des indications claires et ajoutez un repère qui pourra éviter une erreur.",
+      "C1": "Le visiteur se souvient d'une fontaine, mais ne sait pas la situer sur le plan. Posez une question ciblée et reformulez les indications à partir de repères vérifiables.",
+      "C2": "Deux personnes donnent des indications contradictoires vers le musée municipal parce qu'elles regardent dans des directions opposées. Réconciliez leurs propos et proposez une explication sans ambiguïté adaptée au touriste."
+    },
+    "4": {
+      "B2": "Un voyageur marche vers l'est sur l'avenue du Marché et doit ensuite se diriger vers le nord pour rejoindre le musée. Expliquez pourquoi il doit tourner à gauche et non à droite.",
+      "C1": "Un voyageur suit les étapes correctement, mais confond les points cardinaux avec la droite et la gauche. Reformulez les passages décisifs de son point de vue.",
+      "C2": "Un guide dit « à gauche » et un autre dit « vers le nord ». Montrez comment ces indications peuvent être compatibles lorsqu'on avance vers l'est, puis formulez un conseil bref et fiable."
+    },
+    "5": {
+      "B2": "Le voyageur doit arriver à l'hôpital avant 9 h 10. Recommandez le bus approprié à partir des horaires et expliquez pourquoi une autre option affichée convient moins bien.",
+      "C1": "Une personne doit prendre un bus accessible sans marches et arriver avant 9 h 10. Expliquez comment ces deux exigences orientent votre choix et quelles informations vous avez vérifiées.",
+      "C2": "En tant qu'agent d'information, comparez les bus desservant l'hôpital selon leur heure d'arrivée et leur accessibilité. Donnez une recommandation brève et rassurante, sans garantir une ponctualité que le tableau n'atteste pas."
+    },
+    "6": {
+      "B2": "Une personne qui avançait vers l'est a reçu l'ordre de tourner à droite pour aller vers le nord. Repérez la contradiction et corrigez l'indication en expliquant pourquoi.",
+      "C1": "Un touriste vous fait remarquer que votre consigne précédente était fausse. Reconnaissez poliment votre erreur, vérifiez son orientation actuelle et reformulez la suite du trajet.",
+      "C2": "Un visiteur inquiet a reçu des consignes contradictoires et hésite à tourner de nouveau. Apaisez-le, distinguez droite/gauche et points cardinaux, puis vérifiez qu'il a bien compris."
+    },
+    "7": {
+      "B2": "La rue habituelle vers le musée est barrée. Expliquez un itinéraire de remplacement praticable sur le plan et comparez-le au trajet direct devenu inaccessible.",
+      "C1": "Votre visiteur craint de se perdre au prochain carrefour. Expliquez précisément le détour dû aux travaux et prévoyez une solution si les panneaux ne sont pas assez clairs.",
+      "C2": "Deux accompagnateurs ne sont pas d'accord : l'un veut emprunter la rue habituelle malgré la fermeture, l'autre préfère une route ouverte. Conciliez leurs priorités sans supposer que la rue barrée est franchissable."
+    },
+    "8": {
+      "B2": "Votre groupe doit rejoindre plusieurs étapes dans Riverton avant le musée. Résumez l'ordre des visites, justifiez un choix d'itinéraire et comparez-le à un raccourci tentant.",
+      "C1": "Guidez votre partenaire à travers tous les points de passage obligatoires. Signalez une erreur d'orientation possible et expliquez comment la corriger sans recommencer tout le parcours.",
+      "C2": "Deux visiteurs ont des priorités opposées pendant le parcours urbain. Négociez un ordre réalisable qui respecte toutes les étapes obligatoires, puis proposez un plan commun clair et motivé."
+    }
+  },
+  "metro": {
+    "5": {
+      "B2": "Expliquez comment aller de Central Station à Museum Quarter en métro : ligne, terminus, quai et station de sortie. Comparez votre choix à une direction plausible, mais erronée.",
+      "C1": "Un passager prend le terminus affiché sur la rame pour le prochain arrêt. Corrigez la confusion, expliquez comment vérifier les panneaux du quai et donnez des instructions d'embarquement précises.",
+      "C2": "Formulez une brève annonce sur le quai pour rejoindre Museum Quarter, puis expliquez calmement le même parcours à une personne qui ne connaît pas le vocabulaire du métro. Adaptez le registre sans changer les faits."
+    },
+    "6": {
+      "B2": "Un visiteur veut aller de Market Square à Stadium. Expliquez la correspondance à University, les lignes, les directions et la façon de trouver le quai suivant.",
+      "C1": "Un voyageur avec une lourde valise appréhende la correspondance à University. Guidez-le étape par étape et précisez quels panneaux consulter si le quai de correspondance n'est pas évident.",
+      "C2": "Deux passagers donnent des conseils opposés sur la ligne à suivre à University. Résolvez la contradiction à l'aide du plan du réseau et des panneaux, puis donnez un seul itinéraire précis vers Stadium."
+    },
+    "7": {
+      "B2": "Le tronçon M1 entre Old Town et Museum Quarter est fermé. Comparez l'itinéraire bloqué à la solution M2–M3 et expliquez où effectuer la correspondance.",
+      "C1": "Un voyageur connaît seulement le trajet habituel sur la M1 et doute de l'avis de perturbation. Expliquez la fermeture, indiquez l'autre liaison et précisez quoi revérifier si l'avis change.",
+      "C2": "En tant qu'agent de station, faites d'abord une annonce publique brève sur la perturbation, puis rassurez individuellement un passager. Séparez les faits confirmés des informations encore non vérifiées."
+    },
+    "8": {
+      "B2": "Expliquez pourquoi le retrait des billets du musée à Market Square et le rendez-vous avec une camarade qui apporte les audioguides à University imposent cet itinéraire. Donnez les étapes dans l'ordre.",
+      "C1": "Votre groupe doit récupérer les billets, retrouver la camarade à University et rejoindre le musée municipal. Proposez un plan cohérent et expliquez comment annoncer un retard sans négliger ces engagements.",
+      "C2": "Un accompagnateur rappelle qu'on pourrait aller à pied au musée depuis Market Square ; un autre insiste sur le rendez-vous à University. Conciliez les deux observations et obligations dans un itinéraire précis et diplomatique."
+    }
+  }
+}
