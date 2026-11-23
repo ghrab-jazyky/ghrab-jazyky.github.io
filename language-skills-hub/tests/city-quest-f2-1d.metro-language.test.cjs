@@ -93,15 +93,18 @@ test("F5C CQ-F5-009: Metro08 detour has a mandatory University meeting and expli
  assert.ok(M.itinerary(route.id).some(x=>x.station==="university"&&x.kind==="transfer"));
  assert.equal(route.closedEdges.length,0,"Do not invent a Metro08 M1 closure as an excuse for the route");
  const label={en:/colleague|University/i,es:/compañera|University/i,
-  de:/Kollegen|University/i,fr:/collègue|University/i};
+  de:/Kollegin|University/i,fr:/collègue|University/i};
+ const tickets={en:/tickets/i,es:/entradas/i,de:/Museumskarten/i,fr:/billets/i};
  for(const lang of L.languages)for(const level of L.levels){
   const pack=L.pack(lang,level,8);
   const prompt=L.stage(lang,level,8,"checkpoint",{station:"University"});
   const model=L.model(lang,level,8);
   assert.match(pack.goal,label[lang],lang+"/"+level+" must disclose required meeting");
   assert.match(prompt,label[lang],lang+"/"+level+" must have meaningful University speaking checkpoint");
-  assert.match(model,/M1.*M2.*University.*M3/s,
-    lang+"/"+level+" must contrast the direct M1 with the actual M2/M3 University itinerary");
+  assert.match(model,/Market Square.*M2.*University.*M3/s,
+    lang+"/"+level+" must follow ticket collection at Market Square and the required University meeting");
+  assert.match(pack.goal,tickets[lang],lang+"/"+level+" must disclose ticket pickup");
+  assert.match(model,tickets[lang],lang+"/"+level+" must explain why metro entry at Central is not allowed");
   const other=L.stage(lang,level,8,"checkpoint",{station:"Market Square"});
   assert.notEqual(other,prompt,"University checkpoint should be different from the entry checkpoint");
  }
