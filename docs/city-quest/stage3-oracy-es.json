@@ -3,7 +3,7 @@
   "schema": "city-quest-stage3-oracy-v1",
   "ui": {
     "title": "Reto oral de la vida real",
-    "doFirst": "Formula tu respuesta en voz alta antes de abrir el modelo. Si trabajas en pareja, explica la ruta sin señalar el plano.",
+    "doFirst": "Formula tu respuesta en voz alta antes de consultar el ejemplo al final de la misión. Si trabajas en pareja, explica la ruta sin señalar el plano.",
     "criteria": "Qué debe incluir una buena respuesta",
     "reflection": "Compara lo que has dicho con estos criterios. La expresión oral la valora un compañero o el docente; el juego no la graba ni la califica.",
     "teacher": "Este reto es una práctica oral adicional; no forma parte de la puntuación automática de la misión."
@@ -29,10 +29,10 @@
     "1": {
       "B2": "Dos visitantes tienen necesidades distintas: uno quiere llevarse un libro prestado y el otro desea ver objetos históricos. Recomiéndales los lugares adecuados de Riverton y justifica cada elección.",
       "C1": "Un visitante pregunta por el «lugar donde hay libros», pero también dice que necesita enviar un paquete. Haz una pregunta para aclararlo y distingue la biblioteca de la oficina de correos con referencias útiles.",
-      "C2": "Dos visitantes confunden Estación Central con Plaza del Mercado y discuten sobre el punto de encuentro. Media en el malentendido, distingue ambos lugares con precisión y confirma dónde quieren reunirse."
+      "C2": "Dos visitantes confunden la Estación Central con la Plaza del Mercado y discuten sobre el punto de encuentro. Media en el malentendido, distingue ambos lugares con precisión y confirma dónde quieren reunirse."
     },
     "2": {
-      "B2": "Explica la ruta a pie que has elegido hasta el Museo de la Ciudad pasando por Plaza del Mercado. Compárala con otra visible en el plano y justifica por qué debes pasar por la plaza.",
+      "B2": "Explica la ruta a pie que has elegido hasta el Museo de la Ciudad pasando por la Plaza del Mercado. Compárala con otra visible en el plano y justifica por qué debes pasar por la plaza.",
       "C1": "Un grupo tiene que visitar la Biblioteca antes de llegar al Museo de la Ciudad. Explica la ruta por etapas y anticipa un cruce en el que podrían equivocarse.",
       "C2": "Debes llegar al Museo de la Ciudad pasando por la Biblioteca y sin cruzar el tramo cortado por las obras. Compara un camino aparentemente más corto, pero bloqueado, con uno válido y explica las condiciones con tacto."
     },
