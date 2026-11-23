@@ -131,7 +131,7 @@ test("Independent editorial review: local dialogue distractors are grammatical a
  for(const lang of C.languages)for(const level of C.levels){
   const answer=C.profile(lang,level).dialogueAnswer,d=G.dialogueDistractors(answer,lang);
   assert.ok(d.vague!==answer&&d.wrong!==answer);
-  assert.doesNotMatch(d.vague,/[.!?]\\s+[a-z]/);
+  assert.doesNotMatch(d.vague,/[.!?]\s+[a-z]/);
   assert.doesNotMatch(d.vague,/cercano cerca|tournez sans préciser où/i);
  }
  assert.match(C.pack("fr").dialogue.vague,/Vous le trouverez/);
@@ -140,7 +140,7 @@ test("Independent editorial review: local dialogue distractors are grammatical a
 test("Independent didactic review: CITY08 model is based on the actual visited checkpoints",()=>{
  const fs=require("node:fs"),path=require("node:path");
  const client=fs.readFileSync(path.join(__dirname,"../konverzace/city-quest-f2/f2.js"),"utf8");
- assert.match(client,/const realized=G\\.routeModel\\(pack\\(\\),game\\.route\\)/,
+ assert.match(client,/const realized=G\.routeModel\(pack\(\),game\.route\)/,
   "The final quest must not use a generic, unrelated route model.");
  const sample=G.pathFromDirections(["east","east","north","east","east","north","west"]);
  assert.ok(E.same(sample.at(-1),E.goal));
