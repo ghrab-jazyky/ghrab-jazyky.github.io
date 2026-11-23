@@ -60,6 +60,22 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    assert.equal(await page.evaluate(key=>localStorage.getItem(key),key),null);
   }finally{await browser.close()}
  });
+ test('PWA '+name+' reload from scrolled 320px chooser returns banner to top',{timeout:90000},async()=>{
+  const {page,browser}=await open(engine,{viewport:{width:320,height:568}});
+  try{
+   await enter(page);
+   await page.locator('#skillChooser').evaluate(el=>{el.scrollTop=el.scrollHeight;});
+   await page.waitForTimeout(150);
+   const offset=await page.locator('#skillChooser').evaluate(el=>el.scrollTop);
+   assert.ok(offset>4,'Narrow chooser must be scrollable for this regression');
+   await page.reload();
+   await page.locator('#skillChooser:not([hidden])').waitFor();
+   await page.locator('#pwaInstallOffer:visible').waitFor();
+   const atTop=await page.locator('#skillChooser').evaluate(el=>el.scrollTop);
+   assert.ok(atTop<=4,'Reload must not restore popup in a scrolled-hidden state: '+atTop);
+   await geometry(page,name+' narrow refresh after scroll');
+  }finally{await browser.close()}
+ });
  test('PWA '+name+' explicit recovery restores snoozed, never and stale installed preferences',{timeout:90000},async()=>{
   const {page,browser}=await open(engine);
   try{
