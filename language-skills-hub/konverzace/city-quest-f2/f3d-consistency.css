@@ -334,3 +334,29 @@
  #f2MapStage>#f2Quick .f2-hud-instruction{font-size:.74rem}
  #f2MapStage>#f2Quick .f2-hud-tools{justify-content:center}
 }
+
+
+/* F5C modern-Chromium German A1 City06 at 320px / 200% text: allow
+ * all instructional text to wrap inside the intrinsic-width task panel.
+ * Never crop text or mask overflow on the document root. */
+@media(max-width:700px){
+  #f1Panel, #f1Panel .f2-card-head, #f1Panel .f2-objective,
+  #f1Panel .f2-help, #f1Panel .f2-dialogue-bubble,
+  #f1Panel .f2-choice-list, #f1Panel .f2-actions,
+  #f1Panel .f2-finish, #f1Panel .f2-status {
+    min-width:0;
+    max-width:100%;
+    box-sizing:border-box;
+  }
+  #f1Panel .f2-prompt, #f1Panel .f2-objective strong,
+  #f1Panel .f2-card-head h2, #f1Panel .f2-card-head p,
+  #f1Panel .f2-choice-list button, #f1Panel .f2-actions button,
+  #f1Panel .f2-status, #f1Panel .f2-help summary,
+  #f1Panel .f2-help p, #f1Panel h3 {
+    min-width:0;
+    max-width:100%;
+    overflow-wrap:anywhere;
+    hyphens:auto;
+    box-sizing:border-box;
+  }
+}

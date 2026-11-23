@@ -44,6 +44,21 @@ test("F5C phone 200%: all 8 city tasks, 4 metro tasks B1+, 4 languages, no docum
         jumpOverflow:jump&&!jump.hidden?jump.getBoundingClientRect().right-viewport:0
        };
       });
+      if(r.overflow>2){
+       r.offenders=await page.evaluate(()=>{
+        const viewport=document.documentElement.clientWidth;
+        return [...document.querySelectorAll("body *")].filter(el=>{
+         const box=el.getBoundingClientRect();
+         return box.width>0&&box.right>viewport+2&&getComputedStyle(el).position!=="fixed";
+        }).slice(0,20).map(el=>{
+         const box=el.getBoundingClientRect();
+         return {tag:el.tagName,id:el.id,className:typeof el.className==="string"?el.className:"",
+          right:Math.round(box.right),width:Math.round(box.width),
+          clientWidth:el.clientWidth,scrollWidth:el.scrollWidth,
+          text:(el.textContent||"").replace(/\\s+/g," ").slice(0,80)};
+        });
+       });
+      }
       assert.ok(r.overflow<=2,
        JSON.stringify({width,lang,level,mode,mission,...r}));
       assert.equal(r.landmarksOffscreen,false,
