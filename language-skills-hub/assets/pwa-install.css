@@ -1,6 +1,6 @@
 /* PWA notification is outside the "Co dnes potřebuješ?" chooser card. */
 .skill-chooser>.pwa-offer{
- position:fixed;top:max(12px,env(safe-area-inset-top));right:max(12px,env(safe-area-inset-right));
+ position:fixed;top:calc(max(12px,env(safe-area-inset-top)) + var(--pwa-overlay-scroll,0px));right:max(12px,env(safe-area-inset-right));
  z-index:2;width:330px;max-width:calc(100vw - 24px);
  max-height:calc(100dvh - 24px);overflow:auto;overscroll-behavior:contain;
  padding:15px 16px 12px;border:1px solid #64bbc5;border-radius:17px;
