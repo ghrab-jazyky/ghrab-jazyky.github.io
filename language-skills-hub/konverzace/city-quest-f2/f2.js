@@ -621,7 +621,13 @@
   }
   function renderQuest(){
     const game=state.quest,list=G.questCheckpoints(state.level);
-    if(game.done)return complete(8,profile().quest,profile().model);
+    if(game.done){
+      // The final model must follow the learner's actual multi-stop journey,
+      // not reuse a generic model from the standalone route mission.
+      const realized=G.routeModel(pack(),game.route);
+      const reflection=["B2","C1","C2"].includes(state.level)?realized+" "+profile().model:realized;
+      return complete(8,profile().quest,reflection);
+    }
     const dots=el("div",panel,"f2-progress-dots");
     list.forEach((x,i)=>el("span",dots,"f2-dot"+(i<game.stage?" done":i===game.stage?" current":""),String(i+1)));
     const cp=list[game.stage],name=pack().places[cp.id];
