@@ -43,7 +43,7 @@
  const foot=element('p','pwa-offer-foot','Aplikace vyžaduje internet. Testy ani odpovědi neukládáme do offline cache.');
  actions.append(install,later,never);
  panel.append(head,lead,actions,help,foot);
- chooser.append(panel);
+ chooser.querySelector('.chooser-header').append(panel);
  function readPreference(){
   try{
    const data=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');
@@ -73,6 +73,8 @@
   const visible=!chooser.hidden&&!document.getElementById('welcome').hidden;
   const eligible=compatible||Boolean(deferredPrompt);
   panel.hidden=!visible||!eligible||isInstalled()||dismissedThisSession||Boolean(readPreference());
+  // Hidden panel controls must never enter the chooser's keyboard focus trap.
+  for(const button of [install,later,never,close])button.disabled=panel.hidden;
   install.textContent=deferredPrompt?'Nainstalovat aplikaci':helpOpen?'Skrýt postup':'Jak nainstalovat';
   help.hidden=!helpOpen;
   if(helpOpen)help.textContent=instructions();
