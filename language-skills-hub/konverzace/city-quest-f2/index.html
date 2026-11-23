@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070f20">
 <meta name="description" content="City Quest: offline city and metro navigation in English, Spanish, German and French at A1–C2, with interactive metro missions at B1–C2.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-znFpsr8OcJpm8tGZUDSAsDIK8+gtI9oQr5PV8O/9C70='; style-src 'sha256-IcXknFL0q0Wng+irWxurD9ZxRvu+5g2cct+NbnlA3DI='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-iXw0kEjYqCYEYAcyQXat368b1fc03yjdY280TM45aSg='; style-src 'sha256-0sLCp0Gho9Iwuvl5j6JzeEcMfPPZxBs2hUur1a5U7Ow='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <title>City Quest · Interactive Language Game · EN ES DE FR · A1–C2</title>
 
 
@@ -1789,6 +1789,39 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   line-height:1;
  }
 }
+/* Stage 2: explicit mode choice, safe reset dialog and mobile mission flow. */
+.cq-mode-picker{display:grid;gap:5px;min-width:0;flex:1 1 240px}
+.cq-mode-picker[hidden]{display:none}
+.cq-mode-picker>span{font-size:.74rem;font-weight:850;color:var(--muted)}
+.cq-mode-segments{display:flex;gap:5px;padding:4px;border:1px solid var(--line);background:var(--panel2);border-radius:12px}
+.cq-mode-option{min-height:44px;min-width:0;flex:1 1 0;padding:8px 12px;border:1px solid transparent;border-radius:9px;background:transparent;color:var(--text);font-weight:750;line-height:1.3;cursor:pointer;white-space:normal}
+.cq-mode-option[aria-pressed="true"]{border-color:#6edecb;background:#175e67;color:#fff}
+:root[data-theme="light"] .cq-mode-option[aria-pressed="true"]{background:#d3f6ed;color:#124b55;border-color:#398d7b}
+.cq-mode-option:focus-visible,.cq-mode-confirm button:focus-visible{outline:3px solid #85eede;outline-offset:3px}
+.cq-mode-confirm{max-width:min(440px,calc(100vw - 28px));width:100%;box-sizing:border-box;border:1px solid #80d4cb;border-radius:16px;padding:23px;background:#102d42;color:#e9f7fa;box-shadow:0 16px 50px #0008}
+.cq-mode-confirm::backdrop{background:rgba(2,9,18,.72)}
+.cq-mode-confirm h2{font-size:1.15rem;line-height:1.3;margin:0 0 8px;color:#effffb}
+.cq-mode-confirm p{line-height:1.5;margin:0 0 17px;color:#d7edef}
+.cq-confirm-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.cq-confirm-actions button{min-height:44px;white-space:normal}
+:root[data-theme="light"] .cq-mode-confirm{background:#f6fcfe;color:#153849;border-color:#458d96}
+:root[data-theme="light"] .cq-mode-confirm h2{color:#153849}
+:root[data-theme="light"] .cq-mode-confirm p{color:#365970}
+@media(max-width:1050px){
+ .layout[data-cq-order="task-first"]>.sidebar{order:-1}
+ .layout[data-cq-order="task-first"]>.map-card{order:1}
+}
+@media(max-width:820px){
+ .f1-station-caption strong,.f1-mode .btn,.f3d-learning-intro strong,.f3d-learning-steps li strong,
+ #f1Panel .f2-card-head h2,#f1Panel .f2-choice-list button,#f1Panel .f2-actions button,
+ .cq-mode-option,.metro-scenario-content strong{word-break:normal;overflow-wrap:break-word;hyphens:auto}
+}
+@media(max-width:480px){
+ .f3d-learning-steps li{gap:4px;padding:6px 5px}
+ .f3d-learning-steps li span{width:22px;height:22px}
+ .cq-mode-picker{flex:1 1 100%}
+ .cq-confirm-actions button{flex:1 1 100%}
+}
 </style>
 </head>
 <body>
@@ -1831,7 +1864,14 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   </div>
   <div class="f2-profile" id="f2Profile" aria-live="polite">Independent directions and communication repair</div>
   <button class="btn metro-jump" id="metroJump" type="button" hidden aria-controls="metroLab">🚇 Riverton Metro · Preview</button>
-   <button class="btn metro-pilot-toggle" id="metroPilotToggle" type="button" hidden aria-pressed="false" title="Changing City/Metro restarts missions 05–08; missions 01–04 stay.">🚇 Play interactive metro missions</button>
+   <div class="cq-mode-picker" id="cqModePicker" role="group" aria-labelledby="cqModeLabel" hidden>
+    <span id="cqModeLabel">Journey mode</span>
+    <div class="cq-mode-segments"><button id="cityOnlyToggle" type="button" class="cq-mode-option" aria-pressed="true">City only</button><button id="metroPilotToggle" type="button" class="cq-mode-option" aria-pressed="false">City + metro</button></div>
+   </div>
+   <dialog id="cqModeConfirm" class="cq-mode-confirm" aria-labelledby="cqModeConfirmTitle" aria-describedby="cqModeConfirmText">
+    <h2 id="cqModeConfirmTitle">Switch journey mode?</h2><p id="cqModeConfirmText">Missions 05–08 restart.</p>
+    <div class="cq-confirm-actions"><button type="button" class="btn" id="cqModeCancel">Keep mode</button><button type="button" class="btn primary" id="cqModeApply">Switch mode</button></div>
+   </dialog>
   <p class="f3d-session-advice" id="f3dSessionAdvice">Changing the language or CEFR level starts a new session. Switching city/metro restarts missions 05–08.</p>
 </section>
 <section class="f1-dashboard" aria-label="City Quest session">
@@ -5407,6 +5447,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       metroReset:"Passer de la ville au métro réinitialise les missions 05–08 ; les missions 01–04 sont conservées."}
   };
   const metroNarrative={"en":{"5":"New chapter · The next morning, you return to Central Station. A friend has just arrived by train with a heavy suitcase. After exploring Riverton on foot, help your friend reach Museum Quarter by metro.","6":"Later that day, you start another journey at Market Square. Your friend wants to see a match at Stadium. Choose a connection and explain where to change trains.","7":"The following day, you are back at Central Station. A closure disrupts the M1 route to Museum Quarter. Read the notice and find a safe alternative.","8":"Final journey · Collect your museum tickets on foot at Market Square. A classmate is waiting at University with your group's audio guides. The museum is close enough to walk to from Market Square, but you must meet your classmate before visiting it."},"es":{"5":"Nueva etapa · A la mañana siguiente, vuelves a la Estación Central. Una amiga acaba de llegar en tren con una maleta pesada. Después de recorrer Riverton a pie, ayúdala a llegar en metro a Museum Quarter.","6":"Más tarde, empiezas otro recorrido en Market Square. Tu amiga quiere asistir a un partido en Stadium. Elige una conexión y explícale dónde hacer transbordo.","7":"Al día siguiente, vuelves a Central Station. Un corte afecta a la línea M1 hacia Museum Quarter. Lee el aviso y busca una ruta alternativa segura.","8":"Reto final · Ve a pie a Market Square a recoger las entradas del museo. Una compañera te espera en University con las audioguías del grupo. Aunque el museo queda cerca de Market Square, tienes que reunirte con ella antes de visitarlo."},"de":{"5":"Neues Kapitel · Am nächsten Morgen kehrst du zum Hauptbahnhof zurück. Eine Freundin ist gerade mit einem schweren Koffer angekommen. Nachdem du Riverton zu Fuß erkundet hast, hilf ihr, mit der U-Bahn zur Station Museum Quarter zu kommen.","6":"Später beginnst du am Market Square eine neue Fahrt. Deine Freundin möchte ein Spiel im Stadium sehen. Wähle die Verbindung und erkläre, wo sie umsteigen muss.","7":"Am folgenden Tag bist du wieder an der Station Central Station. Eine Sperrung unterbricht die M1-Verbindung nach Museum Quarter. Lies die Meldung und finde eine sichere Alternative.","8":"Abschlussmission · Hole die Museumstickets zu Fuß am Market Square ab. Eine Mitschülerin wartet an der Station University mit den Audioguides für eure Gruppe. Obwohl das Museum vom Market Square nicht weit entfernt ist, musst du sie vor dem Museumsbesuch treffen."},"fr":{"5":"Nouvelle étape · Le lendemain matin, vous retournez à la gare centrale. Une amie vient d'arriver en train avec une lourde valise. Après avoir exploré Riverton à pied, aidez-la à rejoindre Museum Quarter en métro.","6":"Plus tard, vous partez de Market Square pour un nouveau trajet. Votre amie souhaite assister à un match à Stadium. Choisissez une correspondance et expliquez où changer de ligne.","7":"Le jour suivant, vous êtes de retour à Central Station. Une fermeture perturbe la ligne M1 vers Museum Quarter. Lisez l'avis et trouvez un autre itinéraire sûr.","8":"Défi final · Récupérez à pied les billets du musée à Market Square. Une camarade vous attend à University avec les audioguides du groupe. Même si le musée est tout près de Market Square, vous devez la retrouver avant la visite."}};
+  const cqModeText={"en":["Journey mode","City only","City + metro","Switch journey mode?","Missions 05–08 already contain progress. Switching modes restarts them; completed missions 01–04 stay.","Keep mode","Switch mode"],"es":["Modalidad","Solo ciudad","Ciudad + metro","¿Cambiar de modalidad?","Ya hay progreso en las misiones 05–08. Al cambiar se reinician; las misiones 01–04 se conservan.","Mantener","Cambiar"],"de":["Spielmodus","Nur Stadt","Stadt + U-Bahn","Spielmodus wechseln?","In den Aufgaben 05–08 gibt es Fortschritte. Der Wechsel setzt sie zurück; Aufgaben 01–04 bleiben erhalten.","Beibehalten","Wechseln"],"fr":["Mode de parcours","Ville uniquement","Ville + métro","Changer de mode ?","Vous avez déjà avancé dans les missions 05–08. Le changement les réinitialise ; les missions 01–04 restent terminées.","Garder","Changer"]};
   const lesson=()=>lessonCopy[state.language]||lessonCopy.en;
   // Explicit, four-language mission 07 roadworks learning objective.
   // This checkpoint is an actual map node, not an invented second closure.
@@ -5560,6 +5601,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   function screen(){
     const taskHadFocus=panel.contains(document.activeElement),isMetro=metroPilot();
     panel.hidden=false;panel.replaceChildren();
+    cityLayout.dataset.cqOrder=(!metroPilot()&&![2,4,7,8].includes(state.station))?"task-first":"map-first";
     updateMetroPresentation();
     translateCity();
     objective(state.station);
@@ -6387,6 +6429,14 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     state.station=n;flash=null;
     updateProgress();screen();renderMap();
     window.CityQuestF3?.sceneUpdated();
+    window.requestAnimationFrame(()=>{
+      if(!window.matchMedia("(max-width:1050px)").matches)return;
+      const needsMap=(!metroPilot()&&[2,4,7,8].includes(state.station))||
+        (metroPilot()&&metroCityWalk());
+      const target=metroScene()?panel:(needsMap?document.querySelector(".layout .map-card"):panel);
+      target?.scrollIntoView({block:"start",behavior:"auto"});
+      panel.focus({preventScroll:true});
+    });
   }
   function resetStation(){
     const n=state.station;
@@ -6409,38 +6459,55 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     applyLanguageUI();updateProgress();screen();renderMap();
   }
   function updateMetroToggle(){
-    const b=$("metroPilotToggle");if(!b)return;
-    const available=metroAvailable(),content=available?LC.pack(state.language,state.level,5):null;
-    b.hidden=!available;
-    b.title=lesson().metroReset;
-    b.textContent=metroEnabled&&available?"↶ "+content.back:content?"🚇 "+content.pilot:"";
-    b.setAttribute("aria-pressed",String(metroEnabled&&available));
-    const pilot=metroEnabled&&available,hero=document.querySelector(".hero h1"),
-      heroText=$("f2HeroText"),headerTag=document.querySelector(".topbar .header-actions .tag"),
-      variantTag=$("cityQuestVariant");
-    if(pilot){hero.textContent=content.title;heroText.textContent=content.header;}
-    else{hero.textContent=pack().stations[7][0];heroText.textContent=pack().stations[0][1]+" "+ui().objective;}
-    const modeLabel=lesson().metro.split(" · ")[0];
-    if(headerTag)headerTag.textContent=pilot?"CITY QUEST · "+state.level+" "+modeLabel:"CITY QUEST · PREMIUM";
-    if(variantTag)variantTag.textContent=pilot?state.language.toUpperCase()+" · "+state.level+" "+modeLabel:"8 × 4 × 6";
-    // Never overwrite the visible game-type badge with numeric statistics.
+    const available=metroAvailable(),c=cqModeText[state.language]||cqModeText.en;
+    const active=metroEnabled&&available,metro=$("metroPilotToggle"),city=$("cityOnlyToggle");
+    $("cqModePicker").hidden=!available;
+    metro.hidden=!available;
+    $("cqModeLabel").textContent=c[0];
+    city.textContent=c[1];metro.textContent=c[2];
+    city.setAttribute("aria-pressed",String(!active));metro.setAttribute("aria-pressed",String(active));
+    city.classList.toggle("active",!active);metro.classList.toggle("active",active);
+    const content=available?LC.pack(state.language,state.level,5):null,
+      hero=document.querySelector(".hero h1"),text=$("f2HeroText"),
+      tag=document.querySelector(".topbar .header-actions .tag");
+    if(active){hero.textContent=content.title;text.textContent=content.header;}
+    else{hero.textContent=pack().stations[7][0];text.textContent=pack().stations[0][1]+" "+ui().objective;}
+    if(tag)tag.textContent="CITY QUEST · "+(active?c[2]:c[1]);
+    $("cityQuestVariant").textContent=active?c[2]+" · 4+4":c[1]+" · 8";
     $("cityQuestGameType").textContent=gameType[state.language];
-    document.title=pilot?content.title+" · "+content.native+" "+state.level+" · LSH":
+    document.title=active?content.title+" · "+content.native+" "+state.level+" · LSH":
       "City Quest · "+pack().native+" "+state.level+" · Language Skills Hub";
   }
-  function toggleMetroPilot(){
-    if(!metroAvailable())return;
-    metroEnabled=!metroEnabled;
-    // Switching gameplay modes resets only missions 05-08, preserving 01-04.
+  function hasLateProgress(){
+    if([...state.done].some(n=>n>=5)||[5,6,7,8].some(n=>(state.pairTurns[n]||0)>0))return true;
+    if(state.transit.tries>0||Object.keys(state.transit.selection).length>0||
+      state.repair.phase>0||state.repair.tries>0||state.detour.route.length>1||
+      state.detour.attempts>0||state.quest.stage>0||state.quest.leg.length>1||
+      state.quest.awaitingSpeech)return true;
+    return !!state.metro&&Object.values(state.metro).some(m=>
+      m.history.length>0||m.attempts>0||m.cityPath.length>1);
+  }
+  function applyMetroMode(next){
+    if(!metroAvailable()||metroEnabled===next)return;
+    metroEnabled=next;
     state.done=new Set([...state.done].filter(n=>n<=4));
     state.metro=Object.fromEntries([5,6,7,8].map(n=>[n,MG.start(n)]));
     for(const n of [5,6,7,8])delete state.pairTurns[n];
     state.transit={done:false,tries:0,selection:{}};
-    state.repair={phase:0,done:false,tries:0};
-    state.detour=G.routeStart();state.quest=G.questStart();
-    flash=null;
-    updateMetroToggle();updateProgress();screen();renderMap();
+    state.repair=G.repairStart();state.detour=G.routeStart();state.quest=G.questStart();
+    flash=null;updateMetroToggle();updateProgress();screen();renderMap();
     window.CityQuestF3?.sceneUpdated();
+  }
+  let requestedMetroMode=null;
+  function requestMetroMode(next){
+    if(!metroAvailable()||metroEnabled===next)return;
+    if(!hasLateProgress()){applyMetroMode(next);return;}
+    const dialog=$("cqModeConfirm"),c=cqModeText[state.language]||cqModeText.en;
+    requestedMetroMode=next;
+    $("cqModeConfirmTitle").textContent=c[3];$("cqModeConfirmText").textContent=c[4];
+    $("cqModeCancel").textContent=c[5];$("cqModeApply").textContent=c[6];
+    if(typeof dialog.showModal==="function")dialog.showModal();
+    else{const yes=window.confirm(c[4]);requestedMetroMode=null;if(yes)applyMetroMode(next);}
   }
   function setMode(mode){
     if(!["solo","pair"].includes(mode))return;
@@ -6464,7 +6531,16 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   $("f2Level").addEventListener("change",e=>resetSession(state.language,e.target.value));
   if(metroPhoneQuery.addEventListener)metroPhoneQuery.addEventListener("change",()=>{if(metroScene())updateMetroPresentation();});
   else metroPhoneQuery.addListener(()=>{if(metroScene())updateMetroPresentation();});
-  $("metroPilotToggle").addEventListener("click",toggleMetroPilot);
+  $("metroPilotToggle").addEventListener("click",()=>requestMetroMode(true));
+  $("cityOnlyToggle").addEventListener("click",()=>requestMetroMode(false));
+  $("cqModeCancel").addEventListener("click",()=>$("cqModeConfirm").close("cancel"));
+  $("cqModeApply").addEventListener("click",()=>$("cqModeConfirm").close("apply"));
+  $("cqModeConfirm").addEventListener("close",()=>{
+    const wanted=requestedMetroMode;requestedMetroMode=null;
+    if($("cqModeConfirm").returnValue==="apply"&&wanted!==null)applyMetroMode(wanted);
+    else updateMetroToggle();
+    $(metroEnabled?"metroPilotToggle":"cityOnlyToggle").focus({preventScroll:true});
+  });
   $("f1Solo").addEventListener("click",()=>setMode("solo"));
   $("f1Pair").addEventListener("click",()=>setMode("pair"));
   $("themeBtn").addEventListener("click",applyChromeLabels);
