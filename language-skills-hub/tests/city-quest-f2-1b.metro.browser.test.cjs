@@ -189,7 +189,7 @@ test("F2.1B visibility gating: A1/A2 city-only and B1–C2 metro preview for fou
     // translated into the selected UI language. Do not require English text
     // to leak into the ES/DE/FR interface.
     const galleryLanguage={
-     en:/EN\/B1 route reference/,
+     en:/The network is fictional/,
      es:/Referencia visual en inglés/,
      de:/Unbenotetes englisches Anschauungsbeispiel/,
      fr:/Exemple visuel en anglais/
