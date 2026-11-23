@@ -64,6 +64,7 @@ test('Installation code linked only into the catalog',()=>{
 });
 test('Consent, timing, and browser install event',()=>{
  const js=read('assets/pwa-install.js');
+ const css=read('assets/pwa-install.css');
  for(const value of ['Připomenout za 7 dní','Příště nezobrazovat','beforeinstallprompt','appinstalled',
  'display-mode: standalone','MutationObserver','localStorage',"chooser.append(panel)"])
   assert.ok(js.includes(value),value);
@@ -75,7 +76,6 @@ test('Consent, timing, and browser install event',()=>{
  assert.match(css,/--pwa-overlay-scroll/);
  assert.match(js,/navigator\.install\(\)/);
  assert.match(js,/const outcome=await event\.prompt\(\)/);
- const css=read('assets/pwa-install.css');
  assert.match(css,/position:fixed/);
  assert.match(css,/\.skill-chooser\.pwa-install-docked/);
  assert.match(css,/\.pwa-offer--docked/);
