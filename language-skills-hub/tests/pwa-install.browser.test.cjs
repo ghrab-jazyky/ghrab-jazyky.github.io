@@ -48,6 +48,59 @@ async function geometry(page,tag){
  return m;
 }
 for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
+ test('PWA '+name+' Ctrl+R keeps the install panel visible when user has not dismissed it',{timeout:90000},async()=>{
+  const {page,browser}=await open(engine,{viewport:{width:1366,height:768}});
+  try{
+   await enter(page);
+   assert.equal(await page.evaluate(key=>localStorage.getItem(key),key),null);
+   await page.reload();
+   await page.locator('#skillChooser:not([hidden])').waitFor();
+   await page.locator('#pwaInstallOffer:visible').waitFor();
+   await geometry(page,name+' refresh without preference');
+   assert.equal(await page.evaluate(key=>localStorage.getItem(key),key),null);
+  }finally{await browser.close()}
+ });
+ test('PWA '+name+' explicit recovery restores snoozed, never and stale installed preferences',{timeout:90000},async()=>{
+  const {page,browser}=await open(engine);
+  try{
+   await enter(page);
+   await page.evaluate(()=>localStorage.setItem('lsh:test-unrelated-key','keep'));
+   for(const option of ['later','never','installed']){
+    await page.evaluate(([k,choice])=>
+     localStorage.setItem(k,JSON.stringify({choice,until:Date.now()+7*86400000})),[key,option]);
+    await page.reload();
+    await page.locator('#skillChooser:not([hidden])').waitFor();
+    assert.equal(await page.locator('#pwaInstallOffer').isHidden(),true,
+     'Normal refresh must respect an explicit installation preference: '+option);
+    await page.goto(base+'?pwa=reset');
+    await page.locator('#skillChooser:not([hidden])').waitFor();
+    await page.locator('#pwaInstallOffer:visible').waitFor();
+    assert.equal(await page.evaluate(key=>localStorage.getItem(key),key),null);
+    assert.equal(await page.evaluate(()=>localStorage.getItem('lsh:test-unrelated-key')),'keep');
+    assert.equal(new URL(page.url()).searchParams.has('pwa'),false,'Recovery URL parameter must not persist');
+   }
+  }finally{await browser.close()}
+ });
+ test('PWA '+name+' direct lab reload hides popup but change-lab shows it again',{timeout:90000},async()=>{
+  const {page,browser}=await open(engine);
+  try{
+   await page.goto(base+'?skill=cteni');
+   await page.locator('#catalog:not([hidden])').waitFor();
+   assert.equal(await page.locator('#pwaInstallOffer').isHidden(),true);
+   await page.locator('#changeLab').click({timeout:5000});
+   await page.locator('#pwaInstallOffer:visible').waitFor();
+   await geometry(page,name+' after lab change');
+  }finally{await browser.close()}
+ });
+ test('PWA '+name+' unsupported browser does not silently lose the offer',{timeout:90000},async()=>{
+  const firefox='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:134.0) Gecko/20100101 Firefox/134.0';
+  const {page,browser}=await open(engine,{userAgent:firefox});
+  try{
+   await enter(page);
+   assert.equal(await page.locator('#pwaOfferInstall').isDisabled(),true);
+   assert.match(await page.locator('#pwaOfferHelp').innerText(),/Chrome nebo Edge/);
+  }finally{await browser.close()}
+ });
  test('PWA '+name+' desktop: independent right-corner notification, three labs unaffected',{timeout:90000},async()=>{
   const {page,browser}=await open(engine,{viewport:{width:1920,height:1080}});
   try{
