@@ -76,6 +76,9 @@ test('Consent, timing, and browser install event',()=>{
  assert.match(js,/chooser\.addEventListener\('scroll',scheduleLayout/);
  assert.match(js,/--pwa-overlay-scroll/);
  assert.match(css,/--pwa-overlay-scroll/);
+ assert.doesNotMatch(js,/Přímá instalace nedostupná/);
+ assert.match(js,/Instalovat přes nabídku prohlížeče/);
+ assert.match(js,/helpOpen=!helpOpen/);
  assert.match(js,/navigator\.install\(\)/);
  assert.match(js,/const outcome=await event\.prompt\(\)/);
  assert.match(css,/position:fixed/);
