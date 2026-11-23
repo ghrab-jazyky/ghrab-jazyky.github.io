@@ -125,7 +125,7 @@
     if(lang==="en"){
       if(/turn left/i.test(answer)){
         vague=change(/turn left/i,"turn at some point");
-        wrong=change(/\\bleft\\b/i,"right");
+        wrong=change(/\bleft\b/i,"right");
       }else{
         vague=change(/the northbound street/i,"a street somewhere nearby");
         wrong=change(/northbound/i,"southbound");
