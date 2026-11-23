@@ -29,10 +29,10 @@
     "1": {
       "B2": "Zwei Besucher haben unterschiedliche Wünsche: Einer möchte ein Buch ausleihen, der andere historische Ausstellungsstücke sehen. Empfiehl die passenden Orte in Riverton und begründe beide Entscheidungen.",
       "C1": "Ein Besucher fragt nach dem „Haus mit Büchern“, erwähnt aber auch, dass er ein Paket verschicken möchte. Frage höflich nach und erkläre anhand hilfreicher Orientierungspunkte den Unterschied zwischen Bibliothek und Post.",
-      "C2": "Zwei Besucher verwechseln Central Station und Market Square und streiten darüber, wo sie sich treffen sollen. Vermittle zwischen ihnen, unterscheide beide Orte präzise und bestätige den beabsichtigten Treffpunkt."
+      "C2": "Zwei Besucher verwechseln Hauptbahnhof und Marktplatz und streiten darüber, wo sie sich treffen sollen. Vermittle zwischen ihnen, unterscheide beide Orte präzise und bestätige den beabsichtigten Treffpunkt."
     },
     "2": {
-      "B2": "Erkläre deinen Fußweg zum Stadtmuseum über den Market Square. Vergleiche ihn mit einer anderen auf dem Plan erkennbaren Route und begründe, warum der Platz zum Auftrag gehört.",
+      "B2": "Erkläre deinen Fußweg zum Stadtmuseum über den Marktplatz. Vergleiche ihn mit einer anderen auf dem Plan erkennbaren Route und begründe, warum der Platz zum Auftrag gehört.",
       "C1": "Eine Gruppe muss vor dem Museumsbesuch die Bibliothek aufsuchen. Erkläre die Route in klaren Etappen und weise auf eine Kreuzung hin, an der man leicht falsch abbiegen könnte.",
       "C2": "Du musst über die Bibliothek zum Stadtmuseum gelangen und die markierte Straßensperrung umgehen. Vergleiche einen scheinbar kürzeren, aber gesperrten Weg mit einer gültigen Route und erläutere die Vorgaben taktvoll."
     },
@@ -64,7 +64,7 @@
     "8": {
       "B2": "Deine Gruppe muss auf dem Weg zum Museum mehrere Stationen in der Stadt besuchen. Fasse die Reihenfolge zusammen, begründe eine Routenentscheidung und vergleiche sie mit einer verlockenden Abkürzung.",
       "C1": "Führe deinen Partner durch sämtliche vorgeschriebenen Zwischenstopps. Weise auf einen möglichen Orientierungsfehler hin und erkläre, wie du ihn ohne vollständigen Neustart korrigieren würdest.",
-      "C2": "Zwei Besucher haben für den Stadtrundgang widersprüchliche Prioritäten. Handle eine machbare Reihenfolge aller Pflichtstopps aus und stelle einen klaren, gemeinsam tragbaren Plan mit Begründung vor."
+      "C2": "Eine Person möchte zuerst zur Bibliothek, doch die Aufgabe verlangt die Reihenfolge Marktplatz → Bibliothek → Stadtmuseum. Erkläre diese feste Reihenfolge taktvoll, gleiche die Prioritäten der Gruppe ab und stelle eine machbare Route vor."
     }
   },
   "metro": {
