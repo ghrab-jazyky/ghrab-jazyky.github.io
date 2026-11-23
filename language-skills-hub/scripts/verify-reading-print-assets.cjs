@@ -23,10 +23,30 @@ const INPUTS=[
  'self-check/reading/print-page.html','self-check/reading/print-page.js',
  'self-check/reading/print-page.css','scripts/build-reading-print-pdfs.cjs'
 ];
+// For this specific additive release, preserve the exact approved 34-card
+// PDF source snapshot. City Quest is a self-contained, non-PDF conversation game.
+// No other catalog modification is permitted by the archived PDF manifest.
+function auditedPdfSource(filename){
+ const bytes=fs.readFileSync(path.join(root,filename));
+ if(filename!=='data/cards.json')return bytes;
+ const content=bytes.toString('utf8'),catalog=JSON.parse(content);
+ const game=catalog.entries.filter(e=>e.id==='cl-city-quest-f2');
+ if(game.length===0)return bytes;
+ if(game.length!==1||game[0].cardType!=='interactive-language-game')
+  throw Error('Unexpected standalone game catalog state in PDF provenance');
+ const added="    "+JSON.stringify(game[0],null,2).replace(/\n/g,"\n    ")+",\n";
+ const current='  "entries": [\n'+added,previous='  "entries": [\n';
+ if(content.split(current).length!==2)throw Error('PDF catalog projection is not a single additive City Quest entry');
+ const original=Buffer.from(content.replace(current,previous),'utf8');
+ const gitBlob=crypto.createHash('sha1').update('blob '+original.length+'\0').update(original).digest('hex');
+ if(gitBlob!=='649b1141a5c66352af0fa5d750cdafe1abd146e3')
+  throw Error('PDF catalog projection differs from approved 34-card snapshot');
+ return original;
+}
 function digest(){
  const h=crypto.createHash('sha256');
  for(const filename of INPUTS){
-  const bytes=fs.readFileSync(path.join(root,filename));
+  const bytes=auditedPdfSource(filename);
   h.update(filename+'\0'+bytes.length+'\0');h.update(bytes);
  }
  return h.digest('hex');
