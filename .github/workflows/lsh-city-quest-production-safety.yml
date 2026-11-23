@@ -103,3 +103,38 @@ jobs:
           node --test language-skills-hub/tests/city-quest-stage2.browser.test.cjs
           node --check language-skills-hub/tests/city-quest-stage3-oracy.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-stage3-oracy.browser.test.cjs
+  city-quest-release-40:
+    name: City Quest release gate — 40 complete journeys
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 23
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install Playwright for local-only browser tests
+        run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Exercise all 40 language/CEFR/mode combinations and 320 mission completions
+        env:
+          CQ_40_REPORT: city-quest-e2e-40.json
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/cq-e2e-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r => process.exit(r.ok?0:1)).catch(() => process.exit(1))' http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --check language-skills-hub/tests/city-quest-release-40.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-release-40.browser.test.cjs
+      - name: Archive all 40 per-journey results, even when a case fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: city-quest-40-e2e-evidence
+          path: city-quest-e2e-40.json
+          if-no-files-found: warn
+          retention-days: 30
