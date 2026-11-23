@@ -55,7 +55,7 @@ test('Authoring matrix matches offline inline source and contains exactly 144 un
 });
 test('CEFR guard excludes A1/A2/B1 and preserves metro B1 availability',()=>{
  assert.match(html,/if\(!\["B2","C1","C2"\]\.includes\(state.level\)\)return null/);
- assert.match(html,/const mode=metroPilot\(\)\?"metro":"city"/);
+ assert.match(html,/mode=metroPilot\(\)\?"metro":"city"/);
  assert.match(html,/const metroAvailable=\(\)=>!!MG&&!!LC&&LC.languages.includes\(state.language\)&&LC.levels.includes\(state.level\)/);
  assert.match(html,/const levels=\["B1","B2","C1","C2"\],languages=\["en","es","de","fr"\]/);
  assert.match(html,/renderAdvancedOracy\(index\)/);
