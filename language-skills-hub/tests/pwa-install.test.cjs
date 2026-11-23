@@ -66,8 +66,8 @@ test('Installation code linked only into the catalog',()=>{
   'CSP must be active before any manifest fetch');
 
  assert.match(html,/<link rel="apple-touch-icon"/);
- assert.match(html,/<script defer src="assets\/pwa-install\.js\?v=pwa-recovery-20261123"/);
- assert.match(html,/pwa-install\.js\?v=pwa-recovery-20261123/);
+ assert.match(html,/<script defer src="assets\/pwa-install\.js\?v=pwa-installability-20261123"/);
+ assert.match(html,/pwa-install\.js\?v=pwa-installability-20261123/);
  assert.match(html,/pwa-install\.css\?v=pwa-recovery-20261123/);
  assert.match(html,/<link rel="stylesheet" href="assets\/pwa-install\.css\?v=pwa-recovery-20261123"/);
  assert.match(html,/id="skillChooser"/);
