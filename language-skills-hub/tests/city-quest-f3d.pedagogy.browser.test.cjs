@@ -160,6 +160,10 @@ test("F3D design geometry: readable unified cards on 320/390/768/1366, in city, 
    await page.locator("#f3ExperienceSummary").click();
    await page.locator("#f3ContrastButton").click();
    assert.equal(await page.locator("html").getAttribute("data-contrast"),"high");
+   // The fixed mobile Experience menu now opens ON SCREEN and legitimately
+   // covers part of the page. Close it before selecting the underlying mode.
+   await page.locator("#f3ExperienceSummary").click();
+   assert.equal(await page.locator("#f3Experience").evaluate(el=>el.open),false);
    await page.locator("#metroPilotToggle").click();await station(page,7);
    await validRail(page);
    const geometry=await page.evaluate(()=>({
