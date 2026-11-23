@@ -3,101 +3,192 @@
 const {test}=require('node:test'),assert=require('node:assert/strict');
 const {chromium,webkit}=require('playwright');
 const base='http://127.0.0.1:8765/language-skills-hub/';
+const key='lsh:pwa-install-choice:v1';
 const ua='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
 const iphone='Mozilla/5.0 (iPhone; CPU iPhone OS 18_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.3 Mobile/15E148 Safari/604.1';
-async function open(engine,options={},init=()=>{}){
+const android='Mozilla/5.0 (Linux; Android 15; Pixel 9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Mobile Safari/537.36';
+async function open(engine,options={},before=()=>{}){
  const browser=await engine.launch({headless:true});
  const context=await browser.newContext({viewport:{width:1366,height:768},reducedMotion:'reduce',userAgent:ua,...options});
  const page=await context.newPage();
- await page.addInitScript(()=>{
-  localStorage.setItem('lsh:teacher-whats-new:last-offered-sequence:v1','2147483647');
- });
- await init(page);
+ await page.addInitScript(()=>localStorage.setItem('lsh:teacher-whats-new:last-offered-sequence:v1','2147483647'));
+ await before(page);
  return {page,browser};
 }
+async function enter(page){
+ await page.goto(base);
+ await page.locator('#skillChooser:not([hidden])').waitFor();
+ await page.locator('#pwaInstallOffer:visible').waitFor();
+ await page.waitForFunction(()=>document.getElementById('pwaInstallOffer').getBoundingClientRect().width>0);
+}
+async function geometry(page,tag){
+ const m=await page.evaluate(()=>{
+  const $=id=>document.getElementById(id);
+  const rect=el=>{const r=el.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom,width:r.width,height:r.height}};
+  const a=rect($('pwaInstallOffer')),b=rect(document.querySelector('#skillChooser .chooser-panel'));
+  const intersection=Math.max(0,Math.min(a.right,b.right)-Math.max(a.x,b.x))*
+   Math.max(0,Math.min(a.bottom,b.bottom)-Math.max(a.y,b.y));
+  return {a,b,intersection,viewport:{w:document.documentElement.clientWidth,h:innerHeight},
+   docked:$('skillChooser').classList.contains('pwa-install-docked'),
+   scrollTop:$('skillChooser').scrollTop,
+   bannerVisible:getComputedStyle($('pwaInstallOffer')).visibility!=='hidden',
+   scroll:$('skillChooser').scrollWidth-document.documentElement.clientWidth,
+   insideCard:document.querySelector('.chooser-panel').contains($('pwaInstallOffer')),
+   back:rect($('closeChooser'))};
+ });
+ assert.equal(m.insideCard,false,tag+': popup must be OUTSIDE the "Co dnes potřebuješ" card');
+ if(m.bannerVisible){
+  assert.ok(m.a.x>=-1&&m.a.right<=m.viewport.w+1,tag+': popup outside viewport '+JSON.stringify(m));
+  assert.ok(m.a.y>=-1&&m.a.bottom<=m.viewport.h+2,tag+': popup below viewport '+JSON.stringify(m));
+  assert.ok(m.intersection<1,tag+': visible popup must not cover ANY portion of chooser card '+JSON.stringify(m));
+ }else{
+  assert.ok(m.docked&&m.scrollTop>4,tag+': only a scrolling compact popup may be invisible '+JSON.stringify(m));
+ }
+ assert.ok(m.scroll<=3,tag+': horizontal viewport overflow '+JSON.stringify(m));
+ return m;
+}
 for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
- test('PWA '+name+' shows in lab chooser and snoozes for a week',{timeout:90000},async()=>{
-  const {page,browser}=await open(engine);
+ test('PWA '+name+' desktop: independent right-corner notification, three labs unaffected',{timeout:90000},async()=>{
+  const {page,browser}=await open(engine,{viewport:{width:1920,height:1080}});
   try{
-   await page.goto(base);
-   await page.locator('#skillChooser:not([hidden])').waitFor();
-   await page.locator('#pwaInstallOffer:visible').waitFor();
+   await enter(page);
+   const m=await geometry(page,name+' large desktop');
+   assert.equal(m.docked,false,'Large desktop must have independent right rail');
+   assert.ok(m.a.x>m.b.right,'Popup should be completely to the RIGHT of chooser card');
    assert.equal(await page.locator('[data-choose-skill]').count(),3);
-   await page.locator('#pwaOfferInstall').click();
-   assert.equal(await page.locator('#pwaOfferHelp').isVisible(),true);
+   assert.equal(await page.locator('#pwaOfferInstall').isDisabled(),true,
+    'No fake native install button until browser offers an API');
+   assert.match(await page.locator('#pwaOfferInstall').innerText(),/nedostupná/);
    await page.locator('#pwaOfferLater').click();
    assert.equal(await page.locator('#pwaInstallOffer').isHidden(),true);
-   const result=await page.evaluate(()=>JSON.parse(localStorage.getItem('lsh:pwa-install-choice:v1')));
-   assert.equal(result.choice,'later');
-   assert.ok(result.until>Date.now()+6*86400000);
+   const preference=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)),key);
+   assert.equal(preference.choice,'later');
+   assert.ok(preference.until>Date.now()+6*86400000);
    await page.reload();
    await page.locator('#skillChooser:not([hidden])').waitFor();
+   assert.equal(await page.locator('#pwaInstallOffer').isHidden(),true);
+  }finally{await browser.close()}
+ });
+ test('PWA '+name+' one click opens native installer without instructional intermediate',{timeout:90000},async()=>{
+  const {page,browser}=await open(engine);
+  try{
+   await enter(page);
+   const prevented=await page.evaluate(()=>{
+    window.__nativePrompts=0;
+    const e=new Event('beforeinstallprompt',{cancelable:true});
+    e.prompt=()=>{window.__nativePrompts++;return Promise.resolve({outcome:'accepted'});};
+    e.userChoice=Promise.resolve({outcome:'accepted'});
+    window.dispatchEvent(e);return e.defaultPrevented;
+   });
+   assert.equal(prevented,true);
+   assert.equal(await page.locator('#pwaOfferInstall').isEnabled(),true);
+   assert.match(await page.locator('#pwaOfferInstall').innerText(),/Nainstalovat LSH/);
+   await page.locator('#pwaOfferInstall').click();
+   await page.waitForFunction(key=>JSON.parse(localStorage.getItem(key)||'null')?.choice==='installed',key);
+   assert.equal(await page.evaluate(()=>window.__nativePrompts),1);
    assert.equal(await page.locator('#pwaInstallOffer').isHidden(),true);
    await page.goto(base+'?skill=cteni');
    await page.locator('#catalog:not([hidden])').waitFor();
    assert.equal(await page.locator('#pwaInstallOffer').isHidden(),true);
   }finally{await browser.close()}
  });
- test('PWA '+name+' can be hidden permanently and responds to browser install event',{timeout:90000},async()=>{
-  const {page,browser}=await open(engine);
-  try{
-   await page.goto(base);
-   await page.locator('#pwaInstallOffer:visible').waitFor();
-   await page.locator('#pwaOfferNever').click();
-   await page.reload();
-   await page.locator('#skillChooser:not([hidden])').waitFor();
-   assert.equal(await page.locator('#pwaInstallOffer').isHidden(),true);
-   await page.evaluate(()=>localStorage.removeItem('lsh:pwa-install-choice:v1'));
-   await page.reload();
-   await page.locator('#pwaInstallOffer:visible').waitFor();
-   const prevented=await page.evaluate(()=>{
-    window.__prompts=0;
-    const e=new Event('beforeinstallprompt',{cancelable:true});
-    e.prompt=()=>{window.__prompts++;return Promise.resolve()};
-    e.userChoice=Promise.resolve({outcome:'accepted'});
-    window.dispatchEvent(e);return e.defaultPrevented;
+ test('PWA '+name+' modern navigator.install method used directly if browser supports it',{timeout:90000},async()=>{
+  const {page,browser}=await open(engine,{},async page=>{
+   await page.addInitScript(()=>{
+    window.__webInstallCalls=0;
+    Object.defineProperty(navigator,'install',{configurable:true,value:()=>{
+     window.__webInstallCalls++;return Promise.resolve({});}});
    });
-   assert.equal(prevented,true);
+  });
+  try{
+   await enter(page);
+   assert.equal(await page.locator('#pwaOfferInstall').isEnabled(),true);
    await page.locator('#pwaOfferInstall').click();
-   await page.waitForFunction(()=>JSON.parse(localStorage.getItem('lsh:pwa-install-choice:v1')||'null')?.choice==='installed');
-   assert.equal(await page.evaluate(()=>window.__prompts),1);
+   await page.waitForFunction(key=>JSON.parse(localStorage.getItem(key)||'null')?.choice==='installed',key);
+   assert.equal(await page.evaluate(()=>window.__webInstallCalls),1);
   }finally{await browser.close()}
  });
- test('PWA '+name+' iPhone help is visible without viewport overflow',{timeout:90000},async()=>{
-  const {page,browser}=await open(engine,{viewport:{width:390,height:844},isMobile:true,hasTouch:true,userAgent:iphone});
-  try{
-   await page.goto(base);
-   await page.locator('#pwaInstallOffer:visible').waitFor();
-   const r=await page.locator('#pwaInstallOffer').boundingBox();
-   assert.ok(r.x>=0&&r.y>=0&&r.x+r.width<=391&&r.y+r.height<=845,JSON.stringify(r));
-   await page.locator('#pwaOfferInstall').click();
-   assert.match(await page.locator('#pwaOfferHelp').innerText(),/Přidat na plochu/);
-  }finally{await browser.close()}
- });
- test('PWA '+name+' chooser navigation stays clickable while install offer is visible',{timeout:90000},async()=>{
+ test('PWA '+name+' permanent dismissal, Back and chooser navigation',{timeout:90000},async()=>{
   const {page,browser}=await open(engine);
   try{
-   await page.goto(base);
-   await page.locator('#skillChooser:not([hidden])').waitFor();
-   await page.locator('#pwaInstallOffer:visible').waitFor();
-   const overlap=await page.evaluate(()=>{
-    const offer=document.getElementById('pwaInstallOffer').getBoundingClientRect();
-    const back=document.getElementById('closeChooser').getBoundingClientRect();
-    return Math.max(0,Math.min(offer.right,back.right)-Math.max(offer.left,back.left))*
-     Math.max(0,Math.min(offer.bottom,back.bottom)-Math.max(offer.top,back.top));
-   });
-   assert.equal(overlap,0,'Install panel must not overlap Back');
+   await enter(page);
    await page.locator('#closeChooser').click({timeout:5000});
    await page.locator('#skipIntro').click({timeout:5000});
-   await page.locator('#skillChooser:not([hidden])').waitFor();
+   await page.locator('#pwaInstallOffer:visible').waitFor();
    await page.locator('[data-choose-skill="cteni"]').click({timeout:5000});
    await page.locator('#catalog:not([hidden])').waitFor();
    await page.locator('#changeLab').click({timeout:5000});
+   await page.locator('#pwaInstallOffer:visible').waitFor();
    await page.locator('#closeChooser').click({timeout:5000});
    await page.locator('#catalog:not([hidden])').waitFor();
+   await page.locator('#changeLab').click({timeout:5000});
+   await page.locator('#pwaOfferNever').click();
+   await page.reload();
+   await page.locator('#catalog:not([hidden])').waitFor();
+   await page.locator('#changeLab').click();
+   assert.equal(await page.locator('#pwaInstallOffer').isHidden(),true);
   }finally{await browser.close()}
  });
- test('PWA '+name+' skips offer in already-installed context',{timeout:90000},async()=>{
+ test('PWA '+name+' narrow & mobile viewport matrix has no chooser overlap',{timeout:90000},async()=>{
+  const {page,browser}=await open(engine,{viewport:{width:320,height:568}});
+  try{
+   await enter(page);
+   const matrix=[[320,568],[375,667],[390,844],[430,932],[768,1024],
+    [844,390],[932,430],[1024,768],[1280,800],[1366,768],[1440,900],[1920,1080]];
+   for(const [w,h] of matrix){
+    await page.setViewportSize({width:w,height:h});
+    await page.waitForTimeout(100);
+    const m=await geometry(page,name+' '+w+'x'+h);
+    if(w<=430||h<=430){
+     await page.locator('#skillChooser').evaluate(el=>{el.scrollTop=el.scrollHeight;});
+     await page.waitForTimeout(100);
+     const scrolled=await geometry(page,name+' scrolled '+w+'x'+h);
+     if(scrolled.docked&&scrolled.scrollTop>4)
+      assert.equal(scrolled.bannerVisible,false,'Scrolling mobile chooser must hide corner notification');
+    }
+    assert.ok(m.a.width>=150, 'Notification must remain readable');
+    const button=page.locator('#closeChooser');
+    await button.click({timeout:5000});
+    await page.locator('#skipIntro').click({timeout:5000});
+    await page.locator('#skillChooser:not([hidden])').waitFor();
+   }
+  }finally{await browser.close()}
+ });
+ test('PWA '+name+' iPhone: unobtrusive top banner with honest manual install fallback',{timeout:90000},async()=>{
+  const {page,browser}=await open(engine,{viewport:{width:390,height:844},isMobile:true,hasTouch:true,userAgent:iphone});
+  try{
+   await enter(page);
+   const m=await geometry(page,name+' iPhone');
+   assert.equal(m.docked,true);
+   assert.equal(await page.locator('#pwaOfferInstall').isEnabled(),true);
+   assert.match(await page.locator('#pwaOfferInstall').innerText(),/Přidat na plochu/);
+   await page.locator('#pwaOfferInstall').tap();
+   assert.match(await page.locator('#pwaOfferHelp').innerText(),/Sdílet.*Přidat na plochu/);
+   await page.waitForTimeout(100);
+   await geometry(page,name+' iPhone expanded');
+   await page.locator('#pwaOfferClose').tap();
+   assert.equal(await page.locator('#pwaInstallOffer').isHidden(),true);
+  }finally{await browser.close()}
+ });
+ test('PWA '+name+' Android phone native-install prompt and landscape layout',{timeout:90000},async()=>{
+  const {page,browser}=await open(engine,{viewport:{width:390,height:844},isMobile:true,hasTouch:true,userAgent:android});
+  try{
+   await enter(page);
+   await geometry(page,name+' Android portrait');
+   await page.evaluate(()=>{
+    const e=new Event('beforeinstallprompt',{cancelable:true});
+    e.prompt=()=>Promise.resolve({outcome:'dismissed'});
+    window.dispatchEvent(e);
+   });
+   assert.equal(await page.locator('#pwaOfferInstall').isEnabled(),true);
+   await page.setViewportSize({width:844,height:390});
+   await page.waitForTimeout(100);
+   await geometry(page,name+' Android landscape');
+   await page.locator('#pwaOfferInstall').tap();
+   await page.waitForFunction(key=>JSON.parse(localStorage.getItem(key)||'null')?.choice==='later',key);
+  }finally{await browser.close()}
+ });
+ test('PWA '+name+' standalone mode never shows invitation',{timeout:90000},async()=>{
   const {page,browser}=await open(engine,{},async page=>{
    await page.addInitScript(()=>Object.defineProperty(navigator,'standalone',{configurable:true,value:true}));
   });
