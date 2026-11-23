@@ -120,3 +120,38 @@ test('A6: missing via and incorrect B2 turn receive task-specific feedback',{tim
   }finally{await page.close();}
  }finally{await browser.close();}
 });
+
+test('Metro place aliases and transfer icon are consistent with surface labels',{timeout:90000},async()=>{
+ const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ try{
+  for(const language of ['es','de','fr']){
+   const {page,errors}=await open(browser,language,'B2',390,844);
+   try{
+    await page.locator('#metroPilotToggle').click();
+    await page.locator('#f1Stations button').nth(7).click();
+    const central=await page.locator('[data-landmark-label="CENTRAL STATION"] text').textContent();
+    const square=await page.locator('[data-landmark-label="MARKET SQUARE"] text').textContent();
+    assert.equal(central,'CENTRAL STATION');
+    assert.equal(square,'MARKET SQUARE');
+    assert.equal(await page.locator('#mapLocation').textContent(),'Central Station');
+    if(language==='de'){
+     assert.match(await page.locator('#f1Stations button').nth(7).getAttribute('aria-label'),/^Aufgabe 08:/);
+     assert.match(await page.locator('#f1Stations button').nth(5).innerText(),/🔀/);
+    }
+    assert.deepEqual(errors,[]);
+   }finally{await page.close();}
+  }
+ }finally{await browser.close();}
+});
+test('French dialogue uses non-breaking typographic space before questions',{timeout:45000},async()=>{
+ const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ try{
+  const {page,errors}=await open(browser,'fr','C1',390,844);
+  try{
+   await page.locator('#f1Stations button').nth(2).click();
+   const dialogue=await page.locator('#f1Panel .f2-dialogue-bubble').innerText();
+   assert.match(dialogue,/\u202f\?/,'French question mark should be joined to its preceding word');
+   assert.deepEqual(errors,[]);
+  }finally{await page.close();}
+ }finally{await browser.close();}
+});
