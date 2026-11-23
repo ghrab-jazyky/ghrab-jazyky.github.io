@@ -117,7 +117,8 @@
   if(typeof mode.addEventListener==='function')mode.addEventListener('change',update);
  }
  update();
- if('serviceWorker' in navigator&&window.isSecureContext){
+ // Install the worker only on HTTPS deployments; local HTTP QA stays network-transparent.
+ if('serviceWorker' in navigator&&location.protocol==='https:'){
   window.addEventListener('load',()=>{
    navigator.serviceWorker.register('./sw.js',{scope:'./',updateViaCache:'none'}).catch(()=>{});
   },{once:true});
