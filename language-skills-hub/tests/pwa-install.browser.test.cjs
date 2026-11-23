@@ -30,14 +30,20 @@ async function geometry(page,tag){
    Math.max(0,Math.min(a.bottom,b.bottom)-Math.max(a.y,b.y));
   return {a,b,intersection,viewport:{w:document.documentElement.clientWidth,h:innerHeight},
    docked:$('skillChooser').classList.contains('pwa-install-docked'),
+   scrollTop:$('skillChooser').scrollTop,
+   bannerVisible:getComputedStyle($('pwaInstallOffer')).visibility!=='hidden',
    scroll:$('skillChooser').scrollWidth-document.documentElement.clientWidth,
    insideCard:document.querySelector('.chooser-panel').contains($('pwaInstallOffer')),
    back:rect($('closeChooser'))};
  });
  assert.equal(m.insideCard,false,tag+': popup must be OUTSIDE the "Co dnes potřebuješ" card');
- assert.ok(m.a.x>=-1&&m.a.right<=m.viewport.w+1,tag+': popup outside viewport '+JSON.stringify(m));
- assert.ok(m.a.y>=-1&&m.a.bottom<=m.viewport.h+2,tag+': popup below viewport '+JSON.stringify(m));
- assert.ok(m.intersection<1,tag+': popup must not cover ANY portion of chooser card '+JSON.stringify(m));
+ if(m.bannerVisible){
+  assert.ok(m.a.x>=-1&&m.a.right<=m.viewport.w+1,tag+': popup outside viewport '+JSON.stringify(m));
+  assert.ok(m.a.y>=-1&&m.a.bottom<=m.viewport.h+2,tag+': popup below viewport '+JSON.stringify(m));
+  assert.ok(m.intersection<1,tag+': visible popup must not cover ANY portion of chooser card '+JSON.stringify(m));
+ }else{
+  assert.ok(m.docked&&m.scrollTop>4,tag+': only a scrolling compact popup may be invisible '+JSON.stringify(m));
+ }
  assert.ok(m.scroll<=3,tag+': horizontal viewport overflow '+JSON.stringify(m));
  return m;
 }
@@ -136,7 +142,9 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
     if(w<=430||h<=430){
      await page.locator('#skillChooser').evaluate(el=>{el.scrollTop=el.scrollHeight;});
      await page.waitForTimeout(100);
-     await geometry(page,name+' scrolled '+w+'x'+h);
+     const scrolled=await geometry(page,name+' scrolled '+w+'x'+h);
+     if(scrolled.docked&&scrolled.scrollTop>4)
+      assert.equal(scrolled.bannerVisible,false,'Scrolling mobile chooser must hide corner notification');
     }
     assert.ok(m.a.width>=150, 'Notification must remain readable');
     const button=page.locator('#closeChooser');
