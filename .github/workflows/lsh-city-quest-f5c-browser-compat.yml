@@ -1,0 +1,60 @@
+name: LSH City Quest F5C - Current Playwright compatibility (informative)
+on:
+  pull_request:
+    paths:
+      - "language-skills-hub/konverzace/city-quest-f2/**"
+      - "language-skills-hub/authoring/city-quest-f*/**"
+      - "language-skills-hub/tests/city-quest-*"
+      - ".github/workflows/lsh-city-quest-f5c-browser-compat.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: city-quest-current-browser-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  current-playwright-informative:
+    name: Current Playwright - Chromium and WebKit (nonblocking)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install current Playwright without altering checked-in dependencies
+        run: |
+          npm install --no-save --ignore-scripts playwright@latest
+          npx playwright --version
+          npx playwright install --with-deps chromium webkit
+        timeout-minutes: 15
+      - name: Build offline HTML and inspect launch
+        run: |
+          node language-skills-hub/authoring/city-quest-f2/build-preview.cjs --write
+          node --check language-skills-hub/konverzace/city-quest-f2/f2.js
+      - name: Browser compatibility sampling at exact PR HEAD
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/city-quest-current-browser-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill $server_pid' EXIT
+          for i in $(seq 1 40); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/city-quest-f5c.state.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-f5c.mobile.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-f3c.mobile.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-f2-1d.metro.browser.test.cjs
+        timeout-minutes: 19
+      - name: Publish compatibility screenshots and environment details
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: city-quest-current-playwright-informative
+          path: |
+            city-quest-f2-1d-artifacts/
+            city-quest-f3c-artifacts/
+            /tmp/city-quest-current-browser-http.log
+          if-no-files-found: ignore
+          retention-days: 14
