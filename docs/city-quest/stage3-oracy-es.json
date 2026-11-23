@@ -29,10 +29,10 @@
     "1": {
       "B2": "Dos visitantes tienen necesidades distintas: uno quiere llevarse un libro prestado y el otro desea ver objetos históricos. Recomiéndales los lugares adecuados de Riverton y justifica cada elección.",
       "C1": "Un visitante pregunta por el «lugar donde hay libros», pero también dice que necesita enviar un paquete. Haz una pregunta para aclararlo y distingue la biblioteca de la oficina de correos con referencias útiles.",
-      "C2": "Dos visitantes confunden Central Station con Market Square y discuten sobre el punto de encuentro. Media en el malentendido, distingue ambos lugares con precisión y confirma dónde quieren reunirse."
+      "C2": "Dos visitantes confunden Estación Central con Plaza del Mercado y discuten sobre el punto de encuentro. Media en el malentendido, distingue ambos lugares con precisión y confirma dónde quieren reunirse."
     },
     "2": {
-      "B2": "Explica la ruta a pie que has elegido hasta el Museo de la Ciudad pasando por Market Square. Compárala con otra visible en el plano y justifica por qué debes pasar por la plaza.",
+      "B2": "Explica la ruta a pie que has elegido hasta el Museo de la Ciudad pasando por Plaza del Mercado. Compárala con otra visible en el plano y justifica por qué debes pasar por la plaza.",
       "C1": "Un grupo tiene que visitar la Biblioteca antes de llegar al Museo de la Ciudad. Explica la ruta por etapas y anticipa un cruce en el que podrían equivocarse.",
       "C2": "Debes llegar al Museo de la Ciudad pasando por la Biblioteca y sin cruzar el tramo cortado por las obras. Compara un camino aparentemente más corto, pero bloqueado, con uno válido y explica las condiciones con tacto."
     },
@@ -64,7 +64,7 @@
     "8": {
       "B2": "Tu grupo debe pasar por varios puntos de Riverton antes de llegar al museo. Resume el orden, justifica una decisión y compárala con un atajo tentador.",
       "C1": "Guía a tu compañero por todos los puntos obligatorios. Señala un posible error de orientación y explica cómo lo corregirías sin reiniciar el recorrido.",
-      "C2": "Dos visitantes tienen prioridades opuestas durante la ruta urbana. Negocia un orden viable que respete todos los puntos obligatorios y presenta un plan común, claro y justificado."
+      "C2": "Un visitante quiere ir primero a la Biblioteca, pero la misión exige pasar por la Plaza del Mercado, después por la Biblioteca y finalmente por el Museo de la Ciudad. Explica este orden obligatorio con tacto, concilia las prioridades del grupo y presenta una ruta viable."
     }
   },
   "metro": {
