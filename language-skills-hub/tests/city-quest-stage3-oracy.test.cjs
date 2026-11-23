@@ -53,6 +53,29 @@ test('Authoring matrix matches offline inline source and contains exactly 144 un
  }
  assert.equal(new Set(all.map(x=>x.prompt)).size,144);
 });
+test('CITY signage follows selected language and C2 final task respects fixed checkpoints',()=>{
+ const canonical={
+  en:['Market Square','Library','City Museum'],
+  es:['Plaza del Mercado','Biblioteca','Museo de la Ciudad'],
+  de:['Marktplatz','Bibliothek','Stadtmuseum'],
+  fr:['Place du Marché','Bibliothèque','Musée municipal']
+ };
+ const orderMarker={en:'requires',es:'exige',de:'verlangt',fr:'impose'};
+ for(const lang of languages){
+  const city=JSON.stringify(embedded[lang].city);
+  if(lang!=='en')assert.doesNotMatch(city,/Market Square|Central Station/,
+    lang+': city landmark labels must use localized names');
+  const prompt=embedded[lang].city['8'].C2,marker=orderMarker[lang];
+  assert.ok(prompt.includes(marker),lang+' C2 must explain mandatory checkpoint order');
+  const order=prompt.slice(prompt.indexOf(marker)+marker.length);
+  const locations=canonical[lang].map(name=>order.indexOf(name));
+  assert.ok(locations.every(i=>i>=0)&&locations[0]<locations[1]&&locations[1]<locations[2],
+    lang+' City08 cannot offer reordering of required checkpoints');
+  // The metro is a fictional network with deliberately English on-platform signs.
+  assert.match(embedded[lang].metro['8'].B2,/Market Square/);
+  assert.match(embedded[lang].metro['8'].B2,/University/);
+ }
+});
 test('CEFR guard excludes A1/A2/B1 and preserves metro B1 availability',()=>{
  assert.match(html,/if\(!\["B2","C1","C2"\]\.includes\(state.level\)\)return null/);
  assert.match(html,/mode=metroPilot\(\)\?"metro":"city"/);
