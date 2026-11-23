@@ -42,9 +42,9 @@ test('A3/A4: mobile translated controls keep entire words and station names matc
     });
     assert.deepEqual(broken,[],'Broken native-language words '+language+'/'+width);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
-    const visible=await page.locator('#f1Stations button').first().innerText();
+    const visible=await page.locator('#f1Stations button .f1-station-caption small').first().innerText();
     const accessible=await page.locator('#f1Stations button').first().getAttribute('aria-label');
-    assert.ok(accessible.includes(visible.split('\n')[0].trim()),'Accessible label must contain visible Station 01');
+    assert.ok(accessible.includes(visible.trim()),'Accessible label must contain visible Station 01');
     assert.deepEqual(errors,[]);
    }finally{await page.close();}
   }
