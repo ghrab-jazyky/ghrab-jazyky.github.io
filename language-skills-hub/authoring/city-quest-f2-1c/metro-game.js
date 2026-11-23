@@ -44,7 +44,7 @@
    stationNumber:number,scenarioId:d.id,phase:number===8?"walk-to-entrance":number===7?"notice":"select-line",
    metroStation:s.start,legIndex:0,stopIndex:0,lineId:null,direction:null,platform:null,
    surface:number===8?clone(surfaceStart):null,cityPath:number===8?[clone(surfaceStart)]:[],
-   noticeRead:false,attempts:0,completed:false,speakingDone:0,resumePhase:null,history:[]
+   noticeRead:false,ticketsCollected:false,attempts:0,completed:false,speakingDone:0,resumePhase:null,history:[]
   });
  }
  function fail(state,message){
@@ -84,10 +84,10 @@
     surface:clone(action.node),cityPath:path,
     phase:arrived?(state.phase==="walk-to-entrance"?"checkpoint":"speech"):state.phase,
     resumePhase:arrived&&state.phase==="walk-to-entrance"?"enter":state.resumePhase
-   },arrived?(state.phase==="walk-to-entrance"?"You have reached Market Square station. Explain how you walked here before entering.":"You have reached City Museum. Explain your complete journey aloud."):"One city block completed.","WALK");
+   },arrived?(state.phase==="walk-to-entrance"?"You have reached Market Square. Collect your reserved museum tickets at the information desk and explain how you got here.":"You have reached City Museum. Explain your complete journey aloud."):"One city block completed.","WALK");
   }
   if(type==="ENTER"){
-   if(state.phase!=="enter"||!same(state.surface,portalStart))return fail(state,"Find the Market Square metro entrance first.");
+   if(state.phase!=="enter"||!same(state.surface,portalStart)||!state.ticketsCollected)return fail(state,"Find the Market Square metro entrance first.");
    return success(state,{phase:"select-line"},"You have entered Market Square station. Read the network and choose a line.","ENTER");
   }
   if(type==="READ_NOTICE"){
@@ -176,6 +176,7 @@
    if(state.phase!=="speech"&&state.phase!=="checkpoint")return fail(state,"Finish this route section before the speaking checkpoint.");
    const finished=state.phase==="speech";
    return success(state,{phase:finished?"complete":state.resumePhase,speakingDone:state.speakingDone+1,
+    ticketsCollected:state.ticketsCollected||(state.phase==="checkpoint"&&state.resumePhase==="enter"),
     resumePhase:null},finished?"Mission completed. Speaking was self-assessed, not automatically graded.":"Speaking checkpoint confirmed. Continue your journey.",type);
   }
   return fail(state,"Unknown action.");

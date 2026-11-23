@@ -23,9 +23,11 @@ function pilot(n){
   s=rejected(s,"WALK",{c:2,r:2}); // no jumping over city blocks
   for(const p of [{c:1,r:3},{c:2,r:3},{c:2,r:2}])s=accepted(s,"WALK",p);
   assert.equal(s.phase,"checkpoint","Market Square requires explicit oral checkpoint");
+  assert.equal(s.ticketsCollected,false,"Reserved tickets must not be marked collected before checkpoint");
   s=rejected(s,"ENTER");
   s=accepted(s,"SELF_CHECK");
   assert.equal(s.speakingDone,1);
+  assert.equal(s.ticketsCollected,true,"Market Square checkpoint acknowledges collection of tickets");
   s=accepted(s,"ENTER");
  }
  if(n===7){
