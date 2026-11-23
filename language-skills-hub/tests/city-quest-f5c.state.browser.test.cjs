@@ -455,7 +455,7 @@ test("F5C student surfaces never show internal F version labels or prototype mar
     for(const mission of [1,5,6,7,8]){
      await page.locator("#f1Stations button").nth(mission-1).click();
      const text=await page.locator("body").innerText();
-     assert.doesNotMatch(text,/\\bF[0-9]+(?:\\.[0-9]+[A-Z]?)?\\b|No API|visual prototype/i,
+     assert.doesNotMatch(text,/\bF[0-9]+(?:\.[0-9]+[A-Z]?)?\b|No API|visual prototype/i,
        language+"/"+mode+"/"+mission+": visible internal build marker");
      assert.doesNotMatch(await page.title(),/City Quest F[0-9]/i);
     }
