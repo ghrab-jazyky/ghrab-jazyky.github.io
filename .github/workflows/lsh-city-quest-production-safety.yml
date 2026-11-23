@@ -77,6 +77,10 @@ jobs:
         run: |
           node --check language-skills-hub/tests/city-quest-stage3-oracy.test.cjs
           node --test language-skills-hub/tests/city-quest-stage3-oracy.test.cjs
+      - name: Check Claude stage-A findings and all signed-off invariants
+        run: |
+          node --check language-skills-hub/tests/city-quest-claude-stage-a.test.cjs
+          node --test language-skills-hub/tests/city-quest-claude-stage-a.test.cjs
   city-quest-stage-two-browser:
     runs-on: ubuntu-24.04
     container:
@@ -89,7 +93,7 @@ jobs:
         with:
           node-version: '24'
       - name: Install browser test API
-        run: npm install --no-save --ignore-scripts playwright@1.56.1
+        run: npm install --no-save --ignore-scripts playwright@1.56.1 axe-core@4.10.3
       - name: Test City Quest mode safety, teacher notes, feedback and mobile navigation
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/cq-stage2-http.log 2>&1 &
@@ -103,6 +107,8 @@ jobs:
           node --test language-skills-hub/tests/city-quest-stage2.browser.test.cjs
           node --check language-skills-hub/tests/city-quest-stage3-oracy.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-stage3-oracy.browser.test.cjs
+          node --check language-skills-hub/tests/city-quest-claude-stage-a.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-claude-stage-a.browser.test.cjs
   city-quest-release-40:
     name: City Quest release gate — 40 complete journeys
     runs-on: ubuntu-24.04
