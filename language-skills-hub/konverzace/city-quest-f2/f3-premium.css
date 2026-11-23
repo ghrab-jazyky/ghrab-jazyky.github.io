@@ -219,9 +219,17 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
  body[data-presentation="on"] .topbar{padding-right:10px;padding-top:66px}
  body[data-presentation="on"] .f1-station{min-height:60px}
  body[data-presentation="on"] .map-viewport:not(.detail){max-height:none}
+ /* With the Experience summary at the LEFT of a wrapped mobile topbar,
+    right-aligned absolute positioning clips the panel off-screen. */
  .f3-experience-panel{right:0}
  .f3-control{min-height:44px}
  .topbar .header-actions{width:100%}
+}
+/* The 320/390px header wraps the Experience trigger to the left.
+   Anchor the popup to that same edge, not to an off-screen right edge.
+   At >=421px retain the already verified right-aligned layout. */
+@media(max-width:420px){
+ .f3-experience-panel{left:0;right:auto;max-height:calc(100dvh - 24px);overflow-y:auto}
 }
 /* User-controlled increased contrast, across classic city and metro. */
 :root[data-contrast="high"]{

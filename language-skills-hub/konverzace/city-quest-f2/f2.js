@@ -82,8 +82,20 @@
   };
   const roadworks=()=>roadworksCopy[state.language]||roadworksCopy.en;
 
+  // Catalog links contain ?lang=; treat all URL parameters as untrusted and
+  // accept only authored languages/levels. No remote requests or persistence.
+  const launchParams=new URLSearchParams(window.location.search);
+  const launchLanguage=launchParams.get("lang"),launchLevel=launchParams.get("level");
+  const initialLanguage=C.languages.includes(launchLanguage)?launchLanguage:"en";
+  const initialLevel=C.levels.includes(launchLevel)?launchLevel:"B1";
+  const skipLabels={
+    en:["Skip to missions","Skip to active task"],
+    es:["Saltar a las misiones","Saltar a la actividad actual"],
+    de:["Zu den Missionen springen","Zur aktuellen Aufgabe springen"],
+    fr:["Aller aux missions","Aller à l'activité en cours"]
+  };
   let metroEnabled=false;
-  let state=makeSession("en","B1","solo");
+  let state=makeSession(initialLanguage,initialLevel,"solo");
   let flash=null;
   function makeSession(language,level,mode){
     return {language,level,mode:mode||"solo",station:1,done:new Set(),
@@ -934,6 +946,9 @@
     $("f2HeroLanguage").textContent=p.native;
     $("f2HeroLevel").textContent=state.level;
     $("cityQuestGameType").textContent=gameType[state.language];
+    $("cityQuestHeaderType").textContent="Language Skills Hub · "+gameType[state.language];
+    $("f3Skip").textContent=skipLabels[state.language][0];
+    $("f3SkipTask").textContent=skipLabels[state.language][1];
     $("f2HeroText").textContent=p.stations[0][1]+" "+u.objective;
     document.querySelector(".hero h1").textContent=p.stations[7][0];
     document.querySelector(".f1-mode>span").textContent=u.mode;
@@ -1056,11 +1071,14 @@
     b.setAttribute("aria-pressed",String(metroEnabled&&available));
     const pilot=metroEnabled&&available,hero=document.querySelector(".hero h1"),
       heroText=$("f2HeroText"),headerTag=document.querySelector(".topbar .header-actions .tag"),
-      variantTag=document.querySelector(".hero .tags .tag:nth-child(3)");
+      variantTag=$("cityQuestVariant");
     if(pilot){hero.textContent=content.title;heroText.textContent=content.header;}
     else{hero.textContent=pack().stations[7][0];heroText.textContent=pack().stations[0][1]+" "+ui().objective;}
-    if(headerTag)headerTag.textContent=pilot?"CITY QUEST · "+state.level+" METRO":"CITY QUEST · PREMIUM";
-    if(variantTag)variantTag.textContent=pilot?state.language.toUpperCase()+" · "+state.level+" METRO":"8 × 4 × 6";
+    const modeLabel=lesson().metro.split(" · ")[0];
+    if(headerTag)headerTag.textContent=pilot?"CITY QUEST · "+state.level+" "+modeLabel:"CITY QUEST · PREMIUM";
+    if(variantTag)variantTag.textContent=pilot?state.language.toUpperCase()+" · "+state.level+" "+modeLabel:"8 × 4 × 6";
+    // Never overwrite the visible game-type badge with numeric statistics.
+    $("cityQuestGameType").textContent=gameType[state.language];
     document.title=pilot?content.title+" · "+content.native+" "+state.level+" · LSH":
       "City Quest · "+pack().native+" "+state.level+" · Language Skills Hub";
   }

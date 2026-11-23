@@ -178,3 +178,57 @@ test("F5C N01 metro mission text remains readable in light theme across EN/ES/DE
   }
  }finally{await browser.close();}
 });
+
+test("F5C NEW-01: Experience panel and all controls stay on-screen at phone and tablet widths",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  for(const width of [320,390,525,768]){
+   const page=await browser.newPage({viewport:{width,height:844},isMobile:width<=525,hasTouch:width<=525});
+   await page.goto(URL);
+   await page.locator("#f3ExperienceSummary").click();
+   const bounds=await page.evaluate(()=>{
+    const nodes=[document.querySelector(".f3-experience-panel"),
+      ...document.querySelectorAll(".f3-experience-panel .f3-control")];
+    return nodes.map(n=>{const r=n.getBoundingClientRect();
+     return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,w:r.width,h:r.height,
+       viewport:document.documentElement.clientWidth,inner:window.innerWidth};});
+   });
+   assert.equal(bounds.length,5);
+   for(const [i,b] of bounds.entries()){
+    assert.ok(b.w>=44&&b.h>=44&&b.left>=-1&&b.right<=b.viewport+1,
+     JSON.stringify({width,i,b}));
+   }
+   await page.close();
+  }
+ }finally{await browser.close();}
+});
+test("F5C N03/NEW-03/NEW-06: game identity and catalog language survive metro toggles",async()=>{
+ const browser=await chromium.launch({headless:true});
+ try{
+  const labels={en:"Interactive language game",es:"Juego interactivo de idiomas",
+    de:"Interaktives Sprachspiel",fr:"Jeu de langue interactif"};
+  const skips={es:"Saltar",de:"springen",fr:"Aller"};
+  for(const lang of ["en","es","de","fr"]){
+   const page=await browser.newPage();
+   await page.goto(URL+"?practice=1&lang="+lang+"&level=C1");
+   assert.equal(await page.locator("#f2Language").inputValue(),lang);
+   assert.equal(await page.locator("#f2Level").inputValue(),"C1");
+   assert.ok((await page.locator("#cityQuestGameType").innerText()).includes(labels[lang]));
+   assert.ok((await page.locator("#cityQuestHeaderType").innerText()).includes(labels[lang]));
+   assert.doesNotMatch(await page.locator("#cityQuestHeaderType").innerText(),/Conversation Lab/);
+   if(lang!=="en")assert.ok((await page.locator("#f3Skip").innerText()).includes(skips[lang]));
+   await page.locator("#metroPilotToggle").click();
+   await page.locator("#f1Stations button").nth(5).click();
+   assert.ok((await page.locator("#cityQuestGameType").innerText()).includes(labels[lang]));
+   assert.ok((await page.locator("#cityQuestVariant").innerText()).includes("C1"));
+   await page.locator("#metroPilotToggle").click();
+   assert.ok((await page.locator("#cityQuestGameType").innerText()).includes(labels[lang]));
+   await page.close();
+  }
+  const invalid=await browser.newPage();
+  await invalid.goto(URL+"?lang=zz&level=Z9");
+  assert.equal(await invalid.locator("#f2Language").inputValue(),"en");
+  assert.equal(await invalid.locator("#f2Level").inputValue(),"B1");
+  await invalid.close();
+ }finally{await browser.close();}
+});
