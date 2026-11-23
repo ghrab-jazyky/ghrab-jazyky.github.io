@@ -31,7 +31,7 @@ test('Stage F: curated release history is valid and chronological',()=>{
 });
 test('Stage F: published history only describes deployed baseline topics',()=>{
  assert.equal(version.version,'R70-LISTENING-STUDIO-UNIFICATION');
- assert.equal(cards.entries.length,34);
+ assert.equal(cards.entries.length,35);
  for(const id of ['cl-jidlo-piti-restaurace','ll-how-to-choose-your-news','ll-sad','ll-conlangs']){
   assert.ok(cards.entries.some(e=>e.id===id),id);
  }

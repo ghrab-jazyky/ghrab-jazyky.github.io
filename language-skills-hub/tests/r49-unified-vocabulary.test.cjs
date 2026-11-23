@@ -7,13 +7,18 @@ const version=JSON.parse(read('version.json'));
 const {integrityContent}=require('./reading-content-integrity.cjs');
 const MODEL=require('../assets/lsh/v3/model.js'),legacy=require('../assets/lsh/v3/legacy-reading-migration.js');
 const bridge=require('../assets/lsh/v3/card-bridge.js');
-test('R49: every one of 34 staged cards uses exactly one canonical vocabulary bridge',()=>{
- assert.equal(data.length,34);
- assert.deepEqual(['konverzace','cteni','poslech'].map(skill=>data.filter(e=>e.skill===skill).length),[23,5,6]);
+test('R49: all 34 legacy cards retain exactly one bridge; standalone City Quest does not store vocabulary',()=>{
+ assert.equal(data.length,35);
+ assert.deepEqual(['konverzace','cteni','poslech'].map(skill=>data.filter(e=>e.skill===skill).length),[24,5,6]);
+ assert.equal(data.filter(e=>e.id!=='cl-city-quest-f2').length,34);
  for(const e of data){
   const html=read(e.relative);
   assert.equal(crypto.createHash('sha256').update(integrityContent(e.id,html)).digest('hex'),version.contentHashes[e.id],
    'Content integrity broken '+e.id);
+  if(e.id==='cl-city-quest-f2'){
+   assert.doesNotMatch(html,/assets\/lsh\/v3\/card-bridge\.js|assets\/lsh\/v3\/card-vocabulary\.js/);
+   continue;
+  }
   if(e.skill==='konverzace'){
    assert.equal((html.match(/assets\/lsh\/v3\/card-bridge\.js/g)||[]).length,1,e.id);
    assert.doesNotMatch(html,/card-vocabulary\.js|reading-lab-vocabulary/,e.id);

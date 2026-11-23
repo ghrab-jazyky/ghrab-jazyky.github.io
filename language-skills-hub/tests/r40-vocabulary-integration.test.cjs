@@ -9,9 +9,11 @@ const practice=require('../slovnicek/practice.js');
 const catalog=JSON.parse(read('data/cards.json')).entries;
 const manifest=JSON.parse(read('version.json'));
 const {integrityContent}=require('./reading-content-integrity.cjs');
-test('R40: all 34 staged cards use the shared local vocabulary store',()=>{
- assert.equal(catalog.length,34);
- const conv=catalog.filter(x=>x.skill==='konverzace'),readers=catalog.filter(x=>x.skill==='cteni'),listeners=catalog.filter(x=>x.skill==='poslech');
+test('R40: all 35 staged cards use the shared local vocabulary store',()=>{
+ assert.equal(catalog.length,35);
+ const original=catalog.filter(e=>e.id!=='cl-city-quest-f2');
+ assert.equal(original.length,34);
+ const conv=original.filter(x=>x.skill==='konverzace'),readers=original.filter(x=>x.skill==='cteni'),listeners=original.filter(x=>x.skill==='poslech');
  assert.deepEqual([conv.length,readers.length,listeners.length],[23,5,6]);
  const convBridge=read('assets/lsh/v3/card-bridge.js'),shared=read('assets/lsh/v3/card-vocabulary.js');
  assert.match(convBridge,/createStore\(\{mode:'production'\}\)/);
@@ -20,6 +22,10 @@ test('R40: all 34 staged cards use the shared local vocabulary store',()=>{
  for(const e of catalog){
   const source=read(e.relative);
   assert.equal(crypto.createHash('sha256').update(integrityContent(e.id,source)).digest('hex'),manifest.contentHashes[e.id],e.id);
+  if(e.id==='cl-city-quest-f2'){
+   assert.doesNotMatch(source,/assets\/lsh\/v3\/card-bridge\.js|assets\/lsh\/v3\/store\.js/);
+   continue;
+  }
   if(e.skill==='konverzace'){
    assert.match(source,/assets\/lsh\/v3\/card-bridge\.js/);
    assert.match(source,/assets\/lsh\/v3\/store\.js/);

@@ -4,8 +4,8 @@ const test=require('node:test'),assert=require('node:assert/strict');
 const {chromium,webkit}=require('playwright');
 const base='http://127.0.0.1:8765/language-skills-hub/';
 const config=[
- {skill:'konverzace',lang:'es',alternative:'de',count:23},
- {skill:'konverzace',lang:'en',alternative:'de',count:22},
+ {skill:'konverzace',lang:'es',alternative:'de',count:24},
+ {skill:'konverzace',lang:'en',alternative:'de',count:23},
  {skill:'cteni',lang:'fr',alternative:'en',count:5},
  {skill:'poslech',lang:'en',alternative:null,count:6}
 ];
