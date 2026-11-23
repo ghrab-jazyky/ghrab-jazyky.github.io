@@ -75,6 +75,13 @@
   const bounds=chooserPanel.getBoundingClientRect();
   const available=Math.max(0,document.documentElement.clientWidth-bounds.right-24);
   const dock=available<192;
+  // On a scrolled compact chooser the card moves underneath the fixed corner.
+  // Hide the notification temporarily to avoid covering any navigation/control.
+  const scrolled=dock&&chooser.scrollTop>4;
+  panel.classList.toggle('pwa-offer--scrolled',scrolled);
+  panel.setAttribute('aria-hidden',scrolled?'true':'false');
+  for(const button of [install,later,never,close])button.disabled=scrolled||installBusy||
+   (button===install&&!canPrompt()&&!manualOnly);
   chooser.classList.toggle('pwa-install-docked',dock);
   panel.classList.toggle('pwa-offer--docked',dock);
   if(dock){
