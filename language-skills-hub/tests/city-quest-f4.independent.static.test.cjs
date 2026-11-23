@@ -36,14 +36,15 @@ function parse(csv){
   .map(x=>x[1].replaceAll('""','"')));
  const columns=all.shift();return{columns,rows:all};
 }
-test("F4 independent: 256 distinct review cases (192 city + 64 metro), none auto-approved",()=>{
+test("F4 independent: 256 distinct review cases, evidence-backed human statuses only",()=>{
  const m=parse(fs.readFileSync("language-skills-hub/authoring/city-quest-f4/F4_256_variant_release_review_matrix.csv","utf8"));
  assert.deepEqual(m.columns,["language","cefr","mission","mode","linguistic_review",
-  "pedagogical_review","accessibility_review","owner_approval","notes"]);
+  "pedagogical_review","accessibility_review","owner_approval","notes",
+  "linguistic_evidence","pedagogical_evidence","accessibility_evidence","owner_evidence"]);
  assert.equal(m.rows.length,256);
  const counts={CITY:0,METRO:0},set=new Set();
  for(const row of m.rows){
-  assert.equal(row.length,9);
+  assert.equal(row.length,13);
   const [lang,level,mission,mode]=row;
   assert.ok(["en","es","de","fr"].includes(lang));
   assert.ok(["A1","A2","B1","B2","C1","C2"].includes(level));
@@ -52,7 +53,16 @@ test("F4 independent: 256 distinct review cases (192 city + 64 metro), none auto
   if(mode==="METRO")assert.ok(!["A1","A2"].includes(level)&&+mission>=5);
   const key=[lang,level,mission,mode].join(":");
   assert.ok(!set.has(key),"Duplicate "+key);set.add(key);counts[mode]++;
-  assert.deepEqual(row.slice(4,8),["PENDING","PENDING","PENDING","PENDING"]);
+  for(let i=0;i<4;i++){
+   const state=row[4+i],proof=row[9+i];
+   assert.ok(["PENDING","PASS","FAIL"].includes(state),key+" invalid review status "+state);
+   if(state==="PENDING")assert.equal(proof,"",key+" has evidence for an unreviewed decision");
+   else{
+    const signed=proof.match(/^(.{2,100}) \| (\d{4}-\d{2}-\d{2}) \| (.{5,500})$/);
+    assert.ok(signed,key+" "+state+" requires reviewer | YYYY-MM-DD | evidence reference");
+    assert.equal(new Date(signed[2]+"T00:00:00Z").toISOString().slice(0,10),signed[2],key+" invalid review date");
+   }
+  }
  }
  assert.deepEqual(counts,{CITY:192,METRO:64});
  // F3D listed only 192 *primary* variants. The 64 B1-C2 city fallbacks

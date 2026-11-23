@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "releaseDecision": "NO_GO",
+  "approvedArtifactSha256": "",
+  "explanation": "Human decisions only. This file never deploys or authorizes deployment by itself.",
+  "manualGates": {
+    "independentClaudeReview": {
+      "status": "PENDING",
+      "reviewer": "",
+      "date": "",
+      "evidence": ""
+    },
+    "editorialFinalAcceptance": {
+      "status": "PENDING",
+      "reviewer": "",
+      "date": "",
+      "evidence": ""
+    },
+    "ownerVisualApproval": {
+      "status": "PENDING",
+      "reviewer": "",
+      "date": "",
+      "evidence": ""
+    },
+    "physicalIPhoneSafari": {
+      "status": "PENDING",
+      "reviewer": "",
+      "date": "",
+      "evidence": ""
+    },
+    "physicalIPadSafariSplitView": {
+      "status": "PENDING",
+      "reviewer": "",
+      "date": "",
+      "evidence": ""
+    },
+    "physicalAndroidChrome": {
+      "status": "PENDING",
+      "reviewer": "",
+      "date": "",
+      "evidence": ""
+    },
+    "voiceOver": {
+      "status": "PENDING",
+      "reviewer": "",
+      "date": "",
+      "evidence": ""
+    },
+    "talkBack": {
+      "status": "PENDING",
+      "reviewer": "",
+      "date": "",
+      "evidence": ""
+    },
+    "publicationIsolation": {
+      "status": "PENDING",
+      "reviewer": "",
+      "date": "",
+      "evidence": ""
+    },
+    "ownerFinalGo": {
+      "status": "PENDING",
+      "reviewer": "",
+      "date": "",
+      "evidence": ""
+    }
+  }
+}

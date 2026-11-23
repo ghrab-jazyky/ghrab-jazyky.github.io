@@ -28,6 +28,8 @@ on:
       - "language-skills-hub/assets/hub.css"
       - "language-skills-hub/tests/city-quest-f5c.catalog.test.cjs"
       - "language-skills-hub/authoring/city-quest-f4/**"
+      - "language-skills-hub/authoring/city-quest-f5c/**"
+      - "language-skills-hub/tests/city-quest-f5c.release-gate.test.cjs"
       - "language-skills-hub/authoring/city-quest-f3d/**"
       - ".github/workflows/lsh-city-quest-f4.yml"
   pull_request:
@@ -56,6 +58,8 @@ on:
       - "language-skills-hub/assets/hub.css"
       - "language-skills-hub/tests/city-quest-f5c.catalog.test.cjs"
       - "language-skills-hub/authoring/city-quest-f4/**"
+      - "language-skills-hub/authoring/city-quest-f5c/**"
+      - "language-skills-hub/tests/city-quest-f5c.release-gate.test.cjs"
       - "language-skills-hub/authoring/city-quest-f3d/**"
       - ".github/workflows/lsh-city-quest-f4.yml"
 permissions:
@@ -98,6 +102,8 @@ jobs:
           node --check language-skills-hub/tests/city-quest-f3d.pedagogy.browser.test.cjs
           node --check language-skills-hub/tests/city-quest-f3d.acceptance-matrix.test.cjs
           node --check language-skills-hub/tests/city-quest-f4.independent.static.test.cjs
+          node --check language-skills-hub/authoring/city-quest-f5c/release-readiness.cjs
+          node --check language-skills-hub/tests/city-quest-f5c.release-gate.test.cjs
           node --check language-skills-hub/tests/city-quest-f4.independent.browser.test.cjs
           node --check language-skills-hub/tests/city-quest-f4r.remediation.browser.test.cjs
           node --check language-skills-hub/tests/city-quest-f4r.linguistic.test.cjs
@@ -118,6 +124,8 @@ jobs:
           node language-skills-hub/authoring/city-quest-f2/stage-public.cjs --write
           node --test language-skills-hub/tests/city-quest-f5c.publication.test.cjs
           node --test language-skills-hub/tests/city-quest-f4.independent.static.test.cjs
+          node --test language-skills-hub/tests/city-quest-f5c.release-gate.test.cjs
+          node language-skills-hub/authoring/city-quest-f5c/release-readiness.cjs --report
           node --test language-skills-hub/tests/city-quest-f4r.linguistic.test.cjs
       - name: "Regression: route, 8 F1 stations and existing F2 CEFR content"
         run: |
