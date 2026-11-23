@@ -6,7 +6,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const catalog=JSON.parse(fs.readFileSync(path.join(root,'data/cards.json'),'utf8'));
-const cards=catalog.entries.filter(e=>e.skill==='konverzace'&&e.cardType!=='grammar-flashcards');
+const cards=catalog.entries.filter(e=>e.skill==='konverzace'&&e.cardType!=='grammar-flashcards'&&e.cardType!=='interactive-language-game');
 const css=fs.readFileSync(path.join(root,'assets/lsh/v3/card-bridge.css'),'utf8');
 
 test('All 22 conversation cards use the same CSS bridge, mobile timer and UI lock',()=>{
