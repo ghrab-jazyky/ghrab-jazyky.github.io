@@ -4,6 +4,7 @@ const byId=id=>document.getElementById(id);
 const params=new URLSearchParams(location.search);
 const titles={konverzace:'Conversation Lab',cteni:'Reading Lab',poslech:'Listening Lab'};
 const tags={konverzace:'Mluvení',cteni:'Čtení',poslech:'Poslech'};
+const gameLabels={cs:'Interaktivní jazyková hra · městský quest',en:'Interactive language game · city quest',es:'Juego interactivo de idiomas · aventura urbana',de:'Interaktives Sprachspiel · Stadtquest',fr:'Jeu de langue interactif · aventure urbaine'};
 const labels={en:'English',es:'Español',de:'Deutsch',fr:'Français'};
 const levels=['A1','A2','B1','B2','C1','C2'];
 const allowed=new Set(['konverzace','cteni','poslech']);
@@ -135,6 +136,10 @@ function card(e){
  indicator.lang='cs';
  indicator.setAttribute('aria-label',variant.aria);
  head.append(meta,indicator);article.appendChild(head);
+ if(e.cardType==="interactive-language-game"){
+  const game=one("p","catalog-game-label",gameLabels[language]||gameLabels.cs);
+  game.lang=language;article.appendChild(game);
+ }
  const title=one('h3',null,translation.title);
  title.lang=language;article.appendChild(title);
  if(filter!=='all'&&translation.title!==czech.title){

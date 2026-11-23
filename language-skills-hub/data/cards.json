@@ -6,6 +6,29 @@
   "gradedTestsEnabled": false,
   "entries": [
     {
+      "id": "cl-city-quest-f2",
+      "skill": "konverzace",
+      "title": "City Quest – městská jazyková hra",
+      "summary": "Interaktivní jazyková hra s městskou mapou a metrem, osmi misemi a sebehodnocením mluvení. EN/ES/DE/FR, A1–C2; metro B1–C2.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/city-quest-f2/index.html",
+      "cardType": "interactive-language-game",
+      "lockSource": null
+    },
+    {
       "id": "cl-umela-inteligence",
       "skill": "konverzace",
       "title": "Umělá inteligence",
