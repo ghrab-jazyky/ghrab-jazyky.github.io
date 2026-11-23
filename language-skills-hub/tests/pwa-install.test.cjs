@@ -70,6 +70,9 @@ test('Consent, timing, and browser install event',()=>{
  assert.match(js,/panel\.hidden=!visible/);
  assert.match(js,/install\.disabled=panel\.hidden/);
  assert.match(js,/const dock=available<192/);
+ assert.match(js,/chooser\.addEventListener\('scroll',scheduleLayout/);
+ assert.match(js,/--pwa-overlay-scroll/);
+ assert.match(css,/--pwa-overlay-scroll/);
  assert.match(js,/navigator\.install\(\)/);
  assert.match(js,/const outcome=await event\.prompt\(\)/);
  const css=read('assets/pwa-install.css');
