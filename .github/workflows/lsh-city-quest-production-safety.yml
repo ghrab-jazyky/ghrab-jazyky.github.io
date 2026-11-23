@@ -1,0 +1,71 @@
+name: LSH City Quest isolated production safety
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/**'
+      - '.github/workflows/lsh-city-quest-production-safety.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'language-skills-hub/**'
+      - '.github/workflows/lsh-city-quest-production-safety.yml'
+permissions:
+  contents: read
+jobs:
+  city-quest-isolation-and-existing-catalog:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: City Quest isolated HTML and other 34 cards remain intact
+        shell: bash
+        run: |
+          node --check language-skills-hub/assets/hub.js
+          node <<'NODE'
+          const fs=require('node:fs'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+          const dir='language-skills-hub/',id='cl-city-quest-f2',relative='konverzace/city-quest-f2/index.html';
+          const cards=JSON.parse(fs.readFileSync(dir+'data/cards.json','utf8'));
+          const i18n=JSON.parse(fs.readFileSync(dir+'data/catalog-i18n.json','utf8'));
+          const version=JSON.parse(fs.readFileSync(dir+'version.json','utf8'));
+          const html=fs.readFileSync(dir+relative,'utf8');
+          const hash=crypto.createHash('sha256').update(html).digest('hex');
+          assert.equal(hash,'34c6bb2662e2684c5808abab2519f6df2343c04a99948bfb82241101b51f41d0');
+          assert.equal(version.contentHashes[id],hash);
+          assert.equal(version.topicCount,35);
+          assert.equal(version.variantCount,958);
+          assert.equal(cards.entries.length,35);
+          assert.equal(new Set(cards.entries.map(e=>e.id)).size,35);
+          const distribution={konverzace:0,cteni:0,poslech:0};
+          for(const e of cards.entries){
+            assert.ok(Object.hasOwn(distribution,e.skill),'Unexpected skill: '+e.skill);
+            distribution[e.skill]++;
+            assert.ok(fs.existsSync(dir+e.relative),'Existing topic missing: '+e.id);
+          }
+          assert.deepEqual(distribution,{konverzace:24,cteni:5,poslech:6});
+          const city=cards.entries.find(e=>e.id===id);
+          assert.equal(city.relative,relative);
+          assert.equal(city.cardType,'interactive-language-game');
+          assert.deepEqual(city.languages,['en','es','de','fr']);
+          assert.deepEqual(city.levels,['A1','A2','B1','B2','C1','C2']);
+          assert.deepEqual(Object.keys(i18n.entries[id]).sort(),['cs','de','en','es','fr']);
+          assert.equal(Object.keys(i18n.entries).length,35);
+          assert.equal(Object.keys(version.contentHashes).length,35);
+          const csp=html.match(/<meta http-equiv="Content-Security-Policy" content="([^"]+)"/)?.[1];
+          assert.ok(csp?.includes("default-src 'none'")&&csp.includes("connect-src 'none'"));
+          for(const type of ['style','script']){
+            const matches=[...html.matchAll(new RegExp('<'+type+'>([\\s\\S]*?)</'+type+'>','g'))];
+            assert.equal(matches.length,1);
+            const digest=crypto.createHash('sha256').update(matches[0][1],'utf8').digest('base64');
+            assert.ok(csp.includes(type+'-src \'sha256-'+digest+'\''));
+          }
+          assert.doesNotMatch(html,/<script\b[^>]*\bsrc\s*=|<link\b[^>]*\bhref\s*=|<iframe\b|<object\b|<form\b|<img\b[^>]*\bsrc\s*=/i);
+          assert.ok(fs.readFileSync(dir+'assets/hub.js','utf8').includes('catalog-game-label'));
+          assert.ok(fs.readFileSync(dir+'assets/hub.css','utf8').includes('catalog-game-label'));
+          assert.ok(!fs.existsSync(dir+'authoring/city-quest-f2'),'City Quest authoring must not be present in published tree');
+          assert.ok(!fs.existsSync(dir+'konverzace/city-quest-f0'),'Unapproved City Quest prototype must not be published');
+          console.log('PASS: one certified offline City Quest HTML + 34 preserved existing catalog topics');
+          NODE
