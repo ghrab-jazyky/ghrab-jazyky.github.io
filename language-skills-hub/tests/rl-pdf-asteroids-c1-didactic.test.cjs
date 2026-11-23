@@ -91,3 +91,90 @@ for(const lang of ['es','fr']){
   }
  });
 }
+
+
+// R-13 independent linguistic review: refined author-purpose, inference,
+// lexical nuance and cohesion, while preserving every stable question ID/key.
+const r13={
+ es:[
+  ['gist-3','gist',3,'Riesgo, pruebas e incertidumbre: informar sin alarmar',3],
+  ['inference-1','inference',2,'Porque la probabilidad calculada puede variar mientras se reduce la incertidumbre orbital.',1],
+  ['inference-2','inference',1,'Que el contacto visible no basta: hacen falta observaciones posteriores del cambio orbital.',2],
+  ['inference-3','inference',1,'Que probablemente perdería la confianza del público.',3],
+  ['vocab-2','vocab',2,'El conjunto de trayectorias que aún concuerdan con los datos disponibles.',1],
+  ['vocab-3','vocab',1,'Restarles importancia hasta descartar una preparación que podría ser necesaria.',3],
+  ['matching-1','matching',1,'El segundo párrafo',1],
+  ['matching-2','matching',3,'El último párrafo',3],
+  ['structure-1','structure',3,'También surge una cuestión de prioridades: qué recibe atención y recursos.',3]
+ ],
+ fr:[
+  ['gist-2','gist',2,'Distinguer la proximité orbitale du danger réel et montrer comment certains médias brouillent cette distinction.',0],
+  ['gist-3','gist',3,'Risque, preuves et incertitude : informer sans alarmer',3],
+  ['detail-3','detail',3,'Qu’un transfert de quantité de mouvement peut modifier une orbite en conditions réelles.',2],
+  ['inference-1','inference',0,'Parce que la probabilité calculée peut évoluer pendant que les nouvelles observations réduisent l’incertitude orbitale.',1],
+  ['inference-2','inference',3,'Le contact visible ne suffit pas : il faut mesurer ensuite l’effet réel sur l’orbite.',2],
+  ['vocab-2','vocab',1,'L’ensemble des trajectoires encore compatibles avec les mesures.',1],
+  ['vocab-3','vocab',0,'L’idée qu’un risque rare ne mériterait aucune mesure anticipée.',3],
+  ['matching-1','matching',1,'Le deuxième paragraphe',1],
+  ['matching-2','matching',3,'Le dernier paragraphe',3],
+  ['matching-3','matching',0,'Le premier paragraphe',0],
+  ['structure-1','structure',3,'Reste la question des priorités.',3]
+ ]
+};
+for(const lang of ['es','fr']){
+ test('R-13 '+lang+'/C1: complete 21-item structure, unchanged answer keys and all evidence',()=>{
+  const v=core.variantFromData(data,lang,'C1');
+  assert.equal(v.questions.length,21);
+  assert.equal(new Set(v.questions.map(q=>q.id)).size,21);
+  for(const tab of ['gist','scan','detail','inference','vocab','matching','structure'])
+   assert.equal(v.questions.filter(q=>q.tab===tab).length,3,tab);
+  for(const q of v.questions){
+   assert.equal(q.choices.length,4,q.id);
+   assert.equal(new Set(q.choices).size,4,q.id);
+   assert.ok(Number.isInteger(q.answer)&&q.answer>=0&&q.answer<4,q.id);
+   assert.ok(q.evidence.length>0,q.id);
+   for(const e of q.evidence)
+    assert.ok(v.paragraphs[e.p]?.includes(e.text),q.id+' evidence citation');
+   if(q.target)
+    assert.ok(v.paragraphs[q.target[0]]?.includes(q.target[1]),q.id+' locate target');
+  }
+  for(const [short,tab,answer,correct,p] of r13[lang]){
+   const id=lang+'-c1-'+short,q=v.questions.find(q=>q.id===id);
+   assert.ok(q,id);
+   assert.equal(q.tab,tab,id);
+   assert.equal(q.answer,answer,id);
+   assert.equal(q.choices[answer],correct,id);
+   assert.ok(q.evidence.some(e=>e.p===p),id+' supports correct paragraph');
+   assert.ok(q.explanation.length>=50,id+' feedback is instructive');
+  }
+ });
+ test('R-13 '+lang+'/C1: source, printable practice/test and local score remain synchronized',()=>{
+  const v=core.variantFromData(data,lang,'C1');
+  const answerBook=Object.fromEntries(v.questions.map(q=>[q.id,q.answer]));
+  assert.equal(core.score(v,answerBook).correct,21);
+  for(const [short] of r13[lang]){
+   const id=lang+'-c1-'+short,q=v.questions.find(q=>q.id===id);
+   const wrong={...answerBook,[id]:(q.answer+1)%4};
+   const got=core.score(v,wrong);
+   assert.equal(got.correct,20,id);
+   assert.equal(got.details.find(x=>x.id===id).correctAnswer,q.choices[q.answer]);
+  }
+  for(const mode of ['practice','test']){
+   const printed=print.printable(v,mode,'all').sections.flatMap(s=>s.questions);
+   assert.equal(printed.length,21);
+   for(let i=0;i<v.questions.length;i++){
+    const expected=v.questions[i],got=printed[i];
+    assert.equal(got.prompt,expected.q,expected.id+' prompt');
+    assert.deepEqual(got.choices,expected.choices,expected.id+' choices');
+    for(const secret of ['answer','evidence','explanation'])
+     assert.equal(Object.hasOwn(got,secret),false,expected.id+' secret '+secret);
+   }
+  }
+ });
+}
+test('R-13: one-time session migration is versioned and scoped to ES/FR C1',()=>{
+ assert.match(source,/es-fr-c1-r13-20261122/);
+ assert.match(source,/itemRevisionR13/);
+ assert.match(source,/R13_REVISED_IDS/);
+ assert.match(source,/R12_REVISED_IDS/);
+});
