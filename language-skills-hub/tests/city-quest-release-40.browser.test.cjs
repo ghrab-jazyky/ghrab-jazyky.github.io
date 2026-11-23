@@ -136,7 +136,7 @@ async function cityMission(page,language,level,n){
    const service=G.servicesForLevel(level).find(s=>
      G.checkTransport({line:s.line,depart:s.depart,stop:s.to},level).correct);
    if(!service)throw Error('Missing valid bus journey '+level);
-   return fields.map(key=>service[key]);
+   return fields.map(key=>key==='stop'?service.to:service[key]);
   },level);
   const selects=page.locator('#f1Panel .f2-select-group select');
   assert.equal(await selects.count(),input.length,'Actual bus fields must match CEFR');
