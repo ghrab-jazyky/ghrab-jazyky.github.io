@@ -1,0 +1,97 @@
+{
+  "language": "en",
+  "schema": "city-quest-stage3-oracy-v1",
+  "ui": {
+    "title": "Real-world speaking challenge",
+    "doFirst": "Say your answer aloud before checking the sample for this stage or mission. With a partner, explain without pointing at the map.",
+    "criteria": "What a strong response includes",
+    "reflection": "Compare what you actually said with these criteria. A partner or teacher must assess speaking; the game does not record or grade it.",
+    "teacher": "This challenge is extra speaking practice, not an automatically scored mission step.",
+    "reviewPrompt": "After speaking, tick only the criteria you actually met.",
+    "reviewProgress": "Self-review",
+    "reviewDone": "All three criteria self-reported. This is not a speaking grade.",
+    "partnerConfirm": "Partner: I listened and offered feedback.",
+    "partnerNote": "Partner confirmation is self-reported, local to this session and not a grade."
+  },
+  "rubric": {
+    "B2": [
+      "Give usable, accurate directions or a clearly relevant recommendation.",
+      "Compare two plausible choices and justify the one you recommend.",
+      "Explain your reasoning in connected, comprehensible language."
+    ],
+    "C1": [
+      "Clarify unclear information instead of guessing.",
+      "Explain constraints, consequences and a practical contingency.",
+      "Reformulate precise directions so another traveller can follow them."
+    ],
+    "C2": [
+      "Reconcile conflicting information without inventing facts.",
+      "Weigh relevant trade-offs and give an unambiguous recommendation.",
+      "Adapt register, tone and detail to the person you are helping."
+    ]
+  },
+  "city": {
+    "1": {
+      "B2": "Two visitors have different needs: one wants to borrow a book; the other wants to see historical exhibits. Recommend the right places in Riverton and explain why each fits.",
+      "C1": "A visitor asks for the 'place with books' but also mentions sending a parcel. Ask a tactful clarification question, then distinguish the library from the post office using useful landmarks.",
+      "C2": "Two visitors confuse Central Station with Market Square and disagree about their meeting point. Mediate their misunderstanding, distinguish the landmarks precisely and confirm where they intend to meet."
+    },
+    "2": {
+      "B2": "Explain your chosen walking route to City Museum via Market Square. Compare it with another visible route and explain why you must include the square.",
+      "C1": "A group must visit the Library before City Museum. Give a clearly sequenced route and anticipate one point at which they might take a wrong turn.",
+      "C2": "You must reach City Museum via the Library without crossing the marked roadworks. Weigh a shorter-looking but blocked route against a valid one, then explain the constraints diplomatically."
+    },
+    "3": {
+      "B2": "A visitor asks for directions to City Museum and wonders whether the walk is complicated. Give clear instructions, then explain one alternative or landmark that could prevent confusion.",
+      "C1": "The visitor remembers a fountain but cannot locate it on the map. Ask one precise question and reformulate your route using landmarks you can verify.",
+      "C2": "Two people offer conflicting directions to City Museum because they are facing opposite ways. Reconcile their statements and give one unambiguous explanation tailored to the confused tourist."
+    },
+    "4": {
+      "B2": "A traveller walks east along Market Avenue and must then reach City Museum to the north. Explain why the correct relative turn is left, not right, and make the instruction easy to follow.",
+      "C1": "A traveller follows the individual commands correctly but gets confused by the change from compass directions to left and right. Reformulate the crucial steps from their viewpoint.",
+      "C2": "One guide says 'left' while another says 'north'. Explain how these can agree when walking east, resolve the apparent contradiction and give a concise, reliable instruction."
+    },
+    "5": {
+      "B2": "The traveller must reach the Hospital before 09:10. Recommend the correct bus service using the timetable and explain why another displayed option is less suitable.",
+      "C1": "A traveller needs a step-free bus and must arrive before 09:10. Explain how both constraints affect your choice; tell them which timetable details you have checked.",
+      "C2": "As an information officer, compare the displayed hospital-bound services for arrival time and accessibility. Give a short, reassuring recommendation, avoiding assumptions about punctuality not shown on the timetable."
+    },
+    "6": {
+      "B2": "Someone walking east was told to turn right to head north. Identify the contradiction and give a corrected instruction with a clear reason.",
+      "C1": "A tourist points out your previous instruction was wrong. Acknowledge the mistake politely, clarify their current orientation and reformulate the remaining route.",
+      "C2": "A nervous visitor has followed conflicting instructions and is reluctant to trust another turn. Mediate the disagreement calmly, distinguish left/right from compass directions and check understanding."
+    },
+    "7": {
+      "B2": "The usual road to the museum is closed. Explain a legal alternative visible on the map and compare it with the blocked direct route.",
+      "C1": "Your visitor is worried about losing their way at the next junction. Explain the roadworks detour precisely and add one contingency if the route becomes unclear.",
+      "C2": "Two companions disagree: one wants the familiar road despite the closure; the other prefers a confirmed open route. Resolve their priorities without claiming the closed section is passable."
+    },
+    "8": {
+      "B2": "Your group has several city checkpoints to visit before the museum. Summarize the order, explain one route choice and contrast it with a tempting shortcut.",
+      "C1": "Guide a partner through all required checkpoints. Highlight one possible navigation error and explain how you would correct it without restarting the entire journey.",
+      "C2": "One visitor wants to start at the Library, but the quest requires Market Square → Library → City Museum. Explain this fixed checkpoint order tactfully, reconcile the group's priorities and give a viable route."
+    }
+  },
+  "metro": {
+    "5": {
+      "B2": "Explain the metro route you actually took from Central Station to Museum Quarter, including the line, terminus, platform and any transfer. Compare it with the other valid route and justify your choice.",
+      "C1": "A traveller mistakes the train's terminus for the next stop. Clarify that distinction using the route you actually took and explain how your recommendation would change if the M1 section closed.",
+      "C2": "Give a brief platform announcement for your selected connection to Museum Quarter, then explain the same itinerary to a traveller unfamiliar with metro vocabulary. Distinguish verified route facts from unconfirmed service guarantees."
+    },
+    "6": {
+      "B2": "A visitor wants to travel from Market Square to Stadium. Describe the transfers you actually made, and compare the route via University with the alternative via Central Station and Museum Quarter.",
+      "C1": "A traveller is worried about changing trains. Explain the connection you used, then give a practical alternative if changing at University is unavailable; refer to the departure boards.",
+      "C2": "Two passengers disagree about whether the connection via University is the only valid route to Stadium. Resolve the disagreement using the network and platform signs, and recommend a route with a reasoned caveat."
+    },
+    "7": {
+      "B2": "The M1 section between Old Town and Museum Quarter is closed. Compare a blocked plan with the M2–M3 alternative and explain the transfer.",
+      "C1": "A traveller has memorised the usual M1 route and distrusts the disruption notice. Explain the restriction, guide the alternative connection and state what to re-check if the service notice changes.",
+      "C2": "As station staff, give a short public disruption announcement and then a reassuring explanation to one affected passenger. Distinguish the confirmed closure from any unverified service information."
+    },
+    "8": {
+      "B2": "Explain why collecting museum tickets at Market Square and meeting a classmate with audio guides at University makes the metro journey necessary. Give the correct travel order.",
+      "C1": "Your group must collect tickets, meet at University and reach City Museum. Present a coherent plan, then explain how you would communicate a delay without losing either obligation.",
+      "C2": "One companion insists that City Museum is close enough to reach on foot from Market Square; another insists on the University meeting. Reconcile both facts and obligations, then present a concise, tactful travel plan."
+    }
+  }
+}
