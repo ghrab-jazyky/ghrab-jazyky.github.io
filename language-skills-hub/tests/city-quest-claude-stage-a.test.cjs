@@ -49,7 +49,10 @@ test('Claude F-11: repair mission answers do not leak turn by all-capitalized wo
 test('Claude F-14/F-28/F-30: mobile controls, honest hero and matching station labels',()=>{
  assert.match(html,/\.f1-mode\{display:grid;grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
  assert.match(html,/\.f3d-learning-steps\{grid-template-columns:minmax\(0,1fr\)\}/);
- assert.match(html,/button\.setAttribute\("aria-label",u\.station\+" "\+String\(st\.id\)\.padStart\(2,"0"\)/);
+ assert.match(html,/el\("small",cap,"",u\.station\+" "\+String\(st\.id\)\.padStart\(2,"0"\)\)/);
+ assert.match(html,/cap\.appendChild\(document\.createTextNode\(" "\)\)/);
+ assert.doesNotMatch(html,/button\.setAttribute\("aria-label",u\.station/);
+ assert.match(html,/button\.setAttribute\("aria-describedby",status\.id\)/);
  assert.equal((html.match(/hero\.textContent="City Quest · Riverton"/g)||[]).length,1);
  assert.doesNotMatch(html,/hero\.textContent=pack\(\)\.stations\[7\]\[0\]/);
 });

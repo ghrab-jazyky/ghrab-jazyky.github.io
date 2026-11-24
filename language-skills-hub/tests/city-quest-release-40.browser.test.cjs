@@ -344,6 +344,16 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
      await progress(page,8,'Final '+caption(c));
      assert.equal(await page.locator('.cq-completion-summary').count(),1,'Final summary '+caption(c));
      assert.equal(await page.locator('.cq-completed-missions li').count(),8);
+     const nav=page.locator('#f1Stations'),completeLabel={en:'Mission completed',es:'Misión completada',de:'Aufgabe abgeschlossen',fr:'Mission terminée'}[c.language];
+     for(let i=0;i<8;i++){
+      const button=nav.locator('button').nth(i);
+      const label=(await button.locator('.f1-station-caption').innerText()).replace(/\s+/g,' ').trim();
+      assert.equal(await nav.getByRole('button',{name:label,exact:true}).count(),1,'Native name after completion '+caption(c)+'/'+i);
+      const desc=await button.getAttribute('aria-describedby');
+      assert.equal(desc,'cqMissionComplete'+(i+1));
+      assert.equal(await page.locator('#'+desc).textContent(),completeLabel);
+      assert.equal(await button.locator('.f1-station-complete').getAttribute('aria-hidden'),'true');
+     }
      assert.ok(await page.locator('.cq-completion-vocabulary li').count()>=8);
      if(c.mode==='mixed'){
       const [hud,visible]=museumLabels[c.language],museum=page.locator('[data-landmark-label="CITY MUSEUM"]');

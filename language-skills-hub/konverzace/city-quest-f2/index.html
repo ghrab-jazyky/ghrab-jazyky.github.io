@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070f20">
 <meta name="description" content="City Quest: offline city and metro navigation in English, Spanish, German and French at A1–C2, with interactive metro missions at B1–C2.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-zYEXa8u4V53D7pNDkUf8qt+l5F2m4q4a4J7CCj36PR4='; style-src 'sha256-tsMP29MWjoU/NPfr5gFiUx49yvLRJ6i5024iTNOF1sA='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-GgXlxOolm0gbIxRl00zbb2rNrWsD0JkcOh+O8N1gYaM='; style-src 'sha256-tsMP29MWjoU/NPfr5gFiUx49yvLRJ6i5024iTNOF1sA='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%2314253d%22%2F%3E%3Cpath%20d%3D%22M16%204v24M4%2016h24%22%20stroke%3D%22%2364e6ad%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%228%22%20fill%3D%22%2314253d%22%20stroke%3D%22%23f3f8ff%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22m20%2010-3%209-6%203%203-9z%22%20fill%3D%22%2364e6ad%22%2F%3E%3C%2Fsvg%3E">
 <title>City Quest · Interactive Language Game · EN ES DE FR · A1–C2</title>
 
@@ -6950,14 +6950,22 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       button.type="button";
       const missionTitle=metroEnabled&&metroAvailable()&&st.id>=5?
         LC.pack(state.language,state.level,st.id).titleMission:pack().stations[i][0];
-      button.setAttribute("aria-label",u.station+" "+String(st.id).padStart(2,"0")+": "+missionTitle);
+      // Native button name is derived from its visible caption (WCAG 2.5.3).
       if(state.station===st.id)button.setAttribute("aria-current","step");
       const icon=metroEnabled&&metroAvailable()&&st.id===5?"🚇":metroEnabled&&metroAvailable()&&st.id===6?"🔀":icons[i];
       const ic=el("span",button,"f1-station-icon",icon);ic.setAttribute("aria-hidden","true");
       const cap=el("span",button,"f1-station-caption");
       el("small",cap,"",u.station+" "+String(st.id).padStart(2,"0"));
+      cap.appendChild(document.createTextNode(" "));
       el("strong",cap,"",missionTitle);
-      if(state.done.has(st.id))el("span",button,"f1-station-complete","✓");
+      if(state.done.has(st.id)){
+        const mark=el("span",button,"f1-station-complete","✓");
+        mark.setAttribute("aria-hidden","true");
+        const status=el("span",button,"",{en:"Mission completed",es:"Misión completada",de:"Aufgabe abgeschlossen",fr:"Mission terminée"}[state.language]);
+        status.id="cqMissionComplete"+st.id;
+        status.hidden=true;
+        button.setAttribute("aria-describedby",status.id);
+      }
       button.addEventListener("click",()=>selectStation(st.id));
     });
     if(focusIndex>=0&&nav.children[focusIndex])

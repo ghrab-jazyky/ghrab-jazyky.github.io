@@ -43,9 +43,14 @@ test('A3/A4: mobile translated controls keep entire words and station names matc
     });
     assert.deepEqual(broken,[],'Broken native-language words '+language+'/'+width);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
-    const visible=await page.locator('#f1Stations button .f1-station-caption small').first().innerText();
-    const accessible=await page.locator('#f1Stations button').first().getAttribute('aria-label');
-    assert.ok(accessible.includes(visible.trim()),'Accessible label must contain visible Station 01');
+    const nav=page.locator('#f1Stations'),buttons=nav.locator('button');
+    assert.equal(await buttons.count(),8);
+    for(let i=0;i<8;i++){
+     const button=buttons.nth(i);
+     const visible=(await button.locator('.f1-station-caption').innerText()).replace(/\s+/g,' ').trim();
+     assert.equal(await nav.getByRole('button',{name:visible,exact:true}).count(),1,'Accessible name matches entire visible caption '+language+'/'+i);
+     assert.equal(await button.getAttribute('aria-label'),null,'Use native button content');
+    }
     assert.deepEqual(errors,[]);
    }finally{await page.close();}
   }
@@ -135,7 +140,10 @@ test('Metro place aliases and transfer icon are consistent with surface labels',
     assert.equal(square,'MARKET SQUARE');
     assert.equal(await page.locator('#mapLocation').textContent(),'Central Station');
     if(language==='de'){
-     assert.match(await page.locator('#f1Stations button').nth(7).getAttribute('aria-label'),/^Aufgabe 08:/);
+     const nav=page.locator('#f1Stations'),last=nav.locator('button').nth(7);
+     const visible=(await last.locator('.f1-station-caption').innerText()).replace(/\s+/g,' ').trim();
+     assert.match(visible,/^Aufgabe 08 /);
+     assert.equal(await nav.getByRole('button',{name:visible,exact:true}).count(),1);
      assert.match(await page.locator('#f1Stations button').nth(5).innerText(),/🔀/);
     }
     assert.deepEqual(errors,[]);
