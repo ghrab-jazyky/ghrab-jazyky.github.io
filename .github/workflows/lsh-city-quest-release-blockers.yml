@@ -1,0 +1,196 @@
+name: LSH City Quest integrated release blockers (no deployment)
+on:
+  push:
+    branches: [fix/city-quest-release-blockers-20261124]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publication-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Prove exact R12 Asteroids, 35 card hashes and filtered publication
+        run: |
+          node tools/build-lsh-pages-preview.cjs
+          node --test language-skills-hub/tests/rl-pdf-asteroids-c1-didactic.test.cjs language-skills-hub/tests/lsh-asteroids-lock-cache.test.cjs
+          node --test language-skills-hub/tests/city-quest-phase1-regression.test.cjs language-skills-hub/tests/city-quest-stage3-oracy.test.cjs language-skills-hub/tests/city-quest-stage-b.test.cjs language-skills-hub/tests/city-quest-stage-c.test.cjs language-skills-hub/tests/city-quest-stage-d1.test.cjs language-skills-hub/tests/city-quest-claude-stage-a.test.cjs language-skills-hub/tests/pwa-install.test.cjs
+      - name: Verify actual HTTP publication boundary
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory release-preview/site >/tmp/lsh-pages-preview.log 2>&1 &
+          PID=$!
+          trap 'kill $PID' EXIT
+          node <<'NODE'
+          const assert=require('node:assert/strict'),fs=require('node:fs'),crypto=require('node:crypto');
+          const root='http://127.0.0.1:8765/';
+          const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+          (async()=>{
+            for(let i=0;i<30;i++){try{if((await fetch(root)).ok)break;}catch{}await new Promise(r=>setTimeout(r,500));}
+            const report=JSON.parse(fs.readFileSync('release-preview/evidence/publication-manifest.json'));
+            for(const c of report.cardChecks){
+              const r=await fetch(root+c.path);
+              assert.equal(r.status,200,c.path);
+              assert.equal(sha(Buffer.from(await r.arrayBuffer())),c.sha256,c.path);
+            }
+            for(const p of ['docs/city-quest/CITY_QUEST_MANUAL_ACCEPTANCE_CZ.md','docs/city-quest/stage3-oracy-en.json','language-skills-hub/tests/city-quest-stage-d1.test.cjs','language-skills-hub/authoring/plural/content.json','language-skills-hub/docs/ASTEROIDS_C1_DIDACTIC_R12_AUDIT_2026-11-22.md','language-skills-hub/konverzace/city-quest-f0/index.html']){
+              assert.equal((await fetch(root+p)).status,404,p+' must not be served');
+            }
+            for(const p of ['language-skills-hub/','zkusebni/','language-skills-hub/manifest.webmanifest','language-skills-hub/assets/pwa-install.js','language-skills-hub/printouts/rl-asteroids/en/A1/practice-all.pdf'])
+              assert.equal((await fetch(root+p)).status,200,p);
+            console.log('PASS 35/35 card URLs with exact bytes; 6/6 forbidden URLs return 404; public runtime preserved');
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lsh-publication-candidate
+          path: release-preview/site/
+          include-hidden-files: true
+          retention-days: 14
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lsh-publication-evidence
+          path: release-preview/evidence/
+          retention-days: 30
+  browser-matrix:
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, firefox, webkit]
+        lang: [en, es, de, fr]
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1 axe-core@4.10.3
+      - name: Build exact filtered preview
+        run: node tools/build-lsh-pages-preview.cjs
+      - name: 10 full routes per language, plus phone and tablet
+        env:
+          CQ_ENGINE: ${{ matrix.engine }}
+          CQ_LANG: ${{ matrix.lang }}
+        run: |
+          mkdir -p matrix-evidence
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory release-preview/site >/tmp/cq-blockers-http.log 2>&1 &
+          PID=$!
+          trap 'kill $PID' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          CQ_40_REPORT=matrix-evidence/desktop.json node --test language-skills-hub/tests/city-quest-release-40.browser.test.cjs
+          CQ_WIDTH=390 CQ_HEIGHT=844 CQ_40_ONLY="$CQ_LANG/B2/mixed" CQ_40_REPORT=matrix-evidence/phone.json node --test language-skills-hub/tests/city-quest-release-40.browser.test.cjs
+          CQ_WIDTH=768 CQ_HEIGHT=1024 CQ_40_ONLY="$CQ_LANG/C2/city" CQ_40_REPORT=matrix-evidence/tablet.json node --test language-skills-hub/tests/city-quest-release-40.browser.test.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: blockers-${{ matrix.engine }}-${{ matrix.lang }}
+          path: matrix-evidence/
+          if-no-files-found: warn
+          retention-days: 30
+  d1-regression-and-pwa:
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1 axe-core@4.10.3
+      - run: node tools/build-lsh-pages-preview.cjs
+      - name: PWA and focused D1 regression against filtered site
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory release-preview/site >/tmp/cq-blockers-d1.log 2>&1 &
+          PID=$!
+          trap 'kill $PID' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/index.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/pwa-install.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-stage2.browser.test.cjs language-skills-hub/tests/city-quest-stage3-oracy.browser.test.cjs language-skills-hub/tests/city-quest-stage-b.browser.test.cjs language-skills-hub/tests/city-quest-stage-c.browser.test.cjs language-skills-hub/tests/city-quest-claude-stage-a.browser.test.cjs
+          CQ_D1_A11Y=1 CQ_40_ONLY=en/B2/mixed,es/C1/mixed,de/C2/city,fr/C2/mixed,en/B2/city,es/C1/city,de/C2/mixed,fr/C2/city CQ_40_REPORT=d1-contrast.json node --test language-skills-hub/tests/city-quest-release-40.browser.test.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: blockers-d1-a11y
+          path: d1-contrast.json
+          if-no-files-found: warn
+          retention-days: 30
+
+  full-lsh-regression:
+    name: Full R68 regression (${{ matrix.target }})
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [source, filtered]
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1 axe-core@4.10.3
+      - name: Full original R68 static and browser tests on exact candidate
+        shell: bash
+        env:
+          TARGET: ${{ matrix.target }}
+        run: |
+          set -euo pipefail
+          mkdir -p d3-evidence
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git rev-parse HEAD | tee d3-evidence/actual-sha.txt
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          failed=0
+          mapfile -t files < <(find language-skills-hub/tests -maxdepth 1 -name '*.test.cjs' ! -name '*.browser.test.cjs' ! -name 'r25-result-browser.test.cjs' -print | sort)
+          test "${#files[@]}" -ge 38
+          node --test --test-concurrency=4 "${files[@]}" 2>&1 | tee d3-evidence/static.log || failed=1
+          root=.
+          if [ "$TARGET" = filtered ]; then
+            node tools/build-lsh-pages-preview.cjs
+            root=release-preview/site
+          fi
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory "$root" >/tmp/d3-http.log 2>&1 &
+          pid=$!
+          trap 'kill "$pid" || true' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch("http://127.0.0.1:8765/language-skills-hub/index.html").then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))'; then break; fi
+            sleep 1
+          done
+          node --test --test-concurrency=2 \
+            language-skills-hub/tests/r68-sad-a1c2.browser.test.cjs \
+            language-skills-hub/tests/r25-result-browser.test.cjs \
+            language-skills-hub/tests/r27-public-release.browser.test.cjs \
+            language-skills-hub/tests/r39-catalog-cefr-badges.browser.test.cjs \
+            language-skills-hub/tests/r45-test-ui-layout.browser.test.cjs \
+            language-skills-hub/tests/r51-dual-mode-answer-keys.browser.test.cjs \
+            language-skills-hub/tests/r64-one-attempt-per-device.browser.test.cjs \
+            language-skills-hub/tests/r64-real-catalog-sources.browser.test.cjs 2>&1 | tee d3-evidence/browser.log || failed=1
+          cp /tmp/d3-http.log d3-evidence/http.log
+          exit "$failed"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: final-d3-r68-${{ matrix.target }}
+          path: d3-evidence/
+          if-no-files-found: error
+          retention-days: 30
