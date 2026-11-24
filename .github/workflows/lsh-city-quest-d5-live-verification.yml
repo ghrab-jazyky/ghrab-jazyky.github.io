@@ -1,0 +1,149 @@
+name: City Quest D5 live production verification (READ ONLY)
+on:
+  push:
+    branches: [audit/city-quest-d5-live-verification-20261124]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  live-http:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: b3eb7d9e5039a07ae45f1b10b3a5b65e370d79b2
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Generate reference for exact released main SHA
+        run: |
+          test "$(git rev-parse HEAD)" = b3eb7d9e5039a07ae45f1b10b3a5b65e370d79b2
+          node tools/build-lsh-pages-preview.cjs
+      - name: Verify all published bytes and forbidden URLs on live HTTPS
+        shell: bash
+        run: |
+          mkdir -p live-evidence
+          node <<'NODE'
+          const fs=require('node:fs'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+          const expected=JSON.parse(fs.readFileSync('release-preview/evidence/publication-manifest.json','utf8'));
+          const root='https://ghrab-jazyky.github.io/';
+          const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+          const report={expectedSha:expected.sha,origin:root,checked:[],forbidden:[],propagation:[],status:'FAIL'};
+          async function get(path){
+            const url=new URL(path,root);
+            url.searchParams.set('d5_verify',expected.sha);
+            const res=await fetch(url,{redirect:'follow',cache:'no-store',headers:{'Cache-Control':'no-cache'},signal:AbortSignal.timeout(30000)});
+            const body=Buffer.from(await res.arrayBuffer());
+            return {path,status:res.status,url:res.url,bytes:body.length,sha256:hash(body),cacheAge:res.headers.get('age')};
+          }
+          (async()=>{
+            assert.equal(expected.sha,'b3eb7d9e5039a07ae45f1b10b3a5b65e370d79b2');
+            assert.equal(expected.files.length,341);
+            const city=expected.files.find(f=>f.path==='language-skills-hub/konverzace/city-quest-f2/index.html');
+            assert.ok(city);
+            let ready=false;
+            for(let attempt=1;attempt<=12;attempt++){
+              try{
+                const actual=await get(city.path);
+                report.propagation.push(actual);
+                if(actual.status===200&&actual.sha256===city.sha256){ready=true;break;}
+              }catch(e){report.propagation.push({attempt,error:String(e)});}
+              await new Promise(r=>setTimeout(r,5000));
+            }
+            assert.ok(ready,'Exact City Quest bytes have not reached public HTTPS');
+            let next=0;
+            await Promise.all(Array.from({length:6},async()=>{
+              while(next<expected.files.length){
+                const f=expected.files[next++];
+                try{
+                  const actual=await get(f.path);
+                  report.checked.push({...actual,expectedHash:f.sha256,pass:actual.status===200&&actual.sha256===f.sha256&&new URL(actual.url).origin===new URL(root).origin});
+                }catch(e){report.checked.push({path:f.path,expectedHash:f.sha256,pass:false,error:String(e)});}
+              }
+            }));
+            for(const path of ['docs/city-quest/CITY_QUEST_MANUAL_ACCEPTANCE_CZ.md','docs/city-quest/stage3-oracy-en.json','language-skills-hub/tests/city-quest-stage-d1.test.cjs','language-skills-hub/authoring/plural/content.json','language-skills-hub/docs/ASTEROIDS_C1_DIDACTIC_R12_AUDIT_2026-11-22.md','language-skills-hub/konverzace/city-quest-f0/index.html']){
+              try{const actual=await get(path);report.forbidden.push({...actual,pass:actual.status===404});}
+              catch(e){report.forbidden.push({path,pass:false,error:String(e)});}
+            }
+            const passed=report.checked.filter(x=>x.pass).length,excluded=report.forbidden.filter(x=>x.pass).length;
+            console.log('LIVE HASHES '+passed+'/'+expected.files.length+'; FORBIDDEN 404 '+excluded+'/'+report.forbidden.length);
+            console.log(JSON.stringify({failures:report.checked.filter(x=>!x.pass),forbiddenFailures:report.forbidden.filter(x=>!x.pass)}));
+            assert.equal(passed,expected.files.length);
+            assert.equal(excluded,6);
+            report.status='PASS';
+          })().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>fs.writeFileSync('live-evidence/live-http.json',JSON.stringify(report,null,2)+'\n'));
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: city-quest-d5-live-http
+          path: live-evidence/
+          if-no-files-found: error
+          retention-days: 30
+  live-browser:
+    needs: live-http
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: b3eb7d9e5039a07ae45f1b10b3a5b65e370d79b2
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Read-only production browser smoke, three engines and four languages
+        shell: bash
+        run: |
+          mkdir -p live-evidence
+          node <<'NODE'
+          const fs=require('node:fs'),assert=require('node:assert/strict'),pw=require('playwright');
+          const results=[];
+          const url='https://ghrab-jazyky.github.io/language-skills-hub/konverzace/city-quest-f2/index.html';
+          (async()=>{
+            for(const engine of ['chromium','firefox','webkit']){
+              const browser=await pw[engine].launch({headless:true});
+              try{
+                for(const lang of ['en','es','de','fr']){
+                  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:'block'});
+                  const page=await context.newPage(),errors=[];
+                  page.on('pageerror',e=>errors.push(e.message));
+                  try{
+                    const response=await page.goto(url+'?lang='+lang+'&level=B2',{waitUntil:'load',timeout:45000});
+                    assert.equal(response.status(),200);
+                    const buttons=page.locator('#f1Stations button');
+                    await buttons.first().waitFor();
+                    assert.equal(await buttons.count(),8);
+                    assert.equal(await page.locator('#f2Language').inputValue(),lang);
+                    assert.equal(await page.locator('#f2Level').inputValue(),'B2');
+                    await page.locator('#metroPilotToggle').click();
+                    assert.equal(await page.locator('#metroPilotToggle').getAttribute('aria-pressed'),'true');
+                    assert.equal(await buttons.count(),8);
+                    assert.deepEqual(errors,[]);
+                    const geometry=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth}));
+                    assert.ok(geometry.scrollWidth<=geometry.width+1,'Unexpected horizontal overflow');
+                    results.push({engine,lang,pass:true,geometry});
+                    console.log('PASS '+engine+' '+lang);
+                  }catch(e){
+                    results.push({engine,lang,pass:false,error:String(e),errors});
+                    console.error('FAIL '+engine+' '+lang,e);
+                  }finally{await context.close();}
+                }
+              }finally{await browser.close();}
+            }
+            assert.equal(results.filter(r=>r.pass).length,12);
+          })().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>fs.writeFileSync('live-evidence/live-browser.json',JSON.stringify({sha:'b3eb7d9e5039a07ae45f1b10b3a5b65e370d79b2',results},null,2)+'\n'));
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: city-quest-d5-live-browser
+          path: live-evidence/
+          if-no-files-found: error
+          retention-days: 30
