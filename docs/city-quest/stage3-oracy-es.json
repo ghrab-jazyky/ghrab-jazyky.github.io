@@ -6,7 +6,12 @@
     "doFirst": "Formula tu respuesta en voz alta antes de consultar el ejemplo al final de la misión. Si trabajas en pareja, explica la ruta sin señalar el plano.",
     "criteria": "Qué debe incluir una buena respuesta",
     "reflection": "Compara lo que has dicho con estos criterios. La expresión oral la valora un compañero o el docente; el juego no la graba ni la califica.",
-    "teacher": "Este reto es una práctica oral adicional; no forma parte de la puntuación automática de la misión."
+    "teacher": "Este reto es una práctica oral adicional; no forma parte de la puntuación automática de la misión.",
+    "reviewPrompt": "Después de hablar, marca solo los criterios que realmente hayas cumplido.",
+    "reviewProgress": "Autoevaluación",
+    "reviewDone": "Has marcado los tres criterios. Esto no es una nota de expresión oral.",
+    "partnerConfirm": "Compañero/a: he escuchado la respuesta y he dado mi opinión.",
+    "partnerNote": "La confirmación es declarativa, solo existe durante esta sesión y no es una nota."
   },
   "rubric": {
     "B2": [

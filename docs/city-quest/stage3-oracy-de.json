@@ -6,7 +6,12 @@
     "doFirst": "Sprich zuerst frei, bevor du am Ende der Aufgabe die Musterantwort liest. Erkläre deinem Partner den Weg, ohne auf den Stadtplan zu zeigen.",
     "criteria": "Daran erkennt man eine gelungene Antwort",
     "reflection": "Vergleiche deine eigene mündliche Antwort mit diesen Kriterien. Deine Lehrkraft oder dein Partner beurteilt das Sprechen; das Spiel nimmt nichts auf und benotet nichts.",
-    "teacher": "Dies ist eine zusätzliche Sprechübung und keine automatisch bewertete Spielaufgabe."
+    "teacher": "Dies ist eine zusätzliche Sprechübung und keine automatisch bewertete Spielaufgabe.",
+    "reviewPrompt": "Prüfe nach dem Sprechen nur die Kriterien, die du tatsächlich erfüllt hast.",
+    "reviewProgress": "Selbsteinschätzung",
+    "reviewDone": "Alle drei Kriterien selbst markiert. Das ist keine Bewertung deiner Sprechleistung.",
+    "partnerConfirm": "Partnerperson: Ich habe zugehört und Rückmeldung gegeben.",
+    "partnerNote": "Die Bestätigung ist eine Selbstauskunft, bleibt nur in dieser Sitzung und ist keine Note."
   },
   "rubric": {
     "B2": [

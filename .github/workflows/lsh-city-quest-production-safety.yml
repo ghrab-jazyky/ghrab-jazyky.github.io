@@ -33,7 +33,7 @@ jobs:
           const version=JSON.parse(fs.readFileSync(dir+'version.json','utf8'));
           const html=fs.readFileSync(dir+relative,'utf8');
           const hash=crypto.createHash('sha256').update(html).digest('hex');
-          assert.equal(hash,'81ff7999e7b5814f04499ffce8d50643c1c4275725846a6d5cf0f761fcd3805c');
+          assert.equal(hash,'a2067a8e8e30836a94c9a74ed6324c39a5c98c61abda4c91760ff501bfc8a56e');
           assert.equal(version.contentHashes[id],hash);
           assert.equal(version.topicCount,35);
           assert.equal(version.variantCount,726);
@@ -77,6 +77,8 @@ jobs:
         run: |
           node --check language-skills-hub/tests/city-quest-stage3-oracy.test.cjs
           node --test language-skills-hub/tests/city-quest-stage3-oracy.test.cjs
+          node --check language-skills-hub/tests/city-quest-stage-b.test.cjs
+          node --test language-skills-hub/tests/city-quest-stage-b.test.cjs
       - name: Check Claude stage-A findings and all signed-off invariants
         run: |
           node --check language-skills-hub/tests/city-quest-claude-stage-a.test.cjs
@@ -107,6 +109,8 @@ jobs:
           node --test language-skills-hub/tests/city-quest-stage2.browser.test.cjs
           node --check language-skills-hub/tests/city-quest-stage3-oracy.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-stage3-oracy.browser.test.cjs
+          node --check language-skills-hub/tests/city-quest-stage-b.browser.test.cjs
+          node --test language-skills-hub/tests/city-quest-stage-b.browser.test.cjs
           node --check language-skills-hub/tests/city-quest-claude-stage-a.browser.test.cjs
           node --test language-skills-hub/tests/city-quest-claude-stage-a.browser.test.cjs
   city-quest-release-40:

@@ -90,3 +90,26 @@ Po opravách textů, ovládání a přístupnosti na PR #175 je nutné znovu spu
 - Kontroly: statické invarianty rozšířeny o lokalizaci a francouzské texty; browser regresní test kontroluje patičku ve všech 4 jazycích; průchodových 40 E2E kontrol nyní zachytává i `console.error`.
 - Poslední **historicky úspěšný** běh před A+: [Actions #45263480226](https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/45263480226), `d6367bb4f9ade9acab554d793c95b3aa94580eb2`. Není důkazem průchodnosti právě změněného HEAD. Ověřit nový přesný commit a připsat jeho výsledek.
 - Neuzavřeno: nezávislé negativní E2E pokrytí všech nesprávných kroků, jazyková redakce všech variant, iPhone/iPad/Android/assistivní technologie, integrovaný release a publikační izolace Pages. **NO-GO**, ruční brány **PENDING**.
+
+
+## Dodatek B — práce s mluveným projevem bez nahrávání (24. 11. 2026)
+**Cílová úroveň:** B2–C2 (původní úlohy A1–B1 zůstávají beze změny).  
+**Ročník / věková skupina:** gymnázium, přibližně 15–19 let.  
+**Cíl:** oddělit skutečně řečenou odpověď od úspěchu ve hře a vyvolat konkrétní sebereflexi nebo zpětnou vazbu partnera.  
+**Čas:** 3–5 minut na jednu ústní výzvu, podle náročnosti úkolu.  
+**Slabší žáci:** před odpovědí si otevřou slovní oporu a po odpovědi posoudí nejprve jedno kritérium.  
+**Silnější žáci:** vysvětlí dvě alternativy, vyjednají priority a požádají partnera o kritický komentář.
+ 
+**Práce s novým ovládáním:**
+1. Žák nejprve nahlas vyřeší zadanou situaci a **teprve poté** otevře část „Kritéria úspěšné odpovědi“.
+2. Podle skutečně vyslovené odpovědi zaškrtne nejvýše tři dostupná kritéria. Nemusí vyplnit všechna. Výsledek typu `2/3` vyjadřuje pouze jeho **vlastní prohlášení**, nikoliv jazykovou známku nebo automatické vyhodnocení.
+3. V režimu dvojic může spolužák samostatně potvrdit, že poslouchal a poskytl zpětnou vazbu. Software nijak neověřuje jeho totožnost ani skutečný obsah mluvení.
+4. Reflexe je nepovinná a **neblokuje postup hrou**; nijak neupravuje herní skóre nebo přijaté odpovědi.
+5. Volba zůstává pouze v paměti otevřeného prohlížeče. Reset mise ji vymaže. Při změně jazyka nebo úrovně se vymaže celá lokální relace. Při přepnutí prostředí se obnoví počáteční stav pozdějších misí; potvrzení partnera se ruší při změně Solo/Pair.
+6. Bez mikrofonu, rozpoznávání řeči, serveru, přenosu osobních údajů a dalších externích síťových požadavků.
+ 
+**Jazyková korekce:** V rozšířeném C1 zadání při hledání místa na mapě byla v ES a DE dospělá kolegiální role upravena na školní spolužáky.
+ 
+**Doklady automatizace:** Přidány regresní testy jazykové matice 144 úloh, přepínání režimů, resetu, přístupnosti nativních checkboxů a čtyřjazyčných negativních tras (povinný průchozí bod + nesprávné odbočení). Automatizace neprokazuje kvalitu mluveného projevu a nezastupuje lidskou CEFR, jazykovou, didaktickou ani zařízeníovou přejímku. Evidovat aktuální SHA a výsledek nového GitHub Actions běhu.
+ 
+**Rozhodnutí o vydání:** nadále `NO-GO` — nejde o povolení k merge, publikaci nebo nakládání s reálnými osobními údaji žáků.

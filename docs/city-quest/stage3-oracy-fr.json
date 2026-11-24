@@ -6,7 +6,12 @@
     "doFirst": "Formulez votre réponse à voix haute avant de consulter l'exemple à la fin de la mission. À deux, expliquez l'itinéraire sans montrer le plan.",
     "criteria": "Les critères d'une réponse réussie",
     "reflection": "Comparez votre prise de parole à ces critères. Seul un partenaire ou un enseignant peut l'évaluer : le jeu n'enregistre ni ne note la voix.",
-    "teacher": "Ce défi est un entraînement oral complémentaire, non une étape évaluée automatiquement par le jeu."
+    "teacher": "Ce défi est un entraînement oral complémentaire, non une étape évaluée automatiquement par le jeu.",
+    "reviewPrompt": "Après avoir parlé, cochez uniquement les critères que vous avez réellement remplis.",
+    "reviewProgress": "Autoévaluation",
+    "reviewDone": "Vous avez coché les trois critères. Cela ne constitue pas une note à l'oral.",
+    "partnerConfirm": "Partenaire : j'ai écouté la réponse et donné un retour.",
+    "partnerNote": "Cette confirmation est déclarative, reste limitée à cette séance et ne constitue pas une note."
   },
   "rubric": {
     "B2": [

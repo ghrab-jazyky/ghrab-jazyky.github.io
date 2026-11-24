@@ -6,7 +6,12 @@
     "doFirst": "Say your answer aloud before checking the example at the end of the mission. With a partner, explain without pointing at the map.",
     "criteria": "What a strong response includes",
     "reflection": "Compare what you actually said with these criteria. A partner or teacher must assess speaking; the game does not record or grade it.",
-    "teacher": "This challenge is extra speaking practice, not an automatically scored mission step."
+    "teacher": "This challenge is extra speaking practice, not an automatically scored mission step.",
+    "reviewPrompt": "After speaking, tick only the criteria you actually met.",
+    "reviewProgress": "Self-review",
+    "reviewDone": "All three criteria self-reported. This is not a speaking grade.",
+    "partnerConfirm": "Partner: I listened and offered feedback.",
+    "partnerNote": "Partner confirmation is self-reported, local to this session and not a grade."
   },
   "rubric": {
     "B2": [
