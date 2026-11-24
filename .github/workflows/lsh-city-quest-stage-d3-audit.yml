@@ -43,6 +43,9 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p d3-evidence
+          # Trust only this checkout in the ephemeral CI container, not arbitrary repositories.
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git rev-parse HEAD | tee d3-evidence/actual-sha.txt
           test "$(git rev-parse HEAD)" = "$EXPECTED"
           printf '%s\n' "$EXPECTED" >d3-evidence/tested-sha.txt
           root=.
@@ -101,6 +104,9 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p d3-evidence
+          # Trust only this checkout in the ephemeral CI container, not arbitrary repositories.
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git rev-parse HEAD | tee d3-evidence/actual-sha.txt
           test "$(git rev-parse HEAD)" = 6121c3586e006d751a044a3d0d8dbe8d7851c53d
           git rev-parse HEAD >d3-evidence/tested-sha.txt
           failed=0
