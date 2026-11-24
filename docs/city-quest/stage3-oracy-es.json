@@ -3,7 +3,7 @@
   "schema": "city-quest-stage3-oracy-v1",
   "ui": {
     "title": "Reto oral de la vida real",
-    "doFirst": "Formula tu respuesta en voz alta antes de consultar el ejemplo al final de la misión. Si trabajas en pareja, explica la ruta sin señalar el plano.",
+    "doFirst": "Formula tu respuesta en voz alta antes de consultar el modelo de esta etapa o misión. Si trabajas en pareja, explica la ruta sin señalar el plano.",
     "criteria": "Qué debe incluir una buena respuesta",
     "reflection": "Compara lo que has dicho con estos criterios. La expresión oral la valora un compañero o el docente; el juego no la graba ni la califica.",
     "teacher": "Este reto es una práctica oral adicional; no forma parte de la puntuación automática de la misión.",
@@ -86,7 +86,7 @@
     "7": {
       "B2": "El tramo de la M1 entre Old Town y Museum Quarter está cerrado. Compara la ruta bloqueada con la alternativa M2–M3 y explica dónde hay que hacer transbordo.",
       "C1": "Un viajero recuerda la ruta habitual de la M1 y desconfía del aviso de interrupción. Explica el corte, guía la alternativa y señala qué habría que volver a comprobar si cambia el aviso.",
-      "C2": "Como personal de estación, redacta oralmente un anuncio breve sobre la interrupción y después tranquiliza a un pasajero afectado. Diferencia los datos confirmados del corte de cualquier información aún no verificada."
+      "C2": "Como personal de estación, formula un anuncio oral breve sobre la interrupción y después tranquiliza a un pasajero afectado. Diferencia los datos confirmados del corte de cualquier información aún no verificada."
     },
     "8": {
       "B2": "Explica por qué recoger las entradas del museo en Market Square y encontrarse con una compañera que lleva las audioguías en University obliga a usar esta ruta. Da las etapas en orden.",

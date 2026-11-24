@@ -136,3 +136,11 @@ Po opravách textů, ovládání a přístupnosti na PR #175 je nutné znovu spu
 **Povinné technické důkazy:** nové izolované testy enginu s nezávisle sestavenými trasami, průchody alternativ 05/06 ve 4 jazycích × 3 úrovních, negativní scénáře, CEFR brány, regresní průchod 40 konfiguracemi a závěrečná rekapitulace. Výsledky uvádět jen pro přesný SHA. 
  
 **NO-GO:** Lidské CEFR/jazykové posouzení, fyzické telefony/tablety a asistivní technologie, integrační strom s aktuálním main a publikační izolace podkladů zůstávají PENDING. Bez souhlasu vlastníka nic neslučovat ani nenasazovat. Ústní výkon neznámkovat automaticky; případné žákovské doklady anonymizovat. Žádné API, síťové požadavky z herního kódu, mikrofon, server nebo trvalé ukládání žákovských dat.
+
+
+## Dodatek D1 — cílené opravy po etapě D (24. 11. 2026)
+- D-02: povrchová budova muzea má lokální název na mapě, v aria-label a ve skutečném finálním HUD; názvy metro stanic zůstávají kanonické. Geometrie a engine nezměněny.
+- D-03: při odhalení příkladu jsou oddělené souvislé vzorové věty a faktický ledger. Model se sestavuje z reálných nástupů, projetých stanic, přestupů a návratů, nikoli z kanonické trasy. B2 porovnává plánovanou alternativu a skutečný průchod, C1 vysvětluje hypotetickou podmínku, C2 rozlišuje ověřená fakta od garancí. Průběžný checkpoint neprohlašuje budoucí etapu za hotovou.
+- D-08: souhrn 8/8 má neprůhledné pozadí a explicitní kontrastní barvy pro světlé i tmavé téma, plus systémové barvy v forced-colors. Cílený axe a numerický kontrastní test ve 4 jazycích × 2 režimech × 2 tématech × 2 šířkách; vynucený kontrast emulován.
+- D-04/D-06: dílčí redakce německého označení stanic a francouzské typografie; instrukce ústního úkolu nyní zohledňuje model příslušné etapy, nejen konec mise.
+- D-01 (Asteroids) a D-07 (Pages) jsou samostatné neuzavřené release brány. D-05 a úplná ruční jazyková přejímka zůstávají k učitelskému ověření. Nepřepisovat cizí hash, neměnit Pages ani neprovádět merge/deploy. Technický výsledek musí být doložen novým přesným SHA.

@@ -33,7 +33,7 @@ jobs:
           const version=JSON.parse(fs.readFileSync(dir+'version.json','utf8'));
           const html=fs.readFileSync(dir+relative,'utf8');
           const hash=crypto.createHash('sha256').update(html).digest('hex');
-          assert.equal(hash,'47dbd5a3f5ad031bc89db76253c446398880dedd7eadacd8abbd1b06026ee3e0');
+          assert.equal(hash,'8da86abf37a6c5e58c815249663db5af9d2243142b2f305e44132957a8c16e67');
           assert.equal(version.contentHashes[id],hash);
           assert.equal(version.topicCount,35);
           assert.equal(version.variantCount,726);
@@ -83,6 +83,7 @@ jobs:
         run: |
           node --check language-skills-hub/tests/city-quest-stage-c.test.cjs
           node --test language-skills-hub/tests/city-quest-stage-c.test.cjs
+          node --test language-skills-hub/tests/city-quest-stage-d1.test.cjs
       - name: Check Claude stage-A findings and all signed-off invariants
         run: |
           node --check language-skills-hub/tests/city-quest-claude-stage-a.test.cjs
@@ -153,5 +154,40 @@ jobs:
         with:
           name: city-quest-40-e2e-evidence
           path: city-quest-e2e-40.json
+          if-no-files-found: warn
+          retention-days: 30
+
+  city-quest-stage-d1-a11y:
+    name: City Quest D1 — final contrast in all languages, modes and themes
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1 axe-core@4.10.3
+      - name: Complete 8 language/mode journeys and test all final summary colours
+        env:
+          CQ_D1_A11Y: '1'
+          CQ_40_ONLY: en/B2/city,en/B2/mixed,es/B2/city,es/B2/mixed,de/B2/city,de/B2/mixed,fr/B2/city,fr/B2/mixed
+          CQ_40_REPORT: city-quest-d1-a11y.json
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/cq-d1-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r => process.exit(r.ok?0:1)).catch(() => process.exit(1))' http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/city-quest-release-40.browser.test.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: city-quest-d1-a11y
+          path: city-quest-d1-a11y.json
           if-no-files-found: warn
           retention-days: 30

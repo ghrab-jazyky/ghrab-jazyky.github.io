@@ -3,7 +3,7 @@
   "schema": "city-quest-stage3-oracy-v1",
   "ui": {
     "title": "Défi oral en situation réelle",
-    "doFirst": "Formulez votre réponse à voix haute avant de consulter l'exemple à la fin de la mission. À deux, expliquez l'itinéraire sans montrer le plan.",
+    "doFirst": "Formulez votre réponse à voix haute avant de consulter l'exemple de cette étape ou mission. À deux, expliquez l'itinéraire sans montrer le plan.",
     "criteria": "Les critères d'une réponse réussie",
     "reflection": "Comparez votre prise de parole à ces critères. Seul un partenaire ou un enseignant peut l'évaluer : le jeu n'enregistre ni ne note la voix.",
     "teacher": "Ce défi est un entraînement oral complémentaire, non une étape évaluée automatiquement par le jeu.",

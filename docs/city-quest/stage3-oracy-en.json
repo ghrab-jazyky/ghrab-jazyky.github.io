@@ -3,7 +3,7 @@
   "schema": "city-quest-stage3-oracy-v1",
   "ui": {
     "title": "Real-world speaking challenge",
-    "doFirst": "Say your answer aloud before checking the example at the end of the mission. With a partner, explain without pointing at the map.",
+    "doFirst": "Say your answer aloud before checking the sample for this stage or mission. With a partner, explain without pointing at the map.",
     "criteria": "What a strong response includes",
     "reflection": "Compare what you actually said with these criteria. A partner or teacher must assess speaking; the game does not record or grade it.",
     "teacher": "This challenge is extra speaking practice, not an automatically scored mission step.",

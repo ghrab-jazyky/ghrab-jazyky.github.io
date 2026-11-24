@@ -3,7 +3,7 @@
   "schema": "city-quest-stage3-oracy-v1",
   "ui": {
     "title": "Sprechaufgabe für den Alltag",
-    "doFirst": "Sprich zuerst frei, bevor du am Ende der Aufgabe die Musterantwort liest. Erkläre deinem Partner den Weg, ohne auf den Stadtplan zu zeigen.",
+    "doFirst": "Sprich zuerst frei, bevor du die Musterantwort zu diesem Abschnitt oder zu dieser Aufgabe liest. Erkläre deinem Partner den Weg, ohne auf den Stadtplan zu zeigen.",
     "criteria": "Daran erkennt man eine gelungene Antwort",
     "reflection": "Vergleiche deine eigene mündliche Antwort mit diesen Kriterien. Deine Lehrkraft oder dein Partner beurteilt das Sprechen; das Spiel nimmt nichts auf und benotet nichts.",
     "teacher": "Dies ist eine zusätzliche Sprechübung und keine automatisch bewertete Spielaufgabe.",
@@ -25,7 +25,7 @@
       "Formuliere präzise Anweisungen, denen andere problemlos folgen können."
     ],
     "C2": [
-      "Klär widersprüchliche Informationen, ohne Fakten zu erfinden.",
+      "Kläre widersprüchliche Informationen, ohne Fakten zu erfinden.",
       "Wäge relevante Vor- und Nachteile ab und sprich eine eindeutige Empfehlung aus.",
       "Passe Sprache, Ton und Detailgrad an dein Gegenüber an."
     ]
@@ -48,7 +48,7 @@
     },
     "4": {
       "B2": "Ein Reisender geht auf der Marktallee nach Osten und muss danach nach Norden zum Museum. Erkläre, warum er links statt rechts abbiegen muss, und formuliere eine leicht verständliche Anweisung.",
-      "C1": "Ein Reisender befolgt die einzelnen Befehle, verwechselt aber Himmelsrichtungen mit „links“ und „rechts“. Formuliere die entscheidenden Schritte aus seiner Perspektive neu.",
+      "C1": "Ein Reisender befolgt die einzelnen Anweisungen, verwechselt aber Himmelsrichtungen mit „links“ und „rechts“. Formuliere die entscheidenden Schritte aus seiner Perspektive neu.",
       "C2": "Ein Stadtführer sagt „links“, ein anderer „nach Norden“. Erkläre, warum beides auf einem Weg nach Osten stimmen kann, kläre den scheinbaren Widerspruch und gib eine kurze, verlässliche Anweisung."
     },
     "5": {

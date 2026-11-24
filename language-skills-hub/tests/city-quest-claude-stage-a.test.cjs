@@ -72,7 +72,7 @@ test('Claude N-04/N-07: offline speech authoring equals current standalone refer
  for(const lang of ['en','es','de','fr']){
   const file=JSON.parse(fs.readFileSync(path.join(authoring,'stage3-oracy-'+lang+'.json'),'utf8'));
   assert.deepEqual(inline[lang],file);
-  assert.match(file.ui.doFirst,/end of the mission|al final de la misión|Ende der Aufgabe|à la fin de la mission/);
+  assert.match(file.ui.doFirst,/this stage or mission|esta etapa o misión|diesem Abschnitt oder zu dieser Aufgabe|cette étape ou mission/);
  }
  assert.match(inline.es.city['1'].C2,/la Estación Central/);
  assert.match(inline.es.city['2'].B2,/la Plaza del Mercado/);

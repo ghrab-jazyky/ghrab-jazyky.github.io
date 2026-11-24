@@ -96,7 +96,12 @@ test('C1 route alternatives: all 24 language/level/mission journeys use independ
     await action(page,lang,level,n,'SELF_CHECK');
     assert.equal((await bridge(page)).completed,true,key);
     await page.locator('#f1Panel .f2-help button').first().click();
-    const model=await page.locator('#f1Panel .f2-help p.f2-small').last().innerText();
+    const sample=await page.locator('#f1Panel [data-cq-model-answer]').innerText();
+    assert.ok(sample.length>250,key+' continuous language sample');
+    assert.doesNotMatch(sample,/→|undefined/);
+    assert.ok(sample.includes(legs[0].line)&&sample.includes(legs[0].direction==='north_park'?'North Park':legs[0].direction),key+' sample first service');
+    assert.ok(await page.locator('#f1Panel [data-cq-journey-record]').isVisible(),key+' separate ledger');
+    const model=await page.locator('#f1Panel [data-cq-journey-record]').innerText();
     for(const leg of legs)assert.ok(model.includes(leg.names),key+' model missing actual leg '+leg.names);
     if(n===6)assert.ok(!model.includes('Central Station → University'),key+' canonical route leaked into actual model');
     assert.deepEqual(errors,[],key+' JS errors');assert.deepEqual(remote,[],key+' network');

@@ -10,6 +10,42 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
 const {chromium}=require('playwright');
+const D1_A11Y=process.env.CQ_D1_A11Y==='1';
+const D1_AXE=D1_A11Y?require('axe-core'):null;
+const d1Evidence=[];
+const museumLabels={en:['City Museum','CITY MUSEUM'],es:['Museo de la Ciudad','MUSEO DE LA CIUDAD'],
+ de:['Stadtmuseum','STADTMUSEUM'],fr:['Musée municipal','MUSÉE MUNICIPAL']};
+async function auditSummary(page,c){
+ const label=caption(c);
+ for(const theme of ['dark','light']){
+  const current=await page.evaluate(()=>document.documentElement.dataset.theme||'dark');
+  if(current!==theme)await page.locator('#themeBtn').click();
+  assert.equal(await page.evaluate(()=>document.documentElement.dataset.theme||'dark'),theme);
+  for(const width of [320,1280]){
+   await page.setViewportSize({width,height:width===320?780:900});
+   const evidence=await page.evaluate(async()=>{
+    const root=document.querySelector('.cq-completion-summary');
+    const result=await window.axe.run(root,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa']}});
+    const rgb=s=>s.match(/[\d.]+/g).slice(0,3).map(Number);
+    const lum=s=>rgb(s).map(x=>x/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4).reduce((a,x,i)=>a+x*[.2126,.7152,.0722][i],0);
+    const bg=getComputedStyle(root).backgroundColor,ratios=[...root.querySelectorAll('p,li,h3,h4')].map(el=>{
+     const fg=getComputedStyle(el).color,l1=lum(bg),l2=lum(fg);
+     return {text:el.textContent.slice(0,90),ratio:(Math.max(l1,l2)+.05)/(Math.min(l1,l2)+.05)};
+    });
+    return {overflow:document.documentElement.scrollWidth>innerWidth+1,
+      violations:result.violations.map(v=>({id:v.id,nodes:v.nodes.map(x=>x.target)})),ratios};
+   });
+   d1Evidence.push({label,theme,width,...evidence});
+   assert.deepEqual(evidence.violations,[],label+' '+theme+'/'+width);
+   assert.equal(evidence.overflow,false,label+' overflow');
+   assert.ok(evidence.ratios.every(r=>r.ratio>=4.5),label+' contrast '+JSON.stringify(evidence.ratios));
+  }
+ }
+ await page.emulateMedia({forcedColors:'active'});
+ assert.equal(await page.locator('.cq-completion-summary').isVisible(),true);
+ assert.equal(await page.evaluate(()=>matchMedia('(forced-colors: active)').matches),true);
+ await page.emulateMedia({forcedColors:'none'});
+}
 
 const BASE='http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html';
 const LANG=['en','es','de','fr'], LEVEL=['A1','A2','B1','B2','C1','C2'];
@@ -118,7 +154,7 @@ async function cityMission(page,language,level,n){
   await walking(page,dirs);
   if(['B2','C1','C2'].includes(level)){
    const index=await page.evaluate(({language,level})=>{
-    const source=document.querySelector('script').textContent;
+    const source=(Array.from(document.scripts).find(s=>s.textContent.includes('  const advancedPractice='))?.textContent||'');
     const found=source.match(/^  const advancedPractice=(.*);$/m);
     if(!found)throw Error('Missing advanced authored choices');
     const opts=JSON.parse(found[1])[language].guided[level].options;
@@ -152,7 +188,7 @@ async function cityMission(page,language,level,n){
     if(phase===0)values=['straight','turn','distance'];
     if(phase===1)values=['left','keep-south','west'];
     if(phase>=2){
-     const found=document.querySelector('script').textContent.match(/^  const advancedPractice=(.*);$/m);
+     const found=(Array.from(document.scripts).find(s=>s.textContent.includes('  const advancedPractice='))?.textContent||'').match(/^  const advancedPractice=(.*);$/m);
      const practice=JSON.parse(found[1])[language].repair;
      values=(phase===2?practice.reason:practice.apology[level]).options.map(x=>x[0]);
     }
@@ -272,7 +308,7 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
  try{
   for(const c of SELECTED){
    await t.test('E2E '+caption(c),{timeout:180000},async()=>{
-    const page=await browser.newPage({viewport:{width:1280,height:900}});
+    const page=await browser.newPage({viewport:{width:D1_A11Y?320:1280,height:D1_A11Y?780:900},bypassCSP:D1_A11Y});
     page.setDefaultTimeout(4500);
     let attemptedMission=0;
     console.log('BEGIN '+caption(c));
@@ -283,6 +319,7 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
     try{
      await page.goto(BASE+'?lang='+c.language+'&level='+c.level,{waitUntil:'load'});
      await page.locator('#f1Stations button').first().waitFor();
+     if(D1_A11Y)await page.addScriptTag({content:D1_AXE.source});
      assert.equal(await page.locator('#f2Language').inputValue(),c.language);
      assert.equal(await page.locator('#f2Level').inputValue(),c.level);
      if(c.mode==='mixed'){
@@ -299,6 +336,19 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
      assert.equal(await page.locator('.cq-completion-summary').count(),1,'Final summary '+caption(c));
      assert.equal(await page.locator('.cq-completed-missions li').count(),8);
      assert.ok(await page.locator('.cq-completion-vocabulary li').count()>=8);
+     if(c.mode==='mixed'){
+      const [hud,visible]=museumLabels[c.language],museum=page.locator('[data-landmark-label="CITY MUSEUM"]');
+      assert.equal(await museum.locator('text').textContent(),visible,'Localized map building');
+      assert.equal(await museum.getAttribute('aria-label'),visible,'Localized accessible building');
+      assert.equal(await page.locator('#mapLocation').textContent(),hud,'Actual localized final HUD');
+      await page.locator('#f1Panel .f2-help button').first().click();
+      const prose=await page.locator('[data-cq-model-answer]').innerText(),record=await page.locator('[data-cq-journey-record]').innerText();
+      assert.ok(prose.includes('Market Square')&&prose.includes('University')&&prose.includes('Museum Quarter')&&prose.toLocaleLowerCase(c.language).includes(hud.toLocaleLowerCase(c.language)));
+      assert.doesNotMatch(prose,/→|undefined/);
+      assert.match(record,/→/);
+      if(c.language!=='en')assert.doesNotMatch(prose,/City Museum/);
+     }
+     if(D1_A11Y)await auditSummary(page,c);
      assert.deepEqual(errors,[],'Browser errors '+caption(c));
      assert.deepEqual(requests,[],'Remote requests '+caption(c));
      cases.push({...c,pass:true,missions:8,elapsedMs:Date.now()-start,metroPhases:metroCounts});
@@ -322,6 +372,7 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
    failed:cases.filter(x=>!x.pass).length,
    totalCompletedMissions:cases.filter(x=>x.pass).reduce((n,x)=>n+x.missions,0),
    sha:process.env.GITHUB_SHA||null,
+   d1A11y:D1_A11Y,d1Evidence,
    cases
   },null,2)+'\n','utf8');
  }
