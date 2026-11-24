@@ -83,6 +83,7 @@ test('Stage B: late spoken self-report prompts world reset; metro records do not
    await page.locator('#metroPilotToggle').click();
    assert.equal(await page.locator('#cqModeConfirm').isVisible(),true);
    await page.locator('#cqModeApply').click();
+   await page.waitForFunction(()=>document.getElementById('metroPilotToggle')?.getAttribute('aria-pressed')==='true');
    assert.equal(await page.locator('#metroPilotToggle').getAttribute('aria-pressed'),'true');
    const metro=await inspect(page);
    assert.match(await metro.progress.innerText(),/0\/3/);
@@ -90,6 +91,7 @@ test('Stage B: late spoken self-report prompts world reset; metro records do not
    await page.locator('#cityOnlyToggle').click();
    assert.equal(await page.locator('#cqModeConfirm').isVisible(),true);
    await page.locator('#cqModeApply').click();
+   await page.waitForFunction(()=>document.getElementById('cityOnlyToggle')?.getAttribute('aria-pressed')==='true');
    const cityAgain=await inspect(page);
    assert.match(await cityAgain.progress.innerText(),/0\/3/);
    assert.deepEqual(errors,[]);
