@@ -1,0 +1,120 @@
+name: City Quest Stage D independent integration audit (no deployment)
+on:
+  push:
+    branches: [audit/city-quest-stage-d-20261124]
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Exact source identity and all catalog files
+        run: |
+          node <<'NODE'
+          const fs=require('node:fs'),crypto=require('node:crypto'),assert=require('node:assert/strict');
+          const root='language-skills-hub/';
+          const cards=JSON.parse(fs.readFileSync(root+'data/cards.json','utf8'));
+          const manifest=JSON.parse(fs.readFileSync(root+'version.json','utf8'));
+          const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+          assert.equal(cards.entries.length,35);
+          assert.equal(manifest.contentHashes['cl-city-quest-f2'],'47dbd5a3f5ad031bc89db76253c446398880dedd7eadacd8abbd1b06026ee3e0');
+          for(const c of cards.entries)assert.equal(sha(root+c.relative),manifest.contentHashes[c.id],c.id);
+          console.log('35/35 actual card hashes equal integrated version manifest');
+          NODE
+          node --test language-skills-hub/tests/city-quest-phase1-regression.test.cjs language-skills-hub/tests/city-quest-stage3-oracy.test.cjs language-skills-hub/tests/city-quest-stage-b.test.cjs language-skills-hub/tests/city-quest-stage-c.test.cjs language-skills-hub/tests/city-quest-claude-stage-a.test.cjs language-skills-hub/tests/pwa-install.test.cjs
+  engines:
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, firefox, webkit]
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install pinned browser test API
+        run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Full 40 journeys on each real browser engine, plus narrow viewport
+        env:
+          CQ_D_ENGINE: ${{ matrix.engine }}
+        run: |
+          mkdir -p d-evidence
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/cq-d-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          CQ_40_REPORT=d-evidence/desktop.json node --test qa/city-quest-stage-d/e2e.browser.test.cjs
+          CQ_D_WIDTH=390 CQ_D_HEIGHT=844 CQ_40_ONLY=en/A2/city,es/B2/mixed,de/C1/mixed,fr/C2/city CQ_40_REPORT=d-evidence/phone.json node --test qa/city-quest-stage-d/e2e.browser.test.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: stage-d-${{ matrix.engine }}-journeys
+          path: d-evidence/
+          retention-days: 30
+          if-no-files-found: warn
+  accessibility:
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1 axe-core@4.10.3
+      - name: New CEFR decisions and final summaries, automated accessibility
+        run: |
+          mkdir -p d-a11y/screenshots
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/cq-d-a11y-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          CQ_D_ENGINE=chromium CQ_D_WIDTH=320 CQ_D_HEIGHT=780 CQ_D_AXE=1 CQ_D_SCREENSHOTS=d-a11y/screenshots CQ_40_ONLY=en/B2/mixed,es/C1/mixed,de/C2/city,fr/C2/mixed CQ_40_REPORT=d-a11y/accessibility.json node --test qa/city-quest-stage-d/e2e.browser.test.cjs
+          node --test --test-name-pattern='320px and 200% text' language-skills-hub/tests/city-quest-stage-b.browser.test.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: stage-d-accessibility-and-screenshots
+          path: d-a11y/
+          if-no-files-found: warn
+          retention-days: 30
+  pwa-integration:
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Actual PWA regression suite on the integrated tree
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/cq-d-pwa-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8765/language-skills-hub/index.html >/dev/null 2>&1; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/pwa-install.browser.test.cjs
