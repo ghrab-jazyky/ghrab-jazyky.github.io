@@ -121,7 +121,7 @@ test('Map M is the City Museum goal, not the Museum Quarter metro portal',()=>{
 test('A+ F-17: metro surface place names localized but fictional metro station names retained',()=>{
  assert.ok(html.includes('"🧭 "+ui().route+" · 🚉 Central Station · 🏛️ "+ui().museum:'));
  for(const t of ['una manzana al sur del Museo de la Ciudad','einen Häuserblock südlich des Stadtmuseums','au carrefour juste au sud du musée municipal'])assert.ok(html.includes(t),'Missing localized surface: '+t);
- assert.doesNotMatch(html,/museum_quarter:"[^"]*City Museum"/);
+ assert.equal((html.match(/museum_quarter:"[^"]*City Museum"/g)||[]).length,1,'Only EN portal may name the city building in English');
 });
 
 test('A+ F-25/F-26: French dynamic navigation, narrow spaces and feedback',()=>{
