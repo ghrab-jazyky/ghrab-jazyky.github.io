@@ -155,3 +155,21 @@ test('French dialogue uses non-breaking typographic space before questions',{tim
   }finally{await page.close();}
  }finally{await browser.close();}
 });
+
+
+test('A+ F-17: mixed metro map footer localizes the surface City Museum in all four languages',{timeout:120000},async()=>{
+ const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ const names={en:'City Museum',es:'Museo de la Ciudad',de:'Stadtmuseum',fr:'Musée municipal'};
+ try{
+  for(const language of ['en','es','de','fr']){
+   const {page,errors}=await open(browser,language,'B2',390,844);
+   try{
+    await page.locator('#metroPilotToggle').click();
+    const footer=await page.locator('.map-footer').innerText();
+    assert.ok(footer.includes('Central Station'),'Metro proper name not retained for '+language);
+    assert.ok(footer.includes(names[language]),'Surface museum not localized for '+language+': '+footer);
+    assert.deepEqual(errors,[]);
+   }finally{await page.close();}
+  }
+ }finally{await browser.close();}
+});

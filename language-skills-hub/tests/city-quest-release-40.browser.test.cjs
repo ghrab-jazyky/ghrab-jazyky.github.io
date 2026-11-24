@@ -261,6 +261,7 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
     console.log('BEGIN '+caption(c));
     const errors=[],requests=[],start=Date.now(),metroCounts={};
     page.on('pageerror',e=>errors.push(e.message));
+    page.on('console',m=>{if(m.type()==='error')errors.push('console.error '+m.text());});
     page.on('request',r=>{if(!r.url().startsWith('http://127.0.0.1:8765/')&&!r.url().startsWith('data:'))requests.push(r.url());});
     try{
      await page.goto(BASE+'?lang='+c.language+'&level='+c.level,{waitUntil:'load'});

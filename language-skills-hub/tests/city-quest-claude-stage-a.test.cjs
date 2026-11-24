@@ -37,7 +37,7 @@ test('Claude F-35/N-01/N-02: schoolmate identity and canonical metro names are c
   assert.ok(narratives[lang]['6'].includes('Stadium'),lang+' metro stadium station');
   assert.ok(!/match at Stadium|partido en Stadium|Spiel im Stadium|match à Stadium/.test(narratives[lang]['6']),lang);
  }
- assert.match(html,/🧭 "\+ui\(\)\.route\+" · 🚉 Central Station · 🏛️ City Museum"/);
+ assert.match(html,/🧭 "\+ui\(\)\.route\+" · 🚉 Central Station · 🏛️ "\+ui\(\)\.museum/);
 });
 test('Claude F-11: repair mission answers do not leak turn by all-capitalized words',()=>{
  const lines=html.split('\n').filter(x=>/^\s*(incorrect:|identify:|fixes:)/.test(x));
@@ -115,4 +115,22 @@ test('Map M is the City Museum goal, not the Museum Quarter metro portal',()=>{
  assert.match(html,/text\(map,684,291,"M"/);
  assert.match(html,/portalEnd=\{c:3,r:2\},museum=\{c:3,r:1\}/);
  // Do not move the original City Museum marker to the south metro exit (Claude N-05).
+});
+
+
+test('A+ F-17: metro surface place names localized but fictional metro station names retained',()=>{
+ assert.ok(html.includes('"🧭 "+ui().route+" · 🚉 Central Station · 🏛️ "+ui().museum:'));
+ for(const t of ['una manzana al sur del Museo de la Ciudad','einen Häuserblock südlich des Stadtmuseums','au carrefour juste au sud du musée municipal'])assert.ok(html.includes(t),'Missing localized surface: '+t);
+ assert.doesNotMatch(html,/museum_quarter:"[^"]*City Museum"/);
+});
+
+test('A+ F-25/F-26: French dynamic navigation, narrow spaces and feedback',()=>{
+ const mode=lineData('cqModeText').fr,feedback=lineData('cqGuidedFeedback').fr;
+ assert.doesNotMatch(JSON.stringify(mode),/ [!?;:]/);
+ assert.doesNotMatch(JSON.stringify(feedback),/ [!?;:]/);
+ assert.ok(mode[3].includes('\u202f?'));
+ assert.ok(feedback.C1.includes('bibliothèque\u202f:'));
+ assert.match(html,/blocks:"carrefours",remaining:"carrefours jusqu'à l'arrivée"/);
+ for(const token of ['first:(dir,blocks)=>"Avancez vers "','turn:(side,dir,blocks)=>"Tournez à "+side+" et avancez vers ','continue:(dir,blocks)=>"Continuez vers ','uturn:(dir,blocks)=>"Faites demi-tour et avancez vers '])assert.ok(html.includes(token),'Missing FR direction rewrite '+token);
+ for(const token of ['Prochaine station\u202f: {next}','Station sélectionnée\u202f: ','Arrêt actuel\u202f: '])assert.ok(html.includes(token),'Missing punctuation '+token);
 });

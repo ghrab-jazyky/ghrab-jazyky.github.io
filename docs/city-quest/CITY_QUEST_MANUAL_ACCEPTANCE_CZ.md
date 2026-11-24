@@ -81,3 +81,12 @@ Při nahrávání obrazovky, fotografií či žákovských výkonů **anonymizuj
 ## Dodatek – opravy Claude stupně A (po kontrole 23. 11. 2026)
 
 Po opravách textů, ovládání a přístupnosti na PR #175 je nutné znovu spustit 40/40 na NOVÉM SHA; historický PASS #45249477816 platí pouze pro cd41b908. Dosud neověřené ruční brány zůstávají PENDING. Vlastník musí výslovně rozhodnout o publikaci docs/city-quest/* v kořeni GitHub Pages; automaticky neslučovat PR.
+
+
+## Dodatek A+ — 24. 11. 2026 (revidovaný kandidát; bez GO)
+- Opravy F-17/R-01: smíšený režim lokalizuje název povrchového muzea v patičce mapy, ponechává oficiální anglické názvy stanic metra; popis vstupu Museum Quarter lokalizován pro ES/DE/FR.
+- Opravy F-25: vybrané francouzské instrukce a generátor kroků používají počítání křižovatek místo opakování `pâtés de maisons`; pořadí kroků, jejich počet a stavový automat zůstávají beze změny.
+- Opravy F-26: U+202F doplněno do francouzského C1 feedbacku, přepínače režimu, oznámení metra a popisků stanice.
+- Kontroly: statické invarianty rozšířeny o lokalizaci a francouzské texty; browser regresní test kontroluje patičku ve všech 4 jazycích; průchodových 40 E2E kontrol nyní zachytává i `console.error`.
+- Poslední **historicky úspěšný** běh před A+: [Actions #45263480226](https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/45263480226), `d6367bb4f9ade9acab554d793c95b3aa94580eb2`. Není důkazem průchodnosti právě změněného HEAD. Ověřit nový přesný commit a připsat jeho výsledek.
+- Neuzavřeno: nezávislé negativní E2E pokrytí všech nesprávných kroků, jazyková redakce všech variant, iPhone/iPad/Android/assistivní technologie, integrovaný release a publikační izolace Pages. **NO-GO**, ruční brány **PENDING**.
