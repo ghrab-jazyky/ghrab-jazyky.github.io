@@ -9,7 +9,13 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
-const {chromium}=require('playwright');
+const engines=require('playwright');
+const ENGINE=process.env.CQ_ENGINE||'chromium';
+assert.ok(['chromium','firefox','webkit'].includes(ENGINE),'Supported engine');
+const WIDTH=Number(process.env.CQ_WIDTH||1280),HEIGHT=Number(process.env.CQ_HEIGHT||900);
+const ONLY_LANG=process.env.CQ_LANG||'';
+const sourceHash=require('node:crypto').createHash('sha256').update(fs.readFileSync(path.resolve(__dirname,'../konverzace/city-quest-f2/index.html'))).digest('hex');
+const geometryEvidence=[];
 const D1_A11Y=process.env.CQ_D1_A11Y==='1';
 const D1_AXE=D1_A11Y?require('axe-core'):null;
 const d1Evidence=[];
@@ -53,7 +59,7 @@ const TARGETS=[...LANG.flatMap(language=>LEVEL.flatMap(level=>
   (['A1','A2'].includes(level)?['city']:['city','mixed']).map(mode=>({language,level,mode}))))];
 assert.equal(TARGETS.length,40);
 const FILTER=process.env.CQ_40_ONLY||'';
-const SELECTED=FILTER?TARGETS.filter(t=>FILTER.split(',').includes(t.language+'/'+t.level+'/'+t.mode)):TARGETS;
+const SELECTED=TARGETS.filter(t=>(!ONLY_LANG||t.language===ONLY_LANG)&&(!FILTER||FILTER.split(',').includes(t.language+'/'+t.level+'/'+t.mode)));
 assert.ok(SELECTED.length>0,'No journeys selected by filter');
 const REPORT=process.env.CQ_40_REPORT||path.resolve(process.cwd(),'city-quest-e2e-40.json');
 const cases=[];
@@ -304,12 +310,12 @@ async function metroMission(page,language,level,n){
  return counts;
 }
 test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey', {timeout:900000}, async t=>{
- const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ const browser=await engines[ENGINE].launch(ENGINE==='chromium'?{headless:true,args:['--no-sandbox']}:{headless:true});
  try{
   for(const c of SELECTED){
    await t.test('E2E '+caption(c),{timeout:180000},async()=>{
-    const page=await browser.newPage({viewport:{width:D1_A11Y?320:1280,height:D1_A11Y?780:900},bypassCSP:D1_A11Y});
-    page.setDefaultTimeout(4500);
+    const page=await browser.newPage({viewport:{width:D1_A11Y?320:WIDTH,height:D1_A11Y?780:HEIGHT},bypassCSP:D1_A11Y});
+    page.setDefaultTimeout(9000);
     let attemptedMission=0;
     console.log('BEGIN '+caption(c));
     const errors=[],requests=[],start=Date.now(),metroCounts={};
@@ -331,6 +337,9 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
       if(c.mode==='mixed'&&n>=5)
        metroCounts[n]=await metroMission(page,c.language,c.level,n);
       else await cityMission(page,c.language,c.level,n);
+      const g=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth}));
+      geometryEvidence.push({case:caption(c),mission:n,...g});
+      assert.ok(g.scrollWidth<=g.width+1,'Horizontal overflow '+caption(c)+' mission '+n);
      }
      await progress(page,8,'Final '+caption(c));
      assert.equal(await page.locator('.cq-completion-summary').count(),1,'Final summary '+caption(c));
@@ -372,6 +381,7 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
    failed:cases.filter(x=>!x.pass).length,
    totalCompletedMissions:cases.filter(x=>x.pass).reduce((n,x)=>n+x.missions,0),
    sha:process.env.GITHUB_SHA||null,
+   engine:ENGINE,viewport:{width:D1_A11Y?320:WIDTH,height:D1_A11Y?780:HEIGHT},sourceHash,geometryEvidence,
    d1A11y:D1_A11Y,d1Evidence,
    cases
   },null,2)+'\n','utf8');

@@ -1,0 +1,57 @@
+name: Publish allowlisted LSH Pages (explicit owner approval only)
+on:
+  workflow_dispatch:
+    inputs:
+      approved_sha:
+        description: Full main commit SHA accepted after all release and manual gates
+        required: true
+        type: string
+      confirmation:
+        description: Type PUBLISH APPROVED LSH to authorize actual deployment
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: lsh-pages-publish
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Require exact explicitly approved main SHA
+        env:
+          APPROVED_SHA: ${{ inputs.approved_sha }}
+          CONFIRMATION: ${{ inputs.confirmation }}
+        run: |
+          test "$GITHUB_REF" = refs/heads/main
+          test "$GITHUB_SHA" = "$APPROVED_SHA"
+          test "$CONFIRMATION" = 'PUBLISH APPROVED LSH'
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node tools/build-lsh-pages-preview.cjs
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: release-preview/site
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lsh-published-file-manifest
+          path: release-preview/evidence/
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-24.04
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

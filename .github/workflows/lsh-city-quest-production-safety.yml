@@ -33,7 +33,7 @@ jobs:
           const version=JSON.parse(fs.readFileSync(dir+'version.json','utf8'));
           const html=fs.readFileSync(dir+relative,'utf8');
           const hash=crypto.createHash('sha256').update(html).digest('hex');
-          assert.equal(hash,'8da86abf37a6c5e58c815249663db5af9d2243142b2f305e44132957a8c16e67');
+          assert.equal(hash,'5702ac1875c773dd8a11e63178065f69ec07e636a02445ce8d0ad4d810c29ef8');
           assert.equal(version.contentHashes[id],hash);
           assert.equal(version.topicCount,35);
           assert.equal(version.variantCount,726);
@@ -62,7 +62,13 @@ jobs:
             const digest=crypto.createHash('sha256').update(matches[0][1],'utf8').digest('base64');
             assert.ok(csp.includes(type+'-src \'sha256-'+digest+'\''));
           }
-          assert.doesNotMatch(html,/<script\b[^>]*\bsrc\s*=|<link\b[^>]*\bhref\s*=|<iframe\b|<object\b|<form\b|<img\b[^>]*\bsrc\s*=/i);
+          const icon=html.match(/<link rel="icon" type="image\/svg\+xml" href="data:image\/svg\+xml,[^"<>]+">/g)||[];
+          assert.equal(icon.length,1,'Exactly one embedded icon, no favicon network request');
+          assert.doesNotMatch(html.replace(icon[0],''),/<script\b[^>]*\bsrc\s*=|<link\b[^>]*\bhref\s*=|<iframe\b|<object\b|<form\b|<img\b[^>]*\bsrc\s*=/i);
+          for(const c of cards.entries){
+            const actual=crypto.createHash('sha256').update(fs.readFileSync(dir+c.relative)).digest('hex');
+            assert.equal(actual,version.contentHashes[c.id],'Actual SHA-256 mismatch '+c.id);
+          }
           assert.ok(fs.readFileSync(dir+'assets/hub.js','utf8').includes('catalog-game-label'));
           assert.ok(fs.readFileSync(dir+'assets/hub.css','utf8').includes('catalog-game-label'));
           assert.ok(!fs.existsSync(dir+'authoring/city-quest-f2'),'City Quest authoring must not be present in published tree');
