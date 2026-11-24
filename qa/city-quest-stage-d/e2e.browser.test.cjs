@@ -143,7 +143,7 @@ async function cityMission(page,language,level,n){
   await walking(page,dirs);
   if(['B2','C1','C2'].includes(level)){
    const index=await page.evaluate(({language,level})=>{
-    const source=document.querySelector('script').textContent;
+    const source=Array.from(document.scripts).find(s=>s.textContent.includes('  const advancedPractice='))?.textContent||'';
     const found=source.match(/^  const advancedPractice=(.*);$/m);
     if(!found)throw Error('Missing advanced authored choices');
     const opts=JSON.parse(found[1])[language].guided[level].options;
@@ -177,7 +177,7 @@ async function cityMission(page,language,level,n){
     if(phase===0)values=['straight','turn','distance'];
     if(phase===1)values=['left','keep-south','west'];
     if(phase>=2){
-     const found=document.querySelector('script').textContent.match(/^  const advancedPractice=(.*);$/m);
+     const found=Array.from(document.scripts).find(s=>s.textContent.includes('  const advancedPractice='))?.textContent||''.match(/^  const advancedPractice=(.*);$/m);
      const practice=JSON.parse(found[1])[language].repair;
      values=(phase===2?practice.reason:practice.apology[level]).options.map(x=>x[0]);
     }

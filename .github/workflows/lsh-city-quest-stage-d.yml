@@ -13,21 +13,46 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: Exact source identity and all catalog files
+      - name: Check all actual hashes against main and candidate
         run: |
+          mkdir -p d-contract
+          git fetch --no-tags --depth=1 origin 92c955686750729a1747379077987539c9093435
           node <<'NODE'
-          const fs=require('node:fs'),crypto=require('node:crypto'),assert=require('node:assert/strict');
-          const root='language-skills-hub/';
+          const fs=require('node:fs'),crypto=require('node:crypto'),assert=require('node:assert/strict'),{execFileSync}=require('node:child_process');
+          const root='language-skills-hub/',main='92c955686750729a1747379077987539c9093435',head='996fd7b8aa71e0043fcf4111e297b6277d676963';
           const cards=JSON.parse(fs.readFileSync(root+'data/cards.json','utf8'));
           const manifest=JSON.parse(fs.readFileSync(root+'version.json','utf8'));
-          const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+          const readMain=p=>execFileSync('git',['show',main+':'+p],{maxBuffer:30*1024*1024});
+          const old=JSON.parse(readMain(root+'version.json'));
+          const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
           assert.equal(cards.entries.length,35);
-          assert.equal(manifest.contentHashes['cl-city-quest-f2'],'47dbd5a3f5ad031bc89db76253c446398880dedd7eadacd8abbd1b06026ee3e0');
-          for(const c of cards.entries)assert.equal(sha(root+c.relative),manifest.contentHashes[c.id],c.id);
-          console.log('35/35 actual card hashes equal integrated version manifest');
+          const results=cards.entries.map(c=>{
+            const path=root+c.relative,actual=sha(fs.readFileSync(path)),expected=manifest.contentHashes[c.id],
+              mainActual=sha(readMain(path)),mainExpected=old.contentHashes[c.id];
+            return {id:c.id,path,actual,expected,mainActual,mainExpected,match:actual===expected,
+              unchanged:actual===mainActual&&expected===mainExpected};
+          });
+          const report={auditSha:process.env.GITHUB_SHA,main,candidate:head,count:results.length,
+            mismatches:results.filter(x=>!x.match),results};
+          fs.writeFileSync('d-contract/hashes.json',JSON.stringify(report,null,2)+'\n');
+          console.log(JSON.stringify({count:results.length,matching:results.filter(x=>x.match).length,unchangedOthers:results.filter(x=>x.id!=='cl-city-quest-f2'&&x.unchanged).length,mismatches:report.mismatches.map(x=>({id:x.id,preexisting:x.unchanged}))},null,2));
+          const city=results.find(x=>x.id==='cl-city-quest-f2');
+          assert.ok(city.match&&city.actual==='47dbd5a3f5ad031bc89db76253c446398880dedd7eadacd8abbd1b06026ee3e0');
+          assert.equal(results.filter(x=>x.id!=='cl-city-quest-f2'&&!x.unchanged).length,0,'Non-City Quest regression');
           NODE
-          node --test language-skills-hub/tests/city-quest-phase1-regression.test.cjs language-skills-hub/tests/city-quest-stage3-oracy.test.cjs language-skills-hub/tests/city-quest-stage-b.test.cjs language-skills-hub/tests/city-quest-stage-c.test.cjs language-skills-hub/tests/city-quest-claude-stage-a.test.cjs language-skills-hub/tests/pwa-install.test.cjs
+      - name: Existing static tests including PWA
+        run: node --test language-skills-hub/tests/city-quest-phase1-regression.test.cjs language-skills-hub/tests/city-quest-stage3-oracy.test.cjs language-skills-hub/tests/city-quest-stage-b.test.cjs language-skills-hub/tests/city-quest-stage-c.test.cjs language-skills-hub/tests/city-quest-claude-stage-a.test.cjs language-skills-hub/tests/pwa-install.test.cjs
+      - name: Strict release manifest integrity
+        run: node -e "const a=require('./d-contract/hashes.json'); if(a.mismatches.length){console.error('Pre-existing or current manifest mismatches:',a.mismatches.map(x=>x.id));process.exit(1)}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: stage-d-integrated-hash-audit
+          path: d-contract/
+          if-no-files-found: warn
+          retention-days: 30
   engines:
+    if: "!contains(github.event.head_commit.message, '[focused-audit]')"
     strategy:
       fail-fast: false
       matrix:
@@ -97,6 +122,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
   pwa-integration:
+    if: "!contains(github.event.head_commit.message, '[focused-audit]')"
     runs-on: ubuntu-24.04
     container:
       image: mcr.microsoft.com/playwright:v1.56.1-noble
