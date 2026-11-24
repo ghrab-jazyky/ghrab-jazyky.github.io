@@ -172,6 +172,14 @@ async function cityMission(page,language,level,n){
    await confirm.click();
   }
  }else throw Error('Unknown city mission '+n);
+ if([1,3].includes(n)&&['B2','C1','C2'].includes(level)){
+  const plans={B2:{values:['irrelevant','match','misread'],answer:'match'},
+    C1:{values:['clarify','assume','irrelevant'],answer:'clarify'},
+    C2:{values:['collapse','ignore','reconcile'],answer:'reconcile'}};
+  const plan=plans[level];
+  assert.equal(await page.locator('.cq-city-decision').count(),1);
+  await choiceByIndex(page,await getCityChoiceIndex(page,language,level,n,'city-evidence',plan.values,plan.answer));
+ }
  assert.equal(await page.locator('#f1Panel .f2-finish').count(),1,
   'Expected visible completion for city '+n+'/'+language+'/'+level);
  await progress(page,n,'CITY '+n);
@@ -196,6 +204,15 @@ async function metroMission(page,language,level,n){
    while(y>dest.r){route.push('north');y--;}
    assert.ok(route.length>0,'Unexpected empty walk '+n);
    await walking(page,route);continue;
+  }
+  if(phase==='speech'&&['B2','C1','C2'].includes(level)&&!state.reviewPassed){
+   const plans={B2:{values:['exact','extraStop','extraTransfer'],answer:'exact'},
+    C1:{values:['ignore','adapt','assume'],answer:'adapt'},
+    C2:{values:['guarantee','unsupported','verified'],answer:'verified'}};
+   const plan=plans[level];
+   assert.equal(await page.locator('.cq-route-review[data-cq-review-level]').count(),1);
+   await choiceByIndex(page,await getCityChoiceIndex(page,language,level,n,'route-review',plan.values,plan.answer));
+   continue;
   }
   if(['enter','notice','board','checkpoint','speech'].includes(phase)){
    await page.locator('#f1Panel .f2-actions button.primary').click();continue;
@@ -279,6 +296,9 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
       else await cityMission(page,c.language,c.level,n);
      }
      await progress(page,8,'Final '+caption(c));
+     assert.equal(await page.locator('.cq-completion-summary').count(),1,'Final summary '+caption(c));
+     assert.equal(await page.locator('.cq-completed-missions li').count(),8);
+     assert.ok(await page.locator('.cq-completion-vocabulary li').count()>=8);
      assert.deepEqual(errors,[],'Browser errors '+caption(c));
      assert.deepEqual(requests,[],'Remote requests '+caption(c));
      cases.push({...c,pass:true,missions:8,elapsedMs:Date.now()-start,metroPhases:metroCounts});

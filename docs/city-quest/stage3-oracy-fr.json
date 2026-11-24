@@ -74,14 +74,14 @@
   },
   "metro": {
     "5": {
-      "B2": "Expliquez comment aller de Central Station à Museum Quarter en métro : ligne, terminus, quai et station de sortie. Comparez votre choix à une direction plausible, mais erronée.",
-      "C1": "Un passager prend le terminus affiché sur la rame pour le prochain arrêt. Corrigez la confusion, expliquez comment vérifier les panneaux du quai et donnez des instructions d'embarquement précises.",
-      "C2": "Formulez une brève annonce sur le quai pour rejoindre Museum Quarter, puis expliquez calmement le même parcours à une personne qui ne connaît pas le vocabulaire du métro. Adaptez le registre sans changer les faits."
+      "B2": "Expliquez le trajet réellement effectué de Central Station à Museum Quarter, avec la ligne, le terminus, le quai et, le cas échéant, la correspondance. Comparez-le à l'autre itinéraire valable et justifiez votre choix.",
+      "C1": "Un voyageur confond le terminus affiché sur la rame avec le prochain arrêt. Clarifiez la différence à partir du parcours effectué et expliquez comment adapter votre conseil si le tronçon M1 était fermé.",
+      "C2": "Formulez une brève annonce sur le quai pour la liaison choisie vers Museum Quarter, puis expliquez ce même trajet à une personne peu familière avec le métro. Distinguez les faits vérifiés des garanties de service non confirmées."
     },
     "6": {
-      "B2": "Un visiteur veut aller de Market Square à Stadium. Expliquez la correspondance à University, les lignes, les directions et la façon de trouver le quai suivant.",
-      "C1": "Un voyageur avec une lourde valise appréhende la correspondance à University. Guidez-le étape par étape et précisez quels panneaux consulter si le quai de correspondance n'est pas évident.",
-      "C2": "Deux passagers donnent des conseils opposés sur la ligne à suivre à University. Résolvez la contradiction à l'aide du plan du réseau et des panneaux, puis donnez un seul itinéraire précis vers Stadium."
+      "B2": "Un visiteur souhaite aller de Market Square à Stadium. Décrivez les correspondances réellement effectuées et comparez le trajet par University à celui par Central Station et Museum Quarter.",
+      "C1": "Un voyageur s'inquiète des correspondances. Expliquez la liaison que vous avez empruntée et proposez un autre itinéraire praticable si la correspondance à University est indisponible, en vous appuyant sur les tableaux de départ.",
+      "C2": "Deux voyageurs ne sont pas d'accord sur la question de savoir si le trajet par University est le seul valable pour rejoindre Stadium. Résolvez le désaccord à l'aide du plan et des panneaux de quai, puis recommandez un trajet avec une réserve justifiée."
     },
     "7": {
       "B2": "Le tronçon M1 entre Old Town et Museum Quarter est fermé. Comparez l'itinéraire bloqué à la solution M2–M3 et expliquez où effectuer la correspondance.",

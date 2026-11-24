@@ -91,6 +91,14 @@ test('A B2 student can finish a real city mission and review oral criteria witho
    assert.ok(correctIndex>=0);
    await page.locator('#f1Panel .f2-choice-list button').nth(correctIndex).click();
   }
+  // Stage C adds a genuine B2 compound place-purpose decision before completion.
+  const decision=await page.evaluate(()=>{
+   const G=window.CityQuestF2Engine;
+   return G.orderChoices(['irrelevant','match','misread'].map(value=>({value,label:value})),
+     'en','B2',1,'city-evidence').findIndex(x=>x.value==='match');
+  });
+  assert.equal(await page.locator('.cq-city-decision').count(),1);
+  await page.locator('.cq-city-decision .f2-choice-list button').nth(decision).click();
   assert.equal(await page.locator('.cq-advanced-reflection-list li').count(),3);
   assert.match(await page.locator('.cq-advanced-oracy-disclaimer').last().innerText(),/does not record or grade/);
   assert.match(await page.locator('#f1ProgressText').innerText(),/1\s*\/\s*8/);

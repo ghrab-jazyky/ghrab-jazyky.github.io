@@ -113,3 +113,26 @@ Po opravách textů, ovládání a přístupnosti na PR #175 je nutné znovu spu
 **Doklady automatizace:** Přidány regresní testy jazykové matice 144 úloh, přepínání režimů, resetu, přístupnosti nativních checkboxů a čtyřjazyčných negativních tras (povinný průchozí bod + nesprávné odbočení). Automatizace neprokazuje kvalitu mluveného projevu a nezastupuje lidskou CEFR, jazykovou, didaktickou ani zařízeníovou přejímku. Evidovat aktuální SHA a výsledek nového GitHub Actions běhu.
  
 **Rozhodnutí o vydání:** nadále `NO-GO` — nejde o povolení k merge, publikaci nebo nakládání s reálnými osobními údaji žáků.
+
+
+## Dodatek C — alternativní trasy, diferenciace CEFR a skutečný průchod (24. 11. 2026)
+**Cílová úroveň:** B2–C2 pro nové rozhodovací úlohy a alternativní metro trasy; relativní pěší pokyny od A2.  
+**Věková skupina:** gymnázium, přibližně 12–19 let podle úrovně.  
+**Cíl:** samostatně ověřovat platnost trasy, rozlišovat podmínky a doložená fakta, formulovat vlastní použitelné instrukce.  
+**Čas:** 3–5 minut navíc na ústní zdůvodnění; nové objektivní rozhodnutí obvykle do 1–2 minut.  
+**Slabší:** použít mapu, značení, kontextovou nápovědu a nejprve projít základní trasu.  
+**Silnější:** porovnat dvě platné trasy, vysvětlit změnu podmínek a reagovat na protichůdné informace.
+ 
+**C1 / F-20:** B2–C2 mise 05 a 06 přijímají skutečné souvislé alternativy grafu se správným směrem a nástupištním značením. Vygenerované jednoduché trasy mají nejvýše dvě změny linky a toleranci 7 simulovaných minut proti nejkratší. Nejde o živá dopravní data. Očekávané nezávislé referenční hodnoty:
+- 05: M1 (2 úseky, 0 přestupů, 6 min); alternativně M2 přes University a M3 (3 úseky, 1 přestup, 13 min).
+- 06: M2/M3 přes University (5 úseků, 1 přestup, 19 min); alternativně M2/M1/M3 přes Central Station a Museum Quarter (4 úseky, 2 přestupy, 20 min).
+- B1 ponechává autorskou vedenou trasu. Mise 07 zachovává výluku; mise 08 zachovává povinný sběr vstupenek, setkání na University a pěší dokončení. Geometrie mapy, cílové muzeum a portál se nemění.
+- Trasa nesmí využít neexistující spojení, vynechat závaznou podmínku nebo překročit uzavřený úsek. Přejetí a návrat se zachycují jako skutečně projeté úseky, nikoli jako plán.
+ 
+**C2 / F-05/F-06:** U B2 nové rozhodnutí vyžaduje porovnání skutečných počtů úseků a přestupů; C1 řeší konkrétní změněnou podmínku, C2 řeší rozporné nebo neověřené informace. City 01/03 mají navíc objektivní rozhodnutí podle stejné úrovňové logiky. Nesprávná volba neumožní dokončení mise. Tím se ověřuje porozumění a argumentační rozhodnutí, nikoli kvalita vlastního projevu. Zachováno 144 samostatných orálních zadání; 24 z nich v metro 05/06 nyní respektuje více platných tras. Sebehodnocení z B zůstává nepovinné.
+ 
+**C3 / F-12, F-33, F-38:** Po první světové straně v misi 04 používají A2–C2 relativní instrukce. Skutečná cesta je podkladem modelu: v metru evidence nastoupení, přestupů, zastávek, návratů a absolvovaných pěších etap; v City 08 oddělené dokončené úseky mezi povinnými body. Závěr po 8/8 rekapituluje mise a slovní zásobu, nepřiděluje jazykovou známku. Lišta fází je neinteraktivní; nápověda pro City 01/02/03/04/07/08 využívá konkrétní kontext.
+ 
+**Povinné technické důkazy:** nové izolované testy enginu s nezávisle sestavenými trasami, průchody alternativ 05/06 ve 4 jazycích × 3 úrovních, negativní scénáře, CEFR brány, regresní průchod 40 konfiguracemi a závěrečná rekapitulace. Výsledky uvádět jen pro přesný SHA. 
+ 
+**NO-GO:** Lidské CEFR/jazykové posouzení, fyzické telefony/tablety a asistivní technologie, integrační strom s aktuálním main a publikační izolace podkladů zůstávají PENDING. Bez souhlasu vlastníka nic neslučovat ani nenasazovat. Ústní výkon neznámkovat automaticky; případné žákovské doklady anonymizovat. Žádné API, síťové požadavky z herního kódu, mikrofon, server nebo trvalé ukládání žákovských dat.

@@ -74,14 +74,14 @@
   },
   "metro": {
     "5": {
-      "B2": "From Central Station, explain how to reach Museum Quarter by metro: line, terminus, platform and exit. Compare your selection with one plausible wrong direction.",
-      "C1": "A passenger reads the terminus as if it were the next stop. Correct the misunderstanding, explain how to verify the platform signs and give precise boarding instructions.",
-      "C2": "Give a concise platform announcement for Museum Quarter, then explain the same route calmly to a traveller unfamiliar with metro terminology. Keep the facts consistent but adapt the register."
+      "B2": "Explain the metro route you actually took from Central Station to Museum Quarter, including the line, terminus, platform and any transfer. Compare it with the other valid route and justify your choice.",
+      "C1": "A traveller mistakes the train's terminus for the next stop. Clarify that distinction using the route you actually took and explain how your recommendation would change if the M1 section closed.",
+      "C2": "Give a brief platform announcement for your selected connection to Museum Quarter, then explain the same itinerary to a traveller unfamiliar with metro vocabulary. Distinguish verified route facts from unconfirmed service guarantees."
     },
     "6": {
-      "B2": "A visitor must travel from Market Square to Stadium. Explain the transfer at University, including line directions and how to check the next platform.",
-      "C1": "A traveller with a heavy suitcase is anxious about changing at University. Give step-by-step transfer guidance and explain what signs to check if the connecting platform is unclear.",
-      "C2": "Two passengers give contradictory advice about which line to follow at University. Mediate using the network diagram and platform signs, then give one precise route to Stadium."
+      "B2": "A visitor wants to travel from Market Square to Stadium. Describe the transfers you actually made, and compare the route via University with the alternative via Central Station and Museum Quarter.",
+      "C1": "A traveller is worried about changing trains. Explain the connection you used, then give a practical alternative if changing at University is unavailable; refer to the departure boards.",
+      "C2": "Two passengers disagree about whether the connection via University is the only valid route to Stadium. Resolve the disagreement using the network and platform signs, and recommend a route with a reasoned caveat."
     },
     "7": {
       "B2": "The M1 section between Old Town and Museum Quarter is closed. Compare a blocked plan with the M2–M3 alternative and explain the transfer.",

@@ -74,14 +74,14 @@
   },
   "metro": {
     "5": {
-      "B2": "Explica cómo llegar desde Central Station hasta Museum Quarter en metro: línea, dirección, andén y estación de salida. Compara tu elección con una dirección equivocada pero plausible.",
-      "C1": "Un pasajero confunde el destino final indicado en el tren con la próxima estación. Corrige la confusión, explica cómo comprobar los carteles del andén y da instrucciones precisas para subir.",
-      "C2": "Formula un anuncio breve para el andén sobre la ruta a Museum Quarter y luego explícasela con calma a alguien que no conoce el vocabulario del metro. Mantén los datos, pero adapta el registro."
+      "B2": "Explica el trayecto que has realizado de Central Station a Museum Quarter: línea, cabecera, andén y, si procede, transbordo. Compáralo con el otro trayecto válido y justifica tu elección.",
+      "C1": "Un viajero confunde la estación terminal del tren con la siguiente parada. Aclara esa diferencia a partir del recorrido que has hecho y explica cómo cambiaría tu recomendación si se cerrara el tramo de la M1.",
+      "C2": "Formula un anuncio breve en el andén para la conexión elegida hacia Museum Quarter y después explica el mismo recorrido a alguien que desconoce el vocabulario del metro. Distingue los datos comprobados de las garantías de servicio no confirmadas."
     },
     "6": {
-      "B2": "Un visitante debe ir de Market Square a Stadium. Explica el transbordo en University, indicando las líneas, sus direcciones y cómo localizar el siguiente andén.",
-      "C1": "Un viajero con una maleta pesada está preocupado por el transbordo en University. Dale indicaciones paso a paso y explica qué señales debe consultar si el andén de enlace no está claro.",
-      "C2": "Dos pasajeros dan consejos contradictorios sobre qué línea seguir en University. Resuelve la discrepancia con el esquema de la red y los carteles de los andenes, y ofrece una única ruta precisa a Stadium."
+      "B2": "Un visitante quiere ir de Market Square a Stadium. Describe los transbordos que has realizado y compara la ruta por University con la alternativa por Central Station y Museum Quarter.",
+      "C1": "Un viajero está preocupado por el transbordo. Explica la conexión que has utilizado y propón una alternativa viable si no se puede cambiar en University; consulta los paneles de salidas.",
+      "C2": "Dos viajeros discrepan sobre si la ruta por University es la única válida para llegar a Stadium. Resuelve el desacuerdo con el plano y los paneles de los andenes, y recomienda un trayecto con una reserva razonada."
     },
     "7": {
       "B2": "El tramo de la M1 entre Old Town y Museum Quarter está cerrado. Compara la ruta bloqueada con la alternativa M2–M3 y explica dónde hay que hacer transbordo.",

@@ -74,14 +74,14 @@
   },
   "metro": {
     "5": {
-      "B2": "Erkläre die U-Bahn-Verbindung von Central Station nach Museum Quarter: Linie, Fahrtziel, Bahnsteig und Ausstieg. Vergleiche deine Wahl mit einer plausiblen, aber falschen Fahrtrichtung.",
-      "C1": "Ein Fahrgast hält den auf dem Zug angezeigten Endbahnhof für die nächste Station. Kläre den Irrtum, erkläre die Kontrolle der Bahnsteiganzeigen und gib präzise Hinweise zum Einsteigen.",
-      "C2": "Formuliere eine knappe Bahnsteigdurchsage für die Fahrt nach Museum Quarter und erkläre dieselbe Strecke anschließend ruhig einer Person, die U-Bahn-Begriffe nicht kennt. Passe den Stil an, nicht die Fakten."
+      "B2": "Beschreibe deine tatsächlich gefahrene Strecke von Central Station nach Museum Quarter mit Linie, Endstation, Bahnsteig und gegebenenfalls Umstieg. Vergleiche sie mit der anderen gültigen Verbindung und begründe deine Wahl.",
+      "C1": "Ein Fahrgast hält den auf dem Zug angezeigten Endbahnhof für die nächste Station. Kläre den Unterschied anhand deiner gefahrenen Strecke und erläutere, wie sich deine Empfehlung bei einer Sperrung des M1-Abschnitts ändern würde.",
+      "C2": "Formuliere eine kurze Bahnsteigdurchsage für deine gewählte Verbindung nach Museum Quarter und erkläre dieselbe Strecke anschließend einer Person ohne U-Bahn-Erfahrung. Trenne nachprüfbare Streckendaten von unbestätigten Betriebszusagen."
     },
     "6": {
-      "B2": "Ein Besucher möchte von Market Square nach Stadium fahren. Erkläre das Umsteigen an University mit Linien, Fahrtrichtungen und Hinweisen zum richtigen Anschlussbahnsteig.",
-      "C1": "Ein Reisender mit schwerem Koffer macht sich Sorgen um den Umstieg an University. Gib eine schrittweise Erklärung und erläutere, welche Schilder er bei unklarer Bahnsteigzuordnung prüfen sollte.",
-      "C2": "Zwei Fahrgäste widersprechen einander bei der Frage, welcher Linie sie an University folgen sollen. Vermittle mithilfe des Netzplans und der Bahnsteigschilder und gib einen eindeutigen Weg nach Stadium an."
+      "B2": "Ein Besucher möchte von Market Square nach Stadium fahren. Beschreibe deine tatsächlichen Umstiege und vergleiche die Verbindung über University mit der Alternative über Central Station und Museum Quarter.",
+      "C1": "Ein Fahrgast sorgt sich wegen des Umsteigens. Erkläre deine gewählte Verbindung und schlage eine praktikable Alternative vor, falls der Umstieg an der Station University nicht möglich ist. Beziehe dich auf die Abfahrtstafeln.",
+      "C2": "Zwei Fahrgäste sind uneinig, ob die Verbindung über University die einzige gültige Strecke nach Stadium ist. Kläre den Widerspruch anhand des Netzplans und der Bahnsteigschilder und begründe deine Empfehlung mit einem passenden Vorbehalt."
     },
     "7": {
       "B2": "Der M1-Abschnitt zwischen Old Town und Museum Quarter ist gesperrt. Vergleiche die unterbrochene Verbindung mit der Ausweichroute über M2 und M3 und erkläre den Umstieg.",
