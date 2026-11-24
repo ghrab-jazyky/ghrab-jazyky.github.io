@@ -7,6 +7,8 @@ const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),cryp
 const root=path.resolve(__dirname,'..');
 const html=fs.readFileSync(path.join(root,'konverzace/city-quest-f2/index.html'),'utf8');
 const script=html.match(/<script>([\s\S]*?)<\/script>/)[1];
+// Compile ALL inline JavaScript, not only the pure engine section.
+new vm.Script(script,{filename:'city-quest-inline.js'});
 const start=script.indexOf('/* Riverton Metro — F2.1B experimental network and route engine.');
 const end=script.indexOf('/* City Quest F2.1D — manually authored metro languages and CEFR pedagogy.',start);
 assert.ok(start>=0&&end>start,'Isolated engine boundary');

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070f20">
 <meta name="description" content="City Quest: offline city and metro navigation in English, Spanish, German and French at A1–C2, with interactive metro missions at B1–C2.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-GlHsnFLqsBMtWbGytKBrfh22QGEJLegPF0ftnMQrZeA='; style-src 'sha256-7Iazy55na3Pi25wKb3JJ2QkG1vfWwEQoBk2fHFiPzMs='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-/EdVChQ6WQIOzXdCczEktgG7P5ywVoAMSlpX1Iq3VHk='; style-src 'sha256-7Iazy55na3Pi25wKb3JJ2QkG1vfWwEQoBk2fHFiPzMs='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <title>City Quest · Interactive Language Game · EN ES DE FR · A1–C2</title>
 
 
@@ -6033,7 +6033,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       if(entry.kind==="board"){
         flush();
         if(s.meetingConfirmed&&entry.station==="university"&&entry.line==="M3")result.push(c.meeting);
-        result.push(c.board+" "+name(entry.station)+" — "+entry.line+" · "+c.toward+" 
+        result.push(c.board+" "+name(entry.station)+" — "+entry.line+" · "+c.toward+" "+
           name(entry.direction)+" · "+c.platform+" "+entry.platform+".");
         travel=[name(entry.station)];
       }else if(entry.kind==="ride"){
