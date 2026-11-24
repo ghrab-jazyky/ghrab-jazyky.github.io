@@ -1,10 +1,11 @@
 'use strict';
-/* Exact content integrity for the immutable Reading Lab card corpus.
- * RL-02 adds only two audited script tags and one stylesheet to Asteroids.
- * Strip those exact, versioned, additive tags BEFORE comparing with the
- * existing goldens in version.json. Never update baseline content hashes
- * merely because an application shell gains a presentation enhancement.
- * Every unlisted byte change still fails the original integrity gate.
+/* Exact byte integrity for the Reading Lab card corpus.
+ * RL-02 originally normalized out its approved annotation hooks to compare
+ * against the historical pre-annotation digest. Since the approved R12
+ * Asteroids revision (#162) and D2 manifest reconciliation, contentHashes
+ * denotes the actual published bytes, including all annotation hooks.
+ * Keep the existing hook-shape checks, but hash the original content.
+ * No arbitrary byte changes may be hidden by normalization.
  */
 const stylesheet='<link rel="stylesheet" href="../../self-check/reading/reading-annotations.css">\n';
 const scripts='<!-- RL-02: independent text annotation layer; no changes to original card data. -->\n'+
@@ -19,6 +20,6 @@ function integrityContent(topic,contents){
  if(normalized.includes('reading-practice-annotations.js')||
     normalized.includes('reading-annotations.css'))
   throw new Error('Unrecognized Asteroids annotation modification');
- return Buffer.isBuffer(contents)?Buffer.from(normalized,'utf8'):normalized;
+ return contents;
 }
 module.exports={integrityContent};
