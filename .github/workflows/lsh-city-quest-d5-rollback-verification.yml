@@ -1,0 +1,64 @@
+name: City Quest D5 rollback candidate verification (NO DEPLOY)
+on:
+  push:
+    branches: [rollback/city-quest-pre-d5-20261124]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  rollback-integrity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Prove exact old runtime and retained publisher
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD
+          git diff --exit-code 92c955686750729a1747379077987539c9093435 HEAD -- language-skills-hub/konverzace language-skills-hub/cteni language-skills-hub/poslech language-skills-hub/assets language-skills-hub/self-check language-skills-hub/printouts
+          git diff --exit-code 10baa3e2358fec631cac59133b0d6b38e26b3ffa HEAD -- tools/build-lsh-pages-preview.cjs .github/workflows/lsh-pages-approved-publish.yml
+          test "$(sha256sum language-skills-hub/konverzace/city-quest-f2/index.html | cut -d' ' -f1)" = 34c6bb2662e2684c5808abab2519f6df2343c04a99948bfb82241101b51f41d0
+          node tools/build-lsh-pages-preview.cjs
+          mapfile -t files < <(find language-skills-hub/tests -maxdepth 1 -type f -name '*.test.cjs' ! -name '*browser.test.cjs' | LC_ALL=C sort)
+          test "${#files[@]}" -gt 30
+          node --test --test-concurrency=4 "${files[@]}"
+      - name: Prove local HTTP publication and forbidden paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory release-preview/site >/tmp/rollback-http.log 2>&1 &
+          pid=$!
+          trap 'kill "$pid" || true' EXIT
+          node <<'NODE'
+          const assert=require('node:assert/strict'),fs=require('node:fs'),crypto=require('node:crypto');
+          const root='http://127.0.0.1:8765/';
+          const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+          (async()=>{
+            const report=JSON.parse(fs.readFileSync('release-preview/evidence/publication-manifest.json'));
+            for(let i=0;i<30;i++){try{if((await fetch(root)).ok)break;}catch{}await new Promise(r=>setTimeout(r,500));}
+            for(const c of report.cardChecks){const r=await fetch(root+c.path);assert.equal(r.status,200,c.path);assert.equal(sha(Buffer.from(await r.arrayBuffer())),c.sha256,c.path);}
+            for(const p of ['docs/city-quest/CITY_QUEST_MANUAL_ACCEPTANCE_CZ.md','language-skills-hub/tests/city-quest-d3-integrity.test.cjs','language-skills-hub/authoring/plural/content.json','language-skills-hub/konverzace/city-quest-f0/index.html'])assert.equal((await fetch(root+p)).status,404,p);
+            console.log('PASS rollback: 35 exact card URLs and excluded paths.');
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: city-quest-pre-d5-rollback-publication
+          path: release-preview/site/
+          include-hidden-files: true
+          retention-days: 30
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: city-quest-pre-d5-rollback-evidence
+          path: release-preview/evidence/
+          retention-days: 30
+          if-no-files-found: error

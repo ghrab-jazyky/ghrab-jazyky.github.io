@@ -1,12 +1,12 @@
 name: LSH City Quest isolated production safety
 on:
   pull_request:
-    branches: [main, fix/city-quest-phase1-2026-11-23]
+    branches: [main]
     paths:
       - 'language-skills-hub/**'
       - '.github/workflows/lsh-city-quest-production-safety.yml'
   push:
-    branches: [main, feature/city-quest-cefr-b2-c2-stage3-20261123]
+    branches: [main]
     paths:
       - 'language-skills-hub/**'
       - '.github/workflows/lsh-city-quest-production-safety.yml'
@@ -33,7 +33,7 @@ jobs:
           const version=JSON.parse(fs.readFileSync(dir+'version.json','utf8'));
           const html=fs.readFileSync(dir+relative,'utf8');
           const hash=crypto.createHash('sha256').update(html).digest('hex');
-          assert.equal(hash,'6c86e9b4c770d432053a37eb07cf0e6608c192c549e91ebca9ac58912da9d7a2');
+          assert.equal(hash,'34c6bb2662e2684c5808abab2519f6df2343c04a99948bfb82241101b51f41d0');
           assert.equal(version.contentHashes[id],hash);
           assert.equal(version.topicCount,35);
           assert.equal(version.variantCount,726);
@@ -62,138 +62,10 @@ jobs:
             const digest=crypto.createHash('sha256').update(matches[0][1],'utf8').digest('base64');
             assert.ok(csp.includes(type+'-src \'sha256-'+digest+'\''));
           }
-          const icon=html.match(/<link rel="icon" type="image\/svg\+xml" href="data:image\/svg\+xml,[^"<>]+">/g)||[];
-          assert.equal(icon.length,1,'Exactly one embedded icon, no favicon network request');
-          assert.doesNotMatch(html.replace(icon[0],''),/<script\b[^>]*\bsrc\s*=|<link\b[^>]*\bhref\s*=|<iframe\b|<object\b|<form\b|<img\b[^>]*\bsrc\s*=/i);
-          for(const c of cards.entries){
-            const actual=crypto.createHash('sha256').update(fs.readFileSync(dir+c.relative)).digest('hex');
-            assert.equal(actual,version.contentHashes[c.id],'Actual SHA-256 mismatch '+c.id);
-          }
+          assert.doesNotMatch(html,/<script\b[^>]*\bsrc\s*=|<link\b[^>]*\bhref\s*=|<iframe\b|<object\b|<form\b|<img\b[^>]*\bsrc\s*=/i);
           assert.ok(fs.readFileSync(dir+'assets/hub.js','utf8').includes('catalog-game-label'));
           assert.ok(fs.readFileSync(dir+'assets/hub.css','utf8').includes('catalog-game-label'));
           assert.ok(!fs.existsSync(dir+'authoring/city-quest-f2'),'City Quest authoring must not be present in published tree');
           assert.ok(!fs.existsSync(dir+'konverzace/city-quest-f0'),'Unapproved City Quest prototype must not be published');
           console.log('PASS: one certified offline City Quest HTML + 34 preserved existing catalog topics');
           NODE
-      - name: City Quest phase-one focused regressions
-        run: |
-          node --check language-skills-hub/tests/city-quest-phase1-regression.test.cjs
-          node --test language-skills-hub/tests/city-quest-phase1-regression.test.cjs
-      - name: Verify authored CEFR B2-C2 tasks and snapshot consistency
-        run: |
-          node --check language-skills-hub/tests/city-quest-stage3-oracy.test.cjs
-          node --test language-skills-hub/tests/city-quest-stage3-oracy.test.cjs
-          node --check language-skills-hub/tests/city-quest-stage-b.test.cjs
-          node --test language-skills-hub/tests/city-quest-stage-b.test.cjs
-      - name: Stage C independent graph and decision-engine invariants
-        run: |
-          node --check language-skills-hub/tests/city-quest-stage-c.test.cjs
-          node --test language-skills-hub/tests/city-quest-stage-c.test.cjs
-          node --test language-skills-hub/tests/city-quest-stage-d1.test.cjs
-      - name: Check Claude stage-A findings and all signed-off invariants
-        run: |
-          node --check language-skills-hub/tests/city-quest-claude-stage-a.test.cjs
-          node --test language-skills-hub/tests/city-quest-claude-stage-a.test.cjs
-  city-quest-stage-two-browser:
-    runs-on: ubuntu-24.04
-    container:
-      image: mcr.microsoft.com/playwright:v1.56.1-noble
-      options: --ipc=host --user 1001
-    timeout-minutes: 22
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-      - name: Install browser test API
-        run: npm install --no-save --ignore-scripts playwright@1.56.1 axe-core@4.10.3
-      - name: Test City Quest mode safety, teacher notes, feedback and mobile navigation
-        run: |
-          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/cq-stage2-http.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill $SERVER_PID' EXIT
-          for i in $(seq 1 30); do
-            if node -e 'fetch(process.argv[1]).then(r => process.exit(r.ok?0:1)).catch(() => process.exit(1))' http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html >/dev/null 2>&1; then break; fi
-            sleep 1
-          done
-          node --check language-skills-hub/tests/city-quest-stage2.browser.test.cjs
-          node --test language-skills-hub/tests/city-quest-stage2.browser.test.cjs
-          node --check language-skills-hub/tests/city-quest-stage3-oracy.browser.test.cjs
-          node --test language-skills-hub/tests/city-quest-stage3-oracy.browser.test.cjs
-          node --check language-skills-hub/tests/city-quest-stage-b.browser.test.cjs
-          node --test language-skills-hub/tests/city-quest-stage-b.browser.test.cjs
-          node --check language-skills-hub/tests/city-quest-stage-c.browser.test.cjs
-          node --test language-skills-hub/tests/city-quest-stage-c.browser.test.cjs
-          node --check language-skills-hub/tests/city-quest-claude-stage-a.browser.test.cjs
-          node --test language-skills-hub/tests/city-quest-claude-stage-a.browser.test.cjs
-  city-quest-release-40:
-    name: City Quest release gate — 40 complete journeys
-    runs-on: ubuntu-24.04
-    container:
-      image: mcr.microsoft.com/playwright:v1.56.1-noble
-      options: --ipc=host --user 1001
-    timeout-minutes: 23
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-      - name: Install Playwright for local-only browser tests
-        run: npm install --no-save --ignore-scripts playwright@1.56.1
-      - name: Exercise all 40 language/CEFR/mode combinations and 320 mission completions
-        env:
-          CQ_40_REPORT: city-quest-e2e-40.json
-        run: |
-          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/cq-e2e-http.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill $SERVER_PID' EXIT
-          for i in $(seq 1 30); do
-            if node -e 'fetch(process.argv[1]).then(r => process.exit(r.ok?0:1)).catch(() => process.exit(1))' http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html >/dev/null 2>&1; then break; fi
-            sleep 1
-          done
-          node --check language-skills-hub/tests/city-quest-release-40.browser.test.cjs
-          CQ_40_ONLY=en/A1/city,de/C2/city,fr/B1/mixed node --test language-skills-hub/tests/city-quest-release-40.browser.test.cjs
-          node --test language-skills-hub/tests/city-quest-release-40.browser.test.cjs
-      - name: Archive all 40 per-journey results, even when a case fails
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: city-quest-40-e2e-evidence
-          path: city-quest-e2e-40.json
-          if-no-files-found: warn
-          retention-days: 30
-
-  city-quest-stage-d1-a11y:
-    name: City Quest D1 — final contrast in all languages, modes and themes
-    runs-on: ubuntu-24.04
-    container:
-      image: mcr.microsoft.com/playwright:v1.56.1-noble
-      options: --ipc=host --user 1001
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-      - run: npm install --no-save --ignore-scripts playwright@1.56.1 axe-core@4.10.3
-      - name: Complete 8 language/mode journeys and test all final summary colours
-        env:
-          CQ_D1_A11Y: '1'
-          CQ_40_ONLY: en/B2/city,en/B2/mixed,es/B2/city,es/B2/mixed,de/B2/city,de/B2/mixed,fr/B2/city,fr/B2/mixed
-          CQ_40_REPORT: city-quest-d1-a11y.json
-        run: |
-          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/cq-d1-http.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill $SERVER_PID' EXIT
-          for i in $(seq 1 30); do
-            if node -e 'fetch(process.argv[1]).then(r => process.exit(r.ok?0:1)).catch(() => process.exit(1))' http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html >/dev/null 2>&1; then break; fi
-            sleep 1
-          done
-          node --test language-skills-hub/tests/city-quest-release-40.browser.test.cjs
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: city-quest-d1-a11y
-          path: city-quest-d1-a11y.json
-          if-no-files-found: warn
-          retention-days: 30

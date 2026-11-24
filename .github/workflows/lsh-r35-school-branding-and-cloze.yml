@@ -60,7 +60,7 @@ jobs:
           mkdir -p r35-evidence
           node -p "require('axe-core/package.json').version" | tee r35-evidence/axe-version.txt
           mapfile -t all < <(find language-skills-hub/tests -maxdepth 1 -type f -name '*browser.test.cjs' | LC_ALL=C sort)
-          test "${#all[@]}" -ge 78
+          test "${#all[@]}" -ge 72
           printf '%s\n' "${all[@]}" > r35-evidence/full-inventory.txt
           selected=()
           for i in "${!all[@]}"; do
