@@ -1,0 +1,151 @@
+name: City Quest D4 R35 isolation and full browser shards (NO DEPLOY)
+on:
+  push:
+    branches: [audit/city-quest-stage-d4-20261124]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  full-r35:
+    name: R35 original browser coverage shard ${{ matrix.shard }}
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 0fc0a792fcd6b7f4b67d76b49c2190ef52af475e
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1 @axe-core/playwright@4.14.0 jsqr@1.4.0 pngjs@7.0.0
+      - name: Execute disjoint partition of every original R35 test file
+        shell: bash
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          set -euo pipefail
+          mkdir -p d4-evidence
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git rev-parse HEAD | tee d4-evidence/tested-sha.txt
+          test "$(git rev-parse HEAD)" = 0fc0a792fcd6b7f4b67d76b49c2190ef52af475e
+          npm ls --all > d4-evidence/dependency-tree.txt || true
+          node -p "require('axe-core/package.json').version" | tee d4-evidence/axe-version.txt
+          mapfile -t all < <(find language-skills-hub/tests -maxdepth 1 -name '*browser.test.cjs' -type f | LC_ALL=C sort)
+          test "${#all[@]}" = 78
+          printf '%s\n' "${all[@]}" > d4-evidence/full-test-inventory.txt
+          selected=()
+          for i in "${!all[@]}"; do
+            if (( i % 8 == SHARD )); then selected+=("${all[$i]}"); fi
+          done
+          test "${#selected[@]}" -gt 0
+          printf '%s\n' "${selected[@]}" | tee d4-evidence/shard-test-inventory.txt
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/d4-http.log 2>&1 &
+          pid=$!
+          trap 'kill "$pid" || true' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch("http://127.0.0.1:8765/language-skills-hub/index.html").then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))'; then break; fi
+            sleep 1
+          done
+          node --test --test-concurrency=2 "${selected[@]}" 2>&1 | tee d4-evidence/browser.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: d4-r35-shard-${{ matrix.shard }}
+          path: d4-evidence/
+          if-no-files-found: error
+          retention-days: 30
+  isolate:
+    name: D4 isolated ${{ matrix.target }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: a4-r35-dependencies
+            ref: 0fc0a792fcd6b7f4b67d76b49c2190ef52af475e
+            file: city-quest-claude-stage-a.browser.test.cjs
+            pattern: 'A4: axe-core'
+            axe: transitive
+          - target: a4-pinned-d3-dependencies
+            ref: 0fc0a792fcd6b7f4b67d76b49c2190ef52af475e
+            file: city-quest-claude-stage-a.browser.test.cjs
+            pattern: 'A4: axe-core'
+            axe: '4.10.3'
+          - target: r33-baseline
+            ref: 92c955686750729a1747379077987539c9093435
+            file: r33-auto-listening-and-export.browser.test.cjs
+            pattern: 'R33 webkit Listening tests are closed'
+            axe: transitive
+          - target: r33-candidate
+            ref: 0fc0a792fcd6b7f4b67d76b49c2190ef52af475e
+            file: r33-auto-listening-and-export.browser.test.cjs
+            pattern: 'R33 webkit Listening tests are closed'
+            axe: transitive
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.ref }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Match legacy or dedicated toolchain
+        shell: bash
+        env:
+          AXE: ${{ matrix.axe }}
+        run: |
+          if [ "$AXE" = transitive ]; then
+            npm install --no-save --ignore-scripts playwright@1.56.1 @axe-core/playwright@4.14.0 jsqr@1.4.0 pngjs@7.0.0
+          else
+            npm install --no-save --ignore-scripts playwright@1.56.1 "axe-core@$AXE"
+          fi
+      - name: Repeat unchanged targeted tests and record assertion details
+        shell: bash
+        env:
+          EXPECTED: ${{ matrix.ref }}
+          FILE: ${{ matrix.file }}
+          PATTERN: ${{ matrix.pattern }}
+        run: |
+          set -euo pipefail
+          mkdir -p d4-evidence
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git rev-parse HEAD | tee d4-evidence/tested-sha.txt
+          test "$(git rev-parse HEAD)" = "$EXPECTED"
+          npm ls --all > d4-evidence/dependency-tree.txt || true
+          node -p "require('axe-core/package.json').version" | tee d4-evidence/axe-version.txt
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/d4-http.log 2>&1 &
+          pid=$!
+          trap 'kill "$pid" || true' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch("http://127.0.0.1:8765/language-skills-hub/index.html").then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))'; then break; fi
+            sleep 1
+          done
+          failed=0
+          for attempt in 1 2 3; do
+            if node --test --test-name-pattern="$PATTERN" "language-skills-hub/tests/$FILE" 2>&1 | tee "d4-evidence/attempt-$attempt.log"; then
+              echo "attempt $attempt PASS" | tee -a d4-evidence/results.txt
+            else
+              echo "attempt $attempt FAIL" | tee -a d4-evidence/results.txt
+              failed=1
+            fi
+          done
+          exit "$failed"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: d4-isolate-${{ matrix.target }}
+          path: d4-evidence/
+          if-no-files-found: error
+          retention-days: 30
