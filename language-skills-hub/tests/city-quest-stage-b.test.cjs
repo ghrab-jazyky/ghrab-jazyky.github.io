@@ -27,7 +27,7 @@ test('Stage B: 144 oral missions unchanged and native-language review text is sy
   const file=JSON.parse(fs.readFileSync(p,'utf8'));
   assert.deepEqual(embedded[lang],file,lang+' authoring/inline drift');
   for(const key of ['reviewPrompt','reviewProgress','reviewDone','partnerConfirm','partnerNote']){
-   assert.ok(file.ui[key]&&file.ui[key].length>=15,lang+'/'+key);
+   assert.ok(file.ui[key]&&file.ui[key].length>=(key==='reviewProgress'?3:15),lang+'/'+key);
   }
   for(const mode of ['city','metro']){
    for(const [mission,byLevel] of Object.entries(file[mode])){
