@@ -11,8 +11,8 @@ const evidence=process.env.CQ_UX_EVIDENCE;
 // Chromium/Firefox produce visual evidence; no browser context bypasses CSP in this suite.
 if(engine==='webkit')console.log('Strict WebKit acceptance: screenshot instrumentation disabled (all functional tests still execute).');
 async function launch(){return pw[engine].launch(engine==='chromium'?{headless:true,args:['--no-sandbox']}:{headless:true});}
-async function open(browser,lang,level,viewport){
- const page=await browser.newPage({viewport,reducedMotion:'reduce'}),errors=[],remote=[];
+async function open(browser,lang,level,viewport,hasTouch=false){
+ const page=await browser.newPage({viewport,reducedMotion:'reduce',hasTouch}),errors=[],remote=[];
  page.on('pageerror',e=>errors.push(e.message));
  page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
  page.on('request',r=>{if(!r.url().startsWith('http://127.0.0.1:8765/')&&!r.url().startsWith('data:'))remote.push(r.url());});
@@ -228,6 +228,162 @@ test('UX mixed final mission: required Market Square tickets and University meet
      assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
     }finally{await page.close();}
    }
+  }
+ }finally{await browser.close();}
+});
+
+async function expectSession(page,lang,level,progress){
+ await page.waitForFunction(({lang,level,progress})=>document.getElementById('f2Language').value===lang&&
+   document.getElementById('f2Level').value===level&&document.documentElement.lang.toLowerCase().startsWith(lang)&&
+   Number(document.getElementById('f1ProgressTrack').getAttribute('aria-valuenow'))===progress,{lang,level,progress});
+}
+async function exploreChoice(page,lang,level,round){
+ const index=await page.evaluate(({lang,level,round})=>{
+   const F=window.CityQuestF1Engine,G=window.CityQuestF2Engine,q=F.explore[round];
+   return G.orderChoices(G.exploreChoices(q,level,round),lang,level,1,round).indexOf(q.correct);
+ },{lang,level,round});
+ assert.ok(index>=0);
+ return page.locator('#f1Panel .f2-choice-list button').nth(index);
+}
+test('GA-003: language/CEFR confirmation protects partial work, completed progress and Esc; fresh settings remain direct',{timeout:180000},async()=>{
+ const browser=await launch();
+ try{
+  for(const lang of ['en','es','de','fr']){
+   const {page,errors,remote}=await open(browser,lang,'B2',desktop[0]);
+   try{
+    // No attempted work: allow settings immediately, without a modal.
+    await page.locator('#f2Level').selectOption('B1');
+    await expectSession(page,lang,'B1',0);
+    assert.equal(await page.locator('#cqModeConfirm').isVisible(),false);
+    await page.locator('#f2Level').selectOption('B2');
+    await expectSession(page,lang,'B2',0);
+    await page.locator('#f1Stations button').nth(1).click();
+    await page.locator('.f2-quick-east').click();
+    const path=await page.locator('#f2MapRoute').getAttribute('points'),statusBefore=await page.locator('#mapProgress').textContent();
+    assert.ok(path&&path.trim().split(/\s+/).length>1);
+    await page.locator('#f2Level').selectOption('C1');
+    assert.equal(await page.locator('#cqModeConfirm').isVisible(),true);
+    await expectSession(page,lang,'B2',0);
+    await page.locator('#cqModeCancel').click();
+    await page.locator('#cqModeConfirm').waitFor({state:'hidden'});
+    await expectSession(page,lang,'B2',0);
+    assert.equal(await page.locator('#f2MapRoute').getAttribute('points'),path);
+    assert.equal(await page.locator('#mapProgress').textContent(),statusBefore);
+    const other=lang==='en'?'es':'en';
+    await page.locator('#f2Language').selectOption(other);
+    assert.equal(await page.locator('#cqModeConfirm').isVisible(),true);
+    await page.keyboard.press('Escape');
+    await page.locator('#cqModeConfirm').waitFor({state:'hidden'});
+    await expectSession(page,lang,'B2',0);
+    assert.equal(await page.locator('#f2MapRoute').getAttribute('points'),path);
+    await page.locator('#f2Language').selectOption(other);
+    await page.locator('#cqModeApply').click();
+    await expectSession(page,other,'B2',0);
+    assert.ok((await page.locator('#f1Panel .f2-card-head h2').textContent()).length>4);
+    assert.equal(await page.locator('#f1Panel .f2-choice-list').count(),1);
+    assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
+   }finally{await page.close();}
+  }
+  const {page,errors,remote}=await open(browser,'en','A1',desktop[0]);
+  try{
+   const count=await page.evaluate(()=>window.CityQuestF2Engine.answerCount('A1'));
+   for(let i=0;i<count;i++)await (await exploreChoice(page,'en','A1',i)).click();
+   await expectSession(page,'en','A1',1);
+   await page.locator('#f2Level').selectOption('A2');
+   assert.equal(await page.locator('#cqModeConfirm').isVisible(),true);
+   await page.locator('#cqModeCancel').click();
+   await expectSession(page,'en','A1',1);
+   await page.locator('#f2Level').selectOption('A2');
+   await page.locator('#cqModeApply').click();
+   await expectSession(page,'en','A2',0);
+   assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
+  }finally{await page.close();}
+ }finally{await browser.close();}
+});
+test('GA-004: native mouse double-click cannot answer two phases; distinct deliberate clicks remain valid',{timeout:120000},async()=>{
+ const browser=await launch();
+ try{
+  for(const level of ['B1','C2']){
+   const {page,errors,remote}=await open(browser,'en',level,desktop[0]);
+   try{
+    await page.locator('#metroPilotToggle').click();await page.locator('#f1Stations button').nth(4).click();
+    await frame(page);
+    const index=await page.evaluate(()=>{
+     const s=window.CityQuestF2MetroBridge.current(),M=window.RivertonMetroGame,G=window.CityQuestF2Engine;
+     const expected=M.scenario(s).legs[s.legIndex].line;
+     return G.orderChoices(M.options(s),'en',document.getElementById('f2Level').value,5,s.phase).findIndex(o=>o.value===expected);
+    });
+    assert.ok(index>=0);
+    const first=page.locator('#f1Panel .f2-choice-list button').nth(index);
+    const attempts=(await current(page)).attempts;
+    await first.dblclick();await frame(page);
+    const after=await current(page);
+    assert.equal(after.phase,'select-direction','Double click advanced two phases');
+    assert.equal(after.attempts,attempts,'Double click created accidental attempt');
+    const direction=await page.evaluate(()=>window.RivertonMetroGame.desiredDirection(window.CityQuestF2MetroBridge.current()));
+    await choose(page,direction);assert.equal((await current(page)).phase,'select-platform');
+    assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
+   }finally{await page.close();}
+  }
+  const {page,errors,remote}=await open(browser,'en','B1',desktop[0]);
+  try{
+   const first=await exploreChoice(page,'en','B1',0);
+   await first.dblclick();await frame(page);
+   assert.match(await page.locator('#f1Panel .f2-small').first().textContent(),/2\s*\//,'Exactly one city question answered');
+   const next=await exploreChoice(page,'en','B1',1);
+   await next.focus();await page.keyboard.down('Enter');await frame(page);
+   await page.keyboard.down('Enter');await page.keyboard.up('Enter');await frame(page);
+   assert.match(await page.locator('#f1Panel .f2-small').first().textContent(),/3\s*\//,'Held Enter answered more than one question');
+   assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
+  }finally{await page.close();}
+ }finally{await browser.close();}
+});
+test('GA-004: same-point rapid touch taps cannot answer the replacement choice',{timeout:90000},async()=>{
+ const browser=await launch();
+ try{
+  const {page,errors,remote}=await open(browser,'en','B1',mobile[1],true);
+  try{
+   await page.locator('#metroPilotToggle').click();await page.locator('#f1Stations button').nth(4).click();await frame(page);
+   const index=await page.evaluate(()=>{
+    const s=window.CityQuestF2MetroBridge.current(),M=window.RivertonMetroGame,G=window.CityQuestF2Engine;
+    return G.orderChoices(M.options(s),'en','B1',5,s.phase).findIndex(o=>o.value===M.scenario(s).legs[s.legIndex].line);
+   });
+   assert.ok(index>=0);
+   const b=page.locator('#f1Panel .f2-choice-list button').nth(index);
+   await b.scrollIntoViewIfNeeded();
+   const r=await b.boundingBox(),attempts=(await current(page)).attempts;
+   assert.ok(r);
+   await page.touchscreen.tap(r.x+r.width/2,r.y+r.height/2);
+   await page.touchscreen.tap(r.x+r.width/2,r.y+r.height/2);await frame(page);
+   assert.equal((await current(page)).phase,'select-direction');
+   assert.equal((await current(page)).attempts,attempts);
+   assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
+  }finally{await page.close();}
+ }finally{await browser.close();}
+});
+test('GA-016: open-route and undo feedback is truthful in all four languages',{timeout:90000},async()=>{
+ const browser=await launch();
+ try{
+  const expected={
+   en:['Use the map and choose an open street','Previous walking step undone.'],
+   es:['Usa el plano y elige una calle abierta','Has deshecho el último paso.'],
+   de:['Wähle auf dem Stadtplan eine offene Straße','Der letzte Schritt wurde rückgängig gemacht.'],
+   fr:['Utilisez le plan et choisissez une rue ouverte','Dernière étape à pied annulée.']
+  };
+  for(const lang of Object.keys(expected)){
+   const {page,errors,remote}=await open(browser,lang,'B2',desktop[0]);
+   try{
+    await page.locator('#f1Stations button').nth(1).click();
+    const status=page.locator('#f1Panel .f2-status');
+    assert.ok((await status.textContent()).includes(expected[lang][0]));
+    const before=await page.locator('#mapProgress').textContent();
+    await page.locator('.f2-quick-east').click();
+    await page.locator('.f2-hud-undo').click();
+    assert.equal(await status.textContent(),expected[lang][1]);
+    assert.notEqual(await status.getAttribute('data-tone'),'success');
+    assert.equal(await page.locator('#mapProgress').textContent(),before);
+    assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
+   }finally{await page.close();}
   }
  }finally{await browser.close();}
 });

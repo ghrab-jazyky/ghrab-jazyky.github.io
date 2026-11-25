@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070f20">
 <meta name="description" content="City Quest: offline city and metro navigation in English, Spanish, German and French at A1–C2, with interactive metro missions at B1–C2.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-hvndGYhMcGrqfzVbz92LVVEWXEU8MqTteoiBBi/duoI='; style-src 'sha256-74k1E99NWJdL1dDMQvuEKfHu19WAeJaaRiYRQFXMNn0='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-3DR3PtcnB5j+YAAVoOOy186Q/a457DbAm7nYkZIrRwA='; style-src 'sha256-74k1E99NWJdL1dDMQvuEKfHu19WAeJaaRiYRQFXMNn0='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%2314253d%22%2F%3E%3Cpath%20d%3D%22M16%204v24M4%2016h24%22%20stroke%3D%22%2364e6ad%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%228%22%20fill%3D%22%2314253d%22%20stroke%3D%22%23f3f8ff%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22m20%2010-3%209-6%203%203-9z%22%20fill%3D%22%2364e6ad%22%2F%3E%3C%2Fsvg%3E">
 <title>City Quest · Interactive Language Game · EN ES DE FR · A1–C2</title>
 
@@ -6202,6 +6202,31 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     return div;
   }
   function actions(parent){return el("div",parent,"f2-actions");}
+  // A rendered answer can disappear synchronously after activation. Stop
+  // native multi-clicks, same-point accidental double taps and held Enter
+  // from activating a replacement answer. Ordinary deliberate single clicks,
+  // keyboard/AT activations and map-direction buttons remain available.
+  const guardedDecision=".f2-choice-list button, .f2-actions button.primary";
+  let lastDecisionTap=null,decisionPointer="";
+  panel.addEventListener("pointerdown",event=>{
+    decisionPointer=event.target.closest(guardedDecision)?event.pointerType:"";
+  },true);
+  panel.addEventListener("keydown",event=>{
+    if(event.repeat&&(event.key==="Enter"||event.key===" ")&&event.target.closest(guardedDecision)){
+      event.preventDefault();event.stopImmediatePropagation();
+    }
+  },true);
+  panel.addEventListener("click",event=>{
+    const target=event.target.closest(guardedDecision);
+    if(!target)return;
+    const touch=event.pointerType==="touch"||decisionPointer==="touch"||event.sourceCapabilities?.firesTouchEvents;
+    decisionPointer="";
+    const now=performance.now(),point={x:event.clientX,y:event.clientY,at:now};
+    const repeatedTap=touch&&lastDecisionTap&&now-lastDecisionTap.at<320&&
+      Math.hypot(point.x-lastDecisionTap.x,point.y-lastDecisionTap.y)<24;
+    if(event.detail>1||repeatedTap){event.preventDefault();event.stopImmediatePropagation();return;}
+    lastDecisionTap=touch&&event.detail>0?point:null;
+  },true);
   function choices(parent,items,onChoose){
     const holder=el("div",parent,"f2-choice-list");
     items.forEach((choice,index)=>{
@@ -6705,6 +6730,12 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     }
     return names.find(x=>E.same(x.node,p))?.name||ui().city;
   }
+  const cqTravelFeedback={
+    en:{navigate:"Use the map and choose an open street towards the next required place.",undo:"Previous walking step undone."},
+    es:{navigate:"Usa el plano y elige una calle abierta hacia el siguiente lugar obligatorio.",undo:"Has deshecho el último paso."},
+    de:{navigate:"Wähle auf dem Stadtplan eine offene Straße zum nächsten vorgegebenen Ort.",undo:"Der letzte Schritt wurde rückgängig gemacht."},
+    fr:{navigate:"Utilisez le plan et choisissez une rue ouverte en direction du prochain lieu à visiter.",undo:"Dernière étape à pied annulée."}
+  };
   function renderRoute(){
     const game=state.route,c=G.config(state.level);
     if(game.done)return complete(2,ui().routeCompleted,G.routeModel(pack(),game.route));
@@ -6714,7 +6745,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     if(c.via.length)note(panel,ui().via,c.via.map(pointName).join(", "));
     if(c.blocked)note(panel,"🚧 "+ui().closed,ui().wrongRoad);
     para(panel,ui().step+": "+(game.route.length-1)+" · "+ui().remaining+": "+E.distance(game.route.at(-1),c.target),"f2-small");
-    status(panel,flash?.text||ui().guide,flash?.tone);
+    status(panel,flash?.text||cqTravelFeedback[state.language].navigate,flash?.tone);
     help(panel);
   }
   function renderDialogue(){
@@ -6944,7 +6975,8 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       case 8:outcome=G.questMove(state.quest,next,state.level);state.quest=outcome.state;break;
       default:return;
     }
-    if(outcome.kind==="closed")flash={text:cqFeedback[state.language].closed,tone:"warning"};
+    if(outcome.kind==="undo")flash={text:cqTravelFeedback[state.language].undo,tone:""};
+    else if(outcome.kind==="closed")flash={text:cqFeedback[state.language].closed,tone:"warning"};
     else if(outcome.kind==="speak")flash={text:ui().selfcheck,tone:"warning"};
     else if(outcome.kind==="missing-via")flash={text:state.station===7?
       roadworks().missing:(cqMissingViaLead[state.language]+G.config(state.level).via.map(pointName).join(", ")+"."),tone:"warning"};
@@ -7240,7 +7272,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       else node.removeAttribute("aria-current");
     }
     $("f3dRailNote").textContent=x.note;
-    $("f3dSessionAdvice").textContent=ui().changeSession+
+    $("f3dSessionAdvice").textContent=cqSessionConfirm[state.language][4]+
       (metroAvailable()?" "+x.metroReset:"");
     updateTeacherGuide();
   }
@@ -7323,7 +7355,8 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   function resetSession(lang,level){
     metroEnabled=false;
     const mode=state.mode;
-    state=makeSession(lang,level,mode);flash=null;
+    state=makeSession(lang,level,mode);flash=null;lastDecisionTap=null;
+    $("f2Language").value=lang;$("f2Level").value=level;
     applyLanguageUI();updateProgress();screen();renderMap();
   }
   function updateMetroToggle(){
@@ -7376,16 +7409,68 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     flash=null;updateMetroToggle();updateProgress();screen();renderMap();
     window.CityQuestF3?.sceneUpdated();
   }
-  let requestedMetroMode=null;
+  const cqSessionConfirm={
+    en:["Start a new session?","Changing the language or level will clear all mission progress and speaking self-review in this session.","Keep current settings","Start new session","Changing the language or CEFR level starts a new session after confirmation if you have made progress."],
+    es:["¿Iniciar una sesión nueva?","Cambiar el idioma o el nivel borrará el progreso de todas las misiones y la autoevaluación oral de esta sesión.","Mantener los ajustes","Iniciar sesión nueva","Cambiar el idioma o el nivel del MCER inicia una sesión nueva tras la confirmación si ya has avanzado."],
+    de:["Neue Sitzung starten?","Wenn du die Sprache oder das Niveau änderst, gehen alle bisherigen Aufgabenfortschritte und die Selbsteinschätzung zum Sprechen verloren.","Einstellungen beibehalten","Neue Sitzung starten","Beim Wechsel der Sprache oder des GER-Niveaus beginnt nach einer Bestätigung eine neue Sitzung, sofern du bereits Fortschritte gemacht hast."],
+    fr:["Commencer une nouvelle session ?","Changer de langue ou de niveau effacera la progression dans toutes les missions ainsi que l'autoévaluation de l'oral de cette session.","Conserver les réglages","Nouvelle session","Changer de langue ou de niveau du CECRL ouvre une nouvelle session après confirmation si vous avez déjà progressé."]
+  };
+  function hasSessionProgress(){
+    if(state.done.size||hasLateProgress()||Object.values(state.pairTurns).some(n=>n>0)||
+      Object.values(state.oracyReview).some(r=>r.partner||r.checks.some(Boolean))||
+      Object.keys(state.cityReview).length)return true;
+    // Compare only game work, not UI-created empty self-review objects,
+    // theme, visited mission tab or a harmless setting toggle.
+    const initial=makeSession(state.language,state.level,state.mode);
+    return ["explore","route","dialogue","guided","transit","repair","detour","quest"]
+      .some(key=>JSON.stringify(state[key])!==JSON.stringify(initial[key]));
+  }
+  let pendingChange=null;
+  function finishChange(apply){
+    const wanted=pendingChange;pendingChange=null;
+    if(!wanted)return;
+    if(wanted.kind==="session"){
+      if(apply){
+        resetSession(wanted.lang,wanted.level);
+        // Other presentation listeners are notified only after the accepted
+        // settings have been committed. The session handler is now a no-op.
+        $(wanted.focus).dispatchEvent(new Event("change",{bubbles:true}));
+        window.CityQuestF3?.sceneUpdated();
+      }
+      $(wanted.focus).focus({preventScroll:true});
+    }else{
+      if(apply)applyMetroMode(wanted.next);else updateMetroToggle();
+      $(metroEnabled?"metroPilotToggle":"cityOnlyToggle").focus({preventScroll:true});
+    }
+  }
+  function confirmChange(wanted,title,description,cancel,apply){
+    const dialog=$("cqModeConfirm");
+    if(pendingChange||dialog.open)return;
+    pendingChange=wanted;
+    $("cqModeConfirmTitle").textContent=title;$("cqModeConfirmText").textContent=description;
+    $("cqModeCancel").textContent=cancel;$("cqModeApply").textContent=apply;
+    dialog.returnValue="cancel";
+    if(typeof dialog.showModal==="function"){dialog.showModal();$("cqModeCancel").focus();}
+    else finishChange(window.confirm(description));
+  }
   function requestMetroMode(next){
-    if(!metroAvailable()||metroEnabled===next)return;
+    if(!metroAvailable()||metroEnabled===next||pendingChange)return;
     if(!hasLateProgress()){applyMetroMode(next);return;}
-    const dialog=$("cqModeConfirm"),c=cqModeText[state.language]||cqModeText.en;
-    requestedMetroMode=next;
-    $("cqModeConfirmTitle").textContent=c[3];$("cqModeConfirmText").textContent=c[4];
-    $("cqModeCancel").textContent=c[5];$("cqModeApply").textContent=c[6];
-    if(typeof dialog.showModal==="function")dialog.showModal();
-    else{const yes=window.confirm(c[4]);requestedMetroMode=null;if(yes)applyMetroMode(next);}
+    const c=cqModeText[state.language]||cqModeText.en;
+    confirmChange({kind:"metro",next},c[3],c[4],c[5],c[6]);
+  }
+  function requestSessionChange(lang,level,focus){
+    if(!C.languages.includes(lang)||!C.levels.includes(level)){
+      $("f2Language").value=state.language;$("f2Level").value=state.level;return;
+    }
+    if(lang===state.language&&level===state.level)return;
+    // Restore committed selects before the other change listeners execute;
+    // until approval all engine state and all visible language stay unchanged.
+    $("f2Language").value=state.language;$("f2Level").value=state.level;
+    if(pendingChange)return;
+    if(!hasSessionProgress()){resetSession(lang,level);return;}
+    const c=cqSessionConfirm[state.language];
+    confirmChange({kind:"session",lang,level,focus},c[0],C.pack(lang).native+" · "+level+". "+c[1],c[2],c[3]);
   }
   function setMode(mode){
     if(!["solo","pair"].includes(mode))return;
@@ -7406,18 +7491,13 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   for(const id of ["resetBtn","mapReset"]){
     $(id).addEventListener("click",e=>{e.stopImmediatePropagation();e.preventDefault();resetStation();},true);
   }
-  $("f2Language").addEventListener("change",e=>resetSession(e.target.value,state.level));
-  $("f2Level").addEventListener("change",e=>resetSession(state.language,e.target.value));
+  $("f2Language").addEventListener("change",e=>requestSessionChange(e.target.value,state.level,"f2Language"));
+  $("f2Level").addEventListener("change",e=>requestSessionChange(state.language,e.target.value,"f2Level"));
   $("metroPilotToggle").addEventListener("click",()=>requestMetroMode(true));
   $("cityOnlyToggle").addEventListener("click",()=>requestMetroMode(false));
   $("cqModeCancel").addEventListener("click",()=>$("cqModeConfirm").close("cancel"));
   $("cqModeApply").addEventListener("click",()=>$("cqModeConfirm").close("apply"));
-  $("cqModeConfirm").addEventListener("close",()=>{
-    const wanted=requestedMetroMode;requestedMetroMode=null;
-    if($("cqModeConfirm").returnValue==="apply"&&wanted!==null)applyMetroMode(wanted);
-    else updateMetroToggle();
-    $(metroEnabled?"metroPilotToggle":"cityOnlyToggle").focus({preventScroll:true});
-  });
+  $("cqModeConfirm").addEventListener("close",()=>finishChange($("cqModeConfirm").returnValue==="apply"));
   $("f1Solo").addEventListener("click",()=>setMode("solo"));
   $("f1Pair").addEventListener("click",()=>setMode("pair"));
   $("themeBtn").addEventListener("click",applyChromeLabels);
