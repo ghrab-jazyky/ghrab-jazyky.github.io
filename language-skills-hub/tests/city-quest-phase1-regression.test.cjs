@@ -61,7 +61,11 @@ test('F-03/F-04: metro missions have 4-language introduction and justified final
   assert.match(narrative[lang][8],/University/);
  }
  assert.match(html,/metroNarrative\[state.language\]\?\.\[n\]/);
- assert.match(html,/game.history.length===0/);
+ // UX workspace intentionally retains the full native introduction throughout
+ // the journey in an accessible disclosure, rather than discarding it after
+ // the first move. Browser acceptance checks exact text before and after a move.
+ assert.match(html,/const context=el\("details",panel,"cq-ux-context"\)/);
+ assert.match(html,/para\(context,metroNarrative\[state.language\]\?\.\[n\]\|\|metroNarrative.en\[n\]\)/);
  assert.match(html,/state.station>=5&&state.station<=8/);
  assert.match(html,/LC.levels.includes\(state.level\)/);
  assert.match(html,/state.done=new Set\(\[\.\.\.state.done\].filter\(n=>n<=4\)\)/);

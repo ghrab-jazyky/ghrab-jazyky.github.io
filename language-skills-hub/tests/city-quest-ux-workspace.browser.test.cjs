@@ -6,6 +6,10 @@ const BASE='http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/i
 const desktop=[{width:1366,height:768},{width:1280,height:720},{width:1920,height:1080}];
 const mobile=[{width:320,height:780},{width:390,height:844},{width:768,height:1024},{width:844,height:390}];
 const evidence=process.env.CQ_UX_EVIDENCE;
+// WebKit's Playwright screenshot implementation itself injects a stylesheet blocked by strict CSP.
+// Functional and geometry assertions run unchanged on WebKit, WITHOUT screenshot instrumentation.
+// Chromium/Firefox produce visual evidence; no browser context bypasses CSP in this suite.
+if(engine==='webkit')console.log('Strict WebKit acceptance: screenshot instrumentation disabled (all functional tests still execute).');
 async function launch(){return pw[engine].launch(engine==='chromium'?{headless:true,args:['--no-sandbox']}:{headless:true});}
 async function open(browser,lang,level,viewport){
  const page=await browser.newPage({viewport,reducedMotion:'reduce'}),errors=[],remote=[];
@@ -18,7 +22,7 @@ async function open(browser,lang,level,viewport){
  return {page,errors,remote};
 }
 async function frame(page){await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));}
-async function capture(page,name){if(!evidence)return;fs.mkdirSync(evidence,{recursive:true});await page.screenshot({path:evidence+'/'+engine+'-'+name+'.png',timeout:10000});}
+async function capture(page,name){if(!evidence||engine==='webkit')return;fs.mkdirSync(evidence,{recursive:true});await page.screenshot({path:evidence+'/'+engine+'-'+name+'.png',timeout:10000});}
 async function box(page,selector){const r=await page.locator(selector).boundingBox();assert.ok(r,'Visible '+selector);return r;}
 async function fits(page,selector){
  const r=await box(page,selector),v=page.viewportSize();
@@ -112,6 +116,12 @@ test('UX Metro: actual line, direction, platform and ride switch view without ch
    try{
     await page.locator('#metroPilotToggle').click();await page.locator('#f1Stations button').nth(4).click();
     await view(page,'network');assert.equal((await current(page)).phase,'select-line');
+    const contextText=await page.locator('#f1Panel .cq-ux-context p').textContent();
+    const expectedContext=await page.evaluate(lang=>{
+      const line=document.querySelector('script').textContent.match(/^\s*const metroNarrative=(\{.*\});$/m);
+      return JSON.parse(line[1])[lang][5];
+    },lang);
+    assert.equal(contextText,expectedContext,'Full original native narrative retained');
     assert.equal(await page.locator('#cqMetroView-train').isDisabled(),true);
     if(viewport.width>1050){await fits(page,'#cqMetroVisual');await fits(page,'#f1Panel');}
     await capture(page,'network-'+lang+'-'+viewport.width);
@@ -121,6 +131,7 @@ test('UX Metro: actual line, direction, platform and ride switch view without ch
     assert.ok(await page.locator('#metroSceneSvg').isVisible());
     assert.equal(await page.locator('#f1Panel .cq-ux-context').count(),1,'Context retained after departure decision');
     assert.equal(await page.locator('#f1Panel .cq-ux-context').evaluate(el=>el.open),false);
+    assert.equal(await page.locator('#f1Panel .cq-ux-context p').textContent(),expectedContext);
     if(viewport.width>1050){await fits(page,'#metroSceneSvg');await fits(page,'#f1Panel');}
     else{const s=await box(page,'#metroSceneSvg'),p=await box(page,'#f1Panel');assert.ok(s.y+s.height<=p.y+1,'Platform buried below task');}
     await capture(page,'platform-'+lang+'-'+viewport.width);
@@ -141,7 +152,7 @@ test('UX Metro: actual line, direction, platform and ride switch view without ch
  }finally{await browser.close();}
 });
 
-test('UX CSP: production motion preferences and screenshot capture do not create CSP errors',{timeout:60000},async()=>{
+test('UX CSP: normal-motion production interaction remains under strict policy',{timeout:60000},async()=>{
  const browser=await launch();
  try{
   const page=await browser.newPage({viewport:desktop[0],reducedMotion:'no-preference'});
@@ -155,8 +166,31 @@ test('UX CSP: production motion preferences and screenshot capture do not create
   assert.deepEqual(errors,[],'Production interaction before screenshot');
   assert.deepEqual(await page.evaluate(()=>window.__cqCspEvents),[]);
   await capture(page,'csp-motion-normal');await frame(page);
-  assert.deepEqual(errors,[],'Screenshot must not inject prohibited styles');
+  assert.deepEqual(errors,[],'Unexpected CSP/console errors during strict production acceptance');
   assert.deepEqual(await page.evaluate(()=>window.__cqCspEvents),[]);
   await page.close();
+ }finally{await browser.close();}
+});
+
+test('UX mixed final mission: required Market Square tickets and University meeting remain explicit in all four languages',{timeout:90000},async()=>{
+ const browser=await launch();
+ try{
+  for(const lang of ['en','es','de','fr']){
+   for(const viewport of [desktop[0],mobile[1]]){
+    const {page,errors,remote}=await open(browser,lang,'B2',viewport);
+    try{
+     await page.locator('#metroPilotToggle').click();await page.locator('#f1Stations button').nth(7).click();await frame(page);
+     const goal=page.locator(viewport.width>1050?'#f1Panel .cq-ux-primary-goal':'#cqCityBrief');
+     assert.equal(await goal.isVisible(),true,'Mandatory mission goal visible '+lang);
+     const expected=await page.evaluate(lang=>window.RivertonMetroLanguage.pack(lang,'B2',8).goal,lang);
+     const text=await goal.textContent();
+     assert.ok(text.includes(expected),'Full authored goal '+lang);
+     assert.ok(text.includes('Market Square')&&text.includes('University'),'Both mandatory waypoints');
+     assert.equal((await current(page)).phase,'walk-to-entrance');
+     await dock(page);await noOverflow(page);
+     assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
+    }finally{await page.close();}
+   }
+  }
  }finally{await browser.close();}
 });
