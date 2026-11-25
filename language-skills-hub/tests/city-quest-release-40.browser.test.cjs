@@ -65,6 +65,20 @@ const REPORT=process.env.CQ_40_REPORT||path.resolve(process.cwd(),'city-quest-e2
 const cases=[];
 
 function caption(c){return c.language.toUpperCase()+'/'+c.level+'/'+c.mode;}
+const journeyUnits={en:['rail segment','rail segments','line change','line changes'],es:['tramo de metro','tramos de metro','transbordo','transbordos'],de:['gefahrener Abschnitt','gefahrene Abschnitte','Linienwechsel','Linienwechsel'],fr:['tronçon en métro','tronçons en métro','changement de ligne','changements de ligne']};
+function expectedJourneyCounts(language,stops,transfers){
+ const u=journeyUnits[language];return stops+' '+u[stops===1?0:1]+' · '+transfers+' '+u[transfers===1?2:3];
+}
+function assertCountGrammar(language,text){
+ const u=journeyUnits[language];
+ for(const offset of [0,2]){
+  if(u[offset]===u[offset+1])continue;
+  const escaped=s=>s.replace(/[.*+?^$(){}|[\]\\]/g,'\\$&');
+  assert.doesNotMatch(text,new RegExp('\\b1 '+escaped(u[offset+1])+'(?![\\p{L}])','u'));
+  assert.doesNotMatch(text,new RegExp('\\b(?:0|[2-9]|[1-9][0-9]+) '+escaped(u[offset])+'(?![\\p{L}])','u'));
+ }
+}
+
 async function choiceByIndex(page,index,where='#f1Panel .f2-choice-list button'){
  assert.ok(Number.isInteger(index)&&index>=0,'Correct choice must be rendered');
  const choices=page.locator(where);
@@ -259,6 +273,14 @@ async function metroMission(page,language,level,n){
     C2:{values:['guarantee','unsupported','verified'],answer:'verified'}};
    const plan=plans[level];
    assert.equal(await page.locator('.cq-route-review[data-cq-review-level]').count(),1);
+   if(level==='B2'){
+    const summary=await page.evaluate(()=>window.RivertonMetroGame.journeySummary(window.CityQuestF2MetroBridge.current()));
+    const labels=await page.locator('.cq-route-review .f2-choice-list button').allTextContents();
+    assert.equal(labels.length,3);
+    for(const label of labels)assertCountGrammar(language,label);
+    const i=await getCityChoiceIndex(page,language,level,n,'route-review',plan.values,plan.answer);
+    assert.ok(labels[i].includes(expectedJourneyCounts(language,summary.stops,summary.transfers)),'Actual route count grammar');
+   }
    await choiceByIndex(page,await getCityChoiceIndex(page,language,level,n,'route-review',plan.values,plan.answer));
    continue;
   }
@@ -312,6 +334,17 @@ async function metroMission(page,language,level,n){
  assert.equal(last.phase,'complete','Metro not complete within action cap; phases '+JSON.stringify(counts));
  assert.equal(last.completed,true,'Metro complete must be true');
  assert.equal(await page.locator('#f1Panel .f2-finish').count(),1,'Metro finish missing');
+ const ledger=page.locator('#f1Panel [data-cq-journey-record]');
+ assert.equal(await ledger.count(),1,'Journey record must be available');
+ const reveal=ledger.locator('..').locator('button[aria-expanded]').first();
+ await reveal.click();
+ const record=await ledger.textContent(),summary=await page.evaluate(()=>window.RivertonMetroGame.journeySummary(window.CityQuestF2MetroBridge.current()));
+ assert.ok(record.includes(expectedJourneyCounts(language,summary.stops,summary.transfers)),'Journey ledger count grammar');
+ assertCountGrammar(language,record);
+ if(language==='de'){
+  assert.doesNotMatch(record,/\bStation Central Station\b/);
+  assert.doesNotMatch(await page.locator('#f1Panel [data-cq-model-answer]').textContent(),/\bStation Central Station\b/);
+ }
  await progress(page,n,'METRO '+n);
  return counts;
 }

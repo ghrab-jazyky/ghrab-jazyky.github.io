@@ -137,3 +137,29 @@ test('A+ F-25/F-26: French dynamic navigation, narrow spaces and feedback',()=>{
  for(const token of ['first:(dir,blocks)=>"Avancez vers "','turn:(side,dir,blocks)=>"Tournez à "+side+" et avancez vers ','continue:(dir,blocks)=>"Continuez vers ','uturn:(dir,blocks)=>"Faites demi-tour et avancez vers '])assert.ok(html.includes(token),'Missing FR direction rewrite '+token);
  for(const token of ['Prochaine station\u202f: {next}','Station sélectionnée\u202f: ','Arrêt actuel\u202f: '])assert.ok(html.includes(token),'Missing punctuation '+token);
 });
+
+
+test('GA-007/009/010/012: authored counts, French punctuation and language decisions',()=>{
+ const counts=lineData('cqRouteReview'),expected={
+  en:['rail segment','rail segments','line change','line changes'],
+  es:['tramo de metro','tramos de metro','transbordo','transbordos'],
+  de:['gefahrener Abschnitt','gefahrene Abschnitte','Linienwechsel','Linienwechsel'],
+  fr:['tronçon en métro','tronçons en métro','changement de ligne','changements de ligne']
+ };
+ for(const [lang,v] of Object.entries(expected)){
+  const c=counts[lang];
+  assert.deepEqual([c.stopOne,c.stop,c.changeOne,c.change],v);
+ }
+ assert.doesNotMatch(html,/ui\(\)\.from\+" "\+/);
+ assert.doesNotMatch(html,/(?:an|von) der Station Central Station|Bitte wählen \.\.\./);
+ assert.doesNotMatch(html,/How old are you\?|¿Cuántos años tiene\?|Wie alt sind Sie\?|Quel âge avez-vous/);
+ for(const name of ['advancedPractice','disruptionNotices','cqCityDecision','cqRouteReview']){
+  function check(x){
+   if(typeof x==='string')assert.doesNotMatch(x,/(?:[^ \u202f\u00a0][;:!?](?=\s|$)| [;:!?])/u,name+' French punctuation: '+x);
+   else if(x&&typeof x==='object')Object.values(x).forEach(check);
+  }
+  check(lineData(name).fr);
+ }
+ assert.match(html,/c\.labels\.checkpointProgress\+labelColon\(\)/);
+ assert.match(html,/ui\(\)\.step\+labelColon\(\)/);
+});

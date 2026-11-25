@@ -399,3 +399,62 @@ test('GA-016: open-route and undo feedback is truthful in all four languages',{t
   }
  }finally{await browser.close();}
 });
+
+
+test('GA-008/009/011: route headings and missing mandatory waypoints in all four languages',{timeout:180000},async()=>{
+ const browser=await launch();
+ const messages={
+  en:['Before reaching the destination, you still need to pass through Market Square.','Before reaching the destination, you still need to pass through the Library.'],
+  es:['Antes de llegar al destino, todavía tienes que pasar por la Plaza del Mercado.','Antes de llegar al destino, todavía tienes que pasar por la Biblioteca.'],
+  de:['Bevor du das Ziel erreichst, musst du noch über den Marktplatz gehen.','Bevor du das Ziel erreichst, musst du noch über die Bibliothek gehen.'],
+  fr:["Avant d'arriver, vous devez encore passer par la place du Marché.","Avant d'arriver, vous devez encore passer par la bibliothèque."]
+ };
+ try{
+  for(const lang of Object.keys(messages))for(const level of ['B2','C1','C2']){
+   const {page,errors,remote}=await open(browser,lang,level,desktop[0]);
+   try{
+    await page.locator('#f1Stations button').nth(1).click();
+    const heading=await page.locator('#f1Panel h3').filter({hasText:' → '}).first().textContent();
+    assert.match(heading,/ → /);
+    assert.doesNotMatch(heading,/^(From|Desde|Von|De)\s/);
+    if(lang==='fr')assert.match(await page.locator('#f1Panel .f2-small').filter({hasText:'Étape'}).first().textContent(),/Étape\u202f: 0 · carrefours jusqu'à l'arrivée\u202f:/);
+    const route=level==='C2'?['north','north','east','east','east']:['east','east','east','north','north'];
+    for(const dir of route)await page.locator('.f2-quick-'+dir).click();
+    assert.equal(await page.locator('#f1Panel .f2-status').textContent(),messages[lang][level==='B2'?0:1],lang+'/'+level);
+    await expectSession(page,lang,level,0);
+    assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
+   }finally{await page.close();}
+  }
+ }finally{await browser.close();}
+});
+test('GA-010: authored dialogue distractors and repair text in every language and level',{timeout:180000},async()=>{
+ const browser=await launch();
+ const prefixes={en:'No, those instructions are correct. ',es:'No, esas indicaciones son correctas. ',de:'Nein, diese Wegbeschreibung stimmt. ',fr:'Non, ces indications sont exactes. '};
+ const greetings={en:/^(?:Yes|Of course|Certainly|Sure)\./i,es:/^(?:Sí|Claro|Por supuesto|Con mucho gusto|Desde luego)\./i,de:/^(?:Ja|Gerne|Natürlich|Sehr gern|Selbstverständlich)\./i,fr:/^(?:Oui|Bien sûr|Avec plaisir|Bien entendu)\./i};
+ try{
+  for(const lang of Object.keys(prefixes)){
+   const {page,errors,remote}=await open(browser,lang,'A1',desktop[0]);
+   try{
+    for(const level of ['A1','A2','B1','B2','C1','C2']){
+     const d=await page.evaluate(({lang,level})=>{
+      const C=window.CityQuestF2Content,G=window.CityQuestF2Engine,a=C.profile(lang,level).dialogueAnswer;
+      return {answer:a,...G.dialogueDistractors(a,lang,level)};
+     },{lang,level});
+     assert.equal(new Set([d.answer,d.vague,d.wrong]).size,3,lang+'/'+level);
+     assert.ok(d.insist.startsWith(prefixes[lang]));
+     assert.doesNotMatch(d.insist.slice(prefixes[lang].length),greetings[lang]);
+     assert.doesNotMatch(d.repair,greetings[lang]);
+     if(lang==='fr')assert.doesNotMatch(d.vague,/tournez à un carrefour plus loin/);
+    }
+    await page.locator('#f1Stations button').nth(2).click();
+    const i=await page.evaluate(lang=>window.CityQuestF2Engine.orderChoices(['help','vague','wrong'],lang,'A1',3,'start').indexOf('wrong'),lang);
+    await page.locator('#f1Panel .f2-choice-list button').nth(i).click();
+    const texts=await page.locator('#f1Panel .f2-choice-list button').allTextContents();
+    const insist=texts.find(t=>t.startsWith(prefixes[lang]));
+    assert.ok(insist,'Rendered insist option');
+    assert.doesNotMatch(insist.slice(prefixes[lang].length),greetings[lang]);
+    assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
+   }finally{await page.close();}
+  }
+ }finally{await browser.close();}
+});
