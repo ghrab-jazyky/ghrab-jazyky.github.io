@@ -17,6 +17,8 @@ async function open(browser,lang,level,width=390,height=844){
  return {page,errors,remote};
 }
 async function inspect(page){
+ const oral=page.locator('.cq-advanced-oracy');
+ if(!await oral.evaluate(e=>e.open))await oral.locator(':scope > summary').click();
  const details=page.locator('.cq-advanced-oracy-criteria');
  await details.locator('summary').click();
  const inputs=page.locator('.cq-oracy-review-list input[type=checkbox]');

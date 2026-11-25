@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070f20">
 <meta name="description" content="City Quest: offline city and metro navigation in English, Spanish, German and French at A1–C2, with interactive metro missions at B1–C2.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-ofrkwkgKYhYkPM4nP9ghw9zLBUtqe6vFZNm6ItIQxmw='; style-src 'sha256-tHYMg3wkre5Se4XkG+x/yrNqh+ULlPkpIlcagLX7UY8='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-HBKgeSYmN/TKQkz2WLVxkUfVKKnTUHWladSDD0VDVV4='; style-src 'sha256-Q6pmcSuCLuAn9U1+mBHr4z/t2cPgaw4UPf0RMIXKPTY='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%2314253d%22%2F%3E%3Cpath%20d%3D%22M16%204v24M4%2016h24%22%20stroke%3D%22%2364e6ad%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%228%22%20fill%3D%22%2314253d%22%20stroke%3D%22%23f3f8ff%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22m20%2010-3%209-6%203%203-9z%22%20fill%3D%22%2364e6ad%22%2F%3E%3C%2Fsvg%3E">
 <title>City Quest · Interactive Language Game · EN ES DE FR · A1–C2</title>
 
@@ -2014,6 +2014,70 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
  .map-head .map-controls{width:auto;display:flex;flex-wrap:wrap}
  .map-controls .btn{min-width:0;font-size:.76rem}
 }
+
+
+/* CQ UX3/5: the network or current scene occupies the visual pane, not a
+   second long task column. Unavailable future views remain disabled. */
+#f1Panel .cq-advanced-oracy{margin:8px 0;padding:8px 10px}
+#f1Panel .cq-advanced-oracy>summary{cursor:pointer;display:list-item;min-height:44px;align-content:center;margin:0}
+#f1Panel .cq-advanced-oracy[open]>summary{margin-bottom:6px}
+.cq-ux-vocabulary,.cq-ux-inspect,.cq-ux-notice{min-width:0;border:1px solid var(--line);border-radius:10px;margin:6px 0;padding:5px 9px}
+.cq-ux-vocabulary>summary,.cq-ux-inspect>summary,.cq-ux-notice>summary{cursor:pointer;min-height:44px;align-content:center;font-size:.84rem;font-weight:750;overflow-wrap:break-word}
+.cq-ux-checkpoints{margin:5px 0!important}
+.metro-lab[data-mode="game"]{margin:0;border-radius:14px}
+.metro-lab[data-mode="game"] .metro-banner,.metro-lab[data-mode="game"] .metro-disclaimer,.metro-lab[data-mode="game"] .metro-live-pulse,.metro-lab[data-mode="game"] .metro-network-head small,.metro-lab[data-mode="game"] .metro-eyebrow,.metro-lab[data-mode="game"] .metro-journey-header{display:none}
+.metro-lab[data-mode="game"] .metro-workspace{padding:7px;gap:8px;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+.cq-ux-visual{display:flex;flex-direction:column;min-width:0;min-height:0;gap:6px}
+.cq-ux-viewbar{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.cq-ux-viewbar .btn{flex:1 1 75px;min-height:44px;min-width:0;font-size:.8rem;padding:5px 7px;overflow-wrap:break-word}
+.cq-ux-viewbar .btn[aria-pressed="true"]{background:var(--panel2);border-color:var(--cyan);color:var(--cyan)}
+.cq-ux-viewbar .btn:disabled{opacity:.55}
+.metro-lab[data-mode="game"] .metro-journey-card{padding:7px 10px}
+.metro-lab[data-mode="game"] .metro-journey-path>div{gap:1px}
+.metro-lab[data-mode="game"] .metro-journey-path strong{font-size:.83rem}
+.metro-lab[data-mode="game"] .metro-journey-progress{height:5px;margin:5px 0 0}
+.metro-lab[data-mode="game"] .metro-network-alert{margin:5px 0 0;padding:5px 8px}
+.metro-lab[data-mode="game"] .metro-network-head,.metro-lab[data-mode="game"] .metro-scene-toolbar{min-height:0;padding:5px 9px;gap:5px}
+.metro-lab[data-mode="game"] .metro-network-head h3,.metro-lab[data-mode="game"] .metro-scene-toolbar h3{font-size:.94rem;margin:0}
+.metro-lab[data-mode="game"] .metro-network-card,.metro-lab[data-mode="game"] .metro-scene-card{align-self:stretch;margin:0;border-radius:11px}
+.metro-lab[data-mode="game"] .metro-network-footer{padding:5px 8px;gap:4px}
+.metro-lab[data-mode="game"] .metro-map-instructions{display:none}
+.metro-lab[data-mode="game"] .f3c-metro-tools{padding:6px;gap:5px}
+.metro-lab[data-mode="game"] .f3c-map-hint{font-size:.7rem;margin:0}
+.metro-lab[data-mode="game"] .metro-stop-strip{padding:6px 9px}
+.metro-lab[data-mode="game"] .cq-ux-inspect,.metro-lab[data-mode="game"] .cq-ux-notice{margin:0 5px 5px;color:var(--metro-ink)}
+.metro-lab[data-mode="game"] #metroInspector{border:none;padding:5px}
+.metro-lab[data-mode="game"] #metroPublicAddress{margin:5px 0;padding:7px}
+.metro-lab[data-mode="game"] .metro-side{gap:0;min-width:0;min-height:0}
+.metro-lab[data-mode="game"] .metro-side>#f1Panel{padding:13px;margin:0}
+@media(min-width:1051px) and (min-height:680px){
+ .app>.layout{grid-template-rows:minmax(0,1fr)}
+ .app>.metro-lab[data-mode="game"]{flex:1 1 0;min-height:360px;margin:0;min-width:0}
+ .metro-lab[data-mode="game"]{display:flex;flex-direction:column}
+ .metro-lab[data-mode="game"] .metro-workspace,body[data-presentation="on"] .metro-lab[data-mode="game"] .metro-workspace{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);flex:1 1 0;min-height:0;align-items:stretch}
+ .metro-lab[data-mode="game"] .metro-side{height:100%;min-height:0;display:flex;flex-direction:column}
+ .metro-lab[data-mode="game"] .metro-side>#f1Panel{flex:1 1 0;min-height:0;overflow:auto;overscroll-behavior-y:contain;scrollbar-gutter:stable}
+ .metro-lab[data-mode="game"] .cq-ux-visual{height:100%;min-height:0}
+ .metro-lab[data-mode="game"] .cq-ux-visual>.cq-ux-viewbar,.metro-lab[data-mode="game"] .cq-ux-visual>.metro-journey-card{flex:none}
+ .metro-lab[data-mode="game"] .cq-ux-visual>.metro-network-card,.metro-lab[data-mode="game"] .cq-ux-visual>.metro-scene-card{display:flex;flex:1 1 0;min-height:0;flex-direction:column;overflow:auto}
+ .metro-lab[data-mode="game"] .metro-network-scroll,.metro-lab[data-mode="game"] .metro-scene-viewport{flex:1 1 0;min-height:120px;max-height:none}
+ .metro-lab[data-mode="game"] .metro-network-scroll.overview svg,.metro-lab[data-mode="game"] .metro-scene-viewport svg{width:100%;height:100%;min-width:0;aspect-ratio:auto}
+ .metro-lab[data-mode="game"] .metro-network-scroll:not(.overview) svg{width:100%;min-width:850px;height:auto}
+ .metro-lab[data-mode="game"] .cq-ux-notice{flex:none;max-height:120px;overflow:auto}
+ .metro-lab[data-mode="game"] #metroMapZoom{display:inline-flex;min-height:44px;align-items:center}
+ .cq-ux-viewbar>#f3cToTask{display:none}
+}
+@media(max-width:1050px){
+ .metro-lab[data-mode="game"] .metro-workspace{display:flex;flex-direction:column;gap:8px}
+ .metro-lab[data-mode="game"] .metro-network-card,.metro-lab[data-mode="game"] .metro-scene-card{min-height:0}
+ .metro-lab[data-mode="game"] .metro-network-scroll{max-height:min(48dvh,420px)}
+ .metro-lab[data-mode="game"] .metro-network-scroll.overview{max-height:none}
+ .metro-lab[data-mode="game"] .metro-network-scroll.overview svg{width:100%;min-width:0;height:auto}
+ .metro-lab[data-mode="game"] .metro-scene-viewport svg{width:100%;height:auto}
+ .metro-lab[data-mode="game"] #metroMapZoom{display:inline-flex;min-height:44px;align-items:center}
+}
+@media(max-width:480px){.cq-ux-viewbar .btn{flex:1 1 65px}}
+@media(prefers-reduced-motion:reduce){.cq-ux-visual *{scroll-behavior:auto!important}}
 
 </style>
 </head>
@@ -5792,7 +5856,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   const panel=$("f1Panel"),map=$("cityMap"),viewport=$("mapViewport");
   const cityLayout=document.querySelector(".layout"),citySidebar=panel.parentElement;
   const metroLab=$("metroLab"),metroSidebar=metroLab.querySelector(".metro-side");
-  const metroNetworkCard=metroLab.querySelector(".metro-network-card"),metroPhoneQuery=window.matchMedia("(max-width:740px)");
+  const desktopWorkspace=window.matchMedia("(min-width:1051px) and (min-height:680px)");
   const NS="http://www.w3.org/2000/svg";
   const icons=["🗺️","🧭","💬","👣","🚌","↩️","🚧","🏆"];
   const stationKeys=["explore","route","dialogue","guided","transit","repair","detour","quest"];
@@ -5880,9 +5944,10 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   function renderAdvancedOracy(n){
     const data=advancedOracyTask(n);
     if(!data)return;
-    const wrap=el("section",panel,"cq-advanced-oracy");
+    const wrap=el("details",panel,"cq-advanced-oracy");
+    wrap.open=lessonPhase()===2;
     wrap.setAttribute("aria-label",data.ui.title+" · "+state.level);
-    el("strong",wrap,"cq-advanced-oracy-title","🎭 "+data.ui.title+" · "+state.level);
+    el("summary",wrap,"cq-advanced-oracy-title","🎭 "+data.ui.title+" · "+state.level);
     para(wrap,data.task,"cq-advanced-oracy-task");
     para(wrap,data.ui.doFirst,"cq-advanced-oracy-note");
     const criteria=el("details",wrap,"cq-advanced-oracy-criteria");
@@ -5985,11 +6050,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     cityLayout.hidden=visible;
     metroLab.dataset.mode=visible?"game":"preview";
     if(visible){
-      const target=metroPhoneQuery.matches?metroNetworkCard:metroSidebar;
-      if(panel.parentElement!==target){
-        if(target===metroNetworkCard)target.insertBefore(panel,$("metroNetworkViewport"));
-        else target.insertBefore(panel,target.firstChild);
-      }
+      if(panel.parentElement!==metroSidebar)metroSidebar.insertBefore(panel,metroSidebar.firstChild);
       metroLab.hidden=false;
     }else{
       if(panel.parentElement!==citySidebar)citySidebar.appendChild(panel);
@@ -6122,6 +6183,8 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     para(div,extra||ui().feedbackGood);
     if([1,3].includes(number)&&state.cityReview[number]?.passed)
       para(div,cqCityDecision[state.language][number][state.level][4],"f2-small");
+    const oral=panel.querySelector(".cq-advanced-oracy");
+    if(oral){oral.open=true;panel.appendChild(oral);}
     speaking(panel,model,record);
     const row=actions(panel);
     if(number<8)btn(row,ui().next+" →",()=>selectStation(number+1),"primary");
@@ -6144,8 +6207,19 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     [...new Set(words.concat(more))].forEach(word=>el("li",list,"",word));
     para(section,c.review);
   }
+  function focusTaskControl(node){
+    node.focus({preventScroll:true});
+    if(desktopWorkspace.matches){
+      const p=panel.getBoundingClientRect(),r=node.getBoundingClientRect();
+      if(r.bottom>p.bottom-8)panel.scrollTop+=r.bottom-p.bottom+8;
+      else if(r.top<p.top+8)panel.scrollTop-=p.top+8-r.top;
+    }
+  }
   function screen(){
     const taskHadFocus=panel.contains(document.activeElement),isMetro=metroPilot();
+    const priorKey=panel.dataset.cqUxMission,priorScroll=panel.scrollTop,priorOral=panel.querySelector(".cq-advanced-oracy")?.open;
+    const currentKey=state.language+"/"+state.level+"/"+state.station+"/"+String(isMetro);
+    panel.dataset.cqUxMission=currentKey;
     panel.hidden=false;panel.replaceChildren();
     cityLayout.dataset.cqOrder=(!metroPilot()&&![2,4,7,8].includes(state.station))?"task-first":"map-first";
     updateMetroPresentation();
@@ -6165,8 +6239,16 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     }
     // Persist feedback outside a dynamically replaced panel. No recording,
     // network, telemetry, artificial grades or automatic model validation.
+    const oral=panel.querySelector(".cq-advanced-oracy");
+    if(oral&&!state.done.has(state.station)){
+      panel.appendChild(oral);
+      oral.open=lessonPhase()===2||(priorKey===currentKey&&!!priorOral);
+    }
+    const pair=panel.querySelector(".f2-pair");
+    if(pair&&!state.done.has(state.station))panel.appendChild(pair);
     if(flash?.text)$("f3Status").textContent=flash.text;
     if(state.done.size===8)renderCompletionSummary();
+    if(desktopWorkspace.matches)panel.scrollTop=priorKey===currentKey?priorScroll:0;
     updateLessonRail();
     if(taskHadFocus&&!isMetro)window.requestAnimationFrame(()=>{
       if(panel.hidden)return;
@@ -6174,7 +6256,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
         ".f2-choice-list button:not(:disabled), .f2-actions button:not(:disabled), "+
         ".f2-select-group select:not(:disabled), .f2-help button:not(:disabled)"
       );
-      if(next)next.focus({preventScroll:true});
+      if(next)focusTaskControl(next);
       else{
         const title=panel.querySelector(".f2-card-head h2");
         if(title){title.tabIndex=-1;title.focus({preventScroll:true});}
@@ -6279,11 +6361,11 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     // focus to the NEW valid action; never steal focus from map inspection.
     if(hadTaskFocus)window.requestAnimationFrame(()=>{
       const next=panel.querySelector(".f2-choice-list button:not(:disabled), .f2-actions button:not(:disabled)");
-      if(next)next.focus({preventScroll:true});
+      if(next)focusTaskControl(next);
     });
     window.CityQuestF3?.sceneUpdated();
-    if(previousScene!==metroScene()){
-      const target=metroScene()?metroLab:cityLayout;
+    if(previousScene!==metroScene()&&!desktopWorkspace.matches){
+      const target=metroScene()?$("cqMetroVisual"):cityLayout;
       window.requestAnimationFrame(()=>target.scrollIntoView({behavior:"auto",block:"start"}));
     }
   }
@@ -6295,8 +6377,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     // unnatural '0 Speaking checkpoints confirmed'. Only mission 08 has
     // three distinct spoken checkpoints; 05-07 end with one self-check.
     const speakingTotal=window.RivertonMetro?.scenario(game.scenarioId)?.speakingCheckpoints||1;
-    el("p",panel,"f2-small",c.native+" · "+state.level+" · "+c.offline+
-      " · "+c.labels.checkpointProgress+": "+game.speakingDone+"/"+speakingTotal);
+    el("p",panel,"f2-small cq-ux-checkpoints",c.labels.checkpointProgress+": "+game.speakingDone+"/"+speakingTotal);
     if(game.history.length===0&&(((n===5||n===6)&&stage==="select-line")||(n===7&&stage==="notice")||(n===8&&stage==="walk-to-entrance")))
       note(panel,"🧭 "+lesson().mission+" "+String(n).padStart(2,"0"),metroNarrative[state.language]?.[n]||metroNarrative.en[n]);
     note(panel,"🚇 "+(["walk-to-entrance","walk-to-museum"].includes(stage)?c.enterTitle:c.metroTitle),
@@ -6438,8 +6519,9 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   }
   function renderExplore(){
     const game=state.explore,total=G.answerCount(state.level);
-    el("h3",panel,"","🗺️ "+ui().vocabulary);
-    const grid=el("div",panel,"f2-landmarks");
+    const vocabulary=el("details",panel,"cq-ux-vocabulary");
+    el("summary",vocabulary,"","🗺️ "+ui().vocabulary);
+    const grid=el("div",vocabulary,"f2-landmarks");
     F.places.forEach(place=>{
       const div=el("div",grid,"f2-landmark");
       el("span",div,"",place.icon);
@@ -7059,6 +7141,12 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     });
     if(focusIndex>=0&&nav.children[focusIndex])
       nav.children[focusIndex].focus({preventScroll:true});
+    const active=nav.querySelector('[aria-current="step"]');
+    if(active&&nav.scrollWidth>nav.clientWidth){
+      const a=active.getBoundingClientRect(),n=nav.getBoundingClientRect();
+      if(a.left<n.left)nav.scrollLeft-=n.left-a.left;
+      else if(a.right>n.right)nav.scrollLeft+=a.right-n.right;
+    }
     updateLessonRail();
   }
   function selectStation(n){
@@ -7070,9 +7158,11 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       if(!window.matchMedia("(max-width:1050px)").matches)return;
       const needsMap=(!metroPilot()&&[2,4,7,8].includes(state.station))||
         (metroPilot()&&metroCityWalk());
-      const target=metroScene()?panel:(needsMap?document.querySelector(".layout .map-card"):panel);
+      const target=metroScene()?$("cqMetroVisual"):(needsMap?document.querySelector(".layout .map-card"):panel);
       target?.scrollIntoView({block:"start",behavior:"auto"});
-      panel.focus({preventScroll:true});
+      if(metroScene())$("cqMetroVisual").focus({preventScroll:true});
+      else if(needsMap)viewport.focus({preventScroll:true});
+      else panel.focus({preventScroll:true});
     });
   }
   function resetStation(){
@@ -7180,8 +7270,6 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   }
   $("f2Language").addEventListener("change",e=>resetSession(e.target.value,state.level));
   $("f2Level").addEventListener("change",e=>resetSession(state.language,e.target.value));
-  if(metroPhoneQuery.addEventListener)metroPhoneQuery.addEventListener("change",()=>{if(metroScene())updateMetroPresentation();});
-  else metroPhoneQuery.addListener(()=>{if(metroScene())updateMetroPresentation();});
   $("metroPilotToggle").addEventListener("click",()=>requestMetroMode(true));
   $("cityOnlyToggle").addEventListener("click",()=>requestMetroMode(false));
   $("cqModeCancel").addEventListener("click",()=>$("cqModeConfirm").close("cancel"));
@@ -7246,6 +7334,21 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
  const lab=$("metroLab"),jump=$("metroJump"),network=$("metroNetworkSvg"),scene=$("metroSceneSvg");
  if(!lab||!jump||!network||!scene)throw Error("F2.1B metro markup missing");
  const svgNS="http://www.w3.org/2000/svg";
+  const networkCard=lab.querySelector(".metro-network-card"),sceneCard=lab.querySelector(".metro-scene-card");
+  networkCard.id="cqMetroNetworkCard";sceneCard.id="cqMetroSceneCard";
+  const visual=document.createElement("div");visual.className="cq-ux-visual";visual.id="cqMetroVisual";visual.tabIndex=-1;
+  networkCard.parentNode.insertBefore(visual,networkCard);
+  const brief=document.createElement("p");brief.id="cqMetroBrief";brief.className="cq-ux-mobile-brief";brief.hidden=true;
+  const views=document.createElement("div");views.id="cqMetroViews";views.className="cq-ux-viewbar";views.hidden=true;views.setAttribute("role","group");
+  for(const [key,caption,target] of [["network","Network","cqMetroNetworkCard"],["platform","Platform","cqMetroSceneCard"],["train","On board","cqMetroSceneCard"]]){
+    const b=document.createElement("button");b.type="button";b.className="btn";b.id="cqMetroView-"+key;b.dataset.cqMetroView=key;b.textContent=caption;b.setAttribute("aria-controls",target);b.setAttribute("aria-pressed","false");views.appendChild(b);
+  }
+  $("f3cToTask").classList.add("btn");views.appendChild($("f3cToTask"));
+  const notice=document.createElement("details");notice.id="cqMetroNotice";notice.className="cq-ux-notice";notice.hidden=true;
+  const noticeLabel=document.createElement("summary");noticeLabel.id="cqMetroNoticeLabel";notice.append(noticeLabel,$("metroPublicAddress"));
+  const inspect=document.createElement("details");inspect.id="cqMetroInspect";inspect.className="cq-ux-inspect";
+  const inspectLabel=document.createElement("summary");inspectLabel.id="cqMetroInspectLabel";inspect.append(inspectLabel,$("metroInspector"));networkCard.appendChild(inspect);
+  visual.append(brief,views,lab.querySelector(".metro-journey-card"),networkCard,sceneCard,notice);
  const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
  // CQ-F5-006: guided EN references contain answers to live missions.
  // They remain usable only in explicit authoring/QA visual preview mode.
@@ -7281,6 +7384,35 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
    stop:name=>"Arrêt actuel : "+name+".",map:"Commandes du plan du métro"}
  };
  const ux=()=>f3cText[$("f2Language").value]||f3cText.en;
+  const workspaceCopy=()=>({
+    en:{network:"Network",platform:"Platform",train:"On board",views:"Metro views",info:"Service information"},
+    es:{network:"Plano",platform:"Andén",train:"En el tren",views:"Vistas del metro",info:"Información del servicio"},
+    de:{network:"Netzplan",platform:"Bahnsteig",train:"Im Zug",views:"U-Bahn-Ansichten",info:"Betriebsinformationen"},
+    fr:{network:"Plan",platform:"Quai",train:"Dans la rame",views:"Vues du métro",info:"Informations de service"}
+  }[$("f2Language").value]);
+  let workspaceView="network",workspaceKey="";
+  function updateWorkspaceView(){
+    const copy=workspaceCopy(),active=!!gameMode;
+    views.hidden=!active;views.setAttribute("aria-label",copy.views);
+    brief.hidden=!active;
+    const sceneView=gameMode?.phase==="ride"?"train":"platform";
+    if(active&&workspaceView!=="network"&&workspaceView!==sceneView)workspaceView=sceneView;
+    for(const b of views.querySelectorAll("[data-cq-metro-view]")){
+      const name=b.dataset.cqMetroView;b.textContent=copy[name];
+      b.disabled=active&&name!=="network"&&name!==sceneView;
+      b.setAttribute("aria-pressed",String(active&&name===workspaceView));
+    }
+    networkCard.hidden=active&&workspaceView!=="network";
+    sceneCard.hidden=active&&workspaceView==="network";
+    notice.hidden=!active;
+    noticeLabel.textContent=copy.info;inspectLabel.textContent=cx().inspector;
+    if(active)lab.dataset.cqView=workspaceView;else delete lab.dataset.cqView;
+    if(active&&workspaceView==="network")window.requestAnimationFrame(centerOnCurrent);
+  }
+  for(const b of views.querySelectorAll("[data-cq-metro-view]"))b.addEventListener("click",()=>{
+    if(!gameMode||b.disabled)return;
+    workspaceView=b.dataset.cqMetroView;updateWorkspaceView();
+  });
  // Game-mode maps and scenes are localized; the separate EN reference gallery
  // deliberately keeps its original English visual examples.
  const sceneText={
@@ -7819,6 +7951,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     const lang=$("f2Language").value,level=$("f2Level").value,copy=gameCopy();
     $("metroInstruction").textContent=LC.stage(lang,level,gameMode.stationNumber,gameMode.phase,
       {station:stationName(gameMode.metroStation)});
+    brief.textContent=$("metroInstruction").textContent;
     $("metroNextInfo").textContent=copy.labels.step+" "+(current.index+1)+"/"+steps.length+
       " · "+stationName(gameMode.metroStation)+" · "+(gameMode.lineId||copy.labels.noLine);
     $("metroAdvance").disabled=true;
@@ -7931,16 +8064,24 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   jump.textContent=gallery.jump;
   if(shown)renderAll();
   else updateMapTools();
+  updateWorkspaceView();
  }
  window.RivertonMetroVisual=Object.freeze({
   sync(state){
     gameMode=state||null;
     if(state){
+      const key=$("f2Language").value+"/"+$("f2Level").value+"/"+state.stationNumber+"/"+state.phase;
+      if(key!==workspaceKey){
+        workspaceView=["select-line","select-direction","notice","transfer"].includes(state.phase)?"network":state.phase==="ride"?"train":"platform";
+        if(workspaceView==="network")overview=true;
+        workspaceKey=key;notice.open=state.phase==="notice";
+      }
       current={scenarioId:state.scenarioId,index:window.RivertonMetroGame.routeIndex(state),
         finished:state.completed};
       inspected=state.metroStation;
       view=state.phase==="ride"?"train":"platform";
     }else{
+      workspaceKey="";workspaceView="network";
       current=M.startPreview(review[0].id);
       inspected=M.scenario(current.scenarioId).start;
       view="platform";

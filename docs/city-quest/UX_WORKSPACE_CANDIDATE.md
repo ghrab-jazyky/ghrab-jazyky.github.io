@@ -1,0 +1,4 @@
+# City Quest UX Workspace candidate 1 (NO DEPLOY)
+Baseline production b3eb7d9e5039a07ae45f1b10b3a5b65e370d79b2.
+Candidate HTML SHA-256 1be63a838021b08a4e6ffe7dbff5b7732d9892206ff174f432548c7b585286e5.
+Compact session chrome; teacher and About disclosures; one map-docked controller; desktop two-pane working area with independently scrolling task; Metro network/current platform/on-board switching based on actual phase; station inspection and public address in separate disclosures; mobile mission brief; advanced oral challenge collapsed by default and open at reflection; vocabulary accessible on request. Route engine and language banks unchanged. Future Metro views disabled while unavailable to preserve the pedagogical spoiler guard. Large-text/narrow layout remains scrollable. Pending geometry, cross-engine and regression certification; not production approval.
