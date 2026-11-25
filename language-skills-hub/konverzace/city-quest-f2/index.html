@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070f20">
 <meta name="description" content="City Quest: offline city and metro navigation in English, Spanish, German and French at A1–C2, with interactive metro missions at B1–C2.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-GgXlxOolm0gbIxRl00zbb2rNrWsD0JkcOh+O8N1gYaM='; style-src 'sha256-tsMP29MWjoU/NPfr5gFiUx49yvLRJ6i5024iTNOF1sA='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-2rnhhZJrq2o1s+p1kg5mIbl3l6mHgiTq/mLUA8Z0hNI='; style-src 'sha256-HoyqtxTe4wI6RYOTy7pLE2HLTv2hNVVIP2q1LnHNSgY='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%2314253d%22%2F%3E%3Cpath%20d%3D%22M16%204v24M4%2016h24%22%20stroke%3D%22%2364e6ad%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%228%22%20fill%3D%22%2314253d%22%20stroke%3D%22%23f3f8ff%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22m20%2010-3%209-6%203%203-9z%22%20fill%3D%22%2364e6ad%22%2F%3E%3C%2Fsvg%3E">
 <title>City Quest · Interactive Language Game · EN ES DE FR · A1–C2</title>
 
@@ -1900,6 +1900,270 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   .f3d-learning-steps li{min-height:44px;justify-content:flex-start;padding:8px 10px}
   .f3d-learning-steps li strong{font-size:.82rem;word-break:normal;overflow-wrap:normal;hyphens:none}
 }
+
+/* CQ UX1/2/4: compact chrome and a single map-docked HUD. Desktop working
+   area has two panels; ordinary scrolling remains available on small screens. */
+.app{padding:10px 12px 20px}
+.topbar{padding:7px 10px;gap:6px;border-radius:13px}
+.brand{gap:7px}.brand-mark{width:34px;height:34px;border-radius:9px}
+.topbar .brand small,.topbar .header-actions>.tag{display:none}
+.header-actions{gap:5px;align-items:center}
+.header-actions>.btn{min-height:44px;padding:6px 10px;font-size:.82rem}
+.cq-ux-about,#cqTeacherGuide{position:relative;margin:0;min-width:0}
+.cq-ux-about>summary,#cqTeacherGuide>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:5px;padding:7px 10px;font-size:.82rem;font-weight:750;border:1px solid var(--line);border-radius:10px;background:var(--panel2)}
+.cq-ux-about-panel,#cqTeacherGuide>.cq-teacher-content{position:absolute;right:0;top:calc(100% + 6px);z-index:40;width:min(460px,calc(100vw - 24px));max-height:min(65dvh,520px);overflow:auto;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);box-shadow:var(--shadow)}
+.cq-ux-about-panel>.hero{display:block;margin:0 0 8px;padding:10px;box-shadow:none}
+.cq-ux-about-panel .hero h1{font-size:1.25rem}
+.cq-ux-about-panel .hero-icon,.cq-ux-about-panel .tags,.cq-ux-about-panel .kicker{display:none}
+.cq-ux-about-panel .guide-card{margin:8px 0 0;padding:10px;box-shadow:none}
+.cq-ux-session-strip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:7px 0;padding:6px 9px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.cq-ux-session-strip .f2-settings,.cq-ux-session-strip .f1-dashboard{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0;padding:0;box-shadow:none;border:none;background:none;min-width:0}
+.cq-ux-session-strip .f2-settings{flex:1 1 490px}
+.cq-ux-session-strip .f1-dashboard{flex:1 1 265px;justify-content:space-between}
+.cq-ux-session-strip .f2-field{min-width:100px;flex:0 1 auto;gap:2px}
+.cq-ux-session-strip .f2-field label{font-size:.73rem}
+.cq-ux-session-strip .f2-field select{min-height:44px;padding-top:5px;padding-bottom:5px}
+.cq-ux-session-strip #cqModePicker{flex:0 1 auto;min-width:0}
+.cq-ux-session-strip .f3d-session-advice{font-size:.7rem;line-height:1.25;margin:0}
+.cq-ux-session-strip .f1-progress{min-width:88px;flex:1 1 100px;gap:3px}
+.cq-ux-session-strip .f1-progress-track{height:5px}
+.cq-ux-session-strip .f1-progress small,.cq-ux-mission-description,#f3dRailNote,.f3d-learning-intro{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%);white-space:nowrap!important;border:0!important}
+.cq-ux-session-strip .f1-mode{display:flex;gap:5px;flex-wrap:wrap;min-width:0;width:auto}
+.cq-ux-session-strip .f1-mode>span{display:none}
+.cq-ux-session-strip .f1-mode .btn{min-height:44px;padding:6px 9px;font-size:.82rem}
+.f1-stations{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px;margin:0 0 7px}
+.f1-station{min-height:48px;padding:6px;gap:5px;border-radius:10px;box-shadow:none}
+.f1-station-icon{width:25px;height:25px;font-size:1rem;border-radius:7px}
+.f1-station-caption strong{font-size:.76rem;line-height:1.2;overflow-wrap:break-word}
+.f1-station-caption small{font-size:.64rem}
+.f3d-learning-rail{display:block;margin:0 0 6px;padding:3px 5px;border:none;box-shadow:none;background:none}
+.f3d-learning-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin:0}
+.f3d-learning-steps li,.f3d-learning-steps li[aria-current="step"]{min-height:28px;padding:3px 5px;justify-content:center;gap:4px;box-shadow:none}
+.f3d-learning-steps li span{width:18px;height:18px;font-size:.66rem}
+.f3d-learning-steps li strong{font-size:.72rem;line-height:1.15}
+.map-head{padding:7px 10px;gap:5px;min-height:0}
+.map-head h2{font-size:1rem;margin:0}
+.map-head .section-label,.map-touch-tip{display:none}
+.map-controls .btn{min-height:44px;padding:5px 8px;font-size:.78rem}
+.map-location-bar{padding:7px 10px;gap:6px;min-height:0}
+.map-location-icon{width:30px;height:30px;font-size:.95rem}
+.map-location-copy strong{font-size:1rem}
+.map-location-copy small,.map-footer{font-size:.76rem}
+.map-footer{padding:5px 10px}
+.cq-ux-mobile-brief{display:none}
+#f2MapStage{display:flex;flex-direction:column;gap:0}
+#f2MapStage>.map-viewport{min-height:0}
+#f2MapStage>#f2Quick:not([hidden]){position:static;inset:auto;width:100%;max-width:none;min-width:0;display:grid;grid-template-columns:minmax(0,1fr) auto auto;grid-template-areas:"head pad tools" "caption pad tools";gap:5px 8px;padding:7px 9px;border-radius:0;border-width:1px 0 0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;align-items:center}
+#f2Quick .f2-hud-location{display:none}
+#f2Quick .f2-hud-instruction,#f2Quick .f2-quick-caption{display:block;overflow:visible;-webkit-line-clamp:unset;line-height:1.3;overflow-wrap:break-word}
+#f2Quick .f2-hud-instruction{font-size:.82rem}
+#f2Quick .f2-quick-caption{font-size:.76rem}
+#f2Quick .f2-quick-pad{display:grid;grid-template-columns:repeat(4,minmax(44px,1fr));grid-template-areas:"west north south east";max-width:none;min-width:0;width:100%;gap:4px;margin:0}
+#f2Quick .f2-quick-pad button,#f2Quick .f2-hud-undo{min-height:44px;height:44px;min-width:44px;padding:0;font-size:1.2rem}
+#f2Quick .f2-hud-tools{justify-content:center;margin:0}
+#f1Panel{padding:13px;min-height:0}
+#f1Panel .f2-card-head{gap:2px;margin-bottom:5px}
+#f1Panel .f2-card-head h2{font-size:clamp(1.15rem,1.6vw,1.55rem);margin:2px 0}
+#f1Panel .f2-objective{padding:9px 11px;margin:7px 0}
+#f1Panel .f2-status,#f1Panel .f2-help,#f1Panel .f2-pair{margin:7px 0;padding:9px}
+#f1Panel .f2-choice-list,#f1Panel .f2-actions{margin:7px 0;gap:6px}
+#f1Panel .f2-choice-list button{min-height:44px;padding:8px 10px}
+#f1Panel .f2-prompt{margin:8px 0}
+#f1Panel h3{margin:10px 0 5px}
+@media(min-width:1051px) and (min-height:680px){
+ .app{height:100dvh;min-height:100dvh;display:flex;flex-direction:column;padding:8px 12px}
+ .app>.topbar,.app>.cq-ux-session-strip,.app>.f1-stations,.app>.f3d-learning-rail{flex:none}
+ .app>.layout{flex:1 1 0;min-height:360px;margin:0;min-width:0}
+ .layout,body[data-presentation="on"] .layout{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:stretch;gap:9px}
+ .layout>.map-card{display:flex;flex-direction:column;min-height:0;height:100%;min-width:0}
+ .layout>.map-card>#f2MapStage{flex:1 1 0;min-height:0}
+ #f2MapStage>.map-viewport,#f2MapStage .map-viewport.detail,#f2MapStage .map-viewport:not(.detail){flex:1 1 0;height:auto;min-height:0;max-height:none;overflow:auto}
+ #f2MapStage>.map-viewport:not(.detail) svg{width:100%;height:100%;min-width:0;max-height:none;display:block}
+ #f2MapStage>.map-viewport.detail svg{height:auto}
+ #f2MapStage>#f2Quick:not([hidden]){flex:none}
+ .layout>.sidebar{display:flex;flex-direction:column;min-height:0;height:100%;gap:0}
+ .layout>.sidebar>#f1Panel{flex:1 1 0;min-height:0;overflow:auto;overscroll-behavior-y:contain;scrollbar-gutter:stable}
+}
+@media(max-width:1050px){
+ .app{padding:8px 9px 22px}
+ .topbar{align-items:flex-start}
+ .header-actions{max-width:100%;width:auto}
+ .cq-ux-about-panel,#cqTeacherGuide>.cq-teacher-content{position:static;width:100%;max-height:none;box-shadow:none}
+ .cq-ux-about[open],#cqTeacherGuide[open]{flex:1 1 100%;max-width:100%}
+ .cq-ux-session-strip{padding:6px;gap:5px}
+ .cq-ux-session-strip .f2-settings,.cq-ux-session-strip .f1-dashboard{flex:1 1 100%}
+ .cq-ux-session-strip .f2-field{flex:1 1 100px}
+ .cq-ux-session-strip .f1-mode .btn{font-size:.8rem}
+ .f1-stations{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(120px,1fr);overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;padding-bottom:3px}
+ .f1-station{min-height:50px;max-width:none}
+ .f3d-learning-steps li strong{overflow-wrap:break-word;white-space:normal}
+ .cq-ux-mobile-brief:not([hidden]){display:block;font-size:.88rem;font-weight:650;line-height:1.4;margin:0;padding:8px 11px;background:var(--panel2);color:var(--text);overflow-wrap:break-word}
+ #f2MapStage>#f2Quick:not([hidden]){grid-template-columns:minmax(0,1fr) 44px;grid-template-areas:"head head" "pad tools" "caption caption";gap:4px 6px}
+ #f2MapStage .map-viewport:not(.detail){min-height:0;height:auto;max-height:none}
+ #f2MapStage>.map-viewport:not(.detail) svg{width:100%;height:auto;min-width:0}
+}
+@media(max-width:480px){
+ .topbar .header-actions{width:100%}
+ .cq-ux-session-strip #cqModePicker{flex:1 1 100%}
+ .cq-ux-session-strip .f3d-session-advice{font-size:.68rem}
+ .f1-stations{grid-auto-columns:minmax(112px,1fr)}
+ .f3d-learning-steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .f3d-learning-steps li{min-height:30px;padding:3px;gap:3px}
+ .f3d-learning-steps li strong{font-size:.7rem}
+ .f3d-learning-steps li span{width:17px;height:17px}
+ .map-head .map-controls{width:auto;display:flex;flex-wrap:wrap}
+ .map-controls .btn{min-width:0;font-size:.76rem}
+}
+
+
+/* CQ UX3/5: the network or current scene occupies the visual pane, not a
+   second long task column. Unavailable future views remain disabled. */
+#f1Panel .cq-advanced-oracy{margin:8px 0;padding:8px 10px}
+#f1Panel .cq-advanced-oracy>summary{cursor:pointer;display:list-item;min-height:44px;align-content:center;margin:0}
+#f1Panel .cq-advanced-oracy[open]>summary{margin-bottom:6px}
+.cq-ux-vocabulary,.cq-ux-inspect,.cq-ux-notice{min-width:0;border:1px solid var(--line);border-radius:10px;margin:6px 0;padding:5px 9px}
+.cq-ux-vocabulary>summary,.cq-ux-inspect>summary,.cq-ux-notice>summary{cursor:pointer;min-height:44px;align-content:center;font-size:.84rem;font-weight:750;overflow-wrap:break-word}
+.cq-ux-checkpoints{margin:5px 0!important}
+.metro-lab[data-mode="game"]{margin:0;border-radius:14px}
+.metro-lab[data-mode="game"] .metro-banner,.metro-lab[data-mode="game"] .metro-disclaimer,.metro-lab[data-mode="game"] .metro-live-pulse,.metro-lab[data-mode="game"] .metro-network-head small,.metro-lab[data-mode="game"] .metro-eyebrow,.metro-lab[data-mode="game"] .metro-journey-header{display:none}
+.metro-lab[data-mode="game"] .metro-workspace{padding:7px;gap:8px;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+.cq-ux-visual{display:flex;flex-direction:column;min-width:0;min-height:0;gap:6px}
+.cq-ux-viewbar{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.cq-ux-viewbar .btn{flex:1 1 75px;min-height:44px;min-width:0;font-size:.8rem;padding:5px 7px;overflow-wrap:break-word}
+.cq-ux-viewbar .btn[aria-pressed="true"]{background:var(--panel2);border-color:var(--cyan);color:var(--cyan)}
+.cq-ux-viewbar .btn:disabled{opacity:.55}
+.metro-lab[data-mode="game"] .metro-journey-card{padding:7px 10px}
+.metro-lab[data-mode="game"] .metro-journey-path>div{gap:1px}
+.metro-lab[data-mode="game"] .metro-journey-path strong{font-size:.83rem}
+.metro-lab[data-mode="game"] .metro-journey-progress{height:5px;margin:5px 0 0}
+.metro-lab[data-mode="game"] .metro-network-alert{margin:5px 0 0;padding:5px 8px}
+.metro-lab[data-mode="game"] .metro-network-head,.metro-lab[data-mode="game"] .metro-scene-toolbar{min-height:0;padding:5px 9px;gap:5px}
+.metro-lab[data-mode="game"] .metro-network-head h3,.metro-lab[data-mode="game"] .metro-scene-toolbar h3{font-size:.94rem;margin:0}
+.metro-lab[data-mode="game"] .metro-network-card,.metro-lab[data-mode="game"] .metro-scene-card{align-self:stretch;margin:0;border-radius:11px}
+.metro-lab[data-mode="game"] .metro-network-footer{padding:5px 8px;gap:4px}
+.metro-lab[data-mode="game"] .metro-map-instructions{display:none}
+.metro-lab[data-mode="game"] .f3c-metro-tools{padding:6px;gap:5px}
+.metro-lab[data-mode="game"] .f3c-map-hint{font-size:.7rem;margin:0}
+.metro-lab[data-mode="game"] .metro-stop-strip{padding:6px 9px}
+.metro-lab[data-mode="game"] .cq-ux-inspect,.metro-lab[data-mode="game"] .cq-ux-notice{margin:0 5px 5px;color:var(--metro-ink)}
+.metro-lab[data-mode="game"] #metroInspector{border:none;padding:5px}
+.metro-lab[data-mode="game"] #metroPublicAddress{margin:5px 0;padding:7px}
+.metro-lab[data-mode="game"] .metro-side{gap:0;min-width:0;min-height:0}
+.metro-lab[data-mode="game"] .metro-side>#f1Panel{padding:13px;margin:0}
+@media(min-width:1051px) and (min-height:680px){
+ .app>.layout{grid-template-rows:minmax(0,1fr)}
+ .app>.metro-lab[data-mode="game"]{flex:1 1 0;min-height:360px;margin:0;min-width:0}
+ .metro-lab[data-mode="game"]{display:flex;flex-direction:column}
+ .metro-lab[data-mode="game"] .metro-workspace,body[data-presentation="on"] .metro-lab[data-mode="game"] .metro-workspace{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);flex:1 1 0;min-height:0;align-items:stretch}
+ .metro-lab[data-mode="game"] .metro-side{height:100%;min-height:0;display:flex;flex-direction:column}
+ .metro-lab[data-mode="game"] .metro-side>#f1Panel{flex:1 1 0;min-height:0;overflow:auto;overscroll-behavior-y:contain;scrollbar-gutter:stable}
+ .metro-lab[data-mode="game"] .cq-ux-visual{height:100%;min-height:0}
+ .metro-lab[data-mode="game"] .cq-ux-visual>.cq-ux-viewbar,.metro-lab[data-mode="game"] .cq-ux-visual>.metro-journey-card{flex:none}
+ .metro-lab[data-mode="game"] .cq-ux-visual>.metro-network-card,.metro-lab[data-mode="game"] .cq-ux-visual>.metro-scene-card{display:flex;flex:1 1 0;min-height:0;flex-direction:column;overflow:auto}
+ .metro-lab[data-mode="game"] .metro-network-scroll,.metro-lab[data-mode="game"] .metro-scene-viewport{flex:1 1 0;min-height:120px;max-height:none}
+ .metro-lab[data-mode="game"] .metro-network-scroll.overview svg,.metro-lab[data-mode="game"] .metro-scene-viewport svg{width:100%;height:100%;min-width:0;aspect-ratio:auto}
+ .metro-lab[data-mode="game"] .metro-network-scroll:not(.overview) svg{width:100%;min-width:850px;height:auto}
+ .metro-lab[data-mode="game"] .cq-ux-notice{flex:none;max-height:120px;overflow:auto}
+ .metro-lab[data-mode="game"] #metroMapZoom{display:inline-flex;min-height:44px;align-items:center}
+ .cq-ux-viewbar>#f3cToTask{display:none}
+}
+@media(max-width:1050px){
+ .metro-lab[data-mode="game"] .metro-workspace{display:flex;flex-direction:column;gap:8px}
+ .metro-lab[data-mode="game"] .metro-network-card,.metro-lab[data-mode="game"] .metro-scene-card{min-height:0}
+ .metro-lab[data-mode="game"] .metro-network-scroll{max-height:min(48dvh,420px)}
+ .metro-lab[data-mode="game"] .metro-network-scroll.overview{max-height:none}
+ .metro-lab[data-mode="game"] .metro-network-scroll.overview svg{width:100%;min-width:0;height:auto}
+ .metro-lab[data-mode="game"] .metro-scene-viewport svg{width:100%;height:auto}
+ .metro-lab[data-mode="game"] #metroMapZoom{display:inline-flex;min-height:44px;align-items:center}
+}
+@media(max-width:480px){.cq-ux-viewbar .btn{flex:1 1 65px}}
+@media(prefers-reduced-motion:reduce){.cq-ux-visual *{scroll-behavior:auto!important}}
+
+
+/* UX visual QA pass: reclaim real map/scene height, not merely outer card height. */
+.cq-ux-session-strip .cq-mode-picker{gap:2px}
+.cq-ux-session-strip .cq-mode-segments{padding:2px;gap:3px}
+.cq-ux-session-strip .cq-mode-option{min-height:44px;font-size:.82rem;line-height:1.2;padding:5px 9px}
+.cq-ux-session-strip .f1-mode .btn{width:auto;white-space:normal}
+.f1-station{min-height:44px}
+.f3d-learning-rail{padding:0;margin-bottom:5px}
+.f3d-learning-steps li,.f3d-learning-steps li[aria-current="step"]{min-height:24px;padding:2px 5px}
+.map-head{padding:4px 9px}
+.map-location-bar{padding:4px 9px;min-height:34px}
+.map-location-copy{flex-direction:row;align-items:baseline;gap:8px;flex-wrap:wrap}
+.map-location-copy strong{font-size:.88rem}
+.map-location-copy small{font-size:.73rem}
+.map-location-icon{width:25px;height:25px;border-radius:7px}
+.map-footer{padding:3px 9px;line-height:1.3;font-size:.72rem}
+#f2MapStage>#f2Quick[data-instruction="false"]:not([hidden]){grid-template-columns:minmax(0,1fr) auto auto;grid-template-areas:"caption pad tools"}
+#f2Quick .f2-quick-caption{min-width:0}
+#f1Panel .cq-ux-primary-goal{padding:7px 10px;margin:6px 0}
+#f1Panel .cq-ux-primary-goal strong{margin-bottom:2px}
+#f1Panel .cq-ux-primary-goal p{line-height:1.4}
+#f1Panel .cq-ux-context{min-width:0;border:1px solid var(--line);border-radius:10px;margin:6px 0;padding:5px 9px}
+#f1Panel .cq-ux-context>summary{cursor:pointer;min-height:44px;align-content:center;font-size:.84rem;font-weight:750;overflow-wrap:break-word}
+.metro-lab[data-mode="game"] #f1Panel .cq-ux-primary-goal{background:transparent;border:0;border-left:2px solid #70dccb;border-radius:0;padding:4px 8px}
+.metro-lab[data-mode="game"] #f1Panel .cq-ux-primary-goal strong{display:inline;font-size:.78rem}
+.metro-lab[data-mode="game"] #f1Panel .cq-ux-primary-goal p{font-size:.87rem;margin:3px 0}
+.metro-lab[data-mode="game"] .metro-platform-board{margin:7px 0;padding:7px}
+.metro-lab[data-mode="game"] .metro-platform-board-heading{margin:0 0 5px}
+.metro-lab[data-mode="game"] .metro-platform-board-list{gap:4px}
+.metro-lab[data-mode="game"] .metro-platform-board-item{padding:6px 8px}
+.metro-lab[data-mode="game"] .metro-journey-card{padding:5px 9px}
+.metro-lab[data-mode="game"] .metro-journey-path small{font-size:.63rem}
+.metro-lab[data-mode="game"] .cq-ux-notice>summary,.metro-lab[data-mode="game"] .cq-ux-inspect>summary{min-height:44px;padding:0}
+@media(min-width:1051px) and (min-height:680px){
+ .app .topbar{padding:5px 9px}
+ .cq-ux-session-strip{margin:5px 0;padding:5px 9px;gap:6px}
+ .cq-ux-session-strip .f2-settings{flex:1 1 480px;align-items:flex-end;gap:6px}
+ .cq-ux-session-strip .f1-dashboard{flex:1 1 245px;gap:6px}
+ .cq-ux-session-strip .f2-field{min-width:92px}
+ .cq-ux-session-strip .cq-mode-picker{flex:0 1 auto}
+ .cq-ux-session-strip .cq-mode-option{flex:0 1 auto;white-space:nowrap}
+ .cq-ux-session-strip .f3d-session-advice{flex:1 1 100%;line-height:1.15;margin:0}
+ .f1-stations{margin-bottom:5px;gap:4px}
+ .f1-station{padding:4px 6px;min-height:44px;gap:4px}
+ .f1-station-caption strong{font-size:.75rem}
+ #f2MapStage .map-viewport:not(.detail){background:#b8e5df}
+ .metro-lab[data-mode="game"] .metro-scene-viewport{min-height:140px}
+ .metro-lab[data-mode="game"] .cq-ux-notice{padding:0 9px;margin:0 5px 3px}
+}
+@media(max-width:1050px){
+ .layout[data-cq-order="map-first"] #f1Panel>.cq-ux-primary-goal{display:none}
+ #f2MapStage>#f2Quick[data-instruction="false"]:not([hidden]){grid-template-columns:minmax(0,1fr) 44px;grid-template-areas:"pad tools" "caption caption"}
+ #f2MapStage .map-viewport.detail{height:clamp(240px,38dvh,390px);max-height:390px}
+ .map-head .map-controls{flex:1 1 auto;justify-content:flex-end}
+ .map-head .map-controls .btn{flex:0 1 auto;max-width:100%}
+ .map-location-copy{gap:4px 8px}
+ .metro-lab[data-mode="game"] .metro-platform-board-item{padding:6px 8px}
+}
+@media(max-width:480px){
+ .map-head .map-controls{width:auto;display:flex;gap:4px}
+ .map-head .map-controls .btn{font-size:.72rem;padding:5px 6px}
+ .map-head h2{font-size:.9rem}
+ .cq-ux-session-strip .cq-mode-segments{flex-wrap:wrap}
+}
+
+
+/* Integrate the learning phase with session progress instead of consuming a
+   second full-width row. All three localized phase labels remain visible. */
+.cq-ux-session-strip .f1-progress>.f3d-learning-rail{margin:2px 0 0;padding:0;border:0;border-radius:0;box-shadow:none;background:transparent;min-width:0;width:100%}
+.cq-ux-session-strip .f1-progress .f3d-learning-steps{gap:3px}
+.cq-ux-session-strip .f1-progress .f3d-learning-steps li{min-width:0;min-height:24px;padding:2px 3px;gap:3px}
+.cq-ux-session-strip .f1-progress .f3d-learning-steps li strong{font-size:.69rem;overflow-wrap:break-word;white-space:normal}
+@media(min-width:1051px) and (min-height:680px){
+ .cq-ux-session-strip .f1-progress{min-width:180px;max-width:none;flex:1 1 180px}
+ .cq-ux-session-strip .f1-dashboard{flex:1 1 285px}
+ .f1-stations{margin-bottom:6px}
+}
+@media(max-width:1050px){
+ .cq-ux-session-strip .f1-progress{max-width:none;min-width:0;flex:1 1 220px}
+}
+@media(max-width:700px){
+ .cq-ux-session-strip .f1-progress{flex:1 1 100%;width:100%}
+ .cq-ux-session-strip .f1-mode{flex:1 1 100%;justify-content:flex-end}
+}
+
 </style>
 </head>
 <body>
@@ -1921,60 +2185,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
         <p id="f3ExperienceNote">Optional sounds play locally. No microphone or network.</p>
       </div>
     </details>
-    <span class="tag">CITY QUEST · PREMIUM</span>
-  </div>
-</header>
-<section class="hero">
- <div>
-   <span class="kicker">EXPLORE · NAVIGATE · COMMUNICATE</span>
-   <h1>Find your way.<br>Own the city.</h1>
-   <p id="f2HeroText">Explore Riverton through eight playable language missions in four languages, with CEFR-level challenges.</p>
-   <div class="tags"><span class="tag" id="f2HeroLanguage">English</span><span class="tag" id="f2HeroLevel">B1</span><span class="tag" id="cityQuestGameType">Interactive language game · city quest</span><span class="tag" id="cityQuestVariant">8 × 4 × 6</span><span class="tag">Offline · local practice</span></div>
- </div>
- <div class="hero-icon" aria-hidden="true">🧭 🏙️</div>
-</section>
-<section class="f2-settings" aria-label="Language and CEFR level">
-  <div class="f2-field"><label for="f2Language" id="f2LanguageLabel">Language</label>
-    <select id="f2Language"><option value="en">English</option><option value="es">Español</option><option value="de">Deutsch</option><option value="fr">Français</option></select>
-  </div>
-  <div class="f2-field"><label for="f2Level" id="f2LevelLabel">CEFR level</label>
-    <select id="f2Level"><option>A1</option><option>A2</option><option selected>B1</option><option>B2</option><option>C1</option><option>C2</option></select>
-  </div>
-  <div class="f2-profile" id="f2Profile" aria-live="polite">Independent directions and communication repair</div>
-  <button class="btn metro-jump" id="metroJump" type="button" hidden aria-controls="metroLab">🚇 Riverton Metro · Preview</button>
-   <div class="cq-mode-picker" id="cqModePicker" role="group" aria-labelledby="cqModeLabel" hidden>
-    <span id="cqModeLabel">Journey mode</span>
-    <div class="cq-mode-segments"><button id="cityOnlyToggle" type="button" class="cq-mode-option" aria-pressed="true">City only</button><button id="metroPilotToggle" type="button" class="cq-mode-option" aria-pressed="false">City + metro</button></div>
-   </div>
-   <dialog id="cqModeConfirm" class="cq-mode-confirm" aria-labelledby="cqModeConfirmTitle" aria-describedby="cqModeConfirmText">
-    <h2 id="cqModeConfirmTitle">Switch journey mode?</h2><p id="cqModeConfirmText">Missions 05–08 restart.</p>
-    <div class="cq-confirm-actions"><button type="button" class="btn" id="cqModeCancel">Keep mode</button><button type="button" class="btn primary" id="cqModeApply">Switch mode</button></div>
-   </dialog>
-  <p class="f3d-session-advice" id="f3dSessionAdvice">Changing the language or CEFR level starts a new session. Switching city/metro restarts missions 05–08.</p>
-</section>
-<section class="f1-dashboard" aria-label="City Quest session">
- <div class="f1-progress"><strong id="f1ProgressText">0 of 8 missions completed</strong><div class="f1-progress-track" role="progressbar" aria-label="Mission progress" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="f1ProgressTrack"><span id="f1ProgressFill"></span></div><small>Results stay in this browser tab; speaking is not automatically graded.</small></div>
- <div class="f1-mode" role="group" aria-label="Practice mode">
-  <span>Practice mode</span>
-  <button class="btn active" type="button" id="f1Solo" aria-pressed="true">👤 Solo</button>
-  <button class="btn" type="button" id="f1Pair" aria-pressed="false">👥 Pair</button>
- </div>
-</section>
-<nav class="f1-stations" id="f1Stations" aria-label="Eight City Quest missions"></nav>
-<section class="f3d-learning-rail" id="f3dLearningRail" aria-labelledby="f3dRailTitle">
-  <div class="f3d-learning-intro">
-    <span class="f3d-learning-world" id="f3dWorld">CITY · RIVERTON</span>
-    <strong id="f3dRailTitle">Mission 01</strong>
-    <span id="f3dRailMode" class="f3d-learning-mode">Solo · English B1</span>
-  </div>
-  <ol class="f3d-learning-steps" id="f3dLearningSteps" aria-label="Three learning phases">
-    <li id="f3dRead" aria-current="step"><span aria-hidden="true">1</span><strong>Read</strong></li>
-    <li id="f3dPractise"><span aria-hidden="true">2</span><strong>Practise</strong></li>
-    <li id="f3dReflect"><span aria-hidden="true">3</span><strong>Reflect</strong></li>
-  </ol>
-  <p id="f3dRailNote">Explain your choices aloud. Speaking is never automatically graded.</p>
-</section>
-<details class="cq-teacher-guide" id="cqTeacherGuide">
+    <details class="cq-teacher-guide" id="cqTeacherGuide">
  <summary>🎓 Pro učitele · cíl a využití mise</summary>
  <div class="cq-teacher-content">
   <p id="cqTeacherMeta"></p>
@@ -1989,6 +2200,70 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   <p class="cq-teacher-note">Mluvení hra nehodnotí automaticky. Doplňte partnerskou kontrolu nebo skutečný poslech učitele.</p>
  </div>
 </details>
+    <details class="cq-ux-about" id="cqUxAbout">
+      <summary id="cqUxAboutLabel">About</summary>
+      <div class="cq-ux-about-panel"><section class="hero">
+ <div>
+   <span class="kicker">EXPLORE · NAVIGATE · COMMUNICATE</span>
+   <h1>Find your way.<br>Own the city.</h1>
+   <p id="f2HeroText">Explore Riverton through eight playable language missions in four languages, with CEFR-level challenges.</p>
+   <div class="tags"><span class="tag" id="f2HeroLanguage">English</span><span class="tag" id="f2HeroLevel">B1</span><span class="tag" id="cityQuestGameType">Interactive language game · city quest</span><span class="tag" id="cityQuestVariant">8 × 4 × 6</span><span class="tag">Offline · local practice</span></div>
+ </div>
+ <div class="hero-icon" aria-hidden="true">🧭 🏙️</div>
+</section>
+        <div class="f2-profile" id="f2Profile" aria-live="polite">Independent directions and communication repair</div>
+        <section class="guide-card">
+<h2 id="f2GuideTitle">About City Quest</h2><p id="f2GuideText">All four languages and all six levels use the same illustrated city and eight interactive stations. The CEFR level changes routes, constraints, task complexity and speaking support. No server, student data collection or speech grading.</p>
+</section>
+      </div>
+    </details>
+    <span class="tag">CITY QUEST · PREMIUM</span>
+  </div>
+</header>
+<div class="cq-ux-session-strip">
+<section class="f2-settings" aria-label="Language and CEFR level">
+  <div class="f2-field"><label for="f2Language" id="f2LanguageLabel">Language</label>
+    <select id="f2Language"><option value="en">English</option><option value="es">Español</option><option value="de">Deutsch</option><option value="fr">Français</option></select>
+  </div>
+  <div class="f2-field"><label for="f2Level" id="f2LevelLabel">CEFR level</label>
+    <select id="f2Level"><option>A1</option><option>A2</option><option selected>B1</option><option>B2</option><option>C1</option><option>C2</option></select>
+  </div>
+  
+  <button class="btn metro-jump" id="metroJump" type="button" hidden aria-controls="metroLab">🚇 Riverton Metro · Preview</button>
+   <div class="cq-mode-picker" id="cqModePicker" role="group" aria-labelledby="cqModeLabel" hidden>
+    <span id="cqModeLabel">Journey mode</span>
+    <div class="cq-mode-segments"><button id="cityOnlyToggle" type="button" class="cq-mode-option" aria-pressed="true">City only</button><button id="metroPilotToggle" type="button" class="cq-mode-option" aria-pressed="false">City + metro</button></div>
+   </div>
+   <dialog id="cqModeConfirm" class="cq-mode-confirm" aria-labelledby="cqModeConfirmTitle" aria-describedby="cqModeConfirmText">
+    <h2 id="cqModeConfirmTitle">Switch journey mode?</h2><p id="cqModeConfirmText">Missions 05–08 restart.</p>
+    <div class="cq-confirm-actions"><button type="button" class="btn" id="cqModeCancel">Keep mode</button><button type="button" class="btn primary" id="cqModeApply">Switch mode</button></div>
+   </dialog>
+  <p class="f3d-session-advice" id="f3dSessionAdvice">Changing the language or CEFR level starts a new session. Switching city/metro restarts missions 05–08.</p>
+</section>
+<section class="f1-dashboard" aria-label="City Quest session">
+ <div class="f1-progress"><strong id="f1ProgressText">0 of 8 missions completed</strong><div class="f1-progress-track" role="progressbar" aria-label="Mission progress" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" id="f1ProgressTrack"><span id="f1ProgressFill"></span></div><small>Results stay in this browser tab; speaking is not automatically graded.</small>
+<section class="f3d-learning-rail" id="f3dLearningRail" aria-labelledby="f3dRailTitle">
+  <div class="f3d-learning-intro">
+    <span class="f3d-learning-world" id="f3dWorld">CITY · RIVERTON</span>
+    <strong id="f3dRailTitle">Mission 01</strong>
+    <span id="f3dRailMode" class="f3d-learning-mode">Solo · English B1</span>
+  </div>
+  <ol class="f3d-learning-steps" id="f3dLearningSteps" aria-label="Three learning phases">
+    <li id="f3dRead" aria-current="step"><span aria-hidden="true">1</span><strong>Read</strong></li>
+    <li id="f3dPractise"><span aria-hidden="true">2</span><strong>Practise</strong></li>
+    <li id="f3dReflect"><span aria-hidden="true">3</span><strong>Reflect</strong></li>
+  </ol>
+  <p id="f3dRailNote">Explain your choices aloud. Speaking is never automatically graded.</p>
+</section>
+ </div>
+ <div class="f1-mode" role="group" aria-label="Practice mode">
+  <span>Practice mode</span>
+  <button class="btn active" type="button" id="f1Solo" aria-pressed="true">👤 Solo</button>
+  <button class="btn" type="button" id="f1Pair" aria-pressed="false">👥 Pair</button>
+ </div>
+</section>
+</div>
+<nav class="f1-stations" id="f1Stations" aria-label="Eight City Quest missions"></nav>
 <div class="tabs f1-legacy-tabs" role="tablist" aria-label="Legacy F0 mission controls" hidden>
  <button class="btn tab" type="button" id="routeTab" role="tab" aria-selected="true" aria-controls="routeView">01 · Find the Route</button>
  <button class="btn tab" type="button" id="dialogueTab" role="tab" aria-selected="false" aria-controls="dialogueView">02 · Ask for Directions</button>
@@ -2002,7 +2277,8 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       <button type="button" class="btn" id="mapZoom" aria-pressed="false">＋ Map detail</button>
     </div>
    </div>
-   <div class="map-viewport" id="mapViewport" role="region" aria-label="Illustrated city map with accessible selectable crossroads. Pan sideways on touch screens or use arrow keys and direction buttons." aria-describedby="mapLocation" tabindex="0">
+   <p id="cqCityBrief" class="cq-ux-mobile-brief" hidden></p>
+    <div class="map-viewport" id="mapViewport" role="region" aria-label="Illustrated city map with accessible selectable crossroads. Pan sideways on touch screens or use arrow keys and direction buttons." aria-describedby="mapLocation" tabindex="0">
       <svg id="cityMap" viewBox="0 0 1196 756" role="group" aria-label="Illustrated street map of Riverton with city landmarks, Central Station at bottom left and City Museum near the upper centre">
       </svg>
    </div>
@@ -2135,9 +2411,6 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     </aside>
   </div>
   <footer class="metro-disclaimer"><span>Illustrative network · Guided review only</span><span>The network is fictional. Speaking activities are self-assessed and never automatically graded.</span></footer>
-</section>
-<section class="guide-card">
-<h2 id="f2GuideTitle">About City Quest</h2><p id="f2GuideText">All four languages and all six levels use the same illustrated city and eight interactive stations. The CEFR level changes routes, constraints, task complexity and speaking support. No server, student data collection or speech grading.</p>
 </section>
 </main>
 <button type="button" id="f3PresentationExit" class="f3-presentation-exit" hidden>✕ Exit presentation</button>
@@ -5669,7 +5942,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   const panel=$("f1Panel"),map=$("cityMap"),viewport=$("mapViewport");
   const cityLayout=document.querySelector(".layout"),citySidebar=panel.parentElement;
   const metroLab=$("metroLab"),metroSidebar=metroLab.querySelector(".metro-side");
-  const metroNetworkCard=metroLab.querySelector(".metro-network-card"),metroPhoneQuery=window.matchMedia("(max-width:740px)");
+  const desktopWorkspace=window.matchMedia("(min-width:1051px) and (min-height:680px)");
   const NS="http://www.w3.org/2000/svg";
   const icons=["🗺️","🧭","💬","👣","🚌","↩️","🚧","🏆"];
   const stationKeys=["explore","route","dialogue","guided","transit","repair","detour","quest"];
@@ -5757,9 +6030,10 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   function renderAdvancedOracy(n){
     const data=advancedOracyTask(n);
     if(!data)return;
-    const wrap=el("section",panel,"cq-advanced-oracy");
+    const wrap=el("details",panel,"cq-advanced-oracy");
+    wrap.open=lessonPhase()===2;
     wrap.setAttribute("aria-label",data.ui.title+" · "+state.level);
-    el("strong",wrap,"cq-advanced-oracy-title","🎭 "+data.ui.title+" · "+state.level);
+    el("summary",wrap,"cq-advanced-oracy-title","🎭 "+data.ui.title+" · "+state.level);
     para(wrap,data.task,"cq-advanced-oracy-task");
     para(wrap,data.ui.doFirst,"cq-advanced-oracy-note");
     const criteria=el("details",wrap,"cq-advanced-oracy-criteria");
@@ -5862,11 +6136,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     cityLayout.hidden=visible;
     metroLab.dataset.mode=visible?"game":"preview";
     if(visible){
-      const target=metroPhoneQuery.matches?metroNetworkCard:metroSidebar;
-      if(panel.parentElement!==target){
-        if(target===metroNetworkCard)target.insertBefore(panel,$("metroNetworkViewport"));
-        else target.insertBefore(panel,target.firstChild);
-      }
+      if(panel.parentElement!==metroSidebar)metroSidebar.insertBefore(panel,metroSidebar.firstChild);
       metroLab.hidden=false;
     }else{
       if(panel.parentElement!==citySidebar)citySidebar.appendChild(panel);
@@ -5933,8 +6203,10 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     const head=el("div",panel,"f2-card-head");
     el("span",head,"f2-kicker",ui().station+" "+String(index).padStart(2,"0")+" / 08 · "+pack().native+" "+state.level);
     el("h2",head,"",(alt&&index===5?"🚇":icons[index-1])+" "+title);
-    para(head,desc);
-    note(panel,"🎯 "+ui().mission,goal);
+    para(head,desc,"cq-ux-mission-description");
+    note(panel,"🎯 "+ui().mission,goal).classList.add("cq-ux-primary-goal");
+    $("cqCityBrief").textContent=goal;
+    $("cqCityBrief").hidden=metroScene()||cityLayout.dataset.cqOrder!=="map-first";
     renderAdvancedOracy(index);
     if(state.mode==="pair"){
       const div=el("div",panel,"f2-pair");
@@ -5997,6 +6269,8 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     para(div,extra||ui().feedbackGood);
     if([1,3].includes(number)&&state.cityReview[number]?.passed)
       para(div,cqCityDecision[state.language][number][state.level][4],"f2-small");
+    const oral=panel.querySelector(".cq-advanced-oracy");
+    if(oral){oral.open=true;panel.appendChild(oral);}
     speaking(panel,model,record);
     const row=actions(panel);
     if(number<8)btn(row,ui().next+" →",()=>selectStation(number+1),"primary");
@@ -6019,8 +6293,21 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     [...new Set(words.concat(more))].forEach(word=>el("li",list,"",word));
     para(section,c.review);
   }
+  function focusTaskControl(node){
+    node.focus({preventScroll:true});
+    if(desktopWorkspace.matches){
+      const p=panel.getBoundingClientRect(),r=node.getBoundingClientRect();
+      if(r.bottom>p.bottom-8)panel.scrollTop+=r.bottom-p.bottom+8;
+      else if(r.top<p.top+8)panel.scrollTop-=p.top+8-r.top;
+    }
+  }
   function screen(){
     const taskHadFocus=panel.contains(document.activeElement),isMetro=metroPilot();
+    const priorKey=panel.dataset.cqUxMission,priorScroll=panel.scrollTop,priorOral=panel.querySelector(".cq-advanced-oracy")?.open;
+    const currentKey=state.language+"/"+state.level+"/"+state.station+"/"+String(isMetro);
+    const phaseKey=isMetro?metroState().phase:"city";
+    const phaseChanged=panel.dataset.cqUxPhase!==phaseKey;
+    panel.dataset.cqUxMission=currentKey;panel.dataset.cqUxPhase=phaseKey;
     panel.hidden=false;panel.replaceChildren();
     cityLayout.dataset.cqOrder=(!metroPilot()&&![2,4,7,8].includes(state.station))?"task-first":"map-first";
     updateMetroPresentation();
@@ -6040,8 +6327,16 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     }
     // Persist feedback outside a dynamically replaced panel. No recording,
     // network, telemetry, artificial grades or automatic model validation.
+    const oral=panel.querySelector(".cq-advanced-oracy");
+    if(oral&&!state.done.has(state.station)){
+      panel.appendChild(oral);
+      oral.open=lessonPhase()===2||(priorKey===currentKey&&!!priorOral);
+    }
+    const pair=panel.querySelector(".f2-pair");
+    if(pair&&!state.done.has(state.station))panel.appendChild(pair);
     if(flash?.text)$("f3Status").textContent=flash.text;
     if(state.done.size===8)renderCompletionSummary();
+    if(desktopWorkspace.matches)panel.scrollTop=priorKey===currentKey&&!phaseChanged?priorScroll:0;
     updateLessonRail();
     if(taskHadFocus&&!isMetro)window.requestAnimationFrame(()=>{
       if(panel.hidden)return;
@@ -6049,7 +6344,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
         ".f2-choice-list button:not(:disabled), .f2-actions button:not(:disabled), "+
         ".f2-select-group select:not(:disabled), .f2-help button:not(:disabled)"
       );
-      if(next)next.focus({preventScroll:true});
+      if(next)focusTaskControl(next);
       else{
         const title=panel.querySelector(".f2-card-head h2");
         if(title){title.tabIndex=-1;title.focus({preventScroll:true});}
@@ -6154,11 +6449,11 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     // focus to the NEW valid action; never steal focus from map inspection.
     if(hadTaskFocus)window.requestAnimationFrame(()=>{
       const next=panel.querySelector(".f2-choice-list button:not(:disabled), .f2-actions button:not(:disabled)");
-      if(next)next.focus({preventScroll:true});
+      if(next)focusTaskControl(next);
     });
     window.CityQuestF3?.sceneUpdated();
-    if(previousScene!==metroScene()){
-      const target=metroScene()?metroLab:cityLayout;
+    if(previousScene!==metroScene()&&!desktopWorkspace.matches){
+      const target=metroScene()?$("cqMetroVisual"):cityLayout;
       window.requestAnimationFrame(()=>target.scrollIntoView({behavior:"auto",block:"start"}));
     }
   }
@@ -6170,17 +6465,17 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     // unnatural '0 Speaking checkpoints confirmed'. Only mission 08 has
     // three distinct spoken checkpoints; 05-07 end with one self-check.
     const speakingTotal=window.RivertonMetro?.scenario(game.scenarioId)?.speakingCheckpoints||1;
-    el("p",panel,"f2-small",c.native+" · "+state.level+" · "+c.offline+
-      " · "+c.labels.checkpointProgress+": "+game.speakingDone+"/"+speakingTotal);
-    if(game.history.length===0&&(((n===5||n===6)&&stage==="select-line")||(n===7&&stage==="notice")||(n===8&&stage==="walk-to-entrance")))
-      note(panel,"🧭 "+lesson().mission+" "+String(n).padStart(2,"0"),metroNarrative[state.language]?.[n]||metroNarrative.en[n]);
+    if(n===8||["checkpoint","speech"].includes(stage))el("p",panel,"f2-small cq-ux-checkpoints",c.labels.checkpointProgress+": "+game.speakingDone+"/"+speakingTotal);
+    // Keep the complete narrative available throughout the journey, not only
+    // at the first phase. The actual objective and current action remain visible.
     note(panel,"🚇 "+(["walk-to-entrance","walk-to-museum"].includes(stage)?c.enterTitle:c.metroTitle),
       LC.stage(state.language,state.level,n,stage,{station:place}));
     if(stage==="speech"||stage==="checkpoint"){
       note(panel,"🎯 "+c.labels.criteria,c.cefr.task);
       const checklist=el("ul",panel,"metro-selfcheck-criteria");
       c.cefr.criteria.forEach(criterion=>el("li",checklist,"",criterion));
-      note(panel,"💡 "+c.labels.support,c.cefr.support);
+      const support=el("details",panel,"metro-language-details");
+      el("summary",support,"","💡 "+c.labels.support);para(support,c.cefr.support);
       const ext=el("details",panel,"metro-language-details");
       el("summary",ext,"",c.labels.stretch);
       para(ext,c.cefr.stretch);
@@ -6284,6 +6579,9 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
         btn(row,c.actions[type],()=>metroAction({type}),"primary");
       }
     }
+    const context=el("details",panel,"cq-ux-context");
+    el("summary",context,"",{en:"Journey context",es:"Contexto del viaje",de:"Reisekontext",fr:"Contexte du trajet"}[state.language]);
+    para(context,metroNarrative[state.language]?.[n]||metroNarrative.en[n]);
     const vocab=el("details",panel,"metro-language-details");
     el("summary",vocab,"","📖 "+c.labels.glossary);
     const dl=el("dl",vocab,"metro-glossary");
@@ -6313,8 +6611,9 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   }
   function renderExplore(){
     const game=state.explore,total=G.answerCount(state.level);
-    el("h3",panel,"","🗺️ "+ui().vocabulary);
-    const grid=el("div",panel,"f2-landmarks");
+    const vocabulary=el("details",panel,"cq-ux-vocabulary");
+    el("summary",vocabulary,"","🗺️ "+ui().vocabulary);
+    const grid=el("div",vocabulary,"f2-landmarks");
     F.places.forEach(place=>{
       const div=el("div",grid,"f2-landmark");
       el("span",div,"",place.icon);
@@ -6368,13 +6667,11 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     if(game.done)return complete(2,ui().routeCompleted,G.routeModel(pack(),game.route));
     const target=ui()[state.level==="A1"?"square":"museum"];
     el("h3",panel,"",ui().from+" "+ui().start+" → "+target);
-    para(panel,ui().goal+": "+target,"f2-prompt");
+    // The heading already states the start and destination; do not repeat the target.
     if(c.via.length)note(panel,ui().via,c.via.map(pointName).join(", "));
     if(c.blocked)note(panel,"🚧 "+ui().closed,ui().wrongRoad);
     para(panel,ui().step+": "+(game.route.length-1)+" · "+ui().remaining+": "+E.distance(game.route.at(-1),c.target),"f2-small");
     status(panel,flash?.text||ui().guide,flash?.tone);
-    const row=actions(panel);
-    btn(row,"↺ "+ui().restartStation,resetStation);
     help(panel);
   }
   function renderDialogue(){
@@ -6649,48 +6946,10 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   }
   const hudTools=el("div",quick,"f2-hud-tools");
   const hudUndo=btn(hudTools,"↶",()=>undoMapStep(),"f2-hud-undo");
-  let hudCompact=false;
-  const hudSize=btn(hudTools,"▣",()=>{
-    hudCompact=!hudCompact;updateHudDensity();
-  },"f3c-hud-toggle");
-  hudSize.id="f3cHudSize";
-  hudSize.dataset.testid="hud-size-toggle";
-  // One HUD, two responsive placements. Desktop uses the right mission sidebar;
-  // phones keep the overlay inside the map frame. Never clone the button nodes.
-  const hudDock=panel.parentElement;
-  // Match the actual layout breakpoint: the sidebar sits beside the map only above 1050px.
-  const phoneQuery=window.matchMedia("(max-width:1050px)");
-  function updateHudDensity(){
-    const overlay=phoneQuery.matches,compact=overlay&&hudCompact;
-    const t=chromeCopy[state.language]||chromeCopy.en;
-    quick.dataset.compact=String(compact);
-    hudSize.hidden=!overlay;
-    hudSize.setAttribute("aria-pressed",String(compact));
-    hudSize.setAttribute("aria-label",compact?t.expand:t.compact);
-    hudSize.title=compact?t.expand:t.compact;
-    hudSize.textContent=compact?"⤢":"▣";
-    // Icon-only Undo retains its full translated accessible name and a real
-    // 44px touch target beside the compact toggle on small screens.
-    hudUndo.textContent=overlay?"↶":"↶ "+ui().undo;
-  }
-  function placeHud(){
-    const overlay=phoneQuery.matches;
-    const destination=overlay?mapStage:hudDock;
-    if(quick.parentElement!==destination){
-      const focused=quick.contains(document.activeElement)?document.activeElement:null;
-      if(overlay)mapStage.appendChild(quick);
-      else if(panel.parentElement===hudDock)hudDock.insertBefore(quick,panel);
-      else hudDock.appendChild(quick);
-      if(focused)focused.focus({preventScroll:true});
-    }
-    quick.dataset.placement=overlay?"map-overlay":"sidebar";
-    updateHudDensity();
-  }
-  placeHud();
-  if(phoneQuery.addEventListener)phoneQuery.addEventListener("change",placeHud);
-  else phoneQuery.addListener(placeHud);
-  // Reconcile HUD placement immediately on viewport resize (not only media-query changes).
-  window.addEventListener("resize",placeHud,{passive:true});
+  // Single docked HUD: the map and every direction button remain unobscured.
+  quick.dataset.placement="map-dock";
+  function updateHudDensity(){quick.dataset.compact="false";hudUndo.textContent="↶";}
+  updateHudDensity();
 
   function dispatchDirection(direction){
     if(isMovementLocked())return;
@@ -6743,7 +7002,13 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       cp?p.places[cp.id]:
       state.station===2?profile().route:
       state.station===7?u.wrongRoad:u.arrived;
-    quickCaption.textContent=flash?.text||u.compass;
+    // Only the current, changing direction is repeated at the navigation dock.
+    // Mission 02 already has its exact brief above the map on mobile and in the task on desktop.
+    const duplicate=state.station===2&&!metroPilot();
+    hudTop.hidden=duplicate;
+    quick.dataset.instruction=String(!duplicate);
+    quickCaption.textContent=flash?.text||"";
+    quickCaption.hidden=!flash?.text;
     quickCaption.dataset.tone=flash?.tone||"";
     for(const [dir,button] of Object.entries(hudButtons)){
       button.setAttribute("aria-label",u[dir]+" · "+u.compass);
@@ -6770,7 +7035,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     viewport.scrollTo({left:Math.max(0,p.x*scale-viewport.clientWidth*.4),
       // Keep the marker ABOVE the floating HUD, rather than under the arrow pad.
-      top:Math.max(0,p.y*scale-viewport.clientHeight*.30),behavior:reduce?"auto":"smooth"});
+      top:Math.max(0,p.y*scale-viewport.clientHeight*.45),behavior:reduce?"auto":"smooth"});
   }
   function renderMap(){
     const path=activePath();
@@ -6889,6 +7154,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     const mapFooter=document.querySelector(".map-footer");
     if(mapFooter)mapFooter.textContent="🧭 "+u.route+" · 🚉 "+u.start+" · 🏛️ "+u.museum;
     document.querySelector(".f1-progress small").textContent=u.offline+" "+u.noSpeechGrade;
+    $("cqUxAboutLabel").textContent={en:"About",es:"Información",de:"Info",fr:"À propos"}[state.language];
     $("f2GuideTitle").textContent=u.training+" · "+state.level;
     $("f2GuideText").textContent=prof.focus+". "+prof.stretch+" "+u.offline+" "+u.noSpeechGrade;
     translateCity();updateMetroToggle();
@@ -6970,6 +7236,12 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     });
     if(focusIndex>=0&&nav.children[focusIndex])
       nav.children[focusIndex].focus({preventScroll:true});
+    const active=nav.querySelector('[aria-current="step"]');
+    if(active&&nav.scrollWidth>nav.clientWidth){
+      const a=active.getBoundingClientRect(),n=nav.getBoundingClientRect();
+      if(a.left<n.left)nav.scrollLeft-=n.left-a.left;
+      else if(a.right>n.right)nav.scrollLeft+=a.right-n.right;
+    }
     updateLessonRail();
   }
   function selectStation(n){
@@ -6981,9 +7253,11 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       if(!window.matchMedia("(max-width:1050px)").matches)return;
       const needsMap=(!metroPilot()&&[2,4,7,8].includes(state.station))||
         (metroPilot()&&metroCityWalk());
-      const target=metroScene()?panel:(needsMap?document.querySelector(".layout .map-card"):panel);
+      const target=metroScene()?$("cqMetroVisual"):(needsMap?document.querySelector(".layout .map-card"):panel);
       target?.scrollIntoView({block:"start",behavior:"auto"});
-      panel.focus({preventScroll:true});
+      if(metroScene())$("cqMetroVisual").focus({preventScroll:true});
+      else if(needsMap)viewport.focus({preventScroll:true});
+      else panel.focus({preventScroll:true});
     });
   }
   function resetStation(){
@@ -7091,8 +7365,6 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   }
   $("f2Language").addEventListener("change",e=>resetSession(e.target.value,state.level));
   $("f2Level").addEventListener("change",e=>resetSession(state.language,e.target.value));
-  if(metroPhoneQuery.addEventListener)metroPhoneQuery.addEventListener("change",()=>{if(metroScene())updateMetroPresentation();});
-  else metroPhoneQuery.addListener(()=>{if(metroScene())updateMetroPresentation();});
   $("metroPilotToggle").addEventListener("click",()=>requestMetroMode(true));
   $("cityOnlyToggle").addEventListener("click",()=>requestMetroMode(false));
   $("cqModeCancel").addEventListener("click",()=>$("cqModeConfirm").close("cancel"));
@@ -7157,6 +7429,21 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
  const lab=$("metroLab"),jump=$("metroJump"),network=$("metroNetworkSvg"),scene=$("metroSceneSvg");
  if(!lab||!jump||!network||!scene)throw Error("F2.1B metro markup missing");
  const svgNS="http://www.w3.org/2000/svg";
+  const networkCard=lab.querySelector(".metro-network-card"),sceneCard=lab.querySelector(".metro-scene-card");
+  networkCard.id="cqMetroNetworkCard";sceneCard.id="cqMetroSceneCard";
+  const visual=document.createElement("div");visual.className="cq-ux-visual";visual.id="cqMetroVisual";visual.tabIndex=-1;
+  networkCard.parentNode.insertBefore(visual,networkCard);
+  const brief=document.createElement("p");brief.id="cqMetroBrief";brief.className="cq-ux-mobile-brief";brief.hidden=true;
+  const views=document.createElement("div");views.id="cqMetroViews";views.className="cq-ux-viewbar";views.hidden=true;views.setAttribute("role","group");
+  for(const [key,caption,target] of [["network","Network","cqMetroNetworkCard"],["platform","Platform","cqMetroSceneCard"],["train","On board","cqMetroSceneCard"]]){
+    const b=document.createElement("button");b.type="button";b.className="btn";b.id="cqMetroView-"+key;b.dataset.cqMetroView=key;b.textContent=caption;b.setAttribute("aria-controls",target);b.setAttribute("aria-pressed","false");views.appendChild(b);
+  }
+  $("f3cToTask").classList.add("btn");views.appendChild($("f3cToTask"));
+  const notice=document.createElement("details");notice.id="cqMetroNotice";notice.className="cq-ux-notice";notice.hidden=true;
+  const noticeLabel=document.createElement("summary");noticeLabel.id="cqMetroNoticeLabel";notice.append(noticeLabel,$("metroPublicAddress"));
+  const inspect=document.createElement("details");inspect.id="cqMetroInspect";inspect.className="cq-ux-inspect";
+  const inspectLabel=document.createElement("summary");inspectLabel.id="cqMetroInspectLabel";inspect.append(inspectLabel,$("metroInspector"));networkCard.appendChild(inspect);
+  visual.append(brief,views,lab.querySelector(".metro-journey-card"),networkCard,sceneCard,notice);
  const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
  // CQ-F5-006: guided EN references contain answers to live missions.
  // They remain usable only in explicit authoring/QA visual preview mode.
@@ -7192,6 +7479,35 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
    stop:name=>"Arrêt actuel : "+name+".",map:"Commandes du plan du métro"}
  };
  const ux=()=>f3cText[$("f2Language").value]||f3cText.en;
+  const workspaceCopy=()=>({
+    en:{network:"Network",platform:"Platform",train:"On board",views:"Metro views",info:"Service information"},
+    es:{network:"Plano",platform:"Andén",train:"En el tren",views:"Vistas del metro",info:"Información del servicio"},
+    de:{network:"Netzplan",platform:"Bahnsteig",train:"Im Zug",views:"U-Bahn-Ansichten",info:"Betriebsinformationen"},
+    fr:{network:"Plan",platform:"Quai",train:"Dans la rame",views:"Vues du métro",info:"Informations de service"}
+  }[$("f2Language").value]);
+  let workspaceView="network",workspaceKey="";
+  function updateWorkspaceView(){
+    const copy=workspaceCopy(),active=!!gameMode;
+    views.hidden=!active;views.setAttribute("aria-label",copy.views);
+    brief.hidden=!active;
+    const sceneView=gameMode?.phase==="ride"?"train":"platform";
+    if(active&&workspaceView!=="network"&&workspaceView!==sceneView)workspaceView=sceneView;
+    for(const b of views.querySelectorAll("[data-cq-metro-view]")){
+      const name=b.dataset.cqMetroView;b.textContent=copy[name];
+      b.disabled=active&&name!=="network"&&name!==sceneView;
+      b.setAttribute("aria-pressed",String(active&&name===workspaceView));
+    }
+    networkCard.hidden=active&&workspaceView!=="network";
+    sceneCard.hidden=active&&workspaceView==="network";
+    notice.hidden=!active;
+    noticeLabel.textContent=copy.info;inspectLabel.textContent=cx().inspector;
+    if(active)lab.dataset.cqView=workspaceView;else delete lab.dataset.cqView;
+    if(active&&workspaceView==="network")window.requestAnimationFrame(centerOnCurrent);
+  }
+  for(const b of views.querySelectorAll("[data-cq-metro-view]"))b.addEventListener("click",()=>{
+    if(!gameMode||b.disabled)return;
+    workspaceView=b.dataset.cqMetroView;updateWorkspaceView();
+  });
  // Game-mode maps and scenes are localized; the separate EN reference gallery
  // deliberately keeps its original English visual examples.
  const sceneText={
@@ -7730,6 +8046,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     const lang=$("f2Language").value,level=$("f2Level").value,copy=gameCopy();
     $("metroInstruction").textContent=LC.stage(lang,level,gameMode.stationNumber,gameMode.phase,
       {station:stationName(gameMode.metroStation)});
+    brief.textContent=$("metroInstruction").textContent;
     $("metroNextInfo").textContent=copy.labels.step+" "+(current.index+1)+"/"+steps.length+
       " · "+stationName(gameMode.metroStation)+" · "+(gameMode.lineId||copy.labels.noLine);
     $("metroAdvance").disabled=true;
@@ -7842,16 +8159,24 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   jump.textContent=gallery.jump;
   if(shown)renderAll();
   else updateMapTools();
+  updateWorkspaceView();
  }
  window.RivertonMetroVisual=Object.freeze({
   sync(state){
     gameMode=state||null;
     if(state){
+      const key=$("f2Language").value+"/"+$("f2Level").value+"/"+state.stationNumber+"/"+state.phase;
+      if(key!==workspaceKey){
+        workspaceView=["select-line","select-direction","notice","transfer"].includes(state.phase)?"network":state.phase==="ride"?"train":"platform";
+        if(workspaceView==="network")overview=true;
+        workspaceKey=key;notice.open=state.phase==="notice";
+      }
       current={scenarioId:state.scenarioId,index:window.RivertonMetroGame.routeIndex(state),
         finished:state.completed};
       inspected=state.metroStation;
       view=state.phase==="ride"?"train":"platform";
     }else{
+      workspaceKey="";workspaceView="network";
       current=M.startPreview(review[0].id);
       inspected=M.scenario(current.scenarioId).start;
       view="platform";

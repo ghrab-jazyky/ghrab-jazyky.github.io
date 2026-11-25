@@ -30,7 +30,7 @@ test('All 144 mission-and-CEFR oral tasks show the exact native-language authore
     const fixture=fixtures[lang];
     for(let n=1;n<=8;n++){
      await page.locator('#f1Stations button').nth(n-1).click();
-     assert.equal(await page.locator('.cq-advanced-oracy-task').innerText(),
+     assert.equal(await page.locator('.cq-advanced-oracy-task').textContent(),
        fixture.city[String(n)][level],lang+'/city/'+n+'/'+level);
      assert.match(await page.locator('.cq-advanced-oracy-title').innerText(),
        new RegExp(level));
@@ -42,7 +42,7 @@ test('All 144 mission-and-CEFR oral tasks show the exact native-language authore
     assert.equal(await page.locator('#metroPilotToggle').getAttribute('aria-pressed'),'true');
     for(let n=5;n<=8;n++){
      await page.locator('#f1Stations button').nth(n-1).click();
-     assert.equal(await page.locator('.cq-advanced-oracy-task').innerText(),
+     assert.equal(await page.locator('.cq-advanced-oracy-task').textContent(),
        fixture.metro[String(n)][level],lang+'/metro/'+n+'/'+level);
      assert.equal(await page.locator('.cq-advanced-oracy-criteria li').count(),3);
      checked++;
@@ -116,7 +116,7 @@ test('C2 task content remains readable on 320px mobile and high text zoom',async
    await enter(page,lang,'C2');
    for(const mission of [1,5,8]){
     await page.locator('#f1Stations button').nth(mission-1).click();
-    assert.ok((await page.locator('.cq-advanced-oracy-task').innerText()).length>75);
+    assert.ok((await page.locator('.cq-advanced-oracy-task').textContent()).length>75);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,lang+'/'+mission+'/normal');
     await page.evaluate(()=>document.documentElement.style.fontSize='200%');
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,lang+'/'+mission+'/200%');
