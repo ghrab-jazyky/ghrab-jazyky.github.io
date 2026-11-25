@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070f20">
 <meta name="description" content="City Quest: offline city and metro navigation in English, Spanish, German and French at A1–C2, with interactive metro missions at B1–C2.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-GgXlxOolm0gbIxRl00zbb2rNrWsD0JkcOh+O8N1gYaM='; style-src 'sha256-tsMP29MWjoU/NPfr5gFiUx49yvLRJ6i5024iTNOF1sA='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-ofrkwkgKYhYkPM4nP9ghw9zLBUtqe6vFZNm6ItIQxmw='; style-src 'sha256-tHYMg3wkre5Se4XkG+x/yrNqh+ULlPkpIlcagLX7UY8='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%2314253d%22%2F%3E%3Cpath%20d%3D%22M16%204v24M4%2016h24%22%20stroke%3D%22%2364e6ad%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%228%22%20fill%3D%22%2314253d%22%20stroke%3D%22%23f3f8ff%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22m20%2010-3%209-6%203%203-9z%22%20fill%3D%22%2364e6ad%22%2F%3E%3C%2Fsvg%3E">
 <title>City Quest · Interactive Language Game · EN ES DE FR · A1–C2</title>
 
@@ -1900,6 +1900,121 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   .f3d-learning-steps li{min-height:44px;justify-content:flex-start;padding:8px 10px}
   .f3d-learning-steps li strong{font-size:.82rem;word-break:normal;overflow-wrap:normal;hyphens:none}
 }
+
+/* CQ UX1/2/4: compact chrome and a single map-docked HUD. Desktop working
+   area has two panels; ordinary scrolling remains available on small screens. */
+.app{padding:10px 12px 20px}
+.topbar{padding:7px 10px;gap:6px;border-radius:13px}
+.brand{gap:7px}.brand-mark{width:34px;height:34px;border-radius:9px}
+.topbar .brand small,.topbar .header-actions>.tag{display:none}
+.header-actions{gap:5px;align-items:center}
+.header-actions>.btn{min-height:44px;padding:6px 10px;font-size:.82rem}
+.cq-ux-about,#cqTeacherGuide{position:relative;margin:0;min-width:0}
+.cq-ux-about>summary,#cqTeacherGuide>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:5px;padding:7px 10px;font-size:.82rem;font-weight:750;border:1px solid var(--line);border-radius:10px;background:var(--panel2)}
+.cq-ux-about-panel,#cqTeacherGuide>.cq-teacher-content{position:absolute;right:0;top:calc(100% + 6px);z-index:40;width:min(460px,calc(100vw - 24px));max-height:min(65dvh,520px);overflow:auto;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);box-shadow:var(--shadow)}
+.cq-ux-about-panel>.hero{display:block;margin:0 0 8px;padding:10px;box-shadow:none}
+.cq-ux-about-panel .hero h1{font-size:1.25rem}
+.cq-ux-about-panel .hero-icon,.cq-ux-about-panel .tags,.cq-ux-about-panel .kicker{display:none}
+.cq-ux-about-panel .guide-card{margin:8px 0 0;padding:10px;box-shadow:none}
+.cq-ux-session-strip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:7px 0;padding:6px 9px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.cq-ux-session-strip .f2-settings,.cq-ux-session-strip .f1-dashboard{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0;padding:0;box-shadow:none;border:none;background:none;min-width:0}
+.cq-ux-session-strip .f2-settings{flex:1 1 490px}
+.cq-ux-session-strip .f1-dashboard{flex:1 1 265px;justify-content:space-between}
+.cq-ux-session-strip .f2-field{min-width:100px;flex:0 1 auto;gap:2px}
+.cq-ux-session-strip .f2-field label{font-size:.73rem}
+.cq-ux-session-strip .f2-field select{min-height:44px;padding-top:5px;padding-bottom:5px}
+.cq-ux-session-strip #cqModePicker{flex:0 1 auto;min-width:0}
+.cq-ux-session-strip .f3d-session-advice{font-size:.7rem;line-height:1.25;margin:0}
+.cq-ux-session-strip .f1-progress{min-width:88px;flex:1 1 100px;gap:3px}
+.cq-ux-session-strip .f1-progress-track{height:5px}
+.cq-ux-session-strip .f1-progress small,.cq-ux-mission-description,#f3dRailNote,.f3d-learning-intro{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%);white-space:nowrap!important;border:0!important}
+.cq-ux-session-strip .f1-mode{display:flex;gap:5px;flex-wrap:wrap;min-width:0;width:auto}
+.cq-ux-session-strip .f1-mode>span{display:none}
+.cq-ux-session-strip .f1-mode .btn{min-height:44px;padding:6px 9px;font-size:.82rem}
+.f1-stations{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:5px;margin:0 0 7px}
+.f1-station{min-height:48px;padding:6px;gap:5px;border-radius:10px;box-shadow:none}
+.f1-station-icon{width:25px;height:25px;font-size:1rem;border-radius:7px}
+.f1-station-caption strong{font-size:.76rem;line-height:1.2;overflow-wrap:break-word}
+.f1-station-caption small{font-size:.64rem}
+.f3d-learning-rail{display:block;margin:0 0 6px;padding:3px 5px;border:none;box-shadow:none;background:none}
+.f3d-learning-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin:0}
+.f3d-learning-steps li,.f3d-learning-steps li[aria-current="step"]{min-height:28px;padding:3px 5px;justify-content:center;gap:4px;box-shadow:none}
+.f3d-learning-steps li span{width:18px;height:18px;font-size:.66rem}
+.f3d-learning-steps li strong{font-size:.72rem;line-height:1.15}
+.map-head{padding:7px 10px;gap:5px;min-height:0}
+.map-head h2{font-size:1rem;margin:0}
+.map-head .section-label,.map-touch-tip{display:none}
+.map-controls .btn{min-height:44px;padding:5px 8px;font-size:.78rem}
+.map-location-bar{padding:7px 10px;gap:6px;min-height:0}
+.map-location-icon{width:30px;height:30px;font-size:.95rem}
+.map-location-copy strong{font-size:1rem}
+.map-location-copy small,.map-footer{font-size:.76rem}
+.map-footer{padding:5px 10px}
+.cq-ux-mobile-brief{display:none}
+#f2MapStage{display:flex;flex-direction:column;gap:0}
+#f2MapStage>.map-viewport{min-height:0}
+#f2MapStage>#f2Quick:not([hidden]){position:static;inset:auto;width:100%;max-width:none;min-width:0;display:grid;grid-template-columns:minmax(0,1fr) auto auto;grid-template-areas:"head pad tools" "caption pad tools";gap:5px 8px;padding:7px 9px;border-radius:0;border-width:1px 0 0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;align-items:center}
+#f2Quick .f2-hud-location{display:none}
+#f2Quick .f2-hud-instruction,#f2Quick .f2-quick-caption{display:block;overflow:visible;-webkit-line-clamp:unset;line-height:1.3;overflow-wrap:break-word}
+#f2Quick .f2-hud-instruction{font-size:.82rem}
+#f2Quick .f2-quick-caption{font-size:.76rem}
+#f2Quick .f2-quick-pad{display:grid;grid-template-columns:repeat(4,minmax(44px,1fr));grid-template-areas:"west north south east";max-width:none;min-width:0;width:100%;gap:4px;margin:0}
+#f2Quick .f2-quick-pad button,#f2Quick .f2-hud-undo{min-height:44px;height:44px;min-width:44px;padding:0;font-size:1.2rem}
+#f2Quick .f2-hud-tools{justify-content:center;margin:0}
+#f1Panel{padding:13px;min-height:0}
+#f1Panel .f2-card-head{gap:2px;margin-bottom:5px}
+#f1Panel .f2-card-head h2{font-size:clamp(1.15rem,1.6vw,1.55rem);margin:2px 0}
+#f1Panel .f2-objective{padding:9px 11px;margin:7px 0}
+#f1Panel .f2-status,#f1Panel .f2-help,#f1Panel .f2-pair{margin:7px 0;padding:9px}
+#f1Panel .f2-choice-list,#f1Panel .f2-actions{margin:7px 0;gap:6px}
+#f1Panel .f2-choice-list button{min-height:44px;padding:8px 10px}
+#f1Panel .f2-prompt{margin:8px 0}
+#f1Panel h3{margin:10px 0 5px}
+@media(min-width:1051px) and (min-height:680px){
+ .app{height:100dvh;min-height:100dvh;display:flex;flex-direction:column;padding:8px 12px}
+ .app>.topbar,.app>.cq-ux-session-strip,.app>.f1-stations,.app>.f3d-learning-rail{flex:none}
+ .app>.layout{flex:1 1 0;min-height:360px;margin:0;min-width:0}
+ .layout,body[data-presentation="on"] .layout{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:stretch;gap:9px}
+ .layout>.map-card{display:flex;flex-direction:column;min-height:0;height:100%;min-width:0}
+ .layout>.map-card>#f2MapStage{flex:1 1 0;min-height:0}
+ #f2MapStage>.map-viewport,#f2MapStage .map-viewport.detail,#f2MapStage .map-viewport:not(.detail){flex:1 1 0;height:auto;min-height:0;max-height:none;overflow:auto}
+ #f2MapStage>.map-viewport:not(.detail) svg{width:100%;height:100%;min-width:0;max-height:none;display:block}
+ #f2MapStage>.map-viewport.detail svg{height:auto}
+ #f2MapStage>#f2Quick:not([hidden]){flex:none}
+ .layout>.sidebar{display:flex;flex-direction:column;min-height:0;height:100%;gap:0}
+ .layout>.sidebar>#f1Panel{flex:1 1 0;min-height:0;overflow:auto;overscroll-behavior-y:contain;scrollbar-gutter:stable}
+}
+@media(max-width:1050px){
+ .app{padding:8px 9px 22px}
+ .topbar{align-items:flex-start}
+ .header-actions{max-width:100%;width:auto}
+ .cq-ux-about-panel,#cqTeacherGuide>.cq-teacher-content{position:static;width:100%;max-height:none;box-shadow:none}
+ .cq-ux-about[open],#cqTeacherGuide[open]{flex:1 1 100%;max-width:100%}
+ .cq-ux-session-strip{padding:6px;gap:5px}
+ .cq-ux-session-strip .f2-settings,.cq-ux-session-strip .f1-dashboard{flex:1 1 100%}
+ .cq-ux-session-strip .f2-field{flex:1 1 100px}
+ .cq-ux-session-strip .f1-mode .btn{font-size:.8rem}
+ .f1-stations{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(120px,1fr);overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;padding-bottom:3px}
+ .f1-station{min-height:50px;max-width:none}
+ .f3d-learning-steps li strong{overflow-wrap:break-word;white-space:normal}
+ .cq-ux-mobile-brief:not([hidden]){display:block;font-size:.88rem;font-weight:650;line-height:1.4;margin:0;padding:8px 11px;background:var(--panel2);color:var(--text);overflow-wrap:break-word}
+ #f2MapStage>#f2Quick:not([hidden]){grid-template-columns:minmax(0,1fr) 44px;grid-template-areas:"head head" "pad tools" "caption caption";gap:4px 6px}
+ #f2MapStage .map-viewport:not(.detail){min-height:0;height:auto;max-height:none}
+ #f2MapStage>.map-viewport:not(.detail) svg{width:100%;height:auto;min-width:0}
+}
+@media(max-width:480px){
+ .topbar .header-actions{width:100%}
+ .cq-ux-session-strip #cqModePicker{flex:1 1 100%}
+ .cq-ux-session-strip .f3d-session-advice{font-size:.68rem}
+ .f1-stations{grid-auto-columns:minmax(112px,1fr)}
+ .f3d-learning-steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .f3d-learning-steps li{min-height:30px;padding:3px;gap:3px}
+ .f3d-learning-steps li strong{font-size:.7rem}
+ .f3d-learning-steps li span{width:17px;height:17px}
+ .map-head .map-controls{width:auto;display:flex;flex-wrap:wrap}
+ .map-controls .btn{min-width:0;font-size:.76rem}
+}
+
 </style>
 </head>
 <body>
@@ -1921,10 +2036,24 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
         <p id="f3ExperienceNote">Optional sounds play locally. No microphone or network.</p>
       </div>
     </details>
-    <span class="tag">CITY QUEST · PREMIUM</span>
-  </div>
-</header>
-<section class="hero">
+    <details class="cq-teacher-guide" id="cqTeacherGuide">
+ <summary>🎓 Pro učitele · cíl a využití mise</summary>
+ <div class="cq-teacher-content">
+  <p id="cqTeacherMeta"></p>
+  <dl>
+   <div><dt>Didaktický cíl</dt><dd id="cqTeacherGoal"></dd></div>
+   <div><dt>Slovní zásoba</dt><dd id="cqTeacherVocab"></dd></div>
+   <div><dt>Co má žák říci</dt><dd id="cqTeacherSpeak"></dd></div>
+   <div><dt>Slabší žáci</dt><dd id="cqTeacherWeak"></dd></div>
+   <div><dt>Silnější žáci</dt><dd id="cqTeacherStrong"></dd></div>
+   <div id="cqTeacherOracyRow" hidden><dt>Komunikační výkon B2–C2</dt><dd id="cqTeacherOracy"></dd></div>
+  </dl>
+  <p class="cq-teacher-note">Mluvení hra nehodnotí automaticky. Doplňte partnerskou kontrolu nebo skutečný poslech učitele.</p>
+ </div>
+</details>
+    <details class="cq-ux-about" id="cqUxAbout">
+      <summary id="cqUxAboutLabel">About</summary>
+      <div class="cq-ux-about-panel"><section class="hero">
  <div>
    <span class="kicker">EXPLORE · NAVIGATE · COMMUNICATE</span>
    <h1>Find your way.<br>Own the city.</h1>
@@ -1933,6 +2062,16 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
  </div>
  <div class="hero-icon" aria-hidden="true">🧭 🏙️</div>
 </section>
+        <div class="f2-profile" id="f2Profile" aria-live="polite">Independent directions and communication repair</div>
+        <section class="guide-card">
+<h2 id="f2GuideTitle">About City Quest</h2><p id="f2GuideText">All four languages and all six levels use the same illustrated city and eight interactive stations. The CEFR level changes routes, constraints, task complexity and speaking support. No server, student data collection or speech grading.</p>
+</section>
+      </div>
+    </details>
+    <span class="tag">CITY QUEST · PREMIUM</span>
+  </div>
+</header>
+<div class="cq-ux-session-strip">
 <section class="f2-settings" aria-label="Language and CEFR level">
   <div class="f2-field"><label for="f2Language" id="f2LanguageLabel">Language</label>
     <select id="f2Language"><option value="en">English</option><option value="es">Español</option><option value="de">Deutsch</option><option value="fr">Français</option></select>
@@ -1940,7 +2079,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   <div class="f2-field"><label for="f2Level" id="f2LevelLabel">CEFR level</label>
     <select id="f2Level"><option>A1</option><option>A2</option><option selected>B1</option><option>B2</option><option>C1</option><option>C2</option></select>
   </div>
-  <div class="f2-profile" id="f2Profile" aria-live="polite">Independent directions and communication repair</div>
+  
   <button class="btn metro-jump" id="metroJump" type="button" hidden aria-controls="metroLab">🚇 Riverton Metro · Preview</button>
    <div class="cq-mode-picker" id="cqModePicker" role="group" aria-labelledby="cqModeLabel" hidden>
     <span id="cqModeLabel">Journey mode</span>
@@ -1960,6 +2099,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   <button class="btn" type="button" id="f1Pair" aria-pressed="false">👥 Pair</button>
  </div>
 </section>
+</div>
 <nav class="f1-stations" id="f1Stations" aria-label="Eight City Quest missions"></nav>
 <section class="f3d-learning-rail" id="f3dLearningRail" aria-labelledby="f3dRailTitle">
   <div class="f3d-learning-intro">
@@ -1974,21 +2114,6 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   </ol>
   <p id="f3dRailNote">Explain your choices aloud. Speaking is never automatically graded.</p>
 </section>
-<details class="cq-teacher-guide" id="cqTeacherGuide">
- <summary>🎓 Pro učitele · cíl a využití mise</summary>
- <div class="cq-teacher-content">
-  <p id="cqTeacherMeta"></p>
-  <dl>
-   <div><dt>Didaktický cíl</dt><dd id="cqTeacherGoal"></dd></div>
-   <div><dt>Slovní zásoba</dt><dd id="cqTeacherVocab"></dd></div>
-   <div><dt>Co má žák říci</dt><dd id="cqTeacherSpeak"></dd></div>
-   <div><dt>Slabší žáci</dt><dd id="cqTeacherWeak"></dd></div>
-   <div><dt>Silnější žáci</dt><dd id="cqTeacherStrong"></dd></div>
-   <div id="cqTeacherOracyRow" hidden><dt>Komunikační výkon B2–C2</dt><dd id="cqTeacherOracy"></dd></div>
-  </dl>
-  <p class="cq-teacher-note">Mluvení hra nehodnotí automaticky. Doplňte partnerskou kontrolu nebo skutečný poslech učitele.</p>
- </div>
-</details>
 <div class="tabs f1-legacy-tabs" role="tablist" aria-label="Legacy F0 mission controls" hidden>
  <button class="btn tab" type="button" id="routeTab" role="tab" aria-selected="true" aria-controls="routeView">01 · Find the Route</button>
  <button class="btn tab" type="button" id="dialogueTab" role="tab" aria-selected="false" aria-controls="dialogueView">02 · Ask for Directions</button>
@@ -2002,7 +2127,8 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       <button type="button" class="btn" id="mapZoom" aria-pressed="false">＋ Map detail</button>
     </div>
    </div>
-   <div class="map-viewport" id="mapViewport" role="region" aria-label="Illustrated city map with accessible selectable crossroads. Pan sideways on touch screens or use arrow keys and direction buttons." aria-describedby="mapLocation" tabindex="0">
+   <p id="cqCityBrief" class="cq-ux-mobile-brief" hidden></p>
+    <div class="map-viewport" id="mapViewport" role="region" aria-label="Illustrated city map with accessible selectable crossroads. Pan sideways on touch screens or use arrow keys and direction buttons." aria-describedby="mapLocation" tabindex="0">
       <svg id="cityMap" viewBox="0 0 1196 756" role="group" aria-label="Illustrated street map of Riverton with city landmarks, Central Station at bottom left and City Museum near the upper centre">
       </svg>
    </div>
@@ -2135,9 +2261,6 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     </aside>
   </div>
   <footer class="metro-disclaimer"><span>Illustrative network · Guided review only</span><span>The network is fictional. Speaking activities are self-assessed and never automatically graded.</span></footer>
-</section>
-<section class="guide-card">
-<h2 id="f2GuideTitle">About City Quest</h2><p id="f2GuideText">All four languages and all six levels use the same illustrated city and eight interactive stations. The CEFR level changes routes, constraints, task complexity and speaking support. No server, student data collection or speech grading.</p>
 </section>
 </main>
 <button type="button" id="f3PresentationExit" class="f3-presentation-exit" hidden>✕ Exit presentation</button>
@@ -5933,8 +6056,10 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     const head=el("div",panel,"f2-card-head");
     el("span",head,"f2-kicker",ui().station+" "+String(index).padStart(2,"0")+" / 08 · "+pack().native+" "+state.level);
     el("h2",head,"",(alt&&index===5?"🚇":icons[index-1])+" "+title);
-    para(head,desc);
+    para(head,desc,"cq-ux-mission-description");
     note(panel,"🎯 "+ui().mission,goal);
+    $("cqCityBrief").textContent=goal;
+    $("cqCityBrief").hidden=metroScene()||cityLayout.dataset.cqOrder!=="map-first";
     renderAdvancedOracy(index);
     if(state.mode==="pair"){
       const div=el("div",panel,"f2-pair");
@@ -6649,48 +6774,10 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   }
   const hudTools=el("div",quick,"f2-hud-tools");
   const hudUndo=btn(hudTools,"↶",()=>undoMapStep(),"f2-hud-undo");
-  let hudCompact=false;
-  const hudSize=btn(hudTools,"▣",()=>{
-    hudCompact=!hudCompact;updateHudDensity();
-  },"f3c-hud-toggle");
-  hudSize.id="f3cHudSize";
-  hudSize.dataset.testid="hud-size-toggle";
-  // One HUD, two responsive placements. Desktop uses the right mission sidebar;
-  // phones keep the overlay inside the map frame. Never clone the button nodes.
-  const hudDock=panel.parentElement;
-  // Match the actual layout breakpoint: the sidebar sits beside the map only above 1050px.
-  const phoneQuery=window.matchMedia("(max-width:1050px)");
-  function updateHudDensity(){
-    const overlay=phoneQuery.matches,compact=overlay&&hudCompact;
-    const t=chromeCopy[state.language]||chromeCopy.en;
-    quick.dataset.compact=String(compact);
-    hudSize.hidden=!overlay;
-    hudSize.setAttribute("aria-pressed",String(compact));
-    hudSize.setAttribute("aria-label",compact?t.expand:t.compact);
-    hudSize.title=compact?t.expand:t.compact;
-    hudSize.textContent=compact?"⤢":"▣";
-    // Icon-only Undo retains its full translated accessible name and a real
-    // 44px touch target beside the compact toggle on small screens.
-    hudUndo.textContent=overlay?"↶":"↶ "+ui().undo;
-  }
-  function placeHud(){
-    const overlay=phoneQuery.matches;
-    const destination=overlay?mapStage:hudDock;
-    if(quick.parentElement!==destination){
-      const focused=quick.contains(document.activeElement)?document.activeElement:null;
-      if(overlay)mapStage.appendChild(quick);
-      else if(panel.parentElement===hudDock)hudDock.insertBefore(quick,panel);
-      else hudDock.appendChild(quick);
-      if(focused)focused.focus({preventScroll:true});
-    }
-    quick.dataset.placement=overlay?"map-overlay":"sidebar";
-    updateHudDensity();
-  }
-  placeHud();
-  if(phoneQuery.addEventListener)phoneQuery.addEventListener("change",placeHud);
-  else phoneQuery.addListener(placeHud);
-  // Reconcile HUD placement immediately on viewport resize (not only media-query changes).
-  window.addEventListener("resize",placeHud,{passive:true});
+  // Single docked HUD: the map and every direction button remain unobscured.
+  quick.dataset.placement="map-dock";
+  function updateHudDensity(){quick.dataset.compact="false";hudUndo.textContent="↶";}
+  updateHudDensity();
 
   function dispatchDirection(direction){
     if(isMovementLocked())return;
@@ -6743,7 +6830,8 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       cp?p.places[cp.id]:
       state.station===2?profile().route:
       state.station===7?u.wrongRoad:u.arrived;
-    quickCaption.textContent=flash?.text||u.compass;
+    quickCaption.textContent=flash?.text||"";
+    quickCaption.hidden=!flash?.text;
     quickCaption.dataset.tone=flash?.tone||"";
     for(const [dir,button] of Object.entries(hudButtons)){
       button.setAttribute("aria-label",u[dir]+" · "+u.compass);
@@ -6770,7 +6858,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     viewport.scrollTo({left:Math.max(0,p.x*scale-viewport.clientWidth*.4),
       // Keep the marker ABOVE the floating HUD, rather than under the arrow pad.
-      top:Math.max(0,p.y*scale-viewport.clientHeight*.30),behavior:reduce?"auto":"smooth"});
+      top:Math.max(0,p.y*scale-viewport.clientHeight*.45),behavior:reduce?"auto":"smooth"});
   }
   function renderMap(){
     const path=activePath();
@@ -6889,6 +6977,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     const mapFooter=document.querySelector(".map-footer");
     if(mapFooter)mapFooter.textContent="🧭 "+u.route+" · 🚉 "+u.start+" · 🏛️ "+u.museum;
     document.querySelector(".f1-progress small").textContent=u.offline+" "+u.noSpeechGrade;
+    $("cqUxAboutLabel").textContent={en:"About",es:"Información",de:"Info",fr:"À propos"}[state.language];
     $("f2GuideTitle").textContent=u.training+" · "+state.level;
     $("f2GuideText").textContent=prof.focus+". "+prof.stretch+" "+u.offline+" "+u.noSpeechGrade;
     translateCity();updateMetroToggle();

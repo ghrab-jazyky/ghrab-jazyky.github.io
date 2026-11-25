@@ -33,7 +33,7 @@ jobs:
           const version=JSON.parse(fs.readFileSync(dir+'version.json','utf8'));
           const html=fs.readFileSync(dir+relative,'utf8');
           const hash=crypto.createHash('sha256').update(html).digest('hex');
-          assert.equal(hash,'6c86e9b4c770d432053a37eb07cf0e6608c192c549e91ebca9ac58912da9d7a2');
+          assert.equal(hash,'131a68a82d38739cda356e5a7783a4472a69f66fc92007135dc7695d179e0d9c');
           assert.equal(version.contentHashes[id],hash);
           assert.equal(version.topicCount,35);
           assert.equal(version.variantCount,726);
