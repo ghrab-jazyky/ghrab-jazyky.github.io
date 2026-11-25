@@ -1,0 +1,65 @@
+name: City Quest UX workspace acceptance (NO DEPLOY)
+on:
+  push:
+    branches: [fix/city-quest-ux-workspace-20261125]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Syntax, CSP, publication and existing static tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/build-lsh-pages-preview.cjs
+          node -e 'const fs=require("fs"),s=fs.readFileSync("language-skills-hub/konverzace/city-quest-f2/index.html","utf8").match(/<script>([\s\S]*?)<\/script>/)[1]; fs.writeFileSync("/tmp/cq-ux.js",s)'
+          node --check /tmp/cq-ux.js
+          mapfile -t tests < <(find language-skills-hub/tests -maxdepth 1 -name 'city-quest-*.test.cjs' ! -name '*.browser.test.cjs' | sort)
+          node --test --test-concurrency=4 "${tests[@]}"
+  browser:
+    name: UX geometry and transitions (${{ matrix.engine }})
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, firefox, webkit]
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1 axe-core@4.14.1
+      - name: Live layout geometry against exact local candidate
+        shell: bash
+        env:
+          CQ_UX_ENGINE: ${{ matrix.engine }}
+          CQ_UX_EVIDENCE: ux-evidence
+        run: |
+          set -euo pipefail
+          mkdir -p ux-evidence
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/cq-ux-http.log 2>&1 &
+          pid=$!
+          trap 'kill "$pid" || true' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch("http://127.0.0.1:8765/language-skills-hub/konverzace/city-quest-f2/index.html").then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))'; then break; fi
+            sleep 1
+          done
+          node --test language-skills-hub/tests/city-quest-ux-workspace.browser.test.cjs 2>&1 | tee ux-evidence/browser.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cq-ux-${{ matrix.engine }}
+          path: ux-evidence/
+          if-no-files-found: error
+          retention-days: 30
