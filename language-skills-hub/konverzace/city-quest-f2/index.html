@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070f20">
 <meta name="description" content="City Quest: offline city and metro navigation in English, Spanish, German and French at A1–C2, with interactive metro missions at B1–C2.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-3DR3PtcnB5j+YAAVoOOy186Q/a457DbAm7nYkZIrRwA='; style-src 'sha256-74k1E99NWJdL1dDMQvuEKfHu19WAeJaaRiYRQFXMNn0='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-kk9fMo2n1jDWhLlkrGQEPcx6xr+tuVboD16gOcA3kNA='; style-src 'sha256-74k1E99NWJdL1dDMQvuEKfHu19WAeJaaRiYRQFXMNn0='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%2314253d%22%2F%3E%3Cpath%20d%3D%22M16%204v24M4%2016h24%22%20stroke%3D%22%2364e6ad%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%228%22%20fill%3D%22%2314253d%22%20stroke%3D%22%23f3f8ff%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22m20%2010-3%209-6%203%203-9z%22%20fill%3D%22%2364e6ad%22%2F%3E%3C%2Fsvg%3E">
 <title>City Quest · Interactive Language Game · EN ES DE FR · A1–C2</title>
 
@@ -7495,9 +7495,22 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   $("f2Level").addEventListener("change",e=>requestSessionChange(state.language,e.target.value,"f2Level"));
   $("metroPilotToggle").addEventListener("click",()=>requestMetroMode(true));
   $("cityOnlyToggle").addEventListener("click",()=>requestMetroMode(false));
-  $("cqModeCancel").addEventListener("click",()=>$("cqModeConfirm").close("cancel"));
-  $("cqModeApply").addEventListener("click",()=>$("cqModeConfirm").close("apply"));
-  $("cqModeConfirm").addEventListener("close",()=>finishChange($("cqModeConfirm").returnValue==="apply"));
+  // The native close event is queued, not synchronous. Resolve the pending
+  // request immediately so a subsequent settings change cannot be discarded.
+  const modeDialog=$("cqModeConfirm");
+  function resolveModeDialog(apply){
+    if(!pendingChange)return;
+    if(modeDialog.open)modeDialog.close(apply?"apply":"cancel");
+    finishChange(apply);
+  }
+  $("cqModeCancel").addEventListener("click",()=>resolveModeDialog(false));
+  $("cqModeApply").addEventListener("click",()=>resolveModeDialog(true));
+  modeDialog.addEventListener("cancel",e=>{e.preventDefault();resolveModeDialog(false);});
+  // Fallback for an external/native close, but ignore a queued close from an
+  // earlier dialog if a new confirmation has already opened.
+  modeDialog.addEventListener("close",()=>{
+    if(!modeDialog.open&&pendingChange)finishChange(modeDialog.returnValue==="apply");
+  });
   $("f1Solo").addEventListener("click",()=>setMode("solo"));
   $("f1Pair").addEventListener("click",()=>setMode("pair"));
   $("themeBtn").addEventListener("click",applyChromeLabels);

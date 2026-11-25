@@ -276,7 +276,19 @@ test('GA-003: language/CEFR confirmation protects partial work, completed progre
     await page.locator('#cqModeConfirm').waitFor({state:'hidden'});
     await expectSession(page,lang,'B2',0);
     assert.equal(await page.locator('#f2MapRoute').getAttribute('points'),path);
-    await page.locator('#f2Language').selectOption(other);
+    // Reopen immediately in the same event-loop task after Cancel, before
+    // the browser delivers the previous native dialog's queued close event.
+    const reopened=await page.evaluate(other=>{
+     const level=document.getElementById('f2Level'),language=document.getElementById('f2Language'),dialog=document.getElementById('cqModeConfirm');
+     level.value='C1';level.dispatchEvent(new Event('change',{bubbles:true}));
+     if(!dialog.open)return false;
+     document.getElementById('cqModeCancel').click();
+     language.value=other;language.dispatchEvent(new Event('change',{bubbles:true}));
+     return dialog.open&&level.value==='B2'&&language.value!==other;
+    },other);
+    assert.equal(reopened,true,'Immediate re-open after Cancel must not be dropped');
+    await frame(page);
+    assert.equal(await page.locator('#cqModeConfirm').isVisible(),true,'Queued close must not resolve the newer dialog');
     await page.locator('#cqModeApply').click();
     await expectSession(page,other,'B2',0);
     assert.ok((await page.locator('#f1Panel .f2-card-head h2').textContent()).length>4);
