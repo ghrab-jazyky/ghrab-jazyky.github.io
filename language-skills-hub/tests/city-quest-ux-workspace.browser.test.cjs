@@ -30,6 +30,35 @@ async function fits(page,selector){
  return r;
 }
 async function noOverflow(page){const g=await page.evaluate(()=>({w:innerWidth,sw:document.documentElement.scrollWidth}));assert.ok(g.sw<=g.w+1,'Document horizontal overflow '+JSON.stringify(g));}
+async function labelMedian(page,selector){
+ const result=await page.locator(selector).evaluateAll(nodes=>nodes.map(n=>n.getBoundingClientRect().height).filter(x=>x>0).sort((a,b)=>a-b));
+ assert.ok(result.length>=8,'Map label sample '+selector);
+ return result[Math.floor(result.length/2)];
+}
+async function networkReadability(page){
+ await frame(page);
+ const map=page.locator('#metroNetworkViewport');
+ assert.equal(await map.evaluate(n=>n.classList.contains('overview')),false,'Readable detail must be the default');
+ assert.ok(await labelMedian(page,'#metroNetworkSvg .metro-station-label')>=11,'Station labels are unreadably small');
+ const zoom=page.locator('#metroMapZoom');
+ await zoom.scrollIntoViewIfNeeded();
+ assert.equal(await zoom.evaluate(b=>{const r=b.getBoundingClientRect();return b.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2));}),true,'Map zoom control is covered');
+ const view=page.viewportSize();
+ if(view.width>1050&&view.height>=680){
+  const visible=await map.evaluate(n=>{const r=n.getBoundingClientRect(),c=n.closest('.metro-network-card').getBoundingClientRect(),header=n.previousElementSibling.getBoundingClientRect();return Math.max(0,Math.min(r.bottom,c.bottom,innerHeight)-Math.max(r.top,c.top,header.bottom,0));});
+  assert.ok(visible>=180,'Too little actual visible network viewport: '+visible);
+ }
+}
+async function primaryReach(page){
+ const p=page.locator('#f1Panel .f2-choice-list button:not(:disabled), #f1Panel .f2-actions button.primary:not(:disabled)').first();
+ if(!(await p.count()))return;
+ await frame(page);
+ const view=page.viewportSize();
+ const result=await p.evaluate(b=>{const r=b.getBoundingClientRect(),p=document.querySelector('#f1Panel').getBoundingClientRect(),v=document.querySelector('#cqMetroVisual').getBoundingClientRect();return {top:r.top,bottom:r.bottom,pTop:p.top,pBottom:p.bottom,vBottom:v.bottom};});
+ if(view.width>1050&&view.height>=680)
+  assert.ok(result.top>=Math.max(0,result.pTop)-2&&result.bottom<=Math.min(view.height,result.pBottom)+3,'Primary metro action not reachable: '+JSON.stringify(result));
+ else assert.ok(result.top-result.vBottom<=view.height,'Primary metro action too far from visual: '+JSON.stringify(result));
+}
 async function dock(page){
  const m=await box(page,'#mapViewport'),h=await box(page,'#f2Quick');
  assert.equal(await page.locator('#f2Quick').getAttribute('data-placement'),'map-dock');
@@ -69,6 +98,7 @@ test('UX desktop: map, all navigation and task fit one screen; task scroll leave
     await fits(page,'.layout .map-card');await fits(page,'#f1Panel');await fits(page,'#f2Quick');
     await dock(page);await noOverflow(page);
     const map=await box(page,'#mapViewport');assert.ok(map.height>=260,'Usable city map '+JSON.stringify(map));
+    assert.ok(await labelMedian(page,'#mapViewport [data-landmark-label] text')>=9,'City landmark labels unreadably small');
     const title=await box(page,'.layout .map-card');assert.ok(title.y<=260,'Header consumes too much height '+JSON.stringify(title));
     const panel=page.locator('#f1Panel');assert.equal(await panel.evaluate(el=>getComputedStyle(el).overflowY),'auto');
     const oral=page.locator('.cq-advanced-oracy');assert.equal(await oral.evaluate(el=>el.open),false);
@@ -124,8 +154,15 @@ test('UX Metro: actual line, direction, platform and ride switch view without ch
     assert.equal(contextText,expectedContext,'Full original native narrative retained');
     assert.equal(await page.locator('#cqMetroView-train').isDisabled(),true);
     if(viewport.width>1050){await fits(page,'#cqMetroVisual');await fits(page,'#f1Panel');}
+    await networkReadability(page);await primaryReach(page);
     await capture(page,'network-'+lang+'-'+viewport.width);
+    // Real pointer click, never force or keyboard-only activation. Explicit
+    // overview remains selected across a real change of game phase.
+    await page.locator('#metroMapZoom').click();await frame(page);
+    assert.equal(await page.locator('#metroNetworkViewport').evaluate(n=>n.classList.contains('overview')),true);
     await choose(page,'M2');assert.equal((await current(page)).phase,'select-direction');
+    assert.equal(await page.locator('#metroNetworkViewport').evaluate(n=>n.classList.contains('overview')),true,'Phase reset zoom');
+    await page.locator('#metroMapZoom').click();await networkReadability(page);await primaryReach(page);
     await choose(page,'north_park');assert.equal((await current(page)).phase,'select-platform');
     await view(page,'platform');assert.equal(await page.locator('.metro-platform-board').isVisible(),true);
     assert.ok(await page.locator('#metroSceneSvg').isVisible());
@@ -136,7 +173,7 @@ test('UX Metro: actual line, direction, platform and ride switch view without ch
     else{const s=await box(page,'#metroSceneSvg'),p=await box(page,'#f1Panel');assert.ok(s.y+s.height<=p.y+1,'Platform buried below task');}
     await capture(page,'platform-'+lang+'-'+viewport.width);
     const before=await current(page);
-    await page.locator('#cqMetroView-network').click();await view(page,'network');
+    await page.locator('#cqMetroView-network').click();await view(page,'network');await networkReadability(page);
     await page.locator('#cqMetroView-platform').click();await view(page,'platform');
     assert.deepEqual(await current(page),before,'View switching changes game state');
     await choose(page,'3');assert.equal((await current(page)).phase,'board');

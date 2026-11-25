@@ -236,6 +236,12 @@ async function metroMission(page,language,level,n){
   const phase=state.phase;
   counts[phase]=(counts[phase]||0)+1;
   if(phase==='complete')break;
+  // Every reached network phase in the real full-journey matrix must remain
+  // readable. No state injection, no forced click, no CSP bypass for UX runs.
+  if(process.env.CQ_GA_GEOMETRY==='1'&&['select-line','select-direction','notice','transfer'].includes(phase)){
+   const g=await page.evaluate(()=>{const v=document.querySelector('#metroNetworkViewport'),s=[...document.querySelectorAll('#metroNetworkSvg .metro-station-label')].map(x=>x.getBoundingClientRect().height).sort((a,b)=>a-b);return {detail:!v.classList.contains('overview'),median:s[Math.floor(s.length/2)],count:s.length};});
+   assert.ok(g.detail&&g.count===14&&g.median>=11,'Unreadable network at '+n+'/'+phase+' '+JSON.stringify(g));
+  }
   if(['walk-to-entrance','walk-to-museum'].includes(phase)){
    const dest=await page.evaluate(p=>p==='walk-to-entrance'?window.RivertonMetroGame.portalStart:window.RivertonMetroGame.museum,phase);
    const route=[];
