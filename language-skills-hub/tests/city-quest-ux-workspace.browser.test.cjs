@@ -8,16 +8,17 @@ const mobile=[{width:320,height:780},{width:390,height:844},{width:768,height:10
 const evidence=process.env.CQ_UX_EVIDENCE;
 async function launch(){return pw[engine].launch(engine==='chromium'?{headless:true,args:['--no-sandbox']}:{headless:true});}
 async function open(browser,lang,level,viewport){
- const page=await browser.newPage({viewport}),errors=[],remote=[];
+ const page=await browser.newPage({viewport,reducedMotion:'reduce'}),errors=[],remote=[];
  page.on('pageerror',e=>errors.push(e.message));
  page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
  page.on('request',r=>{if(!r.url().startsWith('http://127.0.0.1:8765/')&&!r.url().startsWith('data:'))remote.push(r.url());});
  await page.goto(BASE+'?lang='+lang+'&level='+level,{waitUntil:'load'});
  await page.locator('#f1Stations button').first().waitFor();
+ assert.deepEqual(errors,[],'Unexpected console errors before any screenshots');
  return {page,errors,remote};
 }
 async function frame(page){await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));}
-async function capture(page,name){if(!evidence)return;fs.mkdirSync(evidence,{recursive:true});await page.screenshot({path:evidence+'/'+engine+'-'+name+'.png',animations:'disabled'});}
+async function capture(page,name){if(!evidence)return;fs.mkdirSync(evidence,{recursive:true});await page.screenshot({path:evidence+'/'+engine+'-'+name+'.png',timeout:10000});}
 async function box(page,selector){const r=await page.locator(selector).boundingBox();assert.ok(r,'Visible '+selector);return r;}
 async function fits(page,selector){
  const r=await box(page,selector),v=page.viewportSize();
@@ -63,7 +64,8 @@ test('UX desktop: map, all navigation and task fit one screen; task scroll leave
     await page.locator('#f1Stations button').nth(1).click();await frame(page);
     await fits(page,'.layout .map-card');await fits(page,'#f1Panel');await fits(page,'#f2Quick');
     await dock(page);await noOverflow(page);
-    const map=await box(page,'#mapViewport');assert.ok(map.height>=120,'Usable city map');
+    const map=await box(page,'#mapViewport');assert.ok(map.height>=260,'Usable city map '+JSON.stringify(map));
+    const title=await box(page,'.layout .map-card');assert.ok(title.y<=260,'Header consumes too much height '+JSON.stringify(title));
     const panel=page.locator('#f1Panel');assert.equal(await panel.evaluate(el=>getComputedStyle(el).overflowY),'auto');
     const oral=page.locator('.cq-advanced-oracy');assert.equal(await oral.evaluate(el=>el.open),false);
     assert.equal(await oral.locator('.cq-advanced-oracy-task').isVisible(),false);
@@ -94,6 +96,7 @@ test('UX mobile/tablet: map never overlaps controls; responsive resize preserves
     assert.equal(await page.locator('#mapProgress').textContent(),position,'Resize reset route');
     await page.setViewportSize(viewport);await frame(page);
     await page.locator('.layout .map-card').scrollIntoViewIfNeeded();
+    assert.equal(await page.locator('#f2Quick .f2-hud-top').isVisible(),false,'Duplicated map brief');
     await capture(page,'mobile-'+viewport.width+'x'+viewport.height);
     if(viewport.width<=390){await page.evaluate(()=>document.documentElement.style.fontSize='200%');await noOverflow(page);await dock(page);}
     assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
@@ -116,6 +119,8 @@ test('UX Metro: actual line, direction, platform and ride switch view without ch
     await choose(page,'north_park');assert.equal((await current(page)).phase,'select-platform');
     await view(page,'platform');assert.equal(await page.locator('.metro-platform-board').isVisible(),true);
     assert.ok(await page.locator('#metroSceneSvg').isVisible());
+    assert.equal(await page.locator('#f1Panel .cq-ux-context').count(),1,'Context retained after departure decision');
+    assert.equal(await page.locator('#f1Panel .cq-ux-context').evaluate(el=>el.open),false);
     if(viewport.width>1050){await fits(page,'#metroSceneSvg');await fits(page,'#f1Panel');}
     else{const s=await box(page,'#metroSceneSvg'),p=await box(page,'#f1Panel');assert.ok(s.y+s.height<=p.y+1,'Platform buried below task');}
     await capture(page,'platform-'+lang+'-'+viewport.width);
@@ -133,5 +138,25 @@ test('UX Metro: actual line, direction, platform and ride switch view without ch
     await noOverflow(page);assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
    }finally{await page.close();}
   }
+ }finally{await browser.close();}
+});
+
+test('UX CSP: production motion preferences and screenshot capture do not create CSP errors',{timeout:60000},async()=>{
+ const browser=await launch();
+ try{
+  const page=await browser.newPage({viewport:desktop[0],reducedMotion:'no-preference'});
+  const errors=[],violations=[];
+  page.on('pageerror',e=>errors.push(e.message));
+  page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+  await page.addInitScript(()=>{window.__cqCspEvents=[];document.addEventListener('securitypolicyviolation',e=>window.__cqCspEvents.push({directive:e.effectiveDirective,uri:e.blockedURI,source:e.sourceFile,line:e.lineNumber}));});
+  await page.goto(BASE+'?lang=en&level=B2',{waitUntil:'load'});
+  await page.locator('#f1Stations button').nth(1).click();await frame(page);
+  await page.locator('.f2-quick-east').click();await frame(page);
+  assert.deepEqual(errors,[],'Production interaction before screenshot');
+  assert.deepEqual(await page.evaluate(()=>window.__cqCspEvents),[]);
+  await capture(page,'csp-motion-normal');await frame(page);
+  assert.deepEqual(errors,[],'Screenshot must not inject prohibited styles');
+  assert.deepEqual(await page.evaluate(()=>window.__cqCspEvents),[]);
+  await page.close();
  }finally{await browser.close();}
 });

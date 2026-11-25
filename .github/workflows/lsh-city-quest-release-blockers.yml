@@ -1,7 +1,7 @@
 name: LSH City Quest integrated release blockers (no deployment)
 on:
   push:
-    branches: [fix/city-quest-release-blockers-20261124]
+    branches: [fix/city-quest-release-blockers-20261124, fix/city-quest-ux-workspace-20261125]
   workflow_dispatch:
 permissions:
   contents: read

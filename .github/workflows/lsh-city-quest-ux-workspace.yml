@@ -40,6 +40,11 @@ jobs:
         with:
           node-version: '24'
       - run: npm install --no-save --ignore-scripts playwright@1.56.1 axe-core@4.14.1
+      - name: Verify exact candidate and build filtered site
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          node tools/build-lsh-pages-preview.cjs
       - name: Live layout geometry against exact local candidate
         shell: bash
         env:
@@ -48,7 +53,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p ux-evidence
-          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/cq-ux-http.log 2>&1 &
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory release-preview/site > /tmp/cq-ux-http.log 2>&1 &
           pid=$!
           trap 'kill "$pid" || true' EXIT
           for i in $(seq 1 30); do
