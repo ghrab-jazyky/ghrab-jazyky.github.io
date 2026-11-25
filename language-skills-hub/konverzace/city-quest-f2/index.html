@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070f20">
 <meta name="description" content="City Quest: offline city and metro navigation in English, Spanish, German and French at A1–C2, with interactive metro missions at B1–C2.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-htybQKtowlfQS23l/2QLCT+07PT4CIvPF8zKscLmDM8='; style-src 'sha256-74k1E99NWJdL1dDMQvuEKfHu19WAeJaaRiYRQFXMNn0='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-pszaDua/JMxT8pKPcnyt6gr7a1A9rGi/C6/XcyJGFDM='; style-src 'sha256-TTf4Vggk+Df/ZoVAIr2gqXKNOkWK6p5jhNWZWz/mOls='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%2314253d%22%2F%3E%3Cpath%20d%3D%22M16%204v24M4%2016h24%22%20stroke%3D%22%2364e6ad%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%228%22%20fill%3D%22%2314253d%22%20stroke%3D%22%23f3f8ff%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22m20%2010-3%209-6%203%203-9z%22%20fill%3D%22%2364e6ad%22%2F%3E%3C%2Fsvg%3E">
 <title>City Quest · Interactive Language Game · EN ES DE FR · A1–C2</title>
 
@@ -38,7 +38,7 @@ button{font:inherit;cursor:pointer}button:focus-visible,select:focus-visible,a:f
 .topbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:12px 16px;border:1px solid var(--line);background:var(--panel);border-radius:18px}
 .brand{display:flex;align-items:center;gap:12px}.brand-mark{display:grid;place-items:center;width:43px;height:43px;border-radius:13px;background:linear-gradient(135deg,#86def2,#a48fff);color:#10162a;font-weight:950}.brand strong{display:block;letter-spacing:.04em}.brand small{display:block;color:var(--muted)}
 .header-actions,.tabs,.mode-tabs,.route-tools,.map-controls,.direction-tools,.dialogue-options{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);border-radius:12px;padding:9px 13px;color:var(--text);background:var(--panel2);font-weight:700}.btn:hover:not(:disabled){border-color:var(--cyan)}.btn.primary{background:linear-gradient(120deg,#83eaf5,#91dfbf);color:#092034;border:none}.btn.active{background:#67d7e829;border-color:var(--cyan);color:var(--cyan)}.btn.danger{color:var(--rose)}
-.hero{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;margin:19px 0 16px;padding:16px 20px;background:linear-gradient(115deg,#1b3c58aa,#10203580);border:1px solid var(--line);border-radius:19px}.hero h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;margin:6px 0;letter-spacing:-.035em}.hero p{margin:0;color:#dae8f4}.kicker{font-weight:800;letter-spacing:.15em;font-size:.68rem;color:#84ebec}.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.tag{border:1px solid #ffffff33;border-radius:30px;padding:3px 9px;font-size:.72rem;color:#daeff9}.hero-icon{font-size:3.7rem}
+.hero{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;margin:19px 0 16px;padding:16px 20px;background:linear-gradient(115deg,#1b3c58aa,#10203580);border:1px solid var(--line);border-radius:19px}.hero h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;margin:6px 0;letter-spacing:-.035em}.hero p{margin:0;color:#dae8f4}.kicker{font-weight:800;letter-spacing:.15em;font-size:.68rem;color:#84ebec}.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.tag{border:1px solid #ffffff33;border-radius:30px;padding:3px 9px;font-size:.72rem;color:#daeff9}.hero-icon{font-size:3.7rem}
 .tabs{margin:8px 0 16px}.tab{padding:10px 15px}.tab[aria-selected=true]{background:#78dded;color:#0a1930;border-color:transparent}
 .layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(320px,.65fr);gap:15px;align-items:start}
 .map-card,.side-card,.result-card,.guide-card{background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);min-width:0}.map-card{overflow:hidden}.map-head{padding:15px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.section-label{display:block;font-size:.68rem;letter-spacing:.14em;color:var(--cyan);font-weight:900}.map-head h2,.side-card h2{font-size:1.28rem;margin:4px 0 0;letter-spacing:-.02em}.map-controls .btn{font-size:.78rem;padding:7px 10px}.map-viewport{background:linear-gradient(#c5eff1,#9cdbd5);position:relative;overflow:auto;touch-action:pan-x pan-y}.map-viewport svg{display:block;width:100%;height:auto;min-width:540px;user-select:none}
@@ -629,7 +629,11 @@ button{font:inherit;cursor:pointer}button:focus-visible,select:focus-visible,a:f
 .metro-lab button:focus-visible{outline:3px solid #ffeea5;outline-offset:3px}
 #metroNetworkSvg [data-metro-station]{cursor:pointer;outline:none}
 #metroNetworkSvg [data-metro-station]:focus-visible .metro-node-hit,
-#metroNetworkSvg [data-metro-station]:focus .metro-node-hit{stroke:#fff0a1;stroke-width:6;fill:#fff0a129}
+#metroNetworkSvg [data-metro-station]:focus .metro-node-hit{stroke:#fff0a1;stroke-width:4;fill:#fff0a129;vector-effect:non-scaling-stroke}
+@media(forced-colors:active){
+ #metroNetworkSvg [data-metro-station]:focus .metro-node-hit{stroke:Highlight;fill:none;forced-color-adjust:none}
+}
+#cqTeacherGuide>.cq-teacher-content:focus-visible,.cq-ux-about-panel:focus-visible{outline:3px solid var(--cyan);outline-offset:-3px}
 #metroNetworkSvg [data-metro-station]:hover .metro-node-halo{opacity:1}
 #metroNetworkSvg .metro-active-route{stroke:#eafefa;stroke-width:11;stroke-linecap:round;filter:url(#rmLightGlow);opacity:.95}
 #metroNetworkSvg .metro-map-player{filter:url(#rmLightGlow);transform-box:fill-box;transform-origin:center;animation:metro-player-pulse 1.9s ease-in-out infinite}
@@ -825,7 +829,7 @@ body{
  background:linear-gradient(115deg,#d7f9f0,#edfaff 62%,#dcedf9);
  border-color:#248b8138;box-shadow:0 18px 45px #35707123;
 }
-.hero h1{letter-spacing:-.058em;text-wrap:balance}
+.hero h2{letter-spacing:-.058em;text-wrap:balance}
 .hero .kicker{color:#a7fae4}
 :root[data-theme=light] .hero .kicker{color:#126a63}
 .hero-icon{filter:drop-shadow(0 13px 18px #3dd4ad52)}
@@ -1913,7 +1917,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
 .cq-ux-about>summary,#cqTeacherGuide>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:5px;padding:7px 10px;font-size:.82rem;font-weight:750;border:1px solid var(--line);border-radius:10px;background:var(--panel2)}
 .cq-ux-about-panel,#cqTeacherGuide>.cq-teacher-content{position:absolute;right:0;top:calc(100% + 6px);z-index:40;width:min(460px,calc(100vw - 24px));max-height:min(65dvh,520px);overflow:auto;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);box-shadow:var(--shadow)}
 .cq-ux-about-panel>.hero{display:block;margin:0 0 8px;padding:10px;box-shadow:none}
-.cq-ux-about-panel .hero h1{font-size:1.25rem}
+.cq-ux-about-panel .hero h2{font-size:1.25rem}
 .cq-ux-about-panel .hero-icon,.cq-ux-about-panel .tags,.cq-ux-about-panel .kicker{display:none}
 .cq-ux-about-panel .guide-card{margin:8px 0 0;padding:10px;box-shadow:none}
 .cq-ux-session-strip{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:7px 0;padding:6px 9px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
@@ -2200,6 +2204,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
 <a href="#f1Stations" class="f3-skip" id="f3Skip">Skip to missions</a>
 <a href="#f1Panel" class="f3-skip" id="f3SkipTask">Skip to active task</a>
 <main class="app">
+<h1 id="cqPageHeading" class="f3-screen-reader-only">City Quest · Riverton</h1>
 <header class="topbar">
   <div class="brand"><div class="brand-mark" aria-hidden="true">CQ</div><div><strong>CITY QUEST</strong><small id="cityQuestHeaderType">Language Skills Hub · Interactive language game</small></div></div>
   <div class="header-actions">
@@ -2215,9 +2220,9 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
         <p id="f3ExperienceNote">Optional sounds play locally. No microphone or network.</p>
       </div>
     </details>
-    <details class="cq-teacher-guide" id="cqTeacherGuide">
- <summary>🎓 Pro učitele · cíl a využití mise</summary>
- <div class="cq-teacher-content">
+    <details class="cq-teacher-guide" id="cqTeacherGuide" lang="cs">
+ <summary id="cqTeacherGuideLabel">🎓 Pro učitele · cíl a využití mise</summary>
+ <div class="cq-teacher-content" role="region" aria-labelledby="cqTeacherGuideLabel" tabindex="0">
   <p id="cqTeacherMeta"></p>
   <dl>
    <div><dt>Didaktický cíl</dt><dd id="cqTeacherGoal"></dd></div>
@@ -2232,10 +2237,10 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
 </details>
     <details class="cq-ux-about" id="cqUxAbout">
       <summary id="cqUxAboutLabel">About</summary>
-      <div class="cq-ux-about-panel"><section class="hero">
+      <div class="cq-ux-about-panel" role="region" aria-labelledby="cqUxAboutLabel" tabindex="0"><section class="hero">
  <div>
    <span class="kicker">EXPLORE · NAVIGATE · COMMUNICATE</span>
-   <h1>Find your way.<br>Own the city.</h1>
+   <h2>Find your way.<br>Own the city.</h2>
    <p id="f2HeroText">Explore Riverton through eight playable language missions in four languages, with CEFR-level challenges.</p>
    <div class="tags"><span class="tag" id="f2HeroLanguage">English</span><span class="tag" id="f2HeroLevel">B1</span><span class="tag" id="cityQuestGameType">Interactive language game · city quest</span><span class="tag" id="cityQuestVariant">8 × 4 × 6</span><span class="tag">Offline · local practice</span></div>
  </div>
@@ -2378,7 +2383,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
         </div>
       </div>
       <div class="metro-network-scroll" id="metroNetworkViewport" tabindex="0" role="region" aria-label="Scrollable interactive map of three fictional metro lines" aria-describedby="f3cMapHint">
-        <svg id="metroNetworkSvg" viewBox="0 0 1196 756" role="group" aria-label="Original interactive Riverton metro diagram"></svg>
+        <svg id="metroNetworkSvg" viewBox="0 0 1196 756" role="group" aria-describedby="f3cMapHint" aria-label="Original interactive Riverton metro diagram"></svg>
       </div>
       <div class="f3c-metro-tools" role="group" id="f3cMetroTools" aria-label="Metro map accessibility tools">
         <div class="f3c-picker-field">
@@ -2395,7 +2400,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
         <div class="metro-map-instructions">↔ Swipe map to explore · Select a station</div>
       </div>
     </div>
-    <aside class="metro-side" aria-label="Metro journey and platform preview">
+    <section class="metro-side" role="region" aria-label="Metro journey and platform preview">
       <div class="metro-journey-card">
         <div class="metro-journey-header"><span>JOURNEY DISPLAY</span><span id="metroJourneyBadge" class="metro-journey-number">05</span></div>
         <div class="metro-journey-path"><div><small>FROM</small><strong id="metroOrigin">Central Station</strong></div><span class="metro-route-arrow">→</span><div><small>TO</small><strong id="metroDestination">Museum Quarter</strong></div></div>
@@ -2438,7 +2443,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
         <h4 id="metroInspectorName">Central Station</h4>
         <p id="metroInspectorDetail">Select any station on the network to inspect connections.</p>
       </div>
-    </aside>
+    </section>
   </div>
   <footer class="metro-disclaimer"><span>Illustrative network · Guided review only</span><span>The network is fictional. Speaking activities are self-assessed and never automatically graded.</span></footer>
 </section>
@@ -7240,8 +7245,21 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     $("mapTouchTip").textContent=detail?l.tipZoom:l.tip;
     document.querySelector(".hero .kicker").textContent=l.kicker;
   }
+  // GA-013: all stable learner-facing landmarks and groups follow the
+  // selected language, including the panel that moves between city and metro.
+  const cqAccessibilityLabels={
+    en:["Language and CEFR level","City Quest session","Mission progress","Practice mode","Eight City Quest missions","Illustrated city map with selectable crossroads. Pan on touch screens or use the arrow keys and direction buttons.","Illustrated street map of Riverton with landmarks, Central Station at bottom left and City Museum near the upper centre","Interactive City Quest mission","Offline experience preferences"],
+    es:["Idioma y nivel del MCER","Sesión de City Quest","Progreso de las misiones","Modalidad de práctica","Ocho misiones de City Quest","Plano ilustrado de la ciudad con cruces seleccionables. Desliza el plano o utiliza las flechas del teclado y los botones de dirección.","Plano de Riverton con puntos de referencia, la Estación Central abajo a la izquierda y el Museo de la Ciudad cerca del centro de la parte superior","Misión interactiva de City Quest","Preferencias de uso sin conexión"],
+    de:["Sprache und GER-Niveau","City-Quest-Sitzung","Aufgabenfortschritt","Übungsmodus","Acht Aufgaben von City Quest","Illustrierter Stadtplan mit auswählbaren Kreuzungen. Verschiebe den Plan oder nutze die Pfeiltasten und Richtungsbuttons.","Stadtplan von Riverton mit Orientierungspunkten, dem Hauptbahnhof links unten und dem Stadtmuseum im oberen mittleren Bereich","Interaktive Aufgabe von City Quest","Einstellungen für die Offline-Nutzung"],
+    fr:["Langue et niveau du CECRL","Session de City Quest","Progression des missions","Mode d'entraînement","Huit missions de City Quest","Plan illustré de la ville avec des carrefours sélectionnables. Faites défiler le plan ou utilisez les touches fléchées et les boutons de direction.","Plan de Riverton avec ses points de repère, la gare centrale en bas à gauche et le musée municipal vers le haut au centre","Mission interactive de City Quest","Préférences d'utilisation hors connexion"]
+  };
+  function localizeAccessibility(){
+    const selectors=[".f2-settings",".f1-dashboard","#f1ProgressTrack",".f1-mode","#f1Stations","#mapViewport","#cityMap","#f1Panel",".f3-experience-panel"];
+    selectors.forEach((selector,index)=>document.querySelector(selector).setAttribute("aria-label",cqAccessibilityLabels[state.language][index]));
+  }
   function applyLanguageUI(){
     const u=ui(),p=pack(),prof=profile();
+    localizeAccessibility();
     document.documentElement.lang=p.locale;
     document.title="City Quest · "+p.native+" "+state.level+" · Language Skills Hub";
     $("f2LanguageLabel").textContent=u.language;
@@ -7252,7 +7270,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     $("cityQuestGameType").textContent=gameType[state.language];
     $("cityQuestHeaderType").textContent="Language Skills Hub · "+gameType[state.language];
     $("f2HeroText").textContent=p.stations[0][1]+" "+u.objective;
-    document.querySelector(".hero h1").textContent="City Quest · Riverton";
+    document.querySelector(".hero h2").textContent="City Quest · Riverton";
     document.querySelector(".f1-mode>span").textContent=u.mode;
     $("f1Solo").textContent="👤 "+u.solo;
     $("f1Pair").textContent="👥 "+u.pair;
@@ -7404,7 +7422,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     city.setAttribute("aria-pressed",String(!active));metro.setAttribute("aria-pressed",String(active));
     city.classList.toggle("active",!active);metro.classList.toggle("active",active);
     const content=available?LC.pack(state.language,state.level,5):null,
-      hero=document.querySelector(".hero h1"),text=$("f2HeroText"),
+      hero=document.querySelector(".hero h2"),text=$("f2HeroText"),
       tag=document.querySelector(".topbar .header-actions .tag");
     if(active){hero.textContent=content.title;text.textContent=content.header;}
     else{hero.textContent="City Quest · Riverton";text.textContent=pack().stations[0][1]+" "+ui().objective;}
@@ -7843,6 +7861,28 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   }
   return segments.map(part=>part.ids.map(id=>M.station(id).x+","+M.station(id).y).join(" "));
  }
+ // GA-015: one station Tab stop. The arrows move focus only; activating a
+ // station inspects it but never advances the game. The viewport keeps its
+ // separate Tab stop for panning and the native station finder remains usable.
+ const stationKeyboardCopy={
+  en:{verb:"Inspect station",hint:"Use the arrow keys to move between stations, Home or End to jump, Enter or Space to inspect, and Tab to leave the network."},
+  es:{verb:"Consultar la estación",hint:"Usa las flechas para recorrer las estaciones, Inicio o Fin para saltar, Intro o Espacio para consultar y Tab para salir del plano."},
+  de:{verb:"Station ansehen:",hint:"Mit den Pfeiltasten zwischen Stationen wechseln, mit Pos1 oder Ende springen, mit Eingabe oder Leertaste Informationen öffnen und mit Tab den Netzplan verlassen."},
+  fr:{verb:"Consulter la station",hint:"Utilisez les flèches pour parcourir les stations, Début ou Fin pour accéder aux extrémités, Entrée ou Espace pour consulter et Tab pour quitter le plan."}
+ };
+ const stationKeysCopy=()=>stationKeyboardCopy[$("f2Language").value]||stationKeyboardCopy.en;
+ function stationAccessibleName(id){
+  return stationKeysCopy().verb+" "+stationName(id)+" · "+M.joined(id).join(" · ");
+ }
+ function setRovingStation(id,focus=false){
+  let target=null;
+  network.querySelectorAll("[data-metro-station]").forEach(group=>{
+   const match=group.dataset.metroStation===id;
+   group.setAttribute("tabindex",match?"0":"-1");
+   if(match)target=group;
+  });
+  if(focus&&target)target.focus({preventScroll:true});
+ }
  function renderNetwork(){
   network.replaceChildren();defs(network);mapDecor();
   const geometry=append(network,"g",{id:"metroRails"});
@@ -7877,9 +7917,9 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   const nodes=append(network,"g",{id:"metroStops"});
   const interchangeIds=new Set(M.source.interchanges.map(x=>x.station));
   for(const st of M.stations){
-   const group=append(nodes,"g",{"data-metro-station":st.id,role:"button",tabindex:0,
+   const group=append(nodes,"g",{"data-metro-station":st.id,role:"button",tabindex:inspected===st.id?0:-1,
     "aria-pressed":String(inspected===st.id),
-    "aria-label":ux().inspect(st.labelEn)+" "+M.joined(st.id).join(" · ")});
+    "aria-label":stationAccessibleName(st.id)});
    append(group,"circle",{class:"metro-node-halo",cx:st.x,cy:st.y,r:31,fill:"#8afcf7",
     opacity:inspected===st.id?.24:0,stroke:"none"});
    append(group,"circle",{class:"metro-node-hit",cx:st.x,cy:st.y,r:28,fill:"transparent",
@@ -7895,8 +7935,20 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
    drawnText(group,x,y,st.labelEn,{class:"metro-station-label",
     "font-size":interchangeIds.has(st.id)?19:17,"text-anchor":st.id==="north_park"||st.id==="hilltop"?"middle":"middle"});
    group.addEventListener("click",()=>{selectStation(st.id);if(gameMode)inspect.open=true;});
+   group.addEventListener("focus",()=>{setRovingStation(st.id);panToStation(st.id);});
    group.addEventListener("keydown",event=>{
-    if(event.key==="Enter"||event.key===" "){event.preventDefault();selectStation(st.id);if(gameMode)inspect.open=true;}
+    if(event.altKey||event.ctrlKey||event.metaKey)return;
+    const keys=["ArrowLeft","ArrowRight","ArrowUp","ArrowDown","Home","End"];
+    if(keys.includes(event.key)){
+     event.preventDefault();event.stopPropagation();
+     const ids=M.stations.map(station=>station.id),index=ids.indexOf(st.id);
+     const next=event.key==="Home"?0:event.key==="End"?ids.length-1:
+      (index+(event.key==="ArrowLeft"||event.key==="ArrowUp"?-1:1)+ids.length)%ids.length;
+     setRovingStation(ids[next],true);
+    }else if(event.key==="Enter"||event.key===" "){
+     event.preventDefault();if(event.repeat)return;
+     selectStation(st.id);if(gameMode)inspect.open=true;
+    }
    });
   }
   const active=M.station(atStation());
@@ -7951,7 +8003,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   $("f3cLocate").textContent=ux().locate;
   $("f3cToTask").textContent=ux().task;
   $("f3cToTask").hidden=!gameMode;
-  $("f3cMapHint").textContent=ux().hint;
+  $("f3cMapHint").textContent=ux().hint+" "+stationKeysCopy().hint;
   $("f3cMetroTools").setAttribute("aria-label",ux().map);
   $("f3cMetroPicker").value=inspected;
   syncNetworkZoom(false);
@@ -7961,11 +8013,11 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   // Inspection is information only; no route engine action is dispatched.
   // Do not rebuild SVG nodes: keyboard focus remains where the user placed it.
   inspected=id;
+  setRovingStation(id);
   network.querySelectorAll("[data-metro-station]").forEach(group=>{
    const match=group.dataset.metroStation===id;
    group.setAttribute("aria-pressed",String(match));
-   group.setAttribute("aria-label",ux().inspect(stationName(group.dataset.metroStation))+
-    " "+M.joined(group.dataset.metroStation).join(" · "));
+   group.setAttribute("aria-label",stationAccessibleName(group.dataset.metroStation));
    const halo=group.querySelector(".metro-node-halo");
    if(halo)halo.setAttribute("opacity",match?".24":"0");
   });

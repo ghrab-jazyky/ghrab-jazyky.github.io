@@ -163,3 +163,17 @@ test('GA-007/009/010/012: authored counts, French punctuation and language decis
  assert.match(html,/c\.labels\.checkpointProgress\+labelColon\(\)/);
  assert.match(html,/ui\(\)\.step\+labelColon\(\)/);
 });
+
+
+test('GA-013/014/015: accessible main heading, focusable guide and metro region contracts',()=>{
+ assert.equal((html.match(/<h1(?:\s|>)/g)||[]).length,1);
+ assert.match(html,/<h1 id="cqPageHeading" class="f3-screen-reader-only">City Quest · Riverton<\/h1>/);
+ assert.match(html,/<details class="cq-teacher-guide" id="cqTeacherGuide" lang="cs">/);
+ assert.match(html,/<div class="cq-teacher-content" role="region" aria-labelledby="cqTeacherGuideLabel" tabindex="0">/);
+ assert.match(html,/<section class="metro-side" role="region"/);
+ assert.doesNotMatch(html,/<aside class="metro-side"/);
+ assert.match(html,/function localizeAccessibility\(\)/);
+ assert.match(html,/tabindex:inspected===st\.id\?0:-1/);
+ assert.match(html,/vector-effect:non-scaling-stroke/);
+ assert.match(html,/function setRovingStation\(id,focus=false\)/);
+});

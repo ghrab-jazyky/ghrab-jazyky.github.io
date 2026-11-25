@@ -458,3 +458,73 @@ test('GA-010: authored dialogue distractors and repair text in every language an
   }
  }finally{await browser.close();}
 });
+
+
+test('GA-013/015: all-language accessible landmarks and one keyboard stop for metro stations',{timeout:180000},async()=>{
+ const browser=await launch();
+ const selectors=['.f2-settings','.f1-dashboard','#f1ProgressTrack','.f1-mode','#f1Stations','#mapViewport','#cityMap','#f1Panel','.f3-experience-panel'];
+ const expected={
+  en:['Language and CEFR level','City Quest session','Mission progress','Practice mode','Eight City Quest missions','Illustrated city map','Illustrated street map','Interactive City Quest mission','Offline experience preferences'],
+  es:['Idioma y nivel del MCER','Sesión de City Quest','Progreso de las misiones','Modalidad de práctica','Ocho misiones de City Quest','Plano ilustrado de la ciudad','Plano de Riverton','Misión interactiva de City Quest','Preferencias de uso sin conexión'],
+  de:['Sprache und GER-Niveau','City-Quest-Sitzung','Aufgabenfortschritt','Übungsmodus','Acht Aufgaben von City Quest','Illustrierter Stadtplan','Stadtplan von Riverton','Interaktive Aufgabe von City Quest','Einstellungen für die Offline-Nutzung'],
+  fr:['Langue et niveau du CECRL','Session de City Quest','Progression des missions',"Mode d'entraînement",'Huit missions de City Quest','Plan illustré de la ville','Plan de Riverton','Mission interactive de City Quest',"Préférences d'utilisation hors connexion"]
+ };
+ const metro={en:['Journey progress','Inspect station'],es:['Progreso del trayecto','Consultar la estación'],de:['Fortschritt der Fahrt','Station ansehen:'],fr:['Progression du trajet','Consulter la station']};
+ try{
+  for(const lang of Object.keys(expected)){
+   const {page,errors,remote}=await open(browser,'en','B2',desktop[0]);
+   try{
+    if(lang!=='en')await page.locator('#f2Language').selectOption(lang);
+    for(let i=0;i<selectors.length;i++)assert.ok((await page.locator(selectors[i]).getAttribute('aria-label')).startsWith(expected[lang][i]),lang+' '+selectors[i]);
+    assert.equal(await page.getByRole('heading',{level:1}).count(),1);
+    assert.equal(await page.getByRole('heading',{level:1}).textContent(),'City Quest · Riverton');
+    await page.locator('#metroPilotToggle').click();
+    await page.locator('#f1Stations button').nth(4).click();
+    await frame(page);
+    assert.equal(await page.locator('#metroJourneyProgress').getAttribute('aria-label'),metro[lang][0]);
+    assert.equal(await page.locator('.metro-side').getAttribute('role'),'region');
+    const stations=page.locator('#metroNetworkSvg [data-metro-station]');
+    assert.equal(await stations.count(),14);
+    assert.equal(await stations.and(page.locator('[tabindex="0"]')).count(),1);
+    assert.equal(await stations.and(page.locator('[tabindex="-1"]')).count(),13);
+    for(const label of await stations.evaluateAll(nodes=>nodes.map(n=>n.getAttribute('aria-label'))))assert.ok(label.startsWith(metro[lang][1]),lang+' station label');
+    const before=await current(page);
+    await page.locator('#metroNetworkViewport').focus();
+    await page.keyboard.press('Tab');
+    assert.equal(await page.evaluate(()=>document.activeElement?.dataset.metroStation),before.metroStation,'Tab enters network at the current station');
+    await page.keyboard.press('Home');
+    const first=await stations.first().getAttribute('data-metro-station');
+    assert.equal(await page.evaluate(()=>document.activeElement?.dataset.metroStation),first);
+    await page.keyboard.press('ArrowRight');
+    const second=await stations.nth(1).getAttribute('data-metro-station');
+    assert.equal(await page.evaluate(()=>document.activeElement?.dataset.metroStation),second);
+    await page.keyboard.press('End');
+    const last=await stations.last().getAttribute('data-metro-station');
+    assert.equal(await page.evaluate(()=>document.activeElement?.dataset.metroStation),last);
+    await page.keyboard.press('ArrowUp');
+    const target=await stations.nth(12).getAttribute('data-metro-station');
+    assert.equal(await page.evaluate(()=>document.activeElement?.dataset.metroStation),target);
+    assert.deepEqual(await current(page),before,'Arrow navigation must not change the journey');
+    await page.keyboard.press('Enter');
+    assert.equal(await stations.nth(12).getAttribute('aria-pressed'),'true');
+    assert.equal(await page.locator('#f3cMetroPicker').inputValue(),target);
+    assert.equal(await stations.and(page.locator('[tabindex="0"]')).count(),1);
+    await page.keyboard.press('Tab');
+    assert.equal(await page.evaluate(()=>!!document.activeElement?.hasAttribute('data-metro-station')),false,'Tab must leave station group');
+    assert.deepEqual(await current(page),before,'Inspection must not change the journey');
+    // The outline remains constant in CSS pixels even in whole-network mode.
+    await page.locator('#metroMapZoom').click();
+    await page.locator('#metroNetworkViewport').focus();
+    await page.keyboard.press('Tab');
+    const ring=await page.evaluate(()=>{
+     const group=document.activeElement,hit=group?.querySelector('.metro-node-hit');
+     if(!hit)return null;
+     const s=getComputedStyle(hit);return {stroke:s.stroke,width:parseFloat(s.strokeWidth),vector:s.vectorEffect};
+    });
+    assert.ok(ring&&ring.stroke!=='none'&&ring.width>=3&&ring.vector==='non-scaling-stroke','Visible non-scaling station focus ring');
+    await capture(page,'ga015-focus-'+lang);
+    assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
+   }finally{await page.close();}
+  }
+ }finally{await browser.close();}
+});
