@@ -53,6 +53,12 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p ux-evidence
+          git rev-parse HEAD > ux-evidence/actual-sha.txt
+          test "$(cat ux-evidence/actual-sha.txt)" = "$GITHUB_SHA"
+          sha256sum language-skills-hub/konverzace/city-quest-f2/index.html > ux-evidence/html-sha256.txt
+          if [ "$CQ_UX_ENGINE" = webkit ]; then
+            printf '%s\n' 'Functional tests run under strict CSP. Screenshots require physical Safari/manual acceptance (no CSP bypass).' > ux-evidence/visual-evidence-status.txt
+          fi
           python3 -m http.server 8765 --bind 127.0.0.1 --directory release-preview/site > /tmp/cq-ux-http.log 2>&1 &
           pid=$!
           trap 'kill "$pid" || true' EXIT

@@ -91,6 +91,26 @@ jobs:
           CQ_GA_GEOMETRY=1 CQ_40_REPORT=matrix-evidence/desktop.json node --test language-skills-hub/tests/city-quest-release-40.browser.test.cjs
           CQ_GA_GEOMETRY=1 CQ_WIDTH=390 CQ_HEIGHT=844 CQ_40_ONLY="$CQ_LANG/B2/mixed" CQ_40_REPORT=matrix-evidence/phone.json node --test language-skills-hub/tests/city-quest-release-40.browser.test.cjs
           CQ_WIDTH=768 CQ_HEIGHT=1024 CQ_40_ONLY="$CQ_LANG/C2/city" CQ_40_REPORT=matrix-evidence/tablet.json node --test language-skills-hub/tests/city-quest-release-40.browser.test.cjs
+          node <<'NODE'
+          const assert=require('node:assert/strict'),fs=require('node:fs');
+          const expected=JSON.parse(fs.readFileSync('language-skills-hub/version.json','utf8')).contentHashes['cl-city-quest-f2'];
+          for(const [kind,count] of [['desktop',10],['phone',1],['tablet',1]]){
+            const r=JSON.parse(fs.readFileSync('matrix-evidence/'+kind+'.json','utf8'));
+            assert.equal(r.sha,process.env.GITHUB_SHA);
+            assert.equal(r.workflowSha,process.env.GITHUB_SHA);
+            assert.equal(r.sourceMatchesCommit,true);
+            assert.equal(r.sourceHash,expected);
+            assert.equal(r.servedHash,expected);
+            assert.equal(r.engine,process.env.CQ_ENGINE);
+            assert.equal(r.runCount,count);
+            assert.equal(r.passed,count);
+            assert.equal(r.failed,0);
+            assert.equal(r.totalCompletedMissions,count*8);
+            assert.equal(r.cases.length,count);
+            assert.ok(r.cases.every(c=>c.language===process.env.CQ_LANG&&c.pass&&c.missions===8));
+            console.log('GA-018 exact SHA / served HTML / '+kind+' '+count+'/'+count+' PASS');
+          }
+          NODE
       - uses: actions/upload-artifact@v4
         if: always()
         with:

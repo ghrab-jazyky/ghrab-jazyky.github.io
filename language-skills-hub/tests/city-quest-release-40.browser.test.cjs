@@ -14,7 +14,26 @@ const ENGINE=process.env.CQ_ENGINE||'chromium';
 assert.ok(['chromium','firefox','webkit'].includes(ENGINE),'Supported engine');
 const WIDTH=Number(process.env.CQ_WIDTH||1280),HEIGHT=Number(process.env.CQ_HEIGHT||900);
 const ONLY_LANG=process.env.CQ_LANG||'';
-const sourceHash=require('node:crypto').createHash('sha256').update(fs.readFileSync(path.resolve(__dirname,'../konverzace/city-quest-f2/index.html'))).digest('hex');
+const crypto=require('node:crypto'),{execFileSync}=require('node:child_process');
+const repoRoot=path.resolve(__dirname,'../..'),sourcePath='language-skills-hub/konverzace/city-quest-f2/index.html';
+const digest=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+const sourceHash=digest(fs.readFileSync(path.join(repoRoot,sourcePath)));
+const git=(...args)=>execFileSync('git',['-c','safe.directory='+repoRoot,...args],{cwd:repoRoot,stdio:['ignore','pipe','pipe']});
+let checkoutSha=null,sourceMatchesCommit=false;
+try{
+ checkoutSha=git('rev-parse','HEAD').toString().trim();
+ if(!/^[0-9a-f]{40}$/.test(checkoutSha))throw Error('Invalid checkout SHA');
+ sourceMatchesCommit=digest(git('show',checkoutSha+':'+sourcePath))===sourceHash;
+}catch(error){
+ if(process.env.CI||process.env.GITHUB_SHA)throw error;
+ console.warn('No verifiable Git checkout; report is not release-certification evidence.');
+}
+if(process.env.CI||process.env.GITHUB_SHA){
+ assert.match(process.env.GITHUB_SHA||'',/^[0-9a-f]{40}$/,'CI must identify exact SHA');
+ assert.equal(checkoutSha,process.env.GITHUB_SHA,'Checkout differs from workflow SHA');
+ assert.equal(sourceMatchesCommit,true,'Source differs from checked-out commit');
+}
+let servedHash=null;
 const geometryEvidence=[];
 const D1_A11Y=process.env.CQ_D1_A11Y==='1';
 const D1_AXE=D1_A11Y?require('axe-core'):null;
@@ -349,6 +368,10 @@ async function metroMission(page,language,level,n){
  return counts;
 }
 test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey', {timeout:900000}, async t=>{
+ const response=await fetch(BASE,{cache:'no-store'});
+ assert.equal(response.status,200,'Candidate URL must serve the application');
+ servedHash=digest(Buffer.from(await response.arrayBuffer()));
+ assert.equal(servedHash,sourceHash,'Actually served HTML must equal the checked source bytes');
  const browser=await engines[ENGINE].launch(ENGINE==='chromium'?{headless:true,args:['--no-sandbox']}:{headless:true});
  try{
   for(const c of SELECTED){
@@ -429,7 +452,7 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
    passed:cases.filter(x=>x.pass).length,
    failed:cases.filter(x=>!x.pass).length,
    totalCompletedMissions:cases.filter(x=>x.pass).reduce((n,x)=>n+x.missions,0),
-   sha:process.env.GITHUB_SHA||null,
+   sha:checkoutSha,workflowSha:process.env.GITHUB_SHA||null,sourceMatchesCommit,servedHash,
    engine:ENGINE,viewport:{width:D1_A11Y?320:WIDTH,height:D1_A11Y?780:HEIGHT},sourceHash,geometryEvidence,
    d1A11y:D1_A11Y,d1Evidence,
    cases
