@@ -270,6 +270,15 @@ async function metroMission(page,language,level,n){
   const phase=state.phase;
   counts[phase]=(counts[phase]||0)+1;
   if(phase==='complete')break;
+  if(n===8&&['checkpoint','speech'].includes(phase)){
+   const kind=phase==='speech'?'final':state.resumePhase==='enter'?'tickets':'meeting';
+   const list=page.locator('.metro-selfcheck-criteria');
+   assert.equal(await list.getAttribute('data-cq-oral-phase'),kind,'Phase-specific M08 oral criteria');
+   const criteria=await list.locator('li').allTextContents();assert.equal(criteria.length,3);
+   const landmark=kind==='tickets'?'Market Square':kind==='meeting'?'University':null;
+   if(landmark)assert.ok(criteria.some(t=>t.includes(landmark)),'Checkpoint criteria name the actual place');
+   if(kind==='tickets')assert.doesNotMatch(criteria.join(' '),/platform|Bahnsteig|andén|quai/i);
+  }else if(level==='B1'&&phase==='speech')assert.equal(await page.locator('.metro-selfcheck-criteria li').count(),2,'Solo B1 must omit the partner-only criterion');
   // Every reached network phase in the real full-journey matrix must remain
   // readable. No state injection, no forced click, no CSP bypass for UX runs.
   if(process.env.CQ_GA_GEOMETRY==='1'&&['select-line','select-direction','notice','transfer'].includes(phase)){
@@ -411,6 +420,11 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
      }
      await progress(page,8,'Final '+caption(c));
      assert.equal(await page.locator('.cq-completion-summary').count(),1,'Final summary '+caption(c));
+     await page.waitForFunction(()=>{
+      const summary=document.querySelector('.cq-completion-summary'),p=document.getElementById('f1Panel')?.getBoundingClientRect(),h=summary?.querySelector('h3')?.getBoundingClientRect();
+      return summary&&p&&h&&document.activeElement===summary&&h.top>=Math.max(0,p.top)-3&&h.bottom<=Math.min(innerHeight,p.bottom)+3;
+     },{},{timeout:10000});
+     assert.ok((await page.locator('.cq-completion-celebration').textContent()).length>15,'Localized celebration');
      assert.equal(await page.locator('.cq-completed-missions li').count(),8);
      const nav=page.locator('#f1Stations'),completeLabel={en:'Mission completed',es:'Misión completada',de:'Aufgabe abgeschlossen',fr:'Mission terminée'}[c.language];
      for(let i=0;i<8;i++){

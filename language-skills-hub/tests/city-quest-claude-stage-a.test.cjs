@@ -196,3 +196,23 @@ test('GA-FINAL 1: re-audit language findings are fixed',()=>{
  assert.ok(html.includes("Accès depuis la rue\u202f:"));
  assert.match(html,/metro entrance, one block south of City Museum/i);
 });
+
+
+test('GA-FINAL 2: checkpoint-specific oral support has all 48 language/phase/level combinations',()=>{
+ const data=lineData('cqM08Oral');
+ for(const lang of ['en','es','de','fr']){
+  const copy=data[lang];
+  for(const kind of ['tickets','meeting','final']){
+   assert.equal(copy[kind].length,5);
+   assert.ok(copy[kind].every(s=>typeof s==='string'&&s.length>15));
+   for(const level of ['B1','B2','C1','C2']){
+    assert.equal(copy.levels[level].length,2);
+    assert.ok(copy.levels[level].every(s=>s.length>15));
+   }
+  }
+ }
+ assert.match(html,/\.metro-selfcheck-criteria li:before\{content:"•"/);
+ assert.match(html,/checklist\.dataset\.cqOralPhase=oral\.kind/);
+ assert.match(html,/newCompletion\.focus\(\{preventScroll:true\}\)/);
+ assert.match(html,/else if\(state\.station===8\)flash=questWalkFeedback\(outcome,next\)/);
+});

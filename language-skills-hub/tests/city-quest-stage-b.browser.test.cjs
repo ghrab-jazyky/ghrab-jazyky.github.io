@@ -222,7 +222,10 @@ test('GA-FIX 4: independent negative city paths, undo, switching, restart, closu
     assert.equal(await points(page),guidedStart,'CN-M04-wrong');
     assert.equal(await status(page),wrong[lang]);
     await station(page,8);
-    await move(page,['north','north','east','east','east','east','south']);
+    await move(page,['north']);
+    assert.equal(await status(page),lang==='en'?'Walking step recorded.':'Wegschritt ausgeführt.','Neutral walking feedback');
+    await move(page,['north','east','east','east','east','south']);
+    assert.equal(await status(page),lang==='en'?'Visit Market Square first.':'Besuche zuerst Marktplatz.','Required order feedback');
     assert.equal(await page.locator('#f1Panel .f2-actions button.primary').count(),0,'CN-M08-order');
     assert.equal(await progress(page),0);
     // A2 has no advanced follow-up review; finish and replay through real UI.

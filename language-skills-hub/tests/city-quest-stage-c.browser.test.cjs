@@ -214,6 +214,16 @@ test('GA-FIX 4: original negative metro ledger and mandatory mixed-route scenari
     await reject('exit',()=>choose(page,lang,level,5,'exit',['exit','continue'],'continue'),false);
     await choose(page,lang,level,5,'exit',['exit','continue'],'exit');
     if(level!=='B1')await choose(page,lang,level,5,'route-review',review[level].values,review[level].answer);
+    if(level==='B1'){
+     const list=page.locator('.metro-selfcheck-criteria li'),before=await bridge(page);
+     assert.equal(await list.count(),2,'Solo omits the partner criterion');
+     await page.locator('#f1Pair').click();
+     assert.equal(await list.count(),3,'Pair exposes partner criterion');
+     assert.match((await list.allTextContents()).join(' '),/Mon partenaire/);
+     await page.locator('#f1Solo').click();
+     assert.equal(await list.count(),2);
+     assert.deepEqual(await bridge(page),before,'Practice mode cannot change journey');
+    }
     await action(page,lang,level,5,'SELF_CHECK');assert.equal((await bridge(page)).completed,true);
     // The original Claude ledger check forgot to reveal the model. Use the actual visible disclosure.
     await page.locator('#f1Panel .f2-help button').first().click();

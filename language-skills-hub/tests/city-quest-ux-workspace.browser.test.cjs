@@ -563,3 +563,20 @@ test('GA-FINAL 1: M08 open-route prompt and corrected metro inspector/PA',{timeo
   }
  }finally{await browser.close();}
 });
+
+
+test('GA-FINAL 2: M01 correct feedback explicitly refers to the previous question',{timeout:90000},async()=>{
+ const browser=await launch();
+ const labels={en:'Previous answer (question 1): ',es:'Respuesta anterior (pregunta 1): ',de:'Vorherige Antwort (Frage 1): ',fr:'Réponse précédente (question 1)\u202f: '};
+ try{
+  for(const lang of Object.keys(labels)){
+   const {page,errors,remote}=await open(browser,lang,'B1',desktop[0]);
+   try{
+    await (await exploreChoice(page,lang,'B1',0)).click();
+    assert.ok((await page.locator('#f1Panel .f2-status').textContent()).startsWith(labels[lang]),lang);
+    assert.match(await page.locator('#f1Panel .f2-small').first().textContent(),/2\s*\/\s*/);
+    assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
+   }finally{await page.close();}
+  }
+ }finally{await browser.close();}
+});

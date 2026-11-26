@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#070f20">
 <meta name="description" content="City Quest: offline city and metro navigation in English, Spanish, German and French at A1–C2, with interactive metro missions at B1–C2.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-sxemhmCYhYb87Pnx783HYNacdSURZCEaEkhfP4fwgws='; style-src 'sha256-TTf4Vggk+Df/ZoVAIr2gqXKNOkWK6p5jhNWZWz/mOls='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-oDU89us7pDTURuvgYT13VzqmW+8lfp+NoXovu1l8SJM='; style-src 'sha256-yNN6EkUqUdPkrvfBH8Ywnn2/RcXpKBHOvUPEBTzFLRM='; img-src data:; font-src 'none'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%2314253d%22%2F%3E%3Cpath%20d%3D%22M16%204v24M4%2016h24%22%20stroke%3D%22%2364e6ad%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%228%22%20fill%3D%22%2314253d%22%20stroke%3D%22%23f3f8ff%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22m20%2010-3%209-6%203%203-9z%22%20fill%3D%22%2364e6ad%22%2F%3E%3C%2Fsvg%3E">
 <title>City Quest · Interactive Language Game · EN ES DE FR · A1–C2</title>
 
@@ -744,7 +744,7 @@ button{font:inherit;cursor:pointer}button:focus-visible,select:focus-visible,a:f
 .metro-selfcheck-criteria{display:grid;gap:7px;margin:10px 0 12px;padding:0;list-style:none}
 .metro-selfcheck-criteria li{padding:9px 11px 9px 34px;position:relative;border-radius:10px;
  background:#113d4e;color:#e9fff7;border:1px solid #6bd5c766;font-size:.88rem;line-height:1.4}
-.metro-selfcheck-criteria li:before{content:"✓";position:absolute;left:12px;top:8px;color:#7debce;font-weight:900}
+.metro-selfcheck-criteria li:before{content:"•";position:absolute;left:12px;top:8px;color:#7debce;font-weight:900}
 .metro-language-details{margin:11px 0;border:1px solid #7ccdc885;border-radius:12px;
  background:#0e3346;padding:10px;color:#dcf8f5}
 .metro-language-details summary{cursor:pointer;min-height:34px;font-weight:800;line-height:1.5}
@@ -1866,6 +1866,8 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
    F3 metro/hero paragraph colours. WCAG contrast tested on real end states. */
 #f1Panel .cq-completion-summary{background:#14253d;color:#f3f8ff}
 #f1Panel .cq-completion-summary > p,#f1Panel .cq-completion-summary li{color:inherit!important}
+#f1Panel .cq-completion-summary:focus-visible{outline:3px solid currentColor;outline-offset:-3px}
+#f1Panel .cq-completion-celebration{font-weight:750}
 #f1Panel .cq-completion-summary h3,#f1Panel .cq-completion-summary h4{color:#64e6ad}
 :root[data-theme="light"] #f1Panel .cq-completion-summary{background:#edf4fb;color:#17293b}
 :root[data-theme="light"] #f1Panel .cq-completion-summary h3,:root[data-theme="light"] #f1Panel .cq-completion-summary h4{color:#126b52}
@@ -6175,7 +6177,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
   const initialLevel=C.levels.includes(launchLevel)?launchLevel:"B1";
   let metroEnabled=false;
   let state=makeSession(initialLanguage,initialLevel,"solo");
-  let flash=null;
+  let flash=null,completionPresented=false;
   function makeSession(language,level,mode){
     return {language,level,mode:mode||"solo",station:1,done:new Set(),
       pairTurns:Object.create(null),oracyReview:Object.create(null),cityReview:Object.create(null),explore:{round:0,misses:0},route:G.routeStart(),dialogue:G.dialogueStart(),
@@ -6370,7 +6372,17 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     const c=routeReviewCopy();
     const section=el("section",panel,"cq-completion-summary");
     section.setAttribute("aria-label",c.final);
-    el("h3",section,"","✓ "+c.final+" · 8/8");
+    section.tabIndex=-1;
+    const heading=el("h3",section,"");
+    const trophy=el("span",heading,"","🏆 ");
+    trophy.setAttribute("aria-hidden","true");
+    heading.append(document.createTextNode(c.final+" · 8/8"));
+    para(section,{
+      en:"Well done! You have completed your journey through Riverton.",
+      es:"¡Enhorabuena! Has completado tu recorrido por Riverton.",
+      de:"Gut gemacht! Du hast deine Reise durch Riverton abgeschlossen.",
+      fr:"Bravo ! Vous avez terminé votre parcours à Riverton."
+    }[state.language],"cq-completion-celebration");
     para(section,c.noGrade);
     const missions=el("ol",section,"cq-completed-missions");
     for(let n=1;n<=8;n++)el("li",missions,"",
@@ -6382,6 +6394,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     const list=el("ul",section,"cq-completion-vocabulary");
     [...new Set(words.concat(more))].forEach(word=>el("li",list,"",word));
     para(section,c.review);
+    return section;
   }
   function revealTaskControl(node){
     if(desktopWorkspace.matches){
@@ -6420,23 +6433,28 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     const oral=panel.querySelector(".cq-advanced-oracy");
     if(oral&&!state.done.has(state.station)){
       panel.appendChild(oral);
-      oral.open=lessonPhase()===2||(priorKey===currentKey&&!!priorOral);
+      const intermediate=isMetro&&state.station===8&&phaseKey==="checkpoint";
+      oral.open=(!intermediate&&lessonPhase()===2)||(priorKey===currentKey&&!phaseChanged&&!!priorOral);
     }
     const pair=panel.querySelector(".f2-pair");
     if(pair&&!state.done.has(state.station))panel.appendChild(pair);
     if(flash?.text)$("f3Status").textContent=flash.text;
-    if(state.done.size===8)renderCompletionSummary();
+    let newCompletion=null;
+    if(state.done.size===8){
+      const summary=renderCompletionSummary();
+      if(!completionPresented){completionPresented=true;newCompletion=summary;}
+    }else completionPresented=false;
     if(desktopWorkspace.matches){
       panel.scrollTop=priorKey===currentKey&&!phaseChanged?priorScroll:0;
       // Reveal the next real action within the task pane, without stealing focus
       // from the map or scrolling the document. Only on a new mission/phase.
-      if(isMetro&&(priorKey!==currentKey||phaseChanged)){
+      if(!newCompletion&&isMetro&&(priorKey!==currentKey||phaseChanged)){
         const control=panel.querySelector(".f2-choice-list button:not(:disabled), .f2-actions button.primary:not(:disabled)");
         if(control)window.requestAnimationFrame(()=>{if(control.isConnected)revealTaskControl(control);});
       }
     }
     updateLessonRail();
-    if(taskHadFocus&&!isMetro)window.requestAnimationFrame(()=>{
+    if(!newCompletion&&taskHadFocus&&!isMetro)window.requestAnimationFrame(()=>{
       if(panel.hidden)return;
       const next=panel.querySelector(
         ".f2-choice-list button:not(:disabled), .f2-actions button:not(:disabled), "+
@@ -6448,6 +6466,16 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
         if(title){title.tabIndex=-1;title.focus({preventScroll:true});}
       }
     });
+    // Present the completion once, after the ordinary action focus callbacks.
+    // Do not scroll again when revisiting a completed mission or changing mode.
+    if(newCompletion)window.requestAnimationFrame(()=>window.requestAnimationFrame(()=>{
+      if(!newCompletion.isConnected||state.done.size!==8)return;
+      newCompletion.focus({preventScroll:true});
+      if(desktopWorkspace.matches){
+        const p=panel.getBoundingClientRect(),r=newCompletion.getBoundingClientRect();
+        panel.scrollTop+=r.top-p.top-8;
+      }else newCompletion.scrollIntoView({block:"start",behavior:"auto"});
+    }));
   }
   // B1 pilot: all metro choices go through the pure deterministic game engine.
   // The live scene stays inside the F2.1B map card, not a second independent controller.
@@ -6562,6 +6590,20 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       window.requestAnimationFrame(()=>target.scrollIntoView({behavior:"auto",block:"start"}));
     }
   }
+  // GA-FINAL 2: oral evidence is specific to the actual M08 phase and CEFR.
+  // These criteria are prompts for self-reflection, never new engine gates.
+  const cqM08Oral={"en":{"tickets":["Explain your walk from Central Station to Market Square and say what you need to collect at the information desk.","I described the walking route and named Market Square.","I explained that the reserved museum tickets must be collected before boarding.","First I walked…; at the information desk I need to…","Explain this walking leg again without looking at the example."],"meeting":["Describe how you reached University and explain why you must meet your classmate before changing lines.","I named the service I actually used to reach University.","I explained the meeting and the need to collect the group's audio guides.","I got here by…; before changing lines, we need to…","Reformulate the meeting instructions for someone who has just arrived."],"final":["Explain your complete journey, including the ticket collection, the meeting at University and the final walk to City Museum.","I explained both obligations in the correct order.","I described my actual rail journey and the final walk to the museum.","First…, then…; after meeting…; finally…","Retell the whole journey without reading the sample."],"levels":{"B1":["Use short, clear sentences and sequence markers.","I used clear instructions and sequence markers."],"B2":["Give a reason and compare with a less suitable choice.","I justified a choice and compared it with an alternative."],"C1":["Anticipate a misunderstanding and explain what you would do if the situation changed.","I clarified a constraint and proposed a conditional response."],"C2":["Balance the relevant priorities and tailor your precise advice to the traveller.","I evaluated the trade-off and adapted my register."]}},"es":{"tickets":["Explica el recorrido a pie desde Central Station hasta Market Square y di qué necesitas recoger en el punto de información.","He descrito el recorrido a pie y he mencionado Market Square.","He explicado que hay que recoger las entradas reservadas antes de subir al metro.","Primero fui…; en el punto de información necesito…","Explica de nuevo este tramo a pie sin consultar el ejemplo."],"meeting":["Explica cómo has llegado a University y por qué debes reunirte con tu compañera antes de cambiar de línea.","He indicado el servicio que he utilizado para llegar a University.","He explicado el encuentro y la necesidad de recoger las audioguías del grupo.","He llegado en…; antes de cambiar de línea, tenemos que…","Reformula las indicaciones del encuentro para alguien que acaba de llegar."],"final":["Explica el recorrido completo, incluida la recogida de entradas, la reunión en University y el último tramo a pie hasta el Museo de la Ciudad.","He explicado las dos obligaciones en el orden correcto.","He descrito mi trayecto real en metro y el último tramo a pie hasta el museo.","Primero…, después…; tras reunirnos…; por último…","Vuelve a contar el recorrido completo sin leer el ejemplo."],"levels":{"B1":["Usa frases breves y conectores de orden.","He dado indicaciones claras y usado conectores de orden."],"B2":["Justifica una decisión y compárala con una opción menos adecuada.","He justificado una decisión y la he comparado con otra opción."],"C1":["Anticipa un malentendido y explica qué harías si cambiara la situación.","He aclarado una limitación y propuesto una solución condicionada."],"C2":["Valora las prioridades pertinentes y adapta tus consejos precisos al viajero.","He valorado las ventajas e inconvenientes y adaptado el registro."]}},"de":{"tickets":["Beschreibe deinen Fußweg von Central Station zum Market Square und erkläre, was du am Informationsschalter abholen musst.","Ich habe den Fußweg beschrieben und Market Square genannt.","Ich habe erklärt, dass die reservierten Museumstickets vor der U-Bahn-Fahrt abgeholt werden müssen.","Zuerst bin ich…; am Informationsschalter muss ich…","Erkläre den Fußweg noch einmal ohne Muster."],"meeting":["Beschreibe deine Fahrt bis University und erkläre, warum du vor dem Umsteigen deine Mitschülerin treffen musst.","Ich habe die tatsächlich genutzte Verbindung nach University genannt.","Ich habe das Treffen und die Abholung der Audioguides für die Gruppe erklärt.","Ich bin mit… angekommen; vor dem Umsteigen müssen wir…","Erkläre den Treffpunkt für eine Person, die gerade angekommen ist."],"final":["Erkläre den gesamten Weg: Ticketabholung, Treffen an der Station University und den letzten Fußweg zum Stadtmuseum.","Ich habe beide Verpflichtungen in der richtigen Reihenfolge erklärt.","Ich habe meine tatsächliche U-Bahn-Fahrt und den letzten Fußweg zum Museum beschrieben.","Zuerst…, dann…; nach dem Treffen…; zum Schluss…","Erkläre den gesamten Weg noch einmal ohne Muster."],"levels":{"B1":["Verwende kurze, klare Sätze und Wörter für die Reihenfolge.","Ich habe die Schritte klar und in der richtigen Reihenfolge beschrieben."],"B2":["Begründe eine Entscheidung und vergleiche sie mit einer weniger geeigneten Möglichkeit.","Ich habe eine Entscheidung begründet und mit einer Alternative verglichen."],"C1":["Kläre ein mögliches Missverständnis und erkläre, was du bei einer Änderung tun würdest.","Ich habe eine Einschränkung erläutert und einen bedingten Alternativplan vorgeschlagen."],"C2":["Wäge die relevanten Prioritäten ab und passe deine präzise Beratung an den Fahrgast an.","Ich habe Vor- und Nachteile abgewogen und den Sprachstil angepasst."]}},"fr":{"tickets":["Décrivez votre trajet à pied de Central Station à Market Square et précisez ce que vous devez récupérer au point d'information.","J'ai décrit le trajet à pied et nommé Market Square.","J'ai expliqué qu'il faut retirer les billets réservés avant de prendre le métro.","D'abord, j'ai marché… ; au point d'information, je dois…","Expliquez de nouveau ce trajet à pied sans consulter l'exemple."],"meeting":["Expliquez comment vous avez rejoint University et pourquoi vous devez retrouver votre camarade avant de changer de ligne.","J'ai indiqué le service que j'ai réellement emprunté pour rejoindre University.","J'ai expliqué le rendez-vous et la nécessité de récupérer les audioguides du groupe.","Pour rejoindre University, j'ai pris… ; avant la correspondance, il faut…","Reformulez les consignes du rendez-vous pour une personne qui vient d'arriver."],"final":["Expliquez votre trajet complet, y compris le retrait des billets, le rendez-vous à University et le dernier trajet à pied jusqu'au musée municipal.","J'ai expliqué les deux obligations dans le bon ordre.","J'ai décrit mon trajet réel en métro et le dernier parcours à pied jusqu'au musée.","D'abord…, ensuite… ; après le rendez-vous… ; enfin…","Racontez tout le trajet sans lire l'exemple."],"levels":{"B1":["Utilisez des phrases courtes et des connecteurs chronologiques.","J'ai donné des consignes claires et utilisé des connecteurs chronologiques."],"B2":["Justifiez un choix et comparez-le avec une option moins adaptée.","J'ai justifié un choix et l'ai comparé à une autre possibilité."],"C1":["Anticipez un malentendu et expliquez comment vous réagiriez si la situation changeait.","J'ai clarifié une contrainte et proposé une réponse conditionnelle."],"C2":["Pesez les priorités pertinentes et adaptez vos conseils précis au voyageur.","J'ai évalué les compromis et adapté mon registre."]}}};
+  function metroOralCriteria(game,c){
+    const partner=c.cefr.criteria[2];
+    if(game.stationNumber!==8){
+      return {...c.cefr,kind:"rail",criteria:state.level==="B1"&&state.mode==="solo"?c.cefr.criteria.slice(0,2):c.cefr.criteria};
+    }
+    const kind=game.phase==="speech"?"final":game.resumePhase==="enter"?"tickets":"meeting";
+    const copy=cqM08Oral[state.language],row=copy[kind],level=copy.levels[state.level],
+      criteria=[row[1],row[2],level[1]];
+    if(state.level==="B1"&&state.mode==="pair")criteria.push(partner);
+    return {kind,task:row[0]+" "+level[0],criteria,support:row[3],stretch:row[4]};
+  }
   function renderMetroMission(){
     const game=metroState(),stage=game.phase,n=state.station,c=metroCopy(),
       place=window.RivertonMetro?.station(game.metroStation)?.labelEn||game.metroStation;
@@ -6576,14 +6618,16 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     note(panel,"🚇 "+(["walk-to-entrance","walk-to-museum"].includes(stage)?c.enterTitle:c.metroTitle),
       LC.stage(state.language,state.level,n,stage,{station:place}));
     if(stage==="speech"||stage==="checkpoint"){
-      note(panel,"🎯 "+c.labels.criteria,c.cefr.task);
+      const oral=metroOralCriteria(game,c);
+      note(panel,"🎯 "+c.labels.criteria,oral.task).dataset.cqOralPhase=oral.kind;
       const checklist=el("ul",panel,"metro-selfcheck-criteria");
-      c.cefr.criteria.forEach(criterion=>el("li",checklist,"",criterion));
+      checklist.dataset.cqOralPhase=oral.kind;
+      oral.criteria.forEach(criterion=>el("li",checklist,"",criterion));
       const support=el("details",panel,"metro-language-details");
-      el("summary",support,"","💡 "+c.labels.support);para(support,c.cefr.support);
+      el("summary",support,"","💡 "+c.labels.support);para(support,oral.support);
       const ext=el("details",panel,"metro-language-details");
       el("summary",ext,"",c.labels.stretch);
-      para(ext,c.cefr.stretch);
+      para(ext,oral.stretch);
     }
     // The mixed City–Metro mission has two physical layers. While the player
     // walks, report their ACTUAL surface position rather than the underground
@@ -6743,8 +6787,12 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     choices(panel,ordered.map(id=>({value:id,label:(F.findPlace(id)?.icon||"📍")+" "+pack().places[id]})),id=>{
       const verdict=F.answerExplore(game.round,id);
       if(verdict.correct){
+         const previous={
+           en:"Previous answer (question {n}): ",es:"Respuesta anterior (pregunta {n}): ",
+           de:"Vorherige Antwort (Frage {n}): ",fr:"Réponse précédente (question {n}) : "
+         }[state.language].replace("{n}",String(game.round+1));
          game.round++;
-         flash={text:cqFeedback[state.language].right+" "+cqPlacePurpose[state.language][id],tone:"success"};
+         flash={text:previous+cqFeedback[state.language].right+" "+cqPlacePurpose[state.language][id],tone:"success"};
          screen();
        }
       else{
@@ -6950,6 +6998,20 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
     btn(row,"↺ "+ui().restartStation,resetStation);
     help(panel);
   }
+  const cqQuestWalkCopy={
+    en:{step:"Walking step recorded.",first:"Visit {place} first.",arrived:"Checkpoint reached. Explain this part of your route.",confirmed:"Checkpoint confirmed.",done:"All required checkpoints confirmed."},
+    es:{step:"Paso a pie registrado.",first:"Visita primero {place}.",arrived:"Has llegado al punto de paso. Explica este tramo.",confirmed:"Punto de paso confirmado.",done:"Todos los puntos obligatorios confirmados."},
+    de:{step:"Wegschritt ausgeführt.",first:"Besuche zuerst {place}.",arrived:"Zwischenziel erreicht. Erkläre diesen Wegabschnitt.",confirmed:"Zwischenziel bestätigt.",done:"Alle vorgegebenen Zwischenziele bestätigt."},
+    fr:{step:"Étape à pied effectuée.",first:"Passez d'abord par {place}.",arrived:"Étape atteinte. Expliquez cette partie de votre trajet.",confirmed:"Étape confirmée.",done:"Toutes les étapes obligatoires sont confirmées."}
+  };
+  function questWalkFeedback(outcome,next){
+    const copy=cqQuestWalkCopy[state.language],list=G.questCheckpoints(state.level),stage=state.quest.stage;
+    if(outcome.kind==="checkpoint")return {text:copy.arrived,tone:"success"};
+    if(list.slice(stage+1).some(cp=>E.same(cp.node,next))){
+      return {text:copy.first.replace("{place}",pack().places[list[stage].id]),tone:"warning"};
+    }
+    return {text:copy.step,tone:""};
+  }
   function renderQuest(){
     const game=state.quest,list=G.questCheckpoints(state.level);
     if(game.done){
@@ -6970,7 +7032,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       const row=actions(panel);
       btn(row,ui().selfdone+" →",()=>{
         const result=G.questSpeak(state.quest,state.level);
-        if(result.accepted){state.quest=result.state;flash={text:ui().correct,tone:"success"};screen();renderMap();}
+        if(result.accepted){state.quest=result.state;const copy=cqQuestWalkCopy[state.language];flash={text:state.quest.done?copy.done:copy.confirmed,tone:"success"};screen();renderMap();}
       },"primary");
       return;
     }
@@ -7023,6 +7085,7 @@ body[data-presentation="on"] .metro-lab{margin:10px 0}
       roadworks().missing:missingViaFeedback(),tone:"warning"};
     else if(!outcome.accepted)flash={text:cqFeedback[state.language][
       outcome.kind==="wrong-way"?"wrongWay":outcome.kind]||ui().feedbackRetry,tone:"warning"};
+    else if(state.station===8)flash=questWalkFeedback(outcome,next);
     else flash={text:ui().correct,tone:"success"};
     screen();renderMap();
   }
