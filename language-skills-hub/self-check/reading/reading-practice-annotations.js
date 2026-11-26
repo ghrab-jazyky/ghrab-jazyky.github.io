@@ -10,7 +10,7 @@
  const host=root.createElement('section');
  host.id='readingAnnotationTools';
  host.className='lsh-annotation-toolbar lsh-practice-annotations';
- host.setAttribute('aria-label','Anotace textu a otázek');
+ host.setAttribute('aria-label','Anotace textu a otázek');host.lang='cs';
  host.innerHTML=`
  <div class="lsh-annotation-head">
   <strong>Poznámky k textu a otázkám</strong>
@@ -41,32 +41,52 @@
  </div>
  <p class="lsh-annotation-status" data-anno-status role="status" aria-live="polite"></p>`;
  prep.insertAdjacentElement('afterend',host);
- // Prefer the same header row as the existing dictionary and theme controls.
+ // Stable DOM anchor; translated labels must never determine placement.
  const modeButton=root.createElement('button');
  modeButton.type='button';modeButton.className='lsh-anno-header-toggle';
  modeButton.textContent='Zapnout poznámky';modeButton.setAttribute('aria-pressed','false');
  modeButton.setAttribute('aria-controls','readingAnnotationTools');
- const controls=[...root.querySelectorAll('button')];
- const neighbor=controls.find(button=>/dictionary|slovník|night mode|day mode|dark mode|light mode/i.test(
-  [button.textContent,button.getAttribute('aria-label')].join(' ')));
- const target=neighbor?.parentElement||root.querySelector('.topbar')||prep;
- target.appendChild(modeButton);
+ const target=root.querySelector('.topbar .controls')||root.querySelector('.topbar')||prep;
+ modeButton.lang='cs';target.appendChild(modeButton);
  const storageKey=identity=>'lsh-reading-practice-annotations-v1:rl-asteroids:'+identity;
  const slug=value=>String(value).replace(/[^a-z0-9:_-]/gi,'_').slice(0,100);
- let currentIdentity=null;
+ let currentIdentity=null,expectedRaw=null,readable=true;
  const language=()=>root.getElementById('language')?.value||'en';
  const level=()=>root.querySelector('#levels [data-level][aria-pressed="true"]')?.dataset.level||'B1';
  const identity=()=>language()+':'+level();
  function currentSaved(){
-  try{return JSON.parse(localStorage.getItem(storageKey(identity()))||'[]')}
-  catch(_){return []}
+  try{
+   expectedRaw=localStorage.getItem(storageKey(identity()));
+   const records=JSON.parse(expectedRaw||'[]');readable=Array.isArray(records);
+   return readable?records:[];
+  }catch(_){readable=false;return []}
+ }
+ // Asteroids DATA is the unchanged classic-script source bank.
+ function anchorMapping(target){
+  const match=/^p:(\d+)$/.exec(target.dataset.annotationAnchor||'');
+  if(!match||typeof DATA==='undefined')return null;
+  const variant=DATA[language()]?.[level()],index=Number(match[1]),source=variant?.paragraphs[index];
+  if(typeof source!=='string')return null;
+  const gap=variant.gap?.p===index&&source.startsWith(variant.gap.sentence)?variant.gap.sentence:null;
+  const hidden=gap?'[…] '+source.slice(gap.length).replace(/^\s+/,''):null;
+  const gapShift=hidden?source.length-hidden.length:0;
+  if(target.textContent===source)return {source,shift:0,min:0,gapShift,gapPrefix:4};
+  if(hidden&&target.textContent===hidden)return {source,shift:gapShift,min:4,gapShift,gapPrefix:4};
+  return null;
+ }
+ if(!window.CSS?.highlights||typeof window.Highlight!=='function'){
+  modeButton.disabled=true;modeButton.textContent='Anotace nedostupné';
+  modeButton.title='Tento prohlížeč nepodporuje zvýrazňování textu.';return;
  }
  const api=engine.mount({
-  host,toggle:modeButton,containers:[reader,tasks],
+  host,toggle:modeButton,containers:[reader,tasks],anchorMapping,
   onChange:records=>{
    try{
-    localStorage.setItem(storageKey(identity()),JSON.stringify(records));
-    return true;
+    if(!readable||currentIdentity!==identity())return 'Úložiště anotací není dostupné. Obnovte stránku.';
+    const key=storageKey(currentIdentity);
+    if(localStorage.getItem(key)!==expectedRaw)
+     return 'Anotace byly změněny v jiné záložce. Obnovte stránku; původní data nebyla přepsána.';
+    const next=JSON.stringify(records);localStorage.setItem(key,next);expectedRaw=next;return true;
    }catch(_){return false}
   }
  });
@@ -95,6 +115,11 @@
  observer.observe(reader,{childList:true,subtree:true});
  observer.observe(tasks,{childList:true,subtree:true});
  sync();
+ // Do not overwrite a newer snapshot from a second tab.
+ window.addEventListener('storage',event=>{
+  if(event.key===storageKey(currentIdentity)&&event.newValue!==expectedRaw)
+   host.querySelector('[data-anno-status]').textContent='Anotace byly změněny v jiné záložce. Před úpravami obnovte stránku.';
+ });
  // Prevent dictionary quick-tap / double-click handling from interrupting text
  // selection while annotation tools are enabled. Answer widgets are unaffected.
  for(const surface of [reader,tasks]){

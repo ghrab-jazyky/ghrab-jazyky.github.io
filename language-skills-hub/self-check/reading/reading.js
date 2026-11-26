@@ -458,8 +458,11 @@
       containers:[$('readingParagraphs'),$('questionList')],
       canEdit:()=>!submitted&&(!timedUI||timedUI.status().phase==='running'),
       onChange:annotations=>{
-       if(timedUI){timedUI.save();return;}
-       try{localStorage.setItem(annotationKey,JSON.stringify(annotations))}catch(_){}
+       if(timedUI){
+        timedUI.save();const status=timedUI.status();
+        return status.persistent&&!status.expired&&status.phase==='running';
+       }
+       try{localStorage.setItem(annotationKey,JSON.stringify(annotations));return true}catch(_){return false}
       }
      });
      if(!search.has('timer')){

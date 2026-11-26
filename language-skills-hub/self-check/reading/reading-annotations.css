@@ -89,3 +89,14 @@
  min-height:42px;cursor:pointer;font:inherit}
 .lsh-annotation-popover-close:focus-visible{outline:3px solid var(--accent,#78e6f4);outline-offset:2px}
 @media print{.lsh-annotation-popover{display:none!important}}
+
+/* F1: readable note rows on narrow viewports; full toolbar redesign is separate. */
+@media(max-width:650px){
+ .lsh-annotation-item{flex-direction:column;align-items:stretch}
+ .lsh-annotation-item-label{width:100%;min-width:0}
+ .lsh-annotation-actions{width:100%;flex-wrap:wrap;justify-content:flex-start}
+}
+.lsh-annotation-toolbar .lsh-anno-yellow-btn{border-bottom:5px solid #f5dc64}
+.lsh-annotation-toolbar .lsh-anno-green-btn{border-bottom:5px solid #8addab}
+.lsh-annotation-toolbar .lsh-anno-pink-btn{border-bottom:5px solid #f5a1bd}
+.lsh-annotation-toolbar .lsh-anno-blue-btn{border-bottom:5px solid #78e6f4}

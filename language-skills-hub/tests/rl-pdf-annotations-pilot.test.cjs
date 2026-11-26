@@ -112,3 +112,19 @@ test('RL-02: desktop auto-apply, explicit toggle-off and scoped clear-all confir
   assert.match(markup,/data-anno-color="yellow" aria-pressed="false"/);
  }
 });
+
+
+test('F1: canonical and legacy ranges resolve only exact unambiguous source quotes',()=>{
+ const source='Hidden sentence. Visible tail.',hidden='[…] Visible tail.',shift=source.length-hidden.length;
+ const full={source,shift:0,min:0,gapShift:shift,gapPrefix:4};
+ const partial={...full,shift,min:4};
+ const legacy={start:4,end:11,text:'Visible'};
+ const canonical={start:4+shift,end:11+shift,text:'Visible',basis:'source-v1'};
+ assert.deepEqual(annotations.sourceRange(legacy,full),{start:4+shift,end:11+shift});
+ assert.deepEqual(annotations.sourceRange(canonical,partial),{start:4,end:11});
+ assert.deepEqual(annotations.sourceRange(canonical,full),{start:4+shift,end:11+shift});
+ assert.equal(annotations.sourceRange({...legacy,text:'Wrong!!'},full),null);
+ assert.equal(annotations.sourceRange({start:4,end:5,text:'x'},{source:'abcdx123x',shift:0,min:0,gapShift:4,gapPrefix:4}),null);
+ const record={anchor:'p:0',start:canonical.start,end:canonical.end,text:'Visible',kind:'note',color:'yellow',note:'N',id:'a-123',basis:'source-v1'};
+ assert.deepEqual(annotations.normalized([record]),[record]);
+});
