@@ -580,3 +580,53 @@ test('GA-FINAL 2: M01 correct feedback explicitly refers to the previous questio
   }
  }finally{await browser.close();}
 });
+
+test('GA-FINAL 3: actual next metro action is reachable automatically in 12 audited viewports plus a text-size stress case',{timeout:240000},async()=>{
+ const browser=await launch();
+ const cases=[...desktop,...[ {width:1366,height:650},{width:1280,height:650},{width:1024,height:768},{width:768,height:1024},{width:844,height:390},{width:480,height:800},{width:390,height:844},{width:360,height:800},{width:320,height:780} ],{width:390,height:844,stress:true}];
+ assert.equal(cases.length,13);
+ async function reachable(page,context){
+   // Measure before clicking, focusing or scrolling the decision locator.
+   await frame(page);
+   const r=await page.evaluate(()=>{
+     const a=document.querySelector('#f1Panel .f2-choice-list button:not(:disabled), #f1Panel .f2-actions button.primary:not(:disabled)');
+     if(!a)return null;
+     const r=a.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
+     return {left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height,vw:innerWidth,vh:innerHeight,hit:a.contains(document.elementFromPoint(x,y))};
+   });
+   assert.ok(r&&r.hit&&r.left>=-2&&r.right<=r.vw+2&&r.top>=-2&&r.bottom<=r.vh+3,context+' '+JSON.stringify(r));
+   assert.ok(r.height>=43.5,context+' touch target');
+ }
+ try{
+  for(const c of cases){
+   const vp={width:c.width,height:c.height},label=c.width+'x'+c.height+(c.stress?' text200':'');
+   const {page,errors,remote}=await open(browser,'de','C2',vp);
+   try{
+    if(c.stress)await page.evaluate(()=>document.documentElement.style.fontSize='200%');
+    await page.locator('#metroPilotToggle').click();
+    await page.locator('#f1Stations button').nth(4).click();
+    await reachable(page,label+' line');
+    if(c.width<=1050||c.height<680){
+      const initial=await current(page);
+      const back=page.locator('#f1Panel .cq-ux-return-to-visual');
+      assert.ok(await back.isVisible());
+      await back.click();await frame(page);
+      assert.equal(await page.evaluate(()=>document.activeElement.id),'cqMetroVisual');
+      assert.deepEqual(await current(page),initial);
+      await page.locator('#f3cToTask').click();
+      await reachable(page,label+' explicit return');
+      assert.deepEqual(await current(page),initial);
+    }
+    await choose(page,'M2');
+    await reachable(page,label+' direction');
+    await choose(page,'north_park');
+    await reachable(page,label+' platform');
+    await page.locator('#f1Stations button').nth(6).click();
+    await reachable(page,label+' disruption');
+    await noOverflow(page);
+    assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
+    if(!c.stress&&(c.width===390||c.height===650))await capture(page,'final3-reachable-'+label);
+   }finally{await page.close();}
+  }
+ }finally{await browser.close();}
+});

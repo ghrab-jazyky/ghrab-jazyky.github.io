@@ -185,7 +185,7 @@ test('A+ F-17: mixed metro map footer localizes the surface City Museum in all f
 
 test('GA-014: heading, scrollable panels and metro landmarks across 40 language/state combinations',{timeout:240000},async()=>{
  const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
- const rules=['page-has-heading-one','scrollable-region-focusable','landmark-complementary-is-top-level'];
+ const rules=['page-has-heading-one','heading-order','scrollable-region-focusable','landmark-complementary-is-top-level'];
  let checked=0;
  try{
   for(const lang of ['en','es','de','fr']){

@@ -173,7 +173,9 @@ test('Stage C preserves offline integrity, original geometry and explicit speaki
  assert.match(html,/portalEnd=\{c:3,r:2\},museum=\{c:3,r:1\}/);
  assert.doesNotMatch(html,/SpeechRecognition|webkitSpeechRecognition|navigator\.mediaDevices\.getUserMedia/);
  assert.match(html,/completedLegs:state\.completedLegs\.concat/);
- assert.match(html,/if\(state\.done\.size===8\)renderCompletionSummary\(\)/);
+ assert.match(html,/if\(state\.done\.size===8\)\{\s*const summary=renderCompletionSummary\(\);/);
+ assert.match(html,/if\(!completionPresented\)\{completionPresented=true;newCompletion=summary;\}/);
+ assert.match(html,/else completionPresented=false;/);
  assert.match(html,/function cityDecisionPlan\(level,n\)/);
  assert.doesNotMatch(html,/realized\+" "\+profile\(\)\.model/);
 });
