@@ -117,7 +117,8 @@ test('GA-021: all 48 canonical/alternative language, CEFR and mission journeys u
     const expected=oracle[n][variant];
     assert.deepEqual({stops:summary.stops,transfers:summary.transfers,minutes:summary.simulatedMinutes},expected,key+' independent cost oracle');
     const units={en:['rail segment','rail segments','line change','line changes'],es:['tramo de metro','tramos de metro','transbordo','transbordos'],de:['gefahrener Abschnitt','gefahrene Abschnitte','Linienwechsel','Linienwechsel'],fr:['tronçon en métro','tronçons en métro','changement de ligne','changements de ligne']}[lang];
-    const count=expected.stops+' '+units[expected.stops===1?0:1]+' · '+expected.transfers+' '+units[expected.transfers===1?2:3];
+    const one=n=>n===1||(lang==='fr'&&n===0);
+    const count=expected.stops+' '+units[one(expected.stops)?0:1]+' · '+expected.transfers+' '+units[one(expected.transfers)?2:3];
     assert.ok(model.includes(count),key+' exact actual ledger counts');
     assert.ok(model.endsWith(' '+expected.minutes+'.'),key+' exact actual ledger minutes');
     assert.deepEqual(errors,[],key+' JS errors');assert.deepEqual(remote,[],key+' network');

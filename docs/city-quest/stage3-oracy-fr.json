@@ -38,8 +38,8 @@
     },
     "2": {
       "B2": "Expliquez votre itinéraire à pied vers le musée municipal en passant par la place du Marché. Comparez-le à un autre trajet visible sur le plan et justifiez le passage obligatoire par la place.",
-      "C1": "Un groupe doit passer par la Bibliothèque avant de rejoindre le musée municipal. Donnez un itinéraire structuré et signalez un carrefour où il risque de se tromper.",
-      "C2": "Vous devez rejoindre le musée municipal en passant par la Bibliothèque sans emprunter la rue barrée pour travaux. Comparez un raccourci apparent, mais fermé, à une route valable et expliquez les contraintes avec tact."
+      "C1": "Un groupe doit passer par la bibliothèque avant de rejoindre le musée municipal. Donnez un itinéraire structuré et signalez un carrefour où il risque de se tromper.",
+      "C2": "Vous devez rejoindre le musée municipal en passant par la bibliothèque sans emprunter la rue barrée pour travaux. Comparez un raccourci apparent, mais fermé, à une route valable et expliquez les contraintes avec tact."
     },
     "3": {
       "B2": "Un visiteur vous demande comment rejoindre le musée municipal et si le trajet est compliqué. Donnez des indications claires et ajoutez un repère qui pourra éviter une erreur.",
@@ -69,7 +69,7 @@
     "8": {
       "B2": "Votre groupe doit rejoindre plusieurs étapes dans Riverton avant le musée. Résumez l'ordre des visites, justifiez un choix d'itinéraire et comparez-le à un raccourci tentant.",
       "C1": "Guidez votre partenaire à travers tous les points de passage obligatoires. Signalez une erreur d'orientation possible et expliquez comment la corriger sans recommencer tout le parcours.",
-      "C2": "Un visiteur souhaite commencer par la Bibliothèque, mais la mission impose l'ordre Place du Marché → Bibliothèque → Musée municipal. Expliquez cette contrainte avec tact, conciliez les priorités du groupe et proposez un itinéraire réalisable."
+      "C2": "Un visiteur souhaite commencer par la bibliothèque, mais la mission impose l'ordre Place du Marché → Bibliothèque → Musée municipal. Expliquez cette contrainte avec tact, conciliez les priorités du groupe et proposez un itinéraire réalisable."
     }
   },
   "metro": {

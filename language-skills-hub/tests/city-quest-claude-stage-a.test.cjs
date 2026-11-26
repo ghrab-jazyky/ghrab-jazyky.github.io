@@ -177,3 +177,22 @@ test('GA-013/014/015: accessible main heading, focusable guide and metro region 
  assert.match(html,/vector-effect:non-scaling-stroke/);
  assert.match(html,/function setRovingStation\(id,focus=false\)/);
 });
+
+
+test('GA-FINAL 1: re-audit language findings are fixed',()=>{
+ const expected={
+  en:['Is the library open at this time?','Have you already addressed the parcel?'],
+  es:['¿Está abierta la biblioteca a esta hora?','¿Ya ha puesto la dirección en el paquete?'],
+  de:['Hat die Bibliothek um diese Zeit geöffnet?','Haben Sie das Paket schon adressiert?'],
+  fr:['La bibliothèque est-elle ouverte à cette heure-ci\u202f?',"Avez-vous déjà indiqué l'adresse sur le colis\u202f?"]
+ };
+ const decisions=lineData('cqCityDecision');
+ for(const [lang,pair] of Object.entries(expected))assert.deepEqual(decisions[lang][1].C1.slice(2,4),pair);
+ const text=JSON.stringify(lineData('cqRouteReview').fr);
+ for(const phrase of ['Supposez que la correspondance à University soit toujours disponible.','Supposez que toutes les lignes soient fermées.',"Supposez que l'entrée au musée soit garantie.",'Supposez que le terminus soit toujours la destination du voyageur.','Passez de la M2 à la M1 à Central Station, puis à la M3 à Museum Quarter.'])assert.ok(text.includes(phrase),phrase);
+ assert.doesNotMatch(html,/column \d+, row \d+|Museum entrance, one block south|Pass the Library|legal alternative|Summarize|recognizable|Riverton Underground|Has entrado en Market Square\.|Du bist bei Market Square\.|Accès depuis la rue :|Vous êtes arrivé à|Vous êtes descendu du train|Vous êtes passé par la Bibliothèque/);
+ assert.match(html,/station:"Mission",completed:/);
+ assert.match(html,/station:"Misión",completed:/);
+ assert.ok(html.includes("Accès depuis la rue\u202f:"));
+ assert.match(html,/metro entrance, one block south of City Museum/i);
+});

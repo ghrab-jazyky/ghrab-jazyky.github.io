@@ -86,15 +86,16 @@ const cases=[];
 function caption(c){return c.language.toUpperCase()+'/'+c.level+'/'+c.mode;}
 const journeyUnits={en:['rail segment','rail segments','line change','line changes'],es:['tramo de metro','tramos de metro','transbordo','transbordos'],de:['gefahrener Abschnitt','gefahrene Abschnitte','Linienwechsel','Linienwechsel'],fr:['tronçon en métro','tronçons en métro','changement de ligne','changements de ligne']};
 function expectedJourneyCounts(language,stops,transfers){
- const u=journeyUnits[language];return stops+' '+u[stops===1?0:1]+' · '+transfers+' '+u[transfers===1?2:3];
+ const u=journeyUnits[language],one=n=>n===1||(language==='fr'&&n===0);return stops+' '+u[one(stops)?0:1]+' · '+transfers+' '+u[one(transfers)?2:3];
 }
 function assertCountGrammar(language,text){
  const u=journeyUnits[language];
  for(const offset of [0,2]){
   if(u[offset]===u[offset+1])continue;
   const escaped=s=>s.replace(/[.*+?^$(){}|[\]\\]/g,'\\$&');
-  assert.doesNotMatch(text,new RegExp('\\b1 '+escaped(u[offset+1])+'(?![\\p{L}])','u'));
-  assert.doesNotMatch(text,new RegExp('\\b(?:0|[2-9]|[1-9][0-9]+) '+escaped(u[offset])+'(?![\\p{L}])','u'));
+  const singular=language==='fr'?'[01]':'1',plural=language==='fr'?'(?:[2-9]|[1-9][0-9]+)':'(?:0|[2-9]|[1-9][0-9]+)';
+  assert.doesNotMatch(text,new RegExp('\\b'+singular+' '+escaped(u[offset+1])+'(?![\\p{L}])','u'));
+  assert.doesNotMatch(text,new RegExp('\\b'+plural+' '+escaped(u[offset])+'(?![\\p{L}])','u'));
  }
 }
 
@@ -276,6 +277,10 @@ async function metroMission(page,language,level,n){
    assert.ok(g.detail&&g.count===14&&g.median>=11,'Unreadable network at '+n+'/'+phase+' '+JSON.stringify(g));
   }
   if(['walk-to-entrance','walk-to-museum'].includes(phase)){
+   if(phase==='walk-to-museum'){
+    const hud={en:'Walk north to City Museum',es:'Camina hacia el norte hasta el Museo de la Ciudad',de:'Gehe nach Norden zum Stadtmuseum',fr:"Marchez vers le nord jusqu'au musée municipal"}[language];
+    assert.equal(await page.locator('#f2Quick .f2-hud-instruction').textContent(),hud,language+'/'+level+' localized M08 walking HUD');
+   }
    const dest=await page.evaluate(p=>p==='walk-to-entrance'?window.RivertonMetroGame.portalStart:window.RivertonMetroGame.museum,phase);
    const route=[];
    let x=state.surface.c,y=state.surface.r;
@@ -399,6 +404,7 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
       if(c.mode==='mixed'&&n>=5)
        metroCounts[n]=await metroMission(page,c.language,c.level,n);
       else await cityMission(page,c.language,c.level,n);
+      assert.doesNotMatch(await page.locator('#f1Panel').innerText(),/column \d+, row \d+/i,'Internal grid coordinates must never be shown');
       const g=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth}));
       geometryEvidence.push({case:caption(c),mission:n,...g});
       assert.ok(g.scrollWidth<=g.width+1,'Horizontal overflow '+caption(c)+' mission '+n);

@@ -528,3 +528,38 @@ test('GA-013/015: all-language accessible landmarks and one keyboard stop for me
   }
  }finally{await browser.close();}
 });
+
+
+test('GA-FINAL 1: M08 open-route prompt and corrected metro inspector/PA',{timeout:120000},async()=>{
+ const browser=await launch();
+ const prompts={en:'Use the map and choose an open street towards the next required place.',es:'Usa el plano y elige una calle abierta hacia el siguiente lugar obligatorio.',de:'Wähle auf dem Stadtplan eine offene Straße zum nächsten vorgegebenen Ort.',fr:'Utilisez le plan et choisissez une rue ouverte en direction du prochain lieu à visiter.'};
+ try{
+  for(const lang of Object.keys(prompts)){
+   const {page,errors,remote}=await open(browser,lang,'C1',desktop[0]);
+   try{
+    await page.locator('#f1Stations button').nth(7).click();
+    assert.equal(await page.locator('#f1Panel .f2-status').innerText(),prompts[lang],lang+' M08 initial status');
+    if(lang==='en'||lang==='es'){
+     const word=lang==='en'?'Mission':'Misión',restart=lang==='en'?'Restart this mission':'Reiniciar misión';
+     assert.match(await page.locator('#f1Panel .f2-kicker').textContent(),new RegExp('^'+word+' 08 / 08'));
+     assert.ok((await page.locator('#f1Panel .f2-actions').innerText()).includes(restart));
+    }
+    if(lang==='de')assert.equal(await page.locator('#f2LevelLabel').textContent(),'GER-Niveau');
+    await page.locator('#metroPilotToggle').click();
+    await page.locator('#f1Stations button').nth(4).click();
+    if(lang==='de'){
+     const pa=await page.evaluate(()=>window.RivertonMetroPublicAddress.pack('de','C1',window.CityQuestF2MetroBridge.current()).body);
+     assert.match(pa,/^Du bist an der Central Station\./);
+    }
+    if(lang==='en'){
+     const before=await current(page);
+     await page.locator('#metroNetworkSvg [data-metro-station="museum_quarter"]').focus();
+     await page.keyboard.press('Enter');
+     assert.match(await page.locator('#metroInspectorDetail').textContent(),/Surface connection: Metro entrance, one block south of City Museum\./);
+     assert.deepEqual(await current(page),before);
+    }
+    assert.deepEqual(errors,[]);assert.deepEqual(remote,[]);
+   }finally{await page.close();}
+  }
+ }finally{await browser.close();}
+});
