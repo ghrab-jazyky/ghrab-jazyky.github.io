@@ -22,7 +22,7 @@ const data=async page=>page.locator('#cards .card').evaluateAll(cards=>cards.map
  badge:c.querySelector('.catalog-variant')?.textContent,
  badgeAria:c.querySelector('.catalog-variant')?.getAttribute('aria-label'),
  open:c.querySelector('a.action.primary')?.href,
- results:[...c.querySelectorAll('a')].find(a=>a.textContent==='VÝSLEDKY')?.href,
+ results:[...c.querySelectorAll('a')].find(a=>a.textContent===(c.dataset.topicId==='rl-asteroids'?'Výsledky':'VÝSLEDKY'))?.href,
  test:c.querySelector('a.action.test')?.href
 })));
 function titlesEqualById(before,after){
