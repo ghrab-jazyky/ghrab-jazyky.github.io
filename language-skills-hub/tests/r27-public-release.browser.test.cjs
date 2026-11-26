@@ -20,8 +20,16 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth);
     assert.ok(overflow<=2,'Catalog overflow '+skill+': '+overflow);
     if(expected){
-     const all=await buttons.allTextContents();
-     assert.ok(all.every(x=>x==='TEST'));
+     const all=await buttons.evaluateAll(nodes=>nodes.map(node=>({
+      id:node.closest('.card').dataset.topicId,label:node.textContent,
+      aria:node.getAttribute('aria-label'),transform:getComputedStyle(node).textTransform
+     })));
+     for(const button of all){
+      const expectedLabel=button.id==='rl-asteroids'?'Test':'TEST';
+      assert.equal(button.label,expectedLabel,button.id);
+      assert.ok(button.aria.startsWith(expectedLabel+': '),button.id);
+      if(button.id==='rl-asteroids')assert.equal(button.transform,'none');
+     }
     }
    }
    await page.goto(withParams('index.html',{skill:'cteni',lang:'es',level:'C1'}));

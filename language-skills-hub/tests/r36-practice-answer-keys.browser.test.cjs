@@ -55,7 +55,18 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    const cards=page.locator('#cards .card');
    await cards.first().waitFor({timeout:20000});
    assert.equal(await cards.count(),5);
-   assert.equal(await cards.locator('a').filter({hasText:'VÝSLEDKY'}).count(),5);
+   assert.equal(await cards.locator('a').filter({hasText:/^výsledky$/i}).count(),5);
+   const resultLabels=await cards.locator('a').filter({hasText:/^výsledky$/i}).evaluateAll(nodes=>nodes.map(node=>({
+    id:node.closest('.card').dataset.topicId,label:node.textContent,
+    aria:node.getAttribute('aria-label'),transform:getComputedStyle(node).textTransform
+   })));
+   assert.ok(resultLabels.some(button=>button.id==='rl-asteroids'));
+   for(const button of resultLabels){
+    const expectedLabel=button.id==='rl-asteroids'?'Výsledky':'VÝSLEDKY';
+    assert.equal(button.label,expectedLabel,button.id);
+    assert.ok(button.aria.startsWith(expectedLabel+': '),button.id);
+    if(button.id==='rl-asteroids')assert.equal(button.transform,'none');
+   }
    await page.goto(href('index.html',{skill:'poslech'}));
    await cards.first().waitFor({timeout:20000});
    assert.equal(await cards.count(),6,'Six Listening cards are available with R72');

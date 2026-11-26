@@ -161,8 +161,9 @@ function card(e){
  actions.append(open,share);
  if(['cteni','poslech'].includes(e.skill)){
   const key=one('a','action','VÝSLEDKY');
+  if(e.id==='rl-asteroids')key.textContent='Výsledky';
   key.href=practiceKeyUrl(e);key.target='_blank';key.rel='noopener noreferrer';
-  key.setAttribute('aria-label','VÝSLEDKY: učitelský klíč k procvičování – '+translation.title);
+  key.setAttribute('aria-label',key.textContent+': učitelský klíč k procvičování – '+translation.title);
   key.title='Správná řešení procvičovacích úloh, nikoli výsledky žáků. Část úloh se opakuje i v místních testech. Veřejný podklad bez přihlášení.';
   actions.appendChild(key);
   if(e.id==='rl-asteroids'){
@@ -174,6 +175,7 @@ function card(e){
  }
  if(localSelfCheck&&['cteni','poslech'].includes(e.skill)){
   const check=one('a','action test','TEST');
+  if(e.id==='rl-asteroids')check.textContent='Test';
   check.href=testSetupUrl(e);check.target='_blank';check.rel='noopener noreferrer';
   // Temporary maintenance: evaluate at click time because a preview link can
   // enable the local flag without reloading this catalog.
@@ -182,7 +184,7 @@ function card(e){
     event.preventDefault();window.LSHTemporaryTestLock.showNotice();
    }
   });
-  check.setAttribute('aria-label','TEST: '+translation.title);
+  check.setAttribute('aria-label',check.textContent+': '+translation.title);
   check.title='Otevřít test k tématu. Výsledek je místní a případnou školní známku musí ověřit učitel.';
   actions.appendChild(check);
  }
