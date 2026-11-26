@@ -92,7 +92,7 @@
    const previous=editorReturn;editorReturn=null;noteDraft=null;editingId=null;
    if(noteInput)noteInput.value='';
    if(noteBox)noteBox.hidden=true;
-   if(restoreFocus)focusReturn(previous);
+   if(restoreFocus)focusReturn(previous,true);
   }
   const editorOpen=()=>!!noteBox&&!noteBox.hidden;
   noteCancel.addEventListener('click',()=>{closeEditor(true);cancelPending();setStatus('Úprava poznámky zrušena.')});
@@ -594,8 +594,8 @@
   // Hover remains live until the pointer moves off annotated text. Removing
   // a hovered question during a repaint can emit pointerout with a null
   // relatedTarget, so that event is not a reliable viewport-exit signal.
-  root.addEventListener('blur',()=>{if(!popupPinned)hideNote();cancelPending()});
-  document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelPending()});
+  root.addEventListener('blur',()=>{if(!popupPinned)hideNote();if(enabled)cancelPending()});
+  document.addEventListener('visibilitychange',()=>{if(enabled&&document.hidden)cancelPending()});
   for(const container of containers){
    container.addEventListener('click',event=>{
     if(!enabled||hasLocked())return;

@@ -111,4 +111,4 @@
 @media print{.lsh-anno-confirm-selection{display:none!important}}
 
 /* Pending confirmation never overlays a locked timed session. */
-body:has(#sessionLock:not([hidden])) .lsh-anno-confirm-selection{display:none!important}
+body:has(#sessionLock:not([hidden])) .lsh-anno-confirm-selection,body:has(#sessionLock:not([hidden])) .lsh-annotation-popover{display:none!important}
