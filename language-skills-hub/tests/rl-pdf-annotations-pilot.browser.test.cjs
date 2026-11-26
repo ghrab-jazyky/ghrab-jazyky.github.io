@@ -388,3 +388,160 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   }finally{await browser.close()}
  });
 }
+
+
+// F1: direct URLs, identity, canonical offsets, write conflicts and populated layout.
+const f1URL='http://127.0.0.1:8765/language-skills-hub/cteni/asteroids/index.html';
+const f1Key='lsh-reading-practice-annotations-v1:rl-asteroids:en:B2';
+const f1Para='#readingBody p[data-annotation-anchor="p:0"]';
+async function f1Open(page,lang='en',level='B2'){
+ await page.goto(f1URL+'?lang='+lang+'&level='+level,{waitUntil:'load'});
+ const toggle=page.locator('.topbar .controls .lsh-anno-header-toggle');
+ await toggle.waitFor({state:'visible'});
+ assert.equal(await page.locator('.lsh-anno-header-toggle').count(),1);
+ assert.equal(await page.locator('#lookup .lsh-anno-header-toggle').count(),0);
+ await toggle.click();
+ await page.locator('[data-anno-controls]:visible').waitFor();
+}
+async function f1Select(page,selector,start,end){
+ return page.evaluate(({selector,start,end})=>{
+  const anchor=document.querySelector(selector);
+  const walk=document.createTreeWalker(anchor,NodeFilter.SHOW_TEXT);
+  let n,pos=0,a,b;
+  while((n=walk.nextNode())){
+   const next=pos+n.textContent.length;
+   if(!a&&start>=pos&&start<=next)a=[n,start-pos];
+   if(a&&end>=pos&&end<=next){b=[n,end-pos];break;}
+   pos=next;
+  }
+  if(!a||!b)throw Error('Missing range '+selector);
+  const r=document.createRange();r.setStart(...a);r.setEnd(...b);
+  getSelection().removeAllRanges();getSelection().addRange(r);
+  document.dispatchEvent(new Event('selectionchange'));
+  return r.toString();
+ },{selector,start,end});
+}
+async function f1Note(page,selector,start,end,note){
+ await f1Select(page,selector,start,end);
+ await page.locator('[data-anno-start-note]').click();
+ await page.locator('[data-anno-note]:visible').fill(note);
+ await page.locator('[data-anno-save-note]').click();
+ await page.locator('[data-anno-note-box]').waitFor({state:'hidden'});
+}
+const f1Records=(page,key=f1Key)=>page.evaluate(k=>JSON.parse(localStorage.getItem(k)||'[]'),key);
+for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+ test('F1 '+name+': 24 direct language/level URLs mount the annotation toggle', {timeout:160000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:390,height:844}});
+   for(const lang of ['en','es','de','fr'])for(const level of ['A1','A2','B1','B2','C1','C2']){
+    await f1Open(page,lang,level);
+    assert.equal(await page.locator('#language').inputValue(),lang);
+    assert.equal(await page.locator('#levels [aria-pressed="true"]').getAttribute('data-level'),level);
+   }
+  }finally{await browser.close()}
+ });
+ test('F1 '+name+': stable note IDs, draft guard, stale selection, narrow populated rows',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1200,height:900}});
+   await f1Open(page);
+   await f1Note(page,f1Para,0,4,'A');await f1Note(page,f1Para,5,9,'B');await f1Note(page,f1Para,10,15,'C');
+   const initial=await f1Records(page);
+   assert.equal(new Set(initial.map(x=>x.id)).size,3);
+   const rows=page.locator('.lsh-annotation-item');
+   await rows.nth(1).getByRole('button',{name:'Upravit anotaci 2'}).click();
+   await page.locator('[data-anno-note]').fill('B edited');
+   await rows.nth(0).getByRole('button',{name:'Smazat anotaci 1'}).click();
+   await page.locator('[data-anno-save-note]').click();
+   assert.deepEqual((await f1Records(page)).map(x=>[x.id,x.note]),[[initial[1].id,'B edited'],[initial[2].id,'C']]);
+   await rows.first().getByRole('button',{name:'Upravit anotaci 1'}).click();
+   await page.locator('[data-anno-note]').fill('unsaved');
+   await page.locator('#levels [data-level="C1"]').click();
+   assert.equal(await page.locator('#levels [aria-pressed="true"]').getAttribute('data-level'),'B2');
+   assert.equal(await page.locator('[data-anno-note]').inputValue(),'unsaved');
+   await page.locator('[data-anno-cancel-note]').click();
+   await f1Select(page,f1Para,0,4);
+   await page.evaluate(()=>{getSelection().removeAllRanges();document.dispatchEvent(new Event('selectionchange'))});
+   await page.locator('[data-anno-color="yellow"]').click();
+   assert.equal((await f1Records(page)).length,2,'Collapsed range must not be stored');
+   await page.locator('[data-anno-color="yellow"]').click();
+   await f1Select(page,f1Para,0,4);
+   await page.evaluate(()=>{
+    const a=document.querySelector('#readingBody p'),b=a.nextElementSibling;
+    const r=document.createRange();r.setStart(a.firstChild,0);r.setEnd(b.firstChild,4);
+    getSelection().removeAllRanges();getSelection().addRange(r);document.dispatchEvent(new Event('selectionchange'));
+   });
+   await page.locator('[data-anno-color="green"]').click();
+   assert.equal((await f1Records(page)).length,2,'Cross-anchor selection must not reuse earlier text');
+   for(const width of [320,360,390,430,650,768,1024]){
+    await page.setViewportSize({width,height:850});
+    const m=await rows.first().evaluate(row=>{
+     const r=row.getBoundingClientRect(),l=row.querySelector('.lsh-annotation-item-label').getBoundingClientRect();
+     return {row:r.width,label:l.width,actionsRight:row.querySelector('.lsh-annotation-actions').getBoundingClientRect().right,rowRight:r.right};
+    });
+    assert.ok(m.label>=Math.min(140,m.row*.75),name+' '+width+' unusable text '+JSON.stringify(m));
+    assert.ok(m.actionsRight<=m.rowRight+2,name+' '+width+' actions overflow');
+   }
+  }finally{await browser.close()}
+ });
+ test('F1 '+name+': exact source ranges survive reveal/re-hide across 16 gap variants',{timeout:160000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1200,height:900}});
+   for(const lang of ['en','es','de','fr'])for(const level of ['B1','B2','C1','C2']){
+    await f1Open(page,lang,level);
+    const key='lsh-reading-practice-annotations-v1:rl-asteroids:'+lang+':'+level;
+    const gap=await page.evaluate(()=>{
+     const v=DATA[document.getElementById('language').value][document.querySelector('#levels [aria-pressed="true"]').dataset.level];
+     const selector='#readingBody [data-annotation-anchor="p:'+v.gap.p+'"]';
+     return {selector,text:document.querySelector(selector).textContent,source:v.paragraphs[v.gap.p]};
+    });
+    assert.ok(gap.text.startsWith('[…] '),lang+'/'+level);
+    const quote=await f1Select(page,gap.selector,4,Math.min(34,gap.text.length));
+    await page.locator('[data-anno-color="yellow"]').click();
+    const rec=await f1Records(page,key);assert.equal(rec.length,1);assert.equal(rec[0].basis,'source-v1');
+    assert.equal(gap.source.slice(rec[0].start,rec[0].end),quote);
+    const painted=()=>page.evaluate(()=>[...CSS.highlights.get('lsh-anno-yellow')].map(r=>r.toString()));
+    assert.deepEqual(await painted(),[quote]);
+    await page.locator('#checkAll').click();assert.deepEqual(await painted(),[quote],lang+'/'+level+' reveal');
+    await page.locator('#skillTabs [data-skill="structure"]').click();await page.locator('#clear').click();
+    assert.deepEqual(await painted(),[quote],lang+'/'+level+' re-hide');
+   }
+  }finally{await browser.close()}
+ });
+ test('F1 '+name+': opening a choice note does not answer; stale tab and failed write roll back',{timeout:120000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const ctx=await browser.newContext({viewport:{width:1200,height:900}});
+   const a=await ctx.newPage(),b=await ctx.newPage();
+   await f1Open(a);await f1Open(b);
+   const choice='#questions .choice span[data-annotation-anchor]';
+   await f1Note(a,choice,0,4,'choice note');
+   const radio=a.locator('#questions .choice input').first();
+   const point=await a.locator(choice).first().evaluate(el=>{
+    el.scrollIntoView({block:'center'});
+    const r=document.createRange();r.setStart(el.firstChild,0);r.setEnd(el.firstChild,4);
+    const x=r.getBoundingClientRect();return {x:x.left+x.width/2,y:x.top+x.height/2};
+   });
+   assert.equal(await radio.isChecked(),false);
+   await a.mouse.click(point.x,point.y);
+   await a.locator('.lsh-annotation-popover-pinned:not([hidden])').waitFor();
+   assert.equal(await radio.isChecked(),false,'Note preview must not answer');
+   await a.locator('.lsh-annotation-popover-close').click();await radio.click();
+   assert.equal(await radio.isChecked(),true,'Direct radio remains functional');
+   await f1Select(b,f1Para,0,4);await b.locator('[data-anno-color="yellow"]').click();
+   assert.equal(await b.locator('.lsh-annotation-item').count(),0);
+   assert.equal((await f1Records(a)).length,1);
+   assert.match(await b.locator('[data-anno-status]').textContent(),/jiné záložce/);
+   await a.evaluate(()=>{const original=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){
+    if(k.startsWith('lsh-reading-practice-annotations-v1:'))throw Error('Simulated quota failure');
+    return original.call(this,k,v);
+   }});
+   await f1Select(a,f1Para,0,4);await a.locator('[data-anno-color="green"]').click();
+   assert.equal(await a.locator('.lsh-annotation-item').count(),1);
+   await a.locator('.lsh-annotation-item').first().getByRole('button',{name:'Smazat anotaci 1'}).click();
+   assert.equal(await a.locator('.lsh-annotation-item').count(),1);assert.equal((await f1Records(a)).length,1);
+  }finally{await browser.close()}
+ });
+}

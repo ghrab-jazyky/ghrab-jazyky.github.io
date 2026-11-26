@@ -47,6 +47,7 @@
  }
  // Resolve canonical source offsets, including the temporarily concealed sentence.
  function sourceRange(item,map){
+  if(typeof item.text!=='string'||!item.text.length||item.end-item.start!==item.text.length)return null;
   if(!map)return item.basis==='source-v1'?null:{start:item.start,end:item.end};
   const {source,shift=0,min=0,gapShift=0,gapPrefix=0}=map;
   const offsets=item.basis==='source-v1'?[item.start]:
@@ -140,7 +141,7 @@
   // CSS Highlights preserve the original question and answer DOM, but do not
   // receive pointer events. Hit-test only stored note ranges on the source text.
   const popup=root.document.createElement('aside');
-  popup.className='lsh-annotation-popover';popup.hidden=true;
+  popup.className='lsh-annotation-popover';popup.hidden=true;popup.lang='cs';
   popup.setAttribute('aria-label','Uložená poznámka');
   const popupLabel=root.document.createElement('strong');
   popupLabel.className='lsh-annotation-popover-label';popupLabel.textContent='Poznámka';
@@ -234,7 +235,8 @@
     const description=document.createElement('span');description.className='lsh-annotation-item-label';
     const snippet=item.text.length>65?item.text.slice(0,62)+'…':item.text;
     description.textContent=(item.kind==='underline'?'Podtržení':item.kind==='note'?'Poznámka':'Zvýraznění')+
-     ' · '+snippet+(item.note?' — '+item.note:'');
+     ' · '+snippet+(item.note?' — '+item.note:'')+
+      (!itemRange(getAnchor(item.anchor),item)?' · Úsek není právě zobrazen.':'');
     const remove=document.createElement('button');remove.type='button';
     remove.className='action ghost';remove.textContent='Smazat';
     remove.setAttribute('aria-label','Smazat anotaci '+(index+1));
@@ -462,7 +464,12 @@
   root.addEventListener('blur',()=>{if(!popupPinned)hideNote()});
   for(const container of containers){
    container.addEventListener('click',event=>{
-    if(!enabled||hasLocked()||!root.getSelection?.()?.isCollapsed)return;
+    if(!enabled||hasLocked())return;
+    if(event.target.closest?.('button,input,select,textarea,a'))return;
+    if(!root.getSelection?.()?.isCollapsed){
+     if(event.target.closest?.('label')&&targetFor(event.target))event.preventDefault();
+     return;
+    }
     const index=noteAtPoint(event.clientX,event.clientY,event.target);
     if(index<0)return;
     // Annotated label TEXT opens the note only; the radio itself still answers.

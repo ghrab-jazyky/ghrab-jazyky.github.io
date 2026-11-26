@@ -57,7 +57,8 @@
  function currentSaved(){
   try{
    expectedRaw=localStorage.getItem(storageKey(identity()));
-   const records=JSON.parse(expectedRaw||'[]');readable=Array.isArray(records);
+   const records=JSON.parse(expectedRaw||'[]');
+   readable=Array.isArray(records)&&engine.normalized(records).length===records.length;
    return readable?records:[];
   }catch(_){readable=false;return []}
  }
@@ -115,6 +116,16 @@
  observer.observe(reader,{childList:true,subtree:true});
  observer.observe(tasks,{childList:true,subtree:true});
  sync();
+ // A variant/skill change must not silently discard an unfinished note.
+ function blockWhileEditing(event){
+  if(!api.hasDraft())return;
+  event.preventDefault();event.stopImmediatePropagation();
+  if(event.target===root.getElementById('language'))event.target.value=currentIdentity.split(':')[0];
+  host.querySelector('[data-anno-status]').textContent='Nejprve uložte nebo zrušte rozpracovanou poznámku.';
+ }
+ root.getElementById('language')?.addEventListener('change',blockWhileEditing,true);
+ for(const id of ['levels','skillTabs','reset','check','checkAll','clear'])root.getElementById(id)?.addEventListener('click',blockWhileEditing,true);
+ root.getElementById('skillTabs')?.addEventListener('keydown',event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key))blockWhileEditing(event)},true);
  // Do not overwrite a newer snapshot from a second tab.
  window.addEventListener('storage',event=>{
   if(event.key===storageKey(currentIdentity)&&event.newValue!==expectedRaw)
