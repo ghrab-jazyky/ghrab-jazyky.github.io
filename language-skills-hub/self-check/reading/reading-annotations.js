@@ -95,13 +95,14 @@
   const toolButtons=Array.from(host.querySelectorAll('[data-anno-color],[data-anno-underline],[data-anno-start-note]'));
   const make=(tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el;};
   const makeButton=(cls,text)=>{const el=make('button',cls,text);el.type='button';return el;};
+   const setText=(el,value)=>{if(el.textContent!==value)el.textContent=value;};
   const activeLabel=make('span','lsh-anno-active-label','Žádný nástroj');
   activeLabel.dataset.annoActiveTool='';
   const head=host.querySelector('.lsh-annotation-head');head?.appendChild(activeLabel);
   const help=host.querySelector('.lsh-annotation-help');
   if(help){const details=make('details','lsh-anno-help');details.append(make('summary',null,'Jak anotovat'));help.before(details);details.append(help);}
   const undo=makeButton('action lsh-anno-undo','↶ Zpět');undo.dataset.annoUndo='';
-  undo.setAttribute('aria-label','Vrátit poslední změnu');undo.title='Vrátit poslední změnu anotací v této variantě';undo.disabled=true;
+  undo.setAttribute('aria-label','Vrátit poslední změnu');undo.title='Vrátit poslední změnu (nejvýše 20 změn v aktuální variantě, do obnovení stránky)';undo.disabled=true;
   primary?.append(undo);
   const library=make('details','lsh-anno-library');library.open=true;library.dataset.annoLibrary='';
   const librarySummary=make('summary','lsh-anno-library-summary');
@@ -245,14 +246,14 @@
   }
   function syncChrome(){
    const active=armed?toolName():'Žádný nástroj';
-   activeLabel.textContent=armed?'Aktivní: '+active:active;activeLabel.dataset.annoSwatch=armed==='highlight'?color:armed||'none';
+   setText(activeLabel,armed?'Aktivní: '+active:active);activeLabel.dataset.annoSwatch=armed==='highlight'?color:armed||'none';
    const unavailable=!enabled||hasLocked()||editorOpen()||!!(clearConfirm&&!clearConfirm.hidden);
    undo.disabled=unavailable||!undoHistory.length;dockUndo.disabled=undo.disabled;
-   libraryCount.textContent=String(items.length);dockNotes.textContent='Moje anotace ('+items.length+')';
+   setText(libraryCount,String(items.length));setText(dockNotes,'Moje anotace ('+items.length+')');
    empty.hidden=items.length!==0;if(list)list.hidden=!items.length;
-   dockTitle.textContent=armed?'Aktivní: '+active:'Vyberte nástroj';
+   setText(dockTitle,armed?'Aktivní: '+active:'Vyberte nástroj');
    const short=armed==='highlight'?({yellow:'žlutě',green:'zeleně',pink:'růžově',blue:'modře'}[color]):armed==='underline'?'podtržení':armed==='note'?'poznámka':'';
-   dockToggle.textContent=short?'Nástroje · '+short:'Nástroje';dockToggle.dataset.annoSwatch=armed==='highlight'?color:armed||'none';
+   setText(dockToggle,short?'Nástroje · '+short:'Nástroje');dockToggle.dataset.annoSwatch=armed==='highlight'?color:armed||'none';
    for(const {source,button} of shortcuts){button.setAttribute('aria-pressed',source.getAttribute('aria-pressed')||'false');button.disabled=unavailable||source.disabled;}
    scheduleDock();
   }

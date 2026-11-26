@@ -865,3 +865,29 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   }finally{await browser.close()}
  });
 }
+
+
+for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+ test('F3 '+name+': timed session lock hides quick tools and rejects undo writes',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1024,height:850}});
+   await page.goto(base+'index.html?topic=rl-asteroids&lang=en&level=B2&timer=5&attempt=f3annotationlock123');
+   await page.locator('#sessionStart').click();
+   await page.locator('#workspace:not([hidden])').waitFor({timeout:30000});
+   await page.locator('#readingAnnotationToggle').click();
+   await f2SetSelection(page,'#readingParagraphs p[data-annotation-anchor="p:0"]',0,8,null);
+   await page.locator('[data-anno-color="yellow"]').click();
+   const items=page.locator('.lsh-annotation-item'),undo=page.locator('[data-anno-undo]');
+   assert.equal(await items.count(),1);assert.equal(await undo.isDisabled(),false);
+   const before=await page.locator('#counter').textContent();
+   await page.locator('body').evaluate(el=>el.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true})));
+   await page.locator('#sessionLock').waitFor({state:'visible',timeout:10000});
+   assert.equal(await page.locator('.lsh-anno-dock').isVisible(),false);
+   assert.equal(await page.locator('.lsh-anno-confirm-selection').isVisible(),false);
+   await undo.evaluate(el=>el.click());
+   assert.equal(await items.count(),1,'Locked session must reject undo');
+   assert.equal(await page.locator('#counter').textContent(),before);
+  }finally{await browser.close()}
+ });
+}
