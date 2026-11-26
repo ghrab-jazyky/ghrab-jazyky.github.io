@@ -728,3 +728,140 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   }finally{await browser.close()}
  });
 }
+
+
+// F3: rendered geometry, real controls and reversible persisted mutations.
+// These are layout/interaction contracts, not physical device screenshots.
+for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+ test('F3 '+name+': undo is scoped, persisted, atomic on failure and never discards a draft',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   await f1Open(page);
+   const undo=page.locator('[data-anno-undo]');
+   const count=page.locator('[data-anno-count]');
+   assert.ok(await undo.isDisabled());assert.equal(await count.textContent(),'0');
+   await f1Select(page,f1Para,0,4);await page.locator('[data-anno-color="yellow"]').click();
+   assert.equal(await count.textContent(),'1');
+   assert.equal(await undo.isDisabled(),false);
+   await undo.click();assert.deepEqual(await f1Records(page),[]);
+   assert.ok(await undo.isDisabled());
+   await f1Note(page,f1Para,0,4,'Original');
+   const original=await f1Records(page);
+   const edit=page.locator('.lsh-annotation-item').first().getByRole('button',{name:'Upravit anotaci 1'});
+   await edit.click();
+   assert.ok(await undo.isDisabled());
+   assert.equal(await page.locator('[data-anno-editor-quote]').textContent(),'„'+original[0].text+'“');
+   assert.equal(await page.locator('[data-anno-note-count]').textContent(),'8 / 500');
+   await page.locator('[data-anno-note]').fill('Changed');
+   assert.equal(await page.locator('[data-anno-note-count]').textContent(),'7 / 500');
+   await page.locator('[data-anno-save-note]').click();
+   assert.equal((await f1Records(page))[0].note,'Changed');
+   await undo.click();assert.deepEqual(await f1Records(page),original);
+   await page.locator('.lsh-annotation-item').first().getByRole('button',{name:'Smazat anotaci 1'}).click();
+   assert.equal((await f1Records(page)).length,0);
+   await undo.click();assert.deepEqual(await f1Records(page),original);
+   await page.locator('[data-anno-clear-all]').click();
+   assert.ok(await undo.isDisabled());
+   await page.locator('[data-anno-clear-confirm-action]').click();
+   assert.equal(await count.textContent(),'0');
+   assert.equal(await undo.isDisabled(),false);
+   await page.evaluate(()=>{
+    window.f3StorageSet=Storage.prototype.setItem;
+    Storage.prototype.setItem=function(k,v){if(k.startsWith('lsh-reading-practice-annotations-v1:'))throw Error('F3 write failed');return window.f3StorageSet.call(this,k,v)};
+   });
+   await undo.click();assert.deepEqual(await f1Records(page),[]);
+   assert.ok(!(await undo.isDisabled()),'Failed undo retains history');
+   assert.match(await page.locator('[data-anno-status]').textContent(),/nelze trvale uložit/);
+   await page.evaluate(()=>{Storage.prototype.setItem=window.f3StorageSet;delete window.f3StorageSet});
+   await undo.click();assert.deepEqual(await f1Records(page),original);
+   await page.locator('#levels [data-level="C1"]').click();
+   assert.ok(await undo.isDisabled());
+   await page.locator('#levels [data-level="B2"]').click();
+   assert.deepEqual(await f1Records(page),original);
+   assert.ok(await undo.isDisabled(),'History is local to current variant/session');
+  }finally{await browser.close()}
+ });
+ test('F3 '+name+': bounded 80-item library, readable editor and controls in both themes and five widths',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   await page.goto(f1URL+'?lang=en&level=B2');
+   await page.locator(f1Para).waitFor();
+   const quote=(await page.locator(f1Para).textContent()).slice(0,4);
+   const seeded=Array.from({length:80},(_,i)=>({id:'f3-'+i,anchor:'p:0',start:0,end:4,text:quote,kind:'note',color:'yellow',note:('Note '+i+' <script>alert(1)</script> '+('abcdefghij'.repeat(50))).slice(0,500)}));
+   await page.evaluate(({key,seeded})=>localStorage.setItem(key,JSON.stringify(seeded)),{key:f1Key,seeded});
+   await f1Open(page);
+   const library=page.locator('[data-anno-library]'),list=page.locator('[data-anno-list]');
+   assert.equal(await page.locator('[data-anno-count]').textContent(),'80');
+   assert.equal(await list.locator('.lsh-annotation-item').count(),80);
+   assert.equal(await list.locator('script').count(),0);
+   for(const theme of ['dark','light']){
+    if(await page.locator('html').getAttribute('data-theme')!==theme)await page.locator('#theme').click();
+    for(const width of [320,390,820,1180,1440]){
+     await page.setViewportSize({width,height:850});
+     const m=await list.evaluate(el=>{
+      const host=el.closest('#readingAnnotationTools'),r=host.getBoundingClientRect();
+      const row=el.querySelector('.lsh-annotation-item'),label=row.querySelector('.lsh-annotation-item-label');
+      const controls=[...host.querySelectorAll('.lsh-annotation-buttons button,.lsh-annotation-item:first-child button')];
+      const colorBtn=host.querySelector('[data-anno-color="yellow"]'),swatch=getComputedStyle(colorBtn,'::before');
+      return {client:el.clientHeight,scroll:el.scrollHeight,listWidth:el.clientWidth,listScrollWidth:el.scrollWidth,
+       hostWidth:r.width,hostScroll:host.scrollWidth,hostClient:host.clientWidth,labelWidth:label.getBoundingClientRect().width,
+       rowWidth:row.getBoundingClientRect().width,minButton:Math.min(...controls.map(b=>b.getBoundingClientRect().height)),
+       swatch:swatch.backgroundColor,swatchWidth:swatch.width};
+     });
+     assert.ok(m.client<=261&&m.scroll>m.client,theme+'/'+width+' list must be bounded '+JSON.stringify(m));
+     assert.ok(m.listScrollWidth<=m.listWidth+2&&m.hostScroll<=m.hostClient+2,theme+'/'+width+' annotation UI overflow '+JSON.stringify(m));
+     assert.ok(m.labelWidth>=Math.min(140,m.rowWidth*.75),theme+'/'+width+' cramped text '+JSON.stringify(m));
+     assert.ok(m.minButton>=44,theme+'/'+width+' target too small '+JSON.stringify(m));
+     assert.equal(m.swatch,'rgb(244, 212, 91)');assert.equal(m.swatchWidth,'12px');
+    }
+   }
+   const summary=library.locator('summary');await summary.click();
+   assert.equal(await library.getAttribute('open'),null);
+   assert.equal(await list.isVisible(),false);assert.equal(await page.locator('[data-anno-count]').textContent(),'80');
+   await summary.click();assert.ok(await list.isVisible());assert.deepEqual(await f1Records(page),seeded);
+   await page.setViewportSize({width:320,height:640});
+   await page.locator('.lsh-annotation-item').first().getByRole('button',{name:'Upravit anotaci 1'}).click();
+   const input=page.locator('[data-anno-note]');
+   assert.equal(await input.inputValue(),seeded[0].note);
+   assert.equal(await page.locator('[data-anno-note-count]').textContent(),'500 / 500');
+   const fits=await input.evaluate(el=>{const b=el.getBoundingClientRect(),box=el.closest('[data-anno-note-box]').getBoundingClientRect();return b.left>=box.left&&b.right<=box.right&&parseFloat(getComputedStyle(el).fontSize)>=16;});
+   assert.ok(fits);
+   await page.locator('[data-anno-cancel-note]').click();assert.deepEqual(await f1Records(page),seeded);
+  }finally{await browser.close()}
+ });
+ test('F3 '+name+': mobile quick palette changes the existing tool, respects selection and reaches collapsed notes',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await (await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'})).newPage();
+   await f1Open(page);
+   const dock=page.locator('.lsh-anno-dock'),quick=page.locator('[data-anno-dock-toggle]');
+   await page.locator('.workspace').evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));
+   await dock.waitFor({state:'visible'});
+   await quick.tap();
+   assert.equal(await quick.getAttribute('aria-expanded'),'true');
+   const pick=page.locator('[data-anno-quick-tool="pink"]');await pick.tap();
+   assert.equal(await quick.getAttribute('aria-expanded'),'false');
+   assert.equal(await page.locator('[data-anno-color="pink"]').getAttribute('aria-pressed'),'true');
+   assert.match(await page.locator('[data-anno-active-tool]').textContent(),/Růžové/);
+   const quote=await f2SetSelection(page,f1Para,0,9,'touch');
+   await page.locator('[data-anno-apply-selection]').waitFor({state:'visible'});
+   await dock.waitFor({state:'hidden'});
+   assert.deepEqual(await f1Records(page),[]);
+   await page.locator('[data-anno-apply-selection]').tap();
+   await page.waitForFunction(key=>JSON.parse(localStorage.getItem(key)||'[]').length===1,f1Key);
+   const saved=await f1Records(page);assert.equal(saved[0].text,quote);assert.equal(saved[0].color,'pink');
+   await page.locator('[data-anno-library] summary').click();
+   await page.locator('.workspace').evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));
+   await dock.waitFor({state:'visible'});await quick.tap();
+   assert.match(await page.locator('[data-anno-dock-notes]').textContent(),/\(1\)/);
+   await page.locator('[data-anno-dock-notes]').tap();
+   assert.notEqual(await page.locator('[data-anno-library]').getAttribute('open'),null);
+   assert.equal(await page.locator('[data-anno-count]').textContent(),'1');
+   assert.deepEqual(await f1Records(page),saved);
+   await page.locator('.lsh-anno-header-toggle').click();
+   await dock.waitFor({state:'hidden'});assert.deepEqual(await f1Records(page),saved);
+  }finally{await browser.close()}
+ });
+}
