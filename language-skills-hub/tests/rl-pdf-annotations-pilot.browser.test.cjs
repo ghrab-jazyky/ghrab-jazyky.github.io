@@ -591,3 +591,140 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   }finally{await browser.close()}
  });
 }
+
+
+// F2: new interaction tests deliberately separate native mouse/keyboard
+// gestures from synthetic touch selection lifecycle. Hardware handle behavior
+// is a manual certification item, not inferred from Playwright emulation.
+async function f2SetSelection(page,selector,start,end,pointerType){
+ return page.evaluate(({selector,start,end,pointerType})=>{
+  const el=document.querySelector(selector);
+  const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);let n,at=0,a,b;
+  while((n=w.nextNode())){
+   const next=at+n.textContent.length;
+   if(!a&&start>=at&&start<=next)a=[n,start-at];
+   if(a&&end>=at&&end<=next){b=[n,end-at];break;}
+   at=next;
+  }
+  if(!a||!b)throw Error('F2 range unavailable');
+  const range=document.createRange();range.setStart(...a);range.setEnd(...b);
+  if(pointerType)el.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true,pointerType,button:0,isPrimary:true}));
+  const selection=getSelection();selection.removeAllRanges();selection.addRange(range);
+  document.dispatchEvent(new Event('selectionchange'));
+  if(pointerType)el.dispatchEvent(new PointerEvent('pointerup',{bubbles:true,pointerType,button:0,isPrimary:true}));
+  return range.toString();
+ },{selector,start,end,pointerType});
+}
+for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+ test('F2 '+name+': native mouse drag and keyboard selection commit without changing answers',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   await f1Open(page);
+   await page.locator('[data-anno-color="yellow"]').click();
+   const para=page.locator(f1Para);
+   await para.scrollIntoViewIfNeeded();
+   const points=await para.evaluate(el=>{
+    const n=el.firstChild;if(n.nodeType!==Node.TEXT_NODE)throw Error('Expected text node');
+    const r=document.createRange();
+    const at=i=>{r.setStart(n,i);r.setEnd(n,i+1);const b=r.getBoundingClientRect();return {x:b.left+b.width*.15,y:b.top+b.height/2}};
+    return {a:at(0),b:at(9)};
+   });
+   await page.mouse.move(points.a.x,points.a.y);await page.mouse.down();
+   await page.mouse.move(points.b.x,points.b.y,{steps:10});await page.mouse.up();
+   await page.waitForFunction(key=>JSON.parse(localStorage.getItem(key)||'[]').length===1,f1Key);
+   assert.ok((await f1Records(page))[0].text.length>=5,'Native drag must annotate its actual text');
+   await page.locator('[data-anno-color="blue"]').click();
+   const choice=page.locator('#questions .choice span[data-annotation-anchor]').first();
+   assert.equal(await choice.getAttribute('tabindex'),'0');
+   await choice.focus();
+   for(let i=0;i<4;i++)await page.keyboard.press('Shift+ArrowRight');
+   await page.locator('[data-anno-apply-selection]').waitFor({state:'visible'});
+   const quote=await page.evaluate(()=>getSelection().toString());
+   assert.equal(quote.length,4);
+   await page.keyboard.press('Enter');
+   await page.waitForFunction(key=>JSON.parse(localStorage.getItem(key)||'[]').length===2,f1Key);
+   const records=await f1Records(page);
+   assert.equal(records[1].text,quote);assert.equal(records[1].color,'blue');
+   assert.equal(await page.locator('#questions .choice input').first().isChecked(),false);
+   await page.locator('.lsh-anno-header-toggle').click();
+   assert.equal(await choice.getAttribute('tabindex'),null);
+   assert.equal(await page.locator('[data-anno-color="blue"]').getAttribute('aria-pressed'),'false');
+  }finally{await browser.close()}
+ });
+ test('F2 '+name+': touch and pen wait for explicit final selection, cancel never saves',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const ctx=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true,reducedMotion:'reduce'});
+   const page=await ctx.newPage();
+   await f1Open(page);await page.locator('[data-anno-color="green"]').click();
+   await page.locator(f1Para).scrollIntoViewIfNeeded();
+   await f2SetSelection(page,f1Para,0,4,'touch');
+   await page.waitForTimeout(750);
+   assert.equal((await f1Records(page)).length,0,'No timed write after touch release');
+   await page.locator('[data-anno-apply-selection]').waitFor({state:'visible'});
+   // Native selection handles may change the range after pointer release.
+   const finalQuote=await f2SetSelection(page,f1Para,0,12,null);
+   await page.waitForTimeout(500);
+   assert.equal((await f1Records(page)).length,0);
+   await page.locator('[data-anno-apply-selection]').tap();
+   await page.waitForFunction(key=>JSON.parse(localStorage.getItem(key)||'[]').length===1,f1Key);
+   assert.equal((await f1Records(page))[0].text,finalQuote);
+   await page.locator('[data-anno-apply-selection]').waitFor({state:'hidden'});
+   await page.setViewportSize({width:820,height:1180});
+   const penQuote=await f2SetSelection(page,f1Para,14,23,'pen');
+   await page.waitForTimeout(500);
+   assert.equal((await f1Records(page)).length,1,'Pen release cannot write');
+   await page.locator('[data-anno-cancel-selection]').tap();
+   assert.equal((await f1Records(page)).length,1);
+   await page.locator('[data-anno-apply-selection]').waitFor({state:'hidden'});
+   await f2SetSelection(page,f1Para,14,23,'pen');
+   await page.locator('[data-anno-apply-selection]').tap();
+   await page.waitForFunction(key=>JSON.parse(localStorage.getItem(key)||'[]').length===2,f1Key);
+   assert.equal((await f1Records(page))[1].text,penQuote);
+   await f2SetSelection(page,f1Para,26,34,'touch');
+   await page.locator('#levels [data-level="C1"]').click();
+   await page.locator('[data-anno-apply-selection]').waitFor({state:'hidden'});
+   assert.equal(await page.locator('[data-anno-color="green"]').getAttribute('aria-pressed'),'false');
+   assert.equal((await f1Records(page)).length,2,'Variant switch cannot commit pending text');
+  }finally{await browser.close()}
+ });
+ test('F2 '+name+': dictionary exclusion, editor focus and pinned popup after viewport change',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   await page.goto(f1URL+'?lang=es&level=B2');
+   const dictionary=page.locator('#dictionaryToggle'),toggle=page.locator('.lsh-anno-header-toggle');
+   if(await dictionary.getAttribute('aria-pressed')!=='true')await dictionary.click();
+   await toggle.click();assert.equal(await dictionary.getAttribute('aria-pressed'),'false');
+   assert.equal(await toggle.getAttribute('aria-pressed'),'true');
+   await dictionary.click();assert.equal(await dictionary.getAttribute('aria-pressed'),'true');
+   assert.equal(await toggle.getAttribute('aria-pressed'),'false');
+   await toggle.click();assert.equal(await dictionary.getAttribute('aria-pressed'),'false');
+   await f1Select(page,f1Para,0,4);
+   await page.locator('[data-anno-start-note]').click();
+   const input=page.locator('[data-anno-note]');
+   assert.ok(await input.evaluate(el=>document.activeElement===el));
+   await input.fill('Rozpracováno');
+   await dictionary.click();
+   assert.equal(await input.inputValue(),'Rozpracováno');
+   assert.equal(await dictionary.getAttribute('aria-pressed'),'false');
+   await page.keyboard.press('Escape');
+   await page.locator('[data-anno-note-box]').waitFor({state:'hidden'});
+   await f1Note(page,f1Para,5,10,'focus note');
+   const show=page.locator('.lsh-annotation-view-note').first();
+   await show.focus();await page.keyboard.press('Enter');
+   const popup=page.locator('.lsh-annotation-popover-pinned:not([hidden])');
+   await popup.waitFor();
+   assert.ok(await page.locator('.lsh-annotation-popover-close').evaluate(el=>document.activeElement===el));
+   await page.setViewportSize({width:390,height:640});
+   const fits=await popup.evaluate(el=>{
+    const r=el.getBoundingClientRect(),v=visualViewport;
+    return r.left>=(v?.offsetLeft||0)-1&&r.right<=(v?.offsetLeft||0)+(v?.width||innerWidth)+1&&r.top>=(v?.offsetTop||0)-1&&r.bottom<=(v?.offsetTop||0)+(v?.height||innerHeight)+1;
+   });
+   assert.ok(fits,'Pinned note must fit the visible viewport');
+   await page.keyboard.press('Escape');
+   assert.ok(await show.evaluate(el=>document.activeElement===el),'Focus must return to the list button');
+  }finally{await browser.close()}
+ });
+}
