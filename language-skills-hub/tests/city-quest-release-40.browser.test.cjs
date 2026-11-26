@@ -260,6 +260,18 @@ async function cityMission(page,language,level,n){
   'Expected visible completion for city '+n+'/'+language+'/'+level);
  await progress(page,n,'CITY '+n);
 }
+async function assertCompletionPresented(page,label){
+ await page.waitForFunction(()=>{
+  const summary=document.querySelector('.cq-completion-summary'),p=document.getElementById('f1Panel')?.getBoundingClientRect(),h=summary?.querySelector('h3')?.getBoundingClientRect();
+  return summary&&p&&h&&document.activeElement===summary&&h.top>=Math.max(0,p.top)-3&&h.bottom<=Math.min(innerHeight,p.bottom)+3;
+ },{},{timeout:10000}).catch(async error=>{
+  const evidence=await page.evaluate(()=>{
+   const summary=document.querySelector('.cq-completion-summary'),h=summary?.querySelector('h3')?.getBoundingClientRect(),p=document.getElementById('f1Panel')?.getBoundingClientRect();
+   return {active:document.activeElement?.outerHTML?.slice(0,220),h:h?.toJSON(),p:p?.toJSON(),scrollY,vh:innerHeight};
+  });
+  throw Error('Automatic completion presentation '+label+' '+JSON.stringify(evidence),{cause:error});
+ });
+}
 async function metroMission(page,language,level,n){
  await page.locator('#f1Stations button').nth(n-1).click();
  const bridge=()=>page.evaluate(()=>window.CityQuestF2MetroBridge.current());
@@ -367,6 +379,8 @@ async function metroMission(page,language,level,n){
  assert.equal(last.phase,'complete','Metro not complete within action cap; phases '+JSON.stringify(counts));
  assert.equal(last.completed,true,'Metro complete must be true');
  assert.equal(await page.locator('#f1Panel .f2-finish').count(),1,'Metro finish missing');
+ // Verify automatic completion focus BEFORE the subsequent explicit ledger click.
+ if(n===8)await assertCompletionPresented(page,language+'/'+level+'/mixed');
  const ledger=page.locator('#f1Panel [data-cq-journey-record]');
  assert.equal(await ledger.count(),1,'Journey record must be available');
  const reveal=ledger.locator('..').locator('button[aria-expanded]').first();
@@ -420,10 +434,7 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
      }
      await progress(page,8,'Final '+caption(c));
      assert.equal(await page.locator('.cq-completion-summary').count(),1,'Final summary '+caption(c));
-     await page.waitForFunction(()=>{
-      const summary=document.querySelector('.cq-completion-summary'),p=document.getElementById('f1Panel')?.getBoundingClientRect(),h=summary?.querySelector('h3')?.getBoundingClientRect();
-      return summary&&p&&h&&document.activeElement===summary&&h.top>=Math.max(0,p.top)-3&&h.bottom<=Math.min(innerHeight,p.bottom)+3;
-     },{},{timeout:10000});
+     if(c.mode==='city')await assertCompletionPresented(page,caption(c));
      assert.ok((await page.locator('.cq-completion-celebration').textContent()).length>15,'Localized celebration');
      assert.equal(await page.locator('.cq-completed-missions li').count(),8);
      const nav=page.locator('#f1Stations'),completeLabel={en:'Mission completed',es:'Misión completada',de:'Aufgabe abgeschlossen',fr:'Mission terminée'}[c.language];
