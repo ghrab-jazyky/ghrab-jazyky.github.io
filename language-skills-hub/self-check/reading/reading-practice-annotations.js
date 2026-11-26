@@ -28,7 +28,7 @@
     aria-label="Smazat všechna zvýraznění, podtržení a poznámky v této variantě">Smazat všechny poznámky</button>
   </div>
   <div class="lsh-annotation-clear-confirm" data-anno-clear-confirm hidden role="group" aria-label="Potvrzení smazání anotací">
-   <span>Opravdu smazat všechna zvýraznění, podtržení a poznámky v aktuální jazykové a úrovňové variantě? Akci nelze vrátit zpět.</span>
+   <span>Opravdu smazat všechna zvýraznění, podtržení a poznámky v aktuální jazykové a úrovňové variantě? Smazání lze vrátit tlačítkem Zpět před změnou varianty nebo obnovením stránky.</span>
    <button type="button" class="action" data-anno-clear-confirm-action>Ano, smazat vše</button>
    <button type="button" class="action" data-anno-clear-cancel>Zrušit</button>
   </div>

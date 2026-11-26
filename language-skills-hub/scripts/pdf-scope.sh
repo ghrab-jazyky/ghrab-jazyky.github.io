@@ -17,6 +17,7 @@ while IFS= read -r file || [[ -n "$file" ]]; do
     language-skills-hub/self-check/reading/reading-annotations.*) relevant=true ;;
     language-skills-hub/self-check/reading/reading-practice-annotations.js) relevant=true ;;
     language-skills-hub/self-check/reading/reading.js) relevant=true ;;
+    language-skills-hub/self-check/reading/index.html) relevant=true ;;
     language-skills-hub/self-check/reading/print-*) relevant=true ;;
     language-skills-hub/printouts/rl-asteroids/*) relevant=true ;;
     language-skills-hub/scripts/build-reading-print-pdfs.cjs) relevant=true ;;

@@ -63,6 +63,7 @@
   if(!root.CSS?.highlights||typeof root.Highlight!=='function')
    throw new Error('CSS text highlight API unavailable');
   let items=[],selected=null,enabled=false,noteDraft=null,editingId=null,color='yellow';
+  const undoHistory=[];const MAX_UNDO=20;
   let idSequence=0,interactionEpoch=0,inputMethod=null,confirmPress=null,editorReturn=null;
   const newId=()=>root.crypto?.randomUUID?.()||('a-'+Date.now().toString(36)+'-'+(++idSequence)+'-'+Math.random().toString(36).slice(2));
   function withIds(value){
@@ -88,10 +89,44 @@
   noteCancel.type='button';noteCancel.className='action';noteCancel.textContent='Zrušit';
   noteCancel.dataset.annoCancelNote='';
   if(noteBox)noteBox.appendChild(noteCancel);
+  // F3: enhance both existing Reading surfaces in place. Do not clone
+  // selectable reading DOM or create additional primary tool identities.
+  const primary=host.querySelector('.lsh-annotation-buttons');
+  const toolButtons=Array.from(host.querySelectorAll('[data-anno-color],[data-anno-underline],[data-anno-start-note]'));
+  const make=(tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=text;return el;};
+  const makeButton=(cls,text)=>{const el=make('button',cls,text);el.type='button';return el;};
+  const activeLabel=make('span','lsh-anno-active-label','Žádný nástroj');
+  activeLabel.dataset.annoActiveTool='';
+  const head=host.querySelector('.lsh-annotation-head');head?.appendChild(activeLabel);
+  const help=host.querySelector('.lsh-annotation-help');
+  if(help){const details=make('details','lsh-anno-help');details.append(make('summary',null,'Jak anotovat'));help.before(details);details.append(help);}
+  const undo=makeButton('action lsh-anno-undo','↶ Zpět');undo.dataset.annoUndo='';
+  undo.setAttribute('aria-label','Vrátit poslední změnu');undo.title='Vrátit poslední změnu anotací v této variantě';undo.disabled=true;
+  primary?.append(undo);
+  const library=make('details','lsh-anno-library');library.open=true;library.dataset.annoLibrary='';
+  const librarySummary=make('summary','lsh-anno-library-summary');
+  const libraryCount=make('span','lsh-anno-count','0');libraryCount.dataset.annoCount='';
+  librarySummary.append(make('strong',null,'Moje anotace'),libraryCount);library.append(librarySummary);
+  const empty=make('p','lsh-anno-empty','Zatím zde nejsou žádné anotace.');
+  const manage=make('div','lsh-anno-manage');
+  if(clearAll){clearAll.textContent='Smazat vše';manage.append(clearAll);}
+  if(list){list.before(library);library.append(manage);if(clearConfirm)library.append(clearConfirm);library.append(empty,list);list.tabIndex=0;list.setAttribute('role','region');}
+  const noteQuote=make('blockquote','lsh-anno-editor-quote');noteQuote.dataset.annoEditorQuote='';
+  const noteCount=make('span','lsh-anno-editor-count','0 / '+MAX_NOTE);noteCount.dataset.annoNoteCount='';
+  noteCount.id=(host.id||'readingAnnotations')+'-note-count';
+  const noteActions=make('div','lsh-anno-editor-actions');
+  if(noteBox&&noteInput){
+   noteBox.prepend(noteQuote);noteInput.after(noteCount);
+   noteInput.setAttribute('aria-describedby',noteCount.id);noteInput.addEventListener('input',updateEditorCount);
+   const saveNote=host.querySelector('[data-anno-save-note]');
+   if(saveNote)noteActions.append(saveNote);noteActions.append(noteCancel);noteBox.append(noteActions);
+  }
+  function updateEditorCount(){noteCount.textContent=(noteInput?.value.length||0)+' / '+MAX_NOTE;}
   function closeEditor(restoreFocus=false){
    const previous=editorReturn;editorReturn=null;noteDraft=null;editingId=null;
    if(noteInput)noteInput.value='';
    if(noteBox)noteBox.hidden=true;
+   noteQuote.textContent='';updateEditorCount();syncChrome();
    if(restoreFocus)focusReturn(previous,true);
   }
   const editorOpen=()=>!!noteBox&&!noteBox.hidden;
@@ -107,7 +142,7 @@
    return target&&isTarget(target)?target:null;
   };
   const clearSelection=()=>{selected=null;confirmPress=null;syncConfirmation()};
-  const setStatus=message=>{if(status)status.textContent=message};
+  const setStatus=(message,urgent=false)=>{if(status)status.textContent=message;dockMessage.textContent=message;dockNotice.textContent=urgent?message:'';dockNotice.hidden=!urgent;syncChrome()};
   let saveError='';
   const save=()=>{saveError='';try{
    const result=config.onChange?.(snapshot());
@@ -115,13 +150,14 @@
    return result!==false;
   }catch(_){return false}};
   // Roll back every mutation if persistence rejects it.
-  function commit(next,message){
+  function commit(next,message,remember=true){
    const previous=items;items=next;
    if(!save()){
     items=previous;
-    setStatus(saveError||'Změnu nelze trvale uložit. Původní anotace zůstaly zachované.');
+    setStatus(saveError||'Změnu nelze trvale uložit. Původní anotace zůstaly zachované.',true);
     return false;
    }
+   if(remember){undoHistory.push(previous);if(undoHistory.length>MAX_UNDO)undoHistory.shift();}
    interactionEpoch++;hideNote();paint();setStatus(message);return true;
   }
   const highlightKeys=[...COLORS,'underline','note'];
@@ -154,6 +190,86 @@
    const v=root.visualViewport;
    return {left:v?.offsetLeft||0,top:v?.offsetTop||0,width:v?.width||root.innerWidth,height:v?.height||root.innerHeight};
   }
+  // The quick palette is an optional shortcut to the same actions, not
+  // a second annotation engine. It stays collapsed unless explicitly opened.
+  const dock=make('aside','lsh-anno-dock');dock.hidden=true;dock.lang='cs';dock.setAttribute('aria-label','Rychlé anotační nástroje');
+  const dockToggle=makeButton('lsh-anno-dock-toggle','Nástroje');dockToggle.dataset.annoDockToggle='';
+  dockToggle.setAttribute('aria-expanded','false');dockToggle.setAttribute('aria-controls',(host.id||'readingAnnotations')+'-quick');
+  const dockPanel=make('div','lsh-anno-dock-panel');dockPanel.hidden=true;dockPanel.id=dockToggle.getAttribute('aria-controls');
+  const dockTitle=make('strong','lsh-anno-dock-title','Anotace');
+  const dockTools=make('div','lsh-anno-dock-tools');
+  const dockMessage=make('p','lsh-anno-dock-message');
+  const dockNotice=make('p','lsh-anno-dock-notice');dockNotice.hidden=true;
+  const dockNotes=makeButton('lsh-anno-quick-button','Moje anotace (0)');dockNotes.dataset.annoDockNotes='';
+  const dockUndo=makeButton('lsh-anno-quick-button','↶ Zpět');dockUndo.dataset.annoQuickUndo='';dockUndo.setAttribute('aria-label','Vrátit poslední změnu');
+  const shortcuts=toolButtons.map(source=>{
+   const key=source.dataset.annoColor||(source.hasAttribute('data-anno-underline')?'underline':'note');
+   const button=makeButton('lsh-anno-quick-button',source.textContent);
+   button.dataset.annoQuickTool=key;button.dataset.annoSwatch=key;button.setAttribute('aria-pressed','false');
+   button.addEventListener('click',()=>{
+    if(!enabled||hasLocked()||editorOpen()||selected||confirmPress||source.disabled)return;
+    source.click();setDockOpen(false,true);
+   });
+   dockTools.append(button);return {source,button,key};
+  });
+  const dockActions=make('div','lsh-anno-dock-actions');dockActions.append(dockUndo,dockNotes);
+  dockPanel.append(dockTitle,dockTools,dockActions,dockMessage);
+  dock.append(dockNotice,dockPanel,dockToggle);document.body.appendChild(dock);
+  let dockFrame=0,dockOpen=false;
+  function setDockOpen(open,focus=false){
+   dockOpen=open;dockPanel.hidden=!open;dockToggle.setAttribute('aria-expanded',String(open));
+   if(focus)dockToggle.focus({preventScroll:true});
+   scheduleDock();
+  }
+  function positionDock(){
+   dockFrame=0;
+   const v=viewport(),r=primary?.getBoundingClientRect(),topbar=document.querySelector('.topbar');
+   const sticky=topbar&&getComputedStyle(topbar).position==='sticky'?topbar.getBoundingClientRect():null;
+   const top=Math.max(v.top,sticky&&sticky.bottom>v.top&&sticky.top<=v.top+4?sticky.bottom:v.top);
+   const visibleHeight=r?Math.max(0,Math.min(r.bottom,v.top+v.height)-Math.max(r.top,top)):0;
+   const toolbarInView=!!r&&r.height>0&&visibleHeight>=Math.min(r.height,54);
+   const available=enabled&&!hasLocked()&&!editorOpen()&&!selected&&!confirmPress&&!popupPinned&&!toolbarInView&&v.height>=220;
+   dock.hidden=!available;
+   if(!available){if(dockOpen)setDockOpen(false);return;}
+   const returnButton=document.getElementById('backToQuestion');
+   const returnVisible=returnButton&&!returnButton.hidden&&returnButton.getClientRects().length;
+   const offset=returnVisible?76:12;
+   dock.style.maxWidth=Math.min(340,Math.max(0,v.width-24))+'px';
+   dockPanel.style.maxHeight=Math.max(76,Math.min(340,v.height-offset-76))+'px';
+   const size=dock.getBoundingClientRect();
+   dock.style.left=Math.max(v.left+12,v.left+v.width-size.width-12)+'px';
+   dock.style.top=Math.max(v.top+8,v.top+v.height-size.height-offset)+'px';
+  }
+  function scheduleDock(){
+   if(!dockFrame)dockFrame=root.requestAnimationFrame(positionDock);
+  }
+  function syncChrome(){
+   const active=armed?toolName():'Žádný nástroj';
+   activeLabel.textContent=armed?'Aktivní: '+active:active;activeLabel.dataset.annoSwatch=armed==='highlight'?color:armed||'none';
+   const unavailable=!enabled||hasLocked()||editorOpen()||!!(clearConfirm&&!clearConfirm.hidden);
+   undo.disabled=unavailable||!undoHistory.length;dockUndo.disabled=undo.disabled;
+   libraryCount.textContent=String(items.length);dockNotes.textContent='Moje anotace ('+items.length+')';
+   empty.hidden=items.length!==0;if(list)list.hidden=!items.length;
+   dockTitle.textContent=armed?'Aktivní: '+active:'Vyberte nástroj';
+   const short=armed==='highlight'?({yellow:'žlutě',green:'zeleně',pink:'růžově',blue:'modře'}[color]):armed==='underline'?'podtržení':armed==='note'?'poznámka':'';
+   dockToggle.textContent=short?'Nástroje · '+short:'Nástroje';dockToggle.dataset.annoSwatch=armed==='highlight'?color:armed||'none';
+   for(const {source,button} of shortcuts){button.setAttribute('aria-pressed',source.getAttribute('aria-pressed')||'false');button.disabled=unavailable||source.disabled;}
+   scheduleDock();
+  }
+  function undoLast(){
+   if(!enabled||hasLocked()||editorOpen()||!undoHistory.length||(clearConfirm&&!clearConfirm.hidden))return;
+   const previous=undoHistory.at(-1);
+   if(commit(previous,'Poslední změna vrácena.',false)){undoHistory.pop();cancelPending();syncChrome();}
+  }
+  undo.addEventListener('click',undoLast);dockUndo.addEventListener('click',undoLast);
+  dockToggle.addEventListener('click',()=>setDockOpen(!dockOpen));
+  dockNotes.addEventListener('click',()=>{
+   if(!enabled||hasLocked()||editorOpen())return;
+   library.open=true;setDockOpen(false);librarySummary.scrollIntoView({block:'center',behavior:'instant'});librarySummary.focus({preventScroll:true});
+  });
+  document.addEventListener('pointerdown',event=>{if(dockOpen&&!dock.contains(event.target))setDockOpen(false);},true);
+  if(typeof IntersectionObserver==='function'&&primary)new IntersectionObserver(scheduleDock,{threshold:[0,.25,.5,1]}).observe(primary);
+  if(typeof ResizeObserver==='function'&&primary)new ResizeObserver(scheduleDock).observe(primary);
   function positionConfirmation(){
    if(confirmBar.hidden)return;
    const v=viewport();confirmBar.style.width=Math.min(360,Math.max(0,v.width-20))+'px';
@@ -167,6 +283,7 @@
    const visible=enabled&&!hasLocked()&&!editorOpen()&&!!armed&&!!(selected||confirmPress?.record)&&['touch','pen','keyboard'].includes(inputMethod);
    confirmBar.hidden=!visible;
    if(visible){confirmLabel.textContent=toolName();positionConfirmation()}
+   syncChrome();
   }
   function cancelPending(removeRange=true){
    interactionEpoch++;clearSelection();
@@ -215,7 +332,9 @@
    }else if(ref.id&&clearAll&&!clearAll.disabled)clearAll.focus({preventScroll:true});
   }
   function openEditor(ref){
-   editorReturn=ref;syncConfirmation();
+   editorReturn=ref;
+   const record=noteDraft||items.find(item=>item.id===editingId);
+   noteQuote.textContent=record?'„'+record.text+'“':'';updateEditorCount();syncConfirmation();
    if(noteInput){noteInput.focus({preventScroll:true});noteBox?.scrollIntoView({block:'nearest',behavior:'instant'});}
   }
   function keyboardSelect(event,anchor){
@@ -267,6 +386,7 @@
    popup.hidden=true;popupIndex=-1;popupPinned=false;popupPoint=null;
    popup.classList.remove('lsh-annotation-popover-pinned');
    if(restoreFocus&&popupReturnFocus)focusReturn(popupReturnFocus,true);
+   scheduleDock();
    popupReturnFocus=null;
   }
   popupClose.addEventListener('click',()=>hideNote(true));
@@ -294,7 +414,7 @@
    popupIndex=index;popupPinned=pinned;popupReturnFocus=returnFocus;popupPoint={x,y};
    popup.hidden=false;popup.setAttribute('role',pinned?'dialog':'tooltip');
    popup.classList.toggle('lsh-annotation-popover-pinned',pinned);
-   popupClose.hidden=!pinned;positionPopup();
+   popupClose.hidden=!pinned;positionPopup();scheduleDock();
    if(pinned&&returnFocus)popupClose.focus({preventScroll:true});
    }
    function positionPopup(){
@@ -341,17 +461,20 @@
   }
   function renderList(){
    if(clearAll)clearAll.disabled=!items.length||hasLocked();
-   if(!list)return;
+   syncChrome();if(!list)return;
+   const oldScroll=list.scrollTop;
    const focused=list.contains(document.activeElement)?document.activeElement:null;
    const focusRef=focused?{id:focused.closest('[data-annotation-id]')?.dataset.annotationId,action:focused.dataset.annoAction}:null;
    list.replaceChildren();
    items.forEach((item,index)=>{
     const row=document.createElement('div');row.className='lsh-annotation-item';row.dataset.annotationId=item.id;
-    const description=document.createElement('span');description.className='lsh-annotation-item-label';
-    const snippet=item.text.length>65?item.text.slice(0,62)+'…':item.text;
-    description.textContent=(item.kind==='underline'?'Podtržení':item.kind==='note'?'Poznámka':'Zvýraznění')+
-     ' · '+snippet+(item.note?' — '+item.note:'')+
-      (!itemRange(getAnchor(item.anchor),item)?' · Úsek není právě zobrazen.':'');
+    const description=make('div','lsh-annotation-item-label');
+    const snippet=item.text.length>130?item.text.slice(0,127)+'…':item.text;
+    const kind=make('span','lsh-anno-item-kind',item.kind==='underline'?'Podtržení':item.kind==='note'?'Poznámka':({yellow:'Žluté zvýraznění',green:'Zelené zvýraznění',pink:'Růžové zvýraznění',blue:'Modré zvýraznění'}[item.color]));
+    kind.dataset.annoSwatch=item.kind==='highlight'?item.color:item.kind;
+    description.append(kind,make('div','lsh-anno-item-quote','„'+snippet+'“'));
+    if(item.note)description.append(make('div','lsh-anno-item-note',item.note));
+    if(!itemRange(getAnchor(item.anchor),item))description.append(make('span','lsh-anno-item-unavailable','Úsek není právě zobrazen.'));
     const remove=document.createElement('button');remove.type='button';
     remove.className='action ghost';remove.textContent='Smazat';
     remove.setAttribute('aria-label','Smazat anotaci '+(index+1));remove.dataset.annoAction='remove';
@@ -386,7 +509,8 @@
     });
     actions.append(edit,remove);row.append(description,actions);list.appendChild(row);
     });
-    if(focusRef?.id&&focusRef.action)focusReturn(focusRef);
+    list.scrollTop=oldScroll;
+   if(focusRef?.id&&focusRef.action)focusReturn(focusRef);
     }
     function capture(){
    const ok=readSelection();syncConfirmation();return ok;
@@ -420,7 +544,7 @@
   function add(kind,note=''){
    if(!enabled||hasLocked()){setStatus('Anotace jsou teď nedostupné.');return false;}
    if(!selected||!itemRange(getAnchor(selected.anchor),selected)){clearSelection();setStatus('Nejdříve označte text nebo část otázky.');return false;}
-   if(items.length>=MAX_ITEMS){setStatus('Limit 80 anotací v této variantě.');return false;}
+   if(items.length>=MAX_ITEMS){setStatus('Limit 80 anotací v této variantě.',true);return false;}
    if(kind==='note'&&!note.trim()){setStatus('Napište poznámku.');return false;}
    const item={...selected,id:newId(),kind,color,note:note.slice(0,MAX_NOTE)};
    if(!commit([...items,item],'Anotace uložena.'))return false;
@@ -510,7 +634,7 @@
    if(!enabled||hasLocked()||!items.length||editorOpen())return;
    if(!commit([],'Všechna zvýraznění, podtržení i poznámky této varianty byly smazány.'))return;
    if(clearConfirm)clearConfirm.hidden=true;
-   closeEditor();clearSelection();
+   closeEditor();clearSelection();syncChrome();
   });
   host.querySelector('[data-anno-save-note]')?.addEventListener('click',()=>{
    if(hasLocked()||!enabled||!editorOpen())return;
@@ -620,6 +744,7 @@
   },true);
   root.document.addEventListener('keydown',event=>{
    if(event.key!=='Escape'||!enabled||hasLocked())return;
+   if(dockOpen){event.preventDefault();setDockOpen(false,true);return;}
    if(!popup.hidden){hideNote(true);return;}
    if(editorOpen()){event.preventDefault();closeEditor(true);cancelPending();setStatus('Úprava poznámky zrušena.');return;}
    if(selected||confirmPress){event.preventDefault();cancelPending();setStatus('Výběr zrušen.');}
@@ -629,14 +754,14 @@
   // dismiss a transient hover preview; a pinned note has an explicit close.
   root.document.addEventListener('wheel',()=>{if(!popupPinned)hideNote()},{passive:true});
   root.document.addEventListener('touchmove',()=>{if(!popupPinned)hideNote()},{passive:true});
-  function adjustViewport(){if(popupPinned)positionPopup();else hideNote();positionConfirmation()}
+  function adjustViewport(){if(popupPinned)positionPopup();else hideNote();positionConfirmation();scheduleDock()}
   root.addEventListener('resize',adjustViewport);
   root.visualViewport?.addEventListener('resize',adjustViewport);
   root.visualViewport?.addEventListener('scroll',adjustViewport);
-  document.addEventListener('scroll',()=>{if(!confirmBar.hidden)positionConfirmation()},{capture:true,passive:true});
+  document.addEventListener('scroll',()=>{if(!confirmBar.hidden)positionConfirmation();scheduleDock()},{capture:true,passive:true});
   function snapshot(){return normalized(items)}
   function restore(value){
-   interactionEpoch++;hideNote();items=withIds(value);resetTool();closeEditor();
+   interactionEpoch++;hideNote();items=withIds(value);undoHistory.length=0;resetTool();closeEditor();
    root.getSelection?.()?.removeAllRanges();
    if(clearConfirm)clearConfirm.hidden=true;
    if(enabled)paint();else renderList();keyboardTargets();
@@ -650,7 +775,7 @@
      if(!itemRange(getAnchor(record.anchor),record))cancelPending();
      else capture();
     }
-    if(enabled)paint();keyboardTargets();
+    if(enabled)paint();keyboardTargets();syncChrome();
    }
   config.onToggle?.(false);
   setStatus('Anotační režim je vypnutý.');

@@ -25,6 +25,7 @@ const protectedPaths = [
   'language-skills-hub/self-check/reading/reading-annotations.css',
   'language-skills-hub/self-check/reading/reading-practice-annotations.js',
   'language-skills-hub/self-check/reading/reading.js',
+  'language-skills-hub/self-check/reading/index.html',
   'language-skills-hub/self-check/reading/print-core.js',
   'language-skills-hub/self-check/reading/print-page.css',
   'language-skills-hub/self-check/reading/print-page.html',
