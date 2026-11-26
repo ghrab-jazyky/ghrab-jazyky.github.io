@@ -510,38 +510,84 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    }
   }finally{await browser.close()}
  });
- test('F1 '+name+': opening a choice note does not answer; stale tab and failed write roll back',{timeout:120000},async()=>{
+ // Measure after Playwright has brought the element into view. An immediate
+ // getBoundingClientRect after smooth scrollIntoView returns stale coordinates.
+ async function choicePoint(page,choice){
+  const target=page.locator(choice).first();
+  await target.scrollIntoViewIfNeeded();
+  const point=await target.evaluate(el=>{
+   const r=document.createRange();r.setStart(el.firstChild,0);r.setEnd(el.firstChild,4);
+   const rect=r.getClientRects()[0];
+   if(!rect||!rect.width||!rect.height)throw Error('No visible note range');
+   return {x:rect.left+Math.min(4,rect.width/2),y:rect.top+rect.height/2};
+  });
+  const hit=await page.evaluate(({point,choice})=>{
+   const anchor=document.querySelector(choice),el=document.elementFromPoint(point.x,point.y);
+   return {inside:!!el&&anchor.contains(el),tag:el?.tagName,id:el?.id,cls:el?.className,point,selected:getSelection()?.toString()};
+  },{point,choice});
+  assert.ok(hit.inside,'Note point must hit its own text: '+JSON.stringify(hit));
+  return point;
+ }
+ test('F1 '+name+': native desktop click and mobile tap on choice note do not change the answer',{timeout:90000},async()=>{
   const browser=await engine.launch({headless:true});
   try{
-   const ctx=await browser.newContext({viewport:{width:1200,height:900}});
-   const a=await ctx.newPage(),b=await ctx.newPage();
-   await f1Open(a);await f1Open(b);
+   const desktop=await browser.newContext({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   const a=await desktop.newPage();
+   await f1Open(a);
    const choice='#questions .choice span[data-annotation-anchor]';
    await f1Note(a,choice,0,4,'choice note');
+   const saved=await f1Records(a);
+   assert.equal(saved.length,1);assert.equal(saved[0].kind,'note');
    const radio=a.locator('#questions .choice input').first();
-   const point=await a.locator(choice).first().evaluate(el=>{
-    el.scrollIntoView({block:'center'});
-    const r=document.createRange();r.setStart(el.firstChild,0);r.setEnd(el.firstChild,4);
-    const x=r.getBoundingClientRect();return {x:x.left+x.width/2,y:x.top+x.height/2};
-   });
+   const point=await choicePoint(a,choice);
    assert.equal(await radio.isChecked(),false);
+   await a.mouse.move(point.x,point.y);
+   await a.locator('.lsh-annotation-popover:not([hidden])').waitFor({timeout:5000});
+   assert.equal(await a.locator('.lsh-annotation-popover-text').textContent(),'choice note');
    await a.mouse.click(point.x,point.y);
-   await a.locator('.lsh-annotation-popover-pinned:not([hidden])').waitFor();
+   await a.locator('.lsh-annotation-popover-pinned:not([hidden])').waitFor({timeout:5000});
    assert.equal(await radio.isChecked(),false,'Note preview must not answer');
    await a.locator('.lsh-annotation-popover-close').click();await radio.click();
    assert.equal(await radio.isChecked(),true,'Direct radio remains functional');
+   const mobile=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,reducedMotion:'reduce'});
+   const m=await mobile.newPage();
+   await m.goto(f1URL+'?lang=en&level=B2');
+   await m.evaluate(({key,saved})=>localStorage.setItem(key,JSON.stringify(saved)),{key:f1Key,saved});
+   await f1Open(m);
+   const mr=m.locator('#questions .choice input').first();
+   const mp=await choicePoint(m,choice);
+   assert.equal(await mr.isChecked(),false);
+   await m.touchscreen.tap(mp.x,mp.y);
+   await m.locator('.lsh-annotation-popover-pinned:not([hidden])').waitFor({timeout:5000});
+   assert.equal(await mr.isChecked(),false,'Touch note preview must not answer');
+   await m.locator('.lsh-annotation-popover-close').click();await mr.tap();
+   assert.equal(await mr.isChecked(),true,'Direct radio tap remains functional');
+  }finally{await browser.close()}
+ });
+ test('F1 '+name+': stale tab and failed writes do not overwrite or lose notes',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const ctx=await browser.newContext({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   const a=await ctx.newPage(),b=await ctx.newPage();
+   await a.bringToFront();await f1Open(a);
+   await b.bringToFront();await f1Open(b);
+   await a.bringToFront();await f1Note(a,f1Para,0,4,'original note');
+   const initial=await f1Records(a);assert.equal(initial.length,1);
+   await b.bringToFront();
    await f1Select(b,f1Para,0,4);await b.locator('[data-anno-color="yellow"]').click();
    assert.equal(await b.locator('.lsh-annotation-item').count(),0);
-   assert.equal((await f1Records(a)).length,1);
+   assert.deepEqual(await f1Records(a),initial);
    assert.match(await b.locator('[data-anno-status]').textContent(),/jiné záložce/);
+   await a.bringToFront();
    await a.evaluate(()=>{const original=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){
     if(k.startsWith('lsh-reading-practice-annotations-v1:'))throw Error('Simulated quota failure');
     return original.call(this,k,v);
    }});
    await f1Select(a,f1Para,0,4);await a.locator('[data-anno-color="green"]').click();
    assert.equal(await a.locator('.lsh-annotation-item').count(),1);
+   assert.match(await a.locator('[data-anno-status]').textContent(),/nelze trvale uložit/);
    await a.locator('.lsh-annotation-item').first().getByRole('button',{name:'Smazat anotaci 1'}).click();
-   assert.equal(await a.locator('.lsh-annotation-item').count(),1);assert.equal((await f1Records(a)).length,1);
+   assert.equal(await a.locator('.lsh-annotation-item').count(),1);assert.deepEqual(await f1Records(a),initial);
   }finally{await browser.close()}
  });
 }
