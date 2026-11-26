@@ -101,6 +101,8 @@ test('RL-02: desktop auto-apply, explicit toggle-off and scoped clear-all confir
  assert.match(engine,/let armed=null/);
  assert.match(engine,/event\.pointerType==='mouse'&&event\.button===0/);
  assert.match(engine,/clearSelection\(\);capture\(\);applyArmedSelection\(\)/);
+ assert.match(engine,/annoApplySelection/);
+ assert.doesNotMatch(engine,/applyAfterTouch|lastTouchSignature/);
  assert.match(engine,/const same=armed===kind/);
  assert.match(engine,/armed=same&&!selected\?null:kind/);
  assert.match(engine,/data-anno-clear-confirm-action/);

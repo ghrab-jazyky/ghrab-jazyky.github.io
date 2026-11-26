@@ -100,3 +100,12 @@
 .lsh-annotation-toolbar .lsh-anno-green-btn{border-bottom:5px solid #8addab}
 .lsh-annotation-toolbar .lsh-anno-pink-btn{border-bottom:5px solid #f5a1bd}
 .lsh-annotation-toolbar .lsh-anno-blue-btn{border-bottom:5px solid #78e6f4}
+
+/* F2: explicit confirmation for touch, stylus and keyboard. */
+.lsh-anno-confirm-selection{position:fixed;z-index:1100;box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;padding:8px;border:1px solid var(--accent,#78e6f4);border-radius:12px;background:var(--panel,#12263c);color:var(--text,#eef6ff);box-shadow:0 6px 22px rgba(0,0,0,.35)}
+.lsh-anno-confirm-selection[hidden]{display:none!important}
+.lsh-anno-confirm-label{width:100%;text-align:center;font-size:.84rem;font-weight:700;overflow-wrap:anywhere}
+.lsh-anno-confirm-selection button{min-height:44px;flex:1 1 110px;min-width:0;padding:6px 9px;border:1px solid var(--border,#708ca3);border-radius:8px;background:var(--panel2,#214365);color:var(--text,#eef6ff);font:inherit;font-size:.85rem;font-weight:700;cursor:pointer}
+.lsh-anno-confirm-selection [data-anno-apply-selection]{border-color:var(--accent,#78e6f4)}
+[data-anno-keyboard-focus]:focus-visible{outline:2px solid var(--accent,#78e6f4);outline-offset:2px}
+@media print{.lsh-anno-confirm-selection{display:none!important}}

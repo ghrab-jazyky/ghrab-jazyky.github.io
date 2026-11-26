@@ -16,7 +16,7 @@
   <strong>Poznámky k textu a otázkám</strong>
  </div>
  <div data-anno-controls hidden>
-  <p class="lsh-annotation-help">Na PC klikněte na barvu, podtržení nebo poznámku a myší označujte další úseky. Nástroj zůstane aktivní až do změny nebo opětovného kliknutí. Na mobilu označujte prstem. Uložené poznámky otevřete klepnutím nebo najetím myší. Anotace se nehodnotí.</p>
+  <p class="lsh-annotation-help">Vyberte nástroj. Na PC označujte text myší opakovaně. Prstem či stylusem dokončete výběr a stiskněte Použít nástroj. Klávesnicí přejděte na text pomocí Tab, označte úsek pomocí Shift a šipek nebo Shift+Home/End a potvrďte Enter. Esc zruší výběr nebo editor. Anotace se nehodnotí. Slovník a anotační mód se přepínají navzájem.</p>
   <div class="lsh-annotation-buttons">
    <button type="button" class="action lsh-anno-yellow-btn" data-anno-color="yellow" aria-pressed="false">Žlutě</button>
    <button type="button" class="action lsh-anno-green-btn" data-anno-color="green" aria-pressed="false">Zeleně</button>
@@ -79,8 +79,15 @@
   modeButton.disabled=true;modeButton.textContent='Anotace nedostupné';
   modeButton.title='Tento prohlížeč nepodporuje zvýrazňování textu.';return;
  }
+ const dictionary=root.getElementById('dictionaryToggle');
+ let changingMode=false;
  const api=engine.mount({
   host,toggle:modeButton,containers:[reader,tasks],anchorMapping,
+  onToggle:enabled=>{
+   if(enabled&&dictionary?.getAttribute('aria-pressed')==='true'){
+    changingMode=true;try{dictionary.click()}finally{changingMode=false;}
+   }
+  },
   onChange:records=>{
    try{
     if(!readable||currentIdentity!==identity())return 'Úložiště anotací není dostupné. Obnovte stránku.';
@@ -116,6 +123,16 @@
  observer.observe(reader,{childList:true,subtree:true});
  observer.observe(tasks,{childList:true,subtree:true});
  sync();
+ // Mutually exclusive modes; a dictionary click cannot discard a draft.
+ dictionary?.addEventListener('click',event=>{
+  if(changingMode||!api.isEnabled())return;
+  if(api.hasDraft()){
+   event.preventDefault();event.stopImmediatePropagation();
+   host.querySelector('[data-anno-status]').textContent='Nejprve uložte nebo zrušte rozpracovanou poznámku.';
+   return;
+  }
+  modeButton.click();
+ },true);
  // A variant/skill change must not silently discard an unfinished note.
  function blockWhileEditing(event){
   if(!api.hasDraft())return;
