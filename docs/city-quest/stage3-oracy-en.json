@@ -52,7 +52,7 @@
       "C2": "One guide says 'left' while another says 'north'. Explain how these can agree when walking east, resolve the apparent contradiction and give a concise, reliable instruction."
     },
     "5": {
-      "B2": "The traveller must reach the Hospital before 09:10. Recommend the correct bus service using the timetable and explain why another displayed option is less suitable.",
+      "B2": "The traveller must reach the hospital before 09:10. Recommend the correct bus service using the timetable and explain why another displayed option is less suitable.",
       "C1": "A traveller needs a step-free bus and must arrive before 09:10. Explain how both constraints affect your choice; tell them which timetable details you have checked.",
       "C2": "As an information officer, compare the displayed hospital-bound services for arrival time and accessibility. Give a short, reassuring recommendation, avoiding assumptions about punctuality not shown on the timetable."
     },
@@ -62,12 +62,12 @@
       "C2": "A nervous visitor has followed conflicting instructions and is reluctant to trust another turn. Mediate the disagreement calmly, distinguish left/right from compass directions and check understanding."
     },
     "7": {
-      "B2": "The usual road to the museum is closed. Explain a legal alternative visible on the map and compare it with the blocked direct route.",
+      "B2": "The usual road to the museum is closed. Explain a valid alternative visible on the map and compare it with the blocked direct route.",
       "C1": "Your visitor is worried about losing their way at the next junction. Explain the roadworks detour precisely and add one contingency if the route becomes unclear.",
       "C2": "Two companions disagree: one wants the familiar road despite the closure; the other prefers a confirmed open route. Resolve their priorities without claiming the closed section is passable."
     },
     "8": {
-      "B2": "Your group has several city checkpoints to visit before the museum. Summarize the order, explain one route choice and contrast it with a tempting shortcut.",
+      "B2": "Your group has several city checkpoints to visit before the museum. Summarise the order, explain one route choice and contrast it with a tempting shortcut.",
       "C1": "Guide a partner through all required checkpoints. Highlight one possible navigation error and explain how you would correct it without restarting the entire journey.",
       "C2": "One visitor wants to start at the Library, but the quest requires Market Square → Library → City Museum. Explain this fixed checkpoint order tactfully, reconcile the group's priorities and give a viable route."
     }

@@ -14,7 +14,26 @@ const ENGINE=process.env.CQ_ENGINE||'chromium';
 assert.ok(['chromium','firefox','webkit'].includes(ENGINE),'Supported engine');
 const WIDTH=Number(process.env.CQ_WIDTH||1280),HEIGHT=Number(process.env.CQ_HEIGHT||900);
 const ONLY_LANG=process.env.CQ_LANG||'';
-const sourceHash=require('node:crypto').createHash('sha256').update(fs.readFileSync(path.resolve(__dirname,'../konverzace/city-quest-f2/index.html'))).digest('hex');
+const crypto=require('node:crypto'),{execFileSync}=require('node:child_process');
+const repoRoot=path.resolve(__dirname,'../..'),sourcePath='language-skills-hub/konverzace/city-quest-f2/index.html';
+const digest=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+const sourceHash=digest(fs.readFileSync(path.join(repoRoot,sourcePath)));
+const git=(...args)=>execFileSync('git',['-c','safe.directory='+repoRoot,...args],{cwd:repoRoot,stdio:['ignore','pipe','pipe']});
+let checkoutSha=null,sourceMatchesCommit=false;
+try{
+ checkoutSha=git('rev-parse','HEAD').toString().trim();
+ if(!/^[0-9a-f]{40}$/.test(checkoutSha))throw Error('Invalid checkout SHA');
+ sourceMatchesCommit=digest(git('show',checkoutSha+':'+sourcePath))===sourceHash;
+}catch(error){
+ if(process.env.CI||process.env.GITHUB_SHA)throw error;
+ console.warn('No verifiable Git checkout; report is not release-certification evidence.');
+}
+if(process.env.CI||process.env.GITHUB_SHA){
+ assert.match(process.env.GITHUB_SHA||'',/^[0-9a-f]{40}$/,'CI must identify exact SHA');
+ assert.equal(checkoutSha,process.env.GITHUB_SHA,'Checkout differs from workflow SHA');
+ assert.equal(sourceMatchesCommit,true,'Source differs from checked-out commit');
+}
+let servedHash=null;
 const geometryEvidence=[];
 const D1_A11Y=process.env.CQ_D1_A11Y==='1';
 const D1_AXE=D1_A11Y?require('axe-core'):null;
@@ -65,6 +84,21 @@ const REPORT=process.env.CQ_40_REPORT||path.resolve(process.cwd(),'city-quest-e2
 const cases=[];
 
 function caption(c){return c.language.toUpperCase()+'/'+c.level+'/'+c.mode;}
+const journeyUnits={en:['rail segment','rail segments','line change','line changes'],es:['tramo de metro','tramos de metro','transbordo','transbordos'],de:['gefahrener Abschnitt','gefahrene Abschnitte','Linienwechsel','Linienwechsel'],fr:['tronçon en métro','tronçons en métro','changement de ligne','changements de ligne']};
+function expectedJourneyCounts(language,stops,transfers){
+ const u=journeyUnits[language],one=n=>n===1||(language==='fr'&&n===0);return stops+' '+u[one(stops)?0:1]+' · '+transfers+' '+u[one(transfers)?2:3];
+}
+function assertCountGrammar(language,text){
+ const u=journeyUnits[language];
+ for(const offset of [0,2]){
+  if(u[offset]===u[offset+1])continue;
+  const escaped=s=>s.replace(/[.*+?^$(){}|[\]\\]/g,'\\$&');
+  const singular=language==='fr'?'[01]':'1',plural=language==='fr'?'(?:[2-9]|[1-9][0-9]+)':'(?:0|[2-9]|[1-9][0-9]+)';
+  assert.doesNotMatch(text,new RegExp('\\b'+singular+' '+escaped(u[offset+1])+'(?![\\p{L}])','u'));
+  assert.doesNotMatch(text,new RegExp('\\b'+plural+' '+escaped(u[offset])+'(?![\\p{L}])','u'));
+ }
+}
+
 async function choiceByIndex(page,index,where='#f1Panel .f2-choice-list button'){
  assert.ok(Number.isInteger(index)&&index>=0,'Correct choice must be rendered');
  const choices=page.locator(where);
@@ -226,6 +260,18 @@ async function cityMission(page,language,level,n){
   'Expected visible completion for city '+n+'/'+language+'/'+level);
  await progress(page,n,'CITY '+n);
 }
+async function assertCompletionPresented(page,label){
+ await page.waitForFunction(()=>{
+  const summary=document.querySelector('.cq-completion-summary'),p=document.getElementById('f1Panel')?.getBoundingClientRect(),h=summary?.querySelector('h3')?.getBoundingClientRect();
+  return summary&&p&&h&&document.activeElement===summary&&h.top>=Math.max(0,p.top)-3&&h.bottom<=Math.min(innerHeight,p.bottom)+3;
+ },{},{timeout:10000}).catch(async error=>{
+  const evidence=await page.evaluate(()=>{
+   const summary=document.querySelector('.cq-completion-summary'),h=summary?.querySelector('h3')?.getBoundingClientRect(),p=document.getElementById('f1Panel')?.getBoundingClientRect();
+   return {active:document.activeElement?.outerHTML?.slice(0,220),h:h?.toJSON(),p:p?.toJSON(),scrollY,vh:innerHeight};
+  });
+  throw Error('Automatic completion presentation '+label+' '+JSON.stringify(evidence),{cause:error});
+ });
+}
 async function metroMission(page,language,level,n){
  await page.locator('#f1Stations button').nth(n-1).click();
  const bridge=()=>page.evaluate(()=>window.CityQuestF2MetroBridge.current());
@@ -236,7 +282,26 @@ async function metroMission(page,language,level,n){
   const phase=state.phase;
   counts[phase]=(counts[phase]||0)+1;
   if(phase==='complete')break;
+  if(n===8&&['checkpoint','speech'].includes(phase)){
+   const kind=phase==='speech'?'final':state.resumePhase==='enter'?'tickets':'meeting';
+   const list=page.locator('.metro-selfcheck-criteria');
+   assert.equal(await list.getAttribute('data-cq-oral-phase'),kind,'Phase-specific M08 oral criteria');
+   const criteria=await list.locator('li').allTextContents();assert.equal(criteria.length,3);
+   const landmark=kind==='tickets'?'Market Square':kind==='meeting'?'University':null;
+   if(landmark)assert.ok(criteria.some(t=>t.includes(landmark)),'Checkpoint criteria name the actual place');
+   if(kind==='tickets')assert.doesNotMatch(criteria.join(' '),/platform|Bahnsteig|andén|quai/i);
+  }else if(level==='B1'&&phase==='speech')assert.equal(await page.locator('.metro-selfcheck-criteria li').count(),2,'Solo B1 must omit the partner-only criterion');
+  // Every reached network phase in the real full-journey matrix must remain
+  // readable. No state injection, no forced click, no CSP bypass for UX runs.
+  if(process.env.CQ_GA_GEOMETRY==='1'&&['select-line','select-direction','notice','transfer'].includes(phase)){
+   const g=await page.evaluate(()=>{const v=document.querySelector('#metroNetworkViewport'),s=[...document.querySelectorAll('#metroNetworkSvg .metro-station-label')].map(x=>x.getBoundingClientRect().height).sort((a,b)=>a-b);return {detail:!v.classList.contains('overview'),median:s[Math.floor(s.length/2)],count:s.length};});
+   assert.ok(g.detail&&g.count===14&&g.median>=11,'Unreadable network at '+n+'/'+phase+' '+JSON.stringify(g));
+  }
   if(['walk-to-entrance','walk-to-museum'].includes(phase)){
+   if(phase==='walk-to-museum'){
+    const hud={en:'Walk north to City Museum',es:'Camina hacia el norte hasta el Museo de la Ciudad',de:'Gehe nach Norden zum Stadtmuseum',fr:"Marchez vers le nord jusqu'au musée municipal"}[language];
+    assert.equal(await page.locator('#f2Quick .f2-hud-instruction').textContent(),hud,language+'/'+level+' localized M08 walking HUD');
+   }
    const dest=await page.evaluate(p=>p==='walk-to-entrance'?window.RivertonMetroGame.portalStart:window.RivertonMetroGame.museum,phase);
    const route=[];
    let x=state.surface.c,y=state.surface.r;
@@ -253,6 +318,14 @@ async function metroMission(page,language,level,n){
     C2:{values:['guarantee','unsupported','verified'],answer:'verified'}};
    const plan=plans[level];
    assert.equal(await page.locator('.cq-route-review[data-cq-review-level]').count(),1);
+   if(level==='B2'){
+    const summary=await page.evaluate(()=>window.RivertonMetroGame.journeySummary(window.CityQuestF2MetroBridge.current()));
+    const labels=await page.locator('.cq-route-review .f2-choice-list button').allTextContents();
+    assert.equal(labels.length,3);
+    for(const label of labels)assertCountGrammar(language,label);
+    const i=await getCityChoiceIndex(page,language,level,n,'route-review',plan.values,plan.answer);
+    assert.ok(labels[i].includes(expectedJourneyCounts(language,summary.stops,summary.transfers)),'Actual route count grammar');
+   }
    await choiceByIndex(page,await getCityChoiceIndex(page,language,level,n,'route-review',plan.values,plan.answer));
    continue;
   }
@@ -306,10 +379,27 @@ async function metroMission(page,language,level,n){
  assert.equal(last.phase,'complete','Metro not complete within action cap; phases '+JSON.stringify(counts));
  assert.equal(last.completed,true,'Metro complete must be true');
  assert.equal(await page.locator('#f1Panel .f2-finish').count(),1,'Metro finish missing');
+ // Verify automatic completion focus BEFORE the subsequent explicit ledger click.
+ if(n===8)await assertCompletionPresented(page,language+'/'+level+'/mixed');
+ const ledger=page.locator('#f1Panel [data-cq-journey-record]');
+ assert.equal(await ledger.count(),1,'Journey record must be available');
+ const reveal=ledger.locator('..').locator('button[aria-expanded]').first();
+ await reveal.click();
+ const record=await ledger.textContent(),summary=await page.evaluate(()=>window.RivertonMetroGame.journeySummary(window.CityQuestF2MetroBridge.current()));
+ assert.ok(record.includes(expectedJourneyCounts(language,summary.stops,summary.transfers)),'Journey ledger count grammar');
+ assertCountGrammar(language,record);
+ if(language==='de'){
+  assert.doesNotMatch(record,/\bStation Central Station\b/);
+  assert.doesNotMatch(await page.locator('#f1Panel [data-cq-model-answer]').textContent(),/\bStation Central Station\b/);
+ }
  await progress(page,n,'METRO '+n);
  return counts;
 }
 test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey', {timeout:900000}, async t=>{
+ const response=await fetch(BASE,{cache:'no-store'});
+ assert.equal(response.status,200,'Candidate URL must serve the application');
+ servedHash=digest(Buffer.from(await response.arrayBuffer()));
+ assert.equal(servedHash,sourceHash,'Actually served HTML must equal the checked source bytes');
  const browser=await engines[ENGINE].launch(ENGINE==='chromium'?{headless:true,args:['--no-sandbox']}:{headless:true});
  try{
   for(const c of SELECTED){
@@ -337,12 +427,15 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
       if(c.mode==='mixed'&&n>=5)
        metroCounts[n]=await metroMission(page,c.language,c.level,n);
       else await cityMission(page,c.language,c.level,n);
+      assert.doesNotMatch(await page.locator('#f1Panel').innerText(),/column \d+, row \d+/i,'Internal grid coordinates must never be shown');
       const g=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth}));
       geometryEvidence.push({case:caption(c),mission:n,...g});
       assert.ok(g.scrollWidth<=g.width+1,'Horizontal overflow '+caption(c)+' mission '+n);
      }
      await progress(page,8,'Final '+caption(c));
      assert.equal(await page.locator('.cq-completion-summary').count(),1,'Final summary '+caption(c));
+     if(c.mode==='city')await assertCompletionPresented(page,caption(c));
+     assert.ok((await page.locator('.cq-completion-celebration').textContent()).length>15,'Localized celebration');
      assert.equal(await page.locator('.cq-completed-missions li').count(),8);
      const nav=page.locator('#f1Stations'),completeLabel={en:'Mission completed',es:'Misión completada',de:'Aufgabe abgeschlossen',fr:'Mission terminée'}[c.language];
      for(let i=0;i<8;i++){
@@ -390,7 +483,7 @@ test('40 complete City Quest language/CEFR/mode routes; 8 missions per journey',
    passed:cases.filter(x=>x.pass).length,
    failed:cases.filter(x=>!x.pass).length,
    totalCompletedMissions:cases.filter(x=>x.pass).reduce((n,x)=>n+x.missions,0),
-   sha:process.env.GITHUB_SHA||null,
+   sha:checkoutSha,workflowSha:process.env.GITHUB_SHA||null,sourceMatchesCommit,servedHash,
    engine:ENGINE,viewport:{width:D1_A11Y?320:WIDTH,height:D1_A11Y?780:HEIGHT},sourceHash,geometryEvidence,
    d1A11y:D1_A11Y,d1Evidence,
    cases

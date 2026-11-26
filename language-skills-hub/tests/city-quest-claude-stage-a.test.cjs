@@ -137,3 +137,82 @@ test('A+ F-25/F-26: French dynamic navigation, narrow spaces and feedback',()=>{
  for(const token of ['first:(dir,blocks)=>"Avancez vers "','turn:(side,dir,blocks)=>"Tournez à "+side+" et avancez vers ','continue:(dir,blocks)=>"Continuez vers ','uturn:(dir,blocks)=>"Faites demi-tour et avancez vers '])assert.ok(html.includes(token),'Missing FR direction rewrite '+token);
  for(const token of ['Prochaine station\u202f: {next}','Station sélectionnée\u202f: ','Arrêt actuel\u202f: '])assert.ok(html.includes(token),'Missing punctuation '+token);
 });
+
+
+test('GA-007/009/010/012: authored counts, French punctuation and language decisions',()=>{
+ const counts=lineData('cqRouteReview'),expected={
+  en:['rail segment','rail segments','line change','line changes'],
+  es:['tramo de metro','tramos de metro','transbordo','transbordos'],
+  de:['gefahrener Abschnitt','gefahrene Abschnitte','Linienwechsel','Linienwechsel'],
+  fr:['tronçon en métro','tronçons en métro','changement de ligne','changements de ligne']
+ };
+ for(const [lang,v] of Object.entries(expected)){
+  const c=counts[lang];
+  assert.deepEqual([c.stopOne,c.stop,c.changeOne,c.change],v);
+ }
+ assert.doesNotMatch(html,/ui\(\)\.from\+" "\+/);
+ assert.doesNotMatch(html,/(?:an|von) der Station Central Station|Bitte wählen \.\.\./);
+ assert.doesNotMatch(html,/How old are you\?|¿Cuántos años tiene\?|Wie alt sind Sie\?|Quel âge avez-vous/);
+ for(const name of ['advancedPractice','disruptionNotices','cqCityDecision','cqRouteReview']){
+  function check(x){
+   if(typeof x==='string')assert.doesNotMatch(x,/(?:[^ \u202f\u00a0][;:!?](?=\s|$)| [;:!?])/u,name+' French punctuation: '+x);
+   else if(x&&typeof x==='object')Object.values(x).forEach(check);
+  }
+  check(lineData(name).fr);
+ }
+ assert.match(html,/c\.labels\.checkpointProgress\+labelColon\(\)/);
+ assert.match(html,/ui\(\)\.step\+labelColon\(\)/);
+});
+
+
+test('GA-013/014/015: accessible main heading, focusable guide and metro region contracts',()=>{
+ assert.equal((html.match(/<h1(?:\s|>)/g)||[]).length,1);
+ assert.match(html,/<h1 id="cqPageHeading" class="f3-screen-reader-only">City Quest · Riverton<\/h1>/);
+ assert.match(html,/<details class="cq-teacher-guide" id="cqTeacherGuide" lang="cs">/);
+ assert.match(html,/<div class="cq-teacher-content" role="region" aria-labelledby="cqTeacherGuideLabel" tabindex="0">/);
+ assert.match(html,/<section class="metro-side" role="region"/);
+ assert.doesNotMatch(html,/<aside class="metro-side"/);
+ assert.match(html,/function localizeAccessibility\(\)/);
+ assert.match(html,/tabindex:inspected===st\.id\?0:-1/);
+ assert.match(html,/vector-effect:non-scaling-stroke/);
+ assert.match(html,/function setRovingStation\(id,focus=false\)/);
+});
+
+
+test('GA-FINAL 1: re-audit language findings are fixed',()=>{
+ const expected={
+  en:['Is the library open at this time?','Have you already addressed the parcel?'],
+  es:['¿Está abierta la biblioteca a esta hora?','¿Ya ha puesto la dirección en el paquete?'],
+  de:['Hat die Bibliothek um diese Zeit geöffnet?','Haben Sie das Paket schon adressiert?'],
+  fr:['La bibliothèque est-elle ouverte à cette heure-ci\u202f?',"Avez-vous déjà indiqué l'adresse sur le colis\u202f?"]
+ };
+ const decisions=lineData('cqCityDecision');
+ for(const [lang,pair] of Object.entries(expected))assert.deepEqual(decisions[lang][1].C1.slice(2,4),pair);
+ const text=JSON.stringify(lineData('cqRouteReview').fr);
+ for(const phrase of ['Supposez que la correspondance à University soit toujours disponible.','Supposez que toutes les lignes soient fermées.',"Supposez que l'entrée au musée soit garantie.",'Supposez que le terminus soit toujours la destination du voyageur.','Passez de la M2 à la M1 à Central Station, puis à la M3 à Museum Quarter.'])assert.ok(text.includes(phrase),phrase);
+ assert.doesNotMatch(html,/column \d+, row \d+|Museum entrance, one block south|Pass the Library|legal alternative|Summarize|recognizable|Riverton Underground|Has entrado en Market Square\.|Du bist bei Market Square\.|Accès depuis la rue :|Vous êtes arrivé à|Vous êtes descendu du train|Vous êtes passé par la Bibliothèque/);
+ assert.match(html,/station:"Mission",completed:/);
+ assert.match(html,/station:"Misión",completed:/);
+ assert.ok(html.includes("Accès depuis la rue\u202f:"));
+ assert.match(html,/metro entrance, one block south of City Museum/i);
+});
+
+
+test('GA-FINAL 2: checkpoint-specific oral support has all 48 language/phase/level combinations',()=>{
+ const data=lineData('cqM08Oral');
+ for(const lang of ['en','es','de','fr']){
+  const copy=data[lang];
+  for(const kind of ['tickets','meeting','final']){
+   assert.equal(copy[kind].length,5);
+   assert.ok(copy[kind].every(s=>typeof s==='string'&&s.length>15));
+   for(const level of ['B1','B2','C1','C2']){
+    assert.equal(copy.levels[level].length,2);
+    assert.ok(copy.levels[level].every(s=>s.length>15));
+   }
+  }
+ }
+ assert.match(html,/\.metro-selfcheck-criteria li:before\{content:"•"/);
+ assert.match(html,/checklist\.dataset\.cqOralPhase=oral\.kind/);
+ assert.match(html,/newCompletion\.focus\(\{preventScroll:true\}\)/);
+ assert.match(html,/else if\(state\.station===8\)flash=questWalkFeedback\(outcome,next\)/);
+});

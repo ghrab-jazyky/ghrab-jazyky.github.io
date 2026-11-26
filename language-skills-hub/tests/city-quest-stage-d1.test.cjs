@@ -99,7 +99,12 @@ test('D03: 56 canonical and alternative responses for metro 05/06 are fluent sen
   const s=take(MG.start(n,level),legs);
   for(const lang of langs){
    const model=sample(s,lang),first=legs[0],last=legs.at(-1),end=M.station(last.stops.at(-1)).labelEn;
-   assert.ok(model.startsWith(firstWords[lang]+M.station(first.stops[0]).labelEn),lang+'/'+level+'/'+n);
+   // GA-012: Central Station is already a station name. Keep the exact
+   // departure check, with the corrected German construction only here.
+   const departure=M.station(first.stops[0]).labelEn;
+   const prefix=lang==='de'&&departure==='Central Station'?'An der ':firstWords[lang];
+   assert.ok(model.startsWith(prefix+departure),lang+'/'+level+'/'+n+' actual departure');
+   if(lang==='de')assert.doesNotMatch(model,/\bStation Central Station\b/);
    assert.ok(model.slice(0,200).includes(first.line));
    assert.ok(model.slice(0,200).includes(M.station(first.direction).labelEn));
    assert.ok(model.includes(exitWords[lang])&&model.includes(end));

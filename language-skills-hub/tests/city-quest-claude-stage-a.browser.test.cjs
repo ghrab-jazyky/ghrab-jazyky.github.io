@@ -181,3 +181,52 @@ test('A+ F-17: mixed metro map footer localizes the surface City Museum in all f
   }
  }finally{await browser.close();}
 });
+
+
+test('GA-014: heading, scrollable panels and metro landmarks across 40 language/state combinations',{timeout:240000},async()=>{
+ const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ const rules=['page-has-heading-one','heading-order','scrollable-region-focusable','landmark-complementary-is-top-level'];
+ let checked=0;
+ try{
+  for(const lang of ['en','es','de','fr']){
+   // axe injection only: the normal UX and matrix suites retain strict CSP.
+   const {page,errors}=await open(browser,lang,'B2',1366,768,true);
+   try{
+    await page.addScriptTag({content:axe.source});
+    async function inspect(label){
+     const result=await page.evaluate(async rules=>await window.axe.run(document,{runOnly:{type:'rule',values:rules}}),rules);
+     assert.deepEqual(result.violations.map(x=>({id:x.id,nodes:x.nodes.map(n=>n.target)})),[],lang+' '+label);
+     assert.equal(await page.getByRole('heading',{level:1}).count(),1,lang+' '+label);
+     checked++;
+    }
+    await inspect('City 01');
+    for(const n of [2,3,5]){
+     await page.locator('#f1Stations button').nth(n-1).click();
+     await inspect('City '+n);
+    }
+    await page.locator('#cqTeacherGuide > summary').click();
+    const guide=page.locator('#cqTeacherGuide .cq-teacher-content');
+    assert.equal(await guide.getAttribute('tabindex'),'0');
+    assert.equal(await page.locator('#cqTeacherGuide').getAttribute('lang'),'cs');
+    await guide.focus();
+    assert.equal(await guide.evaluate(n=>document.activeElement===n),true);
+    await inspect('Teacher guide');
+    await page.locator('#cqTeacherGuide > summary').click();
+    await page.locator('#cqUxAbout > summary').click();
+    const about=page.locator('.cq-ux-about-panel');
+    assert.equal(await about.getAttribute('tabindex'),'0');
+    await about.focus();
+    assert.equal(await about.evaluate(n=>document.activeElement===n),true);
+    await inspect('About');
+    await page.locator('#cqUxAbout > summary').click();
+    await page.locator('#metroPilotToggle').click();
+    for(const n of [5,6,7,8]){
+     await page.locator('#f1Stations button').nth(n-1).click();
+     await inspect('Mixed '+n);
+    }
+    assert.deepEqual(errors,[]);
+   }finally{await page.close();}
+  }
+  assert.equal(checked,40);
+ }finally{await browser.close();}
+});
