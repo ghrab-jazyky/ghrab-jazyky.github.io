@@ -53,7 +53,13 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     await page.locator('#cards .card').first().waitFor();
     const buttons=page.locator('#cards .card .action.test');
     assert.equal(await buttons.count(),count,'Buttons in '+skill);
-    assert.ok((await buttons.allTextContents()).every(s=>s.trim()==='TEST'));
+    const labels=await buttons.evaluateAll(nodes=>nodes.map(node=>({
+     id:node.closest('.card').dataset.topicId,label:node.textContent.trim()
+    })));
+    if(skill==='cteni')assert.ok(labels.some(button=>button.id==='rl-asteroids'));
+    for(const button of labels){
+     assert.equal(button.label,button.id==='rl-asteroids'?'Test':'TEST',button.id);
+    }
    }
   }finally{await browser.close();}
  });
