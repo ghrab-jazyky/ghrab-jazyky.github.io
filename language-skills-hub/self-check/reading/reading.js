@@ -599,7 +599,7 @@
    const data=core.parseReadingData(html);
    variant=core.variantFromData(data,selected.lang,selected.level);
    // Scope is derived from the validated catalog entry and canonical variant.
-   smartPilot=entry.id==='rl-asteroids'&&selected.lang==='en'&&selected.level==='B2';
+   smartPilot=entry.id==='rl-asteroids';
    if(smartPilot){
     const [prepared,validated]=await Promise.all([
      Promise.resolve().then(()=>window.LSHPdfReport?.prepareLocalLogo(document,5000)).catch(()=>false),

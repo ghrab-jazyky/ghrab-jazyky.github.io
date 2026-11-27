@@ -181,7 +181,7 @@
       ],
       "distractors": {
         "0": {
-          "whyWrong": "Barva malé měsíčkové družice se podle textu nezměnila; popsaný výsledek se týká času jejího oběhu.",
+          "whyWrong": "Text neuvádí změnu barvy malé družice; popsaný výsledek se týká času jejího oběhu.",
           "tip": "Rozliš údaj o vzhledu a o pohybu."
         },
         "2": {

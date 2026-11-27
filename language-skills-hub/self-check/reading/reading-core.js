@@ -156,18 +156,18 @@
   const marker='<script type="application/json" id="'+SF_ID+'">';
   ensure(html.split(SF_ID).length===2&&html.split(marker).length===2,'Missing or repeated Smart Feedback marker');
   const start=html.indexOf(marker)+marker.length,end=html.indexOf('</script>',start);
-  ensure(end>start&&end-start<=100000,'Invalid Smart Feedback payload');
+  ensure(end>start&&end-start<=650000,'Invalid Smart Feedback payload');
   const raw=html.slice(start,end),parsed=JSON.parse(raw);
   ensure(raw===JSON.stringify(parsed).replace(/</g,'\\u003c'),'Noncanonical Smart Feedback payload');
   return parsed;
  }
  async function validateSmartFeedback(html,topic,language,level,v){
-  ensure(topic===SF_TOPIC&&language==='en'&&level==='B2','Unsupported Smart Feedback pilot');
+  ensure(topic===SF_TOPIC&&LANGUAGES.includes(language)&&LEVELS.includes(level),'Unsupported Smart Feedback variant');
   validateVariant(v);
   const bank=parseSmartFeedback(html);
   ensure(sfKeys(bank,['schemaVersion','topicId','feedbackLanguage','variants'])&&bank.schemaVersion===1&&
-   bank.topicId===topic&&bank.feedbackLanguage==='cs'&&sfKeys(bank.variants,['en/B2']),'Invalid Smart Feedback bank');
-  const selected=bank.variants['en/B2'];
+   bank.topicId===topic&&bank.feedbackLanguage==='cs'&&sfKeys(bank.variants,LANGUAGES.flatMap(l=>LEVELS.map(v=>l+'/'+v))),'Invalid Smart Feedback bank');
+  const selected=bank.variants[language+'/'+level];
   ensure(sfKeys(selected,['sourceFingerprint','questions'])&&/^[a-f0-9]{64}$/.test(selected.sourceFingerprint)&&
    selected.sourceFingerprint===await smartFeedbackFingerprint(topic,language,level,v),'Stale Smart Feedback bank');
   ensure(sfKeys(selected.questions,v.questions.map(q=>q.id)),'Smart Feedback question coverage mismatch');

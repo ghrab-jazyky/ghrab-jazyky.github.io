@@ -126,7 +126,7 @@
     },
     "es-b1-scan-3": {
       "correctIndex": 2,
-      "correctWhy": "Dimorphos je v textu malá měsíčková družice asteroidu Didymos. Právě kolem Didymosu obíhá.",
+      "correctWhy": "Dimorphos je v textu malá malá družice asteroidu Didymos. Právě kolem Didymosu obíhá.",
       "evidence": [
         {
           "p": 2,

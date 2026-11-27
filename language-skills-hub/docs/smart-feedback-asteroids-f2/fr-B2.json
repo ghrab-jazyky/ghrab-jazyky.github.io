@@ -20,12 +20,12 @@
           "tip": "Rozliš popis existující metody od tvrzení, že už není použitelná."
         },
         "2": {
-          "whyWrong": "DART je pouze příklad možné obrany. Čtvrtý odstavec výslovně omezuje závěr experimentu a text stále zdůrazňuje pozorování.",
+          "whyWrong": "DART je pouze příklad možné obrany. Třetí odstavec výslovně omezuje závěr experimentu a text stále zdůrazňuje pozorování.",
           "tip": "U hlavní myšlenky nezaměňuj jeden experiment za závěr celého článku."
         },
         "3": {
           "whyWrong": "První odstavec rozlišuje blízký průlet od skutečné kolize; většina známých objektů nepředstavuje bezprostřední nebezpečí. Tvrzení o téměř jisté katastrofě je příliš silné.",
-          "tip": "Ověř slova vyjadřující míru jistoty, například most, could nebo almost."
+          "tip": "Ověř slova vyjadřující míru jistoty, například většina, mohl by nebo téměř."
         }
       },
       "unanswered": {
@@ -43,7 +43,7 @@
       ],
       "distractors": {
         "1": {
-          "whyWrong": "DART se objevuje až ve čtvrtém odstavci; konstrukční detaily sondy nejsou tématem úvodu.",
+          "whyWrong": "DART se objevuje až ve třetím odstavci; konstrukční detaily sondy nejsou tématem úvodu.",
           "tip": "U otázky na funkci odstavce se drž konkrétní části, ne celého tématu."
         },
         "2": {
@@ -164,7 +164,7 @@
         },
         "2": {
           "whyWrong": "Tvrzení o jasných objektech obrací klíčovou vlastnost: text mluví o tmavých tělesech odrážejících málo světla.",
-          "tip": "Porovnej význam protikladných přídavných jmen bright a dark."
+          "tip": "Porovnej význam výrazů pro jasný a tmavý objekt."
         },
         "3": {
           "whyWrong": "Měsíce vnějších planet nejsou cílem zde popsaného postupu; odstavec vysvětluje detekci asteroidů.",
@@ -218,7 +218,7 @@
       "distractors": {
         "0": {
           "whyWrong": "Odstavec výslovně říká, že experiment neprokázal možnost zabránit každému dopadu; záleží mimo jiné na velikosti objektu a čase.",
-          "tip": "Všímej si hranic vědeckého závěru, zejména slov every a did not prove."
+          "tip": "Všímej si hranic vědeckého závěru, zejména výrazů pro každý a neprokázal."
         },
         "1": {
           "whyWrong": "Didymos je větší těleso, které Dimorphos obíhá. Článek popisuje změnu pohybu, nikoli změnu velikosti Didymosu.",
