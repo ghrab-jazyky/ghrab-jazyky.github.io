@@ -179,7 +179,7 @@
    const seen=new Set();
    for(const e of f.evidence){
     ensure(sfKeys(e,['p','text'])&&Number.isInteger(e.p)&&e.p>=0&&e.p<v.paragraphs.length&&
-     sfText(e.text,900)&&v.paragraphs[e.p].includes(e.text),'Invalid evidence: '+q.id);
+     textOK(e.text,900)&&!/<[!/?a-z]/i.test(e.text)&&v.paragraphs[e.p].includes(e.text),'Invalid evidence: '+q.id);
     const key=JSON.stringify([e.p,e.text]);ensure(!seen.has(key),'Repeated evidence: '+q.id);seen.add(key);
    }
    for(const i of expected){
