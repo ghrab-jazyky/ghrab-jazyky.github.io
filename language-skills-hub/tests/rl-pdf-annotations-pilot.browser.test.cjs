@@ -1097,6 +1097,28 @@ async function f51Unlock(page){
  for(const corner of ['tl','tr','bl','br'])await page.locator('.lsh-corner-'+corner).click();
  await lock.waitFor({state:'hidden',timeout:12000});
 }
+async function f51SubmitClick(page,timed){
+ const submit=page.locator('#submitButton');
+ if(!timed){await submit.click();return;}
+ // Native confirmation dismissal may cause a delayed legitimate interruption
+ // in headless Chromium. Recover only through the ordinary teacher UI.
+ // Never repeat a successful click or suppress an application error.
+ for(let n=0;n<3;n++){
+  await page.bringToFront();
+  await f51Unlock(page);
+  try{await submit.click({trial:true,timeout:2500});}
+  catch(error){
+   if(!await page.locator('#sessionLock').isVisible())throw error;
+   continue;
+  }
+  try{await submit.click({timeout:2500});return;}
+  catch(error){
+   if(!await page.locator('#sessionLock').isVisible())throw error;
+  }
+ }
+ const reason=await page.locator('#sessionLockReason').textContent();
+ throw Error('Submit remains locked after real teacher recovery: '+reason);
+}
 async function f51Open(page,attempt=null){
  const url=base+'index.html?topic=rl-asteroids&lang=en&level=B2'+(attempt?'&timer=5&attempt='+attempt:'');
  await page.goto(url);
@@ -1130,15 +1152,13 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     await page.locator('[data-anno-start-note]').click();
     await page.locator('[data-anno-note]').fill('Unsaved F5 draft');
     await page.locator('#submitButton').scrollIntoViewIfNeeded();
-    if(timed)await f51Unlock(page);
-    await page.locator('#submitButton').click();
+    await f51SubmitClick(page,timed);
     assert.match(dialogs.at(-1),/Rozpracovaná poznámka nebude uložena/);
     assert.ok(await page.locator('[data-anno-note-box]').isVisible());
     assert.equal(await page.locator('[data-anno-note]').inputValue(),'Unsaved F5 draft');
     assert.equal(await page.locator('#results').isVisible(),false);
     accept=true;
-    if(timed)await f51Unlock(page);
-    await page.locator('#submitButton').click();
+    await f51SubmitClick(page,timed);
     await page.locator('#results:not([hidden])').waitFor();
     assert.match(dialogs.at(-1),/Rozpracovaná poznámka nebude uložena/);
     assert.equal(await page.locator('[data-anno-note-box]').isVisible(),false);
@@ -1336,9 +1356,20 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     state.answers={answers:{},reflection:'',annotations:rows};
     const len=JSON.stringify(state.answers).length;
     if(len>140000||len<130000)throw Error('Unexpected legacy fixture size '+len);
-    localStorage.setItem(key,JSON.stringify(state));return {key,rows,len};
+    return {key,rows,len,state};
    });
+   // A running page legitimately persists its current in-memory state on
+   // pagehide. Install the historical fixture in the *next* document before
+   // application scripts initialize, not in the old active document.
+   await page.addInitScript(({key,state})=>{
+    if(location.pathname.endsWith('/self-check/reading/index.html')&&new URLSearchParams(location.search).get('attempt')==='f51legacyabc123'){
+     localStorage.setItem(key,JSON.stringify(state));
+     window.f51LegacyFixtureLoaded=true;
+    }
+   },{key:legacy.key,state:legacy.state});
    await page.reload();await page.locator('#sessionLock').waitFor({state:'visible'});
+   assert.equal(await page.evaluate(()=>window.f51LegacyFixtureLoaded),true);
+   assert.deepEqual(await page.evaluate(()=>window.f51Attempt().answers.annotations),legacy.rows,'Reload must actually restore all historical records');
    assert.equal(await page.locator('.lsh-annotation-item').count(),80);
    assert.match(await page.locator('#readingAnnotationCapacityWarning').textContent(),/starší anotace|Starší anotace/);
    await f51Unlock(page);
@@ -1353,8 +1384,8 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.equal(await page.locator('.lsh-annotation-item').count(),80,'Historical notes remain in the open UI');
    assert.match(await page.locator('#readingAnnotationCapacityWarning').textContent(),/po obnovení stránky mohou chybět/);
    assert.deepEqual(state.answers.annotations,legacy.rows.slice(0,state.answers.annotations.length));
-   await page.locator('#submitButton').scrollIntoViewIfNeeded();await f51Unlock(page);
-   await page.locator('#submitButton').click();await page.locator('#results:not([hidden])').waitFor();
+   await page.locator('#submitButton').scrollIntoViewIfNeeded();
+   await f51SubmitClick(page,true);await page.locator('#results:not([hidden])').waitFor();
    const finished=await page.evaluate(()=>window.f51Attempt());
    assert.equal(finished.phase,'submitted');assert.deepEqual(finished.answers,state.answers);
    assert.deepEqual(errors,[]);
