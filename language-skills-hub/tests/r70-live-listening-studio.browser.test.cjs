@@ -18,7 +18,11 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await page.waitForFunction(()=>[...document.querySelectorAll('[data-count-skill="poslech"]')]
     .length===2&&[...document.querySelectorAll('[data-count-skill="poslech"]')]
     .every(el=>el.textContent.trim()==='6'));
-   for(const [skill,count] of [['konverzace',24],['cteni',5],['poslech',6]]){
+   const catalogResponse=await page.request.get(BASE+'data/cards.json');
+   assert.equal(catalogResponse.status(),200);
+   const {entries}=await catalogResponse.json();
+   for(const skill of ['konverzace','cteni','poslech']){
+    const count=entries.filter(entry=>entry.skill===skill).length;
     const nums=await page.locator('[data-count-skill="'+skill+'"]').allTextContents();
     assert.deepEqual(nums,[String(count),String(count)]);
    }
