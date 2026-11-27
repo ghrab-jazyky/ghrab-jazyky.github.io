@@ -1,7 +1,7 @@
 {
   "baseline": "31e792cd64c1078f519521fbe1dbc471ccebc77c",
-  "cardBlob": "04008dfe76e4b4407f3bc8f4b0d687acb51ac5e4",
-  "cardSha256": "64c57fad1d2126fd2de7f007d26f14aa11d3ecd7b6138eec7d4d84985154c1d9",
+  "cardBlob": "bc02c45a471db70a186088015a095318bb72b191",
+  "cardSha256": "3661b936059d812991fd1ee0b6662d9e817ae74ddd643a81807eaca4c7106bf8",
   "reviewType": "implementation-team targeted didactic review; not independent certification",
   "changes": [
     {
@@ -5275,6 +5275,124 @@
         },
         "unanswered": {
           "tip": "Ověř, ke kterému tělesu se výsledek vztahuje a která veličina se změnila."
+        }
+      }
+    },
+    {
+      "variant": "es/C2",
+      "id": "es-c2-critical-3",
+      "reason": "Retain both embedded questions as one verbatim rhetorical contrast",
+      "old": {
+        "correctIndex": 3,
+        "correctWhy": "Podle textu by nestačilo umět cíl zasáhnout. Rozhodující je, zda při dostatečně časné znalosti jeho dráhy a struktury dokážeme včas a dostatečně změnit budoucí polohu.",
+        "evidence": [
+          {
+            "p": 2,
+            "text": "que «¿podemos cambiar suficientemente pronto su posición futura, conociendo su estructura y trayectoria?»."
+          }
+        ],
+        "distractors": {
+          "0": {
+            "whyWrong": "Přesný zásah je technicky významný, ale text ho výslovně staví jako nedostatečné měřítko. Samotný kontakt nezaručuje potřebnou změnu budoucí polohy.",
+            "tip": "Rozliš nutnou dílčí podmínku a postačující kritérium účinku."
+          },
+          "1": {
+            "whyWrong": "Mediální zpracování je důležité pro komunikaci, ale neříká, zda konkrétní impuls změnil dráhu dostatečně brzy.",
+            "tip": "Odděl společenské podmínky rozhodování a fyzikální podmínky odklonu."
+          },
+          "2": {
+            "whyWrong": "Zvýhodnění jasných objektů při optické detekci je v textu již popsaný obecný jev. Nenahrazuje znalost dráhy a struktury konkrétní hrozby.",
+            "tip": "Rozliš obecné omezení detekce a chybějící parametry konkrétního zásahu."
+          }
+        },
+        "unanswered": {
+          "tip": "Porovnej dvě otázky v odstavci o DART; hledej širší podmínku skutečně účinného odklonu."
+        }
+      },
+      "new": {
+        "correctIndex": 3,
+        "correctWhy": "Podle textu by nestačilo umět cíl zasáhnout. Rozhodující je, zda při dostatečně časné znalosti jeho dráhy a struktury dokážeme včas a dostatečně změnit budoucí polohu.",
+        "evidence": [
+          {
+            "p": 2,
+            "text": "Ante una amenaza real, la pregunta relevante sería menos «¿podemos golpear el asteroide?» que «¿podemos cambiar suficientemente pronto su posición futura, conociendo su estructura y trayectoria?»."
+          }
+        ],
+        "distractors": {
+          "0": {
+            "whyWrong": "Přesný zásah je technicky významný, ale text ho výslovně staví jako nedostatečné měřítko. Samotný kontakt nezaručuje potřebnou změnu budoucí polohy.",
+            "tip": "Rozliš nutnou dílčí podmínku a postačující kritérium účinku."
+          },
+          "1": {
+            "whyWrong": "Mediální zpracování je důležité pro komunikaci, ale neříká, zda konkrétní impuls změnil dráhu dostatečně brzy.",
+            "tip": "Odděl společenské podmínky rozhodování a fyzikální podmínky odklonu."
+          },
+          "2": {
+            "whyWrong": "Zvýhodnění jasných objektů při optické detekci je v textu již popsaný obecný jev. Nenahrazuje znalost dráhy a struktury konkrétní hrozby.",
+            "tip": "Rozliš obecné omezení detekce a chybějící parametry konkrétního zásahu."
+          }
+        },
+        "unanswered": {
+          "tip": "Porovnej dvě otázky v odstavci o DART; hledej širší podmínku skutečně účinného odklonu."
+        }
+      }
+    },
+    {
+      "variant": "fr/C2",
+      "id": "fr-c2-critical-3",
+      "reason": "Retain both embedded questions as one verbatim rhetorical contrast",
+      "old": {
+        "correctIndex": 3,
+        "correctWhy": "Podle textu by nestačilo umět cíl zasáhnout. Rozhodující je, zda při dostatečně časné znalosti jeho dráhy a struktury dokážeme včas a dostatečně změnit budoucí polohu.",
+        "evidence": [
+          {
+            "p": 2,
+            "text": "» que « Pouvons-nous modifier suffisamment tôt sa position future compte tenu de sa structure et de sa trajectoire ?"
+          }
+        ],
+        "distractors": {
+          "0": {
+            "whyWrong": "Přesný zásah je technicky významný, ale text ho výslovně staví jako nedostatečné měřítko. Samotný kontakt nezaručuje potřebnou změnu budoucí polohy.",
+            "tip": "Rozliš nutnou dílčí podmínku a postačující kritérium účinku."
+          },
+          "1": {
+            "whyWrong": "Mediální zpracování je důležité pro komunikaci, ale neříká, zda konkrétní impuls změnil dráhu dostatečně brzy.",
+            "tip": "Odděl společenské podmínky rozhodování a fyzikální podmínky odklonu."
+          },
+          "2": {
+            "whyWrong": "Zvýhodnění jasných objektů při optické detekci je v textu již popsaný obecný jev. Nenahrazuje znalost dráhy a struktury konkrétní hrozby.",
+            "tip": "Rozliš obecné omezení detekce a chybějící parametry konkrétního zásahu."
+          }
+        },
+        "unanswered": {
+          "tip": "Porovnej dvě otázky v odstavci o DART; hledej širší podmínku skutečně účinného odklonu."
+        }
+      },
+      "new": {
+        "correctIndex": 3,
+        "correctWhy": "Podle textu by nestačilo umět cíl zasáhnout. Rozhodující je, zda při dostatečně časné znalosti jeho dráhy a struktury dokážeme včas a dostatečně změnit budoucí polohu.",
+        "evidence": [
+          {
+            "p": 2,
+            "text": "Face à une menace réelle, la bonne question serait moins « Pouvons-nous atteindre l’astéroïde ? » que « Pouvons-nous modifier suffisamment tôt sa position future compte tenu de sa structure et de sa trajectoire ? »."
+          }
+        ],
+        "distractors": {
+          "0": {
+            "whyWrong": "Přesný zásah je technicky významný, ale text ho výslovně staví jako nedostatečné měřítko. Samotný kontakt nezaručuje potřebnou změnu budoucí polohy.",
+            "tip": "Rozliš nutnou dílčí podmínku a postačující kritérium účinku."
+          },
+          "1": {
+            "whyWrong": "Mediální zpracování je důležité pro komunikaci, ale neříká, zda konkrétní impuls změnil dráhu dostatečně brzy.",
+            "tip": "Odděl společenské podmínky rozhodování a fyzikální podmínky odklonu."
+          },
+          "2": {
+            "whyWrong": "Zvýhodnění jasných objektů při optické detekci je v textu již popsaný obecný jev. Nenahrazuje znalost dráhy a struktury konkrétní hrozby.",
+            "tip": "Rozliš obecné omezení detekce a chybějící parametry konkrétního zásahu."
+          }
+        },
+        "unanswered": {
+          "tip": "Porovnej dvě otázky v odstavci o DART; hledej širší podmínku skutečně účinného odklonu."
         }
       }
     }
