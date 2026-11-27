@@ -1082,3 +1082,230 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   }finally{await browser.close()}
  });
 }
+
+
+// F5.1: reproduce independent audit findings against the same public UI.
+// The existing session guard and legitimate teacher interaction are retained.
+const f51Para='#readingParagraphs p:not(:has(.gap-marker))';
+async function f51Unlock(page){
+ const lock=page.locator('#sessionLock');
+ if(!await lock.isVisible())return;
+ for(const corner of ['tl','tr','bl','br'])await page.locator('.lsh-corner-'+corner).click();
+ await lock.waitFor({state:'hidden',timeout:12000});
+}
+async function f51Open(page,attempt=null){
+ const url=base+'index.html?topic=rl-asteroids&lang=en&level=B2'+(attempt?'&timer=5&attempt='+attempt:'');
+ await page.goto(url);
+ if(attempt){await page.locator('#sessionStart').click();}
+ await page.locator('#workspace:not([hidden])').waitFor();
+ if(attempt)await f51Unlock(page);
+ await page.locator('#readingAnnotationToggle').click();
+ await page.locator('[data-anno-controls]:visible').waitFor();
+}
+async function f51Lock(page){
+ await page.evaluate(()=>document.body.dispatchEvent(new MouseEvent('contextmenu',{bubbles:true,cancelable:true})));
+ await page.locator('#sessionLock').waitFor({state:'visible'});
+}
+function f51ObserveAttempt(){
+ let wrapped;
+ Object.defineProperty(window,'LSHSessionUI',{configurable:true,get:()=>wrapped,set:api=>{
+  wrapped={...api,mount:cfg=>{const session=api.mount(cfg);window.f51Attempt=()=>session.status();return session;}};
+ }});
+}
+for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+ test('F5.1 '+name+': manual submit warns about a draft; cancel preserves it, expiry does not wait',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   for(const timed of [false,true]){
+    const page=await browser.newPage({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+    const errors=[],dialogs=[];let accept=false;
+    page.on('pageerror',e=>errors.push(e.message));
+    page.on('dialog',d=>{dialogs.push(d.message());return accept?d.accept():d.dismiss();});
+    await f51Open(page,timed?'f51draftabc123':null);
+    await f1Select(page,f51Para,0,12);
+    await page.locator('[data-anno-start-note]').click();
+    await page.locator('[data-anno-note]').fill('Unsaved F5 draft');
+    await page.locator('#submitButton').scrollIntoViewIfNeeded();
+    if(timed)await f51Unlock(page);
+    await page.locator('#submitButton').click();
+    assert.match(dialogs.at(-1),/Rozpracovaná poznámka nebude uložena/);
+    assert.ok(await page.locator('[data-anno-note-box]').isVisible());
+    assert.equal(await page.locator('[data-anno-note]').inputValue(),'Unsaved F5 draft');
+    assert.equal(await page.locator('#results').isVisible(),false);
+    accept=true;
+    if(timed)await f51Unlock(page);
+    await page.locator('#submitButton').click();
+    await page.locator('#results:not([hidden])').waitFor();
+    assert.match(dialogs.at(-1),/Rozpracovaná poznámka nebude uložena/);
+    assert.equal(await page.locator('[data-anno-note-box]').isVisible(),false);
+    assert.equal(await page.locator('.lsh-annotation-item').count(),0);
+    assert.match(await page.locator('[data-anno-status]').textContent(),/jen ke čtení/);
+    assert.deepEqual(errors,[]);
+    await page.close();
+   }
+   const page=await browser.newPage({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   let dialogCount=0;page.on('dialog',d=>{dialogCount++;return d.dismiss();});
+   await page.addInitScript(()=>{
+    const now=Date.now.bind(Date);window.f51ClockShift=0;
+    Date.now=()=>now()+window.f51ClockShift;
+   });
+   await f51Open(page,'f51expiryabc123');
+   await f1Select(page,f51Para,0,12);await page.locator('[data-anno-start-note]').click();
+   await page.locator('[data-anno-note]').fill('Draft at deadline');
+   await page.evaluate(()=>{window.f51ClockShift=301000;});
+   await page.locator('#results:not([hidden])').waitFor({timeout:12000});
+   assert.equal(dialogCount,0,'Automatic expiry must not wait for annotation confirmation');
+   assert.equal(await page.locator('[data-anno-note-box]').isVisible(),false);
+   await page.close();
+  }finally{await browser.close()}
+ });
+ test('F5.1 '+name+': lock invalidates pending ranges; unlock release cannot auto-annotate; open editor survives',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1024,height:850},reducedMotion:'reduce'});
+   const errors=[];page.on('pageerror',e=>errors.push(e.message));
+   await f51Open(page,'f51lockabc123');
+   await page.locator('[data-anno-color="pink"]').click();
+   const anchor=page.locator(f51Para).first();
+   await anchor.focus();
+   for(let i=0;i<9;i++)await page.keyboard.press('Shift+ArrowRight');
+   await page.locator('[data-anno-apply-selection]').waitFor({state:'visible'});
+   assert.ok((await page.evaluate(()=>getSelection().toString())).length>0);
+   await f51Lock(page);
+   await page.waitForFunction(()=>document.querySelector('.lsh-anno-confirm-selection').hidden&&getSelection().isCollapsed);
+   await page.locator('[data-anno-apply-selection]').evaluate(el=>el.click());
+   await f51Unlock(page);
+   assert.equal(await page.locator('.lsh-annotation-item').count(),0);
+   assert.equal(await page.locator('[data-anno-apply-selection]').isVisible(),false);
+   assert.equal(await page.locator('[data-anno-color="pink"]').getAttribute('aria-pressed'),'false');
+   // Force the exact old pointerup route independent of headless overlay geometry.
+   // A fresh keyboard-origin range must not be written by an unmatched mouse release.
+   await page.locator('[data-anno-color="pink"]').click();
+   await f2SetSelection(page,f51Para,0,9,'touch');
+   await page.locator('[data-anno-apply-selection]').waitFor({state:'visible'});
+   await page.locator('#questionList fieldset.question').first().evaluate(el=>{
+    el.dispatchEvent(new PointerEvent('pointerup',{bubbles:true,pointerType:'mouse',pointerId:1,button:0,isPrimary:true}));
+   });
+   await page.evaluate(()=>new Promise(resolve=>setTimeout(resolve,30)));
+   assert.equal(await page.locator('.lsh-annotation-item').count(),0);
+   await page.locator('[data-anno-cancel-selection]').click();
+   await f1Select(page,f51Para,0,12);await page.locator('[data-anno-start-note]').click();
+   await page.locator('[data-anno-note]').fill('Draft survives interruption');
+   await f51Lock(page);await f51Unlock(page);
+   assert.ok(await page.locator('[data-anno-note-box]').isVisible());
+   assert.equal(await page.locator('[data-anno-note]').inputValue(),'Draft survives interruption');
+   await page.locator('[data-anno-save-note]').click();
+   assert.equal(await page.locator('.lsh-annotation-item').count(),1);
+   assert.deepEqual(errors,[]);
+  }finally{await browser.close()}
+ });
+ test('F5.1 '+name+': timed annotation budget leaves room for every answer and escaped reflection',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
+   await page.addInitScript(f51ObserveAttempt);
+   await f51Open(page,'f51budgetabc123');
+   // Same adversarial content as the independent repro; no synthetic attempt
+   // mutation, only the public selection / note / save controls.
+   const result=await page.evaluate(()=>{
+    const anchor=[...document.querySelectorAll('#readingParagraphs p:not(:has(.gap-marker))')].find(p=>p.textContent.length>=600);
+    if(!anchor)throw Error('Missing long paragraph');
+    const notes=document.querySelector('[data-anno-start-note]'),input=document.querySelector('[data-anno-note]');
+    let accepted=0,rejected=null;
+    for(let i=0;i<80;i++){
+     const r=document.createRange();r.setStart(anchor.firstChild,0);r.setEnd(anchor.firstChild,600);
+     getSelection().removeAllRanges();getSelection().addRange(r);document.dispatchEvent(new Event('selectionchange'));
+     notes.click();input.value='"'.repeat(500);input.dispatchEvent(new Event('input'));
+     const before=document.querySelectorAll('.lsh-annotation-item').length;
+     document.querySelector('[data-anno-save-note]').click();
+     const after=document.querySelectorAll('.lsh-annotation-item').length;
+     if(after>before)accepted++;
+     else{
+      rejected=document.querySelector('[data-anno-status]').textContent;
+      document.querySelector('[data-anno-cancel-note]').click();break;
+     }
+    }
+    return {accepted,rejected,snapshot:window.f51Attempt()};
+   });
+   assert.ok(result.accepted>0&&result.accepted<80);
+   assert.match(result.rejected,/Limit velikosti anotací/);
+   assert.equal(result.snapshot.answers.annotations.length,result.accepted);
+   assert.ok(JSON.stringify(result.snapshot.answers.annotations).length<=100000);
+   await page.evaluate(()=>{
+    for(const fieldset of document.querySelectorAll('#questionList fieldset.question')){
+     const input=fieldset.querySelector('input[type=radio]');
+     input.checked=true;input.dispatchEvent(new Event('change',{bubbles:true}));
+    }
+   });
+   // HTML textarea normalizes some controls; JSON-escaped quotes still
+   // reproduce the original ceiling stress with the full 5000 characters.
+   await page.locator('#reflection').fill('"'.repeat(5000));
+   const before=await page.evaluate(()=>window.f51Attempt());
+   assert.equal(before.answers.reflection.length,5000);
+   assert.equal(Object.keys(before.answers.answers).length,await page.locator('#questionList fieldset.question').count());
+   assert.equal(before.answers.annotations.length,result.accepted);
+   assert.ok(JSON.stringify(before.answers).length<=140000);
+   await page.locator('#submitButton').scrollIntoViewIfNeeded();await f51Unlock(page);
+   await page.locator('#submitButton').click();
+   await page.locator('#results:not([hidden])').waitFor();
+   const after=await page.evaluate(()=>window.f51Attempt());
+   assert.equal(after.phase,'submitted');
+   assert.deepEqual(after.answers,before.answers);
+   assert.deepEqual(errors,[]);
+  }finally{await browser.close()}
+ });
+ test('F5.1 '+name+': missing Highlight API is explicit on both surfaces; denied storage and range errors stay intelligible',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const unsupported=await browser.newContext({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   await unsupported.addInitScript(()=>Object.defineProperty(CSS,'highlights',{value:undefined,configurable:true}));
+   const page=await unsupported.newPage(),errors=[];
+   page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
+   await page.goto(base+'index.html?topic=rl-asteroids&lang=en&level=B2');
+   await page.locator('#workspace:not([hidden])').waitFor();
+   assert.ok(await page.locator('#readingAnnotationToggle').isDisabled());
+   assert.match(await page.locator('#readingAnnotationToggle').textContent(),/Anotace nedostupné/);
+   assert.equal(await page.locator('#readingAnnotationTools').isVisible(),false);
+   await page.locator('#questionList .reading-skill-panel:not([hidden]) input[type=radio]').first().check();
+   await page.locator('#submitButton').click();await page.locator('#results:not([hidden])').waitFor();
+   await page.goto(f1URL+'?lang=en&level=B2');
+   await page.locator('.lsh-anno-header-toggle').waitFor({state:'visible'});
+   assert.ok(await page.locator('.lsh-anno-header-toggle').isDisabled());
+   assert.equal(await page.locator('#readingAnnotationTools').count(),0);
+   assert.deepEqual(errors,[]);await unsupported.close();
+   const denied=await browser.newContext({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   await denied.addInitScript(()=>{
+    const get=Storage.prototype.getItem;Storage.prototype.getItem=function(key){
+     if(key.startsWith('lsh-reading-annotations-v1:')||key.startsWith('lsh-reading-practice-annotations-v1:'))throw Error('F5 denied storage');
+     return get.call(this,key);
+    };
+   });
+   const b=await denied.newPage();await f51Open(b);
+   assert.match(await b.locator('[data-anno-storage-warning]').textContent(),/neumožňuje přístup/);
+   await f1Select(b,f51Para,0,8);await b.locator('[data-anno-color="yellow"]').click();
+   assert.match(await b.locator('[data-anno-status]').textContent(),/neumožňuje přístup/);
+   assert.equal(await b.locator('.lsh-annotation-item').count(),0);
+   await b.goto(f1URL+'?lang=en&level=B2');await b.locator('.lsh-anno-header-toggle').click();
+   assert.match(await b.locator('[data-anno-storage-warning]').textContent(),/neumožňuje přístup/);
+   await denied.close();
+   const c=await browser.newPage({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   await f51Open(c);
+   await c.evaluate(()=>{
+    const a=document.querySelectorAll('#readingParagraphs p');
+    const r=document.createRange();r.setStart(a[0].firstChild,1);r.setEnd(a[1].firstChild,4);
+    getSelection().removeAllRanges();getSelection().addRange(r);document.dispatchEvent(new Event('selectionchange'));
+   });
+   await c.locator('[data-anno-color="pink"]').click();
+   assert.match(await c.locator('[data-anno-status]').textContent(),/jednoho odstavce/);
+   await c.evaluate(()=>{
+    const p=[...document.querySelectorAll('#readingParagraphs p:not(:has(.gap-marker))')].find(p=>p.textContent.length>=601);
+    const r=document.createRange();r.setStart(p.firstChild,0);r.setEnd(p.firstChild,601);
+    getSelection().removeAllRanges();getSelection().addRange(r);document.dispatchEvent(new Event('selectionchange'));
+   });
+   await c.locator('[data-anno-color="blue"]').click();
+   assert.match(await c.locator('[data-anno-status]').textContent(),/nejvýše 600 znaků/);
+   assert.equal(await c.locator('.lsh-annotation-item').count(),0);
+  }finally{await browser.close()}
+ });
+}
