@@ -38,7 +38,7 @@
       "evidence": [
         {
           "p": 0,
-          "text": "Cette formule peut être trompeuse."
+          "text": "Certains titres de presse laissent entendre qu’un astéroïde « se dirige vers la Terre » et qu’une catastrophe est imminente. Cette formule peut être trompeuse."
         }
       ],
       "distractors": {
@@ -167,8 +167,8 @@
           "tip": "Porovnej význam výrazů pro jasný a tmavý objekt."
         },
         "3": {
-          "whyWrong": "Měsíce vnějších planet nejsou cílem zde popsaného postupu; odstavec vysvětluje detekci asteroidů.",
-          "tip": "Rozliš typ astronomického tělesa, na který se daná metoda v textu vztahuje."
+          "whyWrong": "Malé měsíce velkých planet nejsou cílem zde popsaného postupu; odstavec vysvětluje detekci tmavých těles odrážejících málo světla.",
+          "tip": "Rozliš typ tělesa a vlastnost, díky níž ho lze infračerveně pozorovat."
         }
       },
       "unanswered": {
@@ -177,7 +177,7 @@
     },
     "fr-b2-detail-1": {
       "correctIndex": 2,
-      "correctWhy": "Pozorování po zásahu ukázala, že se oběžná doba Dimorphosu zkrátila. Tedy menší těleso potřebovalo méně času k oběhu kolem Didymosu.",
+      "correctWhy": "Pozorování ukázala, že se oběžná doba Dimorphosu zkrátila. Menší těleso tedy dokončilo jeden oběh Didymosu za kratší čas. To je zde význam plus vite; text netvrdí, že byla změřena větší okamžitá rychlost.",
       "evidence": [
         {
           "p": 2,
@@ -475,7 +475,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "Les premières estimations peuvent beaucoup évoluer grâce aux nouvelles mesures."
+          "text": "Les premières estimations peuvent beaucoup évoluer grâce aux nouvelles mesures. Cela ne veut pas dire que les scientifiques devinent au hasard : leurs calculs deviennent plus précis avec de meilleures données."
         }
       ],
       "distractors": {

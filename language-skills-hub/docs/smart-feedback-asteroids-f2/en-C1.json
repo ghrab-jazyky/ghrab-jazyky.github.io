@@ -181,7 +181,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "giving astronomers a short stretch of its orbit"
+          "text": "A faint asteroid may initially appear in only a handful of images, giving astronomers a short stretch of its orbit. Several possible future paths can then fit the available measurements."
         }
       ],
       "distractors": {
@@ -239,7 +239,7 @@
       "evidence": [
         {
           "p": 0,
-          "text": "between curiosity-driven research and public safety"
+          "text": "Asteroid science occupies an unusual position between curiosity-driven research and public safety."
         }
       ],
       "distractors": {
@@ -295,6 +295,10 @@
       "correctIndex": 1,
       "correctWhy": "Při příchodu nových měření se zmenšuje množina možných trajektorií. Dočasný růst vypočtené pravděpodobnosti proto může znamenat zpřesnění znalosti, nikoli nutně skutečný růst fyzického nebezpečí.",
       "evidence": [
+        {
+          "p": 1,
+          "text": "Additional observations usually narrow that range, sometimes reducing an apparent impact probability and occasionally increasing it before the uncertainty is resolved."
+        },
         {
           "p": 1,
           "text": "the set of plausible trajectories is becoming smaller."

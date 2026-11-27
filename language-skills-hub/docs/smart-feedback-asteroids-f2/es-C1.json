@@ -181,7 +181,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "que representan solo un tramo corto de su órbita."
+          "text": "Al principio, un asteroide débilmente visible puede aparecer en pocas imágenes, que representan solo un tramo corto de su órbita. Varias trayectorias futuras pueden ser compatibles con esas mediciones."
         }
       ],
       "distractors": {
@@ -208,7 +208,7 @@
       "evidence": [
         {
           "p": 0,
-          "text": "entre la investigación científica y la seguridad pública"
+          "text": "El estudio de los asteroides ocupa una posición peculiar entre la investigación científica y la seguridad pública."
         }
       ],
       "distractors": {
@@ -262,11 +262,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "antes de aclararse la incertidumbre."
-        },
-        {
-          "p": 1,
-          "text": "Las observaciones adicionales suelen reducir el abanico de posibilidades"
+          "text": "Las observaciones adicionales suelen reducir el abanico de posibilidades: a veces disminuye la probabilidad aparente de impacto y, en otras ocasiones, aumenta temporalmente antes de aclararse la incertidumbre."
         }
       ],
       "distractors": {
@@ -293,7 +289,7 @@
       "evidence": [
         {
           "p": 2,
-          "text": "mediante observaciones posteriores"
+          "text": "La eficacia de una misión debe comprobarse mediante observaciones posteriores, no solo con imágenes del choque."
         }
       ],
       "distractors": {
@@ -320,7 +316,7 @@
       "evidence": [
         {
           "p": 3,
-          "text": "La confianza se construye cuando las instituciones explican abiertamente las correcciones"
+          "text": "La confianza se construye cuando las instituciones explican abiertamente las correcciones de sus propios cálculos."
         }
       ],
       "distractors": {

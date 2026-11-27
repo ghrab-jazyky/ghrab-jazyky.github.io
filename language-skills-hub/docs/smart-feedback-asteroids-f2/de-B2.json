@@ -38,7 +38,7 @@
       "evidence": [
         {
           "p": 0,
-          "text": "Solche Formulierungen können irreführend sein."
+          "text": "Manche Schlagzeilen erwecken den Eindruck, ein Asteroid „rase auf die Erde zu“ und werde bald eine Katastrophe auslösen. Solche Formulierungen können irreführend sein."
         }
       ],
       "distractors": {
@@ -159,8 +159,8 @@
       ],
       "distractors": {
         "0": {
-          "whyWrong": "Měsíce vnějších planet nejsou cílem zde popsaného postupu; odstavec vysvětluje detekci asteroidů.",
-          "tip": "Rozliš typ astronomického tělesa, na který se daná metoda v textu vztahuje."
+          "whyWrong": "Malé měsíce velkých planet nejsou cílem zde popsaného postupu; odstavec vysvětluje detekci tmavých těles odrážejících málo světla.",
+          "tip": "Rozliš typ tělesa a vlastnost, díky níž ho lze infračerveně pozorovat."
         },
         "2": {
           "whyWrong": "Změny polohy světelných bodů slouží k hledání asteroidů; text nepřisuzuje infračerveným pozorováním měření změn dráhy Země.",
@@ -177,7 +177,7 @@
     },
     "de-b2-detail-1": {
       "correctIndex": 2,
-      "correctWhy": "Pozorování po zásahu ukázala, že se oběžná doba Dimorphosu zkrátila. Tedy menší těleso potřebovalo méně času k oběhu kolem Didymosu.",
+      "correctWhy": "Pozorování ukázala, že se oběžná doba Dimorphosu zkrátila. Menší těleso tedy dokončilo jeden oběh Didymosu za kratší čas. To je význam zde použitého výrazu schneller; text netvrdí, že byla změřena větší okamžitá rychlost.",
       "evidence": [
         {
           "p": 2,
@@ -475,7 +475,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "Frühe Vorhersagen können sich mit zusätzlichen Daten deutlich ändern."
+          "text": "Frühe Vorhersagen können sich mit zusätzlichen Daten deutlich ändern. Das bedeutet nicht, dass Wissenschaftler planlos raten."
         }
       ],
       "distractors": {

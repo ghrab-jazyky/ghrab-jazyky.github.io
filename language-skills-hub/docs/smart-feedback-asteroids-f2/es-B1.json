@@ -261,7 +261,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "Encontrar un asteroide es solo el principio."
+          "text": "Encontrar un asteroide es solo el principio. Los astrónomos hacen varias observaciones y utilizan ordenadores para calcular su órbita."
         }
       ],
       "distractors": {
@@ -284,7 +284,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "Las nuevas observaciones pueden cambiar una predicción"
+          "text": "Las nuevas observaciones pueden cambiar una predicción, sobre todo si el objeto se acaba de descubrir. Por eso los científicos colaboran y comparten sus mediciones."
         }
       ],
       "distractors": {

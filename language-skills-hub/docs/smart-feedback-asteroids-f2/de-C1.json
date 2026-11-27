@@ -181,7 +181,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "die einen kurzen Abschnitt seiner Umlaufbahn zeigen."
+          "text": "Ein lichtschwacher Asteroid ist anfangs möglicherweise nur auf wenigen Aufnahmen zu sehen, die einen kurzen Abschnitt seiner Umlaufbahn zeigen. Zu diesen Messungen können mehrere zukünftige Flugbahnen passen."
         }
       ],
       "distractors": {
@@ -208,7 +208,7 @@
       "evidence": [
         {
           "p": 0,
-          "text": "zwischen wissenschaftlicher Neugier und öffentlicher Sicherheit"
+          "text": "Die Asteroidenforschung steht an einer ungewöhnlichen Schnittstelle zwischen wissenschaftlicher Neugier und öffentlicher Sicherheit."
         }
       ],
       "distractors": {
@@ -262,7 +262,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "Zusätzliche Beobachtungen schränken die Möglichkeiten gewöhnlich ein"
+          "text": "Zusätzliche Beobachtungen schränken die Möglichkeiten gewöhnlich ein; dabei kann eine zunächst angenommene Einschlagswahrscheinlichkeit sinken oder vorübergehend sogar steigen."
         }
       ],
       "distractors": {
@@ -289,7 +289,7 @@
       "evidence": [
         {
           "p": 2,
-          "text": "muss die tatsächliche Bahnänderung erneut beobachtet"
+          "text": "Auch nach einer erfolgreichen Ablenkung muss die tatsächliche Bahnänderung erneut beobachtet und unabhängig überprüft werden."
         }
       ],
       "distractors": {
@@ -316,7 +316,7 @@
       "evidence": [
         {
           "p": 3,
-          "text": "Öffentliches Vertrauen entsteht vor allem dann, wenn Korrekturen nachvollziehbar"
+          "text": "Öffentliches Vertrauen entsteht vor allem dann, wenn Korrekturen nachvollziehbar und begründet erklärt werden."
         }
       ],
       "distractors": {

@@ -38,7 +38,7 @@
       "evidence": [
         {
           "p": 0,
-          "text": "Esa expresión puede resultar engañosa."
+          "text": "Algunos titulares dan a entender que un asteroide «se dirige hacia la Tierra» y que una catástrofe es inminente. Esa expresión puede resultar engañosa."
         }
       ],
       "distractors": {
@@ -163,8 +163,8 @@
           "tip": "Porovnej význam výrazů pro jasný a tmavý objekt."
         },
         "1": {
-          "whyWrong": "Měsíce vnějších planet nejsou cílem zde popsaného postupu; odstavec vysvětluje detekci asteroidů.",
-          "tip": "Rozliš typ astronomického tělesa, na který se daná metoda v textu vztahuje."
+          "whyWrong": "Malé měsíce velkých planet nejsou cílem zde popsaného postupu; odstavec vysvětluje detekci tmavých těles odrážejících málo světla.",
+          "tip": "Rozliš typ tělesa a vlastnost, díky níž ho lze infračerveně pozorovat."
         },
         "3": {
           "whyWrong": "Změny polohy světelných bodů slouží k hledání asteroidů; text nepřisuzuje infračerveným pozorováním měření změn dráhy Země.",
@@ -297,7 +297,7 @@
     },
     "es-b2-inference-2": {
       "correctIndex": 1,
-      "correctWhy": "Zkouška se odehrála na tělese, které nemířilo na Zemi. Prokazuje možnost změny pohybu, ale sama nedokládá účinnost při skutečné hrozbě; v takovém případě by záleželo na dalších podmínkách.",
+      "correctWhy": "DART prokázal změnu pohybu při bezpečné zkoušce, nikoli účinnost při skutečné hrozbě. Z této jedné zkoušky nelze určit, zda by potřebná změna dráhy u jiného cíle nastala včas; výsledek závisí na podmínkách.",
       "evidence": [
         {
           "p": 2,
@@ -479,7 +479,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "Las primeras estimaciones pueden cambiar bastante"
+          "text": "Las primeras estimaciones pueden cambiar bastante cuando llegan nuevos datos. Esto no significa que los científicos hagan conjeturas sin fundamento: sus cálculos mejoran con cada observación."
         }
       ],
       "distractors": {

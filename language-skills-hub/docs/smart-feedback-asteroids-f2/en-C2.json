@@ -34,7 +34,7 @@
       "evidence": [
         {
           "p": 0,
-          "text": "The metaphor makes for compelling cinema, but it obscures the slower intellectual work"
+          "text": "Planetary defence is frequently presented as a contest between humanity and a hostile universe. The metaphor makes for compelling cinema, but it obscures the slower intellectual work on which any plausible intervention depends."
         }
       ],
       "distractors": {
@@ -61,7 +61,7 @@
       "evidence": [
         {
           "p": 0,
-          "text": "collapsing them into a single alarmist category is a failure of communication"
+          "text": "Indeed, proximity, potential hazard and measurable impact probability describe distinct things; collapsing them into a single alarmist category is a failure of communication before it is a failure of science."
         }
       ],
       "distractors": {
@@ -169,7 +169,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "apparently precise statistics can conceal selection effects"
+          "text": "The deeper difficulty is that the available catalogue is itself a product of observing conditions, so apparently precise statistics can conceal selection effects."
         }
       ],
       "distractors": {
@@ -196,7 +196,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "they may be precisely what responsible evidence-based reasoning looks like."
+          "text": "Such revisions are often interpreted as institutional indecision, although they may be precisely what responsible evidence-based reasoning looks like."
         }
       ],
       "distractors": {
@@ -223,7 +223,11 @@
       "evidence": [
         {
           "p": 3,
-          "text": "an observed result provides evidence, not exemption from further testing."
+          "text": "An intact rocky body and a loosely bound collection of fragments need not behave identically."
+        },
+        {
+          "p": 3,
+          "text": "The engineering lesson is therefore a conditional one: an observed result provides evidence, not exemption from further testing."
         }
       ],
       "distractors": {
@@ -250,7 +254,7 @@
       "evidence": [
         {
           "p": 4,
-          "text": "We protect Earth not by claiming to have conquered chance"
+          "text": "The sensible conclusion is deliberately unspectacular. We protect Earth not by claiming to have conquered chance, but by building systems that notice weak signals, revise judgements openly and leave enough time for measured action."
         }
       ],
       "distractors": {
@@ -277,7 +281,7 @@
       "evidence": [
         {
           "p": 0,
-          "text": "it obscures the slower intellectual work"
+          "text": "Planetary defence is frequently presented as a contest between humanity and a hostile universe. The metaphor makes for compelling cinema, but it obscures the slower intellectual work on which any plausible intervention depends."
         }
       ],
       "distractors": {
@@ -304,11 +308,7 @@
       "evidence": [
         {
           "p": 2,
-          "text": "What was once presented as a threat will thus become a rare scientific opportunity"
-        },
-        {
-          "p": 2,
-          "text": "an outcome that no headline of 2004 anticipated."
+          "text": "What was once presented as a threat will thus become a rare scientific opportunity, an outcome that no headline of 2004 anticipated."
         }
       ],
       "distractors": {
@@ -335,7 +335,7 @@
       "evidence": [
         {
           "p": 3,
-          "text": "not proof that humanity possesses an all-purpose shield"
+          "text": "This was a demonstration of kinetic deflection, not proof that humanity possesses an all-purpose shield."
         }
       ],
       "distractors": {
@@ -362,7 +362,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "whereas darker bodies can be harder to detect"
+          "text": "Optical surveys tend to favour objects that are sufficiently bright and conveniently placed in the sky, whereas darker bodies can be harder to detect."
         }
       ],
       "distractors": {
@@ -389,7 +389,7 @@
       "evidence": [
         {
           "p": 2,
-          "text": "an alarming figure that further measurements soon eliminated"
+          "text": "Shortly after its discovery in 2004, preliminary calculations briefly assigned it a probability of almost three per cent of striking Earth in 2029 – an alarming figure that further measurements soon eliminated."
         }
       ],
       "distractors": {
@@ -540,7 +540,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "sometimes making a preliminary risk estimate rise before it falls."
+          "text": "Subsequent data constrain those possibilities, sometimes making a preliminary risk estimate rise before it falls. Such revisions are often interpreted as institutional indecision, although they may be precisely what responsible evidence-based reasoning looks like."
         }
       ],
       "distractors": {

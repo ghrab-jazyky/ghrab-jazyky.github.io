@@ -181,7 +181,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "représentant une portion très courte de son orbite."
+          "text": "Un astéroïde peu lumineux peut d’abord n’apparaître que sur quelques images, représentant une portion très courte de son orbite. Plusieurs trajectoires futures sont alors compatibles avec les mesures."
         }
       ],
       "distractors": {
@@ -208,7 +208,7 @@
       "evidence": [
         {
           "p": 0,
-          "text": "entre la recherche fondamentale et la sécurité publique"
+          "text": "L’étude des astéroïdes se situe à une frontière particulière entre la recherche fondamentale et la sécurité publique."
         }
       ],
       "distractors": {
@@ -262,11 +262,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "avant que l’incertitude ne se dissipe."
-        },
-        {
-          "p": 1,
-          "text": "De nouvelles observations réduisent généralement cet éventail"
+          "text": "De nouvelles observations réduisent généralement cet éventail, parfois en faisant baisser la probabilité apparente d’impact, parfois en la faisant provisoirement augmenter avant que l’incertitude ne se dissipe."
         }
       ],
       "distractors": {
@@ -293,7 +289,7 @@
       "evidence": [
         {
           "p": 2,
-          "text": "grâce à de nouvelles observations indépendantes."
+          "text": "L’efficacité d’une manœuvre doit aussi être vérifiée après l’impact grâce à de nouvelles observations indépendantes."
         }
       ],
       "distractors": {
@@ -320,7 +316,7 @@
       "evidence": [
         {
           "p": 3,
-          "text": "La confiance se renforce lorsque les institutions expliquent clairement"
+          "text": "La confiance se renforce lorsque les institutions expliquent clairement pourquoi elles révisent une estimation."
         }
       ],
       "distractors": {

@@ -269,7 +269,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "Finding an asteroid is only the beginning."
+          "text": "Finding an asteroid is only the beginning. Astronomers take several observations and use computers to calculate its orbit."
         }
       ],
       "distractors": {
@@ -292,7 +292,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "New observations can change a prediction"
+          "text": "New observations can change a prediction, especially when an object was discovered recently. Scientists therefore work together and share measurements."
         }
       ],
       "distractors": {
