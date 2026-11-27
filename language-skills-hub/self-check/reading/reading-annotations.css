@@ -71,7 +71,16 @@
    The JS hit-tests the underlying text and places this popover in the viewport. */
 .lsh-annotation-popover{
  position:fixed;z-index:1200;box-sizing:border-box;
- width:min(340px,calc(100vw - 20px));max-height:min(42vh,320px);
+ /* Layout constraints remain effective even before a resize event runs.
+    Percentages use the fixed containing block, excluding scrollbars.
+    JS provides the requested visual-viewport rectangle via custom properties. */
+ --lsh-popup-width:min(var(--lsh-popup-w,340px),max(0px,calc(100% - 20px)));
+ --lsh-popup-height:min(var(--lsh-popup-h,320px),42dvh,max(0px,calc(100% - 20px)));
+ --lsh-popup-top:clamp(10px,var(--lsh-popup-y,10px),max(10px,calc(100% - min(var(--lsh-popup-measured-h,120px),var(--lsh-popup-height)) - 10px)));
+ width:var(--lsh-popup-width);
+ left:clamp(10px,var(--lsh-popup-x,10px),max(10px,calc(100% - var(--lsh-popup-width) - 10px)));
+ top:var(--lsh-popup-top);
+ max-height:min(var(--lsh-popup-height),max(0px,calc(100% - var(--lsh-popup-top) - 10px)));
  overflow:auto;padding:12px 14px;border-radius:12px;
  border:1px solid var(--accent,#7ac7df);
  box-shadow:0 12px 32px rgba(0,0,0,.38);
@@ -89,3 +98,104 @@
  min-height:42px;cursor:pointer;font:inherit}
 .lsh-annotation-popover-close:focus-visible{outline:3px solid var(--accent,#78e6f4);outline-offset:2px}
 @media print{.lsh-annotation-popover{display:none!important}}
+
+/* F1: readable note rows on narrow viewports; full toolbar redesign is separate. */
+@media(max-width:650px){
+ .lsh-annotation-item{flex-direction:column;align-items:stretch}
+ .lsh-annotation-item-label{width:100%;min-width:0}
+ .lsh-annotation-actions{width:100%;flex-wrap:wrap;justify-content:flex-start}
+}
+.lsh-annotation-toolbar .lsh-anno-yellow-btn{border-bottom:5px solid #f5dc64}
+.lsh-annotation-toolbar .lsh-anno-green-btn{border-bottom:5px solid #8addab}
+.lsh-annotation-toolbar .lsh-anno-pink-btn{border-bottom:5px solid #f5a1bd}
+.lsh-annotation-toolbar .lsh-anno-blue-btn{border-bottom:5px solid #78e6f4}
+
+/* F2: explicit confirmation for touch, stylus and keyboard. */
+.lsh-anno-confirm-selection{position:fixed;z-index:1100;box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;padding:8px;border:1px solid var(--accent,#78e6f4);border-radius:12px;background:var(--panel,#12263c);color:var(--text,#eef6ff);box-shadow:0 6px 22px rgba(0,0,0,.35)}
+.lsh-anno-confirm-selection[hidden]{display:none!important}
+.lsh-anno-confirm-label{width:100%;text-align:center;font-size:.84rem;font-weight:700;overflow-wrap:anywhere}
+.lsh-anno-confirm-selection button{min-height:44px;flex:1 1 110px;min-width:0;padding:6px 9px;border:1px solid var(--border,#708ca3);border-radius:8px;background:var(--panel2,#214365);color:var(--text,#eef6ff);font:inherit;font-size:.85rem;font-weight:700;cursor:pointer}
+.lsh-anno-confirm-selection [data-anno-apply-selection]{border-color:var(--accent,#78e6f4)}
+[data-anno-keyboard-focus]:focus-visible{outline:2px solid var(--accent,#78e6f4);outline-offset:2px}
+@media print{.lsh-anno-confirm-selection{display:none!important}}
+
+/* Pending confirmation never overlays a locked timed session. */
+body:has(#sessionLock:not([hidden])) .lsh-anno-confirm-selection,body:has(#sessionLock:not([hidden])) .lsh-annotation-popover{display:none!important}
+
+/* F3: compact, theme-native tools and bounded annotation library. */
+.lsh-annotation-toolbar{padding:12px 16px;margin-bottom:14px;container-type:inline-size}
+.lsh-annotation-head{gap:8px}
+.lsh-annotation-head strong{font-size:1rem;letter-spacing:-.015em}
+.lsh-anno-active-label{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:750;color:var(--muted);border:1px solid var(--border,var(--line));background:var(--panel2);padding:4px 9px;border-radius:99px;max-width:100%;overflow-wrap:anywhere}
+.lsh-anno-help{font-size:.82rem;color:var(--muted);margin:6px 0}
+.lsh-anno-help summary{cursor:pointer;font-weight:700;width:fit-content;padding:4px 0}
+.lsh-anno-help .lsh-annotation-help{margin:5px 0 9px}
+.lsh-annotation-toolbar .lsh-annotation-buttons{display:flex;gap:7px;margin:9px 0 12px}
+.lsh-annotation-toolbar .lsh-annotation-buttons .action{font-size:.84rem;line-height:1.3;min-height:44px;flex:0 1 auto}
+.lsh-annotation-toolbar .lsh-annotation-buttons button[aria-pressed="true"],.lsh-anno-quick-button[aria-pressed="true"]{outline:2px solid var(--accent,#78e6f4);outline-offset:1px;background:var(--field,var(--panel2))}
+.lsh-annotation-toolbar .lsh-annotation-buttons button[aria-pressed="true"]::after,.lsh-anno-quick-button[aria-pressed="true"]::after{content:" ✓";font-weight:900;color:var(--accent,#78e6f4)}
+.lsh-annotation-toolbar .lsh-anno-undo{margin-inline-start:auto}
+[data-anno-swatch="yellow"],.lsh-anno-yellow-btn{--anno-swatch:#f4d45b}
+[data-anno-swatch="green"],.lsh-anno-green-btn{--anno-swatch:#93e0af}
+[data-anno-swatch="pink"],.lsh-anno-pink-btn{--anno-swatch:#f5a5be}
+[data-anno-swatch="blue"],.lsh-anno-blue-btn{--anno-swatch:#78e6f4}
+[data-anno-swatch="underline"]{--anno-swatch:#e9ad24}
+[data-anno-swatch="note"]{--anno-swatch:#b7bdf3}
+.lsh-anno-active-label:not([data-anno-swatch="none"])::before,.lsh-anno-item-kind::before,.lsh-anno-quick-button[data-anno-swatch]::before,.lsh-anno-dock-toggle:not([data-anno-swatch="none"])::before,.lsh-annotation-buttons [data-anno-color]::before{content:"";display:inline-block;width:12px;height:12px;flex:0 0 12px;background:var(--anno-swatch,transparent);border:1px solid rgba(30,45,60,.24);border-radius:3px;margin-right:6px;vertical-align:-1px}
+.lsh-anno-library{border:1px solid var(--border,var(--line));border-radius:12px;background:var(--panel2);min-width:0}
+.lsh-anno-library-summary{cursor:pointer;padding:10px 12px;min-height:44px;list-style-position:inside;font-size:.88rem}
+.lsh-anno-count{display:inline-block;min-width:25px;text-align:center;margin-inline-start:8px;font-size:.78rem;font-weight:800;border-radius:20px;background:var(--field,var(--panel));border:1px solid var(--border,var(--line));color:var(--text);padding:2px 7px}
+.lsh-anno-manage{display:flex;justify-content:flex-end;padding:0 10px 6px}
+.lsh-annotation-toolbar .lsh-annotation-clear-all{font-size:.78rem;min-height:44px;margin:0;border-color:var(--border,var(--line));color:var(--bad,var(--text))}
+.lsh-anno-library .lsh-annotation-clear-confirm{margin:4px 10px 10px}
+.lsh-anno-empty{font-size:.82rem;margin:0;padding:4px 12px 12px;color:var(--muted)}
+.lsh-annotation-toolbar [data-anno-list]{max-height:clamp(128px,28dvh,260px);overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;min-width:0;padding:0 10px 10px}
+.lsh-annotation-toolbar [data-anno-list][hidden],.lsh-anno-empty[hidden]{display:none!important}
+.lsh-annotation-toolbar .lsh-annotation-item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--border,var(--line));border-radius:10px;padding:10px;margin:6px 0;min-width:0}
+.lsh-annotation-toolbar .lsh-annotation-item-label{min-width:0;overflow-wrap:anywhere;line-height:1.45}
+.lsh-anno-item-kind{display:block;font-size:.74rem;font-weight:800;color:var(--muted);margin-bottom:3px}
+.lsh-anno-item-quote{font-size:.82rem;font-weight:650}
+.lsh-anno-item-note{margin-top:5px;font-size:.86rem;white-space:pre-wrap;overflow-wrap:anywhere}
+.lsh-anno-item-unavailable{display:block;margin-top:4px;color:var(--warn,var(--muted));font-size:.76rem}
+.lsh-annotation-toolbar .lsh-annotation-actions{gap:6px;max-width:100%}
+.lsh-annotation-toolbar .lsh-annotation-actions button{min-height:44px;font-size:.78rem;padding:6px 9px}
+.lsh-annotation-toolbar [data-anno-note-box]{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;min-width:0;padding:12px;border:1px solid var(--accent);border-radius:12px;background:var(--panel2);margin:10px 0 12px}
+.lsh-anno-editor-quote{margin:0;font-size:.85rem;line-height:1.45;border-inline-start:3px solid #b7bdf3;padding-inline-start:10px;overflow-wrap:anywhere;max-height:110px;overflow:auto}
+.lsh-annotation-toolbar [data-anno-note]{box-sizing:border-box;min-width:0;min-height:100px;max-height:42dvh;resize:vertical;font-size:1rem;background:var(--field,var(--panel));line-height:1.5}
+.lsh-anno-editor-count{font-size:.76rem;color:var(--muted);text-align:right;line-height:1.3;font-variant-numeric:tabular-nums}
+.lsh-anno-editor-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.lsh-anno-editor-actions .action{min-height:44px}
+.lsh-annotation-toolbar .lsh-anno-editor-actions [data-anno-save-note]{border-color:var(--accent);font-weight:800}
+.lsh-annotation-toolbar .lsh-annotation-status{font-size:.78rem;line-height:1.4;color:var(--muted);margin:8px 0 0;overflow-wrap:anywhere}
+.lsh-anno-dock{position:fixed;z-index:1050;display:flex;flex-direction:column;gap:7px;align-items:flex-end;max-width:calc(100vw - 24px);color:var(--text,#eef6ff);font:inherit}
+.lsh-anno-dock[hidden],.lsh-anno-dock-panel[hidden],.lsh-anno-dock-notice[hidden]{display:none!important}
+.lsh-anno-dock-toggle,.lsh-anno-quick-button{box-sizing:border-box;min-height:44px;border:1px solid var(--border,#708ca3);border-radius:10px;padding:8px 11px;background:var(--panel2,#14283f);color:var(--text,#eef6ff);font:inherit;font-size:.84rem;font-weight:750;line-height:1.3;cursor:pointer;overflow-wrap:anywhere}
+.lsh-anno-dock-toggle{background:var(--panel,#0e1d30);border-color:var(--accent,#78e6f4);box-shadow:0 5px 20px rgba(0,0,0,.24);max-width:100%}
+.lsh-anno-dock-panel,.lsh-anno-dock-notice{box-sizing:border-box;width:min(324px,100%);overflow:auto;padding:12px;border:1px solid var(--accent,#78e6f4);border-radius:14px;background:var(--panel,#0e1d30);box-shadow:0 8px 24px rgba(0,0,0,.24)}
+.lsh-anno-dock-title{display:block;margin-bottom:10px;font-size:.88rem;overflow-wrap:anywhere}
+.lsh-anno-dock-tools,.lsh-anno-dock-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.lsh-anno-dock-actions{margin-top:10px;padding-top:10px;border-top:1px solid var(--border,#708ca3)}
+.lsh-anno-dock-message,.lsh-anno-dock-notice{font-size:.77rem;line-height:1.4;overflow-wrap:anywhere;margin:8px 0 0;color:var(--muted,#acc1d6)}
+.lsh-anno-dock-notice{color:var(--warn,#ffcf79);margin:0}
+.lsh-anno-dock button:disabled{opacity:.5;cursor:not-allowed}
+.lsh-anno-dock button:focus-visible,.lsh-anno-library-summary:focus-visible,.lsh-anno-help summary:focus-visible{outline:2px solid var(--accent,#78e6f4);outline-offset:2px}
+@media(max-width:650px){
+ .lsh-annotation-toolbar{padding:10px 12px}
+ .lsh-annotation-toolbar .lsh-annotation-buttons .action{flex:1 1 94px}
+ .lsh-annotation-toolbar .lsh-anno-undo{margin:0}
+ .lsh-annotation-toolbar .lsh-annotation-item{grid-template-columns:minmax(0,1fr)}
+ .lsh-annotation-toolbar .lsh-annotation-actions{width:100%;justify-content:flex-start}
+ .lsh-annotation-toolbar .lsh-annotation-actions button{flex:1 1 auto;min-width:0}
+ .lsh-anno-editor-actions .action{flex:1 1 110px}
+}
+@container(max-width:650px){.lsh-annotation-toolbar .lsh-annotation-item{grid-template-columns:minmax(0,1fr)}}
+@media print{.lsh-anno-dock{display:none!important}}
+body:has(#sessionLock:not([hidden])) .lsh-anno-dock,body:has(#workspace[hidden]) .lsh-anno-dock{display:none!important}
+
+/* F4: persistent storage warning is distinct from transient tool status. */
+.lsh-annotation-toolbar .lsh-anno-storage-warning{font-size:.8rem;line-height:1.45;color:var(--warn,var(--text));border:1px solid var(--warn,var(--border,#708ca3));border-radius:8px;padding:8px 10px;margin:8px 0;overflow-wrap:anywhere}
+.lsh-anno-storage-warning[hidden]{display:none!important}
+
+/* F5.1: attempt capacity is visible even when the optional toolbar is closed. */
+#readingAnnotationCapacityWarning{font-size:.82rem;line-height:1.45;color:var(--warn,var(--text));border:1px solid var(--warn,var(--border,#708ca3));border-radius:8px;padding:10px 12px;margin:8px 0 14px;overflow-wrap:anywhere}
+#readingAnnotationCapacityWarning[hidden]{display:none!important}

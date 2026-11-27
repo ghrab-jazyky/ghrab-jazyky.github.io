@@ -79,17 +79,32 @@ for(const [name,engine]of[['Chromium',chromium],['WebKit',webkit]]){
    await page.locator('#cards .card').first().waitFor();
    const btn=page.locator('.card .action.test').first();
    // Disable native navigation but keep the original event handler intact.
-   await btn.evaluate(el=>el.removeAttribute('href'));
+   await btn.evaluate(el=>{
+    el.removeAttribute('href');
+    window.__lshPreviewOriginalButton=el;
+   });
+   const banner=page.locator('#lshTemporaryTestPreviewStatus');
    await page.evaluate(()=>{location.hash='#lsh-test-preview=on'});
-   await page.locator('#lshTemporaryTestPreviewStatus').waitFor({state:'visible'});
+   await banner.filter({hasText:/přístup k testům.*aktivní/i}).waitFor({state:'visible',timeout:10000});
+   assert.equal(await page.evaluate(()=>location.hash),'');
+   assert.equal(await page.evaluate(()=>localStorage.getItem('lsh:temporary-test-lock:developer:v1')),'enabled');
    assert.equal(await page.evaluate(()=>window.LSHTemporaryTestLock.isLocked()),false);
+   assert.equal(await btn.evaluate(el=>el===window.__lshPreviewOriginalButton),true,'Preview must retain the original catalog button without reloading');
    const preventedOpen=await btn.evaluate(el=>{
     const evt=new MouseEvent('click',{bubbles:true,cancelable:true});
     el.dispatchEvent(evt);return evt.defaultPrevented;
    });
    assert.equal(preventedOpen,false,'A newly enabled developer must not be blocked by stale catalog handlers');
    await page.evaluate(()=>{location.hash='#lsh-test-preview=off'});
+   // Fragment navigation queues hashchange asynchronously. The previous
+   // "active" banner can still be visible until the new event is handled.
+   // Wait for the observable completion of this exact OFF transition, not
+   // an arbitrary sleep or a retry of the authorization assertion itself.
+   await banner.filter({hasText:/přístup k testům.*vypnut/i}).waitFor({state:'visible',timeout:10000});
+   assert.equal(await page.evaluate(()=>location.hash),'');
+   assert.equal(await page.evaluate(()=>localStorage.getItem('lsh:temporary-test-lock:developer:v1')),null);
    assert.equal(await page.evaluate(()=>window.LSHTemporaryTestLock.isLocked()),true);
+   assert.equal(await btn.evaluate(el=>el===window.__lshPreviewOriginalButton),true,'Opt-out must retain the original catalog button without reloading');
    const preventedGuest=await btn.evaluate(el=>{
     const evt=new MouseEvent('click',{bubbles:true,cancelable:true});
     el.dispatchEvent(evt);return evt.defaultPrevented;

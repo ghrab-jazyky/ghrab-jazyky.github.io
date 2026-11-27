@@ -62,8 +62,9 @@ test('RL-02: accepts bounded, non-graded annotations only',()=>{
 });
 test('RL-02: does not change reading score implementation',()=>{
  const reading=fs.readFileSync(path.join(root,'self-check/reading/reading.js'),'utf8');
- assert.match(reading,/annotations:annotationAPI\?\.snapshot\(\)\|\|\[\]/);
- assert.match(reading,/annotationAPI\?\.restore\(saved\.annotations\)/);
+ assert.match(reading,/getAnswers:timedAnswers/);
+ assert.match(reading,/annotationAPI\?\.snapshot\(\)\|\|retainedTimedAnnotations/);
+ assert.match(reading,/if\(annotationAPI\)annotationAPI\.restore\(saved\.annotations\)/);
  assert.match(reading,/core\.score\(variant,answers\)/);
  const core=fs.readFileSync(path.join(root,'self-check/reading/reading-core.js'),'utf8');
  assert.doesNotMatch(core,/annotationAPI|annotation(s)?\s*:/);
@@ -101,14 +102,75 @@ test('RL-02: desktop auto-apply, explicit toggle-off and scoped clear-all confir
  assert.match(engine,/let armed=null/);
  assert.match(engine,/event\.pointerType==='mouse'&&event\.button===0/);
  assert.match(engine,/clearSelection\(\);capture\(\);applyArmedSelection\(\)/);
+ assert.match(engine,/annoApplySelection/);
+ assert.doesNotMatch(engine,/applyAfterTouch|lastTouchSignature/);
  assert.match(engine,/const same=armed===kind/);
  assert.match(engine,/armed=same&&!selected\?null:kind/);
  assert.match(engine,/data-anno-clear-confirm-action/);
- assert.match(engine,/if\(!save\(\)\)/);
+ assert.match(engine,/if\(!save\(previous\)\)/);
  for(const markup of [testUI,practice]){
   assert.match(markup,/data-anno-clear-all disabled/);
   assert.match(markup,/data-anno-clear-confirm hidden/);
   assert.match(markup,/data-anno-clear-cancel/);
   assert.match(markup,/data-anno-color="yellow" aria-pressed="false"/);
  }
+});
+
+
+test('F1: canonical and legacy ranges resolve only exact unambiguous source quotes',()=>{
+ const source='Hidden sentence. Visible tail.',hidden='[…] Visible tail.',shift=source.length-hidden.length;
+ const full={source,shift:0,min:0,gapShift:shift,gapPrefix:4};
+ const partial={...full,shift,min:4};
+ const legacy={start:4,end:11,text:'Visible'};
+ const canonical={start:4+shift,end:11+shift,text:'Visible',basis:'source-v1'};
+ assert.deepEqual(annotations.sourceRange(legacy,full),{start:4+shift,end:11+shift});
+ assert.deepEqual(annotations.sourceRange(canonical,partial),{start:4,end:11});
+ assert.deepEqual(annotations.sourceRange(canonical,full),{start:4+shift,end:11+shift});
+ assert.equal(annotations.sourceRange({...legacy,text:'Wrong!!'},full),null);
+ assert.equal(annotations.sourceRange({start:4,end:5,text:'x'},{source:'abcdx123x',shift:0,min:0,gapShift:4,gapPrefix:4}),null);
+ const record={anchor:'p:0',start:canonical.start,end:canonical.end,text:'Visible',kind:'note',color:'yellow',note:'N',id:'a-123',basis:'source-v1'};
+ assert.deepEqual(annotations.normalized([record]),[record]);
+});
+
+
+test('F4: strict snapshot validation preserves valid legacy records and rejects partial corruption',()=>{
+ const valid={anchor:'p:0',start:0,end:4,text:'Text',kind:'note',color:'yellow',note:'N'};
+ assert.deepEqual(annotations.decodeLocalSnapshot(null),[]);
+ assert.deepEqual(annotations.decodeLocalSnapshot(JSON.stringify([valid])),[valid]);
+ for(const raw of ['', 'null','{}','[','[null]'])assert.equal(annotations.decodeLocalSnapshot(raw),null);
+ const variants=[
+  {...valid,end:5},
+  {...valid,start:Number.MAX_SAFE_INTEGER+1,end:Number.MAX_SAFE_INTEGER+5},
+  {...valid,text:'    '},
+  {...valid,note:'  '},
+  {...valid,anchor:'../escape'},
+  {...valid,note:'x'.repeat(501)}
+ ];
+ for(const broken of variants){
+  assert.deepEqual(annotations.normalized([broken]),[]);
+  assert.equal(annotations.decodeLocalSnapshot(JSON.stringify([valid,broken])),null);
+ }
+ assert.equal(annotations.decodeLocalSnapshot(JSON.stringify(Array.from({length:81},()=>valid))),null);
+ assert.equal(annotations.sourceRange({start:-4,end:0,text:'Text'},null),null);
+});
+
+
+test('F5.1: timed annotation budget reserves worst-case legal answers and escaped reflection',()=>{
+ const ids=Array.from({length:80},(_,i)=>'q'+String(i).padStart(3,'0')+'x'.repeat(116));
+ const answers=Object.fromEntries(ids.map(id=>[id,7]));
+ const reflection='\u0000'.repeat(5000);
+ const budget=annotations.timedAnnotationBudget(ids);
+ assert.ok(budget>99000&&budget<=100000);
+ assert.equal(JSON.stringify({answers,reflection,annotations:[]}).length-2+budget<=140000,true);
+ assert.equal(annotations.timedAnnotationBudget(['q-one']),100000);
+ const rows=Array.from({length:80},(_,i)=>({anchor:'p:0',start:0,end:600,text:'x'.repeat(600),id:'a-'+i,kind:'note',color:'yellow',note:'"'.repeat(500)}));
+ const saved=annotations.timedSnapshot(answers,reflection,rows);
+ assert.ok(JSON.stringify(saved).length<=140000);
+ assert.deepEqual(saved.answers,answers);assert.equal(saved.reflection,reflection);
+ assert.ok(saved.annotations.length<rows.length);
+ assert.deepEqual(saved.annotations,rows.slice(0,saved.annotations.length));
+ assert.equal(rows.length,80,'Fitting legacy records must not mutate the in-page list');
+ assert.ok(JSON.stringify({...saved,annotations:rows.slice(0,saved.annotations.length+1)}).length>140000);
+ const ordinary=annotations.timedSnapshot(answers,reflection,rows.slice(0,2));
+ assert.deepEqual(ordinary.annotations,rows.slice(0,2));
 });
