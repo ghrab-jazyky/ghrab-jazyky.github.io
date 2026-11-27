@@ -1327,7 +1327,7 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    // Prepare a historical snapshot as a storage fixture, not a simulated
    // student action. Reload must still require the existing teacher unlock.
    const legacy=await page.evaluate(()=>{
-    const key=Object.keys(localStorage).find(k=>k.startsWith('lsh:local-attempt:r30:reading:')&&k.endsWith(':f51legacyabc123'));
+    const key=Object.keys(localStorage).find(k=>k.startsWith('lsh:local-attempt:r30:reading:')&&/:f51legacyabc123-[a-f0-9]{24}$/.test(k));
     if(!key)throw Error('Missing attempt fixture key');
     const state=JSON.parse(localStorage.getItem(key));
     const anchor=[...document.querySelectorAll('#readingParagraphs p:not(:has(.gap-marker))')].find(p=>p.textContent.length>=600);
