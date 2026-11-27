@@ -717,12 +717,28 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    const popup=page.locator('.lsh-annotation-popover-pinned:not([hidden])');
    await popup.waitFor();
    assert.ok(await page.locator('.lsh-annotation-popover-close').evaluate(el=>document.activeElement===el));
-   await page.setViewportSize({width:390,height:640});
-   const fits=await popup.evaluate(el=>{
-    const r=el.getBoundingClientRect(),v=visualViewport;
-    return r.left>=(v?.offsetLeft||0)-1&&r.right<=(v?.offsetLeft||0)+(v?.width||innerWidth)+1&&r.top>=(v?.offsetTop||0)-1&&r.bottom<=(v?.offsetTop||0)+(v?.height||innerHeight)+1;
-   });
-   assert.ok(fits,'Pinned note must fit the visible viewport');
+   // Retain the original immediate assertion; do not hide the race with a
+   // timeout. Exercise rapid desktop/phone/landscape/short-window transitions.
+   for(const [width,height] of [[390,640],[320,240],[844,390],[1440,900],[360,230],[1200,900],[390,640]]){
+    await page.setViewportSize({width,height});
+    const geometry=await popup.evaluate(el=>{
+     const measure=()=>{
+      const r=el.getBoundingClientRect(),v=visualViewport;
+      const left=v?.offsetLeft||0,top=v?.offsetTop||0,w=v?.width||innerWidth,h=v?.height||innerHeight;
+      return {left:r.left,top:r.top,right:r.right,bottom:r.bottom,w,h,fit:r.left>=left-1&&r.right<=left+w+1&&r.top>=top-1&&r.bottom<=top+h+1};
+     };
+     const immediate=measure(),style=el.getAttribute('style');
+     // Deterministic race replay: the previous wide viewport's requested
+     // coordinates survive a layout change until the JS handler runs.
+     for(const [key,value] of Object.entries({'--lsh-popup-w':'340px','--lsh-popup-h':'320px','--lsh-popup-x':'850px','--lsh-popup-y':'740px','--lsh-popup-measured-h':'280px'}))el.style.setProperty(key,value);
+     const stale=measure();
+     if(style===null)el.removeAttribute('style');else el.setAttribute('style',style);
+     return {immediate,stale};
+    });
+    assert.ok(geometry.immediate.fit,'Pinned note must fit immediately '+width+'x'+height+' '+JSON.stringify(geometry.immediate));
+    assert.ok(geometry.stale.fit,'CSS must constrain stale viewport coordinates '+width+'x'+height+' '+JSON.stringify(geometry.stale));
+    assert.ok(await page.locator('.lsh-annotation-popover-close').evaluate(el=>document.activeElement===el),'Viewport change must preserve focus');
+   }
    await page.keyboard.press('Escape');
    assert.ok(await show.evaluate(el=>document.activeElement===el),'Focus must return to the list button');
   }finally{await browser.close()}

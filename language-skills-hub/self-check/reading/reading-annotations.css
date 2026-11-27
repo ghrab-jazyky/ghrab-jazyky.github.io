@@ -71,7 +71,16 @@
    The JS hit-tests the underlying text and places this popover in the viewport. */
 .lsh-annotation-popover{
  position:fixed;z-index:1200;box-sizing:border-box;
- width:min(340px,calc(100vw - 20px));max-height:min(42vh,320px);
+ /* Layout constraints remain effective even before a resize event runs.
+    Percentages use the fixed containing block, excluding scrollbars.
+    JS provides the requested visual-viewport rectangle via custom properties. */
+ --lsh-popup-width:min(var(--lsh-popup-w,340px),max(0px,calc(100% - 20px)));
+ --lsh-popup-height:min(var(--lsh-popup-h,320px),42dvh,max(0px,calc(100% - 20px)));
+ --lsh-popup-top:clamp(10px,var(--lsh-popup-y,10px),max(10px,calc(100% - min(var(--lsh-popup-measured-h,120px),var(--lsh-popup-height)) - 10px)));
+ width:var(--lsh-popup-width);
+ left:clamp(10px,var(--lsh-popup-x,10px),max(10px,calc(100% - var(--lsh-popup-width) - 10px)));
+ top:var(--lsh-popup-top);
+ max-height:min(var(--lsh-popup-height),max(0px,calc(100% - var(--lsh-popup-top) - 10px)));
  overflow:auto;padding:12px 14px;border-radius:12px;
  border:1px solid var(--accent,#7ac7df);
  box-shadow:0 12px 32px rgba(0,0,0,.38);

@@ -418,17 +418,28 @@
    popupClose.hidden=!pinned;positionPopup();scheduleDock();
    if(pinned&&returnFocus)popupClose.focus({preventScroll:true});
    }
-   function positionPopup(){
-    if(popup.hidden||!popupPoint)return;
-    const v=viewport(),{x,y}=popupPoint;
-    popup.style.width=Math.min(340,Math.max(0,v.width-20))+'px';
-    popup.style.maxHeight=Math.max(0,Math.min(320,v.height*.42,v.height-20))+'px';
-    const size=popup.getBoundingClientRect();
-    const left=Math.min(Math.max(v.left+10,x+10),Math.max(v.left+10,v.left+v.width-size.width-10));
-    const below=y+16,limit=v.top+v.height-size.height-10;
-    const top=Math.max(v.top+10,Math.min(limit,below<=limit?below:y-size.height-16));
-    popup.style.left=left+'px';popup.style.top=top+'px';
-   }
+  function positionPopup(){
+   if(popup.hidden||!popupPoint)return;
+   // A layout resize can precede the visualViewport resize event. Intersect
+   // their current bounds, and let CSS independently clamp stale coordinates.
+   const {x,y}=popupPoint,vv=root.visualViewport;
+   const layoutW=document.documentElement.clientWidth||root.innerWidth;
+   const layoutH=document.documentElement.clientHeight||root.innerHeight;
+   const left=Math.max(0,Math.min(layoutW,vv?.offsetLeft||0));
+   const top=Math.max(0,Math.min(layoutH,vv?.offsetTop||0));
+   const width=Math.max(0,Math.min(layoutW-left,vv?.width||layoutW));
+   const height=Math.max(0,Math.min(layoutH-top,vv?.height||layoutH));
+   const set=(name,value)=>popup.style.setProperty(name,value+'px');
+   set('--lsh-popup-w',Math.min(340,Math.max(0,width-20)));
+   set('--lsh-popup-h',Math.max(0,Math.min(320,height*.42,height-20)));
+   // Measure at the visible top, not with a height limited by the old y.
+   set('--lsh-popup-y',top+10);
+   const size=popup.getBoundingClientRect();
+   set('--lsh-popup-measured-h',size.height);
+   set('--lsh-popup-x',Math.min(Math.max(left+10,x+10),Math.max(left+10,left+width-size.width-10)));
+   const below=y+16,limit=top+height-size.height-10;
+   set('--lsh-popup-y',Math.max(top+10,Math.min(limit,below<=limit?below:y-size.height-16)));
+  }
   function openNoteFromList(index,button){
    if(!enabled||hasLocked())return;
    const item=items[index],anchor=getAnchor(item.anchor);
@@ -755,7 +766,18 @@
   // dismiss a transient hover preview; a pinned note has an explicit close.
   root.document.addEventListener('wheel',()=>{if(!popupPinned)hideNote()},{passive:true});
   root.document.addEventListener('touchmove',()=>{if(!popupPinned)hideNote()},{passive:true});
-  function adjustViewport(){if(popupPinned)positionPopup();else hideNote();positionConfirmation();scheduleDock()}
+  let popupResizeFrame=0;
+  function adjustViewport(){
+   if(popupPinned){
+    positionPopup();
+    // A second pass coalesces visual/layout viewport events (rotation, zoom,
+    // soft keyboard). It must never reopen a popup that the user closed.
+    if(!popupResizeFrame)popupResizeFrame=root.requestAnimationFrame(()=>{
+     popupResizeFrame=0;if(popupPinned&&!popup.hidden&&!hasLocked())positionPopup();
+    });
+   }else hideNote();
+   positionConfirmation();scheduleDock();
+  }
   root.addEventListener('resize',adjustViewport);
   root.visualViewport?.addEventListener('resize',adjustViewport);
   root.visualViewport?.addEventListener('scroll',adjustViewport);
