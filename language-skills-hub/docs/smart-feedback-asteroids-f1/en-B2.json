@@ -1,0 +1,546 @@
+{
+  "schemaVersion": 1,
+  "topicId": "rl-asteroids",
+  "feedbackLanguage": "cs",
+  "variants": {
+    "en/B2": {
+      "sourceFingerprint": "961d59115da5d610b52ad60f766b8acf4b38ebad05f623e510fdcd894de3d3b4",
+      "questions": {
+        "en-b2-gist-1": {
+          "correctIndex": 3,
+          "correctWhy": "Závěr spojuje měření rizika s přípravou a spoluprací. Text odmítá jak představu, že žádné nebezpečí neexistuje, tak automatickou paniku.",
+          "evidence": [
+            {
+              "p": 0,
+              "text": "A close approach is therefore a reason for careful measurement, not automatic alarm."
+            },
+            {
+              "p": 4,
+              "text": "evidence, preparation and cooperation can make a significant difference."
+            }
+          ],
+          "distractors": {
+            "0": {
+              "whyWrong": "DART je pouze příklad možné obrany. Čtvrtý odstavec výslovně omezuje závěr experimentu a text stále zdůrazňuje pozorování.",
+              "tip": "U hlavní myšlenky nezaměňuj jeden experiment za závěr celého článku."
+            },
+            "1": {
+              "whyWrong": "První odstavec rozlišuje blízký průlet od skutečné kolize; většina známých objektů nepředstavuje bezprostřední nebezpečí. Tvrzení o téměř jisté katastrofě je příliš silné.",
+              "tip": "Ověř slova vyjadřující míru jistoty, například most, could nebo almost."
+            },
+            "2": {
+              "whyWrong": "Druhý odstavec popisuje pozemské teleskopy jako nástroj objevování. Text neříká, že tuto funkci ztratily.",
+              "tip": "Rozliš popis existující metody od tvrzení, že už není použitelná."
+            }
+          },
+          "unanswered": {
+            "tip": "Přečti úvod a závěr a hledej myšlenku, která propojuje i prostřední odstavce."
+          }
+        },
+        "en-b2-gist-2": {
+          "correctIndex": 2,
+          "correctWhy": "Úvod zpochybňuje dramatickou formulaci „heading towards Earth“: blízkost v astronomii sama o sobě neznamená srážku.",
+          "evidence": [
+            {
+              "p": 0,
+              "text": "That phrase can be misleading."
+            },
+            {
+              "p": 0,
+              "text": "A close approach is therefore a reason for careful measurement, not automatic alarm."
+            }
+          ],
+          "distractors": {
+            "0": {
+              "whyWrong": "Zmínka, že asteroidy jsou staré kusy horniny a kovu, není historií jejich objevování. Úvod řeší současné vnímání rizika.",
+              "tip": "Rozliš krátkou definici jevu od chronologického výkladu."
+            },
+            "1": {
+              "whyWrong": "Úvod uvádí hrubý počet objektů, ale nejmenuje ani neporovnává největší asteroidy.",
+              "tip": "Ověř, zda odstavec skutečně obsahuje slíbený seznam, ne jen jeden číselný údaj."
+            },
+            "3": {
+              "whyWrong": "DART se objevuje až ve čtvrtém odstavci; konstrukční detaily sondy nejsou tématem úvodu.",
+              "tip": "U otázky na funkci odstavce se drž konkrétní části, ne celého tématu."
+            }
+          },
+          "unanswered": {
+            "tip": "Polož si otázku, jaký dojem má úvod změnit, ne jen jaké téma představuje."
+          }
+        },
+        "en-b2-gist-3": {
+          "correctIndex": 0,
+          "correctWhy": "Úvod vychází ze zavádějícího titulku, druhý odstavec zavádí problém objevování, třetí přidává YR4, čtvrtý řeší obranu a poslední formuluje ponaučení.",
+          "evidence": [
+            {
+              "p": 1,
+              "text": "The first challenge is discovery."
+            },
+            {
+              "p": 3,
+              "text": "The second challenge is deciding what could be done if a genuinely threatening object were found."
+            },
+            {
+              "p": 4,
+              "text": "The central lesson is neither that asteroids are harmless nor that catastrophe is unavoidable"
+            }
+          ],
+          "distractors": {
+            "1": {
+              "whyWrong": "Autor nevypráví vlastní příběh ani nenabízí seznam bezpečnostních pokynů. Vysvětluje vědecké postupy a jejich širší význam.",
+              "tip": "Hledej znaky osobního vyprávění a instrukcí, než tak označíš strukturu."
+            },
+            "2": {
+              "whyWrong": "Příklad YR4 připomíná zprávu, ale článek neobsahuje rozhovor; závěr nepředpovídá budoucí srážku.",
+              "tip": "Při popisu struktury ověř, zda jsou v textu všechny uvedené části."
+            },
+            "3": {
+              "whyWrong": "YR4 je případ pozorování, DART experiment. Autor nesrovnává dvě mise podle ceny ani žádné náklady neuvádí.",
+              "tip": "Rozliš případovou ilustraci od systematického srovnání."
+            }
+          },
+          "unanswered": {
+            "tip": "Z každého odstavce si vytvoř krátký funkční popisek a porovnej jejich pořadí."
+          }
+        },
+        "en-b2-scan-1": {
+          "correctIndex": 2,
+          "correctWhy": "V odstavci o objevu 2024 YR4 stojí přesný odhad rozměru 40 až 90 metrů; obě hranice patří k témuž objektu.",
+          "evidence": [
+            {
+              "p": 2,
+              "text": "estimated at between 40 and 90 metres across"
+            }
+          ],
+          "distractors": {
+            "0": {
+              "whyWrong": "Obě hranice rozsahu jsou desetkrát vyšší než odhad v textu. Článek uvádí 40 a 90, nikoli 400 a 900 metrů.",
+              "tip": "Při skenování čísel zkontroluj každou číslici i jednotku."
+            },
+            "1": {
+              "whyWrong": "Rozsah 4 až 9 metrů je desetkrát nižší. Číslice jsou podobné, ale řád velikosti se liší.",
+              "tip": "Před výběrem porovnej počet číslic v obou mezích odhadu."
+            },
+            "3": {
+              "whyWrong": "Číslo 90 je horní mez skutečného odhadu, ne dolní. Horní mez 140 metrů v textu není.",
+              "tip": "Při práci s intervalem ověř dolní i horní hranici."
+            }
+          },
+          "unanswered": {
+            "tip": "Najdi název objektu a spoj číselný rozsah se slovem across."
+          }
+        },
+        "en-b2-scan-2": {
+          "correctIndex": 0,
+          "correctWhy": "Výraz „briefly reached about three per cent“ je přímo spojený s únorem 2025; jde o okamžik nejvyššího odhadu, nikoli termín možné srážky.",
+          "evidence": [
+            {
+              "p": 2,
+              "text": "in February 2025 it briefly reached about three per cent"
+            }
+          ],
+          "distractors": {
+            "1": {
+              "whyWrong": "Prosinec 2032 označuje datum možného dopadu, jehož pravděpodobnost se počítala, nikoli datum zvýšení odhadu.",
+              "tip": "U dat rozliš dobu hodnocení rizika od času hodnocené události."
+            },
+            "2": {
+              "whyWrong": "Rok 2022 patří k experimentu DART; září se jako datum maxima rizika YR4 neuvádí.",
+              "tip": "Spoj datum s konkrétním objektem nebo událostí z otázky."
+            },
+            "3": {
+              "whyWrong": "V prosinci 2024 byl YR4 objeven. Pravděpodobnost dosáhla zhruba tří procent až v pozdějším období.",
+              "tip": "Rozliš objev a pozdější vývoj sledovaného údaje."
+            }
+          },
+          "unanswered": {
+            "tip": "Najdi spojení three per cent a přečti časový údaj ve stejné větě."
+          }
+        },
+        "en-b2-scan-3": {
+          "correctIndex": 3,
+          "correctWhy": "Text přímo uvádí, že infračervená pozorování pomáhají zachytit tmavé objekty, které odrážejí málo slunečního světla.",
+          "evidence": [
+            {
+              "p": 1,
+              "text": "Infrared observations can also help detect dark objects that reflect little sunlight."
+            }
+          ],
+          "distractors": {
+            "0": {
+              "whyWrong": "Tvrzení o jasných objektech obrací klíčovou vlastnost: text mluví o tmavých tělesech odrážejících málo světla.",
+              "tip": "Porovnej význam protikladných přídavných jmen bright a dark."
+            },
+            "1": {
+              "whyWrong": "Měsíce vnějších planet nejsou cílem zde popsaného postupu; odstavec vysvětluje detekci asteroidů.",
+              "tip": "Rozliš typ astronomického tělesa, na který se daná metoda v textu vztahuje."
+            },
+            "2": {
+              "whyWrong": "Změny polohy světelných bodů slouží k hledání asteroidů; text nepřisuzuje infračerveným pozorováním měření změn dráhy Země.",
+              "tip": "Ověř, který objekt se pohybuje a jaký údaj přístroj skutečně pomáhá získat."
+            }
+          },
+          "unanswered": {
+            "tip": "Vyhledej výraz infrared a pokračuj až k popisu typu objektu."
+          }
+        },
+        "en-b2-detail-1": {
+          "correctIndex": 1,
+          "correctWhy": "Po identifikaci možného asteroidu vědci porovnávají pozorování z různých nocí a zpřesňují výpočet jeho oběžné dráhy.",
+          "evidence": [
+            {
+              "p": 1,
+              "text": "scientists compare observations taken on different nights and refine its orbit"
+            }
+          ],
+          "distractors": {
+            "0": {
+              "whyWrong": "Jedno fotografování a okamžité zveřejnění dráhy odporuje opakovaným pozorováním z různých nocí.",
+              "tip": "U popisu procesu ověř četnost a pořadí jednotlivých kroků."
+            },
+            "2": {
+              "whyWrong": "Infračervená metoda pomáhá s detekcí tmavých objektů, ale následující zpřesňování dráhy vychází z porovnávání pozorování. Výraz nothing else není podložený.",
+              "tip": "Rozliš metodu objevu a postup po objevu; pozor na výlučná tvrzení."
+            },
+            "3": {
+              "whyWrong": "Text v této fázi nezmiňuje udělení oficiálního jména. Popisuje porovnávání pozorování a výpočet dráhy.",
+              "tip": "Nevkládej do posloupnosti krok, který odstavec neuvádí."
+            }
+          },
+          "unanswered": {
+            "tip": "Sleduj spojení once … has been identified a najdi následující krok."
+          }
+        },
+        "en-b2-detail-2": {
+          "correctIndex": 2,
+          "correctWhy": "Zkrácení oběžné doby Dimorphosu ukázalo, že srážka sondy může změnit pohyb asteroidu. Článek však z tohoto experimentu nedělá záruku obrany proti všem hrozbám.",
+          "evidence": [
+            {
+              "p": 3,
+              "text": "Observations showed that the smaller body’s orbital period had become shorter."
+            },
+            {
+              "p": 3,
+              "text": "The experiment demonstrated that a spacecraft could alter the movement of an asteroid, but it did not prove that every possible impact could be prevented."
+            }
+          ],
+          "distractors": {
+            "0": {
+              "whyWrong": "Změna se týká menšího Dimorphosu a jeho oběžná doba se zkrátila. Tato možnost zaměňuje těleso i směr změny.",
+              "tip": "U dvojice pojmenovaných objektů si označ, ke kterému se výsledek vztahuje."
+            },
+            "1": {
+              "whyWrong": "Didymos je větší těleso, které Dimorphos obíhá. Článek popisuje změnu pohybu, nikoli změnu velikosti Didymosu.",
+              "tip": "Ověř, zda otázka i odpověď popisují stejnou fyzikální veličinu."
+            },
+            "3": {
+              "whyWrong": "Odstavec výslovně říká, že experiment neprokázal možnost zabránit každému dopadu; záleží mimo jiné na velikosti objektu a čase.",
+              "tip": "Všímej si hranic vědeckého závěru, zejména slov every a did not prove."
+            }
+          },
+          "unanswered": {
+            "tip": "Rozliš, co experiment prokázal, od toho, co text výslovně neprohlašuje."
+          }
+        },
+        "en-b2-detail-3": {
+          "correctIndex": 1,
+          "correctWhy": "Odstavec spojuje odpovědné informování s nejistotou čísla: čtenář má vědět, zda údaj vychází z prvních, nebo opakovaných měření.",
+          "evidence": [
+            {
+              "p": 1,
+              "text": "whether its figures are preliminary or based on repeated observations."
+            }
+          ],
+          "distractors": {
+            "0": {
+              "whyWrong": "Osobní pocity pisatele neřeší spolehlivost vědeckého údaje. Text žádá informaci o základu výpočtu.",
+              "tip": "Rozliš názor autora a informaci o kvalitě důkazu."
+            },
+            "2": {
+              "whyWrong": "Největší aktuální hrozba není předmětem této věty. Jde o transparentní uvedení nejistoty konkrétních čísel.",
+              "tip": "U odpovědi porovnej rozsah požadavku: kvalita údaje versus žebříček rizik."
+            },
+            "3": {
+              "whyWrong": "Dramatická fotografie může zaujmout, ale článek upozorňuje na zavádějící číslo bez kontextu nejistoty.",
+              "tip": "Rozliš mediálně působivý detail od informace potřebné k posouzení vědeckého tvrzení."
+            }
+          },
+          "unanswered": {
+            "tip": "Najdi větu se spojením responsible report a sleduj její vedlejší větu."
+          }
+        },
+        "en-b2-inference-1": {
+          "correctIndex": 2,
+          "correctWhy": "Druhý odstavec vysvětluje, že se rané odhady mění s novými měřeními. Vývoj YR4 je konkrétním příkladem tohoto běžného zpřesňování, ne překvapivou chybou.",
+          "evidence": [
+            {
+              "p": 1,
+              "text": "Early estimates may change substantially as more measurements arrive."
+            },
+            {
+              "p": 2,
+              "text": "refined the orbit, and within days the probability fell to almost zero"
+            }
+          ],
+          "distractors": {
+            "0": {
+              "whyWrong": "Text neuvádí úmyslnou chybu. Naopak zdůrazňuje, že změna raných odhadů neznamená náhodné hádání.",
+              "tip": "Nezaměňuj opravu odhadu při získání dat za doklad nepoctivosti."
+            },
+            "1": {
+              "whyWrong": "Důvodem není vztah astronomů k médiím, ale postupné zpřesňování výpočtů oběžné dráhy.",
+              "tip": "Při hledání příčiny sleduj vědecký proces, který předchází hodnocenému výroku."
+            },
+            "3": {
+              "whyWrong": "Článek uvádí pokles pravděpodobnosti téměř k nule. Netvrdí, že astronomové od začátku věděli o jistém dopadu.",
+              "tip": "Rozliš pravděpodobnost a jistotu; z rostoucího odhadu nevyvozuj potvrzený výsledek."
+            }
+          },
+          "unanswered": {
+            "tip": "Propoj konkrétní příklad YR4 s obecným vysvětlením z předcházejícího odstavce."
+          }
+        },
+        "en-b2-inference-2": {
+          "correctIndex": 0,
+          "correctWhy": "Slovo near má v astronomii jiný rozsah než v běžném životě. Autor vysvětlením vzdáleností brání tomu, aby čtenář zaměnil blízký průlet za bezprostřední hrozbu.",
+          "evidence": [
+            {
+              "p": 0,
+              "text": "covers enormous distances in space"
+            },
+            {
+              "p": 0,
+              "text": "A close approach is therefore a reason for careful measurement, not automatic alarm."
+            }
+          ],
+          "distractors": {
+            "1": {
+              "whyWrong": "Autor nekritizuje přesnost astronomických měření. Vysvětluje rozdíl mezi běžným významem slova a astronomickým měřítkem.",
+              "tip": "Při interpretaci záměru rozliš kritiku metody a upřesnění významu slova."
+            },
+            "2": {
+              "whyWrong": "Z velkých vzdáleností neplyne, že vzdálenější asteroidy nemají hodnotu pro výzkum. Text řeší interpretaci blízkých průletů.",
+              "tip": "Nevyvozuj hodnocení výzkumu z pouhého popisu vzdálenosti."
+            },
+            "3": {
+              "whyWrong": "Autor varuje před zavádějícím významem slova near, ale nepožaduje jeho úplný zákaz v médiích.",
+              "tip": "Rozliš upřesnění významu od absolutního požadavku na zákaz výrazu."
+            }
+          },
+          "unanswered": {
+            "tip": "Najdi příčinnou vazbu mezi vysvětlením slova near a větou o měření místo poplachu."
+          }
+        },
+        "en-b2-inference-3": {
+          "correctIndex": 0,
+          "correctWhy": "DART záměrně zasáhl těleso, které nebylo na kolizní dráze se Zemí. Z toho vyplývá, že šlo o zkoušku techniky bez odvracení skutečné hrozby.",
+          "evidence": [
+            {
+              "p": 3,
+              "text": "was tested on an asteroid that was not on a collision course with Earth."
+            }
+          ],
+          "distractors": {
+            "1": {
+              "whyWrong": "Text potvrzuje, že Dimorphos nebyl na kolizní dráze se Zemí, a neuvádí očekávaný brzký průlet. Takový předpoklad nelze doložit.",
+              "tip": "Rozliš, co text potvrzuje o dráze, od domněnky o budoucím přiblížení."
+            },
+            "2": {
+              "whyWrong": "Článek nesrovnává užitečnost nebezpečných a bezpečných cílů. Z popisu zkoušky nelze odvodit, že nebezpečný cíl by byl lepší.",
+              "tip": "Nepřidávej srovnávací hodnocení, pokud text neposkytuje obě strany srovnání."
+            },
+            "3": {
+              "whyWrong": "Experiment měnil pohyb Dimorphosu, ale neměl odklonit těleso ohrožující Zemi. Testovaný objekt nebyl na kolizní dráze.",
+              "tip": "Rozliš obecný cíl testu techniky od konkrétní záchranné operace."
+            }
+          },
+          "unanswered": {
+            "tip": "Při inferenci vyjdi z negace not on a collision course a odliš experiment od zásahu při nebezpečí."
+          }
+        },
+        "en-b2-matching-1": {
+          "correctIndex": 1,
+          "correctWhy": "Druhý odstavec popisuje postup objevování a přímo uvádí, že programy hledají světelné body, které mění polohu.",
+          "evidence": [
+            {
+              "p": 1,
+              "text": "computer programs look for points of light that change position"
+            }
+          ],
+          "distractors": {
+            "0": {
+              "whyWrong": "První odstavec vysvětluje riziko a význam blízkosti. Neuvádí postup, jakým počítač rozpoznává pohyb.",
+              "tip": "Při matching rozliš definici problému od popisu metody."
+            },
+            "2": {
+              "whyWrong": "Třetí odstavec sleduje změny odhadu rizika u YR4, nikoli algoritmus rozpoznávání pohyblivých objektů.",
+              "tip": "Nezaměň konkrétní případ následného měření za obecný popis objevu."
+            },
+            "3": {
+              "whyWrong": "Čtvrtý odstavec řeší změnu pohybu asteroidu pomocí sondy, ne jeho prvotní detekci počítačem.",
+              "tip": "Rozliš pozorování pohybu a aktivní změnu pohybu."
+            },
+            "4": {
+              "whyWrong": "Poslední odstavec řeší komunikaci, spolupráci a pozorování obecně. Neobsahuje postup rozpoznávání světelných bodů.",
+              "tip": "Vyber odstavec s konkrétním požadovaným mechanismem, ne obecnou souvislostí."
+            }
+          },
+          "unanswered": {
+            "tip": "Hledej společný výskyt počítačového programu a změny polohy, ne jen zmínku o pozorování."
+          }
+        },
+        "en-b2-matching-2": {
+          "correctIndex": 0,
+          "correctWhy": "První odstavec uvádí „tens of thousands“ ve vztahu k objektům pohybujícím se relativně blízko oběžné dráhy Země.",
+          "evidence": [
+            {
+              "p": 0,
+              "text": "tens of thousands move through regions relatively close to Earth’s orbit"
+            }
+          ],
+          "distractors": {
+            "1": {
+              "whyWrong": "Druhý odstavec popisuje, jak se objekty objevují a měří. Neuvádí jejich přibližný celkový počet.",
+              "tip": "Rozliš počítání objektů a způsob jejich vyhledávání."
+            },
+            "2": {
+              "whyWrong": "Třetí odstavec obsahuje čísla o jednom asteroidu: velikost, data a pravděpodobnost dopadu. Neuvádí počet asteroidů.",
+              "tip": "U čísel si ověř, co daná hodnota počítá nebo měří."
+            },
+            "3": {
+              "whyWrong": "Čtvrtý odstavec popisuje dvě pojmenovaná tělesa a jeden experiment. Nevyjadřuje počet asteroidů poblíž dráhy Země.",
+              "tip": "Nezaměň počet konkrétních aktérů s hrubým odhadem celé skupiny."
+            },
+            "4": {
+              "whyWrong": "Poslední odstavec hovoří o letech pozorování a spolupráci, nikoli o množství asteroidů poblíž zemské dráhy.",
+              "tip": "Rozliš časový údaj od číselného vyjádření počtu objektů."
+            }
+          },
+          "unanswered": {
+            "tip": "Hledej hrubý počet objektů spojený se zemskou oběžnou dráhou."
+          }
+        },
+        "en-b2-matching-3": {
+          "correctIndex": 3,
+          "correctWhy": "Čtvrtý odstavec přímo uvádí, že je nutné zohlednit dobu varování, protože změna oběžné dráhy není okamžitá.",
+          "evidence": [
+            {
+              "p": 3,
+              "text": "Scientists must also consider how much warning time they would have"
+            }
+          ],
+          "distractors": {
+            "0": {
+              "whyWrong": "První odstavec rozlišuje blízký průlet a možný dopad; neřeší, kolik času je potřeba na obranný zásah.",
+              "tip": "Rozliš posouzení hrozby od plánování reakce na ni."
+            },
+            "1": {
+              "whyWrong": "Druhý odstavec uvádí časový odstup pozorování při výpočtu dráhy. Otázka ale míří na dobu dostupnou pro obrannou reakci.",
+              "tip": "U časových údajů ověř, k jakému procesu se vztahují."
+            },
+            "2": {
+              "whyWrong": "Třetí odstavec zmiňuje prosinec 2032 jako možný termín dopadu a změny odhadu, nikoli podmínku úspěchu odklonění.",
+              "tip": "Rozliš datum možné události od času potřebného na zásah."
+            },
+            "4": {
+              "whyWrong": "Závěr zdůrazňuje dlouhodobá pozorování před krizí. Konkrétní důvod, proč varovný čas ovlivňuje reakci, je ve čtvrtém odstavci.",
+              "tip": "Při více časových zmínkách vyber tu, která vysvětluje přesně vztah z otázky."
+            }
+          },
+          "unanswered": {
+            "tip": "Najdi warning time a přečti důvod, který s tímto časovým údajem souvisí."
+          }
+        },
+        "en-b2-structure-1": {
+          "correctIndex": 1,
+          "correctWhy": "Spojení „as much about communication as about engineering“ dává oběma oblastem význam. Následující věty rozvíjejí komunikaci výzkumníků a sdílení informací, čímž navazují na techniku z předchozího odstavce.",
+          "evidence": [
+            {
+              "p": 4,
+              "text": "In the end, planetary defence is as much about communication as about engineering."
+            },
+            {
+              "p": 4,
+              "text": "Researchers must explain what is known, what remains uncertain and why an updated prediction may differ from an earlier one."
+            },
+            {
+              "p": 4,
+              "text": "Governments and observatories need to share reliable information long before an emergency occurs."
+            }
+          ],
+          "distractors": {
+            "0": {
+              "whyWrong": "Samostatné jednání každé země odporuje následující výzvě ke sdílení spolehlivých informací mezi vládami a observatořemi.",
+              "tip": "Všímej si, zda možnost nenarušuje vztah spolupráce ve větách za mezerou."
+            },
+            "2": {
+              "whyWrong": "Věta vylučuje vědce ve prospěch vlád, přestože další věta přímo popisuje úlohu výzkumníků a následující věta spolupráci institucí.",
+              "tip": "Ověř, zda aktéři z vložené věty souhlasí s aktéry v navazujícím textu."
+            },
+            "3": {
+              "whyWrong": "Tato možnost staví techniku nad komunikaci. Závěrečný odstavec však právě rozvíjí zásadní význam vysvětlování nejistoty a sdílení informací.",
+              "tip": "U srovnávacích konstrukcí ověř, zda vztah více/méně odpovídá rozvíjené myšlence."
+            }
+          },
+          "unanswered": {
+            "tip": "Ověř, zda vložená věta propojuje předchozí téma s tím, co následuje."
+          }
+        },
+        "en-b2-structure-2": {
+          "correctIndex": 3,
+          "correctWhy": "Ukazovací zájmeno This shrnuje předcházející tvrzení o tom, že se rané odhady mohou výrazně změnit. Následná věta vysvětluje, proč to neznamená náhodné hádání.",
+          "evidence": [
+            {
+              "p": 1,
+              "text": "Early estimates may change substantially as more measurements arrive."
+            }
+          ],
+          "distractors": {
+            "0": {
+              "whyWrong": "Případ objevu YR4 je popsán až v dalším odstavci. Zájmeno zde odkazuje zpět k měnícím se odhadům.",
+              "tip": "Než zvolíš vzdálenější referent, ověř bezprostředně předcházející tvrzení."
+            },
+            "1": {
+              "whyWrong": "Infračervená pozorování byla zmíněna dříve jako způsob detekce. Věta o hádání vysvětluje proměnlivost odhadů, ne použití této metody.",
+              "tip": "Zkontroluj logickou souvislost referentu s tím, co se o něm říká."
+            },
+            "2": {
+              "whyWrong": "Text zmiňuje porovnávání pozorování z různých nocí, nikoli všech snímků jedné noci. Navíc zájmeno navazuje na větu o změnách odhadů.",
+              "tip": "Ověř časový rozsah zmíněného procesu i jeho polohu v textu."
+            }
+          },
+          "unanswered": {
+            "tip": "U zájmena This přečti celou předchozí větu a zkus jí zájmeno nahradit."
+          }
+        },
+        "en-b2-structure-3": {
+          "correctIndex": 1,
+          "correctWhy": "Then posouvá příběh za fázi rostoucí pravděpodobnosti a zpráv o riziku. Následující pozorování zpřesnila dráhu a odhad rychle klesl téměř k nule.",
+          "evidence": [
+            {
+              "p": 2,
+              "text": "Then observations from some of the largest telescopes on Earth refined the orbit, and within days the probability fell to almost zero."
+            }
+          ],
+          "distractors": {
+            "0": {
+              "whyWrong": "Článek zde dál mluví o stejném asteroidu 2024 YR4; nepředstavuje druhé těleso.",
+              "tip": "U spojovacího výrazu zkontroluj, zda se skutečně mění referent."
+            },
+            "2": {
+              "whyWrong": "Zprávy médií jsou popsány před slovem Then. To zavádí pozdější vědecké pozorování, ne příčinu předchozího mediálního zájmu.",
+              "tip": "Rozliš časovou následnost od vysvětlení příčiny."
+            },
+            "3": {
+              "whyWrong": "Objev je první událostí odstavce v prosinci 2024. Then přichází až po růstu odhadu rizika a mediálním zájmu.",
+              "tip": "Seřaď události odstavce chronologicky a vyhledej bod obratu."
+            }
+          },
+          "unanswered": {
+            "tip": "Sleduj děj před a po časovém spojovacím výrazu Then."
+          }
+        }
+      }
+    }
+  }
+}
