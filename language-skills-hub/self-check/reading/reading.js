@@ -127,6 +127,7 @@
  const answers=Object.create(null);
  let submitted=false,timedUI=null,lastReport=null,annotationAPI=null;
  const annotationKey=['lsh-reading-annotations-v1',selected.topic,selected.lang,selected.level].join(':');
+ let annotationRaw=null,annotationReadable=false,timedAnnotationWrite=false;
  function themeSet(light,save){
   document.documentElement.dataset.theme=light?'light':'dark';
   $('themeButton').textContent=light?ui.themeDark:ui.themeLight;
@@ -459,15 +460,44 @@
       canEdit:()=>!submitted&&(!timedUI||timedUI.status().phase==='running'),
       onChange:annotations=>{
        if(timedUI){
-        timedUI.save();const status=timedUI.status();
-        return status.persistent&&!status.expired&&status.phase==='running';
+        timedAnnotationWrite=false;
+        const before=timedUI.status();
+        if(!before.persistent||before.expired||before.phase!=='running')return false;
+        timedAnnotationWrite=true;
+        timedUI.save();const after=timedUI.status();
+        // A deadline may cross immediately after a synchronous save.
+        // Verify the actual accepted snapshot, not merely the current phase.
+        const accepted=after.persistent&&JSON.stringify(after.answers?.annotations)===JSON.stringify(annotations);
+        if(accepted)timedAnnotationWrite=false;
+        return accepted;
        }
-       try{localStorage.setItem(annotationKey,JSON.stringify(annotations));return true}catch(_){return false}
+       try{
+        if(!annotationReadable)return 'Úložiště anotací není dostupné. Obnovte stránku.';
+        if(localStorage.getItem(annotationKey)!==annotationRaw)return 'Anotace byly změněny v jiné záložce. Obnovte stránku; původní data nebyla přepsána.';
+        const next=JSON.stringify(annotations);localStorage.setItem(annotationKey,next);annotationRaw=next;annotationAPI.reportStorageIssue('');return true;
+       }catch(_){return false}
+      },
+      onRollback:()=>{
+       // Reconcile a failed volatile attempt write through the existing API.
+       // Never bypass the session guard or attempt to write a locked attempt.
+       if(!timedAnnotationWrite||!timedUI)return;
+       timedAnnotationWrite=false;const s=timedUI.status();
+       if(s.phase==='running'&&!s.expired)timedUI.save();
       }
-     });
-     if(!search.has('timer')){
-      try{annotationAPI.restore(JSON.parse(localStorage.getItem(annotationKey)||'[]'))}catch(_){}
-     }
+      });
+      if(!search.has('timer')){
+       try{
+        annotationRaw=localStorage.getItem(annotationKey);
+        const records=window.LSHReadingAnnotations.decodeLocalSnapshot(annotationRaw);
+        annotationReadable=records!==null;
+        if(annotationReadable)annotationAPI.restore(records);
+       }catch(_){annotationReadable=false;}
+       if(!annotationReadable)annotationAPI.reportStorageIssue('Uložené anotace nelze bezpečně načíst. Původní data nebyla přepsána.');
+       window.addEventListener('storage',event=>{
+        if((event.key===annotationKey&&event.newValue!==annotationRaw)||(event.key===null&&annotationRaw!==null))
+         annotationAPI.reportStorageIssue('Anotace byly změněny v jiné záložce. Před úpravami obnovte stránku.');
+       });
+      }
     }catch(error){
      $('readingAnnotationTools').hidden=true;
      console.warn('Reading annotations unavailable',error?.message||error);

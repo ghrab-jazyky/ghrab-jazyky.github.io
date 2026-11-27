@@ -130,3 +130,25 @@ test('F1: canonical and legacy ranges resolve only exact unambiguous source quot
  const record={anchor:'p:0',start:canonical.start,end:canonical.end,text:'Visible',kind:'note',color:'yellow',note:'N',id:'a-123',basis:'source-v1'};
  assert.deepEqual(annotations.normalized([record]),[record]);
 });
+
+
+test('F4: strict snapshot validation preserves valid legacy records and rejects partial corruption',()=>{
+ const valid={anchor:'p:0',start:0,end:4,text:'Text',kind:'note',color:'yellow',note:'N'};
+ assert.deepEqual(annotations.decodeLocalSnapshot(null),[]);
+ assert.deepEqual(annotations.decodeLocalSnapshot(JSON.stringify([valid])),[valid]);
+ for(const raw of ['', 'null','{}','[','[null]'])assert.equal(annotations.decodeLocalSnapshot(raw),null);
+ const variants=[
+  {...valid,end:5},
+  {...valid,start:Number.MAX_SAFE_INTEGER+1,end:Number.MAX_SAFE_INTEGER+5},
+  {...valid,text:'    '},
+  {...valid,note:'  '},
+  {...valid,anchor:'../escape'},
+  {...valid,note:'x'.repeat(501)}
+ ];
+ for(const broken of variants){
+  assert.deepEqual(annotations.normalized([broken]),[]);
+  assert.equal(annotations.decodeLocalSnapshot(JSON.stringify([valid,broken])),null);
+ }
+ assert.equal(annotations.decodeLocalSnapshot(JSON.stringify(Array.from({length:81},()=>valid))),null);
+ assert.equal(annotations.sourceRange({start:-4,end:0,text:'Text'},null),null);
+});

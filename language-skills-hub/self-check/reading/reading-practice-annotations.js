@@ -57,9 +57,9 @@
  function currentSaved(){
   try{
    expectedRaw=localStorage.getItem(storageKey(identity()));
-   const records=JSON.parse(expectedRaw||'[]');
-   readable=Array.isArray(records)&&engine.normalized(records).length===records.length;
-   return readable?records:[];
+   const records=engine.decodeLocalSnapshot(expectedRaw);
+   readable=records!==null;
+   return records||[];
   }catch(_){readable=false;return []}
  }
  // Asteroids DATA is the unchanged classic-script source bank.
@@ -94,7 +94,7 @@
     const key=storageKey(currentIdentity);
     if(localStorage.getItem(key)!==expectedRaw)
      return 'Anotace byly změněny v jiné záložce. Obnovte stránku; původní data nebyla přepsána.';
-    const next=JSON.stringify(records);localStorage.setItem(key,next);expectedRaw=next;return true;
+    const next=JSON.stringify(records);localStorage.setItem(key,next);expectedRaw=next;api.reportStorageIssue('');return true;
    }catch(_){return false}
   }
  });
@@ -115,6 +115,7 @@
   if(next!==currentIdentity){
    currentIdentity=next;
    api.restore(currentSaved());
+   api.reportStorageIssue(readable?'':'Uložené anotace nelze bezpečně načíst. Původní data nebyla přepsána.');
   }else api.refresh();
  }
  // Practice cards deliberately re-render when changing language, CEFR, reading
@@ -145,8 +146,8 @@
  root.getElementById('skillTabs')?.addEventListener('keydown',event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key))blockWhileEditing(event)},true);
  // Do not overwrite a newer snapshot from a second tab.
  window.addEventListener('storage',event=>{
-  if(event.key===storageKey(currentIdentity)&&event.newValue!==expectedRaw)
-   host.querySelector('[data-anno-status]').textContent='Anotace byly změněny v jiné záložce. Před úpravami obnovte stránku.';
+  if((event.key===storageKey(currentIdentity)&&event.newValue!==expectedRaw)||(event.key===null&&expectedRaw!==null))
+   api.reportStorageIssue('Anotace byly změněny v jiné záložce. Před úpravami obnovte stránku.');
  });
  // Prevent dictionary quick-tap / double-click handling from interrupting text
  // selection while annotation tools are enabled. Answer widgets are unaffected.

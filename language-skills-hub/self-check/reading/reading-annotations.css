@@ -191,3 +191,7 @@ body:has(#sessionLock:not([hidden])) .lsh-anno-confirm-selection,body:has(#sessi
 @container(max-width:650px){.lsh-annotation-toolbar .lsh-annotation-item{grid-template-columns:minmax(0,1fr)}}
 @media print{.lsh-anno-dock{display:none!important}}
 body:has(#sessionLock:not([hidden])) .lsh-anno-dock,body:has(#workspace[hidden]) .lsh-anno-dock{display:none!important}
+
+/* F4: persistent storage warning is distinct from transient tool status. */
+.lsh-annotation-toolbar .lsh-anno-storage-warning{font-size:.8rem;line-height:1.45;color:var(--warn,var(--text));border:1px solid var(--warn,var(--border,#708ca3));border-radius:8px;padding:8px 10px;margin:8px 0;overflow-wrap:anywhere}
+.lsh-anno-storage-warning[hidden]{display:none!important}
