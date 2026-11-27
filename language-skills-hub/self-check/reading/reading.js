@@ -126,6 +126,7 @@
  let variant=null;
  const answers=Object.create(null);
  let submitted=false,timedUI=null,lastReport=null,annotationAPI=null;
+ let smartPilot=false,smartBank=null,smartLogoReady=false;
  const annotationKey=['lsh-reading-annotations-v1',selected.topic,selected.lang,selected.level].join(':');
  let annotationRaw=null,annotationReadable=false,timedAnnotationWrite=false;
  let annotationReadError='',retainedTimedAnnotations=[],timedBudget=100000,capacityWarning='';
@@ -314,6 +315,91 @@
   }
   container.appendChild(pair);
  }
+
+ // F1: existing submitted snapshot remains the only source of score and answers.
+ function renderSmartResults(report){
+  const details=$('resultDetails');$('results').appendChild(details);
+  details.lang='cs';details.classList.add('sf-results');
+  let phase='PRE_SUBMISSION';
+  const active=()=>submitted&&lastReport===report;
+  const mistakes=report.details.filter(item=>!item.correct);
+  const resolved=mistakes.map(item=>core.resolveSmartFeedback?.(item,smartBank,variant)||null);
+  const premium=!!smartBank&&resolved.every(Boolean);
+  function node(tag,cls,value,lang){
+   const el=add(tag,cls,value);if(lang)el.lang=lang;return el;
+  }
+  function btn(id,label,cls,callback){
+   const b=node('button','action '+cls,label);b.id=id;b.type='button';
+   b.addEventListener('click',callback);return b;
+  }
+  function sectionText(parent,label,value,lang='cs'){
+   const part=node('section','sf-part');part.append(node('h4',null,label),node('p',null,value,lang));parent.append(part);
+  }
+  function heading(label){
+   const h=node('h3','sf-heading',label);h.id='sfHeading';h.tabIndex=-1;details.append(h);return h;
+  }
+  function transition(next,focus){
+   if(!active()||!({PRE_SUBMISSION:['SUMMARY'],SUMMARY:['FEEDBACK','DECLINED'],FEEDBACK:['DONE']}[phase]||[]).includes(next))return;
+   phase=next;details.dataset.sfPhase=phase;details.replaceChildren();
+   let h;
+   if(phase==='SUMMARY'){
+    h=heading('Chceš zpětnou vazbu?');
+    details.append(node('p','sf-intro','Podívej se, proč některé odpovědi nebyly správné a co si z toho můžeš odnést do příště.'));
+    if(!mistakes.length)details.append(node('p','sf-intro','Všechny bodované úlohy máš správně.'));
+    const actions=node('div','sf-actions');
+    actions.append(btn('sfAccept','Chci zpětnou vazbu','primary',()=>transition('FEEDBACK',true)),
+     btn('sfDecline','Nechci zpětnou vazbu','ghost',()=>transition('DECLINED',true)));
+    details.append(actions);
+   }else if(phase==='FEEDBACK'){
+    h=heading('Tvoje zpětná vazba');
+    details.append(node('p','sf-intro',mistakes.length?mistakes.length+' z '+report.total+' bodovaných úloh k projití.':'Všechny bodované úlohy máš správně. Není co opravovat.'));
+    if(mistakes.length&&!premium)details.append(node('p','sf-unavailable','Rozšířená zpětná vazba není dostupná. Níže jsou původní vysvětlení úloh, pokud jsou k dispozici.'));
+    mistakes.forEach((item,index)=>{
+     const qIndex=variant.questions.findIndex(q=>q.id===item.id);
+     const q=variant.questions[qIndex];
+     const tab=variant.tabs.find(t=>t.id===q?.tab);
+     const box=node('article','review wrong sf-card');box.dataset.questionId=item.id;
+     const meta=node('div','sf-meta');
+     meta.append(node('span','sf-number','Otázka '+(qIndex+1)),node('span','sf-skill',tab?.title||'',selected.lang),
+      node('span','sf-state',item.answered?'Chybná odpověď':'Nezodpovězená'));
+     box.append(meta,node('h4','sf-prompt',item.prompt,selected.lang));
+     const pair=node('dl','feedback-compare');
+     for(const [kind,label,value,lang] of [
+      ['submitted','Tvoje odpověď',item.answered?item.selectedAnswer:'Bez odpovědi',item.answered?selected.lang:'cs'],
+      ['expected','Správná odpověď',item.correctAnswer,selected.lang]
+     ]){
+      const cell=node('div','feedback-answer '+kind);
+      cell.append(node('dt',null,label),node('dd',null,value,lang));pair.append(cell);
+     }
+     box.append(pair);
+     if(!item.answered)sectionText(box,'Bez odpovědi','Tuhle otázku jsi nechal bez odpovědi.');
+     const f=premium?resolved[index]:null;
+     if(f){
+      if(f.status==='wrong')sectionText(box,'Proč tvoje odpověď nesedí',f.whyWrong);
+      sectionText(box,'Proč je to správně',f.correctWhy);
+      const evidence=node('section','sf-evidence');evidence.append(node('h4',null,'Opora v textu'));
+      for(const e of f.evidence){
+       const quote=node('blockquote','sf-quote');
+       quote.append(node('span','sf-quote-label','Odstavec '+(e.p+1)),node('p',null,e.text,selected.lang));evidence.append(quote);
+      }
+      box.append(evidence);
+      const tip=node('section','sf-tip');tip.append(node('h4',null,'Tip pro příště'),node('p',null,f.tip));box.append(tip);
+     }else{
+      sectionText(box,'Původní vysvětlení',item.explanation||'Prober tuto úlohu s učitelem.',item.explanation?selected.lang:'cs');
+     }
+     details.append(box);
+    });
+    details.append(node('p','sf-intro','Pokud něčemu stále nerozumíš, můžeš úplný výsledkový protokol probrat s učitelem.'));
+    const actions=node('div','sf-actions');
+    actions.append(btn('sfDone','Dokončit','primary',()=>transition('DONE',true)));details.append(actions);
+   }else{
+    h=heading('Hotovo');
+    details.append(node('p','sf-intro',smartLogoReady?'Stáhni si PDF a předej ho učiteli.':'Použij úplnou textovou kopii nebo CSV a předej výsledek učiteli. PDF nyní není dostupné.'));
+   }
+   if(focus){h.focus({preventScroll:true});h.scrollIntoView({block:'start'});}
+  }
+  transition('SUMMARY',false);
+ }
  function renderResult(report){
   $('resultCaution').textContent=ui.after+' '+ui.grade+'.';
   const proposal=gradeCore.proposal(report.points,report.maxPoints);
@@ -331,6 +417,8 @@
   },locale);
   $('scoreSummary').replaceChildren(...tiles.map(tile=>resultValue(tile.value,tile.label)));
   const details=$('resultDetails');details.replaceChildren();
+  if(smartPilot)renderSmartResults(report);
+  else{
   details.appendChild(add('h3',null,ui.review));
   const mistakes=report.details.filter(item=>!item.correct);
   if(!mistakes.length)details.appendChild(add('p','small-note',{
@@ -351,10 +439,16 @@
    }
    details.appendChild(box);
   }
+  }
   $('resultReflection').textContent=ui.reflectionAfter;
   $('exportResult').hidden=!exportCore;
   $('exportCopy').hidden=!window.LSHPdfReport;
   $('exportPdf').hidden=!window.LSHPdfReport;
+  if(smartPilot&&!smartLogoReady){
+   $('exportPdf').disabled=true;
+   const notice=add('p','sf-unavailable','PDF není dostupné: při načtení testu se nepodařilo připravit originální logo školy. Použij úplnou textovou kopii nebo CSV.');
+   notice.lang='cs';notice.id='sfPdfUnavailable';$('exportStatus').before(notice);
+  }
   $('results').hidden=false;
   $('results').focus({preventScroll:true});
   $('results').scrollIntoView({behavior:'smooth',block:'start'});
@@ -476,7 +570,10 @@
   };
   $('exportPdf').addEventListener('click',async()=>{
    try{
-    await window.LSHPdfReport.download(completeReport());
+    if(smartPilot){
+     if(!smartLogoReady)throw new Error('PDF není dostupné. Použij úplnou textovou kopii nebo CSV.');
+     await window.LSHPdfReport.downloadLocal(completeReport());
+    }else await window.LSHPdfReport.download(completeReport());
     $('exportStatus').textContent=exportsCopy.pdfDone;
    }catch(error){
     $('exportStatus').textContent=exportsCopy.error+' '+String(error.message||error);
@@ -501,6 +598,15 @@
    const html=await response.text();
    const data=core.parseReadingData(html);
    variant=core.variantFromData(data,selected.lang,selected.level);
+   // Scope is derived from the validated catalog entry and canonical variant.
+   smartPilot=entry.id==='rl-asteroids'&&selected.lang==='en'&&selected.level==='B2';
+   if(smartPilot){
+    const [prepared,validated]=await Promise.all([
+     Promise.resolve().then(()=>window.LSHPdfReport?.prepareLocalLogo(document,5000)).catch(()=>false),
+     Promise.resolve().then(()=>core.validateSmartFeedback(html,entry.id,selected.lang,selected.level,variant)).catch(()=>null)
+    ]);
+    smartLogoReady=prepared===true;smartBank=validated;
+   }
    $('title').textContent=variant.title;
    $('lead').textContent=ui.lead;
    renderReading();renderQuestions();

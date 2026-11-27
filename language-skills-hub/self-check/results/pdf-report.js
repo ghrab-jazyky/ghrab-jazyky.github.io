@@ -435,6 +435,32 @@ const BLOCKED_ACTIONS=Object.freeze(['clipboard','context-menu','blocked-shortcu
   logoCache={doc:d,promise};
   return promise;
  }
+ // F1: bounded bootstrap preparation uses the same already-started logo request.
+ // A failed/timed-out attempt remains unavailable for the lifetime of this document.
+ let localLogo=null;
+ function prepareLocalLogo(doc,timeoutMs=5000){
+  const d=doc||host.document;
+  if(localLogo&&localLogo.doc===d)return localLogo.promise;
+  const state={doc:d,image:null,promise:null};localLogo=state;
+  state.promise=(async()=>{
+   let timer;
+   try{
+    const img=await Promise.race([
+     preloadSchoolLogo(d),
+     new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error('Logo preparation timeout')),timeoutMs);})
+    ]);
+    if(!img||img.naturalWidth!==384||img.naturalHeight!==384)return false;
+    state.image=img;return true;
+   }catch(_){return false;}finally{clearTimeout(timer);}
+  })();
+  return state.promise;
+ }
+ async function downloadLocal(report,doc){
+  const d=doc||host.document;
+  const img=localLogo&&localLogo.doc===d?localLogo.image:null;
+  check(img&&img.naturalWidth===384&&img.naturalHeight===384,'PDF unavailable: original logo was not prepared. Use the complete text copy or CSV.');
+  return savePdf(report,d,pdfBytes(renderPages(report,d,img)));
+ }
  async function generate(report,doc){
   const d=doc||host.document;
   const image=await loadSchoolLogo(d);
@@ -443,6 +469,9 @@ const BLOCKED_ACTIONS=Object.freeze(['clipboard','context-menu','blocked-shortcu
  async function download(report,doc){
   const documentRef=doc||host.document;
   const pdf=await generate(report,documentRef);
+  return savePdf(report,documentRef,pdf);
+ }
+ function savePdf(report,documentRef,pdf){
   const objectUrl=URL.createObjectURL(new Blob([pdf],{type:'application/pdf'}));
   const stamp=new Date(report.generatedAt||Date.now()).toISOString().replace(/[:.]/g,'-');
   const name='lsh-'+report.skill+'-'+clean(report.topicId).replace(/[^a-z0-9_-]/gi,'-')+
@@ -452,7 +481,7 @@ const BLOCKED_ACTIONS=Object.freeze(['clipboard','context-menu','blocked-shortcu
   try{a.click()}finally{a.remove();setTimeout(()=>URL.revokeObjectURL(objectUrl),2000)}
   return name;
  }
- const api=Object.freeze({normalize,securityFromAttempt,securityDetails,fullText,copy,renderPages,pdfBytes,loadSchoolLogo,preloadSchoolLogo,generate,download});
+ const api=Object.freeze({normalize,securityFromAttempt,securityDetails,fullText,copy,renderPages,pdfBytes,loadSchoolLogo,preloadSchoolLogo,prepareLocalLogo,generate,download,downloadLocal});
  if(host.document&&typeof host.document.addEventListener==='function'){
   const startPreload=()=>{try{preloadSchoolLogo(host.document)}catch(_){}};
   if(host.document.readyState==='loading')host.document.addEventListener('DOMContentLoaded',startPreload,{once:true});

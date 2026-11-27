@@ -107,3 +107,30 @@ fieldset.question .choice>span{min-width:0;overflow-wrap:anywhere}
  .reading-skill-tabs{display:none!important}
  .reading-skill-panel[hidden]{display:block!important}
 }
+
+/* Smart Feedback F1: scoped, existing Reading tokens, no extra resources. */
+.sf-results{max-width:1000px;margin:12px auto 0;padding:clamp(14px,2.4vw,25px);border-top:1px solid var(--line);overflow-wrap:anywhere}
+.sf-heading{font-size:clamp(1.25rem,2.5vw,1.8rem);line-height:1.3;margin:0 0 8px;scroll-margin:20px;letter-spacing:-.025em}
+.sf-intro{margin:8px 0 14px;color:var(--muted);max-width:78ch}
+.sf-actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0}
+.sf-actions .action{max-width:100%;white-space:normal}
+.sf-card{border:1px solid var(--line);border-left:3px solid var(--wrong);background:var(--panel);padding:clamp(14px,2.6vw,24px);margin:18px 0;box-shadow:none}
+.sf-meta{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;color:var(--muted);font-size:.77rem;line-height:1.4;margin-bottom:12px}
+.sf-number{font-weight:850;letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.sf-skill{font-weight:700}
+.sf-state{margin-left:auto;color:var(--wrong);font-weight:800}
+.sf-prompt{margin:0 0 14px;font-size:clamp(1rem,1.8vw,1.24rem);line-height:1.45}
+.sf-card .feedback-compare{margin:12px 0 20px}
+.sf-card .feedback-answer{min-width:0}
+.sf-part,.sf-evidence,.sf-tip{margin:16px 0 0}
+.sf-part h4,.sf-evidence h4,.sf-tip h4{margin:0 0 5px;font-size:.92rem;line-height:1.4}
+.sf-part p,.sf-tip p,.sf-quote p{margin:0;line-height:1.65}
+.sf-evidence{border:1px solid var(--line);background:var(--panel2);border-radius:12px;padding:14px}
+.sf-quote{margin:9px 0 0;padding:4px 0 4px 12px;border-left:3px solid var(--accent)}
+.sf-quote-label{display:block;color:var(--muted);font-size:.73rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
+.sf-quote p{font-size:.95rem;font-style:italic}
+.sf-tip{border-top:1px solid var(--line);padding-top:14px}
+.sf-tip h4{color:var(--accent)}
+.sf-unavailable{font-size:.9rem;line-height:1.5;color:var(--warn);padding:12px 14px;border:1px solid var(--warn);border-radius:10px;margin:12px 0;overflow-wrap:anywhere}
+@media(max-width:580px){.sf-actions{display:grid;grid-template-columns:minmax(0,1fr)}.sf-state{margin-left:0}.sf-meta{align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){html:has(.sf-results){scroll-behavior:auto}.sf-results *{animation:none;transition:none}}
