@@ -1,0 +1,228 @@
+{
+  "sourceFingerprint": "ffbce8fb995c84a1f4bddae3c6a91b66a0bdff4639e8b11b097677af5352c54b",
+  "questions": {
+    "fr-a1-gist-1": {
+      "correctIndex": 2,
+      "correctWhy": "Text nejprve vysvětluje, co jsou asteroidy, a pak popisuje, jak je vědci sledují. Obě části patří k hlavnímu tématu.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "Un astéroïde est une roche dans l’espace."
+        },
+        {
+          "p": 1,
+          "text": "Les scientifiques cherchent les astéroïdes avec de grands télescopes."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text říká, k čemu je dalekohled dobrý. Nedává ale návod, jak si ho doma postavit.",
+          "tip": "Rozliš popis přístroje a návod k jeho výrobě."
+        },
+        "1": {
+          "whyWrong": "V textu se píše, že asteroidy nejsou hvězdy a nemají vlastní světlo. Je to jen jedna informace, ne hlavní téma.",
+          "tip": "Vyber možnost, která vystihuje více než jedinou větu."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti první větu každého odstavce. Hledej téma, které se opakuje."
+      }
+    },
+    "fr-a1-gist-2": {
+      "correctIndex": 2,
+      "correctWhy": "Poslední odstavec se ptá, zda může asteroid zasáhnout Zemi. Vysvětluje, že velký náraz je vzácný a vědci nás pomáhají chránit.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "Oui, mais un très grand choc est rare."
+        },
+        {
+          "p": 2,
+          "text": "Les scientifiques observent le ciel pour apprendre et nous protéger."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "O vlastním světle se píše na začátku textu. Závěr mluví o nárazech a ochraně lidí.",
+          "tip": "Najdi odstavec, na který se ptá zadání."
+        },
+        "1": {
+          "whyWrong": "Hledání pomocí dalekohledů je popsané dříve. Poslední odstavec říká hlavně, proč vědci oblohu sledují.",
+          "tip": "Rozliš způsob hledání a důvod sledování."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti první a předposlední část posledního odstavce. Co mají společného?"
+      }
+    },
+    "fr-a1-gist-3": {
+      "correctIndex": 1,
+      "correctWhy": "Poslední věty oslovují přímo čtenáře a vybízejí ho, aby se díval na hvězdy a kladl otázky. Mají ho povzbudit k poznávání vesmíru.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "Toi aussi, tu peux découvrir l’espace."
+        },
+        {
+          "p": 2,
+          "text": "Regarde les étoiles et pose des questions !"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text připouští možnost nárazu, ale neoznamuje blížící se velkou srážku. Závěrečné věty zvou k učení.",
+          "tip": "Rozliš varování před nebezpečím a výzvu něco poznávat."
+        },
+        "2": {
+          "whyWrong": "Dalekohled je popsaný ve druhém odstavci. Poslední věta není návod k jeho používání.",
+          "tip": "U otázky na účel konce čti hlavně poslední věty."
+        }
+      },
+      "unanswered": {
+        "tip": "Všimni si, co má čtenář podle poslední věty dělat."
+      }
+    },
+    "fr-a1-scan-1": {
+      "correctIndex": 0,
+      "correctWhy": "První odstavec uvádí přímo dvě planety: mnoho asteroidů cestuje mezi Marsem a Jupiterem.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "Beaucoup passent entre Mars et Jupiter."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Země je v textu zmíněná, ale hledaná oblast leží mezi Marsem a Jupiterem, ne mezi Zemí a Měsícem.",
+          "tip": "Zkontroluj obě jména v údaji o místě."
+        },
+        "2": {
+          "whyWrong": "Asteroidy obíhají kolem Slunce. Text neříká, že se pohybují uvnitř Slunce.",
+          "tip": "Pozor na rozdíl mezi uvnitř a kolem."
+        }
+      },
+      "unanswered": {
+        "tip": "V prvním odstavci najdi jména planet vedle údaje o cestě asteroidů."
+      }
+    },
+    "fr-a1-scan-2": {
+      "correctIndex": 1,
+      "correctWhy": "Oblast mezi Marsem a Jupiterem text přímo pojmenovává jako pás asteroidů.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "Cette région s’appelle la ceinture d’astéroïdes."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Oběžná dráha je cesta jednoho tělesa. Otázka se ptá na název oblasti, kde jich cestuje mnoho.",
+          "tip": "Rozliš cestu tělesa a oblast, kde se tělesa nacházejí."
+        },
+        "2": {
+          "whyWrong": "Sluneční soustava je širší pojem. Text dává hledanému místu vlastní název: pás asteroidů.",
+          "tip": "Hledej konkrétní jméno místa, ne obecný název vesmíru."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi větu se jménem oblasti za zmínkou o Marsu a Jupiteru."
+      }
+    },
+    "fr-a1-scan-3": {
+      "correctIndex": 0,
+      "correctWhy": "Druhý odstavec přímo říká, že vědci hledají asteroidy velkými dalekohledy.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Les scientifiques cherchent les astéroïdes avec de grands télescopes."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Text zmiňuje fotografování, ale jako hledací přístroj uvádí dalekohledy, nikoli videokamery.",
+          "tip": "Najdi přesný název přístroje ve větě o hledání."
+        },
+        "2": {
+          "whyWrong": "Auto je v prvním odstavci přirovnáním velikosti malého asteroidu. Není nástrojem k jeho hledání.",
+          "tip": "Všímej si, k čemu věc ve větě slouží."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi ve druhém odstavci větu o tom, čím vědci hledají asteroidy."
+      }
+    },
+    "fr-a1-detail-1": {
+      "correctIndex": 0,
+      "correctWhy": "Oběžná dráha je cesta, po které se asteroid pohybuje kolem Slunce. Text ji pojmenuje v následující větě.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Ce chemin s’appelle une orbite."
+        },
+        {
+          "p": 1,
+          "text": "Un astéroïde suit un chemin autour du Soleil."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Kus horniny může být asteroid. Oběžná dráha označuje cestu, po které se pohybuje.",
+          "tip": "Rozliš samotnou věc a její pohyb."
+        },
+        "2": {
+          "whyWrong": "Dalekohled pomáhá vědcům vidět vzdálené věci. Oběžná dráha je cesta asteroidu, ne přístroj.",
+          "tip": "Rozliš nástroj pozorování a cestu pozorovaného tělesa."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi slovo pro oběžnou dráhu a přečti větu před ním."
+      }
+    },
+    "fr-a1-detail-2": {
+      "correctIndex": 2,
+      "correctWhy": "V posledním odstavci se píše, že mnoho malých kusů horniny shoří dříve, než se dostanou na zem.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "Beaucoup brûlent avant de toucher le sol."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Kusy horniny se podle textu nestanou hvězdami. Při průchodu vzduchem jich mnoho shoří.",
+          "tip": "Sleduj sloveso, které popisuje, co se s horninou děje."
+        },
+        "1": {
+          "whyWrong": "Mars označuje jednu z planet u pásu asteroidů. Tady se ale otázka týká kusů hornin ve vzduchu kolem Země.",
+          "tip": "Drž se místa a děje popsaného v otázce."
+        }
+      },
+      "unanswered": {
+        "tip": "Vyhledej malé kusy horniny v posledním odstavci a sleduj jejich další osud."
+      }
+    },
+    "fr-a1-detail-3": {
+      "correctIndex": 1,
+      "correctWhy": "V prvním odstavci stojí, že některé asteroidy jsou malé jako auto. Jiné jsou mnohem větší.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "Certains sont petits comme une voiture."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text porovnává velikost některých asteroidů s autem. Neuvádí, že jsou horké jako Slunce.",
+          "tip": "Rozliš velikost a teplotu."
+        },
+        "2": {
+          "whyWrong": "Text říká, že asteroidy nemají vlastní světlo. Nepřirovnává jejich jas ke hvězdám.",
+          "tip": "Všímej si záporných vět o vlastnostech tělesa."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi přirovnání s autem a ověř, co se jím popisuje."
+      }
+    }
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "sourceFingerprint": "9013631403dcdf6a698321af99388bde1bf6a3ab0cb86bc92f37ff89edf0c553",
+  "questions": {
+    "en-a1-gist-1": {
+      "correctIndex": 1,
+      "correctWhy": "Text nejprve vysvětluje, co jsou asteroidy, a pak popisuje, jak je vědci sledují. Obě části patří k hlavnímu tématu.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "An asteroid is a rock in space."
+        },
+        {
+          "p": 1,
+          "text": "Scientists look for asteroids with large telescopes."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text říká, k čemu je dalekohled dobrý. Nedává ale návod, jak si ho doma postavit.",
+          "tip": "Rozliš popis přístroje a návod k jeho výrobě."
+        },
+        "2": {
+          "whyWrong": "V textu se píše, že asteroidy nejsou hvězdy a nemají vlastní světlo. Je to jen jedna informace, ne hlavní téma.",
+          "tip": "Vyber možnost, která vystihuje více než jedinou větu."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti první větu každého odstavce. Hledej téma, které se opakuje."
+      }
+    },
+    "en-a1-gist-2": {
+      "correctIndex": 2,
+      "correctWhy": "Poslední odstavec se ptá, zda může asteroid zasáhnout Zemi. Vysvětluje, že velký náraz je vzácný a vědci nás pomáhají chránit.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "Yes, but a very big hit is rare."
+        },
+        {
+          "p": 3,
+          "text": "Scientists watch the sky to learn more and help keep people safe."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Ceres se popisuje ve třetím odstavci. Poslední odstavec řeší nárazy a bezpečí lidí.",
+          "tip": "U otázky na poslední odstavec nevybírej téma předchozího."
+        },
+        "1": {
+          "whyWrong": "Hledání pomocí dalekohledů je popsané dříve. Poslední odstavec říká hlavně, proč vědci oblohu sledují.",
+          "tip": "Rozliš způsob hledání a důvod sledování."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti první a předposlední část posledního odstavce. Co mají společného?"
+      }
+    },
+    "en-a1-gist-3": {
+      "correctIndex": 1,
+      "correctWhy": "Poslední věty oslovují přímo čtenáře a vybízejí ho, aby se díval na hvězdy a kladl otázky. Mají ho povzbudit k poznávání vesmíru.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "You can learn about space too."
+        },
+        {
+          "p": 3,
+          "text": "On a clear night, look at the stars and ask questions!"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text připouští možnost nárazu, ale neoznamuje blížící se velkou srážku. Závěrečné věty zvou k učení.",
+          "tip": "Rozliš varování před nebezpečím a výzvu něco poznávat."
+        },
+        "2": {
+          "whyWrong": "Dalekohled je popsaný ve druhém odstavci. Poslední věta není návod k jeho používání.",
+          "tip": "U otázky na účel konce čti hlavně poslední věty."
+        }
+      },
+      "unanswered": {
+        "tip": "Všimni si, co má čtenář podle poslední věty dělat."
+      }
+    },
+    "en-a1-scan-1": {
+      "correctIndex": 0,
+      "correctWhy": "První odstavec uvádí přímo dvě planety: mnoho asteroidů cestuje mezi Marsem a Jupiterem.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "Many travel between Mars and Jupiter."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Asteroidy obíhají kolem Slunce. Text neříká, že se pohybují uvnitř Slunce.",
+          "tip": "Pozor na rozdíl mezi uvnitř a kolem."
+        },
+        "2": {
+          "whyWrong": "Země je v textu zmíněná, ale hledaná oblast leží mezi Marsem a Jupiterem, ne mezi Zemí a Měsícem.",
+          "tip": "Zkontroluj obě jména v údaji o místě."
+        }
+      },
+      "unanswered": {
+        "tip": "V prvním odstavci najdi jména planet vedle údaje o cestě asteroidů."
+      }
+    },
+    "en-a1-scan-2": {
+      "correctIndex": 0,
+      "correctWhy": "Věta o Ceres uvádí šířku skoro tisíc kilometrů. Číslo patří právě k Ceres.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "It is almost one thousand kilometres wide"
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Přirovnání k autu platí pro některé malé asteroidy. Ceres je v textu naopak označena za největší asteroid.",
+          "tip": "Při hledání rozměru si ověř, o kterém tělese je řeč."
+        },
+        "2": {
+          "whyWrong": "Text říká skoro tisíc kilometrů, ne skoro sto. Obě čísla se liší o jednu nulu.",
+          "tip": "Přečti celé číselné spojení včetně jednotky."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi jméno Ceres a číslo v následující větě."
+      }
+    },
+    "en-a1-scan-3": {
+      "correctIndex": 2,
+      "correctWhy": "V odstavci o muzeu je malé části vesmírné horniny přiřazený název meteorite, tedy meteorit.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "It is called a meteorite."
+        },
+        {
+          "p": 2,
+          "text": "In a museum, you can sometimes touch a small piece of space rock."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Trpasličí planeta je v textu Ceres. Není to název malého kusu horniny v muzeu.",
+          "tip": "Spoj každý název s věcí, kterou text popisuje."
+        },
+        "1": {
+          "whyWrong": "Orbit je oběžná dráha, tedy cesta tělesa. Není to kus horniny, který lze vzít do ruky.",
+          "tip": "Rozliš cestu a hmotný předmět."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi slovo museum a přečti pojmenování v následující větě."
+      }
+    },
+    "en-a1-detail-1": {
+      "correctIndex": 1,
+      "correctWhy": "Oběžná dráha je cesta, po které se asteroid pohybuje kolem Slunce. Text ji pojmenuje v následující větě.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "This path is called an orbit."
+        },
+        {
+          "p": 1,
+          "text": "It follows a path around the Sun."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Dalekohled pomáhá vědcům vidět vzdálené věci. Oběžná dráha je cesta asteroidu, ne přístroj.",
+          "tip": "Rozliš nástroj pozorování a cestu pozorovaného tělesa."
+        },
+        "2": {
+          "whyWrong": "Kus horniny může být asteroid. Oběžná dráha označuje cestu, po které se pohybuje.",
+          "tip": "Rozliš samotnou věc a její pohyb."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi slovo pro oběžnou dráhu a přečti větu před ním."
+      }
+    },
+    "en-a1-detail-2": {
+      "correctIndex": 2,
+      "correctWhy": "V posledním odstavci se píše, že mnoho malých kusů horniny shoří dříve, než se dostanou na zem.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "Many burn up before they reach the ground."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Kusy horniny se podle textu nestanou hvězdami. Při průchodu vzduchem jich mnoho shoří.",
+          "tip": "Sleduj sloveso, které popisuje, co se s horninou děje."
+        },
+        "1": {
+          "whyWrong": "Mars označuje jednu z planet u pásu asteroidů. Tady se ale otázka týká kusů hornin ve vzduchu kolem Země.",
+          "tip": "Drž se místa a děje popsaného v otázce."
+        }
+      },
+      "unanswered": {
+        "tip": "Vyhledej malé kusy horniny v posledním odstavci a sleduj jejich další osud."
+      }
+    },
+    "en-a1-detail-3": {
+      "correctIndex": 0,
+      "correctWhy": "Text přirovnává tvar mnoha asteroidů k bramborám. Ceres je kulatá, ale u většiny asteroidů to neplatí.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "Many look like potatoes."
+        },
+        {
+          "p": 2,
+          "text": "Ceres is round, but most asteroids are not."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Kulatá je podle textu Ceres. U mnoha dalších asteroidů používá autor jiné přirovnání.",
+          "tip": "Rozliš, zda popis platí pro jedno těleso, nebo pro většinu."
+        },
+        "2": {
+          "whyWrong": "Asteroidy nejsou hvězdy. Text přirovnává jejich tvar k bramborám, nikoli ke hvězdám.",
+          "tip": "Hledej přirovnání tvaru, ne pouze název jiného vesmírného tělesa."
+        }
+      },
+      "unanswered": {
+        "tip": "V odstavci o Ceres najdi přirovnání tvaru ostatních asteroidů."
+      }
+    }
+  }
+}
