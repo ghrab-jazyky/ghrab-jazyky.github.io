@@ -32,10 +32,10 @@ test('R27 actually enables only explicit public local self-checks, never secure 
  assert.equal(grades.roundingRule,'MATHEMATICAL_HALF_UP_0_5_ROUNDS_UP');
  assert.equal(grades.workingSource.schoolApprovalVerified,false);
 });
-test('R27 preserves exact hashes of all 35 staged cards and 726 variants',()=>{
- assert.equal(catalog.entries.length,35);
- assert.equal(manifest.topicCount,35);
- assert.equal(manifest.variantCount,726);
+test('R27 preserves exact hashes of all 36 staged cards and 750 variants',()=>{
+ assert.equal(catalog.entries.length,36);
+ assert.equal(manifest.topicCount,36);
+ assert.equal(manifest.variantCount,750);
  const types={konverzace:0,cteni:0,poslech:0};
  let variants=0;
  for(const entry of catalog.entries){
@@ -43,8 +43,8 @@ test('R27 preserves exact hashes of all 35 staged cards and 726 variants',()=>{
   const sha=crypto.createHash('sha256').update(integrityContent(entry.id,fs.readFileSync(path.join(root,entry.relative)))).digest('hex');
   assert.equal(sha,manifest.contentHashes[entry.id],entry.id);
  }
- assert.deepEqual(types,{konverzace:24,cteni:5,poslech:6});
- assert.equal(variants,726);
+ assert.deepEqual(types,{konverzace:25,cteni:5,poslech:6});
+ assert.equal(variants,750);
 });
 test('R27 catalog exposes an explicitly non-graded action ONLY in Reading and Listening',()=>{
  const src=read('assets/hub.js'),html=read('index.html');

@@ -8,7 +8,7 @@ const {integrityContent}=require('./reading-content-integrity.cjs');
 const MODEL=require('../assets/lsh/v3/model.js'),legacy=require('../assets/lsh/v3/legacy-reading-migration.js');
 const bridge=require('../assets/lsh/v3/card-bridge.js');
 test('R49: 34 original cards retain exactly one vocabulary bridge; City Quest is isolated',()=>{
- assert.equal(data.length,35);
+ assert.equal(data.length,36);
  const original=data.filter(e=>e.cardType!=='interactive-language-game');
  assert.equal(original.length,34);
  assert.deepEqual(['konverzace','cteni','poslech'].map(skill=>original.filter(e=>e.skill===skill).length),[23,5,6]);
@@ -17,6 +17,12 @@ test('R49: 34 original cards retain exactly one vocabulary bridge; City Quest is
   assert.equal(crypto.createHash('sha256').update(integrityContent(e.id,html)).digest('hex'),version.contentHashes[e.id],
    'Content integrity broken '+e.id);
   if(e.cardType==='interactive-language-game'){
+   if(e.id==='cl-christmas-quest'){
+    assert.match(html,/connect-src 'none'/);
+    assert.match(html,/lsh\.cq\.progress\.v2/);
+    assert.doesNotMatch(html,/card-bridge\.js|card-vocabulary\.js|indexedDB/);
+    continue;
+   }
    assert.equal(e.id,'cl-city-quest-f2');
    assert.match(html,/connect-src 'none'/);
    assert.doesNotMatch(html,/card-bridge\.js|card-vocabulary\.js|indexedDB|localStorage/);

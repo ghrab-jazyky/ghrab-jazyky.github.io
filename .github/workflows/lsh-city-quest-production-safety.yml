@@ -21,7 +21,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: City Quest isolated HTML and other 34 cards remain intact
+      - name: City Quest isolated HTML and other 35 cards remain intact
         shell: bash
         run: |
           node --check language-skills-hub/assets/hub.js
@@ -35,25 +35,25 @@ jobs:
           const hash=crypto.createHash('sha256').update(html).digest('hex');
           assert.equal(hash,'0f62b677fb3e0b29b01802acd5a762e7a12cde438d3e47e94c5a766f8f9f2e53');
           assert.equal(version.contentHashes[id],hash);
-          assert.equal(version.topicCount,35);
-          assert.equal(version.variantCount,726);
-          assert.equal(cards.entries.length,35);
-          assert.equal(new Set(cards.entries.map(e=>e.id)).size,35);
+          assert.equal(version.topicCount,36);
+          assert.equal(version.variantCount,750);
+          assert.equal(cards.entries.length,36);
+          assert.equal(new Set(cards.entries.map(e=>e.id)).size,36);
           const distribution={konverzace:0,cteni:0,poslech:0};
           for(const e of cards.entries){
             assert.ok(Object.hasOwn(distribution,e.skill),'Unexpected skill: '+e.skill);
             distribution[e.skill]++;
             assert.ok(fs.existsSync(dir+e.relative),'Existing topic missing: '+e.id);
           }
-          assert.deepEqual(distribution,{konverzace:24,cteni:5,poslech:6});
+          assert.deepEqual(distribution,{konverzace:25,cteni:5,poslech:6});
           const city=cards.entries.find(e=>e.id===id);
           assert.equal(city.relative,relative);
           assert.equal(city.cardType,'interactive-language-game');
           assert.deepEqual(city.languages,['en','es','de','fr']);
           assert.deepEqual(city.levels,['A1','A2','B1','B2','C1','C2']);
           assert.deepEqual(Object.keys(i18n.entries[id]).sort(),['cs','de','en','es','fr']);
-          assert.equal(Object.keys(i18n.entries).length,35);
-          assert.equal(Object.keys(version.contentHashes).length,35);
+          assert.equal(Object.keys(i18n.entries).length,36);
+          assert.equal(Object.keys(version.contentHashes).length,36);
           const csp=html.match(/<meta http-equiv="Content-Security-Policy" content="([^"]+)"/)?.[1];
           assert.ok(csp?.includes("default-src 'none'")&&csp.includes("connect-src 'none'"));
           for(const type of ['style','script']){
@@ -73,7 +73,7 @@ jobs:
           assert.ok(fs.readFileSync(dir+'assets/hub.css','utf8').includes('catalog-game-label'));
           assert.ok(!fs.existsSync(dir+'authoring/city-quest-f2'),'City Quest authoring must not be present in published tree');
           assert.ok(!fs.existsSync(dir+'konverzace/city-quest-f0'),'Unapproved City Quest prototype must not be published');
-          console.log('PASS: one certified offline City Quest HTML + 34 preserved existing catalog topics');
+          console.log('PASS: one certified offline City Quest HTML + 35 other catalog topics verified');
           NODE
       - name: City Quest phase-one focused regressions
         run: |

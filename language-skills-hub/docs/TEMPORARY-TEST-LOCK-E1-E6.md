@@ -29,6 +29,8 @@ Platí pouze pro aktuální origin a profil prohlížeče, nikoli pro jiné zař
 Výjimka pro lokální regresní testy: http://localhost a http://127.0.0.1.
 
 ## E6 – úplné odstranění uzamčení
+
+**POZOR – Christmas Quest:** pokud je karta Christmas Quest stále ve vývojářském režimu, nesmí se odstranit katalogový import `temporary-test-lock.js/css`, společný příznak ani aktivační odkazy. Uvolnit lze samostatně pouze Reading/Listening volání. Úplné odstranění modulu je možné až po samostatném schváleném vydání Christmas Quest nebo po nahrazení jeho zámku. Viz `CHRISTMAS-QUEST-DEVELOPER-PREVIEW.md`.
 Z aktuální hlavní větve vytvořit novou pracovní větev a:
 1. Odebrat importy temporary-test-lock.js/css z index.html, obou teacher.html a practice-answers/teacher.html; zároveň odstranit data-lsh-temporary-test-page="teacher" z obou učitelských HTML.
 2. Odstranit dočasný posluchač kliknutí u TEST v assets/hub.js.

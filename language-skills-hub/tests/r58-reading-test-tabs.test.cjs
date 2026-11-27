@@ -51,5 +51,5 @@ test('R58: Reading TEST exposes keyboard tabs, preserves every input and omits s
  assert.doesNotMatch(js,/tab\.description|reading-skill-guides\.js|guideFor|Cambridge-style reading strategy/i);
  assert.doesNotMatch(html,/<script[^>]+reading-skill-guides/i);
  const catalog=JSON.parse(read('data/cards.json'));
- assert.equal(catalog.entries.length,35);
+ assert.equal(catalog.entries.length,36);
 });

@@ -100,8 +100,10 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           mkdir -p sf-f3
           git rev-parse HEAD | tee sf-f3/HEAD.txt
-          git diff --exit-code fde581f864093a0b87d60afbc552e5c4e021e7e5 -- language-skills-hub/printouts/rl-asteroids
-          cp -a language-skills-hub/printouts/rl-asteroids /tmp/sf-old-pdfs
+          git diff --exit-code 9b640190588d397816a3f6daf0a21d9566de7785 -- language-skills-hub/printouts/rl-asteroids
+          mkdir -p /tmp/sf-production
+          git archive fde581f864093a0b87d60afbc552e5c4e021e7e5 language-skills-hub/printouts/rl-asteroids | tar -xf - -C /tmp/sf-production
+          cp -a /tmp/sf-production/language-skills-hub/printouts/rl-asteroids /tmp/sf-old-pdfs
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/sf-pdf-http.log 2>&1 &
           PID=$!
           trap 'kill "$PID" || true' EXIT
@@ -126,7 +128,7 @@ jobs:
           test -s sf-f3/corpus-changes.txt
           if grep -qv '^language-skills-hub/printouts/rl-asteroids/' sf-f3/corpus-changes.txt; then exit 1; fi
           git diff --exit-code
-          git commit -m "F3: regenerate verified 96 Asteroids PDF assets without content or layout drift"
+          git commit -m "F3 sync: regenerate verified 96 Asteroids PDFs for 36-card catalog"
           node tools/build-lsh-pages-preview.cjs | tee sf-f3/publication-preview.log
           cp release-preview/evidence/publication-manifest.json sf-f3/
           git rev-parse HEAD | tee sf-f3/CORPUS_COMMIT.txt

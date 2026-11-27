@@ -26,6 +26,7 @@ const forbiddenPart=/(^|\/)(?:\.git(?:hub)?|docs|tests|authoring|scripts|qa|node
 function allowed(p){
  if(p.includes('\\')||p.startsWith('/')||p.split('/').some(x=>!x||x==='.'||x==='..')||forbiddenPart.test(p))return false;
  if(/(^|\/)city-quest-f[01](\/|$)/.test(p))return false;
+ if(p.startsWith('language-skills-hub/konverzace/christmas-quest/')&&p!=='language-skills-hub/konverzace/christmas-quest/index.html')return false;
  if(roots.has(p))return true;
  return prefixes.some(prefix=>p.startsWith(prefix))&&assetExtension.test(p);
 }
@@ -39,13 +40,15 @@ const checked=[
  ['language-skills-hub/konverzace/city-quest-f0/index.html',false],
  ['Language_Skills_Hub_E1_ZKUSEBNI_2026-11-04/zkusebni/index.html',false],
  ['language-skills-hub/konverzace/city-quest-f2/index.html',true],
+ ['language-skills-hub/konverzace/christmas-quest/index.html',true],
+ ['language-skills-hub/konverzace/christmas-quest/original.html',false],
  ['language-skills-hub/printouts/rl-asteroids/en/A1/test-all.pdf',true],
  ['zkusebni/index.html',true]];
 for(const [p,answer] of checked)assert.equal(allowed(p),answer,p);
 if(fs.existsSync(path.dirname(output)))throw Error('release-preview already exists; remove explicitly before rebuilding');
 const src='language-skills-hub/',cards=json(src+'data/cards.json'),manifest=json(src+'version.json');
-assert.equal(cards.entries.length,35);
-assert.equal(Object.keys(manifest.contentHashes).length,35);
+assert.equal(cards.entries.length,36);
+assert.equal(Object.keys(manifest.contentHashes).length,36);
 const asteroids=src+'cteni/asteroids/index.html',ast=read(asteroids);
 const astBlob=crypto.createHash('sha1').update('blob '+ast.length+'\0').update(ast).digest('hex');
 // F3 reviewed content candidate; owner approval for the final main SHA remains mandatory.
@@ -92,4 +95,4 @@ const report={schema:'lsh-pages-allowlist-v1',sha:execFileSync('git',['rev-parse
  asteroids:{sourceCommit:'5809a6c3f35bbedde852295f1c6508888ed37f0c',baselineApprovedCommit:'88b8a7c212faef3178ecc44539477c2f2d757f2b',baselineGitBlob:'d0ddfe9aae769eff948ee7cf52092139678b64d3',gitBlob:astBlob,sha256:sha(ast)},cardChecks,pdfs:pdfManifest.files.length,
  included:include.length,excluded:exclude.length,excludedPaths:exclude,files:include.map(p=>({path:p,sha256:sha(read(p))}))};
 fs.mkdirSync(evidence,{recursive:true});fs.writeFileSync(path.join(evidence,'publication-manifest.json'),JSON.stringify(report,null,2)+'\n');
-console.log('PASS 35/35 card hashes, '+report.pdfs+'/96 PDF hashes, '+include.length+' allowlisted files, '+exclude.length+' excluded source files.');
+console.log('PASS 36/36 card hashes, '+report.pdfs+'/96 PDF hashes, '+include.length+' allowlisted files, '+exclude.length+' excluded source files.');

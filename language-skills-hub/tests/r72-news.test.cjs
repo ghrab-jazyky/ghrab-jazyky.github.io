@@ -17,9 +17,9 @@ const answer=v=>({gist:v.gist.map(q=>q.correct),detail:v.detail.map(q=>q.correct
  matching:v.matching.items.map(q=>q.correct),sequence:[],cloze:[]});
 
 test('E3 catalog and official manifest preserve native LSH contract',()=>{
- assert.equal(catalog.entries.length,35);assert.equal(catalog.entries.filter(x=>x.skill==='poslech').length,6);
- assert.equal(catalog.entries.reduce((a,e)=>a+e.languages.length*e.levels.length,0),726);
- assert.equal(version.topicCount,35);assert.equal(version.variantCount,726);
+ assert.equal(catalog.entries.length,36);assert.equal(catalog.entries.filter(x=>x.skill==='poslech').length,6);
+ assert.equal(catalog.entries.reduce((a,e)=>a+e.languages.length*e.levels.length,0),750);
+ assert.equal(version.topicCount,36);assert.equal(version.variantCount,750);
  const e=catalog.entries.find(x=>x.id===id);assert.ok(e);
  assert.equal(e.relative,'poslech/how-to-choose-your-news/index.html');
  assert.deepEqual(e.languages,['en']);assert.deepEqual(e.levels,levels);

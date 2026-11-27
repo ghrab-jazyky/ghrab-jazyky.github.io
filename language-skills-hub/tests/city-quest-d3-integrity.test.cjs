@@ -31,7 +31,7 @@ test('D3: missing, duplicated or changed annotation hooks fail closed',()=>{
 test('D3: arbitrary additional bytes cannot normalize to approved integrity hash',()=>{
  assert.notEqual(sha(integrityContent('rl-asteroids',Buffer.concat([raw,Buffer.from('\n')]))),approved);
  const all=JSON.parse(fs.readFileSync(path.join(root,'data/cards.json'),'utf8')).entries;
- assert.equal(all.length,35);
+ assert.equal(all.length,36);
  for(const e of all){
   const bytes=fs.readFileSync(path.join(root,e.relative));
   assert.equal(sha(integrityContent(e.id,bytes)),sha(bytes),e.id);
