@@ -62,8 +62,9 @@ test('RL-02: accepts bounded, non-graded annotations only',()=>{
 });
 test('RL-02: does not change reading score implementation',()=>{
  const reading=fs.readFileSync(path.join(root,'self-check/reading/reading.js'),'utf8');
- assert.match(reading,/annotations:annotationAPI\?\.snapshot\(\)\|\|\[\]/);
- assert.match(reading,/annotationAPI\?\.restore\(saved\.annotations\)/);
+ assert.match(reading,/getAnswers:timedAnswers/);
+ assert.match(reading,/annotationAPI\?\.snapshot\(\)\|\|retainedTimedAnnotations/);
+ assert.match(reading,/if\(annotationAPI\)annotationAPI\.restore\(saved\.annotations\)/);
  assert.match(reading,/core\.score\(variant,answers\)/);
  const core=fs.readFileSync(path.join(root,'self-check/reading/reading-core.js'),'utf8');
  assert.doesNotMatch(core,/annotationAPI|annotation(s)?\s*:/);
@@ -106,7 +107,7 @@ test('RL-02: desktop auto-apply, explicit toggle-off and scoped clear-all confir
  assert.match(engine,/const same=armed===kind/);
  assert.match(engine,/armed=same&&!selected\?null:kind/);
  assert.match(engine,/data-anno-clear-confirm-action/);
- assert.match(engine,/if\(!save\(\)\)/);
+ assert.match(engine,/if\(!save\(previous\)\)/);
  for(const markup of [testUI,practice]){
   assert.match(markup,/data-anno-clear-all disabled/);
   assert.match(markup,/data-anno-clear-confirm hidden/);
@@ -151,4 +152,25 @@ test('F4: strict snapshot validation preserves valid legacy records and rejects 
  }
  assert.equal(annotations.decodeLocalSnapshot(JSON.stringify(Array.from({length:81},()=>valid))),null);
  assert.equal(annotations.sourceRange({start:-4,end:0,text:'Text'},null),null);
+});
+
+
+test('F5.1: timed annotation budget reserves worst-case legal answers and escaped reflection',()=>{
+ const ids=Array.from({length:80},(_,i)=>'q'+String(i).padStart(3,'0')+'x'.repeat(116));
+ const answers=Object.fromEntries(ids.map(id=>[id,7]));
+ const reflection='\u0000'.repeat(5000);
+ const budget=annotations.timedAnnotationBudget(ids);
+ assert.ok(budget>99000&&budget<=100000);
+ assert.equal(JSON.stringify({answers,reflection,annotations:[]}).length-2+budget<=140000,true);
+ assert.equal(annotations.timedAnnotationBudget(['q-one']),100000);
+ const rows=Array.from({length:80},(_,i)=>({anchor:'p:0',start:0,end:600,text:'x'.repeat(600),id:'a-'+i,kind:'note',color:'yellow',note:'"'.repeat(500)}));
+ const saved=annotations.timedSnapshot(answers,reflection,rows);
+ assert.ok(JSON.stringify(saved).length<=140000);
+ assert.deepEqual(saved.answers,answers);assert.equal(saved.reflection,reflection);
+ assert.ok(saved.annotations.length<rows.length);
+ assert.deepEqual(saved.annotations,rows.slice(0,saved.annotations.length));
+ assert.equal(rows.length,80,'Fitting legacy records must not mutate the in-page list');
+ assert.ok(JSON.stringify({...saved,annotations:rows.slice(0,saved.annotations.length+1)}).length>140000);
+ const ordinary=annotations.timedSnapshot(answers,reflection,rows.slice(0,2));
+ assert.deepEqual(ordinary.annotations,rows.slice(0,2));
 });

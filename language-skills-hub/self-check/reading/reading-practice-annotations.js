@@ -40,7 +40,6 @@
   <div class="lsh-annotation-list" data-anno-list aria-label="Seznam anotací"></div>
  </div>
  <p class="lsh-annotation-status" data-anno-status role="status" aria-live="polite"></p>`;
- prep.insertAdjacentElement('afterend',host);
  // Stable DOM anchor; translated labels must never determine placement.
  const modeButton=root.createElement('button');
  modeButton.type='button';modeButton.className='lsh-anno-header-toggle';
@@ -50,7 +49,7 @@
  modeButton.lang='cs';target.appendChild(modeButton);
  const storageKey=identity=>'lsh-reading-practice-annotations-v1:rl-asteroids:'+identity;
  const slug=value=>String(value).replace(/[^a-z0-9:_-]/gi,'_').slice(0,100);
- let currentIdentity=null,expectedRaw=null,readable=true;
+ let currentIdentity=null,expectedRaw=null,readable=true,readError='';
  const language=()=>root.getElementById('language')?.value||'en';
  const level=()=>root.querySelector('#levels [data-level][aria-pressed="true"]')?.dataset.level||'B1';
  const identity=()=>language()+':'+level();
@@ -59,8 +58,9 @@
    expectedRaw=localStorage.getItem(storageKey(identity()));
    const records=engine.decodeLocalSnapshot(expectedRaw);
    readable=records!==null;
+   readError=readable?'':'Uložené anotace nelze bezpečně načíst. Původní data nebyla přepsána.';
    return records||[];
-  }catch(_){readable=false;return []}
+   }catch(_){readable=false;readError='Prohlížeč neumožňuje přístup k úložišti anotací. Povolte místní úložiště nebo použijte jiný prohlížeč.';return []}
  }
  // Asteroids DATA is the unchanged classic-script source bank.
  function anchorMapping(target){
@@ -77,8 +77,9 @@
  }
  if(!window.CSS?.highlights||typeof window.Highlight!=='function'){
   modeButton.disabled=true;modeButton.textContent='Anotace nedostupné';
-  modeButton.title='Tento prohlížeč nepodporuje zvýrazňování textu.';return;
+  modeButton.title='Tento prohlížeč nepodporuje zvýrazňování textu.';modeButton.removeAttribute('aria-controls');return;
  }
+ prep.insertAdjacentElement('afterend',host);
  const dictionary=root.getElementById('dictionaryToggle');
  let changingMode=false;
  const api=engine.mount({
@@ -90,7 +91,8 @@
   },
   onChange:records=>{
    try{
-    if(!readable||currentIdentity!==identity())return 'Úložiště anotací není dostupné. Obnovte stránku.';
+    if(!readable)return readError||'Úložiště anotací není dostupné.';
+    if(currentIdentity!==identity())return 'Varianta se změnila. Obnovte stránku.';
     const key=storageKey(currentIdentity);
     if(localStorage.getItem(key)!==expectedRaw)
      return 'Anotace byly změněny v jiné záložce. Obnovte stránku; původní data nebyla přepsána.';
@@ -115,7 +117,7 @@
   if(next!==currentIdentity){
    currentIdentity=next;
    api.restore(currentSaved());
-   api.reportStorageIssue(readable?'':'Uložené anotace nelze bezpečně načíst. Původní data nebyla přepsána.');
+   api.reportStorageIssue(readError);
   }else api.refresh();
  }
  // Practice cards deliberately re-render when changing language, CEFR, reading
@@ -147,7 +149,7 @@
  // Do not overwrite a newer snapshot from a second tab.
  window.addEventListener('storage',event=>{
   if((event.key===storageKey(currentIdentity)&&event.newValue!==expectedRaw)||(event.key===null&&expectedRaw!==null))
-   api.reportStorageIssue('Anotace byly změněny v jiné záložce. Před úpravami obnovte stránku.');
+   api.reportStorageIssue('Anotace byly změněny v jiné záložce. Vaše poslední změna nemusela zůstat uložena. Před úpravami obnovte stránku.');
  });
  // Prevent dictionary quick-tap / double-click handling from interrupting text
  // selection while annotation tools are enabled. Answer widgets are unaffected.

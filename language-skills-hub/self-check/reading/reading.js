@@ -128,6 +128,7 @@
  let submitted=false,timedUI=null,lastReport=null,annotationAPI=null;
  const annotationKey=['lsh-reading-annotations-v1',selected.topic,selected.lang,selected.level].join(':');
  let annotationRaw=null,annotationReadable=false,timedAnnotationWrite=false;
+ let annotationReadError='',retainedTimedAnnotations=[],timedBudget=100000,capacityWarning='';
  function themeSet(light,save){
   document.documentElement.dataset.theme=light?'light':'dark';
   $('themeButton').textContent=light?ui.themeDark:ui.themeLight;
@@ -358,13 +359,62 @@
   $('results').focus({preventScroll:true});
   $('results').scrollIntoView({behavior:'smooth',block:'start'});
  }
+ function showCapacityWarning(message){
+  if(capacityWarning===message)return;
+  capacityWarning=message;
+  let notice=$('readingAnnotationCapacityWarning');
+  if(!notice){
+   notice=add('p','small-note lsh-anno-storage-warning');notice.id='readingAnnotationCapacityWarning';notice.lang='cs';
+   notice.setAttribute('role','status');$('readingAnnotationTools').before(notice);
+  }
+  notice.textContent=message;notice.hidden=!message;
+ }
+ function currentTimedSnapshot(records=annotationAPI?.snapshot()||retainedTimedAnnotations){
+  const data={answers:{...answers},reflection:$('reflection').value,annotations:[...records]};
+  const fit=window.LSHReadingAnnotations?.timedSnapshot;
+  if(typeof fit==='function')return fit(data.answers,data.reflection,data.annotations);
+  // Fail-safe for mixed HTTP cache / a missing optional annotation script.
+  while(data.annotations.length&&JSON.stringify(data).length>140000)data.annotations.pop();
+  return data;
+ }
+ function updateCapacityWarning(records,fit){
+  const omitted=records.length-fit.annotations.length;
+  if(omitted>0)showCapacityWarning('Starší anotace přesahují kapacitu pokusu. Odpovědi a reflexe mají přednost. '+omitted+' anotací je nyní pouze v otevřené stránce a po obnovení mohou chybět. Zkraťte nebo smažte starší anotace.');
+  else if(JSON.stringify(records).length>timedBudget)showCapacityWarning('Starší anotace překračují nový rozpočet. Další anotace nelze přidávat, dokud jejich velikost nesnížíte. Při dosažení celkové kapacity mají přednost odpovědi a reflexe.');
+  else showCapacityWarning('');
+ }
+ function timedAnswers(){
+  const records=annotationAPI?.snapshot()||retainedTimedAnnotations,fit=currentTimedSnapshot(records);
+  updateCapacityWarning(records,fit);return fit;
+ }
+ function disableAnnotations(error){
+  $('readingAnnotationTools').hidden=true;
+  const toggle=$('readingAnnotationToggle');toggle.disabled=true;toggle.textContent='Anotace nedostupné';
+  toggle.setAttribute('aria-pressed','false');toggle.title='Anotační nástroje nejsou v tomto prohlížeči dostupné.';
+  annotationAPI=null;
+  if(error)console.warn('Reading annotations unavailable',error?.message||error);
+ }
  function submit(automatic=false,restored=false){
   if(submitted||!variant)return;
   const missing=variant.questions.length-getAnsweredCount();
-  const message=ui.confirm+(missing?' '+missing+' '+ui.missing:'');
+  let message=ui.confirm+(missing?' '+missing+' '+ui.missing:'');
+  if(!automatic&&annotationAPI?.hasDraft())message+='\n\nRozpracovaná poznámka nebude uložena.';
+  if(!automatic&&timedUI){
+   const records=annotationAPI?.snapshot()||retainedTimedAnnotations;
+   const omitted=records.length-currentTimedSnapshot(records).annotations.length;
+   if(omitted)message+='\n\nKapacita starších anotací je překročena. Při uložení má '+omitted+' anotací nižší prioritu než odpovědi a reflexe a nebudou součástí uloženého snímku.';
+  }
   if(!automatic&&!window.confirm(message))return;
   const report=core.score(variant,answers);
-  if(timedUI&&!restored)timedUI.finish();
+  if(timedUI&&!restored){
+   try{timedUI.finish();}
+   catch(error){
+    // An exceptional save error must not appear as a successful submission.
+    // Never modify the deadline, session state machine or scoring.
+    if(!automatic)window.alert('Test se nepodařilo odevzdat. Vaše odpovědi jsou stále na stránce. Obraťte se na učitele.');
+    console.warn('Reading submission failed',error?.message||error);return;
+   }
+  }
   lastReport=report;
   submitted=true;
   annotationAPI?.refresh();
@@ -454,15 +504,21 @@
    renderReading();renderQuestions();
    if(window.LSHReadingAnnotations){
     try{
-     annotationAPI=window.LSHReadingAnnotations.mount({
+     const engine=window.LSHReadingAnnotations;
+     if(typeof engine.timedAnnotationBudget!=='function'||typeof engine.timedSnapshot!=='function')throw Error('Annotation runtime version mismatch');
+     timedBudget=engine.timedAnnotationBudget(variant.questions.map(q=>q.id));
+     annotationAPI=engine.mount({
       host:$('readingAnnotationTools'),toggle:$('readingAnnotationToggle'),
       containers:[$('readingParagraphs'),$('questionList')],
-      canEdit:()=>!submitted&&(!timedUI||timedUI.status().phase==='running'),
-      onChange:annotations=>{
+      canEdit:()=>!submitted&&(!timedUI||(()=>{const s=timedUI.status();return s.phase==='running'&&!s.expired;})()),
+      onChange:(annotations,previous)=>{
        if(timedUI){
         timedAnnotationWrite=false;
         const before=timedUI.status();
         if(!before.persistent||before.expired||before.phase!=='running')return false;
+        const size=JSON.stringify(annotations).length,oldSize=JSON.stringify(previous||[]).length;
+        if((size>timedBudget&&size>=oldSize)||currentTimedSnapshot(annotations).annotations.length!==annotations.length)
+         return 'Limit velikosti anotací v testu je vyčerpán. Odpovědi a reflexe mají přednost. Zkraťte nebo smažte anotace.';
         timedAnnotationWrite=true;
         timedUI.save();const after=timedUI.status();
         // A deadline may cross immediately after a synchronous save.
@@ -472,7 +528,7 @@
         return accepted;
        }
        try{
-        if(!annotationReadable)return 'Úložiště anotací není dostupné. Obnovte stránku.';
+        if(!annotationReadable)return annotationReadError||'Úložiště anotací není dostupné.';
         if(localStorage.getItem(annotationKey)!==annotationRaw)return 'Anotace byly změněny v jiné záložce. Obnovte stránku; původní data nebyla přepsána.';
         const next=JSON.stringify(annotations);localStorage.setItem(annotationKey,next);annotationRaw=next;annotationAPI.reportStorageIssue('');return true;
        }catch(_){return false}
@@ -491,18 +547,16 @@
         const records=window.LSHReadingAnnotations.decodeLocalSnapshot(annotationRaw);
         annotationReadable=records!==null;
         if(annotationReadable)annotationAPI.restore(records);
-       }catch(_){annotationReadable=false;}
-       if(!annotationReadable)annotationAPI.reportStorageIssue('Uložené anotace nelze bezpečně načíst. Původní data nebyla přepsána.');
+        else annotationReadError='Uložené anotace nelze bezpečně načíst. Původní data nebyla přepsána.';
+        }catch(_){annotationReadable=false;annotationReadError='Prohlížeč neumožňuje přístup k úložišti anotací. Povolte místní úložiště nebo použijte jiný prohlížeč.';}
+        if(!annotationReadable)annotationAPI.reportStorageIssue(annotationReadError);
        window.addEventListener('storage',event=>{
         if((event.key===annotationKey&&event.newValue!==annotationRaw)||(event.key===null&&annotationRaw!==null))
-         annotationAPI.reportStorageIssue('Anotace byly změněny v jiné záložce. Před úpravami obnovte stránku.');
+         annotationAPI.reportStorageIssue('Anotace byly změněny v jiné záložce. Vaše poslední změna nemusela zůstat uložena. Před úpravami obnovte stránku.');
        });
       }
-    }catch(error){
-     $('readingAnnotationTools').hidden=true;
-     console.warn('Reading annotations unavailable',error?.message||error);
-    }
-   }
+    }catch(error){disableAnnotations(error);}
+    }else disableAnnotations();
    if(new URLSearchParams(location.search).has('timer')&&!window.LSHSessionUI)
     throw new Error('Timed test engine is unavailable.');
    // RL-02: scope the iPad long-press exception to Reading's annotation tools.
@@ -527,8 +581,7 @@
    timedUI=window.LSHSessionUI?.mount({
     skill:'reading',topic:selected.topic,lang:selected.lang,level:selected.level,
     workspace:$('workspace'),
-    getAnswers:()=>({answers:{...answers},reflection:$('reflection').value,
-     annotations:annotationAPI?.snapshot()||[]}),
+    getAnswers:timedAnswers,
     restoreAnswers:saved=>{
      if(!saved||typeof saved!=='object')return;
      for(const q of variant.questions){
@@ -539,12 +592,27 @@
       if(input){input.checked=true;answers[q.id]=index;}
      }
      if(typeof saved.reflection==='string')$('reflection').value=saved.reflection.slice(0,5000);
-     annotationAPI?.restore(saved.annotations);
+     if(annotationAPI)annotationAPI.restore(saved.annotations);
+     else retainedTimedAnnotations=Array.isArray(saved.annotations)?saved.annotations:[];
+     const records=annotationAPI?.snapshot()||retainedTimedAnnotations;
+     updateCapacityWarning(records,currentTimedSnapshot(records));
      updateProgress();
     },
     onSubmit:({automatic,restored})=>submit(automatic,restored)
    })||null;
-   if(timedUI)timedUI.initialize();
+   if(timedUI){
+    // Observe the actual, existing session lock. Do not patch the guard or
+    // close a draft on interruption; only invalidate unconfirmed selection.
+    let wasInterrupted=false;
+    const syncAnnotationLock=()=>{
+     const interrupted=timedUI.status().phase==='interrupted';
+     if(interrupted&&!wasInterrupted)annotationAPI?.suspend();
+     else if(!interrupted&&wasInterrupted&&timedUI.status().phase==='running')annotationAPI?.refresh();
+     wasInterrupted=interrupted;
+    };
+    new MutationObserver(syncAnnotationLock).observe($('workspace'),{attributes:true,attributeFilter:['inert']});
+    timedUI.initialize();syncAnnotationLock();
+   }
    $('workspace').hidden=timedUI?timedUI.status().phase==='ready':false;
    $('loading').hidden=true;
   }catch(error){

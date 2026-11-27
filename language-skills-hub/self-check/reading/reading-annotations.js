@@ -7,6 +7,22 @@
  const TYPES=Object.freeze(['highlight','underline','note']);
  const MAX_ITEMS=80,MAX_NOTE=500,MAX_LENGTH=600;
  const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
+ // The attempt core's serialized answer ceiling is unchanged. New annotations
+ // reserve room for the complete answer set and a maximally escaped reflection.
+ const ATTEMPT_CEILING=140000,MAX_TIMED_ANNOTATIONS=100000;
+ function timedAnnotationBudget(questionIds){
+  const answers=Object.fromEntries(questionIds.map(id=>[id,7]));
+  const overhead=JSON.stringify({answers,reflection:'\u0000'.repeat(5000),annotations:[]}).length-2;
+  return Math.max(2,Math.min(MAX_TIMED_ANNOTATIONS,ATTEMPT_CEILING-overhead));
+ }
+ function timedSnapshot(answers,reflection,annotations){
+  const snapshot={answers:{...answers},reflection,annotations:[...annotations]};
+  // Only legacy oversized snapshots can reach this fallback in a valid variant.
+  // Preserve answer/reflection data; omit whole annotation records from the end,
+  // not arbitrary JSON bytes. Caller must visibly disclose any omission.
+  while(snapshot.annotations.length&&JSON.stringify(snapshot).length>ATTEMPT_CEILING)snapshot.annotations.pop();
+  return snapshot;
+ }
  function normalized(items){
   if(!Array.isArray(items))return [];
   return items.slice(0,MAX_ITEMS).filter(item=>
@@ -76,6 +92,7 @@
   let items=[],selected=null,enabled=false,noteDraft=null,editingId=null,color='yellow';
   const undoHistory=[];const MAX_UNDO=20;
   let idSequence=0,interactionEpoch=0,inputMethod=null,confirmPress=null,editorReturn=null;
+  let mouseDown=null,selectionRejection='';
   const newId=()=>root.crypto?.randomUUID?.()||('a-'+Date.now().toString(36)+'-'+(++idSequence)+'-'+Math.random().toString(36).slice(2));
   function withIds(value){
    const used=new Set();
@@ -163,8 +180,8 @@
   const clearSelection=()=>{selected=null;confirmPress=null;syncConfirmation()};
   const setStatus=(message,urgent=false)=>{if(status)status.textContent=message;dockMessage.textContent=message;dockNotice.textContent=urgent?message:'';dockNotice.hidden=!urgent;syncChrome()};
   let saveError='';
-  const save=()=>{saveError='';try{
-   const result=config.onChange?.(snapshot());
+  const save=previous=>{saveError='';try{
+   const result=config.onChange?.(snapshot(),normalized(previous));
    if(typeof result==='string'){saveError=result;return false;}
    return result!==false;
   }catch(_){return false}};
@@ -172,7 +189,7 @@
   function commit(next,message,remember=true){
    if(!enabled||hasLocked())return false;
    const previous=items;items=next;
-   if(!save()){
+   if(!save(previous)){
     items=previous;
     try{config.onRollback?.(snapshot())}catch(_){}
     setStatus(saveError||'Změnu nelze trvale uložit. Původní anotace zůstaly zachované.',true);
@@ -323,7 +340,7 @@
    syncChrome();
   }
   function cancelPending(removeRange=true){
-   interactionEpoch++;clearSelection();
+   interactionEpoch++;mouseDown=null;selectionRejection='';clearSelection();
    const sel=root.getSelection?.();
    if(removeRange&&sel&&!sel.isCollapsed&&targetFor(sel.anchorNode))sel.removeAllRanges();
   }
@@ -574,14 +591,18 @@
    }
    syncConfirmation();return ok;
   }
+  function rejectSelection(message){
+   selectionRejection=message;setStatus(message);return false;
+  }
   function readSelection(){
-   selected=null;
-   if(!enabled||hasLocked()||editorOpen())return false;
+   selected=null;selectionRejection='';
+   if(!enabled||editorOpen())return false;
+   if(hasLocked()){cancelPending();return false;}
    const sel=root.getSelection?.();
    if(!sel||sel.rangeCount!==1||sel.isCollapsed)return;
    const range=sel.getRangeAt(0);
    const startTarget=targetFor(range.startContainer),endTarget=targetFor(range.endContainer);
-   if(!startTarget||startTarget!==endTarget){setStatus('Označte úsek uvnitř jednoho odstavce nebo jedné otázky.');return false;}
+   if(!startTarget||startTarget!==endTarget)return rejectSelection('Označte úsek uvnitř jednoho odstavce nebo jedné otázky.');
    let start,end;
    try{
     start=offset(range.startContainer,range.startOffset,startTarget);
@@ -589,12 +610,12 @@
    }catch(_){return;}
    const text=range.toString();
    if(start>=end||!text.trim())return;
-   if(containsHiddenGap(startTarget,start,end)){setStatus('Vyberte pouze skutečný text, nikoli značku chybějící věty.');return false;}
-   if(text.length>MAX_LENGTH){setStatus('Vyberte kratší úsek textu (nejvýše 600 znaků).');return;}
+   if(containsHiddenGap(startTarget,start,end))return rejectSelection('Vyberte pouze skutečný text, nikoli značku chybějící věty.');
+   if(text.length>MAX_LENGTH)return rejectSelection('Vyberte kratší úsek textu (nejvýše 600 znaků).');
    const map=config.anchorMapping?.(startTarget);
    if(map){
     if(start<map.min||map.source.slice(start+map.shift,end+map.shift)!==text){
-     setStatus('Vyberte pouze skutečný text, nikoli značku chybějící věty.');return false;
+     return rejectSelection('Vyberte pouze skutečný text, nikoli značku chybějící věty.');
     }
     selected={anchor:startTarget.dataset.annotationAnchor,start:start+map.shift,end:end+map.shift,text,basis:'source-v1'};
    }else selected={anchor:startTarget.dataset.annotationAnchor,start,end,text};
@@ -658,26 +679,26 @@
   });
   // Keep a live selection while clicking a tool; elsewhere collapse invalidates it.
   host.addEventListener('pointerdown',event=>{
-   if(event.pointerType==='mouse'&&event.target.closest?.('[data-anno-color],[data-anno-underline],[data-anno-start-note]')&&capture())
+   if(event.pointerType==='mouse'&&event.target.closest?.('[data-anno-color],[data-anno-underline],[data-anno-start-note]')&&(capture()||selectionRejection))
     event.preventDefault();
   });
   host.querySelectorAll('[data-anno-color]').forEach(button=>button.addEventListener('click',()=>{
    if(editorOpen()||hasLocked())return;
    setModeButton(button,'highlight');
    if(selected)add('highlight');
-   else setStatus(armed?'Barva je aktivní. Označujte další pasáže.':'Zvýrazňování vypnuto.');
+   else if(!selectionRejection)setStatus(armed?'Barva je aktivní. Označujte další pasáže.':'Zvýrazňování vypnuto.');
   }));
   host.querySelector('[data-anno-underline]')?.addEventListener('click',event=>{
    if(editorOpen()||hasLocked())return;
    setModeButton(event.currentTarget,'underline');
    if(selected)add('underline');
-   else setStatus(armed?'Podtržení je aktivní. Označujte další pasáže.':'Podtržení vypnuto.');
+   else if(!selectionRejection)setStatus(armed?'Podtržení je aktivní. Označujte další pasáže.':'Podtržení vypnuto.');
   });
   host.querySelector('[data-anno-start-note]')?.addEventListener('click',event=>{
    if(editorOpen()||hasLocked())return;
    setModeButton(event.currentTarget,'note');
    if(selected)startNote();
-   else setStatus(armed?'Poznámky jsou aktivní. Označte text pro vložení poznámky.':'Vkládání poznámek vypnuto.');
+   else if(!selectionRejection)setStatus(armed?'Poznámky jsou aktivní. Označte text pro vložení poznámky.':'Vkládání poznámek vypnuto.');
   });
   clearAll?.addEventListener('click',()=>{
    if(!enabled||hasLocked()||!items.length||editorOpen())return;
@@ -715,8 +736,10 @@
   for(const container of containers){
    container.addEventListener('pointerdown',event=>{
     if(!enabled||hasLocked()||editorOpen()||event.target.closest?.('button,input,select,textarea,a'))return;
-    interactionEpoch++;confirmPress=null;selected=null;
-    inputMethod=event.pointerType||'mouse';syncConfirmation();
+    interactionEpoch++;confirmPress=null;selected=null;selectionRejection='';
+    inputMethod=event.pointerType||'mouse';
+    mouseDown=event.pointerType==='mouse'&&event.button===0&&targetFor(event.target)?{id:event.pointerId,container,epoch:interactionEpoch}:null;
+    syncConfirmation();
    });
    container.addEventListener('touchstart',()=>{
     if(enabled&&!hasLocked()&&!editorOpen()){inputMethod='touch';confirmPress=null;}
@@ -726,9 +749,13 @@
     else if(enabled){inputMethod=event.pointerType||'touch';capture();}
    });
    container.addEventListener('pointerup',event=>{
-    if(event.target.closest?.('button,input,select,textarea,a'))return;
+    const down=mouseDown;mouseDown=null;
+    if(!enabled||hasLocked()||editorOpen()||event.target.closest?.('button,input,select,textarea,a'))return;
     const epoch=interactionEpoch;
     if(event.pointerType==='mouse'&&event.button===0){
+     // A release from the disappearing lock overlay (or any outside press)
+     // is not a text-selection gesture, even if it lands inside the reader.
+     if(!down||down.id!==event.pointerId||down.container!==container||down.epoch!==epoch)return;
      inputMethod='mouse';
      root.setTimeout(()=>{
       if(epoch!==interactionEpoch||!enabled||hasLocked()||editorOpen()||!armed||inputMethod!=='mouse')return;
@@ -798,12 +825,15 @@
     },true);
   }
   root.document.addEventListener('pointerdown',event=>{
+   mouseDown=null;
    if(popupPinned&&!popup.contains(event.target))hideNote();
    if(!confirmBar.contains(event.target))confirmPress=null;
   },true);
   root.document.addEventListener('pointerup',event=>{
+   if(!isTarget(event.target))mouseDown=null;
    if(confirmPress&&!confirmBar.contains(event.target)){confirmPress=null;capture();}
   },true);
+  root.document.addEventListener('pointercancel',()=>{mouseDown=null;},true);
   root.document.addEventListener('keydown',event=>{
    if(event.key!=='Escape'||!enabled||hasLocked())return;
    if(dockOpen){event.preventDefault();setDockOpen(false,true);return;}
@@ -840,10 +870,16 @@
    if(clearConfirm)clearConfirm.hidden=true;
    clearSnapshot=null;if(enabled)paint();else renderList();keyboardTargets();
    }
+   function suspend(){
+    // Called on a real session lock transition. Preserve a drafted note,
+    // but invalidate pending ranges, confirmations and mouse gesture origin.
+    hideNote();resetTool();closeClear();keyboardTargets();
+    if(enabled)setStatus(editorOpen()?'Test je uzamčen. Rozpracovaná poznámka zůstala zachována.':'Výběr byl při uzamčení testu zrušen.');
+   }
    function refresh(){
     if(hasLocked()){
-     hideNote();resetTool();closeEditor();
-     if(clearConfirm)clearConfirm.hidden=true;
+     hideNote();resetTool();closeEditor();closeClear();
+     setStatus('Anotace jsou nyní jen ke čtení.');
     }else if(selected||confirmPress?.record){
      const record=selected||confirmPress.record;
      if(!itemRange(getAnchor(record.anchor),record))cancelPending();
@@ -854,9 +890,9 @@
   config.onToggle?.(false);
   setStatus('Anotační režim je vypnutý.');
   renderList();
-  return Object.freeze({snapshot,restore,refresh,hasDraft:editorOpen,isEnabled:()=>enabled,reportStorageIssue});
+  return Object.freeze({snapshot,restore,refresh,suspend,hasDraft:editorOpen,isEnabled:()=>enabled,reportStorageIssue});
  }
- const api=Object.freeze({mount,normalized,sourceRange,decodeLocalSnapshot,COLORS,TYPES});
+ const api=Object.freeze({mount,normalized,sourceRange,decodeLocalSnapshot,timedAnnotationBudget,timedSnapshot,COLORS,TYPES});
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  else root.LSHReadingAnnotations=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
