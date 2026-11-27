@@ -297,17 +297,21 @@
     },
     "de-b2-inference-2": {
       "correctIndex": 3,
-      "correctWhy": "Cílové těleso nebylo na kolizní dráze se Zemí. Z toho vyplývá, že šlo o zkoušku metody na bezpečném cíli, nikoli o odvracení skutečné hrozby.",
+      "correctWhy": "Zkouška proběhla na cíli, který nebyl na kolizní dráze se Zemí; nešlo o odvracení skutečné hrozby. Výsledek proto nedokládá účinnost za všech podmínek reálného zásahu.",
       "evidence": [
         {
           "p": 2,
           "text": "DART traf ein Objekt, das gar nicht auf Kollisionskurs mit der Erde lag."
+        },
+        {
+          "p": 2,
+          "text": "Der Test zeigte jedoch nicht, dass sich jeder mögliche Einschlag verhindern lässt."
         }
       ],
       "distractors": {
         "0": {
           "whyWrong": "Text výslovně vylučuje kolizní dráhu. Neříká, že vědci očekávali brzké ohrožení Země Dimorphosem.",
-          "tip": "Nezaměň bezpečný cíl experimentu za předpovězenou hrozbu."
+          "tip": "Nezaměň cíl mimo kolizní dráhu za předpovězenou hrozbu."
         },
         "1": {
           "whyWrong": "Z popisu jednoho testu nelze odvodit, že všechny budoucí mise budou mířit pouze k nebezpečným asteroidům.",

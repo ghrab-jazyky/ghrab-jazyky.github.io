@@ -333,11 +333,15 @@
         },
         "en-b2-inference-3": {
           "correctIndex": 0,
-          "correctWhy": "DART záměrně zasáhl těleso, které nebylo na kolizní dráze se Zemí. Z toho vyplývá, že šlo o zkoušku techniky bez odvracení skutečné hrozby.",
+          "correctWhy": "Zkouška proběhla na cíli, který nebyl na kolizní dráze se Zemí; nešlo o odvracení skutečné hrozby. Výsledek proto nedokládá účinnost za všech podmínek reálného zásahu.",
           "evidence": [
             {
               "p": 3,
-              "text": "was tested on an asteroid that was not on a collision course with Earth."
+              "text": "The technique was tested on an asteroid that was not on a collision course with Earth."
+            },
+            {
+              "p": 3,
+              "text": "The experiment demonstrated that a spacecraft could alter the movement of an asteroid, but it did not prove that every possible impact could be prevented."
             }
           ],
           "distractors": {

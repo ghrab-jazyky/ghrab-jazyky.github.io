@@ -5,7 +5,7 @@ const {integrityContent}=require('./reading-content-integrity.cjs');
 const root=path.resolve(__dirname,'..'),manifest=JSON.parse(fs.readFileSync(path.join(root,'version.json'),'utf8'));
 const raw=fs.readFileSync(path.join(root,'cteni/asteroids/index.html'));
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
-const approved='3661b936059d812991fd1ee0b6662d9e817ae74ddd643a81807eaca4c7106bf8';
+const approved='f24232f5699b8f2f52313e91ccf74f559d5bd13aa0c07bec19ec46ad826f6788';
 const originalApproved='59167c05eb80b492300b368fc0a1f45f19c1af6631d4a19c560dae98e0d45bac';
 const originalBlob='d0ddfe9aae769eff948ee7cf52092139678b64d3';
 const css='<link rel="stylesheet" href="../../self-check/reading/reading-annotations.css">\n';
@@ -14,7 +14,7 @@ test('D3/F3: full candidate bytes, exact R12 bytes outside additive bank and man
  assert.equal(sha(integrityContent('rl-asteroids',raw)),approved);
  assert.equal(sha(integrityContent('rl-asteroids',raw.toString('utf8'))),approved);
  assert.equal(manifest.contentHashes['rl-asteroids'],approved);
- assert.equal(crypto.createHash('sha1').update('blob '+raw.length+'\0').update(raw).digest('hex'),'bc02c45a471db70a186088015a095318bb72b191');
+ assert.equal(crypto.createHash('sha1').update('blob '+raw.length+'\0').update(raw).digest('hex'),'e0d9772e66b71564660dbcc4b249e39f2ddcfde1');
  const marker='<script type="application/json" id="lsh-smart-feedback-asteroids-v1">';
  const source=raw.toString('utf8');assert.equal(source.split(marker).length,2);
  const start=source.indexOf(marker),end=source.indexOf('</script>\n',start);assert.ok(end>start);

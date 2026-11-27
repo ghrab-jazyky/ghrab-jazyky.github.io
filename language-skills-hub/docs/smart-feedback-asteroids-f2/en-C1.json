@@ -386,7 +386,11 @@
       "evidence": [
         {
           "p": 4,
-          "text": "proportionate decisions"
+          "text": "Risk communication must avoid two opposite errors: treating every close approach as an emergency and dismissing low-probability events as unworthy of preparation."
+        },
+        {
+          "p": 4,
+          "text": "Planetary defence becomes credible not when uncertainty disappears, but when uncertainty is made understandable enough to guide proportionate decisions."
         }
       ],
       "distractors": {
@@ -413,7 +417,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "Infrared instruments complement optical telescopes"
+          "text": "Infrared instruments complement optical telescopes because thermal emissions may reveal bodies that are difficult to notice in reflected light."
         }
       ],
       "distractors": {
@@ -546,7 +550,7 @@
       ],
       "distractors": {
         "0": {
-          "whyWrong": "Velikost tělesa souvisí s technickými podmínkami zásahu dříve v článku. Závěrečný odstavec však porovnává, které úkoly získávají pozornost a zdroje.",
+          "whyWrong": "Předchozí text řeší technické podmínky odklonu, ale následující odstavec porovnává méně nápadné nezbytné úkoly s mediálně atraktivními záběry. Věta o velikosti by tuto myšlenku nerozvíjela.",
           "tip": "Při doplnění tematické věty nesleduj jen slovo z předchozího tématu."
         },
         "2": {
@@ -599,7 +603,7 @@
       "evidence": [
         {
           "p": 0,
-          "text": "The familiar label 'near-Earth' is a description of orbital geometry"
+          "text": "The familiar label 'near-Earth' is a description of orbital geometry, not a verdict that an object is dangerous."
         },
         {
           "p": 0,

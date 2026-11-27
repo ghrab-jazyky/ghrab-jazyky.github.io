@@ -10,6 +10,10 @@
           "text": "Last Friday, Nina visited the school space club."
         },
         {
+          "p": 0,
+          "text": "The students looked at photos of asteroids."
+        },
+        {
           "p": 3,
           "text": "she understood that watching the sky is the first step in protecting Earth."
         }
@@ -32,6 +36,10 @@
       "correctIndex": 1,
       "correctWhy": "Druhý odstavec spojuje sledování drah s tím, že blízký průlet neznamená srážku. Většina známých asteroidů pro nás není nebezpečná.",
       "evidence": [
+        {
+          "p": 1,
+          "text": "Scientists use telescopes to find them and computers to study their orbits."
+        },
         {
           "p": 1,
           "text": "The teacher said that coming near Earth is not the same as hitting it."

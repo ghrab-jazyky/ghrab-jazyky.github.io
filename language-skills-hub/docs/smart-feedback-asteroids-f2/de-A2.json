@@ -10,6 +10,10 @@
           "text": "Letzten Freitag besuchte Nina die Weltraum-AG ihrer Schule."
         },
         {
+          "p": 0,
+          "text": "Die Schülerinnen und Schüler sahen Fotos von Asteroiden an."
+        },
+        {
           "p": 2,
           "text": "Sie wusste jetzt auch, dass die Beobachtung des Himmels der erste Schritt zum Schutz der Erde ist."
         }
@@ -32,6 +36,10 @@
       "correctIndex": 0,
       "correctWhy": "Druhý odstavec spojuje sledování drah s tím, že blízký průlet neznamená srážku. Většina známých asteroidů pro nás není nebezpečná.",
       "evidence": [
+        {
+          "p": 1,
+          "text": "Wissenschaftler entdecken sie mit Teleskopen und untersuchen ihre Bahnen mit Computern."
+        },
         {
           "p": 1,
           "text": "Der Erde nahezukommen bedeutet nicht, mit ihr zusammenzustoßen."
@@ -208,8 +216,8 @@
           "tip": "Nezaměň příklad z jiného odstavce za popis hledaného místa."
         },
         "2": {
-          "whyWrong": "Text používá obraz silnice, aby vysvětlil, že pás není plný natěsnaných hornin. Neříká, že jsou v něm silnice.",
-          "tip": "U přirovnání rozliš obraz a skutečný popis."
+          "whyWrong": "Text říká, že kameny nejsou natěsnané vedle sebe a je mezi nimi hodně prázdného prostoru. O skutečných silnicích se nezmiňuje.",
+          "tip": "Najdi větu se slovem zwischen a ověř, co se podle ní mezi kameny nachází."
         }
       },
       "unanswered": {

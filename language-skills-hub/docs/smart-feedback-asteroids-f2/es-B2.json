@@ -297,15 +297,15 @@
     },
     "es-b2-inference-2": {
       "correctIndex": 1,
-      "correctWhy": "DART prokázal změnu pohybu při bezpečné zkoušce, nikoli účinnost při skutečné hrozbě. Z této jedné zkoušky nelze určit, zda by potřebná změna dráhy u jiného cíle nastala včas; výsledek závisí na podmínkách.",
+      "correctWhy": "Zkouška proběhla na cíli, který nebyl na kolizní dráze se Zemí; nešlo o odvracení skutečné hrozby. Výsledek proto nedokládá účinnost za všech podmínek reálného zásahu.",
       "evidence": [
         {
           "p": 2,
-          "text": "DART se probó con un cuerpo que no se dirigía hacia la Tierra."
+          "text": "Además, DART se probó con un cuerpo que no se dirigía hacia la Tierra."
         },
         {
           "p": 2,
-          "text": "pero no demostró que sea posible evitar todos los impactos."
+          "text": "El experimento mostró que una nave puede modificar el movimiento de un asteroide, pero no demostró que sea posible evitar todos los impactos."
         }
       ],
       "distractors": {
@@ -314,7 +314,7 @@
           "tip": "Ověř negaci v popisu dráhy cílového tělesa."
         },
         "2": {
-          "whyWrong": "Z jednoho bezpečného experimentu nelze vyvodit, že všechny další mise budou mířit pouze na nebezpečná tělesa. Článek takový plán neuvádí.",
+          "whyWrong": "Z experimentu na cíli mimo kolizní dráhu nelze vyvodit, že všechny další mise budou mířit pouze na nebezpečná tělesa. Článek takový plán neuvádí.",
           "tip": "Nedělej univerzální závěr o budoucích akcích z jedné zkoušky."
         },
         "3": {

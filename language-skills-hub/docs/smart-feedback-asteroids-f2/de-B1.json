@@ -126,7 +126,7 @@
     },
     "de-b1-scan-3": {
       "correctIndex": 2,
-      "correctWhy": "Dimorphos je v textu malá malá družice asteroidu Didymos. Právě kolem Didymosu obíhá.",
+      "correctWhy": "Dimorphos je v textu malá družice asteroidu Didymos. Právě kolem Didymosu obíhá.",
       "evidence": [
         {
           "p": 2,
@@ -267,7 +267,7 @@
       "distractors": {
         "1": {
           "whyWrong": "Fotografie je nástroj pozorování zmíněný až v další větě. Nejde o těleso, jehož dráhu vědci počítají.",
-          "tip": "Než zvolíš referent z pozdější věty, prověř předcházející podmět."
+          "tip": "Hledej dříve zmíněná podstatná jména. Dosaď každé za přivlastňovací výraz a ověř, které z nich může mít oběžnou dráhu."
         },
         "2": {
           "whyWrong": "Počítač je nástroj k výpočtu. Výraz neoznačuje dráhu počítače, nýbrž asteroidu.",

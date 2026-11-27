@@ -38,7 +38,7 @@
       "evidence": [
         {
           "p": 0,
-          "text": "In Nachrichtenmeldungen wird dieser Unterschied häufig"
+          "text": "In Nachrichtenmeldungen wird dieser Unterschied häufig zu einer alarmierenden, aber wenig hilfreichen Warnung verkürzt."
         },
         {
           "p": 0,
@@ -285,7 +285,7 @@
     },
     "de-c1-inference-2": {
       "correctIndex": 0,
-      "correctWhy": "Samotný obraz srážky ukazuje, že ke kontaktu došlo. Účinnost se musí potvrdit následnými, případně nezávislými měřeními změny dráhy; vizuálně výrazný úspěch tedy není sám o sobě důkazem výsledku.",
+      "correctWhy": "Účinnost se musí potvrdit následnými nezávislými pozorováními skutečné změny dráhy. Samotný snímek nárazu dokládá kontakt, nikoli výsledek odklonu.",
       "evidence": [
         {
           "p": 2,
@@ -370,7 +370,11 @@
       "evidence": [
         {
           "p": 3,
-          "text": "für angemessene Entscheidungen"
+          "text": "Gute Risikokommunikation muss zwei gegensätzliche Fehler vermeiden: jede Annäherung zur Krise zu erklären und seltene Gefahren als unwichtig abzutun."
+        },
+        {
+          "p": 3,
+          "text": "Planetare Verteidigung wird nicht dadurch glaubwürdig, dass alle Unsicherheit verschwindet, sondern dadurch, dass die Unsicherheit für angemessene Entscheidungen verständlich gemacht wird."
         }
       ],
       "distractors": {
@@ -397,7 +401,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "Infrarotgeräte ergänzen optische Teleskope"
+          "text": "Infrarotgeräte ergänzen optische Teleskope, weil sie die Wärmestrahlung von Körpern erfassen können, die im reflektierten Sonnenlicht schwer zu erkennen sind."
         }
       ],
       "distractors": {
@@ -411,7 +415,7 @@
         },
         "2": {
           "whyWrong": "Tento význam patří k pochvale, nikoli k technickému vztahu dvou pozorovacích metod.",
-          "tip": "Rozliš podobně znějící výrazy podle jejich předmětu a situace."
+          "tip": "Dosaď význam do věty o vztahu dvou metod. Může přístroj druhý přístroj pochválit, nebo ho doplňuje o další schopnost?"
         }
       },
       "unanswered": {
@@ -522,7 +526,7 @@
           "tip": "Zkontroluj, zda se téma vložené věty opravdu rozvíjí dál."
         },
         "2": {
-          "whyWrong": "Velikost tělesa souvisí s technickými podmínkami zásahu dříve v článku. Závěrečný odstavec však porovnává, které úkoly získávají pozornost a zdroje.",
+          "whyWrong": "Předchozí text řeší technické podmínky odklonu, ale následující odstavec porovnává méně nápadné nezbytné úkoly s mediálně atraktivními záběry. Věta o velikosti by tuto myšlenku nerozvíjela.",
           "tip": "Při doplnění tematické věty nesleduj jen slovo z předchozího tématu."
         }
       },
@@ -567,7 +571,11 @@
       "evidence": [
         {
           "p": 0,
-          "text": "beschreibt eine Eigenschaft der Umlaufbahn und ist keineswegs ein Urteil"
+          "text": "Die Bezeichnung „erdnah“ beschreibt eine Eigenschaft der Umlaufbahn und ist keineswegs ein Urteil über die Gefährlichkeit des Objekts."
+        },
+        {
+          "p": 0,
+          "text": "Diese Unterscheidung ist wichtig, weil eine wissenschaftliche Beobachtung nicht automatisch eine politische Warnung rechtfertigt."
         }
       ],
       "distractors": {
@@ -585,7 +593,7 @@
         }
       },
       "unanswered": {
-        "tip": "Vyhledej větu s definicí blízkozemního objektu a určete oba členy jejího rozlišení."
+        "tip": "Vyhledej větu s definicí blízkozemního objektu a urči oba členy jejího rozlišení."
       }
     }
   }

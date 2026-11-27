@@ -349,7 +349,7 @@
         }
       },
       "unanswered": {
-        "tip": "U otázky s výrazem nad rámec důkazu si vyznač negaci a hledej tvrzení s nepodloženým zobecněním."
+        "tip": "Označ si výraz nad rámec důkazu a vyhledej tvrzení, které nepodloženě zobecňuje jeden experiment."
       }
     },
     "fr-c2-critical-2": {
@@ -489,7 +489,7 @@
     },
     "fr-c2-structure-1": {
       "correctIndex": 3,
-      "correctWhy": "Doplněná věta zavádí politické dilema: vzácným katastrofám konkurují bezprostřední potřeby a úspěšná prevence bývá málo viditelná. Následující věty právě rozvíjejí odpovědné investice a důvěru.",
+      "correctWhy": "Doplněná věta zavádí politické dilema: prostředky na prevenci vzácných katastrof soupeří s aktuálními potřebami a přínos prevence je málo viditelný. Následující věty rozvíjejí odpovědné investice a důvěru.",
       "evidence": [
         {
           "p": 3,
@@ -497,7 +497,7 @@
         },
         {
           "p": 3,
-          "text": "Promettre une sécurité absolue serait irresponsable"
+          "text": "Promettre une sécurité absolue serait irresponsable ; exiger des prévisions parfaites avant d’investir dans l’observation le serait tout autant."
         }
       ],
       "distractors": {

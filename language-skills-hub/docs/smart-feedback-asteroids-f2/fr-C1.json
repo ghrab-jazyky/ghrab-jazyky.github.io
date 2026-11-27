@@ -285,7 +285,7 @@
     },
     "fr-c1-inference-2": {
       "correctIndex": 3,
-      "correctWhy": "Samotný obraz srážky ukazuje, že ke kontaktu došlo. Účinnost se musí potvrdit následnými, případně nezávislými měřeními změny dráhy; vizuálně výrazný úspěch tedy není sám o sobě důkazem výsledku.",
+      "correctWhy": "Účinnost se musí potvrdit následnými nezávislými pozorováními skutečné změny dráhy. Samotný snímek nárazu dokládá kontakt, nikoli výsledek odklonu.",
       "evidence": [
         {
           "p": 2,
@@ -370,7 +370,11 @@
       "evidence": [
         {
           "p": 3,
-          "text": "des décisions proportionnées."
+          "text": "Communiquer sur les risques suppose d’éviter deux erreurs opposées : transformer chaque rapprochement en urgence ou considérer les événements peu probables comme indignes de toute préparation."
+        },
+        {
+          "p": 3,
+          "text": "La défense planétaire devient crédible non lorsque l’incertitude disparaît, mais lorsqu’elle est assez claire pour guider des décisions proportionnées."
         }
       ],
       "distractors": {
@@ -397,7 +401,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "Les instruments infrarouges complètent les télescopes optiques"
+          "text": "Les instruments infrarouges complètent les télescopes optiques : le rayonnement thermique peut révéler des corps difficiles à détecter par la seule lumière réfléchie."
         }
       ],
       "distractors": {
@@ -514,7 +518,7 @@
       ],
       "distractors": {
         "0": {
-          "whyWrong": "Velikost tělesa souvisí s technickými podmínkami zásahu dříve v článku. Závěrečný odstavec však porovnává, které úkoly získávají pozornost a zdroje.",
+          "whyWrong": "Předchozí text řeší technické podmínky odklonu, ale následující odstavec porovnává méně nápadné nezbytné úkoly s mediálně atraktivními záběry. Věta o velikosti by tuto myšlenku nerozvíjela.",
           "tip": "Při doplnění tematické věty nesleduj jen slovo z předchozího tématu."
         },
         "1": {
@@ -585,7 +589,7 @@
         }
       },
       "unanswered": {
-        "tip": "Vyhledej větu s definicí blízkozemního objektu a určete oba členy jejího rozlišení."
+        "tip": "Vyhledej větu s definicí blízkozemního objektu a urči oba členy jejího rozlišení."
       }
     }
   }

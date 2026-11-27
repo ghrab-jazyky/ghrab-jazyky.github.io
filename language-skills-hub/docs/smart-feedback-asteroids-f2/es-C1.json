@@ -42,7 +42,7 @@
         },
         {
           "p": 0,
-          "text": "los medios de comunicación suelen reducir esta diferencia"
+          "text": "Sin embargo, los medios de comunicación suelen reducir esta diferencia a advertencias llamativas pero poco útiles."
         }
       ],
       "distractors": {
@@ -370,7 +370,11 @@
       "evidence": [
         {
           "p": 3,
-          "text": "decisiones proporcionadas"
+          "text": "La comunicación del riesgo debe evitar dos errores opuestos: presentar cada acercamiento como una emergencia y despreciar los acontecimientos poco probables como si no merecieran preparación."
+        },
+        {
+          "p": 3,
+          "text": "La defensa planetaria resulta creíble no cuando desaparece la incertidumbre, sino cuando se entiende lo suficiente para tomar decisiones proporcionadas."
         }
       ],
       "distractors": {
@@ -397,7 +401,7 @@
       "evidence": [
         {
           "p": 1,
-          "text": "Los instrumentos infrarrojos complementan a los telescopios ópticos"
+          "text": "Los instrumentos infrarrojos complementan a los telescopios ópticos porque la emisión térmica permite detectar cuerpos difíciles de observar mediante luz reflejada."
         }
       ],
       "distractors": {
@@ -522,7 +526,7 @@
           "tip": "Při gap úloze hledej koherenci mezi tematickou větou a následujícím výčtem."
         },
         "2": {
-          "whyWrong": "Velikost tělesa souvisí s technickými podmínkami zásahu dříve v článku. Závěrečný odstavec však porovnává, které úkoly získávají pozornost a zdroje.",
+          "whyWrong": "Předchozí text řeší technické podmínky odklonu, ale následující odstavec porovnává méně nápadné nezbytné úkoly s mediálně atraktivními záběry. Věta o velikosti by tuto myšlenku nerozvíjela.",
           "tip": "Při doplnění tematické věty nesleduj jen slovo z předchozího tématu."
         }
       },
@@ -585,7 +589,7 @@
         }
       },
       "unanswered": {
-        "tip": "Vyhledej větu s definicí blízkozemního objektu a určete oba členy jejího rozlišení."
+        "tip": "Vyhledej větu s definicí blízkozemního objektu a urči oba členy jejího rozlišení."
       }
     }
   }

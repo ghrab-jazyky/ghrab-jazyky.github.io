@@ -349,7 +349,7 @@
         }
       },
       "unanswered": {
-        "tip": "U otázky s výrazem nad rámec důkazu si vyznač negaci a hledej tvrzení s nepodloženým zobecněním."
+        "tip": "Označ si výraz nad rámec důkazu a vyhledej tvrzení, které nepodloženě zobecňuje jeden experiment."
       }
     },
     "de-c2-critical-2": {
@@ -430,7 +430,7 @@
         }
       },
       "unanswered": {
-        "tip": "Vyhledej společný výskyt procenta, předpokladů a neodůvodněné jistoty."
+        "tip": "Vyhledej spojení procentní hodnoty, předpokladů a zdánlivé přesnosti (Präzision)."
       }
     },
     "de-c2-matching-2": {
@@ -489,7 +489,7 @@
     },
     "de-c2-structure-1": {
       "correctIndex": 3,
-      "correctWhy": "Doplněná věta zavádí politické dilema: vzácným katastrofám konkurují bezprostřední potřeby a úspěšná prevence bývá málo viditelná. Následující věty právě rozvíjejí odpovědné investice a důvěru.",
+      "correctWhy": "Doplněná věta zavádí politické dilema: prostředky na prevenci vzácných katastrof soupeří s aktuálními potřebami a přínos prevence je málo viditelný. Následující věty rozvíjejí odpovědné investice a důvěru.",
       "evidence": [
         {
           "p": 3,
@@ -498,6 +498,10 @@
         {
           "p": 3,
           "text": "Gleichzeitig bleibt der Nutzen gelungener Vorbereitung meist unsichtbar."
+        },
+        {
+          "p": 3,
+          "text": "Absolute Sicherheit zu versprechen wäre unverantwortlich; perfekte Vorhersagen abzuwarten, bevor in Beobachtung investiert wird, wäre ebenso unklug."
         }
       ],
       "distractors": {
@@ -564,7 +568,7 @@
           "tip": "Nezaměň dřívější odmítnutý obraz a aktuální referent zájmena."
         },
         "3": {
-          "whyWrong": "Vysoké náklady na prevenci jsou dřívější politické téma. Závěrečné zájmeno shrnuje schopnost opravovat rozhodnutí, ne finanční problém.",
+          "whyWrong": "Soutěž o prostředky na prevenci je dřívější politické téma. Darin odkazuje na schopnost měnit rozhodnutí při nových datech, nikoli na otázku financování.",
           "tip": "Při anaforickém odkazu začni nejbližším smysluplným předcházejícím tvrzením."
         }
       },
