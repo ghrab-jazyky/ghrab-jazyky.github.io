@@ -4,8 +4,8 @@ const test=require('node:test'),assert=require('node:assert/strict');
 const {chromium,webkit}=require('playwright');
 const base='http://127.0.0.1:8765/language-skills-hub/';
 const config=[
- {skill:'konverzace',lang:'es',alternative:'de',count:24},
- {skill:'konverzace',lang:'en',alternative:'de',count:23},
+ {skill:'konverzace',lang:'es',alternative:'de',count:25},
+ {skill:'konverzace',lang:'en',alternative:'de',count:24},
  {skill:'cteni',lang:'fr',alternative:'en',count:5},
  {skill:'poslech',lang:'en',alternative:null,count:6}
 ];
@@ -119,7 +119,7 @@ for(const [name,engine]of[['chromium',chromium],['webkit',webkit]]){
      await page.goto(catalogUrl(spec),{waitUntil:'load'});
      await page.locator('#cards .card').first().waitFor({timeout:25000});
     }
-    const card=page.locator('#cards .card').first();
+    const card=page.locator('#cards .card:not([data-topic-id="cl-christmas-quest"])').first();
     await card.locator('button').filter({hasText:'Sdílet se studenty'}).click();
     await page.locator('#shareFixed').check();
     assert.equal(await page.locator('#shareLanguage').inputValue(),spec.lang);

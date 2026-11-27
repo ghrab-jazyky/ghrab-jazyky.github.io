@@ -29,6 +29,29 @@
       "lockSource": null
     },
     {
+      "id": "cl-christmas-quest",
+      "skill": "konverzace",
+      "title": "Christmas Quest – Vánoce kolem světa",
+      "summary": "Interaktivní jazyková hra. Poznej vánoční tradice Islandu, Mexika, Španělska, Filipín a Kolumbie. Pět hratelných misí; další destinace jsou v přípravě. EN/ES/DE/FR, A1–C2.",
+      "languages": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "relative": "konverzace/christmas-quest/index.html",
+      "cardType": "interactive-language-game",
+      "lockSource": null
+    },
+    {
       "id": "cl-umela-inteligence",
       "skill": "konverzace",
       "title": "Umělá inteligence",

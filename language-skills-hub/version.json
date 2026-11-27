@@ -3,8 +3,8 @@
   "version": "R70-LISTENING-STUDIO-UNIFICATION",
   "mode": "public_practice_and_unverified_grade_proposals",
   "gradedTestsEnabled": false,
-  "topicCount": 35,
-  "variantCount": 726,
+  "topicCount": 36,
+  "variantCount": 750,
   "sourceSha": "f153e08074d8c83fefa211ab5ade344fc201aa7c8ca497158e0e2b195f3ce87a",
   "contentHashes": {
     "cl-city-quest-f2": "0f62b677fb3e0b29b01802acd5a762e7a12cde438d3e47e94c5a766f8f9f2e53",
@@ -41,7 +41,8 @@
     "ll-sad": "859dfcfc6ef15fb6ef3993a20d1a61c40e79453ce8c68712fbf3a94593fdfde0",
     "ll-conlangs": "aa53db6ff2d4652a01d20c7a6d6f56a994338cd0beacb8e4ff2c6d85444541be",
     "ll-how-to-choose-your-news": "5bfb92d91ccdf1ba4e7903ee5e1e3e5096235397b06f60c022a7ac87ca5dffd9",
-    "cl-plural": "8b92a9fe58cd87ad88128e39da18942dc95484f6982bbf095f412fe46b59fb93"
+    "cl-plural": "8b92a9fe58cd87ad88128e39da18942dc95484f6982bbf095f412fe46b59fb93",
+    "cl-christmas-quest": "efb43df3583bf3a920c5d3ec27b36ee7d7e9840f0a1fb4a0d864ecbe3e5283d0"
   },
   "sourceSnapshot": "R17",
   "sharedVocabularyModule": "My Vocabulary v1 (IndexedDB lsh, no backend)",

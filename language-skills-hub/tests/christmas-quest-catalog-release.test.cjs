@@ -1,0 +1,25 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p)),json=p=>JSON.parse(read(p));
+const id='cl-christmas-quest',pin='efb43df3583bf3a920c5d3ec27b36ee7d7e9840f0a1fb4a0d864ecbe3e5283d0';
+test('Christmas Quest registered as second isolated interactive game; existing card integrity and catalog counts',()=>{
+ const cards=json('data/cards.json'),version=json('version.json'),i18n=json('data/catalog-i18n.json');const e=cards.entries.find(x=>x.id===id);
+ assert.equal(cards.entries.length,36);assert.equal(new Set(cards.entries.map(x=>x.id)).size,36);
+ assert.equal(cards.entries.filter(x=>x.skill==='konverzace').length,25);assert.equal(cards.entries.filter(x=>x.skill==='cteni').length,5);assert.equal(cards.entries.filter(x=>x.skill==='poslech').length,6);
+ assert.equal(cards.entries.reduce((n,x)=>n+x.languages.length*x.levels.length,0),750);assert.equal(version.topicCount,36);assert.equal(version.variantCount,750);
+ assert.deepEqual(cards.entries.filter(x=>x.cardType==='interactive-language-game').map(x=>x.id).sort(),[id,'cl-city-quest-f2'].sort());
+ assert.equal(e.relative,'konverzace/christmas-quest/index.html');assert.equal(e.skill,'konverzace');assert.equal(e.lockSource,null);assert.deepEqual(e.languages,['en','es','de','fr']);assert.deepEqual(e.levels,['A1','A2','B1','B2','C1','C2']);
+ assert.deepEqual(Object.keys(i18n.entries[id]).sort(),['cs','de','en','es','fr']);assert.equal(Object.keys(i18n.entries).length,36);
+ assert.equal(Object.keys(version.contentHashes).length,36);assert.equal(version.contentHashes[id],pin);
+ for(const c of cards.entries)assert.equal(crypto.createHash('sha256').update(read(c.relative)).digest('hex'),version.contentHashes[c.id],c.id);
+ const html=read(e.relative).toString('utf8');assert.match(html,/data-lsh-topic-id="cl-christmas-quest"/);assert.match(html,/lsh\.cq\.progress\.v2/);assert.match(html,/connect-src 'none'/);
+ const hub=read('assets/hub.js').toString('utf8'),lock=read('assets/temporary-test-lock.js').toString('utf8');
+ assert.match(hub,/cs:'Interaktivní hra'/);
+ assert.match(hub,/isChristmasPreview/);assert.match(hub,/share\.disabled=true/);
+ assert.match(lock,/christmas\?'Christmas Quest je zatím ve vývoji'/);
+ assert.match(html,/data-cq-access="locked"/);assert.match(html,/type="application\/x-cq-gated" id="cqGatedRuntime"/);
+ const script=html.match(/<script type="application\/x-cq-gated" id="cqGatedRuntime">([\s\S]*?)<\/script>/)[1];
+ assert.equal(crypto.createHash('sha256').update(script).digest('base64'),'1K8Zd38ei5YdT1n8xe8cgb+I0z7IucKE78gS+zotUYU=');
+ assert.match(html,/lsh:temporary-test-lock:developer:v1/);assert.doesNotMatch(html.slice(0,html.indexOf('<title>')),/unsafe-inline|unsafe-eval/);
+ assert.equal(cards.gradedTestsEnabled,false);assert.equal(version.gradedTestsEnabled,false);assert.equal(version.officialGradesEnabled,false);
+});

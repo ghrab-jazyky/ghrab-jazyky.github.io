@@ -11,13 +11,13 @@ const version=JSON.parse(read('version.json'));
 const {integrityContent}=require('./reading-content-integrity.cjs');
 const reading=cards.entries.filter(x=>x.skill==='cteni');
 
-test('R23 public practice remains immutable: 35 cards, 726 catalog variants, no graded tests',()=>{
+test('R23 public practice remains immutable: 36 cards, 750 catalog variants, no graded tests',()=>{
  assert.equal(cards.gradedTestsEnabled,false);
  assert.equal(version.gradedTestsEnabled,false);
- assert.equal(cards.entries.length,35);
+ assert.equal(cards.entries.length,36);
  assert.equal(reading.length,5);
  const count=cards.entries.reduce((s,x)=>s+x.languages.length*x.levels.length,0);
- assert.equal(count,726);
+ assert.equal(count,750);
  for(const x of cards.entries){
   const bytes=fs.readFileSync(path.join(root,x.relative));
   assert.equal(crypto.createHash('sha256').update(integrityContent(x.id,bytes)).digest('hex'),

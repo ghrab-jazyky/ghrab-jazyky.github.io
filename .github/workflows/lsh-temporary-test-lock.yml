@@ -25,7 +25,7 @@ jobs:
           node --check language-skills-hub/self-check/practice-answers/teacher-key.js
           node --check language-skills-hub/tests/temporary-test-lock.test.cjs
       - name: Maintenance unit regressions
-        run: node --test language-skills-hub/tests/temporary-test-lock.test.cjs
+        run: node --test language-skills-hub/tests/temporary-test-lock.test.cjs language-skills-hub/tests/christmas-quest-catalog-release.test.cjs
       - name: Public policy and release contract regressions
         run: node --test language-skills-hub/tests/r22-static-policy.test.cjs language-skills-hub/tests/r27-public-release.test.cjs
   simulated-public-origin-browser:
@@ -42,4 +42,4 @@ jobs:
       - name: Install Playwright compatible with container
         run: npm install --no-save --ignore-scripts playwright@1.56.1
       - name: Verify locked production origin and developer exception in Chromium/WebKit
-        run: node --test language-skills-hub/tests/temporary-test-lock.browser.test.cjs
+        run: node --test language-skills-hub/tests/temporary-test-lock.browser.test.cjs language-skills-hub/tests/christmas-quest-developer-lock.browser.test.cjs
