@@ -1,488 +1,488 @@
 {
   "schema": "RL_PDF_PRINT_ASSET_V1",
   "topic": "rl-asteroids",
-  "sourceSha256": "2d081659e550fe400eb92ae75516b8842cc80a858fcc85e087169297f090d09b",
+  "sourceSha256": "a13a29d30cda018ff51e6445e16b1ee68b2e5acd42c45d50401fbad6ab62524b",
   "generator": "playwright@1.56.1/chromium@141.0.7390.37/hyphen@1.14.1",
   "files": [
     {
       "path": "printouts/rl-asteroids/en/A1/practice-text.pdf",
       "bytes": 97496,
-      "sha256": "a138936db9fa73a7515359a8194115f07254fba32e4211ecd62d55979b3e90f2"
+      "sha256": "ea69194724ea1d7bf19e5413c588f4df617c67ce8a66f6e67be20a6be51f6561"
     },
     {
       "path": "printouts/rl-asteroids/en/A1/practice-all.pdf",
       "bytes": 153719,
-      "sha256": "50d5fa0cd6938331beb0c72d26d30d38ca4a3669834a35e6c505ba36378cbc6d"
+      "sha256": "bc9e9f2a700f245cb4e8da49d9a88e3e94d0ff14086ca92bbd5a9a5006c06e56"
     },
     {
       "path": "printouts/rl-asteroids/en/A1/test-text.pdf",
       "bytes": 98025,
-      "sha256": "309fdade3b9b2f5ff5cd60984b87d83c7cd9b8386e4684e73cf35f2d73b52488"
+      "sha256": "9b7aa0249c439aa858cc09f25cd3f0facafad2e4a7c19a80414f1728af054190"
     },
     {
       "path": "printouts/rl-asteroids/en/A1/test-all.pdf",
       "bytes": 153256,
-      "sha256": "a5c3de69e2489e355c3df9d0f1d7fdf96df3f7b7c2245ed363ee3dfaddab9b2c"
+      "sha256": "b8cbdef6619c7960f694fc7f2224d9eaadf95af2910cc273d9ac076e96ac7ace"
     },
     {
       "path": "printouts/rl-asteroids/en/A2/practice-text.pdf",
       "bytes": 98679,
-      "sha256": "87fde7e5f46cc773caecd2b31a8ae336254e674e772383315a1b942b8c40266b"
+      "sha256": "944ad5e8aa0d32c3bf8f56a341b7fe4c0eaea20bdd009e3c3c6072ad443db584"
     },
     {
       "path": "printouts/rl-asteroids/en/A2/practice-all.pdf",
       "bytes": 155838,
-      "sha256": "0b2199f7a8a57181ddbd7596d97342520f47373bc1de5d289e4ca75655631a92"
+      "sha256": "e0c75c31720cb9fa366341d467cf4f65508bc7a72ba281358e81ab4d1423edaf"
     },
     {
       "path": "printouts/rl-asteroids/en/A2/test-text.pdf",
       "bytes": 99195,
-      "sha256": "854fd060529da591be8269c0d457a5118b8cd1339ac4cb2eb17173a342f7e145"
+      "sha256": "45b58532aab1c1b3ccd8f64fd3d501b63c99971798cd99036ab3a3dcf5d0dca2"
     },
     {
       "path": "printouts/rl-asteroids/en/A2/test-all.pdf",
       "bytes": 155392,
-      "sha256": "5c52d3f340b2c23bf2d06a92c619b3bcb3b1b666184b7dfdc5b31adf6e243fa3"
+      "sha256": "ccaf815431bcdc5c9bb6015dad9c49de2abadbf7e19476070046f0ad6b4ca5f8"
     },
     {
       "path": "printouts/rl-asteroids/en/B1/practice-text.pdf",
       "bytes": 102901,
-      "sha256": "66a9afea86bc360c367834412ce796033e9fdf80b6ec4ff4a05d1a0fd6c3ca60"
+      "sha256": "70385ef63f4b0cc8809c6e587bed1c078682a99c89cd732ace863aaffe94a722"
     },
     {
       "path": "printouts/rl-asteroids/en/B1/practice-all.pdf",
       "bytes": 166782,
-      "sha256": "62f5df82719dc6d863f59c73550d905fb5bc7315c38fb301a25f3cb0fb1cca77"
+      "sha256": "5f40a1f0b74ebcd567c15cea01ea3448e2e035f68d19abbf10aca213e581f538"
     },
     {
       "path": "printouts/rl-asteroids/en/B1/test-text.pdf",
       "bytes": 104874,
-      "sha256": "2f3dd366e2bcab5e736a95a4ac70b5956ba145e0d8c9b9903af13ab3a8f57090"
+      "sha256": "687e3346fc3d0594778c5a230efc3eecd9ebf11eddafb5ffe7e6d14212b3dc04"
     },
     {
       "path": "printouts/rl-asteroids/en/B1/test-all.pdf",
       "bytes": 165566,
-      "sha256": "a3bcd21e719137a7aa6f1279ad682067c8349de03b309106efeac4db0debf63e"
+      "sha256": "80211ad09ee32a24b5523ae4662919090a99d8f7e536dd72fe9b872ec8c74fd3"
     },
     {
       "path": "printouts/rl-asteroids/en/B2/practice-text.pdf",
       "bytes": 104956,
-      "sha256": "84aa577dadd56b564f0be09ce12f2e28014cc8e031e356155aa4e90b82d3a48d"
+      "sha256": "71441b7544ac965b63da7d48fa79bfc81e5ceb639cceeb1ca1be55f30945b459"
     },
     {
       "path": "printouts/rl-asteroids/en/B2/practice-all.pdf",
       "bytes": 191262,
-      "sha256": "781e5e23dad9f39cdfd1c5f5b693639e3fc4a646bf9dd2c6f0e32e290fe817aa"
+      "sha256": "c225a906c0f1882dc418431839240b4724ded200afac738f96ceecbb68908fae"
     },
     {
       "path": "printouts/rl-asteroids/en/B2/test-text.pdf",
       "bytes": 106980,
-      "sha256": "114ff87402d9f42cc56015c26f71d091ceb5864cef6efd7b06a5daed0e61bced"
+      "sha256": "726c71f0a7c83be9cb2a31fa0fc93dde002af51d31395f5991cecebce388c583"
     },
     {
       "path": "printouts/rl-asteroids/en/B2/test-all.pdf",
       "bytes": 190447,
-      "sha256": "d218ba612ec9fff64bad06740c397f4422ff7f233854a1bdc69f9c00f6812183"
+      "sha256": "da06904f8a559b7e074388eaaf8990a7f80101104a05a0112090e3549ae3f4bf"
     },
     {
       "path": "printouts/rl-asteroids/en/C1/practice-text.pdf",
       "bytes": 105437,
-      "sha256": "613d6cc4e7f9f9807ae261f8d19cdd6b7d52d21abc52344a56929fbb40ad62d1"
+      "sha256": "bfc28899138430ad74912f55e640a2be17f74cff4200bfcf5e06d567d59ec1c9"
     },
     {
       "path": "printouts/rl-asteroids/en/C1/practice-all.pdf",
       "bytes": 201628,
-      "sha256": "f5c56c2b3bc62b7d6722e48bdf5c3c4d0e78a3f91634059f4f143ad2b8b02042"
+      "sha256": "dd68f0be9d7dcc0587f44cf1fe672379040c586d52e8e5fd59e6a114e63956c4"
     },
     {
       "path": "printouts/rl-asteroids/en/C1/test-text.pdf",
       "bytes": 107504,
-      "sha256": "0b46be8cf55a9b63fb61754d979586e4c2fb203b543162b462cb70ccfc3641ea"
+      "sha256": "afb13602d169fb1171f1434f084bdd87cfe538150c1e2cad637b3113e129da8e"
     },
     {
       "path": "printouts/rl-asteroids/en/C1/test-all.pdf",
       "bytes": 201092,
-      "sha256": "e810aa48e3b6c37c8089f2e2aed134b9a0a8d4a221a743599f16d8c2c7f6f6bb"
+      "sha256": "84b8ddd51c3eda5bfddeafdbbcb3e0481ce58d8cb13d5543d4111440ceae1294"
     },
     {
       "path": "printouts/rl-asteroids/en/C2/practice-text.pdf",
       "bytes": 109484,
-      "sha256": "46f6d161ece398cf71c49cb7502d2ef64497e66bbcc7a49a367178c7e00c112f"
+      "sha256": "36e64736398917582af3f9b6ae0d2283243e278e706425f260e5666011bb1475"
     },
     {
       "path": "printouts/rl-asteroids/en/C2/practice-all.pdf",
       "bytes": 204302,
-      "sha256": "70e55a3f961522acd672cda31496c4c7e69bfcc3f92dc96bc2342b0264185b95"
+      "sha256": "53f0ca4f4775eb5c9cd317474af7ca2a5944a3ae9292e5015d825c5050f1427e"
     },
     {
       "path": "printouts/rl-asteroids/en/C2/test-text.pdf",
       "bytes": 111286,
-      "sha256": "066f1523faea75b86c98838fa275a1ec42c566eb89f8107d42b21a6de9415c12"
+      "sha256": "52c2ac07db69f624f07d1266d6519e06fb333d7330f4b7687004bc916daec914"
     },
     {
       "path": "printouts/rl-asteroids/en/C2/test-all.pdf",
       "bytes": 203992,
-      "sha256": "bfe302853bfed18c1905c40c9f3476990833881222af312a66b8a638ad7ffee3"
+      "sha256": "532fb369f7516792216662065046cd4512de5d06db42b18ca49af9bc270347d1"
     },
     {
       "path": "printouts/rl-asteroids/es/A1/practice-text.pdf",
       "bytes": 98035,
-      "sha256": "fec82afe6385c457fee6a3a01aa2354982075c5f3788001571b4c6079c2c5f67"
+      "sha256": "140d41f88075fade4aab3a744f4b44f77f685ad23fa9487ad09b62aa49249798"
     },
     {
       "path": "printouts/rl-asteroids/es/A1/practice-all.pdf",
       "bytes": 156735,
-      "sha256": "39b714f3d3bdec5a574906467b00f509e2527b54fc86edf1b24e6723d7f290bf"
+      "sha256": "b351b758ef81dc7882c20fdf5b104927811375232726297a424b4ca1beaed396"
     },
     {
       "path": "printouts/rl-asteroids/es/A1/test-text.pdf",
       "bytes": 98102,
-      "sha256": "df93159780a5e7a79a988c062667a1ffb8d6dc20189d4053f2366d7de1413003"
+      "sha256": "ad6850553311e8cb0adc91820f44c3d7ce085ae24f3b68df31a4f25de69ce8d0"
     },
     {
       "path": "printouts/rl-asteroids/es/A1/test-all.pdf",
       "bytes": 155414,
-      "sha256": "ef9e4a21f63942b1c4a4092c0480a240a0cd88781049f6bb1ab5a364cc5f322b"
+      "sha256": "da5f6b51b5dc3f89013730a85340d693f23db1ba1296eda90e71a538bf0d6dd3"
     },
     {
       "path": "printouts/rl-asteroids/es/A2/practice-text.pdf",
       "bytes": 98014,
-      "sha256": "ce262d4f71bec4ed6eb304479a7ad8430198239254102ff23cad643b35db2d6d"
+      "sha256": "80d445031e1ba130a1a1032da9a400f750c54c3e7f2a55a4def1ecf0c6748789"
     },
     {
       "path": "printouts/rl-asteroids/es/A2/practice-all.pdf",
       "bytes": 158598,
-      "sha256": "0cac90dfd73ad2127b464c852e690840ff8d56913ddf8b777441f308284f87c4"
+      "sha256": "0f1300a1c1a156f606b1da0d02be13d58271ba63ab7502ca1d91665e787739e9"
     },
     {
       "path": "printouts/rl-asteroids/es/A2/test-text.pdf",
       "bytes": 98080,
-      "sha256": "75208d1547b733822f82b254eed27daa06ef5e23578363c20efc99121b0771a1"
+      "sha256": "3bf85b3c2fd0cbb709999c53f1f6776753023ebac535da156a6b65561ffff551"
     },
     {
       "path": "printouts/rl-asteroids/es/A2/test-all.pdf",
       "bytes": 157411,
-      "sha256": "12ca0d510f3603b73ca12bbbb3ea178e676f89ca2aead126c8f44d13effc2ba4"
+      "sha256": "f20e13a2d6b36e5cff5be9345e4de2136c0152fff77ae5ca306e43e73006741d"
     },
     {
       "path": "printouts/rl-asteroids/es/B1/practice-text.pdf",
       "bytes": 100536,
-      "sha256": "db3be135501debe3ae1b42ba499f9928caeced05510a6acb0fecd7d9716bc19d"
+      "sha256": "a209f8dbc540d2f89d56f43006a78854aeb9c03bfc2aa5b703219bfbd1b22866"
     },
     {
       "path": "printouts/rl-asteroids/es/B1/practice-all.pdf",
       "bytes": 167105,
-      "sha256": "92a8beddaa267b1c72260da301d5dbcddee7419634c24ecdf264bd3e66858a6b"
+      "sha256": "f1cca0b9e25dd963b5a4f07e069aa417e02efc9184db751f21e64f63017a82eb"
     },
     {
       "path": "printouts/rl-asteroids/es/B1/test-text.pdf",
       "bytes": 102064,
-      "sha256": "b0a498f189b5f820dc46d2dc3eda344a77734f9aa7466b32e67ca5b04003d65d"
+      "sha256": "2b21d1389f5d2c34e6bb8e8abecc791f7537bc0d14338934763931c972c17e62"
     },
     {
       "path": "printouts/rl-asteroids/es/B1/test-all.pdf",
       "bytes": 164954,
-      "sha256": "f522bc27be5048460bb1f87d7b9cf9cb03682a1a5cbf25f424dc37543ef5a38d"
+      "sha256": "ebf9921dd0bddd5d362ce38233b57040f86f870f648d478f360991a1bb831c06"
     },
     {
       "path": "printouts/rl-asteroids/es/B2/practice-text.pdf",
       "bytes": 102082,
-      "sha256": "365e8e1a31f4fdec2bf9c595194bbfadfb168bb1cb1d5f218df8fd456193b68b"
+      "sha256": "5a48bd5060a81533f74c7f14f9fbbd8be703a8d526100e3dcef52946a02dcc04"
     },
     {
       "path": "printouts/rl-asteroids/es/B2/practice-all.pdf",
       "bytes": 189916,
-      "sha256": "f173fff3f822f262d02091d889f3c75278af2c4115e95bc90979adfc5851ac7c"
+      "sha256": "8a653c13f84c80fbf398229dad0b5863e2290b3f8ec9d235d155ec4a904dc1cd"
     },
     {
       "path": "printouts/rl-asteroids/es/B2/test-text.pdf",
       "bytes": 103930,
-      "sha256": "e27db4c69a79d7a786def84c78128818d1385c738d29b3269d1c48db32c55cce"
+      "sha256": "54fa02fd8c6c6fc484d32ff11e1d176c0dfae9d963175b87d1bf5c4dc5a14564"
     },
     {
       "path": "printouts/rl-asteroids/es/B2/test-all.pdf",
       "bytes": 188277,
-      "sha256": "d403274d91b2d8d62d88434b4587cc3d18d797932bc0099bce9f1db2e4020ded"
+      "sha256": "89f86b386e0fe6411affdf8a9262db6e30ebd352d09253b61216173feecaa754"
     },
     {
       "path": "printouts/rl-asteroids/es/C1/practice-text.pdf",
       "bytes": 102930,
-      "sha256": "ca44e0424b4b83b21c89db9b61663da3d6a47f50090c03e0760070e3e2c3c72e"
+      "sha256": "9234b7f3bb122aea4076ea429ad4597138df134768713ab84c5208e870dbecc7"
     },
     {
       "path": "printouts/rl-asteroids/es/C1/practice-all.pdf",
       "bytes": 201456,
-      "sha256": "1323bd52090c8ba4ab8560eec96c6a8e15effa615787a8214fa24fe07f0bdc86"
+      "sha256": "a6c73d71652f9e43b8be6807fb5ed0cbb5039fbc171970b0d85adbee35d51277"
     },
     {
       "path": "printouts/rl-asteroids/es/C1/test-text.pdf",
       "bytes": 104813,
-      "sha256": "eb4c3b31a0663248c5825fbd4425e6304d69e0089e3fb4081a25b0f521648696"
+      "sha256": "c272ae4214ac26d78dceb506731f7f09c43b1662545f49ad0d829211a1f9c1c7"
     },
     {
       "path": "printouts/rl-asteroids/es/C1/test-all.pdf",
       "bytes": 199887,
-      "sha256": "e91218fe2bb02462954ab51a276dc4e232785b0b1c52cc6cc64c587cfcd94f09"
+      "sha256": "964c810e817e1793d69480fafb506ced4343b7222ff91c4aa99aaf979e0d83b0"
     },
     {
       "path": "printouts/rl-asteroids/es/C2/practice-text.pdf",
       "bytes": 103747,
-      "sha256": "c3685481f45674a2a9d3efa2d59c03abd37793cc476638063c689b7cd44c7922"
+      "sha256": "89f18836d383505cfee575a53ce6c5c6cac749129b34887c74c80e701a14a822"
     },
     {
       "path": "printouts/rl-asteroids/es/C2/practice-all.pdf",
       "bytes": 202797,
-      "sha256": "e8b72e78884b8b7732fc09f2161782c52f94dd0c0adf2077764bb3e802a2644e"
+      "sha256": "e7de5495f898dc7dad12a2421d92f8175912c6ed47de81165c9a8bb57a50ce77"
     },
     {
       "path": "printouts/rl-asteroids/es/C2/test-text.pdf",
       "bytes": 105423,
-      "sha256": "0e1b086955ea68a08fc7a8f63e0be5e2e558f1ea49e4f1b7570d7337b7baa1b3"
+      "sha256": "3c33190c734b852cb7f77c509326ae94477e023ddadedf92939f0c5565fb0bd1"
     },
     {
       "path": "printouts/rl-asteroids/es/C2/test-all.pdf",
       "bytes": 201284,
-      "sha256": "dbc4491abee187c90003c635535a6925d0f9944635a3c3d63d2324739a0bdeaa"
+      "sha256": "5e9cbfc46b847c723be5f86a9794ccac22454e0cb7c1942eb80a07b6ff4ac314"
     },
     {
       "path": "printouts/rl-asteroids/de/A1/practice-text.pdf",
       "bytes": 96776,
-      "sha256": "4903f48461cd97925776662d2389ec7911b2293ebfaaa11c4ee775b2c7ec31db"
+      "sha256": "3cb78541c233177f971d67daee6f92d8a63e917bd653605f88eca3984e3b3077"
     },
     {
       "path": "printouts/rl-asteroids/de/A1/practice-all.pdf",
       "bytes": 157168,
-      "sha256": "cebe1715af5219ef499fbb17fca15d315a02bb5f21281a93016c9c003553ee25"
+      "sha256": "b7fd9dd15003a3050a102ef7aa27b6313a4b0246691cf0af4905a88ae4621749"
     },
     {
       "path": "printouts/rl-asteroids/de/A1/test-text.pdf",
       "bytes": 97202,
-      "sha256": "e608459c40f4b58c02c81fe5d54ef06f6b778c3d4d8c58b6dbbd59e0d78ec38c"
+      "sha256": "8beec3a34d875e0c1b71f5ae798f56d6149e7f73d7a83da4cbfb4239cb75370e"
     },
     {
       "path": "printouts/rl-asteroids/de/A1/test-all.pdf",
       "bytes": 156108,
-      "sha256": "9c488fcbb05c35e4b396e43e5f355c3668c43c09fafe7a15950371360633da0d"
+      "sha256": "cb0fc2a661dd99d7d5ae16f520b83d563d84614bfa220c4dc23d03a9775b527d"
     },
     {
       "path": "printouts/rl-asteroids/de/A2/practice-text.pdf",
       "bytes": 98829,
-      "sha256": "bf71bd9d45e4e5eec76b4831002952ac0cc46882da4cd3bcb6aae21d980197f6"
+      "sha256": "8da4c1cfe9943687714e3dd7c858ac84e4b0ca4377322ce75960e6bcbbbcf784"
     },
     {
       "path": "printouts/rl-asteroids/de/A2/practice-all.pdf",
       "bytes": 160351,
-      "sha256": "4090b688c3e962fe0e92e7d2a9304a7e33e93a3ed9a89d1edfc0cf4a1c03b83c"
+      "sha256": "5a9a3007b3b28518c056974ad383224772a1d7297ddf6dbab4fa71d11efd89ab"
     },
     {
       "path": "printouts/rl-asteroids/de/A2/test-text.pdf",
       "bytes": 99267,
-      "sha256": "7274c04c67515457c2978ff7aa4dc7074d2b0ca767077e575b33c0e8329ddd14"
+      "sha256": "6df9304f6b5fe1fa61f52b1389a17a9781c71f191be9101c4df703ddc20b7411"
     },
     {
       "path": "printouts/rl-asteroids/de/A2/test-all.pdf",
       "bytes": 159345,
-      "sha256": "1895d1d55c7253a27b5f9317654b813591b03eef1e3233ac06161a170e201881"
+      "sha256": "ced6fa6ba4a00bd37b7072b1a323587bcc9178f4fd91f047179e7b23a1fd4862"
     },
     {
       "path": "printouts/rl-asteroids/de/B1/practice-text.pdf",
       "bytes": 102053,
-      "sha256": "9f401540c7209b19f645390bc99653f08fd38b5e549efdd731d0866910df57e5"
+      "sha256": "a3d7f0f995c4ec7967bca8772f2f0695cfe4ecc5413c9aa4f6ceaaeaff59a96b"
     },
     {
       "path": "printouts/rl-asteroids/de/B1/practice-all.pdf",
       "bytes": 170085,
-      "sha256": "9e39b838c4fbe205a96685d18ddd0223af09126f9fe2d512898ca4edded19621"
+      "sha256": "615fa05a1f2173c7fae2b0adc20d36616f7e180a842100420ade845d1cc66472"
     },
     {
       "path": "printouts/rl-asteroids/de/B1/test-text.pdf",
       "bytes": 104392,
-      "sha256": "e35eb9b1279d1cabe2f50988284b61798b49f3eda11c7725f119d2205c7c9ac9"
+      "sha256": "36ed9fbc8b275d8e0d613e7b2203d0aa5882d13597d3cb59462ed5b536118417"
     },
     {
       "path": "printouts/rl-asteroids/de/B1/test-all.pdf",
       "bytes": 168972,
-      "sha256": "2797e4fe2cc7e1d86de4e1cf19fa1920add03740876be847b630201424757361"
+      "sha256": "63bd02582a8abe404be0d7cf2d1b8c6d809bcfef564970dd0a02b36e931aa739"
     },
     {
       "path": "printouts/rl-asteroids/de/B2/practice-text.pdf",
       "bytes": 103334,
-      "sha256": "605f917ea9cbaef79e8fa919ad182d2b809d5feea4d4df53c9d3325dc6a74722"
+      "sha256": "e9154d1217136e9a1dda574eb71d90ed508ef40a155f7de35bb2998776b3e150"
     },
     {
       "path": "printouts/rl-asteroids/de/B2/practice-all.pdf",
       "bytes": 195112,
-      "sha256": "46c996da0f7c2336a6a52a237d9e26b96835f253246e2b1019f2538dbfbad1df"
+      "sha256": "669583605433880b8f57782e71f5ee0f02a70e994305f8c823fb8ed573114321"
     },
     {
       "path": "printouts/rl-asteroids/de/B2/test-text.pdf",
       "bytes": 105807,
-      "sha256": "7cb060388a29868ccd2030471aecb89d944aaf15311bb316e69e504e5b05c404"
+      "sha256": "a7250d0dd475fec3a3c129b0427d1e64e7d46b66fd3fc9725cbdd5056e03553f"
     },
     {
       "path": "printouts/rl-asteroids/de/B2/test-all.pdf",
       "bytes": 193702,
-      "sha256": "b7982cb98dc23a3c3a62e567f7334d598a1cd684bd5bb637af33838a92ef6d78"
+      "sha256": "59bd4e5d7dbe23a9f381ed5237166c6d7002ef944038c09b30c5b81bec0cb281"
     },
     {
       "path": "printouts/rl-asteroids/de/C1/practice-text.pdf",
       "bytes": 104684,
-      "sha256": "53a9a8ca46716cdcaf6127d27c16a0553a761a35fdee40f52713e1b588f4dca5"
+      "sha256": "7688dd6a33acd34573f4b8a642203ff5ba9d1485c9751fdf0b74b3a3e2383e54"
     },
     {
       "path": "printouts/rl-asteroids/de/C1/practice-all.pdf",
       "bytes": 204432,
-      "sha256": "c25710f8dbb62026f82a5f8c0b2bcda7c787346399e2fe43ff805af8d626323c"
+      "sha256": "654fbbc79b11359d4301f27b1d274b61af2d7e84946a08abcbc259e3089956f9"
     },
     {
       "path": "printouts/rl-asteroids/de/C1/test-text.pdf",
       "bytes": 106983,
-      "sha256": "3e1959c21d9911eaf1e05a07055e26c02ea05b158f549dd566be9a01948f83da"
+      "sha256": "70695446db9c86e1ed9357f02536c72a4221515bdd79abbb3f3678ad6c33a520"
     },
     {
       "path": "printouts/rl-asteroids/de/C1/test-all.pdf",
       "bytes": 202814,
-      "sha256": "f2f1713be68533bb633ef269b0d7aa471cf42aa68b00f819aeefe69ff8c1681e"
+      "sha256": "dc0bb76bd4fe4df4d5881ae16e7ef1e327f2919115bd39514f3598fa3c88f515"
     },
     {
       "path": "printouts/rl-asteroids/de/C2/practice-text.pdf",
       "bytes": 107329,
-      "sha256": "edc5251112b5352a6bbddefc8daf3ea64f6cd4c50bcbf281f36057a1729d9f63"
+      "sha256": "9535a7b0f6469a1118664f1b5cec1c0f235b1a2c185cadfe240e03e6fb221ee1"
     },
     {
       "path": "printouts/rl-asteroids/de/C2/practice-all.pdf",
       "bytes": 210295,
-      "sha256": "4b9ca670f9a4cd1f597223613fbca53dbffaa286c07958996893610497b901eb"
+      "sha256": "ccb45ff6501c6b1a840bf1c42604a3bccafa76b84b05ce93038efaf042109aae"
     },
     {
       "path": "printouts/rl-asteroids/de/C2/test-text.pdf",
       "bytes": 109291,
-      "sha256": "f9ed4cdb8e497e525b3b2e38683a9c65044a5d80d90127b9c5fcef159449f992"
+      "sha256": "bdbd7ae908e7cb9879bfdce60b95bce2cefec1becf47ef4e6170a5766edabe30"
     },
     {
       "path": "printouts/rl-asteroids/de/C2/test-all.pdf",
       "bytes": 208940,
-      "sha256": "e0abc9963d7ee1b6f6b9a2cc28330027562cfa85e97860f59b8ac4e7782ddfed"
+      "sha256": "e119e74a9b5dc9095040ce1cf2a930964ce0cd0d32a312bdcd0ccaa97fa7f662"
     },
     {
       "path": "printouts/rl-asteroids/fr/A1/practice-text.pdf",
       "bytes": 98433,
-      "sha256": "316793326f3a44cc23383052d161f24f09a7adbebe866fd1c406ca3b91af8884"
+      "sha256": "d1f63c01530c72c7577a1688e68e01ef0a910cf8011af5dca17fc53e8e114c14"
     },
     {
       "path": "printouts/rl-asteroids/fr/A1/practice-all.pdf",
       "bytes": 156927,
-      "sha256": "f09090549f9c8b1b7d38f2f640a017ef6cec6bd8863029ba0def30f9132bfe52"
+      "sha256": "5d128ee0cf2a2de4f39ba1f78bd1e90c1c52a962d0dacabad6ca524a243f71c2"
     },
     {
       "path": "printouts/rl-asteroids/fr/A1/test-text.pdf",
       "bytes": 98447,
-      "sha256": "32320375c3e1ddef6ec6e2b4adc6659a65f94c782712f2db75c468bfdd812ffc"
+      "sha256": "ad427e92b88b0af7d455951eb6c8c3d4f3fbbb0386d1fc65da4c3145a1fdda93"
     },
     {
       "path": "printouts/rl-asteroids/fr/A1/test-all.pdf",
       "bytes": 155503,
-      "sha256": "000502ebb3f4fc2065864147d7548c58dfa9c4e4bf058f25360dfec1f56db7ae"
+      "sha256": "97be4046d01951f77ac159269a41c672a9bedd83487336bf55f3e9226c5d7290"
     },
     {
       "path": "printouts/rl-asteroids/fr/A2/practice-text.pdf",
       "bytes": 99003,
-      "sha256": "2f5145c4a78b3687e85f64dfccc9712c14e27279ef3089af5ac8c4fcc433e673"
+      "sha256": "201450f4e62cf90307d0ad87466a9d2837913b30616d193565e8cf88e6829058"
     },
     {
       "path": "printouts/rl-asteroids/fr/A2/practice-all.pdf",
       "bytes": 158491,
-      "sha256": "1bd38fc780f40d657323eaf363670703c35d719d57c5acc2e1b59ed2627539d1"
+      "sha256": "3703ced7150bc2b9f97e44335df5a1b587ff5534ee62c3ee36115e038a87eefb"
     },
     {
       "path": "printouts/rl-asteroids/fr/A2/test-text.pdf",
       "bytes": 99007,
-      "sha256": "0a58e517b46db83da73621edbb85d81b78bf6ffc0dab41872e7988864b042420"
+      "sha256": "ecc720454f4c45d8531c30d2be09d594081a1264ac18e8d494038f4369c1c962"
     },
     {
       "path": "printouts/rl-asteroids/fr/A2/test-all.pdf",
       "bytes": 156934,
-      "sha256": "e3f45e84e5c2acfbdedc7704c10d970ec5f7fef822c9e922ae2f768d452c5317"
+      "sha256": "831bfa28e2fe42f7adba4b5031e317c568e87768c5a2eddc2ee1c0205eaf45e2"
     },
     {
       "path": "printouts/rl-asteroids/fr/B1/practice-text.pdf",
       "bytes": 100988,
-      "sha256": "42c3cb78fee0ecc552544d9a4068b36dddaced139d31a27984f882f330861298"
+      "sha256": "b5ed3a70a68705d2ae4e1d8a8bc43a66afdc6c3904036149afe7caf70f9c0a18"
     },
     {
       "path": "printouts/rl-asteroids/fr/B1/practice-all.pdf",
       "bytes": 166843,
-      "sha256": "4510596cf05cb63e1168bf64a762eafc9d677a2776f9b523d88851ddef1fece6"
+      "sha256": "9519b3658121e42756d61d1c22cfcfefdfdabb5dea33e1c4945388828163d05b"
     },
     {
       "path": "printouts/rl-asteroids/fr/B1/test-text.pdf",
       "bytes": 102747,
-      "sha256": "20fb3fad5584ba7ee407160f493323ac123b350ed121d3617711104b7ff62ab3"
+      "sha256": "32e81379c84c2dd2e9f6f5d2ad6f47ceeed73924c17395f9cd8fb9bd9f65427b"
     },
     {
       "path": "printouts/rl-asteroids/fr/B1/test-all.pdf",
       "bytes": 164733,
-      "sha256": "e8fa33dc09b0890e94303f6aaf34cda480b4a4205e6d29254d4988268a794738"
+      "sha256": "42add019c0ffee2fdb3dac6631139b5ba484aefc9f492a57878c5b942a77d302"
     },
     {
       "path": "printouts/rl-asteroids/fr/B2/practice-text.pdf",
       "bytes": 103031,
-      "sha256": "f523385ee98a8506b8a906aa63c1513c1231a476d1537b93cfa04c1a0e7de20b"
+      "sha256": "9334054b3a264d535c5e17b4883b2165cb85300a4e41805afe841bbaf8223108"
     },
     {
       "path": "printouts/rl-asteroids/fr/B2/practice-all.pdf",
       "bytes": 189502,
-      "sha256": "583e5f2162a63fcbd904d5cee0daffa9b6dc9fab43365db1472c6bfc2cae73a1"
+      "sha256": "4286c7b6b87e1eb241718adb61ebfb03cb12ab14f237425de3ff6c0700f311bd"
     },
     {
       "path": "printouts/rl-asteroids/fr/B2/test-text.pdf",
       "bytes": 104844,
-      "sha256": "e008229bd8d0e76f61fd1a3a7a1d71bc95922f143b07350fadc203e6c0630ee5"
+      "sha256": "cb8430609a7105df26229a9edf530f7e91e361bd7b60133b9f7b388dfe01b73b"
     },
     {
       "path": "printouts/rl-asteroids/fr/B2/test-all.pdf",
       "bytes": 187851,
-      "sha256": "69cca292536158521e19f0fae791f80ae629bc3603625f4345c104dee1fb1c5e"
+      "sha256": "d3c0b7f6ac0378c1c992102656d074f9b39a19436cb64d454b0081ab7840c6bc"
     },
     {
       "path": "printouts/rl-asteroids/fr/C1/practice-text.pdf",
       "bytes": 103734,
-      "sha256": "726ee3f553a3da8b467e5e50f2eca8ee35ce9947866f1eb4c380625f9920fcbc"
+      "sha256": "5af0d59d990dcc475fdae3a2d2a32099e9d99a28fd47e2e3de4c0703037bb305"
     },
     {
       "path": "printouts/rl-asteroids/fr/C1/practice-all.pdf",
       "bytes": 200347,
-      "sha256": "e9b159ceee458b037dfe8b77a7625ea482365298ba5783d6e1c8c57c75c66175"
+      "sha256": "89f68169b819b7dd3f27b679c6b8205be3be073a539e305c999cf02793c537e4"
     },
     {
       "path": "printouts/rl-asteroids/fr/C1/test-text.pdf",
       "bytes": 105557,
-      "sha256": "5c9d55561d8297609773986d414cd72e1720a48a18696633857edde33a1b22ae"
+      "sha256": "40fa238fff96aec2f1dc456471c9e9b6da388ac31b22a3bf5ae00a08c34676e1"
     },
     {
       "path": "printouts/rl-asteroids/fr/C1/test-all.pdf",
       "bytes": 198371,
-      "sha256": "1d2aaa13c75856fb653537e2faf3ca1a2c49525517f381f87ff13d39a29c83cd"
+      "sha256": "b29baa49f6f29954ccd293e9e91e1c6024f8fd7fc88da413b8f39fe4eb1e7f7c"
     },
     {
       "path": "printouts/rl-asteroids/fr/C2/practice-text.pdf",
       "bytes": 105392,
-      "sha256": "f7a5dbb01e7479b92c1165e49f23d9a1c7c27ba1b0aa74eb97e0e75eecdb9c90"
+      "sha256": "f00eaa2421b95048c7d374f8b6b5039b3091a085925fa11b08cc9816f5747baa"
     },
     {
       "path": "printouts/rl-asteroids/fr/C2/practice-all.pdf",
       "bytes": 202792,
-      "sha256": "fa2a0bda5a9a459cb75d81eb827c8bdfef577383b556c7fbdbe58880986c2ecc"
+      "sha256": "b61d551299ce7570ef923a699639144f884cf60ff1193e832b797a338ef83666"
     },
     {
       "path": "printouts/rl-asteroids/fr/C2/test-text.pdf",
       "bytes": 106764,
-      "sha256": "aceab829ef6038d0ebabd7b76587bdeb285dd0e9b9684f28fc60e96bc4b17669"
+      "sha256": "74530fee67cd575a5cc413d0dc0338caae2af0ebfd91c121ad593ab8fa19a3ef"
     },
     {
       "path": "printouts/rl-asteroids/fr/C2/test-all.pdf",
       "bytes": 200953,
-      "sha256": "d50c7df31e659793f3f087770405f9bffab1dd79a328737a44154a3ce47be0dd"
+      "sha256": "d52ee4b4829dc0d67a674411e304261f733b2ad98a00f80d3a5bedcc8e105e22"
     }
   ]
 }
