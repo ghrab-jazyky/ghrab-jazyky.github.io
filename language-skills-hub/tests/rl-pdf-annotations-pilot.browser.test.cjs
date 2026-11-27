@@ -907,3 +907,178 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
   }finally{await browser.close()}
  });
 }
+
+
+// F4 adversarial scenarios. All gestures are explicit; synthetic event-order
+// tests intentionally exercise races that cannot reliably be timed by a mouse.
+for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+ test('F4 '+name+': stale confirmation cannot apply a changed or cross-anchor range; genuine collapse still works',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   await f1Open(page);
+   await page.locator('[data-anno-color="yellow"]').click();
+   const apply=page.locator('[data-anno-apply-selection]');
+   for(const cross of [false,true]){
+    await f2SetSelection(page,f1Para,0,4,'touch');await apply.waitFor({state:'visible'});
+    await apply.evaluate(el=>el.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true,pointerType:'touch',button:0,isPrimary:true})));
+    if(cross){
+     await page.evaluate(()=>{
+      const a=document.querySelector('#readingBody p'),b=a.nextElementSibling;
+      const range=document.createRange();range.setStart(a.firstChild,0);range.setEnd(b.firstChild,4);
+      getSelection().removeAllRanges();getSelection().addRange(range);document.dispatchEvent(new Event('selectionchange'));
+     });
+    }else await f1Select(page,f1Para,5,9);
+    await apply.evaluate(el=>el.click());
+    assert.deepEqual(await f1Records(page),[],'An obsolete confirmation must not apply either range');
+   }
+   const expected=await f2SetSelection(page,f1Para,0,4,'touch');
+   await apply.waitFor({state:'visible'});
+   await apply.evaluate(el=>{
+    el.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true,pointerType:'touch',button:0,isPrimary:true}));
+    getSelection().removeAllRanges();document.dispatchEvent(new Event('selectionchange'));el.click();
+   });
+   const saved=await f1Records(page);assert.equal(saved.length,1);assert.equal(saved[0].text,expected);
+   await f1Select(page,f1Para,5,9);
+   const radio=page.locator('#questions input[type="radio"]').first();
+   await radio.evaluate(el=>el.dispatchEvent(new PointerEvent('pointerup',{bubbles:true,pointerType:'mouse',button:0,isPrimary:true})));
+   await page.evaluate(()=>new Promise(resolve=>setTimeout(resolve,30)));
+   assert.deepEqual(await f1Records(page),saved,'Answer-widget pointerup is not a reading selection gesture');
+  }finally{await browser.close()}
+ });
+ test('F4 '+name+': edited row survives self-delete and obsolete clear confirmation never removes newer annotations',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   await f1Open(page);await f1Note(page,f1Para,0,4,'Original');
+   const initial=await f1Records(page);
+   const row=page.locator('.lsh-annotation-item').first();
+   await row.getByRole('button',{name:'Upravit anotaci 1'}).click();
+   await page.locator('[data-anno-note]').fill('Unsaved draft');
+   await row.getByRole('button',{name:'Smazat anotaci 1'}).click();
+   assert.deepEqual(await f1Records(page),initial);
+   assert.equal(await page.locator('[data-anno-note]').inputValue(),'Unsaved draft');
+   assert.ok(await page.locator('[data-anno-note-box]').isVisible());
+   await page.locator('[data-anno-save-note]').click();
+   assert.equal((await f1Records(page))[0].note,'Unsaved draft');
+   const clear=page.locator('[data-anno-clear-all]'),confirm=page.locator('[data-anno-clear-confirm-action]'),box=page.locator('[data-anno-clear-confirm]');
+   await clear.click();await box.waitFor({state:'visible'});
+   await f1Select(page,f1Para,5,9);await page.locator('[data-anno-color="green"]').click();
+   const updated=await f1Records(page);assert.equal(updated.length,2);
+   assert.notEqual(await box.getAttribute('hidden'),null);
+   await confirm.evaluate(el=>el.click());assert.deepEqual(await f1Records(page),updated);
+   await clear.click();await page.locator('[data-anno-library] summary').click();
+   await page.waitForFunction(()=>document.querySelector('[data-anno-clear-confirm]').hidden);
+   await confirm.evaluate(el=>el.click());assert.deepEqual(await f1Records(page),updated);
+   await page.locator('[data-anno-library] summary').click();
+   await clear.click();await page.keyboard.press('Escape');
+   assert.notEqual(await box.getAttribute('hidden'),null);
+   await confirm.evaluate(el=>el.click());assert.deepEqual(await f1Records(page),updated);
+  }finally{await browser.close()}
+ });
+ test('F4 '+name+': 80-record limit rejects new draft but permits existing edit; corrupt practice storage fails closed',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   await page.goto(f1URL+'?lang=en&level=B2');await page.locator(f1Para).waitFor();
+   const quote=(await page.locator(f1Para).textContent()).slice(0,4);
+   const records=Array.from({length:80},(_,i)=>({id:'f4-'+i,anchor:'p:0',start:0,end:4,text:quote,kind:'note',color:'yellow',note:'Note '+i}));
+   await page.evaluate(({key,records})=>localStorage.setItem(key,JSON.stringify(records)),{key:f1Key,records});
+   await f1Open(page);
+   await f1Select(page,f1Para,5,9);await page.locator('[data-anno-start-note]').click();
+   assert.equal(await page.locator('[data-anno-note-box]').isVisible(),false);
+   assert.match(await page.locator('[data-anno-status]').textContent(),/Limit 80/);
+   assert.deepEqual(await f1Records(page),records);
+   await page.locator('.lsh-annotation-item').first().getByRole('button',{name:'Upravit anotaci 1'}).click();
+   await page.locator('[data-anno-note]').fill('Allowed at limit');await page.locator('[data-anno-save-note]').click();
+   assert.equal((await f1Records(page))[0].note,'Allowed at limit');assert.equal((await f1Records(page)).length,80);
+   const corrupt=JSON.stringify([records[0],{...records[1],end:99}]);
+   await page.evaluate(({key,corrupt})=>localStorage.setItem(key,corrupt),{key:f1Key,corrupt});
+   await f1Open(page);
+   const warning=page.locator('[data-anno-storage-warning]');
+   assert.ok(await warning.isVisible());assert.match(await warning.textContent(),/nelze bezpečně načíst/);
+   await f1Select(page,f1Para,0,4);await page.locator('[data-anno-color="yellow"]').click();
+   assert.equal(await page.locator('.lsh-annotation-item').count(),0);
+   assert.equal(await page.evaluate(key=>localStorage.getItem(key),f1Key),corrupt);
+   assert.ok(await warning.isVisible(),'Transient messages do not erase the storage warning');
+  }finally{await browser.close()}
+ });
+ test('F4 '+name+': untimed self-check blocks stale-tab overwrite, corrupted snapshot and gap placeholder',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const context=await browser.newContext({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   const a=await context.newPage(),b=await context.newPage();
+   const url=base+'index.html?topic=rl-asteroids&lang=en&level=B2';
+   const key='lsh-reading-annotations-v1:rl-asteroids:en:B2';
+   const para='#readingParagraphs p:not(:has(.gap-marker))';
+   async function open(page){
+    await page.goto(url);await page.locator('#workspace:not([hidden])').waitFor();
+    await page.locator('#readingAnnotationToggle').click();
+    await page.locator('[data-anno-controls]:visible').waitFor();
+   }
+   await a.bringToFront();await open(a);
+   await b.bringToFront();await open(b);
+   await a.bringToFront();await f1Note(a,para,0,4,'Author A');
+   const saved=await f1Records(a,key);assert.equal(saved.length,1);
+   await b.bringToFront();await f1Select(b,para,0,4);await b.locator('[data-anno-color="yellow"]').click();
+   assert.deepEqual(await f1Records(a,key),saved);
+   assert.equal(await b.locator('.lsh-annotation-item').count(),0);
+   assert.match(await b.locator('[data-anno-status]').textContent(),/jiné záložce/);
+   await open(b);
+   assert.equal(await b.locator('.lsh-annotation-item').count(),1);
+   await b.evaluate(()=>{
+    const marker=document.querySelector('#readingParagraphs .gap-marker');
+    if(!marker)throw Error('Expected concealed reading gap');
+    const range=document.createRange();range.selectNodeContents(marker);
+    getSelection().removeAllRanges();getSelection().addRange(range);document.dispatchEvent(new Event('selectionchange'));
+   });
+   await b.locator('[data-anno-color="green"]').click();
+   assert.deepEqual(await f1Records(b,key),saved,'Gap placeholder must not be annotated');
+   const raw='[{"anchor":"broken"}]';
+   await b.evaluate(({key,raw})=>localStorage.setItem(key,raw),{key,raw});
+   await open(b);assert.ok(await b.locator('[data-anno-storage-warning]').isVisible());
+   await f1Select(b,para,0,4);await b.locator('[data-anno-color="green"]').click();
+   assert.equal(await b.evaluate(key=>localStorage.getItem(key),key),raw);
+   assert.equal(await b.locator('.lsh-annotation-item').count(),0);
+  }finally{await browser.close()}
+ });
+ test('F4 '+name+': timed quota failure rolls back annotation UI and editable attempt memory',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   // Test-only instrumentation of the existing mount/status API, not the guard.
+   await page.addInitScript(()=>{
+    let wrapped;
+    Object.defineProperty(window,'LSHSessionUI',{configurable:true,get:()=>wrapped,set:api=>{
+     wrapped={...api,mount:cfg=>{const session=api.mount(cfg);window.f4AttemptStatus=()=>session.status();return session;}};
+    }});
+   });
+   await page.goto(base+'index.html?topic=rl-asteroids&lang=en&level=B2&timer=5&attempt=f4annotationquota123');
+   await page.locator('#sessionStart').click();await page.locator('#workspace:not([hidden])').waitFor();
+   await page.locator('#readingAnnotationToggle').click();
+   const para='#readingParagraphs p:not(:has(.gap-marker))';
+   await f1Note(page,para,0,4,'Durable note');
+   const initial=await page.evaluate(()=>window.f4AttemptStatus());
+   assert.equal(initial.answers.annotations.length,1);assert.equal(initial.persistent,true);
+   await page.evaluate(()=>{
+    const original=Storage.prototype.setItem;
+    window.f4RejectedWrites=0;
+    Storage.prototype.setItem=function(k,v){
+     let parsed;try{parsed=JSON.parse(v)}catch(_){}
+     if(Array.isArray(parsed?.answers?.annotations)&&parsed.answers.annotations.length>1){
+      window.f4RejectedWrites++;throw Error('F4 annotation quota failure');
+     }
+     return original.call(this,k,v);
+    };
+   });
+   await f1Select(page,para,5,9);await page.locator('[data-anno-color="green"]').click();
+   assert.equal(await page.locator('.lsh-annotation-item').count(),1);
+   assert.match(await page.locator('[data-anno-status]').textContent(),/nelze trvale uložit/);
+   const after=await page.evaluate(()=>({status:window.f4AttemptStatus(),failures:window.f4RejectedWrites}));
+   assert.equal(after.failures,1);assert.equal(after.status.persistent,false);
+   assert.deepEqual(after.status.answers.annotations,initial.answers.annotations,'Failed volatile save must not remain in attempt memory');
+   assert.deepEqual(after.status.answers.answers,initial.answers.answers);
+   assert.equal(after.status.phase,'running');assert.equal(await page.locator('#sessionLock').isVisible(),false);
+  }finally{await browser.close()}
+ });
+}
