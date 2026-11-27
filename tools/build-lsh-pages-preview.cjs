@@ -48,7 +48,20 @@ assert.equal(cards.entries.length,35);
 assert.equal(Object.keys(manifest.contentHashes).length,35);
 const asteroids=src+'cteni/asteroids/index.html',ast=read(asteroids);
 const astBlob=crypto.createHash('sha1').update('blob '+ast.length+'\0').update(ast).digest('hex');
-assert.equal(astBlob,'d0ddfe9aae769eff948ee7cf52092139678b64d3','R12 approved bytes changed; re-audit, do not bless a different card');
+// F3 reviewed content candidate; owner approval for the final main SHA remains mandatory.
+assert.equal(astBlob,'bc02c45a471db70a186088015a095318bb72b191','Smart Feedback candidate card bytes changed; re-audit before publication');
+assert.equal(sha(ast),'3661b936059d812991fd1ee0b6662d9e817ae74ddd643a81807eaca4c7106bf8','Smart Feedback candidate SHA256 mismatch');
+const sfMarker='<script type="application/json" id="lsh-smart-feedback-asteroids-v1">';
+const astText=ast.toString('utf8');
+assert.equal(astText.split(sfMarker).length,2,'Exactly one Smart Feedback block required');
+const sfStart=astText.indexOf(sfMarker),sfEnd=astText.indexOf('</script>\n',sfStart);
+assert.ok(sfEnd>sfStart,'Unterminated Smart Feedback block');
+const baselineAst=Buffer.from(astText.slice(0,sfStart)+astText.slice(sfEnd+'</script>\n'.length),'utf8');
+assert.equal(sha(baselineAst),'59167c05eb80b492300b368fc0a1f45f19c1af6631d4a19c560dae98e0d45bac','R12 approved original source changed outside the additive bank');
+assert.equal(crypto.createHash('sha1').update('blob '+baselineAst.length+'\0').update(baselineAst).digest('hex'),'d0ddfe9aae769eff948ee7cf52092139678b64d3','R12 baseline blob mismatch');
+const readingCore=require('../language-skills-hub/self-check/reading/reading-core.js');
+const sfBank=readingCore.parseSmartFeedback(astText);
+assert.equal(Object.keys(sfBank.variants).length,24,'Incomplete Smart Feedback bank');
 const cardChecks=cards.entries.map(c=>{
  const p=src+c.relative;assert.ok(allowed(p),'Catalog entry outside allowlist '+c.id);
  const actual=sha(read(p));assert.equal(actual,manifest.contentHashes[c.id],c.id+' SHA256');
@@ -76,7 +89,7 @@ assert.ok(!fs.existsSync(path.join(output,src+'docs')));
 for(const f of ['index.html','404.html',src+'index.html',src+'manifest.webmanifest',src+'sw.js','zkusebni/index.html'])assert.ok(fs.existsSync(path.join(output,f)),f);
 fs.writeFileSync(path.join(output,'.nojekyll'),'');
 const report={schema:'lsh-pages-allowlist-v1',sha:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),
- asteroids:{approvedCommit:'88b8a7c212faef3178ecc44539477c2f2d757f2b',gitBlob:astBlob,sha256:sha(ast)},cardChecks,pdfs:pdfManifest.files.length,
+ asteroids:{sourceCommit:'5809a6c3f35bbedde852295f1c6508888ed37f0c',baselineApprovedCommit:'88b8a7c212faef3178ecc44539477c2f2d757f2b',baselineGitBlob:'d0ddfe9aae769eff948ee7cf52092139678b64d3',gitBlob:astBlob,sha256:sha(ast)},cardChecks,pdfs:pdfManifest.files.length,
  included:include.length,excluded:exclude.length,excludedPaths:exclude,files:include.map(p=>({path:p,sha256:sha(read(p))}))};
 fs.mkdirSync(evidence,{recursive:true});fs.writeFileSync(path.join(evidence,'publication-manifest.json'),JSON.stringify(report,null,2)+'\n');
 console.log('PASS 35/35 card hashes, '+report.pdfs+'/96 PDF hashes, '+include.length+' allowlisted files, '+exclude.length+' excluded source files.');

@@ -190,6 +190,12 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
      assert.equal(normalizeCopy(await page.evaluate(()=>window.__sfCopy)),archive,tag);
      const pending=page.waitForEvent('download',{timeout:30000});await page.locator('#exportResult').click();const dl=await pending,buf=fs.readFileSync(await dl.path()).toString('utf8');
      for(const q of variant.questions)assert.ok(buf.includes(q.id),tag+' CSV '+q.id);
+     const pdfPending=page.waitForEvent('download',{timeout:30000});await page.locator('#exportPdf').click();
+     const pdf=fs.readFileSync(await (await pdfPending).path()),body=pdf.toString('latin1');
+     assert.equal(pdf.subarray(0,8).toString('ascii'),'%PDF-1.4',tag);
+     assert.ok(pdf.length>10000&&/%%EOF/.test(body.slice(-160)),tag+' full PDF');
+     const pages=(body.match(/\/Type \/Page \/Parent/g)||[]).length,images=(body.match(/\/Subtype \/Image/g)||[]).length;
+     assert.ok(pages>=1&&pages===images,tag+' valid PDF pages');
      noNetwork(traffic);
     }finally{fs.writeFileSync(path.join(evidence,'matrix-'+tag+'-network.json'),JSON.stringify(traffic,null,2));await context.close();}
    }

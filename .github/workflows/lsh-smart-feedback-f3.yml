@@ -1,0 +1,137 @@
+name: LSH Asteroids Smart Feedback F3 (development only, NO DEPLOY)
+on:
+  push:
+    branches: ['feature/lsh-smart-feedback-asteroids-f2']
+    paths:
+      - '.github/workflows/lsh-smart-feedback-f3.yml'
+      - 'language-skills-hub/cteni/asteroids/index.html'
+      - 'language-skills-hub/self-check/reading/**'
+      - 'language-skills-hub/version.json'
+      - 'language-skills-hub/tests/**'
+      - 'language-skills-hub/docs/smart-feedback-asteroids-f3/**'
+      - 'tools/build-lsh-pages-preview.cjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: lsh-smart-feedback-f3-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  unit:
+    if: github.ref == 'refs/heads/feature/lsh-smart-feedback-asteroids-f2'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Exact source and manifest, regression and reviewed delta
+        run: |
+          mkdir -p sf-f3
+          git rev-parse HEAD | tee sf-f3/HEAD.txt
+          set -o pipefail
+          node --test language-skills-hub/tests/smart-feedback-asteroids-f1.test.cjs language-skills-hub/tests/smart-feedback-asteroids-f3.test.cjs language-skills-hub/tests/city-quest-d3-integrity.test.cjs language-skills-hub/tests/r27-public-release.test.cjs language-skills-hub/tests/r55-reading-real-catalog-sources.test.cjs language-skills-hub/tests/r29-feedback.test.cjs language-skills-hub/tests/r34-full-pdf-export.test.cjs language-skills-hub/tests/r48-errors-only-feedback.test.cjs language-skills-hub/tests/rl-pdf-all-variants.test.cjs language-skills-hub/tests/rl-pdf-annotations-pilot.test.cjs language-skills-hub/tests/rl-pdf-content-sha256.test.cjs language-skills-hub/tests/rl-pdf-asteroids-c1-didactic.test.cjs language-skills-hub/tests/r63-test-security.test.cjs language-skills-hub/tests/lsh-unlock-gestures.test.cjs | tee sf-f3/unit.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smart-feedback-f3-unit
+          path: sf-f3/
+  regression:
+    if: github.ref == 'refs/heads/feature/lsh-smart-feedback-asteroids-f2'
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Existing Reading, Listening, annotation, test security and print UI regressions
+        run: |
+          mkdir -p sf-f3
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/sf-http.log 2>&1 &
+          PID=$!
+          trap 'kill "$PID" || true' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch("http://127.0.0.1:8765/language-skills-hub/index.html").then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))'; then break; fi
+            sleep 1
+          done
+          set -o pipefail
+          node --test --test-concurrency=1 language-skills-hub/tests/r29-feedback.browser.test.cjs language-skills-hub/tests/r48-errors-only-feedback.browser.test.cjs language-skills-hub/tests/rl-pdf-annotations-pilot.browser.test.cjs language-skills-hub/tests/rl-pdf-hardening.browser.test.cjs language-skills-hub/tests/r62-test-screen-guard.browser.test.cjs language-skills-hub/tests/r63-test-security.browser.test.cjs | tee sf-f3/regression.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smart-feedback-f3-regression
+          path: sf-f3/
+  corpus:
+    if: github.ref == 'refs/heads/feature/lsh-smart-feedback-asteroids-f2'
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host
+    timeout-minutes: 35
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install original pinned renderer and PDF verification tools
+        run: |
+          apt-get update -qq
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends qpdf poppler-utils
+          npm install --no-save --ignore-scripts playwright@1.56.1 hyphen@1.14.1
+      - name: Rebuild all 96, compare every PDF against untouched production corpus
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = refs/heads/feature/lsh-smart-feedback-asteroids-f2
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          mkdir -p sf-f3
+          git rev-parse HEAD | tee sf-f3/HEAD.txt
+          git diff --exit-code fde581f864093a0b87d60afbc552e5c4e021e7e5 -- language-skills-hub/printouts/rl-asteroids
+          cp -a language-skills-hub/printouts/rl-asteroids /tmp/sf-old-pdfs
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/sf-pdf-http.log 2>&1 &
+          PID=$!
+          trap 'kill "$PID" || true' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'fetch("http://127.0.0.1:8765/language-skills-hub/self-check/reading/print-page.html").then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))'; then break; fi
+            sleep 1
+          done
+          node language-skills-hub/scripts/build-reading-print-pdfs.cjs --all | tee sf-f3/build.log
+          node language-skills-hub/scripts/verify-reading-print-assets.cjs --compare /tmp/sf-old-pdfs | tee sf-f3/corpus.log
+          cp language-skills-hub/printouts/rl-asteroids/manifest-all.json sf-f3/pdf-manifest.json
+        shell: bash
+      - name: Commit only the verified corpus, build allowlisted preview, push development branch only
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = refs/heads/feature/lsh-smart-feedback-asteroids-f2
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git ls-remote origin refs/heads/feature/lsh-smart-feedback-asteroids-f2 | cut -f1)" = "$GITHUB_SHA"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add language-skills-hub/printouts/rl-asteroids
+          git diff --cached --name-only > sf-f3/corpus-changes.txt
+          test -s sf-f3/corpus-changes.txt
+          if grep -qv '^language-skills-hub/printouts/rl-asteroids/' sf-f3/corpus-changes.txt; then exit 1; fi
+          git diff --exit-code
+          git commit -m "F3: regenerate verified 96 Asteroids PDF assets without content or layout drift"
+          node tools/build-lsh-pages-preview.cjs | tee sf-f3/publication-preview.log
+          cp release-preview/evidence/publication-manifest.json sf-f3/
+          git rev-parse HEAD | tee sf-f3/CORPUS_COMMIT.txt
+          git push origin HEAD:refs/heads/feature/lsh-smart-feedback-asteroids-f2
+        shell: bash
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smart-feedback-f3-corpus-and-preview
+          path: sf-f3/

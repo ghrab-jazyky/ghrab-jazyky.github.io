@@ -91,6 +91,12 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     }
     await page.locator('#submitButton').click();
     await page.locator('#results:not([hidden])').waitFor();
+    const smart=spec.topic==='rl-asteroids';
+    if(smart){
+     assert.equal(await page.locator('#resultDetails').getAttribute('data-sf-phase'),'SUMMARY');
+     assert.equal(await page.locator('#resultDetails article.review').count(),0);
+     await page.locator('#sfAccept').click();
+    }
     const cards=page.locator('#resultDetails article.review');
     assert.equal(await cards.count(),2,'Only wrong and unanswered Reading questions');
     assert.equal(await page.locator('#resultDetails .feedback-answer.submitted').count(),2);
@@ -101,8 +107,13 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
      questions[0].choices[questions[0].answer]);
     assert.equal((await cards.nth(1).locator('.feedback-answer.expected dd').textContent()).trim(),
      questions[1].choices[questions[1].answer]);
-    for(const c of [cards.nth(0),cards.nth(1)])
-     assert.ok((await c.locator('.feedback-explanation').textContent()).trim().length>15);
+    for(const c of [cards.nth(0),cards.nth(1)]){
+     if(smart){
+      assert.equal(await c.locator('.sf-evidence').count(),1);
+      assert.equal(await c.locator('.sf-tip').count(),1);
+      assert.ok((await c.locator('.sf-part').filter({hasText:'Proč je to správně'}).textContent()).trim().length>30);
+     }else assert.ok((await c.locator('.feedback-explanation').textContent()).trim().length>15);
+    }
     await checkLayout(page);
     const copy=await copiedReport(page);
     assert.equal((copy.match(/^Odpoved studenta:/gm)||[]).length,questions.length,
