@@ -379,7 +379,7 @@
  }
  function updateCapacityWarning(records,fit){
   const omitted=records.length-fit.annotations.length;
-  if(omitted>0)showCapacityWarning('Starší anotace přesahují kapacitu pokusu. Odpovědi a reflexe mají přednost. '+omitted+' anotací je nyní pouze v otevřené stránce a po obnovení mohou chybět. Zkraťte nebo smažte starší anotace.');
+  if(omitted>0)showCapacityWarning('Starší anotace přesahují kapacitu pokusu. Odpovědi a reflexe mají přednost. '+omitted+' anotací se při uložení nevejde do snímku a po obnovení stránky mohou chybět. V otevřené stránce zůstávají dostupné. Zkraťte nebo smažte starší anotace.');
   else if(JSON.stringify(records).length>timedBudget)showCapacityWarning('Starší anotace překračují nový rozpočet. Další anotace nelze přidávat, dokud jejich velikost nesnížíte. Při dosažení celkové kapacity mají přednost odpovědi a reflexe.');
   else showCapacityWarning('');
  }
@@ -510,7 +510,11 @@
      annotationAPI=engine.mount({
       host:$('readingAnnotationTools'),toggle:$('readingAnnotationToggle'),
       containers:[$('readingParagraphs'),$('questionList')],
-      canEdit:()=>!submitted&&(!timedUI||(()=>{const s=timedUI.status();return s.phase==='running'&&!s.expired;})()),
+      canEdit:()=>{
+       if(submitted)return false;
+       if(!timedUI)return true;
+       const s=timedUI.status();return s.phase==='running'&&!s.expired;
+      },
       onChange:(annotations,previous)=>{
        if(timedUI){
         timedAnnotationWrite=false;

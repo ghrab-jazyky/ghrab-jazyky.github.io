@@ -342,8 +342,12 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
     let node;while((node=walker.nextNode())&&node.textContent.length<end){}
     if(!node)throw new Error('Missing text node for sticky tool test');
     const r=document.createRange();r.setStart(node,start);r.setEnd(node,end);
+    // A real drag has a matching in-reader press. An orphan mouse release
+    // must no longer be sufficient to activate a sticky annotation tool.
+    para.dispatchEvent(new PointerEvent('pointerdown',{bubbles:true,pointerType:'mouse',pointerId:1,button:0,isPrimary:true}));
     getSelection().removeAllRanges();getSelection().addRange(r);
-    para.dispatchEvent(new PointerEvent('pointerup',{bubbles:true,pointerType:'mouse',button:0}));
+    document.dispatchEvent(new Event('selectionchange'));
+    para.dispatchEvent(new PointerEvent('pointerup',{bubbles:true,pointerType:'mouse',pointerId:1,button:0,isPrimary:true}));
    },{start,end});
    const yellow=page.locator('[data-anno-color="yellow"]');
    await yellow.click();
@@ -1306,6 +1310,54 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    await c.locator('[data-anno-color="blue"]').click();
    assert.match(await c.locator('[data-anno-status]').textContent(),/nejvýše 600 znaků/);
    assert.equal(await c.locator('.lsh-annotation-item').count(),0);
+  }finally{await browser.close()}
+ });
+}
+
+
+for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
+ test('F5.1 '+name+': legacy oversize attempt warns and keeps answers/reflection within the immutable ceiling',{timeout:90000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   const page=await browser.newPage({viewport:{width:1200,height:900},reducedMotion:'reduce'});
+   const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('dialog',d=>d.accept());
+   await page.addInitScript(f51ObserveAttempt);
+   await f51Open(page,'f51legacyabc123');
+   await f1Note(page,f51Para,0,4,'Original');
+   // Prepare a historical snapshot as a storage fixture, not a simulated
+   // student action. Reload must still require the existing teacher unlock.
+   const legacy=await page.evaluate(()=>{
+    const key=Object.keys(localStorage).find(k=>k.startsWith('lsh:local-attempt:r30:reading:')&&k.endsWith(':f51legacyabc123'));
+    if(!key)throw Error('Missing attempt fixture key');
+    const state=JSON.parse(localStorage.getItem(key));
+    const anchor=[...document.querySelectorAll('#readingParagraphs p:not(:has(.gap-marker))')].find(p=>p.textContent.length>=600);
+    const quote=anchor.textContent.slice(0,600);
+    const rows=Array.from({length:80},(_,i)=>({anchor:anchor.dataset.annotationAnchor,start:0,end:600,text:quote,kind:'note',color:'yellow',note:'"'.repeat(500),id:'legacy-f51-'+i+'x'.repeat(24)}));
+    state.answers={answers:{},reflection:'',annotations:rows};
+    const len=JSON.stringify(state.answers).length;
+    if(len>140000||len<130000)throw Error('Unexpected legacy fixture size '+len);
+    localStorage.setItem(key,JSON.stringify(state));return {key,rows,len};
+   });
+   await page.reload();await page.locator('#sessionLock').waitFor({state:'visible'});
+   assert.equal(await page.locator('.lsh-annotation-item').count(),80);
+   assert.match(await page.locator('#readingAnnotationCapacityWarning').textContent(),/starší anotace|Starší anotace/);
+   await f51Unlock(page);
+   await page.locator('#readingAnnotationToggle').click();
+   assert.equal(await page.locator('.lsh-annotation-item').count(),80);
+   // Maximal reflection must persist without silently failing the whole attempt.
+   await page.locator('#reflection').fill('"'.repeat(5000));
+   const state=await page.evaluate(()=>window.f51Attempt());
+   assert.equal(state.answers.reflection.length,5000);
+   assert.ok(JSON.stringify(state.answers).length<=140000);
+   assert.ok(state.answers.annotations.length<80);
+   assert.equal(await page.locator('.lsh-annotation-item').count(),80,'Historical notes remain in the open UI');
+   assert.match(await page.locator('#readingAnnotationCapacityWarning').textContent(),/po obnovení stránky mohou chybět/);
+   assert.deepEqual(state.answers.annotations,legacy.rows.slice(0,state.answers.annotations.length));
+   await page.locator('#submitButton').scrollIntoViewIfNeeded();await f51Unlock(page);
+   await page.locator('#submitButton').click();await page.locator('#results:not([hidden])').waitFor();
+   const finished=await page.evaluate(()=>window.f51Attempt());
+   assert.equal(finished.phase,'submitted');assert.deepEqual(finished.answers,state.answers);
+   assert.deepEqual(errors,[]);
   }finally{await browser.close()}
  });
 }
