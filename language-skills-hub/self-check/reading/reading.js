@@ -379,8 +379,10 @@
  }
  function updateCapacityWarning(records,fit){
   const omitted=records.length-fit.annotations.length;
-  if(omitted>0)showCapacityWarning('Starší anotace přesahují kapacitu pokusu. Odpovědi a reflexe mají přednost. '+omitted+' anotací se při uložení nevejde do snímku a po obnovení stránky mohou chybět. V otevřené stránce zůstávají dostupné. Zkraťte nebo smažte starší anotace.');
-  else if(JSON.stringify(records).length>timedBudget)showCapacityWarning('Starší anotace překračují nový rozpočet. Další anotace nelze přidávat, dokud jejich velikost nesnížíte. Při dosažení celkové kapacity mají přednost odpovědi a reflexe.');
+  if(omitted>0)showCapacityWarning('Starší anotace přesahují kapacitu pokusu. Odpovědi a reflexe mají přednost. '+omitted+' anotací se při uložení nevejde do snímku a po obnovení stránky mohou chybět.'+
+   (annotationAPI?' V otevřené stránce zůstávají dostupné. Kapacitu lze uvolnit postupným zkracováním nebo mazáním jednotlivých anotací.':' Tento prohlížeč neumožňuje anotace zobrazit ani upravit.'));
+  else if(JSON.stringify(records).length>timedBudget)showCapacityWarning('Starší anotace překračují nový rozpočet. Při dosažení celkové kapacity mají přednost odpovědi a reflexe.'+
+   (annotationAPI?' Další anotace nelze přidávat, dokud jejich velikost nesnížíte. Zkraťte nebo smažte jednotlivé anotace.':' Tento prohlížeč neumožňuje anotace zobrazit ani upravit.'));
   else showCapacityWarning('');
  }
  function timedAnswers(){
@@ -521,13 +523,17 @@
         const before=timedUI.status();
         if(!before.persistent||before.expired||before.phase!=='running')return false;
         const size=JSON.stringify(annotations).length,oldSize=JSON.stringify(previous||[]).length;
-        if((size>timedBudget&&size>=oldSize)||currentTimedSnapshot(annotations).annotations.length!==annotations.length)
+        const fit=currentTimedSnapshot(annotations);
+        const fits=fit.annotations.length===annotations.length;
+        // Historical oversized attempts can be reduced incrementally. Never
+        // grow their footprint above either the reserved or actual ceiling.
+        if(size>oldSize&&(size>timedBudget||!fits))
          return 'Limit velikosti anotací v testu je vyčerpán. Odpovědi a reflexe mají přednost. Zkraťte nebo smažte anotace.';
         timedAnnotationWrite=true;
         timedUI.save();const after=timedUI.status();
         // A deadline may cross immediately after a synchronous save.
         // Verify the actual accepted snapshot, not merely the current phase.
-        const accepted=after.persistent&&JSON.stringify(after.answers?.annotations)===JSON.stringify(annotations);
+        const accepted=after.persistent&&JSON.stringify(after.answers?.annotations)===JSON.stringify(fit.annotations);
         if(accepted)timedAnnotationWrite=false;
         return accepted;
        }

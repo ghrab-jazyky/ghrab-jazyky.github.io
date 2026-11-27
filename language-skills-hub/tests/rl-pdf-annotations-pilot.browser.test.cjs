@@ -1362,8 +1362,9 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    // pagehide. Install the historical fixture in the *next* document before
    // application scripts initialize, not in the old active document.
    await page.addInitScript(({key,state})=>{
-    if(location.pathname.endsWith('/self-check/reading/index.html')&&new URLSearchParams(location.search).get('attempt')==='f51legacyabc123'){
+    if(location.pathname.endsWith('/self-check/reading/index.html')&&new URLSearchParams(location.search).get('attempt')==='f51legacyabc123'&&!sessionStorage.getItem('f51LegacySeeded')){
      localStorage.setItem(key,JSON.stringify(state));
+     sessionStorage.setItem('f51LegacySeeded','yes');
      window.f51LegacyFixtureLoaded=true;
     }
    },{key:legacy.key,state:legacy.state});
@@ -1384,10 +1385,68 @@ for(const [name,engine] of [['Chromium',chromium],['WebKit',webkit]]){
    assert.equal(await page.locator('.lsh-annotation-item').count(),80,'Historical notes remain in the open UI');
    assert.match(await page.locator('#readingAnnotationCapacityWarning').textContent(),/po obnovení stránky mohou chybět/);
    assert.deepEqual(state.answers.annotations,legacy.rows.slice(0,state.answers.annotations.length));
+   // F5.1-01 C1: every accepted reduction must keep the actual persisted
+   // prefix in sync with the whole in-page library; no bulk reset required.
+   const rows=page.locator('.lsh-annotation-item');
+   const expected=legacy.rows.map(record=>({...record}));
+   async function assertRecovery(){
+    const saved=await page.evaluate(()=>window.f51Attempt());
+    const fit=await page.evaluate(records=>window.LSHReadingAnnotations.timedSnapshot(window.f51Attempt().answers.answers,document.getElementById('reflection').value,records),expected);
+    assert.deepEqual(saved.answers,fit,'Persisted attempt must be the exact fitting snapshot');
+    assert.equal(await rows.count(),expected.length,'In-page historical records must remain available');
+    assert.deepEqual(await rows.evaluateAll(nodes=>nodes.map(n=>n.dataset.annotationId)),expected.map(x=>x.id));
+    assert.equal(saved.answers.reflection,state.answers.reflection);
+    return saved;
+   }
+   await rows.first().locator('[data-anno-action="edit"]').click();
+   await page.locator('[data-anno-note]').fill('Shortened historical note');
+   await page.locator('[data-anno-save-note]').click();
+   await page.locator('[data-anno-note-box]').waitFor({state:'hidden'});
+   expected[0].note='Shortened historical note';
+   const shortened=await assertRecovery();
+   assert.ok(shortened.answers.annotations.length<expected.length,'Still-overflowing edits must succeed');
+   const undo=page.locator('[data-anno-undo]');
+   await undo.click();
+   assert.match(await page.locator('[data-anno-status]').textContent(),/Limit velikosti anotací/);
+   assert.deepEqual((await assertRecovery()).answers,shortened.answers,'Growing undo over the budget must fail atomically');
+   await rows.last().locator('[data-anno-action="remove"]').click();
+   expected.pop();await assertRecovery();
+   await rows.nth(1).locator('[data-anno-action="remove"]').click();
+   expected.splice(1,1);await assertRecovery();
+   // Check each individual reduction without synthetic storage writes.
+   const removed=await page.evaluate(()=>{
+    let n=0;
+    for(let i=0;i<30;i++){
+     if(window.f51Attempt().phase!=='running')throw Error('Attempt interrupted while recovering annotations');
+     const nodes=document.querySelectorAll('.lsh-annotation-item');
+     if(nodes.length<=50)break;
+     const prior=nodes.length;
+     nodes[nodes.length-1].querySelector('[data-anno-action="remove"]').click();
+     if(document.querySelectorAll('.lsh-annotation-item').length!==prior-1)throw Error('Individual recovery deletion rejected');
+     n++;
+    }
+    return n;
+   });
+   expected.splice(expected.length-removed,removed);
+   const recovered=await assertRecovery();
+   assert.equal(recovered.answers.annotations.length,expected.length);
+   assert.ok(JSON.stringify(expected).length<100000);
+   assert.equal(await page.locator('#readingAnnotationCapacityWarning').isVisible(),false);
+   // Undo remains usable once the complete snapshot fits under the budget.
+   const removedRecord=expected.pop();
+   await rows.last().locator('[data-anno-action="remove"]').click();await assertRecovery();
+   await undo.click();expected.push(removedRecord);await assertRecovery();
+   // A real reload, not another fixture injection, proves durable recovery.
+   await page.reload();await page.locator('#sessionLock').waitFor({state:'visible'});
+   assert.equal(await page.evaluate(()=>window.f51LegacyFixtureLoaded),undefined);
+   assert.deepEqual(await page.evaluate(()=>window.f51Attempt().answers.annotations),expected);
+   await f51Unlock(page);
+   await page.locator('#readingAnnotationToggle').click();
+   const finalState=await assertRecovery();
    await page.locator('#submitButton').scrollIntoViewIfNeeded();
    await f51SubmitClick(page,true);await page.locator('#results:not([hidden])').waitFor();
    const finished=await page.evaluate(()=>window.f51Attempt());
-   assert.equal(finished.phase,'submitted');assert.deepEqual(finished.answers,state.answers);
+   assert.equal(finished.phase,'submitted');assert.deepEqual(finished.answers,finalState.answers);
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
  });
