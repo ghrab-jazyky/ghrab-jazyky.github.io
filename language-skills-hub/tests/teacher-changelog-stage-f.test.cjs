@@ -9,16 +9,20 @@ const cards=load('data/cards.json');
 const validate=require('../assets/whats-new-data.js').valid;
 test('Stage F: curated release history is valid and chronological',()=>{
  assert.equal(validate(data),true);
- assert.deepEqual(data.releases.map(r=>r.sequence),[8,7,6,5,4,3,2,1]);
- assert.deepEqual(data.releases.map(r=>r.publishedAt),['2026-11-23','2026-11-23','2026-11-18','2026-11-18','2026-11-17','2026-11-16','2026-11-15','2026-11-14']);
- assert.equal(data.latestAnnouncementSequence,8);
- assert.equal(data.releases.reduce((n,r)=>n+r.changes.length,0),12);
- assert.equal(data.releases[0].id,'lsh-2026-11-23-pwa-installation');
+ assert.deepEqual(data.releases.map(r=>r.sequence),[9,8,7,6,5,4,3,2,1]);
+ assert.deepEqual(data.releases.map(r=>r.publishedAt),['2026-11-27','2026-11-23','2026-11-23','2026-11-18','2026-11-18','2026-11-17','2026-11-16','2026-11-15','2026-11-14']);
+ assert.equal(data.latestAnnouncementSequence,9);
+ assert.equal(data.releases.reduce((n,r)=>n+r.changes.length,0),13);
+ assert.equal(data.contentRevision,5);
+ assert.equal(data.releases[0].id,'lsh-2026-11-27-christmas-quest-preview');
  assert.equal(data.releases[0].changes.length,1);
- assert.match(data.releases[0].changes[0].description,/sedm dní/);
- assert.equal(data.releases[1].id,'lsh-2026-11-23-city-quest');
- assert.match(data.releases[1].changes[0].title,/City Quest/);
- const history=data.releases.slice(2);
+ assert.match(data.releases[0].changes[0].description,/není možné ji běžně spustit ani sdílet se studenty/);
+ assert.equal(data.releases[1].id,'lsh-2026-11-23-pwa-installation');
+ assert.equal(data.releases[1].changes.length,1);
+ assert.match(data.releases[1].changes[0].description,/sedm dní/);
+ assert.equal(data.releases[2].id,'lsh-2026-11-23-city-quest');
+ assert.match(data.releases[2].changes[0].title,/City Quest/);
+ const history=data.releases.slice(3);
  assert.equal(history[0].id,'lsh-2026-11-18-reading-cefr-guidance');
  assert.match(history[0].title,/Reading Lab/);
  assert.equal(history[0].changes[0].area,'reading');
@@ -37,7 +41,7 @@ test('Stage F: curated release history is valid and chronological',()=>{
 test('Stage F: published history only describes deployed baseline topics',()=>{
  assert.equal(version.version,'R70-LISTENING-STUDIO-UNIFICATION');
  assert.equal(cards.entries.length,36);
- for(const id of ['cl-city-quest-f2','cl-jidlo-piti-restaurace','ll-how-to-choose-your-news','ll-sad','ll-conlangs']){
+ for(const id of ['cl-christmas-quest','cl-city-quest-f2','cl-jidlo-piti-restaurace','ll-how-to-choose-your-news','ll-sad','ll-conlangs']){
   assert.ok(cards.entries.some(e=>e.id===id),id);
  }
 });
