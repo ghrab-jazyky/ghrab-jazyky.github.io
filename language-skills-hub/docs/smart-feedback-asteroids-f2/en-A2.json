@@ -1,0 +1,228 @@
+{
+  "sourceFingerprint": "5b6e4a78ec01b8ddca59c80ad86a6e44be9ec065c3bcdb0c331bc112fac6c0ad",
+  "questions": {
+    "en-a2-gist-1": {
+      "correctIndex": 2,
+      "correctWhy": "Nina ve školním klubu poznává asteroidy, jejich pohyb, sledování a pokus DART. Text sleduje, co se při návštěvě naučila.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "Last Friday, Nina visited the school space club."
+        },
+        {
+          "p": 3,
+          "text": "she understood that watching the sky is the first step in protecting Earth."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Nina sleduje film o sondě DART. Text neříká, že by sama postavila vlastní sondu.",
+          "tip": "Rozliš, co postava dělá, od toho, o čem se učí."
+        },
+        "1": {
+          "whyWrong": "Nina navštěvuje školní astronomický klub, nikoli velké vesmírné centrum. Celý příběh se odehrává kolem této návštěvy.",
+          "tip": "Ověř místo děje v první větě."
+        }
+      },
+      "unanswered": {
+        "tip": "Sleduj, co Nina postupně zjistí, od prvního do posledního odstavce."
+      }
+    },
+    "en-a2-gist-2": {
+      "correctIndex": 1,
+      "correctWhy": "Druhý odstavec spojuje sledování drah s tím, že blízký průlet neznamená srážku. Většina známých asteroidů pro nás není nebezpečná.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "The teacher said that coming near Earth is not the same as hitting it."
+        },
+        {
+          "p": 1,
+          "text": "Most known asteroids are not a danger to us."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text popisuje, jak vědci asteroidy skutečně studují pomocí dalekohledů, počítačů a opakovaných pozorování. Neříká, že jsou příliš daleko na výzkum.",
+          "tip": "Při shrnutí ověř, zda možnost nepopírá děj popsaný v odstavci."
+        },
+        "2": {
+          "whyWrong": "Tato možnost zaměňuje blízký průlet za budoucí srážku. Odstavec výslovně říká, že většina známých asteroidů nepředstavuje hrozbu.",
+          "tip": "Pozor na výrazy většina a neznamená: mění význam tvrzení."
+        }
+      },
+      "unanswered": {
+        "tip": "Všimni si, jak učitelka nebo učitel vysvětluje rozdíl mezi blízkostí a nárazem."
+      }
+    },
+    "en-a2-gist-3": {
+      "correctIndex": 1,
+      "correctWhy": "V závěru Nina chápe, že sledování oblohy je první krok k ochraně Země. To propojuje pozorování a pokus DART.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "watching the sky is the first step in protecting Earth"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Dalekohledy jsou jeden z nástrojů vědců. Text ale nestaví svou hlavní myšlenku na tom, že asteroidy ukážou pouze největší dalekohledy.",
+          "tip": "Rozliš hlavní poselství a podrobnost o přístroji; všimni si slova pouze."
+        },
+        "2": {
+          "whyWrong": "Text nehodnotí asteroidy jako méně zajímavé než Měsíc. Nina je na konci nadšená z toho, co se o asteroidech dozvěděla.",
+          "tip": "Nepřisuzuj postavě srovnání, které text neuvádí."
+        }
+      },
+      "unanswered": {
+        "tip": "Hledej, co si Nina z návštěvy nakonec odnáší."
+      }
+    },
+    "en-a2-scan-1": {
+      "correctIndex": 1,
+      "correctWhy": "Pás asteroidů se podle prvního odstavce nachází mezi Marsem a Jupiterem.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "between Mars and Jupiter called the asteroid belt"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Mars sice patří k hledané dvojici, ale druhou planetou je Jupiter, ne Země.",
+          "tip": "Ověř obě části údaje o poloze, ne jen známé jméno."
+        },
+        "2": {
+          "whyWrong": "Měsíc není v textu uveden jako místo pásu asteroidů. Pás je oblast mezi dvěma planetami.",
+          "tip": "Rozliš polohu kolem jednoho tělesa a mezi dvěma tělesy."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi v prvním odstavci název pásu a přečti obě jména planet."
+      }
+    },
+    "en-a2-scan-2": {
+      "correctIndex": 0,
+      "correctWhy": "Věta o záměrném zásahu Dimorphosu uvádí přímo rok 2022.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "In 2022, it hit a small asteroid moon named Dimorphos on purpose."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Rok 2012 se od uvedeného roku liší o deset let. Text přiřazuje zásah roku 2022.",
+          "tip": "Při skenování data porovnej všechny čtyři číslice."
+        },
+        "2": {
+          "whyWrong": "Rok 2024 není rokem zásahu v tomto příběhu. Věta o Dimorphosu začíná údajem 2022.",
+          "tip": "Spoj datum přímo se slovesem označujícím zásah."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi jména DART a Dimorphos a rok ve stejné větě."
+      }
+    },
+    "en-a2-scan-3": {
+      "correctIndex": 2,
+      "correctWhy": "Nina vyfotila Měsíc telefonem přes dalekohled a snímek poslala své babičce.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "sent it to her grandmother."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Učitel vysvětluje informace o Měsíci, ale není příjemcem fotografie. Nina ji posílá babičce.",
+          "tip": "Rozliš osobu, která něco vysvětluje, a příjemce zprávy."
+        },
+        "1": {
+          "whyWrong": "Spolužáci se střídají u dalekohledu. Věta o odeslání fotky však jmenuje babičku, nikoli kamaráda.",
+          "tip": "U otázky komu hledej osobu u slovesa odeslání."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi sloveso sent a přečti, komu fotka putovala."
+      }
+    },
+    "en-a2-detail-1": {
+      "correctIndex": 2,
+      "correctWhy": "Žáci asteroid neviděli, protože většina asteroidů je podle textu příliš malá a tmavá.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "because most asteroids are too small and too dark."
+        },
+        {
+          "p": 2,
+          "text": "Instead, they looked at the Moon and saw its craters very clearly."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text neříká, že oblohu zakrývaly mraky. Žáci přitom jasně viděli krátery Měsíce; důvod souvisí s vlastnostmi asteroidů.",
+          "tip": "Hledej výslovně uvedený důvod, ne možnou domněnku o počasí."
+        },
+        "1": {
+          "whyWrong": "Dalekohled nebyl podle textu rozbitý: žáci s ním viděli krátery. Problémem byla malá velikost a tmavost asteroidů.",
+          "tip": "Ověř navrženou příčinu podle toho, co přístroj skutečně umožnil."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi spojku because a přečti důvod za ní."
+      }
+    },
+    "en-a2-detail-2": {
+      "correctIndex": 0,
+      "correctWhy": "Na Měsíci podle textu není vítr ani déšť, které by krátery postupně zakryly nebo změnily. Proto tam vydrží velmi dlouho.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "On the Moon there is no wind or rain"
+        },
+        {
+          "p": 2,
+          "text": "On Earth, water and weather slowly hide them."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Vesmírné horniny krátery vytvořily, ale text neříká, že je chrání. Krátery přetrvávají kvůli chybějícímu větru a dešti.",
+          "tip": "Rozliš příčinu vzniku a důvod, proč něco zůstává."
+        },
+        "2": {
+          "whyWrong": "Teplota Měsíce není uvedena jako důvod. Text vysvětluje trvanlivost kráterů nepřítomností větru a deště.",
+          "tip": "Nepřidávej jinou možnou příčinu, když text uvádí konkrétní vysvětlení."
+        }
+      },
+      "unanswered": {
+        "tip": "Hledej větu o počasí na Měsíci a následek, který z ní vyplývá."
+      }
+    },
+    "en-a2-detail-3": {
+      "correctIndex": 0,
+      "correctWhy": "DART změnil dobu, kterou Dimorphos potřebuje k jednomu oběhu kolem většího asteroidu. Jde o čas oběhu, ne vzhled tělesa.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "The test changed the time Dimorphos needed to go around a larger asteroid."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Text nepopisuje změnu barvy Dimorphosu. Mluví o čase potřebném k oběhu.",
+          "tip": "Rozliš vzhled tělesa a jeho pohyb."
+        },
+        "2": {
+          "whyWrong": "Větší asteroid je těleso, kolem kterého Dimorphos obíhá. Text nemluví o změně jeho velikosti.",
+          "tip": "Ověř, které těleso a jaká vlastnost se změnily."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi větu hned po zásahu DART a podtrhni údaj o změně."
+      }
+    }
+  }
+}
