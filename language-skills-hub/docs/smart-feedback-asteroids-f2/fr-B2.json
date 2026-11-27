@@ -1,0 +1,531 @@
+{
+  "sourceFingerprint": "63fb18d748c14fcb38b986892dc9205edd5c23cddef4ecb281eeb195184a9753",
+  "questions": {
+    "fr-b2-gist-1": {
+      "correctIndex": 1,
+      "correctWhy": "Závěr odmítá oba extrémy: bezvýhradné uklidnění i představu nevyhnutelné katastrofy. Text spojuje pečlivé měření rizika s přípravou a spoluprací.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "les données, la préparation et la coopération peuvent faire toute la différence."
+        },
+        {
+          "p": 0,
+          "text": "Un rapprochement demande donc des mesures attentives, pas une alerte automatique."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Druhý odstavec popisuje pozemské teleskopy jako nástroj objevování. Text neříká, že tuto funkci ztratily.",
+          "tip": "Rozliš popis existující metody od tvrzení, že už není použitelná."
+        },
+        "2": {
+          "whyWrong": "DART je pouze příklad možné obrany. Čtvrtý odstavec výslovně omezuje závěr experimentu a text stále zdůrazňuje pozorování.",
+          "tip": "U hlavní myšlenky nezaměňuj jeden experiment za závěr celého článku."
+        },
+        "3": {
+          "whyWrong": "První odstavec rozlišuje blízký průlet od skutečné kolize; většina známých objektů nepředstavuje bezprostřední nebezpečí. Tvrzení o téměř jisté katastrofě je příliš silné.",
+          "tip": "Ověř slova vyjadřující míru jistoty, například most, could nebo almost."
+        }
+      },
+      "unanswered": {
+        "tip": "Porovnej první odstavec se závěrem a vyber tvrzení, které vystihuje oba."
+      }
+    },
+    "fr-b2-gist-2": {
+      "correctIndex": 0,
+      "correctWhy": "Úvod zpochybňuje dramatickou formulaci o asteroidu mířícím k Zemi: blízkost v astronomii sama o sobě neznamená srážku.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "Cette formule peut être trompeuse."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "DART se objevuje až ve čtvrtém odstavci; konstrukční detaily sondy nejsou tématem úvodu.",
+          "tip": "U otázky na funkci odstavce se drž konkrétní části, ne celého tématu."
+        },
+        "2": {
+          "whyWrong": "Úvod uvádí hrubý počet objektů, ale nejmenuje ani neporovnává největší asteroidy.",
+          "tip": "Ověř, zda odstavec skutečně obsahuje slíbený seznam, ne jen jeden číselný údaj."
+        },
+        "3": {
+          "whyWrong": "Zmínka, že asteroidy jsou staré kusy horniny a kovu, není historií jejich objevování. Úvod řeší současné vnímání rizika.",
+          "tip": "Rozliš krátkou definici jevu od chronologického výkladu."
+        }
+      },
+      "unanswered": {
+        "tip": "Polož si otázku, jaký dojem má úvod změnit, ne jen jaké téma představuje."
+      }
+    },
+    "fr-b2-gist-3": {
+      "correctIndex": 1,
+      "correctWhy": "Text začíná zpochybněním dramatického titulku, pak uvádí dva problémy: objevování a reakci na skutečné nebezpečí. V závěru formuluje ponaučení o komunikaci a přípravě.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "La leçon centrale n’est ni que les astéroïdes sont sans danger"
+        },
+        {
+          "p": 1,
+          "text": "Le premier défi consiste à découvrir ces objets."
+        },
+        {
+          "p": 2,
+          "text": "Le deuxième défi est de déterminer ce qu’il faudrait faire si un corps réellement dangereux était découvert."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Článek neobsahuje rozhovor ani závěrečnou předpověď srážky. Jeho závěr vysvětluje, proč má smysl příprava.",
+          "tip": "Při popisu struktury ověř všechny části navrženého schématu."
+        },
+        "2": {
+          "whyWrong": "Text popisuje experiment DART, ale neporovnává dvě mise podle nákladů. Čísla o cenách v něm nejsou.",
+          "tip": "Rozliš jeden případový příklad a systematické porovnání dvou případů."
+        },
+        "3": {
+          "whyWrong": "Autor nevypráví osobní příběh ani nepředkládá seznam praktických bezpečnostních pokynů. Vysvětluje vědecké postupy a rizika.",
+          "tip": "Hledej znaky vyprávění a instrukcí, než tak označíš text."
+        }
+      },
+      "unanswered": {
+        "tip": "Každému odstavci přiřaď jednu funkci a ověř jejich pořadí."
+      }
+    },
+    "fr-b2-scan-1": {
+      "correctIndex": 0,
+      "correctWhy": "Druhý odstavec říká, že programy hledají světelné body, které mezi pozorováními mění polohu. Pohyb je klíčem k jejich rozpoznání.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "des logiciels cherchent les points lumineux qui changent de position."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Text mluví o světelných bodech, které mění polohu. Tmavá skvrna setrvávající na místě nesplňuje ani popsaný vzhled, ani podmínku pohybu.",
+          "tip": "Ověř přídavné jméno i sloveso, nikoli jen jedno z nich."
+        },
+        "2": {
+          "whyWrong": "Změna barvy hvězdy není uvedeným znakem. Programy hledají změnu polohy světelných bodů.",
+          "tip": "Rozliš, zda se mění barva, velikost, nebo poloha."
+        },
+        "3": {
+          "whyWrong": "Mraky mohou být spojeny s pozorováním oblohy, ale nejsou cílem zde popsaného vyhledávání. Program sleduje měnící se polohu světelných bodů.",
+          "tip": "Rozliš překážku pozorování od objektu, který se hledá."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi větu se slovesem hledat u počítačových programů a přečti obě vlastnosti hledaného objektu."
+      }
+    },
+    "fr-b2-scan-2": {
+      "correctIndex": 2,
+      "correctWhy": "Věta o záměrném zásahu Dimorphosu přímo uvádí rok 2022.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "En 2022, la sonde DART de la NASA a volontairement percuté Dimorphos"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Rok 2020 je podobný uvedenému letopočtu, ale zásah je v textu datován do roku 2022.",
+          "tip": "Při skenování roku zkontroluj poslední dvě číslice."
+        },
+        "1": {
+          "whyWrong": "Rok 2024 není datum experimentu uvedené v tomto odstavci. Text spojuje DART s rokem 2022.",
+          "tip": "Přiřaď datum přímo k požadované události, ne k jinému možnému datu."
+        },
+        "3": {
+          "whyWrong": "Rok 2012 se od uvedeného roku liší o deset let. Text přiřazuje náraz k roku 2022.",
+          "tip": "Porovnej všechny čtyři číslice, nejen začátek a konec."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi jména DART a Dimorphos a rok ve stejné větě."
+      }
+    },
+    "fr-b2-scan-3": {
+      "correctIndex": 1,
+      "correctWhy": "Text přímo uvádí, že infračervená pozorování pomáhají zachytit tmavé objekty, které odrážejí málo slunečního světla.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "aident également à repérer les corps sombres qui réfléchissent peu la lumière solaire."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Změny polohy světelných bodů slouží k hledání asteroidů; text nepřisuzuje infračerveným pozorováním měření změn dráhy Země.",
+          "tip": "Ověř, který objekt se pohybuje a jaký údaj přístroj skutečně pomáhá získat."
+        },
+        "2": {
+          "whyWrong": "Tvrzení o jasných objektech obrací klíčovou vlastnost: text mluví o tmavých tělesech odrážejících málo světla.",
+          "tip": "Porovnej význam protikladných přídavných jmen bright a dark."
+        },
+        "3": {
+          "whyWrong": "Měsíce vnějších planet nejsou cílem zde popsaného postupu; odstavec vysvětluje detekci asteroidů.",
+          "tip": "Rozliš typ astronomického tělesa, na který se daná metoda v textu vztahuje."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi označení infračerveného pozorování a přečti navazující popis objektu."
+      }
+    },
+    "fr-b2-detail-1": {
+      "correctIndex": 2,
+      "correctWhy": "Pozorování po zásahu ukázala, že se oběžná doba Dimorphosu zkrátila. Tedy menší těleso potřebovalo méně času k oběhu kolem Didymosu.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "Les observations ont montré que la période orbitale de Dimorphos avait diminué."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text neuvádí, že by se Didymos přiblížil k Zemi. Výsledek se týká oběžné doby menšího Dimorphosu.",
+          "tip": "Rozliš změnu vzájemného oběhu těles a změnu vzdálenosti od Země."
+        },
+        "1": {
+          "whyWrong": "Článek nepopisuje rozpad Dimorphosu na úlomky. Uvádí měřitelnou změnu jeho oběžné doby.",
+          "tip": "Rozliš změnu pohybu a fyzické rozpadnutí tělesa."
+        },
+        "3": {
+          "whyWrong": "Tato možnost obrací vztah těles. Dimorphos obíhá Didymos, nikoli naopak; změnila se doba jeho oběhu.",
+          "tip": "Při popisu dvojice objektů ověř směr vztahu kdo obíhá koho."
+        }
+      },
+      "unanswered": {
+        "tip": "Ověř, ke kterému tělesu se výsledek vztahuje a která veličina se změnila."
+      }
+    },
+    "fr-b2-detail-2": {
+      "correctIndex": 3,
+      "correctWhy": "Zkrácení oběžné doby Dimorphosu ukázalo, že srážka sondy může změnit pohyb asteroidu. Článek však z tohoto experimentu nedělá záruku obrany proti všem hrozbám.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "qu’une sonde pouvait modifier le mouvement d’un astéroïde"
+        },
+        {
+          "p": 2,
+          "text": "mais pas qu’on pourrait empêcher tous les impacts possibles."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Odstavec výslovně říká, že experiment neprokázal možnost zabránit každému dopadu; záleží mimo jiné na velikosti objektu a čase.",
+          "tip": "Všímej si hranic vědeckého závěru, zejména slov every a did not prove."
+        },
+        "1": {
+          "whyWrong": "Didymos je větší těleso, které Dimorphos obíhá. Článek popisuje změnu pohybu, nikoli změnu velikosti Didymosu.",
+          "tip": "Ověř, zda otázka i odpověď popisují stejnou fyzikální veličinu."
+        },
+        "2": {
+          "whyWrong": "Změna se týká menšího Dimorphosu a jeho oběžná doba se zkrátila. Tato možnost zaměňuje těleso i směr změny.",
+          "tip": "U dvojice pojmenovaných objektů si označ, ke kterému se výsledek vztahuje."
+        }
+      },
+      "unanswered": {
+        "tip": "Rozliš, co experiment prokázal, od toho, co text výslovně neprohlašuje."
+      }
+    },
+    "fr-b2-detail-3": {
+      "correctIndex": 1,
+      "correctWhy": "Autor rozlišuje průlet v okolí Země od dráhy, která by se s její dráhou skutečně protnula v určitý okamžik. Blízkost tedy sama o sobě nepotvrzuje srážku.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "Les astronomes distinguent un corps qui passe dans notre voisinage cosmique"
+        },
+        {
+          "p": 0,
+          "text": "d’un objet dont la trajectoire calculée pourrait réellement croiser celle de notre planète à une date précise."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Autor nekritizuje schopnost dalekohledů měřit vzdálenost. Doporučuje pečlivá měření, protože blízký průlet není srážka.",
+          "tip": "Rozliš omezení měření a interpretaci správně naměřené dráhy."
+        },
+        "2": {
+          "whyWrong": "Text neříká, že blízké objekty většinou nemohou škodit kvůli malé velikosti. Vysvětlení se týká geometrie jejich drah.",
+          "tip": "Při otázce proč sleduj výslovně uvedený důvod, nikoli jinou možnou příčinu."
+        },
+        "3": {
+          "whyWrong": "Text neuvádí, že oficiální výstraha trvá vždy několik let. Doba varování je jiná otázka než samotné rozlišení průletu a srážky.",
+          "tip": "Rozliš podmínku vyhlášení alarmu od doby potřebné k reakci."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti celou větu o rozlišení dvou druhů drah a závěrečnou větu prvního odstavce."
+      }
+    },
+    "fr-b2-inference-1": {
+      "correctIndex": 0,
+      "correctWhy": "Výrazné číslo bez vysvětlení nejistoty může vyvolat dojem, že výpočet je spolehlivější, než dovolují dostupná měření. Předchozí věty přitom vysvětlují, že rané odhady se mění.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Un chiffre spectaculaire présenté sans indiquer son incertitude"
+        },
+        {
+          "p": 1,
+          "text": "Les premières estimations peuvent beaucoup évoluer grâce aux nouvelles mesures."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Text neobviňuje vědce z úmyslného utajování. Vysvětluje, že jejich výpočty se s novými údaji zpřesňují.",
+          "tip": "Rozliš nejistotu výpočtu a tvrzení o nepoctivém jednání."
+        },
+        "2": {
+          "whyWrong": "Autor neodmítá čísla jako taková. Kritizuje číslo oddělené od informace o nejistotě.",
+          "tip": "Všímej si, zda výhrada platí vždy, nebo jen za určité podmínky."
+        },
+        "3": {
+          "whyWrong": "Text neříká, že veřejnost nerozumí žádným číslům. Problémem je způsob prezentace údaje bez potřebného kontextu.",
+          "tip": "Nezaměň kvalitu sdělení za nepodložené hodnocení schopností čtenářů."
+        }
+      },
+      "unanswered": {
+        "tip": "Spoj upozornění na nejistotu čísla s tím, co se v odstavci říká o nových měřeních."
+      }
+    },
+    "fr-b2-inference-2": {
+      "correctIndex": 0,
+      "correctWhy": "Cílové těleso nebylo na kolizní dráze se Zemí. Z toho vyplývá, že šlo o zkoušku metody na bezpečném cíli, nikoli o odvracení skutečné hrozby.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "Le test DART a porté sur un objet qui ne se trouvait pas sur une trajectoire de collision avec la Terre."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Text výslovně vylučuje kolizní dráhu. Neříká, že vědci očekávali brzké ohrožení Země Dimorphosem.",
+          "tip": "Nezaměň bezpečný cíl experimentu za předpovězenou hrozbu."
+        },
+        "2": {
+          "whyWrong": "Z popisu jednoho testu nelze odvodit, že všechny budoucí mise budou mířit pouze k nebezpečným asteroidům.",
+          "tip": "Dávej pozor na výlučná tvrzení o budoucnosti, která text nedokládá."
+        },
+        "3": {
+          "whyWrong": "Autor vysvětluje účel a výsledek experimentu. Neuvádí žádný důkaz, že NASA chtěla skutečný účel skrýt.",
+          "tip": "Rozliš podložený záměr od domněnky o utajování."
+        }
+      },
+      "unanswered": {
+        "tip": "Při inferenci vyjdi z negace kolizní dráhy a odliš zkoušku od skutečného zásahu."
+      }
+    },
+    "fr-b2-inference-3": {
+      "correctIndex": 2,
+      "correctWhy": "Autor staví filmové výbuchy do protikladu ke skutečné dlouhodobé práci. Výraz o tichých pozorováních zdůrazňuje nenápadnou, ale důležitou přípravu.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "dans la réalité, la meilleure réponse commence parfois"
+        },
+        {
+          "p": 3,
+          "text": "Les explosions géantes sont passionnantes au cinéma ; dans la réalité, la meilleure réponse commence parfois par des années d’observations discrètes."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Tichá či nenápadná práce neznamená utajování. Závěr naopak zdůrazňuje vysvětlování a sdílení spolehlivých informací.",
+          "tip": "Rozliš nenápadnost práce a záměrné skrývání informací."
+        },
+        "1": {
+          "whyWrong": "Výraz tichá pozorování zde není technický údaj o hlučnosti dalekohledu. Vystihuje kontrast s dramatickými scénami ve filmu.",
+          "tip": "Při obrazném vyjádření hledej význam v okolních větách, ne doslovný technický výklad."
+        },
+        "3": {
+          "whyWrong": "Dlouhá doba pozorování neznamená, že přístroje samy pracují pomalu. Autor zdůrazňuje dlouhodobou přípravu před hrozbou.",
+          "tip": "Rozliš délku vědeckého procesu a rychlost přístroje."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti protiklad mezi filmem a skutečností a zkus vyjádřit, co autor považuje za účinné."
+      }
+    },
+    "fr-b2-matching-3": {
+      "correctIndex": 2,
+      "correctWhy": "Třetí odstavec řeší možný obranný zásah a výslovně uvádí dostupnou dobu varování nebo zásahu jako jednu z rozhodujících podmínek.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "le délai d’intervention auraient leur importance."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "První odstavec vysvětluje rozdíl mezi průletem a srážkou, nikoli podmínky obranného zásahu.",
+          "tip": "Rozliš posouzení nebezpečí a plánování obranné reakce."
+        },
+        "1": {
+          "whyWrong": "Druhý odstavec popisuje opakovaná pozorování a zpřesňování předpovědí. Neuvádí dobu dostupnou pro změnu dráhy.",
+          "tip": "Rozliš čas potřebný na měření a čas dostupný na obranný zásah."
+        },
+        "3": {
+          "whyWrong": "Závěr doporučuje dlouhodobou přípravu a včasné sdílení údajů. Konkrétní podmínku doby zásahu však uvádí třetí odstavec.",
+          "tip": "Při více časových zmínkách vyber tu, která odpovídá přesné podmínce z otázky."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi údaj o čase dostupném pro zásah a sleduj, ke kterému procesu patří."
+      }
+    },
+    "fr-b2-matching-1": {
+      "correctIndex": 1,
+      "correctWhy": "Druhý odstavec popisuje objevování a zpřesňování drah. Přímo uvádí, že vědci porovnávají pozorování z různých nocí.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "les chercheurs comparent des observations réalisées au cours de nuits différentes"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "První odstavec rozlišuje blízkost a riziko srážky, nikoli metodu porovnávání snímků.",
+          "tip": "Rozliš vysvětlení pojmu a praktický postup měření."
+        },
+        "2": {
+          "whyWrong": "Třetí odstavec se věnuje experimentu DART a měření jeho výsledku. Otázka míří na porovnávání nočních pozorování při určování dráhy.",
+          "tip": "U podobných zmínek o pozorování zkontroluj konkrétní účel."
+        },
+        "3": {
+          "whyWrong": "Závěr zdůrazňuje dlouhodobá pozorování a sdílení informací, ale neuvádí metodu porovnávání více nocí.",
+          "tip": "Vyhledej odstavec s konkrétním mechanismem, ne jen obecným tématem."
+        }
+      },
+      "unanswered": {
+        "tip": "Hledej výraz pro různé noci společně se slovesem porovnávat."
+      }
+    },
+    "fr-b2-matching-2": {
+      "correctIndex": 3,
+      "correctWhy": "Poslední odstavec zdůrazňuje komunikaci: konkrétní instituce mají sdílet spolehlivé informace dlouho před možnou krizí.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "Gouvernements et observatoires ont intérêt à partager des informations fiables longtemps avant une urgence."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "První odstavec se zabývá zavádějícími titulky a rizikem. Neuvádí výslovnou výzvu ke spolupráci institucí.",
+          "tip": "Rozliš kritiku titulku a doporučení pro komunikaci."
+        },
+        "1": {
+          "whyWrong": "Druhý odstavec popisuje vědecké měření a nejistotu předpovědí. Neobsahuje požadavek na výměnu údajů mezi institucemi před krizí.",
+          "tip": "Zkontroluj, zda se shodují nejen data, ale i aktéři z otázky."
+        },
+        "2": {
+          "whyWrong": "Třetí odstavec pojednává o možnostech obranného zásahu. Včasné sdílení spolehlivých informací mezi institucemi je tématem závěru.",
+          "tip": "Odděl technický postup od komunikačního opatření."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi názvy institucí a výraz o sdílení dat s předstihem."
+      }
+    },
+    "fr-b2-structure-1": {
+      "correctIndex": 3,
+      "correctWhy": "Doplněná věta zavádí komunikaci jako další součást planetární obrany. Následující věty právě rozvíjejí vysvětlování nejistoty a včasné sdílení informací.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "En définitive, la défense planétaire relève aussi de la communication."
+        },
+        {
+          "p": 3,
+          "text": "Les chercheurs doivent expliquer ce qui est établi"
+        },
+        {
+          "p": 3,
+          "text": "Gouvernements et observatoires ont intérêt à partager des informations fiables longtemps avant une urgence."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text nepředstavuje obranu jako problém už definitivně vyřešený inženýry. Předchozí odstavec uvádí omezení DART a následující věty popisují další úlohu komunikace.",
+          "tip": "Porovnej tvrzení o hotovém řešení s omezeními a dalšími úkoly v okolí mezery."
+        },
+        "1": {
+          "whyWrong": "Kino je zmíněno až jako kontrast se skutečnou přípravou. Úvod odstavce musí navazovat na věty o výzkumnících a sdílení informací, nikoli o filmových režisérech.",
+          "tip": "Rozliš hlavní téma od obrazného kontrastu v pozdější větě."
+        },
+        "2": {
+          "whyWrong": "Samostatné jednání každé země odporuje následujícímu doporučení sdílet spolehlivé informace mezi institucemi.",
+          "tip": "Sleduj, zda dosazená věta nenarušuje vztah spolupráce."
+        }
+      },
+      "unanswered": {
+        "tip": "Ověř, která věta nejlépe připravuje témata v následujících dvou větách."
+      }
+    },
+    "fr-b2-structure-2": {
+      "correctIndex": 2,
+      "correctWhy": "Ukazovací zájmeno shrnuje bezprostředně předchozí tvrzení o proměnlivosti raných odhadů. Následující věta vysvětluje, že změna předpovědi neznamená náhodné hádání.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Les premières estimations peuvent beaucoup évoluer grâce aux nouvelles mesures."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Zásah DART se popisuje až v dalším odstavci. Zájmeno odkazuje zpět k měnícím se odhadům.",
+          "tip": "Nejdřív prověř bezprostředně předcházející tvrzení."
+        },
+        "1": {
+          "whyWrong": "Infračervené pozorování bylo uvedeno jako metoda detekce. Věta o hádání ale vysvětluje změny předpovědi, ne použití přístroje.",
+          "tip": "Ověř logický vztah referentu k tomu, co se o něm říká."
+        },
+        "3": {
+          "whyWrong": "Text mluví o porovnávání snímků z různých nocí, nikoli jediné noci. Navíc zájmeno bezprostředně navazuje na větu o proměně raných odhadů.",
+          "tip": "Ověř časový rozsah procesu i polohu jeho popisu v textu."
+        }
+      },
+      "unanswered": {
+        "tip": "Nahraď zájmeno celou předcházející větou a ověř logickou návaznost."
+      }
+    },
+    "fr-b2-structure-3": {
+      "correctIndex": 3,
+      "correctWhy": "Spojka uvádí omezení závěru z experimentu: DART prokázal možnost změny pohybu, nikoli možnost zabránit každému dopadu.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "Le test a prouvé qu’une sonde pouvait modifier"
+        },
+        {
+          "p": 2,
+          "text": "mais pas qu’on pourrait empêcher tous les impacts possibles."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Věta nenabízí příklad odvráceného dopadu. Naopak zdůrazňuje, že experiment nedokazuje možnost odvrátit všechny dopady.",
+          "tip": "Rozliš konkrétní příklad a výhradu k obecnému závěru."
+        },
+        "1": {
+          "whyWrong": "Spojka nepojmenovává větší asteroid; jeho jméno už bylo uvedeno. Zde omezuje závěr o možnostech obrany.",
+          "tip": "Rozliš doplnění identifikace a vztah protikladu."
+        },
+        "2": {
+          "whyWrong": "Text zde nevyvozuje následek velikosti Didymosu. Dává do protikladu prokázanou změnu pohybu a neprokázanou univerzální ochranu.",
+          "tip": "Zkus spojku nahradit slovem ale a ověř vztah obou tvrzení."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti část před spojkou i po ní a rozliš důkaz od jeho omezení."
+      }
+    }
+  }
+}
