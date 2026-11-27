@@ -53,6 +53,7 @@ jobs:
           node-version: '24'
       - run: npm install --no-save --ignore-scripts playwright@1.56.1
       - name: Existing Reading, Listening, annotation, test security and print UI regressions
+        shell: bash
         run: |
           mkdir -p sf-f3
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/sf-http.log 2>&1 &
@@ -94,6 +95,7 @@ jobs:
       - name: Rebuild all 96, compare every PDF against untouched production corpus
         run: |
           set -euo pipefail
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           test "$GITHUB_REF" = refs/heads/feature/lsh-smart-feedback-asteroids-f2
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           mkdir -p sf-f3
