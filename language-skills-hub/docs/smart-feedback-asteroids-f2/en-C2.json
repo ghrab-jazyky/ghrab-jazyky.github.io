@@ -1,0 +1,596 @@
+{
+  "sourceFingerprint": "86181b433cdccd0e760745dbba662cf026a6946a3b5aedef25091d06d839faec",
+  "questions": {
+    "en-c2-gist-1": {
+      "correctIndex": 3,
+      "correctWhy": "Závěr staví skutečnou ochranu na systémech, které včas zachycují slabé signály, otevřeně opravují odhady a dávají prostor uváženému jednání. To propojuje pozorování, techniku i rozhodování.",
+      "evidence": [
+        {
+          "p": 4,
+          "text": "by building systems that notice weak signals, revise judgements openly and leave enough time for measured action."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Vzácnost katastrof autor uznává, ale odmítá odkládat investice do pozorování do doby, kdy budou předpovědi dokonalé.",
+          "tip": "Rozliš malé riziko od argumentu, že příprava vůbec nemá smysl."
+        },
+        "1": {
+          "whyWrong": "Výkonná sonda je pouze dílčí nástroj. Bez spolehlivého zjištění hrozby a času na změnu dráhy její technický úspěch ztrácí praktický význam.",
+          "tip": "Nezaměň podmínku úspěchu za úplné vysvětlení úspěchu."
+        },
+        "2": {
+          "whyWrong": "Infračervené přístroje poskytují doplňující informace; text nevyzývá k úplnému nahrazení optického pozorování.",
+          "tip": "Ověř, zda autor popisuje doplnění metody, nebo její nahrazení."
+        }
+      },
+      "unanswered": {
+        "tip": "Zvol shrnutí, které vysvětluje vztah mezi poznáním, technikou a rozhodováním, nikoli jen jednu oblast."
+      }
+    },
+    "en-c2-gist-2": {
+      "correctIndex": 0,
+      "correctWhy": "Úvod kriticky rozebírá populární metaforu boje s nepřátelským vesmírem. Vysvětluje, proč poutavý obraz zastírá skutečnou práci s důkazy a rozdíl mezi blízkostí a hrozbou.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "The metaphor makes for compelling cinema, but it obscures the slower intellectual work"
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Infračervené pozorování se řeší až ve druhém odstavci. Úvod zpochybňuje rámec, v němž veřejnost chápe riziko.",
+          "tip": "Funkci odstavce určuj podle jeho hlavního argumentu."
+        },
+        "2": {
+          "whyWrong": "Zmínka o filmu je ilustrací přitažlivosti metafory, nikoli recenzí konkrétního filmu.",
+          "tip": "Odliš příklad použitý v argumentaci od jejího předmětu."
+        },
+        "3": {
+          "whyWrong": "Autor výslovně odmítá chápat asteroid jako nepřítele. Nevypráví zde o objevu konkrétního tělesa.",
+          "tip": "Ověř, zda možnost nepřijímá právě tu představu, kterou text zpochybňuje."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi protiklad mezi přitažlivostí metafory a tím, co zamlžuje."
+      }
+    },
+    "en-c2-gist-3": {
+      "correctIndex": 2,
+      "correctWhy": "Autor rozlišuje tři různé informace: orbitální blízkost, potenciální nebezpečí a vypočtenou pravděpodobnost srážky. Jejich sloučení pod jedním poplašným označením zkresluje úsudek.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "collapsing them into a single alarmist category is a failure of communication"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text nekritizuje odborné pojmy jako příliš složité samy o sobě. Problémem je jejich významové směšování.",
+          "tip": "Rozliš obtížnost termínu a nepřesné použití jeho významu."
+        },
+        "1": {
+          "whyWrong": "Autor nenavrhuje nové slovo místo pojmenování asteroid. Požaduje správně interpretovat různé kategorie rizika.",
+          "tip": "Odliš přejmenování objektu od přesného vymezení pojmů."
+        },
+        "3": {
+          "whyWrong": "Text novináře nevyzdvihuje jako přesnější než vědce. Kritizuje poplašnou prezentaci a požaduje zachování významových rozdílů.",
+          "tip": "Ověř, koho a za jaký komunikační postup autor kritizuje."
+        }
+      },
+      "unanswered": {
+        "tip": "Pojmenuj všechny tři odlišené pojmy a ověř, zda možnost zachovává jejich odlišnost."
+      }
+    },
+    "en-c2-scan-1": {
+      "correctIndex": 0,
+      "correctWhy": "Autor výslovně označuje samotné pozorování za selektivní: optické průzkumy zvýhodňují jasné, vhodně umístěné objekty.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Observation itself is selective."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Omezenost pozorování sice souvisí s tématem, ale jde o jiné slovo než doslovný přívlastek ve výchozí větě.",
+          "tip": "U otázky na konkrétní výraz nestačí blízký význam."
+        },
+        "2": {
+          "whyWrong": "Nedokonalost či neúplnost je možným důsledkem výběrového zkreslení. Autor zde však použil výraz pro selektivitu.",
+          "tip": "Rozliš příčinu výběru a důsledek v úplnosti výsledků."
+        },
+        "3": {
+          "whyWrong": "Jednostrannost či zkreslení může významově souviset, ale autorovo znění výslovně popisuje selektivní pozorování.",
+          "tip": "Ověř přesné slovo v textu, nikoli volné synonymum."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi první větu druhého odstavce a zkontroluj přesné přídavné jméno."
+      }
+    },
+    "en-c2-scan-2": {
+      "correctIndex": 0,
+      "correctWhy": "Před výrazem disaster scenarios stojí theatrical, tedy teatrální, efektní či přehnaně dramatické. Otázka žádá doslovně použité přídavné jméno.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "an instructive counterpoint to theatrical disaster scenarios"
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Apocalyptic je významově blízké katastrofě, ale není přívlastkem použitým v hledané větě.",
+          "tip": "Při skenování přesného výrazu nepřijímej významové asociace."
+        },
+        "2": {
+          "whyWrong": "Sensational vystihuje senzaci, ale autor konkrétně volí theatrical.",
+          "tip": "Ověř, zda se nabízené slovo skutečně vyskytuje v příslušné větě."
+        },
+        "3": {
+          "whyWrong": "Hollywood-style by odkazovalo na hollywoodský styl. Autor používá jiné označení pro teatrální scénáře.",
+          "tip": "Nenech obecnou zmínku o filmu nahradit přesný výraz."
+        }
+      },
+      "unanswered": {
+        "tip": "Vyhledej counterpoint a přečti přídavné jméno přímo před disaster scenarios."
+      }
+    },
+    "en-c2-scan-3": {
+      "correctIndex": 1,
+      "correctWhy": "Infračervené přístroje dávají doplňující informace, nikoli vševědoucnost. Právě výraz pro vševědoucnost je v textu přímo negován.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Infrared instruments offer complementary information, but not omniscience."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Jistota je související téma, ale hledaný výraz je konkrétně vševědoucnost, nikoli prostá jistota.",
+          "tip": "Při doslovném vyhledávání rozliš příbuzná abstraktní podstatná jména."
+        },
+        "2": {
+          "whyWrong": "Rychlost či okamžité výsledky nejsou tím, co autor v této větě výslovně popírá. Jde o hranici poznání.",
+          "tip": "Rozliš časovou vlastnost měření a rozsah dostupných znalostí."
+        },
+        "3": {
+          "whyWrong": "Přesnost text nepopírá obecně. Přístroj může být přesný a přitom nezachytit všechny objekty.",
+          "tip": "Ověř, zda se zápor týká přesnosti, nebo úplného poznání."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi větu o infračervených přístrojích a podstatné jméno po spojce vyjadřující omezení."
+      }
+    },
+    "en-c2-inference-1": {
+      "correctIndex": 2,
+      "correctWhy": "Přesnost vypočteného údaje se může týkat jen zachycených objektů. Pokud detekce některé objekty vynechá, i přesně vypadající statistika zůstane neúplná.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "apparently precise statistics can conceal selection effects"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text neříká, že přesný výpočet je obvykle méně spolehlivý než hrubý. Upozorňuje, že přesnost neřeší výběrové zkreslení.",
+          "tip": "Odděl přesnost měření a reprezentativnost souboru dat."
+        },
+        "1": {
+          "whyWrong": "Z doplňujícího přínosu infračervených přístrojů neplyne, že jsou vždy přesnější než optické. Omezení detekce přetrvávají.",
+          "tip": "Pozor na neoprávněnou hierarchii dvou metod z jedné jejich vlastnosti."
+        },
+        "3": {
+          "whyWrong": "Autor nestaví úplné katalogy jako alternativu, jíž vědci dávají přednost před přesnými drahami. Oba parametry jsou odlišné a důležité.",
+          "tip": "Nevytvářej falešnou volbu z pojmů, které autor rozlišuje."
+        }
+      },
+      "unanswered": {
+        "tip": "Rozliš kvalitu odhadu pro zachycenou množinu a úplnost této množiny."
+      }
+    },
+    "en-c2-inference-2": {
+      "correctIndex": 0,
+      "correctWhy": "Nová měření mohou vést i k dočasnému zvýšení odhadu rizika. Otevřená revize proto může být známkou odpovědné práce, nikoli automaticky projevem slabosti instituce.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "they may be precisely what responsible evidence-based reasoning looks like."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Text nevyzývá k zatajování měnících se údajů. Naopak zdůrazňuje otevřené opravování úsudků.",
+          "tip": "Ověř, zda možnost neobrací autorovu výzvu k transparentnosti."
+        },
+        "2": {
+          "whyWrong": "Odpovědné uvažování může právě vyžadovat změnu odhadu při nových datech. Text neklade jako podmínku odpovědnosti neměnnost údajů.",
+          "tip": "Rozliš důslednost postupu a stálost jeho výsledku."
+        },
+        "3": {
+          "whyWrong": "Autor nezobecňuje, že nerozhodnost převládá ve většině institucí. Popisuje možné mylné hodnocení změněného údaje.",
+          "tip": "Odliš vnější interpretaci jednání od doloženého institucionálního rysu."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti kontrast mezi tím, jak revizi vnímá okolí, a jejím možným vědeckým významem."
+      }
+    },
+    "en-c2-inference-3": {
+      "correctIndex": 3,
+      "correctWhy": "Různé materiálové struktury mohou na stejný impuls reagovat odlišně. Úspěch s jedním tělesem je důkazem možnosti odklonu, nikoli zárukou stejného účinku u dalších těles.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "an observed result provides evidence, not exemption from further testing."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text neoznamuje, že Dimorphos byl nakonec zjištěn jako kompaktní skála. Dvě struktury uvádí jako kontrast možných reakcí.",
+          "tip": "Rozliš hypotetické srovnání struktur a konkrétní empirické zjištění o cíli."
+        },
+        "1": {
+          "whyWrong": "Z rozdílného mechanického chování nelze odvodit, že fragmentovaná tělesa přestala být nebezpečná. Tvrzení se týká účinku zásahu.",
+          "tip": "Odděl nebezpečnost objektu a jeho reakci na odklon."
+        },
+        "2": {
+          "whyWrong": "Text neřadí struktury podle univerzální snadnosti odklonu. Upozorňuje pouze, že mohou reagovat odlišně.",
+          "tip": "Pozor na slovo vždy tam, kde podklad dokládá jen možnost odlišnosti."
+        }
+      },
+      "unanswered": {
+        "tip": "Urči, která podmínka brání přenesení jediného experimentálního výsledku na všechny případy."
+      }
+    },
+    "en-c2-tone-1": {
+      "correctIndex": 1,
+      "correctWhy": "Slovo záměrně ukazuje vědomou volbu střízlivého závěru. Autor dává přednost soustavnému pozorování, otevřeným revizím a času na reakci před efektními prohlášeními.",
+      "evidence": [
+        {
+          "p": 4,
+          "text": "We protect Earth not by claiming to have conquered chance"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text zde nevyslovuje varování, že výzkum bude trvat několik desetiletí. Důraz klade na způsob práce, ne na předpověď její přesné délky.",
+          "tip": "Rozliš celkové hodnotící vyznění od konkrétního časového údaje."
+        },
+        "2": {
+          "whyWrong": "Autor vědce nezesměšňuje kvůli nedostatku ambicí. Jeho střízlivý závěr hodnotí soustavnou práci pozitivně.",
+          "tip": "Při určování ironie hledej rozpor mezi povrchovým významem a skutečným hodnocením."
+        },
+        "3": {
+          "whyWrong": "Není zde náznak, že skutečný závěr je skrytě spektakulární. Právě nenápadná práce je podle autora reálným základem ochrany.",
+          "tip": "Nevkládej do výroku ironii, pokud jej okolní argument výslovně potvrzuje."
+        }
+      },
+      "unanswered": {
+        "tip": "Vysvětli tón podle kontrastu s dramatickým řešením a hodnotou systematické práce."
+      }
+    },
+    "en-c2-tone-2": {
+      "correctIndex": 0,
+      "correctWhy": "Metafora nepřátelského vesmíru může zaujmout publikum, ale podle autora skrývá pomalou práci s poznáním, na níž zásah závisí. Postoj je tedy kritický, nikoli odmítnutí její zábavnosti.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "it obscures the slower intellectual work"
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Autor metaforu nepokládá za přesné shrnutí obrany. Právě její bojový rámec je zavádějící.",
+          "tip": "Rozliš uznání poutavosti obrazu a souhlas s jeho přesností."
+        },
+        "2": {
+          "whyWrong": "Text nekritizuje film proto, že zvětšuje asteroidy. Kritika se týká zastírání vědecké práce, nikoli fyzických rozměrů.",
+          "tip": "Urči konkrétní předmět autorovy kritiky."
+        },
+        "3": {
+          "whyWrong": "Autor neříká, že metafora je vhodným způsobem získávání podpory. Její schopnost upoutat nestačí k tomu, aby byla odpovědná.",
+          "tip": "Rozliš schopnost získat pozornost a legitimitu komunikační metody."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi hodnotící protiklad mezi působivostí metafory a tím, co zastírá."
+      }
+    },
+    "en-c2-tone-3": {
+      "correctIndex": 1,
+      "correctWhy": "Poznámka je jemně ironická: původní poplašné titulky nepředpokládaly, že se dřívější hrozba změní v cennou vědeckou příležitost. Autor tím ukazuje omezenost předčasných mediálních závěrů.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "What was once presented as a threat will thus become a rare scientific opportunity"
+        },
+        {
+          "p": 2,
+          "text": "an outcome that no headline of 2004 anticipated."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Apophis není podle textu méně zajímavý. Stává se vzácnou vědeckou příležitostí, takže ironie míří jinam.",
+          "tip": "Rozliš změnu míry rizika a změnu vědecké hodnoty objektu."
+        },
+        "2": {
+          "whyWrong": "Autor neobviňuje vědce ze zatajení pravdy v roce 2004. Popisuje revize výpočtů díky pozdějším měřením.",
+          "tip": "Odděl nejistotu původních údajů od úmyslného zatajování."
+        },
+        "3": {
+          "whyWrong": "Text nepožaduje potrestání novin. Jemný kontrast upozorňuje, že tehdejší titulky nepředvídaly skutečný pozdější význam průletu.",
+          "tip": "Při hodnocení tónu nerozšiřuj kritiku na nevyjádřený požadavek sankce."
+        }
+      },
+      "unanswered": {
+        "tip": "Porovnej původní rámec hrozby s pozdějším významem průletu."
+      }
+    },
+    "en-c2-critical-1": {
+      "correctIndex": 1,
+      "correctWhy": "Otázka hledá NEPODLOŽENÉ rozšíření závěru. DART ukázal možnost kinetického odklonu, nikoli existenci univerzální ochrany. Nelze zaručit včasné zabránění každému budoucímu dopadu.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "not proof that humanity possesses an all-purpose shield"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Demonstrovaný kinetický odklon je přímo popsaný výsledek testu. Proto tato možnost nepřekračuje důkazy, jak otázka vyžaduje.",
+          "tip": "Při hledání nepodloženého tvrzení vyřaď výsledky, které text výslovně potvrzuje."
+        },
+        "2": {
+          "whyWrong": "Měřitelná změna oběžné doby Dimorphosu je přímo uvedena. Tvrzení tedy patří mezi doložené, nikoli mezi nepodložené závěry.",
+          "tip": "Ověř, zda je tvrzení výslovně uvedeno jako naměřený účinek."
+        },
+        "3": {
+          "whyWrong": "Text popisuje, že sonda Dimorphos zasáhla. Samotná technická možnost takového zásahu je doložená; nezaručuje však úspěch všech dalších misí.",
+          "tip": "Rozliš existenci prokázaného dílčího výsledku a jeho univerzální platnost."
+        }
+      },
+      "unanswered": {
+        "tip": "U otázky s výrazem nad rámec důkazu si vyznač negaci a hledej tvrzení s nepodloženým zobecněním."
+      }
+    },
+    "en-c2-critical-2": {
+      "correctIndex": 2,
+      "correctWhy": "Otázka hledá tvrzení, které text NEPODPORUJE. Optické průzkumy zvýhodňují jasnější objekty, zatímco tmavší lze přehlédnout. Stejná snadnost jejich detekce je proto v rozporu s textem.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "whereas darker bodies can be harder to detect"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Zvýhodnění jasných a vhodně umístěných objektů text přímo uvádí. Proto nejde o nepodložené tvrzení.",
+          "tip": "V otázce s negací si nejprve vyřaď doslovně potvrzená tvrzení."
+        },
+        "1": {
+          "whyWrong": "Při krátkém pozorovaném úseku může více drah odpovídat údajům. Tento výrok je podložený a není hledanou výjimkou.",
+          "tip": "Ověř, zda text připouští právě tuto možnost, místo abys posuzoval jen její pravděpodobnost."
+        },
+        "3": {
+          "whyWrong": "Doplňující informace infračervených přístrojů text výslovně uznává, i když tyto přístroje nejsou neomylné. Jde o podložené tvrzení.",
+          "tip": "Odliš potvrzený přínos nástroje od tvrzení, že nemá žádné omezení."
+        }
+      },
+      "unanswered": {
+        "tip": "Označ si zápor v zadání a vyber možnost, jejíž obsah je v přímém rozporu s popsanou selektivitou."
+      }
+    },
+    "en-c2-critical-3": {
+      "correctIndex": 2,
+      "correctWhy": "Původní alarmující odhad pro Apophis byl dalšími měřeními odstraněn. Tento příklad dokládá, že nové důkazy mohou významně změnit či vyloučit dříve vypočtené riziko.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "an alarming figure that further measurements soon eliminated"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text nedokládá úmyslné nadsazování odhadů. Popisuje vývoj výpočtu při příchodu nových měření.",
+          "tip": "Rozliš změnu předběžné znalosti a tvrzení o nepoctivém úmyslu."
+        },
+        "1": {
+          "whyWrong": "Radarová měření umožnila vyloučit dopad pro Apophis po určité období. Nelze z toho odvodit stejnou záruku pro jakýkoli asteroid.",
+          "tip": "Ověř rozsah důkazu před zobecněním konkrétního případu."
+        },
+        "3": {
+          "whyWrong": "Text říká, že Apophis proletí blíže než některé komunikační družice, nikoli že do některé narazí.",
+          "tip": "Rozliš srovnání vzdáleností a předpověď skutečné kolize."
+        }
+      },
+      "unanswered": {
+        "tip": "Sleduj chronologii od předběžného odhadu po jeho revizi a odvoď jen to, co případ skutečně podporuje."
+      }
+    },
+    "en-c2-matching-1": {
+      "correctIndex": 1,
+      "correctWhy": "Druhý odstavec popisuje omezenost měření a výslovně varuje před procentem vytrženým z předpokladů, časového horizontu a nejistoty.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "A percentage quoted without its assumptions, time horizon or uncertainty can suggest a level of certainty the calculation never claimed."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Úvod rozlišuje kategorie rizika a kritizuje metaforu. Konkrétní argument o procentu bez předpokladů je až v druhém odstavci.",
+          "tip": "Rozliš pojmové rozlišení a interpretaci číselného odhadu."
+        },
+        "2": {
+          "whyWrong": "Třetí odstavec anglické verze ilustruje změnu rizika na Apophisu. Výslovné obecné tvrzení o procentu bez kontextu však předchází tomuto příkladu.",
+          "tip": "Rozliš obecnou tezi a její následnou ilustraci."
+        },
+        "3": {
+          "whyWrong": "Odstavec o DART řeší podmínky fyzického zásahu, nikoli interpretaci izolovaného procentního údaje.",
+          "tip": "Odliš technické omezení reakce a omezení interpretace odhadu."
+        },
+        "4": {
+          "whyWrong": "Závěr řeší politické priority a důvěru. Přesná formulace o izolovaném procentu patří k vysvětlení pozorovací nejistoty dříve.",
+          "tip": "Vyhledej explicitní větu, ne jen tematicky příbuznou část."
+        }
+      },
+      "unanswered": {
+        "tip": "Vyhledej společný výskyt procenta, předpokladů a neodůvodněné jistoty."
+      }
+    },
+    "en-c2-matching-2": {
+      "correctIndex": 0,
+      "correctWhy": "První odstavec rozlišuje vědecký důvod zkoumat těleso od politického důvodu jednat. Je to důsledek rozdílu mezi blízkostí a skutečnou hrozbou.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "a scientific reason to investigate an object from a political reason to take action"
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Druhý odstavec rozebírá selektivitu pozorování a revize odhadů, ale explicitní dvojici důvodů uvádí úvod.",
+          "tip": "Rozliš způsob získávání údajů a vymezení důvodů pro jednání."
+        },
+        "2": {
+          "whyWrong": "Třetí odstavec líčí proměnu rizika Apophisu v příležitost k výzkumu. Hledaný obecný rozdíl mezi výzkumným a politickým důvodem ale uvádí první odstavec.",
+          "tip": "Odděl případovou ilustraci od obecného pojmového rozlišení."
+        },
+        "3": {
+          "whyWrong": "Odstavec o DART vysvětluje technické podmínky odklonu, nikoli citovaný vztah výzkumné potřeby a politického jednání.",
+          "tip": "Rozliš podmínku účinné reakce a důvod, proč o ní rozhodovat."
+        },
+        "4": {
+          "whyWrong": "Závěr řeší politické rozhodování, ale formulace o dvojici důvodů se objevuje už v úvodu.",
+          "tip": "U více souvisejících odstavců hledej přesnou formulaci otázky."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi spojení scientific reason a political reason a ověř jeho funkci v argumentu."
+      }
+    },
+    "en-c2-matching-3": {
+      "correctIndex": 3,
+      "correctWhy": "Čtvrtý odstavec popisuje test DART a přímo označuje Dimorphos jako měsíc Didymosu.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "By striking Dimorphos, a moon of Didymos"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "První odstavec rozebírá metaforu a význam označení blízkozemní. Neidentifikuje Dimorphos jako měsíc.",
+          "tip": "Rozliš obecný výklad asteroidů a identifikaci konkrétního tělesa."
+        },
+        "1": {
+          "whyWrong": "Druhý odstavec popisuje pozorovací metody, nikoli vztah Dimorphosu k Didymosu.",
+          "tip": "Hledej výslovné pojmenování tělesa, ne pouze obecně orbitální téma."
+        },
+        "2": {
+          "whyWrong": "Třetí odstavec pojednává o Apophisu, jiném asteroidu. Dimorphos je popsán v navazujícím odstavci o DART.",
+          "tip": "Rozliš jednotlivé případové příklady podle vlastních jmen."
+        },
+        "4": {
+          "whyWrong": "Poslední odstavec shrnuje politické a komunikační podmínky ochrany, nikoli definici cíle DART.",
+          "tip": "Urči, zda otázka míří na závěrečnou tezi, nebo fakt o konkrétním objektu."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi jméno Dimorphos a přečti připojené vysvětlení jeho vztahu k Didymosu."
+      }
+    },
+    "en-c2-structure-1": {
+      "correctIndex": 1,
+      "correctWhy": "Doplněná věta zavádí politické dilema: vzácným katastrofám konkurují bezprostřední potřeby a úspěšná prevence bývá málo viditelná. Následující věty právě rozvíjejí odpovědné investice a důvěru.",
+      "evidence": [
+        {
+          "p": 4,
+          "text": "Policy decisions introduce a further difficulty: resources devoted to very rare disasters compete with other urgent needs, while the benefits of successful preparation are largely invisible."
+        },
+        {
+          "p": 4,
+          "text": "It would be irresponsible to promise absolute safety"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text netvrdí, že vlády předaly odpovědnost soukromým firmám. Takový úvod by zavedl nové téma, které další věty o investicích a odpovědnosti nerozvíjejí.",
+          "tip": "Ověř, zda následující text vysvětluje aktéry a problém zavedený doplněnou větou."
+        },
+        "2": {
+          "whyWrong": "Text nekonstatuje, že veřejnost důvěřuje filmům bez ohledu na důkazy. Následující argument řeší odpovědné předpovědi a otevřenou revizi rozhodnutí.",
+          "tip": "Rozliš dřívější kritiku filmové metafory a nové politické dilema."
+        },
+        "3": {
+          "whyWrong": "Článek nedokládá poměr cen sond a dalekohledů ani zánik financování pozorování. Následující věty naopak vysvětlují, proč má smysl do pozorování investovat.",
+          "tip": "Nevkládej do mezery nepodložené ekonomické tvrzení; ověř logickou návaznost na další větu."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti následující věty a hledej téma, které propojuje jejich argumenty o přípravě a veřejném rozhodování."
+      }
+    },
+    "en-c2-structure-2": {
+      "correctIndex": 3,
+      "correctWhy": "Ukazovací výraz odkazuje na revize odhadu rizika po dalších měřeních, konkrétně na možnost, že hodnota nejprve vzroste a následně klesne. Následující věta hodnotí právě tyto změny.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "sometimes making a preliminary risk estimate rise before it falls."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Termíny plánovaných misí nejsou v předcházející větě uvedeny. Revize se týká odhadu rizika z nových pozorování.",
+          "tip": "Rozliš revizi harmonogramu a revizi vědeckého odhadu."
+        },
+        "1": {
+          "whyWrong": "Konstrukční úpravy sondy patří k jinému možnému tématu. Zájmeno zde navazuje na změny vypočtené pravděpodobnosti.",
+          "tip": "Při hledání referentu sleduj bezprostřední kontext, ne vzdálenější téma DART."
+        },
+        "2": {
+          "whyWrong": "Text před výrazem nepopisuje změny názvů asteroidů. Popisuje, jak nové údaje omezují množinu trajektorií.",
+          "tip": "Rozliš změnu označení objektu a změnu poznatku o jeho dráze."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi bezprostředně před výrazem proces, který může vysvětlit kritiku zdánlivé nerozhodnosti."
+      }
+    },
+    "en-c2-structure-3": {
+      "correctIndex": 3,
+      "correctWhy": "However omezuje praktickou hodnotu technického úspěchu: včasný odklon může být účinný, ale bez spolehlivého zjištění hrozby by neměl potřebný praktický kontext.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "A modest deflection applied years in advance could be more consequential"
+        },
+        {
+          "p": 3,
+          "text": "Engineering success without reliable detection would, however, be an achievement deprived of its practical context."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Spojka neporovnává dvě tělesa. Kontrastuje technickou možnost odklonu s podmínkou spolehlivé detekce.",
+          "tip": "Urči, zda spojka spojuje aktéry, nebo dvě tvrzení."
+        },
+        "1": {
+          "whyWrong": "Věta neuvádí příklad neúspěšné mise. Stanoví podmínku, za níž by i technický úspěch ztratil praktickou hodnotu.",
+          "tip": "Rozliš hypotetické omezení a skutečně popsaný neúspěch."
+        },
+        "2": {
+          "whyWrong": "Historie Apophisu je předchozí příklad. However v dané větě nerozšiřuje jeho příběh, nýbrž omezuje důsledek technického úspěchu.",
+          "tip": "Vyhodnoť funkci spojky v její konkrétní větě."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti tvrzení před however i výhradu po něm a určuj jejich argumentační vztah."
+      }
+    }
+  }
+}
