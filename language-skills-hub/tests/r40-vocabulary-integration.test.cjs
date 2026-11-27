@@ -10,7 +10,7 @@ const catalog=JSON.parse(read('data/cards.json')).entries;
 const manifest=JSON.parse(read('version.json'));
 const {integrityContent}=require('./reading-content-integrity.cjs');
 test('R40: original 34 cards retain their shared vocabulary; City Quest stays standalone',()=>{
- assert.equal(catalog.length,35);
+ assert.equal(catalog.length,36);
  const regular=catalog.filter(e=>e.cardType!=='interactive-language-game');
  assert.equal(regular.length,34);
  const conv=regular.filter(x=>x.skill==='konverzace'),readers=regular.filter(x=>x.skill==='cteni'),listeners=regular.filter(x=>x.skill==='poslech');
@@ -23,6 +23,12 @@ test('R40: original 34 cards retain their shared vocabulary; City Quest stays st
   const source=read(e.relative);
   assert.equal(crypto.createHash('sha256').update(integrityContent(e.id,source)).digest('hex'),manifest.contentHashes[e.id],e.id);
   if(e.cardType==='interactive-language-game'){
+   if(e.id==='cl-christmas-quest'){
+    assert.match(source,/connect-src 'none'/);
+    assert.match(source,/lsh\.cq\.progress\.v2/);
+    assert.doesNotMatch(source,/card-bridge\.js|card-vocabulary\.js|indexedDB/);
+    continue;
+   }
    assert.equal(e.id,'cl-city-quest-f2');
    assert.match(source,/connect-src 'none'/);
    assert.doesNotMatch(source,/assets\/lsh\/v3\/card-bridge\.js|card-vocabulary\.js|indexedDB|localStorage/);

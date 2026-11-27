@@ -1,9 +1,25 @@
 {
   "kind": "LSH_TEACHER_CHANGELOG_V1",
   "schemaVersion": 1,
-  "latestAnnouncementSequence": 8,
-  "contentRevision": 4,
+  "latestAnnouncementSequence": 9,
+  "contentRevision": 5,
   "releases": [
+    {
+      "id": "lsh-2026-11-27-christmas-quest-preview",
+      "sequence": 9,
+      "publishedAt": "2026-11-27",
+      "title": "Christmas Quest: Vánoce kolem světa",
+      "changes": [
+        {
+          "id": "conversation-christmas-quest-developer-preview",
+          "area": "conversation",
+          "category": "content",
+          "title": "Christmas Quest v Conversation Lab",
+          "description": "V katalogu Conversation Lab najdeš novou kartu Christmas Quest, interaktivní jazykovou hru zaměřenou na vánoční tradice ve světě. Hru právě dokončuji a testuji, proto zatím není možné ji běžně spustit ani sdílet se studenty. O zpřístupnění hry budu informovat samostatně.",
+          "teacherBenefit": "Získáš přehled o připravovaném rozšíření Conversation Lab a bude jasné, že hra zatím není určena k použití ve výuce."
+        }
+      ]
+    },
     {
       "id": "lsh-2026-11-23-pwa-installation",
       "sequence": 8,

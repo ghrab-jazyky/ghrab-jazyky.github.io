@@ -6,7 +6,7 @@ const catalog=JSON.parse(read('data/cards.json')),version=JSON.parse(read('versi
 const entry=catalog.entries.find(x=>x.id==='ll-conlangs'),html=read('poslech/conlangs/index.html'),data=core.extractJson(html,'DATA');
 const levels=['A1','A2','B1','B2','C1','C2'];const correctFor=v=>({gist:v.gist.map(q=>q.correct),detail:v.detail.map(q=>q.correct),matching:v.matching.items.map(q=>q.correct),sequence:[],cloze:[]});
 test('R69 catalog and unchanged historical approved 4 Listening HTML checksums',()=>{
- assert.equal(version.topicCount,35);assert.equal(version.variantCount,726);assert.equal(catalog.entries.length,35);
+ assert.equal(version.topicCount,36);assert.equal(version.variantCount,750);assert.equal(catalog.entries.length,36);
  assert.equal(catalog.entries.filter(x=>x.skill==='poslech').length,6);
  assert.deepEqual(entry.languages,['en']);assert.deepEqual(entry.levels,levels);assert.equal(core.catalogEntry(catalog,entry.id),entry);
  assert.equal(version.contentHashes[entry.id],crypto.createHash('sha256').update(html).digest('hex'));

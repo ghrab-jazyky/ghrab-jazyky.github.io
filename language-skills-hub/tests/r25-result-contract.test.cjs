@@ -174,8 +174,8 @@ test('R25 repository README points at the real live school catalog, not the arch
  assert.match(readme,/\*\*Veřejný katalog:\*\*/);
 });
 test('R25 public practice cards remain unchanged and local results keep grading off',()=>{
- assert.equal(catalog.entries.length,35);
- assert.equal(catalog.entries.reduce((n,e)=>n+e.languages.length*e.levels.length,0),726);
+ assert.equal(catalog.entries.length,36);
+ assert.equal(catalog.entries.reduce((n,e)=>n+e.languages.length*e.levels.length,0),750);
  for(const entry of catalog.entries){
   const digest=crypto.createHash('sha256').update(integrityContent(entry.id,fs.readFileSync(path.join(root,entry.relative)))).digest('hex');
   assert.equal(digest,version.contentHashes[entry.id]);

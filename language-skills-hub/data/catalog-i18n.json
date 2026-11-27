@@ -697,6 +697,28 @@
         "title": "Le pluriel",
         "summary": "Formation du pluriel en français, du niveau A1 au C2, avec cartes interactives, règles, exceptions et activités orales."
       }
+    },
+    "cl-christmas-quest": {
+      "cs": {
+        "title": "Christmas Quest – Vánoce kolem světa",
+        "summary": "Interaktivní jazyková hra. Poznej vánoční tradice Islandu, Mexika, Španělska, Filipín a Kolumbie. Pět hratelných misí; další destinace jsou v přípravě. EN/ES/DE/FR, A1–C2."
+      },
+      "en": {
+        "title": "Christmas Quest – Christmas Around the World",
+        "summary": "Discover Christmas traditions in Iceland, Mexico, Spain, the Philippines and Colombia. Five playable missions; more destinations are in development. EN/ES/DE/FR, A1–C2."
+      },
+      "es": {
+        "title": "Christmas Quest – Navidad alrededor del mundo",
+        "summary": "Descubre las tradiciones navideñas de Islandia, México, España, Filipinas y Colombia. Cinco misiones disponibles; se están preparando nuevos destinos. EN/ES/DE/FR, A1–C2."
+      },
+      "de": {
+        "title": "Christmas Quest – Weihnachten rund um die Welt",
+        "summary": "Entdecke Weihnachtstraditionen in Island, Mexiko, Spanien, auf den Philippinen und in Kolumbien. Fünf spielbare Missionen; weitere Reiseziele sind in Vorbereitung. EN/ES/DE/FR, A1–C2."
+      },
+      "fr": {
+        "title": "Christmas Quest – Noël autour du monde",
+        "summary": "Découvre les traditions de Noël en Islande, au Mexique, en Espagne, aux Philippines et en Colombie. Cinq missions jouables ; d’autres destinations sont en préparation. EN/ES/DE/FR, A1–C2."
+      }
     }
   }
 }

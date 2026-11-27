@@ -4,7 +4,7 @@ const byId=id=>document.getElementById(id);
 const params=new URLSearchParams(location.search);
 const titles={konverzace:'Conversation Lab',cteni:'Reading Lab',poslech:'Listening Lab'};
 const tags={konverzace:'Mluvení',cteni:'Čtení',poslech:'Poslech'};
-const gameLabels={cs:'Interaktivní jazyková hra · městský quest',en:'Interactive language game · city quest',es:'Juego interactivo de idiomas · aventura urbana',de:'Interaktives Sprachspiel · Stadtquest',fr:'Jeu de langue interactif · aventure urbaine'};
+const gameLabels={cs:'Interaktivní hra',en:'Interactive game',es:'Juego interactivo',de:'Interaktives Spiel',fr:'Jeu interactif'};
 const labels={en:'English',es:'Español',de:'Deutsch',fr:'Français'};
 const levels=['A1','A2','B1','B2','C1','C2'];
 const allowed=new Set(['konverzace','cteni','poslech']);
@@ -121,6 +121,7 @@ function catalogVariant(e,languageFilter,levelFilter){
    e.languages.length===1?labels[e.languages[0]]:'všechny dostupné jazyky')+
    '; úroveň: '+(chosenLevel||'všechny dostupné úrovně')};
 }
+function isChristmasPreview(e){return e.id==='cl-christmas-quest'}
 function card(e){
  const filter=byId('language').value,levelFilter=byId('level').value;
  const language=filter==='all'?'cs':filter;
@@ -148,6 +149,7 @@ function card(e){
  }
  const summary=one('p','catalog-summary',translation.summary);
  summary.lang=language;article.appendChild(summary);
+ if(isChristmasPreview(e))article.appendChild(one('p','note','Ve vývoji – přístup pouze pro vývojáře.'));
  article.appendChild(one('p','note',e.languages.length===1?
   'Dostupný jazyk: '+labels[e.languages[0]]:
   'Jazyky: '+e.languages.map(l=>l.toUpperCase()).join(' · ')));
@@ -157,7 +159,16 @@ function card(e){
  open.setAttribute('aria-label','Otevřít '+translation.title+' · '+variant.aria);
  const share=one('button','action','Sdílet se studenty');share.type='button';
  share.setAttribute('aria-label','Sdílet se studenty: '+translation.title);
- share.addEventListener('click',()=>openShare(e));
+ if(isChristmasPreview(e)){
+  open.addEventListener('click',event=>{
+   if(window.LSHTemporaryTestLock?.hasPreviewAccess()===true)return;
+   event.preventDefault();
+   if(window.LSHTemporaryTestLock?.showNotice)window.LSHTemporaryTestLock.showNotice({activity:'christmas-quest'});
+   else window.alert('Christmas Quest je zatím ve vývoji a není dostupný k běžnému použití.');
+  });
+  share.disabled=true;
+  share.title='Sdílení se studenty bude dostupné po veřejném vydání.';
+ }else share.addEventListener('click',()=>openShare(e));
  actions.append(open,share);
  if(['cteni','poslech'].includes(e.skill)){
   const key=one('a','action','VÝSLEDKY');
@@ -421,6 +432,7 @@ function shareMode(){
  return byId('shareFixed').checked?'fixed':'free';
 }
 function makeShareUrl(e,mode,language,level){
+ if(isChristmasPreview(e))return '';
  const url=new URL(e.lockSource||e.relative,document.baseURI);
  url.searchParams.set('practice','1');
  if(mode==='free')return url.href;
@@ -469,6 +481,7 @@ function updateSharePreview(){
  }
 }
 function openShare(e){
+ if(isChristmasPreview(e))return;
  shareEntry=e;
  qrTitle=localized(e).title;
  byId('qrTitle').textContent=qrTitle;

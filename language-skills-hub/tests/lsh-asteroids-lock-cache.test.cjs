@@ -7,7 +7,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 const release='rl-lock-rehearsal-20261120-9';
-const catalogRelease='rl-lock-rehearsal-20261120-9';
+const catalogRelease='cq-dev-preview-081';
 test('Asteroids teacher and standalone mobile trainer pin fresh JS and CSS',()=>{
  const reading=read('self-check/reading/teacher.html');
  const mobile=read('self-check/session/gesture-trainer.html');

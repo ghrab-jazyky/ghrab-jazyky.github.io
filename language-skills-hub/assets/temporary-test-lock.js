@@ -72,6 +72,7 @@
  function showNotice(options={}){
   if(!isLocked())return;
   const back=options.returnToCatalog||null;
+  const christmas=options.activity==='christmas-quest';
   if(!root.document.body){
    root.document.addEventListener('DOMContentLoaded',()=>showNotice(options),{once:true});
    return;
@@ -86,13 +87,13 @@
   dialog.id=DIALOG_ID;
   dialog.setAttribute('aria-labelledby','lshTemporaryTestTitle');
   dialog.setAttribute('aria-describedby','lshTemporaryTestDescription');
-  const heading=el('h2','lsh-temporary-test-title','Testovací část se právě upravuje');
+  const heading=el('h2','lsh-temporary-test-title',christmas?'Christmas Quest je zatím ve vývoji':'Testovací část se právě upravuje');
   heading.id='lshTemporaryTestTitle';
   const copy=el('div','lsh-temporary-test-description');
   copy.id='lshTemporaryTestDescription';
   copy.append(
    el('p',null,'Milá kolegyně, milý kolego,'),
-   el('p',null,'vážím si toho, že chceš vyzkoušet testy v Reading a Listening Labs. Právě na nich provádím větší úpravy, a proto jsou dočasně nedostupné.'),
+   el('p',null,christmas?'hru právě dokončuji a testuji, proto zatím není dostupná k běžnému použití.':'vážím si toho, že chceš vyzkoušet testy v Reading a Listening Labs. Právě na nich provádím větší úpravy, a proto jsou dočasně nedostupné.'),
    el('p',null,'Ostatní části LSH můžeš dál používat. Prosím tě o trpělivost a zkus to později.'),
    el('p','lsh-temporary-test-signature','Děkuji za pochopení! Daniel')
   );
