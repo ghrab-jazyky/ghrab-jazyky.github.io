@@ -1,0 +1,80 @@
+name: LSH Asteroids Smart Feedback F2 (development only, NO DEPLOY)
+on:
+  push:
+    branches: ['feature/lsh-smart-feedback-asteroids-f2']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: lsh-smart-feedback-f2-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  unit:
+    if: github.ref == 'refs/heads/feature/lsh-smart-feedback-asteroids-f2'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Native SHA, exact source and score parity
+        run: |
+          mkdir -p sf-evidence
+          git rev-parse HEAD | tee sf-evidence/HEAD.txt
+          node --check language-skills-hub/self-check/reading/reading-core.js
+          node --check language-skills-hub/self-check/reading/reading.js
+          node --check language-skills-hub/self-check/results/pdf-report.js
+          set -o pipefail
+          node --test language-skills-hub/tests/smart-feedback-asteroids-f1.test.cjs | tee sf-evidence/unit.log
+      - name: Existing feedback and teacher archive unit gates
+        if: always()
+        run: |
+          mkdir -p sf-evidence
+          set -o pipefail
+          node --test language-skills-hub/tests/r29-feedback.test.cjs language-skills-hub/tests/r34-full-pdf-export.test.cjs language-skills-hub/tests/r48-errors-only-feedback.test.cjs | tee sf-evidence/regression-unit.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smart-feedback-f2-unit
+          path: sf-evidence/
+  browsers:
+    if: github.ref == 'refs/heads/feature/lsh-smart-feedback-asteroids-f2'
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host --user 1001
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install pinned browser driver
+        run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - name: Compare real baseline and candidate; capture offline network logs and screenshots
+        run: |
+          mkdir -p sf-evidence
+          git rev-parse HEAD | tee sf-evidence/HEAD.txt
+          git worktree add --detach /tmp/sf-baseline fde581f864093a0b87d60afbc552e5c4e021e7e5
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/sf-candidate.log 2>&1 &
+          CANDIDATE_PID=$!
+          python3 -m http.server 8766 --bind 127.0.0.1 --directory /tmp/sf-baseline >/tmp/sf-baseline.log 2>&1 &
+          BASE_PID=$!
+          trap 'kill "$CANDIDATE_PID" "$BASE_PID" || true' EXIT
+          for i in $(seq 1 30); do
+            if node -e 'Promise.all([8765,8766].map(p=>fetch("http://127.0.0.1:"+p+"/language-skills-hub/index.html"))).then(r=>process.exit(r.every(x=>x.ok)?0:1)).catch(()=>process.exit(1))'; then break; fi
+            sleep 1
+          done
+          set -o pipefail
+          node --test language-skills-hub/tests/smart-feedback-asteroids-f1.browser.test.cjs | tee sf-evidence/browser.log
+        shell: bash
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smart-feedback-f2-browser-evidence
+          path: sf-evidence/

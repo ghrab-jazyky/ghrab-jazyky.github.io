@@ -10,23 +10,32 @@ const original=execFileSync('git',['show',BASE+':'+file],{cwd:repo,maxBuffer:600
 const candidate=fs.readFileSync(path.join(repo,file),'utf8');
 const data=core.parseReadingData(candidate),v=core.variantFromData(data,'en','B2');
 const marker='<script type="application/json" id="lsh-smart-feedback-asteroids-v1">';
-const originalBank=JSON.parse(fs.readFileSync(path.join(root,'docs/smart-feedback-asteroids-f1/en-B2.json'),'utf8'));
+const originalBank={schemaVersion:1,topicId:'rl-asteroids',feedbackLanguage:'cs',variants:{}};
+for(const lang of core.LANGUAGES)for(const level of core.LEVELS){
+ const key=lang+'/'+level;
+ const p=lang==='en'&&level==='B2'?'docs/smart-feedback-asteroids-f1/en-B2.json':'docs/smart-feedback-asteroids-f2/'+lang+'-'+level+'.json';
+ const raw=fs.readFileSync(path.join(root,p),'utf8'),parsed=JSON.parse(raw);
+ assert.equal(raw,JSON.stringify(parsed,null,2)+'\n');
+ originalBank.variants[key]=lang==='en'&&level==='B2'?parsed.variants[key]:parsed;
+}
 const embed=b=>marker+JSON.stringify(b).replace(/</g,'\\u003c')+'</script>';
 const validate=s=>core.validateSmartFeedback(s,'rl-asteroids','en','B2',v);
 const sha=s=>createHash('sha256').update(s).digest('hex');
-test('F1 exact byte-preservation outside one inert block; authored JSON matches embedded payload',()=>{
+test('F2 exact byte-preservation outside one inert block; authored JSON matches embedded payload',()=>{
  assert.equal(candidate.replace(embed(originalBank)+'\n',''),original);
  assert.equal(sha(original),'59167c05eb80b492300b368fc0a1f45f19c1af6631d4a19c560dae98e0d45bac');
- assert.equal(sha(candidate),'8865189403becf1feb76b9ae9dfb3b05ac0361f762fe0261ababbe8341b5f343');
+ assert.notEqual(sha(candidate),sha(original));
  assert.ok(candidate.length<=2500000);
  assert.deepEqual(core.parseReadingData(candidate),core.parseReadingData(original));
- assert.equal(fs.readFileSync(path.join(root,'docs/smart-feedback-asteroids-f1/en-B2.json'),'utf8'),JSON.stringify(originalBank,null,2)+'\n');
+
  assert.deepEqual(core.parseSmartFeedback(candidate),originalBank);
 });
-test('F1 native Web Crypto fingerprint and every answer state (18 correct, 57 wrong, 18 blank)',async()=>{
- const bank=await validate(candidate);
- assert.equal(bank.sourceFingerprint,'961d59115da5d610b52ad60f766b8acf4b38ebad05f623e510fdcd894de3d3b4');
+test('F2 native Web Crypto and every answer state across all 24 variants (1689 cases)',async()=>{
  const count={correct:0,wrong:0,unanswered:0};
+ for(const lang of core.LANGUAGES)for(const level of core.LEVELS){
+ const v=core.variantFromData(data,lang,level);
+ const bank=await core.validateSmartFeedback(candidate,'rl-asteroids',lang,level,v);
+ assert.equal(bank.sourceFingerprint,originalBank.variants[lang+'/'+level].sourceFingerprint);
  for(const q of v.questions){
   for(let i=-1;i<q.choices.length;i++){
    const item=core.score(v,i<0?{}:{[q.id]:i}).details.find(x=>x.id===q.id);
@@ -44,9 +53,10 @@ test('F1 native Web Crypto fingerprint and every answer state (18 correct, 57 wr
    assert.equal(f.correctWhy,bank.questions[q.id].correctWhy);
   }
  }
- assert.deepEqual(count,{correct:18,wrong:57,unanswered:18});
+ }
+ assert.deepEqual(count,{correct:360,wrong:969,unanswered:360});
 });
-test('F1 fail-closed invalid payloads: missing, repeated, stale, extra, malformed and bad evidence',async()=>{
+test('F2 fail-closed invalid payloads: missing, repeated, stale, extra, malformed and bad evidence',async()=>{
  const first=v.questions[0].id;
  const edit=fn=>{const b=structuredClone(originalBank);fn(b,b.variants['en/B2'],b.variants['en/B2'].questions[first]);return embed(b);};
  const bad=[
@@ -62,14 +72,16 @@ test('F1 fail-closed invalid payloads: missing, repeated, stale, extra, malforme
   edit((b,s,f)=>f.unanswered.tip='TODO'),
   edit((b,s,f)=>f.evidence.push(f.evidence[0])),
   edit((b,s,f)=>f.distractors[String(f.correctIndex)]={whyWrong:'bad',tip:'bad'}),
-  edit(b=>b.variants['en/A1']=b.variants['en/B2'])
+  edit(b=>delete b.variants['fr/C2']),
+  edit(b=>b.variants['xx/B2']=b.variants['en/B2'])
  ];
  for(const s of bad)await assert.rejects(validate(s));
  await assert.rejects(core.validateSmartFeedback(candidate,'rl-other','en','B2',v));
- await assert.rejects(core.validateSmartFeedback(candidate,'rl-asteroids','en','B1',data.en.B1));
+ await assert.rejects(core.validateSmartFeedback(candidate,'rl-asteroids','en','B1',v));
+ await assert.rejects(core.validateSmartFeedback(edit(b=>b.variants['en/A1']=b.variants['en/B2']),'rl-asteroids','en','A1',core.variantFromData(data,'en','A1')));
  assert.equal(core.resolveSmartFeedback(core.score(v,{}).details[0],null,v),null);
 });
-test('F1 exact original score implementation and score parity across all 24 variants (72 cases)',()=>{
+test('F2 exact original score implementation and score parity across all 24 variants (72 cases)',()=>{
  const oldCode=execFileSync('git',['show',BASE+':language-skills-hub/self-check/reading/reading-core.js'],{cwd:repo}).toString('utf8');
  const newCode=fs.readFileSync(path.join(root,'self-check/reading/reading-core.js'),'utf8');
  assert.equal(newCode.slice(newCode.indexOf(' function score('),newCode.indexOf(' // F1:')).trim(),

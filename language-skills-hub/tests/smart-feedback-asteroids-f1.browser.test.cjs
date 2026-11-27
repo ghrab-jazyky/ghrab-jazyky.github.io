@@ -143,3 +143,56 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
   }finally{await browser.close();}
  });
 }
+
+const allData=core.parseReadingData(fs.readFileSync(path.join(__dirname,'../cteni/asteroids/index.html'),'utf8'));
+const allBank=core.parseSmartFeedback(fs.readFileSync(path.join(__dirname,'../cteni/asteroids/index.html'),'utf8'));
+for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
+ test('F2 '+name+' all 24 variants: offline real interface, evidence, wrong and blank, full export, no traffic',{timeout:600000},async()=>{
+  const browser=await engine.launch({headless:true});
+  try{
+   for(const lang of core.LANGUAGES)for(const level of core.LEVELS){
+    const tag=name+'-'+lang+'-'+level;
+    const variant=core.variantFromData(allData,lang,level), authored=allBank.variants[lang+'/'+level];
+    const context=await browser.newContext({viewport:{width:1024,height:900},colorScheme:'dark',acceptDownloads:true,serviceWorkers:'block'});
+    const traffic={before:[],after:[],errors:[],websocket:[],workers:[],readyMs:null};let ready=false;
+    context.on('request',req=>{if(/^https?:/.test(req.url()))(ready?traffic.after:traffic.before).push({method:req.method(),url:req.url(),type:req.resourceType()});});
+    context.on('serviceworker',w=>traffic.workers.push(w.url()));
+    await context.route('**/*',route=>route.continue());
+    const page=await context.newPage();page.on('pageerror',e=>traffic.errors.push(e.message));page.on('worker',w=>traffic.workers.push(w.url()));page.on('websocket',w=>traffic.websocket.push(w.url()));page.on('dialog',d=>d.accept());
+    await page.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async text=>{window.__sfCopy=text;}}}));
+    try{
+     const url=new URL(candidate);url.searchParams.set('lang',lang);url.searchParams.set('level',level);
+     const start=Date.now();await page.goto(url.href);await page.locator('#workspace:not([hidden])').waitFor();await page.locator('#loading[hidden]').waitFor({state:'attached'});traffic.readyMs=Date.now()-start;ready=true;await context.setOffline(true);
+     for(let i=0;i<variant.questions.length;i++){
+      if(i===1)continue;
+      const q=variant.questions[i],field=page.locator('#questionList fieldset.question').nth(i);
+      const skill=await field.evaluate(el=>el.closest('[role="tabpanel"]').dataset.skill);
+      await page.locator('#readingSkillTabs [role="tab"][data-skill="'+skill+'"]').click();
+      await field.locator('input[type=radio]').nth(i===0?(q.answer+1)%q.choices.length:q.answer).check();
+     }
+     await page.locator('#submitButton').click();await page.locator('#results:not([hidden])').waitFor();
+     assert.equal(await page.locator('#resultDetails').getAttribute('data-sf-phase'),'SUMMARY',tag);
+     assert.equal(await page.locator('#resultDetails article').count(),0);
+     await page.locator('#exportCopy').click();await page.waitForFunction(()=>typeof window.__sfCopy==='string');
+     const archive=normalizeCopy(await page.evaluate(()=>window.__sfCopy));
+     assert.equal((archive.match(/^Odpoved studenta:/gm)||[]).length,variant.questions.length);
+     await page.locator('#sfAccept').click();
+     const cards=page.locator('#resultDetails article.sf-card');assert.equal(await cards.count(),2,tag);
+     for(let i=0;i<2;i++){
+      const q=variant.questions[i],f=authored.questions[q.id],card=cards.nth(i),content=await card.textContent();
+      assert.equal(await card.getAttribute('data-question-id'),q.id);assert.ok(content.includes(f.correctWhy),tag+' reason');
+      assert.ok(content.includes(i===0?f.distractors[(q.answer+1)%q.choices.length].whyWrong:f.unanswered.tip),tag+' tailored');
+      for(const e of f.evidence)assert.ok(content.includes(e.text),tag+' evidence');
+     }
+     if(['A1','B2','C2'].includes(level))await screenshot(page,'matrix-'+tag);
+     await page.locator('#sfDone').click();assert.equal(await cards.count(),0);
+     await page.evaluate(()=>{delete window.__sfCopy;});await page.locator('#exportCopy').click();await page.waitForFunction(()=>typeof window.__sfCopy==='string');
+     assert.equal(normalizeCopy(await page.evaluate(()=>window.__sfCopy)),archive,tag);
+     const pending=page.waitForEvent('download',{timeout:30000});await page.locator('#exportResult').click();const dl=await pending,buf=fs.readFileSync(await dl.path()).toString('utf8');
+     for(const q of variant.questions)assert.ok(buf.includes(q.id),tag+' CSV '+q.id);
+     noNetwork(traffic);
+    }finally{fs.writeFileSync(path.join(evidence,'matrix-'+tag+'-network.json'),JSON.stringify(traffic,null,2));await context.close();}
+   }
+  }finally{await browser.close();}
+ });
+}
