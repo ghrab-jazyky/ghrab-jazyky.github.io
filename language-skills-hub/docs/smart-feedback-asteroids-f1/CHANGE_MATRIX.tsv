@@ -1,0 +1,8 @@
+ID	File	Change	Reason	Status
+F1-01	cteni/asteroids/index.html	One inert canonical EN/B2 JSON block	No new request; exact source preservation outside block	IMPLEMENTED
+F1-02	self-check/reading/reading-core.js	Strict schema, semantic validation, fingerprint and resolution	Separate feedback from scoring	IMPLEMENTED
+F1-03	self-check/reading/reading.js	SUMMARY/FEEDBACK/DECLINED/DONE in memory, scoped to validated EN/B2	No early feedback; preserve archive and attempt lifecycle	IMPLEMENTED
+F1-04	self-check/reading/reading.css	Scoped responsive cards and dark/light tokens	Premium feedback without extra assets	IMPLEMENTED
+F1-05	self-check/results/pdf-report.js	Bounded bootstrap logo and local-only download	No post-READY retry in pilot	IMPLEMENTED
+F1-06	tests/smart-feedback-asteroids-f1*.cjs	Unit and browser evidence harness	Exact source, network, export and screenshots	ADDED_NOT_RUN
+F3-01	version.json, print manifest and PDF corpus	Reconcile actual full card hash using official workflow	No hash normalization or weakening; F3 pending	BLOCKER_FOR_RELEASE
