@@ -1,0 +1,434 @@
+{
+  "baseline": "fcfa2e4d7fb8a910d24c240e049cbf36ed86bd32",
+  "production": "d8d032ee1fc51a009df3d20d8fb64135f9b23be3",
+  "approval": "Owner approved D03 and D22; no approval to deploy",
+  "previousSha": "f24232f5699b8f2f52313e91ccf74f559d5bd13aa0c07bec19ec46ad826f6788",
+  "cardSha256": "6776eb422a143ed03a442abb057aa9e39d8175fdcbe9b01d4e126076630a8bc1",
+  "cardBlob": "15b58830bdf6b4e774527bcd15c456beb9cb71d3",
+  "sourceSha256": "26bb864931932d9f966950cd96a72dbac332fba48e1338267105f33ca4924399",
+  "sourceBlob": "2348c4f446359dd7aa8f8bc20145ac50e6a0d23b",
+  "edits": [
+    {
+      "group": "D03",
+      "variant": "es/C2",
+      "id": "es-c2-critical-3",
+      "field": "q",
+      "answer": 3,
+      "before": "¿Qué dato faltaría para afirmar que una desviación funcionaría ante una amenaza real?",
+      "after": "Según el autor, ¿qué condición adicional es decisiva para que una desviación sea eficaz, más allá de acertar en el asteroide?",
+      "oldFeedback": {
+        "correctIndex": 3,
+        "correctWhy": "Podle textu by nestačilo umět cíl zasáhnout. Rozhodující je, zda při dostatečně časné znalosti jeho dráhy a struktury dokážeme včas a dostatečně změnit budoucí polohu.",
+        "evidence": [
+          {
+            "p": 2,
+            "text": "Ante una amenaza real, la pregunta relevante sería menos «¿podemos golpear el asteroide?» que «¿podemos cambiar suficientemente pronto su posición futura, conociendo su estructura y trayectoria?»."
+          }
+        ],
+        "distractors": {
+          "0": {
+            "whyWrong": "Přesný zásah je technicky významný, ale text ho výslovně staví jako nedostatečné měřítko. Samotný kontakt nezaručuje potřebnou změnu budoucí polohy.",
+            "tip": "Rozliš nutnou dílčí podmínku a postačující kritérium účinku."
+          },
+          "1": {
+            "whyWrong": "Mediální zpracování je důležité pro komunikaci, ale neříká, zda konkrétní impuls změnil dráhu dostatečně brzy.",
+            "tip": "Odděl společenské podmínky rozhodování a fyzikální podmínky odklonu."
+          },
+          "2": {
+            "whyWrong": "Zvýhodnění jasných objektů při optické detekci je v textu již popsaný obecný jev. Nenahrazuje znalost dráhy a struktury konkrétní hrozby.",
+            "tip": "Rozliš obecné omezení detekce a chybějící parametry konkrétního zásahu."
+          }
+        },
+        "unanswered": {
+          "tip": "Porovnej dvě otázky v odstavci o DART; hledej širší podmínku skutečně účinného odklonu."
+        }
+      },
+      "newFeedback": {
+        "correctIndex": 3,
+        "correctWhy": "Schopnost zasáhnout asteroid je v zadání už daná. Autor zdůrazňuje další podmínku: dostatečně včas znát strukturu a dráhu tělesa, aby bylo možné změnit jeho budoucí polohu.",
+        "evidence": [
+          {
+            "p": 2,
+            "text": "Ante una amenaza real, la pregunta relevante sería menos «¿podemos golpear el asteroide?» que «¿podemos cambiar suficientemente pronto su posición futura, conociendo su estructura y trayectoria?»."
+          }
+        ],
+        "distractors": {
+          "0": {
+            "whyWrong": "Přesný zásah je technicky významný, ale otázka se výslovně ptá, co je potřeba navíc. Samotný kontakt nezaručuje včasnou a dostatečnou změnu budoucí polohy.",
+            "tip": "V zadání si označ, která podmínka už platí, a v textu vyhledej další podmínku."
+          },
+          "1": {
+            "whyWrong": "Mediální zpracování je důležité pro komunikaci, ale neříká, zda konkrétní impuls změnil dráhu dostatečně brzy.",
+            "tip": "Odděl společenské podmínky rozhodování a fyzikální podmínky odklonu."
+          },
+          "2": {
+            "whyWrong": "Zvýhodnění jasných objektů při optické detekci je v textu již popsaný obecný jev. Nenahrazuje znalost dráhy a struktury konkrétní hrozby.",
+            "tip": "Rozliš obecné omezení detekce a chybějící parametry konkrétního zásahu."
+          }
+        },
+        "unanswered": {
+          "tip": "Porovnej dvě otázky v odstavci o DART. První se týká zásahu, druhá včasné změny budoucí polohy; zadání vyžaduje druhou."
+        }
+      },
+      "oldFingerprint": "783bec568e30570db3016f0ab2648f53a211f0cd9b1ebf14ee51ec0f1b54ef1b",
+      "newFingerprint": "0404d079b26b8a53812f7aa9bd8e59ca507f4afc6cfa017e69657b98163f2c86"
+    },
+    {
+      "group": "D03",
+      "variant": "de/C2",
+      "id": "de-c2-critical-3",
+      "field": "q",
+      "answer": 2,
+      "before": "Welche Angabe fehlt noch, um zu behaupten, dass eine Ablenkung bei einer echten Bedrohung funktionieren würde?",
+      "after": "Welche zusätzliche Voraussetzung ist laut Text für eine wirksame Ablenkung entscheidend, über das bloße Treffen des Asteroiden hinaus?",
+      "oldFeedback": {
+        "correctIndex": 2,
+        "correctWhy": "Podle textu by nestačilo umět cíl zasáhnout. Rozhodující je, zda při dostatečně časné znalosti jeho dráhy a struktury dokážeme včas a dostatečně změnit budoucí polohu.",
+        "evidence": [
+          {
+            "p": 2,
+            "text": "Bei einer echten Bedrohung wäre die entscheidende Frage weniger „Können wir den Asteroiden treffen?“ als vielmehr „Können wir seine zukünftige Position früh genug und ausreichend verändern, wenn wir seinen Aufbau und seinen Weg kennen?“ Eine kleine Ablenkung, die über Jahre wirkt, könnte bedeutsamer sein als ein gewaltsames Manöver kurz vor dem Einschlag."
+          }
+        ],
+        "distractors": {
+          "0": {
+            "whyWrong": "Přesný zásah je technicky významný, ale text ho výslovně staví jako nedostatečné měřítko. Samotný kontakt nezaručuje potřebnou změnu budoucí polohy.",
+            "tip": "Rozliš nutnou dílčí podmínku a postačující kritérium účinku."
+          },
+          "1": {
+            "whyWrong": "Mediální zpracování je důležité pro komunikaci, ale neříká, zda konkrétní impuls změnil dráhu dostatečně brzy.",
+            "tip": "Odděl společenské podmínky rozhodování a fyzikální podmínky odklonu."
+          },
+          "3": {
+            "whyWrong": "Zvýhodnění jasných objektů při optické detekci je v textu již popsaný obecný jev. Nenahrazuje znalost dráhy a struktury konkrétní hrozby.",
+            "tip": "Rozliš obecné omezení detekce a chybějící parametry konkrétního zásahu."
+          }
+        },
+        "unanswered": {
+          "tip": "Porovnej dvě otázky v odstavci o DART; hledej širší podmínku skutečně účinného odklonu."
+        }
+      },
+      "newFeedback": {
+        "correctIndex": 2,
+        "correctWhy": "Schopnost zasáhnout asteroid je v zadání už daná. Autor zdůrazňuje další podmínku: dostatečně včas znát strukturu a dráhu tělesa, aby bylo možné změnit jeho budoucí polohu.",
+        "evidence": [
+          {
+            "p": 2,
+            "text": "Bei einer echten Bedrohung wäre die entscheidende Frage weniger „Können wir den Asteroiden treffen?“ als vielmehr „Können wir seine zukünftige Position früh genug und ausreichend verändern, wenn wir seinen Aufbau und seinen Weg kennen?“ Eine kleine Ablenkung, die über Jahre wirkt, könnte bedeutsamer sein als ein gewaltsames Manöver kurz vor dem Einschlag."
+          }
+        ],
+        "distractors": {
+          "0": {
+            "whyWrong": "Přesný zásah je technicky významný, ale otázka se výslovně ptá, co je potřeba navíc. Samotný kontakt nezaručuje včasnou a dostatečnou změnu budoucí polohy.",
+            "tip": "V zadání si označ, která podmínka už platí, a v textu vyhledej další podmínku."
+          },
+          "1": {
+            "whyWrong": "Mediální zpracování je důležité pro komunikaci, ale neříká, zda konkrétní impuls změnil dráhu dostatečně brzy.",
+            "tip": "Odděl společenské podmínky rozhodování a fyzikální podmínky odklonu."
+          },
+          "3": {
+            "whyWrong": "Zvýhodnění jasných objektů při optické detekci je v textu již popsaný obecný jev. Nenahrazuje znalost dráhy a struktury konkrétní hrozby.",
+            "tip": "Rozliš obecné omezení detekce a chybějící parametry konkrétního zásahu."
+          }
+        },
+        "unanswered": {
+          "tip": "Porovnej dvě otázky v odstavci o DART. První se týká zásahu, druhá včasné změny budoucí polohy; zadání vyžaduje druhou."
+        }
+      },
+      "oldFingerprint": "073a083910b9b7976be9a8d44a01f429d5b9fc604e02856a51a35b56102e4a98",
+      "newFingerprint": "80b57aee1f28061088075fe7213744fcd5eadc37112c1dd47cc41543abb23179"
+    },
+    {
+      "group": "D03",
+      "variant": "fr/C2",
+      "id": "fr-c2-critical-3",
+      "field": "q",
+      "answer": 3,
+      "before": "Quelle donnée manquerait pour affirmer qu’une déviation réussirait face à une menace réelle ?",
+      "after": "Selon le texte, quelle condition supplémentaire est décisive pour une déviation efficace, au-delà de la capacité à atteindre l’astéroïde ?",
+      "oldFeedback": {
+        "correctIndex": 3,
+        "correctWhy": "Podle textu by nestačilo umět cíl zasáhnout. Rozhodující je, zda při dostatečně časné znalosti jeho dráhy a struktury dokážeme včas a dostatečně změnit budoucí polohu.",
+        "evidence": [
+          {
+            "p": 2,
+            "text": "Face à une menace réelle, la bonne question serait moins « Pouvons-nous atteindre l’astéroïde ? » que « Pouvons-nous modifier suffisamment tôt sa position future compte tenu de sa structure et de sa trajectoire ? »."
+          }
+        ],
+        "distractors": {
+          "0": {
+            "whyWrong": "Přesný zásah je technicky významný, ale text ho výslovně staví jako nedostatečné měřítko. Samotný kontakt nezaručuje potřebnou změnu budoucí polohy.",
+            "tip": "Rozliš nutnou dílčí podmínku a postačující kritérium účinku."
+          },
+          "1": {
+            "whyWrong": "Mediální zpracování je důležité pro komunikaci, ale neříká, zda konkrétní impuls změnil dráhu dostatečně brzy.",
+            "tip": "Odděl společenské podmínky rozhodování a fyzikální podmínky odklonu."
+          },
+          "2": {
+            "whyWrong": "Zvýhodnění jasných objektů při optické detekci je v textu již popsaný obecný jev. Nenahrazuje znalost dráhy a struktury konkrétní hrozby.",
+            "tip": "Rozliš obecné omezení detekce a chybějící parametry konkrétního zásahu."
+          }
+        },
+        "unanswered": {
+          "tip": "Porovnej dvě otázky v odstavci o DART; hledej širší podmínku skutečně účinného odklonu."
+        }
+      },
+      "newFeedback": {
+        "correctIndex": 3,
+        "correctWhy": "Schopnost zasáhnout asteroid je v zadání už daná. Autor zdůrazňuje další podmínku: dostatečně včas znát strukturu a dráhu tělesa, aby bylo možné změnit jeho budoucí polohu.",
+        "evidence": [
+          {
+            "p": 2,
+            "text": "Face à une menace réelle, la bonne question serait moins « Pouvons-nous atteindre l’astéroïde ? » que « Pouvons-nous modifier suffisamment tôt sa position future compte tenu de sa structure et de sa trajectoire ? »."
+          }
+        ],
+        "distractors": {
+          "0": {
+            "whyWrong": "Přesný zásah je technicky významný, ale otázka se výslovně ptá, co je potřeba navíc. Samotný kontakt nezaručuje včasnou a dostatečnou změnu budoucí polohy.",
+            "tip": "V zadání si označ, která podmínka už platí, a v textu vyhledej další podmínku."
+          },
+          "1": {
+            "whyWrong": "Mediální zpracování je důležité pro komunikaci, ale neříká, zda konkrétní impuls změnil dráhu dostatečně brzy.",
+            "tip": "Odděl společenské podmínky rozhodování a fyzikální podmínky odklonu."
+          },
+          "2": {
+            "whyWrong": "Zvýhodnění jasných objektů při optické detekci je v textu již popsaný obecný jev. Nenahrazuje znalost dráhy a struktury konkrétní hrozby.",
+            "tip": "Rozliš obecné omezení detekce a chybějící parametry konkrétního zásahu."
+          }
+        },
+        "unanswered": {
+          "tip": "Porovnej dvě otázky v odstavci o DART. První se týká zásahu, druhá včasné změny budoucí polohy; zadání vyžaduje druhou."
+        }
+      },
+      "oldFingerprint": "b2ee44a2d2bd2710bd2023aef8064d5d4b716d7c479a28636f603d55df11d9ba",
+      "newFingerprint": "e4c776429565cb4d71851fa91e34bd134bb01cc3749b543daf6bd4a8a2698feb"
+    },
+    {
+      "group": "D22",
+      "variant": "es/B2",
+      "id": "es-b2-inference-3",
+      "field": "choice",
+      "answer": 0,
+      "before": "La respuesta más eficaz suele ser poco espectacular.",
+      "after": "La respuesta más eficaz puede ser poco espectacular.",
+      "oldFeedback": {
+        "correctIndex": 0,
+        "correctWhy": "Autor staví filmové výbuchy do protikladu ke skutečné dlouhodobé práci. Výraz o tichých pozorováních zdůrazňuje nenápadnou, ale důležitou přípravu.",
+        "evidence": [
+          {
+            "p": 3,
+            "text": "en realidad, la mejor respuesta puede comenzar"
+          },
+          {
+            "p": 3,
+            "text": "Las grandes explosiones funcionan bien en el cine; en realidad, la mejor respuesta puede comenzar con años de observación silenciosa."
+          }
+        ],
+        "distractors": {
+          "1": {
+            "whyWrong": "Tichá či nenápadná práce neznamená utajování. Závěr naopak zdůrazňuje vysvětlování a sdílení spolehlivých informací.",
+            "tip": "Rozliš nenápadnost práce a záměrné skrývání informací."
+          },
+          "2": {
+            "whyWrong": "Výraz tichá pozorování zde není technický údaj o hlučnosti dalekohledu. Vystihuje kontrast s dramatickými scénami ve filmu.",
+            "tip": "Při obrazném vyjádření hledej význam v okolních větách, ne doslovný technický výklad."
+          },
+          "3": {
+            "whyWrong": "Dlouhá doba pozorování neznamená, že přístroje samy pracují pomalu. Autor zdůrazňuje dlouhodobou přípravu před hrozbou.",
+            "tip": "Rozliš délku vědeckého procesu a rychlost přístroje."
+          }
+        },
+        "unanswered": {
+          "tip": "Přečti protiklad mezi filmem a skutečností a zkus vyjádřit, co autor považuje za účinné."
+        }
+      },
+      "newFeedback": {
+        "correctIndex": 0,
+        "correctWhy": "Autor staví filmové výbuchy do protikladu ke skutečné dlouhodobé práci. Nejúčinnější reakce může být nenápadná a začínat dlouho před hrozbou; text netvrdí, že to platí vždy nebo často.",
+        "evidence": [
+          {
+            "p": 3,
+            "text": "en realidad, la mejor respuesta puede comenzar"
+          },
+          {
+            "p": 3,
+            "text": "Las grandes explosiones funcionan bien en el cine; en realidad, la mejor respuesta puede comenzar con años de observación silenciosa."
+          }
+        ],
+        "distractors": {
+          "1": {
+            "whyWrong": "Tichá či nenápadná práce neznamená utajování. Závěr naopak zdůrazňuje vysvětlování a sdílení spolehlivých informací.",
+            "tip": "Rozliš nenápadnost práce a záměrné skrývání informací."
+          },
+          "2": {
+            "whyWrong": "Výraz tichá pozorování zde není technický údaj o hlučnosti dalekohledu. Vystihuje kontrast s dramatickými scénami ve filmu.",
+            "tip": "Při obrazném vyjádření hledej význam v okolních větách, ne doslovný technický výklad."
+          },
+          "3": {
+            "whyWrong": "Dlouhá doba pozorování neznamená, že přístroje samy pracují pomalu. Autor zdůrazňuje dlouhodobou přípravu před hrozbou.",
+            "tip": "Rozliš délku vědeckého procesu a rychlost přístroje."
+          }
+        },
+        "unanswered": {
+          "tip": "Přečti protiklad mezi filmem a skutečností. Zachovej míru jistoty zdrojového tvrzení: možnost neznamená pravidlo."
+        }
+      },
+      "oldFingerprint": "3f2cdfcbab3e4b8b58d06f50a19966861c1d63b220dfc42f2c9bb36c36099b73",
+      "newFingerprint": "c90f851b482655d98ae7ce1897e6301328ab8c34735607b35a8171c041fdcb11"
+    },
+    {
+      "group": "D22",
+      "variant": "de/B2",
+      "id": "de-b2-inference-3",
+      "field": "choice",
+      "answer": 0,
+      "before": "Die wirksamste Antwort ist oft wenig spektakulär.",
+      "after": "Die wirksamste Antwort kann wenig spektakulär sein.",
+      "oldFeedback": {
+        "correctIndex": 0,
+        "correctWhy": "Autor staví filmové výbuchy do protikladu ke skutečné dlouhodobé práci. Výraz o tichých pozorováních zdůrazňuje nenápadnou, ale důležitou přípravu.",
+        "evidence": [
+          {
+            "p": 3,
+            "text": "die wirksamste Antwort beginnt in der Wirklichkeit"
+          },
+          {
+            "p": 3,
+            "text": "Spektakuläre Explosionen eignen sich für Kinofilme; die wirksamste Antwort beginnt in der Wirklichkeit vielleicht mit jahrelangen stillen Beobachtungen."
+          }
+        ],
+        "distractors": {
+          "1": {
+            "whyWrong": "Dlouhá doba pozorování neznamená, že přístroje samy pracují pomalu. Autor zdůrazňuje dlouhodobou přípravu před hrozbou.",
+            "tip": "Rozliš délku vědeckého procesu a rychlost přístroje."
+          },
+          "2": {
+            "whyWrong": "Tichá či nenápadná práce neznamená utajování. Závěr naopak zdůrazňuje vysvětlování a sdílení spolehlivých informací.",
+            "tip": "Rozliš nenápadnost práce a záměrné skrývání informací."
+          },
+          "3": {
+            "whyWrong": "Výraz tichá pozorování zde není technický údaj o hlučnosti dalekohledu. Vystihuje kontrast s dramatickými scénami ve filmu.",
+            "tip": "Při obrazném vyjádření hledej význam v okolních větách, ne doslovný technický výklad."
+          }
+        },
+        "unanswered": {
+          "tip": "Přečti protiklad mezi filmem a skutečností a zkus vyjádřit, co autor považuje za účinné."
+        }
+      },
+      "newFeedback": {
+        "correctIndex": 0,
+        "correctWhy": "Autor staví filmové výbuchy do protikladu ke skutečné dlouhodobé práci. Nejúčinnější reakce může být nenápadná a začínat dlouho před hrozbou; text netvrdí, že to platí vždy nebo často.",
+        "evidence": [
+          {
+            "p": 3,
+            "text": "die wirksamste Antwort beginnt in der Wirklichkeit"
+          },
+          {
+            "p": 3,
+            "text": "Spektakuläre Explosionen eignen sich für Kinofilme; die wirksamste Antwort beginnt in der Wirklichkeit vielleicht mit jahrelangen stillen Beobachtungen."
+          }
+        ],
+        "distractors": {
+          "1": {
+            "whyWrong": "Dlouhá doba pozorování neznamená, že přístroje samy pracují pomalu. Autor zdůrazňuje dlouhodobou přípravu před hrozbou.",
+            "tip": "Rozliš délku vědeckého procesu a rychlost přístroje."
+          },
+          "2": {
+            "whyWrong": "Tichá či nenápadná práce neznamená utajování. Závěr naopak zdůrazňuje vysvětlování a sdílení spolehlivých informací.",
+            "tip": "Rozliš nenápadnost práce a záměrné skrývání informací."
+          },
+          "3": {
+            "whyWrong": "Výraz tichá pozorování zde není technický údaj o hlučnosti dalekohledu. Vystihuje kontrast s dramatickými scénami ve filmu.",
+            "tip": "Při obrazném vyjádření hledej význam v okolních větách, ne doslovný technický výklad."
+          }
+        },
+        "unanswered": {
+          "tip": "Přečti protiklad mezi filmem a skutečností. Zachovej míru jistoty zdrojového tvrzení: možnost neznamená pravidlo."
+        }
+      },
+      "oldFingerprint": "af989bc5f956c9cfe932eb143bdcaf1932216f07cd2ad321e534b99343976259",
+      "newFingerprint": "eff98e6ea1e9adfae7d8f08037a513dc4747565d9cd20e5d4809bf7c763c2a57"
+    },
+    {
+      "group": "D22",
+      "variant": "fr/B2",
+      "id": "fr-b2-inference-3",
+      "field": "choice",
+      "answer": 2,
+      "before": "La réponse la plus efficace est souvent peu spectaculaire.",
+      "after": "La réponse la plus efficace peut être peu spectaculaire.",
+      "oldFeedback": {
+        "correctIndex": 2,
+        "correctWhy": "Autor staví filmové výbuchy do protikladu ke skutečné dlouhodobé práci. Výraz o tichých pozorováních zdůrazňuje nenápadnou, ale důležitou přípravu.",
+        "evidence": [
+          {
+            "p": 3,
+            "text": "dans la réalité, la meilleure réponse commence parfois"
+          },
+          {
+            "p": 3,
+            "text": "Les explosions géantes sont passionnantes au cinéma ; dans la réalité, la meilleure réponse commence parfois par des années d’observations discrètes."
+          }
+        ],
+        "distractors": {
+          "0": {
+            "whyWrong": "Tichá či nenápadná práce neznamená utajování. Závěr naopak zdůrazňuje vysvětlování a sdílení spolehlivých informací.",
+            "tip": "Rozliš nenápadnost práce a záměrné skrývání informací."
+          },
+          "1": {
+            "whyWrong": "Výraz tichá pozorování zde není technický údaj o hlučnosti dalekohledu. Vystihuje kontrast s dramatickými scénami ve filmu.",
+            "tip": "Při obrazném vyjádření hledej význam v okolních větách, ne doslovný technický výklad."
+          },
+          "3": {
+            "whyWrong": "Dlouhá doba pozorování neznamená, že přístroje samy pracují pomalu. Autor zdůrazňuje dlouhodobou přípravu před hrozbou.",
+            "tip": "Rozliš délku vědeckého procesu a rychlost přístroje."
+          }
+        },
+        "unanswered": {
+          "tip": "Přečti protiklad mezi filmem a skutečností a zkus vyjádřit, co autor považuje za účinné."
+        }
+      },
+      "newFeedback": {
+        "correctIndex": 2,
+        "correctWhy": "Autor staví filmové výbuchy do protikladu ke skutečné dlouhodobé práci. Nejúčinnější reakce může být nenápadná a začínat dlouho před hrozbou; text netvrdí, že to platí vždy nebo často.",
+        "evidence": [
+          {
+            "p": 3,
+            "text": "dans la réalité, la meilleure réponse commence parfois"
+          },
+          {
+            "p": 3,
+            "text": "Les explosions géantes sont passionnantes au cinéma ; dans la réalité, la meilleure réponse commence parfois par des années d’observations discrètes."
+          }
+        ],
+        "distractors": {
+          "0": {
+            "whyWrong": "Tichá či nenápadná práce neznamená utajování. Závěr naopak zdůrazňuje vysvětlování a sdílení spolehlivých informací.",
+            "tip": "Rozliš nenápadnost práce a záměrné skrývání informací."
+          },
+          "1": {
+            "whyWrong": "Výraz tichá pozorování zde není technický údaj o hlučnosti dalekohledu. Vystihuje kontrast s dramatickými scénami ve filmu.",
+            "tip": "Při obrazném vyjádření hledej význam v okolních větách, ne doslovný technický výklad."
+          },
+          "3": {
+            "whyWrong": "Dlouhá doba pozorování neznamená, že přístroje samy pracují pomalu. Autor zdůrazňuje dlouhodobou přípravu před hrozbou.",
+            "tip": "Rozliš délku vědeckého procesu a rychlost přístroje."
+          }
+        },
+        "unanswered": {
+          "tip": "Přečti protiklad mezi filmem a skutečností. Zachovej míru jistoty zdrojového tvrzení: možnost neznamená pravidlo."
+        }
+      },
+      "oldFingerprint": "63fb18d748c14fcb38b986892dc9205edd5c23cddef4ecb281eeb195184a9753",
+      "newFingerprint": "0ebaff081c6525f28f34b06d304b70d66bf31affa8edf616dd5f248dc9a51cba"
+    }
+  ],
+  "counts": {
+    "variants": 24,
+    "questions": 360,
+    "distractors": 969,
+    "citations": 504,
+    "sourceEdits": 6,
+    "answerIndexChanges": 0
+  }
+}

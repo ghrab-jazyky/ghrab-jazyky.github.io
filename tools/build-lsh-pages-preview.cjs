@@ -52,14 +52,16 @@ assert.equal(Object.keys(manifest.contentHashes).length,36);
 const asteroids=src+'cteni/asteroids/index.html',ast=read(asteroids);
 const astBlob=crypto.createHash('sha1').update('blob '+ast.length+'\0').update(ast).digest('hex');
 // F3 reviewed content candidate; owner approval for the final main SHA remains mandatory.
-assert.equal(astBlob,'e0d9772e66b71564660dbcc4b249e39f2ddcfde1','Smart Feedback candidate card bytes changed; re-audit before publication');
-assert.equal(sha(ast),'f24232f5699b8f2f52313e91ccf74f559d5bd13aa0c07bec19ec46ad826f6788','Smart Feedback candidate SHA256 mismatch');
+assert.equal(astBlob,'15b58830bdf6b4e774527bcd15c456beb9cb71d3','Smart Feedback candidate card bytes changed; re-audit before publication');
+assert.equal(sha(ast),'6776eb422a143ed03a442abb057aa9e39d8175fdcbe9b01d4e126076630a8bc1','Smart Feedback candidate SHA256 mismatch');
 const sfMarker='<script type="application/json" id="lsh-smart-feedback-asteroids-v1">';
 const astText=ast.toString('utf8');
 assert.equal(astText.split(sfMarker).length,2,'Exactly one Smart Feedback block required');
 const sfStart=astText.indexOf(sfMarker),sfEnd=astText.indexOf('</script>\n',sfStart);
 assert.ok(sfEnd>sfStart,'Unterminated Smart Feedback block');
-const baselineAst=Buffer.from(astText.slice(0,sfStart)+astText.slice(sfEnd+'</script>\n'.length),'utf8');
+const sourceEdits=require('../language-skills-hub/scripts/smart-feedback-f42-source-edits.cjs');
+const approvedSource=astText.slice(0,sfStart)+astText.slice(sfEnd+'</script>\n'.length);
+const baselineAst=Buffer.from(sourceEdits.revertSource(approvedSource),'utf8');
 assert.equal(sha(baselineAst),'59167c05eb80b492300b368fc0a1f45f19c1af6631d4a19c560dae98e0d45bac','R12 approved original source changed outside the additive bank');
 assert.equal(crypto.createHash('sha1').update('blob '+baselineAst.length+'\0').update(baselineAst).digest('hex'),'d0ddfe9aae769eff948ee7cf52092139678b64d3','R12 baseline blob mismatch');
 const readingCore=require('../language-skills-hub/self-check/reading/reading-core.js');
@@ -92,7 +94,7 @@ assert.ok(!fs.existsSync(path.join(output,src+'docs')));
 for(const f of ['index.html','404.html',src+'index.html',src+'manifest.webmanifest',src+'sw.js','zkusebni/index.html'])assert.ok(fs.existsSync(path.join(output,f)),f);
 fs.writeFileSync(path.join(output,'.nojekyll'),'');
 const report={schema:'lsh-pages-allowlist-v1',sha:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),
- asteroids:{sourceCommit:'5809a6c3f35bbedde852295f1c6508888ed37f0c',didacticRevisionBase:'c8d3fbf855bbd387c4589b7536501b727b1e47c7',cardRevision:'F4.1',baselineApprovedCommit:'88b8a7c212faef3178ecc44539477c2f2d757f2b',baselineGitBlob:'d0ddfe9aae769eff948ee7cf52092139678b64d3',gitBlob:astBlob,sha256:sha(ast)},cardChecks,pdfs:pdfManifest.files.length,
+ asteroids:{sourceCommit:'5809a6c3f35bbedde852295f1c6508888ed37f0c',didacticRevisionBase:'c8d3fbf855bbd387c4589b7536501b727b1e47c7',cardRevision:'F4.2',approvedSourceRevisionBase:'fcfa2e4d7fb8a910d24c240e049cbf36ed86bd32',approvedSourceSha256:'26bb864931932d9f966950cd96a72dbac332fba48e1338267105f33ca4924399',baselineApprovedCommit:'88b8a7c212faef3178ecc44539477c2f2d757f2b',baselineGitBlob:'d0ddfe9aae769eff948ee7cf52092139678b64d3',gitBlob:astBlob,sha256:sha(ast)},cardChecks,pdfs:pdfManifest.files.length,
  included:include.length,excluded:exclude.length,excludedPaths:exclude,files:include.map(p=>({path:p,sha256:sha(read(p))}))};
 fs.mkdirSync(evidence,{recursive:true});fs.writeFileSync(path.join(evidence,'publication-manifest.json'),JSON.stringify(report,null,2)+'\n');
 console.log('PASS 36/36 card hashes, '+report.pdfs+'/96 PDF hashes, '+include.length+' allowlisted files, '+exclude.length+' excluded source files.');

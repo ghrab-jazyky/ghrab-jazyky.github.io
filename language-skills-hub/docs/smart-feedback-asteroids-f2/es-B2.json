@@ -1,5 +1,5 @@
 {
-  "sourceFingerprint": "3f2cdfcbab3e4b8b58d06f50a19966861c1d63b220dfc42f2c9bb36c36099b73",
+  "sourceFingerprint": "c90f851b482655d98ae7ce1897e6301328ab8c34735607b35a8171c041fdcb11",
   "questions": {
     "es-b2-gist-1": {
       "correctIndex": 2,
@@ -328,7 +328,7 @@
     },
     "es-b2-inference-3": {
       "correctIndex": 0,
-      "correctWhy": "Autor staví filmové výbuchy do protikladu ke skutečné dlouhodobé práci. Výraz o tichých pozorováních zdůrazňuje nenápadnou, ale důležitou přípravu.",
+      "correctWhy": "Autor staví filmové výbuchy do protikladu ke skutečné dlouhodobé práci. Nejúčinnější reakce může být nenápadná a začínat dlouho před hrozbou; text netvrdí, že to platí vždy nebo často.",
       "evidence": [
         {
           "p": 3,
@@ -354,7 +354,7 @@
         }
       },
       "unanswered": {
-        "tip": "Přečti protiklad mezi filmem a skutečností a zkus vyjádřit, co autor považuje za účinné."
+        "tip": "Přečti protiklad mezi filmem a skutečností. Zachovej míru jistoty zdrojového tvrzení: možnost neznamená pravidlo."
       }
     },
     "es-b2-matching-1": {

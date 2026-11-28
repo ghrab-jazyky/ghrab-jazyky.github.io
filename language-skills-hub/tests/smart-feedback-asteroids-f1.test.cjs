@@ -6,6 +6,7 @@ const root=path.resolve(__dirname,'..'),repo=path.dirname(root);
 const BASE='fde581f864093a0b87d60afbc552e5c4e021e7e5';
 const file='language-skills-hub/cteni/asteroids/index.html';
 const core=require('../self-check/reading/reading-core.js');
+const sourceEdits=require('../scripts/smart-feedback-f42-source-edits.cjs');
 const original=execFileSync('git',['show',BASE+':'+file],{cwd:repo,maxBuffer:6000000}).toString('utf8');
 const candidate=fs.readFileSync(path.join(repo,file),'utf8');
 const data=core.parseReadingData(candidate),v=core.variantFromData(data,'en','B2');
@@ -21,12 +22,13 @@ for(const lang of core.LANGUAGES)for(const level of core.LEVELS){
 const embed=b=>marker+JSON.stringify(b).replace(/</g,'\\u003c')+'</script>';
 const validate=s=>core.validateSmartFeedback(s,'rl-asteroids','en','B2',v);
 const sha=s=>createHash('sha256').update(s).digest('hex');
-test('F2 exact byte-preservation outside one inert block; authored JSON matches embedded payload',()=>{
- assert.equal(candidate.replace(embed(originalBank)+'\n',''),original);
+test('F4.2 exact byte preservation except six owner-approved source edits and one inert bank',()=>{
+ assert.equal(candidate.replace(embed(originalBank)+'\n',''),sourceEdits.applySource(original));
+ assert.equal(sourceEdits.revertSource(candidate.replace(embed(originalBank)+'\n','')),original);
  assert.equal(sha(original),'59167c05eb80b492300b368fc0a1f45f19c1af6631d4a19c560dae98e0d45bac');
  assert.notEqual(sha(candidate),sha(original));
  assert.ok(candidate.length<=2500000);
- assert.deepEqual(core.parseReadingData(candidate),core.parseReadingData(original));
+ assert.deepEqual(core.parseReadingData(candidate),sourceEdits.expectedData(core,core.parseReadingData(original)));
 
  assert.deepEqual(core.parseSmartFeedback(candidate),originalBank);
 });
@@ -92,7 +94,7 @@ test('F2 exact original score implementation and score parity across all 24 vari
   const a=core.variantFromData(data,lang,level),b=core.variantFromData(oldData,lang,level);
   for(const answers of [{},Object.fromEntries(a.questions.map(q=>[q.id,q.answer])),
    Object.fromEntries(a.questions.map((q,i)=>[q.id,i%3===0?null:(q.answer+1)%q.choices.length]))]){
-   assert.deepEqual(core.score(a,answers),core.score(b,answers));n++;
+   assert.deepEqual(core.score(a,answers),sourceEdits.reviseReport(core.score(b,answers)));n++;
   }
  }
  assert.equal(n,72);

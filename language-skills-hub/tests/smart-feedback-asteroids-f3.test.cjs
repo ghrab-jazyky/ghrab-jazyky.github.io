@@ -4,7 +4,7 @@ const {execFileSync}=require('node:child_process'),{createHash}=require('node:cr
 const root=path.resolve(__dirname,'..'),repo=path.dirname(root),core=require('../self-check/reading/reading-core.js');
 const pathName='language-skills-hub/cteni/asteroids/index.html';
 const audit=JSON.parse(fs.readFileSync(path.join(root,'docs/smart-feedback-asteroids-f3/REVIEW_CHANGES.json'),'utf8'));
-const latest=fs.readFileSync(path.join(repo,pathName),'utf8');
+const latest=execFileSync('git',['show','fcfa2e4d7fb8a910d24c240e049cbf36ed86bd32:'+pathName],{cwd:repo,maxBuffer:6000000}).toString('utf8');
 const current=execFileSync('git',['show','c8d3fbf855bbd387c4589b7536501b727b1e47c7:'+pathName],{cwd:repo,maxBuffer:6000000}).toString('utf8');
 const before=execFileSync('git',['show',audit.baseline+':'+pathName],{cwd:repo,maxBuffer:6000000}).toString('utf8');
 const sha=s=>createHash('sha256').update(s).digest('hex');

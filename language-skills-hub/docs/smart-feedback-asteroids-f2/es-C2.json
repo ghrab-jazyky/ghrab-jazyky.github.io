@@ -1,5 +1,5 @@
 {
-  "sourceFingerprint": "783bec568e30570db3016f0ab2648f53a211f0cd9b1ebf14ee51ec0f1b54ef1b",
+  "sourceFingerprint": "0404d079b26b8a53812f7aa9bd8e59ca507f4afc6cfa017e69657b98163f2c86",
   "questions": {
     "es-c2-gist-1": {
       "correctIndex": 2,
@@ -381,7 +381,7 @@
     },
     "es-c2-critical-3": {
       "correctIndex": 3,
-      "correctWhy": "Podle textu by nestačilo umět cíl zasáhnout. Rozhodující je, zda při dostatečně časné znalosti jeho dráhy a struktury dokážeme včas a dostatečně změnit budoucí polohu.",
+      "correctWhy": "Schopnost zasáhnout asteroid je v zadání už daná. Autor zdůrazňuje další podmínku: dostatečně včas znát strukturu a dráhu tělesa, aby bylo možné změnit jeho budoucí polohu.",
       "evidence": [
         {
           "p": 2,
@@ -390,8 +390,8 @@
       ],
       "distractors": {
         "0": {
-          "whyWrong": "Přesný zásah je technicky významný, ale text ho výslovně staví jako nedostatečné měřítko. Samotný kontakt nezaručuje potřebnou změnu budoucí polohy.",
-          "tip": "Rozliš nutnou dílčí podmínku a postačující kritérium účinku."
+          "whyWrong": "Přesný zásah je technicky významný, ale otázka se výslovně ptá, co je potřeba navíc. Samotný kontakt nezaručuje včasnou a dostatečnou změnu budoucí polohy.",
+          "tip": "V zadání si označ, která podmínka už platí, a v textu vyhledej další podmínku."
         },
         "1": {
           "whyWrong": "Mediální zpracování je důležité pro komunikaci, ale neříká, zda konkrétní impuls změnil dráhu dostatečně brzy.",
@@ -403,7 +403,7 @@
         }
       },
       "unanswered": {
-        "tip": "Porovnej dvě otázky v odstavci o DART; hledej širší podmínku skutečně účinného odklonu."
+        "tip": "Porovnej dvě otázky v odstavci o DART. První se týká zásahu, druhá včasné změny budoucí polohy; zadání vyžaduje druhou."
       }
     },
     "es-c2-matching-1": {
