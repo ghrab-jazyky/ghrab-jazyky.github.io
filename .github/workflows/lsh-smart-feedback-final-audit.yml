@@ -1,0 +1,62 @@
+name: LSH Asteroids final audit supplemental exact candidate (NO DEPLOY)
+on:
+  push:
+    branches: ['audit/lsh-smart-feedback-asteroids-03ab6d2']
+    paths:
+      - '.github/workflows/lsh-smart-feedback-final-audit.yml'
+      - 'language-skills-hub/docs/smart-feedback-asteroids-f5/audit-supplemental.cjs'
+permissions:
+  contents: read
+concurrency:
+  group: lsh-smart-feedback-final-audit
+  cancel-in-progress: false
+jobs:
+  audit-exact-candidate:
+    if: github.ref == 'refs/heads/audit/lsh-smart-feedback-asteroids-03ab6d2'
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: audit-harness
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: 03ab6d28e68e559222ea2b221b96a033ce11bbd9
+          path: candidate
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify unchanged candidate and run supplemental audit
+        shell: bash
+        working-directory: candidate
+        run: |
+          set -euo pipefail
+          git config --global --add safe.directory "$PWD"
+          test "$(git rev-parse HEAD)" = 03ab6d28e68e559222ea2b221b96a033ce11bbd9
+          test "$(sha256sum language-skills-hub/cteni/asteroids/index.html | cut -d' ' -f1)" = 6776eb422a143ed03a442abb057aa9e39d8175fdcbe9b01d4e126076630a8bc1
+          mkdir -p audit-evidence
+          git rev-parse HEAD > audit-evidence/CANDIDATE_SHA.txt
+          cp ../audit-harness/language-skills-hub/docs/smart-feedback-asteroids-f5/audit-supplemental.cjs audit-supplemental.cjs
+          npm install --no-save --no-package-lock --ignore-scripts playwright@1.56.1 @axe-core/playwright@4.14.0 axe-core@4.14.1
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/lsh-audit-http.log 2>&1 &
+          PID=$!
+          trap 'kill "$PID" 2>/dev/null || true' EXIT
+          READY=0
+          for i in $(seq 1 30); do
+            if node -e 'fetch("http://127.0.0.1:8765/language-skills-hub/self-check/reading/index.html").then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))'; then READY=1; break; fi
+            sleep 1
+          done
+          test "$READY" -eq 1
+          node --test --test-concurrency=1 audit-supplemental.cjs | tee audit-evidence/test.log
+          git diff --exit-code
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lsh-asteroids-supplemental-audit-exact-03ab6d2
+          path: candidate/audit-evidence/
