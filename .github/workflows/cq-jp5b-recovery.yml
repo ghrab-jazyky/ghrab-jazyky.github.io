@@ -1,0 +1,96 @@
+name: CQ JP5b isolated recovery
+on:
+  push:
+    branches:
+      - cq/japan-v0.9.0-jp5b
+    paths:
+      - .github/workflows/cq-jp5b-recovery.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cq-jp5b-recovery
+  cancel-in-progress: false
+jobs:
+  recover:
+    if: github.ref == 'refs/heads/cq/japan-v0.9.0-jp5b'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Recover exact handoff and build candidate outside checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git branch --show-current)" = "cq/japan-v0.9.0-jp5b"
+          test -z "$(git status --porcelain)"
+          mkdir -p "$RUNNER_TEMP/cq-jp5b/handoff" "$RUNNER_TEMP/cq-jp5b/out"
+          base64 -d docs/christmas-quest/jp5b-recovery/INTEGRATION_HANDOFF.zip.b64 > "$RUNNER_TEMP/cq-jp5b/handoff.zip"
+          echo "80e13ea8f58c3a3dc61745fd488cbf9444247e8767c5eb2da731a446f4d8b7b8  $RUNNER_TEMP/cq-jp5b/handoff.zip" | sha256sum -c -
+          unzip -tq "$RUNNER_TEMP/cq-jp5b/handoff.zip"
+          unzip -q "$RUNNER_TEMP/cq-jp5b/handoff.zip" -d "$RUNNER_TEMP/cq-jp5b/handoff"
+          python "$RUNNER_TEMP/cq-jp5b/handoff/build_jp5b.py" --repo "$GITHUB_WORKSPACE" --out "$RUNNER_TEMP/cq-jp5b/out" | tee "$RUNNER_TEMP/cq-jp5b/build.json"
+          python - <<'PY'
+          import hashlib, json, os, pathlib, re
+          root = pathlib.Path(os.environ['RUNNER_TEMP']) / 'cq-jp5b'
+          meta = json.loads((root / 'build.json').read_text())
+          candidate = root / 'out/language-skills-hub/konverzace/christmas-quest/index.html'
+          assert meta['child_sha256'] == '0ce40f4d57a71730f45d391f95b478d0126cca3ac1e6e43625146875d4dd096b'
+          assert hashlib.sha256(candidate.read_bytes()).hexdigest() == meta['sha256']
+          assert meta['sha256'] == '7f29f1048e3c6a53c8bc621ff98559cf32bb52948c5d13643afc69606c269d96', 'Independent connector build and original builder differ; stop for review.'
+          html = candidate.read_text()
+          assert 'data-cq-access="locked"' in html
+          assert '<meta name="cq-build" content="0.9.0">' in html
+          runtime = re.search(r'<script type="application/x-cq-gated" id="cqGatedRuntime">(.*?)</script>', html, re.S)
+          assert runtime
+          (root / 'runtime.js').write_text(runtime[1])
+          PY
+          node --check "$RUNNER_TEMP/cq-jp5b/runtime.js"
+      - name: Persist candidate (development branch only, no deploy)
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/cq-jp5b"
+          for file in language-skills-hub/konverzace/christmas-quest/index.html language-skills-hub/version.json language-skills-hub/tests/christmas-quest-catalog-release.test.cjs language-skills-hub/docs/CHRISTMAS-QUEST-DEVELOPER-PREVIEW.md; do
+            cp "$root/out/$file" "$file"
+            git add -- "$file"
+          done
+          cat >> docs/christmas-quest/JP5B_PROJECT_STATE.md <<'EOF'
+
+          ## Recovery build (2026-11-28)
+          Candidate rebuilt from the exact user-uploaded archive with the original Python builder, independently matched against connector-built candidate SHA-256 7f29f1048e3c6a53c8bc621ff98559cf32bb52948c5d13643afc69606c269d96. Source and release pins persisted to the isolated branch. Developer lock retained. NO-GO for production: real browser/full LSH regression and owner approval remain outstanding. Historical tests are not fresh certification. No Codex or Claude used.
+          EOF
+          git add -- docs/christmas-quest/JP5B_PROJECT_STATE.md
+          git diff --cached --stat
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "feat(cq): persist recovered JP5b candidate and synchronized pins [not certified]"
+          git push origin HEAD:refs/heads/cq/japan-v0.9.0-jp5b
+      - name: Existing catalog release test on exact candidate
+        run: node --test language-skills-hub/tests/christmas-quest-catalog-release.test.cjs
+      - name: Prepare real Chromium harness
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+          python - <<'PY'
+          import os,pathlib
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'cq-jp5b/handoff/test_jp5b.py'
+          s=p.read_text()
+          anchor="executable_path='/usr/bin/chromium'"
+          assert s.count(anchor)==1
+          p.write_text(s.replace(anchor,"executable_path=pw.chromium.executable_path",1))
+          PY
+      - name: Real isolated parent-child browser harness (not full LSH)
+        run: python "$RUNNER_TEMP/cq-jp5b/handoff/test_jp5b.py"
+      - name: Save recovery and test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jp5b-recovery-evidence
+          path: |
+            ${{ runner.temp }}/cq-jp5b/build.json
+            ${{ runner.temp }}/cq-jp5b/handoff/build/JP5b_HARNESS_RESULTS.json
+            ${{ runner.temp }}/cq-jp5b/handoff/build/JP5b_victory.png
+          if-no-files-found: warn
