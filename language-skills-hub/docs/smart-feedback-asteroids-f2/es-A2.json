@@ -1,0 +1,228 @@
+{
+  "sourceFingerprint": "ca10e614bf2035738ecbd67590781c6d80ecf91b67c842cee0d4d6d4b2207ca5",
+  "questions": {
+    "es-a2-gist-1": {
+      "correctIndex": 1,
+      "correctWhy": "Nina ve školním klubu poznává asteroidy, jejich pohyb, sledování a pokus DART. Text sleduje, co se při návštěvě naučila.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "El viernes pasado, Nina fue al club de astronomía de su instituto."
+        },
+        {
+          "p": 0,
+          "text": "Los alumnos miraron fotografías de asteroides."
+        },
+        {
+          "p": 2,
+          "text": "comprendió que vigilar el cielo es el primer paso para proteger la Tierra."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Nina navštěvuje školní astronomický klub, nikoli velké vesmírné centrum. Celý příběh se odehrává kolem této návštěvy.",
+          "tip": "Ověř místo děje v první větě."
+        },
+        "2": {
+          "whyWrong": "Nina sleduje film o sondě DART. Text neříká, že by sama postavila vlastní sondu.",
+          "tip": "Rozliš, co postava dělá, od toho, o čem se učí."
+        }
+      },
+      "unanswered": {
+        "tip": "Sleduj, co Nina postupně zjistí, od prvního do posledního odstavce."
+      }
+    },
+    "es-a2-gist-2": {
+      "correctIndex": 0,
+      "correctWhy": "Druhý odstavec spojuje sledování drah s tím, že blízký průlet neznamená srážku. Většina známých asteroidů pro nás není nebezpečná.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Los científicos utilizan telescopios para encontrarlos y ordenadores para estudiar sus órbitas."
+        },
+        {
+          "p": 1,
+          "text": "La profesora dijo que pasar cerca de la Tierra no significa chocar con ella."
+        },
+        {
+          "p": 1,
+          "text": "La mayoría de los asteroides conocidos no nos amenaza."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Tato možnost zaměňuje blízký průlet za budoucí srážku. Odstavec výslovně říká, že většina známých asteroidů nepředstavuje hrozbu.",
+          "tip": "Pozor na výrazy většina a neznamená: mění význam tvrzení."
+        },
+        "2": {
+          "whyWrong": "Text popisuje, jak vědci asteroidy skutečně studují pomocí dalekohledů, počítačů a opakovaných pozorování. Neříká, že jsou příliš daleko na výzkum.",
+          "tip": "Při shrnutí ověř, zda možnost nepopírá děj popsaný v odstavci."
+        }
+      },
+      "unanswered": {
+        "tip": "Všimni si, jak učitelka nebo učitel vysvětluje rozdíl mezi blízkostí a nárazem."
+      }
+    },
+    "es-a2-gist-3": {
+      "correctIndex": 0,
+      "correctWhy": "V závěru Nina chápe, že sledování oblohy je první krok k ochraně Země. To propojuje pozorování a pokus DART.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "vigilar el cielo es el primer paso para proteger la Tierra"
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Dalekohledy jsou jeden z nástrojů vědců. Text ale nestaví svou hlavní myšlenku na tom, že asteroidy ukážou pouze největší dalekohledy.",
+          "tip": "Rozliš hlavní poselství a podrobnost o přístroji; všimni si slova pouze."
+        },
+        "2": {
+          "whyWrong": "Text nehodnotí asteroidy jako méně zajímavé než Měsíc. Nina je na konci nadšená z toho, co se o asteroidech dozvěděla.",
+          "tip": "Nepřisuzuj postavě srovnání, které text neuvádí."
+        }
+      },
+      "unanswered": {
+        "tip": "Hledej, co si Nina z návštěvy nakonec odnáší."
+      }
+    },
+    "es-a2-scan-1": {
+      "correctIndex": 0,
+      "correctWhy": "Pás asteroidů se podle prvního odstavce nachází mezi Marsem a Jupiterem.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "entre Marte y Júpiter"
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Měsíc není v textu uveden jako místo pásu asteroidů. Pás je oblast mezi dvěma planetami.",
+          "tip": "Rozliš polohu kolem jednoho tělesa a mezi dvěma tělesy."
+        },
+        "2": {
+          "whyWrong": "Mars sice patří k hledané dvojici, ale druhou planetou je Jupiter, ne Země.",
+          "tip": "Ověř obě části údaje o poloze, ne jen známé jméno."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi v prvním odstavci název pásu a přečti obě jména planet."
+      }
+    },
+    "es-a2-scan-2": {
+      "correctIndex": 2,
+      "correctWhy": "Věta o záměrném zásahu Dimorphosu uvádí přímo rok 2022.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "En 2022, la nave chocó a propósito con Dimorphos"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Rok 2024 není rokem zásahu v tomto příběhu. Věta o Dimorphosu začíná údajem 2022.",
+          "tip": "Spoj datum přímo se slovesem označujícím zásah."
+        },
+        "1": {
+          "whyWrong": "Rok 2012 se od uvedeného roku liší o deset let. Text přiřazuje zásah roku 2022.",
+          "tip": "Při skenování data porovnej všechny čtyři číslice."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi jména DART a Dimorphos a rok ve stejné větě."
+      }
+    },
+    "es-a2-scan-3": {
+      "correctIndex": 1,
+      "correctWhy": "Druhý odstavec odlišuje dva nástroje: dalekohledy k objevování a počítače ke zkoumání drah.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "ordenadores para estudiar sus órbitas"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text v úvodu zmiňuje fotografie, ale ke studiu drah přímo přiřazuje počítače, ne staré fotografie.",
+          "tip": "Rozliš pomůcku při úvodní aktivitě a nástroj vědců."
+        },
+        "2": {
+          "whyWrong": "Mapy Měsíce nepatří k popsané metodě určování drah asteroidů. Text jmenuje počítače.",
+          "tip": "Ověř, ke kterému vesmírnému tělesu se nástroj vztahuje."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi část věty, která mluví o studiu oběžných drah."
+      }
+    },
+    "es-a2-detail-1": {
+      "correctIndex": 2,
+      "correctWhy": "Opakovaná pozorování pomáhají vědcům lépe zjistit, kam asteroid poletí. Zpřesňují výpočet jeho dráhy.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Con más observaciones pueden calcular mejor su camino."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Vědci pořizují pozorování kvůli dráze tělesa, ne proto, aby získali pěkné fotografie.",
+          "tip": "Rozliš vzhled fotografie a informaci, kterou vědec potřebuje."
+        },
+        "1": {
+          "whyWrong": "Text neříká, že opakované pozorování slouží k pojmenování asteroidu. Popisuje výpočet jeho dalšího pohybu.",
+          "tip": "U otázky proč najdi účel uvedený v následující větě."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti větu o novém objektu i větu, která vysvětluje přínos dalších pozorování."
+      }
+    },
+    "es-a2-detail-2": {
+      "correctIndex": 1,
+      "correctWhy": "Po testu DART potřeboval Dimorphos méně času k jednomu oběhu kolem většího asteroidu. Změnila se doba oběhu.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "Dimorphos tardaba menos en dar una vuelta"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text neuvádí změnu barvy malé družice; popsaný výsledek se týká času jejího oběhu.",
+          "tip": "Rozliš údaj o vzhledu a o pohybu."
+        },
+        "2": {
+          "whyWrong": "Větší asteroid je těleso, kolem kterého Dimorphos obíhá. Text neuvádí změnu jeho velikosti.",
+          "tip": "Ověř, čí vlastnost se změnila a o jakou vlastnost jde."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi větu po popisu nárazu a všimni si údaje o čase."
+      }
+    },
+    "es-a2-detail-3": {
+      "correctIndex": 2,
+      "correctWhy": "V prvním odstavci se vysvětluje, že mezi asteroidy je velmi mnoho prázdného prostoru. Nejsou natěsnané vedle sebe.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "entre ellas hay muchísimo espacio vacío."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text používá obraz silnice, aby vysvětlil, že pás není plný natěsnaných hornin. Neříká, že jsou v něm silnice.",
+          "tip": "U přirovnání rozliš obraz a skutečný popis."
+        },
+        "1": {
+          "whyWrong": "Sonda DART je příkladem pozdějšího experimentu. Mezi horninami text nepopisuje velké množství sond, ale prázdný prostor.",
+          "tip": "Nezaměň příklad z jiného odstavce za popis hledaného místa."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi větu za popisem pásu asteroidů a všimni si, co je mezi horninami."
+      }
+    }
+  }
+}

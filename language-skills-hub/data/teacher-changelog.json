@@ -1,9 +1,25 @@
 {
   "kind": "LSH_TEACHER_CHANGELOG_V1",
   "schemaVersion": 1,
-  "latestAnnouncementSequence": 9,
-  "contentRevision": 5,
+  "latestAnnouncementSequence": 10,
+  "contentRevision": 6,
   "releases": [
+    {
+      "id": "lsh-2026-11-28-asteroids-smart-feedback",
+      "sequence": 10,
+      "publishedAt": "2026-11-28",
+      "title": "Reading Lab: Smart Feedback pro Asteroids",
+      "changes": [
+        {
+          "id": "reading-asteroids-smart-feedback-v1",
+          "area": "reading",
+          "category": "methodology",
+          "title": "Podrobná zpětná vazba na kartě Asteroids",
+          "description": "Po dokončení testu na kartě Asteroids si studenti mohou zvolit podrobnou zpětnou vazbu ke svým chybným a nezodpovězeným otázkám. Uvidí vysvětlení, konkrétní oporu v textu a radu, jak podobnou úlohu zvládnout příště. Novinka je dostupná v angličtině, španělštině, němčině a francouzštině na úrovních A1–C2. Bodování a kompletní učitelský export zůstávají zachovány. Pro načtení testu je stále potřeba připojení k internetu.",
+          "teacherBenefit": "Studenti mohou samostatně rozebrat příčinu chyby a učitel může navázat cílenou konzultací bez změny dosavadního vyhodnocování testu."
+        }
+      ]
+    },
     {
       "id": "lsh-2026-11-27-christmas-quest-preview",
       "sequence": 9,

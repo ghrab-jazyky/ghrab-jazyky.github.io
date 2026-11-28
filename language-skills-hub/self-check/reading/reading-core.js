@@ -133,8 +133,82 @@
    localOnly:true,details
   };
  }
+
+ // F1: presentation-only, no requests and no changes to source/scoring.
+ const SF_ID='lsh-smart-feedback-asteroids-v1';
+ const SF_TOPIC='rl-asteroids';
+ const sfKeys=(obj,keys)=>plain(obj)&&Object.keys(obj).length===keys.length&&keys.every(k=>own(obj,k));
+ const sfText=(s,max)=>textOK(s,max)&&!/<[!/?a-z]/i.test(s)&&!/\b(?:TODO|TBD|FIXME|placeholder)\b/i.test(s);
+ function sfCanonical(x){
+  if(Array.isArray(x))return x.map(sfCanonical);
+  if(plain(x))return Object.fromEntries(Object.keys(x).sort().map(k=>[k,sfCanonical(x[k])]));
+  ensure(x===null||typeof x==='string'||typeof x==='boolean'||(typeof x==='number'&&Number.isFinite(x)),
+   'Unsupported fingerprint value');
+  return x;
+ }
+ async function smartFeedbackFingerprint(topic,language,level,v){
+  const payload=JSON.stringify(sfCanonical([topic,language,level,v]));
+  const digest=await globalThis.crypto.subtle.digest('SHA-256',new TextEncoder().encode(payload));
+  return Array.from(new Uint8Array(digest),n=>n.toString(16).padStart(2,'0')).join('');
+ }
+ function parseSmartFeedback(html){
+  ensure(typeof html==='string'&&html.length<=2500000,'Invalid Smart Feedback source');
+  const marker='<script type="application/json" id="'+SF_ID+'">';
+  ensure(html.split(SF_ID).length===2&&html.split(marker).length===2,'Missing or repeated Smart Feedback marker');
+  const start=html.indexOf(marker)+marker.length,end=html.indexOf('</script>',start);
+  ensure(end>start&&end-start<=650000,'Invalid Smart Feedback payload');
+  const raw=html.slice(start,end),parsed=JSON.parse(raw);
+  ensure(raw===JSON.stringify(parsed).replace(/</g,'\\u003c'),'Noncanonical Smart Feedback payload');
+  return parsed;
+ }
+ async function validateSmartFeedback(html,topic,language,level,v){
+  ensure(topic===SF_TOPIC&&LANGUAGES.includes(language)&&LEVELS.includes(level),'Unsupported Smart Feedback variant');
+  validateVariant(v);
+  const bank=parseSmartFeedback(html);
+  ensure(sfKeys(bank,['schemaVersion','topicId','feedbackLanguage','variants'])&&bank.schemaVersion===1&&
+   bank.topicId===topic&&bank.feedbackLanguage==='cs'&&sfKeys(bank.variants,LANGUAGES.flatMap(l=>LEVELS.map(v=>l+'/'+v))),'Invalid Smart Feedback bank');
+  const selected=bank.variants[language+'/'+level];
+  ensure(sfKeys(selected,['sourceFingerprint','questions'])&&/^[a-f0-9]{64}$/.test(selected.sourceFingerprint)&&
+   selected.sourceFingerprint===await smartFeedbackFingerprint(topic,language,level,v),'Stale Smart Feedback bank');
+  ensure(sfKeys(selected.questions,v.questions.map(q=>q.id)),'Smart Feedback question coverage mismatch');
+  for(const q of v.questions){
+   const f=selected.questions[q.id],expected=q.choices.map((_,i)=>String(i)).filter(i=>Number(i)!==q.answer);
+   ensure(sfKeys(f,['correctIndex','correctWhy','evidence','distractors','unanswered'])&&f.correctIndex===q.answer&&
+    sfText(f.correctWhy,800)&&Array.isArray(f.evidence)&&f.evidence.length>=1&&f.evidence.length<=3&&
+    sfKeys(f.distractors,expected)&&sfKeys(f.unanswered,['tip'])&&sfText(f.unanswered.tip,350),'Invalid feedback: '+q.id);
+   const seen=new Set();
+   for(const e of f.evidence){
+    ensure(sfKeys(e,['p','text'])&&Number.isInteger(e.p)&&e.p>=0&&e.p<v.paragraphs.length&&
+     textOK(e.text,900)&&!/<[!/?a-z]/i.test(e.text)&&v.paragraphs[e.p].includes(e.text),'Invalid evidence: '+q.id);
+    const key=JSON.stringify([e.p,e.text]);ensure(!seen.has(key),'Repeated evidence: '+q.id);seen.add(key);
+   }
+   for(const i of expected){
+    const d=f.distractors[i];
+    ensure(sfKeys(d,['whyWrong','tip'])&&sfText(d.whyWrong,800)&&sfText(d.tip,350),'Invalid distractor: '+q.id);
+   }
+   if(q.kind==='gap')ensure(f.evidence.some(e=>e.p===v.gap.p&&e.text.includes(v.gap.sentence)),'Missing gap evidence: '+q.id);
+  }
+  return selected;
+ }
+ function resolveSmartFeedback(item,bank,v){
+  if(!item||item.correct===true||!bank||!plain(bank.questions))return null;
+  const q=v.questions.find(q=>q.id===item.id);
+  if(!q||!own(bank.questions,q.id)||item.correctIndex!==q.answer||item.correctAnswer!==q.choices[q.answer]||
+   item.prompt!==q.q)return null;
+  const f=bank.questions[q.id];
+  if(f.correctIndex!==q.answer)return null;
+  const shared={correctWhy:f.correctWhy,evidence:f.evidence.map(e=>({p:e.p,text:e.text}))};
+  if(item.answered===false&&item.selectedIndex===null&&item.selectedAnswer===null)
+   return {...shared,status:'unanswered',tip:f.unanswered.tip};
+  const i=item.selectedIndex;
+  if(item.answered!==true||!Number.isInteger(i)||i<0||i>=q.choices.length||i===q.answer||
+   item.selectedAnswer!==q.choices[i]||!own(f.distractors,String(i)))return null;
+  const d=f.distractors[String(i)];
+  return {...shared,status:'wrong',whyWrong:d.whyWrong,tip:d.tip};
+ }
  const api={LANGUAGES,LEVELS,KINDS,parseReadingData,readingEntry,
-  variantFromData,validateVariant,readingParagraphParts,score};
+  variantFromData,validateVariant,readingParagraphParts,score,
+  parseSmartFeedback,smartFeedbackFingerprint,validateSmartFeedback,resolveSmartFeedback};
  if(typeof module!=='undefined'&&module.exports)module.exports=api;
  else root.LSHReadingCore=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

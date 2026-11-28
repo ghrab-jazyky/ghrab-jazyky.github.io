@@ -19,6 +19,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
@@ -43,6 +45,8 @@ jobs:
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
@@ -74,11 +78,35 @@ jobs:
             npx --yes http-server@14.1.1 . -p 8765 -a 127.0.0.1 -s -c-1 >/tmp/lsh-r35-http.log 2>&1 &
           fi
           SERVER_PID=$!
-          trap 'kill $SERVER_PID' EXIT
+          BASE_PID=
+          trap 'kill "$SERVER_PID" ${BASE_PID:+"$BASE_PID"} 2>/dev/null || true' EXIT
+          # The exhaustive shard inventory includes the real two-origin Smart
+          # Feedback bootstrap parity test. Serve the pinned baseline, never a
+          # second copy of the candidate. Keep the existing disjoint shards.
+          if printf '%s\n' "${selected[@]}" | grep -Fxq 'language-skills-hub/tests/smart-feedback-asteroids-f1.browser.test.cjs'; then
+            BASE_DIR=/tmp/lsh-r35-sf-baseline
+            git worktree add --detach "$BASE_DIR" fde581f864093a0b87d60afbc552e5c4e021e7e5
+            test "$(git -C "$BASE_DIR" rev-parse HEAD)" = fde581f864093a0b87d60afbc552e5c4e021e7e5
+            if command -v python3 >/dev/null 2>&1; then
+              python3 -m http.server 8766 --bind 127.0.0.1 --directory "$BASE_DIR" >/tmp/lsh-r35-sf-baseline.log 2>&1 &
+            else
+              npx --yes http-server@14.1.1 "$BASE_DIR" -p 8766 -a 127.0.0.1 -s -c-1 >/tmp/lsh-r35-sf-baseline.log 2>&1 &
+            fi
+            BASE_PID=$!
+            BASE_READY=0
+            for i in $(seq 1 30); do
+              if node -e 'fetch(process.argv[1]).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))' http://127.0.0.1:8766/language-skills-hub/index.html; then BASE_READY=1; break; fi
+              sleep 1
+            done
+            test "$BASE_READY" -eq 1
+          fi
+          READY=0
           for i in $(seq 1 30); do
-            if node -e 'fetch(process.argv[1]).then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))' http://127.0.0.1:8765/language-skills-hub/index.html >/dev/null 2>&1; then break; fi
+            if node -e 'fetch(process.argv[1]).then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))' http://127.0.0.1:8765/language-skills-hub/index.html >/dev/null 2>&1; then READY=1; break; fi
             sleep 1
           done
+          test "$READY" -eq 1
+          export SF_EVIDENCE=r35-evidence/smart-feedback
           node --test --test-concurrency=2 "${selected[@]}" 2>&1 | tee r35-evidence/browser.log
       - name: Keep PDF samples for visual review
         if: always()

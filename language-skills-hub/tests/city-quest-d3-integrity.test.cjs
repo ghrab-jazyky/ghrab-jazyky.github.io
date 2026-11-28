@@ -2,17 +2,27 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const {integrityContent}=require('./reading-content-integrity.cjs');
+const sourceEdits=require('../scripts/smart-feedback-f42-source-edits.cjs');
 const root=path.resolve(__dirname,'..'),manifest=JSON.parse(fs.readFileSync(path.join(root,'version.json'),'utf8'));
 const raw=fs.readFileSync(path.join(root,'cteni/asteroids/index.html'));
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
-const approved='59167c05eb80b492300b368fc0a1f45f19c1af6631d4a19c560dae98e0d45bac';
+const approved='6776eb422a143ed03a442abb057aa9e39d8175fdcbe9b01d4e126076630a8bc1';
+const originalApproved='59167c05eb80b492300b368fc0a1f45f19c1af6631d4a19c560dae98e0d45bac';
+const originalBlob='d0ddfe9aae769eff948ee7cf52092139678b64d3';
 const css='<link rel="stylesheet" href="../../self-check/reading/reading-annotations.css">\n';
-test('D3: Asteroids integrity uses approved R12 complete bytes and manifest parity',()=>{
+test('D3/F3: full candidate bytes, exact R12 bytes after reversing approved six source edits and manifest parity',()=>{
  assert.equal(sha(raw),approved);
  assert.equal(sha(integrityContent('rl-asteroids',raw)),approved);
  assert.equal(sha(integrityContent('rl-asteroids',raw.toString('utf8'))),approved);
  assert.equal(manifest.contentHashes['rl-asteroids'],approved);
- assert.equal(crypto.createHash('sha1').update('blob '+raw.length+'\0').update(raw).digest('hex'),'d0ddfe9aae769eff948ee7cf52092139678b64d3');
+ assert.equal(crypto.createHash('sha1').update('blob '+raw.length+'\0').update(raw).digest('hex'),'15b58830bdf6b4e774527bcd15c456beb9cb71d3');
+ const marker='<script type="application/json" id="lsh-smart-feedback-asteroids-v1">';
+ const source=raw.toString('utf8');assert.equal(source.split(marker).length,2);
+ const start=source.indexOf(marker),end=source.indexOf('</script>\n',start);assert.ok(end>start);
+ const approvedSource=source.slice(0,start)+source.slice(end+'</script>\n'.length);
+ const baseline=Buffer.from(sourceEdits.revertSource(approvedSource),'utf8');
+ assert.equal(sha(baseline),originalApproved);
+ assert.equal(crypto.createHash('sha1').update('blob '+baseline.length+'\0').update(baseline).digest('hex'),originalBlob);
 });
 test('D3: missing, duplicated or changed annotation hooks fail closed',()=>{
  const source=raw.toString('utf8');

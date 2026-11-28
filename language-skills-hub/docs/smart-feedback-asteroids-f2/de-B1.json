@@ -1,0 +1,305 @@
+{
+  "sourceFingerprint": "26b7277da66bc095737fb84174bfaf788defebe1c7b83d7767e492ca39feb8ff",
+  "questions": {
+    "de-b1-gist-1": {
+      "correctIndex": 1,
+      "correctWhy": "Text vysvětluje, proč vědci sledují asteroidy, jak upřesňují jejich dráhy a jak se připravují na možné nebezpečí. Závěr spojuje vzácnost velkých nárazů s rozumnou přípravou.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "Große Einschläge sind selten, doch gute Vorbereitung ist trotzdem sinnvoll."
+        },
+        {
+          "p": 1,
+          "text": "Deshalb arbeiten Forscher zusammen und tauschen ihre Ergebnisse aus."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text nevypráví životopis jednoho astronoma; popisuje práci vědců obecně, včetně společných měření a pokusu DART.",
+          "tip": "Rozliš životopis konkrétní osoby a vysvětlení vědeckého postupu."
+        },
+        "2": {
+          "whyWrong": "Článek neoznamuje jistý náraz v příštích letech. Naopak zdůrazňuje, že velké srážky jsou vzácné, přesto má příprava smysl.",
+          "tip": "Všímej si rozdílu mezi možným rizikem a potvrzenou událostí."
+        }
+      },
+      "unanswered": {
+        "tip": "Porovnej téma pozorování ve druhém odstavci s ponaučením v závěru."
+      }
+    },
+    "de-b1-gist-2": {
+      "correctIndex": 2,
+      "correctWhy": "Nejvhodnější nadpis shrnuje sledování oblohy, výpočty a přípravu. Text spojuje různé způsoby pozorování s klidným, rozumným přístupem k riziku.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "Bessere Teleskope, genaue Messungen und internationale Zusammenarbeit geben Wissenschaftlern mehr Zeit für Entscheidungen."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Název o dni nárazu zužuje text na jedinou událost. DART je kontrolovaný pokus, zatímco článek se věnuje také sledování a přípravě.",
+          "tip": "Rozliš dílčí příklad a téma celého textu."
+        },
+        "1": {
+          "whyWrong": "Mars je zmíněn při popisu polohy pásu asteroidů. Článek ale nevypráví o cestě sondy na Mars.",
+          "tip": "Nezaměň známé jméno z textu za skutečné hlavní téma."
+        }
+      },
+      "unanswered": {
+        "tip": "Vytvoř stručný popisek pro každý odstavec a vyber nadpis, který je spojí."
+      }
+    },
+    "de-b1-gist-3": {
+      "correctIndex": 1,
+      "correctWhy": "Autor uklidňuje čtenáře, že velké nárazy jsou vzácné, ale považuje pozorování a přípravu za důležité. Jde o klidný, nikoli lhostejný postoj.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "Wir müssen uns also nicht vorstellen, dass ständig Asteroiden auf die Erde fallen."
+        },
+        {
+          "p": 3,
+          "text": "Große Einschläge sind selten, doch gute Vorbereitung ist trotzdem sinnvoll."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Autor není lhostejný: doporučuje přesná měření, lepší dalekohledy a spolupráci, aby bylo více času na rozhodnutí.",
+          "tip": "Při určování postoje hledej, co autor považuje za užitečné."
+        },
+        "2": {
+          "whyWrong": "Text odmítá představu neustálého nebezpečí a označuje velké nárazy za vzácné. To není vystrašený ani pesimistický tón.",
+          "tip": "Rozliš uznání rizika od projevu paniky."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi v závěru jak uklidňující větu, tak důvod, proč se připravovat."
+      }
+    },
+    "de-b1-scan-1": {
+      "correctIndex": 0,
+      "correctWhy": "První odstavec říká, že většina asteroidů obíhá Slunce mezi Marsem a Jupiterem, i když některé mají jiné dráhy.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "zwischen Mars und Jupiter um die Sonne"
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Za Jupiterem není podle textu oblast, kde obíhá většina asteroidů. Jupiter označuje jednu z hranic uvedeného pásu.",
+          "tip": "Rozliš předložky označující polohu mezi a za."
+        },
+        "2": {
+          "whyWrong": "Mars je správnou částí dvojice, ale text k němu řadí Jupiter, nikoli Zemi.",
+          "tip": "Při otázce na polohu ověř obě jména."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi v první části textu spojení většina a dvě jména planet."
+      }
+    },
+    "de-b1-scan-2": {
+      "correctIndex": 2,
+      "correctWhy": "V odstavci o sondě DART je měsíc i rok zásahu přímo uveden: září 2022.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "Im September 2022"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Prosinec 2022 má správný rok, ale nesprávný měsíc. Text uvádí září.",
+          "tip": "Při hledání data ověř nejen rok, ale i měsíc."
+        },
+        "1": {
+          "whyWrong": "Září je správný měsíc, ale rok 2012 se liší od uvedeného 2022.",
+          "tip": "Porovnej všechny části data, i když jedna z nich souhlasí."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi datum u slovesa, které popisuje zásah Dimorphosu."
+      }
+    },
+    "de-b1-scan-3": {
+      "correctIndex": 2,
+      "correctWhy": "Dimorphos je v textu malá družice asteroidu Didymos. Právě kolem Didymosu obíhá.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "einen kleinen Mond des Asteroiden Didymos."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Ceres není v tomto odstavci uvedena jako těleso, které Dimorphos obíhá. Text jmenuje Didymos.",
+          "tip": "Vybírej podle spojení obíhá kolem, ne podle známého názvu asteroidu."
+        },
+        "1": {
+          "whyWrong": "Vesta není v popsaném vztahu vůbec uvedena. Jméno hlavního tělesa je Didymos.",
+          "tip": "U vlastních jmen ověř přesnou podobu jména v rozhodující větě."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi jméno Dimorphos a přečti popis tělesa, kolem něhož se pohybuje."
+      }
+    },
+    "de-b1-detail-1": {
+      "correctIndex": 2,
+      "correctWhy": "Jedna fotografie ukáže objekt v jediném pozorování, ale nestačí k jistému určení jeho budoucí dráhy. Další měření mohou předpověď zpřesnit či změnit.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Ein einziges Foto reicht nicht aus, um seinen zukünftigen Weg sicher vorherzusagen."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text neříká, že jedna fotografie obvykle bývá příliš tmavá. Uvádí, že nestačí pro spolehlivou předpověď pohybu.",
+          "tip": "Rozliš viditelnost objektu a schopnost předpovědět jeho budoucí polohu."
+        },
+        "1": {
+          "whyWrong": "Text neuvádí zákaz sdílení jediné fotografie. Naopak popisuje spolupráci a sdílení měření; problémem je nedostatek údajů o dráze.",
+          "tip": "Rozliš technické omezení měření a zákaz sdílení."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti větu o jedné fotografii a následující větu o nových měřeních."
+      }
+    },
+    "de-b1-detail-2": {
+      "correctIndex": 0,
+      "correctWhy": "Označení blízkozemní popisuje dráhu vstupující do okolí Země, nikoli potvrzený nebo minulý náraz.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "dessen Bahn in die Nachbarschaft der Erde führt."
+        },
+        {
+          "p": 1,
+          "text": "Das heißt noch lange nicht, dass es unseren Planeten treffen wird."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Blízkost Země sama o sobě neznamená budoucí srážku. Text výslovně odmítá takovou jistotu.",
+          "tip": "Dávej pozor na rozdíl mezi blízkým průletem a nárazem."
+        },
+        "2": {
+          "whyWrong": "Definice nevyžaduje, aby asteroid v minulosti zasáhl Zemi. Rozhoduje poloha jeho oběžné dráhy.",
+          "tip": "Rozliš historii srážek a vlastnost současné dráhy."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi definici blízkozemního asteroidu a přečti také omezení, které po ní následuje."
+      }
+    },
+    "de-b1-detail-3": {
+      "correctIndex": 1,
+      "correctWhy": "DART byl kontrolovaný test budoucí obranné metody. Text výslovně říká, že nešlo o záchranu Země před skutečným nebezpečím.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "Sie war ein kontrollierter Test"
+        },
+        {
+          "p": 2,
+          "text": "Die Mission rettete die Erde nicht vor einer echten Gefahr."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Článek říká pravý opak: mise Zemi nezachránila před skutečným ohrožením. Šlo o přípravu na možné budoucí riziko.",
+          "tip": "Všímej si negace v popisu cíle mise."
+        },
+        "2": {
+          "whyWrong": "DART měl záměrně narazit do Dimorphosu a ověřit změnu pohybu. Text neuvádí návrat hornin na Zemi.",
+          "tip": "Rozliš zkoušku nárazem a misi pro sběr vzorků."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi větu o účelu mise a porovnej ji s větou o tom, čím mise nebyla."
+      }
+    },
+    "de-b1-structure-1": {
+      "correctIndex": 0,
+      "correctWhy": "Doplněná věta oznamuje možnost mírné změny pohybu asteroidu. Následující popis nárazu DART a kratší oběžné doby tuto myšlenku konkrétně dokládá.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "Ein Experiment zeigte, dass sich die Bewegung eines Asteroiden ein wenig verändern lässt."
+        },
+        {
+          "p": 2,
+          "text": "traf die NASA-Raumsonde DART absichtlich Dimorphos"
+        },
+        {
+          "p": 2,
+          "text": "Nach dem Zusammenstoß benötigte Dimorphos weniger Zeit für eine Umrundung von Didymos."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Text popisuje oběžnou dráhu Dimorphosu a změnu času jednoho oběhu. Tvrzení, že všechny asteroidy letí přímo, s tím neladí.",
+          "tip": "Při doplňování vět porovnej tvrzení s konkrétním výsledkem v navazujícím textu."
+        },
+        "2": {
+          "whyWrong": "Následující věty popisují záměrný zásah sondy, ne zjištění dalekohledu o tvrdosti hornin. Věta by na příklad nenavazovala.",
+          "tip": "Ověř, zda navržená úvodní věta představuje stejný postup jako zbytek odstavce."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti větu před mezerou i první dvě věty po ní a hledej společnou myšlenku."
+      }
+    },
+    "de-b1-structure-2": {
+      "correctIndex": 0,
+      "correctWhy": "Přivlastňovací výraz odkazuje na nově nalezený asteroid z předcházející věty. Vědci počítají jeho oběžnou dráhu.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Einen Asteroiden zu finden ist nur der Anfang. Astronomen machen mehrere Beobachtungen und berechnen mit Computern seine Umlaufbahn."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Fotografie je nástroj pozorování zmíněný až v další větě. Nejde o těleso, jehož dráhu vědci počítají.",
+          "tip": "Hledej dříve zmíněná podstatná jména. Dosaď každé za přivlastňovací výraz a ověř, které z nich může mít oběžnou dráhu."
+        },
+        "2": {
+          "whyWrong": "Počítač je nástroj k výpočtu. Výraz neoznačuje dráhu počítače, nýbrž asteroidu.",
+          "tip": "Rozliš předmět výpočtu a nástroj výpočtu."
+        }
+      },
+      "unanswered": {
+        "tip": "Nahraď zájmeno každým možným podstatným jménem a ověř smysl věty."
+      }
+    },
+    "de-b1-structure-3": {
+      "correctIndex": 1,
+      "correctWhy": "Spojovací výraz uvádí důsledek: protože nové údaje mohou měnit předpověď dráhy, vědci spolupracují a sdílejí měření.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Neue Messungen können eine Prognose verändern, besonders wenn ein Objekt erst vor Kurzem entdeckt wurde. Deshalb arbeiten Forscher zusammen und tauschen ihre Ergebnisse aus."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text nesrovnává dva druhy dalekohledů. Druhá věta vyjadřuje následek první, nikoli protiklad.",
+          "tip": "Zkus spojku nahradit českým proto a ověř, zda spojení dává smysl."
+        },
+        "2": {
+          "whyWrong": "Výraz zde neuvádí jednotlivý příklad nebezpečného asteroidu. Spojuje proměnlivost předpovědí se spoluprací vědců.",
+          "tip": "Rozliš výrazy pro uvedení příkladu a pro vyjádření následku."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti větu před spojovacím výrazem a ověř, zda další věta uvádí její následek."
+      }
+    }
+  }
+}

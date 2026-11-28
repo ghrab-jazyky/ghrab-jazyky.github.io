@@ -40,7 +40,9 @@ jobs:
                   release=json.loads(get('/language-skills-hub/version.json?verify='+str(attempt)))
                   # R76: verify public teacher notes only after the new Reading release is published.
                   teacher_notes=json.loads(get('/language-skills-hub/data/teacher-changelog.json?verify='+str(attempt)))
-                  assert teacher_notes['latestAnnouncementSequence']>=6, 'Reading changelog not yet published'
+                  assert teacher_notes['latestAnnouncementSequence']>=10, 'Asteroids Smart Feedback changelog not yet published'
+                  smart_note=next((r for r in teacher_notes['releases'] if r['id']=='lsh-2026-11-28-asteroids-smart-feedback'),None)
+                  assert smart_note and smart_note['sequence']==10 and smart_note['publishedAt']=='2026-11-28'
                   reading_note=next((r for r in teacher_notes['releases'] if r['id']=='lsh-2026-11-18-reading-cefr-guidance'),None)
                   assert reading_note and reading_note['sequence']==6 and reading_note['publishedAt']=='2026-11-18'
                   assert any(c.get('area')=='reading' and 'B2–C2' in c.get('description','') for c in reading_note['changes']), 'Reading CEFR teacher note missing'
@@ -109,6 +111,13 @@ jobs:
                   sad=next(e for e in entries if e['id']=='ll-sad')
                   assert sad['levels']==['A1','A2','B1','B2','C1','C2']
                   assert release['topicCount']==36 and release['variantCount']==750
+                  asteroid=next(e for e in entries if e['id']=='rl-asteroids')
+                  ast_bytes=get('/language-skills-hub/'+asteroid['relative']+'?verify='+str(attempt))
+                  ast_sha=hashlib.sha256(ast_bytes).hexdigest()
+                  assert ast_sha==release['contentHashes']['rl-asteroids']=='6776eb422a143ed03a442abb057aa9e39d8175fdcbe9b01d4e126076630a8bc1', 'Asteroids Smart Feedback exact release not published'
+                  for path in ['self-check/reading/reading.js','self-check/results/pdf-report.js']:
+                      runtime=get('/language-skills-hub/'+path+'?verify='+str(attempt))
+                      assert (b'renderSmartResults' if path.endswith('reading.js') else b'downloadLocal') in runtime, path+' Smart Feedback runtime not published'
                   conlangs=next(e for e in entries if e['id']=='ll-conlangs')
                   assert conlangs['levels']==['A1','A2','B1','B2','C1','C2']
                   assert conlangs['languages']==['en']

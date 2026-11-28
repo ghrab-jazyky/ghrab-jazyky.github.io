@@ -118,15 +118,15 @@ test('Teacher announcement describes the PWA and the already-listed City Quest w
  const news=JSON.parse(read('data/teacher-changelog.json'));
  const cards=JSON.parse(read('data/cards.json'));
  assert.equal(api.valid(news),true,'changelog must satisfy the reader-side contract');
- assert.equal(news.latestAnnouncementSequence,9);
- assert.deepEqual(news.releases.slice(0,3).map(r=>r.id),[
-  'lsh-2026-11-27-christmas-quest-preview','lsh-2026-11-23-pwa-installation','lsh-2026-11-23-city-quest'
+ assert.equal(news.latestAnnouncementSequence,10);
+ assert.deepEqual(news.releases.slice(0,4).map(r=>r.id),[
+  'lsh-2026-11-28-asteroids-smart-feedback','lsh-2026-11-27-christmas-quest-preview','lsh-2026-11-23-pwa-installation','lsh-2026-11-23-city-quest'
  ]);
- assert.deepEqual(news.releases.slice(3).map(r=>r.sequence),[6,5,4,3,2,1]);
- const pwa=news.releases[1].changes[0];
+ assert.deepEqual(news.releases.slice(4).map(r=>r.sequence),[6,5,4,3,2,1]);
+ const pwa=news.releases[2].changes[0];
  assert.match(pwa.description,/sedm dní/);
  assert.match(pwa.description,/iPhonu/);
- const city=news.releases[2].changes[0];
+ const city=news.releases[3].changes[0];
  assert.match(city.title,/City Quest/);
  const entry=cards.entries.find(x=>x.id==='cl-city-quest-f2');
  assert.ok(entry,'City Quest must exist in the public catalog');

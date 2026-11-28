@@ -1,0 +1,600 @@
+{
+  "sourceFingerprint": "90f2254cd1b55cbf8396696b4b0590eafcaa63da24d251f79db8fe44066e4af7",
+  "questions": {
+    "de-c1-gist-1": {
+      "correctIndex": 2,
+      "correctWhy": "Závěr tvrdí, že důvěryhodná obrana nevzniká odstraněním nejistoty, nýbrž jejím srozumitelným vysvětlením. Úvod, vývoj odhadů i omezení DART dokládají, proč je takový přístup důležitý.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "dass die Unsicherheit für angemessene Entscheidungen verständlich gemacht wird."
+        },
+        {
+          "p": 0,
+          "text": "die viel mehr Gewissheit suggeriert, als die Daten rechtfertigen."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "DART prokázal změnu dráhy, nikoli odklonění libovolného tělesa na poslední chvíli. Text výslovně podmiňuje obranu vlastnostmi objektu a časem.",
+          "tip": "Pozor na univerzální kvantifikátory a nepodložené rozšíření experimentálního výsledku."
+        },
+        "1": {
+          "whyWrong": "Autor nekritizuje přemíru odborného jazyka v jinak přesných zprávách. Kritizuje titulky, které sugerují větší jistotu, než údaje opravňují.",
+          "tip": "Rozliš složitost formulace a zkreslení její jistoty."
+        },
+        "3": {
+          "whyWrong": "Výzkum minulosti soustavy je jen jedna z motivací. Závěr klade důraz na bezpečnost, práci s nejistotou a důvěru veřejnosti.",
+          "tip": "Nepovyšuj jednu motivaci z úvodu na ústřední tezi."
+        }
+      },
+      "unanswered": {
+        "tip": "Ověř, která možnost spojuje výzkum, omezení důkazů a závěrečný požadavek na komunikaci."
+      }
+    },
+    "de-c1-gist-2": {
+      "correctIndex": 0,
+      "correctWhy": "Úvod odlišuje orbitální popis blízkosti od úsudku o nebezpečí. Ukazuje také, jak některé mediální formulace toto rozlišení stírají.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "In Nachrichtenmeldungen wird dieser Unterschied häufig zu einer alarmierenden, aber wenig hilfreichen Warnung verkürzt."
+        },
+        {
+          "p": 0,
+          "text": "Die Bezeichnung „erdnah“ beschreibt eine Eigenschaft der Umlaufbahn und ist keineswegs ein Urteil über die Gefährlichkeit des Objekts."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Úvod kritizuje způsob, jakým média prezentují nejistotu. Neobviňuje vesmírné agentury z utajování dat.",
+          "tip": "Rozliš kritizovaného aktéra a konkrétní problém v jeho jednání."
+        },
+        "2": {
+          "whyWrong": "Dimorphos a jeho charakteristika patří k pasáži o DART, nikoli k úvodnímu rozlišení orbitální geometrie a hrozby.",
+          "tip": "Funkci odstavce posuzuj podle jeho obsahu, ne podle tématu vzdálenější části textu."
+        },
+        "3": {
+          "whyWrong": "Infračervená detekce je popsána v druhém odstavci. Úvod rozebírá význam označení a mediální interpretaci.",
+          "tip": "Rozliš vymezení pojmu a vysvětlení pozorovací metody."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti definici označení blízko Země a následné hodnocení mediálního zpracování."
+      }
+    },
+    "de-c1-gist-3": {
+      "correctIndex": 1,
+      "correctWhy": "Nadpis o pravděpodobnosti, důkazech a poctivém přiznání nejistoty vystihuje vztah mezi měřením, interpretací rizika a omezenou platností výsledku DART.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Doch jede liefert weitere Belege"
+        },
+        {
+          "p": 3,
+          "text": "dass die Unsicherheit für angemessene Entscheidungen verständlich gemacht wird."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Autor výslovně varuje před tím, aby se každý blízký průlet měnil v mimořádnou událost. Takový nadpis obrací jeho tezi.",
+          "tip": "Ověř, zda nadpis nepopírá hlavní autorovo rozlišení."
+        },
+        "2": {
+          "whyWrong": "Vznik sluneční soustavy je zmíněn jako motivace výzkumu. Článek ale nevytváří historický přehled jejího vývoje.",
+          "tip": "Nenech se při volbě nadpisu omezit jedním úvodním údajem."
+        },
+        "3": {
+          "whyWrong": "Technika sama nestačí: text zdůrazňuje pozorování, sdílení dat a vysvětlování nejistoty jako podmínky účinné obrany.",
+          "tip": "Rozliš nezbytnou součást řešení a tvrzení, že tato součást stačí sama."
+        }
+      },
+      "unanswered": {
+        "tip": "Vyber nadpis, který zahrnuje nejen výpočet a techniku, ale i autorův požadavek na komunikaci."
+      }
+    },
+    "de-c1-scan-1": {
+      "correctIndex": 1,
+      "correctWhy": "V úvodní větě odstavce o DART autor staví experimentální výsledek proti univerzální záruce. Právě tento výraz se v textu vyskytuje doslova.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "keine universelle Sicherheitsgarantie"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Definitivní technické řešení je významově příbuzné, ale autor používá konkrétní formulaci o univerzální záruce.",
+          "tip": "U otázky na přesný výraz nestačí významová podobnost."
+        },
+        "2": {
+          "whyWrong": "Úplná ochrana Země není citovaný výraz. Autor rozlišuje získaný výsledek a obecnou záruku bezpečí.",
+          "tip": "Zkontroluj, zda se nabízené slovní spojení v rozhodující větě opravdu vyskytuje."
+        },
+        "3": {
+          "whyWrong": "Okamžitá odpověď na nebezpečí není výraz, který autor staví do protikladu s experimentálním výsledkem.",
+          "tip": "Nespojuj otázku na přesný citát s jiným tématem, například časem na reakci."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi větu se jménem DART a přečti výraz za odmítavou částí věty."
+      }
+    },
+    "de-c1-scan-2": {
+      "correctIndex": 1,
+      "correctWhy": "V posledním odstavci text výslovně označuje další pozorování slovem sinnvoll, tedy smysluplná nebo rozumná.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "warum weitere Beobachtungen sinnvoll sind"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Notwendig znamená nutná. Ačkoli text pozorování pokládá za důležitá, v hledané větě používá jiné slovo.",
+          "tip": "U lexikálního skenování ověř doslovnou shodu, ne volné synonymum."
+        },
+        "2": {
+          "whyWrong": "Dringend označuje naléhavost; zde autor hodnotí, že další pozorování mají smysl.",
+          "tip": "Rozliš užitečnost a časovou naléhavost."
+        },
+        "3": {
+          "whyWrong": "Kostspielig označuje finanční náročnost. Text zde vysvětluje důvod pokračovat, nikoli cenu pozorování.",
+          "tip": "Nenech téma zdrojů nahradit přesný výraz z věty."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi weitere Beobachtungen a zkontroluj přesné přídavné jméno."
+      }
+    },
+    "de-c1-scan-3": {
+      "correctIndex": 2,
+      "correctWhy": "Autor používá výraz pro míru jistoty: titulek působí jistěji, než opravňují podkladová data.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "die viel mehr Gewissheit suggeriert, als die Daten rechtfertigen"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Alarmující nebo nebezpečí souvisí s tématem rizika, ale hledaný výraz popisuje míru jistoty tvrzení, ne závažnost samotné hrozby.",
+          "tip": "Rozliš míru nebezpečí a míru jistoty informace."
+        },
+        "1": {
+          "whyWrong": "Naléhavost popisuje, jak rychle je třeba jednat. Autor zde srovnává jistotu titulku s oporou v datech.",
+          "tip": "U doplňování slova se drž veličiny, která se ve větě skutečně porovnává."
+        },
+        "3": {
+          "whyWrong": "Dramatičnost souvisí s mediálním stylem, ale hledaný výraz je přímo o jistotě. I dramatické sdělení může nejistotu správně přiznat.",
+          "tip": "Vyber doslovný výraz, nikoli volné tematické synonymum."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi větu o titulku a přesně doplň slovo před srovnáním s daty."
+      }
+    },
+    "de-c1-detail-1": {
+      "correctIndex": 2,
+      "correctWhy": "První snímky zachycují jen malou část oběžné dráhy slabě viditelného tělesa. Stejnému omezenému souboru údajů proto může odpovídat několik budoucích trajektorií.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Ein lichtschwacher Asteroid ist anfangs möglicherweise nur auf wenigen Aufnahmen zu sehen, die einen kurzen Abschnitt seiner Umlaufbahn zeigen. Zu diesen Messungen können mehrere zukünftige Flugbahnen passen."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Dočasný růst pravděpodobnosti je možným výsledkem pozdějších měření. Nevysvětluje, proč prvním údajům odpovídá více drah.",
+          "tip": "Rozliš výchozí příčinu nejistoty a její pozdější změny."
+        },
+        "1": {
+          "whyWrong": "Infračervená technika doplňuje optickou detekci, ale zde je příčinou více možných drah krátký pozorovaný úsek oběhu.",
+          "tip": "Při otázce proč spoj tvrzení s bezprostředně uvedenou příčinou."
+        },
+        "3": {
+          "whyWrong": "Změna pohybu Dimorphosu je výsledkem jiného experimentu. Neobjasňuje omezenost prvních údajů o nově objeveném asteroidu.",
+          "tip": "Odděl nejistotu měření a záměrnou změnu dráhy."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi příčinu před větou o více možných drahách, ne výsledek pozdějšího zpřesňování."
+      }
+    },
+    "de-c1-detail-2": {
+      "correctIndex": 3,
+      "correctWhy": "Výzkum asteroidů má dvojí účel: přináší poznání počátků sluneční soustavy a současně pomáhá posoudit riziko pro veřejnou bezpečnost. Tím propojuje dvě odlišné oblasti.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "Die Asteroidenforschung steht an einer ungewöhnlichen Schnittstelle zwischen wissenschaftlicher Neugier und öffentlicher Sicherheit."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Mediální zkreslování je následný problém, nikoli dvojí základní účel, jímž autor vysvětluje neobvyklé postavení oboru.",
+          "tip": "Rozliš vysvětlení pojmu na začátku od jeho pozdějšího důsledku."
+        },
+        "1": {
+          "whyWrong": "Proměnlivé předpovědi vysvětluje druhý odstavec. Úvodní charakteristika oboru vychází ze spojení výzkumu a veřejné bezpečnosti.",
+          "tip": "Ověř, ve které větě autor přímo rozvíjí citovanou charakteristiku."
+        },
+        "2": {
+          "whyWrong": "Doplňování infračervených a optických metod je technický vztah. Nejde o dvě společenské či vědecké oblasti zmíněné v úvodu.",
+          "tip": "Rozliš spolupráci dvou metod a dvojí účel celého oboru."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi přímo po výrazu o neobvyklém postavení obě oblasti, které výzkum spojuje."
+      }
+    },
+    "de-c1-detail-3": {
+      "correctIndex": 3,
+      "correctWhy": "Výsledek DART prokázal, že přenos hybnosti může v reálných podmínkách změnit oběžnou dráhu. Platnost tohoto důkazu je užší než záruka účinnosti při libovolném budoucím zásahu.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "Der Erfolg zeigte, dass eine Impulsübertragung unter realen Bedingungen eine Umlaufbahn beeinflussen kann."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Skutečnost, že Dimorphos je menší člen dvojice, popisuje cíl experimentu. Není výsledkem, který zásah prokázal.",
+          "tip": "Rozliš výchozí charakteristiku cíle a nový poznatek z experimentu."
+        },
+        "1": {
+          "whyWrong": "Obraz samotného nárazu nestačí jako důkaz účinnosti. Text požaduje následná pozorování skutečné změny dráhy.",
+          "tip": "Rozliš zachycení události a ověření měřitelného následku."
+        },
+        "2": {
+          "whyWrong": "Text výslovně uvádí fyzickou strukturu asteroidu jako podmínku budoucí reakce. Nelze tedy tvrdit, že na ní nezáleží.",
+          "tip": "Čti výhrady, které omezují zobecnitelnost vědeckého výsledku."
+        }
+      },
+      "unanswered": {
+        "tip": "Vyhledej sloveso označující, co úspěch experimentu prokázal, a porovnej je s následným omezením."
+      }
+    },
+    "de-c1-inference-1": {
+      "correctIndex": 2,
+      "correctWhy": "Při příchodu nových měření se zmenšuje množina možných trajektorií. Dočasný růst vypočtené pravděpodobnosti proto může znamenat zpřesnění znalosti, nikoli nutně skutečný růst fyzického nebezpečí.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Zusätzliche Beobachtungen schränken die Möglichkeiten gewöhnlich ein; dabei kann eine zunächst angenommene Einschlagswahrscheinlichkeit sinken oder vorübergehend sogar steigen."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Změna výpočtu neprokazuje nedbalost prvního odhadu. Je očekávatelná, pokud původně existovalo více drah slučitelných s měřením.",
+          "tip": "Rozliš omezené počáteční informace a chybu výpočetního postupu."
+        },
+        "1": {
+          "whyWrong": "Text nehodnotí četnost zpráv jako důvod růstu odhadu. Vysvětluje, jak nové údaje zužují množinu možných trajektorií.",
+          "tip": "Odděl mediální zpracování od matematického vývoje odhadu."
+        },
+        "3": {
+          "whyWrong": "Růst odhadu sám o sobě neznamená téměř jistou srážku. Text připouští dočasné zvýšení před vyjasněním nejistoty.",
+          "tip": "Rozliš směr změny pravděpodobnosti a její absolutní velikost."
+        }
+      },
+      "unanswered": {
+        "tip": "Porovnej změnu odhadu s tím, co se skutečně mění v souboru možných drah."
+      }
+    },
+    "de-c1-inference-2": {
+      "correctIndex": 0,
+      "correctWhy": "Účinnost se musí potvrdit následnými nezávislými pozorováními skutečné změny dráhy. Samotný snímek nárazu dokládá kontakt, nikoli výsledek odklonu.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "Auch nach einer erfolgreichen Ablenkung muss die tatsächliche Bahnänderung erneut beobachtet und unabhängig überprüft werden."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Text neříká, že NASA snímky nezveřejnila. Požaduje ověření následku, které nelze nahradit snímky samotného nárazu.",
+          "tip": "Odliš dostupnost informace a její postačující důkazní sílu."
+        },
+        "2": {
+          "whyWrong": "Autor nepovažuje následná pozorování za méně spolehlivá. Naopak je uvádí jako nutná k potvrzení účinku.",
+          "tip": "Ověř, zda výklad nepřevrací vztah mezi důkazem a jeho kontrolou."
+        },
+        "3": {
+          "whyWrong": "Požadavek na další měření neznamená, že snímky byly rozmazané či nekvalitní. I ostrý obraz nárazu sám nedokazuje změnu oběžné dráhy.",
+          "tip": "Rozliš technickou kvalitu snímku a jeho důkazní hodnotu."
+        }
+      },
+      "unanswered": {
+        "tip": "Rozliš pozorování události a nezávislé ověření měřitelného účinku."
+      }
+    },
+    "de-c1-inference-3": {
+      "correctIndex": 0,
+      "correctWhy": "Závěr spojuje důvěru s otevřeným vysvětlením změn odhadů. Pokud by instituce korekce skrývala, narušila by právě podmínku, která podle autora důvěru podporuje.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "Öffentliches Vertrauen entsteht vor allem dann, wenn Korrekturen nachvollziehbar und begründet erklärt werden."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Zatajení změny odhadu nemění přesnost jeho výpočtu. Text mluví o veřejné důvěře, nikoli o zvýšení matematické přesnosti.",
+          "tip": "Rozliš kvalitu výpočtu a transparentnost jeho sdělení."
+        },
+        "2": {
+          "whyWrong": "Z otevřeného vysvětlování nejistoty text odvozuje důvěryhodnost; utajení nezaručuje vyloučení paniky. Možnost navíc nepodloženě slibuje jistý výsledek.",
+          "tip": "Všímej si nepřiměřených výrazů jistě a vždy."
+        },
+        "3": {
+          "whyWrong": "Skrývání revizí není podle textu důkaz nezávislosti instituce. Autor hodnotí její schopnost odůvodnit změny veřejnosti.",
+          "tip": "Rozliš institucionální nezávislost a odpovědnost za komunikaci."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti závěrečný vztah mezi důvěrou a vysvětlováním korekcí a odvoď jeho pravděpodobný protiklad."
+      }
+    },
+    "de-c1-vocab-1": {
+      "correctIndex": 0,
+      "correctWhy": "Verkürzt zde znamená zjednodušený či redukovaný. Média z komplexního rozlišení orbitální blízkosti a hrozby vytvářejí méně užitečnou výstrahu.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "zu einer alarmierenden, aber wenig hilfreichen Warnung verkürzt."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Časový posun by se týkal data zveřejnění. Verkürzt zde popisuje změnu obsahu původního rozlišení.",
+          "tip": "Rozliš zkrácení významu a posun v čase."
+        },
+        "2": {
+          "whyWrong": "Hlasité opakování nemění nutně obsah. V této větě jde o redukci složité informace na alarmující zkratku.",
+          "tip": "Ověř, jaký proces naznačuje vazba zu … verkürzt."
+        },
+        "3": {
+          "whyWrong": "Doslovné odstřižení a vyhození předmětu je v kontextu zprávy nevhodné. Jde o obrazné zjednodušení sdělení.",
+          "tip": "U slovesa s doslovným a přeneseným významem sleduj, zda jde o materiální předmět, nebo myšlenku."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti celý vztah od Unterschied k Warnung a ověř, jak se mění informace."
+      }
+    },
+    "de-c1-vocab-2": {
+      "correctIndex": 1,
+      "correctWhy": "Přídavné jméno znamená rozhodnutí odpovídající skutečné velikosti rizika. Závěr vybízí ke krokům, které nejsou ani přehnané, ani nedostatečné.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "Gute Risikokommunikation muss zwei gegensätzliche Fehler vermeiden: jede Annäherung zur Krise zu erklären und seltene Gefahren als unwichtig abzutun."
+        },
+        {
+          "p": 3,
+          "text": "Planetare Verteidigung wird nicht dadurch glaubwürdig, dass alle Unsicherheit verschwindet, sondern dadurch, dass die Unsicherheit für angemessene Entscheidungen verständlich gemacht wird."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Rozdělení na stejné díly je jiný význam spojený s poměrem. V tomto kontextu nejde o aritmetické dělení, nýbrž o přiměřenost reakce.",
+          "tip": "U abstraktního pojmu ověř význam v konkrétním spojení s rozhodnutím."
+        },
+        "2": {
+          "whyWrong": "Společné rozhodnutí může být užitečné, ale tento výraz neurčuje počet rozhodujících osob. Označuje soulad rozsahu opatření s rizikem.",
+          "tip": "Rozliš způsob rozhodování a přiměřenost jeho výsledku."
+        },
+        "3": {
+          "whyWrong": "Rychlost není zde významem přídavného jména. Rozhodnutí má odpovídat zjištěnému nebezpečí bez ohledu na samotné tempo.",
+          "tip": "Odliš časový tlak od měřítka opatření."
+        }
+      },
+      "unanswered": {
+        "tip": "Dosaď význam přiměřený riziku do věty o pochopení nejistoty."
+      }
+    },
+    "de-c1-vocab-3": {
+      "correctIndex": 3,
+      "correctWhy": "Sloveso označuje doplnění o užitečnou schopnost: tepelné záření umožňuje zachytit tělesa, která jsou v odraženém světle obtížně viditelná. Metody se doplňují.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Infrarotgeräte ergänzen optische Teleskope, weil sie die Wärmestrahlung von Körpern erfassen können, die im reflektierten Sonnenlicht schwer zu erkennen sind."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Nahrazení by znamenalo, že optické přístroje už nejsou potřeba. Autor říká, že obě metody přinášejí důkazy.",
+          "tip": "Rozliš přidání schopnosti a úplné převzetí funkce."
+        },
+        "1": {
+          "whyWrong": "Konkurence by označovala soupeření. Text popisuje užitečný příspěvek druhé metody k té první.",
+          "tip": "U slovesa zkontroluj, zda vztah znamená soupeření, nebo spolupráci."
+        },
+        "2": {
+          "whyWrong": "Tento význam patří k pochvale, nikoli k technickému vztahu dvou pozorovacích metod.",
+          "tip": "Dosaď význam do věty o vztahu dvou metod. Může přístroj druhý přístroj pochválit, nebo ho doplňuje o další schopnost?"
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti vysvětlení za slovesem a ověř, jakou novou možnost infračervený přístroj přidává."
+      }
+    },
+    "de-c1-matching-1": {
+      "correctIndex": 1,
+      "correctWhy": "Druhý odstavec vysvětluje omezení prvních měření a výslovně připouští několik budoucích drah odpovídajících stejným údajům.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Zu diesen Messungen können mehrere zukünftige Flugbahnen passen."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Úvod vymezuje označení blízko Země a mediální problém, nikoli více trajektorií odpovídajících jednomu souboru měření.",
+          "tip": "Rozliš význam orbitálního pojmu a nejistotu výpočtu."
+        },
+        "2": {
+          "whyWrong": "Třetí odstavec pojednává o záměrné změně dráhy sondou. Otázka míří na nejistotu původní předpovědi dráhy.",
+          "tip": "Rozliš přirozeně možnou trajektorii a trajektorii po zásahu."
+        },
+        "3": {
+          "whyWrong": "Závěr vysvětluje priority a komunikaci nejistoty. Konkrétní důvod více slučitelných drah je vysvětlen dříve.",
+          "tip": "Vyhledej konkrétní mechanismus, ne jen související téma."
+        }
+      },
+      "unanswered": {
+        "tip": "Hledej formulaci o více trajektoriích slučitelných s dostupným měřením."
+      }
+    },
+    "de-c1-matching-2": {
+      "correctIndex": 3,
+      "correctWhy": "Poslední odstavec výslovně jmenuje dvě opačné komunikační chyby: měnit každý průlet v krizi a považovat málo pravděpodobné hrozby za nehodné přípravy.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "zwei gegensätzliche Fehler vermeiden"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "První odstavec už kritizuje zavádějící titulky, ale dvojici opačných chyb výslovně uvádí až závěr.",
+          "tip": "Rozliš jeden příklad chyby a formulaci obou protikladů."
+        },
+        "1": {
+          "whyWrong": "Druhý odstavec popisuje proměny předpovědí a omezenost měření. Nevyjmenovává oba extrémy komunikace.",
+          "tip": "Rozliš zdroj nejistoty a způsob jejího veřejného sdělení."
+        },
+        "2": {
+          "whyWrong": "Třetí odstavec vymezuje technické možnosti a limity DART. Dvojice komunikačních chyb patří k závěrečným prioritám.",
+          "tip": "Odděl technický limit a komunikační omyl."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi výraz pro dva opačné omyly a přečti obě části výčtu."
+      }
+    },
+    "de-c1-matching-3": {
+      "correctIndex": 0,
+      "correctWhy": "První odstavec popisuje původ asteroidů a přímo uvádí, že pouze malá část z nich sleduje dráhy vedoucí do okolí Země.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "Ein kleiner Teil bewegt sich jedoch auf Bahnen, die in die Nähe der Erde führen."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Druhý odstavec pracuje s množinou možných trajektorií jednoho pozorovaného tělesa, nikoli s podílem všech asteroidů na blízkozemních drahách.",
+          "tip": "Rozliš počet možností pohybu jednoho tělesa a podíl v populaci těles."
+        },
+        "2": {
+          "whyWrong": "Třetí odstavec popisuje změnu dráhy Dimorphosu a podmínky odklonu. Neuvádí hledaný podíl asteroidů.",
+          "tip": "Rozliš konkrétní experiment a obecnou charakteristiku skupiny."
+        },
+        "3": {
+          "whyWrong": "Závěr pracuje s nízkou pravděpodobností dopadu a přípravou. To není stejný údaj jako malý podíl těles na blízkozemních drahách.",
+          "tip": "Odliš podíl skupiny objektů a pravděpodobnost události."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi údaj vyjadřující malý podíl a ověř, jakou vlastnost skupiny popisuje."
+      }
+    },
+    "de-c1-structure-1": {
+      "correctIndex": 3,
+      "correctWhy": "Doplněná věta zavádí otázku priorit. Následující věta porovnává méně nápadné, nezbytné úkoly s výraznými snímky mise; právě rozdělení pozornosti a zdrojů je tématem odstavce.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "Hinzu kommt die Frage, welche Aufgaben Aufmerksamkeit und Geld erhalten."
+        },
+        {
+          "p": 3,
+          "text": "sind weniger eindrucksvoll als Bilder einer Raumfahrtmission"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Rychlost pohybu asteroidů není v navazujícím výčtu předmětem rozboru. Ten srovnává pozorování, sdílení údajů a komunikaci s efektními záběry.",
+          "tip": "Při gap úloze hledej koherenci mezi tematickou větou a následujícím výčtem."
+        },
+        "1": {
+          "whyWrong": "Náhodný objev či štěstí by zavedly jiné téma. Následující věty nepopisují náhodu, ale vědomé rozhodování o pozorování, spolupráci a komunikaci.",
+          "tip": "Zkontroluj, zda se téma vložené věty opravdu rozvíjí dál."
+        },
+        "2": {
+          "whyWrong": "Předchozí text řeší technické podmínky odklonu, ale následující odstavec porovnává méně nápadné nezbytné úkoly s mediálně atraktivními záběry. Věta o velikosti by tuto myšlenku nerozvíjela.",
+          "tip": "Při doplnění tematické věty nesleduj jen slovo z předchozího tématu."
+        }
+      },
+      "unanswered": {
+        "tip": "Ověř, jaké obecné téma společně rozvíjejí všechny věty po mezeře."
+      }
+    },
+    "de-c1-structure-2": {
+      "correctIndex": 2,
+      "correctWhy": "Spojka staví do protikladu dosažený experimentální úspěch a podmíněnost zásahu při skutečné hrozbě. DART prokázal přenos hybnosti, ale budoucí účinek závisí na dalších faktorech.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "Der Erfolg zeigte, dass eine Impulsübertragung"
+        },
+        {
+          "p": 2,
+          "text": "Ob sich eine künftige Bedrohung abwenden ließe, hinge aber von der Beschaffenheit des Asteroiden"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Optické a infračervené přístroje se doplňují v předchozím odstavci. Zde se neporovnávají dva typy přístrojů, ale důkaz a hranice jeho použití.",
+          "tip": "Urči, které dvě myšlenky skutečně sousedí se spojkou."
+        },
+        "1": {
+          "whyWrong": "Ověření pomocí následných údajů je zmíněno až dál. Spojka zde uvádí podmínky budoucího zásahu, ne kontrast obrazů a měření.",
+          "tip": "Rozliš bezprostřední logickou vazbu a související téma z pozdější věty."
+        },
+        "3": {
+          "whyWrong": "Dimorphos a Didymos tvoří popsanou dvojici, ale spojka nesrovnává jejich velikost. Omezuje obecnost dosaženého úspěchu.",
+          "tip": "Odděl fyzické aktéry od vztahu mezi dvěma tvrzeními."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti tvrzení před spojkou i podmínky za ní a vyjádři kontrast vlastními slovy."
+      }
+    },
+    "de-c1-structure-3": {
+      "correctIndex": 0,
+      "correctWhy": "Ukazovací výraz odkazuje na rozdíl mezi geometrickou vlastností oběžné dráhy a hodnocením nebezpečí. Z vědeckého popisu blízkosti nelze automaticky odvodit politické varování.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "Die Bezeichnung „erdnah“ beschreibt eine Eigenschaft der Umlaufbahn und ist keineswegs ein Urteil über die Gefährlichkeit des Objekts."
+        },
+        {
+          "p": 0,
+          "text": "Diese Unterscheidung ist wichtig, weil eine wissenschaftliche Beobachtung nicht automatisch eine politische Warnung rechtfertigt."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Fotografie a titulek jsou součástí příkladu mediálního zkreslení. Nejsou dvěma pojmy, které autor výslovně odlišuje v definici.",
+          "tip": "Rozliš ilustrační příklad a samotné pojmové rozlišení."
+        },
+        "2": {
+          "whyWrong": "Kontrast skutečné vědy a filmových představ se netýká zde formulované definice. Zájmeno shrnuje odlišnost orbitálního popisu a posouzení hrozby.",
+          "tip": "Hledej referent v konkrétním argumentu úvodního odstavce."
+        },
+        "3": {
+          "whyWrong": "Hornina a kov popisují složení těles, nikoli rozdíl mezi vědeckou informací a bezpečnostním úsudkem.",
+          "tip": "Rozliš materiálovou vlastnost a význam orbitálního označení."
+        }
+      },
+      "unanswered": {
+        "tip": "Vyhledej větu s definicí blízkozemního objektu a urči oba členy jejího rozlišení."
+      }
+    }
+  }
+}

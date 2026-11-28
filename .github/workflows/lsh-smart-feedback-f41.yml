@@ -1,0 +1,92 @@
+name: LSH Asteroids F4.1 corrective content build (development only)
+on:
+  push:
+    branches: ['feature/lsh-smart-feedback-asteroids-f2']
+    paths:
+      - '.github/workflows/lsh-smart-feedback-f41.yml'
+      - 'language-skills-hub/scripts/apply-smart-feedback-f41.cjs'
+permissions:
+  contents: read
+concurrency:
+  group: lsh-smart-feedback-f41-correction
+  cancel-in-progress: false
+env:
+  REVIEW_BASE: c8d3fbf855bbd387c4589b7536501b727b1e47c7
+  PRODUCTION_BASE: d8d032ee1fc51a009df3d20d8fb64135f9b23be3
+jobs:
+  correct-verify-commit:
+    if: github.ref == 'refs/heads/feature/lsh-smart-feedback-asteroids-f2'
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+      options: --ipc=host
+    timeout-minutes: 35
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Apply exact audited feedback edits and test
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git rev-parse HEAD^)" = "$REVIEW_BASE"
+          test "$(git rev-parse refs/remotes/origin/main)" = "$PRODUCTION_BASE"
+          mkdir -p sf-f41
+          node language-skills-hub/scripts/apply-smart-feedback-f41.cjs | tee sf-f41/repair.log
+          node --test language-skills-hub/tests/smart-feedback-asteroids-f1.test.cjs language-skills-hub/tests/smart-feedback-asteroids-f3.test.cjs language-skills-hub/tests/city-quest-d3-integrity.test.cjs language-skills-hub/tests/christmas-quest-catalog-release.test.cjs | tee sf-f41/unit.log
+          cp language-skills-hub/docs/smart-feedback-asteroids-f41/* sf-f41/
+          git diff --exit-code "$REVIEW_BASE" -- language-skills-hub/self-check language-skills-hub/data language-skills-hub/konverzace
+      - name: Regenerate and verify all 96 PDFs against current production
+        shell: bash
+        run: |
+          set -euo pipefail
+          apt-get update -qq
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends qpdf poppler-utils
+          npm install --no-save --ignore-scripts playwright@1.56.1 hyphen@1.14.1
+          mkdir -p /tmp/sf-f41-original
+          git archive "$PRODUCTION_BASE" language-skills-hub/printouts/rl-asteroids | tar -xf - -C /tmp/sf-f41-original
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/sf-f41-http.log 2>&1 &
+          PID=$!
+          trap 'kill "$PID" || true' EXIT
+          READY=0
+          for i in $(seq 1 30); do
+            if node -e 'fetch("http://127.0.0.1:8765/language-skills-hub/self-check/reading/print-page.html").then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))'; then READY=1; break; fi
+            sleep 1
+          done
+          test "$READY" -eq 1
+          node language-skills-hub/scripts/build-reading-print-pdfs.cjs --all | tee sf-f41/build.log
+          node language-skills-hub/scripts/verify-reading-print-assets.cjs --compare /tmp/sf-f41-original/language-skills-hub/printouts/rl-asteroids | tee sf-f41/corpus.log
+          cp language-skills-hub/printouts/rl-asteroids/manifest-all.json sf-f41/pdf-manifest.json
+      - name: Commit only audited scope, preview, fast-forward development branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF" = refs/heads/feature/lsh-smart-feedback-asteroids-f2
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git ls-remote origin refs/heads/main | cut -f1)" = "$PRODUCTION_BASE"
+          test "$(git ls-remote origin refs/heads/feature/lsh-smart-feedback-asteroids-f2 | cut -f1)" = "$GITHUB_SHA"
+          git add language-skills-hub/cteni/asteroids/index.html language-skills-hub/version.json language-skills-hub/docs/smart-feedback-asteroids-f1/en-B2.json language-skills-hub/docs/smart-feedback-asteroids-f2 language-skills-hub/docs/smart-feedback-asteroids-f41 language-skills-hub/tests/city-quest-d3-integrity.test.cjs language-skills-hub/tests/smart-feedback-asteroids-f3.test.cjs language-skills-hub/printouts/rl-asteroids tools/build-lsh-pages-preview.cjs
+          git diff --cached --name-only | tee sf-f41/changes.txt
+          test -s sf-f41/changes.txt
+          if grep -Ev '^(language-skills-hub/(cteni/asteroids/index\.html|version\.json|docs/smart-feedback-asteroids-f1/en-B2\.json|docs/smart-feedback-asteroids-f2/[^/]+\.json|docs/smart-feedback-asteroids-f41/(REVIEW_CHANGES\.json|DECISION\.md)|tests/(city-quest-d3-integrity|smart-feedback-asteroids-f3)\.test\.cjs|printouts/rl-asteroids/.+)|tools/build-lsh-pages-preview\.cjs)$' sf-f41/changes.txt; then exit 1; fi
+          git diff --exit-code
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "F4.1: correct 22 feedback finding groups, preserve source and regenerate verified corpus"
+          node tools/build-lsh-pages-preview.cjs | tee sf-f41/publication.log
+          cp release-preview/evidence/publication-manifest.json sf-f41/
+          git rev-parse HEAD | tee sf-f41/CANDIDATE_SHA.txt
+          git push origin HEAD:refs/heads/feature/lsh-smart-feedback-asteroids-f2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smart-feedback-f41-correction-evidence
+          path: sf-f41/

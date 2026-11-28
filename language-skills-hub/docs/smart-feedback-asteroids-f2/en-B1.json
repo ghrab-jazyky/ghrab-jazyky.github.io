@@ -1,0 +1,313 @@
+{
+  "sourceFingerprint": "634ba32a0d57b4aa866f81aae5ab2b2bc2c9d00984a14cd40740a95a1c1c4d1b",
+  "questions": {
+    "en-b1-gist-1": {
+      "correctIndex": 1,
+      "correctWhy": "Text vysvětluje, proč vědci sledují asteroidy, jak upřesňují jejich dráhy a jak se připravují na možné nebezpečí. Závěr spojuje vzácnost velkých nárazů s rozumnou přípravou.",
+      "evidence": [
+        {
+          "p": 4,
+          "text": "Big impacts are rare, but careful preparation still makes sense."
+        },
+        {
+          "p": 1,
+          "text": "Scientists therefore work together and share measurements."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text nevypráví životopis jednoho astronoma; popisuje práci vědců obecně, včetně společných měření a pokusu DART.",
+          "tip": "Rozliš životopis konkrétní osoby a vysvětlení vědeckého postupu."
+        },
+        "2": {
+          "whyWrong": "Článek neoznamuje jistý náraz v příštích letech. Naopak zdůrazňuje, že velké srážky jsou vzácné, přesto má příprava smysl.",
+          "tip": "Všímej si rozdílu mezi možným rizikem a potvrzenou událostí."
+        }
+      },
+      "unanswered": {
+        "tip": "Porovnej téma pozorování ve druhém odstavci s ponaučením v závěru."
+      }
+    },
+    "en-b1-gist-2": {
+      "correctIndex": 2,
+      "correctWhy": "Případ Čeljabinsku ukazuje kontrast mezi poměrně malým rozměrem horniny a velkými škodami způsobenými tlakovou vlnou. To vystihuje název o malé hornině s velkým účinkem.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "Small objects can still cause damage."
+        },
+        {
+          "p": 3,
+          "text": "a rock about twenty metres wide exploded high in the air above the Russian city of Chelyabinsk."
+        },
+        {
+          "p": 3,
+          "text": "Its shock wave broke windows across the city"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text výslovně říká, že nevznikl velký kráter. Škody způsobila hlavně tlaková vlna a rozbité sklo.",
+          "tip": "Ověř, zda nadpis neodporuje výslovně uvedenému výsledku."
+        },
+        "1": {
+          "whyWrong": "Čeljabinsk je příkladem nečekaného výbuchu, nikoli mise, která zachránila město. DART je jiný příklad v předchozím odstavci.",
+          "tip": "Odděl dvě události podle místa a jejich účelu."
+        }
+      },
+      "unanswered": {
+        "tip": "V odstavci si vedle sebe zapiš velikost horniny a následek výbuchu."
+      }
+    },
+    "en-b1-gist-3": {
+      "correctIndex": 0,
+      "correctWhy": "Autor uklidňuje čtenáře, že velké nárazy jsou vzácné, ale považuje pozorování a přípravu za důležité. Jde o klidný, nikoli lhostejný postoj.",
+      "evidence": [
+        {
+          "p": 4,
+          "text": "There is no reason to imagine that the sky is full of asteroids about to fall on us."
+        },
+        {
+          "p": 4,
+          "text": "Big impacts are rare, but careful preparation still makes sense."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Autor není lhostejný: doporučuje přesná měření, lepší dalekohledy a spolupráci, aby bylo více času na rozhodnutí.",
+          "tip": "Při určování postoje hledej, co autor považuje za užitečné."
+        },
+        "2": {
+          "whyWrong": "Text odmítá představu neustálého nebezpečí a označuje velké nárazy za vzácné. To není vystrašený ani pesimistický tón.",
+          "tip": "Rozliš uznání rizika od projevu paniky."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi v závěru jak uklidňující větu, tak důvod, proč se připravovat."
+      }
+    },
+    "en-b1-scan-1": {
+      "correctIndex": 1,
+      "correctWhy": "První odstavec říká, že většina asteroidů obíhá Slunce mezi Marsem a Jupiterem, i když některé mají jiné dráhy.",
+      "evidence": [
+        {
+          "p": 0,
+          "text": "between Mars and Jupiter"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Za Jupiterem není podle textu oblast, kde obíhá většina asteroidů. Jupiter označuje jednu z hranic uvedeného pásu.",
+          "tip": "Rozliš předložky označující polohu mezi a za."
+        },
+        "2": {
+          "whyWrong": "Mars je správnou částí dvojice, ale text k němu řadí Jupiter, nikoli Zemi.",
+          "tip": "Při otázce na polohu ověř obě jména."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi v první části textu spojení většina a dvě jména planet."
+      }
+    },
+    "en-b1-scan-2": {
+      "correctIndex": 2,
+      "correctWhy": "Ve čtvrtém odstavci je uvedena přibližná šířka horniny dvacet metrů. Nejde o přesné měření, ale o odhad.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "a rock about twenty metres wide"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Dva metry jsou desetkrát méně než uvedených přibližně dvacet metrů.",
+          "tip": "Rozliš anglické číslovky two a twenty."
+        },
+        "1": {
+          "whyWrong": "Dvě stě metrů je desetkrát více než uvedená šířka. Text používá twenty, nikoli two hundred.",
+          "tip": "U čísel si ověř, zda obsahují výraz hundred."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi Chelyabinsk a přečti údaj o šířce horniny."
+      }
+    },
+    "en-b1-scan-3": {
+      "correctIndex": 1,
+      "correctWhy": "Text uvádí přibližně 1 500 osob, které potřebovaly lékařskou pomoc, hlavně kvůli létajícímu sklu.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "about 1,500 people needed medical help"
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "150 je desetkrát méně než uvedený počet. Anglický zápis 1,500 označuje tisíc pět set.",
+          "tip": "Pozor na čárku jako oddělovač tisíců v anglických číslech."
+        },
+        "2": {
+          "whyWrong": "15 000 je desetkrát více než číslo v textu. Jde o počet osob potřebujících lékařskou pomoc, ne o odhad celé populace města.",
+          "tip": "Porovnej každou číslici i to, co se počítá."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi spojení medical help a přečti číslo těsně před ním."
+      }
+    },
+    "en-b1-detail-1": {
+      "correctIndex": 2,
+      "correctWhy": "Jedna fotografie ukáže objekt v jediném pozorování, ale nestačí k jistému určení jeho budoucí dráhy. Další měření mohou předpověď zpřesnit či změnit.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "A single photograph is not enough to predict its path with confidence."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text neuvádí zákaz sdílení jediné fotografie. Naopak popisuje spolupráci a sdílení měření; problémem je nedostatek údajů o dráze.",
+          "tip": "Rozliš technické omezení měření a zákaz sdílení."
+        },
+        "1": {
+          "whyWrong": "Text neříká, že jedna fotografie obvykle bývá příliš tmavá. Uvádí, že nestačí pro spolehlivou předpověď pohybu.",
+          "tip": "Rozliš viditelnost objektu a schopnost předpovědět jeho budoucí polohu."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti větu o jedné fotografii a následující větu o nových měřeních."
+      }
+    },
+    "en-b1-detail-2": {
+      "correctIndex": 0,
+      "correctWhy": "Označení blízkozemní popisuje dráhu vstupující do okolí Země, nikoli potvrzený nebo minulý náraz.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "is one whose orbit enters Earth’s neighbourhood"
+        },
+        {
+          "p": 1,
+          "text": "not necessarily one that will hit our planet."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Definice nevyžaduje, aby asteroid v minulosti zasáhl Zemi. Rozhoduje poloha jeho oběžné dráhy.",
+          "tip": "Rozliš historii srážek a vlastnost současné dráhy."
+        },
+        "2": {
+          "whyWrong": "Blízkost Země sama o sobě neznamená budoucí srážku. Text výslovně odmítá takovou jistotu.",
+          "tip": "Dávej pozor na rozdíl mezi blízkým průletem a nárazem."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi definici blízkozemního asteroidu a přečti také omezení, které po ní následuje."
+      }
+    },
+    "en-b1-detail-3": {
+      "correctIndex": 1,
+      "correctWhy": "Hornina přiletěla ze směru Slunce. Jasné sluneční světlo v tomto směru podle textu skrývá malé objekty před dalekohledy.",
+      "evidence": [
+        {
+          "p": 3,
+          "text": "it arrived from the direction of the Sun"
+        },
+        {
+          "p": 3,
+          "text": "where bright sunlight hides small objects from telescopes."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Text neuvádí příliš velkou vzdálenost jako příčinu přehlédnutí. Jmenuje směr příletu a jasné sluneční světlo.",
+          "tip": "Rozliš, odkud těleso přiletělo, a jak daleko bylo."
+        },
+        "2": {
+          "whyWrong": "Text nesrovnává rychlost horniny s jinými objekty. Důvodem popsaným v odstavci je omezená viditelnost ve směru Slunce.",
+          "tip": "U otázky proč nevyvozuj příčinu z vlastnosti, která v textu není."
+        }
+      },
+      "unanswered": {
+        "tip": "Najdi vyjádření důvodu u arrived a přečti také vysvětlení o slunečním světle."
+      }
+    },
+    "en-b1-structure-1": {
+      "correctIndex": 0,
+      "correctWhy": "Úvodní věta odstavce má připravit čtenáře na experiment DART. Následující věty popisují jeho náraz do Dimorphosu a kratší oběžnou dobu, tedy změnu pohybu.",
+      "evidence": [
+        {
+          "p": 2,
+          "text": "One experiment showed that a small change in an asteroid’s movement is possible."
+        },
+        {
+          "p": 2,
+          "text": "NASA’s DART spacecraft deliberately hit Dimorphos"
+        },
+        {
+          "p": 2,
+          "text": "After the impact, Dimorphos completed an orbit around Didymos in less time than before."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Složení hornin je téma prvního odstavce. Po mezeře se ale popisuje náraz DART a změna oběžné doby, ne zjištění převahy kovu.",
+          "tip": "Hledej tematickou návaznost na následující věty, nejen obecnou souvislost s asteroidy."
+        },
+        "2": {
+          "whyWrong": "Následující text popisuje náraz sondy do malé družice a změnu její dráhy. Neříká, že velké asteroidy se běžně rozpadají na měsíce.",
+          "tip": "Rozliš existující družici od vzniku nových družic."
+        }
+      },
+      "unanswered": {
+        "tip": "Zkus každou větu dosadit a ověř, zda ji následující výsledek experimentu rozvíjí."
+      }
+    },
+    "en-b1-structure-2": {
+      "correctIndex": 0,
+      "correctWhy": "Přivlastňovací výraz odkazuje na nově nalezený asteroid z předcházející věty. Vědci počítají jeho oběžnou dráhu.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "Finding an asteroid is only the beginning. Astronomers take several observations and use computers to calculate its orbit."
+        }
+      ],
+      "distractors": {
+        "1": {
+          "whyWrong": "Fotografie je nástroj pozorování zmíněný až v další větě. Nejde o těleso, jehož dráhu vědci počítají.",
+          "tip": "Hledej dříve zmíněná podstatná jména. Dosaď každé za přivlastňovací výraz a ověř, které z nich může mít oběžnou dráhu."
+        },
+        "2": {
+          "whyWrong": "Počítač je nástroj k výpočtu. Výraz neoznačuje dráhu počítače, nýbrž asteroidu.",
+          "tip": "Rozliš předmět výpočtu a nástroj výpočtu."
+        }
+      },
+      "unanswered": {
+        "tip": "Nahraď zájmeno každým možným podstatným jménem a ověř smysl věty."
+      }
+    },
+    "en-b1-structure-3": {
+      "correctIndex": 2,
+      "correctWhy": "Spojovací výraz uvádí důsledek: protože nové údaje mohou měnit předpověď dráhy, vědci spolupracují a sdílejí měření.",
+      "evidence": [
+        {
+          "p": 1,
+          "text": "New observations can change a prediction, especially when an object was discovered recently. Scientists therefore work together and share measurements."
+        }
+      ],
+      "distractors": {
+        "0": {
+          "whyWrong": "Výraz zde neuvádí jednotlivý příklad nebezpečného asteroidu. Spojuje proměnlivost předpovědí se spoluprací vědců.",
+          "tip": "Rozliš výrazy pro uvedení příkladu a pro vyjádření následku."
+        },
+        "1": {
+          "whyWrong": "Text nesrovnává dva druhy dalekohledů. Druhá věta vyjadřuje následek první, nikoli protiklad.",
+          "tip": "Zkus spojku nahradit českým proto a ověř, zda spojení dává smysl."
+        }
+      },
+      "unanswered": {
+        "tip": "Přečti větu před spojovacím výrazem a ověř, zda další věta uvádí její následek."
+      }
+    }
+  }
+}

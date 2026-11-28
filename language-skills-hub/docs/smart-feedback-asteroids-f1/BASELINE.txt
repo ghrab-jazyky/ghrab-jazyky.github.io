@@ -1,0 +1,7 @@
+F0 BASELINE (partial, 2026-11-27)
+main fde581f864093a0b87d60afbc552e5c4e021e7e5
+HTML git blob d0ddfe9aae769eff948ee7cf52092139678b64d3
+HTML SHA256 59167c05eb80b492300b368fc0a1f45f19c1af6631d4a19c560dae98e0d45bac
+DATA JSON SHA256 e3a1eabaebdde712fd39e1ebc2a7824b504ad5da2adf838f8828ba5a801db055
+HTML UTF8 bytes 1421182; JS characters 1347053; DATA characters 264015
+25 completed successful historic exact-SHA workflow runs, including manually approved publish. Not rerun. Main ruleset active. Direct git checkout unavailable (DNS); baseline local unit/browser/corpus, clean worktree, bootstrap/latency and screenshots NOT_RUN. Inventory uses same balanced-brace extraction algorithm as canonical core, not actual Node execution. NO-GO release.

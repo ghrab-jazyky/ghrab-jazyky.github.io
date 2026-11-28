@@ -47,7 +47,10 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    await page.locator('#results:not([hidden])').waitFor();
    assert.equal((await page.locator('#gradeProposal .grade-number').textContent()).trim(),'1');
    assert.equal(await page.locator('#resultDetails article.review').count(),0);
-   assert.match(await page.locator('#resultDetails').textContent(),/All answers are correct/);
+   assert.equal(await page.locator('#resultDetails').getAttribute('data-sf-phase'),'SUMMARY');
+   await page.locator('#sfAccept').click();
+   assert.equal(await page.locator('#resultDetails article.review').count(),0);
+   assert.match(await page.locator('#resultDetails').textContent(),/Není co opravovat/);
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
  });
@@ -74,8 +77,12 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
    }
    await page.locator('#submitButton').click();
    await page.locator('#results:not([hidden])').waitFor();
-   assert.equal(await page.locator('#resultDetails article.review').count(),1);
-   assert.match(await page.locator('#resultDetails article.review').textContent(),/Correct answer/);
+   assert.equal(await page.locator('#resultDetails').getAttribute('data-sf-phase'),'SUMMARY');
+   assert.equal(await page.locator('#resultDetails article.review').count(),0);
+   await page.locator('#sfAccept').click();
+   assert.equal(await page.locator('#resultDetails article.sf-card').count(),1);
+   assert.match(await page.locator('#resultDetails article.review').textContent(),/Správná odpověď/);
+   assert.equal(await page.locator('#resultDetails .sf-evidence').count(),1);
    assert.deepEqual(errors,[]);
   }finally{await browser.close()}
  });
