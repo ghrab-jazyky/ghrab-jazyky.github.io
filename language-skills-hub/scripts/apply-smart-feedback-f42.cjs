@@ -36,6 +36,7 @@ async function run(){
  assert.equal(a.stripBank(revised),source);
  assert.deepEqual(core.parseReadingData(revised),expected);assert.deepEqual(core.parseSmartFeedback(revised),bank);
  const newSha=a.sha(revised),newBlob=a.blob(revised);
+ assert.equal(newSha,'6776eb422a143ed03a442abb057aa9e39d8175fdcbe9b01d4e126076630a8bc1','F4.2 must reproduce the previously verified content exactly');
  let questions=0,distractors=0,citations=0;
  for(const l of core.LANGUAGES)for(const level of core.LEVELS){
   const key=l+'/'+level,v=core.variantFromData(expected,l,level),o=core.variantFromData(data,l,level);
@@ -87,13 +88,8 @@ async function run(){
  test=a.one(test,"assert.deepEqual(core.parseReadingData(candidate),core.parseReadingData(original));","assert.deepEqual(core.parseReadingData(candidate),sourceEdits.expectedData(core,core.parseReadingData(original)));");
  test=a.one(test,"assert.deepEqual(core.score(a,answers),core.score(b,answers));","assert.deepEqual(core.score(a,answers),sourceEdits.reviseReport(core.score(b,answers)));");
  put(f1,test);
- const f4='.github/workflows/lsh-smart-feedback-f4.yml';
- let workflow=a.one(read(f4),'node language-skills-hub/scripts/verify-reading-print-assets.cjs --compare /tmp/sf-f4-pdfs/language-skills-hub/printouts/rl-asteroids | tee sf-f4/corpus.log',
-  'node language-skills-hub/scripts/verify-smart-feedback-f42-pdfs.cjs /tmp/sf-f4-pdfs/language-skills-hub/printouts/rl-asteroids | tee sf-f4/corpus.log');
- workflow=a.one(workflow,'language-skills-hub/tests/smart-feedback-asteroids-f3.test.cjs language-skills-hub/tests/city-quest-d3-integrity.test.cjs',
-  'language-skills-hub/tests/smart-feedback-asteroids-f3.test.cjs language-skills-hub/tests/smart-feedback-asteroids-f42.test.cjs language-skills-hub/tests/city-quest-d3-integrity.test.cjs');
- workflow=a.one(workflow,'language-skills-hub/docs/smart-feedback-asteroids-f3 language-skills-hub/tests','language-skills-hub/docs/smart-feedback-asteroids-f3 language-skills-hub/docs/smart-feedback-asteroids-f41 language-skills-hub/docs/smart-feedback-asteroids-f42 language-skills-hub/tests');
- put(f4,workflow);
+ // Workflow changes are made separately through the authorized repository connector.
+ // The CI content commit must never mutate .github/workflows.
  put(dir+'REVIEW_CHANGES.json',JSON.stringify(audit,null,2)+'\n');
  put(dir+'DECISION.md','# F4.2 owner-approved source correction (NO DEPLOY)\n\nD03 and D22 approved. Exactly six source fields, six feedback records and six variant fingerprints revised. Original answer indices, question IDs, options ordering, passages, scoring and runtime preserved. Full old/new ledger in REVIEW_CHANGES.json. All audit finding groups addressed in F4.1/F4.2; final exact-head recertification and physical device evidence pending. External reviewer sign-off not implied. No production authorization.\n');
  for(const [p,s] of files){fs.mkdirSync(path.dirname(path.join(repo,p)),{recursive:true});fs.writeFileSync(path.join(repo,p),s);}

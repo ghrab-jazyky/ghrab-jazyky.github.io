@@ -72,17 +72,19 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           test "$(git ls-remote origin refs/heads/main | cut -f1)" = "$PRODUCTION_BASE"
           test "$(git ls-remote origin refs/heads/feature/lsh-smart-feedback-asteroids-f2 | cut -f1)" = "$GITHUB_SHA"
-          git add language-skills-hub/cteni/asteroids/index.html language-skills-hub/version.json language-skills-hub/docs/smart-feedback-asteroids-f2 language-skills-hub/docs/smart-feedback-asteroids-f42 language-skills-hub/tests/city-quest-d3-integrity.test.cjs language-skills-hub/tests/smart-feedback-asteroids-f1.test.cjs language-skills-hub/tests/smart-feedback-asteroids-f3.test.cjs language-skills-hub/printouts/rl-asteroids tools/build-lsh-pages-preview.cjs .github/workflows/lsh-smart-feedback-f4.yml
+          git add language-skills-hub/cteni/asteroids/index.html language-skills-hub/version.json language-skills-hub/docs/smart-feedback-asteroids-f2 language-skills-hub/docs/smart-feedback-asteroids-f42 language-skills-hub/tests/city-quest-d3-integrity.test.cjs language-skills-hub/tests/smart-feedback-asteroids-f1.test.cjs language-skills-hub/tests/smart-feedback-asteroids-f3.test.cjs language-skills-hub/printouts/rl-asteroids tools/build-lsh-pages-preview.cjs
           git diff --cached --name-only | tee sf-f42/changes.txt
           test -s sf-f42/changes.txt
-          if grep -Ev '^(\.github/workflows/lsh-smart-feedback-f4\.yml|language-skills-hub/(cteni/asteroids/index\.html|version\.json|docs/smart-feedback-asteroids-f2/(es|de|fr)-(B2|C2)\.json|docs/smart-feedback-asteroids-f42/(REVIEW_CHANGES\.json|DECISION\.md)|tests/(city-quest-d3-integrity|smart-feedback-asteroids-f1|smart-feedback-asteroids-f3)\.test\.cjs|printouts/rl-asteroids/.+)|tools/build-lsh-pages-preview\.cjs)$' sf-f42/changes.txt; then exit 1; fi
+          if grep -Ev '^(language-skills-hub/(cteni/asteroids/index\.html|version\.json|docs/smart-feedback-asteroids-f2/(es|de|fr)-(B2|C2)\.json|docs/smart-feedback-asteroids-f42/(REVIEW_CHANGES\.json|DECISION\.md)|tests/(city-quest-d3-integrity|smart-feedback-asteroids-f1|smart-feedback-asteroids-f3)\.test\.cjs|printouts/rl-asteroids/.+)|tools/build-lsh-pages-preview\.cjs)$' sf-f42/changes.txt; then exit 1; fi
           git diff --exit-code
+          git diff --cached --exit-code -- .github/workflows
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "F4.2: owner-approved D03/D22 source and feedback revisions; verify exact PDF delta"
           node tools/build-lsh-pages-preview.cjs | tee sf-f42/publication.log
           cp release-preview/evidence/publication-manifest.json sf-f42/
           git rev-parse HEAD | tee sf-f42/CANDIDATE_SHA.txt
+          git diff --exit-code "$GITHUB_SHA" HEAD -- .github/workflows
           git push origin HEAD:refs/heads/feature/lsh-smart-feedback-asteroids-f2
       - uses: actions/upload-artifact@v4
         if: always()
