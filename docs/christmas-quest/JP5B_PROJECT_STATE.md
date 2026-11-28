@@ -1,6 +1,6 @@
 # Christmas Quest JP5b — checkpoint 2026-11-28
 
-**Status: integrated v0.9.0 source persisted; catalog gate PASS; isolated Chromium harness pending at last observation; NO-GO for production.**
+**Status: integrated v0.9.0 source persisted; catalog gate PASS; initial Chromium harness failed on test-side CSP eval; targeted retest queued; NO-GO for production.**
 
 ## Authoritative recovery
 - Branch: cq/japan-v0.9.0-jp5b. Original baseline d8d032ee1fc51a009df3d20d8fb64135f9b23be3.
@@ -8,7 +8,7 @@
 - Exact user-uploaded recovery archive: docs/christmas-quest/jp5b-recovery/INTEGRATION_HANDOFF.zip.b64, stored at commit 40b37aebd2f312abfd9cb72409637531c6dfcda2; Git blob 8241b493500742f5909a827b0a43537a7cbef229. Decode with base64 -d; original ZIP SHA-256 80e13ea8f58c3a3dc61745fd488cbf9444247e8767c5eb2da731a446f4d8b7b8.
 - Approved source JP5a SHA-256 1155be298079e37d8d64b4cc20a401cd0b50c1e7878c36fff77f8ccb33f9053a. Integrated child SHA-256 0ce40f4d57a71730f45d391f95b478d0126cca3ac1e6e43625146875d4dd096b.
 - Full candidate SHA-256 7f29f1048e3c6a53c8bc621ff98559cf32bb52948c5d13643afc69606c269d96; gated runtime CSP hash tswruc8n3IZ5HGCdHFVpAYaFWGRJbgeuCUwhJjgXErw=. Two independent build routes produced matching candidate hashes. GitHub Actions Python builder and runtime JS syntax passed; exact source and synchronized version/catalog-test/documentation pins persisted.
-- GitHub Actions run 46156226979: https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/46156226979. Recovery build, persistence, existing catalog release test and Chromium preparation PASS. Real isolated browser harness and evidence upload: check latest job status; do not assume pass.
+- GitHub Actions run 46156226979: https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/46156226979. Recovery build, persistence, existing catalog release test and Chromium preparation PASS. Initial harness failed at Playwright wait_for_function because it uses eval forbidden by the unchanged hash CSP; the game initialized and transport started, but round checkpoint certification is not complete. Evidence upload passed. Targeted harness-only fix commit 21bdf2f13c2a40f18a4da89763bfdb0f08fc0e02 changes polling to direct page.evaluate and preserves CSP; exact same candidate pinned. Retest run 46156353345: https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/46156353345 (queued at observation). Check this run, not the failed recovery run; do not rebuild candidate.
 - Local checkout and local HTTP are blocked (DNS, ERR_BLOCKED_BY_ADMINISTRATOR). Large connector write failed. Use existing GitHub Actions for builds; avoid repeated failed routes.
 
 ## Historical evidence (from exact uploaded archive, not newly executed)
