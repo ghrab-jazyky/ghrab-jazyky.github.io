@@ -36,7 +36,8 @@ jobs:
           test "$(git rev-parse refs/remotes/origin/main)" = "$BASELINE"
           git diff --exit-code "$ORIGINAL_SOURCE_BASELINE" "$BASELINE" -- language-skills-hub/cteni/asteroids/index.html language-skills-hub/self-check/reading/reading-core.js language-skills-hub/self-check/reading/reading.js language-skills-hub/printouts/rl-asteroids
           git rev-parse HEAD | tee sf-f4/HEAD.txt
-          git diff --exit-code fcfa2e4d7fb8a910d24c240e049cbf36ed86bd32 HEAD -- language-skills-hub/self-check language-skills-hub/data language-skills-hub/konverzace
+          git diff --exit-code fcfa2e4d7fb8a910d24c240e049cbf36ed86bd32 HEAD -- language-skills-hub/self-check language-skills-hub/data language-skills-hub/konverzace ':(exclude)language-skills-hub/data/teacher-changelog.json'
+          git diff --exit-code 03ab6d28e68e559222ea2b221b96a033ce11bbd9 HEAD -- language-skills-hub/cteni language-skills-hub/self-check language-skills-hub/assets language-skills-hub/poslech language-skills-hub/konverzace language-skills-hub/printouts language-skills-hub/version.json language-skills-hub/index.html
           node --check language-skills-hub/self-check/reading/reading-core.js
           node --check language-skills-hub/self-check/reading/reading.js
           node --check language-skills-hub/self-check/results/pdf-report.js
@@ -116,12 +117,12 @@ jobs:
               # No exception filter or retry-to-green: every run must pass.
               # The catalog assets are unchanged by this release. Reproduce
               # the exact previously failing path against both real origins.
-              git diff --exit-code "$BASELINE" HEAD -- language-skills-hub/index.html language-skills-hub/assets/pwa-install.js language-skills-hub/assets/pwa-install.css language-skills-hub/assets/hub.js language-skills-hub/assets/hub.css language-skills-hub/assets/whats-new-app.js language-skills-hub/assets/whats-new-view.js language-skills-hub/data/teacher-changelog.json
+              git diff --exit-code "$BASELINE" HEAD -- language-skills-hub/index.html language-skills-hub/assets/pwa-install.js language-skills-hub/assets/pwa-install.css language-skills-hub/assets/hub.js language-skills-hub/assets/hub.css language-skills-hub/assets/whats-new-app.js language-skills-hub/assets/whats-new-view.js
               for i in 1 2 3; do
                 echo "Strict baseline changelog replay $i" | tee -a sf-f4/browser.log
-                LSH_TEACHER_CHANGELOG_BASE=http://127.0.0.1:8766/language-skills-hub/ node --test --test-concurrency=1 --test-name-pattern='previously seen release 8' language-skills-hub/tests/teacher-changelog-stage-f.browser.test.cjs | tee -a sf-f4/browser.log
+                LSH_TEACHER_CHANGELOG_BASELINE=1 LSH_TEACHER_CHANGELOG_BASE=http://127.0.0.1:8766/language-skills-hub/ node --test --test-concurrency=1 --test-name-pattern='previously seen release is offered the next release' language-skills-hub/tests/teacher-changelog-stage-f.browser.test.cjs | tee -a sf-f4/browser.log
                 echo "Strict candidate changelog replay $i" | tee -a sf-f4/browser.log
-                node --test --test-concurrency=1 --test-name-pattern='previously seen release 8' language-skills-hub/tests/teacher-changelog-stage-f.browser.test.cjs | tee -a sf-f4/browser.log
+                node --test --test-concurrency=1 --test-name-pattern='previously seen release is offered the next release' language-skills-hub/tests/teacher-changelog-stage-f.browser.test.cjs | tee -a sf-f4/browser.log
               done ;;
             timed-offline)
               cat > sf-f4/timed-offline.test.cjs <<'TEST'
