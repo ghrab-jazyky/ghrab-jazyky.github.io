@@ -1,6 +1,6 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict');
-const fs=require('node:fs'),path=require('node:path');
+const fs=require('node:fs'),path=require('node:path'),{createHash}=require('node:crypto');
 const {chromium,webkit}=require('playwright');
 const core=require('../self-check/reading/reading-core.js');
 const root=path.resolve(__dirname,'..');
@@ -10,6 +10,23 @@ const entries=catalog.entries.filter(e=>e.skill==='cteni');
 const data=Object.fromEntries(entries.map(e=>[e.id,core.parseReadingData(read(e.relative))]));
 const base=process.env.LSH_R58_BASE||'http://127.0.0.1:8765/language-skills-hub/';
 const live=process.env.LSH_R58_LIVE==='1';
+const localVersion=JSON.parse(read('version.json'));
+// The approved Pages workflow is separate from main. The live test may still
+// see the exact previously published source, but must not accept an unknown
+// or mismatched live card or silently skip the new opt-in flow.
+async function expectsSmart(page,entry){
+ if(entry.id!=='rl-asteroids')return false;
+ if(!live)return true;
+ const manifest=await page.request.get(new URL('version.json?verify='+Date.now(),base).href);
+ const card=await page.request.get(new URL(entry.relative+'?verify='+Date.now(),base).href);
+ assert.ok(manifest.ok()&&card.ok(),'Live source and version must be readable');
+ const actual=createHash('sha256').update(await card.body()).digest('hex');
+ const published=(await manifest.json()).contentHashes[entry.id];
+ assert.equal(actual,published,'Live Asteroids source/manifest mismatch');
+ const old='59167c05eb80b492300b368fc0a1f45f19c1af6631d4a19c560dae98e0d45bac';
+ assert.ok(actual===old||actual===localVersion.contentHashes[entry.id],'Unknown live Asteroids bytes');
+ return actual!==old;
+}
 const engines=live?[['Chromium',chromium]]:[['Chromium',chromium],['WebKit',webkit]];
 const url=(entry,lang,level,extra='')=>{
  const u=new URL('self-check/reading/index.html',base);
@@ -125,6 +142,16 @@ for(const [name,engine]of engines){
    await page.locator('#submitButton').click();
    await page.locator('#results:not([hidden])').waitFor({timeout:15000});
    assert.equal(await page.locator('#submitButton').isDisabled(),true);
+   if(await expectsSmart(page,entry)){
+    const details=page.locator('#resultDetails');
+    assert.equal(await details.getAttribute('data-sf-phase'),'SUMMARY');
+    assert.equal(await details.locator('article').count(),0,'No detailed answers before student opt-in');
+    assert.equal(await page.locator('#sfAccept').isVisible(),true);
+    assert.equal(await page.locator('#sfDecline').isVisible(),true);
+    assert.equal(await page.locator('#exportResult').isVisible(),true,'Full teacher archive available before feedback');
+    await page.locator('#sfAccept').click();
+    assert.equal(await details.getAttribute('data-sf-phase'),'FEEDBACK');
+   }
    const wrongs=await page.locator('#resultDetails .review').count();
    assert.ok(wrongs>=v.questions.length-2&&wrongs<=v.questions.length);
    const downloadPromise=page.waitForEvent('download',{timeout:30000});

@@ -78,12 +78,12 @@ jobs:
       options: --ipc=host
     timeout-minutes: 35
     permissions:
-      contents: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: true
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
@@ -92,48 +92,36 @@ jobs:
           apt-get update -qq
           DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends qpdf poppler-utils
           npm install --no-save --ignore-scripts playwright@1.56.1 hyphen@1.14.1
-      - name: Rebuild all 96, compare every PDF against untouched production corpus
+      - name: Read-only reproducibility gate for the completed F4.2 corpus
+        shell: bash
         run: |
           set -euo pipefail
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           test "$GITHUB_REF" = refs/heads/feature/lsh-smart-feedback-asteroids-f2
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          mkdir -p sf-f3
+          mkdir -p sf-f3 /tmp/sf-production
           git rev-parse HEAD | tee sf-f3/HEAD.txt
-          git diff --exit-code 9b640190588d397816a3f6daf0a21d9566de7785 -- language-skills-hub/printouts/rl-asteroids
-          mkdir -p /tmp/sf-production
-          git archive fde581f864093a0b87d60afbc552e5c4e021e7e5 language-skills-hub/printouts/rl-asteroids | tar -xf - -C /tmp/sf-production
-          cp -a /tmp/sf-production/language-skills-hub/printouts/rl-asteroids /tmp/sf-old-pdfs
+          git archive d8d032ee1fc51a009df3d20d8fb64135f9b23be3 language-skills-hub/printouts/rl-asteroids | tar -xf - -C /tmp/sf-production
+          node language-skills-hub/scripts/verify-smart-feedback-f42-pdfs.cjs /tmp/sf-production/language-skills-hub/printouts/rl-asteroids | tee sf-f3/approved-delta.log
+          cp -a language-skills-hub/printouts/rl-asteroids /tmp/sf-f3-committed-pdfs
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/sf-pdf-http.log 2>&1 &
           PID=$!
-          trap 'kill "$PID" || true' EXIT
+          trap 'kill "$PID" 2>/dev/null || true' EXIT
+          READY=0
           for i in $(seq 1 30); do
-            if node -e 'fetch("http://127.0.0.1:8765/language-skills-hub/self-check/reading/print-page.html").then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))'; then break; fi
+            if node -e 'fetch("http://127.0.0.1:8765/language-skills-hub/self-check/reading/print-page.html").then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))'; then READY=1; break; fi
             sleep 1
           done
+          test "$READY" -eq 1
           node language-skills-hub/scripts/build-reading-print-pdfs.cjs --all | tee sf-f3/build.log
-          node language-skills-hub/scripts/verify-reading-print-assets.cjs --compare /tmp/sf-old-pdfs | tee sf-f3/corpus.log
-          cp language-skills-hub/printouts/rl-asteroids/manifest-all.json sf-f3/pdf-manifest.json
-        shell: bash
-      - name: Commit only the verified corpus, build allowlisted preview, push development branch only
-        run: |
-          set -euo pipefail
-          test "$GITHUB_REF" = refs/heads/feature/lsh-smart-feedback-asteroids-f2
-          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          test "$(git ls-remote origin refs/heads/feature/lsh-smart-feedback-asteroids-f2 | cut -f1)" = "$GITHUB_SHA"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add language-skills-hub/printouts/rl-asteroids
-          git diff --cached --name-only > sf-f3/corpus-changes.txt
-          test -s sf-f3/corpus-changes.txt
-          if grep -qv '^language-skills-hub/printouts/rl-asteroids/' sf-f3/corpus-changes.txt; then exit 1; fi
+          node language-skills-hub/scripts/verify-reading-print-assets.cjs --compare /tmp/sf-f3-committed-pdfs | tee sf-f3/corpus.log
+          cp language-skills-hub/printouts/rl-asteroids/manifest-all.json sf-f3/rebuilt-manifest.json
+          # Restore only the temporary regeneration and verify the actual
+          # checked-out candidate; never create a new corpus commit here.
+          git restore --source=HEAD -- language-skills-hub/printouts/rl-asteroids
           git diff --exit-code
-          git commit -m "F3 sync: regenerate verified 96 Asteroids PDFs for 36-card catalog"
           node tools/build-lsh-pages-preview.cjs | tee sf-f3/publication-preview.log
           cp release-preview/evidence/publication-manifest.json sf-f3/
-          git rev-parse HEAD | tee sf-f3/CORPUS_COMMIT.txt
-          git push origin HEAD:refs/heads/feature/lsh-smart-feedback-asteroids-f2
-        shell: bash
       - uses: actions/upload-artifact@v4
         if: always()
         with:

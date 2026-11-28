@@ -50,6 +50,16 @@ for(const [engineName,engine] of [['chromium',chromium],['webkit',webkit]]){
     assert.notEqual(await page.evaluate(()=>document.documentElement.dataset.theme),meta.theme);
     await page.locator('#submitButton').click();
     await page.waitForSelector('#results:not([hidden])');
+    if(item.topic==='rl-asteroids'){
+     const details=page.locator('#resultDetails');
+     assert.equal(await details.getAttribute('data-sf-phase'),'SUMMARY');
+     assert.equal(await details.locator('article').count(),0,'No detailed answers before student opt-in');
+     assert.equal(await page.locator('#sfAccept').isVisible(),true);
+     assert.equal(await page.locator('#sfDecline').isVisible(),true);
+     assert.equal(await page.locator('#exportResult').isVisible(),true,'Full teacher archive available before feedback');
+     await page.locator('#sfAccept').click();
+     assert.equal(await details.getAttribute('data-sf-phase'),'FEEDBACK');
+    }
     assert.equal(await page.locator('#resultDetails .review').count(),item.count);
     assert.equal(await page.locator('#submitButton').isDisabled(),true);
     assert.equal(await page.locator('fieldset.question input:not([disabled])').count(),0);

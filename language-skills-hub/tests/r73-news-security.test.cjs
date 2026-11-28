@@ -18,7 +18,11 @@ test('E4 security contract uses the same LSH runtime, with no security fork',()=
   'self-check/session/attempt-core.js':'500620698d4421c59da07f5b3de30cfb42e89b04',
   'self-check/session/tab-guard.js':'cb753d0e440eafa06d077fecbbb627afd3f600bf',
    'self-check/session/session-ui.js':'69ca9b2df4217dcda3f27f4fad15a7b9a0d150b4',
-  'self-check/results/pdf-report.js':'460908927f4e23b4eeb1c653cb2aa4990bbbff19',
+  // F4.2-certified additive local logo preparation and offline download;
+  // old 460908927f4e23b4eeb1c653cb2aa4990bbbff19 preserved in git history.
+  // All security/event normalization, existing generate/download semantics,
+  // and all other E4 runtime blob pins remain protected.
+  'self-check/results/pdf-report.js':'2ca55784edbf97d70269ee7e53b77474f1e18665',
    'self-check/session/unlock-gestures.js':'95d405160a3d0811bd1c9f00c7cea6abdbd37f17',
   'self-check/results/export-core.js':'ed51c90758aa2ca3036f54fa96e7fae6c02b585e',
   'data/test-mode-policy.json':'cfd8ce76d8314bcdedc1397dc95ab4fbc7759871'
@@ -28,6 +32,9 @@ test('E4 security contract uses the same LSH runtime, with no security fork',()=
   const actual=crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+b.length+'\0'),b])).digest('hex');
   assert.equal(actual,expected,file+' changed outside E4 scope');
  }
+ assert.equal(typeof pdf.prepareLocalLogo,'function');
+ assert.equal(typeof pdf.downloadLocal,'function');
+ assert.equal(typeof pdf.download,'function');
  assert.equal(version.gradedTestsEnabled,false);
  assert.equal(version.officialGradesEnabled,false);
  assert.equal(policy.tamperProofResultsGuaranteed,false);

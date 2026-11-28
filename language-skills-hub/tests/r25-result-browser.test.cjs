@@ -52,6 +52,16 @@ for(const [name,browserType] of [['chromium',chromium],['webkit',webkit]]){
     assert.match(displayed,/%/);
     assert.match(displayed,/—/,'Grade must be unassigned');
     assert.doesNotMatch(displayed,/NaN|Infinity|undefined/);
+    if(example.skill==='reading'&&example.topic==='rl-asteroids'){
+     const details=page.locator('#resultDetails');
+     assert.equal(await details.getAttribute('data-sf-phase'),'SUMMARY');
+     assert.equal(await details.locator('article').count(),0,'No detailed answers before student opt-in');
+     assert.equal(await page.locator('#sfAccept').isVisible(),true);
+     assert.equal(await page.locator('#sfDecline').isVisible(),true);
+     assert.equal(await page.locator('#exportResult').isVisible(),true,'Full teacher archive available before feedback');
+     await page.locator('#sfAccept').click();
+     assert.equal(await details.getAttribute('data-sf-phase'),'FEEDBACK');
+    }
     assert.ok((await page.locator('#resultDetails .review').count())>0,'Missing submitted answers review');
     if(example.skill==='listening'){
      assert.match(await page.locator('#resultCaution').textContent(),/NOT a verified school grade/);

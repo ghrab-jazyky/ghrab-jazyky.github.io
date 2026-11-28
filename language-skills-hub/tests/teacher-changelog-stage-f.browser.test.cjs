@@ -2,7 +2,7 @@
 'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict');
 const {chromium,webkit}=require('playwright');
-const base='http://127.0.0.1:8765/language-skills-hub/';
+const base=process.env.LSH_TEACHER_CHANGELOG_BASE||'http://127.0.0.1:8765/language-skills-hub/';
 const STORAGE_KEY='lsh:teacher-whats-new:last-offered-sequence:v1';
 async function withPage(engine,run,{width=390,height=844}={}) {
  const browser=await engine.launch({headless:true});

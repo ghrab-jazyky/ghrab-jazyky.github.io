@@ -40,7 +40,7 @@ jobs:
           node --check language-skills-hub/self-check/reading/reading-core.js
           node --check language-skills-hub/self-check/reading/reading.js
           node --check language-skills-hub/self-check/results/pdf-report.js
-          node --test language-skills-hub/tests/smart-feedback-asteroids-f1.test.cjs language-skills-hub/tests/smart-feedback-asteroids-f3.test.cjs language-skills-hub/tests/smart-feedback-asteroids-f42.test.cjs language-skills-hub/tests/city-quest-d3-integrity.test.cjs language-skills-hub/tests/r27-public-release.test.cjs language-skills-hub/tests/r55-reading-real-catalog-sources.test.cjs language-skills-hub/tests/r29-feedback.test.cjs language-skills-hub/tests/r34-full-pdf-export.test.cjs language-skills-hub/tests/r48-errors-only-feedback.test.cjs language-skills-hub/tests/rl-pdf-all-variants.test.cjs language-skills-hub/tests/rl-pdf-annotations-pilot.test.cjs language-skills-hub/tests/rl-pdf-content-sha256.test.cjs language-skills-hub/tests/rl-pdf-asteroids-c1-didactic.test.cjs language-skills-hub/tests/r63-test-security.test.cjs language-skills-hub/tests/lsh-unlock-gestures.test.cjs language-skills-hub/tests/r25-result-contract.test.cjs language-skills-hub/tests/r28-grade-proposal.test.cjs language-skills-hub/tests/r30-attempt.test.cjs language-skills-hub/tests/r31-review-export.test.cjs language-skills-hub/tests/r33-auto-listening-and-export.test.cjs language-skills-hub/tests/lsh-unlock-fuzz-t1.test.cjs language-skills-hub/tests/lsh-unlock-stagec-boundaries.test.cjs language-skills-hub/tests/lsh-unlock-b2.test.cjs language-skills-hub/tests/lsh-unlock-audit-runtime.test.cjs language-skills-hub/tests/lsh-unlock-audit-input.test.cjs language-skills-hub/tests/christmas-quest-catalog-release.test.cjs language-skills-hub/tests/lsh-asteroids-lock-cache.test.cjs language-skills-hub/tests/pwa-install.test.cjs language-skills-hub/tests/r39-catalog-cefr-badges.test.cjs language-skills-hub/tests/teacher-changelog-stage-f.test.cjs | tee sf-f4/unit.log
+          node --test language-skills-hub/tests/smart-feedback-asteroids-f1.test.cjs language-skills-hub/tests/smart-feedback-asteroids-f3.test.cjs language-skills-hub/tests/smart-feedback-asteroids-f42.test.cjs language-skills-hub/tests/city-quest-d3-integrity.test.cjs language-skills-hub/tests/r27-public-release.test.cjs language-skills-hub/tests/r55-reading-real-catalog-sources.test.cjs language-skills-hub/tests/r29-feedback.test.cjs language-skills-hub/tests/r34-full-pdf-export.test.cjs language-skills-hub/tests/r48-errors-only-feedback.test.cjs language-skills-hub/tests/rl-pdf-all-variants.test.cjs language-skills-hub/tests/rl-pdf-annotations-pilot.test.cjs language-skills-hub/tests/rl-pdf-content-sha256.test.cjs language-skills-hub/tests/rl-pdf-asteroids-c1-didactic.test.cjs language-skills-hub/tests/r63-test-security.test.cjs language-skills-hub/tests/lsh-unlock-gestures.test.cjs language-skills-hub/tests/r25-result-contract.test.cjs language-skills-hub/tests/r28-grade-proposal.test.cjs language-skills-hub/tests/r30-attempt.test.cjs language-skills-hub/tests/r31-review-export.test.cjs language-skills-hub/tests/r33-auto-listening-and-export.test.cjs language-skills-hub/tests/lsh-unlock-fuzz-t1.test.cjs language-skills-hub/tests/lsh-unlock-stagec-boundaries.test.cjs language-skills-hub/tests/lsh-unlock-b2.test.cjs language-skills-hub/tests/lsh-unlock-audit-runtime.test.cjs language-skills-hub/tests/lsh-unlock-audit-input.test.cjs language-skills-hub/tests/christmas-quest-catalog-release.test.cjs language-skills-hub/tests/lsh-asteroids-lock-cache.test.cjs language-skills-hub/tests/pwa-install.test.cjs language-skills-hub/tests/r39-catalog-cefr-badges.test.cjs language-skills-hub/tests/teacher-changelog-stage-f.test.cjs language-skills-hub/tests/r73-news-security.test.cjs | tee sf-f4/unit.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -56,7 +56,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        suite: [smart, regression, extended, unlock, timed-offline, parallel-release]
+        suite: [smart, regression, extended, unlock, timed-offline, parallel-release, legacy-opt-in, hub-stability]
     env:
       SUITE: ${{ matrix.suite }}
     steps:
@@ -78,7 +78,7 @@ jobs:
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/sf-f4-http.log 2>&1 &
           PID=$!
           trap 'kill "$PID" 2>/dev/null || true' EXIT
-          if [ "$SUITE" = smart ]; then
+          if [ "$SUITE" = smart ] || [ "$SUITE" = hub-stability ]; then
             git worktree add --detach /tmp/sf-f4-baseline "$BASELINE"
             python3 -m http.server 8766 --bind 127.0.0.1 --directory /tmp/sf-f4-baseline >/tmp/sf-f4-base.log 2>&1 &
             BASE_PID=$!
@@ -90,6 +90,14 @@ jobs:
             sleep 1
           done
           test "$READY" -eq 1
+          if [ "$SUITE" = smart ] || [ "$SUITE" = hub-stability ]; then
+            BASE_READY=0
+            for i in $(seq 1 30); do
+              if node -e 'fetch("http://127.0.0.1:8766/language-skills-hub/index.html").then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))'; then BASE_READY=1; break; fi
+              sleep 1
+            done
+            test "$BASE_READY" -eq 1
+          fi
           case "$SUITE" in
             smart)
               export SF_EVIDENCE=sf-f4/smart
@@ -102,6 +110,19 @@ jobs:
               node --test --test-concurrency=1 language-skills-hub/tests/lsh-unlock-stageb-state.browser.test.cjs language-skills-hub/tests/lsh-unlock-stageb-t4.browser.test.cjs language-skills-hub/tests/lsh-unlock-stageb.browser.test.cjs language-skills-hub/tests/lsh-unlock-stageb-matrix.browser.test.cjs language-skills-hub/tests/lsh-unlock-b2.browser.test.cjs language-skills-hub/tests/lsh-unlock-audit-regressions.browser.test.cjs | tee sf-f4/browser.log ;;
             parallel-release)
               node --test --test-concurrency=1 language-skills-hub/tests/christmas-quest-developer-lock.browser.test.cjs language-skills-hub/tests/teacher-changelog-stage-f.browser.test.cjs language-skills-hub/tests/r39-catalog-cefr-badges.browser.test.cjs | tee sf-f4/browser.log ;;
+            legacy-opt-in)
+              node --test --test-concurrency=1 language-skills-hub/tests/r23-reading-selfcheck.browser.test.cjs language-skills-hub/tests/r25-result-browser.test.cjs language-skills-hub/tests/r58-reading-test-tabs.browser.test.cjs | tee sf-f4/browser.log ;;
+            hub-stability)
+              # No exception filter or retry-to-green: every run must pass.
+              # The catalog assets are unchanged by this release. Reproduce
+              # the exact previously failing path against both real origins.
+              git diff --exit-code "$BASELINE" HEAD -- language-skills-hub/index.html language-skills-hub/assets/pwa-install.js language-skills-hub/assets/pwa-install.css language-skills-hub/assets/hub.js language-skills-hub/assets/hub.css language-skills-hub/assets/whats-new-app.js language-skills-hub/assets/whats-new-view.js language-skills-hub/data/teacher-changelog.json
+              for i in 1 2 3; do
+                echo "Strict baseline changelog replay $i" | tee -a sf-f4/browser.log
+                LSH_TEACHER_CHANGELOG_BASE=http://127.0.0.1:8766/language-skills-hub/ node --test --test-concurrency=1 --test-name-pattern='previously seen release 8' language-skills-hub/tests/teacher-changelog-stage-f.browser.test.cjs | tee -a sf-f4/browser.log
+                echo "Strict candidate changelog replay $i" | tee -a sf-f4/browser.log
+                node --test --test-concurrency=1 --test-name-pattern='previously seen release 8' language-skills-hub/tests/teacher-changelog-stage-f.browser.test.cjs | tee -a sf-f4/browser.log
+              done ;;
             timed-offline)
               cat > sf-f4/timed-offline.test.cjs <<'TEST'
           'use strict';
