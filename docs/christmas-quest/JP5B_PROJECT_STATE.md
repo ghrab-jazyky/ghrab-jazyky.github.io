@@ -1,38 +1,26 @@
-# Christmas Quest JP5b — checkpoint
+# Christmas Quest JP5b — checkpoint 2026-11-28
 
-Updated 2026-11-28. Status: **BLOCKED: candidate bytes unavailable in current session. NO-GO for production.**
+**Status: integrated v0.9.0 source persisted; catalog gate PASS; isolated Chromium harness pending at last observation; NO-GO for production.**
 
-## Authoritative repository state
-- Repository: ghrab-jazyky/ghrab-jazyky.github.io
-- Development branch: cq/japan-v0.9.0-jp5b
-- Verified before this documentation commit: main and development branch identical at d8d032ee1fc51a009df3d20d8fb64135f9b23be3; zero source changes.
-- This checkpoint is documentation only, not integration or certification. Keep main unchanged; retain developer lock. Production release requires explicit owner approval.
+## Authoritative recovery
+- Branch: cq/japan-v0.9.0-jp5b. Original baseline d8d032ee1fc51a009df3d20d8fb64135f9b23be3.
+- Candidate source commit: adfeae9179158ef7a1d541d18309c2ccd2b72aff. This is the exact code under test; later documentation-only commits do not replace it.
+- Exact user-uploaded recovery archive: docs/christmas-quest/jp5b-recovery/INTEGRATION_HANDOFF.zip.b64, stored at commit 40b37aebd2f312abfd9cb72409637531c6dfcda2; Git blob 8241b493500742f5909a827b0a43537a7cbef229. Decode with base64 -d; original ZIP SHA-256 80e13ea8f58c3a3dc61745fd488cbf9444247e8767c5eb2da731a446f4d8b7b8.
+- Approved source JP5a SHA-256 1155be298079e37d8d64b4cc20a401cd0b50c1e7878c36fff77f8ccb33f9053a. Integrated child SHA-256 0ce40f4d57a71730f45d391f95b478d0126cca3ac1e6e43625146875d4dd096b.
+- Full candidate SHA-256 7f29f1048e3c6a53c8bc621ff98559cf32bb52948c5d13643afc69606c269d96; gated runtime CSP hash tswruc8n3IZ5HGCdHFVpAYaFWGRJbgeuCUwhJjgXErw=. Two independent build routes produced matching candidate hashes. GitHub Actions Python builder and runtime JS syntax passed; exact source and synchronized version/catalog-test/documentation pins persisted.
+- GitHub Actions run 46156226979: https://github.com/ghrab-jazyky/ghrab-jazyky.github.io/actions/runs/46156226979. Recovery build, persistence, existing catalog release test and Chromium preparation PASS. Real isolated browser harness and evidence upload: check latest job status; do not assume pass.
+- Local checkout and local HTTP are blocked (DNS, ERR_BLOCKED_BY_ADMINISTRATOR). Large connector write failed. Use existing GitHub Actions for builds; avoid repeated failed routes.
 
-## Prior evidence (reported by previous sessions; not independently reproduced here)
-- JP5a v0.6 SOLO/PAIR completed and accepted in prior workflow.
-- JP5b v0.9.0 candidate (six destinations) assembled locally, not committed.
-- Most recent reported artifact: CQ_JP5b_RECONSTRUCTED_CANDIDATE_20261128.zip (30 files, approx. 10.2 MB).
-- Earlier artifacts: CQ_JP5b_CERTIFICATION_HANDOFF_20261128.zip; CQ_JP5b_INTEGRATION_HANDOFF.zip.
-- Prior report: 48/48 reducer variants, 2,595 unit assertions, 4,711 integrated application assertions, 2,832 simulated communication/lifecycle assertions, 107 static checks. Report also says 10,245 total new passes; counts are not independently verified and must not be added across potentially overlapping campaigns.
-- Prior reports cite syntax, graphics, key functionality, CSP and rollback checks as passed. Actual test artifacts, candidate SHA-256 and exact source tree are not accessible in current session.
-- Do not equate simulated browser behavior with real browser E2E or claim release certification from these reports.
+## Historical evidence (from exact uploaded archive, not newly executed)
+- JP5a: 48/48 variants, 1056/1056 controlled fixture checks, 0 JS errors and 0 external requests; not natural uninterrupted gameplay/physical device certification.
+- JP5b reducer: 2595 assertions, 48 variants; archived static source/CSP checks PASS. Source and child hashes matched. No need to rerun unchanged hash-matched tests absent a specific reason.
+- Other previous-thread reports without exact candidate provenance are not treated as certified.
 
-## Next action (P0)
-1. Recover the exact latest candidate ZIP (prefer the reconstructed candidate named above) from the owner's previous conversation or owner-provided upload. Do not rebuild JP5a/JP5b from scratch.
-2. Check archive integrity, manifest, hashes and match the candidate against the pinned base. Preserve previous evidence; mark any missing provenance as unverified. Review diff for scope, dev-lock and unintended changes. Persist the actual candidate in development branch before further extended work, provided it is valid and safe to commit; record the exact resulting commit/tree and artifact SHA-256.
-3. Reuse earlier test evidence only when its input version can be matched; rerun changed/affected checks. Real browser E2E, integration/LSH regressions, developer-lock behavior, mobile/iPad compatibility, teacher changelog remain open. No unapproved publication date.
-4. Save compact results as machine-readable files tied to the exact candidate. Perform final release gate and await owner approval. Do not merge/deploy production.
+## Next action
+1. Inspect actual workflow run and evidence. Resolve any Chromium harness failure with targeted changes, then persist code and test evidence tied to exact hashes.
+2. Reconcile with current main before complete LSH gate. At observation main=2bd5812d58158e2e5c6b32d6c0719cec0abd9e01, 31 commits ahead of old common base, 174 changed files; overlap with JP5b modifications is language-skills-hub/version.json. Do not overwrite concurrent LSH changes; merge/rebase in isolated development branch, retaining all unrelated current pins. Re-check actual latest main before doing so.
+3. Full LSH build and regression, natural gameplay, lock, CSP, offline/network, persistence, other missions, replay/reset and migration/rollback. Physical iPad/Safari requires real device evidence or explicit limitation. Teacher changelog without invented release date.
+4. Final release gate; explicit owner approval required for merge or deployment. Developer lock retained.
 
 ## Working rules
-- ChatGPT implements, tests and audits. No Codex. Claude only on explicit owner decision.
-- Repository checkpoints are authoritative. Persist source and results after meaningful milestones; keep this state current.
-- Avoid duplicate tests of unchanged, hash-matched components; final full regression remains required.
-- At most two failed attempts via the same technical route; then use a materially different available method or report a concrete blocker. Keep logs in files, concise summaries in chat.
-- No scope creep, no additional runtime network requests, no weakening of existing pedagogical, graphic, security, or functional requirements.
-- Never mark a test PASS without evidence. If repository write is unavailable, package exact source, manifest, current results and next action for transfer.
-
-## Handoff trigger
-If the candidate bytes remain inaccessible, ask for **one** latest archive only; do not ask for previous chats or multiple redundant archives. The state above is sufficient to resume once candidate is recovered.
-
-## Recovery build (2026-11-28)
-Candidate rebuilt from the exact user-uploaded archive with the original Python builder, independently matched against connector-built candidate SHA-256 7f29f1048e3c6a53c8bc621ff98559cf32bb52948c5d13643afc69606c269d96. Source and release pins persisted to the isolated branch. Developer lock retained. NO-GO for production: real browser/full LSH regression and owner approval remain outstanding. Historical tests are not fresh certification. No Codex or Claude used.
+ChatGPT implements and audits. No Codex. Claude only on explicit owner decision. Persist exact source after meaningful checkpoints, compact reports in repository; avoid duplicate certs, scope creep and repeated technical failure. Keep recovery archive outside allowlisted LSH publish path. No new runtime network requests. This document and original archive are sufficient for next thread; no reupload required.
