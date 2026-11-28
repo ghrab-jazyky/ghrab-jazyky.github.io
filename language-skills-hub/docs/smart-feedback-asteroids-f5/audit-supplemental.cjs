@@ -115,7 +115,29 @@ for(const [name,engine] of [['chromium',chromium],['webkit',webkit]]){
    const first=page.locator('fieldset.question').first().locator('input').first();await first.check();
    await page.evaluate(()=>{window.__auditFailFinish=true});await page.locator('#submitButton').click();
    assert.equal(await page.locator('#results').isHidden(),true);assert.equal(await page.locator('#submitButton').isDisabled(),false);assert.equal(await first.isChecked(),true);
-   await page.evaluate(()=>{window.__auditFailFinish=false});await submit(page);
+   // Chromium may report a focus/fullscreen interruption when the native
+   // failure alert is dismissed. Honor the real session guard, do not force
+   // click, mutate its state, suppress events or disable monitoring.
+   await page.evaluate(()=>{window.__auditFailFinish=false});
+   await page.bringToFront();
+   // The existing guard debounces blur and viewport events. Allow that
+   // transition to settle before deciding whether teacher recovery is needed.
+   await page.waitForTimeout(1000);
+   const lock=page.locator('#sessionLock');
+   const recovery={locked:await lock.isVisible(),reason:null,teacherGesture:false};
+   if(recovery.locked){
+    recovery.reason=await page.locator('#sessionLockReason').textContent();
+    assert.equal(await page.locator('#results').isHidden(),true);
+    for(const corner of ['tl','tr','bl','br'])await page.locator('.lsh-corner-'+corner).click();
+    await lock.waitFor({state:'hidden',timeout:15000});
+    recovery.teacherGesture=true;
+   }
+   fs.writeFileSync(path.join(evidence,name+'-finish-recovery.json'),JSON.stringify(recovery,null,2));
+   assert.equal(await first.isChecked(),true,'Answer survives actual teacher recovery');
+   await submit(page);
+   assert.equal(await page.locator('#submitButton').isDisabled(),true);
+   assert.equal(await first.isDisabled(),true);
+   assert.ok((await download(page,'#exportPdf')).length>10000);
   });}finally{await browser.close();}
  });
 }
