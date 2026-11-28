@@ -33,3 +33,6 @@ Updated 2026-11-28. Status: **BLOCKED: candidate bytes unavailable in current se
 
 ## Handoff trigger
 If the candidate bytes remain inaccessible, ask for **one** latest archive only; do not ask for previous chats or multiple redundant archives. The state above is sufficient to resume once candidate is recovered.
+
+## Recovery build (2026-11-28)
+Candidate rebuilt from the exact user-uploaded archive with the original Python builder, independently matched against connector-built candidate SHA-256 7f29f1048e3c6a53c8bc621ff98559cf32bb52948c5d13643afc69606c269d96. Source and release pins persisted to the isolated branch. Developer lock retained. NO-GO for production: real browser/full LSH regression and owner approval remain outstanding. Historical tests are not fresh certification. No Codex or Claude used.

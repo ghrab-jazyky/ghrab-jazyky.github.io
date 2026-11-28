@@ -1,6 +1,6 @@
-# Christmas Quest 0.8.1 v Language Skills Hub
+# Christmas Quest 0.9.0 v Language Skills Hub (kandidát)
 
-Karta Christmas Quest v Conversation Lab nabízí pět destinací (IS, MX, ES, PH, CO), čtyři jazyky (EN, ES, DE, FR) a šest úrovní (A1–C2). S City Quest používá označení „Interaktivní hra“. Katalog zachovává parametry `lang`, `level`, `zamek` a `practice`. Sdílení se studenty a QR jsou vypnuté i ve vývojářském režimu.
+Karta Christmas Quest v Conversation Lab nabízí šest hratelných destinací (IS, MX, ES, PH, CO, JP), čtyři jazyky (EN, ES, DE, FR) a šest úrovní (A1–C2). S City Quest používá označení „Interaktivní hra“. Katalog zachovává parametry `lang`, `level`, `zamek` a `practice`. Sdílení se studenty a QR jsou vypnuté i ve vývojářském režimu.
 
 ## Vývojářský režim
 
@@ -10,10 +10,14 @@ Herní skript je ve výchozím stavu inertní. CSP povoluje přesné hashe půvo
 
 ## Ověření vydání
 
-Publikační allowlist pro Christmas Quest obsahuje jedinou cestu `language-skills-hub/konverzace/christmas-quest/index.html`. SHA-256 tohoto HTML je `efb43df3583bf3a920c5d3ec27b36ee7d7e9840f0a1fb4a0d864ecbe3e5283d0`. Původní neuzamčené HTML a podklady rollbacku patří mimo repozitář.
+Publikační allowlist pro Christmas Quest obsahuje jedinou cestu `language-skills-hub/konverzace/christmas-quest/index.html`. SHA-256 tohoto HTML je `7f29f1048e3c6a53c8bc621ff98559cf32bb52948c5d13643afc69606c269d96`. Původní neuzamčené HTML a podklady rollbacku patří mimo repozitář.
 
 Omezené vydání vyžaduje ověřený changelog „Co je nového“ s potvrzeným datem, kontrolu migrace a rollbacku, prohlížečové regrese a nezávislou revizi konkrétního commitu. Publikaci z `main` provádí výhradně ruční workflow `lsh-pages-approved-publish.yml` po schválení přesného SHA vlastníkem. Studentský pilot do této etapy nepatří.
 
 ## Rollback
 
 Integraci stáhněte cíleným novým commitem. Ponechte klíče `lsh.cq.progress.v1`, `lsh.cq.progress.v2` a jejich zálohy. Verze 0.7.4 může měnit v1. Verze 0.8.1 po návratu použije v2 a případné mezitím provedené změny v1 automaticky nesloučí. Při odvolání záznamu v učitelském changelogu zachovejte dosavadní historii a monotónní sekvenci oznámení. Sdílený příznak zámku a aktivaci ponechte, dokud je používá alespoň jedna část LSH.
+
+
+## JP5b — kandidát 0.9.0
+Japonsko jako šestá hratelná destinace; 3 kola, SOLO/PAIR, stejné čtyři jazyky a šest úrovní. Checkpoint po dokončení kola; rozpracované kolo se obnoví od začátku. Zámek zůstává aktivní. Návrat na 0.8.1 nepodporuje japonské checkpointy; před rollbackem zálohovat hodnotu lsh.cq.progress.v2. Audit a publikace zůstávají samostatné brány.
