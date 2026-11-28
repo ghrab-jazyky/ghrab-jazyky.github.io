@@ -1,0 +1,77 @@
+name: CQ JP5b targeted Chromium certification
+on:
+  push:
+    branches:
+      - cq/japan-v0.9.0-jp5b
+    paths:
+      - .github/workflows/cq-jp5b-browser.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cq-jp5b-browser
+  cancel-in-progress: false
+jobs:
+  browser:
+    if: github.ref == 'refs/heads/cq/japan-v0.9.0-jp5b'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify exact candidate and unpack recovery harness
+        run: |
+          set -euo pipefail
+          root="$RUNNER_TEMP/cq-jp5b"
+          mkdir -p "$root/handoff"
+          base64 -d docs/christmas-quest/jp5b-recovery/INTEGRATION_HANDOFF.zip.b64 > "$root/handoff.zip"
+          echo "80e13ea8f58c3a3dc61745fd488cbf9444247e8767c5eb2da731a446f4d8b7b8  $root/handoff.zip" | sha256sum -c -
+          echo "7f29f1048e3c6a53c8bc621ff98559cf32bb52948c5d13643afc69606c269d96  language-skills-hub/konverzace/christmas-quest/index.html" | sha256sum -c -
+          unzip -q "$root/handoff.zip" -d "$root/handoff"
+          python - <<'PY'
+          import base64, hashlib, pathlib, re
+          s=pathlib.Path("language-skills-hub/konverzace/christmas-quest/index.html").read_text()
+          m=re.search(r'window.CQ_JP_DOCUMENT="([A-Za-z0-9+/=]+)";',s)
+          assert m and hashlib.sha256(base64.b64decode(m[1])).hexdigest()=="0ce40f4d57a71730f45d391f95b478d0126cca3ac1e6e43625146875d4dd096b"
+          PY
+      - name: Install Chromium and fix CSP-incompatible polling in test only
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+          python - <<'PY'
+          import os,pathlib
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'cq-jp5b/handoff/test_jp5b.py'
+          s=p.read_text()
+          anchor="executable_path='/usr/bin/chromium'"
+          assert s.count(anchor)==1
+          s=s.replace(anchor,"executable_path=pw.chromium.executable_path",1)
+          helper = '''def wait_until(page, expression, timeout=10000):
+           # CDP evaluate directly, not Playwright's injected eval-based polling.
+           # Never bypass or weaken CSP.
+           deadline=time.monotonic()+timeout/1000
+           while time.monotonic()<deadline:
+            if page.evaluate(expression): return
+            time.sleep(.05)
+           info={"parent":page.evaluate("snapshot()")}
+           try:
+            info["child"]=page.frames[1].evaluate("({ri,state,score,correct,wrong,bombHits,best,slowUses,energy,counts})")
+           except Exception as e:
+            info["child_error"]=str(e)
+           raise AssertionError("Timed out: "+expression+" "+json.dumps(info,ensure_ascii=False))
+          '''
+          assert s.count('results=[]')==1
+          s=s.replace('results=[]',helper+'\nresults=[]',1)
+          assert s.count('page.wait_for_function(')==2
+          s=s.replace('page.wait_for_function(', 'wait_until(page,')
+          p.write_text(s)
+          PY
+      - name: Run isolated real browser harness with unmodified game CSP
+        run: python "$RUNNER_TEMP/cq-jp5b/handoff/test_jp5b.py"
+      - name: Save actual browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jp5b-targeted-browser-evidence
+          path: |
+            ${{ runner.temp }}/cq-jp5b/handoff/build/JP5b_HARNESS_RESULTS.json
+            ${{ runner.temp }}/cq-jp5b/handoff/build/JP5b_victory.png
+          if-no-files-found: warn
